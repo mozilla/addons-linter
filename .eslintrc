@@ -5,9 +5,6 @@
     "browser": true,
     "es6": true,
   },
-  "plugins": [
-    "react"
-  ],
   "ecmaFeatures": {
     "arrowFunctions": true,
     "blockBindings": true,
@@ -20,10 +17,12 @@
     "spread": true,
   },
   "globals": {
+    "assert": false,
+    "describe": false,
     "exports": false,
+    "it": false,
     "module": false,
     "require": false,
-    "FxaRelierClient": false,
   },
   "rules": {
     "block-scoped-var": 0,
