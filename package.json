@@ -4,7 +4,7 @@
   "description": "Mozilla addons validator",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node -e \"require('grunt').cli()\" null test"
   },
   "repository": {
     "type": "git",
