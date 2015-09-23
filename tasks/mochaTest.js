@@ -2,10 +2,13 @@ module.exports = {
   options: {
     require: [
       function() {
-        assert = require('chai').assert;  // eslint-disable-line
+        /*eslint-disable */
+        assert = require('chai').assert;
+        sinon = require('sinon') //
+        /*eslint-enable */
       },
     ],
     reporter: 'spec',
   },
-  all: ['tests/*.js'],
+  all: ['dist/tests.js'],
 };
