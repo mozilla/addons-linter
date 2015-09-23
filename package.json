@@ -30,12 +30,9 @@
     "load-grunt-configs": "0.4.3",
     "load-grunt-tasks": "3.2.0",
     "mocha": "2.3.2",
-    "mocha-loader": "0.7.1",
     "sinon": "1.17.0",
+    "source-map-support": "0.3.2",
     "webpack": "1.12.2",
     "webpack-dev-server": "1.11.0"
-  },
-  "dependencies": {
-    "source-map-support": "0.3.2"
   }
 }
