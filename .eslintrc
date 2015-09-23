@@ -23,6 +23,7 @@
     "it": false,
     "module": false,
     "require": false,
+    "sinon": false,
   },
   "rules": {
     "block-scoped-var": 0,
