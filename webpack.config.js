@@ -16,11 +16,12 @@ fs.readdirSync('node_modules')
 
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/cli.js',
   target: 'node',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'addon-validator.js',
+    filename: 'addons-validator.js',
+    libraryTarget: 'commonjs2',
   },
   module: {
     loaders: [
