@@ -2,12 +2,23 @@
 [![devDependency Status](https://david-dm.org/mozilla/addons-validator/dev-status.svg)](https://david-dm.org/mozilla/addons-validator#info=devDependencies)
 
 # addons-validator
-The amo-validator, JS edition.
 
-## Install the deps
+The Add-ons Validator, JS edition.
 
-Run `npm install`
+## Install dependencies
 
-## Running the tests
+Install dependencies with [npm](http://nodejs.org/):
 
-Run `npm test` or `grunt test`
+```
+npm install
+```
+
+Dependencies are automatically kept up-to-date using [greenkeeper](http://greenkeeper.io/).
+
+## Testing
+
+Tests use `grunt` but don't require global `grunt`. Just run:
+
+```
+npm test
+```
