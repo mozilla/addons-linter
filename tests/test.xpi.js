@@ -1,9 +1,10 @@
-import Xpi from 'xpi';
 import { Readable } from 'stream';
 
+import Xpi from 'xpi';
+import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'constants';
 
 const defaultData = {
-  compressionMethod: 8,
+  compressionMethod: DEFLATE_COMPRESSION,
 };
 
 const chromeManifestEntry = Object.assign({}, defaultData, {
@@ -19,7 +20,7 @@ const installRdfEntry = Object.assign({}, defaultData, {
 });
 
 const chromeContentDir = {
- compressionMethod: 0,
+ compressionMethod: NO_COMPRESSION,
  compressedSize: 0,
  uncompressedSize: 0,
  fileName: 'chrome/content/',
