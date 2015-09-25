@@ -6,6 +6,10 @@ module.exports = {
   build: {
     // Use the default webpack options.
   },
+  watch: {
+    watch: true,
+    keepalive: true,
+  },
   test: {
     entry: './tests/runner.js',
     output: {

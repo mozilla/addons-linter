@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+var cli = require('../dist/addons-validator').cli;
+cli.argv;
