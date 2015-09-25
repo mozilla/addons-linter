@@ -1,15 +1,16 @@
 import { cli as cli_ } from 'cli';
 
 
-// Sneaky way to make the cli throw so we can introspect the right errors
-// are happening when we hand it bogus input.
-
-var cli = cli_.exitProcess(false).fail(msg => {
-  throw new Error(msg);
-});
-
+var cli;
 
 describe('Basic CLI tests', function() {
+
+  beforeEach(() => {
+    // Override yargs fail func so we can introspect the right errors
+    // are happening when we hand it bogus input.
+    this.fakeFail = sinon.stub();
+    cli = cli_.exitProcess(false).fail(this.fakeFail);
+  });
 
   it('should default Add-on type to "any"', () => {
     var args = cli.parse(['foo/bar.xpi']);
@@ -39,21 +40,23 @@ describe('Basic CLI tests', function() {
   });
 
   it('should show error on missing xpi', () => {
-    assert.throws(() => {
-      cli.parse([]);
-    }, Error, 'Not enough non-option arguments');
+    cli.parse([]);
+    assert.ok(this.fakeFail.calledWithMatch(
+      'Not enough non-option arguments'));
   });
 
   it('should show error if incorrect type', () => {
-    assert.throws(() => {
-      cli.parse(['-t', 'false', 'whatevs']);
-    }, Error, 'Invalid values:\n  Argument: type, Given: "false"');
+    cli.parse(['-t', 'false', 'whatevs']);
+    assert.ok(
+      this.fakeFail.calledWithMatch(
+        'Invalid values:\n  Argument: type, Given: "false"'));
   });
 
   it('should show error if incorrect output', () => {
-    assert.throws(() => {
-      cli.parse(['-o', 'false', 'whatevs']);
-    }, Error, 'Invalid values:\n  Argument: output, Given: "false"');
+    cli.parse(['-o', 'false', 'whatevs']);
+    assert.ok(
+      this.fakeFail.calledWithMatch(
+        'Invalid values:\n  Argument: output, Given: "false"'));
   });
 
 });
