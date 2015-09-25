@@ -18,6 +18,7 @@
   },
   "globals": {
     "assert": false,
+    "beforeEach": false,
     "describe": false,
     "exports": false,
     "it": false,
@@ -50,7 +51,7 @@
     "no-loop-func": 2,
     "no-multi-str": 2,
     "no-new": 2,
-    "no-plusplus": 2,
+    "no-plusplus": 0,
     "no-proto": 2,
     "no-redeclare": 0,
     "no-script-url": 2,

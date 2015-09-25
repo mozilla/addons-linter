@@ -34,5 +34,8 @@
     "source-map-support": "0.3.2",
     "webpack": "1.12.2",
     "webpack-dev-server": "1.11.0"
+  },
+  "dependencies": {
+    "yauzl": "2.3.1"
   }
 }
