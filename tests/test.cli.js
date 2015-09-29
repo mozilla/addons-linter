@@ -1,4 +1,4 @@
-import { cli as cli_ } from 'cli';
+import { default as cli_ } from 'cli';
 
 
 var cli;
@@ -22,6 +22,11 @@ describe('Basic CLI tests', function() {
     var args = cli.parse(['foo/bar.xpi']);
     assert.equal(args.output, 'text');
     assert.equal(args.o, 'text');
+  });
+
+  it('should default stack to false', () => {
+    var args = cli.parse(['foo/bar.xpi']);
+    assert.equal(args.stack, false);
   });
 
   it('should default selfhosted to false', () => {

@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
-var cli = require('../dist/addons-validator').cli;
-cli.argv;
+var AddonValidator = require('../dist/addons-validator').createInstance();
+AddonValidator.scan();

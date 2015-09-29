@@ -36,6 +36,8 @@
     "webpack-dev-server": "1.11.0"
   },
   "dependencies": {
+    "chalk": "1.1.1",
+    "es6-promisify": "3.0.0",
     "yargs": "3.26.0",
     "yauzl": "2.3.1"
   }
