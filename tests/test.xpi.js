@@ -1,7 +1,7 @@
 import { Readable } from 'stream';
 
 import Xpi from 'xpi';
-import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'constants';
+import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
 
 const defaultData = {
   compressionMethod: DEFLATE_COMPRESSION,
