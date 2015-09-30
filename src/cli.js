@@ -1,3 +1,6 @@
+// Disable warnings about template strings in this file, as we do lots of
+// string concatenation so options/help in the CLI app display nicely.
+// jscs:disable requireTemplateStrings
 import argv from 'yargs';
 import { version } from 'json!../package';
 

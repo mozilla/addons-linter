@@ -20,10 +20,10 @@ const installRdfEntry = Object.assign({}, defaultData, {
 });
 
 const chromeContentDir = {
- compressionMethod: NO_COMPRESSION,
- compressedSize: 0,
- uncompressedSize: 0,
- fileName: 'chrome/content/',
+  compressionMethod: NO_COMPRESSION,
+  compressedSize: 0,
+  uncompressedSize: 0,
+  fileName: 'chrome/content/',
 };
 
 describe('Xpi.open()', function() {
@@ -56,7 +56,7 @@ describe('Xpi.open()', function() {
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
-      .catch(err => {
+      .catch((err) => {
         assert.include(err.message, 'open() test');
       });
   });
@@ -95,14 +95,14 @@ describe('Xpi.getMetaData()', function() {
     assert.equal(Object.keys(myXpi.metadata).length, 0);
   });
 
-  it('should return cached data when available', done => {
+  it('should return cached data when available', (done) => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.metadata = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
     myXpi.getMetaData()
-      .then(metadata => {
+      .then((metadata) => {
         assert.deepEqual(metadata, myXpi.metadata);
         assert.notOk(this.openStub.called);
         done();
@@ -138,7 +138,7 @@ describe('Xpi.getMetaData()', function() {
     };
 
     return myXpi.getMetaData(onEventsSubscribed)
-      .then(metadata => {
+      .then((metadata) => {
         assert.deepEqual(metadata, expected);
       });
   });
@@ -155,7 +155,7 @@ describe('Xpi.getMetaData()', function() {
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
-      .catch(err => {
+      .catch((err) => {
         assert.include(err.message, 'openReadStream test');
       });
   });
@@ -168,7 +168,7 @@ describe('Xpi.getMetaData()', function() {
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
-      .catch(err => {
+      .catch((err) => {
         assert.include(err.message, 'open test');
       });
   });
@@ -201,7 +201,7 @@ describe('Xpi.getFileAsStream()', function() {
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
-      .catch(err => {
+      .catch((err) => {
         assert.include(err.message, 'path does not exist');
       });
   });
@@ -221,7 +221,7 @@ describe('Xpi.getFileAsStream()', function() {
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
-      .catch(err => {
+      .catch((err) => {
         assert.include(err.message, 'getFileAsStream openReadStream test');
       });
   });
@@ -246,13 +246,13 @@ describe('Xpi.getFileAsStream()', function() {
       .then((readStream) => {
         var chunks = '';
         readStream
-          .on('readable', function () {
+          .on('readable', () => {
             var chunk;
             while (null !== (chunk = readStream.read())) {
               chunks += chunk.toString();
             }
           })
-          .on('end', function () {
+          .on('end', () => {
             var [chunk1, chunk2] = chunks.split('\n');
             assert.equal(chunk1, 'line one');
             assert.equal(chunk2, 'line two');

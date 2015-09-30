@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import Xpi from  'xpi';
+import Xpi from 'xpi';
 
 import promisify from 'es6-promisify';
 import chalk from 'chalk';
@@ -37,7 +37,7 @@ export default class Validator {
             reject(invalidMessage);
           }
         })
-        .catch(err => {
+        .catch((err) => {
           if (err.code !== 'ENOENT') {
             reject(err);
           } else {
@@ -57,7 +57,7 @@ export default class Validator {
         // Do something useful with package here.
         console.log(metadata);
       })
-      .catch(err => {
+      .catch((err) => {
         return this.handleError(err);
       });
   }
