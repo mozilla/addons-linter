@@ -65,4 +65,3 @@ describe('Basic CLI tests', function() {
   });
 
 });
-

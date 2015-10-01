@@ -9,14 +9,14 @@ describe('Validator', function() {
     addonValidator.handleError = sinon.stub();
     var fakeError = new Error('soz');
     fakeError.code = 'ENOENT';
-    var fakeLstat = () =>  {
+    var fakeLstat = () => {
       return Promise.reject(fakeError);
     };
     return addonValidator.checkFileExists(addonValidator.packagePath, fakeLstat)
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
-      .catch(err => {
+      .catch((err) => {
         assert.instanceOf(err, Error);
         assert.include(err.message, 'Path "foo" is not a file');
       });
@@ -26,14 +26,14 @@ describe('Validator', function() {
     var addonValidator = new Validator({_: ['foo']});
     addonValidator.handleError = sinon.stub();
     var fakeError = new TypeError('soz');
-    var fakeLstat = () =>  {
+    var fakeLstat = () => {
       return Promise.reject(fakeError);
     };
     return addonValidator.checkFileExists(addonValidator.packagePath, fakeLstat)
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
-      .catch(err => {
+      .catch((err) => {
         assert.instanceOf(err, TypeError);
         assert.include(err.message, 'soz');
       });
@@ -54,7 +54,7 @@ describe('Validator', function() {
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
-      .catch(err => {
+      .catch((err) => {
         assert.instanceOf(err, Error);
         assert.include(err.message, 'Path "bar" is not a file');
         assert.equal(isFileSpy.callCount, 1);
@@ -62,4 +62,3 @@ describe('Validator', function() {
   });
 
 });
-

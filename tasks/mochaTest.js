@@ -4,7 +4,7 @@ module.exports = {
       function() {
         /*eslint-disable */
         assert = require('chai').assert;
-        sinon = require('sinon') //
+        sinon = require('sinon');
         /*eslint-enable */
       },
     ],

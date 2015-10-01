@@ -2,8 +2,8 @@ import yauzl from 'yauzl';
 
 /*
  * Simple Promise wrapper for the Yauzl unzipping lib to unpack add-on .xpis.
- * Note: We're using the autoclose feature of yauzl as a result every operation will
- * open the zip, do something and then close it implicitly.
+ * Note: We're using the autoclose feature of yauzl as a result every operation
+ * will open the zip, do something and then close it implicitly.
  * This makes the API easy to use and the consumer doesn't need to remember to
  * close the zipfile.
  *
@@ -65,7 +65,7 @@ export default class Xpi {
             }
           }
         })
-        .catch(err => reject(err));
+        .catch((err) => reject(err));
     });
   }
 
@@ -85,7 +85,7 @@ export default class Xpi {
             resolve(readStream);
           });
         })
-        .catch(err => reject(err));
+        .catch((err) => reject(err));
     });
   }
 }
