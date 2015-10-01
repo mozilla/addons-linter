@@ -1,6 +1,6 @@
 import { default as Message } from 'message';
 
-// "I have a display case ready and waiting for our newest acquistions!"
+// "I have a display case ready and waiting for our newest acquisitions!"
 // --Taneleer Tivan
 
 
