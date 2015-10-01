@@ -5,14 +5,14 @@ import Validator from 'validator';
 describe('Validator', function() {
 
   it('should detect an invalid file with ENOENT', () => {
-    var AddonValidator = new Validator({_: ['foo']});
-    AddonValidator.handleError = sinon.stub();
+    var addonValidator = new Validator({_: ['foo']});
+    addonValidator.handleError = sinon.stub();
     var fakeError = new Error('soz');
     fakeError.code = 'ENOENT';
     var fakeLstat = () =>  {
       return Promise.reject(fakeError);
     };
-    return AddonValidator.checkFileExists(AddonValidator.packagePath, fakeLstat)
+    return addonValidator.checkFileExists(addonValidator.packagePath, fakeLstat)
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
@@ -23,13 +23,13 @@ describe('Validator', function() {
   });
 
   it('should detect other errors during lstat', () => {
-    var AddonValidator = new Validator({_: ['foo']});
-    AddonValidator.handleError = sinon.stub();
+    var addonValidator = new Validator({_: ['foo']});
+    addonValidator.handleError = sinon.stub();
     var fakeError = new TypeError('soz');
     var fakeLstat = () =>  {
       return Promise.reject(fakeError);
     };
-    return AddonValidator.checkFileExists(AddonValidator.packagePath, fakeLstat)
+    return addonValidator.checkFileExists(addonValidator.packagePath, fakeLstat)
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
@@ -40,8 +40,8 @@ describe('Validator', function() {
   });
 
   it('should reject if not a file', () => {
-    var AddonValidator = new Validator({_: ['bar']});
-    AddonValidator.handleError = sinon.stub();
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.handleError = sinon.stub();
     var isFileSpy = sinon.spy(() => {
       return false;
     });
@@ -50,7 +50,7 @@ describe('Validator', function() {
         isFile: isFileSpy,
       });
     };
-    return AddonValidator.checkFileExists(AddonValidator.packagePath, fakeLstat)
+    return addonValidator.checkFileExists(addonValidator.packagePath, fakeLstat)
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
