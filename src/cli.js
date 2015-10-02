@@ -52,7 +52,7 @@ export default argv
     describe: singleLineString`JSON string to override the package's
       targetapp_maxVersion for validation. The JSON object should be
       a dict of versions keyed by application GUID. For example,
-      setting a package's max Firefox version to 5.*:
+      setting a package's max Firefox version to 5.*:<newline>
       {"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}": "5.*"}`,
     type: 'string',
   })
@@ -60,7 +60,7 @@ export default argv
     describe: singleLineString`JSON string to override the package's
       targetapp_minVersion for validation. The JSON object should
       be a dict of versions keyed by application GUID. For example,
-      setting a package's min Firefox version to 5.*:
+      setting a package's min Firefox version to 5.*:<newline>
       {"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}": "5.*"}`,
     type: 'string',
   })
@@ -68,7 +68,7 @@ export default argv
     describe: singleLineString`JSON string to run validation tests for
       compatibility with a specific app/version. The JSON object should
       be a dict of version lists keyed by application GUID. For example,
-      running Firefox 6.* compatibility tests:
+      running Firefox 6.* compatibility tests:<newline>
       {"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}": ["6.*"]`,
     type: 'string',
   })
