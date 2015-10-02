@@ -8,6 +8,8 @@
  *
  * Will output: 'foo bar baz whatever'
  *
+ * Sometimes you do want newlines, you can manually add one with `<newline>`.
+ *
  */
 
 export function singleLineString(strings, ...vars) {
@@ -25,5 +27,5 @@ export function singleLineString(strings, ...vars) {
   // Rip out the leading whitespace.
   return lines.map((line) => {
     return line.replace(/^\s+/gm, '');
-  }).join(' ').trim();
+  }).join(' ').trim().replace('<newline>', '\n');
 }
