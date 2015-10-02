@@ -1,8 +1,8 @@
-// Disable warnings about template strings in this file, as we do lots of
-// string concatenation so options/help in the CLI app display nicely.
-// jscs:disable requireTemplateStrings
 import argv from 'yargs';
+
+import { singleLineString } from 'utils';
 import { version } from 'json!../package';
+
 
 
 export default argv
@@ -32,9 +32,8 @@ export default argv
     default: false,
   })
   .option('selfhosted', {
-    describe: 'Indicates that the addon will not be hosted on ' +
-      'addons.mozilla.org. This allows the <em:updateURL> element ' +
-      'to be set.',
+    describe: singleLineString`Indicates that the addon will not be hosted on
+      addons.mozilla.org. This allows the <em:updateURL> element to be set.`,
     type: 'boolean',
     default: false,
   })
@@ -50,30 +49,27 @@ export default argv
     default: false,
   })
   .option('target-maxversion', {
-    describe: "JSON string to override the package's " +
-      'targetapp_maxVersion for validation. The JSON object ' +
-      'should be a dict of versions keyed by application ' +
-      "GUID. For example, setting a package's max Firefox " +
-      'version to 5.*: ' +
-      '{"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}": "5.*"} ',
+    describe: singleLineString`JSON string to override the package's
+      targetapp_maxVersion for validation. The JSON object should be
+      a dict of versions keyed by application GUID. For example,
+      setting a package's max Firefox version to 5.*:
+      {"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}": "5.*"}`,
     type: 'string',
   })
   .option('target-minversion', {
-    describe: "JSON string to override the package's " +
-      'targetapp_minVersion for validation. The JSON object ' +
-      'should be a dict of versions keyed by application ' +
-      "GUID. For example, setting a package's min Firefox " +
-      'version to 5.*: ' +
-      '{"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}": "5.*"}',
+    describe: singleLineString`JSON string to override the package's
+      targetapp_minVersion for validation. The JSON object should
+      be a dict of versions keyed by application GUID. For example,
+      setting a package's min Firefox version to 5.*:
+      {"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}": "5.*"}`,
     type: 'string',
   })
   .option('for-appversions', {
-    describe: 'JSON string to run validation tests for ' +
-      'compatibility with a specific app/version. The JSON ' +
-      'object should be a dict of version lists keyed by ' +
-      'application GUID. For example, running Firefox 6.* ' +
-      'compatibility tests: ' +
-      '{"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}": ["6.*"]',
+    describe: singleLineString`JSON string to run validation tests for
+      compatibility with a specific app/version. The JSON object should
+      be a dict of version lists keyed by application GUID. For example,
+      running Firefox 6.* compatibility tests:
+      {"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}": ["6.*"]`,
     type: 'string',
   })
   // Require one non-option.
