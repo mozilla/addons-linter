@@ -1,5 +1,5 @@
 import { default as Collector } from 'collector';
-
+import { fakeMessageData } from './helpers';
 
 describe('Collector', function() {
 
@@ -21,7 +21,7 @@ describe('Collector', function() {
     assert.throws(() => {
       var FakeMessage = sinon.stub();
       var collection = new Collector();
-      collection._addMessage('whatevar', {}, FakeMessage);
+      collection._addMessage('whatevar', fakeMessageData, FakeMessage);
     }, Error, /Message type "whatevar" not currently collected/);
   });
 
@@ -33,17 +33,17 @@ describe('Collector', function() {
   it('length should reflect number of messages', () => {
     var collection = new Collector();
     assert.equal(collection.length, 0);
-    collection.addError({});
+    collection.addError(fakeMessageData);
     assert.equal(collection.length, 1);
-    collection.addNotice({});
+    collection.addNotice(fakeMessageData);
     assert.equal(collection.length, 2);
-    collection.addWarning({});
+    collection.addWarning(fakeMessageData);
     assert.equal(collection.length, 3);
   });
 
   it('should create an error message', () => {
     var collection = new Collector();
-    collection.addError({});
+    collection.addError(fakeMessageData);
     assert.equal(collection.errors[0].type, 'error');
     assert.equal(collection.notices.length, 0);
     assert.equal(collection.warnings.length, 0);
@@ -51,7 +51,7 @@ describe('Collector', function() {
 
   it('should create a notice message', () => {
     var collection = new Collector();
-    collection.addNotice({});
+    collection.addNotice(fakeMessageData);
     assert.equal(collection.notices[0].type, 'notice');
     assert.equal(collection.errors.length, 0);
     assert.equal(collection.warnings.length, 0);
@@ -59,7 +59,7 @@ describe('Collector', function() {
 
   it('should create a warning message', () => {
     var collection = new Collector();
-    collection.addWarning({});
+    collection.addWarning(fakeMessageData);
     assert.equal(collection.warnings[0].type, 'warning');
     assert.equal(collection.errors.length, 0);
     assert.equal(collection.notices.length, 0);

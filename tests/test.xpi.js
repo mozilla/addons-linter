@@ -2,6 +2,7 @@ import { Readable } from 'stream';
 
 import Xpi from 'xpi';
 import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
+import { DuplicateZipEntryError } from 'exceptions';
 
 const defaultData = {
   compressionMethod: DEFLATE_COMPRESSION,
@@ -14,6 +15,12 @@ const chromeManifestEntry = Object.assign({}, defaultData, {
 });
 
 const installRdfEntry = Object.assign({}, defaultData, {
+  compressedSize: 416,
+  uncompressedSize: 851,
+  fileName: 'install.rdf',
+});
+
+const dupeInstallRdfEntry = Object.assign({}, defaultData, {
   compressedSize: 416,
   uncompressedSize: 851,
   fileName: 'install.rdf',
@@ -73,8 +80,8 @@ describe('Xpi.getMetaData()', function() {
     this.entryStub = onStub
       .withArgs('entry');
 
-    this.endStub = onStub
-      .withArgs('end');
+    this.closeStub = onStub
+      .withArgs('close');
 
     this.openReadStreamStub = sinon.stub();
 
@@ -120,10 +127,10 @@ describe('Xpi.getMetaData()', function() {
     this.openStub.yieldsAsync(null, this.fakeZipFile);
 
     // Call the openReadStream callback
-    this.openReadStreamStub.yields(null);
+    this.openReadStreamStub.yieldsAsync(null);
 
-    // Call the end event callback
-    this.endStub.yields();
+    // Call the close event callback
+    this.closeStub.yieldsAsync();
 
     // If we could use yields multiple times here we would
     // but sinon doesn't support it when the stub is only
@@ -143,13 +150,32 @@ describe('Xpi.getMetaData()', function() {
       });
   });
 
+  it('should reject on duplicate entries', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    this.openStub.yieldsAsync(null, this.fakeZipFile);
+    this.openReadStreamStub.yieldsAsync(null);
+
+    // We'll add the first directly.
+    myXpi.handleEntry(installRdfEntry, this.fakeZipFile);
+
+    // And this one via a yield so we can have it rejected.
+    this.entryStub.yieldsAsync(dupeInstallRdfEntry);
+
+    return myXpi.getMetaData()
+      .then(() => {
+        assert.fail(null, null, 'Unexpected success');
+      })
+      .catch((err) => {
+        assert.instanceOf(err, DuplicateZipEntryError);
+      });
+  });
 
   it('should reject on errors in zipfile.openReadStream()', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
-    this.openReadStreamStub.yields(new Error('openReadStream test'));
-    this.entryStub.yields(chromeManifestEntry);
+    this.openReadStreamStub.yieldsAsync(new Error('openReadStream test'));
+    this.entryStub.yieldsAsync(chromeManifestEntry);
 
     return myXpi.getMetaData()
       .then(() => {
@@ -214,7 +240,7 @@ describe('Xpi.getFileAsStream()', function() {
     };
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
-    this.openReadStreamStub.yields(
+    this.openReadStreamStub.yieldsAsync(
       new Error('getFileAsStream openReadStream test'));
 
     return myXpi.getFileAsStream('install.rdf')

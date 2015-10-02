@@ -1,4 +1,5 @@
 import { default as Message } from 'message';
+import * as constants from 'const';
 
 // "I have a display case ready and waiting for our newest acquisitions!"
 // --Taneleer Tivan
@@ -7,15 +8,17 @@ import { default as Message } from 'message';
 export default class Collector {
 
   constructor() {
-    this.errors = [];
-    this.notices = [];
-    this.warnings = [];
+    for (let type of constants.MESSAGE_TYPES) {
+      this[`${type}s`] = [];
+    }
   }
 
   get length() {
-    return this.errors.length +
-      this.notices.length +
-      this.warnings.length;
+    var len = 0;
+    for (let type of constants.MESSAGE_TYPES) {
+      len += this[`${type}s`].length;
+    }
+    return len;
   }
 
   _addMessage(type, opts, _Message=Message) {
@@ -30,14 +33,15 @@ export default class Collector {
   }
 
   addError(opts) {
-    this._addMessage('error', opts);
+    this._addMessage(constants.VALIDATION_ERROR, opts);
   }
 
   addNotice(opts) {
-    this._addMessage('notice', opts);
+    this._addMessage(constants.VALIDATION_NOTICE, opts);
   }
 
   addWarning(opts) {
-    this._addMessage('warning', opts);
+    this._addMessage(constants.VALIDATION_WARNING, opts);
   }
+
 }

@@ -26,6 +26,11 @@ export default argv
     default: 'text',
     choices: ['json', 'text'],
   })
+  .option('pretty', {
+    describe: 'Prettify JSON output',
+    type: 'boolean',
+    default: false,
+  })
   .option('stack', {
     describe: 'Show stacktraces when errors are thrown',
     type: 'boolean',
