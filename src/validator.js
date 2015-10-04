@@ -7,8 +7,9 @@ import * as messages from 'messages';
 import * as exceptions from 'exceptions';
 import * as constants from 'const';
 
-import Xpi from 'xpi';
+import JavaScriptScanner from 'javascript';
 import Collector from 'collector';
+import Xpi from 'xpi';
 
 export var lstat = promisify(fs.lstat);
 
@@ -22,6 +23,12 @@ export default class Validator {
     this.chalk = new chalk.constructor(
       {enabled: !this.config.boring});
     this.collector = new Collector();
+  }
+
+  addToCollector(message) {
+    var messageType = message.severity.charAt(0).toUpperCase() +
+                      message.severity.slice(1);
+    this.collector[`add${messageType}`](message);
   }
 
   handleError(err) {
@@ -75,6 +82,67 @@ export default class Validator {
     return output;
   }
 
+  scan(_Xpi=Xpi) {
+    return new Promise((resolve, reject) => {
+      this.checkFileExists(this.packagePath)
+        .then(() => {
+          this.xpi = new _Xpi(this.packagePath);
+          return this.xpi.getJSFiles();
+        })
+        .then((jsFiles) => {
+          return this.scanJSFiles(jsFiles);
+        })
+        .then(() => {
+          this.print();
+          resolve();
+        })
+        .catch((err) => {
+          if (err instanceof exceptions.DuplicateZipEntryError) {
+            this.collector.addError(messages.DUPLICATE_XPI_ENTRY);
+            this.print();
+          } else {
+            this.handleError(err);
+          }
+
+          reject(err);
+        });
+    });
+  }
+
+  scanJSFiles(jsFiles) {
+    return new Promise((resolve, reject) => {
+      // Resolve once every file in the XPI has been checked.
+      var jsFilesPromises = [];
+
+      for (let filename of jsFiles) {
+        jsFilesPromises.push(this.scanJSFile(filename));
+      }
+
+      return Promise.all(jsFilesPromises)
+        .then(() => {
+          resolve(this.collector);
+        }).catch(reject);
+    });
+  }
+
+  scanJSFile(filename) {
+    return new Promise((resolve, reject) => {
+      this.xpi.getFileAsString(filename)
+        .then((code) => {
+          let jsScanner = new JavaScriptScanner(code, filename);
+          return jsScanner.scan();
+        })
+        .then((validatorMessages) => {
+          for (let message of validatorMessages) {
+            this.addToCollector(message);
+          }
+
+          resolve();
+        })
+        .catch(reject);
+    });
+  }
+
   toJSON(pretty=false) {
     var args = [this.output];
     if (pretty === true) {
@@ -82,25 +150,5 @@ export default class Validator {
       args.push(4);
     }
     return JSON.stringify.apply(null, args);
-  }
-
-  scan(_Xpi=Xpi) {
-    return this.checkFileExists(this.packagePath)
-      .then(() => {
-        this.xpi = new _Xpi(this.packagePath);
-        return this.xpi.getMetaData();
-      })
-      .then((metadata) => {
-        // Do something useful with package here.
-        console.log(metadata);
-      })
-      .catch((err) => {
-        if (err instanceof exceptions.DuplicateZipEntryError) {
-          this.collector.addError(messages.DUPLICATE_XPI_ENTRY);
-          this.print();
-        } else {
-          return this.handleError(err);
-        }
-      });
   }
 }
