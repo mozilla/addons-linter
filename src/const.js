@@ -20,5 +20,3 @@ export const MESSAGE_TYPES = [
   VALIDATION_NOTICE,
   VALIDATION_WARNING,
 ];
-
-export const SIGNING_SEVERITIES = ['trivial', 'low', 'medium', 'high'];
