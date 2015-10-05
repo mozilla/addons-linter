@@ -83,11 +83,8 @@ describe('Xpi.getMetaData()', function() {
     this.closeStub = onStub
       .withArgs('close');
 
-    this.openReadStreamStub = sinon.stub();
-
     this.fakeZipFile = {
       on: onStub,
-      openReadStream: this.openReadStreamStub,
     };
     this.openStub = sinon.stub();
     this.fakeZipLib = {
@@ -126,23 +123,21 @@ describe('Xpi.getMetaData()', function() {
     // Return the fake zip to the open callback.
     this.openStub.yieldsAsync(null, this.fakeZipFile);
 
-    // Call the openReadStream callback
-    this.openReadStreamStub.yieldsAsync(null);
-
-    // Call the close event callback
-    this.closeStub.yieldsAsync();
-
     // If we could use yields multiple times here we would
     // but sinon doesn't support it when the stub is only
     // invoked once (e.g. to init the event handler).
     var onEventsSubscribed = () => {
-      // Directly call the 'entry' event handler as if
+      // Directly call the 'entry' event callback as if
       // we are actually processing entries in a
       // zip.
-      myXpi.handleEntry(chromeManifestEntry, this.fakeZipFile);
-      myXpi.handleEntry(chromeContentDir, this.fakeZipFile);
-      myXpi.handleEntry(installRdfEntry, this.fakeZipFile);
+      var entryCallback = this.entryStub.firstCall.args[1];
+      entryCallback.call(null, chromeManifestEntry);
+      entryCallback.call(null, chromeContentDir);
+      entryCallback.call(null, installRdfEntry);
     };
+
+    // Call the close event callback
+    this.closeStub.yieldsAsync();
 
     return myXpi.getMetaData(onEventsSubscribed)
       .then((metadata) => {
@@ -153,36 +148,19 @@ describe('Xpi.getMetaData()', function() {
   it('should reject on duplicate entries', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     this.openStub.yieldsAsync(null, this.fakeZipFile);
-    this.openReadStreamStub.yieldsAsync(null);
 
-    // We'll add the first directly.
-    myXpi.handleEntry(installRdfEntry, this.fakeZipFile);
+    var onEventsSubscribed = () => {
+      var entryCallback = this.entryStub.firstCall.args[1];
+      entryCallback.call(null, installRdfEntry);
+      entryCallback.call(null, dupeInstallRdfEntry);
+    };
 
-    // And this one via a yield so we can have it rejected.
-    this.entryStub.yieldsAsync(dupeInstallRdfEntry);
-
-    return myXpi.getMetaData()
+    return myXpi.getMetaData(onEventsSubscribed)
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
       .catch((err) => {
         assert.instanceOf(err, DuplicateZipEntryError);
-      });
-  });
-
-  it('should reject on errors in zipfile.openReadStream()', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
-
-    this.openStub.yieldsAsync(null, this.fakeZipFile);
-    this.openReadStreamStub.yieldsAsync(new Error('openReadStream test'));
-    this.entryStub.yieldsAsync(chromeManifestEntry);
-
-    return myXpi.getMetaData()
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
-      .catch((err) => {
-        assert.include(err.message, 'openReadStream test');
       });
   });
 
