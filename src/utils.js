@@ -27,3 +27,12 @@ export function singleLineString(strings, ...vars) {
     return line.replace(/^\s+/gm, '');
   }).join(' ').trim();
 }
+
+/*
+ * Gettext utils. No-op until we have proper
+ * a proper l10n solution.
+ *
+ */
+export function gettext(str) {
+  return str;
+}

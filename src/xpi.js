@@ -1,5 +1,8 @@
 import yauzl from 'yauzl';
 
+import { DuplicateZipEntryError } from 'exceptions';
+
+
 /*
  * Simple Promise wrapper for the Yauzl unzipping lib to unpack add-on .xpis.
  * Note: We're using the autoclose feature of yauzl as a result every operation
@@ -15,6 +18,7 @@ export default class Xpi {
     this.filename = filename;
     this.zipLib = zipLib;
     this.metadata = {};
+    this.entries = [];
   }
 
   handleEntry(entry, zipfile, reject) {
@@ -26,6 +30,11 @@ export default class Xpi {
       if (err) {
         return reject(err);
       }
+      if (this.entries.indexOf(entry.fileName) > -1) {
+        return reject(new DuplicateZipEntryError(
+          `Entry "${entry.fileName}" has already been seen`));
+      }
+      this.entries.push(entry.fileName);
       this.metadata[entry.fileName] = entry;
     });
   }
@@ -55,8 +64,13 @@ export default class Xpi {
             this.handleEntry(entry, zipfile, reject);
           });
           // When the last entry has been processed
-          // cache the metadata and resolve the promise.
-          zipfile.on('end', () => resolve(this.metadata));
+          // and the fd is closed resolve the promise.
+          // Note: we cannot use 'end' here as 'end' is fired
+          // after the last entry event is emitted and streams
+          // may still be being read with openReadStream.
+          zipfile.on('close', () => {
+            resolve(this.metadata);
+          });
           if (_onEventsSubscribed) {
             // Run optional callback when we know the event handlers
             // have been inited. Useful for testing.

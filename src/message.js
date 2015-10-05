@@ -1,30 +1,41 @@
-import { MESSAGE_TYPES, SIGNING_SEVERITIES } from 'const';
+import { MESSAGE_TYPES } from 'const';
+import { singleLineString } from 'utils';
 
 
-// These are the optional fields we expect to pull out of
-// the opts object passed to the Message constructor.
-export var fields = [
-  'id',
+// These are the props we expect to pull out of
+// the data object passed to the Message constructor.
+export var props = [
+  'code',
   'message',
   'description',
+  'column',
   'file',
   'line',
-  'column',
-  'for_appversions',
-  'compatibility_type',
-  'signing_help',
-  'signing_severity',
 ];
 
+export var requiredProps = [
+  'code',
+  'message',
+  'description',
+];
 
 export default class Message {
 
-  constructor(type, opts={}) {
+  constructor(type, data={}) {
     this.type = type;
-    for (let field of fields) {
-      this[field] = opts[field];
+    for (let prop of props) {
+      this[prop] = data[prop];
     }
-    this.editorsOnly = opts.editorsOnly || false;
+    var missingProps = [];
+    for (let prop of requiredProps) {
+      if (typeof this[prop] === 'undefined') {
+        missingProps.push(prop);
+      }
+    }
+    if (missingProps.length) {
+      throw new Error(singleLineString`Message data object is missing the
+        following props: ${missingProps.join(', ')}`);
+    }
   }
 
   get type() {
@@ -33,24 +44,10 @@ export default class Message {
 
   set type(type) {
     if (MESSAGE_TYPES.indexOf(type) === -1) {
-      throw new Error(
-        `Message type "${type}" is not one of ${MESSAGE_TYPES.join(', ')}`);
+      throw new Error(singleLineString`Message type "${type}"
+        is not one of ${MESSAGE_TYPES.join(', ')}`);
     }
     this._type = type;
   }
 
-  get signing_severity() {
-    return this._signing_severity;
-  }
-
-  set signing_severity(severity) {
-    if (typeof severity !== 'undefined') {
-      if (SIGNING_SEVERITIES.indexOf(severity) === -1) {
-        throw new Error(
-          `Severity "${severity}" is not one of ` +
-          `${SIGNING_SEVERITIES.join(', ')}`);
-      }
-    }
-    this._signing_severity = severity;
-  }
 }

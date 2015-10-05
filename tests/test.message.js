@@ -1,4 +1,5 @@
-import { default as Message, fields } from 'message';
+import { default as Message, props } from 'message';
+import { fakeMessageData } from './helpers';
 
 /*eslint no-unused-vars:0*/
 
@@ -16,32 +17,28 @@ describe('Message', function() {
     }, Error, /Message type "awooga" is not/);
   });
 
-  it('should throw on incorrect signing_severity', () => {
-    assert.throws(() => {
-      var MyMessage = new Message('error',
-        {signing_severity: 'whatever'});
-    }, Error, /Severity "whatever" is not/);
-  });
-
-  it('should define all expected fields', () => {
-    var fakeOpts = {};
-    for (let field of fields) {
-      fakeOpts[field] = field;
+  it('should define all expected props', () => {
+    var fakeData = {};
+    for (let prop of props) {
+      fakeData[prop] = prop;
     }
-    fakeOpts.signing_severity = 'medium';
-    var MyMessage = new Message('error', fakeOpts);
-    for (let field of fields) {
-      if (field === 'signing_severity') {
-        assert.equal(MyMessage.signing_severity, 'medium');
-      } else {
-        assert.equal(MyMessage[field], field);
-      }
+    var MyMessage = new Message('error', fakeData);
+    for (let prop of props) {
+      assert.equal(MyMessage[prop], prop);
     }
   });
 
   it ("shouldn't define random opts", () => {
-    var MyMessage = new Message('error', {random: 'foo'});
+    var MyMessage = new Message('error',
+      Object.assign({}, fakeMessageData, {random: 'foo'}));
     assert.notEqual(MyMessage.random, 'foo');
+  });
+
+  it('should throw on missing required prop', () => {
+    assert.throws(() => {
+      var MyMessage = new Message('error',
+        Object.assign({}, {description: 'foo'}));
+    }, Error, /Message data object is missing the following props/);
   });
 
 });
