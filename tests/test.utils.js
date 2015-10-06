@@ -1,6 +1,30 @@
 import * as utils from 'utils';
 
 
+describe('utils.endsWith()', function() {
+
+  it('returns true if a string ends with a specified string', () => {
+    assert.ok(utils.endsWith('Matthew', 'ew'));
+  });
+
+  it('returns false if a string does not end with a specified string', () => {
+    assert.notOk(utils.endsWith('Matthew', 'Mac'));
+  });
+
+  it('returns true if a string ends with itself', () => {
+    assert.ok(utils.endsWith('Matthew', 'Matthew'));
+  });
+
+  it('returns true if a strange character is present', () => {
+    assert.ok(utils.endsWith('G chord! 🎸', '🎸'));
+  });
+
+  it("casts to strings if strings aren't used", () => {
+    assert.ok(utils.endsWith(222, '22'));
+    assert.ok(utils.endsWith('Hello!!11', 11));
+  });
+});
+
 describe('utils.singleLineString()', function() {
 
   it('reduce a multiline template string into one string', () => {

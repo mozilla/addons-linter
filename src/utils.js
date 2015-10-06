@@ -1,4 +1,14 @@
 /*
+ * Implementation of String.endsWith, which errors in node.
+ *
+ */
+export function endsWith(string, suffix) {
+  string = String(string);
+  suffix = String(suffix);
+  return string.indexOf(suffix, string.length - suffix.length) !== -1;
+}
+
+/*
  * Template tag for removing whitespace and new lines
  * in order to be able to use multiline template strings
  * as a single string.

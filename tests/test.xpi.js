@@ -1,5 +1,6 @@
 import { Readable } from 'stream';
 
+import { endsWith } from 'utils';
 import Xpi from 'xpi';
 import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
 import { DuplicateZipEntryError } from 'exceptions';
@@ -24,6 +25,18 @@ const dupeInstallRdfEntry = Object.assign({}, defaultData, {
   compressedSize: 416,
   uncompressedSize: 851,
   fileName: 'install.rdf',
+});
+
+const jsMainFileEntry = Object.assign({}, defaultData, {
+  compressedSize: 41,
+  uncompressedSize: 85,
+  fileName: 'main.js',
+});
+
+const jsSecondaryFileEntry = Object.assign({}, defaultData, {
+  compressedSize: 456,
+  uncompressedSize: 851,
+  fileName: 'secondary.js',
 });
 
 const chromeContentDir = {
@@ -99,17 +112,16 @@ describe('Xpi.getMetaData()', function() {
     assert.equal(Object.keys(myXpi.metadata).length, 0);
   });
 
-  it('should return cached data when available', (done) => {
+  it('should return cached data when available', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.metadata = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
-    myXpi.getMetaData()
+    return myXpi.getMetaData()
       .then((metadata) => {
         assert.deepEqual(metadata, myXpi.metadata);
         assert.notOk(this.openStub.called);
-        done();
       });
   });
 
@@ -230,7 +242,7 @@ describe('Xpi.getFileAsStream()', function() {
       });
   });
 
-  it('should resolve with a readable stream', (done) => {
+  it('should resolve with a readable stream', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.metadata = {
       'install.rdf': installRdfEntry,
@@ -246,7 +258,7 @@ describe('Xpi.getFileAsStream()', function() {
 
     this.openReadStreamStub.yields(null, rstream);
 
-    myXpi.getFileAsStream('install.rdf')
+    return myXpi.getFileAsStream('install.rdf')
       .then((readStream) => {
         var chunks = '';
         readStream
@@ -260,8 +272,70 @@ describe('Xpi.getFileAsStream()', function() {
             var [chunk1, chunk2] = chunks.split('\n');
             assert.equal(chunk1, 'line one');
             assert.equal(chunk2, 'line two');
-            done();
           });
+      });
+  });
+
+  it('should resolve with a string', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    myXpi.metadata = {
+      'install.rdf': installRdfEntry,
+      'chrome.manifest': chromeManifestEntry,
+    };
+
+    this.openStub.yieldsAsync(null, this.fakeZipFile);
+
+    var rstream = new Readable();
+    rstream.push('line one\n');
+    rstream.push('line two');
+    rstream.push(null);
+
+    this.openReadStreamStub.yields(null, rstream);
+
+    return myXpi.getFileAsString('install.rdf')
+      .then((string) => {
+        assert.equal(string, 'line one\nline two');
+      });
+  });
+
+  it('should reject if error in openReadStream from readAsString', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    myXpi.metadata = {
+      'install.rdf': installRdfEntry,
+      'chrome.manifest': chromeManifestEntry,
+    };
+
+    this.openStub.yieldsAsync(null, this.fakeZipFile);
+    this.openReadStreamStub.yields(
+      new Error('getFileAsString openReadStream test'));
+
+    return myXpi.getFileAsString('install.rdf')
+      .then(() => {
+        assert.fail(null, null, 'Unexpected success');
+      })
+      .catch((err) => {
+        assert.include(err.message, 'getFileAsString openReadStream test');
+      });
+  });
+
+  it('should return all JS files', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    myXpi.metadata = {
+      'install.rdf': installRdfEntry,
+      'chrome.manifest': chromeManifestEntry,
+      'main.js': jsMainFileEntry,
+      'secondary.js': jsSecondaryFileEntry,
+    };
+
+    return myXpi.getJSFiles()
+      .then((jsFiles) => {
+        assert.equal(jsFiles.length, 2);
+        assert.equal(jsFiles[0], 'main.js');
+        assert.equal(jsFiles[1], 'secondary.js');
+
+        for (let i = 0; i < jsFiles.length; i++) {
+          assert.ok(endsWith(jsFiles[i], '.js'));
+        }
       });
   });
 });
