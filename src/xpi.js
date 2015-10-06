@@ -21,24 +21,6 @@ export default class Xpi {
     this.entries = [];
   }
 
-  handleEntry(entry, zipfile, reject) {
-    if (/\/$/.test(entry.fileName)) {
-      return;
-    }
-    // Collect metadata for files.
-    zipfile.openReadStream(entry, (err) => {
-      if (err) {
-        return reject(err);
-      }
-      if (this.entries.indexOf(entry.fileName) > -1) {
-        return reject(new DuplicateZipEntryError(
-          `Entry "${entry.fileName}" has already been seen`));
-      }
-      this.entries.push(entry.fileName);
-      this.metadata[entry.fileName] = entry;
-    });
-  }
-
   open() {
     return new Promise((resolve, reject) => {
       this.zipLib.open(this.filename, (err, zipfile) => {
@@ -48,6 +30,18 @@ export default class Xpi {
         resolve(zipfile);
       });
     });
+  }
+
+  handleEntry(entry, reject) {
+    if (/\/$/.test(entry.fileName)) {
+      return;
+    }
+    if (this.entries.indexOf(entry.fileName) > -1) {
+      reject(new DuplicateZipEntryError(
+        `Entry "${entry.fileName}" has already been seen`));
+    }
+    this.entries.push(entry.fileName);
+    this.metadata[entry.fileName] = entry;
   }
 
   getMetaData(_onEventsSubscribed) {
@@ -60,9 +54,11 @@ export default class Xpi {
 
       return this.open()
         .then((zipfile) => {
+
           zipfile.on('entry', (entry) => {
-            this.handleEntry(entry, zipfile, reject);
+            this.handleEntry(entry, reject);
           });
+
           // When the last entry has been processed
           // and the fd is closed resolve the promise.
           // Note: we cannot use 'end' here as 'end' is fired
@@ -71,6 +67,7 @@ export default class Xpi {
           zipfile.on('close', () => {
             resolve(this.metadata);
           });
+
           if (_onEventsSubscribed) {
             // Run optional callback when we know the event handlers
             // have been inited. Useful for testing.
@@ -79,7 +76,7 @@ export default class Xpi {
             }
           }
         })
-        .catch((err) => reject(err));
+        .catch(reject);
     });
   }
 
