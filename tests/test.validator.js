@@ -1,5 +1,6 @@
 import Validator from 'validator';
 
+import * as constants from 'const';
 import * as messages from 'messages';
 import { fakeMessageData } from './helpers';
 import { DuplicateZipEntryError } from 'exceptions';
@@ -176,4 +177,65 @@ describe('Validator', function() {
       });
   });
 
+  it('should return the correct chalk func', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    assert.deepEqual(addonValidator.colorize(
+      constants.VALIDATION_ERROR)._styles, ['red']);
+    assert.deepEqual(addonValidator.colorize(
+      constants.VALIDATION_NOTICE)._styles, ['blue']);
+    assert.deepEqual(addonValidator.colorize(
+      constants.VALIDATION_WARNING)._styles, ['yellow']);
+  });
+
+  it('should throw if invalid type is passed to colorize', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    assert.throws(() => {
+      addonValidator.colorize('whatever');
+    }, Error, /colorize passed invalid type/);
+  });
+
+  it('should have error in textOutput()', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.collector.addError({
+      code: 'WHATEVER_ERROR',
+      message: 'whatever error message',
+      description: 'whatever error description',
+    });
+    var text = addonValidator.textOutput();
+    assert.equal(addonValidator.output.summary.errors, 1);
+    assert.include(text, 'Validation Summary:');
+    assert.include(text, 'WHATEVER_ERROR');
+    assert.include(text, 'whatever error message');
+    assert.include(text, 'whatever error description');
+  });
+
+  it('should have notice message in textOutput()', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.collector.addNotice({
+      code: 'WHATEVER_NOTICE',
+      message: 'whatever notice message',
+      description: 'whatever notice description',
+    });
+    var text = addonValidator.textOutput();
+    assert.equal(addonValidator.output.summary.notices, 1);
+    assert.include(text, 'Validation Summary:');
+    assert.include(text, 'WHATEVER_NOTICE');
+    assert.include(text, 'whatever notice message');
+    assert.include(text, 'whatever notice description');
+  });
+
+  it('should have warning in textOutput()', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.collector.addWarning({
+      code: 'WHATEVER_WARNING',
+      message: 'whatever warning message',
+      description: 'whatever warning description',
+    });
+    var text = addonValidator.textOutput();
+    assert.equal(addonValidator.output.summary.warnings, 1);
+    assert.include(text, 'Validation Summary:');
+    assert.include(text, 'WHATEVER_WARNING');
+    assert.include(text, 'whatever warning message');
+    assert.include(text, 'whatever warning description');
+  });
 });

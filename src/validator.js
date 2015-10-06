@@ -1,11 +1,13 @@
 import * as fs from 'fs';
 
-import promisify from 'es6-promisify';
+import columnify from 'columnify';
 import chalk from 'chalk';
+import promisify from 'es6-promisify';
 
-import * as messages from 'messages';
-import * as exceptions from 'exceptions';
 import * as constants from 'const';
+import * as exceptions from 'exceptions';
+import * as messages from 'messages';
+import { gettext as _, singleLineString } from 'utils';
 
 import JavaScriptScanner from 'javascript';
 import Collector from 'collector';
@@ -31,6 +33,20 @@ export default class Validator {
     this.collector[`add${messageType}`](message);
   }
 
+  colorize(type) {
+    switch (type) {
+      case constants.VALIDATION_ERROR:
+        return this.chalk.red;
+      case constants.VALIDATION_WARNING:
+        return this.chalk.yellow;
+      case constants.VALIDATION_NOTICE:
+        return this.chalk.blue;
+      default:
+        throw new Error(singleLineString`colorize passed invalid type.
+          Should be one of ${constants.MESSAGE_TYPES.join(', ')}`);
+    }
+  }
+
   handleError(err) {
     if (this.config.stack === true) {
       console.error(err.stack);
@@ -43,8 +59,82 @@ export default class Validator {
     if (this.config.output === 'json') {
       console.log(this.toJSON(this.config.pretty));
     } else {
-      console.log('Text output not yet implemented!');
+      console.log(this.textOutput());
     }
+  }
+
+  toJSON(pretty=false) {
+    var args = [this.output];
+    if (pretty === true) {
+      args.push(null);
+      args.push(4);
+    }
+    return JSON.stringify.apply(null, args);
+  }
+
+  textOutput() {
+    var out = [];
+
+    out.push(_('Validation Summary:'));
+    out.push('');
+    out.push(columnify(this.output.summary, {
+      showHeaders: false,
+      minWidth: 15,
+    }));
+    out.push('');
+
+    for (let type of constants.MESSAGE_TYPES) {
+      /*eslint-disable no-loop-func */
+      var messageType = `${type}s`;
+      if (this.output[messageType].length) {
+        out.push(`${messageType.toUpperCase()}:`);
+        out.push('');
+        out.push(columnify(this.output[messageType], {
+          maxWidth: 35,
+          columns: ['code', 'message', 'description'],
+          config: {
+            code: {
+              dataTransform: (value) => {
+                return this.colorize(type)(value);
+              },
+              headingTransform: () => {
+                return _('Code');
+              },
+              minWidth: 25,
+            },
+            description: {
+              headingTransform: () => {
+                return _('Description');
+              },
+              maxWidth: 60,
+            },
+            message: {
+              headingTransform: () => {
+                return _('Message');
+              },
+              minWidth: 35,
+            },
+          },
+
+        }));
+      }
+      /*eslint-enable no-loop-func */
+    }
+
+    return out.join('\n');
+  }
+
+  get output() {
+    var output = {
+      count: this.collector.length,
+      summary: {},
+    };
+    for (let type of constants.MESSAGE_TYPES) {
+      var messageType = `${type}s`;
+      output[messageType] = this.collector[messageType];
+      output.summary[messageType] = this.collector[messageType].length;
+    }
+    return output;
   }
 
   checkFileExists(filepath, _lstat=lstat) {
@@ -67,19 +157,6 @@ export default class Validator {
           }
         });
     });
-  }
-
-  get output() {
-    var output = {
-      count: this.collector.length,
-      summary: {},
-    };
-    for (let type of constants.MESSAGE_TYPES) {
-      var messageType = `${type}s`;
-      output[messageType] = this.collector[messageType];
-      output.summary[messageType] = this.collector[messageType].length;
-    }
-    return output;
   }
 
   scan(_Xpi=Xpi) {
@@ -141,14 +218,5 @@ export default class Validator {
         })
         .catch(reject);
     });
-  }
-
-  toJSON(pretty=false) {
-    var args = [this.output];
-    if (pretty === true) {
-      args.push(null);
-      args.push(4);
-    }
-    return JSON.stringify.apply(null, args);
   }
 }
