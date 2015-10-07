@@ -84,14 +84,14 @@ export default class Validator {
     out.push('');
 
     for (let type of constants.MESSAGE_TYPES) {
-      /*eslint-disable no-loop-func */
       var messageType = `${type}s`;
       if (this.output[messageType].length) {
         out.push(`${messageType.toUpperCase()}:`);
         out.push('');
         out.push(columnify(this.output[messageType], {
           maxWidth: 35,
-          columns: ['code', 'message', 'description'],
+          columns: ['code', 'message', 'description', 'file', 'line', 'column'],
+          columnSplitter: '   ',
           config: {
             code: {
               dataTransform: (value) => {
@@ -100,27 +100,39 @@ export default class Validator {
               headingTransform: () => {
                 return _('Code');
               },
-              minWidth: 25,
-            },
-            description: {
-              headingTransform: () => {
-                return _('Description');
-              },
-              maxWidth: 60,
+              maxWidth: 25,
             },
             message: {
               headingTransform: () => {
                 return _('Message');
               },
-              minWidth: 35,
+              maxWidth: 30,
+            },
+            description: {
+              headingTransform: () => {
+                return _('Description');
+              },
+              maxWidth: 40,
+            },
+            file: {
+              headingTransform: () => {
+                return _('File');
+              },
+            },
+            line: {
+              headingTransform: () => {
+                return _('Line');
+              },
+            },
+            column: {
+              headingTransform: () => {
+                return _('Column');
+              },
             },
           },
-
         }));
       }
-      /*eslint-enable no-loop-func */
     }
-
     return out.join('\n');
   }
 
