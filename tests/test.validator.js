@@ -8,6 +8,13 @@ import { DuplicateZipEntryError } from 'exceptions';
 
 describe('Validator', function() {
 
+  it('should throw if scanner type is not available', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    assert.throws(() => {
+      addonValidator.getScanner('foo.whatever');
+    }, Error, /No scanner available/);
+  });
+
   it('should detect an invalid file with ENOENT', () => {
     var addonValidator = new Validator({_: ['foo']});
     addonValidator.handleError = sinon.stub();
@@ -109,7 +116,7 @@ describe('Validator', function() {
   it('should scan all JS files', () => {
     var addonValidator = new Validator({_: ['tests/example.xpi']});
 
-    var getFileSpy = sinon.spy(addonValidator, 'scanJSFile');
+    var getFileSpy = sinon.spy(addonValidator, 'scanFile');
 
     return addonValidator.scan()
       .then(() => {
@@ -117,33 +124,49 @@ describe('Validator', function() {
       });
   });
 
-  it('should throw an error if the JS scan fails (file not found)', () => {
+  it('should see an error if scanFiles() blows up', () => {
     var addonValidator = new Validator({_: ['foo']});
+    addonValidator.checkFileExists = () => Promise.resolve();
+    addonValidator.scanFiles = () => {
+      return Promise.reject(new Error('scanFiles explosion'));
+    };
 
-    addonValidator.scanJSFiles = () => Promise.reject();
+    class FakeXpi {
+      getFilesByExt() {
+        return Promise.resolve(['foo.js', 'bar.js']);
+      }
+    }
 
-    return addonValidator.scan()
+    return addonValidator.scan(FakeXpi)
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
       .catch((err) => {
         assert.instanceOf(err, Error);
-        assert.include(err.message, 'Path "foo" is not a file');
+        assert.include(err.message, 'scanFiles explosion');
       });
   });
 
-  it('should bubble up the error if trying to scan a missing file', () => {
+  it('should bubble up the error if scanFile() blows up', () => {
     var addonValidator = new Validator({_: ['foo']});
+    addonValidator.checkFileExists = () => Promise.resolve();
+    addonValidator.scanFile = () => {
+      return Promise.reject(new Error('scanFile explosion'));
+    };
 
-    addonValidator.scanJSFile = () => Promise.reject();
+    class FakeXpi {
+      getFilesByExt() {
+        return Promise.resolve(['foo.js', 'bar.js']);
+      }
+    }
 
-    return addonValidator.scan()
+    return addonValidator.scan(FakeXpi)
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
       .catch((err) => {
         assert.instanceOf(err, Error);
-        assert.include(err.message, 'Path "foo" is not a file');
+        assert.include(err.message, 'scanFile explosion');
       });
   });
 
@@ -157,7 +180,7 @@ describe('Validator', function() {
         return Promise.reject(
           new DuplicateZipEntryError('Darnit the zip has dupes!'));
       }
-      getJSFiles() {
+      getFilesByExt() {
         return new Promise((resolve, reject) => {
           return this.getMetaData()
             .then(resolve)

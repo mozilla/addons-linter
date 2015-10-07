@@ -33,11 +33,11 @@ export default class JavaScriptScanner {
           code: message.ruleId.toUpperCase(),
           column: message.column,
           description: messages[message.ruleId.toUpperCase()].description,
-          sourceCode: message.source,
           file: this.filename,
           line: message.line,
           message: messages[message.ruleId.toUpperCase()].message,
-          severity: ESLINT_TYPES[message.severity],
+          sourceCode: message.source,
+          type: ESLINT_TYPES[message.severity],
         });
       }
 

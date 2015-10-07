@@ -19,7 +19,6 @@ export function endsWith(string, suffix) {
  * Will output: 'foo bar baz whatever'
  *
  */
-
 export function singleLineString(strings, ...vars) {
   // Interweave the strings with the
   // substitution vars first.

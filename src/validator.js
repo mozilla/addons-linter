@@ -1,3 +1,4 @@
+import { extname } from 'path';
 import * as fs from 'fs';
 
 import columnify from 'columnify';
@@ -9,8 +10,8 @@ import * as exceptions from 'exceptions';
 import * as messages from 'messages';
 import { gettext as _, singleLineString } from 'utils';
 
-import JavaScriptScanner from 'javascript';
 import Collector from 'collector';
+import JavaScriptScanner from 'javascript';
 import Xpi from 'xpi';
 
 export var lstat = promisify(fs.lstat);
@@ -25,12 +26,6 @@ export default class Validator {
     this.chalk = new chalk.constructor(
       {enabled: !this.config.boring});
     this.collector = new Collector();
-  }
-
-  addToCollector(message) {
-    var messageType = message.severity.charAt(0).toUpperCase() +
-                      message.severity.slice(1);
-    this.collector[`add${messageType}`](message);
   }
 
   colorize(type) {
@@ -171,15 +166,62 @@ export default class Validator {
     });
   }
 
+  scanFiles(files) {
+    return new Promise((resolve, reject) => {
+      // Resolve once every file in the XPI has been checked.
+      var promises = [];
+      for (let filename of files) {
+        promises.push(this.scanFile(filename));
+      }
+      return Promise.all(promises)
+        .then(() => {
+          resolve();
+        }).catch(reject);
+    });
+  }
+
+  getScanner(filename) {
+    switch (extname(filename)) {
+      case '.js':
+        return JavaScriptScanner;
+      default:
+        throw new Error('No scanner available for ${filename}');
+    }
+  }
+
+  scanFile(filename) {
+    return new Promise((resolve, reject) => {
+      // We might have to refactor this if we need to
+      // deal with streams *and* strings. But let's wait until that
+      // point comes. So far it seems most valiators want strings.
+      this.xpi.getFileAsString(filename)
+        .then((code) => {
+          let scanner = new (this.getScanner(filename))(code, filename);
+          return scanner.scan();
+        })
+        // messages should be a list of raw message data objects.
+        .then((messages) => {
+          for (let message of messages) {
+            if (typeof message.type === 'undefined') {
+              throw new Error('message.type must be defined');
+            }
+            this.collector._addMessage(message.type, message);
+          }
+          resolve();
+        })
+        .catch(reject);
+    });
+  }
+
   scan(_Xpi=Xpi) {
     return new Promise((resolve, reject) => {
       this.checkFileExists(this.packagePath)
         .then(() => {
           this.xpi = new _Xpi(this.packagePath);
-          return this.xpi.getJSFiles();
+          return this.xpi.getFilesByExt('.js');
         })
         .then((jsFiles) => {
-          return this.scanJSFiles(jsFiles);
+          return this.scanFiles(jsFiles);
         })
         .then(() => {
           this.print();
@@ -192,43 +234,8 @@ export default class Validator {
           } else {
             this.handleError(err);
           }
-
           reject(err);
         });
-    });
-  }
-
-  scanJSFiles(jsFiles) {
-    return new Promise((resolve, reject) => {
-      // Resolve once every file in the XPI has been checked.
-      var jsFilesPromises = [];
-
-      for (let filename of jsFiles) {
-        jsFilesPromises.push(this.scanJSFile(filename));
-      }
-
-      return Promise.all(jsFilesPromises)
-        .then(() => {
-          resolve(this.collector);
-        }).catch(reject);
-    });
-  }
-
-  scanJSFile(filename) {
-    return new Promise((resolve, reject) => {
-      this.xpi.getFileAsString(filename)
-        .then((code) => {
-          let jsScanner = new JavaScriptScanner(code, filename);
-          return jsScanner.scan();
-        })
-        .then((validatorMessages) => {
-          for (let message of validatorMessages) {
-            this.addToCollector(message);
-          }
-
-          resolve();
-        })
-        .catch(reject);
     });
   }
 }
