@@ -29,6 +29,12 @@ export default class JavaScriptScanner {
       var report = eslint.executeOnText(this.code, this.filename);
 
       for (let message of report.results[0].messages) {
+        // Fatal error messages (like SyntaxErrors) are a bit different, we
+        // need to handle them specially.
+        if (message.fatal) {
+          message.ruleId = messages.JS_SYNTAX_ERROR.code;
+        }
+
         validatorMessages.push({
           code: message.ruleId.toUpperCase(),
           column: message.column,

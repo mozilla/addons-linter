@@ -73,7 +73,7 @@ describe('JS Code Checker', function() {
     return jsScanner.scan()
       .then((validationMessages) => {
         assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].id, 'mozIndexedDB_possible');
+        assert.equal(validationMessages[0].id, 'OBFUSCATION');
         assert.equal(validationMessages[0].severity, VALIDATION_WARNING);
       });
   });
@@ -88,7 +88,7 @@ describe('JS Code Checker', function() {
     return jsScanner.scan()
       .then((validationMessages) => {
         assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].id, 'mozIndexedDB_possible');
+        assert.equal(validationMessages[0].id, 'OBFUSCATION');
         assert.equal(validationMessages[0].severity, VALIDATION_WARNING);
       });
   });
@@ -104,7 +104,7 @@ describe('JS Code Checker', function() {
     return jsScanner.scan()
       .then((validationMessages) => {
         assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].id, 'mozIndexedDB_possible');
+        assert.equal(validationMessages[0].id, 'OBFUSCATION');
         assert.equal(validationMessages[0].severity, VALIDATION_WARNING);
       });
   });
@@ -121,8 +121,30 @@ describe('JS Code Checker', function() {
     return jsScanner.scan()
       .then((validationMessages) => {
         assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].id, 'mozIndexedDB_possible');
+        assert.equal(validationMessages[0].id, 'OBFUSCATION');
         assert.equal(validationMessages[0].severity, VALIDATION_WARNING);
+      });
+  });
+
+  it('should create an error message when encountering a syntax error', () => {
+    var code = 'var m = "d;';
+    var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+
+    return jsScanner.scan()
+      .then((validationMessages) => {
+        assert.equal(validationMessages[0].id, messages.JS_SYNTAX_ERROR.code);
+        assert.equal(validationMessages[0].severity, VALIDATION_ERROR);
+
+        // Test another error for good measure.
+        code = 'var aVarThatDoesnt != exist;';
+        jsScanner = new JavaScriptScanner(code, 'badcode.js');
+
+        return jsScanner.scan()
+          .then((moreValidationMessages) => {
+            assert.equal(moreValidationMessages[0].id,
+                         messages.JS_SYNTAX_ERROR.code);
+            assert.equal(moreValidationMessages[0].severity, VALIDATION_ERROR);
+          });
       });
   });
 
