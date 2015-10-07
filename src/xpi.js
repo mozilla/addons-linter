@@ -3,6 +3,7 @@ import yauzl from 'yauzl';
 import { DuplicateZipEntryError } from 'exceptions';
 import { endsWith } from 'utils';
 
+
 /*
  * Simple Promise wrapper for the Yauzl unzipping lib to unpack add-on .xpis.
  * Note: We're using the autoclose feature of yauzl as a result every operation
@@ -118,21 +119,23 @@ export default class Xpi {
     });
   }
 
-  getJSFiles() {
+  getFilesByExt(ext) {
     return new Promise((resolve, reject) => {
+
+      if (ext.indexOf('.') !== 0) {
+        throw new Error("File extension must start with '.'");
+      }
+
       return this.getMetaData()
         .then((metadata) => {
-          let jsFiles = [];
+          let files = [];
 
           for (let filename in metadata) {
-            // TODO: Check for JS files better than this (follow require path)
-            // of add-on?
-            if (endsWith(filename, '.js')) {
-              jsFiles.push(filename);
+            if (endsWith(filename, ext)) {
+              files.push(filename);
             }
           }
-
-          resolve(jsFiles);
+          resolve(files);
         })
         .catch(reject);
     });

@@ -317,6 +317,15 @@ describe('Xpi.getFileAsStream()', function() {
         assert.include(err.message, 'getFileAsString openReadStream test');
       });
   });
+});
+
+describe('Xpi.getFileAsStream()', function() {
+
+  beforeEach(() => {
+    this.fakeZipLib = {
+      open: this.openStub,
+    };
+  });
 
   it('should return all JS files', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
@@ -327,7 +336,7 @@ describe('Xpi.getFileAsStream()', function() {
       'secondary.js': jsSecondaryFileEntry,
     };
 
-    return myXpi.getJSFiles()
+    return myXpi.getFilesByExt('.js')
       .then((jsFiles) => {
         assert.equal(jsFiles.length, 2);
         assert.equal(jsFiles[0], 'main.js');
@@ -338,4 +347,26 @@ describe('Xpi.getFileAsStream()', function() {
         }
       });
   });
+
+  it('should return all CSS files', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    myXpi.metadata = {
+      'other.css': installRdfEntry,
+      'chrome.manifest': chromeManifestEntry,
+      'styles.css': jsMainFileEntry,
+      'secondary.js': jsSecondaryFileEntry,
+    };
+
+    return myXpi.getFilesByExt('.css')
+      .then((cssFiles) => {
+        assert.equal(cssFiles.length, 2);
+        assert.equal(cssFiles[0], 'other.css');
+        assert.equal(cssFiles[1], 'styles.css');
+
+        for (let i = 0; i < cssFiles.length; i++) {
+          assert.ok(endsWith(cssFiles[i], '.css'));
+        }
+      });
+  });
+
 });
