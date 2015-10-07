@@ -2,73 +2,12 @@ import Validator from 'validator';
 
 import * as constants from 'const';
 import * as messages from 'messages';
-import { fakeMessageData } from './helpers';
+import CSSScanner from 'validators/css';
 import { DuplicateZipEntryError } from 'exceptions';
+import { fakeMessageData } from './helpers';
 
 
 describe('Validator', function() {
-
-  it('should show stack if config.stack is true', () => {
-    var addonValidator = new Validator({_: ['foo']});
-    addonValidator.config.stack = true;
-    var fakeError = new Error('Errol the error');
-    fakeError.stack = 'fake stack city limits';
-    var fakeConsole = {
-      error: sinon.stub(),
-    };
-    addonValidator.handleError(fakeError, fakeConsole);
-    assert.ok(fakeConsole.error.calledWith(fakeError.stack));
-  });
-
-  it('should print as json when config.output is json', () => {
-    var addonValidator = new Validator({_: ['foo']});
-    addonValidator.config.output = 'json';
-    addonValidator.toJSON = sinon.stub();
-    var fakeConsole = {
-      log: sinon.stub(),
-    };
-    addonValidator.print(fakeConsole);
-    assert.ok(addonValidator.toJSON.called);
-    assert.ok(fakeConsole.log.called);
-  });
-
-  it('should print as json when config.output is text', () => {
-    var addonValidator = new Validator({_: ['foo']});
-    addonValidator.textOutput = sinon.stub();
-    addonValidator.config.output = 'text';
-    var fakeConsole = {
-      log: sinon.stub(),
-    };
-    addonValidator.print(fakeConsole);
-    assert.ok(addonValidator.textOutput.called);
-    assert.ok(fakeConsole.log.called);
-  });
-
-  it('should pass correct args to JSON.stringify for pretty printing', () => {
-    var addonValidator = new Validator({_: ['foo']});
-    var fakeJSON = {
-      stringify: sinon.stub(),
-    };
-    addonValidator.toJSON(true, fakeJSON);
-    assert.ok(fakeJSON.stringify.calledWith(sinon.match.any, null, 4));
-  });
-
-  it('should pass correct args to JSON.stringify for normal printing', () => {
-    var addonValidator = new Validator({_: ['foo']});
-    var fakeJSON = {
-      stringify: sinon.stub(),
-    };
-    addonValidator.toJSON(false, fakeJSON);
-    assert.equal(fakeJSON.stringify.getCall(0).args[1], undefined);
-    assert.equal(fakeJSON.stringify.getCall(0).args[2], undefined);
-  });
-
-  it('should throw if scanner type is not available', () => {
-    var addonValidator = new Validator({_: ['foo']});
-    assert.throws(() => {
-      addonValidator.getScanner('foo.whatever');
-    }, Error, /No scanner available/);
-  });
 
   it('should detect an invalid file with ENOENT', () => {
     var addonValidator = new Validator({_: ['foo']});
@@ -137,16 +76,6 @@ describe('Validator', function() {
     assert.equal(output.summary.warnings, 0);
   });
 
-  it('should provide JSON via toJSON()', () => {
-    var addonValidator = new Validator({_: ['bar']});
-    addonValidator.collector.addError(fakeMessageData);
-    var json = addonValidator.toJSON();
-    var parsedJSON = JSON.parse(json);
-    assert.equal(parsedJSON.count, 1);
-    assert.equal(parsedJSON.summary.errors, 1);
-    assert.equal(parsedJSON.summary.notices, 0);
-    assert.equal(parsedJSON.summary.warnings, 0);
-  });
 
   // Uses our test XPI, with the following file layout:
   //
@@ -310,6 +239,119 @@ describe('Validator', function() {
       addonValidator.colorize('whatever');
     }, Error, /colorize passed invalid type/);
   });
+});
+
+
+describe('Validator.getScanner()', function() {
+
+  it('should throw if scanner type is not available', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    assert.throws(() => {
+      addonValidator.getScanner('foo.whatever');
+    }, Error, /No scanner available/);
+  });
+
+  it('should return CSSScanner', function() {
+    var addonValidator = new Validator({_: ['foo']});
+    var Scanner = addonValidator.getScanner('foo.css');
+    assert.deepEqual(Scanner, CSSScanner);
+  });
+});
+
+
+describe('Validator.handleError()', function() {
+
+  it('should show stack if config.stack is true', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    addonValidator.config.stack = true;
+    var fakeError = new Error('Errol the error');
+    fakeError.stack = 'fake stack city limits';
+    var fakeConsole = {
+      error: sinon.stub(),
+    };
+    addonValidator.handleError(fakeError, fakeConsole);
+    assert.ok(fakeConsole.error.calledWith(fakeError.stack));
+  });
+
+  it('should show colorized error ', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    addonValidator.chalk = {};
+    addonValidator.chalk.red = sinon.stub();
+    var fakeError = new Error('Errol the error');
+    fakeError.stack = 'fake stack city limits';
+    var fakeConsole = {
+      error: sinon.stub(),
+    };
+    addonValidator.handleError(fakeError, fakeConsole);
+    assert.ok(fakeConsole.error.called);
+    assert.ok(addonValidator.chalk.red.calledWith('Errol the error'));
+  });
+});
+
+
+describe('Validator.print()', function() {
+
+  it('should print as json when config.output is json', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    addonValidator.config.output = 'json';
+    addonValidator.toJSON = sinon.stub();
+    var fakeConsole = {
+      log: sinon.stub(),
+    };
+    addonValidator.print(fakeConsole);
+    assert.ok(addonValidator.toJSON.called);
+    assert.ok(fakeConsole.log.called);
+  });
+
+  it('should print as json when config.output is text', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    addonValidator.textOutput = sinon.stub();
+    addonValidator.config.output = 'text';
+    var fakeConsole = {
+      log: sinon.stub(),
+    };
+    addonValidator.print(fakeConsole);
+    assert.ok(addonValidator.textOutput.called);
+    assert.ok(fakeConsole.log.called);
+  });
+});
+
+
+describe('Validator.toJSON()', function() {
+
+  it('should pass correct args to JSON.stringify for pretty printing', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    var fakeJSON = {
+      stringify: sinon.stub(),
+    };
+    addonValidator.toJSON(true, fakeJSON);
+    assert.ok(fakeJSON.stringify.calledWith(sinon.match.any, null, 4));
+  });
+
+  it('should pass correct args to JSON.stringify for normal printing', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    var fakeJSON = {
+      stringify: sinon.stub(),
+    };
+    addonValidator.toJSON(false, fakeJSON);
+    assert.equal(fakeJSON.stringify.getCall(0).args[1], undefined);
+    assert.equal(fakeJSON.stringify.getCall(0).args[2], undefined);
+  });
+
+  it('should provide JSON via toJSON()', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.collector.addError(fakeMessageData);
+    var json = addonValidator.toJSON();
+    var parsedJSON = JSON.parse(json);
+    assert.equal(parsedJSON.count, 1);
+    assert.equal(parsedJSON.summary.errors, 1);
+    assert.equal(parsedJSON.summary.notices, 0);
+    assert.equal(parsedJSON.summary.warnings, 0);
+  });
+});
+
+
+describe('Validator.textOutput()', function() {
 
   it('should have error in textOutput()', () => {
     var addonValidator = new Validator({_: ['bar']});
