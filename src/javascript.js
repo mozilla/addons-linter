@@ -31,8 +31,9 @@ export default class JavaScriptScanner {
       for (let message of report.results[0].messages) {
         // Fatal error messages (like SyntaxErrors) are a bit different, we
         // need to handle them specially.
-        if (message.fatal) {
+        if (message.fatal === true) {
           message.ruleId = messages.JS_SYNTAX_ERROR.code;
+          // message.severity = VALIDATION_ERROR;
         }
 
         validatorMessages.push({
@@ -46,6 +47,8 @@ export default class JavaScriptScanner {
           type: ESLINT_TYPES[message.severity],
         });
       }
+
+      console.log(validatorMessages);
 
       resolve(validatorMessages);
     });
