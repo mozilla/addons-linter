@@ -30,14 +30,13 @@ export default class JavaScriptScanner {
 
       for (let message of report.results[0].messages) {
         validatorMessages.push({
-          id: message.ruleId.toUpperCase(),
-          message: messages[message.ruleId.toUpperCase()].message,
-          description: messages[message.ruleId.toUpperCase()].description,
           code: message.ruleId.toUpperCase(),
-          eslintCode: message.source,
+          column: message.column,
+          description: messages[message.ruleId.toUpperCase()].description,
+          sourceCode: message.source,
           file: this.filename,
           line: message.line,
-          column: message.column,
+          message: messages[message.ruleId.toUpperCase()].message,
           severity: ESLINT_TYPES[message.severity],
         });
       }
