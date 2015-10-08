@@ -11,7 +11,7 @@ import * as messages from 'messages';
 import { gettext as _, singleLineString } from 'utils';
 
 import Collector from 'collector';
-import JavaScriptScanner from 'javascript';
+import JavaScriptScanner from 'validators/javascript';
 import Xpi from 'xpi';
 
 export var lstat = promisify(fs.lstat);
