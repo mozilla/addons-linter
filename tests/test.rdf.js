@@ -17,7 +17,7 @@ function validRDF(contents) {
   </RDF>`;
 }
 
-describe('RDF Checker', function() {
+describe('RDF', function() {
 
   it('should not warn when we validate a good RDF file', () => {
     var contents = fs.readFileSync('tests/example.rdf', 'utf8');

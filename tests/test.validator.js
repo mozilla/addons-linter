@@ -112,15 +112,26 @@ describe('Validator', function() {
       });
   });
 
-  // Test to make sure we can all JS files inside an add-on, not just one.
-  it('should scan all JS files', () => {
+  // Test to make sure we can all files inside an add-on, not just one of each.
+  //
+  // Uses our test XPI, with the following file layout:
+  //
+  // - chrome.manifest
+  // - chrome/
+  // - components/
+  //   - main.js (has a mozIndexedDB assignment)
+  //   - secondary.js (nothing bad)
+  // - install.rdf
+  it('should scan all files', () => {
     var addonValidator = new Validator({_: ['tests/example.xpi']});
 
     var getFileSpy = sinon.spy(addonValidator, 'scanFile');
 
     return addonValidator.scan()
       .then(() => {
-        assert.ok(getFileSpy.calledTwice);
+        assert.ok(getFileSpy.calledWith('components/main.js'));
+        assert.ok(getFileSpy.calledWith('components/secondary.js'));
+        assert.ok(getFileSpy.calledWith('install.rdf'));
       });
   });
 

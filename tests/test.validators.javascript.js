@@ -4,7 +4,7 @@ import * as messages from 'messages';
 import { singleLineString } from 'utils';
 
 
-describe('JS Code Checker', function() {
+describe('JavaScript', function() {
 
   it('should not allow mozIndexedDB', () => {
     var code = 'var myDatabase = indexeddb || mozIndexedDB;';
