@@ -33,7 +33,6 @@ export default class JavaScriptScanner {
         // need to handle them specially.
         if (message.fatal === true) {
           message.ruleId = messages.JS_SYNTAX_ERROR.code;
-          // message.severity = VALIDATION_ERROR;
         }
 
         validatorMessages.push({
@@ -47,8 +46,6 @@ export default class JavaScriptScanner {
           type: ESLINT_TYPES[message.severity],
         });
       }
-
-      console.log(validatorMessages);
 
       resolve(validatorMessages);
     });
