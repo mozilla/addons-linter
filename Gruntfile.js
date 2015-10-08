@@ -11,6 +11,15 @@ module.exports = function(grunt) {
 
   grunt.initConfig(configs);
 
-  grunt.registerTask('test', ['webpack:test', 'mochaTest', 'eslint', 'jscs']);
+  grunt.registerTask('test', [
+    'clean',
+    'instrument',
+    'webpack:test',
+    'mochaTest',
+    'storeCoverage',
+    'makeReport',
+    'eslint',
+    'jscs',
+  ]);
 
 };

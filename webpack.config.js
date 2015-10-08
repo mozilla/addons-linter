@@ -30,10 +30,8 @@ module.exports = {
       {
         exclude: /(node_modules|bower_components)/,
         test: /\.js$/,
-        // es7.objectRestSpread to enable ES7 rest spread operators
-        // eg: let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
-        loaders: ['babel?optional[]=es7.objectRestSpread&' +
-                  'optional[]=es7.classProperties&stage=2'],
+        // babel options are in .babelrc
+        loaders: ['babel'],
       },
     ],
   },
@@ -46,7 +44,6 @@ module.exports = {
     extensions: ['', '.js', '.json'],
     modulesDirectories: [
       'node_modules',
-      'src/',
     ],
   },
   devtool: 'sourcemap',
