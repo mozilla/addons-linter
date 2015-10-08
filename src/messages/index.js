@@ -3,3 +3,4 @@
 
 export * from './javascript';
 export * from './layout';
+export * from './rdf';

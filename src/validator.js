@@ -12,6 +12,7 @@ import { gettext as _, singleLineString } from 'utils';
 
 import Collector from 'collector';
 import JavaScriptScanner from 'validators/javascript';
+import RDFScanner from 'validators/rdf';
 import Xpi from 'xpi';
 
 export var lstat = promisify(fs.lstat);
@@ -184,6 +185,8 @@ export default class Validator {
     switch (extname(filename)) {
       case '.js':
         return JavaScriptScanner;
+      case '.rdf':
+        return RDFScanner;
       default:
         throw new Error('No scanner available for ${filename}');
     }
@@ -222,6 +225,12 @@ export default class Validator {
         })
         .then((jsFiles) => {
           return this.scanFiles(jsFiles);
+        })
+        .then(() => {
+          return this.xpi.getFilesByExt('.rdf');
+        })
+        .then((rdfFiles) => {
+          return this.scanFiles(rdfFiles);
         })
         .then(() => {
           this.print();
