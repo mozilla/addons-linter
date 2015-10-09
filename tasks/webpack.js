@@ -22,6 +22,7 @@ module.exports = {
   watch: {
     watch: true,
     keepalive: true,
+    resolve: buildResolve,
   },
   test: {
     entry: './tests/runner.js',
