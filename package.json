@@ -42,7 +42,7 @@
     "columnify": "1.5.2",
     "es6-promisify": "3.0.0",
     "eslint": "1.6.0",
-    "yargs": "3.26.0",
+    "yargs": "3.27.0",
     "yauzl": "2.3.1"
   }
 }
