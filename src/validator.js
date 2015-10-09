@@ -12,6 +12,7 @@ import { checkMinNodeVersion, gettext as _, singleLineString } from 'utils';
 
 import Collector from 'collector';
 import CSSScanner from 'validators/css';
+import HTMLScanner from 'validators/html';
 import JavaScriptScanner from 'validators/javascript';
 import RDFScanner from 'validators/rdf';
 import Xpi from 'xpi';
@@ -186,6 +187,8 @@ export default class Validator {
     switch (extname(filename)) {
       case '.css':
         return CSSScanner;
+      case '.html':
+        return HTMLScanner;
       case '.js':
         return JavaScriptScanner;
       case '.rdf':
@@ -243,6 +246,12 @@ export default class Validator {
         })
         .then((cssFiles) => {
           return this.scanFiles(cssFiles);
+        })
+        .then(() => {
+          return this.xpi.getFilesByExt('.html');
+        })
+        .then((htmlFiles) => {
+          return this.scanFiles(htmlFiles);
         })
         .then(() => {
           this.print();

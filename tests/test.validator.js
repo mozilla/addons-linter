@@ -85,6 +85,7 @@ describe('Validator', function() {
   //   - main.js (has a mozIndexedDB assignment)
   //   - secondary.js (nothing bad)
   // - install.rdf
+  // - prefs.html
   it('should send JSScanner messages to the collector', () => {
     var addonValidator = new Validator({_: ['tests/example.xpi']});
     // Stub print to prevent output.
@@ -108,6 +109,7 @@ describe('Validator', function() {
   //   - main.js (has a mozIndexedDB assignment)
   //   - secondary.js (nothing bad)
   // - install.rdf
+  // - prefs.html
   it('should scan all files', () => {
     var addonValidator = new Validator({_: ['tests/example.xpi']});
     // Stub print to prevent output.
@@ -120,6 +122,7 @@ describe('Validator', function() {
         assert.ok(getFileSpy.calledWith('components/main.js'));
         assert.ok(getFileSpy.calledWith('components/secondary.js'));
         assert.ok(getFileSpy.calledWith('install.rdf'));
+        assert.ok(getFileSpy.calledWith('prefs.html'));
       });
   });
 

@@ -2,6 +2,7 @@
 // import * as messages from 'messages';
 
 export * from './css';
+export * from './html';
 export * from './javascript';
 export * from './layout';
 export * from './rdf';

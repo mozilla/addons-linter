@@ -24,3 +24,7 @@ export const MESSAGE_TYPES = [
 export const RDF_UNALLOWED_TAGS = ['hidden'];
 export const RDF_UNALLOWED_IF_LISTED_TAGS = ['updateKey', 'updateURL'];
 export const RDF_OBSOLETE_TAGS = ['file', 'requires', 'skin'];
+
+export const HTML_TAGS_WITH_REQUIRED_ATTRIBUTES = {
+  prefwindow: ['id'],
+};
