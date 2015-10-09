@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack",
-    "test": "node -e \"require('grunt').cli()\" null test",
-    "coverage": "node -e \"require('grunt').cli()\" null coverage"
+    "test": "node -e \"require('grunt').cli()\" null test"
   },
   "repository": {
     "type": "git",
