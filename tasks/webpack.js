@@ -1,10 +1,23 @@
 var webpackConfig = require('../webpack.config.js');
 var path = require('path');
 
+var defaultResolve = webpackConfig.resolve;
+
+function noddyClone(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+var buildResolve = noddyClone(defaultResolve);
+buildResolve.modulesDirectories.push('src/');
+
+var testResolve = noddyClone(defaultResolve);
+testResolve.modulesDirectories.push('coverage/');
+
+
 module.exports = {
   options: webpackConfig,
   build: {
-    // Use the default webpack options.
+    resolve: buildResolve,
   },
   watch: {
     watch: true,
@@ -16,6 +29,6 @@ module.exports = {
       path: path.join(__dirname, '../dist'),
       filename: 'tests.js',
     },
-
+    resolve: testResolve,
   },
 };
