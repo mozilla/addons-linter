@@ -1,12 +1,12 @@
 export class ExtensibleError extends Error {
-  constructor(message) {
+  constructor(message, _Error=Error) {
     super();
     this.message = message;
     this.name = this.constructor.name;
-    if (Error.hasOwnProperty('captureStackTrace')) {
-      Error.captureStackTrace(this, this.constructor);
+    if (_Error.hasOwnProperty('captureStackTrace')) {
+      _Error.captureStackTrace(this, this.constructor);
     } else {
-      this.stack = (new Error()).stack;
+      this.stack = (new _Error()).stack;
     }
   }
 }

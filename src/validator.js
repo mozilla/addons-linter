@@ -42,29 +42,29 @@ export default class Validator {
     }
   }
 
-  handleError(err) {
+  handleError(err, _console=console) {
     if (this.config.stack === true) {
-      console.error(err.stack);
+      _console.error(err.stack);
     } else {
-      console.error(this.chalk.red(err.message || err));
+      _console.error(this.chalk.red(err.message || err));
     }
   }
 
-  print() {
+  print(_console=console) {
     if (this.config.output === 'json') {
-      console.log(this.toJSON(this.config.pretty));
+      _console.log(this.toJSON(this.config.pretty));
     } else {
-      console.log(this.textOutput());
+      _console.log(this.textOutput());
     }
   }
 
-  toJSON(pretty=false) {
+  toJSON(pretty=false, _JSON=JSON) {
     var args = [this.output];
     if (pretty === true) {
       args.push(null);
       args.push(4);
     }
-    return JSON.stringify.apply(null, args);
+    return _JSON.stringify.apply(null, args);
   }
 
   textOutput() {

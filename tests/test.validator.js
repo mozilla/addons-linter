@@ -8,6 +8,61 @@ import { DuplicateZipEntryError } from 'exceptions';
 
 describe('Validator', function() {
 
+  it('should show stack if config.stack is true', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    addonValidator.config.stack = true;
+    var fakeError = new Error('Errol the error');
+    fakeError.stack = 'fake stack city limits';
+    var fakeConsole = {
+      error: sinon.stub(),
+    };
+    addonValidator.handleError(fakeError, fakeConsole);
+    assert.ok(fakeConsole.error.calledWith(fakeError.stack));
+  });
+
+  it('should print as json when config.output is json', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    addonValidator.config.output = 'json';
+    addonValidator.toJSON = sinon.stub();
+    var fakeConsole = {
+      log: sinon.stub(),
+    };
+    addonValidator.print(fakeConsole);
+    assert.ok(addonValidator.toJSON.called);
+    assert.ok(fakeConsole.log.called);
+  });
+
+  it('should print as json when config.output is text', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    addonValidator.textOutput = sinon.stub();
+    addonValidator.config.output = 'text';
+    var fakeConsole = {
+      log: sinon.stub(),
+    };
+    addonValidator.print(fakeConsole);
+    assert.ok(addonValidator.textOutput.called);
+    assert.ok(fakeConsole.log.called);
+  });
+
+  it('should pass correct args to JSON.stringify for pretty printing', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    var fakeJSON = {
+      stringify: sinon.stub(),
+    };
+    addonValidator.toJSON(true, fakeJSON);
+    assert.ok(fakeJSON.stringify.calledWith(sinon.match.any, null, 4));
+  });
+
+  it('should pass correct args to JSON.stringify for normal printing', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    var fakeJSON = {
+      stringify: sinon.stub(),
+    };
+    addonValidator.toJSON(false, fakeJSON);
+    assert.equal(fakeJSON.stringify.getCall(0).args[1], undefined);
+    assert.equal(fakeJSON.stringify.getCall(0).args[2], undefined);
+  });
+
   it('should throw if scanner type is not available', () => {
     var addonValidator = new Validator({_: ['foo']});
     assert.throws(() => {
@@ -121,6 +176,26 @@ describe('Validator', function() {
     return addonValidator.scan()
       .then(() => {
         assert.ok(getFileSpy.calledTwice);
+      });
+  });
+
+  it('should throw when message.type is undefined', () => {
+    var addonValidator = new Validator({_: ['tests/example.xpi']});
+    addonValidator.xpi = {};
+    addonValidator.xpi.getFileAsString = () => Promise.resolve();
+    addonValidator.getScanner = sinon.stub();
+    class fakeScanner {
+      scan() {
+        return Promise.resolve([{message: 'whatever'}]);
+      }
+    }
+    addonValidator.getScanner.returns(fakeScanner);
+    return addonValidator.scanFile('whatever')
+      .then(() => {
+        assert.fail(null, null, 'Unexpected success');
+      })
+      .catch((err) => {
+        assert.include(err.message, 'message.type must be defined');
       });
   });
 
