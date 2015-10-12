@@ -158,6 +158,8 @@ describe('Validator', function() {
   // - install.rdf
   it('should send JSScanner messages to the collector', () => {
     var addonValidator = new Validator({_: ['tests/example.xpi']});
+    // Stub print to prevent output.
+    addonValidator.print = sinon.stub();
 
     assert.equal(addonValidator.collector.errors.length, 0);
 
@@ -170,6 +172,8 @@ describe('Validator', function() {
   // Test to make sure we can all JS files inside an add-on, not just one.
   it('should scan all JS files', () => {
     var addonValidator = new Validator({_: ['tests/example.xpi']});
+    // Stub print to prevent output.
+    addonValidator.print = sinon.stub();
 
     var getFileSpy = sinon.spy(addonValidator, 'scanFile');
 
@@ -202,6 +206,8 @@ describe('Validator', function() {
   it('should see an error if scanFiles() blows up', () => {
     var addonValidator = new Validator({_: ['foo']});
     addonValidator.checkFileExists = () => Promise.resolve();
+    // Stub handleError to prevent output.
+    addonValidator.handleError = sinon.stub();
     addonValidator.scanFiles = () => {
       return Promise.reject(new Error('scanFiles explosion'));
     };
@@ -224,6 +230,8 @@ describe('Validator', function() {
 
   it('should bubble up the error if scanFile() blows up', () => {
     var addonValidator = new Validator({_: ['foo']});
+    // Stub handleError to prevent output.
+    addonValidator.handleError = sinon.stub();
     addonValidator.checkFileExists = () => Promise.resolve();
     addonValidator.scanFile = () => {
       return Promise.reject(new Error('scanFile explosion'));
