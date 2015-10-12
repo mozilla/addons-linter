@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/mozilla/addons-validator.svg?branch=master)](https://travis-ci.org/mozilla/addons-validator)
+[![Coverage Status](https://coveralls.io/repos/mozilla/addons-validator/badge.svg?branch=master&service=github)](https://coveralls.io/github/mozilla/addons-validator?branch=master)
 [![Dependency Status](https://david-dm.org/mozilla/addons-validator.svg)](https://david-dm.org/mozilla/addons-validator)
 [![devDependency Status](https://david-dm.org/mozilla/addons-validator/dev-status.svg)](https://david-dm.org/mozilla/addons-validator#info=devDependencies)
 
