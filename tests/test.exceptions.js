@@ -20,3 +20,20 @@ describe('DuplicateZipEntry()', function() {
   });
 
 });
+
+
+describe('ExtensibleError', function() {
+
+  it('should assign Error.stack when no captureStackTrace', () => {
+    class FakeError {
+      constructor() {
+        this.stack = 'fake-stack';
+      }
+    }
+
+    var myException = new exceptions.ExtensibleError('Some message', FakeError);
+    assert.equal(myException.stack, 'fake-stack');
+    assert.equal(myException.message, 'Some message');
+  });
+
+});

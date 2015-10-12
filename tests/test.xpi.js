@@ -369,4 +369,15 @@ describe('Xpi.getFileAsStream()', function() {
       });
   });
 
+  it("should throw if file extension doesn't start with '.'", () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    return myXpi.getFilesByExt('css')
+      .then(() => {
+        assert.fail(null, null, 'Unexpected success');
+      })
+      .catch((err) => {
+        assert.include(err.message, 'File extension must start with');
+      });
+  });
+
 });
