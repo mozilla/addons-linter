@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mozilla/addons-validator.svg)](https://travis-ci.org/mozilla/addons-validator)
+[![Build Status](https://travis-ci.org/mozilla/addons-validator.svg?branch=master)](https://travis-ci.org/mozilla/addons-validator)
 [![Dependency Status](https://david-dm.org/mozilla/addons-validator.svg)](https://david-dm.org/mozilla/addons-validator)
 [![devDependency Status](https://david-dm.org/mozilla/addons-validator/dev-status.svg)](https://david-dm.org/mozilla/addons-validator#info=devDependencies)
 
