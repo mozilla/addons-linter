@@ -20,3 +20,7 @@ export const MESSAGE_TYPES = [
   VALIDATION_NOTICE,
   VALIDATION_WARNING,
 ];
+
+export const RDF_UNALLOWED_TAGS = ['hidden'];
+export const RDF_UNALLOWED_IF_LISTED_TAGS = ['updateKey', 'updateURL'];
+export const RDF_OBSOLETE_TAGS = ['file', 'requires', 'skin'];

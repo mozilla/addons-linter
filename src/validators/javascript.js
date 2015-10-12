@@ -50,6 +50,4 @@ export default class JavaScriptScanner {
       resolve(validatorMessages);
     });
   }
-
-
 }

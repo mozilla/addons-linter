@@ -13,4 +13,17 @@ describe('Messages', function() {
     }
   });
 
+  it('should construct a valid message (with uppercase codes)', () => {
+    var vegetarianTag = messages._tagNotAllowed('steak');
+    var teslaTag = messages._tagObsolete('petrol');
+
+    assert.equal(vegetarianTag.code, 'TAG_NOT_ALLOWED_STEAK');
+    assert.include(vegetarianTag.message, 'steak');
+    assert.include(vegetarianTag.description, 'steak');
+
+    assert.equal(teslaTag.code, 'TAG_OBSOLETE_PETROL');
+    assert.include(teslaTag.message, 'petrol');
+    assert.include(teslaTag.description, 'petrol');
+  });
+
 });
