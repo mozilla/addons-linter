@@ -11,6 +11,7 @@ import * as messages from 'messages';
 import { gettext as _, singleLineString } from 'utils';
 
 import Collector from 'collector';
+import CSSScanner from 'validators/css';
 import JavaScriptScanner from 'validators/javascript';
 import RDFScanner from 'validators/rdf';
 import Xpi from 'xpi';
@@ -183,6 +184,8 @@ export default class Validator {
 
   getScanner(filename) {
     switch (extname(filename)) {
+      case '.css':
+        return CSSScanner;
       case '.js':
         return JavaScriptScanner;
       case '.rdf':
@@ -231,6 +234,12 @@ export default class Validator {
         })
         .then((rdfFiles) => {
           return this.scanFiles(rdfFiles);
+        })
+        .then(() => {
+          return this.xpi.getFilesByExt('.css');
+        })
+        .then((cssFiles) => {
+          return this.scanFiles(cssFiles);
         })
         .then(() => {
           this.print();
