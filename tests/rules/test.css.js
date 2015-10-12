@@ -11,7 +11,6 @@ describe('BAD_URL_RX', () => {
     assert.ok(BAD_URL_RX.test('url(//foo.com)'));
   });
 
-
   it('should match data uri', () => {
     assert.ok(BAD_URL_RX.test(singleLineString`url(data:image/gif;
       base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)`));
@@ -30,4 +29,9 @@ describe('BAD_URL_RX', () => {
     assert.ok(BAD_URL_RX.test("url('http://bar/foo')"));
     assert.ok(BAD_URL_RX.test('url("http://bar/foo")'));
   });
+
+  it('should not match non-remote urls starting with /', () => {
+    assert.notOk(BAD_URL_RX.test('url(/bar/foo)'));
+  });
+
 });
