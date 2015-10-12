@@ -51,11 +51,11 @@ export default class RDFScanner {
       this.getXMLDoc()
         .then((xmlDoc) => {
           var bannedTags = RDF_UNALLOWED_TAGS;
-          var addonIsListed = (xmlDoc
-            .getElementsByTagNameNS(this.namespace, 'listed').length > 0);
+          var addonIsListed = xmlDoc
+            .getElementsByTagNameNS(this.namespace, 'listed').length > 0;
 
           if (addonIsListed) {
-            bannedTags.concat(RDF_UNALLOWED_IF_LISTED_TAGS);
+            bannedTags = bannedTags.concat(RDF_UNALLOWED_IF_LISTED_TAGS);
           }
 
           // Using any banned tag is an error.

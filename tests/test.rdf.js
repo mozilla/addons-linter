@@ -54,7 +54,7 @@ describe('RDF', function() {
       });
   });
 
-  it('should not fail when multiple bad tags are found', () => {
+  it('should not blow up when multiple bad tags are found', () => {
     var contents = validRDF(singleLineString`<em:hidden>true</em:hidden>
       <em:hidden>false</em:hidden>`);
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
@@ -68,6 +68,36 @@ describe('RDF', function() {
           assert.equal(message.code, messages.TAG_NOT_ALLOWED_HIDDEN.code);
           assert.equal(message.severity, VALIDATION_ERROR);
         }
+      });
+  });
+
+  it('should not allow certain tags contextually (eg. when listed)', () => {
+    // Should fail because Add-on is listed and has an updateURL.
+    var contents = validRDF(singleLineString`<em:listed>true</em:listed>
+      <em:updateURL>http://mozilla.com/updateMyAddon.php</em:updateURL>`);
+    var rdfScanner = new RDFScanner(contents, 'install.rdf');
+
+    return rdfScanner.mustNotExist()
+      .then(() => {
+        var validatorMessages = rdfScanner.validatorMessages;
+
+        assert.equal(validatorMessages.length, 1);
+        for (let message of validatorMessages) {
+          assert.equal(message.code, messages.TAG_NOT_ALLOWED_UPDATEURL.code);
+          assert.equal(message.severity, VALIDATION_ERROR);
+        }
+
+        // This shouldn't fail because there is no listed tag.
+        contents = validRDF(singleLineString`
+          <em:updateURL>http://mozilla.com/updateMyAddon.php</em:updateURL>`);
+        rdfScanner = new RDFScanner(contents, 'install.rdf');
+
+        return rdfScanner.mustNotExist();
+      })
+      .then(() => {
+        var validatorMessages = rdfScanner.validatorMessages;
+
+        assert.equal(validatorMessages.length, 0);
       });
   });
 
@@ -95,7 +125,7 @@ describe('RDF', function() {
       });
   });
 
-  it('should blow up 💣 when handed malformed XML', () => {
+  it('should blow up 💣  when handed malformed XML', () => {
     var contents = validRDF('<em:hidden>true/em:hidden>');
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
 
