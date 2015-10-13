@@ -1,3 +1,5 @@
+import semver from 'semver';
+
 /*
  * Implementation of String.endsWith, which errors in node.
  *
@@ -44,4 +46,20 @@ export function singleLineString(strings, ...vars) {
  */
 export function gettext(str) {
   return str;
+}
+
+
+/*
+ * Check the minimum node version is met
+ */
+export function checkMinNodeVersion(minVersion, _process=process) {
+  return new Promise((resolve, reject) => {
+    minVersion = minVersion || '0.12.0';
+    if (!semver.gte(_process.version, minVersion)) {
+      reject(new Error(singleLineString`Node version must be ${minVersion} or
+                       greater. You are using ${_process.version}.`));
+    } else {
+      resolve();
+    }
+  });
 }
