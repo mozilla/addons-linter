@@ -8,7 +8,7 @@ import promisify from 'es6-promisify';
 import * as constants from 'const';
 import * as exceptions from 'exceptions';
 import * as messages from 'messages';
-import { gettext as _, singleLineString } from 'utils';
+import { checkMinNodeVersion, gettext as _, singleLineString } from 'utils';
 
 import Collector from 'collector';
 import CSSScanner from 'validators/css';
@@ -221,7 +221,10 @@ export default class Validator {
 
   scan(_Xpi=Xpi) {
     return new Promise((resolve, reject) => {
-      this.checkFileExists(this.packagePath)
+      checkMinNodeVersion()
+        .then(() => {
+          return this.checkFileExists(this.packagePath);
+        })
         .then(() => {
           this.xpi = new _Xpi(this.packagePath);
           return this.xpi.getFilesByExt('.js');

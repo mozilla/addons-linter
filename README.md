@@ -7,6 +7,12 @@
 
 The Add-ons Validator, JS edition.
 
+## Required node version
+
+Node v0.12.x or greater is required. Using nvm is probably the easiest way
+to manage multiple node versions side by side. See
+[nvm on github](https://github.com/creationix/nvm) for more details.
+
 ## Install dependencies
 
 Install dependencies with [npm](http://nodejs.org/):
