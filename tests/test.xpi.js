@@ -1,6 +1,5 @@
 import { Readable } from 'stream';
 
-import { endsWith } from 'utils';
 import Xpi from 'xpi';
 import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
 import { DuplicateZipEntryError } from 'exceptions';
@@ -343,7 +342,7 @@ describe('Xpi.getFileAsStream()', function() {
         assert.equal(jsFiles[1], 'secondary.js');
 
         for (let i = 0; i < jsFiles.length; i++) {
-          assert.ok(endsWith(jsFiles[i], '.js'));
+          assert.ok(jsFiles[i].endsWith('.js'));
         }
       });
   });
@@ -364,7 +363,7 @@ describe('Xpi.getFileAsStream()', function() {
         assert.equal(cssFiles[1], 'styles.css');
 
         for (let i = 0; i < cssFiles.length; i++) {
-          assert.ok(endsWith(cssFiles[i], '.css'));
+          assert.ok(cssFiles[i].endsWith('.css'));
         }
       });
   });
