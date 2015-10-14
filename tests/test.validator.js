@@ -129,7 +129,7 @@ describe('Validator', function() {
   it('should throw when message.type is undefined', () => {
     var addonValidator = new Validator({_: ['tests/example.xpi']});
     addonValidator.xpi = {};
-    addonValidator.xpi.getFileAsString = () => Promise.resolve();
+    addonValidator.xpi.getFile = () => Promise.resolve();
     addonValidator.getScanner = sinon.stub();
     class fakeScanner {
       scan() {
@@ -156,6 +156,9 @@ describe('Validator', function() {
     };
 
     class FakeXpi {
+      getMetaData() {
+        return Promise.resolve([]);
+      }
       getFilesByExt() {
         return Promise.resolve(['foo.js', 'bar.js']);
       }
@@ -181,6 +184,9 @@ describe('Validator', function() {
     };
 
     class FakeXpi {
+      getMetaData() {
+        return Promise.resolve([]);
+      }
       getFilesByExt() {
         return Promise.resolve(['foo.js', 'bar.js']);
       }

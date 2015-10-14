@@ -11,6 +11,7 @@ import * as messages from 'messages';
 import { checkMinNodeVersion, gettext as _, singleLineString } from 'utils';
 
 import Collector from 'collector';
+import ChromeManifestScanner from 'validators/chromemanifest';
 import CSSScanner from 'validators/css';
 import HTMLScanner from 'validators/html';
 import JavaScriptScanner from 'validators/javascript';
@@ -184,6 +185,11 @@ export default class Validator {
   }
 
   getScanner(filename) {
+
+    if (filename === 'chrome.manifest') {
+      return ChromeManifestScanner;
+    }
+
     switch (extname(filename)) {
       case '.css':
         return CSSScanner;
@@ -195,18 +201,16 @@ export default class Validator {
       case '.rdf':
         return RDFScanner;
       default:
-        throw new Error('No scanner available for ${filename}');
+        throw new Error(`No scanner available for ${filename}`);
     }
   }
 
-  scanFile(filename) {
+  scanFile(filename, streamOrString='string') {
     return new Promise((resolve, reject) => {
-      // We might have to refactor this if we need to
-      // deal with streams *and* strings. But let's wait until that
-      // point comes. So far it seems most valiators want strings.
-      this.xpi.getFileAsString(filename)
-        .then((code) => {
-          let scanner = new (this.getScanner(filename))(code, filename);
+      this.xpi.getFile(filename, streamOrString)
+        .then((contentsOrStream) => {
+          let scanner = new (
+            this.getScanner(filename))(contentsOrStream, filename);
           return scanner.scan();
         })
         // messages should be a list of raw message data objects.
@@ -231,6 +235,18 @@ export default class Validator {
         })
         .then(() => {
           this.xpi = new _Xpi(this.packagePath);
+          return this.xpi.getMetaData();
+        })
+        .then((metadata) => {
+          var chromeManifest = 'chrome.manifest';
+          if (Object.keys(metadata).indexOf(chromeManifest) > -1) {
+            return this.scanFile(chromeManifest, 'stream');
+          } else {
+            // TODO: Log this.
+            return Promise.resolve();
+          }
+        })
+        .then(() => {
           return this.xpi.getFilesByExt('.js');
         })
         .then((jsFiles) => {
