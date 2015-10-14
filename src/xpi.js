@@ -118,11 +118,13 @@ export default class Xpi {
     });
   }
 
-  getFilesByExt(ext) {
+  getFilesByExt(...extensions) {
     return new Promise((resolve, reject) => {
 
-      if (ext.indexOf('.') !== 0) {
-        throw new Error("File extension must start with '.'");
+      for (let ext of extensions) {
+        if (ext.indexOf('.') !== 0) {
+          throw new Error("File extension must start with '.'");
+        }
       }
 
       return this.getMetaData()
@@ -130,8 +132,10 @@ export default class Xpi {
           let files = [];
 
           for (let filename in metadata) {
-            if (filename.endsWith(ext)) {
-              files.push(filename);
+            for (let ext of extensions) {
+              if (filename.endsWith(ext)) {
+                files.push(filename);
+              }
             }
           }
           resolve(files);
