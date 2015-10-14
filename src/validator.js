@@ -188,6 +188,7 @@ export default class Validator {
       case '.css':
         return CSSScanner;
       case '.html':
+      case '.htm':
         return HTMLScanner;
       case '.js':
         return JavaScriptScanner;

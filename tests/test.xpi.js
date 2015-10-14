@@ -368,6 +368,31 @@ describe('Xpi.getFileAsStream()', function() {
       });
   });
 
+  it('should return all HTML files', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    myXpi.metadata = {
+      'install.rdf': installRdfEntry,
+      'chrome.manifest': chromeManifestEntry,
+      'index.html': jsMainFileEntry,
+      'second.htm': jsMainFileEntry,
+      'third.html': jsMainFileEntry,
+      'secondary.js': jsSecondaryFileEntry,
+    };
+
+    return myXpi.getFilesByExt('.html', '.htm')
+      .then((htmlFiles) => {
+        assert.equal(htmlFiles.length, 3);
+        assert.equal(htmlFiles[0], 'index.html');
+        assert.equal(htmlFiles[1], 'second.htm');
+        assert.equal(htmlFiles[2], 'third.html');
+
+        for (let i = 0; i < htmlFiles.length; i++) {
+          assert.ok(htmlFiles[i].endsWith('.html') ||
+                    htmlFiles[i].endsWith('.htm'));
+        }
+      });
+  });
+
   it("should throw if file extension doesn't start with '.'", () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     return myXpi.getFilesByExt('css')
