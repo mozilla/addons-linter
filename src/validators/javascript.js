@@ -4,7 +4,7 @@ import ESLint from 'eslint';
 
 import { ESLINT_TYPES } from 'const';
 import * as messages from 'messages';
-import ESLintRules from 'rules';
+import ESLintRules from 'rules/javascript';
 
 
 export default class JavaScriptScanner {
@@ -20,7 +20,7 @@ export default class JavaScriptScanner {
       // pass it the entire source file as a string.
       let eslint = new ESLint.CLIEngine({
         ignore: false,
-        rulePaths: [path.join('src', 'rules')],
+        rulePaths: [path.join('src', 'rules', 'javascript')],
         rules: ESLintRules,
         useEslintrc: false,
       });
