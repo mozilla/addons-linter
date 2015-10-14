@@ -1,7 +1,6 @@
 import yauzl from 'yauzl';
 
 import { DuplicateZipEntryError } from 'exceptions';
-import { endsWith } from 'utils';
 
 
 /*
@@ -131,7 +130,7 @@ export default class Xpi {
           let files = [];
 
           for (let filename in metadata) {
-            if (endsWith(filename, ext)) {
+            if (filename.endsWith(ext)) {
               files.push(filename);
             }
           }
