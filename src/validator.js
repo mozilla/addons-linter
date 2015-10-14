@@ -5,6 +5,7 @@ import columnify from 'columnify';
 import chalk from 'chalk';
 import promisify from 'es6-promisify';
 
+import { terminalWidth } from 'cli';
 import * as constants from 'const';
 import * as exceptions from 'exceptions';
 import * as messages from 'messages';
@@ -70,7 +71,8 @@ export default class Validator {
     return _JSON.stringify.apply(null, args);
   }
 
-  textOutput() {
+  textOutput(_terminalWidth=terminalWidth) {
+    var maxColumns = _terminalWidth();
     var out = [];
 
     out.push(_('Validation Summary:'));
@@ -98,34 +100,37 @@ export default class Validator {
               headingTransform: () => {
                 return _('Code');
               },
-              maxWidth: 25,
+              maxWidth: 35,
             },
             message: {
               headingTransform: () => {
                 return _('Message');
               },
-              maxWidth: 30,
+              maxWidth: (maxColumns - 47) * .25,
             },
             description: {
               headingTransform: () => {
                 return _('Description');
               },
-              maxWidth: 40,
+              maxWidth: (maxColumns - 35) * .5,
             },
             file: {
               headingTransform: () => {
                 return _('File');
               },
+              maxWidth: (maxColumns - 35) * .25,
             },
             line: {
               headingTransform: () => {
                 return _('Line');
               },
+              maxWidth: 6,
             },
             column: {
               headingTransform: () => {
                 return _('Column');
               },
+              maxWidth: 6,
             },
           },
         }));

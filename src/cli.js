@@ -4,7 +4,7 @@ import { singleLineString } from 'utils';
 import { version } from 'json!../package';
 
 
-export function _terminalWidth(_process=process) {
+export function terminalWidth(_process=process) {
   if (_process && _process.stdout && _process.stdout.columns > 0) {
     var width = _process.stdout.columns - 2;
     // Terminals less than ten pixels wide seem silly.
@@ -94,4 +94,4 @@ export default argv
   .demand(1)
   .help('help')
   .alias('h', 'help')
-  .wrap(_terminalWidth());
+  .wrap(terminalWidth());

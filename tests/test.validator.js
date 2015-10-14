@@ -356,6 +356,12 @@ describe('Validator.toJSON()', function() {
 
 describe('Validator.textOutput()', function() {
 
+  // Return a large number from terminalWidth() so text doesn't wrap,
+  // forcing the strings we check for to be far apart.
+  function terminalWidth() {
+    return 1000;
+  }
+
   it('should have error in textOutput()', () => {
     var addonValidator = new Validator({_: ['bar']});
     addonValidator.collector.addError({
@@ -363,7 +369,7 @@ describe('Validator.textOutput()', function() {
       message: 'whatever error message',
       description: 'whatever error description',
     });
-    var text = addonValidator.textOutput();
+    var text = addonValidator.textOutput(terminalWidth);
     assert.equal(addonValidator.output.summary.errors, 1);
     assert.include(text, 'Validation Summary:');
     assert.include(text, 'WHATEVER_ERROR');
@@ -378,7 +384,7 @@ describe('Validator.textOutput()', function() {
       message: 'whatever notice message',
       description: 'whatever notice description',
     });
-    var text = addonValidator.textOutput();
+    var text = addonValidator.textOutput(terminalWidth);
     assert.equal(addonValidator.output.summary.notices, 1);
     assert.include(text, 'Validation Summary:');
     assert.include(text, 'WHATEVER_NOTICE');
@@ -393,7 +399,7 @@ describe('Validator.textOutput()', function() {
       message: 'whatever warning message',
       description: 'whatever warning description',
     });
-    var text = addonValidator.textOutput();
+    var text = addonValidator.textOutput(terminalWidth);
     assert.equal(addonValidator.output.summary.warnings, 1);
     assert.include(text, 'Validation Summary:');
     assert.include(text, 'WHATEVER_WARNING');

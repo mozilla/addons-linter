@@ -1,4 +1,4 @@
-import { default as cli_, _terminalWidth } from 'cli';
+import { default as cli_, terminalWidth } from 'cli';
 
 
 var cli;
@@ -71,32 +71,32 @@ describe('Basic CLI tests', function() {
 
   it('should use 78 as a width if process.stdout.columns is undefined', () => {
     var fakeProcess = null;
-    assert.equal(_terminalWidth(fakeProcess), 78);
+    assert.equal(terminalWidth(fakeProcess), 78);
     fakeProcess = {stdout: null};
-    assert.equal(_terminalWidth(fakeProcess), 78);
+    assert.equal(terminalWidth(fakeProcess), 78);
     fakeProcess = {stdout: {columns: null}};
-    assert.equal(_terminalWidth(fakeProcess), 78);
+    assert.equal(terminalWidth(fakeProcess), 78);
   });
 
   it('should always use a positive terminal width', () => {
     var fakeProcess = {stdout: {columns: 1}};
-    assert.equal(_terminalWidth(fakeProcess), 10);
+    assert.equal(terminalWidth(fakeProcess), 10);
   });
 
   it('should not use a width under 10 columns', () => {
     var fakeProcess = {stdout: {columns: 12}};
-    assert.equal(_terminalWidth(fakeProcess), 10);
+    assert.equal(terminalWidth(fakeProcess), 10);
 
     fakeProcess = {stdout: {columns: 11}};
-    assert.equal(_terminalWidth(fakeProcess), 10);
+    assert.equal(terminalWidth(fakeProcess), 10);
 
     fakeProcess = {stdout: {columns: 79}};
-    assert.equal(_terminalWidth(fakeProcess), 77);
+    assert.equal(terminalWidth(fakeProcess), 77);
   });
 
   it('should use a terminal width of $COLUMNS - 2', () => {
     var fakeProcess = {stdout: {columns: 170}};
-    assert.equal(_terminalWidth(fakeProcess), 168);
+    assert.equal(terminalWidth(fakeProcess), 168);
   });
 
 });
