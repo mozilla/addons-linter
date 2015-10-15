@@ -141,7 +141,7 @@ describe('JavaScript Scanner', function() {
   });
 
   // Depends on: https://github.com/mozilla/addons-validator/issues/7
-  it.skip('ignores /*eslint-disable*/ comments', () => {
+  it('ignores /*eslint-disable*/ comments', () => {
     var code = '/*eslint-disable*/\n';
     code += 'var myDatabase = indexeddb || mozIndexedDB;';
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
@@ -149,7 +149,7 @@ describe('JavaScript Scanner', function() {
     return jsScanner.scan()
       .then((validationMessages) => {
         assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].id, 'mozIndexedDB');
+        assert.equal(validationMessages[0].code, messages.MOZINDEXEDDB.code);
       });
   });
 
