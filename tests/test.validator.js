@@ -5,6 +5,7 @@ import * as messages from 'messages';
 import CSSScanner from 'validators/css';
 import { DuplicateZipEntryError } from 'exceptions';
 import { fakeMessageData } from './helpers';
+import { singleLineString} from 'utils';
 
 
 describe('Validator', function() {
@@ -362,6 +363,18 @@ describe('Validator.textOutput()', function() {
     return 1000;
   }
 
+  function mediumTerminalWidth() {
+    return 77;
+  }
+
+  function smallTerminalWidth() {
+    return 59;
+  }
+
+  function uselesslyTinyTerminalWidth() {
+    return 1;
+  }
+
   it('should have error in textOutput()', () => {
     var addonValidator = new Validator({_: ['bar']});
     addonValidator.collector.addError({
@@ -405,5 +418,55 @@ describe('Validator.textOutput()', function() {
     assert.include(text, 'WHATEVER_WARNING');
     assert.include(text, 'whatever warning message');
     assert.include(text, 'whatever warning description');
+  });
+
+  it('should remove description when terminal is <78 columns wide', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.collector.addError({
+      code: 'WHATEVER_ERROR',
+      message: 'whatever error message',
+      description: 'whatever error description',
+    });
+    var text = addonValidator.textOutput(mediumTerminalWidth);
+    assert.equal(addonValidator.output.summary.errors, 1);
+    assert.notInclude(text, 'Description');
+    assert.notInclude(text, 'whatever error description');
+  });
+
+  it(singleLineString`should remove columns, description, and lines when
+  terminal is < 60 columns wide`, () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.collector.addError({
+      code: 'WHATEVER_ERROR',
+      message: 'whatever error message',
+      description: 'whatever error description',
+      column: 5,
+      line: 20,
+    });
+    var text = addonValidator.textOutput(smallTerminalWidth);
+    assert.equal(addonValidator.output.summary.errors, 1);
+    assert.notInclude(text, 'Description');
+    assert.notInclude(text, 'whatever error description');
+    assert.notInclude(text, 'Column');
+    assert.notInclude(text, '5');
+    assert.notInclude(text, 'Line');
+    assert.notInclude(text, '20');
+  });
+
+  it('should survive even a 1 column terminal', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.collector.addError({
+      code: 'WHATEVER_ERROR',
+      message: 'whatever error message',
+      description: 'whatever error description',
+      column: 5,
+      line: 20,
+    });
+    try {
+      addonValidator.textOutput(uselesslyTinyTerminalWidth);
+      assert.equal(addonValidator.output.summary.errors, 1);
+    } catch (e) {
+      assert.fail('Should not error on tiny terminal');
+    }
   });
 });

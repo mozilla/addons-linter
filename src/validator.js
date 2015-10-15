@@ -86,53 +86,84 @@ export default class Validator {
     for (let type of constants.MESSAGE_TYPES) {
       var messageType = `${type}s`;
       if (this.output[messageType].length) {
+        var outputConfig = {
+          code: {
+            dataTransform: (value) => {
+              return this.colorize(type)(value);
+            },
+            headingTransform: () => {
+              return _('Code');
+            },
+            maxWidth: 35,
+          },
+          message: {
+            headingTransform: () => {
+              return _('Message');
+            },
+            maxWidth: (maxColumns - 35) * .25,
+          },
+          description: {
+            headingTransform: () => {
+              return _('Description');
+            },
+            maxWidth: (maxColumns - 35) * .5,
+          },
+          file: {
+            headingTransform: () => {
+              return _('File');
+            },
+            maxWidth: (maxColumns - 35) * .25,
+          },
+          line: {
+            headingTransform: () => {
+              return _('Line');
+            },
+            maxWidth: 6,
+          },
+          column: {
+            headingTransform: () => {
+              return _('Column');
+            },
+            maxWidth: 6,
+          },
+        };
+
+        var outputColumns = [
+          'code',
+          'message',
+          'description',
+          'file',
+          'line',
+          'column',
+        ];
+
+        // If the terminal is this small we cave and don't size things
+        // contextually anymore.
+        if (maxColumns < 60) {
+          delete outputColumns[outputColumns.indexOf('column')];
+          delete outputConfig.column;
+          delete outputColumns[outputColumns.indexOf('description')];
+          delete outputConfig.description;
+          delete outputColumns[outputColumns.indexOf('line')];
+          delete outputConfig.line;
+
+          outputConfig.message.maxWidth = 15;
+          outputConfig.file.maxWidth = 15;
+        } else if (maxColumns < 78) {
+          delete outputColumns[outputColumns.indexOf('description')];
+          delete outputConfig.description;
+
+          outputConfig.message.maxWidth = (maxColumns - 47) * .5;
+          outputConfig.file.maxWidth = (maxColumns - 35) * .5;
+        }
+
         out.push(`${messageType.toUpperCase()}:`);
         out.push('');
         out.push(columnify(this.output[messageType], {
           maxWidth: 35,
-          columns: ['code', 'message', 'description', 'file', 'line', 'column'],
+          columns: outputColumns,
           columnSplitter: '   ',
-          config: {
-            code: {
-              dataTransform: (value) => {
-                return this.colorize(type)(value);
-              },
-              headingTransform: () => {
-                return _('Code');
-              },
-              maxWidth: 35,
-            },
-            message: {
-              headingTransform: () => {
-                return _('Message');
-              },
-              maxWidth: (maxColumns - 47) * .25,
-            },
-            description: {
-              headingTransform: () => {
-                return _('Description');
-              },
-              maxWidth: (maxColumns - 35) * .5,
-            },
-            file: {
-              headingTransform: () => {
-                return _('File');
-              },
-              maxWidth: (maxColumns - 35) * .25,
-            },
-            line: {
-              headingTransform: () => {
-                return _('Line');
-              },
-              maxWidth: 6,
-            },
-            column: {
-              headingTransform: () => {
-                return _('Column');
-              },
-              maxWidth: 6,
-            },
-          },
+          config: outputConfig,
         }));
       }
     }
