@@ -4,7 +4,8 @@ import * as messages from 'messages';
 export const BAD_URL_RX = /url\(['"]?(?:\/\/|(?:ht|f)tps?:\/\/|data:).*['"]?\)/i;
 /*eslint-ensable max-len */
 
-export function detectBadMozBindingURL(rule, messageList) {
+export function detectBadMozBindingURL(rule) {
+  var messageList = [];
   for (let declaration of rule.declarations) {
     if (declaration.property === '-moz-binding') {
       if (BAD_URL_RX.test(declaration.value)) {
@@ -17,4 +18,5 @@ export function detectBadMozBindingURL(rule, messageList) {
       }
     }
   }
+  return messageList;
 }

@@ -13,7 +13,7 @@ export default class CSSScanner {
 
   scan(_cssParser=cssParser) {
     return new Promise((resolve, reject) => {
-      var messages = [];
+      var validatorMessages = [];
 
       try {
         var ast = _cssParser.parse(this.code, {source: this.filename});
@@ -21,7 +21,7 @@ export default class CSSScanner {
         if (!e.reason || e instanceof Error === false) {
           return reject(e);
         } else {
-          messages.push(Object.assign({}, CSS_SYNTAX_ERROR, {
+          validatorMessages.push(Object.assign({}, CSS_SYNTAX_ERROR, {
             type: VALIDATION_ERROR,
             // Use the reason for the error as the message.
             message: e.reason,
@@ -31,7 +31,7 @@ export default class CSSScanner {
           }));
         }
         // A syntax error has been encounted so it's game over.
-        return resolve(messages);
+        return resolve(validatorMessages);
       }
 
       if (ast && ast.stylesheet && ast.stylesheet.rules) {
@@ -42,12 +42,12 @@ export default class CSSScanner {
           for (let cssRule in cssRules) {
             let cssRuleFunc = cssRules[cssRule];
             if (typeof cssRuleFunc === 'function') {
-              cssRuleFunc(rule, messages);
+              validatorMessages = validatorMessages.concat(cssRuleFunc(rule));
             }
           }
         }
       }
-      resolve(messages);
+      resolve(validatorMessages);
     });
   }
 }
