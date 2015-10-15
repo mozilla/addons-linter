@@ -4,6 +4,19 @@ import { singleLineString } from 'utils';
 import { version } from 'json!../package';
 
 
+export function terminalWidth(_process=process) {
+  if (_process && _process.stdout && _process.stdout.columns > 0) {
+    var width = _process.stdout.columns - 2;
+    // Terminals less than ten pixels wide seem silly.
+    if (width < 10) {
+      width = 10;
+    }
+
+    return width;
+  } else {
+    return 78;
+  }
+}
 
 export default argv
   .usage('Usage: ./$0 [options] addon-package \n\n' +
@@ -81,4 +94,4 @@ export default argv
   .demand(1)
   .help('help')
   .alias('h', 'help')
-  .wrap(78);
+  .wrap(terminalWidth());
