@@ -4,7 +4,7 @@
   "description": "Mozilla addons validator",
   "main": "index.js",
   "scripts": {
-    "start": "webpack",
+    "start": "node -e \"require('grunt').cli()\" null webpack:build",
     "test": "node -e \"require('grunt').cli()\" null test"
   },
   "repository": {
