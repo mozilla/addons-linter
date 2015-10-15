@@ -15,7 +15,6 @@ export default class RDFScanner {
     // this.namespace = this._xmlDoc.documentElement._nsMap.em;
     this.namespace = 'http://www.mozilla.org/2004/em-rdf#';
     this.validatorMessages = [];
-    this._domParser = null;
     this._xmlDoc = null;
   }
 
@@ -26,7 +25,13 @@ export default class RDFScanner {
           var promises = [];
 
           for (let rule in _rules) {
-            promises.push(_rules[rule](xmlDoc, this.namespace, this.filename));
+            // Rules can have private functions we don't run; anything that
+            // starts with an "_" shouldn't be run (but we export for testing)
+            // purposes.
+            if (rule.startsWith('_') === false) {
+              promises.push(_rules[rule](xmlDoc, this.namespace,
+                                         this.filename));
+            }
           }
 
           return Promise.all(promises);

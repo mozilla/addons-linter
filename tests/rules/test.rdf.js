@@ -20,7 +20,7 @@ describe('RDF: mustNotExist', () => {
         assert.equal(validatorMessages.length, 1);
         assert.equal(validatorMessages[0].code,
                      messages.TAG_NOT_ALLOWED_HIDDEN.code);
-        assert.equal(validatorMessages[0].severity, VALIDATION_ERROR);
+        assert.equal(validatorMessages[0].type, VALIDATION_ERROR);
       });
   });
 
@@ -38,7 +38,7 @@ describe('RDF: mustNotExist', () => {
 
         for (let message of validatorMessages) {
           assert.equal(message.code, messages.TAG_NOT_ALLOWED_HIDDEN.code);
-          assert.equal(message.severity, VALIDATION_ERROR);
+          assert.equal(message.type, VALIDATION_ERROR);
         }
       });
   });
@@ -57,7 +57,7 @@ describe('RDF: mustNotExist', () => {
         assert.equal(validatorMessages.length, 1);
         for (let message of validatorMessages) {
           assert.equal(message.code, messages.TAG_NOT_ALLOWED_UPDATEURL.code);
-          assert.equal(message.severity, VALIDATION_ERROR);
+          assert.equal(message.type, VALIDATION_ERROR);
         }
 
         // This shouldn't fail because there is no listed tag.
@@ -88,7 +88,7 @@ describe('RDF: mustNotExist', () => {
         assert.equal(validatorMessages.length, 3);
 
         for (let message of validatorMessages) {
-          assert.equal(message.severity, VALIDATION_WARNING);
+          assert.equal(message.type, VALIDATION_WARNING);
         }
 
         assert.equal(validatorMessages[0].code,
@@ -100,21 +100,26 @@ describe('RDF: mustNotExist', () => {
       });
   });
 
-  it('_checkForTags should find tags and set the correct severity', () => {
+  it('_checkForTags should find tags and set the correct type', () => {
     var contents = validRDF(singleLineString`<em:nameTag>Matthew Riley
       MacPherson</em:nameTag><em:file>'foo.js'</em:file>`);
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
 
     return rdfScanner.getXMLDoc()
       .then((xmlDoc) => {
-        return rules._checkForTags(xmlDoc, rdfScanner.namespace, ['file'],
-                                   VALIDATION_NOTICE, 'TAG_OBSOLETE_');
+        return rules._checkForTags({
+          xmlDoc: xmlDoc,
+          namespace: rdfScanner.namespace,
+          tags: ['file'],
+          type: VALIDATION_NOTICE,
+          prefix: 'TAG_OBSOLETE_',
+        });
       })
       .then((validatorMessages) => {
         assert.equal(validatorMessages.length, 1);
         assert.equal(validatorMessages[0].code,
                      messages.TAG_OBSOLETE_FILE.code);
-        assert.equal(validatorMessages[0].severity, VALIDATION_NOTICE);
+        assert.equal(validatorMessages[0].type, VALIDATION_NOTICE);
       });
   });
 });

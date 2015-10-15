@@ -76,6 +76,21 @@ describe('RDF', function() {
       });
   });
 
+  it('should not run private function inside rules', () => {
+    var contents = validRDF();
+    var rdfScanner = new RDFScanner(contents, 'install.rdf');
+    var fakeRules = {
+      iAmAFakeRule: sinon.stub(),
+      _iAmAPrivateFunction: sinon.stub(),
+    };
+
+    return rdfScanner.scan(fakeRules)
+      .then(() => {
+        assert.ok(fakeRules.iAmAFakeRule.calledOnce);
+        assert.notOk(fakeRules._iAmAPrivateFunction.calledOnce);
+      });
+  });
+
   it('should blow up 💣  when handed malformed XML', () => {
     var contents = validRDF('<em:hidden>true/em:hidden>');
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
