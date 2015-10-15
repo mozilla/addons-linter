@@ -1,4 +1,5 @@
 import yauzl from 'yauzl';
+import { singleLineString } from 'utils';
 
 import { DuplicateZipEntryError } from 'exceptions';
 
@@ -78,6 +79,18 @@ export default class Xpi {
         })
         .catch(reject);
     });
+  }
+
+  getFile(path, streamOrString='string') {
+    switch (streamOrString) {
+      case 'stream':
+        return this.getFileAsStream(path);
+      case 'string':
+        return this.getFileAsString(path);
+      default:
+        throw new Error(singleLineString`Unexpected streamOrString
+          value "${streamOrString}" should be "string" or "stream"`);
+    }
   }
 
   getFileAsStream(path) {

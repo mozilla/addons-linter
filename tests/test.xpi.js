@@ -190,6 +190,33 @@ describe('Xpi.getMetaData()', function() {
 });
 
 
+describe('Xpi.getFile()', function() {
+
+  it('should throw if streamOrString is incorrect', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    assert.throw(() => {
+      myXpi.getFile('whatever-file', 'whatever');
+    }, Error, /Unexpected streamOrString value "whatever"/);
+  });
+
+  it('should call getFileAsString', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    var fakeFile = 'fakeFile';
+    myXpi.getFileAsString = sinon.stub();
+    myXpi.getFile(fakeFile, 'string');
+    assert.ok(myXpi.getFileAsString.calledWith(fakeFile));
+  });
+
+  it('should call getFileAsStream', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    var fakeFile = 'fakeFile';
+    myXpi.getFileAsStream = sinon.stub();
+    myXpi.getFile(fakeFile, 'stream');
+    assert.ok(myXpi.getFileAsStream.calledWith(fakeFile));
+  });
+
+});
+
 describe('Xpi.getFileAsStream()', function() {
 
   beforeEach(() => {
