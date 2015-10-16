@@ -30,3 +30,14 @@ Tests use `grunt` but don't require global `grunt`. Just run:
 ```
 npm test
 ```
+
+## Logging
+
+We use [bunyan](https://github.com/trentm/node-bunyan) for logging:
+
+* By default logging is off (level is set to 'fatal') .
+* Logging in tests can be enabled using an env var e.g: `LOG_LEVEL=debug grunt test`
+* Logging on the cli can be enabled with `--log-level [level]`.
+* Bunyan by default logs JSON. If you want the json to be pretty printed
+  pipe anything that logs into `bunyan` e.g. `LOG_LEVEL=debug grunt test
+  | node_modules/bunyan/bin/bunyan`
