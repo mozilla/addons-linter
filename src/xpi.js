@@ -2,6 +2,7 @@ import yauzl from 'yauzl';
 import { singleLineString } from 'utils';
 
 import { DuplicateZipEntryError } from 'exceptions';
+import log from 'logger';
 
 
 /*
@@ -38,6 +39,7 @@ export default class Xpi {
       return;
     }
     if (this.entries.indexOf(entry.fileName) > -1) {
+      log.info('Found duplicate file entry: "%s" in package', entry.fileName);
       reject(new DuplicateZipEntryError(
         `Entry "${entry.fileName}" has already been seen`));
     }

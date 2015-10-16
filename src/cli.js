@@ -32,6 +32,12 @@ export default argv
       'search', 'multi',
     ],
   })
+  .option('log-level', {
+    describe: 'The log-level to generate',
+    type: 'string',
+    default: 'fatal',
+    choices: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
+  })
   .option('output', {
     alias: 'o',
     describe: 'The type of output to generate',

@@ -18,6 +18,13 @@ describe('Basic CLI tests', function() {
     assert.equal(args.t, 'any');
   });
 
+  it('should default logLevel type to "fatal"', () => {
+    // This means by default there won't be any output.
+    var args = cli.parse(['foo/bar.xpi']);
+    assert.equal(args.logLevel, 'fatal');
+    assert.equal(args['log-level'], 'fatal');
+  });
+
   it('should default add-on output to "text"', () => {
     var args = cli.parse(['foo/bar.xpi']);
     assert.equal(args.output, 'text');
