@@ -244,7 +244,7 @@ describe('Xpi.getFileAsStream()', function() {
         assert.fail(null, null, 'Unexpected success');
       })
       .catch((err) => {
-        assert.include(err.message, 'path does not exist');
+        assert.include(err.message, 'Path "whatever" does not exist');
       });
   });
 

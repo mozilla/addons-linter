@@ -1,4 +1,5 @@
 import semver from 'semver';
+import { PACKAGE_TYPES } from 'const';
 
 /*
  * Template tag for removing whitespace and new lines
@@ -52,4 +53,14 @@ export function checkMinNodeVersion(minVersion, _process=process) {
       resolve();
     }
   });
+}
+
+
+export function getPackageTypeAsString(numericPackageType) {
+  for (let packageType of Object.keys(PACKAGE_TYPES)) {
+    if (parseInt(numericPackageType, 10) === PACKAGE_TYPES[packageType]) {
+      return packageType;
+    }
+  }
+  throw new Error(`Invalid package type constant "${numericPackageType}"`);
 }
