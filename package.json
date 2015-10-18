@@ -39,7 +39,7 @@
     "sinon": "1.17.1",
     "source-map-support": "0.3.2",
     "webpack": "1.12.2",
-    "webpack-dev-server": "1.11.0"
+    "webpack-dev-server": "1.12.1"
   },
   "dependencies": {
     "bunyan": "1.5.1",
