@@ -98,8 +98,8 @@ export default class Xpi {
   getFileAsStream(path) {
     return new Promise((resolve, reject) => {
 
-      if (Object.keys(this.metadata).indexOf(path) === -1) {
-        throw new Error('path does not exist in metadata', path);
+      if (!this.metadata.hasOwnProperty(path)) {
+        throw new Error(`Path "${path}" does not exist in metadata`);
       }
 
       return this.open()

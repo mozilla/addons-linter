@@ -2,9 +2,10 @@ import Validator from 'validator';
 
 import * as constants from 'const';
 import * as messages from 'messages';
+
 import CSSScanner from 'validators/css';
 import { DuplicateZipEntryError } from 'exceptions';
-import { fakeMessageData } from './helpers';
+import { fakeMessageData, validRDF } from './helpers';
 import { singleLineString} from 'utils';
 
 
@@ -208,6 +209,7 @@ describe('Validator', function() {
     addonValidator.checkFileExists = () => Promise.resolve();
     addonValidator.collector.addError = sinon.stub();
     addonValidator.print = sinon.stub();
+    addonValidator.detectPackageType = () => Promise.resolve();
     class FakeXpi {
       getMetaData() {
         return Promise.reject(
@@ -475,4 +477,173 @@ describe('Validator.textOutput()', function() {
       assert.fail('Should not error on tiny terminal');
     }
   });
+});
+
+
+describe('Validator.detectType()', function() {
+
+  it('should reject on multiple em:type nodes', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.xpi = {
+      getFileAsString: () => {
+        return Promise.resolve(
+          validRDF('<em:type>2</em:type><em:type>2</em:type>'));
+      },
+      getMetaData: () => {
+        return Promise.resolve({
+          'install.rdf': {},
+        });
+      },
+    };
+    return addonValidator.detectPackageType()
+      .then(() => {
+        assert.fail(null, null, 'Unexpected success');
+      })
+      .catch((err) => {
+        assert.equal(err.message, 'Multiple <em:type> elements found');
+      });
+  });
+
+  it('should collect an error on invalid type value', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.xpi = {
+      getFileAsString: () => {
+        return Promise.resolve(validRDF('<em:type>whatevs</em:type>'));
+      },
+      getMetaData: () => {
+        return Promise.resolve({
+          'install.rdf': {},
+        });
+      },
+    };
+
+    return addonValidator.detectPackageType()
+      .then(() => {
+        var errors = addonValidator.collector.errors;
+        assert.equal(errors.length, 2);
+        assert.equal(errors[0].code, messages.TYPE_INVALID.code);
+        assert.equal(errors[1].code, messages.TYPE_NOT_DETERMINED.code);
+      });
+  });
+
+  it('should resolve with mapped type value', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.xpi = {
+      getFileAsString: () => {
+        return Promise.resolve(validRDF('<em:type>2</em:type>'));
+      },
+      getMetaData: () => {
+        return Promise.resolve({
+          'install.rdf': {},
+        });
+      },
+    };
+
+    return addonValidator.detectPackageType()
+      .then((packageType) => {
+        // Type 2 maps to 1 PACKAGE_EXTENSION
+        assert.equal(packageType, constants.PACKAGE_EXTENSION);
+      });
+  });
+
+  it('should collect a notice if type is missing', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.xpi = {
+      getFileAsString: () => {
+        return Promise.resolve(validRDF(''));
+      },
+      getMetaData: () => {
+        return Promise.resolve({
+          'install.rdf': {},
+        });
+      },
+    };
+
+    return addonValidator.detectPackageType()
+      .then(() => {
+        var notices = addonValidator.collector.notices;
+        assert.equal(notices.length, 1);
+        assert.equal(notices[0].code, messages.TYPE_MISSING.code);
+      });
+  });
+
+  it('should collect a notice if no install.rdf', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.xpi = {
+      getMetaData: () => {
+        return Promise.resolve({});
+      },
+    };
+    return addonValidator.detectPackageType()
+      .then(() => {
+        var notices = addonValidator.collector.notices;
+        assert.equal(notices.length, 1);
+        assert.equal(notices[0].code, messages.TYPE_NO_INSTALL_RDF.code);
+      });
+  });
+
+  it('should fall-back to detecting a dictionary based on layout', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.xpi = {
+      getMetaData: () => {
+        return Promise.resolve({
+          'dictionaries/something': {},
+          'whatever': {},
+        });
+      },
+    };
+    return addonValidator.detectPackageType()
+      .then((packageType) => {
+        assert.equal(packageType, constants.PACKAGE_DICTIONARY);
+      });
+
+  });
+
+  it('should fall-back to detect theme based on extension', () => {
+    var addonValidator = new Validator({_: ['foo.jar']});
+    addonValidator.xpi = {
+      getMetaData: () => {
+        return Promise.resolve({
+          whatever: {},
+        });
+      },
+    };
+    return addonValidator.detectPackageType()
+      .then((packageType) => {
+        assert.equal(packageType, constants.PACKAGE_THEME);
+      });
+
+  });
+
+  it('should fall-back to detect extention based on extension', () => {
+    var addonValidator = new Validator({_: ['foo.xpi']});
+    addonValidator.xpi = {
+      getMetaData: () => {
+        return Promise.resolve({
+          whatever: {},
+        });
+      },
+    };
+    return addonValidator.detectPackageType()
+      .then((packageType) => {
+        assert.equal(packageType, constants.PACKAGE_EXTENSION);
+      });
+
+  });
+
+  it('should collect an error if all attempts to detect type fail', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.xpi = {
+      getMetaData: () => {
+        return Promise.resolve({});
+      },
+    };
+    return addonValidator.detectPackageType()
+      .then(() => {
+        var errors = addonValidator.collector.errors;
+        assert.equal(errors.length, 1);
+        assert.equal(errors[0].code, messages.TYPE_NOT_DETERMINED.code);
+      });
+  });
+
 });

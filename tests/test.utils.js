@@ -60,3 +60,28 @@ describe('utils.checkMinNodeVersion()', function() {
   });
 
 });
+
+
+describe('utils.getPackageTypeAsString()', function() {
+
+  it('should look up a package type when passed a number', () => {
+    assert.equal(utils.getPackageTypeAsString(2), 'PACKAGE_THEME');
+  });
+
+  it('should look up a package type when passed a string', () => {
+    assert.equal(utils.getPackageTypeAsString('2'), 'PACKAGE_THEME');
+  });
+
+  it('should throw if given a non-existent package type value', () => {
+    assert.throws(() => {
+      utils.getPackageTypeAsString(127);
+    }, Error, 'Invalid package type constant "127"');
+  });
+
+  it('should throw if given a bogus package type value', () => {
+    assert.throws(() => {
+      utils.getPackageTypeAsString('whatevs');
+    }, Error, 'Invalid package type constant "whatevs"');
+  });
+
+});
