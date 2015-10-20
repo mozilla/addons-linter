@@ -51,6 +51,9 @@ In a nutshell the way the validator works is to take an add-on
 package, extract the metadata from the xpi (zip) format and then
 process the files it finds through various content scanners.
 
+![Architecture diagram](https://raw.github.com/mozilla/addons-validator/master/docs/diagrams/addon-validator-flow.png)
+
+
 ### Scanners
 
 Generally each file-type has a scanner. For example we have a CSS and a
