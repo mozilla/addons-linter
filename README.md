@@ -25,13 +25,97 @@ npm install
 
 Dependencies are automatically kept up-to-date using [greenkeeper](http://greenkeeper.io/).
 
+### Npm scripts and grunt tasks
+
+Basic automation tasks are exposed via npm scripts. These don't
+need `grunt-cli` installed globally.
+
+#### Npm scripts
+
+| Script       | Description                                               |
+|--------------|-----------------------------------------------------------|
+| npm test     |  Runs the tests                                           |
+| npm start    |  Builds the lib and watches for changes                   |
+
+If you install `grunt-cli` globally then you can run some additional tasks.
+
+```
+npm install -g grunt-cli
+```
+
+From the grunt docs:
+
+>  The job of the Grunt CLI is simple: run the version of Grunt which has
+   been installed next to a Gruntfile. This allows multiple versions of
+   Grunt to be installed on the same machine simultaneously.
+
+#### Grunt tasks
+
+| Script                | Description                                      |
+|-----------------------|--------------------------------------------------|
+| grunt test            |  Runs the tests                                  |
+| grunt webpack:build   |  Builds the lib.                                 |
+| grunt webpack:watch   |  Builds the lib and watches for changes          |
+| grunt eslint          |  Lints the files with eslint (Run in grunt test) |
+| grunt jscs            |  Checks for style issues. (Run in grunt test)    |
+
+
+### Building and watching for changes
+
+You can run `npm start` (or `grunt webpack:watch`) this will build
+the lib and then rebuild on file changes.
+
+You can then use the CLI from `bin/addons-validator`.
+
 ### Testing
 
-Tests use `grunt` but don't require global `grunt`. Just run:
+Tests use `grunt` but don't require global `grunt`. Just run `npm test`.
 
+Alternatively if you prefer use `grunt test` directly.
+
+#### Coverage
+
+We're looking to maintain coverage at 100%. Use the coverage data in the
+test output  to work out what lines aren't covered and ensure they're
+covered correctly.
+
+#### Testing and promises
+
+Tests using promises should just simply return the promise. This negates the
+need to use `done()`:
+
+```javascript
+it('should do something promisy', () => {
+  return somePromiseCall()
+    .then(() => {
+      // Assert stuff here.
+    });
+})
 ```
-npm test
+
+To test for rejection you can use this pattern:
+
+```javascript
+it('should reject because of x', () => {
+  return somePromiseCall()
+    .then(() => {
+      assert.fail(null, null, 'Unexpected success');
+    })
+    .catch((err) => {
+      // make assertions about err here.
+    });
+})
 ```
+
+#### Assertions and testing APIs
+
+`assert`, `describe`, `it`, `beforeEach` and `afterEach` are
+available in tests by default - you don't need to import
+anything for those to work.
+
+We're using chai for assertions [see the Chai docs for the API
+available](http://chaijs.com/api/assert/)
+
 
 ### Logging
 
