@@ -1,3 +1,5 @@
+import { readFileSync } from 'fs';
+
 import * as messages from 'messages';
 
 describe('Messages', function() {
@@ -26,4 +28,20 @@ describe('Messages', function() {
     assert.include(teslaTag.description, 'petrol');
   });
 
+  it('should have updated rules.md with new message codes', () => {
+    var markdown = readFileSync('docs/rules.md', 'utf8');
+    for (let message in messages) {
+      var code = messages[message].code;
+      if (code) {
+        // Asserting using indexOf rather than assert.include
+        // to avoid inclusion of the whole rules.md as part
+        // of the error.
+        assert.ok(markdown.indexOf(code) > -1,
+                  `code ${code} is not present in rules.md`);
+      }
+    }
+  });
+
 });
+
+
