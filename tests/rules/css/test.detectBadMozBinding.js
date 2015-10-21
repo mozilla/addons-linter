@@ -4,7 +4,7 @@ import { BAD_URL_RX } from 'rules/css';
 import { VALIDATION_ERROR } from 'const';
 import { singleLineString } from 'utils';
 
-import CSSScanner from 'validators/css';
+import CSSScanner from 'scanners/css';
 
 
 describe('BAD_URL_RX', () => {

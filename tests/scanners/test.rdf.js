@@ -5,7 +5,7 @@ import XMLDom from 'xmldom';
 
 import { RDFParseError } from 'exceptions';
 import { validRDF } from '../helpers';
-import RDFScanner from 'validators/rdf';
+import RDFScanner from 'scanners/rdf';
 
 
 describe('RDF', function() {

@@ -1,5 +1,5 @@
 import { VALIDATION_ERROR, VALIDATION_WARNING } from 'const';
-import JavaScriptScanner from 'validators/javascript';
+import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import { singleLineString } from 'utils';
 

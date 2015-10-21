@@ -1,6 +1,6 @@
 import { Readable } from 'stream';
 
-import ChromeManifestScanner from 'validators/chromemanifest';
+import ChromeManifestScanner from 'scanners/chromemanifest';
 
 
 describe('ChromeManifestScanner', () => {

@@ -1,4 +1,4 @@
-import BaseValidator from 'validators/base';
+import BaseScanner from 'scanners/base';
 import * as cssParser from 'css';
 import * as rules from 'rules/css';
 import { CSS_SYNTAX_ERROR } from 'messages';
@@ -6,7 +6,7 @@ import { VALIDATION_ERROR } from 'const';
 import { ignorePrivateFunctions } from 'utils';
 
 
-export default class CSSScanner extends BaseValidator {
+export default class CSSScanner extends BaseScanner {
 
   defaultRules = rules;
 

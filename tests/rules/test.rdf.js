@@ -1,6 +1,6 @@
 import { VALIDATION_ERROR, VALIDATION_NOTICE, VALIDATION_WARNING } from 'const';
 import * as rules from 'rules/rdf';
-import RDFScanner from 'validators/rdf';
+import RDFScanner from 'scanners/rdf';
 import * as messages from 'messages';
 import { singleLineString } from 'utils';
 import { validRDF } from '../helpers';

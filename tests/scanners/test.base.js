@@ -1,10 +1,10 @@
 import sinon from 'sinon';
 
-import BaseValidator from 'validators/base';
+import BaseScanner from 'scanners/base';
 import { NotImplentedError } from 'exceptions';
 
 
-class BaseValidatorWithContents extends BaseValidator {
+class BaseScannerWithContents extends BaseScanner {
   _getContents() {
     return new Promise((resolve) => {
       resolve({});
@@ -12,12 +12,12 @@ class BaseValidatorWithContents extends BaseValidator {
   }
 }
 
-describe('Base Validator Class', function() {
+describe('Base Scanner Class', function() {
 
   it('should reject when _getContents is not implemented', () => {
-    var baseValidator = new BaseValidator('', 'index.html');
+    var baseScanner = new BaseScanner('', 'index.html');
 
-    return baseValidator.scan()
+    return baseScanner.scan()
       .then(() => {
         assert.fail(null, null, 'Unexpected success');
       })
@@ -28,14 +28,14 @@ describe('Base Validator Class', function() {
   });
 
   it('should run all rules', () => {
-    var baseValidator = new BaseValidatorWithContents('', 'index.html');
+    var baseScanner = new BaseScannerWithContents('', 'index.html');
 
     var fakeRules = {
       iAmAFakeRule: sinon.stub(),
       iAmAAnotherFakeRule: sinon.stub(),
     };
 
-    return baseValidator.scan(fakeRules)
+    return baseScanner.scan(fakeRules)
       .then(() => {
         assert.ok(fakeRules.iAmAFakeRule.calledOnce);
         assert.ok(fakeRules.iAmAAnotherFakeRule.calledOnce);
@@ -43,14 +43,14 @@ describe('Base Validator Class', function() {
   });
 
   it('should run all rules', () => {
-    var baseValidator = new BaseValidatorWithContents('', 'index.html');
+    var baseScanner = new BaseScannerWithContents('', 'index.html');
 
     var fakeRules = {
       iAmAFakeRule: sinon.stub(),
       iAmAAnotherFakeRule: sinon.stub(),
     };
 
-    return baseValidator.scan(fakeRules)
+    return baseScanner.scan(fakeRules)
       .then(() => {
         assert.ok(fakeRules.iAmAFakeRule.calledOnce);
         assert.ok(fakeRules.iAmAAnotherFakeRule.calledOnce);
@@ -58,13 +58,13 @@ describe('Base Validator Class', function() {
   });
 
   it('should not run private function inside rules', () => {
-    var baseValidator = new BaseValidatorWithContents('', 'install.rdf');
+    var baseScanner = new BaseScannerWithContents('', 'install.rdf');
     var fakeRules = {
       iAmAFakeRule: sinon.stub(),
       _iAmAPrivateFunction: sinon.stub(),
     };
 
-    return baseValidator.scan(fakeRules)
+    return baseScanner.scan(fakeRules)
       .then(() => {
         assert.ok(fakeRules.iAmAFakeRule.calledOnce);
         assert.notOk(fakeRules._iAmAPrivateFunction.calledOnce);

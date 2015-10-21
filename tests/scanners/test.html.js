@@ -3,7 +3,7 @@ import sinon from 'sinon';
 
 import { VALIDATION_ERROR } from 'const';
 import { validHTML } from '../helpers';
-import HTMLScanner from 'validators/html';
+import HTMLScanner from 'scanners/html';
 import * as rules from 'rules/html';
 import * as messages from 'messages';
 import { singleLineString } from 'utils';

@@ -3,7 +3,7 @@ import Validator from 'validator';
 import * as constants from 'const';
 import * as messages from 'messages';
 
-import CSSScanner from 'validators/css';
+import CSSScanner from 'scanners/css';
 import { DuplicateZipEntryError } from 'exceptions';
 import { fakeMessageData, validRDF } from './helpers';
 import { singleLineString} from 'utils';

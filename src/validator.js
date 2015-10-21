@@ -15,11 +15,11 @@ import { getPackageTypeAsString,
 
 import log from 'logger';
 import Collector from 'collector';
-import ChromeManifestScanner from 'validators/chromemanifest';
-import CSSScanner from 'validators/css';
-import HTMLScanner from 'validators/html';
-import JavaScriptScanner from 'validators/javascript';
-import RDFScanner from 'validators/rdf';
+import ChromeManifestScanner from 'scanners/chromemanifest';
+import CSSScanner from 'scanners/css';
+import HTMLScanner from 'scanners/html';
+import JavaScriptScanner from 'scanners/javascript';
+import RDFScanner from 'scanners/rdf';
 import Xpi from 'xpi';
 
 export var lstat = promisify(fs.lstat);

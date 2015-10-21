@@ -2,7 +2,7 @@ import { NotImplentedError } from 'exceptions';
 import { ignorePrivateFunctions } from 'utils';
 
 
-export default class BaseValidator {
+export default class BaseScanner {
 
   constructor(contents, filename) {
     this.contents = contents;

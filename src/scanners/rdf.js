@@ -1,11 +1,11 @@
 import XMLDom from 'xmldom';
 
-import BaseValidator from 'validators/base';
+import BaseScanner from 'scanners/base';
 import { RDFParseError } from 'exceptions';
 import * as rules from 'rules/rdf';
 
 
-export default class RDFScanner extends BaseValidator {
+export default class RDFScanner extends BaseScanner {
 
   defaultRules = rules;
   // I don't think this ever needs to be different, but if it does we can

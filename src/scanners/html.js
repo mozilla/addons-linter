@@ -1,10 +1,10 @@
 import cheerio from 'cheerio';
 
-import BaseValidator from 'validators/base';
+import BaseScanner from 'scanners/base';
 import * as rules from 'rules/html';
 
 
-export default class HTMLScanner extends BaseValidator {
+export default class HTMLScanner extends BaseScanner {
 
   defaultRules = rules;
 

@@ -1,6 +1,6 @@
 import * as messages from 'messages';
 import { VALIDATION_ERROR } from 'const';
-import CSSScanner from 'validators/css';
+import CSSScanner from 'scanners/css';
 
 
 describe('CSSScanner', () => {
