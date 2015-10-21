@@ -1,27 +1,54 @@
+import BaseValidator from 'validators/base';
 import * as cssParser from 'css';
-import * as cssRules from 'rules/css';
+import * as rules from 'rules/css';
 import { CSS_SYNTAX_ERROR } from 'messages';
 import { VALIDATION_ERROR } from 'const';
+import { ignorePrivateFunctions } from 'utils';
 
 
-export default class CSSScanner {
+export default class CSSScanner extends BaseValidator {
 
-  constructor(code, filename) {
-    this.code = code;
-    this.filename = filename;
+  defaultRules = rules;
+
+  scan(_rules=this.defaultRules) {
+    return new Promise((resolve, reject) => {
+      this.getContents()
+        .then((ast) => {
+          if (ast && ast.stylesheet && ast.stylesheet.rules) {
+            for (let rule of ast.stylesheet.rules) {
+              if (rule.type === 'comment') {
+                continue;
+              }
+
+              var rules = ignorePrivateFunctions(_rules);
+
+              for (let cssRule in rules) {
+                let cssRuleFunc = rules[cssRule];
+
+                if (typeof cssRuleFunc === 'function') {
+                  this.validatorMessages = this.validatorMessages.concat(
+                    cssRuleFunc(rule));
+                }
+              }
+            }
+          }
+
+          resolve(this.validatorMessages);
+        })
+        .catch(reject);
+    });
   }
 
-  scan(_cssParser=cssParser) {
+  _getContents(_cssParser=cssParser) {
     return new Promise((resolve, reject) => {
-      var validatorMessages = [];
-
       try {
-        var ast = _cssParser.parse(this.code, {source: this.filename});
+        var ast = _cssParser.parse(this.contents, {source: this.filename});
+        return resolve(ast);
       } catch (e) {
         if (!e.reason || e instanceof Error === false) {
           return reject(e);
         } else {
-          validatorMessages.push(Object.assign({}, CSS_SYNTAX_ERROR, {
+          this.validatorMessages.push(Object.assign({}, CSS_SYNTAX_ERROR, {
             type: VALIDATION_ERROR,
             // Use the reason for the error as the message.
             message: e.reason,
@@ -30,24 +57,11 @@ export default class CSSScanner {
             file: e.filename,
           }));
         }
-        // A syntax error has been encounted so it's game over.
-        return resolve(validatorMessages);
-      }
 
-      if (ast && ast.stylesheet && ast.stylesheet.rules) {
-        for (let rule of ast.stylesheet.rules) {
-          if (rule.type === 'comment') {
-            continue;
-          }
-          for (let cssRule in cssRules) {
-            let cssRuleFunc = cssRules[cssRule];
-            if (typeof cssRuleFunc === 'function') {
-              validatorMessages = validatorMessages.concat(cssRuleFunc(rule));
-            }
-          }
-        }
+        // A syntax error has been encounted so it's game over.
+        return resolve(null);
       }
-      resolve(validatorMessages);
     });
   }
+
 }

@@ -64,3 +64,26 @@ export function getPackageTypeAsString(numericPackageType) {
   }
   throw new Error(`Invalid package type constant "${numericPackageType}"`);
 }
+
+/*
+ * Looks throuh all exported functions and returns only
+ * "public" functions that aren't prefixed with an _
+ *
+ * Used for ignoring private functions in rules files.
+ * Rules can have private functions we don't run; anything that
+ * starts with an "_" shouldn't be returned.
+ *
+ * This exists because we export private functions in rule files
+ * for testing.
+ */
+export function ignorePrivateFunctions(list) {
+  var filteredList = {};
+
+  for (let functionName in list) {
+    if (functionName.startsWith('_') === false) {
+      filteredList[functionName] = list[functionName];
+    }
+  }
+
+  return filteredList;
+}

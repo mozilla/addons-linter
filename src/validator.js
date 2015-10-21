@@ -59,7 +59,7 @@ export default class Validator {
           return this.xpi.getFileAsString(installRdfPath)
             .then((content) => {
               var rdfScanner = new RDFScanner(content, installRdfPath);
-              return rdfScanner.getXMLDoc();
+              return rdfScanner.getContents();
             })
             .then((xmlDoc) => {
               // Lookup addon type from install.rdf.

@@ -30,64 +30,19 @@ describe('RDF', function() {
       });
   });
 
-  it('should run all rules in rules/html', () => {
-    var contents = validRDF();
-    var rdfScanner = new RDFScanner(contents, 'install.rdf');
-    var fakeRules = {
-      iAmAFakeRule: sinon.stub(),
-      iAmAAnotherFakeRule: sinon.stub(),
-    };
-
-    return rdfScanner.scan(fakeRules)
-      .then(() => {
-        assert.ok(fakeRules.iAmAFakeRule.calledOnce);
-        assert.ok(fakeRules.iAmAAnotherFakeRule.calledOnce);
-      });
-  });
-
   it('should return an already-parsed xmlDoc if exists', () => {
     sinon.spy(XMLDom, 'DOMParser');
 
     var contents = validRDF();
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
 
-    return rdfScanner.getXMLDoc()
+    return rdfScanner.getContents()
       .then(() => {
-        return rdfScanner.getXMLDoc();
+        return rdfScanner.getContents();
       })
       .then(() => {
         assert.ok(XMLDom.DOMParser.calledOnce);
         XMLDom.DOMParser.restore();
-      });
-  });
-
-  it('should run all rules in rules/rdf', () => {
-    var contents = validRDF();
-    var rdfScanner = new RDFScanner(contents, 'install.rdf');
-    var fakeRules = {
-      iAmAFakeRule: sinon.stub(),
-      iAmAAnotherFakeRule: sinon.stub(),
-    };
-
-    return rdfScanner.scan(fakeRules)
-      .then(() => {
-        assert.ok(fakeRules.iAmAFakeRule.calledOnce);
-        assert.ok(fakeRules.iAmAAnotherFakeRule.calledOnce);
-      });
-  });
-
-  it('should not run private function inside rules', () => {
-    var contents = validRDF();
-    var rdfScanner = new RDFScanner(contents, 'install.rdf');
-    var fakeRules = {
-      iAmAFakeRule: sinon.stub(),
-      _iAmAPrivateFunction: sinon.stub(),
-    };
-
-    return rdfScanner.scan(fakeRules)
-      .then(() => {
-        assert.ok(fakeRules.iAmAFakeRule.calledOnce);
-        assert.notOk(fakeRules._iAmAPrivateFunction.calledOnce);
       });
   });
 

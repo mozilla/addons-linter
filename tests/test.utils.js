@@ -61,6 +61,37 @@ describe('utils.checkMinNodeVersion()', function() {
 
 });
 
+describe('utils.ignorePrivateFunctions()', function() {
+
+  it('should return only "public" functions', () => {
+    var listOfRuleFunctions = {
+      checkForEval: sinon.stub(),
+      _parseEvalPossibility: sinon.stub(),
+      checkForCurlyBraces: sinon.stub(),
+      __checkForFunctions: sinon.stub(),
+      i_am_an_underscore_function: sinon.stub(),
+    };
+
+    var publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
+    assert.typeOf(publicFunctions, 'object');
+    assert.lengthOf(Object.keys(publicFunctions), 3);
+    assert.notInclude(Object.keys(publicFunctions), '_parseEvalPossibility');
+    assert.notInclude(Object.keys(publicFunctions), '__checkForFunctions');
+  });
+
+  it('should return an empty object when given only private functions', () => {
+    var listOfRuleFunctions = {
+      _parseEvalPossibility: sinon.stub(),
+      __checkForFunctions: sinon.stub(),
+    };
+
+    var publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
+    assert.typeOf(publicFunctions, 'object');
+    assert.lengthOf(Object.keys(publicFunctions), 0);
+  });
+
+});
+
 
 describe('utils.getPackageTypeAsString()', function() {
 

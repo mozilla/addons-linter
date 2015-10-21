@@ -33,7 +33,13 @@ describe('CSSScanner', () => {
       },
     };
 
-    return cssScanner.scan(fakeCSSParser)
+    // We load the fake CSS parser into the scanner the only way possible:
+    // using the private _getContents method, which will take an alternate
+    // parser.
+    return cssScanner._getContents(fakeCSSParser)
+      .then(() => {
+        return cssScanner.scan();
+      })
       .then(() => {
         assert.fail(null, null, 'unexpected success');
       })

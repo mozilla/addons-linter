@@ -12,7 +12,7 @@ describe('RDF: mustNotExist', () => {
     var contents = validRDF('<em:hidden>true</em:hidden>');
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
 
-    return rdfScanner.getXMLDoc()
+    return rdfScanner.getContents()
       .then((xmlDoc) => {
         return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
       })
@@ -29,7 +29,7 @@ describe('RDF: mustNotExist', () => {
       <em:hidden>false</em:hidden>`);
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
 
-    return rdfScanner.getXMLDoc()
+    return rdfScanner.getContents()
       .then((xmlDoc) => {
         return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
       })
@@ -49,7 +49,7 @@ describe('RDF: mustNotExist', () => {
       <em:updateURL>http://mozilla.com/updateMyAddon.php</em:updateURL>`);
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
 
-    return rdfScanner.getXMLDoc()
+    return rdfScanner.getContents()
       .then((xmlDoc) => {
         return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
       })
@@ -65,7 +65,7 @@ describe('RDF: mustNotExist', () => {
           <em:updateURL>http://mozilla.com/updateMyAddon.php</em:updateURL>`);
         rdfScanner = new RDFScanner(contents, 'install.rdf');
 
-        return rdfScanner.getXMLDoc();
+        return rdfScanner.getContents();
       })
       .then((xmlDoc) => {
         return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
@@ -80,7 +80,7 @@ describe('RDF: mustNotExist', () => {
       <em:requires>'something'</em:requires><em:skin>true</em:skin>`);
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
 
-    return rdfScanner.getXMLDoc()
+    return rdfScanner.getContents()
       .then((xmlDoc) => {
         return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
       })
@@ -105,7 +105,7 @@ describe('RDF: mustNotExist', () => {
       MacPherson</em:nameTag><em:file>'foo.js'</em:file>`);
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
 
-    return rdfScanner.getXMLDoc()
+    return rdfScanner.getContents()
       .then((xmlDoc) => {
         return rules._checkForTags({
           xmlDoc: xmlDoc,

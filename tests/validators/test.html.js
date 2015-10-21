@@ -45,7 +45,7 @@ describe('HTML', function() {
     </prefwindow>`);
     var htmlScanner = new HTMLScanner(badHTML, 'index.html');
 
-    return htmlScanner.getHTMLDoc()
+    return htmlScanner.getContents()
       .then(($) => {
         return rules.ensureRequiredAttributes($, htmlScanner.filename);
       })
@@ -58,7 +58,7 @@ describe('HTML', function() {
 
         // Make sure there are no errors when an ID is provided.
         htmlScanner = new HTMLScanner(goodHTML, 'index.html');
-        return htmlScanner.getHTMLDoc();
+        return htmlScanner.getContents();
       })
       .then(($) => {
         return rules.ensureRequiredAttributes($, htmlScanner.filename);
@@ -81,27 +81,12 @@ describe('HTML', function() {
 
     sinon.spy(cheerio, 'load');
 
-    return htmlScanner.getHTMLDoc()
+    return htmlScanner.getContents()
       .then(() => {
-        return htmlScanner.getHTMLDoc();
+        return htmlScanner.getContents();
       })
       .then(() => {
         assert.ok(cheerio.load.calledOnce);
-      });
-  });
-
-  it('should run all rules in rules/html', () => {
-    var contents = validHTML();
-    var htmlScanner = new HTMLScanner(contents, 'index.html');
-    var fakeRules = {
-      iAmAFakeRule: sinon.stub(),
-      iAmAAnotherFakeRule: sinon.stub(),
-    };
-
-    return htmlScanner.scan(fakeRules)
-      .then(() => {
-        assert.ok(fakeRules.iAmAFakeRule.calledOnce);
-        assert.ok(fakeRules.iAmAAnotherFakeRule.calledOnce);
       });
   });
 
