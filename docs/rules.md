@@ -74,7 +74,7 @@ We should try and list out all the validation rules we know of by file type. E.g
 
 | Done? | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :x: | syntax_error | | JavaScript Compile-Time Error |  | [testcases/javascript/jsshell.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/jsshell.py)| | |
+| :white_check_mark: | syntax_error | | JavaScript Compile-Time Error |  | [testcases/javascript/jsshell.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/jsshell.py)| | JS_SYNTAX_ERROR |
 | :x: | recursion_error | | JS too deeply nested for validation | | | | |
 | :x: | retrieving_tree | | JS reflection error prevented validation | | | | |
 
@@ -112,10 +112,11 @@ We should try and list out all the validation rules we know of by file type. E.g
 
 | Done? | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :white_check_mark: | -moz-binding_external | | Illegal reference to external scripts |  | [testcases/markup/csstester.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/markup/csstester.py)|
+| :white_check_mark: | -moz-binding_external | | Illegal reference to external scripts |  | [testcases/markup/csstester.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/markup/csstester.py)| | MOZ_BINDING_EXT_REFERENCE |
 | :x: | remote_url | | Themes may not reference remote resources | | | | |
 | :x: | identity_box | | Modification to identity box | | | | |
 | :x: | unicode_decode | | Unicode decode error. | | | | |
+| :white_check_mark: | CSS syntax error | A CSS syntax error was detected | | N/A | N/A | CSS_SYNTAX_ERROR |
 
 ### HTML
 
@@ -167,15 +168,23 @@ We should try and list out all the validation rules we know of by file type. E.g
 
 ## Install.rdf
 
+TODO: Alot of these are generated so this will need expanded with each unique code.
+
 | Done? | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :x: | shouldnt_exist | | Banned element in install.rdf | install.rdf | [testcases/installrdf.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/installrdf.py)| | |
-| :x: | obsolete | | Obsolete element in install.rdf | install.rdf | | | |
+| :white_check_mark: | shouldnt_exist | | Banned element in install.rdf | install.rdf | [96](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/installrdf.py) | ('testcases_installrdf', '_test_rdf', 'shouldnt_exist') | TAG_NOT_ALLOWED_HIDDEN |
+| :white_check_mark: | shouldnt_exist | | Banned element in install.rdf | install.rdf | [96](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/installrdf.py) | ('testcases_installrdf', '_test_rdf', 'shouldnt_exist') | TAG_NOT_ALLOWED_UPDATEKEY |
+| :white_check_mark: | shouldnt_exist | | Banned element in install.rdf | install.rdf | [96](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/installrdf.py) | ('testcases_installrdf', '_test_rdf', 'shouldnt_exist') | TAG_NOT_ALLOWED_UPDATEURL |
+| :white_check_mark: | obsolete | | Obsolete element in install.rdf | install.rdf | | | TAG_OBSOLETE_FILE |
+| :white_check_mark: | obsolete | | Obsolete element in install.rdf | install.rdf | | | TAG_OBSOLETE_REQUIRES |
+| :white_check_mark: | obsolete | | Obsolete element in install.rdf | install.rdf | | | TAG_OBSOLETE_SKIN |
 | :x: | optionsType | | <em:optionsType> has bad value. | install.rdf | | | |
 | :x: | unrecognized | | Unrecognized element in install.rdf | install.rdf | | | |
 | :x: | missing_updateKey | | Missing updateKey element | install.rdf | | | |
 | :x: | Missing updateURL element | | Missing updateURL element | install.rdf | | | |
 | :x: | missing_addon | | install.rdf missing element(s). | install.rdf | | | |
+
+
 
 
 ## Jetpack
@@ -236,12 +245,22 @@ We should try and list out all the validation rules we know of by file type. E.g
 | :x: | disallowed_extension | | Flagged file extensions found | | | | |
 | :x: | test_godlikea | | Banned 'godlikea' chrome namespace | | | | |
 | :x: | disallowed_file_type | | (Binary) Flagged file type found | | | | |
-| :white_check_mark: | missing_install_rdf | | Add-on missing install.rdf | | | | TYPE_NO_INSTALL_RDF |
+| :x: | missing_install_rdf | | Add-on missing install.rdf | | | | |
 | :white_check_mark: | duplicate_entries | | Package contains duplicate entries | | | | DUPLICATE_XPI_ENTRY |
 | :x: | should_be_true | | Add-on should set <em:unpack> to true | | | | |
 | :x: | should_be_false | | Add-on contains JAR files, no <em:unpack> | | | | |
 | :x: | unknown_file | | Unknown file found in add-on | | | | |
 | :x: | missing_required | | Required file missing | | | | |
+
+## Type detection
+
+| Done? | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
+| ----- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
+| :white_check_mark: | missing_install_rdf | | Add-on missing install.rdf for type detection | | [22](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L22) | ('typedetection', 'detect_type', 'missing_install_rdf') | TYPE_NO_INSTALL_RDF |
+| :white_check_mark: | invalid_em_type | | The only valid values for <em:type> are 2, 4, 8, and 32 | | [46](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L46) | ('typedetection', 'detect_type', 'invalid_em_type') | TYPE_INVALID |
+| :white_check_mark: | no_em:type | | No <em:type> element found in install.rdf | | [66](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L66) | ('typedetection', 'detect_type', 'no_em:type') | TYPE_MISSING |
+| :white_check_mark: | undeterminable_type | | Unable to determine add-on type | | [195](https://github.com/mozilla/amo-validator/blob/master/validator/submain.py#L195) | ('main', 'test_package', 'undeterminable_type') | TYPE_NOT_DETERMINED |
+
 
 ## Themes
 
@@ -276,6 +295,7 @@ We should try and list out all the validation rules we know of by file type. E.g
 | :x: | unsafe_template_escape |  | Potentially unsafe template escape sequence | | | | |
 | :x: | js_protoype_extension_dissallowed |  | JS prototype extension not allowed  | | | | |
 | :white_check_mark: | mozindexdb_removed |  | mozIndexedDB has been removed |  | | | MOZINDEXEDDB |
+| :white_check_mark: | mozIndexedDB property not allowed |  | mozIndexedDB has been removed |  | N/A | N/A | MOZINDEXEDDB_PROPERTY |
 | :x: | composition_features_removed |  | nsICompositionStringSynthesizer, sendCompositionEvent and createCompositionStringSynthesizer were removed | | | | |
 | :x: | asyncfetch2_newchannel2_deprecated |  | asyncFetch2 and newChannel2 are now deprecated | | | | |
 | :x: | onproxyavailable_asyncresolve_changed |  | The onProxyAvailable and asyncResolve functions have changed |  | | | |
