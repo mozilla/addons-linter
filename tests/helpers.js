@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { Readable } from 'stream';
 
 import { singleLineString } from 'utils';
 
@@ -15,6 +16,24 @@ export function getRuleFiles(ruleType) {
   return ruleFiles.filter((value) => {
     return value !== 'index.js';
   });
+}
+
+export function validChromeManifest(contents=[
+  'category JavaScript-DOM-class foo bar',
+  'category JavaScript-DOM-interface foo bar',
+], {includeBoilerplate=true}={}) {
+  var rstream = new Readable();
+  if (includeBoilerplate === true) {
+    rstream.push('content  necko   jar:comm.jar!/content/necko/\n');
+  }
+
+  contents.forEach((line) => {
+    rstream.push(`${line}\n`);
+  });
+
+  rstream.push(null);
+
+  return rstream;
 }
 
 export function validHTML(contents='') {
