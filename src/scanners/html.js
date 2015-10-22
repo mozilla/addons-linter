@@ -6,7 +6,7 @@ import * as rules from 'rules/html';
 
 export default class HTMLScanner extends BaseScanner {
 
-  defaultRules = rules;
+  _defaultRules = rules;
 
   _getContents() {
     return new Promise((resolve) => {

@@ -90,6 +90,19 @@ describe('utils.ignorePrivateFunctions()', function() {
     assert.lengthOf(Object.keys(publicFunctions), 0);
   });
 
+  it('should return only functions', () => {
+    var listOfRuleFunctions = {
+      iAmARule: sinon.stub(),
+      _privateMethod: sinon.stub(),
+      IAMCONSTANT: 'foo',
+    };
+
+    var publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
+    for (let functionName in publicFunctions) {
+      assert.equal(typeof(publicFunctions[functionName]), 'function');
+    }
+  });
+
 });
 
 

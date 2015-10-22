@@ -15,20 +15,18 @@ export default class CSSScanner extends BaseScanner {
       this.getContents()
         .then((ast) => {
           if (ast && ast.stylesheet && ast.stylesheet.rules) {
-            for (let rule of ast.stylesheet.rules) {
-              if (rule.type === 'comment') {
-                continue;
-              }
+            var rules = ignorePrivateFunctions(_rules);
 
-              var rules = ignorePrivateFunctions(_rules);
+            for (let cssRule in rules) {
+              this._rulesProcessed++;
 
-              for (let cssRule in rules) {
-                let cssRuleFunc = rules[cssRule];
-
-                if (typeof cssRuleFunc === 'function') {
-                  this.validatorMessages = this.validatorMessages.concat(
-                    cssRuleFunc(rule));
+              for (let rule of ast.stylesheet.rules) {
+                if (rule.type === 'comment') {
+                  continue;
                 }
+
+                this.validatorMessages = this.validatorMessages.concat(
+                  rules[cssRule](rule));
               }
             }
           }

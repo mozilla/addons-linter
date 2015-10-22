@@ -4,8 +4,10 @@ import sinon from 'sinon';
 import XMLDom from 'xmldom';
 
 import { RDFParseError } from 'exceptions';
-import { validRDF } from '../helpers';
+import { getRuleFiles, validRDF } from '../helpers';
 import RDFScanner from 'scanners/rdf';
+import * as rules from 'rules/rdf';
+import { ignorePrivateFunctions } from 'utils';
 
 
 describe('RDF', function() {
@@ -56,6 +58,21 @@ describe('RDF', function() {
       })
       .catch((err) => {
         assert.instanceOf(err, RDFParseError);
+      });
+  });
+
+  it('should export and run all rules in rules/rdf', () => {
+    var ruleFiles = getRuleFiles('rdf');
+    var contents = validRDF();
+    var rdfScanner = new RDFScanner(contents, 'install.rdf');
+
+    assert.equal(ruleFiles.length,
+                 Object.keys(ignorePrivateFunctions(rules)).length);
+
+    return rdfScanner.scan()
+      .then(() => {
+        assert.equal(rdfScanner._rulesProcessed,
+                     Object.keys(ignorePrivateFunctions(rules)).length);
       });
   });
 

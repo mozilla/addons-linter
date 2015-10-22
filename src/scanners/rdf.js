@@ -7,7 +7,7 @@ import * as rules from 'rules/rdf';
 
 export default class RDFScanner extends BaseScanner {
 
-  defaultRules = rules;
+  _defaultRules = rules;
   // I don't think this ever needs to be different, but if it does we can
   // extract the em namespace using:
   //

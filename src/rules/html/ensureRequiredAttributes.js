@@ -2,7 +2,7 @@ import { HTML_TAGS_WITH_REQUIRED_ATTRIBUTES, VALIDATION_ERROR } from 'const';
 import * as messages from 'messages';
 
 
-export var ensureRequiredAttributes = ($, filename=null) => {
+export function ensureRequiredAttributes($, filename=null) {
   return new Promise((resolve) => {
     var validatorMessages = [];
 
@@ -14,9 +14,9 @@ export var ensureRequiredAttributes = ($, filename=null) => {
 
     resolve(validatorMessages);
   });
-};
+}
 
-export var _ensureAttributesInTag = ($, tag, attributes, filename=null) => {
+export function _ensureAttributesInTag($, tag, attributes, filename=null) {
   var validatorMessages = [];
 
   $(tag).each((i, element) => {
@@ -37,4 +37,4 @@ export var _ensureAttributesInTag = ($, tag, attributes, filename=null) => {
   });
 
   return validatorMessages;
-};
+}

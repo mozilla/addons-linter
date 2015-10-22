@@ -4,6 +4,8 @@ import { ignorePrivateFunctions } from 'utils';
 
 export default class BaseScanner {
 
+  _rulesProcessed = 0;
+
   constructor(contents, filename) {
     this.contents = contents;
     this.filename = filename;
@@ -24,13 +26,10 @@ export default class BaseScanner {
           var rules = ignorePrivateFunctions(_rules);
 
           for (let rule in rules) {
-            let ruleFunction = rules[rule];
+            this._rulesProcessed++;
 
-            // Make sure each rule is a function, just to be safe.
-            if (typeof(ruleFunction) === 'function') {
-              promises.push(ruleFunction(contents, this.filename,
-                                         this.options));
-            }
+            promises.push(rules[rule](contents, this.filename,
+                                      this.options));
           }
 
           return Promise.all(promises);

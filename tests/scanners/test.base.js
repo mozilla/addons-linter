@@ -2,6 +2,7 @@ import sinon from 'sinon';
 
 import BaseScanner from 'scanners/base';
 import { NotImplentedError } from 'exceptions';
+import { ignorePrivateFunctions } from 'utils';
 
 
 class BaseScannerWithContents extends BaseScanner {
@@ -68,6 +69,21 @@ describe('Base Scanner Class', function() {
       .then(() => {
         assert.ok(fakeRules.iAmAFakeRule.calledOnce);
         assert.notOk(fakeRules._iAmAPrivateFunction.calledOnce);
+      });
+  });
+
+  it('should increment the number of rules run', () => {
+    var baseScanner = new BaseScannerWithContents('', 'install.rdf');
+    var fakeRules = {
+      iAmAFakeRule: sinon.stub(),
+      _iAmAPrivateFunction: sinon.stub(),
+      iAmTheOtherFakeRule: sinon.stub(),
+    };
+
+    return baseScanner.scan(fakeRules)
+      .then(() => {
+        assert.equal(baseScanner._rulesProcessed,
+                     Object.keys(ignorePrivateFunctions(fakeRules)).length);
       });
   });
 

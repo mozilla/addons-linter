@@ -2,11 +2,11 @@ import cheerio from 'cheerio';
 import sinon from 'sinon';
 
 import { VALIDATION_ERROR } from 'const';
-import { validHTML } from '../helpers';
+import { getRuleFiles, validHTML } from '../helpers';
 import HTMLScanner from 'scanners/html';
 import * as rules from 'rules/html';
 import * as messages from 'messages';
-import { singleLineString } from 'utils';
+import { ignorePrivateFunctions, singleLineString } from 'utils';
 
 
 describe('HTML', function() {
@@ -87,6 +87,21 @@ describe('HTML', function() {
       })
       .then(() => {
         assert.ok(cheerio.load.calledOnce);
+      });
+  });
+
+  it('should export and run all rules in rules/html', () => {
+    var ruleFiles = getRuleFiles('html');
+    var contents = validHTML();
+    var htmlScanner = new HTMLScanner(contents, 'index.html');
+
+    assert.equal(ruleFiles.length,
+                 Object.keys(ignorePrivateFunctions(rules)).length);
+
+    return htmlScanner.scan()
+      .then(() => {
+        assert.equal(htmlScanner._rulesProcessed,
+                     Object.keys(ignorePrivateFunctions(rules)).length);
       });
   });
 

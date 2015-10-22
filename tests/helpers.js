@@ -1,10 +1,21 @@
+import fs from 'fs';
+
 import { singleLineString } from 'utils';
+
 
 export const fakeMessageData = {
   code: 'WHATEVER_CODE',
   description: 'description',
   message: 'message',
 };
+
+export function getRuleFiles(ruleType) {
+  var ruleFiles = fs.readdirSync(`src/rules/${ruleType}`);
+
+  return ruleFiles.filter((value) => {
+    return value !== 'index.js';
+  });
+}
 
 export function validHTML(contents='') {
   return singleLineString`<!DOCTYPE html>

@@ -66,10 +66,10 @@ export function getPackageTypeAsString(numericPackageType) {
 }
 
 /*
- * Looks throuh all exported functions and returns only
- * "public" functions that aren't prefixed with an _
+ * Looks through all exported functions and returns only
+ * "public" *functions* that aren't prefixed with an _
  *
- * Used for ignoring private functions in rules files.
+ * Used for ignoring private functions and constants in rules files.
  * Rules can have private functions we don't run; anything that
  * starts with an "_" shouldn't be returned.
  *
@@ -80,7 +80,8 @@ export function ignorePrivateFunctions(list) {
   var filteredList = {};
 
   for (let functionName in list) {
-    if (functionName.startsWith('_') === false) {
+    if (functionName.startsWith('_') === false &&
+        typeof(list[functionName]) === 'function') {
       filteredList[functionName] = list[functionName];
     }
   }
