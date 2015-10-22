@@ -14,3 +14,5 @@ export class ExtensibleError extends Error {
 export class DuplicateZipEntryError extends ExtensibleError {}
 
 export class RDFParseError extends ExtensibleError {}
+
+export class NotImplentedError extends ExtensibleError {}

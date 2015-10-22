@@ -2,7 +2,7 @@ import { Readable } from 'stream';
 import { VALIDATION_WARNING } from 'const';
 import { DANGEROUS_CATEGORY } from 'messages';
 
-import ChromeManifestScanner from 'validators/chromemanifest';
+import ChromeManifestScanner from 'scanners/chromemanifest';
 
 
 describe('chrome.manifest Category Rules', () => {

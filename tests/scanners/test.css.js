@@ -1,6 +1,9 @@
 import * as messages from 'messages';
 import { VALIDATION_ERROR } from 'const';
-import CSSScanner from 'validators/css';
+import CSSScanner from 'scanners/css';
+import * as rules from 'rules/css';
+import { getRuleFiles } from '../helpers';
+import { ignorePrivateFunctions, singleLineString } from 'utils';
 
 
 describe('CSSScanner', () => {
@@ -20,7 +23,6 @@ describe('CSSScanner', () => {
         assert.equal(validationMessages[0].column, 13);
         assert.equal(validationMessages[0].file, 'fakeFile.css');
       });
-
   });
 
   it('should reject if parser throws non-error', () => {
@@ -33,7 +35,13 @@ describe('CSSScanner', () => {
       },
     };
 
-    return cssScanner.scan(fakeCSSParser)
+    // We load the fake CSS parser into the scanner the only way possible:
+    // using the private _getContents method, which will take an alternate
+    // parser.
+    return cssScanner._getContents(fakeCSSParser)
+      .then(() => {
+        return cssScanner.scan();
+      })
       .then(() => {
         assert.fail(null, null, 'unexpected success');
       })
@@ -41,7 +49,22 @@ describe('CSSScanner', () => {
         assert.instanceOf(err, TypeError);
         assert.equal(err.message, 'Awooga');
       });
-
   });
 
+  it('should export and run all rules in rules/css', () => {
+    var ruleFiles = getRuleFiles('css');
+    var code = singleLineString`/* whatever code */
+      #myName { position: relative; }
+      .myClass { background: #000; }`;
+    var cssScanner = new CSSScanner(code, 'fakeFile.css');
+
+    assert.equal(ruleFiles.length,
+                 Object.keys(ignorePrivateFunctions(rules)).length);
+
+    return cssScanner.scan()
+      .then(() => {
+        assert.equal(cssScanner._rulesProcessed,
+                     Object.keys(ignorePrivateFunctions(rules)).length);
+      });
+  });
 });

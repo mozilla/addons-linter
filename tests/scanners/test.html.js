@@ -2,11 +2,11 @@ import cheerio from 'cheerio';
 import sinon from 'sinon';
 
 import { VALIDATION_ERROR } from 'const';
-import { validHTML } from '../helpers';
-import HTMLScanner from 'validators/html';
+import { getRuleFiles, validHTML } from '../helpers';
+import HTMLScanner from 'scanners/html';
 import * as rules from 'rules/html';
 import * as messages from 'messages';
-import { singleLineString } from 'utils';
+import { ignorePrivateFunctions, singleLineString } from 'utils';
 
 
 describe('HTML', function() {
@@ -45,7 +45,7 @@ describe('HTML', function() {
     </prefwindow>`);
     var htmlScanner = new HTMLScanner(badHTML, 'index.html');
 
-    return htmlScanner.getHTMLDoc()
+    return htmlScanner.getContents()
       .then(($) => {
         return rules.ensureRequiredAttributes($, htmlScanner.filename);
       })
@@ -58,7 +58,7 @@ describe('HTML', function() {
 
         // Make sure there are no errors when an ID is provided.
         htmlScanner = new HTMLScanner(goodHTML, 'index.html');
-        return htmlScanner.getHTMLDoc();
+        return htmlScanner.getContents();
       })
       .then(($) => {
         return rules.ensureRequiredAttributes($, htmlScanner.filename);
@@ -81,27 +81,27 @@ describe('HTML', function() {
 
     sinon.spy(cheerio, 'load');
 
-    return htmlScanner.getHTMLDoc()
+    return htmlScanner.getContents()
       .then(() => {
-        return htmlScanner.getHTMLDoc();
+        return htmlScanner.getContents();
       })
       .then(() => {
         assert.ok(cheerio.load.calledOnce);
       });
   });
 
-  it('should run all rules in rules/html', () => {
+  it('should export and run all rules in rules/html', () => {
+    var ruleFiles = getRuleFiles('html');
     var contents = validHTML();
     var htmlScanner = new HTMLScanner(contents, 'index.html');
-    var fakeRules = {
-      iAmAFakeRule: sinon.stub(),
-      iAmAAnotherFakeRule: sinon.stub(),
-    };
 
-    return htmlScanner.scan(fakeRules)
+    assert.equal(ruleFiles.length,
+                 Object.keys(ignorePrivateFunctions(rules)).length);
+
+    return htmlScanner.scan()
       .then(() => {
-        assert.ok(fakeRules.iAmAFakeRule.calledOnce);
-        assert.ok(fakeRules.iAmAAnotherFakeRule.calledOnce);
+        assert.equal(htmlScanner._rulesProcessed,
+                     Object.keys(ignorePrivateFunctions(rules)).length);
       });
   });
 

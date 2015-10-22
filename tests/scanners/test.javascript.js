@@ -1,7 +1,9 @@
 import { VALIDATION_ERROR, VALIDATION_WARNING } from 'const';
-import JavaScriptScanner from 'validators/javascript';
+import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
+import * as rules from 'rules/javascript';
 import { singleLineString } from 'utils';
+import { getRuleFiles } from '../helpers';
 
 
 describe('JavaScript', function() {
@@ -160,4 +162,12 @@ describe('JavaScript', function() {
         assert.equal(validationMessages[0].id, 'mozIndexedDB');
       });
   });
+
+  it('should export all rules in rules/javascript', () => {
+    // We skip the "run" check here for now as that's handled by ESLint.
+    var ruleFiles = getRuleFiles('javascript');
+    assert.equal(ruleFiles.length,
+                 Object.keys(rules.default).length);
+  });
+
 });
