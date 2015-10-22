@@ -3,6 +3,7 @@ import { Readable } from 'stream';
 import Xpi from 'xpi';
 import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
 import { DuplicateZipEntryError } from 'exceptions';
+import { unexpectedSuccess } from 'utils';
 
 const defaultData = {
   compressionMethod: DEFLATE_COMPRESSION,
@@ -72,9 +73,7 @@ describe('Xpi.open()', function() {
     // Return the fake zip to the open callback.
     this.openStub.yieldsAsync(new Error('open() test error'));
     return myXpi.open()
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.include(err.message, 'open() test');
       });
@@ -167,9 +166,7 @@ describe('Xpi.getMetaData()', function() {
     };
 
     return myXpi.getMetaData(onEventsSubscribed)
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.instanceOf(err, DuplicateZipEntryError);
       });
@@ -180,9 +177,7 @@ describe('Xpi.getMetaData()', function() {
 
     this.openStub.yieldsAsync(new Error('open test'), this.fakeZipFile);
     return myXpi.getMetaData()
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.include(err.message, 'open test');
       });
@@ -240,9 +235,7 @@ describe('Xpi.getFileAsStream()', function() {
     };
 
     return myXpi.getFileAsStream('whatever')
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.include(err.message, 'Path "whatever" does not exist');
       });
@@ -260,9 +253,7 @@ describe('Xpi.getFileAsStream()', function() {
       new Error('getFileAsStream openReadStream test'));
 
     return myXpi.getFileAsStream('install.rdf')
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.include(err.message, 'getFileAsStream openReadStream test');
       });
@@ -336,9 +327,7 @@ describe('Xpi.getFileAsStream()', function() {
       new Error('getFileAsString openReadStream test'));
 
     return myXpi.getFileAsString('install.rdf')
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.include(err.message, 'getFileAsString openReadStream test');
       });
@@ -423,9 +412,7 @@ describe('Xpi.getFileAsStream()', function() {
   it("should throw if file extension doesn't start with '.'", () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     return myXpi.getFilesByExt('css')
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.include(err.message, 'File extension must start with');
       });

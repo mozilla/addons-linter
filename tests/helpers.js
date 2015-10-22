@@ -58,3 +58,7 @@ export function validRDF(contents) {
     </Description>
   </RDF>`;
 }
+
+export function unexpectedSuccess() {
+  return assert.fail(null, null, 'Unexpected success');
+}
