@@ -6,7 +6,7 @@ import * as messages from 'messages';
 import CSSScanner from 'scanners/css';
 import { DuplicateZipEntryError } from 'exceptions';
 import { fakeMessageData, validRDF } from './helpers';
-import { singleLineString} from 'utils';
+import { singleLineString, unexpectedSuccess } from 'utils';
 
 
 describe('Validator', function() {
@@ -20,9 +20,7 @@ describe('Validator', function() {
       return Promise.reject(fakeError);
     };
     return addonValidator.checkFileExists(addonValidator.packagePath, fakeLstat)
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.instanceOf(err, Error);
         assert.include(err.message, 'Path "foo" is not a file');
@@ -37,9 +35,7 @@ describe('Validator', function() {
       return Promise.reject(fakeError);
     };
     return addonValidator.checkFileExists(addonValidator.packagePath, fakeLstat)
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.instanceOf(err, TypeError);
         assert.include(err.message, 'soz');
@@ -58,9 +54,7 @@ describe('Validator', function() {
       });
     };
     return addonValidator.checkFileExists(addonValidator.packagePath, fakeLstat)
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.instanceOf(err, Error);
         assert.include(err.message, 'Path "bar" is not a file');
@@ -140,9 +134,7 @@ describe('Validator', function() {
     }
     addonValidator.getScanner.returns(fakeScanner);
     return addonValidator.scanFile('whatever')
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.include(err.message, 'message.type must be defined');
       });
@@ -167,9 +159,7 @@ describe('Validator', function() {
     }
 
     return addonValidator.scan(FakeXpi)
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.instanceOf(err, Error);
         assert.include(err.message, 'scanFiles explosion');
@@ -195,9 +185,7 @@ describe('Validator', function() {
     }
 
     return addonValidator.scan(FakeXpi)
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.instanceOf(err, Error);
         assert.include(err.message, 'scanFile explosion');
@@ -224,9 +212,7 @@ describe('Validator', function() {
       }
     }
     return addonValidator.scan(FakeXpi)
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch(() => {
         assert.ok(
           addonValidator.collector.addError.calledWith(
@@ -496,9 +482,7 @@ describe('Validator.detectType()', function() {
       },
     };
     return addonValidator.detectPackageType()
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.equal(err.message, 'Multiple <em:type> elements found');
       });

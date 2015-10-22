@@ -44,9 +44,7 @@ describe('utils.checkMinNodeVersion()', function() {
       version: 'v0.12.4',
     };
     return utils.checkMinNodeVersion('0.12.7', fakeProcess)
-      .then(() => {
-        assert.fail(null, null, 'Unexpected success');
-      })
+      .then(utils.unexpectedSuccess)
       .catch((err) => {
         assert.include(err.message, 'Node version must be 0.12.7 or greater');
       });

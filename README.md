@@ -123,11 +123,11 @@ it('should do something promise-y', () => {
 To test for rejection you can use this pattern:
 
 ```javascript
+import { unexpectedSuccess } from 'utils';
+...
 it('should reject because of x', () => {
   return somePromiseCall()
-    .then(() => {
-      assert.fail(null, null, 'Unexpected success');
-    })
+    .then(unexpectedSuccess)
     .catch((err) => {
       // make assertions about err here.
     });
