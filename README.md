@@ -7,12 +7,43 @@
 
 The Add-ons Validator, JS edition.
 
+## Usage
+
+### Command Line
+
+You need node.js to use the add-ons validator.
+
+To validate your add-on locally, install the validator from
+[npm](http://nodejs.org/):
+
+```
+# Install locally so you can use the validator from anywhere on your machine.
+npm install -g addons-validator
+```
+
+After installation, run the validator and direct it to your add-on file:
+
+```
+addons-validator my-addon.xpi
+```
+
+The addons-validator will check your add-on and show you errors, warnings,
+and friendly messages for your add-on. If you want more info on the options
+you can enable/disable for the command-line app, use the `--help` option:
+
+```
+addons-validator --help
+```
+
 ## Development
+
+If you'd like to help us develop the addons-validator, that's great! It's
+pretty easy to get started, you just need node.js installed on your machine.
 
 ### Required node version
 
-Node v0.12.x or greater is required. Using nvm is probably the easiest way
-to manage multiple node versions side by side. See
+addons-validator requires node.js v0.12.x or greater. Using nvm is probably the
+easiest way to manage multiple node versions side by side. See
 [nvm on github](https://github.com/creationix/nvm) for more details.
 
 ### Install dependencies
@@ -25,19 +56,19 @@ npm install
 
 Dependencies are automatically kept up-to-date using [greenkeeper](http://greenkeeper.io/).
 
-### Npm scripts and grunt tasks
+### npm scripts and grunt tasks
 
-Basic automation tasks are exposed via npm scripts. These don't
-need `grunt-cli` installed globally.
+Run basic automation tasks via npm scripts (e.g. `npm test`).
+These don't need `grunt-cli` installed globally.
 
-#### Npm scripts
+#### npm scripts
 
 | Script       | Description                                               |
 |--------------|-----------------------------------------------------------|
 | npm test     |  Runs the tests                                           |
 | npm start    |  Builds the lib and watches for changes                   |
 
-If you install `grunt-cli` globally then you can run some additional tasks.
+If you install `grunt-cli` globally then you can run other tasks.
 
 ```
 npm install -g grunt-cli
@@ -54,38 +85,34 @@ From the grunt docs:
 | Script                | Description                                      |
 |-----------------------|--------------------------------------------------|
 | grunt test            |  Runs the tests                                  |
-| grunt webpack:build   |  Builds the lib.                                 |
+| grunt webpack:build   |  Builds the lib                                  |
 | grunt webpack:watch   |  Builds the lib and watches for changes          |
 | grunt eslint          |  Lints the files with eslint (Run in grunt test) |
-| grunt jscs            |  Checks for style issues. (Run in grunt test)    |
+| grunt jscs            |  Checks for style issues  (Run in grunt test)    |
 
 
 ### Building and watching for changes
 
-You can run `npm start` (or `grunt webpack:watch`) this will build
-the lib and then rebuild on file changes.
+You can run `npm start` to build the library and then rebuild on file changes.
 
-You can then use the CLI from `bin/addons-validator`.
+Once you build the library you can use the CLI in `bin/addons-validator`.
 
 ### Testing
 
 Tests use `grunt` but don't require global `grunt`. Just run `npm test`.
 
-Alternatively if you prefer use `grunt test` directly.
-
 #### Coverage
 
 We're looking to maintain coverage at 100%. Use the coverage data in the
-test output  to work out what lines aren't covered and ensure they're
-covered correctly.
+test output to work out what lines aren't covered and ensure they're covered.
 
 #### Testing and promises
 
-Tests using promises should just simply return the promise. This negates the
-need to use `done()`:
+Tests using promises should return the promise. This removes the need to call
+`done()` in your tests:
 
 ```javascript
-it('should do something promisy', () => {
+it('should do something promise-y', () => {
   return somePromiseCall()
     .then(() => {
       // Assert stuff here.
@@ -109,13 +136,12 @@ it('should reject because of x', () => {
 
 #### Assertions and testing APIs
 
-`assert`, `describe`, `it`, `beforeEach` and `afterEach` are
-available in tests by default - you don't need to import
-anything for those to work.
+`assert`, `describe`, `it`, `beforeEach`, and `afterEach` are
+available in tests by default–you don't need to import anything
+for those to work.
 
 We're using chai for assertions [see the Chai docs for the API
 available](http://chaijs.com/api/assert/)
-
 
 ### Logging
 
@@ -137,19 +163,18 @@ process the files it finds through various content scanners.
 
 ![Architecture diagram](https://raw.github.com/mozilla/addons-validator/master/docs/diagrams/addon-validator-flow.png)
 
-
 ### Scanners
 
-Generally each file-type has a scanner. For example we have a CSS and a
-JavaScript scanner amongst others. Each scanner looks at relevant
+Each file-type has a scanner. For example: CSS files use `CSSScanner`;
+Javascript files use `JavaScriptScanner`. Each scanner looks at relevant
 files and passes each file through a parser which then hands off to
-various rules that look for specific things.
+a set of rules that look for specific things.
 
 ### Rules
 
-Rules are exported via a single function in a single file. A rule can
+Rules get exported via a single function in a single file. A rule can
 have private functions it uses internally, but rule code should not depend
-on another rule file and only one function should be exported per file.
+on another rule file and each rule file should export one rule.
 
 Each rule function is passed data from the scanner in order to carry
 out the specific checks for that rule it returns a list of objects which
@@ -157,9 +182,8 @@ are then made into message objects and are passed to the Collector.
 
 ### Collector
 
-The Collector is simply an in-memory store for all the validation
-message objects that are "collected" as the contents of the package are
-processed.
+The Collector is an in-memory store for all validation message objects
+"collected" as the contents of the package are processed.
 
 ### Messages
 
@@ -171,5 +195,5 @@ same message could be an error *or* a warning for example.
 
 ### Output
 
-Lastly when the processing has been completed the validator will output
+Lastly when the processing is complete the validator will output
 the collected data as text or JSON.
