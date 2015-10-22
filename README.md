@@ -7,7 +7,38 @@
 
 The Add-ons Validator, JS edition.
 
+## Usage
+
+### Command Line
+
+You need node.js to use the add-ons validator.
+
+To validate your add-on locally, install the validator from
+[npm](http://nodejs.org/):
+
+```
+# Install locally so you can use the validator from anywhere on your machine.
+npm install -g addons-validator
+```
+
+After installation, run the validator and direct it to your add-on file:
+
+```
+addons-validator my-addon.xpi
+```
+
+The addons-validator will check your add-on and show you errors, warnings,
+and friendly messages for your add-on. If you want more info on the options
+you can enable/disable for the command-line app, use the `--help` option:
+
+```
+addons-validator --help
+```
+
 ## Development
+
+If you'd like to help us develop the addons-validator, that's great! It's
+pretty easy to get started, you just need node.js installed on your machine.
 
 ### Required node version
 
