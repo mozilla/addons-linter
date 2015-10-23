@@ -1,5 +1,3 @@
-import path from 'path';
-
 import ESLint from 'eslint';
 
 import { ESLINT_TYPES } from 'const';
@@ -20,7 +18,7 @@ export default class JavaScriptScanner {
       // pass it the entire source file as a string.
       let eslint = new ESLint.CLIEngine({
         ignore: false,
-        rulePaths: [path.join('src', 'rules', 'javascript')],
+        rulePaths: ['dist/eslint'],
         rules: ESLintRules,
         useEslintrc: false,
       });

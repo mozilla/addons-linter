@@ -1,4 +1,4 @@
-module.exports = function(context) {
+export default function(context) {
   return {
     Identifier: function(node) {
       // Catches `var foo = mozIndexedDB;`.
@@ -8,4 +8,4 @@ module.exports = function(context) {
       }
     },
   };
-};
+}
