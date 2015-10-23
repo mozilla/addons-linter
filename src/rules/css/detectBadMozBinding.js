@@ -2,16 +2,17 @@ import * as messages from 'messages';
 import { isLocalCSSUri } from 'utils';
 
 
-export function detectBadMozBindingURL(rule) {
+export function detectBadMozBindingURL(cssContent, filename=null,
+                                       {startLine, startColumn}={}) {
   var messageList = [];
-  for (let declaration of rule.declarations) {
+  for (let declaration of cssContent.declarations) {
     if (declaration.property === '-moz-binding') {
       if (isLocalCSSUri(declaration.value) === false) {
         messageList.push(Object.assign({}, messages.MOZ_BINDING_EXT_REFERENCE, {
           type: 'error',
-          line: rule.position.start.line,
-          column: rule.position.start.column,
-          file: rule.position.source,
+          line: startLine,
+          column: startColumn,
+          file: filename,
         }));
       }
     }

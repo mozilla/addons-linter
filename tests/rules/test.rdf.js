@@ -14,7 +14,7 @@ describe('RDF: mustNotExist', () => {
 
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
+        return rules.mustNotExist(xmlDoc, 'install.rdf');
       })
       .then((validatorMessages) => {
         assert.equal(validatorMessages.length, 1);
@@ -31,7 +31,7 @@ describe('RDF: mustNotExist', () => {
 
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
+        return rules.mustNotExist(xmlDoc, 'install.rdf');
       })
       .then((validatorMessages) => {
         assert.equal(validatorMessages.length, 2);
@@ -51,7 +51,7 @@ describe('RDF: mustNotExist', () => {
 
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
+        return rules.mustNotExist(xmlDoc, 'install.rdf');
       })
       .then((validatorMessages) => {
         assert.equal(validatorMessages.length, 1);
@@ -68,7 +68,7 @@ describe('RDF: mustNotExist', () => {
         return rdfScanner.getContents();
       })
       .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
+        return rules.mustNotExist(xmlDoc, 'install.rdf');
       })
       .then((validatorMessages) => {
         assert.equal(validatorMessages.length, 0);
@@ -82,7 +82,7 @@ describe('RDF: mustNotExist', () => {
 
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
+        return rules.mustNotExist(xmlDoc, 'install.rdf');
       })
       .then((validatorMessages) => {
         assert.equal(validatorMessages.length, 3);

@@ -24,6 +24,7 @@ export default class RDFScanner extends BaseScanner {
         },
       }).parseFromString(this.contents, 'text/xml');
 
+      this.options.namespace = this.namespace;
       resolve(xmlDoc);
     });
   }

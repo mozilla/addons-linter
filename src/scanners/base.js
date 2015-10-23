@@ -11,6 +11,7 @@ export default class BaseScanner {
     this._defaultRules = [];
     this._parsedContent = null;
     this._rulesProcessed = 0;
+    this.options = {};
   }
 
   scan(_rules=this._defaultRules) {
