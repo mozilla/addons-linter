@@ -10,8 +10,8 @@ function noddyClone(obj) {
 var buildResolve = noddyClone(defaultResolve);
 buildResolve.modulesDirectories.push('src/');
 
-var testResolve = noddyClone(defaultResolve);
-testResolve.modulesDirectories.push('coverage/');
+var coverageResolve = noddyClone(defaultResolve);
+coverageResolve.modulesDirectories.push('coverage/');
 
 
 module.exports = {
@@ -24,12 +24,20 @@ module.exports = {
     keepalive: true,
     resolve: buildResolve,
   },
+  coverage: {
+    entry: './tests/runner.js',
+    output: {
+      path: path.join(__dirname, '../dist'),
+      filename: 'tests.js',
+    },
+    resolve: coverageResolve,
+  },
   test: {
     entry: './tests/runner.js',
     output: {
       path: path.join(__dirname, '../dist'),
       filename: 'tests.js',
     },
-    resolve: testResolve,
+    resolve: buildResolve,
   },
 };
