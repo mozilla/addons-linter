@@ -7,4 +7,5 @@ export default {
   opendialog_remote_uri: ESLINT_WARNING,
   opendialog_nonlit_uri: ESLINT_WARNING,
   shallow_wrapper: ESLINT_WARNING,
+  eval_string_arg: ESLINT_ERROR,
 };

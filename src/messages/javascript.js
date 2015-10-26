@@ -100,3 +100,10 @@ export function _bannedIdentifier(name) {
 
 export const BANNED_NEWTHREAD = _bannedIdentifier('newThread');
 export const BANNED_PROCESSNEXTEVENT = _bannedIdentifier('processNextEvent');
+export const EVAL_STRING_ARG = {
+  code: 'EVAL_STRING_ARG',
+  message: _('setTimeout or setInterval must have function as 1st arg'),
+  description: _(singleLineString`setTimeout and setInterval functions should be
+    called only with function expressions as their first argument`),
+  legacyCode: ['javascript', 'dangerous_global', 'eval'],
+};

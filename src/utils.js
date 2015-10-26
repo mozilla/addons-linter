@@ -33,6 +33,21 @@ export function singleLineString(strings, ...vars) {
 }
 
 /*
+ * Get a variable from a eslint context object if it exists, otherwise
+ * undefined.
+ */
+export function getVariable(context, name) {
+  var variables = context.getScope().variables;
+  var result;
+  variables.forEach(function(variable) {
+    if (variable.name === name) {
+      result = variable.defs[0].name.parent.init;
+    }
+  });
+  return result;
+}
+
+/*
  * Gettext utils. No-op until we have proper
  * a proper l10n solution.
  *
