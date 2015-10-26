@@ -40,6 +40,18 @@ addons-validator --help
 If you'd like to help us develop the addons-validator, that's great! It's
 pretty easy to get started, you just need node.js installed on your machine.
 
+### Quick Start
+
+If you have node.js installed, here's the quick start to getting
+your development dependencies installed and building the binary:
+
+```
+npm install
+npm start
+# Leave running to watch for changes or cancel to stop watching.
+bin/addons-validator my-addon.xpi
+```
+
 ### Required node version
 
 addons-validator requires node.js v0.12.x or greater. Using nvm is probably the
