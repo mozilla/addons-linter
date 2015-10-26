@@ -1,5 +1,7 @@
+import url from 'url';
+
 import semver from 'semver';
-import { PACKAGE_TYPES } from 'const';
+import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
 /*
  * Template tag for removing whitespace and new lines
@@ -87,4 +89,37 @@ export function ignorePrivateFunctions(list) {
   }
 
   return filteredList;
+}
+
+
+export function isLocalUrl(urlInput) {
+  var parsedUrl = url.parse(urlInput);
+  var protocol = parsedUrl.protocol;
+  var path = parsedUrl.path;
+  // Check protocol is chrome: or resource: if set.
+  // Details on the chrome protocol are here: https://goo.gl/W52T0Q
+  // Details on resource protocol are here: https://goo.gl/HHqeJA
+  if (protocol && LOCAL_PROTOCOLS.indexOf(protocol) === -1) {
+    return false;
+  }
+  // Disallow protocol-free remote urls.
+  if (path.startsWith('//')) {
+    return false;
+  }
+  return true;
+}
+
+
+export function extractCSSUri(cssUrl) {
+  var match = cssUrl.match(/^url\(\s*['"]?(.*?)['"]?\s*\)$/i);
+  if (match === null || !match[1] || match[0] !== cssUrl) {
+    throw new Error(`CSS url() "${cssUrl}" is invalid`);
+  }
+  return match[1].trim();
+}
+
+
+export function isLocalCSSUri(cssUri) {
+  var cssUriValue = extractCSSUri(cssUri);
+  return isLocalUrl(cssUriValue);
 }

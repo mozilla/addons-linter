@@ -3,7 +3,7 @@ import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 
 
-describe('mozIndexedDB_property', () => {
+describe('mozindexeddb_property', () => {
 
   // Warn here, as it's possible to have a property named "mozIndexedDB" that
   // isn't referencing window.mozIndexedDB. The add-on reviewer can manually

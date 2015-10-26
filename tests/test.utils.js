@@ -127,3 +127,110 @@ describe('utils.getPackageTypeAsString()', function() {
   });
 
 });
+
+
+describe('utils.isLocalUrl', () => {
+
+  it('should not match remote urls', () => {
+    assert.notOk(utils.isLocalUrl('http://foo.com'));
+    assert.notOk(utils.isLocalUrl('https://foo.com'));
+    assert.notOk(utils.isLocalUrl('ftp://foo.com'));
+    assert.notOk(utils.isLocalUrl('//foo.com'));
+  });
+
+  it('should not match data uri', () => {
+    assert.notOk(utils.isLocalUrl('data:image/gif;base64,R0' +
+      'lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'));
+  });
+
+  it('should match chrome protocol', () => {
+    assert.ok(utils.isLocalUrl('chrome://bar/foo'));
+  });
+
+  it('should match resource protocol', () => {
+    assert.ok(utils.isLocalUrl('resource://bar/foo'));
+  });
+
+  it('should match non-remote urls starting with /', () => {
+    assert.ok(utils.isLocalUrl('/bar/foo'));
+  });
+
+  it('should match non-remote urls starting with alpha', () => {
+    assert.ok(utils.isLocalUrl('bar'));
+  });
+});
+
+
+describe('utils.isLocalCSSUri', () => {
+
+  it('should not match remote urls', () => {
+    assert.notOk(utils.isLocalCSSUri('url(http://foo.com)'));
+    assert.notOk(utils.isLocalCSSUri('url(https://foo.com)'));
+    assert.notOk(utils.isLocalCSSUri('url(ftp://foo.com)'));
+    assert.notOk(utils.isLocalCSSUri('url(//foo.com)'));
+  });
+
+  it('should not match data uri', () => {
+    assert.notOk(utils.isLocalCSSUri('url(data:image/gif;base64,R0' +
+      'lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)'));
+  });
+
+  it('should not match remote url with quotes and without', () => {
+    assert.notOk(utils.isLocalCSSUri('url(http://bar/foo)'));
+    assert.notOk(utils.isLocalCSSUri("url('http://bar/foo')"));
+    assert.notOk(utils.isLocalCSSUri('url("http://bar/foo")'));
+  });
+
+  it('should match chrome protocol', () => {
+    assert.ok(utils.isLocalCSSUri('url(chrome://bar/foo)'));
+  });
+
+  it('should match resource protocol', () => {
+    assert.ok(utils.isLocalCSSUri('url(resource://bar/foo)'));
+  });
+
+  it('should match non-remote urls starting with /', () => {
+    assert.ok(utils.isLocalCSSUri('url(/bar/foo)'));
+  });
+});
+
+
+describe('utils.extractCSSUri', () => {
+
+  it('should extract quoted resource', () => {
+    assert.equal(utils.extractCSSUri(`url("resource://whatever")`),
+                 'resource://whatever');
+  });
+
+  it('should extract quoted chrome url', () => {
+    assert.equal(utils.extractCSSUri(`url("chrome://whatever")`),
+                 'chrome://whatever');
+  });
+
+  it('should extract quoted local url', () => {
+    assert.equal(utils.extractCSSUri(`url("/whatever")`),
+                 '/whatever');
+  });
+
+  it('should extract unquoted value from url with too much whitespace', () => {
+    assert.equal(utils.extractCSSUri(`url(  /whatever  )`),
+                 '/whatever');
+  });
+
+  it('should extract value from url with too much whitespace', () => {
+    assert.equal(utils.extractCSSUri(`url(  "/whatever "  )`),
+                 '/whatever');
+  });
+
+  it('should extract everything between "url(" and ")"', () => {
+    assert.equal(utils.extractCSSUri(`url() url()`),
+                 ') url(');
+  });
+
+  it('should throw on non-matching input', () => {
+    assert.throws(() => {
+      utils.extractCSSUri('fhdksfshd');
+    }, Error, /CSS url().*?is invalid/);
+  });
+
+});
