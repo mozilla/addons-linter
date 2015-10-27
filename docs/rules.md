@@ -29,6 +29,8 @@ We should try and list out all the validation rules we know of by file type. E.g
 | :x: | shallow | | Shallow XPCOM wrappers should not be used | | | | |
 | :x: | %s_nonliteral | | `%s` called with non-literal parameter. | | | | |
 | :x: | %s_remote_uri | | `%s` called with non-local URI. | | | | |
+| :white_check_mark: | opendialog_remote_uri |  | openDialog called with non-local URI | | | ('js', 'instanceactions', 'openDialog_remote_uri' | OPENDIALOG_REMOTE_URI |
+| :white_check_mark: | opendialog_nonlit_uri |  | openDialog called with non-literal parameter | | | ('js', 'instanceactions', 'openDialog_nonliteral' | OPENDIALOG_NONLIT_URI |
 
 ###  Entity values
 

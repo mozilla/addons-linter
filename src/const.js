@@ -2,7 +2,6 @@ export const DEFLATE_COMPRESSION = 8;
 export const NO_COMPRESSION = 0;
 
 export const ESLINT_ERROR = 2;
-export const ESLINT_NOTICE = 0;
 export const ESLINT_WARNING = 1;
 
 export const VALIDATION_ERROR = 'error';
@@ -59,3 +58,5 @@ export const INSTALL_RDF_TYPE_MAP = {
   32: PACKAGE_MULTI,
   64: PACKAGE_DICTIONARY,
 };
+
+export const LOCAL_PROTOCOLS = ['chrome:', 'resource:'];

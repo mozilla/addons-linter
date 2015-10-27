@@ -3,7 +3,7 @@ import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 
 
-describe('mozIndexedDB', () => {
+describe('mozindexeddb', () => {
   it('should not allow mozIndexedDB', () => {
     var code = 'var myDatabase = indexeddb || mozIndexedDB;';
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
