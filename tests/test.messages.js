@@ -1,6 +1,8 @@
 import { readFileSync } from 'fs';
 
 import * as messages from 'messages';
+import { singleLineString } from 'utils';
+
 
 describe('Messages', function() {
 
@@ -42,6 +44,21 @@ describe('Messages', function() {
     }
   });
 
+  it('should have a legacyCode property in every message', () => {
+    for (let message in messages) {
+      if (typeof messages[message] === 'object') {
+        var legacyCode = messages[message].legacyCode;
+        if ((legacyCode instanceof Array && legacyCode.length !== 3) ||
+            (!(legacyCode instanceof Array) && legacyCode !== null)) {
+          assert.fail(null, null, singleLineString`A valide legacyCode could
+            not be found for code: "${messages[message].code}". Should be
+            an Array with 3 values based on the amo-validator err_id or null.
+            A null value is an explicit way to say the old err_id tuple is not
+            useful e.g. a matching code doesn't exist or it's not unique.`);
+        }
+      }
+    }
+  });
 });
 
 
