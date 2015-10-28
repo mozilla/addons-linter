@@ -1,0 +1,15 @@
+tests/
+tasks/
+src/
+node_modules/
+Gruntfile.js
+.travis.yml
+.gitignore
+.eslintrc
+.eslintignore
+bower.json
+.npmignore
+webpack.config.js
+karma.conf.js
+dist/tests.js.map
+dist/tests.js
