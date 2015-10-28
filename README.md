@@ -79,6 +79,7 @@ These don't need `grunt-cli` installed globally.
 |--------------|-----------------------------------------------------------|
 | npm test     |  Runs the tests                                           |
 | npm start    |  Builds the lib and watches for changes                   |
+| npm run build|  Builds the lib (used by Travis)                          |
 
 If you install `grunt-cli` globally then you can run other tasks.
 
@@ -210,3 +211,15 @@ same message could be an error *or* a warning for example.
 
 Lastly when the processing is complete the validator will output
 the collected data as text or JSON.
+
+## Deploys
+
+We deploy to npm automatically using TravisCI. To release a new version,
+increment the version in `package.json` and create a PR. Make sure your
+version number conforms to the [semver][] format eg: `0.2.1`.
+
+After merging the PR, [create a new release][new release] with the same tag
+name as your new version. Once the build passes it will deploy. Magic! ✨
+
+[new release]: https://github.com/mozilla/addons-validator/releases/new
+[semver]: http://semver.org/
