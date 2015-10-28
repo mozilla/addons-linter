@@ -3,6 +3,11 @@ import { gettext as _, singleLineString } from 'utils';
 
 export const DANGEROUS_CATEGORY = {
   code: 'DANGEROUS_CATEGORY',
+  legacyCode: [
+    'testcases_chromemanifest',
+    'test_resourcemodules',
+    'resource_modules',
+  ],
   message: 'Potentially dangerous category entry',
   description: _(singleLineString`Add-ons defining global properties via
     category entries require careful review by an administrative reviewer.`),
