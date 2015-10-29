@@ -1,6 +1,7 @@
 var fs = require('fs');
 var md = require('markdown-it')();
 var emoji = require('markdown-it-emoji');
+var markdownItAnchor = require('markdown-it-anchor');
 
 
 module.exports = function(grunt) {
@@ -18,6 +19,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('buildrules', 'Build the rules', function() {
     md.use(emoji);
+    md.use(markdownItAnchor, {
+      permalink: true,
+    });
     var markdown = md.render(fs.readFileSync('docs/rules.md',
                                              { encoding: 'utf8' }));
     var template = fs.readFileSync('docs/rules.tmpl',
