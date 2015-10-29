@@ -1,7 +1,7 @@
 
 # Validator Rules
 
-This document is automatically published on [github pages](http://mozilla.github.io/addons-validator/). 
+This document is automatically published on [github pages](http://mozilla.github.io/addons-validator/).
 To update it edit `docs/rules.md` in the
 [github repo](https://github.com/mozilla/addons-validator).
 
@@ -13,7 +13,8 @@ To update it edit `docs/rules.md` in the
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :x: | warning | dangerous_contract | | Dangerous XPCOM contract ID |  | [testcases/javascript/actions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/actions.py)|
-| :x: | warning |  banned_identifier | | Banned or deprecated JavaScript Identifier | | | | |
+| :white_check_mark: | warning |  banned_identifier | | Banned or deprecated JavaScript Identifier | | | ('js', 'actions', 'banned_identifier') | BANNED_NEWTHREAD |
+| :white_check_mark: | warning |  banned_identifier | | Banned or deprecated JavaScript Identifier | | | ('js', 'actions', 'banned_identifier') | BANNED_PROCESSNEXTEVENT |
 | :x: | warning | complex_prefs_defaults_code | | Complex code should not appear in preference defaults files | | | | |
 | :x: | warning | called_dangerous_global | | `%s` called in potentially dangerous manner' | | | | |
 | :x: | error? | eval | | In order to prevent vulnerabilities, the `setTimeout` 'and `setInterval` functions should be called only with function expressions as their first argument. | | | | |

@@ -60,3 +60,11 @@ export const INSTALL_RDF_TYPE_MAP = {
 };
 
 export const LOCAL_PROTOCOLS = ['chrome:', 'resource:'];
+
+// If you add to this you'll need to additionally
+// update _BANNED_IDENTIFIERS_MAP with details in
+// messages/javascript.
+export const BANNED_IDENTIFIERS = [
+  'newThread',
+  'processNextEvent',
+];
