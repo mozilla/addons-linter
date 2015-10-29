@@ -16,7 +16,7 @@ We should try and list out all the validation rules we know of by file type. E.g
 | :x: | error? | eval | | In order to prevent vulnerabilities, the `setTimeout` 'and `setInterval` functions should be called only with function expressions as their first argument. | | | | |
 | :x: | warning | low_level_module (not from src) | | Usage of low-level or non-SDK interface | | | | |
 | :x: | warning | widget | | Use of deprecated SDK module | | | | |
-| :x: | notice |  \_readonly_top | | window.top is a reserved variable | | | | |
+| :negative_squared_cross_mark: | notice |  \_readonly_top | | window.top is a reserved variable | | | ('testcases_javascript_actions', '_readonly_top' | **Removed** |
 | :x: | warning | global_overwrite | | Global variable overwrite | | | | |
 
 
