@@ -7,6 +7,8 @@
 
 The Add-ons Validator, JS edition.
 
+This is the [canonical list of rules](http://mozilla.github.io/addons-validator/) we're working from.
+
 ## Usage
 
 ### Command Line
