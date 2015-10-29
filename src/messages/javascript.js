@@ -126,4 +126,16 @@ export const UNEXPECTED_GLOGAL_ARG = {
   description: _(singleLineString`Passing a global as an argument
     is not recommended. Please make this a var instead.`),
   legacyCode: null,
+}
+
+export const COMPLEX_PREFS_DEFAULTS = {
+  code: 'COMPLEX_PREFS_DEFAULTS',
+  message: _('Complex code should not appear in preference defaults files'),
+  description: _(singleLineString`Code in preference defaults files should
+    only assign to pref or user_pref`),
+  legacyCode: [
+    'testcases_javascript_actions',
+    '_call_expression',
+    'complex_prefs_defaults_code',
+  ],
 };
