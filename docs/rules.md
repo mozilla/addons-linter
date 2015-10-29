@@ -118,7 +118,7 @@ We should try and list out all the validation rules we know of by file type. E.g
 | :x: | warning | remote_url | | Themes may not reference remote resources | | | | |
 | :x: | warning | identity_box | | Modification to identity box | | | | |
 | :x: | info? (should be an error) | unicode_decode | | Unicode decode error. | | | | |
-| :white_check_mark: | error | CSS syntax error | A CSS syntax error was detected | | N/A | N/A | CSS_SYNTAX_ERROR |
+| :white_check_mark: | error | CSS syntax error | | A CSS syntax error was detected | | N/A | N/A | CSS_SYNTAX_ERROR |
 
 ### HTML
 
@@ -183,7 +183,7 @@ TODO: Alot of these are generated so this will need expanded with each unique co
 | :white_check_mark: | notice | obsolete | | Obsolete element in install.rdf | install.rdf | | | TAG_OBSOLETE_FILE |
 | :white_check_mark: | notice | obsolete | | Obsolete element in install.rdf | install.rdf | | | TAG_OBSOLETE_REQUIRES |
 | :white_check_mark: | notice | obsolete | | Obsolete element in install.rdf | install.rdf | | | TAG_OBSOLETE_SKIN |
-| :x: | warning | optionsType | | <em:optionsType> has bad value. | install.rdf | | | |
+| :x: | warning | optionsType | | `<em:optionsType>` has bad value. | install.rdf | | | |
 | :x: | notice | unrecognized | | Unrecognized element in install.rdf | install.rdf | | | |
 | :x: | notice | missing_updateKey | | Missing updateKey element | install.rdf | | | |
 | :x: | notice | Missing updateURL element | | Missing updateURL element | install.rdf | | | |
@@ -252,8 +252,8 @@ TODO: Alot of these are generated so this will need expanded with each unique co
 | :x: | notice | disallowed_file_type | | (Binary) Flagged file type found | | | | |
 | :x: | error | missing_install_rdf | | Add-on missing install.rdf | | | | |
 | :white_check_mark: | warning | duplicate_entries | | Package contains duplicate entries | | | | DUPLICATE_XPI_ENTRY |
-| :x: | warning | should_be_true | | Add-on should set <em:unpack> to true | | | | |
-| :x: | notice | should_be_false | | Add-on contains JAR files, no <em:unpack> | | | | |
+| :x: | warning | should_be_true | | Add-on should set `<em:unpack>` to true | | | | |
+| :x: | notice | should_be_false | | Add-on contains JAR files, no `<em:unpack>` | | | | |
 | :x: | warning | unknown_file | | Unknown file found in add-on | | | | |
 | :x: | warning | missing_required | | Required file missing | | | | |
 
@@ -262,8 +262,8 @@ TODO: Alot of these are generated so this will need expanded with each unique co
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :white_check_mark: | notice | missing_install_rdf | | Add-on missing install.rdf for type detection | | [22](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L22) | ('typedetection', 'detect_type', 'missing_install_rdf') | TYPE_NO_INSTALL_RDF |
-| :white_check_mark: | error | invalid_em_type | | The only valid values for <em:type> are 2, 4, 8, and 32 | | [46](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L46) | ('typedetection', 'detect_type', 'invalid_em_type') | TYPE_INVALID |
-| :white_check_mark: | notice | no_em:type | | No <em:type> element found in install.rdf | | [66](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L66) | ('typedetection', 'detect_type', 'no_em:type') | TYPE_MISSING |
+| :white_check_mark: | error | invalid_em_type | | The only valid values for `<em:type>` are 2, 4, 8, and 32 | | [46](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L46) | ('typedetection', 'detect_type', 'invalid_em_type') | TYPE_INVALID |
+| :white_check_mark: | notice | no_em:type | | No `<em:type>` element found in install.rdf | | [66](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L66) | ('typedetection', 'detect_type', 'no_em:type') | TYPE_MISSING |
 | :white_check_mark: | error | undeterminable_type | | Unable to determine add-on type | | [195](https://github.com/mozilla/amo-validator/blob/master/validator/submain.py#L195) | ('main', 'test_package', 'undeterminable_type') | TYPE_NOT_DETERMINED |
 
 
@@ -284,7 +284,7 @@ TODO: Alot of these are generated so this will need expanded with each unique co
 | :x: | error | invalid_version_order | addon? | The version numbers provided for the application in question are not in the correct order. The maximum version must be greater than the minimum version.' | install.rdf | | | |
 | :x: | warning | missing_minversion | addon? | Missing minVersion property. A targetApplication element is missing its minVersion property. This may cause it to be ignored as invalid. | install.rdf | | | |
 | :x: | warning | missing_maxversion | addon? | Missing maxVersion property. A targetApplication element is missing its maxVersion property. This may cause it to be ignored as invalid. | install.rdf | | | |
-| :x: | warning | duplicate_targetapps | addon? | Found duplicate <em:targetApplication> elements. Multiple targetApplication elements were found in the install.manifest file that refer to the same application GUID. There should not be duplicate target applications entries. | install.rdf | | | |
+| :x: | warning | duplicate_targetapps | addon? | Found duplicate `<em:targetApplication>` elements. Multiple targetApplication elements were found in the install.manifest file that refer to the same application GUID. There should not be duplicate target applications entries. | install.rdf | | | |
 | :x: | error | no_mozilla_support | addon? | None of the target applications listed in                     'install.rdf are supported Mozilla products. At least one official Mozilla product must be supported for inclusion on addons.mozilla.org. See [appversions](https://addons.mozilla.org/firefox/pages/appversions/) for more information on supported target applications on AMO.' | install.rdf | | | |
 
 ## Regex Tests
