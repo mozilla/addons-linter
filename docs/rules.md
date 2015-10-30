@@ -1,8 +1,8 @@
 
 # Validator Rules
 
-This is automatically published at http://mozilla.github.io/addons-validator/.
-To update the rules update `docs/rules.md` in the
+This document is automatically published on [github pages](http://mozilla.github.io/addons-validator/). 
+To update it edit `docs/rules.md` in the
 [github repo](https://github.com/mozilla/addons-validator).
 
 
