@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node -e \"require('grunt').cli()\" null start",
     "build": "node -e \"require('grunt').cli()\" null build",
-    "test": "node -e \"require('grunt').cli()\" null test"
+    "test": "node -e \"require('grunt').cli()\" null test",
+    "publish-rules": "node -e \"require('grunt').cli()\" null copy build-rules-html publish-rules"
   },
   "repository": {
     "type": "git",

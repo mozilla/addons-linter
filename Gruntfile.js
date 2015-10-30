@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 
   grunt.initConfig(configs);
 
-  grunt.registerTask('buildrules', 'Build the rules', function() {
+  grunt.registerTask('build-rules-html', 'Build the rules', function() {
     md.use(emoji);
     md.use(markdownItAnchor, {
       permalink: true,
@@ -40,11 +40,20 @@ module.exports = function(grunt) {
     'webpack:build',
   ]);
 
-  grunt.registerTask('publish-rules', [
-    'copy',
-    'buildrules',
-    'gh-pages',
-  ]);
+  grunt.registerTask('publish-rules',
+                     'Used by travis to publish rule docs', function() {
+    // Require the rules build and copy.
+    this.requires(['copy', 'build-rules-html']);
+
+    if (process.env.TRAVIS === 'true' &&
+        process.env.TRAVIS_SECURE_ENV_VARS === 'true' &&
+        process.env.TRAVIS_PULL_REQUEST === 'false') {
+      grunt.log.writeln('Pushing branch for docker build');
+      grunt.task.run('gh-pages');
+    } else {
+      grunt.log.writeln('Skipping rules publication.');
+    }
+  });
 
   grunt.registerTask('test', [
     'clean',
