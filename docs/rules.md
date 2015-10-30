@@ -1,7 +1,10 @@
 
 # Validator Rules
 
-We should try and list out all the validation rules we know of by file type. E.g. .js, .rdf, .manifest etc.
+This is automatically published at http://mozilla.github.io/addons-validator/.
+To update the rules update `docs/rules.md` in the
+[github repo](https://github.com/mozilla/addons-validator).
+
 
 ## JavaScript
 
