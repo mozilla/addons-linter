@@ -29,7 +29,7 @@ To update the rules update `docs/rules.md` in the
 | :x: | warning | webbrowserpersist | | nsIWebBrowserPersist should no longer be used |  | [testcases/javascript/call_definitions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/call_definitions.py)| | |
 | :x: | warning | webbrowserpersist_saveuri | | saveURI should not be called with a null load context | | | | |
 | :x: | notice | deprec | | Deprecated nsIJSON methods in use | | | | |
-| :x: | warning | shallow | | Shallow XPCOM wrappers should not be used | | | | |
+| :white_check_mark: | warning | shallow | | Shallow XPCOM wrappers should not be used | | | ('testcases_js_xpcom', 'xpcnativewrapper', 'shallow' | SHALLOW_WRAPPER |
 | :x: | notice | %s_nonliteral | | `%s` called with non-literal parameter. | | | | |
 | :white_check_mark: | notice | opendialog_nonlit_uri |  | openDialog called with non-literal parameter | | | ('js', 'instanceactions', 'openDialog_nonliteral' | OPENDIALOG_NONLIT_URI |
 | :x: | warning | %s_remote_uri | | `%s` called with non-local URI. | | | | |
