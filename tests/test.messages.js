@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 
 import * as messages from 'messages';
+import { BANNED_IDENTIFIERS } from 'const';
 import { singleLineString } from 'utils';
 
 
@@ -46,7 +47,7 @@ describe('Messages', function() {
 
   it('should have a legacyCode property in every message', () => {
     for (let message in messages) {
-      if (typeof messages[message] === 'object') {
+      if (typeof messages[message] === 'object' && !message.startsWith('_')) {
         var legacyCode = messages[message].legacyCode;
         if ((legacyCode instanceof Array && legacyCode.length !== 3) ||
             (!(legacyCode instanceof Array) && legacyCode !== null)) {
@@ -59,6 +60,24 @@ describe('Messages', function() {
       }
     }
   });
+
+  it('should have banned_id keys in the _BANNED_IDENTIFIERS_MAP', () => {
+    for (let bannedIdentifier of BANNED_IDENTIFIERS) {
+      var bannedIdentifierMap = messages._BANNED_IDENTIFIERS_MAP;
+      assert.ok(bannedIdentifierMap.hasOwnProperty(bannedIdentifier),
+        singleLineString`_BANNED_IDENTIFIERS_MAP should have a
+        description for key "${bannedIdentifier}"`);
+    }
+  });
+
+  it('should have banned_id keys as constants', () => {
+    for (let bannedIdentifier of BANNED_IDENTIFIERS) {
+      var key = `BANNED_${bannedIdentifier.toUpperCase()}`;
+      assert.ok(messages.hasOwnProperty(key),
+                `"${key}" doesn't exist in messages module.`);
+    }
+  });
+
 });
 
 

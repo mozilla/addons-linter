@@ -33,13 +33,23 @@ export default class JavaScriptScanner {
           message.ruleId = messages.JS_SYNTAX_ERROR.code;
         }
 
+        var code = message.ruleId.toUpperCase();
+        var messageObj = messages[code];
+
+        // Fallback to looking up the message object by the
+        // constant string passed in context.report()
+        if (!messageObj && message.message) {
+          messageObj = messages[message.message];
+          code = message.message;
+        }
+
         validatorMessages.push({
-          code: message.ruleId.toUpperCase(),
+          code: code,
           column: message.column,
-          description: messages[message.ruleId.toUpperCase()].description,
+          description: messageObj.description,
           file: this.filename,
           line: message.line,
-          message: messages[message.ruleId.toUpperCase()].message,
+          message: messageObj.message,
           sourceCode: message.source,
           type: ESLINT_TYPES[message.severity],
         });
