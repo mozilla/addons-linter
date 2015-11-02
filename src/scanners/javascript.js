@@ -21,6 +21,7 @@ export default class JavaScriptScanner {
         rulePaths: ['dist/eslint'],
         rules: ESLintRules,
         useEslintrc: false,
+        envs: ['es6'],
       });
 
       var validatorMessages = [];

@@ -37,6 +37,42 @@ describe('utils.singleLineString()', function() {
 });
 
 
+describe('utils.getVariable()', function() {
+  // This is the expected schema from eslint
+  var context = {
+    getScope: function() {
+      return {
+        variables: [{
+          name: 'foo',
+          defs: [{
+            type: 'Variable',
+            name: {
+              parent: {
+                init: {
+                  type: 'Literal',
+                  value: 'bar',
+                },
+              },
+            },
+          }],
+        }],
+      };
+    },
+  };
+
+  it('should return the correct variable in the given context.', () => {
+    var foo = utils.getVariable(context, 'foo');
+    assert.equal(foo.type, 'Literal');
+    assert.equal(foo.value, 'bar');
+  });
+
+  it("should return undefined if the variable doesn't exist.", () => {
+    var undef = utils.getVariable(context, 'doesNotExist');
+    assert.equal(typeof undef, 'undefined');
+  });
+});
+
+
 describe('utils.checkMinNodeVersion()', function() {
 
   it('should reject if version is not high enough', () => {
