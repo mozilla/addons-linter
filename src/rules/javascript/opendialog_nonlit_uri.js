@@ -1,3 +1,6 @@
+import { OPENDIALOG_NONLIT_URI } from 'messages';
+
+
 export default function(context) {
   return {
     CallExpression: function(node) {
@@ -8,7 +11,7 @@ export default function(context) {
         if (node.arguments.length) {
           var uri = node.arguments[0];
           if (uri.type !== 'Literal') {
-            return context.report(node, 'OPENDIALOG_NONLIT_URI');
+            return context.report(node, OPENDIALOG_NONLIT_URI.code);
           }
         }
       }

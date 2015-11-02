@@ -3,7 +3,7 @@ import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import * as rules from 'rules/javascript';
 import { singleLineString } from 'utils';
-import { getRuleFiles } from '../helpers';
+import { getRuleFiles, unexpectedSuccess } from '../helpers';
 
 
 describe('JavaScript', function() {
@@ -93,6 +93,34 @@ describe('JavaScript', function() {
                          messages.JS_SYNTAX_ERROR.code);
             assert.equal(moreValidationMessages[0].type, VALIDATION_ERROR);
           });
+      });
+  });
+
+  it('should reject on missing message code', () => {
+
+    class FakeCLIEngine {
+      executeOnText() {
+        return {
+          results: [{
+            filePath: 'badcode.js',
+            messages: [{
+              fatal: false,
+            }],
+          }],
+        };
+      }
+    }
+
+    var FakeESLint = {
+      CLIEngine: FakeCLIEngine,
+    };
+
+    var jsScanner = new JavaScriptScanner('whatever', 'badcode.js');
+
+    return jsScanner.scan(FakeESLint)
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.include(err.message, 'JS rules must pass a valid message');
       });
   });
 
