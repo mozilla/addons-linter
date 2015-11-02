@@ -530,6 +530,26 @@ describe('Validator.detectType()', function() {
       });
   });
 
+  it('should resolve with mapped type value for experiments', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.xpi = {
+      getFileAsString: () => {
+        return Promise.resolve(validRDF('<em:type>128</em:type>'));
+      },
+      getMetaData: () => {
+        return Promise.resolve({
+          'install.rdf': {},
+        });
+      },
+    };
+
+    return addonValidator.detectPackageType()
+      .then((packageType) => {
+        // Type 128 (experiments) maps to 1 PACKAGE_EXTENSION
+        assert.equal(packageType, constants.PACKAGE_EXTENSION);
+      });
+  });
+
   it('should collect a notice if type is missing', () => {
     var addonValidator = new Validator({_: ['bar']});
     addonValidator.xpi = {
