@@ -12,7 +12,7 @@ To update it edit `docs/rules.md` in the
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :x: | warning | dangerous_contract | | Dangerous XPCOM contract ID |  | [testcases/javascript/actions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/actions.py)|
+| :negative_squared_cross_mark: | warning | dangerous_contract | | Dangerous XPCOM contract ID |  | [testcases/javascript/actions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/actions.py)| | ('js', 'actions', 'dangerous_contract') | **Removed** |
 | :white_check_mark: | warning |  banned_identifier | | Banned or deprecated JavaScript Identifier | | | ('js', 'actions', 'banned_identifier') | BANNED_NEWTHREAD |
 | :white_check_mark: | warning |  banned_identifier | | Banned or deprecated JavaScript Identifier | | | ('js', 'actions', 'banned_identifier') | BANNED_PROCESSNEXTEVENT |
 | :x: | warning | complex_prefs_defaults_code | | Complex code should not appear in preference defaults files | | | | |
