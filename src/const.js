@@ -57,6 +57,9 @@ export const INSTALL_RDF_TYPE_MAP = {
   8: PACKAGE_LANGPACK,
   32: PACKAGE_MULTI,
   64: PACKAGE_DICTIONARY,
+  // New "experiment" type: see bug 1220097
+  // https://bugzilla.mozilla.org/show_bug.cgi?id=1220583
+  128: PACKAGE_EXTENSION,
 };
 
 export const LOCAL_PROTOCOLS = ['chrome:', 'resource:'];
