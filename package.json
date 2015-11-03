@@ -2,7 +2,10 @@
   "name": "addons-validator",
   "version": "0.0.2",
   "description": "Mozilla addons validator",
-  "main": "index.js",
+  "main": "dist/addons-validator.js",
+  "bin": {
+    "addons-validator": "bin/addons-validator"
+  },
   "scripts": {
     "start": "node -e \"require('grunt').cli()\" null start",
     "build": "node -e \"require('grunt').cli()\" null build",
