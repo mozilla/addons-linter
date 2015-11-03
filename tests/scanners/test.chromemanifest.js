@@ -15,7 +15,7 @@ describe('ChromeManifestScanner', () => {
     var manifest = validChromeManifest();
 
     var cmScanner = new ChromeManifestScanner(manifest, 'chrome.manifest');
-    return cmScanner.scan(undefined, fakeRules)
+    return cmScanner.scan(fakeRules)
       .then(() => {
         assert.ok(fakeRules.fakeRule1.calledOnce);
         assert.ok(fakeRules.fakeRule2.calledOnce);

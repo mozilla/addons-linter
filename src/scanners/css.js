@@ -8,9 +8,9 @@ import { ignorePrivateFunctions } from 'utils';
 
 export default class CSSScanner extends BaseScanner {
 
-  defaultRules = rules;
+  _defaultRules = rules;
 
-  scan(_rules=this.defaultRules) {
+  scan(_rules=this._defaultRules) {
     return new Promise((resolve, reject) => {
       this.getContents()
         .then((ast) => {

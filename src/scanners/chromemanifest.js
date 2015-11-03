@@ -1,32 +1,15 @@
+import BaseScanner from 'scanners/base';
 import ChromeManifestParser from 'parsers/chromemanifest';
 import * as rules from 'rules/chromemanifest';
-import { ignorePrivateFunctions } from 'utils';
 
 
-export default class ChromeManifestScanner {
+export default class ChromeManifestScanner extends BaseScanner {
 
-  constructor(stream, filename) {
-    this.stream = stream;
-    this.filename = filename;
-    this._rulesProcessed = 0;
+  _defaultRules = rules;
+
+  _getContents(_ChromeManifestParser=ChromeManifestParser) {
+    var cmParser = new _ChromeManifestParser(this.contents, this.filename);
+    return cmParser.parse();
   }
 
-  scan(_ChromeManifestParser=ChromeManifestParser, _rules=rules) {
-    return new Promise((resolve) => {
-      var validatorMessages = [];
-      var cmParser = new _ChromeManifestParser(this.stream, this.filename);
-      return cmParser.parse()
-        .then((triples) => {
-          var rules = ignorePrivateFunctions(_rules);
-
-          for (let rule in rules) {
-            this._rulesProcessed++;
-
-            validatorMessages = validatorMessages.concat(rules[rule](triples));
-          }
-
-          resolve(validatorMessages);
-        });
-    });
-  }
 }

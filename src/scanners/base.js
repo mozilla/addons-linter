@@ -4,14 +4,13 @@ import { ignorePrivateFunctions } from 'utils';
 
 export default class BaseScanner {
 
-  _rulesProcessed = 0;
-
   constructor(contents, filename) {
     this.contents = contents;
     this.filename = filename;
     this.validatorMessages = [];
-    this._parsedContent = null;
     this._defaultRules = [];
+    this._parsedContent = null;
+    this._rulesProcessed = 0;
   }
 
   scan(_rules=this._defaultRules) {
