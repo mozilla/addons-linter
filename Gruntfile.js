@@ -58,6 +58,7 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'clean',
     'instrument',
+    'webpack:build',
     'webpack:eslint',
     'webpack:coverage',
     'mochaTest',
