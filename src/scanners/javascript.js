@@ -1,3 +1,5 @@
+import path from 'path';
+
 import ESLint from 'eslint';
 
 import { ESLINT_TYPES } from 'const';
@@ -15,11 +17,15 @@ export default class JavaScriptScanner {
 
   scan(_ESLint=ESLint) {
     return new Promise((resolve) => {
+
+      var rulesPath = global.relativeAppPath ?
+        path.join(global.relativeAppPath, '../dist/eslint') : 'dist/eslint';
+
       // ESLint is synchronous and doesn't accept streams, so we need to
       // pass it the entire source file as a string.
       let eslint = new _ESLint.CLIEngine({
         ignore: false,
-        rulePaths: ['dist/eslint'],
+        rulePaths: [rulesPath],
         rules: ESLintRules,
         useEslintrc: false,
         envs: ['es6'],
