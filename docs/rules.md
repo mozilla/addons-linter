@@ -26,8 +26,8 @@ To update it edit `docs/rules.md` in the
 ### Call definitions
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :x: | warning | webbrowserpersist | | nsIWebBrowserPersist should no longer be used |  | [testcases/javascript/call_definitions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/call_definitions.py)| | |
-| :x: | warning | webbrowserpersist_saveuri | | saveURI should not be called with a null load context | | | | |
+| :negative_squared_cross_mark: | warning | webbrowserpersist | | nsIWebBrowserPersist should no longer be used |  | [testcases/javascript/call_definitions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/call_definitions.py)| ('testcases_javascript_call_definititions', 'webbrowserpersist') | **Removed **|
+| :negative_squared_cross_mark: | warning | webbrowserpersist_saveuri | | saveURI should not be called with a null load context | | | ('testcases_javascript_call_definititions', 'webbrowserpersist_saveuri') | **Removed** |
 | :x: | notice | deprec | | Deprecated nsIJSON methods in use | | | | |
 | :white_check_mark: | warning | shallow | | Shallow XPCOM wrappers should not be used | | | ('testcases_js_xpcom', 'xpcnativewrapper', 'shallow' | SHALLOW_WRAPPER |
 | :x: | notice | %s_nonliteral | | `%s` called with non-literal parameter. | | | | |
