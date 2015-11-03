@@ -1,6 +1,6 @@
 {
   "name": "addons-validator",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Mozilla addons validator",
   "main": "dist/addons-validator.js",
   "bin": {
@@ -47,7 +47,6 @@
     "markdown-it-anchor": "2.3.0",
     "mocha": "2.3.3",
     "sinon": "1.17.1",
-    "source-map-support": "0.3.2",
     "webpack": "1.12.2",
     "webpack-dev-server": "1.12.1"
   },
@@ -60,6 +59,7 @@
     "es6-promisify": "3.0.0",
     "eslint": "1.8.0",
     "semver": "5.0.3",
+    "source-map-support": "0.3.2",
     "xmldom": "0.1.19",
     "yargs": "3.27.0",
     "yauzl": "2.3.1"
