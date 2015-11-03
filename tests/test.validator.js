@@ -5,8 +5,8 @@ import * as messages from 'messages';
 
 import CSSScanner from 'scanners/css';
 import { DuplicateZipEntryError } from 'exceptions';
-import { fakeMessageData, validRDF } from './helpers';
-import { singleLineString, unexpectedSuccess } from 'utils';
+import { fakeMessageData, unexpectedSuccess, validRDF } from './helpers';
+import { singleLineString } from 'utils';
 
 
 describe('Validator', function() {

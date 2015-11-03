@@ -3,7 +3,7 @@ import { Readable } from 'stream';
 import Xpi from 'xpi';
 import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
 import { DuplicateZipEntryError } from 'exceptions';
-import { unexpectedSuccess } from 'utils';
+import { unexpectedSuccess } from './helpers';
 
 const defaultData = {
   compressionMethod: DEFLATE_COMPRESSION,

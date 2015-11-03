@@ -1,4 +1,5 @@
 import * as utils from 'utils';
+import { unexpectedSuccess } from './helpers';
 
 
 describe('utils.singleLineString()', function() {
@@ -80,7 +81,7 @@ describe('utils.checkMinNodeVersion()', function() {
       version: 'v0.12.4',
     };
     return utils.checkMinNodeVersion('0.12.7', fakeProcess)
-      .then(utils.unexpectedSuccess)
+      .then(unexpectedSuccess)
       .catch((err) => {
         assert.include(err.message, 'Node version must be 0.12.7 or greater');
       });

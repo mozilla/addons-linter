@@ -139,7 +139,7 @@ it('should do something promise-y', () => {
 To test for rejection you can use this pattern:
 
 ```javascript
-import { unexpectedSuccess } from 'utils';
+import { unexpectedSuccess } from './helpers';
 ...
 it('should reject because of x', () => {
   return somePromiseCall()
