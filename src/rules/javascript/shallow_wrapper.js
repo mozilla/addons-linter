@@ -1,4 +1,5 @@
-import * as messages from 'messages/javascript';
+import { SHALLOW_WRAPPER } from 'messages';
+
 
 // This rule is used for older add-ons (non-Jetpack I believe) but honestly
 // it is a bit unclear as the MDN docs on XPCNativeWrapper seem to have moved
@@ -12,7 +13,7 @@ export default function(context) {
 
       if (node.arguments[0].type === 'Identifier' ||
           node.arguments[0].type === 'MemberExpression') {
-        return context.report(node, messages.SHALLOW_WRAPPER.code);
+        return context.report(node, SHALLOW_WRAPPER.code);
       }
     }
   }

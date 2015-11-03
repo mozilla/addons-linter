@@ -1,4 +1,6 @@
 import { isLocalUrl } from 'utils';
+import { OPENDIALOG_REMOTE_URI } from 'messages';
+
 
 export default function(context) {
   return {
@@ -11,7 +13,7 @@ export default function(context) {
           var uri = node.arguments[0];
           if (uri.type === 'Literal' &&
               isLocalUrl(uri.value) === false) {
-            return context.report(node, 'OPENDIALOG_REMOTE_URI');
+            return context.report(node, OPENDIALOG_REMOTE_URI.code);
           }
         }
       }

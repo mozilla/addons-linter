@@ -3,6 +3,7 @@ import ESLint from 'eslint';
 import { ESLINT_TYPES } from 'const';
 import * as messages from 'messages';
 import ESLintRules from 'rules/javascript';
+import { singleLineString } from 'utils';
 
 
 export default class JavaScriptScanner {
@@ -12,11 +13,11 @@ export default class JavaScriptScanner {
     this.filename = filename;
   }
 
-  scan() {
+  scan(_ESLint=ESLint) {
     return new Promise((resolve) => {
       // ESLint is synchronous and doesn't accept streams, so we need to
       // pass it the entire source file as a string.
-      let eslint = new ESLint.CLIEngine({
+      let eslint = new _ESLint.CLIEngine({
         ignore: false,
         rulePaths: ['dist/eslint'],
         rules: ESLintRules,
@@ -31,18 +32,17 @@ export default class JavaScriptScanner {
         // Fatal error messages (like SyntaxErrors) are a bit different, we
         // need to handle them specially.
         if (message.fatal === true) {
-          message.ruleId = messages.JS_SYNTAX_ERROR.code;
+          message.message = messages.JS_SYNTAX_ERROR.code;
         }
 
-        var code = message.ruleId.toUpperCase();
-        var messageObj = messages[code];
+        if (typeof message.message === 'undefined') {
+          throw new Error(singleLineString`JS rules must pass a valid message as
+                          the second argument to context.report()`);
+        }
 
         // Fallback to looking up the message object by the
-        // constant string passed in context.report()
-        if (!messageObj && message.message) {
-          messageObj = messages[message.message];
-          code = message.message;
-        }
+        var messageObj = messages[message.message];
+        var code = message.message;
 
         validatorMessages.push({
           code: code,
