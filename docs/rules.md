@@ -28,7 +28,7 @@ To update it edit `docs/rules.md` in the
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :negative_squared_cross_mark: | warning | webbrowserpersist | | nsIWebBrowserPersist should no longer be used |  | [testcases/javascript/call_definitions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/call_definitions.py)| ('testcases_javascript_call_definititions', 'webbrowserpersist') | **Removed **|
 | :negative_squared_cross_mark: | warning | webbrowserpersist_saveuri | | saveURI should not be called with a null load context | | | ('testcases_javascript_call_definititions', 'webbrowserpersist_saveuri') | **Removed** |
-| :x: | notice | deprec | | Deprecated nsIJSON methods in use | | | | |
+| :negative_squared_cross_mark: | notice | deprec | | Deprecated nsIJSON methods in use | | | ('testcases_javascript_calldefinitions', 'nsIJSON', 'deprec') | **Removed** |
 | :white_check_mark: | warning | shallow | | Shallow XPCOM wrappers should not be used | | | ('testcases_js_xpcom', 'xpcnativewrapper', 'shallow' | SHALLOW_WRAPPER |
 | :x: | notice | %s_nonliteral | | `%s` called with non-literal parameter. | | | | |
 | :white_check_mark: | notice | opendialog_nonlit_uri |  | openDialog called with non-literal parameter | | | ('js', 'instanceactions', 'openDialog_nonliteral' | OPENDIALOG_NONLIT_URI |
