@@ -44,12 +44,6 @@ export default argv
     type: 'boolean',
     default: false,
   })
-  .option('determined', {
-    describe: 'This flag will continue running tests in successive ' +
-      'tests even if a lower tier fails',
-    type: 'boolean',
-    default: false,
-  })
   .option('boring', {
     describe: 'Disables colorful shell output',
     type: 'boolean',
