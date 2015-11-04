@@ -12,12 +12,6 @@ describe('Basic CLI tests', function() {
     cli = cli_.exitProcess(false).fail(this.fakeFail);
   });
 
-  it('should default Add-on type to "any"', () => {
-    var args = cli.parse(['foo/bar.xpi']);
-    assert.equal(args.type, 'any');
-    assert.equal(args.t, 'any');
-  });
-
   it('should default logLevel type to "fatal"', () => {
     // This means by default there won't be any output.
     var args = cli.parse(['foo/bar.xpi']);
@@ -60,13 +54,6 @@ describe('Basic CLI tests', function() {
     cli.parse([]);
     assert.ok(this.fakeFail.calledWithMatch(
       'Not enough non-option arguments'));
-  });
-
-  it('should show error if incorrect type', () => {
-    cli.parse(['-t', 'false', 'whatevs']);
-    assert.ok(
-      this.fakeFail.calledWithMatch(
-        'Invalid values:\n  Argument: type, Given: "false"'));
   });
 
   it('should show error if incorrect output', () => {
