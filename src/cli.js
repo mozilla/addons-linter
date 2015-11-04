@@ -44,12 +44,6 @@ export default argv
     type: 'boolean',
     default: false,
   })
-  .option('selfhosted', {
-    describe: singleLineString`Indicates that the addon will not be hosted on
-      addons.mozilla.org. This allows the <em:updateURL> element to be set.`,
-    type: 'boolean',
-    default: false,
-  })
   .option('determined', {
     describe: 'This flag will continue running tests in successive ' +
       'tests even if a lower tier fails',

@@ -35,11 +35,6 @@ describe('Basic CLI tests', function() {
     assert.equal(args.pretty, false);
   });
 
-  it('should default selfhosted to false', () => {
-    var args = cli.parse(['foo/bar.xpi']);
-    assert.equal(args.selfhosted, false);
-  });
-
   it('should default determined to false', () => {
     var args = cli.parse(['foo/bar.xpi']);
     assert.equal(args.determined, false);
