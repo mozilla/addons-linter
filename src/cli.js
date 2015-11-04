@@ -1,6 +1,5 @@
 import argv from 'yargs';
 
-import { singleLineString } from 'utils';
 import { version } from 'json!../package';
 
 
@@ -48,14 +47,6 @@ export default argv
     describe: 'Disables colorful shell output',
     type: 'boolean',
     default: false,
-  })
-  .option('for-appversions', {
-    describe: singleLineString`JSON string to run validation tests for
-      compatibility with a specific app/version. The JSON object should
-      be a dict of version lists keyed by application GUID. For example,
-      running Firefox 6.* compatibility tests:
-      {"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}": ["6.*"]`,
-    type: 'string',
   })
   // Require one non-option.
   .demand(1)
