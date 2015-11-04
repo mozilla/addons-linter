@@ -49,14 +49,6 @@ export default argv
     type: 'boolean',
     default: false,
   })
-  .option('target-maxversion', {
-    describe: singleLineString`JSON string to override the package's
-      targetapp_maxVersion for validation. The JSON object should be
-      a dict of versions keyed by application GUID. For example,
-      setting a package's max Firefox version to 5.*:
-      {"{ec8030f7-c20a-464f-9b0e-13a3a9e97384}": "5.*"}`,
-    type: 'string',
-  })
   .option('target-minversion', {
     describe: singleLineString`JSON string to override the package's
       targetapp_minVersion for validation. The JSON object should
