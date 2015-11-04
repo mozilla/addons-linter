@@ -7,14 +7,16 @@ import { validRDF } from '../helpers';
 
 
 describe('RDF: mustNotExist', () => {
+  var filename = 'install.rdf';
 
   it('should not allow <hidden> tag', () => {
     var contents = validRDF('<em:hidden>true</em:hidden>');
-    var rdfScanner = new RDFScanner(contents, 'install.rdf');
+    var rdfScanner = new RDFScanner(contents, filename);
 
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
+        return rules.mustNotExist(xmlDoc, filename,
+                                  rdfScanner.options);
       })
       .then((validatorMessages) => {
         assert.equal(validatorMessages.length, 1);
@@ -27,11 +29,12 @@ describe('RDF: mustNotExist', () => {
   it('should not blow up when multiple bad tags are found', () => {
     var contents = validRDF(singleLineString`<em:hidden>true</em:hidden>
       <em:hidden>false</em:hidden>`);
-    var rdfScanner = new RDFScanner(contents, 'install.rdf');
+    var rdfScanner = new RDFScanner(contents, filename);
 
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
+        return rules.mustNotExist(xmlDoc, filename,
+                                 rdfScanner.options);
       })
       .then((validatorMessages) => {
         assert.equal(validatorMessages.length, 2);
@@ -47,11 +50,12 @@ describe('RDF: mustNotExist', () => {
     // Should fail because Add-on is listed and has an updateURL.
     var contents = validRDF(singleLineString`<em:listed>true</em:listed>
       <em:updateURL>http://mozilla.com/updateMyAddon.php</em:updateURL>`);
-    var rdfScanner = new RDFScanner(contents, 'install.rdf');
+    var rdfScanner = new RDFScanner(contents, filename);
 
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
+        return rules.mustNotExist(xmlDoc, filename,
+                                 rdfScanner.options);
       })
       .then((validatorMessages) => {
         assert.equal(validatorMessages.length, 1);
@@ -63,12 +67,13 @@ describe('RDF: mustNotExist', () => {
         // This shouldn't fail because there is no listed tag.
         contents = validRDF(singleLineString`
           <em:updateURL>http://mozilla.com/updateMyAddon.php</em:updateURL>`);
-        rdfScanner = new RDFScanner(contents, 'install.rdf');
+        rdfScanner = new RDFScanner(contents, filename);
 
         return rdfScanner.getContents();
       })
       .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
+        return rules.mustNotExist(xmlDoc, filename,
+                                 rdfScanner.options);
       })
       .then((validatorMessages) => {
         assert.equal(validatorMessages.length, 0);
@@ -78,11 +83,12 @@ describe('RDF: mustNotExist', () => {
   it('should test for obsolete tags', () => {
     var contents = validRDF(singleLineString`<em:file>'foo.js'</em:file>
       <em:requires>'something'</em:requires><em:skin>true</em:skin>`);
-    var rdfScanner = new RDFScanner(contents, 'install.rdf');
+    var rdfScanner = new RDFScanner(contents, filename);
 
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, rdfScanner.namespace);
+        return rules.mustNotExist(xmlDoc, filename,
+                                 rdfScanner.options);
       })
       .then((validatorMessages) => {
         assert.equal(validatorMessages.length, 3);
@@ -109,7 +115,7 @@ describe('RDF: mustNotExist', () => {
       .then((xmlDoc) => {
         return rules._checkForTags({
           xmlDoc: xmlDoc,
-          namespace: rdfScanner.namespace,
+          namespace: rdfScanner.options.namespace,
           tags: ['file'],
           type: VALIDATION_NOTICE,
           prefix: 'TAG_OBSOLETE_',

@@ -8,13 +8,17 @@ import * as rules from 'rules/rdf';
 export default class RDFScanner extends BaseScanner {
 
   _defaultRules = rules;
-  // I don't think this ever needs to be different, but if it does we can
-  // extract the em namespace using:
-  //
-  // this.namespace = this._xmlDoc.documentElement._nsMap.em;
-  //
-  // Inside _getContents.
-  namespace = 'http://www.mozilla.org/2004/em-rdf#';
+
+  constructor(contents, filename) {
+    super(contents, filename);
+    // I don't think this ever needs to be different, but if it does we can
+    // extract the em namespace using:
+    //
+    // this.namespace = this._xmlDoc.documentElement._nsMap.em;
+    //
+    // Inside _getContents.
+    this.options.namespace = 'http://www.mozilla.org/2004/em-rdf#';
+  }
 
   _getContents() {
     return new Promise((resolve, reject) => {
