@@ -33,6 +33,30 @@ export function singleLineString(strings, ...vars) {
 }
 
 /*
+ * Takes an AST node and returns the root property.
+ *
+ * example: foo().bar.baz() will return the AST node for foo.
+ */
+export function getRootExpression(node) {
+  var root = node.callee;
+
+  // If we encounter a member, grab the parent
+  if (node.callee.type === 'MemberExpression') {
+    let parent = node.callee.object;
+    while (parent.type !== 'Identifier') {
+      if (parent.callee.type === 'MemberExpression') {
+        parent = parent.callee.object;
+      } else {
+        parent = parent.callee;
+      }
+    }
+    root = parent;
+  }
+
+  return root;
+}
+
+/*
  * Get a variable from a eslint context object if it exists, otherwise
  * undefined.
  */
