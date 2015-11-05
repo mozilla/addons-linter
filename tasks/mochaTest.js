@@ -1,5 +1,6 @@
 module.exports = {
   options: {
+    timeout: 5000,
     require: [
       function() {
         /*eslint-disable */
