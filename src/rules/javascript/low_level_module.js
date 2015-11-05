@@ -1,20 +1,21 @@
-import { DEPREC_SDK_MOD_WIDGET } from 'messages';
+import { LOW_LEVEL_MODULES } from 'const';
+import { LOW_LEVEL_MODULE } from 'messages';
 import { getVariable } from 'utils';
 
-const WIDGET_PATH = 'sdk/widget';
 
 /*
  * This rule will detect use of `require()` with the first arg being either
- * a literal that matches the widget module or var pointing at a literal.
+ * a literal that matches a restricted module or a var pointing to a literal
+ * that matches a restricted value.
  *
- * TODO: This rule looks to be related to compat - based on the old tests.
  * TODO: This rule should only be run for jetpack.
+ * TODO: Check what the requires_chrome feature does in the old code.
  *
  */
 export default function(context) {
   return {
     CallExpression: function(node) {
-      var requiresWidgetMod = false;
+      var requiresLowLevelMod = false;
       if (node.callee.name === 'require' &&
           node.arguments &&
           node.arguments.length) {
@@ -24,8 +25,8 @@ export default function(context) {
         // Find a literal string value passed to the
         // the require function.
         if (firstArg.type === 'Literal' &&
-            firstArg.value === WIDGET_PATH) {
-          requiresWidgetMod = true;
+            LOW_LEVEL_MODULES.includes(firstArg.value)) {
+          requiresLowLevelMod = true;
         }
 
         // Detect a var matching the widget module
@@ -33,13 +34,13 @@ export default function(context) {
         if (firstArg.type === 'Identifier') {
           var pathVar = getVariable(context, firstArg.name);
           if (pathVar && pathVar.type === 'Literal' &&
-              pathVar.value === WIDGET_PATH) {
-            requiresWidgetMod = true;
+              LOW_LEVEL_MODULES.includes(pathVar.value)) {
+            requiresLowLevelMod = true;
           }
         }
 
-        if (requiresWidgetMod) {
-          return context.report(node, DEPREC_SDK_MOD_WIDGET.code);
+        if (requiresLowLevelMod) {
+          return context.report(node, LOW_LEVEL_MODULE.code);
         }
       }
     },
