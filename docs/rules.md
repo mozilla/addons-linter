@@ -19,9 +19,10 @@ To update it edit `docs/rules.md` in the
 | :x: | warning | called_dangerous_global | | `%s` called in potentially dangerous manner' | | | | |
 | :white_check_mark: | error? | eval | | In order to prevent vulnerabilities, the `setTimeout` 'and `setInterval` functions should be called only with function expressions as their first argument. | | [testcases/javascript/actions.py](https://github.com/mozilla/amo-validator/blob/7a8011aba8bf8c665aef2b51eb26d0697b3e19c3/validator/testcases/javascript/actions.py#L488) | | EVAL_STRING_ARG |
 | :x: | warning | low_level_module (not from src) | | Usage of low-level or non-SDK interface | | | | |
-| :x: | warning | widget | | Use of deprecated SDK module | | | | |
+| :white_check_mark: | warning | widget | | Use of deprecated SDK module | | | null | DEPREC_SDK_MOD_WIDGET |
 | :negative_squared_cross_mark: | notice |  \_readonly_top | | window.top is a reserved variable | | | ('testcases_javascript_actions', '_readonly_top' | **Removed** |
 | :x: | warning | global_overwrite | | Global variable overwrite | | | | |
+| :white_check_mark: | warning | unexpected_global_arg [NEW] | | Unexpected global passed as an argument | | | null | UNEXPECTED_GLOGAL_ARG |
 
 ### Call definitions
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
