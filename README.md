@@ -19,7 +19,8 @@ To validate your add-on locally, install the validator from
 [npm](http://nodejs.org/):
 
 ```
-# Install locally so you can use the validator from anywhere on your machine.
+# Install globally so you can use the validator from any directory on
+# your machine.
 npm install -g addons-validator
 ```
 
@@ -48,6 +49,8 @@ If you have node.js installed, here's the quick start to getting
 your development dependencies installed and building the binary:
 
 ```
+git clone https://github.com/mozilla/addons-validator.git
+cd addons-validator
 npm install
 npm start
 # Leave running to watch for changes or cancel to stop watching.
