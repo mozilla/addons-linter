@@ -1,7 +1,8 @@
 import { Readable } from 'stream';
 
 import Xpi from 'xpi';
-import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
+import { ARCH_DEFAULT, ARCH_JETPACK, DEFLATE_COMPRESSION,
+         NO_COMPRESSION } from 'const';
 import { DuplicateZipEntryError } from 'exceptions';
 import { unexpectedSuccess } from './helpers';
 
@@ -107,14 +108,20 @@ describe('Xpi.getMetaData()', function() {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     assert.equal(myXpi.filename, 'foo/bar');
     assert.equal(typeof myXpi.metadata, 'object');
-    assert.equal(Object.keys(myXpi.metadata).length, 0);
+    assert.equal(myXpi.metadata.architecture, ARCH_DEFAULT);
+    assert.equal(typeof myXpi.metadata.files, 'object');
+    assert.equal(Object.keys(myXpi.metadata).length, 3);
   });
 
   it('should return cached data when available', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.metadata = {
-      'install.rdf': installRdfEntry,
-      'chrome.manifest': chromeManifestEntry,
+      architecture: ARCH_DEFAULT,
+      files: {
+        'install.rdf': installRdfEntry,
+        'chrome.manifest': chromeManifestEntry,
+      },
+      _processed: true,
     };
     return myXpi.getMetaData()
       .then((metadata) => {
@@ -123,11 +130,31 @@ describe('Xpi.getMetaData()', function() {
       });
   });
 
+  it('should not be considered a jetpack add-on', () => {
+    var myXpi = new Xpi('tests/fixtures/xpis/example.xpi');
+    return myXpi.getMetaData()
+      .then((metadata) => {
+        assert.equal(metadata.architecture, ARCH_DEFAULT);
+      });
+  });
+
+  it('should be considered a jetpack add-on', () => {
+    var myXpi = new Xpi('tests/fixtures/xpis/jetpack-1.14.xpi');
+    return myXpi.getMetaData()
+      .then((metadata) => {
+        assert.equal(metadata.architecture, ARCH_JETPACK);
+      });
+  });
+
   it('should contain expected files', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     var expected = {
-      'install.rdf': installRdfEntry,
-      'chrome.manifest': chromeManifestEntry,
+      architecture: ARCH_DEFAULT,
+      files: {
+        'install.rdf': installRdfEntry,
+        'chrome.manifest': chromeManifestEntry,
+      },
+      _processed: true,
     };
 
     // Return the fake zip to the open callback.
@@ -230,8 +257,12 @@ describe('Xpi.getFileAsStream()', function() {
   it('should reject if path does not exist', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.metadata = {
-      'install.rdf': installRdfEntry,
-      'chrome.manifest': chromeManifestEntry,
+      architecture: ARCH_DEFAULT,
+      files: {
+        'install.rdf': installRdfEntry,
+        'chrome.manifest': chromeManifestEntry,
+      },
+      _processed: true,
     };
 
     return myXpi.getFileAsStream('whatever')
@@ -244,8 +275,12 @@ describe('Xpi.getFileAsStream()', function() {
   it('should reject if error in openReadStream', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.metadata = {
-      'install.rdf': installRdfEntry,
-      'chrome.manifest': chromeManifestEntry,
+      architecture: ARCH_DEFAULT,
+      files: {
+        'install.rdf': installRdfEntry,
+        'chrome.manifest': chromeManifestEntry,
+      },
+      _processed: true,
     };
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
@@ -262,8 +297,12 @@ describe('Xpi.getFileAsStream()', function() {
   it('should resolve with a readable stream', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.metadata = {
-      'install.rdf': installRdfEntry,
-      'chrome.manifest': chromeManifestEntry,
+      architecture: ARCH_DEFAULT,
+      files: {
+        'install.rdf': installRdfEntry,
+        'chrome.manifest': chromeManifestEntry,
+      },
+      _processed: true,
     };
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
@@ -296,8 +335,12 @@ describe('Xpi.getFileAsStream()', function() {
   it('should resolve with a string', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.metadata = {
-      'install.rdf': installRdfEntry,
-      'chrome.manifest': chromeManifestEntry,
+      architecture: ARCH_DEFAULT,
+      files: {
+        'install.rdf': installRdfEntry,
+        'chrome.manifest': chromeManifestEntry,
+      },
+      _processed: true,
     };
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
@@ -318,8 +361,12 @@ describe('Xpi.getFileAsStream()', function() {
   it('should reject if error in openReadStream from readAsString', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.metadata = {
-      'install.rdf': installRdfEntry,
-      'chrome.manifest': chromeManifestEntry,
+      architecture: ARCH_DEFAULT,
+      files: {
+        'install.rdf': installRdfEntry,
+        'chrome.manifest': chromeManifestEntry,
+      },
+      _processed: true,
     };
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
@@ -345,10 +392,14 @@ describe('Xpi.getFileAsStream()', function() {
   it('should return all JS files', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.metadata = {
-      'install.rdf': installRdfEntry,
-      'chrome.manifest': chromeManifestEntry,
-      'main.js': jsMainFileEntry,
-      'secondary.js': jsSecondaryFileEntry,
+      architecture: ARCH_DEFAULT,
+      files: {
+        'install.rdf': installRdfEntry,
+        'chrome.manifest': chromeManifestEntry,
+        'main.js': jsMainFileEntry,
+        'secondary.js': jsSecondaryFileEntry,
+      },
+      _processed: true,
     };
 
     return myXpi.getFilesByExt('.js')
@@ -366,10 +417,14 @@ describe('Xpi.getFileAsStream()', function() {
   it('should return all CSS files', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.metadata = {
-      'other.css': installRdfEntry,
-      'chrome.manifest': chromeManifestEntry,
-      'styles.css': jsMainFileEntry,
-      'secondary.js': jsSecondaryFileEntry,
+      architecture: ARCH_DEFAULT,
+      files: {
+        'other.css': installRdfEntry,
+        'chrome.manifest': chromeManifestEntry,
+        'styles.css': jsMainFileEntry,
+        'secondary.js': jsSecondaryFileEntry,
+      },
+      _processed: true,
     };
 
     return myXpi.getFilesByExt('.css')
@@ -387,12 +442,16 @@ describe('Xpi.getFileAsStream()', function() {
   it('should return all HTML files', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.metadata = {
-      'install.rdf': installRdfEntry,
-      'chrome.manifest': chromeManifestEntry,
-      'index.html': jsMainFileEntry,
-      'second.htm': jsMainFileEntry,
-      'third.html': jsMainFileEntry,
-      'secondary.js': jsSecondaryFileEntry,
+      architecture: ARCH_DEFAULT,
+      files: {
+        'install.rdf': installRdfEntry,
+        'chrome.manifest': chromeManifestEntry,
+        'index.html': jsMainFileEntry,
+        'second.htm': jsMainFileEntry,
+        'third.html': jsMainFileEntry,
+        'secondary.js': jsSecondaryFileEntry,
+      },
+      _processed: true,
     };
 
     return myXpi.getFilesByExt('.html', '.htm')
