@@ -3,7 +3,6 @@ import { EventEmitter } from 'events';
 
 import { Xpi } from 'io';
 import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
-import { DuplicateZipEntryError } from 'exceptions';
 import { unexpectedSuccess } from '../helpers';
 
 const defaultData = {
@@ -169,7 +168,8 @@ describe('xpi.getFiles()', function() {
     return myXpi.getFiles(onEventsSubscribed)
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.instanceOf(err, DuplicateZipEntryError);
+        assert.instanceOf(err, Error);
+        assert.include(err.message, 'DuplicateZipEntry');
       });
   });
 

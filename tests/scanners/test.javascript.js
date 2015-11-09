@@ -2,7 +2,6 @@ import ESLint from 'eslint';
 
 import { ESLINT_ERROR, ESLINT_RULE_MAPPING, VALIDATION_ERROR,
          VALIDATION_WARNING } from 'const';
-import { MissingFilenameError } from 'exceptions';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import * as rules from 'rules/javascript';
@@ -16,7 +15,7 @@ describe('JavaScript Scanner', function() {
   it('should thrown an error without a filename', () => {
     assert.throws(() => {
       var jsScanner = new JavaScriptScanner(''); // eslint-disable-line
-    }, MissingFilenameError, 'Filename is required');
+    }, Error, 'Filename is required');
   });
 
   it('should have an options property', () => {

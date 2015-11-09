@@ -4,7 +4,6 @@ import sinon from 'sinon';
 import XMLDom from 'xmldom';
 
 import { RDF_DEFAULT_NAMESPACE } from 'const';
-import { RDFParseError } from 'exceptions';
 import { getRuleFiles, validRDF } from '../helpers';
 import RDFScanner from 'scanners/rdf';
 import * as rules from 'rules/rdf';
@@ -69,7 +68,8 @@ describe('RDF', function() {
         assert.fail(null, null, 'Unexpected success');
       })
       .catch((err) => {
-        assert.instanceOf(err, RDFParseError);
+        assert.instanceOf(err, Error);
+        assert.include(err.message, 'RDFParseError');
       });
   });
 

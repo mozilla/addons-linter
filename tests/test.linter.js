@@ -6,7 +6,6 @@ import * as constants from 'const';
 import * as messages from 'messages';
 
 import CSSScanner from 'scanners/css';
-import { DuplicateZipEntryError } from 'exceptions';
 import { fakeMessageData,
          unexpectedSuccess,
          validManifestJSON } from './helpers';
@@ -229,7 +228,7 @@ describe('Linter', function() {
     class FakeXpi {
       getFiles() {
         return Promise.reject(
-          new DuplicateZipEntryError('Darnit the zip has dupes!'));
+          new Error('DuplicateZipEntry the zip has dupes!'));
       }
       getFilesByExt() {
         return this.getMetadata();

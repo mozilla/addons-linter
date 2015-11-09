@@ -2,7 +2,7 @@ import cli from 'cli';
 import Linter from 'linter';
 import log from 'logger';
 
-import 'babel-core/polyfill';
+import 'babel-polyfill';
 
 export function createInstance(config=cli.argv) {
   log.level(config.logLevel);

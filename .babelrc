@@ -1,7 +1,7 @@
 {
-  "stage": 2,
-  "optional": [
-    "es7.objectRestSpread",
-    "es7.classProperties"
-  ],
+  "presets": ["es2015", "stage-2"],
+  "plugins": [
+    "transform-class-properties",
+    "transform-es2015-modules-commonjs",
+  ]
 }
