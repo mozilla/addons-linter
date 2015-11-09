@@ -68,4 +68,27 @@ describe('CSS Rule detectBadMozBinding', () => {
       });
   });
 
+  it('should detect -moz-binding used in @media block and outside', () => {
+    var code = singleLineString`/* I'm a comment */
+      .something-else {
+          -moz-binding:url("http://foo.bar/remote/sites/are/bad");
+      }
+
+      @media only screen and (max-width: 959px) {
+          .something-else {
+              -moz-binding:url("http://foo.bar/remote/sites/are/bad");
+          }
+      }`;
+
+    var cssScanner = new CSSScanner(code, 'fakeFile.css');
+    return cssScanner.scan()
+      .then((validationMessages) => {
+        assert.equal(validationMessages.length, 2);
+        assert.equal(validationMessages[0].code,
+                     messages.MOZ_BINDING_EXT_REFERENCE.code);
+        assert.equal(validationMessages[1].code,
+                     messages.MOZ_BINDING_EXT_REFERENCE.code);
+      });
+  });
+
 });

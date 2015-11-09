@@ -1,6 +1,8 @@
-import BaseScanner from 'scanners/base';
 import * as cssParser from 'css';
 import * as rules from 'rules/css';
+
+import BaseScanner from 'scanners/base';
+import log from 'logger';
 import { CSS_SYNTAX_ERROR } from 'messages';
 import { VALIDATION_ERROR } from 'const';
 import { ignorePrivateFunctions } from 'utils';
@@ -9,6 +11,44 @@ import { ignorePrivateFunctions } from 'utils';
 export default class CSSScanner extends BaseScanner {
 
   _defaultRules = rules;
+
+  processCode(cssCode, cssInstruction) {
+    if (cssCode.type === 'comment') {
+      log.debug('Found CSS comment. Skipping');
+      return;
+    }
+
+    if (cssCode.type === 'media') {
+      log.debug('Processing media rules');
+      if (cssCode.rules.length) {
+        for (let mediaCssCode of cssCode.rules) {
+          this.processCode(mediaCssCode, cssInstruction);
+        }
+      } else {
+        log.debug('No media rules found');
+      }
+      return;
+    }
+
+    var file = cssCode.position.source;
+    var startLine = cssCode.position.start.line;
+    var startColumn = cssCode.position.start.column;
+
+    log.debug('Passing CSS code to rule function "%s"',
+      cssInstruction, {
+        cssCode: cssCode,
+        file: file,
+        startLine: startLine,
+        startColumn: startColumn,
+      });
+
+    this.validatorMessages = this.validatorMessages.concat(
+      rules[cssInstruction](cssCode, file, {
+        startLine: startLine,
+        startColumn: startColumn,
+      }));
+  }
+
 
   scan(_rules=this._defaultRules) {
     return new Promise((resolve, reject) => {
@@ -19,18 +59,8 @@ export default class CSSScanner extends BaseScanner {
 
             for (let cssInstruction in rules) {
               this._rulesProcessed++;
-
               for (let cssCode of ast.stylesheet.rules) {
-                if (cssCode.type === 'comment') {
-                  continue;
-                }
-
-                this.validatorMessages = this.validatorMessages.concat(
-                  rules[cssInstruction](cssCode, cssCode.position.source,{
-                    startLine: cssCode.position.start.line,
-                    startColumn: cssCode.position.start.column,
-                  })
-                );
+                this.processCode(cssCode, cssInstruction);
               }
             }
           }
@@ -65,5 +95,4 @@ export default class CSSScanner extends BaseScanner {
       }
     });
   }
-
 }
