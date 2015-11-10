@@ -49,9 +49,9 @@ export const PACKAGE_TYPES = {
   PACKAGE_SUBPACKAGE: PACKAGE_SUBPACKAGE,
 };
 
-// Types in install.rdf don't match the types
+// Types from install.rdf don't match the types
 // we use internally. This provides a mapping.
-export const INSTALL_RDF_TYPE_MAP = {
+export const ADDON_TYPE_MAP = {
   2: PACKAGE_EXTENSION,
   4: PACKAGE_THEME,
   8: PACKAGE_LANGPACK,
@@ -80,3 +80,7 @@ export const LOW_LEVEL_MODULES = [
   'tab/utils', 'sdk/tab/utils',
   'system/events', 'sdk/system/events',
 ];
+
+export const INSTALL_RDF = 'install.rdf';
+export const MANIFEST_JSON = 'manifest.json';
+export const CHROME_MANIFEST = 'chrome.manifest';
