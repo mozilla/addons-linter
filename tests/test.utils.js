@@ -37,6 +37,41 @@ describe('utils.singleLineString()', function() {
 
 });
 
+describe('utils.getRootExpression()', function() {
+  var node = {
+    type: 'CallExpression',
+    callee: { // <-- bar()
+      type: 'MemberExpression',
+      object: {
+        type:'CallExpression',
+        callee: { // <-- foo()
+          type: 'MemberExpression',
+          object: {
+            type: 'CallExpression',
+            callee: { // <-- pref()
+              type: 'Identifier',
+              name: 'pref',
+            },
+          },
+          property: {
+            type: 'Identifier',
+            name: 'foo',
+          },
+        },
+      },
+      property: {
+        type: 'Identifier',
+        name: 'bar',
+      },
+    },
+  };
+
+  it('should verify that the root node is what was expected', () => {
+    var root = utils.getRootExpression(node);
+
+    assert.equal(root.name, 'pref');
+  });
+});
 
 describe('utils.getVariable()', function() {
   // This is the expected schema from eslint

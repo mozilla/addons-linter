@@ -9,4 +9,5 @@ export default {
   opendialog_remote_uri: ESLINT_WARNING,
   shallow_wrapper: ESLINT_WARNING,
   widget_module: ESLINT_WARNING,
+  only_prefs_in_defaults: ESLINT_WARNING,
 };
