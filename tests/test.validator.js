@@ -5,9 +5,8 @@ import * as messages from 'messages';
 
 import CSSScanner from 'scanners/css';
 import { DuplicateZipEntryError } from 'exceptions';
-import { fakeMessageData,
-         unexpectedSuccess,
-         validManifestJSON } from './helpers';
+import { fakeMessageData, unexpectedSuccess, validMetadata,
+         validRDF } from './helpers';
 import { singleLineString } from 'utils';
 
 
@@ -159,10 +158,7 @@ describe('Validator', function() {
 
     class FakeXpi {
       getMetaData() {
-        return Promise.resolve({
-          architecture: constants.ARCH_DEFAULT,
-          files: [],
-        });
+        return Promise.resolve(validMetadata());
       }
       getFilesByExt() {
         return Promise.resolve(['foo.js', 'bar.js']);
@@ -188,10 +184,7 @@ describe('Validator', function() {
 
     class FakeXpi {
       getMetaData() {
-        return Promise.resolve({
-          architecture: constants.ARCH_DEFAULT,
-          files: [],
-        });
+        return Promise.resolve(validMetadata());
       }
       getFilesByExt() {
         return Promise.resolve(['foo.js', 'bar.js']);
