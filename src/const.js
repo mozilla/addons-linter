@@ -71,3 +71,12 @@ export const BANNED_IDENTIFIERS = [
   'newThread',
   'processNextEvent',
 ];
+
+export const LOW_LEVEL_MODULES = [
+  // Added from bugs 689340, 731109
+  'chrome', 'window-utils', 'observer-service',
+  // Added from bug 845492
+  'window/utils', 'sdk/window/utils', 'sdk/deprecated/window-utils',
+  'tab/utils', 'sdk/tab/utils',
+  'system/events', 'sdk/system/events',
+];

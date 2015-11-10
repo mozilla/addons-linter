@@ -18,7 +18,7 @@ To update it edit `docs/rules.md` in the
 | :white_check_mark: | warning | complex_prefs_defaults | | Complex code should not appear in preference defaults files | | [testcases/javascript/actions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/actions.py#L427) | ('testcases_javascript_actions', '_call_expression', 'complex_prefs_defaults_code')| ONLY_PREFS_IN_DEFAULTS |
 | :x: | warning | called_dangerous_global | | `%s` called in potentially dangerous manner' | | | | |
 | :white_check_mark: | error? | eval | | In order to prevent vulnerabilities, the `setTimeout` 'and `setInterval` functions should be called only with function expressions as their first argument. | | [testcases/javascript/actions.py](https://github.com/mozilla/amo-validator/blob/7a8011aba8bf8c665aef2b51eb26d0697b3e19c3/validator/testcases/javascript/actions.py#L488) | | EVAL_STRING_ARG |
-| :x: | warning | low_level_module (not from src) | | Usage of low-level or non-SDK interface | | | | |
+| :white_check_mark: | warning | low_level_module (not from src) | | Usage of low-level or non-SDK interface | | | null | LOW_LEVEL_MODULE |
 | :white_check_mark: | warning | widget | | Use of deprecated SDK module | | | null | DEPREC_SDK_MOD_WIDGET |
 | :negative_squared_cross_mark: | notice |  \_readonly_top | | window.top is a reserved variable | | | ('testcases_javascript_actions', '_readonly_top' | **Removed** |
 | :x: | warning | global_overwrite | | Global variable overwrite | | | | |
