@@ -122,7 +122,7 @@ export function ignorePrivateFunctions(list) {
 
   for (let functionName in list) {
     if (functionName.startsWith('_') === false &&
-        typeof(list[functionName]) === 'function') {
+        typeof list[functionName] === 'function') {
       filteredList[functionName] = list[functionName];
     }
   }

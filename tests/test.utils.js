@@ -169,7 +169,7 @@ describe('utils.ignorePrivateFunctions()', function() {
 
     var publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
     for (let functionName in publicFunctions) {
-      assert.equal(typeof(publicFunctions[functionName]), 'function');
+      assert.equal(typeof publicFunctions[functionName], 'function');
     }
   });
 
