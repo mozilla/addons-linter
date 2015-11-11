@@ -7,14 +7,16 @@ import promisify from 'es6-promisify';
 
 import { terminalWidth } from 'cli';
 import * as constants from 'const';
+import { CHROME_MANIFEST, INSTALL_RDF, MANIFEST_JSON } from 'const';
 import * as exceptions from 'exceptions';
 import * as messages from 'messages';
-import { getPackageTypeAsString,
-         checkMinNodeVersion,
+import { checkMinNodeVersion,
          gettext as _, singleLineString } from 'utils';
 
 import log from 'logger';
 import Collector from 'collector';
+import InstallRdfParser from 'parsers/installrdf';
+import ManifestJSONParser from 'parsers/manifestjson';
 import ChromeManifestScanner from 'scanners/chromemanifest';
 import CSSScanner from 'scanners/css';
 import HTMLScanner from 'scanners/html';
@@ -48,91 +50,6 @@ export default class Validator {
         throw new Error(singleLineString`colorize passed invalid type.
           Should be one of ${constants.MESSAGE_TYPES.join(', ')}`);
     }
-  }
-
-  detectPackageType() {
-    var installRdfPath = 'install.rdf';
-
-    return this.xpi.getMetaData()
-      .then((metadata) => {
-        if (metadata.hasOwnProperty(installRdfPath)) {
-          return this.xpi.getFileAsString(installRdfPath)
-            .then((content) => {
-              var rdfScanner = new RDFScanner(content, installRdfPath);
-              return rdfScanner.getContents();
-            })
-            .then((xmlDoc) => {
-              // Lookup addon type from install.rdf.
-              return new Promise((resolve) => {
-                var typeNodes = xmlDoc.getElementsByTagName('em:type');
-                if (typeNodes.length > 1) {
-                  throw new Error('Multiple <em:type> elements found');
-                }
-                var node = typeNodes[0];
-                if (node && node.firstChild && node.firstChild.nodeValue) {
-                  var typeValue = node.firstChild.nodeValue;
-                  var resolvedTypeValue = null;
-                  if (!constants.INSTALL_RDF_TYPE_MAP
-                        .hasOwnProperty(typeValue)) {
-                    log.debug('Invalid type value "%s"', typeValue);
-                    this.collector.addError(messages.TYPE_INVALID);
-                  } else {
-                    var resolvedTypeValue =
-                      constants.INSTALL_RDF_TYPE_MAP[typeValue];
-                    log.debug('Mapping original <em:type> value "%s" -> "%s"',
-                              typeValue, resolvedTypeValue);
-                  }
-                  // This will resolve with null or the actual value.
-                  resolve(resolvedTypeValue);
-                } else {
-                  log.warn('<em:type> was not found in install.rdf');
-                  this.collector.addNotice(messages.TYPE_MISSING);
-                  resolve(null);
-                }
-              });
-            });
-        } else {
-          log.warn('No install.rdf was found in the package metadata');
-          this.collector.addNotice(messages.TYPE_NO_INSTALL_RDF);
-          return Promise.resolve(null);
-        }
-      }).then((packageType) => {
-        if (packageType === null) {
-          log.info(singleLineString`Determining addon type from install.rdf
-                   failed. Guessing from layout`);
-          return this.xpi.getMetaData()
-            .then((metadata) => {
-              for (let path_ of Object.keys(metadata)) {
-                if (path_.startsWith('dictionaries/')) {
-                  return Promise.resolve(
-                    constants.PACKAGE_DICTIONARY);
-                }
-              }
-
-              // TODO: This follows the amo-validator approach.
-              // There's no type element, so the spec says that it's either a
-              // theme or an extension. At this point, we know that it isn't
-              // a dictionary, language pack, or multiple extension pack.
-              log.warn('Falling back to decide type from package extension');
-
-              var extensions = {
-                '.jar': constants.PACKAGE_THEME,
-                '.xpi': constants.PACKAGE_EXTENSION,
-              };
-
-              var ext = extname(this.packagePath);
-              if (extensions.hasOwnProperty(ext)) {
-                return Promise.resolve(extensions[ext]);
-              }
-
-              log.error('All attempts to lookup addon type failed');
-              this.collector.addError(messages.TYPE_NOT_DETERMINED);
-              return Promise.resolve(null);
-            });
-        } else {
-          return Promise.resolve(packageType);
-        }
-      });
   }
 
   handleError(err, _console=console) {
@@ -272,6 +189,70 @@ export default class Validator {
     return output;
   }
 
+  getAddonMetaData() {
+    return this.xpi.getMetaData()
+      .then((xpiMeta) => {
+        if (xpiMeta.hasOwnProperty(INSTALL_RDF) &&
+            xpiMeta.hasOwnProperty(MANIFEST_JSON)) {
+          throw new Error(`Both ${INSTALL_RDF} and ${MANIFEST_JSON} found`);
+        } else if (xpiMeta.hasOwnProperty(INSTALL_RDF)) {
+          log.info('Retrieving metadata from install.rdf');
+          return this.xpi.getFileAsString(INSTALL_RDF)
+            .then((rdf) => {
+              return new InstallRdfParser(rdf, this.collector).getMetaData();
+            });
+        } else if (xpiMeta.hasOwnProperty(MANIFEST_JSON)) {
+          log.info('Retrieving metadata from manifest.json');
+          return this.xpi.getFileAsString(MANIFEST_JSON)
+            .then((json) => {
+              return new ManifestJSONParser(json, this.collector).getMetaData();
+            });
+        } else {
+          log.warn(singleLineString`No ${INSTALL_RDF} or ${MANIFEST_JSON}
+                   was found in the package metadata`);
+          // TODO: Add notice for missing manifest.json?
+          this.collector.addNotice(messages.TYPE_NO_INSTALL_RDF);
+          return Promise.resolve({});
+        }
+      });
+  }
+
+  /*
+   * When type lookups from install.rdf and manifest.json fail
+   * this is used as a fall-back.
+   * TODO: This follows the amo-validator approach - we should check
+   * we still think this is warranted.
+   * There's no type element, so the spec says that it's either a
+   * theme or an extension. At this point, we know that it isn't
+   * a dictionary, language pack, or multiple extension pack.
+   */
+  detectTypeFromLayout() {
+    return this.xpi.getMetaData()
+      .then((xpiMeta) => {
+        for (let path_ of Object.keys(xpiMeta)) {
+          if (path_.startsWith('dictionaries/')) {
+            return Promise.resolve(constants.PACKAGE_DICTIONARY);
+          }
+        }
+
+        log.warn('Falling back to decide type from package extension');
+
+        var extensions = {
+          '.jar': constants.PACKAGE_THEME,
+          '.xpi': constants.PACKAGE_EXTENSION,
+        };
+
+        var ext = extname(this.packagePath);
+        if (extensions.hasOwnProperty(ext)) {
+          return Promise.resolve(extensions[ext]);
+        }
+
+        log.error('All attempts to lookup addon type failed');
+        this.collector.addError(messages.TYPE_NOT_DETERMINED);
+        return Promise.resolve(null);
+      });
+  }
+
   checkFileExists(filepath, _lstat=lstat) {
     var invalidMessage = new Error(
       `Path "${filepath}" is not a file or does not exist.`);
@@ -310,7 +291,7 @@ export default class Validator {
 
   getScanner(filename) {
 
-    if (filename === 'chrome.manifest') {
+    if (filename === CHROME_MANIFEST) {
       return ChromeManifestScanner;
     }
 
@@ -359,22 +340,26 @@ export default class Validator {
         })
         .then(() => {
           this.xpi = new _Xpi(this.packagePath);
-          return this.detectPackageType();
+          return this.getAddonMetaData();
         })
-        .then((packageType) => {
-          this.packageType = packageType;
-          if (packageType) {
-            log.debug('Package type detected as %s',
-                      getPackageTypeAsString(packageType));
+        .then((addonMetaData) => {
+          this.addonMetaData = addonMetaData;
+          if (!addonMetaData.type) {
+            log.info('Determining addon type failed. Guessing from layout');
+            return this.detectTypeFromLayout()
+              .then((addonType) => {
+                this.addonMetaData.type = addonType;
+              });
           }
+          return Promise.resolve();
+        }).then(() => {
           return this.xpi.getMetaData();
         })
-        .then((metadata) => {
-          var chromeManifest = 'chrome.manifest';
-          if (metadata.hasOwnProperty(chromeManifest)) {
-            return this.scanFile(chromeManifest, 'stream');
+        .then((xpiMetaData) => {
+          if (xpiMetaData.hasOwnProperty(CHROME_MANIFEST)) {
+            return this.scanFile(CHROME_MANIFEST, 'stream');
           } else {
-            log.warn('No root chrome.manifest found');
+            log.warn(`No root ${CHROME_MANIFEST} found`);
             return Promise.resolve();
           }
         })

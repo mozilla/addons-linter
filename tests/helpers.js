@@ -59,6 +59,20 @@ export function validRDF(contents) {
   </RDF>`;
 }
 
+export function validManifestJSON(extra) {
+  return JSON.stringify(Object.assign({}, {
+    name: 'my extension',
+    manifest_version: 2,
+    gecko: {
+      id: '{the-addon-id}',
+      strict_min_version: '40.0.0',
+      strict_max_version: '50.*',
+      update_url: 'https://foo/bar',
+    },
+    version: '0.1',
+  }, extra));
+}
+
 export function unexpectedSuccess() {
   return assert.fail(null, null, 'Unexpected success');
 }

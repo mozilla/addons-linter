@@ -5,7 +5,9 @@ import * as messages from 'messages';
 
 import CSSScanner from 'scanners/css';
 import { DuplicateZipEntryError } from 'exceptions';
-import { fakeMessageData, unexpectedSuccess, validRDF } from './helpers';
+import { fakeMessageData,
+         unexpectedSuccess,
+         validManifestJSON } from './helpers';
 import { singleLineString } from 'utils';
 
 
@@ -197,7 +199,6 @@ describe('Validator', function() {
     addonValidator.checkFileExists = () => Promise.resolve();
     addonValidator.collector.addError = sinon.stub();
     addonValidator.print = sinon.stub();
-    addonValidator.detectPackageType = () => Promise.resolve();
     class FakeXpi {
       getMetaData() {
         return Promise.reject(
@@ -466,123 +467,85 @@ describe('Validator.textOutput()', function() {
 });
 
 
-describe('Validator.detectType()', function() {
+describe('Validator.getAddonMetaData()', function() {
 
-  it('should reject on multiple em:type nodes', () => {
+  it('should look at JSON when manifest.json', () => {
     var addonValidator = new Validator({_: ['bar']});
     addonValidator.xpi = {
-      getFileAsString: () => {
-        return Promise.resolve(
-          validRDF('<em:type>2</em:type><em:type>2</em:type>'));
+      getMetaData: () => {
+        return Promise.resolve({
+          'manifest.json': {},
+        });
       },
+      getFileAsString: () => {
+        return Promise.resolve(validManifestJSON({}));
+      },
+    };
+    return addonValidator.getAddonMetaData()
+      .then((metadata) => {
+        assert.equal(metadata.type, constants.PACKAGE_EXTENSION);
+      });
+  });
+
+  it('should throw error if both manifest.json and install.rdf found', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.xpi = {
       getMetaData: () => {
         return Promise.resolve({
           'install.rdf': {},
+          'manifest.json': {},
         });
       },
     };
-    return addonValidator.detectPackageType()
+    return addonValidator.getAddonMetaData()
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.equal(err.message, 'Multiple <em:type> elements found');
+        assert.include(err.message, 'Both install.rdf and manifest.json');
       });
   });
 
-  it('should collect an error on invalid type value', () => {
-    var addonValidator = new Validator({_: ['bar']});
-    addonValidator.xpi = {
-      getFileAsString: () => {
-        return Promise.resolve(validRDF('<em:type>whatevs</em:type>'));
-      },
-      getMetaData: () => {
-        return Promise.resolve({
-          'install.rdf': {},
-        });
-      },
-    };
-
-    return addonValidator.detectPackageType()
-      .then(() => {
-        var errors = addonValidator.collector.errors;
-        assert.equal(errors.length, 2);
-        assert.equal(errors[0].code, messages.TYPE_INVALID.code);
-        assert.equal(errors[1].code, messages.TYPE_NOT_DETERMINED.code);
-      });
-  });
-
-  it('should resolve with mapped type value', () => {
-    var addonValidator = new Validator({_: ['bar']});
-    addonValidator.xpi = {
-      getFileAsString: () => {
-        return Promise.resolve(validRDF('<em:type>2</em:type>'));
-      },
-      getMetaData: () => {
-        return Promise.resolve({
-          'install.rdf': {},
-        });
-      },
-    };
-
-    return addonValidator.detectPackageType()
-      .then((packageType) => {
-        // Type 2 maps to 1 PACKAGE_EXTENSION
-        assert.equal(packageType, constants.PACKAGE_EXTENSION);
-      });
-  });
-
-  it('should resolve with mapped type value for experiments', () => {
-    var addonValidator = new Validator({_: ['bar']});
-    addonValidator.xpi = {
-      getFileAsString: () => {
-        return Promise.resolve(validRDF('<em:type>128</em:type>'));
-      },
-      getMetaData: () => {
-        return Promise.resolve({
-          'install.rdf': {},
-        });
-      },
-    };
-
-    return addonValidator.detectPackageType()
-      .then((packageType) => {
-        // Type 128 (experiments) maps to 1 PACKAGE_EXTENSION
-        assert.equal(packageType, constants.PACKAGE_EXTENSION);
-      });
-  });
-
-  it('should collect a notice if type is missing', () => {
-    var addonValidator = new Validator({_: ['bar']});
-    addonValidator.xpi = {
-      getFileAsString: () => {
-        return Promise.resolve(validRDF(''));
-      },
-      getMetaData: () => {
-        return Promise.resolve({
-          'install.rdf': {},
-        });
-      },
-    };
-
-    return addonValidator.detectPackageType()
-      .then(() => {
-        var notices = addonValidator.collector.notices;
-        assert.equal(notices.length, 1);
-        assert.equal(notices[0].code, messages.TYPE_MISSING.code);
-      });
-  });
-
-  it('should collect a notice if no install.rdf', () => {
+  it('should collect a notice if no manifest', () => {
     var addonValidator = new Validator({_: ['bar']});
     addonValidator.xpi = {
       getMetaData: () => {
         return Promise.resolve({});
       },
     };
-    return addonValidator.detectPackageType()
+    return addonValidator.getAddonMetaData()
       .then(() => {
         var notices = addonValidator.collector.notices;
         assert.equal(notices.length, 1);
         assert.equal(notices[0].code, messages.TYPE_NO_INSTALL_RDF.code);
+      });
+  });
+
+});
+
+
+describe('Validator.detectTypeFromLayout()', function() {
+
+  it('should fall-back to running type detection during scan', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    addonValidator.checkFileExists = () => Promise.resolve();
+    addonValidator.scanFiles = () => Promise.resolve();
+    // suppress output.
+    addonValidator.print = sinon.stub();
+    var detectTypeFromLayoutSpy = sinon.spy(addonValidator,
+                                            'detectTypeFromLayout');
+    class FakeXPI {
+      getMetaData() {
+        return Promise.resolve({
+          'dictionaries/something': {},
+          'whatever': {},
+        });
+      }
+      getFilesByExt = () => sinon.stub
+    }
+    return addonValidator.scan(FakeXPI)
+      .then(() => {
+        assert.ok(detectTypeFromLayoutSpy.called);
+        assert.equal(addonValidator.addonMetaData.type,
+                     constants.PACKAGE_DICTIONARY);
       });
   });
 
@@ -596,11 +559,10 @@ describe('Validator.detectType()', function() {
         });
       },
     };
-    return addonValidator.detectPackageType()
-      .then((packageType) => {
-        assert.equal(packageType, constants.PACKAGE_DICTIONARY);
+    return addonValidator.detectTypeFromLayout()
+      .then((type) => {
+        assert.equal(type, constants.PACKAGE_DICTIONARY);
       });
-
   });
 
   it('should fall-back to detect theme based on extension', () => {
@@ -612,11 +574,10 @@ describe('Validator.detectType()', function() {
         });
       },
     };
-    return addonValidator.detectPackageType()
-      .then((packageType) => {
-        assert.equal(packageType, constants.PACKAGE_THEME);
+    return addonValidator.detectTypeFromLayout()
+      .then((type) => {
+        assert.equal(type, constants.PACKAGE_THEME);
       });
-
   });
 
   it('should fall-back to detect extention based on extension', () => {
@@ -628,11 +589,10 @@ describe('Validator.detectType()', function() {
         });
       },
     };
-    return addonValidator.detectPackageType()
-      .then((packageType) => {
-        assert.equal(packageType, constants.PACKAGE_EXTENSION);
+    return addonValidator.detectTypeFromLayout()
+      .then((type) => {
+        assert.equal(type, constants.PACKAGE_EXTENSION);
       });
-
   });
 
   it('should collect an error if all attempts to detect type fail', () => {
@@ -642,12 +602,11 @@ describe('Validator.detectType()', function() {
         return Promise.resolve({});
       },
     };
-    return addonValidator.detectPackageType()
+    return addonValidator.detectTypeFromLayout()
       .then(() => {
         var errors = addonValidator.collector.errors;
         assert.equal(errors.length, 1);
         assert.equal(errors[0].code, messages.TYPE_NOT_DETERMINED.code);
       });
   });
-
 });
