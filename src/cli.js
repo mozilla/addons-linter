@@ -33,6 +33,11 @@ export default argv
     default: 'text',
     choices: ['json', 'text'],
   })
+  .option('metadata', {
+    describe: 'Output only metadata as JSON',
+    type: 'boolean',
+    default: 'false',
+  })
   .option('pretty', {
     describe: 'Prettify JSON output',
     type: 'boolean',

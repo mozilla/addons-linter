@@ -3,7 +3,7 @@
 var path = require('path');
 
 var AddonValidator = require('../dist/addons-validator').createInstance();
-AddonValidator.scan();
+AddonValidator.run();
 
 var absoluteAppRoot = path.resolve(__dirname);
 global.relativeAppPath = path.relative(process.cwd(), absoluteAppRoot);

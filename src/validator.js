@@ -68,8 +68,8 @@ export default class Validator {
     }
   }
 
-  toJSON(pretty=false, _JSON=JSON) {
-    var args = [this.output];
+  toJSON({input=this.output, pretty=this.config.pretty, _JSON=JSON} = {}) {
+    var args = [input];
     if (pretty === true) {
       args.push(null);
       args.push(4);
@@ -214,6 +214,18 @@ export default class Validator {
           this.collector.addNotice(messages.TYPE_NO_INSTALL_RDF);
           return Promise.resolve({});
         }
+      })
+      .then((addonMetaData) => {
+        if (!addonMetaData.type) {
+          log.info('Determining addon type failed. Guessing from layout');
+          return this.detectTypeFromLayout()
+            .then((addonType) => {
+              addonMetaData.type = addonType;
+              return Promise.resolve(addonMetaData);
+            });
+        } else {
+          return Promise.resolve(addonMetaData);
+        }
       });
   }
 
@@ -332,74 +344,80 @@ export default class Validator {
     });
   }
 
+  extractMetaData(_Xpi=Xpi, _console=console) {
+    return checkMinNodeVersion()
+      .then(() => {
+        return this.checkFileExists(this.packagePath);
+      })
+      .then(() => {
+        this.xpi = new _Xpi(this.packagePath);
+        return this.getAddonMetaData();
+      }).then((addonMetaData) => {
+        this.addonMetaData = addonMetaData;
+        if (this.config.metadata === true) {
+          _console.log(this.toJSON({input: addonMetaData}));
+        }
+        return Promise.resolve();
+      });
+  }
+
   scan(_Xpi=Xpi) {
-    return new Promise((resolve, reject) => {
-      checkMinNodeVersion()
-        .then(() => {
-          return this.checkFileExists(this.packagePath);
-        })
-        .then(() => {
-          this.xpi = new _Xpi(this.packagePath);
-          return this.getAddonMetaData();
-        })
-        .then((addonMetaData) => {
-          this.addonMetaData = addonMetaData;
-          if (!addonMetaData.type) {
-            log.info('Determining addon type failed. Guessing from layout');
-            return this.detectTypeFromLayout()
-              .then((addonType) => {
-                this.addonMetaData.type = addonType;
-              });
-          }
+    return this.extractMetaData(_Xpi)
+      .then(() => {
+        return this.xpi.getMetaData();
+      })
+      .then((xpiMetaData) => {
+        if (xpiMetaData.hasOwnProperty(CHROME_MANIFEST)) {
+          return this.scanFile(CHROME_MANIFEST, 'stream');
+        } else {
+          log.warn(`No root ${CHROME_MANIFEST} found`);
           return Promise.resolve();
-        }).then(() => {
-          return this.xpi.getMetaData();
-        })
-        .then((xpiMetaData) => {
-          if (xpiMetaData.hasOwnProperty(CHROME_MANIFEST)) {
-            return this.scanFile(CHROME_MANIFEST, 'stream');
-          } else {
-            log.warn(`No root ${CHROME_MANIFEST} found`);
-            return Promise.resolve();
-          }
-        })
-        .then(() => {
-          return this.xpi.getFilesByExt('.js');
-        })
-        .then((jsFiles) => {
-          return this.scanFiles(jsFiles);
-        })
-        .then(() => {
-          return this.xpi.getFilesByExt('.rdf');
-        })
-        .then((rdfFiles) => {
-          return this.scanFiles(rdfFiles);
-        })
-        .then(() => {
-          return this.xpi.getFilesByExt('.css');
-        })
-        .then((cssFiles) => {
-          return this.scanFiles(cssFiles);
-        })
-        .then(() => {
-          return this.xpi.getFilesByExt('.html');
-        })
-        .then((htmlFiles) => {
-          return this.scanFiles(htmlFiles);
-        })
-        .then(() => {
+        }
+      })
+      .then(() => {
+        return this.xpi.getFilesByExt('.js');
+      })
+      .then((jsFiles) => {
+        return this.scanFiles(jsFiles);
+      })
+      .then(() => {
+        return this.xpi.getFilesByExt('.rdf');
+      })
+      .then((rdfFiles) => {
+        return this.scanFiles(rdfFiles);
+      })
+      .then(() => {
+        return this.xpi.getFilesByExt('.css');
+      })
+      .then((cssFiles) => {
+        return this.scanFiles(cssFiles);
+      })
+      .then(() => {
+        return this.xpi.getFilesByExt('.html');
+      })
+      .then((htmlFiles) => {
+        return this.scanFiles(htmlFiles);
+      })
+      .then(() => {
+        this.print();
+        return Promise.resolve();
+      })
+      .catch((err) => {
+        if (err instanceof exceptions.DuplicateZipEntryError) {
+          this.collector.addError(messages.DUPLICATE_XPI_ENTRY);
           this.print();
-          resolve();
-        })
-        .catch((err) => {
-          if (err instanceof exceptions.DuplicateZipEntryError) {
-            this.collector.addError(messages.DUPLICATE_XPI_ENTRY);
-            this.print();
-          } else {
-            this.handleError(err);
-          }
-          reject(err);
-        });
-    });
+        } else {
+          this.handleError(err);
+        }
+        return Promise.reject(err);
+      });
+  }
+
+  run(_Xpi=Xpi) {
+    if (this.config.metadata === true) {
+      return this.extractMetaData(_Xpi);
+    } else {
+      return this.scan(_Xpi);
+    }
   }
 }
