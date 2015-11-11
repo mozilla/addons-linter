@@ -74,6 +74,39 @@ describe('utils.getRootExpression()', function() {
   });
 });
 
+describe('utils.getNodeReferenceName()', () => {
+  var context = {
+    getScope: function() {
+      return {
+        variables: [{
+          name: 'foo', // Reference name
+          defs: [{
+            node: {
+              init: {
+                name: 'bar', // Value name
+              },
+            },
+          }],
+        }],
+      };
+    },
+  };
+
+  it('should return the name of the referenced variable', () => {
+    var ref = { name: 'foo' };
+    var val = utils.getNodeReferenceName(context, ref);
+
+    assert.equal(val, 'bar');
+  });
+
+  it('should return the name of the reference if not in scope', () => {
+    var ref = { name: 'doesNotExist' };
+    var val = utils.getNodeReferenceName(context, ref);
+
+    assert.equal(val, ref.name);
+  });
+});
+
 describe('utils.getVariable()', function() {
   // This is the expected schema from eslint
   var context = {

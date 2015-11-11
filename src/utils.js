@@ -58,6 +58,29 @@ export function getRootExpression(node) {
 }
 
 /*
+ * returns the name of the reference node passed.
+ *
+ * example: var foo = document;
+ *  The node for foo will return 'document'
+ */
+export function getNodeReferenceName(context, node) {
+  var variables = context.getScope().variables;
+  var scopeVar;
+
+  variables.forEach((variable) => {
+    if (variable.name === node.name) {
+      scopeVar = variable;
+    }
+  });
+
+  if (typeof scopeVar === 'undefined') {
+    return node.name;
+  } else {
+    return scopeVar.defs[0].node.init.name;
+  }
+}
+
+/*
  * Get a variable from a eslint context object if it exists, otherwise
  * undefined.
  */

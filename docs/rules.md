@@ -48,7 +48,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :x: | warning | deprecated_entity | | THIS IS A GENERATED ERROR |  | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py)| | |
-| :x: | warning | evil | | Use of `document.write` strongly discouraged. | | | | |
+| :x: | warning | evil | | Use of `document.write` strongly discouraged. | | | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py#L64) | NO_DOCUMENT_WRITE |
 | :x: | warning | nsIDNSServiceResolve | | `nsIDNSService.resolve()` should not be used. | | | | |
 | :x: | warning | nsISound_play | | `nsISound.play` should not be used | | | | |
 | :x: | warning | init | | `init` should not be called with a null first argument | | | | |
