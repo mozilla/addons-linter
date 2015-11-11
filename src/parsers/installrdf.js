@@ -4,6 +4,9 @@ import log from 'logger';
 import RDFScanner from 'scanners/rdf';
 
 
+// HACK: Remove before merging ^_^
+var namespace = 'http://www.mozilla.org/2004/em-rdf#';
+
 export default class InstallRdfParser {
 
   constructor(rdfString, collector) {
@@ -22,6 +25,7 @@ export default class InstallRdfParser {
     return this.parseDoc()
       .then((xmlDoc) => {
         return Promise.resolve({
+          guid: this._getGUID(xmlDoc),
           type: this._getAddonType(xmlDoc),
         });
       });
@@ -49,5 +53,16 @@ export default class InstallRdfParser {
       this.collector.addNotice(TYPE_MISSING);
     }
     return addonType;
+  }
+
+  _getGUID(xmlDoc) {
+    if (xmlDoc.getElementsByTagNameNS(namespace, 'id').length > 0) {
+      var idNode = xmlDoc.getElementsByTagNameNS(namespace, 'id').item(0);
+      if (idNode && idNode.childNodes && idNode.childNodes[0]) {
+        return idNode.childNodes[0];
+      }
+    }
+
+    return null;
   }
 }

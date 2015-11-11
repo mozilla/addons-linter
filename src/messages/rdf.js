@@ -37,6 +37,14 @@ export var _tagObsolete = (tagName) => {
   };
 };
 
+export const GUID_TOO_LONG = {
+  code: 'GUID_TOO_LONG',
+  legacyCode: null,
+  message: _('GUID is too long (over 255 chars)'),
+  description: _(singleLineString`A GUID must be 255 characters or less.
+    Please use a shorter GUID.`),
+};
+
 export const TAG_NOT_ALLOWED_HIDDEN = _tagNotAllowed('hidden');
 export const TAG_NOT_ALLOWED_UPDATEKEY = _tagNotAllowedIfTag('updateKey',
                                                              'listed');

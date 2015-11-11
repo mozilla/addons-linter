@@ -142,6 +142,45 @@ describe('Validator', function() {
       });
   });
 
+  it('should throw when message.type is undefined for metadata scan', () => {
+    var addonValidator = new Validator({_: ['tests/example.xpi']});
+
+    class fakeScanner {
+      scan() {
+        return Promise.resolve([{message: 'whatever'}]);
+      }
+    }
+
+    return addonValidator.scanMetadata({}, fakeScanner)
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.include(err.message, 'message.type must be defined');
+      });
+  });
+
+  it('should add an error to the collector when scanning bad metadata', () => {
+    var addonValidator = new Validator({_: ['tests/example.xpi']});
+
+    class fakeScanner {
+      scan() {
+        return Promise.resolve([{
+          code: messages.GUID_TOO_LONG.code,
+          message: messages.GUID_TOO_LONG.message,
+          description: messages.GUID_TOO_LONG.description,
+          type: constants.VALIDATION_ERROR,
+        }]);
+      }
+    }
+
+    assert.equal(addonValidator.collector.length, 0);
+
+    return addonValidator.scanMetadata({}, fakeScanner)
+      .then(() => {
+        assert.isAbove(addonValidator.collector.length, 0);
+      });
+  });
+
+
   it('should see an error if scanFiles() blows up', () => {
     var addonValidator = new Validator({_: ['foo']});
     addonValidator.checkFileExists = () => Promise.resolve();
