@@ -5,7 +5,7 @@ import ESLint from 'eslint';
 import { ESLINT_TYPES } from 'const';
 import * as messages from 'messages';
 import ESLintRules from 'rules/javascript';
-import { singleLineString } from 'utils';
+import { ensureFilenameExists, singleLineString } from 'utils';
 
 
 export default class JavaScriptScanner {
@@ -13,6 +13,8 @@ export default class JavaScriptScanner {
   constructor(code, filename) {
     this.code = code;
     this.filename = filename;
+
+    ensureFilenameExists(this.filename);
   }
 
   scan(_ESLint=ESLint) {

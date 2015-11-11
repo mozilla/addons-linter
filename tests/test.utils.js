@@ -1,3 +1,4 @@
+import { MissingFilenameError } from 'exceptions';
 import * as utils from 'utils';
 import { unexpectedSuccess } from './helpers';
 
@@ -106,6 +107,39 @@ describe('utils.getVariable()', function() {
     var undef = utils.getVariable(context, 'doesNotExist');
     assert.equal(typeof undef, 'undefined');
   });
+});
+
+
+describe('utils.ensureFilenameExists()', function() {
+
+  it('should throw error when filename is not a string', () => {
+    assert.throws(() => {
+      utils.ensureFilenameExists();
+    }, MissingFilenameError, 'Filename is required');
+    assert.throws(() => {
+      utils.ensureFilenameExists(0);
+    }, MissingFilenameError, 'Filename is required');
+    assert.throws(() => {
+      utils.ensureFilenameExists(undefined);
+    }, MissingFilenameError, 'Filename is required');
+    assert.throws(() => {
+      utils.ensureFilenameExists(null);
+    }, MissingFilenameError, 'Filename is required');
+  });
+
+  it('should throw error when filename is empty', () => {
+    assert.throws(() => {
+      utils.ensureFilenameExists('');
+    }, MissingFilenameError, 'Filename is required');
+  });
+
+  it('should accept filenames', () => {
+    assert.doesNotThrow(() => {
+      utils.ensureFilenameExists('foo.js');
+      utils.ensureFilenameExists('0');
+    }, MissingFilenameError);
+  });
+
 });
 
 
