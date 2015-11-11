@@ -1,4 +1,5 @@
 import { VALIDATION_ERROR, VALIDATION_WARNING } from 'const';
+import { MissingFilenameError } from 'exceptions';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import * as rules from 'rules/javascript';
@@ -6,7 +7,13 @@ import { singleLineString } from 'utils';
 import { getRuleFiles, unexpectedSuccess } from '../helpers';
 
 
-describe('JavaScript', function() {
+describe('JavaScript Scanner', function() {
+
+  it('should thrown an error without a filename', () => {
+    assert.throws(() => {
+      var jsScanner = new JavaScriptScanner(''); // eslint-disable-line
+    }, MissingFilenameError, 'Filename is required');
+  });
 
   // TODO: Not sure how to test for this one yet; it's pretty messy.
   it.skip(singleLineString`should warn when mozIndexedDB is assembled into

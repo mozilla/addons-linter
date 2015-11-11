@@ -1,5 +1,5 @@
 import { NotImplentedError } from 'exceptions';
-import { ignorePrivateFunctions } from 'utils';
+import { ensureFilenameExists, ignorePrivateFunctions } from 'utils';
 
 
 export default class BaseScanner {
@@ -12,6 +12,8 @@ export default class BaseScanner {
     this._parsedContent = null;
     this._rulesProcessed = 0;
     this.options = {};
+
+    ensureFilenameExists(this.filename);
   }
 
   scan(_rules=this._defaultRules) {
