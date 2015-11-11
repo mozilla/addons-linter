@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { Readable } from 'stream';
 
+import { ARCH_DEFAULT } from 'const';
 import { singleLineString } from 'utils';
 
 
@@ -47,6 +48,13 @@ export function validHTML(contents='') {
       ${contents}
     </body>
   </html>`;
+}
+
+export function validMetadata(extras={}) {
+  return Object.assign({
+    architecture: ARCH_DEFAULT,
+    files: {},
+  }, extras);
 }
 
 export function validRDF(contents) {

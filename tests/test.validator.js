@@ -5,9 +5,8 @@ import * as messages from 'messages';
 
 import CSSScanner from 'scanners/css';
 import { DuplicateZipEntryError } from 'exceptions';
-import { fakeMessageData,
-         unexpectedSuccess,
-         validManifestJSON } from './helpers';
+import { fakeMessageData, unexpectedSuccess, validMetadata,
+         validRDF } from './helpers';
 import { singleLineString } from 'utils';
 
 
@@ -85,7 +84,9 @@ describe('Validator', function() {
   // - install.rdf
   // - prefs.html
   it('should send JSScanner messages to the collector', () => {
-    var addonValidator = new Validator({_: ['tests/example.xpi']});
+    var addonValidator = new Validator({
+      _: ['tests/fixtures/xpis/example.xpi'],
+    });
     // Stub print to prevent output.
     addonValidator.print = sinon.stub();
 
@@ -109,7 +110,9 @@ describe('Validator', function() {
   // - install.rdf
   // - prefs.html
   it('should scan all files', () => {
-    var addonValidator = new Validator({_: ['tests/example.xpi']});
+    var addonValidator = new Validator({
+      _: ['tests/fixtures/xpis/example.xpi'],
+    });
     // Stub print to prevent output.
     addonValidator.print = sinon.stub();
 
@@ -125,7 +128,9 @@ describe('Validator', function() {
   });
 
   it('should throw when message.type is undefined', () => {
-    var addonValidator = new Validator({_: ['tests/example.xpi']});
+    var addonValidator = new Validator({
+      _: ['tests/fixtures/xpis/example.xpi'],
+    });
     addonValidator.xpi = {};
     addonValidator.xpi.getFile = () => Promise.resolve();
     addonValidator.getScanner = sinon.stub();
@@ -153,7 +158,7 @@ describe('Validator', function() {
 
     class FakeXpi {
       getMetaData() {
-        return Promise.resolve([]);
+        return Promise.resolve(validMetadata());
       }
       getFilesByExt() {
         return Promise.resolve(['foo.js', 'bar.js']);
@@ -179,7 +184,7 @@ describe('Validator', function() {
 
     class FakeXpi {
       getMetaData() {
-        return Promise.resolve([]);
+        return Promise.resolve(validMetadata());
       }
       getFilesByExt() {
         return Promise.resolve(['foo.js', 'bar.js']);

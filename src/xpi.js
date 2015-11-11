@@ -1,6 +1,7 @@
 import yauzl from 'yauzl';
 import { singleLineString } from 'utils';
 
+import { ARCH_DEFAULT, ARCH_JETPACK } from 'const';
 import { DuplicateZipEntryError } from 'exceptions';
 import log from 'logger';
 
@@ -19,7 +20,11 @@ export default class Xpi {
   constructor(filename, zipLib=yauzl) {
     this.filename = filename;
     this.zipLib = zipLib;
-    this.metadata = {};
+    this.metadata = {
+      architecture: ARCH_DEFAULT,
+      files: {},
+      _processed: false,
+    };
     this.entries = [];
   }
 
@@ -44,14 +49,14 @@ export default class Xpi {
         `Entry "${entry.fileName}" has already been seen`));
     }
     this.entries.push(entry.fileName);
-    this.metadata[entry.fileName] = entry;
+    this.metadata.files[entry.fileName] = entry;
   }
 
   getMetaData(_onEventsSubscribed) {
     return new Promise((resolve, reject) => {
       // If we have already processed the file and have data
       // on this instance return that.
-      if (Object.keys(this.metadata).length) {
+      if (this.metadata._processed === true) {
         return resolve(this.metadata);
       }
 
@@ -68,6 +73,18 @@ export default class Xpi {
           // after the last entry event is emitted and streams
           // may still be being read with openReadStream.
           zipfile.on('close', () => {
+            this.metadata._processed = true;
+
+            // If we find a file named bootstrap.js this is assumed to be a
+            // Jetpack add-on: https://github.com/mozilla/amo-validator/blob/7a8011aba8bf8c665aef2b51eb26d0697b3e19c3/validator/testcases/jetpack.py#L154
+            // TODO: Check against file contents to make this more robust.
+            if (this.entries.includes('bootstrap.js') && (
+              this.entries.includes('harness-options.json') ||
+              this.entries.includes('package.json')
+            )) {
+              this.metadata.architecture = ARCH_JETPACK;
+            }
+
             resolve(this.metadata);
           });
 
@@ -98,13 +115,14 @@ export default class Xpi {
   getFileAsStream(path) {
     return new Promise((resolve, reject) => {
 
-      if (!this.metadata.hasOwnProperty(path)) {
+      if (!this.metadata.files.hasOwnProperty(path)) {
         throw new Error(`Path "${path}" does not exist in metadata`);
       }
 
       return this.open()
         .then((zipfile) => {
-          zipfile.openReadStream(this.metadata[path], (err, readStream) => {
+          var file = this.metadata.files[path];
+          zipfile.openReadStream(file, (err, readStream) => {
             if (err) {
               return reject(err);
             }
@@ -146,7 +164,7 @@ export default class Xpi {
         .then((metadata) => {
           let files = [];
 
-          for (let filename in metadata) {
+          for (let filename in metadata.files) {
             for (let ext of extensions) {
               if (filename.endsWith(ext)) {
                 files.push(filename);
