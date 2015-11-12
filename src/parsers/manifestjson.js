@@ -1,9 +1,6 @@
-import { ADDON_TYPE_MAP,
-         MANIFEST_JSON,
-         PACKAGE_EXTENSION } from 'const';
+import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
 import log from 'logger';
-import { TYPE_INVALID,
-         TYPE_MISSING } from 'messages';
+import { MANIFEST_VERSION_INVALID } from 'messages';
 
 
 export default class ManifestJSONParserr {
@@ -17,25 +14,19 @@ export default class ManifestJSONParserr {
 
   getMetaData() {
     var parsedJSON = JSON.parse(this.jsonString);
-    var addonMetaData = {};
-    addonMetaData.type = this._getAddonType(parsedJSON);
-    return Promise.resolve(addonMetaData);
+    return Promise.resolve({
+      type: PACKAGE_EXTENSION,
+      manifestVersion: this.getManifestVersion(parsedJSON),
+    });
   }
 
-  _getAddonType(parsedJSON) {
-    // TODO: Work out what this should really be.
-    var manifestVersion = parsedJSON.manifest_version;
-    if (typeof manifestVersion === 'undefined') {
-      log.debug(`"manifest_version" was not found in ${MANIFEST_JSON}`);
-      this.collector.addError(TYPE_MISSING);
-      return null;
+  getManifestVersion(parsedJSON) {
+    var manifestVersion = parseInt(parsedJSON.manifest_version, 10);
+    if (manifestVersion !== VALID_MANIFEST_VERSION) {
+      log.debug('Invalid manifest_version "%s"', manifestVersion);
+      this.collector.addError(MANIFEST_VERSION_INVALID);
+      manifestVersion = null;
     }
-    var addonType = ADDON_TYPE_MAP[manifestVersion];
-    if (addonType !== PACKAGE_EXTENSION) {
-      log.debug('Invalid type value "%s"', addonType);
-      this.collector.addError(TYPE_INVALID);
-      return null;
-    }
-    return addonType;
+    return manifestVersion;
   }
 }
