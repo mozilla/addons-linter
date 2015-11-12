@@ -62,6 +62,10 @@ export const ADDON_TYPE_MAP = {
   128: PACKAGE_EXTENSION,
 };
 
+export const ARCH_DEFAULT = 'extension';
+export const ARCH_JETPACK = 'jetpack';
+export const ARCH_WEB_EXTENSION = 'webextension';
+
 export const LOCAL_PROTOCOLS = ['chrome:', 'resource:'];
 
 // If you add to this you'll need to additionally

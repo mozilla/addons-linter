@@ -85,7 +85,7 @@ describe('Validator', function() {
   // - install.rdf
   // - prefs.html
   it('should send JSScanner messages to the collector', () => {
-    var addonValidator = new Validator({_: ['tests/example.xpi']});
+    var addonValidator = new Validator({_: ['tests/fixtures/example.xpi']});
     // Stub print to prevent output.
     addonValidator.print = sinon.stub();
 
@@ -109,7 +109,7 @@ describe('Validator', function() {
   // - install.rdf
   // - prefs.html
   it('should scan all files', () => {
-    var addonValidator = new Validator({_: ['tests/example.xpi']});
+    var addonValidator = new Validator({_: ['tests/fixtures/example.xpi']});
     // Stub print to prevent output.
     addonValidator.print = sinon.stub();
 
@@ -125,7 +125,7 @@ describe('Validator', function() {
   });
 
   it('should throw when message.type is undefined', () => {
-    var addonValidator = new Validator({_: ['tests/example.xpi']});
+    var addonValidator = new Validator({_: ['tests/fixtures/example.xpi']});
     addonValidator.xpi = {};
     addonValidator.xpi.getFile = () => Promise.resolve();
     addonValidator.getScanner = sinon.stub();
@@ -464,6 +464,38 @@ describe('Validator.textOutput()', function() {
 
 
 describe('Validator.getAddonMetaData()', function() {
+
+  it('should consider example.xpi a regular add-on', () => {
+    var addonValidator = new Validator({
+      _: ['tests/fixtures/example.xpi'],
+    });
+
+    addonValidator.print = sinon.stub();
+
+    return addonValidator.scan()
+      .then(() => {
+        return addonValidator.getAddonMetaData();
+      })
+      .then((metadata) => {
+        assert.equal(metadata.architecture, constants.ARCH_DEFAULT);
+      });
+  });
+
+  it('should recognise it as a Jetpack add-on', () => {
+    var addonValidator = new Validator({
+      _: ['tests/fixtures/jetpack-1.14.xpi'],
+    });
+
+    addonValidator.print = sinon.stub();
+
+    return addonValidator.scan()
+      .then(() => {
+        return addonValidator.getAddonMetaData();
+      })
+      .then((metadata) => {
+        assert.equal(metadata.architecture, constants.ARCH_JETPACK);
+      });
+  });
 
   it('should look at JSON when manifest.json', () => {
     var addonValidator = new Validator({_: ['bar']});

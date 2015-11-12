@@ -7,7 +7,8 @@ import promisify from 'es6-promisify';
 
 import { terminalWidth } from 'cli';
 import * as constants from 'const';
-import { CHROME_MANIFEST, INSTALL_RDF, MANIFEST_JSON } from 'const';
+import { ARCH_DEFAULT, ARCH_JETPACK, CHROME_MANIFEST, INSTALL_RDF,
+         MANIFEST_JSON } from 'const';
 import * as exceptions from 'exceptions';
 import * as messages from 'messages';
 import { checkMinNodeVersion,
@@ -36,6 +37,7 @@ export default class Validator {
     this.chalk = new chalk.constructor(
       {enabled: !this.config.boring});
     this.collector = new Collector();
+    this.addonMetaData = {};
   }
 
   colorize(type) {
@@ -190,8 +192,13 @@ export default class Validator {
   }
 
   getAddonMetaData() {
+    var _xpiFiles;
+
     return this.xpi.getFiles()
       .then((xpiFiles) => {
+        // Used later to get add-on architecture.
+        _xpiFiles = xpiFiles;
+
         if (xpiFiles.hasOwnProperty(INSTALL_RDF) &&
             xpiFiles.hasOwnProperty(MANIFEST_JSON)) {
           throw new Error(`Both ${INSTALL_RDF} and ${MANIFEST_JSON} found`);
@@ -216,6 +223,8 @@ export default class Validator {
         }
       })
       .then((addonMetaData) => {
+        addonMetaData.architecture = this._getAddonArchitecture(_xpiFiles);
+
         if (!addonMetaData.type) {
           log.info('Determining addon type failed. Guessing from layout');
           return this.detectTypeFromLayout()
@@ -407,6 +416,21 @@ export default class Validator {
       return this.extractMetaData(_Xpi);
     } else {
       return this.scan(_Xpi);
+    }
+  }
+
+  _getAddonArchitecture(xpiMetaData) {
+    // If we find a file named bootstrap.js this is assumed to be a
+    // Jetpack add-on: https://github.com/mozilla/amo-validator/blob/7a8011aba8bf8c665aef2b51eb26d0697b3e19c3/validator/testcases/jetpack.py#L154
+    // TODO: Check against file contents to make this more robust.
+    var files = Object.keys(xpiMetaData);
+
+    if (files.includes('bootstrap.js') &&
+        (files.includes('harness-options.json') ||
+         files.includes('package.json'))) {
+      return ARCH_JETPACK;
+    } else {
+      return ARCH_DEFAULT;
     }
   }
 }
