@@ -205,11 +205,7 @@ describe('Validator', function() {
           new DuplicateZipEntryError('Darnit the zip has dupes!'));
       }
       getFilesByExt() {
-        return new Promise((resolve, reject) => {
-          return this.getMetaData()
-            .then(resolve)
-            .catch(reject);
-        });
+        return this.getMetaData();
       }
     }
     return addonValidator.scan(FakeXpi)

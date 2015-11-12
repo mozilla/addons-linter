@@ -212,7 +212,7 @@ export default class Validator {
                    was found in the package metadata`);
           // TODO: Add notice for missing manifest.json?
           this.collector.addNotice(messages.TYPE_NO_INSTALL_RDF);
-          return Promise.resolve({});
+          return {};
         }
       })
       .then((addonMetaData) => {
@@ -221,10 +221,10 @@ export default class Validator {
           return this.detectTypeFromLayout()
             .then((addonType) => {
               addonMetaData.type = addonType;
-              return Promise.resolve(addonMetaData);
+              return addonMetaData;
             });
         } else {
-          return Promise.resolve(addonMetaData);
+          return addonMetaData;
         }
       });
   }
@@ -243,7 +243,7 @@ export default class Validator {
       .then((xpiMeta) => {
         for (let path_ of Object.keys(xpiMeta)) {
           if (path_.startsWith('dictionaries/')) {
-            return Promise.resolve(constants.PACKAGE_DICTIONARY);
+            return constants.PACKAGE_DICTIONARY;
           }
         }
 
@@ -256,49 +256,41 @@ export default class Validator {
 
         var ext = extname(this.packagePath);
         if (extensions.hasOwnProperty(ext)) {
-          return Promise.resolve(extensions[ext]);
+          return extensions[ext];
         }
 
         log.error('All attempts to lookup addon type failed');
         this.collector.addError(messages.TYPE_NOT_DETERMINED);
-        return Promise.resolve(null);
+        return null;
       });
   }
 
   checkFileExists(filepath, _lstat=lstat) {
     var invalidMessage = new Error(
       `Path "${filepath}" is not a file or does not exist.`);
-    return new Promise((resolve, reject) => {
-      return _lstat(filepath)
-        .then((stats) => {
-          if (stats.isFile() === true) {
-            resolve();
-          } else {
-            reject(invalidMessage);
-          }
-        })
-        .catch((err) => {
-          if (err.code !== 'ENOENT') {
-            reject(err);
-          } else {
-            reject(invalidMessage);
-          }
-        });
-    });
+    return _lstat(filepath)
+      .then((stats) => {
+        if (stats.isFile() === true) {
+          return;
+        } else {
+          throw invalidMessage;
+        }
+      })
+      .catch((err) => {
+        if (err.code !== 'ENOENT') {
+          throw err;
+        } else {
+          throw invalidMessage;
+        }
+      });
   }
 
   scanFiles(files) {
-    return new Promise((resolve, reject) => {
-      // Resolve once every file in the XPI has been checked.
-      var promises = [];
-      for (let filename of files) {
-        promises.push(this.scanFile(filename));
-      }
-      return Promise.all(promises)
-        .then(() => {
-          resolve();
-        }).catch(reject);
-    });
+    var promises = [];
+    for (let filename of files) {
+      promises.push(this.scanFile(filename));
+    }
+    return Promise.all(promises);
   }
 
   getScanner(filename) {
@@ -323,25 +315,22 @@ export default class Validator {
   }
 
   scanFile(filename, streamOrString='string') {
-    return new Promise((resolve, reject) => {
-      this.xpi.getFile(filename, streamOrString)
-        .then((contentsOrStream) => {
-          let scanner = new (
-            this.getScanner(filename))(contentsOrStream, filename);
-          return scanner.scan();
-        })
-        // messages should be a list of raw message data objects.
-        .then((messages) => {
-          for (let message of messages) {
-            if (typeof message.type === 'undefined') {
-              throw new Error('message.type must be defined');
-            }
-            this.collector._addMessage(message.type, message);
+    return this.xpi.getFile(filename, streamOrString)
+      .then((contentsOrStream) => {
+        let scanner = new (
+          this.getScanner(filename))(contentsOrStream, filename);
+        return scanner.scan();
+      })
+      // messages should be a list of raw message data objects.
+      .then((messages) => {
+        for (let message of messages) {
+          if (typeof message.type === 'undefined') {
+            throw new Error('message.type must be defined');
           }
-          resolve();
-        })
-        .catch(reject);
-    });
+          this.collector._addMessage(message.type, message);
+        }
+        return;
+      });
   }
 
   extractMetaData(_Xpi=Xpi, _console=console) {
@@ -357,7 +346,7 @@ export default class Validator {
         if (this.config.metadata === true) {
           _console.log(this.toJSON({input: addonMetaData}));
         }
-        return Promise.resolve();
+        return;
       });
   }
 
@@ -371,7 +360,7 @@ export default class Validator {
           return this.scanFile(CHROME_MANIFEST, 'stream');
         } else {
           log.warn(`No root ${CHROME_MANIFEST} found`);
-          return Promise.resolve();
+          return;
         }
       })
       .then(() => {
@@ -400,7 +389,7 @@ export default class Validator {
       })
       .then(() => {
         this.print();
-        return Promise.resolve();
+        return;
       })
       .catch((err) => {
         if (err instanceof exceptions.DuplicateZipEntryError) {
@@ -409,7 +398,7 @@ export default class Validator {
         } else {
           this.handleError(err);
         }
-        return Promise.reject(err);
+        throw err;
       });
   }
 
