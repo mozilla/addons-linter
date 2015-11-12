@@ -323,7 +323,7 @@ describe('Validator.toJSON()', function() {
     var fakeJSON = {
       stringify: sinon.stub(),
     };
-    addonValidator.toJSON(true, fakeJSON);
+    addonValidator.toJSON({pretty: true, _JSON: fakeJSON});
     assert.ok(fakeJSON.stringify.calledWith(sinon.match.any, null, 4));
   });
 
@@ -332,7 +332,7 @@ describe('Validator.toJSON()', function() {
     var fakeJSON = {
       stringify: sinon.stub(),
     };
-    addonValidator.toJSON(false, fakeJSON);
+    addonValidator.toJSON({pretty: false, _JSON: fakeJSON});
     assert.equal(fakeJSON.stringify.getCall(0).args[1], undefined);
     assert.equal(fakeJSON.stringify.getCall(0).args[2], undefined);
   });
@@ -607,6 +607,51 @@ describe('Validator.detectTypeFromLayout()', function() {
         var errors = addonValidator.collector.errors;
         assert.equal(errors.length, 1);
         assert.equal(errors[0].code, messages.TYPE_NOT_DETERMINED.code);
+      });
+  });
+});
+
+
+describe('Validator.run()', function() {
+
+  it('should run extractMetaData()', () => {
+    var addonValidator = new Validator({_: ['foo'], metadata: true});
+    var fakeMetaData = {type: 1, somethingelse: 'whatever'};
+    addonValidator.toJSON = sinon.stub();
+
+    addonValidator.getAddonMetaData = () => {
+      return Promise.resolve(fakeMetaData);
+    };
+
+    addonValidator.checkFileExists = () => {
+      return Promise.resolve();
+    };
+
+    addonValidator.checkMinNodeVersion = () => {
+      return Promise.resolve();
+    };
+
+    class FakeXpi {
+      // stub Xpi class.
+    }
+
+    return addonValidator.run(FakeXpi)
+      .then(() => {
+        assert.ok(addonValidator.toJSON.called);
+        assert.deepEqual(
+          addonValidator.toJSON.firstCall.args[0].input, fakeMetaData);
+      });
+  });
+
+  it('should run scan()', () => {
+    var addonValidator = new Validator({_: ['foo'], metadata: false});
+
+    addonValidator.scan = sinon.stub();
+    addonValidator.scan.returns(Promise.resolve());
+
+    return addonValidator.run()
+      .then(() => {
+        assert.ok(addonValidator.scan.called);
       });
   });
 });

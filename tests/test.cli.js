@@ -19,6 +19,11 @@ describe('Basic CLI tests', function() {
     assert.equal(args['log-level'], 'fatal');
   });
 
+  it('should default metadata option to false', () => {
+    var args = cli.parse(['foo/bar.xpi']);
+    assert.equal(args.metadata, false);
+  });
+
   it('should default add-on output to "text"', () => {
     var args = cli.parse(['foo/bar.xpi']);
     assert.equal(args.output, 'text');
