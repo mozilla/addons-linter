@@ -331,3 +331,11 @@ TODO: Alot of these are generated so this will need expanded with each unique co
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :x: | warning | removed_labels_in_use |  | Removed labels in use (Repeated for multiple versions) | | | | |
+
+## Web Extensions
+
+*Note these are all new and don't exist in the old validator*
+
+| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
+| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- |
+| :white_check_mark: | warning | N/A |  | manifest_version in manifest.json is not valid. | | null | MANIFEST_VERSION_INVALID |

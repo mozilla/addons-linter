@@ -21,10 +21,9 @@ export default class InstallRdfParser {
   getMetaData() {
     return this.parseDoc()
       .then((xmlDoc) => {
-        var addonMetaData = {};
-        // Sync metadata property lookups.
-        addonMetaData.type = this._getAddonType(xmlDoc);
-        return Promise.resolve(addonMetaData);
+        return Promise.resolve({
+          type: this._getAddonType(xmlDoc),
+        });
       });
   }
 
