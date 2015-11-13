@@ -1,19 +1,17 @@
-import { ADDON_TYPE_MAP, INSTALL_RDF } from 'const';
+import { ADDON_TYPE_MAP, INSTALL_RDF, RDF_DEFAULT_NAMESPACE } from 'const';
 import { TYPE_INVALID, TYPE_MISSING } from 'messages';
 import log from 'logger';
 import RDFScanner from 'scanners/rdf';
 
 
-// HACK: Remove before merging ^_^
-var namespace = 'http://www.mozilla.org/2004/em-rdf#';
-
 export default class InstallRdfParser {
 
-  constructor(rdfString, collector) {
+  constructor(rdfString, collector, {namespace=RDF_DEFAULT_NAMESPACE}={}) {
     this.rdfString = rdfString;
     // Provides ability to directly add messages to
     // the collector.
     this.collector = collector;
+    this.namespace = namespace;
   }
 
   parseDoc() {
@@ -56,8 +54,8 @@ export default class InstallRdfParser {
   }
 
   _getGUID(xmlDoc) {
-    if (xmlDoc.getElementsByTagNameNS(namespace, 'id').length > 0) {
-      var idNode = xmlDoc.getElementsByTagNameNS(namespace, 'id').item(0);
+    if (xmlDoc.getElementsByTagNameNS(this.namespace, 'id').length > 0) {
+      var idNode = xmlDoc.getElementsByTagNameNS(this.namespace, 'id').item(0);
       if (idNode && idNode.childNodes && idNode.childNodes[0]) {
         return idNode.childNodes[0];
       }
