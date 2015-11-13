@@ -1,4 +1,4 @@
-import { ADDON_TYPE_MAP, INSTALL_RDF } from 'const';
+import { ADDON_TYPE_MAP, INSTALL_RDF, RDF_DEFAULT_NAMESPACE } from 'const';
 import { TYPE_INVALID, TYPE_MISSING } from 'messages';
 import log from 'logger';
 import RDFScanner from 'scanners/rdf';
@@ -6,11 +6,12 @@ import RDFScanner from 'scanners/rdf';
 
 export default class InstallRdfParser {
 
-  constructor(rdfString, collector) {
+  constructor(rdfString, collector, {namespace=RDF_DEFAULT_NAMESPACE}={}) {
     this.rdfString = rdfString;
     // Provides ability to directly add messages to
     // the collector.
     this.collector = collector;
+    this.namespace = namespace;
   }
 
   parseDoc() {
@@ -22,6 +23,7 @@ export default class InstallRdfParser {
     return this.parseDoc()
       .then((xmlDoc) => {
         return Promise.resolve({
+          guid: this._getGUID(xmlDoc),
           type: this._getAddonType(xmlDoc),
         });
       });
@@ -49,5 +51,16 @@ export default class InstallRdfParser {
       this.collector.addNotice(TYPE_MISSING);
     }
     return addonType;
+  }
+
+  _getGUID(xmlDoc) {
+    if (xmlDoc.getElementsByTagNameNS(this.namespace, 'id').length > 0) {
+      var idNode = xmlDoc.getElementsByTagNameNS(this.namespace, 'id').item(0);
+      if (idNode && idNode.childNodes && idNode.childNodes[0]) {
+        return idNode.childNodes[0];
+      }
+    }
+
+    return null;
   }
 }

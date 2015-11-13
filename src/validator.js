@@ -22,6 +22,7 @@ import ChromeManifestScanner from 'scanners/chromemanifest';
 import CSSScanner from 'scanners/css';
 import HTMLScanner from 'scanners/html';
 import JavaScriptScanner from 'scanners/javascript';
+import MetadataScanner from 'scanners/metadata';
 import RDFScanner from 'scanners/rdf';
 import Xpi from 'xpi';
 
@@ -342,6 +343,23 @@ export default class Validator {
       });
   }
 
+  scanMetadata(metadata, _MetadataScanner=MetadataScanner) {
+    var scanner = new _MetadataScanner(metadata, 'XPI');
+
+    return scanner.scan()
+      .then((messages) => {
+        for (let message of messages) {
+          if (typeof message.type === 'undefined') {
+            throw new Error('message.type must be defined');
+          }
+
+          this.collector._addMessage(message.type, message);
+        }
+
+        return;
+      });
+  }
+
   extractMetaData(_Xpi=Xpi, _console=console) {
     return checkMinNodeVersion()
       .then(() => {
@@ -371,6 +389,12 @@ export default class Validator {
           log.warn(`No root ${CHROME_MANIFEST} found`);
           return;
         }
+      })
+      .then(() => {
+        return this.getAddonMetaData();
+      })
+      .then((addonMetadata) => {
+        return this.scanMetadata(addonMetadata);
       })
       .then(() => {
         return this.xpi.getFilesByExt('.js');

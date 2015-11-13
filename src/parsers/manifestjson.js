@@ -15,6 +15,7 @@ export default class ManifestJSONParserr {
   getMetaData() {
     var parsedJSON = JSON.parse(this.jsonString);
     return Promise.resolve({
+      guid: parsedJSON.id,
       type: PACKAGE_EXTENSION,
       manifestVersion: this.getManifestVersion(parsedJSON),
     });

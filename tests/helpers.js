@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { Readable } from 'stream';
 
+import { PACKAGE_EXTENSION } from 'const';
 import { singleLineString } from 'utils';
 
 
@@ -47,6 +48,12 @@ export function validHTML(contents='') {
       ${contents}
     </body>
   </html>`;
+}
+
+export function validMetadata(metadata={}) {
+  return Object.assign({}, {
+    type: PACKAGE_EXTENSION,
+  }, metadata);
 }
 
 export function validRDF(contents) {

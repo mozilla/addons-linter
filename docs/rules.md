@@ -177,7 +177,7 @@ To update it edit `docs/rules.md` in the
 
 ## Install.rdf
 
-TODO: Alot of these are generated so this will need expanded with each unique code.
+TODO: A lot of these are generated so this will need expanded with each unique code.
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
@@ -192,6 +192,7 @@ TODO: Alot of these are generated so this will need expanded with each unique co
 | :x: | notice | missing_updateKey | | Missing updateKey element | install.rdf | | | |
 | :x: | notice | Missing updateURL element | | Missing updateURL element | install.rdf | | | |
 | :x: | error | missing_addon | | install.rdf missing element(s). | install.rdf | | | |
+| :white_check_mark: | error | | | GUID must be 255 characters or less. | install.rdf | #214 | | GUID_TOO_LONG |
 
 
 
