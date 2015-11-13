@@ -134,28 +134,28 @@ export default class Xpi {
   }
 
   getFilesByExt(...extensions) {
-    return new Promise((resolve, reject) => {
 
-      for (let ext of extensions) {
-        if (ext.indexOf('.') !== 0) {
-          throw new Error("File extension must start with '.'");
-        }
+    for (let ext of extensions) {
+      if (ext.indexOf('.') !== 0) {
+        // We use Promise.reject as we're not inside a `then()` or a
+        // Promise constructor callback.
+        // If we throw here it won't be caught.
+        return Promise.reject(new Error("File extension must start with '.'"));
       }
+    }
 
-      return this.getMetaData()
-        .then((metadata) => {
-          let files = [];
+    return this.getMetaData()
+      .then((metadata) => {
+        let files = [];
 
-          for (let filename in metadata) {
-            for (let ext of extensions) {
-              if (filename.endsWith(ext)) {
-                files.push(filename);
-              }
+        for (let filename in metadata) {
+          for (let ext of extensions) {
+            if (filename.endsWith(ext)) {
+              files.push(filename);
             }
           }
-          resolve(files);
-        })
-        .catch(reject);
-    });
+        }
+        return files;
+      });
   }
 }

@@ -7,9 +7,7 @@ import { ignorePrivateFunctions } from 'utils';
 
 class BaseScannerWithContents extends BaseScanner {
   _getContents() {
-    return new Promise((resolve) => {
-      resolve({});
-    });
+    return Promise.resolve({});
   }
 }
 
