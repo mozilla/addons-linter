@@ -681,6 +681,10 @@ describe('Validator.detectTypeFromLayout()', function() {
 
 describe('Validator.run()', function() {
 
+  var fakeConsole = {
+    log: sinon.stub(),
+  };
+
   it('should run extractMetaData()', () => {
     var addonValidator = new Validator({_: ['foo'], metadata: true});
     var fakeMetaData = {type: 1, somethingelse: 'whatever'};
@@ -702,7 +706,7 @@ describe('Validator.run()', function() {
       // stub Xpi class.
     }
 
-    return addonValidator.run(FakeXpi)
+    return addonValidator.run(FakeXpi, fakeConsole)
       .then(() => {
         assert.ok(addonValidator.toJSON.called);
         assert.deepEqual(
@@ -716,7 +720,7 @@ describe('Validator.run()', function() {
     addonValidator.scan = sinon.stub();
     addonValidator.scan.returns(Promise.resolve());
 
-    return addonValidator.run()
+    return addonValidator.run(null, fakeConsole)
       .then(() => {
         assert.ok(addonValidator.scan.called);
       });

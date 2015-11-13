@@ -435,9 +435,9 @@ export default class Validator {
       });
   }
 
-  run(_Xpi=Xpi) {
+  run(_Xpi=Xpi, _console=console) {
     if (this.config.metadata === true) {
-      return this.extractMetaData(_Xpi);
+      return this.extractMetaData(_Xpi, _console);
     } else {
       return this.scan(_Xpi);
     }
