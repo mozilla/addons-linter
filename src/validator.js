@@ -206,8 +206,13 @@ export default class Validator {
         } else if (xpiFiles.hasOwnProperty(INSTALL_RDF)) {
           log.info('Retrieving metadata from install.rdf');
           return this.xpi.getFileAsString(INSTALL_RDF)
-            .then((rdf) => {
-              return new InstallRdfParser(rdf, this.collector).getMetaData();
+            .then((rdfString) => {
+              // Gets an xml document object.
+              var rdfScanner = new RDFScanner(rdfString, INSTALL_RDF);
+              return rdfScanner.getContents();
+            })
+            .then((xmlDoc) => {
+              return new InstallRdfParser(xmlDoc, this.collector).getMetaData();
             });
         } else if (xpiFiles.hasOwnProperty(MANIFEST_JSON)) {
           log.info('Retrieving metadata from manifest.json');

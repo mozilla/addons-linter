@@ -27,8 +27,8 @@ export const TYPE_NO_INSTALL_RDF = {
     will be attempted to be inferred by package layout.`),
 };
 
-export const TYPE_INVALID = {
-  code: 'TYPE_INVALID',
+export const RDF_TYPE_INVALID = {
+  code: 'RDF_TYPE_INVALID',
   legacyCode: [
     'typedetection',
     'detect_type',
@@ -41,8 +41,8 @@ export const TYPE_INVALID = {
   filename: 'install.rdf',
 };
 
-export const TYPE_MISSING = {
-  code: 'TYPE_MISSING',
+export const RDF_TYPE_MISSING = {
+  code: 'RDF_TYPE_MISSING',
   legacyCode: [
     'typedetection',
     'detect_type',
@@ -51,6 +51,14 @@ export const TYPE_MISSING = {
   message: _('No <em:type> element found in install.rdf'),
   description: _(singleLineString`It isn't always required, but it is
     the most reliable method for determining add-on type.`),
+  filename: 'install.rdf',
+};
+
+export const RDF_NAME_MISSING = {
+  code: 'RDF_NAME_MISSING',
+  legacyCode: null,
+  message: _('No <em:name> element found in install.rdf'),
+  description: _('<em:name> is required'),
   filename: 'install.rdf',
 };
 

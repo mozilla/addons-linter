@@ -267,8 +267,9 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :white_check_mark: | notice | missing_install_rdf | | Add-on missing install.rdf for type detection | | [22](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L22) | ('typedetection', 'detect_type', 'missing_install_rdf') | TYPE_NO_INSTALL_RDF |
-| :white_check_mark: | error | invalid_em_type | | The only valid values for `<em:type>` are 2, 4, 8, and 32 | | [46](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L46) | ('typedetection', 'detect_type', 'invalid_em_type') | TYPE_INVALID |
-| :white_check_mark: | notice | no_em:type | | No `<em:type>` element found in install.rdf | | [66](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L66) | ('typedetection', 'detect_type', 'no_em:type') | TYPE_MISSING |
+| :white_check_mark: | error | invalid_em_type | | The only valid values for `<em:type>` are 2, 4, 8, and 32 | | [46](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L46) | ('typedetection', 'detect_type', 'invalid_em_type') | RDF_TYPE_INVALID |
+| :white_check_mark: | notice | no_em:type | | No `<em:type>` element found in install.rdf | | [66](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L66) | ('typedetection', 'detect_type', 'no_em:type') | RDF_TYPE_MISSING |
+| :white_check_mark: | notice | no_em:name | | No `<em:name>` element found in install.rdf | | [66](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L66) | new rule | RDF_NAME_MISSING |
 | :white_check_mark: | error | undeterminable_type | | Unable to determine add-on type | | [195](https://github.com/mozilla/amo-validator/blob/master/validator/submain.py#L195) | ('main', 'test_package', 'undeterminable_type') | TYPE_NOT_DETERMINED |
 
 
@@ -339,4 +340,5 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- |
-| :white_check_mark: | warning | N/A |  | manifest_version in manifest.json is not valid. | | null | MANIFEST_VERSION_INVALID |
+| :white_check_mark: | error | N/A |  | manifest_version in manifest.json is not valid. | | null | MANIFEST_VERSION_INVALID |
+| :white_check_mark: | error | N/A |  | name in manifest.json is not valid. | | null | MANIFEST_NAME_INVALID |
