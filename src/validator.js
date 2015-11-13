@@ -190,18 +190,18 @@ export default class Validator {
   }
 
   getAddonMetaData() {
-    return this.xpi.getMetaData()
-      .then((xpiMeta) => {
-        if (xpiMeta.hasOwnProperty(INSTALL_RDF) &&
-            xpiMeta.hasOwnProperty(MANIFEST_JSON)) {
+    return this.xpi.getFiles()
+      .then((xpiFiles) => {
+        if (xpiFiles.hasOwnProperty(INSTALL_RDF) &&
+            xpiFiles.hasOwnProperty(MANIFEST_JSON)) {
           throw new Error(`Both ${INSTALL_RDF} and ${MANIFEST_JSON} found`);
-        } else if (xpiMeta.hasOwnProperty(INSTALL_RDF)) {
+        } else if (xpiFiles.hasOwnProperty(INSTALL_RDF)) {
           log.info('Retrieving metadata from install.rdf');
           return this.xpi.getFileAsString(INSTALL_RDF)
             .then((rdf) => {
               return new InstallRdfParser(rdf, this.collector).getMetaData();
             });
-        } else if (xpiMeta.hasOwnProperty(MANIFEST_JSON)) {
+        } else if (xpiFiles.hasOwnProperty(MANIFEST_JSON)) {
           log.info('Retrieving metadata from manifest.json');
           return this.xpi.getFileAsString(MANIFEST_JSON)
             .then((json) => {
@@ -239,9 +239,9 @@ export default class Validator {
    * a dictionary, language pack, or multiple extension pack.
    */
   detectTypeFromLayout() {
-    return this.xpi.getMetaData()
-      .then((xpiMeta) => {
-        for (let path_ of Object.keys(xpiMeta)) {
+    return this.xpi.getFiles()
+      .then((xpiFiles) => {
+        for (let path_ of Object.keys(xpiFiles)) {
           if (path_.startsWith('dictionaries/')) {
             return constants.PACKAGE_DICTIONARY;
           }
@@ -353,10 +353,10 @@ export default class Validator {
   scan(_Xpi=Xpi) {
     return this.extractMetaData(_Xpi)
       .then(() => {
-        return this.xpi.getMetaData();
+        return this.xpi.getFiles();
       })
-      .then((xpiMetaData) => {
-        if (xpiMetaData.hasOwnProperty(CHROME_MANIFEST)) {
+      .then((xpiFiles) => {
+        if (xpiFiles.hasOwnProperty(CHROME_MANIFEST)) {
           return this.scanFile(CHROME_MANIFEST, 'stream');
         } else {
           log.warn(`No root ${CHROME_MANIFEST} found`);

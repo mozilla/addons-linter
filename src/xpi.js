@@ -19,7 +19,7 @@ export default class Xpi {
   constructor(filename, zipLib=yauzl) {
     this.filename = filename;
     this.zipLib = zipLib;
-    this.metadata = {};
+    this.files = {};
     this.entries = [];
   }
 
@@ -44,15 +44,15 @@ export default class Xpi {
         `Entry "${entry.fileName}" has already been seen`));
     }
     this.entries.push(entry.fileName);
-    this.metadata[entry.fileName] = entry;
+    this.files[entry.fileName] = entry;
   }
 
-  getMetaData(_onEventsSubscribed) {
+  getFiles(_onEventsSubscribed) {
     return new Promise((resolve, reject) => {
       // If we have already processed the file and have data
       // on this instance return that.
-      if (Object.keys(this.metadata).length) {
-        return resolve(this.metadata);
+      if (Object.keys(this.files).length) {
+        return resolve(this.files);
       }
 
       return this.open()
@@ -68,7 +68,7 @@ export default class Xpi {
           // after the last entry event is emitted and streams
           // may still be being read with openReadStream.
           zipfile.on('close', () => {
-            resolve(this.metadata);
+            resolve(this.files);
           });
 
           if (_onEventsSubscribed) {
@@ -98,13 +98,13 @@ export default class Xpi {
   getFileAsStream(path) {
     return new Promise((resolve, reject) => {
 
-      if (!this.metadata.hasOwnProperty(path)) {
-        throw new Error(`Path "${path}" does not exist in metadata`);
+      if (!this.files.hasOwnProperty(path)) {
+        throw new Error(`Path "${path}" does not exist in this XPI`);
       }
 
       return this.open()
         .then((zipfile) => {
-          zipfile.openReadStream(this.metadata[path], (err, readStream) => {
+          zipfile.openReadStream(this.files[path], (err, readStream) => {
             if (err) {
               return reject(err);
             }
@@ -144,17 +144,18 @@ export default class Xpi {
       }
     }
 
-    return this.getMetaData()
-      .then((metadata) => {
+    return this.getFiles()
+      .then((xpiFiles) => {
         let files = [];
 
-        for (let filename in metadata) {
+        for (let filename in xpiFiles) {
           for (let ext of extensions) {
             if (filename.endsWith(ext)) {
               files.push(filename);
             }
           }
         }
+
         return files;
       });
   }
