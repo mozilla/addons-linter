@@ -47,7 +47,7 @@
     "markdown-it-anchor": "2.3.0",
     "mocha": "2.3.3",
     "sinon": "1.17.1",
-    "webpack": "1.12.4",
+    "webpack": "1.12.5",
     "webpack-dev-server": "1.12.1"
   },
   "dependencies": {
