@@ -152,7 +152,7 @@ describe('Validator', function() {
     };
 
     class FakeXpi {
-      getMetaData() {
+      getFiles() {
         return Promise.resolve([]);
       }
       getFilesByExt() {
@@ -178,7 +178,7 @@ describe('Validator', function() {
     };
 
     class FakeXpi {
-      getMetaData() {
+      getFiles() {
         return Promise.resolve([]);
       }
       getFilesByExt() {
@@ -200,7 +200,7 @@ describe('Validator', function() {
     addonValidator.collector.addError = sinon.stub();
     addonValidator.print = sinon.stub();
     class FakeXpi {
-      getMetaData() {
+      getFiles() {
         return Promise.reject(
           new DuplicateZipEntryError('Darnit the zip has dupes!'));
       }
@@ -468,7 +468,7 @@ describe('Validator.getAddonMetaData()', function() {
   it('should look at JSON when manifest.json', () => {
     var addonValidator = new Validator({_: ['bar']});
     addonValidator.xpi = {
-      getMetaData: () => {
+      getFiles: () => {
         return Promise.resolve({
           'manifest.json': {},
         });
@@ -486,7 +486,7 @@ describe('Validator.getAddonMetaData()', function() {
   it('should throw error if both manifest.json and install.rdf found', () => {
     var addonValidator = new Validator({_: ['bar']});
     addonValidator.xpi = {
-      getMetaData: () => {
+      getFiles: () => {
         return Promise.resolve({
           'install.rdf': {},
           'manifest.json': {},
@@ -503,7 +503,7 @@ describe('Validator.getAddonMetaData()', function() {
   it('should collect a notice if no manifest', () => {
     var addonValidator = new Validator({_: ['bar']});
     addonValidator.xpi = {
-      getMetaData: () => {
+      getFiles: () => {
         return Promise.resolve({});
       },
     };
@@ -529,7 +529,7 @@ describe('Validator.detectTypeFromLayout()', function() {
     var detectTypeFromLayoutSpy = sinon.spy(addonValidator,
                                             'detectTypeFromLayout');
     class FakeXPI {
-      getMetaData() {
+      getFiles() {
         return Promise.resolve({
           'dictionaries/something': {},
           'whatever': {},
@@ -548,7 +548,7 @@ describe('Validator.detectTypeFromLayout()', function() {
   it('should fall-back to detecting a dictionary based on layout', () => {
     var addonValidator = new Validator({_: ['bar']});
     addonValidator.xpi = {
-      getMetaData: () => {
+      getFiles: () => {
         return Promise.resolve({
           'dictionaries/something': {},
           'whatever': {},
@@ -564,7 +564,7 @@ describe('Validator.detectTypeFromLayout()', function() {
   it('should fall-back to detect theme based on extension', () => {
     var addonValidator = new Validator({_: ['foo.jar']});
     addonValidator.xpi = {
-      getMetaData: () => {
+      getFiles: () => {
         return Promise.resolve({
           whatever: {},
         });
@@ -579,7 +579,7 @@ describe('Validator.detectTypeFromLayout()', function() {
   it('should fall-back to detect extention based on extension', () => {
     var addonValidator = new Validator({_: ['foo.xpi']});
     addonValidator.xpi = {
-      getMetaData: () => {
+      getFiles: () => {
         return Promise.resolve({
           whatever: {},
         });
@@ -594,7 +594,7 @@ describe('Validator.detectTypeFromLayout()', function() {
   it('should collect an error if all attempts to detect type fail', () => {
     var addonValidator = new Validator({_: ['bar']});
     addonValidator.xpi = {
-      getMetaData: () => {
+      getFiles: () => {
         return Promise.resolve({});
       },
     };
