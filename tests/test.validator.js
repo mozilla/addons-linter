@@ -504,6 +504,48 @@ describe('Validator.textOutput()', function() {
 
 describe('Validator.getAddonMetaData()', function() {
 
+  it('should init with null metadata', () => {
+    var addonValidator = new Validator({
+      _: ['tests/fixtures/example.xpi'],
+    });
+
+    addonValidator.print = sinon.stub();
+
+    assert.typeOf(addonValidator.addonMetaData, 'null');
+
+    return addonValidator.scan()
+      .then(() => {
+        return addonValidator.getAddonMetaData();
+      })
+      .then((metadata) => {
+        assert.isAbove(Object.keys(metadata).length, 0);
+      });
+  });
+
+  it('should cache and return cached addonMetaData', () => {
+    var addonValidator = new Validator({
+      _: ['tests/fixtures/example.xpi'],
+    });
+
+    addonValidator.print = sinon.stub();
+
+    // This should only be called once: when the addonMetaData isn't populated.
+    var architectureCall = sinon.spy(addonValidator, '_getAddonArchitecture');
+
+    assert.isFalse(architectureCall.called);
+
+    // `scan()` calls `getAddonMetaData()`, so we consider it called here.
+    return addonValidator.scan()
+      .then(() => {
+        assert.isTrue(architectureCall.calledOnce);
+        assert.typeOf(addonValidator.addonMetaData, 'object');
+        return addonValidator.getAddonMetaData();
+      })
+      .then(() => {
+        assert.isTrue(architectureCall.calledOnce);
+      });
+  });
+
   it('should consider example.xpi a regular add-on', () => {
     var addonValidator = new Validator({
       _: ['tests/fixtures/example.xpi'],
