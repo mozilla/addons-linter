@@ -61,7 +61,7 @@
     "semver": "5.0.3",
     "source-map-support": "0.3.2",
     "xmldom": "0.1.19",
-    "yargs": "3.27.0",
+    "yargs": "3.29.0",
     "yauzl": "2.3.1"
   }
 }
