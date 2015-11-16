@@ -5,10 +5,15 @@ This document is automatically published on [github pages](http://mozilla.github
 To update it edit `docs/rules.md` in the
 [github repo](https://github.com/mozilla/addons-validator).
 
+* :white_check_mark: means the rule has been ported/implemented
+* :negative_squared_cross_mark: means the rule has been removed
+* :x: means the rule hasn't been ported yet
+
+A :white_check_mark: next to a section of rules means they have all been filed in our [issues database](https://github.com/mozilla/addons-validator/issues).
 
 ## JavaScript
 
-### Actions
+### Actions :white_check_mark:
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
@@ -24,7 +29,7 @@ To update it edit `docs/rules.md` in the
 | :x: | warning | global_overwrite | | Global variable overwrite | | | | |
 | :white_check_mark: | warning | unexpected_global_arg [NEW] | | Unexpected global passed as an argument | | | null | UNEXPECTED_GLOGAL_ARG |
 
-### Call definitions
+### Call definitions :white_check_mark:
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :negative_squared_cross_mark: | warning | webbrowserpersist | | nsIWebBrowserPersist should no longer be used |  | [testcases/javascript/call_definitions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/call_definitions.py)| ('testcases_javascript_call_definititions', 'webbrowserpersist') | **Removed** |
@@ -238,14 +243,14 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :x: | warning | unsafe_content_link | | Unsafe remote resource found in language pack | | | | |
 
 
-## package.json
+## package.json :white_check_mark:
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :x: | error | field_required | | Your package.json is missing a required field | | [testcases/packagejson.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagejson.py) | | |
 
 
-## Package layout
+## Package layout :white_check_mark:
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
