@@ -75,15 +75,35 @@ describe('utils.getRootExpression()', function() {
 });
 
 describe('utils.getNodeReferenceName()', () => {
+  // Represents scope for following code:
+  // var foo = window; foo = bar;
   var context = {
     getScope: function() {
+      // TODO: Look into generating these AST nodes using ESPrima
       return {
         variables: [{
           name: 'foo', // Reference name
+          type: 'Identifier',
           defs: [{
-            node: {
-              init: {
-                name: 'bar', // Value name
+            parent: {
+              parent: {
+                body: [{
+                  type: 'VariableDeclaration',
+                  declarations: [{
+                    init: {
+                      name: 'window',
+                    },
+                  }],
+                },{
+                  type: 'ExpressionStatement',
+                  expression: {
+                    type: 'AssignmentExpression',
+                    right: {
+                      name: 'bar',
+                    },
+                  },
+                },
+                ],
               },
             },
           }],

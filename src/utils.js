@@ -58,7 +58,7 @@ export function getRootExpression(node) {
 }
 
 /*
- * returns the name of the reference node passed.
+ * Returns the name of the reference node passed.
  *
  * example: var foo = document;
  *  The node for foo will return 'document'
@@ -67,17 +67,45 @@ export function getNodeReferenceName(context, node) {
   var variables = context.getScope().variables;
   var scopeVar;
 
-  variables.forEach((variable) => {
+  // Finds variable reference in current scope.
+  for (let variable of variables) {
     if (variable.name === node.name) {
       scopeVar = variable;
+      break;
     }
-  });
-
-  if (typeof scopeVar === 'undefined') {
-    return node.name;
-  } else {
-    return scopeVar.defs[0].node.init.name;
   }
+
+  if (scopeVar && scopeVar.defs && scopeVar.defs[0] &&
+      scopeVar.defs[0].parent && scopeVar.defs[0].parent.parent &&
+      scopeVar.defs[0].parent.parent.body) {
+    // This represents all occurrences of the variable
+    let occurances = scopeVar.defs[0].parent.parent.body;
+    let lastAssignment;
+
+    for (let occurance of occurances) {
+      if (occurance.type === 'VariableDeclaration' &&
+          occurance.declarations[0].init !== null) {
+        // Get what the name of what it was assigned to or the raw
+        // value depending on the initalization
+        lastAssignment = occurance.declarations[0].init.name ||
+          occurance.declarations[0].init.raw;
+      } else if (occurance.type === 'ExpressionStatement' &&
+                 occurance.expression.type === 'AssignmentExpression') {
+        // Get the right hand side of the assignment
+        lastAssignment = occurance.expression.right.name;
+      }
+    }
+
+    // Return the name of the first definition of the variable which
+    // corresponds to the node passed in.
+    if (lastAssignment) {
+      return lastAssignment;
+    }
+  }
+
+  // If that variable doesn't exist in scope, then just return the node's
+  // name.
+  return node.name;
 }
 
 /*

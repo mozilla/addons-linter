@@ -6,6 +6,7 @@ export const ESLINT_WARNING = 1;
 
 export const ESLINT_RULE_MAPPING = {
   banned_identifiers: ESLINT_WARNING,
+  deprecated_entities: ESLINT_WARNING,
   eval_string_arg: ESLINT_ERROR,
   global_require_arg: ESLINT_WARNING,
   low_level_module: ESLINT_WARNING,
