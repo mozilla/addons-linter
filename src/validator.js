@@ -38,7 +38,7 @@ export default class Validator {
     this.chalk = new chalk.constructor(
       {enabled: !this.config.boring});
     this.collector = new Collector();
-    this.addonMetaData = {};
+    this.addonMetaData = null;
   }
 
   colorize(type) {
@@ -193,6 +193,10 @@ export default class Validator {
   }
 
   getAddonMetaData() {
+    if (this.addonMetaData !== null) {
+      return Promise.resolve(this.addonMetaData);
+    }
+
     var _xpiFiles;
 
     return this.xpi.getFiles()
@@ -229,17 +233,19 @@ export default class Validator {
         }
       })
       .then((addonMetaData) => {
-        addonMetaData.architecture = this._getAddonArchitecture(_xpiFiles);
+        this.addonMetaData = addonMetaData;
 
-        if (!addonMetaData.type) {
+        this.addonMetaData.architecture = this._getAddonArchitecture(_xpiFiles);
+
+        if (!this.addonMetaData.type) {
           log.info('Determining addon type failed. Guessing from layout');
           return this.detectTypeFromLayout()
             .then((addonType) => {
-              addonMetaData.type = addonType;
-              return addonMetaData;
+              this.addonMetaData.type = addonType;
+              return this.addonMetaData;
             });
         } else {
-          return addonMetaData;
+          return this.addonMetaData;
         }
       });
   }
@@ -374,7 +380,6 @@ export default class Validator {
         this.xpi = new _Xpi(this.packagePath);
         return this.getAddonMetaData();
       }).then((addonMetaData) => {
-        this.addonMetaData = addonMetaData;
         if (this.config.metadata === true) {
           _console.log(this.toJSON({input: addonMetaData}));
         }
