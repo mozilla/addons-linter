@@ -4,14 +4,14 @@ import { ensureFilenameExists, ignorePrivateFunctions } from 'utils';
 
 export default class BaseScanner {
 
-  constructor(contents, filename) {
+  constructor(contents, filename, options={}) {
     this.contents = contents;
     this.filename = filename;
+    this.options = options;
     this.validatorMessages = [];
     this._defaultRules = [];
     this._parsedContent = null;
     this._rulesProcessed = 0;
-    this.options = {};
 
     ensureFilenameExists(this.filename);
   }

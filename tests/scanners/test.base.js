@@ -24,6 +24,18 @@ describe('Base Scanner Class', function() {
     }, MissingFilenameError, 'Filename is required');
   });
 
+  it('should have an options property', () => {
+    var baseScanner = new BaseScanner('', 'filename.txt');
+    assert.equal(typeof baseScanner.options, 'object');
+    // This test assures us the options can be accessed like an object.
+    assert.equal(typeof baseScanner.options.someUndefinedProp, 'undefined');
+
+    var baseScannerWithOptions = new BaseScanner('', 'filename.txt', {
+      foo: 'bar',
+    });
+    assert.equal(baseScannerWithOptions.options.foo, 'bar');
+  });
+
   it('should reject when _getContents is not implemented', () => {
     var baseScanner = new BaseScanner('', 'index.html');
 

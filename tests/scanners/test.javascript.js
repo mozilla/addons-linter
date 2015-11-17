@@ -15,6 +15,18 @@ describe('JavaScript Scanner', function() {
     }, MissingFilenameError, 'Filename is required');
   });
 
+  it('should have an options property', () => {
+    var jsScanner = new JavaScriptScanner('', 'filename.txt');
+    assert.equal(typeof jsScanner.options, 'object');
+    // This test assures us the options can be accessed like an object.
+    assert.equal(typeof jsScanner.options.someUndefinedProp, 'undefined');
+
+    var jsScannerWithOptions = new JavaScriptScanner('', 'filename.txt', {
+      foo: 'bar',
+    });
+    assert.equal(jsScannerWithOptions.options.foo, 'bar');
+  });
+
   // TODO: Not sure how to test for this one yet; it's pretty messy.
   it.skip(singleLineString`should warn when mozIndexedDB is assembled into
     literal with +=`,

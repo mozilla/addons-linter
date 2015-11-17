@@ -10,9 +10,10 @@ import { ensureFilenameExists, singleLineString } from 'utils';
 
 export default class JavaScriptScanner {
 
-  constructor(code, filename) {
+  constructor(code, filename, options={}) {
     this.code = code;
     this.filename = filename;
+    this.options = options;
 
     ensureFilenameExists(this.filename);
   }
@@ -34,6 +35,7 @@ export default class JavaScriptScanner {
       });
 
       var validatorMessages = [];
+      // TODO: Consider switching back to `verify()` to get access to settings.
       var report = eslint.executeOnText(this.code, this.filename);
 
       for (let message of report.results[0].messages) {
