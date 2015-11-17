@@ -57,8 +57,8 @@ export default class InstallRdfParser {
     var idElms = this.xmlDoc.getElementsByTagNameNS(this.namespace, 'id');
     if (idElms.length > 0) {
       var idNode = idElms.item(0);
-      if (idNode && idNode.childNodes && idNode.childNodes[0]) {
-        return idNode.childNodes[0];
+      if (idNode && idNode.firstChild && idNode.firstChild.nodeValue) {
+        return idNode.firstChild.nodeValue;
       }
     }
     return null;
@@ -69,6 +69,7 @@ export default class InstallRdfParser {
     var name = null;
     if (node && node.firstChild && node.firstChild.nodeValue) {
       name = node.firstChild.nodeValue;
+      log.debug('Extracted <em:name> value: %s', name);
     } else {
       log.warn('<em:name> was not found in install.rdf');
       this.collector.addNotice(RDF_NAME_MISSING);
