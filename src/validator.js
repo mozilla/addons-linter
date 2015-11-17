@@ -56,10 +56,15 @@ export default class Validator {
   }
 
   handleError(err, _console=console) {
-    if (this.config.stack === true) {
-      _console.error(err.stack);
+    if (err instanceof exceptions.DuplicateZipEntryError) {
+      this.collector.addError(messages.DUPLICATE_XPI_ENTRY);
+      this.print(_console);
     } else {
-      _console.error(this.chalk.red(err.message || err));
+      if (this.config.stack === true) {
+        _console.error(err.stack);
+      } else {
+        _console.error(this.chalk.red(err.message || err));
+      }
     }
   }
 
@@ -216,6 +221,7 @@ export default class Validator {
               return rdfScanner.getContents();
             })
             .then((xmlDoc) => {
+              log.info('Got xmlDoc, running InstallRdfParser.getMetadata()');
               return new InstallRdfParser(xmlDoc, this.collector).getMetadata();
             });
         } else if (xpiFiles.hasOwnProperty(MANIFEST_JSON)) {
@@ -379,7 +385,9 @@ export default class Validator {
       .then(() => {
         this.xpi = new _Xpi(this.packagePath);
         return this.getAddonMetadata();
-      }).then((addonMetadata) => {
+      })
+      .then((addonMetadata) => {
+        log.info('Metadata option is set to %s', this.config.metadata);
         if (this.config.metadata === true) {
           _console.log(this.toJSON({input: addonMetadata}));
         }
@@ -387,7 +395,7 @@ export default class Validator {
       });
   }
 
-  scan(_Xpi=Xpi) {
+  scan(_Xpi=Xpi, _console=console) {
     return this.extractMetadata(_Xpi)
       .then(() => {
         return this.xpi.getFiles();
@@ -435,21 +443,21 @@ export default class Validator {
         return;
       })
       .catch((err) => {
-        if (err instanceof exceptions.DuplicateZipEntryError) {
-          this.collector.addError(messages.DUPLICATE_XPI_ENTRY);
-          this.print();
-        } else {
-          this.handleError(err);
-        }
+        this.handleError(err, _console);
         throw err;
       });
   }
 
   run(_Xpi=Xpi, _console=console) {
     if (this.config.metadata === true) {
-      return this.extractMetadata(_Xpi, _console);
+      return this.extractMetadata(_Xpi, _console)
+        .catch((err) => {
+          log.debug(err);
+          this.handleError(err, _console);
+          throw err;
+        });
     } else {
-      return this.scan(_Xpi);
+      return this.scan(_Xpi, _console);
     }
   }
 

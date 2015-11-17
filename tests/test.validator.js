@@ -233,6 +233,7 @@ describe('Validator', function() {
       });
   });
 
+
   it('should call addError when Xpi rejects with dupe entry', () => {
     var addonValidator = new Validator({_: ['bar']});
     addonValidator.checkFileExists = () => Promise.resolve();
@@ -767,4 +768,35 @@ describe('Validator.run()', function() {
         assert.ok(addonValidator.scan.called);
       });
   });
+
+  it('should surface errors when getMetadata() blows up', () => {
+    var addonValidator = new Validator({_: ['foo'], metadata: true});
+    addonValidator.toJSON = sinon.stub();
+    addonValidator.handleError = sinon.spy();
+
+    addonValidator.getAddonMetadata = () => {
+      return Promise.reject(new Error('metadata explosion'));
+    };
+
+    addonValidator.checkFileExists = () => {
+      return Promise.resolve();
+    };
+
+    addonValidator.checkMinNodeVersion = () => {
+      return Promise.resolve();
+    };
+
+    class FakeXpi {
+      // stub Xpi class.
+    }
+
+    return addonValidator.run(FakeXpi, fakeConsole)
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.ok(addonValidator.handleError.called);
+        assert.instanceOf(err, Error);
+        assert.include(err.message, 'metadata explosion');
+      });
+  });
+
 });
