@@ -14,7 +14,7 @@ export default class InstallRdfParser {
     this.namespace = namespace;
   }
 
-  getMetaData() {
+  getMetadata() {
     return Promise.resolve({
       guid: this._getGUID(),
       name: this._getName(),
@@ -51,7 +51,7 @@ export default class InstallRdfParser {
   }
 
   _getGUID() {
-    // NOTE: We validate this rule in one place: `Validator.getAddonMetaData()`.
+    // NOTE: We validate this rule in one place: `Validator.getAddonMetadata()`.
     // This is because both `install.rdf` and `manifest.json` share the same
     // requirements for guid.
     var idElms = this.xmlDoc.getElementsByTagNameNS(this.namespace, 'id');

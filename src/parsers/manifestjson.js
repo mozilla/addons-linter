@@ -12,7 +12,7 @@ export default class ManifestJSONParser {
     this.collector = collector;
   }
 
-  getMetaData() {
+  getMetadata() {
     return Promise.resolve({
       guid: this._getGuid(),
       manifestVersion: this._getManifestVersion(),
@@ -22,7 +22,7 @@ export default class ManifestJSONParser {
   }
 
   _getGuid() {
-    // NOTE: We validate this rule in one place: `Validator.getAddonMetaData()`
+    // NOTE: We validate this rule in one place: `Validator.getAddonMetadata()`
     // This is because both `install.rdf` and `manifest.json` share the same
     // requirements for guid.
     return this.parsedJSON.id;
