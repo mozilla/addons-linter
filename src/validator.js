@@ -38,7 +38,7 @@ export default class Validator {
     this.chalk = new chalk.constructor(
       {enabled: !this.config.boring});
     this.collector = new Collector();
-    this.addonMetaData = null;
+    this.addonMetadata = null;
   }
 
   colorize(type) {
@@ -192,9 +192,9 @@ export default class Validator {
     return output;
   }
 
-  getAddonMetaData() {
-    if (this.addonMetaData !== null) {
-      return Promise.resolve(this.addonMetaData);
+  getAddonMetadata() {
+    if (this.addonMetadata !== null) {
+      return Promise.resolve(this.addonMetadata);
     }
 
     var _xpiFiles;
@@ -216,13 +216,13 @@ export default class Validator {
               return rdfScanner.getContents();
             })
             .then((xmlDoc) => {
-              return new InstallRdfParser(xmlDoc, this.collector).getMetaData();
+              return new InstallRdfParser(xmlDoc, this.collector).getMetadata();
             });
         } else if (xpiFiles.hasOwnProperty(MANIFEST_JSON)) {
           log.info('Retrieving metadata from manifest.json');
           return this.xpi.getFileAsString(MANIFEST_JSON)
             .then((json) => {
-              return new ManifestJSONParser(json, this.collector).getMetaData();
+              return new ManifestJSONParser(json, this.collector).getMetadata();
             });
         } else {
           log.warn(singleLineString`No ${INSTALL_RDF} or ${MANIFEST_JSON}
@@ -232,20 +232,20 @@ export default class Validator {
           return {};
         }
       })
-      .then((addonMetaData) => {
-        this.addonMetaData = addonMetaData;
+      .then((addonMetadata) => {
+        this.addonMetadata = addonMetadata;
 
-        this.addonMetaData.architecture = this._getAddonArchitecture(_xpiFiles);
+        this.addonMetadata.architecture = this._getAddonArchitecture(_xpiFiles);
 
-        if (!this.addonMetaData.type) {
+        if (!this.addonMetadata.type) {
           log.info('Determining addon type failed. Guessing from layout');
           return this.detectTypeFromLayout()
             .then((addonType) => {
-              this.addonMetaData.type = addonType;
-              return this.addonMetaData;
+              this.addonMetadata.type = addonType;
+              return this.addonMetadata;
             });
         } else {
-          return this.addonMetaData;
+          return this.addonMetadata;
         }
       });
   }
@@ -371,24 +371,24 @@ export default class Validator {
       });
   }
 
-  extractMetaData(_Xpi=Xpi, _console=console) {
+  extractMetadata(_Xpi=Xpi, _console=console) {
     return checkMinNodeVersion()
       .then(() => {
         return this.checkFileExists(this.packagePath);
       })
       .then(() => {
         this.xpi = new _Xpi(this.packagePath);
-        return this.getAddonMetaData();
-      }).then((addonMetaData) => {
+        return this.getAddonMetadata();
+      }).then((addonMetadata) => {
         if (this.config.metadata === true) {
-          _console.log(this.toJSON({input: addonMetaData}));
+          _console.log(this.toJSON({input: addonMetadata}));
         }
         return;
       });
   }
 
   scan(_Xpi=Xpi) {
-    return this.extractMetaData(_Xpi)
+    return this.extractMetadata(_Xpi)
       .then(() => {
         return this.xpi.getFiles();
       })
@@ -401,7 +401,7 @@ export default class Validator {
         }
       })
       .then(() => {
-        return this.getAddonMetaData();
+        return this.getAddonMetadata();
       })
       .then((addonMetadata) => {
         return this.scanMetadata(addonMetadata);
@@ -447,17 +447,17 @@ export default class Validator {
 
   run(_Xpi=Xpi, _console=console) {
     if (this.config.metadata === true) {
-      return this.extractMetaData(_Xpi, _console);
+      return this.extractMetadata(_Xpi, _console);
     } else {
       return this.scan(_Xpi);
     }
   }
 
-  _getAddonArchitecture(xpiMetaData) {
+  _getAddonArchitecture(xpiMetadata) {
     // If we find a file named bootstrap.js this is assumed to be a
     // Jetpack add-on: https://github.com/mozilla/amo-validator/blob/7a8011aba8bf8c665aef2b51eb26d0697b3e19c3/validator/testcases/jetpack.py#L154
     // TODO: Check against file contents to make this more robust.
-    var files = Object.keys(xpiMetaData);
+    var files = Object.keys(xpiMetadata);
 
     if (files.includes('bootstrap.js') &&
         (files.includes('harness-options.json') ||

@@ -244,7 +244,7 @@ describe('Validator', function() {
           new DuplicateZipEntryError('Darnit the zip has dupes!'));
       }
       getFilesByExt() {
-        return this.getMetaData();
+        return this.getMetadata();
       }
     }
     return addonValidator.scan(FakeXpi)
@@ -502,7 +502,7 @@ describe('Validator.textOutput()', function() {
 });
 
 
-describe('Validator.getAddonMetaData()', function() {
+describe('Validator.getAddonMetadata()', function() {
 
   it('should init with null metadata', () => {
     var addonValidator = new Validator({
@@ -511,35 +511,35 @@ describe('Validator.getAddonMetaData()', function() {
 
     addonValidator.print = sinon.stub();
 
-    assert.typeOf(addonValidator.addonMetaData, 'null');
+    assert.typeOf(addonValidator.addonMetadata, 'null');
 
     return addonValidator.scan()
       .then(() => {
-        return addonValidator.getAddonMetaData();
+        return addonValidator.getAddonMetadata();
       })
       .then((metadata) => {
         assert.isAbove(Object.keys(metadata).length, 0);
       });
   });
 
-  it('should cache and return cached addonMetaData', () => {
+  it('should cache and return cached addonMetadata', () => {
     var addonValidator = new Validator({
       _: ['tests/fixtures/example.xpi'],
     });
 
     addonValidator.print = sinon.stub();
 
-    // This should only be called once: when the addonMetaData isn't populated.
+    // This should only be called once: when the addonMetadata isn't populated.
     var architectureCall = sinon.spy(addonValidator, '_getAddonArchitecture');
 
     assert.isFalse(architectureCall.called);
 
-    // `scan()` calls `getAddonMetaData()`, so we consider it called here.
+    // `scan()` calls `getAddonMetadata()`, so we consider it called here.
     return addonValidator.scan()
       .then(() => {
         assert.isTrue(architectureCall.calledOnce);
-        assert.typeOf(addonValidator.addonMetaData, 'object');
-        return addonValidator.getAddonMetaData();
+        assert.typeOf(addonValidator.addonMetadata, 'object');
+        return addonValidator.getAddonMetadata();
       })
       .then(() => {
         assert.isTrue(architectureCall.calledOnce);
@@ -555,7 +555,7 @@ describe('Validator.getAddonMetaData()', function() {
 
     return addonValidator.scan()
       .then(() => {
-        return addonValidator.getAddonMetaData();
+        return addonValidator.getAddonMetadata();
       })
       .then((metadata) => {
         assert.equal(metadata.architecture, constants.ARCH_DEFAULT);
@@ -571,7 +571,7 @@ describe('Validator.getAddonMetaData()', function() {
 
     return addonValidator.scan()
       .then(() => {
-        return addonValidator.getAddonMetaData();
+        return addonValidator.getAddonMetadata();
       })
       .then((metadata) => {
         assert.equal(metadata.architecture, constants.ARCH_JETPACK);
@@ -590,7 +590,7 @@ describe('Validator.getAddonMetaData()', function() {
         return Promise.resolve(validManifestJSON({}));
       },
     };
-    return addonValidator.getAddonMetaData()
+    return addonValidator.getAddonMetadata()
       .then((metadata) => {
         assert.equal(metadata.type, constants.PACKAGE_EXTENSION);
       });
@@ -606,7 +606,7 @@ describe('Validator.getAddonMetaData()', function() {
         });
       },
     };
-    return addonValidator.getAddonMetaData()
+    return addonValidator.getAddonMetadata()
       .then(unexpectedSuccess)
       .catch((err) => {
         assert.include(err.message, 'Both install.rdf and manifest.json');
@@ -620,7 +620,7 @@ describe('Validator.getAddonMetaData()', function() {
         return Promise.resolve({});
       },
     };
-    return addonValidator.getAddonMetaData()
+    return addonValidator.getAddonMetadata()
       .then(() => {
         var notices = addonValidator.collector.notices;
         assert.equal(notices.length, 1);
@@ -653,7 +653,7 @@ describe('Validator.detectTypeFromLayout()', function() {
     return addonValidator.scan(FakeXPI)
       .then(() => {
         assert.ok(detectTypeFromLayoutSpy.called);
-        assert.equal(addonValidator.addonMetaData.type,
+        assert.equal(addonValidator.addonMetadata.type,
                      constants.PACKAGE_DICTIONARY);
       });
   });
@@ -727,13 +727,13 @@ describe('Validator.run()', function() {
     log: sinon.stub(),
   };
 
-  it('should run extractMetaData()', () => {
+  it('should run extractMetadata()', () => {
     var addonValidator = new Validator({_: ['foo'], metadata: true});
-    var fakeMetaData = {type: 1, somethingelse: 'whatever'};
+    var fakeMetadata = {type: 1, somethingelse: 'whatever'};
     addonValidator.toJSON = sinon.stub();
 
-    addonValidator.getAddonMetaData = () => {
-      return Promise.resolve(fakeMetaData);
+    addonValidator.getAddonMetadata = () => {
+      return Promise.resolve(fakeMetadata);
     };
 
     addonValidator.checkFileExists = () => {
@@ -752,7 +752,7 @@ describe('Validator.run()', function() {
       .then(() => {
         assert.ok(addonValidator.toJSON.called);
         assert.deepEqual(
-          addonValidator.toJSON.firstCall.args[0].input, fakeMetaData);
+          addonValidator.toJSON.firstCall.args[0].input, fakeMetadata);
       });
   });
 
