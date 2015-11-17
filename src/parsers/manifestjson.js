@@ -22,7 +22,7 @@ export default class ManifestJSONParser {
   }
 
   _getGuid() {
-    // NOTE: We validate this rule in one place: `Validator.getAddonMetadata()`
+    // NOTE: We validate this rule in `src/rules/metadata/guid_length`.
     // This is because both `install.rdf` and `manifest.json` share the same
     // requirements for guid.
     return this.parsedJSON.id;
