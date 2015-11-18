@@ -31,12 +31,10 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('start', [
-    'webpack:eslintwatch',
     'webpack:buildwatch',
   ]);
 
   grunt.registerTask('build', [
-    'webpack:eslint',
     'webpack:build',
   ]);
 
@@ -59,7 +57,6 @@ module.exports = function(grunt) {
     'clean',
     'instrument',
     'webpack:build',
-    'webpack:eslint',
     'webpack:coverage',
     'mochaTest',
     'storeCoverage',
@@ -70,7 +67,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test-no-coverage', [
     'clean',
-    'webpack:eslint',
     'webpack:test',
     'mochaTest',
     'eslint',

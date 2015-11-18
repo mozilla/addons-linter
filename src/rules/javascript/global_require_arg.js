@@ -5,7 +5,7 @@ import { getVariable } from 'utils';
  * This rule will detect a global passed to `require()` as the first arg
  *
  */
-export default function(context) {
+export function global_require_arg(context) {
   return {
     CallExpression: function(node) {
       if (node.callee.name === 'require' &&

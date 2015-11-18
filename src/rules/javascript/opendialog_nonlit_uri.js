@@ -1,7 +1,7 @@
 import { OPENDIALOG_NONLIT_URI } from 'messages';
 
 
-export default function(context) {
+export function opendialog_nonlit_uri(context) {
   return {
     CallExpression: function(node) {
       if (node.callee.type === 'MemberExpression' &&

@@ -1,7 +1,7 @@
 import { ONLY_PREFS_IN_DEFAULTS } from 'messages/javascript';
 import { getRootExpression } from 'utils';
 
-export default function(context) {
+export function only_prefs_in_defaults(context) {
   var filename = context.getFilename();
 
   // This rule only applies to files in defaults/preferences

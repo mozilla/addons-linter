@@ -1,7 +1,7 @@
 import { MOZINDEXEDDB_PROPERTY } from 'messages';
 
 
-export default function(context) {
+export function mozindexeddb_property(context) {
   return {
     Identifier: function(node) {
       // Catches `var foo = 'mozIndexedDB'; var myDatabase = window[foo];`.
