@@ -4,6 +4,20 @@ export const NO_COMPRESSION = 0;
 export const ESLINT_ERROR = 2;
 export const ESLINT_WARNING = 1;
 
+export const ESLINT_RULE_MAPPING = {
+  banned_identifiers: ESLINT_WARNING,
+  eval_string_arg: ESLINT_ERROR,
+  global_require_arg: ESLINT_WARNING,
+  low_level_module: ESLINT_WARNING,
+  mozindexeddb: ESLINT_ERROR,
+  mozindexeddb_property: ESLINT_WARNING,
+  only_prefs_in_defaults: ESLINT_WARNING,
+  opendialog_nonlit_uri: ESLINT_WARNING,
+  opendialog_remote_uri: ESLINT_WARNING,
+  shallow_wrapper: ESLINT_WARNING,
+  widget_module: ESLINT_WARNING,
+};
+
 export const VALIDATION_ERROR = 'error';
 export const VALIDATION_NOTICE = 'notice';
 export const VALIDATION_WARNING = 'warning';

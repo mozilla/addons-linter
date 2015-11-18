@@ -6,7 +6,7 @@ import { SHALLOW_WRAPPER } from 'messages';
 // to XRay: https://developer.mozilla.org/en-US/docs/Xray_vision
 //
 // TODO: Find out more about this rule.
-export default function(context) {
+export function shallow_wrapper(context) {
   function _testForShallowWrapper(node) {
     if (node.callee.name === 'XPCNativeWrapper' &&
         node.callee.type === 'Identifier') {

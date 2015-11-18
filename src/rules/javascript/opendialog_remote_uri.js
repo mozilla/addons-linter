@@ -2,7 +2,7 @@ import { isLocalUrl } from 'utils';
 import { OPENDIALOG_REMOTE_URI } from 'messages';
 
 
-export default function(context) {
+export function opendialog_remote_uri(context) {
   return {
     CallExpression: function(node) {
       if (node.callee.type === 'MemberExpression' &&

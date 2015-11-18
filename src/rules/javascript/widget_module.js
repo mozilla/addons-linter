@@ -11,7 +11,7 @@ const WIDGET_PATH = 'sdk/widget';
  * TODO: This rule should only be run for jetpack.
  *
  */
-export default function(context) {
+export function widget_module(context) {
   return {
     CallExpression: function(node) {
       var requiresWidgetMod = false;

@@ -12,7 +12,7 @@ import { getVariable } from 'utils';
  * TODO: Check what the requires_chrome feature does in the old code.
  *
  */
-export default function(context) {
+export function low_level_module(context) {
   return {
     CallExpression: function(node) {
       var requiresLowLevelMod = false;

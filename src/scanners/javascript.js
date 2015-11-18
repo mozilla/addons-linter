@@ -1,11 +1,10 @@
-import path from 'path';
-
 import ESLint from 'eslint';
 
-import { ESLINT_TYPES } from 'const';
+import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
 import * as messages from 'messages';
-import ESLintRules from 'rules/javascript';
-import { ensureFilenameExists, singleLineString } from 'utils';
+import * as rules from 'rules/javascript';
+import { ensureFilenameExists, ignorePrivateFunctions,
+         singleLineString } from 'utils';
 
 
 export default class JavaScriptScanner {
@@ -14,31 +13,31 @@ export default class JavaScriptScanner {
     this.code = code;
     this.filename = filename;
     this.options = options;
+    this.validatorMessages = [];
+    this._rulesProcessed = 0;
 
     ensureFilenameExists(this.filename);
   }
 
   scan(_ESLint=ESLint) {
     return new Promise((resolve) => {
-
-      var rulesPath = global.relativeAppPath ?
-        path.join(global.relativeAppPath, '../dist/eslint') : 'dist/eslint';
-
       // ESLint is synchronous and doesn't accept streams, so we need to
       // pass it the entire source file as a string.
-      let eslint = new _ESLint.CLIEngine({
+      var eslint = _ESLint.linter;
+      var ruleFunctions = ignorePrivateFunctions(rules);
+
+      for (let name in ruleFunctions) {
+        this._rulesProcessed++;
+        eslint.defineRule(name, ruleFunctions[name]);
+      }
+
+      var report = eslint.verify(this.code, {
         ignore: false,
-        rulePaths: [rulesPath],
-        rules: ESLintRules,
-        useEslintrc: false,
-        envs: ['es6'],
-      });
+        rules: ESLINT_RULE_MAPPING,
+        env: { es6: true },
+      }, this.filename);
 
-      var validatorMessages = [];
-      // TODO: Consider switching back to `verify()` to get access to settings.
-      var report = eslint.executeOnText(this.code, this.filename);
-
-      for (let message of report.results[0].messages) {
+      for (let message of report) {
         // Fatal error messages (like SyntaxErrors) are a bit different, we
         // need to handle them specially.
         if (message.fatal === true) {
@@ -54,7 +53,7 @@ export default class JavaScriptScanner {
         var messageObj = messages[message.message];
         var code = message.message;
 
-        validatorMessages.push({
+        this.validatorMessages.push({
           code: code,
           column: message.column,
           description: messageObj.description,
@@ -66,7 +65,7 @@ export default class JavaScriptScanner {
         });
       }
 
-      resolve(validatorMessages);
+      resolve(this.validatorMessages);
     });
   }
 }

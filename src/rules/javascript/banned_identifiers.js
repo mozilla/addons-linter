@@ -1,6 +1,6 @@
 import { BANNED_IDENTIFIERS } from 'const';
 
-export default function(context) {
+export function banned_identifiers(context) {
   return {
     Identifier: function(node) {
       if (BANNED_IDENTIFIERS.indexOf(node.name) > -1) {

@@ -34,14 +34,14 @@ describe('mozindexeddb_property', () => {
       });
   });
 
-  it.skip('should warn when mozIndexedDB is used as a literal', () => {
+  it('should warn when mozIndexedDB is used as a literal', () => {
     var code = 'var foo = "mozIndexedDB"; var myDatabase = window[foo];';
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
       .then((validationMessages) => {
         assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].id,
+        assert.equal(validationMessages[0].code,
                      messages.MOZINDEXEDDB_PROPERTY.code);
         assert.equal(validationMessages[0].type, VALIDATION_WARNING);
       });

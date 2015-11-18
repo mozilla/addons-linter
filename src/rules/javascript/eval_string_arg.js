@@ -1,7 +1,7 @@
 import { EVAL_STRING_ARG } from 'messages/javascript';
 import { getVariable } from 'utils';
 
-export default function(context) {
+export function eval_string_arg(context) {
   return {
     CallExpression: function(node) {
       // Check if what's being called is setTimeout or setInterval

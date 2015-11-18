@@ -1,9 +1,10 @@
-import { VALIDATION_ERROR, VALIDATION_WARNING } from 'const';
+import { ESLINT_RULE_MAPPING, VALIDATION_ERROR,
+         VALIDATION_WARNING } from 'const';
 import { MissingFilenameError } from 'exceptions';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import * as rules from 'rules/javascript';
-import { singleLineString } from 'utils';
+import { ignorePrivateFunctions, singleLineString } from 'utils';
 import { getRuleFiles, unexpectedSuccess } from '../helpers';
 
 
@@ -117,21 +118,17 @@ describe('JavaScript Scanner', function() {
 
   it('should reject on missing message code', () => {
 
-    class FakeCLIEngine {
-      executeOnText() {
-        return {
-          results: [{
-            filePath: 'badcode.js',
-            messages: [{
-              fatal: false,
-            }],
-          }],
-        };
-      }
-    }
-
     var FakeESLint = {
-      CLIEngine: FakeCLIEngine,
+      linter: {
+        defineRule: () => {
+          // no-op
+        },
+        verify: () => {
+          return [{
+            fatal: false,
+          }];
+        },
+      },
     };
 
     var jsScanner = new JavaScriptScanner('whatever', 'badcode.js');
@@ -159,8 +156,14 @@ describe('JavaScript Scanner', function() {
   it('should export all rules in rules/javascript', () => {
     // We skip the "run" check here for now as that's handled by ESLint.
     var ruleFiles = getRuleFiles('javascript');
-    assert.equal(ruleFiles.length,
-                 Object.keys(rules.default).length);
-  });
+    assert.equal(ruleFiles.length, Object.keys(ESLINT_RULE_MAPPING).length);
 
+    var jsScanner = new JavaScriptScanner('', 'badcode.js');
+
+    return jsScanner.scan()
+      .then(() => {
+        assert.equal(jsScanner._rulesProcessed,
+                     Object.keys(ignorePrivateFunctions(rules)).length);
+      });
+  });
 });

@@ -1,6 +1,6 @@
 import { MOZINDEXEDDB } from 'messages';
 
-export default function(context) {
+export function mozindexeddb(context) {
   return {
     Identifier: function(node) {
       // Catches `var foo = mozIndexedDB;`.
