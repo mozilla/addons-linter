@@ -1,6 +1,6 @@
 import ESLint from 'eslint';
 
-import { ESLINT_TYPES } from 'const';
+import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
 import * as messages from 'messages';
 import * as rules from 'rules/javascript';
 import { ensureFilenameExists, ignorePrivateFunctions,
@@ -33,7 +33,7 @@ export default class JavaScriptScanner {
 
       var report = eslint.verify(this.code, {
         ignore: false,
-        rules: rules.ESLintRuleMapping,
+        rules: ESLINT_RULE_MAPPING,
         env: { es6: true },
       }, this.filename);
 

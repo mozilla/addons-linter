@@ -1,4 +1,5 @@
-import { VALIDATION_ERROR, VALIDATION_WARNING } from 'const';
+import { ESLINT_RULE_MAPPING, VALIDATION_ERROR,
+         VALIDATION_WARNING } from 'const';
 import { MissingFilenameError } from 'exceptions';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
@@ -155,8 +156,7 @@ describe('JavaScript Scanner', function() {
   it('should export all rules in rules/javascript', () => {
     // We skip the "run" check here for now as that's handled by ESLint.
     var ruleFiles = getRuleFiles('javascript');
-    assert.equal(ruleFiles.length,
-                 Object.keys(rules.ESLintRuleMapping).length);
+    assert.equal(ruleFiles.length, Object.keys(ESLINT_RULE_MAPPING).length);
 
     var jsScanner = new JavaScriptScanner('', 'badcode.js');
 
