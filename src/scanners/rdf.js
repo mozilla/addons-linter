@@ -10,15 +10,17 @@ export default class RDFScanner extends BaseScanner {
 
   _defaultRules = rules;
 
-  constructor(contents, filename) {
-    super(contents, filename);
+  constructor(contents, filename, options={}) {
+    super(contents, filename, options);
     // I don't think this ever needs to be different, but if it does we can
     // extract the em namespace using:
     //
     //     this.namespace = this._xmlDoc.documentElement._nsMap.em;
     //
     // Inside _getContents.
-    this.options.namespace = RDF_DEFAULT_NAMESPACE;
+    if (typeof this.options.namespace === 'undefined') {
+      this.options.namespace = RDF_DEFAULT_NAMESPACE;
+    }
   }
 
   _getContents() {

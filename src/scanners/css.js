@@ -31,24 +31,22 @@ export default class CSSScanner extends BaseScanner {
     }
 
     var file = cssCode.position.source;
-    var startLine = cssCode.position.start.line;
-    var startColumn = cssCode.position.start.column;
+    var cssOptions = Object.assign({}, this.options, {
+      startLine: cssCode.position.start.line,
+      startColumn: cssCode.position.start.column,
+    });
 
     log.debug('Passing CSS code to rule function "%s"',
       cssInstruction, {
         cssCode: cssCode,
         file: file,
-        startLine: startLine,
-        startColumn: startColumn,
+        startLine: cssOptions.startLine,
+        startColumn: cssOptions.startColumn,
       });
 
     this.validatorMessages = this.validatorMessages.concat(
-      rules[cssInstruction](cssCode, file, {
-        startLine: startLine,
-        startColumn: startColumn,
-      }));
+      rules[cssInstruction](cssCode, file, cssOptions));
   }
-
 
   scan(_rules=this._defaultRules) {
     return new Promise((resolve, reject) => {

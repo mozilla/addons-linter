@@ -3,6 +3,7 @@ import fs from 'fs';
 import sinon from 'sinon';
 import XMLDom from 'xmldom';
 
+import { RDF_DEFAULT_NAMESPACE } from 'const';
 import { RDFParseError } from 'exceptions';
 import { getRuleFiles, validRDF } from '../helpers';
 import RDFScanner from 'scanners/rdf';
@@ -20,6 +21,17 @@ describe('RDF', function() {
       .then((validatorMessages) => {
         assert.equal(validatorMessages.length, 0);
       });
+  });
+
+  it('should init with the default namespace and accept a new one', () => {
+    var rdfScanner = new RDFScanner('', 'filename.txt');
+    assert.equal(rdfScanner.options.namespace, RDF_DEFAULT_NAMESPACE);
+
+    var namespace = 'https://tofumatt.name/coffee.xml#';
+    var rdfScannerWithNewNS = new RDFScanner('', 'filename.txt', {
+      namespace: namespace,
+    });
+    assert.equal(rdfScannerWithNewNS.options.namespace, namespace);
   });
 
   it('should handle unicode characters', () => {
