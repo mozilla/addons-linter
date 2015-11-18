@@ -134,6 +134,7 @@ describe('InstallRdfParser._getGUID()', function() {
         return installRdfParser._getGUID();
       })
       .then((guid) => {
+        assert.typeOf(guid, 'string');
         assert.equal(guid, 'myid');
       });
   });
@@ -149,6 +150,5 @@ describe('InstallRdfParser._getGUID()', function() {
       .then((guid) => {
         assert.equal(guid, null);
       });
-
   });
 });
