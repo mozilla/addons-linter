@@ -369,15 +369,15 @@ export default class Validator {
           if (typeof message.type === 'undefined') {
             throw new Error('message.type must be defined');
           }
-
           this.collector._addMessage(message.type, message);
         }
 
-        return;
+        return metadata;
       });
   }
 
-  extractMetadata(_Xpi=Xpi, _console=console) {
+  extractMetadata(_Xpi=Xpi, _console=console,
+                  _MetadataScanner=MetadataScanner) {
     return checkMinNodeVersion()
       .then(() => {
         return this.checkFileExists(this.packagePath);
@@ -387,11 +387,14 @@ export default class Validator {
         return this.getAddonMetadata();
       })
       .then((addonMetadata) => {
+        return this.scanMetadata(addonMetadata, _MetadataScanner);
+      })
+      .then((addonMetadata) => {
         log.info('Metadata option is set to %s', this.config.metadata);
         if (this.config.metadata === true) {
           _console.log(this.toJSON({input: addonMetadata}));
         }
-        return;
+        return addonMetadata;
       });
   }
 
@@ -407,12 +410,6 @@ export default class Validator {
           log.warn(`No root ${CHROME_MANIFEST} found`);
           return;
         }
-      })
-      .then(() => {
-        return this.getAddonMetadata();
-      })
-      .then((addonMetadata) => {
-        return this.scanMetadata(addonMetadata);
       })
       .then(() => {
         return this.xpi.getFilesByExt('.js');
@@ -463,7 +460,7 @@ export default class Validator {
 
   _getAddonArchitecture(xpiMetadata) {
     // If we find a file named bootstrap.js this is assumed to be a
-    // Jetpack add-on: https://github.com/mozilla/amo-validator/blob/7a8011aba8bf8c665aef2b51eb26d0697b3e19c3/validator/testcases/jetpack.py#L154
+    // Jetpack add-on: https://github.com/mozilla/amo-validator/blob/7a8011a/validator/testcases/jetpack.py#L154
     // TODO: Check against file contents to make this more robust.
     var files = Object.keys(xpiMetadata);
 

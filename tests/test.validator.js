@@ -722,13 +722,71 @@ describe('Validator.detectTypeFromLayout()', function() {
 });
 
 
+describe('Validator.scanMetadata()', function() {
+
+  it('should return metadata', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    var fakeMetadata = {type: 1, somethingelse: 'whatever'};
+
+    class FakeScanner {
+      scan() {
+        return Promise.resolve([]);
+      }
+    }
+
+    return addonValidator.scanMetadata(fakeMetadata, FakeScanner)
+      .then((metadata) => {
+        assert.deepEqual(metadata, fakeMetadata);
+      });
+  });
+});
+
+
+describe('Validator.extractMetadata()', function() {
+
+  var fakeConsole = {
+    log: sinon.stub(),
+  };
+
+  it('should return metadata', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    var fakeMetadata = {type: 1, somethingelse: 'whatever'};
+    addonValidator.toJSON = sinon.stub();
+
+    addonValidator.getAddonMetadata = () => {
+      return Promise.resolve(fakeMetadata);
+    };
+
+    addonValidator.scanMetadata = () => {
+      return Promise.resolve(fakeMetadata);
+    };
+
+    addonValidator.checkFileExists = () => {
+      return Promise.resolve();
+    };
+
+    addonValidator.checkMinNodeVersion = () => {
+      return Promise.resolve();
+    };
+
+    class FakeXpi {
+      // stub Xpi class.
+    }
+
+    return addonValidator.extractMetadata(FakeXpi, fakeConsole)
+      .then((metadata) => {
+        assert.deepEqual(metadata, fakeMetadata);
+      });
+  });
+});
+
 describe('Validator.run()', function() {
 
   var fakeConsole = {
     log: sinon.stub(),
   };
 
-  it('should run extractMetadata()', () => {
+  it('should run extractMetadata() when metadata is true', () => {
     var addonValidator = new Validator({_: ['foo'], metadata: true});
     var fakeMetadata = {type: 1, somethingelse: 'whatever'};
     addonValidator.toJSON = sinon.stub();
@@ -757,7 +815,7 @@ describe('Validator.run()', function() {
       });
   });
 
-  it('should run scan()', () => {
+  it('should run scan() when metadata is false', () => {
     var addonValidator = new Validator({_: ['foo'], metadata: false});
 
     addonValidator.scan = sinon.stub();
@@ -769,7 +827,7 @@ describe('Validator.run()', function() {
       });
   });
 
-  it('should surface errors when getMetadata() blows up', () => {
+  it('should surface errors when metadata is true', () => {
     var addonValidator = new Validator({_: ['foo'], metadata: true});
     addonValidator.toJSON = sinon.stub();
     addonValidator.handleError = sinon.spy();
@@ -796,6 +854,34 @@ describe('Validator.run()', function() {
         assert.ok(addonValidator.handleError.called);
         assert.instanceOf(err, Error);
         assert.include(err.message, 'metadata explosion');
+      });
+  });
+
+  it('should call scanMetadata when metadata is true', () => {
+
+    var addonValidator = new Validator({_: ['foo'], metadata: true});
+    var fakeMetadata = {type: 1, somethingelse: 'whatever'};
+    addonValidator.toJSON = sinon.stub();
+    sinon.spy(addonValidator, 'scanMetadata');
+
+    addonValidator.getAddonMetadata = () => {
+      return Promise.resolve(fakeMetadata);
+    };
+
+    addonValidator.checkFileExists = () => {
+      return Promise.resolve();
+    };
+
+    addonValidator.checkMinNodeVersion = () => {
+      return Promise.resolve();
+    };
+
+    class FakeXpi {
+      // stub Xpi class.
+    }
+    return addonValidator.run(FakeXpi, fakeConsole)
+      .then(() => {
+        assert.ok(addonValidator.scanMetadata.called);
       });
   });
 
