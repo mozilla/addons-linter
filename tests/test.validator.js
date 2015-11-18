@@ -739,6 +739,31 @@ describe('Validator.scanMetadata()', function() {
         assert.deepEqual(metadata, fakeMetadata);
       });
   });
+
+  it('should surface messages in scanMetadata', () => {
+    var addonValidator = new Validator({_: ['foo'], metadata: true});
+    var fakeMetadata = {type: 1, somethingelse: 'whatever'};
+
+    class FakeScanner {
+      scan() {
+        return Promise.resolve([{
+          code: messages.GUID_TOO_LONG.code,
+          message: messages.GUID_TOO_LONG.message,
+          description: messages.GUID_TOO_LONG.description,
+          file: 'manifest.json',
+          type: constants.VALIDATION_ERROR,
+        }]);
+      }
+    }
+
+    return addonValidator.scanMetadata(fakeMetadata, FakeScanner)
+      .then(() => {
+        var collector = addonValidator.collector;
+        assert.ok(collector.errors.length, 1);
+        assert.ok(collector.errors[0].code, messages.GUID_TOO_LONG.code);
+      });
+  });
+
 });
 
 
