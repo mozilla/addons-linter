@@ -344,6 +344,6 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 *Note these are all new and don't exist in the old validator*
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- |
+| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :white_check_mark: | error | N/A |  | manifest_version in manifest.json is not valid. | | null | MANIFEST_VERSION_INVALID |
 | :white_check_mark: | error | N/A |  | name in manifest.json is not valid. | | null | MANIFEST_NAME_INVALID |
