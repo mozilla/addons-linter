@@ -14,7 +14,7 @@ export const DANGEROUS_CATEGORIES = [
 ];
 
 
-export function checkCategories(triples) {
+export function checkCategories(triples, filename) {
   var validationMessages = [];
 
   for (let triple of triples) {
@@ -24,7 +24,7 @@ export function checkCategories(triples) {
           triple.object.startsWith('global ') ||
           triple.object.startsWith('DOM ')))) {
       var message = Object.assign({}, DANGEROUS_CATEGORY, {
-        file: triple.filename,
+        file: filename,
         line: triple.line,
         type: VALIDATION_WARNING,
       });

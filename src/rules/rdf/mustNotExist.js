@@ -3,8 +3,7 @@ import { RDF_OBSOLETE_TAGS, RDF_UNALLOWED_TAGS, RDF_UNALLOWED_IF_LISTED_TAGS,
 import * as messages from 'messages';
 
 
-export function mustNotExist(xmlDoc, filename=null,
-    {namespace}={}) {
+export function mustNotExist(xmlDoc, filename, {namespace}={}) {
   return new Promise((resolve) => {
     var bannedTags = RDF_UNALLOWED_TAGS;
     var validatorMessages = [];
@@ -45,7 +44,7 @@ export function mustNotExist(xmlDoc, filename=null,
 }
 
 export function _checkForTags({xmlDoc, namespace, tags, type, prefix,
-                               filename=null} = {}) {
+                               filename} = {}) {
   var validatorMessages = [];
 
   for (let tag of tags) {

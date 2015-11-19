@@ -1,13 +1,14 @@
 import ESLint from 'eslint';
 
-import { ESLINT_RULE_MAPPING, VALIDATION_ERROR,
+import { ESLINT_ERROR, ESLINT_RULE_MAPPING, VALIDATION_ERROR,
          VALIDATION_WARNING } from 'const';
 import { MissingFilenameError } from 'exceptions';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import * as rules from 'rules/javascript';
 import { ignorePrivateFunctions, singleLineString } from 'utils';
-import { getRuleFiles, getVariable, unexpectedSuccess } from '../helpers';
+import { fakeMessageData, getRuleFiles, getVariable, unexpectedSuccess,
+         validMetadata } from '../helpers';
 
 
 describe('JavaScript Scanner', function() {
@@ -225,6 +226,49 @@ describe('JavaScript Scanner', function() {
 
     eslint.verify('/* global foo */', config, {allowInlineConfig: false});
     assert(ok);
+  });
+
+  it('should pass addon metadata to rules', () => {
+    var fakeRules = { metadata_not_passed: () => {} };
+
+    var fakeMessages = {
+      METADATA_NOT_PASSED: Object.assign({}, fakeMessageData, {
+        code: 'METADATA_NOT_PASSED',
+        legacyCode: null,
+        message: 'Should not happen',
+        description: 'Should not happen',
+      }),
+    };
+    var fakeMetadata = { addonMetadata: validMetadata({guid: 'snowflake'}) };
+    var fakeESLintMapping = { metadata_not_passed: ESLINT_ERROR };
+
+    // Create a rule that
+    sinon.stub(fakeRules, 'metadata_not_passed', (context) => {
+      return {
+        Identifier: () => {
+          var metadata = context.settings.addonMetadata;
+
+          if (typeof metadata !== 'object') {
+            assert.fail(null, null, 'Metadata should be an object.');
+          }
+
+          if (metadata.guid !== 'snowflake') {
+            assert.fail(null, null, 'Metadata properties not present.');
+          }
+        },
+      };
+    });
+
+    var jsScanner = new JavaScriptScanner('var hello = "something";',
+                                          'index.html', fakeMetadata);
+
+    return jsScanner.scan(ESLint, {
+      _rules: fakeRules,
+      _ruleMapping: fakeESLintMapping,
+      _messages: fakeMessages,
+    }).then(() => {
+      assert.ok(fakeRules.metadata_not_passed.called);
+    });
   });
 
   it('should export all rules in rules/javascript', () => {

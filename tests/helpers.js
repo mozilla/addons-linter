@@ -39,6 +39,14 @@ export function getVariable(scope, name) {
   return variable;
 }
 
+export function metadataPassCheck(contents, filename, {addonMetadata=null}={}) {
+  if (!addonMetadata || typeof addonMetadata.guid === 'undefined') {
+    assert.fail(null, null, 'Add-on metadata not found');
+  }
+
+  return [];
+}
+
 export function validChromeManifest(contents=[
   'category JavaScript-DOM-class foo bar',
   'category JavaScript-DOM-interface foo bar',

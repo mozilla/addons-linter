@@ -2,7 +2,7 @@ import * as messages from 'messages';
 import { VALIDATION_ERROR } from 'const';
 import CSSScanner from 'scanners/css';
 import * as rules from 'rules/css';
-import { getRuleFiles } from '../helpers';
+import { getRuleFiles, metadataPassCheck, validMetadata } from '../helpers';
 import { ignorePrivateFunctions, singleLineString } from 'utils';
 
 
@@ -22,6 +22,26 @@ describe('CSSScanner', () => {
         assert.equal(validationMessages[0].line, 1);
         assert.equal(validationMessages[0].column, 13);
         assert.equal(validationMessages[0].file, 'fakeFile.css');
+      });
+  });
+
+  it('should pass metadata to rules', () => {
+    var code = singleLineString`/* whatever code */
+      #myName { position: relative; }
+      .myClass { background: #000; }`;
+    var fakeRules = { metadataPassCheck: () => {} };
+
+    // This rule calls assert.fail() if no metadata is passed to it.
+    sinon.stub(fakeRules, 'metadataPassCheck', metadataPassCheck);
+
+    var scanner = new CSSScanner(code, 'fake.css', {
+      addonMetadata: validMetadata({guid: 'snowflake'}),
+    });
+
+    return scanner.scan(fakeRules)
+      .then((validatorMessages) => {
+        assert.ok(fakeRules.metadataPassCheck.called);
+        assert.equal(validatorMessages.length, 0);
       });
   });
 

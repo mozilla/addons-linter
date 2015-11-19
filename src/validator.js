@@ -342,7 +342,9 @@ export default class Validator {
     return this.io.getFile(filename, streamOrString)
       .then((contentsOrStream) => {
         let scanner = new (
-          this.getScanner(filename))(contentsOrStream, filename);
+          this.getScanner(filename))(contentsOrStream, filename, {
+            addonMetadata: this.addonMetadata,
+          });
         return scanner.scan();
       })
       // messages should be a list of raw message data objects.
@@ -358,7 +360,9 @@ export default class Validator {
   }
 
   scanMetadata(metadata, _MetadataScanner=MetadataScanner) {
-    var scanner = new _MetadataScanner(metadata, 'XPI');
+    var scanner = new _MetadataScanner(metadata, 'XPI', {
+      metadata: this.addonMetadata,
+    });
 
     return scanner.scan()
       .then((messages) => {
