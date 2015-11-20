@@ -57,7 +57,7 @@
     "columnify": "1.5.2",
     "css": "2.2.1",
     "es6-promisify": "3.0.0",
-    "eslint": "1.10.0",
+    "eslint": "1.10.1",
     "semver": "5.1.0",
     "source-map-support": "0.3.2",
     "xmldom": "0.1.19",
