@@ -1,7 +1,8 @@
 import yauzl from 'yauzl';
-import { singleLineString } from 'utils';
 
+import { IOBase } from 'io/base';
 import { DuplicateZipEntryError } from 'exceptions';
+
 import log from 'logger';
 
 
@@ -14,18 +15,16 @@ import log from 'logger';
  *
  */
 
-export default class Xpi {
+export class Xpi extends IOBase {
 
-  constructor(filename, zipLib=yauzl) {
-    this.filename = filename;
+  constructor(filePath, zipLib=yauzl) {
+    super(filePath);
     this.zipLib = zipLib;
-    this.files = {};
-    this.entries = [];
   }
 
   open() {
     return new Promise((resolve, reject) => {
-      this.zipLib.open(this.filename, (err, zipfile) => {
+      this.zipLib.open(this.path, (err, zipfile) => {
         if (err) {
           return reject(err);
         }
@@ -83,18 +82,6 @@ export default class Xpi {
     });
   }
 
-  getFile(path, streamOrString='string') {
-    switch (streamOrString) {
-      case 'stream':
-        return this.getFileAsStream(path);
-      case 'string':
-        return this.getFileAsString(path);
-      default:
-        throw new Error(singleLineString`Unexpected streamOrString
-          value "${streamOrString}" should be "string" or "stream"`);
-    }
-  }
-
   getFileAsStream(path) {
     return new Promise((resolve, reject) => {
 
@@ -116,9 +103,9 @@ export default class Xpi {
   }
 
   getFileAsString(path) {
-    return new Promise((resolve, reject) => {
-      return this.getFileAsStream(path)
-        .then((fileStream) => {
+    return this.getFileAsStream(path)
+      .then((fileStream) => {
+        return new Promise((resolve, reject) => {
           var fileString = '';
           fileStream.on('data', (chunk) => {
             fileString += chunk;
@@ -128,35 +115,9 @@ export default class Xpi {
           fileStream.on('end', () => {
             resolve(fileString);
           });
-        })
-        .catch(reject);
-    });
-  }
 
-  getFilesByExt(...extensions) {
-
-    for (let ext of extensions) {
-      if (ext.indexOf('.') !== 0) {
-        // We use Promise.reject as we're not inside a `then()` or a
-        // Promise constructor callback.
-        // If we throw here it won't be caught.
-        return Promise.reject(new Error("File extension must start with '.'"));
-      }
-    }
-
-    return this.getFiles()
-      .then((xpiFiles) => {
-        let files = [];
-
-        for (let filename in xpiFiles) {
-          for (let ext of extensions) {
-            if (filename.endsWith(ext)) {
-              files.push(filename);
-            }
-          }
-        }
-
-        return files;
+          fileStream.on('error', reject);
+        });
       });
   }
 }

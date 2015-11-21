@@ -11,6 +11,18 @@ import { fakeMessageData,
 import { singleLineString } from 'utils';
 
 
+var fakeCheckFileExists = () => {
+  return Promise.resolve({
+    isDirectory: () => {
+      return true;
+    },
+    isFile: () => {
+      return true;
+    },
+  });
+};
+
+
 describe('Validator', function() {
 
   it('should detect an invalid file with ENOENT', () => {
@@ -50,16 +62,21 @@ describe('Validator', function() {
     var isFileSpy = sinon.spy(() => {
       return false;
     });
+    var isDirSpy = sinon.spy(() => {
+      return false;
+    });
+
     var fakeLstat = () => {
       return Promise.resolve({
         isFile: isFileSpy,
+        isDirectory: isDirSpy,
       });
     };
     return addonValidator.checkFileExists(addonValidator.packagePath, fakeLstat)
       .then(unexpectedSuccess)
       .catch((err) => {
         assert.instanceOf(err, Error);
-        assert.include(err.message, 'Path "bar" is not a file');
+        assert.include(err.message, 'Path "bar" is not a file or directory');
         assert.equal(isFileSpy.callCount, 1);
       });
   });
@@ -126,8 +143,8 @@ describe('Validator', function() {
 
   it('should throw when message.type is undefined', () => {
     var addonValidator = new Validator({_: ['tests/fixtures/example.xpi']});
-    addonValidator.xpi = {};
-    addonValidator.xpi.getFile = () => Promise.resolve();
+    addonValidator.io = {};
+    addonValidator.io.getFile = () => Promise.resolve();
     addonValidator.getScanner = sinon.stub();
     class fakeScanner {
       scan() {
@@ -183,7 +200,7 @@ describe('Validator', function() {
 
   it('should see an error if scanFiles() blows up', () => {
     var addonValidator = new Validator({_: ['foo']});
-    addonValidator.checkFileExists = () => Promise.resolve();
+    addonValidator.checkFileExists = fakeCheckFileExists;
     // Stub handleError to prevent output.
     addonValidator.handleError = sinon.stub();
     addonValidator.scanFiles = () => {
@@ -199,7 +216,7 @@ describe('Validator', function() {
       }
     }
 
-    return addonValidator.scan(FakeXpi)
+    return addonValidator.scan({_Xpi: FakeXpi})
       .then(unexpectedSuccess)
       .catch((err) => {
         assert.instanceOf(err, Error);
@@ -211,7 +228,7 @@ describe('Validator', function() {
     var addonValidator = new Validator({_: ['foo']});
     // Stub handleError to prevent output.
     addonValidator.handleError = sinon.stub();
-    addonValidator.checkFileExists = () => Promise.resolve();
+    addonValidator.checkFileExists = fakeCheckFileExists;
     addonValidator.scanFile = () => {
       return Promise.reject(new Error('scanFile explosion'));
     };
@@ -225,7 +242,7 @@ describe('Validator', function() {
       }
     }
 
-    return addonValidator.scan(FakeXpi)
+    return addonValidator.scan({_Xpi: FakeXpi})
       .then(unexpectedSuccess)
       .catch((err) => {
         assert.instanceOf(err, Error);
@@ -236,7 +253,7 @@ describe('Validator', function() {
 
   it('should call addError when Xpi rejects with dupe entry', () => {
     var addonValidator = new Validator({_: ['bar']});
-    addonValidator.checkFileExists = () => Promise.resolve();
+    addonValidator.checkFileExists = fakeCheckFileExists;
     addonValidator.collector.addError = sinon.stub();
     addonValidator.print = sinon.stub();
     class FakeXpi {
@@ -248,7 +265,7 @@ describe('Validator', function() {
         return this.getMetadata();
       }
     }
-    return addonValidator.scan(FakeXpi)
+    return addonValidator.scan({_Xpi: FakeXpi})
       .then(unexpectedSuccess)
       .catch(() => {
         assert.ok(
@@ -581,7 +598,7 @@ describe('Validator.getAddonMetadata()', function() {
 
   it('should look at JSON when manifest.json', () => {
     var addonValidator = new Validator({_: ['bar']});
-    addonValidator.xpi = {
+    addonValidator.io = {
       getFiles: () => {
         return Promise.resolve({
           'manifest.json': {},
@@ -599,7 +616,7 @@ describe('Validator.getAddonMetadata()', function() {
 
   it('should throw error if both manifest.json and install.rdf found', () => {
     var addonValidator = new Validator({_: ['bar']});
-    addonValidator.xpi = {
+    addonValidator.io = {
       getFiles: () => {
         return Promise.resolve({
           'install.rdf': {},
@@ -616,7 +633,7 @@ describe('Validator.getAddonMetadata()', function() {
 
   it('should collect a notice if no manifest', () => {
     var addonValidator = new Validator({_: ['bar']});
-    addonValidator.xpi = {
+    addonValidator.io = {
       getFiles: () => {
         return Promise.resolve({});
       },
@@ -636,13 +653,13 @@ describe('Validator.detectTypeFromLayout()', function() {
 
   it('should fall-back to running type detection during scan', () => {
     var addonValidator = new Validator({_: ['bar']});
-    addonValidator.checkFileExists = () => Promise.resolve();
+    addonValidator.checkFileExists = fakeCheckFileExists;
     addonValidator.scanFiles = () => Promise.resolve();
     // suppress output.
     addonValidator.print = sinon.stub();
     var detectTypeFromLayoutSpy = sinon.spy(addonValidator,
                                             'detectTypeFromLayout');
-    class FakeXPI {
+    class FakeXpi {
       getFiles() {
         return Promise.resolve({
           'dictionaries/something': {},
@@ -651,7 +668,7 @@ describe('Validator.detectTypeFromLayout()', function() {
       }
       getFilesByExt = () => sinon.stub
     }
-    return addonValidator.scan(FakeXPI)
+    return addonValidator.scan({_Xpi: FakeXpi})
       .then(() => {
         assert.ok(detectTypeFromLayoutSpy.called);
         assert.equal(addonValidator.addonMetadata.type,
@@ -661,7 +678,7 @@ describe('Validator.detectTypeFromLayout()', function() {
 
   it('should fall-back to detecting a dictionary based on layout', () => {
     var addonValidator = new Validator({_: ['bar']});
-    addonValidator.xpi = {
+    addonValidator.io = {
       getFiles: () => {
         return Promise.resolve({
           'dictionaries/something': {},
@@ -677,7 +694,7 @@ describe('Validator.detectTypeFromLayout()', function() {
 
   it('should fall-back to detect theme based on extension', () => {
     var addonValidator = new Validator({_: ['foo.jar']});
-    addonValidator.xpi = {
+    addonValidator.io = {
       getFiles: () => {
         return Promise.resolve({
           whatever: {},
@@ -692,7 +709,7 @@ describe('Validator.detectTypeFromLayout()', function() {
 
   it('should fall-back to detect extention based on extension', () => {
     var addonValidator = new Validator({_: ['foo.xpi']});
-    addonValidator.xpi = {
+    addonValidator.io = {
       getFiles: () => {
         return Promise.resolve({
           whatever: {},
@@ -707,7 +724,7 @@ describe('Validator.detectTypeFromLayout()', function() {
 
   it('should collect an error if all attempts to detect type fail', () => {
     var addonValidator = new Validator({_: ['bar']});
-    addonValidator.xpi = {
+    addonValidator.io = {
       getFiles: () => {
         return Promise.resolve({});
       },
@@ -773,7 +790,7 @@ describe('Validator.extractMetadata()', function() {
     log: sinon.stub(),
   };
 
-  it('should return metadata', () => {
+  it('should use Directory class if isDirectory() is true', () => {
     var addonValidator = new Validator({_: ['foo']});
     var fakeMetadata = {type: 1, somethingelse: 'whatever'};
     addonValidator.toJSON = sinon.stub();
@@ -787,8 +804,46 @@ describe('Validator.extractMetadata()', function() {
     };
 
     addonValidator.checkFileExists = () => {
+      return Promise.resolve({
+        isFile: () => {
+          return false;
+        },
+        isDirectory: () => {
+          return true;
+        },
+      });
+    };
+
+    addonValidator.checkMinNodeVersion = () => {
       return Promise.resolve();
     };
+
+    class FakeDirectory {
+
+    }
+
+    return addonValidator.extractMetadata({_Directory: FakeDirectory,
+                                           _console: fakeConsole}) // jscs:ignore
+      .then((metadata) => {
+        assert.deepEqual(metadata, fakeMetadata);
+        assert.instanceOf(addonValidator.io, FakeDirectory);
+      });
+  });
+
+  it('should return metadata', () => {
+    var addonValidator = new Validator({_: ['foo']});
+    var fakeMetadata = {type: 1, somethingelse: 'whatever'};
+    addonValidator.toJSON = sinon.stub();
+
+    addonValidator.getAddonMetadata = () => {
+      return Promise.resolve(fakeMetadata);
+    };
+
+    addonValidator.scanMetadata = () => {
+      return Promise.resolve(fakeMetadata);
+    };
+
+    addonValidator.checkFileExists = fakeCheckFileExists;
 
     addonValidator.checkMinNodeVersion = () => {
       return Promise.resolve();
@@ -798,7 +853,8 @@ describe('Validator.extractMetadata()', function() {
       // stub Xpi class.
     }
 
-    return addonValidator.extractMetadata(FakeXpi, fakeConsole)
+    return addonValidator.extractMetadata({_Xpi: FakeXpi,
+                                           _console: fakeConsole}) // jscs:ignore
       .then((metadata) => {
         assert.deepEqual(metadata, fakeMetadata);
       });
@@ -811,6 +867,7 @@ describe('Validator.run()', function() {
     log: sinon.stub(),
   };
 
+
   it('should run extractMetadata() when metadata is true', () => {
     var addonValidator = new Validator({_: ['foo'], metadata: true});
     var fakeMetadata = {type: 1, somethingelse: 'whatever'};
@@ -820,9 +877,7 @@ describe('Validator.run()', function() {
       return Promise.resolve(fakeMetadata);
     };
 
-    addonValidator.checkFileExists = () => {
-      return Promise.resolve();
-    };
+    addonValidator.checkFileExists = fakeCheckFileExists;
 
     addonValidator.checkMinNodeVersion = () => {
       return Promise.resolve();
@@ -832,7 +887,7 @@ describe('Validator.run()', function() {
       // stub Xpi class.
     }
 
-    return addonValidator.run(FakeXpi, fakeConsole)
+    return addonValidator.run({_Xpi: FakeXpi, _console: fakeConsole})
       .then(() => {
         assert.ok(addonValidator.toJSON.called);
         assert.deepEqual(
@@ -846,7 +901,7 @@ describe('Validator.run()', function() {
     addonValidator.scan = sinon.stub();
     addonValidator.scan.returns(Promise.resolve());
 
-    return addonValidator.run(null, fakeConsole)
+    return addonValidator.run({_console: fakeConsole})
       .then(() => {
         assert.ok(addonValidator.scan.called);
       });
@@ -861,9 +916,7 @@ describe('Validator.run()', function() {
       return Promise.reject(new Error('metadata explosion'));
     };
 
-    addonValidator.checkFileExists = () => {
-      return Promise.resolve();
-    };
+    addonValidator.checkFileExists = fakeCheckFileExists;
 
     addonValidator.checkMinNodeVersion = () => {
       return Promise.resolve();
@@ -873,7 +926,7 @@ describe('Validator.run()', function() {
       // stub Xpi class.
     }
 
-    return addonValidator.run(FakeXpi, fakeConsole)
+    return addonValidator.run({_Xpi: FakeXpi, _console: fakeConsole})
       .then(unexpectedSuccess)
       .catch((err) => {
         assert.ok(addonValidator.handleError.called);
@@ -893,9 +946,7 @@ describe('Validator.run()', function() {
       return Promise.resolve(fakeMetadata);
     };
 
-    addonValidator.checkFileExists = () => {
-      return Promise.resolve();
-    };
+    addonValidator.checkFileExists = fakeCheckFileExists;
 
     addonValidator.checkMinNodeVersion = () => {
       return Promise.resolve();
@@ -904,7 +955,8 @@ describe('Validator.run()', function() {
     class FakeXpi {
       // stub Xpi class.
     }
-    return addonValidator.run(FakeXpi, fakeConsole)
+    return addonValidator.run({_Xpi: FakeXpi, _console: fakeConsole})
+
       .then(() => {
         assert.ok(addonValidator.scanMetadata.called);
       });

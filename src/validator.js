@@ -1,10 +1,9 @@
 import { extname } from 'path';
-import * as fs from 'fs';
 
 import columnify from 'columnify';
 import chalk from 'chalk';
-import promisify from 'es6-promisify';
 
+import { lstatPromise } from 'io/utils';
 import { terminalWidth } from 'cli';
 import * as constants from 'const';
 import { ARCH_DEFAULT, ARCH_JETPACK, CHROME_MANIFEST, INSTALL_RDF,
@@ -24,9 +23,7 @@ import HTMLScanner from 'scanners/html';
 import JavaScriptScanner from 'scanners/javascript';
 import MetadataScanner from 'scanners/metadata';
 import RDFScanner from 'scanners/rdf';
-import Xpi from 'xpi';
-
-export var lstat = promisify(fs.lstat);
+import { Directory, Xpi } from 'io';
 
 
 export default class Validator {
@@ -34,7 +31,7 @@ export default class Validator {
   constructor(config) {
     this.config = config;
     this.packagePath = config._[0];
-    this.xpi;
+    this.io;
     this.chalk = new chalk.constructor(
       {enabled: !this.config.boring});
     this.collector = new Collector();
@@ -202,19 +199,19 @@ export default class Validator {
       return Promise.resolve(this.addonMetadata);
     }
 
-    var _xpiFiles;
+    var _files;
 
-    return this.xpi.getFiles()
-      .then((xpiFiles) => {
+    return this.io.getFiles()
+      .then((files) => {
         // Used later to get add-on architecture.
-        _xpiFiles = xpiFiles;
+        _files = files;
 
-        if (xpiFiles.hasOwnProperty(INSTALL_RDF) &&
-            xpiFiles.hasOwnProperty(MANIFEST_JSON)) {
+        if (files.hasOwnProperty(INSTALL_RDF) &&
+            files.hasOwnProperty(MANIFEST_JSON)) {
           throw new Error(`Both ${INSTALL_RDF} and ${MANIFEST_JSON} found`);
-        } else if (xpiFiles.hasOwnProperty(INSTALL_RDF)) {
+        } else if (files.hasOwnProperty(INSTALL_RDF)) {
           log.info('Retrieving metadata from install.rdf');
-          return this.xpi.getFileAsString(INSTALL_RDF)
+          return this.io.getFileAsString(INSTALL_RDF)
             .then((rdfString) => {
               // Gets an xml document object.
               var rdfScanner = new RDFScanner(rdfString, INSTALL_RDF);
@@ -224,9 +221,9 @@ export default class Validator {
               log.info('Got xmlDoc, running InstallRdfParser.getMetadata()');
               return new InstallRdfParser(xmlDoc, this.collector).getMetadata();
             });
-        } else if (xpiFiles.hasOwnProperty(MANIFEST_JSON)) {
+        } else if (files.hasOwnProperty(MANIFEST_JSON)) {
           log.info('Retrieving metadata from manifest.json');
-          return this.xpi.getFileAsString(MANIFEST_JSON)
+          return this.io.getFileAsString(MANIFEST_JSON)
             .then((json) => {
               return new ManifestJSONParser(json, this.collector).getMetadata();
             });
@@ -241,7 +238,7 @@ export default class Validator {
       .then((addonMetadata) => {
         this.addonMetadata = addonMetadata;
 
-        this.addonMetadata.architecture = this._getAddonArchitecture(_xpiFiles);
+        this.addonMetadata.architecture = this._getAddonArchitecture(_files);
 
         if (!this.addonMetadata.type) {
           log.info('Determining addon type failed. Guessing from layout');
@@ -266,9 +263,9 @@ export default class Validator {
    * a dictionary, language pack, or multiple extension pack.
    */
   detectTypeFromLayout() {
-    return this.xpi.getFiles()
-      .then((xpiFiles) => {
-        for (let path_ of Object.keys(xpiFiles)) {
+    return this.io.getFiles()
+      .then((files) => {
+        for (let path_ of Object.keys(files)) {
           if (path_.startsWith('dictionaries/')) {
             return constants.PACKAGE_DICTIONARY;
           }
@@ -292,13 +289,13 @@ export default class Validator {
       });
   }
 
-  checkFileExists(filepath, _lstat=lstat) {
+  checkFileExists(filepath, _lstatPromise=lstatPromise) {
     var invalidMessage = new Error(
-      `Path "${filepath}" is not a file or does not exist.`);
-    return _lstat(filepath)
+      `Path "${filepath}" is not a file or directory or does not exist.`);
+    return _lstatPromise(filepath)
       .then((stats) => {
-        if (stats.isFile() === true) {
-          return;
+        if (stats.isFile() === true || stats.isDirectory() === true) {
+          return stats;
         } else {
           throw invalidMessage;
         }
@@ -342,7 +339,7 @@ export default class Validator {
   }
 
   scanFile(filename, streamOrString='string') {
-    return this.xpi.getFile(filename, streamOrString)
+    return this.io.getFile(filename, streamOrString)
       .then((contentsOrStream) => {
         let scanner = new (
           this.getScanner(filename))(contentsOrStream, filename);
@@ -376,14 +373,21 @@ export default class Validator {
       });
   }
 
-  extractMetadata(_Xpi=Xpi, _console=console,
-                  _MetadataScanner=MetadataScanner) {
+  extractMetadata({ _Xpi=Xpi, _console=console,
+                    _MetadataScanner=MetadataScanner,
+                    _Directory=Directory } = {}) { // jscs:ignore
     return checkMinNodeVersion()
       .then(() => {
         return this.checkFileExists(this.packagePath);
       })
-      .then(() => {
-        this.xpi = new _Xpi(this.packagePath);
+      .then((stats) => {
+        if (stats.isFile() === true) {
+          log.info('Package is a file. Attempting to parse as an .xpi/.zip');
+          this.io = new _Xpi(this.packagePath);
+        } else if (stats.isDirectory()) {
+          log.info('Package path is a directory. Parsing as a directory');
+          this.io = new _Directory(this.packagePath);
+        }
         return this.getAddonMetadata();
       })
       .then((addonMetadata) => {
@@ -398,13 +402,13 @@ export default class Validator {
       });
   }
 
-  scan(_Xpi=Xpi, _console=console) {
-    return this.extractMetadata(_Xpi)
+  scan(deps={}) {
+    return this.extractMetadata(deps)
       .then(() => {
-        return this.xpi.getFiles();
+        return this.io.getFiles();
       })
-      .then((xpiFiles) => {
-        if (xpiFiles.hasOwnProperty(CHROME_MANIFEST)) {
+      .then((files) => {
+        if (files.hasOwnProperty(CHROME_MANIFEST)) {
           return this.scanFile(CHROME_MANIFEST, 'stream');
         } else {
           log.warn(`No root ${CHROME_MANIFEST} found`);
@@ -412,25 +416,25 @@ export default class Validator {
         }
       })
       .then(() => {
-        return this.xpi.getFilesByExt('.js');
+        return this.io.getFilesByExt('.js');
       })
       .then((jsFiles) => {
         return this.scanFiles(jsFiles);
       })
       .then(() => {
-        return this.xpi.getFilesByExt('.rdf');
+        return this.io.getFilesByExt('.rdf');
       })
       .then((rdfFiles) => {
         return this.scanFiles(rdfFiles);
       })
       .then(() => {
-        return this.xpi.getFilesByExt('.css');
+        return this.io.getFilesByExt('.css');
       })
       .then((cssFiles) => {
         return this.scanFiles(cssFiles);
       })
       .then(() => {
-        return this.xpi.getFilesByExt('.html');
+        return this.io.getFilesByExt('.html');
       })
       .then((htmlFiles) => {
         return this.scanFiles(htmlFiles);
@@ -440,21 +444,21 @@ export default class Validator {
         return;
       })
       .catch((err) => {
-        this.handleError(err, _console);
+        this.handleError(err, deps._console);
         throw err;
       });
   }
 
-  run(_Xpi=Xpi, _console=console) {
+  run(deps={}) {
     if (this.config.metadata === true) {
-      return this.extractMetadata(_Xpi, _console)
+      return this.extractMetadata(deps)
         .catch((err) => {
           log.debug(err);
-          this.handleError(err, _console);
+          this.handleError(err, deps._console);
           throw err;
         });
     } else {
-      return this.scan(_Xpi, _console);
+      return this.scan(deps);
     }
   }
 

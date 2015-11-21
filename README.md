@@ -30,6 +30,12 @@ After installation, run the validator and direct it to your add-on file:
 addons-validator my-addon.xpi
 ```
 
+Alternatively you can point it at a directory:
+
+```
+addons-validator my/package/dir
+```
+
 The addons-validator will check your add-on and show you errors, warnings,
 and friendly messages for your add-on. If you want more info on the options
 you can enable/disable for the command-line app, use the `--help` option:

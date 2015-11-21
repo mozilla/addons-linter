@@ -1,9 +1,10 @@
 import { Readable } from 'stream';
+import { EventEmitter } from 'events';
 
-import Xpi from 'xpi';
+import { Xpi } from 'io';
 import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
 import { DuplicateZipEntryError } from 'exceptions';
-import { unexpectedSuccess } from './helpers';
+import { unexpectedSuccess } from '../helpers';
 
 const defaultData = {
   compressionMethod: DEFLATE_COMPRESSION,
@@ -105,7 +106,7 @@ describe('xpi.getFiles()', function() {
 
   it('should init class props as expected', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
-    assert.equal(myXpi.filename, 'foo/bar');
+    assert.equal(myXpi.path, 'foo/bar');
     assert.equal(typeof myXpi.files, 'object');
     assert.equal(Object.keys(myXpi.files).length, 0);
   });
@@ -277,19 +278,27 @@ describe('Xpi.getFileAsStream()', function() {
 
     return myXpi.getFileAsStream('install.rdf')
       .then((readStream) => {
-        var chunks = '';
-        readStream
-          .on('readable', () => {
-            var chunk;
-            while (null !== (chunk = readStream.read())) {
-              chunks += chunk.toString();
-            }
-          })
-          .on('end', () => {
-            var [chunk1, chunk2] = chunks.split('\n');
-            assert.equal(chunk1, 'line one');
-            assert.equal(chunk2, 'line two');
-          });
+        return new Promise((resolve, reject) => {
+          var chunks = '';
+          readStream
+            .on('readable', () => {
+              var chunk;
+              while (null !== (chunk = readStream.read())) {
+                chunks += chunk.toString();
+              }
+            })
+            .on('end', () => {
+              resolve(chunks);
+            })
+            .on('error', (err) => {
+              reject(err);
+            });
+        })
+        .then((chunks) => {
+          var [chunk1, chunk2] = chunks.split('\n');
+          assert.equal(chunk1, 'line one');
+          assert.equal(chunk2, 'line two');
+        });
       });
   });
 
@@ -332,6 +341,30 @@ describe('Xpi.getFileAsStream()', function() {
         assert.include(err.message, 'getFileAsString openReadStream test');
       });
   });
+
+  it('should reject if stream emits error', () => {
+    var fakeStreamEmitter = new EventEmitter();
+
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    myXpi.files = {
+      'install.rdf': installRdfEntry,
+      'chrome.manifest': chromeManifestEntry,
+    };
+
+    myXpi.getFileAsStream = () => {
+      setTimeout(() => {
+        fakeStreamEmitter.emit('error', new Error('¡hola!'));
+      }, 0);
+      return Promise.resolve(fakeStreamEmitter);
+    };
+
+    return myXpi.getFileAsString('install.rdf')
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.include(err.message, '¡hola!');
+      });
+  });
+
 });
 
 describe('Xpi.getFileAsStream()', function() {
