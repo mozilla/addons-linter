@@ -1,6 +1,7 @@
 export * from './banned_identifiers';
 export * from './deprecated_entities';
 export * from './eval_string_arg';
+export * from './event_listener_fourth';
 export * from './global_require_arg';
 export * from './init_null_arg';
 export * from './low_level_module';
