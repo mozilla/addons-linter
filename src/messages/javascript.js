@@ -141,6 +141,40 @@ export const ONLY_PREFS_IN_DEFAULTS = {
   ],
 };
 
+export const NO_DOCUMENT_WRITE = {
+  code: 'NO_DOCUMENT_WRITE',
+  message: _('Use of document.write strongly discouraged.'),
+  description: _(singleLineString`document.write will fail in many
+    circumstances when used in extensions, and has potentially severe security
+    repercussions when used improperly. Therefore, it should not be used.`),
+  legacyCode: [
+    'js', 'document.write', 'evil',
+  ],
+};
+
+export const NSI_DNS_SERVICE_RESOLVE = {
+  code: 'NSI_DNS_SERVICE_RESOLVE',
+  message: _('nsIDNSService.resolve() should not be used.'),
+  description: _(singleLineString`The 'nsIDNSService.resolve' method performs a
+    synchronous DNS lookup, which will freeze the UI. This can result in severe
+    performance issues. 'nsIDNSService.asyncResolve()' should be used
+    instead.`),
+  legacyCode: [
+    'testcases_javascript_entity_values', 'nsIDNSServiceResolve', null,
+  ],
+};
+
+export const NSI_SOUND_PLAY = {
+  code: 'NSI_SOUND_PLAY',
+  message: _('nsISound.play should not be used.'),
+  description: _(singleLineString`The 'nsISound.play' function is synchronous,
+    and thus freezes the interface while the sound is playing. It should be
+    avoided in favor of the HTML5 audio APIs.`),
+  legacyCode: [
+    'testcases_javascript_entity_values', 'nsISound_play', null,
+  ],
+};
+
 export const LOW_LEVEL_MODULE = {
   code: 'LOW_LEVEL_MODULE',
   message: _('Usage of low-level or non-SDK interface'),

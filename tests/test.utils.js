@@ -74,6 +74,59 @@ describe('utils.getRootExpression()', function() {
   });
 });
 
+describe('utils.getNodeReferenceName()', () => {
+  // Represents scope for following code:
+  // var foo = window; foo = bar;
+  var context = {
+    getScope: function() {
+      // TODO: Look into generating these AST nodes using ESPrima
+      return {
+        variables: [{
+          name: 'foo', // Reference name
+          type: 'Identifier',
+          defs: [{
+            parent: {
+              parent: {
+                body: [{
+                  type: 'VariableDeclaration',
+                  declarations: [{
+                    init: {
+                      name: 'window',
+                    },
+                  }],
+                },{
+                  type: 'ExpressionStatement',
+                  expression: {
+                    type: 'AssignmentExpression',
+                    right: {
+                      name: 'bar',
+                    },
+                  },
+                },
+                ],
+              },
+            },
+          }],
+        }],
+      };
+    },
+  };
+
+  it('should return the name of the referenced variable', () => {
+    var ref = { name: 'foo' };
+    var val = utils.getNodeReferenceName(context, ref);
+
+    assert.equal(val, 'bar');
+  });
+
+  it('should return the name of the reference if not in scope', () => {
+    var ref = { name: 'doesNotExist' };
+    var val = utils.getNodeReferenceName(context, ref);
+
+    assert.equal(val, ref.name);
+  });
+});
+
 describe('utils.getVariable()', function() {
   // This is the expected schema from eslint
   var context = {
