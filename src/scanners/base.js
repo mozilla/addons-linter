@@ -64,9 +64,8 @@ export default class BaseScanner {
   }
 
   _getContents() {
-    return new Promise((resolve, reject) => {
-      reject(new NotImplentedError('_getContents is not implemented'));
-    });
+    return Promise.reject(
+      new NotImplentedError('_getContents is not implemented'));
   }
 
 }

@@ -18,7 +18,7 @@ export function terminalWidth(_process=process) {
 }
 
 export default argv
-  .usage('Usage: ./$0 [options] addon-package \n\n' +
+  .usage('Usage: ./$0 [options] addon-package-or-dir \n\n' +
     'Add-ons Validator (JS Edition) v' + version)
   .option('log-level', {
     describe: 'The log-level to generate',
