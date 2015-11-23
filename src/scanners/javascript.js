@@ -35,7 +35,10 @@ export default class JavaScriptScanner {
         ignore: false,
         rules: ESLINT_RULE_MAPPING,
         env: { es6: true },
-      }, this.filename);
+      }, {
+        allowInlineConfig: false,
+        filename: this.filename,
+      });
 
       for (let message of report) {
         // Fatal error messages (like SyntaxErrors) are a bit different, we

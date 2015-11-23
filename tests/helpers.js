@@ -19,6 +19,26 @@ export function getRuleFiles(ruleType) {
   });
 }
 
+/**
+ * Get variables in the current escope
+ * @param {object} scope current scope
+ * @param {string} name name of the variable to look for
+ * @returns {ASTNode} The variable object
+ *
+ * Copied from ESLint tests; used to test {allowInlineConfig: false} settings.
+ */
+export function getVariable(scope, name) {
+  var variable = null;
+  scope.variables.some(function(v) {
+    if (v.name === name) {
+      variable = v;
+      return true;
+    }
+    return false;
+  });
+  return variable;
+}
+
 export function validChromeManifest(contents=[
   'category JavaScript-DOM-class foo bar',
   'category JavaScript-DOM-interface foo bar',

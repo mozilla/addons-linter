@@ -1,3 +1,5 @@
+import ESLint from 'eslint';
+
 import { ESLINT_RULE_MAPPING, VALIDATION_ERROR,
          VALIDATION_WARNING } from 'const';
 import { MissingFilenameError } from 'exceptions';
@@ -5,7 +7,7 @@ import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import * as rules from 'rules/javascript';
 import { ignorePrivateFunctions, singleLineString } from 'utils';
-import { getRuleFiles, unexpectedSuccess } from '../helpers';
+import { getRuleFiles, getVariable, unexpectedSuccess } from '../helpers';
 
 
 describe('JavaScript Scanner', function() {
@@ -141,16 +143,88 @@ describe('JavaScript Scanner', function() {
   });
 
   // Depends on: https://github.com/mozilla/addons-validator/issues/7
-  it.skip('ignores /*eslint-disable*/ comments', () => {
-    var code = '/*eslint-disable*/\n';
-    code += 'var myDatabase = indexeddb || mozIndexedDB;';
+  it('ignores /*eslint-disable*/ comments', () => {
+    var code = singleLineString`/*eslint-disable*/
+                                var myDatabase = indexeddb || mozIndexedDB;`;
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
       .then((validationMessages) => {
         assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].id, 'mozIndexedDB');
+        assert.equal(validationMessages[0].code, messages.MOZINDEXEDDB.code);
       });
+  });
+
+  it('ignores // eslint-disable-line comments', () => {
+    var code = singleLineString`var myDatabase = indexeddb || mozIndexedDB;
+                                // eslint-disable-line`;
+    var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+
+    return jsScanner.scan()
+      .then((validationMessages) => {
+        assert.equal(validationMessages.length, 1);
+        assert.equal(validationMessages[0].code, messages.MOZINDEXEDDB.code);
+      });
+  });
+
+  // This should not cause a syntax error; it should still be parsing code
+  // as ES6 because it ignores the env change.
+  it('ignores /*eslint-env*/', function() {
+    var eslint = ESLint.linter;
+    var config = { rules: { test: 2 } };
+    var ok = false;
+
+    eslint.defineRules({test: function(context) {
+      return {
+        Program: function() {
+          var windowVar = getVariable(context.getScope(), 'window');
+          assert.notOk(windowVar.eslintExplicitGlobal);
+
+          ok = true;
+        },
+      };
+    }});
+
+    eslint.verify('/*eslint-env browser*/', config, {allowInlineConfig: false});
+    assert(ok);
+  });
+
+  // This is just a precaution against disabling environments in ESLint, which
+  // isn't allowed as of writing, but will warn us if it ever happens :-)
+  it('ignores /*eslint-env*/ comments', () => {
+    var code = singleLineString`/*eslint-env es6:false*/
+      var makeBigger = (number) => {
+        return number + 1;
+      }`;
+    var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+
+    return jsScanner.scan()
+      .then((validationMessages) => {
+        assert.equal(validationMessages.length, 0);
+      });
+  });
+
+  // This test is pretty much copied from ESLint, to make sure dependencies
+  // don't change behaviour on us.
+  // https://github.com/mozilla/addons-validator/pull/98#issuecomment-158890847
+  it('ignores /*global foo*/', () => {
+    var eslint = ESLint.linter;
+    var config = { rules: { test: 2 } };
+    var ok = false;
+
+    eslint.defineRules({test: function(context) {
+      return {
+        Program: function() {
+          var foo = getVariable(context.getScope(), 'foo');
+          assert.notOk(foo);
+
+          ok = true;
+        },
+      };
+    }});
+
+    eslint.verify('/* global foo */', config, {allowInlineConfig: false});
+    assert(ok);
   });
 
   it('should export all rules in rules/javascript', () => {
