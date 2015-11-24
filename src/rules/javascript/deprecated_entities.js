@@ -1,6 +1,6 @@
 import { NO_DOCUMENT_WRITE, NSI_DNS_SERVICE_RESOLVE,
          NSI_SOUND_PLAY, TAB_URL_OVERRIDE } from 'messages';
-import { getNodeReferenceName } from 'utils';
+import { getNodeReference } from 'utils';
 
 export const DEPRECATED_ENTITIES = [
   {
@@ -31,11 +31,11 @@ export function deprecated_entities(context) {
           node.callee.property.type === 'Identifier' &&
           node.callee.object.type === 'Identifier') {
 
-        let objectName = getNodeReferenceName(context, node.callee.object);
+        let nodeReference = getNodeReference(context, node.callee.object);
 
         for (let entity of DEPRECATED_ENTITIES) {
           // Check to see if the node matches a deprecated entity.
-          if (objectName === entity.object &&
+          if (nodeReference.name === entity.object &&
               node.callee.property.name === entity.property) {
             return context.report(node, entity.error.code);
           }

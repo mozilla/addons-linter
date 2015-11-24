@@ -9,6 +9,7 @@ export const ESLINT_RULE_MAPPING = {
   deprecated_entities: ESLINT_WARNING,
   eval_string_arg: ESLINT_ERROR,
   global_require_arg: ESLINT_WARNING,
+  init_null_arg: ESLINT_WARNING,
   low_level_module: ESLINT_WARNING,
   mozindexeddb: ESLINT_ERROR,
   mozindexeddb_property: ESLINT_WARNING,
