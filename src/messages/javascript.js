@@ -175,6 +175,16 @@ export const NSI_SOUND_PLAY = {
   ],
 };
 
+export const TAB_URL_OVERRIDE = {
+  code: 'TAB_URL_OVERRIDE',
+  message: _(singleLineString`Extensions must not alter user preferences such
+    as the new tab URL without explicit user consent.`),
+  description: _(singleLineString`Extensions must not alter user preferences
+    such as the new tab URL without explicit user consent. Such changes must
+    also be reverted when the extension is disabled or uninstalled.`),
+  legacyCode: ['js_entity_values', 'NewTabURL', 'override'],
+};
+
 export const LOW_LEVEL_MODULE = {
   code: 'LOW_LEVEL_MODULE',
   message: _('Usage of low-level or non-SDK interface'),
