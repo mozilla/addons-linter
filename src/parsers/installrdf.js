@@ -2,6 +2,7 @@ import { ADDON_TYPE_MAP, RDF_DEFAULT_NAMESPACE } from 'const';
 import { RDF_TYPE_INVALID, RDF_NAME_MISSING,
          RDF_TYPE_MISSING } from 'messages';
 import log from 'logger';
+import { singleLineString } from 'utils';
 
 
 export default class InstallRdfParser {
@@ -22,17 +23,58 @@ export default class InstallRdfParser {
     });
   }
 
-  _getNode(tag) {
-    var typeNodes = this.xmlDoc.getElementsByTagName(tag);
-    if (typeNodes.length > 1) {
+  /*
+   * Convert a nodeList to an Array.
+   */
+  _makeArray(nodeList) {
+    return Array.prototype.slice.call(nodeList);
+  }
+
+  /*
+   * Gets topLevel tags e.g. RDF -> Description -> tag
+   */
+  _getTopLevelNodesByTag(tagName) {
+    var descriptionTag = this._getDescriptionNode();
+    return this._makeArray(descriptionTag.childNodes)
+      .filter((node) => node.nodeName === tagName);
+  }
+
+  _getTopLevelNodeByTag(tag) {
+    var nodes = this._getTopLevelNodesByTag(tag);
+    // Throw an error if there's more than one node as these
+    // should be unique.
+    if (nodes.length > 1) {
       throw new Error(`Multiple <${tag}> elements found`);
     }
-    return typeNodes[0];
+    return nodes[0];
+  }
+
+  _getRDFNode() {
+    var rdfNodes = this.xmlDoc.getElementsByTagName('RDF');
+    if (!rdfNodes.length) {
+      throw new Error('RDF Node is not defined');
+    }
+    if (rdfNodes.length > 1) {
+      throw new Error('Multiple RDF tags found');
+    }
+    return rdfNodes[0];
+  }
+
+  _getDescriptionNode() {
+    var rdfNode = this._getRDFNode();
+    var descriptionNodes = Array.prototype.slice.call(rdfNode.childNodes)
+      .filter((node) => node.nodeName === 'Description');
+    if (descriptionNodes.length > 1) {
+      throw new Error(singleLineString`RDF node should only have a
+        single descendant <Description>`);
+    }
+    return descriptionNodes[0];
   }
 
   _getAddonType() {
     var addonType = null;
-    var node = this._getNode('em:type');
+    var node = this._getTopLevelNodeByTag('em:type');
+
     if (node && node.firstChild && node.firstChild.nodeValue) {
       var typeValue = node.firstChild.nodeValue;
       if (!ADDON_TYPE_MAP.hasOwnProperty(typeValue)) {
@@ -54,18 +96,15 @@ export default class InstallRdfParser {
     // NOTE: We validate this rule in `src/rules/metadata/guid_length`.
     // This is because both `install.rdf` and `manifest.json` share the same
     // requirements for guid.
-    var idElms = this.xmlDoc.getElementsByTagNameNS(this.namespace, 'id');
-    if (idElms.length > 0) {
-      var idNode = idElms.item(0);
-      if (idNode && idNode.firstChild && idNode.firstChild.nodeValue) {
-        return idNode.firstChild.nodeValue;
-      }
+    var idNode = this._getTopLevelNodeByTag('em:id');
+    if (idNode && idNode.firstChild && idNode.firstChild.nodeValue) {
+      return idNode.firstChild.nodeValue;
     }
     return null;
   }
 
   _getName() {
-    var node = this._getNode('em:name');
+    var node = this._getTopLevelNodeByTag('em:name');
     var name = null;
     if (node && node.firstChild && node.firstChild.nodeValue) {
       name = node.firstChild.nodeValue;

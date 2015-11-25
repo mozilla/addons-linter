@@ -5,6 +5,7 @@ import Validator from 'validator';
 
 import * as messages from 'messages';
 import * as constants from 'const';
+import { singleLineString } from 'utils';
 
 import { unexpectedSuccess, validRDF } from '../helpers';
 
@@ -12,11 +13,13 @@ import { unexpectedSuccess, validRDF } from '../helpers';
 describe('InstallRdfParser._getAddonType()', function() {
 
   it('should reject on multiple em:type nodes', () => {
+    var addonValidator = new Validator({_: ['bar']});
     var rdf = validRDF('<em:type>2</em:type><em:type>2</em:type>');
     var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        var installRdfParser = new InstallRdfParser(xmlDoc,
+                                                    addonValidator.collector);
         return installRdfParser._getAddonType();
       })
       .then(unexpectedSuccess)
@@ -43,11 +46,13 @@ describe('InstallRdfParser._getAddonType()', function() {
   });
 
   it('should resolve with mapped type value', () => {
+    var addonValidator = new Validator({_: ['bar']});
     var rdf = validRDF('<em:type>2</em:type>');
     var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        var installRdfParser = new InstallRdfParser(xmlDoc,
+                                                    addonValidator.collector);
         return installRdfParser._getAddonType();
       })
       .then((type) => {
@@ -57,11 +62,13 @@ describe('InstallRdfParser._getAddonType()', function() {
   });
 
   it('should resolve with mapped type value for experiments', () => {
+    var addonValidator = new Validator({_: ['bar']});
     var rdf = validRDF('<em:type>128</em:type>');
     var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        var installRdfParser = new InstallRdfParser(xmlDoc,
+                                                    addonValidator.collector);
         return installRdfParser._getAddonType();
       })
       .then((type) => {
@@ -151,4 +158,71 @@ describe('InstallRdfParser._getGUID()', function() {
         assert.equal(guid, null);
       });
   });
+
+  it('should return top-level em:id only', () => {
+    var rdf = validRDF(`<em:id>hai</em:id><Description>
+      <em:id>something</em:id></Description>`);
+    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc);
+        return installRdfParser._getGUID();
+      })
+      .then((guid) => {
+        assert.equal(guid, 'hai');
+      });
+  });
+
+});
+
+describe('InstallRdfParser._getDescriptionNode()', function() {
+
+  it('should reject on missing RDF node', () => {
+    var badRdf = singleLineString`<xml><RDF><Description>hai</Description>
+      <Description>there</Description></RDF></xml>`;
+    var rdfScanner = new RDFScanner(badRdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc);
+        return installRdfParser._getDescriptionNode();
+      })
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.equal(err.message,
+          'RDF node should only have a single descendant <Description>');
+      });
+  });
+});
+
+
+describe('InstallRdfParser._getRDFNode()', function() {
+
+  it('should reject on missing RDF node', () => {
+    var badRdf = '<xml><wat>whatever</wat></xml>';
+    var rdfScanner = new RDFScanner(badRdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc);
+        return installRdfParser._getRDFNode();
+      })
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.equal(err.message, 'RDF Node is not defined');
+      });
+  });
+
+  it('should reject on multiple RDF nodes', () => {
+    var badRdf = '<xml><RDF>whatever</RDF><RDF>Something else</RDF></xml>';
+    var rdfScanner = new RDFScanner(badRdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc);
+        return installRdfParser._getRDFNode();
+      })
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.equal(err.message, 'Multiple RDF tags found');
+      });
+  });
+
 });
