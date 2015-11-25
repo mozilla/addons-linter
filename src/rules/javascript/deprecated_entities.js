@@ -1,5 +1,5 @@
 import { NO_DOCUMENT_WRITE, NSI_DNS_SERVICE_RESOLVE,
-         NSI_SOUND_PLAY } from 'messages';
+         NSI_SOUND_PLAY, TAB_URL_OVERRIDE } from 'messages';
 import { getNodeReferenceName } from 'utils';
 
 export const DEPRECATED_ENTITIES = [
@@ -15,6 +15,10 @@ export const DEPRECATED_ENTITIES = [
     error: NSI_SOUND_PLAY,
     object: 'nsISound',
     property: 'play',
+  }, {
+    error: TAB_URL_OVERRIDE,
+    object: 'NewTabURL',
+    property: 'override',
   },
 ];
 
