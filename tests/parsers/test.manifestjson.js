@@ -63,19 +63,7 @@ describe('ManifestJSONParser._getName()', function() {
     assert.equal(name, 'my-awesome-ext');
   });
 
-  it('should collect an error on invalid name value', () => {
-    var addonValidator = new Validator({_: ['bar']});
-    var json = validManifestJSON({name: 2});
-    var manifestJSONParser = new ManifestJSONParser(json,
-                                                    addonValidator.collector);
-    var name = manifestJSONParser._getName();
-    assert.equal(name, null);
-    var errors = addonValidator.collector.errors;
-    assert.equal(errors.length, 1);
-    assert.equal(errors[0].code, messages.MANIFEST_NAME_INVALID.code);
-  });
-
-  it('should collect an error on invalid name value', () => {
+  it('should collect an error on missing name value', () => {
     var addonValidator = new Validator({_: ['bar']});
     var json = validManifestJSON({name: undefined});
     var manifestJSONParser = new ManifestJSONParser(json,
@@ -84,8 +72,31 @@ describe('ManifestJSONParser._getName()', function() {
     assert.equal(name, null);
     var errors = addonValidator.collector.errors;
     assert.equal(errors.length, 1);
-    assert.equal(errors[0].code, messages.MANIFEST_NAME_INVALID.code);
+    assert.equal(errors[0].code, messages.PROP_NAME_MISSING.code);
   });
 
+});
+
+describe('ManifestJSONParser._getVersion()', function() {
+
+  it('should extract a version', () => {
+    // Type is always returned as PACKAGE_EXTENSION presently.
+    var json = validManifestJSON({version: '1.0'});
+    var manifestJSONParser = new ManifestJSONParser(json);
+    var version = manifestJSONParser._getVersion();
+    assert.equal(version, '1.0');
+  });
+
+  it('should collect an error on missing version value', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    var json = validManifestJSON({version: undefined});
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonValidator.collector);
+    var name = manifestJSONParser._getVersion();
+    assert.equal(name, null);
+    var errors = addonValidator.collector.errors;
+    assert.equal(errors.length, 1);
+    assert.equal(errors[0].code, messages.PROP_VERSION_MISSING.code);
+  });
 
 });

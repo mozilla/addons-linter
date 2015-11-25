@@ -23,6 +23,11 @@ export default class Message {
 
   constructor(type, data={}) {
     this.type = type;
+
+    if (data.hasOwnProperty('filename')) {
+      throw new Error('The key for the file is "file" not "filename"');
+    }
+
     for (let prop of props) {
       this[prop] = data[prop];
     }

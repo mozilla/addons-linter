@@ -1,6 +1,5 @@
 import { ADDON_TYPE_MAP, RDF_DEFAULT_NAMESPACE } from 'const';
-import { RDF_TYPE_INVALID, RDF_NAME_MISSING,
-         RDF_TYPE_MISSING } from 'messages';
+import * as messages from 'messages';
 import log from 'logger';
 import { singleLineString } from 'utils';
 
@@ -20,6 +19,7 @@ export default class InstallRdfParser {
       guid: this._getGUID(),
       name: this._getName(),
       type: this._getAddonType(),
+      version: this._getVersion(),
     });
   }
 
@@ -71,6 +71,13 @@ export default class InstallRdfParser {
     return descriptionNodes[0];
   }
 
+  _getNodeValue(node) {
+    if (node && node.firstChild && node.firstChild.nodeValue) {
+      return node.firstChild.nodeValue;
+    }
+    return null;
+  }
+
   _getAddonType() {
     var addonType = null;
     var node = this._getTopLevelNodeByTag('em:type');
@@ -79,7 +86,7 @@ export default class InstallRdfParser {
       var typeValue = node.firstChild.nodeValue;
       if (!ADDON_TYPE_MAP.hasOwnProperty(typeValue)) {
         log.debug('Invalid type value "%s"', typeValue);
-        this.collector.addError(RDF_TYPE_INVALID);
+        this.collector.addError(messages.RDF_TYPE_INVALID);
       } else {
         addonType = ADDON_TYPE_MAP[typeValue];
         log.debug('Mapping original <em:type> value "%s" -> "%s"',
@@ -87,32 +94,36 @@ export default class InstallRdfParser {
       }
     } else {
       log.warn('<em:type> was not found in install.rdf');
-      this.collector.addNotice(RDF_TYPE_MISSING);
+      this.collector.addNotice(messages.RDF_TYPE_MISSING);
     }
     return addonType;
   }
 
   _getGUID() {
-    // NOTE: We validate this rule in `src/rules/metadata/guid_length`.
-    // This is because both `install.rdf` and `manifest.json` share the same
-    // requirements for guid.
-    var idNode = this._getTopLevelNodeByTag('em:id');
-    if (idNode && idNode.firstChild && idNode.firstChild.nodeValue) {
-      return idNode.firstChild.nodeValue;
+    // Install.rdf only.
+    var guid = this._getNodeValue(this._getTopLevelNodeByTag('em:id'));
+    if (!guid) {
+      this.collector.addError(messages.RDF_ID_MISSING);
     }
-    return null;
+    if (guid && guid.length > 255) {
+      this.collector.addError(messages.RDF_GUID_TOO_LONG);
+    }
+    return guid;
   }
 
   _getName() {
-    var node = this._getTopLevelNodeByTag('em:name');
-    var name = null;
-    if (node && node.firstChild && node.firstChild.nodeValue) {
-      name = node.firstChild.nodeValue;
-      log.debug('Extracted <em:name> value: %s', name);
-    } else {
-      log.warn('<em:name> was not found in install.rdf');
-      this.collector.addNotice(RDF_NAME_MISSING);
+    var name = this._getNodeValue(this._getTopLevelNodeByTag('em:name'));
+    if (name === null) {
+      this.collector.addError(messages.RDF_NAME_MISSING);
     }
     return name;
+  }
+
+  _getVersion() {
+    var version = this._getNodeValue(this._getTopLevelNodeByTag('em:version'));
+    if (version === null) {
+      this.collector.addError(messages.RDF_VERSION_MISSING);
+    }
+    return version;
   }
 }

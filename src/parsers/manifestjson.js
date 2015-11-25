@@ -1,6 +1,6 @@
 import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
 import log from 'logger';
-import { MANIFEST_NAME_INVALID, MANIFEST_VERSION_INVALID } from 'messages';
+import * as messages from 'messages';
 
 
 export default class ManifestJSONParser {
@@ -14,18 +14,11 @@ export default class ManifestJSONParser {
 
   getMetadata() {
     return Promise.resolve({
-      guid: this._getGuid(),
       manifestVersion: this._getManifestVersion(),
       name: this._getName(),
       type: this._getType(),
+      version: this._getVersion(),
     });
-  }
-
-  _getGuid() {
-    // NOTE: We validate this rule in `src/rules/metadata/guid_length`.
-    // This is because both `install.rdf` and `manifest.json` share the same
-    // requirements for guid.
-    return this.parsedJSON.id;
   }
 
   _getType() {
@@ -33,21 +26,29 @@ export default class ManifestJSONParser {
   }
 
   _getManifestVersion() {
+    // Manifest.json specific.
     var manifestVersion = parseInt(this.parsedJSON.manifest_version, 10);
     if (manifestVersion !== VALID_MANIFEST_VERSION) {
       log.debug('Invalid manifest_version "%s"', manifestVersion);
-      this.collector.addError(MANIFEST_VERSION_INVALID);
+      this.collector.addError(messages.MANIFEST_VERSION_INVALID);
       manifestVersion = null;
     }
     return manifestVersion;
   }
 
   _getName() {
-    var name = this.parsedJSON.name;
-    if (typeof name !== 'string' || name.length === 0) {
-      this.collector.addError(MANIFEST_NAME_INVALID);
-      name = null;
+    var name = this.parsedJSON.name || null;
+    if (!name) {
+      this.collector.addError(messages.PROP_NAME_MISSING);
     }
     return name;
+  }
+
+  _getVersion() {
+    var version = this.parsedJSON.version || null;
+    if (!version) {
+      this.collector.addError(messages.PROP_VERSION_MISSING);
+    }
+    return version;
   }
 }

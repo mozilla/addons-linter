@@ -27,41 +27,6 @@ export const TYPE_NO_INSTALL_RDF = {
     will be attempted to be inferred by package layout.`),
 };
 
-export const RDF_TYPE_INVALID = {
-  code: 'RDF_TYPE_INVALID',
-  legacyCode: [
-    'typedetection',
-    'detect_type',
-    'invalid_em_type',
-  ],
-  message: _('Invalid <em:type> value'),
-  description: _(singleLineString`The only valid values for <em:type>
-    are 2, 4, 8, and 32. Any other values are either invalid or
-    deprecated.`),
-  filename: 'install.rdf',
-};
-
-export const RDF_TYPE_MISSING = {
-  code: 'RDF_TYPE_MISSING',
-  legacyCode: [
-    'typedetection',
-    'detect_type',
-    'no_em:type',
-  ],
-  message: _('No <em:type> element found in install.rdf'),
-  description: _(singleLineString`It isn't always required, but it is
-    the most reliable method for determining add-on type.`),
-  filename: 'install.rdf',
-};
-
-export const RDF_NAME_MISSING = {
-  code: 'RDF_NAME_MISSING',
-  legacyCode: null,
-  message: _('No <em:name> element found in install.rdf'),
-  description: _('<em:name> is required'),
-  filename: 'install.rdf',
-};
-
 export const TYPE_NOT_DETERMINED = {
   code: 'TYPE_NOT_DETERMINED',
   legacyCode: [
@@ -73,4 +38,3 @@ export const TYPE_NOT_DETERMINED = {
   description: _(singleLineString`The type detection algorithm could not
     determine the type of the add-on.`),
 };
-

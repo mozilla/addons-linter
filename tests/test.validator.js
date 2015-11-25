@@ -159,44 +159,6 @@ describe('Validator', function() {
       });
   });
 
-  it('should throw when message.type is undefined for metadata scan', () => {
-    var addonValidator = new Validator({_: ['tests/example.xpi']});
-
-    class fakeScanner {
-      scan() {
-        return Promise.resolve([{message: 'whatever'}]);
-      }
-    }
-
-    return addonValidator.scanMetadata({}, fakeScanner)
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        assert.include(err.message, 'message.type must be defined');
-      });
-  });
-
-  it('should add an error to the collector when scanning bad metadata', () => {
-    var addonValidator = new Validator({_: ['tests/example.xpi']});
-
-    class fakeScanner {
-      scan() {
-        return Promise.resolve([{
-          code: messages.GUID_TOO_LONG.code,
-          message: messages.GUID_TOO_LONG.message,
-          description: messages.GUID_TOO_LONG.description,
-          type: constants.VALIDATION_ERROR,
-        }]);
-      }
-    }
-
-    assert.equal(addonValidator.collector.length, 0);
-
-    return addonValidator.scanMetadata({}, fakeScanner)
-      .then(() => {
-        assert.isAbove(addonValidator.collector.length, 0);
-      });
-  });
-
 
   it('should see an error if scanFiles() blows up', () => {
     var addonValidator = new Validator({_: ['foo']});
@@ -739,51 +701,6 @@ describe('Validator.detectTypeFromLayout()', function() {
 });
 
 
-describe('Validator.scanMetadata()', function() {
-
-  it('should return metadata', () => {
-    var addonValidator = new Validator({_: ['foo']});
-    var fakeMetadata = {type: 1, somethingelse: 'whatever'};
-
-    class FakeScanner {
-      scan() {
-        return Promise.resolve([]);
-      }
-    }
-
-    return addonValidator.scanMetadata(fakeMetadata, FakeScanner)
-      .then((metadata) => {
-        assert.deepEqual(metadata, fakeMetadata);
-      });
-  });
-
-  it('should surface messages in scanMetadata', () => {
-    var addonValidator = new Validator({_: ['foo'], metadata: true});
-    var fakeMetadata = {type: 1, somethingelse: 'whatever'};
-
-    class FakeScanner {
-      scan() {
-        return Promise.resolve([{
-          code: messages.GUID_TOO_LONG.code,
-          message: messages.GUID_TOO_LONG.message,
-          description: messages.GUID_TOO_LONG.description,
-          file: 'manifest.json',
-          type: constants.VALIDATION_ERROR,
-        }]);
-      }
-    }
-
-    return addonValidator.scanMetadata(fakeMetadata, FakeScanner)
-      .then(() => {
-        var collector = addonValidator.collector;
-        assert.ok(collector.errors.length, 1);
-        assert.ok(collector.errors[0].code, messages.GUID_TOO_LONG.code);
-      });
-  });
-
-});
-
-
 describe('Validator.extractMetadata()', function() {
 
   var fakeConsole = {
@@ -796,10 +713,6 @@ describe('Validator.extractMetadata()', function() {
     addonValidator.toJSON = sinon.stub();
 
     addonValidator.getAddonMetadata = () => {
-      return Promise.resolve(fakeMetadata);
-    };
-
-    addonValidator.scanMetadata = () => {
       return Promise.resolve(fakeMetadata);
     };
 
@@ -836,10 +749,6 @@ describe('Validator.extractMetadata()', function() {
     addonValidator.toJSON = sinon.stub();
 
     addonValidator.getAddonMetadata = () => {
-      return Promise.resolve(fakeMetadata);
-    };
-
-    addonValidator.scanMetadata = () => {
       return Promise.resolve(fakeMetadata);
     };
 
@@ -932,33 +841,6 @@ describe('Validator.run()', function() {
         assert.ok(addonValidator.handleError.called);
         assert.instanceOf(err, Error);
         assert.include(err.message, 'metadata explosion');
-      });
-  });
-
-  it('should call scanMetadata when metadata is true', () => {
-
-    var addonValidator = new Validator({_: ['foo'], metadata: true});
-    var fakeMetadata = {type: 1, somethingelse: 'whatever'};
-    addonValidator.toJSON = sinon.stub();
-    sinon.spy(addonValidator, 'scanMetadata');
-
-    addonValidator.getAddonMetadata = () => {
-      return Promise.resolve(fakeMetadata);
-    };
-
-    addonValidator.checkFileExists = fakeCheckFileExists;
-
-    addonValidator.checkMinNodeVersion = () => {
-      return Promise.resolve();
-    };
-
-    class FakeXpi {
-      // stub Xpi class.
-    }
-    return addonValidator.run({_Xpi: FakeXpi, _console: fakeConsole})
-
-      .then(() => {
-        assert.ok(addonValidator.scanMetadata.called);
       });
   });
 

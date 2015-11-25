@@ -96,6 +96,38 @@ describe('InstallRdfParser._getAddonType()', function() {
   });
 });
 
+describe('InstallRdfParser._getVersion()', function() {
+
+  it('should extract a version', () => {
+    var rdf = validRDF('<em:version>1.0</em:version>');
+    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc);
+        return installRdfParser._getVersion();
+      })
+      .then((name) => {
+        assert.equal(name, '1.0');
+      });
+  });
+
+  it('should collect an error if version is missing', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    var rdf = validRDF('<em:version></em:version>');
+    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc,
+                                                    addonValidator.collector);
+        return installRdfParser._getVersion();
+      })
+      .then(() => {
+        var errors = addonValidator.collector.errors;
+        assert.equal(errors.length, 1);
+        assert.equal(errors[0].code, messages.RDF_VERSION_MISSING.code);
+      });
+  });
+});
 
 describe('InstallRdfParser._getName()', function() {
 
@@ -112,7 +144,7 @@ describe('InstallRdfParser._getName()', function() {
       });
   });
 
-  it('should collect a notice if name is missing', () => {
+  it('should collect an error if name is missing', () => {
     var addonValidator = new Validator({_: ['bar']});
     var rdf = validRDF('<em:type>1</em:type>');
     var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
@@ -123,9 +155,9 @@ describe('InstallRdfParser._getName()', function() {
         return installRdfParser._getName();
       })
       .then(() => {
-        var notices = addonValidator.collector.notices;
-        assert.equal(notices.length, 1);
-        assert.equal(notices[0].code, messages.RDF_NAME_MISSING.code);
+        var errors = addonValidator.collector.errors;
+        assert.equal(errors.length, 1);
+        assert.equal(errors[0].code, messages.RDF_NAME_MISSING.code);
       });
   });
 });
@@ -147,11 +179,13 @@ describe('InstallRdfParser._getGUID()', function() {
   });
 
   it('should return null for guid if not defined', () => {
+    var addonValidator = new Validator({_: ['bar']});
     var rdf = validRDF('<em:type>1</em:type>');
     var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        var installRdfParser = new InstallRdfParser(xmlDoc,
+                                                    addonValidator.collector);
         return installRdfParser._getGUID();
       })
       .then((guid) => {
@@ -170,6 +204,25 @@ describe('InstallRdfParser._getGUID()', function() {
       })
       .then((guid) => {
         assert.equal(guid, 'hai');
+      });
+  });
+
+  it('should collect an error if top-level GUID is too long', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    var longGUID = 'a'.repeat(256);
+    var rdf = validRDF(`<em:id>${longGUID}</em:id>`);
+    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc,
+                                                    addonValidator.collector);
+        return installRdfParser._getGUID();
+      })
+      .then((guid) => {
+        var errors = addonValidator.collector.errors;
+        assert.equal(guid, longGUID);
+        assert.equal(errors.length, 1);
+        assert.equal(errors[0].code, messages.RDF_GUID_TOO_LONG.code);
       });
   });
 

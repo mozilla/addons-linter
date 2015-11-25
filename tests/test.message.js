@@ -41,5 +41,12 @@ describe('Message', function() {
     }, Error, /Message data object is missing the following props/);
   });
 
+  it('should throw on incorrect file prop filename', () => {
+    assert.throws(() => {
+      var MyMessage = new Message('error',
+        Object.assign({}, {filename: 'foo'}));
+    }, Error, /The key for the file is "file"/);
+  });
+
 });
 

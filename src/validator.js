@@ -21,7 +21,6 @@ import ChromeManifestScanner from 'scanners/chromemanifest';
 import CSSScanner from 'scanners/css';
 import HTMLScanner from 'scanners/html';
 import JavaScriptScanner from 'scanners/javascript';
-import MetadataScanner from 'scanners/metadata';
 import RDFScanner from 'scanners/rdf';
 import { Directory, Xpi } from 'io';
 
@@ -359,26 +358,7 @@ export default class Validator {
       });
   }
 
-  scanMetadata(metadata, _MetadataScanner=MetadataScanner) {
-    var scanner = new _MetadataScanner(metadata, 'XPI', {
-      metadata: this.addonMetadata,
-    });
-
-    return scanner.scan()
-      .then((messages) => {
-        for (let message of messages) {
-          if (typeof message.type === 'undefined') {
-            throw new Error('message.type must be defined');
-          }
-          this.collector._addMessage(message.type, message);
-        }
-
-        return metadata;
-      });
-  }
-
   extractMetadata({ _Xpi=Xpi, _console=console,
-                    _MetadataScanner=MetadataScanner,
                     _Directory=Directory } = {}) { // jscs:ignore
     return checkMinNodeVersion()
       .then(() => {
@@ -393,9 +373,6 @@ export default class Validator {
           this.io = new _Directory(this.packagePath);
         }
         return this.getAddonMetadata();
-      })
-      .then((addonMetadata) => {
-        return this.scanMetadata(addonMetadata, _MetadataScanner);
       })
       .then((addonMetadata) => {
         log.info('Metadata option is set to %s', this.config.metadata);
