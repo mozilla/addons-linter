@@ -12,7 +12,7 @@ export default class CSSScanner extends BaseScanner {
 
   _defaultRules = rules;
 
-  processCode(cssCode, cssInstruction) {
+  processCode(cssCode, cssInstruction, _rules=this._defaultRules) {
     if (cssCode.type === 'comment') {
       log.debug('Found CSS comment. Skipping');
       return;
@@ -22,7 +22,7 @@ export default class CSSScanner extends BaseScanner {
       log.debug('Processing media rules');
       if (cssCode.rules.length) {
         for (let mediaCssCode of cssCode.rules) {
-          this.processCode(mediaCssCode, cssInstruction);
+          this.processCode(mediaCssCode, cssInstruction, _rules);
         }
       } else {
         log.debug('No media rules found');
@@ -45,7 +45,7 @@ export default class CSSScanner extends BaseScanner {
       });
 
     this.validatorMessages = this.validatorMessages.concat(
-      rules[cssInstruction](cssCode, file, cssOptions));
+      _rules[cssInstruction](cssCode, file, cssOptions));
   }
 
   scan(_rules=this._defaultRules) {
@@ -58,7 +58,7 @@ export default class CSSScanner extends BaseScanner {
             for (let cssInstruction in rules) {
               this._rulesProcessed++;
               for (let cssCode of ast.stylesheet.rules) {
-                this.processCode(cssCode, cssInstruction);
+                this.processCode(cssCode, cssInstruction, rules);
               }
             }
           }

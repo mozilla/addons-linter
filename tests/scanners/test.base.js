@@ -3,6 +3,7 @@ import sinon from 'sinon';
 import BaseScanner from 'scanners/base';
 import { MissingFilenameError, NotImplentedError } from 'exceptions';
 import { ignorePrivateFunctions } from 'utils';
+import { metadataPassCheck, validMetadata } from '../helpers';
 
 
 class BaseScannerWithContents extends BaseScanner {
@@ -64,18 +65,20 @@ describe('Base Scanner Class', function() {
       });
   });
 
-  it('should run all rules', () => {
-    var baseScanner = new BaseScannerWithContents('', 'index.html');
+  it('should pass metadata to rules', () => {
+    var fakeRules = { metadataPassedCheck: () => {} };
 
-    var fakeRules = {
-      iAmAFakeRule: sinon.stub(),
-      iAmAAnotherFakeRule: sinon.stub(),
-    };
+    // This rule calls assert.fail() if no metadata is passed to it.
+    sinon.stub(fakeRules, 'metadataPassedCheck', metadataPassCheck);
 
-    return baseScanner.scan(fakeRules)
-      .then(() => {
-        assert.ok(fakeRules.iAmAFakeRule.calledOnce);
-        assert.ok(fakeRules.iAmAAnotherFakeRule.calledOnce);
+    var scanner = new BaseScannerWithContents('', 'fake.xpi', {
+      addonMetadata: validMetadata({guid: 'snowflake'}),
+    });
+
+    return scanner.scan(fakeRules)
+      .then((validatorMessages) => {
+        assert.ok(fakeRules.metadataPassedCheck.called);
+        assert.equal(validatorMessages.length, 0);
       });
   });
 

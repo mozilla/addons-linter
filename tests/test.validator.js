@@ -514,7 +514,7 @@ describe('Validator.textOutput()', function() {
       addonValidator.textOutput(uselesslyTinyTerminalWidth);
       assert.equal(addonValidator.output.summary.errors, 1);
     } catch (e) {
-      assert.fail('Should not error on tiny terminal');
+      assert.fail(null, null, 'Should not error on tiny terminal');
     }
   });
 });
