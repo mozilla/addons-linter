@@ -13,8 +13,21 @@ export default class CSSScanner extends BaseScanner {
   _defaultRules = rules;
 
   processCode(cssCode, cssInstruction, _rules=this._defaultRules) {
+
+    var file = cssCode.position.source;
+    var cssOptions = Object.assign({}, this.options, {
+      startLine: cssCode.position.start.line,
+      startColumn: cssCode.position.start.column,
+    });
+
+    var info = {
+      file: file,
+      startLine: cssOptions.startLine,
+      startColumn: cssOptions.startColumn,
+    };
+
     if (cssCode.type === 'comment') {
-      log.debug('Found CSS comment. Skipping');
+      log.debug('Found CSS comment. Skipping', info);
       return;
     }
 
@@ -30,19 +43,8 @@ export default class CSSScanner extends BaseScanner {
       return;
     }
 
-    var file = cssCode.position.source;
-    var cssOptions = Object.assign({}, this.options, {
-      startLine: cssCode.position.start.line,
-      startColumn: cssCode.position.start.column,
-    });
-
     log.debug('Passing CSS code to rule function "%s"',
-      cssInstruction, {
-        cssCode: cssCode,
-        file: file,
-        startLine: cssOptions.startLine,
-        startColumn: cssOptions.startColumn,
-      });
+      cssInstruction, info);
 
     this.validatorMessages = this.validatorMessages.concat(
       _rules[cssInstruction](cssCode, file, cssOptions));
