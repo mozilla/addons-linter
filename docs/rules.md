@@ -197,9 +197,10 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :x: | notice | missing_updateKey | | Missing updateKey element | install.rdf | | | |
 | :x: | notice | Missing updateURL element | | Missing updateURL element | install.rdf | | | |
 | :x: | error | missing_addon | | install.rdf missing element(s). | install.rdf | | | |
-| :white_check_mark: | error | | | GUID must be 255 characters or less. | install.rdf | #214 | | GUID_TOO_LONG |
-
-
+| :white_check_mark: | error | | | top level guid must be 255 characters or less | install.rdf | | | RDF_GUID_TOO_LONG |
+| :white_check_mark: | error | | | top level guid missing from install.rdf | install.rdf | | | RDF_ID_MISSING |
+| :white_check_mark: | error | | | top level version missing from install.rdf. | install.rdf | | | RDF_VERSION_MISSING |
+| :white_check_mark: | error | | | top level name missing from install.rdf | install.rdf | | | RDF_NAME_MISSING |
 
 
 ## Jetpack
@@ -345,5 +346,6 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :white_check_mark: | error | N/A |  | manifest_version in manifest.json is not valid. | | null | MANIFEST_VERSION_INVALID |
-| :white_check_mark: | error | N/A |  | name in manifest.json is not valid. | | null | MANIFEST_NAME_INVALID |
+| :white_check_mark: | error | Web extension | manifest_version in manifest.json is not valid. | manifest.json | | null | MANIFEST_VERSION_INVALID |
+| :white_check_mark: | error | Web extension | name property missing from manifest.json | manifest.json | | null | PROP_NAME_MISSING |
+| :white_check_mark: | error | Web extension | version property missing from manifest.json | manifest.json | | null | PROP_VERSION_MISSING |
