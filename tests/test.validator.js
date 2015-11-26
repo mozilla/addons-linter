@@ -768,6 +768,46 @@ describe('Validator.extractMetadata()', function() {
         assert.deepEqual(metadata, fakeMetadata);
       });
   });
+
+  it('should return errors as part of metadata JSON.', () => {
+    var addonValidator = new Validator({_: ['foo'], metadata: true});
+
+    // Invoke an error so we can make sure we see it in the
+    // output.
+    addonValidator.collector.addError({
+      code: 'FAKE_METADATA_ERROR',
+      message: 'Fake metadata error',
+      description: 'Fake metadata error description',
+    });
+    var fakeMetadata = {type: 1};
+    addonValidator.toJSON = sinon.stub();
+
+    addonValidator.getAddonMetadata = () => {
+      return Promise.resolve(fakeMetadata);
+    };
+
+    addonValidator.checkFileExists = fakeCheckFileExists;
+
+    addonValidator.checkMinNodeVersion = () => {
+      return Promise.resolve();
+    };
+
+    class FakeXpi {
+      // stub Xpi class.
+    }
+
+    return addonValidator.extractMetadata({_Xpi: FakeXpi,
+                                           _console: fakeConsole}) // jscs:ignore
+      .then(() => {
+        assert.ok(addonValidator.toJSON.called);
+        var inputObject = addonValidator.toJSON.firstCall.args[0].input;
+        assert.equal(inputObject.hasErrors, true);
+        assert.deepEqual(inputObject.metadata, fakeMetadata);
+        assert.equal(inputObject.errors.length, 1);
+        assert.equal(inputObject.errors[0].code, 'FAKE_METADATA_ERROR');
+      });
+  });
+
 });
 
 describe('Validator.run()', function() {
@@ -800,7 +840,8 @@ describe('Validator.run()', function() {
       .then(() => {
         assert.ok(addonValidator.toJSON.called);
         assert.deepEqual(
-          addonValidator.toJSON.firstCall.args[0].input, fakeMetadata);
+          addonValidator.toJSON.firstCall.args[0].input,
+          {hasErrors: false, metadata: fakeMetadata});
       });
   });
 

@@ -377,7 +377,21 @@ export default class Validator {
       .then((addonMetadata) => {
         log.info('Metadata option is set to %s', this.config.metadata);
         if (this.config.metadata === true) {
-          _console.log(this.toJSON({input: addonMetadata}));
+
+          var metadataObject = {
+            // Reflects if errors were encountered in extraction
+            // of metadata.
+            hasErrors: this.output.errors.length !== 0,
+            metadata: addonMetadata,
+          };
+
+          // If errors exist the data is available via the
+          // errors list.
+          if (metadataObject.hasErrors) {
+            metadataObject.errors = this.output.errors;
+          }
+
+          _console.log(this.toJSON({input: metadataObject}));
         }
         return addonMetadata;
       });
