@@ -59,7 +59,7 @@
     "es6-promisify": "3.0.0",
     "eslint": "1.10.2",
     "semver": "5.1.0",
-    "source-map-support": "0.3.2",
+    "source-map-support": "0.4.0",
     "xmldom": "0.1.19",
     "yargs": "3.30.0",
     "yauzl": "2.3.1"
