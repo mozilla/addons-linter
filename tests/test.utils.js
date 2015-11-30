@@ -74,7 +74,7 @@ describe('utils.getRootExpression()', function() {
   });
 });
 
-describe('utils.getNodeReferenceName()', () => {
+describe('utils.getNodeReference()', () => {
   // Represents scope for following code:
   // var foo = window; foo = bar;
   var context = {
@@ -114,16 +114,16 @@ describe('utils.getNodeReferenceName()', () => {
 
   it('should return the name of the referenced variable', () => {
     var ref = { name: 'foo' };
-    var val = utils.getNodeReferenceName(context, ref);
+    var val = utils.getNodeReference(context, ref);
 
-    assert.equal(val, 'bar');
+    assert.equal(val.name, 'bar');
   });
 
   it('should return the name of the reference if not in scope', () => {
     var ref = { name: 'doesNotExist' };
-    var val = utils.getNodeReferenceName(context, ref);
+    var val = utils.getNodeReference(context, ref);
 
-    assert.equal(val, ref.name);
+    assert.equal(val.name, ref.name);
   });
 });
 

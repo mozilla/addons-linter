@@ -63,9 +63,14 @@ export function getRootExpression(node) {
  * example: var foo = document;
  *  The node for foo will return 'document'
  */
-export function getNodeReferenceName(context, node) {
+export function getNodeReference(context, node) {
   var variables = context.getScope().variables;
   var scopeVar;
+
+  // Just return the value if the node passed in is a reference to a literal.
+  if (typeof node === 'undefined' || node.type === 'Literal') {
+    return node;
+  }
 
   // Finds variable reference in current scope.
   for (let variable of variables) {
@@ -87,12 +92,11 @@ export function getNodeReferenceName(context, node) {
           occurance.declarations[0].init !== null) {
         // Get what the name of what it was assigned to or the raw
         // value depending on the initalization
-        lastAssignment = occurance.declarations[0].init.name ||
-          occurance.declarations[0].init.raw;
+        lastAssignment = occurance.declarations[0].init;
       } else if (occurance.type === 'ExpressionStatement' &&
                  occurance.expression.type === 'AssignmentExpression') {
         // Get the right hand side of the assignment
-        lastAssignment = occurance.expression.right.name;
+        lastAssignment = occurance.expression.right;
       }
     }
 
@@ -105,7 +109,7 @@ export function getNodeReferenceName(context, node) {
 
   // If that variable doesn't exist in scope, then just return the node's
   // name.
-  return node.name;
+  return node;
 }
 
 /*

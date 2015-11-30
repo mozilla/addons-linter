@@ -164,6 +164,16 @@ export const NSI_DNS_SERVICE_RESOLVE = {
   ],
 };
 
+export const INIT_NULL_ARG = {
+  code: 'INIT_NULL_ARG',
+  message: _('`init` should not be called with a null first argument'),
+  description: _(singleLineString`Calling 'nsITransferable.init()' with a null
+    first argument has the potential to leak data across private browsing mode
+    sessions. 'null' is  appropriate only when reading data or writing data
+    which is not associated with a particular window.`),
+  legacyCode: ['js_entity_values', 'nsITransferable', 'init'],
+};
+
 export const NSI_SOUND_PLAY = {
   code: 'NSI_SOUND_PLAY',
   message: _('nsISound.play should not be used.'),

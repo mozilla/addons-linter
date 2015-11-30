@@ -51,7 +51,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :white_check_mark: | warning | evil | | Use of `document.write` strongly discouraged. | | | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py#L64) | NO_DOCUMENT_WRITE |
 | :white_check_mark: | warning | nsIDNSServiceResolve | | `nsIDNSService.resolve()` should not be used. | | | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py#L87) | NSI_DNS_SERVICE_RESOLVE |
 | :white_check_mark: | warning | nsISound_play | | `nsISound.play` should not be used | | | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py#L103) | NSI_SOUND_PLAY |
-| :x: | warning | init | | `init` should not be called with a null first argument | | | | |
+| :white_check_mark: | warning | init | | `init` should not be called with a null first argument | | | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py#L129) | INIT_NULL_ARG |
 | :white_check_mark: | warning | override | | Extensions must not alter user preferences such as the new tab URL without explicit user consent.  | | | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py#L153) | TAB_URL_OVERRIDE |
 
 ### instanceactions
