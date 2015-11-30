@@ -27,8 +27,10 @@ export default class ManifestJSONParser {
 
   _getManifestVersion() {
     // Manifest.json specific.
-    var manifestVersion = parseInt(this.parsedJSON.manifest_version, 10);
-    if (manifestVersion !== VALID_MANIFEST_VERSION) {
+    var manifestVersion = this.parsedJSON.manifest_version;
+    // manifestVersion must be a number.
+    if (typeof manifestVersion !== 'number' ||
+        manifestVersion !== VALID_MANIFEST_VERSION) {
       log.debug('Invalid manifest_version "%s"', manifestVersion);
       this.collector.addError(messages.MANIFEST_VERSION_INVALID);
       manifestVersion = null;
@@ -40,6 +42,10 @@ export default class ManifestJSONParser {
     var name = this.parsedJSON.name || null;
     if (!name) {
       this.collector.addError(messages.PROP_NAME_MISSING);
+    } else if (typeof name !== 'string') {
+      log.debug('Invalid name "%s"', name);
+      this.collector.addError(messages.PROP_NAME_INVALID);
+      name = null;
     }
     return name;
   }
@@ -48,6 +54,10 @@ export default class ManifestJSONParser {
     var version = this.parsedJSON.version || null;
     if (!version) {
       this.collector.addError(messages.PROP_VERSION_MISSING);
+    } else if (typeof version !== 'string') {
+      log.debug('Invalid version "%s"', version);
+      this.collector.addError(messages.PROP_VERSION_INVALID);
+      version = null;
     }
     return version;
   }
