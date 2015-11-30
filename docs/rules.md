@@ -128,6 +128,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :x: | warning | identity_box | | Modification to identity box | | | | |
 | :x: | info? (should be an error) | unicode_decode | | Unicode decode error. | | | | |
 | :white_check_mark: | error | CSS syntax error | | A CSS syntax error was detected | | N/A | N/A | CSS_SYNTAX_ERROR |
+| :white_check_mark: | error | Invalid nesting | | CSS selectors should not be nested | | N/A | N/A | INVALID_SELECTOR_NESTING |
 
 ### HTML
 

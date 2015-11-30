@@ -18,9 +18,9 @@ describe('CSSScanner', () => {
         assert.equal(validationMessages[0].code,
                      messages.CSS_SYNTAX_ERROR.code);
         assert.equal(validationMessages[0].type, VALIDATION_ERROR);
-        assert.include(validationMessages[0].message, 'missing');
+        assert.equal(validationMessages[0].message, 'Unclosed block');
         assert.equal(validationMessages[0].line, 1);
-        assert.equal(validationMessages[0].column, 13);
+        assert.equal(validationMessages[0].column, 1);
         assert.equal(validationMessages[0].file, 'fakeFile.css');
       });
   });
