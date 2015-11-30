@@ -26,17 +26,18 @@ export const DEPRECATED_ENTITIES = [
 export function deprecated_entities(context) {
   return {
     CallExpression: function(node) {
+      let referenceNode = getNodeReference(context, node.callee);
       // We're only looking for calls that look like `foo.bar()`.
-      if (typeof node.callee.object !== 'undefined' &&
-          node.callee.property.type === 'Identifier' &&
-          node.callee.object.type === 'Identifier') {
+      if (typeof referenceNode.object !== 'undefined' &&
+          referenceNode.property.type === 'Identifier' &&
+          referenceNode.object.type === 'Identifier') {
 
-        let nodeReference = getNodeReference(context, node.callee.object);
+        let referenceObject = getNodeReference(context, referenceNode.object);
 
         for (let entity of DEPRECATED_ENTITIES) {
           // Check to see if the node matches a deprecated entity.
-          if (nodeReference.name === entity.object &&
-              node.callee.property.name === entity.property) {
+          if (referenceObject.name === entity.object &&
+              referenceNode.property.name === entity.property) {
             return context.report(node, entity.error.code);
           }
         }
