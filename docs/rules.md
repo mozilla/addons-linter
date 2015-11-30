@@ -348,4 +348,6 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :white_check_mark: | error | Web extension | manifest_version in manifest.json is not valid. | manifest.json | | null | MANIFEST_VERSION_INVALID |
 | :white_check_mark: | error | Web extension | name property missing from manifest.json | manifest.json | | null | PROP_NAME_MISSING |
+| :white_check_mark: | error | Web extension | name property is invalid in manifest.json | manifest.json | | null | PROP_NAME_INVALID |
 | :white_check_mark: | error | Web extension | version property missing from manifest.json | manifest.json | | null | PROP_VERSION_MISSING |
+| :white_check_mark: | error | Web extension | version is invalid in manifest.json | manifest.json | | null | PROP_VERSION_INVALID |

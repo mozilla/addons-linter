@@ -21,6 +21,18 @@ describe('ManifestJSONParser._getManifestVersion()', function() {
     assert.equal(errors[0].code, messages.MANIFEST_VERSION_INVALID.code);
   });
 
+  it('should collect an error with numeric string value', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    var json = validManifestJSON({manifest_version: '1'});
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonValidator.collector);
+    var manifestVersion = manifestJSONParser._getManifestVersion();
+    assert.equal(manifestVersion, null);
+    var errors = addonValidator.collector.errors;
+    assert.equal(errors.length, 1);
+    assert.equal(errors[0].code, messages.MANIFEST_VERSION_INVALID.code);
+  });
+
   it('should have the right manifestVersion', () => {
     var addonValidator = new Validator({_: ['bar']});
     var json = validManifestJSON();
@@ -75,6 +87,18 @@ describe('ManifestJSONParser._getName()', function() {
     assert.equal(errors[0].code, messages.PROP_NAME_MISSING.code);
   });
 
+  it('should collect an error on non-string name value', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    var json = validManifestJSON({name: 1});
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonValidator.collector);
+    var name = manifestJSONParser._getName();
+    assert.equal(name, null);
+    var errors = addonValidator.collector.errors;
+    assert.equal(errors.length, 1);
+    assert.equal(errors[0].code, messages.PROP_NAME_INVALID.code);
+  });
+
 });
 
 describe('ManifestJSONParser._getVersion()', function() {
@@ -92,11 +116,23 @@ describe('ManifestJSONParser._getVersion()', function() {
     var json = validManifestJSON({version: undefined});
     var manifestJSONParser = new ManifestJSONParser(json,
                                                     addonValidator.collector);
-    var name = manifestJSONParser._getVersion();
-    assert.equal(name, null);
+    var version = manifestJSONParser._getVersion();
+    assert.equal(version, null);
     var errors = addonValidator.collector.errors;
     assert.equal(errors.length, 1);
     assert.equal(errors[0].code, messages.PROP_VERSION_MISSING.code);
+  });
+
+  it('should collect an error on non-string version value', () => {
+    var addonValidator = new Validator({_: ['bar']});
+    var json = validManifestJSON({version: 1});
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonValidator.collector);
+    var version = manifestJSONParser._getVersion();
+    assert.equal(version, null);
+    var errors = addonValidator.collector.errors;
+    assert.equal(errors.length, 1);
+    assert.equal(errors[0].code, messages.PROP_VERSION_INVALID.code);
   });
 
 });
