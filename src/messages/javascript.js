@@ -12,6 +12,15 @@ export const JS_SYNTAX_ERROR = {
     code; validation cannot continue on this file.`),
 };
 
+export const EVENT_LISTENER_FOURTH = {
+  code: 'EVENT_LISTENER_FOURTH',
+  message: _('addEventListener` called with truthy fourth argument.'),
+  description: _(singleLineString`When called with a truthy forth argument,
+    listeners can be triggered potentially unsafely by untrusted code. This
+    requires careful review.`),
+  legacyCode: ['js', 'instanceactions', 'addEventListener_fourth'],
+};
+
 export const MOZINDEXEDDB = {
   code: 'MOZINDEXEDDB',
   // Original code appeared to have a non-unique err_id which is no

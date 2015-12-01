@@ -58,7 +58,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :x: | notice | addEventListener_fourth | | `addEventListener` called with truthy fourth argument |  | [testcases/javascript/instanceactions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/instanceactions.py)| | |
+| :white_check_mark: | notice | addEventListener_fourth | | `addEventListener` called with truthy fourth argument |  | [testcases/javascript/instanceactions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/instanceactions.py)| | EVENT_LISTENER_FOURTH |
 | :x: | warning | called_createelement | | createElement() used to create script tag | | | | |
 | :x: | warning | createelement_variable | | Variable element type being created | | | | |
 | :x: | warning | setting_on\*  | | on\* attribute being set using setAttribute | | | | |
