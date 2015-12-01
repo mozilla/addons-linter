@@ -375,9 +375,11 @@ export default class Validator {
         return this.getAddonMetadata();
       })
       .then((addonMetadata) => {
+        return this._markEmptyFiles(addonMetadata);
+      })
+      .then((addonMetadata) => {
         log.info('Metadata option is set to %s', this.config.metadata);
         if (this.config.metadata === true) {
-
           var metadataObject = {
             // Reflects if errors were encountered in extraction
             // of metadata.
@@ -393,6 +395,7 @@ export default class Validator {
 
           _console.log(this.toJSON({input: metadataObject}));
         }
+
         return addonMetadata;
       });
   }
@@ -471,4 +474,27 @@ export default class Validator {
       return ARCH_DEFAULT;
     }
   }
+
+  _markEmptyFiles(addonMetadata) {
+    var emptyFiles = [];
+
+    return this.io.getFiles()
+      .then((files) => {
+        for (let filename in files) {
+          if (typeof files[filename].size === 'undefined' &&
+              typeof files[filename].uncompressedSize === 'undefined') {
+            throw new Error(`No size available for ${filename}`);
+          }
+
+          if (files[filename].size === 0 ||
+              files[filename].uncompressedSize === 0) {
+            emptyFiles.push(filename);
+          }
+        }
+
+        addonMetadata.emptyFiles = emptyFiles;
+        return addonMetadata;
+      });
+  }
+
 }
