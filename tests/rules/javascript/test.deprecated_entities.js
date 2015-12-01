@@ -35,6 +35,19 @@ describe('deprecated_entities', () => {
         });
     });
 
+    it(`should still work with variables aliased to ${obj}.${prop}`, () => {
+      var code = `var foo = ${obj}.${prop}; foo();`;
+      var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+
+      return jsScanner.scan()
+        .then((validationMessages) => {
+          assert.equal(validationMessages.length, 1);
+          assert.equal(validationMessages[0].code,
+                       entity.error.code);
+          assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        });
+    });
+
     it('should not warn about using other member functions', () => {
       var code = `${obj}.doNothing();`;
       var jsScanner = new JavaScriptScanner(code, 'badcode.js');
