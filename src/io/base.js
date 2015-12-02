@@ -11,6 +11,10 @@ export class IOBase {
     this.path = packageOrDirPath;
     this.files = {};
     this.entries = [];
+    // If this is too large the node process will hit a RangeError
+    // when it runs out of memory.
+    let maxMegabytes = 100;
+    this.maxSizeBytes = 1024 * 1024 * maxMegabytes;
   }
 
   getFile(path, streamOrString='string') {

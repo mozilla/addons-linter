@@ -98,6 +98,24 @@ describe('Directory.getFileAsStream()', function() {
 
   });
 
+  it('should reject if file is too big', () => {
+    var myDirectory = new Directory('tests/fixtures/io/');
+    var fakeFileMeta= {
+      size: 1024 * 1024 * 102,
+    };
+    myDirectory.files = {
+      'install.rdf': fakeFileMeta,
+      'chrome.manifest': fakeFileMeta,
+    };
+
+    return myDirectory.getFileAsStream('install.rdf')
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.include(
+          err.message, 'File "install.rdf" is too large');
+      });
+  });
+
   it("should reject if path starts with '/'", () => {
     var myDirectory = new Directory('tests/fixtures/io/');
     myDirectory.files = {
@@ -149,5 +167,24 @@ describe('Directory.getFileAsString()', function() {
         assert.include(err.message, '¡hola!');
       });
   });
+
+  it('should reject if file is too big', () => {
+    var myDirectory = new Directory('tests/fixtures/io/');
+    var fakeFileMeta= {
+      size: 1024 * 1024 * 102,
+    };
+    myDirectory.files = {
+      'install.rdf': fakeFileMeta,
+      'chrome.manifest': fakeFileMeta,
+    };
+
+    return myDirectory.getFileAsString('install.rdf')
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.include(
+          err.message, 'File "install.rdf" is too large');
+      });
+  });
+
 
 });
