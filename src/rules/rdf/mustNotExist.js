@@ -44,7 +44,7 @@ export function mustNotExist(xmlDoc, filename, {namespace}={}) {
 }
 
 export function _checkForTags({xmlDoc, namespace, tags, type, prefix,
-                               filename} = {}) {
+                               filename} = {}) { // jscs:ignore
   var validatorMessages = [];
 
   for (let tag of tags) {
