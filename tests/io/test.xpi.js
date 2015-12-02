@@ -365,9 +365,47 @@ describe('Xpi.getFileAsStream()', function() {
       });
   });
 
+  it('should reject if file is too big', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    var fakeFileMeta= {
+      uncompressedSize: 1024 * 1024 * 102,
+    };
+
+    myXpi.files = {
+      'install.rdf': fakeFileMeta,
+      'chrome.manifest': fakeFileMeta,
+    };
+
+    return myXpi.getFileAsStream('install.rdf')
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.include(
+          err.message, 'File "install.rdf" is too large');
+      });
+  });
+
+  it('should reject if file is too big for getFileAsString too', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    var fakeFileMeta = {
+      uncompressedSize: 1024 * 1024 * 102,
+    };
+
+    myXpi.files = {
+      'install.rdf': fakeFileMeta,
+      'chrome.manifest': fakeFileMeta,
+    };
+
+    return myXpi.getFileAsString('install.rdf')
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.include(
+          err.message, 'File "install.rdf" is too large');
+      });
+  });
+
 });
 
-describe('Xpi.getFileAsStream()', function() {
+describe('Xpi.getFilesByExt()', function() {
 
   beforeEach(() => {
     this.fakeZipLib = {

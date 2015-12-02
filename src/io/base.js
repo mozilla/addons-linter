@@ -1,5 +1,6 @@
 import { singleLineString } from '../utils';
 import { NotImplentedError } from 'exceptions';
+import { MAX_FILE_SIZE_MB } from 'const';
 
 /*
  * Base class for io operations for both an Xpi or
@@ -11,6 +12,9 @@ export class IOBase {
     this.path = packageOrDirPath;
     this.files = {};
     this.entries = [];
+    // If this is too large the node process will hit a RangeError
+    // when it runs out of memory.
+    this.maxSizeBytes = 1024 * 1024 * MAX_FILE_SIZE_MB;
   }
 
   getFile(path, streamOrString='string') {

@@ -36,6 +36,11 @@ export class Directory extends IOBase {
         new Error(`Path "${relativeFilePath}" does not exist in this dir.`));
     }
 
+    if (this.files[relativeFilePath].size > this.maxSizeBytes) {
+      return Promise.reject(
+        new Error(`File "${relativeFilePath}" is too large. Aborting`));
+    }
+
     var absoluteDirPath = path.resolve(this.path);
     var filePath = path.resolve(path.join(absoluteDirPath, relativeFilePath));
 

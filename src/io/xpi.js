@@ -89,6 +89,10 @@ export class Xpi extends IOBase {
         throw new Error(`Path "${path}" does not exist in this XPI`);
       }
 
+      if (this.files[path].uncompressedSize > this.maxSizeBytes) {
+        throw new Error(`File "${path}" is too large. Aborting.`);
+      }
+
       return this.open()
         .then((zipfile) => {
           zipfile.openReadStream(this.files[path], (err, readStream) => {

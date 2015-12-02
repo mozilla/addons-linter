@@ -11,6 +11,7 @@ describe('io.IOBase()', function() {
     assert.equal(io.entries.length, 0);
     assert.equal(Object.keys(io.files).length, 0);
     assert.equal(typeof io.files, 'object');
+    assert.equal(io.maxSizeBytes, 104857600);
   });
 
   it('should should reject calling getFiles()', () => {
