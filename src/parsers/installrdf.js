@@ -20,6 +20,7 @@ export default class InstallRdfParser {
       name: this._getName(),
       type: this._getAddonType(),
       version: this._getVersion(),
+      restartless: this._getIsBootstrapped(),
     });
   }
 
@@ -97,6 +98,11 @@ export default class InstallRdfParser {
       this.collector.addNotice(messages.RDF_TYPE_MISSING);
     }
     return addonType;
+  }
+
+  _getIsBootstrapped() {
+    return this._getNodeValue(
+      this._getTopLevelNodeByTag('em:bootstrap')) === 'true';
   }
 
   _getGUID() {
