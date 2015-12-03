@@ -228,6 +228,65 @@ describe('InstallRdfParser._getGUID()', function() {
 
 });
 
+describe('InstallRdfParser._getIsBootstrapped()', () => {
+  it('should extract that the addon is restartless', () => {
+    var rdf = validRDF('<em:bootstrap>true</em:bootstrap>');
+    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc);
+        return installRdfParser._getIsBootstrapped();
+      })
+      .then((bootstrap) => {
+        assert.typeOf(bootstrap, 'boolean');
+        assert.equal(bootstrap, true);
+      });
+  });
+
+  it(`should extract that the addon isn't restartless`, () => {
+    var rdf = validRDF('<em:bootstrap>false</em:bootstrap>');
+    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc);
+        return installRdfParser._getIsBootstrapped();
+      })
+      .then((bootstrap) => {
+        assert.typeOf(bootstrap, 'boolean');
+        assert.equal(bootstrap, false);
+      });
+  });
+
+  it(`should extract only the top level bootstrap value`, () => {
+    var rdf = validRDF(`<em:bootstrap>true</em:bootstrap><Description>
+      <em:bootstrap>false</em:bootstrap></Description>`);
+    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc);
+        return installRdfParser._getIsBootstrapped();
+      })
+      .then((bootstrap) => {
+        assert.typeOf(bootstrap, 'boolean');
+        assert.equal(bootstrap, true);
+      });
+  });
+
+  it(`should assume that an addon isn't restartless`, () => {
+    var rdf = validRDF('<em:id>123</em:id>');
+    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc);
+        return installRdfParser._getIsBootstrapped();
+      })
+      .then((bootstrap) => {
+        assert.typeOf(bootstrap, 'boolean');
+        assert.equal(bootstrap, false);
+      });
+  });
+});
+
 describe('InstallRdfParser._getDescriptionNode()', function() {
 
   it('should reject on missing RDF node', () => {
