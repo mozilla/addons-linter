@@ -19,7 +19,12 @@ export default class ManifestJSONParser {
       type: this._getType(),
       version: this._getVersion(),
       restartless: true, // All web extensions are restartless
+      application: this._getApplication(),
     });
+  }
+
+  _getApplication() {
+    return this.parsedJSON.applications;
   }
 
   _getType() {

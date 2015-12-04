@@ -287,6 +287,114 @@ describe('InstallRdfParser._getIsBootstrapped()', () => {
   });
 });
 
+describe('InstallRdfParser._getApplication()', () => {
+  it('should retrieve the application info', () => {
+    var id = '{ec8030f7-c20a-464f-9b0e-13a3a9e97384}';
+    var minVersion = '1.5';
+    var maxVersion = '3.0.*';
+    var rdf = validRDF(`<em:targetApplication>
+      <Description>
+        <em:id>${id}</em:id> <!--Firefox-->
+        <em:minVersion>${minVersion}</em:minVersion>
+        <em:maxVersion>${maxVersion}</em:maxVersion>
+      </Description>
+    </em:targetApplication>`);
+    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc);
+        return installRdfParser._getApplication();
+      })
+      .then((applications) => {
+        assert.equal(applications[0].id, id);
+        assert.equal(applications[0].minVersion, minVersion);
+        assert.equal(applications[0].maxVersion, maxVersion);
+      });
+  });
+
+  it('should retrieve the application info', () => {
+    var expectedApplications = [{
+      id: '{ec8030f7-c20a-464f-9b0e-13a3a9e97384}',
+      minVersion: '1.5',
+      maxVersion: '3.0.*',
+    }, {
+      id: '{abcdefgh-c20a-464f-9b0e-13a3a9e97384}',
+      minVersion: '2.5',
+      maxVersion: '4.0.*',
+    },
+    ];
+    var rdf = validRDF(`<em:targetApplication>
+      <Description>
+        <em:id>${expectedApplications[0].id}</em:id> <!--Firefox-->
+        <em:minVersion>${expectedApplications[0].minVersion}</em:minVersion>
+        <em:maxVersion>${expectedApplications[0].maxVersion}</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:targetApplication>
+      <Description>
+        <em:id>${expectedApplications[1].id}</em:id> <!--Firefox-->
+        <em:minVersion>${expectedApplications[1].minVersion}</em:minVersion>
+        <em:maxVersion>${expectedApplications[1].maxVersion}</em:maxVersion>
+      </Description>
+    </em:targetApplication>`);
+    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc);
+        return installRdfParser._getApplication();
+      })
+      .then((applications) => {
+        for (var i = 0; i < applications.length; i++) {
+          assert.equal(applications[i].id, expectedApplications[i].id);
+          assert.equal(applications[i].minVersion,
+                       expectedApplications[i].minVersion);
+          assert.equal(applications[i].maxVersion,
+                       expectedApplications[i].maxVersion);
+        }
+      });
+  });
+
+  it('should reject on missing Description node', () => {
+    var rdf = validRDF(
+      `<em:targetApplication><foo></foo></em:targetApplication>`);
+    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc);
+        return installRdfParser._getApplication();
+      })
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.equal(err.message,
+          singleLineString`<em:targetApplication> node should only have a
+            single descendant <Description>`);
+      });
+  });
+
+  it('should reject on missing id node', () => {
+    var minVersion = '1.5';
+    var maxVersion = '3.0.*';
+    var rdf = validRDF(`<em:targetApplication>
+      <Description>
+        <em:minVersion>${minVersion}</em:minVersion>
+        <em:maxVersion>${maxVersion}</em:maxVersion>
+      </Description>
+    </em:targetApplication>`);
+    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        var installRdfParser = new InstallRdfParser(xmlDoc);
+        return installRdfParser._getApplication();
+      })
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.equal(err.message,
+          singleLineString`targetApplication must contain an id,
+          minVersion and maxVersion fields to be valid.`);
+      });
+  });
+});
+
 describe('InstallRdfParser._getDescriptionNode()', function() {
 
   it('should reject on missing RDF node', () => {

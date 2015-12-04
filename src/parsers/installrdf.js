@@ -3,6 +3,9 @@ import * as messages from 'messages';
 import log from 'logger';
 import { singleLineString } from 'utils';
 
+const TARGET_APPLICATION_FIELDS = [
+  'id', 'minVersion', 'maxVersion',
+];
 
 export default class InstallRdfParser {
 
@@ -21,6 +24,7 @@ export default class InstallRdfParser {
       type: this._getAddonType(),
       version: this._getVersion(),
       restartless: this._getIsBootstrapped(),
+      application: this._getApplication(),
     });
   }
 
@@ -103,6 +107,40 @@ export default class InstallRdfParser {
   _getIsBootstrapped() {
     return this._getNodeValue(
       this._getTopLevelNodeByTag('em:bootstrap')) === 'true';
+  }
+
+  _getApplication() {
+    var targetApplications = this._getTopLevelNodesByTag(
+      'em:targetApplication');
+    var applications = [];
+
+    for (let targetApplication of targetApplications) {
+      let application = {};
+      let descriptionNodes = Array.prototype.slice.call(
+          targetApplication.childNodes)
+          .filter((node) => node.nodeName === 'Description');
+
+      if (descriptionNodes.length !== 1) {
+        throw new Error(singleLineString`<em:targetApplication> node should only
+          have a single descendant <Description>`);
+      }
+
+      for (var i in descriptionNodes[0].childNodes) {
+        let childNode = descriptionNodes[0].childNodes[i];
+        if (TARGET_APPLICATION_FIELDS.indexOf(childNode.localName) !== -1) {
+          application[childNode.localName] = this._getNodeValue(childNode);
+        }
+      }
+
+      if (application.id && application.maxVersion && application.minVersion) {
+        applications.push(application);
+      } else {
+        throw new Error(singleLineString`targetApplication must contain an id,
+          minVersion and maxVersion fields to be valid.`);
+      }
+    }
+
+    return applications;
   }
 
   _getGUID() {
