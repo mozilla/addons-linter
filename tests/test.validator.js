@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import Validator from 'validator';
 
 import * as constants from 'const';
@@ -170,6 +172,9 @@ describe('Validator', function() {
     };
 
     class FakeXpi {
+      getFile() {
+        return Promise.resolve('');
+      }
       getFiles() {
         return Promise.resolve([]);
       }
@@ -196,6 +201,9 @@ describe('Validator', function() {
     };
 
     class FakeXpi {
+      getFile() {
+        return Promise.resolve('');
+      }
       getFiles() {
         return Promise.resolve([]);
       }
@@ -631,7 +639,9 @@ describe('Validator.detectTypeFromLayout()', function() {
           'whatever': { uncompressedSize: 5 },
         });
       }
-      getFilesByExt = () => sinon.stub
+      getFilesByExt() {
+        return Promise.resolve([]);
+      }
     }
     return addonValidator.scan({_Xpi: FakeXpi})
       .then(() => {
@@ -742,6 +752,9 @@ describe('Validator.extractMetadata()', function() {
       getFiles() {
         return Promise.resolve({});
       }
+      getFilesByExt() {
+        return Promise.resolve([]);
+      }
     }
 
     return addonValidator.extractMetadata({_Directory: FakeDirectory,
@@ -766,7 +779,7 @@ describe('Validator.extractMetadata()', function() {
     addonValidator.checkMinNodeVersion = () => {
       return Promise.resolve();
     };
-    addonValidator._markEmptyFiles = (addonMetadata) => {
+    addonValidator.markSpecialFiles = (addonMetadata) => {
       return Promise.resolve(addonMetadata);
     };
 
@@ -803,7 +816,7 @@ describe('Validator.extractMetadata()', function() {
     addonValidator.checkMinNodeVersion = () => {
       return Promise.resolve();
     };
-    addonValidator._markEmptyFiles = (addonMetadata) => {
+    addonValidator.markSpecialFiles = (addonMetadata) => {
       return Promise.resolve(addonMetadata);
     };
 
@@ -848,6 +861,78 @@ describe('Validator.extractMetadata()', function() {
       });
   });
 
+  // Uses our empty-with-library XPI, with the following file layout:
+  //
+  // - bootstrap.js
+  // - data/
+  //   - change-text.js
+  //   - empty.js (empty file)
+  //   - jquery-2.1.4.min.js (minified jQuery)
+  // - index.js
+  // - install.rdf
+  // - package.json
+  // - README.md
+  it('should flag known JS libraries in an XPI.', () => {
+    var addonValidator = new Validator({
+      _: ['tests/fixtures/empty-with-library.xpi'],
+    });
+    var markJSFilesSpy = sinon.spy(addonValidator, '_markJSLibs');
+
+    return addonValidator.extractMetadata({_console: fakeConsole})
+      .then((metadata) => {
+        assert.ok(markJSFilesSpy.called);
+        assert.equal(Object.keys(metadata.jsLibs).length, 1);
+        assert.deepEqual(metadata.jsLibs, {
+          'data/jquery-2.1.4.min.js': 'jquery.2.1.4.jquery-2.1.4.min.js',
+        });
+      });
+  });
+
+  it('should flag known JS libraries', () => {
+    var addonValidator = new Validator({ _: ['foo'] });
+    var markJSFilesSpy = sinon.spy(addonValidator, '_markJSLibs');
+    addonValidator.checkFileExists = fakeCheckFileExists;
+    addonValidator.scanFiles = () => Promise.resolve();
+    // suppress output.
+    addonValidator.print = sinon.stub();
+
+    var fakeFiles = {
+      'angular.js': 'angular-1.2.28.min.js',
+      'my/real/files/notalib.js': 'not-a-library.js',
+      'my/real/files/alsonotalib.js': 'not-a-library.js',
+      'my/nested/library/path/j.js': 'jquery-2.1.4.min.js',
+    };
+
+    class FakeXpi {
+      getFile(path) {
+        return Promise.resolve(
+          fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`));
+      }
+      getFiles() {
+        var files = {};
+        for (let filename of Object.keys(fakeFiles)) {
+          files[filename] = { uncompressedSize: 5 };
+        }
+        return Promise.resolve(files);
+      }
+      getFilesByExt() {
+        return Promise.resolve(Object.keys(fakeFiles));
+      }
+    }
+
+    return addonValidator.extractMetadata({
+      _console: fakeConsole,
+      _Xpi: FakeXpi,
+    }).then((metadata) => {
+      assert.ok(markJSFilesSpy.called);
+      assert.equal(Object.keys(metadata.jsLibs).length, 2);
+      assert.deepEqual(metadata.jsLibs, {
+        'angular.js': 'angularjs.1.2.28.angular.min.js',
+        'my/nested/library/path/j.js': 'jquery.2.1.4.jquery-2.1.4.min.js',
+      });
+    });
+  });
+
   it('should use size attribute if uncompressedSize is undefined', () => {
     var addonValidator = new Validator({_: ['bar']});
     addonValidator.checkFileExists = () => {
@@ -874,7 +959,9 @@ describe('Validator.extractMetadata()', function() {
           'whatever': { size: 0},
         });
       }
-      getFilesByExt = () => sinon.stub
+      getFilesByExt() {
+        return Promise.resolve([]);
+      }
     }
     return addonValidator.extractMetadata({
       _Directory: FakeDirectory,
@@ -902,7 +989,9 @@ describe('Validator.extractMetadata()', function() {
           'whatever': {},
         });
       }
-      getFilesByExt = () => sinon.stub
+      getFilesByExt() {
+        return Promise.resolve([]);
+      }
     }
     return addonValidator.scan({_Xpi: FakeXpi, _console: fakeConsole})
       .catch((err) => {
@@ -934,8 +1023,7 @@ describe('Validator.run()', function() {
     addonValidator.checkMinNodeVersion = () => {
       return Promise.resolve();
     };
-    sinon.stub(addonValidator, '_markEmptyFiles', (addonMetadata) => {
-      addonMetadata.emptyFiles = [];
+    sinon.stub(addonValidator, 'markSpecialFiles', (addonMetadata) => {
       return Promise.resolve(addonMetadata);
     });
 
@@ -946,7 +1034,7 @@ describe('Validator.run()', function() {
     return addonValidator.run({_Xpi: FakeXpi, _console: fakeConsole})
       .then(() => {
         assert.ok(addonValidator.toJSON.called);
-        assert.ok(addonValidator._markEmptyFiles.called);
+        assert.ok(addonValidator.markSpecialFiles.called);
         assert.deepEqual(
           addonValidator.toJSON.firstCall.args[0].input,
           {hasErrors: false, metadata: fakeMetadata});

@@ -10,11 +10,11 @@ import { ARCH_DEFAULT, ARCH_JETPACK, CHROME_MANIFEST, INSTALL_RDF,
          MANIFEST_JSON } from 'const';
 import * as exceptions from 'exceptions';
 import * as messages from 'messages';
-import { checkMinNodeVersion,
-         gettext as _, singleLineString } from 'utils';
+import { checkMinNodeVersion, gettext as _, singleLineString } from 'utils';
 
 import log from 'logger';
 import Collector from 'collector';
+import FileHasher from 'filehasher';
 import InstallRdfParser from 'parsers/installrdf';
 import ManifestJSONParser from 'parsers/manifestjson';
 import ChromeManifestScanner from 'scanners/chromemanifest';
@@ -375,7 +375,7 @@ export default class Validator {
         return this.getAddonMetadata();
       })
       .then((addonMetadata) => {
-        return this._markEmptyFiles(addonMetadata);
+        return this.markSpecialFiles(addonMetadata);
       })
       .then((addonMetadata) => {
         log.info('Metadata option is set to %s', this.config.metadata);
@@ -460,6 +460,13 @@ export default class Validator {
     }
   }
 
+  markSpecialFiles(addonMetadata) {
+    return this._markEmptyFiles(addonMetadata)
+      .then((addonMetadata) => {
+        return this._markJSLibs(addonMetadata);
+      });
+  }
+
   _getAddonArchitecture(xpiMetadata) {
     // If we find a file named bootstrap.js this is assumed to be a
     // Jetpack add-on: https://github.com/mozilla/amo-validator/blob/7a8011a/validator/testcases/jetpack.py#L154
@@ -493,6 +500,33 @@ export default class Validator {
         }
 
         addonMetadata.emptyFiles = emptyFiles;
+        return addonMetadata;
+      });
+  }
+
+  _markJSLibs(addonMetadata) {
+    var jsLibs = {};
+    var promises = [];
+    var hasher = new FileHasher();
+
+    return this.io.getFilesByExt('.js')
+      .then((files) => {
+        for (let filename of files) {
+          promises.push(this.io.getFile(filename)
+            .then((file) => {
+              return hasher.matchesJSLibrary(file);
+            })
+            .then((hashResult) => {
+              if (hashResult.matches === true) {
+                log.debug(`${hashResult.name} detected in ${filename}`);
+                jsLibs[filename] = hashResult.name;
+              }
+            }));
+        }
+
+        return Promise.all(promises);
+      }).then(() => {
+        addonMetadata.jsLibs = jsLibs;
         return addonMetadata;
       });
   }
