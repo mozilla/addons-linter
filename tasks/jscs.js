@@ -7,6 +7,7 @@ module.exports = {
       src: [
         'tasks/**/*.js*',
         'tests/**/*.js*',
+        '!tests/fixtures/jslibs/**.js',
         'src/**/*.js',
         'Gruntfile.js',
         'webpack.config.js',
