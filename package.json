@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/mozilla/addons-validator#readme",
   "devDependencies": {
-    "babel-core": "5.8.34",
+    "babel-core": "6.3.13",
     "babel-eslint": "4.1.6",
     "babel-loader": "5.4.0",
     "chai": "3.4.1",
