@@ -8,7 +8,7 @@ export default class BaseScanner {
     this.contents = contents;
     this.filename = filename;
     this.options = options;
-    this.validatorMessages = [];
+    this.linterMessages = [];
     this._defaultRules = [];
     this._parsedContent = null;
     this._rulesProcessed = 0;
@@ -24,7 +24,7 @@ export default class BaseScanner {
           // Ignore private functions exported in rule files.
           //
           // (These are exported for testing purposes, but we don't want
-          // to include them in our validator's rules.)
+          // to include them in our linter's rules.)
           var rules = ignorePrivateFunctions(_rules);
 
           for (let rule in rules) {
@@ -38,10 +38,10 @@ export default class BaseScanner {
         })
         .then((ruleResults) => {
           for (let messages of ruleResults) {
-            this.validatorMessages = this.validatorMessages.concat(messages);
+            this.linterMessages = this.linterMessages.concat(messages);
           }
 
-          resolve(this.validatorMessages);
+          resolve(this.linterMessages);
         })
         .catch(reject);
     });

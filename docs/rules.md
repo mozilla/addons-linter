@@ -1,5 +1,5 @@
 
-# Validator Rules
+# Linter Rules
 
 This document is automatically published on [github pages](http://mozilla.github.io/addons-validator/).
 To update it edit `docs/rules.md` in the

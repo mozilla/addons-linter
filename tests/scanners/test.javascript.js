@@ -143,7 +143,6 @@ describe('JavaScript Scanner', function() {
       });
   });
 
-  // Depends on: https://github.com/mozilla/addons-validator/issues/7
   it('ignores /*eslint-disable*/ comments', () => {
     var code = singleLineString`/*eslint-disable*/
                                 var myDatabase = indexeddb || mozIndexedDB;`;
@@ -207,7 +206,7 @@ describe('JavaScript Scanner', function() {
 
   // This test is pretty much copied from ESLint, to make sure dependencies
   // don't change behaviour on us.
-  // https://github.com/mozilla/addons-validator/pull/98#issuecomment-158890847
+  // https://github.com/mozilla/addons-linter/pull/98#issuecomment-158890847
   it('ignores /*global foo*/', () => {
     var eslint = ESLint.linter;
     var config = { rules: { test: 2 } };

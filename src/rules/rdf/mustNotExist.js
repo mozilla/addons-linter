@@ -6,7 +6,7 @@ import * as messages from 'messages';
 export function mustNotExist(xmlDoc, filename, {namespace}={}) {
   return new Promise((resolve) => {
     var bannedTags = RDF_UNALLOWED_TAGS;
-    var validatorMessages = [];
+    var linterMessages = [];
 
     var addonIsListed = xmlDoc
       .getElementsByTagNameNS(namespace, 'listed').length > 0;
@@ -16,7 +16,7 @@ export function mustNotExist(xmlDoc, filename, {namespace}={}) {
     }
 
     // Using any banned tag is an error.
-    validatorMessages = validatorMessages.concat(
+    linterMessages = linterMessages.concat(
       _checkForTags({
         xmlDoc: xmlDoc,
         namespace: namespace,
@@ -28,7 +28,7 @@ export function mustNotExist(xmlDoc, filename, {namespace}={}) {
     );
 
     // But using an obsolete tag is just a warning.
-    validatorMessages = validatorMessages.concat(
+    linterMessages = linterMessages.concat(
       _checkForTags({
         xmlDoc: xmlDoc,
         namespace: namespace,
@@ -39,13 +39,13 @@ export function mustNotExist(xmlDoc, filename, {namespace}={}) {
       })
     );
 
-    resolve(validatorMessages);
+    resolve(linterMessages);
   });
 }
 
 export function _checkForTags({xmlDoc, namespace, tags, type, prefix,
                                filename} = {}) { // jscs:ignore
-  var validatorMessages = [];
+  var linterMessages = [];
 
   for (let tag of tags) {
     let nodeList = xmlDoc.getElementsByTagNameNS(namespace, tag);
@@ -54,7 +54,7 @@ export function _checkForTags({xmlDoc, namespace, tags, type, prefix,
       let element = nodeList.item(i);
       let errorCode = `${prefix}${tag.toUpperCase()}`;
 
-      validatorMessages.push({
+      linterMessages.push({
         code: errorCode,
         message: messages[errorCode].message,
         description: messages[errorCode].description,
@@ -67,5 +67,5 @@ export function _checkForTags({xmlDoc, namespace, tags, type, prefix,
     }
   }
 
-  return validatorMessages;
+  return linterMessages;
 }

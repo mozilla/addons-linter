@@ -25,7 +25,7 @@ import RDFScanner from 'scanners/rdf';
 import { Directory, Xpi } from 'io';
 
 
-export default class Validator {
+export default class Linter {
 
   constructor(config) {
     this.config = config;

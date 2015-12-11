@@ -39,9 +39,9 @@ describe('CSSScanner', () => {
     });
 
     return scanner.scan(fakeRules)
-      .then((validatorMessages) => {
+      .then((linterMessages) => {
         assert.ok(fakeRules.metadataPassCheck.called);
-        assert.equal(validatorMessages.length, 0);
+        assert.equal(linterMessages.length, 0);
       });
   });
 

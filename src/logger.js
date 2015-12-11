@@ -8,7 +8,7 @@ export function createLogger(_process=process) {
     throw new Error(`LOG_LEVEL must be one of ${logLevels.join(', ')}`);
   }
   return bunyan.createLogger({
-    name: 'AddonValidatorJS',
+    name: 'AddonLinterJS',
     stream: process.stdout,
     level: level,
   });

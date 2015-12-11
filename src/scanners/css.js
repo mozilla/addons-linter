@@ -46,7 +46,7 @@ export default class CSSScanner extends BaseScanner {
     log.debug('Passing CSS code to rule function "%s"',
       cssInstruction, info);
 
-    this.validatorMessages = this.validatorMessages.concat(
+    this.linterMessages = this.linterMessages.concat(
       _rules[cssInstruction](cssNode, file, cssOptions));
   }
 
@@ -66,7 +66,7 @@ export default class CSSScanner extends BaseScanner {
             }
           }
 
-          resolve(this.validatorMessages);
+          resolve(this.linterMessages);
         })
         .catch(reject);
     });
@@ -81,7 +81,7 @@ export default class CSSScanner extends BaseScanner {
         if (!e.reason || e instanceof Error === false) {
           return reject(e);
         } else {
-          this.validatorMessages.push(Object.assign({}, CSS_SYNTAX_ERROR, {
+          this.linterMessages.push(Object.assign({}, CSS_SYNTAX_ERROR, {
             type: VALIDATION_ERROR,
             // Use the reason for the error as the message.
             // e.message includes an absolute path.

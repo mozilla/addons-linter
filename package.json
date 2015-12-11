@@ -1,10 +1,10 @@
 {
-  "name": "addons-validator",
-  "version": "0.0.8",
-  "description": "Mozilla addons validator",
-  "main": "dist/addons-validator.js",
+  "name": "addons-linter",
+  "version": "0.0.9",
+  "description": "Mozilla Add-ons Linter",
+  "main": "dist/addons-linter.js",
   "bin": {
-    "addons-validator": "bin/addons-validator"
+    "addons-linter": "bin/addons-linter"
   },
   "scripts": {
     "start": "node -e \"require('grunt').cli()\" null start",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mozilla/addons-validator.git"
+    "url": "git+https://github.com/mozilla/addons-linter.git"
   },
   "author": "Mozilla Add-ons Team",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/mozilla/addons-validator/issues"
+    "url": "https://github.com/mozilla/addons-linter/issues"
   },
-  "homepage": "https://github.com/mozilla/addons-validator#readme",
+  "homepage": "https://github.com/mozilla/addons-linter#readme",
   "devDependencies": {
     "babel-core": "5.8.34",
     "babel-eslint": "4.1.6",

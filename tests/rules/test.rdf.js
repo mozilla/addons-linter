@@ -18,11 +18,11 @@ describe('RDF: mustNotExist', () => {
         return rules.mustNotExist(xmlDoc, filename,
                                   rdfScanner.options);
       })
-      .then((validatorMessages) => {
-        assert.equal(validatorMessages.length, 1);
-        assert.equal(validatorMessages[0].code,
+      .then((linterMessages) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code,
                      messages.TAG_NOT_ALLOWED_HIDDEN.code);
-        assert.equal(validatorMessages[0].type, VALIDATION_ERROR);
+        assert.equal(linterMessages[0].type, VALIDATION_ERROR);
       });
   });
 
@@ -36,10 +36,10 @@ describe('RDF: mustNotExist', () => {
         return rules.mustNotExist(xmlDoc, filename,
                                  rdfScanner.options);
       })
-      .then((validatorMessages) => {
-        assert.equal(validatorMessages.length, 2);
+      .then((linterMessages) => {
+        assert.equal(linterMessages.length, 2);
 
-        for (let message of validatorMessages) {
+        for (let message of linterMessages) {
           assert.equal(message.code, messages.TAG_NOT_ALLOWED_HIDDEN.code);
           assert.equal(message.type, VALIDATION_ERROR);
         }
@@ -57,9 +57,9 @@ describe('RDF: mustNotExist', () => {
         return rules.mustNotExist(xmlDoc, filename,
                                  rdfScanner.options);
       })
-      .then((validatorMessages) => {
-        assert.equal(validatorMessages.length, 1);
-        for (let message of validatorMessages) {
+      .then((linterMessages) => {
+        assert.equal(linterMessages.length, 1);
+        for (let message of linterMessages) {
           assert.equal(message.code, messages.TAG_NOT_ALLOWED_UPDATEURL.code);
           assert.equal(message.type, VALIDATION_ERROR);
         }
@@ -75,8 +75,8 @@ describe('RDF: mustNotExist', () => {
         return rules.mustNotExist(xmlDoc, filename,
                                  rdfScanner.options);
       })
-      .then((validatorMessages) => {
-        assert.equal(validatorMessages.length, 0);
+      .then((linterMessages) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 
@@ -90,18 +90,18 @@ describe('RDF: mustNotExist', () => {
         return rules.mustNotExist(xmlDoc, filename,
                                  rdfScanner.options);
       })
-      .then((validatorMessages) => {
-        assert.equal(validatorMessages.length, 3);
+      .then((linterMessages) => {
+        assert.equal(linterMessages.length, 3);
 
-        for (let message of validatorMessages) {
+        for (let message of linterMessages) {
           assert.equal(message.type, VALIDATION_WARNING);
         }
 
-        assert.equal(validatorMessages[0].code,
+        assert.equal(linterMessages[0].code,
                      messages.TAG_OBSOLETE_FILE.code);
-        assert.equal(validatorMessages[1].code,
+        assert.equal(linterMessages[1].code,
                      messages.TAG_OBSOLETE_REQUIRES.code);
-        assert.equal(validatorMessages[2].code,
+        assert.equal(linterMessages[2].code,
                      messages.TAG_OBSOLETE_SKIN.code);
       });
   });
@@ -121,11 +121,11 @@ describe('RDF: mustNotExist', () => {
           prefix: 'TAG_OBSOLETE_',
         });
       })
-      .then((validatorMessages) => {
-        assert.equal(validatorMessages.length, 1);
-        assert.equal(validatorMessages[0].code,
+      .then((linterMessages) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code,
                      messages.TAG_OBSOLETE_FILE.code);
-        assert.equal(validatorMessages[0].type, VALIDATION_NOTICE);
+        assert.equal(linterMessages[0].type, VALIDATION_NOTICE);
       });
   });
 });

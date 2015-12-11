@@ -22,7 +22,7 @@ module.exports = {
   target: 'node',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'addons-validator.js',
+    filename: 'addons-linter.js',
     libraryTarget: 'commonjs2',
   },
   module: {
