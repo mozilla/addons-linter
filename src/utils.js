@@ -2,7 +2,6 @@ import url from 'url';
 
 import semver from 'semver';
 import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
-import { MissingFilenameError } from 'exceptions';
 
 /*
  * Template tag for removing whitespace and new lines
@@ -193,7 +192,7 @@ export function ignorePrivateFunctions(list) {
  */
 export function ensureFilenameExists(filename) {
   if (typeof filename !== 'string' || filename.length < 1) {
-    throw new MissingFilenameError('Filename is required');
+    throw new Error('Filename is required');
   }
 }
 

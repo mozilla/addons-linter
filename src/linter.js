@@ -8,7 +8,6 @@ import { terminalWidth } from 'cli';
 import * as constants from 'const';
 import { ARCH_DEFAULT, ARCH_JETPACK, CHROME_MANIFEST, INSTALL_RDF,
          MANIFEST_JSON } from 'const';
-import * as exceptions from 'exceptions';
 import * as messages from 'messages';
 import { checkMinNodeVersion, gettext as _, singleLineString } from 'utils';
 
@@ -52,7 +51,7 @@ export default class Linter {
   }
 
   handleError(err, _console=console) {
-    if (err instanceof exceptions.DuplicateZipEntryError) {
+    if (err.message.indexOf('DuplicateZipEntry') > -1) {
       this.collector.addError(messages.DUPLICATE_XPI_ENTRY);
       this.print(_console);
     } else {

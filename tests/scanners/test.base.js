@@ -1,7 +1,6 @@
 import sinon from 'sinon';
 
 import BaseScanner from 'scanners/base';
-import { MissingFilenameError, NotImplentedError } from 'exceptions';
 import { ignorePrivateFunctions } from 'utils';
 import { metadataPassCheck, validMetadata } from '../helpers';
 
@@ -17,12 +16,12 @@ describe('Base Scanner Class', function() {
   it('should thrown an error without a filename', () => {
     assert.throws(() => {
       var baseScanner = new BaseScanner(''); // eslint-disable-line
-    }, MissingFilenameError, 'Filename is required');
+    }, Error, 'Filename is required');
 
     assert.throws(() => {
       // An empty filename doesn't count either.
       var baseScanner = new BaseScanner('', ''); // eslint-disable-line
-    }, MissingFilenameError, 'Filename is required');
+    }, Error, 'Filename is required');
   });
 
   it('should have an options property', () => {
@@ -45,7 +44,7 @@ describe('Base Scanner Class', function() {
         assert.fail(null, null, 'Unexpected success');
       })
       .catch((err) => {
-        assert.instanceOf(err, NotImplentedError);
+        assert.instanceOf(err, Error);
         assert.equal(err.message, '_getContents is not implemented');
       });
   });

@@ -1,9 +1,9 @@
 import yauzl from 'yauzl';
 
 import { IOBase } from 'io/base';
-import { DuplicateZipEntryError } from 'exceptions';
 
 import log from 'logger';
+import { singleLineString } from 'utils';
 
 
 /*
@@ -39,8 +39,8 @@ export class Xpi extends IOBase {
     }
     if (this.entries.indexOf(entry.fileName) > -1) {
       log.info('Found duplicate file entry: "%s" in package', entry.fileName);
-      reject(new DuplicateZipEntryError(
-        `Entry "${entry.fileName}" has already been seen`));
+      reject(new Error(singleLineString`DuplicateZipEntry: Entry
+        "${entry.fileName}" has already been seen`));
     }
     this.entries.push(entry.fileName);
     this.files[entry.fileName] = entry;

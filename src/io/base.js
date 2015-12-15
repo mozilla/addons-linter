@@ -1,5 +1,4 @@
 import { singleLineString } from '../utils';
-import { NotImplentedError } from 'exceptions';
 import { MAX_FILE_SIZE_MB } from 'const';
 
 /*
@@ -58,17 +57,17 @@ export class IOBase {
 
   getFiles() {
     return Promise.reject(
-      new NotImplentedError('getFiles is not implemented'));
+      new Error('getFiles is not implemented'));
   }
 
   getFileAsStream() {
     return Promise.reject(
-      new NotImplentedError('getFileAsStream is not implemented'));
+      new Error('getFileAsStream is not implemented'));
   }
 
   getFileAsString() {
     return Promise.reject(
-      new NotImplentedError('getFileAsString is not implemented'));
+      new Error('getFileAsString is not implemented'));
   }
 
 }

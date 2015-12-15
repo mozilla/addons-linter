@@ -2,7 +2,6 @@ import XMLDom from 'xmldom';
 
 import { RDF_DEFAULT_NAMESPACE } from 'const';
 import BaseScanner from 'scanners/base';
-import { RDFParseError } from 'exceptions';
 import * as rules from 'rules/rdf';
 
 
@@ -27,7 +26,7 @@ export default class RDFScanner extends BaseScanner {
     return new Promise((resolve, reject) => {
       var xmlDoc = new XMLDom.DOMParser({
         errorHandler: (err) => {
-          reject(new RDFParseError(`RDF Parse Error: ${err}`));
+          reject(new Error(`RDFParseError: ${err}`));
         },
       }).parseFromString(this.contents, 'text/xml');
 

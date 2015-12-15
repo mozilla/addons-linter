@@ -1,4 +1,3 @@
-import { NotImplentedError } from 'exceptions';
 import { ensureFilenameExists, ignorePrivateFunctions } from 'utils';
 
 
@@ -65,7 +64,7 @@ export default class BaseScanner {
 
   _getContents() {
     return Promise.reject(
-      new NotImplentedError('_getContents is not implemented'));
+      new Error('_getContents is not implemented'));
   }
 
 }

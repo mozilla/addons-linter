@@ -1,6 +1,5 @@
 import { IOBase } from 'io/base';
 import { unexpectedSuccess } from '../helpers';
-import { NotImplentedError } from 'exceptions';
 
 
 describe('io.IOBase()', function() {
@@ -20,7 +19,7 @@ describe('io.IOBase()', function() {
     return io.getFiles()
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.instanceOf(err, NotImplentedError);
+        assert.instanceOf(err, Error);
         assert.equal(err.message, 'getFiles is not implemented');
       });
   });
@@ -31,7 +30,7 @@ describe('io.IOBase()', function() {
     return io.getFileAsString()
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.instanceOf(err, NotImplentedError);
+        assert.instanceOf(err, Error);
         assert.equal(err.message, 'getFileAsString is not implemented');
       });
   });
@@ -42,7 +41,7 @@ describe('io.IOBase()', function() {
     return io.getFileAsStream()
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.instanceOf(err, NotImplentedError);
+        assert.instanceOf(err, Error);
         assert.equal(err.message, 'getFileAsStream is not implemented');
       });
   });
