@@ -16,8 +16,8 @@ describe('HTML', function() {
     var htmlScanner = new HTMLScanner(contents, 'index.html');
 
     return htmlScanner.scan()
-      .then((validatorMessages) => {
-        assert.equal(validatorMessages.length, 0);
+      .then((linterMessages) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 
@@ -26,8 +26,8 @@ describe('HTML', function() {
     var htmlScanner = new HTMLScanner(contents, 'index.html');
 
     return htmlScanner.scan()
-      .then((validatorMessages) => {
-        assert.equal(validatorMessages.length, 0);
+      .then((linterMessages) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 
@@ -49,12 +49,12 @@ describe('HTML', function() {
       .then(($) => {
         return rules.ensureRequiredAttributes($, htmlScanner.filename);
       })
-      .then((validatorMessages) => {
-        assert.equal(validatorMessages.length, 1);
-        assert.equal(validatorMessages[0].code,
+      .then((linterMessages) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code,
                      messages.PREFWINDOW_REQUIRES_ID.code);
-        assert.equal(validatorMessages[0].sourceCode, '<prefwindow>');
-        assert.equal(validatorMessages[0].type, VALIDATION_ERROR);
+        assert.equal(linterMessages[0].sourceCode, '<prefwindow>');
+        assert.equal(linterMessages[0].type, VALIDATION_ERROR);
 
         // Make sure there are no errors when an ID is provided.
         htmlScanner = new HTMLScanner(goodHTML, 'index.html');
@@ -63,8 +63,8 @@ describe('HTML', function() {
       .then(($) => {
         return rules.ensureRequiredAttributes($, htmlScanner.filename);
       })
-      .then((validatorMessages) => {
-        assert.equal(validatorMessages.length, 0);
+      .then((linterMessages) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 

@@ -23,12 +23,12 @@ module.exports = {
       // travis logs. See https://github.com/tschaub/grunt-gh-pages#optionssilent
       silent: true,
       base: 'docs/html',
-      repo: 'git@github.com:mozilla/addons-validator.git',
+      repo: 'git@github.com:mozilla/addons-linter.git',
       user: {
         name: process.env.GH_USER,
         email: process.env.GH_EMAIL,
       },
-      repo: 'https://' + process.env.GH_TOKEN + '@github.com/mozilla/addons-validator.git', // eslint-disable-line
+      repo: 'https://' + process.env.GH_TOKEN + '@github.com/mozilla/addons-linter.git', // eslint-disable-line
       message: 'Publish rules (auto)' + getDeployMessage(),
     },
     src: ['**'],

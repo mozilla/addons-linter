@@ -19,7 +19,7 @@ deploy:
     secure: bVMeDrmxJB7QajecwgqoKlIfdduwUv+qqGrv1ucD9IS9aD2fFUljMruzVxzYzJLgdz1anWHEeuLsVZ4KbCgp8axa/PHKjVOhqglRXvgJezE+d4DuVtbBOXAD4JV+F8DA75ZLCe+sZm94lFa4MKnUiyvwR/v2yyNMQWJL/pZRv87yx/G1i3yBuMzhFaj51DQSWreXyxq+mI5TLvLoWO9jzXtFOCynq+ufFhWw7pUz3/eqwp1VD9YIuUxLsT9U0KJHF4E5flhWl3tq9OYM3k26qs0m7BUYZ5O1dSnXQsODlbSe1PnRs6o1Mex/ZYdN56CdP4+32o1seGWbWHQRzvQuHSR29opqPORuKcyDAbXeUhyoo1V6zguKbXb7++9iSq0CiKLSHMzeuTco7bdpeOZYnWSH1mBi/QMUIg2dp7+0fpRTuBp7+rY2xFzqoRGg16fLotVkZDBwlXkxRTatM0QVvvscAmksPBIZI8xmB2+B0RNLcwBTuQKVeQ7988Bw1oZ94rhIhfKljbhnIzU11Y1sexmV/UzXxiFs/L6wbFr0fI7BTBrfdXAIMWaGQ9uwBCRn2EH9fLx3B3LoEXe7eL84jLgdOgRzR6eQTlkDpwvh9Jf3fbcv1S89pWpwt2CgxtofY/wMO3WpRW6e5fqo83rKwmuAzDuqzRjl+vvoc4IR5yE=
   on:
     tags: true
-    repo: mozilla/addons-validator
+    repo: mozilla/addons-linter
     branch: master
 after_success: npm run-script publish-rules > /dev/null 2>&1
 env:

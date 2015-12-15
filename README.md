@@ -1,53 +1,53 @@
-[![Build Status](https://travis-ci.org/mozilla/addons-validator.svg?branch=master)](https://travis-ci.org/mozilla/addons-validator)
-[![Coverage Status](https://coveralls.io/repos/mozilla/addons-validator/badge.svg?branch=master&service=github)](https://coveralls.io/github/mozilla/addons-validator?branch=master)
-[![Dependency Status](https://david-dm.org/mozilla/addons-validator.svg)](https://david-dm.org/mozilla/addons-validator)
-[![devDependency Status](https://david-dm.org/mozilla/addons-validator/dev-status.svg)](https://david-dm.org/mozilla/addons-validator#info=devDependencies)
-[![npm version](https://badge.fury.io/js/addons-validator.svg)](https://badge.fury.io/js/addons-validator)
+[![Build Status](https://travis-ci.org/mozilla/addons-linter.svg?branch=master)](https://travis-ci.org/mozilla/addons-linter)
+[![Coverage Status](https://coveralls.io/repos/mozilla/addons-linter/badge.svg?branch=master&service=github)](https://coveralls.io/github/mozilla/addons-linter?branch=master)
+[![Dependency Status](https://david-dm.org/mozilla/addons-linter.svg)](https://david-dm.org/mozilla/addons-linter)
+[![devDependency Status](https://david-dm.org/mozilla/addons-linter/dev-status.svg)](https://david-dm.org/mozilla/addons-linter#info=devDependencies)
+[![npm version](https://badge.fury.io/js/addons-linter.svg)](https://badge.fury.io/js/addons-linter)
 
-# addons-validator
+# addons-linter
 
-The Add-ons Validator, JS edition.
+The Add-ons Linter, JS edition.
 
-Here is the [canonical list of rules](http://mozilla.github.io/addons-validator/) we're working from.
+Here is the [canonical list of rules](http://mozilla.github.io/addons-linter/) we're working from.
 
 ## Usage
 
 ### Command Line
 
-You need node.js to use the add-ons validator.
+You need node.js to use the add-ons linter.
 
-To validate your add-on locally, install the validator from
+To validate your add-on locally, install the linter from
 [npm](http://nodejs.org/):
 
 ```
-# Install globally so you can use the validator from any directory on
+# Install globally so you can use the linter from any directory on
 # your machine.
-npm install -g addons-validator
+npm install -g addons-linter
 ```
 
-After installation, run the validator and direct it to your add-on file:
+After installation, run the linter and direct it to your add-on file:
 
 ```
-addons-validator my-addon.xpi
+addons-linter my-addon.xpi
 ```
 
 Alternatively you can point it at a directory:
 
 ```
-addons-validator my/package/dir
+addons-linter my/package/dir
 ```
 
-The addons-validator will check your add-on and show you errors, warnings,
+The addons-linter will check your add-on and show you errors, warnings,
 and friendly messages for your add-on. If you want more info on the options
 you can enable/disable for the command-line app, use the `--help` option:
 
 ```
-addons-validator --help
+addons-linter --help
 ```
 
 ## Development
 
-If you'd like to help us develop the addons-validator, that's great! It's
+If you'd like to help us develop the addons-linter, that's great! It's
 pretty easy to get started, you just need node.js installed on your machine.
 
 ### Quick Start
@@ -56,17 +56,17 @@ If you have node.js installed, here's the quick start to getting
 your development dependencies installed and building the binary:
 
 ```
-git clone https://github.com/mozilla/addons-validator.git
-cd addons-validator
+git clone https://github.com/mozilla/addons-linter.git
+cd addons-linter
 npm install
 npm start
 # Leave running to watch for changes or cancel to stop watching.
-bin/addons-validator my-addon.xpi
+bin/addons-linter my-addon.xpi
 ```
 
 ### Required node version
 
-addons-validator requires node.js v0.12.x or greater. Using nvm is probably the
+addons-linter requires node.js v0.12.x or greater. Using nvm is probably the
 easiest way to manage multiple node versions side by side. See
 [nvm on github](https://github.com/creationix/nvm) for more details.
 
@@ -121,7 +121,7 @@ From the grunt docs:
 
 You can run `npm start` to build the library and then rebuild on file changes.
 
-Once you build the library you can use the CLI in `bin/addons-validator`.
+Once you build the library you can use the CLI in `bin/addons-linter`.
 
 ### Testing
 
@@ -183,11 +183,11 @@ We use [bunyan](https://github.com/trentm/node-bunyan) for logging:
 
 ## Architecture
 
-In a nutshell the way the validator works is to take an add-on
+In a nutshell the way the linter works is to take an add-on
 package, extract the metadata from the xpi (zip) format and then
 process the files it finds through various content scanners.
 
-![Architecture diagram](https://raw.github.com/mozilla/addons-validator/master/docs/diagrams/addon-validator-flow.png)
+![Architecture diagram](https://raw.github.com/mozilla/addons-linter/master/docs/diagrams/addon-linter-flow.png)
 
 ### Scanners
 
@@ -221,7 +221,7 @@ same message could be an error *or* a warning for example.
 
 ### Output
 
-Lastly when the processing is complete the validator will output
+Lastly when the processing is complete the linter will output
 the collected data as text or JSON.
 
 ## Deploys
@@ -233,5 +233,5 @@ version number conforms to the [semver][] format eg: `0.2.1`.
 After merging the PR, [create a new release][new release] with the same tag
 name as your new version. Once the build passes it will deploy. Magic! ✨
 
-[new release]: https://github.com/mozilla/addons-validator/releases/new
+[new release]: https://github.com/mozilla/addons-linter/releases/new
 [semver]: http://semver.org/

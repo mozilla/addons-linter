@@ -76,9 +76,9 @@ describe('Base Scanner Class', function() {
     });
 
     return scanner.scan(fakeRules)
-      .then((validatorMessages) => {
+      .then((linterMessages) => {
         assert.ok(fakeRules.metadataPassedCheck.called);
-        assert.equal(validatorMessages.length, 0);
+        assert.equal(linterMessages.length, 0);
       });
   });
 

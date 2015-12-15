@@ -1,4 +1,4 @@
-Thanks for wanting to contribute to Mozilla's Add-ons Validator! You rock! 😊
+Thanks for wanting to contribute to Mozilla's Add-ons Linter! You rock! 😊
 
 ## Submitting a Pull Request
 
@@ -18,5 +18,5 @@ consistent. You can review the rules in the [`.eslintrc`][eslint] and
 
 Please run the tests locally with `npm test` before you commit.
 
-[eslint]: https://github.com/mozilla/addons-validator/blob/master/.eslintrc
-[jscsrc]: https://github.com/mozilla/addons-validator/blob/master/.jscsrc
+[eslint]: https://github.com/mozilla/addons-linter/blob/master/.eslintrc
+[jscsrc]: https://github.com/mozilla/addons-linter/blob/master/.jscsrc

@@ -15,7 +15,7 @@ export default class JavaScriptScanner {
     this.code = code;
     this.filename = filename;
     this.options = options;
-    this.validatorMessages = [];
+    this.linterMessages = [];
     this._rulesProcessed = 0;
 
     ensureFilenameExists(this.filename);
@@ -65,7 +65,7 @@ export default class JavaScriptScanner {
         var messageObj = _messages[message.message];
         var code = message.message;
 
-        this.validatorMessages.push({
+        this.linterMessages.push({
           code: code,
           column: message.column,
           description: messageObj.description,
@@ -77,7 +77,7 @@ export default class JavaScriptScanner {
         });
       }
 
-      resolve(this.validatorMessages);
+      resolve(this.linterMessages);
     });
   }
 }
