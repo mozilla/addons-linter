@@ -86,16 +86,18 @@ export function getNodeReference(context, node) {
     let occurances = scopeVar.defs[0].parent.parent.body;
     let lastAssignment;
 
-    for (let occurance of occurances) {
-      if (occurance.type === 'VariableDeclaration' &&
-          occurance.declarations[0].init !== null) {
-        // Get what the name of what it was assigned to or the raw
-        // value depending on the initalization
-        lastAssignment = occurance.declarations[0].init;
-      } else if (occurance.type === 'ExpressionStatement' &&
-                 occurance.expression.type === 'AssignmentExpression') {
-        // Get the right hand side of the assignment
-        lastAssignment = occurance.expression.right;
+    if (occurances instanceof Array) {
+      for (let occurance of occurances) {
+        if (occurance.type === 'VariableDeclaration' &&
+            occurance.declarations[0].init !== null) {
+          // Get what the name of what it was assigned to or the raw
+          // value depending on the initalization
+          lastAssignment = occurance.declarations[0].init;
+        } else if (occurance.type === 'ExpressionStatement' &&
+                   occurance.expression.type === 'AssignmentExpression') {
+          // Get the right hand side of the assignment
+          lastAssignment = occurance.expression.right;
+        }
       }
     }
 
