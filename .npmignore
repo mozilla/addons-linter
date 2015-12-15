@@ -16,6 +16,7 @@ docs/
 karma.conf.js
 node_modules/
 src/
+!src/hashes.txt
 tasks/
 tests/
 webpack.config.js

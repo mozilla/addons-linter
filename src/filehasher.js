@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 import readline from 'readline';
 
 import createHash from 'sha.js';
@@ -6,10 +7,14 @@ import createHash from 'sha.js';
 import log from 'logger';
 import { lstatPromise } from 'io/utils';
 
+// TODO: This will be removed when hashes are coming
+// from the dispensary module.
+let hashesPath = global.appRoot ?
+  path.join(global.appRoot, '../src/hashes.txt') : './src/hashes.txt';
 
 export default class FileHasher {
 
-  constructor({hashes=null, path='./src/hashes.txt', lstat=lstatPromise} = {}) {
+  constructor({hashes=null, path=hashesPath, lstat=lstatPromise} = {}) {
     this._hashes = hashes;
     this._lstatPromise = lstat;
     this._pathToHashes = path;
