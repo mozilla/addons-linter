@@ -47,7 +47,7 @@
     "load-grunt-configs": "0.4.3",
     "load-grunt-tasks": "3.3.0",
     "markdown-it": "5.0.2",
-    "markdown-it-anchor": "2.3.2",
+    "markdown-it-anchor": "2.3.3",
     "markdown-it-emoji": "1.1.0",
     "mocha": "2.3.4",
     "sinon": "1.17.2",
