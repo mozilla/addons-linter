@@ -78,7 +78,7 @@ export default class CSSScanner extends BaseScanner {
         var rootNode = _cssParser.parse(this.contents, {from: this.filename});
         return resolve(rootNode);
       } catch (e) {
-        if (!e.reason || e instanceof Error === false) {
+        if (!e.reason || e.name !== 'CssSyntaxError') {
           return reject(e);
         } else {
           this.linterMessages.push(Object.assign({}, CSS_SYNTAX_ERROR, {
