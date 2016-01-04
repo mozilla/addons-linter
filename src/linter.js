@@ -438,7 +438,12 @@ export default class Linter {
       })
       .then(() => {
         this.print();
-        return;
+        // This is skipped in the code coverage because the
+        // test runs against un-instrumented code.
+        /* istanbul ignore if  */
+        if (this.config.runAsBinary === true) {
+          process.exit(this.output.errors.length > 0 ? 1 : 0);
+        }
       })
       .catch((err) => {
         this.handleError(err, deps._console);
@@ -449,6 +454,14 @@ export default class Linter {
   run(deps={}) {
     if (this.config.metadata === true) {
       return this.extractMetadata(deps)
+        .then(() => {
+          // This is skipped in the code coverage because the
+          // test runs against un-instrumented code.
+          /* istanbul ignore if  */
+          if (this.config.runAsBinary === true) {
+            process.exit(this.output.errors.length > 0 ? 1 : 0);
+          }
+        })
         .catch((err) => {
           log.debug(err);
           this.handleError(err, deps._console);
