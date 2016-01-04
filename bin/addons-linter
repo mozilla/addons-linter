@@ -5,5 +5,6 @@ var path = require('path');
 var absoluteAppRoot = path.resolve(__dirname);
 global.appRoot = path.relative(process.cwd(), absoluteAppRoot);
 
-var AddonLinter = require('../dist/addons-linter').createInstance();
-AddonLinter.run();
+require('../dist/addons-linter')
+  .createInstance({runAsBinary: true})
+  .run();
