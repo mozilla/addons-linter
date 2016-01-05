@@ -235,55 +235,19 @@ export default class Linter {
       })
       .then((addonMetadata) => {
         this.addonMetadata = addonMetadata;
-
         this.addonMetadata.architecture = this._getAddonArchitecture(_files);
 
+        // The type must be explcitly defined. This behaviour differs the
+        // historical approach by the amo-validator.
+        // See mozilla/addons-linter#411.
+        // In due course metadata checking code may surpass this error
+        // being added here.
         if (!this.addonMetadata.type) {
-          log.info('Determining addon type failed. Guessing from layout');
-          return this.detectTypeFromLayout()
-            .then((addonType) => {
-              this.addonMetadata.type = addonType;
-              return this.addonMetadata;
-            });
-        } else {
-          return this.addonMetadata;
-        }
-      });
-  }
-
-  /*
-   * When type lookups from install.rdf and manifest.json fail
-   * this is used as a fall-back.
-   * TODO: This follows the amo-validator approach - we should check
-   * we still think this is warranted.
-   * There's no type element, so the spec says that it's either a
-   * theme or an extension. At this point, we know that it isn't
-   * a dictionary, language pack, or multiple extension pack.
-   */
-  detectTypeFromLayout() {
-    return this.io.getFiles()
-      .then((files) => {
-        for (let path_ of Object.keys(files)) {
-          if (path_.startsWith('dictionaries/')) {
-            return constants.PACKAGE_DICTIONARY;
-          }
+          log.error('Addon type lookup failed');
+          this.collector.addError(messages.TYPE_NOT_DETERMINED);
         }
 
-        log.warn('Falling back to decide type from package extension');
-
-        var extensions = {
-          '.jar': constants.PACKAGE_THEME,
-          '.xpi': constants.PACKAGE_EXTENSION,
-        };
-
-        var ext = extname(this.packagePath);
-        if (extensions.hasOwnProperty(ext)) {
-          return extensions[ext];
-        }
-
-        log.error('All attempts to lookup addon type failed');
-        this.collector.addError(messages.TYPE_NOT_DETERMINED);
-        return null;
+        return this.addonMetadata;
       });
   }
 
