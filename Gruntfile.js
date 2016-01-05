@@ -54,23 +54,22 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('test', [
-    'clean',
     'instrument',
     'webpack:build',
     'webpack:coverage',
     'mochaTest',
     'storeCoverage',
     'makeReport',
-    'eslint',
-    'jscs',
+    'newer:eslint',
+    'newer:jscs',
   ]);
 
   grunt.registerTask('test-no-coverage', [
     'clean',
     'webpack:test',
     'mochaTest',
-    'eslint',
-    'jscs',
+    'newer:eslint',
+    'newer:jscs',
   ]);
 
 };
