@@ -3,15 +3,16 @@ module.exports = {
     options: {
       config: '.jscsrc',
     },
-    files: {
-      src: [
-        'tasks/**/*.js*',
-        'tests/**/*.js*',
-        '!tests/fixtures/jslibs/**.js',
-        'src/**/*.js',
-        'Gruntfile.js',
-        'webpack.config.js',
-      ],
-    },
+    files: [
+      { src: [
+          'tasks/**/*.js*',
+          'tests/**/*.js*',
+          'src/**/*.js',
+          'Gruntfile.js',
+          'webpack.config.js',
+          '!tests/fixtures/jslibs/**.js',
+        ],
+      },
+    ],
   },
 };
