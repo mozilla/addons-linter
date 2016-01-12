@@ -54,7 +54,7 @@
     "shelljs": "0.5.3",
     "sinon": "1.17.2",
     "webpack": "1.12.10",
-    "webpack-dev-server": "1.14.0"
+    "webpack-dev-server": "1.14.1"
   },
   "dependencies": {
     "babel-polyfill": "6.3.14",
