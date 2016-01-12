@@ -68,7 +68,7 @@
     "semver": "5.1.0",
     "sha.js": "2.4.4",
     "source-map-support": "0.4.0",
-    "xmldom": "0.1.19",
+    "xmldom": "0.1.20",
     "yargs": "3.31.0",
     "yauzl": "2.4.1"
   }
