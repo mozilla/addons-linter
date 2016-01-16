@@ -69,7 +69,7 @@
     "sha.js": "2.4.4",
     "source-map-support": "0.4.0",
     "xmldom": "0.1.21",
-    "yargs": "3.31.0",
+    "yargs": "3.32.0",
     "yauzl": "2.4.1"
   }
 }
