@@ -549,7 +549,7 @@ describe('Linter.getAddonMetadata()', function() {
       });
   });
 
-  it('should recognise it as a Jetpack add-on', () => {
+  it('should recognise it as a Jetpack add-on', function() {
     var addonLinter = new Linter({
       _: ['tests/fixtures/jetpack-1.14.xpi'],
     });
@@ -787,12 +787,12 @@ describe('Linter.extractMetadata()', function() {
         assert.ok(markJSFilesSpy.called);
         assert.equal(Object.keys(metadata.jsLibs).length, 1);
         assert.deepEqual(metadata.jsLibs, {
-          'data/jquery-2.1.4.min.js': 'jquery.2.1.4.jquery-2.1.4.min.js',
+          'data/jquery-2.1.4.min.js': 'jquery.2.1.4.jquery.min.js',
         });
       });
   });
 
-  it('should flag known JS libraries', () => {
+  it('should flag known JS libraries', function() {
     var addonLinter = new Linter({ _: ['foo'] });
     var markJSFilesSpy = sinon.spy(addonLinter, '_markJSLibs');
     addonLinter.checkFileExists = fakeCheckFileExists;

@@ -62,6 +62,7 @@
     "chalk": "1.1.1",
     "cheerio": "0.20.0",
     "columnify": "1.5.4",
+    "dispensary": "0.3.0",
     "es6-promisify": "3.0.0",
     "eslint": "1.10.3",
     "postcss": "5.0.14",
