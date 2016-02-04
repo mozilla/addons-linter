@@ -14,9 +14,9 @@ export function eval_string_arg(context) {
         if (node.arguments.length > 0 &&
             node.arguments[0].type === 'Identifier') {
           var originalDef = getVariable(context, node.arguments[0].name);
-          if (typeof originalDef !== 'undefined' &&
-            (originalDef.type !== 'FunctionExpression' &&
-             originalDef.type !== 'ArrowFunctionExpression')) {
+          if (originalDef && originalDef.type &&
+              originalDef.type !== 'FunctionExpression' &&
+              originalDef.type !== 'ArrowFunctionExpression') {
             return context.report({node: node, message: EVAL_STRING_ARG.code});
           } else {
             return;
