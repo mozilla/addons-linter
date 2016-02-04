@@ -1,6 +1,6 @@
-import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
+import { PACKAGE_EXTENSION } from 'const';
 import log from 'logger';
-import * as messages from 'messages';
+import validate from 'mozilla-web-extension-manifest-schema';
 
 
 export default class ManifestJSONParser {
@@ -12,54 +12,43 @@ export default class ManifestJSONParser {
     this.collector = collector;
   }
 
+  checkSchema() {
+    var isValid = validate(this.parsedJSON);
+    if (!isValid) {
+      log.debug('Schema Validation errors', validate.errors);
+      for (let error of validate.errors) {
+        var description;
+        var errorData = {
+          code: 'MANIFEST_JSON_INVALID',
+          message: `${error.dataPath}: ${error.message}`,
+          file: 'manifest.json',
+        };
+
+        // If a required prop is missing, introspect the schema for its
+        // description.
+        if (error.keyword === 'required') {
+          description = error.schema[error.params.missingProperty].description;
+        } else {
+          description = error.parentSchema.description;
+        }
+
+        errorData.description = description || 'MISSING_SCHEMA_DESCRIPTION';
+        this.collector.addError(errorData);
+      }
+    }
+    return isValid;
+  }
+
   getMetadata() {
-    return Promise.resolve({
-      manifestVersion: this._getManifestVersion(),
-      name: this._getName(),
-      type: this._getType(),
-      version: this._getVersion(),
-      restartless: true, // All web extensions are restartless
-    });
-  }
-
-  _getType() {
-    return PACKAGE_EXTENSION;
-  }
-
-  _getManifestVersion() {
-    // Manifest.json specific.
-    var manifestVersion = this.parsedJSON.manifest_version;
-    // manifestVersion must be a number.
-    if (typeof manifestVersion !== 'number' ||
-        manifestVersion !== VALID_MANIFEST_VERSION) {
-      log.debug('Invalid manifest_version "%s"', manifestVersion);
-      this.collector.addError(messages.MANIFEST_VERSION_INVALID);
-      manifestVersion = null;
-    }
-    return manifestVersion;
-  }
-
-  _getName() {
-    var name = this.parsedJSON.name || null;
-    if (!name) {
-      this.collector.addError(messages.PROP_NAME_MISSING);
-    } else if (typeof name !== 'string') {
-      log.debug('Invalid name "%s"', name);
-      this.collector.addError(messages.PROP_NAME_INVALID);
-      name = null;
-    }
-    return name;
-  }
-
-  _getVersion() {
-    var version = this.parsedJSON.version || null;
-    if (!version) {
-      this.collector.addError(messages.PROP_VERSION_MISSING);
-    } else if (typeof version !== 'string') {
-      log.debug('Invalid version "%s"', version);
-      this.collector.addError(messages.PROP_VERSION_INVALID);
-      version = null;
-    }
-    return version;
+    var isValid = this.checkSchema();
+    return {
+      isValid: isValid,
+      metadata: {
+        manifestVersion: this.parsedJSON.manifest_version,
+        name: this.parsedJSON.name,
+        type: PACKAGE_EXTENSION,
+        version: this.parsedJSON.version,
+      },
+    };
   }
 }

@@ -98,11 +98,13 @@ export function validManifestJSON(extra) {
   return JSON.stringify(Object.assign({}, {
     name: 'my extension',
     manifest_version: 2,
-    gecko: {
-      id: '{the-addon-id}',
-      strict_min_version: '40.0.0',
-      strict_max_version: '50.*',
-      update_url: 'https://foo/bar',
+    applications: {
+      gecko: {
+        id: '{daf44bf7-a45e-4450-979c-91cf07434c3d}',
+        strict_min_version: '40.0.0',
+        strict_max_version: '50.*',
+        update_url: 'https://foo/bar',
+      },
     },
     version: '0.1',
   }, extra));

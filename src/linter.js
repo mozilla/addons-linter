@@ -223,7 +223,9 @@ export default class Linter {
           log.info('Retrieving metadata from manifest.json');
           return this.io.getFileAsString(MANIFEST_JSON)
             .then((json) => {
-              return new ManifestJSONParser(json, this.collector).getMetadata();
+              var result = new ManifestJSONParser(
+                json, this.collector).getMetadata();
+              return result.metadata;
             });
         } else {
           log.warn(singleLineString`No ${INSTALL_RDF} or ${MANIFEST_JSON}
