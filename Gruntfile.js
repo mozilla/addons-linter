@@ -66,6 +66,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test-no-coverage', [
     'clean',
+    'webpack:build',
     'webpack:test',
     'mochaTest',
     'newer:eslint',

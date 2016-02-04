@@ -1,7 +1,7 @@
 module.exports = {
   options: {
     // Timeout is long due to tests that check *all* rules have been run.
-    timeout: 5000,
+    timeout: 10000,
     require: [
       function() {
         /*eslint-disable */
