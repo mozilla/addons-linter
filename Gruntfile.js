@@ -2,6 +2,7 @@ var fs = require('fs');
 var md = require('markdown-it')();
 var emoji = require('markdown-it-emoji');
 var markdownItAnchor = require('markdown-it-anchor');
+var semver = require('semver');
 
 
 module.exports = function(grunt) {
@@ -53,7 +54,17 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('test', [
+  grunt.registerTask('test',
+    'Runs the tests conditionally based on node version', function() {
+    if (semver.major(process.versions.node) >= 4) {
+      grunt.log.writeln('Test coverage is slow under node 4+. Skipping.');
+      grunt.task.run('test-no-coverage');
+    } else {
+      grunt.task.run('test-with-coverage');
+    }
+  });
+
+  grunt.registerTask('test-with-coverage', [
     'instrument',
     'webpack:build',
     'webpack:coverage',

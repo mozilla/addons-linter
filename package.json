@@ -10,6 +10,7 @@
     "start": "node -e \"require('grunt').cli()\" null start",
     "build": "node -e \"require('grunt').cli()\" null build",
     "test": "node -e \"require('grunt').cli()\" null test",
+    "test-no-coverage": "node -e \"require('grunt').cli()\" null test-no-coverage",
     "publish-rules": "node -e \"require('grunt').cli()\" null copy build-rules-html publish-rules"
   },
   "repository": {
