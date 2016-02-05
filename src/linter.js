@@ -2,6 +2,7 @@ import { extname } from 'path';
 
 import columnify from 'columnify';
 import chalk from 'chalk';
+import Dispensary from 'dispensary';
 
 import { lstatPromise } from 'io/utils';
 import { terminalWidth } from 'cli';
@@ -13,7 +14,6 @@ import { checkMinNodeVersion, gettext as _, singleLineString } from 'utils';
 
 import log from 'logger';
 import Collector from 'collector';
-import FileHasher from 'filehasher';
 import InstallRdfParser from 'parsers/installrdf';
 import ManifestJSONParser from 'parsers/manifestjson';
 import ChromeManifestScanner from 'scanners/chromemanifest';
@@ -481,21 +481,20 @@ export default class Linter {
   }
 
   _markJSLibs(addonMetadata) {
+    var dispensary = new Dispensary();
     var jsLibs = {};
     var promises = [];
-    var hasher = new FileHasher();
 
     return this.io.getFilesByExt('.js')
       .then((files) => {
         for (let filename of files) {
           promises.push(this.io.getFile(filename)
             .then((file) => {
-              return hasher.matchesJSLibrary(file);
-            })
-            .then((hashResult) => {
-              if (hashResult.matches === true) {
-                log.debug(`${hashResult.name} detected in ${filename}`);
-                jsLibs[filename] = hashResult.name;
+              var hashResult = dispensary.match(file);
+
+              if (hashResult !== false) {
+                log.debug(`${hashResult} detected in ${filename}`);
+                jsLibs[filename] = hashResult;
               }
             }));
         }
