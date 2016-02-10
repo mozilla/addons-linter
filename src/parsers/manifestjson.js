@@ -10,9 +10,10 @@ export default class ManifestJSONParser {
     // Provides ability to directly add messages to
     // the collector.
     this.collector = collector;
+    this.validated = false;
   }
 
-  checkSchema() {
+  validate() {
     var isValid = validate(this.parsedJSON);
     if (!isValid) {
       log.debug('Schema Validation errors', validate.errors);
@@ -36,19 +37,19 @@ export default class ManifestJSONParser {
         this.collector.addError(errorData);
       }
     }
+    this.validated = true;
     return isValid;
   }
 
   getMetadata() {
-    var isValid = this.checkSchema();
+    if (this.validated === false) {
+      throw new Error('validate() must be called before getMetadata()');
+    }
     return {
-      isValid: isValid,
-      metadata: {
-        manifestVersion: this.parsedJSON.manifest_version,
-        name: this.parsedJSON.name,
-        type: PACKAGE_EXTENSION,
-        version: this.parsedJSON.version,
-      },
+      manifestVersion: this.parsedJSON.manifest_version,
+      name: this.parsedJSON.name,
+      type: PACKAGE_EXTENSION,
+      version: this.parsedJSON.version,
     };
   }
 }
