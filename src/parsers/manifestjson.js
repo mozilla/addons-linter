@@ -10,10 +10,10 @@ export default class ManifestJSONParser {
     // Provides ability to directly add messages to
     // the collector.
     this.collector = collector;
-    this.validated = false;
+    this.isValid = this._validate();
   }
 
-  validate() {
+  _validate() {
     var isValid = validate(this.parsedJSON);
     if (!isValid) {
       log.debug('Schema Validation errors', validate.errors);
@@ -37,14 +37,10 @@ export default class ManifestJSONParser {
         this.collector.addError(errorData);
       }
     }
-    this.validated = true;
     return isValid;
   }
 
   getMetadata() {
-    if (this.validated === false) {
-      throw new Error('validate() must be called before getMetadata()');
-    }
     return {
       manifestVersion: this.parsedJSON.manifest_version,
       name: this.parsedJSON.name,

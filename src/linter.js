@@ -224,7 +224,6 @@ export default class Linter {
           return this.io.getFileAsString(MANIFEST_JSON)
             .then((json) => {
               var manifestParser = new ManifestJSONParser(json, this.collector);
-              manifestParser.validate();
               return manifestParser.getMetadata();
             });
         } else {
