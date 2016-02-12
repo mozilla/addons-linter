@@ -13,8 +13,7 @@ describe('ManifestJSONParser manifestVersion', function() {
     var json = validManifestJSON({manifest_version: 'whatever'});
     var manifestJSONParser = new ManifestJSONParser(json,
                                                     addonLinter.collector);
-    var result = manifestJSONParser.getMetadata();
-    assert.equal(result.isValid, false);
+    assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
     assert.equal(errors.length, 1);
     assert.equal(errors[0].code, 'MANIFEST_JSON_INVALID');
@@ -26,8 +25,7 @@ describe('ManifestJSONParser manifestVersion', function() {
     var json = validManifestJSON({manifest_version: '1'});
     var manifestJSONParser = new ManifestJSONParser(json,
                                                     addonLinter.collector);
-    var result = manifestJSONParser.getMetadata();
-    assert.equal(result.isValid, false);
+    assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
     assert.equal(errors[0].code, 'MANIFEST_JSON_INVALID');
     assert.include(errors[0].message, '/manifest_version');
@@ -38,9 +36,9 @@ describe('ManifestJSONParser manifestVersion', function() {
     var json = validManifestJSON();
     var manifestJSONParser = new ManifestJSONParser(json,
                                                     addonLinter.collector);
-    var result = manifestJSONParser.getMetadata();
-    assert.equal(result.metadata.manifestVersion, VALID_MANIFEST_VERSION);
-    assert.equal(result.isValid, true);
+    assert.equal(manifestJSONParser.isValid, true);
+    var metadata = manifestJSONParser.getMetadata();
+    assert.equal(metadata.manifestVersion, VALID_MANIFEST_VERSION);
   });
 
 });
@@ -52,17 +50,17 @@ describe('ManifestJSONParser type', function() {
     // Type is always returned as PACKAGE_EXTENSION presently.
     var json = validManifestJSON();
     var manifestJSONParser = new ManifestJSONParser(json);
-    var result = manifestJSONParser.getMetadata();
-    assert.equal(result.metadata.type, PACKAGE_EXTENSION);
-    assert.equal(result.isValid, true);
+    assert.equal(manifestJSONParser.isValid, true);
+    var metadata = manifestJSONParser.getMetadata();
+    assert.equal(metadata.type, PACKAGE_EXTENSION);
   });
 
   it('should not allow the type to be user-specified', () => {
     var json = validManifestJSON({type: 'whatevs'});
     var manifestJSONParser = new ManifestJSONParser(json);
-    var result = manifestJSONParser.getMetadata();
-    assert.equal(result.metadata.type, PACKAGE_EXTENSION);
-    assert.equal(result.isValid, true);
+    assert.equal(manifestJSONParser.isValid, true);
+    var metadata = manifestJSONParser.getMetadata();
+    assert.equal(metadata.type, PACKAGE_EXTENSION);
   });
 
 });
@@ -74,9 +72,9 @@ describe('ManifestJSONParser name', function() {
     // Type is always returned as PACKAGE_EXTENSION presently.
     var json = validManifestJSON({name: 'my-awesome-ext'});
     var manifestJSONParser = new ManifestJSONParser(json);
-    var result = manifestJSONParser.getMetadata();
-    assert.equal(result.metadata.name, 'my-awesome-ext');
-    assert.equal(result.isValid, true);
+    assert.equal(manifestJSONParser.isValid, true);
+    var metadata = manifestJSONParser.getMetadata();
+    assert.equal(metadata.name, 'my-awesome-ext');
   });
 
   it('should collect an error on missing name value', () => {
@@ -84,8 +82,7 @@ describe('ManifestJSONParser name', function() {
     var json = validManifestJSON({name: undefined});
     var manifestJSONParser = new ManifestJSONParser(json,
                                                     addonLinter.collector);
-    var result = manifestJSONParser.getMetadata();
-    assert.equal(result.isValid, false);
+    assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
     assert.equal(errors[0].code, 'MANIFEST_JSON_INVALID');
     assert.include(errors[0].message, '/name');
@@ -96,8 +93,7 @@ describe('ManifestJSONParser name', function() {
     var json = validManifestJSON({name: 1});
     var manifestJSONParser = new ManifestJSONParser(json,
                                                     addonLinter.collector);
-    var result = manifestJSONParser.getMetadata();
-    assert.equal(result.isValid, false);
+    assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
     assert.equal(errors[0].code, 'MANIFEST_JSON_INVALID');
     assert.include(errors[0].message, '/name');
@@ -110,9 +106,9 @@ describe('ManifestJSONParser version', function() {
   it('should extract a version', () => {
     var json = validManifestJSON({version: '1.0'});
     var manifestJSONParser = new ManifestJSONParser(json);
-    var result = manifestJSONParser.getMetadata();
-    assert.equal(result.isValid, true);
-    assert.equal(result.metadata.version, '1.0');
+    assert.equal(manifestJSONParser.isValid, true);
+    var metadata = manifestJSONParser.getMetadata();
+    assert.equal(metadata.version, '1.0');
   });
 
   it('should collect an error on missing version value', () => {
@@ -120,8 +116,7 @@ describe('ManifestJSONParser version', function() {
     var json = validManifestJSON({version: undefined});
     var manifestJSONParser = new ManifestJSONParser(json,
                                                     addonLinter.collector);
-    var result = manifestJSONParser.getMetadata();
-    assert.equal(result.isValid, false);
+    assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
     assert.equal(errors[0].code, 'MANIFEST_JSON_INVALID');
     assert.include(errors[0].message, '/version');
@@ -132,8 +127,7 @@ describe('ManifestJSONParser version', function() {
     var json = validManifestJSON({version: 1});
     var manifestJSONParser = new ManifestJSONParser(json,
                                                     addonLinter.collector);
-    var result = manifestJSONParser.getMetadata();
-    assert.equal(result.isValid, false);
+    assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
     assert.equal(errors[0].code, 'MANIFEST_JSON_INVALID');
     assert.include(errors[0].message, '/version');
