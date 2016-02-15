@@ -243,7 +243,7 @@ describe('InstallRdfParser._getIsBootstrapped()', () => {
       });
   });
 
-  it(`should extract that the addon isn't restartless`, () => {
+  it("should extract that the addon isn't restartless", () => {
     var rdf = validRDF('<em:bootstrap>false</em:bootstrap>');
     var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
     return rdfScanner.getContents()
@@ -257,7 +257,7 @@ describe('InstallRdfParser._getIsBootstrapped()', () => {
       });
   });
 
-  it(`should extract only the top level bootstrap value`, () => {
+  it('should extract only the top level bootstrap value', () => {
     var rdf = validRDF(`<em:bootstrap>true</em:bootstrap><Description>
       <em:bootstrap>false</em:bootstrap></Description>`);
     var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
@@ -272,7 +272,7 @@ describe('InstallRdfParser._getIsBootstrapped()', () => {
       });
   });
 
-  it(`should assume that an addon isn't restartless`, () => {
+  it("should assume that an addon isn't restartless", () => {
     var rdf = validRDF('<em:id>123</em:id>');
     var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
     return rdfScanner.getContents()

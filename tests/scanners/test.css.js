@@ -89,7 +89,7 @@ describe('CSSScanner', () => {
   });
 
   it('should not blow-up on empty media query', () => {
-    var code = `@media only screen and (max-width: 959px) {}`;
+    var code = '@media only screen and (max-width: 959px) {}';
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
     return cssScanner.scan()
       .then((validationMessages) => {
