@@ -356,32 +356,32 @@ describe('utils.isLocalCSSUri', () => {
 describe('utils.extractCSSUri', () => {
 
   it('should extract quoted resource', () => {
-    assert.equal(utils.extractCSSUri(`url("resource://whatever")`),
+    assert.equal(utils.extractCSSUri('url("resource://whatever")'),
                  'resource://whatever');
   });
 
   it('should extract quoted chrome url', () => {
-    assert.equal(utils.extractCSSUri(`url("chrome://whatever")`),
+    assert.equal(utils.extractCSSUri('url("chrome://whatever")'),
                  'chrome://whatever');
   });
 
   it('should extract quoted local url', () => {
-    assert.equal(utils.extractCSSUri(`url("/whatever")`),
+    assert.equal(utils.extractCSSUri('url("/whatever")'),
                  '/whatever');
   });
 
   it('should extract unquoted value from url with too much whitespace', () => {
-    assert.equal(utils.extractCSSUri(`url(  /whatever  )`),
+    assert.equal(utils.extractCSSUri('url(  /whatever  )'),
                  '/whatever');
   });
 
   it('should extract value from url with too much whitespace', () => {
-    assert.equal(utils.extractCSSUri(`url(  "/whatever "  )`),
+    assert.equal(utils.extractCSSUri('url(  "/whatever "  )'),
                  '/whatever');
   });
 
   it('should extract everything between "url(" and ")"', () => {
-    assert.equal(utils.extractCSSUri(`url() url()`),
+    assert.equal(utils.extractCSSUri('url() url()'),
                  ') url(');
   });
 

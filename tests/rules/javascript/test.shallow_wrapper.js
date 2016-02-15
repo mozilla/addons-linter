@@ -9,7 +9,7 @@ describe('shallow_wrapper', () => {
   // this test.
   // TODO: Remove this test or figure out if it's required.
   it.skip('should allow use of XPCNativeWrapper with only one argument', () => {
-    var code = `XPCNativeWrapper(unsafeWindow);`;
+    var code = 'XPCNativeWrapper(unsafeWindow);';
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()

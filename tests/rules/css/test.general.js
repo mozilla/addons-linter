@@ -7,7 +7,7 @@ import CSSScanner from 'scanners/css';
 
 describe('CSS Rule General', () => {
 
-  it(`Check bogus comments don't break parser`, () => {
+  it("Check bogus comments don't break parser", () => {
     // This code was reported upstream as causing the previous
     // parser to hang. Check we handle it.
     var code = `//*-
