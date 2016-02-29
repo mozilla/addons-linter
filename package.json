@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "babel-polyfill": "6.5.0",
-    "bunyan": "1.7.0",
+    "bunyan": "1.7.1",
     "chalk": "1.1.1",
     "cheerio": "0.20.0",
     "columnify": "1.5.4",
