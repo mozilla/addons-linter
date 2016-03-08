@@ -17,7 +17,7 @@ export function walkPromise(curPath) {
     return lstatPromise(curPath)
       .then((stat) => {
         if (stat.isFile()) {
-          var { size, ...other } = stat;
+          var { size } = stat;
           result[path.relative(basePath, curPath)] = { size };
         } else if (stat.isDirectory()) {
           return readdirPromise(curPath)
