@@ -21,7 +21,7 @@ export function event_listener_fourth(context) {
               }
               break;
             case 'Identifier':
-              let referenceNode = getNodeReference(context, wantsUntrusted);
+              referenceNode = getNodeReference(context, wantsUntrusted);
               if (referenceNode.value) {
                 return context.report({
                   node: node,
@@ -29,7 +29,6 @@ export function event_listener_fourth(context) {
                 });
               }
               break;
-
           }
         }
       }
