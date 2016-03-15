@@ -349,6 +349,19 @@ describe('Linter.toJSON()', function() {
     assert.ok(fakeJSON.stringify.calledWith(sinon.match.any, null, 4));
   });
 
+  it('should output metadata when config.output is json', () => {
+    var addonLinter = new Linter({_: ['foo']});
+    addonLinter.config.output = 'json';
+    addonLinter.addonMetadata = {
+      meta: 'data',
+    };
+    var fakeJSON = {
+      stringify: sinon.stub(),
+    };
+    addonLinter.toJSON({pretty: true, _JSON: fakeJSON});
+    assert.equal(fakeJSON.stringify.firstCall.args[0].metadata.meta, 'data');
+  });
+
   it('should pass correct args to JSON.stringify for normal printing', () => {
     var addonLinter = new Linter({_: ['foo']});
     var fakeJSON = {
