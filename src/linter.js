@@ -183,6 +183,7 @@ export default class Linter {
     var output = {
       count: this.collector.length,
       summary: {},
+      metadata: this.addonMetadata,
     };
     for (let type of constants.MESSAGE_TYPES) {
       var messageType = `${type}s`;
