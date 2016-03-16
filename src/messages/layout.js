@@ -14,6 +14,13 @@ export const DUPLICATE_XPI_ENTRY = {
     and re-zipping your add-on package and try again.`),
 };
 
+export const BAD_ZIPFILE = {
+  code: 'BAD_ZIPFILE',
+  legacyCode: null,
+  message: 'Corrupt ZIP file',
+  description: _('We were unable to decompress the zip file.'),
+};
+
 export const TYPE_NO_INSTALL_RDF = {
   code: 'TYPE_NO_INSTALL_RDF',
   legacyCode: [
