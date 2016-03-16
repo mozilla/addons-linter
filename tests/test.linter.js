@@ -92,6 +92,17 @@ describe('Linter', function() {
     assert.equal(output.summary.warnings, 0);
   });
 
+  it('should collect an error when not an xpi', () => {
+    var addonLinter = new Linter({_: ['tests/fixtures/not-an-xpi.xpi']});
+    // Stub print to prevent output.
+    addonLinter.print = sinon.stub();
+    assert.equal(addonLinter.collector.errors.length, 0);
+    return addonLinter.scan()
+      .catch(() => {
+        assert.equal(addonLinter.collector.errors.length, 1);
+        assert.equal(addonLinter.collector.errors[0].code, 'BAD_ZIPFILE');
+      });
+  });
 
   // Uses our example XPI, with the following file layout:
   //

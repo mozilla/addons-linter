@@ -268,6 +268,7 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :negative_squared_cross_mark: | notice | should_be_false | | Add-on contains JAR files, no `<em:unpack>` | | | | |
 | :x: | warning | unknown_file | | Unknown file found in add-on | | | | |
 | :x: | warning | missing_required | | Required file missing | | | | |
+| :white_check_mark: | error |  |  | Bad zip file  | |  | | BAD_ZIPFILE |
 
 ## Type detection
 
