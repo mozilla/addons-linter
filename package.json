@@ -58,7 +58,7 @@
     "webpack-dev-server": "1.14.0"
   },
   "dependencies": {
-    "babel-polyfill": "6.7.2",
+    "babel-polyfill": "6.7.4",
     "bunyan": "1.8.0",
     "chalk": "1.1.1",
     "cheerio": "0.20.0",
