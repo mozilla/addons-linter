@@ -25,7 +25,7 @@
   "homepage": "https://github.com/mozilla/addons-linter#readme",
   "devDependencies": {
     "babel-core": "6.7.4",
-    "babel-eslint": "6.0.0-beta.5",
+    "babel-eslint": "6.0.0",
     "babel-loader": "6.2.4",
     "babel-plugin-transform-class-properties": "6.5.2",
     "babel-plugin-transform-es2015-modules-commonjs": "6.7.4",
