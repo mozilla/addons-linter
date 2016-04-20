@@ -634,8 +634,9 @@ describe('Linter.getAddonMetadata()', function() {
     return addonLinter.getAddonMetadata()
       .then(() => {
         var notices = addonLinter.collector.notices;
-        assert.equal(notices.length, 1);
-        assert.equal(notices[0].code, messages.TYPE_NO_INSTALL_RDF.code);
+        assert.equal(notices.length, 2);
+        assert.equal(notices[0].code, messages.TYPE_NO_MANIFEST_JSON.code);
+        assert.equal(notices[1].code, messages.TYPE_NO_INSTALL_RDF.code);
       });
   });
 
