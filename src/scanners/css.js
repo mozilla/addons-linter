@@ -33,7 +33,7 @@ export default class CSSScanner extends BaseScanner {
 
     if (cssNode.type === 'atrule') {
       log.debug('Processing media rules');
-      if (cssNode.nodes.length) {
+      if (cssNode.nodes && cssNode.nodes.length) {
         for (let mediaCssNode of cssNode.nodes) {
           this.processCode(mediaCssNode, cssInstruction, _rules);
         }

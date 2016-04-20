@@ -1,4 +1,5 @@
 import yauzl from 'yauzl';
+import stripBomStream from 'strip-bom-stream';
 
 import { IOBase } from 'io/base';
 
@@ -99,7 +100,7 @@ export class Xpi extends IOBase {
             if (err) {
               return reject(err);
             }
-            resolve(readStream);
+            resolve(readStream.pipe(stripBomStream()));
           });
         })
         .catch(reject);
