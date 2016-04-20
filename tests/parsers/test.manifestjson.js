@@ -5,6 +5,25 @@ import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
 
 import { validManifestJSON } from '../helpers';
 
+describe('ManifestJSONParser', function() {
+
+  it('should show a message if bad JSON', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var manifestJSONParser = new ManifestJSONParser('blah',
+                                                    addonLinter.collector);
+    assert.equal(manifestJSONParser.isValid, false);
+    var errors = addonLinter.collector.errors;
+    assert.equal(errors.length, 1);
+    assert.equal(errors[0].code, 'MANIFEST_JSON_INVALID');
+    assert.include(errors[0].message, 'Invalid JSON in manifest file.');
+
+    var metadata = manifestJSONParser.getMetadata();
+    assert.equal(metadata.manifestVersion, null);
+    assert.equal(metadata.name, null);
+    assert.equal(metadata.version, null);
+  });
+
+});
 
 describe('ManifestJSONParser manifestVersion', function() {
 
