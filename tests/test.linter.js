@@ -607,7 +607,7 @@ describe('Linter.getAddonMetadata()', function() {
       });
   });
 
-  it('should throw error if both manifest.json and install.rdf found', () => {
+  it('should collect an error if manifest.json and install.rdf found', () => {
     var addonLinter = new Linter({_: ['bar']});
     addonLinter.io = {
       getFiles: () => {
@@ -618,9 +618,11 @@ describe('Linter.getAddonMetadata()', function() {
       },
     };
     return addonLinter.getAddonMetadata()
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        assert.include(err.message, 'Both install.rdf and manifest.json');
+      .then(() => {
+        var errors = addonLinter.collector.errors;
+        assert.equal(errors.length, 2);
+        assert.equal(errors[0].code, messages.MULITPLE_MANIFESTS.code);
+        assert.equal(errors[1].code, messages.TYPE_NOT_DETERMINED.code);
       });
   });
 

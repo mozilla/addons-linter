@@ -47,6 +47,19 @@ export const TYPE_NO_MANIFEST_JSON = {
     will be attempted to be inferred by package layout.`),
 };
 
+export const MULITPLE_MANIFESTS = {
+  code: 'MULITPLE_MANIFESTS',
+  legacyCode: [
+    'typedetection',
+    'detect_type',
+    'install_rdf_and_manifest_json',
+  ],
+  message: _('Both install_rdf and manifest.json found'),
+  description: _(singleLineString`The type should be determined by
+    manifest.json if present. Both install_rdf and manifest_json
+    are defined.`),
+};
+
 export const TYPE_NOT_DETERMINED = {
   code: 'TYPE_NOT_DETERMINED',
   legacyCode: [
