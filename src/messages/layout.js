@@ -34,6 +34,19 @@ export const TYPE_NO_INSTALL_RDF = {
     will be attempted to be inferred by package layout.`),
 };
 
+export const TYPE_NO_MANIFEST_JSON = {
+  code: 'TYPE_NO_MANIFEST_JSON',
+  legacyCode: [
+    'typedetection',
+    'detect_type',
+    'missing_manifest_json',
+  ],
+  message: _('manifest.json was not found'),
+  description: _(singleLineString`The type should be determined by
+    manifest.json if present. As there's no manifest.json, type detection
+    will be attempted to be inferred by package layout.`),
+};
+
 export const TYPE_NOT_DETERMINED = {
   code: 'TYPE_NOT_DETERMINED',
   legacyCode: [

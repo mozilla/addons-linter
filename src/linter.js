@@ -234,7 +234,7 @@ export default class Linter {
         } else {
           log.warn(singleLineString`No ${INSTALL_RDF} or ${MANIFEST_JSON}
                    was found in the package metadata`);
-          // TODO: Add notice for missing manifest.json?
+          this.collector.addNotice(messages.TYPE_NO_MANIFEST_JSON);
           this.collector.addNotice(messages.TYPE_NO_INSTALL_RDF);
           return {};
         }
