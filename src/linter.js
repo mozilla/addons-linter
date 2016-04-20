@@ -19,6 +19,7 @@ import ManifestJSONParser from 'parsers/manifestjson';
 import ChromeManifestScanner from 'scanners/chromemanifest';
 import CSSScanner from 'scanners/css';
 import HTMLScanner from 'scanners/html';
+import HiddenScanner from 'scanners/hidden';
 import JavaScriptScanner from 'scanners/javascript';
 import NullScanner from 'scanners/null';
 import RDFScanner from 'scanners/rdf';
@@ -293,9 +294,12 @@ export default class Linter {
   }
 
   getScanner(filename) {
-
     if (filename === CHROME_MANIFEST) {
       return ChromeManifestScanner;
+    }
+
+    if (filename.match(constants.HIDDEN_FILE_REGEX)) {
+      return HiddenScanner;
     }
 
     switch (extname(filename)) {

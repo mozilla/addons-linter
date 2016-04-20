@@ -71,3 +71,17 @@ export const TYPE_NOT_DETERMINED = {
   description: _(singleLineString`The type detection algorithm could not
     determine the type of the add-on.`),
 };
+
+export const HIDDEN_FILE = {
+  code: 'HIDDEN_FILE',
+  legacyCode: [
+    'testcases_content',
+    'test_packed_packages',
+    'hidden_files',
+  ],
+  message: _('Hidden file flagged'),
+  description: _(singleLineString`Hidden files complicate the
+    review process and can contain sensitive information about the system that
+    generated the add-on. Please modify the packaging process so that these
+    files aren't included.`),
+};
