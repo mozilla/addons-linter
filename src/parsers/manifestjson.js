@@ -61,8 +61,14 @@ export default class ManifestJSONParser {
       }
     }
 
+
     if (this.parsedJSON.content_security_policy) {
       this.collector.addWarning(messages.MANIFEST_CSP);
+    }
+
+    if (this.parsedJSON.hasOwnProperty('update_url')) {
+      this.collector.addError(messages.MANIFEST_UPDATE_URL);
+      isValid = false;
     }
     return isValid;
   }
