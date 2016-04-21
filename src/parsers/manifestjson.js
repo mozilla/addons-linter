@@ -6,10 +6,32 @@ import validate from 'mozilla-web-extension-manifest-schema';
 export default class ManifestJSONParser {
 
   constructor(jsonString, collector) {
-    this.parsedJSON = JSON.parse(jsonString);
     // Provides ability to directly add messages to
     // the collector.
     this.collector = collector;
+
+    // Set up some defaults in case parsing fails.
+    this.parsedJSON = {
+      manifestVersion: null,
+      name: null,
+      type: PACKAGE_EXTENSION,
+      version: null,
+    };
+
+    try {
+      this.parsedJSON = JSON.parse(jsonString);
+    } catch (error) {
+      var errorData = {
+        code: 'MANIFEST_JSON_INVALID',
+        message: 'Invalid JSON in manifest file.',
+        file: 'manifest.json',
+        description: error,
+      };
+      this.collector.addError(errorData);
+      this.isValid = false;
+      return;
+    }
+
     this.isValid = this._validate();
   }
 
