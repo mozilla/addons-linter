@@ -134,6 +134,17 @@ describe('Directory.getFileAsStream()', function() {
 
 describe('Directory.getFileAsString()', function() {
 
+  it('should strip a BOM', () => {
+    var myDirectory = new Directory('tests/fixtures/io/');
+    return myDirectory.getFiles()
+      .then(() => {
+        return myDirectory.getFileAsString('dir3/foo.txt');
+      })
+      .then((content) => {
+        assert.notOk(content.charCodeAt(0) === 0xFEFF);
+      });
+  });
+
   it('should return a string', () => {
     var myDirectory = new Directory('tests/fixtures/io/');
     return myDirectory.getFiles()
@@ -185,6 +196,5 @@ describe('Directory.getFileAsString()', function() {
           err.message, 'File "install.rdf" is too large');
       });
   });
-
 
 });

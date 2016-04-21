@@ -1,10 +1,12 @@
 import * as path from 'path';
 import { createReadStream } from 'fs';
+import stripBomStream from 'strip-bom-stream';
 
 import { IOBase } from 'io/base';
 import { walkPromise } from 'io/utils';
 
 import { singleLineString } from '../utils';
+
 
 import log from 'logger';
 
@@ -56,7 +58,7 @@ export class Directory extends IOBase {
       flags: 'r',
       encoding: 'utf8',
       autoClose: true,
-    }));
+    }).pipe(stripBomStream()));
   }
 
   getFileAsString(path) {

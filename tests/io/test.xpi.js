@@ -1,9 +1,11 @@
 import { Readable } from 'stream';
 import { EventEmitter } from 'events';
 
+import fs from 'fs';
 import { Xpi } from 'io';
 import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
 import { unexpectedSuccess } from '../helpers';
+
 
 const defaultData = {
   compressionMethod: DEFLATE_COMPRESSION,
@@ -321,6 +323,24 @@ describe('Xpi.getFileAsStream()', function() {
     return myXpi.getFileAsString('install.rdf')
       .then((string) => {
         assert.equal(string, 'line one\nline two');
+      });
+  });
+
+  it('should strip a BOM', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    myXpi.files = {
+      'install.rdf': installRdfEntry,
+      'chrome.manifest': chromeManifestEntry,
+    };
+
+    this.openStub.yieldsAsync(null, this.fakeZipFile);
+
+    var rstream = fs.createReadStream('tests/fixtures/io/dir3/foo.txt');
+    this.openReadStreamStub.yields(null, rstream);
+
+    return myXpi.getFileAsString('install.rdf')
+      .then((string) => {
+        assert.notOk(string.charCodeAt(0) === 0xFEFF);
       });
   });
 
