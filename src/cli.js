@@ -55,6 +55,11 @@ export default argv
     type: 'boolean',
     default: false,
   })
+  .option('self-hosted', {
+    describe: 'Disables messages related to hosting on addons.mozilla.org.',
+    type: 'boolean',
+    default: false,
+  })
   // Require one non-option.
   .demand(1)
   .help('help')

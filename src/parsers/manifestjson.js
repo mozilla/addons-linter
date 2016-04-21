@@ -2,11 +2,11 @@ import { PACKAGE_EXTENSION } from 'const';
 import log from 'logger';
 import validate from 'mozilla-web-extension-manifest-schema';
 import * as messages from 'messages';
-
+import cli from 'cli';
 
 export default class ManifestJSONParser {
 
-  constructor(jsonString, collector) {
+  constructor(jsonString, collector, selfHosted=cli.argv.selfHosted) {
     // Provides ability to directly add messages to
     // the collector.
     this.collector = collector;
@@ -33,6 +33,7 @@ export default class ManifestJSONParser {
       return;
     }
 
+    this.selfHosted = selfHosted;
     this.isValid = this._validate();
   }
 
@@ -61,12 +62,11 @@ export default class ManifestJSONParser {
       }
     }
 
-
     if (this.parsedJSON.content_security_policy) {
       this.collector.addWarning(messages.MANIFEST_CSP);
     }
 
-    if (this.parsedJSON.hasOwnProperty('update_url')) {
+    if (!this.selfHosted && this.parsedJSON.hasOwnProperty('update_url')) {
       this.collector.addError(messages.MANIFEST_UPDATE_URL);
       isValid = false;
     }
