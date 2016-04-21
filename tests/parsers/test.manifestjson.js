@@ -153,3 +153,18 @@ describe('ManifestJSONParser version', function() {
   });
 
 });
+
+describe('ManifestJSONParser content security policy', function() {
+
+  it('should warn that csp will mean more review', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = validManifestJSON({content_security_policy: 'wat?'});
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
+    assert.equal(manifestJSONParser.isValid, true);
+    var warnings = addonLinter.collector.warnings;
+    assert.equal(warnings[0].code, 'MANIFEST_CSP');
+    assert.include(warnings[0].message, 'content_security_policy');
+  });
+
+});

@@ -1,6 +1,7 @@
 import { PACKAGE_EXTENSION } from 'const';
 import log from 'logger';
 import validate from 'mozilla-web-extension-manifest-schema';
+import * as messages from 'messages';
 
 
 export default class ManifestJSONParser {
@@ -58,6 +59,10 @@ export default class ManifestJSONParser {
         errorData.description = description || 'MISSING_SCHEMA_DESCRIPTION';
         this.collector.addError(errorData);
       }
+    }
+
+    if (this.parsedJSON.content_security_policy) {
+      this.collector.addWarning(messages.MANIFEST_CSP);
     }
     return isValid;
   }

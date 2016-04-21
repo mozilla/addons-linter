@@ -10,6 +10,14 @@ export const MANIFEST_VERSION_INVALID = {
   file: MANIFEST_JSON,
 };
 
+export const MANIFEST_CSP = {
+  code: 'MANIFEST_CSP',
+  legacyCode: null,
+  message: _('"content_security_policy" is defined in the manifest.json'),
+  description: _('A custom content_security_policy needs additional review.'),
+  file: MANIFEST_CSP,
+};
+
 export const PROP_NAME_INVALID = {
   code: 'PROP_NAME_INVALID',
   legacyCode: null,
