@@ -6,7 +6,7 @@ import cli from 'cli';
 
 export default class ManifestJSONParser {
 
-  constructor(jsonString, collector, selfHosted=cli.argv.selfHosted) {
+  constructor(jsonString, collector, {selfHosted=cli.argv.selfHosted}={}) {
     // Provides ability to directly add messages to
     // the collector.
     this.collector = collector;

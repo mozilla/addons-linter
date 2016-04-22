@@ -176,7 +176,7 @@ describe('ManifestJSONParser update_url', function() {
     var json = validManifestJSON({update_url: ''});
     var manifestJSONParser = new ManifestJSONParser(json,
                                                     addonLinter.collector,
-                                                    false);
+                                                    {selfHosted: false});
     assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
     assert.equal(errors[0].code, 'MANIFEST_UPDATE_URL');
@@ -188,7 +188,7 @@ describe('ManifestJSONParser update_url', function() {
     var json = validManifestJSON({update_url: ''});
     var manifestJSONParser = new ManifestJSONParser(json,
                                                     addonLinter.collector,
-                                                    true);
+                                                    {selfHosted: true});
     manifestJSONParser.selfHosted = true;
     assert.equal(manifestJSONParser.isValid, true);
   });
