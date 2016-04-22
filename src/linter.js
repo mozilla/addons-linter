@@ -298,7 +298,7 @@ export default class Linter {
       return ChromeManifestScanner;
     }
 
-    if (filename.match(constants.HIDDEN_FILE_REGEX)) {
+    if (filename.match(constants.HIDDEN_FILE_SCANNER_REGEX)) {
       return HiddenScanner;
     }
 

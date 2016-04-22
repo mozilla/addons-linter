@@ -171,8 +171,8 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :negative_squared_cross_mark: | warning | found_in_chrome_manifest| | xpcnativewrappers not allowed in chrome.manifest |  chrome.manifest | [testcases/content.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/content.py)| | |
 | :negative_squared_cross_mark: | warning | found_in_chrome_manifest| | newTab.xul is now newTab.xhtml |  chrome.manifest | | | |
-| :x: | warning | hidden_files | | Hidden files and folders flagged | | | | |
-| :x: | warning | flagged_files | | Flagged filename found | | | | |
+| :white_check_mark: | warning | hidden_files | | Hidden file flagged | | | [testcases/content.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/content.py) | HIDDEN_FILE |
+| :white_check_mark: | warning | flagged_files | | Flagged filename found | | |[testcases/content.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/content.py) | FLAGGED_FILE |
 | :x: | notice | blacklisted_js_library | | JS Library Detected | | | | |
 | :negative_squared_cross_mark: | warning | invalid_chrome_url | | Invalid chrome URL | | | | |
 | :x: | warning | too_much_js | | TOO MUCH JS FOR EXHAUSTIVE VALIDATION | | | | |
@@ -269,7 +269,6 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :x: | warning | unknown_file | | Unknown file found in add-on | | | | |
 | :x: | warning | missing_required | | Required file missing | | | | |
 | :white_check_mark: | error |  |  | Bad zip file  | |  | | BAD_ZIPFILE |
-| :white_check_mark: | error |  |  | Hidden files flagged  | |  | | HIDDEN_FILE |
 
 ## Type detection
 

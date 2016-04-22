@@ -85,3 +85,15 @@ export const HIDDEN_FILE = {
     generated the add-on. Please modify the packaging process so that these
     files aren't included.`),
 };
+
+export const FLAGGED_FILE = {
+  code: 'FLAGGED_FILE',
+  legacyCode: [
+    'testcases_content',
+    'test_packaged_packages',
+    'flagged_files',
+  ],
+  message: _('Flagged filename found'),
+  description: _(singleLineString`Files were found that are either unnecessary
+    or have been included unintentionally. They should be removed.`),
+};
