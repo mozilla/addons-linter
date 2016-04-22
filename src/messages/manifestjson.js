@@ -34,6 +34,14 @@ export const PROP_VERSION_INVALID = {
   file: MANIFEST_JSON,
 };
 
+export const MANIFEST_UPDATE_URL = {
+  code: 'MANIFEST_UPDATE_URL',
+  legacyCode: null,
+  message: _('The "update_url" property is not allowed.'),
+  description: _('The update_url cannot be defined.'),
+  file: MANIFEST_JSON,
+};
+
 export function manifestPropMissing(property) {
   return {
     code: `PROP_${property.toUpperCase()}_MISSING`,

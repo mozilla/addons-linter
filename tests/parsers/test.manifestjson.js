@@ -168,3 +168,28 @@ describe('ManifestJSONParser content security policy', function() {
   });
 
 });
+
+describe('ManifestJSONParser update_url', function() {
+
+  it('is not allowed', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = validManifestJSON({update_url: ''});
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector,
+                                                    {selfHosted: false});
+    assert.equal(manifestJSONParser.isValid, false);
+    var errors = addonLinter.collector.errors;
+    assert.equal(errors[0].code, 'MANIFEST_UPDATE_URL');
+    assert.include(errors[0].message, 'update_url');
+  });
+
+  it('is allowed if self-hosted', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = validManifestJSON({update_url: ''});
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector,
+                                                    {selfHosted: true});
+    manifestJSONParser.selfHosted = true;
+    assert.equal(manifestJSONParser.isValid, true);
+  });
+});
