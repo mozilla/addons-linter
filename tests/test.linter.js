@@ -6,6 +6,7 @@ import * as constants from 'const';
 import * as messages from 'messages';
 
 import CSSScanner from 'scanners/css';
+import NullScanner from 'scanners/null';
 import { fakeMessageData,
          unexpectedSuccess,
          validManifestJSON } from './helpers';
@@ -201,36 +202,6 @@ describe('Linter', function() {
       });
   });
 
-  it('should bubble up the error if scanFile() blows up', () => {
-    var addonLinter = new Linter({_: ['foo']});
-    // Stub handleError to prevent output.
-    addonLinter.handleError = sinon.stub();
-    addonLinter.checkFileExists = fakeCheckFileExists;
-    addonLinter.scanFile = () => {
-      return Promise.reject(new Error('scanFile explosion'));
-    };
-
-    class FakeXpi {
-      getFile() {
-        return Promise.resolve('');
-      }
-      getFiles() {
-        return Promise.resolve([]);
-      }
-      getFilesByExt() {
-        return Promise.resolve(['foo.js', 'bar.js']);
-      }
-    }
-
-    return addonLinter.scan({_Xpi: FakeXpi})
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        assert.instanceOf(err, Error);
-        assert.include(err.message, 'scanFile explosion');
-      });
-  });
-
-
   it('should call addError when Xpi rejects with dupe entry', () => {
     var addonLinter = new Linter({_: ['bar']});
     addonLinter.checkFileExists = fakeCheckFileExists;
@@ -276,11 +247,10 @@ describe('Linter', function() {
 
 describe('Linter.getScanner()', function() {
 
-  it('should throw if scanner type is not available', () => {
+  it('should return NullScanner', () => {
     var addonLinter = new Linter({_: ['foo']});
-    assert.throws(() => {
-      addonLinter.getScanner('foo.whatever');
-    }, Error, /No scanner available/);
+    var Scanner = addonLinter.getScanner('foo.whatever');
+    assert.deepEqual(Scanner, NullScanner);
   });
 
   it('should return CSSScanner', function() {

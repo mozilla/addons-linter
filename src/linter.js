@@ -20,6 +20,7 @@ import ChromeManifestScanner from 'scanners/chromemanifest';
 import CSSScanner from 'scanners/css';
 import HTMLScanner from 'scanners/html';
 import JavaScriptScanner from 'scanners/javascript';
+import NullScanner from 'scanners/null';
 import RDFScanner from 'scanners/rdf';
 import { Directory, Xpi } from 'io';
 
@@ -282,7 +283,11 @@ export default class Linter {
   scanFiles(files) {
     var promises = [];
     for (let filename of files) {
-      promises.push(this.scanFile(filename));
+      if (filename === CHROME_MANIFEST) {
+        promises.push(this.scanFile(filename, 'stream'));
+      } else {
+        promises.push(this.scanFile(filename));
+      }
     }
     return Promise.all(promises);
   }
@@ -304,7 +309,7 @@ export default class Linter {
       case '.rdf':
         return RDFScanner;
       default:
-        throw new Error(`No scanner available for ${filename}`);
+        return NullScanner;
     }
   }
 
@@ -377,36 +382,7 @@ export default class Linter {
         return this.io.getFiles();
       })
       .then((files) => {
-        if (files.hasOwnProperty(CHROME_MANIFEST)) {
-          return this.scanFile(CHROME_MANIFEST, 'stream');
-        } else {
-          log.warn(`No root ${CHROME_MANIFEST} found`);
-          return;
-        }
-      })
-      .then(() => {
-        return this.io.getFilesByExt('.js');
-      })
-      .then((jsFiles) => {
-        return this.scanFiles(jsFiles);
-      })
-      .then(() => {
-        return this.io.getFilesByExt('.rdf');
-      })
-      .then((rdfFiles) => {
-        return this.scanFiles(rdfFiles);
-      })
-      .then(() => {
-        return this.io.getFilesByExt('.css');
-      })
-      .then((cssFiles) => {
-        return this.scanFiles(cssFiles);
-      })
-      .then(() => {
-        return this.io.getFilesByExt('.html');
-      })
-      .then((htmlFiles) => {
-        return this.scanFiles(htmlFiles);
+        return this.scanFiles(Object.keys(files));
       })
       .then(() => {
         this.print();
