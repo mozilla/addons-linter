@@ -39,8 +39,7 @@ module.exports = function(grunt) {
     'webpack:build',
   ]);
 
-  grunt.registerTask('publish-rules',
-                     'Used by travis to publish rule docs', function() {
+  grunt.registerTask('publish-rules', 'travis rule doc publishing', function() {
     // Require the rules build and copy.
     this.requires(['copy', 'build-rules-html']);
 
@@ -54,8 +53,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('test',
-    'Runs the tests conditionally based on node version', function() {
+  grunt.registerTask('test', 'Runs tests based on node version', function() {
     if (semver.major(process.versions.node) >= 4) {
       grunt.log.writeln('Test coverage is slow under node 4+. Skipping.');
       grunt.task.run('test-no-coverage');
@@ -72,7 +70,6 @@ module.exports = function(grunt) {
     'storeCoverage',
     'makeReport',
     'newer:eslint',
-    'newer:jscs',
   ]);
 
   grunt.registerTask('test-no-coverage', [
@@ -81,7 +78,6 @@ module.exports = function(grunt) {
     'webpack:test',
     'mochaTest',
     'newer:eslint',
-    'newer:jscs',
   ]);
 
 };
