@@ -93,7 +93,7 @@ describe('utils.getNodeReference()', () => {
                       name: 'window',
                     },
                   }],
-                },{
+                }, {
                   type: 'ExpressionStatement',
                   expression: {
                     type: 'AssignmentExpression',

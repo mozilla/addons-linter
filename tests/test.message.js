@@ -1,7 +1,7 @@
 import { default as Message, props } from 'message';
 import { fakeMessageData } from './helpers';
 
-/*eslint no-unused-vars:0*/
+/* eslint no-unused-vars:0*/
 
 describe('Message', function() {
 

@@ -40,7 +40,6 @@
     "grunt-eslint": "18.1.0",
     "grunt-gh-pages": "1.1.0",
     "grunt-istanbul": "0.7.0",
-    "grunt-jscs": "2.8.0",
     "grunt-mocha-test": "0.12.7",
     "grunt-newer": "1.2.0",
     "grunt-webpack": "1.0.11",
