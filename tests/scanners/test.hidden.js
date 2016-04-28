@@ -45,6 +45,7 @@ describe('Hidden regexes', function() {
     assert.isNotOk('__MACOSXfoo.txt'.match(HIDDEN_FILE_SCANNER_REGEX));
     assert.isNotOk('foo/__MACOSX'.match(HIDDEN_FILE_SCANNER_REGEX));
     assert.isOk('foo/Thumbs.db'.match(HIDDEN_FILE_SCANNER_REGEX));
+    assert.isOk('foo/thumbs.db'.match(HIDDEN_FILE_SCANNER_REGEX));
     assert.isNotOk('Thumbs.db/foo'.match(HIDDEN_FILE_SCANNER_REGEX));
   });
 

@@ -115,6 +115,6 @@ export const VALID_MANIFEST_VERSION = 2;
 export const MAX_FILE_SIZE_MB = 100;
 
 export const HIDDEN_FILE_REGEX = /^__MACOSX\//;
-export const FLAGGED_FILE_REGEX = /Thumbs.db$|.DS_STORE$|.orig$|.old$|\~$/;
+export const FLAGGED_FILE_REGEX = /(t|T)humbs.db$|.DS_STORE$|.orig$|.old$|\~$/;
 export const HIDDEN_FILE_SCANNER_REGEX = new RegExp(
   `${FLAGGED_FILE_REGEX.source}|${HIDDEN_FILE_REGEX.source}`);
