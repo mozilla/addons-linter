@@ -3,6 +3,21 @@ import { ensureFilenameExists, ignorePrivateFunctions } from 'utils';
 
 export default class BaseScanner {
 
+  static get fileResultType() {
+    /*
+    Because each scanner expects a certain kind of data from the
+    io libraries, a string or stream for example, we'll let the
+    scanner define the type of data it expects. Most default to
+    string.
+
+    This can be overridden on the class.
+
+    Because contents is passed to the constructor, we need to be
+    able to access this before the constructor.
+    */
+    return 'string';
+  }
+
   constructor(contents, filename, options={}) {
     this.contents = contents;
     this.filename = filename;

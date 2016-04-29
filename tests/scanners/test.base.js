@@ -110,4 +110,7 @@ describe('Base Scanner Class', function() {
       });
   });
 
+  it('should ask for a string', () => {
+    assert(BaseScanner.fileResultType, 'string');
+  });
 });
