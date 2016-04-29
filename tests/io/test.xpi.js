@@ -215,7 +215,70 @@ describe('Xpi.getFile()', function() {
 
 });
 
-describe('Xpi.getFileAsStream()', function() {
+describe('Xpi.checkPath()', function() {
+
+  it('should reject if path does not exist', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    myXpi.files = {
+      'install.rdf': installRdfEntry,
+      'chrome.manifest': chromeManifestEntry,
+    };
+
+    return myXpi.getFileAsStream('whatever')
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.include(err.message, 'Path "whatever" does not exist');
+      });
+  });
+
+  it('should reject if file is too big', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    var fakeFileMeta= {
+      uncompressedSize: 1024 * 1024 * 102,
+    };
+
+    myXpi.files = {
+      'install.rdf': fakeFileMeta,
+      'chrome.manifest': fakeFileMeta,
+    };
+
+    return myXpi.getFileAsStream('install.rdf')
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.include(
+          err.message, 'File "install.rdf" is too large');
+      });
+  });
+
+  it('should reject if file is too big for getFileAsString too', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    var fakeFileMeta = {
+      uncompressedSize: 1024 * 1024 * 102,
+    };
+
+    myXpi.files = {
+      'install.rdf': fakeFileMeta,
+      'chrome.manifest': fakeFileMeta,
+    };
+
+    return myXpi.getFileAsString('install.rdf')
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.include(
+          err.message, 'File "install.rdf" is too large');
+      });
+  });
+
+});
+
+/*
+  Using a file located in:
+
+  tests/fixtures/io/dir2/dir3/file3.txt
+
+  The location is not relevant, the file contents are.
+*/
+describe('Xpi.getChunkAsBuffer()', function() {
 
   beforeEach(() => {
     this.openReadStreamStub = sinon.stub();
@@ -230,18 +293,62 @@ describe('Xpi.getFileAsStream()', function() {
 
   });
 
-  it('should reject if path does not exist', () => {
+  it('should reject if error in openReadStream', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'install.rdf': installRdfEntry,
-      'chrome.manifest': chromeManifestEntry,
     };
 
-    return myXpi.getFileAsStream('whatever')
+    this.openStub.yieldsAsync(null, this.fakeZipFile);
+    this.openReadStreamStub.yieldsAsync(
+      new Error('getChunkAsBuffer openReadStream test'));
+
+    return myXpi.getChunkAsBuffer('install.rdf')
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'Path "whatever" does not exist');
+        assert.include(err.message, 'getChunkAsBuffer openReadStream test');
       });
+  });
+
+  it('should resolve with a buffer', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    myXpi.files = {
+      'install.rdf': installRdfEntry,
+    };
+
+    this.openStub.yieldsAsync(null, this.fakeZipFile);
+
+    var rstream = new Readable();
+    rstream.push('123\n');
+    rstream.push(null);
+
+    this.openReadStreamStub.yields(null, rstream);
+
+    // Just grab the first two characters.
+    return myXpi.getChunkAsBuffer('install.rdf', 2)
+      .then((buffer) => {
+        // The file contains: 123\n. This tests that we are getting just
+        // the first two characters in the buffer.
+        assert.equal(buffer.toString(), '12');
+      });
+  });
+
+});
+
+
+describe('Xpi.getFileAsStream()', function() {
+
+  beforeEach(() => {
+    this.openReadStreamStub = sinon.stub();
+
+    this.fakeZipFile = {
+      openReadStream: this.openReadStreamStub,
+    };
+    this.openStub = sinon.stub();
+    this.fakeZipLib = {
+      open: this.openStub,
+    };
+
   });
 
   it('should reject if error in openReadStream', () => {
@@ -382,44 +489,6 @@ describe('Xpi.getFileAsStream()', function() {
       .then(unexpectedSuccess)
       .catch((err) => {
         assert.include(err.message, '¡hola!');
-      });
-  });
-
-  it('should reject if file is too big', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
-    var fakeFileMeta= {
-      uncompressedSize: 1024 * 1024 * 102,
-    };
-
-    myXpi.files = {
-      'install.rdf': fakeFileMeta,
-      'chrome.manifest': fakeFileMeta,
-    };
-
-    return myXpi.getFileAsStream('install.rdf')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        assert.include(
-          err.message, 'File "install.rdf" is too large');
-      });
-  });
-
-  it('should reject if file is too big for getFileAsString too', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
-    var fakeFileMeta = {
-      uncompressedSize: 1024 * 1024 * 102,
-    };
-
-    myXpi.files = {
-      'install.rdf': fakeFileMeta,
-      'chrome.manifest': fakeFileMeta,
-    };
-
-    return myXpi.getFileAsString('install.rdf')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        assert.include(
-          err.message, 'File "install.rdf" is too large');
       });
   });
 

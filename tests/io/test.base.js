@@ -46,4 +46,15 @@ describe('io.IOBase()', function() {
       });
   });
 
+  it('should should reject calling getChunkAsBuffer()', () => {
+    var io = new IOBase('foo/bar');
+
+    return io.getChunkAsBuffer()
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.instanceOf(err, Error);
+        assert.equal(err.message, 'getChunkAsBuffer is not implemented');
+      });
+  });
+
 });
