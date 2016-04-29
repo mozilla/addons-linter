@@ -1,5 +1,5 @@
 import HiddenScanner from 'scanners/hidden';
-import {HIDDEN_FILE_SCANNER_REGEX} from 'const';
+import { FLAGGED_FILE_REGEX, HIDDEN_FILE_REGEX } from 'const';
 
 describe('HiddenScanner', function() {
 
@@ -37,16 +37,59 @@ describe('HiddenScanner', function() {
 
 });
 
-describe('Hidden regexes', function() {
+describe('Hidden and Flagged File Regexes', function() {
 
-  it('should find the right files', () => {
-    // Because regexes never go wrong, some sanity checks.
-    assert.isOk('__MACOSX/foo.txt'.match(HIDDEN_FILE_SCANNER_REGEX));
-    assert.isNotOk('__MACOSXfoo.txt'.match(HIDDEN_FILE_SCANNER_REGEX));
-    assert.isNotOk('foo/__MACOSX'.match(HIDDEN_FILE_SCANNER_REGEX));
-    assert.isOk('foo/Thumbs.db'.match(HIDDEN_FILE_SCANNER_REGEX));
-    assert.isOk('foo/thumbs.db'.match(HIDDEN_FILE_SCANNER_REGEX));
-    assert.isNotOk('Thumbs.db/foo'.match(HIDDEN_FILE_SCANNER_REGEX));
-  });
+  const matchingHiddenFiles = [
+    '__MACOSX/foo.txt',
+    '__MACOSX/.DS_Store',
+  ];
 
+  for (const filePath of matchingHiddenFiles) {
+    it(`should match ${filePath} as a hidden file`, () => {
+      assert.isOk(filePath.match(HIDDEN_FILE_REGEX),
+        `${filePath} should match hidden file regex`);
+    });
+  }
+
+  const nonMatchingHiddenFiles = [
+    '__MACOSXfoo.txt',
+    'foo/__MACOSX',
+  ];
+
+  for (const filePath of nonMatchingHiddenFiles) {
+    it(`should not match ${filePath} as a hidden file`, () => {
+      assert.isNotOk(filePath.match(HIDDEN_FILE_REGEX),
+        `${filePath} should not match hidden file regex`);
+    });
+  }
+
+  const matchingFlaggedFiles = [
+    'foo/Thumbs.db',
+    'foo/thumbs.db',
+    'whatever/something.orig',
+    'whatever/OLD.old',
+    'whatever/.DS_STORE',
+    'whatever/.DS_Store',
+    'something~',
+  ];
+
+  for (const filePath of matchingFlaggedFiles) {
+    it(`should match ${filePath} as a flagged file`, () => {
+      assert.isOk(filePath.match(FLAGGED_FILE_REGEX),
+        `${filePath} should match flagged file regex`);
+    });
+  }
+
+  const nonMatchingFlaggedFiles = [
+    'Thumbs.db/foo',
+    'whatever.orig/something',
+    'whatever.old/something',
+  ];
+
+  for (const filePath of nonMatchingFlaggedFiles) {
+    it(`should not match ${filePath} as a flagged file`, () => {
+      assert.isNotOk(filePath.match(FLAGGED_FILE_REGEX),
+        `${filePath} should not match flagged file regex`);
+    });
+  }
 });
