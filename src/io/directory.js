@@ -1,5 +1,6 @@
 import * as path from 'path';
 import { createReadStream } from 'fs';
+import firstChunkStream from 'first-chunk-stream';
 import stripBomStream from 'strip-bom-stream';
 
 import { IOBase } from 'io/base';
@@ -31,8 +32,7 @@ export class Directory extends IOBase {
       });
   }
 
-  getFileAsStream(relativeFilePath) {
-
+  getPath(relativeFilePath) {
     if (!this.files.hasOwnProperty(relativeFilePath)) {
       return Promise.reject(
         new Error(`Path "${relativeFilePath}" does not exist in this dir.`));
@@ -54,11 +54,18 @@ export class Directory extends IOBase {
         new Error(`Path argument must be relative to ${this.path}`));
     }
 
-    return Promise.resolve(createReadStream(filePath, {
-      flags: 'r',
-      encoding: 'utf8',
-      autoClose: true,
-    }).pipe(stripBomStream()));
+    return Promise.resolve(filePath);
+  }
+
+  getFileAsStream(relativeFilePath) {
+    return this.getPath(relativeFilePath)
+      .then((filePath) => {
+        return Promise.resolve(createReadStream(filePath, {
+          flags: 'r',
+          encoding: 'utf8',
+          autoClose: true,
+        }).pipe(stripBomStream()));
+      });
   }
 
   getFileAsString(path) {
@@ -82,4 +89,25 @@ export class Directory extends IOBase {
       });
   }
 
+  getChunkAsBuffer(relativeFilePath, chunkLength) {
+    return this.getPath(relativeFilePath)
+      .then((filePath) => {
+        return new Promise((resolve) => {
+          createReadStream(filePath, {
+            flags: 'r',
+            // This is important because you don't want to encode the
+            // bytes if you are doing a binary check.
+            encoding: null,
+            autoClose: true,
+          })
+          .pipe(
+            firstChunkStream({chunkLength: chunkLength},
+              function(_, enc) {
+                resolve(enc);
+              }
+            )
+          );
+        });
+      });
+  }
 }

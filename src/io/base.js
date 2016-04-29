@@ -70,4 +70,8 @@ export class IOBase {
       new Error('getFileAsString is not implemented'));
   }
 
+  getChunkAsBuffer() {
+    return Promise.reject(
+      new Error('getChunkAsBuffer is not implemented'));
+  }
 }

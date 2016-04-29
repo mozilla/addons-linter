@@ -1,5 +1,6 @@
 import yauzl from 'yauzl';
 import stripBomStream from 'strip-bom-stream';
+import firstChunkStream from 'first-chunk-stream';
 
 import { IOBase } from 'io/base';
 
@@ -83,17 +84,19 @@ export class Xpi extends IOBase {
     });
   }
 
+  checkPath(path) {
+    if (!this.files.hasOwnProperty(path)) {
+      throw new Error(`Path "${path}" does not exist in this XPI`);
+    }
+
+    if (this.files[path].uncompressedSize > this.maxSizeBytes) {
+      throw new Error(`File "${path}" is too large. Aborting.`);
+    }
+  }
+
   getFileAsStream(path) {
     return new Promise((resolve, reject) => {
-
-      if (!this.files.hasOwnProperty(path)) {
-        throw new Error(`Path "${path}" does not exist in this XPI`);
-      }
-
-      if (this.files[path].uncompressedSize > this.maxSizeBytes) {
-        throw new Error(`File "${path}" is too large. Aborting.`);
-      }
-
+      this.checkPath(path);
       return this.open()
         .then((zipfile) => {
           zipfile.openReadStream(this.files[path], (err, readStream) => {
@@ -124,5 +127,27 @@ export class Xpi extends IOBase {
           fileStream.on('error', reject);
         });
       });
+  }
+
+  getChunkAsBuffer(path, chunkLength) {
+    return new Promise((resolve, reject) => {
+      this.checkPath(path);
+      return this.open()
+        .then((zipfile) => {
+          zipfile.openReadStream(this.files[path], (err, readStream) => {
+            if (err) {
+              return reject(err);
+            }
+            readStream.pipe(
+              firstChunkStream({chunkLength: chunkLength},
+                function(_, enc) {
+                  resolve(enc);
+                }
+              )
+            );
+          });
+        })
+        .catch(reject);
+    });
   }
 }

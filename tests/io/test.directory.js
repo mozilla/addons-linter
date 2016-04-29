@@ -39,6 +39,47 @@ describe('Directory.getFiles()', function() {
 
 });
 
+describe('Directory._getPath()', function() {
+
+  it('should reject if not a file that exists', () => {
+    var myDirectory = new Directory('tests/fixtures/io/');
+    return myDirectory.getFiles()
+      .then(() => {
+        return myDirectory.getPath('whatever')
+          .then(unexpectedSuccess)
+          .catch((err) => {
+            assert.include(
+              err.message, '"whatever" does not exist in this dir.');
+          });
+      });
+  });
+
+  it('should reject if path does not start with base', () => {
+    var myDirectory = new Directory('tests/fixtures/io/');
+    myDirectory.files = {
+      '../file1.txt': {},
+    };
+    return myDirectory.getPath('../file1.txt')
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.include(err.message, 'Path argument must be relative');
+      });
+  });
+
+  it("should reject if path starts with '/'", () => {
+    var myDirectory = new Directory('tests/fixtures/io/');
+    myDirectory.files = {
+      '/file1.txt': {},
+    };
+    return myDirectory.getPath('/file1.txt')
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        assert.include(err.message, 'Path argument must be relative');
+      });
+  });
+
+});
+
 describe('Directory.getFileAsStream()', function() {
 
   it('should return a stream', () => {
@@ -71,33 +112,6 @@ describe('Directory.getFileAsStream()', function() {
       });
   });
 
-  it('should reject if not a file that exists', () => {
-    var myDirectory = new Directory('tests/fixtures/io/');
-    return myDirectory.getFiles()
-      .then(() => {
-        return myDirectory.getFileAsStream('whatever')
-          .then(unexpectedSuccess)
-          .catch((err) => {
-            assert.include(
-              err.message, '"whatever" does not exist in this dir.');
-          });
-      });
-  });
-
-  it('should reject if path does not start with base', () => {
-    var myDirectory = new Directory('tests/fixtures/io/');
-    myDirectory.files = {
-      '../file1.txt': {},
-    };
-    return myDirectory.getFileAsStream('../file1.txt')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        assert.include(
-          err.message, 'Path argument must be relative');
-      });
-
-  });
-
   it('should reject if file is too big', () => {
     var myDirectory = new Directory('tests/fixtures/io/');
     var fakeFileMeta= {
@@ -113,19 +127,6 @@ describe('Directory.getFileAsStream()', function() {
       .catch((err) => {
         assert.include(
           err.message, 'File "install.rdf" is too large');
-      });
-  });
-
-  it("should reject if path starts with '/'", () => {
-    var myDirectory = new Directory('tests/fixtures/io/');
-    myDirectory.files = {
-      '/file1.txt': {},
-    };
-    return myDirectory.getFileAsStream('/file1.txt')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        assert.include(
-          err.message, 'Path argument must be relative');
       });
   });
 
@@ -194,6 +195,31 @@ describe('Directory.getFileAsString()', function() {
       .catch((err) => {
         assert.include(
           err.message, 'File "install.rdf" is too large');
+      });
+  });
+
+});
+
+/*
+  Using a file located in:
+
+  tests/fixtures/io/dir2/dir3/file3.txt
+
+  The location is not relevant, the file contents are.
+*/
+describe('Directory.getChunkAsBuffer()', function() {
+
+  it('should get a buffer', () => {
+    var myDirectory = new Directory('tests/fixtures/io/');
+    return myDirectory.getFiles()
+      .then(() => {
+        // Just grab the first two characters.
+        return myDirectory.getChunkAsBuffer('dir2/dir3/file3.txt', 2);
+      })
+      .then((buffer) => {
+        // The file contains: 123\n. This tests that we are getting just
+        // the first two characters in the buffer.
+        assert.equal(buffer.toString(), '12');
       });
   });
 
