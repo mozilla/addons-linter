@@ -115,4 +115,22 @@ export const VALID_MANIFEST_VERSION = 2;
 export const MAX_FILE_SIZE_MB = 100;
 
 export const HIDDEN_FILE_REGEX = /^__MACOSX\//;
-export const FLAGGED_FILE_REGEX = /thumbs.db$|.DS_Store$|.orig$|.old$|\~$/i;
+export const FLAGGED_FILE_REGEX = /thumbs\.db$|\.DS_Store$|\.orig$|\.old$|\~$/i;
+
+export const FLAGGED_FILE_EXTENSION_REGEX =
+  /\.exe$|\.dll$|\.dylib$|\.so$|\.sh$|\.class$|\.swf$/i;
+
+// A list of magic numbers that we won't allow.
+export const FLAGGED_FILE_MAGIC_NUMBERS = [
+  [0x4d, 0x5a], // EXE or DLL,
+  [0x5a, 0x4d], // Alternative EXE or DLL
+  [0x7f, 0x45, 0x4c, 0x46], // UNIX elf
+  [0x23, 0x21], // Shell script
+  [0xca, 0xfe, 0xba, 0xbe], // Java + Mach-O (dylib)
+  [0xca, 0xfe, 0xd0, 0x0d], // Java packed
+  [0x46, 0x57, 0x53], // Uncompressed SWF
+  [0x43, 0x57, 0x53], // Compressed SWF
+];
+
+// Based on the above, this is how deep we need to look into a file.
+export const FLAGGED_FILE_MAGIC_NUMBERS_LENGTH = 4;
