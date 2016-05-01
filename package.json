@@ -67,7 +67,7 @@
     "es6-promisify": "4.0.0",
     "eslint": "2.9.0",
     "mozilla-web-extension-manifest-schema": "0.1.0",
-    "postcss": "5.0.19",
+    "postcss": "5.0.20",
     "semver": "5.1.0",
     "sha.js": "2.4.5",
     "source-map-support": "0.4.0",
