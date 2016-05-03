@@ -257,11 +257,11 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :x: | notice | deprecated_file | |  Extension contains a deprecated file | | [testcases/packagelayout.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagelayout.py) | | |
-| :x: | warning | disallowed_file_type | | Flagged file type found | | | | |
+| :x: | warning | FLAGGED_FILE_TYPE_type | | Flagged file type found | | | | |
 | :x: | warning | java_jar | | Java JAR file detected | | | | |
-| :x: | warning | disallowed_extension | | Flagged file extensions found | | | | |
+| :white_check_mark: | warning | disallowed_extension | | Flagged file extensions found | | https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagelayout.py | | FLAGGED_FILE_EXTENSION |
 | :negative_squared_cross_mark: | error | test_godlikea | | Banned 'godlikea' chrome namespace | | | | |
-| :x: | notice | disallowed_file_type | | (Binary) Flagged file type found | | | | |
+| :white_check_mark: | notice | disallowed_type | | (Binary) Flagged file type found | | https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagelayout.py | | FLAGGED_FILE_TYPE |
 | :negative_squared_cross_mark: | error | missing_install_rdf | | Add-on missing install.rdf | | | | |
 | :white_check_mark: | warning | duplicate_entries | | Package contains duplicate entries | | | | DUPLICATE_XPI_ENTRY |
 | :negative_squared_cross_mark: | warning | should_be_true | | Add-on should set `<em:unpack>` to true | | | | |

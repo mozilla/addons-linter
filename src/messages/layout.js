@@ -97,3 +97,30 @@ export const FLAGGED_FILE = {
   description: _(singleLineString`Files were found that are either unnecessary
     or have been included unintentionally. They should be removed.`),
 };
+
+export const FLAGGED_FILE_EXTENSION = {
+  code: 'FLAGGED_FILE_EXTENSION',
+  legacyCode: [
+    'testcases_content',
+    'test_blacklisted_files',
+    'disallowed_extension',
+  ],
+  message: _('Flagged file extensions found'),
+  description: _(singleLineString`Files were found that are either unnecessary
+    or have been included unintentionally. They should be removed.`),
+};
+
+export const FLAGGED_FILE_TYPE = {
+  code: 'FLAGGED_FILE_TYPE',
+  legacyCode: [
+    'testcases_packagelayout',
+    'test_blacklisted_files',
+    'disallowed_file_type',
+  ],
+  message: _('Flagged file type found'),
+  description: _(singleLineString`Files whose names end with flagged extensions
+    have been found in the add-on. The extension of these files are flagged
+    because they usually identify binary components. Please see
+    https://bit.ly/review-policy for more information on the binary content
+    review process.`),
+};

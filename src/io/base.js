@@ -1,5 +1,5 @@
 import { singleLineString } from '../utils';
-import { MAX_FILE_SIZE_MB } from 'const';
+import { FLAGGED_FILE_MAGIC_NUMBERS_LENGTH, MAX_FILE_SIZE_MB } from 'const';
 
 /*
  * Base class for io operations for both an Xpi or
@@ -16,15 +16,21 @@ export class IOBase {
     this.maxSizeBytes = 1024 * 1024 * MAX_FILE_SIZE_MB;
   }
 
-  getFile(path, streamOrString='string') {
-    switch (streamOrString) {
+  getFile(path, fileStreamType='string') {
+    switch (fileStreamType) {
       case 'stream':
         return this.getFileAsStream(path);
       case 'string':
         return this.getFileAsString(path);
+      case 'chunk':
+        // Assuming that chunk is going to be primarily used for finding magic numbers
+        // in filds, then there's no need to have the default be longer than that.
+        return this.getChunkAsBuffer(path, FLAGGED_FILE_MAGIC_NUMBERS_LENGTH);
+
       default:
-        throw new Error(singleLineString`Unexpected streamOrString
-          value "${streamOrString}" should be "string" or "stream"`);
+        throw new Error(singleLineString`Unexpected fileStreamType
+          value "${fileStreamType}" should be one of "string",
+          "stream" or "chunk"`);
     }
   }
 

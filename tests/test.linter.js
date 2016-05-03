@@ -6,8 +6,8 @@ import * as constants from 'const';
 import * as messages from 'messages';
 
 import CSSScanner from 'scanners/css';
-import NullScanner from 'scanners/null';
-import HiddenScanner from 'scanners/hidden';
+import BinaryScanner from 'scanners/binary';
+import FilenameScanner from 'scanners/filename';
 import { fakeMessageData,
          unexpectedSuccess,
          validManifestJSON } from './helpers';
@@ -248,10 +248,10 @@ describe('Linter', function() {
 
 describe('Linter.getScanner()', function() {
 
-  it('should return NullScanner', () => {
+  it('should return BinaryScanner', () => {
     var addonLinter = new Linter({_: ['foo']});
     var Scanner = addonLinter.getScanner('foo.whatever');
-    assert.deepEqual(Scanner, NullScanner);
+    assert.deepEqual(Scanner, BinaryScanner);
   });
 
   it('should return CSSScanner', function() {
@@ -260,12 +260,17 @@ describe('Linter.getScanner()', function() {
     assert.deepEqual(Scanner, CSSScanner);
   });
 
-  it('should return HiddenScanner', function() {
+  it('should return FilenameScanner', function() {
     var addonLinter = new Linter({_: ['foo']});
     var Scanner = addonLinter.getScanner('__MACOSX/foo.txt');
-    assert.deepEqual(Scanner, HiddenScanner);
+    assert.deepEqual(Scanner, FilenameScanner);
   });
 
+  it('should return FilenameScanner', function() {
+    var addonLinter = new Linter({_: ['foo']});
+    var Scanner = addonLinter.getScanner('wat.dll');
+    assert.deepEqual(Scanner, FilenameScanner);
+  });
 });
 
 

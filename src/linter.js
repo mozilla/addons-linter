@@ -19,9 +19,9 @@ import ManifestJSONParser from 'parsers/manifestjson';
 import ChromeManifestScanner from 'scanners/chromemanifest';
 import CSSScanner from 'scanners/css';
 import HTMLScanner from 'scanners/html';
-import HiddenScanner from 'scanners/hidden';
+import FilenameScanner from 'scanners/filename';
 import JavaScriptScanner from 'scanners/javascript';
-import NullScanner from 'scanners/null';
+import BinaryScanner from 'scanners/binary';
 import RDFScanner from 'scanners/rdf';
 import { Directory, Xpi } from 'io';
 
@@ -295,8 +295,9 @@ export default class Linter {
     }
 
     if (filename.match(constants.HIDDEN_FILE_REGEX) ||
-        filename.match(constants.FLAGGED_FILE_REGEX)) {
-      return HiddenScanner;
+        filename.match(constants.FLAGGED_FILE_REGEX) ||
+        filename.match(constants.FLAGGED_FILE_EXTENSION_REGEX)) {
+      return FilenameScanner;
     }
 
     switch (extname(filename)) {
@@ -310,7 +311,7 @@ export default class Linter {
       case '.rdf':
         return RDFScanner;
       default:
-        return NullScanner;
+        return BinaryScanner;
     }
   }
 

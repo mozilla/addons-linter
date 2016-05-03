@@ -1,12 +1,13 @@
-import HiddenScanner from 'scanners/hidden';
-import { FLAGGED_FILE_REGEX, HIDDEN_FILE_REGEX } from 'const';
+import FilenameScanner from 'scanners/filename';
+import { FLAGGED_FILE_EXTENSION_REGEX, FLAGGED_FILE_REGEX, HIDDEN_FILE_REGEX }
+  from 'const';
 
-describe('HiddenScanner', function() {
+describe('FilenameScanner', function() {
 
   it('should warn when finding a hidden file', () => {
-    var hiddenScanner = new HiddenScanner('', '__MACOSX/foo.txt');
+    var filenameScanner = new FilenameScanner('', '__MACOSX/foo.txt');
 
-    return hiddenScanner.scan()
+    return filenameScanner.scan()
       .then((linterMessages) => {
         assert.equal(linterMessages.length, 1);
         assert.equal(linterMessages[0].code, 'HIDDEN_FILE');
@@ -15,9 +16,9 @@ describe('HiddenScanner', function() {
   });
 
   it('should warn when finding a flagged file', () => {
-    var hiddenScanner = new HiddenScanner('', 'Thumbs.db');
+    var filenameScanner = new FilenameScanner('', 'Thumbs.db');
 
-    return hiddenScanner.scan()
+    return filenameScanner.scan()
       .then((linterMessages) => {
         assert.equal(linterMessages.length, 1);
         assert.equal(linterMessages[0].code, 'FLAGGED_FILE');
@@ -25,10 +26,21 @@ describe('HiddenScanner', function() {
       });
   });
 
-  it('should error out when it fails the regexes', () => {
-    var hiddenScanner = new HiddenScanner('', 'wat.txt');
+  it('should warn when finding a flagged file extension', () => {
+    var filenameScanner = new FilenameScanner('', 'wat.exe');
 
-    return hiddenScanner.scan()
+    return filenameScanner.scan()
+      .then((linterMessages) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code, 'FLAGGED_FILE_EXTENSION');
+        assert.equal(linterMessages[0].file, 'wat.exe');
+      });
+  });
+
+  it('should error out when it fails the regexes', () => {
+    var filenameScanner = new FilenameScanner('', 'wat.txt');
+
+    return filenameScanner.scan()
       .catch((err) => {
         assert.instanceOf(err, Error);
         assert.include(err.message, 'wat.txt');
@@ -90,6 +102,35 @@ describe('Hidden and Flagged File Regexes', function() {
     it(`should not match ${filePath} as a flagged file`, () => {
       assert.isNotOk(filePath.match(FLAGGED_FILE_REGEX),
         `${filePath} should not match flagged file regex`);
+    });
+  }
+
+  const matchingFlaggedFileExtensions = [
+    'something.exe',
+    'foo/something.else.dll',
+    'something.dylib',
+    'something.so',
+    'something.sh',
+    'something.class',
+    'something.swf',
+  ];
+
+  for (const filePath of matchingFlaggedFileExtensions) {
+    it(`should match ${filePath} as a flagged file extensions`, () => {
+      assert.isOk(filePath.match(FLAGGED_FILE_EXTENSION_REGEX),
+        `${filePath} should not match flagged file extension regex`);
+    });
+  }
+
+  const nonMatchingFlaggedFileExtensions = [
+    'wat.exe/something',
+    'wat_exe',
+  ];
+
+  for (const filePath of nonMatchingFlaggedFileExtensions) {
+    it(`should not match ${filePath} as a flagged file extension`, () => {
+      assert.isNotOk(filePath.match(FLAGGED_FILE_EXTENSION_REGEX),
+        `${filePath} should not match flagged file extension regex`);
     });
   }
 });

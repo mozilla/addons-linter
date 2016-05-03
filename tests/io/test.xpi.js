@@ -190,11 +190,11 @@ describe('xpi.getFiles()', function() {
 
 describe('Xpi.getFile()', function() {
 
-  it('should throw if streamOrString is incorrect', () => {
+  it('should throw if fileStreamType is incorrect', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     assert.throw(() => {
       myXpi.getFile('whatever-file', 'whatever');
-    }, Error, /Unexpected streamOrString value "whatever"/);
+    }, Error, /Unexpected fileStreamType value "whatever"/);
   });
 
   it('should call getFileAsString', () => {
