@@ -21,6 +21,10 @@ export default class JavaScriptScanner {
     ensureFilenameExists(this.filename);
   }
 
+  static get fileResultType() {
+    return 'string';
+  }
+
   scan(_ESLint=ESLint, {
     _rules=this._defaultRules,
     _ruleMapping=ESLINT_RULE_MAPPING,

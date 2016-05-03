@@ -38,4 +38,7 @@ describe('ChromeManifestScanner', () => {
       });
   });
 
+  it('should ask for a stream', () => {
+    assert(ChromeManifestScanner.fileResultType, 'stream');
+  });
 });

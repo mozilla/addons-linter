@@ -284,11 +284,7 @@ export default class Linter {
   scanFiles(files) {
     var promises = [];
     for (let filename of files) {
-      if (filename === CHROME_MANIFEST) {
-        promises.push(this.scanFile(filename, 'stream'));
-      } else {
-        promises.push(this.scanFile(filename));
-      }
+      promises.push(this.scanFile(filename));
     }
     return Promise.all(promises);
   }
@@ -318,13 +314,12 @@ export default class Linter {
     }
   }
 
-  scanFile(filename, streamOrString='string') {
-    return this.io.getFile(filename, streamOrString)
-      .then((contentsOrStream) => {
-        let scanner = new (
-          this.getScanner(filename))(contentsOrStream, filename, {
-            addonMetadata: this.addonMetadata,
-          });
+  scanFile(filename) {
+    var ScannerClass = this.getScanner(filename);
+    return this.io.getFile(filename, ScannerClass.fileResultType)
+      .then((fileData) => {
+        let scanner = new ScannerClass(
+          fileData, filename, {addonMetadata: this.addonMetadata});
         return scanner.scan();
       })
       // messages should be a list of raw message data objects.
