@@ -93,6 +93,9 @@ describe('Hidden and Flagged File Regexes', function() {
   }
 
   const nonMatchingFlaggedFiles = [
+    'something/fooorig',
+    'something/old',
+    'foo/DS_Store',
     'Thumbs.db/foo',
     'whatever.orig/something',
     'whatever.old/something',
