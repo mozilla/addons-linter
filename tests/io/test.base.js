@@ -1,6 +1,8 @@
 import { IOBase } from 'io/base';
 import { unexpectedSuccess } from '../helpers';
 
+import { FLAGGED_FILE_MAGIC_NUMBERS_LENGTH } from 'const';
+
 
 describe('io.IOBase()', function() {
 
@@ -57,4 +59,25 @@ describe('io.IOBase()', function() {
       });
   });
 
+  it('should call getFileAsStream method via getFile()', () => {
+    var io = new IOBase('foo/bar');
+    io.getFileAsStream = sinon.stub();
+    io.getFile('get-a-stream', 'stream');
+    assert.ok(io.getFileAsStream.calledWith('get-a-stream'));
+  });
+
+  it('should call getFileAsString method via getFile()', () => {
+    var io = new IOBase('foo/bar');
+    io.getFileAsString = sinon.stub();
+    io.getFile('get-a-string', 'string');
+    assert.ok(io.getFileAsString.calledWith('get-a-string'));
+  });
+
+  it('should call getChunkAsBuffer method via getFile()', () => {
+    var io = new IOBase('foo/bar');
+    io.getChunkAsBuffer = sinon.stub();
+    io.getFile('get-a-chunk-as-buffer', 'chunk');
+    assert.ok(io.getChunkAsBuffer.calledWith('get-a-chunk-as-buffer',
+      FLAGGED_FILE_MAGIC_NUMBERS_LENGTH));
+  });
 });
