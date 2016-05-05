@@ -11,7 +11,7 @@ export function detectBadMozBindingURL(cssNode, filename,
         if (isLocalCSSUri(node.value) === false) {
           messageList.push(
             Object.assign({}, messages.MOZ_BINDING_EXT_REFERENCE, {
-              type: 'error',
+              type: 'warning',
               line: startLine,
               column: startColumn,
               file: filename,

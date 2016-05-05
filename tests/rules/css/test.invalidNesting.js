@@ -1,6 +1,6 @@
 import * as messages from 'messages';
 
-import { VALIDATION_ERROR } from 'const';
+import { VALIDATION_WARNING } from 'const';
 import { singleLineString } from 'utils';
 
 import CSSScanner from 'scanners/css';
@@ -22,7 +22,7 @@ describe('CSS Rule InvalidNesting', () => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code,
                      messages.INVALID_SELECTOR_NESTING.code);
-        assert.equal(validationMessages[0].type, VALIDATION_ERROR);
+        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
       });
   });
 
@@ -57,7 +57,7 @@ describe('CSS Rule InvalidNesting', () => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code,
                      messages.INVALID_SELECTOR_NESTING.code);
-        assert.equal(validationMessages[0].type, VALIDATION_ERROR);
+        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
       });
   });
 

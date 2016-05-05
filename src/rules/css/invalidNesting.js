@@ -9,7 +9,7 @@ export function invalidNesting(cssNode, filename,
       if (node.type === 'rule') {
         messageList.push(
           Object.assign({}, messages.INVALID_SELECTOR_NESTING, {
-            type: 'error',
+            type: 'warning',
             line: startLine,
             column: startColumn,
             file: filename,
