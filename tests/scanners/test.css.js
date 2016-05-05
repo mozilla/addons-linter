@@ -1,5 +1,5 @@
 import * as messages from 'messages';
-import { VALIDATION_ERROR } from 'const';
+import { VALIDATION_WARNING } from 'const';
 import CSSScanner from 'scanners/css';
 import * as rules from 'rules/css';
 import { getRuleFiles, metadataPassCheck, validMetadata } from '../helpers';
@@ -17,7 +17,7 @@ describe('CSSScanner', () => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code,
                      messages.CSS_SYNTAX_ERROR.code);
-        assert.equal(validationMessages[0].type, VALIDATION_ERROR);
+        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
         assert.equal(validationMessages[0].message, 'Unclosed block');
         assert.equal(validationMessages[0].line, 1);
         assert.equal(validationMessages[0].column, 1);

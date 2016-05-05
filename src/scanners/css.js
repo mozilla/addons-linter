@@ -4,7 +4,7 @@ import * as postcss from 'postcss';
 import BaseScanner from 'scanners/base';
 import log from 'logger';
 import { CSS_SYNTAX_ERROR } from 'messages';
-import { VALIDATION_ERROR } from 'const';
+import { VALIDATION_WARNING } from 'const';
 import { ignorePrivateFunctions } from 'utils';
 
 
@@ -82,7 +82,7 @@ export default class CSSScanner extends BaseScanner {
           return reject(e);
         } else {
           this.linterMessages.push(Object.assign({}, CSS_SYNTAX_ERROR, {
-            type: VALIDATION_ERROR,
+            type: VALIDATION_WARNING,
             // Use the reason for the error as the message.
             // e.message includes an absolute path.
             message: e.reason,
