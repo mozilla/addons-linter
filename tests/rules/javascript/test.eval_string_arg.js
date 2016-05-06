@@ -1,4 +1,4 @@
-import { VALIDATION_ERROR } from 'const';
+import { VALIDATION_WARNING } from 'const';
 import { singleLineString } from 'utils';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
@@ -54,7 +54,7 @@ describe('eval_string_arg', () => {
       .then((validationMessages) => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code, messages.EVAL_STRING_ARG.code);
-        assert.equal(validationMessages[0].type, VALIDATION_ERROR);
+        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
       });
   });
 
@@ -66,7 +66,7 @@ describe('eval_string_arg', () => {
       .then((validationMessages) => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code, messages.EVAL_STRING_ARG.code);
-        assert.equal(validationMessages[0].type, VALIDATION_ERROR);
+        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
       });
   });
 
@@ -78,7 +78,7 @@ describe('eval_string_arg', () => {
       .then((validationMessages) => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code, messages.EVAL_STRING_ARG.code);
-        assert.equal(validationMessages[0].type, VALIDATION_ERROR);
+        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
       });
   });
 
