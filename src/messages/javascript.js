@@ -207,8 +207,8 @@ export const TAB_URL_OVERRIDE = {
 export const LOW_LEVEL_MODULE = {
   code: 'LOW_LEVEL_MODULE',
   message: _('Usage of low-level or non-SDK interface'),
-  description: _(`Your add-on uses an interface which bypasses the
-    high-level protections of the add-on SDK. This interface
+  description: _(singleLineString`Your add-on uses an interface which
+    bypasses the high-level protections of the add-on SDK. This interface
     should be avoided, and its use may significantly complicate
     your review process`),
   legacyCode: null,
