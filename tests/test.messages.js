@@ -7,16 +7,34 @@ import { singleLineString } from 'utils';
 
 describe('Messages', function() {
 
-  it('should only have codes with a length <= 25', () => {
-    // Otherwise the ansi color sequences will be borked
-    // as columnify doesn't handle them when wrapping text.
-    for (let message in messages) {
-      var code = messages[message].code;
-      if (code) {
+  for (let message in messages) {
+    const code = messages[message].code;
+    const description = messages[message].description;
+    const msg = messages[message].message;
+
+    if (code) {
+      it(`should have code length <= 25 for ${code}`, () => {
+        // Otherwise the ansi color sequences will be borked
+        // as columnify doesn't handle them when wrapping text.
         assert.isBelow(code.length, 26, `code ${code} is too long`);
-      }
+      });
     }
-  });
+
+    if (description) {
+      it(`should not have any newlines in description for ${code}`, () => {
+        assert.equal(description.split('\n').length, 1,
+                     `The description for ${code} should not have newlines`);
+        console.log(description);
+      });
+    }
+
+    if (msg) {
+      it(`should not have any newlines in message for ${code}`, () => {
+        assert.equal(msg.split('\n').length, 1,
+                     `The message for ${code} should not have newlines`);
+      });
+    }
+  }
 
   it('should construct a valid message (with uppercase codes)', () => {
     var vegetarianTag = messages._tagNotAllowed('steak');
