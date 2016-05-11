@@ -1,6 +1,6 @@
 {
   "name": "addons-linter",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Mozilla Add-ons Linter",
   "main": "dist/addons-linter.js",
   "bin": {
@@ -66,7 +66,7 @@
     "es6-promisify": "4.0.0",
     "eslint": "2.9.0",
     "first-chunk-stream": "2.0.0",
-    "mozilla-web-extension-manifest-schema": "0.2.0",
+    "mozilla-web-extension-manifest-schema": "0.3.0",
     "postcss": "5.0.21",
     "semver": "5.1.0",
     "sha.js": "2.4.5",
