@@ -116,6 +116,7 @@ export const MAX_FILE_SIZE_MB = 100;
 
 export const HIDDEN_FILE_REGEX = /^__MACOSX\//;
 export const FLAGGED_FILE_REGEX = /thumbs\.db$|\.DS_Store$|\.orig$|\.old$|\~$/i;
+export const ALREADY_SIGNED_REGEX = /^META\-INF\/manifest\.mf/;
 
 export const FLAGGED_FILE_EXTENSION_REGEX =
   /\.exe$|\.dll$|\.dylib$|\.so$|\.sh$|\.class$|\.swf$/i;
