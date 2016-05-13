@@ -1,12 +1,43 @@
 import { gettext as _ } from 'utils';
 import { MANIFEST_JSON } from 'const';
 
+export const MANIFEST_JSON_INVALID = {
+  code: 'MANIFEST_JSON_INVALID',
+  legacyCode: null,
+  message: _('The manifest.json is not valid.'),
+  description: _('See https://mzl.la/1ZOhoEN (MDN Docs) for more information.'),
+  file: MANIFEST_JSON,
+};
+
+export const MANIFEST_FIELD_REQUIRED = {
+  code: 'MANIFEST_FIELD_REQUIRED',
+  legacyCode: null,
+  message: _('The field is required.'),
+  description: _('See https://mzl.la/1ZOhoEN (MDN Docs) for more information.'),
+  file: MANIFEST_JSON,
+};
+
+export const MANIFEST_FIELD_INVALID = {
+  code: 'MANIFEST_FIELD_INVALID',
+  legacyCode: null,
+  message: _('The field is invalid.'),
+  description: _('See https://mzl.la/1ZOhoEN (MDN Docs) for more information.'),
+  file: MANIFEST_JSON,
+};
+
+export const MANIFEST_PERMISSIONS = {
+  code: 'MANIFEST_PERMISSIONS',
+  legacyCode: null,
+  message: _('Unknown permission.'),
+  description: _('See https://mzl.la/1R1n1t0 (MDN Docs) for more information.'),
+  file: MANIFEST_JSON,
+};
 
 export const MANIFEST_VERSION_INVALID = {
   code: 'MANIFEST_VERSION_INVALID',
   legacyCode: null,
   message: _('"manifest_version" in the manifest.json is not a valid value'),
-  description: _('See http://mzl.la/20PenXl (MDN Docs) for more information.'),
+  description: _('See https://mzl.la/20PenXl (MDN Docs) for more information.'),
   file: MANIFEST_JSON,
 };
 
