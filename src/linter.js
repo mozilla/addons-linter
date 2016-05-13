@@ -9,6 +9,7 @@ import { terminalWidth } from 'cli';
 import * as constants from 'const';
 import { ARCH_DEFAULT, ARCH_JETPACK, CHROME_MANIFEST, INSTALL_RDF,
          MANIFEST_JSON } from 'const';
+import { BANNED_LIBRARIES, UNADVISED_LIBRARIES } from 'libraries';
 import * as messages from 'messages';
 import { checkMinNodeVersion, gettext as _, singleLineString } from 'utils';
 
@@ -17,11 +18,11 @@ import Collector from 'collector';
 import InstallRdfParser from 'parsers/installrdf';
 import ManifestJSONParser from 'parsers/manifestjson';
 import ChromeManifestScanner from 'scanners/chromemanifest';
-import CSSScanner from 'scanners/css';
-import HTMLScanner from 'scanners/html';
-import FilenameScanner from 'scanners/filename';
-import JavaScriptScanner from 'scanners/javascript';
 import BinaryScanner from 'scanners/binary';
+import CSSScanner from 'scanners/css';
+import FilenameScanner from 'scanners/filename';
+import HTMLScanner from 'scanners/html';
+import JavaScriptScanner from 'scanners/javascript';
 import RDFScanner from 'scanners/rdf';
 import { Directory, Xpi } from 'io';
 
@@ -426,6 +427,9 @@ export default class Linter {
     return this._markEmptyFiles(addonMetadata)
       .then((addonMetadata) => {
         return this._markJSLibs(addonMetadata);
+      })
+      .then((addonMetadata) => {
+        return this._markBannedLibs(addonMetadata);
       });
   }
 
@@ -442,6 +446,28 @@ export default class Linter {
     } else {
       return ARCH_DEFAULT;
     }
+  }
+
+  _markBannedLibs(addonMetadata) {
+    for (let pathToFile in addonMetadata.jsLibs) {
+      if (BANNED_LIBRARIES.includes(addonMetadata.jsLibs[pathToFile])) {
+        this.collector.addError(
+          Object.assign({}, messages.BANNED_LIBRARY, {
+            file: pathToFile,
+          })
+        );
+      }
+
+      if (UNADVISED_LIBRARIES.includes(addonMetadata.jsLibs[pathToFile])) {
+        this.collector.addWarning(
+          Object.assign({}, messages.UNADVISED_LIBRARY, {
+            file: pathToFile,
+          })
+        );
+      }
+    }
+
+    return addonMetadata;
   }
 
   _markEmptyFiles(addonMetadata) {

@@ -850,6 +850,72 @@ describe('Linter.extractMetadata()', function() {
     });
   });
 
+  // Uses our angular-bad-library XPI, with the following file layout:
+  //
+  // - bootstrap.js
+  // - data/
+  //   - angular-1.2.28.min.js (minified Angular)
+  //   - change-text.js
+  //   - empty.js (empty file)
+  //   - jquery-2.1.4.min.js (minified jQuery)
+  // - index.js
+  // - install.rdf
+  // - package.json
+  // - README.md
+  it.skip('should flag banned JS libraries in an XPI.', () => {
+    var addonLinter = new Linter({
+      _: ['tests/fixtures/angular-bad-library.xpi'],
+    });
+    var markBannedSpy = sinon.spy(addonLinter, '_markBannedLibs');
+
+    return addonLinter.extractMetadata({_console: fakeConsole})
+      .then((metadata) => {
+        assert.ok(markBannedSpy.called);
+        assert.equal(Object.keys(metadata.jsLibs).length, 2);
+        assert.deepEqual(metadata.jsLibs, {
+          'data/angular-1.2.28.min.js': 'angularjs.1.2.28.angular.min.js',
+          'data/jquery-2.1.4.min.js': 'jquery.2.1.4.jquery.min.js',
+        });
+
+        var errors = addonLinter.collector.errors;
+        assert.equal(errors.length, 1);
+        assert.equal(errors[0].code, messages.BANNED_LIBRARY.code);
+      });
+  });
+
+  // Uses our angular-unadvised-library XPI, with the following file layout:
+  //
+  // - bootstrap.js
+  // - data/
+  //   - angular-1.5.3.js (Angular)
+  //   - change-text.js
+  //   - empty.js (empty file)
+  //   - jquery-2.1.4.min.js (minified jQuery)
+  // - index.js
+  // - install.rdf
+  // - package.json
+  // - README.md
+  it('should flag unadvised JS libraries in an XPI.', () => {
+    var addonLinter = new Linter({
+      _: ['tests/fixtures/angular-unadvised-library.xpi'],
+    });
+    var markUnadvisedSpy = sinon.spy(addonLinter, '_markBannedLibs');
+
+    return addonLinter.extractMetadata({_console: fakeConsole})
+      .then((metadata) => {
+        assert.ok(markUnadvisedSpy.called);
+        assert.equal(Object.keys(metadata.jsLibs).length, 2);
+        assert.deepEqual(metadata.jsLibs, {
+          'data/angular-1.5.3.js': 'angularjs.1.5.3.angular.js',
+          'data/jquery-2.1.4.min.js': 'jquery.2.1.4.jquery.min.js',
+        });
+
+        var warnings = addonLinter.collector.warnings;
+        assert.equal(warnings.length, 1);
+        assert.equal(warnings[0].code, messages.UNADVISED_LIBRARY.code);
+      });
+  });
+
   it('should use size attribute if uncompressedSize is undefined', () => {
     var addonLinter = new Linter({_: ['bar']});
     addonLinter.checkFileExists = () => {
