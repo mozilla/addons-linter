@@ -124,3 +124,12 @@ export const FLAGGED_FILE_TYPE = {
     https://bit.ly/review-policy for more information on the binary content
     review process.`),
 };
+
+export const ALREADY_SIGNED = {
+  code: 'ALREADY_SIGNED',
+  legacyCode: null,
+  message: _('Package already signed'),
+  description: _(singleLineString`Add-ons which are already signed will be
+    re-signed when published on AMO. This will replace any existing signatures
+    on the add-on.`),
+};

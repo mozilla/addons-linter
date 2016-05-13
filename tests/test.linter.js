@@ -260,17 +260,20 @@ describe('Linter.getScanner()', function() {
     assert.deepEqual(Scanner, CSSScanner);
   });
 
-  it('should return FilenameScanner', function() {
-    var addonLinter = new Linter({_: ['foo']});
-    var Scanner = addonLinter.getScanner('__MACOSX/foo.txt');
-    assert.deepEqual(Scanner, FilenameScanner);
-  });
+  var shouldBeFilenameScanned = [
+    '__MACOSX/foo.txt',
+    'wat.dll',
+    'META-INF/manifest.mf',
+  ];
 
-  it('should return FilenameScanner', function() {
-    var addonLinter = new Linter({_: ['foo']});
-    var Scanner = addonLinter.getScanner('wat.dll');
-    assert.deepEqual(Scanner, FilenameScanner);
-  });
+  for (var filename of shouldBeFilenameScanned) {
+    it(`should return FilenameScanner for ${filename}`, () => {
+      var addonLinter = new Linter({_: ['foo']});
+      var Scanner = addonLinter.getScanner(filename);
+      assert.deepEqual(Scanner, FilenameScanner);
+    });
+  }
+
 });
 
 

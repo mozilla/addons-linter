@@ -296,7 +296,8 @@ export default class Linter {
 
     if (filename.match(constants.HIDDEN_FILE_REGEX) ||
         filename.match(constants.FLAGGED_FILE_REGEX) ||
-        filename.match(constants.FLAGGED_FILE_EXTENSION_REGEX)) {
+        filename.match(constants.FLAGGED_FILE_EXTENSION_REGEX) ||
+        filename.match(constants.ALREADY_SIGNED_REGEX)) {
       return FilenameScanner;
     }
 

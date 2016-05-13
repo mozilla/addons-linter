@@ -1,6 +1,5 @@
 import FilenameScanner from 'scanners/filename';
-import { FLAGGED_FILE_EXTENSION_REGEX, FLAGGED_FILE_REGEX, HIDDEN_FILE_REGEX }
-  from 'const';
+import * as constants from 'const';
 
 describe('FilenameScanner', function() {
 
@@ -37,6 +36,17 @@ describe('FilenameScanner', function() {
       });
   });
 
+  it('should warn when finding a signed extension', () => {
+    var filenameScanner = new FilenameScanner('', 'META-INF/manifest.mf');
+
+    return filenameScanner.scan()
+      .then((linterMessages) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code, 'ALREADY_SIGNED');
+        assert.equal(linterMessages[0].file, 'META-INF/manifest.mf');
+      });
+  });
+
   it('should error out when it fails the regexes', () => {
     var filenameScanner = new FilenameScanner('', 'wat.txt');
 
@@ -58,7 +68,7 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of matchingHiddenFiles) {
     it(`should match ${filePath} as a hidden file`, () => {
-      assert.isOk(filePath.match(HIDDEN_FILE_REGEX),
+      assert.isOk(filePath.match(constants.HIDDEN_FILE_REGEX),
         `${filePath} should match hidden file regex`);
     });
   }
@@ -70,7 +80,7 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of nonMatchingHiddenFiles) {
     it(`should not match ${filePath} as a hidden file`, () => {
-      assert.isNotOk(filePath.match(HIDDEN_FILE_REGEX),
+      assert.isNotOk(filePath.match(constants.HIDDEN_FILE_REGEX),
         `${filePath} should not match hidden file regex`);
     });
   }
@@ -87,7 +97,7 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of matchingFlaggedFiles) {
     it(`should match ${filePath} as a flagged file`, () => {
-      assert.isOk(filePath.match(FLAGGED_FILE_REGEX),
+      assert.isOk(filePath.match(constants.FLAGGED_FILE_REGEX),
         `${filePath} should match flagged file regex`);
     });
   }
@@ -103,7 +113,7 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of nonMatchingFlaggedFiles) {
     it(`should not match ${filePath} as a flagged file`, () => {
-      assert.isNotOk(filePath.match(FLAGGED_FILE_REGEX),
+      assert.isNotOk(filePath.match(constants.FLAGGED_FILE_REGEX),
         `${filePath} should not match flagged file regex`);
     });
   }
@@ -120,7 +130,7 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of matchingFlaggedFileExtensions) {
     it(`should match ${filePath} as a flagged file extensions`, () => {
-      assert.isOk(filePath.match(FLAGGED_FILE_EXTENSION_REGEX),
+      assert.isOk(filePath.match(constants.FLAGGED_FILE_EXTENSION_REGEX),
         `${filePath} should not match flagged file extension regex`);
     });
   }
@@ -132,8 +142,21 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of nonMatchingFlaggedFileExtensions) {
     it(`should not match ${filePath} as a flagged file extension`, () => {
-      assert.isNotOk(filePath.match(FLAGGED_FILE_EXTENSION_REGEX),
+      assert.isNotOk(filePath.match(constants.FLAGGED_FILE_EXTENSION_REGEX),
         `${filePath} should not match flagged file extension regex`);
+    });
+  }
+
+  const nonMatchingSignedFileExtensions = [
+    'META_INF/manifest.mf',
+    'META-INF/manifest_mf',
+    'META-INF_manifest.mf',
+  ];
+
+  for (const filePath of nonMatchingSignedFileExtensions) {
+    it(`should not match ${filePath} as a signed extension`, () => {
+      assert.isNotOk(filePath.match(constants.ALREADY_SIGNED_REGEX),
+        `${filePath} should not match already signed regex`);
     });
   }
 });
