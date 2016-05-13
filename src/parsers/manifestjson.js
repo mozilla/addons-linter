@@ -37,28 +37,48 @@ export default class ManifestJSONParser {
     this.isValid = this._validate();
   }
 
+  errorLookup(error) {
+    var result = {
+      code: 'MANIFEST_JSON_INVALID',
+      description: 'MANIFEST_ERROR',
+      file: 'manifest.json',
+      level: 'error',
+      message: `${error.dataPath}: ${error.message}`,
+    };
+
+    if (error.keyword == 'required') {
+      result.description = `MANIFEST_FIELD_REQUIRED`;
+    }
+
+    // Arrays can be extremely verbose, this tries to make them a little
+    // more sane.
+    var array_regex = /^\/(permissions)\/([\d+])/;
+    var array_match = error.dataPath.match(array_regex);
+    if (array_match) {
+      result.message = `/${array_match[1]}: Unknown ${array_match[1]} value "${error.data}" at entry ${array_match[2]}.`;
+      result.description = `MANIFEST_UNKNOWN_${array_match[1].toUpperCase()}`;
+      result.level = 'warning';
+    }
+    return result;
+  }
+
   _validate() {
     var isValid = validate(this.parsedJSON);
     if (!isValid) {
       log.debug('Schema Validation errors', validate.errors);
+      var errorsFound = [];
       for (let error of validate.errors) {
-        var description;
-        var errorData = {
-          code: 'MANIFEST_JSON_INVALID',
-          message: `${error.dataPath}: ${error.message}`,
-          file: 'manifest.json',
-        };
-
-        // If a required prop is missing, introspect the schema for its
-        // description.
-        if (error.keyword === 'required') {
-          description = error.schema[error.params.missingProperty].description;
-        } else {
-          description = error.parentSchema.description;
+        if (errorsFound.indexOf(error.dataPath) > -1) {
+            continue;
         }
 
-        errorData.description = description || 'MISSING_SCHEMA_DESCRIPTION';
-        this.collector.addError(errorData);
+        var errorData = this.errorLookup(error);
+        errorsFound.push(error.dataPath);
+        if (errorData.level == 'warning') {
+          this.collector.addWarning(errorData);
+        } else {
+          this.collector.addError(errorData);
+        }
       }
     }
 
