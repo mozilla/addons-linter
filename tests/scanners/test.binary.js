@@ -15,7 +15,6 @@ describe('Binary', function() {
 
   it('should notice a flagged file', () => {
     for (let magic of FLAGGED_FILE_MAGIC_NUMBERS) {
-      console.log(magic);
       var buffer = new Buffer(magic);
       var scanner = new BinaryScanner(buffer, 'wat.txt');
 
