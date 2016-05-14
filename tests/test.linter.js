@@ -266,7 +266,7 @@ describe('Linter.getScanner()', function() {
     'META-INF/manifest.mf',
   ];
 
-  for (var filename of shouldBeFilenameScanned) {
+  for (let filename of shouldBeFilenameScanned) {
     it(`should return FilenameScanner for ${filename}`, () => {
       var addonLinter = new Linter({_: ['foo']});
       var Scanner = addonLinter.getScanner(filename);
