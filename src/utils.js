@@ -206,7 +206,7 @@ export function isLocalUrl(urlInput) {
   // Check protocol is chrome: or resource: if set.
   // Details on the chrome protocol are here: https://goo.gl/W52T0Q
   // Details on resource protocol are here: https://goo.gl/HHqeJA
-  if (protocol && LOCAL_PROTOCOLS.indexOf(protocol) === -1) {
+  if (protocol && !LOCAL_PROTOCOLS.includes(protocol)) {
     return false;
   }
   // Disallow protocol-free remote urls.
