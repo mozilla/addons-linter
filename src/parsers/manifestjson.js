@@ -104,8 +104,19 @@ export default class ManifestJSONParser {
     return isValid;
   }
 
+  getAddonId() {
+    try {
+      var id = this.parsedJSON.applications.gecko.id;
+      return typeof id === 'undefined' ? null : id;
+    } catch (e) {
+      console.log('Failed to get the id from the manifest.');
+      return null;
+    }
+  }
+
   getMetadata() {
     return {
+      id: this.getAddonId(),
       manifestVersion: this.parsedJSON.manifest_version,
       name: this.parsedJSON.name,
       type: PACKAGE_EXTENSION,

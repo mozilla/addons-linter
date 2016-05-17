@@ -25,6 +25,40 @@ describe('ManifestJSONParser', function() {
 
 });
 
+describe('ManifestJSONParser id', function() {
+
+  it('should return the correct id', () => {
+    var json = validManifestJSON();
+    var manifestJSONParser = new ManifestJSONParser(json);
+    assert.equal(manifestJSONParser.isValid, true);
+    var metadata = manifestJSONParser.getMetadata();
+    assert.equal(metadata.id, '{daf44bf7-a45e-4450-979c-91cf07434c3d}');
+  });
+
+  it('should fail on invalid id', () => {
+    // This is probably covered in other tests, but verifies that if the
+    // id is something incorrect, you shouldn't even be calling getMetadata.
+    var addonLinter = new Linter({_: ['bar']});
+    var json = validManifestJSON({applications: {gecko: {id: 'wat'}}});
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
+    assert.equal(manifestJSONParser.isValid, false);
+    var errors = addonLinter.collector.errors;
+    assert.equal(errors.length, 1);
+    assert.equal(errors[0].code, messages.MANIFEST_JSON_INVALID.code);
+    assert.include(errors[0].message, '/applications/gecko/id');
+  });
+
+  it('should return null if undefined', () => {
+    var json = validManifestJSON({applications: {}});
+    var manifestJSONParser = new ManifestJSONParser(json);
+    assert.equal(manifestJSONParser.isValid, true);
+    var metadata = manifestJSONParser.getMetadata();
+    assert.equal(metadata.id, null);
+  });
+
+});
+
 describe('ManifestJSONParser manifestVersion', function() {
 
   it('should collect an error on invalid manifest_version value', () => {
