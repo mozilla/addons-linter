@@ -39,7 +39,7 @@ export class Xpi extends IOBase {
     if (/\/$/.test(entry.fileName)) {
       return;
     }
-    if (this.entries.indexOf(entry.fileName) > -1) {
+    if (this.entries.includes(entry.fileName)) {
       log.info('Found duplicate file entry: "%s" in package', entry.fileName);
       reject(new Error(singleLineString`DuplicateZipEntry: Entry
         "${entry.fileName}" has already been seen`));

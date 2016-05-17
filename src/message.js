@@ -48,7 +48,7 @@ export default class Message {
   }
 
   set type(type) {
-    if (MESSAGE_TYPES.indexOf(type) === -1) {
+    if (!MESSAGE_TYPES.includes(type)) {
       throw new Error(singleLineString`Message type "${type}"
         is not one of ${MESSAGE_TYPES.join(', ')}`);
     }

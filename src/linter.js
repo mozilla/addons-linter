@@ -53,11 +53,11 @@ export default class Linter {
   }
 
   handleError(err, _console=console) {
-    if (err.message.indexOf('DuplicateZipEntry') > -1) {
+    if (err.message.includes('DuplicateZipEntry')) {
       this.collector.addError(messages.DUPLICATE_XPI_ENTRY);
       this.print(_console);
-    } else if (err.message.indexOf(
-      'end of central directory record signature not found') > -1) {
+    } else if (err.message.includes(
+      'end of central directory record signature not found')) {
       this.collector.addError(messages.BAD_ZIPFILE);
       this.print(_console);
     } else {

@@ -19,7 +19,7 @@ export function checkCategories(triples, filename) {
 
   for (let triple of triples) {
     if (triple.subject === 'category' &&
-        (DANGEROUS_CATEGORIES.indexOf(triple.predicate) > -1 ||
+        (DANGEROUS_CATEGORIES.includes(triple.predicate) ||
          (triple.predicate === 'JavaScript' &&
           triple.object.startsWith('global ') ||
           triple.object.startsWith('DOM ')))) {
