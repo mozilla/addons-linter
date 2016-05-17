@@ -12,7 +12,6 @@
     "destructuring": true,
     "defaultParams": true,
     "jsx": true,
-    "modules": true,
     "restParams": true,
     "spread": true,
   },
@@ -42,8 +41,8 @@
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "keyword-spacing": "error",
     "max-len": ["error", {
-      "code": 80, 
-      "tabWidth": 2, 
+      "code": 80,
+      "tabWidth": 2,
       "ignoreUrls": true,
       "ignoreComments": true
     }],
@@ -93,5 +92,8 @@
     "strict": ["error", "never"],
     "valid-typeof": "error",
     "wrap-iife": ["error", "inside"]
+  },
+  "parserOptions": {
+    "sourceType": "module"
   }
 }
