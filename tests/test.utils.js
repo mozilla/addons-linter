@@ -25,11 +25,9 @@ describe('utils.singleLineString()', function() {
     var me = 'me';
     var raggedy = 'raggedy';
     var you = 'you';
-    // jscs:disable
     var output = utils.singleLineString`So here is us, on the
           ${raggedy} edge. Don't push ${me},
               			and I won't push ${you}.`;
-    // jscs:enable
     assert.equal(output,
       'So here is us, on the raggedy edge. ' +
       "Don't push me, and I won't push you.");

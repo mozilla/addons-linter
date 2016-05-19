@@ -3,7 +3,6 @@
 .eslintrc
 .gitignore
 .grunt
-.jscsrc
 .npmignore
 .npmrc
 .travis.yml

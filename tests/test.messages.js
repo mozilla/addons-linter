@@ -24,7 +24,6 @@ describe('Messages', function() {
       it(`should not have any newlines in description for ${code}`, () => {
         assert.equal(description.split('\n').length, 1,
                      `The description for ${code} should not have newlines`);
-        console.log(description);
       });
     }
 

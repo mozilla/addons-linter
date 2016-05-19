@@ -12,11 +12,9 @@ pull request.
 
 ### Tests
 
-Our tests include `eslint` and `jscs` style checks; these keep our code
-consistent. You can review the rules in the [`.eslintrc`][eslint] and
-[`.jscsrc`][jscsrc] files.
+Our tests include `eslint` style checks; these keep our code consistent.
+You can review the rules in the [`.eslintrc`][eslint] file.
 
 Please run the tests locally with `npm test` before you commit.
 
 [eslint]: https://github.com/mozilla/addons-linter/blob/master/.eslintrc
-[jscsrc]: https://github.com/mozilla/addons-linter/blob/master/.jscsrc

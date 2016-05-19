@@ -109,7 +109,7 @@ export default class ManifestJSONParser {
       var id = this.parsedJSON.applications.gecko.id;
       return typeof id === 'undefined' ? null : id;
     } catch (e) {
-      console.log('Failed to get the id from the manifest.');
+      log.error('Failed to get the id from the manifest.');
       return null;
     }
   }
