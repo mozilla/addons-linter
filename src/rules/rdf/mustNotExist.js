@@ -44,7 +44,7 @@ export function mustNotExist(xmlDoc, filename, {namespace}={}) {
 }
 
 export function _checkForTags({xmlDoc, namespace, tags, type, prefix,
-                               filename} = {}) { // jscs:ignore
+                               filename} = {}) {
   var linterMessages = [];
 
   for (let tag of tags) {

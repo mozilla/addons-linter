@@ -337,7 +337,7 @@ export default class Linter {
   }
 
   extractMetadata({ _Xpi=Xpi, _console=console,
-                    _Directory=Directory } = {}) { // jscs:ignore
+                    _Directory=Directory } = {}) {
     return checkMinNodeVersion()
       .then(() => {
         return this.checkFileExists(this.packagePath);

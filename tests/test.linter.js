@@ -675,7 +675,7 @@ describe('Linter.extractMetadata()', function() {
     }
 
     return addonLinter.extractMetadata({_Directory: FakeDirectory,
-                                           _console: fakeConsole}) // jscs:ignore
+                                           _console: fakeConsole})
       .then((metadata) => {
         assert.deepEqual(metadata, fakeMetadata);
         assert.instanceOf(addonLinter.io, FakeDirectory);
@@ -705,7 +705,7 @@ describe('Linter.extractMetadata()', function() {
     }
 
     return addonLinter.extractMetadata({_Xpi: FakeXpi,
-                                           _console: fakeConsole}) // jscs:ignore
+                                           _console: fakeConsole})
       .then((metadata) => {
         assert.deepEqual(metadata, fakeMetadata);
       });

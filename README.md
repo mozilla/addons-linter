@@ -114,7 +114,6 @@ From the grunt docs:
 | grunt build            |  Builds the lib                                  |
 | grunt start            |  Builds the lib and watches for changes          |
 | grunt eslint           |  Lints the files with eslint (Run in grunt test) |
-| grunt jscs             |  Checks for style issues  (Run in grunt test)    |
 
 
 ### Building and watching for changes

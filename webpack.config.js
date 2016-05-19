@@ -11,9 +11,7 @@ fs.readdirSync('node_modules')
     return ['.bin'].indexOf(x) === -1;
   })
   .forEach(function(mod) {
-    // jscs:disable requireTemplateStrings
     nodeModules[mod] = 'commonjs ' + mod;
-    // jscs:enable requireTemplateStrings
   });
 
 
