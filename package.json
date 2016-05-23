@@ -50,7 +50,7 @@
     "markdown-it": "6.0.2",
     "markdown-it-anchor": "2.5.0",
     "markdown-it-emoji": "1.1.1",
-    "mocha": "2.4.5",
+    "mocha": "2.5.0",
     "shelljs": "0.7.0",
     "sinon": "1.17.4",
     "webpack": "1.13.1",
