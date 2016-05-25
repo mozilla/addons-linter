@@ -96,4 +96,14 @@ describe('CSSScanner', () => {
         assert.equal(validationMessages.length, 0);
       });
   });
+
+  // See: https://github.com/mozilla/addons-linter/issues/693
+  it('should not blow-up on `initial` value', () => {
+    var code = '.myClass { -moz-binding: url(initial); }';
+    var cssScanner = new CSSScanner(code, 'fakeFile.css');
+    return cssScanner.scan()
+      .then((validationMessages) => {
+        assert.equal(validationMessages.length, 0);
+      });
+  });
 });

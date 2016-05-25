@@ -128,7 +128,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :white_check_mark: | warning | -moz-binding_external | | Illegal reference to external scripts |  | [testcases/markup/csstester.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/markup/csstester.py)| | MOZ_BINDING_EXT_REFERENCE |
+| :negative_squared_cross_mark: | warning | -moz-binding_external | | Illegal reference to external scripts |  | [testcases/markup/csstester.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/markup/csstester.py)| | |
 | :x: | warning | remote_url | | Themes may not reference remote resources | | | | |
 | :negative_squared_cross_mark: | warning | identity_box | | Modification to identity box | | | | |
 | :x: | info? (should be an error) | unicode_decode | | Unicode decode error. | | | | |
