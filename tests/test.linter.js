@@ -862,7 +862,7 @@ describe('Linter.extractMetadata()', function() {
   // - install.rdf
   // - package.json
   // - README.md
-  it.skip('should flag banned JS libraries in an XPI.', () => {
+  it('should flag banned JS libraries in an XPI.', () => {
     var addonLinter = new Linter({
       _: ['tests/fixtures/angular-bad-library.xpi'],
     });
