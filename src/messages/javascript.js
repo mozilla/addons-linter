@@ -213,3 +213,19 @@ export const LOW_LEVEL_MODULE = {
     your review process`),
   legacyCode: null,
 };
+
+export const BANNED_LIBRARY = {
+  code: 'BANNED_LIBRARY',
+  message: _('Banned 3rd-party JS library'),
+  description: _(singleLineString`Your add-on uses a JavaScript library we
+    consider unsafe. Read more: https://bit.ly/1TRIyZY`),
+  legacyCode: null,
+};
+
+export const UNADVISED_LIBRARY = {
+  code: 'UNADVISED_LIBRARY',
+  message: _('Unadvised 3rd-party JS library'),
+  description: _(singleLineString`Your add-on uses a JavaScript library we do
+    not recommend. Read more: https://bit.ly/1TRIyZY`),
+  legacyCode: null,
+};

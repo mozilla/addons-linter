@@ -116,6 +116,11 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :negative_squared_cross_mark: | warning | namespace_pollution | | JavaScript namespace pollution |  | [testcases/javascript/traverser.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/traverser.py)| | |
 | :negative_squared_cross_mark: | warning | dangerous_global | | Access to the `%s` property is deprecated for security or other reasons. | | | | |
 
+### Libraries
+| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
+| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
+| :white_check_mark: | error | BANNED_LIBRARY | | This version of a JS library is banned for security reasons. | | | | BANNED_LIBRARY |
+| :white_check_mark: | warning | UNADVISED_LIBRARY | | This version of a JS library is not recommended. | | | | UNADVISED_LIBRARY |
 
 ## Markup
 
