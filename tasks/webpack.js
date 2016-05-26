@@ -1,4 +1,3 @@
-var grunt = require('grunt');
 var path = require('path');
 var webpackConfig = require('../webpack.config.js');
 
@@ -10,9 +9,6 @@ function noddyClone(obj) {
 
 var buildResolve = noddyClone(defaultResolve);
 buildResolve.modulesDirectories.push('src/');
-
-var coverageResolve = noddyClone(defaultResolve);
-coverageResolve.modulesDirectories.push('coverage/');
 
 var testConfig = {
   entry: './tests/runner.js',
@@ -32,14 +28,21 @@ module.exports = {
     keepalive: true,
     resolve: buildResolve,
   },
-  coverage: {
-    entry: testConfig.entry,
-    output: testConfig.output,
-    resolve: coverageResolve,
-  },
   test: {
     entry: testConfig.entry,
     output: testConfig.output,
     resolve: buildResolve,
+  },
+  coverage: {
+    entry: testConfig.entry,
+    output: testConfig.output,
+    resolve: buildResolve,
+    module: Object.assign({}, webpackConfig.module, {
+      preLoaders: [{
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components|test)/,
+        loader: 'babel-istanbul',
+      }],
+    }),
   },
 };

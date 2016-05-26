@@ -53,12 +53,10 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('test', [
-    'instrument',
+    'clean',
     'webpack:build',
     'webpack:coverage',
-    'mochaTest',
-    'storeCoverage',
-    'makeReport',
+    'mochaTest:coverage',
     'newer:eslint',
   ]);
 
@@ -66,8 +64,7 @@ module.exports = function(grunt) {
     'clean',
     'webpack:build',
     'webpack:test',
-    'mochaTest',
+    'mochaTest:test',
     'newer:eslint',
   ]);
-
 };

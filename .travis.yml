@@ -10,8 +10,7 @@ notifications:
     - irc.mozilla.org#amo-bots
     on_success: change
     on_failure: always
-after_script:
-- cat ./coverage/**/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+after_script: npm run publish-coverage
 deploy:
   provider: npm
   email: addons-dev-automation+npm@mozilla.com
