@@ -883,37 +883,28 @@ describe('Linter.extractMetadata()', function() {
       });
   });
 
-  // Uses our angular-unadvised-library XPI, with the following file layout:
-  //
-  // - bootstrap.js
-  // - data/
-  //   - angular-1.5.3.js (Angular)
-  //   - change-text.js
-  //   - empty.js (empty file)
-  //   - jquery-2.1.4.min.js (minified jQuery)
-  // - index.js
-  // - install.rdf
-  // - package.json
-  // - README.md
   it('should flag unadvised JS libraries in an XPI.', () => {
     var addonLinter = new Linter({
-      _: ['tests/fixtures/angular-unadvised-library.xpi'],
+      _: ['fake.xpi'],
     });
-    var markUnadvisedSpy = sinon.spy(addonLinter, '_markBannedLibs');
+    var fakeUnadvisedLibs = ['test_unadvised_fake_lib.js'];
+    var fakeMetadata = {
+      jsLibs : {
+        'data/unadvised_fake_lib.js': 'test_unadvised_fake_lib.js',
+        'data/jquery-2.1.4.min.js': 'jquery.2.1.4.jquery.min.js',
+      },
+    };
 
-    return addonLinter.extractMetadata({_console: fakeConsole})
-      .then((metadata) => {
-        assert.ok(markUnadvisedSpy.called);
-        assert.equal(Object.keys(metadata.jsLibs).length, 2);
-        assert.deepEqual(metadata.jsLibs, {
-          'data/angular-1.5.3.js': 'angularjs.1.5.3.angular.js',
-          'data/jquery-2.1.4.min.js': 'jquery.2.1.4.jquery.min.js',
-        });
+    addonLinter._markBannedLibs(fakeMetadata, fakeUnadvisedLibs);
+    assert.equal(Object.keys(fakeMetadata.jsLibs).length, 2);
+    assert.deepEqual(fakeMetadata.jsLibs, {
+      'data/unadvised_fake_lib.js': 'test_unadvised_fake_lib.js',
+      'data/jquery-2.1.4.min.js': 'jquery.2.1.4.jquery.min.js',
+    });
 
-        var warnings = addonLinter.collector.warnings;
-        assert.equal(warnings.length, 1);
-        assert.equal(warnings[0].code, messages.UNADVISED_LIBRARY.code);
-      });
+    var warnings = addonLinter.collector.warnings;
+    assert.equal(warnings.length, 1);
+    assert.equal(warnings[0].code, messages.UNADVISED_LIBRARY.code);
   });
 
   it('should use size attribute if uncompressedSize is undefined', () => {

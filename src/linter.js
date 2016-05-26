@@ -448,7 +448,7 @@ export default class Linter {
     }
   }
 
-  _markBannedLibs(addonMetadata) {
+  _markBannedLibs(addonMetadata, _unadvisedLibraries = UNADVISED_LIBRARIES) {
     for (let pathToFile in addonMetadata.jsLibs) {
       if (BANNED_LIBRARIES.includes(addonMetadata.jsLibs[pathToFile])) {
         this.collector.addError(
@@ -458,7 +458,7 @@ export default class Linter {
         );
       }
 
-      if (UNADVISED_LIBRARIES.includes(addonMetadata.jsLibs[pathToFile])) {
+      if (_unadvisedLibraries.includes(addonMetadata.jsLibs[pathToFile])) {
         this.collector.addWarning(
           Object.assign({}, messages.UNADVISED_LIBRARY, {
             file: pathToFile,

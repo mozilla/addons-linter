@@ -146,9 +146,20 @@ export const BANNED_LIBRARIES = [
   'angularjs.1.4.9.angular.min.js',
   'angularjs.1.4.10.angular.js',
   'angularjs.1.4.10.angular.min.js',
+  'angularjs.1.5.0.angular.js',
+  'angularjs.1.5.0.angular.min.js',
+  'angularjs.1.5.1.angular.js',
+  'angularjs.1.5.1.angular.min.js',
+  'angularjs.1.5.2.angular.js',
+  'angularjs.1.5.2.angular.min.js',
+  'angularjs.1.5.3.angular.js',
+  'angularjs.1.5.3.angular.min.js',
+  'angularjs.1.5.4.angular.js',
+  'angularjs.1.5.4.angular.min.js',
+
 ];
 
 export const UNADVISED_LIBRARIES = [
-  'angularjs.1.5.3.angular.js',
-  'angularjs.1.5.3.angular.min.js',
+  'angularjs.1.5.5.angular.js',
+  'angularjs.1.5.5.angular.min.js',
 ];
