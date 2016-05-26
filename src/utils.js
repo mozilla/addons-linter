@@ -215,18 +215,3 @@ export function isLocalUrl(urlInput) {
   }
   return true;
 }
-
-
-export function extractCSSUri(cssUrl) {
-  var match = cssUrl.match(/^url\(\s*['"]?(.*?)['"]?\s*\)$/i);
-  if (match === null || !match[1] || match[0] !== cssUrl) {
-    throw new Error(`CSS url() "${cssUrl}" is invalid`);
-  }
-  return match[1].trim();
-}
-
-
-export function isLocalCSSUri(cssUri) {
-  var cssUriValue = extractCSSUri(cssUri);
-  return isLocalUrl(cssUriValue);
-}
