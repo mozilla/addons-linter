@@ -49,7 +49,7 @@
     "load-grunt-tasks": "3.5.0",
     "markdown-it": "6.0.2",
     "markdown-it-anchor": "2.5.0",
-    "markdown-it-emoji": "1.1.1",
+    "markdown-it-emoji": "1.2.0",
     "mocha": "2.5.3",
     "shelljs": "0.7.0",
     "sinon": "1.17.4",
