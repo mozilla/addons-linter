@@ -64,7 +64,7 @@
     "columnify": "1.5.4",
     "dispensary": "0.5.0",
     "es6-promisify": "4.1.0",
-    "eslint": "2.11.0",
+    "eslint": "2.11.1",
     "first-chunk-stream": "2.0.0",
     "mozilla-web-extension-manifest-schema": "0.5.0",
     "postcss": "5.0.21",
