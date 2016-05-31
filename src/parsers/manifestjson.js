@@ -1,13 +1,18 @@
+import esprima from 'esprima';
+import validate from 'mozilla-web-extension-manifest-schema';
+
+import cli from 'cli';
 import { PACKAGE_EXTENSION } from 'const';
 import log from 'logger';
-import validate from 'mozilla-web-extension-manifest-schema';
 import * as messages from 'messages';
-import cli from 'cli';
 import { singleLineString } from 'utils';
 
 export default class ManifestJSONParser {
 
   constructor(jsonString, collector, {selfHosted=cli.argv.selfHosted}={}) {
+    // Add the JSON string to the object; we'll use this for testing.
+    this._jsonString = jsonString;
+
     // Provides ability to directly add messages to
     // the collector.
     this.collector = collector;
@@ -21,17 +26,62 @@ export default class ManifestJSONParser {
     };
 
     try {
-      this.parsedJSON = JSON.parse(jsonString);
-    } catch (error) {
-      var errorData = {
-        code: 'MANIFEST_JSON_INVALID',
-        message: 'Invalid JSON in manifest file.',
-        file: 'manifest.json',
-        description: error,
-      };
-      this.collector.addError(errorData);
-      this.isValid = false;
-      return;
+      this.parsedJSON = JSON.parse(this._jsonString);
+    } catch (originalError) {
+      // First we'll try to remove comments with esprima;
+      // WebExtension manifests can contain comments, so we'll strip
+      // them out and see if we can parse the JSON.
+      // If not it's just garbage JSON and we error.
+      //
+      // Originally from https://github.com/abarreir/crx2ff/blob/d2b882056f902d751ad05e329efda7eddcb9d268/libs/ext-converter.js#L19-L37
+      var manifestString = `var o = ${jsonString}`;
+      try {
+        // This converts the JSON into a real JS object, and removes any
+        // comments from the JS code.
+        // This has some drawbacks because JSON and JS are not _100%_
+        // compatible. This is largely to do with Unicode characters we
+        // wouldn't expect to see in manifests anyway, and it should simply be
+        // a JSON parse error anyway.
+        // See:
+        // http://stackoverflow.com/questions/23752156/are-all-json-objects-also-valid-javascript-objects/23753148#23753148
+        // https://github.com/judofyr/timeless/issues/57#issuecomment-31872462
+        var tokens = esprima.tokenize(manifestString, {comment: true}).slice(3);
+        this._jsonString = tokens.reduce((json, token) => {
+          // Ignore line comments (`// comments`) and just return the existing
+          // json we've built.
+          if (token.type === 'LineComment') {
+            return json;
+          }
+
+          // Block comments are not allowed, so this is an error.
+          if (token.type === 'BlockComment') {
+            this.collector.addError(messages.MANIFEST_BLOCK_COMMENTS);
+            this.isValid = false;
+          }
+
+          return `${json}${token.value}`;
+        }, '');
+
+        // We found block-level comments, so this manifest is not valid.
+        // Don't bother parsing it again.
+        if (this.isValid === false) {
+          return;
+        }
+
+        this.parsedJSON = JSON.parse(this._jsonString);
+      } catch (error) {
+        // There was still an error, so looks like this manifest is actually
+        // invalid.
+        var errorData = {
+          code: messages.MANIFEST_JSON_INVALID.code,
+          message: 'Invalid JSON in manifest file.',
+          file: 'manifest.json',
+          description: error,
+        };
+        this.collector.addError(errorData);
+        this.isValid = false;
+        return;
+      }
     }
 
     this.selfHosted = selfHosted;
