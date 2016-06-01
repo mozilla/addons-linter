@@ -1,5 +1,5 @@
-import ManifestJSONParser from 'parsers/manifestjson';
 import Linter from 'linter';
+import ManifestJSONParser from 'parsers/manifestjson';
 
 import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
 import * as messages from 'messages';
@@ -277,5 +277,95 @@ describe('ManifestJSONParser update_url', function() {
                                                     {selfHosted: true});
     manifestJSONParser.selfHosted = true;
     assert.equal(manifestJSONParser.isValid, true);
+  });
+});
+
+
+describe('ManifestJSONParser with comments', function() {
+
+  it('parses JSON', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = `// I am a JSON comment, sigh\n${validManifestJSON()}`;
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
+    assert.equal(manifestJSONParser.isValid, true);
+  });
+
+  // Chrome will accept multiline /* */ comments, but Firefox will not and
+  // the Web Extension spec does not allow them. So we will error on them.
+  it('does not parse JSON with a multiline comment', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = `/* I am a JSON comment, sigh*/\n${validManifestJSON()}`;
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
+    assert.equal(manifestJSONParser.isValid, false);
+    var errors = addonLinter.collector.errors;
+    // There should not be another error; a manifest with block-level comments
+    // will throw that specific error and not a parse error.
+    assert.lengthOf(errors, 1);
+    assert.equal(errors[0].code, messages.MANIFEST_BLOCK_COMMENTS.code);
+    assert.equal(errors[0].message, messages.MANIFEST_BLOCK_COMMENTS.message);
+  });
+
+  it('parses the example from Chrome developer docs', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    // Example from https://developer.chrome.com/extensions/manifest
+    var json = [
+      '{',
+      '// Required',
+      '"manifest_version": 2,',
+      '"name": "My Extension",',
+      '// Make the hell sure to use semvar.org if increasing this',
+      '"version": "0.0.1"',
+      '}',
+    ].join('\n');
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
+    assert.equal(manifestJSONParser.isValid, true);
+    assert.notInclude(manifestJSONParser._jsonString, 'semvar.org');
+  });
+
+  it('returns the correct error for malformed JSON', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = `{"something": true,\n// I am a JSON comment, sigh\nblah}`;
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
+    assert.equal(manifestJSONParser.isValid, false);
+    var errors = addonLinter.collector.errors;
+    assert.equal(errors[0].code, messages.MANIFEST_JSON_INVALID.code);
+    assert.include(errors[0].message, 'Invalid JSON in manifest file.');
+  });
+
+  it("doesn't evaluate JS code in comments", () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = '// eval("");\n{"something": true}\nvar bla = "foo";';
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
+    assert.equal(manifestJSONParser.isValid, false);
+    var errors = addonLinter.collector.errors;
+    assert.equal(errors[0].code, messages.MANIFEST_JSON_INVALID.code);
+    assert.include(errors[0].message, 'Invalid JSON in manifest file.');
+    assert.notInclude(manifestJSONParser._jsonString, 'var bla');
+    assert.notInclude(manifestJSONParser._jsonString, 'eval');
+  });
+
+  it("doesn't evaluate JS code even though esprima is used", () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = validManifestJSON({something: 'eval("")'});
+    var json = [
+      '{',
+      '// Required',
+      '"manifest_version": 2,',
+      '"name": "My Extension",',
+      '// Make the hell sure to use semvar.org if increasing this',
+      '"version": eval("alert(\'uh-oh\')")',
+      '}',
+    ].join('\n');
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
+    assert.equal(manifestJSONParser.isValid, false);
+    var errors = addonLinter.collector.errors;
+    assert.equal(errors[0].code, messages.MANIFEST_JSON_INVALID.code);
+    assert.include(errors[0].message, 'Invalid JSON in manifest file.');
   });
 });

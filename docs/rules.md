@@ -367,3 +367,4 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :white_check_mark: | error | Web extension | A required field is missing | manifest.json | | null | MANIFEST_FIELD_REQUIRED |
 | :white_check_mark: | error | Web extension | A field is invalid | manifest.json | | null | MANIFEST_FIELD_INVALID |
 | :white_check_mark: | warning | Web extension | Unknown permission | manifest.json | | null | MANIFEST_PERMISSIONS |
+| :white_check_mark: | error | Web extension | Block Comments are not allowed in `manifest.json` | manifest.json | | null | MANIFEST_BLOCK_COMMENTS |
