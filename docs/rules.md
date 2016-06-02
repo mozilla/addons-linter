@@ -364,6 +364,7 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :white_check_mark: | error | Web extension | install.rdf and manifest.json present | manifest.json | | null | MULITPLE_MANIFESTS |
 | :white_check_mark: | warning | Web extension | content_security_policy in manifest.json means more review | manifest.json | | null | MANIFEST_CSP |
 | :white_check_mark: | error | Web extension | update_url not allowed in manifest.json | manifest.json | | null | MANIFEST_UPDATE_URL |
+| :white_check_mark: | notice | Web extension | update_url ignored in manifest.json | manifest.json | | null | MANIFEST_UNUSED_UPDATE |
 | :white_check_mark: | error | Web extension | A required field is missing | manifest.json | | null | MANIFEST_FIELD_REQUIRED |
 | :white_check_mark: | error | Web extension | A field is invalid | manifest.json | | null | MANIFEST_FIELD_INVALID |
 | :white_check_mark: | warning | Web extension | Unknown permission | manifest.json | | null | MANIFEST_PERMISSIONS |
