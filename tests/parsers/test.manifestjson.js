@@ -351,7 +351,6 @@ describe('ManifestJSONParser with comments', function() {
 
   it("doesn't evaluate JS code even though esprima is used", () => {
     var addonLinter = new Linter({_: ['bar']});
-    var json = validManifestJSON({something: 'eval("")'});
     var json = [
       '{',
       '// Required',
@@ -367,5 +366,20 @@ describe('ManifestJSONParser with comments', function() {
     var errors = addonLinter.collector.errors;
     assert.equal(errors[0].code, messages.MANIFEST_JSON_INVALID.code);
     assert.include(errors[0].message, 'Invalid JSON in manifest file.');
+  });
+});
+
+describe('ManifestJSONParser schema error overrides', function() {
+  // https://github.com/mozilla/addons-linter/issues/732
+  it('uses a modified error message', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = validManifestJSON({background: {script: ['background.js']}});
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
+    assert.equal(manifestJSONParser.isValid, false);
+    var errors = addonLinter.collector.errors;
+    assert.equal(errors[0].code, messages.MANIFEST_JSON_INVALID.code);
+    assert.include(errors[0].message,
+                   'is not a valid key or has invalid extra properties');
   });
 });

@@ -91,8 +91,18 @@ export default class ManifestJSONParser {
   errorLookup(error) {
     // This is the default message.
     var baseObject = messages.MANIFEST_JSON_INVALID;
+
+    // This is the default from webextension-manifest-schema, but it's not a
+    // super helpful error. We'll tidy it up a bit:
+    if (error && error.message) {
+      let lowerCaseMessage = error.message.toLowerCase();
+      if (lowerCaseMessage === 'should not have additional properties') {
+        error.message = 'is not a valid key or has invalid extra properties';
+      }
+    }
+
     var overrides = {
-      message: `${error.dataPath} ${error.message}`,
+      message: `"${error.dataPath}" ${error.message}`,
     };
 
     if (error.keyword === 'required') {
