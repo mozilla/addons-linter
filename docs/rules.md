@@ -263,6 +263,7 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :x: | notice | deprecated_file | |  Extension contains a deprecated file | | [testcases/packagelayout.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagelayout.py) | | |
 | :x: | warning | FLAGGED_FILE_TYPE_type | | Flagged file type found | | | | |
+| :white_check_mark: | error | FILE_TOO_LARGE | webextension | File is too large to parse | | | | FILE_TOO_LARGE |
 | :x: | warning | java_jar | | Java JAR file detected | | | | |
 | :white_check_mark: | warning | disallowed_extension | | Flagged file extensions found | | https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagelayout.py | | FLAGGED_FILE_EXTENSION |
 | :negative_squared_cross_mark: | error | test_godlikea | | Banned 'godlikea' chrome namespace | | | | |

@@ -15,7 +15,7 @@ describe('io.IOBase()', function() {
     assert.equal(io.maxSizeBytes, 104857600);
   });
 
-  it('should should reject calling getFiles()', () => {
+  it('should reject calling getFiles()', () => {
     var io = new IOBase('foo/bar');
 
     return io.getFiles()
@@ -26,7 +26,7 @@ describe('io.IOBase()', function() {
       });
   });
 
-  it('should should reject calling getFileAsString()', () => {
+  it('should reject calling getFileAsString()', () => {
     var io = new IOBase('foo/bar');
 
     return io.getFileAsString()
@@ -37,7 +37,7 @@ describe('io.IOBase()', function() {
       });
   });
 
-  it('should should reject calling getFileAsString()', () => {
+  it('should reject calling getFileAsString()', () => {
     var io = new IOBase('foo/bar');
 
     return io.getFileAsStream()
