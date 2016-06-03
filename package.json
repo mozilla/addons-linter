@@ -11,7 +11,8 @@
     "build": "grunt build",
     "test": "grunt test",
     "test-no-coverage": "grunt test-no-coverage",
-    "publish-rules": "grunt copy build-rules-html publish-rules"
+    "publish-rules": "grunt copy build-rules-html publish-rules",
+    "publish-coverage": "grunt coveralls"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,8 @@
   "devDependencies": {
     "babel-core": "6.9.1",
     "babel-eslint": "6.0.4",
+    "babel-istanbul": "0.8.0",
+    "babel-istanbul-loader": "0.1.0",
     "babel-loader": "6.2.4",
     "babel-plugin-transform-class-properties": "6.9.1",
     "babel-plugin-transform-es2015-modules-commonjs": "6.8.0",
@@ -37,9 +40,9 @@
     "grunt": "1.0.1",
     "grunt-contrib-clean": "1.0.0",
     "grunt-contrib-copy": "1.0.0",
+    "grunt-coveralls": "1.0.1",
     "grunt-eslint": "18.1.0",
     "grunt-gh-pages": "1.1.0",
-    "grunt-istanbul": "0.7.0",
     "grunt-mocha-test": "0.12.7",
     "grunt-newer": "1.2.0",
     "grunt-webpack": "1.0.11",
@@ -51,6 +54,7 @@
     "markdown-it-anchor": "2.5.0",
     "markdown-it-emoji": "1.2.0",
     "mocha": "2.5.3",
+    "mocha-multi": "0.9.0",
     "shelljs": "0.7.0",
     "sinon": "1.17.4",
     "webpack": "1.13.1",

@@ -1,7 +1,6 @@
 language: node_js
 sudo: false
 node_js:
-- '0.12'
 - '4'
 - '5'
 script: npm test
@@ -11,8 +10,7 @@ notifications:
     - irc.mozilla.org#amo-bots
     on_success: change
     on_failure: always
-after_script:
-- if [[ `node --version` == *v0.12* ]]; then cat ./coverage/**/lcov.info | ./node_modules/coveralls/bin/coveralls.js; fi
+after_script: npm run publish-coverage
 deploy:
   provider: npm
   email: addons-dev-automation+npm@mozilla.com
