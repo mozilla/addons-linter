@@ -24,7 +24,7 @@ import FilenameScanner from 'scanners/filename';
 import HTMLScanner from 'scanners/html';
 import JavaScriptScanner from 'scanners/javascript';
 import RDFScanner from 'scanners/rdf';
-import { Directory, Xpi } from 'io';
+import { Crx, Directory, Xpi } from 'io';
 
 
 export default class Linter {
@@ -337,16 +337,21 @@ export default class Linter {
       });
   }
 
-  extractMetadata({ _Xpi=Xpi, _console=console,
-                    _Directory=Directory } = {}) {
+  extractMetadata({ _Crx=Crx, _console=console, _Directory=Directory,
+                    _Xpi=Xpi } = {}) {
     return checkMinNodeVersion()
       .then(() => {
         return this.checkFileExists(this.packagePath);
       })
       .then((stats) => {
         if (stats.isFile() === true) {
-          log.info('Package is a file. Attempting to parse as an .xpi/.zip');
-          this.io = new _Xpi(this.packagePath);
+          if (this.packagePath.endsWith('.crx')) {
+            log.info('Package is a file ending in .crx; parsing as a CRX');
+            this.io = new _Crx(this.packagePath);
+          } else {
+            log.info('Package is a file. Attempting to parse as an .xpi/.zip');
+            this.io = new _Xpi(this.packagePath);
+          }
         } else if (stats.isDirectory()) {
           log.info('Package path is a directory. Parsing as a directory');
           this.io = new _Directory(this.packagePath);
