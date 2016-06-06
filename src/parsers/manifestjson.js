@@ -147,10 +147,17 @@ export default class ManifestJSONParser {
       this.collector.addWarning(messages.MANIFEST_CSP);
     }
 
-    if (!this.selfHosted && this.parsedJSON.hasOwnProperty('update_url')) {
+    if (this.parsedJSON.update_url) {
+      this.collector.addNotice(messages.MANIFEST_UNUSED_UPDATE);
+    }
+
+    if (!this.selfHosted && this.parsedJSON.applications &&
+        this.parsedJSON.applications.gecko &&
+        this.parsedJSON.applications.gecko.update_url) {
       this.collector.addError(messages.MANIFEST_UPDATE_URL);
       isValid = false;
     }
+
     return isValid;
   }
 

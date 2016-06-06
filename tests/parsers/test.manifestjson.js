@@ -28,8 +28,10 @@ describe('ManifestJSONParser', function() {
 describe('ManifestJSONParser id', function() {
 
   it('should return the correct id', () => {
+    var addonLinter = new Linter({_: ['bar']});
     var json = validManifestJSON();
-    var manifestJSONParser = new ManifestJSONParser(json);
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
     assert.equal(manifestJSONParser.isValid, true);
     var metadata = manifestJSONParser.getMetadata();
     assert.equal(metadata.id, '{daf44bf7-a45e-4450-979c-91cf07434c3d}');
@@ -50,8 +52,10 @@ describe('ManifestJSONParser id', function() {
   });
 
   it('should return null if undefined', () => {
+    var addonLinter = new Linter({_: ['bar']});
     var json = validManifestJSON({applications: {}});
-    var manifestJSONParser = new ManifestJSONParser(json);
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
     assert.equal(manifestJSONParser.isValid, true);
     var metadata = manifestJSONParser.getMetadata();
     assert.equal(metadata.id, null);
@@ -101,16 +105,20 @@ describe('ManifestJSONParser type', function() {
 
   it('should have the right type', () => {
     // Type is always returned as PACKAGE_EXTENSION presently.
+    var addonLinter = new Linter({_: ['bar']});
     var json = validManifestJSON();
-    var manifestJSONParser = new ManifestJSONParser(json);
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
     assert.equal(manifestJSONParser.isValid, true);
     var metadata = manifestJSONParser.getMetadata();
     assert.equal(metadata.type, PACKAGE_EXTENSION);
   });
 
   it('should not allow the type to be user-specified', () => {
+    var addonLinter = new Linter({_: ['bar']});
     var json = validManifestJSON({type: 'whatevs'});
-    var manifestJSONParser = new ManifestJSONParser(json);
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
     assert.equal(manifestJSONParser.isValid, true);
     var metadata = manifestJSONParser.getMetadata();
     assert.equal(metadata.type, PACKAGE_EXTENSION);
@@ -128,26 +136,34 @@ describe('ManfiestJSONParser lookup', function() {
   ];
   for (var unknownData in unknownDataPaths) {
     it(`should return invalid for ${unknownData}`, () => {
-      var parser = new ManifestJSONParser(validManifestJSON());
+      var addonLinter = new Linter({_: ['bar']});
+      var parser = new ManifestJSONParser(validManifestJSON(),
+                                          addonLinter.collector);
       var message = parser.errorLookup({dataPath: ''});
       assert.equal(message.code, messages.MANIFEST_JSON_INVALID.code);
     });
   }
 
   it('should return required for missing', () => {
-    var parser = new ManifestJSONParser(validManifestJSON());
+    var addonLinter = new Linter({_: ['bar']});
+    var parser = new ManifestJSONParser(validManifestJSON(),
+                                        addonLinter.collector);
     var message = parser.errorLookup({dataPath: '', keyword: 'required'});
     assert.equal(message.code, messages.MANIFEST_FIELD_REQUIRED.code);
   });
 
   it('should return invalid for wrong type', () => {
-    var parser = new ManifestJSONParser(validManifestJSON());
+    var addonLinter = new Linter({_: ['bar']});
+    var parser = new ManifestJSONParser(validManifestJSON(),
+                                        addonLinter.collector);
     var message = parser.errorLookup({dataPath: '', keyword: 'type'});
     assert.equal(message.code, messages.MANIFEST_FIELD_INVALID.code);
   });
 
   it('should return permission for wrong type', () => {
-    var parser = new ManifestJSONParser(validManifestJSON());
+    var addonLinter = new Linter({_: ['bar']});
+    var parser = new ManifestJSONParser(validManifestJSON(),
+                                        addonLinter.collector);
     var message = parser.errorLookup({dataPath: '/permissions/0'});
     assert.equal(message.code, messages.MANIFEST_PERMISSIONS.code);
   });
@@ -175,8 +191,10 @@ describe('ManifestJSONParser name', function() {
 
   it('should extract a name', () => {
     // Type is always returned as PACKAGE_EXTENSION presently.
+    var addonLinter = new Linter({_: ['bar']});
     var json = validManifestJSON({name: 'my-awesome-ext'});
-    var manifestJSONParser = new ManifestJSONParser(json);
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
     assert.equal(manifestJSONParser.isValid, true);
     var metadata = manifestJSONParser.getMetadata();
     assert.equal(metadata.name, 'my-awesome-ext');
@@ -209,8 +227,10 @@ describe('ManifestJSONParser name', function() {
 describe('ManifestJSONParser version', function() {
 
   it('should extract a version', () => {
+    var addonLinter = new Linter({_: ['bar']});
     var json = validManifestJSON({version: '1.0'});
-    var manifestJSONParser = new ManifestJSONParser(json);
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
     assert.equal(manifestJSONParser.isValid, true);
     var metadata = manifestJSONParser.getMetadata();
     assert.equal(metadata.version, '1.0');
@@ -257,26 +277,56 @@ describe('ManifestJSONParser content security policy', function() {
 
 describe('ManifestJSONParser update_url', function() {
 
+  // Chrome Web Extensions put their `update_url` in the root of their
+  // manifest, which Firefox ignores. We should notify the user it will
+  // be ignored, but that's all.
+  it('is allowed but should notify in the manifest', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = validManifestJSON({update_url: 'https://foo.com/bar'});
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector,
+                                                    {selfHosted: false});
+    assert.equal(manifestJSONParser.isValid, true);
+    var notices = addonLinter.collector.notices;
+    assert.equal(notices[0].code, messages.MANIFEST_UNUSED_UPDATE.code);
+    assert.include(notices[0].message, 'update_url');
+  });
+
+  // applications.gecko.update_url isn't allowed if the add-on is being
+  // hosted on AMO.
   it('is not allowed', () => {
     var addonLinter = new Linter({_: ['bar']});
-    var json = validManifestJSON({update_url: ''});
+    var json = validManifestJSON({
+      applications: {
+        gecko: {
+          update_url: 'https://foo.com/bar',
+        },
+      },
+    });
     var manifestJSONParser = new ManifestJSONParser(json,
                                                     addonLinter.collector,
                                                     {selfHosted: false});
     assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
-    assert.equal(errors[0].code, 'MANIFEST_UPDATE_URL');
+    assert.equal(errors[0].code, messages.MANIFEST_UPDATE_URL.code);
     assert.include(errors[0].message, 'update_url');
   });
 
-  it('is allowed if self-hosted', () => {
+  it('is not an issue if self-hosted', () => {
     var addonLinter = new Linter({_: ['bar']});
-    var json = validManifestJSON({update_url: ''});
+    var json = validManifestJSON({
+      applications: {
+        gecko: {
+          update_url: 'https://foo.com/bar',
+        },
+      },
+    });
     var manifestJSONParser = new ManifestJSONParser(json,
                                                     addonLinter.collector,
                                                     {selfHosted: true});
     manifestJSONParser.selfHosted = true;
     assert.equal(manifestJSONParser.isValid, true);
+    assert.lengthOf(addonLinter.collector.warnings, 0);
   });
 });
 

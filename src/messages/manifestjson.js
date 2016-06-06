@@ -78,8 +78,19 @@ export const PROP_VERSION_INVALID = {
 export const MANIFEST_UPDATE_URL = {
   code: 'MANIFEST_UPDATE_URL',
   legacyCode: null,
-  message: _('The "update_url" property is not allowed.'),
-  description: _('The update_url cannot be defined.'),
+  message: _('"update_url" is not allowed.'),
+  description: _(singleLineString`"applications.gecko.update_url" is not allowed
+    for Mozilla-hosted add-ons.`),
+  file: MANIFEST_JSON,
+};
+
+export const MANIFEST_UNUSED_UPDATE = {
+  code: 'MANIFEST_UNUSED_UPDATE',
+  legacyCode: null,
+  message: _('The "update_url" property is not used by Firefox.'),
+  description: _(singleLineString`The "update_url" is not used by Firefox in
+    the root of a manifest; your add-on will be updated via the Add-ons
+    site and not your "update_url". See: https://mzl.la/25zqk4O`),
   file: MANIFEST_JSON,
 };
 

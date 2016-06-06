@@ -103,7 +103,6 @@ export function validManifestJSON(extra) {
         id: '{daf44bf7-a45e-4450-979c-91cf07434c3d}',
         strict_min_version: '40.0.0',
         strict_max_version: '50.*',
-        update_url: 'https://foo/bar',
       },
     },
     version: '0.1',
