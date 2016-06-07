@@ -682,6 +682,40 @@ describe('Linter.extractMetadata()', function() {
       });
   });
 
+  it('should use Crx class if filename ends in .crx', () => {
+    var addonLinter = new Linter({_: ['foo.crx']});
+    var fakeMetadata = {type: 1, somethingelse: 'whatever'};
+    addonLinter.toJSON = sinon.stub();
+
+    addonLinter.getAddonMetadata = () => {
+      return Promise.resolve(fakeMetadata);
+    };
+
+    addonLinter.checkFileExists = fakeCheckFileExists;
+
+    addonLinter.checkMinNodeVersion = () => {
+      return Promise.resolve();
+    };
+
+    class FakeCrx {
+      getFile() {
+        return Promise.resolve('');
+      }
+      getFiles() {
+        return Promise.resolve([]);
+      }
+      getFilesByExt() {
+        return Promise.resolve(['foo.js', 'bar.js']);
+      }
+    }
+
+    return addonLinter.extractMetadata({_Crx: FakeCrx, _console: fakeConsole})
+      .then((metadata) => {
+        assert.deepEqual(metadata, fakeMetadata);
+        assert.instanceOf(addonLinter.io, FakeCrx);
+      });
+  });
+
   it('should return metadata', () => {
     var addonLinter = new Linter({_: ['foo']});
     var fakeMetadata = {type: 1, somethingelse: 'whatever'};
