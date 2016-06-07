@@ -157,7 +157,7 @@ describe('Linter', function() {
 
   it('should throw when message.type is undefined', () => {
     var addonLinter = new Linter({_: ['tests/fixtures/example.xpi']});
-    addonLinter.io = {};
+    addonLinter.io = { files: {whatever: {}} };
     addonLinter.io.getFile = () => Promise.resolve();
     addonLinter.getScanner = sinon.stub();
     class fakeScanner {
@@ -1005,6 +1005,73 @@ describe('Linter.extractMetadata()', function() {
       .catch((err) => {
         assert.ok(markEmptyFilesSpy.called);
         assert.equal(err.message, 'No size available for whatever');
+      });
+  });
+
+  it('should error if file size of a non-binary file is too large', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    addonLinter.checkFileExists = fakeCheckFileExists;
+    // suppress output.
+    addonLinter.print = sinon.stub();
+    var largeFileSize = (constants.MAX_FILE_SIZE_TO_PARSE_MB * 1024 * 1024) + 1;
+    class FakeXpi {
+      files = {
+        'manifest.json': { uncompressedSize: 839 },
+        'myfile.css': { uncompressedSize: largeFileSize },
+        'myfile.js': { uncompressedSize: largeFileSize },
+      };
+      getFile(filename) {
+        return this.getFileAsString(filename);
+      }
+      getFiles() {
+        return Promise.resolve(this.files);
+      }
+      getFilesByExt(type) {
+        return Promise.resolve(type === 'js' ? ['myfile.js'] : ['myfile.css']);
+      }
+      getFileAsString(filename) {
+        return Promise.resolve((filename === constants.MANIFEST_JSON) ?
+          validManifestJSON() : 'var foo = "bar";');
+      }
+    }
+    return addonLinter.scan({_Xpi: FakeXpi, _console: fakeConsole})
+      .then(() => {
+        assert.equal(addonLinter.collector.errors[0].code,
+                     messages.FILE_TOO_LARGE.code);
+        // CSS and JS files that are too large should be flagged.
+        assert.lengthOf(addonLinter.collector.errors, 2);
+      });
+  });
+
+  it('should ignore large binary files', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    addonLinter.checkFileExists = fakeCheckFileExists;
+    // suppress output.
+    addonLinter.print = sinon.stub();
+    var largeFileSize = constants.MAX_FILE_SIZE_TO_PARSE_MB * 1024 * 1024 * 4;
+    class FakeXpi {
+      files = {
+        'manifest.json': { uncompressedSize: 839 },
+        'myfile.jpg': { uncompressedSize: largeFileSize },
+      };
+      getFile(filename) {
+        return this.getFileAsString(filename);
+      }
+      getFiles() {
+        return Promise.resolve(this.files);
+      }
+      getFilesByExt(type) {
+        return Promise.resolve(type === 'json' ? ['manifest.json'] :
+                                                 ['myfile.jpg']);
+      }
+      getFileAsString(filename) {
+        return Promise.resolve((filename === constants.MANIFEST_JSON) ?
+          validManifestJSON() : '');
+      }
+    }
+    return addonLinter.scan({_Xpi: FakeXpi, _console: fakeConsole})
+      .then(() => {
+        assert.lengthOf(addonLinter.collector.errors, 0);
       });
   });
 

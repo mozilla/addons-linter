@@ -23,8 +23,9 @@ export class IOBase {
       case 'string':
         return this.getFileAsString(path);
       case 'chunk':
-        // Assuming that chunk is going to be primarily used for finding magic numbers
-        // in files, then there's no need to have the default be longer than that.
+        // Assuming that chunk is going to be primarily used for finding magic
+        // numbers in files, then there's no need to have the default be longer
+        // than that.
         return this.getChunkAsBuffer(path, FLAGGED_FILE_MAGIC_NUMBERS_LENGTH);
 
       default:

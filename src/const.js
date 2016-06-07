@@ -113,6 +113,11 @@ export const VALID_MANIFEST_VERSION = 2;
 // The max file size in MB that the
 // io classes will open as strings or streams.
 export const MAX_FILE_SIZE_MB = 100;
+// This is the limit in megabytes of a file we will parse (eg. CSS, JS, etc.)
+// A singular CSS/JS file over 2MB seems bad and may actually be full of data
+// best stored in JSON/some other data format rather than code.
+// https://github.com/mozilla/addons-linter/issues/730
+export const MAX_FILE_SIZE_TO_PARSE_MB = 2;
 
 export const HIDDEN_FILE_REGEX = /^__MACOSX\//;
 export const FLAGGED_FILE_REGEX = /thumbs\.db$|\.DS_Store$|\.orig$|\.old$|\~$/i;

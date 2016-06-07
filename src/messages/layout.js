@@ -1,3 +1,4 @@
+import { MAX_FILE_SIZE_TO_PARSE_MB } from 'const';
 import { gettext as _, singleLineString } from 'utils';
 
 
@@ -70,6 +71,16 @@ export const TYPE_NOT_DETERMINED = {
   message: _('Unable to determine add-on type'),
   description: _(singleLineString`The type detection algorithm could not
     determine the type of the add-on.`),
+};
+
+export const FILE_TOO_LARGE = {
+  code: 'FILE_TOO_LARGE',
+  legacyCode: null,
+  message: _('File is too large to parse.'),
+  description: _(singleLineString`This file is not binary and is too large to
+    parse. Files larger than ${MAX_FILE_SIZE_TO_PARSE_MB}MB will not be
+    parsed. If your JavaScript file has a large list, consider removing the
+    list and loadng it as a separate JSON file instead.`),
 };
 
 export const HIDDEN_FILE = {

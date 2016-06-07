@@ -321,8 +321,26 @@ export default class Linter {
     var ScannerClass = this.getScanner(filename);
     return this.io.getFile(filename, ScannerClass.fileResultType)
       .then((fileData) => {
-        let scanner = new ScannerClass(
-          fileData, filename, {addonMetadata: this.addonMetadata});
+        // First: check that this file is under our 2MB parsing limit. Otherwise
+        // it will be very slow and may crash the lint with an out-of-memory
+        // error.
+        let fileSize = this.io.files[filename].size !== undefined ?
+          this.io.files[filename].size :
+          this.io.files[filename].uncompressedSize;
+        var maxSize = 1024 * 1024 * constants.MAX_FILE_SIZE_TO_PARSE_MB;
+
+        if (ScannerClass !== BinaryScanner && fileSize >= maxSize) {
+          let filesizeError = Object.assign({}, messages.FILE_TOO_LARGE, {
+            file: filename,
+            type: constants.VALIDATION_ERROR,
+          });
+          return Promise.resolve([filesizeError]);
+        }
+
+        let scanner = new ScannerClass(fileData, filename, {
+          addonMetadata: this.addonMetadata,
+        });
+
         return scanner.scan();
       })
       // messages should be a list of raw message data objects.
