@@ -324,7 +324,7 @@ export default class Linter {
         // First: check that this file is under our 2MB parsing limit. Otherwise
         // it will be very slow and may crash the lint with an out-of-memory
         // error.
-        let fileSize = this.io.files[filename].size !== undefined ?
+        let fileSize = typeof this.io.files[filename].size !== 'undefined' ?
           this.io.files[filename].size :
           this.io.files[filename].uncompressedSize;
         var maxSize = 1024 * 1024 * constants.MAX_FILE_SIZE_TO_PARSE_MB;
