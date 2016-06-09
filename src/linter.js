@@ -408,7 +408,11 @@ export default class Linter {
         return this.io.getFiles();
       })
       .then((files) => {
-        return this.scanFiles(Object.keys(files));
+        // Known libraries do not need to be scanned
+        let filesWithoutJSLibraries = Object.keys(files).filter((file) => {
+          return !this.addonMetadata.jsLibs.hasOwnProperty(file);
+        }, this);
+        return this.scanFiles(filesWithoutJSLibraries);
       })
       .then(() => {
         this.print();
