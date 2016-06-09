@@ -884,6 +884,42 @@ describe('Linter.extractMetadata()', function() {
     });
   });
 
+  it('should not scan known JS libraries', function() {
+    var addonLinter = new Linter({ _: ['foo'] });
+    addonLinter.checkFileExists = fakeCheckFileExists;
+    addonLinter.scan = () => Promise.resolve();
+    // suppress output.
+    addonLinter.print = sinon.stub();
+
+    var fakeFiles = {
+      'my/nested/library/path/j.js': 'jquery-2.2.4.min.js',
+    };
+
+    class FakeXpi {
+      getFile(path) {
+        return Promise.resolve(
+          fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`));
+      }
+      getFiles() {
+        var files = {};
+        for (let filename of Object.keys(fakeFiles)) {
+          files[filename] = { uncompressedSize: 5 };
+        }
+        return Promise.resolve(files);
+      }
+      getFilesByExt() {
+        return Promise.resolve(Object.keys(fakeFiles));
+      }
+    }
+
+    return addonLinter.extractMetadata({
+      _console: fakeConsole,
+      _Xpi: FakeXpi,
+    }).then(() => {
+      assert.lengthOf(addonLinter.collector.warnings, 0);
+    });
+  });
+
   // Uses our angular-bad-library XPI, with the following file layout:
   //
   // - bootstrap.js
