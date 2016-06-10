@@ -69,7 +69,7 @@
     "crx-parser": "0.1.2",
     "dispensary": "0.5.1",
     "es6-promisify": "4.1.0",
-    "eslint": "2.11.1",
+    "eslint": "2.12.0",
     "esprima": "2.7.2",
     "first-chunk-stream": "2.0.0",
     "mozilla-web-extension-manifest-schema": "0.5.3",
