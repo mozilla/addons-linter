@@ -50,7 +50,7 @@
     "json-loader": "0.5.4",
     "load-grunt-configs": "1.0.0",
     "load-grunt-tasks": "3.5.0",
-    "markdown-it": "6.0.4",
+    "markdown-it": "6.1.1",
     "markdown-it-anchor": "2.5.0",
     "markdown-it-emoji": "1.2.0",
     "mocha": "2.5.3",
