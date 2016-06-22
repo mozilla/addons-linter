@@ -44,17 +44,24 @@ describe('formats.isRelativeURL', () => {
     'Https://foo.com/bar',
     'moz-extension://wat',
     '//foo',
-    '/foo',
   ];
 
-  for (const notRelativeURL of notRelativeURLs) {
+  for (let notRelativeURL of notRelativeURLs) {
     it(`${notRelativeURL} should be invalid`, () => {
       assert.notOk(isRelativeURL(notRelativeURL));
     });
   }
 
-  it('should be valid', () => {
-    assert.isOk(isRelativeURL('something.png'));
-  });
+  const relativeURLs = [
+    'something.png',
+    'js/jquery.js',
+    '/js/jquery.js',
+  ];
+
+  for (let relativeURL of relativeURLs) {
+    it(`${relativeURL} should be valid`, () => {
+      assert.isOk(isRelativeURL(relativeURL));
+    });
+  }
 
 });

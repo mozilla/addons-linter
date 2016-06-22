@@ -1,5 +1,6 @@
+import parse from 'url-parse';
+
 const VALIDNUMRX = /^[0-9]{1,5}$/;
-const RELATIVE_URL_REGEX = /^(?!(.+|)\/)/;
 
 
 export function isValidVersionString(version) {
@@ -29,5 +30,11 @@ export function isValidVersionString(version) {
 }
 
 export function isRelativeURL(url) {
-  return Boolean(url.match(RELATIVE_URL_REGEX));
+  let parsed = parse(url);
+
+  if (parsed.protocol !== '' || parsed.href.startsWith('//')) {
+    return false;
+  }
+
+  return true;
 }
