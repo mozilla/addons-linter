@@ -1,5 +1,5 @@
 import esprima from 'esprima';
-import validate from 'mozilla-web-extension-manifest-schema';
+import validate from 'schema/validator';
 
 import cli from 'cli';
 import { PACKAGE_EXTENSION } from 'const';
