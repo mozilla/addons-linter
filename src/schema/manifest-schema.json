@@ -101,6 +101,7 @@
                             "downloads.open",
                             "downloads.shelf",
                             "idle",
+                            "nativeMessaging",
                             "notifications",
                             "storage",
                             "tabs",
