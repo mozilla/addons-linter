@@ -69,7 +69,7 @@
     "cheerio": "0.20.0",
     "columnify": "1.5.4",
     "crx-parser": "0.1.2",
-    "dispensary": "0.5.1",
+    "dispensary": "0.5.2",
     "es6-promisify": "4.1.0",
     "eslint": "2.13.1",
     "esprima": "2.7.2",
