@@ -27,7 +27,7 @@
                         "update_url": {
                             "description": "Link to an add-on update manifest. (Requires Gecko 45)",
                             "type": "string",
-                            "format": "uri"
+                            "pattern": "^https://.*$"
                         }
                     }
                 }
