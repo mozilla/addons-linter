@@ -100,6 +100,47 @@ describe('ManifestJSONParser manifestVersion', function() {
 
 });
 
+describe('ManifestJSONParser bad permissions', function() {
+
+  it('should not error if permission is a string (even if unknown)', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = validManifestJSON({
+      permissions: [
+        'identity',
+        'fileSystem',
+      ],
+    });
+
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
+    assert.equal(manifestJSONParser.isValid, false);
+    var warnings = addonLinter.collector.warnings;
+    assert.lengthOf(addonLinter.collector.errors, 0);
+    assert.equal(warnings[1].code, messages.MANIFEST_PERMISSIONS.code);
+    assert.include(warnings[1].message, 'Unknown permissions "fileSystem"');
+  });
+
+  it('should error if permission is not a string', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = validManifestJSON({
+      permissions: [
+        'identity',
+        {
+          fileSystem: ['write'],
+        },
+      ],
+    });
+
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
+    assert.equal(manifestJSONParser.isValid, false);
+    var errors = addonLinter.collector.errors;
+    assert.equal(errors[0].code, messages.MANIFEST_BAD_PERMISSION.code);
+    assert.include(errors[0].message, 'permission type is unsupported');
+  });
+
+});
+
 
 describe('ManifestJSONParser type', function() {
 
