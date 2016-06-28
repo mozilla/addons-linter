@@ -107,6 +107,13 @@ export default class ManifestJSONParser {
 
     if (error.keyword === 'required') {
       baseObject = messages.MANIFEST_FIELD_REQUIRED;
+    } else if (error.dataPath.startsWith('/permissions') &&
+               typeof error.data !== 'undefined' &&
+               typeof error.data !== 'string') {
+      // Check for non-strings in the manifest permissions; these indicate
+      // a Chrome app extension. This means an error.
+      baseObject = messages.MANIFEST_BAD_PERMISSION;
+      overrides = {};
     } else if (error.keyword === 'type') {
       baseObject = messages.MANIFEST_FIELD_INVALID;
     }
@@ -115,7 +122,7 @@ export default class ManifestJSONParser {
     // more sane. Using a regex because there will likely be more as we
     // expand the schema.
     var match = error.dataPath.match(/^\/(permissions)\/([\d+])/);
-    if (match) {
+    if (match && baseObject.code !== messages.MANIFEST_BAD_PERMISSION.code) {
       baseObject = messages[`MANIFEST_${match[1].toUpperCase()}`];
       overrides.message = singleLineString`/${match[1]}: Unknown ${match[1]}
           "${error.data}" at ${match[2]}.`;
@@ -149,6 +156,12 @@ export default class ManifestJSONParser {
           this.collector.addWarning(message);
         } else {
           this.collector.addError(message);
+        }
+
+        // Add-ons with bad permissions will fail to install in Firefox, so
+        // we consider them invalid.
+        if (message.code === messages.MANIFEST_BAD_PERMISSION.code) {
+          isValid = false;
         }
       }
     }
