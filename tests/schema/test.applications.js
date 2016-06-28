@@ -29,6 +29,21 @@ describe('/applications/gecko/*', () => {
     assert.equal(validate.errors[0].dataPath, '/applications/gecko/update_url');
   });
 
+  it('should be invalid because http update_url', () => {
+    var manifest = cloneDeep(validManifest);
+    manifest.applications.gecko.update_url = 'http://foo.com';
+    validate(manifest);
+    assert.equal(validate.errors.length, 1);
+    assert.equal(validate.errors[0].dataPath, '/applications/gecko/update_url');
+  });
+
+  it('should be valid because https update_url', () => {
+    var manifest = cloneDeep(validManifest);
+    manifest.applications.gecko.update_url = 'https://foo.com';
+    validate(manifest);
+    assert.isNull(validate.errors);
+  });
+
   it('should be invalid due to invalid strict_min_version type', () => {
     var manifest = cloneDeep(validManifest);
     manifest.applications.gecko.strict_min_version = 42;
