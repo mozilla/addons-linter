@@ -322,7 +322,7 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :x: | warning | unsafe_template_escape |  | Potentially unsafe template escape sequence | | | | |
 | :x: | warning | js_protoype_extension_dissallowed |  | JS prototype extension not allowed  | | | | |
 | :white_check_mark: | warning | mozindexdb_removed |  | mozIndexedDB has been removed |  | | | MOZINDEXEDDB |
-| :white_check_mark: | warning | mozIndexedDB property not allowed |  | mozIndexedDB has been removed |  | N/A | N/A | MOZINDEXEDDB_PROPERTY |
+| :white_check_mark: | warning | mozIndexedDB property is deprecated |  | mozIndexedDB has been removed |  | N/A | N/A | MOZINDEXEDDB_PROPERTY |
 | :negative_squared_cross_mark: | warning | composition_features_removed |  | nsICompositionStringSynthesizer, sendCompositionEvent and createCompositionStringSynthesizer were removed | | | | |
 | :negative_squared_cross_mark: | warning | asyncfetch2_newchannel2_deprecated |  | asyncFetch2 and newChannel2 are now deprecated | | | | |
 | :negative_squared_cross_mark: | warning | onproxyavailable_asyncresolve_changed |  | The onProxyAvailable and asyncResolve functions have changed |  | | | |
