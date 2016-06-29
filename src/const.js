@@ -12,7 +12,7 @@ export const ESLINT_RULE_MAPPING = {
   global_require_arg: ESLINT_WARNING,
   init_null_arg: ESLINT_WARNING,
   low_level_module: ESLINT_WARNING,
-  mozindexeddb: ESLINT_ERROR,
+  mozindexeddb: ESLINT_WARNING,
   mozindexeddb_property: ESLINT_WARNING,
   only_prefs_in_defaults: ESLINT_WARNING,
   opendialog_nonlit_uri: ESLINT_WARNING,
