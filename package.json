@@ -62,7 +62,7 @@
     "webpack-dev-server": "1.14.0"
   },
   "dependencies": {
-    "ajv": "4.1.4",
+    "ajv": "4.1.5",
     "babel-polyfill": "6.9.1",
     "bunyan": "1.8.1",
     "chalk": "1.1.3",
