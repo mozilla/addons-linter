@@ -7,8 +7,7 @@ import Dispensary from 'dispensary';
 import { lstatPromise } from 'io/utils';
 import { terminalWidth } from 'cli';
 import * as constants from 'const';
-import { ARCH_DEFAULT, ARCH_JETPACK, CHROME_MANIFEST, INSTALL_RDF,
-         MANIFEST_JSON } from 'const';
+import { CHROME_MANIFEST, INSTALL_RDF, MANIFEST_JSON } from 'const';
 import { BANNED_LIBRARIES, UNADVISED_LIBRARIES } from 'libraries';
 import * as messages from 'messages';
 import { checkMinNodeVersion, gettext as _, singleLineString } from 'utils';
@@ -200,25 +199,21 @@ export default class Linter {
     return output;
   }
 
-  getAddonMetadata() {
+  getAddonMetadata(_log=log) {
     if (this.addonMetadata !== null) {
+      _log.debug('Metadata already set; returning cached metadata.');
       return Promise.resolve(this.addonMetadata);
     }
 
-    var _files;
-
     return this.io.getFiles()
       .then((files) => {
-        // Used later to get add-on architecture.
-        _files = files;
-
         if (files.hasOwnProperty(INSTALL_RDF) &&
             files.hasOwnProperty(MANIFEST_JSON)) {
-          log.warn(`Both ${INSTALL_RDF} and ${MANIFEST_JSON} found`);
+          _log.warn(`Both ${INSTALL_RDF} and ${MANIFEST_JSON} found`);
           this.collector.addError(messages.MULITPLE_MANIFESTS);
           return {};
         } else if (files.hasOwnProperty(INSTALL_RDF)) {
-          log.info('Retrieving metadata from install.rdf');
+          _log.info('Retrieving metadata from install.rdf');
           return this.io.getFileAsString(INSTALL_RDF)
             .then((rdfString) => {
               // Gets an xml document object.
@@ -226,18 +221,18 @@ export default class Linter {
               return rdfScanner.getContents();
             })
             .then((xmlDoc) => {
-              log.info('Got xmlDoc, running InstallRdfParser.getMetadata()');
+              _log.info('Got xmlDoc, running InstallRdfParser.getMetadata()');
               return new InstallRdfParser(xmlDoc, this.collector).getMetadata();
             });
         } else if (files.hasOwnProperty(MANIFEST_JSON)) {
-          log.info('Retrieving metadata from manifest.json');
+          _log.info('Retrieving metadata from manifest.json');
           return this.io.getFileAsString(MANIFEST_JSON)
             .then((json) => {
               var manifestParser = new ManifestJSONParser(json, this.collector);
               return manifestParser.getMetadata();
             });
         } else {
-          log.warn(singleLineString`No ${INSTALL_RDF} or ${MANIFEST_JSON}
+          _log.warn(singleLineString`No ${INSTALL_RDF} or ${MANIFEST_JSON}
                    was found in the package metadata`);
           this.collector.addNotice(messages.TYPE_NO_MANIFEST_JSON);
           this.collector.addNotice(messages.TYPE_NO_INSTALL_RDF);
@@ -246,7 +241,6 @@ export default class Linter {
       })
       .then((addonMetadata) => {
         this.addonMetadata = addonMetadata;
-        this.addonMetadata.architecture = this._getAddonArchitecture(_files);
 
         // The type must be explcitly defined. This behaviour differs the
         // historical approach by the amo-validator.
@@ -254,7 +248,7 @@ export default class Linter {
         // In due course metadata checking code may surpass this error
         // being added here.
         if (!this.addonMetadata.type) {
-          log.error('Addon type lookup failed');
+          _log.error('Addon type lookup failed');
           this.collector.addError(messages.TYPE_NOT_DETERMINED);
         }
 
@@ -458,21 +452,6 @@ export default class Linter {
       .then((addonMetadata) => {
         return this._markBannedLibs(addonMetadata);
       });
-  }
-
-  _getAddonArchitecture(xpiMetadata) {
-    // If we find a file named bootstrap.js this is assumed to be a
-    // Jetpack add-on: https://github.com/mozilla/amo-validator/blob/7a8011a/validator/testcases/jetpack.py#L154
-    // TODO: Check against file contents to make this more robust.
-    var files = Object.keys(xpiMetadata);
-
-    if (files.includes('bootstrap.js') &&
-        (files.includes('harness-options.json') ||
-         files.includes('package.json'))) {
-      return ARCH_JETPACK;
-    } else {
-      return ARCH_DEFAULT;
-    }
   }
 
   _markBannedLibs(addonMetadata, _unadvisedLibraries = UNADVISED_LIBRARIES) {

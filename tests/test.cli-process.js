@@ -5,11 +5,13 @@
 
 import shell from 'shelljs';
 
+import { singleLineString } from 'utils';
+
 
 describe('Process', function() {
 
   it('should exit with exit code 0 when no errors.', (done) => {
-    let cmd = 'bin/addons-linter tests/fixtures/good.xpi --output json';
+    let cmd = 'bin/addons-linter tests/fixtures/good.zip --output json';
     shell.exec(cmd, {silent: true}, (code, output) => {
       assert.doesNotThrow(() => {
         JSON.parse(output);
@@ -20,7 +22,8 @@ describe('Process', function() {
   });
 
   it('should exit with exit code 1 when errors found.', (done) => {
-    let cmd = 'bin/addons-linter tests/fixtures/example.xpi --output json';
+    let cmd = singleLineString`bin/addons-linter
+      tests/fixtures/webextension_bad_permissions.zip --output json`;
     shell.exec(cmd, {silent: true}, (code, output) => {
       assert.doesNotThrow(() => {
         JSON.parse(output);
@@ -31,7 +34,7 @@ describe('Process', function() {
   });
 
   it('should exit with exit code 0 when no errors for metadata.', (done) => {
-    let cmd = 'bin/addons-linter tests/fixtures/good.xpi --metadata';
+    let cmd = 'bin/addons-linter tests/fixtures/good.zip --metadata';
     shell.exec(cmd, {silent: true}, (code, output) => {
       assert.doesNotThrow(() => {
         JSON.parse(output);

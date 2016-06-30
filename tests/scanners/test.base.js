@@ -70,7 +70,7 @@ describe('Base Scanner Class', function() {
     // This rule calls assert.fail() if no metadata is passed to it.
     sinon.stub(fakeRules, 'metadataPassedCheck', metadataPassCheck);
 
-    var scanner = new BaseScannerWithContents('', 'fake.xpi', {
+    var scanner = new BaseScannerWithContents('', 'fake.zip', {
       addonMetadata: validMetadata({guid: 'snowflake'}),
     });
 
