@@ -14,34 +14,34 @@ describe('Basic CLI tests', function() {
 
   it('should default logLevel type to "fatal"', () => {
     // This means by default there won't be any output.
-    var args = cli.parse(['foo/bar.xpi']);
+    var args = cli.parse(['foo/bar.zip']);
     assert.equal(args.logLevel, 'fatal');
     assert.equal(args['log-level'], 'fatal');
   });
 
   it('should default metadata option to false', () => {
-    var args = cli.parse(['foo/bar.xpi']);
+    var args = cli.parse(['foo/bar.zip']);
     assert.equal(args.metadata, false);
   });
 
   it('should default add-on output to "text"', () => {
-    var args = cli.parse(['foo/bar.xpi']);
+    var args = cli.parse(['foo/bar.zip']);
     assert.equal(args.output, 'text');
     assert.equal(args.o, 'text');
   });
 
   it('should default stack to false', () => {
-    var args = cli.parse(['foo/bar.xpi']);
+    var args = cli.parse(['foo/bar.zip']);
     assert.equal(args.stack, false);
   });
 
   it('should default pretty to false', () => {
-    var args = cli.parse(['foo/bar.xpi']);
+    var args = cli.parse(['foo/bar.zip']);
     assert.equal(args.pretty, false);
   });
 
   it('should default boring to false', () => {
-    var args = cli.parse(['foo/bar.xpi']);
+    var args = cli.parse(['foo/bar.zip']);
     assert.equal(args.boring, false);
   });
 

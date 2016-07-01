@@ -11,6 +11,7 @@ import FilenameScanner from 'scanners/filename';
 import { fakeMessageData,
          unexpectedSuccess,
          validManifestJSON } from './helpers';
+import { Xpi } from 'io';
 import { singleLineString } from 'utils';
 
 
@@ -94,8 +95,8 @@ describe('Linter', function() {
     assert.equal(output.summary.warnings, 0);
   });
 
-  it('should collect an error when not an xpi', () => {
-    var addonLinter = new Linter({_: ['tests/fixtures/not-an-xpi.xpi']});
+  it('should collect an error when not an xpi/zip', () => {
+    var addonLinter = new Linter({_: ['tests/fixtures/not-a-zip.zip']});
     // Stub print to prevent output.
     addonLinter.print = sinon.stub();
     assert.equal(addonLinter.collector.errors.length, 0);
@@ -106,31 +107,23 @@ describe('Linter', function() {
       });
   });
 
-  // Uses our example XPI, with the following file layout:
-  //
-  // - chrome.manifest
-  // - chrome/
-  // - components/
-  //   - main.js (has a mozIndexedDB assignment)
-  //   - secondary.js (nothing bad)
-  // - install.rdf
-  // - prefs.html
+  // Uses an extension with a mozIndexedDB warning in it.
   it('should send JSScanner messages to the collector', () => {
-    var addonLinter = new Linter({_: ['tests/fixtures/example.xpi']});
+    var addonLinter = new Linter({_: ['tests/fixtures/webext_mozdb.zip']});
     // Stub print to prevent output.
     addonLinter.print = sinon.stub();
 
-    assert.equal(addonLinter.collector.errors.length, 0);
+    assert.equal(addonLinter.collector.warnings.length, 0);
 
     return addonLinter.scan()
       .then(() => {
-        assert.isAbove(addonLinter.collector.errors.length, 0);
+        assert.isAbove(addonLinter.collector.warnings.length, 0);
       });
   });
 
   // Test to make sure we can all files inside an add-on, not just one of each.
   //
-  // Uses our example XPI, with the following file layout:
+  // Uses our example xpi, with the following file layout:
   //
   // - chrome.manifest
   // - chrome/
@@ -140,7 +133,7 @@ describe('Linter', function() {
   // - install.rdf
   // - prefs.html
   it('should scan all files', () => {
-    var addonLinter = new Linter({_: ['tests/fixtures/example.xpi']});
+    var addonLinter = new Linter({_: ['tests/fixtures/old.xpi']});
     // Stub print to prevent output.
     addonLinter.print = sinon.stub();
 
@@ -156,7 +149,7 @@ describe('Linter', function() {
   });
 
   it('should throw when message.type is undefined', () => {
-    var addonLinter = new Linter({_: ['tests/fixtures/example.xpi']});
+    var addonLinter = new Linter({_: ['tests/fixtures/webextension.zip']});
     addonLinter.io = { files: {whatever: {}} };
     addonLinter.io.getFile = () => Promise.resolve();
     addonLinter.getScanner = sinon.stub();
@@ -503,7 +496,7 @@ describe('Linter.getAddonMetadata()', function() {
 
   it('should init with null metadata', () => {
     var addonLinter = new Linter({
-      _: ['tests/fixtures/example.xpi'],
+      _: ['tests/fixtures/webextension.zip'],
     });
 
     addonLinter.print = sinon.stub();
@@ -521,57 +514,30 @@ describe('Linter.getAddonMetadata()', function() {
 
   it('should cache and return cached addonMetadata', () => {
     var addonLinter = new Linter({
-      _: ['tests/fixtures/example.xpi'],
+      _: ['tests/fixtures/webextension.zip'],
     });
 
+    addonLinter.io = new Xpi(addonLinter.packagePath);
     addonLinter.print = sinon.stub();
 
-    // This should only be called once: when the addonMetadata isn't populated.
-    var architectureCall = sinon.spy(addonLinter, '_getAddonArchitecture');
+    // This should only be called when the addonMetadata _is_ populated.
+    var fakeLog = {
+      debug: sinon.stub(),
+      info: sinon.stub(),
+      error: sinon.stub(),
+      warn: sinon.stub(),
+    };
 
-    assert.isFalse(architectureCall.called);
-
-    // `scan()` calls `getAddonMetadata()`, so we consider it called here.
-    return addonLinter.scan()
+    return addonLinter.getAddonMetadata(fakeLog)
       .then(() => {
-        assert.isTrue(architectureCall.calledOnce);
+        assert.isFalse(fakeLog.debug.called);
         assert.typeOf(addonLinter.addonMetadata, 'object');
-        return addonLinter.getAddonMetadata();
+        return addonLinter.getAddonMetadata(fakeLog);
       })
       .then(() => {
-        assert.isTrue(architectureCall.calledOnce);
-      });
-  });
-
-  it('should consider example.xpi a regular add-on', () => {
-    var addonLinter = new Linter({
-      _: ['tests/fixtures/example.xpi'],
-    });
-
-    addonLinter.print = sinon.stub();
-
-    return addonLinter.scan()
-      .then(() => {
-        return addonLinter.getAddonMetadata();
-      })
-      .then((metadata) => {
-        assert.equal(metadata.architecture, constants.ARCH_DEFAULT);
-      });
-  });
-
-  it('should recognise it as a Jetpack add-on', function() {
-    var addonLinter = new Linter({
-      _: ['tests/fixtures/jetpack-1.14.xpi'],
-    });
-
-    addonLinter.print = sinon.stub();
-
-    return addonLinter.scan()
-      .then(() => {
-        return addonLinter.getAddonMetadata();
-      })
-      .then((metadata) => {
-        assert.equal(metadata.architecture, constants.ARCH_JETPACK);
+        assert.isTrue(fakeLog.debug.called);
+        assert.isTrue(fakeLog.debug.calledWith(
+          'Metadata already set; returning cached metadata.'));
       });
   });
 
@@ -612,7 +578,7 @@ describe('Linter.getAddonMetadata()', function() {
       });
   });
 
-  it('should collect a notice if no manifest', () => {
+  it('should collect notices if no manifest', () => {
     var addonLinter = new Linter({_: ['bar']});
     addonLinter.io = {
       getFiles: () => {
@@ -788,7 +754,7 @@ describe('Linter.extractMetadata()', function() {
     });
   });
 
-  // Uses our empty-with-library XPI, with the following file layout:
+  // Uses our empty-with-library extension, with the following file layout:
   //
   // - bootstrap.js
   // - data/
@@ -799,9 +765,9 @@ describe('Linter.extractMetadata()', function() {
   // - install.rdf
   // - package.json
   // - README.md
-  it('should flag empty files in an XPI.', () => {
+  it('should flag empty files in a ZIP.', () => {
     var addonLinter = new Linter({
-      _: ['tests/fixtures/empty-with-library.xpi'],
+      _: ['tests/fixtures/empty-with-library.zip'],
     });
     var markEmptyFilesSpy = sinon.spy(addonLinter, '_markEmptyFiles');
 
@@ -812,7 +778,7 @@ describe('Linter.extractMetadata()', function() {
       });
   });
 
-  // Uses our empty-with-library XPI, with the following file layout:
+  // Uses our empty-with-library extension, with the following file layout:
   //
   // - bootstrap.js
   // - data/
@@ -823,9 +789,9 @@ describe('Linter.extractMetadata()', function() {
   // - install.rdf
   // - package.json
   // - README.md
-  it('should flag known JS libraries in an XPI.', () => {
+  it('should flag known JS libraries in a ZIP.', () => {
     var addonLinter = new Linter({
-      _: ['tests/fixtures/empty-with-library.xpi'],
+      _: ['tests/fixtures/empty-with-library.zip'],
     });
     var markJSFilesSpy = sinon.spy(addonLinter, '_markJSLibs');
 
@@ -920,7 +886,7 @@ describe('Linter.extractMetadata()', function() {
     });
   });
 
-  // Uses our angular-bad-library XPI, with the following file layout:
+  // Uses our angular-bad-library extension, with the following file layout:
   //
   // - bootstrap.js
   // - data/
@@ -932,9 +898,9 @@ describe('Linter.extractMetadata()', function() {
   // - install.rdf
   // - package.json
   // - README.md
-  it('should flag banned JS libraries in an XPI.', () => {
+  it('should flag banned JS libraries in a ZIP.', () => {
     var addonLinter = new Linter({
-      _: ['tests/fixtures/angular-bad-library.xpi'],
+      _: ['tests/fixtures/angular-bad-library.zip'],
     });
     var markBannedSpy = sinon.spy(addonLinter, '_markBannedLibs');
 
@@ -953,9 +919,9 @@ describe('Linter.extractMetadata()', function() {
       });
   });
 
-  it('should flag unadvised JS libraries in an XPI.', () => {
+  it('should flag unadvised JS libraries in a ZIP.', () => {
     var addonLinter = new Linter({
-      _: ['fake.xpi'],
+      _: ['fake.zip'],
     });
     var fakeUnadvisedLibs = ['test_unadvised_fake_lib.js'];
     var fakeMetadata = {

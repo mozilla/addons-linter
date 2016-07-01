@@ -28,7 +28,7 @@ npm install -g addons-linter
 After installation, run the linter and direct it to your add-on file:
 
 ```
-addons-linter my-addon.xpi
+addons-linter my-addon.zip
 ```
 
 Alternatively you can point it at a directory:
@@ -61,7 +61,7 @@ cd addons-linter
 npm install
 npm start
 # Leave running to watch for changes or cancel to stop watching.
-bin/addons-linter my-addon.xpi
+bin/addons-linter my-addon.zip
 ```
 
 ### Required node version
