@@ -1,10 +1,10 @@
-import { VALIDATION_ERROR } from 'const';
+import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 
 
 describe('mozindexeddb', () => {
-  it('should not allow mozIndexedDB', () => {
+  it('should warn about mozIndexedDB', () => {
     var code = 'var myDatabase = indexeddb || mozIndexedDB;';
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
@@ -12,7 +12,7 @@ describe('mozindexeddb', () => {
       .then((validationMessages) => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code, messages.MOZINDEXEDDB.code);
-        assert.equal(validationMessages[0].type, VALIDATION_ERROR);
+        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
       });
   });
 
