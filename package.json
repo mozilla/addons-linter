@@ -71,7 +71,7 @@
     "crx-parser": "0.1.2",
     "dispensary": "0.5.2",
     "es6-promisify": "4.1.0",
-    "eslint": "2.13.1",
+    "eslint": "3.0.0",
     "esprima": "2.7.2",
     "first-chunk-stream": "2.0.0",
     "postcss": "5.0.21",
