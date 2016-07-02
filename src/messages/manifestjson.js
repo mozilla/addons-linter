@@ -19,6 +19,14 @@ export const MANIFEST_BLOCK_COMMENTS = {
   file: MANIFEST_JSON,
 };
 
+export const MANIFEST_DUPLICATE_KEY = {
+  code: 'MANIFEST_DUPLICATE_KEY',
+  legacyCode: null,
+  message: _('Duplicate keys are not allowed in manifest.'),
+  description: _(singleLineString`Duplicate key found in manifest.json.`),
+  file: MANIFEST_JSON,
+};
+
 export const MANIFEST_FIELD_REQUIRED = {
   code: 'MANIFEST_FIELD_REQUIRED',
   legacyCode: null,

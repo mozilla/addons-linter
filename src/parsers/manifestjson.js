@@ -1,15 +1,18 @@
 import esprima from 'esprima';
+import RJSON from 'relaxed-json';
 import validate from 'schema/validator';
 
 import cli from 'cli';
-import { PACKAGE_EXTENSION } from 'const';
+import { MANIFEST_JSON, PACKAGE_EXTENSION } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
 import { singleLineString } from 'utils';
 
 export default class ManifestJSONParser {
 
-  constructor(jsonString, collector, {selfHosted=cli.argv.selfHosted}={}) {
+  constructor(jsonString, collector, {
+    rJSON=RJSON, selfHosted=cli.argv.selfHosted,
+  }={}) {
     // Add the JSON string to the object; we'll use this for testing.
     this._jsonString = jsonString;
 
@@ -86,6 +89,9 @@ export default class ManifestJSONParser {
 
     this.selfHosted = selfHosted;
     this.isValid = this._validate();
+
+    // Check for duplicate keys, which renders the manifest invalid.
+    this._checkForDuplicateKeys(rJSON);
   }
 
   errorLookup(error) {
@@ -202,5 +208,25 @@ export default class ManifestJSONParser {
       type: PACKAGE_EXTENSION,
       version: this.parsedJSON.version,
     };
+  }
+
+  _checkForDuplicateKeys(_rJSON=RJSON) {
+    try {
+      _rJSON.parse(this._jsonString, { duplicate: true, tolerant: true });
+    } catch (err) {
+      if (err.warnings && err.warnings.length > 0) {
+        for (let error of err.warnings) {
+          if (error.message.startsWith('Duplicate key:')) {
+            let message = Object.assign({}, messages.MANIFEST_DUPLICATE_KEY, {
+              file: MANIFEST_JSON,
+              line: error.line,
+              description: `${error.message} found in manifest.json`,
+            });
+            this.collector.addError(message);
+            this.isValid = false;
+          }
+        }
+      }
+    }
   }
 }
