@@ -121,6 +121,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :white_check_mark: | error | BANNED_LIBRARY | | This version of a JS library is banned for security reasons. | | | | BANNED_LIBRARY |
 | :white_check_mark: | warning | UNADVISED_LIBRARY | | This version of a JS library is not recommended. | | | | UNADVISED_LIBRARY |
+| :white_check_mark: | notice | KNOWN_LIBRARY | This version of a JS library is known and generally accepted. | | | blacklisted_js_library | KNOWN_LIBRARY |
 
 ## Markup
 
@@ -178,7 +179,6 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :negative_squared_cross_mark: | warning | found_in_chrome_manifest| | newTab.xul is now newTab.xhtml |  chrome.manifest | | | |
 | :white_check_mark: | warning | hidden_files | | Hidden file flagged | | | [testcases/content.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/content.py) | HIDDEN_FILE |
 | :white_check_mark: | warning | flagged_files | | Flagged filename found | | |[testcases/content.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/content.py) | FLAGGED_FILE |
-| :x: | notice | blacklisted_js_library | | JS Library Detected | | | | |
 | :negative_squared_cross_mark: | warning | invalid_chrome_url | | Invalid chrome URL | | | | |
 | :x: | warning | too_much_js | | TOO MUCH JS FOR EXHAUSTIVE VALIDATION | | | | |
 | :negative_squared_cross_mark: | error | unsigned_sub_xpi | | Sub-package must be signed | | | | |

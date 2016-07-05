@@ -840,13 +840,16 @@ describe('Linter.extractMetadata()', function() {
     return addonLinter.extractMetadata({
       _console: fakeConsole,
       _Xpi: FakeXpi,
-    }).then(() => {
+    }).then((metadata) => {
       assert.ok(markJSFilesSpy.called);
-      // assert.equal(Object.keys(metadata.jsLibs).length, 2);
-      // assert.deepEqual(metadata.jsLibs, {
-      //   'angular.js': 'angularjs.1.2.28.angular.min.js',
-      //   'my/nested/library/path/j.js': 'jquery.2.1.4.jquery-2.1.4.min.js',
-      // });
+      assert.equal(Object.keys(metadata.jsLibs).length, 1);
+      assert.deepEqual(metadata.jsLibs, {
+        'my/nested/library/path/j.js': 'jquery.2.1.4.jquery.min.js',
+      });
+
+      var notices = addonLinter.collector.notices;
+      assert.equal(notices.length, 3);
+      assert.equal(notices[2].code, messages.KNOWN_LIBRARY.code);
     });
   });
 
