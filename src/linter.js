@@ -513,6 +513,12 @@ export default class Linter {
               if (hashResult !== false) {
                 log.debug(`${hashResult} detected in ${filename}`);
                 jsLibs[filename] = hashResult;
+
+                this.collector.addNotice(
+                  Object.assign({}, messages.KNOWN_LIBRARY, {
+                    file: filename,
+                  })
+                );
               }
             }));
         }

@@ -121,6 +121,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :white_check_mark: | error | BANNED_LIBRARY | | This version of a JS library is banned for security reasons. | | | | BANNED_LIBRARY |
 | :white_check_mark: | warning | UNADVISED_LIBRARY | | This version of a JS library is not recommended. | | | | UNADVISED_LIBRARY |
+| :white_check_mark: | notice | KNOWN_LIBRARY | This version of a JS library is known and generally accepted. | | | | KNOWN_LIBRARY |
 
 ## Markup
 

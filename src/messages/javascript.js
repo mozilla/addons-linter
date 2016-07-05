@@ -229,3 +229,13 @@ export const UNADVISED_LIBRARY = {
     not recommend. Read more: https://bit.ly/1TRIyZY`),
   legacyCode: null,
 };
+
+export const KNOWN_LIBRARY = {
+  code: 'KNOWN_LIBRARY',
+  message: _('Known JS library detected'),
+  description: _(singleLineString`JavaScript libraries are discouraged for
+    simple add-ons, but are generally accepted.`),
+  legacyCode: [
+    'testcases_content', 'test_packed_packages', 'blacklisted_js_library',
+  ],
+};
