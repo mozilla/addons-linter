@@ -74,7 +74,7 @@
     "eslint": "3.0.1",
     "esprima": "2.7.2",
     "first-chunk-stream": "2.0.0",
-    "postcss": "5.0.21",
+    "postcss": "5.1.0",
     "relaxed-json": "1.0.0",
     "semver": "5.2.0",
     "sha.js": "2.4.5",
