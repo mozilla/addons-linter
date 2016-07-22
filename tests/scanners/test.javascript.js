@@ -1,14 +1,13 @@
 import ESLint from 'eslint';
 
-import { ESLINT_ERROR, ESLINT_RULE_MAPPING, VALIDATION_ERROR,
+import { DEPRECATED_APIS, ESLINT_ERROR, ESLINT_RULE_MAPPING, VALIDATION_ERROR,
          VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import * as rules from 'rules/javascript';
-import { ignorePrivateFunctions, singleLineString } from 'utils';
+import { apiToMessage, ignorePrivateFunctions, singleLineString } from 'utils';
 import { fakeMessageData, getRuleFiles, getVariable, unexpectedSuccess,
          validMetadata } from '../helpers';
-
 
 describe('JavaScript Scanner', function() {
 
@@ -282,4 +281,18 @@ describe('JavaScript Scanner', function() {
                      Object.keys(ignorePrivateFunctions(rules)).length);
       });
   });
+
+  for (let api of DEPRECATED_APIS) {
+    it(`should return warning when ${api} is used`, () => {
+      var jsScanner = new JavaScriptScanner(
+        `chrome.${api}(function() {});`, 'code.js');
+
+      return jsScanner.scan()
+        .then((validationMessages) => {
+          assert.equal(validationMessages.length, 1);
+          assert.equal(validationMessages[0].code, apiToMessage(api));
+          assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        });
+    });
+  }
 });

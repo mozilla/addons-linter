@@ -215,3 +215,11 @@ export function isLocalUrl(urlInput) {
   }
   return true;
 }
+
+export function apiToMessage(string) {
+  return string
+    .replace(/^extension/, 'ext')
+    .replace(/\./g, '_')
+    .toUpperCase()
+    .substr(0, 25);
+}
