@@ -11,4 +11,5 @@ export * from './only_prefs_in_defaults';
 export * from './opendialog_nonlit_uri';
 export * from './opendialog_remote_uri';
 export * from './shallow_wrapper';
+export * from './webextension_api';
 export * from './widget_module';

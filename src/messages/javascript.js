@@ -1,4 +1,4 @@
-import { gettext as _, singleLineString } from 'utils';
+import { apiToMessage, gettext as _, singleLineString } from 'utils';
 
 export const JS_SYNTAX_ERROR = {
   code: 'JS_SYNTAX_ERROR',
@@ -239,3 +239,29 @@ export const KNOWN_LIBRARY = {
     'testcases_content', 'test_packed_packages', 'blacklisted_js_library',
   ],
 };
+
+function deprecatedAPI(api) {
+  return {
+    code: apiToMessage(api),
+    legacyCode: [
+      'js',
+      'deprecated',
+      api,
+    ],
+    message: _(`"${api}" is deprecated or unimplemented`),
+    description: _(singleLineString`This API has been deprecated by Chrome
+      and has not been implemented by Firefox.`),
+  };
+}
+
+export const APP_GETDETAILS = deprecatedAPI('app.getDetails');
+export const EXT_ONREQUEST = deprecatedAPI('extension.onRequest');
+export const EXT_ONREQUESTEXTERNAL = deprecatedAPI(
+  'extension.onRequestExternal');
+export const EXT_SENDREQUEST = deprecatedAPI('extension.sendRequest');
+export const TABS_GETALLINWINDOW = deprecatedAPI('tabs.getAllInWindow');
+export const TABS_GETSELECTED = deprecatedAPI('tabs.getSelected');
+export const TABS_ONACTIVECHANGED = deprecatedAPI('tabs.onActiveChanged');
+export const TABS_ONSELECTIONCHANGED = deprecatedAPI(
+  'tabs.onSelectionChanged');
+export const TABS_SENDREQUEST = deprecatedAPI('tabs.sendRequest');

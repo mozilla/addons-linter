@@ -18,6 +18,7 @@ export const ESLINT_RULE_MAPPING = {
   opendialog_nonlit_uri: ESLINT_WARNING,
   opendialog_remote_uri: ESLINT_WARNING,
   shallow_wrapper: ESLINT_WARNING,
+  webextension_api: ESLINT_WARNING,
   widget_module: ESLINT_WARNING,
 };
 
@@ -130,9 +131,20 @@ export const FLAGGED_FILE_MAGIC_NUMBERS = [
   [0x23, 0x21], // Shell script
   [0xca, 0xfe, 0xba, 0xbe], // Java + Mach-O (dylib)
   [0xca, 0xfe, 0xd0, 0x0d], // Java packed
-  [0x46, 0x57, 0x53], // Uncompressed SWF
   [0x43, 0x57, 0x53], // Compressed SWF
 ];
 
 // Based on the above, this is how deep we need to look into a file.
 export const FLAGGED_FILE_MAGIC_NUMBERS_LENGTH = 4;
+
+export const DEPRECATED_APIS = [
+  'app.getDetails',
+  'extension.onRequest',
+  'extension.onRequestExternal',
+  'extension.sendRequest',
+  'tabs.getAllInWindow',
+  'tabs.getSelected',
+  'tabs.onActiveChanged',
+  'tabs.onSelectionChanged',
+  'tabs.sendRequest',
+];

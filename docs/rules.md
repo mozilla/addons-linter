@@ -372,3 +372,12 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :white_check_mark: | error | Web extension | Bad permission | manifest.json | | null | MANIFEST_BAD_PERMISSION |
 | :white_check_mark: | warning | Web extension | Unknown permission | manifest.json | | null | MANIFEST_PERMISSIONS |
 | :white_check_mark: | error | Web extension | Block Comments are not allowed in `manifest.json` | manifest.json | | null | MANIFEST_BLOCK_COMMENTS |
+| :white_check_mark: | warning | Web extension | Deprecated API tabs.getSelected | | | null | TABS_GETSELECTED |
+| :white_check_mark: | warning | Web extension | Deprecated API tabs.sendRequest | | | null | TABS_SENDREQUEST |
+| :white_check_mark: | warning | Web extension | Deprecated API tabs.getAllInWindow | | | null | TABS_GETALLINWINDOW |
+| :white_check_mark: | warning | Web extension | Deprecated API tabs.onSelectionChanged | | | null | TABS_ONSELECTIONCHANGED |
+| :white_check_mark: | warning | Web extension | Deprecated API tabs.onActiveChanged | | | null | TABS_ONACTIVECHANGED |
+| :white_check_mark: | warning | Web extension | Deprecated API extension.sendRequest | | | null | EXT_SENDREQUEST |
+| :white_check_mark: | warning | Web extension | Deprecated API extension.onRequestExternal | | | null | EXT_ONREQUESTEXTERNAL |
+| :white_check_mark: | warning | Web extension | Deprecated API extension.onRequest | | | null | EXT_ONREQUEST |
+| :white_check_mark: | warning | Web extension | Deprecated API app.getDetails | | | null | APP_GETDETAILS |
