@@ -93,6 +93,14 @@ export const PROP_VERSION_INVALID = {
   file: MANIFEST_JSON,
 };
 
+export const PROP_VERSION_TOOLKIT_ONLY = {
+  code: 'PROP_VERSION_TOOLKIT_ONLY',
+  legacyCode: null,
+  message: _('The "version" property uses a Firefox-specific format.'),
+  description: _('See http://mzl.la/1kXIADa (MDN Docs) for more information.'),
+  file: MANIFEST_JSON,
+};
+
 export const MANIFEST_UPDATE_URL = {
   code: 'MANIFEST_UPDATE_URL',
   legacyCode: null,

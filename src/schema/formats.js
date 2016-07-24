@@ -2,12 +2,23 @@ import parse from 'url-parse';
 
 const VALIDNUMRX = /^[0-9]{1,5}$/;
 
+// Firefox's version format is laxer than Chrome's, it accepts:
+// https://developer.mozilla.org/en-US/docs/Toolkit_version_format
+// We choose a slightly restricted version of that format (but still more
+// permissive than Chrome) to allow Beta addons, per:
+// https://developer.mozilla.org/en-US/Add-ons/AMO/Policy/Maintenance
+const TOOLKIT_VERSION_REGEX = /(a|alpha|b|beta|pre|rc)\d*$/;
+
+export function isToolkitVersionString(version) {
+  return TOOLKIT_VERSION_REGEX.test(version) && isValidVersionString(version);
+}
 
 export function isValidVersionString(version) {
   // We should be starting with a string.
   if (typeof version !== 'string') {
     return false;
   }
+  version = version.replace(TOOLKIT_VERSION_REGEX, '');
   var parts = version.split('.');
   if (parts.length > 4) {
     return false;

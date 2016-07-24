@@ -22,4 +22,11 @@ describe('/version', () => {
     assert.equal(validate.errors[0].params.missingProperty, 'version');
   });
 
+  it('should be valid if it is a toolkit version', () => {
+    var manifest = cloneDeep(validManifest);
+    manifest.version = '1.0.0.0pre0';
+    validate(manifest);
+    assert.isNull(validate.errors);
+  });
+
 });
