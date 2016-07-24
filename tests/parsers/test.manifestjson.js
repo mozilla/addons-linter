@@ -415,6 +415,17 @@ describe('ManifestJSONParser version', function() {
     assert.include(errors[0].message, '/version');
   });
 
+  it('should collect a notice on toolkit version values', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = validManifestJSON({version: '1.0.0.0pre0'});
+    var manifestJSONParser = new ManifestJSONParser(json,
+                                                    addonLinter.collector);
+    assert.equal(manifestJSONParser.isValid, true);
+    var notices = addonLinter.collector.notices;
+    assert.equal(notices[0].code, 'PROP_VERSION_TOOLKIT_ONLY');
+    assert.include(notices[0].message, 'version');
+  });
+
 });
 
 describe('ManifestJSONParser content security policy', function() {
