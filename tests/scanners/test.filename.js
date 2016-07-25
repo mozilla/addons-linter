@@ -1,5 +1,6 @@
 import FilenameScanner from 'scanners/filename';
 import * as constants from 'const';
+import * as messages from 'messages';
 
 describe('FilenameScanner', function() {
 
@@ -9,7 +10,7 @@ describe('FilenameScanner', function() {
     return filenameScanner.scan()
       .then((linterMessages) => {
         assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code, 'HIDDEN_FILE');
+        assert.equal(linterMessages[0].code, messages.HIDDEN_FILE.code);
         assert.equal(linterMessages[0].file, '__MACOSX/foo.txt');
       });
   });
@@ -20,7 +21,7 @@ describe('FilenameScanner', function() {
     return filenameScanner.scan()
       .then((linterMessages) => {
         assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code, 'FLAGGED_FILE');
+        assert.equal(linterMessages[0].code, messages.FLAGGED_FILE.code);
         assert.equal(linterMessages[0].file, 'Thumbs.db');
       });
   });
@@ -31,7 +32,8 @@ describe('FilenameScanner', function() {
     return filenameScanner.scan()
       .then((linterMessages) => {
         assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code, 'FLAGGED_FILE_EXTENSION');
+        assert.equal(linterMessages[0].code,
+            messages.FLAGGED_FILE_EXTENSION.code);
         assert.equal(linterMessages[0].file, 'wat.exe');
       });
   });
@@ -42,7 +44,7 @@ describe('FilenameScanner', function() {
     return filenameScanner.scan()
       .then((linterMessages) => {
         assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code, 'ALREADY_SIGNED');
+        assert.equal(linterMessages[0].code, messages.ALREADY_SIGNED.code);
         assert.equal(linterMessages[0].file, 'META-INF/manifest.mf');
       });
   });

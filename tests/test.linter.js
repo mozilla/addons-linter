@@ -103,7 +103,8 @@ describe('Linter', function() {
     return addonLinter.scan()
       .catch(() => {
         assert.equal(addonLinter.collector.errors.length, 1);
-        assert.equal(addonLinter.collector.errors[0].code, 'BAD_ZIPFILE');
+        assert.equal(addonLinter.collector.errors[0].code,
+            messages.BAD_ZIPFILE.code);
       });
   });
 

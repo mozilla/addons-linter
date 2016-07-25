@@ -337,7 +337,7 @@ describe('ManifestJSONParser enum', function() {
     assert.equal(manifestJSONParser.isValid, false);
     var warnings = addonLinter.collector.warnings;
     assert.equal(warnings.length, 1);
-    assert.equal(warnings[0].code, 'MANIFEST_PERMISSIONS');
+    assert.equal(warnings[0].code, messages.MANIFEST_PERMISSIONS.code);
     assert.include(warnings[0].message,
                    '/permissions: Unknown permissions "wat" at 1.');
   });
@@ -364,7 +364,7 @@ describe('ManifestJSONParser name', function() {
                                                     addonLinter.collector);
     assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
-    assert.equal(errors[0].code, 'MANIFEST_FIELD_REQUIRED');
+    assert.equal(errors[0].code, messages.MANIFEST_FIELD_REQUIRED.code);
     assert.include(errors[0].message, '/name');
   });
 
@@ -375,7 +375,7 @@ describe('ManifestJSONParser name', function() {
                                                     addonLinter.collector);
     assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
-    assert.equal(errors[0].code, 'MANIFEST_FIELD_INVALID');
+    assert.equal(errors[0].code, messages.MANIFEST_FIELD_INVALID.code);
     assert.include(errors[0].message, '/name');
   });
 
@@ -400,7 +400,7 @@ describe('ManifestJSONParser version', function() {
                                                     addonLinter.collector);
     assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
-    assert.equal(errors[0].code, 'MANIFEST_FIELD_REQUIRED');
+    assert.equal(errors[0].code, messages.MANIFEST_FIELD_REQUIRED.code);
     assert.include(errors[0].message, '/version');
   });
 
@@ -411,7 +411,7 @@ describe('ManifestJSONParser version', function() {
                                                     addonLinter.collector);
     assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
-    assert.equal(errors[0].code, 'MANIFEST_FIELD_INVALID');
+    assert.equal(errors[0].code, messages.MANIFEST_FIELD_INVALID.code);
     assert.include(errors[0].message, '/version');
   });
 
@@ -422,7 +422,7 @@ describe('ManifestJSONParser version', function() {
                                                     addonLinter.collector);
     assert.equal(manifestJSONParser.isValid, true);
     var notices = addonLinter.collector.notices;
-    assert.equal(notices[0].code, 'PROP_VERSION_TOOLKIT_ONLY');
+    assert.equal(notices[0].code, messages.PROP_VERSION_TOOLKIT_ONLY.code);
     assert.include(notices[0].message, 'version');
   });
 
@@ -437,7 +437,7 @@ describe('ManifestJSONParser content security policy', function() {
                                                     addonLinter.collector);
     assert.equal(manifestJSONParser.isValid, true);
     var warnings = addonLinter.collector.warnings;
-    assert.equal(warnings[0].code, 'MANIFEST_CSP');
+    assert.equal(warnings[0].code, messages.MANIFEST_CSP.code);
     assert.include(warnings[0].message, 'content_security_policy');
   });
 
