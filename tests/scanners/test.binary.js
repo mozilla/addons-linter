@@ -1,5 +1,6 @@
 import BinaryScanner from 'scanners/binary';
 import { FLAGGED_FILE_MAGIC_NUMBERS } from 'const';
+import * as messages from 'messages';
 
 describe('Binary', function() {
 
@@ -21,7 +22,7 @@ describe('Binary', function() {
       return scanner.scan()
         .then((linterMessages) => {
           assert.equal(linterMessages.length, 1);
-          assert.equal(linterMessages[0].code, 'FLAGGED_FILE_TYPE');
+          assert.equal(linterMessages[0].code, messages.FLAGGED_FILE_TYPE.code);
           assert.equal(linterMessages[0].file, 'wat.txt');
         });
     }

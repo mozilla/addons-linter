@@ -6,6 +6,7 @@ import cli from 'cli';
 import { MANIFEST_JSON, PACKAGE_EXTENSION } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
+import { isToolkitVersionString } from 'schema/formats';
 import { singleLineString } from 'utils';
 
 export default class ManifestJSONParser {
@@ -185,6 +186,10 @@ export default class ManifestJSONParser {
         this.parsedJSON.applications.gecko.update_url) {
       this.collector.addError(messages.MANIFEST_UPDATE_URL);
       isValid = false;
+    }
+
+    if (isToolkitVersionString(this.parsedJSON.version)) {
+      this.collector.addNotice(messages.PROP_VERSION_TOOLKIT_ONLY);
     }
 
     return isValid;
