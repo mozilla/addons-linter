@@ -26,6 +26,20 @@ var fakeCheckFileExists = () => {
   });
 };
 
+class FakeIOBase {
+  getFile() {
+    return Promise.resolve('');
+  }
+  getFiles() {
+    return Promise.resolve({});
+  }
+  getFilesByExt() {
+    return Promise.resolve([]);
+  }
+  setScanFileCallback() {
+  }
+}
+
 
 describe('Linter', function() {
 
@@ -177,13 +191,7 @@ describe('Linter', function() {
       return Promise.reject(new Error('scanFiles explosion'));
     };
 
-    class FakeXpi {
-      getFile() {
-        return Promise.resolve('');
-      }
-      getFiles() {
-        return Promise.resolve([]);
-      }
+    class FakeXpi extends FakeIOBase {
       getFilesByExt() {
         return Promise.resolve(['foo.js', 'bar.js']);
       }
@@ -202,7 +210,7 @@ describe('Linter', function() {
     addonLinter.checkFileExists = fakeCheckFileExists;
     addonLinter.collector.addError = sinon.stub();
     addonLinter.print = sinon.stub();
-    class FakeXpi {
+    class FakeXpi extends FakeIOBase {
       getFiles() {
         return Promise.reject(
           new Error('DuplicateZipEntry the zip has dupes!'));
@@ -629,16 +637,7 @@ describe('Linter.extractMetadata()', function() {
       return Promise.resolve();
     };
 
-    class FakeDirectory {
-      getFile() {
-        return Promise.resolve('');
-      }
-      getFiles() {
-        return Promise.resolve({});
-      }
-      getFilesByExt() {
-        return Promise.resolve([]);
-      }
+    class FakeDirectory extends FakeIOBase {
     }
 
     return addonLinter.extractMetadata({_Directory: FakeDirectory,
@@ -664,13 +663,7 @@ describe('Linter.extractMetadata()', function() {
       return Promise.resolve();
     };
 
-    class FakeCrx {
-      getFile() {
-        return Promise.resolve('');
-      }
-      getFiles() {
-        return Promise.resolve([]);
-      }
+    class FakeCrx extends FakeIOBase {
       getFilesByExt() {
         return Promise.resolve(['foo.js', 'bar.js']);
       }
@@ -680,6 +673,53 @@ describe('Linter.extractMetadata()', function() {
       .then((metadata) => {
         assert.deepEqual(metadata, fakeMetadata);
         assert.instanceOf(addonLinter.io, FakeCrx);
+      });
+  });
+
+  it('should configure a file filter on the IO object', () => {
+    const shouldScanFile = sinon.spy(() => true);
+
+    const addonLinter = new Linter({
+      _: ['foo.crx'],
+      shouldScanFile,
+    });
+
+    const fakeMetadata = {type: 1, somethingelse: 'whatever'};
+    addonLinter.toJSON = sinon.stub();
+
+    addonLinter.getAddonMetadata = () => {
+      return Promise.resolve(fakeMetadata);
+    };
+
+    addonLinter.checkFileExists = () => {
+      return Promise.resolve({
+        isFile: () => {
+          return false;
+        },
+        isDirectory: () => {
+          return true;
+        },
+      });
+    };
+
+    addonLinter.checkMinNodeVersion = () => {
+      return Promise.resolve();
+    };
+
+    const setScanFileCallback = sinon.stub();
+
+    class FakeDirectory extends FakeIOBase {
+      setScanFileCallback(...args) {
+        setScanFileCallback(...args);
+      }
+    }
+
+    return addonLinter.extractMetadata({_Directory: FakeDirectory})
+      .then(() => {
+        assert.instanceOf(addonLinter.io, FakeDirectory);
+        assert.equal(setScanFileCallback.called, true);
+        assert.strictEqual(setScanFileCallback.firstCall.args[0],
+                           shouldScanFile);
       });
   });
 
@@ -701,8 +741,7 @@ describe('Linter.extractMetadata()', function() {
       return Promise.resolve(addonMetadata);
     };
 
-    class FakeXpi {
-      // stub Xpi class.
+    class FakeXpi extends FakeIOBase {
     }
 
     return addonLinter.extractMetadata({_Xpi: FakeXpi,
@@ -738,8 +777,7 @@ describe('Linter.extractMetadata()', function() {
       return Promise.resolve(addonMetadata);
     };
 
-    class FakeXpi {
-      // stub Xpi class.
+    class FakeXpi extends FakeIOBase {
     }
 
     return addonLinter.extractMetadata({
@@ -821,7 +859,7 @@ describe('Linter.extractMetadata()', function() {
       'my/nested/library/path/j.js': 'jquery-2.1.4.min.js',
     };
 
-    class FakeXpi {
+    class FakeXpi extends FakeIOBase {
       getFile(path) {
         return Promise.resolve(
           fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`));
@@ -865,7 +903,7 @@ describe('Linter.extractMetadata()', function() {
       'my/nested/library/path/j.js': 'jquery-2.2.4.min.js',
     };
 
-    class FakeXpi {
+    class FakeXpi extends FakeIOBase {
       getFile(path) {
         return Promise.resolve(
           fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`));
@@ -963,18 +1001,12 @@ describe('Linter.extractMetadata()', function() {
     // suppress output.
     addonLinter.print = sinon.stub();
     var markEmptyFilesSpy = sinon.spy(addonLinter, '_markEmptyFiles');
-    class FakeDirectory {
-      getFile() {
-        return Promise.resolve({});
-      }
+    class FakeDirectory extends FakeIOBase {
       getFiles() {
         return Promise.resolve({
           'dictionaries/something': { size: 5 },
           'whatever': { size: 0},
         });
-      }
-      getFilesByExt() {
-        return Promise.resolve([]);
       }
     }
     return addonLinter.extractMetadata({
@@ -993,18 +1025,12 @@ describe('Linter.extractMetadata()', function() {
     // suppress output.
     addonLinter.print = sinon.stub();
     var markEmptyFilesSpy = sinon.spy(addonLinter, '_markEmptyFiles');
-    class FakeXpi {
-      getFile() {
-        return Promise.resolve({});
-      }
+    class FakeXpi extends FakeIOBase {
       getFiles() {
         return Promise.resolve({
           'dictionaries/something': { uncompressedSize: 5 },
           'whatever': {},
         });
-      }
-      getFilesByExt() {
-        return Promise.resolve([]);
       }
     }
     return addonLinter.scan({_Xpi: FakeXpi, _console: fakeConsole})
@@ -1020,7 +1046,7 @@ describe('Linter.extractMetadata()', function() {
     // suppress output.
     addonLinter.print = sinon.stub();
     var largeFileSize = (constants.MAX_FILE_SIZE_TO_PARSE_MB * 1024 * 1024) + 1;
-    class FakeXpi {
+    class FakeXpi extends FakeIOBase {
       files = {
         'manifest.json': { uncompressedSize: 839 },
         'myfile.css': { uncompressedSize: largeFileSize },
@@ -1055,7 +1081,7 @@ describe('Linter.extractMetadata()', function() {
     // suppress output.
     addonLinter.print = sinon.stub();
     var largeFileSize = constants.MAX_FILE_SIZE_TO_PARSE_MB * 1024 * 1024 * 4;
-    class FakeXpi {
+    class FakeXpi extends FakeIOBase {
       files = {
         'manifest.json': { uncompressedSize: 839 },
         'myfile.jpg': { uncompressedSize: largeFileSize },
@@ -1108,8 +1134,7 @@ describe('Linter.run()', function() {
       return Promise.resolve(addonMetadata);
     });
 
-    class FakeXpi {
-      // stub Xpi class.
+    class FakeXpi extends FakeIOBase {
     }
 
     return addonLinter.run({_Xpi: FakeXpi, _console: fakeConsole})
@@ -1149,8 +1174,7 @@ describe('Linter.run()', function() {
       return Promise.resolve();
     };
 
-    class FakeXpi {
-      // stub Xpi class.
+    class FakeXpi extends FakeIOBase {
     }
 
     return addonLinter.run({_Xpi: FakeXpi, _console: fakeConsole})

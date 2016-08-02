@@ -37,6 +37,21 @@ describe('Directory.getFiles()', function() {
       });
   });
 
+  it('can be configured to not scan file paths', () => {
+    const myDirectory = new Directory('tests/fixtures/io/');
+    myDirectory.setScanFileCallback((filePath) => {
+      return !filePath.startsWith('dir2');
+    });
+
+    return myDirectory.getFiles()
+      .then((files) => {
+        var fileNames = Object.keys(files);
+        assert.include(fileNames, 'dir1/file1.txt');
+        assert.notInclude(fileNames, 'dir2/file2.txt');
+        assert.notInclude(fileNames, 'dir2/dir3/file3.txt');
+      });
+  });
+
 });
 
 describe('Directory._getPath()', function() {

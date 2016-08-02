@@ -359,15 +359,19 @@ export default class Linter {
         if (stats.isFile() === true) {
           if (this.packagePath.endsWith('.crx')) {
             log.info('Package is a file ending in .crx; parsing as a CRX');
-            this.io = new _Crx(this.packagePath);
+            return new _Crx(this.packagePath);
           } else {
             log.info('Package is a file. Attempting to parse as an .xpi/.zip');
-            this.io = new _Xpi(this.packagePath);
+            return new _Xpi(this.packagePath);
           }
         } else if (stats.isDirectory()) {
           log.info('Package path is a directory. Parsing as a directory');
-          this.io = new _Directory(this.packagePath);
+          return new _Directory(this.packagePath);
         }
+      })
+      .then((io) => {
+        io.setScanFileCallback(this.config.shouldScanFile);
+        this.io = io;
         return this.getAddonMetadata();
       })
       .then((addonMetadata) => {

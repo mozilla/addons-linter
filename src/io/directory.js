@@ -24,7 +24,10 @@ export class Directory extends IOBase {
       return Promise.resolve(this.files);
     }
 
-    return _walkPromise(this.path)
+    return _walkPromise(
+      this.path, {
+        shouldIncludePath: this.shouldScanFile.bind(this),
+      })
       .then((files) => {
         this.files = files;
         this.entries = Object.keys(files);
