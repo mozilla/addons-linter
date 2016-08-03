@@ -50,4 +50,18 @@ describe('io.utils.walkPromise()', function() {
       });
   });
 
+  it('can exclude the topmost directory', () => {
+    return walkPromise(
+      'tests/fixtures/io/', {
+        shouldIncludePath: (filePath) => {
+          // This would be the topmost directory.
+          return filePath !== '';
+        },
+      })
+      .then((files) => {
+        var fileNames = Object.keys(files);
+        assert.deepEqual(fileNames, []);
+      });
+  });
+
 });

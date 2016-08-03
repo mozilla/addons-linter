@@ -17,14 +17,13 @@ export function walkPromise(curPath, {shouldIncludePath=() => true} = {}) {
   return (function walk(curPath) {
     return lstatPromise(curPath)
       .then((stat) => {
-        if (stat.isFile()) {
-          const relPath = path.relative(basePath, curPath);
+        const relPath = path.relative(basePath, curPath);
+        if (!shouldIncludePath(relPath)) {
+          log.debug(`Skipping file path: ${relPath}`);
+          return result;
+        } else if (stat.isFile()) {
           const { size } = stat;
-          if (shouldIncludePath(relPath)) {
-            result[relPath] = { size };
-          } else {
-            log.debug(`Skipping file: ${relPath}`);
-          }
+          result[relPath] = { size };
         } else if (stat.isDirectory()) {
           return readdirPromise(curPath)
             .then((files) => {
@@ -32,12 +31,7 @@ export function walkPromise(curPath, {shouldIncludePath=() => true} = {}) {
               // promises to pass to Promise.all so we can recursively
               // get the data on all the files in the directory.
               return Promise.all(files.map((fileName) => {
-                if (shouldIncludePath(fileName)) {
-                  return walk(path.join(curPath, fileName));
-                } else {
-                  log.debug(`Skipping directory ${fileName}`);
-                  return Promise.resolve();
-                }
+                return walk(path.join(curPath, fileName));
               }));
             })
             .then(() => {
