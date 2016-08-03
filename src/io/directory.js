@@ -26,7 +26,7 @@ export class Directory extends IOBase {
 
     return _walkPromise(
       this.path, {
-        shouldIncludePath: this.shouldScanFile.bind(this),
+        shouldIncludePath: (...args) => this.shouldScanFile(...args),
       })
       .then((files) => {
         this.files = files;
