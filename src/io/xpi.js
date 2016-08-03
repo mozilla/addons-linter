@@ -39,6 +39,10 @@ export class Xpi extends IOBase {
     if (/\/$/.test(entry.fileName)) {
       return;
     }
+    if (!this.shouldScanFile(entry.fileName)) {
+      log.debug(`Skipping file: ${entry.fileName}`);
+      return;
+    }
     if (this.entries.includes(entry.fileName)) {
       log.info('Found duplicate file entry: "%s" in package', entry.fileName);
       reject(new Error(singleLineString`DuplicateZipEntry: Entry
@@ -53,7 +57,15 @@ export class Xpi extends IOBase {
       // If we have already processed the file and have data
       // on this instance return that.
       if (Object.keys(this.files).length) {
-        return resolve(this.files);
+        const wantedFiles = {};
+        Object.keys(this.files).forEach((fileName) => {
+          if (this.shouldScanFile(fileName)) {
+            wantedFiles[fileName] = this.files[fileName];
+          } else {
+            log.debug(`Skipping cached file: ${fileName}`);
+          }
+        });
+        return resolve(wantedFiles);
       }
 
       return this.open()

@@ -14,6 +14,15 @@ export class IOBase {
     // If this is too large the node process will hit a RangeError
     // when it runs out of memory.
     this.maxSizeBytes = 1024 * 1024 * MAX_FILE_SIZE_MB;
+    // A callback that accepts a relative file path and returns
+    // true if the path should be included in results for scanning.
+    this.shouldScanFile = () => true;
+  }
+
+  setScanFileCallback(callback) {
+    if (typeof callback === 'function') {
+      this.shouldScanFile = callback;
+    }
   }
 
   getFile(path, fileStreamType='string') {

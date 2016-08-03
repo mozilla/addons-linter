@@ -1,12 +1,13 @@
 import { lstat, readdir } from 'fs';
 import * as path from 'path';
 
+import log from 'logger';
 import promisify from 'es6-promisify';
 
 export var lstatPromise = promisify(lstat);
 export var readdirPromise = promisify(readdir);
 
-export function walkPromise(curPath) {
+export function walkPromise(curPath, {shouldIncludePath=() => true} = {}) {
   var result = {};
   // Set a basePath var with the initial path
   // so all file paths (the result keys) can
@@ -16,9 +17,13 @@ export function walkPromise(curPath) {
   return (function walk(curPath) {
     return lstatPromise(curPath)
       .then((stat) => {
-        if (stat.isFile()) {
-          var { size } = stat;
-          result[path.relative(basePath, curPath)] = { size };
+        const relPath = path.relative(basePath, curPath);
+        if (!shouldIncludePath(relPath)) {
+          log.debug(`Skipping file path: ${relPath}`);
+          return result;
+        } else if (stat.isFile()) {
+          const { size } = stat;
+          result[relPath] = { size };
         } else if (stat.isDirectory()) {
           return readdirPromise(curPath)
             .then((files) => {

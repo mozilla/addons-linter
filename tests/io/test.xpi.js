@@ -157,6 +157,59 @@ describe('xpi.getFiles()', function() {
       });
   });
 
+  it('can be configured to exclude files', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+
+    // Return the fake zip to the open callback.
+    this.openStub.yieldsAsync(null, this.fakeZipFile);
+
+    var onEventsSubscribed = () => {
+      // Directly call the 'entry' event callback as if
+      // we are actually processing entries in a
+      // zip.
+      var entryCallback = this.entryStub.firstCall.args[1];
+      entryCallback.call(null, chromeManifestEntry);
+      entryCallback.call(null, chromeContentDir);
+      entryCallback.call(null, installRdfEntry);
+    };
+
+    // Call the close event callback
+    this.closeStub.yieldsAsync();
+
+    myXpi.setScanFileCallback((filePath) => {
+      return !/install\.rdf/.test(filePath);
+    });
+    return myXpi.getFiles(onEventsSubscribed)
+      .then((files) => {
+        assert.equal(files['chrome.manifest'], chromeManifestEntry);
+        assert.isUndefined(files['install.rdf']);
+      });
+  });
+
+  it('can be configured to exclude files when cached', () => {
+    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    // Populate the file cache:
+    myXpi.files = {
+      'install.rdf': installRdfEntry,
+      'chrome.manifest': chromeManifestEntry,
+    };
+
+    // Return the fake zip to the open callback.
+    this.openStub.yieldsAsync(null, this.fakeZipFile);
+
+    // Call the close event callback
+    this.closeStub.yieldsAsync();
+
+    myXpi.setScanFileCallback((filePath) => {
+      return !/install\.rdf/.test(filePath);
+    });
+    return myXpi.getFiles()
+      .then((files) => {
+        assert.equal(files['chrome.manifest'], chromeManifestEntry);
+        assert.isUndefined(files['install.rdf']);
+      });
+  });
+
   it('should reject on duplicate entries', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
     this.openStub.yieldsAsync(null, this.fakeZipFile);

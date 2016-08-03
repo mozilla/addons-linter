@@ -80,4 +80,29 @@ describe('io.IOBase()', function() {
     assert.ok(io.getChunkAsBuffer.calledWith('get-a-chunk-as-buffer',
       FLAGGED_FILE_MAGIC_NUMBERS_LENGTH));
   });
+
+  it('should scan all files by default', () => {
+    const io = new IOBase('foo/bar');
+    assert.ok(io.shouldScanFile('install.rdf'));
+    assert.ok(io.shouldScanFile('manifest.json'));
+  });
+
+  it('should allow configuration of which files can be scanned', () => {
+    const io = new IOBase('foo/bar');
+    io.setScanFileCallback((fileName) => fileName !== 'install.rdf');
+    assert.notOk(io.shouldScanFile('install.rdf'));
+    assert.ok(io.shouldScanFile('manifest.json'));
+  });
+
+  it('should ignore undefined scan file callbacks', () => {
+    const io = new IOBase('foo/bar');
+    io.setScanFileCallback(undefined);
+    assert.ok(io.shouldScanFile('manifest.json'));
+  });
+
+  it('should ignore a non-function scan file callback', () => {
+    const io = new IOBase('foo/bar');
+    io.setScanFileCallback(42); // this is not a function
+    assert.ok(io.shouldScanFile('manifest.json'));
+  });
 });
