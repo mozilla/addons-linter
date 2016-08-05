@@ -1,4 +1,4 @@
-import { default as cli_, terminalWidth } from 'cli';
+import { getConfig, terminalWidth } from 'cli';
 
 
 var cli;
@@ -9,7 +9,7 @@ describe('Basic CLI tests', function() {
     // Override yargs fail func so we can introspect the right errors
     // are happening when we hand it bogus input.
     this.fakeFail = sinon.stub();
-    cli = cli_.exitProcess(false).fail(this.fakeFail);
+    cli = getConfig().exitProcess(false).fail(this.fakeFail);
   });
 
   it('should default logLevel type to "fatal"', () => {
@@ -86,6 +86,17 @@ describe('Basic CLI tests', function() {
   it('should use a terminal width of $COLUMNS - 2', () => {
     var fakeProcess = {stdout: {columns: 170}};
     assert.equal(terminalWidth(fakeProcess), 168);
+  });
+
+  it('should have a default config when called via CLI', () => {
+    let config = getConfig({useCLI: true}).argv;
+    assert.isAbove(Object.keys(config).length, 0);
+  });
+
+  it('should error when requesting CLI config in library mode', () => {
+    assert.throws(() => {
+      getConfig({useCLI: false});
+    }, 'Cannot request config from CLI in library mode');
   });
 
 });

@@ -2,7 +2,7 @@ import esprima from 'esprima';
 import RJSON from 'relaxed-json';
 import validate from 'schema/validator';
 
-import cli from 'cli';
+import { getConfig } from 'cli';
 import { MANIFEST_JSON, PACKAGE_EXTENSION } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
@@ -12,7 +12,7 @@ import { singleLineString } from 'utils';
 export default class ManifestJSONParser {
 
   constructor(jsonString, collector, {
-    rJSON=RJSON, selfHosted=cli.argv.selfHosted,
+    rJSON=RJSON, selfHosted=getConfig().argv.selfHosted,
   }={}) {
     // Add the JSON string to the object; we'll use this for testing.
     this._jsonString = jsonString;

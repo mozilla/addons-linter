@@ -1,7 +1,64 @@
 import argv from 'yargs';
 
+import log from 'logger';
+import { singleLineString } from 'utils';
 import { version } from 'json!../package';
 
+
+export function getConfig({useCLI=true} = {}) {
+  if (useCLI === false) {
+    log.fatal(singleLineString`Config requested from CLI, but not in CLI mode.
+      Please supply a config instead of relying on the getConfig() call.`);
+    throw new Error('Cannot request config from CLI in library mode');
+  }
+
+  return argv
+    .usage(`Usage: ./$0 [options] addon-package-or-dir \n\n
+      Add-ons Linter (JS Edition) v${version}`)
+    .option('log-level', {
+      describe: 'The log-level to generate',
+      type: 'string',
+      default: 'fatal',
+      choices: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
+    })
+    .option('output', {
+      alias: 'o',
+      describe: 'The type of output to generate',
+      type: 'string',
+      default: 'text',
+      choices: ['json', 'text'],
+    })
+    .option('metadata', {
+      describe: 'Output only metadata as JSON',
+      type: 'boolean',
+      default: 'false',
+    })
+    .option('pretty', {
+      describe: 'Prettify JSON output',
+      type: 'boolean',
+      default: false,
+    })
+    .option('stack', {
+      describe: 'Show stacktraces when errors are thrown',
+      type: 'boolean',
+      default: false,
+    })
+    .option('boring', {
+      describe: 'Disables colorful shell output',
+      type: 'boolean',
+      default: false,
+    })
+    .option('self-hosted', {
+      describe: 'Disables messages related to hosting on addons.mozilla.org.',
+      type: 'boolean',
+      default: false,
+    })
+    // Require one non-option.
+    .demand(1)
+    .help('help')
+    .alias('h', 'help')
+    .wrap(terminalWidth());
+}
 
 export function terminalWidth(_process=process) {
   if (_process && _process.stdout && _process.stdout.columns > 0) {
@@ -16,50 +73,3 @@ export function terminalWidth(_process=process) {
     return 78;
   }
 }
-
-export default argv
-  .usage(`Usage: ./$0 [options] addon-package-or-dir \n\n
-    Add-ons Linter (JS Edition) v${version}`)
-  .option('log-level', {
-    describe: 'The log-level to generate',
-    type: 'string',
-    default: 'fatal',
-    choices: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
-  })
-  .option('output', {
-    alias: 'o',
-    describe: 'The type of output to generate',
-    type: 'string',
-    default: 'text',
-    choices: ['json', 'text'],
-  })
-  .option('metadata', {
-    describe: 'Output only metadata as JSON',
-    type: 'boolean',
-    default: 'false',
-  })
-  .option('pretty', {
-    describe: 'Prettify JSON output',
-    type: 'boolean',
-    default: false,
-  })
-  .option('stack', {
-    describe: 'Show stacktraces when errors are thrown',
-    type: 'boolean',
-    default: false,
-  })
-  .option('boring', {
-    describe: 'Disables colorful shell output',
-    type: 'boolean',
-    default: false,
-  })
-  .option('self-hosted', {
-    describe: 'Disables messages related to hosting on addons.mozilla.org.',
-    type: 'boolean',
-    default: false,
-  })
-  // Require one non-option.
-  .demand(1)
-  .help('help')
-  .alias('h', 'help')
-  .wrap(terminalWidth());
