@@ -7,7 +7,7 @@ const VALIDNUMRX = /^[0-9]{1,5}$/;
 // We choose a slightly restricted version of that format (but still more
 // permissive than Chrome) to allow Beta addons, per:
 // https://developer.mozilla.org/en-US/Add-ons/AMO/Policy/Maintenance
-const TOOLKIT_VERSION_REGEX = /(a|alpha|b|beta|pre|rc)\d*$/;
+const TOOLKIT_VERSION_REGEX = /^(\d+\.?){1,3}\.(\d([A-z]+\-*)+\d*)$/;
 
 export function isToolkitVersionString(version) {
   return TOOLKIT_VERSION_REGEX.test(version) && isValidVersionString(version);
@@ -18,7 +18,10 @@ export function isValidVersionString(version) {
   if (typeof version !== 'string') {
     return false;
   }
-  version = version.replace(TOOLKIT_VERSION_REGEX, '');
+  // If valid toolkit version string, return true early
+  if (TOOLKIT_VERSION_REGEX.test(version)) {
+    return true;
+  }
   var parts = version.split('.');
   if (parts.length > 4) {
     return false;
