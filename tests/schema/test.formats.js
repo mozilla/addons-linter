@@ -4,9 +4,14 @@ describe('formats.isValidVersionString', () => {
 
   var validVersionStrings = [
     '1.0',
+    '1.0.0beta2',
     '2.10.2',
     '3.1.2.4567',
     '3.1.2.65535',
+    '4.1pre1',
+    '4.1.1pre2',
+    '4.1.1dev-abcdef1',
+    '4.1.1.2pre3',
   ];
 
   var invalidVersionStrings = [
