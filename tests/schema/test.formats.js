@@ -3,6 +3,7 @@ import { isRelativeURL, isValidVersionString } from 'schema/formats';
 describe('formats.isValidVersionString', () => {
 
   var validVersionStrings = [
+    '0.1.12dev-cb31c51',
     '1.0',
     '1.0.0beta2',
     '2.10.2',
