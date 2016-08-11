@@ -10,6 +10,8 @@ import { singleLineString } from 'utils';
 
 describe('Process', function() {
 
+  this.slow(5000);
+
   it('should exit with exit code 0 when no errors.', (done) => {
     let cmd = 'bin/addons-linter tests/fixtures/good.zip --output json';
     shell.exec(cmd, {silent: true}, (code, output) => {
