@@ -356,8 +356,8 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :white_check_mark: | error | Web extension | manifest.json is not well formed. | manifest.json | | null | MANIFEST_JSON_INVALID |
-| :white_check_mark: | error | Web extension | Duplicate key in manifest.json. | manifest.json | | null | MANIFEST_DUPLICATE_KEY |
+| :white_check_mark: | error | Web extension | JSON is not well formed. | manifest.json | | null | JSON_INVALID |
+| :white_check_mark: | error | Web extension | Duplicate key in JSON. | manifest.json | | null | JSON_DUPLICATE_KEY |
 | :white_check_mark: | error | Web extension | manifest_version in manifest.json is not valid. | manifest.json | | null | MANIFEST_VERSION_INVALID |
 | :white_check_mark: | error | Web extension | name property missing from manifest.json | manifest.json | | null | PROP_NAME_MISSING |
 | :white_check_mark: | error | Web extension | name property is invalid in manifest.json | manifest.json | | null | PROP_NAME_INVALID |
@@ -372,7 +372,7 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :white_check_mark: | error | Web extension | A field is invalid | manifest.json | | null | MANIFEST_FIELD_INVALID |
 | :white_check_mark: | error | Web extension | Bad permission | manifest.json | | null | MANIFEST_BAD_PERMISSION |
 | :white_check_mark: | warning | Web extension | Unknown permission | manifest.json | | null | MANIFEST_PERMISSIONS |
-| :white_check_mark: | error | Web extension | Block Comments are not allowed in `manifest.json` | manifest.json | | null | MANIFEST_BLOCK_COMMENTS |
+| :white_check_mark: | error | Web extension | Block Comments are not allowed in JSON | manifest.json | | null | JSON_BLOCK_COMMENTS |
 | :white_check_mark: | warning | Web extension | Deprecated API tabs.getSelected | | | null | TABS_GETSELECTED |
 | :white_check_mark: | warning | Web extension | Deprecated API tabs.sendRequest | | | null | TABS_SENDREQUEST |
 | :white_check_mark: | warning | Web extension | Deprecated API tabs.getAllInWindow | | | null | TABS_GETALLINWINDOW |

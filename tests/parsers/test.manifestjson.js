@@ -3,20 +3,19 @@ import ManifestJSONParser from 'parsers/manifestjson';
 
 import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
 import * as messages from 'messages';
-import { singleLineString } from 'utils';
 import { validManifestJSON } from '../helpers';
 
 describe('ManifestJSONParser', function() {
 
-  it('should show a message if bad JSON', () => {
+  it('should have empty metadata if bad JSON', () => {
     var addonLinter = new Linter({_: ['bar']});
     var manifestJSONParser = new ManifestJSONParser('blah',
                                                     addonLinter.collector);
     assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
     assert.equal(errors.length, 1);
-    assert.equal(errors[0].code, messages.MANIFEST_JSON_INVALID.code);
-    assert.include(errors[0].message, 'Invalid JSON in manifest file.');
+    assert.equal(errors[0].code, messages.JSON_INVALID.code);
+    assert.include(errors[0].message, 'Your JSON is not valid.');
 
     var metadata = manifestJSONParser.getMetadata();
     assert.equal(metadata.manifestVersion, null);
@@ -48,7 +47,7 @@ describe('ManifestJSONParser id', function() {
     assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
     assert.equal(errors.length, 1);
-    assert.equal(errors[0].code, messages.MANIFEST_JSON_INVALID.code);
+    assert.equal(errors[0].code, messages.JSON_INVALID.code);
     assert.include(errors[0].message, '/applications/gecko/id');
   });
 
@@ -99,121 +98,6 @@ describe('ManifestJSONParser manifestVersion', function() {
     assert.equal(metadata.manifestVersion, VALID_MANIFEST_VERSION);
   });
 
-});
-
-describe('ManifestJSONParser duplicate keys', function() {
-
-  it('should error if duplicate keys are found in a JSON file', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    // We aren't using singleLineString here so we can test the line number
-    // reporting.
-    var json = ['{',
-      '"description": "Very good music.",',
-      '"manifest_version": 2,',
-      '"name": "Prince",',
-      '"version": "0.0.1",',
-      '"name": "The Artist Formerly Known As Prince",',
-      '"applications": {',
-          '"gecko": {',
-              '"id": "@webextension-guid"',
-          '}',
-      '}',
-    '}'].join('\n');
-
-    var manifestJSONParser = new ManifestJSONParser(json,
-                                                    addonLinter.collector);
-    assert.equal(manifestJSONParser.isValid, false);
-    var errors = addonLinter.collector.errors;
-    assert.lengthOf(errors, 1);
-    assert.equal(errors[0].code, messages.MANIFEST_DUPLICATE_KEY.code);
-    assert.include(errors[0].message,
-                   'Duplicate keys are not allowed in manifest');
-    assert.equal(errors[0].line, 6);
-    assert.include(errors[0].description,
-                   'Duplicate key: name found in manifest.json');
-  });
-
-  it('should report all dupes if multiple duplicate keys are found', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    var json = singleLineString`{
-      "description": "Very good music.",
-      "manifest_version": 2,
-      "name": "Prince",
-      "name": "Male Symbol",
-      "version": "0.0.1",
-      "version": "0.0.2",
-      "name": "The Artist Formerly Known As Prince",
-      "applications": {
-          "gecko": {
-              "id": "@webextension-guid"
-          }
-      }
-    }`;
-
-    var manifestJSONParser = new ManifestJSONParser(json,
-                                                    addonLinter.collector);
-    assert.equal(manifestJSONParser.isValid, false);
-    var errors = addonLinter.collector.errors;
-    assert.lengthOf(errors, 3);
-    assert.equal(errors[0].code, messages.MANIFEST_DUPLICATE_KEY.code);
-    // We expect the duplicate error messages to be in the order of the
-    // dupliate keys in the manifest.
-    assert.include(errors[0].message,
-                   'Duplicate keys are not allowed in manifest');
-    assert.include(errors[0].description,
-                   'Duplicate key: name found in manifest.json');
-    assert.include(errors[1].description,
-                   'Duplicate key: version found in manifest.json');
-    assert.include(errors[2].description,
-                   'Duplicate key: name found in manifest.json');
-  });
-
-  it('should not expose other RJSON errors', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    // We aren't using singleLineString here so we can test the line number
-    // reporting.
-    var json = ['{',
-      '"description": "Very good music.",',
-      '"manifest_version": 2,',
-      '"name": "Prince",',
-      '"version": "0.0.1",',
-      '"applications": {',
-          '"gecko": {',
-              '"id": "@webextension-guid"',
-          '}',
-      '}',
-    '}'].join('\n');
-
-    var fakeRJSON = { parse: () => {} };
-    var parseStub = sinon.stub(fakeRJSON, 'parse', () => {
-      throw {
-        warnings: [
-          {
-            line: 1,
-            message: 'Duplicate key: not actually found but this is a test',
-          },
-          {
-            line: 1,
-            message: 'DifferentError: Who cares',
-          },
-        ],
-      };
-    });
-
-    var manifestJSONParser = new ManifestJSONParser(json,
-      addonLinter.collector, {rJSON: fakeRJSON});
-
-    assert.equal(manifestJSONParser.isValid, false);
-    assert.ok(parseStub.called);
-    var errors = addonLinter.collector.errors;
-    assert.lengthOf(errors, 1);
-    assert.equal(errors[0].code, messages.MANIFEST_DUPLICATE_KEY.code);
-    assert.include(errors[0].message,
-                   'Duplicate keys are not allowed in manifest');
-    assert.equal(errors[0].line, 1);
-    assert.include(errors[0].description,
-                   'Duplicate key: not actually found but this is a test');
-  });
 });
 
 describe('ManifestJSONParser bad permissions', function() {
@@ -297,7 +181,7 @@ describe('ManfiestJSONParser lookup', function() {
       var parser = new ManifestJSONParser(validManifestJSON(),
                                           addonLinter.collector);
       var message = parser.errorLookup({dataPath: ''});
-      assert.equal(message.code, messages.MANIFEST_JSON_INVALID.code);
+      assert.equal(message.code, messages.JSON_INVALID.code);
     });
   }
 
@@ -498,95 +382,6 @@ describe('ManifestJSONParser update_url', function() {
   });
 });
 
-
-describe('ManifestJSONParser with comments', function() {
-
-  it('parses JSON', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    var json = `// I am a JSON comment, sigh\n${validManifestJSON()}`;
-    var manifestJSONParser = new ManifestJSONParser(json,
-                                                    addonLinter.collector);
-    assert.equal(manifestJSONParser.isValid, true);
-  });
-
-  // Chrome will accept multiline /* */ comments, but Firefox will not and
-  // the Web Extension spec does not allow them. So we will error on them.
-  it('does not parse JSON with a multiline comment', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    var json = `/* I am a JSON comment, sigh*/\n${validManifestJSON()}`;
-    var manifestJSONParser = new ManifestJSONParser(json,
-                                                    addonLinter.collector);
-    assert.equal(manifestJSONParser.isValid, false);
-    var errors = addonLinter.collector.errors;
-    // There should not be another error; a manifest with block-level comments
-    // will throw that specific error and not a parse error.
-    assert.lengthOf(errors, 1);
-    assert.equal(errors[0].code, messages.MANIFEST_BLOCK_COMMENTS.code);
-    assert.equal(errors[0].message, messages.MANIFEST_BLOCK_COMMENTS.message);
-  });
-
-  it('parses the example from Chrome developer docs', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    // Example from https://developer.chrome.com/extensions/manifest
-    var json = [
-      '{',
-      '// Required',
-      '"manifest_version": 2,',
-      '"name": "My Extension",',
-      '// Make the hell sure to use semvar.org if increasing this',
-      '"version": "0.0.1"',
-      '}',
-    ].join('\n');
-    var manifestJSONParser = new ManifestJSONParser(json,
-                                                    addonLinter.collector);
-    assert.equal(manifestJSONParser.isValid, true);
-    assert.notInclude(manifestJSONParser._jsonString, 'semvar.org');
-  });
-
-  it('returns the correct error for malformed JSON', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    var json = `{"something": true,\n// I am a JSON comment, sigh\nblah}`;
-    var manifestJSONParser = new ManifestJSONParser(json,
-                                                    addonLinter.collector);
-    assert.equal(manifestJSONParser.isValid, false);
-    var errors = addonLinter.collector.errors;
-    assert.equal(errors[0].code, messages.MANIFEST_JSON_INVALID.code);
-    assert.include(errors[0].message, 'Invalid JSON in manifest file.');
-  });
-
-  it("doesn't evaluate JS code in comments", () => {
-    var addonLinter = new Linter({_: ['bar']});
-    var json = '// eval("");\n{"something": true}\nvar bla = "foo";';
-    var manifestJSONParser = new ManifestJSONParser(json,
-                                                    addonLinter.collector);
-    assert.equal(manifestJSONParser.isValid, false);
-    var errors = addonLinter.collector.errors;
-    assert.equal(errors[0].code, messages.MANIFEST_JSON_INVALID.code);
-    assert.include(errors[0].message, 'Invalid JSON in manifest file.');
-    assert.notInclude(manifestJSONParser._jsonString, 'var bla');
-    assert.notInclude(manifestJSONParser._jsonString, 'eval');
-  });
-
-  it("doesn't evaluate JS code even though esprima is used", () => {
-    var addonLinter = new Linter({_: ['bar']});
-    var json = [
-      '{',
-      '// Required',
-      '"manifest_version": 2,',
-      '"name": "My Extension",',
-      '// Make the hell sure to use semvar.org if increasing this',
-      '"version": eval("alert(\'uh-oh\')")',
-      '}',
-    ].join('\n');
-    var manifestJSONParser = new ManifestJSONParser(json,
-                                                    addonLinter.collector);
-    assert.equal(manifestJSONParser.isValid, false);
-    var errors = addonLinter.collector.errors;
-    assert.equal(errors[0].code, messages.MANIFEST_JSON_INVALID.code);
-    assert.include(errors[0].message, 'Invalid JSON in manifest file.');
-  });
-});
-
 describe('ManifestJSONParser schema error overrides', function() {
   // https://github.com/mozilla/addons-linter/issues/732
   it('uses a modified error message', () => {
@@ -596,7 +391,7 @@ describe('ManifestJSONParser schema error overrides', function() {
                                                     addonLinter.collector);
     assert.equal(manifestJSONParser.isValid, false);
     var errors = addonLinter.collector.errors;
-    assert.equal(errors[0].code, messages.MANIFEST_JSON_INVALID.code);
+    assert.equal(errors[0].code, messages.JSON_INVALID.code);
     assert.include(errors[0].message,
                    'is not a valid key or has invalid extra properties');
   });

@@ -5,9 +5,10 @@ import Linter from 'linter';
 import * as constants from 'const';
 import * as messages from 'messages';
 
-import CSSScanner from 'scanners/css';
 import BinaryScanner from 'scanners/binary';
+import CSSScanner from 'scanners/css';
 import FilenameScanner from 'scanners/filename';
+import JSONScanner from 'scanners/json';
 import { fakeMessageData,
          unexpectedSuccess,
          validManifestJSON } from './helpers';
@@ -260,6 +261,12 @@ describe('Linter.getScanner()', function() {
     var addonLinter = new Linter({_: ['foo']});
     var Scanner = addonLinter.getScanner('foo.css');
     assert.deepEqual(Scanner, CSSScanner);
+  });
+
+  it('should return JSONScanner', function() {
+    var addonLinter = new Linter({_: ['foo']});
+    var Scanner = addonLinter.getScanner('locales/en.json');
+    assert.deepEqual(Scanner, JSONScanner);
   });
 
   var shouldBeFilenameScanned = [

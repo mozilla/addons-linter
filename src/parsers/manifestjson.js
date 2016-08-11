@@ -1,4 +1,3 @@
-import esprima from 'esprima';
 import RJSON from 'relaxed-json';
 import validate from 'schema/validator';
 
@@ -6,98 +5,40 @@ import { getConfig } from 'cli';
 import { MANIFEST_JSON, PACKAGE_EXTENSION } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
+import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
 import { singleLineString } from 'utils';
 
-export default class ManifestJSONParser {
+
+export default class ManifestJSONParser extends JSONParser {
 
   constructor(jsonString, collector, {
-    rJSON=RJSON, selfHosted=getConfig().argv.selfHosted,
+    filename=MANIFEST_JSON, RelaxedJSON=RJSON,
+    selfHosted=getConfig().argv.selfHosted,
   }={}) {
-    // Add the JSON string to the object; we'll use this for testing.
-    this._jsonString = jsonString;
+    super(jsonString, collector, { filename: filename });
 
-    // Provides ability to directly add messages to
-    // the collector.
-    this.collector = collector;
+    this.parse(RelaxedJSON);
 
     // Set up some defaults in case parsing fails.
-    this.parsedJSON = {
-      manifestVersion: null,
-      name: null,
-      type: PACKAGE_EXTENSION,
-      version: null,
-    };
+    if (typeof this.parsedJSON === 'undefined' || this.isValid === false) {
+      this.parsedJSON = {
+        manifestVersion: null,
+        name: null,
+        type: PACKAGE_EXTENSION,
+        version: null,
+      };
+    } else {
+      // We've parsed the JSON; now we can validate the manifest.
+      this.selfHosted = selfHosted;
 
-    try {
-      this.parsedJSON = JSON.parse(this._jsonString);
-    } catch (originalError) {
-      // First we'll try to remove comments with esprima;
-      // WebExtension manifests can contain comments, so we'll strip
-      // them out and see if we can parse the JSON.
-      // If not it's just garbage JSON and we error.
-      //
-      // Originally from https://github.com/abarreir/crx2ff/blob/d2b882056f902d751ad05e329efda7eddcb9d268/libs/ext-converter.js#L19-L37
-      var manifestString = `var o = ${jsonString}`;
-      try {
-        // This converts the JSON into a real JS object, and removes any
-        // comments from the JS code.
-        // This has some drawbacks because JSON and JS are not _100%_
-        // compatible. This is largely to do with Unicode characters we
-        // wouldn't expect to see in manifests anyway, and it should simply be
-        // a JSON parse error anyway.
-        // See:
-        // http://stackoverflow.com/questions/23752156/are-all-json-objects-also-valid-javascript-objects/23753148#23753148
-        // https://github.com/judofyr/timeless/issues/57#issuecomment-31872462
-        var tokens = esprima.tokenize(manifestString, {comment: true}).slice(3);
-        this._jsonString = tokens.reduce((json, token) => {
-          // Ignore line comments (`// comments`) and just return the existing
-          // json we've built.
-          if (token.type === 'LineComment') {
-            return json;
-          }
-
-          // Block comments are not allowed, so this is an error.
-          if (token.type === 'BlockComment') {
-            this.collector.addError(messages.MANIFEST_BLOCK_COMMENTS);
-            this.isValid = false;
-          }
-
-          return `${json}${token.value}`;
-        }, '');
-
-        // We found block-level comments, so this manifest is not valid.
-        // Don't bother parsing it again.
-        if (this.isValid === false) {
-          return;
-        }
-
-        this.parsedJSON = JSON.parse(this._jsonString);
-      } catch (error) {
-        // There was still an error, so looks like this manifest is actually
-        // invalid.
-        var errorData = {
-          code: messages.MANIFEST_JSON_INVALID.code,
-          message: 'Invalid JSON in manifest file.',
-          file: 'manifest.json',
-          description: error,
-        };
-        this.collector.addError(errorData);
-        this.isValid = false;
-        return;
-      }
+      this._validate();
     }
-
-    this.selfHosted = selfHosted;
-    this.isValid = this._validate();
-
-    // Check for duplicate keys, which renders the manifest invalid.
-    this._checkForDuplicateKeys(rJSON);
   }
 
   errorLookup(error) {
     // This is the default message.
-    var baseObject = messages.MANIFEST_JSON_INVALID;
+    var baseObject = messages.JSON_INVALID;
 
     // This is the default from webextension-manifest-schema, but it's not a
     // super helpful error. We'll tidy it up a bit:
@@ -143,8 +84,8 @@ export default class ManifestJSONParser {
     // that are just warnings should be added to this array.
     var warnings = [messages.MANIFEST_PERMISSIONS.code];
 
-    var isValid = validate(this.parsedJSON);
-    if (!isValid) {
+    this.isValid = validate(this.parsedJSON);
+    if (!this.isValid) {
       log.debug('Schema Validation messages', validate.errors);
       var errorsFound = [];
 
@@ -168,7 +109,7 @@ export default class ManifestJSONParser {
         // Add-ons with bad permissions will fail to install in Firefox, so
         // we consider them invalid.
         if (message.code === messages.MANIFEST_BAD_PERMISSION.code) {
-          isValid = false;
+          this.isValid = false;
         }
       }
     }
@@ -185,14 +126,12 @@ export default class ManifestJSONParser {
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.update_url) {
       this.collector.addError(messages.MANIFEST_UPDATE_URL);
-      isValid = false;
+      this.isValid = false;
     }
 
     if (isToolkitVersionString(this.parsedJSON.version)) {
       this.collector.addNotice(messages.PROP_VERSION_TOOLKIT_ONLY);
     }
-
-    return isValid;
   }
 
   getAddonId() {
@@ -213,25 +152,5 @@ export default class ManifestJSONParser {
       type: PACKAGE_EXTENSION,
       version: this.parsedJSON.version,
     };
-  }
-
-  _checkForDuplicateKeys(_rJSON=RJSON) {
-    try {
-      _rJSON.parse(this._jsonString, { duplicate: true, tolerant: true });
-    } catch (err) {
-      if (err.warnings && err.warnings.length > 0) {
-        for (let error of err.warnings) {
-          if (error.message.startsWith('Duplicate key:')) {
-            let message = Object.assign({}, messages.MANIFEST_DUPLICATE_KEY, {
-              file: MANIFEST_JSON,
-              line: error.line,
-              description: `${error.message} found in manifest.json`,
-            });
-            this.collector.addError(message);
-            this.isValid = false;
-          }
-        }
-      }
-    }
   }
 }

@@ -16,12 +16,13 @@ import log from 'logger';
 import Collector from 'collector';
 import InstallRdfParser from 'parsers/installrdf';
 import ManifestJSONParser from 'parsers/manifestjson';
-import ChromeManifestScanner from 'scanners/chromemanifest';
 import BinaryScanner from 'scanners/binary';
+import ChromeManifestScanner from 'scanners/chromemanifest';
 import CSSScanner from 'scanners/css';
 import FilenameScanner from 'scanners/filename';
 import HTMLScanner from 'scanners/html';
 import JavaScriptScanner from 'scanners/javascript';
+import JSONScanner from 'scanners/json';
 import RDFScanner from 'scanners/rdf';
 import { Crx, Directory, Xpi } from 'io';
 
@@ -304,6 +305,8 @@ export default class Linter {
         return HTMLScanner;
       case '.js':
         return JavaScriptScanner;
+      case '.json':
+        return JSONScanner;
       case '.rdf':
         return RDFScanner;
       default:
@@ -333,6 +336,11 @@ export default class Linter {
 
         let scanner = new ScannerClass(fileData, filename, {
           addonMetadata: this.addonMetadata,
+          // This is for the JSONScanner, which is a bit of an anomaly and
+          // accesses the collector directly.
+          // TODO: Bring this in line with other scanners, see:
+          // https://github.com/mozilla/addons-linter/issues/895
+          collector: this.collector,
         });
 
         return scanner.scan();
