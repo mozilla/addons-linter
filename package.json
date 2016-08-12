@@ -49,7 +49,7 @@
     "isparta": "4.0.0",
     "json-loader": "0.5.4",
     "load-grunt-configs": "1.0.0",
-    "load-grunt-tasks": "3.5.0",
+    "load-grunt-tasks": "3.5.1",
     "lodash.clonedeep": "4.4.1",
     "markdown-it": "7.0.0",
     "markdown-it-anchor": "2.5.0",
