@@ -7,7 +7,7 @@ import { version } from 'json!../package';
 
 export function getConfig({useCLI=true} = {}) {
   if (useCLI === false) {
-    log.fatal(singleLineString`Config requested from CLI, but not in CLI mode.
+    log.error(singleLineString`Config requested from CLI, but not in CLI mode.
       Please supply a config instead of relying on the getConfig() call.`);
     throw new Error('Cannot request config from CLI in library mode');
   }
