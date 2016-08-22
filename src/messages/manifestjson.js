@@ -1,31 +1,6 @@
 import { gettext as _, singleLineString } from 'utils';
 import { MANIFEST_JSON } from 'const';
 
-export const MANIFEST_JSON_INVALID = {
-  code: 'MANIFEST_JSON_INVALID',
-  legacyCode: null,
-  message: _('The manifest.json is not valid.'),
-  description: _('See https://mzl.la/1ZOhoEN (MDN Docs) for more information.'),
-  file: MANIFEST_JSON,
-};
-
-export const MANIFEST_BLOCK_COMMENTS = {
-  code: 'MANIFEST_BLOCK_COMMENTS',
-  legacyCode: null,
-  message: _('The manifest.json contains block comments.'),
-  description: _(singleLineString`Only line comments (comments beginning with
-    "//") are allowed in manifest.json files. Please remove block comments
-    (comments beginning with "/*")`),
-  file: MANIFEST_JSON,
-};
-
-export const MANIFEST_DUPLICATE_KEY = {
-  code: 'MANIFEST_DUPLICATE_KEY',
-  legacyCode: null,
-  message: _('Duplicate keys are not allowed in manifest.'),
-  description: _(singleLineString`Duplicate key found in manifest.json.`),
-  file: MANIFEST_JSON,
-};
 
 export const MANIFEST_FIELD_REQUIRED = {
   code: 'MANIFEST_FIELD_REQUIRED',
