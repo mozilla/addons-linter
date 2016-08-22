@@ -58,7 +58,7 @@
     "mocha-multi": "0.9.1",
     "shelljs": "0.7.3",
     "sinon": "1.17.5",
-    "webpack": "1.13.1",
+    "webpack": "1.13.2",
     "webpack-dev-server": "1.14.0"
   },
   "dependencies": {
