@@ -42,7 +42,16 @@
         "homepage_url": {
             "description": "The URL of the homepage for this add-on. The add-on management page will contain a link to this URL.",
             "type": "string",
-            "format": "uri"
+            "oneOf": [
+                {
+                    "type": "string",
+                    "format": "uri"
+                },
+                {
+                    "type": "string",
+                    "pattern": "^__MSG_.*?__$"
+                }
+            ]
         },
         "icons": {
             "description": "Icons to be shown in buttons and the add-on management page.",
