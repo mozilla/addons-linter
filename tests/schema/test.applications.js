@@ -62,6 +62,39 @@ describe('/applications/gecko/*', () => {
       '/applications/gecko/strict_max_version');
   });
 
+  // For the following tests I copied versions from:
+  // https://addons.mozilla.org/en-US/firefox/pages/appversions/
+  const validMinVersions = ['1.5.0.4', '3.0a8pre', '22.0a1', '40.0'];
+  for (let version of validMinVersions) {
+    var manifest = cloneDeep(validManifest);
+    it(`${version} should be a valid strict_min_version`, () => {
+      manifest.applications.gecko.strict_min_version = version;
+      assert.ok(validate(manifest));
+    });
+  }
+
+  const invalidMinVersions = ['48.*', 'wat', '*', '48#1'];
+  for (let version of invalidMinVersions) {
+    it(`${version} should be an invalid strict_min_version`, () => {
+      var manifest = cloneDeep(validManifest);
+      manifest.applications.gecko.strict_min_version = version;
+      validate(manifest);
+      assert.equal(validate.errors.length, 1);
+      assert.equal(validate.errors[0].dataPath,
+        '/applications/gecko/strict_min_version');
+    });
+  }
+
+  const validMaxVersions = validMinVersions.slice();
+  validMaxVersions.push('48.*');
+  for (let version of validMaxVersions) {
+    it(`${version} should be a valid strict_max_version`, () => {
+      var manifest = cloneDeep(validManifest);
+      manifest.applications.gecko.strict_max_version = version;
+      assert.ok(validate(manifest));
+    });
+  }
+
   it('should be a valid id (email-like format)', () => {
     var manifest = cloneDeep(validManifest);
     manifest.applications.gecko.id = 'extensionname@example.org';
