@@ -43,7 +43,7 @@
     "grunt-coveralls": "1.0.1",
     "grunt-eslint": "19.0.0",
     "grunt-gh-pages": "2.0.0",
-    "grunt-mocha-test": "0.13.0",
+    "grunt-mocha-test": "0.13.1",
     "grunt-newer": "1.2.0",
     "grunt-webpack": "1.0.14",
     "isparta": "4.0.0",
