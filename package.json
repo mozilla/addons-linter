@@ -63,7 +63,7 @@
   },
   "dependencies": {
     "ajv": "4.7.5",
-    "babel-polyfill": "6.13.0",
+    "babel-polyfill": "6.16.0",
     "bunyan": "1.8.1",
     "chalk": "1.1.3",
     "cheerio": "0.22.0",
