@@ -162,9 +162,6 @@ export const BANNED_LIBRARIES = [
   'angularjs.1.5.6.angular.min.js',
   'angularjs.1.5.7.angular.js',
   'angularjs.1.5.7.angular.min.js',
-];
-
-export const UNADVISED_LIBRARIES = [
   'angularjs.1.5.8.angular.js',
   'angularjs.1.5.8.angular.min.js',
   'jquery.1.0.1.jquery.js',
@@ -198,12 +195,12 @@ export const UNADVISED_LIBRARIES = [
   'jquery.1.6.4.jquery.min.js',
   'jquery.1.6.jquery.js',
   'jquery.1.6.jquery.min.js',
+  'jquery.1.7.jquery.js',
+  'jquery.1.7.jquery.min.js',
   'jquery.1.7.1.jquery.js',
   'jquery.1.7.1.jquery.min.js',
   'jquery.1.7.2.jquery.js',
   'jquery.1.7.2.jquery.min.js',
-  'jquery.1.7.jquery.js',
-  'jquery.1.7.jquery.min.js',
   'jquery.1.8.0.jquery.js',
   'jquery.1.8.0.jquery.min.js',
   'jquery.1.8.1.jquery.js',
@@ -240,4 +237,7 @@ export const UNADVISED_LIBRARIES = [
   'jquery.1.12.3.jquery.min.js',
   'jquery.1.12.4.jquery.js',
   'jquery.1.12.4.jquery.min.js',
+];
+
+export const UNADVISED_LIBRARIES = [
 ];
