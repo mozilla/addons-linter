@@ -45,7 +45,7 @@
     "grunt-gh-pages": "2.0.0",
     "grunt-mocha-test": "0.13.2",
     "grunt-newer": "1.2.0",
-    "grunt-webpack": "1.0.14",
+    "grunt-webpack": "1.0.15",
     "isparta": "4.0.0",
     "json-loader": "0.5.4",
     "load-grunt-configs": "1.0.0",
