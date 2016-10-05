@@ -71,7 +71,7 @@ export default class JSONParser {
         // invalid.
         var errorData = Object.assign({}, messages.JSON_INVALID, {
           file: this.filename,
-          description: error,
+          description: error.message,
         });
         this.collector.addError(errorData);
         this.isValid = false;

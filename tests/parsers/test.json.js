@@ -18,6 +18,7 @@ describe('JSONParser', function() {
     assert.equal(errors.length, 1);
     assert.equal(errors[0].code, messages.JSON_INVALID.code);
     assert.include(errors[0].message, 'Your JSON is not valid.');
+    assert.equal(errors[0].description, 'Unexpected token b');
   });
 
 });
