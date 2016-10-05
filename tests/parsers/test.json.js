@@ -18,6 +18,9 @@ describe('JSONParser', function() {
     assert.equal(errors.length, 1);
     assert.equal(errors[0].code, messages.JSON_INVALID.code);
     assert.include(errors[0].message, 'Your JSON is not valid.');
+    assert.include(
+      errors[0].description,
+      'SyntaxError: Unexpected token b in JSON at position 0');
   });
 
 });
