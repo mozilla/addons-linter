@@ -426,7 +426,7 @@ export default class Linter {
         // test runs against un-instrumented code.
         /* istanbul ignore if  */
         if (this.config.runAsBinary === true) {
-          var exitCode = this.output.errors.length > 0 ? 1 : 0;
+          let exitCode = this.output.errors.length > 0 ? 1 : 0;
           if (exitCode === 0 && this.config.warningsAsErrors === true) {
             exitCode = this.output.warnings.length > 0 ? 1 : 0;
           }
