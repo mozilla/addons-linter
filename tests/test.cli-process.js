@@ -35,6 +35,20 @@ describe('Process', function() {
     });
   });
 
+  it( singleLineString`should exit with exit code 1 when warnings found
+    and --warnings-as-errors is used.`, (done) => {
+    let cmd = singleLineString`bin/addons-linter
+      tests/fixtures/webextension_warnings.zip
+      --warnings-as-errors --output json`;
+    shell.exec(cmd, {silent: true}, (code, output) => {
+      assert.doesNotThrow(() => {
+        JSON.parse(output);
+      });
+      assert.equal(code, 1, output);
+      done();
+    });
+  });
+
   it('should exit with exit code 0 when no errors for metadata.', (done) => {
     let cmd = 'bin/addons-linter tests/fixtures/good.zip --metadata';
     shell.exec(cmd, {silent: true}, (code, output) => {
