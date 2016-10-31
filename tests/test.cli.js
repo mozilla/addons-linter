@@ -45,6 +45,11 @@ describe('Basic CLI tests', function() {
     assert.equal(args.boring, false);
   });
 
+  it('should default warnings-as-errors to false', () => {
+    var args = cli.parse(['foo/bar.zip']);
+    assert.equal(args.warningsAsErrors, false);
+  });
+
   it('should show error on missing xpi', () => {
     cli.parse([]);
     assert.ok(this.fakeFail.calledWithMatch(

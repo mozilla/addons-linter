@@ -21,6 +21,11 @@ export function getConfig({useCLI=true} = {}) {
       default: 'fatal',
       choices: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
     })
+    .option('warnings-as-errors', {
+      describe: 'Treat warning as errors',
+      type: 'boolean',
+      default: false,
+    })
     .option('output', {
       alias: 'o',
       describe: 'The type of output to generate',
