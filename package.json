@@ -80,7 +80,7 @@
     "sha.js": "2.4.5",
     "source-map-support": "0.4.6",
     "strip-bom-stream": "2.0.0",
-    "url-parse": "1.1.6",
+    "url-parse": "1.1.7",
     "xmldom": "0.1.22",
     "yargs": "6.3.0",
     "yauzl": "2.7.0"
