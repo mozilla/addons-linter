@@ -5,6 +5,7 @@ import Linter from 'linter';
 import * as constants from 'const';
 import * as messages from 'messages';
 
+import ManifestJSONParser from 'parsers/manifestjson';
 import BinaryScanner from 'scanners/binary';
 import CSSScanner from 'scanners/css';
 import FilenameScanner from 'scanners/filename';
@@ -544,12 +545,16 @@ describe('Linter.getAddonMetadata()', function() {
       warn: sinon.stub(),
     };
 
-    return addonLinter.getAddonMetadata(fakeLog)
+    function getMetadata() {
+      return addonLinter.getAddonMetadata({_log: fakeLog});
+    }
+
+    return getMetadata()
       .then(() => {
         assert.isFalse(fakeLog.debug.called);
         assert.typeOf(addonLinter.addonMetadata, 'object');
-        return addonLinter.getAddonMetadata(fakeLog);
       })
+      .then(() => getMetadata())
       .then(() => {
         assert.isTrue(fakeLog.debug.called);
         assert.isTrue(fakeLog.debug.calledWith(
@@ -557,7 +562,7 @@ describe('Linter.getAddonMetadata()', function() {
       });
   });
 
-  it('should look at JSON when manifest.json', () => {
+  it('should look at JSON when parsing manifest.json', () => {
     var addonLinter = new Linter({_: ['bar']});
     addonLinter.io = {
       getFiles: () => {
@@ -572,6 +577,29 @@ describe('Linter.getAddonMetadata()', function() {
     return addonLinter.getAddonMetadata()
       .then((metadata) => {
         assert.equal(metadata.type, constants.PACKAGE_EXTENSION);
+      });
+  });
+
+  it('should pass selfHosted flag to ManifestJSONParser', () => {
+    const addonLinter = new Linter({_: ['bar'], selfHosted: true});
+    addonLinter.io = {
+      getFiles: () => {
+        return Promise.resolve({
+          'manifest.json': {},
+        });
+      },
+      getFileAsString: () => {
+        return Promise.resolve(validManifestJSON({}));
+      },
+    };
+
+    const FakeManifestParser = sinon.spy(ManifestJSONParser);
+    return addonLinter.getAddonMetadata({
+      ManifestJSONParser: FakeManifestParser,
+    })
+      .then(() => {
+        assert.equal(FakeManifestParser.called, true);
+        assert.equal(FakeManifestParser.firstCall.args[2].selfHosted, true);
       });
   });
 

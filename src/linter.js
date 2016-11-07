@@ -15,7 +15,7 @@ import { checkMinNodeVersion, gettext as _, singleLineString } from 'utils';
 import log from 'logger';
 import Collector from 'collector';
 import InstallRdfParser from 'parsers/installrdf';
-import ManifestJSONParser from 'parsers/manifestjson';
+import DefaultManifestJSONParser from 'parsers/manifestjson';
 import BinaryScanner from 'scanners/binary';
 import ChromeManifestScanner from 'scanners/chromemanifest';
 import CSSScanner from 'scanners/css';
@@ -200,7 +200,10 @@ export default class Linter {
     return output;
   }
 
-  getAddonMetadata(_log=log) {
+  getAddonMetadata({
+    _log=log,
+    ManifestJSONParser=DefaultManifestJSONParser,
+  } = {}) {
     if (this.addonMetadata !== null) {
       _log.debug('Metadata already set; returning cached metadata.');
       return Promise.resolve(this.addonMetadata);
@@ -229,7 +232,11 @@ export default class Linter {
           _log.info('Retrieving metadata from manifest.json');
           return this.io.getFileAsString(MANIFEST_JSON)
             .then((json) => {
-              var manifestParser = new ManifestJSONParser(json, this.collector);
+              var manifestParser = new ManifestJSONParser(
+                json,
+                this.collector,
+                {selfHosted: this.config.selfHosted},
+              );
               return manifestParser.getMetadata();
             });
         } else {
