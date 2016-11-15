@@ -1,9 +1,9 @@
 
 # Linter Rules
 
-This document is automatically published on [github pages](http://mozilla.github.io/addons-validator/).
+This document is automatically published on [github pages](http://mozilla.github.io/addons-linter/).
 To update it edit `docs/rules.md` in the
-[github repo](https://github.com/mozilla/addons-validator).
+[github repo](https://github.com/mozilla/addons-linter).
 
 * :white_check_mark: means the rule has been ported/implemented
 * :negative_squared_cross_mark: means the rule has been removed
