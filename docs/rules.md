@@ -1,7 +1,8 @@
 
 # Linter Rules
 
-To update this document edit `docs/rules.md` in the
+This document is automatically published on [github pages](http://mozilla.github.io/addons-linter/).
+To update it edit `docs/rules.md` in the
 [github repo](https://github.com/mozilla/addons-linter).
 
 * :white_check_mark: means the rule has been ported/implemented
