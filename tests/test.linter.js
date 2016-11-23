@@ -675,12 +675,13 @@ describe('Linter.extractMetadata()', function() {
     class FakeDirectory extends FakeIOBase {
     }
 
-    return addonLinter.extractMetadata({_Directory: FakeDirectory,
-                                           _console: fakeConsole})
-      .then((metadata) => {
-        assert.deepEqual(metadata, fakeMetadata);
-        assert.instanceOf(addonLinter.io, FakeDirectory);
-      });
+    return addonLinter.extractMetadata({
+      _Directory: FakeDirectory,
+      _console: fakeConsole,
+    }).then((metadata) => {
+      assert.deepEqual(metadata, fakeMetadata);
+      assert.instanceOf(addonLinter.io, FakeDirectory);
+    });
   });
 
   it('should use Crx class if filename ends in .crx', () => {
@@ -779,11 +780,12 @@ describe('Linter.extractMetadata()', function() {
     class FakeXpi extends FakeIOBase {
     }
 
-    return addonLinter.extractMetadata({_Xpi: FakeXpi,
-                                           _console: fakeConsole})
-      .then((metadata) => {
-        assert.deepEqual(metadata, fakeMetadata);
-      });
+    return addonLinter.extractMetadata({
+      _Xpi: FakeXpi,
+      _console: fakeConsole,
+    }).then((metadata) => {
+      assert.deepEqual(metadata, fakeMetadata);
+    });
   });
 
   it('should return errors as part of metadata JSON.', () => {

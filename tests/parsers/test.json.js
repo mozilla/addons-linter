@@ -29,6 +29,7 @@ describe('JSONParser duplicate keys', function() {
     var addonLinter = new Linter({_: ['bar']});
     // We aren't using singleLineString here so we can test the line number
     // reporting.
+    /* eslint-disable indent */
     var json = ['{',
       '"description": "Very good music.",',
       '"manifest_version": 2,',
@@ -41,6 +42,7 @@ describe('JSONParser duplicate keys', function() {
           '}',
       '}',
     '}'].join('\n');
+    /* eslint-enable indent */
 
     var jsonParser = new JSONParser(json, addonLinter.collector);
     jsonParser.parse();
@@ -90,6 +92,7 @@ describe('JSONParser duplicate keys', function() {
     var addonLinter = new Linter({_: ['bar']});
     // We aren't using singleLineString here so we can test the line number
     // reporting.
+    /* eslint-disable indent */
     var json = ['{',
       '"description": "Very good music.",',
       '"manifest_version": 2,',
@@ -101,7 +104,7 @@ describe('JSONParser duplicate keys', function() {
           '}',
       '}',
     '}'].join('\n');
-
+    /* eslint-enable indent */
     var fakeRJSON = { parse: () => {} };
     var parseStub = sinon.stub(fakeRJSON, 'parse', () => {
       throw {
