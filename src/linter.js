@@ -235,7 +235,7 @@ export default class Linter {
               var manifestParser = new ManifestJSONParser(
                 json,
                 this.collector,
-                {selfHosted: this.config.selfHosted},
+                {selfHosted: this.config.selfHosted, io: this.io},
               );
               return manifestParser.getMetadata();
             });
@@ -250,7 +250,7 @@ export default class Linter {
       .then((addonMetadata) => {
         this.addonMetadata = addonMetadata;
 
-        // The type must be explcitly defined. This behaviour differs the
+        // The type must be explicitly defined. This behaviour differs the
         // historical approach by the amo-validator.
         // See mozilla/addons-linter#411.
         // In due course metadata checking code may surpass this error

@@ -9,12 +9,12 @@ import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
 import { singleLineString } from 'utils';
 
-
 export default class ManifestJSONParser extends JSONParser {
 
   constructor(jsonString, collector, {
     filename=MANIFEST_JSON, RelaxedJSON=RJSON,
     selfHosted=getConfig().argv.selfHosted,
+    io=null,
   }={}) {
     super(jsonString, collector, { filename: filename });
 
@@ -31,7 +31,7 @@ export default class ManifestJSONParser extends JSONParser {
     } else {
       // We've parsed the JSON; now we can validate the manifest.
       this.selfHosted = selfHosted;
-
+      this.io = io;
       this._validate();
     }
   }
@@ -131,6 +131,14 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (isToolkitVersionString(this.parsedJSON.version)) {
       this.collector.addNotice(messages.PROP_VERSION_TOOLKIT_ONLY);
+    }
+
+    if (this.parsedJSON.default_locale) {
+      let msg = `_locales/${this.parsedJSON.default_locale}/messages.json`;
+      if (!this.io.files[msg]) {
+        this.collector.addError(messages.NO_MESSAGES_FILE);
+        this.isValid = false;
+      }
     }
   }
 

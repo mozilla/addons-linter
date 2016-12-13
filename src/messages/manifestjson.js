@@ -107,3 +107,13 @@ export function manifestPropMissing(property) {
 
 export const PROP_NAME_MISSING = manifestPropMissing('name');
 export const PROP_VERSION_MISSING = manifestPropMissing('version');
+
+export const NO_MESSAGES_FILE = {
+  code: 'NO_MESSAGES_FILE',
+  legacyCode: null,
+  message: _('The "default_locale" is missing localizations.'),
+  description: _(singleLineString`The "default_locale" value is specified in
+    the manifest, but no matching "messages.json" in the "_locales" directory
+    exists. See: https://mzl.la/2hjcaEE`),
+  file: MANIFEST_JSON,
+};

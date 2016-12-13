@@ -396,3 +396,32 @@ describe('ManifestJSONParser schema error overrides', function() {
                    'is not a valid key or has invalid extra properties');
   });
 });
+
+describe('ManifestJSONParser default_locale', function() {
+  it('error if missing messages.json', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = validManifestJSON({default_locale: 'fr'});
+    var manifestJSONParser = new ManifestJSONParser(
+      json, addonLinter.collector, {io: {files: {}}});
+    assert.equal(manifestJSONParser.isValid, false);
+    var errors = addonLinter.collector.errors;
+    assert.equal(errors[0].code, messages.NO_MESSAGES_FILE.code);
+  });
+
+  it('valid if not specified', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = validManifestJSON({});
+    var manifestJSONParser = new ManifestJSONParser(
+      json, addonLinter.collector);
+    assert.equal(manifestJSONParser.isValid, true);
+  });
+
+  it('valid if file present', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = validManifestJSON({default_locale: 'fr'});
+    var manifestJSONParser = new ManifestJSONParser(
+      json, addonLinter.collector,
+      {io: {files: {'_locales/fr/messages.json': {}}}});
+    assert.equal(manifestJSONParser.isValid, true);
+  });
+});
