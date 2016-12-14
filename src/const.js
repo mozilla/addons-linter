@@ -152,3 +152,11 @@ export const DEPRECATED_APIS = [
   'tabs.onSelectionChanged',
   'tabs.sendRequest',
 ];
+
+// These are APIs that will cause problems when loaded temporarily
+// in about:debugging.
+export const TEMPORARY_APIS = [
+  'identity.getRedirectURL',
+  'storage.local',
+  'storage.sync',
+];

@@ -265,3 +265,23 @@ export const TABS_ONACTIVECHANGED = deprecatedAPI('tabs.onActiveChanged');
 export const TABS_ONSELECTIONCHANGED = deprecatedAPI(
   'tabs.onSelectionChanged');
 export const TABS_SENDREQUEST = deprecatedAPI('tabs.sendRequest');
+
+function temporaryAPI(api) {
+  return {
+    code: apiToMessage(api),
+    legacyCode: [
+      'js',
+      'temporary',
+      api,
+    ],
+    message: _(`"${api}" can cause issues when loaded temporarily`),
+    description: _(singleLineString`This API can cause issues when loaded
+      temporarily using about:debugging in Firefox unless you specify
+      applications > gecko > id in the manifest. Please see:
+      https://mzl.la/2hizK4a for more.`),
+  };
+}
+
+export const STORAGE_LOCAL = temporaryAPI('storage.local');
+export const STORAGE_SYNC = temporaryAPI('storage.sync');
+export const IDENTITY_GETREDIRECTURL = temporaryAPI('identity.getRedirectURL');

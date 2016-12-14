@@ -27,7 +27,7 @@
   "devDependencies": {
     "babel-core": "6.18.2",
     "babel-eslint": "7.1.0",
-    "babel-istanbul": "0.11.0",
+    "babel-istanbul": "0.12.1",
     "babel-istanbul-loader": "0.1.0",
     "babel-loader": "6.2.7",
     "babel-plugin-transform-class-properties": "6.18.0",
@@ -52,7 +52,7 @@
     "load-grunt-tasks": "3.5.2",
     "lodash.clonedeep": "4.5.0",
     "markdown-it": "8.2.1",
-    "markdown-it-anchor": "2.5.0",
+    "markdown-it-anchor": "2.6.0",
     "markdown-it-emoji": "1.3.0",
     "mocha": "3.1.2",
     "mocha-multi": "0.9.1",
@@ -62,7 +62,7 @@
     "webpack-dev-server": "1.16.2"
   },
   "dependencies": {
-    "ajv": "4.9.1",
+    "ajv": "4.10.0",
     "babel-polyfill": "6.20.0",
     "bunyan": "1.8.5",
     "chalk": "1.1.3",

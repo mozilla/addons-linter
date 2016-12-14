@@ -146,6 +146,10 @@
             "description": "The behaviour in incognito or private browsing mode",
             "type": "string",
             "pattern": "^spanning$"
+        },
+        "author": {
+            "description": "Legacy field from Chrome. Use \"developer\" instead.",
+            "type": "string"
         }
     },
     "required": [

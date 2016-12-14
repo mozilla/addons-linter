@@ -1,7 +1,7 @@
 import ESLint from 'eslint';
 
-import { DEPRECATED_APIS, ESLINT_ERROR, ESLINT_RULE_MAPPING, VALIDATION_ERROR,
-         VALIDATION_WARNING } from 'const';
+import { DEPRECATED_APIS, ESLINT_ERROR, ESLINT_RULE_MAPPING, TEMPORARY_APIS,
+         VALIDATION_ERROR, VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import * as rules from 'rules/javascript';
@@ -292,6 +292,34 @@ describe('JavaScript Scanner', function() {
           assert.equal(validationMessages.length, 1);
           assert.equal(validationMessages[0].code, apiToMessage(api));
           assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        });
+    });
+  }
+
+  for (let api of TEMPORARY_APIS) {
+    it(`should return warning when ${api} is used with no id`, () => {
+      var fakeMetadata = { addonMetadata: validMetadata({}) };
+      var jsScanner = new JavaScriptScanner(
+        `chrome.${api}(function() {});`, 'code.js', fakeMetadata);
+
+      return jsScanner.scan()
+        .then((validationMessages) => {
+          assert.equal(validationMessages.length, 1);
+          assert.equal(validationMessages[0].code, apiToMessage(api));
+          assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        });
+    });
+  }
+
+  for (let api of TEMPORARY_APIS) {
+    it(`should pass when ${api} is used with an id`, () => {
+      var fakeMetadata = { addonMetadata: validMetadata({id: 'snark'}) };
+      var jsScanner = new JavaScriptScanner(
+        `chrome.${api}(function() {});`, 'code.js', fakeMetadata);
+
+      return jsScanner.scan()
+        .then((validationMessages) => {
+          assert.equal(validationMessages.length, 0);
         });
     });
   }

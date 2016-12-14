@@ -382,3 +382,6 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :white_check_mark: | warning | Web extension | Deprecated API extension.onRequestExternal | | | null | EXT_ONREQUESTEXTERNAL |
 | :white_check_mark: | warning | Web extension | Deprecated API extension.onRequest | | | null | EXT_ONREQUEST |
 | :white_check_mark: | warning | Web extension | Deprecated API app.getDetails | | | null | APP_GETDETAILS |
+| :white_check_mark: | warning | Web extension | Temporary IDs can cause issues with storage.local | | | null | STORAGE_LOCAL |
+| :white_check_mark: | warning | Web extension | Temporary IDs can cause issues with storage.sync | | | null | STORAGE_SYNC |
+| :white_check_mark: | warning | Web extension | Temporary IDs can cause issues with identity.getRedirectURL | | | null | IDENTITY_GETREDIRECTURL |
