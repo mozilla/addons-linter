@@ -215,7 +215,7 @@ describe('JSONParser with comments', function() {
 
   it('returns the correct error for malformed JSON', () => {
     var addonLinter = new Linter({_: ['bar']});
-    var json = `{"something": true,\n// I am a JSON comment, sigh\nblah}`;
+    var json = '{"something": true,\n// I am a JSON comment, sigh\nblah}';
     var jsonParser = new JSONParser(json, addonLinter.collector);
     jsonParser.parse();
 
