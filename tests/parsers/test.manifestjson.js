@@ -424,4 +424,36 @@ describe('ManifestJSONParser default_locale', function() {
       {io: {files: {'_locales/fr/messages.json': {}}}});
     assert.equal(manifestJSONParser.isValid, true);
   });
+
+  it('error if default_locale missing but messages.json present', () => {
+    var addonLinter = new Linter({_: ['bar']});
+    var json = validManifestJSON();
+    var manifestJSONParser = new ManifestJSONParser(
+      json, addonLinter.collector,
+      {io: {files: {'_locales/fr/messages.json': {}}}});
+    assert.equal(manifestJSONParser.isValid, false);
+    var errors = addonLinter.collector.errors;
+    assert.equal(errors[0].code, messages.NO_DEFAULT_LOCALE.code);
+  });
+
+  let messages_paths = [
+    '_locales/messages.json',
+    's_locales/en/messages.json',
+    '_locales/en/messages.json.extra',
+    '_locales/en',
+    '_locales',
+  ];
+
+  for (let path of messages_paths) {
+    it(`valid if default_locale missing and ${path}`, () => {
+      var addonLinter = new Linter({_: ['bar']});
+      var json = validManifestJSON();
+      let files = {};
+      files[path] = {};
+      var manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector,
+        {io: {files: files}});
+      assert.equal(manifestJSONParser.isValid, true);
+    });
+  }
 });
