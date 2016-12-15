@@ -385,3 +385,4 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :white_check_mark: | warning | Web extension | Temporary IDs can cause issues with storage.local | | | null | STORAGE_LOCAL |
 | :white_check_mark: | warning | Web extension | Temporary IDs can cause issues with storage.sync | | | null | STORAGE_SYNC |
 | :white_check_mark: | warning | Web extension | Temporary IDs can cause issues with identity.getRedirectURL | | | null | IDENTITY_GETREDIRECTURL |
+| :white_check_mark: | warning | Web extension | When default_locale is specified a matching messages.json must exist | | | null | NO_MESSAGES_FILE |
