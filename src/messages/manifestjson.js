@@ -117,3 +117,13 @@ export const NO_MESSAGES_FILE = {
     exists. See: https://mzl.la/2hjcaEE`),
   file: MANIFEST_JSON,
 };
+
+export const NO_DEFAULT_LOCALE = {
+  code: 'NO_DEFAULT_LOCALE',
+  legacyCode: null,
+  message: _('The "default_locale" is missing but "_locales" exist.'),
+  description: _(singleLineString`The "default_locale" value is not specifed in
+    the manifest, but a "_locales" directory exists.
+    See: https://mzl.la/2hjcaEE`),
+  file: MANIFEST_JSON,
+};

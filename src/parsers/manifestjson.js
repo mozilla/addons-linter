@@ -140,6 +140,17 @@ export default class ManifestJSONParser extends JSONParser {
         this.isValid = false;
       }
     }
+
+    if (!this.parsedJSON.default_locale && this.io) {
+      let match_re = /^_locales\/.*?\/messages.json$/;
+      for (let filePath in this.io.files) {
+        if (filePath.match(match_re)) {
+          this.collector.addError(messages.NO_DEFAULT_LOCALE);
+          this.isValid = false;
+          break;
+        }
+      }
+    }
   }
 
   getAddonId() {
