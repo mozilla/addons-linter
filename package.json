@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/mozilla/addons-linter#readme",
   "devDependencies": {
-    "babel-core": "6.20.0",
+    "babel-core": "6.21.0",
     "babel-eslint": "7.1.0",
     "babel-istanbul": "0.12.1",
     "babel-istanbul-loader": "0.1.0",
