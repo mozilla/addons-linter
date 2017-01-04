@@ -147,6 +147,20 @@ describe('utils.getVariable()', function() {
     },
   };
 
+  var contextWithoutParent = {
+    getScope: function() {
+      return {
+        variables: [{
+          name: 'foo',
+          defs: [{
+            type: 'Variable',
+            name: {},
+          }],
+        }],
+      };
+    },
+  };
+
   it('should return the correct variable in the given context.', () => {
     var foo = utils.getVariable(context, 'foo');
     assert.equal(foo.type, 'Literal');
@@ -155,6 +169,11 @@ describe('utils.getVariable()', function() {
 
   it("should return undefined if the variable doesn't exist.", () => {
     var undef = utils.getVariable(context, 'doesNotExist');
+    assert.equal(typeof undef, 'undefined');
+  });
+
+  it("should return undefined if the init property isn't on the parent", () => {
+    var undef = utils.getVariable(contextWithoutParent, 'foo');
     assert.equal(typeof undef, 'undefined');
   });
 });

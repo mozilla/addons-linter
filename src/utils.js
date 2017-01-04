@@ -121,7 +121,8 @@ export function getVariable(context, name) {
   var variables = context.getScope().variables;
   var result;
   variables.forEach(function(variable) {
-    if (variable.name === name) {
+    if (variable.name === name && variable.defs && variable.defs[0] &&
+      variable.defs[0].name && variable.defs[0].name.parent) {
       result = variable.defs[0].name.parent.init;
     }
   });
