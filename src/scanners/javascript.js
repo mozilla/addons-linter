@@ -43,6 +43,7 @@ export default class JavaScriptScanner {
 
       var report = eslint.verify(this.code, {
         env: { es6: true },
+        parserOptions: { ecmaVersion: 2017 },
         ignore: false,
         rules: _ruleMapping,
         settings: {
