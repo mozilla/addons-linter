@@ -29,6 +29,16 @@ describe('JavaScript Scanner', function() {
     assert.equal(jsScannerWithOptions.options.foo, 'bar');
   });
 
+  it('should not throw when async/await is used', () => {
+    var code = singleLineString`var foo = async a => a;`;
+    var jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    return jsScanner.scan()
+      .then((validationMessages) => {
+        assert.equal(validationMessages.length, 0);
+      });
+  });
+
   // TODO: Not sure how to test for this one yet; it's pretty messy.
   it.skip(singleLineString`should warn when mozIndexedDB is assembled into
     literal with +=`,
