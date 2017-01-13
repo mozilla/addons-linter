@@ -29,7 +29,7 @@ describe('JavaScript Scanner', function() {
     assert.equal(jsScannerWithOptions.options.foo, 'bar');
   });
 
-  it('should not throw when async/await is used', () => {
+  it('should pass when async/await is used', () => {
     var code = 'var foo = async a => a;';
     var jsScanner = new JavaScriptScanner(code, 'code.js');
 
