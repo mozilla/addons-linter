@@ -30,7 +30,7 @@ describe('JavaScript Scanner', function() {
   });
 
   it('should not throw when async/await is used', () => {
-    var code = singleLineString`var foo = async a => a;`;
+    var code = 'var foo = async a => a;';
     var jsScanner = new JavaScriptScanner(code, 'code.js');
 
     return jsScanner.scan()
