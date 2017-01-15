@@ -18,7 +18,7 @@ export function walkPromise(curPath, {shouldIncludePath=() => true} = {}) {
     return lstatPromise(curPath)
       .then((stat) => {
         const relPath = path.relative(basePath, curPath);
-        if (!shouldIncludePath(relPath)) {
+        if (!shouldIncludePath(relPath, stat.isDirectory())) {
           log.debug(`Skipping file path: ${relPath}`);
           return result;
         } else if (stat.isFile()) {

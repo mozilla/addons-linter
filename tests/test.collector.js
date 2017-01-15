@@ -65,4 +65,62 @@ describe('Collector', function() {
     assert.equal(collection.notices.length, 0);
   });
 
+  it('should filter message by filename if config.scanFile is defined', () => {
+    var collection = new Collector({
+      scanFile: ['test.js', 'no-match-file.js'],
+    });
+
+    assert.equal(collection.length, 0);
+
+    // Test linting error without a file.
+    collection.addError({
+      ...fakeMessageData,
+    });
+    assert.equal(collection.length, 1);
+
+    assert.equal(collection.errors.length, 1);
+    assert.equal(collection.warnings.length, 0);
+    assert.equal(collection.notices.length, 0);
+    assert.equal(collection.errors[0].code, fakeMessageData.code);
+
+    // Test linting error with an excluded file.
+    collection.addError({
+      ...fakeMessageData,
+      file: 'non-test.js',
+    });
+    assert.equal(collection.length, 1);
+
+    // Test linting error with an included file.
+    collection.addError({
+      ...fakeMessageData,
+      file: 'test.js',
+    });
+    assert.equal(collection.length, 2);
+
+    // Test filtered warnings.
+    collection.addWarning({
+      ...fakeMessageData,
+      file: 'test.js',
+    });
+    assert.equal(collection.length, 3);
+
+    // Test filtered notices.
+    collection.addNotice({
+      ...fakeMessageData,
+      file: 'test.js',
+    });
+    assert.equal(collection.length, 4);
+
+    assert.equal(collection.errors.length, 2);
+    assert.equal(collection.warnings.length, 1);
+    assert.equal(collection.notices.length, 1);
+
+    assert.equal(collection.errors[1].code, fakeMessageData.code);
+    assert.equal(collection.errors[1].file, 'test.js');
+    assert.equal(collection.warnings[0].code, fakeMessageData.code);
+    assert.equal(collection.warnings[0].file, 'test.js');
+    assert.equal(collection.notices[0].code, fakeMessageData.code);
+    assert.equal(collection.notices[0].file, 'test.js');
+  });
+
 });

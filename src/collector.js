@@ -7,7 +7,9 @@ import * as constants from 'const';
 
 export default class Collector {
 
-  constructor() {
+  constructor(config = {}) {
+    this.config = config;
+
     for (let type of constants.MESSAGE_TYPES) {
       this[`${type}s`] = [];
     }
@@ -22,6 +24,14 @@ export default class Collector {
   }
 
   _addMessage(type, opts, _Message=Message) {
+    // Filter the messages reported by file when the Linter has been configured
+    // with a custom scanFile array using --scan-file CLI option.
+    if (this.config.scanFile && opts.file) {
+      if (!this.config.scanFile.some(v => v === opts.file)) {
+        return;
+      }
+    }
+
     // Message will throw for incorrect types.
     // we have a test to ensure that is the case.
     var message = new _Message(type, opts);

@@ -165,6 +165,60 @@ describe('Linter', function() {
       });
   });
 
+  it('should optionally scan a single file', () => {
+    var addonLinter = new Linter({
+      _: ['tests/fixtures/webextension_scan_file'],
+      scanFile: ['subdir/test.js'],
+    });
+    // Stub print to prevent output.
+    addonLinter.print = sinon.stub();
+
+    var getFileSpy = sinon.spy(addonLinter, 'scanFile');
+
+    return addonLinter.scan()
+      .then(() => {
+        assert.notOk(getFileSpy.calledWith('index.js'));
+        assert.ok(getFileSpy.calledWith('manifest.json'));
+        assert.ok(getFileSpy.calledWith('subdir/test.js'));
+      });
+  });
+
+  it('should optionally scan selected files', () => {
+    var addonLinter = new Linter({
+      _: ['tests/fixtures/webextension_scan_file'],
+      scanFile: ['subdir/test.js', 'subdir/test2.js'],
+    });
+    // Stub print to prevent output.
+    addonLinter.print = sinon.stub();
+
+    var getFileSpy = sinon.spy(addonLinter, 'scanFile');
+
+    return addonLinter.scan()
+      .then(() => {
+        assert.notOk(getFileSpy.calledWith('index.js'));
+        assert.ok(getFileSpy.calledWith('manifest.json'));
+        assert.ok(getFileSpy.calledWith('subdir/test.js'));
+        assert.ok(getFileSpy.calledWith('subdir/test2.js'));
+      });
+  });
+
+  it('should raise an error if selected file are not found', () => {
+    var files = ['subdir/test3.js', 'subdir/test4.js'];
+    var addonLinter = new Linter({
+      _: ['tests/fixtures/webextension_scan_file'],
+      scanFile: files,
+    });
+    // Stub print to prevent output.
+    addonLinter.print = sinon.stub();
+
+    return addonLinter.scan().then(() => {
+      assert.fail('Expected rejection not receives');
+    }, (err) => {
+      assert.equal(err.message,
+                   `Selected file(s) not found: ${files.join(', ')}`);
+    });
+  });
+
   it('should throw when message.type is undefined', () => {
     var addonLinter = new Linter({_: ['tests/fixtures/webextension.zip']});
     addonLinter.io = { files: {whatever: {}} };
@@ -342,6 +396,26 @@ describe('Linter.print()', function() {
     assert.ok(addonLinter.textOutput.called);
     assert.ok(fakeConsole.log.called);
   });
+
+  it('should print scanFile if any', () => {
+    var addonLinter = new Linter({
+      _: ['foo'],
+      scanFile: ['testfile.js'],
+    });
+    var textOutputSpy = sinon.spy(addonLinter, 'textOutput');
+
+    addonLinter.config.output = 'text';
+
+    var logData = '';
+    var fakeConsole = {
+      log: sinon.spy((...args) => logData += `${args.join(' ')}\n`),
+    };
+    addonLinter.print(fakeConsole);
+    assert.ok(textOutputSpy.called);
+    assert.ok(fakeConsole.log.called);
+    assert.include(logData, 'Selected files: testfile.js');
+  });
+
 });
 
 
@@ -754,8 +828,11 @@ describe('Linter.extractMetadata()', function() {
       .then(() => {
         assert.instanceOf(addonLinter.io, FakeDirectory);
         assert.equal(setScanFileCallback.called, true);
-        assert.strictEqual(setScanFileCallback.firstCall.args[0],
-                           shouldScanFile);
+        assert.equal(typeof setScanFileCallback.firstCall.args[0],
+                     'function');
+        assert.equal(shouldScanFile.called, false);
+        setScanFileCallback.firstCall.args[0]();
+        assert.equal(shouldScanFile.called, true);
       });
   });
 

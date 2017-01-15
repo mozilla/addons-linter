@@ -58,6 +58,12 @@ export function getConfig({useCLI=true} = {}) {
       type: 'boolean',
       default: false,
     })
+    .option('scan-file', {
+      alias: ['f'],
+      describe: 'Scan a selected file',
+      type: 'string',
+      requiresArg: true,
+    })
     // Require one non-option.
     .demand(1)
     .help('help')
