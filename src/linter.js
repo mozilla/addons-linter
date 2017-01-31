@@ -191,6 +191,7 @@ export default class Linter {
       count: this.collector.length,
       summary: {},
       metadata: this.addonMetadata,
+      risk: this.addonRisk,
     };
     for (let type of constants.MESSAGE_TYPES) {
       var messageType = `${type}s`;
@@ -198,6 +199,13 @@ export default class Linter {
       output.summary[messageType] = this.collector[messageType].length;
     }
     return output;
+  }
+
+  getAddonRisk({
+    _log=log,
+    ManifestJSONParser=DefaultManifestJSONParser,
+  } = {}) {
+    return Pro
   }
 
   getAddonMetadata({
@@ -226,7 +234,7 @@ export default class Linter {
             })
             .then((xmlDoc) => {
               _log.info('Got xmlDoc, running InstallRdfParser.getMetadata()');
-              return new InstallRdfParser(xmlDoc, this.collector).getMetadata();
+              return {metadata: new InstallRdfParser(xmlDoc, this.collector).getMetadata()};
             });
         } else if (files.hasOwnProperty(MANIFEST_JSON)) {
           _log.info('Retrieving metadata from manifest.json');
@@ -237,7 +245,10 @@ export default class Linter {
                 this.collector,
                 {selfHosted: this.config.selfHosted, io: this.io},
               );
-              return manifestParser.getMetadata();
+              return {
+                metadata: manifestParser.getMetadata(),
+                risk: manifestParser.getRisk()
+              };
             });
         } else {
           _log.warn(singleLineString`No ${INSTALL_RDF} or ${MANIFEST_JSON}
@@ -247,8 +258,9 @@ export default class Linter {
           return {};
         }
       })
-      .then((addonMetadata) => {
-        this.addonMetadata = addonMetadata;
+      .then((data) => {
+        this.addonRisk = data.risk;
+        this.addonMetadata = data.metadata;
 
         // The type must be explicitly defined. This behaviour differs the
         // historical approach by the amo-validator.
@@ -259,7 +271,6 @@ export default class Linter {
           _log.error('Addon type lookup failed');
           this.collector.addError(messages.TYPE_NOT_DETERMINED);
         }
-
         return this.addonMetadata;
       });
   }
