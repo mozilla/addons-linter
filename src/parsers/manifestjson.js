@@ -217,6 +217,14 @@ export default class ManifestJSONParser extends JSONParser {
             riskReasons.push(`Match ${match}`);
           }
         }
+        if (entry.matches.length > 4) {
+          risk += 0.1;
+          riskReasons.push(`Match ${entry.matches.length} domains`);
+        }
+        if (Object.keys(entry).includes('js')) {
+          risk += 0.3;
+          riskReasons.push(`Content script JS`);
+        }
       }
     }
 
