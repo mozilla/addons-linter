@@ -226,7 +226,8 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     for (let key in manifestKeys) {
-      if (this.parsedJSON.includes(key)) {
+      let keys = Object.keys(this.parsedJSON)
+      if (keys.includes(key)) {
         risk += manifestKeys[key];
         riskReasons.push(`Manifest key ${key}`);
       }
