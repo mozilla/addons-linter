@@ -201,13 +201,6 @@ export default class Linter {
     return output;
   }
 
-  getAddonRisk({
-    _log=log,
-    ManifestJSONParser=DefaultManifestJSONParser,
-  } = {}) {
-    return Pro
-  }
-
   getAddonMetadata({
     _log=log,
     ManifestJSONParser=DefaultManifestJSONParser,

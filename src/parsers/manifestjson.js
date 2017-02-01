@@ -220,6 +220,19 @@ export default class ManifestJSONParser extends JSONParser {
       }
     }
 
+    let manifestKeys = {
+      content_security_policy: 0.5,
+      incognito: 0.1,
+    }
+
+    for (let key in manifestKeys) {
+      if (this.parsedJSON.includes(key)) {
+        risk += manifestKeys[key];
+        riskReasons.push(`Manifest key ${key}`);
+      }
+    }
+
+
     // Never go over 1.
     return {score: (Math.min(risk, 1)), reasons: riskReasons};
   }
