@@ -128,6 +128,7 @@ describe('Hidden and Flagged File Regexes', function() {
     'something.sh',
     'something.class',
     'something.swf',
+    'something.jar',
   ];
 
   for (const filePath of matchingFlaggedFileExtensions) {
