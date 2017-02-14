@@ -52,6 +52,24 @@ describe('Directory.getFiles()', function() {
       });
   });
 
+  it('can be configured to scan all dirs and to include a single file', () => {
+    const myDirectory = new Directory('tests/fixtures/io/');
+    myDirectory.setScanFileCallback((filePath, isDir) => {
+      if (isDir) {
+        return true;
+      }
+      return filePath === 'dir2/dir3/file3.txt';
+    });
+
+    return myDirectory.getFiles()
+      .then((files) => {
+        var fileNames = Object.keys(files);
+        assert.notInclude(fileNames, 'dir1/file1.txt');
+        assert.notInclude(fileNames, 'dir2/file2.txt');
+        assert.include(fileNames, 'dir2/dir3/file3.txt');
+      });
+  });
+
 });
 
 describe('Directory._getPath()', function() {

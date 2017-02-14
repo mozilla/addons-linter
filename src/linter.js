@@ -35,8 +35,28 @@ export default class Linter {
     this.io;
     this.chalk = new chalk.constructor(
       {enabled: !this.config.boring});
-    this.collector = new Collector();
+    this.collector = new Collector(config);
     this.addonMetadata = null;
+    this.shouldScanFile = this.shouldScanFile.bind(this);
+  }
+
+  set config(cfg) {
+    this._config = cfg;
+
+    // normalize the scanFile option:
+    // convert into an array if needed and filter out any undefined
+    // or empty strings.
+    if (this._config.scanFile) {
+      let scanFile = Array.isArray(this._config.scanFile) ?
+            this._config.scanFile : [this._config.scanFile];
+      scanFile = scanFile.filter(el => el && el.length > 0);
+
+      this._config.scanFile = scanFile;
+    }
+  }
+
+  get config() {
+    return this._config;
   }
 
   colorize(type) {
@@ -181,8 +201,15 @@ export default class Linter {
           columnSplitter: '   ',
           config: outputConfig,
         }));
+
       }
     }
+
+    if (this.output.scanFile) {
+      out.push(`Selected files: ${this.output.scanFile.join(', ')}`);
+      out.push('');
+    }
+
     return out.join('\n');
   }
 
@@ -192,6 +219,11 @@ export default class Linter {
       summary: {},
       metadata: this.addonMetadata,
     };
+
+    if (this.config.scanFile) {
+      output.scanFile = this.config.scanFile;
+    }
+
     for (let type of constants.MESSAGE_TYPES) {
       var messageType = `${type}s`;
       output[messageType] = this.collector[messageType];
@@ -385,7 +417,7 @@ export default class Linter {
         }
       })
       .then((io) => {
-        io.setScanFileCallback(this.config.shouldScanFile);
+        io.setScanFileCallback(this.shouldScanFile);
         this.io = io;
         return this.getAddonMetadata();
       })
@@ -415,12 +447,42 @@ export default class Linter {
       });
   }
 
+  shouldScanFile(fileOrDirName, isDir) {
+    if (this.config.shouldScanFile) {
+      return this.config.shouldScanFile(fileOrDirName, isDir);
+    }
+
+    if (this.config.scanFile) {
+      const manifestFileNames = [
+        'install.rdf', 'manifest.json', 'package.json',
+      ];
+
+      // Always scan sub directories and the manifest files,
+      // or the linter will not be able to detect the addon type.
+      if (isDir || manifestFileNames.includes(fileOrDirName)) {
+        return true;
+      }
+
+      return this.config.scanFile.some(v => v === fileOrDirName);
+    }
+
+    // Defaults to true.
+    return true;
+  }
+
   scan(deps={}) {
     return this.extractMetadata(deps)
       .then(() => {
         return this.io.getFiles();
       })
       .then((files) => {
+        if (this.config.scanFile) {
+          if (!this.config.scanFile.some(f=> Object.keys(files).includes(f))) {
+            const files = this.config.scanFile.join(', ');
+            throw new Error(`Selected file(s) not found: ${files}`);
+          }
+        }
+
         // Known libraries do not need to be scanned
         let filesWithoutJSLibraries = Object.keys(files).filter((file) => {
           return !this.addonMetadata.jsLibs.hasOwnProperty(file);

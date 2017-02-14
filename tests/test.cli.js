@@ -45,6 +45,20 @@ describe('Basic CLI tests', function() {
     assert.equal(args.boring, false);
   });
 
+  it('should support a --scan-file option', () => {
+    var args = cli.parse(['foo/', '--scan-file', 'dir/test1.txt']);
+    assert.equal(args.scanFile, 'dir/test1.txt');
+
+    var args = cli.parse([
+      'foo/', '--scan-file', 'dir/test1.txt',
+      '--scan-file', 'dir/test2.txt',
+    ]);
+    assert.deepEqual(args.scanFile, ['dir/test1.txt', 'dir/test2.txt']);
+
+    args = cli.parse(['foo/']);
+    assert.equal(args.scanFile, undefined);
+  });
+
   it('should default warnings-as-errors to false', () => {
     var args = cli.parse(['foo/bar.zip']);
     assert.equal(args.warningsAsErrors, false);
