@@ -2,14 +2,13 @@ import ESLint from 'eslint';
 
 import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
 import * as messages from 'messages';
-import * as rules from 'rules/javascript';
-import { ensureFilenameExists, ignorePrivateFunctions,
-         singleLineString } from 'utils';
+import ruleConfig from 'rules/javascript';
+import { ensureFilenameExists, singleLineString } from 'utils';
 
 
 export default class JavaScriptScanner {
 
-  _defaultRules = rules;
+  _defaultRules = ruleConfig.rules;
 
   constructor(code, filename, options={}) {
     this.code = code;
@@ -34,11 +33,10 @@ export default class JavaScriptScanner {
       // ESLint is synchronous and doesn't accept streams, so we need to
       // pass it the entire source file as a string.
       var eslint = _ESLint.linter;
-      var rules = ignorePrivateFunctions(_rules);
 
-      for (let name in rules) {
+      for (let name in _rules) {
         this._rulesProcessed++;
-        eslint.defineRule(name, rules[name]);
+        eslint.defineRule(name, _rules[name]);
       }
 
       var report = eslint.verify(this.code, {
@@ -66,7 +64,7 @@ export default class JavaScriptScanner {
                           the second argument to context.report()`);
         }
 
-        // Fallback to looking up the message object by the
+        // Fallback to looking up the message object by the message
         var messageObj = _messages[message.message];
         var code = message.message;
 

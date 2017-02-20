@@ -1,6 +1,6 @@
 import { VALIDATION_WARNING } from 'const';
 import { singleLineString } from 'utils';
-import { DEPRECATED_ENTITIES } from 'rules/javascript/deprecated_entities';
+import { DEPRECATED_ENTITIES } from 'rules/javascript/deprecated-entities';
 import JavaScriptScanner from 'scanners/javascript';
 
 describe('deprecated_entities', () => {
