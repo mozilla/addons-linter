@@ -34,7 +34,7 @@ export default class JavaScriptScanner {
       // pass it the entire source file as a string.
       var eslint = _ESLint.linter;
 
-      for (let name in _rules) {
+      for (const name in _rules) {
         this._rulesProcessed++;
         eslint.defineRule(name, _rules[name]);
       }
@@ -52,7 +52,7 @@ export default class JavaScriptScanner {
         filename: this.filename,
       });
 
-      for (let message of report) {
+      for (const message of report) {
         // Fatal error messages (like SyntaxErrors) are a bit different, we
         // need to handle them specially.
         if (message.fatal === true) {
