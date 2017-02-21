@@ -1,13 +1,15 @@
 import { MOZINDEXEDDB } from 'messages';
 
-export function mozindexeddb(context) {
-  return {
-    Identifier: function(node) {
-      // Catches `var foo = mozIndexedDB;`.
-      if (node.name === 'mozIndexedDB' &&
-          node.parent.type !== 'MemberExpression') {
-        return context.report(node, MOZINDEXEDDB.code);
-      }
-    },
-  };
-}
+export default {
+  create(context) {
+    return {
+      Identifier: function(node) {
+        // Catches `var foo = mozIndexedDB;`.
+        if (node.name === 'mozIndexedDB' &&
+            node.parent.type !== 'MemberExpression') {
+          return context.report(node, MOZINDEXEDDB.code);
+        }
+      },
+    };
+  },
+};

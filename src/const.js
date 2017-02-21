@@ -5,21 +5,21 @@ export const ESLINT_ERROR = 2;
 export const ESLINT_WARNING = 1;
 
 export const ESLINT_RULE_MAPPING = {
-  banned_identifiers: ESLINT_WARNING,
-  deprecated_entities: ESLINT_WARNING,
-  eval_string_arg: ESLINT_WARNING,
-  event_listener_fourth: ESLINT_WARNING,
-  global_require_arg: ESLINT_WARNING,
-  init_null_arg: ESLINT_WARNING,
-  low_level_module: ESLINT_WARNING,
-  mozindexeddb: ESLINT_WARNING,
-  mozindexeddb_property: ESLINT_WARNING,
-  only_prefs_in_defaults: ESLINT_WARNING,
-  opendialog_nonlit_uri: ESLINT_WARNING,
-  opendialog_remote_uri: ESLINT_WARNING,
-  shallow_wrapper: ESLINT_WARNING,
-  webextension_api: ESLINT_WARNING,
-  widget_module: ESLINT_WARNING,
+  'banned-identifiers': ESLINT_WARNING,
+  'deprecated-entities': ESLINT_WARNING,
+  'eval-string-arg': ESLINT_WARNING,
+  'event-listener-fourth': ESLINT_WARNING,
+  'global-require-arg': ESLINT_WARNING,
+  'init-null-arg': ESLINT_WARNING,
+  'low-level-module': ESLINT_WARNING,
+  'mozindexeddb': ESLINT_WARNING,
+  'mozindexeddb-property': ESLINT_WARNING,
+  'only-prefs-in-defaults': ESLINT_WARNING,
+  'opendialog-nonlit-uri': ESLINT_WARNING,
+  'opendialog-remote-uri': ESLINT_WARNING,
+  'shallow-wrapper': ESLINT_WARNING,
+  'webextension-api': ESLINT_WARNING,
+  'widget-module': ESLINT_WARNING,
 };
 
 export const VALIDATION_ERROR = 'error';

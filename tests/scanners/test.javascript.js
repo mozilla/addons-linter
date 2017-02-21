@@ -4,8 +4,8 @@ import { DEPRECATED_APIS, ESLINT_ERROR, ESLINT_RULE_MAPPING, TEMPORARY_APIS,
          VALIDATION_ERROR, VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
-import * as rules from 'rules/javascript';
-import { apiToMessage, ignorePrivateFunctions, singleLineString } from 'utils';
+import { rules } from 'rules/javascript';
+import { apiToMessage, singleLineString } from 'utils';
 import { fakeMessageData, getRuleFiles, getVariable, unexpectedSuccess,
          validMetadata } from '../helpers';
 
@@ -288,7 +288,7 @@ describe('JavaScript Scanner', function() {
     return jsScanner.scan()
       .then(() => {
         assert.equal(jsScanner._rulesProcessed,
-                     Object.keys(ignorePrivateFunctions(rules)).length);
+                     Object.keys(rules).length);
       });
   });
 
