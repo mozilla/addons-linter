@@ -1,36 +1,22 @@
-import banned_identifiers from './banned-identifiers';
-import deprecated_entities from './deprecated-entities';
-import eval_string_arg from './eval-string-arg';
-import event_listener_fourth from './event-listener-fourth';
-import global_require_arg from './global-require-arg';
-import init_null_arg from './init-null-arg';
-import low_level_module from './low-level-module';
-import mozindexeddb from './mozindexeddb';
-import mozindexeddb_property from './mozindexeddb-property';
-import only_prefs_in_defaults from './only-prefs-in-defaults';
-import opendialog_nonlit_uri from './opendialog-nonlit-uri';
-import opendialog_remote_uri from './opendialog-remote-uri';
-import shallow_wrapper from './shallow-wrapper';
-import webextension_api from './webextension-api';
-import widget_module from './widget-module';
+// We are using commonjs style imports here to avoid the need to import
+// and correctly export again so that it's only one line to add.
 
-
-export default {
+module.exports = {
   rules: {
-    'banned-identifiers': banned_identifiers,
-    'deprecated-entities': deprecated_entities,
-    'eval-string-arg': eval_string_arg,
-    'event-listener-fourth': event_listener_fourth,
-    'global-require-arg': global_require_arg,
-    'init-null-arg': init_null_arg,
-    'low-level-module': low_level_module,
-    'mozindexeddb': mozindexeddb,
-    'mozindexeddb-property': mozindexeddb_property,
-    'only-prefs-in-defaults': only_prefs_in_defaults,
-    'opendialog-nonlit-uri': opendialog_nonlit_uri,
-    'opendialog-remote-uri': opendialog_remote_uri,
-    'shallow-wrapper': shallow_wrapper,
-    'webextension-api': webextension_api,
-    'widget-module': widget_module,
+    'banned-identifiers': require('./banned-identifiers').default,
+    'deprecated-entities': require('./deprecated-entities').default,
+    'eval-string-arg': require('./eval-string-arg').default,
+    'event-listener-fourth': require('./event-listener-fourth').default,
+    'global-require-arg': require('./global-require-arg').default,
+    'init-null-arg': require('./init-null-arg').default,
+    'low-level-module': require('./low-level-module').default,
+    'mozindexeddb': require('./mozindexeddb').default,
+    'mozindexeddb-property': require('./mozindexeddb-property').default,
+    'only-prefs-in-defaults': require('./only-prefs-in-defaults').default,
+    'opendialog-nonlit-uri': require('./opendialog-nonlit-uri').default,
+    'opendialog-remote-uri': require('./opendialog-remote-uri').default,
+    'shallow-wrapper': require('./shallow-wrapper').default,
+    'webextension-api': require('./webextension-api').default,
+    'widget-module': require('./widget-module').default,
   },
 };
