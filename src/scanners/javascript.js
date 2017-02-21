@@ -2,13 +2,13 @@ import ESLint from 'eslint';
 
 import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
 import * as messages from 'messages';
-import ruleConfig from 'rules/javascript';
+import { rules } from 'rules/javascript';
 import { ensureFilenameExists, singleLineString } from 'utils';
 
 
 export default class JavaScriptScanner {
 
-  _defaultRules = ruleConfig.rules;
+  _defaultRules = rules;
 
   constructor(code, filename, options={}) {
     this.code = code;
