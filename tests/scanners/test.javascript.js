@@ -128,18 +128,27 @@ describe('JavaScript Scanner', function() {
   });
 
   it('should reject on missing message code', () => {
+    var FakeCLIEngine = function() {};
+    FakeCLIEngine.prototype = {
+      constructor: function() {},
+      executeOnText: () => {
+        return {
+          results: [{
+            messages: [{
+              fatal: false,
+            }],
+          }],
+        };
+      },
+    };
 
     var FakeESLint = {
       linter: {
         defineRule: () => {
           // no-op
         },
-        verify: () => {
-          return [{
-            fatal: false,
-          }];
-        },
       },
+      CLIEngine: FakeCLIEngine,
     };
 
     var jsScanner = new JavaScriptScanner('whatever', 'badcode.js');
@@ -281,14 +290,21 @@ describe('JavaScript Scanner', function() {
   it('should export all rules in rules/javascript', () => {
     // We skip the "run" check here for now as that's handled by ESLint.
     var ruleFiles = getRuleFiles('javascript');
-    assert.equal(ruleFiles.length, Object.keys(ESLINT_RULE_MAPPING).length);
+    var externalRules = 1;
+
+    assert.equal(
+      ruleFiles.length + externalRules,
+      Object.keys(ESLINT_RULE_MAPPING).length
+    );
 
     var jsScanner = new JavaScriptScanner('', 'badcode.js');
 
     return jsScanner.scan()
       .then(() => {
-        assert.equal(jsScanner._rulesProcessed,
-                     Object.keys(rules).length);
+        assert.equal(
+          jsScanner._rulesProcessed,
+          Object.keys(rules).length
+        );
       });
   });
 

@@ -34,13 +34,15 @@ export default class JavaScriptScanner {
       // pass it the entire source file as a string.
       var cli = new _ESLint.CLIEngine({
         env: { es6: true },
-        parserOptions: { ecmaVersion: 2017 },
-        ignore: false,
-        plugins: ['no-unsafe-innerhtml'],
-        rules: _ruleMapping,
-        settings: {
-          addonMetadata: this.options.addonMetadata,
+        baseConfig: {
+          parserOptions: { ecmaVersion: 2017 },
+          settings: {
+            addonMetadata: this.options.addonMetadata,
+          },
         },
+        ignore: false,
+        rules: _ruleMapping,
+        plugins: ['no-unsafe-innerhtml'],
         allowInlineConfig: false,
         filename: this.filename,
         // Avoid loading the addons-linter .eslintrc file
