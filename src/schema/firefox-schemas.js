@@ -129,6 +129,10 @@ inner.mapExtendToRef = (schemas) => {
   return updatedSchemas;
 };
 
+inner.updateWithAddonsLinterData = (firefoxSchemas, ourSchemas) => {
+  
+};
+
 export function loadTypes(types = []) {
   // Convert the array of types to an object.
   return types.reduce((obj, type) => ({
@@ -196,7 +200,7 @@ inner.loadSchema = (schema) => {
   return newSchema;
 };
 
-export function processSchemas(schemas) {
+export function processSchemas(schemas, ourSchemas) {
   const loadedSchemas = {};
   schemas.forEach(({ file, schema }) => {
     // Convert the Firefox schema to more standard JSON schema.
@@ -205,5 +209,7 @@ export function processSchemas(schemas) {
   });
   // Now that everything is loaded, we can finish mapping the non-standard
   // $extend to $ref.
-  return inner.mapExtendToRef(loadedSchemas);
+  const extendedSchemas = inner.mapExtendToRef(loadedSchemas);
+  // Update the Firefox schemas with some missing validations, defaults and descriptions.
+  return inner.updateWithAddonsLinterData(extendedSchemas, ourSchemas);
 }
