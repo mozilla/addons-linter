@@ -30,8 +30,6 @@ export default class JavaScriptScanner {
     _messages=messages,
   }={}) {
     return new Promise((resolve) => {
-      // ESLint is synchronous and doesn't accept streams, so we need to
-      // pass it the entire source file as a string.
       var cli = new _ESLint.CLIEngine({
         env: { es6: true },
         baseConfig: {
@@ -54,6 +52,8 @@ export default class JavaScriptScanner {
         _ESLint.linter.defineRule(name, _rules[name]);
       }
 
+      // ESLint is synchronous and doesn't accept streams, so we need to
+      // pass it the entire source file as a string.
       var report = cli.executeOnText(this.code, this.filename, true);
 
       for (const result of report.results) {
