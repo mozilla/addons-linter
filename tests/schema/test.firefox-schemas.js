@@ -308,8 +308,23 @@ describe('firefox schema import', () => {
   });
 
   describe('mapExtendToRef', () => {
+    function deepFreeze(obj) {
+      if (typeof obj === 'object') {
+        Object.keys(obj).forEach((key) => {
+          const value = obj[key];
+          if (typeof value === 'object' &&
+              value !== null &&
+              !Object.isFrozen(value)) {
+            deepFreeze(value);
+          }
+        });
+        return Object.freeze(obj);
+      }
+      return obj;
+    }
+
     it('adds the refs to the linked schema', () => {
-      const schemas = {
+      const schemas = deepFreeze({
         manifest: {
           file: 'manifest.json',
           schema: {
@@ -371,7 +386,7 @@ describe('firefox schema import', () => {
             },
           },
         },
-      };
+      });
       assert.deepEqual(
         mapExtendToRef(schemas),
         {

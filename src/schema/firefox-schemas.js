@@ -79,23 +79,42 @@ export function rewriteRefs(schema) {
 }
 
 export function mapExtendToRef(schemas) {
-  Object.keys(schemas).forEach((id) => {
-    const { schema } = schemas[id];
+  const updatedSchemas = { ...schemas };
+  Object.keys(updatedSchemas).forEach((id) => {
+    const { schema } = updatedSchemas[id];
     Object.keys(schema.refs).forEach((ref) => {
       const { namespace, type } = schema.refs[ref];
-      const extendSchema = schemas[namespace].schema;
+      const extendSchema = updatedSchemas[namespace].schema;
       const extendType = extendSchema.types[type];
+      let updatedType;
       if ('anyOf' in extendType) {
-        extendType.anyOf.push({ $ref: ref });
+        updatedType = {
+          ...extendType,
+          anyOf: [...extendType.anyOf, { $ref: ref }],
+        };
+      } else if (!('allOf' in extendType)) {
+        updatedType = { allOf: [extendType, { $ref: ref }] };
       } else {
-        if (!('allOf' in extendType)) {
-          extendSchema.types[type] = { allOf: [extendType] };
-        }
-        extendSchema.types[type].allOf.push({ $ref: ref });
+        updatedType = {
+          ...extendType,
+          allOf: [...extendType.allOf, { $ref: ref }],
+        };
+      }
+      if (updatedType) {
+        updatedSchemas[namespace] = {
+          ...updatedSchemas[namespace],
+          schema: {
+            ...extendSchema,
+            types: {
+              ...extendSchema.types,
+              [type]: updatedType,
+            },
+          },
+        };
       }
     });
   });
-  return schemas;
+  return updatedSchemas;
 }
 
 export function loadTypes(types) {
