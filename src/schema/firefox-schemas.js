@@ -1,5 +1,8 @@
 const FLAG_PATTERN_REGEX = /^\(\?[im]*\)(.*)/;
 
+// Reference some functions on inner so they can be stubbed in tests.
+export const inner = {};
+
 function stripFlagsFromPattern(value) {
   // TODO: Fix these patterns and remove this code.
   const matches = FLAG_PATTERN_REGEX.exec(value);
@@ -12,7 +15,7 @@ function stripFlagsFromPattern(value) {
 /*
  * Convert the absence of `optional` or `optional: false` to an array of
  * required properties at the same level of the properties (more processing
- * is done in rewriteRef).
+ * is done in rewriteValue).
  */
 export function rewriteOptionalToRequired(schema) {
   const required = [];
@@ -30,11 +33,11 @@ export function rewriteOptionalToRequired(schema) {
   return { ...withoutOptional, required };
 }
 
-export function rewriteRef(key, value) {
+export function rewriteValue(key, value) {
   if (Array.isArray(value)) {
-    return value.map((val) => rewriteRef(key, val));
+    return value.map((val) => rewriteValue(key, val));
   } else if (typeof value === 'object') {
-    const rewritten = rewriteRefs(value);
+    const rewritten = inner.rewriteObject(value);
     if ('properties' in rewritten) {
       const { required, ...properties } = rewriteOptionalToRequired(
         rewritten.properties);
@@ -68,17 +71,17 @@ export function rewriteKey(key) {
   return key;
 }
 
-export function rewriteRefs(schema) {
+inner.rewriteObject = (schema) => {
   return Object.keys(schema).reduce((obj, key) => {
-    const value = rewriteRef(key, schema[key]);
+    const value = rewriteValue(key, schema[key]);
     if (value === undefined) {
       return obj;
     }
     return { ...obj, [rewriteKey(key)]: value };
   }, {});
-}
+};
 
-export function mapExtendToRef(schemas) {
+inner.mapExtendToRef = (schemas) => {
   const updatedSchemas = { ...schemas };
   Object.keys(updatedSchemas).forEach((id) => {
     const { schema } = updatedSchemas[id];
@@ -115,7 +118,7 @@ export function mapExtendToRef(schemas) {
     });
   });
   return updatedSchemas;
-}
+};
 
 export function loadTypes(types) {
   // Convert the array of types to an object.
@@ -144,7 +147,7 @@ function rewriteExtend(schemas, schemaId) {
   return { definitions, refs };
 }
 
-export function normalizeSchema(schemas) {
+inner.normalizeSchema = (schemas) => {
   let extendSchemas;
   let primarySchema;
 
@@ -162,16 +165,16 @@ export function normalizeSchema(schemas) {
     id: namespace,
     types: loadTypes(types),
   };
-}
+};
 
-export function loadSchema(schema) {
+inner.loadSchema = (schema) => {
   const { id, ...rest } = inner.normalizeSchema(schema);
-  const newSchema = { id, ...inner.rewriteRefs(rest) };
+  const newSchema = { id, ...inner.rewriteObject(rest) };
   if (id === 'manifest') {
     newSchema.$ref = '#/types/WebExtensionManifest';
   }
   return newSchema;
-}
+};
 
 export function processSchemas(schemas) {
   const loadedSchemas = {};
@@ -184,7 +187,3 @@ export function processSchemas(schemas) {
   // $extend to $ref.
   return inner.mapExtendToRef(loadedSchemas);
 }
-
-export const inner = {
-  normalizeSchema, rewriteRefs, loadSchema, mapExtendToRef,
-};

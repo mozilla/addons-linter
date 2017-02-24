@@ -1,14 +1,10 @@
 import {
   inner,
-  loadSchema,
   loadTypes,
-  mapExtendToRef,
-  normalizeSchema,
   processSchemas,
   rewriteKey,
   rewriteOptionalToRequired,
-  rewriteRef,
-  rewriteRefs,
+  rewriteValue,
 } from 'schema/firefox-schemas';
 
 describe('firefox schema import', () => {
@@ -62,7 +58,7 @@ describe('firefox schema import', () => {
     });
   });
 
-  describe('rewriteRef', () => {
+  describe('rewriteValue', () => {
     it('adds required from optional', () => {
       const schema = {
         additionalProperties: true,
@@ -78,7 +74,7 @@ describe('firefox schema import', () => {
           },
         },
       };
-      assert.deepEqual(rewriteRef('MyType', schema), {
+      assert.deepEqual(rewriteValue('MyType', schema), {
         additionalProperties: true,
         properties: {
           foo: { type: 'string' },
@@ -97,30 +93,30 @@ describe('firefox schema import', () => {
     });
 
     it('removes ids', () => {
-      assert.equal(rewriteRef('id', 'foo'), undefined);
+      assert.equal(rewriteValue('id', 'foo'), undefined);
     });
 
     it('removes type: any', () => {
-      assert.equal(rewriteRef('type', 'any'), undefined);
-      assert.equal(rewriteRef('type', 'string'), 'string');
+      assert.equal(rewriteValue('type', 'any'), undefined);
+      assert.equal(rewriteValue('type', 'string'), 'string');
     });
 
     it('strips flags from patterns', () => {
-      assert.equal(rewriteRef('pattern', '(?i)^abc$'), '^abc$');
-      assert.equal(rewriteRef('pattern', '^foo(?i)bar$'), '^foo(?i)bar$');
+      assert.equal(rewriteValue('pattern', '(?i)^abc$'), '^abc$');
+      assert.equal(rewriteValue('pattern', '^foo(?i)bar$'), '^foo(?i)bar$');
     });
 
     it('updates $ref to JSON pointer', () => {
-      assert.equal(rewriteRef('$ref', 'Manifest'), '#/types/Manifest');
+      assert.equal(rewriteValue('$ref', 'Manifest'), '#/types/Manifest');
       assert.equal(
-        rewriteRef('$ref', 'extension_types.Timer'),
+        rewriteValue('$ref', 'extension_types.Timer'),
         'extension_types#/types/Timer');
     });
 
     it('handles arrays', () => {
       const original = [{ type: 'string' }, { type: 'any' }, { $ref: 'Foo' }];
       assert.deepEqual(
-        rewriteRef('anyOf', original),
+        rewriteValue('anyOf', original),
         [{ type: 'string' }, {}, { $ref: '#/types/Foo' }]);
     });
 
@@ -135,7 +131,7 @@ describe('firefox schema import', () => {
         properties: { foo: { type: 'string' }, bar: { type: 'number' } },
         required: ['bar'],
       };
-      assert.deepEqual(rewriteRef('foo', original), expected);
+      assert.deepEqual(rewriteValue('foo', original), expected);
     });
 
     it('omits required when it is empty', () => {
@@ -148,7 +144,7 @@ describe('firefox schema import', () => {
       const expected = {
         properties: { foo: { type: 'string' }, bar: { type: 'number' } },
       };
-      assert.deepEqual(rewriteRef('foo', original), expected);
+      assert.deepEqual(rewriteValue('foo', original), expected);
     });
   });
 
@@ -162,7 +158,7 @@ describe('firefox schema import', () => {
     });
   });
 
-  describe('rewriteRefs', () => {
+  describe('rewriteObject', () => {
     it('rewrites keys and values', () => {
       const schema = {
         type: 'any',
@@ -170,7 +166,7 @@ describe('firefox schema import', () => {
         isUndefined: undefined,
         keepMe: 'yay',
       };
-      assert.deepEqual(rewriteRefs(schema),
+      assert.deepEqual(inner.rewriteObject(schema),
         { anyOf: [{ type: 'string' }, { type: 'number' }], keepMe: 'yay' });
     });
   });
@@ -211,7 +207,7 @@ describe('firefox schema import', () => {
         },
       ];
       assert.deepEqual(
-        normalizeSchema(schemas),
+        inner.normalizeSchema(schemas),
         {
           id: 'cookies',
           types: {
@@ -241,7 +237,7 @@ describe('firefox schema import', () => {
         },
       ];
       assert.deepEqual(
-        normalizeSchema(schemas),
+        inner.normalizeSchema(schemas),
         {
           id: 'manifest',
           types: { Permission: { id: 'Permission', type: 'string' } },
@@ -258,11 +254,11 @@ describe('firefox schema import', () => {
         .withArgs({ the: 'schema' })
         .returns({ id: 'Foo', normalized: true });
       sandbox
-        .stub(inner, 'rewriteRefs')
+        .stub(inner, 'rewriteObject')
         .withArgs({ normalized: true })
         .returns({ rewritten: true });
       assert.deepEqual(
-        loadSchema({ the: 'schema' }), { id: 'Foo', rewritten: true });
+        inner.loadSchema({ the: 'schema' }), { id: 'Foo', rewritten: true });
     });
 
     it('adds a $ref for the manifest namespace', () => {
@@ -271,11 +267,11 @@ describe('firefox schema import', () => {
         .withArgs({ id: 'manifest' })
         .returns({ id: 'manifest', normalized: true });
       sandbox
-        .stub(inner, 'rewriteRefs')
+        .stub(inner, 'rewriteObject')
         .withArgs({ normalized: true })
         .returns({ rewritten: true });
       assert.deepEqual(
-        loadSchema({ id: 'manifest' }),
+        inner.loadSchema({ id: 'manifest' }),
         {
           id: 'manifest',
           $ref: '#/types/WebExtensionManifest',
@@ -388,7 +384,7 @@ describe('firefox schema import', () => {
         },
       });
       assert.deepEqual(
-        mapExtendToRef(schemas),
+        inner.mapExtendToRef(schemas),
         {
           manifest: {
             file: 'manifest.json',
