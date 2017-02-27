@@ -14,6 +14,8 @@ describe('deprecated_entities', () => {
 
       return jsScanner.scan()
         .then((validationMessages) => {
+          validationMessages = validationMessages.sort();
+
           assert.equal(validationMessages.length, 1);
           assert.equal(validationMessages[0].code,
                        entity.error.code);
