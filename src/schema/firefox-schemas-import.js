@@ -48,11 +48,8 @@ function loadSchemasFromFile(basePath) {
   return schemas;
 }
 
-export function importSchemas() {
-  const basePath = process.argv[2];
+export function importSchemas(basePath = process.argv[2]) {
   const rawSchemas = loadSchemasFromFile(basePath);
   const processedSchemas = processSchemas(rawSchemas);
   writeSchemasToFile(basePath, processedSchemas);
 }
-
-importSchemas();
