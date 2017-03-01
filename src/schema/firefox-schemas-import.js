@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { join as joinPath } from 'path';
 
 import commentJson from 'comment-json';
 
@@ -10,7 +11,7 @@ const SKIP_SCHEMAS = [
 
 function readSchema(path, file) {
   return commentJson.parse(
-    fs.readFileSync(`${path}/${file}`, 'utf-8'),
+    fs.readFileSync(joinPath(path, file), 'utf-8'),
     null, // reviver
     true, // remove_comments
   );
@@ -18,7 +19,7 @@ function readSchema(path, file) {
 
 function writeSchema(path, file, schema) {
   fs.writeFile(
-    `${path}/${file}`,
+    joinPath(path, file),
     `${JSON.stringify(schema, undefined, 2)}\n`);
 }
 
@@ -30,7 +31,7 @@ function writeSchemasToFile(path, loadedSchemas) {
   // Write out the schemas.
   Object.keys(loadedSchemas).forEach((id) => {
     const { file, schema } = loadedSchemas[id];
-    writeSchema(`${path}/../imported`, file, schema);
+    writeSchema(joinPath(path, '..', 'imported'), file, schema);
   });
 }
 
