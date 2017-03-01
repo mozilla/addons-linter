@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { join as joinPath } from 'path';
+import path from 'path';
 
 import commentJson from 'comment-json';
 
@@ -9,50 +9,50 @@ const SKIP_SCHEMAS = [
   'native_host_manifest.json',
 ];
 
-function readSchema(path, file) {
+function readSchema(basePath, file) {
   return commentJson.parse(
-    fs.readFileSync(joinPath(path, file), 'utf-8'),
+    fs.readFileSync(path.join(basePath, file), 'utf-8'),
     null, // reviver
     true, // remove_comments
   );
 }
 
-function writeSchema(path, file, schema) {
+function writeSchema(basePath, file, schema) {
   fs.writeFile(
-    joinPath(path, file),
+    path.join(basePath, file),
     `${JSON.stringify(schema, undefined, 2)}\n`);
 }
 
-function schemaFiles(path) {
-  return fs.readdirSync(path);
+function schemaFiles(basePath) {
+  return fs.readdirSync(basePath);
 }
 
-function writeSchemasToFile(path, loadedSchemas) {
+function writeSchemasToFile(basePath, loadedSchemas) {
   // Write out the schemas.
   Object.keys(loadedSchemas).forEach((id) => {
     const { file, schema } = loadedSchemas[id];
-    writeSchema(joinPath(path, '..', 'imported'), file, schema);
+    writeSchema(path.join(basePath, '..', 'imported'), file, schema);
   });
 }
 
-function loadSchemasFromFile(path) {
+function loadSchemasFromFile(basePath) {
   const schemas = [];
   // Read the schemas into loadedSchemas.
-  schemaFiles(path).forEach((file) => {
+  schemaFiles(basePath).forEach((file) => {
     if (SKIP_SCHEMAS.includes(file)) {
       return;
     }
-    const schema = readSchema(path, file);
+    const schema = readSchema(basePath, file);
     schemas.push({ file, schema });
   });
   return schemas;
 }
 
 export function importSchemas() {
-  const path = process.argv[2];
-  const rawSchemas = loadSchemasFromFile(path);
+  const basePath = process.argv[2];
+  const rawSchemas = loadSchemasFromFile(basePath);
   const processedSchemas = processSchemas(rawSchemas);
-  writeSchemasToFile(path, processedSchemas);
+  writeSchemasToFile(basePath, processedSchemas);
 }
 
 importSchemas();
