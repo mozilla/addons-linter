@@ -33,11 +33,11 @@ export default class JavaScriptScanner {
       var cli = new _ESLint.CLIEngine({
         baseConfig: {
           env: { es6: true, webextension: true, browser: true },
-          parserOptions: { ecmaVersion: 2017 },
           settings: {
             addonMetadata: this.options.addonMetadata,
           },
         },
+        parserOptions: { ecmaVersion: 2017 },
         ignore: false,
         rules: _ruleMapping,
         plugins: ['no-unsafe-innerhtml'],
