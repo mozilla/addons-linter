@@ -9,41 +9,21 @@ describe('no_eval', () => {
     'Eval(foo)',
 
     // User-defined eval methods.
-    'window.eval("foo")',
-    'window.eval("foo")',
     'window.noeval("foo")',
     'function foo() { var eval = "foo"; window[eval]("foo") }',
-    'global.eval("foo")',
     'global.eval("foo")',
     'global.noeval("foo")',
     'function foo() { var eval = "foo"; global[eval]("foo") }',
     'this.noeval("foo");',
     'function foo() { "use strict"; this.eval("foo"); }',
-    'function foo() { this.eval("foo"); }',
-    'function foo() { this.eval("foo"); }',
     'var obj = {foo: function() { this.eval("foo"); }}',
     'var obj = {}; obj.foo = function() { this.eval("foo"); }',
     'class A { foo() { this.eval(); } }',
     'class A { static foo() { this.eval(); } }',
-
-    // Allows indirect eval
-    '(0, eval)("foo")',
-    '(0, window.eval)("foo")',
-    '(0, window["eval"])("foo")',
-    'var EVAL = eval; EVAL("foo")',
-    'var EVAL = this.eval; EVAL("foo")',
-    '(function(exe){ exe("foo") })(eval);',
-    'window.eval("foo")',
-    'window.window.eval("foo")',
-    'window.window["eval"]("foo")',
-    'global.eval("foo")',
-    'global.global.eval("foo")',
-    'this.eval("foo")',
-    'function foo() { this.eval("foo") }',
   ];
 
   for (const code of validCodes) {
-    it(`should allow the use of user defined / indirect eval: ${code}`, () => {
+    it(`should allow the use of user defined eval: ${code}`, () => {
       var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
@@ -68,21 +48,54 @@ describe('no_eval', () => {
       message: ['eval can be harmful.'],
     },
     {
-      code: 'eval(foo)',
+      code: '(0, eval)("foo")',
       message: ['eval can be harmful.'],
     },
     {
-      code: 'eval("foo")',
+      code: '(0, window.eval)("foo")',
       message: ['eval can be harmful.'],
     },
     {
-      code: 'function foo(eval) { eval("foo") }',
+      code: '(0, window["eval"])("foo")',
       message: ['eval can be harmful.'],
     },
+    {
+      code: 'var EVAL = eval; EVAL("foo")',
+      message: ['eval can be harmful.'],
+    },
+    {
+      code: 'var EVAL = this.eval; EVAL("foo")',
+      message: ['eval can be harmful.'],
+    },
+    {
+      code: '(function(exe){ exe("foo") })(eval);',
+      message: ['eval can be harmful.'],
+    },
+    {
+      code: 'window.eval("foo")',
+      message: ['eval can be harmful.'],
+    },
+    {
+      code: 'window.window.eval("foo")',
+      message: ['eval can be harmful.'],
+    },
+    {
+      code: 'window.window["eval"]("foo")',
+      message: ['eval can be harmful.'],
+    },
+    {
+      code: 'this.eval("foo")',
+      message: ['eval can be harmful.'],
+    },
+    {
+      code: 'function foo() { this.eval("foo") }',
+      message: ['eval can be harmful.'],
+    },
+
   ];
 
   for (const code of invalidCodes) {
-    it(`should not allow the use of global eval: ${code.code}`, () => {
+    it(`should not allow the use of eval: ${code.code}`, () => {
       var jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
       return jsScanner.scan()

@@ -31,8 +31,8 @@ export default class JavaScriptScanner {
   }={}) {
     return new Promise((resolve) => {
       var cli = new _ESLint.CLIEngine({
-        env: { es6: true },
         baseConfig: {
+          env: { es6: true, webextension: true, browser: true },
           parserOptions: { ecmaVersion: 2017 },
           settings: {
             addonMetadata: this.options.addonMetadata,

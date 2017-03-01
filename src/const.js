@@ -23,7 +23,7 @@ export const ESLINT_RULE_MAPPING = {
 
   // 3rd party / eslint-internal rules
   'no-unsafe-innerhtml/no-unsafe-innerhtml': ESLINT_WARNING,
-  'no-eval': [ESLINT_WARNING, {allowIndirect: true}],
+  'no-eval': [ESLINT_WARNING, {allowIndirect: false}],
 };
 
 export const VALIDATION_ERROR = 'error';
