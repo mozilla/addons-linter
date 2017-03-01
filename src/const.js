@@ -21,7 +21,7 @@ export const ESLINT_RULE_MAPPING = {
   'webextension-api': ESLINT_WARNING,
   'widget-module': ESLINT_WARNING,
 
-  // 3rd party rules
+  // 3rd party / eslint-internal rules
   'no-unsafe-innerhtml/no-unsafe-innerhtml': ESLINT_WARNING,
   'no-eval': [ESLINT_WARNING, {allowIndirect: true}],
 };
