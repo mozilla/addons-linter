@@ -45,6 +45,8 @@ export const MANIFEST_VERSION_INVALID = {
 };
 
 export const MANIFEST_CSP = {
+  // Note: don't change this 'code' without updating addons-server first, as
+  // it depends on it to detect add-ons with a custom content security policy.
   code: 'MANIFEST_CSP',
   legacyCode: null,
   message: _('"content_security_policy" is defined in the manifest.json'),
