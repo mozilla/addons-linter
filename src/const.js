@@ -20,7 +20,10 @@ export const ESLINT_RULE_MAPPING = {
   'shallow-wrapper': ESLINT_WARNING,
   'webextension-api': ESLINT_WARNING,
   'widget-module': ESLINT_WARNING,
+
+  // 3rd party / eslint-internal rules
   'no-unsafe-innerhtml/no-unsafe-innerhtml': ESLINT_WARNING,
+  'no-eval': [ESLINT_WARNING, {allowIndirect: false}],
 };
 
 export const VALIDATION_ERROR = 'error';
