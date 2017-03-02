@@ -37,6 +37,15 @@ export function rewriteValue(key, value) {
   if (Array.isArray(value)) {
     return value.map((val) => rewriteValue(key, val));
   } else if (typeof value === 'object') {
+    if ('$ref' in value && Object.keys(value).length > 1) {
+      const { $ref, ...rest } = value;
+      return {
+        allOf: [
+          { $ref: rewriteValue('$ref', $ref) },
+          rewriteValue(key, rest),
+        ],
+      };
+    }
     const rewritten = inner.rewriteObject(value);
     if ('properties' in rewritten) {
       const { required, ...properties } = rewriteOptionalToRequired(
@@ -120,7 +129,7 @@ inner.mapExtendToRef = (schemas) => {
   return updatedSchemas;
 };
 
-export function loadTypes(types) {
+export function loadTypes(types = []) {
   // Convert the array of types to an object.
   return types.reduce((obj, type) => ({
     ...obj,
@@ -128,23 +137,31 @@ export function loadTypes(types) {
   }), {});
 }
 
-function rewriteExtend(schemas, schemaId) {
+export function rewriteExtend(schemas, schemaId) {
   const definitions = {};
   const refs = {};
+  const types = {};
   schemas.forEach((extendSchema) => {
     const extendId = extendSchema.namespace;
     extendSchema.types.forEach((type) => {
-      const { $extend, ...rest } = type;
-      // Move the $extend into definitions.
-      definitions[$extend] = rest;
-      // Remember the location of this file so we can $ref it later.
-      refs[`${schemaId}#/definitions/${$extend}`] = {
-        namespace: extendId,
-        type: $extend,
-      };
+      const { $extend, id, ...rest } = type;
+      if ($extend) {
+        // Move the $extend into definitions.
+        definitions[$extend] = rest;
+        // Remember the location of this file so we can $ref it later.
+        refs[`${schemaId}#/definitions/${$extend}`] = {
+          namespace: extendId,
+          type: $extend,
+        };
+      } else if (id) {
+        // Move this type into types.
+        types[id] = rest;
+      } else {
+        throw new Error('cannot handle extend, $extend or id is required');
+      }
     });
   });
-  return { definitions, refs };
+  return { definitions, refs, types };
 }
 
 inner.normalizeSchema = (schemas) => {
@@ -159,11 +176,14 @@ inner.normalizeSchema = (schemas) => {
     primarySchema = schemas[schemas.length - 1];
   }
   const { namespace, types, ...rest } = primarySchema;
+  const { types: extendTypes, ...extendRest } = rewriteExtend(
+      extendSchemas, namespace);
+  const updatedTypes = { ...loadTypes(types), ...extendTypes };
   return {
     ...rest,
-    ...rewriteExtend(extendSchemas, namespace),
+    ...extendRest,
     id: namespace,
-    types: loadTypes(types),
+    types: updatedTypes,
   };
 };
 

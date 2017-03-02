@@ -17,9 +17,15 @@
           "description": "Identifier of the notification. If it is empty, this method generates an id. If it matches an existing notification, this method first clears that notification before proceeding with the create operation."
         },
         {
-          "$ref": "#/types/CreateNotificationOptions",
-          "name": "options",
-          "description": "Contents of the notification."
+          "allOf": [
+            {
+              "$ref": "#/types/CreateNotificationOptions"
+            },
+            {
+              "name": "options",
+              "description": "Contents of the notification."
+            }
+          ]
         },
         {
           "optional": true,
@@ -48,9 +54,15 @@
           "description": "The id of the notification to be updated."
         },
         {
-          "$ref": "#/types/UpdateNotificationOptions",
-          "name": "options",
-          "description": "Contents of the notification to update to."
+          "allOf": [
+            {
+              "$ref": "#/types/UpdateNotificationOptions"
+            },
+            {
+              "name": "options",
+              "description": "Contents of the notification to update to."
+            }
+          ]
         },
         {
           "optional": true,
@@ -122,9 +134,15 @@
           "name": "callback",
           "parameters": [
             {
-              "name": "level",
-              "$ref": "#/types/PermissionLevel",
-              "description": "The current permission level."
+              "allOf": [
+                {
+                  "$ref": "#/types/PermissionLevel"
+                },
+                {
+                  "name": "level",
+                  "description": "The current permission level."
+                }
+              ]
             }
           ]
         }
@@ -185,9 +203,15 @@
       "description": "Fired when the user changes the permission level.",
       "parameters": [
         {
-          "$ref": "#/types/PermissionLevel",
-          "name": "level",
-          "description": "The new permission level."
+          "allOf": [
+            {
+              "$ref": "#/types/PermissionLevel"
+            },
+            {
+              "name": "level",
+              "description": "The new permission level."
+            }
+          ]
         }
       ]
     },
@@ -239,8 +263,14 @@
       "type": "object",
       "properties": {
         "type": {
-          "description": "Which type of notification to display.",
-          "$ref": "#/types/TemplateType"
+          "allOf": [
+            {
+              "$ref": "#/types/TemplateType"
+            },
+            {
+              "description": "Which type of notification to display."
+            }
+          ]
         },
         "iconUrl": {
           "description": "A URL to the sender's avatar, app icon, or a thumbnail for image notifications.",
@@ -323,8 +353,15 @@
       "type": "object",
       "properties": {
         "type": {
-          "description": "Which type of notification to display.",
-          "$ref": "#/types/TemplateType"
+          "allOf": [
+            {
+              "$ref": "#/types/TemplateType"
+            },
+            {
+              "optional": true,
+              "description": "Which type of notification to display."
+            }
+          ]
         },
         "iconUrl": {
           "description": "A URL to the sender's avatar, app icon, or a thumbnail for image notifications.",
@@ -396,7 +433,10 @@
           "description": "Whether to show UI indicating that the app will visibly respond to clicks on the body of a notification.",
           "type": "boolean"
         }
-      }
+      },
+      "required": [
+        "type"
+      ]
     }
   }
 }

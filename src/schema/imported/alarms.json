@@ -53,8 +53,14 @@
           "name": "callback",
           "parameters": [
             {
-              "name": "alarm",
-              "$ref": "#/types/Alarm"
+              "allOf": [
+                {
+                  "$ref": "#/types/Alarm"
+                },
+                {
+                  "name": "alarm"
+                }
+              ]
             }
           ]
         }
@@ -133,9 +139,15 @@
       "description": "Fired when an alarm has expired. Useful for transient background pages.",
       "parameters": [
         {
-          "name": "name",
-          "$ref": "#/types/Alarm",
-          "description": "The alarm that has expired."
+          "allOf": [
+            {
+              "$ref": "#/types/Alarm"
+            },
+            {
+              "name": "name",
+              "description": "The alarm that has expired."
+            }
+          ]
         }
       ]
     }

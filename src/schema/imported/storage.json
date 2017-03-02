@@ -36,61 +36,79 @@
   ],
   "properties": {
     "sync": {
-      "$ref": "#/types/StorageArea",
-      "description": "Items in the <code>sync</code> storage area are synced by the browser.",
-      "properties": {
-        "QUOTA_BYTES": {
-          "value": 102400,
-          "description": "The maximum total amount (in bytes) of data that can be stored in sync storage, as measured by the JSON stringification of every value plus every key's length. Updates that would cause this limit to be exceeded fail immediately and set $(ref:runtime.lastError)."
+      "allOf": [
+        {
+          "$ref": "#/types/StorageArea"
         },
-        "QUOTA_BYTES_PER_ITEM": {
-          "value": 8192,
-          "description": "The maximum size (in bytes) of each individual item in sync storage, as measured by the JSON stringification of its value plus its key length. Updates containing items larger than this limit will fail immediately and set $(ref:runtime.lastError)."
-        },
-        "MAX_ITEMS": {
-          "value": 512,
-          "description": "The maximum number of items that can be stored in sync storage. Updates that would cause this limit to be exceeded will fail immediately and set $(ref:runtime.lastError)."
-        },
-        "MAX_WRITE_OPERATIONS_PER_HOUR": {
-          "value": 1800,
-          "description": "<p>The maximum number of <code>set</code>, <code>remove</code>, or <code>clear</code> operations that can be performed each hour. This is 1 every 2 seconds, a lower ceiling than the short term higher writes-per-minute limit.</p><p>Updates that would cause this limit to be exceeded fail immediately and set $(ref:runtime.lastError).</p>"
-        },
-        "MAX_WRITE_OPERATIONS_PER_MINUTE": {
-          "value": 120,
-          "description": "<p>The maximum number of <code>set</code>, <code>remove</code>, or <code>clear</code> operations that can be performed each minute. This is 2 per second, providing higher throughput than writes-per-hour over a shorter period of time.</p><p>Updates that would cause this limit to be exceeded fail immediately and set $(ref:runtime.lastError).</p>"
-        },
-        "MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE": {
-          "value": 1000000,
-          "deprecated": "The storage.sync API no longer has a sustained write operation quota.",
-          "description": ""
+        {
+          "description": "Items in the <code>sync</code> storage area are synced by the browser.",
+          "properties": {
+            "QUOTA_BYTES": {
+              "value": 102400,
+              "description": "The maximum total amount (in bytes) of data that can be stored in sync storage, as measured by the JSON stringification of every value plus every key's length. Updates that would cause this limit to be exceeded fail immediately and set $(ref:runtime.lastError)."
+            },
+            "QUOTA_BYTES_PER_ITEM": {
+              "value": 8192,
+              "description": "The maximum size (in bytes) of each individual item in sync storage, as measured by the JSON stringification of its value plus its key length. Updates containing items larger than this limit will fail immediately and set $(ref:runtime.lastError)."
+            },
+            "MAX_ITEMS": {
+              "value": 512,
+              "description": "The maximum number of items that can be stored in sync storage. Updates that would cause this limit to be exceeded will fail immediately and set $(ref:runtime.lastError)."
+            },
+            "MAX_WRITE_OPERATIONS_PER_HOUR": {
+              "value": 1800,
+              "description": "<p>The maximum number of <code>set</code>, <code>remove</code>, or <code>clear</code> operations that can be performed each hour. This is 1 every 2 seconds, a lower ceiling than the short term higher writes-per-minute limit.</p><p>Updates that would cause this limit to be exceeded fail immediately and set $(ref:runtime.lastError).</p>"
+            },
+            "MAX_WRITE_OPERATIONS_PER_MINUTE": {
+              "value": 120,
+              "description": "<p>The maximum number of <code>set</code>, <code>remove</code>, or <code>clear</code> operations that can be performed each minute. This is 2 per second, providing higher throughput than writes-per-hour over a shorter period of time.</p><p>Updates that would cause this limit to be exceeded fail immediately and set $(ref:runtime.lastError).</p>"
+            },
+            "MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE": {
+              "value": 1000000,
+              "deprecated": "The storage.sync API no longer has a sustained write operation quota.",
+              "description": ""
+            }
+          },
+          "required": [
+            "QUOTA_BYTES",
+            "QUOTA_BYTES_PER_ITEM",
+            "MAX_ITEMS",
+            "MAX_WRITE_OPERATIONS_PER_HOUR",
+            "MAX_WRITE_OPERATIONS_PER_MINUTE",
+            "MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE"
+          ]
         }
-      },
-      "required": [
-        "QUOTA_BYTES",
-        "QUOTA_BYTES_PER_ITEM",
-        "MAX_ITEMS",
-        "MAX_WRITE_OPERATIONS_PER_HOUR",
-        "MAX_WRITE_OPERATIONS_PER_MINUTE",
-        "MAX_SUSTAINED_WRITE_OPERATIONS_PER_MINUTE"
       ]
     },
     "local": {
-      "$ref": "#/types/StorageArea",
-      "description": "Items in the <code>local</code> storage area are local to each machine.",
-      "properties": {
-        "QUOTA_BYTES": {
-          "value": 5242880,
-          "description": "The maximum amount (in bytes) of data that can be stored in local storage, as measured by the JSON stringification of every value plus every key's length. This value will be ignored if the extension has the <code>unlimitedStorage</code> permission. Updates that would cause this limit to be exceeded fail immediately and set $(ref:runtime.lastError)."
+      "allOf": [
+        {
+          "$ref": "#/types/StorageArea"
+        },
+        {
+          "description": "Items in the <code>local</code> storage area are local to each machine.",
+          "properties": {
+            "QUOTA_BYTES": {
+              "value": 5242880,
+              "description": "The maximum amount (in bytes) of data that can be stored in local storage, as measured by the JSON stringification of every value plus every key's length. This value will be ignored if the extension has the <code>unlimitedStorage</code> permission. Updates that would cause this limit to be exceeded fail immediately and set $(ref:runtime.lastError)."
+            }
+          },
+          "required": [
+            "QUOTA_BYTES"
+          ]
         }
-      },
-      "required": [
-        "QUOTA_BYTES"
       ]
     },
     "managed": {
-      "unsupported": true,
-      "$ref": "#/types/StorageArea",
-      "description": "Items in the <code>managed</code> storage area are set by the domain administrator, and are read-only for the extension; trying to modify this namespace results in an error."
+      "allOf": [
+        {
+          "$ref": "#/types/StorageArea"
+        },
+        {
+          "unsupported": true,
+          "description": "Items in the <code>managed</code> storage area are set by the domain administrator, and are read-only for the extension; trying to modify this namespace results in an error."
+        }
+      ]
     }
   },
   "definitions": {},

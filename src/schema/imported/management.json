@@ -39,9 +39,15 @@
       "async": "callback",
       "parameters": [
         {
-          "name": "id",
-          "$ref": "manifest#/types/ExtensionID",
-          "description": "The ID from an item of $(ref:management.ExtensionInfo)."
+          "allOf": [
+            {
+              "$ref": "manifest#/types/ExtensionID"
+            },
+            {
+              "name": "id",
+              "description": "The ID from an item of $(ref:management.ExtensionInfo)."
+            }
+          ]
         },
         {
           "name": "callback",
@@ -49,8 +55,14 @@
           "optional": true,
           "parameters": [
             {
-              "name": "result",
-              "$ref": "#/types/ExtensionInfo"
+              "allOf": [
+                {
+                  "$ref": "#/types/ExtensionInfo"
+                },
+                {
+                  "name": "result"
+                }
+              ]
             }
           ]
         }
@@ -68,8 +80,14 @@
           "optional": true,
           "parameters": [
             {
-              "name": "result",
-              "$ref": "#/types/ExtensionInfo"
+              "allOf": [
+                {
+                  "$ref": "#/types/ExtensionInfo"
+                },
+                {
+                  "name": "result"
+                }
+              ]
             }
           ]
         }
@@ -204,12 +222,25 @@
           "type": "boolean"
         },
         "disabledReason": {
-          "description": "A reason the item is disabled.",
-          "$ref": "#/types/ExtensionDisabledReason"
+          "allOf": [
+            {
+              "$ref": "#/types/ExtensionDisabledReason"
+            },
+            {
+              "description": "A reason the item is disabled.",
+              "optional": true
+            }
+          ]
         },
         "type": {
-          "description": "The type of this extension. Will always return 'extension'.",
-          "$ref": "#/types/ExtensionType"
+          "allOf": [
+            {
+              "$ref": "#/types/ExtensionType"
+            },
+            {
+              "description": "The type of this extension. Will always return 'extension'."
+            }
+          ]
         },
         "homepageUrl": {
           "description": "The URL of the homepage of this extension.",
@@ -245,8 +276,14 @@
           }
         },
         "installType": {
-          "description": "How the extension was installed.",
-          "$ref": "#/types/ExtensionInstallType"
+          "allOf": [
+            {
+              "$ref": "#/types/ExtensionInstallType"
+            },
+            {
+              "description": "How the extension was installed."
+            }
+          ]
         }
       },
       "required": [
@@ -257,6 +294,7 @@
         "version",
         "mayDisable",
         "enabled",
+        "disabledReason",
         "type",
         "optionsUrl",
         "permissions",

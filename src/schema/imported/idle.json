@@ -22,8 +22,14 @@
           "type": "function",
           "parameters": [
             {
-              "name": "newState",
-              "$ref": "#/types/IdleState"
+              "allOf": [
+                {
+                  "$ref": "#/types/IdleState"
+                },
+                {
+                  "name": "newState"
+                }
+              ]
             }
           ]
         }
@@ -50,8 +56,14 @@
       "description": "Fired when the system changes to an active or idle state. The event fires with \"idle\" if the the user has not generated any input for a specified number of seconds, and \"active\" when the user generates input on an idle system.",
       "parameters": [
         {
-          "name": "newState",
-          "$ref": "#/types/IdleState"
+          "allOf": [
+            {
+              "$ref": "#/types/IdleState"
+            },
+            {
+              "name": "newState"
+            }
+          ]
         }
       ]
     }

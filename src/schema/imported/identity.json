@@ -43,7 +43,14 @@
               "type": "boolean"
             },
             "account": {
-              "$ref": "#/types/AccountInfo"
+              "allOf": [
+                {
+                  "$ref": "#/types/AccountInfo"
+                },
+                {
+                  "optional": true
+                }
+              ]
             },
             "scopes": {
               "type": "array",
@@ -51,7 +58,10 @@
                 "type": "string"
               }
             }
-          }
+          },
+          "required": [
+            "account"
+          ]
         },
         {
           "name": "callback",
@@ -204,8 +214,14 @@
       "description": "Fired when signin state changes for an account on the user's profile.",
       "parameters": [
         {
-          "name": "account",
-          "$ref": "#/types/AccountInfo"
+          "allOf": [
+            {
+              "$ref": "#/types/AccountInfo"
+            },
+            {
+              "name": "account"
+            }
+          ]
         },
         {
           "name": "signedIn",

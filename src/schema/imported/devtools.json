@@ -1,0 +1,37 @@
+{
+  "id": "devtools",
+  "allowedContexts": [
+    "devtools",
+    "devtools_only"
+  ],
+  "defaultContexts": [
+    "devtools",
+    "devtools_only"
+  ],
+  "definitions": {
+    "WebExtensionManifest": {
+      "properties": {
+        "devtools_page": {
+          "allOf": [
+            {
+              "$ref": "#/types/ExtensionURL"
+            },
+            {
+              "optional": true
+            }
+          ]
+        }
+      },
+      "required": [
+        "devtools_page"
+      ]
+    }
+  },
+  "refs": {
+    "devtools#/definitions/WebExtensionManifest": {
+      "namespace": "manifest",
+      "type": "WebExtensionManifest"
+    }
+  },
+  "types": {}
+}

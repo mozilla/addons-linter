@@ -25,7 +25,14 @@
               "type": "string"
             },
             "conflictAction": {
-              "$ref": "#/types/FilenameConflictAction"
+              "allOf": [
+                {
+                  "$ref": "#/types/FilenameConflictAction"
+                },
+                {
+                  "optional": true
+                }
+              ]
             },
             "saveAs": {
               "description": "Use a file-chooser to allow the user to select a filename.",
@@ -66,7 +73,8 @@
             }
           },
           "required": [
-            "url"
+            "url",
+            "conflictAction"
           ]
         },
         {
@@ -89,8 +97,14 @@
       "description": "Find <a href='#type-DownloadItem'>DownloadItems</a>. Set <code>query</code> to the empty object to get all <a href='#type-DownloadItem'>DownloadItems</a>. To get a specific <a href='#type-DownloadItem'>DownloadItem</a>, set only the <code>id</code> field.",
       "parameters": [
         {
-          "name": "query",
-          "$ref": "#/types/DownloadQuery"
+          "allOf": [
+            {
+              "$ref": "#/types/DownloadQuery"
+            },
+            {
+              "name": "query"
+            }
+          ]
         },
         {
           "name": "callback",
@@ -257,8 +271,14 @@
       "description": "Erase matching <a href='#type-DownloadItem'>DownloadItems</a> from history",
       "parameters": [
         {
-          "name": "query",
-          "$ref": "#/types/DownloadQuery"
+          "allOf": [
+            {
+              "$ref": "#/types/DownloadQuery"
+            },
+            {
+              "name": "query"
+            }
+          ]
         },
         {
           "name": "callback",
@@ -341,8 +361,14 @@
       "name": "onCreated",
       "parameters": [
         {
-          "$ref": "#/types/DownloadItem",
-          "name": "downloadItem"
+          "allOf": [
+            {
+              "$ref": "#/types/DownloadItem"
+            },
+            {
+              "name": "downloadItem"
+            }
+          ]
         }
       ],
       "type": "function"
@@ -372,58 +398,162 @@
               "type": "integer"
             },
             "url": {
-              "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>url</code>.",
-              "$ref": "#/types/StringDelta"
+              "allOf": [
+                {
+                  "$ref": "#/types/StringDelta"
+                },
+                {
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>url</code>.",
+                  "optional": true
+                }
+              ]
             },
             "filename": {
-              "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>filename</code>.",
-              "$ref": "#/types/StringDelta"
+              "allOf": [
+                {
+                  "$ref": "#/types/StringDelta"
+                },
+                {
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>filename</code>.",
+                  "optional": true
+                }
+              ]
             },
             "danger": {
-              "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>danger</code>.",
-              "$ref": "#/types/StringDelta"
+              "allOf": [
+                {
+                  "$ref": "#/types/StringDelta"
+                },
+                {
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>danger</code>.",
+                  "optional": true
+                }
+              ]
             },
             "mime": {
-              "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>mime</code>.",
-              "$ref": "#/types/StringDelta"
+              "allOf": [
+                {
+                  "$ref": "#/types/StringDelta"
+                },
+                {
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>mime</code>.",
+                  "optional": true
+                }
+              ]
             },
             "startTime": {
-              "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>startTime</code>.",
-              "$ref": "#/types/StringDelta"
+              "allOf": [
+                {
+                  "$ref": "#/types/StringDelta"
+                },
+                {
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>startTime</code>.",
+                  "optional": true
+                }
+              ]
             },
             "endTime": {
-              "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>endTime</code>.",
-              "$ref": "#/types/StringDelta"
+              "allOf": [
+                {
+                  "$ref": "#/types/StringDelta"
+                },
+                {
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>endTime</code>.",
+                  "optional": true
+                }
+              ]
             },
             "state": {
-              "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>state</code>.",
-              "$ref": "#/types/StringDelta"
+              "allOf": [
+                {
+                  "$ref": "#/types/StringDelta"
+                },
+                {
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>state</code>.",
+                  "optional": true
+                }
+              ]
             },
             "canResume": {
-              "$ref": "#/types/BooleanDelta"
+              "allOf": [
+                {
+                  "$ref": "#/types/BooleanDelta"
+                },
+                {
+                  "optional": true
+                }
+              ]
             },
             "paused": {
-              "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>paused</code>.",
-              "$ref": "#/types/BooleanDelta"
+              "allOf": [
+                {
+                  "$ref": "#/types/BooleanDelta"
+                },
+                {
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>paused</code>.",
+                  "optional": true
+                }
+              ]
             },
             "error": {
-              "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>error</code>.",
-              "$ref": "#/types/StringDelta"
+              "allOf": [
+                {
+                  "$ref": "#/types/StringDelta"
+                },
+                {
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>error</code>.",
+                  "optional": true
+                }
+              ]
             },
             "totalBytes": {
-              "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>totalBytes</code>.",
-              "$ref": "#/types/DoubleDelta"
+              "allOf": [
+                {
+                  "$ref": "#/types/DoubleDelta"
+                },
+                {
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>totalBytes</code>.",
+                  "optional": true
+                }
+              ]
             },
             "fileSize": {
-              "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>fileSize</code>.",
-              "$ref": "#/types/DoubleDelta"
+              "allOf": [
+                {
+                  "$ref": "#/types/DoubleDelta"
+                },
+                {
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>fileSize</code>.",
+                  "optional": true
+                }
+              ]
             },
             "exists": {
-              "$ref": "#/types/BooleanDelta"
+              "allOf": [
+                {
+                  "$ref": "#/types/BooleanDelta"
+                },
+                {
+                  "optional": true
+                }
+              ]
             }
           },
           "required": [
-            "id"
+            "id",
+            "url",
+            "filename",
+            "danger",
+            "mime",
+            "startTime",
+            "endTime",
+            "state",
+            "canResume",
+            "paused",
+            "error",
+            "totalBytes",
+            "fileSize",
+            "exists"
           ]
         }
       ],
@@ -534,8 +664,14 @@
           "type": "boolean"
         },
         "danger": {
-          "$ref": "#/types/DangerType",
-          "description": "Indication of whether this download is thought to be safe or known to be suspicious."
+          "allOf": [
+            {
+              "$ref": "#/types/DangerType"
+            },
+            {
+              "description": "Indication of whether this download is thought to be safe or known to be suspicious."
+            }
+          ]
         },
         "mime": {
           "description": "The file's MIME type.",
@@ -553,8 +689,14 @@
           "type": "string"
         },
         "state": {
-          "$ref": "#/types/State",
-          "description": "Indicates whether the download is progressing, interrupted, or complete."
+          "allOf": [
+            {
+              "$ref": "#/types/State"
+            },
+            {
+              "description": "Indicates whether the download is progressing, interrupted, or complete."
+            }
+          ]
         },
         "paused": {
           "description": "True if the download has stopped reading data from the host, but kept the connection open.",
@@ -564,8 +706,15 @@
           "type": "boolean"
         },
         "error": {
-          "description": "Number indicating why a download was interrupted.",
-          "$ref": "#/types/InterruptReason"
+          "allOf": [
+            {
+              "$ref": "#/types/InterruptReason"
+            },
+            {
+              "description": "Number indicating why a download was interrupted.",
+              "optional": true
+            }
+          ]
         },
         "bytesReceived": {
           "description": "Number of bytes received so far from the host, without considering file compression.",
@@ -601,6 +750,7 @@
         "state",
         "paused",
         "canResume",
+        "error",
         "bytesReceived",
         "totalBytes",
         "fileSize",
@@ -664,20 +814,48 @@
           }
         },
         "startedBefore": {
-          "description": "Limits results to downloads that started before the given ms since the epoch.",
-          "$ref": "#/types/DownloadTime"
+          "allOf": [
+            {
+              "$ref": "#/types/DownloadTime"
+            },
+            {
+              "description": "Limits results to downloads that started before the given ms since the epoch.",
+              "optional": true
+            }
+          ]
         },
         "startedAfter": {
-          "description": "Limits results to downloads that started after the given ms since the epoch.",
-          "$ref": "#/types/DownloadTime"
+          "allOf": [
+            {
+              "$ref": "#/types/DownloadTime"
+            },
+            {
+              "description": "Limits results to downloads that started after the given ms since the epoch.",
+              "optional": true
+            }
+          ]
         },
         "endedBefore": {
-          "description": "Limits results to downloads that ended before the given ms since the epoch.",
-          "$ref": "#/types/DownloadTime"
+          "allOf": [
+            {
+              "$ref": "#/types/DownloadTime"
+            },
+            {
+              "description": "Limits results to downloads that ended before the given ms since the epoch.",
+              "optional": true
+            }
+          ]
         },
         "endedAfter": {
-          "description": "Limits results to downloads that ended after the given ms since the epoch.",
-          "$ref": "#/types/DownloadTime"
+          "allOf": [
+            {
+              "$ref": "#/types/DownloadTime"
+            },
+            {
+              "description": "Limits results to downloads that ended after the given ms since the epoch.",
+              "optional": true
+            }
+          ]
         },
         "totalBytesGreater": {
           "description": "Limits results to downloads whose totalBytes is greater than the given integer.",
@@ -718,8 +896,15 @@
           "type": "string"
         },
         "danger": {
-          "$ref": "#/types/DangerType",
-          "description": "Indication of whether this download is thought to be safe or known to be suspicious."
+          "allOf": [
+            {
+              "$ref": "#/types/DangerType"
+            },
+            {
+              "description": "Indication of whether this download is thought to be safe or known to be suspicious.",
+              "optional": true
+            }
+          ]
         },
         "mime": {
           "description": "The file's MIME type.",
@@ -732,16 +917,30 @@
           "type": "string"
         },
         "state": {
-          "$ref": "#/types/State",
-          "description": "Indicates whether the download is progressing, interrupted, or complete."
+          "allOf": [
+            {
+              "$ref": "#/types/State"
+            },
+            {
+              "description": "Indicates whether the download is progressing, interrupted, or complete.",
+              "optional": true
+            }
+          ]
         },
         "paused": {
           "description": "True if the download has stopped reading data from the host, but kept the connection open.",
           "type": "boolean"
         },
         "error": {
-          "description": "Why a download was interrupted.",
-          "$ref": "#/types/InterruptReason"
+          "allOf": [
+            {
+              "$ref": "#/types/InterruptReason"
+            },
+            {
+              "description": "Why a download was interrupted.",
+              "optional": true
+            }
+          ]
         },
         "bytesReceived": {
           "description": "Number of bytes received so far from the host, without considering file compression.",
@@ -758,7 +957,16 @@
         "exists": {
           "type": "boolean"
         }
-      }
+      },
+      "required": [
+        "startedBefore",
+        "startedAfter",
+        "endedBefore",
+        "endedAfter",
+        "danger",
+        "state",
+        "error"
+      ]
     }
   }
 }
