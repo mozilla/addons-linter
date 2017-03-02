@@ -9,17 +9,17 @@ describe('no_eval', () => {
     'Eval(foo)',
 
     // User-defined eval methods.
-    'window.noeval("foo")',
+    'class A { foo() { this.eval(); } }',
+    'class A { static foo() { this.eval(); } }',
+    'function foo() { "use strict"; this.eval("foo"); }',
+    'function foo() { var eval = "foo"; global[eval]("foo") }',
     'function foo() { var eval = "foo"; window[eval]("foo") }',
     'global.eval("foo")',
     'global.noeval("foo")',
-    'function foo() { var eval = "foo"; global[eval]("foo") }',
     'this.noeval("foo");',
-    'function foo() { "use strict"; this.eval("foo"); }',
     'var obj = {foo: function() { this.eval("foo"); }}',
     'var obj = {}; obj.foo = function() { this.eval("foo"); }',
-    'class A { foo() { this.eval(); } }',
-    'class A { static foo() { this.eval(); } }',
+    'window.noeval("foo")',
   ];
 
   for (const code of validCodes) {
@@ -36,18 +36,6 @@ describe('no_eval', () => {
 
   var invalidCodes = [
     {
-      code: 'eval(foo)',
-      message: ['eval can be harmful.'],
-    },
-    {
-      code: 'eval("foo")',
-      message: ['eval can be harmful.'],
-    },
-    {
-      code: 'function foo(eval) { eval("foo") }',
-      message: ['eval can be harmful.'],
-    },
-    {
       code: '(0, eval)("foo")',
       message: ['eval can be harmful.'],
     },
@@ -60,15 +48,35 @@ describe('no_eval', () => {
       message: ['eval can be harmful.'],
     },
     {
+      code: '(function(exe){ exe("foo") })(eval);',
+      message: ['eval can be harmful.'],
+    },
+    {
+      code: 'eval("foo")',
+      message: ['eval can be harmful.'],
+    },
+    {
+      code: 'eval(foo)',
+      message: ['eval can be harmful.'],
+    },
+    {
+      code: 'function foo() { this.eval("foo") }',
+      message: ['eval can be harmful.'],
+    },
+    {
+      code: 'function foo(eval) { eval("foo") }',
+      message: ['eval can be harmful.'],
+    },
+    {
+      code: 'this.eval("foo")',
+      message: ['eval can be harmful.'],
+    },
+    {
       code: 'var EVAL = eval; EVAL("foo")',
       message: ['eval can be harmful.'],
     },
     {
       code: 'var EVAL = this.eval; EVAL("foo")',
-      message: ['eval can be harmful.'],
-    },
-    {
-      code: '(function(exe){ exe("foo") })(eval);',
       message: ['eval can be harmful.'],
     },
     {
@@ -83,15 +91,6 @@ describe('no_eval', () => {
       code: 'window.window["eval"]("foo")',
       message: ['eval can be harmful.'],
     },
-    {
-      code: 'this.eval("foo")',
-      message: ['eval can be harmful.'],
-    },
-    {
-      code: 'function foo() { this.eval("foo") }',
-      message: ['eval can be harmful.'],
-    },
-
   ];
 
   for (const code of invalidCodes) {
