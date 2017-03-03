@@ -11,7 +11,8 @@ import {
 describe('firefox schema import', () => {
   let sandbox;
 
-  beforeEach(() => { sandbox = sinon.sandbox.create();
+  beforeEach(() => {
+    sandbox = sinon.sandbox.create();
   });
 
   afterEach(() => {
@@ -310,7 +311,7 @@ describe('firefox schema import', () => {
   });
 
   describe('processSchemas', () => {
-    it('loads each schema and delegates to mapExtendToRef', () => {
+    it('loads each schema and delegates to helpers', () => {
       const firstSchema = [{ id: 'manifest' }];
       const secondSchema = [{ id: 'manifest' }, { id: 'cookies' }];
       const loadSchema = sandbox.stub(inner, 'loadSchema');
@@ -322,13 +323,17 @@ describe('firefox schema import', () => {
           manifest: { file: 'one', schema: { id: 'manifest', schema: 1 } },
           cookies: { file: 'two', schema: { id: 'cookies', schema: 2 } },
         })
-        .returns({ done: true });
+        .returns({ mapExtendToRef: 'done' });
+      sandbox
+        .stub(inner, 'updateWithAddonsLinterData')
+        .withArgs({ mapExtendToRef: 'done' })
+        .returns({ updateWithAddonsLinterData: 'done' });
       assert.deepEqual(
         processSchemas([
           { file: 'one', schema: firstSchema },
           { file: 'two', schema: secondSchema },
         ]),
-        { done: true });
+        { updateWithAddonsLinterData: 'done' });
     });
   });
 
