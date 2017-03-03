@@ -50,7 +50,7 @@ function loadSchemasFromFile(basePath) {
 
 export function importSchemas(firefoxPath, ourPath) {
   const rawSchemas = loadSchemasFromFile(firefoxPath);
-  const ourSchemas = loadSchemasFromFile(ourPath);
+  const ourSchemas = readSchema(ourPath, 'manifest.json');
   const processedSchemas = processSchemas(rawSchemas, ourSchemas);
   writeSchemasToFile(firefoxPath, processedSchemas);
 }

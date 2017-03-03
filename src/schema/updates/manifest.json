@@ -1,9 +1,7 @@
-[
-  {
-    "namespace": "manifest",
-    "types": [
-      {
-        "$update": "FirefoxSpecificProperties",
+{
+  "manifest": {
+    "types": {
+      "FirefoxSpecificProperties": {
         "properties": {
           "strict_min_version": {
             "default": "42a1",
@@ -17,6 +15,6 @@
           }
         }
       }
-    ]
+    }
   }
-]
+}

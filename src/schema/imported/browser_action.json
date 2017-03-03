@@ -405,14 +405,7 @@
               "preprocess": "localize"
             },
             "default_icon": {
-              "allOf": [
-                {
-                  "$ref": "manifest#/types/IconPath"
-                },
-                {
-                  "optional": true
-                }
-              ]
+              "$ref": "manifest#/types/IconPath"
             },
             "default_popup": {
               "type": "string",
@@ -422,10 +415,7 @@
             "browser_style": {
               "type": "boolean"
             }
-          },
-          "required": [
-            "default_icon"
-          ]
+          }
         }
       }
     }

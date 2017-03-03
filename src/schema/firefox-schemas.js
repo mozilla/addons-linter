@@ -1,3 +1,5 @@
+import deepExtend from 'deep-extend';
+
 const FLAG_PATTERN_REGEX = /^\(\?[im]*\)(.*)/;
 
 // Reference some functions on inner so they can be stubbed in tests.
@@ -33,12 +35,31 @@ export function rewriteOptionalToRequired(schema) {
   return { ...withoutOptional, required };
 }
 
+function isUnrecognizedProperty(value) {
+  if (typeof value === 'object') {
+    const keys = Object.keys(value);
+    return keys.length === 1 &&
+      '$ref' in value &&
+      value.$ref === 'UnrecognizedProperty';
+  }
+  return false;
+}
+
 export function rewriteValue(key, value) {
   if (Array.isArray(value)) {
     return value.map((val) => rewriteValue(key, val));
+  } else if (key === 'additionalProperties' &&
+      isUnrecognizedProperty(value)) {
+    return undefined;
   } else if (typeof value === 'object') {
     if ('$ref' in value && Object.keys(value).length > 1) {
       const { $ref, ...rest } = value;
+      if (Object.keys(rest).length === 1 && 'optional' in rest) {
+        return {
+          $ref: rewriteValue('$ref', $ref),
+          ...rest,
+        };
+      }
       return {
         allOf: [
           { $ref: rewriteValue('$ref', $ref) },
@@ -133,9 +154,16 @@ inner.mapExtendToRef = (schemas) => {
 };
 
 inner.updateWithAddonsLinterData = (firefoxSchemas, ourSchemas) => {
-  // eslint-disable-next-line no-console
-  console.log(ourSchemas);
-  return firefoxSchemas;
+  const schemas = { ...firefoxSchemas };
+  Object.keys(ourSchemas).forEach((namespace) => {
+    const firefoxSchema = firefoxSchemas[namespace];
+    const ourSchema = ourSchemas[namespace];
+    schemas[namespace] = {
+      ...firefoxSchema,
+      schema: deepExtend(firefoxSchema.schema, ourSchema),
+    };
+  });
+  return schemas;
 };
 
 export function loadTypes(types = []) {

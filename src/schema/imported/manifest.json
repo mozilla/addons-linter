@@ -22,37 +22,17 @@
               "type": "object",
               "properties": {
                 "gecko": {
-                  "allOf": [
-                    {
-                      "$ref": "#/types/FirefoxSpecificProperties"
-                    },
-                    {
-                      "optional": true
-                    }
-                  ]
+                  "$ref": "#/types/FirefoxSpecificProperties"
                 }
-              },
-              "required": [
-                "gecko"
-              ]
+              }
             },
             "browser_specific_settings": {
               "type": "object",
               "properties": {
                 "gecko": {
-                  "allOf": [
-                    {
-                      "$ref": "#/types/FirefoxSpecificProperties"
-                    },
-                    {
-                      "optional": true
-                    }
-                  ]
+                  "$ref": "#/types/FirefoxSpecificProperties"
                 }
-              },
-              "required": [
-                "gecko"
-              ]
+              }
             },
             "name": {
               "type": "string",
@@ -103,22 +83,11 @@
                       "$ref": "#/types/ExtensionURL"
                     },
                     "persistent": {
-                      "allOf": [
-                        {
-                          "$ref": "#/types/PersistentBackgroundProperty"
-                        },
-                        {
-                          "optional": true
-                        }
-                      ]
+                      "$ref": "#/types/PersistentBackgroundProperty"
                     }
                   },
-                  "additionalProperties": {
-                    "$ref": "#/types/UnrecognizedProperty"
-                  },
                   "required": [
-                    "page",
-                    "persistent"
+                    "page"
                   ]
                 },
                 {
@@ -131,22 +100,11 @@
                       }
                     },
                     "persistent": {
-                      "allOf": [
-                        {
-                          "$ref": "#/types/PersistentBackgroundProperty"
-                        },
-                        {
-                          "optional": true
-                        }
-                      ]
+                      "$ref": "#/types/PersistentBackgroundProperty"
                     }
                   },
-                  "additionalProperties": {
-                    "$ref": "#/types/UnrecognizedProperty"
-                  },
                   "required": [
-                    "scripts",
-                    "persistent"
+                    "scripts"
                   ]
                 }
               ]
@@ -218,9 +176,6 @@
                 }
               }
             }
-          },
-          "additionalProperties": {
-            "$ref": "#/types/UnrecognizedProperty"
           },
           "required": [
             "manifest_version",
@@ -338,29 +293,25 @@
       "type": "object",
       "properties": {
         "id": {
-          "allOf": [
-            {
-              "$ref": "#/types/ExtensionID"
-            },
-            {
-              "optional": true
-            }
-          ]
+          "$ref": "#/types/ExtensionID"
         },
         "update_url": {
           "type": "string",
           "format": "url"
         },
         "strict_min_version": {
-          "type": "string"
+          "type": "string",
+          "default": "42a1",
+          "description": "Minimum version of Gecko to support. Defaults to '42a1'. (Requires Gecko 45)",
+          "pattern": "^[0-9]{1,3}(\\.[a-z0-9]+)+$"
         },
         "strict_max_version": {
-          "type": "string"
+          "type": "string",
+          "default": "*",
+          "description": "Maximum version of Gecko to support. Defaults to '*'. (Requires Gecko 45)",
+          "pattern": "^[0-9]{1,3}(\\.[a-z0-9*]+)+$"
         }
-      },
-      "required": [
-        "id"
-      ]
+      }
     },
     "MatchPattern": {
       "anyOf": [
@@ -383,9 +334,6 @@
     "ContentScript": {
       "type": "object",
       "description": "Details of the script or CSS to inject. Either the code or the file property must be set, but both may not be set at the same time. Based on InjectDetails, but using underscore rather than camel case naming conventions.",
-      "additionalProperties": {
-        "$ref": "#/types/UnrecognizedProperty"
-      },
       "properties": {
         "matches": {
           "type": "array",

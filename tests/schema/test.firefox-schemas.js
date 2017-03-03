@@ -172,6 +172,18 @@ describe('firefox schema import', () => {
       };
       assert.deepEqual(rewriteValue('foo', original), expected);
     });
+
+    it('leaves $ref objects that only have an extra optional property', () => {
+      const original = { $ref: 'Foo', optional: true };
+      const expected = { $ref: '#/types/Foo', optional: true };
+      assert.deepEqual(rewriteValue('foo', original), expected);
+    });
+
+    it('strips UnrecognizedProperty in additionalProperties', () => {
+      assert.equal(
+        rewriteValue('additionalProperties', { $ref: 'UnrecognizedProperty' }),
+        undefined);
+    });
   });
 
   describe('rewriteKey', () => {
@@ -594,6 +606,66 @@ describe('firefox schema import', () => {
       assert.throws(
         () => rewriteExtend(schemas, 'foo'),
         '$extend or id is required');
+    });
+  });
+
+  describe('updateWithAddonsLinterData', () => {
+    it('updates the firefox schemas with addons-linter data', () => {
+      const firefoxSchemas = {
+        manifest: {
+          file: 'manifest.json',
+          schema: {
+            types: {
+              FirefoxSpecificProperties: {
+                properties: {
+                  strict_min_version: { type: 'string' },
+                },
+              },
+            },
+          },
+        },
+      };
+      const ourSchemas = {
+        manifest: {
+          types: {
+            FirefoxSpecificProperties: {
+              properties: {
+                strict_min_version: {
+                  default: '42a1',
+                  description:
+                    'Minimum version of Gecko to support. '
+                    + "Defaults to '42a1'. (Requires Gecko 45)",
+                  pattern: '^[0-9]{1,3}(\\.[a-z0-9]+)+$',
+                },
+              },
+            },
+          },
+        },
+      };
+      const expected = {
+        manifest: {
+          file: 'manifest.json',
+          schema: {
+            types: {
+              FirefoxSpecificProperties: {
+                properties: {
+                  strict_min_version: {
+                    default: '42a1',
+                    description:
+                      'Minimum version of Gecko to support. '
+                      + "Defaults to '42a1'. (Requires Gecko 45)",
+                    pattern: '^[0-9]{1,3}(\\.[a-z0-9]+)+$',
+                    type: 'string',
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+      assert.deepEqual(
+        inner.updateWithAddonsLinterData(firefoxSchemas, ourSchemas),
+        expected);
     });
   });
 });

@@ -57,44 +57,16 @@
                 "type": "object",
                 "properties": {
                   "default": {
-                    "allOf": [
-                      {
-                        "$ref": "#/types/KeyName"
-                      },
-                      {
-                        "optional": true
-                      }
-                    ]
+                    "$ref": "#/types/KeyName"
                   },
                   "mac": {
-                    "allOf": [
-                      {
-                        "$ref": "#/types/KeyName"
-                      },
-                      {
-                        "optional": true
-                      }
-                    ]
+                    "$ref": "#/types/KeyName"
                   },
                   "linux": {
-                    "allOf": [
-                      {
-                        "$ref": "#/types/KeyName"
-                      },
-                      {
-                        "optional": true
-                      }
-                    ]
+                    "$ref": "#/types/KeyName"
                   },
                   "windows": {
-                    "allOf": [
-                      {
-                        "$ref": "#/types/KeyName"
-                      },
-                      {
-                        "optional": true
-                      }
-                    ]
+                    "$ref": "#/types/KeyName"
                   },
                   "chromeos": {
                     "type": "string"
@@ -109,13 +81,7 @@
                     "type": "string",
                     "deprecated": "Unknown platform name"
                   }
-                },
-                "required": [
-                  "default",
-                  "mac",
-                  "linux",
-                  "windows"
-                ]
+                }
               },
               "description": {
                 "type": "string"

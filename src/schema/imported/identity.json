@@ -43,14 +43,7 @@
               "type": "boolean"
             },
             "account": {
-              "allOf": [
-                {
-                  "$ref": "#/types/AccountInfo"
-                },
-                {
-                  "optional": true
-                }
-              ]
+              "$ref": "#/types/AccountInfo"
             },
             "scopes": {
               "type": "array",
@@ -58,10 +51,7 @@
                 "type": "string"
               }
             }
-          },
-          "required": [
-            "account"
-          ]
+          }
         },
         {
           "name": "callback",

@@ -147,14 +147,7 @@
           "name": "createProperties",
           "properties": {
             "type": {
-              "allOf": [
-                {
-                  "$ref": "#/types/ItemType"
-                },
-                {
-                  "optional": true
-                }
-              ]
+              "$ref": "#/types/ItemType"
             },
             "id": {
               "anyOf": [
@@ -206,7 +199,6 @@
             }
           },
           "required": [
-            "type",
             "id"
           ]
         },
@@ -242,14 +234,7 @@
           "description": "The properties to update. Accepts the same values as the create function.",
           "properties": {
             "type": {
-              "allOf": [
-                {
-                  "$ref": "#/types/ItemType"
-                },
-                {
-                  "optional": true
-                }
-              ]
+              "$ref": "#/types/ItemType"
             },
             "title": {
               "type": "string"
@@ -316,10 +301,7 @@
             "enabled": {
               "type": "boolean"
             }
-          },
-          "required": [
-            "type"
-          ]
+          }
         },
         {
           "type": "function",

@@ -156,14 +156,7 @@
               "preprocess": "localize"
             },
             "default_icon": {
-              "allOf": [
-                {
-                  "$ref": "manifest#/types/IconPath"
-                },
-                {
-                  "optional": true
-                }
-              ]
+              "$ref": "manifest#/types/IconPath"
             },
             "default_panel": {
               "type": "string",
@@ -172,7 +165,6 @@
             }
           },
           "required": [
-            "default_icon",
             "default_panel"
           ]
         }
