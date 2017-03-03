@@ -2,6 +2,7 @@ import {
   inner,
   loadTypes,
   processSchemas,
+  rewriteExtend,
   rewriteKey,
   rewriteOptionalToRequired,
   rewriteValue,
@@ -10,8 +11,7 @@ import {
 describe('firefox schema import', () => {
   let sandbox;
 
-  beforeEach(() => {
-    sandbox = sinon.sandbox.create();
+  beforeEach(() => { sandbox = sinon.sandbox.create();
   });
 
   afterEach(() => {
@@ -146,6 +146,26 @@ describe('firefox schema import', () => {
       };
       assert.deepEqual(rewriteValue('foo', original), expected);
     });
+
+    it('fixes $ref with other properties', () => {
+      const original = {
+        $ref: 'Foo',
+        properties: {
+          foo: { type: 'string', optional: true },
+          bar: { type: 'string' },
+        },
+      };
+      const expected = {
+        allOf: [
+          { $ref: '#/types/Foo' },
+          {
+            properties: { foo: { type: 'string' }, bar: { type: 'string' } },
+            required: ['bar'],
+          },
+        ],
+      };
+      assert.deepEqual(rewriteValue('foo', original), expected);
+    });
   });
 
   describe('rewriteKey', () => {
@@ -182,6 +202,10 @@ describe('firefox schema import', () => {
           Foo: { id: 'Foo', type: 'object' },
           Bar: { id: 'Bar', type: 'string' },
         });
+    });
+
+    it('handles there not being any types', () => {
+      assert.deepEqual(loadTypes(undefined), {});
     });
   });
 
@@ -455,6 +479,63 @@ describe('firefox schema import', () => {
             },
           },
         });
+    });
+  });
+
+  describe('rewriteExtend', () => {
+    it('moves $extend into definitions and refs', () => {
+      const schemas = [{
+        namespace: 'manifest',
+        types: [{
+          $extend: 'WebExtensionManifest',
+          properties: { something: { type: 'string' } },
+        }],
+      }];
+      const expected = {
+        definitions: {
+          WebExtensionManifest: {
+            properties: { something: { type: 'string' } },
+          },
+        },
+        refs: {
+          'foo#/definitions/WebExtensionManifest': {
+            namespace: 'manifest',
+            type: 'WebExtensionManifest',
+          },
+        },
+        types: {},
+      };
+      assert.deepEqual(rewriteExtend(schemas, 'foo'), expected);
+    });
+
+    it('returns types in an object of types', () => {
+      const schemas = [{
+        namespace: 'manifest',
+        types: [{
+          id: 'Yo',
+          properties: { hey: { type: 'string' } },
+        }],
+      }];
+      const expected = {
+        definitions: {},
+        refs: {},
+        types: {
+          Yo: { properties: { hey: { type: 'string' } } },
+        },
+      };
+      assert.deepEqual(rewriteExtend(schemas, 'foo'), expected);
+    });
+
+    it('throws if there is no $extend or id', () => {
+      const schemas = [{
+        namespace: 'manifest',
+        types: [{
+          properties: { uhoh: { type: 'number' } },
+        }],
+      }];
+      assert.throws(
+        () => rewriteExtend(schemas, 'foo'),
+        '$extend or id is required');
     });
   });
 });

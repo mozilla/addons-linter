@@ -196,13 +196,25 @@
       "async": true,
       "parameters": [
         {
-          "name": "promise",
-          "$ref": "#/types/Promise"
+          "allOf": [
+            {
+              "$ref": "#/types/Promise"
+            },
+            {
+              "name": "promise"
+            }
+          ]
         },
         {
-          "name": "expectedError",
-          "$ref": "#/types/ExpectedError",
-          "optional": true
+          "allOf": [
+            {
+              "$ref": "#/types/ExpectedError"
+            },
+            {
+              "name": "expectedError",
+              "optional": true
+            }
+          ]
         },
         {
           "name": "message",
@@ -220,9 +232,15 @@
           "type": "function"
         },
         {
-          "name": "expectedError",
-          "$ref": "#/types/ExpectedError",
-          "optional": true
+          "allOf": [
+            {
+              "$ref": "#/types/ExpectedError"
+            },
+            {
+              "name": "expectedError",
+              "optional": true
+            }
+          ]
         },
         {
           "name": "message",

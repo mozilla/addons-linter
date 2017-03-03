@@ -67,14 +67,24 @@
           "optional": true,
           "properties": {
             "type": {
-              "$ref": "#/types/ViewType",
-              "description": "The type of view to get. If omitted, returns all views (including background pages and tabs). Valid values: 'tab', 'notification', 'popup'."
+              "allOf": [
+                {
+                  "$ref": "#/types/ViewType"
+                },
+                {
+                  "optional": true,
+                  "description": "The type of view to get. If omitted, returns all views (including background pages and tabs). Valid values: 'tab', 'notification', 'popup'."
+                }
+              ]
             },
             "windowId": {
               "type": "integer",
               "description": "The window to restrict the search to. If omitted, returns all views."
             }
-          }
+          },
+          "required": [
+            "type"
+          ]
         }
       ],
       "returns": {
@@ -167,8 +177,14 @@
           "description": "The request sent by the calling script."
         },
         {
-          "name": "sender",
-          "$ref": "runtime#/types/MessageSender"
+          "allOf": [
+            {
+              "$ref": "runtime#/types/MessageSender"
+            },
+            {
+              "name": "sender"
+            }
+          ]
         },
         {
           "name": "sendResponse",
@@ -190,8 +206,14 @@
           "description": "The request sent by the calling script."
         },
         {
-          "name": "sender",
-          "$ref": "runtime#/types/MessageSender"
+          "allOf": [
+            {
+              "$ref": "runtime#/types/MessageSender"
+            },
+            {
+              "name": "sender"
+            }
+          ]
         },
         {
           "name": "sendResponse",

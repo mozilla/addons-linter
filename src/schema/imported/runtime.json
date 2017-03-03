@@ -143,9 +143,15 @@
           "name": "callback",
           "parameters": [
             {
-              "name": "status",
-              "$ref": "#/types/RequestUpdateCheckStatus",
-              "description": "Result of the update check."
+              "allOf": [
+                {
+                  "$ref": "#/types/RequestUpdateCheckStatus"
+                },
+                {
+                  "name": "status",
+                  "description": "Result of the update check."
+                }
+              ]
             },
             {
               "name": "details",
@@ -205,8 +211,14 @@
         }
       ],
       "returns": {
-        "$ref": "#/types/Port",
-        "description": "Port through which messages can be sent and received. The port's $(ref:runtime.Port onDisconnect) event is fired if the extension/app does not exist. "
+        "allOf": [
+          {
+            "$ref": "#/types/Port"
+          },
+          {
+            "description": "Port through which messages can be sent and received. The port's $(ref:runtime.Port onDisconnect) event is fired if the extension/app does not exist. "
+          }
+        ]
       }
     },
     {
@@ -224,8 +236,14 @@
         }
       ],
       "returns": {
-        "$ref": "#/types/Port",
-        "description": "Port through which messages can be sent and received with the application"
+        "allOf": [
+          {
+            "$ref": "#/types/Port"
+          },
+          {
+            "description": "Port through which messages can be sent and received with the application"
+          }
+        ]
       }
     },
     {
@@ -315,8 +333,14 @@
           "description": "Called with results",
           "parameters": [
             {
-              "name": "browserInfo",
-              "$ref": "#/types/BrowserInfo"
+              "allOf": [
+                {
+                  "$ref": "#/types/BrowserInfo"
+                },
+                {
+                  "name": "browserInfo"
+                }
+              ]
             }
           ]
         }
@@ -334,8 +358,14 @@
           "description": "Called with results",
           "parameters": [
             {
-              "name": "platformInfo",
-              "$ref": "#/types/PlatformInfo"
+              "allOf": [
+                {
+                  "$ref": "#/types/PlatformInfo"
+                },
+                {
+                  "name": "platformInfo"
+                }
+              ]
             }
           ]
         }
@@ -379,8 +409,14 @@
           "name": "details",
           "properties": {
             "reason": {
-              "$ref": "#/types/OnInstalledReason",
-              "description": "The reason that this event is being dispatched."
+              "allOf": [
+                {
+                  "$ref": "#/types/OnInstalledReason"
+                },
+                {
+                  "description": "The reason that this event is being dispatched."
+                }
+              ]
             },
             "previousVersion": {
               "type": "string",
@@ -451,8 +487,14 @@
       "description": "Fired when a connection is made from either an extension process or a content script.",
       "parameters": [
         {
-          "$ref": "#/types/Port",
-          "name": "port"
+          "allOf": [
+            {
+              "$ref": "#/types/Port"
+            },
+            {
+              "name": "port"
+            }
+          ]
         }
       ]
     },
@@ -463,8 +505,14 @@
       "description": "Fired when a connection is made from another extension.",
       "parameters": [
         {
-          "$ref": "#/types/Port",
-          "name": "port"
+          "allOf": [
+            {
+              "$ref": "#/types/Port"
+            },
+            {
+              "name": "port"
+            }
+          ]
         }
       ]
     },
@@ -483,8 +531,14 @@
           "description": "The message sent by the calling script."
         },
         {
-          "name": "sender",
-          "$ref": "#/types/MessageSender"
+          "allOf": [
+            {
+              "$ref": "#/types/MessageSender"
+            },
+            {
+              "name": "sender"
+            }
+          ]
         },
         {
           "name": "sendResponse",
@@ -510,8 +564,14 @@
           "description": "The message sent by the calling script."
         },
         {
-          "name": "sender",
-          "$ref": "#/types/MessageSender"
+          "allOf": [
+            {
+              "$ref": "#/types/MessageSender"
+            },
+            {
+              "name": "sender"
+            }
+          ]
         },
         {
           "name": "sendResponse",
@@ -532,9 +592,15 @@
       "description": "Fired when an app or the device that it runs on needs to be restarted. The app should close all its windows at its earliest convenient time to let the restart to happen. If the app does nothing, a restart will be enforced after a 24-hour grace period has passed. Currently, this event is only fired for Chrome OS kiosk apps.",
       "parameters": [
         {
-          "$ref": "#/types/OnRestartRequiredReason",
-          "name": "reason",
-          "description": "The reason that the event is being dispatched."
+          "allOf": [
+            {
+              "$ref": "#/types/OnRestartRequiredReason"
+            },
+            {
+              "name": "reason",
+              "description": "The reason that the event is being dispatched."
+            }
+          ]
         }
       ]
     }
@@ -582,8 +648,15 @@
           "type": "function"
         },
         "sender": {
-          "$ref": "#/types/MessageSender",
-          "description": "This property will <b>only</b> be present on ports passed to onConnect/onConnectExternal listeners."
+          "allOf": [
+            {
+              "$ref": "#/types/MessageSender"
+            },
+            {
+              "optional": true,
+              "description": "This property will <b>only</b> be present on ports passed to onConnect/onConnectExternal listeners."
+            }
+          ]
         }
       },
       "additionalProperties": {},
@@ -592,7 +665,8 @@
         "disconnect",
         "onDisconnect",
         "onMessage",
-        "postMessage"
+        "postMessage",
+        "sender"
       ]
     },
     "MessageSender": {
@@ -604,8 +678,15 @@
       "description": "An object containing information about the script context that sent a message or request.",
       "properties": {
         "tab": {
-          "$ref": "tabs#/types/Tab",
-          "description": "The $(ref:tabs.Tab) which opened the connection, if any. This property will <strong>only</strong> be present when the connection was opened from a tab (including content scripts), and <strong>only</strong> if the receiver is an extension, not an app."
+          "allOf": [
+            {
+              "$ref": "tabs#/types/Tab"
+            },
+            {
+              "optional": true,
+              "description": "The $(ref:tabs.Tab) which opened the connection, if any. This property will <strong>only</strong> be present when the connection was opened from a tab (including content scripts), and <strong>only</strong> if the receiver is an extension, not an app."
+            }
+          ]
         },
         "frameId": {
           "type": "integer",
@@ -624,7 +705,10 @@
           "type": "string",
           "description": "The TLS channel ID of the page or frame that opened the connection, if requested by the extension or app, and if available."
         }
-      }
+      },
+      "required": [
+        "tab"
+      ]
     },
     "PlatformOs": {
       "type": "string",
@@ -664,17 +748,35 @@
       "description": "An object containing information about the current platform.",
       "properties": {
         "os": {
-          "$ref": "#/types/PlatformOs",
-          "description": "The operating system the browser is running on."
+          "allOf": [
+            {
+              "$ref": "#/types/PlatformOs"
+            },
+            {
+              "description": "The operating system the browser is running on."
+            }
+          ]
         },
         "arch": {
-          "$ref": "#/types/PlatformArch",
-          "description": "The machine's processor architecture."
+          "allOf": [
+            {
+              "$ref": "#/types/PlatformArch"
+            },
+            {
+              "description": "The machine's processor architecture."
+            }
+          ]
         },
         "nacl_arch": {
-          "unsupported": true,
-          "description": "The native client architecture. This may be different from arch on some platforms.",
-          "$ref": "#/types/PlatformNaclArch"
+          "allOf": [
+            {
+              "$ref": "#/types/PlatformNaclArch"
+            },
+            {
+              "unsupported": true,
+              "description": "The native client architecture. This may be different from arch on some platforms."
+            }
+          ]
         }
       },
       "required": [

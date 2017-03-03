@@ -1,0 +1,234 @@
+{
+  "id": "omnibox_internal",
+  "description": "The internal namespace used by the omnibox API.",
+  "defaultContexts": [
+    "addon_parent_only"
+  ],
+  "functions": [
+    {
+      "name": "addSuggestions",
+      "type": "function",
+      "async": "callback",
+      "description": "Internal function used by omnibox.onInputChanged for adding search suggestions",
+      "parameters": [
+        {
+          "name": "id",
+          "type": "integer",
+          "description": "The ID of the callback received by onInputChangedInternal"
+        },
+        {
+          "name": "suggestResults",
+          "type": "array",
+          "description": "Array of suggest results",
+          "items": {
+            "$ref": "omnibox#/types/SuggestResult"
+          }
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": []
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "onInputChanged",
+      "type": "function",
+      "description": "Identical to omnibox.onInputChanged except no 'suggest' callback is provided.",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "text"
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "WebExtensionManifest": {
+      "properties": {
+        "omnibox": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/types/UnrecognizedProperty"
+          },
+          "properties": {
+            "keyword": {
+              "type": "string",
+              "pattern": "^[^?\\s:]([^\\s:]*[^/\\s:])?$"
+            }
+          },
+          "required": [
+            "keyword"
+          ]
+        }
+      }
+    }
+  },
+  "refs": {
+    "omnibox_internal#/definitions/WebExtensionManifest": {
+      "namespace": "manifest",
+      "type": "WebExtensionManifest"
+    }
+  },
+  "types": {
+    "DescriptionStyleType": {
+      "type": "string",
+      "description": "The style type.",
+      "enum": [
+        "url",
+        "match",
+        "dim"
+      ]
+    },
+    "OnInputEnteredDisposition": {
+      "type": "string",
+      "enum": [
+        "currentTab",
+        "newForegroundTab",
+        "newBackgroundTab"
+      ],
+      "description": "The window disposition for the omnibox query. This is the recommended context to display results. For example, if the omnibox command is to navigate to a certain URL, a disposition of 'newForegroundTab' means the navigation should take place in a new selected tab."
+    },
+    "SuggestResult": {
+      "type": "object",
+      "description": "A suggest result.",
+      "properties": {
+        "content": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The text that is put into the URL bar, and that is sent to the extension when the user chooses this entry."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The text that is displayed in the URL dropdown. Can contain XML-style markup for styling. The supported tags are 'url' (for a literal URL), 'match' (for highlighting text that matched what the user's query), and 'dim' (for dim helper text). The styles can be nested, eg. <dim><match>dimmed match</match></dim>. You must escape the five predefined entities to display them as text: stackoverflow.com/a/1091953/89484 "
+        },
+        "descriptionStyles": {
+          "unsupported": true,
+          "type": "array",
+          "description": "An array of style ranges for the description, as provided by the extension.",
+          "items": {
+            "type": "object",
+            "description": "The style ranges for the description, as provided by the extension.",
+            "properties": {
+              "offset": {
+                "type": "integer"
+              },
+              "type": {
+                "allOf": [
+                  {
+                    "$ref": "#/types/DescriptionStyleType"
+                  },
+                  {
+                    "description": "The style type"
+                  }
+                ]
+              },
+              "length": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "offset",
+              "type"
+            ]
+          }
+        },
+        "descriptionStylesRaw": {
+          "unsupported": true,
+          "type": "array",
+          "description": "An array of style ranges for the description, as provided by ToValue().",
+          "items": {
+            "type": "object",
+            "description": "The style ranges for the description, as provided by ToValue().",
+            "properties": {
+              "offset": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "offset",
+              "type"
+            ]
+          }
+        }
+      },
+      "required": [
+        "content",
+        "description"
+      ]
+    },
+    "DefaultSuggestResult": {
+      "type": "object",
+      "description": "A suggest result.",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The text that is displayed in the URL dropdown."
+        },
+        "descriptionStyles": {
+          "unsupported": true,
+          "type": "array",
+          "description": "An array of style ranges for the description, as provided by the extension.",
+          "items": {
+            "type": "object",
+            "description": "The style ranges for the description, as provided by the extension.",
+            "properties": {
+              "offset": {
+                "type": "integer"
+              },
+              "type": {
+                "allOf": [
+                  {
+                    "$ref": "#/types/DescriptionStyleType"
+                  },
+                  {
+                    "description": "The style type"
+                  }
+                ]
+              },
+              "length": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "offset",
+              "type"
+            ]
+          }
+        },
+        "descriptionStylesRaw": {
+          "unsupported": true,
+          "type": "array",
+          "description": "An array of style ranges for the description, as provided by ToValue().",
+          "items": {
+            "type": "object",
+            "description": "The style ranges for the description, as provided by ToValue().",
+            "properties": {
+              "offset": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "offset",
+              "type"
+            ]
+          }
+        }
+      },
+      "required": [
+        "description"
+      ]
+    }
+  }
+}

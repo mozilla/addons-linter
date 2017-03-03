@@ -39,10 +39,16 @@
           "name": "callback",
           "parameters": [
             {
-              "name": "cookie",
-              "$ref": "#/types/Cookie",
-              "optional": true,
-              "description": "Contains details about the cookie. This parameter is null if no such cookie was found."
+              "allOf": [
+                {
+                  "$ref": "#/types/Cookie"
+                },
+                {
+                  "name": "cookie",
+                  "optional": true,
+                  "description": "Contains details about the cookie. This parameter is null if no such cookie was found."
+                }
+              ]
             }
           ]
         }
@@ -163,10 +169,16 @@
           "optional": true,
           "parameters": [
             {
-              "name": "cookie",
-              "$ref": "#/types/Cookie",
-              "optional": true,
-              "description": "Contains details about the cookie that's been set.  If setting failed for any reason, this will be \"null\", and $(ref:runtime.lastError) will be set."
+              "allOf": [
+                {
+                  "$ref": "#/types/Cookie"
+                },
+                {
+                  "name": "cookie",
+                  "optional": true,
+                  "description": "Contains details about the cookie that's been set.  If setting failed for any reason, this will be \"null\", and $(ref:runtime.lastError) will be set."
+                }
+              ]
             }
           ]
         }
@@ -273,12 +285,24 @@
               "description": "True if a cookie was removed."
             },
             "cookie": {
-              "$ref": "#/types/Cookie",
-              "description": "Information about the cookie that was set or removed."
+              "allOf": [
+                {
+                  "$ref": "#/types/Cookie"
+                },
+                {
+                  "description": "Information about the cookie that was set or removed."
+                }
+              ]
             },
             "cause": {
-              "$ref": "#/types/OnChangedCause",
-              "description": "The underlying reason behind the cookie's change."
+              "allOf": [
+                {
+                  "$ref": "#/types/OnChangedCause"
+                },
+                {
+                  "description": "The underlying reason behind the cookie's change."
+                }
+              ]
             }
           },
           "required": [

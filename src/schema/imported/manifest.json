@@ -22,17 +22,37 @@
               "type": "object",
               "properties": {
                 "gecko": {
-                  "$ref": "#/types/FirefoxSpecificProperties"
+                  "allOf": [
+                    {
+                      "$ref": "#/types/FirefoxSpecificProperties"
+                    },
+                    {
+                      "optional": true
+                    }
+                  ]
                 }
-              }
+              },
+              "required": [
+                "gecko"
+              ]
             },
             "browser_specific_settings": {
               "type": "object",
               "properties": {
                 "gecko": {
-                  "$ref": "#/types/FirefoxSpecificProperties"
+                  "allOf": [
+                    {
+                      "$ref": "#/types/FirefoxSpecificProperties"
+                    },
+                    {
+                      "optional": true
+                    }
+                  ]
                 }
-              }
+              },
+              "required": [
+                "gecko"
+              ]
             },
             "name": {
               "type": "string",
@@ -83,14 +103,22 @@
                       "$ref": "#/types/ExtensionURL"
                     },
                     "persistent": {
-                      "$ref": "#/types/PersistentBackgroundProperty"
+                      "allOf": [
+                        {
+                          "$ref": "#/types/PersistentBackgroundProperty"
+                        },
+                        {
+                          "optional": true
+                        }
+                      ]
                     }
                   },
                   "additionalProperties": {
                     "$ref": "#/types/UnrecognizedProperty"
                   },
                   "required": [
-                    "page"
+                    "page",
+                    "persistent"
                   ]
                 },
                 {
@@ -103,14 +131,22 @@
                       }
                     },
                     "persistent": {
-                      "$ref": "#/types/PersistentBackgroundProperty"
+                      "allOf": [
+                        {
+                          "$ref": "#/types/PersistentBackgroundProperty"
+                        },
+                        {
+                          "optional": true
+                        }
+                      ]
                     }
                   },
                   "additionalProperties": {
                     "$ref": "#/types/UnrecognizedProperty"
                   },
                   "required": [
-                    "scripts"
+                    "scripts",
+                    "persistent"
                   ]
                 }
               ]
@@ -193,7 +229,28 @@
           ]
         },
         {
+          "$ref": "browserAction#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "commands#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "devtools#/definitions/WebExtensionManifest"
+        },
+        {
           "$ref": "i18n#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "omnibox_internal#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "pageAction#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "sidebarAction#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "theme#/definitions/WebExtensionManifest"
         }
       ]
     },
@@ -215,6 +272,15 @@
           "$ref": "#/types/MatchPattern"
         },
         {
+          "$ref": "bookmarks#/definitions/Permission"
+        },
+        {
+          "$ref": "browsingData#/definitions/Permission"
+        },
+        {
+          "$ref": "contextMenus#/definitions/Permission"
+        },
+        {
           "$ref": "contextualIdentities#/definitions/Permission"
         },
         {
@@ -224,6 +290,9 @@
           "$ref": "downloads#/definitions/Permission"
         },
         {
+          "$ref": "history#/definitions/Permission"
+        },
+        {
           "$ref": "identity#/definitions/Permission"
         },
         {
@@ -231,6 +300,12 @@
         },
         {
           "$ref": "runtime#/definitions/Permission"
+        },
+        {
+          "$ref": "sessions#/definitions/Permission"
+        },
+        {
+          "$ref": "tabs#/definitions/Permission"
         },
         {
           "$ref": "topSites#/definitions/Permission"
@@ -263,7 +338,14 @@
       "type": "object",
       "properties": {
         "id": {
-          "$ref": "#/types/ExtensionID"
+          "allOf": [
+            {
+              "$ref": "#/types/ExtensionID"
+            },
+            {
+              "optional": true
+            }
+          ]
         },
         "update_url": {
           "type": "string",
@@ -275,7 +357,10 @@
         "strict_max_version": {
           "type": "string"
         }
-      }
+      },
+      "required": [
+        "id"
+      ]
     },
     "MatchPattern": {
       "anyOf": [
@@ -351,12 +436,20 @@
           "description": "If matchAboutBlank is true, then the code is also injected in about:blank and about:srcdoc frames if your extension has access to its parent document. Code cannot be inserted in top-level about:-frames. By default it is <code>false</code>."
         },
         "run_at": {
-          "$ref": "extensionTypes#/types/RunAt",
-          "description": "The soonest that the JavaScript or CSS will be injected into the tab. Defaults to \"document_idle\"."
+          "allOf": [
+            {
+              "$ref": "extensionTypes#/types/RunAt"
+            },
+            {
+              "optional": true,
+              "description": "The soonest that the JavaScript or CSS will be injected into the tab. Defaults to \"document_idle\"."
+            }
+          ]
         }
       },
       "required": [
-        "matches"
+        "matches",
+        "run_at"
       ]
     },
     "IconPath": {

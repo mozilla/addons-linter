@@ -187,10 +187,16 @@
       ],
       "extraParameters": [
         {
-          "name": "filters",
-          "optional": true,
-          "$ref": "#/types/EventUrlFilters",
-          "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+          "allOf": [
+            {
+              "$ref": "#/types/EventUrlFilters"
+            },
+            {
+              "name": "filters",
+              "optional": true,
+              "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+            }
+          ]
         }
       ]
     },
@@ -220,9 +226,15 @@
               "description": "0 indicates the navigation happens in the tab content window; a positive value indicates navigation in a subframe. Frame IDs are unique within a tab."
             },
             "transitionType": {
-              "unsupported": true,
-              "$ref": "#/types/TransitionType",
-              "description": "Cause of the navigation."
+              "allOf": [
+                {
+                  "$ref": "#/types/TransitionType"
+                },
+                {
+                  "unsupported": true,
+                  "description": "Cause of the navigation."
+                }
+              ]
             },
             "transitionQualifiers": {
               "unsupported": true,
@@ -250,10 +262,16 @@
       ],
       "extraParameters": [
         {
-          "name": "filters",
-          "optional": true,
-          "$ref": "#/types/EventUrlFilters",
-          "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+          "allOf": [
+            {
+              "$ref": "#/types/EventUrlFilters"
+            },
+            {
+              "name": "filters",
+              "optional": true,
+              "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+            }
+          ]
         }
       ]
     },
@@ -298,10 +316,16 @@
       ],
       "extraParameters": [
         {
-          "name": "filters",
-          "optional": true,
-          "$ref": "#/types/EventUrlFilters",
-          "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+          "allOf": [
+            {
+              "$ref": "#/types/EventUrlFilters"
+            },
+            {
+              "name": "filters",
+              "optional": true,
+              "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+            }
+          ]
         }
       ]
     },
@@ -346,10 +370,16 @@
       ],
       "extraParameters": [
         {
-          "name": "filters",
-          "optional": true,
-          "$ref": "#/types/EventUrlFilters",
-          "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+          "allOf": [
+            {
+              "$ref": "#/types/EventUrlFilters"
+            },
+            {
+              "name": "filters",
+              "optional": true,
+              "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+            }
+          ]
         }
       ]
     },
@@ -400,10 +430,16 @@
       ],
       "extraParameters": [
         {
-          "name": "filters",
-          "optional": true,
-          "$ref": "#/types/EventUrlFilters",
-          "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+          "allOf": [
+            {
+              "$ref": "#/types/EventUrlFilters"
+            },
+            {
+              "name": "filters",
+              "optional": true,
+              "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+            }
+          ]
         }
       ]
     },
@@ -454,10 +490,16 @@
       ],
       "extraParameters": [
         {
-          "name": "filters",
-          "optional": true,
-          "$ref": "#/types/EventUrlFilters",
-          "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+          "allOf": [
+            {
+              "$ref": "#/types/EventUrlFilters"
+            },
+            {
+              "name": "filters",
+              "optional": true,
+              "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+            }
+          ]
         }
       ]
     },
@@ -487,9 +529,15 @@
               "description": "0 indicates the navigation happens in the tab content window; a positive value indicates navigation in a subframe. Frame IDs are unique within a tab."
             },
             "transitionType": {
-              "unsupported": true,
-              "$ref": "#/types/TransitionType",
-              "description": "Cause of the navigation."
+              "allOf": [
+                {
+                  "$ref": "#/types/TransitionType"
+                },
+                {
+                  "unsupported": true,
+                  "description": "Cause of the navigation."
+                }
+              ]
             },
             "transitionQualifiers": {
               "unsupported": true,
@@ -517,10 +565,16 @@
       ],
       "extraParameters": [
         {
-          "name": "filters",
-          "optional": true,
-          "$ref": "#/types/EventUrlFilters",
-          "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+          "allOf": [
+            {
+              "$ref": "#/types/EventUrlFilters"
+            },
+            {
+              "name": "filters",
+              "optional": true,
+              "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+            }
+          ]
         }
       ]
     },
@@ -580,9 +634,15 @@
               "description": "0 indicates the navigation happens in the tab content window; a positive value indicates navigation in a subframe. Frame IDs are unique within a tab."
             },
             "transitionType": {
-              "unsupported": true,
-              "$ref": "#/types/TransitionType",
-              "description": "Cause of the navigation."
+              "allOf": [
+                {
+                  "$ref": "#/types/TransitionType"
+                },
+                {
+                  "unsupported": true,
+                  "description": "Cause of the navigation."
+                }
+              ]
             },
             "transitionQualifiers": {
               "unsupported": true,
@@ -610,10 +670,16 @@
       ],
       "extraParameters": [
         {
-          "name": "filters",
-          "optional": true,
-          "$ref": "#/types/EventUrlFilters",
-          "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+          "allOf": [
+            {
+              "$ref": "#/types/EventUrlFilters"
+            },
+            {
+              "name": "filters",
+              "optional": true,
+              "description": "Conditions that the URL being navigated to must satisfy. The 'schemes' and 'ports' fields of UrlFilter are ignored for this event."
+            }
+          ]
         }
       ]
     }
