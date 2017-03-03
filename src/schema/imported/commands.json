@@ -50,7 +50,7 @@
           "additionalProperties": {
             "type": "object",
             "additionalProperties": {
-              "$ref": "#/types/UnrecognizedProperty"
+              "$ref": "manifest#/types/UnrecognizedProperty"
             },
             "properties": {
               "suggested_key": {

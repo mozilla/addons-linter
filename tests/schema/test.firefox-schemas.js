@@ -113,6 +113,11 @@ describe('firefox schema import', () => {
         'extension_types#/types/Timer');
     });
 
+    it("doesn't update $refs that have been updated already", () => {
+      const $ref = 'manifest#/types/UnrecognizedProperty';
+      assert.strictEqual(rewriteValue('$ref', $ref), $ref);
+    });
+
     it('handles arrays', () => {
       const original = [{ type: 'string' }, { type: 'any' }, { $ref: 'Foo' }];
       assert.deepEqual(
@@ -524,6 +529,54 @@ describe('firefox schema import', () => {
         },
       };
       assert.deepEqual(rewriteExtend(schemas, 'foo'), expected);
+    });
+
+    it('rewrites the extend for $refs defined in the object', () => {
+      const original = [{
+        namespace: 'manifest',
+        types: [{
+          id: 'KeyName',
+          type: 'string',
+        }, {
+          $extend: 'WebExtensionManifest',
+          properties: {
+            browser_action: {
+              type: 'object',
+              additionalProperties: { $ref: 'UnrecognizedProperty' },
+              properties: { default_title: { type: 'string', optional: true } },
+              optional: true,
+            },
+            whatever: { $ref: 'KeyName' },
+          },
+        }],
+      }];
+      const expected = {
+        definitions: {
+          WebExtensionManifest: {
+            properties: {
+              browser_action: {
+                type: 'object',
+                additionalProperties: {
+                  $ref: 'manifest#/types/UnrecognizedProperty',
+                },
+                properties: {
+                  default_title: { type: 'string', optional: true },
+                },
+                optional: true,
+              },
+              whatever: { $ref: 'KeyName' },
+            },
+          },
+        },
+        refs: {
+          'browserAction#/definitions/WebExtensionManifest': {
+            namespace: 'manifest',
+            type: 'WebExtensionManifest',
+          },
+        },
+        types: { KeyName: { type: 'string' } },
+      };
+      assert.deepEqual(rewriteExtend(original, 'browserAction'), expected);
     });
 
     it('throws if there is no $extend or id', () => {

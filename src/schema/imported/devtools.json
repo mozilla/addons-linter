@@ -14,7 +14,7 @@
         "devtools_page": {
           "allOf": [
             {
-              "$ref": "#/types/ExtensionURL"
+              "$ref": "manifest#/types/ExtensionURL"
             },
             {
               "optional": true

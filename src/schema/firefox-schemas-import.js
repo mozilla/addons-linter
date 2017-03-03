@@ -48,8 +48,7 @@ function loadSchemasFromFile(basePath) {
   return schemas;
 }
 
-export function importSchemas(firefoxPath = process.argv[2]) {
-  const ourPath = process.argv[3];
+export function importSchemas(firefoxPath, ourPath) {
   const rawSchemas = loadSchemasFromFile(firefoxPath);
   const ourSchemas = loadSchemasFromFile(ourPath);
   const processedSchemas = processSchemas(rawSchemas, ourSchemas);

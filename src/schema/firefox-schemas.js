@@ -57,6 +57,9 @@ export function rewriteValue(key, value) {
     }
     return rewritten;
   } else if (key === '$ref') {
+    if (value.includes('#/types')) {
+      return value;
+    }
     let path = value;
     let schemaId = '';
     if (value.includes('.')) {
@@ -130,7 +133,9 @@ inner.mapExtendToRef = (schemas) => {
 };
 
 inner.updateWithAddonsLinterData = (firefoxSchemas, ourSchemas) => {
-  
+  // eslint-disable-next-line no-console
+  console.log(ourSchemas);
+  return firefoxSchemas;
 };
 
 export function loadTypes(types = []) {
@@ -141,17 +146,37 @@ export function loadTypes(types = []) {
   }), {});
 }
 
+function rewriteExtendRefs(definition, namespace, types) {
+  if (Array.isArray(definition)) {
+    return definition.map(
+      (value) => rewriteExtendRefs(value, namespace, types));
+  } else if (typeof definition === 'object') {
+    return Object.keys(definition).reduce((obj, key) => {
+      const value = definition[key];
+      if (key === '$ref') {
+        if (!value.includes('.') && !(value in types)) {
+          return { ...obj, [key]: `${namespace}#/types/${value}` };
+        }
+      }
+      return { ...obj, [key]: rewriteExtendRefs(value, namespace, types) };
+    }, {});
+  }
+  return definition;
+}
+
 export function rewriteExtend(schemas, schemaId) {
   const definitions = {};
   const refs = {};
   const types = {};
   schemas.forEach((extendSchema) => {
     const extendId = extendSchema.namespace;
+    const extendDefinitions = {};
+    const extendTypes = {};
     extendSchema.types.forEach((type) => {
       const { $extend, id, ...rest } = type;
       if ($extend) {
         // Move the $extend into definitions.
-        definitions[$extend] = rest;
+        extendDefinitions[$extend] = rest;
         // Remember the location of this file so we can $ref it later.
         refs[`${schemaId}#/definitions/${$extend}`] = {
           namespace: extendId,
@@ -159,10 +184,16 @@ export function rewriteExtend(schemas, schemaId) {
         };
       } else if (id) {
         // Move this type into types.
+        extendTypes[id] = rest;
         types[id] = rest;
       } else {
         throw new Error('cannot handle extend, $extend or id is required');
       }
+    });
+    Object.keys(extendDefinitions).forEach((id) => {
+      // Update $refs to point to the right namespace.
+      const definition = extendDefinitions[id];
+      definitions[id] = rewriteExtendRefs(definition, extendId, extendTypes);
     });
   });
   return { definitions, refs, types };

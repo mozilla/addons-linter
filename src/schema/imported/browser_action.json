@@ -397,7 +397,7 @@
         "browser_action": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/types/UnrecognizedProperty"
+            "$ref": "manifest#/types/UnrecognizedProperty"
           },
           "properties": {
             "default_title": {
@@ -407,7 +407,7 @@
             "default_icon": {
               "allOf": [
                 {
-                  "$ref": "#/types/IconPath"
+                  "$ref": "manifest#/types/IconPath"
                 },
                 {
                   "optional": true

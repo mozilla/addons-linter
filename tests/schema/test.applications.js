@@ -12,7 +12,7 @@ describe('/applications/*', () => {
   });
 });
 
-describe.only('/applications/gecko/*', () => {
+describe('/applications/gecko/*', () => {
 
   it('should not require a gecko object', () => {
     var manifest = cloneDeep(validManifest);
