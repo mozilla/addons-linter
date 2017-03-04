@@ -91,6 +91,9 @@ export default class Linter {
   }
 
   print(_console=console) {
+    if (this.config.output === 'none') {
+      return;
+    }
     if (this.config.output === 'json') {
       _console.log(this.toJSON(this.config.pretty));
     } else {
@@ -392,7 +395,7 @@ export default class Linter {
           }
           this.collector._addMessage(message.type, message);
         }
-        return;
+        return this.output;
       });
   }
 
