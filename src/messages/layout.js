@@ -48,8 +48,8 @@ export const TYPE_NO_MANIFEST_JSON = {
     will be attempted to be inferred by package layout.`),
 };
 
-export const MULITPLE_MANIFESTS = {
-  code: 'MULITPLE_MANIFESTS',
+export const MULTIPLE_MANIFESTS = {
+  code: 'MULTIPLE_MANIFESTS',
   legacyCode: [
     'typedetection',
     'detect_type',
