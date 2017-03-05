@@ -691,7 +691,7 @@ describe('Linter.getAddonMetadata()', function() {
       .then(() => {
         var errors = addonLinter.collector.errors;
         assert.equal(errors.length, 2);
-        assert.equal(errors[0].code, messages.MULITPLE_MANIFESTS.code);
+        assert.equal(errors[0].code, messages.MULTIPLE_MANIFESTS.code);
         assert.equal(errors[1].code, messages.TYPE_NOT_DETERMINED.code);
       });
   });

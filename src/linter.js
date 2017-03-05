@@ -246,7 +246,7 @@ export default class Linter {
         if (files.hasOwnProperty(INSTALL_RDF) &&
             files.hasOwnProperty(MANIFEST_JSON)) {
           _log.warn(`Both ${INSTALL_RDF} and ${MANIFEST_JSON} found`);
-          this.collector.addError(messages.MULITPLE_MANIFESTS);
+          this.collector.addError(messages.MULTIPLE_MANIFESTS);
           return {};
         } else if (files.hasOwnProperty(INSTALL_RDF)) {
           _log.info('Retrieving metadata from install.rdf');
