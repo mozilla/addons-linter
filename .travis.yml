@@ -3,9 +3,10 @@ sudo: false
 node_js:
 - '4'
 - '6'
-script:
-- npm test
-- USE_FIREFOX_SCHEMAS=true npm test
+script: npm test
+env:
+-
+- USE_FIREFOX_SCHEMAS=true
 notifications:
   irc:
     channels:
