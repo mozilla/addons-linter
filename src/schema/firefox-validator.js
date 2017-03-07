@@ -43,9 +43,6 @@ const schemas = [
   require('json!schema/imported/windows'),
 ];
 
-// const schemas = [];
-// const schemaObject = require('json!schema/manifest-schema');
-
 function isURL(value) {
   const url = new URL(value);
   return ['http:', 'https:'].includes(url.protocol);
@@ -67,8 +64,6 @@ var validator = ajv({
   verbose: true,
   schemas,
 });
-// validator.addFormat('versionString', isValidVersionString);
-// validator.addFormat('relativeURL', isRelativeURL);
 
 validator.addFormat('versionString', isValidVersionString);
 validator.addFormat('relativeUrl', isRelativeURL);
