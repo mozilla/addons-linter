@@ -48,6 +48,11 @@ const schemas = [
 
 function isURL(value) {
   const url = new URL(value);
+  return ['http:', 'https:'].includes(url.protocol);
+}
+
+function isSecureURL(value) {
+  const url = new URL(value);
   return url.protocol === 'https:';
 }
 
@@ -62,9 +67,14 @@ var validator = ajv({
   verbose: true,
   schemas,
 });
+// validator.addFormat('versionString', isValidVersionString);
+// validator.addFormat('relativeURL', isRelativeURL);
+
 validator.addFormat('versionString', isValidVersionString);
-validator.addFormat('relativeURL', isRelativeURL);
+validator.addFormat('relativeUrl', isRelativeURL);
 validator.addFormat('strictRelativeUrl', isStrictRelativeUrl);
 validator.addFormat('url', isURL);
+validator.addFormat('secureUrl', isSecureURL);
+validator.addFormat('deprecated', () => false);
 
 export default validator.compile(schemaObject);

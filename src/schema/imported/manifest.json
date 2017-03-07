@@ -36,7 +36,9 @@
             },
             "name": {
               "type": "string",
-              "preprocess": "localize"
+              "preprocess": "localize",
+              "maxLength": 45,
+              "minLength": 2
             },
             "short_name": {
               "type": "string",
@@ -52,12 +54,22 @@
               "onError": "warn"
             },
             "version": {
-              "type": "string"
+              "type": "string",
+              "description": "Version string must be a string comprising one to four dot-separated integers (0-65535). E.g: 1.2.3.",
+              "format": "versionString"
             },
             "homepage_url": {
               "type": "string",
-              "format": "url",
-              "preprocess": "localize"
+              "format": null,
+              "preprocess": "localize",
+              "oneOf": [
+                {
+                  "format": "url"
+                },
+                {
+                  "pattern": "^__MSG_.*?__$"
+                }
+              ]
             },
             "icons": {
               "type": "object",
@@ -65,7 +77,8 @@
                 "^[1-9]\\d*$": {
                   "type": "string"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "incognito": {
               "type": "string",
@@ -88,7 +101,8 @@
                   },
                   "required": [
                     "page"
-                  ]
+                  ],
+                  "additionalProperties": false
                 },
                 {
                   "type": "object",
@@ -105,7 +119,8 @@
                   },
                   "required": [
                     "scripts"
-                  ]
+                  ],
+                  "additionalProperties": false
                 }
               ]
             },
@@ -152,10 +167,12 @@
                   },
                   {
                     "type": "string",
-                    "deprecated": "Unknown permission ${value}"
+                    "deprecated": "Unknown permission ${value}",
+                    "format": "deprecated"
                   }
                 ]
-              }
+              },
+              "uniqueItems": true
             },
             "web_accessible_resources": {
               "type": "array",
@@ -297,7 +314,7 @@
         },
         "update_url": {
           "type": "string",
-          "format": "url"
+          "format": "secureUrl"
         },
         "strict_min_version": {
           "type": "string",

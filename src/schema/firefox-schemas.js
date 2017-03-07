@@ -1,4 +1,4 @@
-import deepExtend from 'deep-extend';
+import merge from 'deepmerge';
 
 const FLAG_PATTERN_REGEX = /^\(\?[im]*\)(.*)/;
 
@@ -160,7 +160,7 @@ inner.updateWithAddonsLinterData = (firefoxSchemas, ourSchemas) => {
     const ourSchema = ourSchemas[namespace];
     schemas[namespace] = {
       ...firefoxSchema,
-      schema: deepExtend(firefoxSchema.schema, ourSchema),
+      schema: merge(firefoxSchema.schema, ourSchema),
     };
   });
   return schemas;

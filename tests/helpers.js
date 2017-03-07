@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { matches } from 'lodash';
 import { Readable } from 'stream';
 
 import { PACKAGE_EXTENSION } from 'const';
@@ -111,4 +112,13 @@ export function validManifestJSON(extra) {
 
 export function unexpectedSuccess() {
   return assert.fail(null, null, 'Unexpected success');
+}
+
+export function assertHasMatchingError(errors, expected) {
+  assert.ok(Array.isArray(errors), 'errors must be an array');
+  assert.ok(errors.length > 0, sinon.format(errors));
+  const isMatch = matches(expected);
+  assert.ok(
+    errors.some(isMatch),
+    `expected ${sinon.format(expected)} to be in ${sinon.format(errors)}`);
 }

@@ -668,4 +668,146 @@ describe('firefox schema import', () => {
         expected);
     });
   });
+
+  describe('updateWithAddonsLinterData', () => {
+    function makeSchemaWithType(name, type) {
+      return Object.freeze({
+        manifest: {
+          file: 'manifest.json',
+          schema: {
+            types: { [name]: type },
+          },
+        },
+      });
+    }
+
+    it('merges in new values', () => {
+      const original = makeSchemaWithType('FirefoxSpecificProperties', {
+        properties: {
+          update_url: { type: 'string', format: 'url' },
+          foo: { type: 'string' },
+        },
+      });
+      const linterUpdates = {
+        manifest: {
+          types: {
+            FirefoxSpecificProperties: {
+              properties: { foo: { pattern: '[fF][oO]{2}' } },
+            },
+          },
+        },
+      };
+      const expected = makeSchemaWithType('FirefoxSpecificProperties', {
+        properties: {
+          update_url: { type: 'string', format: 'url' },
+          foo: { type: 'string', pattern: '[fF][oO]{2}' },
+        },
+      });
+      assert.deepEqual(
+        inner.updateWithAddonsLinterData(original, linterUpdates),
+        expected);
+    });
+
+    it('overwrites existing values', () => {
+      const original = makeSchemaWithType('FirefoxSpecificProperties', {
+        properties: {
+          update_url: { type: 'string', format: 'url' },
+          foo: { type: 'string' },
+        },
+      });
+      const linterUpdates = {
+        manifest: {
+          types: {
+            FirefoxSpecificProperties: {
+              properties: { update_url: { format: 'secureUrl' } },
+            },
+          },
+        },
+      };
+      const expected = makeSchemaWithType('FirefoxSpecificProperties', {
+        properties: {
+          update_url: { type: 'string', format: 'secureUrl' },
+          foo: { type: 'string' },
+        },
+      });
+      assert.deepEqual(
+        inner.updateWithAddonsLinterData(original, linterUpdates),
+        expected);
+    });
+
+    it('extends arrays', () => {
+      const original = makeSchemaWithType('FirefoxSpecificProperties', {
+        properties: {
+          name: { type: 'string', enum: ['foo', 'bar'] },
+        },
+      });
+      const linterUpdates = {
+        manifest: {
+          types: {
+            FirefoxSpecificProperties: {
+              properties: {
+                name: { enum: ['baz'] },
+              },
+            },
+          },
+        },
+      };
+      const expected = makeSchemaWithType('FirefoxSpecificProperties', {
+        properties: {
+          name: { type: 'string', enum: ['foo', 'bar', 'baz'] },
+        },
+      });
+      assert.deepEqual(
+        inner.updateWithAddonsLinterData(original, linterUpdates),
+        expected);
+    });
+
+    it('updates the first item of an allOf array', () => {
+      const original = makeSchemaWithType('WebExtensionManifest', {
+        allOf: [{
+          properties: {
+            icons: {
+              type: 'object',
+              patternProperties: { '\d+': { type: 'string' } },
+            },
+          },
+        }, {
+          $ref: 'browserAction#/definitions/WebExtensionManifest',
+        }, {
+          $ref: 'commands#/definitions/WebExtensionManifest',
+        }],
+      });
+      const linterUpdates = {
+        manifest: {
+          types: {
+            WebExtensionManifest: {
+              allOf: [{
+                properties: {
+                  icons: { additionalProperties: false },
+                },
+              }],
+            },
+          },
+        },
+      };
+      const expected = makeSchemaWithType('WebExtensionManifest', {
+        allOf: [{
+          properties: {
+            icons: {
+              type: 'object',
+              additionalProperties: false,
+              patternProperties: { '\d+': { type: 'string' } },
+            },
+          },
+        }, {
+          $ref: 'browserAction#/definitions/WebExtensionManifest',
+        }, {
+          $ref: 'commands#/definitions/WebExtensionManifest',
+        }],
+      });
+      assert.deepEqual(
+        inner.updateWithAddonsLinterData(original, linterUpdates),
+        expected);
+    });
+  });
 });

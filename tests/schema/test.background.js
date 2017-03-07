@@ -1,14 +1,8 @@
 import cloneDeep from 'lodash.clonedeep';
-import { matches } from 'lodash';
 
 import validate from 'schema/validator';
 import { validManifest } from './helpers';
-
-function assertHasMatchingError(errors, expected) {
-  assert.ok(errors.length > 0);
-  const isMatch = matches(expected);
-  assert.ok(errors.some(isMatch));
-}
+import { assertHasMatchingError } from '../helpers';
 
 describe('/background', () => {
 
