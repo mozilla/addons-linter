@@ -34,7 +34,8 @@ describe('/homepage_url', () => {
       validate(manifest);
       assertHasMatchingError(validate.errors, {
         dataPath: '/homepage_url',
-        message: 'should match format "url"',
+        // TODO(FxSchema): Switch to just '... "url"'.
+        message: /should match format "ur[il]"/,
       });
       assertHasMatchingError(validate.errors, {
         message: 'should match pattern "^__MSG_.*?__$"',

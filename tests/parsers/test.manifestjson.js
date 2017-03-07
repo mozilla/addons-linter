@@ -114,9 +114,10 @@ describe('ManifestJSONParser', function() {
       assert.equal(manifestJSONParser.isValid, false);
       var warnings = addonLinter.collector.warnings;
       assert.lengthOf(addonLinter.collector.errors, 0);
-      assert.lengthOf(warnings, 1);
-      assert.equal(warnings[0].code, messages.MANIFEST_PERMISSIONS.code);
-      assert.include(warnings[0].message, 'Unknown permissions "fileSystem"');
+      assertHasMatchingError(warnings, {
+        code: messages.MANIFEST_PERMISSIONS.code,
+        message: /Unknown permissions "fileSystem"/,
+      });
     });
 
     it('should error if permission is not a string', () => {

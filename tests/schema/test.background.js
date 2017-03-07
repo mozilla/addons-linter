@@ -12,7 +12,8 @@ describe('/background', () => {
     validate(manifest);
     assertHasMatchingError(validate.errors, {
       dataPath: '/background/scripts/0',
-      message: 'should match format "strictRelativeUrl"',
+      // TODO(FxSchema): Switch to just strictRelativeUrl.
+      message: /should match format "(relativeURL|strictRelativeUrl)"/,
     });
   });
 
@@ -44,7 +45,8 @@ describe('/background', () => {
     validate(manifest);
     assertHasMatchingError(validate.errors, {
       dataPath: '/background/page',
-      message: 'should match format "strictRelativeUrl"',
+      // TODO(FxSchema): Switch to just strictRelativeUrl.
+      message: /should match format "(relativeURL|strictRelativeUrl)"/,
     });
   });
 
