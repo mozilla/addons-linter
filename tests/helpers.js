@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { isMatchWith } from 'lodash';
+import isMatchWith from 'lodash.ismatchwith';
 import { Readable } from 'stream';
 
 import { PACKAGE_EXTENSION } from 'const';
