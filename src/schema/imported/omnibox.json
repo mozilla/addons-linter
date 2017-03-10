@@ -51,9 +51,6 @@
       "properties": {
         "omnibox": {
           "type": "object",
-          "additionalProperties": {
-            "$ref": "manifest#/types/UnrecognizedProperty"
-          },
           "properties": {
             "keyword": {
               "type": "string",

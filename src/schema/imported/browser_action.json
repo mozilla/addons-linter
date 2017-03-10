@@ -396,9 +396,6 @@
       "properties": {
         "browser_action": {
           "type": "object",
-          "additionalProperties": {
-            "$ref": "manifest#/types/UnrecognizedProperty"
-          },
           "properties": {
             "default_title": {
               "type": "string",

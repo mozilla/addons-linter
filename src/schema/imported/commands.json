@@ -49,9 +49,6 @@
           "type": "object",
           "additionalProperties": {
             "type": "object",
-            "additionalProperties": {
-              "$ref": "manifest#/types/UnrecognizedProperty"
-            },
             "properties": {
               "suggested_key": {
                 "type": "object",

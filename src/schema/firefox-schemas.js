@@ -1,6 +1,10 @@
 import merge from 'deepmerge';
 
 const FLAG_PATTERN_REGEX = /^\(\?[im]*\)(.*)/;
+const UNRECOGNIZED_PROPERTY_REFS = [
+  'UnrecognizedProperty',
+  'manifest#/types/UnrecognizedProperty',
+];
 
 // Reference some functions on inner so they can be stubbed in tests.
 export const inner = {};
@@ -38,9 +42,9 @@ export function rewriteOptionalToRequired(schema) {
 function isUnrecognizedProperty(value) {
   if (typeof value === 'object') {
     const keys = Object.keys(value);
-    return keys.length === 1 &&
-      '$ref' in value &&
-      value.$ref === 'UnrecognizedProperty';
+    return keys.length === 1
+      && '$ref' in value
+      && UNRECOGNIZED_PROPERTY_REFS.includes(value.$ref);
   }
   return false;
 }

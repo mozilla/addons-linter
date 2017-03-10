@@ -150,6 +150,47 @@
         "author": {
             "description": "Legacy field from Chrome. Use \"developer\" instead.",
             "type": "string"
+        },
+        "commands": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "object",
+                "properties": {
+                    "suggested_key": {
+                        "type": "object",
+                        "properties": {
+                            "default": {
+                                "$ref": "#/definitions/KeyName"
+                            },
+                            "mac": {
+                                "$ref": "#/definitions/KeyName"
+                            },
+                            "linux": {
+                                "$ref": "#/definitions/KeyName"
+                            },
+                            "windows": {
+                                "$ref": "#/definitions/KeyName"
+                            },
+                            "chromeos": {
+                                "type": "string"
+                            },
+                            "android": {
+                                "type": "string"
+                            },
+                            "ios": {
+                                "type": "string"
+                            },
+                            "additionalProperties": {
+                                "type": "string",
+                                "deprecated": "Unknown platform name"
+                            }
+                        }
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                }
+            }
         }
     },
     "required": [
@@ -162,6 +203,22 @@
             "format": "versionString",
             "type": "string",
             "description": "Version string must be a string comprising one to four dot-separated integers (0-65535). E.g: 1.2.3."
+        },
+        "KeyName": {
+            "anyOf": [
+                {
+                    "type": "string",
+                    "pattern": "^\\s*(Alt|Ctrl|Command|MacCtrl)\\s*\\+\\s*(Shift\\s*\\+\\s*)?([A-Z0-9]|Comma|Period|Home|End|PageUp|PageDown|Space|Insert|Delete|Up|Down|Left|Right)\\s*$"
+                },
+                {
+                    "type": "string",
+                    "pattern": "^\\s*((Alt|Ctrl|Command|MacCtrl)\\s*\\+\\s*)?(Shift\\s*\\+\\s*)?(F[1-9]|F1[0-2])\\s*$"
+                },
+                {
+                    "type": "string",
+                    "pattern": "^(MediaNextTrack|MediaPlayPause|MediaPrevTrack|MediaStop)$"
+                }
+            ]
         }
     }
 }
