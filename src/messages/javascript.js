@@ -251,6 +251,12 @@ export const UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT = {
     serious performance degradation.`),
 };
 
+export const UNKNOWN_API = {
+  code: 'UNKNOWN_API',
+  message: _('{{api}} is not support by Firefox'),
+  description: _('This API has not been implemented by Firefox.'),
+};
+
 function deprecatedAPI(api) {
   return {
     code: apiToMessage(api),
