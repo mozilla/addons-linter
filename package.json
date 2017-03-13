@@ -83,7 +83,7 @@
     "strip-bom-stream": "3.0.0",
     "url-parse": "1.1.8",
     "xmldom": "0.1.22",
-    "yargs": "6.6.0",
+    "yargs": "7.0.1",
     "yauzl": "2.7.0"
   }
 }
