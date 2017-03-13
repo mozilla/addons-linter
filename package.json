@@ -57,7 +57,7 @@
     "markdown-it-emoji": "1.3.0",
     "mocha": "3.1.2",
     "mocha-multi": "0.10.0",
-    "shelljs": "0.7.5",
+    "shelljs": "0.7.7",
     "sinon": "1.17.7",
     "webpack": "1.14.0",
     "webpack-dev-server": "1.16.2"
