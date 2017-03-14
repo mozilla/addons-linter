@@ -60,7 +60,7 @@
     "shelljs": "0.7.7",
     "sinon": "1.17.7",
     "webpack": "1.14.0",
-    "webpack-dev-server": "1.16.2"
+    "webpack-dev-server": "2.4.2"
   },
   "dependencies": {
     "ajv": "4.11.4",
