@@ -1,0 +1,11 @@
+{
+  "cookies": {
+    "types": {
+      "Cookie": {
+        "properties": {
+          "name": {"pattern": "\\w+"}
+        }
+      }
+    }
+  }
+}

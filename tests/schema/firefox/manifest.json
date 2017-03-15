@@ -1,0 +1,26 @@
+[
+  {
+    "namespace": "manifest",
+    "permissions": [],
+    "types": [
+      {
+        "id": "Permission",
+        "choices": [
+          {
+            "type": "string",
+            "enum": [
+              "alarms",
+              "clipboardRead",
+              "clipboardWrite",
+              "geolocation",
+              "idle",
+              "notifications",
+              "storage"
+            ]
+          },
+          { "$ref": "MatchPattern" }
+        ]
+      }
+    ]
+  }
+]

@@ -3,7 +3,7 @@ module.exports = {
     src: [
       'tests/**/*.js*',
       '!tests/fixtures/jslibs/**.js',
-      '!tests/fixtures/**/*.json',
+      '!tests/**/*.json',
       'src/**/*.js',
       'Gruntfile.js',
     ],

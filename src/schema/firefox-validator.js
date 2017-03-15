@@ -1,16 +1,9 @@
-import fs from 'fs';
-import path from 'path';
-
 import ajv from 'ajv';
 import URL from 'url-parse';
 import { isRelativeURL, isValidVersionString } from './formats';
 
+import schemas from './firefox-schemas';
 const schemaObject = require('json!schema/imported/manifest');
-const schemaPath = 'src/schema/imported';
-const schemas = fs.readdirSync(schemaPath).map((filename) => {
-  const filePath = path.join(schemaPath, filename);
-  return JSON.parse(fs.readFileSync(filePath));
-});
 
 function isURL(value) {
   const url = new URL(value);
