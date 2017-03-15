@@ -4,4 +4,4 @@ require('babel-register');
 require('babel-polyfill');
 
 require('../src/schema/firefox-schemas-import')
-  .importSchemas('src/schema/firefox');
+  .importSchemas('src/schema/firefox', 'src/schema/updates');

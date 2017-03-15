@@ -52,7 +52,7 @@
         "omnibox": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/types/UnrecognizedProperty"
+            "$ref": "manifest#/types/UnrecognizedProperty"
           },
           "properties": {
             "keyword": {

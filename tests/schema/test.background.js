@@ -2,7 +2,7 @@ import cloneDeep from 'lodash.clonedeep';
 
 import validate from 'schema/validator';
 import { validManifest } from './helpers';
-
+import { assertHasMatchingError } from '../helpers';
 
 describe('/background', () => {
 
@@ -10,10 +10,11 @@ describe('/background', () => {
     var manifest = cloneDeep(validManifest);
     manifest.background = {scripts: ['http://foo']};
     validate(manifest);
-    assert.equal(validate.errors.length, 1);
-    assert.equal(validate.errors[0].dataPath, '/background/scripts/0');
-    assert.equal(validate.errors[0].message,
-                 'should match format "relativeURL"');
+    assertHasMatchingError(validate.errors, {
+      dataPath: '/background/scripts/0',
+      // TODO(FxSchema): Switch to just strictRelativeUrl.
+      message: /should match format "(relativeURL|strictRelativeUrl)"/,
+    });
   });
 
 
@@ -31,14 +32,22 @@ describe('/background', () => {
     assert.isNull(validate.errors);
   });
 
+  it('scripts supports persistent', () => {
+    var manifest = cloneDeep(validManifest);
+    manifest.background = {scripts: ['/js/foo.js'], persistent: true};
+    validate(manifest);
+    assert.isNull(validate.errors);
+  });
+
   it('page absolute URL should be invalid', () => {
     var manifest = cloneDeep(validManifest);
     manifest.background = {page: 'http://foo'};
     validate(manifest);
-    assert.equal(validate.errors.length, 1);
-    assert.equal(validate.errors[0].dataPath, '/background/page');
-    assert.equal(validate.errors[0].message,
-                 'should match format "relativeURL"');
+    assertHasMatchingError(validate.errors, {
+      dataPath: '/background/page',
+      // TODO(FxSchema): Switch to just strictRelativeUrl.
+      message: /should match format "(relativeURL|strictRelativeUrl)"/,
+    });
   });
 
   it('page relative URL should be valid', () => {
@@ -48,9 +57,9 @@ describe('/background', () => {
     assert.isNull(validate.errors);
   });
 
-  it('supports persistent', () => {
+  it('page supports persistent', () => {
     var manifest = cloneDeep(validManifest);
-    manifest.background = {persistent: true};
+    manifest.background = {page: 'foo.png', persistent: true};
     validate(manifest);
     assert.isNull(validate.errors);
   });

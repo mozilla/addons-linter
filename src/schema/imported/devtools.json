@@ -12,19 +12,9 @@
     "WebExtensionManifest": {
       "properties": {
         "devtools_page": {
-          "allOf": [
-            {
-              "$ref": "#/types/ExtensionURL"
-            },
-            {
-              "optional": true
-            }
-          ]
+          "$ref": "manifest#/types/ExtensionURL"
         }
-      },
-      "required": [
-        "devtools_page"
-      ]
+      }
     }
   },
   "refs": {

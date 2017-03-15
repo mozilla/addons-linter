@@ -1,4 +1,5 @@
 import fs from 'fs';
+import isMatchWith from 'lodash.ismatchwith';
 import { Readable } from 'stream';
 
 import { PACKAGE_EXTENSION } from 'const';
@@ -111,4 +112,22 @@ export function validManifestJSON(extra) {
 
 export function unexpectedSuccess() {
   return assert.fail(null, null, 'Unexpected success');
+}
+
+function isMatch(target, expected) {
+  return isMatchWith(target, expected, (tVal, eVal) => {
+    if (eVal instanceof RegExp) {
+      return eVal.test(tVal);
+    }
+    // Returning undefined will use the default comparison.
+    return undefined;
+  });
+}
+
+export function assertHasMatchingError(errors, expected) {
+  assert.ok(Array.isArray(errors), 'errors must be an array');
+  assert.ok(errors.length > 0, sinon.format(errors));
+  assert.ok(
+    errors.some((error) => isMatch(error, expected)),
+    `expected ${sinon.format(expected)} to be in ${sinon.format(errors)}`);
 }

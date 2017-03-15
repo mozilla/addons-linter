@@ -148,7 +148,7 @@
         "sidebar_action": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/types/UnrecognizedProperty"
+            "$ref": "manifest#/types/UnrecognizedProperty"
           },
           "properties": {
             "default_title": {
@@ -156,14 +156,7 @@
               "preprocess": "localize"
             },
             "default_icon": {
-              "allOf": [
-                {
-                  "$ref": "#/types/IconPath"
-                },
-                {
-                  "optional": true
-                }
-              ]
+              "$ref": "manifest#/types/IconPath"
             },
             "default_panel": {
               "type": "string",
@@ -172,7 +165,6 @@
             }
           },
           "required": [
-            "default_icon",
             "default_panel"
           ]
         }

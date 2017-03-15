@@ -29,19 +29,9 @@
     "WebExtensionManifest": {
       "properties": {
         "theme": {
-          "allOf": [
-            {
-              "$ref": "#/types/ThemeType"
-            },
-            {
-              "optional": true
-            }
-          ]
+          "$ref": "#/types/ThemeType"
         }
-      },
-      "required": [
-        "theme"
-      ]
+      }
     }
   },
   "refs": {

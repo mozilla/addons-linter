@@ -1,3 +1,5 @@
+import merge from 'deepmerge';
+
 const FLAG_PATTERN_REGEX = /^\(\?[im]*\)(.*)/;
 
 // Reference some functions on inner so they can be stubbed in tests.
@@ -33,12 +35,31 @@ export function rewriteOptionalToRequired(schema) {
   return { ...withoutOptional, required };
 }
 
+function isUnrecognizedProperty(value) {
+  if (typeof value === 'object') {
+    const keys = Object.keys(value);
+    return keys.length === 1 &&
+      '$ref' in value &&
+      value.$ref === 'UnrecognizedProperty';
+  }
+  return false;
+}
+
 export function rewriteValue(key, value) {
   if (Array.isArray(value)) {
     return value.map((val) => rewriteValue(key, val));
+  } else if (key === 'additionalProperties' &&
+      isUnrecognizedProperty(value)) {
+    return undefined;
   } else if (typeof value === 'object') {
     if ('$ref' in value && Object.keys(value).length > 1) {
       const { $ref, ...rest } = value;
+      if (Object.keys(rest).length === 1 && 'optional' in rest) {
+        return {
+          $ref: rewriteValue('$ref', $ref),
+          ...rest,
+        };
+      }
       return {
         allOf: [
           { $ref: rewriteValue('$ref', $ref) },
@@ -57,6 +78,9 @@ export function rewriteValue(key, value) {
     }
     return rewritten;
   } else if (key === '$ref') {
+    if (value.includes('#/types')) {
+      return value;
+    }
     let path = value;
     let schemaId = '';
     if (value.includes('.')) {
@@ -129,6 +153,19 @@ inner.mapExtendToRef = (schemas) => {
   return updatedSchemas;
 };
 
+inner.updateWithAddonsLinterData = (firefoxSchemas, ourSchemas) => {
+  const schemas = { ...firefoxSchemas };
+  Object.keys(ourSchemas).forEach((namespace) => {
+    const firefoxSchema = firefoxSchemas[namespace];
+    const ourSchema = ourSchemas[namespace];
+    schemas[namespace] = {
+      ...firefoxSchema,
+      schema: merge(firefoxSchema.schema, ourSchema),
+    };
+  });
+  return schemas;
+};
+
 export function loadTypes(types = []) {
   // Convert the array of types to an object.
   return types.reduce((obj, type) => ({
@@ -137,17 +174,37 @@ export function loadTypes(types = []) {
   }), {});
 }
 
+function rewriteExtendRefs(definition, namespace, types) {
+  if (Array.isArray(definition)) {
+    return definition.map(
+      (value) => rewriteExtendRefs(value, namespace, types));
+  } else if (typeof definition === 'object') {
+    return Object.keys(definition).reduce((obj, key) => {
+      const value = definition[key];
+      if (key === '$ref') {
+        if (!value.includes('.') && !(value in types)) {
+          return { ...obj, [key]: `${namespace}#/types/${value}` };
+        }
+      }
+      return { ...obj, [key]: rewriteExtendRefs(value, namespace, types) };
+    }, {});
+  }
+  return definition;
+}
+
 export function rewriteExtend(schemas, schemaId) {
   const definitions = {};
   const refs = {};
   const types = {};
   schemas.forEach((extendSchema) => {
     const extendId = extendSchema.namespace;
+    const extendDefinitions = {};
+    const extendTypes = {};
     extendSchema.types.forEach((type) => {
       const { $extend, id, ...rest } = type;
       if ($extend) {
         // Move the $extend into definitions.
-        definitions[$extend] = rest;
+        extendDefinitions[$extend] = rest;
         // Remember the location of this file so we can $ref it later.
         refs[`${schemaId}#/definitions/${$extend}`] = {
           namespace: extendId,
@@ -155,10 +212,16 @@ export function rewriteExtend(schemas, schemaId) {
         };
       } else if (id) {
         // Move this type into types.
+        extendTypes[id] = rest;
         types[id] = rest;
       } else {
         throw new Error('cannot handle extend, $extend or id is required');
       }
+    });
+    Object.keys(extendDefinitions).forEach((id) => {
+      // Update $refs to point to the right namespace.
+      const definition = extendDefinitions[id];
+      definitions[id] = rewriteExtendRefs(definition, extendId, extendTypes);
     });
   });
   return { definitions, refs, types };
@@ -196,7 +259,7 @@ inner.loadSchema = (schema) => {
   return newSchema;
 };
 
-export function processSchemas(schemas) {
+export function processSchemas(schemas, ourSchemas) {
   const loadedSchemas = {};
   schemas.forEach(({ file, schema }) => {
     // Convert the Firefox schema to more standard JSON schema.
@@ -205,5 +268,7 @@ export function processSchemas(schemas) {
   });
   // Now that everything is loaded, we can finish mapping the non-standard
   // $extend to $ref.
-  return inner.mapExtendToRef(loadedSchemas);
+  const extendedSchemas = inner.mapExtendToRef(loadedSchemas);
+  // Update the Firefox schemas with some missing validations, defaults and descriptions.
+  return inner.updateWithAddonsLinterData(extendedSchemas, ourSchemas);
 }

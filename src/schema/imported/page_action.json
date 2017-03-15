@@ -241,7 +241,7 @@
         "page_action": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/types/UnrecognizedProperty"
+            "$ref": "manifest#/types/UnrecognizedProperty"
           },
           "properties": {
             "default_title": {
@@ -249,14 +249,7 @@
               "preprocess": "localize"
             },
             "default_icon": {
-              "allOf": [
-                {
-                  "$ref": "#/types/IconPath"
-                },
-                {
-                  "optional": true
-                }
-              ]
+              "$ref": "manifest#/types/IconPath"
             },
             "default_popup": {
               "type": "string",
@@ -266,10 +259,7 @@
             "browser_style": {
               "type": "boolean"
             }
-          },
-          "required": [
-            "default_icon"
-          ]
+          }
         }
       }
     }

@@ -1,6 +1,8 @@
+import cloneDeep from 'lodash.clonedeep';
+
 import validate from 'schema/validator';
 import { validManifest } from './helpers';
-import cloneDeep from 'lodash.clonedeep';
+import { assertHasMatchingError } from '../helpers';
 
 
 describe('/permissions', () => {
@@ -16,16 +18,18 @@ describe('/permissions', () => {
     var manifest = cloneDeep(validManifest);
     manifest.permissions = ['tabs', 'tabs'];
     validate(manifest);
-    assert.equal(validate.errors.length, 1);
-    assert.equal(validate.errors[0].dataPath, '/permissions');
+    assertHasMatchingError(validate.errors, {
+      dataPath: '/permissions',
+    });
   });
 
   it('should not allow an invalid permission', () => {
     var manifest = cloneDeep(validManifest);
     manifest.permissions = ['wat'];
     validate(manifest);
-    assert.equal(validate.errors.length, 4);
-    assert.equal(validate.errors[0].dataPath, '/permissions/0');
+    assertHasMatchingError(validate.errors, {
+      dataPath: '/permissions/0',
+    });
   });
 
   var matchingPatterns = [

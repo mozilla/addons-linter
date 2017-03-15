@@ -2,6 +2,7 @@ import cloneDeep from 'lodash.clonedeep';
 
 import validate from 'schema/validator';
 import { validManifest } from './helpers';
+import { assertHasMatchingError } from '../helpers';
 
 
 describe('/incognito', () => {
@@ -17,10 +18,16 @@ describe('/incognito', () => {
     var manifest = cloneDeep(validManifest);
     manifest.incognito = 'wat';
     validate(manifest);
-    assert.equal(validate.errors.length, 1);
-    assert.equal(validate.errors[0].dataPath, '/incognito');
-    assert.equal(
-      validate.errors[0].message, 'should match pattern "^spanning$"');
+    assertHasMatchingError(validate.errors, {
+      dataPath: '/incognito',
+      message: new RegExp(
+        '(' +
+        // TODO(FxSchema): Switch to just this string.
+        'should be equal to one of the allowed values' +
+        '|' +
+        'should match pattern "\\^spanning\\$"' +
+        ')'),
+    });
   });
 
 });

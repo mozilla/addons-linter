@@ -1,0 +1,73 @@
+{
+  "manifest": {
+    "types": {
+      "FirefoxSpecificProperties": {
+        "properties": {
+          "strict_min_version": {
+            "default": "42a1",
+            "description": "Minimum version of Gecko to support. Defaults to '42a1'. (Requires Gecko 45)",
+            "pattern": "^[0-9]{1,3}(\\.[a-z0-9]+)+$"
+          },
+          "strict_max_version": {
+            "default": "*",
+            "description": "Maximum version of Gecko to support. Defaults to '*'. (Requires Gecko 45)",
+            "pattern": "^[0-9]{1,3}(\\.[a-z0-9*]+)+$"
+          },
+          "update_url": {
+            "format": "secureUrl"
+          }
+        }
+      },
+      "WebExtensionManifest": {
+        "allOf": [
+          {
+            "properties": {
+              "background": {
+                "anyOf": [
+                  {
+                    "additionalProperties": false
+                  },
+                  {
+                    "additionalProperties": false
+                  }
+                ]
+              },
+              "homepage_url": {
+                "type": "string",
+                "format": null,
+                "oneOf": [
+                  {
+                    "format": "url"
+                  },
+                  {
+                    "pattern": "^__MSG_.*?__$"
+                  }
+                ]
+              },
+              "icons": {
+                "additionalProperties": false
+              },
+              "permissions": {
+                "items": {
+                  "anyOf": [
+                    {},
+                    { "format": "deprecated" }
+                  ]
+                },
+                "uniqueItems": true
+              },
+              "name": {
+                "maxLength": 45,
+                "minLength": 2
+              },
+              "version": {
+                "description": "Version string must be a string comprising one to four dot-separated integers (0-65535). E.g: 1.2.3.",
+                "format": "versionString"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

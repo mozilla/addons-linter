@@ -2,6 +2,7 @@ import cloneDeep from 'lodash.clonedeep';
 
 import validate from 'schema/validator';
 import { validManifest } from './helpers';
+import { assertHasMatchingError } from '../helpers';
 
 
 describe('/homepage_url', () => {
@@ -17,7 +18,7 @@ describe('/homepage_url', () => {
       var manifest = cloneDeep(validManifest);
       manifest.homepage_url = validURL;
       validate(manifest);
-      assert.isNull(validate.errors);
+      assert.isNull(validate.errors, sinon.format(validate.errors));
     });
   }
 
@@ -31,11 +32,14 @@ describe('/homepage_url', () => {
       var manifest = cloneDeep(validManifest);
       manifest.homepage_url = invalidURL;
       validate(manifest);
-      assert.equal(validate.errors.length, 3);
-      assert.equal(validate.errors[0].dataPath, '/homepage_url');
-      assert.equal(validate.errors[0].message, 'should match format "uri"');
-      assert.equal(validate.errors[1].message,
-        'should match pattern "^__MSG_.*?__$"');
+      assertHasMatchingError(validate.errors, {
+        dataPath: '/homepage_url',
+        // TODO(FxSchema): Switch to just '... "url"'.
+        message: /should match format "ur[il]"/,
+      });
+      assertHasMatchingError(validate.errors, {
+        message: 'should match pattern "^__MSG_.*?__$"',
+      });
     });
   }
 });
