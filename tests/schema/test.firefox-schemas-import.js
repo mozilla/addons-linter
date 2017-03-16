@@ -1,12 +1,16 @@
+import fs from 'fs';
+import path from 'path';
+
 import {
   inner,
   loadTypes,
+  importSchemas,
   processSchemas,
   rewriteExtend,
   rewriteKey,
   rewriteOptionalToRequired,
   rewriteValue,
-} from 'schema/firefox-schemas';
+} from 'schema/firefox-schemas-import';
 
 describe('firefox schema import', () => {
   let sandbox;
@@ -808,6 +812,33 @@ describe('firefox schema import', () => {
       assert.deepEqual(
         inner.updateWithAddonsLinterData(original, linterUpdates),
         expected);
+    });
+  });
+
+  describe('from filesystem', () => {
+    const schemaFiles = ['manifest.json', 'cookies.json'];
+    const firefoxPath = 'tests/schema/firefox';
+    const ourPath = 'tests/schema/updates';
+    const outputPath = 'tests/schema/imported';
+    const expectedPath = 'tests/schema/expected';
+
+    beforeEach(() => {
+      fs.mkdirSync(outputPath);
+    });
+
+    afterEach(() => {
+      schemaFiles.forEach(
+        (file) => fs.unlinkSync(path.join(outputPath, file)));
+      fs.rmdirSync(outputPath);
+    });
+
+    it('imports schemas from filesystem', () => {
+      importSchemas(firefoxPath, ourPath);
+      schemaFiles.forEach((file) => {
+        assert.deepEqual(
+          JSON.parse(fs.readFileSync(path.join(outputPath, file))),
+          JSON.parse(fs.readFileSync(path.join(expectedPath, file))));
+      });
     });
   });
 });
