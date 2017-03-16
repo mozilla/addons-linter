@@ -1,3 +1,5 @@
+import { UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT } from 'messages/javascript';
+
 export const DEFLATE_COMPRESSION = 8;
 export const NO_COMPRESSION = 0;
 
@@ -22,7 +24,10 @@ export const ESLINT_RULE_MAPPING = {
   'widget-module': ESLINT_WARNING,
 
   // 3rd party / eslint-internal rules
-  'no-unsafe-innerhtml/no-unsafe-innerhtml': ESLINT_WARNING,
+  'no-unsafe-innerhtml/no-unsafe-innerhtml': [
+    ESLINT_WARNING,
+    { overwriteMessage: UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT },
+  ],
   'no-eval': [ESLINT_WARNING, {allowIndirect: false}],
 };
 

@@ -224,3 +224,30 @@ export function apiToMessage(string) {
     .toUpperCase()
     .substr(0, 25);
 }
+
+export function filterOverwrittenMessages(ruleMapping) {
+  var overwrittenMessages = [];
+  var filteredRuleMapping = {};
+
+  for (let rule of Object.keys(ruleMapping)) {
+    if (Array.isArray(ruleMapping[rule])) {
+      let ruleOptions = ruleMapping[rule].slice(1);
+
+      if (ruleOptions[0].hasOwnProperty('overwriteMessage')) {
+        const { overwriteMessage, ...originalRuleConfig } = ruleOptions[0];
+        overwrittenMessages[rule] = overwriteMessage;
+
+        if (originalRuleConfig) {
+          filteredRuleMapping[rule] = [
+            ruleMapping[rule][0], originalRuleConfig];
+        } else {
+          filteredRuleMapping[rule] = ruleMapping[rule][0];
+        }
+      }
+    } else {
+      filteredRuleMapping[rule] = ruleMapping[rule];
+    }
+  }
+
+  return [filteredRuleMapping, overwrittenMessages];
+}

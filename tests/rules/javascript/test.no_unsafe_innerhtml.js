@@ -161,6 +161,7 @@ describe('no_unsafe_innerhtml', () => {
         .then((validationMessages) => {
           validationMessages = validationMessages.sort();
 
+          console.log(validationMessages, code.message);
           assert.equal(validationMessages.length, code.message.length);
 
           code.message.forEach((expectedMessage, idx) => {

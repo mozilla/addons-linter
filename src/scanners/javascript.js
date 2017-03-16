@@ -3,7 +3,9 @@ import ESLint from 'eslint';
 import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
-import { ensureFilenameExists, singleLineString } from 'utils';
+import {
+ ensureFilenameExists, singleLineString,
+ filterOverwrittenMessages } from 'utils';
 
 
 export default class JavaScriptScanner {
@@ -30,6 +32,9 @@ export default class JavaScriptScanner {
     _messages=messages,
   }={}) {
     return new Promise((resolve) => {
+      var [ filteredRuleMapping, overwrittenMessages ] =
+        filterOverwrittenMessages(_ruleMapping);
+
       var cli = new _ESLint.CLIEngine({
         baseConfig: {
           env: {
@@ -45,7 +50,7 @@ export default class JavaScriptScanner {
           ecmaVersion: 2017,
         },
         ignore: false,
-        rules: _ruleMapping,
+        rules: filteredRuleMapping,
         plugins: ['no-unsafe-innerhtml'],
         allowInlineConfig: false,
         filename: this.filename,
@@ -78,6 +83,9 @@ export default class JavaScriptScanner {
 
           // Fallback to looking up the message object by the message
           var code = message.message;
+
+          console.log(code);
+          console.log(message);
 
           // Support 3rd party eslint rules that don't have our internal
           // message structure.
