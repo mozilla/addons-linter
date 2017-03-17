@@ -45,6 +45,61 @@ you can enable/disable for the command-line app, use the `--help` option:
 addons-linter --help
 ```
 
+### Import Linter API into another NodeJS application
+
+```js
+import linter from 'addons-linter';
+
+const sourceDir = process.cwd();
+
+const linter = linter.createInstance({
+  config: {
+    // This mimics the first command line argument from yargs,
+    // which should be the directory to the extension.
+    _: [sourceDir],
+    logLevel: process.env.VERBOSE ? 'debug' : 'fatal',
+    stack: Boolean(process.env.VERBOSE),
+    pretty: false,
+    warningsAsErrors: false,
+    metadata: false,
+    output: 'none',
+    boring: false,
+    selfHosted: false,
+    // Lint only the selected files
+    //   scanFile: ['path/...', ...]
+    //
+    // Exclude files:
+    shouldScanFile: (fileName) => true,
+  },
+  // This prevent the linter to exit the nodejs application
+  runAsBinary: false,
+});
+
+linter.run()
+  .then((linterResults) => ...)
+  .catch((err) => console.error("addons-linter failure: ", err));
+```
+
+`linter.output` is composed by the following properties (the same of the 'json' report type):
+
+```js
+{
+  metadata: {...},
+  summary: {
+    error, notice, warning,
+  },
+  scanFile,
+  count,
+  error: [{
+    type: "error",
+    code, message, description,
+    column, file, line
+  }, ...],
+  warning: [...],
+  notice: [...]
+}
+```
+
 ## Development
 
 If you'd like to help us develop the addons-linter, that's great! It's

@@ -397,6 +397,19 @@ describe('Linter.print()', function() {
     assert.ok(fakeConsole.log.called);
   });
 
+  it('should not print anything if config.output is none', () => {
+    var addonLinter = new Linter({_: ['foo']});
+    addonLinter.textOutput = sinon.stub();
+    addonLinter.config.output = 'none';
+    var fakeConsole = {
+      log: sinon.stub(),
+    };
+    addonLinter.print(fakeConsole);
+    assert.ok(!addonLinter.textOutput.called);
+    assert.ok(!addonLinter.toJSON.called);
+    assert.ok(!fakeConsole.log.called);
+  });
+
   it('should print scanFile if any', () => {
     var addonLinter = new Linter({
       _: ['foo'],
