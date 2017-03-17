@@ -16,15 +16,8 @@ export function hasBrowserApi(namespace, property) {
           schema[schemaProperty] && property in schema[schemaProperty])
       || schemaArrayNames.some((schemaProperty) => {
         const namespaceProperties = schema[schemaProperty];
-        if (namespaceProperties) {
-          if (Array.isArray(namespaceProperties)) {
-            return namespaceProperties.some(
-              (schemaItem) => schemaItem.name === property);
-          }
-          // eslint-disable-next-line no-console
-          console.log(
-            `${namespaceProperties} is not Array `, namespaceProperties);
-        }
-        return false;
+        return Array.isArray(namespaceProperties) &&
+          namespaceProperties.some(
+            (schemaItem) => schemaItem.name === property);
       }));
 }
