@@ -23,7 +23,7 @@ export default {
           }
 
           if (!hasBrowserApi(namespace, property)) {
-            context.report({ node, message: 'UNKNOWN_API', data: { api } });
+            context.report(node, '{{api}} is unsupported', { api });
           }
         }
       },
