@@ -3,8 +3,6 @@ const path = require('path');
 const defaultOptions = {
   // Timeout is long due to tests that check *all* rules have been run.
   timeout: 15000,
-  bail: true,
-  grep: 'no_unsafe_innerhtml',
   require: [
     function() {
       /*eslint-disable */
