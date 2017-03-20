@@ -1,11 +1,10 @@
 import ESLint from 'eslint';
 
-import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
+import { ESLINT_RULE_MAPPING, ESLINT_TYPES,
+         ESLINT_OVERWRITE_MESSAGE } from 'const';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
-import {
- ensureFilenameExists, singleLineString,
- filterOverwrittenMessages } from 'utils';
+import { ensureFilenameExists, singleLineString } from 'utils';
 
 
 export default class JavaScriptScanner {
@@ -32,9 +31,6 @@ export default class JavaScriptScanner {
     _messages=messages,
   }={}) {
     return new Promise((resolve) => {
-      var [ filteredRuleMapping, overwrittenMessages ] =
-        filterOverwrittenMessages(_ruleMapping);
-
       var cli = new _ESLint.CLIEngine({
         baseConfig: {
           env: {
@@ -50,7 +46,7 @@ export default class JavaScriptScanner {
           ecmaVersion: 2017,
         },
         ignore: false,
-        rules: filteredRuleMapping,
+        rules: _ruleMapping,
         plugins: ['no-unsafe-innerhtml'],
         allowInlineConfig: false,
         filename: this.filename,
@@ -84,14 +80,16 @@ export default class JavaScriptScanner {
           // Fallback to looking up the message object by the message
           var code = message.message;
 
-          console.log(code);
-          console.log(message);
-
           // Support 3rd party eslint rules that don't have our internal
-          // message structure.
+          // message structure and allow us to optionally overwrite
+          // their `message` and `description`
           if (_messages.hasOwnProperty(code)) {
             var shortDescription = _messages[code].message;
             var description = _messages[code].description;
+          } else if (ESLINT_OVERWRITE_MESSAGE.hasOwnProperty(message.ruleId)) {
+            var overwrites = ESLINT_OVERWRITE_MESSAGE[message.ruleId];
+            var shortDescription = overwrites.message || message.message;
+            var description = overwrites.description || message.description;
           } else {
             var shortDescription = code;
             var description = null;

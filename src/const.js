@@ -24,11 +24,12 @@ export const ESLINT_RULE_MAPPING = {
   'widget-module': ESLINT_WARNING,
 
   // 3rd party / eslint-internal rules
-  'no-unsafe-innerhtml/no-unsafe-innerhtml': [
-    ESLINT_WARNING,
-    { overwriteMessage: UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT },
-  ],
+  'no-unsafe-innerhtml/no-unsafe-innerhtml': ESLINT_WARNING,
   'no-eval': [ESLINT_WARNING, {allowIndirect: false}],
+};
+
+export const ESLINT_OVERWRITE_MESSAGE = {
+  'no-unsafe-innerhtml/no-unsafe-innerhtml': UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
 };
 
 export const VALIDATION_ERROR = 'error';
