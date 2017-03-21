@@ -1,4 +1,4 @@
-import { apiToMessage, gettext as _, singleLineString } from 'utils';
+emport { apiToMessage, gettext as _, singleLineString } from 'utils';
 
 export const JS_SYNTAX_ERROR = {
   code: 'JS_SYNTAX_ERROR',
@@ -251,9 +251,10 @@ export const UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT = {
     serious performance degradation.`),
 };
 
-export const UNKNOWN_API = {
-  code: 'UNKNOWN_API',
-  message: _('{{api}} is not support by Firefox'),
+export const UNSUPPORTED_API = {
+  code: 'UNSUPPORTED_API',
+  message: null,
+  messageFormat: _('{{api}} is not supported'),
   description: _('This API has not been implemented by Firefox.'),
   legacyCode: null,
 };

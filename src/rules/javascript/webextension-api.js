@@ -1,7 +1,5 @@
-import { DEPRECATED_APIS, TEMPORARY_APIS } from 'const';
-import { apiToMessage } from '../../utils';
-
-import { hasBrowserApi } from 'schema/browser-apis';
+import { isDeprecatedApi, isTemporaryApi } from 'schema/browser-apis';
+import { apiToMessage } from 'utils';
 
 export default {
   create(context) {
@@ -13,17 +11,13 @@ export default {
           let property = node.property.name;
           let api = `${namespace}.${property}`;
 
-          if (DEPRECATED_APIS.includes(api)) {
+          if (isDeprecatedApi(namespace, property)) {
             return context.report(node, apiToMessage(api));
           }
 
           if (!context.settings.addonMetadata.id &&
-              TEMPORARY_APIS.includes(api)) {
+              isTemporaryApi(namespace, property)) {
             return context.report(node, apiToMessage(api));
-          }
-
-          if (!hasBrowserApi(namespace, property)) {
-            context.report(node, '{{api}} is not supported', { api });
           }
         }
       },
