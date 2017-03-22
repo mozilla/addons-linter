@@ -51,6 +51,8 @@ export default class ManifestJSONParser extends JSONParser {
 
     var overrides = {
       message: `"${error.dataPath}" ${error.message}`,
+      keyword: error.keyword,
+      dataPath: error.dataPath,
     };
 
     if (error.keyword === 'required') {
@@ -87,18 +89,9 @@ export default class ManifestJSONParser extends JSONParser {
     this.isValid = validate(this.parsedJSON);
     if (!this.isValid) {
       log.debug('Schema Validation messages', validate.errors);
-      var errorsFound = [];
 
       for (let error of validate.errors) {
-        // Ensure that we only add one error on a field. This runs the risk
-        // of hiding errors, but means that we can aim to get to a more
-        // helpful error in the case of some rather verbose schema errors.
-        if (errorsFound.indexOf(error.dataPath) > -1) {
-          continue;
-        }
-
         var message = this.errorLookup(error);
-        errorsFound.push(error.dataPath);
 
         if (warnings.includes(message.code)) {
           this.collector.addWarning(message);

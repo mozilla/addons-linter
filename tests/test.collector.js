@@ -65,6 +65,69 @@ describe('Collector', function() {
     assert.equal(collection.notices.length, 0);
   });
 
+  it('should not add a duplicate dataPath', () => {
+    var collection = new Collector();
+    collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
+    collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
+    assert.equal(collection.warnings.length, 1);
+    assert.equal(collection.warnings[0].type, 'warning');
+    assert.equal(collection.errors.length, 0);
+    assert.equal(collection.notices.length, 0);
+  });
+
+  it('should overwrite an old message about additionalProperties', () => {
+    var collection = new Collector();
+    collection.addWarning({
+      ...fakeMessageData,
+      keyword: 'additionalProperties',
+      dataPath: '/foo',
+    });
+    collection.addWarning({
+      ...fakeMessageData,
+      keyword: 'type',
+      dataPath: '/foo',
+    });
+    assert.equal(collection.warnings.length, 1);
+    assert.equal(collection.warnings[0].keyword, 'type');
+    assert.equal(collection.errors.length, 0);
+    assert.equal(collection.notices.length, 0);
+  });
+
+  it('should allow the same dataPath in different message types', () => {
+    var collection = new Collector();
+    collection.addWarning({
+      ...fakeMessageData,
+      dataPath: '/foo',
+    });
+    collection.addError({
+      ...fakeMessageData,
+      dataPath: '/foo',
+    });
+    assert.equal(collection.warnings.length, 1);
+    assert.equal(collection.errors.length, 1);
+    assert.equal(collection.notices.length, 0);
+  });
+
+  it('should handle multiple messages and uniqueness', () => {
+    var messageOverrides = [
+      { dataPath: '/foo' },
+      { dataPath: '/foo/bar', keyword: 'format' },
+      { dataPath: '/bar' },
+      { dataPath: '/foo/bar', keyword: 'type' },
+    ];
+    var collection = new Collector();
+    messageOverrides.forEach((overrides) => {
+      collection.addWarning({ ...fakeMessageData, ...overrides });
+    });
+    assert.equal(collection.warnings.length, 3);
+    assert.equal(collection.warnings[0].dataPath, '/foo');
+    assert.equal(collection.warnings[1].dataPath, '/foo/bar');
+    assert.equal(collection.warnings[1].keyword, 'format');
+    assert.equal(collection.warnings[2].dataPath, '/bar');
+    assert.equal(collection.errors.length, 0);
+    assert.equal(collection.notices.length, 0);
+  });
+
   it('should filter message by filename if config.scanFile is defined', () => {
     var collection = new Collector({
       scanFile: ['test.js', 'no-match-file.js'],

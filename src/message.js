@@ -11,6 +11,8 @@ export var props = [
   'column',
   'file',
   'line',
+  'keyword',
+  'dataPath',
 ];
 
 export var requiredProps = [
