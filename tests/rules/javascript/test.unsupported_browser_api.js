@@ -11,7 +11,6 @@ describe('unsupported browser APIs', () => {
       .then((validationMessages) => {
         assert.equal(
           validationMessages.length, 1);
-        assert.equal(validationMessages[0].code, 'UNSUPPORTED_API');
         assert.equal(
           validationMessages[0].message,
           'gcm.register is not supported');
@@ -28,7 +27,6 @@ describe('unsupported browser APIs', () => {
       .then((validationMessages) => {
         assert.equal(
           validationMessages.length, 1);
-        assert.equal(validationMessages[0].code, 'UNSUPPORTED_API');
         assert.equal(
           validationMessages[0].message,
           'gcm.register is not supported');
