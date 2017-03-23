@@ -1,7 +1,8 @@
 import ESLint from 'eslint';
 
 import {
-  ESLINT_RULE_MAPPING, ESLINT_TYPES,
+  ESLINT_RULE_MAPPING,
+  ESLINT_TYPES,
   ESLINT_OVERWRITE_MESSAGE,
 } from 'const';
 import * as messages from 'messages';
@@ -84,7 +85,7 @@ export default class JavaScriptScanner {
 
           // Support 3rd party eslint rules that don't have our internal
           // message structure and allow us to optionally overwrite
-          // their `message` and `description`
+          // their `message` and `description`.
           if (_messages.hasOwnProperty(code)) {
             var shortDescription = _messages[code].message;
             var description = _messages[code].description;
