@@ -2,7 +2,8 @@ import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import {
   UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
-  NO_DOCUMENT_WRITE } from 'messages';
+  NO_DOCUMENT_WRITE,
+} from 'messages';
 
 
 // These rules were mostly copied and adapted from

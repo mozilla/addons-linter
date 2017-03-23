@@ -1,7 +1,9 @@
 import ESLint from 'eslint';
 
-import { ESLINT_RULE_MAPPING, ESLINT_TYPES,
-         ESLINT_OVERWRITE_MESSAGE } from 'const';
+import {
+  ESLINT_RULE_MAPPING, ESLINT_TYPES,
+  ESLINT_OVERWRITE_MESSAGE
+} from 'const';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
 import { ensureFilenameExists, singleLineString } from 'utils';
