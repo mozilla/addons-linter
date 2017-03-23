@@ -1,6 +1,10 @@
 import ESLint from 'eslint';
 
-import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
+import {
+  ESLINT_RULE_MAPPING,
+  ESLINT_TYPES,
+  ESLINT_OVERWRITE_MESSAGE,
+} from 'const';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
 import { ensureFilenameExists, singleLineString } from 'utils';
@@ -80,10 +84,15 @@ export default class JavaScriptScanner {
           var code = message.message;
 
           // Support 3rd party eslint rules that don't have our internal
-          // message structure.
+          // message structure and allow us to optionally overwrite
+          // their `message` and `description`.
           if (_messages.hasOwnProperty(code)) {
             var shortDescription = _messages[code].message;
             var description = _messages[code].description;
+          } else if (ESLINT_OVERWRITE_MESSAGE.hasOwnProperty(message.ruleId)) {
+            var overwrites = ESLINT_OVERWRITE_MESSAGE[message.ruleId];
+            var shortDescription = overwrites.message || message.message;
+            var description = overwrites.description || message.description;
           } else {
             var shortDescription = code;
             var description = null;

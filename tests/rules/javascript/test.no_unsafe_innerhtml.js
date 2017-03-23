@@ -1,5 +1,10 @@
 import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
+import {
+  UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
+  NO_DOCUMENT_WRITE,
+} from 'messages';
+
 
 // These rules were mostly copied and adapted from
 // https://github.com/mozfreddyb/eslint-plugin-no-unsafe-innerhtml/
@@ -69,46 +74,56 @@ describe('no_unsafe_innerhtml', () => {
     {
       code: 'm.innerHTML = htmlString;',
       message: ['Unsafe assignment to innerHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'a.innerHTML += htmlString;',
       message: ['Unsafe assignment to innerHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'a.innerHTML += template.toHtml();',
       message: ['Unsafe assignment to innerHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'm.outerHTML = htmlString;',
       message: ['Unsafe assignment to outerHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 't.innerHTML = `<span>${name}</span>`;',
       message: ['Unsafe assignment to innerHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 't.innerHTML = `<span>${"foobar"}</span>${evil}`;',
       message: ['Unsafe assignment to innerHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
 
     // insertAdjacentHTML examples
     {
       code: 'node.insertAdjacentHTML("beforebegin", htmlString);',
       message: ['Unsafe call to insertAdjacentHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'node.insertAdjacentHTML("beforebegin", template.getHTML());',
       message: ['Unsafe call to insertAdjacentHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
 
     // (binary) expressions
     {
       code: 'node.innerHTML = "<span>"+ htmlInput;',
       message: ['Unsafe assignment to innerHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'node.innerHTML = "<span>" + htmlInput + "</span>";',
       message: ['Unsafe assignment to innerHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
 
     // document.write / writeln
@@ -118,38 +133,48 @@ describe('no_unsafe_innerhtml', () => {
         'Use of document.write strongly discouraged.',
         'Unsafe call to document.write',
       ],
+      description: [
+        NO_DOCUMENT_WRITE.description,
+        UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'document.writeln(evil);',
       message: ['Unsafe call to document.writeln'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
 
     // bug https://bugzilla.mozilla.org/show_bug.cgi?id=1198200
     {
       code: 'title.innerHTML = _("WB_LT_TIPS_S_SEARCH", {value0:engine});',
       message: ['Unsafe assignment to innerHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
 
     // https://bugzilla.mozilla.org/show_bug.cgi?id=1192595
     {
       code: 'x.innerHTML = Sanitizer.escapeHTML(evil)',
       message: ['Unsafe assignment to innerHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'x.innerHTML = Sanitizer.escapeHTML(`evil`)',
       message: ['Unsafe assignment to innerHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'y.innerHTML = ((arrow_function)=>null)`some HTML`',
       message: ['Unsafe assignment to innerHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'y.innerHTML = ((arrow_function)=>null)`some HTML`',
       message: ['Unsafe assignment to innerHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'y.innerHTML = ((arrow_function)=>null)`some HTML`',
       message: ['Unsafe assignment to innerHTML'],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
   ];
 
@@ -166,6 +191,11 @@ describe('no_unsafe_innerhtml', () => {
           code.message.forEach((expectedMessage, idx) => {
             assert.equal(validationMessages[idx].message, expectedMessage);
             assert.equal(validationMessages[idx].type, VALIDATION_WARNING);
+          });
+
+          code.description.forEach((expectedDescription, idx) => {
+            assert.equal(
+              validationMessages[idx].description, expectedDescription);
           });
         });
     });

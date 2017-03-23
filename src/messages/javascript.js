@@ -240,6 +240,17 @@ export const KNOWN_LIBRARY = {
   ],
 };
 
+export const UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT = {
+  code: 'UNSAFE_VAR_ASSIGNMENT',
+  // Uses original message from eslint
+  message: null,
+  legacyCode: null,
+  description: _(singleLineString`Due to both security and performance
+    concerns, this may not be set using dynamic values which have
+    not been adequately sanitized. This can lead to security issues or fairly
+    serious performance degradation.`),
+};
+
 function deprecatedAPI(api) {
   return {
     code: apiToMessage(api),
