@@ -1,4 +1,4 @@
-emport { apiToMessage, gettext as _, singleLineString } from 'utils';
+import { apiToMessage, gettext as _, singleLineString } from 'utils';
 
 export const JS_SYNTAX_ERROR = {
   code: 'JS_SYNTAX_ERROR',
