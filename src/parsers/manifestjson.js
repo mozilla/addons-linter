@@ -51,7 +51,6 @@ export default class ManifestJSONParser extends JSONParser {
 
     var overrides = {
       message: `"${error.dataPath}" ${error.message}`,
-      keyword: error.keyword,
       dataPath: error.dataPath,
     };
 

@@ -1,7 +1,7 @@
 import { default as Collector } from 'collector';
 import { fakeMessageData } from './helpers';
 
-describe('Collector', function() {
+describe.only('Collector', function() {
 
   it('should be thrown an error if Message is created without a type', () => {
     assert.throws(() => {
@@ -65,7 +65,7 @@ describe('Collector', function() {
     assert.equal(collection.notices.length, 0);
   });
 
-  it('should not add a duplicate dataPath', () => {
+  it('should not add a duplicate message with a dataPath', () => {
     var collection = new Collector();
     collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
     collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
@@ -75,55 +75,16 @@ describe('Collector', function() {
     assert.equal(collection.notices.length, 0);
   });
 
-  it('should overwrite an old message about additionalProperties', () => {
+  it('should add a message that differs on one prop', () => {
     var collection = new Collector();
-    collection.addWarning({
-      ...fakeMessageData,
-      keyword: 'additionalProperties',
-      dataPath: '/foo',
-    });
-    collection.addWarning({
-      ...fakeMessageData,
-      keyword: 'type',
-      dataPath: '/foo',
-    });
-    assert.equal(collection.warnings.length, 1);
-    assert.equal(collection.warnings[0].keyword, 'type');
-    assert.equal(collection.errors.length, 0);
-    assert.equal(collection.notices.length, 0);
-  });
-
-  it('should allow the same dataPath in different message types', () => {
-    var collection = new Collector();
+    collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
     collection.addWarning({
       ...fakeMessageData,
       dataPath: '/foo',
+      message: 'Foo message',
     });
-    collection.addError({
-      ...fakeMessageData,
-      dataPath: '/foo',
-    });
-    assert.equal(collection.warnings.length, 1);
-    assert.equal(collection.errors.length, 1);
-    assert.equal(collection.notices.length, 0);
-  });
-
-  it('should handle multiple messages and uniqueness', () => {
-    var messageOverrides = [
-      { dataPath: '/foo' },
-      { dataPath: '/foo/bar', keyword: 'format' },
-      { dataPath: '/bar' },
-      { dataPath: '/foo/bar', keyword: 'type' },
-    ];
-    var collection = new Collector();
-    messageOverrides.forEach((overrides) => {
-      collection.addWarning({ ...fakeMessageData, ...overrides });
-    });
-    assert.equal(collection.warnings.length, 3);
-    assert.equal(collection.warnings[0].dataPath, '/foo');
-    assert.equal(collection.warnings[1].dataPath, '/foo/bar');
-    assert.equal(collection.warnings[1].keyword, 'format');
-    assert.equal(collection.warnings[2].dataPath, '/bar');
+    assert.equal(collection.warnings.length, 2);
+    assert.equal(collection.warnings[1].message, 'Foo message');
     assert.equal(collection.errors.length, 0);
     assert.equal(collection.notices.length, 0);
   });
