@@ -1,7 +1,7 @@
 import { default as Collector } from 'collector';
 import { fakeMessageData } from './helpers';
 
-describe.only('Collector', function() {
+describe('Collector', function() {
 
   it('should be thrown an error if Message is created without a type', () => {
     assert.throws(() => {

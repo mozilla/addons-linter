@@ -5,7 +5,7 @@ import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
 import * as messages from 'messages';
 import { assertHasMatchingError, validManifestJSON } from '../helpers';
 
-describe.only('ManifestJSONParser', function() {
+describe('ManifestJSONParser', function() {
 
   it('should have empty metadata if bad JSON', () => {
     var addonLinter = new Linter({_: ['bar']});
