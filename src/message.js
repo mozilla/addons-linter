@@ -57,7 +57,9 @@ export default class Message {
   }
 
   matches(other) {
-    return props.every((prop) => this[prop] === other[prop]);
+    return this.type === other.type && props.every((prop) => {
+      return this[prop] === other[prop];
+    });
   }
 
 }

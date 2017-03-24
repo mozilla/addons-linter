@@ -51,7 +51,7 @@ export default class Collector {
 
   messagesAtDataPath(dataPath) {
     if (dataPath === undefined) {
-      throw new Error('message must have a dataPath');
+      throw new Error('dataPath is required');
     }
     if (!this.messagesByDataPath[dataPath]) {
       this.messagesByDataPath[dataPath] = [];

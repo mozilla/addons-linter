@@ -147,4 +147,11 @@ describe('Collector', function() {
     assert.equal(collection.notices[0].file, 'test.js');
   });
 
+  it('should throw when getting messages for an undefined dataPath', () => {
+    var collection = new Collector();
+    assert.throws(() => {
+      collection.messagesAtDataPath(undefined);
+    }, /dataPath is required/);
+  });
+
 });
