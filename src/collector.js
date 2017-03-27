@@ -9,6 +9,7 @@ export default class Collector {
 
   constructor(config = {}) {
     this.config = config;
+    this.messagesByDataPath = {};
 
     for (let type of constants.MESSAGE_TYPES) {
       this[`${type}s`] = [];
@@ -35,11 +36,44 @@ export default class Collector {
     // Message will throw for incorrect types.
     // we have a test to ensure that is the case.
     var message = new _Message(type, opts);
-    var list = this[`${type}s`];
-    if (typeof list === 'undefined') {
+    if (typeof this.messageList(type) === 'undefined') {
       throw new Error(`Message type "${type}" not currently collected`);
     }
-    list.push(message);
+
+    if (!this.isDuplicateMessage(message)) {
+      this._recordMessage(message, type);
+    }
+  }
+
+  messageList(type) {
+    return this[`${type}s`];
+  }
+
+  messagesAtDataPath(dataPath) {
+    if (dataPath === undefined) {
+      throw new Error('dataPath is required');
+    }
+    if (!this.messagesByDataPath[dataPath]) {
+      this.messagesByDataPath[dataPath] = [];
+    }
+    return this.messagesByDataPath[dataPath];
+  }
+
+  _recordMessage(message, type) {
+    if (message.dataPath) {
+      this.messagesAtDataPath(message.dataPath).push(message);
+    }
+    this.messageList(type).push(message);
+  }
+
+  isDuplicateMessage(message) {
+    if (message.dataPath) {
+      var previousMessages = this.messagesAtDataPath(message.dataPath);
+      return previousMessages.some((prevMessage) => {
+        return prevMessage.matches(message);
+      });
+    }
+    return false;
   }
 
   addError(opts) {

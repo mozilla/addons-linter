@@ -65,6 +65,51 @@ describe('Collector', function() {
     assert.equal(collection.notices.length, 0);
   });
 
+  it('should not add a duplicate message with a dataPath', () => {
+    var collection = new Collector();
+    collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
+    collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
+    assert.equal(collection.warnings.length, 1);
+    assert.equal(collection.warnings[0].type, 'warning');
+    assert.equal(collection.errors.length, 0);
+    assert.equal(collection.notices.length, 0);
+  });
+
+  it('should add a message that differs on line number', () => {
+    var collection = new Collector();
+    collection.addWarning({
+      ...fakeMessageData,
+      dataPath: '/foo',
+      file: 'foo.js',
+      line: 25,
+    });
+    collection.addWarning({
+      ...fakeMessageData,
+      dataPath: '/foo',
+      file: 'foo.js',
+      line: 26,
+    });
+    assert.equal(collection.warnings.length, 2);
+    assert.equal(collection.warnings[0].line, 25);
+    assert.equal(collection.warnings[1].line, 26);
+    assert.equal(collection.errors.length, 0);
+    assert.equal(collection.notices.length, 0);
+  });
+
+  it('should add a message that differs on one prop', () => {
+    var collection = new Collector();
+    collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
+    collection.addWarning({
+      ...fakeMessageData,
+      dataPath: '/foo',
+      message: 'Foo message',
+    });
+    assert.equal(collection.warnings.length, 2);
+    assert.equal(collection.warnings[1].message, 'Foo message');
+    assert.equal(collection.errors.length, 0);
+    assert.equal(collection.notices.length, 0);
+  });
+
   it('should filter message by filename if config.scanFile is defined', () => {
     var collection = new Collector({
       scanFile: ['test.js', 'no-match-file.js'],
@@ -121,6 +166,13 @@ describe('Collector', function() {
     assert.equal(collection.warnings[0].file, 'test.js');
     assert.equal(collection.notices[0].code, fakeMessageData.code);
     assert.equal(collection.notices[0].file, 'test.js');
+  });
+
+  it('should throw when getting messages for an undefined dataPath', () => {
+    var collection = new Collector();
+    assert.throws(() => {
+      collection.messagesAtDataPath(undefined);
+    }, /dataPath is required/);
   });
 
 });
