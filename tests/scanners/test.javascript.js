@@ -290,7 +290,7 @@ describe('JavaScript Scanner', function() {
   it('should export all rules in rules/javascript', () => {
     // We skip the "run" check here for now as that's handled by ESLint.
     var ruleFiles = getRuleFiles('javascript');
-    var externalRules = 2;
+    var externalRules = 3;
 
     assert.equal(
       ruleFiles.length + externalRules,

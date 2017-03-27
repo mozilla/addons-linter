@@ -1,4 +1,7 @@
-import { UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT } from 'messages/javascript';
+import {
+  UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
+  DANGEROUS_EVAL
+} from 'messages/javascript';
 
 export const DEFLATE_COMPRESSION = 8;
 export const NO_COMPRESSION = 0;
@@ -24,11 +27,14 @@ export const ESLINT_RULE_MAPPING = {
   'widget-module': ESLINT_WARNING,
 
   // 3rd party / eslint-internal rules
-  'no-unsafe-innerhtml/no-unsafe-innerhtml': ESLINT_WARNING,
   'no-eval': [ESLINT_WARNING, {allowIndirect: false}],
+  'no-new-func': ESLINT_WARNING,
+  'no-unsafe-innerhtml/no-unsafe-innerhtml': ESLINT_WARNING,
 };
 
 export const ESLINT_OVERWRITE_MESSAGE = {
+  'no-eval': DANGEROUS_EVAL,
+  'no-new-func': DANGEROUS_EVAL,
   'no-unsafe-innerhtml/no-unsafe-innerhtml': UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
 };
 

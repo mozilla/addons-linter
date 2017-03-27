@@ -1,5 +1,6 @@
 import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
+import { DANGEROUS_EVAL } from 'messages';
 
 // These rules were mostly copied and adapted from
 // https://github.com/eslint/eslint/blob/master/tests/lib/rules/no-eval.js
@@ -38,58 +39,72 @@ describe('no_eval', () => {
     {
       code: '(0, eval)("foo")',
       message: ['eval can be harmful.'],
+      description: [DANGEROUS_EVAL.description],
     },
     {
       code: '(0, window.eval)("foo")',
       message: ['eval can be harmful.'],
+      description: [DANGEROUS_EVAL.description],
     },
     {
       code: '(0, window["eval"])("foo")',
       message: ['eval can be harmful.'],
+      description: [DANGEROUS_EVAL.description],
     },
     {
       code: '(function(exe){ exe("foo") })(eval);',
       message: ['eval can be harmful.'],
+      description: [DANGEROUS_EVAL.description],
     },
     {
       code: 'eval("foo")',
       message: ['eval can be harmful.'],
+      description: [DANGEROUS_EVAL.description],
     },
     {
       code: 'eval(foo)',
       message: ['eval can be harmful.'],
+      description: [DANGEROUS_EVAL.description],
     },
     {
       code: 'function foo() { this.eval("foo") }',
       message: ['eval can be harmful.'],
+      description: [DANGEROUS_EVAL.description],
     },
     {
       code: 'function foo(eval) { eval("foo") }',
       message: ['eval can be harmful.'],
+      description: [DANGEROUS_EVAL.description],
     },
     {
       code: 'this.eval("foo")',
       message: ['eval can be harmful.'],
+      description: [DANGEROUS_EVAL.description],
     },
     {
       code: 'var EVAL = eval; EVAL("foo")',
       message: ['eval can be harmful.'],
+      description: [DANGEROUS_EVAL.description],
     },
     {
       code: 'var EVAL = this.eval; EVAL("foo")',
       message: ['eval can be harmful.'],
+      description: [DANGEROUS_EVAL.description],
     },
     {
       code: 'window.eval("foo")',
       message: ['eval can be harmful.'],
+      description: [DANGEROUS_EVAL.description],
     },
     {
       code: 'window.window.eval("foo")',
       message: ['eval can be harmful.'],
+      description: [DANGEROUS_EVAL.description],
     },
     {
       code: 'window.window["eval"]("foo")',
       message: ['eval can be harmful.'],
+      description: [DANGEROUS_EVAL.description],
     },
   ];
 
@@ -106,6 +121,11 @@ describe('no_eval', () => {
           code.message.forEach((expectedMessage, idx) => {
             assert.equal(validationMessages[idx].message, expectedMessage);
             assert.equal(validationMessages[idx].type, VALIDATION_WARNING);
+          });
+
+          code.description.forEach((expectedDescription, idx) => {
+            assert.equal(
+              validationMessages[idx].description, expectedDescription);
           });
         });
     });
