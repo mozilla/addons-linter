@@ -9,7 +9,7 @@ export default class FilenameScanner extends BaseScanner {
 
   scan() {
     return new Promise((resolve) => {
-      var ext = extname(this.filename);
+      const extension = extname(this.filename);
 
       if (this.filename.match(constants.ALREADY_SIGNED_REGEX)) {
         this.linterMessages.push(
@@ -32,7 +32,7 @@ export default class FilenameScanner extends BaseScanner {
             file: this.filename,
           })
         );
-      } else if (constants.FLAGGED_FILE_EXTENSIONS.includes(ext)) {
+      } else if (constants.FLAGGED_FILE_EXTENSIONS.includes(extension)) {
         this.linterMessages.push(
           Object.assign({}, messages.FLAGGED_FILE_EXTENSION, {
             type: constants.VALIDATION_WARNING,
