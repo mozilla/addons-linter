@@ -135,7 +135,14 @@ export const FLAGGED_FILE_REGEX = /thumbs\.db$|\.DS_Store$|\.orig$|\.old$|\~$/i;
 export const ALREADY_SIGNED_REGEX = /^META\-INF\/manifest\.mf/;
 
 export const FLAGGED_FILE_EXTENSIONS = [
-  '.exe', '.dll', '.dylib', '.so', '.sh', '.class', '.swf', '.jar',
+  '.class',
+  '.dll',
+  '.dylib',
+  '.exe',
+  '.jar',
+  '.sh',
+  '.so',
+  '.swf',
 ];
 
 // A list of magic numbers that we won't allow.
