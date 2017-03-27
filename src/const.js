@@ -1,6 +1,6 @@
 import {
   UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
-  DANGEROUS_EVAL
+  DANGEROUS_EVAL,
 } from 'messages/javascript';
 
 export const DEFLATE_COMPRESSION = 8;
