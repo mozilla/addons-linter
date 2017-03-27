@@ -122,8 +122,8 @@ export const DANGEROUS_EVAL = {
   message: null,
   description: _(singleLineString`Evaluation of strings as code can lead to
     security vulnerabilities and performance issues, even in the
-    most innocuous of circumstances. Please avoid using 'eval and the
-    'Function' constructor when at all possible.'`),
+    most innocuous of circumstances. Please avoid using \`eval\` and the
+    \`Function\` constructor when at all possible.'`),
   legacyCode: null,
 };
 
