@@ -75,6 +75,27 @@ describe('Collector', function() {
     assert.equal(collection.notices.length, 0);
   });
 
+  it('should add a message that differs on line number', () => {
+    var collection = new Collector();
+    collection.addWarning({
+      ...fakeMessageData,
+      dataPath: '/foo',
+      file: 'foo.js',
+      line: 25,
+    });
+    collection.addWarning({
+      ...fakeMessageData,
+      dataPath: '/foo',
+      file: 'foo.js',
+      line: 26,
+    });
+    assert.equal(collection.warnings.length, 2);
+    assert.equal(collection.warnings[0].line, 25);
+    assert.equal(collection.warnings[1].line, 26);
+    assert.equal(collection.errors.length, 0);
+    assert.equal(collection.notices.length, 0);
+  });
+
   it('should add a message that differs on one prop', () => {
     var collection = new Collector();
     collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
