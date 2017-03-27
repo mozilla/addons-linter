@@ -1,3 +1,5 @@
+import path from 'path';
+
 import RJSON from 'relaxed-json';
 import validate from 'schema/validator';
 
@@ -134,7 +136,8 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.default_locale) {
-      let msg = `_locales/${this.parsedJSON.default_locale}/messages.json`;
+      let msg = path.join(
+        '_locales', this.parsedJSON.default_locale, 'messages.json');
       if (!this.io.files[msg]) {
         this.collector.addError(messages.NO_MESSAGES_FILE);
         this.isValid = false;
