@@ -1,6 +1,5 @@
 {
   "id": "manifest",
-  "permissions": [],
   "definitions": {},
   "refs": {},
   "types": {
@@ -219,9 +218,6 @@
           "$ref": "pageAction#/definitions/WebExtensionManifest"
         },
         {
-          "$ref": "sidebarAction#/definitions/WebExtensionManifest"
-        },
-        {
           "$ref": "theme#/definitions/WebExtensionManifest"
         }
       ]
@@ -232,9 +228,7 @@
           "type": "string",
           "enum": [
             "alarms",
-            "clipboardRead",
             "clipboardWrite",
-            "geolocation",
             "idle",
             "notifications",
             "storage"
