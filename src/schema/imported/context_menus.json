@@ -497,11 +497,26 @@
         "checked": {
           "type": "boolean",
           "description": "A flag indicating the state of a checkbox or radio item after it is clicked."
+        },
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Shift",
+              "Alt",
+              "Command",
+              "Ctrl",
+              "MacCtrl"
+            ]
+          },
+          "description": "An array of keyboard modifiers that were held while the menu item was clicked."
         }
       },
       "required": [
         "menuItemId",
-        "editable"
+        "editable",
+        "modifiers"
       ]
     }
   }

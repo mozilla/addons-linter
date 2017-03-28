@@ -55,6 +55,14 @@
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
             },
+            "originUrl": {
+              "type": "string",
+              "description": "URL of the resource that triggered this request."
+            },
+            "documentUrl": {
+              "type": "string",
+              "description": "URL of the page into which the requested resource will be loaded."
+            },
             "requestBody": {
               "type": "object",
               "description": "Contains the HTTP request body data. Only provided if extraInfoSpec contains 'requestBody'.",
@@ -176,6 +184,14 @@
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
             },
+            "originUrl": {
+              "type": "string",
+              "description": "URL of the resource that triggered this request."
+            },
+            "documentUrl": {
+              "type": "string",
+              "description": "URL of the page into which the requested resource will be loaded."
+            },
             "tabId": {
               "type": "integer",
               "description": "The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab."
@@ -281,6 +297,14 @@
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
             },
+            "originUrl": {
+              "type": "string",
+              "description": "URL of the resource that triggered this request."
+            },
+            "documentUrl": {
+              "type": "string",
+              "description": "URL of the page into which the requested resource will be loaded."
+            },
             "tabId": {
               "type": "integer",
               "description": "The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab."
@@ -375,6 +399,14 @@
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
             },
+            "originUrl": {
+              "type": "string",
+              "description": "URL of the resource that triggered this request."
+            },
+            "documentUrl": {
+              "type": "string",
+              "description": "URL of the page into which the requested resource will be loaded."
+            },
             "tabId": {
               "type": "integer",
               "description": "The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab."
@@ -464,7 +496,6 @@
     },
     {
       "name": "onAuthRequired",
-      "unsupported": true,
       "type": "function",
       "description": "Fired when an authentication failure is received. The listener has three options: it can provide authentication credentials, it can cancel the request and display the error page, or it can take no action on the challenge. If bad user credentials are provided, this may be called multiple times for the same request.",
       "parameters": [
@@ -490,6 +521,14 @@
             "parentFrameId": {
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
+            },
+            "originUrl": {
+              "type": "string",
+              "description": "URL of the resource that triggered this request."
+            },
+            "documentUrl": {
+              "type": "string",
+              "description": "URL of the page into which the requested resource will be loaded."
             },
             "tabId": {
               "type": "integer",
@@ -654,6 +693,14 @@
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
             },
+            "originUrl": {
+              "type": "string",
+              "description": "URL of the resource that triggered this request."
+            },
+            "documentUrl": {
+              "type": "string",
+              "description": "URL of the page into which the requested resource will be loaded."
+            },
             "tabId": {
               "type": "integer",
               "description": "The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab."
@@ -766,6 +813,14 @@
             "parentFrameId": {
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
+            },
+            "originUrl": {
+              "type": "string",
+              "description": "URL of the resource that triggered this request."
+            },
+            "documentUrl": {
+              "type": "string",
+              "description": "URL of the page into which the requested resource will be loaded."
             },
             "tabId": {
               "type": "integer",
@@ -885,6 +940,14 @@
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
             },
+            "originUrl": {
+              "type": "string",
+              "description": "URL of the resource that triggered this request."
+            },
+            "documentUrl": {
+              "type": "string",
+              "description": "URL of the page into which the requested resource will be loaded."
+            },
             "tabId": {
               "type": "integer",
               "description": "The ID of the tab in which the request takes place. Set to -1 if the request isn't related to a tab."
@@ -997,6 +1060,14 @@
             "parentFrameId": {
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
+            },
+            "originUrl": {
+              "type": "string",
+              "description": "URL of the resource that triggered this request."
+            },
+            "documentUrl": {
+              "type": "string",
+              "description": "URL of the page into which the requested resource will be loaded."
             },
             "tabId": {
               "type": "integer",
@@ -1164,14 +1235,16 @@
           "description": "A list of URLs or URL patterns. Requests that cannot match any of the URLs will be filtered out.",
           "items": {
             "type": "string"
-          }
+          },
+          "minItems": 1
         },
         "types": {
           "type": "array",
           "description": "A list of request types. Requests that cannot match any of the types will be filtered out.",
           "items": {
             "$ref": "#/types/ResourceType"
-          }
+          },
+          "minItems": 1
         },
         "tabId": {
           "type": "integer"

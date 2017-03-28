@@ -231,7 +231,8 @@
       "enum": [
         "tab",
         "notification",
-        "popup"
+        "popup",
+        "sidebar"
       ],
       "description": "The type of extension view."
     }
