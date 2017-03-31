@@ -17,6 +17,8 @@ module.exports = {
     'opendialog-remote-uri': require('./opendialog-remote-uri').default,
     'shallow-wrapper': require('./shallow-wrapper').default,
     'webextension-api': require('./webextension-api').default,
+    'webextension-unsupported-api':
+      require('./webextension-unsupported-api').default,
     'widget-module': require('./widget-module').default,
   },
 };

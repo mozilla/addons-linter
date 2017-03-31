@@ -251,6 +251,14 @@ export const UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT = {
     serious performance degradation.`),
 };
 
+export const UNSUPPORTED_API = {
+  code: 'UNSUPPORTED_API',
+  message: null,
+  messageFormat: _('{{api}} is not supported'),
+  description: _('This API has not been implemented by Firefox.'),
+  legacyCode: null,
+};
+
 function deprecatedAPI(api) {
   return {
     code: apiToMessage(api),
