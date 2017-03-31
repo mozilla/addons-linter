@@ -19,9 +19,18 @@ export function hasBrowserApi(namespace, property) {
   if (!schema) {
     return false;
   }
+  return hasObjectProperty(schema, property)
+    || hasArrayProperty(schema, property);
+}
+
+function hasObjectProperty(schema, property) {
   return schemaObjectNames.some((schemaProperty) => {
     return schema[schemaProperty] && property in schema[schemaProperty];
-  }) || schemaArrayNames.some((schemaProperty) => {
+  });
+}
+
+function hasArrayProperty(schema, property) {
+  return schemaArrayNames.some((schemaProperty) => {
     const namespaceProperties = schema[schemaProperty];
     return Array.isArray(namespaceProperties) &&
       namespaceProperties.some((schemaItem) => {
