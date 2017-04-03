@@ -11,6 +11,7 @@ export var props = [
   'column',
   'file',
   'line',
+  'dataPath',
 ];
 
 export var requiredProps = [
@@ -53,6 +54,12 @@ export default class Message {
         is not one of ${MESSAGE_TYPES.join(', ')}`);
     }
     this._type = type;
+  }
+
+  matches(other) {
+    return this.type === other.type && props.every((prop) => {
+      return this[prop] === other[prop];
+    });
   }
 
 }

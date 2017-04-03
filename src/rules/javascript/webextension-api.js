@@ -1,5 +1,5 @@
-import { DEPRECATED_APIS, TEMPORARY_APIS } from 'const';
-import { apiToMessage } from '../../utils';
+import { isDeprecatedApi, isTemporaryApi } from 'schema/browser-apis';
+import { apiToMessage } from 'utils';
 
 export default {
   create(context) {
@@ -7,14 +7,16 @@ export default {
       MemberExpression: function(node) {
         if (node.object.object &&
             ['chrome', 'browser'].includes(node.object.object.name)) {
-          let api = `${node.object.property.name}.${node.property.name}`;
+          let namespace = node.object.property.name;
+          let property = node.property.name;
+          let api = `${namespace}.${property}`;
 
-          if (DEPRECATED_APIS.includes(api)) {
+          if (isDeprecatedApi(namespace, property)) {
             return context.report(node, apiToMessage(api));
           }
 
           if (!context.settings.addonMetadata.id &&
-              TEMPORARY_APIS.includes(api)) {
+              isTemporaryApi(namespace, property)) {
             return context.report(node, apiToMessage(api));
           }
         }

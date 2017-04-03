@@ -43,10 +43,10 @@ describe('ManifestJSONParser', function() {
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
       assert.equal(manifestJSONParser.isValid, false);
-      var errors = addonLinter.collector.errors;
-      assert.equal(errors.length, 1);
-      assert.equal(errors[0].code, messages.JSON_INVALID.code);
-      assert.include(errors[0].message, '/applications/gecko/id');
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.JSON_INVALID.code,
+        message: /"\/applications\/gecko\/id" should match pattern/,
+      });
     });
 
     it('should return null if undefined', () => {

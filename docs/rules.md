@@ -388,4 +388,5 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :white_check_mark: | warning | Web extension | When default_locale is specified a matching messages.json must exist | | | null | NO_MESSAGES_FILE |
 | :white_check_mark: | warning | Web extension | When _locales directory exists, default_locale must exist | | | null | NO_DEFAULT_LOCALE |
 | :white_check_mark: | warning | Web extension | | | | | UNSAFE_VAR_ASSIGNMENT |
+| :white_check_mark: | warning | Web extension | Unsupported or unknown browser API | | | null | UNSUPPORTED_API |
 | :white_check_mark: | warning | Web extension | | | | | DANGEROUS_EVAL |
