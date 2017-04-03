@@ -117,6 +117,16 @@ export const EVAL_STRING_ARG = {
   legacyCode: ['javascript', 'dangerous_global', 'eval'],
 };
 
+export const DANGEROUS_EVAL = {
+  code: 'DANGEROUS_EVAL',
+  message: null,
+  description: _(singleLineString`Evaluation of strings as code can lead to
+    security vulnerabilities and performance issues, even in the
+    most innocuous of circumstances. Please avoid using \`eval\` and the
+    \`Function\` constructor when at all possible.'`),
+  legacyCode: null,
+};
+
 export const DEPREC_SDK_MOD_WIDGET = {
   code: 'DEPREC_SDK_MOD_WIDGET',
   message: _('Use of deprecated SDK module'),
