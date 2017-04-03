@@ -1,6 +1,7 @@
 import {
-  UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
   DANGEROUS_EVAL,
+  NO_IMPLIED_EVAL,
+  UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
   UNSUPPORTED_API,
 } from 'messages/javascript';
 
@@ -10,10 +11,17 @@ export const NO_COMPRESSION = 0;
 export const ESLINT_ERROR = 2;
 export const ESLINT_WARNING = 1;
 
-export const ESLINT_RULE_MAPPING = {
+// 3rd party / eslint-internal rules
+export const EXTERNAL_RULE_MAPPING = {
+  'no-eval': [ESLINT_WARNING, {allowIndirect: false}],
+  'no-implied-eval': ESLINT_WARNING,
+  'no-new-func': ESLINT_WARNING,
+  'no-unsafe-innerhtml/no-unsafe-innerhtml': ESLINT_WARNING,
+};
+
+export const ESLINT_RULE_MAPPING = Object.assign({
   'banned-identifiers': ESLINT_WARNING,
   'deprecated-entities': ESLINT_WARNING,
-  'eval-string-arg': ESLINT_WARNING,
   'event-listener-fourth': ESLINT_WARNING,
   'global-require-arg': ESLINT_WARNING,
   'init-null-arg': ESLINT_WARNING,
@@ -27,15 +35,11 @@ export const ESLINT_RULE_MAPPING = {
   'webextension-api': ESLINT_WARNING,
   'webextension-unsupported-api': ESLINT_WARNING,
   'widget-module': ESLINT_WARNING,
-
-  // 3rd party / eslint-internal rules
-  'no-eval': [ESLINT_WARNING, {allowIndirect: false}],
-  'no-new-func': ESLINT_WARNING,
-  'no-unsafe-innerhtml/no-unsafe-innerhtml': ESLINT_WARNING,
-};
+}, EXTERNAL_RULE_MAPPING);
 
 export const ESLINT_OVERWRITE_MESSAGE = {
   'no-eval': DANGEROUS_EVAL,
+  'no-implied-eval': NO_IMPLIED_EVAL,
   'no-new-func': DANGEROUS_EVAL,
   'no-unsafe-innerhtml/no-unsafe-innerhtml': UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
   'webextension-unsupported-api': UNSUPPORTED_API,

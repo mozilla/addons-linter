@@ -5,7 +5,6 @@ module.exports = {
   rules: {
     'banned-identifiers': require('./banned-identifiers').default,
     'deprecated-entities': require('./deprecated-entities').default,
-    'eval-string-arg': require('./eval-string-arg').default,
     'event-listener-fourth': require('./event-listener-fourth').default,
     'global-require-arg': require('./global-require-arg').default,
     'init-null-arg': require('./init-null-arg').default,

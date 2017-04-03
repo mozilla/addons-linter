@@ -1,7 +1,10 @@
 import ESLint from 'eslint';
 
-import { DEPRECATED_APIS, ESLINT_ERROR, ESLINT_RULE_MAPPING, TEMPORARY_APIS,
-         VALIDATION_ERROR, VALIDATION_WARNING } from 'const';
+import {
+  DEPRECATED_APIS, ESLINT_ERROR, ESLINT_RULE_MAPPING, TEMPORARY_APIS,
+  VALIDATION_ERROR, VALIDATION_WARNING,
+  EXTERNAL_RULE_MAPPING,
+} from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
@@ -290,10 +293,9 @@ describe('JavaScript Scanner', function() {
   it('should export all rules in rules/javascript', () => {
     // We skip the "run" check here for now as that's handled by ESLint.
     var ruleFiles = getRuleFiles('javascript');
-    var externalRules = 3;
 
     assert.equal(
-      ruleFiles.length + externalRules,
+      ruleFiles.length + Object.keys(EXTERNAL_RULE_MAPPING).length,
       Object.keys(ESLINT_RULE_MAPPING).length
     );
 
