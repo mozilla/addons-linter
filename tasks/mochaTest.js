@@ -26,6 +26,11 @@ const defaultOptions = {
   },
 };
 
+// global.appRoot should point to the repository root and is normaly defined
+// in bin/addons-linter.
+const absoluteAppRoot = path.join(path.resolve(__dirname), '..');
+global.appRoot = path.relative(process.cwd(), absoluteAppRoot);
+
 const allFiles = ['dist/tests.js'];
 const coverageReporterModulePath = path.resolve(
   path.join(__dirname, '../tests', 'coverage-reporter.js')
