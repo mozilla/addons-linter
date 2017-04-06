@@ -349,4 +349,26 @@ describe('JavaScript Scanner', function() {
         });
     });
   }
+
+  it('treats a non-code string message as the message', () => {
+    var _rules = {
+      'message-rule': (context) => {
+        return {
+          MemberExpression(node) {
+            context.report(node, 'this is the message');
+          },
+        };
+      },
+    };
+    var _ruleMapping = { 'message-rule': ESLINT_ERROR };
+    var fakeMetadata = { addonMetadata: validMetadata({}) };
+    var jsScanner = new JavaScriptScanner('foo.bar', 'code.js', fakeMetadata);
+
+    return jsScanner.scan(undefined, { _rules, _ruleMapping })
+      .then((validationMessages) => {
+        assert.equal(validationMessages.length, 1);
+        assert.equal(validationMessages[0].code, 'this is the message');
+        assert.equal(validationMessages[0].message, 'this is the message');
+      });
+  });
 });
