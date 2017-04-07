@@ -44,4 +44,29 @@ describe('unsupported browser APIs', () => {
         assert.equal(validationMessages.length, 0);
       });
   });
+
+  it('does not flag on 3 levels of nesting', () => {
+    const code =
+      'browser.privacy.websites.thirdPartyCookiesAllowed.get({}, () => {})';
+    const jsScanner = new JavaScriptScanner(code, 'goodcode.js', {
+      addonMetadata: { id: '@supported-api' },
+    });
+    return jsScanner.scan()
+      .then((validationMessages) => {
+        assert.equal(validationMessages.length, 0);
+      });
+  });
+
+  // We only test the first two levels for now.
+  it.skip('flags when 3 levels of nesting is unsupported', () => {
+    const code =
+      'browser.privacy.websites.unsupportedSetting.get({}, () => {})';
+    const jsScanner = new JavaScriptScanner(code, 'badcode.js', {
+      addonMetadata: { id: '@unsupported-api' },
+    });
+    return jsScanner.scan()
+      .then((validationMessages) => {
+        assert.equal(validationMessages.length, 1);
+      });
+  });
 });

@@ -12,16 +12,31 @@ const firefoxDir = 'tmp/firefox';
 const importedDir = 'src/schema/imported';
 const updatesDir = 'src/schema/updates';
 
-const version = process.argv[2];
+const arg = process.argv[2];
+var version;
+var filePath;
 
-if (!/^[0-9]+$/.test(version)) {
-  console.error(`Usage: ${process.argv[1]} version`);
+try {
+  fs.statSync(arg);
+  filePath = arg;
+} catch (e) {
+  if (/^[0-9]+$/.test(arg)) {
+    version = arg;
+  }
+}
+
+
+if (!(filePath || version)) {
+  // eslint-disable-next-line no-console
+  console.error(`Usage: ${process.argv[1]} version|filePath`);
   process.exit(1);
 }
 
-function emptyDir(dir) {
+function emptyDir(dir, matching) {
   fs.readdirSync(dir).forEach((file) => {
-    fs.unlinkSync(path.join(dir, file));
+    if (!matching || matching.test(file)) {
+      fs.unlinkSync(path.join(dir, file));
+    }
   });
 }
 
@@ -33,9 +48,10 @@ try {
 }
 
 // Remove the old schema files.
-emptyDir(importedDir);
+emptyDir(importedDir, /.*.json$/);
 
-schemaImport.fetchSchemas(version, firefoxDir)
+schemaImport.fetchSchemas(
+    { inputPath: filePath, outputPath: firefoxDir, version })
   .then(() => {
     schemaImport.importSchemas(firefoxDir, updatesDir, importedDir);
   })
