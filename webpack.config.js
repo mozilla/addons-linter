@@ -31,6 +31,11 @@ module.exports = {
         // babel options are in .babelrc
         loaders: ['babel'],
       },
+      {
+        test: /\.json$/,
+        exclude: /(node_modules|bower_components|package.json)/,
+        loaders: ['json-loader'],
+      },
     ],
   },
   externals: nodeModules,
