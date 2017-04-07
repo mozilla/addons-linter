@@ -109,13 +109,6 @@ export function _bannedIdentifier(name) {
 
 export const BANNED_NEWTHREAD = _bannedIdentifier('newThread');
 export const BANNED_PROCESSNEXTEVENT = _bannedIdentifier('processNextEvent');
-export const EVAL_STRING_ARG = {
-  code: 'EVAL_STRING_ARG',
-  message: _('setTimeout or setInterval must have function as 1st arg'),
-  description: _(singleLineString`setTimeout and setInterval functions should be
-    called only with function expressions as their first argument`),
-  legacyCode: ['javascript', 'dangerous_global', 'eval'],
-};
 
 export const DANGEROUS_EVAL = {
   code: 'DANGEROUS_EVAL',
@@ -124,6 +117,15 @@ export const DANGEROUS_EVAL = {
     security vulnerabilities and performance issues, even in the
     most innocuous of circumstances. Please avoid using \`eval\` and the
     \`Function\` constructor when at all possible.'`),
+  legacyCode: null,
+};
+
+export const NO_IMPLIED_EVAL = {
+  code: 'NO_IMPLIED_EVAL',
+  message: null,
+  description: _(singleLineString`setTimeout, setInterval and execScript
+    functions should be called only with function expressions as their
+    first argument`),
   legacyCode: null,
 };
 
