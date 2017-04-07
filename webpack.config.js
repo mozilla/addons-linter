@@ -33,7 +33,7 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        exclude: /(node_modules|bower_components|package.json)/,
+        exclude: /(node_modules|bower_components|tests|package.json)/,
         loaders: ['json-loader'],
       },
     ],
