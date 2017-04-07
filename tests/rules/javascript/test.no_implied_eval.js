@@ -19,9 +19,13 @@ describe('no_implied_eval', () => {
 
     // identifiers are fine
     'setTimeout(foo, 10)',
+    'var foo = function() {}; setTimeout(foo, 10)',
 
     // as are function expressions
     'setTimeout(function() {}, 10)',
+
+    // and arrow functions work too
+    'setTimeout(() => { console.log("foo"); })',
 
     // setInterval
     'foo.setInterval("hi")',
@@ -109,7 +113,7 @@ describe('no_implied_eval', () => {
       description: [NO_IMPLIED_EVAL.description],
     },
 
-    // string concatination
+    // string concatenation
     {
       code: 'setTimeout("foo" + bar)',
       message: [expectedErrorMessage],
