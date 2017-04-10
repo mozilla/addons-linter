@@ -500,7 +500,6 @@
     },
     {
       "name": "onConnectExternal",
-      "unsupported": true,
       "type": "function",
       "description": "Fired when a connection is made from another extension.",
       "parameters": [
@@ -554,7 +553,6 @@
     },
     {
       "name": "onMessageExternal",
-      "unsupported": true,
       "type": "function",
       "description": "Fired when a message is sent from another extension/app. Cannot be used in a content script.",
       "parameters": [
