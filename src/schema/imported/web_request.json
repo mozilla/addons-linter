@@ -1235,14 +1235,16 @@
           "description": "A list of URLs or URL patterns. Requests that cannot match any of the URLs will be filtered out.",
           "items": {
             "type": "string"
-          }
+          },
+          "minItems": 1
         },
         "types": {
           "type": "array",
           "description": "A list of request types. Requests that cannot match any of the types will be filtered out.",
           "items": {
             "$ref": "#/types/ResourceType"
-          }
+          },
+          "minItems": 1
         },
         "tabId": {
           "type": "integer"

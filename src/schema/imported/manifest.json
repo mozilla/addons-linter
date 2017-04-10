@@ -93,7 +93,7 @@
                   "type": "object",
                   "properties": {
                     "page": {
-                      "$ref": "#/types/ExtensionURL"
+                      "$ref": "manifest#/types/ExtensionURL"
                     },
                     "persistent": {
                       "$ref": "#/types/PersistentBackgroundProperty"
@@ -110,7 +110,7 @@
                     "scripts": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/types/ExtensionURL"
+                        "$ref": "manifest#/types/ExtensionURL"
                       }
                     },
                     "persistent": {
@@ -128,7 +128,7 @@
               "type": "object",
               "properties": {
                 "page": {
-                  "$ref": "#/types/ExtensionURL"
+                  "$ref": "manifest#/types/ExtensionURL"
                 },
                 "browser_style": {
                   "type": "boolean"
@@ -210,6 +210,9 @@
           "$ref": "devtools#/definitions/WebExtensionManifest"
         },
         {
+          "$ref": "extension_protocol_handlers#/definitions/WebExtensionManifest"
+        },
+        {
           "$ref": "i18n#/definitions/WebExtensionManifest"
         },
         {
@@ -223,6 +226,9 @@
         },
         {
           "$ref": "theme#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "url_overrides#/definitions/WebExtensionManifest"
         }
       ]
     },
@@ -262,6 +268,9 @@
           "$ref": "downloads#/definitions/Permission"
         },
         {
+          "$ref": "experiments#/definitions/Permission"
+        },
+        {
           "$ref": "history#/definitions/Permission"
         },
         {
@@ -269,6 +278,9 @@
         },
         {
           "$ref": "management#/definitions/Permission"
+        },
+        {
+          "$ref": "privacy.websites#/definitions/Permission"
         },
         {
           "$ref": "runtime#/definitions/Permission"
@@ -289,6 +301,11 @@
           "$ref": "webRequest#/definitions/Permission"
         }
       ]
+    },
+    "HttpURL": {
+      "type": "string",
+      "format": "url",
+      "pattern": "^https?://.*$"
     },
     "ExtensionURL": {
       "type": "string",
@@ -382,14 +399,14 @@
           "type": "array",
           "description": "The list of CSS files to inject",
           "items": {
-            "$ref": "#/types/ExtensionURL"
+            "$ref": "manifest#/types/ExtensionURL"
           }
         },
         "js": {
           "type": "array",
           "description": "The list of CSS files to inject",
           "items": {
-            "$ref": "#/types/ExtensionURL"
+            "$ref": "manifest#/types/ExtensionURL"
           }
         },
         "all_frames": {
@@ -423,13 +440,13 @@
           "type": "object",
           "patternProperties": {
             "^[1-9]\\d*$": {
-              "$ref": "#/types/ExtensionURL"
+              "$ref": "manifest#/types/ExtensionURL"
             }
           },
           "additionalProperties": false
         },
         {
-          "$ref": "#/types/ExtensionURL"
+          "$ref": "manifest#/types/ExtensionURL"
         }
       ]
     },

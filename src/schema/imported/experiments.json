@@ -1,0 +1,20 @@
+{
+  "id": "experiments",
+  "definitions": {
+    "Permission": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^experiments(\\.\\w+)+$"
+        }
+      ]
+    }
+  },
+  "refs": {
+    "experiments#/definitions/Permission": {
+      "namespace": "manifest",
+      "type": "Permission"
+    }
+  },
+  "types": {}
+}
