@@ -42,7 +42,7 @@ module.exports = {
         {
           use: 'babel-istanbul-loader',
           // babel options are in .babelrc
-          exclude: /(node_modules|bower_components)/,
+          exclude: /(node_modules|bower_components|tests)/,
           enforce: 'pre',
           test: /\.js$/,
         },
