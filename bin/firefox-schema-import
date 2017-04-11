@@ -3,5 +3,50 @@
 require('babel-register');
 require('babel-polyfill');
 
-require('../src/schema/firefox-schemas-import')
-  .importSchemas('src/schema/firefox', 'src/schema/updates');
+const fs = require('fs');
+const path = require('path');
+
+const schemaImport = require('../src/schema/firefox-schemas-import');
+
+const firefoxDir = 'tmp/firefox';
+const importedDir = 'src/schema/imported';
+const updatesDir = 'src/schema/updates';
+
+const version = process.argv[2];
+
+if (!/^[0-9]+$/.test(version)) {
+  console.error(`Usage: ${process.argv[1]} version`);
+  process.exit(1);
+}
+
+function emptyDir(dir) {
+  fs.readdirSync(dir).forEach((file) => {
+    fs.unlinkSync(path.join(dir, file));
+  });
+}
+
+try {
+  fs.mkdirSync(firefoxDir);
+} catch (e) {
+  // The folder already existed, remove any old schema files.
+  emptyDir(firefoxDir);
+}
+
+// Remove the old schema files.
+emptyDir(importedDir);
+
+schemaImport.fetchSchemas(version, firefoxDir)
+  .then(() => {
+    schemaImport.importSchemas(firefoxDir, updatesDir, importedDir);
+  })
+  .then(() => {
+    emptyDir(firefoxDir);
+    fs.rmdirSync(firefoxDir);
+  })
+  .catch((error) => {
+    /* eslint-disable no-console */
+    console.error(error.toString());
+    console.error(error.stack);
+    /* eslint-enable no-console */
+    process.exit(2);
+  });

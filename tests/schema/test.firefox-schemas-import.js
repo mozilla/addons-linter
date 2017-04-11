@@ -1,11 +1,18 @@
 import fs from 'fs';
+import fstream from 'fstream';
 import path from 'path';
+import zlib from 'zlib';
+
+import request from 'request';
+import tar from 'tar';
 
 import {
+  fetchSchemas,
+  importSchemas,
   inner,
   loadTypes,
-  importSchemas,
   processSchemas,
+  refMap,
   rewriteExtend,
   rewriteKey,
   rewriteOptionalToRequired,
@@ -14,6 +21,16 @@ import {
 
 describe('firefox schema import', () => {
   let sandbox;
+
+  function createDir(dirPath) {
+    fs.mkdirSync(dirPath);
+  }
+
+  function removeDir(dirPath) {
+    fs.readdirSync(dirPath).forEach(
+      (file) => fs.unlinkSync(path.join(dirPath, file)));
+    fs.rmdirSync(dirPath);
+  }
 
   beforeEach(() => {
     sandbox = sinon.sandbox.create();
@@ -188,6 +205,17 @@ describe('firefox schema import', () => {
         rewriteValue('additionalProperties', { $ref: 'UnrecognizedProperty' }),
         undefined);
     });
+
+    describe('known refs that are not specific', () => {
+      beforeEach(() => { refMap.SomeType = 'manifest#/types/SomeType'; });
+      afterEach(() => { delete refMap.SomeType; });
+
+      it('get rewritten to good paths', () => {
+        assert.equal(
+          rewriteValue('$ref', 'SomeType'),
+          'manifest#/types/SomeType');
+      });
+    });
   });
 
   describe('rewriteKey', () => {
@@ -275,7 +303,7 @@ describe('firefox schema import', () => {
         });
     });
 
-    it('handles a single schema in the array', () => {
+    it('handles the manifest schema', () => {
       const schemas = [
         {
           namespace: 'manifest',
@@ -283,12 +311,47 @@ describe('firefox schema import', () => {
         },
       ];
       assert.deepEqual(
-        inner.normalizeSchema(schemas),
+        inner.normalizeSchema(schemas, 'manifest.json'),
         {
           id: 'manifest',
           types: { Permission: { id: 'Permission', type: 'string' } },
           definitions: {},
           refs: {},
+        });
+    });
+
+    it('handles manifest extensions without a schema', () => {
+      const schemas = [
+        {
+          namespace: 'manifest',
+          types: [{
+            $extend: 'WebExtensionManifest',
+            properties: {
+              chrome_url_overrides: {
+                type: 'object',
+              },
+            },
+          }],
+        },
+      ];
+      assert.deepEqual(
+        inner.normalizeSchema(schemas, 'url_overrides.json'),
+        {
+          id: 'url_overrides',
+          types: {},
+          definitions: {
+            WebExtensionManifest: {
+              properties: {
+                chrome_url_overrides: { type: 'object' },
+              },
+            },
+          },
+          refs: {
+            'url_overrides#/definitions/WebExtensionManifest': {
+              namespace: 'manifest',
+              type:  'WebExtensionManifest',
+            },
+          },
         });
     });
   });
@@ -823,22 +886,73 @@ describe('firefox schema import', () => {
     const expectedPath = 'tests/schema/expected';
 
     beforeEach(() => {
-      fs.mkdirSync(outputPath);
+      createDir(outputPath);
     });
 
     afterEach(() => {
-      schemaFiles.forEach(
-        (file) => fs.unlinkSync(path.join(outputPath, file)));
-      fs.rmdirSync(outputPath);
+      removeDir(outputPath);
     });
 
     it('imports schemas from filesystem', () => {
-      importSchemas(firefoxPath, ourPath);
+      importSchemas(firefoxPath, ourPath, outputPath);
       schemaFiles.forEach((file) => {
         assert.deepEqual(
           JSON.parse(fs.readFileSync(path.join(outputPath, file))),
           JSON.parse(fs.readFileSync(path.join(expectedPath, file))));
       });
+    });
+  });
+
+  describe('fetchSchemas', () => {
+    const outputPath = 'tests/schema/imported';
+
+    beforeEach(() => {
+      createDir(outputPath);
+    });
+
+    afterEach(() => {
+      removeDir(outputPath);
+    });
+
+    it('downloads the firefox source and extracts the schemas', () => {
+      // eslint-disable-next-line new-cap
+      const packer = tar.Pack({ noProprietary: true });
+      const schemaPath = 'tests/schema/firefox';
+      // eslint-disable-next-line new-cap
+      const tarball = fstream.Reader({ path: schemaPath, type: 'Directory' })
+        .pipe(packer)
+        .pipe(zlib.createGzip());
+      sandbox
+        .stub(inner, 'isBrowserSchema')
+        .withArgs('firefox/cookies.json')
+        .returns(false)
+        .withArgs('firefox/manifest.json')
+        .returns(true);
+      sandbox
+        .stub(request, 'get')
+        .withArgs('https://hg.mozilla.org/mozilla-central/archive/FIREFOX_AURORA_54_BASE.tar.gz')
+        .returns(tarball);
+      assert.deepEqual(fs.readdirSync(outputPath), []);
+      return fetchSchemas(54, outputPath)
+        .then(() => {
+          assert.deepEqual(fs.readdirSync(outputPath), ['manifest.json']);
+        });
+    });
+  });
+
+  describe('isBrowserSchema', () => {
+    it('pulls in browser and toolkit schemas', () => {
+      const files = [
+        'moz/browser/components/extensions/schemas/bookmarks.json',
+        'moz/toolkit/components/extensions/schemas/manifest.json',
+        'moz/toolkit/components/extensions/schemas/Schemas.jsm',
+      ];
+      assert.deepEqual(
+        files.filter((f) => inner.isBrowserSchema(f)),
+        [
+          'moz/browser/components/extensions/schemas/bookmarks.json',
+          'moz/toolkit/components/extensions/schemas/manifest.json',
+        ]);
     });
   });
 });

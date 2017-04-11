@@ -1,0 +1,73 @@
+{
+  "id": "url_overrides",
+  "definitions": {
+    "WebExtensionManifest": {
+      "properties": {
+        "chrome_url_overrides": {
+          "type": "object",
+          "properties": {
+            "newtab": {
+              "allOf": [
+                {
+                  "$ref": "manifest#/types/ExtensionURL"
+                },
+                {
+                  "optional": true,
+                  "preprocess": "localize"
+                }
+              ]
+            },
+            "home": {
+              "allOf": [
+                {
+                  "$ref": "manifest#/types/ExtensionURL"
+                },
+                {
+                  "optional": true,
+                  "preprocess": "localize"
+                }
+              ]
+            },
+            "bookmarks": {
+              "allOf": [
+                {
+                  "$ref": "manifest#/types/ExtensionURL"
+                },
+                {
+                  "unsupported": true,
+                  "optional": true,
+                  "preprocess": "localize"
+                }
+              ]
+            },
+            "history": {
+              "allOf": [
+                {
+                  "$ref": "manifest#/types/ExtensionURL"
+                },
+                {
+                  "unsupported": true,
+                  "optional": true,
+                  "preprocess": "localize"
+                }
+              ]
+            }
+          },
+          "required": [
+            "newtab",
+            "home",
+            "bookmarks",
+            "history"
+          ]
+        }
+      }
+    }
+  },
+  "refs": {
+    "url_overrides#/definitions/WebExtensionManifest": {
+      "namespace": "manifest",
+      "type": "WebExtensionManifest"
+    }
+  },
+  "types": {}
+}

@@ -1,14 +1,27 @@
 import fs from 'fs';
 import path from 'path';
+import zlib from 'zlib';
 
 import commentJson from 'comment-json';
 import merge from 'deepmerge';
+import request from 'request';
+import tar from 'tar';
 
 const FLAG_PATTERN_REGEX = /^\(\?[im]*\)(.*)/;
 const UNRECOGNIZED_PROPERTY_REFS = [
   'UnrecognizedProperty',
   'manifest#/types/UnrecognizedProperty',
 ];
+
+const schemaRegexes = [
+  new RegExp('browser/components/extensions/schemas/.*\.json'),
+  new RegExp('toolkit/components/extensions/schemas/.*\.json'),
+];
+
+export const refMap = {
+  ExtensionURL: 'manifest#/types/ExtensionURL',
+  HttpURL: 'manifest#/types/HttpURL',
+};
 
 // Reference some functions on inner so they can be stubbed in tests.
 export const inner = {};
@@ -88,6 +101,8 @@ export function rewriteValue(key, value) {
   } else if (key === '$ref') {
     if (value.includes('#/types')) {
       return value;
+    } else if (value in refMap) {
+      return refMap[value];
     }
     let path = value;
     let schemaId = '';
@@ -208,7 +223,7 @@ export function rewriteExtend(schemas, schemaId) {
     const extendId = extendSchema.namespace;
     const extendDefinitions = {};
     const extendTypes = {};
-    extendSchema.types.forEach((type) => {
+    (extendSchema.types || []).forEach((type) => {
       const { $extend, id, ...rest } = type;
       if ($extend) {
         // Move the $extend into definitions.
@@ -235,13 +250,21 @@ export function rewriteExtend(schemas, schemaId) {
   return { definitions, refs, types };
 }
 
-inner.normalizeSchema = (schemas) => {
+inner.normalizeSchema = (schemas, file) => {
   let extendSchemas;
   let primarySchema;
 
   if (schemas.length === 1) {
-    primarySchema = schemas[0];
-    extendSchemas = [];
+    // If there is only a manifest namespace then this just extends the manifest.
+    if (schemas[0].namespace === 'manifest' && file !== 'manifest.json') {
+      primarySchema = {
+        namespace: file.slice(0, file.indexOf('.')),
+      };
+      extendSchemas = [schemas[0]];
+    } else {
+      primarySchema = schemas[0];
+      extendSchemas = [];
+    }
   } else {
     extendSchemas = schemas.slice(0, schemas.length - 1);
     primarySchema = schemas[schemas.length - 1];
@@ -258,8 +281,8 @@ inner.normalizeSchema = (schemas) => {
   };
 };
 
-inner.loadSchema = (schema) => {
-  const { id, ...rest } = inner.normalizeSchema(schema);
+inner.loadSchema = (schema, file) => {
+  const { id, ...rest } = inner.normalizeSchema(schema, file);
   const newSchema = { id, ...inner.rewriteObject(rest) };
   if (id === 'manifest') {
     newSchema.$ref = '#/types/WebExtensionManifest';
@@ -271,7 +294,7 @@ export function processSchemas(schemas, ourSchemas) {
   const loadedSchemas = {};
   schemas.forEach(({ file, schema }) => {
     // Convert the Firefox schema to more standard JSON schema.
-    const loadedSchema = inner.loadSchema(schema);
+    const loadedSchema = inner.loadSchema(schema, file);
     loadedSchemas[loadedSchema.id] = { file, schema: loadedSchema };
   });
   // Now that everything is loaded, we can finish mapping the non-standard
@@ -303,11 +326,11 @@ function schemaFiles(basePath) {
   return fs.readdirSync(basePath);
 }
 
-function writeSchemasToFile(basePath, loadedSchemas) {
+function writeSchemasToFile(basePath, importedPath, loadedSchemas) {
   // Write out the schemas.
   Object.keys(loadedSchemas).forEach((id) => {
     const { file, schema } = loadedSchemas[id];
-    writeSchema(path.join(basePath, '..', 'imported'), file, schema);
+    writeSchema(importedPath, file, schema);
   });
 }
 
@@ -324,9 +347,35 @@ function loadSchemasFromFile(basePath) {
   return schemas;
 }
 
-export function importSchemas(firefoxPath, ourPath) {
+export function importSchemas(firefoxPath, ourPath, importedPath) {
   const rawSchemas = loadSchemasFromFile(firefoxPath);
   const ourSchemas = readSchema(ourPath, 'manifest.json');
   const processedSchemas = processSchemas(rawSchemas, ourSchemas);
-  writeSchemasToFile(firefoxPath, processedSchemas);
+  writeSchemasToFile(firefoxPath, importedPath, processedSchemas);
+}
+
+function downloadUrl(version) {
+  return `https://hg.mozilla.org/mozilla-central/archive/FIREFOX_AURORA_${version}_BASE.tar.gz`;
+}
+
+inner.isBrowserSchema = (path) => {
+  return schemaRegexes.some((re) => re.test(path));
+};
+
+export function fetchSchemas(version, outputPath) {
+  return new Promise((resolve) => {
+    request.get(downloadUrl(version))
+      .pipe(zlib.createGunzip())
+      // eslint-disable-next-line new-cap
+      .pipe(tar.Parse())
+      .on('entry', (entry) => {
+        if (inner.isBrowserSchema(entry.path)) {
+          const filePath = path.join(outputPath, path.basename(entry.path));
+          entry.pipe(fs.createWriteStream(filePath));
+        }
+      })
+      .on('end', () => {
+        resolve();
+      });
+  });
 }

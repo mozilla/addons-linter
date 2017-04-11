@@ -411,6 +411,16 @@
             },
             "browser_style": {
               "type": "boolean"
+            },
+            "default_area": {
+              "description": "Defines the location the browserAction will appear by default.  The default location is navbar.",
+              "type": "string",
+              "enum": [
+                "navbar",
+                "menupanel",
+                "tabstrip",
+                "personaltoolbar"
+              ]
             }
           }
         }
