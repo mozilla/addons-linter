@@ -2,7 +2,7 @@ import ajv from 'ajv';
 import URL from 'url-parse';
 import { isRelativeURL, isValidVersionString } from './formats';
 import schemaObject from 'schema/imported/manifest.json';
-import schemas from './firefox-schemas';
+import schemas from './imported';
 
 
 function isURL(value) {

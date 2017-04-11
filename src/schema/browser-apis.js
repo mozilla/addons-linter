@@ -1,5 +1,5 @@
 import { DEPRECATED_APIS, TEMPORARY_APIS } from 'const';
-import schemaList from 'schema/firefox-schemas';
+import schemaList from 'schema/imported';
 
 const schemaArrayNames = ['functions', 'events'];
 const schemaObjectNames = ['types', 'properties'];
