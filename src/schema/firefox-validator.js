@@ -1,7 +1,7 @@
 import ajv from 'ajv';
 import URL from 'url-parse';
 import { isRelativeURL, isValidVersionString } from './formats';
-import rawSchema from 'file!schema/imported/manifest';
+import schemaObject from 'schema/imported/manifest.json';
 import schemas from './firefox-schemas';
 
 
@@ -34,4 +34,4 @@ validator.addFormat('url', isURL);
 validator.addFormat('secureUrl', isSecureURL);
 validator.addFormat('deprecated', () => false);
 
-export default validator.compile(rawSchema);
+export default validator.compile(schemaObject);

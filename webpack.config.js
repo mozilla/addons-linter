@@ -34,7 +34,7 @@ module.exports = {
       {
         test: /\.json$/,
         exclude: /(node_modules|bower_components|tests|package.json)/,
-        loaders: ['file-loader'],
+        loaders: ['json-loader'],
       },
     ],
   },
