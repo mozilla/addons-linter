@@ -40,9 +40,10 @@ module.exports = {
     module: {
       rules: [
         {
-          use: 'babel-loader',
+          use: 'babel-istanbul-loader',
           // babel options are in .babelrc
           exclude: /(node_modules|bower_components)/,
+          enforce: 'pre',
           test: /\.js$/,
         },
       ],
