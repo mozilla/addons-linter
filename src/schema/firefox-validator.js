@@ -1,9 +1,9 @@
 import ajv from 'ajv';
 import URL from 'url-parse';
 import { isRelativeURL, isValidVersionString } from './formats';
+import schemaObject from 'schema/imported/manifest.json';
+import schemas from './imported';
 
-import schemas from './firefox-schemas';
-const schemaObject = require('json!schema/imported/manifest');
 
 function isURL(value) {
   const url = new URL(value);

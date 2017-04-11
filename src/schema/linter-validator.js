@@ -1,7 +1,7 @@
 import ajv from 'ajv';
 import { isRelativeURL, isValidVersionString } from './formats';
+import schemaObject from 'schema/manifest-schema.json';
 
-export var schemaObject = require('json!schema/manifest-schema');
 
 var validator = ajv({
   allErrors: true,
