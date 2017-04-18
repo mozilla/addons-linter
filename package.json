@@ -76,7 +76,7 @@
     "cheerio": "0.22.0",
     "columnify": "1.5.4",
     "crx-parser": "0.1.2",
-    "dispensary": "0.10.4",
+    "dispensary": "0.10.5",
     "es6-promisify": "5.0.0",
     "eslint": "3.19.0",
     "eslint-plugin-no-unsafe-innerhtml": "EnTeQuAk/eslint-plugin-no-unsafe-innerhtml#4b6b606d50",
