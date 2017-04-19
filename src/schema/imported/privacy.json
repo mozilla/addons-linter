@@ -1,51 +1,96 @@
 {
-  "id": "privacy.websites",
-  "description": "Use the <code>browser.privacy</code> API to control usage of the features in the browser that can affect a user's privacy.",
+  "id": "privacy",
   "permissions": [
     "privacy"
   ],
   "properties": {
-    "thirdPartyCookiesAllowed": {
-      "allOf": [
-        {
-          "$ref": "types#/types/Setting"
+    "network": {
+      "description": "Use the <code>browser.privacy</code> API to control usage of the features in the browser that can affect a user's privacy.",
+      "permissions": [
+        "privacy"
+      ],
+      "properties": {
+        "networkPredictionEnabled": {
+          "allOf": [
+            {
+              "$ref": "types#/types/Setting"
+            },
+            {
+              "description": "If enabled, the browser attempts to speed up your web browsing experience by pre-resolving DNS entries, prerendering sites (<code>&lt;link rel='prefetch' ...&gt;</code>), and preemptively opening TCP and SSL connections to servers.  This preference's value is a boolean, defaulting to <code>true</code>."
+            }
+          ]
         },
-        {
-          "description": "If disabled, the browser blocks third-party sites from setting cookies. The value of this preference is of type boolean, and the default value is <code>true</code>.",
-          "unsupported": true
+        "webRTCIPHandlingPolicy": {
+          "allOf": [
+            {
+              "$ref": "types#/types/Setting"
+            },
+            {
+              "description": "Allow users to specify the media performance/privacy tradeoffs which impacts how WebRTC traffic will be routed and how much local address information is exposed. This preference's value is of type IPHandlingPolicy, defaulting to <code>default</code>."
+            }
+          ]
         }
+      },
+      "required": [
+        "networkPredictionEnabled",
+        "webRTCIPHandlingPolicy"
       ]
     },
-    "hyperlinkAuditingEnabled": {
-      "allOf": [
-        {
-          "$ref": "types#/types/Setting"
+    "websites": {
+      "description": "Use the <code>browser.privacy</code> API to control usage of the features in the browser that can affect a user's privacy.",
+      "permissions": [
+        "privacy"
+      ],
+      "properties": {
+        "thirdPartyCookiesAllowed": {
+          "allOf": [
+            {
+              "$ref": "types#/types/Setting"
+            },
+            {
+              "description": "If disabled, the browser blocks third-party sites from setting cookies. The value of this preference is of type boolean, and the default value is <code>true</code>.",
+              "unsupported": true
+            }
+          ]
         },
-        {
-          "description": "If enabled, the browser sends auditing pings when requested by a website (<code>&lt;a ping&gt;</code>). The value of this preference is of type boolean, and the default value is <code>true</code>."
-        }
-      ]
-    },
-    "referrersEnabled": {
-      "allOf": [
-        {
-          "$ref": "types#/types/Setting"
+        "hyperlinkAuditingEnabled": {
+          "allOf": [
+            {
+              "$ref": "types#/types/Setting"
+            },
+            {
+              "description": "If enabled, the browser sends auditing pings when requested by a website (<code>&lt;a ping&gt;</code>). The value of this preference is of type boolean, and the default value is <code>true</code>."
+            }
+          ]
         },
-        {
-          "description": "If enabled, the browser sends <code>referer</code> headers with your requests. Yes, the name of this preference doesn't match the misspelled header. No, we're not going to change it. The value of this preference is of type boolean, and the default value is <code>true</code>.",
-          "unsupported": true
-        }
-      ]
-    },
-    "protectedContentEnabled": {
-      "allOf": [
-        {
-          "$ref": "types#/types/Setting"
+        "referrersEnabled": {
+          "allOf": [
+            {
+              "$ref": "types#/types/Setting"
+            },
+            {
+              "description": "If enabled, the browser sends <code>referer</code> headers with your requests. Yes, the name of this preference doesn't match the misspelled header. No, we're not going to change it. The value of this preference is of type boolean, and the default value is <code>true</code>.",
+              "unsupported": true
+            }
+          ]
         },
-        {
-          "description": "<strong>Available on Windows and ChromeOS only</strong>: If enabled, the browser provides a unique ID to plugins in order to run protected content. The value of this preference is of type boolean, and the default value is <code>true</code>.",
-          "unsupported": true
+        "protectedContentEnabled": {
+          "allOf": [
+            {
+              "$ref": "types#/types/Setting"
+            },
+            {
+              "description": "<strong>Available on Windows and ChromeOS only</strong>: If enabled, the browser provides a unique ID to plugins in order to run protected content. The value of this preference is of type boolean, and the default value is <code>true</code>.",
+              "unsupported": true
+            }
+          ]
         }
+      },
+      "required": [
+        "thirdPartyCookiesAllowed",
+        "hyperlinkAuditingEnabled",
+        "referrersEnabled",
+        "protectedContentEnabled"
       ]
     }
   },
@@ -62,7 +107,7 @@
     }
   },
   "refs": {
-    "privacy.websites#/definitions/Permission": {
+    "privacy#/definitions/Permission": {
       "namespace": "manifest",
       "type": "Permission"
     }

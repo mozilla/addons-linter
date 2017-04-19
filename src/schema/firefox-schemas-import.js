@@ -26,6 +26,11 @@ export const refMap = {
 // Reference some functions on inner so they can be stubbed in tests.
 export const inner = {};
 
+// Consider moving this to a Set if you add more schema namespaces.
+// Some schemas aren't actually exposed to add-ons, or are for internal
+// use in Firefox only. We shouldn't import these schemas.
+export const ignoredSchemas = ['omnibox_internal'];
+
 function stripFlagsFromPattern(value) {
   // TODO: Fix these patterns and remove this code.
   const matches = FLAG_PATTERN_REGEX.exec(value);
@@ -250,24 +255,108 @@ export function rewriteExtend(schemas, schemaId) {
   return { definitions, refs, types };
 }
 
+export function filterSchemas(schemas) {
+  return schemas.filter((schema) => {
+    return !ignoredSchemas.includes(schema.namespace);
+  });
+}
+
+/**
+ * Merge multiple schemas into one if they are properties of each other.
+ *
+ * Example:
+ *
+ *  [{ namespace: "privacy", permissions: ["privacy"] },
+ *   { namespace: "privacy.network", properties: { networkPredictionEnabled: {} } }]
+ *
+ *  becomes
+ *
+ *  [{ namespace: "privacy",
+ *     permissions: ["privacy"],
+ *     properties: {
+ *       network: {
+ *         properties: {
+ *           networkPredictionEnabled: {}
+ *  }}}}]
+ */
+export function foldSchemas(schemas) {
+  // Map the schemas by prefix.
+  const schemasByPrefix = {};
+  schemas.forEach((schema) => {
+    const [prefix, property, more] = schema.namespace.split('.', 3);
+    if (more) {
+      throw new Error('namespace may only have one level of nesting');
+    }
+    if (!(prefix in schemasByPrefix)) {
+      schemasByPrefix[prefix] = {};
+    }
+    let namespace = property ? property : 'baseNamespace';
+    if (schemasByPrefix[prefix][namespace]) {
+      throw new Error('matching namespaces are not allowed');
+    } else {
+      schemasByPrefix[prefix][namespace] = schema;
+    }
+  });
+  // If there aren't any matching prefixes then there's no folding to do.
+  const hasMatchingPrefixes = Object.keys(schemasByPrefix).some((prefix) => {
+    const prefixedSchemas = schemasByPrefix[prefix];
+    // Continue if there are multiple properties (baseNamespace and something
+    // else) or there is one property that isn't baseNamespace.
+    return Object.keys(prefixedSchemas).length > 1
+      || !('baseNamespace' in prefixedSchemas);
+  });
+  if (!hasMatchingPrefixes) {
+    return schemas;
+  }
+
+  // There is folding to do, join the matching schemas.
+  const foldedSchemas = [];
+
+  // The order of the schemas will be maintained since they were inserted in
+  // the order of schemas.
+  Object.keys(schemasByPrefix).forEach((namespace) => {
+    const { baseNamespace = {}, ...nestedSchemas } = schemasByPrefix[namespace];
+    foldedSchemas.push(baseNamespace);
+    // Ensure the base namespace is set.
+    baseNamespace.namespace = namespace;
+    if (Object.keys(nestedSchemas).length > 0 && !baseNamespace.properties) {
+      baseNamespace.properties = {};
+    }
+    Object.keys(nestedSchemas).forEach((property) => {
+      const schema = nestedSchemas[property];
+      delete schema.namespace;
+      if (schema.types) {
+        baseNamespace.types = baseNamespace.types || [];
+        baseNamespace.types = baseNamespace.types.concat(schema.types);
+        delete schema.types;
+      }
+      baseNamespace.properties[property] = schema;
+    });
+  });
+
+  return foldedSchemas;
+}
+
 inner.normalizeSchema = (schemas, file) => {
+  const filteredSchemas = foldSchemas(filterSchemas(schemas));
   let extendSchemas;
   let primarySchema;
 
-  if (schemas.length === 1) {
+  if (filteredSchemas.length === 1) {
     // If there is only a manifest namespace then this just extends the manifest.
-    if (schemas[0].namespace === 'manifest' && file !== 'manifest.json') {
+    if (filteredSchemas[0].namespace === 'manifest'
+        && file !== 'manifest.json') {
       primarySchema = {
         namespace: file.slice(0, file.indexOf('.')),
       };
-      extendSchemas = [schemas[0]];
+      extendSchemas = [filteredSchemas[0]];
     } else {
-      primarySchema = schemas[0];
+      primarySchema = filteredSchemas[0];
       extendSchemas = [];
     }
   } else {
-    extendSchemas = schemas.slice(0, schemas.length - 1);
-    primarySchema = schemas[schemas.length - 1];
+    extendSchemas = filteredSchemas.slice(0, filteredSchemas.length - 1);
+    primarySchema = filteredSchemas[filteredSchemas.length - 1];
   }
   const { namespace, types, ...rest } = primarySchema;
   const { types: extendTypes, ...extendRest } = rewriteExtend(
@@ -290,18 +379,38 @@ inner.loadSchema = (schema, file) => {
   return newSchema;
 };
 
-export function processSchemas(schemas, ourSchemas) {
-  const loadedSchemas = {};
+inner.mergeSchemas = (schemaLists) => {
+  const schemas = {};
+  Object.keys(schemaLists).forEach((namespace) => {
+    const namespaceSchemas = schemaLists[namespace];
+    if (namespaceSchemas.length === 1) {
+      schemas[namespace] = namespaceSchemas[0];
+    } else {
+      const file = `${namespace}.json`;
+      const merged = namespaceSchemas.reduce((memo, { schema }) => {
+        return merge(memo, schema);
+      }, {});
+      schemas[namespace] = { file, schema: merged };
+    }
+  });
+  return schemas;
+};
+
+export function processSchemas(schemas) {
+  const schemaListsByNamespace = {};
   schemas.forEach(({ file, schema }) => {
     // Convert the Firefox schema to more standard JSON schema.
     const loadedSchema = inner.loadSchema(schema, file);
-    loadedSchemas[loadedSchema.id] = { file, schema: loadedSchema };
+    const { id } = loadedSchema;
+    if (!(id in schemaListsByNamespace)) {
+      schemaListsByNamespace[id] = [];
+    }
+    schemaListsByNamespace[id].push({ file, schema: loadedSchema });
   });
+  const mergedSchemasByNamespace = inner.mergeSchemas(schemaListsByNamespace);
   // Now that everything is loaded, we can finish mapping the non-standard
   // $extend to $ref.
-  const extendedSchemas = inner.mapExtendToRef(loadedSchemas);
-  // Update the Firefox schemas with some missing validations, defaults and descriptions.
-  return inner.updateWithAddonsLinterData(extendedSchemas, ourSchemas);
+  return inner.mapExtendToRef(mergedSchemasByNamespace);
 }
 
 const SKIP_SCHEMAS = [
@@ -350,8 +459,10 @@ function loadSchemasFromFile(basePath) {
 export function importSchemas(firefoxPath, ourPath, importedPath) {
   const rawSchemas = loadSchemasFromFile(firefoxPath);
   const ourSchemas = readSchema(ourPath, 'manifest.json');
-  const processedSchemas = processSchemas(rawSchemas, ourSchemas);
-  writeSchemasToFile(firefoxPath, importedPath, processedSchemas);
+  const processedSchemas = processSchemas(rawSchemas);
+  const updatedSchemas = inner.updateWithAddonsLinterData(
+    processedSchemas, ourSchemas);
+  writeSchemasToFile(firefoxPath, importedPath, updatedSchemas);
 }
 
 function downloadUrl(version) {
@@ -362,9 +473,15 @@ inner.isBrowserSchema = (path) => {
   return schemaRegexes.some((re) => re.test(path));
 };
 
-export function fetchSchemas(version, outputPath) {
+export function fetchSchemas({ inputPath, outputPath, version }) {
   return new Promise((resolve) => {
-    request.get(downloadUrl(version))
+    let tarball;
+    if (inputPath) {
+      tarball = fs.createReadStream(inputPath);
+    } else if (version) {
+      tarball = request.get(downloadUrl(version));
+    }
+    tarball
       .pipe(zlib.createGunzip())
       // eslint-disable-next-line new-cap
       .pipe(tar.Parse())

@@ -216,7 +216,7 @@
           "$ref": "i18n#/definitions/WebExtensionManifest"
         },
         {
-          "$ref": "omnibox_internal#/definitions/WebExtensionManifest"
+          "$ref": "omnibox#/definitions/WebExtensionManifest"
         },
         {
           "$ref": "pageAction#/definitions/WebExtensionManifest"
@@ -280,7 +280,7 @@
           "$ref": "management#/definitions/Permission"
         },
         {
-          "$ref": "privacy.websites#/definitions/Permission"
+          "$ref": "privacy#/definitions/Permission"
         },
         {
           "$ref": "runtime#/definitions/Permission"

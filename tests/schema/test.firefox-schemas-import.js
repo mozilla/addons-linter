@@ -8,6 +8,9 @@ import tar from 'tar';
 
 import {
   fetchSchemas,
+  filterSchemas,
+  foldSchemas,
+  ignoredSchemas,
   importSchemas,
   inner,
   loadTypes,
@@ -281,7 +284,7 @@ describe('firefox schema import', () => {
         },
       ];
       assert.deepEqual(
-        inner.normalizeSchema(schemas),
+        inner.normalizeSchema(schemas, 'cookies.json'),
         {
           id: 'cookies',
           types: {
@@ -397,22 +400,76 @@ describe('firefox schema import', () => {
       loadSchema.withArgs(firstSchema).returns({ id: 'manifest', schema: 1 });
       loadSchema.withArgs(secondSchema).returns({ id: 'cookies', schema: 2 });
       sandbox
-        .stub(inner, 'mapExtendToRef')
+        .stub(inner, 'mergeSchemas')
         .withArgs({
-          manifest: { file: 'one', schema: { id: 'manifest', schema: 1 } },
-          cookies: { file: 'two', schema: { id: 'cookies', schema: 2 } },
+          manifest: [{ file: 'one', schema: { id: 'manifest', schema: 1 } }],
+          cookies: [{ file: 'two', schema: { id: 'cookies', schema: 2 } }],
         })
-        .returns({ mapExtendToRef: 'done' });
+        .returns({ mergeSchemas: 'done' });
       sandbox
-        .stub(inner, 'updateWithAddonsLinterData')
-        .withArgs({ mapExtendToRef: 'done' })
-        .returns({ updateWithAddonsLinterData: 'done' });
+        .stub(inner, 'mapExtendToRef')
+        .withArgs({ mergeSchemas: 'done' })
+        .returns({ mapExtendToRef: 'done' });
       assert.deepEqual(
         processSchemas([
           { file: 'one', schema: firstSchema },
           { file: 'two', schema: secondSchema },
         ]),
-        { updateWithAddonsLinterData: 'done' });
+        { mapExtendToRef: 'done' });
+    });
+  });
+
+  describe('mergeSchemas', () => {
+    it('merges schemas with the same namespace', () => {
+      const schemas = [{
+        file: 'foo_foo.json',
+        schema: [{
+          namespace: 'foo',
+          types: [{ id: 'Foo', type: 'string' }],
+        }],
+      }, {
+        file: 'foo_bar.json',
+        schema: [{
+          namespace: 'foo.bar',
+          types: [{ id: 'FooBar', type: 'number' }],
+          properties: { thing: {} },
+        }],
+      }, {
+        file: 'bar.json',
+        schema: [{
+          namespace: 'bar',
+          types: [{ id: 'Bar', type: 'string' }],
+        }],
+      }];
+
+      assert.deepEqual(
+        processSchemas(schemas),
+        {
+          foo: {
+            file: 'foo.json',
+            schema: {
+              id: 'foo',
+              definitions: {},
+              refs: {},
+              types: {
+                Foo: { type: 'string' },
+                FooBar: { type: 'number' },
+              },
+              properties: {
+                bar: { properties: { thing: {} }, required: ['thing'] },
+              },
+            },
+          },
+          bar: {
+            file: 'bar.json',
+            schema: {
+              id: 'bar',
+              definitions: {},
+              refs: {},
+              types: { Bar: { type: 'string' } },
+            },
+          },
+        });
     });
   });
 
@@ -933,7 +990,32 @@ describe('firefox schema import', () => {
         .withArgs('https://hg.mozilla.org/mozilla-central/archive/FIREFOX_AURORA_54_BASE.tar.gz')
         .returns(tarball);
       assert.deepEqual(fs.readdirSync(outputPath), []);
-      return fetchSchemas(54, outputPath)
+      return fetchSchemas({ version: 54, outputPath })
+        .then(() => {
+          assert.deepEqual(fs.readdirSync(outputPath), ['manifest.json']);
+        });
+    });
+
+    it('extracts the schemas from a local file', () => {
+      // eslint-disable-next-line new-cap
+      const packer = tar.Pack({ noProprietary: true });
+      const schemaPath = 'tests/schema/firefox';
+      // eslint-disable-next-line new-cap
+      const tarball = fstream.Reader({ path: schemaPath, type: 'Directory' })
+        .pipe(packer)
+        .pipe(zlib.createGzip());
+      sandbox
+        .stub(inner, 'isBrowserSchema')
+        .withArgs('firefox/cookies.json')
+        .returns(false)
+        .withArgs('firefox/manifest.json')
+        .returns(true);
+      sandbox
+        .stub(fs, 'createReadStream')
+        .withArgs('mozilla-central.tgz')
+        .returns(tarball);
+      assert.deepEqual(fs.readdirSync(outputPath), []);
+      return fetchSchemas({ inputPath: 'mozilla-central.tgz', outputPath })
         .then(() => {
           assert.deepEqual(fs.readdirSync(outputPath), ['manifest.json']);
         });
@@ -953,6 +1035,190 @@ describe('firefox schema import', () => {
           'moz/browser/components/extensions/schemas/bookmarks.json',
           'moz/toolkit/components/extensions/schemas/manifest.json',
         ]);
+    });
+  });
+
+  describe('foldSchemas', () => {
+    it('does not fold non-matching schemas', () => {
+      const schemas = [
+        { namespace: 'manifest' },
+        { namespace: 'omnibox' },
+      ];
+      // Copy the schemas so we can verify they're unchanged and un-mutated.
+      const expectedSchemas = schemas.map((schema) => ({ ...schema }));
+      assert.deepEqual(foldSchemas(schemas), expectedSchemas);
+    });
+
+    it('folds matching schemas, maintaining types at top-level', () => {
+      const schemas = [
+        { namespace: 'manifest' },
+        { namespace: 'privacy.network',
+          properties: { networkPredictionEnabled: {} },
+          types: [{
+            id: 'IPHandlingPolicy',
+            type: 'string',
+            enum: ['default', 'disable_non_proxied_udp'],
+          }],
+        },
+        { namespace: 'privacy',
+          permissions: ['privacy'],
+          properties: { foo: {} },
+          types: [{
+            $extend: 'permission',
+            choices: [{ type: 'string', enum: ['privacy'] }],
+          }],
+        },
+        { namespace: 'privacy.websites',
+          properties: { thirdPartyCookiesAllowed: {} } },
+      ];
+      assert.deepEqual(foldSchemas(schemas), [
+        { namespace: 'manifest' },
+        { namespace: 'privacy',
+          permissions: ['privacy'],
+          properties: {
+            foo: {},
+            network: {
+              properties: { networkPredictionEnabled: {} },
+            },
+            websites: {
+              properties: { thirdPartyCookiesAllowed: {} },
+            },
+          },
+          types: [{
+            $extend: 'permission',
+            choices: [{ type: 'string', enum: ['privacy'] }],
+          }, {
+            id: 'IPHandlingPolicy',
+            type: 'string',
+            enum: ['default', 'disable_non_proxied_udp'],
+          }],
+        },
+      ]);
+    });
+
+    it('handles a base schema without properties', () => {
+      const schemas = [
+        { namespace: 'manifest' },
+        { namespace: 'privacy.network',
+          properties: { networkPredictionEnabled: {} } },
+        { namespace: 'privacy', permissions: ['privacy'] },
+        { namespace: 'privacy.websites',
+          properties: { thirdPartyCookiesAllowed: {} } },
+      ];
+      assert.deepEqual(foldSchemas(schemas), [
+        { namespace: 'manifest' },
+        { namespace: 'privacy',
+          permissions: ['privacy'],
+          properties: {
+            network: {
+              properties: { networkPredictionEnabled: {} },
+            },
+            websites: {
+              properties: { thirdPartyCookiesAllowed: {} },
+            },
+          },
+        },
+      ]);
+    });
+
+    it('handles matching schemas without a base schema', () => {
+      const schemas = [
+        { namespace: 'manifest' },
+        { namespace: 'privacy.network',
+          properties: { networkPredictionEnabled: {} } },
+        { namespace: 'privacy.websites',
+          properties: { thirdPartyCookiesAllowed: {} } },
+      ];
+      assert.deepEqual(foldSchemas(schemas), [
+        { namespace: 'manifest' },
+        { namespace: 'privacy',
+          properties: {
+            network: {
+              properties: { networkPredictionEnabled: {} },
+            },
+            websites: {
+              properties: { thirdPartyCookiesAllowed: {} },
+            },
+          },
+        },
+      ]);
+    });
+
+    it('handles a single schema', () => {
+      const schemas = [
+        { namespace: 'alarms',
+          permissions: ['alarms'],
+          properties: {} },
+      ];
+      const expectedSchemas = schemas.map((schema) => ({ ...schema }));
+      assert.deepEqual(foldSchemas(schemas), expectedSchemas);
+    });
+
+    it('throws if there is more than two levels of nesting', () => {
+      const schemas = [
+        { namespace: 'devtools.panels.sidebars',
+          properties: { createSidebar: {} } },
+      ];
+      assert.throws(
+        () => foldSchemas(schemas),
+        /may only have one level of nesting/);
+    });
+
+    it('throws if there is more than one matching namespace', () => {
+      const schemas = Object.freeze([
+        Object.freeze({
+          namespace: 'devtools.sidebar',
+          properties: { createSidebar: {} },
+        }),
+        Object.freeze({
+          namespace: 'devtools.sidebar',
+          properties: { createBar: {} },
+        }),
+      ]);
+      assert.throws(() => foldSchemas(schemas), /matching namespaces/);
+    });
+
+    it('throws if there is more than one base namespace', () => {
+      const schemas = Object.freeze([
+        Object.freeze({
+          namespace: 'devtools',
+          properties: { createSidebar: {} },
+        }),
+        Object.freeze({
+          namespace: 'devtools',
+          properties: { createBar: {} },
+        }),
+      ]);
+      assert.throws(() => foldSchemas(schemas), /matching namespaces/);
+    });
+  });
+
+  describe('filterSchemas', () => {
+    before(() => {
+      ignoredSchemas.push('some_namespace');
+    });
+
+    after(() => {
+      ignoredSchemas.pop();
+    });
+
+    it('removes schemas that we want to ignore', () => {
+      const goodSchema = Object.freeze({
+        namespace: 'yay',
+        properties: { yay: 'woo' },
+      });
+      const schemas = [
+        goodSchema,
+        { namespace: 'some_namespace', properties: { foo: {} } },
+      ];
+      assert.deepEqual(filterSchemas(schemas), [goodSchema]);
+    });
+
+    it('does not remove anything if there are no ignored schemas', () => {
+      const schemas = Object.freeze([
+        Object.freeze({ namespace: 'alarms', permissions: ['alarms'] }),
+      ]);
+      assert.deepEqual(filterSchemas(schemas), schemas);
     });
   });
 });

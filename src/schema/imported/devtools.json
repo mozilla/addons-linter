@@ -23,5 +23,835 @@
       "type": "WebExtensionManifest"
     }
   },
-  "types": {}
+  "types": {
+    "Resource": {
+      "type": "object",
+      "description": "A resource within the inspected page, such as a document, a script, or an image.",
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "The URL of the resource."
+        }
+      },
+      "functions": [
+        {
+          "name": "getContent",
+          "unsupported": true,
+          "type": "function",
+          "async": "callback",
+          "description": "Gets the content of the resource.",
+          "parameters": [
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "A function that receives resource content when the request completes.",
+              "parameters": [
+                {
+                  "name": "content",
+                  "type": "string",
+                  "description": "Content of the resource (potentially encoded)."
+                },
+                {
+                  "name": "encoding",
+                  "type": "string",
+                  "description": "Empty if content is not encoded, encoding name otherwise. Currently, only base64 is supported."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "setContent",
+          "unsupported": true,
+          "type": "function",
+          "async": "callback",
+          "description": "Sets the content of the resource.",
+          "parameters": [
+            {
+              "name": "content",
+              "type": "string",
+              "description": "New content of the resource. Only resources with the text type are currently supported."
+            },
+            {
+              "name": "commit",
+              "type": "boolean",
+              "description": "True if the user has finished editing the resource, and the new content of the resource should be persisted; false if this is a minor change sent in progress of the user editing the resource."
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "A function called upon request completion.",
+              "optional": true,
+              "parameters": [
+                {
+                  "name": "error",
+                  "type": "object",
+                  "additionalProperties": {},
+                  "optional": true,
+                  "description": "Set to undefined if the resource content was set successfully; describes error otherwise."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "required": [
+        "url"
+      ]
+    },
+    "Request": {
+      "type": "object",
+      "description": "Represents a network request for a document resource (script, image and so on). See HAR Specification for reference.",
+      "functions": [
+        {
+          "name": "getContent",
+          "type": "function",
+          "description": "Returns content of the response body.",
+          "async": "callback",
+          "parameters": [
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "A function that receives the response body when the request completes.",
+              "parameters": [
+                {
+                  "name": "content",
+                  "type": "string",
+                  "description": "Content of the response body (potentially encoded)."
+                },
+                {
+                  "name": "encoding",
+                  "type": "string",
+                  "description": "Empty if content is not encoded, encoding name otherwise. Currently, only base64 is supported."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "ElementsPanel": {
+      "type": "object",
+      "description": "Represents the Elements panel.",
+      "events": [
+        {
+          "name": "onSelectionChanged",
+          "unsupported": true,
+          "description": "Fired when an object is selected in the panel."
+        }
+      ],
+      "functions": [
+        {
+          "name": "createSidebarPane",
+          "unsupported": true,
+          "type": "function",
+          "description": "Creates a pane within panel's sidebar.",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "description": "Text that is displayed in sidebar caption."
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "A callback invoked when the sidebar is created.",
+              "optional": true,
+              "parameters": [
+                {
+                  "allOf": [
+                    {
+                      "$ref": "#/types/ExtensionSidebarPane"
+                    },
+                    {
+                      "name": "result",
+                      "description": "An ExtensionSidebarPane object for created sidebar pane."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "SourcesPanel": {
+      "type": "object",
+      "description": "Represents the Sources panel.",
+      "events": [
+        {
+          "name": "onSelectionChanged",
+          "unsupported": true,
+          "description": "Fired when an object is selected in the panel."
+        }
+      ],
+      "functions": [
+        {
+          "name": "createSidebarPane",
+          "unsupported": true,
+          "type": "function",
+          "description": "Creates a pane within panel's sidebar.",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "description": "Text that is displayed in sidebar caption."
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "A callback invoked when the sidebar is created.",
+              "optional": true,
+              "parameters": [
+                {
+                  "allOf": [
+                    {
+                      "$ref": "#/types/ExtensionSidebarPane"
+                    },
+                    {
+                      "name": "result",
+                      "description": "An ExtensionSidebarPane object for created sidebar pane."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "ExtensionPanel": {
+      "type": "object",
+      "description": "Represents a panel created by extension.",
+      "functions": [
+        {
+          "name": "createStatusBarButton",
+          "unsupported": true,
+          "description": "Appends a button to the status bar of the panel.",
+          "type": "function",
+          "parameters": [
+            {
+              "name": "iconPath",
+              "type": "string",
+              "description": "Path to the icon of the button. The file should contain a 64x24-pixel image composed of two 32x24 icons. The left icon is used when the button is inactive; the right icon is displayed when the button is pressed."
+            },
+            {
+              "name": "tooltipText",
+              "type": "string",
+              "description": "Text shown as a tooltip when user hovers the mouse over the button."
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "description": "Whether the button is disabled."
+            }
+          ],
+          "returns": {
+            "$ref": "#/types/Button"
+          }
+        }
+      ],
+      "events": [
+        {
+          "name": "onSearch",
+          "unsupported": true,
+          "description": "Fired upon a search action (start of a new search, search result navigation, or search being canceled).",
+          "parameters": [
+            {
+              "name": "action",
+              "type": "string",
+              "description": "Type of search action being performed."
+            },
+            {
+              "name": "queryString",
+              "type": "string",
+              "optional": true,
+              "description": "Query string (only for 'performSearch')."
+            }
+          ]
+        },
+        {
+          "name": "onShown",
+          "type": "function",
+          "description": "Fired when the user switches to the panel.",
+          "parameters": [
+            {
+              "name": "window",
+              "type": "object",
+              "isInstanceOf": "global",
+              "additionalProperties": {},
+              "description": "The JavaScript <code>window</code> object of panel's page."
+            }
+          ]
+        },
+        {
+          "name": "onHidden",
+          "type": "function",
+          "description": "Fired when the user switches away from the panel."
+        }
+      ]
+    },
+    "ExtensionSidebarPane": {
+      "type": "object",
+      "description": "A sidebar created by the extension.",
+      "functions": [
+        {
+          "name": "setHeight",
+          "unsupported": true,
+          "type": "function",
+          "description": "Sets the height of the sidebar.",
+          "parameters": [
+            {
+              "name": "height",
+              "type": "string",
+              "description": "A CSS-like size specification, such as <code>'100px'</code> or <code>'12ex'</code>."
+            }
+          ]
+        },
+        {
+          "name": "setExpression",
+          "unsupported": true,
+          "type": "function",
+          "description": "Sets an expression that is evaluated within the inspected page. The result is displayed in the sidebar pane.",
+          "parameters": [
+            {
+              "name": "expression",
+              "type": "string",
+              "description": "An expression to be evaluated in context of the inspected page. JavaScript objects and DOM nodes are displayed in an expandable tree similar to the console/watch."
+            },
+            {
+              "name": "rootTitle",
+              "type": "string",
+              "optional": true,
+              "description": "An optional title for the root of the expression tree."
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "optional": true,
+              "description": "A callback invoked after the sidebar pane is updated with the expression evaluation results."
+            }
+          ]
+        },
+        {
+          "name": "setObject",
+          "unsupported": true,
+          "type": "function",
+          "description": "Sets a JSON-compliant object to be displayed in the sidebar pane.",
+          "parameters": [
+            {
+              "name": "jsonObject",
+              "type": "string",
+              "description": "An object to be displayed in context of the inspected page. Evaluated in the context of the caller (API client)."
+            },
+            {
+              "name": "rootTitle",
+              "type": "string",
+              "optional": true,
+              "description": "An optional title for the root of the expression tree."
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "optional": true,
+              "description": "A callback invoked after the sidebar is updated with the object."
+            }
+          ]
+        },
+        {
+          "name": "setPage",
+          "unsupported": true,
+          "type": "function",
+          "description": "Sets an HTML page to be displayed in the sidebar pane.",
+          "parameters": [
+            {
+              "name": "path",
+              "type": "string",
+              "description": "Relative path of an extension page to display within the sidebar."
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "onShown",
+          "unsupported": true,
+          "type": "function",
+          "description": "Fired when the sidebar pane becomes visible as a result of user switching to the panel that hosts it.",
+          "parameters": [
+            {
+              "name": "window",
+              "type": "object",
+              "isInstanceOf": "global",
+              "additionalProperties": {},
+              "description": "The JavaScript <code>window</code> object of the sidebar page, if one was set with the <code>setPage()</code> method."
+            }
+          ]
+        },
+        {
+          "name": "onHidden",
+          "unsupported": true,
+          "type": "function",
+          "description": "Fired when the sidebar pane becomes hidden as a result of the user switching away from the panel that hosts the sidebar pane."
+        }
+      ]
+    },
+    "Button": {
+      "type": "object",
+      "description": "A button created by the extension.",
+      "functions": [
+        {
+          "name": "update",
+          "unsupported": true,
+          "type": "function",
+          "description": "Updates the attributes of the button. If some of the arguments are omitted or <code>null</code>, the corresponding attributes are not updated.",
+          "parameters": [
+            {
+              "name": "iconPath",
+              "type": "string",
+              "optional": true,
+              "description": "Path to the new icon of the button."
+            },
+            {
+              "name": "tooltipText",
+              "type": "string",
+              "optional": true,
+              "description": "Text shown as a tooltip when user hovers the mouse over the button."
+            },
+            {
+              "name": "disabled",
+              "type": "boolean",
+              "optional": true,
+              "description": "Whether the button is disabled."
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "onClicked",
+          "unsupported": true,
+          "type": "function",
+          "description": "Fired when the button is clicked."
+        }
+      ]
+    }
+  },
+  "properties": {
+    "inspectedWindow": {
+      "allowedContexts": [
+        "devtools",
+        "devtools_only"
+      ],
+      "defaultContexts": [
+        "devtools",
+        "devtools_only"
+      ],
+      "description": "Use the <code>chrome.devtools.inspectedWindow</code> API to interact with the inspected window: obtain the tab ID for the inspected page, evaluate the code in the context of the inspected window, reload the page, or obtain the list of resources within the page.",
+      "nocompile": true,
+      "properties": {
+        "tabId": {
+          "description": "The ID of the tab being inspected. This ID may be used with chrome.tabs.* API.",
+          "type": "integer"
+        }
+      },
+      "functions": [
+        {
+          "name": "eval",
+          "type": "function",
+          "description": "Evaluates a JavaScript expression in the context of the main frame of the inspected page. The expression must evaluate to a JSON-compliant object, otherwise an exception is thrown. The eval function can report either a DevTools-side error or a JavaScript exception that occurs during evaluation. In either case, the <code>result</code> parameter of the callback is <code>undefined</code>. In the case of a DevTools-side error, the <code>isException</code> parameter is non-null and has <code>isError</code> set to true and <code>code</code> set to an error code. In the case of a JavaScript error, <code>isException</code> is set to true and <code>value</code> is set to the string value of thrown object.",
+          "async": "callback",
+          "parameters": [
+            {
+              "name": "expression",
+              "type": "string",
+              "description": "An expression to evaluate."
+            },
+            {
+              "name": "options",
+              "type": "object",
+              "optional": true,
+              "description": "The options parameter can contain one or more options.",
+              "properties": {
+                "frameURL": {
+                  "type": "string",
+                  "unsupported": true,
+                  "description": "If specified, the expression is evaluated on the iframe whose URL matches the one specified. By default, the expression is evaluated in the top frame of the inspected page."
+                },
+                "useContentScriptContext": {
+                  "type": "boolean",
+                  "unsupported": true,
+                  "description": "Evaluate the expression in the context of the content script of the calling extension, provided that the content script is already injected into the inspected page. If not, the expression is not evaluated and the callback is invoked with the exception parameter set to an object that has the <code>isError</code> field set to true and the <code>code</code> field set to <code>E_NOTFOUND</code>."
+                },
+                "contextSecurityOrigin": {
+                  "type": "string",
+                  "unsupported": true,
+                  "description": "Evaluate the expression in the context of a content script of an extension that matches the specified origin. If given, contextSecurityOrigin overrides the 'true' setting on userContentScriptContext."
+                }
+              }
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "A function called when evaluation completes.",
+              "optional": true,
+              "parameters": [
+                {
+                  "name": "result",
+                  "type": "object",
+                  "additionalProperties": {},
+                  "description": "The result of evaluation."
+                },
+                {
+                  "name": "exceptionInfo",
+                  "type": "object",
+                  "description": "An object providing details if an exception occurred while evaluating the expression.",
+                  "properties": {
+                    "isError": {
+                      "type": "boolean",
+                      "description": "Set if the error occurred on the DevTools side before the expression is evaluated."
+                    },
+                    "code": {
+                      "type": "string",
+                      "description": "Set if the error occurred on the DevTools side before the expression is evaluated."
+                    },
+                    "description": {
+                      "type": "string",
+                      "description": "Set if the error occurred on the DevTools side before the expression is evaluated."
+                    },
+                    "details": {
+                      "type": "array",
+                      "items": {},
+                      "description": "Set if the error occurred on the DevTools side before the expression is evaluated, contains the array of the values that may be substituted into the description string to provide more information about the cause of the error."
+                    },
+                    "isException": {
+                      "type": "boolean",
+                      "description": "Set if the evaluated code produces an unhandled exception."
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "Set if the evaluated code produces an unhandled exception."
+                    }
+                  },
+                  "required": [
+                    "isError",
+                    "code",
+                    "description",
+                    "details",
+                    "isException",
+                    "value"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "reload",
+          "type": "function",
+          "description": "Reloads the inspected page.",
+          "parameters": [
+            {
+              "type": "object",
+              "name": "reloadOptions",
+              "optional": true,
+              "properties": {
+                "ignoreCache": {
+                  "type": "boolean",
+                  "description": "When true, the loader will bypass the cache for all inspected page resources loaded before the <code>load</code> event is fired. The effect is similar to pressing Ctrl+Shift+R in the inspected window or within the Developer Tools window."
+                },
+                "userAgent": {
+                  "type": "string",
+                  "description": "If specified, the string will override the value of the <code>User-Agent</code> HTTP header that's sent while loading the resources of the inspected page. The string will also override the value of the <code>navigator.userAgent</code> property that's returned to any scripts that are running within the inspected page."
+                },
+                "injectedScript": {
+                  "type": "string",
+                  "description": "If specified, the script will be injected into every frame of the inspected page immediately upon load, before any of the frame's scripts. The script will not be injected after subsequent reloads&mdash;for example, if the user presses Ctrl+R."
+                },
+                "preprocessorScript": {
+                  "unsupported": true,
+                  "type": "string",
+                  "deprecated": "Please avoid using this parameter, it will be removed soon.",
+                  "description": "If specified, this script evaluates into a function that accepts three string arguments: the source to preprocess, the URL of the source, and a function name if the source is an DOM event handler. The preprocessorerScript function should return a string to be compiled by Chrome in place of the input source. In the case that the source is a DOM event handler, the returned source must compile to a single JS function."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "getResources",
+          "unsupported": true,
+          "type": "function",
+          "description": "Retrieves the list of resources from the inspected page.",
+          "async": "callback",
+          "parameters": [
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "A function that receives the list of resources when the request completes.",
+              "parameters": [
+                {
+                  "name": "resources",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/types/Resource"
+                  },
+                  "description": "The resources within the page."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "onResourceAdded",
+          "unsupported": true,
+          "type": "function",
+          "description": "Fired when a new resource is added to the inspected page.",
+          "parameters": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/types/Resource"
+                },
+                {
+                  "name": "resource"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "onResourceContentCommitted",
+          "unsupported": true,
+          "type": "function",
+          "description": "Fired when a new revision of the resource is committed (e.g. user saves an edited version of the resource in the Developer Tools).",
+          "parameters": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/types/Resource"
+                },
+                {
+                  "name": "resource"
+                }
+              ]
+            },
+            {
+              "name": "content",
+              "type": "string",
+              "description": "New content of the resource."
+            }
+          ]
+        }
+      ],
+      "required": [
+        "tabId"
+      ]
+    },
+    "network": {
+      "allowedContexts": [
+        "devtools",
+        "devtools_only"
+      ],
+      "defaultContexts": [
+        "devtools",
+        "devtools_only"
+      ],
+      "description": "Use the <code>chrome.devtools.network</code> API to retrieve the information about network requests displayed by the Developer Tools in the Network panel.",
+      "functions": [
+        {
+          "name": "getHAR",
+          "unsupported": true,
+          "type": "function",
+          "description": "Returns HAR log that contains all known network requests.",
+          "async": "callback",
+          "parameters": [
+            {
+              "name": "callback",
+              "type": "function",
+              "description": "A function that receives the HAR log when the request completes.",
+              "parameters": [
+                {
+                  "name": "harLog",
+                  "type": "object",
+                  "additionalProperties": {},
+                  "description": "A HAR log. See HAR specification for details."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "onRequestFinished",
+          "unsupported": true,
+          "type": "function",
+          "description": "Fired when a network request is finished and all request data are available.",
+          "parameters": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/types/Request"
+                },
+                {
+                  "name": "request",
+                  "description": "Description of a network request in the form of a HAR entry. See HAR specification for details."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "onNavigated",
+          "type": "function",
+          "description": "Fired when the inspected window navigates to a new page.",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "URL of the new page."
+            }
+          ]
+        }
+      ]
+    },
+    "panels": {
+      "allowedContexts": [
+        "devtools",
+        "devtools_only"
+      ],
+      "defaultContexts": [
+        "devtools",
+        "devtools_only"
+      ],
+      "description": "Use the <code>chrome.devtools.panels</code> API to integrate your extension into Developer Tools window UI: create your own panels, access existing panels, and add sidebars.",
+      "nocompile": true,
+      "properties": {
+        "elements": {
+          "allOf": [
+            {
+              "$ref": "#/types/ElementsPanel"
+            },
+            {
+              "description": "Elements panel."
+            }
+          ]
+        },
+        "sources": {
+          "allOf": [
+            {
+              "$ref": "#/types/SourcesPanel"
+            },
+            {
+              "description": "Sources panel."
+            }
+          ]
+        }
+      },
+      "functions": [
+        {
+          "name": "create",
+          "type": "function",
+          "description": "Creates an extension panel.",
+          "async": "callback",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "description": "Title that is displayed next to the extension icon in the Developer Tools toolbar."
+            },
+            {
+              "name": "iconPath",
+              "type": "string",
+              "description": "Path of the panel's icon relative to the extension directory."
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "description": "Path of the panel's HTML page relative to the extension directory."
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "optional": true,
+              "description": "A function that is called when the panel is created.",
+              "parameters": [
+                {
+                  "allOf": [
+                    {
+                      "$ref": "#/types/ExtensionPanel"
+                    },
+                    {
+                      "name": "panel",
+                      "description": "An ExtensionPanel object representing the created panel."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "setOpenResourceHandler",
+          "unsupported": true,
+          "type": "function",
+          "description": "Specifies the function to be called when the user clicks a resource link in the Developer Tools window. To unset the handler, either call the method with no parameters or pass null as the parameter.",
+          "async": "callback",
+          "parameters": [
+            {
+              "name": "callback",
+              "type": "function",
+              "optional": true,
+              "description": "A function that is called when the user clicks on a valid resource link in Developer Tools window. Note that if the user clicks an invalid URL or an XHR, this function is not called.",
+              "parameters": [
+                {
+                  "allOf": [
+                    {
+                      "$ref": "devtools#/types/inspectedWindow"
+                    },
+                    {
+                      "name": "resource",
+                      "description": "A $(ref:devtools.inspectedWindow.Resource) object for the resource that was clicked."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "openResource",
+          "unsupported": true,
+          "type": "function",
+          "description": "Requests DevTools to open a URL in a Developer Tools panel.",
+          "async": "callback",
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "description": "The URL of the resource to open."
+            },
+            {
+              "name": "lineNumber",
+              "type": "integer",
+              "description": "Specifies the line number to scroll to when the resource is loaded."
+            },
+            {
+              "name": "callback",
+              "type": "function",
+              "optional": true,
+              "description": "A function that is called when the resource has been successfully loaded."
+            }
+          ]
+        }
+      ],
+      "required": [
+        "elements",
+        "sources"
+      ]
+    }
+  }
 }
