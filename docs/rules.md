@@ -390,3 +390,4 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :white_check_mark: | warning | Web extension | | | | | UNSAFE_VAR_ASSIGNMENT |
 | :white_check_mark: | warning | Web extension | Unsupported or unknown browser API | | | null | UNSUPPORTED_API |
 | :white_check_mark: | warning | Web extension | | | | | DANGEROUS_EVAL |
+| :white_check_mark: | error | Web extension | Unsupported static theme | | | null | STATIC_THEMES_UNSUPPORTED |

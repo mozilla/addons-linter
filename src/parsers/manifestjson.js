@@ -146,6 +146,13 @@ export default class ManifestJSONParser extends JSONParser {
         }
       }
     }
+
+    if (this.parsedJSON.theme) {
+      this.collector.addError(messages.STATIC_THEMES_UNSUPPORTED);
+      this.isValid = false;
+    }
+
+
   }
 
   getAddonId() {

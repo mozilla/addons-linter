@@ -460,4 +460,25 @@ describe('ManifestJSONParser', function() {
       });
     }
   });
+
+  describe('theme', function() {
+    it('valid if not specified', () => {
+      var addonLinter = new Linter({_: ['bar']});
+      var json = validManifestJSON({});
+      var manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector);
+      assert.equal(manifestJSONParser.isValid, true);
+    });
+
+    it('error if theme is specified', () => {
+      var addonLinter = new Linter({_: ['bar']});
+      var json = validManifestJSON({theme: {}});
+      var manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector,
+        {});
+      assert.equal(manifestJSONParser.isValid, false);
+      var errors = addonLinter.collector.errors;
+      assert.equal(errors[0].code, messages.STATIC_THEMES_UNSUPPORTED.code);
+    });
+  });
 });
