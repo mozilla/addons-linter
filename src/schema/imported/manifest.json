@@ -60,7 +60,7 @@
             },
             "homepage_url": {
               "type": "string",
-              "format": null,
+              "format": "ignore",
               "preprocess": "localize",
               "oneOf": [
                 {
@@ -315,11 +315,11 @@
       "anyOf": [
         {
           "type": "string",
-          "pattern": "^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$"
+          "pattern": "^\\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\\}$"
         },
         {
           "type": "string",
-          "pattern": "^[a-z0-9-._]*@[a-z0-9-._]+$"
+          "pattern": "^[a-zA-Z0-9-._]*@[a-zA-Z0-9-._]+$"
         }
       ]
     },

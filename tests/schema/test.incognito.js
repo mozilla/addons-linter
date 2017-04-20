@@ -20,13 +20,7 @@ describe('/incognito', () => {
     validate(manifest);
     assertHasMatchingError(validate.errors, {
       dataPath: '/incognito',
-      message: new RegExp(
-        '(' +
-        // TODO(FxSchema): Switch to just this string.
-        'should be equal to one of the allowed values' +
-        '|' +
-        'should match pattern "\\^spanning\\$"' +
-        ')'),
+      message: 'should be equal to one of the allowed values',
     });
   });
 

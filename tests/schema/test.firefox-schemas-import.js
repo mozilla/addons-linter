@@ -7,6 +7,7 @@ import request from 'request';
 import tar from 'tar';
 
 import {
+  FLAG_PATTERN_REWRITES,
   fetchSchemas,
   filterSchemas,
   foldSchemas,
@@ -126,9 +127,30 @@ describe('firefox schema import', () => {
       assert.equal(rewriteValue('type', 'string'), 'string');
     });
 
-    it('strips flags from patterns', () => {
-      assert.equal(rewriteValue('pattern', '(?i)^abc$'), '^abc$');
-      assert.equal(rewriteValue('pattern', '^foo(?i)bar$'), '^foo(?i)bar$');
+    describe('pattern rewriting', () => {
+      const originalPattern = '(?i)foo';
+
+      before(() => {
+        FLAG_PATTERN_REWRITES[originalPattern] = 'sup';
+      });
+
+      after(() => {
+        delete FLAG_PATTERN_REWRITES[originalPattern];
+      });
+
+      it('throws on an unknown pattern with flags', () => {
+        assert.throws(
+          () => rewriteValue('pattern', '(?i)^abc$'),
+          'pattern (?i)^abc$ must be rewritten');
+      });
+
+      it('rewrites known patterns', () => {
+        assert.equal(rewriteValue('pattern', originalPattern), 'sup');
+      });
+
+      it('does not rewrite unknown patterns without flags', () => {
+        assert.equal(rewriteValue('pattern', 'abc(?i)def'), 'abc(?i)def');
+      });
     });
 
     it('updates $ref to JSON pointer', () => {
