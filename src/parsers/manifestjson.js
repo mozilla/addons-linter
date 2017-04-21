@@ -61,10 +61,8 @@ export default class ManifestJSONParser extends JSONParser {
     } else if (error.dataPath.startsWith('/permissions') &&
                typeof error.data !== 'undefined' &&
                typeof error.data !== 'string') {
-      // Check for non-strings in the manifest permissions; these indicate
-      // a Chrome app extension. This means an error.
       baseObject = messages.MANIFEST_BAD_PERMISSION;
-      overrides = {};
+      overrides = {message: `Permissions ${error.message}.`};
     } else if (error.keyword === 'type') {
       baseObject = messages.MANIFEST_FIELD_INVALID;
     }

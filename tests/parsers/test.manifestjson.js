@@ -136,7 +136,24 @@ describe('ManifestJSONParser', function() {
       assert.equal(manifestJSONParser.isValid, false);
       var errors = addonLinter.collector.errors;
       assert.equal(errors[0].code, messages.MANIFEST_BAD_PERMISSION.code);
-      assert.include(errors[0].message, 'permission type is unsupported');
+      assert.include(errors[0].message, 'should be equal to one');
+    });
+
+    it('should error if permission is duplicated', () => {
+      var addonLinter = new Linter({_: ['bar']});
+      var json = validManifestJSON({
+        permissions: [
+          'identity',
+          'identity',
+        ],
+      });
+
+      var manifestJSONParser = new ManifestJSONParser(json,
+                                                      addonLinter.collector);
+      assert.equal(manifestJSONParser.isValid, false);
+      var errors = addonLinter.collector.errors;
+      assert.equal(errors[0].code, messages.MANIFEST_BAD_PERMISSION.code);
+      assert.include(errors[0].message, 'should NOT have duplicate items');
     });
 
   });
