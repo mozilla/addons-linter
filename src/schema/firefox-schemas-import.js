@@ -8,6 +8,21 @@ import request from 'request';
 import tar from 'tar';
 
 const FLAG_PATTERN_REGEX = /^\(\?[im]*\)(.*)/;
+/* There are some patterns in the Firefox schemas that have case insensitive
+ * flags set. These are marked with (?i) at the beginning of them. The JSON
+ * Schema spec does not support flags so this object defines rewritten versions
+ * of patterns without the flags. Since these need to be managed by hand, the
+ * code that detects a flag in a pattern will throw if there is no rewritten
+ * pattern for it, preventing updates to the schemas until it is fixed. */
+/* eslint-disable max-len */
+export const FLAG_PATTERN_REWRITES = {
+  // Extension ID, UUID format.
+  '(?i)^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$':
+    '^\\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\\}$',
+  // Extension ID, email format.
+  '(?i)^[a-z0-9-._]*@[a-z0-9-._]+$': '^[a-zA-Z0-9-._]*@[a-zA-Z0-9-._]+$',
+};
+/* eslint-enable max-len */
 const UNRECOGNIZED_PROPERTY_REFS = [
   'UnrecognizedProperty',
   'manifest#/types/UnrecognizedProperty',
@@ -31,11 +46,13 @@ export const inner = {};
 // use in Firefox only. We shouldn't import these schemas.
 export const ignoredSchemas = ['omnibox_internal'];
 
-function stripFlagsFromPattern(value) {
-  // TODO: Fix these patterns and remove this code.
-  const matches = FLAG_PATTERN_REGEX.exec(value);
-  if (matches) {
-    return matches[1];
+function rewritePatternFlags(value) {
+  if (FLAG_PATTERN_REGEX.test(value)) {
+    const rewritten = FLAG_PATTERN_REWRITES[value];
+    if (!rewritten) {
+      throw new Error(`pattern ${value} must be rewritten`);
+    }
+    return rewritten;
   }
   return value;
 }
@@ -120,7 +137,7 @@ export function rewriteValue(key, value) {
   } else if (key === 'id') {
     return undefined;
   } else if (key === 'pattern') {
-    return stripFlagsFromPattern(value);
+    return rewritePatternFlags(value);
   }
   return value;
 }
