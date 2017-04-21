@@ -8,12 +8,21 @@ import request from 'request';
 import tar from 'tar';
 
 const FLAG_PATTERN_REGEX = /^\(\?[im]*\)(.*)/;
+/* There are some patterns in the Firefox schemas that have case insensitive
+ * flags set. These are marked with (?i) at the beginning of them. The JSON
+ * Schema spec does not support flags so this object defines rewritten versions
+ * of patterns without the flags. Since these need to be managed by hand, the
+ * code that detects a flag in a pattern will throw if there is no rewritten
+ * pattern for it, preventing updates to the schemas until it is fixed. */
+/* eslint-disable max-len */
 export const FLAG_PATTERN_REWRITES = {
+  // Extension ID, UUID format.
   '(?i)^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$':
-    // eslint-disable-next-line max-len
     '^\\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\\}$',
+  // Extension ID, email format.
   '(?i)^[a-z0-9-._]*@[a-z0-9-._]+$': '^[a-zA-Z0-9-._]*@[a-zA-Z0-9-._]+$',
 };
+/* eslint-enable max-len */
 const UNRECOGNIZED_PROPERTY_REFS = [
   'UnrecognizedProperty',
   'manifest#/types/UnrecognizedProperty',
