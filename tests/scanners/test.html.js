@@ -1,7 +1,7 @@
 import cheerio from 'cheerio';
 import sinon from 'sinon';
 
-import { VALIDATION_ERROR } from 'const';
+import { VALIDATION_WARNING } from 'const';
 import { getRuleFiles, validHTML } from '../helpers';
 import HTMLScanner from 'scanners/html';
 import * as rules from 'rules/html';
@@ -31,37 +31,30 @@ describe('HTML', function() {
       });
   });
 
-  it('should require <prefwindow> tag to have an id attribute', () => {
-    var badHTML = validHTML(singleLineString`<prefwindow
-      xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-      title="My application: configuration"
-      onunload="onUnload(event.target)">
-    </prefwindow>`);
-    var goodHTML = validHTML(singleLineString`<prefwindow
-      xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-      id="my-config-dialog"
-      title="My application: configuration"
-      onunload="onUnload(event.target)">
-    </prefwindow>`);
+  it('should require <script> tag to have a src attribute', () => {
+    var badHTML = validHTML('<script>alert()</script>');
     var htmlScanner = new HTMLScanner(badHTML, 'index.html');
 
     return htmlScanner.getContents()
       .then(($) => {
-        return rules.ensureRequiredAttributes($, htmlScanner.filename);
+        return rules.warnOnInline($, htmlScanner.filename);
       })
       .then((linterMessages) => {
         assert.equal(linterMessages.length, 1);
         assert.equal(linterMessages[0].code,
-                     messages.PREFWINDOW_REQUIRES_ID.code);
-        assert.equal(linterMessages[0].sourceCode, '<prefwindow>');
-        assert.equal(linterMessages[0].type, VALIDATION_ERROR);
+                     messages.INLINE_SCRIPT.code);
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+      });
+  });
 
-        // Make sure there are no errors when an ID is provided.
-        htmlScanner = new HTMLScanner(goodHTML, 'index.html');
-        return htmlScanner.getContents();
-      })
+  it('should accept a <script> tag with a src attribute', () => {
+    var goodHTML = validHTML(singleLineString`
+        <script src="">alert()</script>`);
+    var htmlScanner = new HTMLScanner(goodHTML, 'index.html');
+
+    return htmlScanner.getContents()
       .then(($) => {
-        return rules.ensureRequiredAttributes($, htmlScanner.filename);
+        return rules.warnOnInline($, htmlScanner.filename);
       })
       .then((linterMessages) => {
         assert.equal(linterMessages.length, 0);
