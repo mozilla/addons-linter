@@ -25,7 +25,6 @@
                   "$ref": "extensionTypes#/types/Date"
                 },
                 {
-                  "optional": true,
                   "description": "Limit results to those visited after this date. If not specified, this defaults to 24 hours in the past."
                 }
               ]
@@ -36,7 +35,6 @@
                   "$ref": "extensionTypes#/types/Date"
                 },
                 {
-                  "optional": true,
                   "description": "Limit results to those visited before this date."
                 }
               ]
@@ -48,9 +46,7 @@
             }
           },
           "required": [
-            "text",
-            "startTime",
-            "endTime"
+            "text"
           ]
         },
         {
@@ -126,7 +122,6 @@
                   "$ref": "#/types/TransitionType"
                 },
                 {
-                  "optional": true,
                   "description": "The $(topic:transition-types)[transition type] for this visit from its referrer."
                 }
               ]
@@ -137,16 +132,13 @@
                   "$ref": "extensionTypes#/types/Date"
                 },
                 {
-                  "optional": true,
                   "description": "The date when this visit occurred."
                 }
               ]
             }
           },
           "required": [
-            "url",
-            "transition",
-            "visitTime"
+            "url"
           ]
         },
         {

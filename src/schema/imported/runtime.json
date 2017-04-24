@@ -651,7 +651,6 @@
               "$ref": "#/types/MessageSender"
             },
             {
-              "optional": true,
               "description": "This property will <b>only</b> be present on ports passed to onConnect/onConnectExternal listeners."
             }
           ]
@@ -663,8 +662,7 @@
         "disconnect",
         "onDisconnect",
         "onMessage",
-        "postMessage",
-        "sender"
+        "postMessage"
       ]
     },
     "MessageSender": {
@@ -681,7 +679,6 @@
               "$ref": "tabs#/types/Tab"
             },
             {
-              "optional": true,
               "description": "The $(ref:tabs.Tab) which opened the connection, if any. This property will <strong>only</strong> be present when the connection was opened from a tab (including content scripts), and <strong>only</strong> if the receiver is an extension, not an app."
             }
           ]
@@ -703,10 +700,7 @@
           "type": "string",
           "description": "The TLS channel ID of the page or frame that opened the connection, if requested by the extension or app, and if available."
         }
-      },
-      "required": [
-        "tab"
-      ]
+      }
     },
     "PlatformOs": {
       "type": "string",

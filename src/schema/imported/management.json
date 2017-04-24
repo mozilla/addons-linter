@@ -227,8 +227,7 @@
               "$ref": "#/types/ExtensionDisabledReason"
             },
             {
-              "description": "A reason the item is disabled.",
-              "optional": true
+              "description": "A reason the item is disabled."
             }
           ]
         },
@@ -294,7 +293,6 @@
         "version",
         "mayDisable",
         "enabled",
-        "disabledReason",
         "type",
         "optionsUrl",
         "permissions",

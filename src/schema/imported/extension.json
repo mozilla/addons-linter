@@ -72,7 +72,6 @@
                   "$ref": "#/types/ViewType"
                 },
                 {
-                  "optional": true,
                   "description": "The type of view to get. If omitted, returns all views (including background pages and tabs). Valid values: 'tab', 'notification', 'popup'."
                 }
               ]
@@ -81,10 +80,7 @@
               "type": "integer",
               "description": "The window to restrict the search to. If omitted, returns all views."
             }
-          },
-          "required": [
-            "type"
-          ]
+          }
         }
       ],
       "returns": {

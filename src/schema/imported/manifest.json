@@ -423,15 +423,13 @@
               "$ref": "extensionTypes#/types/RunAt"
             },
             {
-              "optional": true,
               "description": "The soonest that the JavaScript or CSS will be injected into the tab. Defaults to \"document_idle\"."
             }
           ]
         }
       },
       "required": [
-        "matches",
-        "run_at"
+        "matches"
       ]
     },
     "IconPath": {

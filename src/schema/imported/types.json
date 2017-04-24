@@ -100,15 +100,13 @@
                       "$ref": "#/types/SettingScope"
                     },
                     {
-                      "optional": true,
                       "description": "Where to set the setting (default: regular)."
                     }
                   ]
                 }
               },
               "required": [
-                "value",
-                "scope"
+                "value"
               ]
             },
             {
@@ -137,15 +135,11 @@
                       "$ref": "#/types/SettingScope"
                     },
                     {
-                      "optional": true,
                       "description": "Where to clear the setting (default: regular)."
                     }
                   ]
                 }
-              },
-              "required": [
-                "scope"
-              ]
+              }
             },
             {
               "name": "callback",
