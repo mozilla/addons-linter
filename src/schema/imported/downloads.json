@@ -395,8 +395,7 @@
                   "$ref": "#/types/StringDelta"
                 },
                 {
-                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>url</code>.",
-                  "optional": true
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>url</code>."
                 }
               ]
             },
@@ -406,8 +405,7 @@
                   "$ref": "#/types/StringDelta"
                 },
                 {
-                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>filename</code>.",
-                  "optional": true
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>filename</code>."
                 }
               ]
             },
@@ -417,8 +415,7 @@
                   "$ref": "#/types/StringDelta"
                 },
                 {
-                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>danger</code>.",
-                  "optional": true
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>danger</code>."
                 }
               ]
             },
@@ -428,8 +425,7 @@
                   "$ref": "#/types/StringDelta"
                 },
                 {
-                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>mime</code>.",
-                  "optional": true
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>mime</code>."
                 }
               ]
             },
@@ -439,8 +435,7 @@
                   "$ref": "#/types/StringDelta"
                 },
                 {
-                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>startTime</code>.",
-                  "optional": true
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>startTime</code>."
                 }
               ]
             },
@@ -450,8 +445,7 @@
                   "$ref": "#/types/StringDelta"
                 },
                 {
-                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>endTime</code>.",
-                  "optional": true
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>endTime</code>."
                 }
               ]
             },
@@ -461,8 +455,7 @@
                   "$ref": "#/types/StringDelta"
                 },
                 {
-                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>state</code>.",
-                  "optional": true
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>state</code>."
                 }
               ]
             },
@@ -475,8 +468,7 @@
                   "$ref": "#/types/BooleanDelta"
                 },
                 {
-                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>paused</code>.",
-                  "optional": true
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>paused</code>."
                 }
               ]
             },
@@ -486,8 +478,7 @@
                   "$ref": "#/types/StringDelta"
                 },
                 {
-                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>error</code>.",
-                  "optional": true
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>error</code>."
                 }
               ]
             },
@@ -497,8 +488,7 @@
                   "$ref": "#/types/DoubleDelta"
                 },
                 {
-                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>totalBytes</code>.",
-                  "optional": true
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>totalBytes</code>."
                 }
               ]
             },
@@ -508,8 +498,7 @@
                   "$ref": "#/types/DoubleDelta"
                 },
                 {
-                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>fileSize</code>.",
-                  "optional": true
+                  "description": "Describes a change in a <a href='#type-DownloadItem'>DownloadItem</a>'s <code>fileSize</code>."
                 }
               ]
             },
@@ -518,18 +507,7 @@
             }
           },
           "required": [
-            "id",
-            "url",
-            "filename",
-            "danger",
-            "mime",
-            "startTime",
-            "endTime",
-            "state",
-            "paused",
-            "error",
-            "totalBytes",
-            "fileSize"
+            "id"
           ]
         }
       ],
@@ -687,8 +665,7 @@
               "$ref": "#/types/InterruptReason"
             },
             {
-              "description": "Number indicating why a download was interrupted.",
-              "optional": true
+              "description": "Number indicating why a download was interrupted."
             }
           ]
         },
@@ -726,7 +703,6 @@
         "state",
         "paused",
         "canResume",
-        "error",
         "bytesReceived",
         "totalBytes",
         "fileSize",
@@ -795,8 +771,7 @@
               "$ref": "#/types/DownloadTime"
             },
             {
-              "description": "Limits results to downloads that started before the given ms since the epoch.",
-              "optional": true
+              "description": "Limits results to downloads that started before the given ms since the epoch."
             }
           ]
         },
@@ -806,8 +781,7 @@
               "$ref": "#/types/DownloadTime"
             },
             {
-              "description": "Limits results to downloads that started after the given ms since the epoch.",
-              "optional": true
+              "description": "Limits results to downloads that started after the given ms since the epoch."
             }
           ]
         },
@@ -817,8 +791,7 @@
               "$ref": "#/types/DownloadTime"
             },
             {
-              "description": "Limits results to downloads that ended before the given ms since the epoch.",
-              "optional": true
+              "description": "Limits results to downloads that ended before the given ms since the epoch."
             }
           ]
         },
@@ -828,8 +801,7 @@
               "$ref": "#/types/DownloadTime"
             },
             {
-              "description": "Limits results to downloads that ended after the given ms since the epoch.",
-              "optional": true
+              "description": "Limits results to downloads that ended after the given ms since the epoch."
             }
           ]
         },
@@ -877,8 +849,7 @@
               "$ref": "#/types/DangerType"
             },
             {
-              "description": "Indication of whether this download is thought to be safe or known to be suspicious.",
-              "optional": true
+              "description": "Indication of whether this download is thought to be safe or known to be suspicious."
             }
           ]
         },
@@ -898,8 +869,7 @@
               "$ref": "#/types/State"
             },
             {
-              "description": "Indicates whether the download is progressing, interrupted, or complete.",
-              "optional": true
+              "description": "Indicates whether the download is progressing, interrupted, or complete."
             }
           ]
         },
@@ -913,8 +883,7 @@
               "$ref": "#/types/InterruptReason"
             },
             {
-              "description": "Why a download was interrupted.",
-              "optional": true
+              "description": "Why a download was interrupted."
             }
           ]
         },
@@ -933,16 +902,7 @@
         "exists": {
           "type": "boolean"
         }
-      },
-      "required": [
-        "startedBefore",
-        "startedAfter",
-        "endedBefore",
-        "endedAfter",
-        "danger",
-        "state",
-        "error"
-      ]
+      }
     }
   }
 }

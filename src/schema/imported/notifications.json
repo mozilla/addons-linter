@@ -358,7 +358,6 @@
               "$ref": "#/types/TemplateType"
             },
             {
-              "optional": true,
               "description": "Which type of notification to display."
             }
           ]
@@ -433,10 +432,7 @@
           "description": "Whether to show UI indicating that the app will visibly respond to clicks on the body of a notification.",
           "type": "boolean"
         }
-      },
-      "required": [
-        "type"
-      ]
+      }
     }
   }
 }

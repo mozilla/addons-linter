@@ -68,7 +68,21 @@ export function rewriteOptionalToRequired(schema) {
     const value = schema[key];
     if (!Array.isArray(value) && typeof value === 'object') {
       const { optional, ...rest } = value;
-      if (!optional) {
+      // If there is an allOf, check the inner schemas for optional.
+      if (Array.isArray(rest.allOf)) {
+        let someOptional = false;
+        // Update the inner schemas to remove the optional property and record
+        // if we found any optional schemas. See issue #1245.
+        rest.allOf = rest.allOf.map((inner) => {
+          const { optional: innerOptional, ...innerRest } = inner;
+          someOptional = someOptional || innerOptional;
+          return innerRest;
+        });
+        // If none of the inner schemas are optional then this property is required.
+        if (!someOptional) {
+          required.push(key);
+        }
+      } else if (!optional) {
         required.push(key);
       }
       return { ...obj, [key]: rest };

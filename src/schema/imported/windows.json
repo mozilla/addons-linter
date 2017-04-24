@@ -250,7 +250,6 @@
                   "$ref": "#/types/CreateType"
                 },
                 {
-                  "optional": true,
                   "description": "Specifies what type of browser window to create. The 'panel' and 'detached_panel' types create a popup unless the '--enable-panels' flag is set."
                 }
               ]
@@ -261,7 +260,6 @@
                   "$ref": "#/types/WindowState"
                 },
                 {
-                  "optional": true,
                   "description": "The initial state of the window. The 'minimized', 'maximized' and 'fullscreen' states cannot be combined with 'left', 'top', 'width' or 'height'."
                 }
               ]
@@ -271,11 +269,7 @@
               "description": "Allow scripts to close the window."
             }
           },
-          "optional": true,
-          "required": [
-            "type",
-            "state"
-          ]
+          "optional": true
         },
         {
           "type": "function",
@@ -345,15 +339,11 @@
                   "$ref": "#/types/WindowState"
                 },
                 {
-                  "optional": true,
                   "description": "The new state of the window. The 'minimized', 'maximized' and 'fullscreen' states cannot be combined with 'left', 'top', 'width' or 'height'."
                 }
               ]
             }
-          },
-          "required": [
-            "state"
-          ]
+          }
         },
         {
           "type": "function",
@@ -540,7 +530,6 @@
               "$ref": "#/types/WindowType"
             },
             {
-              "optional": true,
               "description": "The type of browser window this is."
             }
           ]
@@ -551,7 +540,6 @@
               "$ref": "#/types/WindowState"
             },
             {
-              "optional": true,
               "description": "The state of this browser window."
             }
           ]
@@ -568,8 +556,6 @@
       "required": [
         "focused",
         "incognito",
-        "type",
-        "state",
         "alwaysOnTop"
       ]
     },

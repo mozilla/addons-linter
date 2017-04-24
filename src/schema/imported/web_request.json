@@ -216,7 +216,6 @@
                   "$ref": "#/types/HttpHeaders"
                 },
                 {
-                  "optional": true,
                   "description": "The HTTP request headers that are going to be sent out with this request."
                 }
               ]
@@ -230,8 +229,7 @@
             "parentFrameId",
             "tabId",
             "type",
-            "timeStamp",
-            "requestHeaders"
+            "timeStamp"
           ]
         }
       ],
@@ -329,7 +327,6 @@
                   "$ref": "#/types/HttpHeaders"
                 },
                 {
-                  "optional": true,
                   "description": "The HTTP request headers that have been sent out with this request."
                 }
               ]
@@ -343,8 +340,7 @@
             "parentFrameId",
             "tabId",
             "type",
-            "timeStamp",
-            "requestHeaders"
+            "timeStamp"
           ]
         }
       ],
@@ -435,7 +431,6 @@
                   "$ref": "#/types/HttpHeaders"
                 },
                 {
-                  "optional": true,
                   "description": "The HTTP response headers that have been received with this response."
                 }
               ]
@@ -455,7 +450,6 @@
             "type",
             "timeStamp",
             "statusLine",
-            "responseHeaders",
             "statusCode"
           ]
         }
@@ -582,7 +576,6 @@
                   "$ref": "#/types/HttpHeaders"
                 },
                 {
-                  "optional": true,
                   "description": "The HTTP response headers that were received along with this response."
                 }
               ]
@@ -608,7 +601,6 @@
             "scheme",
             "challenger",
             "isProxy",
-            "responseHeaders",
             "statusLine",
             "statusCode"
           ]
@@ -737,7 +729,6 @@
                   "$ref": "#/types/HttpHeaders"
                 },
                 {
-                  "optional": true,
                   "description": "The HTTP response headers that were received along with this response."
                 }
               ]
@@ -758,7 +749,6 @@
             "timeStamp",
             "fromCache",
             "statusCode",
-            "responseHeaders",
             "statusLine"
           ]
         }
@@ -862,7 +852,6 @@
                   "$ref": "#/types/HttpHeaders"
                 },
                 {
-                  "optional": true,
                   "description": "The HTTP response headers that were received along with this redirect."
                 }
               ]
@@ -884,7 +873,6 @@
             "fromCache",
             "statusCode",
             "redirectUrl",
-            "responseHeaders",
             "statusLine"
           ]
         }
@@ -984,7 +972,6 @@
                   "$ref": "#/types/HttpHeaders"
                 },
                 {
-                  "optional": true,
                   "description": "The HTTP response headers that were received along with this response."
                 }
               ]
@@ -1005,7 +992,6 @@
             "timeStamp",
             "fromCache",
             "statusCode",
-            "responseHeaders",
             "statusLine"
           ]
         }
@@ -1302,7 +1288,6 @@
               "$ref": "#/types/HttpHeaders"
             },
             {
-              "optional": true,
               "description": "Only used as a response to the onBeforeSendHeaders event. If set, the request is made with these request headers instead."
             }
           ]
@@ -1313,7 +1298,6 @@
               "$ref": "#/types/HttpHeaders"
             },
             {
-              "optional": true,
               "description": "Only used as a response to the onHeadersReceived event. If set, the server is assumed to have responded with these response headers instead. Only return <code>responseHeaders</code> if you really want to modify the headers in order to limit the number of conflicts (only one extension may modify <code>responseHeaders</code> for each request)."
             }
           ]
@@ -1334,11 +1318,7 @@
             "password"
           ]
         }
-      },
-      "required": [
-        "requestHeaders",
-        "responseHeaders"
-      ]
+      }
     },
     "UploadData": {
       "type": "object",

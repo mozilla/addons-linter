@@ -12,7 +12,6 @@
                   "$ref": "manifest#/types/ExtensionURL"
                 },
                 {
-                  "optional": true,
                   "preprocess": "localize"
                 }
               ]
@@ -23,7 +22,6 @@
                   "$ref": "manifest#/types/ExtensionURL"
                 },
                 {
-                  "optional": true,
                   "preprocess": "localize"
                 }
               ]
@@ -35,7 +33,6 @@
                 },
                 {
                   "unsupported": true,
-                  "optional": true,
                   "preprocess": "localize"
                 }
               ]
@@ -47,18 +44,11 @@
                 },
                 {
                   "unsupported": true,
-                  "optional": true,
                   "preprocess": "localize"
                 }
               ]
             }
-          },
-          "required": [
-            "newtab",
-            "home",
-            "bookmarks",
-            "history"
-          ]
+          }
         }
       }
     }

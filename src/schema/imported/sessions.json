@@ -162,7 +162,6 @@
               "$ref": "tabs#/types/Tab"
             },
             {
-              "optional": true,
               "description": "The $(ref:tabs.Tab), if this entry describes a tab. Either this or $(ref:sessions.Session.window) will be set."
             }
           ]
@@ -173,16 +172,13 @@
               "$ref": "windows#/types/Window"
             },
             {
-              "optional": true,
               "description": "The $(ref:windows.Window), if this entry describes a window. Either this or $(ref:sessions.Session.tab) will be set."
             }
           ]
         }
       },
       "required": [
-        "lastModified",
-        "tab",
-        "window"
+        "lastModified"
       ]
     },
     "Device": {

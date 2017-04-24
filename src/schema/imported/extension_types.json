@@ -22,7 +22,6 @@
               "$ref": "#/types/ImageFormat"
             },
             {
-              "optional": true,
               "description": "The format of the resulting image.  Default is <code>\"jpeg\"</code>."
             }
           ]
@@ -33,10 +32,7 @@
           "maximum": 100,
           "description": "When format is <code>\"jpeg\"</code>, controls the quality of the resulting image.  This value is ignored for PNG images.  As quality is decreased, the resulting image will have more visual artifacts, and the number of bytes needed to store it will decrease."
         }
-      },
-      "required": [
-        "format"
-      ]
+      }
     },
     "RunAt": {
       "type": "string",
@@ -86,7 +82,6 @@
               "$ref": "#/types/RunAt"
             },
             {
-              "optional": true,
               "description": "The soonest that the JavaScript or CSS will be injected into the tab. Defaults to \"document_idle\"."
             }
           ]
@@ -97,16 +92,11 @@
               "$ref": "#/types/CSSOrigin"
             },
             {
-              "optional": true,
               "description": "The css origin of the stylesheet to inject. Defaults to \"author\"."
             }
           ]
         }
-      },
-      "required": [
-        "runAt",
-        "cssOrigin"
-      ]
+      }
     },
     "Date": {
       "anyOf": [
