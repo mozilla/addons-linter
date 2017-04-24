@@ -68,7 +68,18 @@ export function rewriteOptionalToRequired(schema) {
     const value = schema[key];
     if (!Array.isArray(value) && typeof value === 'object') {
       const { optional, ...rest } = value;
-      if (!optional) {
+      if (Array.isArray(rest.allOf)) {
+        let someOptional = false;
+        rest.allOf = rest.allOf.map((inner) => {
+          someOptional = someOptional || inner.optional;
+          const innerCopy = { ...inner };
+          delete innerCopy.optional;
+          return innerCopy;
+        });
+        if (!someOptional) {
+          required.push(key);
+        }
+      } else if (!optional) {
         required.push(key);
       }
       return { ...obj, [key]: rest };

@@ -82,6 +82,50 @@ describe('firefox schema import', () => {
         required: [],
       });
     });
+
+    it('handles an allOf with one being optional', () => {
+      const obj = {
+        foo: { type: 'string', optional: true },
+        bar: {
+          allOf: [
+            { $ref: '#/types/Whatever' },
+            { optional: true, description: 'a thing' },
+          ],
+        },
+        baz: { type: 'boolean' },
+      };
+      assert.deepEqual(rewriteOptionalToRequired(obj), {
+        foo: { type: 'string' },
+        bar: { allOf: [
+          { $ref: '#/types/Whatever' },
+          { description: 'a thing' },
+        ]},
+        baz: { type: 'boolean' },
+        required: ['baz'],
+      });
+    });
+
+    it('handles an allOf with none being optional', () => {
+      const obj = {
+        foo: { type: 'string', optional: true },
+        bar: {
+          allOf: [
+            { $ref: '#/types/Whatever' },
+            { type: 'string' },
+          ],
+        },
+        baz: { type: 'boolean' },
+      };
+      assert.deepEqual(rewriteOptionalToRequired(obj), {
+        foo: { type: 'string' },
+        bar: { allOf: [
+          { $ref: '#/types/Whatever' },
+          { type: 'string' },
+        ]},
+        baz: { type: 'boolean' },
+        required: ['bar', 'baz'],
+      });
+    });
   });
 
   describe('rewriteValue', () => {
