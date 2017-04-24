@@ -4,7 +4,7 @@ import validate from 'schema/validator';
 import { validManifest } from './helpers';
 import { assertHasMatchingError } from '../helpers';
 
-describe('/background', () => {
+describe('/content_scripts', () => {
 
   it('supports simple content scripts', () => {
     var manifest = cloneDeep(validManifest);
