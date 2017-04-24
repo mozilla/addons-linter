@@ -83,7 +83,7 @@ describe('firefox schema import', () => {
       });
     });
 
-    it('handles an allOf with one being optional', () => {
+    it('handles an allOf with one nested schema being optional', () => {
       const obj = {
         foo: { type: 'string', optional: true },
         bar: {
@@ -96,16 +96,18 @@ describe('firefox schema import', () => {
       };
       assert.deepEqual(rewriteOptionalToRequired(obj), {
         foo: { type: 'string' },
-        bar: { allOf: [
-          { $ref: '#/types/Whatever' },
-          { description: 'a thing' },
-        ]},
+        bar: {
+          allOf: [
+            { $ref: '#/types/Whatever' },
+            { description: 'a thing' },
+          ],
+        },
         baz: { type: 'boolean' },
         required: ['baz'],
       });
     });
 
-    it('handles an allOf with none being optional', () => {
+    it('handles an allOf with no nested schemas being optional', () => {
       const obj = {
         foo: { type: 'string', optional: true },
         bar: {
