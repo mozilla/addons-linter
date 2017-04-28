@@ -65,7 +65,7 @@ export const RDF_TYPE_INVALID = {
   ],
   message: _('Invalid <em:type> value'),
   description: _(singleLineString`The only valid values for <em:type>
-    are 2, 4, 8, and 32. Any other values are either invalid or
+    are 2, 4, 8, 32, 64, 128, and 256. Any other values are either invalid or
     deprecated.`),
   file: INSTALL_RDF,
 };
