@@ -165,4 +165,77 @@ export default class ManifestJSONParser extends JSONParser {
       version: this.parsedJSON.version,
     };
   }
+
+  getRisk() {
+    /*
+    Get the risk profile for this add-on based on the manifest keys
+    specified in the manifest. Risk is float between 0 and 1 where 0 is low
+    risk and 1 is high risk.
+
+    This is a quick prototype of this functionality.
+    */
+    let risk = 0;
+    let riskReasons = [];
+
+    // Probably move this out to constants or something.
+    let permissionsRisk = {
+      nativeMessaging: 0.5,
+      webRequest: 0.3,
+      webRequestBlocking: 0.3,
+      webNavigation: 0.2,
+      unlimitedStorage: 0.2,
+    };
+
+    if (this.parsedJSON.permissions) {
+      for (let permission in permissionsRisk) {
+        if (this.parsedJSON.permissions.includes(permission)) {
+          risk += permissionsRisk[permission];
+          riskReasons.push(`Permission ${permission}`);
+        }
+      }
+    }
+
+    let matches = {
+      '<all_urls>': 0.1,  // Making up that this is less for testing.
+      '*://*/': 0.2, // This should be a regex.
+      'http://*/': 0.2, // This should be a regex.
+      'https://*/': 0.2, // This should be a regex.
+    };
+
+    if (this.parsedJSON.content_scripts) {
+      for (let entry of this.parsedJSON.content_scripts) {
+        for (let match in matches) {
+          if (entry.matches.includes(match)) {
+            risk += matches[match];
+            riskReasons.push(`Match ${match}`);
+          }
+        }
+        if (entry.matches.length > 4) {
+          risk += 0.1;
+          riskReasons.push(`Match ${entry.matches.length} domains`);
+        }
+        if (Object.keys(entry).includes('js')) {
+          risk += 0.3;
+          riskReasons.push(`Content script JS`);
+        }
+      }
+    }
+
+    let manifestKeys = {
+      content_security_policy: 0.5,
+      incognito: 0.1,
+    }
+
+    for (let key in manifestKeys) {
+      let keys = Object.keys(this.parsedJSON)
+      if (keys.includes(key)) {
+        risk += manifestKeys[key];
+        riskReasons.push(`Manifest key ${key}`);
+      }
+    }
+
+
+    // Never go over 1.
+    return {score: (Math.min(risk, 1)), reasons: riskReasons};
+  }
 }
