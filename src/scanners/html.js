@@ -11,7 +11,6 @@ export default class HTMLScanner extends BaseScanner {
   _getContents() {
     return new Promise((resolve) => {
       var htmlDoc = cheerio.load(this.contents);
-
       resolve(htmlDoc);
     });
   }
