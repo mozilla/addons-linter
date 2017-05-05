@@ -395,7 +395,7 @@ export default class Linter {
           }
           this.collector._addMessage(message.type, message);
         }
-        return this.output;
+        return;
       });
   }
 
@@ -521,6 +521,8 @@ export default class Linter {
           if (this.config.runAsBinary === true) {
             process.exit(this.output.errors.length > 0 ? 1 : 0);
           }
+
+          return this.output;
         })
         .catch((err) => {
           log.debug(err);
@@ -528,7 +530,7 @@ export default class Linter {
           throw err;
         });
     } else {
-      return this.scan(deps);
+      return this.scan(deps).then(() => this.output);
     }
   }
 

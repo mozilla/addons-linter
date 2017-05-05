@@ -1313,4 +1313,28 @@ describe('Linter.run()', function() {
       });
   });
 
+  it('should resolve to the linting results object', () => {
+    var addonLinter = new Linter({_: ['foo'], metadata: false});
+
+    addonLinter.scan = sinon.stub();
+    addonLinter.scan.returns(Promise.resolve());
+
+    return addonLinter.run({_console: fakeConsole})
+      .then((result) => {
+        assert.deepEqual(result, addonLinter.output);
+      });
+  });
+
+  it('should resolve to the linting results when metadata is true', () => {
+    var addonLinter = new Linter({_: ['foo'], metadata: true});
+
+    addonLinter.extractMetadata = sinon.stub();
+    addonLinter.extractMetadata.returns(Promise.resolve());
+
+    return addonLinter.run({_console: fakeConsole})
+      .then((result) => {
+        assert.deepEqual(result, addonLinter.output);
+      });
+  });
+
 });
