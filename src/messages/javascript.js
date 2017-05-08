@@ -109,12 +109,24 @@ export function _bannedIdentifier(name) {
 
 export const BANNED_NEWTHREAD = _bannedIdentifier('newThread');
 export const BANNED_PROCESSNEXTEVENT = _bannedIdentifier('processNextEvent');
-export const EVAL_STRING_ARG = {
-  code: 'EVAL_STRING_ARG',
-  message: _('setTimeout or setInterval must have function as 1st arg'),
-  description: _(singleLineString`setTimeout and setInterval functions should be
-    called only with function expressions as their first argument`),
-  legacyCode: ['javascript', 'dangerous_global', 'eval'],
+
+export const DANGEROUS_EVAL = {
+  code: 'DANGEROUS_EVAL',
+  message: null,
+  description: _(singleLineString`Evaluation of strings as code can lead to
+    security vulnerabilities and performance issues, even in the
+    most innocuous of circumstances. Please avoid using \`eval\` and the
+    \`Function\` constructor when at all possible.'`),
+  legacyCode: null,
+};
+
+export const NO_IMPLIED_EVAL = {
+  code: 'NO_IMPLIED_EVAL',
+  message: null,
+  description: _(singleLineString`setTimeout, setInterval and execScript
+    functions should be called only with function expressions as their
+    first argument`),
+  legacyCode: null,
 };
 
 export const DEPREC_SDK_MOD_WIDGET = {
@@ -238,6 +250,25 @@ export const KNOWN_LIBRARY = {
   legacyCode: [
     'testcases_content', 'test_packed_packages', 'blacklisted_js_library',
   ],
+};
+
+export const UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT = {
+  code: 'UNSAFE_VAR_ASSIGNMENT',
+  // Uses original message from eslint
+  message: null,
+  legacyCode: null,
+  description: _(singleLineString`Due to both security and performance
+    concerns, this may not be set using dynamic values which have
+    not been adequately sanitized. This can lead to security issues or fairly
+    serious performance degradation.`),
+};
+
+export const UNSUPPORTED_API = {
+  code: 'UNSUPPORTED_API',
+  message: null,
+  messageFormat: _('{{api}} is not supported'),
+  description: _('This API has not been implemented by Firefox.'),
+  legacyCode: null,
 };
 
 function deprecatedAPI(api) {

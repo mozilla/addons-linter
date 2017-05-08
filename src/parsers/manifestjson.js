@@ -1,3 +1,5 @@
+import path from 'path';
+
 import RJSON from 'relaxed-json';
 import validate from 'schema/validator';
 
@@ -51,6 +53,7 @@ export default class ManifestJSONParser extends JSONParser {
 
     var overrides = {
       message: `"${error.dataPath}" ${error.message}`,
+      dataPath: error.dataPath,
     };
 
     if (error.keyword === 'required') {
@@ -58,10 +61,8 @@ export default class ManifestJSONParser extends JSONParser {
     } else if (error.dataPath.startsWith('/permissions') &&
                typeof error.data !== 'undefined' &&
                typeof error.data !== 'string') {
-      // Check for non-strings in the manifest permissions; these indicate
-      // a Chrome app extension. This means an error.
       baseObject = messages.MANIFEST_BAD_PERMISSION;
-      overrides = {};
+      overrides = {message: `Permissions ${error.message}.`};
     } else if (error.keyword === 'type') {
       baseObject = messages.MANIFEST_FIELD_INVALID;
     }
@@ -87,18 +88,9 @@ export default class ManifestJSONParser extends JSONParser {
     this.isValid = validate(this.parsedJSON);
     if (!this.isValid) {
       log.debug('Schema Validation messages', validate.errors);
-      var errorsFound = [];
 
       for (let error of validate.errors) {
-        // Ensure that we only add one error on a field. This runs the risk
-        // of hiding errors, but means that we can aim to get to a more
-        // helpful error in the case of some rather verbose schema errors.
-        if (errorsFound.indexOf(error.dataPath) > -1) {
-          continue;
-        }
-
         var message = this.errorLookup(error);
-        errorsFound.push(error.dataPath);
 
         if (warnings.includes(message.code)) {
           this.collector.addWarning(message);
@@ -134,7 +126,8 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.default_locale) {
-      let msg = `_locales/${this.parsedJSON.default_locale}/messages.json`;
+      let msg = path.join(
+        '_locales', this.parsedJSON.default_locale, 'messages.json');
       if (!this.io.files[msg]) {
         this.collector.addError(messages.NO_MESSAGES_FILE);
         this.isValid = false;

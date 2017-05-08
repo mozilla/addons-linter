@@ -1,3 +1,5 @@
+import { extname } from 'path';
+
 import FilenameScanner from 'scanners/filename';
 import * as constants from 'const';
 import * as messages from 'messages';
@@ -133,7 +135,8 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of matchingFlaggedFileExtensions) {
     it(`should match ${filePath} as a flagged file extensions`, () => {
-      assert.isOk(filePath.match(constants.FLAGGED_FILE_EXTENSION_REGEX),
+      assert.isOk(
+        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filePath)),
         `${filePath} should not match flagged file extension regex`);
     });
   }
@@ -145,7 +148,8 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of nonMatchingFlaggedFileExtensions) {
     it(`should not match ${filePath} as a flagged file extension`, () => {
-      assert.isNotOk(filePath.match(constants.FLAGGED_FILE_EXTENSION_REGEX),
+      assert.isNotOk(
+        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filePath)),
         `${filePath} should not match flagged file extension regex`);
     });
   }

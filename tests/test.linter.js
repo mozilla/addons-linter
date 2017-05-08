@@ -397,6 +397,19 @@ describe('Linter.print()', function() {
     assert.ok(fakeConsole.log.called);
   });
 
+  it('should not print anything if config.output is none', () => {
+    var addonLinter = new Linter({_: ['foo']});
+    addonLinter.textOutput = sinon.stub();
+    addonLinter.config.output = 'none';
+    var fakeConsole = {
+      log: sinon.stub(),
+    };
+    addonLinter.print(fakeConsole);
+    assert.ok(!addonLinter.textOutput.called);
+    assert.ok(!addonLinter.toJSON.called);
+    assert.ok(!fakeConsole.log.called);
+  });
+
   it('should print scanFile if any', () => {
     var addonLinter = new Linter({
       _: ['foo'],
@@ -691,7 +704,7 @@ describe('Linter.getAddonMetadata()', function() {
       .then(() => {
         var errors = addonLinter.collector.errors;
         assert.equal(errors.length, 2);
-        assert.equal(errors[0].code, messages.MULITPLE_MANIFESTS.code);
+        assert.equal(errors[0].code, messages.MULTIPLE_MANIFESTS.code);
         assert.equal(errors[1].code, messages.TYPE_NOT_DETERMINED.code);
       });
   });
@@ -1297,6 +1310,30 @@ describe('Linter.run()', function() {
         assert.ok(addonLinter.handleError.called);
         assert.instanceOf(err, Error);
         assert.include(err.message, 'metadata explosion');
+      });
+  });
+
+  it('should resolve to the linting results object', () => {
+    var addonLinter = new Linter({_: ['foo'], metadata: false});
+
+    addonLinter.scan = sinon.stub();
+    addonLinter.scan.returns(Promise.resolve());
+
+    return addonLinter.run({_console: fakeConsole})
+      .then((result) => {
+        assert.deepEqual(result, addonLinter.output);
+      });
+  });
+
+  it('should resolve to the linting results when metadata is true', () => {
+    var addonLinter = new Linter({_: ['foo'], metadata: true});
+
+    addonLinter.extractMetadata = sinon.stub();
+    addonLinter.extractMetadata.returns(Promise.resolve());
+
+    return addonLinter.run({_console: fakeConsole})
+      .then((result) => {
+        assert.deepEqual(result, addonLinter.output);
       });
   });
 

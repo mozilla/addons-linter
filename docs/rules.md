@@ -22,7 +22,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :white_check_mark: | warning |  banned_identifier | | Banned or deprecated JavaScript Identifier | | | ('js', 'actions', 'banned_identifier') | BANNED_PROCESSNEXTEVENT |
 | :white_check_mark: | warning | complex_prefs_defaults | | Complex code should not appear in preference defaults files | | [testcases/javascript/actions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/actions.py#L427) | ('testcases_javascript_actions', '_call_expression', 'complex_prefs_defaults_code')| ONLY_PREFS_IN_DEFAULTS |
 | :x: | warning | called_dangerous_global | | `%s` called in potentially dangerous manner' | | | | |
-| :white_check_mark: | warning | eval | | In order to prevent vulnerabilities, the `setTimeout` 'and `setInterval` functions should be called only with function expressions as their first argument. | | [testcases/javascript/actions.py](https://github.com/mozilla/amo-validator/blob/7a8011aba8bf8c665aef2b51eb26d0697b3e19c3/validator/testcases/javascript/actions.py#L488) | | EVAL_STRING_ARG |
+| :white_check_mark: | warning | eval | | In order to prevent vulnerabilities, the `setTimeout` 'and `setInterval` functions should be called only with function expressions as their first argument. | | [testcases/javascript/actions.py](https://github.com/mozilla/amo-validator/blob/7a8011aba8bf8c665aef2b51eb26d0697b3e19c3/validator/testcases/javascript/actions.py#L488) | | NO_IMPLIED_EVAL |
 | :white_check_mark: | warning | low_level_module (not from src) | | Usage of low-level or non-SDK interface | | | null | LOW_LEVEL_MODULE |
 | :white_check_mark: | warning | widget | | Use of deprecated SDK module | | | null | DEPREC_SDK_MOD_WIDGET |
 | :negative_squared_cross_mark: | notice |  \_readonly_top | | window.top is a reserved variable | | | ('testcases_javascript_actions', '_readonly_top' | **Removed** |
@@ -146,7 +146,6 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :negative_squared_cross_mark: | warning | theme_xbl_property | theme | Themes are not allowed to use XBL properties | | | | |
 | :negative_squared_cross_mark: | warning | unsafe_langpack_theme | theme / langpack | Unsafe tag for add-on type | | | | |
 | :x: | warning | remote_src_href | theme / langpack | `src`/`href` attributes must be local | | | | |
-| :white_check_mark: | warning | prefwindow_id | | `<prefwindow>` elements must have IDs | | | | PREFWINDOW_REQUIRES_ID |
 | :x: | warning | iframe_type_unsafe | | iframe/browser missing 'type' attribute | | | | |
 | :x: | warning | iframe_type_unsafe | | Typeless iframes/browsers must be local | | | | |
 | :x: | warning | banned_remote_scripts | | Scripts must not be remote | | | | |
@@ -158,7 +157,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :x: | warning | extra_closing_tags | | Markup parsing error | | | | |
 | :x: | warning | extra_closing_tags | | Parse error: tag closed before opened | | | | |
 | :x: | warning | invalid_nesting | | Markup invalidly nested | | | | |
-
+| :white_check_mark: | warning | inline script | | Inline script is disallowed by CSP | | | | INLINE_SCRIPT |
 
 ## chrome.manifest
 
@@ -364,7 +363,7 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :white_check_mark: | error | Web extension | version property missing from manifest.json | manifest.json | | null | PROP_VERSION_MISSING |
 | :white_check_mark: | error | Web extension | version is invalid in manifest.json | manifest.json | | null | PROP_VERSION_INVALID |
 | :white_check_mark: | notice | Web extension | version is in the toolkit format in manifest.json | manifest.json | | null | PROP_VERSION_TOOLKIT_ONLY |
-| :white_check_mark: | error | Web extension | install.rdf and manifest.json present | manifest.json | | null | MULITPLE_MANIFESTS |
+| :white_check_mark: | error | Web extension | install.rdf and manifest.json present | manifest.json | | null | MULTIPLE_MANIFESTS |
 | :white_check_mark: | warning | Web extension | content_security_policy in manifest.json means more review | manifest.json | | null | MANIFEST_CSP |
 | :white_check_mark: | error | Web extension | update_url not allowed in manifest.json | manifest.json | | null | MANIFEST_UPDATE_URL |
 | :white_check_mark: | notice | Web extension | update_url ignored in manifest.json | manifest.json | | null | MANIFEST_UNUSED_UPDATE |
@@ -387,3 +386,6 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :white_check_mark: | warning | Web extension | Temporary IDs can cause issues with identity.getRedirectURL | | | null | IDENTITY_GETREDIRECTURL |
 | :white_check_mark: | warning | Web extension | When default_locale is specified a matching messages.json must exist | | | null | NO_MESSAGES_FILE |
 | :white_check_mark: | warning | Web extension | When _locales directory exists, default_locale must exist | | | null | NO_DEFAULT_LOCALE |
+| :white_check_mark: | warning | Web extension | | | | | UNSAFE_VAR_ASSIGNMENT |
+| :white_check_mark: | warning | Web extension | Unsupported or unknown browser API | | | null | UNSUPPORTED_API |
+| :white_check_mark: | warning | Web extension | | | | | DANGEROUS_EVAL |

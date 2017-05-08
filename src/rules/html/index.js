@@ -1,1 +1,1 @@
-export * from './ensureRequiredAttributes';
+export * from './warn-on-inline';

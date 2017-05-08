@@ -2,7 +2,7 @@ import argv from 'yargs';
 
 import log from 'logger';
 import { singleLineString } from 'utils';
-import { version } from 'json!../package';
+import { version } from 'json-loader!../package';
 
 
 export function getConfig({useCLI=true} = {}) {

@@ -8,7 +8,7 @@ function noddyClone(obj) {
 }
 
 var buildResolve = noddyClone(defaultResolve);
-buildResolve.modulesDirectories.push('src/');
+buildResolve.modules.push('src/');
 
 var testConfig = {
   entry: './tests/runner.js',
@@ -37,12 +37,16 @@ module.exports = {
     entry: testConfig.entry,
     output: testConfig.output,
     resolve: buildResolve,
-    module: Object.assign({}, webpackConfig.module, {
-      preLoaders: [{
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components|test)/,
-        loader: 'babel-istanbul',
-      }],
-    }),
+    module: {
+      rules: [
+        {
+          use: 'babel-istanbul-loader',
+          // babel options are in .babelrc
+          exclude: /(node_modules|bower_components|tests)/,
+          enforce: 'pre',
+          test: /\.js$/,
+        },
+      ],
+    },
   },
 };

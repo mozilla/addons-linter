@@ -91,6 +91,9 @@ export default class Linter {
   }
 
   print(_console=console) {
+    if (this.config.output === 'none') {
+      return;
+    }
     if (this.config.output === 'json') {
       _console.log(this.toJSON(this.config.pretty));
     } else {
@@ -246,7 +249,7 @@ export default class Linter {
         if (files.hasOwnProperty(INSTALL_RDF) &&
             files.hasOwnProperty(MANIFEST_JSON)) {
           _log.warn(`Both ${INSTALL_RDF} and ${MANIFEST_JSON} found`);
-          this.collector.addError(messages.MULITPLE_MANIFESTS);
+          this.collector.addError(messages.MULTIPLE_MANIFESTS);
           return {};
         } else if (files.hasOwnProperty(INSTALL_RDF)) {
           _log.info('Retrieving metadata from install.rdf');
@@ -331,7 +334,7 @@ export default class Linter {
 
     if (filename.match(constants.HIDDEN_FILE_REGEX) ||
         filename.match(constants.FLAGGED_FILE_REGEX) ||
-        filename.match(constants.FLAGGED_FILE_EXTENSION_REGEX) ||
+        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filename)) ||
         filename.match(constants.ALREADY_SIGNED_REGEX)) {
       return FilenameScanner;
     }
@@ -518,6 +521,8 @@ export default class Linter {
           if (this.config.runAsBinary === true) {
             process.exit(this.output.errors.length > 0 ? 1 : 0);
           }
+
+          return this.output;
         })
         .catch((err) => {
           log.debug(err);
@@ -525,7 +530,7 @@ export default class Linter {
           throw err;
         });
     } else {
-      return this.scan(deps);
+      return this.scan(deps).then(() => this.output);
     }
   }
 

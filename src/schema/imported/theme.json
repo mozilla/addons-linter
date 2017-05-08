@@ -1,0 +1,84 @@
+{
+  "id": "theme",
+  "description": "The theme API allows customizing of visual elements of the browser.",
+  "permissions": [
+    "manifest:theme"
+  ],
+  "functions": [
+    {
+      "name": "update",
+      "type": "function",
+      "async": true,
+      "description": "Make complete or partial updates to the theme. Resolves when the update has completed.",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "manifest#/types/ThemeType"
+            },
+            {
+              "name": "details",
+              "description": "The properties of the theme to update."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "WebExtensionManifest": {
+      "properties": {
+        "theme": {
+          "$ref": "#/types/ThemeType"
+        }
+      }
+    }
+  },
+  "refs": {
+    "theme#/definitions/WebExtensionManifest": {
+      "namespace": "manifest",
+      "type": "WebExtensionManifest"
+    }
+  },
+  "types": {
+    "ThemeType": {
+      "type": "object",
+      "properties": {
+        "images": {
+          "type": "object",
+          "properties": {
+            "headerURL": {
+              "type": "string"
+            },
+            "theme_frame": {
+              "type": "string"
+            }
+          }
+        },
+        "colors": {
+          "type": "object",
+          "properties": {
+            "accentcolor": {
+              "type": "string"
+            },
+            "frame": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "tab_text": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "textcolor": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

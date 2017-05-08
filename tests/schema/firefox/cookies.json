@@ -1,0 +1,44 @@
+// Copyright (c) 2012 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+[
+  {
+    "namespace": "manifest",
+    "types": [
+      {
+        "$extend": "Permission",
+        "choices": [{
+          "type": "string",
+          "enum": [
+            "cookies"
+          ]
+        }]
+      }
+    ]
+  },
+  {
+    "namespace": "cookies",
+    "description": "Use the <code>browser.cookies</code> API to query and modify cookies, and to be notified when they change.",
+    "permissions": ["cookies"],
+    "types": [
+      {
+        "id": "Cookie",
+        "type": "object",
+        "description": "Represents information about an HTTP cookie.",
+        "properties": {
+          "name": {"type": "string", "description": "The name of the cookie."},
+          "value": {"type": "string", "description": "The value of the cookie."},
+          "domain": {"type": "string", "description": "The domain of the cookie (e.g. \"www.google.com\", \"example.com\")."},
+          "hostOnly": {"type": "boolean", "description": "True if the cookie is a host-only cookie (i.e. a request's host must exactly match the domain of the cookie)."},
+          "path": {"type": "string", "description": "The path of the cookie."},
+          "secure": {"type": "boolean", "description": "True if the cookie is marked as Secure (i.e. its scope is limited to secure channels, typically HTTPS)."},
+          "httpOnly": {"type": "boolean", "description": "True if the cookie is marked as HttpOnly (i.e. the cookie is inaccessible to client-side scripts)."},
+          "session": {"type": "boolean", "description": "True if the cookie is a session cookie, as opposed to a persistent cookie with an expiration date."},
+          "expirationDate": {"type": "number", "optional": true, "description": "The expiration date of the cookie as the number of seconds since the UNIX epoch. Not provided for session cookies."},
+          "storeId": {"type": "string", "description": "The ID of the cookie store containing this cookie, as provided in getAllCookieStores()."}
+        }
+      }
+    ]
+  }
+]

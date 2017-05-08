@@ -1,0 +1,133 @@
+{
+  "id": "commands",
+  "description": "Use the commands API to add keyboard shortcuts that trigger actions in your extension, for example, an action to open the browser action or send a command to the xtension.",
+  "permissions": [
+    "manifest:commands"
+  ],
+  "events": [
+    {
+      "name": "onCommand",
+      "description": "Fired when a registered command is activated using a keyboard shortcut.",
+      "type": "function",
+      "parameters": [
+        {
+          "name": "command",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "getAll",
+      "type": "function",
+      "async": "callback",
+      "description": "Returns all the registered extension commands for this extension and their shortcut (if active).",
+      "parameters": [
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": [
+            {
+              "name": "commands",
+              "type": "array",
+              "items": {
+                "$ref": "#/types/Command"
+              }
+            }
+          ],
+          "description": "Called to return the registered commands."
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "WebExtensionManifest": {
+      "properties": {
+        "commands": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "suggested_key": {
+                "type": "object",
+                "properties": {
+                  "default": {
+                    "$ref": "#/types/KeyName"
+                  },
+                  "mac": {
+                    "$ref": "#/types/KeyName"
+                  },
+                  "linux": {
+                    "$ref": "#/types/KeyName"
+                  },
+                  "windows": {
+                    "$ref": "#/types/KeyName"
+                  },
+                  "chromeos": {
+                    "type": "string"
+                  },
+                  "android": {
+                    "type": "string"
+                  },
+                  "ios": {
+                    "type": "string"
+                  },
+                  "additionalProperties": {
+                    "type": "string",
+                    "deprecated": "Unknown platform name"
+                  }
+                }
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "refs": {
+    "commands#/definitions/WebExtensionManifest": {
+      "namespace": "manifest",
+      "type": "WebExtensionManifest"
+    }
+  },
+  "types": {
+    "Command": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the Extension Command"
+        },
+        "description": {
+          "type": "string",
+          "description": "The Extension Command description"
+        },
+        "shortcut": {
+          "type": "string",
+          "description": "The shortcut active for this command, or blank if not active."
+        }
+      }
+    },
+    "KeyName": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^\\s*(Alt|Ctrl|Command|MacCtrl)\\s*\\+\\s*(Shift\\s*\\+\\s*)?([A-Z0-9]|Comma|Period|Home|End|PageUp|PageDown|Space|Insert|Delete|Up|Down|Left|Right)\\s*$"
+        },
+        {
+          "type": "string",
+          "pattern": "^\\s*((Alt|Ctrl|Command|MacCtrl)\\s*\\+\\s*)?(Shift\\s*\\+\\s*)?(F[1-9]|F1[0-2])\\s*$"
+        },
+        {
+          "type": "string",
+          "pattern": "^(MediaNextTrack|MediaPlayPause|MediaPrevTrack|MediaStop)$"
+        }
+      ]
+    }
+  }
+}

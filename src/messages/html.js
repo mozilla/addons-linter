@@ -1,18 +1,9 @@
 import { gettext as _, singleLineString } from 'utils';
 
-
-export var _tagRequiresAttribute = (tagName, attribute) => {
-  return {
-    code: `${tagName}_REQUIRES_${attribute}`.toUpperCase(),
-    legacyCode: [
-      'markup',
-      'starttag',
-      `${tagName}_${attribute}`,
-    ],
-    message: _(`<${tagName}> missing "${attribute}"`),
-    description: _(singleLineString`The <${tagName}> tag requires the
-      ${attribute}, but it's missing.`),
-  };
+export const INLINE_SCRIPT = {
+  code: 'INLINE_SCRIPT',
+  legacyCode: null,
+  message: _('Inline scripts blocked by default'),
+  description: _(singleLineString`Default CSP rules prevent inline JavaScript
+    from running (https://mzl.la/2pn32nd).`),
 };
-
-export const PREFWINDOW_REQUIRES_ID = _tagRequiresAttribute('prefwindow', 'id');

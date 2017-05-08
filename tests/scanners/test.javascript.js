@@ -1,7 +1,10 @@
 import ESLint from 'eslint';
 
-import { DEPRECATED_APIS, ESLINT_ERROR, ESLINT_RULE_MAPPING, TEMPORARY_APIS,
-         VALIDATION_ERROR, VALIDATION_WARNING } from 'const';
+import {
+  DEPRECATED_APIS, ESLINT_ERROR, ESLINT_RULE_MAPPING, TEMPORARY_APIS,
+  VALIDATION_ERROR, VALIDATION_WARNING,
+  EXTERNAL_RULE_MAPPING,
+} from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
@@ -128,18 +131,27 @@ describe('JavaScript Scanner', function() {
   });
 
   it('should reject on missing message code', () => {
+    var FakeCLIEngine = function() {};
+    FakeCLIEngine.prototype = {
+      constructor: function() {},
+      executeOnText: () => {
+        return {
+          results: [{
+            messages: [{
+              fatal: false,
+            }],
+          }],
+        };
+      },
+    };
 
     var FakeESLint = {
       linter: {
         defineRule: () => {
           // no-op
         },
-        verify: () => {
-          return [{
-            fatal: false,
-          }];
-        },
       },
+      CLIEngine: FakeCLIEngine,
     };
 
     var jsScanner = new JavaScriptScanner('whatever', 'badcode.js');
@@ -281,14 +293,20 @@ describe('JavaScript Scanner', function() {
   it('should export all rules in rules/javascript', () => {
     // We skip the "run" check here for now as that's handled by ESLint.
     var ruleFiles = getRuleFiles('javascript');
-    assert.equal(ruleFiles.length, Object.keys(ESLINT_RULE_MAPPING).length);
+
+    assert.equal(
+      ruleFiles.length + Object.keys(EXTERNAL_RULE_MAPPING).length,
+      Object.keys(ESLINT_RULE_MAPPING).length
+    );
 
     var jsScanner = new JavaScriptScanner('', 'badcode.js');
 
     return jsScanner.scan()
       .then(() => {
-        assert.equal(jsScanner._rulesProcessed,
-                     Object.keys(rules).length);
+        assert.equal(
+          jsScanner._rulesProcessed,
+          Object.keys(rules).length
+        );
       });
   });
 
@@ -333,4 +351,26 @@ describe('JavaScript Scanner', function() {
         });
     });
   }
+
+  it('treats a non-code string message as the message', () => {
+    var _rules = {
+      'message-rule': (context) => {
+        return {
+          MemberExpression(node) {
+            context.report(node, 'this is the message');
+          },
+        };
+      },
+    };
+    var _ruleMapping = { 'message-rule': ESLINT_ERROR };
+    var fakeMetadata = { addonMetadata: validMetadata({}) };
+    var jsScanner = new JavaScriptScanner('foo.bar', 'code.js', fakeMetadata);
+
+    return jsScanner.scan(undefined, { _rules, _ruleMapping })
+      .then((validationMessages) => {
+        assert.equal(validationMessages.length, 1);
+        assert.equal(validationMessages[0].code, 'this is the message');
+        assert.equal(validationMessages[0].message, 'this is the message');
+      });
+  });
 });

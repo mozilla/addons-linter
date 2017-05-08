@@ -53,15 +53,6 @@ describe('/applications/gecko/*', () => {
       '/applications/gecko/strict_min_version');
   });
 
-  it('should be invalid due to invalid strict_max_version type', () => {
-    var manifest = cloneDeep(validManifest);
-    manifest.applications.gecko.strict_max_version = 42;
-    validate(manifest);
-    assert.equal(validate.errors.length, 1);
-    assert.equal(validate.errors[0].dataPath,
-      '/applications/gecko/strict_max_version');
-  });
-
   // For the following tests I copied versions from:
   // https://addons.mozilla.org/en-US/firefox/pages/appversions/
   const validMinVersions = ['1.5.0.4', '3.0a8pre', '22.0a1', '40.0'];
@@ -85,6 +76,15 @@ describe('/applications/gecko/*', () => {
     });
   }
 
+  it('should be invalid due to invalid strict_max_version type', () => {
+    var manifest = cloneDeep(validManifest);
+    manifest.applications.gecko.strict_max_version = 42;
+    validate(manifest);
+    assert.equal(validate.errors.length, 1);
+    assert.equal(validate.errors[0].dataPath,
+      '/applications/gecko/strict_max_version');
+  });
+
   const validMaxVersions = validMinVersions.slice();
   validMaxVersions.push('48.*');
   for (let version of validMaxVersions) {
@@ -94,6 +94,12 @@ describe('/applications/gecko/*', () => {
       assert.ok(validate(manifest));
     });
   }
+
+  it('should be invalid due to invalid strict_max_version', () => {
+    var manifest = cloneDeep(validManifest);
+    manifest.applications.gecko.strict_max_version = 'fifty';
+    assert.notOk(validate(manifest));
+  });
 
   it('should be a valid id (email-like format)', () => {
     var manifest = cloneDeep(validManifest);
@@ -113,11 +119,20 @@ describe('/applications/gecko/*', () => {
     assert.ok(validate(manifest));
   });
 
+  it('should be invalid for a number', () => {
+    var manifest = cloneDeep(validManifest);
+    manifest.applications.gecko.id = 10;
+    validate(manifest);
+    assert.ok(validate.errors.length >= 1);
+    assert.equal(validate.errors[0].dataPath,
+      '/applications/gecko/id');
+  });
+
   it('should be invalid id format', () => {
     var manifest = cloneDeep(validManifest);
     manifest.applications.gecko.id = 'whatevs';
     validate(manifest);
-    assert.equal(validate.errors.length, 1);
+    assert.ok(validate.errors.length >= 1);
     assert.equal(validate.errors[0].dataPath,
       '/applications/gecko/id');
   });

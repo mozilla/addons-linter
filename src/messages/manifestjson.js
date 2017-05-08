@@ -22,9 +22,8 @@ export const MANIFEST_BAD_PERMISSION = {
   code: 'MANIFEST_BAD_PERMISSION',
   legacyCode: null,
   message: _('The permission type is unsupported.'),
-  description: _(singleLineString`Permissions must be strings. If a permission
-    is an object, it's likely from a Chrome App Extension and will not work in
-    Firefox. See https://mzl.la/1R1n1t0 (MDN Docs) for more information.`),
+  description: _(singleLineString`See https://mzl.la/1R1n1t0
+    (MDN Docs) for more information.`),
   file: MANIFEST_JSON,
 };
 
@@ -45,6 +44,8 @@ export const MANIFEST_VERSION_INVALID = {
 };
 
 export const MANIFEST_CSP = {
+  // Note: don't change this 'code' without updating addons-server first, as
+  // it depends on it to detect add-ons with a custom content security policy.
   code: 'MANIFEST_CSP',
   legacyCode: null,
   message: _('"content_security_policy" is defined in the manifest.json'),

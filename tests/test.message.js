@@ -48,5 +48,37 @@ describe('Message', function() {
     }, Error, /The key for the file is "file"/);
   });
 
+  describe('matches', () => {
+    let fakeData;
+
+    before(() => {
+      fakeData = props.reduce((obj, prop) => ({
+        ...obj,
+        [prop]: prop,
+      }), {});
+    });
+
+    it('is a match if the props are all the same', () => {
+      var message = new Message('error', { ...fakeData });
+      var other = new Message('error', { ...fakeData });
+      assert.ok(message.matches(other));
+    });
+
+    it('is not a match with props the same except type', () => {
+      var message = new Message('error', { ...fakeData });
+      var other = new Message('warning', { ...fakeData });
+      assert.notOk(message.matches(other));
+    });
+
+    it('is not a match with different props', () => {
+      var message = new Message('error', { ...fakeData });
+      var other = new Message('error', {
+        ...fakeData,
+        message: 'different message',
+      });
+      assert.notOk(message.matches(other));
+    });
+  });
+
 });
 
