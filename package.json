@@ -64,7 +64,7 @@
     "request": "2.81.0",
     "shelljs": "0.7.7",
     "sinon": "2.2.0",
-    "webpack": "2.4.1",
+    "webpack": "2.5.1",
     "webpack-dev-server": "2.4.5",
     "tar": "2.2.1"
   },
