@@ -926,7 +926,7 @@ describe('Linter.extractMetadata()', function() {
   // - data/
   //   - change-text.js
   //   - empty.js (empty file)
-  //   - jquery-2.1.4.min.js (minified jQuery)
+  //   - jquery-3.2.1.min.js (minified jQuery)
   // - index.js
   // - install.rdf
   // - package.json
@@ -950,7 +950,7 @@ describe('Linter.extractMetadata()', function() {
   // - data/
   //   - change-text.js
   //   - empty.js (empty file)
-  //   - jquery-2.1.4.min.js (minified jQuery)
+  //   - jquery-3.2.1.min.js (minified jQuery)
   // - index.js
   // - install.rdf
   // - package.json
@@ -966,7 +966,7 @@ describe('Linter.extractMetadata()', function() {
         assert.ok(markJSFilesSpy.called);
         assert.equal(Object.keys(metadata.jsLibs).length, 1);
         assert.deepEqual(metadata.jsLibs, {
-          'data/jquery-2.1.4.min.js': 'jquery.2.1.4.jquery.min.js',
+          'data/jquery-3.2.1.min.js': 'jquery.3.2.1.jquery.min.js',
         });
       });
   });
@@ -983,7 +983,7 @@ describe('Linter.extractMetadata()', function() {
       'angular.js': 'angular-1.2.28.min.js',
       'my/real/files/notalib.js': 'not-a-library.js',
       'my/real/files/alsonotalib.js': 'not-a-library.js',
-      'my/nested/library/path/j.js': 'jquery-2.1.4.min.js',
+      'my/nested/library/path/j.js': 'jquery-3.2.1.min.js',
     };
 
     class FakeXpi extends FakeIOBase {
@@ -1010,7 +1010,7 @@ describe('Linter.extractMetadata()', function() {
       assert.ok(markJSFilesSpy.called);
       assert.equal(Object.keys(metadata.jsLibs).length, 1);
       assert.deepEqual(metadata.jsLibs, {
-        'my/nested/library/path/j.js': 'jquery.2.1.4.jquery.min.js',
+        'my/nested/library/path/j.js': 'jquery.3.2.1.jquery.min.js',
       });
 
       var notices = addonLinter.collector.notices;
@@ -1027,7 +1027,7 @@ describe('Linter.extractMetadata()', function() {
     addonLinter.print = sinon.stub();
 
     var fakeFiles = {
-      'my/nested/library/path/j.js': 'jquery-2.2.4.min.js',
+      'my/nested/library/path/j.js': 'jquery-3.2.1.min.js',
     };
 
     class FakeXpi extends FakeIOBase {
@@ -1062,7 +1062,7 @@ describe('Linter.extractMetadata()', function() {
   //   - angular-1.2.28.min.js (minified Angular)
   //   - change-text.js
   //   - empty.js (empty file)
-  //   - jquery-2.1.4.min.js (minified jQuery)
+  //   - jquery-3.2.1.min.js (minified jQuery)
   // - index.js
   // - install.rdf
   // - package.json
@@ -1079,7 +1079,7 @@ describe('Linter.extractMetadata()', function() {
         assert.equal(Object.keys(metadata.jsLibs).length, 2);
         assert.deepEqual(metadata.jsLibs, {
           'data/angular-1.2.28.min.js': 'angularjs.1.2.28.angular.min.js',
-          'data/jquery-2.1.4.min.js': 'jquery.2.1.4.jquery.min.js',
+          'data/jquery-3.2.1.min.js': 'jquery.3.2.1.jquery.min.js',
         });
 
         var errors = addonLinter.collector.errors;
@@ -1096,7 +1096,7 @@ describe('Linter.extractMetadata()', function() {
     var fakeMetadata = {
       jsLibs : {
         'data/unadvised_fake_lib.js': 'test_unadvised_fake_lib.js',
-        'data/jquery-2.1.4.min.js': 'jquery.2.1.4.jquery.min.js',
+        'data/jquery-3.2.1.min.js': 'jquery.3.2.1.jquery.min.js',
       },
     };
 
@@ -1104,7 +1104,7 @@ describe('Linter.extractMetadata()', function() {
     assert.equal(Object.keys(fakeMetadata.jsLibs).length, 2);
     assert.deepEqual(fakeMetadata.jsLibs, {
       'data/unadvised_fake_lib.js': 'test_unadvised_fake_lib.js',
-      'data/jquery-2.1.4.min.js': 'jquery.2.1.4.jquery.min.js',
+      'data/jquery-3.2.1.min.js': 'jquery.3.2.1.jquery.min.js',
     });
 
     var warnings = addonLinter.collector.warnings;
