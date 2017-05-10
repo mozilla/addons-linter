@@ -1,7 +1,6 @@
 import fs from 'fs';
-import fstream from 'fstream';
 import path from 'path';
-import zlib from 'zlib';
+import stream from 'stream';
 
 import request from 'request';
 import tar from 'tar';
@@ -21,7 +20,11 @@ import {
   rewriteKey,
   rewriteOptionalToRequired,
   rewriteValue,
+  stripTrailingNullByte,
 } from 'schema/firefox-schemas-import';
+
+// Get a reference to unlinkSync so it won't get stubbed later.
+const { unlinkSync } = fs;
 
 describe('firefox schema import', () => {
   let sandbox;
@@ -32,7 +35,7 @@ describe('firefox schema import', () => {
 
   function removeDir(dirPath) {
     fs.readdirSync(dirPath).forEach(
-      (file) => fs.unlinkSync(path.join(dirPath, file)));
+      (file) => unlinkSync(path.join(dirPath, file)));
     fs.rmdirSync(dirPath);
   }
 
@@ -1030,23 +1033,32 @@ describe('firefox schema import', () => {
 
   describe('fetchSchemas', () => {
     const outputPath = 'tests/schema/imported';
+    const expectedTarballPath = 'tmp/FIREFOX_AURORA_54_BASE.tar.gz';
 
     beforeEach(() => {
+      assert.notOk(
+        fs.existsSync(expectedTarballPath),
+        `Tar file already exists at ${expectedTarballPath}`);
       createDir(outputPath);
     });
 
     afterEach(() => {
+      assert.notOk(
+        fs.existsSync(expectedTarballPath),
+        `Tar file was not cleaned up ${expectedTarballPath}`);
       removeDir(outputPath);
     });
 
+    it('rejects if there is no inputPath or version', () => {
+      return fetchSchemas({}).then(
+        () => assert.ok(false, 'expected rejection'),
+        (err) => assert.equal(err.message, 'inputPath or version is required'));
+    });
+
     it('downloads the firefox source and extracts the schemas', () => {
-      // eslint-disable-next-line new-cap
-      const packer = tar.Pack({ noProprietary: true });
-      const schemaPath = 'tests/schema/firefox';
-      // eslint-disable-next-line new-cap
-      const tarball = fstream.Reader({ path: schemaPath, type: 'Directory' })
-        .pipe(packer)
-        .pipe(zlib.createGzip());
+      const cwd = 'tests/schema';
+      const schemaPath = 'firefox';
+      const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
       sandbox
         .stub(inner, 'isBrowserSchema')
         .withArgs('firefox/cookies.json')
@@ -1065,13 +1077,9 @@ describe('firefox schema import', () => {
     });
 
     it('extracts the schemas from a local file', () => {
-      // eslint-disable-next-line new-cap
-      const packer = tar.Pack({ noProprietary: true });
-      const schemaPath = 'tests/schema/firefox';
-      // eslint-disable-next-line new-cap
-      const tarball = fstream.Reader({ path: schemaPath, type: 'Directory' })
-        .pipe(packer)
-        .pipe(zlib.createGzip());
+      const cwd = 'tests/schema';
+      const schemaPath = 'firefox';
+      const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
       sandbox
         .stub(inner, 'isBrowserSchema')
         .withArgs('firefox/cookies.json')
@@ -1082,10 +1090,89 @@ describe('firefox schema import', () => {
         .stub(fs, 'createReadStream')
         .withArgs('mozilla-central.tgz')
         .returns(tarball);
+      sandbox
+        .stub(fs, 'unlinkSync')
+        .withArgs('mozilla-central.tgz')
+        .returns(undefined);
       assert.deepEqual(fs.readdirSync(outputPath), []);
       return fetchSchemas({ inputPath: 'mozilla-central.tgz', outputPath })
         .then(() => {
           assert.deepEqual(fs.readdirSync(outputPath), ['manifest.json']);
+        });
+    });
+
+    it('handles errors when parsing the tarball', () => {
+      const cwd = 'tests/schema';
+      const schemaPath = 'firefox';
+      const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
+      sandbox
+        .stub(fs, 'createReadStream')
+        .withArgs('mozilla-central.tgz')
+        .returns(tarball);
+      const extractedStream = new stream.Duplex({
+        read() {
+          this.emit('error', new Error('stream error'));
+        },
+      });
+      sandbox
+        .stub(tar, 'Parse')
+        .returns(extractedStream);
+      assert.deepEqual(fs.readdirSync(outputPath), []);
+      return fetchSchemas({ inputPath: 'mozilla-central.tgz', outputPath })
+        .then(() => {
+          assert.notOk(true, 'unexpected success');
+        }, () => {
+          assert.ok(true, 'error was propagated');
+        });
+    });
+
+    it('handles errors when downloading', () => {
+      const mockStream = new stream.Readable({
+        read() {
+          this.emit('error', new Error('stream error'));
+        },
+      });
+      sandbox
+        .stub(request, 'get')
+        .withArgs('https://hg.mozilla.org/mozilla-central/archive/FIREFOX_AURORA_54_BASE.tar.gz')
+        .returns(mockStream);
+      assert.deepEqual(fs.readdirSync(outputPath), []);
+      return fetchSchemas({ version: 54, outputPath })
+        .then(() => {
+          assert.notOk(true, 'unexpected success');
+        }, () => {
+          // Manually remove the tar file since it doesn't get cleaned up.
+          fs.unlinkSync('tmp/FIREFOX_AURORA_54_BASE.tar.gz');
+          assert.ok(true, 'error was propagated');
+        });
+    });
+
+    it('handles errors when writing the download', () => {
+      const cwd = 'tests/schema';
+      const schemaPath = 'firefox';
+      const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
+      sandbox
+        .stub(request, 'get')
+        .withArgs('https://hg.mozilla.org/mozilla-central/archive/FIREFOX_AURORA_54_BASE.tar.gz')
+        .returns(tarball);
+      const mockStream = new stream.Duplex({
+        read() {
+          this.emit('error', new Error('stream error'));
+        },
+        write() {
+          this.emit('error', new Error('stream error'));
+        },
+      });
+      sandbox
+        .stub(fs, 'createWriteStream')
+        .withArgs('tmp/FIREFOX_AURORA_54_BASE.tar.gz')
+        .returns(mockStream);
+      assert.deepEqual(fs.readdirSync(outputPath), []);
+      return fetchSchemas({ version: 54, outputPath })
+        .then(() => {
+          assert.notOk(true, 'unexpected success');
+        }, () => {
+          assert.ok(true, 'error was propagated');
         });
     });
   });
@@ -1287,6 +1374,28 @@ describe('firefox schema import', () => {
         Object.freeze({ namespace: 'alarms', permissions: ['alarms'] }),
       ]);
       assert.deepEqual(filterSchemas(schemas), schemas);
+    });
+  });
+
+  describe('stripTrailingNullByte', () => {
+    it('strips a trailing null byte if present at the end', () => {
+      const str = 'foo\u0000';
+      assert.equal(stripTrailingNullByte(str), 'foo');
+    });
+
+    it('returns the string unchanged if not present', () => {
+      const str = 'bar';
+      assert.strictEqual(stripTrailingNullByte(str), str);
+    });
+
+    it('returns the string unchanged if not at the end', () => {
+      const str = 'b\u0000az';
+      assert.strictEqual(stripTrailingNullByte(str), str);
+    });
+
+    it('handles empty strings', () => {
+      const str = '';
+      assert.strictEqual(stripTrailingNullByte(str), str);
     });
   });
 });
