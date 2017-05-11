@@ -25,6 +25,7 @@ module.exports = {
   },
   buildwatch: {
     watch: true,
+    cache: true,
     keepalive: true,
     resolve: buildResolve,
   },
