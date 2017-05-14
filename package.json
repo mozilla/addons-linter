@@ -69,7 +69,7 @@
     "tar": "2.2.1"
   },
   "dependencies": {
-    "ajv": "5.0.1",
+    "ajv": "5.1.0",
     "babel-polyfill": "6.23.0",
     "bunyan": "1.8.10",
     "chalk": "1.1.3",
