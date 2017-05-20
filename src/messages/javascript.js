@@ -136,48 +136,6 @@ export const NO_DOCUMENT_WRITE = {
   ],
 };
 
-export const NSI_DNS_SERVICE_RESOLVE = {
-  code: 'NSI_DNS_SERVICE_RESOLVE',
-  message: _('nsIDNSService.resolve() should not be used.'),
-  description: _(singleLineString`The 'nsIDNSService.resolve' method performs a
-    synchronous DNS lookup, which will freeze the UI. This can result in severe
-    performance issues. 'nsIDNSService.asyncResolve()' should be used
-    instead.`),
-  legacyCode: [
-    'testcases_javascript_entity_values', 'nsIDNSServiceResolve', null,
-  ],
-};
-
-export const INIT_NULL_ARG = {
-  code: 'INIT_NULL_ARG',
-  message: _('`init` should not be called with a null first argument'),
-  description: _(singleLineString`Calling 'nsITransferable.init()' with a null
-    first argument has the potential to leak data across private browsing mode
-    sessions. 'null' is  appropriate only when reading data or writing data
-    which is not associated with a particular window.`),
-  legacyCode: ['js_entity_values', 'nsITransferable', 'init'],
-};
-
-export const NSI_SOUND_PLAY = {
-  code: 'NSI_SOUND_PLAY',
-  message: _('nsISound.play should not be used.'),
-  description: _(singleLineString`The 'nsISound.play' function is synchronous,
-    and thus freezes the interface while the sound is playing. It should be
-    avoided in favor of the HTML5 audio APIs.`),
-  legacyCode: [
-    'testcases_javascript_entity_values', 'nsISound_play', null,
-  ],
-};
-
-export const TAB_URL_OVERRIDE = {
-  code: 'TAB_URL_OVERRIDE',
-  message: _(singleLineString`Extensions must not alter user preferences such
-    as the new tab URL without explicit user consent.`),
-  description: _(singleLineString`Extensions must not alter user preferences
-    such as the new tab URL without explicit user consent. Such changes must
-    also be reverted when the extension is disabled or uninstalled.`),
-  legacyCode: ['js_entity_values', 'NewTabURL', 'override'],
-};
 
 export const BANNED_LIBRARY = {
   code: 'BANNED_LIBRARY',

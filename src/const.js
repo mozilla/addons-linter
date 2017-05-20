@@ -24,7 +24,6 @@ export const ESLINT_RULE_MAPPING = Object.assign({
   'deprecated-entities': ESLINT_WARNING,
   'event-listener-fourth': ESLINT_WARNING,
   'global-require-arg': ESLINT_WARNING,
-  'init-null-arg': ESLINT_WARNING,
   'mozindexeddb': ESLINT_WARNING,
   'mozindexeddb-property': ESLINT_WARNING,
   'opendialog-nonlit-uri': ESLINT_WARNING,
