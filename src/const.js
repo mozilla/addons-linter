@@ -31,7 +31,6 @@ export const ESLINT_RULE_MAPPING = Object.assign({
   'only-prefs-in-defaults': ESLINT_WARNING,
   'opendialog-nonlit-uri': ESLINT_WARNING,
   'opendialog-remote-uri': ESLINT_WARNING,
-  'shallow-wrapper': ESLINT_WARNING,
   'webextension-api': ESLINT_WARNING,
   'webextension-unsupported-api': ESLINT_WARNING,
   'widget-module': ESLINT_WARNING,

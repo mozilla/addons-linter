@@ -39,18 +39,6 @@ export const MOZINDEXEDDB_PROPERTY = {
   description: _('mozIndexedDB has been removed; use indexedDB instead.'),
 };
 
-export const SHALLOW_WRAPPER = {
-  code: 'SHALLOW_WRAPPER',
-  legacyCode: [
-    'testcases_js_xpcom',
-    'xpcnativewrapper',
-    'shallow',
-  ],
-  message: _('Shallow XPCOM wrappers should not be used'),
-  description: _(singleLineString`Extensions using shallow XPCOM wrappers
-    cannot be automatically signed.`),
-};
-
 export function _nonLiteralUri(method) {
   return {
     code: `${method}_NONLIT_URI`.toUpperCase(),
