@@ -159,17 +159,6 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :x: | warning | invalid_nesting | | Markup invalidly nested | | | | |
 | :white_check_mark: | warning | inline script | | Inline script is disallowed by CSP | | | | INLINE_SCRIPT |
 
-## chrome.manifest
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :white_check_mark: | warning | resource_modules | | Potentially dangerous category entry |  chrome.manifest | [testcases/chromemanifest.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/chromemanifest.py)| 'resource_modules') | DANGEROUS_CATEGORY |
-| :negative_squared_cross_mark: | error | resource_modules | | Resources should not be packages in the 'modules' namespace | chrome.manifest | | | |
-| :negative_squared_cross_mark: | warning | missing_triplicates | | `content` instruction missing information | chrome.manifest | | | |
-| :negative_squared_cross_mark: | error | godlikea | | Banned namespace in chrome.manifest | chrome.manifest | | | |
-| :negative_squared_cross_mark: | notice | trailing | | Content instruction URIs must end with trailing slash | chrome.manifest | | | |
-
-
 ## Content
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |

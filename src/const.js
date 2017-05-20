@@ -122,7 +122,6 @@ export const LOW_LEVEL_MODULES = [
 
 export const INSTALL_RDF = 'install.rdf';
 export const MANIFEST_JSON = 'manifest.json';
-export const CHROME_MANIFEST = 'chrome.manifest';
 
 export const VALID_MANIFEST_VERSION = 2;
 
