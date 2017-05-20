@@ -17,6 +17,5 @@ module.exports = {
     'webextension-api': require('./webextension-api').default,
     'webextension-unsupported-api':
       require('./webextension-unsupported-api').default,
-    'widget-module': require('./widget-module').default,
   },
 };
