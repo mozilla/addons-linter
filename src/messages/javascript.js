@@ -216,16 +216,6 @@ export const TAB_URL_OVERRIDE = {
   legacyCode: ['js_entity_values', 'NewTabURL', 'override'],
 };
 
-export const LOW_LEVEL_MODULE = {
-  code: 'LOW_LEVEL_MODULE',
-  message: _('Usage of low-level or non-SDK interface'),
-  description: _(singleLineString`Your add-on uses an interface which
-    bypasses the high-level protections of the add-on SDK. This interface
-    should be avoided, and its use may significantly complicate
-    your review process`),
-  legacyCode: null,
-};
-
 export const BANNED_LIBRARY = {
   code: 'BANNED_LIBRARY',
   message: _('Banned 3rd-party JS library'),

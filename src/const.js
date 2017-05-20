@@ -25,7 +25,6 @@ export const ESLINT_RULE_MAPPING = Object.assign({
   'event-listener-fourth': ESLINT_WARNING,
   'global-require-arg': ESLINT_WARNING,
   'init-null-arg': ESLINT_WARNING,
-  'low-level-module': ESLINT_WARNING,
   'mozindexeddb': ESLINT_WARNING,
   'mozindexeddb-property': ESLINT_WARNING,
   'only-prefs-in-defaults': ESLINT_WARNING,
@@ -109,15 +108,6 @@ export const LOCAL_PROTOCOLS = ['chrome:', 'resource:'];
 export const BANNED_IDENTIFIERS = [
   'newThread',
   'processNextEvent',
-];
-
-export const LOW_LEVEL_MODULES = [
-  // Added from bugs 689340, 731109
-  'chrome', 'window-utils', 'observer-service',
-  // Added from bug 845492
-  'window/utils', 'sdk/window/utils', 'sdk/deprecated/window-utils',
-  'tab/utils', 'sdk/tab/utils',
-  'system/events', 'sdk/system/events',
 ];
 
 export const INSTALL_RDF = 'install.rdf';
