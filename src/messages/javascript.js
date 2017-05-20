@@ -149,19 +149,6 @@ export const UNEXPECTED_GLOGAL_ARG = {
   legacyCode: null,
 };
 
-export const ONLY_PREFS_IN_DEFAULTS = {
-  code: 'ONLY_PREFS_IN_DEFAULTS',
-  message: _('Complex code should not appear in preference defaults files'),
-  description: _(singleLineString`Preference files are only allowed to call the
-    pref() and user_pref() functions. Please move other code outside preference
-    defaults file.`),
-  legacyCode: [
-    'testcases_javascript_actions',
-    '_call_expression',
-    'complex_prefs_defaults_code',
-  ],
-};
-
 export const NO_DOCUMENT_WRITE = {
   code: 'NO_DOCUMENT_WRITE',
   message: _('Use of document.write strongly discouraged.'),

@@ -28,7 +28,6 @@ export const ESLINT_RULE_MAPPING = Object.assign({
   'low-level-module': ESLINT_WARNING,
   'mozindexeddb': ESLINT_WARNING,
   'mozindexeddb-property': ESLINT_WARNING,
-  'only-prefs-in-defaults': ESLINT_WARNING,
   'opendialog-nonlit-uri': ESLINT_WARNING,
   'opendialog-remote-uri': ESLINT_WARNING,
   'shallow-wrapper': ESLINT_WARNING,
