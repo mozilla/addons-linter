@@ -183,7 +183,8 @@ describe('Linter', function() {
       });
   });
 
-  it('JSScanner should ignore eslint ignore patterns and .eslintrc', () => {
+  it('Eslint ignore patterns and .eslintignorerc should be ignored', () => {
+    // Verify https://github.com/mozilla/addons-linter/issues/1288 is fixed
     var addonLinter = new Linter({_: [
       'tests/fixtures/webextension_node_modules_bower']});
 
@@ -191,10 +192,20 @@ describe('Linter', function() {
     addonLinter.print = sinon.stub();
 
     assert.equal(addonLinter.collector.warnings.length, 0);
+    var getFileSpy = sinon.spy(addonLinter, 'scanFile');
 
     return addonLinter.scan()
       .then(() => {
+        // Ensure no warnings are raised. If we would not overwrite eslint
+        // ignore patterns eslint ignores `node_modules` and
+        // `bower_components` by default. We want them to be scanned though.
         assert.equal(addonLinter.collector.warnings.length, 0);
+
+        // Make sure we also scan them ourselves.
+        assert.ok(getFileSpy.calledWith('index.js'));
+        assert.ok(getFileSpy.calledWith('manifest.json'));
+        assert.ok(getFileSpy.calledWith('node_modules/foo.js'));
+        assert.ok(getFileSpy.calledWith('bower_components/bar.js'));
       });
   });
 
