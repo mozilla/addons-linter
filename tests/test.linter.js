@@ -192,6 +192,8 @@ describe('Linter', function() {
     addonLinter.print = sinon.stub();
 
     assert.equal(addonLinter.collector.warnings.length, 0);
+    assert.equal(addonLinter.collector.warnings.length, 0);
+
     var getFileSpy = sinon.spy(addonLinter, 'scanFile');
 
     return addonLinter.scan()
@@ -200,6 +202,10 @@ describe('Linter', function() {
         // ignore patterns eslint ignores `node_modules` and
         // `bower_components` by default. We want them to be scanned though.
         assert.equal(addonLinter.collector.warnings.length, 0);
+
+        // We have an expected SyntaxError in index.js, this verifies
+        // that .eslintignore is also ignored.
+        assert.equal(addonLinter.collector.errors.length, 1);
 
         // Make sure we also scan them ourselves.
         assert.ok(getFileSpy.calledWith('index.js'));
