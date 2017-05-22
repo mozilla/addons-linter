@@ -53,7 +53,8 @@ export default class JavaScriptScanner {
         allowInlineConfig: false,
 
         // Disable ignore-mode but overwrite eslint default ignore patterns
-        // since these are matched nonetheless. Fixes #1288
+        // since these are matched nonetheless. Fixes
+        // https://github.com/mozilla/addons-linter/issues/1288
         ignore: false,
         patterns: ['!bower_components/*', '!node_modules/*'],
 
