@@ -183,6 +183,21 @@ describe('Linter', function() {
       });
   });
 
+  it('JSScanner should ignore eslint ignore patterns and .eslintrc', () => {
+    var addonLinter = new Linter({_: [
+      'tests/fixtures/webextension_node_modules_bower']});
+
+    // Stub print to prevent output.
+    addonLinter.print = sinon.stub();
+
+    assert.equal(addonLinter.collector.warnings.length, 0);
+
+    return addonLinter.scan()
+      .then(() => {
+        assert.equal(addonLinter.collector.warnings.length, 0);
+      });
+  });
+
   it('should optionally scan selected files', () => {
     var addonLinter = new Linter({
       _: ['tests/fixtures/webextension_scan_file'],

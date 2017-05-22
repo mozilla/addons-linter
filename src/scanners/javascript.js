@@ -48,10 +48,15 @@ export default class JavaScriptScanner {
         parserOptions: {
           ecmaVersion: 2017,
         },
-        ignore: false,
         rules: _ruleMapping,
         plugins: ['no-unsafe-innerhtml'],
         allowInlineConfig: false,
+
+        // Disable ignore-mode but overwrite eslint default ignore patterns
+        // since these are matched nonetheless. Fixes #1288
+        ignore: false,
+        patterns: ['!bower_components/*', '!node_modules/*'],
+
         filename: this.filename,
         // Avoid loading the addons-linter .eslintrc file
         useEslintrc: false,
