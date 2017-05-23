@@ -7,7 +7,7 @@ import Dispensary from 'dispensary';
 import { lstatPromise } from 'io/utils';
 import { terminalWidth } from 'cli';
 import * as constants from 'const';
-import { CHROME_MANIFEST, INSTALL_RDF, MANIFEST_JSON } from 'const';
+import { INSTALL_RDF, MANIFEST_JSON } from 'const';
 import { BANNED_LIBRARIES, UNADVISED_LIBRARIES } from 'libraries';
 import * as messages from 'messages';
 import { checkMinNodeVersion, gettext as _, singleLineString } from 'utils';
@@ -17,7 +17,6 @@ import Collector from 'collector';
 import InstallRdfParser from 'parsers/installrdf';
 import DefaultManifestJSONParser from 'parsers/manifestjson';
 import BinaryScanner from 'scanners/binary';
-import ChromeManifestScanner from 'scanners/chromemanifest';
 import CSSScanner from 'scanners/css';
 import FilenameScanner from 'scanners/filename';
 import HTMLScanner from 'scanners/html';
@@ -328,10 +327,6 @@ export default class Linter {
   }
 
   getScanner(filename) {
-    if (filename === CHROME_MANIFEST) {
-      return ChromeManifestScanner;
-    }
-
     if (filename.match(constants.HIDDEN_FILE_REGEX) ||
         filename.match(constants.FLAGGED_FILE_REGEX) ||
         constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filename)) ||
