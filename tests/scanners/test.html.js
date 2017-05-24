@@ -16,7 +16,7 @@ describe('HTML', function() {
     var htmlScanner = new HTMLScanner(contents, 'index.html');
 
     return htmlScanner.scan()
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 0);
       });
   });
@@ -26,7 +26,7 @@ describe('HTML', function() {
     var htmlScanner = new HTMLScanner(contents, 'index.html');
 
     return htmlScanner.scan()
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 0);
       });
   });
@@ -39,7 +39,7 @@ describe('HTML', function() {
       .then(($) => {
         return rules.warnOnInline($, htmlScanner.filename);
       })
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 1);
         assert.equal(linterMessages[0].code,
                      messages.INLINE_SCRIPT.code);
@@ -56,7 +56,7 @@ describe('HTML', function() {
       .then(($) => {
         return rules.warnOnInline($, htmlScanner.filename);
       })
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 0);
       });
   });

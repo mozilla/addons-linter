@@ -9,11 +9,11 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].code,
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code,
                      messages.EVENT_LISTENER_FOURTH.code);
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 
@@ -22,8 +22,8 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 0);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 
@@ -32,11 +32,11 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].code,
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code,
                      messages.EVENT_LISTENER_FOURTH.code);
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 
@@ -45,8 +45,8 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 0);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 
@@ -56,11 +56,11 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].code,
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code,
                      messages.EVENT_LISTENER_FOURTH.code);
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 
@@ -70,8 +70,8 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 0);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 
@@ -81,8 +81,8 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 0);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 
@@ -92,8 +92,8 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 0);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 
@@ -103,11 +103,11 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].code,
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code,
                      messages.EVENT_LISTENER_FOURTH.code);
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 
@@ -117,11 +117,11 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].code,
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code,
                      messages.EVENT_LISTENER_FOURTH.code);
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 

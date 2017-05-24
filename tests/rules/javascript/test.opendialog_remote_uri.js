@@ -15,9 +15,9 @@ describe('opendialog_remote_uri', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 6);
-        for (let message of validationMessages) {
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 6);
+        for (let message of linterMessages) {
           assert.equal(message.code,
                        messages.OPENDIALOG_REMOTE_URI.code);
           assert.equal(message.type, VALIDATION_WARNING);
@@ -33,8 +33,8 @@ describe('opendialog_remote_uri', () => {
     var jsScanner = new JavaScriptScanner(code, 'goodcode.js');
 
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 0);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 

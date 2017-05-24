@@ -18,7 +18,7 @@ describe('RDF: mustNotExist', () => {
         return rules.mustNotExist(xmlDoc, filename,
                                   rdfScanner.options);
       })
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 1);
         assert.equal(linterMessages[0].code,
                      messages.TAG_NOT_ALLOWED_HIDDEN.code);
@@ -36,7 +36,7 @@ describe('RDF: mustNotExist', () => {
         return rules.mustNotExist(xmlDoc, filename,
                                  rdfScanner.options);
       })
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 2);
 
         for (let message of linterMessages) {
@@ -57,7 +57,7 @@ describe('RDF: mustNotExist', () => {
         return rules.mustNotExist(xmlDoc, filename,
                                  rdfScanner.options);
       })
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 1);
         for (let message of linterMessages) {
           assert.equal(message.code, messages.TAG_NOT_ALLOWED_UPDATEURL.code);
@@ -75,7 +75,7 @@ describe('RDF: mustNotExist', () => {
         return rules.mustNotExist(xmlDoc, filename,
                                  rdfScanner.options);
       })
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 0);
       });
   });
@@ -90,7 +90,7 @@ describe('RDF: mustNotExist', () => {
         return rules.mustNotExist(xmlDoc, filename,
                                  rdfScanner.options);
       })
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 3);
 
         for (let message of linterMessages) {
@@ -121,7 +121,7 @@ describe('RDF: mustNotExist', () => {
           prefix: 'TAG_OBSOLETE_',
         });
       })
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 1);
         assert.equal(linterMessages[0].code,
                      messages.TAG_OBSOLETE_FILE.code);

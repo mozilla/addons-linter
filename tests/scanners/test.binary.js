@@ -9,7 +9,7 @@ describe('Binary', function() {
     var scanner = new BinaryScanner(buffer, 'wat.txt');
 
     return scanner.scan()
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 0);
       });
   });
@@ -20,9 +20,11 @@ describe('Binary', function() {
       var scanner = new BinaryScanner(buffer, 'wat.txt');
 
       return scanner.scan()
-        .then((linterMessages) => {
+        .then(({linterMessages}) => {
           assert.equal(linterMessages.length, 1);
-          assert.equal(linterMessages[0].code, messages.FLAGGED_FILE_TYPE.code);
+          assert.equal(
+            linterMessages[0].code,
+            messages.FLAGGED_FILE_TYPE.code);
           assert.equal(linterMessages[0].file, 'wat.txt');
         });
     }

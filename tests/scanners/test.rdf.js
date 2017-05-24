@@ -17,7 +17,7 @@ describe('RDF', function() {
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
 
     return rdfScanner.scan()
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 0);
       });
   });
@@ -38,7 +38,7 @@ describe('RDF', function() {
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
 
     return rdfScanner.scan()
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 0);
       });
   });

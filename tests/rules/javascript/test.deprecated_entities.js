@@ -13,13 +13,13 @@ describe('deprecated_entities', () => {
       var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({validationMessages}) => {
-          validationMessages = validationMessages.sort();
+        .then(({linterMessages}) => {
+          linterMessages = linterMessages.sort();
 
-          assert.equal(validationMessages.length, 1);
-          assert.equal(validationMessages[0].code,
+          assert.equal(linterMessages.length, 1);
+          assert.equal(linterMessages[0].code,
                        entity.error.code);
-          assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+          assert.equal(linterMessages[0].type, VALIDATION_WARNING);
         });
     });
 
@@ -29,11 +29,11 @@ describe('deprecated_entities', () => {
       var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({validationMessages}) => {
-          assert.equal(validationMessages.length, 1);
-          assert.equal(validationMessages[0].code,
+        .then(({linterMessages}) => {
+          assert.equal(linterMessages.length, 1);
+          assert.equal(linterMessages[0].code,
                        entity.error.code);
-          assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+          assert.equal(linterMessages[0].type, VALIDATION_WARNING);
         });
     });
 
@@ -42,11 +42,11 @@ describe('deprecated_entities', () => {
       var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({validationMessages}) => {
-          assert.equal(validationMessages.length, 1);
-          assert.equal(validationMessages[0].code,
+        .then(({linterMessages}) => {
+          assert.equal(linterMessages.length, 1);
+          assert.equal(linterMessages[0].code,
                        entity.error.code);
-          assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+          assert.equal(linterMessages[0].type, VALIDATION_WARNING);
         });
     });
 
@@ -55,8 +55,8 @@ describe('deprecated_entities', () => {
       var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({validationMessages}) => {
-          assert.equal(validationMessages.length, 0);
+        .then(({linterMessages}) => {
+          assert.equal(linterMessages.length, 0);
         });
     });
 
@@ -65,8 +65,8 @@ describe('deprecated_entities', () => {
       var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({validationMessages}) => {
-          assert.equal(validationMessages.length, 0);
+        .then(({linterMessages}) => {
+          assert.equal(linterMessages.length, 0);
         });
     });
 
@@ -75,8 +75,8 @@ describe('deprecated_entities', () => {
       var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({validationMessages}) => {
-          assert.equal(validationMessages.length, 0);
+        .then(({linterMessages}) => {
+          assert.equal(linterMessages.length, 0);
         });
     });
 
@@ -85,8 +85,8 @@ describe('deprecated_entities', () => {
       var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({validationMessages}) => {
-          assert.equal(validationMessages.length, 0);
+        .then(({linterMessages}) => {
+          assert.equal(linterMessages.length, 0);
         });
     });
   }

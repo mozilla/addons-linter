@@ -18,11 +18,11 @@ describe('CSS Rule InvalidNesting', () => {
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
 
     return cssScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].code,
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code,
                      messages.INVALID_SELECTOR_NESTING.code);
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 
@@ -36,8 +36,8 @@ describe('CSS Rule InvalidNesting', () => {
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
 
     return cssScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 0);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 
@@ -53,11 +53,11 @@ describe('CSS Rule InvalidNesting', () => {
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
 
     return cssScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].code,
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code,
                      messages.INVALID_SELECTOR_NESTING.code);
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 

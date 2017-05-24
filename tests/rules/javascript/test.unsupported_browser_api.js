@@ -8,13 +8,13 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
     return jsScanner.scan()
-      .then(({validationMessages}) => {
+      .then(({linterMessages}) => {
         assert.equal(
-          validationMessages.length, 1);
+          linterMessages.length, 1);
         assert.equal(
-          validationMessages[0].message,
+          linterMessages[0].message,
           'gcm.register is not supported');
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 
@@ -24,13 +24,13 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
     return jsScanner.scan()
-      .then(({validationMessages}) => {
+      .then(({linterMessages}) => {
         assert.equal(
-          validationMessages.length, 1);
+          linterMessages.length, 1);
         assert.equal(
-          validationMessages[0].message,
+          linterMessages[0].message,
           'gcm.register is not supported');
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 
@@ -40,8 +40,8 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 0);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 
@@ -52,8 +52,8 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@supported-api' },
     });
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 0);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 
@@ -65,8 +65,8 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 1);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
       });
   });
 });

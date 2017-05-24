@@ -43,7 +43,7 @@ export default class FilenameScanner extends BaseScanner {
         throw new Error(`Filename didn't match a regex: ${this.filename}.`);
       }
       return resolve({
-        messages: this.linterMessages,
+        linterMessages: this.linterMessages,
         scannedFiles: this.scannedFiles,
       });
     });

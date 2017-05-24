@@ -57,7 +57,7 @@ export default class BaseScanner {
           }
 
           resolve({
-            messages: this.linterMessages,
+            linterMessages: this.linterMessages,
             scannedFiles: this.scannedFiles,
           });
         })

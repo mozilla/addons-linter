@@ -29,7 +29,7 @@ export default class BinaryScanner extends BaseScanner {
     }
 
     return Promise.resolve({
-      messages: this.linterMessages,
+      linterMessages: this.linterMessages,
       scannedFiles: this.scannedFiles,
     });
   }

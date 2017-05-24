@@ -10,11 +10,11 @@ describe('opendialog_nonlit_uri', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({validationMessages}) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].code,
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code,
                      messages.OPENDIALOG_NONLIT_URI.code);
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 });

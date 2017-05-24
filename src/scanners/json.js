@@ -15,7 +15,7 @@ export default class JSONScanner extends BaseScanner {
           filename: this.filename});
         jsonParser.parse();
         return Promise.resolve({
-          messages: [],
+          linterMessages: [],
           scannedFiles: [this.filename],
         });
       })

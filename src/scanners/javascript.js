@@ -126,7 +126,7 @@ export default class JavaScriptScanner {
         }
       }
       resolve({
-        messages: this.linterMessages,
+        linterMessages: this.linterMessages,
         scannedFiles: this.scannedFiles,
       });
     });
