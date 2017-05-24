@@ -66,7 +66,10 @@ export default class CSSScanner extends BaseScanner {
             }
           }
 
-          resolve(this.linterMessages);
+          resolve({
+            messages: this.linterMessages,
+            scannedFiles: this.scannedFiles,
+          });
         })
         .catch(reject);
     });

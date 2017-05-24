@@ -27,6 +27,10 @@ export default class BinaryScanner extends BaseScanner {
     for (let entry of constants.FLAGGED_FILE_MAGIC_NUMBERS) {
       this.check(buffer, entry);
     }
-    return Promise.resolve(this.linterMessages);
+
+    return Promise.resolve({
+      messages: this.linterMessages,
+      scannedFiles: this.scannedFiles,
+    });
   }
 }

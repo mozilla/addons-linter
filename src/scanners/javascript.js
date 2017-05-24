@@ -1,3 +1,5 @@
+import path from 'path';
+
 import ESLint from 'eslint';
 
 import {
@@ -19,6 +21,7 @@ export default class JavaScriptScanner {
     this.filename = filename;
     this.options = options;
     this.linterMessages = [];
+    this.scannedFiles = [];
     this._rulesProcessed = 0;
 
     ensureFilenameExists(this.filename);
@@ -73,6 +76,12 @@ export default class JavaScriptScanner {
       var report = cli.executeOnText(this.code, this.filename, true);
 
       for (const result of report.results) {
+        // eslint prepends the filename with the current workdir, strip
+        // that out.
+        var relPath = path.relative(process.cwd(), result.filePath);
+
+        this.scannedFiles.push(relPath);
+
         for (const message of result.messages) {
           // Fatal error messages (like SyntaxErrors) are a bit different, we
           // need to handle them specially.
@@ -116,8 +125,10 @@ export default class JavaScriptScanner {
           });
         }
       }
-
-      resolve(this.linterMessages);
+      resolve({
+        messages: this.linterMessages,
+        scannedFiles: this.scannedFiles,
+      });
     });
   }
 }

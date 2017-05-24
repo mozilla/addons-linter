@@ -373,7 +373,10 @@ export default class Linter {
             file: filename,
             type: constants.VALIDATION_ERROR,
           });
-          return Promise.resolve([filesizeError]);
+          return Promise.resolve({
+            messages: [filesizeError],
+            scannedFiles: [filename],
+          });
         }
 
         let scanner = new ScannerClass(fileData, filename, {
@@ -388,12 +391,16 @@ export default class Linter {
         return scanner.scan();
       })
       // messages should be a list of raw message data objects.
-      .then((messages) => {
+      .then(({messages, scannedFiles}) => {
         for (let message of messages) {
           if (typeof message.type === 'undefined') {
             throw new Error('message.type must be defined');
           }
           this.collector._addMessage(message.type, message);
+        }
+
+        for (let filename of scannedFiles) {
+          this.collector.recordScannedFile(filename);
         }
         return;
       });

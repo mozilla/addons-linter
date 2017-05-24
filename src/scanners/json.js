@@ -14,7 +14,10 @@ export default class JSONScanner extends BaseScanner {
         let jsonParser = new JSONParser(json, this.options.collector, {
           filename: this.filename});
         jsonParser.parse();
-        return Promise.resolve([]);
+        return Promise.resolve({
+          messages: [],
+          scannedFiles: [this.filename]
+        });
       })
       .catch((err) => {
         return Promise.reject(err);

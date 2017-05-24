@@ -10,6 +10,7 @@ export default class Collector {
   constructor(config = {}) {
     this.config = config;
     this.messagesByDataPath = {};
+    this.scannedFiles = [];
 
     for (let type of constants.MESSAGE_TYPES) {
       this[`${type}s`] = [];
@@ -74,6 +75,10 @@ export default class Collector {
       });
     }
     return false;
+  }
+
+  recordScannedFile(filename) {
+    this.scannedFiles.push(filename);
   }
 
   addError(opts) {

@@ -23,6 +23,7 @@ export default class BaseScanner {
     this.filename = filename;
     this.options = options;
     this.linterMessages = [];
+    this.scannedFiles = [];
     this._defaultRules = [];
     this._parsedContent = null;
     this._rulesProcessed = 0;
@@ -55,7 +56,10 @@ export default class BaseScanner {
             this.linterMessages = this.linterMessages.concat(messages);
           }
 
-          resolve(this.linterMessages);
+          resolve({
+            messages: this.linterMessages,
+            scannedFiles: this.scannedFiles,
+          });
         })
         .catch(reject);
     });
