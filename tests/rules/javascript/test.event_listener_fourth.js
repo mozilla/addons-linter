@@ -9,7 +9,7 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code,
                      messages.EVENT_LISTENER_FOURTH.code);
@@ -22,7 +22,7 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 0);
       });
   });
@@ -32,7 +32,7 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code,
                      messages.EVENT_LISTENER_FOURTH.code);
@@ -45,7 +45,7 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 0);
       });
   });
@@ -56,7 +56,7 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code,
                      messages.EVENT_LISTENER_FOURTH.code);
@@ -70,7 +70,7 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 0);
       });
   });
@@ -81,7 +81,7 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 0);
       });
   });
@@ -92,7 +92,7 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 0);
       });
   });
@@ -103,7 +103,7 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code,
                      messages.EVENT_LISTENER_FOURTH.code);
@@ -117,7 +117,7 @@ describe('event_listener_fourth', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code,
                      messages.EVENT_LISTENER_FOURTH.code);

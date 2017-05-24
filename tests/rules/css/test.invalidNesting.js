@@ -18,7 +18,7 @@ describe('CSS Rule InvalidNesting', () => {
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
 
     return cssScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code,
                      messages.INVALID_SELECTOR_NESTING.code);
@@ -36,7 +36,7 @@ describe('CSS Rule InvalidNesting', () => {
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
 
     return cssScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 0);
       });
   });
@@ -53,7 +53,7 @@ describe('CSS Rule InvalidNesting', () => {
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
 
     return cssScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code,
                      messages.INVALID_SELECTOR_NESTING.code);

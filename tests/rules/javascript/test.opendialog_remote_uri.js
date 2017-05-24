@@ -15,7 +15,7 @@ describe('opendialog_remote_uri', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 6);
         for (let message of validationMessages) {
           assert.equal(message.code,
@@ -33,7 +33,7 @@ describe('opendialog_remote_uri', () => {
     var jsScanner = new JavaScriptScanner(code, 'goodcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 0);
       });
   });

@@ -28,7 +28,7 @@ describe('no_eval', () => {
       var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then((validationMessages) => {
+        .then(({validationMessages}) => {
           assert.equal(validationMessages.length, 0);
         });
     });
@@ -113,7 +113,7 @@ describe('no_eval', () => {
       var jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
       return jsScanner.scan()
-        .then((validationMessages) => {
+        .then(({validationMessages}) => {
           validationMessages = validationMessages.sort();
 
           assert.equal(validationMessages.length, code.message.length);

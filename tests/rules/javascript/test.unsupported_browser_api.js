@@ -8,7 +8,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(
           validationMessages.length, 1);
         assert.equal(
@@ -24,7 +24,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(
           validationMessages.length, 1);
         assert.equal(
@@ -40,7 +40,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 0);
       });
   });
@@ -52,7 +52,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@supported-api' },
     });
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 0);
       });
   });
@@ -65,7 +65,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 1);
       });
   });

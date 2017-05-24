@@ -13,7 +13,7 @@ describe('CSSScanner', () => {
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
 
     return cssScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code,
                      messages.CSS_SYNTAX_ERROR.code);
@@ -92,7 +92,7 @@ describe('CSSScanner', () => {
     var code = '@media only screen and (max-width: 959px) {}';
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
     return cssScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 0);
       });
   });
@@ -102,7 +102,7 @@ describe('CSSScanner', () => {
     var code = '.myClass { -moz-binding: url(initial); }';
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
     return cssScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 0);
       });
   });

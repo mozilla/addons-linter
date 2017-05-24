@@ -16,12 +16,11 @@ export default class JSONScanner extends BaseScanner {
         jsonParser.parse();
         return Promise.resolve({
           messages: [],
-          scannedFiles: [this.filename]
+          scannedFiles: [this.filename],
         });
       })
       .catch((err) => {
         return Promise.reject(err);
       });
   }
-
 }

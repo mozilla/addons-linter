@@ -9,7 +9,7 @@ describe('mozindexeddb', () => {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
+      .then(({validationMessages}) => {
         assert.equal(validationMessages.length, 1);
         assert.equal(validationMessages[0].code, messages.MOZINDEXEDDB.code);
         assert.equal(validationMessages[0].type, VALIDATION_WARNING);
