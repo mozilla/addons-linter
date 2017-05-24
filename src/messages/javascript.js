@@ -72,32 +72,6 @@ export function _methodPassedRemoteUri(method) {
 export const OPENDIALOG_REMOTE_URI = _methodPassedRemoteUri('openDialog');
 export const OPENDIALOG_NONLIT_URI = _nonLiteralUri('openDialog');
 
-export const _BANNED_IDENTIFIERS_MAP = {
-  newThread:
-    singleLineString`Creating threads from JavaScript is a common cause
-    of crashes and is unsupported in recent versions of the platform`,
-  processNextEvent:
-    singleLineString`Spinning the event loop with processNextEvent is a
-    common cause of deadlocks, crashes, and other errors due to unintended
-    reentrancy. Please use asynchronous callbacks instead wherever possible`,
-};
-
-export function _bannedIdentifier(name) {
-  return {
-    code: `BANNED_${name.toUpperCase()}`,
-    legacyCode: [
-      'js',
-      'actions',
-      'banned_identifier',
-    ],
-    message: _('Banned or deprecated JavaScript Identifier'),
-    description: _BANNED_IDENTIFIERS_MAP[name],
-  };
-}
-
-export const BANNED_NEWTHREAD = _bannedIdentifier('newThread');
-export const BANNED_PROCESSNEXTEVENT = _bannedIdentifier('processNextEvent');
-
 export const DANGEROUS_EVAL = {
   code: 'DANGEROUS_EVAL',
   message: null,
