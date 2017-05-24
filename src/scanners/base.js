@@ -58,7 +58,7 @@ export default class BaseScanner {
 
           resolve({
             linterMessages: this.linterMessages,
-            scannedFiles: this.scannedFiles,
+            scannedFiles: [this.filename],
           });
         })
         .catch(reject);

@@ -246,7 +246,7 @@ describe('Linter', function() {
     class fakeScanner {
       scan() {
         return Promise.resolve({
-          messages: [{message: 'whatever'}],
+          linterMessages: [{message: 'whatever'}],
           scannedFiles: [],
         });
       }
