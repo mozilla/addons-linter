@@ -7,7 +7,6 @@ module.exports = {
     'deprecated-entities': require('./deprecated-entities').default,
     'event-listener-fourth': require('./event-listener-fourth').default,
     'global-require-arg': require('./global-require-arg').default,
-    'init-null-arg': require('./init-null-arg').default,
     'mozindexeddb': require('./mozindexeddb').default,
     'mozindexeddb-property': require('./mozindexeddb-property').default,
     'opendialog-nonlit-uri': require('./opendialog-nonlit-uri').default,
