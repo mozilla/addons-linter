@@ -10,7 +10,6 @@ module.exports = {
     'init-null-arg': require('./init-null-arg').default,
     'mozindexeddb': require('./mozindexeddb').default,
     'mozindexeddb-property': require('./mozindexeddb-property').default,
-    'only-prefs-in-defaults': require('./only-prefs-in-defaults').default,
     'opendialog-nonlit-uri': require('./opendialog-nonlit-uri').default,
     'opendialog-remote-uri': require('./opendialog-remote-uri').default,
     'webextension-api': require('./webextension-api').default,
