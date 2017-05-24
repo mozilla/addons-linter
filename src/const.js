@@ -33,7 +33,6 @@ export const ESLINT_RULE_MAPPING = Object.assign({
   'shallow-wrapper': ESLINT_WARNING,
   'webextension-api': ESLINT_WARNING,
   'webextension-unsupported-api': ESLINT_WARNING,
-  'widget-module': ESLINT_WARNING,
 }, EXTERNAL_RULE_MAPPING);
 
 export const ESLINT_OVERWRITE_MESSAGE = {

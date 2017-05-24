@@ -129,18 +129,6 @@ export const NO_IMPLIED_EVAL = {
   legacyCode: null,
 };
 
-export const DEPREC_SDK_MOD_WIDGET = {
-  code: 'DEPREC_SDK_MOD_WIDGET',
-  message: _('Use of deprecated SDK module'),
-  description: _(singleLineString`The 'widget' module has been deprecated
-    due to a number of performance and usability issues, and has been
-    removed from the SDK as of Firefox 40. Please use the
-    'sdk/ui/button/action' or 'sdk/ui/button/toggle' module instead.
-    See https://developer.mozilla.org/Add-ons/SDK/High-Level_APIs/ui
-    for more information.`),
-  legacyCode: null,
-};
-
 export const UNEXPECTED_GLOGAL_ARG = {
   code: 'UNEXPECTED_GLOGAL_ARG',
   message: _('Unexpected global passed as an argument'),
