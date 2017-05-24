@@ -138,6 +138,16 @@ describe('no_unsafe_innerhtml', () => {
         UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
+      code: 'document.write(undefined);',
+      message: [
+        'Use of document.write strongly discouraged.',
+        'Unsafe call to document.write',
+      ],
+      description: [
+        NO_DOCUMENT_WRITE.description,
+        UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
+    },
+    {
       code: 'document.writeln(evil);',
       message: ['Unsafe call to document.writeln'],
       description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],

@@ -178,6 +178,26 @@ describe('utils.getVariable()', function() {
   });
 });
 
+describe('utils.checkOtherReferences', function() {
+  var context = {
+    getScope: function() {
+      return {
+        variables: [],
+      };
+    },
+  };
+
+  it('should return the node if reference is a Literal', () => {
+    var literal = utils.getNodeReference(context, {type: 'Literal'});
+    assert.equal(literal.type, 'Literal');
+  });
+
+  it('should return the node if reference is undefined', () => {
+    var undef = utils.getNodeReference(context, {type: 'undefined'});
+    assert.equal(undef.type, 'undefined');
+  });
+
+});
 
 describe('utils.ensureFilenameExists()', function() {
 

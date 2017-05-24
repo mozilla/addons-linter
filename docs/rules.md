@@ -18,13 +18,8 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :negative_squared_cross_mark: | warning | dangerous_contract | | Dangerous XPCOM contract ID |  | [testcases/javascript/actions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/actions.py) | ('js', 'actions', 'dangerous_contract') | **Removed** |
-| :white_check_mark: | warning |  banned_identifier | | Banned or deprecated JavaScript Identifier | | | ('js', 'actions', 'banned_identifier') | BANNED_NEWTHREAD |
-| :white_check_mark: | warning |  banned_identifier | | Banned or deprecated JavaScript Identifier | | | ('js', 'actions', 'banned_identifier') | BANNED_PROCESSNEXTEVENT |
-| :white_check_mark: | warning | complex_prefs_defaults | | Complex code should not appear in preference defaults files | | [testcases/javascript/actions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/actions.py#L427) | ('testcases_javascript_actions', '_call_expression', 'complex_prefs_defaults_code')| ONLY_PREFS_IN_DEFAULTS |
 | :x: | warning | called_dangerous_global | | `%s` called in potentially dangerous manner' | | | | |
 | :white_check_mark: | warning | eval | | In order to prevent vulnerabilities, the `setTimeout` 'and `setInterval` functions should be called only with function expressions as their first argument. | | [testcases/javascript/actions.py](https://github.com/mozilla/amo-validator/blob/7a8011aba8bf8c665aef2b51eb26d0697b3e19c3/validator/testcases/javascript/actions.py#L488) | | NO_IMPLIED_EVAL |
-| :white_check_mark: | warning | low_level_module (not from src) | | Usage of low-level or non-SDK interface | | | null | LOW_LEVEL_MODULE |
-| :white_check_mark: | warning | widget | | Use of deprecated SDK module | | | null | DEPREC_SDK_MOD_WIDGET |
 | :negative_squared_cross_mark: | notice |  \_readonly_top | | window.top is a reserved variable | | | ('testcases_javascript_actions', '_readonly_top' | **Removed** |
 | :x: | warning | global_overwrite | | Global variable overwrite | | | | |
 | :white_check_mark: | warning | unexpected_global_arg [NEW] | | Unexpected global passed as an argument | | | null | UNEXPECTED_GLOGAL_ARG |
@@ -35,7 +30,6 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :negative_squared_cross_mark: | warning | webbrowserpersist | | nsIWebBrowserPersist should no longer be used |  | [testcases/javascript/call_definitions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/call_definitions.py)| ('testcases_javascript_call_definititions', 'webbrowserpersist') | **Removed** |
 | :negative_squared_cross_mark: | warning | webbrowserpersist_saveuri | | saveURI should not be called with a null load context | | | ('testcases_javascript_call_definititions', 'webbrowserpersist_saveuri') | **Removed** |
 | :negative_squared_cross_mark: | notice | deprec | | Deprecated nsIJSON methods in use | | | ('testcases_javascript_calldefinitions', 'nsIJSON', 'deprec') | **Removed** |
-| :white_check_mark: | warning | shallow | | Shallow XPCOM wrappers should not be used | | | ('testcases_js_xpcom', 'xpcnativewrapper', 'shallow' | SHALLOW_WRAPPER |
 | :negative_squared_cross_mark: | notice | %s_nonliteral | | `%s` called with non-literal parameter. | | | | |
 | :white_check_mark: | notice | opendialog_nonlit_uri |  | openDialog called with non-literal parameter | | | ('js', 'instanceactions', 'openDialog_nonliteral' | OPENDIALOG_NONLIT_URI |
 | :negative_squared_cross_mark: | warning | %s_remote_uri | | `%s` called with non-local URI. | | | | |
@@ -49,10 +43,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 | :negative_squared_cross_mark: | warning | deprecated_entity | | THIS IS A GENERATED ERROR |  | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py)| | |
 | :white_check_mark: | warning | evil | | Use of `document.write` strongly discouraged. | | | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py#L64) | NO_DOCUMENT_WRITE |
-| :white_check_mark: | warning | nsIDNSServiceResolve | | `nsIDNSService.resolve()` should not be used. | | | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py#L87) | NSI_DNS_SERVICE_RESOLVE |
-| :white_check_mark: | warning | nsISound_play | | `nsISound.play` should not be used | | | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py#L103) | NSI_SOUND_PLAY |
-| :white_check_mark: | warning | init | | `init` should not be called with a null first argument | | | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py#L129) | INIT_NULL_ARG |
-| :white_check_mark: | warning | override | | Extensions must not alter user preferences such as the new tab URL without explicit user consent.  | | | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py#L153) | TAB_URL_OVERRIDE |
+| :white_check_mark: | warning | override | | Extensions must not alter user preferences such as the new tab URL without explicit user consent.  | | |
 
 ### instanceactions
 
@@ -158,17 +149,6 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :x: | warning | extra_closing_tags | | Parse error: tag closed before opened | | | | |
 | :x: | warning | invalid_nesting | | Markup invalidly nested | | | | |
 | :white_check_mark: | warning | inline script | | Inline script is disallowed by CSP | | | | INLINE_SCRIPT |
-
-## chrome.manifest
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :white_check_mark: | warning | resource_modules | | Potentially dangerous category entry |  chrome.manifest | [testcases/chromemanifest.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/chromemanifest.py)| 'resource_modules') | DANGEROUS_CATEGORY |
-| :negative_squared_cross_mark: | error | resource_modules | | Resources should not be packages in the 'modules' namespace | chrome.manifest | | | |
-| :negative_squared_cross_mark: | warning | missing_triplicates | | `content` instruction missing information | chrome.manifest | | | |
-| :negative_squared_cross_mark: | error | godlikea | | Banned namespace in chrome.manifest | chrome.manifest | | | |
-| :negative_squared_cross_mark: | notice | trailing | | Content instruction URIs must end with trailing slash | chrome.manifest | | | |
-
 
 ## Content
 

@@ -20,21 +20,15 @@ export const EXTERNAL_RULE_MAPPING = {
 };
 
 export const ESLINT_RULE_MAPPING = Object.assign({
-  'banned-identifiers': ESLINT_WARNING,
   'deprecated-entities': ESLINT_WARNING,
   'event-listener-fourth': ESLINT_WARNING,
   'global-require-arg': ESLINT_WARNING,
-  'init-null-arg': ESLINT_WARNING,
-  'low-level-module': ESLINT_WARNING,
   'mozindexeddb': ESLINT_WARNING,
   'mozindexeddb-property': ESLINT_WARNING,
-  'only-prefs-in-defaults': ESLINT_WARNING,
   'opendialog-nonlit-uri': ESLINT_WARNING,
   'opendialog-remote-uri': ESLINT_WARNING,
-  'shallow-wrapper': ESLINT_WARNING,
   'webextension-api': ESLINT_WARNING,
   'webextension-unsupported-api': ESLINT_WARNING,
-  'widget-module': ESLINT_WARNING,
 }, EXTERNAL_RULE_MAPPING);
 
 export const ESLINT_OVERWRITE_MESSAGE = {
@@ -103,26 +97,8 @@ export const ADDON_TYPE_MAP = {
 
 export const LOCAL_PROTOCOLS = ['chrome:', 'resource:'];
 
-// If you add to this you'll need to additionally
-// update _BANNED_IDENTIFIERS_MAP with details in
-// messages/javascript.
-export const BANNED_IDENTIFIERS = [
-  'newThread',
-  'processNextEvent',
-];
-
-export const LOW_LEVEL_MODULES = [
-  // Added from bugs 689340, 731109
-  'chrome', 'window-utils', 'observer-service',
-  // Added from bug 845492
-  'window/utils', 'sdk/window/utils', 'sdk/deprecated/window-utils',
-  'tab/utils', 'sdk/tab/utils',
-  'system/events', 'sdk/system/events',
-];
-
 export const INSTALL_RDF = 'install.rdf';
 export const MANIFEST_JSON = 'manifest.json';
-export const CHROME_MANIFEST = 'chrome.manifest';
 
 export const VALID_MANIFEST_VERSION = 2;
 
