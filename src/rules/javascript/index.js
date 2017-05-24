@@ -13,7 +13,6 @@ module.exports = {
     'only-prefs-in-defaults': require('./only-prefs-in-defaults').default,
     'opendialog-nonlit-uri': require('./opendialog-nonlit-uri').default,
     'opendialog-remote-uri': require('./opendialog-remote-uri').default,
-    'shallow-wrapper': require('./shallow-wrapper').default,
     'webextension-api': require('./webextension-api').default,
     'webextension-unsupported-api':
       require('./webextension-unsupported-api').default,
