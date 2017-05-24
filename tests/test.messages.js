@@ -1,7 +1,6 @@
 import { readFileSync } from 'fs';
 
 import * as messages from 'messages';
-import { BANNED_IDENTIFIERS } from 'const';
 import { singleLineString } from 'utils';
 
 
@@ -78,23 +77,4 @@ describe('Messages', function() {
     }
   });
 
-  it('should have banned_id keys in the _BANNED_IDENTIFIERS_MAP', () => {
-    for (let bannedIdentifier of BANNED_IDENTIFIERS) {
-      var bannedIdentifierMap = messages._BANNED_IDENTIFIERS_MAP;
-      assert.ok(bannedIdentifierMap.hasOwnProperty(bannedIdentifier),
-        singleLineString`_BANNED_IDENTIFIERS_MAP should have a
-        description for key "${bannedIdentifier}"`);
-    }
-  });
-
-  it('should have banned_id keys as constants', () => {
-    for (let bannedIdentifier of BANNED_IDENTIFIERS) {
-      var key = `BANNED_${bannedIdentifier.toUpperCase()}`;
-      assert.ok(messages.hasOwnProperty(key),
-                `"${key}" doesn't exist in messages module.`);
-    }
-  });
-
 });
-
-

@@ -20,7 +20,6 @@ export const EXTERNAL_RULE_MAPPING = {
 };
 
 export const ESLINT_RULE_MAPPING = Object.assign({
-  'banned-identifiers': ESLINT_WARNING,
   'deprecated-entities': ESLINT_WARNING,
   'event-listener-fourth': ESLINT_WARNING,
   'global-require-arg': ESLINT_WARNING,
@@ -97,14 +96,6 @@ export const ADDON_TYPE_MAP = {
 };
 
 export const LOCAL_PROTOCOLS = ['chrome:', 'resource:'];
-
-// If you add to this you'll need to additionally
-// update _BANNED_IDENTIFIERS_MAP with details in
-// messages/javascript.
-export const BANNED_IDENTIFIERS = [
-  'newThread',
-  'processNextEvent',
-];
 
 export const INSTALL_RDF = 'install.rdf';
 export const MANIFEST_JSON = 'manifest.json';
