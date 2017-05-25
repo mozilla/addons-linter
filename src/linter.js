@@ -387,14 +387,14 @@ export default class Linter {
       })
       // messages should be a list of raw message data objects.
       .then(({linterMessages, scannedFiles}) => {
-        for (let message of linterMessages) {
+        for (const message of linterMessages) {
           if (typeof message.type === 'undefined') {
             throw new Error('message.type must be defined');
           }
           this.collector._addMessage(message.type, message);
         }
 
-        for (let filename of scannedFiles) {
+        for (const filename of scannedFiles) {
           this.collector.recordScannedFile(filename);
         }
         return;
