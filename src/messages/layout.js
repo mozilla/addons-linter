@@ -22,19 +22,6 @@ export const BAD_ZIPFILE = {
   description: _('We were unable to decompress the zip file.'),
 };
 
-export const TYPE_NO_INSTALL_RDF = {
-  code: 'TYPE_NO_INSTALL_RDF',
-  legacyCode: [
-    'typedetection',
-    'detect_type',
-    'missing_install_rdf',
-  ],
-  message: _('install.rdf was not found'),
-  description: _(singleLineString`The type should be determined by
-    install.rdf if present. As there's no install.rdf, type detection
-    will be attempted to be inferred by package layout.`),
-};
-
 export const TYPE_NO_MANIFEST_JSON = {
   code: 'TYPE_NO_MANIFEST_JSON',
   legacyCode: [
@@ -43,9 +30,9 @@ export const TYPE_NO_MANIFEST_JSON = {
     'missing_manifest_json',
   ],
   message: _('manifest.json was not found'),
-  description: _(singleLineString`The type should be determined by
-    manifest.json if present. As there's no manifest.json, type detection
-    will be attempted to be inferred by package layout.`),
+  description: _(singleLineString`A manifest.json in the root of the
+    extension was not found. See: https://mzl.la/2r2McKv for more on
+    packaging`),
 };
 
 export const MULTIPLE_MANIFESTS = {

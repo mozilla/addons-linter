@@ -690,26 +690,7 @@ describe('Linter.getAddonMetadata()', function() {
       });
   });
 
-  it('should collect an error if manifest.json and install.rdf found', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    addonLinter.io = {
-      getFiles: () => {
-        return Promise.resolve({
-          'install.rdf': {},
-          'manifest.json': {},
-        });
-      },
-    };
-    return addonLinter.getAddonMetadata()
-      .then(() => {
-        var errors = addonLinter.collector.errors;
-        assert.equal(errors.length, 2);
-        assert.equal(errors[0].code, messages.MULTIPLE_MANIFESTS.code);
-        assert.equal(errors[1].code, messages.TYPE_NOT_DETERMINED.code);
-      });
-  });
-
-  it('should collect notices if no manifest', () => {
+  it('should collect an error if no manifest', () => {
     var addonLinter = new Linter({_: ['bar']});
     addonLinter.io = {
       getFiles: () => {
@@ -718,10 +699,9 @@ describe('Linter.getAddonMetadata()', function() {
     };
     return addonLinter.getAddonMetadata()
       .then(() => {
-        var notices = addonLinter.collector.notices;
-        assert.equal(notices.length, 2);
-        assert.equal(notices[0].code, messages.TYPE_NO_MANIFEST_JSON.code);
-        assert.equal(notices[1].code, messages.TYPE_NO_INSTALL_RDF.code);
+        var errors = addonLinter.collector.errors;
+        assert.equal(errors.length, 1);
+        assert.equal(errors[0].code, messages.TYPE_NO_MANIFEST_JSON.code);
       });
   });
 
@@ -1014,8 +994,8 @@ describe('Linter.extractMetadata()', function() {
       });
 
       var notices = addonLinter.collector.notices;
-      assert.equal(notices.length, 3);
-      assert.equal(notices[2].code, messages.KNOWN_LIBRARY.code);
+      assert.equal(notices.length, 1);
+      assert.equal(notices[0].code, messages.KNOWN_LIBRARY.code);
     });
   });
 
