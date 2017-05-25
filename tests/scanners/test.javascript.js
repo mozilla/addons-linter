@@ -122,7 +122,7 @@ describe('JavaScript Scanner', function() {
         jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
         return jsScanner.scan()
-          .then((moreValidationMessages) => {
+          .then(({linterMessages: moreValidationMessages}) => {
             assert.equal(moreValidationMessages[0].code,
                          messages.JS_SYNTAX_ERROR.code);
             assert.equal(moreValidationMessages[0].type, VALIDATION_ERROR);
@@ -137,6 +137,7 @@ describe('JavaScript Scanner', function() {
       executeOnText: () => {
         return {
           results: [{
+            filePath: 'badcode.js',
             messages: [{
               fatal: false,
             }],
