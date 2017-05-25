@@ -320,7 +320,7 @@ export default class Linter {
 
   scanFiles(files) {
     var promises = [];
-    for (const filename of files) {
+    for (let filename of files) {
       promises.push(this.scanFile(filename));
     }
     return Promise.all(promises);
