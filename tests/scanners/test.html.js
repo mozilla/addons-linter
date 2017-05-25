@@ -35,10 +35,7 @@ describe('HTML', function() {
     var badHTML = validHTML('<script>alert()</script>');
     var htmlScanner = new HTMLScanner(badHTML, 'index.html');
 
-    return htmlScanner.getContents()
-      .then(($) => {
-        return rules.warnOnInline($, htmlScanner.filename);
-      })
+    return htmlScanner.scan()
       .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 1);
         assert.equal(linterMessages[0].code,
@@ -52,10 +49,7 @@ describe('HTML', function() {
         <script src="">alert()</script>`);
     var htmlScanner = new HTMLScanner(goodHTML, 'index.html');
 
-    return htmlScanner.getContents()
-      .then(($) => {
-        return rules.warnOnInline($, htmlScanner.filename);
-      })
+    return htmlScanner.scan()
       .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 0);
       });
