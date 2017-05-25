@@ -13,11 +13,7 @@ describe('RDF: mustNotExist', () => {
     var contents = validRDF('<em:hidden>true</em:hidden>');
     var rdfScanner = new RDFScanner(contents, filename);
 
-    return rdfScanner.getContents()
-      .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, filename,
-                                  rdfScanner.options);
-      })
+    return rdfScanner.scan()
       .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 1);
         assert.equal(linterMessages[0].code,
@@ -31,11 +27,7 @@ describe('RDF: mustNotExist', () => {
       <em:hidden>false</em:hidden>`);
     var rdfScanner = new RDFScanner(contents, filename);
 
-    return rdfScanner.getContents()
-      .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, filename,
-                                 rdfScanner.options);
-      })
+    return rdfScanner.scan()
       .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 2);
 
@@ -46,35 +38,28 @@ describe('RDF: mustNotExist', () => {
       });
   });
 
-  it('should not allow certain tags contextually (eg. when listed)', () => {
+  it('should not allow certain tags when listed', () => {
     // Should fail because Add-on is listed and has an updateURL.
     var contents = validRDF(singleLineString`<em:listed>true</em:listed>
       <em:updateURL>http://mozilla.com/updateMyAddon.php</em:updateURL>`);
     var rdfScanner = new RDFScanner(contents, filename);
 
-    return rdfScanner.getContents()
-      .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, filename,
-                                 rdfScanner.options);
-      })
+    return rdfScanner.scan()
       .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 1);
         for (let message of linterMessages) {
           assert.equal(message.code, messages.TAG_NOT_ALLOWED_UPDATEURL.code);
           assert.equal(message.type, VALIDATION_ERROR);
         }
+      });
+  });
 
-        // This shouldn't fail because there is no listed tag.
-        contents = validRDF(singleLineString`
-          <em:updateURL>http://mozilla.com/updateMyAddon.php</em:updateURL>`);
-        rdfScanner = new RDFScanner(contents, filename);
+  it('should allow certain tags when not listed', () => {
+    var contents = validRDF(singleLineString`
+      <em:updateURL>http://mozilla.com/updateMyAddon.php</em:updateURL>`);
+    var rdfScanner = new RDFScanner(contents, filename);
 
-        return rdfScanner.getContents();
-      })
-      .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, filename,
-                                 rdfScanner.options);
-      })
+    return rdfScanner.scan()
       .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 0);
       });
@@ -85,11 +70,7 @@ describe('RDF: mustNotExist', () => {
       <em:requires>'something'</em:requires><em:skin>true</em:skin>`);
     var rdfScanner = new RDFScanner(contents, filename);
 
-    return rdfScanner.getContents()
-      .then((xmlDoc) => {
-        return rules.mustNotExist(xmlDoc, filename,
-                                 rdfScanner.options);
-      })
+    return rdfScanner.scan()
       .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 3);
 
@@ -121,7 +102,7 @@ describe('RDF: mustNotExist', () => {
           prefix: 'TAG_OBSOLETE_',
         });
       })
-      .then(({linterMessages}) => {
+      .then((linterMessages) => {
         assert.equal(linterMessages.length, 1);
         assert.equal(linterMessages[0].code,
                      messages.TAG_OBSOLETE_FILE.code);
