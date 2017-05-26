@@ -14,7 +14,6 @@ import { checkMinNodeVersion, gettext as _, singleLineString } from 'utils';
 
 import log from 'logger';
 import Collector from 'collector';
-import InstallRdfParser from 'parsers/installrdf';
 import DefaultManifestJSONParser from 'parsers/manifestjson';
 import BinaryScanner from 'scanners/binary';
 import CSSScanner from 'scanners/css';
@@ -22,7 +21,6 @@ import FilenameScanner from 'scanners/filename';
 import HTMLScanner from 'scanners/html';
 import JavaScriptScanner from 'scanners/javascript';
 import JSONScanner from 'scanners/json';
-import RDFScanner from 'scanners/rdf';
 import { Crx, Directory, Xpi } from 'io';
 
 
@@ -250,18 +248,6 @@ export default class Linter {
           _log.warn(`Both ${INSTALL_RDF} and ${MANIFEST_JSON} found`);
           this.collector.addError(messages.MULTIPLE_MANIFESTS);
           return {};
-        } else if (files.hasOwnProperty(INSTALL_RDF)) {
-          _log.info('Retrieving metadata from install.rdf');
-          return this.io.getFileAsString(INSTALL_RDF)
-            .then((rdfString) => {
-              // Gets an xml document object.
-              var rdfScanner = new RDFScanner(rdfString, INSTALL_RDF);
-              return rdfScanner.getContents();
-            })
-            .then((xmlDoc) => {
-              _log.info('Got xmlDoc, running InstallRdfParser.getMetadata()');
-              return new InstallRdfParser(xmlDoc, this.collector).getMetadata();
-            });
         } else if (files.hasOwnProperty(MANIFEST_JSON)) {
           _log.info('Retrieving metadata from manifest.json');
           return this.io.getFileAsString(MANIFEST_JSON)
@@ -274,27 +260,15 @@ export default class Linter {
               return manifestParser.getMetadata();
             });
         } else {
-          _log.warn(singleLineString`No ${INSTALL_RDF} or ${MANIFEST_JSON}
+          _log.warn(singleLineString`No ${MANIFEST_JSON}
                    was found in the package metadata`);
-          this.collector.addNotice(messages.TYPE_NO_MANIFEST_JSON);
-          this.collector.addNotice(messages.TYPE_NO_INSTALL_RDF);
+          this.collector.addError(messages.TYPE_NO_MANIFEST_JSON);
           return {};
         }
       })
       .then((addonMetadata) => {
         this.addonMetadata = addonMetadata;
-
-        // The type must be explicitly defined. This behaviour differs the
-        // historical approach by the amo-validator.
-        // See mozilla/addons-linter#411.
-        // In due course metadata checking code may surpass this error
-        // being added here.
-        if (!this.addonMetadata.type) {
-          _log.error('Addon type lookup failed');
-          this.collector.addError(messages.TYPE_NOT_DETERMINED);
-        }
-
-        return this.addonMetadata;
+        return addonMetadata;
       });
   }
 
@@ -344,8 +318,6 @@ export default class Linter {
         return JavaScriptScanner;
       case '.json':
         return JSONScanner;
-      case '.rdf':
-        return RDFScanner;
       default:
         return BinaryScanner;
     }

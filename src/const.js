@@ -55,12 +55,6 @@ export const MESSAGE_TYPES = [
   VALIDATION_WARNING,
 ];
 
-export const RDF_DEFAULT_NAMESPACE = 'http://www.mozilla.org/2004/em-rdf#';
-
-export const RDF_UNALLOWED_TAGS = ['hidden'];
-export const RDF_UNALLOWED_IF_LISTED_TAGS = ['updateKey', 'updateURL'];
-export const RDF_OBSOLETE_TAGS = ['file', 'requires', 'skin'];
-
 // Package type constants.
 export const PACKAGE_ANY = 0;
 export const PACKAGE_EXTENSION = 1;
