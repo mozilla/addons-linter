@@ -31,6 +31,10 @@ export default class JavaScriptScanner {
     return 'string';
   }
 
+  static get scannerName() {
+    return 'javascript';
+  }
+
   scan(_ESLint=ESLint, {
     _rules=this._defaultRules,
     _ruleMapping=ESLINT_RULE_MAPPING,

@@ -193,12 +193,12 @@ describe('Linter', function() {
 
     return addonLinter.scan()
       .then(() => {
-        assert.deepEqual(addonLinter.collector.scannedFiles, [
-          'index.js',
-          'bower_components/bar.js',
-          'node_modules/foo.js',
-          'manifest.json',
-        ]);
+        assert.deepEqual(addonLinter.collector.scannedFiles, {
+          'index.js': ['javascript'],
+          'bower_components/bar.js': ['javascript'],
+          'node_modules/foo.js': ['javascript'],
+          'manifest.json': ['json'],
+        });
       });
   });
 

@@ -18,6 +18,10 @@ export default class BaseScanner {
     return 'string';
   }
 
+  static get scannerName() {
+    return 'base';
+  }
+
   constructor(contents, filename, options={}) {
     this.contents = contents;
     this.filename = filename;

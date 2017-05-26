@@ -8,6 +8,10 @@ export default class BinaryScanner extends BaseScanner {
     return 'chunk';
   }
 
+  static get scannerName() {
+    return 'binary';
+  }
+
   check(buffer, values) {
     for (let v in values) {
       if (values[v] !== buffer[v]) {

@@ -6,6 +6,9 @@ import * as constants from 'const';
 
 
 export default class FilenameScanner extends BaseScanner {
+  static get scannerName() {
+    return 'filename';
+  }
 
   scan() {
     return new Promise((resolve) => {

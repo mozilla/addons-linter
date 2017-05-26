@@ -4,6 +4,10 @@ import BaseScanner from 'scanners/base';
 
 export default class JSONScanner extends BaseScanner {
 
+  static get scannerName() {
+    return 'json';
+  }
+
   _getContents() {
     return Promise.resolve(this.contents);
   }

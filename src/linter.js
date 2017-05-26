@@ -353,6 +353,7 @@ export default class Linter {
 
   scanFile(filename) {
     var ScannerClass = this.getScanner(filename);
+
     return this.io.getFile(filename, ScannerClass.fileResultType)
       .then((fileData) => {
         // First: check that this file is under our 2MB parsing limit. Otherwise
@@ -395,7 +396,8 @@ export default class Linter {
         }
 
         for (const filename of scannedFiles) {
-          this.collector.recordScannedFile(filename);
+          this.collector.recordScannedFile(
+            filename, ScannerClass.scannerName);
         }
         return;
       });

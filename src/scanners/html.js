@@ -8,6 +8,10 @@ export default class HTMLScanner extends BaseScanner {
 
   _defaultRules = rules;
 
+  static get scannerName() {
+    return 'html';
+  }
+
   _getContents() {
     return new Promise((resolve) => {
       var htmlDoc = cheerio.load(this.contents);
