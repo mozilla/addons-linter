@@ -19,7 +19,7 @@ export default class BaseScanner {
   }
 
   static get scannerName() {
-    return 'base';
+    throw new Error('scannerName is not implemented');
   }
 
   constructor(contents, filename, options={}) {

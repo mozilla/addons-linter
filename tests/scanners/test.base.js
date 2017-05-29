@@ -13,6 +13,16 @@ class BaseScannerWithContents extends BaseScanner {
 
 describe('Base Scanner Class', function() {
 
+  it('scannerName should throw an error', () => {
+    try {
+      var scanner = new BaseScanner('', 'filename.txt');
+      scanner.scannerName;
+    } catch (err) {
+      assert.instanceOf(err, Error);
+      assert.equal(err.message, 'scannername is not implemented');
+    }
+  });
+
   it('should thrown an error without a filename', () => {
     assert.throws(() => {
       var baseScanner = new BaseScanner(''); // eslint-disable-line
