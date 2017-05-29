@@ -11,6 +11,10 @@ import { ignorePrivateFunctions, singleLineString } from 'utils';
 
 describe('HTML', function() {
 
+  it('should report a proper scanner name', () => {
+    assert.equal(HTMLScanner.scannerName, 'html');
+  });
+
   it('should not warn when we validate a good HTML file', () => {
     var contents = validHTML();
     var htmlScanner = new HTMLScanner(contents, 'index.html');

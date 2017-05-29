@@ -34,4 +34,7 @@ describe('Binary', function() {
     assert.equal(BinaryScanner.fileStreamType, 'chunk');
   });
 
+  it('should report a proper scanner name', () => {
+    assert.equal(BinaryScanner.scannerName, 'binary');
+  });
 });

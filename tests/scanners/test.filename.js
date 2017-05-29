@@ -6,6 +6,10 @@ import * as messages from 'messages';
 
 describe('FilenameScanner', function() {
 
+  it('should report a proper scanner name', () => {
+    assert.equal(FilenameScanner.scannerName, 'filename');
+  });
+
   it('should warn when finding a hidden file', () => {
     var filenameScanner = new FilenameScanner('', '__MACOSX/foo.txt');
 

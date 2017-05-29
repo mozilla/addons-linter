@@ -8,6 +8,10 @@ import { ignorePrivateFunctions, singleLineString } from 'utils';
 
 describe('CSSScanner', () => {
 
+  it('should report a proper scanner name', () => {
+    assert.equal(CSSScanner.scannerName, 'css');
+  });
+
   it('should add CSS_SYNTAX_ERROR with invalid css', () => {
     var code = '#something {';
     var cssScanner = new CSSScanner(code, 'fakeFile.css');

@@ -6,6 +6,10 @@ import { unexpectedSuccess } from '../helpers';
 
 describe('JSONScanner', function() {
 
+  it('should report a proper scanner name', () => {
+    assert.equal(JSONScanner.scannerName, 'json');
+  });
+
   it('should throw an error if getContents fails', () => {
     var addonsLinter = new Linter({_: ['foo']});
     var jsonScanner = new JSONScanner('{}', 'test.json', {

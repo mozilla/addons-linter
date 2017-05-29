@@ -14,6 +14,10 @@ import { fakeMessageData, getRuleFiles, getVariable, unexpectedSuccess,
 
 describe('JavaScript Scanner', function() {
 
+  it('should report a proper scanner name', () => {
+    assert.equal(JavaScriptScanner.scannerName, 'javascript');
+  });
+
   it('should thrown an error without a filename', () => {
     assert.throws(() => {
       var jsScanner = new JavaScriptScanner(''); // eslint-disable-line
