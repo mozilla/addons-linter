@@ -81,7 +81,9 @@ export default class Collector {
     // TODO: Add some code that verifies and normalizes `filename`
     // to better avoid duplicates.
     if (filename in this.scannedFiles) {
-      this.scannedFiles[filename].push(scanner);
+      if (!(scanner in this.scannedFiles[filename])) {
+        this.scannedFiles[filename].push(scanner);
+      }
     } else {
       this.scannedFiles[filename] = [scanner];
     }
