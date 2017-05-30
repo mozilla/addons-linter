@@ -12,12 +12,16 @@ import { ignorePrivateFunctions } from 'utils';
 
 describe('RDF', function() {
 
+  it('should report a proper scanner name', () => {
+    assert.equal(RDFScanner.scannerName, 'rdf');
+  });
+
   it('should not warn when we validate a good RDF file', () => {
     var contents = fs.readFileSync('tests/example.rdf', 'utf8');
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
 
     return rdfScanner.scan()
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 0);
       });
   });
@@ -38,7 +42,7 @@ describe('RDF', function() {
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
 
     return rdfScanner.scan()
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 0);
       });
   });

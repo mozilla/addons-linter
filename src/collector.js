@@ -10,6 +10,7 @@ export default class Collector {
   constructor(config = {}) {
     this.config = config;
     this.messagesByDataPath = {};
+    this.scannedFiles = {};
 
     for (let type of constants.MESSAGE_TYPES) {
       this[`${type}s`] = [];
@@ -74,6 +75,19 @@ export default class Collector {
       });
     }
     return false;
+  }
+
+  recordScannedFile(filename, scanner) {
+    // TODO: Add some code that verifies and normalizes `filename`
+    // to better avoid duplicates.
+    // See https://github.com/mozilla/addons-linter/issues/1310
+    if (filename in this.scannedFiles) {
+      if (!this.scannedFiles[filename].includes(scanner)) {
+        this.scannedFiles[filename].push(scanner);
+      }
+    } else {
+      this.scannedFiles[filename] = [scanner];
+    }
   }
 
   addError(opts) {

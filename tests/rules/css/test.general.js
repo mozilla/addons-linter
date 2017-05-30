@@ -42,12 +42,12 @@ describe('CSS Rule General', () => {
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
 
     return cssScanner.scan()
-      .then((validationMessages) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].message, 'Unclosed comment');
-        assert.equal(validationMessages[0].code,
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].message, 'Unclosed comment');
+        assert.equal(linterMessages[0].code,
                      messages.CSS_SYNTAX_ERROR.code);
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 });

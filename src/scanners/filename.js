@@ -6,6 +6,9 @@ import * as constants from 'const';
 
 
 export default class FilenameScanner extends BaseScanner {
+  static get scannerName() {
+    return 'filename';
+  }
 
   scan() {
     return new Promise((resolve) => {
@@ -42,7 +45,10 @@ export default class FilenameScanner extends BaseScanner {
       } else {
         throw new Error(`Filename didn't match a regex: ${this.filename}.`);
       }
-      return resolve(this.linterMessages);
+      return resolve({
+        linterMessages: this.linterMessages,
+        scannedFiles: this.scannedFiles,
+      });
     });
   }
 }

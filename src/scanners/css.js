@@ -12,6 +12,10 @@ export default class CSSScanner extends BaseScanner {
 
   _defaultRules = rules;
 
+  static get scannerName() {
+    return 'css';
+  }
+
   processCode(cssNode, cssInstruction, _rules=this._defaultRules) {
 
     var file = this.filename;
@@ -66,7 +70,10 @@ export default class CSSScanner extends BaseScanner {
             }
           }
 
-          resolve(this.linterMessages);
+          resolve({
+            linterMessages: this.linterMessages,
+            scannedFiles: this.scannedFiles,
+          });
         })
         .catch(reject);
     });

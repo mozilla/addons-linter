@@ -8,6 +8,10 @@ export default class BinaryScanner extends BaseScanner {
     return 'chunk';
   }
 
+  static get scannerName() {
+    return 'binary';
+  }
+
   check(buffer, values) {
     for (let v in values) {
       if (values[v] !== buffer[v]) {
@@ -27,6 +31,10 @@ export default class BinaryScanner extends BaseScanner {
     for (let entry of constants.FLAGGED_FILE_MAGIC_NUMBERS) {
       this.check(buffer, entry);
     }
-    return Promise.resolve(this.linterMessages);
+
+    return Promise.resolve({
+      linterMessages: this.linterMessages,
+      scannedFiles: this.scannedFiles,
+    });
   }
 }

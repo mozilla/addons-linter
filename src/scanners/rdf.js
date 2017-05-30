@@ -22,6 +22,10 @@ export default class RDFScanner extends BaseScanner {
     }
   }
 
+  static get scannerName() {
+    return 'rdf';
+  }
+
   _getContents() {
     return new Promise((resolve, reject) => {
       var xmlDoc = new XMLDom.DOMParser({

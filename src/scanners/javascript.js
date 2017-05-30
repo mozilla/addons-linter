@@ -1,3 +1,5 @@
+import path from 'path';
+
 import ESLint from 'eslint';
 
 import {
@@ -19,6 +21,7 @@ export default class JavaScriptScanner {
     this.filename = filename;
     this.options = options;
     this.linterMessages = [];
+    this.scannedFiles = [];
     this._rulesProcessed = 0;
 
     ensureFilenameExists(this.filename);
@@ -26,6 +29,10 @@ export default class JavaScriptScanner {
 
   static get fileResultType() {
     return 'string';
+  }
+
+  static get scannerName() {
+    return 'javascript';
   }
 
   scan(_ESLint=ESLint, {
@@ -48,10 +55,16 @@ export default class JavaScriptScanner {
         parserOptions: {
           ecmaVersion: 2017,
         },
-        ignore: false,
         rules: _ruleMapping,
         plugins: ['no-unsafe-innerhtml'],
         allowInlineConfig: false,
+
+        // Disable ignore-mode and overwrite eslint default ignore patterns
+        // so an add-on's bower and node module folders are included in
+        // the scan. See: https://github.com/mozilla/addons-linter/issues/1288
+        ignore: false,
+        patterns: ['!bower_components/*', '!node_modules/*'],
+
         filename: this.filename,
         // Avoid loading the addons-linter .eslintrc file
         useEslintrc: false,
@@ -67,6 +80,12 @@ export default class JavaScriptScanner {
       var report = cli.executeOnText(this.code, this.filename, true);
 
       for (const result of report.results) {
+        // eslint prepends the filename with the current working directory,
+        // strip that out.
+        var relativePath = path.relative(process.cwd(), result.filePath);
+
+        this.scannedFiles.push(relativePath);
+
         for (const message of result.messages) {
           // Fatal error messages (like SyntaxErrors) are a bit different, we
           // need to handle them specially.
@@ -110,8 +129,10 @@ export default class JavaScriptScanner {
           });
         }
       }
-
-      resolve(this.linterMessages);
+      resolve({
+        linterMessages: this.linterMessages,
+        scannedFiles: this.scannedFiles,
+      });
     });
   }
 }

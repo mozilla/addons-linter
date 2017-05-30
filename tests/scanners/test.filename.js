@@ -6,11 +6,15 @@ import * as messages from 'messages';
 
 describe('FilenameScanner', function() {
 
+  it('should report a proper scanner name', () => {
+    assert.equal(FilenameScanner.scannerName, 'filename');
+  });
+
   it('should warn when finding a hidden file', () => {
     var filenameScanner = new FilenameScanner('', '__MACOSX/foo.txt');
 
     return filenameScanner.scan()
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 1);
         assert.equal(linterMessages[0].code, messages.HIDDEN_FILE.code);
         assert.equal(linterMessages[0].file, '__MACOSX/foo.txt');
@@ -21,7 +25,7 @@ describe('FilenameScanner', function() {
     var filenameScanner = new FilenameScanner('', 'Thumbs.db');
 
     return filenameScanner.scan()
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 1);
         assert.equal(linterMessages[0].code, messages.FLAGGED_FILE.code);
         assert.equal(linterMessages[0].file, 'Thumbs.db');
@@ -32,7 +36,7 @@ describe('FilenameScanner', function() {
     var filenameScanner = new FilenameScanner('', 'wat.exe');
 
     return filenameScanner.scan()
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 1);
         assert.equal(linterMessages[0].code,
             messages.FLAGGED_FILE_EXTENSION.code);
@@ -44,7 +48,7 @@ describe('FilenameScanner', function() {
     var filenameScanner = new FilenameScanner('', 'META-INF/manifest.mf');
 
     return filenameScanner.scan()
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 1);
         assert.equal(linterMessages[0].code, messages.ALREADY_SIGNED.code);
         assert.equal(linterMessages[0].file, 'META-INF/manifest.mf');

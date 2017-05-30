@@ -353,6 +353,7 @@ export default class Linter {
 
   scanFile(filename) {
     var ScannerClass = this.getScanner(filename);
+
     return this.io.getFile(filename, ScannerClass.fileResultType)
       .then((fileData) => {
         // First: check that this file is under our 2MB parsing limit. Otherwise
@@ -368,7 +369,10 @@ export default class Linter {
             file: filename,
             type: constants.VALIDATION_ERROR,
           });
-          return Promise.resolve([filesizeError]);
+          return Promise.resolve({
+            linterMessages: [filesizeError],
+            scannedFiles: [filename],
+          });
         }
 
         let scanner = new ScannerClass(fileData, filename, {
@@ -383,12 +387,17 @@ export default class Linter {
         return scanner.scan();
       })
       // messages should be a list of raw message data objects.
-      .then((messages) => {
-        for (let message of messages) {
+      .then(({linterMessages, scannedFiles}) => {
+        for (const message of linterMessages) {
           if (typeof message.type === 'undefined') {
             throw new Error('message.type must be defined');
           }
           this.collector._addMessage(message.type, message);
+        }
+
+        for (const filename of scannedFiles) {
+          this.collector.recordScannedFile(
+            filename, ScannerClass.scannerName);
         }
         return;
       });

@@ -56,8 +56,8 @@ describe('no_implied_eval', () => {
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then((validationMessages) => {
-          assert.equal(validationMessages.length, 0);
+        .then(({linterMessages}) => {
+          assert.equal(linterMessages.length, 0);
         });
     });
   }
@@ -141,19 +141,19 @@ describe('no_implied_eval', () => {
       const jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
       return jsScanner.scan()
-        .then((validationMessages) => {
-          validationMessages = validationMessages.sort();
+        .then(({linterMessages}) => {
+          linterMessages = linterMessages.sort();
 
-          assert.equal(validationMessages.length, code.message.length);
+          assert.equal(linterMessages.length, code.message.length);
 
           code.message.forEach((expectedMessage, idx) => {
-            assert.equal(validationMessages[idx].message, expectedMessage);
-            assert.equal(validationMessages[idx].type, VALIDATION_WARNING);
+            assert.equal(linterMessages[idx].message, expectedMessage);
+            assert.equal(linterMessages[idx].type, VALIDATION_WARNING);
           });
 
           code.description.forEach((expectedDescription, idx) => {
             assert.equal(
-              validationMessages[idx].description, expectedDescription);
+              linterMessages[idx].description, expectedDescription);
           });
         });
     });

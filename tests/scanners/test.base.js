@@ -13,6 +13,14 @@ class BaseScannerWithContents extends BaseScanner {
 
 describe('Base Scanner Class', function() {
 
+  it('scannerName not defined by default', () => {
+    assert.throws(
+      () => { BaseScanner.scannerName; },
+      Error,
+      'scannerName is not implemented'
+    );
+  });
+
   it('should thrown an error without a filename', () => {
     assert.throws(() => {
       var baseScanner = new BaseScanner(''); // eslint-disable-line
@@ -75,7 +83,7 @@ describe('Base Scanner Class', function() {
     });
 
     return scanner.scan(fakeRules)
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.ok(fakeRules.metadataPassedCheck.called);
         assert.equal(linterMessages.length, 0);
       });

@@ -8,20 +8,24 @@ import { ignorePrivateFunctions, singleLineString } from 'utils';
 
 describe('CSSScanner', () => {
 
+  it('should report a proper scanner name', () => {
+    assert.equal(CSSScanner.scannerName, 'css');
+  });
+
   it('should add CSS_SYNTAX_ERROR with invalid css', () => {
     var code = '#something {';
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
 
     return cssScanner.scan()
-      .then((validationMessages) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].code,
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code,
                      messages.CSS_SYNTAX_ERROR.code);
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
-        assert.equal(validationMessages[0].message, 'Unclosed block');
-        assert.equal(validationMessages[0].line, 1);
-        assert.equal(validationMessages[0].column, 1);
-        assert.equal(validationMessages[0].file, 'fakeFile.css');
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        assert.equal(linterMessages[0].message, 'Unclosed block');
+        assert.equal(linterMessages[0].line, 1);
+        assert.equal(linterMessages[0].column, 1);
+        assert.equal(linterMessages[0].file, 'fakeFile.css');
       });
   });
 
@@ -39,7 +43,7 @@ describe('CSSScanner', () => {
     });
 
     return scanner.scan(fakeRules)
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.ok(fakeRules.metadataPassCheck.called);
         assert.equal(linterMessages.length, 0);
       });
@@ -92,8 +96,8 @@ describe('CSSScanner', () => {
     var code = '@media only screen and (max-width: 959px) {}';
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
     return cssScanner.scan()
-      .then((validationMessages) => {
-        assert.equal(validationMessages.length, 0);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 
@@ -102,8 +106,8 @@ describe('CSSScanner', () => {
     var code = '.myClass { -moz-binding: url(initial); }';
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
     return cssScanner.scan()
-      .then((validationMessages) => {
-        assert.equal(validationMessages.length, 0);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 });

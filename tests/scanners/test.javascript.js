@@ -14,6 +14,10 @@ import { fakeMessageData, getRuleFiles, getVariable, unexpectedSuccess,
 
 describe('JavaScript Scanner', function() {
 
+  it('should report a proper scanner name', () => {
+    assert.equal(JavaScriptScanner.scannerName, 'javascript');
+  });
+
   it('should thrown an error without a filename', () => {
     assert.throws(() => {
       var jsScanner = new JavaScriptScanner(''); // eslint-disable-line
@@ -37,8 +41,8 @@ describe('JavaScript Scanner', function() {
     var jsScanner = new JavaScriptScanner(code, 'code.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
-        assert.equal(validationMessages.length, 0);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 
@@ -53,10 +57,10 @@ describe('JavaScript Scanner', function() {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].id, 'OBFUSCATION');
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].id, 'OBFUSCATION');
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 
@@ -68,10 +72,10 @@ describe('JavaScript Scanner', function() {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].id, 'OBFUSCATION');
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].id, 'OBFUSCATION');
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 
@@ -84,10 +88,10 @@ describe('JavaScript Scanner', function() {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].id, 'OBFUSCATION');
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].id, 'OBFUSCATION');
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 
@@ -101,10 +105,10 @@ describe('JavaScript Scanner', function() {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].id, 'OBFUSCATION');
-        assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].id, 'OBFUSCATION');
+        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
       });
   });
 
@@ -113,16 +117,16 @@ describe('JavaScript Scanner', function() {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
-        assert.equal(validationMessages[0].code, messages.JS_SYNTAX_ERROR.code);
-        assert.equal(validationMessages[0].type, VALIDATION_ERROR);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages[0].code, messages.JS_SYNTAX_ERROR.code);
+        assert.equal(linterMessages[0].type, VALIDATION_ERROR);
 
         // Test another error for good measure.
         code = 'var aVarThatDoesnt != exist;';
         jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
         return jsScanner.scan()
-          .then((moreValidationMessages) => {
+          .then(({linterMessages: moreValidationMessages}) => {
             assert.equal(moreValidationMessages[0].code,
                          messages.JS_SYNTAX_ERROR.code);
             assert.equal(moreValidationMessages[0].type, VALIDATION_ERROR);
@@ -137,6 +141,7 @@ describe('JavaScript Scanner', function() {
       executeOnText: () => {
         return {
           results: [{
+            filePath: 'badcode.js',
             messages: [{
               fatal: false,
             }],
@@ -169,9 +174,9 @@ describe('JavaScript Scanner', function() {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].code, messages.MOZINDEXEDDB.code);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code, messages.MOZINDEXEDDB.code);
       });
   });
 
@@ -181,9 +186,9 @@ describe('JavaScript Scanner', function() {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].code, messages.MOZINDEXEDDB.code);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code, messages.MOZINDEXEDDB.code);
       });
   });
 
@@ -219,8 +224,8 @@ describe('JavaScript Scanner', function() {
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then((validationMessages) => {
-        assert.equal(validationMessages.length, 0);
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 0);
       });
   });
 
@@ -316,10 +321,10 @@ describe('JavaScript Scanner', function() {
         `chrome.${api}(function() {});`, 'code.js');
 
       return jsScanner.scan()
-        .then((validationMessages) => {
-          assert.equal(validationMessages.length, 1);
-          assert.equal(validationMessages[0].code, apiToMessage(api));
-          assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        .then(({linterMessages}) => {
+          assert.equal(linterMessages.length, 1);
+          assert.equal(linterMessages[0].code, apiToMessage(api));
+          assert.equal(linterMessages[0].type, VALIDATION_WARNING);
         });
     });
   }
@@ -331,10 +336,10 @@ describe('JavaScript Scanner', function() {
         `chrome.${api}(function() {});`, 'code.js', fakeMetadata);
 
       return jsScanner.scan()
-        .then((validationMessages) => {
-          assert.equal(validationMessages.length, 1);
-          assert.equal(validationMessages[0].code, apiToMessage(api));
-          assert.equal(validationMessages[0].type, VALIDATION_WARNING);
+        .then(({linterMessages}) => {
+          assert.equal(linterMessages.length, 1);
+          assert.equal(linterMessages[0].code, apiToMessage(api));
+          assert.equal(linterMessages[0].type, VALIDATION_WARNING);
         });
     });
   }
@@ -346,8 +351,8 @@ describe('JavaScript Scanner', function() {
         `chrome.${api}(function() {});`, 'code.js', fakeMetadata);
 
       return jsScanner.scan()
-        .then((validationMessages) => {
-          assert.equal(validationMessages.length, 0);
+        .then(({linterMessages}) => {
+          assert.equal(linterMessages.length, 0);
         });
     });
   }
@@ -367,10 +372,10 @@ describe('JavaScript Scanner', function() {
     var jsScanner = new JavaScriptScanner('foo.bar', 'code.js', fakeMetadata);
 
     return jsScanner.scan(undefined, { _rules, _ruleMapping })
-      .then((validationMessages) => {
-        assert.equal(validationMessages.length, 1);
-        assert.equal(validationMessages[0].code, 'this is the message');
-        assert.equal(validationMessages[0].message, 'this is the message');
+      .then(({linterMessages}) => {
+        assert.equal(linterMessages.length, 1);
+        assert.equal(linterMessages[0].code, 'this is the message');
+        assert.equal(linterMessages[0].message, 'this is the message');
       });
   });
 });

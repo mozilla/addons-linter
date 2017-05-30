@@ -18,11 +18,23 @@ export default class BaseScanner {
     return 'string';
   }
 
+  static get scannerName() {
+    /*
+    Each scanner has a unique name that identifies it. This value is currently
+    being used to organize scanned files and report them.
+
+    This must be overriden on the class.
+    */
+
+    throw new Error('scannerName is not implemented');
+  }
+
   constructor(contents, filename, options={}) {
     this.contents = contents;
     this.filename = filename;
     this.options = options;
     this.linterMessages = [];
+    this.scannedFiles = [];
     this._defaultRules = [];
     this._parsedContent = null;
     this._rulesProcessed = 0;
@@ -55,7 +67,10 @@ export default class BaseScanner {
             this.linterMessages = this.linterMessages.concat(messages);
           }
 
-          resolve(this.linterMessages);
+          resolve({
+            linterMessages: this.linterMessages,
+            scannedFiles: [this.filename],
+          });
         })
         .catch(reject);
     });

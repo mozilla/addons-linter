@@ -183,6 +183,25 @@ describe('Linter', function() {
       });
   });
 
+  it('Eslint ignore patterns and .eslintignorerc should be ignored', () => {
+    // Verify https://github.com/mozilla/addons-linter/issues/1288 is fixed
+    var addonLinter = new Linter({_: [
+      'tests/fixtures/webextension_node_modules_bower']});
+
+    // Stub print to prevent output.
+    addonLinter.print = sinon.stub();
+
+    return addonLinter.scan()
+      .then(() => {
+        assert.deepEqual(addonLinter.collector.scannedFiles, {
+          'index.js': ['javascript'],
+          'bower_components/bar.js': ['javascript'],
+          'node_modules/foo.js': ['javascript'],
+          'manifest.json': ['json'],
+        });
+      });
+  });
+
   it('should optionally scan selected files', () => {
     var addonLinter = new Linter({
       _: ['tests/fixtures/webextension_scan_file'],
@@ -226,7 +245,10 @@ describe('Linter', function() {
     addonLinter.getScanner = sinon.stub();
     class fakeScanner {
       scan() {
-        return Promise.resolve([{message: 'whatever'}]);
+        return Promise.resolve({
+          linterMessages: [{message: 'whatever'}],
+          scannedFiles: [],
+        });
       }
     }
     addonLinter.getScanner.returns(fakeScanner);

@@ -75,6 +75,18 @@ describe('Collector', function() {
     assert.equal(collection.notices.length, 0);
   });
 
+  it('should not add duplicate files to scannedFiles', () => {
+    var collection = new Collector();
+
+    collection.recordScannedFile('foo.js', 'test');
+    collection.recordScannedFile('foo.js', 'test');
+    collection.recordScannedFile('foo.js', 'new-test');
+
+    assert.deepEqual(collection.scannedFiles, {
+      'foo.js': ['test', 'new-test'],
+    });
+  });
+
   it('should add a message that differs on line number', () => {
     var collection = new Collector();
     collection.addWarning({

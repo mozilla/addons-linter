@@ -11,12 +11,16 @@ import { ignorePrivateFunctions, singleLineString } from 'utils';
 
 describe('HTML', function() {
 
+  it('should report a proper scanner name', () => {
+    assert.equal(HTMLScanner.scannerName, 'html');
+  });
+
   it('should not warn when we validate a good HTML file', () => {
     var contents = validHTML();
     var htmlScanner = new HTMLScanner(contents, 'index.html');
 
     return htmlScanner.scan()
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 0);
       });
   });
@@ -26,7 +30,7 @@ describe('HTML', function() {
     var htmlScanner = new HTMLScanner(contents, 'index.html');
 
     return htmlScanner.scan()
-      .then((linterMessages) => {
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 0);
       });
   });
@@ -35,11 +39,8 @@ describe('HTML', function() {
     var badHTML = validHTML('<script>alert()</script>');
     var htmlScanner = new HTMLScanner(badHTML, 'index.html');
 
-    return htmlScanner.getContents()
-      .then(($) => {
-        return rules.warnOnInline($, htmlScanner.filename);
-      })
-      .then((linterMessages) => {
+    return htmlScanner.scan()
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 1);
         assert.equal(linterMessages[0].code,
                      messages.INLINE_SCRIPT.code);
@@ -52,11 +53,8 @@ describe('HTML', function() {
         <script src="">alert()</script>`);
     var htmlScanner = new HTMLScanner(goodHTML, 'index.html');
 
-    return htmlScanner.getContents()
-      .then(($) => {
-        return rules.warnOnInline($, htmlScanner.filename);
-      })
-      .then((linterMessages) => {
+    return htmlScanner.scan()
+      .then(({linterMessages}) => {
         assert.equal(linterMessages.length, 0);
       });
   });
