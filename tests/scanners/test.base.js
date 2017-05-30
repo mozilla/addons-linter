@@ -13,14 +13,12 @@ class BaseScannerWithContents extends BaseScanner {
 
 describe('Base Scanner Class', function() {
 
-  it('scannerName should throw an error', () => {
-    try {
-      var scanner = new BaseScanner('', 'filename.txt');
-      scanner.scannerName;
-    } catch (err) {
-      assert.instanceOf(err, Error);
-      assert.equal(err.message, 'scannername is not implemented');
-    }
+  it('scannerName not defined by default', () => {
+    assert.throws(
+      () => { BaseScanner.scannerName; },
+      Error,
+      'scannerName is not implemented'
+    );
   });
 
   it('should thrown an error without a filename', () => {

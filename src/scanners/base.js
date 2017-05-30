@@ -19,6 +19,13 @@ export default class BaseScanner {
   }
 
   static get scannerName() {
+    /*
+    Each scanner has a unique name that identifies it. This value is currently
+    being used to organize scanned files and report them.
+
+    This must be overriden on the class.
+    */
+
     throw new Error('scannerName is not implemented');
   }
 
