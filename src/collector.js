@@ -80,6 +80,7 @@ export default class Collector {
   recordScannedFile(filename, scanner) {
     // TODO: Add some code that verifies and normalizes `filename`
     // to better avoid duplicates.
+    // See https://github.com/mozilla/addons-linter/issues/1310
     if (filename in this.scannedFiles) {
       if (!this.scannedFiles[filename].includes(scanner)) {
         this.scannedFiles[filename].push(scanner);
