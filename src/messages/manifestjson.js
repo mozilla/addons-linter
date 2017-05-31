@@ -128,3 +128,11 @@ export const NO_DEFAULT_LOCALE = {
     See: https://mzl.la/2hjcaEE`),
   file: MANIFEST_JSON,
 };
+
+export const STATIC_THEMES_UNSUPPORTED = {
+  code: 'STATIC_THEMES_UNSUPPORTED',
+  legacyCode: null,
+  message: _('WebExtension theme uploads are currently not supported.'),
+  description: _('WebExtension theme uploads are currently not supported.'),
+  file: MANIFEST_JSON,
+};
