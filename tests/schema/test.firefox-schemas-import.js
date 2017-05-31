@@ -1040,8 +1040,7 @@ describe('firefox schema import', () => {
     });
 
     it('downloads the firefox source and extracts the schemas', () => {
-      // eslint-disable-next-line new-cap
-      const packer = tar.Pack({ noProprietary: true });
+      const packer = new tar.Pack({ noProprietary: true });
       const schemaPath = 'tests/schema/firefox';
       // eslint-disable-next-line new-cap
       const tarball = fstream.Reader({ path: schemaPath, type: 'Directory' })
@@ -1065,8 +1064,7 @@ describe('firefox schema import', () => {
     });
 
     it('extracts the schemas from a local file', () => {
-      // eslint-disable-next-line new-cap
-      const packer = tar.Pack({ noProprietary: true });
+      const packer = new tar.Pack({ noProprietary: true });
       const schemaPath = 'tests/schema/firefox';
       // eslint-disable-next-line new-cap
       const tarball = fstream.Reader({ path: schemaPath, type: 'Directory' })
