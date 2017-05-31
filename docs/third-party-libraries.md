@@ -6,9 +6,9 @@ We maintain a list of banned and unadvised third-party JavaScript libraries; the
 
 ### AngularJS `1.x`
 
-AngularJS `1.x` versions below `1.5.9` are not allowed due to a [CSP vulnerability](http://www.slideshare.net/x00mario/an-abusive-relationship-with-angularjs).
+AngularJS `1.x` versions below `1.6.4` are not allowed due to a [CSP vulnerability](http://www.slideshare.net/x00mario/an-abusive-relationship-with-angularjs).
 
-We allow `1.5.9` and above; all previous versions are banned.
+We allow the latest 1.x version at submission time; all previous versions are banned.
 
 ### jQuery `1.x`
 
