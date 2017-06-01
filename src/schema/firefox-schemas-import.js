@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import zlib from 'zlib';
 
 import commentJson from 'comment-json';
 import merge from 'deepmerge';
@@ -504,26 +503,69 @@ inner.isBrowserSchema = (path) => {
   return schemaRegexes.some((re) => re.test(path));
 };
 
-export function fetchSchemas({ inputPath, outputPath, version }) {
-  return new Promise((resolve) => {
-    let tarball;
+/**
+ * Strip a null byte if it's the last character in a string.
+ **/
+export function stripTrailingNullByte(str) {
+  if (str.indexOf('\u0000') === str.length - 1) {
+    return str.slice(0, -1);
+  }
+  return str;
+}
+
+function getTarballPath({ inputPath, version }) {
+  return new Promise((resolve, reject) => {
     if (inputPath) {
-      tarball = fs.createReadStream(inputPath);
+      resolve(inputPath);
     } else if (version) {
-      tarball = request.get(downloadUrl(version));
+      const url = downloadUrl(version);
+      const tmpPath = path.join('tmp', path.basename(url));
+      request
+        .get(url)
+        .on('error', (error) => {
+          reject(error);
+        })
+        .pipe(fs.createWriteStream(tmpPath))
+        .on('error', (error) => {
+          reject(error);
+        })
+        .on('close', () => {
+          resolve(tmpPath);
+        });
+    } else {
+      reject(new Error('inputPath or version is required'));
     }
-    tarball
-      .pipe(zlib.createGunzip())
-      // eslint-disable-next-line new-cap
-      .pipe(tar.Parse())
-      .on('entry', (entry) => {
-        if (inner.isBrowserSchema(entry.path)) {
-          const filePath = path.join(outputPath, path.basename(entry.path));
-          entry.pipe(fs.createWriteStream(filePath));
-        }
+  });
+}
+
+export function fetchSchemas({ inputPath, outputPath, version }) {
+  return new Promise((resolve, reject) => {
+    getTarballPath({ inputPath, version })
+      .then((tarballPath) => {
+        const tarball = fs.createReadStream(tarballPath);
+        tarball
+          .pipe(new tar.Parse())
+          .on('entry', (entry) => {
+            // The updated tar library doesn't always strip null bytes from the
+            // end of strings anymore so we get to do that here.
+            const entryPath = stripTrailingNullByte(entry.path);
+            if (inner.isBrowserSchema(entryPath)) {
+              const filePath = path.join(outputPath, path.basename(entryPath));
+              entry.pipe(fs.createWriteStream(filePath));
+            } else {
+              entry.resume();
+            }
+          })
+          .on('error', (error) => {
+            reject(error);
+          })
+          .on('end', () => {
+            fs.unlinkSync(tarballPath);
+            resolve();
+          });
       })
-      .on('end', () => {
-        resolve();
+      .catch((error) => {
+        reject(error);
       });
   });
 }
