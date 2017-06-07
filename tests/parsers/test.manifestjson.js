@@ -136,7 +136,7 @@ describe('ManifestJSONParser', function() {
       assert.equal(manifestJSONParser.isValid, false);
       var errors = addonLinter.collector.errors;
       assert.equal(errors[0].code, messages.MANIFEST_BAD_PERMISSION.code);
-      assert.include(errors[0].message, 'should be equal to one');
+      assert.include(errors[0].message, 'should be string');
     });
 
     it('should error if permission is duplicated', () => {
