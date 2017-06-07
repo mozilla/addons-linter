@@ -163,3 +163,7 @@ export const TEMPORARY_APIS = [
   'storage.local',
   'storage.sync',
 ];
+
+// Minimum sizes for icons in pixels.
+export const MIN_ICON_SIZE = 16;
+export const RECOMMENDED_ICON_SIZE = 48;
