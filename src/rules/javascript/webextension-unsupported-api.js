@@ -5,7 +5,8 @@ export default {
   create(context) {
     return {
       MemberExpression: function(node) {
-        if (node.object.object &&
+        if (!node.computed &&
+            node.object.object &&
             ['chrome', 'browser'].includes(node.object.object.name)) {
           let namespace = node.object.property.name;
           let property = node.property.name;

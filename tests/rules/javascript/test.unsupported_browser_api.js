@@ -55,6 +55,20 @@ describe('unsupported browser APIs', () => {
       });
   });
 
+  it('does not flag if the property is in a variable', () => {
+    const code = `
+      const AREA = 'local';
+      browser.storage[AREA].set('foo', 'FOO');
+    `;
+    const jsScanner = new JavaScriptScanner(code, 'goodcode.js', {
+      addonMetadata: { id: '@supported-api' },
+    });
+    return jsScanner.scan()
+      .then(({linterMessages}) => {
+        expect(linterMessages.length).toEqual(0);
+      });
+  });
+
   // We only test the first two levels for now.
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('flags when 3 levels of nesting is unsupported', () => {
