@@ -571,6 +571,12 @@ describe('ManifestJSONParser', function() {
           'The icon defined in the manifest is too small.',
         description: 'Icons should be at least 16x16 pixels.',
       });
+      assertHasMatchingError(addonLinter.collector.warnings, {
+        code: messages.RECOMMENDED_ICON_SIZE.code,
+        message: 'Consider adding a larger icon.',
+        description:
+        'The smallest recommended size for an icon is 48x48 pixels.',
+      });
     });
   });
 });
