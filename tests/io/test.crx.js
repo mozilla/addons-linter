@@ -1,3 +1,5 @@
+import sinon from 'sinon';
+
 import { ZipFile } from 'yauzl';
 
 import { Crx } from 'io';
@@ -56,7 +58,7 @@ describe('Crx.open()', function() {
     var myCrx = new Crx('tests/fixtures/extension.crx');
     return myCrx.open()
       .then((zipfile) => {
-        assert.instanceOf(zipfile, ZipFile);
+        expect(zipfile).toBeInstanceOf(ZipFile);
       });
   });
 
@@ -89,9 +91,9 @@ describe('crx.getFiles()', function() {
 
   it('should init class props as expected', () => {
     var myCrx = new Crx('foo/bar', this.fakeZipLib);
-    assert.equal(myCrx.path, 'foo/bar');
-    assert.equal(typeof myCrx.files, 'object');
-    assert.equal(Object.keys(myCrx.files).length, 0);
+    expect(myCrx.path).toEqual('foo/bar');
+    expect(typeof myCrx.files).toEqual('object');
+    expect(Object.keys(myCrx.files).length).toEqual(0);
   });
 
   it('should return cached data when available', () => {
@@ -102,8 +104,8 @@ describe('crx.getFiles()', function() {
     };
     return myCrx.getFiles()
       .then((files) => {
-        assert.deepEqual(files, myCrx.files);
-        assert.notOk(this.fromBufferStub.called);
+        expect(files).toEqual(myCrx.files);
+        expect(this.fromBufferStub.called).toBeFalsy();
       });
   });
 
@@ -138,7 +140,7 @@ describe('crx.getFiles()', function() {
 
     return myCrx.getFiles(onEventsSubscribed)
       .then((files) => {
-        assert.deepEqual(files, expected);
+        expect(files).toEqual(expected);
       });
   });
 
@@ -158,8 +160,8 @@ describe('crx.getFiles()', function() {
     return myCrx.getFiles(onEventsSubscribed)
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.instanceOf(err, Error);
-        assert.include(err.message, 'DuplicateZipEntry');
+        expect(err).toBeInstanceOf(Error);
+        expect(err.message).toContain('DuplicateZipEntry');
       });
   });
 
@@ -172,7 +174,7 @@ describe('crx.getFiles()', function() {
     return myCrx.getFiles()
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'open test');
+        expect(err.message).toContain('open test');
       });
   });
 
@@ -186,7 +188,7 @@ describe('crx.getFiles()', function() {
     return myCrx.getFiles()
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'open test');
+        expect(err.message).toContain('open test');
       });
   });
 
@@ -201,7 +203,7 @@ describe('crx.getFiles()', function() {
     return myCrx.getFiles()
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'open test');
+        expect(err.message).toContain('open test');
       });
   });
 });

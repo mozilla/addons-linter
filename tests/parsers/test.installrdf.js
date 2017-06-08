@@ -24,7 +24,7 @@ describe('InstallRdfParser._getAddonType()', function() {
       })
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.equal(err.message, 'Multiple <em:type> elements found');
+        expect(err.message).toEqual('Multiple <em:type> elements found');
       });
   });
 
@@ -40,8 +40,8 @@ describe('InstallRdfParser._getAddonType()', function() {
       })
       .then(() => {
         var errors = addonLinter.collector.errors;
-        assert.equal(errors.length, 1);
-        assert.equal(errors[0].code, messages.RDF_TYPE_INVALID.code);
+        expect(errors.length).toEqual(1);
+        expect(errors[0].code).toEqual(messages.RDF_TYPE_INVALID.code);
       });
   });
 
@@ -57,7 +57,7 @@ describe('InstallRdfParser._getAddonType()', function() {
       })
       .then((type) => {
         // Type 2 maps to 1 PACKAGE_EXTENSION
-        assert.equal(type, constants.PACKAGE_EXTENSION);
+        expect(type).toEqual(constants.PACKAGE_EXTENSION);
       });
   });
 
@@ -73,7 +73,7 @@ describe('InstallRdfParser._getAddonType()', function() {
       })
       .then((type) => {
         // Type 128 (experiments) maps to 1 PACKAGE_EXTENSION
-        assert.equal(type, constants.PACKAGE_EXTENSION);
+        expect(type).toEqual(constants.PACKAGE_EXTENSION);
       });
   });
 
@@ -90,8 +90,8 @@ describe('InstallRdfParser._getAddonType()', function() {
       })
       .then(() => {
         var notices = addonLinter.collector.notices;
-        assert.equal(notices.length, 1);
-        assert.equal(notices[0].code, messages.RDF_TYPE_MISSING.code);
+        expect(notices.length).toEqual(1);
+        expect(notices[0].code).toEqual(messages.RDF_TYPE_MISSING.code);
       });
   });
 });
@@ -107,7 +107,7 @@ describe('InstallRdfParser._getVersion()', function() {
         return installRdfParser._getVersion();
       })
       .then((name) => {
-        assert.equal(name, '1.0');
+        expect(name).toEqual('1.0');
       });
   });
 
@@ -123,8 +123,8 @@ describe('InstallRdfParser._getVersion()', function() {
       })
       .then(() => {
         var errors = addonLinter.collector.errors;
-        assert.equal(errors.length, 1);
-        assert.equal(errors[0].code, messages.RDF_VERSION_MISSING.code);
+        expect(errors.length).toEqual(1);
+        expect(errors[0].code).toEqual(messages.RDF_VERSION_MISSING.code);
       });
   });
 });
@@ -140,7 +140,7 @@ describe('InstallRdfParser._getName()', function() {
         return installRdfParser._getName();
       })
       .then((name) => {
-        assert.equal(name, 'my-awesome-ext');
+        expect(name).toEqual('my-awesome-ext');
       });
   });
 
@@ -156,8 +156,8 @@ describe('InstallRdfParser._getName()', function() {
       })
       .then(() => {
         var errors = addonLinter.collector.errors;
-        assert.equal(errors.length, 1);
-        assert.equal(errors[0].code, messages.RDF_NAME_MISSING.code);
+        expect(errors.length).toEqual(1);
+        expect(errors[0].code).toEqual(messages.RDF_NAME_MISSING.code);
       });
   });
 });
@@ -173,8 +173,8 @@ describe('InstallRdfParser._getGUID()', function() {
         return installRdfParser._getGUID();
       })
       .then((guid) => {
-        assert.typeOf(guid, 'string');
-        assert.equal(guid, 'myid');
+        expect(typeof guid).toBe('string');
+        expect(guid).toEqual('myid');
       });
   });
 
@@ -189,7 +189,7 @@ describe('InstallRdfParser._getGUID()', function() {
         return installRdfParser._getGUID();
       })
       .then((guid) => {
-        assert.equal(guid, null);
+        expect(guid).toEqual(null);
       });
   });
 
@@ -203,7 +203,7 @@ describe('InstallRdfParser._getGUID()', function() {
         return installRdfParser._getGUID();
       })
       .then((guid) => {
-        assert.equal(guid, 'hai');
+        expect(guid).toEqual('hai');
       });
   });
 
@@ -220,9 +220,9 @@ describe('InstallRdfParser._getGUID()', function() {
       })
       .then((guid) => {
         var errors = addonLinter.collector.errors;
-        assert.equal(guid, longGUID);
-        assert.equal(errors.length, 1);
-        assert.equal(errors[0].code, messages.RDF_GUID_TOO_LONG.code);
+        expect(guid).toEqual(longGUID);
+        expect(errors.length).toEqual(1);
+        expect(errors[0].code).toEqual(messages.RDF_GUID_TOO_LONG.code);
       });
   });
 
@@ -238,8 +238,8 @@ describe('InstallRdfParser._getIsBootstrapped()', () => {
         return installRdfParser._getIsBootstrapped();
       })
       .then((bootstrap) => {
-        assert.typeOf(bootstrap, 'boolean');
-        assert.equal(bootstrap, true);
+        expect(typeof bootstrap).toBe('boolean');
+        expect(bootstrap).toEqual(true);
       });
   });
 
@@ -252,8 +252,8 @@ describe('InstallRdfParser._getIsBootstrapped()', () => {
         return installRdfParser._getIsBootstrapped();
       })
       .then((bootstrap) => {
-        assert.typeOf(bootstrap, 'boolean');
-        assert.equal(bootstrap, false);
+        expect(typeof bootstrap).toBe('boolean');
+        expect(bootstrap).toEqual(false);
       });
   });
 
@@ -267,8 +267,8 @@ describe('InstallRdfParser._getIsBootstrapped()', () => {
         return installRdfParser._getIsBootstrapped();
       })
       .then((bootstrap) => {
-        assert.typeOf(bootstrap, 'boolean');
-        assert.equal(bootstrap, true);
+        expect(typeof bootstrap).toBe('boolean');
+        expect(bootstrap).toEqual(true);
       });
   });
 
@@ -281,8 +281,8 @@ describe('InstallRdfParser._getIsBootstrapped()', () => {
         return installRdfParser._getIsBootstrapped();
       })
       .then((bootstrap) => {
-        assert.typeOf(bootstrap, 'boolean');
-        assert.equal(bootstrap, false);
+        expect(typeof bootstrap).toBe('boolean');
+        expect(bootstrap).toEqual(false);
       });
   });
 });
@@ -300,8 +300,9 @@ describe('InstallRdfParser._getDescriptionNode()', function() {
       })
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.equal(err.message,
-          'RDF node should only have a single descendant <Description>');
+        expect(err.message).toEqual(
+          'RDF node should only have a single descendant <Description>'
+        );
       });
   });
 });
@@ -319,7 +320,7 @@ describe('InstallRdfParser._getRDFNode()', function() {
       })
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.equal(err.message, 'RDF Node is not defined');
+        expect(err.message).toEqual('RDF Node is not defined');
       });
   });
 
@@ -333,7 +334,7 @@ describe('InstallRdfParser._getRDFNode()', function() {
       })
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.equal(err.message, 'Multiple RDF tags found');
+        expect(err.message).toEqual('Multiple RDF tags found');
       });
   });
 

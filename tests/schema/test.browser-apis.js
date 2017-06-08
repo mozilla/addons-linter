@@ -8,43 +8,43 @@ import {
 describe('browserApis', () => {
   describe('hasBrowserApi', () => {
     it('is false when the API is unknown', () => {
-      assert.notOk(hasBrowserApi('foo', 'notAnApi'));
+      expect(hasBrowserApi('foo', 'notAnApi')).toBeFalsy();
     });
 
     it('is true when it supports an API', () => {
-      assert.ok(hasBrowserApi('cookies', 'get'));
+      expect(hasBrowserApi('cookies', 'get')).toBeTruthy();
     });
 
     it('has the API when it is temporary', () => {
       const [namespace, property] = TEMPORARY_APIS[0].split('.');
-      assert.ok(hasBrowserApi(namespace, property));
+      expect(hasBrowserApi(namespace, property)).toBeTruthy();
     });
 
     it('has the API when it is deprecated', () => {
       const [namespace, property] = DEPRECATED_APIS[0].split('.');
-      assert.ok(hasBrowserApi(namespace, property));
+      expect(hasBrowserApi(namespace, property)).toBeTruthy();
     });
   });
 
   describe('isDeprecatedApi', () => {
     it('is not deprecated if it is unknown', () => {
-      assert.notOk(isDeprecatedApi('foo', 'notAnApi'));
+      expect(isDeprecatedApi('foo', 'notAnApi')).toBeFalsy();
     });
 
     it('is deprecated if it is in DEPRECATED_APIS', () => {
-      assert.include(DEPRECATED_APIS, 'app.getDetails');
-      assert.ok(isDeprecatedApi('app', 'getDetails'));
+      expect(DEPRECATED_APIS).toContain('app.getDetails');
+      expect(isDeprecatedApi('app', 'getDetails')).toBeTruthy();
     });
   });
 
   describe('isTemporaryApi', () => {
     it('is not temporary if it is unknown', () => {
-      assert.notOk(isTemporaryApi('foo', 'notAnApi'));
+      expect(isTemporaryApi('foo', 'notAnApi')).toBeFalsy();
     });
 
     it('is temporary if it is in TEMPORARY_APIS', () => {
-      assert.include(TEMPORARY_APIS, 'identity.getRedirectURL');
-      assert.ok(isTemporaryApi('identity', 'getRedirectURL'));
+      expect(TEMPORARY_APIS).toContain('identity.getRedirectURL');
+      expect(isTemporaryApi('identity', 'getRedirectURL')).toBeTruthy();
     });
   });
 });

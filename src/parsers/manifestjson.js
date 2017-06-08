@@ -25,7 +25,7 @@ export default class ManifestJSONParser extends JSONParser {
     // Set up some defaults in case parsing fails.
     if (typeof this.parsedJSON === 'undefined' || this.isValid === false) {
       this.parsedJSON = {
-        manifestVersion: null,
+        manifest_version: null,
         name: null,
         type: PACKAGE_EXTENSION,
         version: null,

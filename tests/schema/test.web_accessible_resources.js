@@ -10,25 +10,25 @@ describe('/web_accessible_resources', () => {
     var manifest = cloneDeep(validManifest);
     manifest.web_accessible_resources = 'foo.png';
     validate(manifest);
-    assert.equal(validate.errors.length, 1);
-    assert.equal(validate.errors[0].dataPath, '/web_accessible_resources');
-    assert.equal(validate.errors[0].message, 'should be array');
+    expect(validate.errors.length).toEqual(1);
+    expect(validate.errors[0].dataPath).toEqual('/web_accessible_resources');
+    expect(validate.errors[0].message).toEqual('should be array');
   });
 
   it('should fail if not an array of strings', () => {
     var manifest = cloneDeep(validManifest);
     manifest.web_accessible_resources = ['foo.png', 1];
     validate(manifest);
-    assert.equal(validate.errors.length, 1);
-    assert.equal(validate.errors[0].dataPath, '/web_accessible_resources/1');
-    assert.equal(validate.errors[0].message, 'should be string');
+    expect(validate.errors.length).toEqual(1);
+    expect(validate.errors[0].dataPath).toEqual('/web_accessible_resources/1');
+    expect(validate.errors[0].message).toEqual('should be string');
   });
 
   it('should be array of strings', () => {
     var manifest = cloneDeep(validManifest);
     manifest.web_accessible_resources = ['foo.png', 'bar.css'];
     validate(manifest);
-    assert.isNull(validate.errors);
+    expect(validate.errors).toBeNull();
   });
 
 });

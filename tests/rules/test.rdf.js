@@ -15,10 +15,11 @@ describe('RDF: mustNotExist', () => {
 
     return rdfScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-                     messages.TAG_NOT_ALLOWED_HIDDEN.code);
-        assert.equal(linterMessages[0].type, VALIDATION_ERROR);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(
+          messages.TAG_NOT_ALLOWED_HIDDEN.code
+        );
+        expect(linterMessages[0].type).toEqual(VALIDATION_ERROR);
       });
   });
 
@@ -29,11 +30,11 @@ describe('RDF: mustNotExist', () => {
 
     return rdfScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 2);
+        expect(linterMessages.length).toEqual(2);
 
         for (let message of linterMessages) {
-          assert.equal(message.code, messages.TAG_NOT_ALLOWED_HIDDEN.code);
-          assert.equal(message.type, VALIDATION_ERROR);
+          expect(message.code).toEqual(messages.TAG_NOT_ALLOWED_HIDDEN.code);
+          expect(message.type).toEqual(VALIDATION_ERROR);
         }
       });
   });
@@ -46,10 +47,10 @@ describe('RDF: mustNotExist', () => {
 
     return rdfScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
+        expect(linterMessages.length).toEqual(1);
         for (let message of linterMessages) {
-          assert.equal(message.code, messages.TAG_NOT_ALLOWED_UPDATEURL.code);
-          assert.equal(message.type, VALIDATION_ERROR);
+          expect(message.code).toEqual(messages.TAG_NOT_ALLOWED_UPDATEURL.code);
+          expect(message.type).toEqual(VALIDATION_ERROR);
         }
       });
   });
@@ -61,7 +62,7 @@ describe('RDF: mustNotExist', () => {
 
     return rdfScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -72,18 +73,17 @@ describe('RDF: mustNotExist', () => {
 
     return rdfScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 3);
+        expect(linterMessages.length).toEqual(3);
 
         for (let message of linterMessages) {
-          assert.equal(message.type, VALIDATION_WARNING);
+          expect(message.type).toEqual(VALIDATION_WARNING);
         }
 
-        assert.equal(linterMessages[0].code,
-                     messages.TAG_OBSOLETE_FILE.code);
-        assert.equal(linterMessages[1].code,
-                     messages.TAG_OBSOLETE_REQUIRES.code);
-        assert.equal(linterMessages[2].code,
-                     messages.TAG_OBSOLETE_SKIN.code);
+        expect(linterMessages[0].code).toEqual(messages.TAG_OBSOLETE_FILE.code);
+        expect(linterMessages[1].code).toEqual(
+          messages.TAG_OBSOLETE_REQUIRES.code
+        );
+        expect(linterMessages[2].code).toEqual(messages.TAG_OBSOLETE_SKIN.code);
       });
   });
 
@@ -103,10 +103,9 @@ describe('RDF: mustNotExist', () => {
         });
       })
       .then((linterMessages) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-                     messages.TAG_OBSOLETE_FILE.code);
-        assert.equal(linterMessages[0].type, VALIDATION_NOTICE);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(messages.TAG_OBSOLETE_FILE.code);
+        expect(linterMessages[0].type).toEqual(VALIDATION_NOTICE);
       });
   });
 });

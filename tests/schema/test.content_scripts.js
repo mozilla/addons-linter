@@ -15,7 +15,7 @@ describe('/content_scripts', () => {
       },
     ];
     validate(manifest);
-    assert.isNull(validate.errors);
+    expect(validate.errors).toBeNull();
   });
 
   it('supports run_at', () => {
@@ -28,7 +28,7 @@ describe('/content_scripts', () => {
       },
     ];
     validate(manifest);
-    assert.isNull(validate.errors);
+    expect(validate.errors).toBeNull();
   });
 
   it('catches invalid run_at', () => {

@@ -1,4 +1,5 @@
 import * as utils from 'utils';
+import sinon from 'sinon';
 import { unexpectedSuccess } from './helpers';
 
 
@@ -8,7 +9,7 @@ describe('utils.singleLineString()', function() {
     var output = utils.singleLineString`foo
               bar
         baz`;
-    assert.equal(output, 'foo bar baz');
+    expect(output).toEqual('foo bar baz');
   });
 
   it('should still do subs', () => {
@@ -18,7 +19,7 @@ describe('utils.singleLineString()', function() {
     var output = utils.singleLineString`one ${foo}
               two ${bar}
         three ${baz}`;
-    assert.equal(output, 'one 1 two 2 three 3');
+    expect(output).toEqual('one 1 two 2 three 3');
   });
 
   it('should still work with tabs', () => {
@@ -28,9 +29,8 @@ describe('utils.singleLineString()', function() {
     var output = utils.singleLineString`So here is us, on the
           ${raggedy} edge. Don't push ${me},
               			and I won't push ${you}.`;
-    assert.equal(output,
-      'So here is us, on the raggedy edge. ' +
-      "Don't push me, and I won't push you.");
+    expect(output).toEqual('So here is us, on the raggedy edge. ' +
+    "Don't push me, and I won't push you.");
   });
 
 });
@@ -67,7 +67,7 @@ describe('utils.getRootExpression()', function() {
   it('should verify that the root node is what was expected', () => {
     var root = utils.getRootExpression(node);
 
-    assert.equal(root.name, 'pref');
+    expect(root.name).toEqual('pref');
   });
 });
 
@@ -113,14 +113,14 @@ describe('utils.getNodeReference()', () => {
     var ref = { name: 'foo' };
     var val = utils.getNodeReference(context, ref);
 
-    assert.equal(val.name, 'bar');
+    expect(val.name).toEqual('bar');
   });
 
   it('should return the name of the reference if not in scope', () => {
     var ref = { name: 'doesNotExist' };
     var val = utils.getNodeReference(context, ref);
 
-    assert.equal(val.name, ref.name);
+    expect(val.name).toEqual(ref.name);
   });
 });
 
@@ -163,18 +163,18 @@ describe('utils.getVariable()', function() {
 
   it('should return the correct variable in the given context.', () => {
     var foo = utils.getVariable(context, 'foo');
-    assert.equal(foo.type, 'Literal');
-    assert.equal(foo.value, 'bar');
+    expect(foo.type).toEqual('Literal');
+    expect(foo.value).toEqual('bar');
   });
 
   it("should return undefined if the variable doesn't exist.", () => {
     var undef = utils.getVariable(context, 'doesNotExist');
-    assert.equal(typeof undef, 'undefined');
+    expect(typeof undef).toEqual('undefined');
   });
 
   it("should return undefined if the init property isn't on the parent", () => {
     var undef = utils.getVariable(contextWithoutParent, 'foo');
-    assert.equal(typeof undef, 'undefined');
+    expect(typeof undef).toEqual('undefined');
   });
 });
 
@@ -189,12 +189,12 @@ describe('utils.checkOtherReferences', function() {
 
   it('should return the node if reference is a Literal', () => {
     var literal = utils.getNodeReference(context, {type: 'Literal'});
-    assert.equal(literal.type, 'Literal');
+    expect(literal.type).toEqual('Literal');
   });
 
   it('should return the node if reference is undefined', () => {
     var undef = utils.getNodeReference(context, {type: 'undefined'});
-    assert.equal(undef.type, 'undefined');
+    expect(undef.type).toEqual('undefined');
   });
 
 });
@@ -202,31 +202,31 @@ describe('utils.checkOtherReferences', function() {
 describe('utils.ensureFilenameExists()', function() {
 
   it('should throw error when filename is not a string', () => {
-    assert.throws(() => {
+    expect(() => {
       utils.ensureFilenameExists();
-    }, Error, 'Filename is required');
-    assert.throws(() => {
+    }).toThrow('Filename is required');
+    expect(() => {
       utils.ensureFilenameExists(0);
-    }, Error, 'Filename is required');
-    assert.throws(() => {
+    }).toThrow('Filename is required');
+    expect(() => {
       utils.ensureFilenameExists(undefined);
-    }, Error, 'Filename is required');
-    assert.throws(() => {
+    }).toThrow('Filename is required');
+    expect(() => {
       utils.ensureFilenameExists(null);
-    }, Error, 'Filename is required');
+    }).toThrow('Filename is required');
   });
 
   it('should throw error when filename is empty', () => {
-    assert.throws(() => {
+    expect(() => {
       utils.ensureFilenameExists('');
-    }, Error, 'Filename is required');
+    }).toThrow('Filename is required');
   });
 
   it('should accept filenames', () => {
-    assert.doesNotThrow(() => {
+    expect(() => {
       utils.ensureFilenameExists('foo.js');
       utils.ensureFilenameExists('0');
-    }, Error);
+    }).not.toThrow();
   });
 
 });
@@ -241,7 +241,7 @@ describe('utils.checkMinNodeVersion()', function() {
     return utils.checkMinNodeVersion('0.12.7', fakeProcess)
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'Node version must be 0.12.7 or greater');
+        expect(err.message).toContain('Node version must be 0.12.7 or greater');
       });
   });
 
@@ -266,10 +266,10 @@ describe('utils.ignorePrivateFunctions()', function() {
     };
 
     var publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
-    assert.typeOf(publicFunctions, 'object');
-    assert.lengthOf(Object.keys(publicFunctions), 3);
-    assert.notInclude(Object.keys(publicFunctions), '_parseEvalPossibility');
-    assert.notInclude(Object.keys(publicFunctions), '__checkForFunctions');
+    expect(typeof publicFunctions).toBe('object');
+    expect(Object.keys(publicFunctions).length).toBe(3);
+    expect(Object.keys(publicFunctions)).not.toContain('_parseEvalPossibility');
+    expect(Object.keys(publicFunctions)).not.toContain('__checkForFunctions');
   });
 
   it('should return an empty object when given only private functions', () => {
@@ -279,8 +279,8 @@ describe('utils.ignorePrivateFunctions()', function() {
     };
 
     var publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
-    assert.typeOf(publicFunctions, 'object');
-    assert.lengthOf(Object.keys(publicFunctions), 0);
+    expect(typeof publicFunctions).toBe('object');
+    expect(Object.keys(publicFunctions).length).toBe(0);
   });
 
   it('should return only functions', () => {
@@ -292,7 +292,7 @@ describe('utils.ignorePrivateFunctions()', function() {
 
     var publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
     for (let functionName in publicFunctions) {
-      assert.equal(typeof publicFunctions[functionName], 'function');
+      expect(typeof publicFunctions[functionName]).toEqual('function');
     }
   });
 
@@ -302,23 +302,23 @@ describe('utils.ignorePrivateFunctions()', function() {
 describe('utils.getPackageTypeAsString()', function() {
 
   it('should look up a package type when passed a number', () => {
-    assert.equal(utils.getPackageTypeAsString(2), 'PACKAGE_THEME');
+    expect(utils.getPackageTypeAsString(2)).toEqual('PACKAGE_THEME');
   });
 
   it('should look up a package type when passed a string', () => {
-    assert.equal(utils.getPackageTypeAsString('2'), 'PACKAGE_THEME');
+    expect(utils.getPackageTypeAsString('2')).toEqual('PACKAGE_THEME');
   });
 
   it('should throw if given a non-existent package type value', () => {
-    assert.throws(() => {
+    expect(() => {
       utils.getPackageTypeAsString(127);
-    }, Error, 'Invalid package type constant "127"');
+    }).toThrow('Invalid package type constant "127"');
   });
 
   it('should throw if given a bogus package type value', () => {
-    assert.throws(() => {
+    expect(() => {
       utils.getPackageTypeAsString('whatevs');
-    }, Error, 'Invalid package type constant "whatevs"');
+    }).toThrow('Invalid package type constant "whatevs"');
   });
 
 });
@@ -327,30 +327,30 @@ describe('utils.getPackageTypeAsString()', function() {
 describe('utils.isLocalUrl', () => {
 
   it('should not match remote urls', () => {
-    assert.notOk(utils.isLocalUrl('http://foo.com'));
-    assert.notOk(utils.isLocalUrl('https://foo.com'));
-    assert.notOk(utils.isLocalUrl('ftp://foo.com'));
-    assert.notOk(utils.isLocalUrl('//foo.com'));
+    expect(utils.isLocalUrl('http://foo.com')).toBeFalsy();
+    expect(utils.isLocalUrl('https://foo.com')).toBeFalsy();
+    expect(utils.isLocalUrl('ftp://foo.com')).toBeFalsy();
+    expect(utils.isLocalUrl('//foo.com')).toBeFalsy();
   });
 
   it('should not match data uri', () => {
-    assert.notOk(utils.isLocalUrl('data:image/gif;base64,R0' +
-      'lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'));
+    expect(utils.isLocalUrl('data:image/gif;base64,R0' +
+      'lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')).toBeFalsy();
   });
 
   it('should match chrome protocol', () => {
-    assert.ok(utils.isLocalUrl('chrome://bar/foo'));
+    expect(utils.isLocalUrl('chrome://bar/foo')).toBeTruthy();
   });
 
   it('should match resource protocol', () => {
-    assert.ok(utils.isLocalUrl('resource://bar/foo'));
+    expect(utils.isLocalUrl('resource://bar/foo')).toBeTruthy();
   });
 
   it('should match non-remote urls starting with /', () => {
-    assert.ok(utils.isLocalUrl('/bar/foo'));
+    expect(utils.isLocalUrl('/bar/foo')).toBeTruthy();
   });
 
   it('should match non-remote urls starting with alpha', () => {
-    assert.ok(utils.isLocalUrl('bar'));
+    expect(utils.isLocalUrl('bar')).toBeTruthy();
   });
 });

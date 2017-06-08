@@ -6,15 +6,15 @@ import { fakeMessageData } from './helpers';
 describe('Message', function() {
 
   it('should throw on missing type', () => {
-    assert.throws(() => {
+    expect(() => {
       var MyMessage = new Message();
-    }, Error, /Message type "undefined" is not/);
+    }).toThrow(/Message type "undefined" is not/);
   });
 
   it('should throw on invalid type', () => {
-    assert.throws(() => {
+    expect(() => {
       var MyMessage = new Message('awooga');
-    }, Error, /Message type "awooga" is not/);
+    }).toThrow(/Message type "awooga" is not/);
   });
 
   it('should define all expected props', () => {
@@ -24,34 +24,34 @@ describe('Message', function() {
     }
     var MyMessage = new Message('error', fakeData);
     for (let prop of props) {
-      assert.equal(MyMessage[prop], prop);
+      expect(MyMessage[prop]).toEqual(prop);
     }
   });
 
   it ("shouldn't define random opts", () => {
     var MyMessage = new Message('error',
       Object.assign({}, fakeMessageData, {random: 'foo'}));
-    assert.notEqual(MyMessage.random, 'foo');
+    expect(MyMessage.random).not.toEqual('foo');
   });
 
   it('should throw on missing required prop', () => {
-    assert.throws(() => {
+    expect(() => {
       var MyMessage = new Message('error',
         Object.assign({}, {description: 'foo'}));
-    }, Error, /Message data object is missing the following props/);
+    }).toThrow(/Message data object is missing the following props/);
   });
 
   it('should throw on incorrect file prop filename', () => {
-    assert.throws(() => {
+    expect(() => {
       var MyMessage = new Message('error',
         Object.assign({}, {filename: 'foo'}));
-    }, Error, /The key for the file is "file"/);
+    }).toThrow(/The key for the file is "file"/);
   });
 
   describe('matches', () => {
     let fakeData;
 
-    before(() => {
+    beforeAll(() => {
       fakeData = props.reduce((obj, prop) => ({
         ...obj,
         [prop]: prop,
@@ -61,13 +61,13 @@ describe('Message', function() {
     it('is a match if the props are all the same', () => {
       var message = new Message('error', { ...fakeData });
       var other = new Message('error', { ...fakeData });
-      assert.ok(message.matches(other));
+      expect(message.matches(other)).toBeTruthy();
     });
 
     it('is not a match with props the same except type', () => {
       var message = new Message('error', { ...fakeData });
       var other = new Message('warning', { ...fakeData });
-      assert.notOk(message.matches(other));
+      expect(message.matches(other)).toBeFalsy();
     });
 
     it('is not a match with different props', () => {
@@ -76,7 +76,7 @@ describe('Message', function() {
         ...fakeData,
         message: 'different message',
       });
-      assert.notOk(message.matches(other));
+      expect(message.matches(other)).toBeFalsy();
     });
   });
 

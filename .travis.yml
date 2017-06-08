@@ -2,7 +2,7 @@ language: node_js
 sudo: false
 node_js:
 - '6'
-script: npm test
+script: npm run test-ci
 notifications:
   irc:
     channels:
@@ -10,6 +10,9 @@ notifications:
     on_success: change
     on_failure: always
 after_script: npm run publish-coverage
+cache:
+  directories:
+  - node_modules
 deploy:
   provider: npm
   email: addons-dev-automation+npm@mozilla.com

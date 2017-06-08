@@ -16,11 +16,10 @@ describe('opendialog_remote_uri', () => {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 6);
+        expect(linterMessages.length).toEqual(6);
         for (let message of linterMessages) {
-          assert.equal(message.code,
-                       messages.OPENDIALOG_REMOTE_URI.code);
-          assert.equal(message.type, VALIDATION_WARNING);
+          expect(message.code).toEqual(messages.OPENDIALOG_REMOTE_URI.code);
+          expect(message.type).toEqual(VALIDATION_WARNING);
         }
       });
   });
@@ -34,7 +33,7 @@ describe('opendialog_remote_uri', () => {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 

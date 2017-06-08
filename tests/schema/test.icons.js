@@ -10,25 +10,26 @@ describe('/icons', () => {
     var manifest = cloneDeep(validManifest);
     manifest.icons = {48: 'icon.png', 96: 'bigger.png'};
     validate(manifest);
-    assert.isNull(validate.errors);
+    expect(validate.errors).toBeNull();
   });
 
   it('should fail on integer value', () => {
     var manifest = cloneDeep(validManifest);
     manifest.icons = {48: 1};
     validate(manifest);
-    assert.equal(validate.errors.length, 1);
-    assert.equal(validate.errors[0].dataPath, '/icons/48');
-    assert.equal(validate.errors[0].message, 'should be string');
+    expect(validate.errors.length).toEqual(1);
+    expect(validate.errors[0].dataPath).toEqual('/icons/48');
+    expect(validate.errors[0].message).toEqual('should be string');
   });
 
   it('should fail on non-number key', () => {
     var manifest = cloneDeep(validManifest);
     manifest.icons = {wat: 'foo'};
     validate(manifest);
-    assert.equal(validate.errors.length, 1);
-    assert.equal(validate.errors[0].dataPath, '/icons/wat');
-    assert.equal(validate.errors[0].message,
-                 'should NOT have additional properties');
+    expect(validate.errors.length).toEqual(1);
+    expect(validate.errors[0].dataPath).toEqual('/icons/wat');
+    expect(validate.errors[0].message).toEqual(
+      'should NOT have additional properties'
+    );
   });
 });

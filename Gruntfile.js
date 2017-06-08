@@ -51,20 +51,4 @@ module.exports = function(grunt) {
       grunt.log.writeln('Skipping rules publication.');
     }
   });
-
-  grunt.registerTask('test', [
-    'clean',
-    'webpack:build',
-    'webpack:coverage',
-    'mochaTest:coverage',
-    'newer:eslint',
-  ]);
-
-  grunt.registerTask('test-no-coverage', [
-    'clean',
-    'webpack:build',
-    'webpack:test',
-    'mochaTest:test',
-    'newer:eslint',
-  ]);
 };

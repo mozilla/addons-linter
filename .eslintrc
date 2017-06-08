@@ -1,5 +1,6 @@
 {
   "parser": "babel-eslint",
+  "plugins": ["jest"],
   "extends": [
     "eslint:recommended",
   ],
@@ -8,6 +9,7 @@
     "browser": true,
     "es6": true,
     "mocha": true,
+    "jest": true,
   },
   "ecmaFeatures": {
     "arrowFunctions": true,
@@ -76,7 +78,12 @@
     "spaced-comment": ["error", "always"],
     "strict": ["error", "never"],
     "valid-typeof": "error",
-    "wrap-iife": ["error", "inside"]
+    "wrap-iife": ["error", "inside"],
+
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/valid-expect": "error",
   },
   "parserOptions": {
     "sourceType": "module"

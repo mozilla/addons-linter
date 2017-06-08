@@ -1,3 +1,5 @@
+import sinon from 'sinon';
+
 import { EventEmitter } from 'events';
 
 import { Directory } from 'io';
@@ -20,8 +22,8 @@ describe('Directory.getFiles()', function() {
 
     return myDirectory.getFiles(fakeWalkPromise)
       .then((files) => {
-        assert.deepEqual(files, myDirectory.files);
-        assert.notOk(fakeWalkPromise.called);
+        expect(files).toEqual(myDirectory.files);
+        expect(fakeWalkPromise.called).toBeFalsy();
       });
   });
 
@@ -31,9 +33,9 @@ describe('Directory.getFiles()', function() {
     return myDirectory.getFiles()
       .then((files) => {
         var fileNames = Object.keys(files);
-        assert.include(fileNames, 'dir1/file1.txt');
-        assert.include(fileNames, 'dir2/file2.txt');
-        assert.include(fileNames, 'dir2/dir3/file3.txt');
+        expect(fileNames).toContain('dir1/file1.txt');
+        expect(fileNames).toContain('dir2/file2.txt');
+        expect(fileNames).toContain('dir2/dir3/file3.txt');
       });
   });
 
@@ -46,9 +48,9 @@ describe('Directory.getFiles()', function() {
     return myDirectory.getFiles()
       .then((files) => {
         var fileNames = Object.keys(files);
-        assert.include(fileNames, 'dir1/file1.txt');
-        assert.notInclude(fileNames, 'dir2/file2.txt');
-        assert.notInclude(fileNames, 'dir2/dir3/file3.txt');
+        expect(fileNames).toContain('dir1/file1.txt');
+        expect(fileNames).not.toContain('dir2/file2.txt');
+        expect(fileNames).not.toContain('dir2/dir3/file3.txt');
       });
   });
 
@@ -64,9 +66,9 @@ describe('Directory.getFiles()', function() {
     return myDirectory.getFiles()
       .then((files) => {
         var fileNames = Object.keys(files);
-        assert.notInclude(fileNames, 'dir1/file1.txt');
-        assert.notInclude(fileNames, 'dir2/file2.txt');
-        assert.include(fileNames, 'dir2/dir3/file3.txt');
+        expect(fileNames).not.toContain('dir1/file1.txt');
+        expect(fileNames).not.toContain('dir2/file2.txt');
+        expect(fileNames).toContain('dir2/dir3/file3.txt');
       });
   });
 
@@ -81,8 +83,9 @@ describe('Directory._getPath()', function() {
         return myDirectory.getPath('whatever')
           .then(unexpectedSuccess)
           .catch((err) => {
-            assert.include(
-              err.message, '"whatever" does not exist in this dir.');
+            expect(err.message).toContain(
+              '"whatever" does not exist in this dir.'
+            );
           });
       });
   });
@@ -95,7 +98,7 @@ describe('Directory._getPath()', function() {
     return myDirectory.getPath('../file1.txt')
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'Path argument must be relative');
+        expect(err.message).toContain('Path argument must be relative');
       });
   });
 
@@ -107,7 +110,7 @@ describe('Directory._getPath()', function() {
     return myDirectory.getPath('/file1.txt')
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'Path argument must be relative');
+        expect(err.message).toContain('Path argument must be relative');
       });
   });
 
@@ -139,7 +142,7 @@ describe('Directory.getFileAsStream()', function() {
             });
         })
         .then((content) => {
-          assert.equal(content, '123\n');
+          expect(content).toEqual('123\n');
         });
 
       });
@@ -158,8 +161,7 @@ describe('Directory.getFileAsStream()', function() {
     return myDirectory.getFileAsStream('install.rdf')
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(
-          err.message, 'File "install.rdf" is too large');
+        expect(err.message).toContain('File "install.rdf" is too large');
       });
   });
 
@@ -175,7 +177,7 @@ describe('Directory.getFileAsString()', function() {
         return myDirectory.getFileAsString('dir3/foo.txt');
       })
       .then((content) => {
-        assert.notOk(content.charCodeAt(0) === 0xFEFF);
+        expect(content.charCodeAt(0)).not.toEqual(0xFEFF);
       });
   });
 
@@ -186,7 +188,7 @@ describe('Directory.getFileAsString()', function() {
         return myDirectory.getFileAsString('dir2/dir3/file3.txt');
       })
       .then((string) => {
-        assert.equal(string, '123\n');
+        expect(string).toEqual('123\n');
       });
   });
 
@@ -209,7 +211,7 @@ describe('Directory.getFileAsString()', function() {
     return myDirectory.getFileAsString('install.rdf')
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, '¡hola!');
+        expect(err.message).toContain('¡hola!');
       });
   });
 
@@ -226,8 +228,7 @@ describe('Directory.getFileAsString()', function() {
     return myDirectory.getFileAsString('install.rdf')
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(
-          err.message, 'File "install.rdf" is too large');
+        expect(err.message).toContain('File "install.rdf" is too large');
       });
   });
 
@@ -252,7 +253,7 @@ describe('Directory.getChunkAsBuffer()', function() {
       .then((buffer) => {
         // The file contains: 123\n. This tests that we are getting just
         // the first two characters in the buffer.
-        assert.equal(buffer.toString(), '12');
+        expect(buffer.toString()).toEqual('12');
       });
   });
 

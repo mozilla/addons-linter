@@ -11,7 +11,7 @@ describe('/incognito', () => {
     var manifest = cloneDeep(validManifest);
     manifest.incognito = 'spanning';
     validate(manifest);
-    assert.isNull(validate.errors);
+    expect(validate.errors).toBeNull();
   });
 
   it('not "spanning" should be invalid', () => {

@@ -16,10 +16,9 @@ describe('deprecated_entities', () => {
         .then(({linterMessages}) => {
           linterMessages = linterMessages.sort();
 
-          assert.equal(linterMessages.length, 1);
-          assert.equal(linterMessages[0].code,
-                       entity.error.code);
-          assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+          expect(linterMessages.length).toEqual(1);
+          expect(linterMessages[0].code).toEqual(entity.error.code);
+          expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
         });
     });
 
@@ -30,10 +29,9 @@ describe('deprecated_entities', () => {
 
       return jsScanner.scan()
         .then(({linterMessages}) => {
-          assert.equal(linterMessages.length, 1);
-          assert.equal(linterMessages[0].code,
-                       entity.error.code);
-          assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+          expect(linterMessages.length).toEqual(1);
+          expect(linterMessages[0].code).toEqual(entity.error.code);
+          expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
         });
     });
 
@@ -43,10 +41,9 @@ describe('deprecated_entities', () => {
 
       return jsScanner.scan()
         .then(({linterMessages}) => {
-          assert.equal(linterMessages.length, 1);
-          assert.equal(linterMessages[0].code,
-                       entity.error.code);
-          assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+          expect(linterMessages.length).toEqual(1);
+          expect(linterMessages[0].code).toEqual(entity.error.code);
+          expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
         });
     });
 
@@ -56,7 +53,7 @@ describe('deprecated_entities', () => {
 
       return jsScanner.scan()
         .then(({linterMessages}) => {
-          assert.equal(linterMessages.length, 0);
+          expect(linterMessages.length).toEqual(0);
         });
     });
 
@@ -66,7 +63,7 @@ describe('deprecated_entities', () => {
 
       return jsScanner.scan()
         .then(({linterMessages}) => {
-          assert.equal(linterMessages.length, 0);
+          expect(linterMessages.length).toEqual(0);
         });
     });
 
@@ -76,7 +73,7 @@ describe('deprecated_entities', () => {
 
       return jsScanner.scan()
         .then(({linterMessages}) => {
-          assert.equal(linterMessages.length, 0);
+          expect(linterMessages.length).toEqual(0);
         });
     });
 
@@ -86,7 +83,7 @@ describe('deprecated_entities', () => {
 
       return jsScanner.scan()
         .then(({linterMessages}) => {
-          assert.equal(linterMessages.length, 0);
+          expect(linterMessages.length).toEqual(0);
         });
     });
   }

@@ -10,10 +10,11 @@ describe('event_listener_fourth', () => {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-                     messages.EVENT_LISTENER_FOURTH.code);
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(
+          messages.EVENT_LISTENER_FOURTH.code
+        );
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 
@@ -23,7 +24,7 @@ describe('event_listener_fourth', () => {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -33,10 +34,11 @@ describe('event_listener_fourth', () => {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-                     messages.EVENT_LISTENER_FOURTH.code);
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(
+          messages.EVENT_LISTENER_FOURTH.code
+        );
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 
@@ -46,7 +48,7 @@ describe('event_listener_fourth', () => {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -57,10 +59,11 @@ describe('event_listener_fourth', () => {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-                     messages.EVENT_LISTENER_FOURTH.code);
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(
+          messages.EVENT_LISTENER_FOURTH.code
+        );
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 
@@ -71,57 +74,59 @@ describe('event_listener_fourth', () => {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
-  it('should not allow a true identifier', () => {
+  it('should not allow a window identifier', () => {
     var code = singleLineString`var foo = window;
       foo.addEventListener("click", function(){}, false, false);`;
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
-  it('should not allow a true identifier', () => {
+  it('should not allow a hidden addEventListener identifier', () => {
     var code = singleLineString`var foo = window.addEventListener;
       foo("click", function(){}, false, false);`;
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
-  it('should not allow a true identifier', () => {
+  it('should not allow a true identifier with untrusted argument', () => {
     var code = singleLineString`var foo = window;
       foo.addEventListener("click", function(){}, false, true);`;
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-                     messages.EVENT_LISTENER_FOURTH.code);
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(
+          messages.EVENT_LISTENER_FOURTH.code
+        );
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 
-  it('should not allow a true identifier', () => {
+  it('should not allow a true identifier hidden with arg', () => {
     var code = singleLineString`var foo = window.addEventListener;
       foo("click", function(){}, false, true);`;
     var jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-                     messages.EVENT_LISTENER_FOURTH.code);
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(
+          messages.EVENT_LISTENER_FOURTH.code
+        );
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 

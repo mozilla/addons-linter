@@ -10,9 +10,9 @@ describe('mozindexeddb', () => {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code, messages.MOZINDEXEDDB.code);
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(messages.MOZINDEXEDDB.code);
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 

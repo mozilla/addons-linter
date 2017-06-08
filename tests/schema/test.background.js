@@ -21,21 +21,21 @@ describe('/background', () => {
     var manifest = cloneDeep(validManifest);
     manifest.background = {scripts: ['js/jquery.js', '/js/jquery.js']};
     validate(manifest);
-    assert.isNull(validate.errors);
+    expect(validate.errors).toBeNull();
   });
 
   it('script relative URL with path should be valid', () => {
     var manifest = cloneDeep(validManifest);
     manifest.background = {scripts: ['foo.png']};
     validate(manifest);
-    assert.isNull(validate.errors);
+    expect(validate.errors).toBeNull();
   });
 
   it('scripts supports persistent', () => {
     var manifest = cloneDeep(validManifest);
     manifest.background = {scripts: ['/js/foo.js'], persistent: true};
     validate(manifest);
-    assert.isNull(validate.errors);
+    expect(validate.errors).toBeNull();
   });
 
   it('page absolute URL should be invalid', () => {
@@ -52,14 +52,14 @@ describe('/background', () => {
     var manifest = cloneDeep(validManifest);
     manifest.background = {page: 'foo.png'};
     validate(manifest);
-    assert.isNull(validate.errors);
+    expect(validate.errors).toBeNull();
   });
 
   it('page supports persistent', () => {
     var manifest = cloneDeep(validManifest);
     manifest.background = {page: 'foo.png', persistent: true};
     validate(manifest);
-    assert.isNull(validate.errors);
+    expect(validate.errors).toBeNull();
   });
 
 });

@@ -14,34 +14,32 @@ class BaseScannerWithContents extends BaseScanner {
 describe('Base Scanner Class', function() {
 
   it('scannerName not defined by default', () => {
-    assert.throws(
-      () => { BaseScanner.scannerName; },
-      Error,
-      'scannerName is not implemented'
-    );
+    expect(() => {
+      BaseScanner.scannerName;
+    }).toThrow('scannerName is not implemented');
   });
 
   it('should thrown an error without a filename', () => {
-    assert.throws(() => {
+    expect(() => {
       var baseScanner = new BaseScanner(''); // eslint-disable-line
-    }, Error, 'Filename is required');
+    }).toThrow('Filename is required');
 
-    assert.throws(() => {
+    expect(() => {
       // An empty filename doesn't count either.
       var baseScanner = new BaseScanner('', ''); // eslint-disable-line
-    }, Error, 'Filename is required');
+    }).toThrow('Filename is required');
   });
 
   it('should have an options property', () => {
     var baseScanner = new BaseScanner('', 'filename.txt');
-    assert.equal(typeof baseScanner.options, 'object');
+    expect(typeof baseScanner.options).toEqual('object');
     // This test assures us the options can be accessed like an object.
-    assert.equal(typeof baseScanner.options.someUndefinedProp, 'undefined');
+    expect(typeof baseScanner.options.someUndefinedProp).toEqual('undefined');
 
     var baseScannerWithOptions = new BaseScanner('', 'filename.txt', {
       foo: 'bar',
     });
-    assert.equal(baseScannerWithOptions.options.foo, 'bar');
+    expect(baseScannerWithOptions.options.foo).toEqual('bar');
   });
 
   it('should reject when _getContents is not implemented', () => {
@@ -49,11 +47,11 @@ describe('Base Scanner Class', function() {
 
     return baseScanner.scan()
       .then(() => {
-        assert.fail(null, null, 'Unexpected success');
+        expect(false).toBe(true);
       })
       .catch((err) => {
-        assert.instanceOf(err, Error);
-        assert.equal(err.message, '_getContents is not implemented');
+        expect(err).toBeInstanceOf(Error);
+        expect(err.message).toEqual('_getContents is not implemented');
       });
   });
 
@@ -67,8 +65,8 @@ describe('Base Scanner Class', function() {
 
     return baseScanner.scan(fakeRules)
       .then(() => {
-        assert.ok(fakeRules.iAmAFakeRule.calledOnce);
-        assert.ok(fakeRules.iAmAAnotherFakeRule.calledOnce);
+        expect(fakeRules.iAmAFakeRule.calledOnce).toBeTruthy();
+        expect(fakeRules.iAmAAnotherFakeRule.calledOnce).toBeTruthy();
       });
   });
 
@@ -76,7 +74,7 @@ describe('Base Scanner Class', function() {
     var fakeRules = { metadataPassedCheck: () => {} };
 
     // This rule calls assert.fail() if no metadata is passed to it.
-    sinon.stub(fakeRules, 'metadataPassedCheck', metadataPassCheck);
+    sinon.stub(fakeRules, 'metadataPassedCheck').callsFake(metadataPassCheck);
 
     var scanner = new BaseScannerWithContents('', 'fake.zip', {
       addonMetadata: validMetadata({guid: 'snowflake'}),
@@ -84,8 +82,8 @@ describe('Base Scanner Class', function() {
 
     return scanner.scan(fakeRules)
       .then(({linterMessages}) => {
-        assert.ok(fakeRules.metadataPassedCheck.called);
-        assert.equal(linterMessages.length, 0);
+        expect(fakeRules.metadataPassedCheck.called).toBeTruthy();
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -98,8 +96,8 @@ describe('Base Scanner Class', function() {
 
     return baseScanner.scan(fakeRules)
       .then(() => {
-        assert.ok(fakeRules.iAmAFakeRule.calledOnce);
-        assert.notOk(fakeRules._iAmAPrivateFunction.calledOnce);
+        expect(fakeRules.iAmAFakeRule.calledOnce).toBeTruthy();
+        expect(fakeRules._iAmAPrivateFunction.calledOnce).toBeFalsy();
       });
   });
 
@@ -113,12 +111,13 @@ describe('Base Scanner Class', function() {
 
     return baseScanner.scan(fakeRules)
       .then(() => {
-        assert.equal(baseScanner._rulesProcessed,
-                     Object.keys(ignorePrivateFunctions(fakeRules)).length);
+        expect(
+          baseScanner._rulesProcessed
+        ).toEqual(Object.keys(ignorePrivateFunctions(fakeRules)).length);
       });
   });
 
   it('should ask for a string', () => {
-    assert(BaseScanner.fileResultType, 'string');
+    expect(BaseScanner.fileResultType).toBeTruthy();
   });
 });
