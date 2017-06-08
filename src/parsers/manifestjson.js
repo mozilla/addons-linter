@@ -166,13 +166,11 @@ export default class ManifestJSONParser extends JSONParser {
     });
     const hasIconOfSize = (size) =>
       Object.keys(icons).some((iconSize) => parseInt(iconSize, 10) >= size);
-    const hasMinSizeIcon = hasIconOfSize(MIN_ICON_SIZE);
-    const hasRecommendedSizeIcon = hasIconOfSize(RECOMMENDED_ICON_SIZE);
-    if (!hasMinSizeIcon) {
+    if (!hasIconOfSize(MIN_ICON_SIZE)) {
       this.collector.addError(messages.MIN_ICON_SIZE);
       this.isValid = false;
     }
-    if (!hasRecommendedSizeIcon) {
+    if (!hasIconOfSize(RECOMMENDED_ICON_SIZE)) {
       this.collector.addWarning(messages.RECOMMENDED_ICON_SIZE);
     }
   }
