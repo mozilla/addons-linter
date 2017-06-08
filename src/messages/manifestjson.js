@@ -1,4 +1,4 @@
-import { gettext as _, singleLineString } from 'utils';
+import { gettext as _, singleLineString, sprintf } from 'utils';
 import { MANIFEST_JSON } from 'const';
 
 
@@ -102,6 +102,20 @@ export function manifestPropMissing(property) {
     legacyCode: null,
     message: _(`No "${property}" property found in manifest.json`),
     description: _(`"${property}" is required`),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const MANIFEST_ICON_NOT_FOUND = 'MANIFEST_ICON_NOT_FOUND';
+export function manifestIconMissing(path) {
+  return {
+    code: MANIFEST_ICON_NOT_FOUND,
+    legacyCode: null,
+    message: _(
+      'An icon defined in the manifest could not be found in the package.'),
+    description: sprintf(
+      _('Icon could not be found at "%(path)s".'),
+      {path}),
     file: MANIFEST_JSON,
   };
 }

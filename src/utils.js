@@ -1,5 +1,7 @@
 import url from 'url';
 
+import jed from 'jed';
+
 import semver from 'semver';
 import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
@@ -138,6 +140,11 @@ export function gettext(str) {
   return str;
 }
 
+/*
+ * An sprintf to use with gettext. Imported from Jed for when we have a proper
+ * l10n solution.
+ */
+export const sprintf = jed.sprintf;
 
 /*
  * Check the minimum node version is met
