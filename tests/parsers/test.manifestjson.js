@@ -526,5 +526,57 @@ describe('ManifestJSONParser', function() {
         description: 'Icon could not be found at "icons/icon-64.png".',
       });
     });
+
+    it('notifies the developer of the recommended icon size', () => {
+      const addonLinter = new Linter({_: ['bar']});
+      const json = validManifestJSON({
+        icons: {
+          10: 'icons/icon-10.png',
+          16: 'icons/icon-16.png',
+        },
+      });
+      const files = {
+        'icons/icon-10.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-16.png': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, {io: {files}});
+      assert.ok(manifestJSONParser.isValid);
+      assertHasMatchingError(addonLinter.collector.warnings, {
+        code: messages.RECOMMENDED_ICON_SIZE.code,
+        message: 'Consider adding a larger icon.',
+        description:
+        'The smallest recommended size for an icon is 48x48 pixels.',
+      });
+    });
+
+    it('adds an error if no icons are at least 16px', () => {
+      const addonLinter = new Linter({_: ['bar']});
+      const json = validManifestJSON({
+        icons: {
+          10: 'icons/icon-10.png',
+          15: 'icons/icon-15.png',
+        },
+      });
+      const files = {
+        'icons/icon-10.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-15.png': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, {io: {files}});
+      assert.notOk(manifestJSONParser.isValid);
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.MIN_ICON_SIZE.code,
+        message:
+          'The icon defined in the manifest is too small.',
+        description: 'Icons should be at least 16x16 pixels.',
+      });
+      assertHasMatchingError(addonLinter.collector.warnings, {
+        code: messages.RECOMMENDED_ICON_SIZE.code,
+        message: 'Consider adding a larger icon.',
+        description:
+        'The smallest recommended size for an icon is 48x48 pixels.',
+      });
+    });
   });
 });

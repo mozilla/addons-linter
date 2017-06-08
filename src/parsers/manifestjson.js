@@ -4,7 +4,12 @@ import RJSON from 'relaxed-json';
 import validate from 'schema/validator';
 
 import { getConfig } from 'cli';
-import { MANIFEST_JSON, PACKAGE_EXTENSION } from 'const';
+import {
+  MANIFEST_JSON,
+  MIN_ICON_SIZE,
+  PACKAGE_EXTENSION,
+  RECOMMENDED_ICON_SIZE,
+} from 'const';
 import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
@@ -159,6 +164,15 @@ export default class ManifestJSONParser extends JSONParser {
         this.isValid = false;
       }
     });
+    const hasIconOfSize = (size) =>
+      Object.keys(icons).some((iconSize) => parseInt(iconSize, 10) >= size);
+    if (!hasIconOfSize(MIN_ICON_SIZE)) {
+      this.collector.addError(messages.MIN_ICON_SIZE);
+      this.isValid = false;
+    }
+    if (!hasIconOfSize(RECOMMENDED_ICON_SIZE)) {
+      this.collector.addWarning(messages.RECOMMENDED_ICON_SIZE);
+    }
   }
 
   getAddonId() {
