@@ -1,7 +1,9 @@
 import path from 'path';
+import { Writable } from 'stream';
 
+import partition from 'lodash.partition';
 import RJSON from 'relaxed-json';
-import validate from 'schema/validator';
+import sharp from 'sharp';
 
 import { getConfig } from 'cli';
 import {
@@ -14,6 +16,7 @@ import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
+import validate from 'schema/validator';
 import { singleLineString } from 'utils';
 
 function normalizePath(iconPath) {
@@ -23,6 +26,20 @@ function normalizePath(iconPath) {
     return iconPath.slice(2);
   }
   return iconPath;
+}
+
+function getImageMetadata(stream) {
+  return new Promise((resolve, reject) => {
+    const transformer = sharp()
+      .on('info', (info) => resolve(info))
+      .on('error', (error) => reject(error));
+    stream.pipe(transformer).pipe(new Writable({
+      write(chunk, encoding, cb) {
+        // Drop the output, we don't need it.
+        setImmediate(cb);
+      },
+    }));
+  });
 }
 
 export default class ManifestJSONParser extends JSONParser {
@@ -128,10 +145,6 @@ export default class ManifestJSONParser extends JSONParser {
       this.collector.addNotice(messages.MANIFEST_UNUSED_UPDATE);
     }
 
-    if (this.parsedJSON.icons) {
-      this.validateIcons();
-    }
-
     if (!this.selfHosted && this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.update_url) {
@@ -165,23 +178,64 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateIcons() {
+    // TODO: Simplify this function.
+    // TODO: Only read images that exist.
+    // TODO: Handle images that aren't valid and add an error.
     const { icons } = this.parsedJSON;
-    Object.keys(icons).forEach((size) => {
-      const path = normalizePath(icons[size]);
-      if (!this.io.files.hasOwnProperty(path)) {
-        this.collector.addError(messages.manifestIconMissing(path));
-        this.isValid = false;
-      }
+
+    // Convert the object with size: path to an array of { size, path }.
+    const allIcons = Object.keys(icons).map((size) => {
+      return { size: parseInt(size, 10), path: normalizePath(icons[size]) };
     });
-    const hasIconOfSize = (size) =>
-      Object.keys(icons).some((iconSize) => parseInt(iconSize, 10) >= size);
-    if (!hasIconOfSize(MIN_ICON_SIZE)) {
-      this.collector.addError(messages.MIN_ICON_SIZE);
+    const [existingIcons, missingIcons] = partition(
+      allIcons, ({ path }) => this.io.files.hasOwnProperty(path));
+
+    // Verify that each icon exists in the package.
+    missingIcons.forEach(({ path }) => {
+      this.collector.addError(messages.manifestIconMissing(path));
       this.isValid = false;
-    }
-    if (!hasIconOfSize(RECOMMENDED_ICON_SIZE)) {
-      this.collector.addWarning(messages.RECOMMENDED_ICON_SIZE);
-    }
+    });
+
+    return Promise.all(
+      existingIcons
+        .map((icon) => {
+          return { ...icon, stream: this.io.getFileAsStream(icon.path) };
+        })
+        .map(({ stream, ...icon }) => {
+          return getImageMetadata(stream)
+            .then((info) => ({ ...icon, info }));
+        }))
+      .then((existingIconsMetadata) => {
+        // Verify that all of the icons are square and match the defined size.
+        existingIconsMetadata.forEach(({ path, info, size }) => {
+          if (info.width !== info.height) {
+            this.collector.addError(messages.iconIsNotSquare(path));
+            this.isValid = false;
+          } else if (info.width !== size) {
+            this.collector.addWarning(messages.iconSizeInvalid({
+              path,
+              expected: size,
+              actual: info.width,
+            }));
+          }
+        });
+
+        // Helper to check that an image is of a certain size.
+        const hasIconOfSize = (expectedSize) =>
+          existingIconsMetadata.some(({ size }) => size >= expectedSize);
+
+        // Verify that at least one image is 16x16 (the minimum for Firefox's UI).
+        if (!hasIconOfSize(MIN_ICON_SIZE)) {
+          this.collector.addError(messages.MIN_ICON_SIZE);
+          this.isValid = false;
+        }
+
+        // Warn developers if they don't have any icons at least 48x48 since that's
+        // the recommended size.
+        if (!hasIconOfSize(RECOMMENDED_ICON_SIZE)) {
+          this.collector.addWarning(messages.RECOMMENDED_ICON_SIZE);
+        }
+      });
   }
 
   getAddonId() {
@@ -195,12 +249,22 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   getMetadata() {
-    return {
-      id: this.getAddonId(),
-      manifestVersion: this.parsedJSON.manifest_version,
-      name: this.parsedJSON.name,
-      type: PACKAGE_EXTENSION,
-      version: this.parsedJSON.version,
-    };
+    // FIXME: This function isn't really meant to be async but it is
+    // returned in a promise, so it could be...
+    let validateIcons;
+    if (this.parsedJSON.icons) {
+      validateIcons = this.validateIcons();
+    } else {
+      validateIcons = Promise.resolve();
+    }
+    return validateIcons.then(() => {
+      return {
+        id: this.getAddonId(),
+        manifestVersion: this.parsedJSON.manifest_version,
+        name: this.parsedJSON.name,
+        type: PACKAGE_EXTENSION,
+        version: this.parsedJSON.version,
+      };
+    });
   }
 }

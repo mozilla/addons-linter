@@ -122,6 +122,31 @@ export function manifestIconMissing(path) {
   };
 }
 
+export const ICON_NOT_SQUARE = 'ICON_NOT_SQUARE';
+export function iconIsNotSquare(path) {
+  return {
+    code: ICON_NOT_SQUARE,
+    legacyCode: null,
+    message: _('Icons must be square.'),
+    description: sprintf(_('Icon at "%(path)s" must be square.'), {path}),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const ICON_SIZE_INVALID = 'ICON_SIZE_INVALID';
+export function iconSizeInvalid({ path, expected, actual }) {
+  return {
+    code: ICON_SIZE_INVALID,
+    legacyCode: null,
+    message: _('The size of the icon does not match the manifest.'),
+    description: sprintf(
+      _('Expected icon at "%(path)s" to be %(expected)d pixels wide but was ' +
+        '%(actual)d.'),
+      {path, expected, actual}),
+    file: MANIFEST_JSON,
+  };
+}
+
 export const MIN_ICON_SIZE = {
   code: 'MIN_ICON_SIZE',
   legacyCode: null,

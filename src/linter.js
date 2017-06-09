@@ -266,6 +266,7 @@ export default class Linter {
           _log.info('Retrieving metadata from manifest.json');
           return this.io.getFileAsString(MANIFEST_JSON)
             .then((json) => {
+              // TODO: Explicitly call validate and make it async.
               var manifestParser = new ManifestJSONParser(
                 json,
                 this.collector,
