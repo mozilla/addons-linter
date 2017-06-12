@@ -43,11 +43,10 @@ describe('CSS Rule General', () => {
 
     return cssScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].message, 'Unclosed comment');
-        assert.equal(linterMessages[0].code,
-                     messages.CSS_SYNTAX_ERROR.code);
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].message).toEqual('Unclosed comment');
+        expect(linterMessages[0].code).toEqual(messages.CSS_SYNTAX_ERROR.code);
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 });

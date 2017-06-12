@@ -11,7 +11,7 @@ describe('/permissions', () => {
     var manifest = cloneDeep(validManifest);
     manifest.permissions = ['tabs'];
     validate(manifest);
-    assert.isNull(validate.errors);
+    expect(validate.errors).toBeNull();
   });
 
   it('should not allow duplicate permissions', () => {
@@ -46,7 +46,7 @@ describe('/permissions', () => {
       var manifest = cloneDeep(validManifest);
       manifest.permissions = [matchPattern];
       validate(manifest);
-      assert.isNull(validate.errors);
+      expect(validate.errors).toBeNull();
     });
   }
 

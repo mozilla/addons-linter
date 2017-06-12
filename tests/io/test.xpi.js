@@ -1,3 +1,5 @@
+import sinon from 'sinon';
+
 import { Readable } from 'stream';
 import { EventEmitter } from 'events';
 
@@ -66,7 +68,7 @@ describe('Xpi.open()', function() {
     this.openStub.yieldsAsync(null, this.fakeZipFile);
     return myXpi.open()
       .then((zipfile) => {
-        assert.equal(zipfile.testprop, 'I am the fake zip');
+        expect(zipfile.testprop).toEqual('I am the fake zip');
       });
   });
 
@@ -77,7 +79,7 @@ describe('Xpi.open()', function() {
     return myXpi.open()
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'open() test');
+        expect(err.message).toContain('open() test');
       });
   });
 
@@ -107,9 +109,9 @@ describe('xpi.getFiles()', function() {
 
   it('should init class props as expected', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
-    assert.equal(myXpi.path, 'foo/bar');
-    assert.equal(typeof myXpi.files, 'object');
-    assert.equal(Object.keys(myXpi.files).length, 0);
+    expect(myXpi.path).toEqual('foo/bar');
+    expect(typeof myXpi.files).toEqual('object');
+    expect(Object.keys(myXpi.files).length).toEqual(0);
   });
 
   it('should return cached data when available', () => {
@@ -120,8 +122,8 @@ describe('xpi.getFiles()', function() {
     };
     return myXpi.getFiles()
       .then((files) => {
-        assert.deepEqual(files, myXpi.files);
-        assert.notOk(this.openStub.called);
+        expect(files).toEqual(myXpi.files);
+        expect(this.openStub.called).toBeFalsy();
       });
   });
 
@@ -153,7 +155,7 @@ describe('xpi.getFiles()', function() {
 
     return myXpi.getFiles(onEventsSubscribed)
       .then((files) => {
-        assert.deepEqual(files, expected);
+        expect(files).toEqual(expected);
       });
   });
 
@@ -181,8 +183,8 @@ describe('xpi.getFiles()', function() {
     });
     return myXpi.getFiles(onEventsSubscribed)
       .then((files) => {
-        assert.equal(files['chrome.manifest'], chromeManifestEntry);
-        assert.isUndefined(files['install.rdf']);
+        expect(files['chrome.manifest']).toEqual(chromeManifestEntry);
+        expect(files['install.rdf']).not.toBeDefined();
       });
   });
 
@@ -205,8 +207,8 @@ describe('xpi.getFiles()', function() {
     });
     return myXpi.getFiles()
       .then((files) => {
-        assert.equal(files['chrome.manifest'], chromeManifestEntry);
-        assert.isUndefined(files['install.rdf']);
+        expect(files['chrome.manifest']).toEqual(chromeManifestEntry);
+        expect(files['install.rdf']).not.toBeDefined();
       });
   });
 
@@ -223,8 +225,8 @@ describe('xpi.getFiles()', function() {
     return myXpi.getFiles(onEventsSubscribed)
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.instanceOf(err, Error);
-        assert.include(err.message, 'DuplicateZipEntry');
+        expect(err).toBeInstanceOf(Error);
+        expect(err.message).toContain('DuplicateZipEntry');
       });
   });
 
@@ -235,7 +237,7 @@ describe('xpi.getFiles()', function() {
     return myXpi.getFiles()
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'open test');
+        expect(err.message).toContain('open test');
       });
   });
 });
@@ -245,9 +247,9 @@ describe('Xpi.getFile()', function() {
 
   it('should throw if fileStreamType is incorrect', () => {
     var myXpi = new Xpi('foo/bar', this.fakeZipLib);
-    assert.throw(() => {
+    expect(() => {
       myXpi.getFile('whatever-file', 'whatever');
-    }, Error, /Unexpected fileStreamType value "whatever"/);
+    }).toThrowError('Unexpected fileStreamType value "whatever"');
   });
 
   it('should call getFileAsString', () => {
@@ -255,7 +257,7 @@ describe('Xpi.getFile()', function() {
     var fakeFile = 'fakeFile';
     myXpi.getFileAsString = sinon.stub();
     myXpi.getFile(fakeFile, 'string');
-    assert.ok(myXpi.getFileAsString.calledWith(fakeFile));
+    expect(myXpi.getFileAsString.calledWith(fakeFile)).toBeTruthy();
   });
 
   it('should call getFileAsStream', () => {
@@ -263,7 +265,7 @@ describe('Xpi.getFile()', function() {
     var fakeFile = 'fakeFile';
     myXpi.getFileAsStream = sinon.stub();
     myXpi.getFile(fakeFile, 'stream');
-    assert.ok(myXpi.getFileAsStream.calledWith(fakeFile));
+    expect(myXpi.getFileAsStream.calledWith(fakeFile)).toBeTruthy();
   });
 
 });
@@ -280,7 +282,7 @@ describe('Xpi.checkPath()', function() {
     return myXpi.getFileAsStream('whatever')
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'Path "whatever" does not exist');
+        expect(err.message).toContain('Path "whatever" does not exist');
       });
   });
 
@@ -298,8 +300,7 @@ describe('Xpi.checkPath()', function() {
     return myXpi.getFileAsStream('install.rdf')
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(
-          err.message, 'File "install.rdf" is too large');
+        expect(err.message).toContain('File "install.rdf" is too large');
       });
   });
 
@@ -317,8 +318,7 @@ describe('Xpi.checkPath()', function() {
     return myXpi.getFileAsString('install.rdf')
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(
-          err.message, 'File "install.rdf" is too large');
+        expect(err.message).toContain('File "install.rdf" is too large');
       });
   });
 
@@ -359,7 +359,7 @@ describe('Xpi.getChunkAsBuffer()', function() {
     return myXpi.getChunkAsBuffer('install.rdf')
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'getChunkAsBuffer openReadStream test');
+        expect(err.message).toContain('getChunkAsBuffer openReadStream test');
       });
   });
 
@@ -382,7 +382,7 @@ describe('Xpi.getChunkAsBuffer()', function() {
       .then((buffer) => {
         // The file contains: 123\n. This tests that we are getting just
         // the first two characters in the buffer.
-        assert.equal(buffer.toString(), '12');
+        expect(buffer.toString()).toEqual('12');
       });
   });
 
@@ -418,7 +418,7 @@ describe('Xpi.getFileAsStream()', function() {
     return myXpi.getFileAsStream('install.rdf')
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'getFileAsStream openReadStream test');
+        expect(err.message).toContain('getFileAsStream openReadStream test');
       });
   });
 
@@ -458,8 +458,8 @@ describe('Xpi.getFileAsStream()', function() {
         })
         .then((chunks) => {
           var [chunk1, chunk2] = chunks.split('\n');
-          assert.equal(chunk1, 'line one');
-          assert.equal(chunk2, 'line two');
+          expect(chunk1).toEqual('line one');
+          expect(chunk2).toEqual('line two');
         });
       });
   });
@@ -482,7 +482,7 @@ describe('Xpi.getFileAsStream()', function() {
 
     return myXpi.getFileAsString('install.rdf')
       .then((string) => {
-        assert.equal(string, 'line one\nline two');
+        expect(string).toEqual('line one\nline two');
       });
   });
 
@@ -500,7 +500,7 @@ describe('Xpi.getFileAsStream()', function() {
 
     return myXpi.getFileAsString('install.rdf')
       .then((string) => {
-        assert.notOk(string.charCodeAt(0) === 0xFEFF);
+        expect(string.charCodeAt(0) === 0xFEFF).toBeFalsy();
       });
   });
 
@@ -518,7 +518,7 @@ describe('Xpi.getFileAsStream()', function() {
     return myXpi.getFileAsString('install.rdf')
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'getFileAsString openReadStream test');
+        expect(err.message).toContain('getFileAsString openReadStream test');
       });
   });
 
@@ -541,7 +541,7 @@ describe('Xpi.getFileAsStream()', function() {
     return myXpi.getFileAsString('install.rdf')
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, '¡hola!');
+        expect(err.message).toContain('¡hola!');
       });
   });
 
@@ -566,12 +566,12 @@ describe('Xpi.getFilesByExt()', function() {
 
     return myXpi.getFilesByExt('.js')
       .then((jsFiles) => {
-        assert.equal(jsFiles.length, 2);
-        assert.equal(jsFiles[0], 'main.js');
-        assert.equal(jsFiles[1], 'secondary.js');
+        expect(jsFiles.length).toEqual(2);
+        expect(jsFiles[0]).toEqual('main.js');
+        expect(jsFiles[1]).toEqual('secondary.js');
 
         for (let i = 0; i < jsFiles.length; i++) {
-          assert.ok(jsFiles[i].endsWith('.js'));
+          expect(jsFiles[i].endsWith('.js')).toBeTruthy();
         }
       });
   });
@@ -587,12 +587,12 @@ describe('Xpi.getFilesByExt()', function() {
 
     return myXpi.getFilesByExt('.css')
       .then((cssFiles) => {
-        assert.equal(cssFiles.length, 2);
-        assert.equal(cssFiles[0], 'other.css');
-        assert.equal(cssFiles[1], 'styles.css');
+        expect(cssFiles.length).toEqual(2);
+        expect(cssFiles[0]).toEqual('other.css');
+        expect(cssFiles[1]).toEqual('styles.css');
 
         for (let i = 0; i < cssFiles.length; i++) {
-          assert.ok(cssFiles[i].endsWith('.css'));
+          expect(cssFiles[i].endsWith('.css')).toBeTruthy();
         }
       });
   });
@@ -610,14 +610,14 @@ describe('Xpi.getFilesByExt()', function() {
 
     return myXpi.getFilesByExt('.html', '.htm')
       .then((htmlFiles) => {
-        assert.equal(htmlFiles.length, 3);
-        assert.equal(htmlFiles[0], 'index.html');
-        assert.equal(htmlFiles[1], 'second.htm');
-        assert.equal(htmlFiles[2], 'third.html');
+        expect(htmlFiles.length).toEqual(3);
+        expect(htmlFiles[0]).toEqual('index.html');
+        expect(htmlFiles[1]).toEqual('second.htm');
+        expect(htmlFiles[2]).toEqual('third.html');
 
         for (let i = 0; i < htmlFiles.length; i++) {
-          assert.ok(htmlFiles[i].endsWith('.html') ||
-                    htmlFiles[i].endsWith('.htm'));
+          expect(htmlFiles[i].endsWith('.html') ||
+                    htmlFiles[i].endsWith('.htm')).toBeTruthy();
         }
       });
   });
@@ -627,7 +627,7 @@ describe('Xpi.getFilesByExt()', function() {
     return myXpi.getFilesByExt('css')
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'File extension must start with');
+        expect(err.message).toContain('File extension must start with');
       });
   });
 

@@ -1,5 +1,6 @@
 import Linter from 'linter';
 import JSONParser from 'parsers/json';
+import sinon from 'sinon';
 
 import * as messages from 'messages';
 import { singleLineString } from 'utils';
@@ -13,12 +14,12 @@ describe('JSONParser', function() {
     var jsonParser = new JSONParser('blah', addonLinter.collector);
     jsonParser.parse();
 
-    assert.equal(jsonParser.isValid, false);
+    expect(jsonParser.isValid).toEqual(false);
     var errors = addonLinter.collector.errors;
-    assert.equal(errors.length, 1);
-    assert.equal(errors[0].code, messages.JSON_INVALID.code);
-    assert.include(errors[0].message, 'Your JSON is not valid.');
-    assert.include(errors[0].description, 'Unexpected token b');
+    expect(errors.length).toEqual(1);
+    expect(errors[0].code).toEqual(messages.JSON_INVALID.code);
+    expect(errors[0].message).toContain('Your JSON is not valid.');
+    expect(errors[0].description).toContain('Unexpected token b');
   });
 
 });
@@ -47,13 +48,13 @@ describe('JSONParser duplicate keys', function() {
     var jsonParser = new JSONParser(json, addonLinter.collector);
     jsonParser.parse();
 
-    assert.equal(jsonParser.isValid, false);
+    expect(jsonParser.isValid).toEqual(false);
     var errors = addonLinter.collector.errors;
-    assert.lengthOf(errors, 1);
-    assert.equal(errors[0].code, messages.JSON_DUPLICATE_KEY.code);
-    assert.include(errors[0].message, 'Duplicate keys are not allowed');
-    assert.equal(errors[0].line, 6);
-    assert.include(errors[0].description, 'Duplicate key: name found');
+    expect(errors.length).toBe(1);
+    expect(errors[0].code).toEqual(messages.JSON_DUPLICATE_KEY.code);
+    expect(errors[0].message).toContain('Duplicate keys are not allowed');
+    expect(errors[0].line).toEqual(6);
+    expect(errors[0].description).toContain('Duplicate key: name found');
   });
 
   it('should report all dupes if multiple duplicate keys are found', () => {
@@ -76,16 +77,16 @@ describe('JSONParser duplicate keys', function() {
     var jsonParser = new JSONParser(json, addonLinter.collector);
     jsonParser.parse();
 
-    assert.equal(jsonParser.isValid, false);
+    expect(jsonParser.isValid).toEqual(false);
     var errors = addonLinter.collector.errors;
-    assert.lengthOf(errors, 3);
-    assert.equal(errors[0].code, messages.JSON_DUPLICATE_KEY.code);
+    expect(errors.length).toBe(3);
+    expect(errors[0].code).toEqual(messages.JSON_DUPLICATE_KEY.code);
     // We expect the duplicate error messages to be in the order of the
     // dupliate keys in the manifest.
-    assert.include(errors[0].message, 'Duplicate keys are not allowed');
-    assert.include(errors[0].description, 'Duplicate key: name found');
-    assert.include(errors[1].description, 'Duplicate key: version found');
-    assert.include(errors[2].description, 'Duplicate key: name found');
+    expect(errors[0].message).toContain('Duplicate keys are not allowed');
+    expect(errors[0].description).toContain('Duplicate key: name found');
+    expect(errors[1].description).toContain('Duplicate key: version found');
+    expect(errors[2].description).toContain('Duplicate key: name found');
   });
 
   it('should not expose other RJSON errors', () => {
@@ -106,7 +107,7 @@ describe('JSONParser duplicate keys', function() {
     '}'].join('\n');
     /* eslint-enable indent */
     var fakeRJSON = { parse: () => {} };
-    var parseStub = sinon.stub(fakeRJSON, 'parse', () => {
+    var parseStub = sinon.stub(fakeRJSON, 'parse').callsFake(() => {
       throw {
         warnings: [
           {
@@ -124,15 +125,16 @@ describe('JSONParser duplicate keys', function() {
     var jsonParser = new JSONParser(json, addonLinter.collector);
     jsonParser.parse(fakeRJSON);
 
-    assert.equal(jsonParser.isValid, false);
-    assert.ok(parseStub.called);
+    expect(jsonParser.isValid).toEqual(false);
+    expect(parseStub.called).toBeTruthy();
     var errors = addonLinter.collector.errors;
-    assert.lengthOf(errors, 1);
-    assert.equal(errors[0].code, messages.JSON_DUPLICATE_KEY.code);
-    assert.include(errors[0].message, 'Duplicate keys are not allowed');
-    assert.equal(errors[0].line, 1);
-    assert.include(errors[0].description,
-                   'Duplicate key: not actually found but this is a test');
+    expect(errors.length).toBe(1);
+    expect(errors[0].code).toEqual(messages.JSON_DUPLICATE_KEY.code);
+    expect(errors[0].message).toContain('Duplicate keys are not allowed');
+    expect(errors[0].line).toEqual(1);
+    expect(errors[0].description).toContain(
+      'Duplicate key: not actually found but this is a test'
+    );
   });
 
   it('should not be invalid if unknown RJSON errors', () => {
@@ -142,7 +144,7 @@ describe('JSONParser duplicate keys', function() {
     var json = '{}';
 
     var fakeRJSON = { parse: () => {} };
-    var parseStub = sinon.stub(fakeRJSON, 'parse', () => {
+    var parseStub = sinon.stub(fakeRJSON, 'parse').callsFake(() => {
       throw {
         warnings: [
           {
@@ -159,10 +161,10 @@ describe('JSONParser duplicate keys', function() {
     // If RJSON throws an error we don't recognise, we should ignore it and
     // continue on like the JSON is valid. Regular parsing errors will be
     // picked up earlier in the process.
-    assert.equal(jsonParser.isValid, true);
-    assert.ok(parseStub.called);
+    expect(jsonParser.isValid).toEqual(true);
+    expect(parseStub.called).toBeTruthy();
     var errors = addonLinter.collector.errors;
-    assert.lengthOf(errors, 0);
+    expect(errors.length).toBe(0);
   });
 });
 
@@ -174,7 +176,7 @@ describe('JSONParser with comments', function() {
     var jsonParser = new JSONParser(json, addonLinter.collector);
     jsonParser.parse();
 
-    assert.equal(jsonParser.isValid, true);
+    expect(jsonParser.isValid).toEqual(true);
   });
 
   // Chrome will accept multiline /* */ comments, but Firefox will not and
@@ -185,13 +187,13 @@ describe('JSONParser with comments', function() {
     var jsonParser = new JSONParser(json, addonLinter.collector);
     jsonParser.parse();
 
-    assert.equal(jsonParser.isValid, false);
+    expect(jsonParser.isValid).toEqual(false);
     var errors = addonLinter.collector.errors;
     // There should not be another error; a file with block-level comments
     // will throw that specific error and not a parse error.
-    assert.lengthOf(errors, 1);
-    assert.equal(errors[0].code, messages.JSON_BLOCK_COMMENTS.code);
-    assert.equal(errors[0].message, messages.JSON_BLOCK_COMMENTS.message);
+    expect(errors.length).toBe(1);
+    expect(errors[0].code).toEqual(messages.JSON_BLOCK_COMMENTS.code);
+    expect(errors[0].message).toEqual(messages.JSON_BLOCK_COMMENTS.message);
   });
 
   it('parses the example from Chrome developer docs', () => {
@@ -209,8 +211,8 @@ describe('JSONParser with comments', function() {
     var jsonParser = new JSONParser(json, addonLinter.collector);
     jsonParser.parse();
 
-    assert.equal(jsonParser.isValid, true);
-    assert.notInclude(jsonParser._jsonString, 'semvar.org');
+    expect(jsonParser.isValid).toEqual(true);
+    expect(jsonParser._jsonString).not.toContain('semvar.org');
   });
 
   it('returns the correct error for malformed JSON', () => {
@@ -219,10 +221,10 @@ describe('JSONParser with comments', function() {
     var jsonParser = new JSONParser(json, addonLinter.collector);
     jsonParser.parse();
 
-    assert.equal(jsonParser.isValid, false);
+    expect(jsonParser.isValid).toEqual(false);
     var errors = addonLinter.collector.errors;
-    assert.equal(errors[0].code, messages.JSON_INVALID.code);
-    assert.include(errors[0].message, 'Your JSON is not valid.');
+    expect(errors[0].code).toEqual(messages.JSON_INVALID.code);
+    expect(errors[0].message).toContain('Your JSON is not valid.');
   });
 
   it("doesn't evaluate JS code in comments", () => {
@@ -231,12 +233,12 @@ describe('JSONParser with comments', function() {
     var jsonParser = new JSONParser(json, addonLinter.collector);
     jsonParser.parse();
 
-    assert.equal(jsonParser.isValid, false);
+    expect(jsonParser.isValid).toEqual(false);
     var errors = addonLinter.collector.errors;
-    assert.equal(errors[0].code, messages.JSON_INVALID.code);
-    assert.include(errors[0].message, 'Your JSON is not valid.');
-    assert.notInclude(jsonParser._jsonString, 'var bla');
-    assert.notInclude(jsonParser._jsonString, 'eval');
+    expect(errors[0].code).toEqual(messages.JSON_INVALID.code);
+    expect(errors[0].message).toContain('Your JSON is not valid.');
+    expect(jsonParser._jsonString).not.toContain('var bla');
+    expect(jsonParser._jsonString).not.toContain('eval');
   });
 
   it("doesn't evaluate JS code even though esprima is used", () => {
@@ -253,9 +255,9 @@ describe('JSONParser with comments', function() {
     var jsonParser = new JSONParser(json, addonLinter.collector);
     jsonParser.parse();
 
-    assert.equal(jsonParser.isValid, false);
+    expect(jsonParser.isValid).toEqual(false);
     var errors = addonLinter.collector.errors;
-    assert.equal(errors[0].code, messages.JSON_INVALID.code);
-    assert.include(errors[0].message, 'Your JSON is not valid.');
+    expect(errors[0].code).toEqual(messages.JSON_INVALID.code);
+    expect(errors[0].message).toContain('Your JSON is not valid.');
   });
 });

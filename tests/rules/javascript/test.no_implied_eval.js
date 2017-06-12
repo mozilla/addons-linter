@@ -57,7 +57,7 @@ describe('no_implied_eval', () => {
 
       return jsScanner.scan()
         .then(({linterMessages}) => {
-          assert.equal(linterMessages.length, 0);
+          expect(linterMessages.length).toEqual(0);
         });
     });
   }
@@ -144,16 +144,17 @@ describe('no_implied_eval', () => {
         .then(({linterMessages}) => {
           linterMessages = linterMessages.sort();
 
-          assert.equal(linterMessages.length, code.message.length);
+          expect(linterMessages.length).toEqual(code.message.length);
 
           code.message.forEach((expectedMessage, idx) => {
-            assert.equal(linterMessages[idx].message, expectedMessage);
-            assert.equal(linterMessages[idx].type, VALIDATION_WARNING);
+            expect(linterMessages[idx].message).toEqual(expectedMessage);
+            expect(linterMessages[idx].type).toEqual(VALIDATION_WARNING);
           });
 
           code.description.forEach((expectedDescription, idx) => {
-            assert.equal(
-              linterMessages[idx].description, expectedDescription);
+            expect(linterMessages[idx].description).toEqual(
+              expectedDescription
+            );
           });
         });
     });

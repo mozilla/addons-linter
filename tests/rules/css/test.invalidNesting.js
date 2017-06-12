@@ -19,10 +19,11 @@ describe('CSS Rule InvalidNesting', () => {
 
     return cssScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-                     messages.INVALID_SELECTOR_NESTING.code);
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(
+          messages.INVALID_SELECTOR_NESTING.code
+        );
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 
@@ -37,7 +38,7 @@ describe('CSS Rule InvalidNesting', () => {
 
     return cssScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -54,10 +55,11 @@ describe('CSS Rule InvalidNesting', () => {
 
     return cssScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-                     messages.INVALID_SELECTOR_NESTING.code);
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(
+          messages.INVALID_SELECTOR_NESTING.code
+        );
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 

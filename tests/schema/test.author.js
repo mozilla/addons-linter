@@ -9,15 +9,15 @@ describe('/author', () => {
     var manifest = cloneDeep(validManifest);
     manifest.author = 'some string';
     validate(manifest);
-    assert.isNull(validate.errors);
+    expect(validate.errors).toBeNull();
   });
 
   it('should be invalid if not a string', () => {
     var manifest = cloneDeep(validManifest);
     manifest.author = {};
     validate(manifest);
-    assert.equal(validate.errors.length, 1);
-    assert.equal(validate.errors[0].dataPath, '/author');
+    expect(validate.errors.length).toEqual(1);
+    expect(validate.errors[0].dataPath).toEqual('/author');
   });
 
 });

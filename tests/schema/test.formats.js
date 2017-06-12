@@ -32,13 +32,13 @@ describe('formats.isValidVersionString', () => {
 
   for (let validVersionString of validVersionStrings) {
     it(`should find ${validVersionString} to be valid`, () => {
-      assert.ok(isValidVersionString(validVersionString));
+      expect(isValidVersionString(validVersionString)).toBeTruthy();
     });
   }
 
   for (let invalidVersionString of invalidVersionStrings) {
     it(`should find ${invalidVersionString} to be invalid`, () => {
-      assert.notOk(isValidVersionString(invalidVersionString));
+      expect(isValidVersionString(invalidVersionString)).toBeFalsy();
     });
   }
 });
@@ -54,7 +54,7 @@ describe('formats.isRelativeURL', () => {
 
   for (let notRelativeURL of notRelativeURLs) {
     it(`${notRelativeURL} should be invalid`, () => {
-      assert.notOk(isRelativeURL(notRelativeURL));
+      expect(isRelativeURL(notRelativeURL)).toBeFalsy();
     });
   }
 
@@ -66,7 +66,7 @@ describe('formats.isRelativeURL', () => {
 
   for (let relativeURL of relativeURLs) {
     it(`${relativeURL} should be valid`, () => {
-      assert.isOk(isRelativeURL(relativeURL));
+      expect(isRelativeURL(relativeURL)).toBeTruthy();
     });
   }
 

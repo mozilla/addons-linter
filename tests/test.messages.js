@@ -1,7 +1,6 @@
 import { readFileSync } from 'fs';
 
 import * as messages from 'messages';
-import { singleLineString } from 'utils';
 
 
 describe('Messages', function() {
@@ -15,21 +14,19 @@ describe('Messages', function() {
       it(`should have code length <= 25 for ${code}`, () => {
         // Otherwise the ansi color sequences will be borked
         // as columnify doesn't handle them when wrapping text.
-        assert.isBelow(code.length, 26, `code ${code} is too long`);
+        expect(code.length).toBeLessThan(26);
       });
     }
 
     if (description) {
       it(`should not have any newlines in description for ${code}`, () => {
-        assert.equal(description.split('\n').length, 1,
-                     `The description for ${code} should not have newlines`);
+        expect(description.split('\n').length).toEqual(1);
       });
     }
 
     if (msg) {
       it(`should not have any newlines in message for ${code}`, () => {
-        assert.equal(msg.split('\n').length, 1,
-                     `The message for ${code} should not have newlines`);
+        expect(msg.split('\n').length).toEqual(1);
       });
     }
   }
@@ -38,13 +35,13 @@ describe('Messages', function() {
     var vegetarianTag = messages._tagNotAllowed('steak');
     var teslaTag = messages._tagObsolete('petrol');
 
-    assert.equal(vegetarianTag.code, 'TAG_NOT_ALLOWED_STEAK');
-    assert.include(vegetarianTag.message, 'steak');
-    assert.include(vegetarianTag.description, 'steak');
+    expect(vegetarianTag.code).toEqual('TAG_NOT_ALLOWED_STEAK');
+    expect(vegetarianTag.message).toContain('steak');
+    expect(vegetarianTag.description).toContain('steak');
 
-    assert.equal(teslaTag.code, 'TAG_OBSOLETE_PETROL');
-    assert.include(teslaTag.message, 'petrol');
-    assert.include(teslaTag.description, 'petrol');
+    expect(teslaTag.code).toEqual('TAG_OBSOLETE_PETROL');
+    expect(teslaTag.message).toContain('petrol');
+    expect(teslaTag.description).toContain('petrol');
   });
 
   it('should have updated rules.md with new message codes', () => {
@@ -55,8 +52,7 @@ describe('Messages', function() {
         // Asserting using indexOf rather than assert.include
         // to avoid inclusion of the whole rules.md as part
         // of the error.
-        assert.ok(markdown.indexOf(code) > -1,
-                  `code ${code} is not present in rules.md`);
+        expect(markdown.indexOf(code) > -1).toBeTruthy();
       }
     }
   });
@@ -67,11 +63,7 @@ describe('Messages', function() {
         var legacyCode = messages[message].legacyCode;
         if ((legacyCode instanceof Array && legacyCode.length !== 3) ||
             (!(legacyCode instanceof Array) && legacyCode !== null)) {
-          assert.fail(null, null, singleLineString`A valide legacyCode could
-            not be found for code: "${messages[message].code}". Should be
-            an Array with 3 values based on the amo-validator err_id or null.
-            A null value is an explicit way to say the old err_id tuple is not
-            useful e.g. a matching code doesn't exist or it's not unique.`);
+          expect(false).toBe(true);
         }
       }
     }

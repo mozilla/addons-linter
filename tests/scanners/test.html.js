@@ -12,7 +12,7 @@ import { ignorePrivateFunctions, singleLineString } from 'utils';
 describe('HTML', function() {
 
   it('should report a proper scanner name', () => {
-    assert.equal(HTMLScanner.scannerName, 'html');
+    expect(HTMLScanner.scannerName).toEqual('html');
   });
 
   it('should not warn when we validate a good HTML file', () => {
@@ -21,7 +21,7 @@ describe('HTML', function() {
 
     return htmlScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -31,7 +31,7 @@ describe('HTML', function() {
 
     return htmlScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -41,10 +41,9 @@ describe('HTML', function() {
 
     return htmlScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-                     messages.INLINE_SCRIPT.code);
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(messages.INLINE_SCRIPT.code);
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 
@@ -55,7 +54,7 @@ describe('HTML', function() {
 
     return htmlScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -77,7 +76,7 @@ describe('HTML', function() {
         return htmlScanner.getContents();
       })
       .then(() => {
-        assert.ok(cheerio.load.calledOnce);
+        expect(cheerio.load.calledOnce).toBeTruthy();
       });
   });
 
@@ -86,13 +85,15 @@ describe('HTML', function() {
     var contents = validHTML();
     var htmlScanner = new HTMLScanner(contents, 'index.html');
 
-    assert.equal(ruleFiles.length,
-                 Object.keys(ignorePrivateFunctions(rules)).length);
+    expect(ruleFiles.length).toEqual(
+      Object.keys(ignorePrivateFunctions(rules)).length
+    );
 
     return htmlScanner.scan()
       .then(() => {
-        assert.equal(htmlScanner._rulesProcessed,
-                     Object.keys(ignorePrivateFunctions(rules)).length);
+        expect(htmlScanner._rulesProcessed).toEqual(
+          Object.keys(ignorePrivateFunctions(rules)).length
+        );
       });
   });
 

@@ -6,7 +6,7 @@ describe('Schema JSON', () => {
 
   it('should be valid against the reference schema', () => {
     var isValid = validate(validManifest);
-    assert.ok(isValid);
+    expect(isValid).toBeTruthy();
   });
 
 });

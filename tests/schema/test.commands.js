@@ -11,7 +11,7 @@ describe('/commands', () => {
       all: { suggested_key: { default: 'Ctrl+Shift+A' } },
     };
     validate(manifest);
-    assert.notOk(validate.errors);
+    expect(validate.errors).toBeFalsy();
   });
 
   it('should allow unknown platforms', () => {
@@ -20,7 +20,7 @@ describe('/commands', () => {
       all: { suggested_key: { notAPlatform: 'Modifier+9' } },
     };
     validate(manifest);
-    assert.notOk(validate.errors);
+    expect(validate.errors).toBeFalsy();
   });
 
   it('should validate the key string', function() {

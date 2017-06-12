@@ -1,3 +1,5 @@
+import sinon from 'sinon';
+
 import { getConfig, terminalWidth } from 'cli';
 
 
@@ -15,107 +17,106 @@ describe('Basic CLI tests', function() {
   it('should default logLevel type to "fatal"', () => {
     // This means by default there won't be any output.
     var args = cli.parse(['foo/bar.zip']);
-    assert.equal(args.logLevel, 'fatal');
-    assert.equal(args['log-level'], 'fatal');
+    expect(args.logLevel).toEqual('fatal');
+    expect(args['log-level']).toEqual('fatal');
   });
 
   it('should default metadata option to false', () => {
     var args = cli.parse(['foo/bar.zip']);
-    assert.equal(args.metadata, false);
+    expect(args.metadata).toEqual(false);
   });
 
   it('should default add-on output to "text"', () => {
     var args = cli.parse(['foo/bar.zip']);
-    assert.equal(args.output, 'text');
-    assert.equal(args.o, 'text');
+    expect(args.output).toEqual('text');
+    expect(args.o).toEqual('text');
   });
 
   it('should default stack to false', () => {
     var args = cli.parse(['foo/bar.zip']);
-    assert.equal(args.stack, false);
+    expect(args.stack).toEqual(false);
   });
 
   it('should default pretty to false', () => {
     var args = cli.parse(['foo/bar.zip']);
-    assert.equal(args.pretty, false);
+    expect(args.pretty).toEqual(false);
   });
 
   it('should default boring to false', () => {
     var args = cli.parse(['foo/bar.zip']);
-    assert.equal(args.boring, false);
+    expect(args.boring).toEqual(false);
   });
 
   it('should support a --scan-file option', () => {
     var args = cli.parse(['foo/', '--scan-file', 'dir/test1.txt']);
-    assert.equal(args.scanFile, 'dir/test1.txt');
+    expect(args.scanFile).toEqual('dir/test1.txt');
 
     var args = cli.parse([
       'foo/', '--scan-file', 'dir/test1.txt',
       '--scan-file', 'dir/test2.txt',
     ]);
-    assert.deepEqual(args.scanFile, ['dir/test1.txt', 'dir/test2.txt']);
+    expect(args.scanFile).toEqual(['dir/test1.txt', 'dir/test2.txt']);
 
     args = cli.parse(['foo/']);
-    assert.equal(args.scanFile, undefined);
+    expect(args.scanFile).toEqual(undefined);
   });
 
   it('should default warnings-as-errors to false', () => {
     var args = cli.parse(['foo/bar.zip']);
-    assert.equal(args.warningsAsErrors, false);
+    expect(args.warningsAsErrors).toEqual(false);
   });
 
   it('should show error on missing xpi', () => {
     cli.parse([]);
-    assert.ok(this.fakeFail.calledWithMatch(
-      'Not enough non-option arguments'));
+    expect(this.fakeFail.calledWithMatch(
+      'Not enough non-option arguments')).toBeTruthy();
   });
 
   it('should show error if incorrect output', () => {
     cli.parse(['-o', 'false', 'whatevs']);
-    assert.ok(
-      this.fakeFail.calledWithMatch(
-        'Invalid values:\n  Argument: output, Given: "false"'));
+    expect(this.fakeFail.calledWithMatch(
+      'Invalid values:\n  Argument: output, Given: "false"')).toBeTruthy();
   });
 
   it('should use 78 as a width if process.stdout.columns is undefined', () => {
     var fakeProcess = null;
-    assert.equal(terminalWidth(fakeProcess), 78);
+    expect(terminalWidth(fakeProcess)).toEqual(78);
     fakeProcess = {stdout: null};
-    assert.equal(terminalWidth(fakeProcess), 78);
+    expect(terminalWidth(fakeProcess)).toEqual(78);
     fakeProcess = {stdout: {columns: null}};
-    assert.equal(terminalWidth(fakeProcess), 78);
+    expect(terminalWidth(fakeProcess)).toEqual(78);
   });
 
   it('should always use a positive terminal width', () => {
     var fakeProcess = {stdout: {columns: 1}};
-    assert.equal(terminalWidth(fakeProcess), 10);
+    expect(terminalWidth(fakeProcess)).toEqual(10);
   });
 
   it('should not use a width under 10 columns', () => {
     var fakeProcess = {stdout: {columns: 12}};
-    assert.equal(terminalWidth(fakeProcess), 10);
+    expect(terminalWidth(fakeProcess)).toEqual(10);
 
     fakeProcess = {stdout: {columns: 11}};
-    assert.equal(terminalWidth(fakeProcess), 10);
+    expect(terminalWidth(fakeProcess)).toEqual(10);
 
     fakeProcess = {stdout: {columns: 79}};
-    assert.equal(terminalWidth(fakeProcess), 77);
+    expect(terminalWidth(fakeProcess)).toEqual(77);
   });
 
   it('should use a terminal width of $COLUMNS - 2', () => {
     var fakeProcess = {stdout: {columns: 170}};
-    assert.equal(terminalWidth(fakeProcess), 168);
+    expect(terminalWidth(fakeProcess)).toEqual(168);
   });
 
   it('should have a default config when called via CLI', () => {
     let config = getConfig({useCLI: true}).argv;
-    assert.isAbove(Object.keys(config).length, 0);
+    expect(Object.keys(config).length).toBeGreaterThan(0);
   });
 
   it('should error when requesting CLI config in library mode', () => {
-    assert.throws(() => {
+    expect(() => {
       getConfig({useCLI: false});
-    }, 'Cannot request config from CLI in library mode');
+    }).toThrow('Cannot request config from CLI in library mode');
   });
 
 });

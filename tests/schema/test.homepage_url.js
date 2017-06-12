@@ -18,7 +18,7 @@ describe('/homepage_url', () => {
       var manifest = cloneDeep(validManifest);
       manifest.homepage_url = validURL;
       validate(manifest);
-      assert.isNull(validate.errors, sinon.format(validate.errors));
+      expect(validate.errors).toBeNull();
     });
   }
 

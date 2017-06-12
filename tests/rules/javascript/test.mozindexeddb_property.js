@@ -14,10 +14,11 @@ describe('mozindexeddb_property', () => {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-                     messages.MOZINDEXEDDB_PROPERTY.code);
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(
+          messages.MOZINDEXEDDB_PROPERTY.code
+        );
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 
@@ -27,10 +28,11 @@ describe('mozindexeddb_property', () => {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-                     messages.MOZINDEXEDDB_PROPERTY.code);
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(
+          messages.MOZINDEXEDDB_PROPERTY.code
+        );
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 
@@ -40,10 +42,11 @@ describe('mozindexeddb_property', () => {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-                     messages.MOZINDEXEDDB_PROPERTY.code);
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(
+          messages.MOZINDEXEDDB_PROPERTY.code
+        );
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 

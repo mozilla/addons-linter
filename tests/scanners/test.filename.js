@@ -7,7 +7,7 @@ import * as messages from 'messages';
 describe('FilenameScanner', function() {
 
   it('should report a proper scanner name', () => {
-    assert.equal(FilenameScanner.scannerName, 'filename');
+    expect(FilenameScanner.scannerName).toEqual('filename');
   });
 
   it('should warn when finding a hidden file', () => {
@@ -15,9 +15,9 @@ describe('FilenameScanner', function() {
 
     return filenameScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code, messages.HIDDEN_FILE.code);
-        assert.equal(linterMessages[0].file, '__MACOSX/foo.txt');
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(messages.HIDDEN_FILE.code);
+        expect(linterMessages[0].file).toEqual('__MACOSX/foo.txt');
       });
   });
 
@@ -26,9 +26,9 @@ describe('FilenameScanner', function() {
 
     return filenameScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code, messages.FLAGGED_FILE.code);
-        assert.equal(linterMessages[0].file, 'Thumbs.db');
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(messages.FLAGGED_FILE.code);
+        expect(linterMessages[0].file).toEqual('Thumbs.db');
       });
   });
 
@@ -37,10 +37,11 @@ describe('FilenameScanner', function() {
 
     return filenameScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-            messages.FLAGGED_FILE_EXTENSION.code);
-        assert.equal(linterMessages[0].file, 'wat.exe');
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(
+          messages.FLAGGED_FILE_EXTENSION.code
+        );
+        expect(linterMessages[0].file).toEqual('wat.exe');
       });
   });
 
@@ -49,9 +50,9 @@ describe('FilenameScanner', function() {
 
     return filenameScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code, messages.ALREADY_SIGNED.code);
-        assert.equal(linterMessages[0].file, 'META-INF/manifest.mf');
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(messages.ALREADY_SIGNED.code);
+        expect(linterMessages[0].file).toEqual('META-INF/manifest.mf');
       });
   });
 
@@ -60,8 +61,8 @@ describe('FilenameScanner', function() {
 
     return filenameScanner.scan()
       .catch((err) => {
-        assert.instanceOf(err, Error);
-        assert.include(err.message, 'wat.txt');
+        expect(err).toBeInstanceOf(Error);
+        expect(err.message).toContain('wat.txt');
       });
   });
 
@@ -76,8 +77,7 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of matchingHiddenFiles) {
     it(`should match ${filePath} as a hidden file`, () => {
-      assert.isOk(filePath.match(constants.HIDDEN_FILE_REGEX),
-        `${filePath} should match hidden file regex`);
+      expect(filePath.match(constants.HIDDEN_FILE_REGEX)).toBeTruthy();
     });
   }
 
@@ -88,8 +88,7 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of nonMatchingHiddenFiles) {
     it(`should not match ${filePath} as a hidden file`, () => {
-      assert.isNotOk(filePath.match(constants.HIDDEN_FILE_REGEX),
-        `${filePath} should not match hidden file regex`);
+      expect(filePath.match(constants.HIDDEN_FILE_REGEX)).toBeFalsy();
     });
   }
 
@@ -105,8 +104,7 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of matchingFlaggedFiles) {
     it(`should match ${filePath} as a flagged file`, () => {
-      assert.isOk(filePath.match(constants.FLAGGED_FILE_REGEX),
-        `${filePath} should match flagged file regex`);
+      expect(filePath.match(constants.FLAGGED_FILE_REGEX)).toBeTruthy();
     });
   }
 
@@ -121,8 +119,7 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of nonMatchingFlaggedFiles) {
     it(`should not match ${filePath} as a flagged file`, () => {
-      assert.isNotOk(filePath.match(constants.FLAGGED_FILE_REGEX),
-        `${filePath} should not match flagged file regex`);
+      expect(filePath.match(constants.FLAGGED_FILE_REGEX)).toBeFalsy();
     });
   }
 
@@ -139,9 +136,9 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of matchingFlaggedFileExtensions) {
     it(`should match ${filePath} as a flagged file extensions`, () => {
-      assert.isOk(
-        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filePath)),
-        `${filePath} should not match flagged file extension regex`);
+      expect(
+        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filePath))
+      ).toBeTruthy();
     });
   }
 
@@ -152,9 +149,9 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of nonMatchingFlaggedFileExtensions) {
     it(`should not match ${filePath} as a flagged file extension`, () => {
-      assert.isNotOk(
-        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filePath)),
-        `${filePath} should not match flagged file extension regex`);
+      expect(
+        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filePath))
+      ).toBeFalsy();
     });
   }
 
@@ -166,8 +163,7 @@ describe('Hidden and Flagged File Regexes', function() {
 
   for (const filePath of nonMatchingSignedFileExtensions) {
     it(`should not match ${filePath} as a signed extension`, () => {
-      assert.isNotOk(filePath.match(constants.ALREADY_SIGNED_REGEX),
-        `${filePath} should not match already signed regex`);
+      expect(filePath.match(constants.ALREADY_SIGNED_REGEX)).toBeFalsy();
     });
   }
 });

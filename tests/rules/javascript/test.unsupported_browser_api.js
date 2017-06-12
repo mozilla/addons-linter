@@ -9,12 +9,11 @@ describe('unsupported browser APIs', () => {
     });
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(
-          linterMessages.length, 1);
-        assert.equal(
-          linterMessages[0].message,
-          'gcm.register is not supported');
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].message).toEqual(
+          'gcm.register is not supported'
+        );
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 
@@ -25,12 +24,11 @@ describe('unsupported browser APIs', () => {
     });
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(
-          linterMessages.length, 1);
-        assert.equal(
-          linterMessages[0].message,
-          'gcm.register is not supported');
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].message).toEqual(
+          'gcm.register is not supported'
+        );
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
 
@@ -41,7 +39,7 @@ describe('unsupported browser APIs', () => {
     });
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -53,11 +51,12 @@ describe('unsupported browser APIs', () => {
     });
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
   // We only test the first two levels for now.
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('flags when 3 levels of nesting is unsupported', () => {
     const code =
       'browser.privacy.websites.unsupportedSetting.get({}, () => {})';
@@ -66,7 +65,7 @@ describe('unsupported browser APIs', () => {
     });
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
+        expect(linterMessages.length).toEqual(1);
       });
   });
 });

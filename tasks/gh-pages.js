@@ -6,11 +6,11 @@ function getDeployMessage() {
     ret += 'missing env vars for travis-ci';
     return ret;
   }
-  ret += 'branch:       ' + process.env.TRAVIS_BRANCH + '\n';
-  ret += 'SHA:          ' + process.env.TRAVIS_COMMIT + '\n';
-  ret += 'range SHA:    ' + process.env.TRAVIS_COMMIT_RANGE + '\n';
-  ret += 'build id:     ' + process.env.TRAVIS_BUILD_ID + '\n';
-  ret += 'build number: ' + process.env.TRAVIS_BUILD_NUMBER + '\n';
+  ret += `branch:       ${process.env.TRAVIS_BRANCH}\n`;
+  ret += `SHA:          ${process.env.TRAVIS_COMMIT}\n`;
+  ret += `range SHA:    ${process.env.TRAVIS_COMMIT_RANGE}\n`;
+  ret += `build id:     ${process.env.TRAVIS_BUILD_ID}\n`;
+  ret += `build number: ${process.env.TRAVIS_BUILD_NUMBER}\n`;
   return ret;
 }
 
@@ -28,7 +28,7 @@ module.exports = {
         email: process.env.GH_EMAIL,
       },
       repo: 'https://' + process.env.GH_TOKEN + '@github.com/mozilla/addons-linter.git', // eslint-disable-line
-      message: 'Publish rules (auto)' + getDeployMessage(),
+      message: `Publish rules (auto)${getDeployMessage()}`,
     },
     src: ['**'],
   },

@@ -9,24 +9,24 @@ describe('/version', () => {
     var manifest = cloneDeep(validManifest);
     manifest.version = '01';
     validate(manifest);
-    assert.equal(validate.errors.length, 1);
-    assert.equal(validate.errors[0].dataPath, '/version');
+    expect(validate.errors.length).toEqual(1);
+    expect(validate.errors[0].dataPath).toEqual('/version');
   });
 
   it('should be invalid due to missing version', () => {
     var manifest = cloneDeep(validManifest);
     manifest.version = undefined;
     validate(manifest);
-    assert.equal(validate.errors.length, 1);
-    assert.equal(validate.errors[0].dataPath, '/version');
-    assert.equal(validate.errors[0].params.missingProperty, 'version');
+    expect(validate.errors.length).toEqual(1);
+    expect(validate.errors[0].dataPath).toEqual('/version');
+    expect(validate.errors[0].params.missingProperty).toEqual('version');
   });
 
   it('should be valid if it is a toolkit version', () => {
     var manifest = cloneDeep(validManifest);
     manifest.version = '1.0.0.0pre0';
     validate(manifest);
-    assert.isNull(validate.errors);
+    expect(validate.errors).toBeNull();
   });
 
 });

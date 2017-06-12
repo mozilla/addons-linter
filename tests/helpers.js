@@ -1,6 +1,7 @@
 import fs from 'fs';
+import { assert } from 'assert';
 import isMatchWith from 'lodash.ismatchwith';
-import { Readable } from 'stream';
+import Hash from 'hashish';
 
 import { PACKAGE_EXTENSION } from 'const';
 import { singleLineString } from 'utils';
@@ -46,24 +47,6 @@ export function metadataPassCheck(contents, filename, {addonMetadata=null}={}) {
   }
 
   return [];
-}
-
-export function validChromeManifest(contents=[
-  'category JavaScript-DOM-class foo bar',
-  'category JavaScript-DOM-interface foo bar',
-], {includeBoilerplate=true}={}) {
-  var rstream = new Readable();
-  if (includeBoilerplate === true) {
-    rstream.push('content  necko   jar:comm.jar!/content/necko/\n');
-  }
-
-  contents.forEach((line) => {
-    rstream.push(`${line}\n`);
-  });
-
-  rstream.push(null);
-
-  return rstream;
 }
 
 export function validHTML(contents='') {
@@ -125,9 +108,83 @@ function isMatch(target, expected) {
 }
 
 export function assertHasMatchingError(errors, expected) {
-  assert.ok(Array.isArray(errors), 'errors must be an array');
-  assert.ok(errors.length > 0, sinon.format(errors));
-  assert.ok(
-    errors.some((error) => isMatch(error, expected)),
-    `expected ${sinon.format(expected)} to be in ${sinon.format(errors)}`);
+  expect(Array.isArray(errors)).toBeTruthy();
+  expect(errors.length).toBeGreaterThan(0);
+  expect(errors.some((error) => isMatch(error, expected))).toBeTruthy();
+}
+
+/* `checkOutput` is copied and modified directly from yargs test helpers */
+export function checkOutput(func, argv, callback) {
+  var exitCode = null;
+  var _exit = process.exit;
+  var _emit = process.emit;
+  var _env = process.env;
+  var _argv = process.argv;
+  var _error = console.error; // eslint-disable-line
+  var _log = console.log; // eslint-disable-line
+  var _warn = console.warn; // eslint-disable-line
+
+  process.exit = function(code) { exitCode = code; };
+  process.env = Hash.merge(process.env, { _: 'node' });
+  process.argv = argv || [ './usage' ];
+
+  var errors = [];
+  var logs = [];
+  var warnings = [];
+
+  console.error = function (msg) { errors.push(msg); }; // eslint-disable-line
+  console.log = function (msg) { logs.push(msg); }; // eslint-disable-line
+  console.warn = function (msg) { warnings.push(msg); }; // eslint-disable-line
+
+  var result;
+
+  function reset() {
+    process.exit = _exit;
+    process.emit = _emit;
+    process.env = _env;
+    process.argv = _argv;
+
+    console.error = _error; // eslint-disable-line
+    console.log = _log; // eslint-disable-line
+    console.warn = _warn; // eslint-disable-line
+  }
+
+  function done() {
+    reset();
+
+    return {
+      errors: errors,
+      logs: logs,
+      warnings: warnings,
+      exitCode: exitCode,
+      result: result,
+    };
+  }
+
+  if (typeof cb === 'function') {
+    process.exit = function(code) {
+      exitCode = code;
+      callback(null, done());
+    };
+
+    process.emit = function(ev, value) {
+      if (ev === 'uncaughtException') {
+        done();
+        callback(value);
+        return true;
+      }
+
+      return _emit.apply(this, arguments);
+    };
+
+    func();
+  } else {
+    try {
+      result = func();
+    } finally {
+      reset();
+    }
+
+    return done();
+  }
 }

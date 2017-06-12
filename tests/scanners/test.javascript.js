@@ -1,4 +1,5 @@
 import ESLint from 'eslint';
+import sinon from 'sinon';
 
 import {
   DEPRECATED_APIS, ESLINT_ERROR, ESLINT_RULE_MAPPING, TEMPORARY_APIS,
@@ -15,25 +16,25 @@ import { fakeMessageData, getRuleFiles, getVariable, unexpectedSuccess,
 describe('JavaScript Scanner', function() {
 
   it('should report a proper scanner name', () => {
-    assert.equal(JavaScriptScanner.scannerName, 'javascript');
+    expect(JavaScriptScanner.scannerName).toEqual('javascript');
   });
 
   it('should thrown an error without a filename', () => {
-    assert.throws(() => {
+    expect(() => {
       var jsScanner = new JavaScriptScanner(''); // eslint-disable-line
-    }, Error, 'Filename is required');
+    }).toThrow('Filename is required');
   });
 
   it('should have an options property', () => {
     var jsScanner = new JavaScriptScanner('', 'filename.txt');
-    assert.equal(typeof jsScanner.options, 'object');
+    expect(typeof jsScanner.options).toEqual('object');
     // This test assures us the options can be accessed like an object.
-    assert.equal(typeof jsScanner.options.someUndefinedProp, 'undefined');
+    expect(typeof jsScanner.options.someUndefinedProp).toEqual('undefined');
 
     var jsScannerWithOptions = new JavaScriptScanner('', 'filename.txt', {
       foo: 'bar',
     });
-    assert.equal(jsScannerWithOptions.options.foo, 'bar');
+    expect(jsScannerWithOptions.options.foo).toEqual('bar');
   });
 
   it('should pass when async/await is used', () => {
@@ -42,73 +43,7 @@ describe('JavaScript Scanner', function() {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
-      });
-  });
-
-  // TODO: Not sure how to test for this one yet; it's pretty messy.
-  it.skip(singleLineString`should warn when mozIndexedDB is assembled into
-    literal with +=`,
-  () => {
-    var code = singleLineString`var foo = "m";
-      foo += "o";
-      foo += "zIndexedDB";
-      var myDatabase = window[foo];`;
-    var jsScanner = new JavaScriptScanner(code, 'badcode.js');
-
-    return jsScanner.scan()
-      .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].id, 'OBFUSCATION');
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
-      });
-  });
-
-  it.skip('should warn when mozIndexedDB is assembled into literal', () => {
-    var code = singleLineString`var foo = "m";
-      foo += "o";
-      foo = foo + "zIndexedDB";
-      var myDatabase = window[foo];`;
-    var jsScanner = new JavaScriptScanner(code, 'badcode.js');
-
-    return jsScanner.scan()
-      .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].id, 'OBFUSCATION');
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
-      });
-  });
-
-  it.skip('should warn when mozIndexedDB is assembled into literal (2)', () => {
-    var code = singleLineString`var foo = "m";
-      foo += "o";
-      var test = "zIndexedDB";
-      foo = foo + test;
-      var myDatabase = window[foo];`;
-    var jsScanner = new JavaScriptScanner(code, 'badcode.js');
-
-    return jsScanner.scan()
-      .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].id, 'OBFUSCATION');
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
-      });
-  });
-
-  it.skip('should warn when mozIndexedDB is assembled into literal (3)', () => {
-    var code = singleLineString`var m = "m";
-      var o = "o";
-      var z = "z";
-      var idb = "IndexedDB";
-      var tricksterVariable = m + o + z + idb;
-      var myDatabase = window[tricksterVariable];`;
-    var jsScanner = new JavaScriptScanner(code, 'badcode.js');
-
-    return jsScanner.scan()
-      .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].id, 'OBFUSCATION');
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -118,8 +53,8 @@ describe('JavaScript Scanner', function() {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages[0].code, messages.JS_SYNTAX_ERROR.code);
-        assert.equal(linterMessages[0].type, VALIDATION_ERROR);
+        expect(linterMessages[0].code).toEqual(messages.JS_SYNTAX_ERROR.code);
+        expect(linterMessages[0].type).toEqual(VALIDATION_ERROR);
 
         // Test another error for good measure.
         code = 'var aVarThatDoesnt != exist;';
@@ -127,9 +62,10 @@ describe('JavaScript Scanner', function() {
 
         return jsScanner.scan()
           .then(({linterMessages: moreValidationMessages}) => {
-            assert.equal(moreValidationMessages[0].code,
-                         messages.JS_SYNTAX_ERROR.code);
-            assert.equal(moreValidationMessages[0].type, VALIDATION_ERROR);
+            expect(moreValidationMessages[0].code).toEqual(
+              messages.JS_SYNTAX_ERROR.code);
+            expect(moreValidationMessages[0].type).toEqual(
+              VALIDATION_ERROR);
           });
       });
   });
@@ -164,7 +100,7 @@ describe('JavaScript Scanner', function() {
     return jsScanner.scan(FakeESLint)
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.include(err.message, 'JS rules must pass a valid message');
+        expect(err.message).toContain('JS rules must pass a valid message');
       });
   });
 
@@ -175,8 +111,8 @@ describe('JavaScript Scanner', function() {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code, messages.MOZINDEXEDDB.code);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(messages.MOZINDEXEDDB.code);
       });
   });
 
@@ -187,8 +123,8 @@ describe('JavaScript Scanner', function() {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code, messages.MOZINDEXEDDB.code);
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(messages.MOZINDEXEDDB.code);
       });
   });
 
@@ -203,7 +139,7 @@ describe('JavaScript Scanner', function() {
       return {
         Program: function() {
           var windowVar = getVariable(context.getScope(), 'window');
-          assert.notOk(windowVar.eslintExplicitGlobal);
+          expect(windowVar.eslintExplicitGlobal).toBeFalsy();
 
           ok = true;
         },
@@ -211,7 +147,7 @@ describe('JavaScript Scanner', function() {
     }});
 
     eslint.verify('/*eslint-env browser*/', config, {allowInlineConfig: false});
-    assert(ok);
+    expect(ok).toBeTruthy();
   });
 
   // This is just a precaution against disabling environments in ESLint, which
@@ -225,7 +161,7 @@ describe('JavaScript Scanner', function() {
 
     return jsScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -241,7 +177,7 @@ describe('JavaScript Scanner', function() {
       return {
         Program: function() {
           var foo = getVariable(context.getScope(), 'foo');
-          assert.notOk(foo);
+          expect(foo).toBeFalsy();
 
           ok = true;
         },
@@ -249,11 +185,11 @@ describe('JavaScript Scanner', function() {
     }});
 
     eslint.verify('/* global foo */', config, {allowInlineConfig: false});
-    assert(ok);
+    expect(ok).toBeTruthy();
   });
 
   it('should pass addon metadata to rules', () => {
-    var fakeRules = { metadata_not_passed: () => {} };
+    var fakeRules = { 'metadata-not-passed': { create: () => {} } };
 
     var fakeMessages = {
       METADATA_NOT_PASSED: Object.assign({}, fakeMessageData, {
@@ -264,10 +200,11 @@ describe('JavaScript Scanner', function() {
       }),
     };
     var fakeMetadata = { addonMetadata: validMetadata({guid: 'snowflake'}) };
-    var fakeESLintMapping = { metadata_not_passed: ESLINT_ERROR };
+    var fakeESLintMapping = { 'metadata-not-passed': ESLINT_ERROR };
 
-    // Create a rule that
-    sinon.stub(fakeRules, 'metadata_not_passed', (context) => {
+    sinon.stub(
+      fakeRules['metadata-not-passed'], 'create'
+    ).callsFake((context) => {
       return {
         Identifier: () => {
           var metadata = context.settings.addonMetadata;
@@ -291,27 +228,23 @@ describe('JavaScript Scanner', function() {
       _ruleMapping: fakeESLintMapping,
       _messages: fakeMessages,
     }).then(() => {
-      assert.ok(fakeRules.metadata_not_passed.called);
+      expect(fakeRules['metadata-not-passed'].create.called).toBeTruthy();
     });
   });
 
   it('should export all rules in rules/javascript', () => {
     // We skip the "run" check here for now as that's handled by ESLint.
     var ruleFiles = getRuleFiles('javascript');
+    var externalRulesCount = Object.keys(EXTERNAL_RULE_MAPPING).length;
 
-    assert.equal(
-      ruleFiles.length + Object.keys(EXTERNAL_RULE_MAPPING).length,
-      Object.keys(ESLINT_RULE_MAPPING).length
-    );
+    expect(ruleFiles.length + externalRulesCount).toEqual(
+      Object.keys(ESLINT_RULE_MAPPING).length);
 
     var jsScanner = new JavaScriptScanner('', 'badcode.js');
 
     return jsScanner.scan()
       .then(() => {
-        assert.equal(
-          jsScanner._rulesProcessed,
-          Object.keys(rules).length
-        );
+        expect(jsScanner._rulesProcessed).toEqual(Object.keys(rules).length);
       });
   });
 
@@ -322,9 +255,9 @@ describe('JavaScript Scanner', function() {
 
       return jsScanner.scan()
         .then(({linterMessages}) => {
-          assert.equal(linterMessages.length, 1);
-          assert.equal(linterMessages[0].code, apiToMessage(api));
-          assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+          expect(linterMessages.length).toEqual(1);
+          expect(linterMessages[0].code).toEqual(apiToMessage(api));
+          expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
         });
     });
   }
@@ -337,9 +270,9 @@ describe('JavaScript Scanner', function() {
 
       return jsScanner.scan()
         .then(({linterMessages}) => {
-          assert.equal(linterMessages.length, 1);
-          assert.equal(linterMessages[0].code, apiToMessage(api));
-          assert.equal(linterMessages[0].type, VALIDATION_WARNING);
+          expect(linterMessages.length).toEqual(1);
+          expect(linterMessages[0].code).toEqual(apiToMessage(api));
+          expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
         });
     });
   }
@@ -352,7 +285,7 @@ describe('JavaScript Scanner', function() {
 
       return jsScanner.scan()
         .then(({linterMessages}) => {
-          assert.equal(linterMessages.length, 0);
+          expect(linterMessages.length).toEqual(0);
         });
     });
   }
@@ -373,9 +306,9 @@ describe('JavaScript Scanner', function() {
 
     return jsScanner.scan(undefined, { _rules, _ruleMapping })
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code, 'this is the message');
-        assert.equal(linterMessages[0].message, 'this is the message');
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual('this is the message');
+        expect(linterMessages[0].message).toEqual('this is the message');
       });
   });
 });

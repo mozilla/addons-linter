@@ -13,7 +13,7 @@ import { ignorePrivateFunctions } from 'utils';
 describe('RDF', function() {
 
   it('should report a proper scanner name', () => {
-    assert.equal(RDFScanner.scannerName, 'rdf');
+    expect(RDFScanner.scannerName).toEqual('rdf');
   });
 
   it('should not warn when we validate a good RDF file', () => {
@@ -22,19 +22,19 @@ describe('RDF', function() {
 
     return rdfScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
   it('should init with the default namespace and accept a new one', () => {
     var rdfScanner = new RDFScanner('', 'filename.txt');
-    assert.equal(rdfScanner.options.namespace, RDF_DEFAULT_NAMESPACE);
+    expect(rdfScanner.options.namespace).toEqual(RDF_DEFAULT_NAMESPACE);
 
     var namespace = 'https://tofumatt.name/coffee.xml#';
     var rdfScannerWithNewNS = new RDFScanner('', 'filename.txt', {
       namespace: namespace,
     });
-    assert.equal(rdfScannerWithNewNS.options.namespace, namespace);
+    expect(rdfScannerWithNewNS.options.namespace).toEqual(namespace);
   });
 
   it('should handle unicode characters', () => {
@@ -43,7 +43,7 @@ describe('RDF', function() {
 
     return rdfScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -58,7 +58,7 @@ describe('RDF', function() {
         return rdfScanner.getContents();
       })
       .then(() => {
-        assert.ok(XMLDom.DOMParser.calledOnce);
+        expect(XMLDom.DOMParser.calledOnce).toBeTruthy();
         XMLDom.DOMParser.restore();
       });
   });
@@ -69,11 +69,11 @@ describe('RDF', function() {
 
     return rdfScanner.scan()
       .then(() => {
-        assert.fail(null, null, 'Unexpected success');
+        expect(false).toBe(true);
       })
       .catch((err) => {
-        assert.instanceOf(err, Error);
-        assert.include(err.message, 'RDFParseError');
+        expect(err).toBeInstanceOf(Error);
+        expect(err.message).toContain('RDFParseError');
       });
   });
 
@@ -82,13 +82,13 @@ describe('RDF', function() {
     var contents = validRDF();
     var rdfScanner = new RDFScanner(contents, 'install.rdf');
 
-    assert.equal(ruleFiles.length,
-                 Object.keys(ignorePrivateFunctions(rules)).length);
+    expect(ruleFiles.length).toEqual(
+      Object.keys(ignorePrivateFunctions(rules)).length);
 
     return rdfScanner.scan()
       .then(() => {
-        assert.equal(rdfScanner._rulesProcessed,
-                     Object.keys(ignorePrivateFunctions(rules)).length);
+        expect(rdfScanner._rulesProcessed).toEqual(
+          Object.keys(ignorePrivateFunctions(rules)).length);
       });
   });
 

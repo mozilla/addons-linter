@@ -10,7 +10,7 @@ describe('Binary', function() {
 
     return scanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -21,20 +21,20 @@ describe('Binary', function() {
 
       return scanner.scan()
         .then(({linterMessages}) => {
-          assert.equal(linterMessages.length, 1);
-          assert.equal(
-            linterMessages[0].code,
-            messages.FLAGGED_FILE_TYPE.code);
-          assert.equal(linterMessages[0].file, 'wat.txt');
+          expect(linterMessages.length).toEqual(1);
+          expect(linterMessages[0].code).toEqual(
+            messages.FLAGGED_FILE_TYPE.code
+          );
+          expect(linterMessages[0].file).toEqual('wat.txt');
         });
     }
   });
 
   it('should ask for a chunk', () => {
-    assert.equal(BinaryScanner.fileStreamType, 'chunk');
+    expect(BinaryScanner.fileStreamType).toEqual('chunk');
   });
 
   it('should report a proper scanner name', () => {
-    assert.equal(BinaryScanner.scannerName, 'binary');
+    expect(BinaryScanner.scannerName).toEqual('binary');
   });
 });

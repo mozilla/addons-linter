@@ -1,78 +1,80 @@
+import sinon from 'sinon';
+
 import { default as Collector } from 'collector';
 import { fakeMessageData } from './helpers';
 
 describe('Collector', function() {
 
   it('should be thrown an error if Message is created without a type', () => {
-    assert.throws(() => {
+    expect(() => {
       var collection = new Collector();
       collection._addMessage();
-    }, Error, /Message type "undefined" is not/);
+    }).toThrow(/Message type "undefined" is not/);
   });
 
   it('should be thrown an error if Message is created with bad type', () => {
-    assert.throws(() => {
+    expect(() => {
       var collection = new Collector();
       collection._addMessage('whatevs');
-    }, Error, /Message type "whatevs" is not/);
+    }).toThrow(/Message type "whatevs" is not/);
   });
 
   it('should be throw an error type is not collected', () => {
-    assert.throws(() => {
+    expect(() => {
       var FakeMessage = sinon.stub();
       var collection = new Collector();
       collection._addMessage('whatevar', fakeMessageData, FakeMessage);
-    }, Error, /Message type "whatevar" not currently collected/);
+    }).toThrow(/Message type "whatevar" not currently collected/);
   });
 
   it('length should start at 0', () => {
     var collection = new Collector();
-    assert.equal(collection.length, 0);
+    expect(collection.length).toEqual(0);
   });
 
   it('length should reflect number of messages', () => {
     var collection = new Collector();
-    assert.equal(collection.length, 0);
+    expect(collection.length).toEqual(0);
     collection.addError(fakeMessageData);
-    assert.equal(collection.length, 1);
+    expect(collection.length).toEqual(1);
     collection.addNotice(fakeMessageData);
-    assert.equal(collection.length, 2);
+    expect(collection.length).toEqual(2);
     collection.addWarning(fakeMessageData);
-    assert.equal(collection.length, 3);
+    expect(collection.length).toEqual(3);
   });
 
   it('should create an error message', () => {
     var collection = new Collector();
     collection.addError(fakeMessageData);
-    assert.equal(collection.errors[0].type, 'error');
-    assert.equal(collection.notices.length, 0);
-    assert.equal(collection.warnings.length, 0);
+    expect(collection.errors[0].type).toEqual('error');
+    expect(collection.notices.length).toEqual(0);
+    expect(collection.warnings.length).toEqual(0);
   });
 
   it('should create a notice message', () => {
     var collection = new Collector();
     collection.addNotice(fakeMessageData);
-    assert.equal(collection.notices[0].type, 'notice');
-    assert.equal(collection.errors.length, 0);
-    assert.equal(collection.warnings.length, 0);
+    expect(collection.notices[0].type).toEqual('notice');
+    expect(collection.errors.length).toEqual(0);
+    expect(collection.warnings.length).toEqual(0);
   });
 
   it('should create a warning message', () => {
     var collection = new Collector();
     collection.addWarning(fakeMessageData);
-    assert.equal(collection.warnings[0].type, 'warning');
-    assert.equal(collection.errors.length, 0);
-    assert.equal(collection.notices.length, 0);
+    expect(collection.warnings[0].type).toEqual('warning');
+    expect(collection.errors.length).toEqual(0);
+    expect(collection.notices.length).toEqual(0);
   });
 
   it('should not add a duplicate message with a dataPath', () => {
     var collection = new Collector();
     collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
     collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
-    assert.equal(collection.warnings.length, 1);
-    assert.equal(collection.warnings[0].type, 'warning');
-    assert.equal(collection.errors.length, 0);
-    assert.equal(collection.notices.length, 0);
+    expect(collection.warnings.length).toEqual(1);
+    expect(collection.warnings[0].type).toEqual('warning');
+    expect(collection.errors.length).toEqual(0);
+    expect(collection.notices.length).toEqual(0);
   });
 
   it('should not add duplicate files to scannedFiles', () => {
@@ -82,7 +84,7 @@ describe('Collector', function() {
     collection.recordScannedFile('foo.js', 'test');
     collection.recordScannedFile('foo.js', 'new-test');
 
-    assert.deepEqual(collection.scannedFiles, {
+    expect(collection.scannedFiles).toEqual({
       'foo.js': ['test', 'new-test'],
     });
   });
@@ -101,11 +103,11 @@ describe('Collector', function() {
       file: 'foo.js',
       line: 26,
     });
-    assert.equal(collection.warnings.length, 2);
-    assert.equal(collection.warnings[0].line, 25);
-    assert.equal(collection.warnings[1].line, 26);
-    assert.equal(collection.errors.length, 0);
-    assert.equal(collection.notices.length, 0);
+    expect(collection.warnings.length).toEqual(2);
+    expect(collection.warnings[0].line).toEqual(25);
+    expect(collection.warnings[1].line).toEqual(26);
+    expect(collection.errors.length).toEqual(0);
+    expect(collection.notices.length).toEqual(0);
   });
 
   it('should add a message that differs on one prop', () => {
@@ -116,10 +118,10 @@ describe('Collector', function() {
       dataPath: '/foo',
       message: 'Foo message',
     });
-    assert.equal(collection.warnings.length, 2);
-    assert.equal(collection.warnings[1].message, 'Foo message');
-    assert.equal(collection.errors.length, 0);
-    assert.equal(collection.notices.length, 0);
+    expect(collection.warnings.length).toEqual(2);
+    expect(collection.warnings[1].message).toEqual('Foo message');
+    expect(collection.errors.length).toEqual(0);
+    expect(collection.notices.length).toEqual(0);
   });
 
   it('should filter message by filename if config.scanFile is defined', () => {
@@ -127,64 +129,64 @@ describe('Collector', function() {
       scanFile: ['test.js', 'no-match-file.js'],
     });
 
-    assert.equal(collection.length, 0);
+    expect(collection.length).toEqual(0);
 
     // Test linting error without a file.
     collection.addError({
       ...fakeMessageData,
     });
-    assert.equal(collection.length, 1);
+    expect(collection.length).toEqual(1);
 
-    assert.equal(collection.errors.length, 1);
-    assert.equal(collection.warnings.length, 0);
-    assert.equal(collection.notices.length, 0);
-    assert.equal(collection.errors[0].code, fakeMessageData.code);
+    expect(collection.errors.length).toEqual(1);
+    expect(collection.warnings.length).toEqual(0);
+    expect(collection.notices.length).toEqual(0);
+    expect(collection.errors[0].code).toEqual(fakeMessageData.code);
 
     // Test linting error with an excluded file.
     collection.addError({
       ...fakeMessageData,
       file: 'non-test.js',
     });
-    assert.equal(collection.length, 1);
+    expect(collection.length).toEqual(1);
 
     // Test linting error with an included file.
     collection.addError({
       ...fakeMessageData,
       file: 'test.js',
     });
-    assert.equal(collection.length, 2);
+    expect(collection.length).toEqual(2);
 
     // Test filtered warnings.
     collection.addWarning({
       ...fakeMessageData,
       file: 'test.js',
     });
-    assert.equal(collection.length, 3);
+    expect(collection.length).toEqual(3);
 
     // Test filtered notices.
     collection.addNotice({
       ...fakeMessageData,
       file: 'test.js',
     });
-    assert.equal(collection.length, 4);
+    expect(collection.length).toEqual(4);
 
-    assert.equal(collection.errors.length, 2);
-    assert.equal(collection.warnings.length, 1);
-    assert.equal(collection.notices.length, 1);
+    expect(collection.errors.length).toEqual(2);
+    expect(collection.warnings.length).toEqual(1);
+    expect(collection.notices.length).toEqual(1);
 
-    assert.equal(collection.errors[1].code, fakeMessageData.code);
-    assert.equal(collection.errors[1].file, 'test.js');
-    assert.equal(collection.warnings[0].code, fakeMessageData.code);
-    assert.equal(collection.warnings[0].file, 'test.js');
-    assert.equal(collection.notices[0].code, fakeMessageData.code);
-    assert.equal(collection.notices[0].file, 'test.js');
+    expect(collection.errors[1].code).toEqual(fakeMessageData.code);
+    expect(collection.errors[1].file).toEqual('test.js');
+    expect(collection.warnings[0].code).toEqual(fakeMessageData.code);
+    expect(collection.warnings[0].file).toEqual('test.js');
+    expect(collection.notices[0].code).toEqual(fakeMessageData.code);
+    expect(collection.notices[0].file).toEqual('test.js');
   });
 
   it('should throw when getting messages for an undefined dataPath', () => {
     var collection = new Collector();
-    assert.throws(() => {
+    expect(() => {
       collection.messagesAtDataPath(undefined);
-    }, /dataPath is required/);
+    }).toThrow(/dataPath is required/);
   });
 
 });

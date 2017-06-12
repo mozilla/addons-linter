@@ -1,3 +1,5 @@
+import sinon from 'sinon';
+
 import Linter from 'linter';
 import JSONScanner from 'scanners/json';
 
@@ -7,7 +9,7 @@ import { unexpectedSuccess } from '../helpers';
 describe('JSONScanner', function() {
 
   it('should report a proper scanner name', () => {
-    assert.equal(JSONScanner.scannerName, 'json');
+    expect(JSONScanner.scannerName).toEqual('json');
   });
 
   it('should throw an error if getContents fails', () => {
@@ -15,14 +17,14 @@ describe('JSONScanner', function() {
     var jsonScanner = new JSONScanner('{}', 'test.json', {
       collector: addonsLinter.collector});
 
-    sinon.stub(jsonScanner, 'getContents', () => {
+    sinon.stub(jsonScanner, 'getContents').callsFake(() => {
       return Promise.reject('Explode!');
     });
 
     return jsonScanner.scan()
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.equal(err, 'Explode!');
+        expect(err).toEqual('Explode!');
       });
   });
 

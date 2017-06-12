@@ -1,3 +1,5 @@
+import sinon from 'sinon';
+
 import { IOBase } from 'io/base';
 import { unexpectedSuccess } from '../helpers';
 
@@ -8,11 +10,11 @@ describe('io.IOBase()', function() {
 
   it('should init class props as expected', () => {
     var io = new IOBase('foo/bar');
-    assert.equal(io.path, 'foo/bar');
-    assert.equal(io.entries.length, 0);
-    assert.equal(Object.keys(io.files).length, 0);
-    assert.equal(typeof io.files, 'object');
-    assert.equal(io.maxSizeBytes, 104857600);
+    expect(io.path).toEqual('foo/bar');
+    expect(io.entries.length).toEqual(0);
+    expect(Object.keys(io.files).length).toEqual(0);
+    expect(typeof io.files).toEqual('object');
+    expect(io.maxSizeBytes).toEqual(104857600);
   });
 
   it('should reject calling getFiles()', () => {
@@ -21,8 +23,8 @@ describe('io.IOBase()', function() {
     return io.getFiles()
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.instanceOf(err, Error);
-        assert.equal(err.message, 'getFiles is not implemented');
+        expect(err).toBeInstanceOf(Error);
+        expect(err.message).toEqual('getFiles is not implemented');
       });
   });
 
@@ -32,19 +34,19 @@ describe('io.IOBase()', function() {
     return io.getFileAsString()
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.instanceOf(err, Error);
-        assert.equal(err.message, 'getFileAsString is not implemented');
+        expect(err).toBeInstanceOf(Error);
+        expect(err.message).toEqual('getFileAsString is not implemented');
       });
   });
 
-  it('should reject calling getFileAsString()', () => {
+  it('should reject calling getFileAsStream()', () => {
     var io = new IOBase('foo/bar');
 
     return io.getFileAsStream()
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.instanceOf(err, Error);
-        assert.equal(err.message, 'getFileAsStream is not implemented');
+        expect(err).toBeInstanceOf(Error);
+        expect(err.message).toEqual('getFileAsStream is not implemented');
       });
   });
 
@@ -54,8 +56,8 @@ describe('io.IOBase()', function() {
     return io.getChunkAsBuffer()
       .then(unexpectedSuccess)
       .catch((err) => {
-        assert.instanceOf(err, Error);
-        assert.equal(err.message, 'getChunkAsBuffer is not implemented');
+        expect(err).toBeInstanceOf(Error);
+        expect(err.message).toEqual('getChunkAsBuffer is not implemented');
       });
   });
 
@@ -63,46 +65,46 @@ describe('io.IOBase()', function() {
     var io = new IOBase('foo/bar');
     io.getFileAsStream = sinon.stub();
     io.getFile('get-a-stream', 'stream');
-    assert.ok(io.getFileAsStream.calledWith('get-a-stream'));
+    expect(io.getFileAsStream.calledWith('get-a-stream')).toBeTruthy();
   });
 
   it('should call getFileAsString method via getFile()', () => {
     var io = new IOBase('foo/bar');
     io.getFileAsString = sinon.stub();
     io.getFile('get-a-string', 'string');
-    assert.ok(io.getFileAsString.calledWith('get-a-string'));
+    expect(io.getFileAsString.calledWith('get-a-string')).toBeTruthy();
   });
 
   it('should call getChunkAsBuffer method via getFile()', () => {
     var io = new IOBase('foo/bar');
     io.getChunkAsBuffer = sinon.stub();
     io.getFile('get-a-chunk-as-buffer', 'chunk');
-    assert.ok(io.getChunkAsBuffer.calledWith('get-a-chunk-as-buffer',
-      FLAGGED_FILE_MAGIC_NUMBERS_LENGTH));
+    expect(io.getChunkAsBuffer.calledWith('get-a-chunk-as-buffer',
+      FLAGGED_FILE_MAGIC_NUMBERS_LENGTH)).toBeTruthy();
   });
 
   it('should scan all files by default', () => {
     const io = new IOBase('foo/bar');
-    assert.ok(io.shouldScanFile('install.rdf'));
-    assert.ok(io.shouldScanFile('manifest.json'));
+    expect(io.shouldScanFile('install.rdf')).toBeTruthy();
+    expect(io.shouldScanFile('manifest.json')).toBeTruthy();
   });
 
   it('should allow configuration of which files can be scanned', () => {
     const io = new IOBase('foo/bar');
     io.setScanFileCallback((fileName) => fileName !== 'install.rdf');
-    assert.notOk(io.shouldScanFile('install.rdf'));
-    assert.ok(io.shouldScanFile('manifest.json'));
+    expect(io.shouldScanFile('install.rdf')).toBeFalsy();
+    expect(io.shouldScanFile('manifest.json')).toBeTruthy();
   });
 
   it('should ignore undefined scan file callbacks', () => {
     const io = new IOBase('foo/bar');
     io.setScanFileCallback(undefined);
-    assert.ok(io.shouldScanFile('manifest.json'));
+    expect(io.shouldScanFile('manifest.json')).toBeTruthy();
   });
 
   it('should ignore a non-function scan file callback', () => {
     const io = new IOBase('foo/bar');
     io.setScanFileCallback(42); // this is not a function
-    assert.ok(io.shouldScanFile('manifest.json'));
+    expect(io.shouldScanFile('manifest.json')).toBeTruthy();
   });
 });

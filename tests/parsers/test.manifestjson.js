@@ -11,16 +11,16 @@ describe('ManifestJSONParser', function() {
     var addonLinter = new Linter({_: ['bar']});
     var manifestJSONParser = new ManifestJSONParser('blah',
                                                     addonLinter.collector);
-    assert.equal(manifestJSONParser.isValid, false);
+    expect(manifestJSONParser.isValid).toEqual(false);
     var errors = addonLinter.collector.errors;
-    assert.equal(errors.length, 1);
-    assert.equal(errors[0].code, messages.JSON_INVALID.code);
-    assert.include(errors[0].message, 'Your JSON is not valid.');
+    expect(errors.length).toEqual(1);
+    expect(errors[0].code).toEqual(messages.JSON_INVALID.code);
+    expect(errors[0].message).toContain('Your JSON is not valid.');
 
     var metadata = manifestJSONParser.getMetadata();
-    assert.equal(metadata.manifestVersion, null);
-    assert.equal(metadata.name, null);
-    assert.equal(metadata.version, null);
+    expect(metadata.manifestVersion).toEqual(null);
+    expect(metadata.name).toEqual(null);
+    expect(metadata.version).toEqual(null);
   });
 
   describe('id', function() {
@@ -30,9 +30,9 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON();
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, true);
+      expect(manifestJSONParser.isValid).toEqual(true);
       var metadata = manifestJSONParser.getMetadata();
-      assert.equal(metadata.id, '{daf44bf7-a45e-4450-979c-91cf07434c3d}');
+      expect(metadata.id).toEqual('{daf44bf7-a45e-4450-979c-91cf07434c3d}');
     });
 
     it('should fail on invalid id', () => {
@@ -42,7 +42,7 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({applications: {gecko: {id: 'wat'}}});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(addonLinter.collector.errors, {
         code: messages.JSON_INVALID.code,
         message: /"\/applications\/gecko\/id" should match pattern/,
@@ -54,9 +54,9 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({applications: {}});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, true);
+      expect(manifestJSONParser.isValid).toEqual(true);
       var metadata = manifestJSONParser.getMetadata();
-      assert.equal(metadata.id, null);
+      expect(metadata.id).toEqual(null);
     });
 
   });
@@ -68,11 +68,11 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({manifest_version: 'whatever'});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       var errors = addonLinter.collector.errors;
-      assert.equal(errors.length, 1);
-      assert.equal(errors[0].code, messages.MANIFEST_FIELD_INVALID.code);
-      assert.include(errors[0].message, '/manifest_version');
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual(messages.MANIFEST_FIELD_INVALID.code);
+      expect(errors[0].message).toContain('/manifest_version');
     });
 
     it('should collect an error with numeric string value', () => {
@@ -80,10 +80,10 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({manifest_version: '1'});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       var errors = addonLinter.collector.errors;
-      assert.equal(errors[0].code, messages.MANIFEST_FIELD_INVALID.code);
-      assert.include(errors[0].message, '/manifest_version');
+      expect(errors[0].code).toEqual(messages.MANIFEST_FIELD_INVALID.code);
+      expect(errors[0].message).toContain('/manifest_version');
     });
 
     it('should have the right manifestVersion', () => {
@@ -91,9 +91,9 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON();
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, true);
+      expect(manifestJSONParser.isValid).toEqual(true);
       var metadata = manifestJSONParser.getMetadata();
-      assert.equal(metadata.manifestVersion, VALID_MANIFEST_VERSION);
+      expect(metadata.manifestVersion).toEqual(VALID_MANIFEST_VERSION);
     });
 
   });
@@ -111,9 +111,9 @@ describe('ManifestJSONParser', function() {
 
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       var warnings = addonLinter.collector.warnings;
-      assert.lengthOf(addonLinter.collector.errors, 0);
+      expect(addonLinter.collector.errors.length).toBe(0);
       assertHasMatchingError(warnings, {
         code: messages.MANIFEST_PERMISSIONS.code,
         message: /Unknown permissions "fileSystem"/,
@@ -133,10 +133,10 @@ describe('ManifestJSONParser', function() {
 
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       var errors = addonLinter.collector.errors;
-      assert.equal(errors[0].code, messages.MANIFEST_BAD_PERMISSION.code);
-      assert.include(errors[0].message, 'should be string');
+      expect(errors[0].code).toEqual(messages.MANIFEST_BAD_PERMISSION.code);
+      expect(errors[0].message).toContain('should be string');
     });
 
     it('should error if permission is duplicated', () => {
@@ -150,10 +150,10 @@ describe('ManifestJSONParser', function() {
 
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       var errors = addonLinter.collector.errors;
-      assert.equal(errors[0].code, messages.MANIFEST_BAD_PERMISSION.code);
-      assert.include(errors[0].message, 'should NOT have duplicate items');
+      expect(errors[0].code).toEqual(messages.MANIFEST_BAD_PERMISSION.code);
+      expect(errors[0].message).toContain('should NOT have duplicate items');
     });
 
   });
@@ -167,9 +167,9 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON();
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, true);
+      expect(manifestJSONParser.isValid).toEqual(true);
       var metadata = manifestJSONParser.getMetadata();
-      assert.equal(metadata.type, PACKAGE_EXTENSION);
+      expect(metadata.type).toEqual(PACKAGE_EXTENSION);
     });
 
     it('should not allow the type to be user-specified', () => {
@@ -177,9 +177,9 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({type: 'whatevs'});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, true);
+      expect(manifestJSONParser.isValid).toEqual(true);
       var metadata = manifestJSONParser.getMetadata();
-      assert.equal(metadata.type, PACKAGE_EXTENSION);
+      expect(metadata.type).toEqual(PACKAGE_EXTENSION);
     });
 
   });
@@ -198,7 +198,7 @@ describe('ManifestJSONParser', function() {
         var parser = new ManifestJSONParser(validManifestJSON(),
                                             addonLinter.collector);
         var message = parser.errorLookup({dataPath: ''});
-        assert.equal(message.code, messages.JSON_INVALID.code);
+        expect(message.code).toEqual(messages.JSON_INVALID.code);
       });
     }
 
@@ -207,7 +207,7 @@ describe('ManifestJSONParser', function() {
       var parser = new ManifestJSONParser(validManifestJSON(),
                                           addonLinter.collector);
       var message = parser.errorLookup({dataPath: '', keyword: 'required'});
-      assert.equal(message.code, messages.MANIFEST_FIELD_REQUIRED.code);
+      expect(message.code).toEqual(messages.MANIFEST_FIELD_REQUIRED.code);
     });
 
     it('should return invalid for wrong type', () => {
@@ -215,7 +215,7 @@ describe('ManifestJSONParser', function() {
       var parser = new ManifestJSONParser(validManifestJSON(),
                                           addonLinter.collector);
       var message = parser.errorLookup({dataPath: '', keyword: 'type'});
-      assert.equal(message.code, messages.MANIFEST_FIELD_INVALID.code);
+      expect(message.code).toEqual(messages.MANIFEST_FIELD_INVALID.code);
     });
 
     it('should return permission for wrong type', () => {
@@ -223,7 +223,7 @@ describe('ManifestJSONParser', function() {
       var parser = new ManifestJSONParser(validManifestJSON(),
                                           addonLinter.collector);
       var message = parser.errorLookup({dataPath: '/permissions/0'});
-      assert.equal(message.code, messages.MANIFEST_PERMISSIONS.code);
+      expect(message.code).toEqual(messages.MANIFEST_PERMISSIONS.code);
     });
   });
 
@@ -235,12 +235,13 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({permissions: ['tabs', 'wat']});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       var warnings = addonLinter.collector.warnings;
-      assert.equal(warnings.length, 1);
-      assert.equal(warnings[0].code, messages.MANIFEST_PERMISSIONS.code);
-      assert.include(warnings[0].message,
-                    '/permissions: Unknown permissions "wat" at 1.');
+      expect(warnings.length).toEqual(1);
+      expect(warnings[0].code).toEqual(messages.MANIFEST_PERMISSIONS.code);
+      expect(warnings[0].message).toContain(
+        '/permissions: Unknown permissions "wat" at 1.'
+      );
     });
   });
 
@@ -253,9 +254,9 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({name: 'my-awesome-ext'});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, true);
+      expect(manifestJSONParser.isValid).toEqual(true);
       var metadata = manifestJSONParser.getMetadata();
-      assert.equal(metadata.name, 'my-awesome-ext');
+      expect(metadata.name).toEqual('my-awesome-ext');
     });
 
     it('should collect an error on missing name value', () => {
@@ -263,10 +264,10 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({name: undefined});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       var errors = addonLinter.collector.errors;
-      assert.equal(errors[0].code, messages.MANIFEST_FIELD_REQUIRED.code);
-      assert.include(errors[0].message, '/name');
+      expect(errors[0].code).toEqual(messages.MANIFEST_FIELD_REQUIRED.code);
+      expect(errors[0].message).toContain('/name');
     });
 
     it('should collect an error on non-string name value', () => {
@@ -274,10 +275,10 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({name: 1});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       var errors = addonLinter.collector.errors;
-      assert.equal(errors[0].code, messages.MANIFEST_FIELD_INVALID.code);
-      assert.include(errors[0].message, '/name');
+      expect(errors[0].code).toEqual(messages.MANIFEST_FIELD_INVALID.code);
+      expect(errors[0].message).toContain('/name');
     });
 
   });
@@ -289,9 +290,9 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({version: '1.0'});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, true);
+      expect(manifestJSONParser.isValid).toEqual(true);
       var metadata = manifestJSONParser.getMetadata();
-      assert.equal(metadata.version, '1.0');
+      expect(metadata.version).toEqual('1.0');
     });
 
     it('should collect an error on missing version value', () => {
@@ -299,10 +300,10 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({version: undefined});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       var errors = addonLinter.collector.errors;
-      assert.equal(errors[0].code, messages.MANIFEST_FIELD_REQUIRED.code);
-      assert.include(errors[0].message, '/version');
+      expect(errors[0].code).toEqual(messages.MANIFEST_FIELD_REQUIRED.code);
+      expect(errors[0].message).toContain('/version');
     });
 
     it('should collect an error on non-string version value', () => {
@@ -310,10 +311,10 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({version: 1});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       var errors = addonLinter.collector.errors;
-      assert.equal(errors[0].code, messages.MANIFEST_FIELD_INVALID.code);
-      assert.include(errors[0].message, '/version');
+      expect(errors[0].code).toEqual(messages.MANIFEST_FIELD_INVALID.code);
+      expect(errors[0].message).toContain('/version');
     });
 
     it('should collect a notice on toolkit version values', () => {
@@ -321,10 +322,10 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({version: '1.0.0.0pre0'});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, true);
+      expect(manifestJSONParser.isValid).toEqual(true);
       var notices = addonLinter.collector.notices;
-      assert.equal(notices[0].code, messages.PROP_VERSION_TOOLKIT_ONLY.code);
-      assert.include(notices[0].message, 'version');
+      expect(notices[0].code).toEqual(messages.PROP_VERSION_TOOLKIT_ONLY.code);
+      expect(notices[0].message).toContain('version');
     });
 
   });
@@ -336,10 +337,10 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({content_security_policy: 'wat?'});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, true);
+      expect(manifestJSONParser.isValid).toEqual(true);
       var warnings = addonLinter.collector.warnings;
-      assert.equal(warnings[0].code, messages.MANIFEST_CSP.code);
-      assert.include(warnings[0].message, 'content_security_policy');
+      expect(warnings[0].code).toEqual(messages.MANIFEST_CSP.code);
+      expect(warnings[0].message).toContain('content_security_policy');
     });
 
   });
@@ -355,10 +356,10 @@ describe('ManifestJSONParser', function() {
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector,
                                                       {selfHosted: false});
-      assert.equal(manifestJSONParser.isValid, true);
+      expect(manifestJSONParser.isValid).toEqual(true);
       var notices = addonLinter.collector.notices;
-      assert.equal(notices[0].code, messages.MANIFEST_UNUSED_UPDATE.code);
-      assert.include(notices[0].message, 'update_url');
+      expect(notices[0].code).toEqual(messages.MANIFEST_UNUSED_UPDATE.code);
+      expect(notices[0].message).toContain('update_url');
     });
 
     // applications.gecko.update_url isn't allowed if the add-on is being
@@ -375,10 +376,10 @@ describe('ManifestJSONParser', function() {
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector,
                                                       {selfHosted: false});
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       var errors = addonLinter.collector.errors;
-      assert.equal(errors[0].code, messages.MANIFEST_UPDATE_URL.code);
-      assert.include(errors[0].message, 'update_url');
+      expect(errors[0].code).toEqual(messages.MANIFEST_UPDATE_URL.code);
+      expect(errors[0].message).toContain('update_url');
     });
 
     it('is not an issue if self-hosted', () => {
@@ -394,8 +395,8 @@ describe('ManifestJSONParser', function() {
                                                       addonLinter.collector,
                                                       {selfHosted: true});
       manifestJSONParser.selfHosted = true;
-      assert.equal(manifestJSONParser.isValid, true);
-      assert.lengthOf(addonLinter.collector.warnings, 0);
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.warnings.length).toBe(0);
     });
   });
 
@@ -407,7 +408,7 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({background: {script: ['background.js']}});
       var manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       var errors = addonLinter.collector.errors;
       assertHasMatchingError(errors, {
         code: messages.JSON_INVALID.code,
@@ -423,9 +424,9 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({default_locale: 'fr'});
       var manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, {io: {files: {}}});
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       var errors = addonLinter.collector.errors;
-      assert.equal(errors[0].code, messages.NO_MESSAGES_FILE.code);
+      expect(errors[0].code).toEqual(messages.NO_MESSAGES_FILE.code);
     });
 
     it('valid if not specified', () => {
@@ -433,7 +434,7 @@ describe('ManifestJSONParser', function() {
       var json = validManifestJSON({});
       var manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector);
-      assert.equal(manifestJSONParser.isValid, true);
+      expect(manifestJSONParser.isValid).toEqual(true);
     });
 
     it('valid if file present', () => {
@@ -442,7 +443,7 @@ describe('ManifestJSONParser', function() {
       var manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector,
         {io: {files: {'_locales/fr/messages.json': {}}}});
-      assert.equal(manifestJSONParser.isValid, true);
+      expect(manifestJSONParser.isValid).toEqual(true);
     });
 
     it('error if default_locale missing but messages.json present', () => {
@@ -451,9 +452,9 @@ describe('ManifestJSONParser', function() {
       var manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector,
         {io: {files: {'_locales/fr/messages.json': {}}}});
-      assert.equal(manifestJSONParser.isValid, false);
+      expect(manifestJSONParser.isValid).toEqual(false);
       var errors = addonLinter.collector.errors;
-      assert.equal(errors[0].code, messages.NO_DEFAULT_LOCALE.code);
+      expect(errors[0].code).toEqual(messages.NO_DEFAULT_LOCALE.code);
     });
 
     let messages_paths = [
@@ -473,7 +474,7 @@ describe('ManifestJSONParser', function() {
         var manifestJSONParser = new ManifestJSONParser(
           json, addonLinter.collector,
           {io: {files: files}});
-        assert.equal(manifestJSONParser.isValid, true);
+        expect(manifestJSONParser.isValid).toEqual(true);
       });
     }
   });
@@ -485,7 +486,7 @@ describe('ManifestJSONParser', function() {
       delete json.icons;
       const manifestJSONParser = new ManifestJSONParser(
         json, linter.collector, {io: {files: []}});
-      assert.ok(manifestJSONParser.isValid);
+      expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
     it('does not add errors if the icons are in the package', () => {
@@ -502,7 +503,7 @@ describe('ManifestJSONParser', function() {
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, {io: {files}});
-      assert.ok(manifestJSONParser.isValid);
+      expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
     it('adds an error if the icon is not in the package', () => {
@@ -518,7 +519,7 @@ describe('ManifestJSONParser', function() {
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, {io: {files}});
-      assert.notOk(manifestJSONParser.isValid);
+      expect(manifestJSONParser.isValid).toBeFalsy();
       assertHasMatchingError(addonLinter.collector.errors, {
         code: messages.MANIFEST_ICON_NOT_FOUND,
         message:

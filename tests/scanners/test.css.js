@@ -1,3 +1,5 @@
+import sinon from 'sinon';
+
 import * as messages from 'messages';
 import { VALIDATION_WARNING } from 'const';
 import CSSScanner from 'scanners/css';
@@ -9,7 +11,7 @@ import { ignorePrivateFunctions, singleLineString } from 'utils';
 describe('CSSScanner', () => {
 
   it('should report a proper scanner name', () => {
-    assert.equal(CSSScanner.scannerName, 'css');
+    expect(CSSScanner.scannerName).toEqual('css');
   });
 
   it('should add CSS_SYNTAX_ERROR with invalid css', () => {
@@ -18,14 +20,13 @@ describe('CSSScanner', () => {
 
     return cssScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 1);
-        assert.equal(linterMessages[0].code,
-                     messages.CSS_SYNTAX_ERROR.code);
-        assert.equal(linterMessages[0].type, VALIDATION_WARNING);
-        assert.equal(linterMessages[0].message, 'Unclosed block');
-        assert.equal(linterMessages[0].line, 1);
-        assert.equal(linterMessages[0].column, 1);
-        assert.equal(linterMessages[0].file, 'fakeFile.css');
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(messages.CSS_SYNTAX_ERROR.code);
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
+        expect(linterMessages[0].message).toEqual('Unclosed block');
+        expect(linterMessages[0].line).toEqual(1);
+        expect(linterMessages[0].column).toEqual(1);
+        expect(linterMessages[0].file).toEqual('fakeFile.css');
       });
   });
 
@@ -36,7 +37,7 @@ describe('CSSScanner', () => {
     var fakeRules = { metadataPassCheck: () => {} };
 
     // This rule calls assert.fail() if no metadata is passed to it.
-    sinon.stub(fakeRules, 'metadataPassCheck', metadataPassCheck);
+    sinon.stub(fakeRules, 'metadataPassCheck').callsFake(metadataPassCheck);
 
     var scanner = new CSSScanner(code, 'fake.css', {
       addonMetadata: validMetadata({guid: 'snowflake'}),
@@ -44,8 +45,8 @@ describe('CSSScanner', () => {
 
     return scanner.scan(fakeRules)
       .then(({linterMessages}) => {
-        assert.ok(fakeRules.metadataPassCheck.called);
-        assert.equal(linterMessages.length, 0);
+        expect(fakeRules.metadataPassCheck.called).toBeTruthy();
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -67,11 +68,11 @@ describe('CSSScanner', () => {
         return cssScanner.scan();
       })
       .then(() => {
-        assert.fail(null, null, 'unexpected success');
+        expect(false).toBe(true);
       })
       .catch((err) => {
-        assert.instanceOf(err, TypeError);
-        assert.equal(err.message, 'Awooga');
+        expect(err).toBeInstanceOf(TypeError);
+        expect(err.message).toEqual('Awooga');
       });
   });
 
@@ -82,13 +83,13 @@ describe('CSSScanner', () => {
       .myClass { background: #000; }`;
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
 
-    assert.equal(ruleFiles.length,
-                 Object.keys(ignorePrivateFunctions(rules)).length);
+    expect(ruleFiles.length).toEqual(
+      Object.keys(ignorePrivateFunctions(rules)).length);
 
     return cssScanner.scan()
       .then(() => {
-        assert.equal(cssScanner._rulesProcessed,
-                     Object.keys(ignorePrivateFunctions(rules)).length);
+        expect(cssScanner._rulesProcessed).toEqual(
+          Object.keys(ignorePrivateFunctions(rules)).length);
       });
   });
 
@@ -97,7 +98,7 @@ describe('CSSScanner', () => {
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
     return cssScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 
@@ -107,7 +108,7 @@ describe('CSSScanner', () => {
     var cssScanner = new CSSScanner(code, 'fakeFile.css');
     return cssScanner.scan()
       .then(({linterMessages}) => {
-        assert.equal(linterMessages.length, 0);
+        expect(linterMessages.length).toEqual(0);
       });
   });
 });
