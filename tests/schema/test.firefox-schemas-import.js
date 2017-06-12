@@ -1398,9 +1398,18 @@ describe('firefox schema import', () => {
   });
 
   describe('downloadUrl', () => {
-    it('uses a version', () => {
+    it('uses aurora if version is < 55', () => {
+      expect(downloadUrl(48)).toMatch(
+        /archive\/FIREFOX_AURORA_48_BASE.tar.gz$/);
       expect(downloadUrl(54)).toMatch(
         /archive\/FIREFOX_AURORA_54_BASE.tar.gz$/);
+    });
+
+    it('uses beta if version is >= 55', () => {
+      expect(downloadUrl(55)).toMatch(
+        /archive\/FIREFOX_BETA_55_BASE.tar.gz$/);
+      expect(downloadUrl(60)).toMatch(
+        /archive\/FIREFOX_BETA_60_BASE.tar.gz$/);
     });
 
     it('uses tip for nightly', () => {

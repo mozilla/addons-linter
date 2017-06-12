@@ -499,6 +499,8 @@ export function downloadUrl(version) {
   const base = 'https://hg.mozilla.org/mozilla-central/archive/';
   if (version === 'nightly') {
     return `${base}tip.tar.gz`;
+  } else if (parseInt(version, 10) >= 55) {
+    return `${base}FIREFOX_BETA_${version}_BASE.tar.gz`;
   } else {
     return `${base}FIREFOX_AURORA_${version}_BASE.tar.gz`;
   }
