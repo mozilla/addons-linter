@@ -8,6 +8,7 @@ import tar from 'tar';
 
 import {
   FLAG_PATTERN_REWRITES,
+  downloadUrl,
   fetchSchemas,
   filterSchemas,
   foldSchemas,
@@ -1393,6 +1394,18 @@ describe('firefox schema import', () => {
     it('handles empty strings', () => {
       const str = '';
       expect(stripTrailingNullByte(str)).toBe(str);
+    });
+  });
+
+  describe('downloadUrl', () => {
+    it('uses a version', () => {
+      expect(downloadUrl(54)).toMatch(
+        /archive\/FIREFOX_AURORA_54_BASE.tar.gz$/);
+    });
+
+    it('uses tip for nightly', () => {
+      expect(downloadUrl('nightly')).toMatch(
+        /archive\/tip.tar.gz$/);
     });
   });
 });

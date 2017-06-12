@@ -495,8 +495,13 @@ export function importSchemas(firefoxPath, ourPath, importedPath) {
   writeSchemasToFile(firefoxPath, importedPath, updatedSchemas);
 }
 
-function downloadUrl(version) {
-  return `https://hg.mozilla.org/mozilla-central/archive/FIREFOX_AURORA_${version}_BASE.tar.gz`;
+export function downloadUrl(version) {
+  const base = 'https://hg.mozilla.org/mozilla-central/archive/';
+  if (version === 'nightly') {
+    return `${base}tip.tar.gz`;
+  } else {
+    return `${base}FIREFOX_AURORA_${version}_BASE.tar.gz`;
+  }
 }
 
 inner.isBrowserSchema = (path) => {
