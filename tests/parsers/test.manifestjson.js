@@ -136,7 +136,7 @@ describe('ManifestJSONParser', function() {
       assert.equal(manifestJSONParser.isValid, false);
       var errors = addonLinter.collector.errors;
       assert.equal(errors[0].code, messages.MANIFEST_BAD_PERMISSION.code);
-      assert.include(errors[0].message, 'should be equal to one');
+      assert.include(errors[0].message, 'should be string');
     });
 
     it('should error if permission is duplicated', () => {
@@ -476,5 +476,55 @@ describe('ManifestJSONParser', function() {
         assert.equal(manifestJSONParser.isValid, true);
       });
     }
+  });
+
+  describe('icons', () => {
+    it('does not add errors if there are no icons', () => {
+      const linter = new Linter({_: ['bar']});
+      const json = validManifestJSON();
+      delete json.icons;
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {io: {files: []}});
+      assert.ok(manifestJSONParser.isValid);
+    });
+
+    it('does not add errors if the icons are in the package', () => {
+      const addonLinter = new Linter({_: ['bar']});
+      const json = validManifestJSON({
+        icons: {
+          32: 'icons/icon-32.png',
+          64: 'icons/icon-64.png',
+        },
+      });
+      const files = {
+        'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, {io: {files}});
+      assert.ok(manifestJSONParser.isValid);
+    });
+
+    it('adds an error if the icon is not in the package', () => {
+      const addonLinter = new Linter({_: ['bar']});
+      const json = validManifestJSON({
+        icons: {
+          32: 'icons/icon-32.png',
+          64: 'icons/icon-64.png',
+        },
+      });
+      const files = {
+        'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, {io: {files}});
+      assert.notOk(manifestJSONParser.isValid);
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.MANIFEST_ICON_NOT_FOUND,
+        message:
+          'An icon defined in the manifest could not be found in the package.',
+        description: 'Icon could not be found at "icons/icon-64.png".',
+      });
+    });
   });
 });

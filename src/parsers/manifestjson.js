@@ -114,6 +114,10 @@ export default class ManifestJSONParser extends JSONParser {
       this.collector.addNotice(messages.MANIFEST_UNUSED_UPDATE);
     }
 
+    if (this.parsedJSON.icons) {
+      this.validateIcons();
+    }
+
     if (!this.selfHosted && this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.update_url) {
@@ -144,6 +148,17 @@ export default class ManifestJSONParser extends JSONParser {
         }
       }
     }
+  }
+
+  validateIcons() {
+    const { icons } = this.parsedJSON;
+    Object.keys(icons).forEach((size) => {
+      const path = icons[size];
+      if (!this.io.files.hasOwnProperty(path)) {
+        this.collector.addError(messages.manifestIconMissing(path));
+        this.isValid = false;
+      }
+    });
   }
 
   getAddonId() {
