@@ -48,7 +48,8 @@ try {
 }
 
 // Remove the old schema files.
-emptyDir(importedDir, /.*.json$/);
+emptyDir(importedDir, /.*\.json$/);
+emptyDir(importedDir, /index\.js$/);
 
 schemaImport.fetchSchemas(
     { inputPath: filePath, outputPath: firefoxDir, version })
