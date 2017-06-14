@@ -16,16 +16,6 @@
                 }
               ]
             },
-            "home": {
-              "allOf": [
-                {
-                  "$ref": "manifest#/types/ExtensionURL"
-                },
-                {
-                  "preprocess": "localize"
-                }
-              ]
-            },
             "bookmarks": {
               "allOf": [
                 {

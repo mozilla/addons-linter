@@ -533,7 +533,7 @@
     }
   ],
   "definitions": {
-    "Permission": {
+    "OptionalPermission": {
       "anyOf": [
         {
           "type": "string",
@@ -545,9 +545,9 @@
     }
   },
   "refs": {
-    "bookmarks#/definitions/Permission": {
+    "bookmarks#/definitions/OptionalPermission": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "OptionalPermission"
     }
   },
   "types": {

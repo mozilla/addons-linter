@@ -20,6 +20,16 @@
             }
           ]
         },
+        "peerConnectionEnabled": {
+          "allOf": [
+            {
+              "$ref": "types#/types/Setting"
+            },
+            {
+              "description": "Allow users to enable and disable RTCPeerConnections (aka WebRTC)."
+            }
+          ]
+        },
         "webRTCIPHandlingPolicy": {
           "allOf": [
             {
@@ -33,6 +43,7 @@
       },
       "required": [
         "networkPredictionEnabled",
+        "peerConnectionEnabled",
         "webRTCIPHandlingPolicy"
       ]
     },

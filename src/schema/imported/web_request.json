@@ -1116,7 +1116,7 @@
     }
   ],
   "definitions": {
-    "Permission": {
+    "OptionalPermission": {
       "anyOf": [
         {
           "type": "string",
@@ -1129,9 +1129,9 @@
     }
   },
   "refs": {
-    "webRequest#/definitions/Permission": {
+    "webRequest#/definitions/OptionalPermission": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "OptionalPermission"
     }
   },
   "types": {
@@ -1144,6 +1144,7 @@
         "script",
         "image",
         "object",
+        "object_subrequest",
         "xmlhttprequest",
         "xbl",
         "xslt",
