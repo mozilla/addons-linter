@@ -1,4 +1,4 @@
-import parse from 'url-parse';
+import { URL } from 'whatwg-url';
 
 const VALIDNUMRX = /^[0-9]{1,5}$/;
 
@@ -43,12 +43,49 @@ export function isValidVersionString(version) {
   return true;
 }
 
-export function isRelativeURL(url) {
-  let parsed = parse(url);
-
-  if (parsed.protocol !== '' || parsed.href.startsWith('//')) {
+export function isAbsoluteUrl(value) {
+  try {
+    new URL(value);
+  } catch (e) {
+    // Couldn't parse, invalid.
     return false;
   }
-
+  // Could parse without a base, it's absolute.
   return true;
+}
+
+export function isAnyUrl(value) {
+  return isAbsoluteUrl(value) || isRelativeUrl(value);
+}
+
+export function isStrictRelativeUrl(value) {
+  return !value.startsWith('//') && isRelativeUrl(value);
+}
+
+export function isSecureUrl(value) {
+  let url;
+  try {
+    url = new URL(value);
+  } catch (e) {
+    // It's invalid or not absolute.
+    return false;
+  }
+  // URL is absolute, check against secure protocols.
+  return ['https:', 'wss:'].includes(url.protocol);
+}
+
+function isRelativeUrl(value) {
+  // A dummy protocol that shouldn't exist.
+  const protocol = 'asdoiasjdpoaisjd:';
+  let url;
+  try {
+    url = new URL(value, `${protocol}//foo`);
+  } catch (e) {
+    // URL is invalid.
+    return false;
+  }
+  // If the URL is relative, then the protocol will stay the same, but host
+  // could change due to protocol relative. Also check that the URL isn't
+  // absolute, since then it is using the dummy protocol we defined.
+  return url.protocol === protocol && !isAbsoluteUrl(value);
 }
