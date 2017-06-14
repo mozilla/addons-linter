@@ -4,9 +4,8 @@ import alarms from './alarms.json';
 import bookmarks from './bookmarks.json';
 import browserAction from './browser_action.json';
 import browsingData from './browsing_data.json';
+import chrome_settings_overrides from './chrome_settings_overrides.json';
 import commands from './commands.json';
-import contextMenus from './context_menus.json';
-import contextMenusInternal from './context_menus_internal.json';
 import contextualIdentities from './contextual_identities.json';
 import cookies from './cookies.json';
 import devtools from './devtools.json';
@@ -16,16 +15,21 @@ import experiments from './experiments.json';
 import extension from './extension.json';
 import extension_protocol_handlers from './extension_protocol_handlers.json';
 import extensionTypes from './extension_types.json';
+import geckoProfiler from './geckoProfiler.json';
 import history from './history.json';
 import i18n from './i18n.json';
 import identity from './identity.json';
 import idle from './idle.json';
 import management from './management.json';
 import manifest from './manifest.json';
+import menus from './menus.json';
+import menusInternal from './menus_internal.json';
 import notifications from './notifications.json';
 import omnibox from './omnibox.json';
 import pageAction from './page_action.json';
+import permissions from './permissions.json';
 import privacy from './privacy.json';
+import proxy from './proxy.json';
 import runtime from './runtime.json';
 import sessions from './sessions.json';
 import sidebarAction from './sidebar_action.json';
@@ -44,9 +48,8 @@ export default [
   bookmarks,
   browserAction,
   browsingData,
+  chrome_settings_overrides,
   commands,
-  contextMenus,
-  contextMenusInternal,
   contextualIdentities,
   cookies,
   devtools,
@@ -56,16 +59,21 @@ export default [
   extension,
   extension_protocol_handlers,
   extensionTypes,
+  geckoProfiler,
   history,
   i18n,
   identity,
   idle,
   management,
   manifest,
+  menus,
+  menusInternal,
   notifications,
   omnibox,
   pageAction,
+  permissions,
   privacy,
+  proxy,
   runtime,
   sessions,
   sidebarAction,

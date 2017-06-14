@@ -155,6 +155,9 @@
             "default_icon": {
               "$ref": "manifest#/types/IconPath"
             },
+            "browser_style": {
+              "type": "boolean"
+            },
             "default_panel": {
               "type": "string",
               "format": "strictRelativeUrl",

@@ -749,6 +749,10 @@
               "description": "Sources panel."
             }
           ]
+        },
+        "themeName": {
+          "type": "string",
+          "description": "The name of the current devtools theme."
         }
       },
       "functions": [
@@ -848,9 +852,24 @@
           ]
         }
       ],
+      "events": [
+        {
+          "name": "onThemeChanged",
+          "type": "function",
+          "description": "Fired when the devtools theme changes.",
+          "parameters": [
+            {
+              "name": "themeName",
+              "type": "string",
+              "description": "The name of the current devtools theme."
+            }
+          ]
+        }
+      ],
       "required": [
         "elements",
-        "sources"
+        "sources",
+        "themeName"
       ]
     }
   }

@@ -1,9 +1,9 @@
 {
-  "id": "contextMenus",
-  "description": "Use the <code>browser.contextMenus</code> API to add items to the browser's context menu. You can choose what types of objects your context menu additions apply to, such as images, hyperlinks, and pages.",
+  "id": "menus",
   "permissions": [
-    "contextMenus"
+    "menus"
   ],
+  "description": "Use the browser.menus API to add items to the browser's menus. You can choose what types of objects your context menu additions apply to, such as images, hyperlinks, and pages.",
   "properties": {
     "ACTION_MENU_TOP_LEVEL_LIMIT": {
       "value": 6,
@@ -117,6 +117,10 @@
             "enabled": {
               "type": "boolean",
               "description": "Whether this context menu item is enabled or disabled. Defaults to true."
+            },
+            "command": {
+              "type": "string",
+              "description": "Specifies a command to issue for the context click.  Currently supports internal commands _execute_page_action, _execute_browser_action and _execute_sidebar_action."
             }
           }
         },
@@ -125,83 +129,6 @@
           "name": "callback",
           "optional": true,
           "description": "Called when the item has been created in the browser. If there were any problems creating the item, details will be available in $(ref:runtime.lastError).",
-          "parameters": []
-        }
-      ]
-    },
-    {
-      "name": "createInternal",
-      "type": "function",
-      "allowedContexts": [
-        "addon_parent_only"
-      ],
-      "async": "callback",
-      "description": "Identical to contextMenus.create, except: the 'id' field is required and allows an integer, 'onclick' is not allowed, and the method is async (and the return value is not a menu item ID).",
-      "parameters": [
-        {
-          "type": "object",
-          "name": "createProperties",
-          "properties": {
-            "type": {
-              "$ref": "#/types/ItemType"
-            },
-            "id": {
-              "anyOf": [
-                {
-                  "type": "integer"
-                },
-                {
-                  "type": "string"
-                }
-              ]
-            },
-            "title": {
-              "type": "string"
-            },
-            "checked": {
-              "type": "boolean"
-            },
-            "contexts": {
-              "type": "array",
-              "items": {
-                "$ref": "#/types/ContextType"
-              },
-              "minItems": 1
-            },
-            "parentId": {
-              "anyOf": [
-                {
-                  "type": "integer"
-                },
-                {
-                  "type": "string"
-                }
-              ]
-            },
-            "documentUrlPatterns": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "targetUrlPatterns": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "enabled": {
-              "type": "boolean"
-            }
-          },
-          "required": [
-            "id"
-          ]
-        },
-        {
-          "type": "function",
-          "name": "callback",
-          "optional": true,
           "parameters": []
         }
       ]
@@ -251,7 +178,7 @@
                 {
                   "allOf": [
                     {
-                      "$ref": "contextMenusInternal#/types/OnClickData"
+                      "$ref": "menusInternal#/types/OnClickData"
                     },
                     {
                       "name": "info"
@@ -389,6 +316,7 @@
         {
           "type": "string",
           "enum": [
+            "menus",
             "contextMenus"
           ]
         }
@@ -396,7 +324,7 @@
     }
   },
   "refs": {
-    "contextMenus#/definitions/Permission": {
+    "menus#/definitions/Permission": {
       "namespace": "manifest",
       "type": "Permission"
     }

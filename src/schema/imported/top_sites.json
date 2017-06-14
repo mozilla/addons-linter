@@ -12,6 +12,20 @@
       "async": "callback",
       "parameters": [
         {
+          "type": "object",
+          "name": "options",
+          "properties": {
+            "providers": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Which providers to get top sites from. Possible values are \"places\" and \"activityStream\"."
+            }
+          },
+          "optional": true
+        },
+        {
           "name": "callback",
           "type": "function",
           "parameters": [
@@ -28,7 +42,7 @@
     }
   ],
   "definitions": {
-    "Permission": {
+    "OptionalPermission": {
       "anyOf": [
         {
           "type": "string",
@@ -40,9 +54,9 @@
     }
   },
   "refs": {
-    "topSites#/definitions/Permission": {
+    "topSites#/definitions/OptionalPermission": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "OptionalPermission"
     }
   },
   "types": {
