@@ -10,7 +10,7 @@ describe('logger.createLogger()', function() {
         },
       };
       createLogger(fakeProcess);
-    }).toThrow(/LOG_LEVEL must be one of/);
+    }).toThrow(/unknown level whatever/);
   });
 
 });
