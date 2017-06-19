@@ -10,7 +10,11 @@ describe('Messages', function() {
     const description = messages[message].description;
     const msg = messages[message].message;
 
-    if (code) {
+    if (typeof messages[message] === 'object') {
+      it('should have a code set', () => {
+        expect(code).not.toEqual(null);
+      });
+
       it(`should have code length <= 25 for ${code}`, () => {
         // Otherwise the ansi color sequences will be borked
         // as columnify doesn't handle them when wrapping text.
