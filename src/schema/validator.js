@@ -1,22 +1,13 @@
 import ajv from 'ajv';
-import URL from 'url-parse';
-import { isRelativeURL, isValidVersionString } from './formats';
+import {
+  isAnyUrl,
+  isAbsoluteUrl,
+  isStrictRelativeUrl,
+  isSecureUrl,
+  isValidVersionString,
+} from './formats';
 import schemaObject from 'schema/imported/manifest.json';
 import schemas from './imported';
-
-function isURL(value) {
-  const url = new URL(value);
-  return ['http:', 'https:'].includes(url.protocol);
-}
-
-function isSecureURL(value) {
-  const url = new URL(value);
-  return url.protocol === 'https:';
-}
-
-function isStrictRelativeUrl(value) {
-  return !value.startsWith('//') && isRelativeURL(value);
-}
 
 var validator = ajv({
   allErrors: true,
@@ -27,12 +18,18 @@ var validator = ajv({
 });
 
 validator.addFormat('versionString', isValidVersionString);
-validator.addFormat('relativeUrl', isRelativeURL);
-validator.addFormat('strictRelativeUrl', isStrictRelativeUrl);
-validator.addFormat('url', isURL);
-validator.addFormat('secureUrl', isSecureURL);
 validator.addFormat('deprecated', () => false);
 validator.addFormat('contentSecurityPolicy', () => true);
 validator.addFormat('ignore', () => true);
+
+// URL formats. The format names don't mean what you'd think, see bug 1354342.
+//
+// url -> MUST be absolute URL
+// relativeUrl -> CHOICE of absolute URL or relative URL (including protocol relative)
+// strictRelativeUrl -> MUST be relative, but not protocol relative (path only)
+validator.addFormat('url', isAbsoluteUrl);
+validator.addFormat('relativeUrl', isAnyUrl);
+validator.addFormat('strictRelativeUrl', isStrictRelativeUrl);
+validator.addFormat('secureUrl', isSecureUrl);
 
 export default validator.compile(schemaObject);

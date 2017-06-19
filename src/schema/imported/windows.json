@@ -195,6 +195,8 @@
         {
           "type": "object",
           "name": "createData",
+          "optional": true,
+          "default": {},
           "properties": {
             "url": {
               "description": "A URL or array of URLs to open as tabs in the window. Fully-qualified URLs must include a scheme (i.e. 'http://www.google.com', not 'www.google.com'). Relative URLs will be relative to the current page within the extension. Defaults to the New Tab Page.",
@@ -268,8 +270,7 @@
               "type": "boolean",
               "description": "Allow scripts to close the window."
             }
-          },
-          "optional": true
+          }
         },
         {
           "type": "function",

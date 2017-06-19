@@ -82,6 +82,7 @@
               "$ref": "#/types/RunAt"
             },
             {
+              "default": "document_idle",
               "description": "The soonest that the JavaScript or CSS will be injected into the tab. Defaults to \"document_idle\"."
             }
           ]

@@ -1,0 +1,194 @@
+{
+  "id": "permissions",
+  "permissions": [
+    "manifest:optional_permissions"
+  ],
+  "functions": [
+    {
+      "name": "getAll",
+      "type": "function",
+      "async": "callback",
+      "description": "Get a list of all the extension's permissions.",
+      "parameters": [
+        {
+          "name": "callback",
+          "type": "function",
+          "parameters": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/types/AnyPermissions"
+                },
+                {
+                  "name": "permissions"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "contains",
+      "type": "function",
+      "async": "callback",
+      "description": "Check if the extension has the given permissions.",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/AnyPermissions"
+            },
+            {
+              "name": "permissions"
+            }
+          ]
+        },
+        {
+          "name": "callback",
+          "type": "function",
+          "parameters": [
+            {
+              "name": "result",
+              "type": "boolean"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "request",
+      "type": "function",
+      "allowedContexts": [
+        "content"
+      ],
+      "async": "callback",
+      "description": "Request the given permissions.",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/Permissions"
+            },
+            {
+              "name": "permissions"
+            }
+          ]
+        },
+        {
+          "name": "callback",
+          "type": "function",
+          "parameters": [
+            {
+              "name": "granted",
+              "type": "boolean"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "remove",
+      "type": "function",
+      "async": "callback",
+      "description": "Relinquish the given permissions.",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/Permissions"
+            },
+            {
+              "name": "permissions"
+            }
+          ]
+        },
+        {
+          "name": "callback",
+          "type": "function",
+          "parameters": []
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "onAdded",
+      "type": "function",
+      "unsupported": true,
+      "description": "Fired when the extension acquires new permissions.",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/Permissions"
+            },
+            {
+              "name": "permissions"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "onRemoved",
+      "type": "function",
+      "unsupported": true,
+      "description": "Fired when permissions are removed from the extension.",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/Permissions"
+            },
+            {
+              "name": "permissions"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {},
+  "refs": {},
+  "types": {
+    "Permissions": {
+      "type": "object",
+      "properties": {
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "manifest#/types/OptionalPermission"
+          },
+          "default": []
+        },
+        "origins": {
+          "type": "array",
+          "items": {
+            "$ref": "manifest#/types/MatchPattern"
+          },
+          "default": []
+        }
+      }
+    },
+    "AnyPermissions": {
+      "type": "object",
+      "properties": {
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "manifest#/types/Permission"
+          },
+          "default": []
+        },
+        "origins": {
+          "type": "array",
+          "items": {
+            "$ref": "manifest#/types/MatchPattern"
+          },
+          "default": []
+        }
+      }
+    }
+  }
+}

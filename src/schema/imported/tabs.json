@@ -1394,7 +1394,7 @@
     }
   ],
   "definitions": {
-    "Permission": {
+    "OptionalPermission": {
       "anyOf": [
         {
           "type": "string",
@@ -1407,9 +1407,9 @@
     }
   },
   "refs": {
-    "tabs#/definitions/Permission": {
+    "tabs#/definitions/OptionalPermission": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "OptionalPermission"
     }
   },
   "types": {

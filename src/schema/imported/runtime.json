@@ -2,7 +2,8 @@
   "id": "runtime",
   "allowedContexts": [
     "content",
-    "devtools"
+    "devtools",
+    "proxy"
   ],
   "description": "Use the <code>browser.runtime</code> API to retrieve the background page, return details about the manifest, and listen for and respond to events in the app or extension lifecycle. You can also use this API to convert the relative path of URLs to fully-qualified URLs.",
   "properties": {
@@ -252,7 +253,8 @@
       "allowAmbiguousOptionalArguments": true,
       "allowedContexts": [
         "content",
-        "devtools"
+        "devtools",
+        "proxy"
       ],
       "description": "Sends a single message to event listeners within your extension/app or a different extension/app. Similar to $(ref:runtime.connect) but only sends a single message, with an optional response. If sending to your extension, the $(ref:runtime.onMessage) event will be fired in each page, or $(ref:runtime.onMessageExternal), if a different extension. Note that extensions cannot send messages to content scripts using this method. To send messages to content scripts, use $(ref:tabs.sendMessage).",
       "async": "responseCallback",
@@ -272,7 +274,12 @@
           "properties": {
             "includeTlsChannelId": {
               "type": "boolean",
+              "unsupported": true,
               "description": "Whether the TLS channel ID will be passed into onMessageExternal for processes that are listening for the connection event."
+            },
+            "toProxyScript": {
+              "type": "boolean",
+              "description": "If true, the message will be directed to the extension's proxy sandbox."
             }
           },
           "optional": true
@@ -420,8 +427,11 @@
             },
             "previousVersion": {
               "type": "string",
-              "unsupported": true,
               "description": "Indicates the previous version of the extension, which has just been updated. This is present only if 'reason' is 'update'."
+            },
+            "temporary": {
+              "type": "boolean",
+              "description": "Indicates whether the addon is installed as a temporary extension."
             },
             "id": {
               "type": "string",
@@ -430,7 +440,8 @@
             }
           },
           "required": [
-            "reason"
+            "reason",
+            "temporary"
           ]
         }
       ]
@@ -520,7 +531,8 @@
       "type": "function",
       "allowedContexts": [
         "content",
-        "devtools"
+        "devtools",
+        "proxy"
       ],
       "description": "Fired when a message is sent from either an extension process or a content script.",
       "parameters": [

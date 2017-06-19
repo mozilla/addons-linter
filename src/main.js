@@ -15,7 +15,7 @@ export function isRunFromCLI(_module=module) {
 export function createInstance({
   config=getConfig({useCLI: isRunFromCLI()}).argv, runAsBinary=false,
 } = {}) {
-  log.level(config.logLevel);
+  log.level = config.logLevel;
   log.info('Creating new linter instance', { config: config });
   config.runAsBinary = runAsBinary;
   return new Linter(config);
