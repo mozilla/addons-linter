@@ -112,6 +112,7 @@ export default class JavaScriptScanner {
             var overwrites = ESLINT_OVERWRITE_MESSAGE[message.ruleId];
             var shortDescription = overwrites.message || message.message;
             var description = overwrites.description || message.description;
+            code = overwrites.code || message.message;
           } else {
             var shortDescription = code;
             var description = null;

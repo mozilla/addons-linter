@@ -119,6 +119,7 @@ describe('no_eval', () => {
           expect(linterMessages.length).toEqual(code.message.length);
 
           code.message.forEach((expectedMessage, idx) => {
+            expect(linterMessages[idx].code).toEqual(DANGEROUS_EVAL.code);
             expect(linterMessages[idx].message).toEqual(expectedMessage);
             expect(linterMessages[idx].type).toEqual(VALIDATION_WARNING);
           });
