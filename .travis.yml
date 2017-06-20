@@ -13,6 +13,8 @@ after_script: npm run publish-coverage
 cache:
   directories:
   - node_modules
+before_deploy:
+  - npm run build
 deploy:
   provider: npm
   email: addons-dev-automation+npm@mozilla.com
