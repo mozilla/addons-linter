@@ -1,5 +1,3 @@
-import sinon from 'sinon';
-
 import { ZipFile } from 'yauzl';
 
 import { Crx } from 'io';

@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import stream from 'stream';
-import sinon from 'sinon';
 
 import request from 'request';
 import tar from 'tar';

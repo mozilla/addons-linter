@@ -1,5 +1,3 @@
-import sinon from 'sinon';
-
 import BaseScanner from 'scanners/base';
 import { ignorePrivateFunctions } from 'utils';
 import { metadataPassCheck, validMetadata } from '../helpers';

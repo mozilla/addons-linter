@@ -1,5 +1,4 @@
 import cheerio from 'cheerio';
-import sinon from 'sinon';
 
 import { VALIDATION_WARNING } from 'const';
 import { getRuleFiles, validHTML } from '../helpers';

@@ -1,5 +1,3 @@
-import sinon from 'sinon';
-
 import { Readable } from 'stream';
 import { EventEmitter } from 'events';
 

@@ -1,5 +1,3 @@
-import sinon from 'sinon';
-
 import Linter from 'linter';
 import JSONScanner from 'scanners/json';
 

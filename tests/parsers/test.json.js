@@ -1,6 +1,5 @@
 import Linter from 'linter';
 import JSONParser from 'parsers/json';
-import sinon from 'sinon';
 
 import * as messages from 'messages';
 import { singleLineString } from 'utils';

@@ -1,5 +1,3 @@
-import sinon from 'sinon';
-
 import { IOBase } from 'io/base';
 import { unexpectedSuccess } from '../helpers';
 

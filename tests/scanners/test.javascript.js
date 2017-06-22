@@ -1,5 +1,4 @@
 import ESLint from 'eslint';
-import sinon from 'sinon';
 
 import {
   DEPRECATED_APIS, ESLINT_ERROR, ESLINT_RULE_MAPPING, TEMPORARY_APIS,

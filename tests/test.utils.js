@@ -1,5 +1,4 @@
 import * as utils from 'utils';
-import sinon from 'sinon';
 import { unexpectedSuccess } from './helpers';
 
 

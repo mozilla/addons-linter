@@ -1,5 +1,3 @@
-import sinon from 'sinon';
-
 import { EventEmitter } from 'events';
 
 import { Directory } from 'io';

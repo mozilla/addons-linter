@@ -5,8 +5,6 @@ import Linter from 'linter';
 import * as constants from 'const';
 import * as messages from 'messages';
 
-import sinon from 'sinon';
-
 import ManifestJSONParser from 'parsers/manifestjson';
 import BinaryScanner from 'scanners/binary';
 import CSSScanner from 'scanners/css';
