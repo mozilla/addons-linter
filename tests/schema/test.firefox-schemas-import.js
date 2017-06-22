@@ -28,8 +28,6 @@ import {
 const { unlinkSync } = fs;
 
 describe('firefox schema import', () => {
-  let sandbox;
-
   function createDir(dirPath) {
     fs.mkdirSync(dirPath);
   }
@@ -39,14 +37,6 @@ describe('firefox schema import', () => {
       (file) => unlinkSync(path.join(dirPath, file)));
     fs.rmdirSync(dirPath);
   }
-
-  beforeEach(() => {
-    sandbox = sinon.sandbox.create();
-  });
-
-  afterEach(() => {
-    sandbox.restore();
-  });
 
   describe('rewriteOptionalToRequired', () => {
     it('handles non-objects ', () => {
@@ -426,11 +416,11 @@ describe('firefox schema import', () => {
 
   describe('loadSchema', () => {
     it('normalizes and rewrites the schema', () => {
-      sandbox
+      sinon
         .stub(inner, 'normalizeSchema')
         .withArgs({ the: 'schema' })
         .returns({ id: 'Foo', normalized: true });
-      sandbox
+      sinon
         .stub(inner, 'rewriteObject')
         .withArgs({ normalized: true })
         .returns({ rewritten: true });
@@ -440,11 +430,11 @@ describe('firefox schema import', () => {
     });
 
     it('adds a $ref for the manifest namespace', () => {
-      sandbox
+      sinon
         .stub(inner, 'normalizeSchema')
         .withArgs({ id: 'manifest' })
         .returns({ id: 'manifest', normalized: true });
-      sandbox
+      sinon
         .stub(inner, 'rewriteObject')
         .withArgs({ normalized: true })
         .returns({ rewritten: true });
@@ -460,17 +450,17 @@ describe('firefox schema import', () => {
     it('loads each schema and delegates to helpers', () => {
       const firstSchema = [{ id: 'manifest' }];
       const secondSchema = [{ id: 'manifest' }, { id: 'cookies' }];
-      const loadSchema = sandbox.stub(inner, 'loadSchema');
+      const loadSchema = sinon.stub(inner, 'loadSchema');
       loadSchema.withArgs(firstSchema).returns({ id: 'manifest', schema: 1 });
       loadSchema.withArgs(secondSchema).returns({ id: 'cookies', schema: 2 });
-      sandbox
+      sinon
         .stub(inner, 'mergeSchemas')
         .withArgs({
           manifest: [{ file: 'one', schema: { id: 'manifest', schema: 1 } }],
           cookies: [{ file: 'two', schema: { id: 'cookies', schema: 2 } }],
         })
         .returns({ mergeSchemas: 'done' });
-      sandbox
+      sinon
         .stub(inner, 'mapExtendToRef')
         .withArgs({ mergeSchemas: 'done' })
         .returns({ mapExtendToRef: 'done' });
@@ -1058,13 +1048,13 @@ describe('firefox schema import', () => {
       const cwd = 'tests/schema';
       const schemaPath = 'firefox';
       const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
-      sandbox
+      sinon
         .stub(inner, 'isBrowserSchema')
         .withArgs('firefox/cookies.json')
         .returns(false)
         .withArgs('firefox/manifest.json')
         .returns(true);
-      sandbox
+      sinon
         .stub(request, 'get')
         .withArgs('https://hg.mozilla.org/mozilla-central/archive/FIREFOX_AURORA_54_BASE.tar.gz')
         .returns(tarball);
@@ -1079,17 +1069,17 @@ describe('firefox schema import', () => {
       const cwd = 'tests/schema';
       const schemaPath = 'firefox';
       const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
-      sandbox
+      sinon
         .stub(inner, 'isBrowserSchema')
         .withArgs('firefox/cookies.json')
         .returns(false)
         .withArgs('firefox/manifest.json')
         .returns(true);
-      sandbox
+      sinon
         .stub(fs, 'createReadStream')
         .withArgs('mozilla-central.tgz')
         .returns(tarball);
-      sandbox
+      sinon
         .stub(fs, 'unlinkSync')
         .withArgs('mozilla-central.tgz')
         .returns(undefined);
@@ -1104,7 +1094,7 @@ describe('firefox schema import', () => {
       const cwd = 'tests/schema';
       const schemaPath = 'firefox';
       const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
-      sandbox
+      sinon
         .stub(fs, 'createReadStream')
         .withArgs('mozilla-central.tgz')
         .returns(tarball);
@@ -1113,7 +1103,7 @@ describe('firefox schema import', () => {
           this.emit('error', new Error('stream error'));
         },
       });
-      sandbox
+      sinon
         .stub(tar, 'Parse')
         .returns(extractedStream);
       expect(fs.readdirSync(outputPath)).toEqual([]);
@@ -1131,7 +1121,7 @@ describe('firefox schema import', () => {
           this.emit('error', new Error('stream error'));
         },
       });
-      sandbox
+      sinon
         .stub(request, 'get')
         .withArgs('https://hg.mozilla.org/mozilla-central/archive/FIREFOX_AURORA_54_BASE.tar.gz')
         .returns(mockStream);
@@ -1150,7 +1140,7 @@ describe('firefox schema import', () => {
       const cwd = 'tests/schema';
       const schemaPath = 'firefox';
       const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
-      sandbox
+      sinon
         .stub(request, 'get')
         .withArgs('https://hg.mozilla.org/mozilla-central/archive/FIREFOX_AURORA_54_BASE.tar.gz')
         .returns(tarball);
@@ -1162,7 +1152,7 @@ describe('firefox schema import', () => {
           this.emit('error', new Error('stream error'));
         },
       });
-      sandbox
+      sinon
         .stub(fs, 'createWriteStream')
         .withArgs('tmp/FIREFOX_AURORA_54_BASE.tar.gz')
         .returns(mockStream);
