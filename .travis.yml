@@ -3,16 +3,17 @@ sudo: false
 node_js:
 - '6'
 script:
-  - npm run test-ci
-  - npm run build
+  - yarn run test-ci
+  - yarn run build
 notifications:
   irc:
     channels:
     - irc.mozilla.org#amo-bots
     on_success: change
     on_failure: always
-after_script: npm run publish-coverage
+after_script: yarn run publish-coverage
 cache:
+  yarn: true
   directories:
   - node_modules
 deploy:
@@ -25,7 +26,7 @@ deploy:
     tags: true
     repo: mozilla/addons-linter
     branch: master
-after_success: npm run-script publish-rules > /dev/null 2>&1
+after_success: yarn run publish-rules > /dev/null 2>&1
 env:
   global:
   - secure: kxnTz51/kPI6y4vU8y222rX1B0csVWXU3pvJVzKxgBuoOtvSsebqsjPXkBT67j0anf7yg/N9qIFXf/8J2QWOAs3mYS0viONppGsiAUqla9QwpEJG89equl/760J5RIiSswsMTI/Rd1CM53AF7lUudF5+htXt9VkWvOAbJzkCTAdsqJZgNIQYDezkRxEwpmaIVZNzh/wsjW7x8as4sAeq3qZeVGRA6skEJiOIoR780EFOQqVz+BH+17NreFFM60ekkLBTzjCjkRyWCZmNl8FMz/F/E3qN/21y6ggqfBJf9qGO9GJ3xAr5FhGmyllMP4xKyQeBlUkbzJHWFnAvJFOQ+4dlVech9X3RFczQwMpnVT/m6rQyYy7xQXw+2f6iiAXf4biPsWJgEOBuJwgNIIGAWTbxvH7k5xa5iDbKFntw0TIzAopNZI6JBd5kUQHri0544q2akHRZzcpa+0ZBqOiqMMoL3pkws2L8E8VYKofL3vmP/2o298Ah0KYZWsl6Oc5Ev/vfQLn+cGROpgoeoURW601kFpJ4+uLNhQwdxavEI0KnRLK9OZKik0mHzy/LX/xp6aKl1jREc04pONzSHqQtkhSLmjauQoF0e6UXWCPdH4LW1bd1Xw0BhvyOjSiy2gOyRfj9WHunn9pb4oDsYQbswDIlew6wQR6uKoc7d7/rUDI=

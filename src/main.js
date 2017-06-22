@@ -2,11 +2,6 @@ import { getConfig } from 'cli';
 import Linter from 'linter';
 import log from 'logger';
 
-/* istanbul ignore if */
-if (!global._babelPolyfill) {
-  require('babel-polyfill');
-}
-
 
 export function isRunFromCLI(_module=module) {
   return require.main === _module;
