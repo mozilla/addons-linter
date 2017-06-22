@@ -228,7 +228,7 @@ describe('JavaScript Scanner', function() {
       _ruleMapping: fakeESLintMapping,
       _messages: fakeMessages,
     }).then(() => {
-      expect(fakeRules['metadata-not-passed'].create.called).toBeTruthy();
+      sinon.assert.calledOnce(fakeRules['metadata-not-passed'].create);
     });
   });
 

@@ -45,7 +45,7 @@ describe('CSSScanner', () => {
 
     return scanner.scan(fakeRules)
       .then(({linterMessages}) => {
-        expect(fakeRules.metadataPassCheck.called).toBeTruthy();
+        sinon.assert.calledTwice(fakeRules.metadataPassCheck);
         expect(linterMessages.length).toEqual(0);
       });
   });
