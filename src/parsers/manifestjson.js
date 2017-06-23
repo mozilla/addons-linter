@@ -179,11 +179,14 @@ export default class ManifestJSONParser extends JSONParser {
 
   validateIcons() {
     // TODO: Simplify this function.
-    // TODO: Only read images that exist.
     // TODO: Handle images that aren't valid and add an error.
     const { icons } = this.parsedJSON;
 
-    // Convert the object with size: path to an array of { size, path }.
+    if (!icons || icons.length === 0) {
+      return Promise.resolve();
+    }
+
+    // Convert the object with [size]: path to an array of { size, path }.
     const allIcons = Object.keys(icons).map((size) => {
       return { size: parseInt(size, 10), path: normalizePath(icons[size]) };
     });
@@ -222,7 +225,8 @@ export default class ManifestJSONParser extends JSONParser {
 
         // Helper to check that an image is of a certain size.
         const hasIconOfSize = (expectedSize) =>
-          existingIconsMetadata.some(({ size }) => size >= expectedSize);
+          existingIconsMetadata.length === 0
+          || existingIconsMetadata.some(({ size }) => size >= expectedSize);
 
         // Verify that at least one image is 16x16 (the minimum for Firefox's UI).
         if (!hasIconOfSize(MIN_ICON_SIZE)) {
@@ -249,22 +253,12 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   getMetadata() {
-    // FIXME: This function isn't really meant to be async but it is
-    // returned in a promise, so it could be...
-    let validateIcons;
-    if (this.parsedJSON.icons) {
-      validateIcons = this.validateIcons();
-    } else {
-      validateIcons = Promise.resolve();
-    }
-    return validateIcons.then(() => {
-      return {
-        id: this.getAddonId(),
-        manifestVersion: this.parsedJSON.manifest_version,
-        name: this.parsedJSON.name,
-        type: PACKAGE_EXTENSION,
-        version: this.parsedJSON.version,
-      };
-    });
+    return {
+      id: this.getAddonId(),
+      manifestVersion: this.parsedJSON.manifest_version,
+      name: this.parsedJSON.name,
+      type: PACKAGE_EXTENSION,
+      version: this.parsedJSON.version,
+    };
   }
 }

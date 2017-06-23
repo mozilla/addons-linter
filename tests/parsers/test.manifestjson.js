@@ -481,7 +481,7 @@ describe('ManifestJSONParser', function() {
     }
   });
 
-  describe.only('icons', () => {
+  describe('icons', () => {
     function getFileAsStream(path) {
       const paths = {
         'icons/icon-10.png': 'tests/fixtures/icon-10.png',
@@ -500,9 +500,9 @@ describe('ManifestJSONParser', function() {
       delete json.icons;
       const manifestJSONParser = new ManifestJSONParser(
         json, linter.collector, {io: {files: []}});
-      manifestJSONParser.getMetadata()
+      return manifestJSONParser.validateIcons()
         .then(() => {
-          expect(manifestJSONParser.isValid).toBeTruthy();
+          expect(manifestJSONParser.isValid).toEqual(true);
         });
     });
 
@@ -519,10 +519,10 @@ describe('ManifestJSONParser', function() {
         'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, {io: {files}});
-      manifestJSONParser.getMetadata()
+        json, addonLinter.collector, {io: {files, getFileAsStream}});
+      return manifestJSONParser.validateIcons()
         .then(() => {
-          expect(manifestJSONParser.isValid).toBeTruthy();
+          expect(manifestJSONParser.isValid).toEqual(true);
         });
     });
 
@@ -602,16 +602,38 @@ describe('ManifestJSONParser', function() {
         'icons/icon-16.png': '89<PNG>thisistotallysomebinary',
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, {io: {files}});
-      manifestJSONParser.getMetadata()
+        json, addonLinter.collector, {io: {files, getFileAsStream}});
+      return manifestJSONParser.validateIcons()
         .then(() => {
-          expect(manifestJSONParser.isValid).toBeFalsy();
+          expect(manifestJSONParser.isValid).toEqual(false);
           assertHasMatchingError(addonLinter.collector.errors, {
             code: messages.MANIFEST_ICON_NOT_FOUND,
             message:
-              'An icon defined in the manifest could not be found in the package.',
+              'An icon defined in the manifest could not be found in the '
+              + 'package.',
             description: 'Icon could not be found at "icons/icon-64.png".',
           });
+        });
+    });
+
+    it('does not notify of icon sizes if no icons exist', () => {
+      const addonLinter = new Linter({_: ['bar']});
+      const json = validManifestJSON({
+        icons: {
+          22: 'icons/icon-22.png',
+        },
+      });
+      const files = {};
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, {io: {files, getFileAsStream}});
+      return manifestJSONParser.validateIcons()
+        .then(() => {
+          expect(manifestJSONParser.isValid).toEqual(false);
+          assertHasMatchingError(addonLinter.collector.errors, {
+            code: messages.MANIFEST_ICON_NOT_FOUND,
+          });
+          expect(addonLinter.collector.errors.length).toEqual(1);
+          expect(addonLinter.collector.warnings.length).toEqual(0);
         });
     });
 
@@ -629,9 +651,9 @@ describe('ManifestJSONParser', function() {
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, {io: {files, getFileAsStream}});
-      manifestJSONParser.getMetadata()
+      return manifestJSONParser.validateIcons()
         .then(() => {
-          assert.ok(manifestJSONParser.isValid);
+          expect(manifestJSONParser.isValid).toEqual(true);
           assertHasMatchingError(addonLinter.collector.warnings, {
             code: messages.RECOMMENDED_ICON_SIZE.code,
             message: 'Consider adding a larger icon.',
@@ -653,9 +675,9 @@ describe('ManifestJSONParser', function() {
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, {io: {files, getFileAsStream}});
-      return manifestJSONParser.getMetadata()
+      return manifestJSONParser.validateIcons()
         .then(() => {
-          assert.ok(manifestJSONParser.isValid);
+          expect(manifestJSONParser.isValid).toEqual(true);
           assertHasMatchingError(addonLinter.collector.warnings, {
             code: messages.ICON_SIZE_INVALID,
             message:
@@ -679,9 +701,9 @@ describe('ManifestJSONParser', function() {
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, {io: {files, getFileAsStream}});
-      manifestJSONParser.getMetadata()
+      return manifestJSONParser.validateIcons()
         .then(() => {
-          assert.notOk(manifestJSONParser.isValid);
+          expect(manifestJSONParser.isValid).toEqual(false);
           assertHasMatchingError(addonLinter.collector.errors, {
             code: messages.MIN_ICON_SIZE.code,
             message:
