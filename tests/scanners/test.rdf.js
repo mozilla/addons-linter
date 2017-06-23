@@ -1,6 +1,5 @@
 import fs from 'fs';
 
-import sinon from 'sinon';
 import XMLDom from 'xmldom';
 
 import { RDF_DEFAULT_NAMESPACE } from 'const';

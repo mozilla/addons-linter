@@ -1,5 +1,3 @@
-import sinon from 'sinon';
-
 import * as messages from 'messages';
 import { VALIDATION_WARNING } from 'const';
 import CSSScanner from 'scanners/css';
@@ -45,7 +43,7 @@ describe('CSSScanner', () => {
 
     return scanner.scan(fakeRules)
       .then(({linterMessages}) => {
-        expect(fakeRules.metadataPassCheck.called).toBeTruthy();
+        sinon.assert.calledTwice(fakeRules.metadataPassCheck);
         expect(linterMessages.length).toEqual(0);
       });
   });

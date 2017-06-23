@@ -1,5 +1,3 @@
-import sinon from 'sinon';
-
 import { getConfig, terminalWidth } from 'cli';
 
 

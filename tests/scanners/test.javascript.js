@@ -1,5 +1,4 @@
 import ESLint from 'eslint';
-import sinon from 'sinon';
 
 import {
   DEPRECATED_APIS, ESLINT_ERROR, ESLINT_RULE_MAPPING, TEMPORARY_APIS,
@@ -228,7 +227,7 @@ describe('JavaScript Scanner', function() {
       _ruleMapping: fakeESLintMapping,
       _messages: fakeMessages,
     }).then(() => {
-      expect(fakeRules['metadata-not-passed'].create.called).toBeTruthy();
+      sinon.assert.calledOnce(fakeRules['metadata-not-passed'].create);
     });
   });
 

@@ -1,5 +1,3 @@
-import sinon from 'sinon';
-
 import { default as Collector } from 'collector';
 import { fakeMessageData } from './helpers';
 
