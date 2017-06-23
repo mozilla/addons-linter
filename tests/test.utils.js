@@ -353,3 +353,20 @@ describe('utils.isLocalUrl', () => {
     expect(utils.isLocalUrl('bar')).toBeTruthy();
   });
 });
+
+describe('utils.isBrowserNamespace', () => {
+  it('is true for browser', () => {
+    expect(utils.isBrowserNamespace('browser')).toEqual(true);
+  });
+
+  it('is true for chrome', () => {
+    expect(utils.isBrowserNamespace('chrome')).toEqual(true);
+  });
+
+  it('is not true for other strings', () => {
+    expect(utils.isBrowserNamespace('foo')).toEqual(false);
+    expect(utils.isBrowserNamespace('bar')).toEqual(false);
+    expect(utils.isBrowserNamespace('BROWSER')).toEqual(false);
+    expect(utils.isBrowserNamespace('chrOme')).toEqual(false);
+  });
+});

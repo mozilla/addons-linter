@@ -231,3 +231,7 @@ export function apiToMessage(string) {
     .toUpperCase()
     .substr(0, 25);
 }
+
+export function isBrowserNamespace(string) {
+  return ['browser', 'chrome'].includes(string);
+}
