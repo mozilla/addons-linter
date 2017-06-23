@@ -491,7 +491,7 @@ describe('ManifestJSONParser', function() {
       if (!paths.hasOwnProperty(path)) {
         throw new Error(`${path} does not exist`);
       }
-      return fs.createReadStream(paths[path]);
+      return Promise.resolve(fs.createReadStream(paths[path]));
     }
 
     it('does not add errors if there are no icons', () => {

@@ -199,47 +199,52 @@ export default class ManifestJSONParser extends JSONParser {
       this.isValid = false;
     });
 
+    // TODO: Break this up, it's huge and I keep inlining things maybe they
+    // should be named functions.
     return Promise.all(
       existingIcons
         .map((icon) => {
-          return { ...icon, stream: this.io.getFileAsStream(icon.path) };
+          return {
+            ...icon,
+            streamPromise: this.io.getFileAsStream(icon.path, {encoding: null}),
+          };
         })
-        .map(({ stream, ...icon }) => {
-          return getImageMetadata(stream)
-            .then((info) => ({ ...icon, info }));
-        }))
-      .then((existingIconsMetadata) => {
-        // Verify that all of the icons are square and match the defined size.
-        existingIconsMetadata.forEach(({ path, info, size }) => {
-          if (info.width !== info.height) {
-            this.collector.addError(messages.iconIsNotSquare(path));
-            this.isValid = false;
-          } else if (info.width !== size) {
-            this.collector.addWarning(messages.iconSizeInvalid({
-              path,
-              expected: size,
-              actual: info.width,
-            }));
-          }
-        });
-
-        // Helper to check that an image is of a certain size.
-        const hasIconOfSize = (expectedSize) =>
-          existingIconsMetadata.length === 0
-          || existingIconsMetadata.some(({ size }) => size >= expectedSize);
-
-        // Verify that at least one image is 16x16 (the minimum for Firefox's UI).
-        if (!hasIconOfSize(MIN_ICON_SIZE)) {
-          this.collector.addError(messages.MIN_ICON_SIZE);
+        .map(({ streamPromise, ...icon }) =>
+          streamPromise
+            .then((stream) => getImageMetadata(stream))
+            .then((info) => ({ ...icon, info })))
+    ).then((existingIconsMetadata) => {
+      // Verify that all of the icons are square and match the defined size.
+      existingIconsMetadata.forEach(({ path, info, size }) => {
+        if (info.width !== info.height) {
+          this.collector.addError(messages.iconIsNotSquare(path));
           this.isValid = false;
-        }
-
-        // Warn developers if they don't have any icons at least 48x48 since that's
-        // the recommended size.
-        if (!hasIconOfSize(RECOMMENDED_ICON_SIZE)) {
-          this.collector.addWarning(messages.RECOMMENDED_ICON_SIZE);
+        } else if (info.width !== size) {
+          this.collector.addWarning(messages.iconSizeInvalid({
+            path,
+            expected: size,
+            actual: info.width,
+          }));
         }
       });
+
+      // Helper to check that an image is of a certain size.
+      const hasIconOfSize = (expectedSize) =>
+        existingIconsMetadata.length === 0
+        || existingIconsMetadata.some(({ size }) => size >= expectedSize);
+
+      // Verify that at least one image is 16x16 (the minimum for Firefox's UI).
+      if (!hasIconOfSize(MIN_ICON_SIZE)) {
+        this.collector.addError(messages.MIN_ICON_SIZE);
+        this.isValid = false;
+      }
+
+      // Warn developers if they don't have any icons at least 48x48 since that's
+      // the recommended size.
+      if (!hasIconOfSize(RECOMMENDED_ICON_SIZE)) {
+        this.collector.addWarning(messages.RECOMMENDED_ICON_SIZE);
+      }
+    });
   }
 
   getAddonId() {

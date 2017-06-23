@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { createReadStream } from 'fs';
+import fs from 'fs';
 import firstChunkStream from 'first-chunk-stream';
 import stripBomStream from 'strip-bom-stream';
 
@@ -60,12 +60,13 @@ export class Directory extends IOBase {
     return Promise.resolve(filePath);
   }
 
-  getFileAsStream(relativeFilePath) {
+  // TODO: Make all versions of io accept an encoding.
+  getFileAsStream(relativeFilePath, { encoding = 'utf8' } = {}) {
     return this.getPath(relativeFilePath)
       .then((filePath) => {
-        return Promise.resolve(createReadStream(filePath, {
+        return Promise.resolve(fs.createReadStream(filePath, {
           flags: 'r',
-          encoding: 'utf8',
+          encoding,
           autoClose: true,
         }).pipe(stripBomStream()));
       });
@@ -96,7 +97,7 @@ export class Directory extends IOBase {
     return this.getPath(relativeFilePath)
       .then((filePath) => {
         return new Promise((resolve) => {
-          createReadStream(filePath, {
+          fs.createReadStream(filePath, {
             flags: 'r',
             // This is important because you don't want to encode the
             // bytes if you are doing a binary check.
