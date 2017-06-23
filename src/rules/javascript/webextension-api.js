@@ -1,12 +1,12 @@
 import { isDeprecatedApi, isTemporaryApi } from 'schema/browser-apis';
-import { apiToMessage } from 'utils';
+import { apiToMessage, isBrowserNamespace } from 'utils';
 
 export default {
   create(context) {
     return {
       MemberExpression: function(node) {
         if (node.object.object &&
-            ['chrome', 'browser'].includes(node.object.object.name)) {
+            isBrowserNamespace(node.object.object.name)) {
           let namespace = node.object.property.name;
           let property = node.property.name;
           let api = `${namespace}.${property}`;
