@@ -87,6 +87,22 @@ describe('Collector', function() {
     });
   });
 
+  it('for manifest should add one message for dataPath', () => {
+    var collection = new Collector();
+    collection.addError({
+      ...fakeMessageData,
+      file: 'manifest.json',
+      dataPath: '/foo/1',
+    });
+    collection.addError({
+      ...fakeMessageData,
+      file: 'manifest.json',
+      dataPath: '/foo/1',
+      message: 'foo bar',
+    });
+    expect(collection.errors.length).toBe(1);
+  });
+
   it('should add a message that differs on line number', () => {
     var collection = new Collector();
     collection.addWarning({

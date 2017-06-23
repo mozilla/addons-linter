@@ -69,10 +69,14 @@ export default class Collector {
 
   isDuplicateMessage(message) {
     if (message.dataPath) {
-      var previousMessages = this.messagesAtDataPath(message.dataPath);
-      return previousMessages.some((prevMessage) => {
-        return prevMessage.matches(message);
-      });
+      let previousMessages = this.messagesAtDataPath(message.dataPath);
+      if (message.file === 'manifest.json') {
+        return previousMessages.length > 0;
+      } else {
+        return previousMessages.some((prevMessage) => {
+          return prevMessage.matches(message);
+        });
+      }
     }
     return false;
   }

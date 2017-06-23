@@ -62,7 +62,7 @@ export default class ManifestJSONParser extends JSONParser {
                typeof error.data !== 'undefined' &&
                typeof error.data !== 'string') {
       baseObject = messages.MANIFEST_BAD_PERMISSION;
-      overrides = {message: `Permissions ${error.message}.`};
+      overrides.message = `Permissions ${error.message}.`;
     } else if (error.keyword === 'type') {
       baseObject = messages.MANIFEST_FIELD_INVALID;
     }
