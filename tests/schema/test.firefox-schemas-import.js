@@ -979,6 +979,41 @@ describe('firefox schema import', () => {
         inner.updateWithAddonsLinterData(original, linterUpdates)
       ).toEqual(expected);
     });
+
+    it('can create a copy of a namepsace with updates', () => {
+      const original = {
+        menus: {
+          file: 'menus.json',
+          schema: {
+            id: 'menus',
+            permissions: ['menus'],
+            properties: { create: {} },
+          },
+        },
+      };
+      const linterUpdates = {
+        menus: {
+          file: 'contextMenus.json',
+          id: 'contextMenus',
+          permissions: ['contextMenus'],
+        },
+      };
+      const expected = {
+        ...original,
+        contextMenus: {
+          file: 'contextMenus.json',
+          schema: {
+            id: 'contextMenus',
+            // We don't really want menus in here but it won't hurt anything.
+            permissions: ['menus', 'contextMenus'],
+            properties: { create: {} },
+          },
+        },
+      };
+      expect(
+        inner.updateWithAddonsLinterData(original, linterUpdates)
+      ).toEqual(expected);
+    });
   });
 
   describe('from filesystem', () => {

@@ -215,11 +215,20 @@ inner.updateWithAddonsLinterData = (firefoxSchemas, ourSchemas) => {
   const schemas = { ...firefoxSchemas };
   Object.keys(ourSchemas).forEach((namespace) => {
     const firefoxSchema = firefoxSchemas[namespace];
-    const ourSchema = ourSchemas[namespace];
-    schemas[namespace] = {
-      ...firefoxSchema,
-      schema: merge(firefoxSchema.schema, ourSchema),
-    };
+    const { file, ...ourSchema } = ourSchemas[namespace];
+    // Allow overriding the namespace if `file` is set, this supports "$import".
+    if (file) {
+      schemas[ourSchema.id || namespace] = {
+        ...firefoxSchema,
+        file,
+        schema: merge(firefoxSchema.schema, ourSchema),
+      };
+    } else {
+      schemas[namespace] = {
+        ...firefoxSchema,
+        schema: merge(firefoxSchema.schema, ourSchema),
+      };
+    }
   });
   return schemas;
 };
@@ -503,7 +512,10 @@ function loadSchemasFromFile(basePath) {
 
 export function importSchemas(firefoxPath, ourPath, importedPath) {
   const rawSchemas = loadSchemasFromFile(firefoxPath);
-  const ourSchemas = readSchema(ourPath, 'manifest.json');
+  const ourSchemas = {
+    ...readSchema(ourPath, 'manifest.json'),
+    ...readSchema(ourPath, 'contextMenus.json'),
+  };
   const processedSchemas = processSchemas(rawSchemas);
   const updatedSchemas = inner.updateWithAddonsLinterData(
     processedSchemas, ourSchemas);
