@@ -82,4 +82,26 @@ describe('unsupported browser APIs', () => {
         expect(linterMessages.length).toEqual(1);
       });
   });
+
+  it('supports browser.menus', () => {
+    const code = 'browser.menus.create({ id: "id", title: "title" });';
+    const jsScanner = new JavaScriptScanner(code, 'goodcode.js', {
+      addonMetadata: { id: '@supported-api', permissions: ['menus'] },
+    });
+    return jsScanner.scan()
+      .then(({linterMessages}) => {
+        expect(linterMessages.length).toEqual(0);
+      });
+  });
+
+  it('supports browser.contextMenus', () => {
+    const code = 'browser.contextMenus.create({ id: "id", title: "title" });';
+    const jsScanner = new JavaScriptScanner(code, 'goodcode.js', {
+      addonMetadata: { id: '@supported-api', permissions: ['contextMenus'] },
+    });
+    return jsScanner.scan()
+      .then(({linterMessages}) => {
+        expect(linterMessages.length).toEqual(0);
+      });
+  });
 });
