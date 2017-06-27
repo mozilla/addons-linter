@@ -11,6 +11,15 @@ import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
 import { singleLineString } from 'utils';
 
+function normalizePath(iconPath) {
+  if (iconPath.startsWith('/')) {
+    return iconPath.slice(1);
+  } else if (iconPath.startsWith('./')) {
+    return iconPath.slice(2);
+  }
+  return iconPath;
+}
+
 export default class ManifestJSONParser extends JSONParser {
 
   constructor(jsonString, collector, {
@@ -153,7 +162,7 @@ export default class ManifestJSONParser extends JSONParser {
   validateIcons() {
     const { icons } = this.parsedJSON;
     Object.keys(icons).forEach((size) => {
-      const path = icons[size];
+      const path = normalizePath(icons[size]);
       if (!this.io.files.hasOwnProperty(path)) {
         this.collector.addError(messages.manifestIconMissing(path));
         this.isValid = false;
