@@ -506,6 +506,70 @@ describe('ManifestJSONParser', function() {
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
+    it('supports "absolute" paths', () => {
+      const addonLinter = new Linter({_: ['bar']});
+      const json = validManifestJSON({
+        icons: {
+          32: '/icons/icon-32.png',
+          64: '/icons/icon-64.png',
+        },
+      });
+      const files = {
+        'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, {io: {files}});
+      expect(manifestJSONParser.isValid).toBeTruthy();
+    });
+
+    it('supports ./ relative paths', () => {
+      const addonLinter = new Linter({_: ['bar']});
+      const json = validManifestJSON({
+        icons: {
+          32: './icons/icon-32.png',
+          64: './icons/icon-64.png',
+        },
+      });
+      const files = {
+        'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, {io: {files}});
+      expect(manifestJSONParser.isValid).toBeTruthy();
+    });
+
+    it('does not allow .. relative paths', () => {
+      const addonLinter = new Linter({_: ['bar']});
+      const json = validManifestJSON({
+        icons: {
+          32: '../icons/icon-32.png',
+          64: 'icons/../../foo/icon-64.png',
+        },
+      });
+      const files = {
+        'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, {io: {files}});
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.MANIFEST_ICON_NOT_FOUND,
+        message:
+          'An icon defined in the manifest could not be found in the package.',
+        description: 'Icon could not be found at "../icons/icon-32.png".',
+      });
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.MANIFEST_ICON_NOT_FOUND,
+        message:
+          'An icon defined in the manifest could not be found in the package.',
+        description:
+          'Icon could not be found at "icons/../../foo/icon-64.png".',
+      });
+    });
+
     it('adds an error if the icon is not in the package', () => {
       const addonLinter = new Linter({_: ['bar']});
       const json = validManifestJSON({
