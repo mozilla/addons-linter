@@ -3,8 +3,6 @@ sudo: false
 node_js:
 - '6'
 script:
-  - yarn remove sharp
-  - yarn add sharp
   - yarn run test-ci
   - yarn run build
 notifications:
