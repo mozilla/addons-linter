@@ -71,7 +71,7 @@
     "cheerio": "1.0.0-rc.2",
     "columnify": "1.5.4",
     "crx-parser": "0.1.2",
-    "dispensary": "0.10.10",
+    "dispensary": "0.10.11",
     "es6-promisify": "5.0.0",
     "eslint": "3.19.0",
     "eslint-plugin-no-unsafe-innerhtml": "1.0.16",
