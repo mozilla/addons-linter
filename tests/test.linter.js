@@ -1,4 +1,5 @@
 import fs from 'fs';
+import chalk from 'chalk';
 
 import Linter from 'linter';
 
@@ -307,16 +308,6 @@ describe('Linter', function() {
           messages.DUPLICATE_XPI_ENTRY);
         sinon.assert.calledOnce(addonLinter.print);
       });
-  });
-
-  it('should return the correct chalk func', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    expect(addonLinter.colorize(
-      constants.VALIDATION_ERROR)._styles).toEqual(['red']);
-    expect(addonLinter.colorize(
-      constants.VALIDATION_NOTICE)._styles).toEqual(['blue']);
-    expect(addonLinter.colorize(
-      constants.VALIDATION_WARNING)._styles).toEqual(['yellow']);
   });
 
   it('should throw if invalid type is passed to colorize', () => {
