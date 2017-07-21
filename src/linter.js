@@ -271,7 +271,10 @@ export default class Linter {
                 this.collector,
                 {selfHosted: this.config.selfHosted, io: this.io},
               );
-              return manifestParser.getMetadata();
+              return manifestParser.validateIcons()
+                .then(() => {
+                  return manifestParser.getMetadata();
+                });
             });
         } else {
           _log.warn(singleLineString`No ${INSTALL_RDF} or ${MANIFEST_JSON}

@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import Linter from 'linter';
 import ManifestJSONParser from 'parsers/manifestjson';
 
@@ -480,30 +482,48 @@ describe('ManifestJSONParser', function() {
   });
 
   describe('icons', () => {
+    function getFileAsStream(path) {
+      const paths = {
+        'icons/icon-10.png': 'tests/fixtures/icon-10.png',
+        'icons/icon-16.png': 'tests/fixtures/icon-16.png',
+        'icons/icon-64.png': 'tests/fixtures/icon-64.png',
+      };
+      if (!paths.hasOwnProperty(path)) {
+        throw new Error(`${path} does not exist`);
+      }
+      return Promise.resolve(fs.createReadStream(paths[path]));
+    }
+
     it('does not add errors if there are no icons', () => {
       const linter = new Linter({_: ['bar']});
       const json = validManifestJSON();
       delete json.icons;
       const manifestJSONParser = new ManifestJSONParser(
         json, linter.collector, {io: {files: []}});
-      expect(manifestJSONParser.isValid).toBeTruthy();
+      return manifestJSONParser.validateIcons()
+        .then(() => {
+          expect(manifestJSONParser.isValid).toEqual(true);
+        });
     });
 
     it('does not add errors if the icons are in the package', () => {
       const addonLinter = new Linter({_: ['bar']});
       const json = validManifestJSON({
         icons: {
-          32: 'icons/icon-32.png',
+          16: 'icons/icon-16.png',
           64: 'icons/icon-64.png',
         },
       });
       const files = {
-        'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-16.png': '89<PNG>thisistotallysomebinary',
         'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, {io: {files}});
-      expect(manifestJSONParser.isValid).toBeTruthy();
+        json, addonLinter.collector, {io: {files, getFileAsStream}});
+      return manifestJSONParser.validateIcons()
+        .then(() => {
+          expect(manifestJSONParser.isValid).toEqual(true);
+        });
     });
 
     it('supports "absolute" paths', () => {
@@ -574,22 +594,129 @@ describe('ManifestJSONParser', function() {
       const addonLinter = new Linter({_: ['bar']});
       const json = validManifestJSON({
         icons: {
-          32: 'icons/icon-32.png',
+          16: 'icons/icon-16.png',
           64: 'icons/icon-64.png',
         },
       });
       const files = {
-        'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-16.png': '89<PNG>thisistotallysomebinary',
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, {io: {files}});
-      expect(manifestJSONParser.isValid).toBeFalsy();
-      assertHasMatchingError(addonLinter.collector.errors, {
-        code: messages.MANIFEST_ICON_NOT_FOUND,
-        message:
-          'An icon defined in the manifest could not be found in the package.',
-        description: 'Icon could not be found at "icons/icon-64.png".',
+        json, addonLinter.collector, {io: {files, getFileAsStream}});
+      return manifestJSONParser.validateIcons()
+        .then(() => {
+          expect(manifestJSONParser.isValid).toEqual(false);
+          assertHasMatchingError(addonLinter.collector.errors, {
+            code: messages.MANIFEST_ICON_NOT_FOUND,
+            message:
+              'An icon defined in the manifest could not be found in the '
+              + 'package.',
+            description: 'Icon could not be found at "icons/icon-64.png".',
+          });
+        });
+    });
+
+    it('does not notify of icon sizes if no icons exist', () => {
+      const addonLinter = new Linter({_: ['bar']});
+      const json = validManifestJSON({
+        icons: {
+          22: 'icons/icon-22.png',
+        },
       });
+      const files = {};
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, {io: {files, getFileAsStream}});
+      return manifestJSONParser.validateIcons()
+        .then(() => {
+          expect(manifestJSONParser.isValid).toEqual(false);
+          assertHasMatchingError(addonLinter.collector.errors, {
+            code: messages.MANIFEST_ICON_NOT_FOUND,
+          });
+          expect(addonLinter.collector.errors.length).toEqual(1);
+          expect(addonLinter.collector.warnings.length).toEqual(0);
+        });
+    });
+
+    it('notifies the developer of the recommended icon size', () => {
+      const addonLinter = new Linter({_: ['bar']});
+      const json = validManifestJSON({
+        icons: {
+          10: 'icons/icon-10.png',
+          16: 'icons/icon-16.png',
+        },
+      });
+      const files = {
+        'icons/icon-10.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-16.png': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, {io: {files, getFileAsStream}});
+      return manifestJSONParser.validateIcons()
+        .then(() => {
+          expect(manifestJSONParser.isValid).toEqual(true);
+          assertHasMatchingError(addonLinter.collector.warnings, {
+            code: messages.RECOMMENDED_ICON_SIZE.code,
+            message: 'Consider adding a larger icon.',
+            description:
+            'The smallest recommended size for an icon is 48x48 pixels.',
+          });
+        });
+    });
+
+    it('adds a warning if the icon is different than the defined size', () => {
+      const addonLinter = new Linter({_: ['bar']});
+      const json = validManifestJSON({
+        icons: {
+          16: 'icons/icon-64.png',
+        },
+      });
+      const files = {
+        'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, {io: {files, getFileAsStream}});
+      return manifestJSONParser.validateIcons()
+        .then(() => {
+          expect(manifestJSONParser.isValid).toEqual(true);
+          assertHasMatchingError(addonLinter.collector.warnings, {
+            code: messages.ICON_SIZE_INVALID,
+            message:
+              'The size of the icon does not match the manifest.',
+            description:
+              'Expected icon at "icons/icon-64.png" to be 16 pixels wide ' +
+              'but was 64.',
+          });
+        });
+    });
+
+    it('adds an error if no icons are at least 16px', () => {
+      const addonLinter = new Linter({_: ['bar']});
+      const json = validManifestJSON({
+        icons: {
+          10: 'icons/icon-10.png',
+        },
+      });
+      const files = {
+        'icons/icon-10.png': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, {io: {files, getFileAsStream}});
+      return manifestJSONParser.validateIcons()
+        .then(() => {
+          expect(manifestJSONParser.isValid).toEqual(false);
+          assertHasMatchingError(addonLinter.collector.errors, {
+            code: messages.MIN_ICON_SIZE.code,
+            message:
+              'The icon defined in the manifest is too small.',
+            description: 'Icons should be at least 16x16 pixels.',
+          });
+          assertHasMatchingError(addonLinter.collector.warnings, {
+            code: messages.RECOMMENDED_ICON_SIZE.code,
+            message: 'Consider adding a larger icon.',
+            description:
+            'The smallest recommended size for an icon is 48x48 pixels.',
+          });
+        });
     });
   });
 });

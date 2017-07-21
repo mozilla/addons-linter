@@ -1,5 +1,7 @@
 import { gettext as _, singleLineString, sprintf } from 'utils';
-import { MANIFEST_JSON } from 'const';
+import * as constants from 'const';
+
+const { MANIFEST_JSON } = constants;
 
 
 export const MANIFEST_FIELD_REQUIRED = {
@@ -119,6 +121,51 @@ export function manifestIconMissing(path) {
     file: MANIFEST_JSON,
   };
 }
+
+export const ICON_NOT_SQUARE = 'ICON_NOT_SQUARE';
+export function iconIsNotSquare(path) {
+  return {
+    code: ICON_NOT_SQUARE,
+    legacyCode: null,
+    message: _('Icons must be square.'),
+    description: sprintf(_('Icon at "%(path)s" must be square.'), {path}),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const ICON_SIZE_INVALID = 'ICON_SIZE_INVALID';
+export function iconSizeInvalid({ path, expected, actual }) {
+  return {
+    code: ICON_SIZE_INVALID,
+    legacyCode: null,
+    message: _('The size of the icon does not match the manifest.'),
+    description: sprintf(
+      _('Expected icon at "%(path)s" to be %(expected)d pixels wide but was ' +
+        '%(actual)d.'),
+      {path, expected, actual}),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const MIN_ICON_SIZE = {
+  code: 'MIN_ICON_SIZE',
+  legacyCode: null,
+  message: _('The icon defined in the manifest is too small.'),
+  description: sprintf(
+    _('Icons should be at least %(size)sx%(size)s pixels.'),
+    {size: constants.MIN_ICON_SIZE}),
+  file: MANIFEST_JSON,
+};
+
+export const RECOMMENDED_ICON_SIZE = {
+  code: 'RECOMMENDED_ICON_SIZE',
+  legacyCode: null,
+  message: _('Consider adding a larger icon.'),
+  description: sprintf(
+    _('The smallest recommended size for an icon is %(size)sx%(size)s pixels.'),
+    {size: constants.RECOMMENDED_ICON_SIZE}),
+  file: MANIFEST_JSON,
+};
 
 export const PROP_NAME_MISSING = manifestPropMissing('name');
 export const PROP_VERSION_MISSING = manifestPropMissing('version');
