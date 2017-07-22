@@ -51,7 +51,7 @@
     "hashish": "0.0.4",
     "isparta": "4.0.0",
     "jest": "20.0.4",
-    "json-loader": "0.5.4",
+    "json-loader": "0.5.5",
     "load-grunt-configs": "1.0.0",
     "load-grunt-tasks": "3.5.2",
     "lodash.clonedeep": "4.5.0",
