@@ -1,5 +1,4 @@
 import fs from 'fs';
-import chalk from 'chalk';
 
 import Linter from 'linter';
 
@@ -1253,6 +1252,41 @@ describe('Linter.extractMetadata()', function() {
       });
   });
 
+  // Total zip size is 96080 but only a handful of files are actually
+  // scanned.
+
+  // Archive:  tests/fixtures/empty-with-library.zip
+  // Skipped Length   Date       Time   Name
+  // ------- -------  ---------- -----  ----
+  //           593    2015-11-28 19:46  bootstrap.js
+  //   X         0    2017-05-09 15:09  data/
+  //          6148    2017-05-09 15:09  data/.DS_Store
+  //   X         0    2017-05-09 15:09  __MACOSX/
+  //   X         0    2017-05-09 15:09  __MACOSX/data/
+  //           120    2017-05-09 15:09  __MACOSX/data/._.DS_Store
+  //          1420    2015-11-28 19:46  data/change-text.js
+  //             0    2015-11-28 19:46  data/empty.js
+  //   X     86659    2017-03-20 20:01  data/jquery-3.2.1.min.js
+  //           195    2017-03-20 20:01  __MACOSX/data/._jquery-3.2.1.min.js
+  //           421    2015-11-28 19:46  index.js
+  //           218    2016-06-30 16:10  manifest.json
+  //           277    2015-11-28 19:46  package.json
+  //   X        29    2015-11-28 19:46  README.md
+  // -------                   -------
+  //  96080                    14 files
+
+  it('should collect total size of all scanned files', () => {
+    var addonLinter = new Linter({
+      _: ['tests/fixtures/empty-with-library.zip'],
+    });
+
+    addonLinter.print = sinon.stub();
+
+    return addonLinter.scan({_console: fakeConsole})
+      .then(() => {
+        expect(addonLinter.output.metadata.totalScannedFileSize).toEqual(9421);
+      });
+  });
 });
 
 describe('Linter.run()', function() {
