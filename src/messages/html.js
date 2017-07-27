@@ -7,3 +7,12 @@ export const INLINE_SCRIPT = {
   description: _(singleLineString`Default CSP rules prevent inline JavaScript
     from running (https://mzl.la/2pn32nd).`),
 };
+
+
+export const REMOTE_SCRIPT = {
+  code: 'REMOTE_SCRIPT',
+  legacyCode: null,
+  message: _('Remote scripts are blocked by default'),
+  description: _(singleLineString`Default CSP rules prevent remote JavaScript
+    from being loaded (https://mzl.la/2pn32nd).`),
+};

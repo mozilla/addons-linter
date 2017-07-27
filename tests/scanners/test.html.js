@@ -57,6 +57,40 @@ describe('HTML', function() {
       });
   });
 
+  it('should warn on remote <script> tag src attribute', () => {
+    var badHTML = validHTML(singleLineString`
+      <script src="http://foo.bar/my.js"></script>
+      <script src="https://foo.bar/my.js"></script>
+      <script src="file://foo.bar/my.js"></script>
+      <script src="ftp://foo.bar/my.js"></script>
+    `);
+    var htmlScanner = new HTMLScanner(badHTML, 'index.html');
+
+    return htmlScanner.scan()
+      .then(({linterMessages}) => {
+        expect(linterMessages.length).toEqual(4);
+
+        for (const message of linterMessages) {
+          expect(message.code).toEqual(messages.REMOTE_SCRIPT.code);
+          expect(message.type).toEqual(VALIDATION_WARNING);
+        }
+      });
+  });
+
+  it('should allow <script> src attribute to be local', () => {
+    var badHTML = validHTML(singleLineString`
+      <script src="./bar/my.js"></script>
+      <script src="/foo/my.js"></script>
+      <script src="foo/my.js"></script>
+    `);
+    var htmlScanner = new HTMLScanner(badHTML, 'index.html');
+
+    return htmlScanner.scan()
+      .then(({linterMessages}) => {
+        expect(linterMessages.length).toEqual(0);
+      });
+  });
+
   it('should not blow up when handed malformed HTML', () => {
     var html = validHTML('<div>Howdy <!-- >');
     var htmlScanner = new HTMLScanner(html, 'index.html');
