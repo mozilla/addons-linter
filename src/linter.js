@@ -283,6 +283,7 @@ export default class Linter {
       })
       .then((addonMetadata) => {
         this.addonMetadata = addonMetadata;
+        this.addonMetadata.totalScannedFileSize = 0;
 
         // The type must be explicitly defined. This behaviour differs the
         // historical approach by the amo-validator.
@@ -373,6 +374,10 @@ export default class Linter {
             linterMessages: [filesizeError],
             scannedFiles: [filename],
           });
+        }
+
+        if (this.addonMetadata) {
+          this.addonMetadata.totalScannedFileSize += fileSize;
         }
 
         let scanner = new ScannerClass(fileData, filename, {
