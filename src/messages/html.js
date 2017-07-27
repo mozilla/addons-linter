@@ -12,7 +12,7 @@ export const INLINE_SCRIPT = {
 export const REMOTE_SCRIPT = {
   code: 'REMOTE_SCRIPT',
   legacyCode: null,
-  message: _('Remote scripts are blocked by default'),
-  description: _(singleLineString`Default CSP rules prevent remote JavaScript
-    from being loaded (https://mzl.la/2pn32nd).`),
+  message: _('Remote scripts are not allowed as per the Add-on Policies.'),
+  description: _(singleLineString`Please include all scripts in the add-on.
+    For more information, refer to https://mzl.la/2uEOkYp.`),
 };
