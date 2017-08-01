@@ -2,6 +2,7 @@ import path from 'path';
 
 import RJSON from 'relaxed-json';
 import validate from 'schema/validator';
+import { URL } from 'whatwg-url';
 
 import { getConfig } from 'cli';
 import { MANIFEST_JSON, PACKAGE_EXTENSION } from 'const';
@@ -12,12 +13,11 @@ import { isToolkitVersionString } from 'schema/formats';
 import { singleLineString } from 'utils';
 
 function normalizePath(iconPath) {
-  if (iconPath.startsWith('/')) {
-    return iconPath.slice(1);
-  } else if (iconPath.startsWith('./')) {
-    return iconPath.slice(2);
-  }
-  return iconPath;
+  // Convert the icon path to a URL so we can strip any fragments and resolve
+  // . and .. automatically. We need an absolute URL to use as a base so we're
+  // using https://example.com/.
+  const { pathname } = new URL(iconPath, 'https://example.com/');
+  return pathname.slice(1);
 }
 
 export default class ManifestJSONParser extends JSONParser {

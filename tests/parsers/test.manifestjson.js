@@ -540,12 +540,45 @@ describe('ManifestJSONParser', function() {
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
-    it('does not allow .. relative paths', () => {
+    it('supports SVG fragments', () => {
+      const addonLinter = new Linter({_: ['bar']});
+      const json = validManifestJSON({
+        icons: {
+          32: './icons/icon.svg',
+          64: './icons/icon.svg#full',
+        },
+      });
+      const files = {
+        'icons/icon.svg': '<svg></svg>',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, {io: {files}});
+      expect(manifestJSONParser.isValid).toBeTruthy();
+    });
+
+    it('allows .. relative paths that resolve in the package', () => {
       const addonLinter = new Linter({_: ['bar']});
       const json = validManifestJSON({
         icons: {
           32: '../icons/icon-32.png',
-          64: 'icons/../../foo/icon-64.png',
+          64: 'icons/../../foo/../icons/icon-64.png',
+        },
+      });
+      const files = {
+        'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, {io: {files}});
+      expect(manifestJSONParser.isValid).toBeTruthy();
+    });
+
+    it('does not allow invalid .. relative paths', () => {
+      const addonLinter = new Linter({_: ['bar']});
+      const json = validManifestJSON({
+        icons: {
+          32: 'foo/bar/../icons/icon-32.png',
+          64: 'icons/../../foo/icons/icon-64.png',
         },
       });
       const files = {
@@ -559,14 +592,15 @@ describe('ManifestJSONParser', function() {
         code: messages.MANIFEST_ICON_NOT_FOUND,
         message:
           'An icon defined in the manifest could not be found in the package.',
-        description: 'Icon could not be found at "../icons/icon-32.png".',
+        description:
+          'Icon could not be found at "foo/icons/icon-32.png".',
       });
       assertHasMatchingError(addonLinter.collector.errors, {
         code: messages.MANIFEST_ICON_NOT_FOUND,
         message:
           'An icon defined in the manifest could not be found in the package.',
         description:
-          'Icon could not be found at "icons/../../foo/icon-64.png".',
+          'Icon could not be found at "foo/icons/icon-64.png".',
       });
     });
 
