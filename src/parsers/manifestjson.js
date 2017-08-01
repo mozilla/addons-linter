@@ -13,6 +13,9 @@ import { isToolkitVersionString } from 'schema/formats';
 import { singleLineString } from 'utils';
 
 function normalizePath(iconPath) {
+  // Convert the icon path to a URL so we can strip any fragments and resolve
+  // . and .. automatically. We need an absolute URL to use as a base so we're
+  // using https://example.com/.
   const { pathname } = new URL(iconPath, 'https://example.com/');
   return pathname.slice(1);
 }
