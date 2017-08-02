@@ -373,6 +373,9 @@ describe('ManifestJSONParser', function() {
         'script-src web.example.com',
         'script-src http://cdn.example.com/my.js',
         'script-src https://cdn.example.com/my.js',
+
+        // Properly match mixed with other directives
+        'script-src https: \'unsafe-eval\'; object-src \'self\'',
       ];
 
       for (const invalidValue of invalidValues) {
@@ -396,6 +399,8 @@ describe('ManifestJSONParser', function() {
       const validValues = [
         'default-src moz-extension:',
         'script-src moz-extension:',
+
+        // Mix with other directives, properly match anyway.
         'script-src \'self\'; object-src \'self\'',
         'script-src \'self\' \'unsafe-eval\'; object-src \'self\'',
 
