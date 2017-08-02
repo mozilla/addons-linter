@@ -182,32 +182,37 @@ export default class ManifestJSONParser extends JSONParser {
         const values = directives[candidate];
 
         for (let value of values) {
+          value = value.trim();
+
+          if (value.endsWith(':') && validProtocols.includes(value)) {
+            this.collector.addWarning(messages.MANIFEST_CSP);
+            continue;
+          }
+
           try {
-            const url = new URL(value);
+            URL(value);
 
-            if (url.host) {
-              // Let's warn for everything trying to allow hosts as
-              // protocol prefixes are optional a user might try enabling
-              // `web.example.com:80` which is perfectly valid.
-              this.collector.addWarning(messages.MANIFEST_CSP);
-            }
-
-            // set value to protocol to validate it later.
-            value = url.protocol;
+            // warn as soon we match a valid URL being whitelisted.
+            // A user doesn't have to prepend a protocol/scheme to a host
+            // so we have to match this a bit wider. This will work since
+            // 'self' and others are required to include the quotes (afair)
+            // which results in an invalid URL.
+            this.collector.addWarning(messages.MANIFEST_CSP);
           } catch (e) {
             if (value.trim().includes('*')) {
               this.collector.addWarning(messages.MANIFEST_CSP);
 
               continue;
             }
+
+            // values like 'ws:' or 'http:' are valid values but aren't correct
+            // URLs so the try/catch above will fail and we'll have to string
+            // manually.
+            if (validProtocols.includes(value.trim())) {
+              this.collector.addWarning(messages.MANIFEST_CSP);
+            }
           }
 
-          // values like 'ws:' or 'http:' are valid values but aren't correct
-          // URLs so the try/catch above will fail and we'll have to string
-          // manually.
-          if (validProtocols.includes(value)) {
-            this.collector.addWarning(messages.MANIFEST_CSP);
-          }
         }
       }
     }
