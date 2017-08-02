@@ -389,6 +389,9 @@ describe('ManifestJSONParser', function() {
         'script-src moz-extension:',
         'script-src \'self\'; object-src \'self\'',
         'script-src \'self\' \'unsafe-eval\'; object-src \'self\'',
+
+        // We only walk through default-src and script-src
+        'style-src http://by.cdn.com/',
       ];
 
       for (const validValue of validValues) {
