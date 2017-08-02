@@ -185,15 +185,14 @@ export default class ManifestJSONParser extends JSONParser {
         for (const value of values) {
           try {
             url = new URL(value);
+
+            if (validProtocols.includes(url.protocol)) {
+              this.collector.addWarning(messages.MANIFEST_CSP);
+            }
           } catch (e) {
             if (value.trim().includes('*')) {
               this.collector.addWarning(messages.MANIFEST_CSP);
             }
-            continue;
-          }
-
-          if (validProtocols.includes(url.protocol)) {
-            this.collector.addWarning(messages.MANIFEST_CSP);
           }
         }
       }
