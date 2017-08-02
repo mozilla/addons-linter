@@ -190,14 +190,17 @@ export default class ManifestJSONParser extends JSONParser {
           }
 
           try {
-            URL(value);
+            let url = new URL(value);
 
             // warn as soon we match a valid URL being whitelisted.
             // A user doesn't have to prepend a protocol/scheme to a host
             // so we have to match this a bit wider. This will work since
             // 'self' and others are required to include the quotes (afair)
             // which results in an invalid URL.
-            this.collector.addWarning(messages.MANIFEST_CSP);
+            if (validProtocols.includes(url.protocol)) {
+              this.collector.addWarning(messages.MANIFEST_CSP);
+              continue;
+            }
           } catch (e) {
             if (value.trim().includes('*')) {
               this.collector.addWarning(messages.MANIFEST_CSP);
