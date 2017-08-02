@@ -48,7 +48,7 @@ export const MANIFEST_CSP = {
   // it depends on it to detect add-ons with a custom content security policy.
   code: 'MANIFEST_CSP',
   legacyCode: null,
-  message: _('"content_security_policy" is defined in the manifest.json'),
+  message: _('"content_security_policy" is not strict enough in manifest.json'),
   description: _('A custom content_security_policy needs additional review.'),
   file: MANIFEST_CSP,
 };
