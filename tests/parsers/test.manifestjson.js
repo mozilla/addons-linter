@@ -358,6 +358,8 @@ describe('ManifestJSONParser', function() {
         'default-src web.example.com:443',
         'default-src web.example.com:80',
         'default-src web.example.com',
+        'default-src http://cdn.example.com/my.js',
+        'default-src https://cdn.example.com/my.js',
 
         'script-src *',
         'script-src moz-extension: *',
@@ -369,6 +371,8 @@ describe('ManifestJSONParser', function() {
         'script-src web.example.com:443',
         'script-src web.example.com:80',
         'script-src web.example.com',
+        'script-src http://cdn.example.com/my.js',
+        'script-src https://cdn.example.com/my.js',
       ];
 
       for (const invalidValue of invalidValues) {
