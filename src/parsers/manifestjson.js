@@ -10,7 +10,7 @@ import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
-import { singleLineString } from 'utils';
+import { singleLineString, parseCspPolicy } from 'utils';
 
 function normalizePath(iconPath) {
   // Convert the icon path to a URL so we can strip any fragments and resolve
@@ -116,7 +116,7 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.content_security_policy) {
-      this.collector.addWarning(messages.MANIFEST_CSP);
+      this.validateCspPolicy(this.parsedJSON.content_security_policy);
     }
 
     if (this.parsedJSON.update_url) {
@@ -168,6 +168,36 @@ export default class ManifestJSONParser extends JSONParser {
         this.isValid = false;
       }
     });
+  }
+
+  validateCspPolicy(policy) {
+    const directives = parseCspPolicy(policy);
+    let url;
+
+    // Not sure about FTP here but CSP spec treats ws/wss as
+    // equivalent to http/https.
+    const validProtocols = ['ftp:', 'http:', 'https:', 'ws:', 'wss'];
+
+    for (const candidate of ['script-src', 'default-src']) {
+      if (directives.hasOwnProperty(candidate)) {
+        const values = directives[candidate];
+
+        for (const value of values) {
+          try {
+            url = new URL(value);
+          } catch (e) {
+            if (value.trim().includes('*')) {
+              this.collector.addWarning(messages.MANIFEST_CSP);
+            }
+            continue;
+          }
+
+          if (validProtocols.includes(url.protocol)) {
+            this.collector.addWarning(messages.MANIFEST_CSP);
+          }
+        }
+      }
+    }
   }
 
   getAddonId() {

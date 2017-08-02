@@ -235,3 +235,30 @@ export function apiToMessage(string) {
 export function isBrowserNamespace(string) {
   return ['browser', 'chrome'].includes(string);
 }
+
+
+export function parseCspPolicy(policy) {
+  if (!policy) {
+    return {};
+  }
+
+  policy = policy.toLowerCase();
+
+  let parsedPolicy = {};
+  let directives = policy.split(';');
+
+  for (let directive of directives) {
+    directive = directive.trim();
+    const tokens = directive.split(/\s+/);
+
+    const name = tokens[0];
+
+    if (!name) {
+      continue;
+    }
+
+    parsedPolicy[name] = tokens.slice(1, tokens.length);
+  }
+
+  return parsedPolicy;
+}

@@ -354,6 +354,7 @@ describe('utils.isLocalUrl', () => {
   });
 });
 
+
 describe('utils.isBrowserNamespace', () => {
   it('is true for browser', () => {
     expect(utils.isBrowserNamespace('browser')).toEqual(true);
@@ -368,5 +369,36 @@ describe('utils.isBrowserNamespace', () => {
     expect(utils.isBrowserNamespace('bar')).toEqual(false);
     expect(utils.isBrowserNamespace('BROWSER')).toEqual(false);
     expect(utils.isBrowserNamespace('chrOme')).toEqual(false);
+  });
+});
+
+
+describe('utils.parseCspPolicy', () => {
+
+  it('should allow empty policies', () => {
+    expect(utils.parseCspPolicy('')).toEqual({});
+    expect(utils.parseCspPolicy(null)).toEqual({});
+    expect(utils.parseCspPolicy(undefined)).toEqual({});
+  });
+
+  it('should parse directives correctly', () => {
+    const rawPolicy = utils.singleLineString`
+      default-src 'none'; script-src 'self'; connect-src https: 'self';
+      img-src 'self'; style-src 'self';
+    `;
+
+    const parsedPolicy = utils.parseCspPolicy(rawPolicy);
+
+    expect(parsedPolicy['script-src']).toEqual('\'self\'');
+    expect(parsedPolicy['default-src']).toEqual('\'none\'');
+    expect(parsedPolicy['connect-src']).toEqual('https: \'self\'');
+    expect(parsedPolicy['img-src']).toEqual('\'self\'');
+    expect(parsedPolicy['style-src']).toEqual('\'self\'' );
+  });
+
+  it('should handle upper case correctly', () => {
+    const parsedPolicy = utils.parseCspPolicy('DEFAULT-SRC \'NoNe\'');
+
+    expect(parsedPolicy['default-src']).toEqual('\'none\'');
   });
 });

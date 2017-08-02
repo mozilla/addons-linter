@@ -332,17 +332,75 @@ describe('ManifestJSONParser', function() {
 
   describe('content security policy', function() {
 
-    it('should warn that csp will mean more review', () => {
+    it('dont warn on CSP not including default-src or script-src)', () => {
       var addonLinter = new Linter({_: ['bar']});
-      var json = validManifestJSON({content_security_policy: 'wat?'});
-      var manifestJSONParser = new ManifestJSONParser(json,
-                                                      addonLinter.collector);
+      var json = validManifestJSON({
+        content_security_policy: 'foo',
+      });
+      var manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector);
+
       expect(manifestJSONParser.isValid).toEqual(true);
-      var warnings = addonLinter.collector.warnings;
-      expect(warnings[0].code).toEqual(messages.MANIFEST_CSP.code);
-      expect(warnings[0].message).toContain('content_security_policy');
+      expect(addonLinter.collector.warnings.length).toEqual(0);
     });
 
+    it('should warn on invalid values according to Add-On Policies', () => {
+      var addonLinter = new Linter({_: ['bar']});
+
+      const invalidValues = [
+        'default-src *',
+        'default-src moz-extension: *',
+        'default-src ws:',
+        'default-src wss:',
+        'default-src http:',
+        'default-src https:',
+        'default-src ftp:',
+
+        'script-src *',
+        'script-src moz-extension: *',
+        'script-src ws:',
+        'script-src wss:',
+        'script-src http:',
+        'script-src https:',
+        'script-src ftp:',
+      ];
+
+      for (const invalidValue of invalidValues) {
+        var json = validManifestJSON({
+          content_security_policy: invalidValue,
+        });
+
+        var manifestJSONParser = new ManifestJSONParser(
+          json, addonLinter.collector);
+
+        expect(manifestJSONParser.isValid).toEqual(true);
+        var warnings = addonLinter.collector.warnings;
+        expect(warnings[0].code).toEqual(messages.MANIFEST_CSP.code);
+        expect(warnings[0].message).toContain('content_security_policy');
+      }
+    });
+
+    it('should not warn on valid values according to Add-On Policies', () => {
+      var addonLinter = new Linter({_: ['bar']});
+
+      const validValues = [
+        'default-src moz-extension:',
+
+        'script-src moz-extension:',
+      ];
+
+      for (const validValue of validValues) {
+        var json = validManifestJSON({
+          content_security_policy: validValue,
+        });
+
+        var manifestJSONParser = new ManifestJSONParser(
+          json, addonLinter.collector);
+
+        expect(manifestJSONParser.isValid).toEqual(true);
+        expect(addonLinter.collector.warnings.length).toEqual(0);
+      }
+    });
   });
 
   describe('update_url', function() {
