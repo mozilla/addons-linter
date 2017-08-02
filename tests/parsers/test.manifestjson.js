@@ -4,6 +4,7 @@ import ManifestJSONParser from 'parsers/manifestjson';
 import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
 import * as messages from 'messages';
 import { assertHasMatchingError, validManifestJSON } from '../helpers';
+import { singleLineString } from 'utils';
 
 describe('ManifestJSONParser', function() {
 
@@ -385,8 +386,9 @@ describe('ManifestJSONParser', function() {
 
       const validValues = [
         'default-src moz-extension:',
-
         'script-src moz-extension:',
+        'script-src \'self\'; object-src \'self\'',
+        'script-src \'self\' \'unsafe-eval\'; object-src \'self\'',
       ];
 
       for (const validValue of validValues) {
