@@ -389,16 +389,16 @@ describe('utils.parseCspPolicy', () => {
 
     const parsedPolicy = utils.parseCspPolicy(rawPolicy);
 
-    expect(parsedPolicy['script-src']).toEqual('\'self\'');
-    expect(parsedPolicy['default-src']).toEqual('\'none\'');
-    expect(parsedPolicy['connect-src']).toEqual('https: \'self\'');
-    expect(parsedPolicy['img-src']).toEqual('\'self\'');
-    expect(parsedPolicy['style-src']).toEqual('\'self\'' );
+    expect(parsedPolicy['script-src']).toEqual(['\'self\'']);
+    expect(parsedPolicy['default-src']).toEqual(['\'none\'']);
+    expect(parsedPolicy['connect-src']).toEqual(['https:', '\'self\'']);
+    expect(parsedPolicy['img-src']).toEqual(['\'self\'']);
+    expect(parsedPolicy['style-src']).toEqual(['\'self\'' ]);
   });
 
   it('should handle upper case correctly', () => {
     const parsedPolicy = utils.parseCspPolicy('DEFAULT-SRC \'NoNe\'');
 
-    expect(parsedPolicy['default-src']).toEqual('\'none\'');
+    expect(parsedPolicy['default-src']).toEqual(['\'none\'']);
   });
 });
