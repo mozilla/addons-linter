@@ -4,7 +4,6 @@ import ManifestJSONParser from 'parsers/manifestjson';
 import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
 import * as messages from 'messages';
 import { assertHasMatchingError, validManifestJSON } from '../helpers';
-import { singleLineString } from 'utils';
 
 describe('ManifestJSONParser', function() {
 
@@ -356,6 +355,9 @@ describe('ManifestJSONParser', function() {
         'default-src http:',
         'default-src https:',
         'default-src ftp:',
+        'default-src web.example.com:443',
+        'default-src web.example.com:80',
+        'default-src web.example.com',
 
         'script-src *',
         'script-src moz-extension: *',
@@ -364,6 +366,9 @@ describe('ManifestJSONParser', function() {
         'script-src http:',
         'script-src https:',
         'script-src ftp:',
+        'script-src web.example.com:443',
+        'script-src web.example.com:80',
+        'script-src web.example.com',
       ];
 
       for (const invalidValue of invalidValues) {

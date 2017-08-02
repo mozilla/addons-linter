@@ -172,7 +172,6 @@ export default class ManifestJSONParser extends JSONParser {
 
   validateCspPolicy(policy) {
     const directives = parseCspPolicy(policy);
-    let url;
 
     // Not sure about FTP here but CSP spec treats ws/wss as
     // equivalent to http/https.
@@ -182,17 +181,32 @@ export default class ManifestJSONParser extends JSONParser {
       if (directives.hasOwnProperty(candidate)) {
         const values = directives[candidate];
 
-        for (const value of values) {
+        for (let value of values) {
           try {
-            url = new URL(value);
+            const url = new URL(value);
 
-            if (validProtocols.includes(url.protocol)) {
+            if (url.host) {
+              // Let's warn for everything trying to allow hosts as
+              // protocol prefixes are optional a user might try enabling
+              // `web.example.com:80` which is perfectly valid.
               this.collector.addWarning(messages.MANIFEST_CSP);
             }
+
+            // set value to protocol to validate it later.
+            value = url.protocol;
           } catch (e) {
             if (value.trim().includes('*')) {
               this.collector.addWarning(messages.MANIFEST_CSP);
+
+              continue;
             }
+          }
+
+          // values like 'ws:' or 'http:' are valid values but aren't correct
+          // URLs so the try/catch above will fail and we'll have to string
+          // manually.
+          if (validProtocols.includes(value)) {
+            this.collector.addWarning(messages.MANIFEST_CSP);
           }
         }
       }
