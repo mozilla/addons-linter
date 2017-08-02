@@ -175,7 +175,7 @@ export default class ManifestJSONParser extends JSONParser {
 
     // Not sure about FTP here but CSP spec treats ws/wss as
     // equivalent to http/https.
-    const validProtocols = ['ftp:', 'http:', 'https:', 'ws:', 'wss'];
+    const validProtocols = ['ftp:', 'http:', 'https:', 'ws:', 'wss:'];
 
     for (const candidate of ['script-src', 'default-src']) {
       if (directives.hasOwnProperty(candidate)) {
@@ -197,25 +197,15 @@ export default class ManifestJSONParser extends JSONParser {
             // so we have to match this a bit wider. This will work since
             // 'self' and others are required to include the quotes (afair)
             // which results in an invalid URL.
+
             if (validProtocols.includes(url.protocol)) {
               this.collector.addWarning(messages.MANIFEST_CSP);
-              continue;
             }
           } catch (e) {
-            if (value.trim().includes('*')) {
-              this.collector.addWarning(messages.MANIFEST_CSP);
-
-              continue;
-            }
-
-            // values like 'ws:' or 'http:' are valid values but aren't correct
-            // URLs so the try/catch above will fail and we'll have to string
-            // manually.
-            if (validProtocols.includes(value.trim())) {
+            if (value.includes('*')) {
               this.collector.addWarning(messages.MANIFEST_CSP);
             }
           }
-
         }
       }
     }

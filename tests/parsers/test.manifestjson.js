@@ -345,8 +345,6 @@ describe('ManifestJSONParser', function() {
     });
 
     it('should warn on invalid values according to Add-On Policies', () => {
-      var addonLinter = new Linter({_: ['bar']});
-
       const invalidValues = [
         'default-src *',
         'default-src moz-extension: *',
@@ -355,8 +353,6 @@ describe('ManifestJSONParser', function() {
         'default-src http:',
         'default-src https:',
         'default-src ftp:',
-        'default-src web.example.com:443',
-        'default-src web.example.com:80',
         'default-src http://cdn.example.com/my.js',
         'default-src https://cdn.example.com/my.js',
 
@@ -367,8 +363,6 @@ describe('ManifestJSONParser', function() {
         'script-src http:',
         'script-src https:',
         'script-src ftp:',
-        'script-src web.example.com:443',
-        'script-src web.example.com:80',
         'script-src http://cdn.example.com/my.js',
         'script-src https://cdn.example.com/my.js',
 
@@ -377,23 +371,23 @@ describe('ManifestJSONParser', function() {
       ];
 
       for (const invalidValue of invalidValues) {
-        var json = validManifestJSON({
+        const addonLinter = new Linter({_: ['bar']});
+
+        const json = validManifestJSON({
           content_security_policy: invalidValue,
         });
 
-        var manifestJSONParser = new ManifestJSONParser(
+        const manifestJSONParser = new ManifestJSONParser(
           json, addonLinter.collector);
 
         expect(manifestJSONParser.isValid).toEqual(true);
-        var warnings = addonLinter.collector.warnings;
+        const warnings = addonLinter.collector.warnings;
         expect(warnings[0].code).toEqual(messages.MANIFEST_CSP.code);
         expect(warnings[0].message).toContain('content_security_policy');
       }
     });
 
     it('should not warn on valid values according to Add-On Policies', () => {
-      var addonLinter = new Linter({_: ['bar']});
-
       const validValues = [
         'default-src moz-extension:',
         'script-src moz-extension:',
@@ -404,6 +398,7 @@ describe('ManifestJSONParser', function() {
         'default-src web.example.com:80',
         'script-src web.example.com',
         'script-src web.example.com:80',
+        'default-src web.example.com:443',
 
         // Mix with other directives, properly match anyway.
         'script-src \'self\'; object-src \'self\'',
@@ -414,11 +409,13 @@ describe('ManifestJSONParser', function() {
       ];
 
       for (const validValue of validValues) {
-        var json = validManifestJSON({
+        const addonLinter = new Linter({_: ['bar']});
+
+        const json = validManifestJSON({
           content_security_policy: validValue,
         });
 
-        var manifestJSONParser = new ManifestJSONParser(
+        const manifestJSONParser = new ManifestJSONParser(
           json, addonLinter.collector);
 
         expect(manifestJSONParser.isValid).toEqual(true);
