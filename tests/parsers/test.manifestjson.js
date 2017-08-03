@@ -332,7 +332,7 @@ describe('ManifestJSONParser', function() {
 
   describe('content security policy', function() {
 
-    it('dont warn on CSP not including default-src or script-src)', () => {
+    it('should warn on rules allowing remote code execution', () => {
       var addonLinter = new Linter({_: ['bar']});
       var json = validManifestJSON({
         content_security_policy: 'foo',
@@ -399,8 +399,8 @@ describe('ManifestJSONParser', function() {
         'script-src moz-extension:',
 
         // Mix with other directives, properly match anyway.
-        'script-src \'self\'; object-src \'self\'',
-        'script-src \'self\' \'unsafe-eval\'; object-src \'self\'',
+        "script-src 'self'; object-src 'self'",
+        "script-src 'self' 'unsafe-eval'; object-src 'self'",
 
         // We only walk through default-src and script-src
         'style-src http://by.cdn.com/',
