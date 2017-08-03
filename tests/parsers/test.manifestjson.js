@@ -415,10 +415,9 @@ describe('ManifestJSONParser', function() {
         'default-src moz-extension:',
         'script-src moz-extension:',
 
-        // Mix with other directives, properly match anyway.
+        // Mix with other directives
         "script-src 'self'; object-src 'self'",
-        "script-src 'unsafe-inline'; object-src 'self'",
-
+        "script-src 'none'; object-src 'self'",
 
         // We only walk through default-src and script-src
         'style-src http://by.cdn.com/',
