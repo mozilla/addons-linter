@@ -149,6 +149,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :x: | warning | extra_closing_tags | | Parse error: tag closed before opened | | | | |
 | :x: | warning | invalid_nesting | | Markup invalidly nested | | | | |
 | :white_check_mark: | warning | inline script | | Inline script is disallowed by CSP | | | | INLINE_SCRIPT |
+| :white_check_mark: | warning | remote script | | Remote scripts are not allowed as per Add-on Policies | | | | REMOTE_SCRIPT |
 
 ## Content
 
