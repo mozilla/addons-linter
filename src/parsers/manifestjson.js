@@ -177,7 +177,7 @@ export default class ManifestJSONParser extends JSONParser {
     // equivalent to http/https.
     const validProtocols = ['ftp:', 'http:', 'https:', 'ws:', 'wss:'];
 
-    for (const candidate of ['script-src', 'default-src']) {
+    for (const candidate of ['script-src', 'default-src', 'worker-src']) {
       if (directives.hasOwnProperty(candidate)) {
         const values = directives[candidate];
 

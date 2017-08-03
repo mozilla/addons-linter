@@ -347,7 +347,7 @@ describe('ManifestJSONParser', function() {
     it('should warn on invalid values according to Add-On Policies', () => {
       const invalidValues = [
         'default-src *',
-        'default-src moz-extension: *',
+        'default-src moz-extension: *', // mixed with * invalid
         'default-src ws:',
         'default-src wss:',
         'default-src http:',
@@ -360,7 +360,7 @@ describe('ManifestJSONParser', function() {
         'default-src web.example.com:443',
 
         'script-src *',
-        'script-src moz-extension: *',
+        'script-src moz-extension: *', // mixed with * invalid
         'script-src ws:',
         'script-src wss:',
         'script-src http:',
@@ -372,8 +372,24 @@ describe('ManifestJSONParser', function() {
         'script-src web.example.com:80',
         'script-src web.example.com:443',
 
+        'worker-src *',
+        'worker-src moz-extension: *', // mixed with * invalid
+        'worker-src ws:',
+        'worker-src wss:',
+        'worker-src http:',
+        'worker-src https:',
+        'worker-src ftp:',
+        'worker-src http://cdn.example.com/my.js',
+        'worker-src https://cdn.example.com/my.js',
+        'worker-src web.example.com',
+        'worker-src web.example.com:80',
+        'worker-src web.example.com:443',
+
         // Properly match mixed with other directives
-        'script-src https: \'unsafe-eval\'; object-src \'self\'',
+        "script-src https: 'unsafe-eval'; object-src 'self'",
+
+        // unsafe-eval is forbidden too.
+        "script-src 'self' 'unsafe-eval';",
       ];
 
       for (const invalidValue of invalidValues) {
@@ -400,7 +416,8 @@ describe('ManifestJSONParser', function() {
 
         // Mix with other directives, properly match anyway.
         "script-src 'self'; object-src 'self'",
-        "script-src 'self' 'unsafe-eval'; object-src 'self'",
+        "script-src 'unsafe-inline'; object-src 'self'",
+
 
         // We only walk through default-src and script-src
         'style-src http://by.cdn.com/',
