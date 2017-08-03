@@ -168,8 +168,7 @@ export const TEMPORARY_APIS = [
 // `script-src`. Used in manifest.json parser for validation.
 // See https://mzl.la/2vwqbGU for more details and allowed options.
 export const CSP_KEYWORD_RE = new RegExp([
-  '(self|none|strict-dynamic|',
-  'unsafe-inline|unsafe-hashed-attributes)',
+  '(self|none|strict-dynamic|unsafe-hashed-attributes)',
   // Only match these keywords, anything else is forbidden
   '(?!.)',
   '|(sha(256|384|512)-|nonce-)',

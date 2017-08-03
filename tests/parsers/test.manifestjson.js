@@ -388,8 +388,9 @@ describe('ManifestJSONParser', function() {
         // Properly match mixed with other directives
         "script-src https: 'unsafe-eval'; object-src 'self'",
 
-        // unsafe-eval is forbidden too.
+        // unsafe-eval and unsafe-inline are forbidden too.
         "script-src 'self' 'unsafe-eval';",
+        "script-src 'self' 'unsafe-inline';",
       ];
 
       for (const invalidValue of invalidValues) {
