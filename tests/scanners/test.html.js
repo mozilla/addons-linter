@@ -64,12 +64,13 @@ describe('HTML', function() {
       <script src="file://foo.bar/my.js"></script>
       <script src="ftp://foo.bar/my.js"></script>
       <script src="moz-extension://foo/my.js"></script>
+      <script src="//foo.bar/my.js"></script>
     `);
     var htmlScanner = new HTMLScanner(badHTML, 'index.html');
 
     return htmlScanner.scan()
       .then(({linterMessages}) => {
-        expect(linterMessages.length).toEqual(5);
+        expect(linterMessages.length).toEqual(6);
 
         for (const message of linterMessages) {
           expect(message.code).toEqual(messages.REMOTE_SCRIPT.code);
