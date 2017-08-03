@@ -355,6 +355,9 @@ describe('ManifestJSONParser', function() {
         'default-src ftp:',
         'default-src http://cdn.example.com/my.js',
         'default-src https://cdn.example.com/my.js',
+        'default-src web.example.com',
+        'default-src web.example.com:80',
+        'default-src web.example.com:443',
 
         'script-src *',
         'script-src moz-extension: *',
@@ -365,6 +368,9 @@ describe('ManifestJSONParser', function() {
         'script-src ftp:',
         'script-src http://cdn.example.com/my.js',
         'script-src https://cdn.example.com/my.js',
+        'script-src web.example.com',
+        'script-src web.example.com:80',
+        'script-src web.example.com:443',
 
         // Properly match mixed with other directives
         'script-src https: \'unsafe-eval\'; object-src \'self\'',
@@ -391,14 +397,6 @@ describe('ManifestJSONParser', function() {
       const validValues = [
         'default-src moz-extension:',
         'script-src moz-extension:',
-
-        // We currently can't properly parse these without producing
-        // loads of false-positives.
-        'default-src web.example.com',
-        'default-src web.example.com:80',
-        'script-src web.example.com',
-        'script-src web.example.com:80',
-        'default-src web.example.com:443',
 
         // Mix with other directives, properly match anyway.
         'script-src \'self\'; object-src \'self\'',

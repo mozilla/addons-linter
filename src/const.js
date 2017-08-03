@@ -163,3 +163,14 @@ export const TEMPORARY_APIS = [
   'storage.local',
   'storage.sync',
 ];
+
+// All valid CSP keywords that are options to keys like `default-src` and
+// `script-src`. Used in manifest.json parser for validation.
+// See https://mzl.la/2vwqbGU for more details and allowed options.
+export const CSP_KEYWORD_RE = new RegExp([
+  '(self|none|strict-dynamic|',
+  'unsafe-inline|unsafe-eval|unsafe-hashed-attributes)',
+  // Only match these keywords, anything else is forbidden
+  '(?!.)',
+  '|(sha(256|384|512)-|nonce-)',
+].join(''));

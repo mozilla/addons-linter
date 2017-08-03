@@ -5,7 +5,7 @@ import validate from 'schema/validator';
 import { URL } from 'whatwg-url';
 
 import { getConfig } from 'cli';
-import { MANIFEST_JSON, PACKAGE_EXTENSION } from 'const';
+import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
@@ -184,27 +184,28 @@ export default class ManifestJSONParser extends JSONParser {
         for (let value of values) {
           value = value.trim();
 
-          if (value.endsWith(':') && validProtocols.includes(value)) {
+          if (value.startsWith('moz-extension:')) {
+            // Valid, continue...
+            continue;
+          }
+
+          let hasProtocol = (
+            (value.endsWith(':') && validProtocols.includes(value)) ||
+            (validProtocols.some(x => value.startsWith(x))));
+
+          if (hasProtocol) {
             this.collector.addWarning(messages.MANIFEST_CSP);
             continue;
           }
 
-          try {
-            let url = new URL(value);
+          // strip leading and ending single quotes.
+          value = value.replace(/^[']/, '').replace(/[']$/, '');
 
-            // warn as soon we match a valid URL being whitelisted.
-            // A user doesn't have to prepend a protocol/scheme to a host
-            // so we have to match this a bit wider. This will work since
-            // 'self' and others are required to include the quotes (afair)
-            // which results in an invalid URL.
-
-            if (validProtocols.includes(url.protocol)) {
-              this.collector.addWarning(messages.MANIFEST_CSP);
-            }
-          } catch (e) {
-            if (value.includes('*')) {
-              this.collector.addWarning(messages.MANIFEST_CSP);
-            }
+          if (value === '*' || value.search(CSP_KEYWORD_RE) === -1) {
+            // everything else looks like something we don't understand
+            // / support otherwise is invalid so let's warn about that.
+            this.collector.addWarning(messages.MANIFEST_CSP);
+            continue;
           }
         }
       }
