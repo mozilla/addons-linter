@@ -17,7 +17,7 @@ function normalizePath(iconPath) {
   // . and .. automatically. We need an absolute URL to use as a base so we're
   // using https://example.com/.
   const { pathname } = new URL(iconPath, 'https://example.com/');
-  return pathname.slice(1);
+  return path.join(pathname.split('/').filter(i => i));
 }
 
 export default class ManifestJSONParser extends JSONParser {
