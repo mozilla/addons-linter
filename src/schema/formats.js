@@ -84,6 +84,7 @@ function isRelativeUrl(value) {
     // URL is invalid.
     return false;
   }
+
   // If the URL is relative, then the protocol will stay the same, but host
   // could change due to protocol relative. Also check that the URL isn't
   // absolute, since then it is using the dummy protocol we defined.

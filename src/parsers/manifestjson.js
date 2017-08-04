@@ -5,12 +5,12 @@ import validate from 'schema/validator';
 import { URL } from 'whatwg-url';
 
 import { getConfig } from 'cli';
-import { MANIFEST_JSON, PACKAGE_EXTENSION } from 'const';
+import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
-import { singleLineString } from 'utils';
+import { singleLineString, parseCspPolicy } from 'utils';
 
 function normalizePath(iconPath) {
   // Convert the icon path to a URL so we can strip any fragments and resolve
@@ -116,7 +116,7 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.content_security_policy) {
-      this.collector.addWarning(messages.MANIFEST_CSP);
+      this.validateCspPolicy(this.parsedJSON.content_security_policy);
     }
 
     if (this.parsedJSON.update_url) {
@@ -168,6 +168,48 @@ export default class ManifestJSONParser extends JSONParser {
         this.isValid = false;
       }
     });
+  }
+
+  validateCspPolicy(policy) {
+    const directives = parseCspPolicy(policy);
+
+    // Not sure about FTP here but CSP spec treats ws/wss as
+    // equivalent to http/https.
+    const validProtocols = ['ftp:', 'http:', 'https:', 'ws:', 'wss:'];
+
+    for (const candidate of ['script-src', 'default-src', 'worker-src']) {
+      if (directives.hasOwnProperty(candidate)) {
+        const values = directives[candidate];
+
+        for (let value of values) {
+          value = value.trim();
+
+          if (value.startsWith('moz-extension:')) {
+            // Valid, continue...
+            continue;
+          }
+
+          let hasProtocol = (
+            (value.endsWith(':') && validProtocols.includes(value)) ||
+            (validProtocols.some(x => value.startsWith(x))));
+
+          if (hasProtocol) {
+            this.collector.addWarning(messages.MANIFEST_CSP);
+            continue;
+          }
+
+          // strip leading and ending single quotes.
+          value = value.replace(/^[']/, '').replace(/[']$/, '');
+
+          if (value === '*' || value.search(CSP_KEYWORD_RE) === -1) {
+            // everything else looks like something we don't understand
+            // / support otherwise is invalid so let's warn about that.
+            this.collector.addWarning(messages.MANIFEST_CSP);
+            continue;
+          }
+        }
+      }
+    }
   }
 
   getAddonId() {

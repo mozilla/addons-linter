@@ -332,17 +332,112 @@ describe('ManifestJSONParser', function() {
 
   describe('content security policy', function() {
 
-    it('should warn that csp will mean more review', () => {
+    it('should warn on rules allowing remote code execution', () => {
       var addonLinter = new Linter({_: ['bar']});
-      var json = validManifestJSON({content_security_policy: 'wat?'});
-      var manifestJSONParser = new ManifestJSONParser(json,
-                                                      addonLinter.collector);
+      var json = validManifestJSON({
+        content_security_policy: 'foo',
+      });
+      var manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector);
+
       expect(manifestJSONParser.isValid).toEqual(true);
-      var warnings = addonLinter.collector.warnings;
-      expect(warnings[0].code).toEqual(messages.MANIFEST_CSP.code);
-      expect(warnings[0].message).toContain('content_security_policy');
+      expect(addonLinter.collector.warnings.length).toEqual(0);
     });
 
+    it('should warn on invalid values according to Add-On Policies', () => {
+      const invalidValues = [
+        'default-src *',
+        'default-src moz-extension: *', // mixed with * invalid
+        'default-src ws:',
+        'default-src wss:',
+        'default-src http:',
+        'default-src https:',
+        'default-src ftp:',
+        'default-src http://cdn.example.com/my.js',
+        'default-src https://cdn.example.com/my.js',
+        'default-src web.example.com',
+        'default-src web.example.com:80',
+        'default-src web.example.com:443',
+
+        'script-src *',
+        'script-src moz-extension: *', // mixed with * invalid
+        'script-src ws:',
+        'script-src wss:',
+        'script-src http:',
+        'script-src https:',
+        'script-src ftp:',
+        'script-src http://cdn.example.com/my.js',
+        'script-src https://cdn.example.com/my.js',
+        'script-src web.example.com',
+        'script-src web.example.com:80',
+        'script-src web.example.com:443',
+
+        'worker-src *',
+        'worker-src moz-extension: *', // mixed with * invalid
+        'worker-src ws:',
+        'worker-src wss:',
+        'worker-src http:',
+        'worker-src https:',
+        'worker-src ftp:',
+        'worker-src http://cdn.example.com/my.js',
+        'worker-src https://cdn.example.com/my.js',
+        'worker-src web.example.com',
+        'worker-src web.example.com:80',
+        'worker-src web.example.com:443',
+
+        // Properly match mixed with other directives
+        "script-src https: 'unsafe-eval'; object-src 'self'",
+      ];
+
+      for (const invalidValue of invalidValues) {
+        const addonLinter = new Linter({_: ['bar']});
+
+        const json = validManifestJSON({
+          content_security_policy: invalidValue,
+        });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          json, addonLinter.collector);
+
+        expect(manifestJSONParser.isValid).toEqual(true);
+        const warnings = addonLinter.collector.warnings;
+        expect(warnings[0].code).toEqual(messages.MANIFEST_CSP.code);
+        expect(warnings[0].message).toContain('content_security_policy');
+      }
+    });
+
+    it('should not warn on valid values according to Add-On Policies', () => {
+      const validValues = [
+        'default-src moz-extension:',
+        'script-src moz-extension:',
+
+        // Mix with other directives
+        "script-src 'self'; object-src 'self'",
+        "script-src 'none'; object-src 'self'",
+
+        // We only walk through default-src and script-src
+        'style-src http://by.cdn.com/',
+
+        // unsafe-eval and unsafe-inline are not forbidden yet and
+        // should be reviewed by a human.
+        "script-src 'self' 'unsafe-eval';",
+        "script-src 'self' 'unsafe-inline';",
+      ];
+
+      for (const validValue of validValues) {
+        const addonLinter = new Linter({_: ['bar']});
+
+        const json = validManifestJSON({
+          content_security_policy: validValue,
+        });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          json, addonLinter.collector);
+
+        expect(manifestJSONParser.isValid).toEqual(true);
+        expect(addonLinter.collector.warnings.length).toEqual(0);
+      }
+    });
   });
 
   describe('update_url', function() {
