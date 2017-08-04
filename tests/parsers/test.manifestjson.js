@@ -387,10 +387,6 @@ describe('ManifestJSONParser', function() {
 
         // Properly match mixed with other directives
         "script-src https: 'unsafe-eval'; object-src 'self'",
-
-        // unsafe-eval and unsafe-inline are forbidden too.
-        "script-src 'self' 'unsafe-eval';",
-        "script-src 'self' 'unsafe-inline';",
       ];
 
       for (const invalidValue of invalidValues) {
@@ -421,6 +417,11 @@ describe('ManifestJSONParser', function() {
 
         // We only walk through default-src and script-src
         'style-src http://by.cdn.com/',
+
+        // unsafe-eval and unsafe-inline are not forbidden yet and
+        // should be reviewed by a human.
+        "script-src 'self' 'unsafe-eval';",
+        "script-src 'self' 'unsafe-inline';",
       ];
 
       for (const validValue of validValues) {
