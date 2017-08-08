@@ -60,7 +60,7 @@
     "markdown-it-anchor": "4.0.0",
     "markdown-it-emoji": "1.4.0",
     "request": "2.81.0",
-    "sinon": "2.4.1",
+    "sinon": "3.1.0",
     "tar": "3.1.9",
     "webpack": "3.4.1",
     "webpack-dev-server": "2.6.1"
