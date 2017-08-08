@@ -11,6 +11,7 @@ import { INSTALL_RDF, MANIFEST_JSON } from 'const';
 import { BANNED_LIBRARIES, UNADVISED_LIBRARIES } from 'libraries';
 import * as messages from 'messages';
 import { checkMinNodeVersion, gettext as _, singleLineString } from 'utils';
+import badwords from 'badwords.json';
 
 import log from 'logger';
 import Collector from 'collector';
@@ -370,6 +371,7 @@ export default class Linter {
             file: filename,
             type: constants.VALIDATION_ERROR,
           });
+
           return Promise.resolve({
             linterMessages: [filesizeError],
             scannedFiles: [filename],
@@ -379,6 +381,9 @@ export default class Linter {
         if (this.addonMetadata) {
           this.addonMetadata.totalScannedFileSize += fileSize;
         }
+
+        // Check for badwords across all file-types
+        this._markBadwordUsage(filename, fileData);
 
         let scanner = new ScannerClass(fileData, filename, {
           addonMetadata: this.addonMetadata,
@@ -629,4 +634,25 @@ export default class Linter {
       });
   }
 
+  _markBadwordUsage(filename, fileData) {
+    if (fileData) {
+      const badwordsRe = new RegExp(badwords.en.join('|'), 'gi');
+
+      const words = fileData.split(' ');
+
+      for (let word of words) {
+        // Filter out none a-Z characters to simplify matching with our
+        // badword list.
+        word = word.toLowerCase().replace(/[^a-zA-Z]/, '');
+
+        if (word.match(badwordsRe)) {
+          this.collector.addNotice(
+            Object.assign({}, messages.MOZILLA_COND_OF_USE, {
+              file: filename,
+            })
+          );
+        }
+      }
+    }
+  }
 }
