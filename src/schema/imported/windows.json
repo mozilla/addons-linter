@@ -269,6 +269,10 @@
             "allowScriptsToClose": {
               "type": "boolean",
               "description": "Allow scripts to close the window."
+            },
+            "titlePreface": {
+              "type": "string",
+              "description": "A string to add to the beginning of the window title."
             }
           }
         },
@@ -343,6 +347,10 @@
                   "description": "The new state of the window. The 'minimized', 'maximized' and 'fullscreen' states cannot be combined with 'left', 'top', 'width' or 'height'."
                 }
               ]
+            },
+            "titlePreface": {
+              "type": "string",
+              "description": "A string to add to the beginning of the window title."
             }
           }
         },
@@ -552,6 +560,10 @@
         "sessionId": {
           "type": "string",
           "description": "The session ID used to uniquely identify a Window obtained from the $(ref:sessions) API."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the window. Read-only."
         }
       },
       "required": [
