@@ -8,7 +8,7 @@ import {
 
 describe('formats', () => {
   describe('isValidVersionString', () => {
-    var validVersionStrings = [
+    const validVersionStrings = [
       '0.1.12dev-cb31c51',
       '1.0',
       '1.0.0beta2',
@@ -21,7 +21,7 @@ describe('formats', () => {
       '4.1.1.2pre3',
     ];
 
-    var invalidVersionStrings = [
+    const invalidVersionStrings = [
       2,
       '123e5',
       '1.',
@@ -35,18 +35,17 @@ describe('formats', () => {
       '1.0.0-beta2',
     ];
 
-
-    for (let validVersionString of validVersionStrings) {
+    validVersionStrings.forEach((validVersionString) => {
       it(`should find ${validVersionString} to be valid`, () => {
         expect(isValidVersionString(validVersionString)).toEqual(true);
       });
-    }
+    });
 
-    for (let invalidVersionString of invalidVersionStrings) {
+    invalidVersionStrings.forEach((invalidVersionString) => {
       it(`should find ${invalidVersionString} to be invalid`, () => {
         expect(isValidVersionString(invalidVersionString)).toEqual(false);
       });
-    }
+    });
   });
 
   describe('URL formats', () => {

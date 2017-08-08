@@ -4,18 +4,17 @@ import * as messages from 'messages';
 
 
 describe('widget_module', () => {
-
   it('should catch require() first arg being a global', () => {
-    var code = `widgetPath = 'sdk/widget';
+    const code = `widgetPath = 'sdk/widget';
     require(widgetPath).Widget({
       id: "mozilla-icon",
       label: "My Mozilla Widget",
       contentURL: "http://www.mozilla.org/favicon.ico"
     });`;
-    var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+    const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(1);
         expect(linterMessages[0].code).toEqual(
           messages.UNEXPECTED_GLOGAL_ARG.code
@@ -23,5 +22,4 @@ describe('widget_module', () => {
         expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
       });
   });
-
 });

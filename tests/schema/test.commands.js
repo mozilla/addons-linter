@@ -1,6 +1,7 @@
 import cloneDeep from 'lodash.clonedeep';
 
 import validate from 'schema/validator';
+
 import { validManifest } from './helpers';
 import { assertHasMatchingError } from '../helpers';
 
@@ -23,7 +24,7 @@ describe('/commands', () => {
     expect(validate.errors).toBeFalsy();
   });
 
-  it('should validate the key string', function() {
+  it('should validate the key string', () => {
     const manifest = cloneDeep(validManifest);
     manifest.commands = {
       up: { suggested_key: { mac: 'Command+ShiftUp' } },

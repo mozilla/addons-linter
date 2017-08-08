@@ -1,46 +1,46 @@
 import * as utils from 'utils';
+
 import { unexpectedSuccess } from './helpers';
 
 
-describe('utils.singleLineString()', function() {
-
+describe('utils.singleLineString()', () => {
   it('reduce a multiline template string into one string', () => {
-    var output = utils.singleLineString`foo
+    const output = utils.singleLineString`foo
               bar
         baz`;
     expect(output).toEqual('foo bar baz');
   });
 
   it('should still do subs', () => {
-    var foo = 1;
-    var bar = 2;
-    var baz = 3;
-    var output = utils.singleLineString`one ${foo}
+    const foo = 1;
+    const bar = 2;
+    const baz = 3;
+    const output = utils.singleLineString`one ${foo}
               two ${bar}
         three ${baz}`;
     expect(output).toEqual('one 1 two 2 three 3');
   });
 
   it('should still work with tabs', () => {
-    var me = 'me';
-    var raggedy = 'raggedy';
-    var you = 'you';
-    var output = utils.singleLineString`So here is us, on the
+    /* eslint-disable no-tabs */
+    const me = 'me';
+    const raggedy = 'raggedy';
+    const you = 'you';
+    const output = utils.singleLineString`So here is us, on the
           ${raggedy} edge. Don't push ${me},
               			and I won't push ${you}.`;
     expect(output).toEqual('So here is us, on the raggedy edge. ' +
     "Don't push me, and I won't push you.");
   });
-
 });
 
-describe('utils.getRootExpression()', function() {
-  var node = {
+describe('utils.getRootExpression()', () => {
+  const node = {
     type: 'CallExpression',
     callee: { // <-- bar()
       type: 'MemberExpression',
       object: {
-        type:'CallExpression',
+        type: 'CallExpression',
         callee: { // <-- foo()
           type: 'MemberExpression',
           object: {
@@ -64,7 +64,7 @@ describe('utils.getRootExpression()', function() {
   };
 
   it('should verify that the root node is what was expected', () => {
-    var root = utils.getRootExpression(node);
+    const root = utils.getRootExpression(node);
 
     expect(root.name).toEqual('pref');
   });
@@ -72,9 +72,9 @@ describe('utils.getRootExpression()', function() {
 
 describe('utils.getNodeReference()', () => {
   // Represents scope for following code:
-  // var foo = window; foo = bar;
-  var context = {
-    getScope: function() {
+  // const foo = window; foo = bar;
+  const context = {
+    getScope: () => {
       // TODO: Look into generating these AST nodes using ESPrima
       return {
         variables: [{
@@ -109,24 +109,24 @@ describe('utils.getNodeReference()', () => {
   };
 
   it('should return the name of the referenced variable', () => {
-    var ref = { name: 'foo' };
-    var val = utils.getNodeReference(context, ref);
+    const ref = { name: 'foo' };
+    const val = utils.getNodeReference(context, ref);
 
     expect(val.name).toEqual('bar');
   });
 
   it('should return the name of the reference if not in scope', () => {
-    var ref = { name: 'doesNotExist' };
-    var val = utils.getNodeReference(context, ref);
+    const ref = { name: 'doesNotExist' };
+    const val = utils.getNodeReference(context, ref);
 
     expect(val.name).toEqual(ref.name);
   });
 });
 
-describe('utils.getVariable()', function() {
+describe('utils.getVariable()', () => {
   // This is the expected schema from eslint
-  var context = {
-    getScope: function() {
+  const context = {
+    getScope: () => {
       return {
         variables: [{
           name: 'foo',
@@ -146,8 +146,8 @@ describe('utils.getVariable()', function() {
     },
   };
 
-  var contextWithoutParent = {
-    getScope: function() {
+  const contextWithoutParent = {
+    getScope: () => {
       return {
         variables: [{
           name: 'foo',
@@ -161,25 +161,25 @@ describe('utils.getVariable()', function() {
   };
 
   it('should return the correct variable in the given context.', () => {
-    var foo = utils.getVariable(context, 'foo');
+    const foo = utils.getVariable(context, 'foo');
     expect(foo.type).toEqual('Literal');
     expect(foo.value).toEqual('bar');
   });
 
   it("should return undefined if the variable doesn't exist.", () => {
-    var undef = utils.getVariable(context, 'doesNotExist');
+    const undef = utils.getVariable(context, 'doesNotExist');
     expect(typeof undef).toEqual('undefined');
   });
 
   it("should return undefined if the init property isn't on the parent", () => {
-    var undef = utils.getVariable(contextWithoutParent, 'foo');
+    const undef = utils.getVariable(contextWithoutParent, 'foo');
     expect(typeof undef).toEqual('undefined');
   });
 });
 
-describe('utils.checkOtherReferences', function() {
-  var context = {
-    getScope: function() {
+describe('utils.checkOtherReferences', () => {
+  const context = {
+    getScope: () => {
       return {
         variables: [],
       };
@@ -187,19 +187,17 @@ describe('utils.checkOtherReferences', function() {
   };
 
   it('should return the node if reference is a Literal', () => {
-    var literal = utils.getNodeReference(context, {type: 'Literal'});
+    const literal = utils.getNodeReference(context, { type: 'Literal' });
     expect(literal.type).toEqual('Literal');
   });
 
   it('should return the node if reference is undefined', () => {
-    var undef = utils.getNodeReference(context, {type: 'undefined'});
+    const undef = utils.getNodeReference(context, { type: 'undefined' });
     expect(undef.type).toEqual('undefined');
   });
-
 });
 
-describe('utils.ensureFilenameExists()', function() {
-
+describe('utils.ensureFilenameExists()', () => {
   it('should throw error when filename is not a string', () => {
     expect(() => {
       utils.ensureFilenameExists();
@@ -227,14 +225,12 @@ describe('utils.ensureFilenameExists()', function() {
       utils.ensureFilenameExists('0');
     }).not.toThrow();
   });
-
 });
 
 
-describe('utils.checkMinNodeVersion()', function() {
-
+describe('utils.checkMinNodeVersion()', () => {
   it('should reject if version is not high enough', () => {
-    var fakeProcess = {
+    const fakeProcess = {
       version: 'v0.12.4',
     };
     return utils.checkMinNodeVersion('0.12.7', fakeProcess)
@@ -245,18 +241,16 @@ describe('utils.checkMinNodeVersion()', function() {
   });
 
   it('should not reject if version is not high enough', () => {
-    var fakeProcess = {
+    const fakeProcess = {
       version: 'v4.1.2',
     };
     return utils.checkMinNodeVersion('0.12.7', fakeProcess);
   });
-
 });
 
-describe('utils.ignorePrivateFunctions()', function() {
-
+describe('utils.ignorePrivateFunctions()', () => {
   it('should return only "public" functions', () => {
-    var listOfRuleFunctions = {
+    const listOfRuleFunctions = {
       checkForEval: sinon.stub(),
       _parseEvalPossibility: sinon.stub(),
       checkForCurlyBraces: sinon.stub(),
@@ -264,7 +258,7 @@ describe('utils.ignorePrivateFunctions()', function() {
       i_am_an_underscore_function: sinon.stub(),
     };
 
-    var publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
+    const publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
     expect(typeof publicFunctions).toBe('object');
     expect(Object.keys(publicFunctions).length).toBe(3);
     expect(Object.keys(publicFunctions)).not.toContain('_parseEvalPossibility');
@@ -272,34 +266,32 @@ describe('utils.ignorePrivateFunctions()', function() {
   });
 
   it('should return an empty object when given only private functions', () => {
-    var listOfRuleFunctions = {
+    const listOfRuleFunctions = {
       _parseEvalPossibility: sinon.stub(),
       __checkForFunctions: sinon.stub(),
     };
 
-    var publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
+    const publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
     expect(typeof publicFunctions).toBe('object');
     expect(Object.keys(publicFunctions).length).toBe(0);
   });
 
   it('should return only functions', () => {
-    var listOfRuleFunctions = {
+    const listOfRuleFunctions = {
       iAmARule: sinon.stub(),
       _privateMethod: sinon.stub(),
       IAMCONSTANT: 'foo',
     };
 
-    var publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
-    for (let functionName in publicFunctions) {
+    const publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
+    Object.keys(publicFunctions).forEach((functionName) => {
       expect(typeof publicFunctions[functionName]).toEqual('function');
-    }
+    });
   });
-
 });
 
 
-describe('utils.getPackageTypeAsString()', function() {
-
+describe('utils.getPackageTypeAsString()', () => {
   it('should look up a package type when passed a number', () => {
     expect(utils.getPackageTypeAsString(2)).toEqual('PACKAGE_THEME');
   });
@@ -319,12 +311,10 @@ describe('utils.getPackageTypeAsString()', function() {
       utils.getPackageTypeAsString('whatevs');
     }).toThrow('Invalid package type constant "whatevs"');
   });
-
 });
 
 
 describe('utils.isLocalUrl', () => {
-
   it('should not match remote urls', () => {
     expect(utils.isLocalUrl('http://foo.com')).toBeFalsy();
     expect(utils.isLocalUrl('https://foo.com')).toBeFalsy();
@@ -374,7 +364,6 @@ describe('utils.isBrowserNamespace', () => {
 
 
 describe('utils.parseCspPolicy', () => {
-
   it('should allow empty policies', () => {
     expect(utils.parseCspPolicy('')).toEqual({});
     expect(utils.parseCspPolicy(null)).toEqual({});
@@ -393,7 +382,7 @@ describe('utils.parseCspPolicy', () => {
     expect(parsedPolicy['default-src']).toEqual(['\'none\'']);
     expect(parsedPolicy['connect-src']).toEqual(['https:', '\'self\'']);
     expect(parsedPolicy['img-src']).toEqual(['\'self\'']);
-    expect(parsedPolicy['style-src']).toEqual(['\'self\'' ]);
+    expect(parsedPolicy['style-src']).toEqual(['\'self\'']);
   });
 
   it('should handle upper case correctly', () => {

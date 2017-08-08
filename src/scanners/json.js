@@ -3,7 +3,6 @@ import BaseScanner from 'scanners/base';
 
 
 export default class JSONScanner extends BaseScanner {
-
   static get scannerName() {
     return 'json';
   }
@@ -15,8 +14,8 @@ export default class JSONScanner extends BaseScanner {
   scan() {
     return this.getContents()
       .then((json) => {
-        let jsonParser = new JSONParser(json, this.options.collector, {
-          filename: this.filename});
+        const jsonParser = new JSONParser(json, this.options.collector, {
+          filename: this.filename });
         jsonParser.parse();
         return Promise.resolve({
           linterMessages: [],

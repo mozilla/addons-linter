@@ -1,8 +1,8 @@
 import url from 'url';
 
 import jed from 'jed';
-
 import semver from 'semver';
+
 import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
 /*
@@ -26,7 +26,7 @@ export function singleLineString(strings, ...vars) {
   output += strings[vars.length];
 
   // Split on newlines.
-  let lines = output.split(/(?:\r\n|\n|\r)/);
+  const lines = output.split(/(?:\r\n|\n|\r)/);
 
   // Rip out the leading whitespace.
   return lines.map((line) => {
@@ -40,7 +40,7 @@ export function singleLineString(strings, ...vars) {
  * example: foo().bar.baz() will return the AST node for foo.
  */
 export function getRootExpression(node) {
-  var root = node.callee;
+  let root = node.callee;
 
   // If we encounter a member, grab the parent
   if (node.callee.type === 'MemberExpression') {
@@ -65,8 +65,8 @@ export function getRootExpression(node) {
  *  The node for foo will return 'document'
  */
 export function getNodeReference(context, node) {
-  var variables = context.getScope().variables;
-  var scopeVar;
+  const variables = context.getScope().variables;
+  let scopeVar;
 
   // Just return the value if the node passed in is a reference to a literal.
   if (typeof node === 'undefined' || node.type === 'Literal') {
@@ -74,7 +74,8 @@ export function getNodeReference(context, node) {
   }
 
   // Finds variable reference in current scope.
-  for (let variable of variables) {
+  for (let i = 0; i < variables.length; i++) {
+    const variable = variables[i];
     if (variable.name === node.name) {
       scopeVar = variable;
       break;
@@ -85,11 +86,11 @@ export function getNodeReference(context, node) {
       scopeVar.defs[0].parent && scopeVar.defs[0].parent.parent &&
       scopeVar.defs[0].parent.parent.body) {
     // This represents all occurrences of the variable
-    let occurances = scopeVar.defs[0].parent.parent.body;
+    const occurances = scopeVar.defs[0].parent.parent.body;
     let lastAssignment;
 
     if (occurances instanceof Array) {
-      for (let occurance of occurances) {
+      occurances.forEach((occurance) => {
         if (occurance.type === 'VariableDeclaration' &&
             occurance.declarations[0].init !== null) {
           // Get what the name of what it was assigned to or the raw
@@ -100,7 +101,7 @@ export function getNodeReference(context, node) {
           // Get the right hand side of the assignment
           lastAssignment = occurance.expression.right;
         }
-      }
+      });
     }
 
     // Return the name of the first definition of the variable which
@@ -120,9 +121,9 @@ export function getNodeReference(context, node) {
  * undefined.
  */
 export function getVariable(context, name) {
-  var variables = context.getScope().variables;
-  var result;
-  variables.forEach(function(variable) {
+  const variables = context.getScope().variables;
+  let result;
+  variables.forEach((variable) => {
     if (variable.name === name && variable.defs && variable.defs[0] &&
       variable.defs[0].name && variable.defs[0].name.parent) {
       result = variable.defs[0].name.parent.init;
@@ -149,8 +150,9 @@ export const sprintf = jed.sprintf;
 /*
  * Check the minimum node version is met
  */
-export function checkMinNodeVersion(minVersion, _process=process) {
+export function checkMinNodeVersion(minVersion, _process = process) {
   return new Promise((resolve) => {
+    // eslint-disable-next-line no-param-reassign
     minVersion = minVersion || '0.12.0';
     if (!semver.gte(_process.version, minVersion)) {
       throw new Error(singleLineString`Node version must be ${minVersion} or
@@ -163,7 +165,9 @@ export function checkMinNodeVersion(minVersion, _process=process) {
 
 
 export function getPackageTypeAsString(numericPackageType) {
-  for (let packageType of Object.keys(PACKAGE_TYPES)) {
+  const packageKeys = Object.keys(PACKAGE_TYPES);
+  for (let i = 0; i < packageKeys.length; i++) {
+    const packageType = packageKeys[i];
     if (parseInt(numericPackageType, 10) === PACKAGE_TYPES[packageType]) {
       return packageType;
     }
@@ -183,14 +187,14 @@ export function getPackageTypeAsString(numericPackageType) {
  * for testing.
  */
 export function ignorePrivateFunctions(list) {
-  var filteredList = {};
+  const filteredList = {};
 
-  for (let functionName in list) {
+  Object.keys(list).forEach((functionName) => {
     if (functionName.startsWith('_') === false &&
         typeof list[functionName] === 'function') {
       filteredList[functionName] = list[functionName];
     }
-  }
+  });
 
   return filteredList;
 }
@@ -208,9 +212,9 @@ export function ensureFilenameExists(filename) {
 
 
 export function isLocalUrl(urlInput) {
-  var parsedUrl = url.parse(urlInput);
-  var protocol = parsedUrl.protocol;
-  var path = parsedUrl.path;
+  const parsedUrl = url.parse(urlInput);
+  const protocol = parsedUrl.protocol;
+  const path = parsedUrl.path;
   // Check protocol is chrome: or resource: if set.
   // Details on the chrome protocol are here: https://goo.gl/W52T0Q
   // Details on resource protocol are here: https://goo.gl/HHqeJA
@@ -242,23 +246,23 @@ export function parseCspPolicy(policy) {
     return {};
   }
 
+  // eslint-disable-next-line no-param-reassign
   policy = policy.toLowerCase();
 
-  let parsedPolicy = {};
-  let directives = policy.split(';');
+  const parsedPolicy = {};
+  const directives = policy.split(';');
 
-  for (let directive of directives) {
+  directives.forEach((directive) => {
+    // eslint-disable-next-line no-param-reassign
     directive = directive.trim();
     const tokens = directive.split(/\s+/);
 
     const name = tokens[0];
 
-    if (!name) {
-      continue;
+    if (name) {
+      parsedPolicy[name] = tokens.slice(1, tokens.length);
     }
-
-    parsedPolicy[name] = tokens.slice(1, tokens.length);
-  }
+  });
 
   return parsedPolicy;
 }

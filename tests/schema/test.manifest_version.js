@@ -1,12 +1,13 @@
-import validate from 'schema/validator';
-import { validManifest } from './helpers';
 import cloneDeep from 'lodash.clonedeep';
+
+import validate from 'schema/validator';
+
+import { validManifest } from './helpers';
 
 
 describe('/manifest_version', () => {
-
   it('should be invalid due to old manifest_version', () => {
-    var manifest = cloneDeep(validManifest);
+    const manifest = cloneDeep(validManifest);
     manifest.manifest_version = 1;
     validate(manifest);
     expect(validate.errors[0].dataPath).toEqual('/manifest_version');
@@ -14,7 +15,7 @@ describe('/manifest_version', () => {
   });
 
   it('should be invalid due to missing manifest_version', () => {
-    var manifest = cloneDeep(validManifest);
+    const manifest = cloneDeep(validManifest);
     manifest.manifest_version = undefined;
     validate(manifest);
     expect(validate.errors.length).toEqual(1);
@@ -23,5 +24,4 @@ describe('/manifest_version', () => {
       'manifest_version'
     );
   });
-
 });

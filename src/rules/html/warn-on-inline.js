@@ -4,7 +4,7 @@ import * as messages from 'messages';
 
 export function warnOnInline($, filename) {
   return new Promise((resolve) => {
-    var linterMessages = [];
+    const linterMessages = [];
     $('script').each((i, element) => {
       if ($(element).attr('src') === undefined) {
         linterMessages.push(

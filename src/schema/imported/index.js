@@ -44,6 +44,7 @@ import webNavigation from './web_navigation.json';
 import webRequest from './web_request.json';
 import windows from './windows.json';
 import contextMenus from './contextMenus.json';
+
 export default [
   alarms,
   bookmarks,

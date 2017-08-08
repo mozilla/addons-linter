@@ -6,10 +6,9 @@ import * as rules from 'rules/rdf';
 
 
 export default class RDFScanner extends BaseScanner {
-
   _defaultRules = rules;
 
-  constructor(contents, filename, options={}) {
+  constructor(contents, filename, options = {}) {
     super(contents, filename, options);
     // I don't think this ever needs to be different, but if it does we can
     // extract the em namespace using:
@@ -28,7 +27,7 @@ export default class RDFScanner extends BaseScanner {
 
   _getContents() {
     return new Promise((resolve, reject) => {
-      var xmlDoc = new XMLDom.DOMParser({
+      const xmlDoc = new XMLDom.DOMParser({
         errorHandler: (err) => {
           reject(new Error(`RDFParseError: ${err}`));
         },

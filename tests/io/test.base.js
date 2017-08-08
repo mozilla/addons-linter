@@ -1,13 +1,12 @@
 import { IOBase } from 'io/base';
-import { unexpectedSuccess } from '../helpers';
-
 import { FLAGGED_FILE_MAGIC_NUMBERS_LENGTH } from 'const';
 
+import { unexpectedSuccess } from '../helpers';
 
-describe('io.IOBase()', function() {
 
+describe('io.IOBase()', () => {
   it('should init class props as expected', () => {
-    var io = new IOBase('foo/bar');
+    const io = new IOBase('foo/bar');
     expect(io.path).toEqual('foo/bar');
     expect(io.entries.length).toEqual(0);
     expect(Object.keys(io.files).length).toEqual(0);
@@ -16,7 +15,7 @@ describe('io.IOBase()', function() {
   });
 
   it('should reject calling getFiles()', () => {
-    var io = new IOBase('foo/bar');
+    const io = new IOBase('foo/bar');
 
     return io.getFiles()
       .then(unexpectedSuccess)
@@ -27,7 +26,7 @@ describe('io.IOBase()', function() {
   });
 
   it('should reject calling getFileAsString()', () => {
-    var io = new IOBase('foo/bar');
+    const io = new IOBase('foo/bar');
 
     return io.getFileAsString()
       .then(unexpectedSuccess)
@@ -38,7 +37,7 @@ describe('io.IOBase()', function() {
   });
 
   it('should reject calling getFileAsStream()', () => {
-    var io = new IOBase('foo/bar');
+    const io = new IOBase('foo/bar');
 
     return io.getFileAsStream()
       .then(unexpectedSuccess)
@@ -49,7 +48,7 @@ describe('io.IOBase()', function() {
   });
 
   it('should should reject calling getChunkAsBuffer()', () => {
-    var io = new IOBase('foo/bar');
+    const io = new IOBase('foo/bar');
 
     return io.getChunkAsBuffer()
       .then(unexpectedSuccess)
@@ -60,21 +59,21 @@ describe('io.IOBase()', function() {
   });
 
   it('should call getFileAsStream method via getFile()', () => {
-    var io = new IOBase('foo/bar');
+    const io = new IOBase('foo/bar');
     io.getFileAsStream = sinon.stub();
     io.getFile('get-a-stream', 'stream');
     expect(io.getFileAsStream.calledWith('get-a-stream')).toBeTruthy();
   });
 
   it('should call getFileAsString method via getFile()', () => {
-    var io = new IOBase('foo/bar');
+    const io = new IOBase('foo/bar');
     io.getFileAsString = sinon.stub();
     io.getFile('get-a-string', 'string');
     expect(io.getFileAsString.calledWith('get-a-string')).toBeTruthy();
   });
 
   it('should call getChunkAsBuffer method via getFile()', () => {
-    var io = new IOBase('foo/bar');
+    const io = new IOBase('foo/bar');
     io.getChunkAsBuffer = sinon.stub();
     io.getFile('get-a-chunk-as-buffer', 'chunk');
     expect(io.getChunkAsBuffer.calledWith('get-a-chunk-as-buffer',

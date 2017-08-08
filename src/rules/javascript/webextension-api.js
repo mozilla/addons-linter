@@ -4,12 +4,12 @@ import { apiToMessage, isBrowserNamespace } from 'utils';
 export default {
   create(context) {
     return {
-      MemberExpression: function(node) {
-        if (node.object.object &&
-            isBrowserNamespace(node.object.object.name)) {
-          let namespace = node.object.property.name;
-          let property = node.property.name;
-          let api = `${namespace}.${property}`;
+      // eslint-disable-next-line consistent-return
+      MemberExpression(node) {
+        if (node.object.object && isBrowserNamespace(node.object.object.name)) {
+          const namespace = node.object.property.name;
+          const property = node.property.name;
+          const api = `${namespace}.${property}`;
 
           if (isDeprecatedApi(namespace, property)) {
             return context.report(node, apiToMessage(api));

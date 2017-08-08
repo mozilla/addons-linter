@@ -1,23 +1,25 @@
 import { lstat, readdir } from 'fs';
 import * as path from 'path';
 
-import log from 'logger';
 import promisify from 'es6-promisify';
 
-export var lstatPromise = promisify(lstat);
-export var readdirPromise = promisify(readdir);
+import log from 'logger';
 
-export function walkPromise(curPath, {shouldIncludePath=() => true} = {}) {
-  var result = {};
+export const lstatPromise = promisify(lstat);
+export const readdirPromise = promisify(readdir);
+
+export function walkPromise(curPath, { shouldIncludePath = () => true } = {}) {
+  const result = {};
   // Set a basePath var with the initial path
   // so all file paths (the result keys) can
   // be relative to the starting point.
-  var basePath = curPath;
+  const basePath = curPath;
 
-  return (function walk(curPath) {
-    return lstatPromise(curPath)
+  return (function walk(_curPath) {
+    return lstatPromise(_curPath)
+      // eslint-disable-next-line consistent-return
       .then((stat) => {
-        const relPath = path.relative(basePath, curPath);
+        const relPath = path.relative(basePath, _curPath);
         if (!shouldIncludePath(relPath, stat.isDirectory())) {
           log.debug(`Skipping file path: ${relPath}`);
           return result;
@@ -25,13 +27,13 @@ export function walkPromise(curPath, {shouldIncludePath=() => true} = {}) {
           const { size } = stat;
           result[relPath] = { size };
         } else if (stat.isDirectory()) {
-          return readdirPromise(curPath)
+          return readdirPromise(_curPath)
             .then((files) => {
               // Map the list of files and make a list of readdir
               // promises to pass to Promise.all so we can recursively
               // get the data on all the files in the directory.
               return Promise.all(files.map((fileName) => {
-                return walk(path.join(curPath, fileName));
+                return walk(path.join(_curPath, fileName));
               }));
             })
             .then(() => {
@@ -39,5 +41,5 @@ export function walkPromise(curPath, {shouldIncludePath=() => true} = {}) {
             });
         }
       });
-  })(curPath);
+  }(curPath));
 }

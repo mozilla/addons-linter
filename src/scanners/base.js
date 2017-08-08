@@ -2,7 +2,6 @@ import { ensureFilenameExists, ignorePrivateFunctions } from 'utils';
 
 
 export default class BaseScanner {
-
   static get fileResultType() {
     /*
     Because each scanner expects a certain kind of data from the
@@ -29,7 +28,7 @@ export default class BaseScanner {
     throw new Error('scannerName is not implemented');
   }
 
-  constructor(contents, filename, options={}) {
+  constructor(contents, filename, options = {}) {
     this.contents = contents;
     this.filename = filename;
     this.options = options;
@@ -42,30 +41,28 @@ export default class BaseScanner {
     ensureFilenameExists(this.filename);
   }
 
-  scan(_rules=this._defaultRules) {
+  scan(_rules = this._defaultRules) {
     return new Promise((resolve, reject) => {
       this.getContents()
         .then((contents) => {
-          var promises = [];
+          const promises = [];
           // Ignore private functions exported in rule files.
           //
           // (These are exported for testing purposes, but we don't want
           // to include them in our linter's rules.)
-          var rules = ignorePrivateFunctions(_rules);
+          const rules = ignorePrivateFunctions(_rules);
 
-          for (let rule in rules) {
+          Object.keys(rules).forEach((rule) => {
             this._rulesProcessed++;
-
-            promises.push(rules[rule](contents, this.filename,
-                                      this.options));
-          }
+            promises.push(rules[rule](contents, this.filename, this.options));
+          });
 
           return Promise.all(promises);
         })
         .then((ruleResults) => {
-          for (let messages of ruleResults) {
+          ruleResults.forEach((messages) => {
             this.linterMessages = this.linterMessages.concat(messages);
-          }
+          });
 
           resolve({
             linterMessages: this.linterMessages,
@@ -82,7 +79,7 @@ export default class BaseScanner {
         return resolve(this._parsedContent);
       }
 
-      this._getContents()
+      return this._getContents()
         .then((contents) => {
           this._parsedContent = contents;
 
@@ -96,5 +93,4 @@ export default class BaseScanner {
     return Promise.reject(
       new Error('_getContents is not implemented'));
   }
-
 }

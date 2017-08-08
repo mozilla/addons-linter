@@ -1,21 +1,21 @@
 import cloneDeep from 'lodash.clonedeep';
 
 import validate from 'schema/validator';
+
 import { validManifest } from './helpers';
 
 
 describe('/icons', () => {
-
   it('should be valid', () => {
-    var manifest = cloneDeep(validManifest);
-    manifest.icons = {48: 'icon.png', 96: 'bigger.png'};
+    const manifest = cloneDeep(validManifest);
+    manifest.icons = { 48: 'icon.png', 96: 'bigger.png' };
     validate(manifest);
     expect(validate.errors).toBeNull();
   });
 
   it('should fail on integer value', () => {
-    var manifest = cloneDeep(validManifest);
-    manifest.icons = {48: 1};
+    const manifest = cloneDeep(validManifest);
+    manifest.icons = { 48: 1 };
     validate(manifest);
     expect(validate.errors.length).toEqual(1);
     expect(validate.errors[0].dataPath).toEqual('/icons/48');
@@ -23,8 +23,8 @@ describe('/icons', () => {
   });
 
   it('should fail on non-number key', () => {
-    var manifest = cloneDeep(validManifest);
-    manifest.icons = {wat: 'foo'};
+    const manifest = cloneDeep(validManifest);
+    manifest.icons = { wat: 'foo' };
     validate(manifest);
     expect(validate.errors.length).toEqual(1);
     expect(validate.errors[0].dataPath).toEqual('/icons/wat');

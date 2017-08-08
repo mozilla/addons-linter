@@ -1,14 +1,14 @@
 import { EventEmitter } from 'events';
 
 import { Directory } from 'io';
+
 import { unexpectedSuccess } from '../helpers';
 
 
-describe('Directory.getFiles()', function() {
-
+describe('Directory.getFiles()', () => {
   it('should return cached data when available', () => {
-    var myDirectory = new Directory('tests/fixtures/io/');
-    var fakeFileMeta= {
+    const myDirectory = new Directory('tests/fixtures/io/');
+    const fakeFileMeta = {
       size: 1,
     };
     myDirectory.files = {
@@ -16,7 +16,7 @@ describe('Directory.getFiles()', function() {
       'chrome.manifest': fakeFileMeta,
     };
 
-    var fakeWalkPromise = sinon.stub();
+    const fakeWalkPromise = sinon.stub();
 
     return myDirectory.getFiles(fakeWalkPromise)
       .then((files) => {
@@ -26,11 +26,11 @@ describe('Directory.getFiles()', function() {
   });
 
   it('should return files from fixtures', () => {
-    var myDirectory = new Directory('tests/fixtures/io/');
+    const myDirectory = new Directory('tests/fixtures/io/');
 
     return myDirectory.getFiles()
       .then((files) => {
-        var fileNames = Object.keys(files);
+        const fileNames = Object.keys(files);
         expect(fileNames).toContain('dir1/file1.txt');
         expect(fileNames).toContain('dir2/file2.txt');
         expect(fileNames).toContain('dir2/dir3/file3.txt');
@@ -45,7 +45,7 @@ describe('Directory.getFiles()', function() {
 
     return myDirectory.getFiles()
       .then((files) => {
-        var fileNames = Object.keys(files);
+        const fileNames = Object.keys(files);
         expect(fileNames).toContain('dir1/file1.txt');
         expect(fileNames).not.toContain('dir2/file2.txt');
         expect(fileNames).not.toContain('dir2/dir3/file3.txt');
@@ -63,19 +63,17 @@ describe('Directory.getFiles()', function() {
 
     return myDirectory.getFiles()
       .then((files) => {
-        var fileNames = Object.keys(files);
+        const fileNames = Object.keys(files);
         expect(fileNames).not.toContain('dir1/file1.txt');
         expect(fileNames).not.toContain('dir2/file2.txt');
         expect(fileNames).toContain('dir2/dir3/file3.txt');
       });
   });
-
 });
 
-describe('Directory._getPath()', function() {
-
+describe('Directory._getPath()', () => {
   it('should reject if not a file that exists', () => {
-    var myDirectory = new Directory('tests/fixtures/io/');
+    const myDirectory = new Directory('tests/fixtures/io/');
     return myDirectory.getFiles()
       .then(() => {
         return myDirectory.getPath('whatever')
@@ -89,7 +87,7 @@ describe('Directory._getPath()', function() {
   });
 
   it('should reject if path does not start with base', () => {
-    var myDirectory = new Directory('tests/fixtures/io/');
+    const myDirectory = new Directory('tests/fixtures/io/');
     myDirectory.files = {
       '../file1.txt': {},
     };
@@ -101,7 +99,7 @@ describe('Directory._getPath()', function() {
   });
 
   it("should reject if path starts with '/'", () => {
-    var myDirectory = new Directory('tests/fixtures/io/');
+    const myDirectory = new Directory('tests/fixtures/io/');
     myDirectory.files = {
       '/file1.txt': {},
     };
@@ -111,24 +109,23 @@ describe('Directory._getPath()', function() {
         expect(err.message).toContain('Path argument must be relative');
       });
   });
-
 });
 
-describe('Directory.getFileAsStream()', function() {
-
+describe('Directory.getFileAsStream()', () => {
   it('should return a stream', () => {
-    var myDirectory = new Directory('tests/fixtures/io/');
+    const myDirectory = new Directory('tests/fixtures/io/');
     return myDirectory.getFiles()
       .then(() => {
         return myDirectory.getFileAsStream('dir2/dir3/file3.txt');
       })
       .then((readStream) => {
         return new Promise((resolve, reject) => {
-          var content = '';
+          let content = '';
           readStream
             .on('readable', () => {
-              var chunk;
-              while (null !== (chunk = readStream.read())) {
+              let chunk;
+              // eslint-disable-next-line no-cond-assign
+              while ((chunk = readStream.read()) !== null) {
                 content += chunk.toString();
               }
             })
@@ -139,16 +136,15 @@ describe('Directory.getFileAsStream()', function() {
               reject(err);
             });
         })
-        .then((content) => {
-          expect(content).toEqual('123\n');
-        });
-
+          .then((content) => {
+            expect(content).toEqual('123\n');
+          });
       });
   });
 
   it('should reject if file is too big', () => {
-    var myDirectory = new Directory('tests/fixtures/io/');
-    var fakeFileMeta= {
+    const myDirectory = new Directory('tests/fixtures/io/');
+    const fakeFileMeta = {
       size: 1024 * 1024 * 102,
     };
     myDirectory.files = {
@@ -162,14 +158,12 @@ describe('Directory.getFileAsStream()', function() {
         expect(err.message).toContain('File "install.rdf" is too large');
       });
   });
-
 });
 
 
-describe('Directory.getFileAsString()', function() {
-
+describe('Directory.getFileAsString()', () => {
   it('should strip a BOM', () => {
-    var myDirectory = new Directory('tests/fixtures/io/');
+    const myDirectory = new Directory('tests/fixtures/io/');
     return myDirectory.getFiles()
       .then(() => {
         return myDirectory.getFileAsString('dir3/foo.txt');
@@ -180,7 +174,7 @@ describe('Directory.getFileAsString()', function() {
   });
 
   it('should return a string', () => {
-    var myDirectory = new Directory('tests/fixtures/io/');
+    const myDirectory = new Directory('tests/fixtures/io/');
     return myDirectory.getFiles()
       .then(() => {
         return myDirectory.getFileAsString('dir2/dir3/file3.txt');
@@ -191,9 +185,9 @@ describe('Directory.getFileAsString()', function() {
   });
 
   it('should reject if stream emits error', () => {
-    var fakeStreamEmitter = new EventEmitter();
+    const fakeStreamEmitter = new EventEmitter();
 
-    var myDirectory = new Directory('tests/fixtures/io/');
+    const myDirectory = new Directory('tests/fixtures/io/');
     myDirectory.files = {
       'install.rdf': {},
       'chrome.manifest': {},
@@ -214,8 +208,8 @@ describe('Directory.getFileAsString()', function() {
   });
 
   it('should reject if file is too big', () => {
-    var myDirectory = new Directory('tests/fixtures/io/');
-    var fakeFileMeta= {
+    const myDirectory = new Directory('tests/fixtures/io/');
+    const fakeFileMeta = {
       size: 1024 * 1024 * 102,
     };
     myDirectory.files = {
@@ -229,7 +223,6 @@ describe('Directory.getFileAsString()', function() {
         expect(err.message).toContain('File "install.rdf" is too large');
       });
   });
-
 });
 
 /*
@@ -239,10 +232,9 @@ describe('Directory.getFileAsString()', function() {
 
   The location is not relevant, the file contents are.
 */
-describe('Directory.getChunkAsBuffer()', function() {
-
+describe('Directory.getChunkAsBuffer()', () => {
   it('should get a buffer', () => {
-    var myDirectory = new Directory('tests/fixtures/io/');
+    const myDirectory = new Directory('tests/fixtures/io/');
     return myDirectory.getFiles()
       .then(() => {
         // Just grab the first two characters.
@@ -254,5 +246,4 @@ describe('Directory.getChunkAsBuffer()', function() {
         expect(buffer.toString()).toEqual('12');
       });
   });
-
 });

@@ -13,10 +13,9 @@ import { ensureFilenameExists, singleLineString } from 'utils';
 
 
 export default class JavaScriptScanner {
-
   _defaultRules = rules;
 
-  constructor(code, filename, options={}) {
+  constructor(code, filename, options = {}) {
     this.code = code;
     this.filename = filename;
     this.options = options;
@@ -35,13 +34,13 @@ export default class JavaScriptScanner {
     return 'javascript';
   }
 
-  scan(_ESLint=ESLint, {
-    _rules=this._defaultRules,
-    _ruleMapping=ESLINT_RULE_MAPPING,
-    _messages=messages,
-  }={}) {
+  scan(_ESLint = ESLint, {
+    _rules = this._defaultRules,
+    _ruleMapping = ESLINT_RULE_MAPPING,
+    _messages = messages,
+  } = {}) {
     return new Promise((resolve) => {
-      var cli = new _ESLint.CLIEngine({
+      const cli = new _ESLint.CLIEngine({
         baseConfig: {
           env: {
             es6: true,
@@ -70,26 +69,27 @@ export default class JavaScriptScanner {
         useEslintrc: false,
       });
 
-      for (const name in _rules) {
+      Object.keys(_rules).forEach((name) => {
         this._rulesProcessed++;
         _ESLint.linter.defineRule(name, _rules[name]);
-      }
+      });
 
       // ESLint is synchronous and doesn't accept streams, so we need to
       // pass it the entire source file as a string.
-      var report = cli.executeOnText(this.code, this.filename, true);
+      const report = cli.executeOnText(this.code, this.filename, true);
 
-      for (const result of report.results) {
+      report.results.forEach((result) => {
         // eslint prepends the filename with the current working directory,
         // strip that out.
-        var relativePath = path.relative(process.cwd(), result.filePath);
+        const relativePath = path.relative(process.cwd(), result.filePath);
 
         this.scannedFiles.push(relativePath);
 
-        for (const message of result.messages) {
+        result.messages.forEach((message) => {
           // Fatal error messages (like SyntaxErrors) are a bit different, we
           // need to handle them specially.
           if (message.fatal === true) {
+            // eslint-disable-next-line no-param-reassign
             message.message = _messages.JS_SYNTAX_ERROR.code;
           }
 
@@ -100,39 +100,42 @@ export default class JavaScriptScanner {
           }
 
           // Fallback to looking up the message object by the message
-          var code = message.message;
+          let code = message.message;
+          let shortDescription;
+          let description;
 
           // Support 3rd party eslint rules that don't have our internal
           // message structure and allow us to optionally overwrite
           // their `message` and `description`.
-          if (_messages.hasOwnProperty(code)) {
-            var shortDescription = _messages[code].message;
-            var description = _messages[code].description;
-          } else if (ESLINT_OVERWRITE_MESSAGE.hasOwnProperty(message.ruleId)) {
-            var overwrites = ESLINT_OVERWRITE_MESSAGE[message.ruleId];
-            var shortDescription = overwrites.message || message.message;
-            var description = overwrites.description || message.description;
+          if (Object.prototype.hasOwnProperty.call(_messages, code)) {
+            shortDescription = _messages[code].message;
+            description = _messages[code].description;
+          } else if (Object.prototype.hasOwnProperty.call(
+            ESLINT_OVERWRITE_MESSAGE, message.ruleId)) {
+            const overwrites = ESLINT_OVERWRITE_MESSAGE[message.ruleId];
+            shortDescription = overwrites.message || message.message;
+            description = overwrites.description || message.description;
 
             if (overwrites.code) {
               code = overwrites.code;
             }
           } else {
-            var shortDescription = code;
-            var description = null;
+            shortDescription = code;
+            description = null;
           }
 
           this.linterMessages.push({
-            code: code,
+            code,
             column: message.column,
-            description: description,
+            description,
             file: this.filename,
             line: message.line,
             message: shortDescription,
             sourceCode: message.source,
             type: ESLINT_TYPES[message.severity],
           });
-        }
-      }
+        });
+      });
       resolve({
         linterMessages: this.linterMessages,
         scannedFiles: this.scannedFiles,

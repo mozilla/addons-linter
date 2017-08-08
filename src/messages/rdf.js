@@ -2,7 +2,7 @@ import { gettext as _, singleLineString } from 'utils';
 import { INSTALL_RDF } from 'const';
 
 
-export var _tagNotAllowed = (tagName) => {
+export const _tagNotAllowed = (tagName) => {
   return {
     code: `TAG_NOT_ALLOWED_${tagName.toUpperCase()}`,
     // Non-unique err_id so setting to null
@@ -14,7 +14,7 @@ export var _tagNotAllowed = (tagName) => {
   };
 };
 
-export var _tagNotAllowedIfTag = (tagName, otherTag) => {
+export const _tagNotAllowedIfTag = (tagName, otherTag) => {
   return {
     code: `TAG_NOT_ALLOWED_${tagName.toUpperCase()}`,
     // Non-unique err_id so setting to null
@@ -26,7 +26,7 @@ export var _tagNotAllowedIfTag = (tagName, otherTag) => {
   };
 };
 
-export var _tagObsolete = (tagName) => {
+export const _tagObsolete = (tagName) => {
   return {
     code: `TAG_OBSOLETE_${tagName.toUpperCase()}`,
     // Non-unique err_id so setting to null
@@ -49,9 +49,9 @@ export const RDF_GUID_TOO_LONG = {
 
 export const TAG_NOT_ALLOWED_HIDDEN = _tagNotAllowed('hidden');
 export const TAG_NOT_ALLOWED_UPDATEKEY = _tagNotAllowedIfTag('updateKey',
-                                                             'listed');
+  'listed');
 export const TAG_NOT_ALLOWED_UPDATEURL = _tagNotAllowedIfTag('updateURL',
-                                                             'listed');
+  'listed');
 export const TAG_OBSOLETE_FILE = _tagObsolete('file');
 export const TAG_OBSOLETE_REQUIRES = _tagObsolete('requires');
 export const TAG_OBSOLETE_SKIN = _tagObsolete('skin');

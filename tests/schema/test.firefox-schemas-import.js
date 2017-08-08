@@ -117,7 +117,7 @@ describe('firefox schema import', () => {
         bar: { allOf: [
           { $ref: '#/types/Whatever' },
           { type: 'string' },
-        ]},
+        ] },
         baz: { type: 'boolean' },
         required: ['bar', 'baz'],
       });
@@ -353,7 +353,7 @@ describe('firefox schema import', () => {
         somethingElse: 'foo',
         definitions: {
           WebExtensionManifest: {
-            choices: [ { type: 'string', enum: ['cookies'] } ],
+            choices: [{ type: 'string', enum: ['cookies'] }],
           },
         },
         refs: {
@@ -407,7 +407,7 @@ describe('firefox schema import', () => {
         refs: {
           'url_overrides#/definitions/WebExtensionManifest': {
             namespace: 'manifest',
-            type:  'WebExtensionManifest',
+            type: 'WebExtensionManifest',
           },
         },
       });
@@ -938,6 +938,7 @@ describe('firefox schema import', () => {
           properties: {
             icons: {
               type: 'object',
+              // eslint-disable-next-line no-useless-escape
               patternProperties: { '\d+': { type: 'string' } },
             },
           },
@@ -966,6 +967,7 @@ describe('firefox schema import', () => {
             icons: {
               type: 'object',
               additionalProperties: false,
+              // eslint-disable-next-line no-useless-escape
               patternProperties: { '\d+': { type: 'string' } },
             },
           },

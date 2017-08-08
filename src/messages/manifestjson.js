@@ -51,7 +51,7 @@ export const MANIFEST_CSP = {
   message: _(singleLineString`
     "content_security_policy" allows remote code execution in manifest.json`),
   description: _('A custom content_security_policy needs additional review.'),
-  file: MANIFEST_CSP,
+  file: MANIFEST_JSON,
 };
 
 export const PROP_NAME_INVALID = {
@@ -116,7 +116,7 @@ export function manifestIconMissing(path) {
       'An icon defined in the manifest could not be found in the package.'),
     description: sprintf(
       _('Icon could not be found at "%(path)s".'),
-      {path}),
+      { path }),
     file: MANIFEST_JSON,
   };
 }

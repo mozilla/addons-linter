@@ -51,16 +51,16 @@ describe('no_implied_eval', () => {
     'setTimeoutFooBar("Foo Bar")',
   ];
 
-  for (const code of validCodes) {
+  validCodes.forEach((code) => {
     it(`should not throw false positives for implied-eval: ${code}`, () => {
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
+        .then(({ linterMessages }) => {
           expect(linterMessages.length).toEqual(0);
         });
     });
-  }
+  });
 
   const invalidCodes = [
     {
@@ -108,6 +108,7 @@ describe('no_implied_eval', () => {
 
     // template literals
     {
+      // eslint-disable-next-line no-template-curly-in-string
       code: 'setTimeout(`foo${bar}`)',
       message: [expectedErrorMessage],
       description: [NO_IMPLIED_EVAL.description],
@@ -136,13 +137,13 @@ describe('no_implied_eval', () => {
     },
   ];
 
-  for (const code of invalidCodes) {
+  invalidCodes.forEach((code) => {
     it(`should not allow the use of eval: ${code.code}`, () => {
       const jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
-          linterMessages = linterMessages.sort();
+        .then(({ linterMessages }) => {
+          linterMessages.sort();
 
           expect(linterMessages.length).toEqual(code.message.length);
 
@@ -159,5 +160,5 @@ describe('no_implied_eval', () => {
           });
         });
     });
-  }
+  });
 });

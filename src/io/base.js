@@ -1,12 +1,13 @@
-import { singleLineString } from '../utils';
 import { FLAGGED_FILE_MAGIC_NUMBERS_LENGTH, MAX_FILE_SIZE_MB } from 'const';
+
+import { singleLineString } from '../utils';
+
 
 /*
  * Base class for io operations for both an Xpi or
  * a directory
  */
 export class IOBase {
-
   constructor(packageOrDirPath) {
     this.path = packageOrDirPath;
     this.files = {};
@@ -25,7 +26,7 @@ export class IOBase {
     }
   }
 
-  getFile(path, fileStreamType='string') {
+  getFile(path, fileStreamType = 'string') {
     switch (fileStreamType) {
       case 'stream':
         return this.getFileAsStream(path);
@@ -45,8 +46,8 @@ export class IOBase {
   }
 
   getFilesByExt(...extensions) {
-
-    for (let ext of extensions) {
+    for (let i = 0; i < extensions.length; i++) {
+      const ext = extensions[i];
       if (ext.indexOf('.') !== 0) {
         // We use Promise.reject as we're not inside a `then()` or a
         // Promise constructor callback.
@@ -57,15 +58,15 @@ export class IOBase {
 
     return this.getFiles()
       .then((filesObject) => {
-        let files = [];
+        const files = [];
 
-        for (let filename in filesObject) {
-          for (let ext of extensions) {
+        Object.keys(filesObject).forEach((filename) => {
+          extensions.forEach((ext) => {
             if (filename.endsWith(ext)) {
               files.push(filename);
             }
-          }
-        }
+          });
+        });
 
         return files;
       });

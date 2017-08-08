@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 import fs from 'fs';
 import path from 'path';
 
@@ -28,8 +30,8 @@ const UNRECOGNIZED_PROPERTY_REFS = [
 ];
 
 const schemaRegexes = [
-  new RegExp('browser/components/extensions/schemas/.*\.json'),
-  new RegExp('toolkit/components/extensions/schemas/.*\.json'),
+  new RegExp('browser/components/extensions/schemas/.*\\.json'),
+  new RegExp('toolkit/components/extensions/schemas/.*\\.json'),
 ];
 
 export const refMap = {
@@ -72,6 +74,7 @@ export function rewriteOptionalToRequired(schema) {
         let someOptional = false;
         // Update the inner schemas to remove the optional property and record
         // if we found any optional schemas. See issue #1245.
+        // eslint-disable-next-line no-shadow
         rest.allOf = rest.allOf.map((inner) => {
           const { optional: innerOptional, ...innerRest } = inner;
           someOptional = someOptional || innerOptional;
@@ -139,12 +142,12 @@ export function rewriteValue(key, value) {
     } else if (value in refMap) {
       return refMap[value];
     }
-    let path = value;
+    let _path = value;
     let schemaId = '';
     if (value.includes('.')) {
-      [schemaId, path] = value.split('.', 2);
+      [schemaId, _path] = value.split('.', 2);
     }
-    return `${schemaId}#/types/${path}`;
+    return `${schemaId}#/types/${_path}`;
   } else if (key === 'type' && value === 'any') {
     return undefined;
   } else if (key === 'id') {
@@ -329,7 +332,7 @@ export function foldSchemas(schemas) {
     if (!(prefix in schemasByPrefix)) {
       schemasByPrefix[prefix] = {};
     }
-    let namespace = property ? property : 'baseNamespace';
+    const namespace = property || 'baseNamespace';
     if (schemasByPrefix[prefix][namespace]) {
       throw new Error('matching namespaces are not allowed');
     } else {
@@ -399,7 +402,7 @@ inner.normalizeSchema = (schemas, file) => {
   }
   const { namespace, types, ...rest } = primarySchema;
   const { types: extendTypes, ...extendRest } = rewriteExtend(
-      extendSchemas, namespace);
+    extendSchemas, namespace);
   const updatedTypes = { ...loadTypes(types), ...extendTypes };
   return {
     ...rest,
@@ -528,18 +531,17 @@ export function downloadUrl(version) {
     return `${base}tip.tar.gz`;
   } else if (parseInt(version, 10) >= 55) {
     return `${base}FIREFOX_BETA_${version}_BASE.tar.gz`;
-  } else {
-    return `${base}FIREFOX_AURORA_${version}_BASE.tar.gz`;
   }
+  return `${base}FIREFOX_AURORA_${version}_BASE.tar.gz`;
 }
 
-inner.isBrowserSchema = (path) => {
-  return schemaRegexes.some((re) => re.test(path));
+inner.isBrowserSchema = (_path) => {
+  return schemaRegexes.some((re) => re.test(_path));
 };
 
 /**
  * Strip a null byte if it's the last character in a string.
- **/
+ * */
 export function stripTrailingNullByte(str) {
   if (str.indexOf('\u0000') === str.length - 1) {
     return str.slice(0, -1);

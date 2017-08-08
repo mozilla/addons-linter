@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import {
@@ -14,7 +15,7 @@ import {
 
 
 describe('no_unsafe_innerhtml', () => {
-  var validCodes = [
+  const validCodes = [
     // innerHTML equals
     'a.innerHTML = \'\';',
     'c.innerHTML = ``;',
@@ -57,19 +58,19 @@ describe('no_unsafe_innerhtml', () => {
   ];
 
 
-  for (const code of validCodes) {
+  validCodes.forEach((code) => {
     it(`should allow the use of innerHTML: ${code}`, () => {
-      var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+      const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
+        .then(({ linterMessages }) => {
           expect(linterMessages.length).toEqual(0);
         });
     });
-  }
+  });
 
 
-  var invalidCodes = [
+  const invalidCodes = [
     // innerHTML examples
     {
       code: 'm.innerHTML = htmlString;',
@@ -211,13 +212,13 @@ describe('no_unsafe_innerhtml', () => {
     },
   ];
 
-  for (const code of invalidCodes) {
+  invalidCodes.forEach((code) => {
     it(`should not allow the use of innerHTML examples ${code.code}`, () => {
-      var jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
+      const jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
-          linterMessages = linterMessages.sort();
+        .then(({ linterMessages }) => {
+          linterMessages.sort();
 
           expect(linterMessages.length).toEqual(code.message.length);
 
@@ -237,5 +238,5 @@ describe('no_unsafe_innerhtml', () => {
           });
         });
     });
-  }
+  });
 });

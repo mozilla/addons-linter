@@ -13,7 +13,7 @@ export const ESLINT_WARNING = 1;
 
 // 3rd party / eslint-internal rules
 export const EXTERNAL_RULE_MAPPING = {
-  'no-eval': [ESLINT_WARNING, {allowIndirect: false}],
+  'no-eval': [ESLINT_WARNING, { allowIndirect: false }],
   'no-implied-eval': ESLINT_WARNING,
   'no-new-func': ESLINT_WARNING,
   'no-unsafe-innerhtml/no-unsafe-innerhtml': ESLINT_WARNING,
@@ -23,7 +23,7 @@ export const ESLINT_RULE_MAPPING = Object.assign({
   'deprecated-entities': ESLINT_WARNING,
   'event-listener-fourth': ESLINT_WARNING,
   'global-require-arg': ESLINT_WARNING,
-  'mozindexeddb': ESLINT_WARNING,
+  mozindexeddb: ESLINT_WARNING,
   'mozindexeddb-property': ESLINT_WARNING,
   'opendialog-nonlit-uri': ESLINT_WARNING,
   'opendialog-remote-uri': ESLINT_WARNING,
@@ -72,14 +72,14 @@ export const PACKAGE_MULTI = 1; // A multi extension is an extension
 export const PACKAGE_SUBPACKAGE = 7;
 
 export const PACKAGE_TYPES = {
-  PACKAGE_ANY: PACKAGE_ANY,
-  PACKAGE_EXTENSION: PACKAGE_EXTENSION,
-  PACKAGE_THEME: PACKAGE_THEME,
-  PACKAGE_DICTIONARY: PACKAGE_DICTIONARY,
-  PACKAGE_LANGPACK: PACKAGE_LANGPACK,
-  PACKAGE_SEARCHPROV: PACKAGE_SEARCHPROV,
-  PACKAGE_MULTI: PACKAGE_MULTI,
-  PACKAGE_SUBPACKAGE: PACKAGE_SUBPACKAGE,
+  PACKAGE_ANY,
+  PACKAGE_EXTENSION,
+  PACKAGE_THEME,
+  PACKAGE_DICTIONARY,
+  PACKAGE_LANGPACK,
+  PACKAGE_SEARCHPROV,
+  PACKAGE_MULTI,
+  PACKAGE_SUBPACKAGE,
 };
 
 // Types from install.rdf don't match the types
@@ -116,8 +116,8 @@ export const MAX_FILE_SIZE_MB = 100;
 export const MAX_FILE_SIZE_TO_PARSE_MB = 4;
 
 export const HIDDEN_FILE_REGEX = /^__MACOSX\//;
-export const FLAGGED_FILE_REGEX = /thumbs\.db$|\.DS_Store$|\.orig$|\.old$|\~$/i;
-export const ALREADY_SIGNED_REGEX = /^META\-INF\/manifest\.mf/;
+export const FLAGGED_FILE_REGEX = /thumbs\.db$|\.DS_Store$|\.orig$|\.old$|~$/i;
+export const ALREADY_SIGNED_REGEX = /^META-INF\/manifest\.mf/;
 
 export const FLAGGED_FILE_EXTENSIONS = [
   '.class',

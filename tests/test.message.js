@@ -1,50 +1,51 @@
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line import/no-named-default
 import { default as Message, props } from 'message';
+
 import { fakeMessageData } from './helpers';
 
-/* eslint no-unused-vars:0*/
 
-describe('Message', function() {
-
+describe('Message', () => {
   it('should throw on missing type', () => {
     expect(() => {
-      var MyMessage = new Message();
+      const MyMessage = new Message();
     }).toThrow(/Message type "undefined" is not/);
   });
 
   it('should throw on invalid type', () => {
     expect(() => {
-      var MyMessage = new Message('awooga');
+      const MyMessage = new Message('awooga');
     }).toThrow(/Message type "awooga" is not/);
   });
 
   it('should define all expected props', () => {
-    var fakeData = {};
-    for (let prop of props) {
+    const fakeData = {};
+    props.forEach((prop) => {
       fakeData[prop] = prop;
-    }
-    var MyMessage = new Message('error', fakeData);
-    for (let prop of props) {
+    });
+    const MyMessage = new Message('error', fakeData);
+    props.forEach((prop) => {
       expect(MyMessage[prop]).toEqual(prop);
-    }
+    });
   });
 
-  it ("shouldn't define random opts", () => {
-    var MyMessage = new Message('error',
-      Object.assign({}, fakeMessageData, {random: 'foo'}));
+  it("shouldn't define random opts", () => {
+    const MyMessage = new Message('error',
+      Object.assign({}, fakeMessageData, { random: 'foo' }));
     expect(MyMessage.random).not.toEqual('foo');
   });
 
   it('should throw on missing required prop', () => {
     expect(() => {
-      var MyMessage = new Message('error',
-        Object.assign({}, {description: 'foo'}));
+      const MyMessage = new Message('error',
+        Object.assign({}, { description: 'foo' }));
     }).toThrow(/Message data object is missing the following props/);
   });
 
   it('should throw on incorrect file prop filename', () => {
     expect(() => {
-      var MyMessage = new Message('error',
-        Object.assign({}, {filename: 'foo'}));
+      const MyMessage = new Message('error',
+        Object.assign({}, { filename: 'foo' }));
     }).toThrow(/The key for the file is "file"/);
   });
 
@@ -59,26 +60,24 @@ describe('Message', function() {
     });
 
     it('is a match if the props are all the same', () => {
-      var message = new Message('error', { ...fakeData });
-      var other = new Message('error', { ...fakeData });
+      const message = new Message('error', { ...fakeData });
+      const other = new Message('error', { ...fakeData });
       expect(message.matches(other)).toBeTruthy();
     });
 
     it('is not a match with props the same except type', () => {
-      var message = new Message('error', { ...fakeData });
-      var other = new Message('warning', { ...fakeData });
+      const message = new Message('error', { ...fakeData });
+      const other = new Message('warning', { ...fakeData });
       expect(message.matches(other)).toBeFalsy();
     });
 
     it('is not a match with different props', () => {
-      var message = new Message('error', { ...fakeData });
-      var other = new Message('error', {
+      const message = new Message('error', { ...fakeData });
+      const other = new Message('error', {
         ...fakeData,
         message: 'different message',
       });
       expect(message.matches(other)).toBeFalsy();
     });
   });
-
 });
-

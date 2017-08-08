@@ -4,18 +4,17 @@ import { DEPRECATED_ENTITIES } from 'rules/javascript/deprecated-entities';
 import JavaScriptScanner from 'scanners/javascript';
 
 describe('deprecated_entities', () => {
-  for (let entity of DEPRECATED_ENTITIES) {
-    let obj = entity.object;
-    let prop = entity.property;
+  DEPRECATED_ENTITIES.forEach((entity) => {
+    const obj = entity.object;
+    const prop = entity.property;
 
     it(`should warn about using ${obj}.${prop}()`, () => {
-      var code = `${obj}.${prop}();`;
-      var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+      const code = `${obj}.${prop}();`;
+      const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
-          linterMessages = linterMessages.sort();
-
+        .then(({ linterMessages }) => {
+          linterMessages.sort();
           expect(linterMessages.length).toEqual(1);
           expect(linterMessages[0].code).toEqual(entity.error.code);
           expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
@@ -23,12 +22,12 @@ describe('deprecated_entities', () => {
     });
 
     it(`should know when a variable references ${obj}`, () => {
-      var code = singleLineString`var foo = ${obj};
+      const code = singleLineString`var foo = ${obj};
         foo.${prop}();`;
-      var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+      const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
+        .then(({ linterMessages }) => {
           expect(linterMessages.length).toEqual(1);
           expect(linterMessages[0].code).toEqual(entity.error.code);
           expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
@@ -36,11 +35,11 @@ describe('deprecated_entities', () => {
     });
 
     it(`should still work with variables aliased to ${obj}.${prop}`, () => {
-      var code = `var foo = ${obj}.${prop}; foo();`;
-      var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+      const code = `var foo = ${obj}.${prop}; foo();`;
+      const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
+        .then(({ linterMessages }) => {
           expect(linterMessages.length).toEqual(1);
           expect(linterMessages[0].code).toEqual(entity.error.code);
           expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
@@ -48,43 +47,43 @@ describe('deprecated_entities', () => {
     });
 
     it('should not warn about using other member functions', () => {
-      var code = `${obj}.doNothing();`;
-      var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+      const code = `${obj}.doNothing();`;
+      const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
+        .then(({ linterMessages }) => {
           expect(linterMessages.length).toEqual(0);
         });
     });
 
     it(`should not warn about calling ${prop} in general`, () => {
-      var code = `foo.${prop}();`;
-      var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+      const code = `foo.${prop}();`;
+      const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
+        .then(({ linterMessages }) => {
           expect(linterMessages.length).toEqual(0);
         });
     });
 
     it(`should not warn about calling ${prop} to a non-global ${obj}`, () => {
-      var code = `foo.${obj}.${prop}();`;
-      var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+      const code = `foo.${obj}.${prop}();`;
+      const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
+        .then(({ linterMessages }) => {
           expect(linterMessages.length).toEqual(0);
         });
     });
 
     it(`should not warn about calling ${prop} to non member of ${obj}`, () => {
-      var code = `${obj}.foo.${prop}();`;
-      var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+      const code = `${obj}.foo.${prop}();`;
+      const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
+        .then(({ linterMessages }) => {
           expect(linterMessages.length).toEqual(0);
         });
     });
-  }
+  });
 });

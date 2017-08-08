@@ -6,23 +6,23 @@ import { DANGEROUS_EVAL } from 'messages';
 // https://github.com/eslint/eslint/blob/master/tests/lib/rules/no-new-func.js
 // Please make sure to keep them up-to-date and report upstream errors.
 describe('no_new_func', () => {
-  var validCodes = [
+  const validCodes = [
     'var a = new _function("b", "c", "return b+c");',
     'var a = _function("b", "c", "return b+c");',
   ];
 
-  for (const code of validCodes) {
+  validCodes.forEach((code) => {
     it(`should allow the use of new func eval: ${code}`, () => {
-      var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+      const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
+        .then(({ linterMessages }) => {
           expect(linterMessages.length).toEqual(0);
         });
     });
-  }
+  });
 
-  var invalidCodes = [
+  const invalidCodes = [
     {
       code: 'var a = new Function("b", "c", "return b+c");',
       message: ['The Function constructor is eval.'],
@@ -35,13 +35,13 @@ describe('no_new_func', () => {
     },
   ];
 
-  for (const code of invalidCodes) {
+  invalidCodes.forEach((code) => {
     it(`should not allow the use new func eval: ${code.code}`, () => {
-      var jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
+      const jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
-          linterMessages = linterMessages.sort();
+        .then(({ linterMessages }) => {
+          linterMessages.sort();
 
           expect(linterMessages.length).toEqual(code.message.length);
 
@@ -58,5 +58,5 @@ describe('no_new_func', () => {
           });
         });
     });
-  }
+  });
 });

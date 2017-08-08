@@ -1,11 +1,11 @@
+/* eslint-disable import/namespace */
 import { readFileSync } from 'fs';
 
 import * as messages from 'messages';
 
 
-describe('Messages', function() {
-
-  for (let message in messages) {
+describe('Messages', () => {
+  Object.keys(messages).forEach((message) => {
     const code = messages[message].code;
     const description = messages[message].description;
     const msg = messages[message].message;
@@ -33,11 +33,11 @@ describe('Messages', function() {
         expect(msg.split('\n').length).toEqual(1);
       });
     }
-  }
+  });
 
   it('should construct a valid message (with uppercase codes)', () => {
-    var vegetarianTag = messages._tagNotAllowed('steak');
-    var teslaTag = messages._tagObsolete('petrol');
+    const vegetarianTag = messages._tagNotAllowed('steak');
+    const teslaTag = messages._tagObsolete('petrol');
 
     expect(vegetarianTag.code).toEqual('TAG_NOT_ALLOWED_STEAK');
     expect(vegetarianTag.message).toContain('steak');
@@ -49,28 +49,27 @@ describe('Messages', function() {
   });
 
   it('should have updated rules.md with new message codes', () => {
-    var markdown = readFileSync('docs/rules.md', 'utf8');
-    for (let message in messages) {
-      var code = messages[message].code;
+    const markdown = readFileSync('docs/rules.md', 'utf8');
+    Object.keys(messages).forEach((message) => {
+      const code = messages[message].code;
       if (code) {
         // Asserting using indexOf rather than assert.include
         // to avoid inclusion of the whole rules.md as part
         // of the error.
         expect(markdown.indexOf(code) > -1).toBeTruthy();
       }
-    }
+    });
   });
 
   it('should have a legacyCode property in every message', () => {
-    for (let message in messages) {
+    Object.keys(messages).forEach((message) => {
       if (typeof messages[message] === 'object' && !message.startsWith('_')) {
-        var legacyCode = messages[message].legacyCode;
+        const legacyCode = messages[message].legacyCode;
         if ((legacyCode instanceof Array && legacyCode.length !== 3) ||
             (!(legacyCode instanceof Array) && legacyCode !== null)) {
           expect(false).toBe(true);
         }
       }
-    }
+    });
   });
-
 });

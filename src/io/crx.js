@@ -4,6 +4,7 @@ import parseCRX from 'crx-parser';
 import yauzl from 'yauzl';
 
 import log from 'logger';
+
 import { Xpi } from './xpi';
 
 
@@ -14,8 +15,7 @@ import { Xpi } from './xpi';
  *
  */
 export class Crx extends Xpi {
-
-  constructor(filePath, zipLib=yauzl, _parseCRX=parseCRX, _fs=fs) {
+  constructor(filePath, zipLib = yauzl, _parseCRX = parseCRX, _fs = fs) {
     super(filePath, zipLib);
     this.fs = _fs;
     this.parseCRX = _parseCRX;
@@ -23,6 +23,7 @@ export class Crx extends Xpi {
 
   open() {
     return new Promise((resolve, reject) => {
+      /* eslint-disable consistent-return, no-shadow */
       // First, read the file manually, as we need to pass the whole thing
       // to crx-parser.
       this.fs.readFile(this.path, (err, buffer) => {
@@ -59,7 +60,6 @@ export class Crx extends Xpi {
 
       return this.open()
         .then((zipfile) => {
-
           zipfile.on('entry', (entry) => {
             this.handleEntry(entry, reject);
           });

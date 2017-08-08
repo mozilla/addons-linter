@@ -1,16 +1,18 @@
-var webpack = require('webpack');
-var path = require('path');
-var fs = require('fs');
+const fs = require('fs');
+const path = require('path');
 
-var nodeModules = {};
+// eslint-disable-next-line import/no-extraneous-dependencies
+const webpack = require('webpack');
+
+const nodeModules = {};
 
 // This is to filter out node_modules as we don't want them
 // to be made part of any bundles.
 fs.readdirSync('node_modules')
-  .filter(function(x) {
+  .filter((x) => {
     return ['.bin'].indexOf(x) === -1;
   })
-  .forEach(function(mod) {
+  .forEach((mod) => {
     nodeModules[mod] = `commonjs ${mod}`;
   });
 

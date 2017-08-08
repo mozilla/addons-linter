@@ -1,5 +1,6 @@
 import BaseScanner from 'scanners/base';
 import { ignorePrivateFunctions } from 'utils';
+
 import { metadataPassCheck, validMetadata } from '../helpers';
 
 
@@ -9,10 +10,10 @@ class BaseScannerWithContents extends BaseScanner {
   }
 }
 
-describe('Base Scanner Class', function() {
-
+describe('Base Scanner Class', () => {
   it('scannerName not defined by default', () => {
     expect(() => {
+      // eslint-disable-next-line no-unused-expressions
       BaseScanner.scannerName;
     }).toThrow('scannerName is not implemented');
   });
@@ -29,19 +30,19 @@ describe('Base Scanner Class', function() {
   });
 
   it('should have an options property', () => {
-    var baseScanner = new BaseScanner('', 'filename.txt');
+    const baseScanner = new BaseScanner('', 'filename.txt');
     expect(typeof baseScanner.options).toEqual('object');
     // This test assures us the options can be accessed like an object.
     expect(typeof baseScanner.options.someUndefinedProp).toEqual('undefined');
 
-    var baseScannerWithOptions = new BaseScanner('', 'filename.txt', {
+    const baseScannerWithOptions = new BaseScanner('', 'filename.txt', {
       foo: 'bar',
     });
     expect(baseScannerWithOptions.options.foo).toEqual('bar');
   });
 
   it('should reject when _getContents is not implemented', () => {
-    var baseScanner = new BaseScanner('', 'index.html');
+    const baseScanner = new BaseScanner('', 'index.html');
 
     return baseScanner.scan()
       .then(() => {
@@ -54,9 +55,9 @@ describe('Base Scanner Class', function() {
   });
 
   it('should run all rules', () => {
-    var baseScanner = new BaseScannerWithContents('', 'index.html');
+    const baseScanner = new BaseScannerWithContents('', 'index.html');
 
-    var fakeRules = {
+    const fakeRules = {
       iAmAFakeRule: sinon.stub(),
       iAmAAnotherFakeRule: sinon.stub(),
     };
@@ -69,25 +70,25 @@ describe('Base Scanner Class', function() {
   });
 
   it('should pass metadata to rules', () => {
-    var fakeRules = { metadataPassedCheck: () => {} };
+    const fakeRules = { metadataPassedCheck: () => {} };
 
     // This rule calls assert.fail() if no metadata is passed to it.
     sinon.stub(fakeRules, 'metadataPassedCheck').callsFake(metadataPassCheck);
 
-    var scanner = new BaseScannerWithContents('', 'fake.zip', {
-      addonMetadata: validMetadata({guid: 'snowflake'}),
+    const scanner = new BaseScannerWithContents('', 'fake.zip', {
+      addonMetadata: validMetadata({ guid: 'snowflake' }),
     });
 
     return scanner.scan(fakeRules)
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(fakeRules.metadataPassedCheck.called).toBeTruthy();
         expect(linterMessages.length).toEqual(0);
       });
   });
 
   it('should not run private function inside rules', () => {
-    var baseScanner = new BaseScannerWithContents('', 'install.rdf');
-    var fakeRules = {
+    const baseScanner = new BaseScannerWithContents('', 'install.rdf');
+    const fakeRules = {
       iAmAFakeRule: sinon.stub(),
       _iAmAPrivateFunction: sinon.stub(),
     };
@@ -100,8 +101,8 @@ describe('Base Scanner Class', function() {
   });
 
   it('should increment the number of rules run', () => {
-    var baseScanner = new BaseScannerWithContents('', 'install.rdf');
-    var fakeRules = {
+    const baseScanner = new BaseScannerWithContents('', 'install.rdf');
+    const fakeRules = {
       iAmAFakeRule: sinon.stub(),
       _iAmAPrivateFunction: sinon.stub(),
       iAmTheOtherFakeRule: sinon.stub(),

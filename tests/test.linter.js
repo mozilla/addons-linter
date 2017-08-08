@@ -1,23 +1,23 @@
 import fs from 'fs';
 
 import Linter from 'linter';
-
 import * as constants from 'const';
 import * as messages from 'messages';
-
 import ManifestJSONParser from 'parsers/manifestjson';
 import BinaryScanner from 'scanners/binary';
 import CSSScanner from 'scanners/css';
 import FilenameScanner from 'scanners/filename';
 import JSONScanner from 'scanners/json';
-import { fakeMessageData,
-         unexpectedSuccess,
-         validManifestJSON } from './helpers';
-import { Xpi } from 'io';
 import { singleLineString } from 'utils';
+import { Xpi } from 'io';
+
+import {
+  fakeMessageData,
+  unexpectedSuccess,
+  validManifestJSON } from './helpers';
 
 
-var fakeCheckFileExists = () => {
+const fakeCheckFileExists = () => {
   return Promise.resolve({
     isDirectory: () => {
       return true;
@@ -43,14 +43,13 @@ class FakeIOBase {
 }
 
 
-describe('Linter', function() {
-
+describe('Linter', () => {
   it('should detect an invalid file with ENOENT', () => {
-    var addonLinter = new Linter({_: ['foo']});
+    const addonLinter = new Linter({ _: ['foo'] });
     addonLinter.handleError = sinon.stub();
-    var fakeError = new Error('soz');
+    const fakeError = new Error('soz');
     fakeError.code = 'ENOENT';
-    var fakeLstat = () => {
+    const fakeLstat = () => {
       return Promise.reject(fakeError);
     };
     return addonLinter.checkFileExists(addonLinter.packagePath, fakeLstat)
@@ -62,10 +61,10 @@ describe('Linter', function() {
   });
 
   it('should detect other errors during lstat', () => {
-    var addonLinter = new Linter({_: ['foo']});
+    const addonLinter = new Linter({ _: ['foo'] });
     addonLinter.handleError = sinon.stub();
-    var fakeError = new TypeError('soz');
-    var fakeLstat = () => {
+    const fakeError = new TypeError('soz');
+    const fakeLstat = () => {
       return Promise.reject(fakeError);
     };
     return addonLinter.checkFileExists(addonLinter.packagePath, fakeLstat)
@@ -77,16 +76,16 @@ describe('Linter', function() {
   });
 
   it('should reject if not a file', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.handleError = sinon.stub();
-    var isFileSpy = sinon.spy(() => {
+    const isFileSpy = sinon.spy(() => {
       return false;
     });
-    var isDirSpy = sinon.spy(() => {
+    const isDirSpy = sinon.spy(() => {
       return false;
     });
 
-    var fakeLstat = () => {
+    const fakeLstat = () => {
       return Promise.resolve({
         isFile: isFileSpy,
         isDirectory: isDirSpy,
@@ -102,9 +101,9 @@ describe('Linter', function() {
   });
 
   it('should provide output via output prop', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.collector.addError(fakeMessageData);
-    var output = addonLinter.output;
+    const output = addonLinter.output;
     expect(output.count).toEqual(1);
     expect(output.summary.errors).toEqual(1);
     expect(output.summary.notices).toEqual(0);
@@ -112,7 +111,7 @@ describe('Linter', function() {
   });
 
   it('should collect an error when not an xpi/zip', () => {
-    var addonLinter = new Linter({_: ['tests/fixtures/not-a-zip.zip']});
+    const addonLinter = new Linter({ _: ['tests/fixtures/not-a-zip.zip'] });
     // Stub print to prevent output.
     addonLinter.print = sinon.stub();
     expect(addonLinter.collector.errors.length).toEqual(0);
@@ -126,7 +125,7 @@ describe('Linter', function() {
 
   // Uses an extension with a mozIndexedDB warning in it.
   it('should send JSScanner messages to the collector', () => {
-    var addonLinter = new Linter({_: ['tests/fixtures/webext_mozdb.zip']});
+    const addonLinter = new Linter({ _: ['tests/fixtures/webext_mozdb.zip'] });
     // Stub print to prevent output.
     addonLinter.print = sinon.stub();
 
@@ -150,11 +149,11 @@ describe('Linter', function() {
   // - install.rdf
   // - prefs.html
   it('should scan all files', () => {
-    var addonLinter = new Linter({_: ['tests/fixtures/old.xpi']});
+    const addonLinter = new Linter({ _: ['tests/fixtures/old.xpi'] });
     // Stub print to prevent output.
     addonLinter.print = sinon.stub();
 
-    var getFileSpy = sinon.spy(addonLinter, 'scanFile');
+    const getFileSpy = sinon.spy(addonLinter, 'scanFile');
 
     return addonLinter.scan()
       .then(() => {
@@ -167,14 +166,14 @@ describe('Linter', function() {
   });
 
   it('should optionally scan a single file', () => {
-    var addonLinter = new Linter({
+    const addonLinter = new Linter({
       _: ['tests/fixtures/webextension_scan_file'],
       scanFile: ['subdir/test.js'],
     });
     // Stub print to prevent output.
     addonLinter.print = sinon.stub();
 
-    var getFileSpy = sinon.spy(addonLinter, 'scanFile');
+    const getFileSpy = sinon.spy(addonLinter, 'scanFile');
 
     return addonLinter.scan()
       .then(() => {
@@ -186,8 +185,8 @@ describe('Linter', function() {
 
   it('Eslint ignore patterns and .eslintignorerc should be ignored', () => {
     // Verify https://github.com/mozilla/addons-linter/issues/1288 is fixed
-    var addonLinter = new Linter({_: [
-      'tests/fixtures/webextension_node_modules_bower']});
+    const addonLinter = new Linter({ _: [
+      'tests/fixtures/webextension_node_modules_bower'] });
 
     // Stub print to prevent output.
     addonLinter.print = sinon.stub();
@@ -204,14 +203,14 @@ describe('Linter', function() {
   });
 
   it('should optionally scan selected files', () => {
-    var addonLinter = new Linter({
+    const addonLinter = new Linter({
       _: ['tests/fixtures/webextension_scan_file'],
       scanFile: ['subdir/test.js', 'subdir/test2.js'],
     });
     // Stub print to prevent output.
     addonLinter.print = sinon.stub();
 
-    var getFileSpy = sinon.spy(addonLinter, 'scanFile');
+    const getFileSpy = sinon.spy(addonLinter, 'scanFile');
 
     return addonLinter.scan()
       .then(() => {
@@ -223,8 +222,8 @@ describe('Linter', function() {
   });
 
   it('should raise an error if selected file are not found', () => {
-    var files = ['subdir/test3.js', 'subdir/test4.js'];
-    var addonLinter = new Linter({
+    const files = ['subdir/test3.js', 'subdir/test4.js'];
+    const addonLinter = new Linter({
       _: ['tests/fixtures/webextension_scan_file'],
       scanFile: files,
     });
@@ -241,14 +240,14 @@ describe('Linter', function() {
   });
 
   it('should throw when message.type is undefined', () => {
-    var addonLinter = new Linter({_: ['tests/fixtures/webextension.zip']});
-    addonLinter.io = { files: {whatever: {}} };
+    const addonLinter = new Linter({ _: ['tests/fixtures/webextension.zip'] });
+    addonLinter.io = { files: { whatever: {} } };
     addonLinter.io.getFile = () => Promise.resolve();
     addonLinter.getScanner = sinon.stub();
     class fakeScanner {
       scan() {
         return Promise.resolve({
-          linterMessages: [{message: 'whatever'}],
+          linterMessages: [{ message: 'whatever' }],
           scannedFiles: [],
         });
       }
@@ -263,7 +262,7 @@ describe('Linter', function() {
 
 
   it('should see an error if scanFiles() blows up', () => {
-    var addonLinter = new Linter({_: ['foo']});
+    const addonLinter = new Linter({ _: ['foo'] });
     addonLinter.checkFileExists = fakeCheckFileExists;
     // Stub handleError to prevent output.
     addonLinter.handleError = sinon.stub();
@@ -277,7 +276,7 @@ describe('Linter', function() {
       }
     }
 
-    return addonLinter.scan({_Xpi: FakeXpi})
+    return addonLinter.scan({ _Xpi: FakeXpi })
       .then(unexpectedSuccess)
       .catch((err) => {
         expect(err).toBeInstanceOf(Error);
@@ -286,7 +285,7 @@ describe('Linter', function() {
   });
 
   it('should call addError when Xpi rejects with dupe entry', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.checkFileExists = fakeCheckFileExists;
     addonLinter.collector.addError = sinon.stub();
     addonLinter.print = sinon.stub();
@@ -299,7 +298,7 @@ describe('Linter', function() {
         return this.getMetadata();
       }
     }
-    return addonLinter.scan({_Xpi: FakeXpi})
+    return addonLinter.scan({ _Xpi: FakeXpi })
       .then(unexpectedSuccess)
       .catch(() => {
         sinon.assert.calledWith(
@@ -310,7 +309,7 @@ describe('Linter', function() {
   });
 
   it('should throw if invalid type is passed to colorize', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     expect(() => {
       addonLinter.colorize('whatever');
     }).toThrow(/colorize passed invalid type/);
@@ -318,51 +317,48 @@ describe('Linter', function() {
 });
 
 
-describe('Linter.getScanner()', function() {
-
+describe('Linter.getScanner()', () => {
   it('should return BinaryScanner', () => {
-    var addonLinter = new Linter({_: ['foo']});
-    var Scanner = addonLinter.getScanner('foo.whatever');
+    const addonLinter = new Linter({ _: ['foo'] });
+    const Scanner = addonLinter.getScanner('foo.whatever');
     expect(Scanner).toEqual(BinaryScanner);
   });
 
-  it('should return CSSScanner', function() {
-    var addonLinter = new Linter({_: ['foo']});
-    var Scanner = addonLinter.getScanner('foo.css');
+  it('should return CSSScanner', () => {
+    const addonLinter = new Linter({ _: ['foo'] });
+    const Scanner = addonLinter.getScanner('foo.css');
     expect(Scanner).toEqual(CSSScanner);
   });
 
-  it('should return JSONScanner', function() {
-    var addonLinter = new Linter({_: ['foo']});
-    var Scanner = addonLinter.getScanner('locales/en.json');
+  it('should return JSONScanner', () => {
+    const addonLinter = new Linter({ _: ['foo'] });
+    const Scanner = addonLinter.getScanner('locales/en.json');
     expect(Scanner).toEqual(JSONScanner);
   });
 
-  var shouldBeFilenameScanned = [
+  const shouldBeFilenameScanned = [
     '__MACOSX/foo.txt',
     'wat.dll',
     'META-INF/manifest.mf',
   ];
 
-  for (let filename of shouldBeFilenameScanned) {
+  shouldBeFilenameScanned.forEach((filename) => {
     it(`should return FilenameScanner for ${filename}`, () => {
-      var addonLinter = new Linter({_: ['foo']});
-      var Scanner = addonLinter.getScanner(filename);
+      const addonLinter = new Linter({ _: ['foo'] });
+      const Scanner = addonLinter.getScanner(filename);
       expect(Scanner).toEqual(FilenameScanner);
     });
-  }
-
+  });
 });
 
 
-describe('Linter.handleError()', function() {
-
+describe('Linter.handleError()', () => {
   it('should show stack if config.stack is true', () => {
-    var addonLinter = new Linter({_: ['foo']});
+    const addonLinter = new Linter({ _: ['foo'] });
     addonLinter.config.stack = true;
-    var fakeError = new Error('Errol the error');
+    const fakeError = new Error('Errol the error');
     fakeError.stack = 'fake stack city limits';
-    var fakeConsole = {
+    const fakeConsole = {
       error: sinon.stub(),
     };
     addonLinter.handleError(fakeError, fakeConsole);
@@ -370,12 +366,12 @@ describe('Linter.handleError()', function() {
   });
 
   it('should show colorized error ', () => {
-    var addonLinter = new Linter({_: ['foo']});
+    const addonLinter = new Linter({ _: ['foo'] });
     addonLinter.chalk = {};
     addonLinter.chalk.red = sinon.stub();
-    var fakeError = new Error('Errol the error');
+    const fakeError = new Error('Errol the error');
     fakeError.stack = 'fake stack city limits';
-    var fakeConsole = {
+    const fakeConsole = {
       error: sinon.stub(),
     };
     addonLinter.handleError(fakeError, fakeConsole);
@@ -385,13 +381,12 @@ describe('Linter.handleError()', function() {
 });
 
 
-describe('Linter.print()', function() {
-
+describe('Linter.print()', () => {
   it('should print as json when config.output is json', () => {
-    var addonLinter = new Linter({_: ['foo']});
+    const addonLinter = new Linter({ _: ['foo'] });
     addonLinter.config.output = 'json';
     addonLinter.toJSON = sinon.stub();
-    var fakeConsole = {
+    const fakeConsole = {
       log: sinon.stub(),
     };
     addonLinter.print(fakeConsole);
@@ -400,10 +395,10 @@ describe('Linter.print()', function() {
   });
 
   it('should print as json when config.output is text', () => {
-    var addonLinter = new Linter({_: ['foo']});
+    const addonLinter = new Linter({ _: ['foo'] });
     addonLinter.textOutput = sinon.stub();
     addonLinter.config.output = 'text';
-    var fakeConsole = {
+    const fakeConsole = {
       log: sinon.stub(),
     };
     addonLinter.print(fakeConsole);
@@ -412,11 +407,11 @@ describe('Linter.print()', function() {
   });
 
   it('should not print anything if config.output is none', () => {
-    var addonLinter = new Linter({_: ['foo']});
+    const addonLinter = new Linter({ _: ['foo'] });
     addonLinter.textOutput = sinon.stub();
     addonLinter.toJSON = sinon.stub();
     addonLinter.config.output = 'none';
-    var fakeConsole = {
+    const fakeConsole = {
       log: sinon.stub(),
     };
     addonLinter.print(fakeConsole);
@@ -426,16 +421,17 @@ describe('Linter.print()', function() {
   });
 
   it('should print scanFile if any', () => {
-    var addonLinter = new Linter({
+    const addonLinter = new Linter({
       _: ['foo'],
       scanFile: ['testfile.js'],
     });
-    var textOutputSpy = sinon.spy(addonLinter, 'textOutput');
+    const textOutputSpy = sinon.spy(addonLinter, 'textOutput');
 
     addonLinter.config.output = 'text';
 
-    var logData = '';
-    var fakeConsole = {
+    let logData = '';
+    const fakeConsole = {
+      // eslint-disable-next-line no-return-assign
       log: sinon.spy((...args) => logData += `${args.join(' ')}\n`),
     };
     addonLinter.print(fakeConsole);
@@ -443,49 +439,47 @@ describe('Linter.print()', function() {
     sinon.assert.calledOnce(fakeConsole.log);
     expect(logData).toContain('Selected files: testfile.js');
   });
-
 });
 
 
-describe('Linter.toJSON()', function() {
-
+describe('Linter.toJSON()', () => {
   it('should pass correct args to JSON.stringify for pretty printing', () => {
-    var addonLinter = new Linter({_: ['foo']});
-    var fakeJSON = {
+    const addonLinter = new Linter({ _: ['foo'] });
+    const fakeJSON = {
       stringify: sinon.stub(),
     };
-    addonLinter.toJSON({pretty: true, _JSON: fakeJSON});
+    addonLinter.toJSON({ pretty: true, _JSON: fakeJSON });
     sinon.assert.calledWith(fakeJSON.stringify, sinon.match.any, null, 4);
   });
 
   it('should output metadata when config.output is json', () => {
-    var addonLinter = new Linter({_: ['foo']});
+    const addonLinter = new Linter({ _: ['foo'] });
     addonLinter.config.output = 'json';
     addonLinter.addonMetadata = {
       meta: 'data',
     };
-    var fakeJSON = {
+    const fakeJSON = {
       stringify: sinon.stub(),
     };
-    addonLinter.toJSON({pretty: true, _JSON: fakeJSON});
+    addonLinter.toJSON({ pretty: true, _JSON: fakeJSON });
     expect(fakeJSON.stringify.firstCall.args[0].metadata.meta).toEqual('data');
   });
 
   it('should pass correct args to JSON.stringify for normal printing', () => {
-    var addonLinter = new Linter({_: ['foo']});
-    var fakeJSON = {
+    const addonLinter = new Linter({ _: ['foo'] });
+    const fakeJSON = {
       stringify: sinon.stub(),
     };
-    addonLinter.toJSON({pretty: false, _JSON: fakeJSON});
+    addonLinter.toJSON({ pretty: false, _JSON: fakeJSON });
     sinon.assert.calledWith(
       fakeJSON.stringify, sinon.match.any);
   });
 
   it('should provide JSON via toJSON()', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.collector.addError(fakeMessageData);
-    var json = addonLinter.toJSON();
-    var parsedJSON = JSON.parse(json);
+    const json = addonLinter.toJSON();
+    const parsedJSON = JSON.parse(json);
     expect(parsedJSON.count).toEqual(1);
     expect(parsedJSON.summary.errors).toEqual(1);
     expect(parsedJSON.summary.notices).toEqual(0);
@@ -494,8 +488,7 @@ describe('Linter.toJSON()', function() {
 });
 
 
-describe('Linter.textOutput()', function() {
-
+describe('Linter.textOutput()', () => {
   // Return a large number from terminalWidth() so text doesn't wrap,
   // forcing the strings we check for to be far apart.
   function terminalWidth() {
@@ -515,13 +508,13 @@ describe('Linter.textOutput()', function() {
   }
 
   it('should have error in textOutput()', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.collector.addError({
       code: 'WHATEVER_ERROR',
       message: 'whatever error message',
       description: 'whatever error description',
     });
-    var text = addonLinter.textOutput(terminalWidth);
+    const text = addonLinter.textOutput(terminalWidth);
     expect(addonLinter.output.summary.errors).toEqual(1);
     expect(text).toContain('Validation Summary:');
     expect(text).toContain('WHATEVER_ERROR');
@@ -530,13 +523,13 @@ describe('Linter.textOutput()', function() {
   });
 
   it('should have notice message in textOutput()', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.collector.addNotice({
       code: 'WHATEVER_NOTICE',
       message: 'whatever notice message',
       description: 'whatever notice description',
     });
-    var text = addonLinter.textOutput(terminalWidth);
+    const text = addonLinter.textOutput(terminalWidth);
     expect(addonLinter.output.summary.notices).toEqual(1);
     expect(text).toContain('Validation Summary:');
     expect(text).toContain('WHATEVER_NOTICE');
@@ -545,13 +538,13 @@ describe('Linter.textOutput()', function() {
   });
 
   it('should have warning in textOutput()', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.collector.addWarning({
       code: 'WHATEVER_WARNING',
       message: 'whatever warning message',
       description: 'whatever warning description',
     });
-    var text = addonLinter.textOutput(terminalWidth);
+    const text = addonLinter.textOutput(terminalWidth);
     expect(addonLinter.output.summary.warnings).toEqual(1);
     expect(text).toContain('Validation Summary:');
     expect(text).toContain('WHATEVER_WARNING');
@@ -560,21 +553,20 @@ describe('Linter.textOutput()', function() {
   });
 
   it('should remove description when terminal is <78 columns wide', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.collector.addError({
       code: 'WHATEVER_ERROR',
       message: 'whatever error message',
       description: 'whatever error description',
     });
-    var text = addonLinter.textOutput(mediumTerminalWidth);
+    const text = addonLinter.textOutput(mediumTerminalWidth);
     expect(addonLinter.output.summary.errors).toEqual(1);
     expect(text).not.toContain('Description');
     expect(text).not.toContain('whatever error description');
   });
 
-  it(singleLineString`should remove columns, description, and lines when
-  terminal is < 60 columns wide`, () => {
-    var addonLinter = new Linter({_: ['bar']});
+  it(singleLineString`should remove columns, description, and lines when terminal is < 60 columns wide`, () => {
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.collector.addError({
       code: 'WHATEVER_ERROR',
       message: 'whatever error message',
@@ -582,7 +574,7 @@ describe('Linter.textOutput()', function() {
       column: 5,
       line: 20,
     });
-    var text = addonLinter.textOutput(smallTerminalWidth);
+    const text = addonLinter.textOutput(smallTerminalWidth);
     expect(addonLinter.output.summary.errors).toEqual(1);
     expect(text).not.toContain('Description');
     expect(text).not.toContain('whatever error description');
@@ -593,7 +585,7 @@ describe('Linter.textOutput()', function() {
   });
 
   it('should survive even a 1 column terminal', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.collector.addError({
       code: 'WHATEVER_ERROR',
       message: 'whatever error message',
@@ -611,10 +603,9 @@ describe('Linter.textOutput()', function() {
 });
 
 
-describe('Linter.getAddonMetadata()', function() {
-
+describe('Linter.getAddonMetadata()', () => {
   it('should init with null metadata', () => {
-    var addonLinter = new Linter({
+    const addonLinter = new Linter({
       _: ['tests/fixtures/webextension.zip'],
     });
 
@@ -632,7 +623,7 @@ describe('Linter.getAddonMetadata()', function() {
   });
 
   it('should cache and return cached addonMetadata', () => {
-    var addonLinter = new Linter({
+    const addonLinter = new Linter({
       _: ['tests/fixtures/webextension.zip'],
     });
 
@@ -640,7 +631,7 @@ describe('Linter.getAddonMetadata()', function() {
     addonLinter.print = sinon.stub();
 
     // This should only be called when the addonMetadata _is_ populated.
-    var fakeLog = {
+    const fakeLog = {
       debug: sinon.stub(),
       info: sinon.stub(),
       error: sinon.stub(),
@@ -648,7 +639,7 @@ describe('Linter.getAddonMetadata()', function() {
     };
 
     function getMetadata() {
-      return addonLinter.getAddonMetadata({_log: fakeLog});
+      return addonLinter.getAddonMetadata({ _log: fakeLog });
     }
 
     return getMetadata()
@@ -666,7 +657,7 @@ describe('Linter.getAddonMetadata()', function() {
   });
 
   it('should look at JSON when parsing manifest.json', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.io = {
       getFiles: () => {
         return Promise.resolve({
@@ -684,7 +675,7 @@ describe('Linter.getAddonMetadata()', function() {
   });
 
   it('should pass selfHosted flag to ManifestJSONParser', () => {
-    const addonLinter = new Linter({_: ['bar'], selfHosted: true});
+    const addonLinter = new Linter({ _: ['bar'], selfHosted: true });
     addonLinter.io = {
       getFiles: () => {
         return Promise.resolve({
@@ -707,7 +698,7 @@ describe('Linter.getAddonMetadata()', function() {
   });
 
   it('should collect an error if manifest.json and install.rdf found', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.io = {
       getFiles: () => {
         return Promise.resolve({
@@ -718,7 +709,7 @@ describe('Linter.getAddonMetadata()', function() {
     };
     return addonLinter.getAddonMetadata()
       .then(() => {
-        var errors = addonLinter.collector.errors;
+        const errors = addonLinter.collector.errors;
         expect(errors.length).toEqual(2);
         expect(errors[0].code).toEqual(messages.MULTIPLE_MANIFESTS.code);
         expect(errors[1].code).toEqual(messages.TYPE_NOT_DETERMINED.code);
@@ -726,7 +717,7 @@ describe('Linter.getAddonMetadata()', function() {
   });
 
   it('should collect notices if no manifest', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.io = {
       getFiles: () => {
         return Promise.resolve({});
@@ -734,26 +725,24 @@ describe('Linter.getAddonMetadata()', function() {
     };
     return addonLinter.getAddonMetadata()
       .then(() => {
-        var notices = addonLinter.collector.notices;
+        const notices = addonLinter.collector.notices;
         expect(notices.length).toEqual(2);
         expect(notices[0].code).toEqual(messages.TYPE_NO_MANIFEST_JSON.code);
         expect(notices[1].code).toEqual(messages.TYPE_NO_INSTALL_RDF.code);
       });
   });
-
 });
 
 
-describe('Linter.extractMetadata()', function() {
-
-  var fakeConsole = {
+describe('Linter.extractMetadata()', () => {
+  const fakeConsole = {
     error: sinon.stub(),
     log: sinon.stub(),
   };
 
   it('should use Directory class if isDirectory() is true', () => {
-    var addonLinter = new Linter({_: ['foo']});
-    var fakeMetadata = {type: 1, somethingelse: 'whatever'};
+    const addonLinter = new Linter({ _: ['foo'] });
+    const fakeMetadata = { type: 1, somethingelse: 'whatever' };
     addonLinter.toJSON = sinon.stub();
 
     addonLinter.getAddonMetadata = () => {
@@ -788,8 +777,8 @@ describe('Linter.extractMetadata()', function() {
   });
 
   it('should use Crx class if filename ends in .crx', () => {
-    var addonLinter = new Linter({_: ['foo.crx']});
-    var fakeMetadata = {type: 1, somethingelse: 'whatever'};
+    const addonLinter = new Linter({ _: ['foo.crx'] });
+    const fakeMetadata = { type: 1, somethingelse: 'whatever' };
     addonLinter.toJSON = sinon.stub();
 
     addonLinter.getAddonMetadata = () => {
@@ -808,7 +797,7 @@ describe('Linter.extractMetadata()', function() {
       }
     }
 
-    return addonLinter.extractMetadata({_Crx: FakeCrx, _console: fakeConsole})
+    return addonLinter.extractMetadata({ _Crx: FakeCrx, _console: fakeConsole })
       .then((metadata) => {
         expect(metadata).toEqual(fakeMetadata);
         expect(addonLinter.io).toBeInstanceOf(FakeCrx);
@@ -823,7 +812,7 @@ describe('Linter.extractMetadata()', function() {
       shouldScanFile,
     });
 
-    const fakeMetadata = {type: 1, somethingelse: 'whatever'};
+    const fakeMetadata = { type: 1, somethingelse: 'whatever' };
     addonLinter.toJSON = sinon.stub();
 
     addonLinter.getAddonMetadata = () => {
@@ -853,7 +842,7 @@ describe('Linter.extractMetadata()', function() {
       }
     }
 
-    return addonLinter.extractMetadata({_Directory: FakeDirectory})
+    return addonLinter.extractMetadata({ _Directory: FakeDirectory })
       .then(() => {
         expect(addonLinter.io).toBeInstanceOf(FakeDirectory);
         sinon.assert.calledOnce(setScanFileCallback);
@@ -867,8 +856,8 @@ describe('Linter.extractMetadata()', function() {
   });
 
   it('should return metadata', () => {
-    var addonLinter = new Linter({_: ['foo']});
-    var fakeMetadata = {type: 1, somethingelse: 'whatever'};
+    const addonLinter = new Linter({ _: ['foo'] });
+    const fakeMetadata = { type: 1, somethingelse: 'whatever' };
     addonLinter.toJSON = sinon.stub();
 
     addonLinter.getAddonMetadata = () => {
@@ -896,7 +885,7 @@ describe('Linter.extractMetadata()', function() {
   });
 
   it('should return errors as part of metadata JSON.', () => {
-    var addonLinter = new Linter({_: ['foo'], metadata: true});
+    const addonLinter = new Linter({ _: ['foo'], metadata: true });
 
     // Invoke an error so we can make sure we see it in the
     // output.
@@ -905,7 +894,7 @@ describe('Linter.extractMetadata()', function() {
       message: 'Fake metadata error',
       description: 'Fake metadata error description',
     });
-    var fakeMetadata = {type: 1};
+    const fakeMetadata = { type: 1 };
     addonLinter.toJSON = sinon.stub();
 
     addonLinter.getAddonMetadata = () => {
@@ -929,7 +918,7 @@ describe('Linter.extractMetadata()', function() {
       _console: fakeConsole,
     }).then(() => {
       sinon.assert.calledOnce(addonLinter.toJSON);
-      var inputObject = addonLinter.toJSON.firstCall.args[0].input;
+      const inputObject = addonLinter.toJSON.firstCall.args[0].input;
       expect(inputObject.hasErrors).toEqual(true);
       expect(inputObject.metadata).toEqual(fakeMetadata);
       expect(inputObject.errors.length).toEqual(1);
@@ -949,12 +938,12 @@ describe('Linter.extractMetadata()', function() {
   // - package.json
   // - README.md
   it('should flag empty files in a ZIP.', () => {
-    var addonLinter = new Linter({
+    const addonLinter = new Linter({
       _: ['tests/fixtures/empty-with-library.zip'],
     });
-    var markEmptyFilesSpy = sinon.spy(addonLinter, '_markEmptyFiles');
+    const markEmptyFilesSpy = sinon.spy(addonLinter, '_markEmptyFiles');
 
-    return addonLinter.extractMetadata({_console: fakeConsole})
+    return addonLinter.extractMetadata({ _console: fakeConsole })
       .then((metadata) => {
         sinon.assert.calledOnce(markEmptyFilesSpy);
         expect(metadata.emptyFiles).toEqual(['data/empty.js']);
@@ -973,12 +962,12 @@ describe('Linter.extractMetadata()', function() {
   // - package.json
   // - README.md
   it('should flag known JS libraries in a ZIP.', () => {
-    var addonLinter = new Linter({
+    const addonLinter = new Linter({
       _: ['tests/fixtures/empty-with-library.zip'],
     });
-    var markJSFilesSpy = sinon.spy(addonLinter, '_markJSLibs');
+    const markJSFilesSpy = sinon.spy(addonLinter, '_markJSLibs');
 
-    return addonLinter.extractMetadata({_console: fakeConsole})
+    return addonLinter.extractMetadata({ _console: fakeConsole })
       .then((metadata) => {
         sinon.assert.calledOnce(markJSFilesSpy);
         expect(Object.keys(metadata.jsLibs).length).toEqual(1);
@@ -988,15 +977,15 @@ describe('Linter.extractMetadata()', function() {
       });
   });
 
-  it('should flag known JS libraries', function() {
-    var addonLinter = new Linter({ _: ['foo'] });
-    var markJSFilesSpy = sinon.spy(addonLinter, '_markJSLibs');
+  it('should flag known JS libraries', () => {
+    const addonLinter = new Linter({ _: ['foo'] });
+    const markJSFilesSpy = sinon.spy(addonLinter, '_markJSLibs');
     addonLinter.checkFileExists = fakeCheckFileExists;
     addonLinter.scanFiles = () => Promise.resolve();
     // suppress output.
     addonLinter.print = sinon.stub();
 
-    var fakeFiles = {
+    const fakeFiles = {
       'angular.js': 'angular-1.2.28.min.js',
       'my/real/files/notalib.js': 'not-a-library.js',
       'my/real/files/alsonotalib.js': 'not-a-library.js',
@@ -1009,10 +998,10 @@ describe('Linter.extractMetadata()', function() {
           fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`));
       }
       getFiles() {
-        var files = {};
-        for (let filename of Object.keys(fakeFiles)) {
+        const files = {};
+        Object.keys(fakeFiles).forEach((filename) => {
           files[filename] = { uncompressedSize: 5 };
-        }
+        });
         return Promise.resolve(files);
       }
       getFilesByExt() {
@@ -1030,20 +1019,20 @@ describe('Linter.extractMetadata()', function() {
         'my/nested/library/path/j.js': 'jquery.3.2.1.jquery.min.js',
       });
 
-      var notices = addonLinter.collector.notices;
+      const notices = addonLinter.collector.notices;
       expect(notices.length).toEqual(3);
       expect(notices[2].code).toEqual(messages.KNOWN_LIBRARY.code);
     });
   });
 
-  it('should not scan known JS libraries', function() {
-    var addonLinter = new Linter({ _: ['foo'] });
+  it('should not scan known JS libraries', () => {
+    const addonLinter = new Linter({ _: ['foo'] });
     addonLinter.checkFileExists = fakeCheckFileExists;
     addonLinter.scan = () => Promise.resolve();
     // suppress output.
     addonLinter.print = sinon.stub();
 
-    var fakeFiles = {
+    const fakeFiles = {
       'my/nested/library/path/j.js': 'jquery-3.2.1.min.js',
     };
 
@@ -1053,10 +1042,10 @@ describe('Linter.extractMetadata()', function() {
           fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`));
       }
       getFiles() {
-        var files = {};
-        for (let filename of Object.keys(fakeFiles)) {
+        const files = {};
+        Object.keys(fakeFiles).forEach((filename) => {
           files[filename] = { uncompressedSize: 5 };
-        }
+        });
         return Promise.resolve(files);
       }
       getFilesByExt() {
@@ -1085,12 +1074,12 @@ describe('Linter.extractMetadata()', function() {
   // - package.json
   // - README.md
   it('should flag banned JS libraries in a ZIP.', () => {
-    var addonLinter = new Linter({
+    const addonLinter = new Linter({
       _: ['tests/fixtures/angular-bad-library.zip'],
     });
-    var markBannedSpy = sinon.spy(addonLinter, '_markBannedLibs');
+    const markBannedSpy = sinon.spy(addonLinter, '_markBannedLibs');
 
-    return addonLinter.extractMetadata({_console: fakeConsole})
+    return addonLinter.extractMetadata({ _console: fakeConsole })
       .then((metadata) => {
         sinon.assert.calledOnce(markBannedSpy);
         expect(Object.keys(metadata.jsLibs).length).toEqual(2);
@@ -1099,19 +1088,19 @@ describe('Linter.extractMetadata()', function() {
           'data/jquery-3.2.1.min.js': 'jquery.3.2.1.jquery.min.js',
         });
 
-        var errors = addonLinter.collector.errors;
+        const errors = addonLinter.collector.errors;
         expect(errors.length).toEqual(1);
         expect(errors[0].code).toEqual(messages.BANNED_LIBRARY.code);
       });
   });
 
   it('should flag unadvised JS libraries in a ZIP.', () => {
-    var addonLinter = new Linter({
+    const addonLinter = new Linter({
       _: ['fake.zip'],
     });
-    var fakeUnadvisedLibs = ['test_unadvised_fake_lib.js'];
-    var fakeMetadata = {
-      jsLibs : {
+    const fakeUnadvisedLibs = ['test_unadvised_fake_lib.js'];
+    const fakeMetadata = {
+      jsLibs: {
         'data/unadvised_fake_lib.js': 'test_unadvised_fake_lib.js',
         'data/jquery-3.2.1.min.js': 'jquery.3.2.1.jquery.min.js',
       },
@@ -1124,13 +1113,13 @@ describe('Linter.extractMetadata()', function() {
       'data/jquery-3.2.1.min.js': 'jquery.3.2.1.jquery.min.js',
     });
 
-    var warnings = addonLinter.collector.warnings;
+    const warnings = addonLinter.collector.warnings;
     expect(warnings.length).toEqual(1);
     expect(warnings[0].code).toEqual(messages.UNADVISED_LIBRARY.code);
   });
 
   it('should use size attribute if uncompressedSize is undefined', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.checkFileExists = () => {
       return Promise.resolve({
         isFile: () => {
@@ -1144,12 +1133,12 @@ describe('Linter.extractMetadata()', function() {
     addonLinter.scanFiles = () => Promise.resolve();
     // suppress output.
     addonLinter.print = sinon.stub();
-    var markEmptyFilesSpy = sinon.spy(addonLinter, '_markEmptyFiles');
+    const markEmptyFilesSpy = sinon.spy(addonLinter, '_markEmptyFiles');
     class FakeDirectory extends FakeIOBase {
       getFiles() {
         return Promise.resolve({
           'dictionaries/something': { size: 5 },
-          'whatever': { size: 0},
+          whatever: { size: 0 },
         });
       }
     }
@@ -1163,21 +1152,21 @@ describe('Linter.extractMetadata()', function() {
   });
 
   it('should error if no size attributes are found', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.checkFileExists = fakeCheckFileExists;
     addonLinter.scanFiles = () => Promise.resolve();
     // suppress output.
     addonLinter.print = sinon.stub();
-    var markEmptyFilesSpy = sinon.spy(addonLinter, '_markEmptyFiles');
+    const markEmptyFilesSpy = sinon.spy(addonLinter, '_markEmptyFiles');
     class FakeXpi extends FakeIOBase {
       getFiles() {
         return Promise.resolve({
           'dictionaries/something': { uncompressedSize: 5 },
-          'whatever': {},
+          whatever: {},
         });
       }
     }
-    return addonLinter.scan({_Xpi: FakeXpi, _console: fakeConsole})
+    return addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole })
       .catch((err) => {
         sinon.assert.calledOnce(markEmptyFilesSpy);
         expect(err.message).toEqual('No size available for whatever');
@@ -1185,11 +1174,11 @@ describe('Linter.extractMetadata()', function() {
   });
 
   it('should error if file size of a non-binary file is too large', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.checkFileExists = fakeCheckFileExists;
     // suppress output.
     addonLinter.print = sinon.stub();
-    var largeFileSize = (constants.MAX_FILE_SIZE_TO_PARSE_MB * 1024 * 1024) + 1;
+    const largeFileSize = (constants.MAX_FILE_SIZE_TO_PARSE_MB * 1024 * 1024) + 1;
     class FakeXpi extends FakeIOBase {
       files = {
         'manifest.json': { uncompressedSize: 839 },
@@ -1207,10 +1196,10 @@ describe('Linter.extractMetadata()', function() {
       }
       getFileAsString(filename) {
         return Promise.resolve((filename === constants.MANIFEST_JSON) ?
-          validManifestJSON() : 'var foo = "bar";');
+          validManifestJSON() : 'const foo = "bar";');
       }
     }
-    return addonLinter.scan({_Xpi: FakeXpi, _console: fakeConsole})
+    return addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole })
       .then(() => {
         expect(addonLinter.collector.errors[0].code).toEqual(
           messages.FILE_TOO_LARGE.code
@@ -1221,11 +1210,11 @@ describe('Linter.extractMetadata()', function() {
   });
 
   it('should ignore large binary files', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.checkFileExists = fakeCheckFileExists;
     // suppress output.
     addonLinter.print = sinon.stub();
-    var largeFileSize = constants.MAX_FILE_SIZE_TO_PARSE_MB * 1024 * 1024 * 4;
+    const largeFileSize = constants.MAX_FILE_SIZE_TO_PARSE_MB * 1024 * 1024 * 4;
     class FakeXpi extends FakeIOBase {
       files = {
         'manifest.json': { uncompressedSize: 839 },
@@ -1238,15 +1227,14 @@ describe('Linter.extractMetadata()', function() {
         return Promise.resolve(this.files);
       }
       getFilesByExt(type) {
-        return Promise.resolve(type === 'json' ? ['manifest.json'] :
-                                                 ['myfile.jpg']);
+        return Promise.resolve(type === 'json' ? ['manifest.json'] : ['myfile.jpg']);
       }
       getFileAsString(filename) {
         return Promise.resolve((filename === constants.MANIFEST_JSON) ?
           validManifestJSON() : '');
       }
     }
-    return addonLinter.scan({_Xpi: FakeXpi, _console: fakeConsole})
+    return addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole })
       .then(() => {
         expect(addonLinter.collector.errors.length).toBe(0);
       });
@@ -1276,29 +1264,27 @@ describe('Linter.extractMetadata()', function() {
   //  96080                    14 files
 
   it('should collect total size of all scanned files', () => {
-    var addonLinter = new Linter({
+    const addonLinter = new Linter({
       _: ['tests/fixtures/empty-with-library.zip'],
     });
 
     addonLinter.print = sinon.stub();
 
-    return addonLinter.scan({_console: fakeConsole})
+    return addonLinter.scan({ _console: fakeConsole })
       .then(() => {
         expect(addonLinter.output.metadata.totalScannedFileSize).toEqual(9421);
       });
   });
 });
 
-describe('Linter.run()', function() {
-
-  var fakeConsole = {
+describe('Linter.run()', () => {
+  const fakeConsole = {
     log: sinon.stub(),
   };
 
-
   it('should run extractMetadata() when metadata is true', () => {
-    var addonLinter = new Linter({_: ['foo'], metadata: true});
-    var fakeMetadata = {type: 1, somethingelse: 'whatever'};
+    const addonLinter = new Linter({ _: ['foo'], metadata: true });
+    const fakeMetadata = { type: 1, somethingelse: 'whatever' };
     addonLinter.toJSON = sinon.stub();
 
     addonLinter.getAddonMetadata = () => {
@@ -1317,30 +1303,31 @@ describe('Linter.run()', function() {
     class FakeXpi extends FakeIOBase {
     }
 
-    return addonLinter.run({_Xpi: FakeXpi, _console: fakeConsole})
+    return addonLinter.run({ _Xpi: FakeXpi, _console: fakeConsole })
       .then(() => {
         sinon.assert.calledOnce(addonLinter.toJSON);
         sinon.assert.calledOnce(addonLinter.markSpecialFiles);
-        expect(addonLinter.toJSON.firstCall.args[0].input).toEqual(
-          {hasErrors: false, metadata: fakeMetadata}
-        );
+        expect(addonLinter.toJSON.firstCall.args[0].input).toEqual({
+          hasErrors: false,
+          metadata: fakeMetadata,
+        });
       });
   });
 
   it('should run scan() when metadata is false', () => {
-    var addonLinter = new Linter({_: ['foo'], metadata: false});
+    const addonLinter = new Linter({ _: ['foo'], metadata: false });
 
     addonLinter.scan = sinon.stub();
     addonLinter.scan.returns(Promise.resolve());
 
-    return addonLinter.run({_console: fakeConsole})
+    return addonLinter.run({ _console: fakeConsole })
       .then(() => {
         sinon.assert.calledOnce(addonLinter.scan);
       });
   });
 
   it('should surface errors when metadata is true', () => {
-    var addonLinter = new Linter({_: ['foo'], metadata: true});
+    const addonLinter = new Linter({ _: ['foo'], metadata: true });
     addonLinter.toJSON = sinon.stub();
     addonLinter.handleError = sinon.spy();
 
@@ -1357,7 +1344,7 @@ describe('Linter.run()', function() {
     class FakeXpi extends FakeIOBase {
     }
 
-    return addonLinter.run({_Xpi: FakeXpi, _console: fakeConsole})
+    return addonLinter.run({ _Xpi: FakeXpi, _console: fakeConsole })
       .then(unexpectedSuccess)
       .catch((err) => {
         sinon.assert.calledOnce(addonLinter.handleError);
@@ -1367,27 +1354,26 @@ describe('Linter.run()', function() {
   });
 
   it('should resolve to the linting results object', () => {
-    var addonLinter = new Linter({_: ['foo'], metadata: false});
+    const addonLinter = new Linter({ _: ['foo'], metadata: false });
 
     addonLinter.scan = sinon.stub();
     addonLinter.scan.returns(Promise.resolve());
 
-    return addonLinter.run({_console: fakeConsole})
+    return addonLinter.run({ _console: fakeConsole })
       .then((result) => {
         expect(result).toEqual(addonLinter.output);
       });
   });
 
   it('should resolve to the linting results when metadata is true', () => {
-    var addonLinter = new Linter({_: ['foo'], metadata: true});
+    const addonLinter = new Linter({ _: ['foo'], metadata: true });
 
     addonLinter.extractMetadata = sinon.stub();
     addonLinter.extractMetadata.returns(Promise.resolve());
 
-    return addonLinter.run({_console: fakeConsole})
+    return addonLinter.run({ _console: fakeConsole })
       .then((result) => {
         expect(result).toEqual(addonLinter.output);
       });
   });
-
 });
