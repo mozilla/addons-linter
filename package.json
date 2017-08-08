@@ -67,7 +67,7 @@
   },
   "dependencies": {
     "ajv": "5.2.2",
-    "chalk": "2.0.1",
+    "chalk": "2.1.0",
     "cheerio": "1.0.0-rc.2",
     "columnify": "1.5.4",
     "crx-parser": "0.1.2",
