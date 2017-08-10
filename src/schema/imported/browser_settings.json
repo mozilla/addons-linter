@@ -1,0 +1,38 @@
+{
+  "id": "browserSettings",
+  "description": "Use the <code>browser.browserSettings</code> API to control global settings of the browser.",
+  "permissions": [
+    "browserSettings"
+  ],
+  "properties": {
+    "cacheEnabled": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "Enables or disables the browser cache."
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "Permission": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "browserSettings"
+          ]
+        }
+      ]
+    }
+  },
+  "refs": {
+    "browserSettings#/definitions/Permission": {
+      "namespace": "manifest",
+      "type": "Permission"
+    }
+  },
+  "types": {}
+}
