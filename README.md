@@ -22,6 +22,8 @@ To validate your add-on locally, install the linter from
 ```
 # Install globally so you can use the linter from any directory on
 # your machine.
+yarn add --global addons-linter
+# or
 npm install -g addons-linter
 ```
 
@@ -113,40 +115,50 @@ your development dependencies installed and building the binary:
 ```
 git clone https://github.com/mozilla/addons-linter.git
 cd addons-linter
-npm install
-npm start
+yarn install
+yarn start
 # Leave running to watch for changes or cancel to stop watching.
 bin/addons-linter my-addon.zip
 ```
 
 ### Required node version
 
-addons-linter requires node.js v0.12.x or greater. Using nvm is probably the
+addons-linter requires node.js v4 or greater. Using nvm is probably the
 easiest way to manage multiple node versions side by side. See
 [nvm on github](https://github.com/creationix/nvm) for more details.
 
 ### Install dependencies
 
-Install dependencies with [npm](http://nodejs.org/):
+Install dependencies with [yarn](https://yarnpkg.com/lang/en/docs/install/):
 
 ```
-npm install
+yarn install
 ```
+
+
+
+
 
 Dependencies are automatically kept up-to-date using [greenkeeper](http://greenkeeper.io/).
 
-### npm scripts and grunt tasks
+### yarn scripts and grunt tasks
 
-Run basic automation tasks via npm scripts (e.g. `npm test`).
+Run basic automation tasks via yarn (e.g. `yarn test`).
 These don't need `grunt-cli` installed globally.
 
-#### npm scripts
+#### yarn scripts
 
-| Script       | Description                                               |
-|--------------|-----------------------------------------------------------|
-| npm test     |  Runs the tests                                           |
-| npm start    |  Builds the lib and watches for changes                   |
-| npm run build|  Builds the lib (used by Travis)                          |
+Most of these scripts will also run with npm by substuting `yarn` with `npm`.
+
+| Script                 | Description                                        |
+|------------------------|----------------------------------------------------|
+| yarn test              | Runs the tests                                     |
+| yarn test-coverage     | Runs the tests with coverage (watches for changes) |
+| yarn test              | Runs the tests once                                |
+| yarn lint              | Runs eslint                                        |
+| yarn test-coverage-once| Runs the tests once with coverage                  |
+| yarn start             | Builds the lib and watches for changes             |
+| yarn [run] build       | Builds the lib (used by Travis)                    |
 
 If you install `grunt-cli` globally then you can run other tasks.
 
@@ -165,7 +177,6 @@ From the grunt docs:
 | Script                 | Description                                      |
 |------------------------|--------------------------------------------------|
 | grunt test             |  Runs the tests                                  |
-| grunt test-no-coverage |  Runs the tests (without coverage)               |
 | grunt build            |  Builds the lib                                  |
 | grunt start            |  Builds the lib and watches for changes          |
 | grunt eslint           |  Lints the files with eslint (Run in grunt test) |
@@ -173,13 +184,13 @@ From the grunt docs:
 
 ### Building and watching for changes
 
-You can run `npm start` to build the library and then rebuild on file changes.
+You can run `yarn start` to build the library and then rebuild on file changes.
 
 Once you build the library you can use the CLI in `bin/addons-linter`.
 
 ### Testing
 
-Tests use `grunt` but don't require global `grunt`. Just run `npm test`.
+Tests use `grunt` but don't require global `grunt`. Just run `yarn test` or `npm test`.
 
 #### Coverage
 
