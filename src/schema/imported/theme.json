@@ -23,13 +23,6 @@
           ]
         }
       ]
-    },
-    {
-      "name": "reset",
-      "type": "function",
-      "async": true,
-      "description": "Removes the updates made to the theme.",
-      "parameters": []
     }
   ],
   "definitions": {
