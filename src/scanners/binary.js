@@ -13,12 +13,8 @@ export default class BinaryScanner extends BaseScanner {
   }
 
   check(buffer, values) {
-    const valuesKeys = Object.keys(values);
-    for (let i = 0; i < valuesKeys.length; i++) {
-      const v = valuesKeys[i];
-      if (values[v] !== buffer[v]) {
-        return;
-      }
+    if (Object.keys(values).some((v) => values[v] !== buffer[v])) {
+      return;
     }
     this.linterMessages.push(
       Object.assign({}, messages.FLAGGED_FILE_TYPE, {
