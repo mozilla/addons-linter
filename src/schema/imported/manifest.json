@@ -162,17 +162,13 @@
               "type": "array",
               "default": [],
               "items": {
-                "allOf": [
+                "anyOf": [
                   {
                     "$ref": "#/types/Permission"
                   },
                   {
-                    "onError": "warn"
-                  }
-                ],
-                "anyOf": [
-                  {},
-                  {
+                    "type": "string",
+                    "deprecated": "Unknown permission ${value}",
                     "format": "deprecated"
                   }
                 ]
@@ -255,40 +251,6 @@
         }
       ]
     },
-    "ThemeIcons": {
-      "type": "object",
-      "properties": {
-        "light": {
-          "allOf": [
-            {
-              "$ref": "manifest#/types/ExtensionURL"
-            },
-            {
-              "description": "A light icon to use for dark themes"
-            }
-          ]
-        },
-        "dark": {
-          "allOf": [
-            {
-              "$ref": "manifest#/types/ExtensionURL"
-            },
-            {
-              "description": "The dark icon to use for light themes"
-            }
-          ]
-        },
-        "size": {
-          "type": "integer",
-          "description": "The size of the icons"
-        }
-      },
-      "required": [
-        "light",
-        "dark",
-        "size"
-      ]
-    },
     "OptionalPermission": {
       "anyOf": [
         {
@@ -336,12 +298,8 @@
           "type": "string",
           "enum": [
             "alarms",
-            "storage",
-            "unlimitedStorage"
+            "storage"
           ]
-        },
-        {
-          "$ref": "browserSettings#/definitions/Permission"
         },
         {
           "$ref": "browsingData#/definitions/Permission"
@@ -440,25 +398,6 @@
         {
           "type": "string",
           "pattern": "^(https?|wss?|file|ftp|\\*)://(\\*|\\*\\.[^*/]+|[^*/]+)/.*$"
-        },
-        {
-          "type": "string",
-          "pattern": "^file:///.*$"
-        }
-      ]
-    },
-    "MatchPatternInternal": {
-      "description": "Same as MatchPattern above, but includes moz-extension protocol",
-      "anyOf": [
-        {
-          "type": "string",
-          "enum": [
-            "<all_urls>"
-          ]
-        },
-        {
-          "type": "string",
-          "pattern": "^(https?|wss?|file|ftp|moz-extension|\\*)://(\\*|\\*\\.[^*/]+|[^*/]+)/.*$"
         },
         {
           "type": "string",

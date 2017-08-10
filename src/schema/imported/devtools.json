@@ -136,7 +136,7 @@
       "events": [
         {
           "name": "onSelectionChanged",
-          "type": "function",
+          "unsupported": true,
           "description": "Fired when an object is selected in the panel."
         }
       ],
@@ -498,12 +498,13 @@
               "parameters": [
                 {
                   "name": "result",
+                  "type": "object",
+                  "additionalProperties": {},
                   "description": "The result of evaluation."
                 },
                 {
                   "name": "exceptionInfo",
                   "type": "object",
-                  "optional": true,
                   "description": "An object providing details if an exception occurred while evaluating the expression.",
                   "properties": {
                     "isError": {

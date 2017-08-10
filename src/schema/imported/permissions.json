@@ -63,7 +63,6 @@
         "content"
       ],
       "async": "callback",
-      "requireUserInput": true,
       "description": "Request the given permissions.",
       "parameters": [
         {
@@ -185,7 +184,7 @@
         "origins": {
           "type": "array",
           "items": {
-            "$ref": "manifest#/types/MatchPatternInternal"
+            "$ref": "manifest#/types/MatchPattern"
           },
           "default": []
         }
