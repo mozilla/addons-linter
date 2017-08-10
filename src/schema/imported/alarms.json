@@ -58,7 +58,8 @@
                   "$ref": "#/types/Alarm"
                 },
                 {
-                  "name": "alarm"
+                  "name": "alarm",
+                  "optional": true
                 }
               ]
             }
