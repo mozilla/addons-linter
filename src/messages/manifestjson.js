@@ -97,6 +97,15 @@ export const MANIFEST_UNUSED_UPDATE = {
   file: MANIFEST_JSON,
 };
 
+export const STRICT_MAX_VERSION = {
+  code: 'STRICT_MAX_VERSION',
+  legacyCode: null,
+  message: _('"strict_max_version" not required.'),
+  description: _(singleLineString`"strict_max_version" shouldn't be used unless
+    the add-on is expected not to work with future versions of Firefox.`),
+  file: MANIFEST_JSON,
+};
+
 export function manifestPropMissing(property) {
   return {
     code: `PROP_${property.toUpperCase()}_MISSING`,
