@@ -638,7 +638,7 @@ export default class Linter {
       const words = fileData.split(' ');
 
       for (let word of words) {
-        // Filter out none a-Z characters to simplify matching with our
+        // Filter out non a-Z characters to simplify matching with our
         // badword list.
         word = word.toLowerCase().replace(/[^a-zA-Z]/, '').trim();
 
