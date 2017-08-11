@@ -22,6 +22,7 @@ import JavaScriptScanner from 'scanners/javascript';
 import JSONScanner from 'scanners/json';
 import RDFScanner from 'scanners/rdf';
 import { Crx, Directory, Xpi } from 'io';
+import badwords from 'badwords.json';
 
 
 export default class Linter {
@@ -362,6 +363,7 @@ export default class Linter {
             file: filename,
             type: constants.VALIDATION_ERROR,
           });
+
           return Promise.resolve({
             linterMessages: [filesizeError],
             scannedFiles: [filename],
@@ -371,6 +373,9 @@ export default class Linter {
         if (this.addonMetadata) {
           this.addonMetadata.totalScannedFileSize += fileSize;
         }
+
+        // Check for badwords across all file-types
+        this._markBadwordUsage(filename, fileData);
 
         const scanner = new ScannerClass(fileData, filename, {
           addonMetadata: this.addonMetadata,
@@ -492,7 +497,7 @@ export default class Linter {
         return this.scanFiles(filesWithoutJSLibraries);
       })
       .then(() => {
-        this.print();
+        this.print(deps._console);
         // This is skipped in the code coverage because the
         // test runs against un-instrumented code.
         /* istanbul ignore if  */
@@ -619,5 +624,19 @@ export default class Linter {
         addonMetadata.jsLibs = jsLibs;
         return addonMetadata;
       });
+  }
+
+  _markBadwordUsage(filename, fileData) {
+    if (fileData && fileData.trim()) {
+      const sanitizedFileData = fileData.replace(/[^a-z]/g, '');
+
+      if (badwords.en.some((word) => sanitizedFileData.includes(word))) {
+        this.collector.addNotice(
+          Object.assign({}, messages.MOZILLA_COND_OF_USE, {
+            file: filename,
+          })
+        );
+      }
+    }
   }
 }
