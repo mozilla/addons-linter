@@ -11,7 +11,6 @@ import { INSTALL_RDF, MANIFEST_JSON } from 'const';
 import { BANNED_LIBRARIES, UNADVISED_LIBRARIES } from 'libraries';
 import * as messages from 'messages';
 import { checkMinNodeVersion, gettext as _, singleLineString } from 'utils';
-import badwords from 'badwords.json';
 
 import log from 'logger';
 import Collector from 'collector';
@@ -507,7 +506,7 @@ export default class Linter {
         return this.scanFiles(filesWithoutJSLibraries);
       })
       .then(() => {
-        this.print();
+        this.print(deps._console);
         // This is skipped in the code coverage because the
         // test runs against un-instrumented code.
         /* istanbul ignore if  */
@@ -636,8 +635,6 @@ export default class Linter {
 
   _markBadwordUsage(filename, fileData) {
     if (fileData) {
-      const badwordsRe = new RegExp(badwords.en.join('|'), 'gi');
-
       const words = fileData.split(' ');
 
       for (let word of words) {
@@ -645,7 +642,7 @@ export default class Linter {
         // badword list.
         word = word.toLowerCase().replace(/[^a-zA-Z]/, '');
 
-        if (word.match(badwordsRe)) {
+        if (word.match(constants.BADWORDS_RE.en)) {
           this.collector.addNotice(
             Object.assign({}, messages.MOZILLA_COND_OF_USE, {
               file: filename,

@@ -1162,22 +1162,6 @@ describe('Linter.extractMetadata()', function() {
     });
   });
 
-  it('should flag files with badwords.', () => {
-    var addonLinter = new Linter({
-      _: ['tests/fixtures/webextension_badwords.zip'],
-    });
-    var markBadwordusageSpy = sinon.spy(addonLinter, '_markBadwordUsage');
-
-    return addonLinter.scan()
-      .then(() => {
-        sinon.assert.calledTwice(markBadwordusageSpy);
-        var errors = addonLinter.collector.notices;
-        expect(errors.length).toEqual(1);
-        expect(errors[0].code).toEqual(
-          messages.MOZILLA_COND_OF_USE.code);
-      });
-  });
-
   it('should error if no size attributes are found', () => {
     var addonLinter = new Linter({_: ['bar']});
     addonLinter.checkFileExists = fakeCheckFileExists;
@@ -1301,6 +1285,22 @@ describe('Linter.extractMetadata()', function() {
     return addonLinter.scan({_console: fakeConsole})
       .then(() => {
         expect(addonLinter.output.metadata.totalScannedFileSize).toEqual(9421);
+      });
+  });
+
+  it('should flag files with badwords.', () => {
+    var addonLinter = new Linter({
+      _: ['tests/fixtures/webextension_badwords.zip'],
+    });
+    var markBadwordusageSpy = sinon.spy(addonLinter, '_markBadwordUsage');
+
+    return addonLinter.scan({_console: fakeConsole})
+      .then(() => {
+        sinon.assert.calledTwice(markBadwordusageSpy);
+        var errors = addonLinter.collector.notices;
+        expect(errors.length).toEqual(1);
+        expect(errors[0].code).toEqual(
+          messages.MOZILLA_COND_OF_USE.code);
       });
   });
 });
