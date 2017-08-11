@@ -636,7 +636,7 @@ export default class Linter {
 
   _markBadwordUsage(filename, fileData) {
     if (fileData && fileData.trim()) {
-      const sanitizedFileData = fileData.replace(/[^a-z]/g, '').trim();
+      const sanitizedFileData = fileData.replace(/[^a-z]/g, '');
 
       if (badwords.en.some((word) => sanitizedFileData.includes(word))) {
         this.collector.addNotice(
