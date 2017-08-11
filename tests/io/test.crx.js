@@ -2,6 +2,7 @@ import { ZipFile } from 'yauzl';
 
 import { Crx } from 'io';
 import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
+
 import { unexpectedSuccess } from '../helpers';
 
 
@@ -34,8 +35,7 @@ const chromeContentDir = {
   fileName: 'chrome/content/',
 };
 
-describe('Crx.open()', function() {
-
+describe('Crx.open()', function openCallback() {
   beforeEach(() => {
     this.fakeCrxFile = {
       testprop: 'I am the fake zip',
@@ -53,20 +53,18 @@ describe('Crx.open()', function() {
   });
 
   it('should open a CRX and return a zip', () => {
-    var myCrx = new Crx('tests/fixtures/extension.crx');
+    const myCrx = new Crx('tests/fixtures/extension.crx');
     return myCrx.open()
       .then((zipfile) => {
         expect(zipfile).toBeInstanceOf(ZipFile);
       });
   });
-
 });
 
 
-describe('crx.getFiles()', function() {
-
+describe('crx.getFiles()', function getFilesCallback() {
   beforeEach(() => {
-    var onStub = sinon.stub();
+    const onStub = sinon.stub();
     // Can only yield data to the callback once.
     this.entryStub = onStub.withArgs('entry');
     this.endStub = onStub.withArgs('end');
@@ -88,14 +86,14 @@ describe('crx.getFiles()', function() {
   });
 
   it('should init class props as expected', () => {
-    var myCrx = new Crx('foo/bar', this.fakeZipLib);
+    const myCrx = new Crx('foo/bar', this.fakeZipLib);
     expect(myCrx.path).toEqual('foo/bar');
     expect(typeof myCrx.files).toEqual('object');
     expect(Object.keys(myCrx.files).length).toEqual(0);
   });
 
   it('should return cached data when available', () => {
-    var myCrx = new Crx('foo/bar', this.fakeZipLib);
+    const myCrx = new Crx('foo/bar', this.fakeZipLib);
     myCrx.files = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
@@ -108,26 +106,26 @@ describe('crx.getFiles()', function() {
   });
 
   it('should contain expected files', () => {
-    var myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
-                        this.fakeFs);
-    var expected = {
+    const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
+      this.fakeFs);
+    const expected = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
     // Return the fake zip to the open callback.
     this.fromBufferStub.yieldsAsync(null, this.fakeZipFile);
-    this.fakeParseCrx.yieldsAsync(null, {body: new Buffer('foo')});
+    this.fakeParseCrx.yieldsAsync(null, { body: new Buffer('foo') });
     this.readFileStub.yieldsAsync(null, new Buffer('bar'));
 
     // If we could use yields multiple times here we would
     // but sinon doesn't support it when the stub is only
     // invoked once (e.g. to init the event handler).
-    var onEventsSubscribed = () => {
+    const onEventsSubscribed = () => {
       // Directly call the 'entry' event callback as if
       // we are actually processing entries in a
       // zip.
-      var entryCallback = this.entryStub.firstCall.args[1];
+      const entryCallback = this.entryStub.firstCall.args[1];
       entryCallback.call(null, chromeManifestEntry);
       entryCallback.call(null, chromeContentDir);
       entryCallback.call(null, installRdfEntry);
@@ -143,14 +141,14 @@ describe('crx.getFiles()', function() {
   });
 
   it('should reject on duplicate entries', () => {
-    var myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
-                        this.fakeFs);
+    const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
+      this.fakeFs);
     this.fromBufferStub.yieldsAsync(null, this.fakeZipFile);
-    this.fakeParseCrx.yieldsAsync(null, {body: new Buffer('foo')});
+    this.fakeParseCrx.yieldsAsync(null, { body: new Buffer('foo') });
     this.readFileStub.yieldsAsync(null, new Buffer('bar'));
 
-    var onEventsSubscribed = () => {
-      var entryCallback = this.entryStub.firstCall.args[1];
+    const onEventsSubscribed = () => {
+      const entryCallback = this.entryStub.firstCall.args[1];
       entryCallback.call(null, installRdfEntry);
       entryCallback.call(null, dupeInstallRdfEntry);
     };
@@ -164,8 +162,8 @@ describe('crx.getFiles()', function() {
   });
 
   it('should reject on errors in readFile() in open()', () => {
-    var myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
-                        this.fakeFs);
+    const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
+      this.fakeFs);
 
     this.readFileStub.yieldsAsync(new Error('open test'), new Buffer('bar'));
 
@@ -177,8 +175,8 @@ describe('crx.getFiles()', function() {
   });
 
   it('should reject on errors in parseCRX() in open()', () => {
-    var myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
-                        this.fakeFs);
+    const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
+      this.fakeFs);
 
     this.readFileStub.yieldsAsync(null, new Buffer('bar'));
     this.fakeParseCrx.yieldsAsync(new Error('open test'), null);
@@ -191,11 +189,11 @@ describe('crx.getFiles()', function() {
   });
 
   it('should reject on errors in fromBuffer() in open()', () => {
-    var myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
-                        this.fakeFs);
+    const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
+      this.fakeFs);
 
     this.fromBufferStub.yieldsAsync(new Error('open test'), this.fakeZipFile);
-    this.fakeParseCrx.yieldsAsync(null, {body: new Buffer('foo')});
+    this.fakeParseCrx.yieldsAsync(null, { body: new Buffer('foo') });
     this.readFileStub.yieldsAsync(null, new Buffer('bar'));
 
     return myCrx.getFiles()

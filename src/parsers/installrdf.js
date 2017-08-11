@@ -5,8 +5,7 @@ import { singleLineString } from 'utils';
 
 
 export default class InstallRdfParser {
-
-  constructor(xmlDoc, collector, {namespace=RDF_DEFAULT_NAMESPACE}={}) {
+  constructor(xmlDoc, collector, { namespace = RDF_DEFAULT_NAMESPACE } = {}) {
     this.xmlDoc = xmlDoc;
     // Provides ability to directly add messages to
     // the collector.
@@ -35,13 +34,13 @@ export default class InstallRdfParser {
    * Gets topLevel tags e.g. RDF -> Description -> tag
    */
   _getTopLevelNodesByTag(tagName) {
-    var descriptionTag = this._getDescriptionNode();
+    const descriptionTag = this._getDescriptionNode();
     return this._makeArray(descriptionTag.childNodes)
       .filter((node) => node.nodeName === tagName);
   }
 
   _getTopLevelNodeByTag(tag) {
-    var nodes = this._getTopLevelNodesByTag(tag);
+    const nodes = this._getTopLevelNodesByTag(tag);
     // Throw an error if there's more than one node as these
     // should be unique.
     if (nodes.length > 1) {
@@ -51,7 +50,7 @@ export default class InstallRdfParser {
   }
 
   _getRDFNode() {
-    var rdfNodes = this.xmlDoc.getElementsByTagName('RDF');
+    const rdfNodes = this.xmlDoc.getElementsByTagName('RDF');
     if (!rdfNodes.length) {
       throw new Error('RDF Node is not defined');
     }
@@ -62,8 +61,8 @@ export default class InstallRdfParser {
   }
 
   _getDescriptionNode() {
-    var rdfNode = this._getRDFNode();
-    var descriptionNodes = Array.prototype.slice.call(rdfNode.childNodes)
+    const rdfNode = this._getRDFNode();
+    const descriptionNodes = Array.prototype.slice.call(rdfNode.childNodes)
       .filter((node) => node.nodeName === 'Description');
     if (descriptionNodes.length > 1) {
       throw new Error(singleLineString`RDF node should only have a
@@ -80,18 +79,18 @@ export default class InstallRdfParser {
   }
 
   _getAddonType() {
-    var addonType = null;
-    var node = this._getTopLevelNodeByTag('em:type');
+    let addonType = null;
+    const node = this._getTopLevelNodeByTag('em:type');
 
     if (node && node.firstChild && node.firstChild.nodeValue) {
-      var typeValue = node.firstChild.nodeValue;
-      if (!ADDON_TYPE_MAP.hasOwnProperty(typeValue)) {
+      const typeValue = node.firstChild.nodeValue;
+      if (!Object.prototype.hasOwnProperty.call(ADDON_TYPE_MAP, typeValue)) {
         log.debug('Invalid type value "%s"', typeValue);
         this.collector.addError(messages.RDF_TYPE_INVALID);
       } else {
         addonType = ADDON_TYPE_MAP[typeValue];
         log.debug('Mapping original <em:type> value "%s" -> "%s"',
-                  typeValue, addonType);
+          typeValue, addonType);
       }
     } else {
       log.warn('<em:type> was not found in install.rdf');
@@ -107,7 +106,7 @@ export default class InstallRdfParser {
 
   _getGUID() {
     // Install.rdf only.
-    var guid = this._getNodeValue(this._getTopLevelNodeByTag('em:id'));
+    const guid = this._getNodeValue(this._getTopLevelNodeByTag('em:id'));
     if (!guid) {
       this.collector.addError(messages.RDF_ID_MISSING);
     }
@@ -118,7 +117,7 @@ export default class InstallRdfParser {
   }
 
   _getName() {
-    var name = this._getNodeValue(this._getTopLevelNodeByTag('em:name'));
+    const name = this._getNodeValue(this._getTopLevelNodeByTag('em:name'));
     if (name === null) {
       this.collector.addError(messages.RDF_NAME_MISSING);
     }
@@ -126,7 +125,7 @@ export default class InstallRdfParser {
   }
 
   _getVersion() {
-    var version = this._getNodeValue(this._getTopLevelNodeByTag('em:version'));
+    const version = this._getNodeValue(this._getTopLevelNodeByTag('em:version'));
     if (version === null) {
       this.collector.addError(messages.RDF_VERSION_MISSING);
     }

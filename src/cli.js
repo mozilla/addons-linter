@@ -2,10 +2,22 @@ import argv from 'yargs';
 
 import log from 'logger';
 import { singleLineString } from 'utils';
-import { version } from '../package.json';
 
+import { version } from '../package';
 
-export function getConfig({useCLI=true} = {}) {
+export function terminalWidth(_process = process) {
+  if (_process && _process.stdout && _process.stdout.columns > 0) {
+    let width = _process.stdout.columns - 2;
+    // Terminals less than ten pixels wide seem silly.
+    if (width < 10) {
+      width = 10;
+    }
+    return width;
+  }
+  return 78;
+}
+
+export function getConfig({ useCLI = true } = {}) {
   if (useCLI === false) {
     log.error(singleLineString`Config requested from CLI, but not in CLI mode.
       Please supply a config instead of relying on the getConfig() call.`);
@@ -69,18 +81,4 @@ export function getConfig({useCLI=true} = {}) {
     .help('help')
     .alias('h', 'help')
     .wrap(terminalWidth());
-}
-
-export function terminalWidth(_process=process) {
-  if (_process && _process.stdout && _process.stdout.columns > 0) {
-    var width = _process.stdout.columns - 2;
-    // Terminals less than ten pixels wide seem silly.
-    if (width < 10) {
-      width = 10;
-    }
-
-    return width;
-  } else {
-    return 78;
-  }
 }

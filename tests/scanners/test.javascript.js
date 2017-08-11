@@ -1,19 +1,29 @@
 import ESLint from 'eslint';
 
 import {
-  DEPRECATED_APIS, ESLINT_ERROR, ESLINT_RULE_MAPPING, TEMPORARY_APIS,
-  VALIDATION_ERROR, VALIDATION_WARNING,
+  DEPRECATED_APIS,
+  ESLINT_ERROR,
+  ESLINT_RULE_MAPPING,
   EXTERNAL_RULE_MAPPING,
+  TEMPORARY_APIS,
+  VALIDATION_ERROR,
+  VALIDATION_WARNING,
 } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
 import { apiToMessage, singleLineString } from 'utils';
-import { fakeMessageData, getRuleFiles, getVariable, unexpectedSuccess,
-         validMetadata } from '../helpers';
 
-describe('JavaScript Scanner', function() {
+import {
+  fakeMessageData,
+  getRuleFiles,
+  getVariable,
+  unexpectedSuccess,
+  validMetadata,
+} from '../helpers';
 
+
+describe('JavaScript Scanner', () => {
   it('should report a proper scanner name', () => {
     expect(JavaScriptScanner.scannerName).toEqual('javascript');
   });
@@ -25,33 +35,33 @@ describe('JavaScript Scanner', function() {
   });
 
   it('should have an options property', () => {
-    var jsScanner = new JavaScriptScanner('', 'filename.txt');
+    const jsScanner = new JavaScriptScanner('', 'filename.txt');
     expect(typeof jsScanner.options).toEqual('object');
     // This test assures us the options can be accessed like an object.
     expect(typeof jsScanner.options.someUndefinedProp).toEqual('undefined');
 
-    var jsScannerWithOptions = new JavaScriptScanner('', 'filename.txt', {
+    const jsScannerWithOptions = new JavaScriptScanner('', 'filename.txt', {
       foo: 'bar',
     });
     expect(jsScannerWithOptions.options.foo).toEqual('bar');
   });
 
   it('should pass when async/await is used', () => {
-    var code = 'var foo = async a => a;';
-    var jsScanner = new JavaScriptScanner(code, 'code.js');
+    const code = 'var foo = async a => a;';
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
 
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(0);
       });
   });
 
   it('should create an error message when encountering a syntax error', () => {
-    var code = 'var m = "d;';
-    var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+    let code = 'var m = "d;';
+    let jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages[0].code).toEqual(messages.JS_SYNTAX_ERROR.code);
         expect(linterMessages[0].type).toEqual(VALIDATION_ERROR);
 
@@ -60,7 +70,7 @@ describe('JavaScript Scanner', function() {
         jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
         return jsScanner.scan()
-          .then(({linterMessages: moreValidationMessages}) => {
+          .then(({ linterMessages: moreValidationMessages }) => {
             expect(moreValidationMessages[0].code).toEqual(
               messages.JS_SYNTAX_ERROR.code);
             expect(moreValidationMessages[0].type).toEqual(
@@ -70,9 +80,9 @@ describe('JavaScript Scanner', function() {
   });
 
   it('should reject on missing message code', () => {
-    var FakeCLIEngine = function() {};
+    const FakeCLIEngine = () => {};
     FakeCLIEngine.prototype = {
-      constructor: function() {},
+      constructor() {},
       executeOnText: () => {
         return {
           results: [{
@@ -85,7 +95,7 @@ describe('JavaScript Scanner', function() {
       },
     };
 
-    var FakeESLint = {
+    const FakeESLint = {
       linter: {
         defineRule: () => {
           // no-op
@@ -94,7 +104,7 @@ describe('JavaScript Scanner', function() {
       CLIEngine: FakeCLIEngine,
     };
 
-    var jsScanner = new JavaScriptScanner('whatever', 'badcode.js');
+    const jsScanner = new JavaScriptScanner('whatever', 'badcode.js');
 
     return jsScanner.scan(FakeESLint)
       .then(unexpectedSuccess)
@@ -104,24 +114,24 @@ describe('JavaScript Scanner', function() {
   });
 
   it('ignores /*eslint-disable*/ comments', () => {
-    var code = singleLineString`/*eslint-disable*/
+    const code = singleLineString`/*eslint-disable*/
                                 var myDatabase = indexeddb || mozIndexedDB;`;
-    var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+    const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(1);
         expect(linterMessages[0].code).toEqual(messages.MOZINDEXEDDB.code);
       });
   });
 
   it('ignores // eslint-disable-line comments', () => {
-    var code = singleLineString`var myDatabase = indexeddb || mozIndexedDB;
+    const code = singleLineString`var myDatabase = indexeddb || mozIndexedDB;
                                 // eslint-disable-line`;
-    var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+    const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(1);
         expect(linterMessages[0].code).toEqual(messages.MOZINDEXEDDB.code);
       });
@@ -129,37 +139,37 @@ describe('JavaScript Scanner', function() {
 
   // This should not cause a syntax error; it should still be parsing code
   // as ES6 because it ignores the env change.
-  it('ignores /*eslint-env*/', function() {
-    var eslint = ESLint.linter;
-    var config = { rules: { test: 2 } };
-    var ok = false;
+  it('ignores /*eslint-env*/', () => {
+    const eslint = ESLint.linter;
+    const config = { rules: { test: 2 } };
+    let ok = false;
 
-    eslint.defineRules({test: function(context) {
+    eslint.defineRules({ test(context) {
       return {
-        Program: function() {
-          var windowVar = getVariable(context.getScope(), 'window');
+        Program() {
+          const windowVar = getVariable(context.getScope(), 'window');
           expect(windowVar.eslintExplicitGlobal).toBeFalsy();
 
           ok = true;
         },
       };
-    }});
+    } });
 
-    eslint.verify('/*eslint-env browser*/', config, {allowInlineConfig: false});
+    eslint.verify('/*eslint-env browser*/', config, { allowInlineConfig: false });
     expect(ok).toBeTruthy();
   });
 
   // This is just a precaution against disabling environments in ESLint, which
   // isn't allowed as of writing, but will warn us if it ever happens :-)
   it('ignores /*eslint-env*/ comments', () => {
-    var code = singleLineString`/*eslint-env es6:false*/
+    const code = singleLineString`/*eslint-env es6:false*/
       var makeBigger = (number) => {
         return number + 1;
       }`;
-    var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+    const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(0);
       });
   });
@@ -168,29 +178,29 @@ describe('JavaScript Scanner', function() {
   // don't change behaviour on us.
   // https://github.com/mozilla/addons-linter/pull/98#issuecomment-158890847
   it('ignores /*global foo*/', () => {
-    var eslint = ESLint.linter;
-    var config = { rules: { test: 2 } };
-    var ok = false;
+    const eslint = ESLint.linter;
+    const config = { rules: { test: 2 } };
+    let ok = false;
 
-    eslint.defineRules({test: function(context) {
+    eslint.defineRules({ test(context) {
       return {
-        Program: function() {
-          var foo = getVariable(context.getScope(), 'foo');
+        Program() {
+          const foo = getVariable(context.getScope(), 'foo');
           expect(foo).toBeFalsy();
 
           ok = true;
         },
       };
-    }});
+    } });
 
-    eslint.verify('/* global foo */', config, {allowInlineConfig: false});
+    eslint.verify('/* global foo */', config, { allowInlineConfig: false });
     expect(ok).toBeTruthy();
   });
 
   it('should pass addon metadata to rules', () => {
-    var fakeRules = { 'metadata-not-passed': { create: () => {} } };
+    const fakeRules = { 'metadata-not-passed': { create: () => {} } };
 
-    var fakeMessages = {
+    const fakeMessages = {
       METADATA_NOT_PASSED: Object.assign({}, fakeMessageData, {
         code: 'METADATA_NOT_PASSED',
         legacyCode: null,
@@ -198,15 +208,15 @@ describe('JavaScript Scanner', function() {
         description: 'Should not happen',
       }),
     };
-    var fakeMetadata = { addonMetadata: validMetadata({guid: 'snowflake'}) };
-    var fakeESLintMapping = { 'metadata-not-passed': ESLINT_ERROR };
+    const fakeMetadata = { addonMetadata: validMetadata({ guid: 'snowflake' }) };
+    const fakeESLintMapping = { 'metadata-not-passed': ESLINT_ERROR };
 
     sinon.stub(
       fakeRules['metadata-not-passed'], 'create'
     ).callsFake((context) => {
       return {
         Identifier: () => {
-          var metadata = context.settings.addonMetadata;
+          const metadata = context.settings.addonMetadata;
 
           if (typeof metadata !== 'object') {
             assert.fail(null, null, 'Metadata should be an object.');
@@ -219,8 +229,8 @@ describe('JavaScript Scanner', function() {
       };
     });
 
-    var jsScanner = new JavaScriptScanner('var hello = "something";',
-                                          'index.html', fakeMetadata);
+    const jsScanner = new JavaScriptScanner('var hello = "something";',
+      'index.html', fakeMetadata);
 
     return jsScanner.scan(ESLint, {
       _rules: fakeRules,
@@ -233,13 +243,13 @@ describe('JavaScript Scanner', function() {
 
   it('should export all rules in rules/javascript', () => {
     // We skip the "run" check here for now as that's handled by ESLint.
-    var ruleFiles = getRuleFiles('javascript');
-    var externalRulesCount = Object.keys(EXTERNAL_RULE_MAPPING).length;
+    const ruleFiles = getRuleFiles('javascript');
+    const externalRulesCount = Object.keys(EXTERNAL_RULE_MAPPING).length;
 
     expect(ruleFiles.length + externalRulesCount).toEqual(
       Object.keys(ESLINT_RULE_MAPPING).length);
 
-    var jsScanner = new JavaScriptScanner('', 'badcode.js');
+    const jsScanner = new JavaScriptScanner('', 'badcode.js');
 
     return jsScanner.scan()
       .then(() => {
@@ -247,50 +257,50 @@ describe('JavaScript Scanner', function() {
       });
   });
 
-  for (let api of DEPRECATED_APIS) {
+  DEPRECATED_APIS.forEach((api) => {
     it(`should return warning when ${api} is used`, () => {
-      var jsScanner = new JavaScriptScanner(
+      const jsScanner = new JavaScriptScanner(
         `chrome.${api}(function() {});`, 'code.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
+        .then(({ linterMessages }) => {
           expect(linterMessages.length).toEqual(1);
           expect(linterMessages[0].code).toEqual(apiToMessage(api));
           expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
         });
     });
-  }
+  });
 
-  for (let api of TEMPORARY_APIS) {
+  TEMPORARY_APIS.forEach((api) => {
     it(`should return warning when ${api} is used with no id`, () => {
-      var fakeMetadata = { addonMetadata: validMetadata({}) };
-      var jsScanner = new JavaScriptScanner(
+      const fakeMetadata = { addonMetadata: validMetadata({}) };
+      const jsScanner = new JavaScriptScanner(
         `chrome.${api}(function() {});`, 'code.js', fakeMetadata);
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
+        .then(({ linterMessages }) => {
           expect(linterMessages.length).toEqual(1);
           expect(linterMessages[0].code).toEqual(apiToMessage(api));
           expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
         });
     });
-  }
+  });
 
-  for (let api of TEMPORARY_APIS) {
+  TEMPORARY_APIS.forEach((api) => {
     it(`should pass when ${api} is used with an id`, () => {
-      var fakeMetadata = { addonMetadata: validMetadata({id: 'snark'}) };
-      var jsScanner = new JavaScriptScanner(
+      const fakeMetadata = { addonMetadata: validMetadata({ id: 'snark' }) };
+      const jsScanner = new JavaScriptScanner(
         `chrome.${api}(function() {});`, 'code.js', fakeMetadata);
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
+        .then(({ linterMessages }) => {
           expect(linterMessages.length).toEqual(0);
         });
     });
-  }
+  });
 
   it('treats a non-code string message as the message', () => {
-    var _rules = {
+    const _rules = {
       'message-rule': (context) => {
         return {
           MemberExpression(node) {
@@ -299,12 +309,12 @@ describe('JavaScript Scanner', function() {
         };
       },
     };
-    var _ruleMapping = { 'message-rule': ESLINT_ERROR };
-    var fakeMetadata = { addonMetadata: validMetadata({}) };
-    var jsScanner = new JavaScriptScanner('foo.bar', 'code.js', fakeMetadata);
+    const _ruleMapping = { 'message-rule': ESLINT_ERROR };
+    const fakeMetadata = { addonMetadata: validMetadata({}) };
+    const jsScanner = new JavaScriptScanner('foo.bar', 'code.js', fakeMetadata);
 
     return jsScanner.scan(undefined, { _rules, _ruleMapping })
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(1);
         expect(linterMessages[0].code).toEqual('this is the message');
         expect(linterMessages[0].message).toEqual('this is the message');

@@ -2,3 +2,4 @@ dist
 coverage
 tests/fixtures/jslibs
 tests/**/*.json
+src/schema/imported/index.js

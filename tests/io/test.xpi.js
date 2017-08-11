@@ -1,9 +1,10 @@
+import fs from 'fs';
 import { Readable } from 'stream';
 import { EventEmitter } from 'events';
 
-import fs from 'fs';
 import { Xpi } from 'io';
 import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
+
 import { unexpectedSuccess } from '../helpers';
 
 
@@ -48,8 +49,7 @@ const chromeContentDir = {
   fileName: 'chrome/content/',
 };
 
-describe('Xpi.open()', function() {
-
+describe('Xpi.open()', function xpiCallback() {
   beforeEach(() => {
     this.fakeZipFile = {
       testprop: 'I am the fake zip',
@@ -61,7 +61,7 @@ describe('Xpi.open()', function() {
   });
 
   it('should resolve with zipfile', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     // Return the fake zip to the open callback.
     this.openStub.yieldsAsync(null, this.fakeZipFile);
     return myXpi.open()
@@ -71,7 +71,7 @@ describe('Xpi.open()', function() {
   });
 
   it('should reject on error', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     // Return the fake zip to the open callback.
     this.openStub.yieldsAsync(new Error('open() test error'));
     return myXpi.open()
@@ -80,14 +80,12 @@ describe('Xpi.open()', function() {
         expect(err.message).toContain('open() test');
       });
   });
-
 });
 
 
-describe('xpi.getFiles()', function() {
-
+describe('xpi.getFiles()', function getFilesCallback() {
   beforeEach(() => {
-    var onStub = sinon.stub();
+    const onStub = sinon.stub();
     // Can only yield data to the
     // callback once.
     this.entryStub = onStub
@@ -106,14 +104,14 @@ describe('xpi.getFiles()', function() {
   });
 
   it('should init class props as expected', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     expect(myXpi.path).toEqual('foo/bar');
     expect(typeof myXpi.files).toEqual('object');
     expect(Object.keys(myXpi.files).length).toEqual(0);
   });
 
   it('should return cached data when available', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
@@ -126,8 +124,8 @@ describe('xpi.getFiles()', function() {
   });
 
   it('should contain expected files', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
-    var expected = {
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const expected = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
@@ -138,11 +136,11 @@ describe('xpi.getFiles()', function() {
     // If we could use yields multiple times here we would
     // but sinon doesn't support it when the stub is only
     // invoked once (e.g. to init the event handler).
-    var onEventsSubscribed = () => {
+    const onEventsSubscribed = () => {
       // Directly call the 'entry' event callback as if
       // we are actually processing entries in a
       // zip.
-      var entryCallback = this.entryStub.firstCall.args[1];
+      const entryCallback = this.entryStub.firstCall.args[1];
       entryCallback.call(null, chromeManifestEntry);
       entryCallback.call(null, chromeContentDir);
       entryCallback.call(null, installRdfEntry);
@@ -158,16 +156,16 @@ describe('xpi.getFiles()', function() {
   });
 
   it('can be configured to exclude files', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
 
     // Return the fake zip to the open callback.
     this.openStub.yieldsAsync(null, this.fakeZipFile);
 
-    var onEventsSubscribed = () => {
+    const onEventsSubscribed = () => {
       // Directly call the 'entry' event callback as if
       // we are actually processing entries in a
       // zip.
-      var entryCallback = this.entryStub.firstCall.args[1];
+      const entryCallback = this.entryStub.firstCall.args[1];
       entryCallback.call(null, chromeManifestEntry);
       entryCallback.call(null, chromeContentDir);
       entryCallback.call(null, installRdfEntry);
@@ -187,7 +185,7 @@ describe('xpi.getFiles()', function() {
   });
 
   it('can be configured to exclude files when cached', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     // Populate the file cache:
     myXpi.files = {
       'install.rdf': installRdfEntry,
@@ -211,11 +209,11 @@ describe('xpi.getFiles()', function() {
   });
 
   it('should reject on duplicate entries', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     this.openStub.yieldsAsync(null, this.fakeZipFile);
 
-    var onEventsSubscribed = () => {
-      var entryCallback = this.entryStub.firstCall.args[1];
+    const onEventsSubscribed = () => {
+      const entryCallback = this.entryStub.firstCall.args[1];
       entryCallback.call(null, installRdfEntry);
       entryCallback.call(null, dupeInstallRdfEntry);
     };
@@ -229,7 +227,7 @@ describe('xpi.getFiles()', function() {
   });
 
   it('should reject on errors in open()', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
 
     this.openStub.yieldsAsync(new Error('open test'), this.fakeZipFile);
     return myXpi.getFiles()
@@ -241,37 +239,34 @@ describe('xpi.getFiles()', function() {
 });
 
 
-describe('Xpi.getFile()', function() {
-
+describe('Xpi.getFile()', function getFileCallback() {
   it('should throw if fileStreamType is incorrect', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     expect(() => {
       myXpi.getFile('whatever-file', 'whatever');
     }).toThrowError('Unexpected fileStreamType value "whatever"');
   });
 
   it('should call getFileAsString', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
-    var fakeFile = 'fakeFile';
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const fakeFile = 'fakeFile';
     myXpi.getFileAsString = sinon.stub();
     myXpi.getFile(fakeFile, 'string');
     expect(myXpi.getFileAsString.calledWith(fakeFile)).toBeTruthy();
   });
 
   it('should call getFileAsStream', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
-    var fakeFile = 'fakeFile';
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const fakeFile = 'fakeFile';
     myXpi.getFileAsStream = sinon.stub();
     myXpi.getFile(fakeFile, 'stream');
     expect(myXpi.getFileAsStream.calledWith(fakeFile)).toBeTruthy();
   });
-
 });
 
-describe('Xpi.checkPath()', function() {
-
+describe('Xpi.checkPath()', function checkPathCallback() {
   it('should reject if path does not exist', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
@@ -285,8 +280,8 @@ describe('Xpi.checkPath()', function() {
   });
 
   it('should reject if file is too big', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
-    var fakeFileMeta= {
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const fakeFileMeta = {
       uncompressedSize: 1024 * 1024 * 102,
     };
 
@@ -303,8 +298,8 @@ describe('Xpi.checkPath()', function() {
   });
 
   it('should reject if file is too big for getFileAsString too', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
-    var fakeFileMeta = {
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const fakeFileMeta = {
       uncompressedSize: 1024 * 1024 * 102,
     };
 
@@ -319,7 +314,6 @@ describe('Xpi.checkPath()', function() {
         expect(err.message).toContain('File "install.rdf" is too large');
       });
   });
-
 });
 
 /*
@@ -329,8 +323,7 @@ describe('Xpi.checkPath()', function() {
 
   The location is not relevant, the file contents are.
 */
-describe('Xpi.getChunkAsBuffer()', function() {
-
+describe('Xpi.getChunkAsBuffer()', function getChunkAsBufferCallback() {
   beforeEach(() => {
     this.openReadStreamStub = sinon.stub();
 
@@ -341,11 +334,10 @@ describe('Xpi.getChunkAsBuffer()', function() {
     this.fakeZipLib = {
       open: this.openStub,
     };
-
   });
 
   it('should reject if error in openReadStream', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'install.rdf': installRdfEntry,
     };
@@ -362,14 +354,14 @@ describe('Xpi.getChunkAsBuffer()', function() {
   });
 
   it('should resolve with a buffer', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'install.rdf': installRdfEntry,
     };
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
 
-    var rstream = new Readable();
+    const rstream = new Readable();
     rstream.push('123\n');
     rstream.push(null);
 
@@ -383,12 +375,10 @@ describe('Xpi.getChunkAsBuffer()', function() {
         expect(buffer.toString()).toEqual('12');
       });
   });
-
 });
 
 
-describe('Xpi.getFileAsStream()', function() {
-
+describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
   beforeEach(() => {
     this.openReadStreamStub = sinon.stub();
 
@@ -399,11 +389,10 @@ describe('Xpi.getFileAsStream()', function() {
     this.fakeZipLib = {
       open: this.openStub,
     };
-
   });
 
   it('should reject if error in openReadStream', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
@@ -421,7 +410,7 @@ describe('Xpi.getFileAsStream()', function() {
   });
 
   it('should resolve with a readable stream', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
@@ -429,7 +418,7 @@ describe('Xpi.getFileAsStream()', function() {
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
 
-    var rstream = new Readable();
+    const rstream = new Readable();
     rstream.push('line one\n');
     rstream.push('line two');
     rstream.push(null);
@@ -439,11 +428,12 @@ describe('Xpi.getFileAsStream()', function() {
     return myXpi.getFileAsStream('install.rdf')
       .then((readStream) => {
         return new Promise((resolve, reject) => {
-          var chunks = '';
+          let chunks = '';
           readStream
             .on('readable', () => {
-              var chunk;
-              while (null !== (chunk = readStream.read())) {
+              let chunk;
+              // eslint-disable-next-line no-cond-assign
+              while ((chunk = readStream.read()) !== null) {
                 chunks += chunk.toString();
               }
             })
@@ -454,16 +444,16 @@ describe('Xpi.getFileAsStream()', function() {
               reject(err);
             });
         })
-        .then((chunks) => {
-          var [chunk1, chunk2] = chunks.split('\n');
-          expect(chunk1).toEqual('line one');
-          expect(chunk2).toEqual('line two');
-        });
+          .then((chunks) => {
+            const [chunk1, chunk2] = chunks.split('\n');
+            expect(chunk1).toEqual('line one');
+            expect(chunk2).toEqual('line two');
+          });
       });
   });
 
   it('should resolve with a string', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
@@ -471,7 +461,7 @@ describe('Xpi.getFileAsStream()', function() {
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
 
-    var rstream = new Readable();
+    const rstream = new Readable();
     rstream.push('line one\n');
     rstream.push('line two');
     rstream.push(null);
@@ -485,7 +475,7 @@ describe('Xpi.getFileAsStream()', function() {
   });
 
   it('should strip a BOM', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
@@ -493,7 +483,7 @@ describe('Xpi.getFileAsStream()', function() {
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
 
-    var rstream = fs.createReadStream('tests/fixtures/io/dir3/foo.txt');
+    const rstream = fs.createReadStream('tests/fixtures/io/dir3/foo.txt');
     this.openReadStreamStub.yields(null, rstream);
 
     return myXpi.getFileAsString('install.rdf')
@@ -503,7 +493,7 @@ describe('Xpi.getFileAsStream()', function() {
   });
 
   it('should reject if error in openReadStream from readAsString', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
@@ -521,9 +511,9 @@ describe('Xpi.getFileAsStream()', function() {
   });
 
   it('should reject if stream emits error', () => {
-    var fakeStreamEmitter = new EventEmitter();
+    const fakeStreamEmitter = new EventEmitter();
 
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
@@ -542,11 +532,9 @@ describe('Xpi.getFileAsStream()', function() {
         expect(err.message).toContain('¡hola!');
       });
   });
-
 });
 
-describe('Xpi.getFilesByExt()', function() {
-
+describe('Xpi.getFilesByExt()', function getFilesByExtCallback() {
   beforeEach(() => {
     this.fakeZipLib = {
       open: this.openStub,
@@ -554,7 +542,7 @@ describe('Xpi.getFilesByExt()', function() {
   });
 
   it('should return all JS files', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
@@ -575,7 +563,7 @@ describe('Xpi.getFilesByExt()', function() {
   });
 
   it('should return all CSS files', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'other.css': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
@@ -596,7 +584,7 @@ describe('Xpi.getFilesByExt()', function() {
   });
 
   it('should return all HTML files', () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
@@ -621,12 +609,11 @@ describe('Xpi.getFilesByExt()', function() {
   });
 
   it("should throw if file extension doesn't start with '.'", () => {
-    var myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     return myXpi.getFilesByExt('css')
       .then(unexpectedSuccess)
       .catch((err) => {
         expect(err.message).toContain('File extension must start with');
       });
   });
-
 });

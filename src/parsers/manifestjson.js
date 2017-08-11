@@ -1,9 +1,10 @@
+/* eslint-disable import/namespace */
 import path from 'path';
 
 import RJSON from 'relaxed-json';
-import validate from 'schema/validator';
 import { URL } from 'whatwg-url';
 
+import validate from 'schema/validator';
 import { getConfig } from 'cli';
 import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE } from 'const';
 import log from 'logger';
@@ -21,13 +22,12 @@ function normalizePath(iconPath) {
 }
 
 export default class ManifestJSONParser extends JSONParser {
-
   constructor(jsonString, collector, {
-    filename=MANIFEST_JSON, RelaxedJSON=RJSON,
-    selfHosted=getConfig().argv.selfHosted,
-    io=null,
-  }={}) {
-    super(jsonString, collector, { filename: filename });
+    filename = MANIFEST_JSON, RelaxedJSON = RJSON,
+    selfHosted = getConfig().argv.selfHosted,
+    io = null,
+  } = {}) {
+    super(jsonString, collector, { filename });
 
     this.parse(RelaxedJSON);
 
@@ -49,18 +49,19 @@ export default class ManifestJSONParser extends JSONParser {
 
   errorLookup(error) {
     // This is the default message.
-    var baseObject = messages.JSON_INVALID;
+    let baseObject = messages.JSON_INVALID;
 
     // This is the default from webextension-manifest-schema, but it's not a
     // super helpful error. We'll tidy it up a bit:
     if (error && error.message) {
-      let lowerCaseMessage = error.message.toLowerCase();
+      const lowerCaseMessage = error.message.toLowerCase();
       if (lowerCaseMessage === 'should not have additional properties') {
+        // eslint-disable-next-line no-param-reassign
         error.message = 'is not a valid key or has invalid extra properties';
       }
     }
 
-    var overrides = {
+    const overrides = {
       message: `"${error.dataPath}" ${error.message}`,
       dataPath: error.dataPath,
     };
@@ -79,7 +80,7 @@ export default class ManifestJSONParser extends JSONParser {
     // Arrays can be extremely verbose, this tries to make them a little
     // more sane. Using a regex because there will likely be more as we
     // expand the schema.
-    var match = error.dataPath.match(/^\/(permissions)\/([\d+])/);
+    const match = error.dataPath.match(/^\/(permissions)\/([\d+])/);
     if (match && baseObject.code !== messages.MANIFEST_BAD_PERMISSION.code) {
       baseObject = messages[`MANIFEST_${match[1].toUpperCase()}`];
       overrides.message = singleLineString`/${match[1]}: Unknown ${match[1]}
@@ -92,14 +93,14 @@ export default class ManifestJSONParser extends JSONParser {
   _validate() {
     // Not all messages returned by the schema are fatal to Firefox, messages
     // that are just warnings should be added to this array.
-    var warnings = [messages.MANIFEST_PERMISSIONS.code];
+    const warnings = [messages.MANIFEST_PERMISSIONS.code];
 
     this.isValid = validate(this.parsedJSON);
     if (!this.isValid) {
       log.debug('Schema Validation messages', validate.errors);
 
-      for (let error of validate.errors) {
-        var message = this.errorLookup(error);
+      validate.errors.forEach((error) => {
+        const message = this.errorLookup(error);
 
         if (warnings.includes(message.code)) {
           this.collector.addWarning(message);
@@ -112,7 +113,7 @@ export default class ManifestJSONParser extends JSONParser {
         if (message.code === messages.MANIFEST_BAD_PERMISSION.code) {
           this.isValid = false;
         }
-      }
+      });
     }
 
     if (this.parsedJSON.content_security_policy) {
@@ -145,7 +146,7 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.default_locale) {
-      let msg = path.join(
+      const msg = path.join(
         '_locales', this.parsedJSON.default_locale, 'messages.json');
       if (!this.io.files[msg]) {
         this.collector.addError(messages.NO_MESSAGES_FILE);
@@ -153,10 +154,12 @@ export default class ManifestJSONParser extends JSONParser {
       }
     }
 
-    if (!this.parsedJSON.default_locale && this.io) {
-      let match_re = /^_locales\/.*?\/messages.json$/;
-      for (let filePath in this.io.files) {
-        if (filePath.match(match_re)) {
+    if (!this.parsedJSON.default_locale && this.io && this.io.files) {
+      const matchRx = /^_locales\/.*?\/messages.json$/;
+      const fileList = Object.keys(this.io.files);
+      for (let i = 0; i < fileList.length; i++) {
+        const filePath = fileList[i];
+        if (filePath.match(matchRx)) {
           this.collector.addError(messages.NO_DEFAULT_LOCALE);
           this.isValid = false;
           break;
@@ -168,9 +171,9 @@ export default class ManifestJSONParser extends JSONParser {
   validateIcons() {
     const { icons } = this.parsedJSON;
     Object.keys(icons).forEach((size) => {
-      const path = normalizePath(icons[size]);
-      if (!this.io.files.hasOwnProperty(path)) {
-        this.collector.addError(messages.manifestIconMissing(path));
+      const _path = normalizePath(icons[size]);
+      if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
+        this.collector.addError(messages.manifestIconMissing(_path));
         this.isValid = false;
       }
     });
@@ -182,22 +185,25 @@ export default class ManifestJSONParser extends JSONParser {
     // Not sure about FTP here but CSP spec treats ws/wss as
     // equivalent to http/https.
     const validProtocols = ['ftp:', 'http:', 'https:', 'ws:', 'wss:'];
+    const candidates = ['script-src', 'default-src', 'worker-src'];
 
-    for (const candidate of ['script-src', 'default-src', 'worker-src']) {
-      if (directives.hasOwnProperty(candidate)) {
+    for (let i = 0; i < candidates.length; i++) {
+      /* eslint-disable no-continue */
+      const candidate = candidates[i];
+      if (Object.prototype.hasOwnProperty.call(directives, candidate)) {
         const values = directives[candidate];
 
-        for (let value of values) {
-          value = value.trim();
+        for (let j = 0; j < values.length; j++) {
+          let value = values[j].trim();
 
           if (value.startsWith('moz-extension:')) {
             // Valid, continue...
             continue;
           }
 
-          let hasProtocol = (
+          const hasProtocol = (
             (value.endsWith(':') && validProtocols.includes(value)) ||
-            (validProtocols.some(x => value.startsWith(x))));
+            (validProtocols.some((x) => value.startsWith(x))));
 
           if (hasProtocol) {
             this.collector.addWarning(messages.MANIFEST_CSP);
@@ -220,7 +226,7 @@ export default class ManifestJSONParser extends JSONParser {
 
   getAddonId() {
     try {
-      var id = this.parsedJSON.applications.gecko.id;
+      const id = this.parsedJSON.applications.gecko.id;
       return typeof id === 'undefined' ? null : id;
     } catch (e) {
       log.error('Failed to get the id from the manifest.');

@@ -1,35 +1,35 @@
 import cloneDeep from 'lodash.clonedeep';
 
 import validate from 'schema/validator';
+
 import { validManifest } from './helpers';
 import { assertHasMatchingError } from '../helpers';
 
 
 describe('/homepage_url', () => {
-
   const validURLs = [
     'https://example.com/some/page',
     'http://foo.com',
     '__MSG_foo^&#__',
   ];
 
-  for (let validURL of validURLs) {
+  validURLs.forEach((validURL) => {
     it(`${validURL} should be valid`, () => {
-      var manifest = cloneDeep(validManifest);
+      const manifest = cloneDeep(validManifest);
       manifest.homepage_url = validURL;
       validate(manifest);
       expect(validate.errors).toBeNull();
     });
-  }
+  });
 
   const invalidURLs = [
     '__MSG_',
     'wat',
   ];
 
-  for (let invalidURL of invalidURLs) {
+  invalidURLs.forEach((invalidURL) => {
     it(`${invalidURL} a URI should be invalid`, () => {
-      var manifest = cloneDeep(validManifest);
+      const manifest = cloneDeep(validManifest);
       manifest.homepage_url = invalidURL;
       validate(manifest);
       assertHasMatchingError(validate.errors, {
@@ -40,5 +40,5 @@ describe('/homepage_url', () => {
         message: 'should match pattern "^__MSG_.*?__$"',
       });
     });
-  }
+  });
 });

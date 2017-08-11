@@ -1,25 +1,22 @@
-import { INSTALL_RDF } from 'const';
+import * as constants from 'const';
 import RDFScanner from 'scanners/rdf';
 import InstallRdfParser from 'parsers/installrdf';
 import Linter from 'linter';
-
 import * as messages from 'messages';
-import * as constants from 'const';
 import { singleLineString } from 'utils';
 
 import { unexpectedSuccess, validRDF } from '../helpers';
 
 
-describe('InstallRdfParser._getAddonType()', function() {
-
+describe('InstallRdfParser._getAddonType()', () => {
   it('should reject on multiple em:type nodes', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    var rdf = validRDF('<em:type>2</em:type><em:type>2</em:type>');
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const addonLinter = new Linter({ _: ['bar'] });
+    const rdf = validRDF('<em:type>2</em:type><em:type>2</em:type>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc,
-                                                    addonLinter.collector);
+        const installRdfParser = new InstallRdfParser(xmlDoc,
+          addonLinter.collector);
         return installRdfParser._getAddonType();
       })
       .then(unexpectedSuccess)
@@ -29,30 +26,30 @@ describe('InstallRdfParser._getAddonType()', function() {
   });
 
   it('should collect an error on invalid type value', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    var rdf = validRDF('<em:type>whatevs</em:type>');
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const addonLinter = new Linter({ _: ['bar'] });
+    const rdf = validRDF('<em:type>whatevs</em:type>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc,
-                                                    addonLinter.collector);
+        const installRdfParser = new InstallRdfParser(xmlDoc,
+          addonLinter.collector);
         return installRdfParser._getAddonType();
       })
       .then(() => {
-        var errors = addonLinter.collector.errors;
+        const errors = addonLinter.collector.errors;
         expect(errors.length).toEqual(1);
         expect(errors[0].code).toEqual(messages.RDF_TYPE_INVALID.code);
       });
   });
 
   it('should resolve with mapped type value', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    var rdf = validRDF('<em:type>2</em:type>');
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const addonLinter = new Linter({ _: ['bar'] });
+    const rdf = validRDF('<em:type>2</em:type>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc,
-                                                    addonLinter.collector);
+        const installRdfParser = new InstallRdfParser(xmlDoc,
+          addonLinter.collector);
         return installRdfParser._getAddonType();
       })
       .then((type) => {
@@ -62,13 +59,13 @@ describe('InstallRdfParser._getAddonType()', function() {
   });
 
   it('should resolve with mapped type value for experiments', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    var rdf = validRDF('<em:type>128</em:type>');
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const addonLinter = new Linter({ _: ['bar'] });
+    const rdf = validRDF('<em:type>128</em:type>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc,
-                                                    addonLinter.collector);
+        const installRdfParser = new InstallRdfParser(xmlDoc,
+          addonLinter.collector);
         return installRdfParser._getAddonType();
       })
       .then((type) => {
@@ -78,32 +75,31 @@ describe('InstallRdfParser._getAddonType()', function() {
   });
 
   it('should collect a notice if type is missing', () => {
-    var addonLinter = new Linter({_: ['bar']});
+    const addonLinter = new Linter({ _: ['bar'] });
     // Specifying a different tag e.g. not <em:type>.
-    var rdf = validRDF('<em:name>whatevs</em:name>');
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const rdf = validRDF('<em:name>whatevs</em:name>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc,
-                                                    addonLinter.collector);
+        const installRdfParser = new InstallRdfParser(xmlDoc,
+          addonLinter.collector);
         return installRdfParser._getAddonType();
       })
       .then(() => {
-        var notices = addonLinter.collector.notices;
+        const notices = addonLinter.collector.notices;
         expect(notices.length).toEqual(1);
         expect(notices[0].code).toEqual(messages.RDF_TYPE_MISSING.code);
       });
   });
 });
 
-describe('InstallRdfParser._getVersion()', function() {
-
+describe('InstallRdfParser._getVersion()', () => {
   it('should extract a version', () => {
-    var rdf = validRDF('<em:version>1.0</em:version>');
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const rdf = validRDF('<em:version>1.0</em:version>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        const installRdfParser = new InstallRdfParser(xmlDoc);
         return installRdfParser._getVersion();
       })
       .then((name) => {
@@ -112,31 +108,30 @@ describe('InstallRdfParser._getVersion()', function() {
   });
 
   it('should collect an error if version is missing', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    var rdf = validRDF('<em:version></em:version>');
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const addonLinter = new Linter({ _: ['bar'] });
+    const rdf = validRDF('<em:version></em:version>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc,
-                                                    addonLinter.collector);
+        const installRdfParser = new InstallRdfParser(xmlDoc,
+          addonLinter.collector);
         return installRdfParser._getVersion();
       })
       .then(() => {
-        var errors = addonLinter.collector.errors;
+        const errors = addonLinter.collector.errors;
         expect(errors.length).toEqual(1);
         expect(errors[0].code).toEqual(messages.RDF_VERSION_MISSING.code);
       });
   });
 });
 
-describe('InstallRdfParser._getName()', function() {
-
+describe('InstallRdfParser._getName()', () => {
   it('should extract a name', () => {
-    var rdf = validRDF('<em:name>my-awesome-ext</em:name>');
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const rdf = validRDF('<em:name>my-awesome-ext</em:name>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        const installRdfParser = new InstallRdfParser(xmlDoc);
         return installRdfParser._getName();
       })
       .then((name) => {
@@ -145,31 +140,30 @@ describe('InstallRdfParser._getName()', function() {
   });
 
   it('should collect an error if name is missing', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    var rdf = validRDF('<em:type>1</em:type>');
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const addonLinter = new Linter({ _: ['bar'] });
+    const rdf = validRDF('<em:type>1</em:type>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc,
-                                                    addonLinter.collector);
+        const installRdfParser = new InstallRdfParser(xmlDoc,
+          addonLinter.collector);
         return installRdfParser._getName();
       })
       .then(() => {
-        var errors = addonLinter.collector.errors;
+        const errors = addonLinter.collector.errors;
         expect(errors.length).toEqual(1);
         expect(errors[0].code).toEqual(messages.RDF_NAME_MISSING.code);
       });
   });
 });
 
-describe('InstallRdfParser._getGUID()', function() {
-
+describe('InstallRdfParser._getGUID()', () => {
   it('should extract a guid', () => {
-    var rdf = validRDF('<em:id>myid</em:id>');
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const rdf = validRDF('<em:id>myid</em:id>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        const installRdfParser = new InstallRdfParser(xmlDoc);
         return installRdfParser._getGUID();
       })
       .then((guid) => {
@@ -179,13 +173,13 @@ describe('InstallRdfParser._getGUID()', function() {
   });
 
   it('should return null for guid if not defined', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    var rdf = validRDF('<em:type>1</em:type>');
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const addonLinter = new Linter({ _: ['bar'] });
+    const rdf = validRDF('<em:type>1</em:type>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc,
-                                                    addonLinter.collector);
+        const installRdfParser = new InstallRdfParser(xmlDoc,
+          addonLinter.collector);
         return installRdfParser._getGUID();
       })
       .then((guid) => {
@@ -194,12 +188,12 @@ describe('InstallRdfParser._getGUID()', function() {
   });
 
   it('should return top-level em:id only', () => {
-    var rdf = validRDF(`<em:id>hai</em:id><Description>
+    const rdf = validRDF(`<em:id>hai</em:id><Description>
       <em:id>something</em:id></Description>`);
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        const installRdfParser = new InstallRdfParser(xmlDoc);
         return installRdfParser._getGUID();
       })
       .then((guid) => {
@@ -208,33 +202,32 @@ describe('InstallRdfParser._getGUID()', function() {
   });
 
   it('should collect an error if top-level GUID is too long', () => {
-    var addonLinter = new Linter({_: ['bar']});
-    var longGUID = 'a'.repeat(256);
-    var rdf = validRDF(`<em:id>${longGUID}</em:id>`);
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const addonLinter = new Linter({ _: ['bar'] });
+    const longGUID = 'a'.repeat(256);
+    const rdf = validRDF(`<em:id>${longGUID}</em:id>`);
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc,
-                                                    addonLinter.collector);
+        const installRdfParser = new InstallRdfParser(xmlDoc,
+          addonLinter.collector);
         return installRdfParser._getGUID();
       })
       .then((guid) => {
-        var errors = addonLinter.collector.errors;
+        const errors = addonLinter.collector.errors;
         expect(guid).toEqual(longGUID);
         expect(errors.length).toEqual(1);
         expect(errors[0].code).toEqual(messages.RDF_GUID_TOO_LONG.code);
       });
   });
-
 });
 
 describe('InstallRdfParser._getIsBootstrapped()', () => {
   it('should extract that the addon is restartless', () => {
-    var rdf = validRDF('<em:bootstrap>true</em:bootstrap>');
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const rdf = validRDF('<em:bootstrap>true</em:bootstrap>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        const installRdfParser = new InstallRdfParser(xmlDoc);
         return installRdfParser._getIsBootstrapped();
       })
       .then((bootstrap) => {
@@ -244,11 +237,11 @@ describe('InstallRdfParser._getIsBootstrapped()', () => {
   });
 
   it("should extract that the addon isn't restartless", () => {
-    var rdf = validRDF('<em:bootstrap>false</em:bootstrap>');
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const rdf = validRDF('<em:bootstrap>false</em:bootstrap>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        const installRdfParser = new InstallRdfParser(xmlDoc);
         return installRdfParser._getIsBootstrapped();
       })
       .then((bootstrap) => {
@@ -258,12 +251,12 @@ describe('InstallRdfParser._getIsBootstrapped()', () => {
   });
 
   it('should extract only the top level bootstrap value', () => {
-    var rdf = validRDF(`<em:bootstrap>true</em:bootstrap><Description>
+    const rdf = validRDF(`<em:bootstrap>true</em:bootstrap><Description>
       <em:bootstrap>false</em:bootstrap></Description>`);
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        const installRdfParser = new InstallRdfParser(xmlDoc);
         return installRdfParser._getIsBootstrapped();
       })
       .then((bootstrap) => {
@@ -273,11 +266,11 @@ describe('InstallRdfParser._getIsBootstrapped()', () => {
   });
 
   it("should assume that an addon isn't restartless", () => {
-    var rdf = validRDF('<em:id>123</em:id>');
-    var rdfScanner = new RDFScanner(rdf, INSTALL_RDF);
+    const rdf = validRDF('<em:id>123</em:id>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        const installRdfParser = new InstallRdfParser(xmlDoc);
         return installRdfParser._getIsBootstrapped();
       })
       .then((bootstrap) => {
@@ -287,15 +280,14 @@ describe('InstallRdfParser._getIsBootstrapped()', () => {
   });
 });
 
-describe('InstallRdfParser._getDescriptionNode()', function() {
-
+describe('InstallRdfParser._getDescriptionNode()', () => {
   it('should reject on missing RDF node', () => {
-    var badRdf = singleLineString`<xml><RDF><Description>hai</Description>
+    const badRdf = singleLineString`<xml><RDF><Description>hai</Description>
       <Description>there</Description></RDF></xml>`;
-    var rdfScanner = new RDFScanner(badRdf, INSTALL_RDF);
+    const rdfScanner = new RDFScanner(badRdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        const installRdfParser = new InstallRdfParser(xmlDoc);
         return installRdfParser._getDescriptionNode();
       })
       .then(unexpectedSuccess)
@@ -308,14 +300,13 @@ describe('InstallRdfParser._getDescriptionNode()', function() {
 });
 
 
-describe('InstallRdfParser._getRDFNode()', function() {
-
+describe('InstallRdfParser._getRDFNode()', () => {
   it('should reject on missing RDF node', () => {
-    var badRdf = '<xml><wat>whatever</wat></xml>';
-    var rdfScanner = new RDFScanner(badRdf, INSTALL_RDF);
+    const badRdf = '<xml><wat>whatever</wat></xml>';
+    const rdfScanner = new RDFScanner(badRdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        const installRdfParser = new InstallRdfParser(xmlDoc);
         return installRdfParser._getRDFNode();
       })
       .then(unexpectedSuccess)
@@ -325,11 +316,11 @@ describe('InstallRdfParser._getRDFNode()', function() {
   });
 
   it('should reject on multiple RDF nodes', () => {
-    var badRdf = '<xml><RDF>whatever</RDF><RDF>Something else</RDF></xml>';
-    var rdfScanner = new RDFScanner(badRdf, INSTALL_RDF);
+    const badRdf = '<xml><RDF>whatever</RDF><RDF>Something else</RDF></xml>';
+    const rdfScanner = new RDFScanner(badRdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()
       .then((xmlDoc) => {
-        var installRdfParser = new InstallRdfParser(xmlDoc);
+        const installRdfParser = new InstallRdfParser(xmlDoc);
         return installRdfParser._getRDFNode();
       })
       .then(unexpectedSuccess)
@@ -337,5 +328,4 @@ describe('InstallRdfParser._getRDFNode()', function() {
         expect(err.message).toEqual('Multiple RDF tags found');
       });
   });
-
 });

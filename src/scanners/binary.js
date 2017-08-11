@@ -13,10 +13,8 @@ export default class BinaryScanner extends BaseScanner {
   }
 
   check(buffer, values) {
-    for (let v in values) {
-      if (values[v] !== buffer[v]) {
-        return;
-      }
+    if (Object.keys(values).some((v) => values[v] !== buffer[v])) {
+      return;
     }
     this.linterMessages.push(
       Object.assign({}, messages.FLAGGED_FILE_TYPE, {
@@ -27,10 +25,10 @@ export default class BinaryScanner extends BaseScanner {
   }
 
   scan() {
-    var buffer = this.contents;
-    for (let entry of constants.FLAGGED_FILE_MAGIC_NUMBERS) {
+    const buffer = this.contents;
+    constants.FLAGGED_FILE_MAGIC_NUMBERS.forEach((entry) => {
       this.check(buffer, entry);
-    }
+    });
 
     return Promise.resolve({
       linterMessages: this.linterMessages,

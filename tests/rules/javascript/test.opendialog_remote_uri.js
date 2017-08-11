@@ -4,37 +4,35 @@ import * as messages from 'messages';
 
 
 describe('opendialog_remote_uri', () => {
-
   it('should warn on remote uris passed to openDialog', () => {
-    var code = `foo.openDialog("https://foo.com/bar/");
+    const code = `foo.openDialog("https://foo.com/bar/");
                 foo.openDialog("http://foo.com/bar/");
                 foo.openDialog("ftps://foo.com/bar/");
                 foo.openDialog("ftp://foo.com/bar/");
                 foo.openDialog("//foo.com/bar/");
                 foo.openDialog("data:whatever");`;
-    var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+    const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(6);
-        for (let message of linterMessages) {
+        linterMessages.forEach((message) => {
           expect(message.code).toEqual(messages.OPENDIALOG_REMOTE_URI.code);
           expect(message.type).toEqual(VALIDATION_WARNING);
-        }
+        });
       });
   });
 
   it('should not warn on local uris passed to openDialog', () => {
-    var code = `foo.openDialog("/foo/bar/");
+    const code = `foo.openDialog("/foo/bar/");
                 foo.openDialog("chrome://foo.com/bar/");
                 foo.openDialog("bar");
                 foo.openDialog("resource://foo.com/bar/")`;
-    var jsScanner = new JavaScriptScanner(code, 'goodcode.js');
+    const jsScanner = new JavaScriptScanner(code, 'goodcode.js');
 
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(0);
       });
   });
-
 });

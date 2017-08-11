@@ -3,7 +3,6 @@ import stripBomStream from 'strip-bom-stream';
 import firstChunkStream from 'first-chunk-stream';
 
 import { IOBase } from 'io/base';
-
 import log from 'logger';
 import { singleLineString } from 'utils';
 
@@ -18,8 +17,7 @@ import { singleLineString } from 'utils';
  */
 
 export class Xpi extends IOBase {
-
-  constructor(filePath, zipLib=yauzl) {
+  constructor(filePath, zipLib = yauzl) {
     super(filePath);
     this.zipLib = zipLib;
   }
@@ -30,7 +28,7 @@ export class Xpi extends IOBase {
         if (err) {
           return reject(err);
         }
-        resolve(zipfile);
+        return resolve(zipfile);
       });
     });
   }
@@ -70,7 +68,6 @@ export class Xpi extends IOBase {
 
       return this.open()
         .then((zipfile) => {
-
           zipfile.on('entry', (entry) => {
             this.handleEntry(entry, reject);
           });
@@ -97,7 +94,7 @@ export class Xpi extends IOBase {
   }
 
   checkPath(path) {
-    if (!this.files.hasOwnProperty(path)) {
+    if (!Object.prototype.hasOwnProperty.call(this.files, path)) {
       throw new Error(`Path "${path}" does not exist in this XPI`);
     }
 
@@ -115,7 +112,7 @@ export class Xpi extends IOBase {
             if (err) {
               return reject(err);
             }
-            resolve(readStream.pipe(stripBomStream()));
+            return resolve(readStream.pipe(stripBomStream()));
           });
         })
         .catch(reject);
@@ -126,7 +123,7 @@ export class Xpi extends IOBase {
     return this.getFileAsStream(path)
       .then((fileStream) => {
         return new Promise((resolve, reject) => {
-          var fileString = '';
+          let fileString = '';
           fileStream.on('data', (chunk) => {
             fileString += chunk;
           });
@@ -146,13 +143,14 @@ export class Xpi extends IOBase {
       this.checkPath(path);
       return this.open()
         .then((zipfile) => {
+          // eslint-disable-next-line consistent-return
           zipfile.openReadStream(this.files[path], (err, readStream) => {
             if (err) {
               return reject(err);
             }
             readStream.pipe(
-              firstChunkStream({chunkLength: chunkLength},
-                function(_, enc) {
+              firstChunkStream({ chunkLength },
+                (_, enc) => {
                   resolve(enc);
                 }
               )

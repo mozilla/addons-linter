@@ -1,12 +1,12 @@
-var webpackConfig = require('../webpack.config.js');
+const webpackConfig = require('../webpack.config.js');
 
-var defaultResolve = webpackConfig.resolve;
+const defaultResolve = webpackConfig.resolve;
 
 function noddyClone(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 
-var buildResolve = noddyClone(defaultResolve);
+const buildResolve = noddyClone(defaultResolve);
 buildResolve.modules.push('src/');
 
 module.exports = {

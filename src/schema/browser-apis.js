@@ -8,19 +8,12 @@ const schemas = schemaList.reduce((all, current) => ({
   [current.id]: current,
 }), {});
 
-export function hasBrowserApi(namespace, property) {
-  const schema = schemas[namespace];
-  // We "have" the API if it's deprecated or temporary so
-  // we don't double warn.
-  if (isDeprecatedApi(namespace, property)
-    || isTemporaryApi(namespace, property)) {
-    return true;
-  }
-  if (!schema) {
-    return false;
-  }
-  return hasObjectProperty(schema, property)
-    || hasArrayProperty(schema, property);
+export function isDeprecatedApi(namespace, property) {
+  return DEPRECATED_APIS.includes(`${namespace}.${property}`);
+}
+
+export function isTemporaryApi(namespace, property) {
+  return TEMPORARY_APIS.includes(`${namespace}.${property}`);
 }
 
 function hasObjectProperty(schema, property) {
@@ -39,10 +32,17 @@ function hasArrayProperty(schema, property) {
   });
 }
 
-export function isDeprecatedApi(namespace, property) {
-  return DEPRECATED_APIS.includes(`${namespace}.${property}`);
-}
-
-export function isTemporaryApi(namespace, property) {
-  return TEMPORARY_APIS.includes(`${namespace}.${property}`);
+export function hasBrowserApi(namespace, property) {
+  const schema = schemas[namespace];
+  // We "have" the API if it's deprecated or temporary so
+  // we don't double warn.
+  if (isDeprecatedApi(namespace, property)
+    || isTemporaryApi(namespace, property)) {
+    return true;
+  }
+  if (!schema) {
+    return false;
+  }
+  return hasObjectProperty(schema, property)
+    || hasArrayProperty(schema, property);
 }

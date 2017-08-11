@@ -6,7 +6,7 @@ import { DANGEROUS_EVAL } from 'messages';
 // https://github.com/eslint/eslint/blob/master/tests/lib/rules/no-eval.js
 // Please make sure to keep them up-to-date and report upstream errors.
 describe('no_eval', () => {
-  var validCodes = [
+  const validCodes = [
     'Eval(foo)',
 
     // User-defined eval methods.
@@ -23,19 +23,19 @@ describe('no_eval', () => {
     'window.noeval("foo")',
   ];
 
-  for (const code of validCodes) {
+  validCodes.forEach((code) => {
     it(`should allow the use of user defined eval: ${code}`, () => {
-      var jsScanner = new JavaScriptScanner(code, 'badcode.js');
+      const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
+        .then(({ linterMessages }) => {
           expect(linterMessages.length).toEqual(0);
         });
     });
-  }
+  });
 
 
-  var invalidCodes = [
+  const invalidCodes = [
     {
       code: '(0, eval)("foo")',
       message: ['eval can be harmful.'],
@@ -108,13 +108,13 @@ describe('no_eval', () => {
     },
   ];
 
-  for (const code of invalidCodes) {
+  invalidCodes.forEach((code) => {
     it(`should not allow the use of eval: ${code.code}`, () => {
-      var jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
+      const jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
       return jsScanner.scan()
-        .then(({linterMessages}) => {
-          linterMessages = linterMessages.sort();
+        .then(({ linterMessages }) => {
+          linterMessages.sort();
 
           expect(linterMessages.length).toEqual(code.message.length);
 
@@ -131,5 +131,5 @@ describe('no_eval', () => {
           });
         });
     });
-  }
+  });
 });

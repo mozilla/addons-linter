@@ -1,7 +1,7 @@
 // Get a formatted commit message to review changes from the commit log
 // github will turn some of these into clickable links
 function getDeployMessage() {
-  var ret = '\n\n';
+  let ret = '\n\n';
   if (process.env.TRAVIS !== 'true') {
     ret += 'missing env vars for travis-ci';
     return ret;

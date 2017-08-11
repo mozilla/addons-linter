@@ -8,13 +8,14 @@ import { getVariable } from 'utils';
 export default {
   create(context) {
     return {
-      CallExpression: function(node) {
+      // eslint-disable-next-line consistent-return
+      CallExpression(node) {
         if (node.callee.name === 'require' &&
             node.arguments &&
             node.arguments.length) {
-          var firstArg = node.arguments[0];
+          const firstArg = node.arguments[0];
           if (firstArg.type === 'Identifier') {
-            var pathVar = getVariable(context, firstArg.name);
+            const pathVar = getVariable(context, firstArg.name);
             if (typeof pathVar === 'undefined') {
               // We infer this is probably a global.
               return context.report(node, UNEXPECTED_GLOGAL_ARG.code);

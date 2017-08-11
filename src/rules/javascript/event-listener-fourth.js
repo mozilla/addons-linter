@@ -4,32 +4,29 @@ import { getNodeReference } from 'utils';
 export default {
   create(context) {
     return {
-      CallExpression: function(node) {
+      // eslint-disable-next-line consistent-return
+      CallExpression(node) {
         let referenceNode = getNodeReference(context, node.callee);
         if (typeof referenceNode.property !== 'undefined' &&
             referenceNode.property.type === 'Identifier' &&
             referenceNode.property.name === 'addEventListener') {
-
           if (node.arguments.length > 3) {
-            let wantsUntrusted = node.arguments[3];
-            switch (wantsUntrusted.type) {
-              case 'Literal':
-                if (wantsUntrusted.value) {
-                  return context.report({
-                    node: node,
-                    message: EVENT_LISTENER_FOURTH.code,
-                  });
-                }
-                break;
-              case 'Identifier':
-                referenceNode = getNodeReference(context, wantsUntrusted);
-                if (referenceNode.value) {
-                  return context.report({
-                    node: node,
-                    message: EVENT_LISTENER_FOURTH.code,
-                  });
-                }
-                break;
+            const wantsUntrusted = node.arguments[3];
+            if (wantsUntrusted.type === 'Literal') {
+              if (wantsUntrusted.value) {
+                return context.report({
+                  node,
+                  message: EVENT_LISTENER_FOURTH.code,
+                });
+              }
+            } else if (wantsUntrusted.type === 'Identifier') {
+              referenceNode = getNodeReference(context, wantsUntrusted);
+              if (referenceNode.value) {
+                return context.report({
+                  node,
+                  message: EVENT_LISTENER_FOURTH.code,
+                });
+              }
             }
           }
         }

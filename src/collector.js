@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-named-default
 import { default as Message } from 'message';
 import * as constants from 'const';
 
@@ -6,37 +7,36 @@ import * as constants from 'const';
 
 
 export default class Collector {
-
   constructor(config = {}) {
     this.config = config;
     this.messagesByDataPath = {};
     this.scannedFiles = {};
 
-    for (let type of constants.MESSAGE_TYPES) {
+    constants.MESSAGE_TYPES.forEach((type) => {
       this[`${type}s`] = [];
-    }
+    });
   }
 
   get length() {
-    var len = 0;
-    for (let type of constants.MESSAGE_TYPES) {
+    let len = 0;
+    constants.MESSAGE_TYPES.forEach((type) => {
       len += this[`${type}s`].length;
-    }
+    });
     return len;
   }
 
-  _addMessage(type, opts, _Message=Message) {
+  _addMessage(type, opts, _Message = Message) {
     // Filter the messages reported by file when the Linter has been configured
     // with a custom scanFile array using --scan-file CLI option.
     if (this.config.scanFile && opts.file) {
-      if (!this.config.scanFile.some(v => v === opts.file)) {
+      if (!this.config.scanFile.some((v) => v === opts.file)) {
         return;
       }
     }
 
     // Message will throw for incorrect types.
     // we have a test to ensure that is the case.
-    var message = new _Message(type, opts);
+    const message = new _Message(type, opts);
     if (typeof this.messageList(type) === 'undefined') {
       throw new Error(`Message type "${type}" not currently collected`);
     }
@@ -69,14 +69,13 @@ export default class Collector {
 
   isDuplicateMessage(message) {
     if (message.dataPath) {
-      let previousMessages = this.messagesAtDataPath(message.dataPath);
+      const previousMessages = this.messagesAtDataPath(message.dataPath);
       if (message.file === 'manifest.json') {
         return previousMessages.length > 0;
-      } else {
-        return previousMessages.some((prevMessage) => {
-          return prevMessage.matches(message);
-        });
       }
+      return previousMessages.some((prevMessage) => {
+        return prevMessage.matches(message);
+      });
     }
     return false;
   }
@@ -105,5 +104,4 @@ export default class Collector {
   addWarning(opts) {
     this._addMessage(constants.VALIDATION_WARNING, opts);
   }
-
 }

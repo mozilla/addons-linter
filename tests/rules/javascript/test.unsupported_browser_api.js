@@ -8,7 +8,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(1);
         expect(linterMessages[0].message).toEqual(
           'gcm.register is not supported'
@@ -23,7 +23,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(1);
         expect(linterMessages[0].message).toEqual(
           'gcm.register is not supported'
@@ -38,7 +38,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(0);
       });
   });
@@ -50,7 +50,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@supported-api' },
     });
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(0);
       });
   });
@@ -64,7 +64,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@supported-api' },
     });
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(0);
       });
   });
@@ -78,7 +78,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(1);
       });
   });
@@ -89,7 +89,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@supported-api', permissions: ['menus'] },
     });
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(0);
       });
   });
@@ -100,7 +100,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@supported-api', permissions: ['contextMenus'] },
     });
     return jsScanner.scan()
-      .then(({linterMessages}) => {
+      .then(({ linterMessages }) => {
         expect(linterMessages.length).toEqual(0);
       });
   });

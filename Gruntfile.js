@@ -1,15 +1,16 @@
-var fs = require('fs');
-var md = require('markdown-it')();
-var emoji = require('markdown-it-emoji');
-var markdownItAnchor = require('markdown-it-anchor');
+/* eslint-disable import/no-extraneous-dependencies, global-require */
+const fs = require('fs');
+
+const md = require('markdown-it')();
+const emoji = require('markdown-it-emoji');
+const markdownItAnchor = require('markdown-it-anchor');
 
 
-module.exports = function(grunt) {
-
+module.exports = (grunt) => {
   // load all grunt tasks matching the ['grunt-*', '@*/grunt-*'] patterns
   require('load-grunt-tasks')(grunt);
 
-  var configs = require('load-grunt-configs')(grunt, {
+  const configs = require('load-grunt-configs')(grunt, {
     config: {
       src: 'tasks/*.js',
     },
@@ -17,16 +18,16 @@ module.exports = function(grunt) {
 
   grunt.initConfig(configs);
 
-  grunt.registerTask('build-rules-html', 'Build the rules', function() {
+  grunt.registerTask('build-rules-html', 'Build the rules', () => {
     md.use(emoji);
     md.use(markdownItAnchor, {
       permalink: true,
     });
-    var markdown = md.render(fs.readFileSync('docs/rules.md',
-                                             { encoding: 'utf8' }));
-    var template = fs.readFileSync('docs/rules.tmpl',
-                                   { encoding: 'utf8' });
-    var html = template.replace('{{MARKDOWN}}', markdown);
+    const markdown = md.render(fs.readFileSync('docs/rules.md',
+      { encoding: 'utf8' }));
+    const template = fs.readFileSync('docs/rules.tmpl',
+      { encoding: 'utf8' });
+    const html = template.replace('{{MARKDOWN}}', markdown);
     fs.writeFileSync('docs/html/index.html', html);
   });
 
@@ -38,7 +39,7 @@ module.exports = function(grunt) {
     'webpack:build',
   ]);
 
-  grunt.registerTask('publish-rules', 'travis rule doc publishing', function() {
+  grunt.registerTask('publish-rules', 'travis rule doc publishing', () => {
     // Require the rules build and copy.
     this.requires(['copy', 'build-rules-html']);
 

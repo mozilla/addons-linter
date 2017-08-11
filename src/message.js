@@ -4,7 +4,7 @@ import { singleLineString } from 'utils';
 
 // These are the props we expect to pull out of
 // the data object passed to the Message constructor.
-export var props = [
+export const props = [
   'code',
   'message',
   'description',
@@ -14,30 +14,29 @@ export var props = [
   'dataPath',
 ];
 
-export var requiredProps = [
+export const requiredProps = [
   'code',
   'message',
   'description',
 ];
 
 export default class Message {
-
-  constructor(type, data={}) {
+  constructor(type, data = {}) {
     this.type = type;
 
-    if (data.hasOwnProperty('filename')) {
+    if (Object.prototype.hasOwnProperty.call(data, 'filename')) {
       throw new Error('The key for the file is "file" not "filename"');
     }
 
-    for (let prop of props) {
+    props.forEach((prop) => {
       this[prop] = data[prop];
-    }
-    var missingProps = [];
-    for (let prop of requiredProps) {
+    });
+    const missingProps = [];
+    requiredProps.forEach((prop) => {
       if (typeof this[prop] === 'undefined') {
         missingProps.push(prop);
       }
-    }
+    });
     if (missingProps.length) {
       throw new Error(singleLineString`Message data object is missing the
         following props: ${missingProps.join(', ')}`);
@@ -61,5 +60,4 @@ export default class Message {
       return this[prop] === other[prop];
     });
   }
-
 }

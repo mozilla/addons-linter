@@ -1,21 +1,18 @@
 import * as path from 'path';
 import { createReadStream } from 'fs';
+
 import firstChunkStream from 'first-chunk-stream';
 import stripBomStream from 'strip-bom-stream';
 
 import { IOBase } from 'io/base';
 import { walkPromise } from 'io/utils';
+import log from 'logger';
 
 import { singleLineString } from '../utils';
 
 
-import log from 'logger';
-
-
 export class Directory extends IOBase {
-
-  getFiles(_walkPromise=walkPromise) {
-
+  getFiles(_walkPromise = walkPromise) {
     // If we have already processed this directory and have data
     // on this instance return that.
     if (Object.keys(this.files).length) {
@@ -36,7 +33,7 @@ export class Directory extends IOBase {
   }
 
   getPath(relativeFilePath) {
-    if (!this.files.hasOwnProperty(relativeFilePath)) {
+    if (!Object.prototype.hasOwnProperty.call(this.files, relativeFilePath)) {
       return Promise.reject(
         new Error(`Path "${relativeFilePath}" does not exist in this dir.`));
     }
@@ -46,8 +43,8 @@ export class Directory extends IOBase {
         new Error(`File "${relativeFilePath}" is too large. Aborting`));
     }
 
-    var absoluteDirPath = path.resolve(this.path);
-    var filePath = path.resolve(path.join(absoluteDirPath, relativeFilePath));
+    const absoluteDirPath = path.resolve(this.path);
+    const filePath = path.resolve(path.join(absoluteDirPath, relativeFilePath));
 
     // This is belt and braces. Should never happen that a file was in
     // the files object and yet doesn't meet these requirements.
@@ -71,14 +68,15 @@ export class Directory extends IOBase {
       });
   }
 
-  getFileAsString(path) {
-    return this.getFileAsStream(path)
+  getFileAsString(_path) {
+    return this.getFileAsStream(_path)
       .then((readStream) => {
         return new Promise((resolve, reject) => {
-          var content = '';
+          let content = '';
           readStream.on('readable', () => {
-            var chunk;
-            while (null !== (chunk = readStream.read())) {
+            let chunk;
+            // eslint-disable-next-line no-cond-assign
+            while ((chunk = readStream.read()) !== null) {
               content += chunk.toString();
             }
           });
@@ -103,13 +101,13 @@ export class Directory extends IOBase {
             encoding: null,
             autoClose: true,
           })
-          .pipe(
-            firstChunkStream({chunkLength: chunkLength},
-              function(_, enc) {
-                resolve(enc);
-              }
-            )
-          );
+            .pipe(
+              firstChunkStream({ chunkLength },
+                (_, enc) => {
+                  resolve(enc);
+                }
+              )
+            );
         });
       });
   }

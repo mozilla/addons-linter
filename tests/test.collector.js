@@ -1,37 +1,38 @@
+// eslint-disable-next-line import/no-named-default
 import { default as Collector } from 'collector';
+
 import { fakeMessageData } from './helpers';
 
-describe('Collector', function() {
-
+describe('Collector', () => {
   it('should be thrown an error if Message is created without a type', () => {
     expect(() => {
-      var collection = new Collector();
+      const collection = new Collector();
       collection._addMessage();
     }).toThrow(/Message type "undefined" is not/);
   });
 
   it('should be thrown an error if Message is created with bad type', () => {
     expect(() => {
-      var collection = new Collector();
+      const collection = new Collector();
       collection._addMessage('whatevs');
     }).toThrow(/Message type "whatevs" is not/);
   });
 
   it('should be throw an error type is not collected', () => {
     expect(() => {
-      var FakeMessage = sinon.stub();
-      var collection = new Collector();
+      const FakeMessage = sinon.stub();
+      const collection = new Collector();
       collection._addMessage('whatevar', fakeMessageData, FakeMessage);
     }).toThrow(/Message type "whatevar" not currently collected/);
   });
 
   it('length should start at 0', () => {
-    var collection = new Collector();
+    const collection = new Collector();
     expect(collection.length).toEqual(0);
   });
 
   it('length should reflect number of messages', () => {
-    var collection = new Collector();
+    const collection = new Collector();
     expect(collection.length).toEqual(0);
     collection.addError(fakeMessageData);
     expect(collection.length).toEqual(1);
@@ -42,7 +43,7 @@ describe('Collector', function() {
   });
 
   it('should create an error message', () => {
-    var collection = new Collector();
+    const collection = new Collector();
     collection.addError(fakeMessageData);
     expect(collection.errors[0].type).toEqual('error');
     expect(collection.notices.length).toEqual(0);
@@ -50,7 +51,7 @@ describe('Collector', function() {
   });
 
   it('should create a notice message', () => {
-    var collection = new Collector();
+    const collection = new Collector();
     collection.addNotice(fakeMessageData);
     expect(collection.notices[0].type).toEqual('notice');
     expect(collection.errors.length).toEqual(0);
@@ -58,7 +59,7 @@ describe('Collector', function() {
   });
 
   it('should create a warning message', () => {
-    var collection = new Collector();
+    const collection = new Collector();
     collection.addWarning(fakeMessageData);
     expect(collection.warnings[0].type).toEqual('warning');
     expect(collection.errors.length).toEqual(0);
@@ -66,7 +67,7 @@ describe('Collector', function() {
   });
 
   it('should not add a duplicate message with a dataPath', () => {
-    var collection = new Collector();
+    const collection = new Collector();
     collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
     collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
     expect(collection.warnings.length).toEqual(1);
@@ -76,7 +77,7 @@ describe('Collector', function() {
   });
 
   it('should not add duplicate files to scannedFiles', () => {
-    var collection = new Collector();
+    const collection = new Collector();
 
     collection.recordScannedFile('foo.js', 'test');
     collection.recordScannedFile('foo.js', 'test');
@@ -88,7 +89,7 @@ describe('Collector', function() {
   });
 
   it('for manifest should add one message for dataPath', () => {
-    var collection = new Collector();
+    const collection = new Collector();
     collection.addError({
       ...fakeMessageData,
       file: 'manifest.json',
@@ -104,7 +105,7 @@ describe('Collector', function() {
   });
 
   it('should add a message that differs on line number', () => {
-    var collection = new Collector();
+    const collection = new Collector();
     collection.addWarning({
       ...fakeMessageData,
       dataPath: '/foo',
@@ -125,7 +126,7 @@ describe('Collector', function() {
   });
 
   it('should add a message that differs on one prop', () => {
-    var collection = new Collector();
+    const collection = new Collector();
     collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
     collection.addWarning({
       ...fakeMessageData,
@@ -139,7 +140,7 @@ describe('Collector', function() {
   });
 
   it('should filter message by filename if config.scanFile is defined', () => {
-    var collection = new Collector({
+    const collection = new Collector({
       scanFile: ['test.js', 'no-match-file.js'],
     });
 
@@ -197,10 +198,9 @@ describe('Collector', function() {
   });
 
   it('should throw when getting messages for an undefined dataPath', () => {
-    var collection = new Collector();
+    const collection = new Collector();
     expect(() => {
       collection.messagesAtDataPath(undefined);
     }).toThrow(/dataPath is required/);
   });
-
 });

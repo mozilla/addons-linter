@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { assert } from 'assert';
+
 import isMatchWith from 'lodash.ismatchwith';
 import Hash from 'hashish';
 
@@ -14,7 +15,7 @@ export const fakeMessageData = {
 };
 
 export function getRuleFiles(ruleType) {
-  var ruleFiles = fs.readdirSync(`src/rules/${ruleType}`);
+  const ruleFiles = fs.readdirSync(`src/rules/${ruleType}`);
 
   return ruleFiles.filter((value) => {
     return value !== 'index.js';
@@ -30,8 +31,8 @@ export function getRuleFiles(ruleType) {
  * Copied from ESLint tests; used to test {allowInlineConfig: false} settings.
  */
 export function getVariable(scope, name) {
-  var variable = null;
-  scope.variables.some(function(v) {
+  let variable = null;
+  scope.variables.some((v) => {
     if (v.name === name) {
       variable = v;
       return true;
@@ -41,7 +42,7 @@ export function getVariable(scope, name) {
   return variable;
 }
 
-export function metadataPassCheck(contents, filename, {addonMetadata=null}={}) {
+export function metadataPassCheck(contents, filename, { addonMetadata = null } = {}) {
   if (!addonMetadata || typeof addonMetadata.guid === 'undefined') {
     assert.fail(null, null, 'Add-on metadata not found');
   }
@@ -49,7 +50,7 @@ export function metadataPassCheck(contents, filename, {addonMetadata=null}={}) {
   return [];
 }
 
-export function validHTML(contents='') {
+export function validHTML(contents = '') {
   return singleLineString`<!DOCTYPE html>
   <html>
     <head>
@@ -62,7 +63,7 @@ export function validHTML(contents='') {
   </html>`;
 }
 
-export function validMetadata(metadata={}) {
+export function validMetadata(metadata = {}) {
   return Object.assign({}, {
     type: PACKAGE_EXTENSION,
   }, metadata);
@@ -107,35 +108,37 @@ function isMatch(target, expected) {
 }
 
 export function assertHasMatchingError(errors, expected) {
-  expect(Array.isArray(errors)).toBeTruthy();
+  expect(Array.isArray(errors)).toBe(true);
   expect(errors.length).toBeGreaterThan(0);
-  expect(errors.some((error) => isMatch(error, expected))).toBeTruthy();
+  expect(errors.some((error) => isMatch(error, expected))).toBe(true);
 }
 
 /* `checkOutput` is copied and modified directly from yargs test helpers */
+// eslint-disable-next-line consistent-return
 export function checkOutput(func, argv, callback) {
-  var exitCode = null;
-  var _exit = process.exit;
-  var _emit = process.emit;
-  var _env = process.env;
-  var _argv = process.argv;
+  /* eslint-disable func-names */
+  let exitCode = null;
+  const _exit = process.exit;
+  const _emit = process.emit;
+  const _env = process.env;
+  const _argv = process.argv;
   var _error = console.error; // eslint-disable-line
   var _log = console.log; // eslint-disable-line
   var _warn = console.warn; // eslint-disable-line
 
   process.exit = function(code) { exitCode = code; };
   process.env = Hash.merge(process.env, { _: 'node' });
-  process.argv = argv || [ './usage' ];
+  process.argv = argv || ['./usage'];
 
-  var errors = [];
-  var logs = [];
-  var warnings = [];
+  const errors = [];
+  const logs = [];
+  const warnings = [];
 
-  console.error = function (msg) { errors.push(msg); }; // eslint-disable-line
-  console.log = function (msg) { logs.push(msg); }; // eslint-disable-line
-  console.warn = function (msg) { warnings.push(msg); }; // eslint-disable-line
+  console.error = function(msg) { errors.push(msg); }; // eslint-disable-line
+  console.log = function(msg) { logs.push(msg); }; // eslint-disable-line
+  console.warn = function(msg) { warnings.push(msg); }; // eslint-disable-line
 
-  var result;
+  let result;
 
   function reset() {
     process.exit = _exit;
@@ -152,11 +155,11 @@ export function checkOutput(func, argv, callback) {
     reset();
 
     return {
-      errors: errors,
-      logs: logs,
-      warnings: warnings,
-      exitCode: exitCode,
-      result: result,
+      errors,
+      logs,
+      warnings,
+      exitCode,
+      result,
     };
   }
 
@@ -173,6 +176,7 @@ export function checkOutput(func, argv, callback) {
         return true;
       }
 
+      // eslint-disable-next-line prefer-rest-params
       return _emit.apply(this, arguments);
     };
 

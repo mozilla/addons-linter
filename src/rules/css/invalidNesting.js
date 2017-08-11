@@ -2,10 +2,11 @@ import * as messages from 'messages';
 
 
 export function invalidNesting(cssNode, filename,
-                              {startLine, startColumn}={}) {
-  var messageList = [];
+  { startLine, startColumn } = {}) {
+  const messageList = [];
   if (cssNode.type === 'rule') {
-    for (let node of cssNode.nodes) {
+    for (let i = 0; i < cssNode.nodes.length; i++) {
+      const node = cssNode.nodes[i];
       if (node.type === 'rule') {
         messageList.push(
           Object.assign({}, messages.INVALID_SELECTOR_NESTING, {

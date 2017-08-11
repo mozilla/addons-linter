@@ -1,16 +1,17 @@
+/* eslint-disable consistent-return */
 import { MOZINDEXEDDB_PROPERTY } from 'messages';
 
 
 export default {
   create(context) {
     return {
-      Identifier: function(node) {
+      Identifier(node) {
         // Catches `var foo = 'mozIndexedDB'; var myDatabase = window[foo];`.
         if (node.parent.init && node.parent.init.value === 'mozIndexedDB') {
           return context.report(node, MOZINDEXEDDB_PROPERTY.code);
         }
       },
-      MemberExpression: function(node) {
+      MemberExpression(node) {
         // Catches `var foo = window.mozIndexedDB;` and
         // `var foo = window['mozIndexedDB'];`.
         if (node.property.name === 'mozIndexedDB' ||

@@ -13,16 +13,17 @@ export const DEPRECATED_ENTITIES = [
 export default {
   create(context) {
     return {
-      CallExpression: function(node) {
-        let referenceNode = getNodeReference(context, node.callee);
+      // eslint-disable-next-line consistent-return
+      CallExpression(node) {
+        const referenceNode = getNodeReference(context, node.callee);
         // We're only looking for calls that look like `foo.bar()`.
         if (typeof referenceNode.object !== 'undefined' &&
             referenceNode.property.type === 'Identifier' &&
             referenceNode.object.type === 'Identifier') {
+          const referenceObject = getNodeReference(context, referenceNode.object);
 
-          let referenceObject = getNodeReference(context, referenceNode.object);
-
-          for (let entity of DEPRECATED_ENTITIES) {
+          for (let i = 0; i < DEPRECATED_ENTITIES.length; i++) {
+            const entity = DEPRECATED_ENTITIES[i];
             // Check to see if the node matches a deprecated entity.
             if (referenceObject.name === entity.object &&
                 referenceNode.property.name === entity.property) {

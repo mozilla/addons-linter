@@ -1,10 +1,9 @@
 import { getConfig, terminalWidth } from 'cli';
 
 
-var cli;
+let cli;
 
-describe('Basic CLI tests', function() {
-
+describe('Basic CLI tests', function cliCallback() {
   beforeEach(() => {
     // Override yargs fail func so we can introspect the right errors
     // are happening when we hand it bogus input.
@@ -14,42 +13,42 @@ describe('Basic CLI tests', function() {
 
   it('should default logLevel type to "fatal"', () => {
     // This means by default there won't be any output.
-    var args = cli.parse(['foo/bar.zip']);
+    const args = cli.parse(['foo/bar.zip']);
     expect(args.logLevel).toEqual('fatal');
     expect(args['log-level']).toEqual('fatal');
   });
 
   it('should default metadata option to false', () => {
-    var args = cli.parse(['foo/bar.zip']);
+    const args = cli.parse(['foo/bar.zip']);
     expect(args.metadata).toEqual(false);
   });
 
   it('should default add-on output to "text"', () => {
-    var args = cli.parse(['foo/bar.zip']);
+    const args = cli.parse(['foo/bar.zip']);
     expect(args.output).toEqual('text');
     expect(args.o).toEqual('text');
   });
 
   it('should default stack to false', () => {
-    var args = cli.parse(['foo/bar.zip']);
+    const args = cli.parse(['foo/bar.zip']);
     expect(args.stack).toEqual(false);
   });
 
   it('should default pretty to false', () => {
-    var args = cli.parse(['foo/bar.zip']);
+    const args = cli.parse(['foo/bar.zip']);
     expect(args.pretty).toEqual(false);
   });
 
   it('should default boring to false', () => {
-    var args = cli.parse(['foo/bar.zip']);
+    const args = cli.parse(['foo/bar.zip']);
     expect(args.boring).toEqual(false);
   });
 
   it('should support a --scan-file option', () => {
-    var args = cli.parse(['foo/', '--scan-file', 'dir/test1.txt']);
+    let args = cli.parse(['foo/', '--scan-file', 'dir/test1.txt']);
     expect(args.scanFile).toEqual('dir/test1.txt');
 
-    var args = cli.parse([
+    args = cli.parse([
       'foo/', '--scan-file', 'dir/test1.txt',
       '--scan-file', 'dir/test2.txt',
     ]);
@@ -60,7 +59,7 @@ describe('Basic CLI tests', function() {
   });
 
   it('should default warnings-as-errors to false', () => {
-    var args = cli.parse(['foo/bar.zip']);
+    const args = cli.parse(['foo/bar.zip']);
     expect(args.warningsAsErrors).toEqual(false);
   });
 
@@ -77,44 +76,62 @@ describe('Basic CLI tests', function() {
   });
 
   it('should use 78 as a width if process.stdout.columns is undefined', () => {
-    var fakeProcess = null;
+    let fakeProcess = null;
     expect(terminalWidth(fakeProcess)).toEqual(78);
-    fakeProcess = {stdout: null};
+    fakeProcess = { stdout: null };
     expect(terminalWidth(fakeProcess)).toEqual(78);
-    fakeProcess = {stdout: {columns: null}};
+    fakeProcess = { stdout: { columns: null } };
     expect(terminalWidth(fakeProcess)).toEqual(78);
   });
 
   it('should always use a positive terminal width', () => {
-    var fakeProcess = {stdout: {columns: 1}};
+    const fakeProcess = {
+      stdout: {
+        columns: 1,
+      },
+    };
     expect(terminalWidth(fakeProcess)).toEqual(10);
   });
 
   it('should not use a width under 10 columns', () => {
-    var fakeProcess = {stdout: {columns: 12}};
+    let fakeProcess = {
+      stdout: {
+        columns: 12,
+      },
+    };
+    expect(terminalWidth(fakeProcess)).toEqual(10);
+    fakeProcess = {
+      stdout: {
+        columns: 11,
+      },
+    };
     expect(terminalWidth(fakeProcess)).toEqual(10);
 
-    fakeProcess = {stdout: {columns: 11}};
-    expect(terminalWidth(fakeProcess)).toEqual(10);
-
-    fakeProcess = {stdout: {columns: 79}};
+    fakeProcess = {
+      stdout: {
+        columns: 79,
+      },
+    };
     expect(terminalWidth(fakeProcess)).toEqual(77);
   });
 
   it('should use a terminal width of $COLUMNS - 2', () => {
-    var fakeProcess = {stdout: {columns: 170}};
+    const fakeProcess = {
+      stdout: {
+        columns: 170,
+      },
+    };
     expect(terminalWidth(fakeProcess)).toEqual(168);
   });
 
   it('should have a default config when called via CLI', () => {
-    let config = getConfig({useCLI: true}).argv;
+    const config = getConfig({ useCLI: true }).argv;
     expect(Object.keys(config).length).toBeGreaterThan(0);
   });
 
   it('should error when requesting CLI config in library mode', () => {
     expect(() => {
-      getConfig({useCLI: false});
+      getConfig({ useCLI: false });
     }).toThrow('Cannot request config from CLI in library mode');
   });
-
 });

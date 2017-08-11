@@ -1,13 +1,13 @@
 import cloneDeep from 'lodash.clonedeep';
 
 import validate from 'schema/validator';
+
 import { validManifest } from './helpers';
 import { assertHasMatchingError } from '../helpers';
 
 describe('/content_scripts', () => {
-
   it('supports simple content scripts', () => {
-    var manifest = cloneDeep(validManifest);
+    const manifest = cloneDeep(validManifest);
     manifest.content_scripts = [
       {
         matches: ['*://*.mozilla.org/*'],
@@ -19,7 +19,7 @@ describe('/content_scripts', () => {
   });
 
   it('supports run_at', () => {
-    var manifest = cloneDeep(validManifest);
+    const manifest = cloneDeep(validManifest);
     manifest.content_scripts = [
       {
         matches: ['*://*.mozilla.org/*'],
@@ -32,7 +32,7 @@ describe('/content_scripts', () => {
   });
 
   it('catches invalid run_at', () => {
-    var manifest = cloneDeep(validManifest);
+    const manifest = cloneDeep(validManifest);
     manifest.content_scripts = [
       {
         matches: ['*://*.mozilla.org/*'],
@@ -46,5 +46,4 @@ describe('/content_scripts', () => {
       message: 'should be equal to one of the allowed values',
     });
   });
-
 });

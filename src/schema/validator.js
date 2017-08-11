@@ -1,4 +1,7 @@
 import ajv from 'ajv';
+
+import schemaObject from 'schema/imported/manifest';
+
 import {
   isAnyUrl,
   isAbsoluteUrl,
@@ -6,10 +9,9 @@ import {
   isSecureUrl,
   isValidVersionString,
 } from './formats';
-import schemaObject from 'schema/imported/manifest.json';
 import schemas from './imported';
 
-var validator = ajv({
+const validator = ajv({
   allErrors: true,
   errorDataPath: 'property',
   jsonPointers: true,

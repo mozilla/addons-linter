@@ -1,11 +1,10 @@
 import { walkPromise } from 'io/utils';
 
-describe('io.utils.walkPromise()', function() {
-
+describe('io.utils.walkPromise()', () => {
   it('should return the correct file data', () => {
     return walkPromise('tests/fixtures/io/')
       .then((files) => {
-        var fileNames = Object.keys(files);
+        const fileNames = Object.keys(files);
         expect(fileNames).toContain('dir1/file1.txt');
         expect(fileNames).toContain('dir2/file2.txt');
         expect(fileNames).toContain('dir2/dir3/file3.txt');
@@ -29,7 +28,7 @@ describe('io.utils.walkPromise()', function() {
         },
       })
       .then((files) => {
-        var fileNames = Object.keys(files);
+        const fileNames = Object.keys(files);
         expect(fileNames).toContain('dir1/file1.txt');
         expect(fileNames).not.toContain('dir2/file2.txt');
         expect(fileNames).not.toContain('dir2/dir3/file3.txt');
@@ -44,7 +43,7 @@ describe('io.utils.walkPromise()', function() {
         },
       })
       .then((files) => {
-        var fileNames = Object.keys(files);
+        const fileNames = Object.keys(files);
         expect(fileNames).not.toContain('dir2/file2.txt');
         expect(fileNames).toContain('dir2/dir3/file3.txt');
       });
@@ -59,9 +58,8 @@ describe('io.utils.walkPromise()', function() {
         },
       })
       .then((files) => {
-        var fileNames = Object.keys(files);
+        const fileNames = Object.keys(files);
         expect(fileNames).toEqual([]);
       });
   });
-
 });

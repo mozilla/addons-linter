@@ -4,8 +4,7 @@ import RJSON from 'relaxed-json';
 import * as messages from 'messages';
 
 export default class JSONParser {
-
-  constructor(jsonString, collector, {filename=null}={}) {
+  constructor(jsonString, collector, { filename = null } = {}) {
     // Add the JSON string to the object; we'll use this for testing.
     this._jsonString = jsonString;
 
@@ -21,7 +20,7 @@ export default class JSONParser {
     this.isValid = null;
   }
 
-  parse(RelaxedJSON=RJSON) {
+  parse(RelaxedJSON = RJSON) {
     try {
       this.parsedJSON = JSON.parse(this._jsonString);
     } catch (originalError) {
@@ -31,7 +30,7 @@ export default class JSONParser {
       // If not it's just garbage JSON and we error.
       //
       // Originally from https://github.com/abarreir/crx2ff/blob/d2b882056f902d751ad05e329efda7eddcb9d268/libs/ext-converter.js#L19-L37
-      var manifestString = `var o = ${this._jsonString}`;
+      const manifestString = `var o = ${this._jsonString}`;
       try {
         // This converts the JSON into a real JS object, and removes any
         // comments from the JS code.
@@ -42,7 +41,7 @@ export default class JSONParser {
         // See:
         // http://stackoverflow.com/questions/23752156/are-all-json-objects-also-valid-javascript-objects/23753148#23753148
         // https://github.com/judofyr/timeless/issues/57#issuecomment-31872462
-        var tokens = esprima.tokenize(manifestString, {comment: true}).slice(3);
+        const tokens = esprima.tokenize(manifestString, { comment: true }).slice(3);
         this._jsonString = tokens.reduce((json, token) => {
           // Ignore line comments (`// comments`) and just return the existing
           // json we've built.
@@ -69,7 +68,7 @@ export default class JSONParser {
       } catch (error) {
         // There was still an error, so looks like this manifest is actually
         // invalid.
-        var errorData = Object.assign({}, messages.JSON_INVALID, {
+        const errorData = Object.assign({}, messages.JSON_INVALID, {
           file: this.filename,
           description: error.message,
         });
@@ -88,14 +87,14 @@ export default class JSONParser {
     }
   }
 
-  _checkForDuplicateKeys(RelaxedJSON=RJSON) {
+  _checkForDuplicateKeys(RelaxedJSON = RJSON) {
     try {
       RelaxedJSON.parse(this._jsonString, { duplicate: true, tolerant: true });
     } catch (err) {
       if (err.warnings && err.warnings.length > 0) {
-        for (let error of err.warnings) {
+        err.warnings.forEach((error) => {
           if (error.message.startsWith('Duplicate key:')) {
-            let message = Object.assign({}, messages.JSON_DUPLICATE_KEY, {
+            const message = Object.assign({}, messages.JSON_DUPLICATE_KEY, {
               file: this.filename,
               line: error.line,
               description: `${error.message} found in JSON`,
@@ -103,7 +102,7 @@ export default class JSONParser {
             this.collector.addError(message);
             this.isValid = false;
           }
-        }
+        });
       }
     }
   }

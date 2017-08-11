@@ -5,7 +5,7 @@ import * as messages from 'messages';
 
 export function warnOnRemoteScript($, filename) {
   return new Promise((resolve) => {
-    var linterMessages = [];
+    const linterMessages = [];
 
     $('script').each((i, element) => {
       const src = $(element).attr('src');
@@ -14,12 +14,12 @@ export function warnOnRemoteScript($, filename) {
         linterMessages.push(
           Object.assign({}, messages.REMOTE_SCRIPT, {
             type: VALIDATION_WARNING,
-            file: filename
+            file: filename,
           })
         );
       }
     });
 
     resolve(linterMessages);
-  })
+  });
 }
