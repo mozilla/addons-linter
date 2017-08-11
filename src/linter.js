@@ -640,9 +640,9 @@ export default class Linter {
       for (let word of words) {
         // Filter out none a-Z characters to simplify matching with our
         // badword list.
-        word = word.toLowerCase().replace(/[^a-zA-Z]/, '');
+        word = word.toLowerCase().replace(/[^a-zA-Z]/, '').trim();
 
-        if (word.match(constants.BADWORDS_RE.en)) {
+        if (word && word.match(constants.BADWORDS_RE.en)) {
           this.collector.addNotice(
             Object.assign({}, messages.MOZILLA_COND_OF_USE, {
               file: filename,
