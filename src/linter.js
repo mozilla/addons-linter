@@ -24,6 +24,7 @@ import JavaScriptScanner from 'scanners/javascript';
 import JSONScanner from 'scanners/json';
 import RDFScanner from 'scanners/rdf';
 import { Crx, Directory, Xpi } from 'io';
+import badwords from 'badwords.json';
 
 
 export default class Linter {
@@ -634,21 +635,15 @@ export default class Linter {
   }
 
   _markBadwordUsage(filename, fileData) {
-    if (fileData) {
-      const words = fileData.split(' ');
+    if (fileData && fileData.trim()) {
+      const sanitizedFileData = fileData.replace(/[^a-z]/g, '').trim();
 
-      for (let word of words) {
-        // Filter out non a-Z characters to simplify matching with our
-        // badword list.
-        word = word.toLowerCase().replace(/[^a-zA-Z]/, '').trim();
-
-        if (word && word.match(constants.BADWORDS_RE.en)) {
-          this.collector.addNotice(
-            Object.assign({}, messages.MOZILLA_COND_OF_USE, {
-              file: filename,
-            })
-          );
-        }
+      if (badwords.en.some((word) => sanitizedFileData.includes(word))) {
+        this.collector.addNotice(
+          Object.assign({}, messages.MOZILLA_COND_OF_USE, {
+            file: filename,
+          })
+        );
       }
     }
   }

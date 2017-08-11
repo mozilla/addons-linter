@@ -1,4 +1,3 @@
-import badwords from 'badwords.json';
 import {
   DANGEROUS_EVAL,
   NO_IMPLIED_EVAL,
@@ -175,8 +174,3 @@ export const CSP_KEYWORD_RE = new RegExp([
   '(?!.)',
   '|(sha(256|384|512)-|nonce-)',
 ].join(''));
-
-
-export const BADWORDS_RE = {
-  en: RegExp(badwords.en.join('|'), 'gi'),
-};
