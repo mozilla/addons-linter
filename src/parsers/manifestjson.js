@@ -11,7 +11,8 @@ import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
-import { singleLineString, parseCspPolicy } from 'utils';
+import { parseCspPolicy } from 'utils';
+import { oneLine } from 'common-tags';
 
 function normalizePath(iconPath) {
   // Convert the icon path to a URL so we can strip any fragments and resolve
@@ -83,7 +84,7 @@ export default class ManifestJSONParser extends JSONParser {
     const match = error.dataPath.match(/^\/(permissions)\/([\d+])/);
     if (match && baseObject.code !== messages.MANIFEST_BAD_PERMISSION.code) {
       baseObject = messages[`MANIFEST_${match[1].toUpperCase()}`];
-      overrides.message = singleLineString`/${match[1]}: Unknown ${match[1]}
+      overrides.message = oneLine`/${match[1]}: Unknown ${match[1]}
           "${error.data}" at ${match[2]}.`;
     }
 

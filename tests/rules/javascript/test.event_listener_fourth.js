@@ -1,6 +1,6 @@
 import JavaScriptScanner from 'scanners/javascript';
 import { VALIDATION_WARNING } from 'const';
-import { singleLineString } from 'utils';
+import { oneLine } from 'common-tags';
 import * as messages from 'messages';
 
 describe('event_listener_fourth', () => {
@@ -53,7 +53,7 @@ describe('event_listener_fourth', () => {
   });
 
   it('should not allow a true identifier', () => {
-    const code = singleLineString`var t = 'true';
+    const code = oneLine`var t = 'true';
       window.addEventListener("click", function(){}, false, t);`;
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
@@ -68,7 +68,7 @@ describe('event_listener_fourth', () => {
   });
 
   it('should allow a false identifier', () => {
-    const code = singleLineString`var t = false;
+    const code = oneLine`var t = false;
       window.addEventListener("click", function(){}, false, t);`;
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
@@ -79,7 +79,7 @@ describe('event_listener_fourth', () => {
   });
 
   it('should not allow a window identifier', () => {
-    const code = singleLineString`var foo = window;
+    const code = oneLine`var foo = window;
       foo.addEventListener("click", function(){}, false, false);`;
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
@@ -90,7 +90,7 @@ describe('event_listener_fourth', () => {
   });
 
   it('should not allow a hidden addEventListener identifier', () => {
-    const code = singleLineString`var foo = window.addEventListener;
+    const code = oneLine`var foo = window.addEventListener;
       foo("click", function(){}, false, false);`;
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
@@ -101,7 +101,7 @@ describe('event_listener_fourth', () => {
   });
 
   it('should not allow a true identifier with untrusted argument', () => {
-    const code = singleLineString`var foo = window;
+    const code = oneLine`var foo = window;
       foo.addEventListener("click", function(){}, false, true);`;
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
@@ -116,7 +116,7 @@ describe('event_listener_fourth', () => {
   });
 
   it('should not allow a true identifier hidden with arg', () => {
-    const code = singleLineString`var foo = window.addEventListener;
+    const code = oneLine`var foo = window.addEventListener;
       foo("click", function(){}, false, true);`;
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 

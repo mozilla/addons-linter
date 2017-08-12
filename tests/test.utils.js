@@ -1,38 +1,8 @@
 import * as utils from 'utils';
 
 import { unexpectedSuccess } from './helpers';
+import { oneLine } from 'common-tags';
 
-
-describe('utils.singleLineString()', () => {
-  it('reduce a multiline template string into one string', () => {
-    const output = utils.singleLineString`foo
-              bar
-        baz`;
-    expect(output).toEqual('foo bar baz');
-  });
-
-  it('should still do subs', () => {
-    const foo = 1;
-    const bar = 2;
-    const baz = 3;
-    const output = utils.singleLineString`one ${foo}
-              two ${bar}
-        three ${baz}`;
-    expect(output).toEqual('one 1 two 2 three 3');
-  });
-
-  it('should still work with tabs', () => {
-    /* eslint-disable no-tabs */
-    const me = 'me';
-    const raggedy = 'raggedy';
-    const you = 'you';
-    const output = utils.singleLineString`So here is us, on the
-          ${raggedy} edge. Don't push ${me},
-              			and I won't push ${you}.`;
-    expect(output).toEqual('So here is us, on the raggedy edge. ' +
-    "Don't push me, and I won't push you.");
-  });
-});
 
 describe('utils.getRootExpression()', () => {
   const node = {
@@ -371,7 +341,7 @@ describe('utils.parseCspPolicy', () => {
   });
 
   it('should parse directives correctly', () => {
-    const rawPolicy = utils.singleLineString`
+    const rawPolicy = oneLine`
       default-src 'none'; script-src 'self'; connect-src https: 'self';
       img-src 'self'; style-src 'self';
     `;

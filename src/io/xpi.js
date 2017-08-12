@@ -4,7 +4,7 @@ import firstChunkStream from 'first-chunk-stream';
 
 import { IOBase } from 'io/base';
 import log from 'logger';
-import { singleLineString } from 'utils';
+import { oneLine } from 'common-tags';
 
 
 /*
@@ -43,7 +43,7 @@ export class Xpi extends IOBase {
     }
     if (this.entries.includes(entry.fileName)) {
       log.info('Found duplicate file entry: "%s" in package', entry.fileName);
-      reject(new Error(singleLineString`DuplicateZipEntry: Entry
+      reject(new Error(oneLine`DuplicateZipEntry: Entry
         "${entry.fileName}" has already been seen`));
     }
     this.entries.push(entry.fileName);

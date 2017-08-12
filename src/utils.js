@@ -2,37 +2,9 @@ import url from 'url';
 
 import jed from 'jed';
 import semver from 'semver';
+import { oneLine } from 'common-tags';
 
 import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
-
-/*
- * Template tag for removing whitespace and new lines
- * in order to be able to use multiline template strings
- * as a single string.
- *
- * Usage: singleLineString`foo bar baz
- *                    whatever`;
- *
- * Will output: 'foo bar baz whatever'
- *
- */
-export function singleLineString(strings, ...vars) {
-  // Interweave the strings with the
-  // substitution vars first.
-  let output = '';
-  for (let i = 0; i < vars.length; i++) {
-    output += strings[i] + vars[i];
-  }
-  output += strings[vars.length];
-
-  // Split on newlines.
-  const lines = output.split(/(?:\r\n|\n|\r)/);
-
-  // Rip out the leading whitespace.
-  return lines.map((line) => {
-    return line.replace(/^\s+/gm, '');
-  }).join(' ').trim();
-}
 
 /*
  * Takes an AST node and returns the root property.
@@ -155,7 +127,7 @@ export function checkMinNodeVersion(minVersion, _process = process) {
     // eslint-disable-next-line no-param-reassign
     minVersion = minVersion || '0.12.0';
     if (!semver.gte(_process.version, minVersion)) {
-      throw new Error(singleLineString`Node version must be ${minVersion} or
+      throw new Error(oneLine`Node version must be ${minVersion} or
                       greater. You are using ${_process.version}.`);
     } else {
       resolve();

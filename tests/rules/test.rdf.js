@@ -2,7 +2,7 @@ import { VALIDATION_ERROR, VALIDATION_NOTICE, VALIDATION_WARNING } from 'const';
 import * as rules from 'rules/rdf';
 import RDFScanner from 'scanners/rdf';
 import * as messages from 'messages';
-import { singleLineString } from 'utils';
+import { oneLine } from 'common-tags';
 
 import { validRDF } from '../helpers';
 
@@ -25,7 +25,7 @@ describe('RDF: mustNotExist', () => {
   });
 
   it('should not blow up when multiple bad tags are found', () => {
-    const contents = validRDF(singleLineString`<em:hidden>true</em:hidden>
+    const contents = validRDF(oneLine`<em:hidden>true</em:hidden>
       <em:hidden>false</em:hidden>`);
     const rdfScanner = new RDFScanner(contents, filename);
 
@@ -42,7 +42,7 @@ describe('RDF: mustNotExist', () => {
 
   it('should not allow certain tags when listed', () => {
     // Should fail because Add-on is listed and has an updateURL.
-    const contents = validRDF(singleLineString`<em:listed>true</em:listed>
+    const contents = validRDF(oneLine`<em:listed>true</em:listed>
       <em:updateURL>http://mozilla.com/updateMyAddon.php</em:updateURL>`);
     const rdfScanner = new RDFScanner(contents, filename);
 
@@ -57,7 +57,7 @@ describe('RDF: mustNotExist', () => {
   });
 
   it('should allow certain tags when not listed', () => {
-    const contents = validRDF(singleLineString`
+    const contents = validRDF(oneLine`
       <em:updateURL>http://mozilla.com/updateMyAddon.php</em:updateURL>`);
     const rdfScanner = new RDFScanner(contents, filename);
 
@@ -68,7 +68,7 @@ describe('RDF: mustNotExist', () => {
   });
 
   it('should test for obsolete tags', () => {
-    const contents = validRDF(singleLineString`<em:file>'foo.js'</em:file>
+    const contents = validRDF(oneLine`<em:file>'foo.js'</em:file>
       <em:requires>'something'</em:requires><em:skin>true</em:skin>`);
     const rdfScanner = new RDFScanner(contents, filename);
 
@@ -89,7 +89,7 @@ describe('RDF: mustNotExist', () => {
   });
 
   it('_checkForTags should find tags and set the correct type', () => {
-    const contents = validRDF(singleLineString`<em:nameTag>Matthew Riley
+    const contents = validRDF(oneLine`<em:nameTag>Matthew Riley
       MacPherson</em:nameTag><em:file>'foo.js'</em:file>`);
     const rdfScanner = new RDFScanner(contents, 'install.rdf');
 

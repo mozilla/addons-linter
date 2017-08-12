@@ -1,8 +1,9 @@
 import * as messages from 'messages';
 import { VALIDATION_WARNING } from 'const';
+import { oneLine } from 'common-tags';
 import CSSScanner from 'scanners/css';
 import * as rules from 'rules/css';
-import { ignorePrivateFunctions, singleLineString } from 'utils';
+import { ignorePrivateFunctions } from 'utils';
 
 import { getRuleFiles, metadataPassCheck, validMetadata } from '../helpers';
 
@@ -29,7 +30,7 @@ describe('CSSScanner', () => {
   });
 
   it('should pass metadata to rules', () => {
-    const code = singleLineString`/* whatever code */
+    const code = oneLine`/* whatever code */
       #myName { position: relative; }
       .myClass { background: #000; }`;
     const fakeRules = { metadataPassCheck: () => {} };
@@ -76,7 +77,7 @@ describe('CSSScanner', () => {
 
   it('should export and run all rules in rules/css', () => {
     const ruleFiles = getRuleFiles('css');
-    const code = singleLineString`/* whatever code */
+    const code = oneLine`/* whatever code */
       #myName { position: relative; }
       .myClass { background: #000; }`;
     const cssScanner = new CSSScanner(code, 'fakeFile.css');

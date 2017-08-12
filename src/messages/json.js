@@ -1,4 +1,5 @@
-import { gettext as _, singleLineString } from 'utils';
+import { gettext as _ } from 'utils';
+import { oneLine } from 'common-tags';
 
 export const JSON_INVALID = {
   code: 'JSON_INVALID',
@@ -11,7 +12,7 @@ export const JSON_BLOCK_COMMENTS = {
   code: 'JSON_BLOCK_COMMENTS',
   legacyCode: null,
   message: _('Your JSON contains block comments.'),
-  description: _(singleLineString`Only line comments (comments beginning with
+  description: _(oneLine`Only line comments (comments beginning with
     "//") are allowed in JSON files. Please remove block comments (comments
     beginning with "/*")`),
 };
@@ -20,5 +21,5 @@ export const JSON_DUPLICATE_KEY = {
   code: 'JSON_DUPLICATE_KEY',
   legacyCode: null,
   message: _('Duplicate keys are not allowed in JSON files.'),
-  description: _(singleLineString`Duplicate key found in JSON file.`),
+  description: _(oneLine`Duplicate key found in JSON file.`),
 };

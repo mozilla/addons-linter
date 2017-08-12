@@ -1,7 +1,7 @@
 import Linter from 'linter';
 import JSONParser from 'parsers/json';
 import * as messages from 'messages';
-import { singleLineString } from 'utils';
+import { oneLine } from 'common-tags';
 
 import { validManifestJSON } from '../helpers';
 
@@ -24,7 +24,7 @@ describe('JSONParser', () => {
 describe('JSONParser duplicate keys', () => {
   it('should error if duplicate keys are found in a JSON file', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    // We aren't using singleLineString here so we can test the line number
+    // We aren't using oneLine here so we can test the line number
     // reporting.
     /* eslint-disable indent */
     const json = ['{',
@@ -55,7 +55,7 @@ describe('JSONParser duplicate keys', () => {
 
   it('should report all dupes if multiple duplicate keys are found', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const json = singleLineString`{
+    const json = oneLine`{
       "description": "Very good music.",
       "manifest_version": 2,
       "name": "Prince",
@@ -87,7 +87,7 @@ describe('JSONParser duplicate keys', () => {
 
   it('should not expose other RJSON errors', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    // We aren't using singleLineString here so we can test the line number
+    // We aren't using oneLine here so we can test the line number
     // reporting.
     /* eslint-disable indent */
     const json = ['{',
@@ -135,7 +135,7 @@ describe('JSONParser duplicate keys', () => {
 
   it('should not be invalid if unknown RJSON errors', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    // We aren't using singleLineString here so we can test the line number
+    // We aren't using oneLine here so we can test the line number
     // reporting.
     const json = '{}';
 
