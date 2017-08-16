@@ -1,5 +1,5 @@
 import { VALIDATION_WARNING } from 'const';
-import { singleLineString } from 'utils';
+import { oneLine } from 'common-tags';
 import JavaScriptScanner from 'scanners/javascript';
 import { NO_IMPLIED_EVAL } from 'messages';
 
@@ -7,7 +7,7 @@ import { NO_IMPLIED_EVAL } from 'messages';
 // These rules were mostly copied and adapted from eslint.
 // Please make sure to keep them up-to-date and report upstream errors.
 describe('no_implied_eval', () => {
-  const expectedErrorMessage = singleLineString`
+  const expectedErrorMessage = oneLine`
     Implied eval. Consider passing a function instead of a string.`;
 
   const validCodes = [

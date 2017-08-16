@@ -73,6 +73,7 @@
     "ajv": "5.2.2",
     "chalk": "2.1.0",
     "cheerio": "1.0.0-rc.2",
+    "common-tags": "1.4.0",
     "columnify": "1.5.4",
     "crx-parser": "0.1.2",
     "dispensary": "0.10.13",

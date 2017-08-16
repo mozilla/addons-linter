@@ -9,7 +9,7 @@ import { terminalWidth } from 'cli';
 import * as constants from 'const';
 import { BANNED_LIBRARIES, UNADVISED_LIBRARIES } from 'libraries';
 import * as messages from 'messages';
-import { checkMinNodeVersion, gettext as _, singleLineString } from 'utils';
+import { checkMinNodeVersion, gettext as _ } from 'utils';
 import log from 'logger';
 import Collector from 'collector';
 import InstallRdfParser from 'parsers/installrdf';
@@ -23,6 +23,7 @@ import JSONScanner from 'scanners/json';
 import RDFScanner from 'scanners/rdf';
 import { Crx, Directory, Xpi } from 'io';
 import badwords from 'badwords.json';
+import { oneLine } from 'common-tags';
 
 
 export default class Linter {
@@ -65,7 +66,7 @@ export default class Linter {
       case constants.VALIDATION_NOTICE:
         return this.chalk.blue;
       default:
-        throw new Error(singleLineString`colorize passed invalid type.
+        throw new Error(oneLine`colorize passed invalid type.
           Should be one of ${constants.MESSAGE_TYPES.join(', ')}`);
     }
   }
@@ -269,7 +270,7 @@ export default class Linter {
               return manifestParser.getMetadata();
             });
         }
-        _log.warn(singleLineString`No ${constants.INSTALL_RDF} or ${constants.MANIFEST_JSON}
+        _log.warn(oneLine`No ${constants.INSTALL_RDF} or ${constants.MANIFEST_JSON}
                    was found in the package metadata`);
         this.collector.addNotice(messages.TYPE_NO_MANIFEST_JSON);
         this.collector.addNotice(messages.TYPE_NO_INSTALL_RDF);

@@ -1,10 +1,11 @@
 import cheerio from 'cheerio';
 
 import { VALIDATION_WARNING } from 'const';
+import { oneLine } from 'common-tags';
 import HTMLScanner from 'scanners/html';
 import * as rules from 'rules/html';
 import * as messages from 'messages';
-import { ignorePrivateFunctions, singleLineString } from 'utils';
+import { ignorePrivateFunctions } from 'utils';
 
 import { getRuleFiles, validHTML } from '../helpers';
 
@@ -47,7 +48,7 @@ describe('HTML', () => {
   });
 
   it('should accept a <script> tag with a src attribute', () => {
-    const goodHTML = validHTML(singleLineString`
+    const goodHTML = validHTML(oneLine`
         <script src="">alert()</script>`);
     const htmlScanner = new HTMLScanner(goodHTML, 'index.html');
 
@@ -58,7 +59,7 @@ describe('HTML', () => {
   });
 
   it('should warn on remote <script> tag src attribute', () => {
-    const badHTML = validHTML(singleLineString`
+    const badHTML = validHTML(oneLine`
       <script src="http://foo.bar/my.js"></script>
       <script src="https://foo.bar/my.js"></script>
       <script src="file://foo.bar/my.js"></script>
@@ -80,7 +81,7 @@ describe('HTML', () => {
   });
 
   it('should allow <script> src attribute to be local', () => {
-    const badHTML = validHTML(singleLineString`
+    const badHTML = validHTML(oneLine`
       <script src="./bar/my.js"></script>
       <script src="/foo/my.js"></script>
       <script src="foo/my.js"></script>

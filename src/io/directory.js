@@ -3,12 +3,11 @@ import { createReadStream } from 'fs';
 
 import firstChunkStream from 'first-chunk-stream';
 import stripBomStream from 'strip-bom-stream';
+import { oneLine } from 'common-tags';
 
 import { IOBase } from 'io/base';
 import { walkPromise } from 'io/utils';
 import log from 'logger';
-
-import { singleLineString } from '../utils';
 
 
 export class Directory extends IOBase {
@@ -16,7 +15,7 @@ export class Directory extends IOBase {
     // If we have already processed this directory and have data
     // on this instance return that.
     if (Object.keys(this.files).length) {
-      log.info(singleLineString`Files already exist for directory
+      log.info(oneLine`Files already exist for directory
                "${this.path}" returning cached data`);
       return Promise.resolve(this.files);
     }

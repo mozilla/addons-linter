@@ -1,6 +1,6 @@
 import { FLAGGED_FILE_MAGIC_NUMBERS_LENGTH, MAX_FILE_SIZE_MB } from 'const';
 
-import { singleLineString } from '../utils';
+import { oneLine } from 'common-tags';
 
 
 /*
@@ -39,7 +39,7 @@ export class IOBase {
         return this.getChunkAsBuffer(path, FLAGGED_FILE_MAGIC_NUMBERS_LENGTH);
 
       default:
-        throw new Error(singleLineString`Unexpected fileStreamType
+        throw new Error(oneLine`Unexpected fileStreamType
           value "${fileStreamType}" should be one of "string",
           "stream" or "chunk"`);
     }

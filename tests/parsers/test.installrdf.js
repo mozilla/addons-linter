@@ -3,7 +3,7 @@ import RDFScanner from 'scanners/rdf';
 import InstallRdfParser from 'parsers/installrdf';
 import Linter from 'linter';
 import * as messages from 'messages';
-import { singleLineString } from 'utils';
+import { oneLine } from 'common-tags';
 
 import { unexpectedSuccess, validRDF } from '../helpers';
 
@@ -282,7 +282,7 @@ describe('InstallRdfParser._getIsBootstrapped()', () => {
 
 describe('InstallRdfParser._getDescriptionNode()', () => {
   it('should reject on missing RDF node', () => {
-    const badRdf = singleLineString`<xml><RDF><Description>hai</Description>
+    const badRdf = oneLine`<xml><RDF><Description>hai</Description>
       <Description>there</Description></RDF></xml>`;
     const rdfScanner = new RDFScanner(badRdf, constants.INSTALL_RDF);
     return rdfScanner.getContents()

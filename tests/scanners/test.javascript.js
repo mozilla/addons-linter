@@ -12,7 +12,8 @@ import {
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
-import { apiToMessage, singleLineString } from 'utils';
+import { apiToMessage } from 'utils';
+import { oneLine } from 'common-tags';
 
 import {
   fakeMessageData,
@@ -114,7 +115,7 @@ describe('JavaScript Scanner', () => {
   });
 
   it('ignores /*eslint-disable*/ comments', () => {
-    const code = singleLineString`/*eslint-disable*/
+    const code = oneLine`/*eslint-disable*/
                                 var myDatabase = indexeddb || mozIndexedDB;`;
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
@@ -126,7 +127,7 @@ describe('JavaScript Scanner', () => {
   });
 
   it('ignores // eslint-disable-line comments', () => {
-    const code = singleLineString`var myDatabase = indexeddb || mozIndexedDB;
+    const code = oneLine`var myDatabase = indexeddb || mozIndexedDB;
                                 // eslint-disable-line`;
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
@@ -162,7 +163,7 @@ describe('JavaScript Scanner', () => {
   // This is just a precaution against disabling environments in ESLint, which
   // isn't allowed as of writing, but will warn us if it ever happens :-)
   it('ignores /*eslint-env*/ comments', () => {
-    const code = singleLineString`/*eslint-env es6:false*/
+    const code = oneLine`/*eslint-env es6:false*/
       var makeBigger = (number) => {
         return number + 1;
       }`;
