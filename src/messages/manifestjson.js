@@ -1,5 +1,6 @@
-import { gettext as _, singleLineString, sprintf } from 'utils';
+import { gettext as _, sprintf } from 'utils';
 import { MANIFEST_JSON } from 'const';
+import { oneLine } from 'common-tags';
 
 
 export const MANIFEST_FIELD_REQUIRED = {
@@ -22,7 +23,7 @@ export const MANIFEST_BAD_PERMISSION = {
   code: 'MANIFEST_BAD_PERMISSION',
   legacyCode: null,
   message: _('The permission type is unsupported.'),
-  description: _(singleLineString`See https://mzl.la/1R1n1t0
+  description: _(oneLine`See https://mzl.la/1R1n1t0
     (MDN Docs) for more information.`),
   file: MANIFEST_JSON,
 };
@@ -48,7 +49,7 @@ export const MANIFEST_CSP = {
   // it depends on it to detect add-ons with a custom content security policy.
   code: 'MANIFEST_CSP',
   legacyCode: null,
-  message: _(singleLineString`
+  message: _(oneLine`
     "content_security_policy" allows remote code execution in manifest.json`),
   description: _('A custom content_security_policy needs additional review.'),
   file: MANIFEST_JSON,
@@ -82,7 +83,7 @@ export const MANIFEST_UPDATE_URL = {
   code: 'MANIFEST_UPDATE_URL',
   legacyCode: null,
   message: _('"update_url" is not allowed.'),
-  description: _(singleLineString`"applications.gecko.update_url" is not allowed
+  description: _(oneLine`"applications.gecko.update_url" is not allowed
     for Mozilla-hosted add-ons.`),
   file: MANIFEST_JSON,
 };
@@ -91,7 +92,7 @@ export const MANIFEST_UNUSED_UPDATE = {
   code: 'MANIFEST_UNUSED_UPDATE',
   legacyCode: null,
   message: _('The "update_url" property is not used by Firefox.'),
-  description: _(singleLineString`The "update_url" is not used by Firefox in
+  description: _(oneLine`The "update_url" is not used by Firefox in
     the root of a manifest; your add-on will be updated via the Add-ons
     site and not your "update_url". See: https://mzl.la/25zqk4O`),
   file: MANIFEST_JSON,
@@ -101,7 +102,7 @@ export const STRICT_MAX_VERSION = {
   code: 'STRICT_MAX_VERSION',
   legacyCode: null,
   message: _('"strict_max_version" not required.'),
-  description: _(singleLineString`"strict_max_version" shouldn't be used unless
+  description: _(oneLine`"strict_max_version" shouldn't be used unless
     the add-on is expected not to work with future versions of Firefox.`),
   file: MANIFEST_JSON,
 };
@@ -137,7 +138,7 @@ export const NO_MESSAGES_FILE = {
   code: 'NO_MESSAGES_FILE',
   legacyCode: null,
   message: _('The "default_locale" is missing localizations.'),
-  description: _(singleLineString`The "default_locale" value is specified in
+  description: _(oneLine`The "default_locale" value is specified in
     the manifest, but no matching "messages.json" in the "_locales" directory
     exists. See: https://mzl.la/2hjcaEE`),
   file: MANIFEST_JSON,
@@ -147,7 +148,7 @@ export const NO_DEFAULT_LOCALE = {
   code: 'NO_DEFAULT_LOCALE',
   legacyCode: null,
   message: _('The "default_locale" is missing but "_locales" exist.'),
-  description: _(singleLineString`The "default_locale" value is not specifed in
+  description: _(oneLine`The "default_locale" value is not specifed in
     the manifest, but a "_locales" directory exists.
     See: https://mzl.la/2hjcaEE`),
   file: MANIFEST_JSON,

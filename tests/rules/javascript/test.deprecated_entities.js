@@ -1,5 +1,5 @@
 import { VALIDATION_WARNING } from 'const';
-import { singleLineString } from 'utils';
+import { oneLine } from 'common-tags';
 import { DEPRECATED_ENTITIES } from 'rules/javascript/deprecated-entities';
 import JavaScriptScanner from 'scanners/javascript';
 
@@ -22,7 +22,7 @@ describe('deprecated_entities', () => {
     });
 
     it(`should know when a variable references ${obj}`, () => {
-      const code = singleLineString`var foo = ${obj};
+      const code = oneLine`var foo = ${obj};
         foo.${prop}();`;
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 

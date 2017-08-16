@@ -8,7 +8,7 @@ import BinaryScanner from 'scanners/binary';
 import CSSScanner from 'scanners/css';
 import FilenameScanner from 'scanners/filename';
 import JSONScanner from 'scanners/json';
-import { singleLineString } from 'utils';
+import { oneLine } from 'common-tags';
 import { Xpi } from 'io';
 
 import {
@@ -565,7 +565,7 @@ describe('Linter.textOutput()', () => {
     expect(text).not.toContain('whatever error description');
   });
 
-  it(singleLineString`should remove columns, description, and lines when terminal is < 60 columns wide`, () => {
+  it(oneLine`should remove columns, description, and lines when terminal is < 60 columns wide`, () => {
     const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.collector.addError({
       code: 'WHATEVER_ERROR',

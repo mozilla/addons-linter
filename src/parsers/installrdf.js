@@ -1,7 +1,7 @@
 import { ADDON_TYPE_MAP, RDF_DEFAULT_NAMESPACE } from 'const';
 import * as messages from 'messages';
 import log from 'logger';
-import { singleLineString } from 'utils';
+import { oneLine } from 'common-tags';
 
 
 export default class InstallRdfParser {
@@ -65,7 +65,7 @@ export default class InstallRdfParser {
     const descriptionNodes = Array.prototype.slice.call(rdfNode.childNodes)
       .filter((node) => node.nodeName === 'Description');
     if (descriptionNodes.length > 1) {
-      throw new Error(singleLineString`RDF node should only have a
+      throw new Error(oneLine`RDF node should only have a
         single descendant <Description>`);
     }
     return descriptionNodes[0];

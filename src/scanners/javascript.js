@@ -9,7 +9,8 @@ import {
 } from 'const';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
-import { ensureFilenameExists, singleLineString } from 'utils';
+import { ensureFilenameExists } from 'utils';
+import { oneLine } from 'common-tags';
 
 
 export default class JavaScriptScanner {
@@ -95,7 +96,7 @@ export default class JavaScriptScanner {
 
           if (typeof message.message === 'undefined') {
             throw new Error(
-              singleLineString`JS rules must pass a valid message as
+              oneLine`JS rules must pass a valid message as
               the second argument to context.report()`);
           }
 

@@ -1,5 +1,5 @@
 import { MESSAGE_TYPES } from 'const';
-import { singleLineString } from 'utils';
+import { oneLine } from 'common-tags';
 
 
 // These are the props we expect to pull out of
@@ -38,7 +38,7 @@ export default class Message {
       }
     });
     if (missingProps.length) {
-      throw new Error(singleLineString`Message data object is missing the
+      throw new Error(oneLine`Message data object is missing the
         following props: ${missingProps.join(', ')}`);
     }
   }
@@ -49,7 +49,7 @@ export default class Message {
 
   set type(type) {
     if (!MESSAGE_TYPES.includes(type)) {
-      throw new Error(singleLineString`Message type "${type}"
+      throw new Error(oneLine`Message type "${type}"
         is not one of ${MESSAGE_TYPES.join(', ')}`);
     }
     this._type = type;

@@ -22,7 +22,7 @@ To validate your add-on locally, install the linter from
 ```
 # Install globally so you can use the linter from any directory on
 # your machine.
-yarn add --global addons-linter
+yarn global add addons-linter
 # or
 npm install -g addons-linter
 ```

@@ -1,12 +1,12 @@
 import * as messages from 'messages';
 import { VALIDATION_WARNING } from 'const';
-import { singleLineString } from 'utils';
+import { oneLine } from 'common-tags';
 import CSSScanner from 'scanners/css';
 
 
 describe('CSS Rule InvalidNesting', () => {
   it('should detect invalid nesting', () => {
-    const code = singleLineString`/* I'm a comment */
+    const code = oneLine`/* I'm a comment */
       #something {
         .bar {
           height: 100px;
@@ -25,7 +25,7 @@ describe('CSS Rule InvalidNesting', () => {
   });
 
   it('should not detect invalid nesting', () => {
-    const code = singleLineString`/* I'm a comment */
+    const code = oneLine`/* I'm a comment */
       @media only screen and (max-width: 959px) {
           .something-else {
               height: 100px;
@@ -40,7 +40,7 @@ describe('CSS Rule InvalidNesting', () => {
   });
 
   it('should detect invalid nesting in @media block', () => {
-    const code = singleLineString`/* I'm a comment */
+    const code = oneLine`/* I'm a comment */
       @media only screen and (max-width: 959px) {
         .foo {
           .something-else {

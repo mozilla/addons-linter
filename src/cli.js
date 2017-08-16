@@ -1,7 +1,7 @@
 import argv from 'yargs';
 
 import log from 'logger';
-import { singleLineString } from 'utils';
+import { oneLine } from 'common-tags';
 
 import { version } from '../package';
 
@@ -19,7 +19,7 @@ export function terminalWidth(_process = process) {
 
 export function getConfig({ useCLI = true } = {}) {
   if (useCLI === false) {
-    log.error(singleLineString`Config requested from CLI, but not in CLI mode.
+    log.error(oneLine`Config requested from CLI, but not in CLI mode.
       Please supply a config instead of relying on the getConfig() call.`);
     throw new Error('Cannot request config from CLI in library mode');
   }
