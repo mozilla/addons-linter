@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/mozilla/addons-linter#readme",
   "devDependencies": {
-    "babel-core": "6.25.0",
+    "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.1",
