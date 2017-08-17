@@ -65,7 +65,7 @@
     "markdown-it-emoji": "1.4.0",
     "request": "2.81.0",
     "sinon": "3.2.0",
-    "tar": "3.1.11",
+    "tar": "3.1.14",
     "webpack": "3.5.4",
     "webpack-dev-server": "2.7.1"
   },
