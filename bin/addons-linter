@@ -5,6 +5,13 @@ var path = require('path');
 var absoluteAppRoot = path.resolve(path.join(__dirname, '..'));
 global.appRoot = path.relative(process.cwd(), absoluteAppRoot);
 
-require('../dist/addons-linter')
-  .createInstance({runAsBinary: true})
-  .run();
+try {
+    require('../dist/addons-linter')
+       .createInstance({runAsBinary: true})
+        .run();
+} catch (e) {
+    if (e.code == 'MODULE_NOT_FOUND') {
+        console.log("Please refer https://github.com/mozilla/addons-linter#readme");
+    }
+   
+}
