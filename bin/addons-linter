@@ -9,7 +9,7 @@ try {
   .createInstance({ runAsBinary: true })
   .run();
 } catch (err) {
-  if (e.code == 'MODULE_NOT_FOUND') {
+  if (err.code == 'MODULE_NOT_FOUND') {
     console.log('You did not build addons-linter yet. Please run 'yarn' and 'yarn build' or see README.md for more information');
   }
 }
