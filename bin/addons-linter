@@ -4,7 +4,12 @@ var path = require('path');
 
 var absoluteAppRoot = path.resolve(path.join(__dirname, '..'));
 global.appRoot = path.relative(process.cwd(), absoluteAppRoot);
-
-require('../dist/addons-linter')
-  .createInstance({runAsBinary: true})
+try {
+  require('../dist/addons-linter')
+  .createInstance({ runAsBinary: true })
   .run();
+} catch (err) {
+  if (err.code == 'MODULE_NOT_FOUND') {
+    console.log("You did not build addons-linter yet. Please run 'yarn' and 'yarn build' or see README.md for more information");
+  }
+}
