@@ -256,7 +256,6 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :x: | warning | missing_required | | Required file missing | | | | |
 | :white_check_mark: | error |  |  | Bad zip file  | |  | | BAD_ZIPFILE |
 | :white_check_mark: | warning |  |  | Already signed  | | https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagelayout.py  | | ALREADY_SIGNED |
-| :white_check_mark: | notice | MOZILLA_COND_OF_USE | | Mozilla conditions of use violation | | | | |
 
 ## Type detection
 
