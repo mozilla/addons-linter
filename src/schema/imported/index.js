@@ -3,6 +3,7 @@
 import alarms from './alarms.json';
 import bookmarks from './bookmarks.json';
 import browserAction from './browser_action.json';
+import browserSettings from './browser_settings.json';
 import browsingData from './browsing_data.json';
 import chrome_settings_overrides from './chrome_settings_overrides.json';
 import commands from './commands.json';
@@ -49,6 +50,7 @@ export default [
   alarms,
   bookmarks,
   browserAction,
+  browserSettings,
   browsingData,
   chrome_settings_overrides,
   commands,

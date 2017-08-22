@@ -428,6 +428,14 @@
             }
           ]
         },
+        "hostnames": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "hostname"
+          },
+          "description": "Only remove data associated with these hostnames (only applies to cookies)."
+        },
         "originTypes": {
           "type": "object",
           "description": "An object whose properties specify which origin types ought to be cleared. If this object isn't specified, it defaults to clearing only \"unprotected\" origins. Please ensure that you <em>really</em> want to remove application data before adding 'protectedWeb' or 'extensions'.",

@@ -36,6 +36,7 @@
               "enum": [
                 "bitcoin",
                 "geo",
+                "gopher",
                 "im",
                 "irc",
                 "ircs",
