@@ -14,7 +14,7 @@ export function isValidVersionString(version) {
   // http://semver.org/
   const chromePart = '(?:0|[1-9]\\d{0,3}|[1-5]\\d{4}|6(?:[0-4]\\d{3}|5(?:[0-4]\\d{2}|5(?:[0-2]\\d|3[0-5]))))';
   const chromeVer = `${chromePart}(?:\\.${chromePart}){0,3}`;
-  const betaPart = '(?:a(?:lpha)?|b(?:eta)|pre|rc)\\d*';
+  const betaPart = '(?:a(?:lpha)?|b(?:eta)?|pre|rc)\\d*';
   const addonVer = `${chromeVer}(?:${betaPart})?`;
   const semVer = '(?:0|[1-9]\\d*)(?:\\.(?:0|[1-9]\\d*)){2}(?:-[A-Za-z\\d\\-]+(?:\\.[A-Za-z\\d\\-]+)*)?(?:\\+[A-Za-z\\d\\-]+(?:\\.[A-Za-z\\d\\-]+)*)?';
   return (new RegExp(`^(?:${addonVer}|${semVer})$`)).test(version);

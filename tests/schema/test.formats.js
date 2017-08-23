@@ -17,6 +17,12 @@ describe('formats', () => {
       '4.1pre1',
       '4.1.1pre2',
       '4.1.1.2pre3',
+      '1.0a',
+      '1.0alpha',
+      '1.0b',
+      '1.0beta',
+      '1.0pre',
+      '1.0rc',
       '1.0.0-beta2',
       '1.0.999999',
       '1.0.0-0',
@@ -41,6 +47,7 @@ describe('formats', () => {
       '3.65536',
       '0.1.12dev-cb31c51',
       '4.1.1dev-abcdef1',
+      '1.0c',
     ];
 
     validVersionStrings.forEach((validVersionString) => {
