@@ -1,48 +1,29 @@
 import { URL } from 'whatwg-url';
 
-const VALIDNUMRX = /^[0-9]{1,5}$/;
-
 // Firefox's version format is laxer than Chrome's, it accepts:
 // https://developer.mozilla.org/en-US/docs/Toolkit_version_format
 // We choose a slightly restricted version of that format (but still more
 // permissive than Chrome) to allow Beta addons, per:
 // https://developer.mozilla.org/en-US/Add-ons/AMO/Policy/Maintenance
-const TOOLKIT_VERSION_REGEX = /^(\d+\.?){1,3}\.(\d+([A-z]+(-?[\dA-z]+)?))$/;
+// We also support Semantic Versioning:
+// http://semver.org/
+const CHROME_PART = '(?:0|[1-9]\\d{0,3}|[1-5]\\d{4}|6(?:[0-4]\\d{3}|5(?:[0-4]\\d{2}|5(?:[0-2]\\d|3[0-5]))))';
+const CHROME_VERSION = `${CHROME_PART}(?:\\.${CHROME_PART}){0,3}`;
+const ADDON_BETA_PART = '(?:a(?:lpha)?|b(?:eta)|pre|rc)\\d*';
+const ADDON_VERSION = `${CHROME_VERSION}(?:${ADDON_BETA_PART})?`;
+const SEMVER = '(?:0|[1-9]\\d*)(?:\\.(?:0|[1-9]\\d*)){2}(?:-[A-Za-z\\d\\-]+(?:\\.[A-Za-z\\d\\-]+)*)?(?:\\+[A-Za-z\\d\\-]+(?:\\.[A-Za-z\\d\\-]+)*)?';
+const WEBEXT_VERSION_REGEXP = new RegExp(`^(?:${ADDON_VERSION}|${SEMVER})$`);
 
 export function isValidVersionString(version) {
   // We should be starting with a string.
-  if (typeof version !== 'string') {
+  if (!(typeof version === 'string' || version instanceof String)) {
     return false;
   }
-  // If valid toolkit version string, return true early
-  if (TOOLKIT_VERSION_REGEX.test(version)) {
-    return true;
-  }
-  const parts = version.split('.');
-  if (parts.length > 4) {
-    return false;
-  }
-
-  for (let i = 0; i < parts.length; i++) {
-    let part = parts[i];
-    // Leading or multiple zeros not allowed.
-    if (part.startsWith('0') && part.length > 1) {
-      return false;
-    }
-    // Disallow things like 123e5 which parseInt will convert.
-    if (!VALIDNUMRX.test(part)) {
-      return false;
-    }
-    part = parseInt(part, 10);
-    if (Number.isNaN(part) || part < 0 || part > 65535) {
-      return false;
-    }
-  }
-  return true;
+  return WEBEXT_VERSION_REGEXP.test(version);
 }
 
 export function isToolkitVersionString(version) {
-  return TOOLKIT_VERSION_REGEX.test(version) && isValidVersionString(version);
+  return isValidVersionString(version);
 }
 
 export function isAbsoluteUrl(value) {
