@@ -1,25 +1,23 @@
 import { URL } from 'whatwg-url';
 
-// Firefox's version format is laxer than Chrome's, it accepts:
-// https://developer.mozilla.org/en-US/docs/Toolkit_version_format
-// We choose a slightly restricted version of that format (but still more
-// permissive than Chrome) to allow Beta addons, per:
-// https://developer.mozilla.org/en-US/Add-ons/AMO/Policy/Maintenance
-// We also support Semantic Versioning:
-// http://semver.org/
-const CHROME_PART = '(?:0|[1-9]\\d{0,3}|[1-5]\\d{4}|6(?:[0-4]\\d{3}|5(?:[0-4]\\d{2}|5(?:[0-2]\\d|3[0-5]))))';
-const CHROME_VERSION = `${CHROME_PART}(?:\\.${CHROME_PART}){0,3}`;
-const ADDON_BETA_PART = '(?:a(?:lpha)?|b(?:eta)|pre|rc)\\d*';
-const ADDON_VERSION = `${CHROME_VERSION}(?:${ADDON_BETA_PART})?`;
-const SEMVER = '(?:0|[1-9]\\d*)(?:\\.(?:0|[1-9]\\d*)){2}(?:-[A-Za-z\\d\\-]+(?:\\.[A-Za-z\\d\\-]+)*)?(?:\\+[A-Za-z\\d\\-]+(?:\\.[A-Za-z\\d\\-]+)*)?';
-const WEBEXT_VERSION_REGEXP = new RegExp(`^(?:${ADDON_VERSION}|${SEMVER})$`);
-
 export function isValidVersionString(version) {
   // We should be starting with a string.
   if (!(typeof version === 'string' || version instanceof String)) {
     return false;
   }
-  return WEBEXT_VERSION_REGEXP.test(version);
+  // Firefox's version format is laxer than Chrome's, it accepts:
+  // https://developer.mozilla.org/en-US/docs/Toolkit_version_format
+  // We choose a slightly restricted version of that format (but still more
+  // permissive than Chrome) to allow Beta addons, per:
+  // https://developer.mozilla.org/en-US/Add-ons/AMO/Policy/Maintenance
+  // We also support Semantic Versioning:
+  // http://semver.org/
+  const chromePart = '(?:0|[1-9]\\d{0,3}|[1-5]\\d{4}|6(?:[0-4]\\d{3}|5(?:[0-4]\\d{2}|5(?:[0-2]\\d|3[0-5]))))';
+  const chromeVer = `${chromePart}(?:\\.${chromePart}){0,3}`;
+  const betaPart = '(?:a(?:lpha)?|b(?:eta)|pre|rc)\\d*';
+  const addonVer = `${chromeVer}(?:${betaPart})?`;
+  const semVer = '(?:0|[1-9]\\d*)(?:\\.(?:0|[1-9]\\d*)){2}(?:-[A-Za-z\\d\\-]+(?:\\.[A-Za-z\\d\\-]+)*)?(?:\\+[A-Za-z\\d\\-]+(?:\\.[A-Za-z\\d\\-]+)*)?';
+  return (new RegExp(`^(?:${addonVer}|${semVer})$`)).test(version);
 }
 
 export function isToolkitVersionString(version) {
