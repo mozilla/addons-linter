@@ -3,6 +3,7 @@ import { extname } from 'path';
 import columnify from 'columnify';
 import chalk from 'chalk';
 import Dispensary from 'dispensary';
+import { oneLine } from 'common-tags';
 
 import { lstatPromise } from 'io/utils';
 import { terminalWidth } from 'cli';
@@ -22,7 +23,7 @@ import JavaScriptScanner from 'scanners/javascript';
 import JSONScanner from 'scanners/json';
 import RDFScanner from 'scanners/rdf';
 import { Crx, Directory, Xpi } from 'io';
-import { oneLine } from 'common-tags';
+import badwords from './badwords.json';
 
 
 export default class Linter {
@@ -363,6 +364,7 @@ export default class Linter {
             file: filename,
             type: constants.VALIDATION_ERROR,
           });
+
           return Promise.resolve({
             linterMessages: [filesizeError],
             scannedFiles: [filename],
@@ -372,6 +374,9 @@ export default class Linter {
         if (this.addonMetadata) {
           this.addonMetadata.totalScannedFileSize += fileSize;
         }
+
+        // Check for badwords across all file-types
+        this._markBadwordUsage(filename, fileData);
 
         const scanner = new ScannerClass(fileData, filename, {
           addonMetadata: this.addonMetadata,
@@ -493,7 +498,7 @@ export default class Linter {
         return this.scanFiles(filesWithoutJSLibraries);
       })
       .then(() => {
-        this.print();
+        this.print(deps._console);
         // This is skipped in the code coverage because the
         // test runs against un-instrumented code.
         /* istanbul ignore if  */
@@ -622,4 +627,17 @@ export default class Linter {
       });
   }
 
+  _markBadwordUsage(filename, fileData) {
+    if (fileData && fileData.trim()) {
+      const matches = fileData.match(constants.BADWORDS_RE.en);
+
+      if (matches) {
+        this.collector.addNotice(
+          Object.assign({}, messages.MOZILLA_COND_OF_USE, {
+            file: filename,
+          })
+        );
+      }
+    }
+  }
 }
