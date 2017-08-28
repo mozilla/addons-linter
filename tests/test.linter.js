@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+import { oneLine } from 'common-tags';
+
 import Linter from 'linter';
 import * as constants from 'const';
 import * as messages from 'messages';
@@ -8,7 +10,6 @@ import BinaryScanner from 'scanners/binary';
 import CSSScanner from 'scanners/css';
 import FilenameScanner from 'scanners/filename';
 import JSONScanner from 'scanners/json';
-import { oneLine } from 'common-tags';
 import { Xpi } from 'io';
 
 import {
@@ -1273,6 +1274,60 @@ describe('Linter.extractMetadata()', () => {
     return addonLinter.scan({ _console: fakeConsole })
       .then(() => {
         expect(addonLinter.output.metadata.totalScannedFileSize).toEqual(9421);
+      });
+  });
+
+  it('should flag files with badwords', () => {
+    const addonLinter = new Linter({
+      _: ['tests/fixtures/webextension_badwords.zip'],
+    });
+    const markBadwordusageSpy = sinon.spy(addonLinter, '_markBadwordUsage');
+
+    return addonLinter.scan({ _console: fakeConsole })
+      .then(() => {
+        sinon.assert.calledTwice(markBadwordusageSpy);
+        const errors = addonLinter.collector.notices;
+        expect(errors.length).toEqual(1);
+        expect(errors[0].code).toEqual(
+          messages.MOZILLA_COND_OF_USE.code);
+      });
+  });
+
+  it('should not flag files only with partial badword matches', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const markBadwordusageSpy = sinon.spy(addonLinter, '_markBadwordUsage');
+
+    // suppress output.
+    addonLinter.print = sinon.stub();
+    addonLinter.checkFileExists = fakeCheckFileExists;
+
+    class FakeXpi extends FakeIOBase {
+      files = {
+        'manifest.json': { uncompressedSize: 839 },
+        'm1.js': { uncompressedSize: 20 },
+        'm2.js': { uncompressedSize: 20 },
+      };
+      getFile(filename) {
+        return this.getFileAsString(filename);
+      }
+      getFiles() {
+        return Promise.resolve(this.files);
+      }
+      getFileAsString(filename) {
+        const words = {
+          'm1.js': 'const a = "butt fuck"',
+          'm2.js': 'const a = "m-fucking"',
+          'manifest.json': validManifestJSON({ name: 'Buttonmania' }),
+        };
+
+        return Promise.resolve(words[filename]);
+      }
+    }
+    return addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole })
+      .then(() => {
+        sinon.assert.callCount(markBadwordusageSpy, 3);
+        const errors = addonLinter.collector.notices;
+        expect(errors.length).toEqual(2);
       });
   });
 });

@@ -146,3 +146,13 @@ export const ALREADY_SIGNED = {
     re-signed when published on AMO. This will replace any existing signatures
     on the add-on.`),
 };
+
+export const MOZILLA_COND_OF_USE = {
+  code: 'MOZILLA_COND_OF_USE',
+  legacyCode: null,
+  message: _('Violation of Mozilla conditions of use.'),
+  description: _(oneLine`Words found that violate the Mozilla
+    conditions of use.
+    See https://www.mozilla.org/en-US/about/legal/acceptable-use/ for more
+    details.`),
+};
