@@ -9,7 +9,6 @@ import {
 describe('formats', () => {
   describe('isValidVersionString', () => {
     const validVersionStrings = [
-      '0.1.12dev-cb31c51',
       '1.0',
       '1.0.0beta2',
       '2.10.2',
@@ -17,7 +16,6 @@ describe('formats', () => {
       '3.1.2.65535',
       '4.1pre1',
       '4.1.1pre2',
-      '4.1.1dev-abcdef1',
       '4.1.1.2pre3',
     ];
 
@@ -30,9 +28,13 @@ describe('formats', () => {
       '1.2.2.2.4',
       '01',
       '1.000000',
+      '1.000000a1',
       '2.99999',
       '3.65536',
+      '3.65536a1',
       '1.0.0-beta2',
+      '0.1.12dev-cb31c51',
+      '4.1.1dev-abcdef1',
     ];
 
     validVersionStrings.forEach((validVersionString) => {
