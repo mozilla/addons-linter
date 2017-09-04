@@ -23,7 +23,6 @@ import JavaScriptScanner from 'scanners/javascript';
 import JSONScanner from 'scanners/json';
 import RDFScanner from 'scanners/rdf';
 import { Crx, Directory, Xpi } from 'io';
-import badwords from './badwords.json';
 
 
 export default class Linter {
@@ -375,8 +374,10 @@ export default class Linter {
           this.addonMetadata.totalScannedFileSize += fileSize;
         }
 
-        // Check for badwords across all file-types
-        this._markBadwordUsage(filename, fileData);
+        if (ScannerClass !== BinaryScanner) {
+          // Check for badwords across all file-types
+          this._markBadwordUsage(filename, fileData);
+        }
 
         const scanner = new ScannerClass(fileData, filename, {
           addonMetadata: this.addonMetadata,

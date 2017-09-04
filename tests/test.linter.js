@@ -15,7 +15,8 @@ import { Xpi } from 'io';
 import {
   fakeMessageData,
   unexpectedSuccess,
-  validManifestJSON } from './helpers';
+  validManifestJSON,
+  EMPTY_PNG } from './helpers';
 
 
 const fakeCheckFileExists = () => {
@@ -1306,6 +1307,7 @@ describe('Linter.extractMetadata()', () => {
         'manifest.json': { uncompressedSize: 839 },
         'm1.js': { uncompressedSize: 20 },
         'm2.js': { uncompressedSize: 20 },
+        'foo.png': { uncompressedSize: 364 },
       };
       getFile(filename) {
         return this.getFileAsString(filename);
@@ -1318,6 +1320,7 @@ describe('Linter.extractMetadata()', () => {
           'm1.js': 'const a = "butt fuck"',
           'm2.js': 'const a = "m-fucking"',
           'manifest.json': validManifestJSON({ name: 'Buttonmania' }),
+          'foo.png': EMPTY_PNG,
         };
 
         return Promise.resolve(words[filename]);
@@ -1325,6 +1328,7 @@ describe('Linter.extractMetadata()', () => {
     }
     return addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole })
       .then(() => {
+        // Only manifest and js files, binary files like the .png are ignored
         sinon.assert.callCount(markBadwordusageSpy, 3);
         const errors = addonLinter.collector.notices;
         expect(errors.length).toEqual(2);

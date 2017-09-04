@@ -3,9 +3,9 @@ import { assert } from 'assert';
 
 import isMatchWith from 'lodash.ismatchwith';
 import Hash from 'hashish';
+import { oneLine } from 'common-tags';
 
 import { PACKAGE_EXTENSION } from 'const';
-import { oneLine } from 'common-tags';
 
 
 export const fakeMessageData = {
@@ -13,6 +13,12 @@ export const fakeMessageData = {
   description: 'description',
   message: 'message',
 };
+
+export const EMPTY_PNG = Buffer
+  .from(oneLine`iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMA
+                AQAABQABDQottAAAAABJRU5ErkJggg==`,
+        'base64')
+  .toString('base64');
 
 export function getRuleFiles(ruleType) {
   const ruleFiles = fs.readdirSync(`src/rules/${ruleType}`);
