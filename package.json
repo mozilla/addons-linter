@@ -87,7 +87,7 @@
     "postcss": "6.0.10",
     "relaxed-json": "1.0.1",
     "semver": "5.4.1",
-    "source-map-support": "0.4.16",
+    "source-map-support": "0.4.17",
     "strip-bom-stream": "3.0.0",
     "whatwg-url": "6.1.0",
     "xmldom": "0.1.27",
