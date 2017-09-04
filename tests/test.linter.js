@@ -1344,7 +1344,7 @@ describe('Linter.extractMetadata()', () => {
     class FakeXpi extends FakeIOBase {
       files = {
         'manifest.json': { uncompressedSize: 839 },
-        'angular.js': { uncompressedSize: 7 },
+        'jquery.js': { uncompressedSize: 7 },
         'foo.png': { uncompressedSize: 386 },
       };
       getFile(filename) {
@@ -1372,8 +1372,8 @@ describe('Linter.extractMetadata()', () => {
         const contents = {
           'manifest.json': validManifestJSON({ name: 'Buttonmania' }),
           'foo.png': EMPTY_PNG,
-          'angular.js': fs.readFileSync(
-            'tests/fixtures/jslibs/angular-1.2.28.min.js',
+          'jquery.js': fs.readFileSync(
+            'tests/fixtures/jslibs/jquery-3.2.1.min.js',
           ),
         };
 
