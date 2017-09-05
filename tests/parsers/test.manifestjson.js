@@ -316,18 +316,18 @@ describe('ManifestJSONParser', () => {
 
   describe('strict_max_version', () => {
     it('warns on strict_max_version', () => {
-      var addonLinter = new Linter({_: ['bar']});
-      var json = validManifestJSON({
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
         applications: {
           gecko: {
             strict_max_version: '58.0',
           },
         },
       });
-      var manifestJSONParser = new ManifestJSONParser(json,
+      const manifestJSONParser = new ManifestJSONParser(json,
                                                       addonLinter.collector);
       expect(manifestJSONParser.isValid).toEqual(true);
-      var notices = addonLinter.collector.notices;
+      const notices = addonLinter.collector.notices;
       expect(notices[0].code).toEqual(messages.STRICT_MAX_VERSION.code);
       expect(notices[0].message).toContain('strict_max_version');
     });

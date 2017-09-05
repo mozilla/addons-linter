@@ -1,6 +1,6 @@
-import { FLAGGED_FILE_MAGIC_NUMBERS_LENGTH, MAX_FILE_SIZE_MB } from 'const';
-
 import { oneLine } from 'common-tags';
+
+import { FLAGGED_FILE_MAGIC_NUMBERS_LENGTH, MAX_FILE_SIZE_MB } from 'const';
 
 
 /*

@@ -4,6 +4,8 @@ import {
   UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
   UNSUPPORTED_API,
 } from 'messages/javascript';
+
+// eslint-disable-next-line import/extensions
 import badwords from './badwords.json';
 
 export const DEFLATE_COMPRESSION = 8;

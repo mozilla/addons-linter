@@ -1,5 +1,6 @@
-import { apiToMessage, gettext as _ } from 'utils';
 import { oneLine } from 'common-tags';
+
+import { apiToMessage, gettext as _ } from 'utils';
 
 export const JS_SYNTAX_ERROR = {
   code: 'JS_SYNTAX_ERROR',

@@ -1,7 +1,8 @@
+import { oneLine } from 'common-tags';
+
 import * as utils from 'utils';
 
 import { unexpectedSuccess } from './helpers';
-import { oneLine } from 'common-tags';
 
 
 describe('utils.getRootExpression()', () => {

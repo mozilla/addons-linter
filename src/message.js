@@ -1,5 +1,6 @@
-import { MESSAGE_TYPES } from 'const';
 import { oneLine } from 'common-tags';
+
+import { MESSAGE_TYPES } from 'const';
 
 
 // These are the props we expect to pull out of

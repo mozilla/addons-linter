@@ -1,9 +1,10 @@
+import { oneLine } from 'common-tags';
+
 import * as constants from 'const';
 import RDFScanner from 'scanners/rdf';
 import InstallRdfParser from 'parsers/installrdf';
 import Linter from 'linter';
 import * as messages from 'messages';
-import { oneLine } from 'common-tags';
 
 import { unexpectedSuccess, validRDF } from '../helpers';
 
