@@ -72,7 +72,7 @@ export default class JavaScriptScanner {
 
       Object.keys(_rules).forEach((name) => {
         this._rulesProcessed++;
-        _ESLint.linter.defineRule(name, _rules[name]);
+        cli.linter.defineRule(name, _rules[name]);
       });
 
       // ESLint is synchronous and doesn't accept streams, so we need to

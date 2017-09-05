@@ -94,14 +94,14 @@ describe('JavaScript Scanner', () => {
           }],
         };
       },
-    };
-
-    const FakeESLint = {
       linter: {
         defineRule: () => {
           // no-op
         },
       },
+    };
+
+    const FakeESLint = {
       CLIEngine: FakeCLIEngine,
     };
 
