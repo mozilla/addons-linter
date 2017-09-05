@@ -41,6 +41,7 @@ describe('formats', () => {
       '1.0.0-rc1.0+001',
       '0.1.12dev-cb31c51',
       '4.1.1dev-abcdef1',
+      `1.${'9'.repeat(100)}`,
     ];
 
     validVersionStrings.forEach((validVersionString) => {
@@ -102,6 +103,7 @@ describe('formats', () => {
       '1.0.0.0.0a',
       '1.0.0a-1',
       '1.0.0a1.1',
+      `1.${'9'.repeat(100)}`,
     ];
 
     validToolkitVersionStrings.forEach((validToolkitVersionString) => {
