@@ -1,10 +1,10 @@
 import yauzl from 'yauzl';
 import stripBomStream from 'strip-bom-stream';
 import firstChunkStream from 'first-chunk-stream';
+import { oneLine } from 'common-tags';
 
 import { IOBase } from 'io/base';
 import log from 'logger';
-import { oneLine } from 'common-tags';
 
 
 /*

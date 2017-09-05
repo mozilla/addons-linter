@@ -3,6 +3,7 @@ import path from 'path';
 
 import RJSON from 'relaxed-json';
 import { URL } from 'whatwg-url';
+import { oneLine } from 'common-tags';
 
 import validate from 'schema/validator';
 import { getConfig } from 'cli';
@@ -12,7 +13,6 @@ import * as messages from 'messages';
 import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
 import { parseCspPolicy } from 'utils';
-import { oneLine } from 'common-tags';
 
 function normalizePath(iconPath) {
   // Convert the icon path to a URL so we can strip any fragments and resolve

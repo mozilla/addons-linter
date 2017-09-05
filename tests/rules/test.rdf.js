@@ -1,8 +1,9 @@
+import { oneLine } from 'common-tags';
+
 import { VALIDATION_ERROR, VALIDATION_NOTICE, VALIDATION_WARNING } from 'const';
 import * as rules from 'rules/rdf';
 import RDFScanner from 'scanners/rdf';
 import * as messages from 'messages';
-import { oneLine } from 'common-tags';
 
 import { validRDF } from '../helpers';
 

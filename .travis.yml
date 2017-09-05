@@ -6,6 +6,7 @@ node_js:
 script:
   - yarn run test-ci
   - yarn run build
+  - yarn run lint
 notifications:
   irc:
     channels:

@@ -1,6 +1,7 @@
+import { oneLine } from 'common-tags';
+
 import JavaScriptScanner from 'scanners/javascript';
 import { VALIDATION_WARNING } from 'const';
-import { oneLine } from 'common-tags';
 import * as messages from 'messages';
 
 describe('event_listener_fourth', () => {

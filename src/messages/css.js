@@ -1,5 +1,6 @@
-import { gettext as _} from 'utils';
 import { oneLine } from 'common-tags';
+
+import { gettext as _ } from 'utils';
 
 
 export const CSS_SYNTAX_ERROR = {

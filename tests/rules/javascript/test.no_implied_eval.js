@@ -1,5 +1,6 @@
-import { VALIDATION_WARNING } from 'const';
 import { oneLine } from 'common-tags';
+
+import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import { NO_IMPLIED_EVAL } from 'messages';
 

@@ -1,6 +1,7 @@
+import { oneLine } from 'common-tags';
+
 import { gettext as _, sprintf } from 'utils';
 import { MANIFEST_JSON } from 'const';
-import { oneLine } from 'common-tags';
 
 
 export const MANIFEST_FIELD_REQUIRED = {

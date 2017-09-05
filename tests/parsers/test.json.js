@@ -1,7 +1,8 @@
+import { oneLine } from 'common-tags';
+
 import Linter from 'linter';
 import JSONParser from 'parsers/json';
 import * as messages from 'messages';
-import { oneLine } from 'common-tags';
 
 import { validManifestJSON } from '../helpers';
 

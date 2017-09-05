@@ -1,7 +1,7 @@
 import cheerio from 'cheerio';
+import { oneLine } from 'common-tags';
 
 import { VALIDATION_WARNING } from 'const';
-import { oneLine } from 'common-tags';
 import HTMLScanner from 'scanners/html';
 import * as rules from 'rules/html';
 import * as messages from 'messages';

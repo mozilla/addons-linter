@@ -1,7 +1,7 @@
 import argv from 'yargs';
+import { oneLine } from 'common-tags';
 
 import log from 'logger';
-import { oneLine } from 'common-tags';
 
 import { version } from '../package';
 
