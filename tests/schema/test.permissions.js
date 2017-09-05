@@ -35,11 +35,8 @@ describe('/permissions', () => {
   const matchingPatterns = [
     '*://developer.mozilla.org/*',
     'http://developer.mozilla.org/*',
-    // FIXME: the loop in this test was previously broken.
-    // These lines don't match the schema.
-    // 'https://foo.com',
-    // 'ftp://do.people.still.use.this',
-    // 'app://wat/',
+    'https://foo.com/',
+    'ftp://do.people.still.use.this/',
     'file:///etc/hosts',
   ];
 
@@ -49,6 +46,25 @@ describe('/permissions', () => {
       manifest.permissions = [matchPattern];
       validate(manifest);
       expect(validate.errors).toBeNull();
+    });
+  });
+
+  const invalidMatchingPatterns = [
+    // The path is required to start with a slash.
+    // See https://mzl.la/2gAyLu4 for more details.
+    'https://foo.com',
+    'ftp://do.people.still.use.this',
+
+    // app is not in the list of valid schemas: https://mzl.la/2iWLFam
+    'app://wat.com/',
+  ];
+
+  invalidMatchingPatterns.forEach((invalidMatchPattern) => {
+    it(`should not allow the pattern: ${invalidMatchPattern}`, () => {
+      const manifest = cloneDeep(validManifest);
+      manifest.permissions = [invalidMatchPattern];
+      validate(manifest);
+      expect(validate.errors).not.toBeNull();
     });
   });
 });
