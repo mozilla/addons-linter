@@ -15,7 +15,8 @@ import { Xpi } from 'io';
 import {
   fakeMessageData,
   unexpectedSuccess,
-  validManifestJSON } from './helpers';
+  validManifestJSON,
+  EMPTY_PNG } from './helpers';
 
 
 const fakeCheckFileExists = () => {
@@ -1325,9 +1326,63 @@ describe('Linter.extractMetadata()', () => {
     }
     return addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole })
       .then(() => {
+        // Only manifest and js files, binary files like the .png are ignored
         sinon.assert.callCount(markBadwordusageSpy, 3);
         const errors = addonLinter.collector.notices;
         expect(errors.length).toEqual(2);
+      });
+  });
+
+  it('should not flag binary files and known libraries', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const markBadwordusageSpy = sinon.spy(addonLinter, '_markBadwordUsage');
+
+    // suppress output.
+    addonLinter.print = sinon.stub();
+    addonLinter.checkFileExists = fakeCheckFileExists;
+
+    class FakeXpi extends FakeIOBase {
+      files = {
+        'manifest.json': { uncompressedSize: 839 },
+        'jquery.js': { uncompressedSize: 7 },
+        'foo.png': { uncompressedSize: 386 },
+      };
+      getFile(filename) {
+        return this.getFileAsString(filename);
+      }
+      getFiles() {
+        return Promise.resolve(this.files);
+      }
+      getFilesByExt(...extensions) {
+        return new Promise((resolve) => {
+          const files = [];
+
+          Object.keys(this.files).forEach((filename) => {
+            extensions.forEach((ext) => {
+              if (filename.endsWith(ext)) {
+                files.push(filename);
+              }
+            });
+          });
+
+          return resolve(files);
+        });
+      }
+      getFileAsString(filename) {
+        const contents = {
+          'manifest.json': validManifestJSON({ name: 'Buttonmania' }),
+          'foo.png': EMPTY_PNG,
+          'jquery.js': fs.readFileSync(
+            'tests/fixtures/jslibs/jquery-3.2.1.min.js',
+          ),
+        };
+
+        return Promise.resolve(contents[filename]);
+      }
+    }
+    return addonLinter.scan({ _Xpi: FakeXpi })
+      .then(() => {
+        sinon.assert.callCount(markBadwordusageSpy, 1);
       });
   });
 });
