@@ -14,7 +14,7 @@
     "test-coverage": "jest tests/ --runInBand --coverage --watch",
     "test-once": "jest tests/ --runInBand",
     "test-coverage-once": "jest tests/ --runInBand --coverage",
-    "test-ci": "npm run test-coverage-once && cat ./coverage/lcov.info | coveralls ",
+    "test-ci": "npm run test-coverage-once && cat ./coverage/lcov.info | coveralls",
     "lint": "npm run eslint",
     "publish-rules": "grunt copy build-rules-html publish-rules",
     "publish-coverage": "grunt coveralls"
