@@ -41,8 +41,7 @@ describe('formats', () => {
       '1.0.0-rc1.0+001',
       '0.1.12dev-cb31c51',
       '4.1.1dev-abcdef1',
-      // eslint-disable-next-line prefer-template
-      '1.9' + '9'.repeat(99),
+      `1.${'9'.repeat(100)}`,
     ];
 
     validVersionStrings.forEach((validVersionString) => {
