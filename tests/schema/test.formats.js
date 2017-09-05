@@ -103,6 +103,7 @@ describe('formats', () => {
       '1.0.0.0.0a',
       '1.0.0a-1',
       '1.0.0a1.1',
+      `1.${'9'.repeat(100)}`,
     ];
 
     validToolkitVersionStrings.forEach((validToolkitVersionString) => {
