@@ -10,8 +10,6 @@ const VERSION_PART =
 const BETA_PART = '(?:a(?:lpha)?|b(?:eta)?|pre|rc)\\d*';
 const VERSION_REGEXP =
   new RegExp(`^${VERSION_PART}(?:\\.${VERSION_PART}){0,3}(?:${BETA_PART})?$`);
-const TOOLKIT_REGEXP =
-  new RegExp(`^${VERSION_PART}(?:\\.${VERSION_PART}){0,3}${BETA_PART}$`);
 
 export function isValidVersionString(version) {
   // We should be starting with a string. Limit length, see bug 1393644
@@ -19,14 +17,6 @@ export function isValidVersionString(version) {
     return false;
   }
   return VERSION_REGEXP.test(version);
-}
-
-export function isToolkitVersionString(version) {
-  // We should be starting with a string. Limit length, see bug 1393644
-  if (typeof version !== 'string' || version.length > 100) {
-    return false;
-  }
-  return TOOLKIT_REGEXP.test(version);
 }
 
 export function isAbsoluteUrl(value) {

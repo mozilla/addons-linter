@@ -11,7 +11,7 @@ import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
-import { isToolkitVersionString } from 'schema/formats';
+import { isValidVersionString } from 'schema/formats';
 import { parseCspPolicy } from 'utils';
 
 function normalizePath(iconPath) {
@@ -142,7 +142,7 @@ export default class ManifestJSONParser extends JSONParser {
       this.collector.addNotice(messages.STRICT_MAX_VERSION);
     }
 
-    if (isToolkitVersionString(this.parsedJSON.version)) {
+    if (isValidVersionString(this.parsedJSON.version)) {
       this.collector.addNotice(messages.PROP_VERSION_TOOLKIT_ONLY);
     }
 
