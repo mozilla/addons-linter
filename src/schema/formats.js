@@ -11,7 +11,7 @@ const TOOLKIT_VERSION_REGEX = /^(\d+\.?){1,3}\.(\d+([A-z]+(-?[\dA-z]+)?))$/;
 
 export function isValidVersionString(version) {
   // We should be starting with a string.
-  if (typeof version !== 'string') {
+  if (typeof version !== 'string' || version.length > 100) {
     return false;
   }
   // If valid toolkit version string, return true early

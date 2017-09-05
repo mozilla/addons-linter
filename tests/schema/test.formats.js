@@ -33,6 +33,8 @@ describe('formats', () => {
       '2.99999',
       '3.65536',
       '1.0.0-beta2',
+      // eslint-disable-next-line prefer-template
+      '1.9' + '9'.repeat(99),
     ];
 
     validVersionStrings.forEach((validVersionString) => {
