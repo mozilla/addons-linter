@@ -325,7 +325,7 @@ describe('ManifestJSONParser', () => {
         },
       });
       const manifestJSONParser = new ManifestJSONParser(json,
-                                                      addonLinter.collector);
+        addonLinter.collector);
       expect(manifestJSONParser.isValid).toEqual(true);
       const notices = addonLinter.collector.notices;
       expect(notices[0].code).toEqual(messages.STRICT_MAX_VERSION.code);
