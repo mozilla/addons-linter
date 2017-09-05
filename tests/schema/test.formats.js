@@ -3,7 +3,6 @@ import {
   isAnyUrl,
   isSecureUrl,
   isStrictRelativeUrl,
-  isToolkitVersionString,
   isValidVersionString,
 } from 'schema/formats';
 
@@ -11,36 +10,49 @@ describe('formats', () => {
   describe('isValidVersionString', () => {
     const validVersionStrings = [
       '1.0',
+      '1.0.0.0b10',
+      '1.0.0alpha01',
       '1.0.0beta2',
+      '1.0a1',
+      '1a',
+      '1alpha',
+      '1b',
+      '1beta',
+      '1pre',
+      '1rc',
       '2.10.2',
       '3.1.2.4567',
       '3.1.2.65535',
-      '4.1pre1',
-      '4.1.1pre2',
       '4.1.1.2pre3',
+      '4.1.1pre2',
+      '4.1pre1',
     ];
 
     const invalidVersionStrings = [
-      2,
-      '123e5',
-      '1.',
       '.',
-      'a.b.c.d',
-      '1.2.2.2.4',
-      '1.2.2.2.4a',
+      '0.1.12dev-cb31c51',
       '01',
-      '1.01',
-      '1.01a',
+      '1.',
+      '1.0.0+1',
+      '1.0.0-beta2',
+      '1.0.0-rc1.0+001',
+      '1.0.0.0.0a',
+      '1.0.0a-1',
+      '1.0.0a1.1',
       '1.000000',
       '1.000000a1',
+      '1.01',
+      '1.01a',
+      '1.2.2.2.4',
+      '1.2.2.2.4a',
+      '123e5',
+      '1abc',
       '2.99999',
       '3.65536',
       '3.65536a1',
-      '1.0.0-beta2',
-      '1.0.0+1',
-      '1.0.0-rc1.0+001',
-      '0.1.12dev-cb31c51',
       '4.1.1dev-abcdef1',
+      'a.b.c.d',
+      2,
       `1.${'9'.repeat(100)}`,
     ];
 
@@ -53,69 +65,6 @@ describe('formats', () => {
     invalidVersionStrings.forEach((invalidVersionString) => {
       it(`should find ${invalidVersionString} to be invalid`, () => {
         expect(isValidVersionString(invalidVersionString)).toEqual(false);
-      });
-    });
-  });
-
-  describe('isToolkitVersionString', () => {
-    const validToolkitVersionStrings = [
-      '1a',
-      '1alpha',
-      '1b',
-      '1beta',
-      '1pre',
-      '1rc',
-      '1.0a1',
-      '1.0.0alpha01',
-      '1.0.0.0b10',
-      '1.0.0beta2',
-      '4.1pre1',
-      '4.1.1pre2',
-      '4.1.1.2pre3',
-    ];
-
-    const invalidToolkitVersionStrings = [
-      2,
-      '123e5',
-      '1.',
-      '.',
-      'a.b.c.d',
-      '1.2.2.2.4',
-      '1.2.2.2.4a',
-      '01',
-      '1.01',
-      '1.01a',
-      '1.000000',
-      '1.000000a1',
-      '2.99999',
-      '3.65536',
-      '3.65536a1',
-      '1.0.0-beta2',
-      '1.0.0+1',
-      '1.0.0-rc1.0+001',
-      '0.1.12dev-cb31c51',
-      '4.1.1dev-abcdef1',
-      '1.0',
-      '2.10.2',
-      '3.1.2.4567',
-      '3.1.2.65535',
-      '1abc',
-      '1.0.0.0.0a',
-      '1.0.0a-1',
-      '1.0.0a1.1',
-      `1.${'9'.repeat(100)}`,
-    ];
-
-    validToolkitVersionStrings.forEach((validToolkitVersionString) => {
-      it(`should find ${validToolkitVersionString} to be valid`, () => {
-        expect(isToolkitVersionString(validToolkitVersionString)).toEqual(true);
-      });
-    });
-
-    invalidToolkitVersionStrings.forEach((invalidToolkitVersionString) => {
-      it(`should find ${invalidToolkitVersionString} to be invalid`, () => {
-        expect(isToolkitVersionString(invalidToolkitVersionString))
-          .toEqual(false);
       });
     });
   });
