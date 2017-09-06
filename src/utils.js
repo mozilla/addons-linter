@@ -242,7 +242,7 @@ export function parseCspPolicy(policy) {
  * Determines if the source text is minified.
  * Using the percentage no. of the indented lines from a sample set of lines
  * to determine if the js file is minified.
- * Originally developed for the Firefox Developer Toolbar.
+ * Inspired by code for the Firefox Developer Toolbar.
  */
 export function couldBeMinifiedCode(code) {
   // Number of lines to look at, taken from the head of the code.
