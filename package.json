@@ -42,7 +42,7 @@
     "comment-json": "1.1.3",
     "coveralls": "2.13.1",
     "deepmerge": "1.5.1",
-    "eslint-config-amo": "0.1.1",
+    "eslint-config-amo": "0.2.0",
     "eslint-plugin-jest": "21.0.0",
     "eslint-plugin-promise": "^3.5.0",
     "gfm.css": "1.1.1",
