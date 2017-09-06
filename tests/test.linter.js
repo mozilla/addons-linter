@@ -1120,6 +1120,57 @@ describe('Linter.extractMetadata()', () => {
     expect(warnings[0].code).toEqual(messages.UNADVISED_LIBRARY.code);
   });
 
+  it('should flag potentially minified JS files', () => {
+    const addonLinter = new Linter({ _: ['foo'] });
+    const markUnknownOrMinifiedCodeSpy = sinon.spy(
+      addonLinter, '_markUnknownOrMinifiedCode');
+
+    addonLinter.checkFileExists = fakeCheckFileExists;
+    addonLinter.scanFiles = () => Promise.resolve();
+
+    // suppress output.
+    addonLinter.print = sinon.stub();
+
+    const fakeFiles = {
+      'jquery.js': 'jquery-3.2.1.min.js',
+      'modified-jquery.js': 'jquery-3.2.1-modified.js',
+      'modified-angular.js': 'angular-1.2.28-modified.js',
+    };
+
+    class FakeXpi extends FakeIOBase {
+      getFile(filename) {
+        return this.getFileAsString(filename);
+      }
+      getFileAsString(filename) {
+        return Promise.resolve(
+          fs.readFileSync(
+            `tests/fixtures/jslibs/${fakeFiles[filename]}`, 'utf-8'));
+      }
+      getFiles() {
+        const files = {};
+        Object.keys(fakeFiles).forEach((filename) => {
+          files[filename] = { uncompressedSize: 5 };
+        });
+        return Promise.resolve(files);
+      }
+      getFilesByExt() {
+        return Promise.resolve(Object.keys(fakeFiles));
+      }
+    }
+
+    return addonLinter.extractMetadata({
+      _console: fakeConsole,
+      _Xpi: FakeXpi,
+    }).then((metadata) => {
+      sinon.assert.calledOnce(markUnknownOrMinifiedCodeSpy);
+      expect(metadata.minifiedFiles).toEqual(
+        ['modified-jquery.js', 'modified-angular.js']);
+      expect(metadata.jsLibs).toEqual({
+        'jquery.js': 'jquery.3.2.1.jquery.min.js',
+      });
+    });
+  });
+
   it('should use size attribute if uncompressedSize is undefined', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.checkFileExists = () => {

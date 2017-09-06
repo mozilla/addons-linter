@@ -10,7 +10,7 @@ import { terminalWidth } from 'cli';
 import * as constants from 'const';
 import { BANNED_LIBRARIES, UNADVISED_LIBRARIES } from 'libraries';
 import * as messages from 'messages';
-import { checkMinNodeVersion, gettext as _ } from 'utils';
+import { checkMinNodeVersion, gettext as _, couldBeMinifiedCode } from 'utils';
 import log from 'logger';
 import Collector from 'collector';
 import InstallRdfParser from 'parsers/installrdf';
@@ -547,6 +547,9 @@ export default class Linter {
       })
       .then((addonMetadata) => {
         return this._markBannedLibs(addonMetadata);
+      })
+      .then((addonMetadata) => {
+        return this._markUnknownOrMinifiedCode(addonMetadata);
       });
   }
 
@@ -624,6 +627,34 @@ export default class Linter {
       }).then(() => {
         // eslint-disable-next-line no-param-reassign
         addonMetadata.jsLibs = jsLibs;
+        return addonMetadata;
+      });
+  }
+
+  _markUnknownOrMinifiedCode(addonMetadata) {
+    const minifiedFiles = [];
+    const promises = [];
+
+    return this.io.getFilesByExt('.js')
+      .then((files) => {
+        files.forEach((filename) => {
+          if (filename in addonMetadata.jsLibs) {
+            return;
+          }
+
+          promises.push(this.io.getFile(filename)
+            .then((fileData) => {
+              if (couldBeMinifiedCode(fileData)) {
+                log.debug(`Minified code detected in ${filename}`);
+                minifiedFiles.push(filename);
+              }
+            }));
+        });
+
+        return Promise.all(promises);
+      }).then(() => {
+        // eslint-disable-next-line no-param-reassign
+        addonMetadata.minifiedFiles = minifiedFiles;
         return addonMetadata;
       });
   }

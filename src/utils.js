@@ -212,7 +212,6 @@ export function isBrowserNamespace(string) {
   return ['browser', 'chrome'].includes(string);
 }
 
-
 export function parseCspPolicy(policy) {
   if (!policy) {
     return {};
@@ -237,4 +236,59 @@ export function parseCspPolicy(policy) {
   });
 
   return parsedPolicy;
+}
+
+/**
+ * Determines if the source text is minified.
+ * Using the percentage no. of the indented lines from a sample set of lines
+ * to determine if the js file is minified.
+ * Originally developed for the Firefox Developer Toolbar.
+ */
+export function couldBeMinifiedCode(code) {
+  // Number of lines to look at, taken from the head of the code.
+  const sampleSize = 30;
+
+  // Threshold in percent of indented lines to mark a file as not
+  // minified.
+  const indentCountThreshold = 20; // percentage
+
+  // Lenght of a line that looks suspicious of being minified
+  const hugeLinesLength = 500;
+
+  // Number of huge lines to also mark a file as potentially minified
+  // Hint: Minified AngularJS has 12 lines, jQuery 4
+  const hugeLinesThreshold = 4;
+
+  let lineEndIndex = 0;
+  let lineStartIndex = 0;
+  let lines = 1;
+  let indentCount = 0;
+  let hugeLinesCount = 0;
+
+  // Strip comments.
+  const normalizedCode = code.replace(/\/\*[\S\s]*?\*\/|\/\/.+/g, '');
+
+  while (lines < sampleSize) {
+    lineEndIndex = normalizedCode.indexOf('\n', lineStartIndex);
+
+    if (lineEndIndex === -1) {
+      break;
+    }
+
+    if (/^\s+/.test(normalizedCode.slice(lineStartIndex, lineEndIndex))) {
+      indentCount++;
+    }
+
+    if (lineEndIndex >= hugeLinesLength) {
+      hugeLinesCount++;
+    }
+
+    lineStartIndex = lineEndIndex + 1;
+    lines++;
+  }
+
+  return (
+    (indentCount * 100) < indentCountThreshold ||
+    hugeLinesCount > hugeLinesThreshold
+  );
 }
