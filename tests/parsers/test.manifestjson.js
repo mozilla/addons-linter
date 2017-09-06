@@ -387,8 +387,11 @@ describe('ManifestJSONParser', () => {
         'worker-src web.example.com:80',
         'worker-src web.example.com:443',
 
+        // flag unsafe-eval
+        "script-src 'self' 'unsafe-eval';",
+
         // Properly match mixed with other directives
-        "script-src https: 'unsafe-eval'; object-src 'self'",
+        "script-src https: 'unsafe-inline'; object-src 'self'",
       ];
 
       invalidValues.forEach((invalidValue) => {
@@ -420,9 +423,8 @@ describe('ManifestJSONParser', () => {
         // We only walk through default-src and script-src
         'style-src http://by.cdn.com/',
 
-        // unsafe-eval and unsafe-inline are not forbidden yet and
-        // should be reviewed by a human.
-        "script-src 'self' 'unsafe-eval';",
+        // unsafe-inline is not supported by Firefox and won't be for the
+        // forseeable future. See http://bit.ly/2wG6LP0 for more details-
         "script-src 'self' 'unsafe-inline';",
       ];
 
