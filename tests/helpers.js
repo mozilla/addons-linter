@@ -17,7 +17,7 @@ export const fakeMessageData = {
 export const EMPTY_PNG = Buffer
   .from(oneLine`iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMA
                 AQAABQABDQottAAAAABJRU5ErkJggg==`,
-        'base64')
+    'base64')
   .toString('base64');
 
 export function getRuleFiles(ruleType) {
