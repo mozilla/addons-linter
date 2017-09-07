@@ -1136,12 +1136,22 @@ describe('Linter.extractMetadata()', () => {
     };
 
     const fakeFiles = {
+      // Regular library, should be in `jsLibs` and not matched as a minified
+      // file.
       'jquery.js': read('jquery-3.2.1.min.js'),
+
+      // Regular libraries but modified so the hashes differ. They should
+      // be matched by `markUnknownOrMinifiedCode`.
       'modified-jquery.js': read('jquery-3.2.1-modified.js'),
       'modified-angular.js': read('angular-1.2.28-modified.js'),
+
+      // sourceMap(URL) matching is a good indicator for minified code.
       'minified-with-sourcemap.js': read('minified-with-sourcemap.js'),
       'sourcemap-with-external-url.js': oneLine`
         //# sourceMappingURL=http://example.com/path/to/your/sourcemap.map`,
+
+      // Should match indentation detection, it's less than 500 chars long.
+      'minified-no-nl.js': "(function(){alert('foo')});".repeat(10),
     };
 
     class FakeXpi extends FakeIOBase {
@@ -1168,11 +1178,12 @@ describe('Linter.extractMetadata()', () => {
       _Xpi: FakeXpi,
     }).then((metadata) => {
       sinon.assert.calledOnce(markUnknownOrMinifiedCodeSpy);
-      expect(metadata.minifiedFiles).toEqual([
+      expect(metadata.unknownMinifiedFiles).toEqual([
         'modified-jquery.js',
         'modified-angular.js',
         'minified-with-sourcemap.js',
         'sourcemap-with-external-url.js',
+        'minified-no-nl.js',
       ]);
       expect(metadata.jsLibs).toEqual({
         'jquery.js': 'jquery.3.2.1.jquery.min.js',

@@ -632,7 +632,7 @@ export default class Linter {
   }
 
   _markUnknownOrMinifiedCode(addonMetadata) {
-    const minifiedFiles = [];
+    const unknownMinifiedFiles = [];
     const promises = [];
 
     return this.io.getFilesByExt('.js')
@@ -646,7 +646,7 @@ export default class Linter {
             .then((fileData) => {
               if (couldBeMinifiedCode(fileData)) {
                 log.debug(`Minified code detected in ${filename}`);
-                minifiedFiles.push(filename);
+                unknownMinifiedFiles.push(filename);
               }
             }));
         });
@@ -654,7 +654,7 @@ export default class Linter {
         return Promise.all(promises);
       }).then(() => {
         // eslint-disable-next-line no-param-reassign
-        addonMetadata.minifiedFiles = minifiedFiles;
+        addonMetadata.unknownMinifiedFiles = unknownMinifiedFiles;
         return addonMetadata;
       });
   }
