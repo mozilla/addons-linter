@@ -260,7 +260,7 @@ export function couldBeMinifiedCode(code) {
   // minified.
   const indentCountThreshold = 20; // percentage
 
-  // Lenght of a line that looks suspicious of being minified
+  // Length of a line that looks suspicious of being minified
   const hugeLinesLength = 500;
 
   // Number of huge lines to also mark a file as potentially minified
