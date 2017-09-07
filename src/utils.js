@@ -6,6 +6,9 @@ import { oneLine } from 'common-tags';
 
 import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
+
+const SOURCE_MAP_RE = new RegExp(/\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/);
+
 /*
  * Takes an AST node and returns the root property.
  *
@@ -245,6 +248,11 @@ export function parseCspPolicy(policy) {
  * Inspired by code for the Firefox Developer Toolbar.
  */
 export function couldBeMinifiedCode(code) {
+  // If there's a source map reference it's very certainly minified code.
+  if (SOURCE_MAP_RE.test(code)) {
+    return true;
+  }
+
   // Number of lines to look at, taken from the head of the code.
   const sampleSize = 30;
 

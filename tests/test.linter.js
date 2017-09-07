@@ -1131,20 +1131,22 @@ describe('Linter.extractMetadata()', () => {
     // suppress output.
     addonLinter.print = sinon.stub();
 
+    const read = (filename) => {
+      return fs.readFileSync(`tests/fixtures/jslibs/${filename}`, 'utf-8');
+    };
+
     const fakeFiles = {
-      'jquery.js': 'jquery-3.2.1.min.js',
-      'modified-jquery.js': 'jquery-3.2.1-modified.js',
-      'modified-angular.js': 'angular-1.2.28-modified.js',
+      'jquery.js': read('jquery-3.2.1.min.js'),
+      'modified-jquery.js': read('jquery-3.2.1-modified.js'),
+      'modified-angular.js': read('angular-1.2.28-modified.js'),
+      'minified-with-sourcemap.js': read('minified-with-sourcemap.js'),
+      'sourcemap-with-external-url.js': oneLine`
+        //# sourceMappingURL=http://example.com/path/to/your/sourcemap.map`,
     };
 
     class FakeXpi extends FakeIOBase {
       getFile(filename) {
         return this.getFileAsString(filename);
-      }
-      getFileAsString(filename) {
-        return Promise.resolve(
-          fs.readFileSync(
-            `tests/fixtures/jslibs/${fakeFiles[filename]}`, 'utf-8'));
       }
       getFiles() {
         const files = {};
@@ -1156,6 +1158,9 @@ describe('Linter.extractMetadata()', () => {
       getFilesByExt() {
         return Promise.resolve(Object.keys(fakeFiles));
       }
+      getFileAsString(filename) {
+        return Promise.resolve(fakeFiles[filename]);
+      }
     }
 
     return addonLinter.extractMetadata({
@@ -1163,8 +1168,12 @@ describe('Linter.extractMetadata()', () => {
       _Xpi: FakeXpi,
     }).then((metadata) => {
       sinon.assert.calledOnce(markUnknownOrMinifiedCodeSpy);
-      expect(metadata.minifiedFiles).toEqual(
-        ['modified-jquery.js', 'modified-angular.js']);
+      expect(metadata.minifiedFiles).toEqual([
+        'modified-jquery.js',
+        'modified-angular.js',
+        'minified-with-sourcemap.js',
+        'sourcemap-with-external-url.js',
+      ]);
       expect(metadata.jsLibs).toEqual({
         'jquery.js': 'jquery.3.2.1.jquery.min.js',
       });
