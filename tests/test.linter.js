@@ -997,7 +997,8 @@ describe('Linter.extractMetadata()', () => {
     class FakeXpi extends FakeIOBase {
       getFile(path) {
         return Promise.resolve(
-          fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`));
+          fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`, 'utf-8')
+        );
       }
       getFiles() {
         const files = {};
@@ -1041,7 +1042,8 @@ describe('Linter.extractMetadata()', () => {
     class FakeXpi extends FakeIOBase {
       getFile(path) {
         return Promise.resolve(
-          fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`));
+          fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`, 'utf-8')
+        );
       }
       getFiles() {
         const files = {};
@@ -1444,10 +1446,8 @@ describe('Linter.extractMetadata()', () => {
           'manifest.json': validManifestJSON({ name: 'Buttonmania' }),
           'foo.png': EMPTY_PNG,
           'jquery.js': fs.readFileSync(
-            'tests/fixtures/jslibs/jquery-3.2.1.min.js',
-          ),
+            'tests/fixtures/jslibs/jquery-3.2.1.min.js', 'utf-8'),
         };
-
         return Promise.resolve(contents[filename]);
       }
     }

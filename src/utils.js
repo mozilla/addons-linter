@@ -248,6 +248,12 @@ export function parseCspPolicy(policy) {
  * Inspired by code for the Firefox Developer Toolbar.
  */
 export function couldBeMinifiedCode(code) {
+  // Fast exit if `code` is empty. Could happen in tests, but also in real
+  // files.
+  if (!code) {
+    return false;
+  }
+
   // If there's a source map reference it's very certainly minified code.
   if (SOURCE_MAP_RE.test(code)) {
     return true;
