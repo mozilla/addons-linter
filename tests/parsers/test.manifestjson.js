@@ -387,9 +387,6 @@ describe('ManifestJSONParser', () => {
         'worker-src web.example.com:80',
         'worker-src web.example.com:443',
 
-        // flag unsafe-eval
-        "script-src 'self' 'unsafe-eval';",
-
         // Properly match mixed with other directives
         "script-src https: 'unsafe-inline'; object-src 'self'",
       ];
@@ -441,6 +438,25 @@ describe('ManifestJSONParser', () => {
         expect(manifestJSONParser.isValid).toEqual(true);
         expect(addonLinter.collector.warnings.length).toEqual(0);
       });
+    });
+
+    it('Should issue a detailed warning for unsafe-eval', () => {
+      const invalidValue = "script-src 'self' 'unsafe-eval';";
+      const addonLinter = new Linter({ _: ['bar'] });
+
+      const json = validManifestJSON({
+        content_security_policy: invalidValue,
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector);
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      const warnings = addonLinter.collector.warnings;
+      expect(warnings[0].code).toEqual(
+        messages.MANIFEST_CSP_UNSAFE_EVAL.code);
+      expect(warnings[0].message).toEqual(
+        "Using 'eval' has strong security and performance implications.");
     });
   });
 
