@@ -214,6 +214,13 @@ export default class ManifestJSONParser extends JSONParser {
           // strip leading and ending single quotes.
           value = value.replace(/^[']/, '').replace(/[']$/, '');
 
+          // Add a more detailed message for unsafe-eval to avoid confusion
+          // about why it's forbidden.
+          if (value === 'unsafe-eval') {
+            this.collector.addWarning(messages.MANIFEST_CSP_UNSAFE_EVAL);
+            continue;
+          }
+
           if (value === '*' || value.search(CSP_KEYWORD_RE) === -1) {
             // everything else looks like something we don't understand
             // / support otherwise is invalid so let's warn about that.

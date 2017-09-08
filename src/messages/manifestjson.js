@@ -56,6 +56,17 @@ export const MANIFEST_CSP = {
   file: MANIFEST_JSON,
 };
 
+export const MANIFEST_CSP_UNSAFE_EVAL = {
+  code: 'MANIFEST_CSP_UNSAFE_EVAL',
+  legacyCode: null,
+  message: _(oneLine`
+    Using 'eval' has strong security and performance implications.`),
+  description: _(oneLine`
+    In most cases the same result can be achieved differently,
+    therefore it is generally prohibited`),
+  file: MANIFEST_JSON,
+};
+
 export const PROP_NAME_INVALID = {
   code: 'PROP_NAME_INVALID',
   legacyCode: null,
