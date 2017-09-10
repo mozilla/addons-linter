@@ -9,7 +9,7 @@
   "scripts": {
     "start": "grunt start",
     "build": "grunt build",
-    "eslint": "eslint .",
+    "eslint": "eslint bin/* .",
     "test": "jest tests/ --runInBand --watch",
     "test-coverage": "jest tests/ --runInBand --coverage --watch",
     "test-once": "jest tests/ --runInBand",
