@@ -33,7 +33,7 @@ After installation, run the linter and direct it to your add-on file:
 addons-linter my-addon.zip
 ```
 
-Alternatively you can point it at a directory:
+Alternatively, you can point it at a directory:
 
 ```
 addons-linter my/package/dir
@@ -82,7 +82,7 @@ linter.run()
   .catch((err) => console.error("addons-linter failure: ", err));
 ```
 
-`linter.output` is composed by the following properties (the same of the 'json' report type):
+`linter.output` is composed of the following properties (the same of the 'json' report type):
 
 ```js
 {
@@ -148,7 +148,7 @@ These don't need `grunt-cli` installed globally.
 
 #### yarn scripts
 
-Most of these scripts will also run with npm by substuting `yarn` with `npm`.
+Most of these scripts will also run with npm by substituting `yarn` with `npm`.
 
 | Script                 | Description                                        |
 |------------------------|----------------------------------------------------|
@@ -241,22 +241,22 @@ We use [bunyan](https://github.com/trentm/node-bunyan) for logging:
 * By default logging is off (level is set to 'fatal') .
 * Logging in tests can be enabled using an env var e.g: `LOG_LEVEL=debug grunt test`
 * Logging on the cli can be enabled with `--log-level [level]`.
-* Bunyan by default logs JSON. If you want the json to be pretty printed
+* Bunyan by default logs JSON. If you want the JSON to be pretty printed
   pipe anything that logs into `bunyan` e.g. `LOG_LEVEL=debug grunt test
   | node_modules/bunyan/bin/bunyan`
 
 
 ## Architecture
 
-In a nutshell the way the linter works is to take an add-on
-package, extract the metadata from the xpi (zip) format and then
+In a nutshell, the way the linter works is to take an add-on
+the package, extract the metadata from the xpi (zip) format and then
 process the files it finds through various content scanners.
 
 ![Architecture diagram](https://raw.github.com/mozilla/addons-linter/master/docs/diagrams/addon-linter-flow.png)
 
 ### Scanners
 
-Each file-type has a scanner. For example: CSS files use `CSSScanner`;
+Each file-type has a scanner. For example, CSS files use `CSSScanner`;
 Javascript files use `JavaScriptScanner`. Each scanner looks at relevant
 files and passes each file through a parser which then hands off to
 a set of rules that look for specific things.
@@ -265,10 +265,10 @@ a set of rules that look for specific things.
 
 Rules get exported via a single function in a single file. A rule can
 have private functions it uses internally, but rule code should not depend
-on another rule file and each rule file should export one rule.
+on another rule file and each rule, file should export one rule.
 
 Each rule function is passed data from the scanner in order to carry
-out the specific checks for that rule it returns a list of objects which
+out the specific checks for that rule, it returns a list of objects which
 are then made into message objects and are passed to the Collector.
 
 ### Collector
@@ -286,7 +286,7 @@ same message could be an error *or* a warning for example.
 
 ### Output
 
-Lastly when the processing is complete the linter will output
+Lastly, when the processing is complete the linter will output
 the collected data as text or JSON.
 
 ## Deploys
