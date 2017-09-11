@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-
+let version;
+let filePath;
 require('babel-register');
 
 const fs = require('fs');
@@ -12,8 +13,6 @@ const importedDir = 'src/schema/imported';
 const updatesDir = 'src/schema/updates';
 
 const arg = process.argv[2];
-var version;
-var filePath;
 
 try {
   fs.statSync(arg);
