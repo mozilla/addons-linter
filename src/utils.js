@@ -289,11 +289,13 @@ export function couldBeMinifiedCode(code) {
       break;
     }
 
-    if (/^\s+/.test(normalizedCode.slice(lineStartIndex, lineEndIndex))) {
+    const currentLine = normalizedCode.slice(lineStartIndex, lineEndIndex);
+
+    if (/^\s+/.test(currentLine)) {
       indentCount++;
     }
 
-    if (lineEndIndex >= hugeLinesLength) {
+    if (currentLine.length >= hugeLinesLength) {
       hugeLinesCount++;
     }
 
@@ -302,7 +304,7 @@ export function couldBeMinifiedCode(code) {
   }
 
   return (
-    (indentCount * 100) < indentCountThreshold ||
+    ((indentCount / lines) * 100) < indentCountThreshold ||
     hugeLinesCount > hugeLinesThreshold
   );
 }

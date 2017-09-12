@@ -1154,6 +1154,10 @@ describe('Linter.extractMetadata()', () => {
 
       // Should match indentation detection, it's less than 500 chars long.
       'minified-no-nl.js': "(function(){alert('foo')});".repeat(10),
+
+      // Should not match because > 20% of lines that are properly indented
+      'minified-less-than-20percent.js': read(
+        'minified-less-than-20percent.js').trim(),
     };
 
     class FakeXpi extends FakeIOBase {
