@@ -67,7 +67,7 @@
     "sinon": "3.2.1",
     "tar": "4.0.1",
     "webpack": "3.5.6",
-    "webpack-dev-server": "2.7.1"
+    "webpack-dev-server": "2.8.0"
   },
   "dependencies": {
     "ajv": "5.2.2",
