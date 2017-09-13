@@ -9,7 +9,7 @@
   "scripts": {
     "start": "grunt start",
     "build": "grunt build",
-    "eslint": "eslint .",
+    "eslint": "eslint bin/* .",
     "test": "jest tests/ --runInBand --watch",
     "test-coverage": "jest tests/ --runInBand --coverage --watch",
     "test-once": "jest tests/ --runInBand",
@@ -71,6 +71,7 @@
   },
   "dependencies": {
     "ajv": "5.2.2",
+    "babel-register": "6.26.0",
     "chalk": "2.1.0",
     "cheerio": "1.0.0-rc.2",
     "common-tags": "1.4.0",

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
+/* eslint-disable global-require */
+const path = require('path');
 
-var path = require('path');
-
-var absoluteAppRoot = path.resolve(path.join(__dirname, '..'));
+const absoluteAppRoot = path.resolve(path.join(__dirname, '..'));
 global.appRoot = path.relative(process.cwd(), absoluteAppRoot);
 
 try {
