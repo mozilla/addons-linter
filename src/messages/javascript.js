@@ -112,7 +112,6 @@ export const NO_DOCUMENT_WRITE = {
   ],
 };
 
-
 export const BANNED_LIBRARY = {
   code: 'BANNED_LIBRARY',
   message: _('Banned 3rd-party JS library'),

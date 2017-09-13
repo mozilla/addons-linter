@@ -997,7 +997,8 @@ describe('Linter.extractMetadata()', () => {
     class FakeXpi extends FakeIOBase {
       getFile(path) {
         return Promise.resolve(
-          fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`));
+          fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`, 'utf-8')
+        );
       }
       getFiles() {
         const files = {};
@@ -1041,7 +1042,8 @@ describe('Linter.extractMetadata()', () => {
     class FakeXpi extends FakeIOBase {
       getFile(path) {
         return Promise.resolve(
-          fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`));
+          fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`, 'utf-8')
+        );
       }
       getFiles() {
         const files = {};
@@ -1118,6 +1120,81 @@ describe('Linter.extractMetadata()', () => {
     const warnings = addonLinter.collector.warnings;
     expect(warnings.length).toEqual(1);
     expect(warnings[0].code).toEqual(messages.UNADVISED_LIBRARY.code);
+  });
+
+  it('should flag potentially minified JS files', () => {
+    const addonLinter = new Linter({ _: ['foo'] });
+    const markUnknownOrMinifiedCodeSpy = sinon.spy(
+      addonLinter, '_markUnknownOrMinifiedCode');
+
+    addonLinter.checkFileExists = fakeCheckFileExists;
+    addonLinter.scanFiles = () => Promise.resolve();
+
+    // suppress output.
+    addonLinter.print = sinon.stub();
+
+    const read = (filename) => {
+      return fs.readFileSync(`tests/fixtures/jslibs/${filename}`, 'utf-8');
+    };
+
+    const fakeFiles = {
+      // Regular library, should be in `jsLibs` and not matched as a minified
+      // file.
+      'jquery.js': read('jquery-3.2.1.min.js'),
+
+      // Regular libraries but modified so the hashes differ. They should
+      // be matched by `markUnknownOrMinifiedCode`.
+      'modified-jquery.js': read('jquery-3.2.1-modified.js'),
+      'modified-angular.js': read('angular-1.2.28-modified.js'),
+
+      // sourceMap(URL) matching is a good indicator for minified code.
+      'minified-with-sourcemap.js': read('minified-with-sourcemap.js'),
+      'sourcemap-with-external-url.js': oneLine`
+        //# sourceMappingURL=http://example.com/path/to/your/sourcemap.map`,
+
+      // Should match indentation detection, it's less than 500 chars long.
+      'minified-no-nl.js': "(function(){alert('foo')});".repeat(10),
+
+      // Should not match because > 20% of lines that are properly indented
+      'minified-less-than-20percent.js': read(
+        'minified-less-than-20percent.js').trim(),
+    };
+
+    class FakeXpi extends FakeIOBase {
+      getFile(filename) {
+        return this.getFileAsString(filename);
+      }
+      getFiles() {
+        const files = {};
+        Object.keys(fakeFiles).forEach((filename) => {
+          files[filename] = { uncompressedSize: 5 };
+        });
+        return Promise.resolve(files);
+      }
+      getFilesByExt() {
+        return Promise.resolve(Object.keys(fakeFiles));
+      }
+      getFileAsString(filename) {
+        return Promise.resolve(fakeFiles[filename]);
+      }
+    }
+
+    return addonLinter.extractMetadata({
+      _console: fakeConsole,
+      _Xpi: FakeXpi,
+    }).then((metadata) => {
+      sinon.assert.calledOnce(markUnknownOrMinifiedCodeSpy);
+      expect(metadata.unknownMinifiedFiles).toEqual([
+        'modified-jquery.js',
+        'modified-angular.js',
+        'minified-with-sourcemap.js',
+        'sourcemap-with-external-url.js',
+        'minified-no-nl.js',
+      ]);
+      expect(metadata.jsLibs).toEqual({
+        'jquery.js': 'jquery.3.2.1.jquery.min.js',
+      });
+    });
   });
 
   it('should use size attribute if uncompressedSize is undefined', () => {
@@ -1373,10 +1450,8 @@ describe('Linter.extractMetadata()', () => {
           'manifest.json': validManifestJSON({ name: 'Buttonmania' }),
           'foo.png': EMPTY_PNG,
           'jquery.js': fs.readFileSync(
-            'tests/fixtures/jslibs/jquery-3.2.1.min.js',
-          ),
+            'tests/fixtures/jslibs/jquery-3.2.1.min.js', 'utf-8'),
         };
-
         return Promise.resolve(contents[filename]);
       }
     }
