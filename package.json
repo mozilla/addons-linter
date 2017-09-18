@@ -92,7 +92,7 @@
     "strip-bom-stream": "3.0.0",
     "whatwg-url": "6.2.1",
     "xmldom": "0.1.27",
-    "yargs": "8.0.2",
+    "yargs": "9.0.1",
     "yauzl": "2.8.0"
   }
 }
