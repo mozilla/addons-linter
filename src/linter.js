@@ -370,13 +370,13 @@ export default class Linter {
           });
         }
 
-        if (this.addonMetadata) {
-          this.addonMetadata.totalScannedFileSize += fileSize;
-        }
-
-        if (ScannerClass !== BinaryScanner) {
-          // Check for badwords across all file-types
+        if (ScannerClass !== BinaryScanner && ScannerClass !== FilenameScanner) {
+          // Check for badwords across all code files
           this._markBadwordUsage(filename, fileData);
+
+          if (this.addonMetadata) {
+            this.addonMetadata.totalScannedFileSize += fileSize;
+          }
         }
 
         const scanner = new ScannerClass(fileData, filename, {
