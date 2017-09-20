@@ -7,7 +7,7 @@ import { oneLine } from 'common-tags';
 
 import validate from 'schema/validator';
 import { getConfig } from 'cli';
-import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE } from 'const';
+import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE, MIN_ICON_SIZE, RECOMMENDED_ICON_SIZE, } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
@@ -178,6 +178,17 @@ export default class ManifestJSONParser extends JSONParser {
         this.isValid = false;
       }
     });
+    const hasIconOfSize = (size) =>
+       Object.keys(icons).some((iconSize) => parseInt(iconSize, 10) >= size);
+     const hasMinSizeIcon = hasIconOfSize(MIN_ICON_SIZE);
+     const hasRecommendedSizeIcon = hasIconOfSize(RECOMMENDED_ICON_SIZE);
+     if (!hasMinSizeIcon) {
+       this.collector.addError(messages.MIN_ICON_SIZE);
+       this.isValid = false;
+     }
+     if (!hasRecommendedSizeIcon) {
+       this.collector.addWarning(messages.RECOMMENDED_ICON_SIZE);
+     }
   }
 
   validateCspPolicy(policy) {

@@ -167,6 +167,10 @@ export const TEMPORARY_APIS = [
   'storage.sync',
 ];
 
+// Minimum sizes for icons in pixels.
+export const MIN_ICON_SIZE = 16;
+export const RECOMMENDED_ICON_SIZE = 48;
+
 // All valid CSP keywords that are options to keys like `default-src` and
 // `script-src`. Used in manifest.json parser for validation.
 // See https://mzl.la/2vwqbGU for more details and allowed options.
