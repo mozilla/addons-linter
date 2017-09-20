@@ -1327,10 +1327,10 @@ describe('Linter.extractMetadata()', () => {
   // ------- -------  ---------- -----  ----
   //           593    2015-11-28 19:46  bootstrap.js
   //   X         0    2017-05-09 15:09  data/
-  //          6148    2017-05-09 15:09  data/.DS_Store
+  //   X      6148    2017-05-09 15:09  data/.DS_Store
   //   X         0    2017-05-09 15:09  __MACOSX/
   //   X         0    2017-05-09 15:09  __MACOSX/data/
-  //           120    2017-05-09 15:09  __MACOSX/data/._.DS_Store
+  //   X       120    2017-05-09 15:09  __MACOSX/data/._.DS_Store
   //          1420    2015-11-28 19:46  data/change-text.js
   //             0    2015-11-28 19:46  data/empty.js
   //   X     86659    2017-03-20 20:01  data/jquery-3.2.1.min.js
@@ -1351,7 +1351,7 @@ describe('Linter.extractMetadata()', () => {
 
     return addonLinter.scan({ _console: fakeConsole })
       .then(() => {
-        expect(addonLinter.output.metadata.totalScannedFileSize).toEqual(9421);
+        expect(addonLinter.output.metadata.totalScannedFileSize).toEqual(2929);
       });
   });
 
@@ -1423,6 +1423,7 @@ describe('Linter.extractMetadata()', () => {
         'manifest.json': { uncompressedSize: 839 },
         'jquery.js': { uncompressedSize: 7 },
         'foo.png': { uncompressedSize: 386 },
+        '.DS_Store': { uncompressedSize: 232 },
       };
       getFile(filename) {
         return this.getFileAsString(filename);
@@ -1451,6 +1452,8 @@ describe('Linter.extractMetadata()', () => {
           'foo.png': EMPTY_PNG,
           'jquery.js': fs.readFileSync(
             'tests/fixtures/jslibs/jquery-3.2.1.min.js', 'utf-8'),
+          '.DS_Store': fs.readFileSync(
+            'tests/fixtures/Dummy_DS_Store', 'binary'),
         };
         return Promise.resolve(contents[filename]);
       }
