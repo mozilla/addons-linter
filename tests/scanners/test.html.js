@@ -1,7 +1,7 @@
 import cheerio from 'cheerio';
+import { oneLine } from 'common-tags';
 
 import { VALIDATION_WARNING } from 'const';
-import { oneLine } from 'common-tags';
 import HTMLScanner from 'scanners/html';
 import * as rules from 'rules/html';
 import * as messages from 'messages';
@@ -35,7 +35,7 @@ describe('HTML', () => {
       });
   });
 
-  it('should require <script> tag to have a src attribute', () => {
+  it('should warn on <script> tag without a src attribute and without type attribute', () => {
     const badHTML = validHTML('<script>alert()</script>');
     const htmlScanner = new HTMLScanner(badHTML, 'index.html');
 
@@ -44,6 +44,29 @@ describe('HTML', () => {
         expect(linterMessages.length).toEqual(1);
         expect(linterMessages[0].code).toEqual(messages.INLINE_SCRIPT.code);
         expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
+      });
+  });
+
+  it('should warn on <script> tag without a src attribute but a type attribute whose value is "text/javascript"', () => {
+    const badHTML = validHTML('<script type="text/javascript">alert()</script>');
+    const htmlScanner = new HTMLScanner(badHTML, 'index.html');
+
+    return htmlScanner.scan()
+      .then(({ linterMessages }) => {
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(messages.INLINE_SCRIPT.code);
+        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
+      });
+  });
+
+  it('should accept a <script> tag without a src attribute but a type attribute whose value is not "text/javascript"', () => {
+    const goodHTML = validHTML(oneLine`
+        <script type="text/html" id="my-html-template-used-in-knockout">`);
+    const htmlScanner = new HTMLScanner(goodHTML, 'index.html');
+
+    return htmlScanner.scan()
+      .then(({ linterMessages }) => {
+        expect(linterMessages.length).toEqual(0);
       });
   });
 

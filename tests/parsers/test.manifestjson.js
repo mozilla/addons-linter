@@ -316,18 +316,18 @@ describe('ManifestJSONParser', () => {
 
   describe('strict_max_version', () => {
     it('warns on strict_max_version', () => {
-      var addonLinter = new Linter({_: ['bar']});
-      var json = validManifestJSON({
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
         applications: {
           gecko: {
             strict_max_version: '58.0',
           },
         },
       });
-      var manifestJSONParser = new ManifestJSONParser(json,
-                                                      addonLinter.collector);
+      const manifestJSONParser = new ManifestJSONParser(json,
+        addonLinter.collector);
       expect(manifestJSONParser.isValid).toEqual(true);
-      var notices = addonLinter.collector.notices;
+      const notices = addonLinter.collector.notices;
       expect(notices[0].code).toEqual(messages.STRICT_MAX_VERSION.code);
       expect(notices[0].message).toContain('strict_max_version');
     });
@@ -388,7 +388,7 @@ describe('ManifestJSONParser', () => {
         'worker-src web.example.com:443',
 
         // Properly match mixed with other directives
-        "script-src https: 'unsafe-eval'; object-src 'self'",
+        "script-src https: 'unsafe-inline'; object-src 'self'",
       ];
 
       invalidValues.forEach((invalidValue) => {
@@ -420,9 +420,8 @@ describe('ManifestJSONParser', () => {
         // We only walk through default-src and script-src
         'style-src http://by.cdn.com/',
 
-        // unsafe-eval and unsafe-inline are not forbidden yet and
-        // should be reviewed by a human.
-        "script-src 'self' 'unsafe-eval';",
+        // unsafe-inline is not supported by Firefox and won't be for the
+        // forseeable future. See http://bit.ly/2wG6LP0 for more details-
         "script-src 'self' 'unsafe-inline';",
       ];
 
@@ -439,6 +438,25 @@ describe('ManifestJSONParser', () => {
         expect(manifestJSONParser.isValid).toEqual(true);
         expect(addonLinter.collector.warnings.length).toEqual(0);
       });
+    });
+
+    it('Should issue a detailed warning for unsafe-eval', () => {
+      const invalidValue = "script-src 'self' 'unsafe-eval';";
+      const addonLinter = new Linter({ _: ['bar'] });
+
+      const json = validManifestJSON({
+        content_security_policy: invalidValue,
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector);
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      const warnings = addonLinter.collector.warnings;
+      expect(warnings[0].code).toEqual(
+        messages.MANIFEST_CSP_UNSAFE_EVAL.code);
+      expect(warnings[0].message).toEqual(
+        "Using 'eval' has strong security and performance implications.");
     });
   });
 

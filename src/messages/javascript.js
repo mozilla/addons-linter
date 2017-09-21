@@ -1,5 +1,6 @@
-import { apiToMessage, gettext as _ } from 'utils';
 import { oneLine } from 'common-tags';
+
+import { apiToMessage, gettext as _ } from 'utils';
 
 export const JS_SYNTAX_ERROR = {
   code: 'JS_SYNTAX_ERROR',
@@ -110,7 +111,6 @@ export const NO_DOCUMENT_WRITE = {
     'js', 'document.write', 'evil',
   ],
 };
-
 
 export const BANNED_LIBRARY = {
   code: 'BANNED_LIBRARY',

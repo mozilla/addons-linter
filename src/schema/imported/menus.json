@@ -45,6 +45,14 @@
               "type": "string",
               "description": "The unique ID to assign to this item. Mandatory for event pages. Cannot be the same as another ID for this extension."
             },
+            "icons": {
+              "type": "object",
+              "patternProperties": {
+                "^[1-9]\\d*$": {
+                  "type": "string"
+                }
+              }
+            },
             "title": {
               "type": "string",
               "description": "The text to be displayed in the item; this is <em>required</em> unless <code>type</code> is 'separator'. When the context is 'selection', you can use <code>%s</code> within the string to show the selected text. For example, if this parameter's value is \"Translate '%s' to Pig Latin\" and the user selects the word \"cool\", the context menu item for the selection is \"Translate 'cool' to Pig Latin\"."
@@ -348,7 +356,7 @@
         "page_action",
         "tab"
       ],
-      "description": "The different contexts a menu can appear in. Specifying 'all' is equivalent to the combination of all other contexts except for 'tab'."
+      "description": "The different contexts a menu can appear in. Specifying 'all' is equivalent to the combination of all other contexts except for 'tab' and 'tools_menu'."
     },
     "ItemType": {
       "type": "string",
@@ -389,6 +397,10 @@
         "mediaType": {
           "type": "string",
           "description": "One of 'image', 'video', or 'audio' if the context menu was activated on one of these types of elements."
+        },
+        "linkText": {
+          "type": "string",
+          "description": "If the element is a link, the text of that link."
         },
         "linkUrl": {
           "type": "string",

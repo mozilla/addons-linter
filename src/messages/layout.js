@@ -1,6 +1,7 @@
+import { oneLine } from 'common-tags';
+
 import { MAX_FILE_SIZE_TO_PARSE_MB } from 'const';
 import { gettext as _ } from 'utils';
-import { oneLine } from 'common-tags';
 
 
 export const DUPLICATE_XPI_ENTRY = {

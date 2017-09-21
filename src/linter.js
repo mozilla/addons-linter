@@ -3,13 +3,14 @@ import { extname } from 'path';
 import columnify from 'columnify';
 import chalk from 'chalk';
 import Dispensary from 'dispensary';
+import { oneLine } from 'common-tags';
 
 import { lstatPromise } from 'io/utils';
 import { terminalWidth } from 'cli';
 import * as constants from 'const';
 import { BANNED_LIBRARIES, UNADVISED_LIBRARIES } from 'libraries';
 import * as messages from 'messages';
-import { checkMinNodeVersion, gettext as _ } from 'utils';
+import { checkMinNodeVersion, gettext as _, couldBeMinifiedCode } from 'utils';
 import log from 'logger';
 import Collector from 'collector';
 import InstallRdfParser from 'parsers/installrdf';
@@ -22,8 +23,6 @@ import JavaScriptScanner from 'scanners/javascript';
 import JSONScanner from 'scanners/json';
 import RDFScanner from 'scanners/rdf';
 import { Crx, Directory, Xpi } from 'io';
-import badwords from 'badwords.json';
-import { oneLine } from 'common-tags';
 
 
 export default class Linter {
@@ -371,12 +370,14 @@ export default class Linter {
           });
         }
 
-        if (this.addonMetadata) {
-          this.addonMetadata.totalScannedFileSize += fileSize;
-        }
+        if (ScannerClass !== BinaryScanner && ScannerClass !== FilenameScanner) {
+          // Check for badwords across all code files
+          this._markBadwordUsage(filename, fileData);
 
-        // Check for badwords across all file-types
-        this._markBadwordUsage(filename, fileData);
+          if (this.addonMetadata) {
+            this.addonMetadata.totalScannedFileSize += fileSize;
+          }
+        }
 
         const scanner = new ScannerClass(fileData, filename, {
           addonMetadata: this.addonMetadata,
@@ -546,6 +547,9 @@ export default class Linter {
       })
       .then((addonMetadata) => {
         return this._markBannedLibs(addonMetadata);
+      })
+      .then((addonMetadata) => {
+        return this._markUnknownOrMinifiedCode(addonMetadata);
       });
   }
 
@@ -627,11 +631,39 @@ export default class Linter {
       });
   }
 
+  _markUnknownOrMinifiedCode(addonMetadata) {
+    const unknownMinifiedFiles = [];
+    const promises = [];
+
+    return this.io.getFilesByExt('.js')
+      .then((files) => {
+        files.forEach((filename) => {
+          if (filename in addonMetadata.jsLibs) {
+            return;
+          }
+
+          promises.push(this.io.getFile(filename)
+            .then((fileData) => {
+              if (couldBeMinifiedCode(fileData)) {
+                log.debug(`Minified code detected in ${filename}`);
+                unknownMinifiedFiles.push(filename);
+              }
+            }));
+        });
+
+        return Promise.all(promises);
+      }).then(() => {
+        // eslint-disable-next-line no-param-reassign
+        addonMetadata.unknownMinifiedFiles = unknownMinifiedFiles;
+        return addonMetadata;
+      });
+  }
+
   _markBadwordUsage(filename, fileData) {
     if (fileData && fileData.trim()) {
-      const sanitizedFileData = fileData.replace(/[^a-z]/g, '');
+      const matches = fileData.match(constants.BADWORDS_RE.en);
 
-      if (badwords.en.some((word) => sanitizedFileData.includes(word))) {
+      if (matches) {
         this.collector.addNotice(
           Object.assign({}, messages.MOZILLA_COND_OF_USE, {
             file: filename,

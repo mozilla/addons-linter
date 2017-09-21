@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+import { oneLine } from 'common-tags';
+
 import Linter from 'linter';
 import * as constants from 'const';
 import * as messages from 'messages';
@@ -8,13 +10,13 @@ import BinaryScanner from 'scanners/binary';
 import CSSScanner from 'scanners/css';
 import FilenameScanner from 'scanners/filename';
 import JSONScanner from 'scanners/json';
-import { oneLine } from 'common-tags';
 import { Xpi } from 'io';
 
 import {
   fakeMessageData,
   unexpectedSuccess,
-  validManifestJSON } from './helpers';
+  validManifestJSON,
+  EMPTY_PNG } from './helpers';
 
 
 const fakeCheckFileExists = () => {
@@ -995,7 +997,8 @@ describe('Linter.extractMetadata()', () => {
     class FakeXpi extends FakeIOBase {
       getFile(path) {
         return Promise.resolve(
-          fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`));
+          fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`, 'utf-8')
+        );
       }
       getFiles() {
         const files = {};
@@ -1039,7 +1042,8 @@ describe('Linter.extractMetadata()', () => {
     class FakeXpi extends FakeIOBase {
       getFile(path) {
         return Promise.resolve(
-          fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`));
+          fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`, 'utf-8')
+        );
       }
       getFiles() {
         const files = {};
@@ -1116,6 +1120,81 @@ describe('Linter.extractMetadata()', () => {
     const warnings = addonLinter.collector.warnings;
     expect(warnings.length).toEqual(1);
     expect(warnings[0].code).toEqual(messages.UNADVISED_LIBRARY.code);
+  });
+
+  it('should flag potentially minified JS files', () => {
+    const addonLinter = new Linter({ _: ['foo'] });
+    const markUnknownOrMinifiedCodeSpy = sinon.spy(
+      addonLinter, '_markUnknownOrMinifiedCode');
+
+    addonLinter.checkFileExists = fakeCheckFileExists;
+    addonLinter.scanFiles = () => Promise.resolve();
+
+    // suppress output.
+    addonLinter.print = sinon.stub();
+
+    const read = (filename) => {
+      return fs.readFileSync(`tests/fixtures/jslibs/${filename}`, 'utf-8');
+    };
+
+    const fakeFiles = {
+      // Regular library, should be in `jsLibs` and not matched as a minified
+      // file.
+      'jquery.js': read('jquery-3.2.1.min.js'),
+
+      // Regular libraries but modified so the hashes differ. They should
+      // be matched by `markUnknownOrMinifiedCode`.
+      'modified-jquery.js': read('jquery-3.2.1-modified.js'),
+      'modified-angular.js': read('angular-1.2.28-modified.js'),
+
+      // sourceMap(URL) matching is a good indicator for minified code.
+      'minified-with-sourcemap.js': read('minified-with-sourcemap.js'),
+      'sourcemap-with-external-url.js': oneLine`
+        //# sourceMappingURL=http://example.com/path/to/your/sourcemap.map`,
+
+      // Should match indentation detection, it's less than 500 chars long.
+      'minified-no-nl.js': "(function(){alert('foo')});".repeat(10),
+
+      // Should not match because > 20% of lines that are properly indented
+      'minified-less-than-20percent.js': read(
+        'minified-less-than-20percent.js').trim(),
+    };
+
+    class FakeXpi extends FakeIOBase {
+      getFile(filename) {
+        return this.getFileAsString(filename);
+      }
+      getFiles() {
+        const files = {};
+        Object.keys(fakeFiles).forEach((filename) => {
+          files[filename] = { uncompressedSize: 5 };
+        });
+        return Promise.resolve(files);
+      }
+      getFilesByExt() {
+        return Promise.resolve(Object.keys(fakeFiles));
+      }
+      getFileAsString(filename) {
+        return Promise.resolve(fakeFiles[filename]);
+      }
+    }
+
+    return addonLinter.extractMetadata({
+      _console: fakeConsole,
+      _Xpi: FakeXpi,
+    }).then((metadata) => {
+      sinon.assert.calledOnce(markUnknownOrMinifiedCodeSpy);
+      expect(metadata.unknownMinifiedFiles).toEqual([
+        'modified-jquery.js',
+        'modified-angular.js',
+        'minified-with-sourcemap.js',
+        'sourcemap-with-external-url.js',
+        'minified-no-nl.js',
+      ]);
+      expect(metadata.jsLibs).toEqual({
+        'jquery.js': 'jquery.3.2.1.jquery.min.js',
+      });
+    });
   });
 
   it('should use size attribute if uncompressedSize is undefined', () => {
@@ -1248,10 +1327,10 @@ describe('Linter.extractMetadata()', () => {
   // ------- -------  ---------- -----  ----
   //           593    2015-11-28 19:46  bootstrap.js
   //   X         0    2017-05-09 15:09  data/
-  //          6148    2017-05-09 15:09  data/.DS_Store
+  //   X      6148    2017-05-09 15:09  data/.DS_Store
   //   X         0    2017-05-09 15:09  __MACOSX/
   //   X         0    2017-05-09 15:09  __MACOSX/data/
-  //           120    2017-05-09 15:09  __MACOSX/data/._.DS_Store
+  //   X       120    2017-05-09 15:09  __MACOSX/data/._.DS_Store
   //          1420    2015-11-28 19:46  data/change-text.js
   //             0    2015-11-28 19:46  data/empty.js
   //   X     86659    2017-03-20 20:01  data/jquery-3.2.1.min.js
@@ -1272,23 +1351,116 @@ describe('Linter.extractMetadata()', () => {
 
     return addonLinter.scan({ _console: fakeConsole })
       .then(() => {
-        expect(addonLinter.output.metadata.totalScannedFileSize).toEqual(9421);
+        expect(addonLinter.output.metadata.totalScannedFileSize).toEqual(2929);
       });
   });
 
-  it('should flag files with badwords.', () => {
-    var addonLinter = new Linter({
+  it('should flag files with badwords', () => {
+    const addonLinter = new Linter({
       _: ['tests/fixtures/webextension_badwords.zip'],
     });
-    var markBadwordusageSpy = sinon.spy(addonLinter, '_markBadwordUsage');
+    const markBadwordusageSpy = sinon.spy(addonLinter, '_markBadwordUsage');
 
-    return addonLinter.scan({_console: fakeConsole})
+    return addonLinter.scan({ _console: fakeConsole })
       .then(() => {
         sinon.assert.calledTwice(markBadwordusageSpy);
-        var errors = addonLinter.collector.notices;
+        const errors = addonLinter.collector.notices;
         expect(errors.length).toEqual(1);
         expect(errors[0].code).toEqual(
           messages.MOZILLA_COND_OF_USE.code);
+      });
+  });
+
+  it('should not flag files only with partial badword matches', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const markBadwordusageSpy = sinon.spy(addonLinter, '_markBadwordUsage');
+
+    // suppress output.
+    addonLinter.print = sinon.stub();
+    addonLinter.checkFileExists = fakeCheckFileExists;
+
+    class FakeXpi extends FakeIOBase {
+      files = {
+        'manifest.json': { uncompressedSize: 839 },
+        'm1.js': { uncompressedSize: 20 },
+        'm2.js': { uncompressedSize: 20 },
+      };
+      getFile(filename) {
+        return this.getFileAsString(filename);
+      }
+      getFiles() {
+        return Promise.resolve(this.files);
+      }
+      getFileAsString(filename) {
+        const words = {
+          'm1.js': 'const a = "butt fuck"',
+          'm2.js': 'const a = "m-fucking"',
+          'manifest.json': validManifestJSON({ name: 'Buttonmania' }),
+        };
+
+        return Promise.resolve(words[filename]);
+      }
+    }
+    return addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole })
+      .then(() => {
+        // Only manifest and js files, binary files like the .png are ignored
+        sinon.assert.callCount(markBadwordusageSpy, 3);
+        const errors = addonLinter.collector.notices;
+        expect(errors.length).toEqual(2);
+      });
+  });
+
+  it('should not flag binary files and known libraries', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const markBadwordusageSpy = sinon.spy(addonLinter, '_markBadwordUsage');
+
+    // suppress output.
+    addonLinter.print = sinon.stub();
+    addonLinter.checkFileExists = fakeCheckFileExists;
+
+    class FakeXpi extends FakeIOBase {
+      files = {
+        'manifest.json': { uncompressedSize: 839 },
+        'jquery.js': { uncompressedSize: 7 },
+        'foo.png': { uncompressedSize: 386 },
+        '.DS_Store': { uncompressedSize: 232 },
+      };
+      getFile(filename) {
+        return this.getFileAsString(filename);
+      }
+      getFiles() {
+        return Promise.resolve(this.files);
+      }
+      getFilesByExt(...extensions) {
+        return new Promise((resolve) => {
+          const files = [];
+
+          Object.keys(this.files).forEach((filename) => {
+            extensions.forEach((ext) => {
+              if (filename.endsWith(ext)) {
+                files.push(filename);
+              }
+            });
+          });
+
+          return resolve(files);
+        });
+      }
+      getFileAsString(filename) {
+        const contents = {
+          'manifest.json': validManifestJSON({ name: 'Buttonmania' }),
+          'foo.png': EMPTY_PNG,
+          'jquery.js': fs.readFileSync(
+            'tests/fixtures/jslibs/jquery-3.2.1.min.js', 'utf-8'),
+          '.DS_Store': fs.readFileSync(
+            'tests/fixtures/Dummy_DS_Store', 'binary'),
+        };
+        return Promise.resolve(contents[filename]);
+      }
+    }
+    return addonLinter.scan({ _Xpi: FakeXpi })
+      .then(() => {
+        sinon.assert.callCount(markBadwordusageSpy, 1);
       });
   });
 });

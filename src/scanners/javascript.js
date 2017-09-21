@@ -1,6 +1,7 @@
 import path from 'path';
 
 import ESLint from 'eslint';
+import { oneLine } from 'common-tags';
 
 import {
   ESLINT_RULE_MAPPING,
@@ -10,7 +11,6 @@ import {
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
 import { ensureFilenameExists } from 'utils';
-import { oneLine } from 'common-tags';
 
 
 export default class JavaScriptScanner {
@@ -72,7 +72,7 @@ export default class JavaScriptScanner {
 
       Object.keys(_rules).forEach((name) => {
         this._rulesProcessed++;
-        _ESLint.linter.defineRule(name, _rules[name]);
+        cli.linter.defineRule(name, _rules[name]);
       });
 
       // ESLint is synchronous and doesn't accept streams, so we need to

@@ -1,6 +1,7 @@
+import { oneLine } from 'common-tags';
+
 import { gettext as _ } from 'utils';
 import { INSTALL_RDF } from 'const';
-import { oneLine } from 'common-tags';
 
 
 export const _tagNotAllowed = (tagName) => {

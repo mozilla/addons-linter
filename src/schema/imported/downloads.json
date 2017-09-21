@@ -211,6 +211,7 @@
       "name": "open",
       "type": "function",
       "async": "callback",
+      "requireUserInput": true,
       "description": "Open the downloaded file.",
       "permissions": [
         "downloads.open"
@@ -694,7 +695,6 @@
       "required": [
         "id",
         "url",
-        "referrer",
         "filename",
         "incognito",
         "danger",

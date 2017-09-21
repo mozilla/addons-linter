@@ -9,15 +9,15 @@ import {
 describe('formats', () => {
   describe('isValidVersionString', () => {
     const validVersionStrings = [
-      '0.1.12dev-cb31c51',
       '1.0',
+      '1.01a',
       '1.0.0beta2',
+      '1.000000a1',
       '2.10.2',
       '3.1.2.4567',
       '3.1.2.65535',
       '4.1pre1',
       '4.1.1pre2',
-      '4.1.1dev-abcdef1',
       '4.1.1.2pre3',
     ];
 
@@ -28,11 +28,18 @@ describe('formats', () => {
       '.',
       'a.b.c.d',
       '1.2.2.2.4',
+      '1.2.2.2.4a',
       '01',
+      '1.01',
       '1.000000',
       '2.99999',
       '3.65536',
       '1.0.0-beta2',
+      '1.0.0+1',
+      '1.0.0-rc1.0+001',
+      '0.1.12dev-cb31c51',
+      '4.1.1dev-abcdef1',
+      `1.${'9'.repeat(100)}`,
     ];
 
     validVersionStrings.forEach((validVersionString) => {

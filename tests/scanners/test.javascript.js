@@ -1,4 +1,5 @@
 import ESLint from 'eslint';
+import { oneLine } from 'common-tags';
 
 import {
   DEPRECATED_APIS,
@@ -13,7 +14,6 @@ import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
 import { apiToMessage } from 'utils';
-import { oneLine } from 'common-tags';
 
 import {
   fakeMessageData,
@@ -94,14 +94,14 @@ describe('JavaScript Scanner', () => {
           }],
         };
       },
-    };
-
-    const FakeESLint = {
       linter: {
         defineRule: () => {
           // no-op
         },
       },
+    };
+
+    const FakeESLint = {
       CLIEngine: FakeCLIEngine,
     };
 

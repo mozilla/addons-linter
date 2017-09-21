@@ -3,6 +3,7 @@ import path from 'path';
 
 import RJSON from 'relaxed-json';
 import { URL } from 'whatwg-url';
+import { oneLine } from 'common-tags';
 
 import validate from 'schema/validator';
 import { getConfig } from 'cli';
@@ -12,7 +13,6 @@ import * as messages from 'messages';
 import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
 import { parseCspPolicy } from 'utils';
-import { oneLine } from 'common-tags';
 
 function normalizePath(iconPath) {
   // Convert the icon path to a URL so we can strip any fragments and resolve
@@ -213,6 +213,13 @@ export default class ManifestJSONParser extends JSONParser {
 
           // strip leading and ending single quotes.
           value = value.replace(/^[']/, '').replace(/[']$/, '');
+
+          // Add a more detailed message for unsafe-eval to avoid confusion
+          // about why it's forbidden.
+          if (value === 'unsafe-eval') {
+            this.collector.addWarning(messages.MANIFEST_CSP_UNSAFE_EVAL);
+            continue;
+          }
 
           if (value === '*' || value.search(CSP_KEYWORD_RE) === -1) {
             // everything else looks like something we don't understand

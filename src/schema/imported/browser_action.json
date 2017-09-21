@@ -404,6 +404,14 @@
             "default_icon": {
               "$ref": "manifest#/types/IconPath"
             },
+            "theme_icons": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "manifest#/types/ThemeIcons"
+              },
+              "description": "Specifies icons to use for dark and light themes"
+            },
             "default_popup": {
               "type": "string",
               "format": "relativeUrl",

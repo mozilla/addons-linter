@@ -1,6 +1,7 @@
+import { oneLine } from 'common-tags';
+
 import { gettext as _, sprintf } from 'utils';
 import { MANIFEST_JSON } from 'const';
-import { oneLine } from 'common-tags';
 
 
 export const MANIFEST_FIELD_REQUIRED = {
@@ -52,6 +53,17 @@ export const MANIFEST_CSP = {
   message: _(oneLine`
     "content_security_policy" allows remote code execution in manifest.json`),
   description: _('A custom content_security_policy needs additional review.'),
+  file: MANIFEST_JSON,
+};
+
+export const MANIFEST_CSP_UNSAFE_EVAL = {
+  code: 'MANIFEST_CSP_UNSAFE_EVAL',
+  legacyCode: null,
+  message: _(oneLine`
+    Using 'eval' has strong security and performance implications.`),
+  description: _(oneLine`
+    In most cases the same result can be achieved differently,
+    therefore it is generally prohibited`),
   file: MANIFEST_JSON,
 };
 

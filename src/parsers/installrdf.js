@@ -1,7 +1,8 @@
+import { oneLine } from 'common-tags';
+
 import { ADDON_TYPE_MAP, RDF_DEFAULT_NAMESPACE } from 'const';
 import * as messages from 'messages';
 import log from 'logger';
-import { oneLine } from 'common-tags';
 
 
 export default class InstallRdfParser {

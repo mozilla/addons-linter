@@ -5,6 +5,9 @@ import {
   UNSUPPORTED_API,
 } from 'messages/javascript';
 
+// eslint-disable-next-line import/extensions
+import badwords from './badwords.json';
+
 export const DEFLATE_COMPRESSION = 8;
 export const NO_COMPRESSION = 0;
 
@@ -168,9 +171,16 @@ export const TEMPORARY_APIS = [
 // `script-src`. Used in manifest.json parser for validation.
 // See https://mzl.la/2vwqbGU for more details and allowed options.
 export const CSP_KEYWORD_RE = new RegExp([
-  '(self|none|unsafe-inline|unsafe-eval|strict-dynamic|',
-  'unsafe-hashed-attributes)',
+  '(self|none|unsafe-inline|strict-dynamic|unsafe-hashed-attributes)',
   // Only match these keywords, anything else is forbidden
   '(?!.)',
   '|(sha(256|384|512)-|nonce-)',
 ].join(''));
+
+// All badwords grouped by language as pre-compild regular expression.
+// Note: \b matches a very limited set of 'word boundaries' which might
+// not work properly once other languages should be matched too.
+// See http://www.ecma-international.org/ecma-262/5.1/#sec-15.10.2.6
+export const BADWORDS_RE = {
+  en: new RegExp(`\\b(?:${badwords.en.join('|')})\\b`, 'gi'),
+};
