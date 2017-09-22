@@ -760,6 +760,5 @@ describe('ManifestJSONParser', () => {
       expect(warnings[0].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
       expect(warnings[1].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
     });
-
   });
 });
