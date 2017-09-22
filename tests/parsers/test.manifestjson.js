@@ -22,6 +22,7 @@ describe('ManifestJSONParser', () => {
     expect(metadata.version).toEqual(null);
   });
 
+
   describe('id', () => {
     it('should return the correct id', () => {
       const addonLinter = new Linter({ _: ['bar'] });
@@ -80,6 +81,16 @@ describe('ManifestJSONParser', () => {
       const errors = addonLinter.collector.errors;
       expect(errors[0].code).toEqual(messages.MANIFEST_FIELD_INVALID.code);
       expect(errors[0].message).toContain('/manifest_version');
+    });
+    
+    it('should have the valid key ', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON();
+      const manifestJSONParser = new ManifestJSONParser(json,
+        addonLinter.collector);
+      expect(manifestJSONParser.isValid).toEqual(true);
+      const errors = addonLinter.collector.errors;
+      expect(errors[0].code).toEqual(messages.INVALID_KEY.code);
     });
 
     it('should have the right manifestVersion', () => {
