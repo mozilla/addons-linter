@@ -143,6 +143,35 @@ export function manifestIconMissing(path) {
   };
 }
 
+export const MANIFEST_BACKGROUND_SCRIPT_NOT_FOUND = 'MANIFEST_BACKGROUND_SCRIPT_NOT_FOUND';
+export const MANIFEST_BACKGROUND_PAGE_NOT_FOUND = 'MANIFEST_BACKGROUND_PAGE_NOT_FOUND';
+export function manifestBackgroundMissing(path, script_or_page) {
+  if (script_or_page === 'script') {
+    return {
+      code: MANIFEST_BACKGROUND_SCRIPT_NOT_FOUND,
+      legacyCode: null,
+      message: _(
+        'A background script defined in the manifest could not be found.'),
+      description: sprintf(
+        _('Background script could not be found at "%(path)s".'),
+        { path }),
+      file: MANIFEST_JSON,
+    };
+  }
+  if (script_or_page === 'page') {
+    return {
+      code: MANIFEST_BACKGROUND_PAGE_NOT_FOUND,
+      legacyCode: null,
+      message: _(
+        'A background page defined in the manifest could not be found.'),
+      description: sprintf(
+        _('Background page could not be found at "%(path)s".'),
+        { path }),
+      file: MANIFEST_JSON,
+    };
+  }
+}
+
 export const PROP_NAME_MISSING = manifestPropMissing('name');
 export const PROP_VERSION_MISSING = manifestPropMissing('version');
 
