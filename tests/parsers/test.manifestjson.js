@@ -745,17 +745,17 @@ describe('ManifestJSONParser', () => {
     it('does not add errors if the script exists', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        background: {'scripts': ['foo.js']}
+        background: { scripts: ['foo.js'] },
       });
       const manifestJSONParser = new ManifestJSONParser(
-        json, linter.collector, { io: { files: {'foo.js': ''} } });
+        json, linter.collector, { io: { files: { 'foo.js': '' } } });
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
     it('does error if the script does not exist', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        background: {'scripts': ['foo.js']}
+        background: { scripts: ['foo.js'] },
       });
       const manifestJSONParser = new ManifestJSONParser(
         json, linter.collector, { io: { files: {} } });
@@ -771,17 +771,17 @@ describe('ManifestJSONParser', () => {
     it('does not add errors if the page exists', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        background: {'page': 'foo.html'}
+        background: { page: 'foo.html' },
       });
       const manifestJSONParser = new ManifestJSONParser(
-        json, linter.collector, { io: { files: {'foo.html': ''} } });
+        json, linter.collector, { io: { files: { 'foo.html': '' } } });
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
     it('does error if the page does not exist', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        background: {'page': 'foo.html'}
+        background: { page: 'foo.html' },
       });
       const manifestJSONParser = new ManifestJSONParser(
         json, linter.collector, { io: { files: {} } });
