@@ -135,6 +135,9 @@ export const FLAGGED_FILE_EXTENSIONS = [
 
 export const IMAGE_FILE_EXTENSIONS = [
   'jpg',
+  'jpeg',
+  'webp',
+  'giff',
   'png',
   'svg',
 ];
