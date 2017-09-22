@@ -61,9 +61,9 @@ export default class ManifestJSONParser extends JSONParser {
         error.message = 'is not a valid key or has invalid extra properties';
       }
     }**/
-    /**if (error.type === 'additionalProperties' && error.dataPath.lastIndexOf('/') === 0){
+    if (error.type === 'additionalProperties' && error.dataPath.lastIndexOf('/') === 0){
         baseObject=messages.INVALID_KEY;
-    }**/
+    }
 
     const overrides = {
       message: `"${error.dataPath}" ${error.message}`,
