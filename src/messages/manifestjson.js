@@ -148,3 +148,11 @@ export const NO_DEFAULT_LOCALE = {
     See: https://mzl.la/2hjcaEE`),
   file: MANIFEST_JSON,
 };
+
+export const WRONG_ICON_EXTENSION = {
+  code: 'WRONG_ICON_EXTENSION',
+  legacyCode: null,
+  message: _('Consider Adding another icon'),
+  description: sprintf('Icons Should be of type jpg, png or svg'),
+  file: MANIFEST_JSON,
+};

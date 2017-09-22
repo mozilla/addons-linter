@@ -7,7 +7,7 @@ import { oneLine } from 'common-tags';
 
 import validate from 'schema/validator';
 import { getConfig } from 'cli';
-import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE } from 'const';
+import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE, IMAGE_FILE_EXTENSIONS } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
@@ -176,6 +176,8 @@ export default class ManifestJSONParser extends JSONParser {
       if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
         this.collector.addError(messages.manifestIconMissing(_path));
         this.isValid = false;
+      } else if (IMAGE_FILE_EXTENSIONS.includes(icons[size].split('.').pop())) {
+        this.collector.addError(messages.WRONG_ICON_EXTENSION);
       }
     });
   }
