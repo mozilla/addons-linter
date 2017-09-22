@@ -739,5 +739,27 @@ describe('ManifestJSONParser', () => {
         description: 'Icon could not be found at "icons/icon-64.png".',
       });
     });
+
+    it('adds an error if the icon does not have a valid extension', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        icons: {
+          32: 'icons/icon-32.txt',
+          64: 'icons/icon-64.html',
+        },
+      });
+      const files = {
+        'icons/icon-32.txt': '89<PNG>thisistotallysomebinary',
+        'icons/icon-64.html': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, { io: { files } });
+      expect(manifestJSONParser.isValid).toBeTruthy();
+      const warnings = addonLinter.collector.warnings;
+      expect(warnings.length).toEqual(2);
+      expect(warnings[0].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
+      expect(warnings[1].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
+    });
+
   });
 });

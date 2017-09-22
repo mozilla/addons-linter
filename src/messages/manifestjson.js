@@ -153,6 +153,6 @@ export const WRONG_ICON_EXTENSION = {
   code: 'WRONG_ICON_EXTENSION',
   legacyCode: null,
   message: _('Consider Adding another icon'),
-  description: sprintf('Icons Should be of type jpg, png or svg'),
+  description: sprintf('Icons Should be of type jpg, jpeg, webp, giff, png or svg.'),
   file: MANIFEST_JSON,
 };
