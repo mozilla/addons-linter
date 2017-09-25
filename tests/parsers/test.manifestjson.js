@@ -746,11 +746,13 @@ describe('ManifestJSONParser', () => {
         icons: {
           32: 'icons/icon-32.txt',
           64: 'icons/icon-64.html',
+          128: 'icons/icon-128.png',
         },
       });
       const files = {
         'icons/icon-32.txt': '89<PNG>thisistotallysomebinary',
         'icons/icon-64.html': '89<PNG>thisistotallysomebinary',
+        'icons/icon-128.png': '89<PNG>thisistotallysomebinary',
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, { io: { files } });
