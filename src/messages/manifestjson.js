@@ -133,7 +133,6 @@ export const MANIFEST_ICON_NOT_FOUND = 'MANIFEST_ICON_NOT_FOUND';
 export function manifestIconMissing(path) {
   return {
     code: MANIFEST_ICON_NOT_FOUND,
-    legacyCode: null,
     message: _(
       'An icon defined in the manifest could not be found in the package.'),
     description: sprintf(
@@ -148,7 +147,6 @@ export const PROP_VERSION_MISSING = manifestPropMissing('version');
 
 export const NO_MESSAGES_FILE = {
   code: 'NO_MESSAGES_FILE',
-  legacyCode: null,
   message: _('The "default_locale" is missing localizations.'),
   description: _(oneLine`The "default_locale" value is specified in
     the manifest, but no matching "messages.json" in the "_locales" directory
@@ -158,7 +156,6 @@ export const NO_MESSAGES_FILE = {
 
 export const NO_DEFAULT_LOCALE = {
   code: 'NO_DEFAULT_LOCALE',
-  legacyCode: null,
   message: _('The "default_locale" is missing but "_locales" exist.'),
   description: _(oneLine`The "default_locale" value is not specifed in
     the manifest, but a "_locales" directory exists.
