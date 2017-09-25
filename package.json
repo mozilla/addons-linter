@@ -70,7 +70,7 @@
     "webpack-dev-server": "2.8.2"
   },
   "dependencies": {
-    "ajv": "5.2.2",
+    "ajv": "5.2.3",
     "babel-register": "6.26.0",
     "chalk": "2.1.0",
     "cheerio": "1.0.0-rc.2",
