@@ -152,7 +152,7 @@ export const NO_DEFAULT_LOCALE = {
 export const WRONG_ICON_EXTENSION = {
   code: 'WRONG_ICON_EXTENSION',
   legacyCode: null,
-  message: _('Consider Adding another icon'),
+  message: _('Unsupported image extension'),
   description: _('Icons should be one of JPG, JPEG, WebP, GIFF, PNG or SVG.'),
   file: MANIFEST_JSON,
 };
