@@ -740,7 +740,7 @@ describe('ManifestJSONParser', () => {
       });
     });
 
-    it('adds an error if the icon does not have a valid extension', () => {
+    it('adds a warning if the icon does not have a valid extension', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         icons: {
