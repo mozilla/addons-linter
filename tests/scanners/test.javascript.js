@@ -204,7 +204,6 @@ describe('JavaScript Scanner', () => {
     const fakeMessages = {
       METADATA_NOT_PASSED: Object.assign({}, fakeMessageData, {
         code: 'METADATA_NOT_PASSED',
-        legacyCode: null,
         message: 'Should not happen',
         description: 'Should not happen',
       }),

@@ -9,7 +9,6 @@ export const _tagNotAllowed = (tagName) => {
     code: `TAG_NOT_ALLOWED_${tagName.toUpperCase()}`,
     // Non-unique err_id so setting to null
     // ('testcases_installrdf', '_test_rdf', 'shouldnt_exist')
-    legacyCode: null,
     message: _(`<${tagName}> tag is not allowed`),
     description: _(oneLine`Your RDF file contains the <${tagName}> tag,
       which is not allowed in an Add-on.`),
@@ -21,7 +20,6 @@ export const _tagNotAllowedIfTag = (tagName, otherTag) => {
     code: `TAG_NOT_ALLOWED_${tagName.toUpperCase()}`,
     // Non-unique err_id so setting to null
     // ('testcases_installrdf', '_test_rdf', 'shouldnt_exist')
-    legacyCode: null,
     message: _(`<${tagName}> cannot be used with <${otherTag}>`),
     description: _(oneLine`Your RDF file contains the <${tagName}> tag,
       which cannot be used with a <${otherTag}> tag.`),
@@ -33,7 +31,6 @@ export const _tagObsolete = (tagName) => {
     code: `TAG_OBSOLETE_${tagName.toUpperCase()}`,
     // Non-unique err_id so setting to null
     // ('testcases_installrdf', '_test_rdf', 'shouldnt_exist')
-    legacyCode: null,
     message: _(`<${tagName}> tag is obsolete`),
     description: _(oneLine`Your RDF file contains the <${tagName}> tag,
       which is obsolete.`),
@@ -42,7 +39,6 @@ export const _tagObsolete = (tagName) => {
 
 export const RDF_GUID_TOO_LONG = {
   code: 'RDF_GUID_TOO_LONG',
-  legacyCode: null,
   message: _('GUID is too long (over 255 chars)'),
   description: _(oneLine`A GUID must be 255 characters or less.
     Please use a shorter GUID.`),
@@ -60,11 +56,6 @@ export const TAG_OBSOLETE_SKIN = _tagObsolete('skin');
 
 export const RDF_TYPE_INVALID = {
   code: 'RDF_TYPE_INVALID',
-  legacyCode: [
-    'typedetection',
-    'detect_type',
-    'invalid_em_type',
-  ],
   message: _('Invalid <em:type> value'),
   description: _(oneLine`The only valid values for <em:type>
     are 2, 4, 8, and 32. Any other values are either invalid or
@@ -74,11 +65,6 @@ export const RDF_TYPE_INVALID = {
 
 export const RDF_TYPE_MISSING = {
   code: 'RDF_TYPE_MISSING',
-  legacyCode: [
-    'typedetection',
-    'detect_type',
-    'no_em:type',
-  ],
   message: _('No <em:type> element found in install.rdf'),
   description: _(oneLine`It isn't always required, but it is
     the most reliable method for determining add-on type.`),
@@ -88,7 +74,6 @@ export const RDF_TYPE_MISSING = {
 export function rdfTopLevelTagMissing(tagName) {
   return {
     code: `RDF_${tagName.toUpperCase()}_MISSING`,
-    legacyCode: null,
     message: _(`No <em:${tagName}> element at the top level of install.rdf`),
     description: _(`<em:${tagName}> at the top level is required`),
     file: INSTALL_RDF,
