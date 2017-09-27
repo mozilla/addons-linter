@@ -131,12 +131,12 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (this.parsedJSON.background) {
       if (this.parsedJSON.background.scripts) {
-        for (let i = 0; i < this.parsedJSON.background.scripts.length; i++) {
-          this.validateExists(this.parsedJSON.background.scripts[i], 'script');
-        }
+        this.parsedJSON.background.scripts.forEach((script) => {
+          this.validateFileExistsInPackage(script, 'script');
+        });
       }
       if (this.parsedJSON.background.page) {
-        this.validateExists(this.parsedJSON.background.page, 'page');
+        this.validateFileExistsInPackage(this.parsedJSON.background.page, 'page');
       }
     }
 
@@ -191,7 +191,7 @@ export default class ManifestJSONParser extends JSONParser {
     });
   }
 
-  validateExists(filePath, type) {
+  validateFileExistsInPackage(filePath, type) {
     const _path = normalizePath(filePath);
     if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
       this.collector.addError(messages.manifestBackgroundMissing(

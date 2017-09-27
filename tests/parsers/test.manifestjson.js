@@ -761,7 +761,7 @@ describe('ManifestJSONParser', () => {
         json, linter.collector, { io: { files: {} } });
       expect(manifestJSONParser.isValid).toBeFalsy();
       assertHasMatchingError(linter.collector.errors, {
-        code: messages.MANIFEST_BACKGROUND_SCRIPT_NOT_FOUND,
+        code: messages.MANIFEST_BACKGROUND_FILE_NOT_FOUND,
         message:
           'A background script defined in the manifest could not be found.',
         description: 'Background script could not be found at "foo.js".',
@@ -787,7 +787,7 @@ describe('ManifestJSONParser', () => {
         json, linter.collector, { io: { files: {} } });
       expect(manifestJSONParser.isValid).toBeFalsy();
       assertHasMatchingError(linter.collector.errors, {
-        code: messages.MANIFEST_BACKGROUND_PAGE_NOT_FOUND,
+        code: messages.MANIFEST_BACKGROUND_FILE_NOT_FOUND,
         message:
           'A background page defined in the manifest could not be found.',
         description: 'Background page could not be found at "foo.html".',
