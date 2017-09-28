@@ -4,6 +4,7 @@ import path from 'path';
 import RJSON from 'relaxed-json';
 import { URL } from 'whatwg-url';
 import { oneLine } from 'common-tags';
+import sharp from 'sharp';
 
 import validate from 'schema/validator';
 import { getConfig } from 'cli';
@@ -20,6 +21,21 @@ function normalizePath(iconPath) {
   // using https://example.com/.
   const { pathname } = new URL(iconPath, 'https://example.com/');
   return pathname.slice(1);
+}
+
+
+function getImageMetadata(stream) {
+  return new Promise((resolve, reject) => {
+    const transformer = sharp()
+      .on('info', (info) => resolve(info))
+      .on('error', (error) => reject(error));
+    stream.pipe(transformer).pipe(new Writable({
+      write(chunk, encoding, cb) {
+        // Drop the output, we don't need it.
+        setImmediate(cb);
+      },
+    }));
+  });
 }
 
 export default class ManifestJSONParser extends JSONParser {
