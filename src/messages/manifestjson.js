@@ -174,3 +174,11 @@ export const WRONG_ICON_EXTENSION = {
   description: _('Icons should be one of JPG, JPEG, WebP, GIFF, PNG or SVG.'),
   file: MANIFEST_JSON,
 };
+
+
+export const CORRUPT_ICON_FILE = {
+  code: 'CORRUPT_ICON_FILE',
+  message: _('Corrupt image file'),
+  description: _('Icon file is not a valid Image file'),
+  file: MANIFEST_JSON,
+};
