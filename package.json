@@ -43,7 +43,7 @@
     "coveralls": "2.13.2",
     "deepmerge": "1.5.2",
     "eslint-config-amo": "0.2.0",
-    "eslint-plugin-jest": "21.1.0",
+    "eslint-plugin-jest": "21.2.0",
     "eslint-plugin-promise": "^3.5.0",
     "gfm.css": "1.1.1",
     "grunt": "1.0.1",
