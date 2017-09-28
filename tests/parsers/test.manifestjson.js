@@ -763,4 +763,58 @@ describe('ManifestJSONParser', () => {
       expect(warnings[1].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
     });
   });
+
+  describe('background', () => {
+    it('does not add errors if the script exists', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        background: { scripts: ['foo.js'] },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'foo.js': '' } } });
+      expect(manifestJSONParser.isValid).toBeTruthy();
+    });
+
+    it('does error if the script does not exist', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        background: { scripts: ['foo.js'] },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: {} } });
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_BACKGROUND_FILE_NOT_FOUND,
+        message:
+          'A background script defined in the manifest could not be found.',
+        description: 'Background script could not be found at "foo.js".',
+      });
+    });
+
+    it('does not add errors if the page exists', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        background: { page: 'foo.html' },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'foo.html': '' } } });
+      expect(manifestJSONParser.isValid).toBeTruthy();
+    });
+
+    it('does error if the page does not exist', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        background: { page: 'foo.html' },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: {} } });
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_BACKGROUND_FILE_NOT_FOUND,
+        message:
+          'A background page defined in the manifest could not be found.',
+        description: 'Background page could not be found at "foo.html".',
+      });
+    });
+  });
 });

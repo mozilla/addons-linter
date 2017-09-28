@@ -129,6 +129,17 @@ export default class ManifestJSONParser extends JSONParser {
       this.validateIcons();
     }
 
+    if (this.parsedJSON.background) {
+      if (this.parsedJSON.background.scripts) {
+        this.parsedJSON.background.scripts.forEach((script) => {
+          this.validateFileExistsInPackage(script, 'script');
+        });
+      }
+      if (this.parsedJSON.background.page) {
+        this.validateFileExistsInPackage(this.parsedJSON.background.page, 'page');
+      }
+    }
+
     if (!this.selfHosted && this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.update_url) {
@@ -180,6 +191,15 @@ export default class ManifestJSONParser extends JSONParser {
         this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
       }
     });
+  }
+
+  validateFileExistsInPackage(filePath, type) {
+    const _path = normalizePath(filePath);
+    if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
+      this.collector.addError(messages.manifestBackgroundMissing(
+        _path, type));
+      this.isValid = false;
+    }
   }
 
   validateCspPolicy(policy) {
