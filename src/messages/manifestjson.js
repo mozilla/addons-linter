@@ -148,3 +148,10 @@ export const NO_DEFAULT_LOCALE = {
     See: https://mzl.la/2hjcaEE`),
   file: MANIFEST_JSON,
 };
+
+export const WRONG_ICON_EXTENSION = {
+  code: 'WRONG_ICON_EXTENSION',
+  message: _('Unsupported image extension'),
+  description: _('Icons should be one of JPG, JPEG, WebP, GIFF, PNG or SVG.'),
+  file: MANIFEST_JSON,
+};
