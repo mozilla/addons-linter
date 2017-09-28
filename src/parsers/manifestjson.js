@@ -205,6 +205,11 @@ export default class ManifestJSONParser extends JSONParser {
         this.isValid = false;
       } else if (!IMAGE_FILE_EXTENSIONS.includes(icons[size].split('.').pop().toLowerCase())) {
         this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
+      } else {
+        getImageMetadata (this.io.getFileAsStream(icons[size]))
+          .error(function(err) {
+            this.collector.addWarning(messages.CORRUPT_ICON_FILE);
+          });
       }
     });
   }
