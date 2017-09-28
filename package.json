@@ -17,7 +17,8 @@
     "test-ci": "npm run test-coverage-once && cat ./coverage/lcov.info | coveralls",
     "lint": "npm run eslint",
     "publish-rules": "grunt copy build-rules-html publish-rules",
-    "publish-coverage": "grunt coveralls"
+    "publish-coverage": "grunt coveralls",
+    "gen-contributing-toc": "doctoc CONTRIBUTING.md"
   },
   "repository": {
     "type": "git",
@@ -74,10 +75,11 @@
     "babel-register": "6.26.0",
     "chalk": "2.1.0",
     "cheerio": "1.0.0-rc.2",
-    "common-tags": "1.4.0",
     "columnify": "1.5.4",
+    "common-tags": "1.4.0",
     "crx-parser": "0.1.2",
     "dispensary": "0.10.18",
+    "doctoc": "1.3.0",
     "es6-promisify": "5.0.0",
     "eslint": "4.7.2",
     "eslint-plugin-no-unsafe-innerhtml": "1.0.16",
