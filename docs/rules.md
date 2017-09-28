@@ -355,6 +355,8 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :white_check_mark: | error | Web extension | Bad permission | manifest.json | | null | MANIFEST_BAD_PERMISSION |
 | :white_check_mark: | warning | Web extension | Unknown permission | manifest.json | | null | MANIFEST_PERMISSIONS |
 | :white_check_mark: | error | Web extension | Block Comments are not allowed in JSON | manifest.json | | null | JSON_BLOCK_COMMENTS |
+| :white_check_mark: | error | Web extension | Icons must be at least 16x16 pixels. | manifest.json | | null | MIN_ICON_SIZE |
+| :white_check_mark: | warning | Web extension | Icons should be at least 48x48 pixels. | manifest.json | | null | RECOMMENDED_ICON_SIZE |
 | :white_check_mark: | warning | Web extension | Deprecated API tabs.getSelected | | | null | TABS_GETSELECTED |
 | :white_check_mark: | warning | Web extension | Deprecated API tabs.sendRequest | | | null | TABS_SENDREQUEST |
 | :white_check_mark: | warning | Web extension | Deprecated API tabs.getAllInWindow | | | null | TABS_GETALLINWINDOW |
