@@ -60,16 +60,4 @@ describe('Messages', () => {
       }
     });
   });
-
-  it('should have a legacyCode property in every message', () => {
-    Object.keys(messages).forEach((message) => {
-      if (typeof messages[message] === 'object' && !message.startsWith('_')) {
-        const legacyCode = messages[message].legacyCode;
-        if ((legacyCode instanceof Array && legacyCode.length !== 3) ||
-            (!(legacyCode instanceof Array) && legacyCode !== null)) {
-          expect(false).toBe(true);
-        }
-      }
-    });
-  });
 });
