@@ -6,6 +6,7 @@ import browserAction from './browser_action.json';
 import browserSettings from './browser_settings.json';
 import browsingData from './browsing_data.json';
 import chrome_settings_overrides from './chrome_settings_overrides.json';
+import clipboard from './clipboard.json';
 import commands from './commands.json';
 import contextualIdentities from './contextual_identities.json';
 import cookies from './cookies.json';
@@ -16,6 +17,7 @@ import experiments from './experiments.json';
 import extension from './extension.json';
 import extension_protocol_handlers from './extension_protocol_handlers.json';
 import extensionTypes from './extension_types.json';
+import find from './find.json';
 import geckoProfiler from './geckoProfiler.json';
 import history from './history.json';
 import i18n from './i18n.json';
@@ -45,7 +47,6 @@ import webNavigation from './web_navigation.json';
 import webRequest from './web_request.json';
 import windows from './windows.json';
 import contextMenus from './contextMenus.json';
-
 export default [
   alarms,
   bookmarks,
@@ -53,6 +54,7 @@ export default [
   browserSettings,
   browsingData,
   chrome_settings_overrides,
+  clipboard,
   commands,
   contextualIdentities,
   cookies,
@@ -63,6 +65,7 @@ export default [
   extension,
   extension_protocol_handlers,
   extensionTypes,
+  find,
   geckoProfiler,
   history,
   i18n,
