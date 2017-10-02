@@ -71,6 +71,30 @@ export const RDF_TYPE_MISSING = {
   file: INSTALL_RDF,
 };
 
+export function rdfMultipleTags(tag) {
+  return {
+    code: `RDF_MULTIPLE_${tag.toUpperCase()}_TAGS`,
+    message: _(`Multiple <${tag}> elements found`),
+    description: _(oneLine`There should be only one tag <${tag}>`),
+    file: INSTALL_RDF,
+  };
+}
+
+export const RDF_TAG_NOT_FOUND = {
+  code: 'RDF_TAG_NOT_FOUND',
+  message: _(`RDF Node is not defined`),
+  description: _(oneLine`RDF tag should be defined`),
+  file: INSTALL_RDF,
+};
+
+export const RDF_MANY_CHILDREN = {
+  code: 'RDF_MANY_CHILDREN',
+  message: _(`RDF node should only have a single descendant <Description>`),
+  description: _(oneLine`RDF tag should have only one child`),
+  file: INSTALL_RDF,
+};
+
+
 export function rdfTopLevelTagMissing(tagName) {
   return {
     code: `RDF_${tagName.toUpperCase()}_MISSING`,
@@ -83,3 +107,8 @@ export function rdfTopLevelTagMissing(tagName) {
 export const RDF_NAME_MISSING = rdfTopLevelTagMissing('name');
 export const RDF_VERSION_MISSING = rdfTopLevelTagMissing('version');
 export const RDF_ID_MISSING = rdfTopLevelTagMissing('id');
+
+export const RDF_MULTIPLE_NAME_TAGS = rdfMultipleTags('name');
+export const RDF_MULTIPLE_VERSION_TAGS = rdfMultipleTags('version');
+export const RDF_MULTIPLE_ID_TAGS = rdfMultipleTags('id');
+export const RDF_MULTIPLE_TYPE_TAGS = rdfMultipleTags('type');

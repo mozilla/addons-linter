@@ -93,19 +93,21 @@ export class Xpi extends IOBase {
     });
   }
 
-  checkPath(path) {
+  _checkPath(path) {
     if (!Object.prototype.hasOwnProperty.call(this.files, path)) {
-      throw new Error(`Path "${path}" does not exist in this XPI`);
+      return new Error(`Path "${path}" does not exist in this XPI`);
     }
 
     if (this.files[path].uncompressedSize > this.maxSizeBytes) {
-      throw new Error(`File "${path}" is too large. Aborting.`);
+      return new Error(`File "${path}" is too large. Aborting.`);
     }
+    return null;
   }
 
   getFileAsStream(path) {
     return new Promise((resolve, reject) => {
-      this.checkPath(path);
+      const pathErr = this._checkPath(path);
+      if (pathErr) return reject(pathErr);
       return this.open()
         .then((zipfile) => {
           zipfile.openReadStream(this.files[path], (err, readStream) => {
@@ -140,7 +142,8 @@ export class Xpi extends IOBase {
 
   getChunkAsBuffer(path, chunkLength) {
     return new Promise((resolve, reject) => {
-      this.checkPath(path);
+      const pathErr = this._checkPath(path);
+      if (pathErr) return reject(pathErr);
       return this.open()
         .then((zipfile) => {
           // eslint-disable-next-line consistent-return
