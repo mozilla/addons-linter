@@ -597,18 +597,11 @@ describe('ManifestJSONParser', () => {
 
   describe('icons', () => {
     function getFileAsStream(path) {
-      const paths = {
-        'icons/icon-10.png': 'tests/fixtures/icon-10.png',
-        'icons/icon-16.png': 'tests/fixtures/icon-16.png',
-        'icons/icon-32.png': 'tests/fixtures/icon-32.png',
-        'icons/icon-64.png': 'tests/fixtures/icon-64.png',
-        'icons/icon-128.png': 'tests/fixtures/icon-128.png',
-      };
-
-      if (paths[path]) {
-        return fs.createReadStream(paths[path]);
+      if (path.split('.').pop() == 'png') {
+        return fs.createReadStream('tests/fixtures/default.png');
+      } else {
+        return fs.createReadStream('tests/fixtures/default.svg');
       }
-      return null;
     }
     it('does not add errors if there are no icons', () => {
       const linter = new Linter({ _: ['bar'] });
