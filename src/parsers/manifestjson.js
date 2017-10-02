@@ -1,5 +1,6 @@
 /* eslint-disable import/namespace */
 import path from 'path';
+import { Writable } from 'stream';
 
 import RJSON from 'relaxed-json';
 import { URL } from 'whatwg-url';
@@ -206,8 +207,8 @@ export default class ManifestJSONParser extends JSONParser {
       } else if (!IMAGE_FILE_EXTENSIONS.includes(icons[size].split('.').pop().toLowerCase())) {
         this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
       } else {
-        getImageMetadata (this.io.getFileAsStream(icons[size]))
-          .error(function(err) {
+        getImageMetadata(this.io.getFileAsStream(icons[size]))
+          .catch(() => {
             this.collector.addWarning(messages.CORRUPT_ICON_FILE);
           });
       }

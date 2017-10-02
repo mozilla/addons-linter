@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import Linter from 'linter';
 import ManifestJSONParser from 'parsers/manifestjson';
 import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
@@ -594,6 +596,20 @@ describe('ManifestJSONParser', () => {
   });
 
   describe('icons', () => {
+    function getFileAsStream(path) {
+      const paths = {
+        'icons/icon-10.png': 'tests/fixtures/icon-10.png',
+        'icons/icon-16.png': 'tests/fixtures/icon-16.png',
+        'icons/icon-32.png': 'tests/fixtures/icon-32.png',
+        'icons/icon-64.png': 'tests/fixtures/icon-64.png',
+        'icons/icon-128.png': 'tests/fixtures/icon-128.png',
+      };
+
+      if (paths[path]) {
+        return fs.createReadStream(paths[path]);
+      }
+      return null;
+    }
     it('does not add errors if there are no icons', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validManifestJSON();
@@ -616,7 +632,7 @@ describe('ManifestJSONParser', () => {
         'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: { files, getFileAsStream } });
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
@@ -633,7 +649,7 @@ describe('ManifestJSONParser', () => {
         'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: { files, getFileAsStream } });
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
@@ -650,7 +666,7 @@ describe('ManifestJSONParser', () => {
         'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: { files, getFileAsStream } });
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
@@ -666,7 +682,7 @@ describe('ManifestJSONParser', () => {
         'icons/icon.svg': '<svg></svg>',
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: { files, getFileAsStream } });
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
@@ -683,7 +699,7 @@ describe('ManifestJSONParser', () => {
         'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: { files, getFileAsStream } });
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
@@ -730,7 +746,7 @@ describe('ManifestJSONParser', () => {
         'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: { files, getFileAsStream } });
       expect(manifestJSONParser.isValid).toBeFalsy();
       assertHasMatchingError(addonLinter.collector.errors, {
         code: messages.MANIFEST_ICON_NOT_FOUND,
@@ -755,7 +771,7 @@ describe('ManifestJSONParser', () => {
         'icons/icon-128.png': '89<PNG>thisistotallysomebinary',
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: { files, getFileAsStream } });
       expect(manifestJSONParser.isValid).toBeTruthy();
       const warnings = addonLinter.collector.warnings;
       expect(warnings.length).toEqual(2);
