@@ -385,7 +385,6 @@ describe('Xpi.getChunkAsBuffer()', function getChunkAsBufferCallback() {
       .then(unexpectedSuccess)
       .catch(() => expect(true).toBe(true));
   });
-
 });
 
 

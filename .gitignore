@@ -31,3 +31,4 @@ coverage/*
 
 docs/html/*
 .idea/*
+.DS_Store
