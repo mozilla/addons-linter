@@ -754,6 +754,25 @@ describe('ManifestJSONParser', () => {
       expect(warnings[0].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
       expect(warnings[1].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
     });
+
+    it('does not add a warning if the icon file is not corrupt', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        icons: {
+          32: 'tests/fixtures/default.png',
+          64: 'tests/fixtures/default.svg'
+        },
+      });
+      const files = {
+        'tests/fixtures/default.png': '89<PNG>thisistotallysomebinary',
+        'tests/fixtures/default.svg': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, { io: { files } });
+      expect(manifestJSONParser.isValid).toBeTruthy();
+      const warnings = addonLinter.collector.warnings;
+      expect(warnings.length).toEqual(0);
+    });
   });
 
   describe('background', () => {
