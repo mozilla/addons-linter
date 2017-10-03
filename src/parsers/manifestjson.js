@@ -1,6 +1,5 @@
 /* eslint-disable import/namespace */
 import path from 'path';
-import { Writable } from 'stream';
 
 import RJSON from 'relaxed-json';
 import { URL } from 'whatwg-url';
@@ -28,14 +27,14 @@ function normalizePath(iconPath) {
 function getImageMetadata(iconPath) {
   return new Promise((resolve, reject) => {
     const image = sharp(iconPath);
-      image
-        .metadata()
-        .then(function(info) {
-          resolve(info)
-        })
-        .catch(function(err) {
-          reject(err)
-        })
+    image
+      .metadata()
+      .then((info) => {
+        resolve(info);
+      })
+      .catch((err) => {
+        reject(err);
+      });
   });
 }
 
