@@ -760,7 +760,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         icons: {
           32: 'tests/fixtures/default.png',
-          64: 'tests/fixtures/default.svg'
+          64: 'tests/fixtures/default.svg',
         },
       });
       const files = {
