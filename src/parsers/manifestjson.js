@@ -25,17 +25,17 @@ function normalizePath(iconPath) {
 }
 
 
-function getImageMetadata(stream) {
+function getImageMetadata(iconPath) {
   return new Promise((resolve, reject) => {
-    const transformer = sharp()
-      .on('info', (info) => resolve(info))
-      .on('error', (error) => reject(error));
-    stream.pipe(transformer).pipe(new Writable({
-      write(chunk, encoding, cb) {
-        // Drop the output, we don't need it.
-        setImmediate(cb);
-      },
-    }));
+    const image = sharp(iconPath);
+      image
+        .metadata()
+        .then(function(info) {
+          resolve(info)
+        })
+        .catch(function(err) {
+          reject(err)
+        })
   });
 }
 
@@ -207,7 +207,7 @@ export default class ManifestJSONParser extends JSONParser {
       } else if (!IMAGE_FILE_EXTENSIONS.includes(icons[size].split('.').pop().toLowerCase())) {
         this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
       } else {
-        getImageMetadata(this.io.getFileAsStream(icons[size]))
+        getImageMetadata(icons[size])
           .catch(() => {
             this.collector.addWarning(messages.CORRUPT_ICON_FILE);
           });

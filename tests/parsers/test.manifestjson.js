@@ -598,9 +598,9 @@ describe('ManifestJSONParser', () => {
   describe('icons', () => {
     function getFileAsStream(path) {
       if (path.split('.').pop() === 'png') {
-        return fs.createReadStream('tests/fixtures/default.png');
+        return 'tests/fixtures/default.png';
       }
-      return fs.createReadStream('tests/fixtures/default.svg');
+      return 'tests/fixtures/default.svg';
     }
     it('does not add errors if there are no icons', () => {
       const linter = new Linter({ _: ['bar'] });
