@@ -1,12 +1,81 @@
 import { oneLine } from 'common-tags';
 
+
 import * as constants from 'const';
 import RDFScanner from 'scanners/rdf';
 import InstallRdfParser from 'parsers/installrdf';
 import Linter from 'linter';
 import * as messages from 'messages';
 
-import { validRDF } from '../helpers';
+import { validRDF, unexpectedSuccess, WrongRootInRDF, WrongRDFWithoutDescription } from '../helpers';
+
+describe('InstallRdfParser.getMetadata()', () => {
+  it('should be rejected on multiple em:type nodes', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const rdf = validRDF('<em:type>2</em:type><em:type>2</em:type>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        const installRdfParser = new InstallRdfParser(xmlDoc,
+          addonLinter.collector);
+        return installRdfParser.getMetadata();
+      })
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        expect(err.message).toContain('Cannot get metadata');
+      });
+  });
+});
+
+describe('InstallRdfParser._getTopLevelNodeByTag()', () => {
+  it('should return null when tag is not presented', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const rdf = validRDF('<em:type>2</em:type><em:type>2</em:type>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        const installRdfParser = new InstallRdfParser(xmlDoc,
+          addonLinter.collector);
+        return installRdfParser._getTopLevelNodeByTag('any:tag');
+      })
+      .then((result) => {
+        expect(result).toBeNull();
+      });
+  });
+
+  it('should return null when description tag is not presented', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const rdf = WrongRDFWithoutDescription('<em:type>2</em:type><em:type>2</em:type>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        const installRdfParser = new InstallRdfParser(xmlDoc,
+          addonLinter.collector);
+        return installRdfParser._getTopLevelNodeByTag('any:tag');
+      })
+      .then((result) => {
+        expect(result).toBeNull();
+      });
+  });
+
+});
+
+describe('InstallRdfParser._getDescriptionNode()', () => {
+  it('should return null when description node is not presented', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const rdf = WrongRootInRDF('<em:type>2</em:type><em:type>2</em:type>');
+    const rdfScanner = new RDFScanner(rdf, constants.INSTALL_RDF);
+    return rdfScanner.getContents()
+      .then((xmlDoc) => {
+        const installRdfParser = new InstallRdfParser(xmlDoc,
+          addonLinter.collector);
+        return installRdfParser._getDescriptionNode();
+      })
+      .then((result) => {
+        expect(result).toBeNull();
+      });
+  });
+});
 
 
 describe('InstallRdfParser._getAddonType()', () => {

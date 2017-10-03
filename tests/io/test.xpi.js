@@ -376,6 +376,16 @@ describe('Xpi.getChunkAsBuffer()', function getChunkAsBufferCallback() {
         expect(buffer.toString()).toEqual('12');
       });
   });
+
+  it('should reject on wrong path', () => {
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    myXpi.files = {};
+
+    return myXpi.getChunkAsBuffer(INSTALL_RDF, 2)
+      .then(unexpectedSuccess)
+      .catch(() => expect(true).toBe(true));
+  });
+
 });
 
 

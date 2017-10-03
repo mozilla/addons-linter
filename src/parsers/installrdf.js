@@ -1,3 +1,4 @@
+import { oneLine } from 'common-tags';
 import { ADDON_TYPE_MAP, RDF_DEFAULT_NAMESPACE } from 'const';
 import * as messages from 'messages';
 import log from 'logger';
@@ -20,7 +21,7 @@ export default class InstallRdfParser {
       const version = this._getVersion();
       const restartless = this._getIsBootstrapped();
       if (guid === null || name === null || version === null) {
-        return reject(new Error(`Cannot get metadata,
+        return reject(new Error(oneLine`Cannot get metadata,
                                   version, name, or id tag is missing`));
       }
       return resolve({
@@ -52,7 +53,7 @@ export default class InstallRdfParser {
 
   _getTopLevelNodeByTag(tag) {
     const nodes = this._getTopLevelNodesByTag(tag);
-    if (!nodes) return null;
+    if (!nodes || nodes.length === 0) return null;
     // add an error if there's more than one node as these
     // should be unique.
     if (nodes.length > 1) {
