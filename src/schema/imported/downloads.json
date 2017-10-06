@@ -24,6 +24,11 @@
               "description": "A file path relative to the Downloads directory to contain the downloaded file.",
               "type": "string"
             },
+            "incognito": {
+              "description": "Whether to associate the download with a private browsing session.",
+              "default": false,
+              "type": "boolean"
+            },
             "conflictAction": {
               "$ref": "#/types/FilenameConflictAction"
             },
@@ -522,8 +527,7 @@
           "type": "string",
           "enum": [
             "downloads",
-            "downloads.open",
-            "downloads.shelf"
+            "downloads.open"
           ]
         }
       ]

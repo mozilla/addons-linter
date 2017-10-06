@@ -1,5 +1,8 @@
 {
   "id": "devtools",
+  "permissions": [
+    "devtools"
+  ],
   "allowedContexts": [
     "devtools",
     "devtools_only"
@@ -15,12 +18,26 @@
           "$ref": "manifest#/types/ExtensionURL"
         }
       }
+    },
+    "Permission": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "devtools"
+          ]
+        }
+      ]
     }
   },
   "refs": {
     "devtools#/definitions/WebExtensionManifest": {
       "namespace": "manifest",
       "type": "WebExtensionManifest"
+    },
+    "devtools#/definitions/Permission": {
+      "namespace": "manifest",
+      "type": "Permission"
     }
   },
   "types": {
@@ -143,7 +160,7 @@
       "functions": [
         {
           "name": "createSidebarPane",
-          "unsupported": true,
+          "async": "callback",
           "type": "function",
           "description": "Creates a pane within panel's sidebar.",
           "parameters": [
@@ -311,6 +328,7 @@
         {
           "name": "setExpression",
           "unsupported": true,
+          "async": "callback",
           "type": "function",
           "description": "Sets an expression that is evaluated within the inspected page. The result is displayed in the sidebar pane.",
           "parameters": [
@@ -335,7 +353,7 @@
         },
         {
           "name": "setObject",
-          "unsupported": true,
+          "async": "callback",
           "type": "function",
           "description": "Sets a JSON-compliant object to be displayed in the sidebar pane.",
           "parameters": [
@@ -375,7 +393,6 @@
       "events": [
         {
           "name": "onShown",
-          "unsupported": true,
           "type": "function",
           "description": "Fired when the sidebar pane becomes visible as a result of user switching to the panel that hosts it.",
           "parameters": [
@@ -390,7 +407,6 @@
         },
         {
           "name": "onHidden",
-          "unsupported": true,
           "type": "function",
           "description": "Fired when the sidebar pane becomes hidden as a result of the user switching away from the panel that hosts the sidebar pane."
         }
