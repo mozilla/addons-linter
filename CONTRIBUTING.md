@@ -1,7 +1,6 @@
 Hi! Thanks for wanting to contribute to Mozilla's Add-ons Linter! You rock! 😊
 
-The linter is used in various stages of [WebExtension](https://developer.mozilla.org/en-US/Add-ons/WebExtensions)
-development and publishing so by contributing you can make that process more awesome.
+This linter is used to help develop and publish [Add-ons](https://developer.mozilla.org/en-US/Add-ons/) for Firefox. You're an add-on developer, we would really value your contributions–no one knows add-on development and publishing better than an add-on developer!
 
 Here are links to all the sections in this document:
 
@@ -14,13 +13,13 @@ Here are links to all the sections in this document:
 
 - [Picking an issue](#picking-an-issue)
 - [Installation](#installation)
-  - [Develop all the things](#develop-all-the-things)
-  - [Run all application tests](#run-all-application-tests)
-    - [Run a single test](#run-a-single-test)
-    - [Debug a test](#debug-a-test)
-  - [Build addons-linter](#build-addons-linter)
-  - [Creating a pull request](#creating-a-pull-request)
-  - [Writing commit messages](#writing-commit-messages)
+- [Testing the linter](#testing-the-linter)
+  - [Run all tests](#run-all-tests)
+  - [Run a single test](#run-a-single-test)
+  - [Debug a test](#debug-a-test)
+- [Build addons-linter](#build-addons-linter)
+- [Creating a pull request](#creating-a-pull-request)
+- [Writing commit messages](#writing-commit-messages)
   - [Tips](#tips)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -28,11 +27,9 @@ Here are links to all the sections in this document:
 
 # Picking an issue
 
-If you're looking for a small task to work on so you can get familiar with the
-process of contributing patches, have a read through these
-[good first bugs](https://github.com/mozilla/web-ext/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+bug%22).
+For first-time contributors or those who want to start with a small task: [check out our list of good first bugs](https://github.com/mozilla/addons-linter/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+bug%22). These issues have an assigned mentor to help you out and are great issues for learning about the linter and our development process.
 
-If you are already familiar with the process or want to contribute even more we appreciate any help on our [contrib: welcome](https://github.com/mozilla/addons-linter/issues?q=is%3Aissue+is%3Aopen+label%3A"contrib%3A+welcome) issues.
+If you're already familiar with the project or would like take on something a little more challenging, please take a look at the [contrib: welcome](https://github.com/mozilla/addons-linter/issues?q=is%3Aissue+is%3Aopen+label%3A"contrib%3A+welcome) issues.
 
 If you'd like to work on a bug, please comment on it to let the maintainers know.
 If someone else has already commented and taken up that bug, please refrain from working on it and submitting
@@ -43,16 +40,13 @@ a PR without asking the maintainers as it leads to unnecessary duplication of ef
 
 To get started on a patch, first install `addons-linter` from [source](README.md#development).
 
-## Develop all the things
+# Testing the linter
 
-Your one stop command to continuously run tests and check for
-JavaScript syntax problems.
+To run tests and check for JavaScript syntax issues as you change the code, run:
 
     npm test
 
-The other commands below are just variations on this.
-
-## Run all application tests
+## Run all tests
 
 To run the entire suite of tests once and exit, type:
 
@@ -61,7 +55,7 @@ To run the entire suite of tests once and exit, type:
 This is the same as the `npm test` command but it won't re-run automatically as
 you edit files.
 
-### Run a single test
+## Run a single test
 
 Instead of running the entire suite, you can run a single test by invoking
 the `jest` executable directly with the `-t` option to filter by test
@@ -71,7 +65,7 @@ description. For example, if the test you'd like to run is defined in
 
     ./node_modules/.bin/jest -r tests/test.linter.js -f "not an xpi/zip"
 
-### Debug a test
+## Debug a test
 
 You can enter the [Node debugger](https://nodejs.org/api/debugger.html) by
 directly invoking the `npm run debug` command. For example,
@@ -83,13 +77,13 @@ could enter the debugger like this:
 You could also put the `debugger` statement somewhere in the code to set a
 breakpoint.
 
-## Build addons-linter
+# Build addons-linter
 
 Type `npm run build` to build a new version of the libraries used by the
 `./bin/addons-linter` command. When successful, you will see newly built files in
 the `./dist/` directory.
 
-## Creating a pull request
+# Creating a pull request
 
 When you create a
 [pull request](https://help.github.com/articles/creating-a-pull-request/)
@@ -101,16 +95,16 @@ this at the top of your description:
     Fixes #123
 
 The issue number in this case is "123."
-The word *Fixes* is magical; github will automatically close the issue when your
+The word *Fixes* is magical; GitHub will automatically close the issue when your
 pull request is merged.
 
-## Writing commit messages
+# Writing commit messages
 
 Good commit messages serve at least three important purposes:
 
-* To speed up the reviewing process.
-* To help us write a good release note.
-* To help the future maintainers of addons-linter (it could be you!), say five years into the future, to find out why a particular change was made to the code or why a specific feature was added.
+* They speed up the reviewing process.
+* They help us write good release notes.
+* They help future maintainers understand your change and the reasons behind it.
 
 Structure your commit message like this:
 
