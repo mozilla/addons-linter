@@ -338,6 +338,7 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 
+| :white_check_mark: | warning | Web extension | Used API X but didn't take permission Y. | manifest.json | | null | PERMISSIONS_API |
 | :white_check_mark: | error | Web extension | Icons must have valid extension. | manifest.json | | null | WRONG_ICON_EXTENSION |
 | :white_check_mark: | error | Web extension | JSON is not well formed. | manifest.json | | null | JSON_INVALID |
 | :white_check_mark: | error | Web extension | Duplicate key in JSON. | manifest.json | | null | JSON_DUPLICATE_KEY |

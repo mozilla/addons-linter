@@ -126,6 +126,13 @@ export const UNSUPPORTED_API = {
   description: _('This API has not been implemented by Firefox.'),
 };
 
+export const PERMISSIONS_API = {
+  code: 'PERMISSIONS_API',
+  message: null,
+  messageFormat: _(' API has been used but '),
+  description: _('Used API without permission'),
+};
+
 function deprecatedAPI(api) {
   return {
     code: apiToMessage(api),

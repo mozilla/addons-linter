@@ -14,5 +14,7 @@ module.exports = {
     'webextension-api': require('./webextension-api').default,
     'webextension-unsupported-api':
       require('./webextension-unsupported-api').default,
+    'webextension-permissions-api':
+      require('./webextension-permissions-api').default,
   },
 };

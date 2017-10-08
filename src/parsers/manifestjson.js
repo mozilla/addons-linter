@@ -14,6 +14,8 @@ import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
 import { parseCspPolicy } from 'utils';
 
+let parsedJSON;
+
 function normalizePath(iconPath) {
   // Convert the icon path to a URL so we can strip any fragments and resolve
   // . and .. automatically. We need an absolute URL to use as a base so we're
@@ -129,6 +131,10 @@ export default class ManifestJSONParser extends JSONParser {
       this.validateIcons();
     }
 
+    if (this.parsedJSON.permissions){
+      this.getPermissionJSON();
+    }
+
     if (this.parsedJSON.background) {
       if (this.parsedJSON.background.scripts) {
         this.parsedJSON.background.scripts.forEach((script) => {
@@ -182,15 +188,21 @@ export default class ManifestJSONParser extends JSONParser {
 
   validateIcons() {
     const { icons } = this.parsedJSON;
-    Object.keys(icons).forEach((size) => {
-      const _path = normalizePath(icons[size]);
-      if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
-        this.collector.addError(messages.manifestIconMissing(_path));
-        this.isValid = false;
-      } else if (!IMAGE_FILE_EXTENSIONS.includes(icons[size].split('.').pop().toLowerCase())) {
-        this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
-      }
-    });
+    if (Object.keys(icons)) {
+      Object.keys(icons).forEach((size) => {
+        const _path = normalizePath(icons[size]);
+        if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
+          this.collector.addError(messages.manifestIconMissing(_path));
+          this.isValid = false;
+        } else if (!IMAGE_FILE_EXTENSIONS.includes(icons[size].split('.').pop().toLowerCase())) {
+          this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
+        }
+      });
+    }
+  }
+
+  getPermissionJSON() {
+    parsedJSON = this.parsedJSON.permissions;
   }
 
   validateFileExistsInPackage(filePath, type) {
@@ -273,4 +285,8 @@ export default class ManifestJSONParser extends JSONParser {
       version: this.parsedJSON.version,
     };
   }
+}
+
+export function getParsedJSON() {
+  return parsedJSON;
 }

@@ -138,6 +138,31 @@ export function checkMinNodeVersion(minVersion, _process = process) {
   });
 }
 
+export function doesExistInPermissions(permissionsNeeded, contents) {
+  let flagDidFindPermission = false;
+  const permissionsArray = [];
+  const contentsTemp = contents;
+  // if (!contents) {
+  //   contentsTemp = [];
+  // }
+  if (permissionsNeeded) {
+    for (let i = 0; i < permissionsNeeded.length; i++) {
+      flagDidFindPermission = false;
+      if (contentsTemp) {
+        for (let j = 0; j < contentsTemp.length; j++) {
+          if (contentsTemp[j] === permissionsNeeded[i]) {
+            flagDidFindPermission = true;
+            break;
+          }
+        }
+        if (!flagDidFindPermission) {
+          permissionsArray.push(permissionsNeeded[i]);
+        }
+      }
+    }
+  }
+  return permissionsArray;
+}
 
 export function getPackageTypeAsString(numericPackageType) {
   const packageKeys = Object.keys(PACKAGE_TYPES);
