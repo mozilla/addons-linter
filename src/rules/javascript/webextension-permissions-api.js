@@ -15,9 +15,9 @@ export default {
           const contents = getParsedJSON();
           const permissionsNotTaken = doesExistInPermissions(permissionsNeeded, contents);
           if (permissionsNotTaken) {
-            for (let i = 0; i < permissionsNotTaken.length ; i++) {
-              context.report(node, namespace + PERMISSIONS_API.messageFormat +
-              permissionsNotTaken[i] + ' permission has not been taken');
+            for (let i = 0; i < permissionsNotTaken.length; i++) {
+              context.report(node, `${namespace} ${PERMISSIONS_API.messageFormat}` +
+              `${permissionsNotTaken[i]} permission has not been taken`);
             }
           }
         }

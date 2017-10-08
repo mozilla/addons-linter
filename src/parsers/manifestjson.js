@@ -131,7 +131,7 @@ export default class ManifestJSONParser extends JSONParser {
       this.validateIcons();
     }
 
-    if (this.parsedJSON.permissions){
+    if (this.parsedJSON.permissions) {
       this.getPermissionJSON();
     }
 
