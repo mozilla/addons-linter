@@ -14,7 +14,7 @@ import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
 import { parseCspPolicy } from 'utils';
 
-let parsedJSON;
+let parsedJSONPermissions;
 
 function normalizePath(iconPath) {
   // Convert the icon path to a URL so we can strip any fragments and resolve
@@ -132,7 +132,7 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.permissions) {
-      this.getPermissionJSON();
+      parsedJSONPermissions = this.parsedJSON.permissions;
     }
 
     if (this.parsedJSON.background) {
@@ -188,21 +188,15 @@ export default class ManifestJSONParser extends JSONParser {
 
   validateIcons() {
     const { icons } = this.parsedJSON;
-    if (Object.keys(icons)) {
-      Object.keys(icons).forEach((size) => {
-        const _path = normalizePath(icons[size]);
-        if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
-          this.collector.addError(messages.manifestIconMissing(_path));
-          this.isValid = false;
-        } else if (!IMAGE_FILE_EXTENSIONS.includes(icons[size].split('.').pop().toLowerCase())) {
-          this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
-        }
-      });
-    }
-  }
-
-  getPermissionJSON() {
-    parsedJSON = this.parsedJSON.permissions;
+    Object.keys(icons).forEach((size) => {
+      const _path = normalizePath(icons[size]);
+      if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
+        this.collector.addError(messages.manifestIconMissing(_path));
+        this.isValid = false;
+      } else if (!IMAGE_FILE_EXTENSIONS.includes(icons[size].split('.').pop().toLowerCase())) {
+        this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
+      }
+    });
   }
 
   validateFileExistsInPackage(filePath, type) {
@@ -288,5 +282,5 @@ export default class ManifestJSONParser extends JSONParser {
 }
 
 export function getParsedJSON() {
-  return parsedJSON;
+  return parsedJSONPermissions;
 }
