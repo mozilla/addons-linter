@@ -1,6 +1,6 @@
 Hi! Thanks for wanting to contribute to Mozilla's Add-ons Linter! You rock! 😊
 
-This linter is used to help develop and publish [Add-ons](https://developer.mozilla.org/en-US/Add-ons/) for Firefox. You're an add-on developer, we would really value your contributions–no one knows add-on development and publishing better than an add-on developer!
+This linter is used to help develop and publish [Add-ons](https://developer.mozilla.org/Add-ons/) for Firefox. You're an add-on developer, we would really value your contributions–no one knows add-on development and publishing better than an add-on developer!
 
 Here are links to all the sections in this document:
 
