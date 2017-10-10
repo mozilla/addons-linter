@@ -207,6 +207,18 @@ export default class ManifestJSONParser extends JSONParser {
         this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
       } else {
         getImageMetadata(icons[size])
+          .then((info) => {
+            if(info.width !== info.height) {
+              this.collector.addError(messages.iconIsNotSquare(path));
+              this.isValid = false;
+            } else if (info.width !== size) {
+              this.collector.addWarning(messages.iconSizeInvalid({
+                path,
+                expected: size,
+                actual: info.width,
+              }));
+            }
+          })
           .catch(() => {
             this.collector.addWarning(messages.CORRUPT_ICON_FILE);
           });
