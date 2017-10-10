@@ -153,7 +153,7 @@ export function iconIsNotSquare(path) {
     code: ICON_NOT_SQUARE,
     legacyCode: null,
     message: _('Icons must be square.'),
-    description: sprintf(_('Icon at "%(path)s" must be square.'), {path}),
+    description: sprintf(_('Icon at "%(path)s" must be square.'), { path }),
     file: MANIFEST_JSON,
   };
 }
@@ -167,7 +167,7 @@ export function iconSizeInvalid({ path, expected, actual }) {
     description: sprintf(
       _('Expected icon at "%(path)s" to be %(expected)d pixels wide but was ' +
         '%(actual)d.'),
-      {path, expected, actual}),
+      { path, expected, actual }),
     file: MANIFEST_JSON,
   };
 }
