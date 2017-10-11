@@ -67,7 +67,7 @@
     "request": "2.83.0",
     "sinon": "4.0.1",
     "tar": "4.0.1",
-    "webpack": "3.6.0",
+    "webpack": "3.7.0",
     "webpack-dev-server": "2.9.0"
   },
   "dependencies": {
