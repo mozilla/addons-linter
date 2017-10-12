@@ -193,7 +193,7 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateIcons() {
-    var promises = [];
+    const promises = [];
     const { icons } = this.parsedJSON;
     Object.keys(icons).forEach((size) => {
       const _path = normalizePath(icons[size]);
@@ -209,20 +209,20 @@ export default class ManifestJSONParser extends JSONParser {
               if (info.width !== info.height) {
                 this.collector.addError(messages.iconIsNotSquare(path));
                 this.isValid = false;
-              } else if (parseInt(info.width) !== parseInt(size)) {
+              } else if (parseInt(info.width, 10) !== parseInt(size, 10)) {
                 this.collector.addWarning(messages.iconSizeInvalid({
                   path,
-                  expected: parseInt(size),
-                  actual: parseInt(info.width),
+                  expected: parseInt(size, 10),
+                  actual: parseInt(info.width, 10),
                 }));
               }
             })
-            .catch((err) => {
+            .catch(() => {
               this.collector.addWarning(messages.corruptIconFile({
                 path,
               }));
             })
-          );
+        );
       }
     });
     return Promise.all(promises);

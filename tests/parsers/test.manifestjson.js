@@ -709,7 +709,7 @@ describe('ManifestJSONParser', () => {
             description:
               'Icon could not be found at "foo/icons/icon-64.png".',
           });
-        })
+        });
     });
 
     it('adds an error if the icon is not in the package', () => {
@@ -734,7 +734,7 @@ describe('ManifestJSONParser', () => {
               'An icon defined in the manifest could not be found in the package.',
             description: 'Icon could not be found at "icons/icon-64.png".',
           });
-        })
+        });
     });
 
     it('adds a warning if the icon does not have a valid extension', () => {
@@ -760,7 +760,7 @@ describe('ManifestJSONParser', () => {
           expect(warnings.length).toEqual(2);
           expect(warnings[0].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
           expect(warnings[1].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
-        })
+        });
     });
 
     it('does not add a warning if the icon file is not corrupt', () => {
@@ -768,7 +768,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         icons: {
           32: 'tests/fixtures/default.png',
-          64: 'tests/fixtures/default.svg',
+          2048: 'tests/fixtures/default.svg',
         },
       });
       const files = {
@@ -777,7 +777,7 @@ describe('ManifestJSONParser', () => {
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, { io: { files } });
-      manifestJSONParser.validateIcons()
+      return manifestJSONParser.validateIcons()
         .then(() => {
           expect(manifestJSONParser.isValid).toBeTruthy();
           const warnings = addonLinter.collector.warnings;
@@ -797,7 +797,7 @@ describe('ManifestJSONParser', () => {
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, { io: { files } });
-       manifestJSONParser.validateIcons()
+      return manifestJSONParser.validateIcons()
         .then(() => {
           expect(manifestJSONParser.isValid).toBeTruthy();
           const warnings = addonLinter.collector.warnings;
@@ -817,16 +817,16 @@ describe('ManifestJSONParser', () => {
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, { io: { files } });
-       manifestJSONParser.validateIcons()
+      return manifestJSONParser.validateIcons()
         .then(() => {
           expect(manifestJSONParser.isValid).toBeTruthy();
           const warnings = addonLinter.collector.warnings;
           expect(warnings.length).toEqual(1);
-          expect(warnings[0].code).toEqual(messages.ICON_SIZE_INVALID.code);
+          expect(warnings[0].code).toEqual(messages.ICON_SIZE_INVALID);
         });
     });
 
-    it('adds an error if the image dimensions are not same', () => {
+    it('adds an error if the dimensions of the image are not the same', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         icons: {
@@ -838,12 +838,12 @@ describe('ManifestJSONParser', () => {
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, { io: { files } });
-       manifestJSONParser.validateIcons()
+      return manifestJSONParser.validateIcons()
         .then(() => {
           expect(manifestJSONParser.isValid).toBeFalsy();
           const errors = addonLinter.collector.errors;
           expect(errors.length).toEqual(1);
-          expect(warnings[0].code).toEqual(messages.ICON_NOT_SQUARE.code);
+          expect(errors[0].code).toEqual(messages.ICON_NOT_SQUARE);
         });
     });
   });
