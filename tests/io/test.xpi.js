@@ -3,7 +3,7 @@ import { Readable } from 'stream';
 import { EventEmitter } from 'events';
 
 import { Xpi } from 'io';
-import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
+import { DEFLATE_COMPRESSION, NO_COMPRESSION, INSTALL_RDF } from 'const';
 
 import { unexpectedSuccess } from '../helpers';
 
@@ -21,13 +21,13 @@ const chromeManifestEntry = Object.assign({}, defaultData, {
 const installRdfEntry = Object.assign({}, defaultData, {
   compressedSize: 416,
   uncompressedSize: 851,
-  fileName: 'install.rdf',
+  fileName: INSTALL_RDF,
 });
 
 const dupeInstallRdfEntry = Object.assign({}, defaultData, {
   compressedSize: 416,
   uncompressedSize: 851,
-  fileName: 'install.rdf',
+  fileName: INSTALL_RDF,
 });
 
 const jsMainFileEntry = Object.assign({}, defaultData, {
@@ -113,7 +113,7 @@ describe('xpi.getFiles()', function getFilesCallback() {
   it('should return cached data when available', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      [INSTALL_RDF]: installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
     return myXpi.getFiles()
@@ -126,7 +126,7 @@ describe('xpi.getFiles()', function getFilesCallback() {
   it('should contain expected files', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     const expected = {
-      'install.rdf': installRdfEntry,
+      [INSTALL_RDF]: installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -180,7 +180,7 @@ describe('xpi.getFiles()', function getFilesCallback() {
     return myXpi.getFiles(onEventsSubscribed)
       .then((files) => {
         expect(files['chrome.manifest']).toEqual(chromeManifestEntry);
-        expect(files['install.rdf']).not.toBeDefined();
+        expect(files[INSTALL_RDF]).not.toBeDefined();
       });
   });
 
@@ -188,7 +188,7 @@ describe('xpi.getFiles()', function getFilesCallback() {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     // Populate the file cache:
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      [INSTALL_RDF]: installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -204,7 +204,7 @@ describe('xpi.getFiles()', function getFilesCallback() {
     return myXpi.getFiles()
       .then((files) => {
         expect(files['chrome.manifest']).toEqual(chromeManifestEntry);
-        expect(files['install.rdf']).not.toBeDefined();
+        expect(files[INSTALL_RDF]).not.toBeDefined();
       });
   });
 
@@ -242,9 +242,11 @@ describe('xpi.getFiles()', function getFilesCallback() {
 describe('Xpi.getFile()', function getFileCallback() {
   it('should throw if fileStreamType is incorrect', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
-    expect(() => {
-      myXpi.getFile('whatever-file', 'whatever');
-    }).toThrowError('Unexpected fileStreamType value "whatever"');
+    myXpi.getFile('whatever-file', 'whatever')
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        expect(err.message).toContain('Unexpected fileStreamType value "whatever"');
+      });
   });
 
   it('should call getFileAsString', () => {
@@ -265,17 +267,18 @@ describe('Xpi.getFile()', function getFileCallback() {
 });
 
 describe('Xpi.checkPath()', function checkPathCallback() {
-  it('should reject if path does not exist', () => {
+  it('getFileAsStream() should be rejected if path does not exist', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    const missingPath = 'whatever';
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      [INSTALL_RDF]: installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
-    return myXpi.getFileAsStream('whatever')
+    return myXpi.getFileAsStream(missingPath)
       .then(unexpectedSuccess)
       .catch((err) => {
-        expect(err.message).toContain('Path "whatever" does not exist');
+        expect(err.message).toContain(`Path "${missingPath}" does not exist`);
       });
   });
 
@@ -284,16 +287,15 @@ describe('Xpi.checkPath()', function checkPathCallback() {
     const fakeFileMeta = {
       uncompressedSize: 1024 * 1024 * 102,
     };
-
+    const installFileName = INSTALL_RDF;
     myXpi.files = {
-      'install.rdf': fakeFileMeta,
-      'chrome.manifest': fakeFileMeta,
+      [installFileName]: fakeFileMeta,
     };
 
-    return myXpi.getFileAsStream('install.rdf')
+    return myXpi.getFileAsStream(installFileName)
       .then(unexpectedSuccess)
       .catch((err) => {
-        expect(err.message).toContain('File "install.rdf" is too large');
+        expect(err.message).toContain(`File "${installFileName}" is too large`);
       });
   });
 
@@ -302,16 +304,15 @@ describe('Xpi.checkPath()', function checkPathCallback() {
     const fakeFileMeta = {
       uncompressedSize: 1024 * 1024 * 102,
     };
-
+    const installFileName = INSTALL_RDF;
     myXpi.files = {
-      'install.rdf': fakeFileMeta,
-      'chrome.manifest': fakeFileMeta,
+      [installFileName]: fakeFileMeta,
     };
 
-    return myXpi.getFileAsString('install.rdf')
+    return myXpi.getFileAsString(installFileName)
       .then(unexpectedSuccess)
       .catch((err) => {
-        expect(err.message).toContain('File "install.rdf" is too large');
+        expect(err.message).toContain(`File "${installFileName}" is too large`);
       });
   });
 });
@@ -339,14 +340,14 @@ describe('Xpi.getChunkAsBuffer()', function getChunkAsBufferCallback() {
   it('should reject if error in openReadStream', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      [INSTALL_RDF]: installRdfEntry,
     };
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
     this.openReadStreamStub.yieldsAsync(
       new Error('getChunkAsBuffer openReadStream test'));
 
-    return myXpi.getChunkAsBuffer('install.rdf')
+    return myXpi.getChunkAsBuffer(INSTALL_RDF)
       .then(unexpectedSuccess)
       .catch((err) => {
         expect(err.message).toContain('getChunkAsBuffer openReadStream test');
@@ -356,7 +357,7 @@ describe('Xpi.getChunkAsBuffer()', function getChunkAsBufferCallback() {
   it('should resolve with a buffer', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      [INSTALL_RDF]: installRdfEntry,
     };
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
@@ -368,12 +369,21 @@ describe('Xpi.getChunkAsBuffer()', function getChunkAsBufferCallback() {
     this.openReadStreamStub.yields(null, rstream);
 
     // Just grab the first two characters.
-    return myXpi.getChunkAsBuffer('install.rdf', 2)
+    return myXpi.getChunkAsBuffer(INSTALL_RDF, 2)
       .then((buffer) => {
         // The file contains: 123\n. This tests that we are getting just
         // the first two characters in the buffer.
         expect(buffer.toString()).toEqual('12');
       });
+  });
+
+  it('should reject on wrong path', () => {
+    const myXpi = new Xpi('foo/bar', this.fakeZipLib);
+    myXpi.files = {};
+
+    return myXpi.getChunkAsBuffer(INSTALL_RDF, 2)
+      .then(unexpectedSuccess)
+      .catch(() => expect(true).toBe(true));
   });
 });
 
@@ -394,7 +404,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
   it('should reject if error in openReadStream', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      [INSTALL_RDF]: installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -402,7 +412,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
     this.openReadStreamStub.yieldsAsync(
       new Error('getFileAsStream openReadStream test'));
 
-    return myXpi.getFileAsStream('install.rdf')
+    return myXpi.getFileAsStream(INSTALL_RDF)
       .then(unexpectedSuccess)
       .catch((err) => {
         expect(err.message).toContain('getFileAsStream openReadStream test');
@@ -412,7 +422,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
   it('should resolve with a readable stream', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      [INSTALL_RDF]: installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -425,7 +435,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
 
     this.openReadStreamStub.yields(null, rstream);
 
-    return myXpi.getFileAsStream('install.rdf')
+    return myXpi.getFileAsStream(INSTALL_RDF)
       .then((readStream) => {
         return new Promise((resolve, reject) => {
           let chunks = '';
@@ -455,7 +465,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
   it('should resolve with a string', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      [INSTALL_RDF]: installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -468,7 +478,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
 
     this.openReadStreamStub.yields(null, rstream);
 
-    return myXpi.getFileAsString('install.rdf')
+    return myXpi.getFileAsString(INSTALL_RDF)
       .then((string) => {
         expect(string).toEqual('line one\nline two');
       });
@@ -477,7 +487,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
   it('should strip a BOM', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      [INSTALL_RDF]: installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -486,7 +496,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
     const rstream = fs.createReadStream('tests/fixtures/io/dir3/foo.txt');
     this.openReadStreamStub.yields(null, rstream);
 
-    return myXpi.getFileAsString('install.rdf')
+    return myXpi.getFileAsString(INSTALL_RDF)
       .then((string) => {
         expect(string.charCodeAt(0) === 0xFEFF).toBeFalsy();
       });
@@ -495,7 +505,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
   it('should reject if error in openReadStream from readAsString', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      [INSTALL_RDF]: installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -503,7 +513,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
     this.openReadStreamStub.yields(
       new Error('getFileAsString openReadStream test'));
 
-    return myXpi.getFileAsString('install.rdf')
+    return myXpi.getFileAsString(INSTALL_RDF)
       .then(unexpectedSuccess)
       .catch((err) => {
         expect(err.message).toContain('getFileAsString openReadStream test');
@@ -515,7 +525,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
 
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      [INSTALL_RDF]: installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -526,7 +536,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
       return Promise.resolve(fakeStreamEmitter);
     };
 
-    return myXpi.getFileAsString('install.rdf')
+    return myXpi.getFileAsString(INSTALL_RDF)
       .then(unexpectedSuccess)
       .catch((err) => {
         expect(err.message).toContain('¡hola!');
@@ -544,7 +554,7 @@ describe('Xpi.getFilesByExt()', function getFilesByExtCallback() {
   it('should return all JS files', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      [INSTALL_RDF]: installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
       'main.js': jsMainFileEntry,
       'secondary.js': jsSecondaryFileEntry,
@@ -586,7 +596,7 @@ describe('Xpi.getFilesByExt()', function getFilesByExtCallback() {
   it('should return all HTML files', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      [INSTALL_RDF]: installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
       'index.html': jsMainFileEntry,
       'second.htm': jsMainFileEntry,

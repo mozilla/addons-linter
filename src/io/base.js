@@ -39,9 +39,9 @@ export class IOBase {
         return this.getChunkAsBuffer(path, FLAGGED_FILE_MAGIC_NUMBERS_LENGTH);
 
       default:
-        throw new Error(oneLine`Unexpected fileStreamType
+        return Promise.reject(new Error(oneLine`Unexpected fileStreamType
           value "${fileStreamType}" should be one of "string",
-          "stream" or "chunk"`);
+          "stream" or "chunk"`));
     }
   }
 

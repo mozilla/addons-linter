@@ -187,6 +187,12 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :white_check_mark: | error | | | top level guid missing from install.rdf | install.rdf | | | RDF_ID_MISSING |
 | :white_check_mark: | error | | | top level version missing from install.rdf. | install.rdf | | | RDF_VERSION_MISSING |
 | :white_check_mark: | error | | | top level name missing from install.rdf | install.rdf | | | RDF_NAME_MISSING |
+| :white_check_mark: | error | | | RDF tag should have only one child  | install.rdf | | | RDF_MANY_CHILDREN |
+| :white_check_mark: | error | | | RDF tag not found | install.rdf | | | RDF_TAG_NOT_FOUND |
+| :white_check_mark: | error | | | RDF name should be presented only once | install.rdf | | | RDF_MULTIPLE_NAME_TAGS |
+| :white_check_mark: | error | | | RDF version should be presented only once | install.rdf | | | RDF_MULTIPLE_VERSION_TAGS |
+| :white_check_mark: | error | | | RDF guid should be presented only once | install.rdf | | | RDF_MULTIPLE_ID_TAGS |
+| :white_check_mark: | error | | | RDF type should be presented only once | install.rdf | | | RDF_MULTIPLE_TYPE_TAGS |
 
 
 ## Jetpack

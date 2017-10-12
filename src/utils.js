@@ -126,19 +126,23 @@ export const sprintf = jed.sprintf;
  * Check the minimum node version is met
  */
 export function checkMinNodeVersion(minVersion, _process = process) {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     // eslint-disable-next-line no-param-reassign
     minVersion = minVersion || '0.12.0';
     if (!semver.gte(_process.version, minVersion)) {
-      throw new Error(oneLine`Node version must be ${minVersion} or
-                      greater. You are using ${_process.version}.`);
+      reject(new Error(oneLine`Node version must be ${minVersion} or
+                      greater. You are using ${_process.version}.`));
     } else {
       resolve();
     }
   });
 }
 
-
+/**
+ * method not in use
+ * @param numericPackageType
+ * @returns {*}
+ */
 export function getPackageTypeAsString(numericPackageType) {
   const packageKeys = Object.keys(PACKAGE_TYPES);
   for (let i = 0; i < packageKeys.length; i++) {

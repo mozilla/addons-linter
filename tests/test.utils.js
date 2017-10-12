@@ -148,6 +148,43 @@ describe('utils.getVariable()', () => {
   });
 });
 
+describe('utils.checkMinNodeVersion', () => {
+  const minVersion = {
+    major: 6,
+    minor: 1,
+    patch: 4,
+    toString() {
+      return `${this.major}.${this.minor}.${this.patch}`;
+    },
+  };
+
+  it('should be rejected when node version is less than required', () => {
+    const lessThanMin = {
+      ...minVersion,
+    };
+    lessThanMin.major -= 1;
+    utils.checkMinNodeVersion(minVersion.toString(), {
+      version: lessThanMin.toString(),
+    })
+      .catch(() => {
+        expect(true).toBe(true);
+      });
+  });
+
+  it('should be resolved if Node version higher or equal than min', () => {
+    utils.checkMinNodeVersion(minVersion.toString(), {
+      version: minVersion,
+    })
+      .then(() => {
+        expect(true).toBe(true);
+      })
+      .catch(() => {
+        expect(false).toBe(true);
+      });
+  });
+});
+
+
 describe('utils.checkOtherReferences', () => {
   const context = {
     getScope: () => {

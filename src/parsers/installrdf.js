@@ -15,12 +15,23 @@ export default class InstallRdfParser {
   }
 
   getMetadata() {
-    return Promise.resolve({
-      guid: this._getGUID(),
-      name: this._getName(),
-      type: this._getAddonType(),
-      version: this._getVersion(),
-      restartless: this._getIsBootstrapped(),
+    return new Promise((resolve, reject) => {
+      const guid = this._getGUID();
+      const name = this._getName();
+      const type = this._getAddonType();
+      const version = this._getVersion();
+      const restartless = this._getIsBootstrapped();
+      if (guid === null || name === null || version === null) {
+        return reject(new Error(oneLine`Cannot get metadata,
+                                  version, name, or id tag is missing`));
+      }
+      return resolve({
+        guid,
+        name,
+        type,
+        version,
+        restartless,
+      });
     });
   }
 
@@ -36,16 +47,20 @@ export default class InstallRdfParser {
    */
   _getTopLevelNodesByTag(tagName) {
     const descriptionTag = this._getDescriptionNode();
+    if (!descriptionTag) return null;
     return this._makeArray(descriptionTag.childNodes)
       .filter((node) => node.nodeName === tagName);
   }
 
   _getTopLevelNodeByTag(tag) {
     const nodes = this._getTopLevelNodesByTag(tag);
-    // Throw an error if there's more than one node as these
+    if (!nodes || nodes.length === 0) return null;
+    // add an error if there's more than one node as these
     // should be unique.
     if (nodes.length > 1) {
-      throw new Error(`Multiple <${tag}> elements found`);
+      const match = tag.match(/:(.*$)/);
+      this.collector.addError(messages.rdfMultipleTags((match && match[1]) || tag));
+      return null;
     }
     return nodes[0];
   }
@@ -53,21 +68,24 @@ export default class InstallRdfParser {
   _getRDFNode() {
     const rdfNodes = this.xmlDoc.getElementsByTagName('RDF');
     if (!rdfNodes.length) {
-      throw new Error('RDF Node is not defined');
+      this.collector.addError(messages.RDF_TAG_NOT_FOUND);
+      return null;
     }
     if (rdfNodes.length > 1) {
-      throw new Error('Multiple RDF tags found');
+      this.collector.addError(messages.rdfMultipleTags('RDF'));
+      return null;
     }
     return rdfNodes[0];
   }
 
   _getDescriptionNode() {
     const rdfNode = this._getRDFNode();
+    if (!rdfNode) return null;
     const descriptionNodes = Array.prototype.slice.call(rdfNode.childNodes)
       .filter((node) => node.nodeName === 'Description');
     if (descriptionNodes.length > 1) {
-      throw new Error(oneLine`RDF node should only have a
-        single descendant <Description>`);
+      this.collector.addError(messages.RDF_MANY_CHILDREN);
+      return null;
     }
     return descriptionNodes[0];
   }

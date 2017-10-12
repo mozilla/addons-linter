@@ -84,6 +84,27 @@ export function validRDF(contents) {
   </RDF>`;
 }
 
+export function WrongRootInRDF(contents) {
+  return oneLine`<?xml version='1.0' encoding='utf-8'?>
+  <CDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+    <Description about="urn:mozilla:install-manifest">
+      ${contents}
+    </Description>
+  </CDF>`;
+}
+
+export function WrongRDFWithoutDescription(contents) {
+  return oneLine`<?xml version='1.0' encoding='utf-8'?>
+  <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+    
+      ${contents}
+    
+  </RDF>`;
+}
+
+
 export function validManifestJSON(extra) {
   return JSON.stringify(Object.assign({}, {
     name: 'my extension',
