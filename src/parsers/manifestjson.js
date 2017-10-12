@@ -141,10 +141,6 @@ export default class ManifestJSONParser extends JSONParser {
       this.collector.addNotice(messages.MANIFEST_UNUSED_UPDATE);
     }
 
-    if (this.parsedJSON.icons) {
-      this.validateIcons();
-    }
-
     if (this.parsedJSON.background) {
       if (this.parsedJSON.background.scripts) {
         this.parsedJSON.background.scripts.forEach((script) => {
@@ -197,6 +193,7 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateIcons() {
+    var promises = [];
     const { icons } = this.parsedJSON;
     Object.keys(icons).forEach((size) => {
       const _path = normalizePath(icons[size]);
@@ -206,26 +203,29 @@ export default class ManifestJSONParser extends JSONParser {
       } else if (!IMAGE_FILE_EXTENSIONS.includes(icons[size].split('.').pop().toLowerCase())) {
         this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
       } else {
-        getImageMetadata(icons[size])
-          .then((info) => {
-            if (info.width !== info.height) {
-              this.collector.addError(messages.iconIsNotSquare(path));
-              this.isValid = false;
-            } else if (info.width !== size) {
-              this.collector.addWarning(messages.iconSizeInvalid({
+        promises.push(
+          getImageMetadata(icons[size])
+            .then((info) => {
+              if (info.width !== info.height) {
+                this.collector.addError(messages.iconIsNotSquare(path));
+                this.isValid = false;
+              } else if (parseInt(info.width) !== parseInt(size)) {
+                this.collector.addWarning(messages.iconSizeInvalid({
+                  path,
+                  expected: parseInt(size),
+                  actual: parseInt(info.width),
+                }));
+              }
+            })
+            .catch((err) => {
+              this.collector.addWarning(messages.corruptIconFile({
                 path,
-                expected: size,
-                actual: info.width,
               }));
-            }
-          })
-          .catch(() => {
-            this.collector.addWarning(messages.corruptIconFile({
-              path,
-            }));
-          });
+            })
+          );
       }
     });
+    return Promise.all(promises);
   }
 
   validateFileExistsInPackage(filePath, type) {
