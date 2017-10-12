@@ -790,6 +790,23 @@ describe('ManifestJSONParser', () => {
       expect(warnings.length).toEqual(1);
     });
 
+    it('adds a warning if the image size is not the same as mentioned', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        icons: {
+          32: 'tests/fixtures/icon-33.png',
+        },
+      });
+      const files = {
+        'tests/fixtures/icon-33.png': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, { io: { files } });
+      expect(manifestJSONParser.isValid).toBeTruthy();
+      const warnings = addonLinter.collector.warnings;
+      expect(warnings.length).toEqual(1);
+    });
+
     it('adds an error if the image dimensions are not same', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
