@@ -823,7 +823,6 @@ describe('ManifestJSONParser', () => {
       const errors = addonLinter.collector.errors;
       expect(errors.length).toEqual(1);
     });
-
   });
 
   describe('background', () => {

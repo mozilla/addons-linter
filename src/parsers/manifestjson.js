@@ -221,7 +221,7 @@ export default class ManifestJSONParser extends JSONParser {
           })
           .catch(() => {
             this.collector.addWarning(messages.corruptIconFile({
-              path
+              path,
             }));
           });
       }
