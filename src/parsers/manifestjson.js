@@ -220,7 +220,7 @@ export default class ManifestJSONParser extends JSONParser {
             }
           })
           .catch(() => {
-            this.collector.addWarning(messages.CORRUPT_ICON_FILE);
+            this.collector.addWarning(messages.corruptIconFile({path}));
           });
       }
     });

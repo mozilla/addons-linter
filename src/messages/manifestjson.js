@@ -151,7 +151,6 @@ export const ICON_NOT_SQUARE = 'ICON_NOT_SQUARE';
 export function iconIsNotSquare(path) {
   return {
     code: ICON_NOT_SQUARE,
-    legacyCode: null,
     message: _('Icons must be square.'),
     description: sprintf(_('Icon at "%(path)s" must be square.'), { path }),
     file: MANIFEST_JSON,
@@ -162,12 +161,23 @@ export const ICON_SIZE_INVALID = 'ICON_SIZE_INVALID';
 export function iconSizeInvalid({ path, expected, actual }) {
   return {
     code: ICON_SIZE_INVALID,
-    legacyCode: null,
     message: _('The size of the icon does not match the manifest.'),
     description: sprintf(
       _('Expected icon at "%(path)s" to be %(expected)d pixels wide but was ' +
         '%(actual)d.'),
       { path, expected, actual }),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const CORRUPT_ICON_FILE = 'CORRUPT_ICON_FILE';
+export function corruptIconFile({ path }) {
+  return {
+    code: CORRUPT_ICON_FILE,
+    message: _('Corrupt image file'),
+    description: sprintf(
+      _('Expected icon file at "%(path)s" is corrupted'),
+      { path }),
     file: MANIFEST_JSON,
   };
 }
@@ -200,10 +210,3 @@ export const WRONG_ICON_EXTENSION = {
   file: MANIFEST_JSON,
 };
 
-
-export const CORRUPT_ICON_FILE = {
-  code: 'CORRUPT_ICON_FILE',
-  message: _('Corrupt image file'),
-  description: _('Icon file is not a valid Image file'),
-  file: MANIFEST_JSON,
-};
