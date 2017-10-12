@@ -1,4 +1,3 @@
-
 import Linter from 'linter';
 import ManifestJSONParser from 'parsers/manifestjson';
 import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
@@ -773,6 +772,41 @@ describe('ManifestJSONParser', () => {
       const warnings = addonLinter.collector.warnings;
       expect(warnings.length).toEqual(0);
     });
+
+    it('adds a warning if the icon file is not corrupt', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        icons: {
+          32: 'tests/fixtures/default-corrupted.png',
+        },
+      });
+      const files = {
+        'tests/fixtures/default-corrupted.png': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, { io: { files } });
+      expect(manifestJSONParser.isValid).toBeTruthy();
+      const warnings = addonLinter.collector.warnings;
+      expect(warnings.length).toEqual(1);
+    });
+
+    it('adds an error if the image dimensions are not same', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        icons: {
+          32: 'tests/fixtures/rectangle.png',
+        },
+      });
+      const files = {
+        'tests/fixtures/rectangle.png': '89<PNG>thisistotallysomebinary',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, { io: { files } });
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      const errors = addonLinter.collector.errors;
+      expect(errors.length).toEqual(1);
+    });
+
   });
 
   describe('background', () => {
