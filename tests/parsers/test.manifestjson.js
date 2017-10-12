@@ -773,7 +773,7 @@ describe('ManifestJSONParser', () => {
       expect(warnings.length).toEqual(0);
     });
 
-    it('adds a warning if the icon file is not corrupt', () => {
+    it('adds a warning if the icon file is corrupt', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         icons: {
