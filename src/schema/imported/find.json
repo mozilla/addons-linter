@@ -1,0 +1,114 @@
+{
+  "id": "find",
+  "description": "Use the <code>browser.find</code> API to interact with the browser's <code>Find</code> interface.",
+  "permissions": [
+    "find"
+  ],
+  "functions": [
+    {
+      "name": "find",
+      "type": "function",
+      "async": true,
+      "description": "Search for text in document and store found ranges in array, in document order.",
+      "parameters": [
+        {
+          "name": "queryphrase",
+          "type": "string",
+          "description": "The string to search for."
+        },
+        {
+          "name": "params",
+          "type": "object",
+          "description": "Search parameters.",
+          "optional": true,
+          "properties": {
+            "tabId": {
+              "type": "integer",
+              "description": "Tab to query. Defaults to the active tab.",
+              "minimum": 0
+            },
+            "caseSensitive": {
+              "type": "boolean",
+              "description": "Find only ranges with case sensitive match."
+            },
+            "entireWord": {
+              "type": "boolean",
+              "description": "Find only ranges that match entire word."
+            },
+            "includeRectData": {
+              "description": "Return rectangle data which describes visual position of search results.",
+              "type": "boolean"
+            },
+            "includeRangeData": {
+              "description": "Return range data which provides range data in a serializable form.",
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "highlightResults",
+      "type": "function",
+      "async": true,
+      "description": "Highlight a range",
+      "parameters": [
+        {
+          "name": "params",
+          "type": "object",
+          "description": "highlightResults parameters",
+          "optional": true,
+          "properties": {
+            "rangeIndex": {
+              "type": "integer",
+              "description": "Found range to be highlighted. Default highlights all ranges.",
+              "minimum": 0
+            },
+            "tabId": {
+              "type": "integer",
+              "description": "Tab to highlight. Defaults to the active tab.",
+              "minimum": 0
+            },
+            "noScroll": {
+              "type": "boolean",
+              "description": "Don't scroll to highlighted item."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "removeHighlighting",
+      "type": "function",
+      "async": true,
+      "description": "Remove all highlighting from previous searches.",
+      "parameters": [
+        {
+          "name": "tabId",
+          "type": "integer",
+          "description": "Tab to highlight. Defaults to the active tab.",
+          "optional": true
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "OptionalPermission": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "find"
+          ]
+        }
+      ]
+    }
+  },
+  "refs": {
+    "find#/definitions/OptionalPermission": {
+      "namespace": "manifest",
+      "type": "OptionalPermission"
+    }
+  },
+  "types": {}
+}

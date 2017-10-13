@@ -115,6 +115,86 @@
       ]
     }
   ],
+  "events": [
+    {
+      "name": "onUpdated",
+      "type": "function",
+      "description": "Fired when a container is updated.",
+      "parameters": [
+        {
+          "type": "object",
+          "name": "changeInfo",
+          "properties": {
+            "contextualIdentity": {
+              "allOf": [
+                {
+                  "$ref": "#/types/ContextualIdentity"
+                },
+                {
+                  "description": "Contextual identity that has been updated"
+                }
+              ]
+            }
+          },
+          "required": [
+            "contextualIdentity"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "onCreated",
+      "type": "function",
+      "description": "Fired when a new container is created.",
+      "parameters": [
+        {
+          "type": "object",
+          "name": "changeInfo",
+          "properties": {
+            "contextualIdentity": {
+              "allOf": [
+                {
+                  "$ref": "#/types/ContextualIdentity"
+                },
+                {
+                  "description": "Contextual identity that has been created"
+                }
+              ]
+            }
+          },
+          "required": [
+            "contextualIdentity"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "onRemoved",
+      "type": "function",
+      "description": "Fired when a container is removed.",
+      "parameters": [
+        {
+          "type": "object",
+          "name": "changeInfo",
+          "properties": {
+            "contextualIdentity": {
+              "allOf": [
+                {
+                  "$ref": "#/types/ContextualIdentity"
+                },
+                {
+                  "description": "Contextual identity that has been removed"
+                }
+              ]
+            }
+          },
+          "required": [
+            "contextualIdentity"
+          ]
+        }
+      ]
+    }
+  ],
   "definitions": {
     "Permission": {
       "anyOf": [
@@ -144,11 +224,19 @@
         },
         "icon": {
           "type": "string",
-          "description": "The icon of the contextual identity."
+          "description": "The icon name of the contextual identity."
+        },
+        "iconUrl": {
+          "type": "string",
+          "description": "The icon url of the contextual identity."
         },
         "color": {
           "type": "string",
-          "description": "The color of the contextual identity."
+          "description": "The color name of the contextual identity."
+        },
+        "colorCode": {
+          "type": "string",
+          "description": "The color hash of the contextual identity."
         },
         "cookieStoreId": {
           "type": "string",
@@ -158,7 +246,9 @@
       "required": [
         "name",
         "icon",
+        "iconUrl",
         "color",
+        "colorCode",
         "cookieStoreId"
       ]
     }

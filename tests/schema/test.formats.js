@@ -1,4 +1,5 @@
 import {
+  imageDataOrStrictRelativeUrl,
   isAbsoluteUrl,
   isAnyUrl,
   isSecureUrl,
@@ -64,6 +65,7 @@ describe('formats', () => {
       expect(isSecureUrl(value)).toEqual(true);
 
       expect(isStrictRelativeUrl(value)).toEqual(false);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(false);
     });
 
     it('full URL', () => {
@@ -74,6 +76,7 @@ describe('formats', () => {
       expect(isSecureUrl(value)).toEqual(true);
 
       expect(isStrictRelativeUrl(value)).toEqual(false);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(false);
     });
 
     it('invalid URLs', () => {
@@ -83,6 +86,7 @@ describe('formats', () => {
       expect(isAbsoluteUrl(value)).toEqual(false);
       expect(isSecureUrl(value)).toEqual(false);
       expect(isStrictRelativeUrl(value)).toEqual(false);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(false);
     });
 
     it('path only', () => {
@@ -90,6 +94,7 @@ describe('formats', () => {
 
       expect(isAnyUrl(value)).toEqual(true);
       expect(isStrictRelativeUrl(value)).toEqual(true);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(true);
 
       expect(isAbsoluteUrl(value)).toEqual(false);
       expect(isSecureUrl(value)).toEqual(false);
@@ -103,6 +108,7 @@ describe('formats', () => {
       expect(isAbsoluteUrl(value)).toEqual(false);
       expect(isStrictRelativeUrl(value)).toEqual(false);
       expect(isSecureUrl(value)).toEqual(false);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(false);
     });
 
     it('ftp: scheme', () => {
@@ -113,6 +119,7 @@ describe('formats', () => {
 
       expect(isStrictRelativeUrl(value)).toEqual(false);
       expect(isSecureUrl(value)).toEqual(false);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(false);
     });
 
     it('http: scheme', () => {
@@ -123,6 +130,7 @@ describe('formats', () => {
 
       expect(isStrictRelativeUrl(value)).toEqual(false);
       expect(isSecureUrl(value)).toEqual(false);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(false);
     });
 
     it('cannot be fooled with hand-crafted URLs', () => {
@@ -135,6 +143,41 @@ describe('formats', () => {
 
       expect(isStrictRelativeUrl(value)).toEqual(false);
       expect(isSecureUrl(value)).toEqual(false);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(false);
+    });
+
+    it('image data PNG', () => {
+      const value = 'data:image/png;base64,thisistotallybase64';
+
+      expect(isAbsoluteUrl(value)).toEqual(true);
+      expect(isAnyUrl(value)).toEqual(true);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(true);
+
+      expect(isStrictRelativeUrl(value)).toEqual(false);
+      expect(isSecureUrl(value)).toEqual(false);
+    });
+
+    it('image data JPG', () => {
+      const value = 'data:image/jpeg;base64,thisistotallybase64';
+
+      expect(isAnyUrl(value)).toEqual(true);
+      expect(isAbsoluteUrl(value)).toEqual(true);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(true);
+
+      expect(isStrictRelativeUrl(value)).toEqual(false);
+      expect(isSecureUrl(value)).toEqual(false);
+    });
+
+    it('image data SVG', () => {
+      // Only PNG and JPG are currently supported.
+      const value = 'data:image/svg;base64,thisistotallybase64';
+
+      expect(isAnyUrl(value)).toEqual(true);
+      expect(isAbsoluteUrl(value)).toEqual(true);
+
+      expect(isStrictRelativeUrl(value)).toEqual(false);
+      expect(isSecureUrl(value)).toEqual(false);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(false);
     });
   });
 });

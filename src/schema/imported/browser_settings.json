@@ -5,6 +5,16 @@
     "browserSettings"
   ],
   "properties": {
+    "allowPopupsForUserEvents": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "Allows or disallows pop-up windows from opening in response to user events."
+        }
+      ]
+    },
     "cacheEnabled": {
       "allOf": [
         {
@@ -14,10 +24,40 @@
           "description": "Enables or disables the browser cache."
         }
       ]
+    },
+    "homepageOverride": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "Returns the value of the overridden home page. Read-only."
+        }
+      ]
+    },
+    "imageAnimationBehavior": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "Controls the behaviour of image animation in the browser. This setting's value is of type ImageAnimationBehavior, defaulting to <code>normal</code>."
+        }
+      ]
+    },
+    "newTabPageOverride": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "Returns the value of the overridden new tab page. Read-only."
+        }
+      ]
     }
   },
   "definitions": {
-    "Permission": {
+    "OptionalPermission": {
       "anyOf": [
         {
           "type": "string",
@@ -29,10 +69,20 @@
     }
   },
   "refs": {
-    "browserSettings#/definitions/Permission": {
+    "browserSettings#/definitions/OptionalPermission": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "OptionalPermission"
     }
   },
-  "types": {}
+  "types": {
+    "ImageAnimationBehavior": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "none",
+        "once"
+      ],
+      "description": "How images should be animated in the browser."
+    }
+  }
 }

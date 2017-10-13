@@ -37,6 +37,7 @@ const schemaRegexes = [
 export const refMap = {
   ExtensionURL: 'manifest#/types/ExtensionURL',
   HttpURL: 'manifest#/types/HttpURL',
+  ImageDataOrExtensionURL: 'manifest#/types/ImageDataOrExtensionURL',
 };
 
 // Reference some functions on inner so they can be stubbed in tests.
