@@ -115,13 +115,24 @@
               "unsupported": true
             }
           ]
+        },
+        "trackingProtectionMode": {
+          "allOf": [
+            {
+              "$ref": "types#/types/Setting"
+            },
+            {
+              "description": "Allow users to specify the mode for tracking protection. This setting's value is of type TrackingProtectionModeOption, defaulting to <code>private_browsing_only</code>."
+            }
+          ]
         }
       },
       "required": [
         "thirdPartyCookiesAllowed",
         "hyperlinkAuditingEnabled",
         "referrersEnabled",
-        "protectedContentEnabled"
+        "protectedContentEnabled",
+        "trackingProtectionMode"
       ]
     }
   },
@@ -153,6 +164,15 @@
         "disable_non_proxied_udp"
       ],
       "description": "The IP handling policy of WebRTC."
+    },
+    "TrackingProtectionModeOption": {
+      "type": "string",
+      "enum": [
+        "always",
+        "never",
+        "private_browsing"
+      ],
+      "description": "The mode for tracking protection."
     }
   }
 }

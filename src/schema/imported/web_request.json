@@ -24,6 +24,25 @@
           "parameters": []
         }
       ]
+    },
+    {
+      "name": "filterResponseData",
+      "permissions": [
+        "webRequestBlocking"
+      ],
+      "type": "function",
+      "description": "...",
+      "parameters": [
+        {
+          "name": "requestId",
+          "type": "string"
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "additionalProperties": {},
+        "isInstanceOf": "StreamFilter"
+      }
     }
   ],
   "events": [

@@ -3,6 +3,7 @@ import ajv from 'ajv';
 import schemaObject from 'schema/imported/manifest';
 
 import {
+  imageDataOrStrictRelativeUrl,
   isAnyUrl,
   isAbsoluteUrl,
   isStrictRelativeUrl,
@@ -33,5 +34,7 @@ validator.addFormat('url', isAbsoluteUrl);
 validator.addFormat('relativeUrl', isAnyUrl);
 validator.addFormat('strictRelativeUrl', isStrictRelativeUrl);
 validator.addFormat('secureUrl', isSecureUrl);
+
+validator.addFormat('imageDataOrStrictRelativeUrl', imageDataOrStrictRelativeUrl);
 
 export default validator.compile(schemaObject);
