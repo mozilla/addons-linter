@@ -187,8 +187,17 @@ export default class ManifestJSONParser extends JSONParser {
       if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
         this.collector.addError(messages.manifestIconMissing(_path));
         this.isValid = false;
-      } else if (!IMAGE_FILE_EXTENSIONS.includes(icons[size].split('.').pop().toLowerCase())) {
-        this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
+      } else {
+        let isImageFileExtension = false;
+        for (const ext of IMAGE_FILE_EXTENSIONS) {
+          isImageFileExtension = _path.endsWith(`.${ext}`);
+          if (isImageFileExtension) {
+            break;
+          }
+        }
+        if (!isImageFileExtension) {
+          this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
+        }
       }
     });
   }
