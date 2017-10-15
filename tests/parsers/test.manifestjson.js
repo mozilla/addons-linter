@@ -747,7 +747,7 @@ describe('ManifestJSONParser', () => {
           32: 'icons/icon-32.txt',
           48: 'icons/icon.svg#frag',
           64: 'icons/icon-64.html',
-          96: 'icons/icons.svg',
+          96: 'icons/icon.svg',
           128: 'icons/icon-128.png',
         },
       });
