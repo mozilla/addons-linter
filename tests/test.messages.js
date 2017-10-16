@@ -35,19 +35,6 @@ describe('Messages', () => {
     }
   });
 
-  it('should construct a valid message (with uppercase codes)', () => {
-    const vegetarianTag = messages._tagNotAllowed('steak');
-    const teslaTag = messages._tagObsolete('petrol');
-
-    expect(vegetarianTag.code).toEqual('TAG_NOT_ALLOWED_STEAK');
-    expect(vegetarianTag.message).toContain('steak');
-    expect(vegetarianTag.description).toContain('steak');
-
-    expect(teslaTag.code).toEqual('TAG_OBSOLETE_PETROL');
-    expect(teslaTag.message).toContain('petrol');
-    expect(teslaTag.description).toContain('petrol');
-  });
-
   it('should have updated rules.md with new message codes', () => {
     const markdown = readFileSync('docs/rules.md', 'utf8');
     Object.keys(messages).forEach((message) => {

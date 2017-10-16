@@ -172,21 +172,11 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :white_check_mark: | error | shouldnt_exist | | Banned element in install.rdf | install.rdf | [96](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/installrdf.py) | ('testcases_installrdf', '_test_rdf', 'shouldnt_exist') | TAG_NOT_ALLOWED_HIDDEN |
-| :white_check_mark: | error | shouldnt_exist | | Banned element in install.rdf | install.rdf | [96](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/installrdf.py) | ('testcases_installrdf', '_test_rdf', 'shouldnt_exist') | TAG_NOT_ALLOWED_UPDATEKEY |
-| :white_check_mark: | error | shouldnt_exist | | Banned element in install.rdf | install.rdf | [96](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/installrdf.py) | ('testcases_installrdf', '_test_rdf', 'shouldnt_exist') | TAG_NOT_ALLOWED_UPDATEURL |
-| :white_check_mark: | notice | obsolete | | Obsolete element in install.rdf | install.rdf | | | TAG_OBSOLETE_FILE |
-| :white_check_mark: | notice | obsolete | | Obsolete element in install.rdf | install.rdf | | | TAG_OBSOLETE_REQUIRES |
-| :white_check_mark: | notice | obsolete | | Obsolete element in install.rdf | install.rdf | | | TAG_OBSOLETE_SKIN |
 | :negative_squared_cross_mark: | warning | optionsType | | `<em:optionsType>` has bad value. | install.rdf | | | |
 | :negative_squared_cross_mark: | notice | unrecognized | | Unrecognized element in install.rdf | install.rdf | | | |
 | :negative_squared_cross_mark: | notice | missing_updateKey | | Missing updateKey element | install.rdf | | | |
 | :negative_squared_cross_mark: | notice | Missing updateURL element | | Missing updateURL element | install.rdf | | | |
 | :negative_squared_cross_mark: | error | missing_addon | | install.rdf missing element(s). | install.rdf | | | |
-| :white_check_mark: | error | | | top level guid must be 255 characters or less | install.rdf | | | RDF_GUID_TOO_LONG |
-| :white_check_mark: | error | | | top level guid missing from install.rdf | install.rdf | | | RDF_ID_MISSING |
-| :white_check_mark: | error | | | top level version missing from install.rdf. | install.rdf | | | RDF_VERSION_MISSING |
-| :white_check_mark: | error | | | top level name missing from install.rdf | install.rdf | | | RDF_NAME_MISSING |
 
 
 ## Jetpack
@@ -262,12 +252,7 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :white_check_mark: | notice | missing_install_rdf | | Add-on missing install.rdf for type detection | | [22](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L22) | ('typedetection', 'detect_type', 'missing_install_rdf') | TYPE_NO_INSTALL_RDF |
 | :white_check_mark: | notice | missing_manifest_json | | Add-on missing manifest_json for type detection | | | ('typedetection', 'detect_type', 'missing_manifest_json') | TYPE_NO_MANIFEST_JSON |
-| :white_check_mark: | error | invalid_em_type | | The only valid values for `<em:type>` are 2, 4, 8, and 32 | | [46](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L46) | ('typedetection', 'detect_type', 'invalid_em_type') | RDF_TYPE_INVALID |
-| :white_check_mark: | notice | no_em:type | | No `<em:type>` element found in install.rdf | | [66](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L66) | ('typedetection', 'detect_type', 'no_em:type') | RDF_TYPE_MISSING |
-| :white_check_mark: | notice | no_em:name | | No `<em:name>` element found in install.rdf | | [66](https://github.com/mozilla/amo-validator/blob/master/validator/typedetection.py#L66) | new rule | RDF_NAME_MISSING |
-| :white_check_mark: | error | undeterminable_type | | Unable to determine add-on type | | [195](https://github.com/mozilla/amo-validator/blob/master/validator/submain.py#L195) | ('main', 'test_package', 'undeterminable_type') | TYPE_NOT_DETERMINED |
 
 
 ## Themes
@@ -347,7 +332,6 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :white_check_mark: | error | Web extension | version property missing from manifest.json | manifest.json | | null | PROP_VERSION_MISSING |
 | :white_check_mark: | error | Web extension | version is invalid in manifest.json | manifest.json | | null | PROP_VERSION_INVALID |
 | :white_check_mark: | notice | Web extension | version is in the toolkit format in manifest.json | manifest.json | | null | PROP_VERSION_TOOLKIT_ONLY |
-| :white_check_mark: | error | Web extension | install.rdf and manifest.json present | manifest.json | | null | MULTIPLE_MANIFESTS |
 | :white_check_mark: | warning | Web extension | content_security_policy in manifest.json means more review | manifest.json | | null | MANIFEST_CSP |
 | :white_check_mark: | warning | Web extension | usage of 'unsafe-eval' is strongly discouraged | manifest.json | null | MANIFEST_CSP_UNSAFE_EVAL |
 | :white_check_mark: | error | Web extension | update_url not allowed in manifest.json | manifest.json | | null | MANIFEST_UPDATE_URL |

@@ -18,35 +18,12 @@ export const BAD_ZIPFILE = {
   description: _('We were unable to decompress the zip file.'),
 };
 
-export const TYPE_NO_INSTALL_RDF = {
-  code: 'TYPE_NO_INSTALL_RDF',
-  message: _('install.rdf was not found'),
-  description: _(oneLine`The type should be determined by
-    install.rdf if present. As there's no install.rdf, type detection
-    will be attempted to be inferred by package layout.`),
-};
-
 export const TYPE_NO_MANIFEST_JSON = {
   code: 'TYPE_NO_MANIFEST_JSON',
   message: _('manifest.json was not found'),
-  description: _(oneLine`The type should be determined by
-    manifest.json if present. As there's no manifest.json, type detection
-    will be attempted to be inferred by package layout.`),
-};
-
-export const MULTIPLE_MANIFESTS = {
-  code: 'MULTIPLE_MANIFESTS',
-  message: _('Both install_rdf and manifest.json found'),
-  description: _(oneLine`The type should be determined by
-    manifest.json if present. Both install_rdf and manifest_json
-    are defined.`),
-};
-
-export const TYPE_NOT_DETERMINED = {
-  code: 'TYPE_NOT_DETERMINED',
-  message: _('Unable to determine add-on type'),
-  description: _(oneLine`The type detection algorithm could not
-    determine the type of the add-on.`),
+  description: _(oneLine`A manifest.json in the root of the
+     extension was not found. See: https://mzl.la/2r2McKv for more on
+     packaging`),
 };
 
 export const FILE_TOO_LARGE = {

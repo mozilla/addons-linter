@@ -16,16 +16,16 @@ const chromeManifestEntry = Object.assign({}, defaultData, {
   fileName: 'chrome.manifest',
 });
 
-const installRdfEntry = Object.assign({}, defaultData, {
+const installFileEntry = Object.assign({}, defaultData, {
   compressedSize: 416,
   uncompressedSize: 851,
-  fileName: 'install.rdf',
+  fileName: 'file.entry',
 });
 
-const dupeInstallRdfEntry = Object.assign({}, defaultData, {
+const dupeInstallFileEntry = Object.assign({}, defaultData, {
   compressedSize: 416,
   uncompressedSize: 851,
-  fileName: 'install.rdf',
+  fileName: 'file.entry',
 });
 
 const chromeContentDir = {
@@ -95,7 +95,7 @@ describe('crx.getFiles()', function getFilesCallback() {
   it('should return cached data when available', () => {
     const myCrx = new Crx('foo/bar', this.fakeZipLib);
     myCrx.files = {
-      'install.rdf': installRdfEntry,
+      'file.entry': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
     return myCrx.getFiles()
@@ -109,7 +109,6 @@ describe('crx.getFiles()', function getFilesCallback() {
     const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
       this.fakeFs);
     const expected = {
-      'install.rdf': installRdfEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -128,7 +127,6 @@ describe('crx.getFiles()', function getFilesCallback() {
       const entryCallback = this.entryStub.firstCall.args[1];
       entryCallback.call(null, chromeManifestEntry);
       entryCallback.call(null, chromeContentDir);
-      entryCallback.call(null, installRdfEntry);
     };
 
     // Call the close event callback
@@ -149,8 +147,8 @@ describe('crx.getFiles()', function getFilesCallback() {
 
     const onEventsSubscribed = () => {
       const entryCallback = this.entryStub.firstCall.args[1];
-      entryCallback.call(null, installRdfEntry);
-      entryCallback.call(null, dupeInstallRdfEntry);
+      entryCallback.call(null, installFileEntry);
+      entryCallback.call(null, dupeInstallFileEntry);
     };
 
     return myCrx.getFiles(onEventsSubscribed)
