@@ -81,8 +81,10 @@
                 },
                 {
                   "type": "object",
-                  "additionalProperties": {
-                    "$ref": "#/types/ImageDataType"
+                  "patternProperties": {
+                    "^[1-9]\\d*$": {
+                      "$ref": "#/types/ImageDataType"
+                    }
                   }
                 }
               ],
@@ -95,8 +97,10 @@
                 },
                 {
                   "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
+                  "patternProperties": {
+                    "^[1-9]\\d*$": {
+                      "type": "string"
+                    }
                   }
                 }
               ],
@@ -352,24 +356,10 @@
     {
       "name": "openPopup",
       "type": "function",
-      "description": "Opens the extension popup window in the active window but does not grant tab permissions.",
-      "unsupported": true,
-      "async": "callback",
-      "parameters": [
-        {
-          "type": "function",
-          "name": "callback",
-          "parameters": [
-            {
-              "name": "popupView",
-              "type": "object",
-              "optional": true,
-              "description": "JavaScript 'window' object for the popup window if it was succesfully opened.",
-              "additionalProperties": {}
-            }
-          ]
-        }
-      ]
+      "requireUserInput": true,
+      "description": "Opens the extension popup window in the active window.",
+      "async": true,
+      "parameters": []
     }
   ],
   "events": [
