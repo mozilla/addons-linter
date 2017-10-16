@@ -133,6 +133,15 @@ export const FLAGGED_FILE_EXTENSIONS = [
   '.swf',
 ];
 
+export const IMAGE_FILE_EXTENSIONS = [
+  'jpg',
+  'jpeg',
+  'webp',
+  'giff',
+  'png',
+  'svg',
+];
+
 // A list of magic numbers that we won't allow.
 export const FLAGGED_FILE_MAGIC_NUMBERS = [
   [0x4d, 0x5a], // EXE or DLL,

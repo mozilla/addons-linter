@@ -739,5 +739,85 @@ describe('ManifestJSONParser', () => {
         description: 'Icon could not be found at "icons/icon-64.png".',
       });
     });
+
+    it('adds a warning if the icon does not have a valid extension', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        icons: {
+          32: 'icons/icon-32.txt',
+          48: 'icons/icon.svg#frag',
+          64: 'icons/icon-64.html',
+          96: 'icons/icon.svg',
+          128: 'icons/icon-128.png',
+        },
+      });
+      const files = {
+        'icons/icon-32.txt': '89<PNG>thisistotallysomebinary',
+        'icons/icon-64.html': '89<PNG>thisistotallysomebinary',
+        'icons/icon-128.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon.svg': '<svg></svg>',
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, { io: { files } });
+      expect(manifestJSONParser.isValid).toBeTruthy();
+      const warnings = addonLinter.collector.warnings;
+      expect(warnings.length).toEqual(2);
+      expect(warnings[0].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
+      expect(warnings[1].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
+    });
+  });
+
+  describe('background', () => {
+    it('does not add errors if the script exists', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        background: { scripts: ['foo.js'] },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'foo.js': '' } } });
+      expect(manifestJSONParser.isValid).toBeTruthy();
+    });
+
+    it('does error if the script does not exist', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        background: { scripts: ['foo.js'] },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: {} } });
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_BACKGROUND_FILE_NOT_FOUND,
+        message:
+          'A background script defined in the manifest could not be found.',
+        description: 'Background script could not be found at "foo.js".',
+      });
+    });
+
+    it('does not add errors if the page exists', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        background: { page: 'foo.html' },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'foo.html': '' } } });
+      expect(manifestJSONParser.isValid).toBeTruthy();
+    });
+
+    it('does error if the page does not exist', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        background: { page: 'foo.html' },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: {} } });
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_BACKGROUND_FILE_NOT_FOUND,
+        message:
+          'A background page defined in the manifest could not be found.',
+        description: 'Background page could not be found at "foo.html".',
+      });
+    });
   });
 });

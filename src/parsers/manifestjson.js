@@ -7,7 +7,7 @@ import { oneLine } from 'common-tags';
 
 import validate from 'schema/validator';
 import { getConfig } from 'cli';
-import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE } from 'const';
+import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE, IMAGE_FILE_EXTENSIONS } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
@@ -129,6 +129,17 @@ export default class ManifestJSONParser extends JSONParser {
       this.validateIcons();
     }
 
+    if (this.parsedJSON.background) {
+      if (this.parsedJSON.background.scripts) {
+        this.parsedJSON.background.scripts.forEach((script) => {
+          this.validateFileExistsInPackage(script, 'script');
+        });
+      }
+      if (this.parsedJSON.background.page) {
+        this.validateFileExistsInPackage(this.parsedJSON.background.page, 'page');
+      }
+    }
+
     if (!this.selfHosted && this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.update_url) {
@@ -176,8 +187,19 @@ export default class ManifestJSONParser extends JSONParser {
       if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
         this.collector.addError(messages.manifestIconMissing(_path));
         this.isValid = false;
+      } else if (!IMAGE_FILE_EXTENSIONS.includes(_path.split('.').pop().toLowerCase())) {
+        this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
       }
     });
+  }
+
+  validateFileExistsInPackage(filePath, type) {
+    const _path = normalizePath(filePath);
+    if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
+      this.collector.addError(messages.manifestBackgroundMissing(
+        _path, type));
+      this.isValid = false;
+    }
   }
 
   validateCspPolicy(policy) {

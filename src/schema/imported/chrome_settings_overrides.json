@@ -36,8 +36,7 @@
                 "suggest_url": {
                   "type": "string",
                   "format": "url",
-                  "preprocess": "localize",
-                  "deprecated": "Unsupported on Firefox at this time."
+                  "preprocess": "localize"
                 },
                 "instant_url": {
                   "type": "string",
@@ -81,7 +80,7 @@
                 },
                 "is_default": {
                   "type": "boolean",
-                  "deprecated": "Unsupported on Firefox at this time."
+                  "description": "Sets the default engine to a built-in engine only."
                 }
               },
               "required": [
