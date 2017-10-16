@@ -32,8 +32,8 @@
   "homepage": "https://github.com/mozilla/addons-linter#readme",
   "devDependencies": {
     "babel-core": "6.26.0",
-    "babel-eslint": "8.0.0",
-    "babel-jest": "21.0.0",
+    "babel-eslint": "8.0.1",
+    "babel-jest": "21.2.0",
     "babel-loader": "7.1.2",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.0",
@@ -55,7 +55,7 @@
     "grunt-webpack": "3.0.2",
     "hashish": "0.0.4",
     "isparta": "4.0.0",
-    "jest": "21.2.0",
+    "jest": "21.2.1",
     "json-loader": "0.5.7",
     "load-grunt-configs": "1.0.0",
     "load-grunt-tasks": "3.5.2",
@@ -67,7 +67,7 @@
     "request": "2.83.0",
     "sinon": "4.0.1",
     "tar": "4.0.1",
-    "webpack": "3.7.0",
+    "webpack": "3.7.1",
     "webpack-dev-server": "2.9.2"
   },
   "dependencies": {
@@ -81,20 +81,20 @@
     "doctoc": "1.3.0",
     "dispensary": "0.10.19",
     "es6-promisify": "5.0.0",
-    "eslint": "4.8.0",
+    "eslint": "4.9.0",
     "eslint-plugin-no-unsafe-innerhtml": "1.0.16",
     "esprima": "3.1.3",
     "first-chunk-stream": "2.0.0",
     "jed": "1.1.1",
     "pino": "^4.6.0",
-    "postcss": "6.0.11",
+    "postcss": "6.0.13",
     "relaxed-json": "1.0.1",
     "semver": "5.4.1",
     "source-map-support": "0.5.0",
     "strip-bom-stream": "3.0.0",
     "whatwg-url": "6.3.0",
     "xmldom": "0.1.27",
-    "yargs": "8.0.2",
+    "yargs": "9.0.1",
     "yauzl": "2.8.0"
   }
 }
