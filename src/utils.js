@@ -138,6 +138,25 @@ export function checkMinNodeVersion(minVersion, _process = process) {
   });
 }
 
+function include(arr, obj) {
+  return (arr.indexOf(obj) !== -1);
+}
+
+export function doesExistInPermissions(permissionsNeeded, contents) {
+  const permissionsArray = [];
+  const contentsTemp = contents;
+  // if (!contents) {
+  //   contentsTemp = [];
+  // }
+  if (permissionsNeeded && contentsTemp) {
+    for (let i = 0; i < permissionsNeeded.length; i++) {
+      if (!include(contentsTemp, permissionsNeeded[i])) {
+        permissionsArray.push(permissionsNeeded[i]);
+      }
+    }
+  }
+  return permissionsArray;
+}
 
 export function getPackageTypeAsString(numericPackageType) {
   const packageKeys = Object.keys(PACKAGE_TYPES);

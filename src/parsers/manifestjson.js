@@ -14,6 +14,8 @@ import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
 import { parseCspPolicy } from 'utils';
 
+let parsedJSONPermissions;
+
 function normalizePath(iconPath) {
   // Convert the icon path to a URL so we can strip any fragments and resolve
   // . and .. automatically. We need an absolute URL to use as a base so we're
@@ -127,6 +129,10 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (this.parsedJSON.icons) {
       this.validateIcons();
+    }
+
+    if (this.parsedJSON.permissions) {
+      parsedJSONPermissions = this.parsedJSON.permissions;
     }
 
     if (this.parsedJSON.background) {
@@ -273,4 +279,8 @@ export default class ManifestJSONParser extends JSONParser {
       version: this.parsedJSON.version,
     };
   }
+}
+
+export function getParsedJSON() {
+  return parsedJSONPermissions;
 }
