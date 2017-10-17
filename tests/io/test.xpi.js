@@ -18,16 +18,16 @@ const chromeManifestEntry = Object.assign({}, defaultData, {
   fileName: 'chrome.manifest',
 });
 
-const installRdfEntry = Object.assign({}, defaultData, {
+const installFileEntry = Object.assign({}, defaultData, {
   compressedSize: 416,
   uncompressedSize: 851,
-  fileName: 'install.rdf',
+  fileName: 'manifest.json',
 });
 
-const dupeInstallRdfEntry = Object.assign({}, defaultData, {
+const dupeInstallFileEntry = Object.assign({}, defaultData, {
   compressedSize: 416,
   uncompressedSize: 851,
-  fileName: 'install.rdf',
+  fileName: 'manifest.json',
 });
 
 const jsMainFileEntry = Object.assign({}, defaultData, {
@@ -113,7 +113,7 @@ describe('xpi.getFiles()', function getFilesCallback() {
   it('should return cached data when available', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
     return myXpi.getFiles()
@@ -126,7 +126,7 @@ describe('xpi.getFiles()', function getFilesCallback() {
   it('should contain expected files', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     const expected = {
-      'install.rdf': installRdfEntry,
+      'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -143,7 +143,7 @@ describe('xpi.getFiles()', function getFilesCallback() {
       const entryCallback = this.entryStub.firstCall.args[1];
       entryCallback.call(null, chromeManifestEntry);
       entryCallback.call(null, chromeContentDir);
-      entryCallback.call(null, installRdfEntry);
+      entryCallback.call(null, installFileEntry);
     };
 
     // Call the close event callback
@@ -168,19 +168,19 @@ describe('xpi.getFiles()', function getFilesCallback() {
       const entryCallback = this.entryStub.firstCall.args[1];
       entryCallback.call(null, chromeManifestEntry);
       entryCallback.call(null, chromeContentDir);
-      entryCallback.call(null, installRdfEntry);
+      entryCallback.call(null, installFileEntry);
     };
 
     // Call the close event callback
     this.closeStub.yieldsAsync();
 
     myXpi.setScanFileCallback((filePath) => {
-      return !/install\.rdf/.test(filePath);
+      return !/manifest\.json/.test(filePath);
     });
     return myXpi.getFiles(onEventsSubscribed)
       .then((files) => {
         expect(files['chrome.manifest']).toEqual(chromeManifestEntry);
-        expect(files['install.rdf']).not.toBeDefined();
+        expect(files['manifest.json']).not.toBeDefined();
       });
   });
 
@@ -188,7 +188,7 @@ describe('xpi.getFiles()', function getFilesCallback() {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     // Populate the file cache:
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -199,12 +199,12 @@ describe('xpi.getFiles()', function getFilesCallback() {
     this.closeStub.yieldsAsync();
 
     myXpi.setScanFileCallback((filePath) => {
-      return !/install\.rdf/.test(filePath);
+      return !/manifest\.json/.test(filePath);
     });
     return myXpi.getFiles()
       .then((files) => {
         expect(files['chrome.manifest']).toEqual(chromeManifestEntry);
-        expect(files['install.rdf']).not.toBeDefined();
+        expect(files['manifest.json']).not.toBeDefined();
       });
   });
 
@@ -214,8 +214,8 @@ describe('xpi.getFiles()', function getFilesCallback() {
 
     const onEventsSubscribed = () => {
       const entryCallback = this.entryStub.firstCall.args[1];
-      entryCallback.call(null, installRdfEntry);
-      entryCallback.call(null, dupeInstallRdfEntry);
+      entryCallback.call(null, installFileEntry);
+      entryCallback.call(null, dupeInstallFileEntry);
     };
 
     return myXpi.getFiles(onEventsSubscribed)
@@ -268,7 +268,7 @@ describe('Xpi.checkPath()', function checkPathCallback() {
   it('should reject if path does not exist', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -286,14 +286,14 @@ describe('Xpi.checkPath()', function checkPathCallback() {
     };
 
     myXpi.files = {
-      'install.rdf': fakeFileMeta,
+      'manifest.json': fakeFileMeta,
       'chrome.manifest': fakeFileMeta,
     };
 
-    return myXpi.getFileAsStream('install.rdf')
+    return myXpi.getFileAsStream('manifest.json')
       .then(unexpectedSuccess)
       .catch((err) => {
-        expect(err.message).toContain('File "install.rdf" is too large');
+        expect(err.message).toContain('File "manifest.json" is too large');
       });
   });
 
@@ -304,14 +304,14 @@ describe('Xpi.checkPath()', function checkPathCallback() {
     };
 
     myXpi.files = {
-      'install.rdf': fakeFileMeta,
+      'manifest.json': fakeFileMeta,
       'chrome.manifest': fakeFileMeta,
     };
 
-    return myXpi.getFileAsString('install.rdf')
+    return myXpi.getFileAsString('manifest.json')
       .then(unexpectedSuccess)
       .catch((err) => {
-        expect(err.message).toContain('File "install.rdf" is too large');
+        expect(err.message).toContain('File "manifest.json" is too large');
       });
   });
 });
@@ -339,14 +339,14 @@ describe('Xpi.getChunkAsBuffer()', function getChunkAsBufferCallback() {
   it('should reject if error in openReadStream', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      'manifest.json': installFileEntry,
     };
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
     this.openReadStreamStub.yieldsAsync(
       new Error('getChunkAsBuffer openReadStream test'));
 
-    return myXpi.getChunkAsBuffer('install.rdf')
+    return myXpi.getChunkAsBuffer('manifest.json')
       .then(unexpectedSuccess)
       .catch((err) => {
         expect(err.message).toContain('getChunkAsBuffer openReadStream test');
@@ -356,7 +356,7 @@ describe('Xpi.getChunkAsBuffer()', function getChunkAsBufferCallback() {
   it('should resolve with a buffer', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      'manifest.json': installFileEntry,
     };
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
@@ -368,7 +368,7 @@ describe('Xpi.getChunkAsBuffer()', function getChunkAsBufferCallback() {
     this.openReadStreamStub.yields(null, rstream);
 
     // Just grab the first two characters.
-    return myXpi.getChunkAsBuffer('install.rdf', 2)
+    return myXpi.getChunkAsBuffer('manifest.json', 2)
       .then((buffer) => {
         // The file contains: 123\n. This tests that we are getting just
         // the first two characters in the buffer.
@@ -394,7 +394,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
   it('should reject if error in openReadStream', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -402,7 +402,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
     this.openReadStreamStub.yieldsAsync(
       new Error('getFileAsStream openReadStream test'));
 
-    return myXpi.getFileAsStream('install.rdf')
+    return myXpi.getFileAsStream('manifest.json')
       .then(unexpectedSuccess)
       .catch((err) => {
         expect(err.message).toContain('getFileAsStream openReadStream test');
@@ -412,7 +412,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
   it('should resolve with a readable stream', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -425,7 +425,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
 
     this.openReadStreamStub.yields(null, rstream);
 
-    return myXpi.getFileAsStream('install.rdf')
+    return myXpi.getFileAsStream('manifest.json')
       .then((readStream) => {
         return new Promise((resolve, reject) => {
           let chunks = '';
@@ -455,7 +455,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
   it('should resolve with a string', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -468,7 +468,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
 
     this.openReadStreamStub.yields(null, rstream);
 
-    return myXpi.getFileAsString('install.rdf')
+    return myXpi.getFileAsString('manifest.json')
       .then((string) => {
         expect(string).toEqual('line one\nline two');
       });
@@ -477,7 +477,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
   it('should strip a BOM', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -486,7 +486,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
     const rstream = fs.createReadStream('tests/fixtures/io/dir3/foo.txt');
     this.openReadStreamStub.yields(null, rstream);
 
-    return myXpi.getFileAsString('install.rdf')
+    return myXpi.getFileAsString('manifest.json')
       .then((string) => {
         expect(string.charCodeAt(0) === 0xFEFF).toBeFalsy();
       });
@@ -495,7 +495,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
   it('should reject if error in openReadStream from readAsString', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -503,7 +503,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
     this.openReadStreamStub.yields(
       new Error('getFileAsString openReadStream test'));
 
-    return myXpi.getFileAsString('install.rdf')
+    return myXpi.getFileAsString('manifest.json')
       .then(unexpectedSuccess)
       .catch((err) => {
         expect(err.message).toContain('getFileAsString openReadStream test');
@@ -515,7 +515,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
 
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
@@ -526,7 +526,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
       return Promise.resolve(fakeStreamEmitter);
     };
 
-    return myXpi.getFileAsString('install.rdf')
+    return myXpi.getFileAsString('manifest.json')
       .then(unexpectedSuccess)
       .catch((err) => {
         expect(err.message).toContain('¡hola!');
@@ -544,7 +544,7 @@ describe('Xpi.getFilesByExt()', function getFilesByExtCallback() {
   it('should return all JS files', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
       'main.js': jsMainFileEntry,
       'secondary.js': jsSecondaryFileEntry,
@@ -565,7 +565,7 @@ describe('Xpi.getFilesByExt()', function getFilesByExtCallback() {
   it('should return all CSS files', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'other.css': installRdfEntry,
+      'other.css': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
       'styles.css': jsMainFileEntry,
       'secondary.js': jsSecondaryFileEntry,
@@ -586,7 +586,7 @@ describe('Xpi.getFilesByExt()', function getFilesByExtCallback() {
   it('should return all HTML files', () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
-      'install.rdf': installRdfEntry,
+      'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
       'index.html': jsMainFileEntry,
       'second.htm': jsMainFileEntry,

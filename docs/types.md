@@ -32,19 +32,17 @@ Docs: https://developer.mozilla.org/Add-ons/WebExtensions
 
 ## Dictionaries
 
-* Validate `install.rdf`
-* Deal with any other dictionary specific rules.
+* Deal with any dictionary specific rules.
 
 Docs: https://developer.mozilla.org/docs/Creating_a_spell_check_dictionary_add-on
 
 ## Lang Packs
 
-* Validate `install.rdf`
 * Validate `chrome.manifest`
 * Deal with any other langpack specific rules.
 
 Docs appear to be a bit thin on the ground for these. They need looking
-into further and we shouldm look at the existing rules.
+into further and we should look at the existing rules.
 
 ## Search Addons
 
