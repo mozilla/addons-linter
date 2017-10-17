@@ -19,13 +19,13 @@ const chromeManifestEntry = Object.assign({}, defaultData, {
 const installFileEntry = Object.assign({}, defaultData, {
   compressedSize: 416,
   uncompressedSize: 851,
-  fileName: 'file.entry',
+  fileName: 'manifest.json',
 });
 
 const dupeInstallFileEntry = Object.assign({}, defaultData, {
   compressedSize: 416,
   uncompressedSize: 851,
-  fileName: 'file.entry',
+  fileName: 'manifest.json',
 });
 
 const chromeContentDir = {
@@ -95,7 +95,7 @@ describe('crx.getFiles()', function getFilesCallback() {
   it('should return cached data when available', () => {
     const myCrx = new Crx('foo/bar', this.fakeZipLib);
     myCrx.files = {
-      'file.entry': installFileEntry,
+      'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
     return myCrx.getFiles()

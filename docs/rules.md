@@ -166,19 +166,6 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :negative_squared_cross_mark: | error | jar_subpackage_corrupt  | | Subpackage corrupt | | | | |
 
 
-## Install.rdf
-
-TODO: A lot of these are generated so this will need expanded with each unique code.
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :negative_squared_cross_mark: | warning | optionsType | | `<em:optionsType>` has bad value. | install.rdf | | | |
-| :negative_squared_cross_mark: | notice | unrecognized | | Unrecognized element in install.rdf | install.rdf | | | |
-| :negative_squared_cross_mark: | notice | missing_updateKey | | Missing updateKey element | install.rdf | | | |
-| :negative_squared_cross_mark: | notice | Missing updateURL element | | Missing updateURL element | install.rdf | | | |
-| :negative_squared_cross_mark: | error | missing_addon | | install.rdf missing element(s). | install.rdf | | | |
-
-
 ## Jetpack
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
@@ -238,7 +225,6 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :white_check_mark: | warning | disallowed_extension | | Flagged file extensions found | | https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagelayout.py | | FLAGGED_FILE_EXTENSION |
 | :negative_squared_cross_mark: | error | test_godlikea | | Banned 'godlikea' chrome namespace | | | | |
 | :white_check_mark: | notice | disallowed_type | | (Binary) Flagged file type found | | https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagelayout.py | | FLAGGED_FILE_TYPE |
-| :negative_squared_cross_mark: | error | missing_install_rdf | | Add-on missing install.rdf | | | | |
 | :white_check_mark: | warning | duplicate_entries | | Package contains duplicate entries | | | | DUPLICATE_XPI_ENTRY |
 | :negative_squared_cross_mark: | warning | should_be_true | | Add-on should set `<em:unpack>` to true | | | | |
 | :negative_squared_cross_mark: | notice | should_be_false | | Add-on contains JAR files, no `<em:unpack>` | | | | |
@@ -262,18 +248,6 @@ TODO: A lot of these are generated so this will need expanded with each unique c
 | :negative_squared_cross_mark: | warning | invalid_chrome_manifest_subject | theme | chrome.manifest files for full themes are only allowed to have 'skin' and 'style' items. Other types of items are disallowed for security reasons.' | chrome.manifest | [testcases/themes.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/themes.py) | | |
 | :negative_squared_cross_mark: | warning | theme_js | theme | Themes should not contain executable code. | \*.js | [testcases/scripting.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/themes.py) | | |
 
-
-## Target Versions
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :negative_squared_cross_mark: | error | invalid_min_version | addon? |  The minimum version that was specified is not an acceptable version number for the Mozilla product that it corresponds with. | install.rdf | [testcases/targetapplication.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/targetapplication.py) | | |
-| :negative_squared_cross_mark: | error | invalid_max_version | addon? |  The maximum version that was specified is not an acceptable version number for the Mozilla product that it corresponds with. | install.rdf | | | |
-| :negative_squared_cross_mark: | error | invalid_version_order | addon? | The version numbers provided for the application in question are not in the correct order. The maximum version must be greater than the minimum version.' | install.rdf | | | |
-| :negative_squared_cross_mark: | warning | missing_minversion | addon? | Missing minVersion property. A targetApplication element is missing its minVersion property. This may cause it to be ignored as invalid. | install.rdf | | | |
-| :negative_squared_cross_mark: | warning | missing_maxversion | addon? | Missing maxVersion property. A targetApplication element is missing its maxVersion property. This may cause it to be ignored as invalid. | install.rdf | | | |
-| :negative_squared_cross_mark: | warning | duplicate_targetapps | addon? | Found duplicate `<em:targetApplication>` elements. Multiple targetApplication elements were found in the install.manifest file that refer to the same application GUID. There should not be duplicate target applications entries. | install.rdf | | | |
-| :negative_squared_cross_mark: | error | no_mozilla_support | addon? | None of the target applications listed in 'install.rdf are supported Mozilla products. At least one official Mozilla product must be supported for inclusion on addons.mozilla.org. See [appversions](https://addons.mozilla.org/firefox/pages/appversions/) for more information on supported target applications on AMO.' | install.rdf | | | |
 
 ## Regex Tests
 

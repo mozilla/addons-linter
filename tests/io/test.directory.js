@@ -12,7 +12,7 @@ describe('Directory.getFiles()', () => {
       size: 1,
     };
     myDirectory.files = {
-      'file.entry': fakeFileMeta,
+      'manifest.json': fakeFileMeta,
       'chrome.manifest': fakeFileMeta,
     };
 
@@ -148,14 +148,14 @@ describe('Directory.getFileAsStream()', () => {
       size: 1024 * 1024 * 102,
     };
     myDirectory.files = {
-      'big.file': fakeFileMeta,
+      'manifest.json': fakeFileMeta,
       'chrome.manifest': fakeFileMeta,
     };
 
-    return myDirectory.getFileAsStream('big.file')
+    return myDirectory.getFileAsStream('manifest.json')
       .then(unexpectedSuccess)
       .catch((err) => {
-        expect(err.message).toContain('File "big.file" is too large');
+        expect(err.message).toContain('File "manifest.json" is too large');
       });
   });
 });
@@ -189,7 +189,7 @@ describe('Directory.getFileAsString()', () => {
 
     const myDirectory = new Directory('tests/fixtures/io/');
     myDirectory.files = {
-      'file.error': {},
+      'manifest.json': {},
       'chrome.manifest': {},
     };
 
@@ -200,7 +200,7 @@ describe('Directory.getFileAsString()', () => {
       return Promise.resolve(fakeStreamEmitter);
     };
 
-    return myDirectory.getFileAsString('file.error')
+    return myDirectory.getFileAsString('manifest.json')
       .then(unexpectedSuccess)
       .catch((err) => {
         expect(err.message).toContain('¡hola!');
@@ -213,14 +213,14 @@ describe('Directory.getFileAsString()', () => {
       size: 1024 * 1024 * 102,
     };
     myDirectory.files = {
-      'big.file': fakeFileMeta,
+      'manifest.json': fakeFileMeta,
       'chrome.manifest': fakeFileMeta,
     };
 
-    return myDirectory.getFileAsString('big.file')
+    return myDirectory.getFileAsString('manifest.json')
       .then(unexpectedSuccess)
       .catch((err) => {
-        expect(err.message).toContain('File "big.file" is too large');
+        expect(err.message).toContain('File "manifest.json" is too large');
       });
   });
 });
