@@ -760,7 +760,7 @@ describe('ManifestJSONParser', () => {
         .then(() => {
           expect(manifestJSONParser.isValid).toBeTruthy();
           const warnings = addonLinter.collector.warnings;
-          expect(warnings.length).toEqual(2);
+          expect(warnings.length).toEqual(4);
           expect(warnings[0].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
           expect(warnings[1].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
         });
