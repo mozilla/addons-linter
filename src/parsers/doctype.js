@@ -5,15 +5,8 @@ const entityRe = /<!ENTITY\s+([\w.]*)\s+("[^"]*"|'[^']*')\s*>/;
 export default class DoctypeParser {
   constructor(dtdString, collector, { filename = null } = {}) {
     this._dtdString = dtdString;
-
-    // Provides ability to directly add messages to
-    // the collector.
     this.collector = collector;
-
-    // Set the filename for this file
     this.filename = filename;
-
-    // This marks whether a DTD file is valid.
     this.isValid = null;
   }
 

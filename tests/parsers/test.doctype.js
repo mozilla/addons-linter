@@ -1,5 +1,3 @@
-import { oneLine } from 'common-tags';
-
 import Linter from 'linter';
 import DoctypeParser from 'parsers/doctype';
 
@@ -21,7 +19,7 @@ describe('DoctypeParser', () => {
 
   it('should ignore invalid entities', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const dtdParser = new DoctypeParser(oneLine`
+    const dtdParser = new DoctypeParser(`
         <!ENTITY "foobar">
         <!ENTITY bar.foo "barfoo">`, addonLinter.collector);
 
@@ -35,7 +33,7 @@ describe('DoctypeParser', () => {
 
   it('should overwrite duplicate entities', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const dtdParser = new DoctypeParser(oneLine`
+    const dtdParser = new DoctypeParser(`
         <!ENTITY foo 'bar'>
         <!ENTITY foo 'faz'>`, addonLinter.collector);
 
@@ -49,7 +47,7 @@ describe('DoctypeParser', () => {
 
   it('should parse excessive line breaks correctly', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const dtdParser = new DoctypeParser(oneLine`
+    const dtdParser = new DoctypeParser(`
           <!ENTITY
           foo
           "bar">
@@ -89,7 +87,7 @@ describe('DoctypeParser', () => {
 
   it('should ignore malformed lines but parse valid ones', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const dtdParser = new DoctypeParser(oneLine`
+    const dtdParser = new DoctypeParser(`
       <!ENTITY foo "bar">
       <!--Malformed line should not overwrite -->
       <!ENTITY< foo "oops">
