@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash.clonedeep';
 
-import validate from 'schema/validator';
+import { validateAddon } from 'schema/validator';
 
 import { validManifest } from './helpers';
 import { assertHasMatchingError } from '../helpers';
@@ -17,8 +17,8 @@ describe('/homepage_url', () => {
     it(`${validURL} should be valid`, () => {
       const manifest = cloneDeep(validManifest);
       manifest.homepage_url = validURL;
-      validate(manifest);
-      expect(validate.errors).toBeNull();
+      validateAddon(manifest);
+      expect(validateAddon.errors).toBeNull();
     });
   });
 
@@ -31,12 +31,12 @@ describe('/homepage_url', () => {
     it(`${invalidURL} a URI should be invalid`, () => {
       const manifest = cloneDeep(validManifest);
       manifest.homepage_url = invalidURL;
-      validate(manifest);
-      assertHasMatchingError(validate.errors, {
+      validateAddon(manifest);
+      assertHasMatchingError(validateAddon.errors, {
         dataPath: '/homepage_url',
         message: /should match format "url"/,
       });
-      assertHasMatchingError(validate.errors, {
+      assertHasMatchingError(validateAddon.errors, {
         message: 'should match pattern "^__MSG_.*?__$"',
       });
     });

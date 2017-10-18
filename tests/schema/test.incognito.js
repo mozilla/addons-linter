@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash.clonedeep';
 
-import validate from 'schema/validator';
+import { validateAddon } from 'schema/validator';
 
 import { validManifest } from './helpers';
 import { assertHasMatchingError } from '../helpers';
@@ -10,15 +10,15 @@ describe('/incognito', () => {
   it('"spanning" should be valid', () => {
     const manifest = cloneDeep(validManifest);
     manifest.incognito = 'spanning';
-    validate(manifest);
-    expect(validate.errors).toBeNull();
+    validateAddon(manifest);
+    expect(validateAddon.errors).toBeNull();
   });
 
   it('not "spanning" should be invalid', () => {
     const manifest = cloneDeep(validManifest);
     manifest.incognito = 'wat';
-    validate(manifest);
-    assertHasMatchingError(validate.errors, {
+    validateAddon(manifest);
+    assertHasMatchingError(validateAddon.errors, {
       dataPath: '/incognito',
       message: 'should be equal to one of the allowed values',
     });

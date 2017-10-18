@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash.clonedeep';
 
-import validate from 'schema/validator';
+import { validateAddon } from 'schema/validator';
 
 import { validManifest } from './helpers';
 import { assertHasMatchingError } from '../helpers';
@@ -10,15 +10,15 @@ describe('/permissions', () => {
   it('should allow a valid permission', () => {
     const manifest = cloneDeep(validManifest);
     manifest.permissions = ['tabs'];
-    validate(manifest);
-    expect(validate.errors).toBeNull();
+    validateAddon(manifest);
+    expect(validateAddon.errors).toBeNull();
   });
 
   it('should not allow duplicate permissions', () => {
     const manifest = cloneDeep(validManifest);
     manifest.permissions = ['tabs', 'tabs'];
-    validate(manifest);
-    assertHasMatchingError(validate.errors, {
+    validateAddon(manifest);
+    assertHasMatchingError(validateAddon.errors, {
       dataPath: '/permissions',
     });
   });
@@ -26,8 +26,8 @@ describe('/permissions', () => {
   it('should not allow an invalid permission', () => {
     const manifest = cloneDeep(validManifest);
     manifest.permissions = ['wat'];
-    validate(manifest);
-    assertHasMatchingError(validate.errors, {
+    validateAddon(manifest);
+    assertHasMatchingError(validateAddon.errors, {
       dataPath: '/permissions/0',
     });
   });
@@ -44,8 +44,8 @@ describe('/permissions', () => {
     it(`should allow the pattern: ${matchPattern}`, () => {
       const manifest = cloneDeep(validManifest);
       manifest.permissions = [matchPattern];
-      validate(manifest);
-      expect(validate.errors).toBeNull();
+      validateAddon(manifest);
+      expect(validateAddon.errors).toBeNull();
     });
   });
 
@@ -63,8 +63,8 @@ describe('/permissions', () => {
     it(`should not allow the pattern: ${invalidMatchPattern}`, () => {
       const manifest = cloneDeep(validManifest);
       manifest.permissions = [invalidMatchPattern];
-      validate(manifest);
-      expect(validate.errors).not.toBeNull();
+      validateAddon(manifest);
+      expect(validateAddon.errors).not.toBeNull();
     });
   });
 });
