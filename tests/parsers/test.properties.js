@@ -1,5 +1,3 @@
-import { oneLine } from 'common-tags';
-
 import Linter from 'linter';
 import PropertiesParser from 'parsers/properties';
 
