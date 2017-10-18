@@ -73,7 +73,7 @@ export function getConfig({ useCLI = true } = {}) {
     .option('langpack', {
       describe: 'Treat this package as a WebExtension Language Pack.',
       type: 'boolean',
-      default: true,
+      default: false,
     })
     .option('scan-file', {
       alias: ['f'],

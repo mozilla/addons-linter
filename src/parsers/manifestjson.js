@@ -97,7 +97,7 @@ export default class ManifestJSONParser extends JSONParser {
     // Not all messages returned by the schema are fatal to Firefox, messages
     // that are just warnings should be added to this array.
     const warnings = [messages.MANIFEST_PERMISSIONS.code];
-    const validate = this.isLanguagePack ? validateAddon : validateLangPack;
+    const validate = this.isLanguagePack ? validateLangPack : validateAddon;
 
     this.isValid = validate(this.parsedJSON);
     if (!this.isValid) {
