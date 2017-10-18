@@ -5,7 +5,7 @@ import RJSON from 'relaxed-json';
 import { URL } from 'whatwg-url';
 import { oneLine } from 'common-tags';
 
-import validate from 'schema/validator';
+import { validateAddon, validateLangPack } from 'schema/validator';
 import { getConfig } from 'cli';
 import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE, IMAGE_FILE_EXTENSIONS } from 'const';
 import log from 'logger';
@@ -26,6 +26,7 @@ export default class ManifestJSONParser extends JSONParser {
   constructor(jsonString, collector, {
     filename = MANIFEST_JSON, RelaxedJSON = RJSON,
     selfHosted = getConfig().argv.selfHosted,
+    isLanguagePack = getConfig().argv.langpack,
     io = null,
   } = {}) {
     super(jsonString, collector, { filename });
@@ -43,6 +44,7 @@ export default class ManifestJSONParser extends JSONParser {
     } else {
       // We've parsed the JSON; now we can validate the manifest.
       this.selfHosted = selfHosted;
+      this.isLanguagePack = isLanguagePack;
       this.io = io;
       this._validate();
     }
@@ -95,6 +97,7 @@ export default class ManifestJSONParser extends JSONParser {
     // Not all messages returned by the schema are fatal to Firefox, messages
     // that are just warnings should be added to this array.
     const warnings = [messages.MANIFEST_PERMISSIONS.code];
+    const validate = this.isLanguagePack ? validateAddon : validateLangPack;
 
     this.isValid = validate(this.parsedJSON);
     if (!this.isValid) {
