@@ -298,6 +298,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
 
 | :white_check_mark: | error | Web extension | Icons must have valid extension. | manifest.json | | null | WRONG_ICON_EXTENSION |
+| :white_check_mark: | warning | Web extension | Icons must not be corrupt. | manifest.json | | null | CORRUPT_ICON_FILE |
 | :white_check_mark: | error | Web extension | JSON is not well formed. | manifest.json | | null | JSON_INVALID |
 | :white_check_mark: | error | Web extension | Duplicate key in JSON. | manifest.json | | null | JSON_DUPLICATE_KEY |
 | :white_check_mark: | error | Web extension | manifest_version in manifest.json is not valid. | manifest.json | | null | MANIFEST_VERSION_INVALID |

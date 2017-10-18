@@ -247,6 +247,12 @@ export default class Linter {
                 this.collector,
                 { selfHosted: this.config.selfHosted, io: this.io },
               );
+              if (manifestParser.parsedJSON.icons) {
+                return manifestParser.validateIcons()
+                  .then(() => {
+                    return manifestParser.getMetadata();
+                  });
+              }
               return manifestParser.getMetadata();
             });
         }
