@@ -3,7 +3,11 @@ import ManifestJSONParser from 'parsers/manifestjson';
 import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
 import * as messages from 'messages';
 
-import { assertHasMatchingError, validManifestJSON } from '../helpers';
+import {
+  assertHasMatchingError,
+  validManifestJSON,
+  validLangpackManifestJSON,
+} from '../helpers';
 
 describe('ManifestJSONParser', () => {
   it('should have empty metadata if bad JSON', () => {
@@ -830,6 +834,32 @@ describe('ManifestJSONParser', () => {
           'A background page defined in the manifest could not be found.',
         description: 'Background page could not be found at "foo.html".',
       });
+    });
+  });
+
+  describe('langpack', () => {
+    it('supports simple valid langpack', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validLangpackManifestJSON();
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          isLanguagePack: true,
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
+    it('throws warning on missing langpack_id', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validLangpackManifestJSON({ langpack_id: null });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          isLanguagePack: true,
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
     });
   });
 });
