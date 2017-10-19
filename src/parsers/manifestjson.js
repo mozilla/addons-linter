@@ -50,7 +50,7 @@ export default class ManifestJSONParser extends JSONParser {
 
   errorLookup(error) {
     // This is the default message.
-    var baseObject = messages.JSON_INVALID;
+    let baseObject = messages.JSON_INVALID;
 
     // This is the default from webextension-manifest-schema, but it's not a
     // super helpful error. We'll tidy it up a bit:
