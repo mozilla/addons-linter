@@ -37,6 +37,6 @@ describe('langpack', () => {
     expect(validateLangPack.errors.length).toEqual(1);
     expect(validateLangPack.errors[0].dataPath).toEqual('/langpack_id');
     expect(validateLangPack.errors[0].message).toEqual(
-      'should match pattern \"^[a-zA-Z][a-zA-Z-]+$\"');
+      'should match pattern "^[a-zA-Z][a-zA-Z-]+$"');
   });
 });

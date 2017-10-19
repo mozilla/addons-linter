@@ -15,7 +15,6 @@ export default class DoctypeParser {
     this.parsedData = {};
 
     if (!entities) {
-      console.log('NOTHING?');
       // Some files have no entities defined.
       return;
     }

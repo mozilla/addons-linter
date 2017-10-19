@@ -536,18 +536,6 @@ describe('ManifestJSONParser', () => {
     });
   });
 
-  // describe('langpack', () => {
-  //   it('validate pangpack_id', () => {
-  //     const addonLinter = new Linter({ _: ['bar'] });
-  //     const json = validManifestJSON({});
-  //     const manifestJSONParser = new ManifestJSONParser(
-  //       json, addonLinter.collector, { io: { files: {} } });
-  //     expect(manifestJSONParser.isValid).toEqual(false);
-  //     const errors = addonLinter.collector.errors;
-  //     expect(errors[0].code).toEqual(messages.NO_MESSAGES_FILE.code);
-  //   });
-  // });
-
   describe('default_locale', () => {
     it('error if missing messages.json', () => {
       const addonLinter = new Linter({ _: ['bar'] });
