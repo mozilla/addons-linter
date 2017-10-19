@@ -245,7 +245,11 @@ export default class Linter {
               const manifestParser = new ManifestJSONParser(
                 json,
                 this.collector,
-                { selfHosted: this.config.selfHosted, io: this.io },
+                {
+                  selfHosted: this.config.selfHosted,
+                  isLanguagePack: this.config.langpack,
+                  io: this.io,
+                },
               );
               return manifestParser.getMetadata();
             });

@@ -697,6 +697,31 @@ describe('Linter.getAddonMetadata()', () => {
       });
   });
 
+  it('should pass isLanguagePack flag to ManifestJSONParser', () => {
+    const addonLinter = new Linter({ _: ['bar'], langpack: true });
+    addonLinter.io = {
+      getFiles: () => {
+        return Promise.resolve({
+          'manifest.json': {},
+        });
+      },
+      getFileAsString: () => {
+        return Promise.resolve(validManifestJSON({}));
+      },
+    };
+
+    const FakeManifestParser = sinon.spy(ManifestJSONParser);
+    return addonLinter.getAddonMetadata({
+      ManifestJSONParser: FakeManifestParser,
+    })
+      .then(() => {
+        sinon.assert.calledOnce(FakeManifestParser);
+        expect(
+          FakeManifestParser.firstCall.args[2].isLanguagePack).toEqual(true);
+      });
+  });
+
+
   it('should collect notices if no manifest', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.io = {
