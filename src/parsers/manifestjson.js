@@ -52,15 +52,7 @@ export default class ManifestJSONParser extends JSONParser {
     // This is the default message.
     let baseObject = messages.JSON_INVALID;
 
-    // This is the default from webextension-manifest-schema, but it's not a
-    // super helpful error. We'll tidy it up a bit:
-     /**if (error && error.message) {
-      const lowerCaseMessage = error.message.toLowerCase();
-      if (lowerCaseMessage === 'should not have additional properties' && error.type === 'additionalProperties') {
-        // eslint-disable-next-line no-param-reassign
-        error.message = 'is not a valid key or has invalid extra properties';
-      }
-    }**/
+   
     if (error.type === 'additionalProperties' && error.dataPath.lastIndexOf('/') === 0){
         baseObject=messages.INVALID_KEY;
     }
