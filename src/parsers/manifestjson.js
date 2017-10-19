@@ -4,6 +4,7 @@ import path from 'path';
 import RJSON from 'relaxed-json';
 import { URL } from 'whatwg-url';
 import { oneLine } from 'common-tags';
+import sharp from 'sharp';
 
 import validate from 'schema/validator';
 import { getConfig } from 'cli';
@@ -20,6 +21,21 @@ function normalizePath(iconPath) {
   // using https://example.com/.
   const { pathname } = new URL(iconPath, 'https://example.com/');
   return pathname.slice(1);
+}
+
+
+function getImageMetadata(iconPath) {
+  return new Promise((resolve, reject) => {
+    const image = sharp(iconPath);
+    image
+      .metadata()
+      .then((info) => {
+        resolve(info);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
 }
 
 export default class ManifestJSONParser extends JSONParser {
@@ -125,8 +141,15 @@ export default class ManifestJSONParser extends JSONParser {
       this.collector.addNotice(messages.MANIFEST_UNUSED_UPDATE);
     }
 
-    if (this.parsedJSON.icons) {
-      this.validateIcons();
+    if (this.parsedJSON.background) {
+      if (this.parsedJSON.background.scripts) {
+        this.parsedJSON.background.scripts.forEach((script) => {
+          this.validateFileExistsInPackage(script, 'script');
+        });
+      }
+      if (this.parsedJSON.background.page) {
+        this.validateFileExistsInPackage(this.parsedJSON.background.page, 'page');
+      }
     }
 
     if (!this.selfHosted && this.parsedJSON.applications &&
@@ -170,16 +193,48 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateIcons() {
+    const promises = [];
     const { icons } = this.parsedJSON;
     Object.keys(icons).forEach((size) => {
       const _path = normalizePath(icons[size]);
       if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
         this.collector.addError(messages.manifestIconMissing(_path));
         this.isValid = false;
-      } else if (!IMAGE_FILE_EXTENSIONS.includes(icons[size].split('.').pop().toLowerCase())) {
+      } else if (!IMAGE_FILE_EXTENSIONS.includes(_path.split('.').pop().toLowerCase())) {
         this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
+      } else {
+        promises.push(
+          getImageMetadata(icons[size])
+            .then((info) => {
+              if (info.width !== info.height) {
+                this.collector.addError(messages.iconIsNotSquare(path));
+                this.isValid = false;
+              } else if (parseInt(info.width, 10) !== parseInt(size, 10)) {
+                this.collector.addWarning(messages.iconSizeInvalid({
+                  path,
+                  expected: parseInt(size, 10),
+                  actual: parseInt(info.width, 10),
+                }));
+              }
+            })
+            .catch(() => {
+              this.collector.addWarning(messages.corruptIconFile({
+                path,
+              }));
+            })
+        );
       }
     });
+    return Promise.all(promises);
+  }
+
+  validateFileExistsInPackage(filePath, type) {
+    const _path = normalizePath(filePath);
+    if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
+      this.collector.addError(messages.manifestBackgroundMissing(
+        _path, type));
+      this.isValid = false;
+    }
   }
 
   validateCspPolicy(policy) {

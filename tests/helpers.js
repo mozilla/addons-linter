@@ -74,16 +74,6 @@ export function validMetadata(metadata = {}) {
   }, metadata);
 }
 
-export function validRDF(contents) {
-  return oneLine`<?xml version='1.0' encoding='utf-8'?>
-  <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-       xmlns:em="http://www.mozilla.org/2004/em-rdf#">
-    <Description about="urn:mozilla:install-manifest">
-      ${contents}
-    </Description>
-  </RDF>`;
-}
-
 export function validManifestJSON(extra) {
   return JSON.stringify(Object.assign({}, {
     name: 'my extension',

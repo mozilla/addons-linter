@@ -13,7 +13,6 @@ import * as messages from 'messages';
 import { checkMinNodeVersion, gettext as _, couldBeMinifiedCode } from 'utils';
 import log from 'logger';
 import Collector from 'collector';
-import InstallRdfParser from 'parsers/installrdf';
 import DefaultManifestJSONParser from 'parsers/manifestjson';
 import BinaryScanner from 'scanners/binary';
 import CSSScanner from 'scanners/css';
@@ -21,7 +20,6 @@ import FilenameScanner from 'scanners/filename';
 import HTMLScanner from 'scanners/html';
 import JavaScriptScanner from 'scanners/javascript';
 import JSONScanner from 'scanners/json';
-import RDFScanner from 'scanners/rdf';
 import { Crx, Directory, Xpi } from 'io';
 
 
@@ -240,24 +238,7 @@ export default class Linter {
 
     return this.io.getFiles()
       .then((files) => {
-        if (Object.prototype.hasOwnProperty.call(files, constants.INSTALL_RDF) &&
-            Object.prototype.hasOwnProperty.call(files, constants.MANIFEST_JSON)) {
-          _log.warn(`Both ${constants.INSTALL_RDF} and ${constants.MANIFEST_JSON} found`);
-          this.collector.addError(messages.MULTIPLE_MANIFESTS);
-          return {};
-        } else if (Object.prototype.hasOwnProperty.call(files, constants.INSTALL_RDF)) {
-          _log.info('Retrieving metadata from install.rdf');
-          return this.io.getFileAsString(constants.INSTALL_RDF)
-            .then((rdfString) => {
-              // Gets an xml document object.
-              const rdfScanner = new RDFScanner(rdfString, constants.INSTALL_RDF);
-              return rdfScanner.getContents();
-            })
-            .then((xmlDoc) => {
-              _log.info('Got xmlDoc, running InstallRdfParser.getMetadata()');
-              return new InstallRdfParser(xmlDoc, this.collector).getMetadata();
-            });
-        } else if (Object.prototype.hasOwnProperty.call(files, constants.MANIFEST_JSON)) {
+        if (Object.prototype.hasOwnProperty.call(files, constants.MANIFEST_JSON)) {
           _log.info('Retrieving metadata from manifest.json');
           return this.io.getFileAsString(constants.MANIFEST_JSON)
             .then((json) => {
@@ -266,28 +247,22 @@ export default class Linter {
                 this.collector,
                 { selfHosted: this.config.selfHosted, io: this.io },
               );
+              if (manifestParser.parsedJSON.icons) {
+                return manifestParser.validateIcons()
+                  .then(() => {
+                    return manifestParser.getMetadata();
+                  });
+              }
               return manifestParser.getMetadata();
             });
         }
-        _log.warn(oneLine`No ${constants.INSTALL_RDF} or ${constants.MANIFEST_JSON}
-                   was found in the package metadata`);
+        _log.warn(`No ${constants.MANIFEST_JSON} was found in the package metadata`);
         this.collector.addNotice(messages.TYPE_NO_MANIFEST_JSON);
-        this.collector.addNotice(messages.TYPE_NO_INSTALL_RDF);
         return {};
       })
       .then((addonMetadata) => {
         this.addonMetadata = addonMetadata;
         this.addonMetadata.totalScannedFileSize = 0;
-
-        // The type must be explicitly defined. This behaviour differs the
-        // historical approach by the amo-validator.
-        // See mozilla/addons-linter#411.
-        // In due course metadata checking code may surpass this error
-        // being added here.
-        if (!this.addonMetadata.type) {
-          _log.error('Addon type lookup failed');
-          this.collector.addError(messages.TYPE_NOT_DETERMINED);
-        }
 
         return this.addonMetadata;
       });
@@ -338,8 +313,6 @@ export default class Linter {
         return JavaScriptScanner;
       case '.json':
         return JSONScanner;
-      case '.rdf':
-        return RDFScanner;
       default:
         return BinaryScanner;
     }
@@ -463,7 +436,7 @@ export default class Linter {
 
     if (this.config.scanFile) {
       const manifestFileNames = [
-        'install.rdf', 'manifest.json', 'package.json',
+        'manifest.json', 'package.json',
       ];
 
       // Always scan sub directories and the manifest files,

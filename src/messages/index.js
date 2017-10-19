@@ -7,4 +7,3 @@ export * from './javascript';
 export * from './json';
 export * from './layout';
 export * from './manifestjson';
-export * from './rdf';

@@ -82,14 +82,11 @@ describe('io.IOBase()', () => {
 
   it('should scan all files by default', () => {
     const io = new IOBase('foo/bar');
-    expect(io.shouldScanFile('install.rdf')).toBeTruthy();
     expect(io.shouldScanFile('manifest.json')).toBeTruthy();
   });
 
   it('should allow configuration of which files can be scanned', () => {
     const io = new IOBase('foo/bar');
-    io.setScanFileCallback((fileName) => fileName !== 'install.rdf');
-    expect(io.shouldScanFile('install.rdf')).toBeFalsy();
     expect(io.shouldScanFile('manifest.json')).toBeTruthy();
   });
 

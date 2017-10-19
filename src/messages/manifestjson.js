@@ -128,6 +128,60 @@ export function manifestIconMissing(path) {
   };
 }
 
+export const MANIFEST_BACKGROUND_FILE_NOT_FOUND = 'MANIFEST_BACKGROUND_FILE_NOT_FOUND';
+export function manifestBackgroundMissing(path, type) {
+  return {
+    code: MANIFEST_BACKGROUND_FILE_NOT_FOUND,
+    legacyCode: null,
+    message: type === 'script' ?
+      'A background script defined in the manifest could not be found.' :
+      'A background page defined in the manifest could not be found.',
+    description:
+      sprintf(
+        type === 'script' ?
+          _('Background script could not be found at "%(path)s".') :
+          _('Background page could not be found at "%(path)s".'),
+        { path }
+      ),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const ICON_NOT_SQUARE = 'ICON_NOT_SQUARE';
+export function iconIsNotSquare(path) {
+  return {
+    code: ICON_NOT_SQUARE,
+    message: _('Icons must be square.'),
+    description: sprintf(_('Icon at "%(path)s" must be square.'), { path }),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const ICON_SIZE_INVALID = 'ICON_SIZE_INVALID';
+export function iconSizeInvalid({ path, expected, actual }) {
+  return {
+    code: ICON_SIZE_INVALID,
+    message: _('The size of the icon does not match the manifest.'),
+    description: sprintf(
+      _('Expected icon at "%(path)s" to be %(expected)d pixels wide but was ' +
+        '%(actual)d.'),
+      { path, expected, actual }),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const CORRUPT_ICON_FILE = 'CORRUPT_ICON_FILE';
+export function corruptIconFile({ path }) {
+  return {
+    code: CORRUPT_ICON_FILE,
+    message: _('Corrupt image file'),
+    description: sprintf(
+      _('Expected icon file at "%(path)s" is corrupted'),
+      { path }),
+    file: MANIFEST_JSON,
+  };
+}
+
 export const PROP_NAME_MISSING = manifestPropMissing('name');
 export const PROP_VERSION_MISSING = manifestPropMissing('version');
 
@@ -155,3 +209,4 @@ export const WRONG_ICON_EXTENSION = {
   description: _('Icons should be one of JPG, JPEG, WebP, GIFF, PNG or SVG.'),
   file: MANIFEST_JSON,
 };
+

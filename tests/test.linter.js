@@ -148,7 +148,6 @@ describe('Linter', () => {
   // - components/
   //   - main.js (has a mozIndexedDB assignment)
   //   - secondary.js (nothing bad)
-  // - install.rdf
   // - prefs.html
   it('should scan all files', () => {
     const addonLinter = new Linter({ _: ['tests/fixtures/old.xpi'] });
@@ -162,7 +161,6 @@ describe('Linter', () => {
         sinon.assert.callOrder(
           getFileSpy.withArgs('components/main.js'),
           getFileSpy.withArgs('components/secondary.js'),
-          getFileSpy.withArgs('install.rdf'),
           getFileSpy.withArgs('prefs.html'));
       });
   });
@@ -699,25 +697,6 @@ describe('Linter.getAddonMetadata()', () => {
       });
   });
 
-  it('should collect an error if manifest.json and install.rdf found', () => {
-    const addonLinter = new Linter({ _: ['bar'] });
-    addonLinter.io = {
-      getFiles: () => {
-        return Promise.resolve({
-          'install.rdf': {},
-          'manifest.json': {},
-        });
-      },
-    };
-    return addonLinter.getAddonMetadata()
-      .then(() => {
-        const errors = addonLinter.collector.errors;
-        expect(errors.length).toEqual(2);
-        expect(errors[0].code).toEqual(messages.MULTIPLE_MANIFESTS.code);
-        expect(errors[1].code).toEqual(messages.TYPE_NOT_DETERMINED.code);
-      });
-  });
-
   it('should collect notices if no manifest', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.io = {
@@ -728,9 +707,8 @@ describe('Linter.getAddonMetadata()', () => {
     return addonLinter.getAddonMetadata()
       .then(() => {
         const notices = addonLinter.collector.notices;
-        expect(notices.length).toEqual(2);
+        expect(notices.length).toEqual(1);
         expect(notices[0].code).toEqual(messages.TYPE_NO_MANIFEST_JSON.code);
-        expect(notices[1].code).toEqual(messages.TYPE_NO_INSTALL_RDF.code);
       });
   });
 });
@@ -936,7 +914,6 @@ describe('Linter.extractMetadata()', () => {
   //   - empty.js (empty file)
   //   - jquery-3.2.1.min.js (minified jQuery)
   // - index.js
-  // - install.rdf
   // - package.json
   // - README.md
   it('should flag empty files in a ZIP.', () => {
@@ -960,7 +937,6 @@ describe('Linter.extractMetadata()', () => {
   //   - empty.js (empty file)
   //   - jquery-3.2.1.min.js (minified jQuery)
   // - index.js
-  // - install.rdf
   // - package.json
   // - README.md
   it('should flag known JS libraries in a ZIP.', () => {
@@ -1023,8 +999,8 @@ describe('Linter.extractMetadata()', () => {
       });
 
       const notices = addonLinter.collector.notices;
-      expect(notices.length).toEqual(3);
-      expect(notices[2].code).toEqual(messages.KNOWN_LIBRARY.code);
+      expect(notices.length).toEqual(2);
+      expect(notices[1].code).toEqual(messages.KNOWN_LIBRARY.code);
     });
   });
 
@@ -1074,7 +1050,6 @@ describe('Linter.extractMetadata()', () => {
   //   - empty.js (empty file)
   //   - jquery-3.2.1.min.js (minified jQuery)
   // - index.js
-  // - install.rdf
   // - package.json
   // - README.md
   it('should flag banned JS libraries in a ZIP.', () => {

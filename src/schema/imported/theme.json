@@ -12,6 +12,12 @@
       "description": "Make complete or partial updates to the theme. Resolves when the update has completed.",
       "parameters": [
         {
+          "type": "integer",
+          "name": "windowId",
+          "optional": true,
+          "description": "The id of the window to update. No id updates all windows."
+        },
+        {
           "allOf": [
             {
               "$ref": "manifest#/types/ThemeType"
@@ -71,14 +77,14 @@
             "additional_backgrounds": {
               "type": "array",
               "items": {
-                "$ref": "manifest#/types/ExtensionURL"
+                "$ref": "manifest#/types/ImageDataOrExtensionURL"
               }
             },
             "headerURL": {
-              "$ref": "manifest#/types/ExtensionURL"
+              "$ref": "manifest#/types/ImageDataOrExtensionURL"
             },
             "theme_frame": {
-              "$ref": "manifest#/types/ExtensionURL"
+              "$ref": "manifest#/types/ImageDataOrExtensionURL"
             }
           }
         },
@@ -101,6 +107,15 @@
               }
             },
             "textcolor": {
+              "type": "string"
+            },
+            "toolbar": {
+              "type": "string"
+            },
+            "toolbar_field": {
+              "type": "string"
+            },
+            "toolbar_field_text": {
               "type": "string"
             }
           }
@@ -181,9 +196,6 @@
               "$ref": "manifest#/types/ExtensionURL"
             },
             "sidebars": {
-              "$ref": "manifest#/types/ExtensionURL"
-            },
-            "share_page": {
               "$ref": "manifest#/types/ExtensionURL"
             },
             "subscribe": {
