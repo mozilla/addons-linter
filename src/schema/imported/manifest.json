@@ -182,13 +182,12 @@
             "optional_permissions": {
               "type": "array",
               "items": {
-                "anyOf": [
+                "allOf": [
                   {
                     "$ref": "#/types/OptionalPermission"
                   },
                   {
-                    "type": "string",
-                    "deprecated": "Unknown optional permission ${value}"
+                    "onError": "warn"
                   }
                 ]
               },
@@ -255,6 +254,129 @@
         }
       ]
     },
+    "WebExtensionLangpackManifest": {
+      "type": "object",
+      "description": "Represents a WebExtension language pack manifest.json file",
+      "properties": {
+        "manifest_version": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 2
+        },
+        "applications": {
+          "type": "object",
+          "properties": {
+            "gecko": {
+              "$ref": "#/types/FirefoxSpecificProperties"
+            }
+          }
+        },
+        "browser_specific_settings": {
+          "type": "object",
+          "properties": {
+            "gecko": {
+              "$ref": "#/types/FirefoxSpecificProperties"
+            }
+          }
+        },
+        "name": {
+          "type": "string",
+          "preprocess": "localize"
+        },
+        "short_name": {
+          "type": "string",
+          "preprocess": "localize"
+        },
+        "description": {
+          "type": "string",
+          "preprocess": "localize"
+        },
+        "author": {
+          "type": "string",
+          "preprocess": "localize",
+          "onError": "warn"
+        },
+        "version": {
+          "type": "string"
+        },
+        "homepage_url": {
+          "type": "string",
+          "format": "url",
+          "preprocess": "localize"
+        },
+        "langpack_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z-]+$"
+        },
+        "languages": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z]{2}[a-zA-Z-]*$": {
+              "type": "object",
+              "properties": {
+                "chrome_resources": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[a-zA-Z-.]+$": {
+                      "anyOf": [
+                        {
+                          "$ref": "manifest#/types/ExtensionURL"
+                        },
+                        {
+                          "type": "object",
+                          "patternProperties": {
+                            "^[a-z]+$": {
+                              "$ref": "manifest#/types/ExtensionURL"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "version": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "chrome_resources",
+                "version"
+              ]
+            }
+          }
+        },
+        "sources": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z]+$": {
+              "type": "object",
+              "properties": {
+                "base_path": {
+                  "$ref": "manifest#/types/ExtensionURL"
+                },
+                "paths": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "strictRelativeUrl"
+                  }
+                }
+              },
+              "required": [
+                "base_path"
+              ]
+            }
+          }
+        }
+      },
+      "required": [
+        "manifest_version",
+        "name",
+        "version",
+        "langpack_id",
+        "languages"
+      ]
+    },
     "ThemeIcons": {
       "type": "object",
       "properties": {
@@ -308,7 +430,13 @@
           "$ref": "bookmarks#/definitions/OptionalPermission"
         },
         {
+          "$ref": "browserSettings#/definitions/OptionalPermission"
+        },
+        {
           "$ref": "cookies#/definitions/OptionalPermission"
+        },
+        {
+          "$ref": "find#/definitions/OptionalPermission"
         },
         {
           "$ref": "history#/definitions/OptionalPermission"
@@ -341,13 +469,13 @@
           ]
         },
         {
-          "$ref": "browserSettings#/definitions/Permission"
-        },
-        {
           "$ref": "browsingData#/definitions/Permission"
         },
         {
           "$ref": "contextualIdentities#/definitions/Permission"
+        },
+        {
+          "$ref": "devtools#/definitions/Permission"
         },
         {
           "$ref": "downloads#/definitions/Permission"
@@ -392,6 +520,10 @@
     "ExtensionURL": {
       "type": "string",
       "format": "strictRelativeUrl"
+    },
+    "ImageDataOrExtensionURL": {
+      "type": "string",
+      "format": "imageDataOrStrictRelativeUrl"
     },
     "ExtensionID": {
       "anyOf": [

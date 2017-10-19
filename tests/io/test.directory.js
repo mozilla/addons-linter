@@ -12,7 +12,7 @@ describe('Directory.getFiles()', () => {
       size: 1,
     };
     myDirectory.files = {
-      'install.rdf': fakeFileMeta,
+      'manifest.json': fakeFileMeta,
       'chrome.manifest': fakeFileMeta,
     };
 
@@ -148,14 +148,14 @@ describe('Directory.getFileAsStream()', () => {
       size: 1024 * 1024 * 102,
     };
     myDirectory.files = {
-      'install.rdf': fakeFileMeta,
+      'manifest.json': fakeFileMeta,
       'chrome.manifest': fakeFileMeta,
     };
 
-    return myDirectory.getFileAsStream('install.rdf')
+    return myDirectory.getFileAsStream('manifest.json')
       .then(unexpectedSuccess)
       .catch((err) => {
-        expect(err.message).toContain('File "install.rdf" is too large');
+        expect(err.message).toContain('File "manifest.json" is too large');
       });
   });
 });
@@ -189,7 +189,7 @@ describe('Directory.getFileAsString()', () => {
 
     const myDirectory = new Directory('tests/fixtures/io/');
     myDirectory.files = {
-      'install.rdf': {},
+      'manifest.json': {},
       'chrome.manifest': {},
     };
 
@@ -200,7 +200,7 @@ describe('Directory.getFileAsString()', () => {
       return Promise.resolve(fakeStreamEmitter);
     };
 
-    return myDirectory.getFileAsString('install.rdf')
+    return myDirectory.getFileAsString('manifest.json')
       .then(unexpectedSuccess)
       .catch((err) => {
         expect(err.message).toContain('¡hola!');
@@ -213,14 +213,14 @@ describe('Directory.getFileAsString()', () => {
       size: 1024 * 1024 * 102,
     };
     myDirectory.files = {
-      'install.rdf': fakeFileMeta,
+      'manifest.json': fakeFileMeta,
       'chrome.manifest': fakeFileMeta,
     };
 
-    return myDirectory.getFileAsString('install.rdf')
+    return myDirectory.getFileAsString('manifest.json')
       .then(unexpectedSuccess)
       .catch((err) => {
-        expect(err.message).toContain('File "install.rdf" is too large');
+        expect(err.message).toContain('File "manifest.json" is too large');
       });
   });
 });

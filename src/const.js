@@ -58,12 +58,6 @@ export const MESSAGE_TYPES = [
   VALIDATION_WARNING,
 ];
 
-export const RDF_DEFAULT_NAMESPACE = 'http://www.mozilla.org/2004/em-rdf#';
-
-export const RDF_UNALLOWED_TAGS = ['hidden'];
-export const RDF_UNALLOWED_IF_LISTED_TAGS = ['updateKey', 'updateURL'];
-export const RDF_OBSOLETE_TAGS = ['file', 'requires', 'skin'];
-
 // Package type constants.
 export const PACKAGE_ANY = 0;
 export const PACKAGE_EXTENSION = 1;
@@ -85,22 +79,8 @@ export const PACKAGE_TYPES = {
   PACKAGE_SUBPACKAGE,
 };
 
-// Types from install.rdf don't match the types
-// we use internally. This provides a mapping.
-export const ADDON_TYPE_MAP = {
-  2: PACKAGE_EXTENSION,
-  4: PACKAGE_THEME,
-  8: PACKAGE_LANGPACK,
-  32: PACKAGE_MULTI,
-  64: PACKAGE_DICTIONARY,
-  // New "experiment" type: see bug 1220097
-  // https://bugzilla.mozilla.org/show_bug.cgi?id=1220583
-  128: PACKAGE_EXTENSION,
-};
-
 export const LOCAL_PROTOCOLS = ['chrome:', 'resource:'];
 
-export const INSTALL_RDF = 'install.rdf';
 export const MANIFEST_JSON = 'manifest.json';
 
 export const VALID_MANIFEST_VERSION = 2;
@@ -131,6 +111,15 @@ export const FLAGGED_FILE_EXTENSIONS = [
   '.sh',
   '.so',
   '.swf',
+];
+
+export const IMAGE_FILE_EXTENSIONS = [
+  'jpg',
+  'jpeg',
+  'webp',
+  'giff',
+  'png',
+  'svg',
 ];
 
 // A list of magic numbers that we won't allow.

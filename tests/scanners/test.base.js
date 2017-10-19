@@ -87,7 +87,7 @@ describe('Base Scanner Class', () => {
   });
 
   it('should not run private function inside rules', () => {
-    const baseScanner = new BaseScannerWithContents('', 'install.rdf');
+    const baseScanner = new BaseScannerWithContents('', 'manifest.json');
     const fakeRules = {
       iAmAFakeRule: sinon.stub(),
       _iAmAPrivateFunction: sinon.stub(),
@@ -101,7 +101,7 @@ describe('Base Scanner Class', () => {
   });
 
   it('should increment the number of rules run', () => {
-    const baseScanner = new BaseScannerWithContents('', 'install.rdf');
+    const baseScanner = new BaseScannerWithContents('', 'manifest.json');
     const fakeRules = {
       iAmAFakeRule: sinon.stub(),
       _iAmAPrivateFunction: sinon.stub(),
