@@ -44,9 +44,6 @@ export default class PropertiesParser {
       this.parsedData[lineBuffer[0].trim()] = lineBuffer[1].trim();
     }
 
-    // If never marked as invalid, this is a valid JSON file.
-    if (this.isValid !== false) {
-      this.isValid = true;
-    }
+    this.isValid = true;
   }
 }

@@ -45,6 +45,15 @@ describe('DoctypeParser', () => {
     });
   });
 
+  it('should just ignore empty files', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const dtdParser = new DoctypeParser('', addonLinter.collector);
+    dtdParser.parse();
+
+    expect(dtdParser.isValid).toEqual(true);
+    expect(dtdParser.parsedData).toEqual({});
+  });
+
   it('should parse excessive line breaks correctly', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     const dtdParser = new DoctypeParser(`

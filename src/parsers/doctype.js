@@ -15,7 +15,9 @@ export default class DoctypeParser {
     this.parsedData = {};
 
     if (!entities) {
-      // Some files have no entities defined.
+      // Some files have no entities defined. Mark this as valid since we
+      // expect this unfortunately...
+      this.isValid = true;
       return;
     }
 
@@ -28,9 +30,6 @@ export default class DoctypeParser {
       this.parsedData[key] = normalizedValue;
     });
 
-    // If never marked as invalid, this is a valid JSON file.
-    if (this.isValid !== false) {
-      this.isValid = true;
-    }
+    this.isValid = true;
   }
 }
