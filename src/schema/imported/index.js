@@ -24,7 +24,6 @@ import i18n from './i18n.json';
 import identity from './identity.json';
 import idle from './idle.json';
 import management from './management.json';
-import manifest from './manifest.json';
 import menus from './menus.json';
 import menusInternal from './menus_internal.json';
 import notifications from './notifications.json';
@@ -72,7 +71,6 @@ export default [
   identity,
   idle,
   management,
-  manifest,
   menus,
   menusInternal,
   notifications,

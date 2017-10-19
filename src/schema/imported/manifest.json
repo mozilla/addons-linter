@@ -710,6 +710,5 @@
       "type": "boolean",
       "deprecated": "Event pages are not currently supported. This will run as a persistent background page."
     }
-  },
-  "$ref": "#/types/WebExtensionManifest"
+  }
 }

@@ -37,8 +37,14 @@ validator.addFormat('secureUrl', isSecureUrl);
 
 validator.addFormat('imageDataOrStrictRelativeUrl', imageDataOrStrictRelativeUrl);
 
-export const validateAddon = validator.compile(schemaObject);
-export const validateLangPack = validator.compile(Object.assign(schemaObject, {
+export const validateAddon = validator.compile({
+  ...schemaObject,
+  id: 'manifest',
+  $ref: '#/types/WebExtensionManifest',
+});
+
+export const validateLangPack = validator.compile({
+  ...schemaObject,
   id: 'langpack-manifest',
   $ref: '#/types/WebExtensionLangpackManifest',
-}));
+});
