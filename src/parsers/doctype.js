@@ -21,7 +21,7 @@ export default class DoctypeParser {
   }
 
   parse() {
-    const entities = this._dtdString.match(new RegExp(ENTITY_RE, 'g'));
+    const entities = this._dtdString.match(new RegExp(ENTITY_RE, 'gi'));
     this.parsedData = {};
 
     if (!entities) {
@@ -32,7 +32,7 @@ export default class DoctypeParser {
     }
 
     entities.forEach((entity) => {
-      const [, key, value] = entity.match(ENTITY_RE);
+      const [, key, value] = entity.match(new RegExp(ENTITY_RE, 'i'));
 
       // strip enclosing quotation marks
       const normalizedValue = value.slice(1, -1);

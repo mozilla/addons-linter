@@ -17,6 +17,21 @@ describe('DoctypeParser', () => {
     });
   });
 
+  it('should parse lowercase entity specifiers', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const dtdParser = new DoctypeParser(
+      '<!entity foo.bar "foobar">',
+      addonLinter.collector
+    );
+
+    dtdParser.parse();
+
+    expect(dtdParser.isValid).toEqual(true);
+    expect(dtdParser.parsedData).toEqual({
+      'foo.bar': 'foobar',
+    });
+  });
+
   it('should ignore invalid entities', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     const dtdParser = new DoctypeParser(`

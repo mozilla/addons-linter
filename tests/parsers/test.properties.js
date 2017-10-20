@@ -35,7 +35,11 @@ describe('PropertiesParser', () => {
         foo=
         bar
         abc.def=x
-        yz`, addonLinter.collector);
+        yz
+        three.lines=a
+        b
+        c
+        d`, addonLinter.collector);
 
     propertiesParser.parse();
 
@@ -43,6 +47,7 @@ describe('PropertiesParser', () => {
     expect(propertiesParser.parsedData).toEqual({
       foo: 'bar',
       'abc.def': 'xyz',
+      'three.lines': 'abcd',
     });
   });
 });
