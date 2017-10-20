@@ -146,8 +146,7 @@
               },
               "required": [
                 "page"
-              ],
-              "additionalProperties": false
+              ]
             },
             "content_scripts": {
               "type": "array",
