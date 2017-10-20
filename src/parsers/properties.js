@@ -1,4 +1,10 @@
+
 export default class PropertiesParser {
+  /*
+   * Parser for .properties files.
+   * See http://bit.ly/2xTdYgY (Properties File Format Specification) for
+   * more details.
+  */
   constructor(propertiesString, collector, { filename = null } = {}) {
     this._propertiesString = propertiesString;
 
