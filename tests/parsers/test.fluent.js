@@ -90,7 +90,7 @@ key69
     });
   });
 
-  it('supports placeholders', () => {
+  it('supports placeable', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     const parser = new FluentParser(`
 shared-photos =
