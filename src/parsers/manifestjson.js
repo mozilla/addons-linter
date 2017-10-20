@@ -68,14 +68,9 @@ export default class ManifestJSONParser extends JSONParser {
     // This is the default message.
     let baseObject = messages.JSON_INVALID;
 
-    // This is the default from webextension-manifest-schema, but it's not a
-    // super helpful error. We'll tidy it up a bit:
-    if (error && error.message) {
-      const lowerCaseMessage = error.message.toLowerCase();
-      if (lowerCaseMessage === 'should not have additional properties') {
-        // eslint-disable-next-line no-param-reassign
-        error.message = 'is not a valid key or has invalid extra properties';
-      }
+   
+    if (error.type === 'additionalProperties' && error.dataPath.lastIndexOf('/') === 0){
+        baseObject=messages.INVALID_KEY;
     }
 
     const overrides = {
@@ -110,7 +105,7 @@ export default class ManifestJSONParser extends JSONParser {
   _validate() {
     // Not all messages returned by the schema are fatal to Firefox, messages
     // that are just warnings should be added to this array.
-    const warnings = [messages.MANIFEST_PERMISSIONS.code];
+    const warnings = [messages.MANIFEST_PERMISSIONS.code, messages.INVALID_KEY.code];
 
     this.isValid = validate(this.parsedJSON);
     if (!this.isValid) {

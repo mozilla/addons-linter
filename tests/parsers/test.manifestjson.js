@@ -22,6 +22,7 @@ describe('ManifestJSONParser', () => {
     expect(metadata.version).toEqual(null);
   });
 
+
   describe('id', () => {
     it('should return the correct id', () => {
       const addonLinter = new Linter({ _: ['bar'] });
@@ -81,7 +82,8 @@ describe('ManifestJSONParser', () => {
       expect(errors[0].code).toEqual(messages.MANIFEST_FIELD_INVALID.code);
       expect(errors[0].message).toContain('/manifest_version');
     });
-
+    
+  
     it('should have the right manifestVersion', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON();
@@ -205,6 +207,14 @@ describe('ManifestJSONParser', () => {
         addonLinter.collector);
       const message = parser.errorLookup({ dataPath: '', keyword: 'type' });
       expect(message.code).toEqual(messages.MANIFEST_FIELD_INVALID.code);
+    });
+
+    it('should return invalid for invalid keys', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const parser = new ManifestJSONParser(validManifestJSON(),
+        addonLinter.collector);
+      const message = parser.errorLookup({ dataPath: '' });
+      expect(message.code).toEqual(messages.INVALID_KEY.code);
     });
 
     it('should return permission for wrong type', () => {

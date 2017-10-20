@@ -3,6 +3,7 @@
   "permissions": [],
   "definitions": {},
   "refs": {},
+ "additionalProperties": false,
   "types": {
     "WebExtensionManifest": {
       "allOf": [

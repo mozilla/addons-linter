@@ -106,6 +106,14 @@ export const STRICT_MAX_VERSION = {
   file: MANIFEST_JSON,
 };
 
+export const INVALID_KEY = {
+  code: 'INVALID_KEY',
+  legacyCode: null,
+  message: _('key  is invalid in manifest.json'),
+  description: _(`See https://mzl.la/1ZOhoEN (MDN Docs) for more information.`),
+  file: MANIFEST_JSON,
+};
+
 export function manifestPropMissing(property) {
   return {
     code: `PROP_${property.toUpperCase()}_MISSING`,
