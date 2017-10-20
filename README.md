@@ -154,7 +154,7 @@ bin/addons-linter my-addon.zip
 
 ### Required node version
 
-addons-linter requires node.js v4 or greater. Using nvm is probably the
+addons-linter requires node.js v6 or greater. Using nvm is probably the
 easiest way to manage multiple node versions side by side. See
 [nvm on github](https://github.com/creationix/nvm) for more details.
 
