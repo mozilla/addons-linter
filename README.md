@@ -191,28 +191,6 @@ Most of these scripts will also run with npm by substituting `yarn` with `npm`.
 | yarn start             | Builds the lib and watches for changes             |
 | yarn [run] build       | Builds the lib (used by Travis)                    |
 
-If you install `grunt-cli` globally then you can run other tasks.
-
-```
-npm install -g grunt-cli
-```
-
-From the grunt docs:
-
->  The job of the Grunt CLI is simple: run the version of Grunt which has
-   been installed next to a Gruntfile. This allows multiple versions of
-   Grunt to be installed on the same machine simultaneously.
-
-#### Grunt tasks
-
-| Script                 | Description                                      |
-|------------------------|--------------------------------------------------|
-| grunt test             |  Runs the tests                                  |
-| grunt build            |  Builds the lib                                  |
-| grunt start            |  Builds the lib and watches for changes          |
-| grunt eslint           |  Lints the files with eslint (Run in grunt test) |
-
-
 ### Building and watching for changes
 
 You can run `yarn start` to build the library and then rebuild on file changes.
