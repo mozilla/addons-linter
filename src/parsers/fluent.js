@@ -1,4 +1,5 @@
 import { _parse as parseFluent } from 'fluent';
+
 import * as messages from 'messages';
 
 
@@ -19,11 +20,11 @@ export default class FluentParser {
 
   parse() {
     const [entries, errors] = parseFluent(this._sourceString);
-    this.parsedData = {}
+    this.parsedData = {};
 
-    for (const id in entries) {
+    entries.forEach((id) => {
       this.parsedData[id] = entries[id];
-    }
+    });
 
     if (errors.length) {
       this.isValid = false;
@@ -31,7 +32,8 @@ export default class FluentParser {
       errors.forEach((error) => {
         // We only have the message being passed down from fluent, unfortunately
         // it doesn't log any line numbers or columns.
-        const errorData = {...messages.FLUENT_INVALID,
+        const errorData = {
+          ...messages.FLUENT_INVALID,
           file: this.filename,
           // normalize newlines and flatten the message a bit.
           description: error.message.replace(/(?:\n(?:\s*))+/g, ' '),
