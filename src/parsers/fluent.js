@@ -22,8 +22,8 @@ export default class FluentParser {
     const [entries, errors] = parseFluent(this._sourceString);
     this.parsedData = {};
 
-    Object.entries(entries).forEach(([id, entry]) => {
-      this.parsedData[id] = entry;
+    Object.keys(entries).forEach((id) => {
+      this.parsedData[id] = entries[id];
     });
 
     if (errors.length) {
