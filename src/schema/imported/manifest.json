@@ -3,6 +3,7 @@
   "permissions": [],
   "definitions": {},
   "refs": {},
+ "additionalProperties": false,
   "types": {
     "WebExtensionManifest": {
       "allOf": [
@@ -145,7 +146,8 @@
               },
               "required": [
                 "page"
-              ]
+              ],
+              "additionalProperties": false
             },
             "content_scripts": {
               "type": "array",
