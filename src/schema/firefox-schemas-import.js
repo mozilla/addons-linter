@@ -198,18 +198,16 @@ inner.mapExtendToRef = (schemas) => {
           allOf: [...extendType.allOf, { $ref: ref }],
         };
       }
-      if (updatedType) {
-        updatedSchemas[namespace] = {
-          ...updatedSchemas[namespace],
-          schema: {
-            ...extendSchema,
-            types: {
-              ...extendSchema.types,
-              [type]: updatedType,
-            },
+      updatedSchemas[namespace] = {
+        ...updatedSchemas[namespace],
+        schema: {
+          ...extendSchema,
+          types: {
+            ...extendSchema.types,
+            [type]: updatedType,
           },
-        };
-      }
+        },
+      };
     });
   });
   return updatedSchemas;
