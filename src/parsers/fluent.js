@@ -3,6 +3,12 @@ import * as messages from 'messages';
 
 
 export default class FluentParser {
+  /*
+   * Parse FTL files (https://projectfluent.io)
+   * We are using FTL files in our language packs to specify translations.
+   *
+   */
+
   constructor(source, collector, { filename = null } = {}) {
     this._sourceString = source;
 
