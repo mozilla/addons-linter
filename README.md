@@ -166,10 +166,6 @@ Install dependencies with [yarn](https://yarnpkg.com/lang/en/docs/install/):
 yarn install
 ```
 
-
-
-
-
 Dependencies are automatically kept up-to-date using [greenkeeper](http://greenkeeper.io/).
 
 ### yarn scripts and grunt tasks
