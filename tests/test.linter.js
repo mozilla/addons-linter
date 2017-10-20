@@ -10,6 +10,7 @@ import BinaryScanner from 'scanners/binary';
 import CSSScanner from 'scanners/css';
 import FilenameScanner from 'scanners/filename';
 import JSONScanner from 'scanners/json';
+import LangpackScanner from 'scanners/langpack';
 import { Xpi } from 'io';
 
 import {
@@ -334,6 +335,18 @@ describe('Linter.getScanner()', () => {
     const addonLinter = new Linter({ _: ['foo'] });
     const Scanner = addonLinter.getScanner('locales/en.json');
     expect(Scanner).toEqual(JSONScanner);
+  });
+
+  it('should return LangpackScanner', () => {
+    const addonLinter = new Linter({ _: ['foo'] });
+    let Scanner = addonLinter.getScanner('foo.properties');
+    expect(Scanner).toEqual(LangpackScanner);
+
+    Scanner = addonLinter.getScanner('foo.ftl');
+    expect(Scanner).toEqual(LangpackScanner);
+
+    Scanner = addonLinter.getScanner('foo.dtd');
+    expect(Scanner).toEqual(LangpackScanner);
   });
 
   const shouldBeFilenameScanned = [
