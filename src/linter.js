@@ -20,6 +20,7 @@ import FilenameScanner from 'scanners/filename';
 import HTMLScanner from 'scanners/html';
 import JavaScriptScanner from 'scanners/javascript';
 import JSONScanner from 'scanners/json';
+import LangpackScanner from 'scanners/langpack';
 import { Crx, Directory, Xpi } from 'io';
 
 
@@ -311,6 +312,10 @@ export default class Linter {
         return JavaScriptScanner;
       case '.json':
         return JSONScanner;
+      case '.properties':
+      case '.ftl':
+      case '.dtd':
+        return LangpackScanner;
       default:
         return BinaryScanner;
     }
