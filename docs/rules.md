@@ -201,10 +201,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 
 | Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
 | ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :x: | warning | invalid_subject | | Invalid chrome.manifest subject. chrome.manifest files in language packs are only allowed to contain items that are prefixed with 'locale', 'manifest', or 'override' | chrome.manifest | [testcases/langpack.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/langpack.py) | | |
-| :x: | warning | invalid_override | | Invalid chrome.manifest object/predicate. | chrome://\*/locale/\* | | | |
-| :x: | warning | unsafe_content_html | | Unsafe HTML found in language pack files | | | | |
-| :x: | warning | unsafe_content_link | | Unsafe remote resource found in language pack | | | | |
+| :white_check_mark: | warning | invalid_fluent | langpack | Invalid FTP file | .ftl files | | | FLUENT_INVALID |
 
 
 ## package.json :white_check_mark:

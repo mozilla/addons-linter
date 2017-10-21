@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash.clonedeep';
 
-import validate from 'schema/validator';
+import { validateAddon } from 'schema/validator';
 
 import { validManifest } from './helpers';
 import { assertHasMatchingError } from '../helpers';
@@ -14,8 +14,8 @@ describe('/content_scripts', () => {
         js: ['borderify.js'],
       },
     ];
-    validate(manifest);
-    expect(validate.errors).toBeNull();
+    validateAddon(manifest);
+    expect(validateAddon.errors).toBeNull();
   });
 
   it('supports run_at', () => {
@@ -27,8 +27,8 @@ describe('/content_scripts', () => {
         run_at: 'document_start',
       },
     ];
-    validate(manifest);
-    expect(validate.errors).toBeNull();
+    validateAddon(manifest);
+    expect(validateAddon.errors).toBeNull();
   });
 
   it('catches invalid run_at', () => {
@@ -40,8 +40,8 @@ describe('/content_scripts', () => {
         run_at: 'whenever',
       },
     ];
-    validate(manifest);
-    assertHasMatchingError(validate.errors, {
+    validateAddon(manifest);
+    assertHasMatchingError(validateAddon.errors, {
       dataPath: '/content_scripts/0/run_at',
       message: 'should be equal to one of the allowed values',
     });

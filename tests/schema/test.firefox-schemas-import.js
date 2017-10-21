@@ -440,7 +440,6 @@ describe('firefox schema import', () => {
         .returns({ rewritten: true });
       expect(inner.loadSchema({ id: 'manifest' })).toEqual({
         id: 'manifest',
-        $ref: '#/types/WebExtensionManifest',
         rewritten: true,
       });
     });

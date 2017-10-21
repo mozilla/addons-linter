@@ -198,18 +198,16 @@ inner.mapExtendToRef = (schemas) => {
           allOf: [...extendType.allOf, { $ref: ref }],
         };
       }
-      if (updatedType) {
-        updatedSchemas[namespace] = {
-          ...updatedSchemas[namespace],
-          schema: {
-            ...extendSchema,
-            types: {
-              ...extendSchema.types,
-              [type]: updatedType,
-            },
+      updatedSchemas[namespace] = {
+        ...updatedSchemas[namespace],
+        schema: {
+          ...extendSchema,
+          types: {
+            ...extendSchema.types,
+            [type]: updatedType,
           },
-        };
-      }
+        },
+      };
     });
   });
   return updatedSchemas;
@@ -416,9 +414,6 @@ inner.normalizeSchema = (schemas, file) => {
 inner.loadSchema = (schema, file) => {
   const { id, ...rest } = inner.normalizeSchema(schema, file);
   const newSchema = { id, ...inner.rewriteObject(rest) };
-  if (id === 'manifest') {
-    newSchema.$ref = '#/types/WebExtensionManifest';
-  }
   return newSchema;
 };
 
@@ -486,7 +481,7 @@ function writeSchemasToFile(basePath, importedPath, loadedSchemas) {
     writeSchema(importedPath, file, schema);
   });
   // Write out the index.js to easily import all schemas.
-  const imports = ids.map((id) => {
+  const imports = ids.filter((id) => { return id !== 'manifest'; }).map((id) => {
     const { file } = loadedSchemas[id];
     const basename = path.basename(file);
     return `import ${id} from './${basename}'`;
@@ -495,7 +490,7 @@ function writeSchemasToFile(basePath, importedPath, loadedSchemas) {
 
 ${imports};
 export default [
-  ${ids.join(',\n  ')},
+  ${ids.filter((id) => { return id !== 'manifest'; }).join(',\n  ')},
 ];
 `;
   fs.writeFileSync(path.join(importedPath, 'index.js'), fileContents);

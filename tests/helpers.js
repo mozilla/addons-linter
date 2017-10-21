@@ -88,6 +88,21 @@ export function validManifestJSON(extra) {
   }, extra));
 }
 
+export function validLangpackManifestJSON(extra) {
+  return JSON.stringify(Object.assign({}, {
+    manifest_version: 2,
+    name: 'My Language Pack',
+    version: '57.0a1',
+    langpack_id: 'de',
+    languages: {
+      de: {
+        chrome_resources: {},
+        version: '57.0a1',
+      },
+    },
+  }, extra));
+}
+
 export function unexpectedSuccess() {
   return assert.fail(null, null, 'Unexpected success');
 }

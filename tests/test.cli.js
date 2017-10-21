@@ -63,6 +63,11 @@ describe('Basic CLI tests', function cliCallback() {
     expect(args.warningsAsErrors).toEqual(false);
   });
 
+  it('should default langpack to false', () => {
+    const args = cli.parse(['foo/bar.zip']);
+    expect(args.langpack).toEqual(false);
+  });
+
   it('should show error on missing xpi', () => {
     cli.parse([]);
     expect(this.fakeFail.calledWithMatch(

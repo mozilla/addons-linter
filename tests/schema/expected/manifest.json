@@ -1,6 +1,5 @@
 {
   "id": "manifest",
-  "$ref": "#/types/WebExtensionManifest",
   "permissions": [],
   "definitions": {},
   "refs": {},
