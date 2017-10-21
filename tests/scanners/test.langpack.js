@@ -48,6 +48,16 @@ describe('LangpackScanner', () => {
       });
   });
 
+  it('throws on unsupported file types', () => {
+    const scanner = new LangpackScanner('', 'foo.js');
+
+    return scanner.scan()
+      .then(unexpectedSuccess)
+      .catch((err) => {
+        expect(err.message).toEqual('Unsupported file type');
+      });
+  });
+
   it('should throw an error if getContents fails', () => {
     const addonsLinter = new Linter({ _: ['foo'] });
     const langpackScanner = new LangpackScanner('', 'test.properties', {
