@@ -81,6 +81,12 @@ export function getConfig({ useCLI = true } = {}) {
       type: 'string',
       requiresArg: true,
     })
+    .option('disable--linter-rules', {
+      alias: ['dlr'],
+      describe: 'Disable list of coma separated eslint rules',
+      type: 'string',
+      requiresArg: true,
+    })
     // Require one non-option.
     .demand(1)
     .help('help')

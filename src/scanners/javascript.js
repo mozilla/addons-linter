@@ -12,9 +12,19 @@ import * as messages from 'messages';
 import { rules } from 'rules/javascript';
 import { ensureFilenameExists } from 'utils';
 
+export function excludeRules(excludeFrom = {}, excludeWhat = {}) {
+  return Object.keys(excludeFrom).reduce((result, ruleName) => {
+    if (excludeWhat[ruleName]) return result;
+    return {
+      ...result,
+      [ruleName]: excludeFrom[ruleName],
+    };
+  }, {});
+}
 
 export default class JavaScriptScanner {
   _defaultRules = rules;
+  disabledRules = {};
 
   constructor(code, filename, options = {}) {
     this.code = code;
@@ -23,7 +33,14 @@ export default class JavaScriptScanner {
     this.linterMessages = [];
     this.scannedFiles = [];
     this._rulesProcessed = 0;
-
+    this.disabledRules = typeof options.disabledRules === 'string' ? options.disabledRules.split(',')
+      .reduce((result, i) => {
+        if (!i.trim()) return result;
+        return {
+          ...result,
+          [i.trim()]: true,
+        };
+      }, {}) : {};
     ensureFilenameExists(this.filename);
   }
 
@@ -40,6 +57,8 @@ export default class JavaScriptScanner {
     _ruleMapping = ESLINT_RULE_MAPPING,
     _messages = messages,
   } = {}) {
+    const ruleMappingWithExclusion = excludeRules(_ruleMapping, this.disabledRules);
+    const rulesAfterExclusion = excludeRules(_rules, this.disabledRules);
     return new Promise((resolve) => {
       const cli = new _ESLint.CLIEngine({
         baseConfig: {
@@ -55,7 +74,7 @@ export default class JavaScriptScanner {
         parserOptions: {
           ecmaVersion: 2017,
         },
-        rules: _ruleMapping,
+        rules: ruleMappingWithExclusion,
         plugins: ['no-unsafe-innerhtml'],
         allowInlineConfig: false,
 
@@ -70,9 +89,9 @@ export default class JavaScriptScanner {
         useEslintrc: false,
       });
 
-      Object.keys(_rules).forEach((name) => {
+      Object.keys(rulesAfterExclusion).forEach((name) => {
         this._rulesProcessed++;
-        cli.linter.defineRule(name, _rules[name]);
+        cli.linter.defineRule(name, rulesAfterExclusion[name]);
       });
 
       // ESLint is synchronous and doesn't accept streams, so we need to
