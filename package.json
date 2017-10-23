@@ -71,7 +71,7 @@
     "webpack-dev-server": "2.9.2"
   },
   "dependencies": {
-    "ajv": "5.2.3",
+    "ajv": "5.2.4",
     "babel-register": "6.26.0",
     "chalk": "2.2.0",
     "cheerio": "1.0.0-rc.2",
