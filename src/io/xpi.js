@@ -123,13 +123,14 @@ export class Xpi extends IOBase {
     return this.getFileAsStream(path)
       .then((fileStream) => {
         return new Promise((resolve, reject) => {
-          let fileString = '';
+          let buf = new Buffer('');
           fileStream.on('data', (chunk) => {
-            fileString += chunk;
+            buf = Buffer.concat([buf, chunk]);
           });
 
           // Once the file is assembled, resolve the promise.
           fileStream.on('end', () => {
+            const fileString = buf.toString('utf8');
             resolve(fileString);
           });
 
