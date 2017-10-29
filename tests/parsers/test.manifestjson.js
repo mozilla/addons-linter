@@ -875,10 +875,9 @@ describe('ManifestJSONParser', () => {
         json, linter.collector, { io: { files: {} } });
       expect(manifestJSONParser.isValid).toBeFalsy();
       assertHasMatchingError(linter.collector.errors, {
-        code: messages.MANIFEST_BACKGROUND_FILE_NOT_FOUND,
-        message:
-          'A background script defined in the manifest could not be found.',
-        description: 'Background script could not be found at "foo.js".',
+        code: messages.MANIFEST_DECLARED_FILE_NOT_FOUND,
+        message: 'script file declared in the manifest could not be found.',
+        description: 'script file declared in manifest could not be found at "foo.js".',
       });
     });
 
@@ -901,10 +900,64 @@ describe('ManifestJSONParser', () => {
         json, linter.collector, { io: { files: {} } });
       expect(manifestJSONParser.isValid).toBeFalsy();
       assertHasMatchingError(linter.collector.errors, {
-        code: messages.MANIFEST_BACKGROUND_FILE_NOT_FOUND,
+        code: messages.MANIFEST_DECLARED_FILE_NOT_FOUND,
         message:
-          'A background page defined in the manifest could not be found.',
-        description: 'Background page could not be found at "foo.html".',
+          'page file declared in the manifest could not be found.',
+        description: 'page file declared in manifest could not be found at "foo.html".',
+      });
+    });
+  });
+
+  describe('content_scripts', () => {
+    it('does not add errors if the script exists', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        content_scripts: [{
+          matches: ['<all_urls>'],
+          js: ['content_scripts/foo.js'],
+          css: ['content_scripts/bar.css'],
+        }],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'content_scripts/foo.js': '', 'content_scripts/bar.css': '' } } });
+      expect(manifestJSONParser.isValid).toBeTruthy();
+    });
+
+    it('does error if the script does not exist', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        content_scripts: [{
+          matches: ['<all_urls>'],
+          js: ['content_scripts/foo.js'],
+          css: ['content_scripts/bar.css'],
+        }],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'content_scripts/bar.css': '' } } });
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_DECLARED_FILE_NOT_FOUND,
+        message: 'script file declared in the manifest could not be found.',
+        description: 'script file declared in manifest could not be found at "content_scripts/foo.js".',
+      });
+    });
+
+    it('does error if the css does not exist', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        content_scripts: [{
+          matches: ['<all_urls>'],
+          js: ['content_scripts/foo.js'],
+          css: ['content_scripts/bar.css'],
+        }],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'content_scripts/foo.js': '' } } });
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_DECLARED_FILE_NOT_FOUND,
+        message: 'css file declared in the manifest could not be found.',
+        description: 'css file declared in manifest could not be found at "content_scripts/bar.css".',
       });
     });
   });

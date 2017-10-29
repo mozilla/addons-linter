@@ -128,19 +128,14 @@ export function manifestIconMissing(path) {
   };
 }
 
-export const MANIFEST_BACKGROUND_FILE_NOT_FOUND = 'MANIFEST_BACKGROUND_FILE_NOT_FOUND';
-export function manifestBackgroundMissing(path, type) {
+export const MANIFEST_DECLARED_FILE_NOT_FOUND = 'MANIFEST_DECLARED_FILE_NOT_FOUND';
+export function manifestDeclaredFileMissing(path, type) {
   return {
-    code: MANIFEST_BACKGROUND_FILE_NOT_FOUND,
+    code: MANIFEST_DECLARED_FILE_NOT_FOUND,
     legacyCode: null,
-    message: type === 'script' ?
-      'A background script defined in the manifest could not be found.' :
-      'A background page defined in the manifest could not be found.',
+    message: `${type} file declared in the manifest could not be found.`,
     description:
-      sprintf(
-        type === 'script' ?
-          _('Background script could not be found at "%(path)s".') :
-          _('Background page could not be found at "%(path)s".'),
+      sprintf(_(`${type} file declared in manifest could not be found at "%(path)s".`),
         { path }
       ),
     file: MANIFEST_JSON,
