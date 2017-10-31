@@ -67,11 +67,9 @@ describe('JavaScript Scanner', () => {
     expect(jsScannerWithOptions.options.foo).toEqual('bar');
   });
 
-  it('should be initialised with empty excluded rules object', () => {
+  it('should not have rules disabled by default', () => {
     const jsScanner = new JavaScriptScanner('', 'filename.txt');
-    expect(typeof jsScanner.disabledRules).toEqual('object');
-    // This test assures us the disabledRules can be accessed like an object.
-    expect(typeof jsScanner.disabledRules.someUndefinedProp).toEqual('undefined');
+    expect(jsScanner.disabledRules).toEqual([]);
   });
 
   it('should be initialised with disabledRules from options', () => {
@@ -80,26 +78,25 @@ describe('JavaScript Scanner', () => {
     });
     expect(typeof jsScanner.disabledRules).toEqual('object');
     // This test assures us the disabledRules built properly.
-    expect(jsScanner.disabledRules['no-unsafe-innerhtml/no-unsafe-innerhtml']).toBe(true);
+    expect(jsScanner.disabledRules).toEqual(['no-eval', 'no-implied-eval', 'no-unsafe-innerhtml/no-unsafe-innerhtml']);
   });
 
   it('should be initialised with empty excluded rules object, when there is no string', () => {
     const jsScanner = new JavaScriptScanner('', 'filename.txt', {
       disabledRules: true,
     });
-    expect(typeof jsScanner.disabledRules).toEqual('object');
-    expect(jsScanner.disabledRules).toEqual({});
+    expect(jsScanner.disabledRules).toEqual([]);
   });
 
   it('should be initialised with valid rules only', () => {
     const jsScanner = new JavaScriptScanner('', 'filename.txt', {
       disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml,,,,,',
     });
-    expect(jsScanner.disabledRules).toEqual({
-      'no-eval': true,
-      'no-implied-eval': true,
-      'no-unsafe-innerhtml/no-unsafe-innerhtml': true,
-    });
+    expect(jsScanner.disabledRules).toEqual([
+      'no-eval',
+      'no-implied-eval',
+      'no-unsafe-innerhtml/no-unsafe-innerhtml',
+    ]);
   });
 
   it('should pass when async/await is used', () => {
@@ -397,9 +394,8 @@ describe('JavaScript Scanner', () => {
       expect(excludeRules({
         test: {},
         'next-test': {},
-      }, {
-        test: true,
-      })).toEqual({
+      },
+      ['test'])).toEqual({
         'next-test': {},
       });
     });
@@ -408,9 +404,7 @@ describe('JavaScript Scanner', () => {
       expect(excludeRules({
         test: {},
         'next-test': {},
-      }, {
-        'i-dont-exist': true,
-      })).toEqual({
+      }, ['i-dont-exist'])).toEqual({
         test: {},
         'next-test': {},
       });
@@ -418,29 +412,6 @@ describe('JavaScript Scanner', () => {
   });
 
   describe('scanner options tests', () => {
-    it('should run scanner with valid set of rules', () => {
-      const jsScanner = new JavaScriptScanner('', 'filename.txt', {
-        disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml',
-      });
-      const original = esLintMock.CLIEngine;
-      sinon.stub(esLintMock, 'CLIEngine').callsFake(original);
-      jsScanner.scan(esLintMock, {
-        _rules: {
-          test: {},
-          'no-eval': {},
-        },
-        _ruleMapping: {
-          test: {},
-          'no-eval': {},
-        },
-      });
-      const spyCall = esLintMock.CLIEngine.getCall(0);
-      const callOptions = spyCall.args[0] || {};
-      expect(callOptions.rules).toEqual({
-        test: {},
-      });
-    });
-
     it('should define valid set of rules for linter', () => {
       const jsScanner = new JavaScriptScanner('', 'filename.txt', {
         disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml',
