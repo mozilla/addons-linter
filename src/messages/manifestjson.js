@@ -128,14 +128,38 @@ export function manifestIconMissing(path) {
   };
 }
 
-export const MANIFEST_DECLARED_FILE_NOT_FOUND = 'MANIFEST_DECLARED_FILE_NOT_FOUND';
-export function manifestDeclaredFileMissing(path, type) {
+export const MANIFEST_BACKGROUND_FILE_NOT_FOUND = 'MANIFEST_BACKGROUND_FILE_NOT_FOUND';
+export function manifestBackgroundMissing(path, type) {
   return {
-    code: MANIFEST_DECLARED_FILE_NOT_FOUND,
+    code: MANIFEST_BACKGROUND_FILE_NOT_FOUND,
     legacyCode: null,
-    message: `${type} file declared in the manifest could not be found.`,
+    message: type === 'script' ?
+      'A background script defined in the manifest could not be found.' :
+      'A background page defined in the manifest could not be found.',
     description:
-      sprintf(_(`${type} file declared in manifest could not be found at "%(path)s".`),
+      sprintf(
+        type === 'script' ?
+          _('Background script could not be found at "%(path)s".') :
+          _('Background page could not be found at "%(path)s".'),
+        { path }
+      ),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND = 'MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND';
+export function manifestContentScriptFileMissing(path, type) {
+  return {
+    code: MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND,
+    legacyCode: null,
+    message: type === 'script' ?
+      'A content script defined in the manifest could not be found.' :
+      'A content script css file defined in the manifest could not be found.',
+    description:
+      sprintf(
+        type === 'script' ?
+          _('Content script defined in the manifest could not be found at "%(path)s".') :
+          _('Content script css file defined in the manifest could not be found at "%(path)s".'),
         { path }
       ),
     file: MANIFEST_JSON,
