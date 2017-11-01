@@ -10,10 +10,10 @@ import {
   VALIDATION_ERROR,
   VALIDATION_WARNING,
 } from 'const';
-import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
 import { apiToMessage } from 'utils';
+import JavaScriptScanner, { excludeRules } from 'scanners/javascript';
 
 import {
   fakeMessageData,
@@ -22,6 +22,26 @@ import {
   unexpectedSuccess,
   validMetadata,
 } from '../helpers';
+
+const linterMock = {
+  defineRule: (name, options) => ({
+    name,
+    options,
+  }),
+};
+
+
+const esLintMock = {
+  CLIEngine: (engineOptions) => {
+    return {
+      engineOptions,
+      linter: linterMock,
+      executeOnText: () => ({
+        results: [],
+      }),
+    };
+  },
+};
 
 
 describe('JavaScript Scanner', () => {
@@ -45,6 +65,38 @@ describe('JavaScript Scanner', () => {
       foo: 'bar',
     });
     expect(jsScannerWithOptions.options.foo).toEqual('bar');
+  });
+
+  it('should not have rules disabled by default', () => {
+    const jsScanner = new JavaScriptScanner('', 'filename.txt');
+    expect(jsScanner.disabledRules).toEqual([]);
+  });
+
+  it('should be initialised with disabledRules from options', () => {
+    const jsScanner = new JavaScriptScanner('', 'filename.txt', {
+      disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml',
+    });
+    expect(typeof jsScanner.disabledRules).toEqual('object');
+    // This test assures us the disabledRules built properly.
+    expect(jsScanner.disabledRules).toEqual(['no-eval', 'no-implied-eval', 'no-unsafe-innerhtml/no-unsafe-innerhtml']);
+  });
+
+  it('should be initialised with empty excluded rules object, when there is no string', () => {
+    const jsScanner = new JavaScriptScanner('', 'filename.txt', {
+      disabledRules: true,
+    });
+    expect(jsScanner.disabledRules).toEqual([]);
+  });
+
+  it('should be initialised with valid rules only', () => {
+    const jsScanner = new JavaScriptScanner('', 'filename.txt', {
+      disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml,,,,,',
+    });
+    expect(jsScanner.disabledRules).toEqual([
+      'no-eval',
+      'no-implied-eval',
+      'no-unsafe-innerhtml/no-unsafe-innerhtml',
+    ]);
   });
 
   it('should pass when async/await is used', () => {
@@ -319,5 +371,65 @@ describe('JavaScript Scanner', () => {
         expect(linterMessages[0].code).toEqual('this is the message');
         expect(linterMessages[0].message).toEqual('this is the message');
       });
+  });
+
+  describe('tests for excludeRules function', () => {
+    it('should be a function', () => {
+      expect(excludeRules).toBeInstanceOf(Function);
+    });
+
+    it('should work without any input', () => {
+      expect(excludeRules()).toEqual({});
+    });
+
+    it('should work without exclusions', () => {
+      expect(excludeRules({
+        test: {},
+      })).toEqual({
+        test: {},
+      });
+    });
+
+    it('should should exclude test rule', () => {
+      expect(excludeRules({
+        test: {},
+        'next-test': {},
+      },
+      ['test'])).toEqual({
+        'next-test': {},
+      });
+    });
+
+    it('should work if rule doesnt exist', () => {
+      expect(excludeRules({
+        test: {},
+        'next-test': {},
+      }, ['i-dont-exist'])).toEqual({
+        test: {},
+        'next-test': {},
+      });
+    });
+  });
+
+  describe('scanner options tests', () => {
+    it('should define valid set of rules for linter', () => {
+      const jsScanner = new JavaScriptScanner('', 'filename.txt', {
+        disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml',
+      });
+      const original = linterMock.defineRule;
+      sinon.stub(linterMock, 'defineRule').callsFake(original);
+      jsScanner.scan(esLintMock, {
+        _rules: {
+          test: {},
+          'no-eval': {},
+        },
+        _ruleMapping: {
+          test: {},
+          'no-eval': {},
+        },
+      });
+      const spyCalls = linterMock.defineRule.getCalls();
+      expect(spyCalls.length).toBe(1);
+    });
   });
 });

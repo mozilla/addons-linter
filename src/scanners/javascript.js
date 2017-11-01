@@ -12,9 +12,19 @@ import * as messages from 'messages';
 import { rules } from 'rules/javascript';
 import { ensureFilenameExists } from 'utils';
 
+export function excludeRules(excludeFrom = {}, excludeWhat = []) {
+  return Object.keys(excludeFrom).reduce((result, ruleName) => {
+    if (excludeWhat.includes(ruleName)) return result;
+    return {
+      ...result,
+      [ruleName]: excludeFrom[ruleName],
+    };
+  }, {});
+}
 
 export default class JavaScriptScanner {
   _defaultRules = rules;
+  disabledRules = {};
 
   constructor(code, filename, options = {}) {
     this.code = code;
@@ -23,7 +33,9 @@ export default class JavaScriptScanner {
     this.linterMessages = [];
     this.scannedFiles = [];
     this._rulesProcessed = 0;
-
+    this.disabledRules = typeof options.disabledRules === 'string' ? options.disabledRules.split(',')
+      .map((rule) => rule.trim())
+      .filter((notEmptyRule) => notEmptyRule) : [];
     ensureFilenameExists(this.filename);
   }
 
@@ -70,9 +82,10 @@ export default class JavaScriptScanner {
         useEslintrc: false,
       });
 
-      Object.keys(_rules).forEach((name) => {
+      const rulesAfterExclusion = excludeRules(_rules, this.disabledRules);
+      Object.keys(rulesAfterExclusion).forEach((name) => {
         this._rulesProcessed++;
-        cli.linter.defineRule(name, _rules[name]);
+        cli.linter.defineRule(name, rulesAfterExclusion[name]);
       });
 
       // ESLint is synchronous and doesn't accept streams, so we need to
