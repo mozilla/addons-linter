@@ -162,10 +162,9 @@ export function iconSizeInvalid({ path, expected, actual }) {
   return {
     code: ICON_SIZE_INVALID,
     message: _('The size of the icon does not match the manifest.'),
-    description: sprintf(
-      _('Expected icon at "%(path)s" to be %(expected)d pixels wide but was ' +
-        '%(actual)d.'),
-      { path, expected, actual }),
+    description: sprintf(_(oneLine`
+      Expected icon at "%(path)s" to be %(expected)d pixels wide but was %(actual)d.
+    `), { path, expected, actual }),
     file: MANIFEST_JSON,
   };
 }

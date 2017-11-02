@@ -15,6 +15,7 @@ import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
 import { parseCspPolicy } from 'utils';
 
+
 function normalizePath(iconPath) {
   // Convert the icon path to a URL so we can strip any fragments and resolve
   // . and .. automatically. We need an absolute URL to use as a base so we're
@@ -23,20 +24,21 @@ function normalizePath(iconPath) {
   return pathname.slice(1);
 }
 
-
-function getImageMetadata(iconPath) {
-  return new Promise((resolve, reject) => {
-    const image = sharp(iconPath);
-    image
-      .metadata()
-      .then((info) => {
-        resolve(info);
-      })
-      .catch((err) => {
-        reject(err);
+function getImageMetadata(io, iconPath) {
+  return io.getFileAsStream(iconPath)
+    .then((fileStream) => {
+      return new Promise((resolve, reject) => {
+        fileStream.pipe(sharp().metadata((err, info) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(info);
+          }
+        }));
       });
-  });
+    });
 }
+
 
 export default class ManifestJSONParser extends JSONParser {
   constructor(jsonString, collector, {
@@ -207,14 +209,14 @@ export default class ManifestJSONParser extends JSONParser {
         this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
       } else {
         promises.push(
-          getImageMetadata(icons[size])
+          getImageMetadata(this.io, _path)
             .then((info) => {
               if (info.width !== info.height) {
-                this.collector.addError(messages.iconIsNotSquare(path));
+                this.collector.addError(messages.iconIsNotSquare(_path));
                 this.isValid = false;
               } else if (parseInt(info.width, 10) !== parseInt(size, 10)) {
                 this.collector.addWarning(messages.iconSizeInvalid({
-                  path,
+                  path: _path,
                   expected: parseInt(size, 10),
                   actual: parseInt(info.width, 10),
                 }));
@@ -222,7 +224,7 @@ export default class ManifestJSONParser extends JSONParser {
             })
             .catch(() => {
               this.collector.addWarning(messages.corruptIconFile({
-                path,
+                path: _path,
               }));
             })
         );
