@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { Readable, Stream } from 'stream';
 import { assert } from 'assert';
 
 import isMatchWith from 'lodash.ismatchwith';
@@ -121,6 +122,27 @@ export function assertHasMatchingError(errors, expected) {
   expect(Array.isArray(errors)).toBe(true);
   expect(errors.length).toBeGreaterThan(0);
   expect(errors.some((error) => isMatch(error, expected))).toBe(true);
+}
+
+export function getStreamableIO(files) {
+  return {
+    files,
+    getFiles: () => {
+      return Promise.resolve(files);
+    },
+    getFileAsStream: (path) => {
+      if (files[path] instanceof Stream &&
+          typeof files[path]._read === 'function' &&
+          typeof files[path]._readableState === 'object') {
+        return Promise.resolve(files[path]);
+      }
+
+      const stream = new Readable();
+      stream.push(files[path]);
+      stream.push(null);
+      return Promise.resolve(stream);
+    },
+  };
 }
 
 /* `checkOutput` is copied and modified directly from yargs test helpers */
