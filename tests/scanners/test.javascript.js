@@ -109,6 +109,20 @@ describe('JavaScript Scanner', () => {
       });
   });
 
+  it('should support object spread syntax', () => {
+    const code = oneLine`
+      const config = {};
+      const actual = {...config, foo: 'bar'};
+    `;
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    return jsScanner.scan()
+      .then(({ linterMessages }) => {
+        expect(linterMessages.length).toEqual(0);
+      });
+  });
+
   it('should create an error message when encountering a syntax error', () => {
     let code = 'var m = "d;';
     let jsScanner = new JavaScriptScanner(code, 'badcode.js');
