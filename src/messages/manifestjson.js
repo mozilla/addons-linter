@@ -168,10 +168,10 @@ export function manifestContentScriptFileMissing(path, type) {
 
 // https://github.com/mozilla/addons-linter/issues/1650
 // Potentially temporary
-export const MANIFEST_CSCRIPT_INVALID = {
-  code: 'MANIFEST_CSCRIPT_INVALID',
-  message: _('Invalid "matches" entry in "content_script".'),
-  description: _('All entries in "matches" array must be valid.'),
+export const MANIFEST_FORBIDDEN_CONTENT = {
+  code: 'MANIFEST_FORBIDDEN_CONTENT',
+  message: _('Forbidden content found in add-on.'),
+  description: _('This add-on contains forbidden content.'),
   file: MANIFEST_JSON,
 };
 

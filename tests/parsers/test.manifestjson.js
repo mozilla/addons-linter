@@ -985,7 +985,7 @@ describe('ManifestJSONParser', () => {
         json, linter.collector, { io: { files: { 'content_scripts/foo.js': '' } } });
       expect(manifestJSONParser.isValid).toBeFalsy();
       assertHasMatchingError(linter.collector.errors, {
-        code: messages.MANIFEST_CSCRIPT_INVALID.code,
+        code: messages.MANIFEST_FORBIDDEN_CONTENT.code,
         message: 'Invalid "matches" entry in "content_script".',
         description: 'All entries in "matches" array must be valid.',
       });

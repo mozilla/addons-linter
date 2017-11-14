@@ -331,4 +331,4 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :white_check_mark: | warning | Web extension | Unsupported or unknown browser API | | | null | UNSUPPORTED_API |
 | :white_check_mark: | warning | Web extension | | | | | DANGEROUS_EVAL |
 | :white_check_mark: | warning | Web extension | strict_max_version not required | | | null | STRICT_MAX_VERSION |
-| :white_check_mark: | error   | Web extension | Temporary error on content script `matches` | | | | MANIFEST_CSCRIPT_INVALID |
+| :white_check_mark: | error   | Web extension | Temporary error on content script `matches` | | | | MANIFEST_FORBIDDEN_CONTENT |
