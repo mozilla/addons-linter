@@ -920,6 +920,60 @@ describe('ManifestJSONParser', () => {
     });
   });
 
+  describe('content_scripts', () => {
+    it('does not add errors if the script exists', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        content_scripts: [{
+          matches: ['<all_urls>'],
+          js: ['content_scripts/foo.js'],
+          css: ['content_scripts/bar.css'],
+        }],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'content_scripts/foo.js': '', 'content_scripts/bar.css': '' } } });
+      expect(manifestJSONParser.isValid).toBeTruthy();
+    });
+
+    it('does error if the script does not exist', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        content_scripts: [{
+          matches: ['<all_urls>'],
+          js: ['content_scripts/foo.js'],
+          css: ['content_scripts/bar.css'],
+        }],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'content_scripts/bar.css': '' } } });
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND,
+        message: 'A content script defined in the manifest could not be found.',
+        description: 'Content script defined in the manifest could not be found at "content_scripts/foo.js".',
+      });
+    });
+
+    it('does error if the css does not exist', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        content_scripts: [{
+          matches: ['<all_urls>'],
+          js: ['content_scripts/foo.js'],
+          css: ['content_scripts/bar.css'],
+        }],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'content_scripts/foo.js': '' } } });
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND,
+        message: 'A content script css file defined in the manifest could not be found.',
+        description: 'Content script css file defined in the manifest could not be found at "content_scripts/bar.css".',
+      });
+    });
+  });
+
   describe('langpack', () => {
     it('supports simple valid langpack', () => {
       const linter = new Linter({ _: ['bar'] });
