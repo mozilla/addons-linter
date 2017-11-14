@@ -272,7 +272,7 @@ export default class ManifestJSONParser extends JSONParser {
     BLOCKED_CONTENT_SCRIPT_HOSTS.split('\n').forEach((value) => {
       if (value && value.length > 0 && value.substr(0, 1) !== '#') {
         if (matchPattern.includes(value.trim())) {
-          this.collector.addError(messages.MANIFEST_FORBIDDEN_CONTENT);
+          this.collector.addError(messages.MANIFEST_INVALID_CONTENT);
           this.isValid = false;
         }
       }
