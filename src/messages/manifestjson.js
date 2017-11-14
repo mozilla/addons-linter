@@ -168,8 +168,8 @@ export function manifestContentScriptFileMissing(path, type) {
 
 // https://github.com/mozilla/addons-linter/issues/1650
 // Potentially temporary
-export const MANIFEST_CONTENT_SCRIPT_BLOCKED = {
-  code: 'MANIFEST_CONTENT_SCRIPT_BLOCKED',
+export const MANIFEST_CSCRIPT_INVALID = {
+  code: 'MANIFEST_CSCRIPT_INVALID',
   message: _('Invalid "matches" entry in "content_script".'),
   description: _('All entries in "matches" array must be valid.'),
   file: MANIFEST_JSON,
