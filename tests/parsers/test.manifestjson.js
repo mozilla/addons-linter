@@ -972,6 +972,24 @@ describe('ManifestJSONParser', () => {
         description: 'Content script css file defined in the manifest could not be found at "content_scripts/bar.css".',
       });
     });
+
+    it('does error if matches entry is blocked', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        content_scripts: [{
+          matches: ['http://wbgdrb.applythrunet.co.in/GetAdmitINTV.aspx'],
+          js: ['content_scripts/foo.js'],
+        }],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'content_scripts/foo.js': '' } } });
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_CONTENT_SCRIPT_INVALID_MATCHES.code,
+        message: 'Invalid "matches" entry in "content_script".',
+        description: 'All entries in "matches" array must be valid.',
+      });
+    });
   });
 
   describe('langpack', () => {
