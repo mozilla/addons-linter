@@ -986,8 +986,8 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toBeFalsy();
       assertHasMatchingError(linter.collector.errors, {
         code: messages.MANIFEST_INVALID_CONTENT.code,
-        message: 'Invalid "matches" entry in "content_script".',
-        description: 'All entries in "matches" array must be valid.',
+        message: 'Forbidden content found in add-on.',
+        description: 'This add-on contains forbidden content.',
       });
     });
   });
