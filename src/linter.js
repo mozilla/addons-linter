@@ -370,6 +370,7 @@ export default class Linter {
           collector: this.collector,
           // list of disabled rules for js scanner
           disabledLinterRules: this.config.disableLinterRules,
+          existingFiles: this.io.files,
         });
 
         return scanner.scan();

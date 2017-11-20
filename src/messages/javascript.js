@@ -17,6 +17,13 @@ export const EVENT_LISTENER_FOURTH = {
     requires careful review.`),
 };
 
+export const JS_CONTENT_SCRIPT_FILE_NOT_FOUND = {
+  code: 'JS_CONTENT_SCRIPT_FILE_NOT_FOUND',
+  legacyCode: null,
+  message: _('Content script file could not be found.'),
+  description: _('Content script file could not be found'),
+};
+
 export const MOZINDEXEDDB = {
   code: 'MOZINDEXEDDB',
   // Original code appeared to have a non-unique err_id which is no

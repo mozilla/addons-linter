@@ -12,6 +12,7 @@ module.exports = {
     'opendialog-nonlit-uri': require('./opendialog-nonlit-uri').default,
     'opendialog-remote-uri': require('./opendialog-remote-uri').default,
     'webextension-api': require('./webextension-api').default,
+    'content-scripts-file-absent': require('./content-scripts-file-absent').default,
     'webextension-unsupported-api':
       require('./webextension-unsupported-api').default,
   },
