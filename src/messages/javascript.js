@@ -17,8 +17,8 @@ export const EVENT_LISTENER_FOURTH = {
     requires careful review.`),
 };
 
-export const JS_CONTENT_SCRIPT_FILE_NOT_FOUND = {
-  code: 'JS_CONTENT_SCRIPT_FILE_NOT_FOUND',
+export const CONTENT_SCRIPT_NOT_FOUND = {
+  code: 'CONTENT_SCRIPT_NOT_FOUND',
   legacyCode: null,
   message: _('Content script file could not be found.'),
   description: _('Content script file could not be found'),

@@ -1,5 +1,5 @@
 import { normalizePath } from "utils";
-import { JS_CONTENT_SCRIPT_FILE_NOT_FOUND } from 'messages/javascript';
+import { CONTENT_SCRIPT_NOT_FOUND } from 'messages/javascript';
 
 export default {
   create(context) {
@@ -15,7 +15,7 @@ export default {
           if (!Object.prototype.hasOwnProperty.call(existingFiles, trimmedFileName)) {
             return context.report({
               loc: token.loc,
-              message: JS_CONTENT_SCRIPT_FILE_NOT_FOUND.code,
+              message: CONTENT_SCRIPT_NOT_FOUND.code,
             });
           }
           return null;
