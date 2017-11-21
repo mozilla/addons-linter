@@ -1,4 +1,4 @@
-import { normalizePath } from "utils";
+import { normalizePath } from 'utils';
 import { CONTENT_SCRIPT_NOT_FOUND } from 'messages/javascript';
 
 export default {
