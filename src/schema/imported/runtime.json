@@ -232,6 +232,7 @@
       "parameters": [
         {
           "type": "string",
+          "pattern": "^\\w+(\\.\\w+)*$",
           "name": "application",
           "description": "The name of the registered application to connect to."
         }
@@ -309,7 +310,8 @@
         {
           "name": "application",
           "description": "The name of the native messaging host.",
-          "type": "string"
+          "type": "string",
+          "pattern": "^\\w+(\\.\\w+)*$"
         },
         {
           "name": "message",
