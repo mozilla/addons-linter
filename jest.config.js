@@ -29,6 +29,7 @@ module.exports = {
   ],
   transform: {
     '^.+\\.js$': 'babel-jest',
+    '^.+\\.txt$': 'jest-raw-loader',
   },
   transformIgnorePatterns: [
     '<rootDir>/node_modules/',

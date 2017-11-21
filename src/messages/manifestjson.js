@@ -147,6 +147,34 @@ export function manifestBackgroundMissing(path, type) {
   };
 }
 
+export const MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND = 'MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND';
+export function manifestContentScriptFileMissing(path, type) {
+  return {
+    code: MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND,
+    legacyCode: null,
+    message: type === 'script' ?
+      'A content script defined in the manifest could not be found.' :
+      'A content script css file defined in the manifest could not be found.',
+    description:
+      sprintf(
+        type === 'script' ?
+          _('Content script defined in the manifest could not be found at "%(path)s".') :
+          _('Content script css file defined in the manifest could not be found at "%(path)s".'),
+        { path }
+      ),
+    file: MANIFEST_JSON,
+  };
+}
+
+// https://github.com/mozilla/addons-linter/issues/1650
+// Potentially temporary
+export const MANIFEST_INVALID_CONTENT = {
+  code: 'MANIFEST_INVALID_CONTENT',
+  message: _('Forbidden content found in add-on.'),
+  description: _('This add-on contains forbidden content.'),
+  file: MANIFEST_JSON,
+};
+
 export const ICON_NOT_SQUARE = 'ICON_NOT_SQUARE';
 export function iconIsNotSquare(path) {
   return {

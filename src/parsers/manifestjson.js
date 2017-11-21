@@ -14,6 +14,7 @@ import * as messages from 'messages';
 import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
 import { parseCspPolicy } from 'utils';
+import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
 
 function normalizePath(iconPath) {
@@ -157,6 +158,31 @@ export default class ManifestJSONParser extends JSONParser {
       }
     }
 
+    if (this.parsedJSON.content_scripts && this.parsedJSON.content_scripts.length) {
+      this.parsedJSON.content_scripts.forEach((scriptRule) => {
+        if (scriptRule.matches && scriptRule.matches.length) {
+          // Since `include_globs` only get's checked for patterns that are in
+          // `matches` we only need to validate `matches`
+          scriptRule.matches.forEach((matchPattern) => {
+            this.validateContentScriptMatchPattern(matchPattern);
+          });
+        }
+
+        if (scriptRule.js && scriptRule.js.length) {
+          scriptRule.js.forEach((script) => {
+            this.validateFileExistsInPackage(
+              script, 'script', messages.manifestContentScriptFileMissing);
+          });
+        }
+        if (scriptRule.css && scriptRule.css.length) {
+          scriptRule.css.forEach((style) => {
+            this.validateFileExistsInPackage(
+              style, 'css', messages.manifestContentScriptFileMissing);
+          });
+        }
+      });
+    }
+
     if (!this.selfHosted && this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.update_url) {
@@ -233,13 +259,24 @@ export default class ManifestJSONParser extends JSONParser {
     return Promise.all(promises);
   }
 
-  validateFileExistsInPackage(filePath, type) {
+  validateFileExistsInPackage(filePath, type, messageFunc = messages.manifestBackgroundMissing) {
     const _path = normalizePath(filePath);
     if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
-      this.collector.addError(messages.manifestBackgroundMissing(
+      this.collector.addError(messageFunc(
         _path, type));
       this.isValid = false;
     }
+  }
+
+  validateContentScriptMatchPattern(matchPattern) {
+    BLOCKED_CONTENT_SCRIPT_HOSTS.split('\n').forEach((value) => {
+      if (value && value.length > 0 && value.substr(0, 1) !== '#') {
+        if (matchPattern.includes(value.trim())) {
+          this.collector.addError(messages.MANIFEST_INVALID_CONTENT);
+          this.isValid = false;
+        }
+      }
+    });
   }
 
   validateCspPolicy(policy) {
