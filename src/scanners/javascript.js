@@ -136,7 +136,7 @@ export default class JavaScriptScanner {
             description = overwrites.description || message.description;
 
             if (overwrites.code) {
-              ({ code } = overwrites.code);
+              ({ code } = overwrites);
             }
           } else {
             shortDescription = code;
