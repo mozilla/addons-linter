@@ -1,12 +1,11 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 import fs from 'fs';
 import path from 'path';
 
 import commentJson from 'comment-json';
-import merge from 'deepmerge';
 import request from 'request';
 import tar from 'tar';
+
+import merge from './deepmerge';
 
 const FLAG_PATTERN_REGEX = /^\(\?[im]*\)(.*)/;
 /* There are some patterns in the Firefox schemas that have case insensitive
