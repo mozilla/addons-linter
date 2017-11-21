@@ -392,7 +392,7 @@ inner.normalizeSchema = (schemas, file) => {
       };
       extendSchemas = [filteredSchemas[0]];
     } else {
-      primarySchema = filteredSchemas[0];
+      ([primarySchema] = filteredSchemas);
       extendSchemas = [];
     }
   } else {
@@ -422,7 +422,7 @@ inner.mergeSchemas = (schemaLists) => {
   Object.keys(schemaLists).forEach((namespace) => {
     const namespaceSchemas = schemaLists[namespace];
     if (namespaceSchemas.length === 1) {
-      schemas[namespace] = namespaceSchemas[0];
+      ([schemas[namespace]] = namespaceSchemas);
     } else {
       const file = `${namespace}.json`;
       const merged = namespaceSchemas.reduce((memo, { schema }) => {

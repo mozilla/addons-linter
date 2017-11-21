@@ -14,8 +14,11 @@ export default class JSONScanner extends BaseScanner {
   scan() {
     return this.getContents()
       .then((json) => {
-        const jsonParser = new JSONParser(json, this.options.collector, {
-          filename: this.filename });
+        const jsonParser = new JSONParser(
+          json,
+          this.options.collector,
+          { filename: this.filename }
+        );
         jsonParser.parse();
         return Promise.resolve({
           linterMessages: [],

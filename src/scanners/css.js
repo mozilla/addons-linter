@@ -58,7 +58,7 @@ export default class CSSScanner extends BaseScanner {
         .then((ast) => {
           if (ast && ast.nodes) {
             const rules = ignorePrivateFunctions(_rules);
-            const nodes = ast.nodes;
+            const { nodes } = ast;
 
             Object.keys(rules).forEach((cssInstruction) => {
               this._rulesProcessed++;
