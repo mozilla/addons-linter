@@ -397,6 +397,7 @@ describe('ManifestJSONParser', () => {
 
         // Properly match mixed with other directives
         "script-src https: 'unsafe-inline'; object-src 'self'",
+        "default-src http:; worker-src: 'self'",
       ];
 
       invalidValues.forEach((invalidValue) => {

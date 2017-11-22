@@ -285,12 +285,11 @@ export default class ManifestJSONParser extends JSONParser {
     // Not sure about FTP here but CSP spec treats ws/wss as
     // equivalent to http/https.
     const validProtocols = ['ftp:', 'http:', 'https:', 'ws:', 'wss:'];
-    // The order is important here, 'default-src' needs to be
-    // before 'script-src'
+    // The order is important here, 'default-src' needs to be before
+    // 'script-src' to ensure it can overwrite default-src security policies
     const candidates = ['default-src', 'script-src', 'worker-src'];
 
-    let insecureDefaultSrc = false;
-    let secureScriptSrc = false;
+    let insecureSrcDirective = false;
     for (let i = 0; i < candidates.length; i++) {
       /* eslint-disable no-continue */
       const candidate = candidates[i];
@@ -299,8 +298,11 @@ export default class ManifestJSONParser extends JSONParser {
 
         // If the 'default-src' is insecure, check whether the 'script-src'
         // makes it secure, ie 'script-src: self;'
-        if (insecureDefaultSrc && values.length === 1 && values[0] === '\'self\'') {
-          secureScriptSrc = true;
+        if (insecureSrcDirective &&
+            candidate === 'script-src' &&
+            values.length === 1 &&
+            values[0] === '\'self\'') {
+          insecureSrcDirective = false;
         }
 
         for (let j = 0; j < values.length; j++) {
@@ -319,7 +321,7 @@ export default class ManifestJSONParser extends JSONParser {
             if (candidate === 'default-src') {
               // Remember insecure 'default-src' to check whether a later
               // 'script-src' makes it secure
-              insecureDefaultSrc = true;
+              insecureSrcDirective = true;
             } else {
               this.collector.addWarning(messages.MANIFEST_CSP);
             }
@@ -342,7 +344,7 @@ export default class ManifestJSONParser extends JSONParser {
             if (candidate === 'default-src') {
               // Remember insecure 'default-src' to check whether a later
               // 'script-src' makes it secure
-              insecureDefaultSrc = true;
+              insecureSrcDirective = true;
             } else {
               this.collector.addWarning(messages.MANIFEST_CSP);
             }
@@ -351,7 +353,7 @@ export default class ManifestJSONParser extends JSONParser {
         }
       }
     }
-    if (insecureDefaultSrc && !secureScriptSrc) {
+    if (insecureSrcDirective) {
       this.collector.addWarning(messages.MANIFEST_CSP);
     }
   }
