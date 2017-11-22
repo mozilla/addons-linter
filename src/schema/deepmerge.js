@@ -33,7 +33,7 @@ function oldArrayMerge(target, source, optionsArgument) {
 
 export default (a, b, opts) => {
   if (opts) {
-    throw new Error('This function does not accept options, use deepmerge instead.');
+    throw new Error('opts are not supported, use the deepmerge package directly');
   }
   return merge(a, b, { arrayMerge: oldArrayMerge });
 };

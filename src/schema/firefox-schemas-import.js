@@ -1,9 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 
+/* eslint-disable import/no-extraneous-dependencies */
 import commentJson from 'comment-json';
 import request from 'request';
 import tar from 'tar';
+/* eslint-enable import/no-extraneous-dependencies */
 
 import merge from './deepmerge';
 
