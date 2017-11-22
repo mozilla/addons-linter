@@ -285,13 +285,23 @@ export default class ManifestJSONParser extends JSONParser {
     // Not sure about FTP here but CSP spec treats ws/wss as
     // equivalent to http/https.
     const validProtocols = ['ftp:', 'http:', 'https:', 'ws:', 'wss:'];
-    const candidates = ['script-src', 'default-src', 'worker-src'];
+    // The order is important here, 'default-src' needs to be
+    // before 'script-src'
+    const candidates = ['default-src', 'script-src', 'worker-src'];
 
+    let insecureDefaultSrc = false;
+    let secureScriptSrc = false;
     for (let i = 0; i < candidates.length; i++) {
       /* eslint-disable no-continue */
       const candidate = candidates[i];
       if (Object.prototype.hasOwnProperty.call(directives, candidate)) {
         const values = directives[candidate];
+
+        // If the 'default-src' is insecure, check whether the 'script-src'
+        // makes it secure, ie 'script-src: self;'
+        if (insecureDefaultSrc && values.length === 1 && values[0] === '\'self\'') {
+          secureScriptSrc = true;
+        }
 
         for (let j = 0; j < values.length; j++) {
           let value = values[j].trim();
@@ -306,7 +316,13 @@ export default class ManifestJSONParser extends JSONParser {
             (validProtocols.some((x) => value.startsWith(x))));
 
           if (hasProtocol) {
-            this.collector.addWarning(messages.MANIFEST_CSP);
+            if (candidate === 'default-src') {
+              // Remember insecure 'default-src' to check whether a later
+              // 'script-src' makes it secure
+              insecureDefaultSrc = true;
+            } else {
+              this.collector.addWarning(messages.MANIFEST_CSP);
+            }
             continue;
           }
 
@@ -323,11 +339,20 @@ export default class ManifestJSONParser extends JSONParser {
           if (value === '*' || value.search(CSP_KEYWORD_RE) === -1) {
             // everything else looks like something we don't understand
             // / support otherwise is invalid so let's warn about that.
-            this.collector.addWarning(messages.MANIFEST_CSP);
+            if (candidate === 'default-src') {
+              // Remember insecure 'default-src' to check whether a later
+              // 'script-src' makes it secure
+              insecureDefaultSrc = true;
+            } else {
+              this.collector.addWarning(messages.MANIFEST_CSP);
+            }
             continue;
           }
         }
       }
+    }
+    if (insecureDefaultSrc && !secureScriptSrc) {
+      this.collector.addWarning(messages.MANIFEST_CSP);
     }
   }
 
