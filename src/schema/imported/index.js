@@ -26,10 +26,12 @@ import idle from './idle.json';
 import management from './management.json';
 import menus from './menus.json';
 import menusInternal from './menus_internal.json';
+import native_manifest from './native_manifest.json';
 import notifications from './notifications.json';
 import omnibox from './omnibox.json';
 import pageAction from './page_action.json';
 import permissions from './permissions.json';
+import pkcs11 from './pkcs11.json';
 import privacy from './privacy.json';
 import proxy from './proxy.json';
 import runtime from './runtime.json';
@@ -73,10 +75,12 @@ export default [
   management,
   menus,
   menusInternal,
+  native_manifest,
   notifications,
   omnibox,
   pageAction,
   permissions,
+  pkcs11,
   privacy,
   proxy,
   runtime,
