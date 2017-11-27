@@ -368,6 +368,8 @@ export default class Linter {
           // TODO: Bring this in line with other scanners, see:
           // https://github.com/mozilla/addons-linter/issues/895
           collector: this.collector,
+          // list of disabled rules for js scanner
+          disabledLinterRules: this.config.disableLinterRules,
         });
 
         return scanner.scan();

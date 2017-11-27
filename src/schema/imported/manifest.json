@@ -18,6 +18,9 @@
             "minimum_chrome_version": {
               "type": "string"
             },
+            "minimum_opera_version": {
+              "type": "string"
+            },
             "applications": {
               "type": "object",
               "properties": {
@@ -164,7 +167,7 @@
               "items": {
                 "allOf": [
                   {
-                    "$ref": "#/types/Permission"
+                    "$ref": "#/types/PermissionOrOrigin"
                   },
                   {
                     "onError": "warn"
@@ -184,7 +187,7 @@
               "items": {
                 "allOf": [
                   {
-                    "$ref": "#/types/OptionalPermission"
+                    "$ref": "#/types/OptionalPermissionOrOrigin"
                   },
                   {
                     "onError": "warn"
@@ -424,9 +427,6 @@
           ]
         },
         {
-          "$ref": "#/types/MatchPattern"
-        },
-        {
           "$ref": "bookmarks#/definitions/OptionalPermission"
         },
         {
@@ -455,6 +455,16 @@
         }
       ]
     },
+    "OptionalPermissionOrOrigin": {
+      "anyOf": [
+        {
+          "$ref": "#/types/OptionalPermission"
+        },
+        {
+          "$ref": "#/types/MatchPattern"
+        }
+      ]
+    },
     "Permission": {
       "anyOf": [
         {
@@ -464,6 +474,7 @@
           "type": "string",
           "enum": [
             "alarms",
+            "mozillaAddons",
             "storage",
             "unlimitedStorage"
           ]
@@ -496,6 +507,9 @@
           "$ref": "menus#/definitions/Permission"
         },
         {
+          "$ref": "pkcs11#/definitions/Permission"
+        },
+        {
           "$ref": "privacy#/definitions/Permission"
         },
         {
@@ -509,6 +523,16 @@
         },
         {
           "$ref": "theme#/definitions/Permission"
+        }
+      ]
+    },
+    "PermissionOrOrigin": {
+      "anyOf": [
+        {
+          "$ref": "#/types/Permission"
+        },
+        {
+          "$ref": "#/types/MatchPattern"
         }
       ]
     },

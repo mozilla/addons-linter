@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import Linter from 'linter';
 import ManifestJSONParser from 'parsers/manifestjson';
 import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
@@ -7,6 +9,8 @@ import {
   assertHasMatchingError,
   validManifestJSON,
   validLangpackManifestJSON,
+  getStreamableIO,
+  EMPTY_PNG,
 } from '../helpers';
 
 describe('ManifestJSONParser', () => {
@@ -393,6 +397,7 @@ describe('ManifestJSONParser', () => {
 
         // Properly match mixed with other directives
         "script-src https: 'unsafe-inline'; object-src 'self'",
+        "default-src http:; worker-src: 'self'",
       ];
 
       invalidValues.forEach((invalidValue) => {
@@ -427,6 +432,13 @@ describe('ManifestJSONParser', () => {
         // unsafe-inline is not supported by Firefox and won't be for the
         // forseeable future. See http://bit.ly/2wG6LP0 for more details-
         "script-src 'self' 'unsafe-inline';",
+
+        // 'default-src' is insecure, but the limiting 'script-src' prevents
+        // remote script injection
+        "default-src *; script-src 'self'",
+        "default-src https:; script-src 'self'",
+        "default-src example.com; script-src 'self'",
+        "default-src http://remote.com/; script-src 'self'",
       ];
 
       validValues.forEach((validValue) => {
@@ -607,11 +619,11 @@ describe('ManifestJSONParser', () => {
         },
       });
       const files = {
-        'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
-        'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-32.png': EMPTY_PNG.toString('binary'),
+        'icons/icon-64.png': EMPTY_PNG.toString('binary'),
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: getStreamableIO(files) });
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
@@ -624,11 +636,11 @@ describe('ManifestJSONParser', () => {
         },
       });
       const files = {
-        'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
-        'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-32.png': EMPTY_PNG.toString('binary'),
+        'icons/icon-64.png': EMPTY_PNG.toString('binary'),
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: getStreamableIO(files) });
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
@@ -641,11 +653,11 @@ describe('ManifestJSONParser', () => {
         },
       });
       const files = {
-        'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
-        'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-32.png': EMPTY_PNG.toString('binary'),
+        'icons/icon-64.png': EMPTY_PNG.toString('binary'),
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: getStreamableIO(files) });
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
@@ -661,7 +673,7 @@ describe('ManifestJSONParser', () => {
         'icons/icon.svg': '<svg></svg>',
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: getStreamableIO(files) });
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
@@ -674,11 +686,11 @@ describe('ManifestJSONParser', () => {
         },
       });
       const files = {
-        'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
-        'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-32.png': EMPTY_PNG.toString('binary'),
+        'icons/icon-64.png': EMPTY_PNG.toString('binary'),
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: getStreamableIO(files) });
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
@@ -691,11 +703,11 @@ describe('ManifestJSONParser', () => {
         },
       });
       const files = {
-        'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
-        'icons/icon-64.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-32.png': EMPTY_PNG.toString('binary'),
+        'icons/icon-64.png': EMPTY_PNG.toString('binary'),
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: getStreamableIO(files) });
       return manifestJSONParser.validateIcons()
         .then(() => {
           expect(manifestJSONParser.isValid).toBeFalsy();
@@ -725,10 +737,10 @@ describe('ManifestJSONParser', () => {
         },
       });
       const files = {
-        'icons/icon-32.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-32.png': EMPTY_PNG.toString('binary'),
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: getStreamableIO(files) });
       return manifestJSONParser.validateIcons()
         .then(() => {
           expect(manifestJSONParser.isValid).toBeFalsy();
@@ -753,13 +765,13 @@ describe('ManifestJSONParser', () => {
         },
       });
       const files = {
-        'icons/icon-32.txt': '89<PNG>thisistotallysomebinary',
-        'icons/icon-64.html': '89<PNG>thisistotallysomebinary',
-        'tests/fixtures/icon-128.png': '89<PNG>thisistotallysomebinary',
+        'icons/icon-32.txt': 'some random text',
+        'icons/icon-64.html': '<html></html>',
+        'tests/fixtures/icon-128.png': fs.createReadStream('tests/fixtures/icon-128.png'),
         'icons/icon.svg': '<svg></svg>',
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: getStreamableIO(files) });
       return manifestJSONParser.validateIcons()
         .then(() => {
           expect(manifestJSONParser.isValid).toBeTruthy();
@@ -779,11 +791,12 @@ describe('ManifestJSONParser', () => {
         },
       });
       const files = {
-        'tests/fixtures/default.png': '89<PNG>thisistotallysomebinary',
-        'tests/fixtures/default.svg': '89<PNG>thisistotallysomebinary',
+        'tests/fixtures/default.png': fs.createReadStream('tests/fixtures/default.png'),
+        'tests/fixtures/default.svg': fs.createReadStream('tests/fixtures/default.svg'),
       };
+
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: getStreamableIO(files) });
       return manifestJSONParser.validateIcons()
         .then(() => {
           expect(manifestJSONParser.isValid).toBeTruthy();
@@ -800,10 +813,11 @@ describe('ManifestJSONParser', () => {
         },
       });
       const files = {
-        'tests/fixtures/default-corrupted.png': '89<PNG>thisistotallysomebinary',
+        'tests/fixtures/default-corrupted.png': fs.createReadStream('tests/fixtures/default-corrupted.png'),
       };
+
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: getStreamableIO(files) });
       return manifestJSONParser.validateIcons()
         .then(() => {
           expect(manifestJSONParser.isValid).toBeTruthy();
@@ -820,16 +834,21 @@ describe('ManifestJSONParser', () => {
         },
       });
       const files = {
-        'tests/fixtures/icon-33.png': '89<PNG>thisistotallysomebinary',
+        'tests/fixtures/icon-33.png': fs.createReadStream('tests/fixtures/icon-33.png'),
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: getStreamableIO(files) });
       return manifestJSONParser.validateIcons()
         .then(() => {
           expect(manifestJSONParser.isValid).toBeTruthy();
           const warnings = addonLinter.collector.warnings;
           expect(warnings.length).toEqual(1);
-          expect(warnings[0].code).toEqual(messages.ICON_SIZE_INVALID);
+          assertHasMatchingError(warnings, {
+            code: messages.ICON_SIZE_INVALID,
+            message: 'The size of the icon does not match the manifest.',
+            description:
+              'Expected icon at "tests/fixtures/icon-33.png" to be 32 pixels wide but was 33.',
+          });
         });
     });
 
@@ -841,10 +860,10 @@ describe('ManifestJSONParser', () => {
         },
       });
       const files = {
-        'tests/fixtures/rectangle.png': '89<PNG>thisistotallysomebinary',
+        'tests/fixtures/rectangle.png': fs.createReadStream('tests/fixtures/rectangle.png'),
       };
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: { files } });
+        json, addonLinter.collector, { io: getStreamableIO(files) });
       return manifestJSONParser.validateIcons()
         .then(() => {
           expect(manifestJSONParser.isValid).toBeFalsy();
@@ -905,6 +924,78 @@ describe('ManifestJSONParser', () => {
         message:
           'A background page defined in the manifest could not be found.',
         description: 'Background page could not be found at "foo.html".',
+      });
+    });
+  });
+
+  describe('content_scripts', () => {
+    it('does not add errors if the script exists', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        content_scripts: [{
+          matches: ['<all_urls>'],
+          js: ['content_scripts/foo.js'],
+          css: ['content_scripts/bar.css'],
+        }],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'content_scripts/foo.js': '', 'content_scripts/bar.css': '' } } });
+      expect(manifestJSONParser.isValid).toBeTruthy();
+    });
+
+    it('does error if the script does not exist', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        content_scripts: [{
+          matches: ['<all_urls>'],
+          js: ['content_scripts/foo.js'],
+          css: ['content_scripts/bar.css'],
+        }],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'content_scripts/bar.css': '' } } });
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND,
+        message: 'A content script defined in the manifest could not be found.',
+        description: 'Content script defined in the manifest could not be found at "content_scripts/foo.js".',
+      });
+    });
+
+    it('does error if the css does not exist', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        content_scripts: [{
+          matches: ['<all_urls>'],
+          js: ['content_scripts/foo.js'],
+          css: ['content_scripts/bar.css'],
+        }],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'content_scripts/foo.js': '' } } });
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND,
+        message: 'A content script css file defined in the manifest could not be found.',
+        description: 'Content script css file defined in the manifest could not be found at "content_scripts/bar.css".',
+      });
+    });
+
+    it('does error if matches entry is blocked', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        content_scripts: [{
+          matches: ['http://wbgdrb.applythrunet.co.in/GetAdmitINTV.aspx'],
+          js: ['content_scripts/foo.js'],
+        }],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, { io: { files: { 'content_scripts/foo.js': '' } } });
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_INVALID_CONTENT.code,
+        message: 'Forbidden content found in add-on.',
+        description: 'This add-on contains forbidden content.',
       });
     });
   });

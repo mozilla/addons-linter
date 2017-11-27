@@ -33,6 +33,11 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         test: /\.js$/,
       },
+      {
+        use: 'raw-loader',
+        exclude: /(node_modules|bower_components)/,
+        test: /\.txt$/,
+      },
     ],
   },
   externals: nodeModules,
