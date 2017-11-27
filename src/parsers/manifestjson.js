@@ -14,6 +14,8 @@ import * as messages from 'messages';
 import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
 import { parseCspPolicy } from 'utils';
+import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
+
 
 function normalizePath(iconPath) {
   // Convert the icon path to a URL so we can strip any fragments and resolve
@@ -23,20 +25,21 @@ function normalizePath(iconPath) {
   return pathname.slice(1);
 }
 
-
-function getImageMetadata(iconPath) {
-  return new Promise((resolve, reject) => {
-    const image = sharp(iconPath);
-    image
-      .metadata()
-      .then((info) => {
-        resolve(info);
-      })
-      .catch((err) => {
-        reject(err);
+function getImageMetadata(io, iconPath) {
+  return io.getFileAsStream(iconPath)
+    .then((fileStream) => {
+      return new Promise((resolve, reject) => {
+        fileStream.pipe(sharp().metadata((err, info) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(info);
+          }
+        }));
       });
-  });
+    });
 }
+
 
 export default class ManifestJSONParser extends JSONParser {
   constructor(jsonString, collector, {
@@ -155,6 +158,31 @@ export default class ManifestJSONParser extends JSONParser {
       }
     }
 
+    if (this.parsedJSON.content_scripts && this.parsedJSON.content_scripts.length) {
+      this.parsedJSON.content_scripts.forEach((scriptRule) => {
+        if (scriptRule.matches && scriptRule.matches.length) {
+          // Since `include_globs` only get's checked for patterns that are in
+          // `matches` we only need to validate `matches`
+          scriptRule.matches.forEach((matchPattern) => {
+            this.validateContentScriptMatchPattern(matchPattern);
+          });
+        }
+
+        if (scriptRule.js && scriptRule.js.length) {
+          scriptRule.js.forEach((script) => {
+            this.validateFileExistsInPackage(
+              script, 'script', messages.manifestContentScriptFileMissing);
+          });
+        }
+        if (scriptRule.css && scriptRule.css.length) {
+          scriptRule.css.forEach((style) => {
+            this.validateFileExistsInPackage(
+              style, 'css', messages.manifestContentScriptFileMissing);
+          });
+        }
+      });
+    }
+
     if (!this.selfHosted && this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.update_url) {
@@ -207,14 +235,14 @@ export default class ManifestJSONParser extends JSONParser {
         this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
       } else {
         promises.push(
-          getImageMetadata(icons[size])
+          getImageMetadata(this.io, _path)
             .then((info) => {
               if (info.width !== info.height) {
-                this.collector.addError(messages.iconIsNotSquare(path));
+                this.collector.addError(messages.iconIsNotSquare(_path));
                 this.isValid = false;
               } else if (parseInt(info.width, 10) !== parseInt(size, 10)) {
                 this.collector.addWarning(messages.iconSizeInvalid({
-                  path,
+                  path: _path,
                   expected: parseInt(size, 10),
                   actual: parseInt(info.width, 10),
                 }));
@@ -222,7 +250,7 @@ export default class ManifestJSONParser extends JSONParser {
             })
             .catch(() => {
               this.collector.addWarning(messages.corruptIconFile({
-                path,
+                path: _path,
               }));
             })
         );
@@ -231,13 +259,24 @@ export default class ManifestJSONParser extends JSONParser {
     return Promise.all(promises);
   }
 
-  validateFileExistsInPackage(filePath, type) {
+  validateFileExistsInPackage(filePath, type, messageFunc = messages.manifestBackgroundMissing) {
     const _path = normalizePath(filePath);
     if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
-      this.collector.addError(messages.manifestBackgroundMissing(
+      this.collector.addError(messageFunc(
         _path, type));
       this.isValid = false;
     }
+  }
+
+  validateContentScriptMatchPattern(matchPattern) {
+    BLOCKED_CONTENT_SCRIPT_HOSTS.split('\n').forEach((value) => {
+      if (value && value.length > 0 && value.substr(0, 1) !== '#') {
+        if (matchPattern.includes(value.trim())) {
+          this.collector.addError(messages.MANIFEST_INVALID_CONTENT);
+          this.isValid = false;
+        }
+      }
+    });
   }
 
   validateCspPolicy(policy) {
@@ -246,13 +285,25 @@ export default class ManifestJSONParser extends JSONParser {
     // Not sure about FTP here but CSP spec treats ws/wss as
     // equivalent to http/https.
     const validProtocols = ['ftp:', 'http:', 'https:', 'ws:', 'wss:'];
-    const candidates = ['script-src', 'default-src', 'worker-src'];
+    // The order is important here, 'default-src' needs to be before
+    // 'script-src' to ensure it can overwrite default-src security policies
+    const candidates = ['default-src', 'script-src', 'worker-src'];
 
+    let insecureSrcDirective = false;
     for (let i = 0; i < candidates.length; i++) {
       /* eslint-disable no-continue */
       const candidate = candidates[i];
       if (Object.prototype.hasOwnProperty.call(directives, candidate)) {
         const values = directives[candidate];
+
+        // If the 'default-src' is insecure, check whether the 'script-src'
+        // makes it secure, ie 'script-src: self;'
+        if (insecureSrcDirective &&
+            candidate === 'script-src' &&
+            values.length === 1 &&
+            values[0] === '\'self\'') {
+          insecureSrcDirective = false;
+        }
 
         for (let j = 0; j < values.length; j++) {
           let value = values[j].trim();
@@ -267,7 +318,13 @@ export default class ManifestJSONParser extends JSONParser {
             (validProtocols.some((x) => value.startsWith(x))));
 
           if (hasProtocol) {
-            this.collector.addWarning(messages.MANIFEST_CSP);
+            if (candidate === 'default-src') {
+              // Remember insecure 'default-src' to check whether a later
+              // 'script-src' makes it secure
+              insecureSrcDirective = true;
+            } else {
+              this.collector.addWarning(messages.MANIFEST_CSP);
+            }
             continue;
           }
 
@@ -284,11 +341,20 @@ export default class ManifestJSONParser extends JSONParser {
           if (value === '*' || value.search(CSP_KEYWORD_RE) === -1) {
             // everything else looks like something we don't understand
             // / support otherwise is invalid so let's warn about that.
-            this.collector.addWarning(messages.MANIFEST_CSP);
+            if (candidate === 'default-src') {
+              // Remember insecure 'default-src' to check whether a later
+              // 'script-src' makes it secure
+              insecureSrcDirective = true;
+            } else {
+              this.collector.addWarning(messages.MANIFEST_CSP);
+            }
             continue;
           }
         }
       }
+    }
+    if (insecureSrcDirective) {
+      this.collector.addWarning(messages.MANIFEST_CSP);
     }
   }
 

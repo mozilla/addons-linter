@@ -54,6 +54,16 @@
           "description": "Returns the value of the overridden new tab page. Read-only."
         }
       ]
+    },
+    "webNotificationsDisabled": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "Disables webAPI notifications."
+        }
+      ]
     }
   },
   "definitions": {

@@ -276,6 +276,10 @@
             "cookieStoreId": {
               "type": "string",
               "description": "The CookieStoreId for the tab that opened this tab."
+            },
+            "openInReaderMode": {
+              "type": "boolean",
+              "description": "Whether the document in the tab should be opened in reader mode."
             }
           }
         },
@@ -711,6 +715,31 @@
       ]
     },
     {
+      "name": "discard",
+      "type": "function",
+      "description": "discards one or more tabs.",
+      "async": true,
+      "parameters": [
+        {
+          "name": "tabIds",
+          "description": "The tab or list of tabs to discard.",
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "detectLanguage",
       "type": "function",
       "description": "Detects the primary language of the content in a tab.",
@@ -733,6 +762,21 @@
               "description": "An ISO language code such as <code>en</code> or <code>fr</code>. For a complete list of languages supported by this method, see <a href='http://src.chromium.org/viewvc/chrome/trunk/src/third_party/cld/languages/internal/languages.cc'>kLanguageInfoTable</a>. The 2nd to 4th columns will be checked and the first non-NULL value will be returned except for Simplified Chinese for which zh-CN will be returned. For an unknown language, <code>und</code> will be returned."
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "toggleReaderMode",
+      "type": "function",
+      "description": "Toggles reader mode for the document in the tab.",
+      "async": true,
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0,
+          "optional": true,
+          "description": "Defaults to the active tab of the $(topic:current-window)[current window]."
         }
       ]
     },
@@ -1635,6 +1679,14 @@
         "cookieStoreId": {
           "type": "string",
           "description": "The CookieStoreId used for the tab."
+        },
+        "isArticle": {
+          "type": "boolean",
+          "description": "Whether the document in the tab can be rendered in reader mode."
+        },
+        "isInReaderMode": {
+          "type": "boolean",
+          "description": "Whether the document in the tab is being rendered in reader mode."
         }
       },
       "required": [
