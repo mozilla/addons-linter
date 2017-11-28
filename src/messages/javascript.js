@@ -24,6 +24,13 @@ export const CONTENT_SCRIPT_NOT_FOUND = {
   description: _('Content script file could not be found'),
 };
 
+export const CONTENT_SCRIPT_EMPTY = {
+  code: 'CONTENT_SCRIPT_EMPTY',
+  legacyCode: null,
+  message: _('Content script file name should not be empty.'),
+  description: _('Content script file name should not be empty'),
+};
+
 export const MOZINDEXEDDB = {
   code: 'MOZINDEXEDDB',
   // Original code appeared to have a non-unique err_id which is no

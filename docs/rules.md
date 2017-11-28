@@ -333,3 +333,4 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :white_check_mark: | warning | Web extension | strict_max_version not required | | | null | STRICT_MAX_VERSION |
 | :white_check_mark: | error   | Web extension | Temporary error on content script `matches` | | | | MANIFEST_INVALID_CONTENT |
 | :white_check_mark: | error   | Web extension | Content script file could not be found | | | | CONTENT_SCRIPT_NOT_FOUND |
+| :white_check_mark: | error   | Web extension | Content script file name should not be empty | | | | CONTENT_SCRIPT_EMPTY |
