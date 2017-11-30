@@ -397,6 +397,7 @@ describe('ManifestJSONParser', () => {
 
         // Properly match mixed with other directives
         "script-src https: 'unsafe-inline'; object-src 'self'",
+        "default-src http:; worker-src: 'self'",
       ];
 
       invalidValues.forEach((invalidValue) => {
@@ -431,6 +432,13 @@ describe('ManifestJSONParser', () => {
         // unsafe-inline is not supported by Firefox and won't be for the
         // forseeable future. See http://bit.ly/2wG6LP0 for more details-
         "script-src 'self' 'unsafe-inline';",
+
+        // 'default-src' is insecure, but the limiting 'script-src' prevents
+        // remote script injection
+        "default-src *; script-src 'self'",
+        "default-src https:; script-src 'self'",
+        "default-src example.com; script-src 'self'",
+        "default-src http://remote.com/; script-src 'self'",
       ];
 
       validValues.forEach((validValue) => {

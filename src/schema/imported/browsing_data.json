@@ -433,7 +433,7 @@
             "type": "string",
             "format": "hostname"
           },
-          "description": "Only remove data associated with these hostnames (only applies to cookies)."
+          "description": "Only remove data associated with these hostnames (only applies to cookies and localStorage)."
         },
         "originTypes": {
           "type": "object",
