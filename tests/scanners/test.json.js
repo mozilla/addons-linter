@@ -16,13 +16,13 @@ describe('JSONScanner', () => {
     });
 
     sinon.stub(jsonScanner, 'getContents').callsFake(() => {
-      return Promise.reject('Explode!');
+      return Promise.reject(new Error('Explode!'));
     });
 
     return jsonScanner.scan()
       .then(unexpectedSuccess)
       .catch((err) => {
-        expect(err).toEqual('Explode!');
+        expect(err.message).toEqual('Explode!');
       });
   });
 });

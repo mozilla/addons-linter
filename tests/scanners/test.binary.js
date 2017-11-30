@@ -4,7 +4,7 @@ import * as messages from 'messages';
 
 describe('Binary', () => {
   it('should do nothing on a text file', () => {
-    const buffer = new Buffer('wat');
+    const buffer = Buffer.from('wat');
     const scanner = new BinaryScanner(buffer, 'wat.txt');
 
     return scanner.scan()
@@ -15,7 +15,7 @@ describe('Binary', () => {
 
   it('should notice a flagged file', () => {
     FLAGGED_FILE_MAGIC_NUMBERS.forEach((magic) => {
-      const buffer = new Buffer(magic);
+      const buffer = Buffer.from(magic);
       const scanner = new BinaryScanner(buffer, 'wat.txt');
 
       return scanner.scan()

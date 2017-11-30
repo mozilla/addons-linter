@@ -211,16 +211,18 @@ describe('JavaScript Scanner', () => {
     const config = { rules: { test: 2 } };
     let ok = false;
 
-    eslint.defineRules({ test(context) {
-      return {
-        Program() {
-          const windowVar = getVariable(context.getScope(), 'window');
-          expect(windowVar.eslintExplicitGlobal).toBeFalsy();
+    eslint.defineRules({
+      test(context) {
+        return {
+          Program() {
+            const windowVar = getVariable(context.getScope(), 'window');
+            expect(windowVar.eslintExplicitGlobal).toBeFalsy();
 
-          ok = true;
-        },
-      };
-    } });
+            ok = true;
+          },
+        };
+      },
+    });
 
     eslint.verify('/*eslint-env browser*/', config, { allowInlineConfig: false });
     expect(ok).toBeTruthy();
@@ -249,16 +251,18 @@ describe('JavaScript Scanner', () => {
     const config = { rules: { test: 2 } };
     let ok = false;
 
-    eslint.defineRules({ test(context) {
-      return {
-        Program() {
-          const foo = getVariable(context.getScope(), 'foo');
-          expect(foo).toBeFalsy();
+    eslint.defineRules({
+      test(context) {
+        return {
+          Program() {
+            const foo = getVariable(context.getScope(), 'foo');
+            expect(foo).toBeFalsy();
 
-          ok = true;
-        },
-      };
-    } });
+            ok = true;
+          },
+        };
+      },
+    });
 
     eslint.verify('/* global foo */', config, { allowInlineConfig: false });
     expect(ok).toBeTruthy();

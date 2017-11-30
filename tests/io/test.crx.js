@@ -47,7 +47,7 @@ describe('Crx.open()', function openCallback() {
     };
     this.fakeFs = {
       readFile: () => {
-        return new Buffer('');
+        return Buffer.from('');
       },
     };
   });
@@ -114,8 +114,8 @@ describe('crx.getFiles()', function getFilesCallback() {
 
     // Return the fake zip to the open callback.
     this.fromBufferStub.yieldsAsync(null, this.fakeZipFile);
-    this.fakeParseCrx.yieldsAsync(null, { body: new Buffer('foo') });
-    this.readFileStub.yieldsAsync(null, new Buffer('bar'));
+    this.fakeParseCrx.yieldsAsync(null, { body: Buffer.from('foo') });
+    this.readFileStub.yieldsAsync(null, Buffer.from('bar'));
 
     // If we could use yields multiple times here we would
     // but sinon doesn't support it when the stub is only
@@ -142,8 +142,8 @@ describe('crx.getFiles()', function getFilesCallback() {
     const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
       this.fakeFs);
     this.fromBufferStub.yieldsAsync(null, this.fakeZipFile);
-    this.fakeParseCrx.yieldsAsync(null, { body: new Buffer('foo') });
-    this.readFileStub.yieldsAsync(null, new Buffer('bar'));
+    this.fakeParseCrx.yieldsAsync(null, { body: Buffer.from('foo') });
+    this.readFileStub.yieldsAsync(null, Buffer.from('bar'));
 
     const onEventsSubscribed = () => {
       const entryCallback = this.entryStub.firstCall.args[1];
@@ -163,7 +163,7 @@ describe('crx.getFiles()', function getFilesCallback() {
     const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
       this.fakeFs);
 
-    this.readFileStub.yieldsAsync(new Error('open test'), new Buffer('bar'));
+    this.readFileStub.yieldsAsync(new Error('open test'), Buffer.from('bar'));
 
     return myCrx.getFiles()
       .then(unexpectedSuccess)
@@ -176,7 +176,7 @@ describe('crx.getFiles()', function getFilesCallback() {
     const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
       this.fakeFs);
 
-    this.readFileStub.yieldsAsync(null, new Buffer('bar'));
+    this.readFileStub.yieldsAsync(null, Buffer.from('bar'));
     this.fakeParseCrx.yieldsAsync(new Error('open test'), null);
 
     return myCrx.getFiles()
@@ -191,8 +191,8 @@ describe('crx.getFiles()', function getFilesCallback() {
       this.fakeFs);
 
     this.fromBufferStub.yieldsAsync(new Error('open test'), this.fakeZipFile);
-    this.fakeParseCrx.yieldsAsync(null, { body: new Buffer('foo') });
-    this.readFileStub.yieldsAsync(null, new Buffer('bar'));
+    this.fakeParseCrx.yieldsAsync(null, { body: Buffer.from('foo') });
+    this.readFileStub.yieldsAsync(null, Buffer.from('bar'));
 
     return myCrx.getFiles()
       .then(unexpectedSuccess)

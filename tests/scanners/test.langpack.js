@@ -65,13 +65,13 @@ describe('LangpackScanner', () => {
     });
 
     sinon.stub(langpackScanner, 'getContents').callsFake(() => {
-      return Promise.reject('Explode!');
+      return Promise.reject(new Error('Explode!'));
     });
 
     return langpackScanner.scan()
       .then(unexpectedSuccess)
       .catch((err) => {
-        expect(err).toEqual('Explode!');
+        expect(err.message).toEqual('Explode!');
       });
   });
 });
