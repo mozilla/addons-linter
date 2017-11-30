@@ -69,7 +69,7 @@
     "raw-loader": "^0.5.1",
     "request": "2.83.0",
     "sinon": "4.1.2",
-    "tar": "4.0.2",
+    "tar": "4.1.0",
     "webpack": "3.8.1",
     "webpack-dev-server": "2.9.5"
   },
