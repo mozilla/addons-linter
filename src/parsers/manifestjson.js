@@ -1,5 +1,6 @@
 /* eslint-disable import/namespace */
 import path from 'path';
+import { readdirSync, existsSync, statSync } from 'fs';
 
 import RJSON from 'relaxed-json';
 import { URL } from 'whatwg-url';
@@ -221,6 +222,18 @@ export default class ManifestJSONParser extends JSONParser {
         }
       }
     }
+
+    if(this.parsedJSON.default_locale && this.io.path ){
+     const rootPath = path.join(this.io.path,"_locales");
+     if(existsSync(rootPath))
+      readdirSync(rootPath).forEach((langDir) => {      
+        if(statSync(path.join(rootPath,langDir)).isDirectory())
+         if(!this.io.files["_locales/"+langDir+"/messages.json"]){
+           this.collector.addError(messages.noMessagesFileInLocales("_locales/" + langDir));
+           this.isValid = false;
+         }
+      });
+    }    
   }
 
   validateIcons() {
