@@ -123,7 +123,7 @@ export class Xpi extends IOBase {
     return this.getFileAsStream(path)
       .then((fileStream) => {
         return new Promise((resolve, reject) => {
-          let buf = new Buffer('');
+          let buf = Buffer.from('');
           fileStream.on('data', (chunk) => {
             buf = Buffer.concat([buf, chunk]);
           });

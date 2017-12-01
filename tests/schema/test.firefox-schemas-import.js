@@ -24,7 +24,7 @@ import {
   stripTrailingNullByte,
 } from 'schema/firefox-schemas-import';
 
-// Get a reference to unlinkSync so it won't get stubbed later.
+// Get a reference to unlinkSync so it won't get stubbed later
 const { unlinkSync } = fs;
 
 describe('firefox schema import', () => {
@@ -114,10 +114,12 @@ describe('firefox schema import', () => {
       };
       expect(rewriteOptionalToRequired(obj)).toEqual({
         foo: { type: 'string' },
-        bar: { allOf: [
-          { $ref: '#/types/Whatever' },
-          { type: 'string' },
-        ] },
+        bar: {
+          allOf: [
+            { $ref: '#/types/Whatever' },
+            { type: 'string' },
+          ],
+        },
         baz: { type: 'boolean' },
         required: ['bar', 'baz'],
       });
@@ -1230,7 +1232,8 @@ describe('firefox schema import', () => {
     it('folds matching schemas, maintaining types at top-level', () => {
       const schemas = [
         { namespace: 'manifest' },
-        { namespace: 'privacy.network',
+        {
+          namespace: 'privacy.network',
           properties: { networkPredictionEnabled: {} },
           types: [{
             id: 'IPHandlingPolicy',
@@ -1238,7 +1241,8 @@ describe('firefox schema import', () => {
             enum: ['default', 'disable_non_proxied_udp'],
           }],
         },
-        { namespace: 'privacy',
+        {
+          namespace: 'privacy',
           permissions: ['privacy'],
           properties: { foo: {} },
           types: [{
@@ -1246,12 +1250,15 @@ describe('firefox schema import', () => {
             choices: [{ type: 'string', enum: ['privacy'] }],
           }],
         },
-        { namespace: 'privacy.websites',
-          properties: { thirdPartyCookiesAllowed: {} } },
+        {
+          namespace: 'privacy.websites',
+          properties: { thirdPartyCookiesAllowed: {} },
+        },
       ];
       expect(foldSchemas(schemas)).toEqual([
         { namespace: 'manifest' },
-        { namespace: 'privacy',
+        {
+          namespace: 'privacy',
           permissions: ['privacy'],
           properties: {
             foo: {},
@@ -1277,15 +1284,20 @@ describe('firefox schema import', () => {
     it('handles a base schema without properties', () => {
       const schemas = [
         { namespace: 'manifest' },
-        { namespace: 'privacy.network',
-          properties: { networkPredictionEnabled: {} } },
+        {
+          namespace: 'privacy.network',
+          properties: { networkPredictionEnabled: {} },
+        },
         { namespace: 'privacy', permissions: ['privacy'] },
-        { namespace: 'privacy.websites',
-          properties: { thirdPartyCookiesAllowed: {} } },
+        {
+          namespace: 'privacy.websites',
+          properties: { thirdPartyCookiesAllowed: {} },
+        },
       ];
       expect(foldSchemas(schemas)).toEqual([
         { namespace: 'manifest' },
-        { namespace: 'privacy',
+        {
+          namespace: 'privacy',
           permissions: ['privacy'],
           properties: {
             network: {
@@ -1302,14 +1314,19 @@ describe('firefox schema import', () => {
     it('handles matching schemas without a base schema', () => {
       const schemas = [
         { namespace: 'manifest' },
-        { namespace: 'privacy.network',
-          properties: { networkPredictionEnabled: {} } },
-        { namespace: 'privacy.websites',
-          properties: { thirdPartyCookiesAllowed: {} } },
+        {
+          namespace: 'privacy.network',
+          properties: { networkPredictionEnabled: {} },
+        },
+        {
+          namespace: 'privacy.websites',
+          properties: { thirdPartyCookiesAllowed: {} },
+        },
       ];
       expect(foldSchemas(schemas)).toEqual([
         { namespace: 'manifest' },
-        { namespace: 'privacy',
+        {
+          namespace: 'privacy',
           properties: {
             network: {
               properties: { networkPredictionEnabled: {} },
@@ -1324,9 +1341,11 @@ describe('firefox schema import', () => {
 
     it('handles a single schema', () => {
       const schemas = [
-        { namespace: 'alarms',
+        {
+          namespace: 'alarms',
           permissions: ['alarms'],
-          properties: {} },
+          properties: {},
+        },
       ];
       const expectedSchemas = schemas.map((schema) => ({ ...schema }));
       expect(foldSchemas(schemas)).toEqual(expectedSchemas);
@@ -1334,8 +1353,10 @@ describe('firefox schema import', () => {
 
     it('throws if there is more than two levels of nesting', () => {
       const schemas = [
-        { namespace: 'devtools.panels.sidebars',
-          properties: { createSidebar: {} } },
+        {
+          namespace: 'devtools.panels.sidebars',
+          properties: { createSidebar: {} },
+        },
       ];
       expect(
         () => foldSchemas(schemas)

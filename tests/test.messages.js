@@ -6,9 +6,7 @@ import * as messages from 'messages';
 
 describe('Messages', () => {
   Object.keys(messages).forEach((message) => {
-    const code = messages[message].code;
-    const description = messages[message].description;
-    const msg = messages[message].message;
+    const { code, description, msg } = messages[message];
 
     if (typeof messages[message] === 'object') {
       it('should have a code set', () => {
@@ -38,7 +36,7 @@ describe('Messages', () => {
   it('should have updated rules.md with new message codes', () => {
     const markdown = readFileSync('docs/rules.md', 'utf8');
     Object.keys(messages).forEach((message) => {
-      const code = messages[message].code;
+      const { code } = messages[message];
       if (code) {
         // Asserting using indexOf rather than assert.include
         // to avoid inclusion of the whole rules.md as part

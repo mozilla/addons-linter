@@ -125,8 +125,10 @@ export default class JavaScriptScanner {
           // message structure and allow us to optionally overwrite
           // their `message` and `description`.
           if (Object.prototype.hasOwnProperty.call(_messages, code)) {
-            shortDescription = _messages[code].message;
-            description = _messages[code].description;
+            ({
+              message: shortDescription,
+              description,
+            } = _messages[code]);
           } else if (Object.prototype.hasOwnProperty.call(
             ESLINT_OVERWRITE_MESSAGE, message.ruleId)) {
             const overwrites = ESLINT_OVERWRITE_MESSAGE[message.ruleId];
@@ -134,7 +136,7 @@ export default class JavaScriptScanner {
             description = overwrites.description || message.description;
 
             if (overwrites.code) {
-              code = overwrites.code;
+              ({ code } = overwrites);
             }
           } else {
             shortDescription = code;

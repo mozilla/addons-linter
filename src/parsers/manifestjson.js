@@ -360,7 +360,7 @@ export default class ManifestJSONParser extends JSONParser {
 
   getAddonId() {
     try {
-      const id = this.parsedJSON.applications.gecko.id;
+      const { id } = this.parsedJSON.applications.gecko;
       return typeof id === 'undefined' ? null : id;
     } catch (e) {
       log.error('Failed to get the id from the manifest.');

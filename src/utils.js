@@ -40,7 +40,7 @@ export function getRootExpression(node) {
  *  The node for foo will return 'document'
  */
 export function getNodeReference(context, node) {
-  const variables = context.getScope().variables;
+  const { variables } = context.getScope();
   let scopeVar;
 
   // Just return the value if the node passed in is a reference to a literal.
@@ -96,7 +96,7 @@ export function getNodeReference(context, node) {
  * undefined.
  */
 export function getVariable(context, name) {
-  const variables = context.getScope().variables;
+  const { variables } = context.getScope();
   let result;
   variables.forEach((variable) => {
     if (variable.name === name && variable.defs && variable.defs[0] &&
@@ -120,7 +120,7 @@ export function gettext(str) {
  * An sprintf to use with gettext. Imported from Jed for when we have a proper
  * l10n solution.
  */
-export const sprintf = jed.sprintf;
+export const { sprintf } = jed;
 
 /*
  * Check the minimum node version is met
@@ -188,8 +188,8 @@ export function ensureFilenameExists(filename) {
 
 export function isLocalUrl(urlInput) {
   const parsedUrl = url.parse(urlInput);
-  const protocol = parsedUrl.protocol;
-  const path = parsedUrl.path;
+  const { protocol, path } = parsedUrl;
+
   // Check protocol is chrome: or resource: if set.
   // Details on the chrome protocol are here: https://goo.gl/W52T0Q
   // Details on resource protocol are here: https://goo.gl/HHqeJA

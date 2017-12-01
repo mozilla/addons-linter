@@ -27,7 +27,7 @@ import { Crx, Directory, Xpi } from 'io';
 export default class Linter {
   constructor(config) {
     this.config = config;
-    this.packagePath = config._[0];
+    ([this.packagePath] = config._);
     this.io = null;
     this.chalk = new chalk.constructor(
       { enabled: !this.config.boring });
@@ -389,8 +389,9 @@ export default class Linter {
       });
   }
 
-  extractMetadata({ _Crx = Crx, _console = console, _Directory = Directory,
-    _Xpi = Xpi } = {}) {
+  extractMetadata({
+    _Crx = Crx, _console = console, _Directory = Directory, _Xpi = Xpi,
+  } = {}) {
     return checkMinNodeVersion()
       .then(() => {
         return this.checkFileExists(this.packagePath);

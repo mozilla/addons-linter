@@ -106,7 +106,7 @@ describe('Linter', () => {
   it('should provide output via output prop', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.collector.addError(fakeMessageData);
-    const output = addonLinter.output;
+    const { output } = addonLinter;
     expect(output.count).toEqual(1);
     expect(output.summary.errors).toEqual(1);
     expect(output.summary.notices).toEqual(0);
@@ -186,8 +186,9 @@ describe('Linter', () => {
 
   it('Eslint ignore patterns and .eslintignorerc should be ignored', () => {
     // Verify https://github.com/mozilla/addons-linter/issues/1288 is fixed
-    const addonLinter = new Linter({ _: [
-      'tests/fixtures/webextension_node_modules_bower'] });
+    const addonLinter = new Linter({
+      _: ['tests/fixtures/webextension_node_modules_bower'],
+    });
 
     // Stub print to prevent output.
     addonLinter.print = sinon.stub();
@@ -744,7 +745,7 @@ describe('Linter.getAddonMetadata()', () => {
     };
     return addonLinter.getAddonMetadata()
       .then(() => {
-        const notices = addonLinter.collector.notices;
+        const { notices } = addonLinter.collector;
         expect(notices.length).toEqual(1);
         expect(notices[0].code).toEqual(messages.TYPE_NO_MANIFEST_JSON.code);
       });
@@ -1036,7 +1037,7 @@ describe('Linter.extractMetadata()', () => {
         'my/nested/library/path/j.js': 'jquery.3.2.1.jquery.min.js',
       });
 
-      const notices = addonLinter.collector.notices;
+      const { notices } = addonLinter.collector;
       expect(notices.length).toEqual(2);
       expect(notices[1].code).toEqual(messages.KNOWN_LIBRARY.code);
     });
@@ -1105,7 +1106,7 @@ describe('Linter.extractMetadata()', () => {
           'data/jquery-3.2.1.min.js': 'jquery.3.2.1.jquery.min.js',
         });
 
-        const errors = addonLinter.collector.errors;
+        const { errors } = addonLinter.collector;
         expect(errors.length).toEqual(1);
         expect(errors[0].code).toEqual(messages.BANNED_LIBRARY.code);
       });
@@ -1130,7 +1131,7 @@ describe('Linter.extractMetadata()', () => {
       'data/jquery-3.2.1.min.js': 'jquery.3.2.1.jquery.min.js',
     });
 
-    const warnings = addonLinter.collector.warnings;
+    const { warnings } = addonLinter.collector;
     expect(warnings.length).toEqual(1);
     expect(warnings[0].code).toEqual(messages.UNADVISED_LIBRARY.code);
   });

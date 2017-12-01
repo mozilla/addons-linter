@@ -14,7 +14,7 @@ describe('JSONParser', () => {
     jsonParser.parse();
 
     expect(jsonParser.isValid).toEqual(false);
-    const errors = addonLinter.collector.errors;
+    const { errors } = addonLinter.collector;
     expect(errors.length).toEqual(1);
     expect(errors[0].code).toEqual(messages.JSON_INVALID.code);
     expect(errors[0].message).toContain('Your JSON is not valid.');
@@ -46,7 +46,7 @@ describe('JSONParser duplicate keys', () => {
     jsonParser.parse();
 
     expect(jsonParser.isValid).toEqual(false);
-    const errors = addonLinter.collector.errors;
+    const { errors } = addonLinter.collector;
     expect(errors.length).toBe(1);
     expect(errors[0].code).toEqual(messages.JSON_DUPLICATE_KEY.code);
     expect(errors[0].message).toContain('Duplicate keys are not allowed');
@@ -75,7 +75,7 @@ describe('JSONParser duplicate keys', () => {
     jsonParser.parse();
 
     expect(jsonParser.isValid).toEqual(false);
-    const errors = addonLinter.collector.errors;
+    const { errors } = addonLinter.collector;
     expect(errors.length).toBe(3);
     expect(errors[0].code).toEqual(messages.JSON_DUPLICATE_KEY.code);
     // We expect the duplicate error messages to be in the order of the
@@ -124,7 +124,7 @@ describe('JSONParser duplicate keys', () => {
 
     expect(jsonParser.isValid).toEqual(false);
     expect(parseStub.called).toBeTruthy();
-    const errors = addonLinter.collector.errors;
+    const { errors } = addonLinter.collector;
     expect(errors.length).toBe(1);
     expect(errors[0].code).toEqual(messages.JSON_DUPLICATE_KEY.code);
     expect(errors[0].message).toContain('Duplicate keys are not allowed');
@@ -160,7 +160,7 @@ describe('JSONParser duplicate keys', () => {
     // picked up earlier in the process.
     expect(jsonParser.isValid).toEqual(true);
     expect(parseStub.called).toBeTruthy();
-    const errors = addonLinter.collector.errors;
+    const { errors } = addonLinter.collector;
     expect(errors.length).toBe(0);
   });
 });
@@ -184,7 +184,7 @@ describe('JSONParser with comments', () => {
     jsonParser.parse();
 
     expect(jsonParser.isValid).toEqual(false);
-    const errors = addonLinter.collector.errors;
+    const { errors } = addonLinter.collector;
     // There should not be another error; a file with block-level comments
     // will throw that specific error and not a parse error.
     expect(errors.length).toBe(1);
@@ -218,7 +218,7 @@ describe('JSONParser with comments', () => {
     jsonParser.parse();
 
     expect(jsonParser.isValid).toEqual(false);
-    const errors = addonLinter.collector.errors;
+    const { errors } = addonLinter.collector;
     expect(errors[0].code).toEqual(messages.JSON_INVALID.code);
     expect(errors[0].message).toContain('Your JSON is not valid.');
   });
@@ -230,7 +230,7 @@ describe('JSONParser with comments', () => {
     jsonParser.parse();
 
     expect(jsonParser.isValid).toEqual(false);
-    const errors = addonLinter.collector.errors;
+    const { errors } = addonLinter.collector;
     expect(errors[0].code).toEqual(messages.JSON_INVALID.code);
     expect(errors[0].message).toContain('Your JSON is not valid.');
     expect(jsonParser._jsonString).not.toContain('var bla');
@@ -252,7 +252,7 @@ describe('JSONParser with comments', () => {
     jsonParser.parse();
 
     expect(jsonParser.isValid).toEqual(false);
-    const errors = addonLinter.collector.errors;
+    const { errors } = addonLinter.collector;
     expect(errors[0].code).toEqual(messages.JSON_INVALID.code);
     expect(errors[0].message).toContain('Your JSON is not valid.');
   });
