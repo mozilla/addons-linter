@@ -13,7 +13,6 @@
     "test": "jest tests/ --runInBand --watch",
     "test-coverage": "jest tests/ --runInBand --coverage --watch",
     "test-once": "jest tests/ --runInBand",
-    "test-once-d": "node --inspect-brk ./node_modules/.bin/jest tests/ --runInBand",
     "test-coverage-once": "jest tests/ --runInBand --coverage",
     "test-ci": "npm run test-coverage-once && cat ./coverage/lcov.info | coveralls",
     "lint": "npm run eslint",
