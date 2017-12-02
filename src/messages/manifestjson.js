@@ -237,12 +237,12 @@ export const WRONG_ICON_EXTENSION = {
   file: MANIFEST_JSON,
 };
 
-export const NO_MESSAGES_FILE_IN_LOCALES  = 'NO_MESSAGES_FILE_IN_LOCALES';
-export function noMessagesFileInLocales(path){
+export const NO_MESSAGES_FILE_IN_LOCALES = 'NO_MESSAGES_FILE_IN_LOCALES';
+export function noMessagesFileInLocales(path) {
   return {
-     code : NO_MESSAGES_FILE_IN_LOCALES,
-     message : _('Empty language directory'),
-     description : sprintf( _('messages.json file missing in "%(path)s"'), {path} ),
-     file : MANIFEST_JSON,
+    code: NO_MESSAGES_FILE_IN_LOCALES,
+    message: _('Empty language directory'),
+    description: sprintf(_('messages.json file missing in "%(path)s"'), { path }),
+    file: MANIFEST_JSON,
   };
 }

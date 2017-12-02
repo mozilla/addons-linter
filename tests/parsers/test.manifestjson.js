@@ -1027,46 +1027,47 @@ describe('ManifestJSONParser', () => {
   });
 
 
-  describe('locales', ()=>{
+  describe('locales', () => {
     it('error if messages.json is  missing in language directory', () => {
-       const addonLinter = new Linter({ _: ['bar'] });
-       const json = validManifestJSON({
-         default_locale : 'en'
-       });
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        default_locale: 'en',
+      });
       const directory = {
-        path : 'tests/fixtures/locales/',
-        files : { '_locales/en/messages.json' : { size : 1000},
-                 '_locales/de/messages.json' : { size : 1120}
-                }
+        path: 'tests/fixtures/locales/',
+        files: {
+          '_locales/en/messages.json': { size: 1000 },
+          '_locales/de/messages.json': { size: 1120 },
+        },
       };
 
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io : directory} );
+        json, addonLinter.collector, { io: directory });
       expect(manifestJSONParser.isValid).toEqual(false);
-      const errors = addonLinter.collector.errors;
+      const { errors } = addonLinter.collector;
       expect(errors[0].code).toEqual(messages.NO_MESSAGES_FILE_IN_LOCALES);
     });
 
     it('error if messages.json is  not missing in language directory', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-         default_locale : 'en'
+        default_locale: 'en',
       });
       const directory = {
-        path : 'tests/fixtures/locales/',
-        files : { '_locales/en/messages.json' : { size : 1000},
-                  '_locales/de/messages.json' : { size : 1120},
-                  '_locales/hi/messages.json' : { size : 1120}
-                }
+        path: 'tests/fixtures/locales/',
+        files: {
+          '_locales/en/messages.json': { size: 1000 },
+          '_locales/de/messages.json': { size: 1120 },
+          '_locales/hi/messages.json': { size: 1120 },
+        },
       };
 
       const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io : directory} );
+        json, addonLinter.collector, { io: directory });
       expect(manifestJSONParser.isValid).toEqual(true);
-      const errors = addonLinter.collector.errors;
+      const { errors } = addonLinter.collector;
       expect(errors.length).toEqual(0);
-    });  
+    });
   });
 });
-
 
