@@ -33,19 +33,29 @@ describe('content_scripts_file_absent', () => {
     expect(linterMessages).toEqual([]);
   });
 
-  it('should not report any errors when filename is not static string', async () => {
+  it('should not report false positive errors', async () => {
     const code = `
+      // API calls using a non literal strings file attribute.
       browser.tabs.executeScript({ file: \`/content_scripts/\${fileName}\` });
       browser.tabs.executeScript({ file: '/content_scripts/'+ fileName });
       browser.tabs.executeScript({ file: '/content_scripts/' + 'absentFile.js' });
       browser.tabs.executeScript(1, { file: '/content_scripts/' + 'absentFile.js' });
+      
+      // API calls with a non string file attribute.
       browser.tabs.executeScript(1, { file: 2 });
       browser.tabs.executeScript(1, { file: null });
+      
+      // API calls using a non literal strings file attribute.
       browser.tabs.executeScript({ code: 'console.log("lol")' });
+      
+      // API calls without a file attribute.
       browser.noTabs.executeScript({ file: '' });
       myObj.tabs.executeScript({ file: '' });
       myObj2.executeScript({ file: '' });
       executeScript({ file: '' });
+      
+      // Not even an API call, but linter should not choke on it.
+      browser.tabs.executeScript;
     `;
     const fileRequiresContentScript = 'file-requires-content-script.js';
     const jsScanner = createJsScanner(code, fileRequiresContentScript, { 'content_scripts/existingFile.js': '' });

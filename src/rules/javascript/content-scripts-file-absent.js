@@ -12,9 +12,9 @@ export default {
         }
         const namespace = node.object.property.name;
         const property = node.property.name;
-        // Namespace should be tabs function should be executeScript.
-        // I.E. browser.tabs.executeScript.
-        if (namespace !== 'tabs' || property !== 'executeScript') {
+        // Namespace should be tabs function should be executeScript and it should be a call.
+        // I.E. browser.tabs.executeScript().
+        if (namespace !== 'tabs' || property !== 'executeScript' || node.parent.type !== 'CallExpression') {
           return;
         }
         node.parent.arguments.forEach((arg) => {
