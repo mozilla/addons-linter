@@ -4,7 +4,6 @@ import path from 'path';
 import RJSON from 'relaxed-json';
 import { URL } from 'whatwg-url';
 import { oneLine } from 'common-tags';
-//import sharp from 'sharp';
 import probeImageSize from 'probe-image-size';
 
 import { validateAddon, validateLangPack } from 'schema/validator';
@@ -27,24 +26,7 @@ function normalizePath(iconPath) {
 }
 
 function getImageMetadata(io, iconPath) {
-  return io.getFileAsStream(iconPath)
-    .then((fileStream) => {
-      return probeImageSize(fileStream);
-    });
-  /*
-  return io.getFileAsStream(iconPath)
-    .then((fileStream) => {
-      return new Promise((resolve, reject) => {
-        fileStream.pipe(sharp().metadata((err, info) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(info);
-          }
-        }));
-      });
-    });
-  */
+  return io.getFileAsStream(iconPath).then(probeImageSize);
 }
 
 
