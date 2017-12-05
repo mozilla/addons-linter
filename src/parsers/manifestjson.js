@@ -27,7 +27,10 @@ function normalizePath(iconPath) {
 }
 
 function getImageMetadata(io, iconPath) {
-  return probeImageSize(iconPath);
+  return io.getFileAsStream(iconPath)
+    .then((fileStream) => {
+      return probeImageSize(fileStream);
+    });
   /*
   return io.getFileAsStream(iconPath)
     .then((fileStream) => {
