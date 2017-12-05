@@ -62,6 +62,7 @@ export default class JavaScriptScanner {
           },
           settings: {
             addonMetadata: this.options.addonMetadata,
+            existingFiles: this.options.existingFiles,
           },
         },
         parserOptions: {

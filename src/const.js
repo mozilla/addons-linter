@@ -32,6 +32,7 @@ export const ESLINT_RULE_MAPPING = Object.assign({
   'opendialog-remote-uri': ESLINT_WARNING,
   'webextension-api': ESLINT_WARNING,
   'webextension-unsupported-api': ESLINT_WARNING,
+  'content-scripts-file-absent': ESLINT_ERROR,
 }, EXTERNAL_RULE_MAPPING);
 
 export const ESLINT_OVERWRITE_MESSAGE = {

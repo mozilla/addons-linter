@@ -2,7 +2,6 @@
 import path from 'path';
 
 import RJSON from 'relaxed-json';
-import { URL } from 'whatwg-url';
 import { oneLine } from 'common-tags';
 import probeImageSize from 'probe-image-size';
 
@@ -13,17 +12,8 @@ import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
-import { parseCspPolicy } from 'utils';
+import { parseCspPolicy, normalizePath } from 'utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
-
-
-function normalizePath(iconPath) {
-  // Convert the icon path to a URL so we can strip any fragments and resolve
-  // . and .. automatically. We need an absolute URL to use as a base so we're
-  // using https://example.com/.
-  const { pathname } = new URL(iconPath, 'https://example.com/');
-  return pathname.slice(1);
-}
 
 function getImageMetadata(io, iconPath) {
   return io.getFileAsStream(iconPath).then(probeImageSize);
