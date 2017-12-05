@@ -229,7 +229,8 @@ export default class ManifestJSONParser extends JSONParser {
               if (info.width !== info.height) {
                 this.collector.addError(messages.iconIsNotSquare(_path));
                 this.isValid = false;
-              } else if (parseInt(info.width, 10) !== parseInt(size, 10)) {
+              } else if (info.mime !== 'image/svg+xml' &&
+                         parseInt(info.width, 10) !== parseInt(size, 10)) {
                 this.collector.addWarning(messages.iconSizeInvalid({
                   path: _path,
                   expected: parseInt(size, 10),
