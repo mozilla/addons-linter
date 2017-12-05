@@ -4,7 +4,7 @@ import path from 'path';
 import RJSON from 'relaxed-json';
 import { URL } from 'whatwg-url';
 import { oneLine } from 'common-tags';
-import sharp from 'sharp';
+import probeImageSize from 'probe-image-size';
 
 import { validateAddon, validateLangPack } from 'schema/validator';
 import { getConfig } from 'cli';
@@ -26,18 +26,7 @@ function normalizePath(iconPath) {
 }
 
 function getImageMetadata(io, iconPath) {
-  return io.getFileAsStream(iconPath)
-    .then((fileStream) => {
-      return new Promise((resolve, reject) => {
-        fileStream.pipe(sharp().metadata((err, info) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(info);
-          }
-        }));
-      });
-    });
+  return io.getFileAsStream(iconPath).then(probeImageSize);
 }
 
 
@@ -240,7 +229,8 @@ export default class ManifestJSONParser extends JSONParser {
               if (info.width !== info.height) {
                 this.collector.addError(messages.iconIsNotSquare(_path));
                 this.isValid = false;
-              } else if (parseInt(info.width, 10) !== parseInt(size, 10)) {
+              } else if (info.mime !== 'image/svg+xml' &&
+                         parseInt(info.width, 10) !== parseInt(size, 10)) {
                 this.collector.addWarning(messages.iconSizeInvalid({
                   path: _path,
                   expected: parseInt(size, 10),

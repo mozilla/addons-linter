@@ -852,6 +852,26 @@ describe('ManifestJSONParser', () => {
         });
     });
 
+    it('does not add a warning if the icon is SVG but the image size is not the same as mentioned', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        icons: {
+          32: 'tests/fixtures/icon.svg',
+        },
+      });
+      const files = {
+        'tests/fixtures/icon.svg': fs.createReadStream('tests/fixtures/icon.svg'),
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, { io: getStreamableIO(files) });
+      return manifestJSONParser.validateIcons()
+        .then(() => {
+          expect(manifestJSONParser.isValid).toBeTruthy();
+          const { warnings } = addonLinter.collector;
+          expect(warnings.length).toEqual(0);
+        });
+    });
+
     it('adds an error if the dimensions of the image are not the same', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
