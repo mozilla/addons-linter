@@ -246,7 +246,7 @@ describe('Linter', () => {
     addonLinter.io = { files: { whatever: {} } };
     addonLinter.io.getFile = () => Promise.resolve();
     addonLinter.getScanner = sinon.stub();
-    class fakeScanner {
+    class FakeScanner {
       scan() {
         return Promise.resolve({
           linterMessages: [{ message: 'whatever' }],
@@ -254,7 +254,7 @@ describe('Linter', () => {
         });
       }
     }
-    addonLinter.getScanner.returns(fakeScanner);
+    addonLinter.getScanner.returns(FakeScanner);
     return addonLinter.scanFile('whatever')
       .then(unexpectedSuccess)
       .catch((err) => {

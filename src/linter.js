@@ -273,23 +273,20 @@ export default class Linter {
       });
   }
 
-  checkFileExists(filepath, _lstatPromise = lstatPromise) {
+  async checkFileExists(filepath, _lstatPromise = lstatPromise) {
     const invalidMessage = new Error(
       `Path "${filepath}" is not a file or directory or does not exist.`);
-    return _lstatPromise(filepath)
-      .then((stats) => {
-        if (stats.isFile() === true || stats.isDirectory() === true) {
-          return stats;
-        }
-        throw invalidMessage;
-      })
-      .catch((err) => {
-        if (err.code !== 'ENOENT') {
-          throw err;
-        } else {
-          throw invalidMessage;
-        }
-      });
+    try {
+      const stats = await _lstatPromise(filepath);
+      if (stats.isFile() === true || stats.isDirectory() === true) {
+        return stats;
+      }
+    } catch (err) {
+      if (err.code !== 'ENOENT') {
+        throw err;
+      }
+    }
+    throw invalidMessage;
   }
 
   scanFiles(files) {
