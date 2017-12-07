@@ -4,6 +4,7 @@ import { Directory } from 'io';
 
 import { unexpectedSuccess } from '../helpers';
 
+import probeImageSize from 'probe-image-size';
 
 describe('Directory.getFiles()', () => {
   it('should return cached data when available', () => {
@@ -148,27 +149,10 @@ describe('Directory.getFileAsStream()', () => {
       .then(() => {
         return myDirectory.getFileAsStream('dir2/dir3/test.png');
       })
-      .then((readStream) => {
-        return new Promise((resolve, reject) => {
-          let content = '';
-          readStream
-            .on('readable', () => {
-              let chunk;
-              // eslint-disable-next-line no-cond-assign
-              while ((chunk = readStream.read()) !== null) {
-                content += chunk.toString();
-              }
-            })
-            .on('end', () => {
-              resolve(content);
-            })
-            .on('error', (err) => {
-              reject(err);
-            });
-        })
-          .then((content) => {
-            expect(content).toEqual('123\n');
-          });
+      .then(probeImageSize)
+      .then((result) => {
+        const {mime} = result;
+        expect(mime).toEqual('image/png');
       });
   });
 
