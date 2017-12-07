@@ -59,11 +59,23 @@ export class Directory extends IOBase {
   getFileAsStream(relativeFilePath) {
     return this.getPath(relativeFilePath)
       .then((filePath) => {
-        return Promise.resolve(createReadStream(filePath, {
+        const opt = {
           flags: 'r',
-          encoding: 'utf8',
+          encoding: null,
           autoClose: true,
-        }).pipe(stripBomStream()));
+        };
+        const isAscii =
+          /\.(?:css|html?|js(?:on)?|mml|svg|txt|x(?:ht)?ml)$/i.test(filePath);
+        let func;
+        if (isAscii) {
+          opt.encoding = 'utf8';
+          func = Promise.resolve(
+            createReadStream(filePath, opt).pipe(stripBomStream())
+          );
+        } else {
+          func = Promise.resolve(createReadStream(filePath, opt));
+        }
+        return func;
       });
   }
 
