@@ -1,6 +1,6 @@
-import probeImageSize from 'probe-image-size';
-
 import { EventEmitter } from 'events';
+
+import probeImageSize from 'probe-image-size';
 
 import { Directory } from 'io';
 
