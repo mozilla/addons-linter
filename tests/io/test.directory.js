@@ -142,6 +142,36 @@ describe('Directory.getFileAsStream()', () => {
       });
   });
 
+  it('should return a stream', () => {
+    const myDirectory = new Directory('tests/fixtures/io/');
+    return myDirectory.getFiles()
+      .then(() => {
+        return myDirectory.getFileAsStream('dir2/dir3/test.png');
+      })
+      .then((readStream) => {
+        return new Promise((resolve, reject) => {
+          let content = '';
+          readStream
+            .on('readable', () => {
+              let chunk;
+              // eslint-disable-next-line no-cond-assign
+              while ((chunk = readStream.read()) !== null) {
+                content += chunk.toString();
+              }
+            })
+            .on('end', () => {
+              resolve(content);
+            })
+            .on('error', (err) => {
+              reject(err);
+            });
+        })
+          .then((content) => {
+            expect(content).toEqual('123\n');
+          });
+      });
+  });
+
   it('should reject if file is too big', () => {
     const myDirectory = new Directory('tests/fixtures/io/');
     const fakeFileMeta = {
