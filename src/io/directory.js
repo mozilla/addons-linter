@@ -69,13 +69,11 @@ export class Directory extends IOBase {
         let func;
         if (isAscii) {
           opt.encoding = 'utf8';
-          func = Promise.resolve(
-            createReadStream(filePath, opt).pipe(stripBomStream())
-          );
+          func = createReadStream(filePath, opt).pipe(stripBomStream());
         } else {
-          func = Promise.resolve(createReadStream(filePath, opt));
+          func = createReadStream(filePath, opt);
         }
-        return func;
+        return Promise.resolve(func);
       });
   }
 
