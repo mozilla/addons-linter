@@ -228,49 +228,38 @@ export default class Linter {
     return output;
   }
 
-  getAddonMetadata({
+  async getAddonMetadata({
     _log = log,
     ManifestJSONParser = DefaultManifestJSONParser,
   } = {}) {
     if (this.addonMetadata !== null) {
       _log.debug('Metadata already set; returning cached metadata.');
-      return Promise.resolve(this.addonMetadata);
+      return this.addonMetadata;
     }
-
-    return this.io.getFiles()
-      .then((files) => {
-        if (Object.prototype.hasOwnProperty.call(files, constants.MANIFEST_JSON)) {
-          _log.info('Retrieving metadata from manifest.json');
-          return this.io.getFileAsString(constants.MANIFEST_JSON)
-            .then((json) => {
-              const manifestParser = new ManifestJSONParser(
-                json,
-                this.collector,
-                {
-                  selfHosted: this.config.selfHosted,
-                  isLanguagePack: this.config.langpack,
-                  io: this.io,
-                },
-              );
-              if (manifestParser.parsedJSON.icons) {
-                return manifestParser.validateIcons()
-                  .then(() => {
-                    return manifestParser.getMetadata();
-                  });
-              }
-              return manifestParser.getMetadata();
-            });
-        }
-        _log.warn(`No ${constants.MANIFEST_JSON} was found in the package metadata`);
-        this.collector.addNotice(messages.TYPE_NO_MANIFEST_JSON);
-        return {};
-      })
-      .then((addonMetadata) => {
-        this.addonMetadata = addonMetadata;
-        this.addonMetadata.totalScannedFileSize = 0;
-
-        return this.addonMetadata;
-      });
+    const files = await this.io.getFiles();
+    if (constants.MANIFEST_JSON in files) {
+      _log.info('Retrieving metadata from manifest.json');
+      const json = await this.io.getFileAsString(constants.MANIFEST_JSON);
+      const manifestParser = new ManifestJSONParser(
+        json,
+        this.collector,
+        {
+          selfHosted: this.config.selfHosted,
+          isLanguagePack: this.config.langpack,
+          io: this.io,
+        },
+      );
+      if (manifestParser.parsedJSON.icons) {
+        await manifestParser.validateIcons();
+      }
+      this.addonMetadata = manifestParser.getMetadata();
+    } else {
+      _log.warn(`No ${constants.MANIFEST_JSON} was found in the package metadata`);
+      this.collector.addNotice(messages.TYPE_NO_MANIFEST_JSON);
+      this.addonMetadata = {};
+    }
+    this.addonMetadata.totalScannedFileSize = 0;
+    return this.addonMetadata;
   }
 
   async checkFileExists(filepath, _lstatPromise = lstatPromise) {
@@ -324,119 +313,115 @@ export default class Linter {
     }
   }
 
-  scanFile(filename) {
+  async scanFile(filename) {
+    let scanResult = { linterMessages: [], scannedFiles: [] };
     const ScannerClass = this.getScanner(filename);
 
-    return this.io.getFile(filename, ScannerClass.fileResultType)
-      .then((fileData) => {
-        // First: check that this file is under our 2MB parsing limit. Otherwise
-        // it will be very slow and may crash the lint with an out-of-memory
-        // error.
-        const fileSize = typeof this.io.files[filename].size !== 'undefined' ?
-          this.io.files[filename].size :
-          this.io.files[filename].uncompressedSize;
-        const maxSize = 1024 * 1024 * constants.MAX_FILE_SIZE_TO_PARSE_MB;
+    // First: check that this file is under our 2MB parsing limit. Otherwise
+    // it will be very slow and may crash the lint with an out-of-memory
+    // error.
+    const fileSize = typeof this.io.files[filename].size !== 'undefined' ?
+      this.io.files[filename].size :
+      this.io.files[filename].uncompressedSize;
+    const maxSize = 1024 * 1024 * constants.MAX_FILE_SIZE_TO_PARSE_MB;
 
-        if (ScannerClass !== BinaryScanner && fileSize >= maxSize) {
-          const filesizeError = Object.assign({}, messages.FILE_TOO_LARGE, {
-            file: filename,
-            type: constants.VALIDATION_ERROR,
-          });
-
-          return Promise.resolve({
-            linterMessages: [filesizeError],
-            scannedFiles: [filename],
-          });
-        }
-
-        if (ScannerClass !== BinaryScanner && ScannerClass !== FilenameScanner) {
-          // Check for badwords across all code files
-          this._markBadwordUsage(filename, fileData);
-
-          if (this.addonMetadata) {
-            this.addonMetadata.totalScannedFileSize += fileSize;
-          }
-        }
-
-        const scanner = new ScannerClass(fileData, filename, {
-          addonMetadata: this.addonMetadata,
-          // This is for the JSONScanner, which is a bit of an anomaly and
-          // accesses the collector directly.
-          // TODO: Bring this in line with other scanners, see:
-          // https://github.com/mozilla/addons-linter/issues/895
-          collector: this.collector,
-          // list of disabled rules for js scanner
-          disabledLinterRules: this.config.disableLinterRules,
-          existingFiles: this.io.files,
-        });
-
-        return scanner.scan();
-      })
-      // messages should be a list of raw message data objects.
-      .then(({ linterMessages, scannedFiles }) => {
-        linterMessages.forEach((message) => {
-          if (typeof message.type === 'undefined') {
-            throw new Error('message.type must be defined');
-          }
-          this.collector._addMessage(message.type, message);
-        });
-
-        scannedFiles.forEach((_filename) => {
-          this.collector.recordScannedFile(_filename, ScannerClass.scannerName);
-        });
+    if (ScannerClass !== BinaryScanner && fileSize >= maxSize) {
+      const filesizeError = Object.assign({}, messages.FILE_TOO_LARGE, {
+        file: filename,
+        type: constants.VALIDATION_ERROR,
       });
+
+      scanResult = {
+        linterMessages: [filesizeError],
+        scannedFiles: [filename],
+      };
+    } else {
+      const fileData = await this.io.getFile(filename, ScannerClass.fileResultType);
+      if (ScannerClass !== BinaryScanner && ScannerClass !== FilenameScanner) {
+        // Check for badwords across all code files
+        this._markBadwordUsage(filename, fileData);
+
+        if (this.addonMetadata) {
+          this.addonMetadata.totalScannedFileSize += fileSize;
+        }
+      }
+
+      const scanner = new ScannerClass(fileData, filename, {
+        addonMetadata: this.addonMetadata,
+        // This is for the JSONScanner, which is a bit of an anomaly and
+        // accesses the collector directly.
+        // TODO: Bring this in line with other scanners, see:
+        // https://github.com/mozilla/addons-linter/issues/895
+        collector: this.collector,
+        // list of disabled rules for js scanner
+        disabledLinterRules: this.config.disableLinterRules,
+        existingFiles: this.io.files,
+      });
+
+      scanResult = await scanner.scan();
+    }
+
+    // messages should be a list of raw message data objects.
+    const { linterMessages, scannedFiles } = scanResult;
+
+    linterMessages.forEach((message) => {
+      if (typeof message.type === 'undefined') {
+        throw new Error('message.type must be defined');
+      }
+      this.collector._addMessage(message.type, message);
+    });
+
+    scannedFiles.forEach((_filename) => {
+      this.collector.recordScannedFile(_filename, ScannerClass.scannerName);
+    });
   }
 
-  extractMetadata({
+  async extractMetadata({
     _Crx = Crx, _console = console, _Directory = Directory, _Xpi = Xpi,
   } = {}) {
-    return checkMinNodeVersion()
-      .then(() => {
-        return this.checkFileExists(this.packagePath);
-      })
-      // eslint-disable-next-line consistent-return
-      .then((stats) => {
-        if (stats.isFile() === true) {
-          if (this.packagePath.endsWith('.crx')) {
-            log.info('Package is a file ending in .crx; parsing as a CRX');
-            return new _Crx(this.packagePath);
-          }
-          log.info('Package is a file. Attempting to parse as an .xpi/.zip');
-          return new _Xpi(this.packagePath);
-        } else if (stats.isDirectory()) {
-          log.info('Package path is a directory. Parsing as a directory');
-          return new _Directory(this.packagePath);
-        }
-      })
-      .then((io) => {
-        io.setScanFileCallback(this.shouldScanFile);
-        this.io = io;
-        return this.getAddonMetadata();
-      })
-      .then((addonMetadata) => {
-        return this.markSpecialFiles(addonMetadata);
-      })
-      .then((addonMetadata) => {
-        log.info('Metadata option is set to %s', this.config.metadata);
-        if (this.config.metadata === true) {
-          const metadataObject = {
-            // Reflects if errors were encountered in extraction
-            // of metadata.
-            hasErrors: this.output.errors.length !== 0,
-            metadata: addonMetadata,
-          };
+    await checkMinNodeVersion();
 
-          // If errors exist the data is available via the
-          // errors list.
-          if (metadataObject.hasErrors) {
-            metadataObject.errors = this.output.errors;
-          }
+    const stats = await this.checkFileExists(this.packagePath);
+    let io;
 
-          _console.log(this.toJSON({ input: metadataObject }));
-        }
+    if (stats.isFile()) {
+      if (this.packagePath.endsWith('.crx')) {
+        log.info('Package is a file ending in .crx; parsing as a CRX');
+        io = new _Crx(this.packagePath);
+      } else {
+        log.info('Package is a file. Attempting to parse as an .xpi/.zip');
+        io = new _Xpi(this.packagePath);
+      }
+    } else {
+      // If not a file then it's a directory.
+      log.info('Package path is a directory. Parsing as a directory');
+      io = new _Directory(this.packagePath);
+    }
 
-        return addonMetadata;
-      });
+    io.setScanFileCallback(this.shouldScanFile);
+    this.io = io;
+
+    const addonMetadata = await this.markSpecialFiles(await this.getAddonMetadata());
+
+    log.info('Metadata option is set to %s', this.config.metadata);
+    if (this.config.metadata === true) {
+      const metadataObject = {
+        // Reflects if errors were encountered in extraction
+        // of metadata.
+        hasErrors: this.output.errors.length !== 0,
+        metadata: addonMetadata,
+      };
+
+      // If errors exist the data is available via the
+      // errors list.
+      if (metadataObject.hasErrors) {
+        metadataObject.errors = this.output.errors;
+      }
+
+      _console.log(this.toJSON({ input: metadataObject }));
+    }
+
+    return addonMetadata;
   }
 
   shouldScanFile(fileOrDirName, isDir) {
@@ -462,64 +447,62 @@ export default class Linter {
     return true;
   }
 
-  scan(deps = {}) {
-    return this.extractMetadata(deps)
-      .then(() => {
-        return this.io.getFiles();
-      })
-      .then((files) => {
-        if (this.config.scanFile) {
-          if (!this.config.scanFile.some((f) => Object.keys(files).includes(f))) {
-            const _files = this.config.scanFile.join(', ');
-            throw new Error(`Selected file(s) not found: ${_files}`);
-          }
+  async scan(deps = {}) {
+    try {
+      await this.extractMetadata(deps);
+      const files = await this.io.getFiles();
+      if (this.config.scanFile) {
+        if (!this.config.scanFile.some((f) => Object.keys(files).includes(f))) {
+          const _files = this.config.scanFile.join(', ');
+          throw new Error(`Selected file(s) not found: ${_files}`);
         }
+      }
 
-        // Known libraries do not need to be scanned
-        const filesWithoutJSLibraries = Object.keys(files).filter((file) => {
-          return !Object.prototype.hasOwnProperty.call(this.addonMetadata.jsLibs, file);
-        }, this);
-        return this.scanFiles(filesWithoutJSLibraries);
-      })
-      .then(() => {
-        this.print(deps._console);
+      // Known libraries do not need to be scanned
+      const filesWithoutJSLibraries = Object.keys(files).filter((file) => {
+        return !(file in this.addonMetadata.jsLibs);
+      });
+
+      await this.scanFiles(filesWithoutJSLibraries);
+
+      this.print(deps._console);
+      // This is skipped in the code coverage because the
+      // test runs against un-instrumented code.
+      /* istanbul ignore if  */
+      if (this.config.runAsBinary === true) {
+        let exitCode = this.output.errors.length > 0 ? 1 : 0;
+        if (exitCode === 0 && this.config.warningsAsErrors === true) {
+          exitCode = this.output.warnings.length > 0 ? 1 : 0;
+        }
+        process.exit(exitCode);
+      }
+    } catch (err) {
+      this.handleError(err, deps._console);
+      throw err;
+    }
+  }
+
+  async run(deps = {}) {
+    if (this.config.metadata === true) {
+      try {
+        await this.extractMetadata(deps);
+
         // This is skipped in the code coverage because the
         // test runs against un-instrumented code.
         /* istanbul ignore if  */
         if (this.config.runAsBinary === true) {
-          let exitCode = this.output.errors.length > 0 ? 1 : 0;
-          if (exitCode === 0 && this.config.warningsAsErrors === true) {
-            exitCode = this.output.warnings.length > 0 ? 1 : 0;
-          }
-          process.exit(exitCode);
+          process.exit(this.output.errors.length > 0 ? 1 : 0);
         }
-      })
-      .catch((err) => {
+
+        return this.output;
+      } catch (err) {
+        log.debug(err);
         this.handleError(err, deps._console);
         throw err;
-      });
-  }
-
-  run(deps = {}) {
-    if (this.config.metadata === true) {
-      return this.extractMetadata(deps)
-        .then(() => {
-          // This is skipped in the code coverage because the
-          // test runs against un-instrumented code.
-          /* istanbul ignore if  */
-          if (this.config.runAsBinary === true) {
-            process.exit(this.output.errors.length > 0 ? 1 : 0);
-          }
-
-          return this.output;
-        })
-        .catch((err) => {
-          log.debug(err);
-          this.handleError(err, deps._console);
-          throw err;
-        });
+      }
     }
-    return this.scan(deps).then(() => this.output);
+    await this.scan(deps);
+    return this.output;
   }
 
   markSpecialFiles(addonMetadata) {
