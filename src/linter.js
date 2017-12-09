@@ -505,18 +505,11 @@ export default class Linter {
     return this.output;
   }
 
-  markSpecialFiles(addonMetadata) {
-    /* eslint-disable no-shadow */
-    return this._markEmptyFiles(addonMetadata)
-      .then((addonMetadata) => {
-        return this._markJSLibs(addonMetadata);
-      })
-      .then((addonMetadata) => {
-        return this._markBannedLibs(addonMetadata);
-      })
-      .then((addonMetadata) => {
-        return this._markUnknownOrMinifiedCode(addonMetadata);
-      });
+  async markSpecialFiles(addonMetadata) {
+    let _addonMetadata = await this._markEmptyFiles(addonMetadata);
+    _addonMetadata = await this._markJSLibs(_addonMetadata);
+    _addonMetadata = this._markBannedLibs(_addonMetadata);
+    return this._markUnknownOrMinifiedCode(_addonMetadata);
   }
 
   _markBannedLibs(addonMetadata, _unadvisedLibraries = UNADVISED_LIBRARIES) {
@@ -541,88 +534,72 @@ export default class Linter {
     return addonMetadata;
   }
 
-  _markEmptyFiles(addonMetadata) {
+  async _markEmptyFiles(addonMetadata) {
     const emptyFiles = [];
 
-    return this.io.getFiles()
-      .then((files) => {
-        Object.keys(files).forEach((filename) => {
-          if (typeof files[filename].size === 'undefined' &&
-              typeof files[filename].uncompressedSize === 'undefined') {
-            throw new Error(`No size available for ${filename}`);
-          }
+    const files = await this.io.getFiles();
+    Object.keys(files).forEach((filename) => {
+      if (typeof files[filename].size === 'undefined' &&
+          typeof files[filename].uncompressedSize === 'undefined') {
+        throw new Error(`No size available for ${filename}`);
+      }
 
-          if (files[filename].size === 0 ||
-              files[filename].uncompressedSize === 0) {
-            emptyFiles.push(filename);
-          }
-        });
+      if (files[filename].size === 0 ||
+          files[filename].uncompressedSize === 0) {
+        emptyFiles.push(filename);
+      }
+    });
 
-        // eslint-disable-next-line no-param-reassign
-        addonMetadata.emptyFiles = emptyFiles;
-        return addonMetadata;
-      });
+    // eslint-disable-next-line no-param-reassign
+    addonMetadata.emptyFiles = emptyFiles;
+    return addonMetadata;
   }
 
-  _markJSLibs(addonMetadata) {
+  async _markJSLibs(addonMetadata) {
     const dispensary = new Dispensary();
     const jsLibs = {};
-    const promises = [];
+    const files = await this.io.getFilesByExt('.js');
 
-    return this.io.getFilesByExt('.js')
-      .then((files) => {
-        files.forEach((filename) => {
-          promises.push(this.io.getFile(filename)
-            .then((file) => {
-              const hashResult = dispensary.match(file);
+    await Promise.all(files.map(async (filename) => {
+      const file = await this.io.getFile(filename);
+      const hashResult = dispensary.match(file);
 
-              if (hashResult !== false) {
-                log.debug(`${hashResult} detected in ${filename}`);
-                jsLibs[filename] = hashResult;
+      if (hashResult !== false) {
+        log.debug(`${hashResult} detected in ${filename}`);
+        jsLibs[filename] = hashResult;
 
-                this.collector.addNotice(
-                  Object.assign({}, messages.KNOWN_LIBRARY, {
-                    file: filename,
-                  })
-                );
-              }
-            }));
-        });
+        this.collector.addNotice(
+          Object.assign({}, messages.KNOWN_LIBRARY, {
+            file: filename,
+          })
+        );
+      }
+    }));
 
-        return Promise.all(promises);
-      }).then(() => {
-        // eslint-disable-next-line no-param-reassign
-        addonMetadata.jsLibs = jsLibs;
-        return addonMetadata;
-      });
+    // eslint-disable-next-line no-param-reassign
+    addonMetadata.jsLibs = jsLibs;
+    return addonMetadata;
   }
 
-  _markUnknownOrMinifiedCode(addonMetadata) {
+  async _markUnknownOrMinifiedCode(addonMetadata) {
     const unknownMinifiedFiles = [];
-    const promises = [];
 
-    return this.io.getFilesByExt('.js')
-      .then((files) => {
-        files.forEach((filename) => {
-          if (filename in addonMetadata.jsLibs) {
-            return;
-          }
+    const files = await this.io.getFilesByExt('.js');
 
-          promises.push(this.io.getFile(filename)
-            .then((fileData) => {
-              if (couldBeMinifiedCode(fileData)) {
-                log.debug(`Minified code detected in ${filename}`);
-                unknownMinifiedFiles.push(filename);
-              }
-            }));
-        });
+    await Promise.all(files.map(async (filename) => {
+      if (filename in addonMetadata.jsLibs) {
+        return;
+      }
+      const fileData = await this.io.getFile(filename);
+      if (couldBeMinifiedCode(fileData)) {
+        log.debug(`Minified code detected in ${filename}`);
+        unknownMinifiedFiles.push(filename);
+      }
+    }));
 
-        return Promise.all(promises);
-      }).then(() => {
-        // eslint-disable-next-line no-param-reassign
-        addonMetadata.unknownMinifiedFiles = unknownMinifiedFiles;
-        return addonMetadata;
-      });
+    // eslint-disable-next-line no-param-reassign
+    addonMetadata.unknownMinifiedFiles = unknownMinifiedFiles;
+    return addonMetadata;
   }
 
   _markBadwordUsage(filename, fileData) {
