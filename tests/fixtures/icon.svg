@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="64" width="64"
+     viewBox="0 0 64 64">
+  <style>
+    g {
+      fill: transparent;
+    }
+    g:not(:target):not(#red),
+    g:target ~ #red {
+      display: none;
+    }
+    #blue {
+      stroke: blue;
+    }
+    #red {
+      stroke: red;
+    }
+  </style>
+  <symbol id="icon">
+    <circle cx="32" cy="32" r="24" stroke-width="16"/>
+  </symbol>
+  <g id="blue">
+    <use href="#icon"/>
+  </g>
+  <g id="red">
+    <use href="#icon"/>
+  </g>
+</svg>
