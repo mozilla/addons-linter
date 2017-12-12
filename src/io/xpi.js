@@ -33,7 +33,7 @@ export class Xpi extends IOBase {
     });
   }
 
-  handleEntry(entry, reject) {
+  handleEntry(entry) {
     if (/\/$/.test(entry.fileName)) {
       return;
     }
@@ -43,53 +43,51 @@ export class Xpi extends IOBase {
     }
     if (this.entries.includes(entry.fileName)) {
       log.info('Found duplicate file entry: "%s" in package', entry.fileName);
-      reject(new Error(oneLine`DuplicateZipEntry: Entry
-        "${entry.fileName}" has already been seen`));
+      throw new Error(oneLine`DuplicateZipEntry: Entry
+        "${entry.fileName}" has already been seen`);
     }
     this.entries.push(entry.fileName);
     this.files[entry.fileName] = entry;
   }
 
-  getFiles(_onEventsSubscribed) {
-    return new Promise((resolve, reject) => {
-      // If we have already processed the file and have data
-      // on this instance return that.
-      if (Object.keys(this.files).length) {
-        const wantedFiles = {};
-        Object.keys(this.files).forEach((fileName) => {
-          if (this.shouldScanFile(fileName)) {
-            wantedFiles[fileName] = this.files[fileName];
-          } else {
-            log.debug(`Skipping cached file: ${fileName}`);
-          }
-        });
-        return resolve(wantedFiles);
+  async getFiles(_onEventsSubscribed) {
+    // If we have already processed the file and have data
+    // on this instance return that.
+    if (Object.keys(this.files).length) {
+      const wantedFiles = {};
+      Object.keys(this.files).forEach((fileName) => {
+        if (this.shouldScanFile(fileName)) {
+          wantedFiles[fileName] = this.files[fileName];
+        } else {
+          log.debug(`Skipping cached file: ${fileName}`);
+        }
+      });
+      return wantedFiles;
+    }
+
+    const zipfile = await this.open();
+
+    return new Promise((resolve) => {
+      zipfile.on('entry', (entry) => {
+        this.handleEntry(entry);
+      });
+
+      // When the last entry has been processed
+      // and the fd is closed resolve the promise.
+      // Note: we cannot use 'end' here as 'end' is fired
+      // after the last entry event is emitted and streams
+      // may still be being read with openReadStream.
+      zipfile.on('close', () => {
+        resolve(this.files);
+      });
+
+      if (_onEventsSubscribed) {
+        // Run optional callback when we know the event handlers
+        // have been inited. Useful for testing.
+        if (typeof _onEventsSubscribed === 'function') {
+          _onEventsSubscribed();
+        }
       }
-
-      return this.open()
-        .then((zipfile) => {
-          zipfile.on('entry', (entry) => {
-            this.handleEntry(entry, reject);
-          });
-
-          // When the last entry has been processed
-          // and the fd is closed resolve the promise.
-          // Note: we cannot use 'end' here as 'end' is fired
-          // after the last entry event is emitted and streams
-          // may still be being read with openReadStream.
-          zipfile.on('close', () => {
-            resolve(this.files);
-          });
-
-          if (_onEventsSubscribed) {
-            // Run optional callback when we know the event handlers
-            // have been inited. Useful for testing.
-            if (typeof _onEventsSubscribed === 'function') {
-              _onEventsSubscribed();
-            }
-          }
-        })
-        .catch(reject);
     });
   }
 
@@ -103,62 +101,55 @@ export class Xpi extends IOBase {
     }
   }
 
-  getFileAsStream(path) {
+  async getFileAsStream(path) {
+    this.checkPath(path);
+    const zipfile = await this.open();
     return new Promise((resolve, reject) => {
-      this.checkPath(path);
-      return this.open()
-        .then((zipfile) => {
-          zipfile.openReadStream(this.files[path], (err, readStream) => {
-            if (err) {
-              return reject(err);
-            }
-            return resolve(readStream.pipe(stripBomStream()));
-          });
-        })
-        .catch(reject);
+      zipfile.openReadStream(this.files[path], (err, readStream) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(readStream.pipe(stripBomStream()));
+      });
     });
   }
 
-  getFileAsString(path) {
-    return this.getFileAsStream(path)
-      .then((fileStream) => {
-        return new Promise((resolve, reject) => {
-          let buf = Buffer.from('');
-          fileStream.on('data', (chunk) => {
-            buf = Buffer.concat([buf, chunk]);
-          });
+  async getFileAsString(path) {
+    const fileStream = await this.getFileAsStream(path);
 
-          // Once the file is assembled, resolve the promise.
-          fileStream.on('end', () => {
-            const fileString = buf.toString('utf8');
-            resolve(fileString);
-          });
-
-          fileStream.on('error', reject);
-        });
+    return new Promise((resolve, reject) => {
+      let buf = Buffer.from('');
+      fileStream.on('data', (chunk) => {
+        buf = Buffer.concat([buf, chunk]);
       });
+
+      // Once the file is assembled, resolve the promise.
+      fileStream.on('end', () => {
+        const fileString = buf.toString('utf8');
+        resolve(fileString);
+      });
+
+      fileStream.on('error', reject);
+    });
   }
 
-  getChunkAsBuffer(path, chunkLength) {
+  async getChunkAsBuffer(path, chunkLength) {
+    this.checkPath(path);
+    const zipfile = await this.open();
     return new Promise((resolve, reject) => {
-      this.checkPath(path);
-      return this.open()
-        .then((zipfile) => {
-          // eslint-disable-next-line consistent-return
-          zipfile.openReadStream(this.files[path], (err, readStream) => {
-            if (err) {
-              return reject(err);
+      // eslint-disable-next-line consistent-return
+      zipfile.openReadStream(this.files[path], (err, readStream) => {
+        if (err) {
+          return reject(err);
+        }
+        readStream.pipe(
+          firstChunkStream({ chunkLength },
+            (_, enc) => {
+              resolve(enc);
             }
-            readStream.pipe(
-              firstChunkStream({ chunkLength },
-                (_, enc) => {
-                  resolve(enc);
-                }
-              )
-            );
-          });
-        })
-        .catch(reject);
+          )
+        );
+      });
     });
   }
 }
