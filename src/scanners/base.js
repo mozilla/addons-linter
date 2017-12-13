@@ -41,56 +41,39 @@ export default class BaseScanner {
     ensureFilenameExists(this.filename);
   }
 
-  scan(_rules = this._defaultRules) {
-    return new Promise((resolve, reject) => {
-      this.getContents()
-        .then((contents) => {
-          const promises = [];
-          // Ignore private functions exported in rule files.
-          //
-          // (These are exported for testing purposes, but we don't want
-          // to include them in our linter's rules.)
-          const rules = ignorePrivateFunctions(_rules);
+  async scan(_rules = this._defaultRules) {
+    const contents = await this.getContents();
+    // Ignore private functions exported in rule files.
+    //
+    // (These are exported for testing purposes, but we don't want
+    // to include them in our linter's rules.)
+    const rules = ignorePrivateFunctions(_rules);
 
-          Object.keys(rules).forEach((rule) => {
-            this._rulesProcessed++;
-            promises.push(rules[rule](contents, this.filename, this.options));
-          });
+    const ruleResults = await Promise.all(Object.keys(rules).map((rule) => {
+      this._rulesProcessed++;
+      return rules[rule](contents, this.filename, this.options);
+    }));
 
-          return Promise.all(promises);
-        })
-        .then((ruleResults) => {
-          ruleResults.forEach((messages) => {
-            this.linterMessages = this.linterMessages.concat(messages);
-          });
-
-          resolve({
-            linterMessages: this.linterMessages,
-            scannedFiles: [this.filename],
-          });
-        })
-        .catch(reject);
+    ruleResults.forEach((messages) => {
+      this.linterMessages = this.linterMessages.concat(messages);
     });
+
+    return {
+      linterMessages: this.linterMessages,
+      scannedFiles: [this.filename],
+    };
   }
 
-  getContents() {
-    return new Promise((resolve, reject) => {
-      if (this._parsedContent !== null) {
-        return resolve(this._parsedContent);
-      }
-
-      return this._getContents()
-        .then((contents) => {
-          this._parsedContent = contents;
-
-          resolve(this._parsedContent);
-        })
-        .catch(reject);
-    });
+  async getContents() {
+    if (this._parsedContent !== null) {
+      return this._parsedContent;
+    }
+    const contents = await this._getContents();
+    this._parsedContent = contents;
+    return this._parsedContent;
   }
 
-  _getContents() {
-    return Promise.reject(
-      new Error('_getContents is not implemented'));
+  async _getContents() {
+    throw new Error('_getContents is not implemented');
   }
 }

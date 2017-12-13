@@ -11,41 +11,37 @@ export default class LangpackScanner extends BaseScanner {
     return 'langpack';
   }
 
-  _getContents() {
-    return Promise.resolve(this.contents);
+  async _getContents() {
+    return this.contents;
   }
 
-  scan() {
-    return this.getContents()
-      .then((data) => {
-        const ext = extname(this.filename);
-        let ParserClass = null;
+  async scan() {
+    const data = await this.getContents();
 
-        if (ext === '.properties') {
-          ParserClass = PropertiesParser;
-        } else if (ext === '.ftl') {
-          ParserClass = FluentParser;
-        } else if (ext === '.dtd') {
-          ParserClass = DoctypeParser;
-        } else {
-          throw new Error('Unsupported file type');
-        }
+    const ext = extname(this.filename);
+    let ParserClass = null;
 
-        const parser = new ParserClass(data, this.options.collector, {
-          filename: this.filename,
-        });
+    if (ext === '.properties') {
+      ParserClass = PropertiesParser;
+    } else if (ext === '.ftl') {
+      ParserClass = FluentParser;
+    } else if (ext === '.dtd') {
+      ParserClass = DoctypeParser;
+    } else {
+      throw new Error('Unsupported file type');
+    }
 
-        parser.parse();
+    const parser = new ParserClass(data, this.options.collector, {
+      filename: this.filename,
+    });
 
-        // The parsers report directly to the collector so we don't have to
-        // forward them anymore.
-        return Promise.resolve({
-          linterMessages: [],
-          scannedFiles: [this.filename],
-        });
-      })
-      .catch((err) => {
-        return Promise.reject(err);
-      });
+    parser.parse();
+
+    // The parsers report directly to the collector so we don't have to
+    // forward them anymore.
+    return {
+      linterMessages: [],
+      scannedFiles: [this.filename],
+    };
   }
 }

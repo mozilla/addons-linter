@@ -47,119 +47,117 @@ export default class JavaScriptScanner {
     return 'javascript';
   }
 
-  scan(_ESLint = ESLint, {
+  async scan(_ESLint = ESLint, {
     _rules = this._defaultRules,
     _ruleMapping = ESLINT_RULE_MAPPING,
     _messages = messages,
   } = {}) {
-    return new Promise((resolve) => {
-      const cli = new _ESLint.CLIEngine({
-        baseConfig: {
-          env: {
-            es6: true,
-            webextension: true,
-            browser: true,
-          },
-          settings: {
-            addonMetadata: this.options.addonMetadata,
-            existingFiles: this.options.existingFiles,
-          },
+    const cli = new _ESLint.CLIEngine({
+      baseConfig: {
+        env: {
+          es6: true,
+          webextension: true,
+          browser: true,
         },
-        parserOptions: {
-          ecmaVersion: 2017,
-          ecmaFeatures: {
-            experimentalObjectRestSpread: true,
-          },
+        settings: {
+          addonMetadata: this.options.addonMetadata,
+          existingFiles: this.options.existingFiles,
         },
-        rules: _ruleMapping,
-        plugins: ['no-unsafe-innerhtml'],
-        allowInlineConfig: false,
+      },
+      parserOptions: {
+        ecmaVersion: 2017,
+        ecmaFeatures: {
+          experimentalObjectRestSpread: true,
+        },
+      },
+      rules: _ruleMapping,
+      plugins: ['no-unsafe-innerhtml'],
+      allowInlineConfig: false,
 
-        // Disable ignore-mode and overwrite eslint default ignore patterns
-        // so an add-on's bower and node module folders are included in
-        // the scan. See: https://github.com/mozilla/addons-linter/issues/1288
-        ignore: false,
-        patterns: ['!bower_components/*', '!node_modules/*'],
+      // Disable ignore-mode and overwrite eslint default ignore patterns
+      // so an add-on's bower and node module folders are included in
+      // the scan. See: https://github.com/mozilla/addons-linter/issues/1288
+      ignore: false,
+      patterns: ['!bower_components/*', '!node_modules/*'],
 
-        filename: this.filename,
-        // Avoid loading the addons-linter .eslintrc file
-        useEslintrc: false,
-      });
+      filename: this.filename,
+      // Avoid loading the addons-linter .eslintrc file
+      useEslintrc: false,
+    });
 
-      const rulesAfterExclusion = excludeRules(_rules, this.disabledRules);
-      Object.keys(rulesAfterExclusion).forEach((name) => {
-        this._rulesProcessed++;
-        cli.linter.defineRule(name, rulesAfterExclusion[name]);
-      });
+    const rulesAfterExclusion = excludeRules(_rules, this.disabledRules);
+    Object.keys(rulesAfterExclusion).forEach((name) => {
+      this._rulesProcessed++;
+      cli.linter.defineRule(name, rulesAfterExclusion[name]);
+    });
 
-      // ESLint is synchronous and doesn't accept streams, so we need to
-      // pass it the entire source file as a string.
-      const report = cli.executeOnText(this.code, this.filename, true);
+    // ESLint is synchronous and doesn't accept streams, so we need to
+    // pass it the entire source file as a string.
+    const report = cli.executeOnText(this.code, this.filename, true);
 
-      report.results.forEach((result) => {
-        // eslint prepends the filename with the current working directory,
-        // strip that out.
-        const relativePath = path.relative(process.cwd(), result.filePath);
+    report.results.forEach((result) => {
+      // eslint prepends the filename with the current working directory,
+      // strip that out.
+      const relativePath = path.relative(process.cwd(), result.filePath);
 
-        this.scannedFiles.push(relativePath);
+      this.scannedFiles.push(relativePath);
 
-        result.messages.forEach((message) => {
-          // Fatal error messages (like SyntaxErrors) are a bit different, we
-          // need to handle them specially.
-          if (message.fatal === true) {
-            // eslint-disable-next-line no-param-reassign
-            message.message = _messages.JS_SYNTAX_ERROR.code;
-          }
+      result.messages.forEach((message) => {
+        // Fatal error messages (like SyntaxErrors) are a bit different, we
+        // need to handle them specially.
+        if (message.fatal === true) {
+          // eslint-disable-next-line no-param-reassign
+          message.message = _messages.JS_SYNTAX_ERROR.code;
+        }
 
-          if (typeof message.message === 'undefined') {
-            throw new Error(
-              oneLine`JS rules must pass a valid message as
-              the second argument to context.report()`);
-          }
+        if (typeof message.message === 'undefined') {
+          throw new Error(
+            oneLine`JS rules must pass a valid message as
+            the second argument to context.report()`);
+        }
 
-          // Fallback to looking up the message object by the message
-          let code = message.message;
-          let shortDescription;
-          let description;
+        // Fallback to looking up the message object by the message
+        let code = message.message;
+        let shortDescription;
+        let description;
 
-          // Support 3rd party eslint rules that don't have our internal
-          // message structure and allow us to optionally overwrite
-          // their `message` and `description`.
-          if (Object.prototype.hasOwnProperty.call(_messages, code)) {
-            ({
-              message: shortDescription,
-              description,
-            } = _messages[code]);
-          } else if (Object.prototype.hasOwnProperty.call(
-            ESLINT_OVERWRITE_MESSAGE, message.ruleId)) {
-            const overwrites = ESLINT_OVERWRITE_MESSAGE[message.ruleId];
-            shortDescription = overwrites.message || message.message;
-            description = overwrites.description || message.description;
-
-            if (overwrites.code) {
-              ({ code } = overwrites);
-            }
-          } else {
-            shortDescription = code;
-            description = null;
-          }
-
-          this.linterMessages.push({
-            code,
-            column: message.column,
-            description,
-            file: this.filename,
-            line: message.line,
+        // Support 3rd party eslint rules that don't have our internal
+        // message structure and allow us to optionally overwrite
+        // their `message` and `description`.
+        if (Object.prototype.hasOwnProperty.call(_messages, code)) {
+          ({
             message: shortDescription,
-            sourceCode: message.source,
-            type: ESLINT_TYPES[message.severity],
-          });
+            description,
+          } = _messages[code]);
+        } else if (Object.prototype.hasOwnProperty.call(
+          ESLINT_OVERWRITE_MESSAGE, message.ruleId)) {
+          const overwrites = ESLINT_OVERWRITE_MESSAGE[message.ruleId];
+          shortDescription = overwrites.message || message.message;
+          description = overwrites.description || message.description;
+
+          if (overwrites.code) {
+            ({ code } = overwrites);
+          }
+        } else {
+          shortDescription = code;
+          description = null;
+        }
+
+        this.linterMessages.push({
+          code,
+          column: message.column,
+          description,
+          file: this.filename,
+          line: message.line,
+          message: shortDescription,
+          sourceCode: message.source,
+          type: ESLINT_TYPES[message.severity],
         });
       });
-      resolve({
-        linterMessages: this.linterMessages,
-        scannedFiles: this.scannedFiles,
-      });
     });
+    return {
+      linterMessages: this.linterMessages,
+      scannedFiles: this.scannedFiles,
+    };
   }
 }
