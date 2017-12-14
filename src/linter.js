@@ -316,6 +316,7 @@ export default class Linter {
   async scanFile(filename) {
     let scanResult = { linterMessages: [], scannedFiles: [] };
     const ScannerClass = this.getScanner(filename);
+    const fileData = await this.io.getFile(filename, ScannerClass.fileResultType);
 
     // First: check that this file is under our 2MB parsing limit. Otherwise
     // it will be very slow and may crash the lint with an out-of-memory
@@ -336,7 +337,6 @@ export default class Linter {
         scannedFiles: [filename],
       };
     } else {
-      const fileData = await this.io.getFile(filename, ScannerClass.fileResultType);
       if (ScannerClass !== BinaryScanner && ScannerClass !== FilenameScanner) {
         // Check for badwords across all code files
         this._markBadwordUsage(filename, fileData);
@@ -401,7 +401,8 @@ export default class Linter {
     io.setScanFileCallback(this.shouldScanFile);
     this.io = io;
 
-    const addonMetadata = await this.markSpecialFiles(await this.getAddonMetadata());
+    let addonMetadata = await this.getAddonMetadata();
+    addonMetadata = await this.markSpecialFiles(addonMetadata);
 
     log.info('Metadata option is set to %s', this.config.metadata);
     if (this.config.metadata === true) {
@@ -451,6 +452,7 @@ export default class Linter {
     try {
       await this.extractMetadata(deps);
       const files = await this.io.getFiles();
+
       if (this.config.scanFile) {
         if (!this.config.scanFile.some((f) => Object.keys(files).includes(f))) {
           const _files = this.config.scanFile.join(', ');
@@ -468,7 +470,7 @@ export default class Linter {
       this.print(deps._console);
       // This is skipped in the code coverage because the
       // test runs against un-instrumented code.
-      /* istanbul ignore if  */
+      /* istanbul ignore if */
       if (this.config.runAsBinary === true) {
         let exitCode = this.output.errors.length > 0 ? 1 : 0;
         if (exitCode === 0 && this.config.warningsAsErrors === true) {
@@ -489,7 +491,7 @@ export default class Linter {
 
         // This is skipped in the code coverage because the
         // test runs against un-instrumented code.
-        /* istanbul ignore if  */
+        /* istanbul ignore if */
         if (this.config.runAsBinary === true) {
           process.exit(this.output.errors.length > 0 ? 1 : 0);
         }
@@ -501,6 +503,7 @@ export default class Linter {
         throw err;
       }
     }
+
     await this.scan(deps);
     return this.output;
   }
