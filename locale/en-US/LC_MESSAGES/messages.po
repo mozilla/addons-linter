@@ -1,0 +1,22 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: amo\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-12-05 19:47+0000\n"
+"PO-Revision-Date: 2017-12-05 19:47+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Language: en-US\n"
+
+#: src/messages/manifestjson.js:9
+msgid "The field is required."
+msgstr ""
+
+#: src/messages/manifestjson.js:10
+msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
+msgstr ""
