@@ -1,7 +1,7 @@
-const config = require('../config');
 const fs = require('fs');
 const path = require('path');
 const shell = require('shelljs');
+const config = require('../config');
 
 const localeDir = path.join(__dirname, '../locale');
 const templateDir = path.join(localeDir, 'templates/LC_MESSAGES');

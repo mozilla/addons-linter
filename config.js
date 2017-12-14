@@ -1,5 +1,5 @@
 module.exports = {
   langs: [
-    'en-US'
-  ]
-}
+    'en-US',
+  ],
+};
