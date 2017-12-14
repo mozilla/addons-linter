@@ -9,12 +9,10 @@ const localeDir = path.join(__dirname, '../locale');
 const templateDir = path.join(localeDir, 'templates/LC_MESSAGES');
 const supportedLangs = config.langs;
 
-let lang;
-let locale;
 let outputFile;
 
-for (lang in supportedLangs) {
-  locale = lang;
+for (let i = 0; i<supportedLangs.length; i++) {
+  let locale = supportedLangs[i];
   shell.exec(`mkdir -p ${localeDir}/${locale}/LC_MESSAGES/`);
   outputFile = path.join(localeDir, locale, 'LC_MESSAGES', `messages.po`);
   try {
