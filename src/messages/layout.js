@@ -22,7 +22,7 @@ export const TYPE_NO_MANIFEST_JSON = {
   code: 'TYPE_NO_MANIFEST_JSON',
   message: _('manifest.json was not found'),
   description: _(oneLine`A manifest.json in the root of the extension was not
-    found. Check that your code is not nested in a subdirectory.
+    found. Make sure that the manifest.json is in the top-level of the file.
     See: https://mzl.la/2r2McKv for more on packaging.`),
 };
 
