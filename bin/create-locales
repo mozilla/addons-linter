@@ -11,8 +11,8 @@ const supportedLangs = config.langs;
 
 let outputFile;
 
-for (let i = 0; i<supportedLangs.length; i++) {
-  let locale = supportedLangs[i];
+for (let i = 0; i < supportedLangs.length; i++) {
+  const locale = supportedLangs[i];
   shell.exec(`mkdir -p ${localeDir}/${locale}/LC_MESSAGES/`);
   outputFile = path.join(localeDir, locale, 'LC_MESSAGES', `messages.po`);
   try {
