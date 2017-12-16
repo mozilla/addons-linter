@@ -21,9 +21,9 @@ export const BAD_ZIPFILE = {
 export const TYPE_NO_MANIFEST_JSON = {
   code: 'TYPE_NO_MANIFEST_JSON',
   message: _('manifest.json was not found'),
-  description: _(oneLine`A manifest.json in the root of the
-     extension was not found. See: https://mzl.la/2r2McKv for more on
-     packaging`),
+  description: _(oneLine`No manifest.json was found at the root of the extension.
+    The package file must be a ZIP of the extension's files themselves, not of the
+    containing directory. See: https://mzl.la/2r2McKv for more on packaging.`),
 };
 
 export const FILE_TOO_LARGE = {
