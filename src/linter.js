@@ -237,7 +237,7 @@ export default class Linter {
       return this.addonMetadata;
     }
     const files = await this.io.getFiles();
-    if (constants.MANIFEST_JSON in files) {
+    if (Object.prototype.hasOwnProperty.call(files, constants.MANIFEST_JSON)) {
       _log.info('Retrieving metadata from manifest.json');
       const json = await this.io.getFileAsString(constants.MANIFEST_JSON);
       const manifestParser = new ManifestJSONParser(
@@ -382,24 +382,22 @@ export default class Linter {
     await checkMinNodeVersion();
 
     const stats = await this.checkFileExists(this.packagePath);
-    let io;
 
     if (stats.isFile()) {
       if (this.packagePath.endsWith('.crx')) {
         log.info('Package is a file ending in .crx; parsing as a CRX');
-        io = new _Crx(this.packagePath);
+        this.io = new _Crx(this.packagePath);
       } else {
         log.info('Package is a file. Attempting to parse as an .xpi/.zip');
-        io = new _Xpi(this.packagePath);
+        this.io = new _Xpi(this.packagePath);
       }
     } else {
       // If not a file then it's a directory.
       log.info('Package path is a directory. Parsing as a directory');
-      io = new _Directory(this.packagePath);
+      this.io = new _Directory(this.packagePath);
     }
 
-    io.setScanFileCallback(this.shouldScanFile);
-    this.io = io;
+    this.io.setScanFileCallback(this.shouldScanFile);
 
     let addonMetadata = await this.getAddonMetadata();
     addonMetadata = await this.markSpecialFiles(addonMetadata);
@@ -453,16 +451,15 @@ export default class Linter {
       await this.extractMetadata(deps);
       const files = await this.io.getFiles();
 
-      if (this.config.scanFile) {
-        if (!this.config.scanFile.some((f) => Object.keys(files).includes(f))) {
-          const _files = this.config.scanFile.join(', ');
-          throw new Error(`Selected file(s) not found: ${_files}`);
-        }
+      if (this.config.scanFile &&
+        !this.config.scanFile.some((f) => Object.keys(files).includes(f))) {
+        const _files = this.config.scanFile.join(', ');
+        throw new Error(`Selected file(s) not found: ${_files}`);
       }
 
       // Known libraries do not need to be scanned
       const filesWithoutJSLibraries = Object.keys(files).filter((file) => {
-        return !(file in this.addonMetadata.jsLibs);
+        return !Object.prototype.hasOwnProperty.call(this.addonMetadata.jsLibs, file);
       });
 
       await this.scanFiles(filesWithoutJSLibraries);
