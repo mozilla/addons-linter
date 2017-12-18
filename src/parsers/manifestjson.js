@@ -16,7 +16,16 @@ import { parseCspPolicy, normalizePath } from 'utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
 function getImageMetadata(io, iconPath) {
-  return io.getFileAsStream(iconPath).then(probeImageSize);
+  // Get a non-utf8 input stream by setting encoding to null.
+  // (only needed for the 'io/directory' module which open the file using the utf-8
+  // encoding by default).
+  let encoding = null;
+
+  if (iconPath.endsWith('.svg')) {
+    encoding = 'utf-8';
+  }
+
+  return io.getFileAsStream(iconPath, { encoding }).then(probeImageSize);
 }
 
 

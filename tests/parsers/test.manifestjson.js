@@ -610,6 +610,42 @@ describe('ManifestJSONParser', () => {
   });
 
   describe('icons', () => {
+    it('does not enforce utf-8 encoding on reading binary images files', async () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        icons: {
+          32: 'icons/icon-32.png',
+          64: 'icons/icon.svg',
+        },
+      });
+      const files = {
+        'icons/icon-32.png': EMPTY_PNG.toString('binary'),
+        'icons/icon.svg': '<svg></svg>',
+      };
+
+      const fakeIO = getStreamableIO(files);
+
+      fakeIO.getFileAsStream = jest.fn(fakeIO.getFileAsStream);
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, { io: fakeIO });
+
+      await manifestJSONParser.validateIcons();
+
+      // Expect getFileAsStream to have been called twice (for the png file
+      // and the svg file).
+      expect(fakeIO.getFileAsStream.mock.calls.length).toBe(2);
+
+      expect(fakeIO.getFileAsStream.mock.calls[0]).toEqual([
+        'icons/icon-32.png',
+        { encoding: null },
+      ]);
+      expect(fakeIO.getFileAsStream.mock.calls[1]).toEqual([
+        'icons/icon.svg',
+        { encoding: 'utf-8' },
+      ]);
+    });
+
     it('does not add errors if the icons are in the package', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
