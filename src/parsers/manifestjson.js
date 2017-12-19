@@ -1,5 +1,6 @@
 /* eslint-disable import/namespace */
 import path from 'path';
+import { readdirSync, existsSync, statSync } from 'fs';
 
 import RJSON from 'relaxed-json';
 import { oneLine } from 'common-tags';
@@ -207,6 +208,20 @@ export default class ManifestJSONParser extends JSONParser {
           this.isValid = false;
           break;
         }
+      }
+    }
+
+    if (this.parsedJSON.default_locale && this.io.path) {
+      const rootPath = path.join(this.io.path, '_locales');
+      if (existsSync(rootPath)) {
+        readdirSync(rootPath).forEach((langDir) => {
+          if (statSync(path.join(rootPath, langDir)).isDirectory()) {
+            if (!this.io.files[path.join('_locales', langDir, 'messages.json')]) {
+              this.collector.addError(messages.noMessagesFileInLocales(path.join('_locales', langDir)));
+              this.isValid = false;
+            }
+          }
+        });
       }
     }
   }
