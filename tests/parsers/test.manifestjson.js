@@ -892,11 +892,11 @@ describe('ManifestJSONParser', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         icons: {
-          32: 'tests/fixtures/icon.svg',
+          32: 'tests/fixtures/default.svg',
         },
       });
       const files = {
-        'tests/fixtures/icon.svg': fs.createReadStream('tests/fixtures/icon.svg'),
+        'tests/fixtures/default.svg': fs.createReadStream('tests/fixtures/default.svg'),
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, { io: getStreamableIO(files) });
