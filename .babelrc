@@ -1,7 +1,19 @@
 {
-  "presets": ["es2015", "stage-2"],
+  "presets": [
+    "es2015",
+    "stage-2"
+  ],
   "plugins": [
     "transform-class-properties",
     "transform-es2015-modules-commonjs",
+    "syntax-async-functions",
+    "transform-async-to-generator",
+    [
+      "transform-runtime",
+      {
+        "polyfill": false,
+        "regenerator": true
+      }
+    ]
   ]
 }

@@ -2,7 +2,7 @@
   "rules":{
     "no-console": 0,
     // Inherited from airbnb via eslint-config-amo
-    'function-paren-newline': 0,
+    "function-paren-newline": 0
   },
   "env": {
     "node": true,
@@ -11,7 +11,12 @@
   },
   "extends": "amo",
   "parser": "babel-eslint",
+  "plugins": [
+    "async-await"
+  ],
   "settings": {
+    "async-await/space-after-async": 2,
+    "async-await/space-after-await": 2,
     "import/resolver": {
       "node": {
         // This adds ./src for relative imports.
