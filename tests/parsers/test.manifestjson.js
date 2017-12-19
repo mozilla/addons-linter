@@ -610,6 +610,42 @@ describe('ManifestJSONParser', () => {
   });
 
   describe('icons', () => {
+    it('does not enforce utf-8 encoding on reading binary images files', async () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        icons: {
+          32: 'icons/icon-32.png',
+          64: 'icons/icon.svg',
+        },
+      });
+      const files = {
+        'icons/icon-32.png': EMPTY_PNG.toString('binary'),
+        'icons/icon.svg': '<svg></svg>',
+      };
+
+      const fakeIO = getStreamableIO(files);
+
+      fakeIO.getFileAsStream = jest.fn(fakeIO.getFileAsStream);
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, { io: fakeIO });
+
+      await manifestJSONParser.validateIcons();
+
+      // Expect getFileAsStream to have been called twice (for the png file
+      // and the svg file).
+      expect(fakeIO.getFileAsStream.mock.calls.length).toBe(2);
+
+      expect(fakeIO.getFileAsStream.mock.calls[0]).toEqual([
+        'icons/icon-32.png',
+        { encoding: null },
+      ]);
+      expect(fakeIO.getFileAsStream.mock.calls[1]).toEqual([
+        'icons/icon.svg',
+        { encoding: 'utf-8' },
+      ]);
+    });
+
     it('does not add errors if the icons are in the package', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
@@ -856,11 +892,11 @@ describe('ManifestJSONParser', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         icons: {
-          32: 'tests/fixtures/icon.svg',
+          32: 'tests/fixtures/default.svg',
         },
       });
       const files = {
-        'tests/fixtures/icon.svg': fs.createReadStream('tests/fixtures/icon.svg'),
+        'tests/fixtures/default.svg': fs.createReadStream('tests/fixtures/default.svg'),
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, { io: getStreamableIO(files) });
@@ -1045,4 +1081,49 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
     });
   });
+
+
+  describe('locales', () => {
+    it('error if messages.json is  missing in language directory', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        default_locale: 'en',
+      });
+      const directory = {
+        path: 'tests/fixtures/locales/',
+        files: {
+          '_locales/en/messages.json': { size: 1000 },
+          '_locales/de/messages.json': { size: 1120 },
+        },
+      };
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, { io: directory });
+      expect(manifestJSONParser.isValid).toEqual(false);
+      const { errors } = addonLinter.collector;
+      expect(errors[0].code).toEqual(messages.NO_MESSAGES_FILE_IN_LOCALES);
+    });
+
+    it('error if messages.json is  not missing in language directory', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        default_locale: 'en',
+      });
+      const directory = {
+        path: 'tests/fixtures/locales/',
+        files: {
+          '_locales/en/messages.json': { size: 1000 },
+          '_locales/de/messages.json': { size: 1120 },
+          '_locales/hi/messages.json': { size: 1120 },
+        },
+      };
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json, addonLinter.collector, { io: directory });
+      expect(manifestJSONParser.isValid).toEqual(true);
+      const { errors } = addonLinter.collector;
+      expect(errors.length).toEqual(0);
+    });
+  });
 });
+

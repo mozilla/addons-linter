@@ -1,6 +1,6 @@
 {
   "name": "addons-linter",
-  "version": "0.30.0",
+  "version": "0.31.0",
   "description": "Mozilla Add-ons Linter",
   "main": "dist/addons-linter.js",
   "bin": {
@@ -33,7 +33,7 @@
   "devDependencies": {
     "babel-core": "6.26.0",
     "babel-eslint": "8.0.2",
-    "babel-jest": "21.2.0",
+    "babel-jest": "22.0.0",
     "babel-loader": "7.1.2",
     "babel-plugin-syntax-async-functions": "6.13.0",
     "babel-plugin-transform-async-to-generator": "6.24.1",
@@ -61,7 +61,7 @@
     "hashish": "0.0.4",
     "is-mergeable-object": "1.1.0",
     "isparta": "4.0.0",
-    "jest": "21.2.1",
+    "jest": "22.0.1",
     "jest-raw-loader": "1.0.1",
     "json-loader": "0.5.7",
     "load-grunt-configs": "1.0.0",
@@ -73,13 +73,13 @@
     "markdown-it-emoji": "1.4.0",
     "raw-loader": "0.5.1",
     "request": "2.83.0",
-    "sinon": "4.1.2",
+    "sinon": "4.1.3",
     "tar": "4.1.0",
     "webpack": "3.10.0",
-    "webpack-dev-server": "2.9.5"
+    "webpack-dev-server": "2.9.6"
   },
   "dependencies": {
-    "ajv": "5.5.1",
+    "ajv": "5.5.2",
     "babel-register": "6.26.0",
     "chalk": "2.3.0",
     "cheerio": "1.0.0-rc.2",

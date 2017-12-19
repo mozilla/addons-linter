@@ -1,5 +1,6 @@
 /* eslint-disable import/namespace */
 import path from 'path';
+import { readdirSync, existsSync, statSync } from 'fs';
 
 import RJSON from 'relaxed-json';
 import { oneLine } from 'common-tags';
@@ -16,7 +17,16 @@ import { parseCspPolicy, normalizePath } from 'utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
 function getImageMetadata(io, iconPath) {
-  return io.getFileAsStream(iconPath).then(probeImageSize);
+  // Get a non-utf8 input stream by setting encoding to null.
+  // (only needed for the 'io/directory' module which open the file using the utf-8
+  // encoding by default).
+  let encoding = null;
+
+  if (iconPath.endsWith('.svg')) {
+    encoding = 'utf-8';
+  }
+
+  return io.getFileAsStream(iconPath, { encoding }).then(probeImageSize);
 }
 
 
@@ -198,6 +208,20 @@ export default class ManifestJSONParser extends JSONParser {
           this.isValid = false;
           break;
         }
+      }
+    }
+
+    if (this.parsedJSON.default_locale && this.io.path) {
+      const rootPath = path.join(this.io.path, '_locales');
+      if (existsSync(rootPath)) {
+        readdirSync(rootPath).forEach((langDir) => {
+          if (statSync(path.join(rootPath, langDir)).isDirectory()) {
+            if (!this.io.files[path.join('_locales', langDir, 'messages.json')]) {
+              this.collector.addError(messages.noMessagesFileInLocales(path.join('_locales', langDir)));
+              this.isValid = false;
+            }
+          }
+        });
       }
     }
   }
