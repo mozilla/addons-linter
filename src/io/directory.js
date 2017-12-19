@@ -56,14 +56,16 @@ export class Directory extends IOBase {
     return Promise.resolve(filePath);
   }
 
-  getFileAsStream(relativeFilePath) {
+  getFileAsStream(relativeFilePath, { encoding } = { encoding: 'utf8' }) {
     return this.getPath(relativeFilePath)
       .then((filePath) => {
-        return Promise.resolve(createReadStream(filePath, {
-          flags: 'r',
-          encoding: 'utf8',
+        const readStream = createReadStream(filePath, {
           autoClose: true,
-        }).pipe(stripBomStream()));
+          encoding,
+          flags: 'r',
+        });
+
+        return !encoding ? readStream : readStream.pipe(stripBomStream());
       });
   }
 

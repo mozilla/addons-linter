@@ -142,6 +142,48 @@ describe('Directory.getFileAsStream()', () => {
       });
   });
 
+  it('should not enforce utf-8 when encoding = null', async () => {
+    const myDirectory = new Directory('tests/fixtures/io/');
+    await myDirectory.getFiles();
+
+    const readStreamEncodingDefault = await myDirectory.getFileAsStream('dir2/dir3/file.png');
+
+    const readStreamEncodingNull = await myDirectory.getFileAsStream(
+      'dir2/dir3/file.png', {
+        encoding: null,
+      });
+
+    const readStringFromStream = (readStream) => {
+      return new Promise((resolve, reject) => {
+        let content = '';
+        readStream.on('readable', () => {
+          let chunk;
+          // eslint-disable-next-line no-cond-assign
+          while ((chunk = readStream.read()) !== null) {
+            content += chunk.toString('binary');
+          }
+        });
+
+        readStream.on('end', () => {
+          resolve(content);
+        });
+
+        readStream.on('error', reject);
+      });
+    };
+
+    const stringFromEncodingDefault = await readStringFromStream(readStreamEncodingDefault);
+    const stringFromEncodingNull = await readStringFromStream(readStreamEncodingNull);
+
+    // Ensure that by setting the encoding to null, the utf-8 encoding is not enforced
+    // while reading binary data from the stream.
+    expect(stringFromEncodingNull.slice(0, 8)).toEqual('\x89PNG\r\n\x1a\n');
+
+    // Confirms that the default "utf-8" encoding behavior is still preserved when the encoding
+    // is not been explicitly specified.
+    expect(stringFromEncodingDefault.slice(0, 8)).not.toEqual('\x89PNG\r\n\x1a\n');
+  });
+
   it('should reject if file is too big', () => {
     const myDirectory = new Directory('tests/fixtures/io/');
     const fakeFileMeta = {
