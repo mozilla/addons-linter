@@ -1,9 +1,10 @@
 import { EventEmitter } from 'events';
 
+import probeImageSize from 'probe-image-size';
+
 import { Directory } from 'io';
 
 import { unexpectedSuccess } from '../helpers';
-
 
 describe('Directory.getFiles()', () => {
   it('should return cached data when available', () => {
@@ -112,7 +113,7 @@ describe('Directory._getPath()', () => {
 });
 
 describe('Directory.getFileAsStream()', () => {
-  it('should return a stream', () => {
+  it('should return a readable stream', () => {
     const myDirectory = new Directory('tests/fixtures/io/');
     return myDirectory.getFiles()
       .then(() => {
@@ -139,6 +140,19 @@ describe('Directory.getFileAsStream()', () => {
           .then((content) => {
             expect(content).toEqual('123\n');
           });
+      });
+  });
+
+  it('should return a binary stream', () => {
+    const myDirectory = new Directory('tests/fixtures/io/');
+    return myDirectory.getFiles()
+      .then(() => {
+        return myDirectory.getFileAsStream('dir2/dir3/test.png');
+      })
+      .then(probeImageSize)
+      .then((result) => {
+        const { mime } = result;
+        expect(mime).toEqual('image/png');
       });
   });
 
