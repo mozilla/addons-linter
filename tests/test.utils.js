@@ -367,14 +367,19 @@ describe('utils.parseCspPolicy', () => {
 
 
 describe('utils.normalizePath', () => {
-  it('should normalize "absolute" path', () => {
+  it('should normalize given "absolute" path to relative', () => {
     const result = path.join('foo', 'bar');
     expect(utils.normalizePath('/foo/bar')).toEqual(result);
   });
 
-  it('should normalize ./ and ../ relative path', () => {
+  it('should normalize ./ and ../ relative paths', () => {
     const result = path.join('foo', 'bar');
     expect(utils.normalizePath('./foo/bar')).toEqual(result);
     expect(utils.normalizePath('baz/../foo/bar')).toEqual(result);
+  });
+
+  it('should handle space(s) within path correctly', () => {
+    const result = path.join('foo', 'bar baz');
+    expect(utils.normalizePath('foo/bar baz')).toEqual(result);
   });
 });
