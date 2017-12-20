@@ -1,4 +1,5 @@
 import url from 'url';
+import path from 'path';
 
 import { URL } from 'whatwg-url';
 import jed from 'jed';
@@ -10,12 +11,19 @@ import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
 const SOURCE_MAP_RE = new RegExp(/\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/);
 
-export function normalizePath(iconPath) {
-  // Convert the icon path to a URL so we can strip any fragments and resolve
+export function normalizePath(filePath) {
+  // Convert the file path to a URL so we can strip any fragments and resolve
   // . and .. automatically. We need an absolute URL to use as a base so we're
   // using https://example.com/.
   const { pathname } = new URL(iconPath, 'https://example.com/');
-  return pathname.slice(1);
+  // Split pathname into directories and join them with OS specific separator.
+  // Also strip leading slash '/'.
+  // Decode components which is encoded when converting to a URL, for example
+  // space (%20).
+  const dir = pathname.split("/");
+  return dir.reduce((p, c) =>
+    p && path.join(p, decodeURIComponent(c)) || decodeURIComponent(c)
+  );
 }
 
 /*
