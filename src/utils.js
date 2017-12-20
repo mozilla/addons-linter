@@ -15,7 +15,7 @@ export function normalizePath(filePath) {
   // Convert the file path to a URL so we can strip any fragments and resolve
   // . and .. automatically. We need an absolute URL to use as a base so we're
   // using https://example.com/.
-  const { pathname } = new URL(iconPath, 'https://example.com/');
+  const { pathname } = new URL(filePath, 'https://example.com/');
   // Split pathname into directories and join them with OS specific separator.
   // Also strip leading slash '/'.
   // Decode components which is encoded when converting to a URL, for example
