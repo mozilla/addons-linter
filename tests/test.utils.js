@@ -1,3 +1,5 @@
+import path from 'path';
+
 import { oneLine } from 'common-tags';
 
 import * as utils from 'utils';
@@ -360,5 +362,14 @@ describe('utils.parseCspPolicy', () => {
     const parsedPolicy = utils.parseCspPolicy('DEFAULT-SRC \'NoNe\'');
 
     expect(parsedPolicy['default-src']).toEqual(['\'none\'']);
+  });
+});
+
+
+describe('utils.normalizePath', () => {
+  it('should normalize ./ and ../ relative paths', () => {
+    const result = path.join('foo', 'bar');
+    expect(utils.normalizePath('./foo/bar')).toEqual(result);
+    expect(utils.normalizePath('baz/../foo/bar')).toEqual(result);
   });
 });
