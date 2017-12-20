@@ -21,8 +21,9 @@ export function normalizePath(filePath) {
   // Decode components which is encoded when converting to a URL, for example
   // space (%20).
   const dir = pathname.split("/");
-  return dir.reduce((p, c) =>
-    p && path.join(p, decodeURIComponent(c)) || decodeURIComponent(c)
+  return dir.reduce((prior, component) =>
+    prior && path.join(prior, decodeURIComponent(component)) ||
+    decodeURIComponent(component)
   );
 }
 
