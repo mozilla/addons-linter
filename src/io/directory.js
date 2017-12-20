@@ -91,7 +91,7 @@ export class Directory extends IOBase {
     return new Promise((resolve) => {
       createReadStream(filePath, {
         flags: 'r',
-        // This is important because you don't want to encode the
+        // This  is important because you don't want to encode the
         // bytes if you are doing a binary check.
         encoding: null,
         autoClose: true,
