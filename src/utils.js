@@ -24,9 +24,8 @@ export function normalizePath(filePath) {
   return components.reduce((prior, component) => {
     if (prior) {
       return path.join(prior, decodeURIComponent(component));
-    } else {
-      return decodeURIComponent(component);
     }
+    return decodeURIComponent(component);
   });
 }
 
