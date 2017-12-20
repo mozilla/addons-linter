@@ -17,14 +17,17 @@ export function normalizePath(filePath) {
   // using https://example.com/.
   const { pathname } = new URL(filePath, 'https://example.com/');
   // Split pathname into directories and join them with OS specific separator.
-  // Also strip leading slash '/'.
-  // Decode components which is encoded when converting to a URL, for example
+  // Also we need to strip leading slash '/' from pathname.
+  // Decode component which is encoded when converting to a URL, for example
   // space (%20).
-  const dir = pathname.split("/");
-  return dir.reduce((prior, component) =>
-    prior && path.join(prior, decodeURIComponent(component)) ||
-    decodeURIComponent(component)
-  );
+  const components = pathname.split('/');
+  return components.reduce((prior, component) => {
+    if (prior) {
+      return path.join(prior, decodeURIComponent(component));
+    } else {
+      return decodeURIComponent(component);
+    }
+  });
 }
 
 /*
@@ -206,7 +209,7 @@ export function ensureFilenameExists(filename) {
 
 export function isLocalUrl(urlInput) {
   const parsedUrl = url.parse(urlInput);
-  const { protocol, path } = parsedUrl;
+  const { protocol, path: parsedPath } = parsedUrl;
 
   // Check protocol is chrome: or resource: if set.
   // Details on the chrome protocol are here: https://goo.gl/W52T0Q
@@ -215,7 +218,7 @@ export function isLocalUrl(urlInput) {
     return false;
   }
   // Disallow protocol-free remote urls.
-  if (path.startsWith('//')) {
+  if (parsedPath.startsWith('//')) {
     return false;
   }
   return true;
