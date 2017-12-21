@@ -33,7 +33,7 @@ export class Xpi extends IOBase {
     });
   }
 
-  handleEntry(entry) {
+  handleEntry(entry, reject) {
     if (/\/$/.test(entry.fileName)) {
       return;
     }
@@ -43,8 +43,9 @@ export class Xpi extends IOBase {
     }
     if (this.entries.includes(entry.fileName)) {
       log.info('Found duplicate file entry: "%s" in package', entry.fileName);
-      throw new Error(oneLine`DuplicateZipEntry: Entry
-        "${entry.fileName}" has already been seen`);
+      reject(new Error(oneLine`DuplicateZipEntry: Entry
+        "${entry.fileName}" has already been seen`));
+      return;
     }
     this.entries.push(entry.fileName);
     this.files[entry.fileName] = entry;
@@ -67,9 +68,9 @@ export class Xpi extends IOBase {
 
     const zipfile = await this.open();
 
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       zipfile.on('entry', (entry) => {
-        this.handleEntry(entry);
+        this.handleEntry(entry, reject);
       });
 
       // When the last entry has been processed
@@ -85,7 +86,7 @@ export class Xpi extends IOBase {
         // Run optional callback when we know the event handlers
         // have been inited. Useful for testing.
         if (typeof _onEventsSubscribed === 'function') {
-          _onEventsSubscribed();
+          Promise.resolve().then(() => _onEventsSubscribed(reject));
         }
       }
     });
@@ -137,10 +138,10 @@ export class Xpi extends IOBase {
     this.checkPath(path);
     const zipfile = await this.open();
     return new Promise((resolve, reject) => {
-      // eslint-disable-next-line consistent-return
       zipfile.openReadStream(this.files[path], (err, readStream) => {
         if (err) {
-          return reject(err);
+          reject(err);
+          return;
         }
         readStream.pipe(
           firstChunkStream({ chunkLength },

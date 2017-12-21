@@ -63,9 +63,9 @@ export class Crx extends Xpi {
     // from a buffer (because we have to unpack the header info from it
     // first). The 'close' event is never fired when using yauzl's
     // `fromBuffer()` method.
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       zipfile.on('entry', (entry) => {
-        this.handleEntry(entry);
+        this.handleEntry(entry, reject);
       });
 
       zipfile.on('end', () => {
@@ -76,7 +76,7 @@ export class Crx extends Xpi {
         // Run optional callback when we know the event handlers
         // have been inited. Useful for testing.
         if (typeof _onEventsSubscribed === 'function') {
-          _onEventsSubscribed();
+          Promise.resolve().then(() => _onEventsSubscribed(reject));
         }
       }
     });
