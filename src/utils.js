@@ -20,8 +20,7 @@ export function normalizePath(filePath) {
   // Also we need to strip leading slash '/' from pathname.
   // Decode component which is encoded when converting to a URL, for example
   // space (%20).
-  const components = pathname.split('/');
-  return components.reduce((prior, component) => {
+  return pathname.split('/').reduce((prior, component) => {
     if (prior) {
       return path.join(prior, decodeURIComponent(component));
     }
