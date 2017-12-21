@@ -17,7 +17,7 @@ export function normalizePath(filePath) {
   // using https://example.com/.
   const { pathname } = new URL(filePath, 'https://example.com/');
   // Split pathname into directories and join them with OS specific separator.
-  // Also we need to strip leading slash '/' from pathname.
+  // We also need to strip leading slash '/' from pathname.
   // Decode component which is encoded when converting to a URL, for example
   // space (%20).
   return pathname.split('/').reduce((prior, component) => {
