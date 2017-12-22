@@ -378,8 +378,13 @@ describe('utils.normalizePath', () => {
     expect(utils.normalizePath('qux/../foo/bar/baz')).toEqual(result);
   });
 
-  it('should handle space(s) within path correctly', () => {
-    const result = path.join('foo', 'bar baz');
-    expect(utils.normalizePath('foo/bar baz')).toEqual(result);
+  it('should normalize path with fragment identifier', () => {
+    const result = path.join('foo', 'bar', 'baz');
+    expect(utils.normalizePath('foo/bar/baz#qux')).toEqual(result);
+  });
+
+  it('should handle spaces within path', () => {
+    const result = path.join('foo', 'bar baz', 'qux');
+    expect(utils.normalizePath('foo/bar baz/qux')).toEqual(result);
   });
 });
