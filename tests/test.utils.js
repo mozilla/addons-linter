@@ -367,15 +367,15 @@ describe('utils.parseCspPolicy', () => {
 
 
 describe('utils.normalizePath', () => {
-  it('should normalize given "absolute" path to relative', () => {
-    const result = path.join('foo', 'bar');
-    expect(utils.normalizePath('/foo/bar')).toEqual(result);
+  it('should normalize given "absolute" path to relative path', () => {
+    const result = path.join('foo', 'bar', 'baz');
+    expect(utils.normalizePath('/foo/bar/baz')).toEqual(result);
   });
 
   it('should normalize ./ and ../ relative paths', () => {
-    const result = path.join('foo', 'bar');
-    expect(utils.normalizePath('./foo/bar')).toEqual(result);
-    expect(utils.normalizePath('baz/../foo/bar')).toEqual(result);
+    const result = path.join('foo', 'bar', 'baz');
+    expect(utils.normalizePath('./foo/bar/baz')).toEqual(result);
+    expect(utils.normalizePath('qux/../foo/bar/baz')).toEqual(result);
   });
 
   it('should handle space(s) within path correctly', () => {
