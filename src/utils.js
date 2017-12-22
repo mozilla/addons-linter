@@ -16,7 +16,7 @@ export function normalizePath(filePath) {
   // . and .. automatically. We need an absolute URL to use as a base so we're
   // using https://example.com/.
   const { pathname } = new URL(filePath, 'https://example.com/');
-  return decodeURIComponent(pathname).slice(1).replace(/[/]/g, path.sep);
+  return decodeURIComponent(pathname).slice(1).replace(/\//g, path.sep);
 }
 
 /*
