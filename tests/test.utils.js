@@ -383,7 +383,7 @@ describe('utils.normalizePath', () => {
     expect(utils.normalizePath('foo/bar/baz#qux')).toEqual(result);
   });
 
-  it('should handle spaces within path', () => {
+  it('should not escape spaces within path', () => {
     const result = path.join('foo', 'bar baz', 'qux');
     expect(utils.normalizePath('foo/bar baz/qux')).toEqual(result);
   });
