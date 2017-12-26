@@ -76,7 +76,7 @@ export class Crx extends Xpi {
         // Run optional callback when we know the event handlers
         // have been inited. Useful for testing.
         if (typeof _onEventsSubscribed === 'function') {
-          Promise.resolve().then(() => _onEventsSubscribed(reject));
+          Promise.resolve().then(() => _onEventsSubscribed());
         }
       }
     });

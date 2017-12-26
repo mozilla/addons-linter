@@ -14,14 +14,12 @@ export function walkPromise(curPath, { shouldIncludePath = () => true } = {}) {
   // so all file paths (the result keys) can
   // be relative to the starting point.
   const basePath = curPath;
-  // eslint-disable-next-line consistent-return
   return (async function walk(_curPath) {
     const stat = await lstatPromise(_curPath);
     const relPath = path.relative(basePath, _curPath);
 
     if (!shouldIncludePath(relPath, stat.isDirectory())) {
       log.debug(`Skipping file path: ${relPath}`);
-      return result;
     } else if (stat.isFile()) {
       const { size } = stat;
       result[relPath] = { size };
@@ -34,7 +32,7 @@ export function walkPromise(curPath, { shouldIncludePath = () => true } = {}) {
       await Promise.all(files.map(async (fileName) => {
         await walk(path.join(_curPath, fileName));
       }));
-      return result;
     }
+    return result;
   }(curPath));
 }
