@@ -7,6 +7,7 @@ import { VALIDATION_WARNING } from 'const';
 import { ignorePrivateFunctions } from 'utils';
 import * as cssRules from 'rules/css';
 
+
 export default class CSSScanner extends BaseScanner {
   _defaultRules = cssRules;
 
@@ -79,6 +80,7 @@ export default class CSSScanner extends BaseScanner {
       if (!e.reason || e.name !== 'CssSyntaxError') {
         throw e;
       }
+
       this.linterMessages.push(Object.assign({}, CSS_SYNTAX_ERROR, {
         type: VALIDATION_WARNING,
         // Use the reason for the error as the message.

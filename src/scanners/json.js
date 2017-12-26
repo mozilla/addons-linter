@@ -1,6 +1,7 @@
 import JSONParser from 'parsers/json';
 import BaseScanner from 'scanners/base';
 
+
 export default class JSONScanner extends BaseScanner {
   static get scannerName() {
     return 'json';

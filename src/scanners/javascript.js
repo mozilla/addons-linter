@@ -12,6 +12,7 @@ import * as messages from 'messages';
 import { rules } from 'rules/javascript';
 import { ensureFilenameExists } from 'utils';
 
+
 export function excludeRules(excludeFrom = {}, excludeWhat = []) {
   return Object.keys(excludeFrom).reduce((result, ruleName) => {
     if (excludeWhat.includes(ruleName)) return result;
