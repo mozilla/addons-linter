@@ -567,6 +567,7 @@ async function getTarballPath({ inputPath, version }) {
         });
     });
   }
+
   throw new Error('inputPath or version is required');
 }
 
