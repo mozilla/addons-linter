@@ -68,8 +68,7 @@ export default class BaseScanner {
     if (this._parsedContent !== null) {
       return this._parsedContent;
     }
-    const contents = await this._getContents();
-    this._parsedContent = contents;
+    this._parsedContent = await this._getContents();
     return this._parsedContent;
   }
 

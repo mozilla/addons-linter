@@ -74,8 +74,7 @@ export default class CSSScanner extends BaseScanner {
 
   async _getContents(_cssParser = postcss) {
     try {
-      const rootNode = _cssParser.parse(this.contents, { from: this.filename });
-      return rootNode;
+      return _cssParser.parse(this.contents, { from: this.filename });
     } catch (e) {
       if (!e.reason || e.name !== 'CssSyntaxError') {
         throw e;
