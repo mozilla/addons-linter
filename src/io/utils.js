@@ -14,32 +14,25 @@ export function walkPromise(curPath, { shouldIncludePath = () => true } = {}) {
   // so all file paths (the result keys) can
   // be relative to the starting point.
   const basePath = curPath;
+  return (async function walk(_curPath) {
+    const stat = await lstatPromise(_curPath);
+    const relPath = path.relative(basePath, _curPath);
 
-  return (function walk(_curPath) {
-    return lstatPromise(_curPath)
-      // eslint-disable-next-line consistent-return
-      .then((stat) => {
-        const relPath = path.relative(basePath, _curPath);
-        if (!shouldIncludePath(relPath, stat.isDirectory())) {
-          log.debug(`Skipping file path: ${relPath}`);
-          return result;
-        } else if (stat.isFile()) {
-          const { size } = stat;
-          result[relPath] = { size };
-        } else if (stat.isDirectory()) {
-          return readdirPromise(_curPath)
-            .then((files) => {
-              // Map the list of files and make a list of readdir
-              // promises to pass to Promise.all so we can recursively
-              // get the data on all the files in the directory.
-              return Promise.all(files.map((fileName) => {
-                return walk(path.join(_curPath, fileName));
-              }));
-            })
-            .then(() => {
-              return result;
-            });
-        }
-      });
+    if (!shouldIncludePath(relPath, stat.isDirectory())) {
+      log.debug(`Skipping file path: ${relPath}`);
+    } else if (stat.isFile()) {
+      const { size } = stat;
+      result[relPath] = { size };
+    } else if (stat.isDirectory()) {
+      const files = await readdirPromise(_curPath);
+
+      // Map the list of files and make a list of readdir
+      // promises to pass to Promise.all so we can recursively
+      // get the data on all the files in the directory.
+      await Promise.all(files.map(async (fileName) => {
+        await walk(path.join(_curPath, fileName));
+      }));
+    }
+    return result;
   }(curPath));
 }
