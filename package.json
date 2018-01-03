@@ -95,7 +95,7 @@
     "first-chunk-stream": "2.0.0",
     "fluent": "0.4.1",
     "jed": "1.1.1",
-    "pino": "4.6.0",
+    "pino": "4.10.3",
     "postcss": "6.0.14",
     "probe-image-size": "3.2.0",
     "relaxed-json": "1.0.1",
