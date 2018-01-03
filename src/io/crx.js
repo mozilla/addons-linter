@@ -50,37 +50,35 @@ export class Crx extends Xpi {
     });
   }
 
-  getFiles(_onEventsSubscribed) {
+  async getFiles(_onEventsSubscribed) {
+    // If we have already processed the file and have data
+    // on this instance return that.
+    if (Object.keys(this.files).length) {
+      return this.files;
+    }
+
+    const zipfile = await this.open();
+
+    // We use the 'end' event here because we're reading the CRX in
+    // from a buffer (because we have to unpack the header info from it
+    // first). The 'close' event is never fired when using yauzl's
+    // `fromBuffer()` method.
     return new Promise((resolve, reject) => {
-      // If we have already processed the file and have data
-      // on this instance return that.
-      if (Object.keys(this.files).length) {
-        return resolve(this.files);
+      zipfile.on('entry', (entry) => {
+        this.handleEntry(entry, reject);
+      });
+
+      zipfile.on('end', () => {
+        resolve(this.files);
+      });
+
+      if (_onEventsSubscribed) {
+        // Run optional callback when we know the event handlers
+        // have been inited. Useful for testing.
+        if (typeof _onEventsSubscribed === 'function') {
+          Promise.resolve().then(() => _onEventsSubscribed());
+        }
       }
-
-      return this.open()
-        .then((zipfile) => {
-          zipfile.on('entry', (entry) => {
-            this.handleEntry(entry, reject);
-          });
-
-          // We use the 'end' event here because we're reading the CRX in
-          // from a buffer (because we have to unpack the header info from it
-          // first). The 'close' event is never fired when using yauzl's
-          // `fromBuffer()` method.
-          zipfile.on('end', () => {
-            resolve(this.files);
-          });
-
-          if (_onEventsSubscribed) {
-            // Run optional callback when we know the event handlers
-            // have been inited. Useful for testing.
-            if (typeof _onEventsSubscribed === 'function') {
-              _onEventsSubscribed();
-            }
-          }
-        })
-        .catch(reject);
     });
   }
 }

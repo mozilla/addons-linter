@@ -45,50 +45,41 @@ export class IOBase {
     }
   }
 
-  getFilesByExt(...extensions) {
+  async getFilesByExt(...extensions) {
     for (let i = 0; i < extensions.length; i++) {
       const ext = extensions[i];
       if (ext.indexOf('.') !== 0) {
-        // We use Promise.reject as we're not inside a `then()` or a
-        // Promise constructor callback.
-        // If we throw here it won't be caught.
-        return Promise.reject(new Error("File extension must start with '.'"));
+        throw new Error("File extension must start with '.'");
       }
     }
 
-    return this.getFiles()
-      .then((filesObject) => {
-        const files = [];
+    const filesObject = await this.getFiles();
+    const files = [];
 
-        Object.keys(filesObject).forEach((filename) => {
-          extensions.forEach((ext) => {
-            if (filename.endsWith(ext)) {
-              files.push(filename);
-            }
-          });
-        });
-
-        return files;
+    Object.keys(filesObject).forEach((filename) => {
+      extensions.forEach((ext) => {
+        if (filename.endsWith(ext)) {
+          files.push(filename);
+        }
       });
+    });
+
+    return files;
   }
 
-  getFiles() {
-    return Promise.reject(
-      new Error('getFiles is not implemented'));
+  async getFiles() {
+    throw new Error('getFiles is not implemented');
   }
 
-  getFileAsStream() {
-    return Promise.reject(
-      new Error('getFileAsStream is not implemented'));
+  async getFileAsStream() {
+    throw new Error('getFileAsStream is not implemented');
   }
 
-  getFileAsString() {
-    return Promise.reject(
-      new Error('getFileAsString is not implemented'));
+  async getFileAsString() {
+    throw new Error('getFileAsString is not implemented');
   }
 
-  getChunkAsBuffer() {
-    return Promise.reject(
-      new Error('getChunkAsBuffer is not implemented'));
+  async getChunkAsBuffer() {
+    throw new Error('getChunkAsBuffer is not implemented');
   }
 }

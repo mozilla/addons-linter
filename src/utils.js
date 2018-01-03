@@ -138,19 +138,14 @@ export const { sprintf } = jed;
 /*
  * Check the minimum node version is met
  */
-export function checkMinNodeVersion(minVersion, _process = process) {
-  return new Promise((resolve) => {
-    // eslint-disable-next-line no-param-reassign
-    minVersion = minVersion || '0.12.0';
-    if (!semver.gte(_process.version, minVersion)) {
-      throw new Error(oneLine`Node version must be ${minVersion} or
-                      greater. You are using ${_process.version}.`);
-    } else {
-      resolve();
-    }
-  });
+export async function checkMinNodeVersion(minVersion, _process = process) {
+  // eslint-disable-next-line no-param-reassign
+  minVersion = minVersion || '0.12.0';
+  if (!semver.gte(_process.version, minVersion)) {
+    throw new Error(oneLine`Node version must be ${minVersion} or
+                    greater. You are using ${_process.version}.`);
+  }
 }
-
 
 export function getPackageTypeAsString(numericPackageType) {
   const packageKeys = Object.keys(PACKAGE_TYPES);
