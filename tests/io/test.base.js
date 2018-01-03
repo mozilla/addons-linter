@@ -14,48 +14,52 @@ describe('io.IOBase()', () => {
     expect(io.maxSizeBytes).toEqual(104857600);
   });
 
-  it('should reject calling getFiles()', () => {
+  it('should reject calling getFiles()', async () => {
     const io = new IOBase('foo/bar');
 
-    return io.getFiles()
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err).toBeInstanceOf(Error);
-        expect(err.message).toEqual('getFiles is not implemented');
-      });
+    try {
+      await io.getFiles();
+      unexpectedSuccess();
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+      expect(err.message).toEqual('getFiles is not implemented');
+    }
   });
 
-  it('should reject calling getFileAsString()', () => {
+  it('should reject calling getFileAsString()', async () => {
     const io = new IOBase('foo/bar');
 
-    return io.getFileAsString()
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err).toBeInstanceOf(Error);
-        expect(err.message).toEqual('getFileAsString is not implemented');
-      });
+    try {
+      await io.getFileAsString();
+      unexpectedSuccess();
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+      expect(err.message).toEqual('getFileAsString is not implemented');
+    }
   });
 
-  it('should reject calling getFileAsStream()', () => {
+  it('should reject calling getFileAsStream()', async () => {
     const io = new IOBase('foo/bar');
 
-    return io.getFileAsStream()
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err).toBeInstanceOf(Error);
-        expect(err.message).toEqual('getFileAsStream is not implemented');
-      });
+    try {
+      await io.getFileAsStream();
+      unexpectedSuccess();
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+      expect(err.message).toEqual('getFileAsStream is not implemented');
+    }
   });
 
-  it('should should reject calling getChunkAsBuffer()', () => {
+  it('should reject calling getChunkAsBuffer()', async () => {
     const io = new IOBase('foo/bar');
 
-    return io.getChunkAsBuffer()
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err).toBeInstanceOf(Error);
-        expect(err.message).toEqual('getChunkAsBuffer is not implemented');
-      });
+    try {
+      await io.getChunkAsBuffer();
+      unexpectedSuccess();
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+      expect(err.message).toEqual('getChunkAsBuffer is not implemented');
+    }
   });
 
   it('should call getFileAsStream method via getFile()', () => {
