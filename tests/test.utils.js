@@ -1,3 +1,5 @@
+import path from 'path';
+
 import { oneLine } from 'common-tags';
 
 import * as utils from 'utils';
@@ -360,5 +362,29 @@ describe('utils.parseCspPolicy', () => {
     const parsedPolicy = utils.parseCspPolicy('DEFAULT-SRC \'NoNe\'');
 
     expect(parsedPolicy['default-src']).toEqual(['\'none\'']);
+  });
+});
+
+
+describe('utils.normalizePath', () => {
+  it('should normalize given "absolute" path to relative path', () => {
+    const result = path.join('foo', 'bar', 'baz');
+    expect(utils.normalizePath('/foo/bar/baz')).toEqual(result);
+  });
+
+  it('should normalize ./ and ../ relative paths', () => {
+    const result = path.join('foo', 'bar', 'baz');
+    expect(utils.normalizePath('./foo/bar/baz')).toEqual(result);
+    expect(utils.normalizePath('qux/../foo/bar/baz')).toEqual(result);
+  });
+
+  it('should normalize path with fragment identifier', () => {
+    const result = path.join('foo', 'bar', 'baz');
+    expect(utils.normalizePath('foo/bar/baz#qux')).toEqual(result);
+  });
+
+  it('should not escape spaces within path', () => {
+    const result = path.join('foo', 'bar baz', 'qux');
+    expect(utils.normalizePath('foo/bar baz/qux')).toEqual(result);
   });
 });
