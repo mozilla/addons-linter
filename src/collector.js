@@ -1,3 +1,5 @@
+import upath from 'upath';
+
 // eslint-disable-next-line import/no-named-default
 import { default as Message } from 'message';
 import * as constants from 'const';
@@ -80,7 +82,11 @@ export default class Collector {
     return false;
   }
 
-  recordScannedFile(filename, scanner) {
+  recordScannedFile(originalFilename, scanner) {
+    // Convert filename to unix path separator before
+    // storing it into the scanned files.
+    const filename = upath.toUnix(originalFilename);
+
     // TODO: Add some code that verifies and normalizes `filename`
     // to better avoid duplicates.
     // See https://github.com/mozilla/addons-linter/issues/1310

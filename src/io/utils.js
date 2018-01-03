@@ -2,6 +2,7 @@ import { lstat, readdir } from 'fs';
 import * as path from 'path';
 
 import promisify from 'es6-promisify';
+import upath from 'upath';
 
 import log from 'logger';
 
@@ -19,7 +20,10 @@ export function walkPromise(curPath, { shouldIncludePath = () => true } = {}) {
     return lstatPromise(_curPath)
       // eslint-disable-next-line consistent-return
       .then((stat) => {
-        const relPath = path.relative(basePath, _curPath);
+        // Convert the filename into the unix path separator
+        // before storing it into the scanned files map.
+        const relPath = upath.toUnix(path.relative(basePath, _curPath));
+
         if (!shouldIncludePath(relPath, stat.isDirectory())) {
           log.debug(`Skipping file path: ${relPath}`);
           return result;
