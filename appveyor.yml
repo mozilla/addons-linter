@@ -1,0 +1,26 @@
+## Force 64bit platform and nodejs, the addons-linter has dependencies which
+## do not provide a pre-compiled 32bit version of their nodejs binary module.
+platform: x64
+install:
+  - ps: Install-Product node $env:nodejs_version x64
+  - set CI=true
+  - set PATH=%APPDATA%\npm;%PATH%
+  - npm install
+
+matrix:
+  fast_finish: true
+
+build: off
+shallow_clone: true
+
+# Keep the following configs in sync with .travis.yml
+environment:
+  matrix:
+    - nodejs_version: '6'
+    - nodejs_version: '8'
+
+test_script:
+  - node --version
+  - npm --version
+  - npm run test-ci
+  - npm run lint
