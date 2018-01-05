@@ -38,7 +38,7 @@ export default {
           }
           const normalizedName = normalizePath(fileValue);
           // If file exists then we are good.
-          if (normalizedName in existingFiles) {
+          if (Object.prototype.hasOwnProperty.call(existingFiles, normalizedName)) {
             return;
           }
           // File not exists report an issue.

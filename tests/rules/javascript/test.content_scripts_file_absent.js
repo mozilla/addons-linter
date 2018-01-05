@@ -14,14 +14,23 @@ function createJsScanner(code, validatedFilename, existingFiles = {}) {
 
 describe('content_scripts_file_absent', () => {
   it('should show an error when content script is missing', async () => {
-    const code = `browser.tabs.executeScript({ file: '/content_scripts/absentFile.js' });`;
-    const fileRequiresContentScript = 'file-requires-content-script.js';
-    const jsScanner = createJsScanner(code, fileRequiresContentScript);
+    const nonExistentFiles = [
+      'absentFile.js',
 
-    const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(1);
-    expect(linterMessages[0].code).toEqual(CONTENT_SCRIPT_NOT_FOUND.code);
-    expect(linterMessages[0].type).toEqual(VALIDATION_ERROR);
+      // Check that the rule is not detecting Object properties as existent files.
+      'constructor',
+    ];
+
+    nonExistentFiles.forEach(async (filename) => {
+      const code = `browser.tabs.executeScript({ file: '${filename}' });`;
+      const fileRequiresContentScript = 'file-requires-content-script.js';
+      const jsScanner = createJsScanner(code, fileRequiresContentScript);
+
+      const { linterMessages } = await jsScanner.scan();
+      expect(linterMessages.length).toEqual(1);
+      expect(linterMessages[0].code).toEqual(CONTENT_SCRIPT_NOT_FOUND.code);
+      expect(linterMessages[0].type).toEqual(VALIDATION_ERROR);
+    });
   });
 
   it('should not show an error when content script file exists', async () => {
