@@ -26,4 +26,6 @@ test_script:
   ### but it skips coveralls (which is not currently recognized when
   ### used from appveyor).
   - npm run test-coverage-once
+  ### Building the dist file is needed by the linting step.
+  - npm run build
   - npm run lint
