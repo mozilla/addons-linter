@@ -5,6 +5,7 @@ import { readdirSync, existsSync, statSync } from 'fs';
 import RJSON from 'relaxed-json';
 import { oneLine } from 'common-tags';
 import probeImageSize from 'probe-image-size';
+import upath from 'upath';
 
 import { validateAddon, validateLangPack } from 'schema/validator';
 import { getConfig } from 'cli';
@@ -192,7 +193,10 @@ export default class ManifestJSONParser extends JSONParser {
     if (this.parsedJSON.default_locale) {
       const msg = path.join(
         '_locales', this.parsedJSON.default_locale, 'messages.json');
-      if (!this.io.files[msg]) {
+
+      // Convert filename to unix path separator before
+      // searching it into the scanned files map.
+      if (!this.io.files[upath.toUnix(msg)]) {
         this.collector.addError(messages.NO_MESSAGES_FILE);
         this.isValid = false;
       }
@@ -216,7 +220,11 @@ export default class ManifestJSONParser extends JSONParser {
       if (existsSync(rootPath)) {
         readdirSync(rootPath).forEach((langDir) => {
           if (statSync(path.join(rootPath, langDir)).isDirectory()) {
-            if (!this.io.files[path.join('_locales', langDir, 'messages.json')]) {
+            const filePath = path.join('_locales', langDir, 'messages.json');
+
+            // Convert filename to unix path separator before
+            // searching it into the scanned files map.
+            if (!this.io.files[upath.toUnix(filePath)]) {
               this.collector.addError(messages.noMessagesFileInLocales(path.join('_locales', langDir)));
               this.isValid = false;
             }

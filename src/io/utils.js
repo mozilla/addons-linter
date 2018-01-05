@@ -2,6 +2,7 @@ import { lstat, readdir } from 'fs';
 import * as path from 'path';
 
 import promisify from 'es6-promisify';
+import upath from 'upath';
 
 import log from 'logger';
 
@@ -16,7 +17,7 @@ export function walkPromise(curPath, { shouldIncludePath = () => true } = {}) {
   const basePath = curPath;
   return (async function walk(_curPath) {
     const stat = await lstatPromise(_curPath);
-    const relPath = path.relative(basePath, _curPath);
+    const relPath = upath.toUnix(path.relative(basePath, _curPath));
 
     if (!shouldIncludePath(relPath, stat.isDirectory())) {
       log.debug(`Skipping file path: ${relPath}`);
