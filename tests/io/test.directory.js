@@ -6,7 +6,7 @@ import { unexpectedSuccess } from '../helpers';
 
 
 describe('Directory.getFiles()', () => {
-  it('should return cached data when available', () => {
+  it('should return cached data when available', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
     const fakeFileMeta = {
       size: 1,
@@ -18,41 +18,35 @@ describe('Directory.getFiles()', () => {
 
     const fakeWalkPromise = sinon.stub();
 
-    return myDirectory.getFiles(fakeWalkPromise)
-      .then((files) => {
-        expect(files).toEqual(myDirectory.files);
-        expect(fakeWalkPromise.called).toBeFalsy();
-      });
+    const files = await myDirectory.getFiles(fakeWalkPromise);
+    expect(files).toEqual(myDirectory.files);
+    expect(fakeWalkPromise.called).toBeFalsy();
   });
 
-  it('should return files from fixtures', () => {
+  it('should return files from fixtures', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
 
-    return myDirectory.getFiles()
-      .then((files) => {
-        const fileNames = Object.keys(files);
-        expect(fileNames).toContain('dir1/file1.txt');
-        expect(fileNames).toContain('dir2/file2.txt');
-        expect(fileNames).toContain('dir2/dir3/file3.txt');
-      });
+    const files = await myDirectory.getFiles();
+    const fileNames = Object.keys(files);
+    expect(fileNames).toContain('dir1/file1.txt');
+    expect(fileNames).toContain('dir2/file2.txt');
+    expect(fileNames).toContain('dir2/dir3/file3.txt');
   });
 
-  it('can be configured to not scan file paths', () => {
+  it('can be configured to not scan file paths', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
     myDirectory.setScanFileCallback((filePath) => {
       return !filePath.startsWith('dir2');
     });
 
-    return myDirectory.getFiles()
-      .then((files) => {
-        const fileNames = Object.keys(files);
-        expect(fileNames).toContain('dir1/file1.txt');
-        expect(fileNames).not.toContain('dir2/file2.txt');
-        expect(fileNames).not.toContain('dir2/dir3/file3.txt');
-      });
+    const files = await myDirectory.getFiles();
+    const fileNames = Object.keys(files);
+    expect(fileNames).toContain('dir1/file1.txt');
+    expect(fileNames).not.toContain('dir2/file2.txt');
+    expect(fileNames).not.toContain('dir2/dir3/file3.txt');
   });
 
-  it('can be configured to scan all dirs and to include a single file', () => {
+  it('can be configured to scan all dirs and to include a single file', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
     myDirectory.setScanFileCallback((filePath, isDir) => {
       if (isDir) {
@@ -61,85 +55,86 @@ describe('Directory.getFiles()', () => {
       return filePath === 'dir2/dir3/file3.txt';
     });
 
-    return myDirectory.getFiles()
-      .then((files) => {
-        const fileNames = Object.keys(files);
-        expect(fileNames).not.toContain('dir1/file1.txt');
-        expect(fileNames).not.toContain('dir2/file2.txt');
-        expect(fileNames).toContain('dir2/dir3/file3.txt');
-      });
+    const files = await myDirectory.getFiles();
+    const fileNames = Object.keys(files);
+    expect(fileNames).not.toContain('dir1/file1.txt');
+    expect(fileNames).not.toContain('dir2/file2.txt');
+    expect(fileNames).toContain('dir2/dir3/file3.txt');
   });
 });
 
 describe('Directory._getPath()', () => {
-  it('should reject if not a file that exists', () => {
+  it('should reject if not a file that exists', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
-    return myDirectory.getFiles()
-      .then(() => {
-        return myDirectory.getPath('whatever')
-          .then(unexpectedSuccess)
-          .catch((err) => {
-            expect(err.message).toContain(
-              '"whatever" does not exist in this dir.'
-            );
-          });
-      });
+
+    await myDirectory.getFiles();
+    try {
+      await myDirectory.getPath('whatever');
+      unexpectedSuccess();
+    } catch (err) {
+      expect(err.message).toContain(
+        '"whatever" does not exist in this dir.'
+      );
+    }
   });
 
-  it('should reject if path does not start with base', () => {
+  it('should reject if path does not start with base', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
     myDirectory.files = {
       '../file1.txt': {},
     };
-    return myDirectory.getPath('../file1.txt')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('Path argument must be relative');
-      });
+
+    try {
+      await myDirectory.getPath('../file1.txt');
+      unexpectedSuccess();
+    } catch (err) {
+      expect(err.message).toContain('Path argument must be relative');
+    }
   });
 
-  it("should reject if path starts with '/'", () => {
+  it("should reject if path starts with '/'", async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
     myDirectory.files = {
       '/file1.txt': {},
     };
-    return myDirectory.getPath('/file1.txt')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('Path argument must be relative');
-      });
+
+    try {
+      await myDirectory.getPath('/file1.txt');
+      unexpectedSuccess();
+    } catch (err) {
+      expect(err.message).toContain('Path argument must be relative');
+    }
   });
 });
 
 describe('Directory.getFileAsStream()', () => {
-  it('should return a stream', () => {
+  it('should return a stream', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
-    return myDirectory.getFiles()
-      .then(() => {
-        return myDirectory.getFileAsStream('dir2/dir3/file3.txt');
-      })
-      .then((readStream) => {
-        return new Promise((resolve, reject) => {
-          let content = '';
-          readStream
-            .on('readable', () => {
-              let chunk;
-              // eslint-disable-next-line no-cond-assign
-              while ((chunk = readStream.read()) !== null) {
-                content += chunk.toString();
-              }
-            })
-            .on('end', () => {
-              resolve(content);
-            })
-            .on('error', (err) => {
-              reject(err);
-            });
-        })
-          .then((content) => {
-            expect(content).toEqual('123\n');
-          });
+    await myDirectory.getFiles();
+
+    const readStream = await myDirectory.getFileAsStream('dir2/dir3/file3.txt');
+
+    const readStringFromStream = () => {
+      return new Promise((resolve, reject) => {
+        let content = '';
+        readStream.on('readable', () => {
+          let chunk;
+          // eslint-disable-next-line no-cond-assign
+          while ((chunk = readStream.read()) !== null) {
+            content += chunk.toString();
+          }
+        });
+        readStream.on('end', () => {
+          resolve(content);
+        });
+        readStream.on('error', (err) => {
+          reject(err);
+        });
       });
+    };
+
+    const content = await readStringFromStream();
+    expect(content).toEqual('123\n');
   });
 
   it('should not enforce utf-8 when encoding = null', async () => {
@@ -184,7 +179,7 @@ describe('Directory.getFileAsStream()', () => {
     expect(stringFromEncodingDefault.slice(0, 8)).not.toEqual('\x89PNG\r\n\x1a\n');
   });
 
-  it('should reject if file is too big', () => {
+  it('should reject if file is too big', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
     const fakeFileMeta = {
       size: 1024 * 1024 * 102,
@@ -194,39 +189,34 @@ describe('Directory.getFileAsStream()', () => {
       'chrome.manifest': fakeFileMeta,
     };
 
-    return myDirectory.getFileAsStream('manifest.json')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('File "manifest.json" is too large');
-      });
+    try {
+      await myDirectory.getFileAsStream('manifest.json');
+      unexpectedSuccess();
+    } catch (err) {
+      expect(err.message).toContain('File "manifest.json" is too large');
+    }
   });
 });
 
 
 describe('Directory.getFileAsString()', () => {
-  it('should strip a BOM', () => {
+  it('should strip a BOM', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
-    return myDirectory.getFiles()
-      .then(() => {
-        return myDirectory.getFileAsString('dir3/foo.txt');
-      })
-      .then((content) => {
-        expect(content.charCodeAt(0)).not.toEqual(0xFEFF);
-      });
+
+    await myDirectory.getFiles();
+    const content = await myDirectory.getFileAsString('dir3/foo.txt');
+    expect(content.charCodeAt(0)).not.toEqual(0xFEFF);
   });
 
-  it('should return a string', () => {
+  it('should return a string', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
-    return myDirectory.getFiles()
-      .then(() => {
-        return myDirectory.getFileAsString('dir2/dir3/file3.txt');
-      })
-      .then((string) => {
-        expect(string).toEqual('123\n');
-      });
+
+    await myDirectory.getFiles();
+    const string = await myDirectory.getFileAsString('dir2/dir3/file3.txt');
+    expect(string).toEqual('123\n');
   });
 
-  it('should reject if stream emits error', () => {
+  it('should reject if stream emits error', async () => {
     const fakeStreamEmitter = new EventEmitter();
 
     const myDirectory = new Directory('tests/fixtures/io/');
@@ -242,14 +232,15 @@ describe('Directory.getFileAsString()', () => {
       return Promise.resolve(fakeStreamEmitter);
     };
 
-    return myDirectory.getFileAsString('manifest.json')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('¡hola!');
-      });
+    try {
+      await myDirectory.getFileAsString('manifest.json');
+      unexpectedSuccess();
+    } catch (err) {
+      expect(err.message).toContain('¡hola!');
+    }
   });
 
-  it('should reject if file is too big', () => {
+  it('should reject if file is too big', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
     const fakeFileMeta = {
       size: 1024 * 1024 * 102,
@@ -259,11 +250,12 @@ describe('Directory.getFileAsString()', () => {
       'chrome.manifest': fakeFileMeta,
     };
 
-    return myDirectory.getFileAsString('manifest.json')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('File "manifest.json" is too large');
-      });
+    try {
+      await myDirectory.getFileAsString('manifest.json');
+      unexpectedSuccess();
+    } catch (err) {
+      expect(err.message).toContain('File "manifest.json" is too large');
+    }
   });
 });
 
@@ -275,17 +267,14 @@ describe('Directory.getFileAsString()', () => {
   The location is not relevant, the file contents are.
 */
 describe('Directory.getChunkAsBuffer()', () => {
-  it('should get a buffer', () => {
+  it('should get a buffer', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
-    return myDirectory.getFiles()
-      .then(() => {
-        // Just grab the first two characters.
-        return myDirectory.getChunkAsBuffer('dir2/dir3/file3.txt', 2);
-      })
-      .then((buffer) => {
-        // The file contains: 123\n. This tests that we are getting just
-        // the first two characters in the buffer.
-        expect(buffer.toString()).toEqual('12');
-      });
+
+    await myDirectory.getFiles();
+    // Just grab the first two characters.
+    const buffer = await myDirectory.getChunkAsBuffer('dir2/dir3/file3.txt', 2);
+    // The file contains: 123\n. This tests that we are getting just
+    // the first two characters in the buffer.
+    expect(buffer.toString()).toEqual('12');
   });
 });
