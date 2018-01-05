@@ -22,5 +22,8 @@ environment:
 test_script:
   - node --version
   - npm --version
-  - npm run test-ci
+  ### This npm script will execute the same tests executed by test-ci
+  ### but it skips coveralls (which is not currently recognized when
+  ### used from appveyor).
+  - npm run test-coverage-once
   - npm run lint
