@@ -19,7 +19,7 @@ export function normalizePath(iconPath) {
 
   // Convert filename to unix path separator (as the ones stored
   // into the scanned files map).
-  return upath.toUnix(pathname.slice(1));
+  return upath.toUnix(decodeURIComponent(pathname).slice(1));
 }
 
 /*

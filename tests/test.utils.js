@@ -362,3 +362,23 @@ describe('utils.parseCspPolicy', () => {
     expect(parsedPolicy['default-src']).toEqual(['\'none\'']);
   });
 });
+
+
+describe('utils.normalizePath', () => {
+  it('should normalize given "absolute" path to relative path', () => {
+    expect(utils.normalizePath('/foo/bar/baz')).toEqual('foo/bar/baz');
+  });
+
+  it('should normalize ./ and ../ relative paths', () => {
+    expect(utils.normalizePath('./foo/bar/baz')).toEqual('foo/bar/baz');
+    expect(utils.normalizePath('qux/../foo/bar/baz')).toEqual('foo/bar/baz');
+  });
+
+  it('should normalize path with fragment identifier', () => {
+    expect(utils.normalizePath('foo/bar/baz#qux')).toEqual('foo/bar/baz');
+  });
+
+  it('should not escape spaces within path', () => {
+    expect(utils.normalizePath('foo/bar baz/qux')).toEqual('foo/bar baz/qux');
+  });
+});
