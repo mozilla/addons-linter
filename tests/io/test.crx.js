@@ -52,12 +52,10 @@ describe('Crx.open()', function openCallback() {
     };
   });
 
-  it('should open a CRX and return a zip', () => {
+  it('should open a CRX and return a zip', async () => {
     const myCrx = new Crx('tests/fixtures/extension.crx');
-    return myCrx.open()
-      .then((zipfile) => {
-        expect(zipfile).toBeInstanceOf(ZipFile);
-      });
+    const zipfile = await myCrx.open();
+    expect(zipfile).toBeInstanceOf(ZipFile);
   });
 });
 
@@ -92,20 +90,18 @@ describe('crx.getFiles()', function getFilesCallback() {
     expect(Object.keys(myCrx.files).length).toEqual(0);
   });
 
-  it('should return cached data when available', () => {
+  it('should return cached data when available', async () => {
     const myCrx = new Crx('foo/bar', this.fakeZipLib);
     myCrx.files = {
       'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
-    return myCrx.getFiles()
-      .then((files) => {
-        expect(files).toEqual(myCrx.files);
-        expect(this.fromBufferStub.called).toBeFalsy();
-      });
+    const files = await myCrx.getFiles();
+    expect(files).toEqual(myCrx.files);
+    expect(this.fromBufferStub.called).toBeFalsy();
   });
 
-  it('should contain expected files', () => {
+  it('should contain expected files', async () => {
     const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
       this.fakeFs);
     const expected = {
@@ -132,13 +128,11 @@ describe('crx.getFiles()', function getFilesCallback() {
     // Call the close event callback
     this.endStub.yieldsAsync();
 
-    return myCrx.getFiles(onEventsSubscribed)
-      .then((files) => {
-        expect(files).toEqual(expected);
-      });
+    const files = await myCrx.getFiles(onEventsSubscribed);
+    expect(files).toEqual(expected);
   });
 
-  it('should reject on duplicate entries', () => {
+  it('should reject on duplicate entries', async () => {
     const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
       this.fakeFs);
     this.fromBufferStub.yieldsAsync(null, this.fakeZipFile);
@@ -151,42 +145,45 @@ describe('crx.getFiles()', function getFilesCallback() {
       entryCallback.call(null, dupeInstallFileEntry);
     };
 
-    return myCrx.getFiles(onEventsSubscribed)
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err).toBeInstanceOf(Error);
-        expect(err.message).toContain('DuplicateZipEntry');
-      });
+    try {
+      await myCrx.getFiles(onEventsSubscribed);
+      unexpectedSuccess();
+    } catch (err) {
+      expect(err).toBeInstanceOf(Error);
+      expect(err.message).toContain('DuplicateZipEntry');
+    }
   });
 
-  it('should reject on errors in readFile() in open()', () => {
+  it('should reject on errors in readFile() in open()', async () => {
     const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
       this.fakeFs);
 
     this.readFileStub.yieldsAsync(new Error('open test'), Buffer.from('bar'));
 
-    return myCrx.getFiles()
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('open test');
-      });
+    try {
+      await myCrx.getFiles();
+      unexpectedSuccess();
+    } catch (err) {
+      expect(err.message).toContain('open test');
+    }
   });
 
-  it('should reject on errors in parseCRX() in open()', () => {
+  it('should reject on errors in parseCRX() in open()', async () => {
     const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
       this.fakeFs);
 
     this.readFileStub.yieldsAsync(null, Buffer.from('bar'));
     this.fakeParseCrx.yieldsAsync(new Error('open test'), null);
 
-    return myCrx.getFiles()
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('open test');
-      });
+    try {
+      await myCrx.getFiles();
+      unexpectedSuccess();
+    } catch (err) {
+      expect(err.message).toContain('open test');
+    }
   });
 
-  it('should reject on errors in fromBuffer() in open()', () => {
+  it('should reject on errors in fromBuffer() in open()', async () => {
     const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
       this.fakeFs);
 
@@ -194,10 +191,11 @@ describe('crx.getFiles()', function getFilesCallback() {
     this.fakeParseCrx.yieldsAsync(null, { body: Buffer.from('foo') });
     this.readFileStub.yieldsAsync(null, Buffer.from('bar'));
 
-    return myCrx.getFiles()
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('open test');
-      });
+    try {
+      await myCrx.getFiles();
+      unexpectedSuccess();
+    } catch (err) {
+      expect(err.message).toContain('open test');
+    }
   });
 });
