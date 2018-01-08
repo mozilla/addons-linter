@@ -24,15 +24,15 @@ export default class BinaryScanner extends BaseScanner {
     );
   }
 
-  scan() {
+  async scan() {
     const buffer = this.contents;
     constants.FLAGGED_FILE_MAGIC_NUMBERS.forEach((entry) => {
       this.check(buffer, entry);
     });
 
-    return Promise.resolve({
+    return {
       linterMessages: this.linterMessages,
       scannedFiles: this.scannedFiles,
-    });
+    };
   }
 }
