@@ -107,6 +107,23 @@ describe('Directory._getPath()', () => {
   });
 });
 
+function readStringFromStream(readStream, transform) {
+  return new Promise((resolve, reject) => {
+    let content = '';
+    readStream.on('readable', () => {
+      let chunk;
+      // eslint-disable-next-line no-cond-assign
+      while ((chunk = readStream.read()) !== null) {
+        content += chunk.toString(transform);
+      }
+    });
+    readStream.on('end', () => {
+      resolve(content);
+    });
+    readStream.on('error', reject);
+  });
+}
+
 describe('Directory.getFileAsStream()', () => {
   it('should return a stream', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
@@ -114,26 +131,7 @@ describe('Directory.getFileAsStream()', () => {
 
     const readStream = await myDirectory.getFileAsStream('dir2/dir3/file3.txt');
 
-    const readStringFromStream = () => {
-      return new Promise((resolve, reject) => {
-        let content = '';
-        readStream.on('readable', () => {
-          let chunk;
-          // eslint-disable-next-line no-cond-assign
-          while ((chunk = readStream.read()) !== null) {
-            content += chunk.toString();
-          }
-        });
-        readStream.on('end', () => {
-          resolve(content);
-        });
-        readStream.on('error', (err) => {
-          reject(err);
-        });
-      });
-    };
-
-    const content = await readStringFromStream();
+    const content = await readStringFromStream(readStream);
     expect(content).toEqual('123\n');
   });
 
@@ -148,27 +146,8 @@ describe('Directory.getFileAsStream()', () => {
         encoding: null,
       });
 
-    const readStringFromStream = (readStream) => {
-      return new Promise((resolve, reject) => {
-        let content = '';
-        readStream.on('readable', () => {
-          let chunk;
-          // eslint-disable-next-line no-cond-assign
-          while ((chunk = readStream.read()) !== null) {
-            content += chunk.toString('binary');
-          }
-        });
-
-        readStream.on('end', () => {
-          resolve(content);
-        });
-
-        readStream.on('error', reject);
-      });
-    };
-
-    const stringFromEncodingDefault = await readStringFromStream(readStreamEncodingDefault);
-    const stringFromEncodingNull = await readStringFromStream(readStreamEncodingNull);
+    const stringFromEncodingDefault = await readStringFromStream(readStreamEncodingDefault, 'binary');
+    const stringFromEncodingNull = await readStringFromStream(readStreamEncodingNull, 'binary');
 
     // Ensure that by setting the encoding to null, the utf-8 encoding is not enforced
     // while reading binary data from the stream.
