@@ -1,62 +1,58 @@
-var postCssPlugins = [];
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+
+const postCssPlugins = [];
 const urlLoaderOptions = {
   limit: 10000,
 };
-export function getRules({ babelQuery, bundleStylesWithJs = false } = {}) {
-  let styleRules;
+const styleRules = [
+  {
+    test: /\.css$/,
+    loader: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: [
+        {
+          loader: 'css-loader',
+          options: { importLoaders: 2, sourceMap: true },
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            outputStyle: 'expanded',
+            plugins: () => postCssPlugins,
+            sourceMap: true,
+            sourceMapContents: true,
+          },
+        },
+      ],
+    }),
+  },
+  {
+    test: /\.scss$/,
+    loader: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: [
+        {
+          loader: 'css-loader',
+          options: { importLoaders: 2, sourceMap: true },
+        },
+        {
+          loader: 'postcss-loader',
+          options: { plugins: () => postCssPlugins },
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            outputStyle: 'expanded',
+            sourceMap: true,
+            sourceMapContents: true,
+          },
+        },
+      ],
+    }),
+  },
+];
 
-    // In production, we create a separate CSS bundle rather than
-    // include styles with the JS bundle. This lets the style bundle
-    // load in parallel.
-    styleRules = [
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: { importLoaders: 2, sourceMap: true },
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                outputStyle: 'expanded',
-                plugins: () => postCssPlugins,
-                sourceMap: true,
-                sourceMapContents: true,
-              },
-            },
-          ],
-        }),
-      },
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: { importLoaders: 2, sourceMap: true },
-            },
-            {
-              loader: 'postcss-loader',
-              options: { plugins: () => postCssPlugins },
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                outputStyle: 'expanded',
-                sourceMap: true,
-                sourceMapContents: true,
-              },
-            },
-          ],
-        }),
-      },
-    ];
-
+export function getRules({ babelQuery } = {}) {
   return [
     {
       test: /\.jsx?$/,
