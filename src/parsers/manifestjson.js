@@ -17,7 +17,8 @@ import { isToolkitVersionString } from 'schema/formats';
 import { parseCspPolicy, normalizePath } from 'utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
-function getImageMetadata(io, iconPath) {
+
+async function getImageMetadata(io, iconPath) {
   // Get a non-utf8 input stream by setting encoding to null.
   // (only needed for the 'io/directory' module which open the file using the utf-8
   // encoding by default).
@@ -27,7 +28,8 @@ function getImageMetadata(io, iconPath) {
     encoding = 'utf-8';
   }
 
-  return io.getFileAsStream(iconPath, { encoding }).then(probeImageSize);
+  const data = await io.getFileAsStream(iconPath, { encoding });
+  return probeImageSize(data);
 }
 
 
@@ -234,6 +236,27 @@ export default class ManifestJSONParser extends JSONParser {
     }
   }
 
+  async validateIcon(_path, size) {
+    try {
+      const info = await getImageMetadata(this.io, _path);
+      if (info.width !== info.height) {
+        this.collector.addError(messages.iconIsNotSquare(_path));
+        this.isValid = false;
+      } else if (info.mime !== 'image/svg+xml' &&
+                  parseInt(info.width, 10) !== parseInt(size, 10)) {
+        this.collector.addWarning(messages.iconSizeInvalid({
+          path: _path,
+          expected: parseInt(size, 10),
+          actual: parseInt(info.width, 10),
+        }));
+      }
+    } catch (err) {
+      this.collector.addWarning(messages.corruptIconFile({
+        path: _path,
+      }));
+    }
+  }
+
   validateIcons() {
     const promises = [];
     const { icons } = this.parsedJSON;
@@ -246,30 +269,13 @@ export default class ManifestJSONParser extends JSONParser {
         this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
       } else {
         promises.push(
-          getImageMetadata(this.io, _path)
-            .then((info) => {
-              if (info.width !== info.height) {
-                this.collector.addError(messages.iconIsNotSquare(_path));
-                this.isValid = false;
-              } else if (info.mime !== 'image/svg+xml' &&
-                         parseInt(info.width, 10) !== parseInt(size, 10)) {
-                this.collector.addWarning(messages.iconSizeInvalid({
-                  path: _path,
-                  expected: parseInt(size, 10),
-                  actual: parseInt(info.width, 10),
-                }));
-              }
-            })
-            .catch(() => {
-              this.collector.addWarning(messages.corruptIconFile({
-                path: _path,
-              }));
-            })
+          this.validateIcon(_path, size)
         );
       }
     });
     return Promise.all(promises);
   }
+
 
   validateFileExistsInPackage(filePath, type, messageFunc = messages.manifestBackgroundMissing) {
     const _path = normalizePath(filePath);
