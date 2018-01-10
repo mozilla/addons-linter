@@ -1,10 +1,10 @@
 /* eslint-disable no-console, import/no-extraneous-dependencies */
-import fs from 'fs';
+const fs = require('fs');
 
-import webpack from 'webpack';
+const webpack = require('webpack');
 
-import { getRules } from './webpack-common';
-import webpackConfig from './webpack.config';
+const getRules = require('./webpack-common');
+const webpackConfig = require('./webpack.config');
 
 const babelrc = fs.readFileSync('./.babelrc');
 const babelrcObject = JSON.parse(babelrc);
@@ -31,7 +31,7 @@ const babelL10nPlugins = [
       'plural-forms': 'nplurals=2; plural=(n!=1);',
     },
     functionNames: {
-      gettext: ['msgid'],
+      _: ['msgid'],
       dgettext: ['domain', 'msgid'],
       ngettext: ['msgid', 'msgid_plural', 'count'],
       dngettext: ['domain', 'msgid', 'msgid_plural', 'count'],
@@ -50,7 +50,7 @@ const BABEL_QUERY = Object.assign({}, babelrcObject, {
   plugins: babelPlugins.concat(babelL10nPlugins),
 });
 
-export default Object.assign({}, webpackConfig, {
+module.exports = Object.assign({}, webpackConfig, {
   module: {
     rules: getRules({ babelQuery: BABEL_QUERY }),
   },

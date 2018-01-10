@@ -1,4 +1,4 @@
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const postCssPlugins = [];
 const urlLoaderOptions = {
@@ -52,7 +52,7 @@ const styleRules = [
   },
 ];
 
-export function getRules({ babelQuery } = {}) {
+module.exports = function getRules({ babelQuery } = {}) {
   return [
     {
       test: /\.jsx?$/,
@@ -69,4 +69,4 @@ export function getRules({ babelQuery } = {}) {
       use: [{ loader: 'url-loader', options: urlLoaderOptions }],
     },
   ];
-}
+};
