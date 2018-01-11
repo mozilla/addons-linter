@@ -4,6 +4,7 @@ node_js:
 - '6'
 - '8'
 script:
+  - yarn
   - yarn run test-ci
   - yarn run build
   - yarn run lint
