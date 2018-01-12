@@ -62,6 +62,7 @@
     "is-mergeable-object": "1.1.0",
     "isparta": "4.0.0",
     "jest": "22.0.4",
+    "jest-cli": "22.0.4",
     "jest-raw-loader": "1.0.1",
     "json-loader": "0.5.7",
     "load-grunt-configs": "1.0.0",
@@ -76,7 +77,7 @@
     "sinon": "4.1.4",
     "tar": "4.2.0",
     "webpack": "3.10.0",
-    "webpack-dev-server": "2.10.0"
+    "webpack-dev-server": "2.10.1"
   },
   "dependencies": {
     "ajv": "5.5.2",
