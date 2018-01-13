@@ -2,8 +2,6 @@ import { EventEmitter } from 'events';
 
 import { Directory } from 'io';
 
-import { unexpectedSuccess } from '../helpers';
-
 
 describe('Directory.getFiles()', () => {
   it('should return cached data when available', async () => {
@@ -68,14 +66,9 @@ describe('Directory._getPath()', () => {
     const myDirectory = new Directory('tests/fixtures/io/');
 
     await myDirectory.getFiles();
-    try {
-      await myDirectory.getPath('whatever');
-      unexpectedSuccess();
-    } catch (err) {
-      expect(err.message).toContain(
-        '"whatever" does not exist in this dir.'
-      );
-    }
+    await expect(
+      myDirectory.getPath('whatever')
+    ).rejects.toThrow('"whatever" does not exist in this dir.');
   });
 
   it('should reject if path does not start with base', async () => {
@@ -84,12 +77,9 @@ describe('Directory._getPath()', () => {
       '../file1.txt': {},
     };
 
-    try {
-      await myDirectory.getPath('../file1.txt');
-      unexpectedSuccess();
-    } catch (err) {
-      expect(err.message).toContain('Path argument must be relative');
-    }
+    await expect(
+      myDirectory.getPath('../file1.txt')
+    ).rejects.toThrow('Path argument must be relative');
   });
 
   it("should reject if path starts with '/'", async () => {
@@ -98,12 +88,9 @@ describe('Directory._getPath()', () => {
       '/file1.txt': {},
     };
 
-    try {
-      await myDirectory.getPath('/file1.txt');
-      unexpectedSuccess();
-    } catch (err) {
-      expect(err.message).toContain('Path argument must be relative');
-    }
+    await expect(
+      myDirectory.getPath('/file1.txt')
+    ).rejects.toThrow('Path argument must be relative');
   });
 });
 
@@ -168,12 +155,9 @@ describe('Directory.getFileAsStream()', () => {
       'chrome.manifest': fakeFileMeta,
     };
 
-    try {
-      await myDirectory.getFileAsStream('manifest.json');
-      unexpectedSuccess();
-    } catch (err) {
-      expect(err.message).toContain('File "manifest.json" is too large');
-    }
+    await expect(
+      myDirectory.getFileAsStream('manifest.json')
+    ).rejects.toThrow('File "manifest.json" is too large');
   });
 });
 
@@ -211,12 +195,9 @@ describe('Directory.getFileAsString()', () => {
       return Promise.resolve(fakeStreamEmitter);
     };
 
-    try {
-      await myDirectory.getFileAsString('manifest.json');
-      unexpectedSuccess();
-    } catch (err) {
-      expect(err.message).toContain('¡hola!');
-    }
+    await expect(
+      myDirectory.getFileAsString('manifest.json')
+    ).rejects.toThrow('¡hola!');
   });
 
   it('should reject if file is too big', async () => {
@@ -229,12 +210,9 @@ describe('Directory.getFileAsString()', () => {
       'chrome.manifest': fakeFileMeta,
     };
 
-    try {
-      await myDirectory.getFileAsString('manifest.json');
-      unexpectedSuccess();
-    } catch (err) {
-      expect(err.message).toContain('File "manifest.json" is too large');
-    }
+    await expect(
+      myDirectory.getFileAsString('manifest.json')
+    ).rejects.toThrow('File "manifest.json" is too large');
   });
 });
 
