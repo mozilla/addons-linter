@@ -103,8 +103,9 @@ describe('Directory.getFileAsStream()', () => {
 
     const readStream = await myDirectory.getFileAsStream('dir2/dir3/file3.txt');
 
-    const content = await readStringFromStream(readStream);
-    expect(content).toEqual('123\n');
+    await expect(
+      readStringFromStream(readStream)
+    ).resolves.toBe('123\n');
   });
 
   it('should not enforce utf-8 when encoding = null', async () => {
@@ -160,8 +161,9 @@ describe('Directory.getFileAsString()', () => {
     const myDirectory = new Directory('tests/fixtures/io/');
 
     await myDirectory.getFiles();
-    const string = await myDirectory.getFileAsString('dir2/dir3/file3.txt');
-    expect(string).toEqual('123\n');
+    await expect(
+      myDirectory.getFileAsString('dir2/dir3/file3.txt')
+    ).resolves.toBe('123\n');
   });
 
   it('should reject if stream emits error', async () => {
