@@ -62,7 +62,7 @@
     "is-mergeable-object": "1.1.0",
     "isparta": "4.0.0",
     "jest": "22.0.4",
-    "jest-cli": "22.0.4",
+    "jest-cli": "22.1.0",
     "jest-raw-loader": "1.0.1",
     "json-loader": "0.5.7",
     "load-grunt-configs": "1.0.0",
