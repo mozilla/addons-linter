@@ -626,47 +626,49 @@ export default class Linter {
   }
 
   _markCoinMinerUsage(filename, fileData) {
-    MINER_BLOCKLIST.filenames.forEach((nameRegex) => {
-      const filenameMatch = filename.match(nameRegex);
+    if (fileData && fileData.trim()) {
+      MINER_BLOCKLIST.filenames.forEach((nameRegex) => {
+        const filenameMatch = filename.match(nameRegex);
 
-      if (filenameMatch) {
-        this.collector.addWarning(
-          Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
-            file: filename,
-          }));
-      }
+        if (filenameMatch) {
+          this.collector.addWarning(
+            Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
+              file: filename,
+            }));
+        }
 
-      const fileDataMatch = fileData.match(nameRegex);
+        const fileDataMatch = fileData.match(nameRegex);
 
-      if (fileDataMatch) {
-        const { matchedLine, matchedColumn } = getLineAndColumnFromMatch(
-          fileDataMatch);
+        if (fileDataMatch) {
+          const { matchedLine, matchedColumn } = getLineAndColumnFromMatch(
+            fileDataMatch);
 
-        this.collector.addWarning(
-          Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
-            file: filename,
-            column: matchedColumn,
-            line: matchedLine,
-          }));
-      }
-    });
+          this.collector.addWarning(
+            Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
+              file: filename,
+              column: matchedColumn,
+              line: matchedLine,
+            }));
+        }
+      });
 
-    MINER_BLOCKLIST.code.forEach((codeRegex) => {
-      const match = fileData.match(codeRegex);
+      MINER_BLOCKLIST.code.forEach((codeRegex) => {
+        const match = fileData.match(codeRegex);
 
-      if (match) {
-        const { matchedLine, matchedColumn } = getLineAndColumnFromMatch(match);
+        if (match) {
+          const { matchedLine, matchedColumn } = getLineAndColumnFromMatch(match);
 
-        this.collector.addWarning(
-          Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
-            file: filename,
-            line: matchedLine,
-            column: matchedColumn,
-            // use dataPath for our actual match to avoid any obvious
-            // duplicates
-            dataPath: match[0],
-          }));
-      }
-    });
+          this.collector.addWarning(
+            Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
+              file: filename,
+              line: matchedLine,
+              column: matchedColumn,
+              // use dataPath for our actual match to avoid any obvious
+              // duplicates
+              dataPath: match[0],
+            }));
+        }
+      });
+    }
   }
 }

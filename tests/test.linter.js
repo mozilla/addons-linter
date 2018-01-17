@@ -1461,21 +1461,13 @@ describe('Linter.extractMetadata()', () => {
         sinon.assert.callCount(markCoinMinerUsageSpy, 3);
         const { warnings } = addonLinter.collector;
 
-        expect(warnings.length).toEqual(5);
+        expect(warnings.length).toEqual(4);
 
         assertHasMatchingError(warnings, {
           code: 'COINMINER_USAGE_DETECTED',
           column: 284,
           line: 2,
           dataPath: 'CoinHive.CONFIG',
-          file: 'coinhive_disguised_as_preferences.js',
-        });
-
-        assertHasMatchingError(warnings, {
-          code: 'COINMINER_USAGE_DETECTED',
-          column: 40,
-          line: 24,
-          dataPath: 'coinhive.com',
           file: 'coinhive_disguised_as_preferences.js',
         });
 
