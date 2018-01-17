@@ -3,7 +3,6 @@ const fs = require('fs');
 
 const webpack = require('webpack');
 
-const getRules = require('./webpack-common');
 const webpackConfig = require('./webpack.config');
 
 const babelrc = fs.readFileSync('./.babelrc');
@@ -52,7 +51,7 @@ const BABEL_QUERY = Object.assign({}, babelrcObject, {
 
 module.exports = Object.assign({}, webpackConfig, {
   module: {
-    rules: getRules({ babelQuery: BABEL_QUERY }),
+    rules: webpackConfig.module.rules({ babelQuery: BABEL_QUERY }),
   },
   plugins: [
     // Don't generate modules for locale files.
