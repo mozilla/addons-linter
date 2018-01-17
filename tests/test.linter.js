@@ -1439,7 +1439,7 @@ describe('Linter.extractMetadata()', () => {
       files = {
         'coinhive_disguised_as_preferences.js': { uncompressedSize: 20 },
         'included_in_manifest.json': { uncompressedSize: 20 },
-        'coinhived_disguised_renamed.js': { uncompressedSize: 20 },
+        'coinhive_disguised_renamed.js': { uncompressedSize: 20 },
       };
       getFile(filename) {
         return this.getFileAsString(filename);
