@@ -1,5 +1,8 @@
 import { getConfig, terminalWidth } from 'cli';
 
+// Unmock cli to test it (jest automatically host this call before the import
+// section above.
+jest.unmock('cli');
 
 let cli;
 

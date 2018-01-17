@@ -1,4 +1,4 @@
-import argv from 'yargs';
+import yargs from 'yargs';
 import { oneLine } from 'common-tags';
 
 import log from 'logger';
@@ -17,14 +17,19 @@ export function terminalWidth(_process = process) {
   return 78;
 }
 
-export function getConfig({ useCLI = true } = {}) {
+export function getConfig({ useCLI = true, argv } = {}) {
   if (useCLI === false) {
     log.error(oneLine`Config requested from CLI, but not in CLI mode.
       Please supply a config instead of relying on the getConfig() call.`);
     throw new Error('Cannot request config from CLI in library mode');
   }
 
-  return argv
+  // Used by test.main,js to override CLI arguments (because
+  // the  process.argv array is controlled by jest),
+  // See #1762 for a rationale.
+  const cliArgv = argv ? yargs(argv) : yargs;
+
+  return cliArgv
     .usage(`Usage: ./$0 [options] addon-package-or-dir \n\n
       Add-ons Linter (JS Edition) v${version}`)
     .option('log-level', {
