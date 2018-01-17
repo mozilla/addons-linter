@@ -10,7 +10,12 @@ import { terminalWidth } from 'cli';
 import * as constants from 'const';
 import { BANNED_LIBRARIES, UNADVISED_LIBRARIES } from 'libraries';
 import * as messages from 'messages';
-import { checkMinNodeVersion, gettext as _, couldBeMinifiedCode } from 'utils';
+import {
+  checkMinNodeVersion,
+  gettext as _,
+  couldBeMinifiedCode,
+  getLineAndColumnFromMatch,
+} from 'utils';
 import log from 'logger';
 import Collector from 'collector';
 import DefaultManifestJSONParser from 'parsers/manifestjson';
@@ -22,6 +27,7 @@ import JavaScriptScanner from 'scanners/javascript';
 import JSONScanner from 'scanners/json';
 import LangpackScanner from 'scanners/langpack';
 import { Crx, Directory, Xpi } from 'io';
+import { MINER_BLOCKLIST } from 'miner_blocklist';
 
 
 export default class Linter {
@@ -341,6 +347,9 @@ export default class Linter {
         // Check for badwords across all code files
         this._markBadwordUsage(filename, fileData);
 
+        // Check for coin miners
+        this._markCoinMinerUsage(filename, fileData);
+
         if (this.addonMetadata) {
           this.addonMetadata.totalScannedFileSize += fileSize;
         }
@@ -614,5 +623,50 @@ export default class Linter {
         );
       }
     }
+  }
+
+  _markCoinMinerUsage(filename, fileData) {
+    MINER_BLOCKLIST.filenames.forEach((nameRegex) => {
+      const filenameMatch = filename.match(nameRegex);
+
+      if (filenameMatch) {
+        this.collector.addWarning(
+          Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
+            file: filename,
+          }));
+      }
+
+      const fileDataMatch = fileData.match(nameRegex);
+
+      if (fileDataMatch) {
+        const { matchedLine, matchedColumn } = getLineAndColumnFromMatch(
+          fileDataMatch);
+
+        this.collector.addWarning(
+          Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
+            file: filename,
+            column: matchedColumn,
+            line: matchedLine,
+          }));
+      }
+    });
+
+    MINER_BLOCKLIST.code.forEach((codeRegex) => {
+      const match = fileData.match(codeRegex);
+
+      if (match) {
+        const { matchedLine, matchedColumn } = getLineAndColumnFromMatch(match);
+
+        this.collector.addWarning(
+          Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
+            file: filename,
+            line: matchedLine,
+            column: matchedColumn,
+            // use dataPath for our actual match to avoid any obvious
+            // duplicates
+            dataPath: match[0],
+          }));
+      }
+    });
   }
 }

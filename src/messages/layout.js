@@ -84,3 +84,12 @@ export const MOZILLA_COND_OF_USE = {
     See https://www.mozilla.org/en-US/about/legal/acceptable-use/ for more
     details.`),
 };
+
+export const COINMINER_USAGE_DETECTED = {
+  code: 'COINMINER_USAGE_DETECTED',
+  message: _('Firefox add-ons are not allowed to run coin miners.'),
+  description: _(oneLine`We do not allow coinminer scripts to be run inside
+    WebExtensions.
+    See https://github.com/mozilla/addons-linter/issues/1643 for more
+    details.`),
+};
