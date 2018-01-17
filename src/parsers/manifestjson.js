@@ -236,23 +236,23 @@ export default class ManifestJSONParser extends JSONParser {
     }
   }
 
-  async validateIcon(_path, size) {
+  async validateIcon(path, expectedSize) {
     try {
-      const info = await getImageMetadata(this.io, _path);
+      const info = await getImageMetadata(this.io, path);
       if (info.width !== info.height) {
-        this.collector.addError(messages.iconIsNotSquare(_path));
+        this.collector.addError(messages.iconIsNotSquare(path));
         this.isValid = false;
       } else if (info.mime !== 'image/svg+xml' &&
-                  parseInt(info.width, 10) !== parseInt(size, 10)) {
+                  parseInt(info.width, 10) !== parseInt(expectedSize, 10)) {
         this.collector.addWarning(messages.iconSizeInvalid({
-          path: _path,
-          expected: parseInt(size, 10),
+          path: path,
+          expected: parseInt(expectedSize, 10),
           actual: parseInt(info.width, 10),
         }));
       }
     } catch (err) {
       this.collector.addWarning(messages.corruptIconFile({
-        path: _path,
+        path: path,
       }));
     }
   }
@@ -275,7 +275,6 @@ export default class ManifestJSONParser extends JSONParser {
     });
     return Promise.all(promises);
   }
-
 
   validateFileExistsInPackage(filePath, type, messageFunc = messages.manifestBackgroundMissing) {
     const _path = normalizePath(filePath);
