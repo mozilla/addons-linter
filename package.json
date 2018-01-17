@@ -99,6 +99,7 @@
     "postcss": "6.0.14",
     "probe-image-size": "3.2.0",
     "relaxed-json": "1.0.1",
+    "semver": "5.5.0",
     "semver": "5.4.1",
     "shelljs": "0.8.0",
     "source-map-support": "0.4.18",
