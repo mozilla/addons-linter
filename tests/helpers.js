@@ -223,3 +223,20 @@ export function checkOutput(func, argv, callback) {
     return done();
   }
 }
+
+export function readStringFromStream(readStream, transform) {
+  return new Promise((resolve, reject) => {
+    let content = '';
+    readStream.on('readable', () => {
+      let chunk;
+      // eslint-disable-next-line no-cond-assign
+      while ((chunk = readStream.read()) !== null) {
+        content += chunk.toString(transform);
+      }
+    });
+    readStream.on('end', () => {
+      resolve(content);
+    });
+    readStream.on('error', reject);
+  });
+}
