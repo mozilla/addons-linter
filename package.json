@@ -49,7 +49,7 @@
     "deepmerge": "2.0.1",
     "eslint-config-amo": "1.0.0",
     "eslint-plugin-async-await": "0.0.0",
-    "eslint-plugin-jest": "21.3.2",
+    "eslint-plugin-jest": "21.6.2",
     "eslint-plugin-promise": "3.5.0",
     "gfm.css": "1.1.1",
     "grunt": "1.0.1",
