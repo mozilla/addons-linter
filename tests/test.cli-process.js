@@ -3,6 +3,9 @@ import { createInstance } from 'main';
 
 import { checkOutput } from './helpers';
 
+// Unmock cli to test it (jest automatically host this call before the import
+// section above.
+jest.unmock('cli');
 
 describe('Process', () => {
   it('should exit with exit code 0 when no errors.', () => {
