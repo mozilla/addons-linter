@@ -7,7 +7,7 @@ export const MINER_BLOCKLIST = {
     /CryptonightWASMWrapper/,
   ],
   filenames: [
-    /coinhive(\.min\.)?js/,
-    /cryptonight(\.min\.)\.js/,
+    /coinhive(\.min)?\.js/,
+    /cryptonight(\.min)\.js/,
   ],
 };

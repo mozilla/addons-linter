@@ -1440,6 +1440,7 @@ describe('Linter.extractMetadata()', () => {
         'coinhive_disguised_as_preferences.js': { uncompressedSize: 20 },
         'included_in_manifest.json': { uncompressedSize: 20 },
         'coinhive_disguised_renamed.js': { uncompressedSize: 20 },
+        'coinhive.min.js': { uncompressedSize: 20 },
       };
       getFile(filename) {
         return this.getFileAsString(filename);
@@ -1458,10 +1459,10 @@ describe('Linter.extractMetadata()', () => {
     return addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole })
       .then(() => {
         // Only manifest and js files, binary files like the .png are ignored
-        sinon.assert.callCount(markCoinMinerUsageSpy, 3);
+        sinon.assert.callCount(markCoinMinerUsageSpy, 4);
         const { warnings } = addonLinter.collector;
 
-        expect(warnings.length).toEqual(4);
+        expect(warnings.length).toEqual(5);
 
         assertHasMatchingError(warnings, {
           code: 'COINMINER_USAGE_DETECTED',
@@ -1492,6 +1493,14 @@ describe('Linter.extractMetadata()', () => {
           line: 1,
           dataPath: 'CryptonightWASMWrapper',
           file: 'coinhive_disguised_renamed.js',
+        });
+
+        assertHasMatchingError(warnings, {
+          code: 'COINMINER_USAGE_DETECTED',
+          column: undefined,
+          line: undefined,
+          dataPath: undefined,
+          file: 'coinhive.min.js',
         });
       });
   });
