@@ -17,7 +17,8 @@ import {
   fakeMessageData,
   unexpectedSuccess,
   validManifestJSON,
-  EMPTY_PNG } from './helpers';
+  EMPTY_PNG,
+  assertHasMatchingError } from './helpers';
 
 
 const fakeCheckFileExists = () => {
@@ -1421,6 +1422,86 @@ describe('Linter.extractMetadata()', () => {
         sinon.assert.callCount(markBadwordusageSpy, 3);
         const errors = addonLinter.collector.notices;
         expect(errors.length).toEqual(2);
+      });
+  });
+
+  it('should flag coin miners', () => {
+    const addonLinter = new Linter({
+      _: ['tests/fixtures/webextension_badwords.zip'],
+    });
+    const markCoinMinerUsageSpy = sinon.spy(addonLinter, '_markCoinMinerUsage');
+
+    // suppress output.
+    addonLinter.print = sinon.stub();
+    addonLinter.checkFileExists = fakeCheckFileExists;
+
+    class FakeXpi extends FakeIOBase {
+      files = {
+        'coinhive_disguised_as_preferences.js': { uncompressedSize: 20 },
+        'included_in_manifest.json': { uncompressedSize: 20 },
+        'coinhive_disguised_renamed.js': { uncompressedSize: 20 },
+        'coinhive.min.js': { uncompressedSize: 20 },
+      };
+      getFile(filename) {
+        return this.getFileAsString(filename);
+      }
+      getFiles() {
+        return Promise.resolve(this.files);
+      }
+      getFileAsString(filename) {
+        const contents = fs.readFileSync(
+          `tests/fixtures/coinminers/${filename}`,
+          'utf-8'
+        );
+        return Promise.resolve(contents);
+      }
+    }
+    return addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole })
+      .then(() => {
+        // Only manifest and js files, binary files like the .png are ignored
+        sinon.assert.callCount(markCoinMinerUsageSpy, 4);
+        const { warnings } = addonLinter.collector;
+
+        expect(warnings.length).toEqual(5);
+
+        assertHasMatchingError(warnings, {
+          code: 'COINMINER_USAGE_DETECTED',
+          column: 284,
+          line: 2,
+          dataPath: 'CoinHive.CONFIG',
+          file: 'coinhive_disguised_as_preferences.js',
+        });
+
+        assertHasMatchingError(warnings, {
+          code: 'COINMINER_USAGE_DETECTED',
+          column: 119556,
+          line: 26,
+          dataPath: 'CryptonightWASMWrapper',
+          file: 'coinhive_disguised_as_preferences.js',
+        });
+
+        assertHasMatchingError(warnings, {
+          code: 'COINMINER_USAGE_DETECTED',
+          column: 30,
+          line: 12,
+          file: 'included_in_manifest.json',
+        });
+
+        assertHasMatchingError(warnings, {
+          code: 'COINMINER_USAGE_DETECTED',
+          column: 134338,
+          line: 1,
+          dataPath: 'CryptonightWASMWrapper',
+          file: 'coinhive_disguised_renamed.js',
+        });
+
+        assertHasMatchingError(warnings, {
+          code: 'COINMINER_USAGE_DETECTED',
+          column: undefined,
+          line: undefined,
+          dataPath: undefined,
+          file: 'coinhive.min.js',
+        });
       });
   });
 

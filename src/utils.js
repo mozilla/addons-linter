@@ -249,6 +249,18 @@ export function parseCspPolicy(policy) {
   return parsedPolicy;
 }
 
+
+export function getLineAndColumnFromMatch(match) {
+  const matchedLines = match.input
+    .substr(0, match.index)
+    .split('\n');
+  const matchedColumn = matchedLines.slice(-1)[0].length + 1;
+  const matchedLine = matchedLines.length;
+
+  return { matchedLine, matchedColumn };
+}
+
+
 /**
  * Determines if the source text is minified.
  * Using the percentage no. of the indented lines from a sample set of lines
