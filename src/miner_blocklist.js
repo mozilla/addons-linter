@@ -3,9 +3,6 @@ export const MINER_BLOCKLIST = {
     // CoinHive
     /window.CoinHive=window.CoinHive/,
     /CoinHive\.CONFIG/,
-    /coin-hive\.com/,
-    /coinhive\.com/,
-    /cnhv\.co/,
     /\bcryptonight_hash\b/,
     /CryptonightWASMWrapper/,
   ],
