@@ -230,6 +230,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :white_check_mark: | error |  |  | Bad zip file  | |  | | BAD_ZIPFILE |
 | :white_check_mark: | warning |  |  | Already signed  | | https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagelayout.py  | | ALREADY_SIGNED |
 | :white_check_mark: | notice | MOZILLA_COND_OF_USE | | Mozilla conditions of use violation | | | | |
+| :white_check_mark: | warning | COINMINER_USAGE_DETECTED | Firefox add-ons are not allowed to run coin miners | | | | |
 
 ## Type detection
 
