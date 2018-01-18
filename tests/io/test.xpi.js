@@ -5,6 +5,8 @@ import { EventEmitter } from 'events';
 import { Xpi } from 'io';
 import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
 
+import { readStringFromStream } from '../helpers';
+
 
 const defaultData = {
   compressionMethod: DEFLATE_COMPRESSION,
@@ -404,25 +406,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
 
     const readStream = await myXpi.getFileAsStream('manifest.json');
 
-    const onceReadString = new Promise((resolve, reject) => {
-      let chunks = '';
-      readStream
-        .on('readable', () => {
-          let chunk;
-          // eslint-disable-next-line no-cond-assign
-          while ((chunk = readStream.read()) !== null) {
-            chunks += chunk.toString();
-          }
-        })
-        .on('end', () => {
-          resolve(chunks);
-        })
-        .on('error', (err) => {
-          reject(err);
-        });
-    });
-
-    const chunks = await onceReadString;
+    const chunks = await readStringFromStream(readStream);
     const [chunk1, chunk2] = chunks.split('\n');
     expect(chunk1).toEqual('line one');
     expect(chunk2).toEqual('line two');
