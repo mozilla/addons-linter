@@ -26,7 +26,7 @@ module.exports = {
     libraryTarget: 'commonjs2',
   },
   module: {
-    rules: function ({ babelQuery } = {}) {
+    rules({ babelQuery } = {}) {
       return [
         {
           // babel options are in .babelrc
@@ -41,7 +41,7 @@ module.exports = {
           test: /\.txt$/,
         },
       ];
-    }
+    },
   },
   externals: nodeModules,
   plugins: [
