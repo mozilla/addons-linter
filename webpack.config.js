@@ -26,22 +26,18 @@ module.exports = {
     libraryTarget: 'commonjs2',
   },
   module: {
-    rules({ babelQuery } = {}) {
-      return [
-        {
-          // babel options are in .babelrc
-          exclude: /(node_modules|bower_components)/,
-          test: /\.js$/,
-          loader: 'babel-loader',
-          query: babelQuery,
-        },
-        {
-          use: 'raw-loader',
-          exclude: /(node_modules|bower_components)/,
-          test: /\.txt$/,
-        },
-      ];
-    },
+    rules: [
+      {
+        // babel options are in .babelrc
+        exclude: /(node_modules|bower_components)/,
+        test: /\.js$/,
+      },
+      {
+        use: 'raw-loader',
+        exclude: /(node_modules|bower_components)/,
+        test: /\.txt$/,
+      },
+    ]
   },
   externals: nodeModules,
   plugins: [
