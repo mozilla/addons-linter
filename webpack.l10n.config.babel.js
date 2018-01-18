@@ -49,10 +49,10 @@ const BABEL_QUERY = Object.assign({}, babelrcObject, {
   plugins: babelPlugins.concat(babelL10nPlugins),
 });
 
-var rules = webpackConfig.module.rules;
+const rules = webpackConfig.module.rules;
 rules[0].loader = 'babel-loader',
 rules[0].query = BABEL_QUERY,
-delete rules[0].use
+delete rules[0].use;
 
 module.exports = Object.assign({}, webpackConfig, {
   module: {

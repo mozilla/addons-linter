@@ -37,7 +37,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         test: /\.txt$/,
       },
-    ]
+    ],
   },
   externals: nodeModules,
   plugins: [
