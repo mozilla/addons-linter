@@ -236,23 +236,23 @@ export default class ManifestJSONParser extends JSONParser {
     }
   }
 
-  async validateIcon(path, expectedSize) {
+  async validateIcon(iconPath, expectedSize) {
     try {
-      const info = await getImageMetadata(this.io, path);
+      const info = await getImageMetadata(this.io, iconPath);
       if (info.width !== info.height) {
-        this.collector.addError(messages.iconIsNotSquare(path));
+        this.collector.addError(messages.iconIsNotSquare(iconPath));
         this.isValid = false;
       } else if (info.mime !== 'image/svg+xml' &&
                   parseInt(info.width, 10) !== parseInt(expectedSize, 10)) {
         this.collector.addWarning(messages.iconSizeInvalid({
-          path: path,
+          path: iconPath,
           expected: parseInt(expectedSize, 10),
           actual: parseInt(info.width, 10),
         }));
       }
     } catch (err) {
       this.collector.addWarning(messages.corruptIconFile({
-        path: path,
+        path: iconPath,
       }));
     }
   }
