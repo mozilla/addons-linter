@@ -49,14 +49,16 @@ const BABEL_QUERY = Object.assign({}, babelrcObject, {
   plugins: babelPlugins.concat(babelL10nPlugins),
 });
 
-const rules = webpackConfig.module.rules;
-rules[0].loader = 'babel-loader',
-rules[0].query = BABEL_QUERY,
-delete rules[0].use;
+const [rule] = webpackConfig.module.rules;
+rule.loader = 'babel-loader';
+rule.query = BABEL_QUERY;
+delete rule.use;
+const rules = [rule];
+rules.concat(webpackConfig.module.rules.splice(0));
 
 module.exports = Object.assign({}, webpackConfig, {
   module: {
-    rules: rules,
+    rules,
   },
   plugins: [
     // Don't generate modules for locale files.

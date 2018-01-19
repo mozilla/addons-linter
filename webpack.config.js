@@ -28,6 +28,7 @@ module.exports = {
   module: {
     rules: [
       {
+        use: 'babel-loader',
         // babel options are in .babelrc
         exclude: /(node_modules|bower_components)/,
         test: /\.js$/,
