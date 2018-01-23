@@ -2,7 +2,7 @@ import url from 'url';
 
 import upath from 'upath';
 import { URL } from 'whatwg-url';
-import jed from 'jed';
+import Jed from 'jed';
 import semver from 'semver';
 import { oneLine } from 'common-tags';
 
@@ -125,15 +125,16 @@ export function getVariable(context, name) {
  * a proper l10n solution.
  *
  */
-export function gettext(str) {
-  return str;
+export function gettext() {
+  const jed = new Jed({});
+  return jed.gettext;
 }
 
 /*
  * An sprintf to use with gettext. Imported from Jed for when we have a proper
  * l10n solution.
  */
-export const { sprintf } = jed;
+export const { sprintf } = Jed;
 
 /*
  * Check the minimum node version is met
