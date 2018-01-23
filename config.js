@@ -55,6 +55,6 @@ module.exports = {
     'ur',
     'vi',
     'zh-CN',
-'zh-TW',
+    'zh-TW',
   ],
 };
