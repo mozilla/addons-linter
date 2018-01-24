@@ -869,20 +869,20 @@ describe('ManifestJSONParser', () => {
 
       it('adds a warning if the image size is not the same as mentioned', async () => {
         const addonLinter = new Linter({ _: ['bar'] });
-        const icon32 = 'tests/fixtures/icon-33.png';
+        const icon33 = 'tests/fixtures/icon-33.png';
         const size32 = 32;
         const json = validManifestJSON({
           icons: {
-            [size32]: icon32,
+            [size32]: icon33,
           },
         });
         const files = {
-          [icon32]: fs.createReadStream(icon32),
+          [icon33]: fs.createReadStream(icon33),
         };
         const manifestJSONParser = new ManifestJSONParser(
           json, addonLinter.collector, { io: getStreamableIO(files) });
 
-        await manifestJSONParser.validateIcon(icon32, size32);
+        await manifestJSONParser.validateIcon(icon33, size32);
         expect(manifestJSONParser.isValid).toBeTruthy();
         const { warnings } = addonLinter.collector;
         expect(warnings.length).toEqual(1);

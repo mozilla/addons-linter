@@ -254,6 +254,7 @@ export default class ManifestJSONParser extends JSONParser {
       this.collector.addWarning(messages.corruptIconFile({
         path: iconPath,
       }));
+      log.debug('Icon validation message', err);
     }
   }
 
@@ -268,9 +269,7 @@ export default class ManifestJSONParser extends JSONParser {
       } else if (!IMAGE_FILE_EXTENSIONS.includes(_path.split('.').pop().toLowerCase())) {
         this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
       } else {
-        promises.push(
-          this.validateIcon(_path, size)
-        );
+        promises.push(this.validateIcon(_path, size));
       }
     });
     return Promise.all(promises);
