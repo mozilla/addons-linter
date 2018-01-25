@@ -251,10 +251,10 @@ export default class ManifestJSONParser extends JSONParser {
         }));
       }
     } catch (err) {
+      log.debug(`Unexpected error raised while validating icon "${iconPath}"`, err);
       this.collector.addWarning(messages.corruptIconFile({
         path: iconPath,
       }));
-      log.debug('Icon validation message', err);
     }
   }
 
