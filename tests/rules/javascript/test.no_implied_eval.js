@@ -5,7 +5,8 @@ import JavaScriptScanner from 'scanners/javascript';
 import { NO_IMPLIED_EVAL } from 'messages';
 
 
-// These rules were mostly copied and adapted from eslint.
+// These rules were mostly copied and adapted from
+// https://github.com/eslint/eslint/blob/master/tests/lib/rules/no-implied-eval.js
 // Please make sure to keep them up-to-date and report upstream errors.
 describe('no_implied_eval', () => {
   const expectedErrorMessage = oneLine`
@@ -53,13 +54,11 @@ describe('no_implied_eval', () => {
   ];
 
   validCodes.forEach((code) => {
-    it(`should not throw false positives for implied-eval: ${code}`, () => {
+    it(`should not throw false positives for implied-eval: ${code}`, async () => {
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-      return jsScanner.scan()
-        .then(({ linterMessages }) => {
-          expect(linterMessages.length).toEqual(0);
-        });
+      const { linterMessages } = await jsScanner.scan();
+      expect(linterMessages.length).toEqual(0);
     });
   });
 
@@ -136,30 +135,30 @@ describe('no_implied_eval', () => {
       message: [expectedErrorMessage],
       description: [NO_IMPLIED_EVAL.description],
     },
+
+    //??? there is also 'gives the correct node when dealing with nesting' in the source
   ];
 
   invalidCodes.forEach((code) => {
-    it(`should not allow the use of eval: ${code.code}`, () => {
+    it(`should not allow the use of eval: ${code.code}`, async () => {
       const jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
-      return jsScanner.scan()
-        .then(({ linterMessages }) => {
-          linterMessages.sort();
+      const { linterMessages } = await jsScanner.scan();
+      linterMessages.sort();
+      
+      expect(linterMessages.length).toEqual(code.message.length);
 
-          expect(linterMessages.length).toEqual(code.message.length);
+      code.message.forEach((expectedMessage, idx) => {
+        expect(linterMessages[idx].code).toEqual(NO_IMPLIED_EVAL.code);
+        expect(linterMessages[idx].message).toEqual(expectedMessage);
+        expect(linterMessages[idx].type).toEqual(VALIDATION_WARNING);
+      });
 
-          code.message.forEach((expectedMessage, idx) => {
-            expect(linterMessages[idx].code).toEqual(NO_IMPLIED_EVAL.code);
-            expect(linterMessages[idx].message).toEqual(expectedMessage);
-            expect(linterMessages[idx].type).toEqual(VALIDATION_WARNING);
-          });
-
-          code.description.forEach((expectedDescription, idx) => {
-            expect(linterMessages[idx].description).toEqual(
-              expectedDescription
-            );
-          });
-        });
+      code.description.forEach((expectedDescription, idx) => {
+        expect(linterMessages[idx].description).toEqual(
+          expectedDescription
+        );
+      });
     });
   });
 });
