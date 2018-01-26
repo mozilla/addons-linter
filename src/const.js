@@ -118,7 +118,7 @@ export const IMAGE_FILE_EXTENSIONS = [
   'jpg',
   'jpeg',
   'webp',
-  'giff',
+  'gif',
   'png',
   'svg',
 ];
