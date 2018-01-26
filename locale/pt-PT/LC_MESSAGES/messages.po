@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-25 20:04+0000\n"
-"Last-Translator: Rodrigo <rodrigo.mcunha@hotmail.com>\n"
+"PO-Revision-Date: 2018-01-26 14:55+0000\n"
+"Last-Translator: Alberto Castro <albertdcastro@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_PT\n"
 "MIME-Version: 1.0\n"
@@ -84,7 +84,7 @@ msgstr "{{api}} não é suportado"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener chamado com o quarto argumento."
 
 #: src/messages/javascript.js:140
 msgid "This API has not been implemented by Firefox."
