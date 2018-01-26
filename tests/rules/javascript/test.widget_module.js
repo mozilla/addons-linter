@@ -2,7 +2,7 @@ import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 
-
+// ?? where is the rule for this test?
 describe('widget_module', () => {
   it('should catch require() first arg being a global', () => {
     const code = `widgetPath = 'sdk/widget';

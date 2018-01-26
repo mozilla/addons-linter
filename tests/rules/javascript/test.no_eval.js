@@ -6,7 +6,8 @@ import { DANGEROUS_EVAL } from 'messages';
 // https://github.com/eslint/eslint/blob/master/tests/lib/rules/no-eval.js
 // Please make sure to keep them up-to-date and report upstream errors.
 
-// ??? should I renew validCodes and invalidCodes as they are now in the source? There is some difference.
+// ??? should I renew validCodes and invalidCodes as
+// they are now in the source? There is some difference.
 describe('no_eval', () => {
   const validCodes = [
     'Eval(foo)',

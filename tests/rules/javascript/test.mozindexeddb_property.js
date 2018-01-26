@@ -31,7 +31,8 @@ describe('mozindexeddb_property', () => {
     expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
   });
 
-  // ??? the code for Identifier node actually cathes var foo = "mozIndexedDB" without calling window[foo]
+  // ??? the code for Identifier node actually cathes
+  // var foo = "mozIndexedDB" without calling window[foo]
   it('should warn when mozIndexedDB is used as a literal', () => {
     const code = 'var foo = "mozIndexedDB"; var myDatabase = window[foo];';
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');

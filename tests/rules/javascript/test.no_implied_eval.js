@@ -136,7 +136,7 @@ describe('no_implied_eval', () => {
       description: [NO_IMPLIED_EVAL.description],
     },
 
-    //??? there is also 'gives the correct node when dealing with nesting' in the source
+    // ??? there is also 'gives the correct node when dealing with nesting' in the source
   ];
 
   invalidCodes.forEach((code) => {
@@ -145,7 +145,7 @@ describe('no_implied_eval', () => {
 
       const { linterMessages } = await jsScanner.scan();
       linterMessages.sort();
-      
+
       expect(linterMessages.length).toEqual(code.message.length);
 
       code.message.forEach((expectedMessage, idx) => {
