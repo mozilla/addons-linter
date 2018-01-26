@@ -1,61 +1,62 @@
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-19 00:33+0000\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2018-01-26 08:10+0000\n"
+"Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"Content-Type: text/plain; charset=utf-8\n"
 "Language: hsb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"X-Generator: Pontoon\n"
 
 #: src/linter.js:111
 msgid "Validation Summary:"
-msgstr ""
+msgstr "Přepruwowanske zhornjenje:"
 
 #: src/linter.js:128
 msgid "Code"
-msgstr ""
+msgstr "Kod"
 
 #: src/linter.js:134
 msgid "Message"
-msgstr ""
+msgstr "Powěsć"
 
 #: src/linter.js:140
 msgid "Description"
-msgstr ""
+msgstr "Wopisanje"
 
 #: src/linter.js:146
 msgid "File"
-msgstr ""
+msgstr "Dataja"
 
 #: src/linter.js:152
 msgid "Line"
-msgstr ""
+msgstr "Linka"
 
 #: src/linter.js:158
 msgid "Column"
-msgstr ""
+msgstr "Špalta"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Njepłaćiwe zakašćikowanje selektorow namakane"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "Syntaksowy zmylk CSS je wustupił"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
-msgstr ""
+msgstr "Waš FTL płaćiwy njeje."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "Waša FTL-dataja njeda so parsować."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
@@ -214,14 +215,11 @@ msgid "The field is invalid."
 msgstr ""
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
