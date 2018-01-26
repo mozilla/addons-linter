@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-26 22:11+0000\n"
+"PO-Revision-Date: 2018-01-26 22:16+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: hsb\n"
@@ -196,19 +196,19 @@ msgstr "\"strict_max_version\" trěbny njeje."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
+msgstr "Symbol, kotryž je so w manifesće definował, njeda so w pakćiku namakać."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Symbol njeda so na \"%(path)s\" namakać."
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Pozadkowy skript njeda so na \"%(path)s\" namakać."
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Pozadkowa strona njeda so na \"%(path)s\" namakać."
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
@@ -248,7 +248,7 @@ msgstr "Wobškodźena wobrazowa dataja"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "Wočakowana symbolowa dataja na \"%(path)s\" je wobškodźena"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
@@ -304,7 +304,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "Hlejće http://mzl.la/1STmr48 (MDN Docs) za dalše informacije."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
@@ -312,7 +312,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "Hlejće http://mzl.la/1kXIADa (MDN Docs) za dalše informacije."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
@@ -320,11 +320,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "\"update_url\" dowoleny njeje."
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
-msgstr ""
+msgstr "Polo je trěbne."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
