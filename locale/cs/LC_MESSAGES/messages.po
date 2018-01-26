@@ -1,17 +1,18 @@
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-19 00:33+0000\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2018-01-26 13:26+0000\n"
+"Last-Translator: Jakub Rychlý <jrychly@mozilla.cz>\n"
 "Language-Team: none\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Language: cs\n"
+"X-Generator: Pontoon\n"
 
 #: src/linter.js:111
 msgid "Validation Summary:"
@@ -19,19 +20,19 @@ msgstr ""
 
 #: src/linter.js:128
 msgid "Code"
-msgstr ""
+msgstr "Kód"
 
 #: src/linter.js:134
 msgid "Message"
-msgstr ""
+msgstr "Zpráva"
 
 #: src/linter.js:140
 msgid "Description"
-msgstr ""
+msgstr "Popisek"
 
 #: src/linter.js:146
 msgid "File"
-msgstr ""
+msgstr "Soubor"
 
 #: src/linter.js:152
 msgid "Line"
@@ -39,7 +40,7 @@ msgstr ""
 
 #: src/linter.js:158
 msgid "Column"
-msgstr ""
+msgstr "Sloupec"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
@@ -143,7 +144,7 @@ msgstr ""
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "Váš JSON nemohl být parsován."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
@@ -214,14 +215,11 @@ msgid "The field is invalid."
 msgstr ""
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
