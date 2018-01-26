@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-26 18:09+0000\n"
+"PO-Revision-Date: 2018-01-26 20:55+0000\n"
 "Last-Translator: Marco Aurélio <fxhelp@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -108,15 +108,15 @@ msgstr "O nome do arquivo de script de conteúdo não deve estar vazio"
 
 #: src/messages/javascript.js:38
 msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr ""
+msgstr "mozIndexedDB foi removido; em alternativa, use indexedDB"
 
 #: src/messages/javascript.js:39 src/messages/javascript.js:47
 msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr ""
+msgstr "mozIndexedDB foi removido; em alternativa, use indexedDB."
 
 #: src/messages/javascript.js:46
 msgid "mozIndexedDB used as an object key/property"
-msgstr ""
+msgstr "mozIndexedDB usado como uma chave/propriedade de objeto"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
@@ -124,7 +124,7 @@ msgstr "Erro de sintaxe JavaScript"
 
 #: src/messages/javascript.js:92
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Global inesperado passou como argumento"
 
 #: src/messages/javascript.js:99
 msgid "Use of document.write strongly discouraged."
@@ -260,7 +260,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "O tipo de permissão não é suportado."
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
