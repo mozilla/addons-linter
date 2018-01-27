@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-27 10:07+0000\n"
+"PO-Revision-Date: 2018-01-27 13:50+0000\n"
 "Last-Translator: Sara Todaro <sara.todaro@mozillaitalia.org>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -44,7 +44,7 @@ msgstr "Colonna"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr "Trovato annidamento di selettori non valido"
+msgstr "Rilevato annidamento di selettori non valido"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
@@ -92,7 +92,7 @@ msgstr "Questa API non è stata implementata da Firefox."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Impossibile trovare il file content script."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
