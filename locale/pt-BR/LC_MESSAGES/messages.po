@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-27 01:28+0000\n"
+"PO-Revision-Date: 2018-01-27 01:38+0000\n"
 "Last-Translator: Maykon Chagas <mchagas@riseup.net>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -188,7 +188,7 @@ msgstr "O pacote contém entradas duplicadas"
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr "Veja https://mzl.la/1ZOhoEN (Documentação MDN) para mais informações."
+msgstr "Veja https://mzl.la/1ZOhoEN (Documentação da MDN) para mais informações."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -268,7 +268,7 @@ msgstr "Extensão de imagem não suportada"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG, JPEG, WebP, GIFF, PNG or SVG."
-msgstr ""
+msgstr "Os ícones devem ter uma das extensões JPG, JPEG, WebP, GIFF, PNG ou SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
@@ -276,7 +276,7 @@ msgstr "Diretório de idiomas vazio"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "Está faltando o arquivo messages.json em \"%(path)s\""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
@@ -288,23 +288,23 @@ msgstr "Veja https://mzl.la/1R1n1t0 (MDN Docs) para mais informação."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "O \"manifest_version\" no manifest.json não é válido"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "Veja https://mzl.la/20PenXl (Documentação da MDN) para mais informações."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "É necessário revisão adicional para o content_security_policy personalizado."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "A propriedade \"name\" deve ser uma string."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "Veja http://mzl.la/1STmr48 (Documentação MDN) para mais informações."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
@@ -328,4 +328,4 @@ msgstr "O campo é requerido."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "A propriedade \"update_url\" não é utilizada pelo Firefox."
