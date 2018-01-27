@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-27 10:58+0000\n"
+"PO-Revision-Date: 2018-01-27 14:57+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -132,7 +132,7 @@ msgstr "非常不建議使用 document.write。"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "您的 JSON 包含區塊注解。"
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
@@ -164,15 +164,15 @@ msgstr "標示了隱藏檔案"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "找到被標記的檔案名稱"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "找到被標記的檔案副檔名"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "找到被標記的檔案類型"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
@@ -288,7 +288,7 @@ msgstr "請參考 https://mzl.la/1R1n1t0（MDN 文件）上的更多資訊。"
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "manifest.json 當中的「manifest_version」不是有效值"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -296,7 +296,7 @@ msgstr "請參考 https://mzl.la/20PenXl（MDN 文件）上的更多資訊。"
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "自訂 content_security_policy 將需要額外審核。"
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
