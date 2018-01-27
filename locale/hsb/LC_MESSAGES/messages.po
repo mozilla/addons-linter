@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-27 12:48+0000\n"
+"PO-Revision-Date: 2018-01-27 13:03+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: hsb\n"
@@ -148,7 +148,7 @@ msgstr "Waša JSON-dataja njeda so parsować."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "Njemóžachmy zip-dataju rozpakować."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
@@ -160,19 +160,19 @@ msgstr "Dataja je přewulka za parsowanje."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "Schowana dataja woznamjenjena"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "Woznamjenjene datajowe mjeno namakane"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "Woznamjenjene datajowe kóncowki namakane"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "Woznamjenjeny datajowy typ namakany"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
@@ -180,7 +180,7 @@ msgstr "Pakćik je hižo signowany"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
-msgstr ""
+msgstr "Přeńdźenje přećiwo wužiwanskim wuměnjenjam Mozilla."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
@@ -216,11 +216,11 @@ msgstr "Polo je njepłaćiwe."
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Wobsahowy skript, kotryž je so w manifesće definował, njeda so na \"%(path)s\" namakać."
 
 #: src/messages/manifestjson.js:162
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "CSS-dataja wobsahoweho skripta, kotraž je so w manifesće definowała, njeda so na \"%(path)s\" namakać."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -296,11 +296,11 @@ msgstr "Hlejće https://mzl.la/20PenXl (MDN Docs) za dalše informacije."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "Swójski content_security_policy sej přidatne přepruwowanje wužaduje."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "Kajkosć \"name\" dyrbi znamješkowy rjećazk być."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -308,7 +308,7 @@ msgstr "Hlejće http://mzl.la/1STmr48 (MDN Docs) za dalše informacije."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "Kajkosć \"version\" dyrbi znamješkowy rjećazk być."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
@@ -316,7 +316,7 @@ msgstr "Hlejće http://mzl.la/1kXIADa (MDN Docs) za dalše informacije."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "Kajkosć \"version\" format wužiwa, kotryž je specifiski za Firefox."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
@@ -328,4 +328,4 @@ msgstr "Polo je trěbne."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "Kajkosć \"update_url\" so wot Firefox njewužiwa."
