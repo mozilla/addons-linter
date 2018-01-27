@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-26 22:16+0000\n"
+"PO-Revision-Date: 2018-01-27 12:48+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: hsb\n"
@@ -60,19 +60,19 @@ msgstr "Waša FTL-dataja njeda so parsować."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Zdalene skripty po prawidłach přidatkow dowolene njejsu."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Skripty inline so po standardźe blokuja"
 
 #: src/messages/javascript.js:107
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "JS-biblioteka třećeho poskićowarja zakazana"
 
 #: src/messages/javascript.js:114
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Njeznata JS-biblioteka třećeho poskićowarja"
 
 #: src/messages/javascript.js:121
 msgid "Known JS library detected"
@@ -84,7 +84,7 @@ msgstr "{{api}} so njepodpěruje"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener` wołany z truthy jako štwórty argument."
 
 #: src/messages/javascript.js:140
 msgid "This API has not been implemented by Firefox."
@@ -124,11 +124,11 @@ msgstr "Syntaksowy zmylk JavaScript"
 
 #: src/messages/javascript.js:92
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Njewočakowana globala je so jako argument přepodała"
 
 #: src/messages/javascript.js:99
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Wot wužiwanja document.write so wuraznje wotradźuje."
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
