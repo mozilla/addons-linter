@@ -1,86 +1,86 @@
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-19 00:33+0000\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2018-01-27 15:48+0000\n"
+"Last-Translator: Alexander Slovesnik <unghost@mozilla-russia.org>\n"
 "Language-Team: none\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"Content-Type: text/plain; charset=utf-8\n"
 "Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pontoon\n"
 
 #: src/linter.js:111
 msgid "Validation Summary:"
-msgstr ""
+msgstr "Сводка валидации:"
 
 #: src/linter.js:128
 msgid "Code"
-msgstr ""
+msgstr "Код"
 
 #: src/linter.js:134
 msgid "Message"
-msgstr ""
+msgstr "Сообщение"
 
 #: src/linter.js:140
 msgid "Description"
-msgstr ""
+msgstr "Описание"
 
 #: src/linter.js:146
 msgid "File"
-msgstr ""
+msgstr "Файл"
 
 #: src/linter.js:152
 msgid "Line"
-msgstr ""
+msgstr "Строка"
 
 #: src/linter.js:158
 msgid "Column"
-msgstr ""
+msgstr "Столбец"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Найдено некорректное использование вложенных селекторов"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "Обнаружена ошибка в синтаксисе CSS"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
-msgstr ""
+msgstr "Ваш FTL некорректен."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "Не удалось распарсить ваш FTL файл."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Внешние скрипты не разрешены Политикой дополнений."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Встроенные скрипты блокируются по умолчанию"
 
 #: src/messages/javascript.js:107
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "Запрещённая сторонняя JS библиотека"
 
 #: src/messages/javascript.js:114
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Нерекомендуемая сторонняя JS библиотека"
 
 #: src/messages/javascript.js:121
 msgid "Known JS library detected"
-msgstr ""
+msgstr "Обнаружена известная JS библиотека"
 
 #: src/messages/javascript.js:139
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} не поддерживается"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
@@ -215,14 +215,11 @@ msgid "The field is invalid."
 msgstr ""
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
