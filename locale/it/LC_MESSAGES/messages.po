@@ -1,17 +1,18 @@
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-19 00:33+0000\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2018-01-26 19:20+0000\n"
+"Last-Translator: Sav22999 <savemore99.sm@gmail.com>\n"
 "Language-Team: none\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Language: it\n"
+"X-Generator: Pontoon\n"
 
 #: src/linter.js:111
 msgid "Validation Summary:"
@@ -19,31 +20,31 @@ msgstr ""
 
 #: src/linter.js:128
 msgid "Code"
-msgstr ""
+msgstr "Codice"
 
 #: src/linter.js:134
 msgid "Message"
-msgstr ""
+msgstr "Messaggio"
 
 #: src/linter.js:140
 msgid "Description"
-msgstr ""
+msgstr "Descrizione"
 
 #: src/linter.js:146
 msgid "File"
-msgstr ""
+msgstr "File"
 
 #: src/linter.js:152
 msgid "Line"
-msgstr ""
+msgstr "Riga"
 
 #: src/linter.js:158
 msgid "Column"
-msgstr ""
+msgstr "Colonna"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Trovato annidamento di selettori non valido"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
@@ -59,11 +60,11 @@ msgstr ""
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Gli script remoti non sono consentiti secondo la politica dei componenti aggiuntivi."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Gli script inline sono bloccati per impostazione predefinita"
 
 #: src/messages/javascript.js:107
 msgid "Banned 3rd-party JS library"
@@ -79,7 +80,7 @@ msgstr ""
 
 #: src/messages/javascript.js:139
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} non è supportato"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
@@ -87,7 +88,7 @@ msgstr ""
 
 #: src/messages/javascript.js:140
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "Questa API non è stata implementata da Firefox."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -214,14 +215,11 @@ msgid "The field is invalid."
 msgstr ""
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
