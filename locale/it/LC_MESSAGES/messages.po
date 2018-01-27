@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-27 13:50+0000\n"
+"PO-Revision-Date: 2018-01-27 14:06+0000\n"
 "Last-Translator: Sara Todaro <sara.todaro@mozillaitalia.org>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -84,7 +84,7 @@ msgstr "{{api}} non è supportato"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener` chiamato con il quarto argomento truthy."
 
 #: src/messages/javascript.js:140
 msgid "This API has not been implemented by Firefox."
@@ -96,15 +96,15 @@ msgstr "Impossibile trovare il file content script."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Non è possibile trovare il file content script"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Il nome del file content script non può essere vuoto."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Il nome del file content script non può essere vuoto"
 
 #: src/messages/javascript.js:38
 msgid "mozIndexedDB has been removed; use indexedDB instead"
@@ -124,7 +124,7 @@ msgstr "Errore di sintassi JavaScript"
 
 #: src/messages/javascript.js:92
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Variabile globale inattesa passata come argomento"
 
 #: src/messages/javascript.js:99
 msgid "Use of document.write strongly discouraged."
@@ -132,7 +132,7 @@ msgstr "L'uso di document.write è sconsigliato."
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "Il file JSON contiene commenti di blocco."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
@@ -140,11 +140,11 @@ msgstr "Le chiavi duplicate non sono ammesse nei file JSON."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "Il file JSON non è valido."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "Impossibile analizzare il file JSON."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
@@ -152,7 +152,7 @@ msgstr "Non è stato possibile decomprimere il file zip."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "Impossibile trovare manifest.json"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
@@ -160,19 +160,19 @@ msgstr "Il file è troppo grande per essere analizzato."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "File nascosto segnalato"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "Rilevato un nome di file segnalato"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "Rilevate estensioni di file segnalate"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "Rilevato un tipo di file segnalato"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
