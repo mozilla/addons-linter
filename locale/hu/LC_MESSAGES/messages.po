@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-27 20:46+0000\n"
+"PO-Revision-Date: 2018-01-27 20:51+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -220,11 +220,11 @@ msgstr "A leíróban definiált tartalomparancsfájl nem található itt: „%(p
 
 #: src/messages/manifestjson.js:162
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "A leíróban definiált tartalom CSS fájl nem található itt: „%(path)s”. "
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "Tiltott tartalom található a kiegészítőben."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
