@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-27 01:38+0000\n"
+"PO-Revision-Date: 2018-01-27 17:07+0000\n"
 "Last-Translator: Maykon Chagas <mchagas@riseup.net>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -252,11 +252,11 @@ msgstr "O arquivo do ícone esperado em \"%(path)s\" está corrompido"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "Falta idiomas no \"default_locale\"."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "Está faltando \"default_locale\" mas \"_locales\" existe."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
