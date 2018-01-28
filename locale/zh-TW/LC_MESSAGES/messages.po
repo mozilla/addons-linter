@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-27 16:38+0000\n"
+"PO-Revision-Date: 2018-01-28 11:38+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -84,7 +84,7 @@ msgstr "不支援 {{api}}"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "使用 truthy fourth argument 呼叫了 addEventListener"
 
 #: src/messages/javascript.js:140
 msgid "This API has not been implemented by Firefox."
@@ -124,7 +124,7 @@ msgstr "JavaScript 語法錯誤"
 
 #: src/messages/javascript.js:92
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "未預期的全域變數被作為引數傳遞"
 
 #: src/messages/javascript.js:99
 msgid "Use of document.write strongly discouraged."
