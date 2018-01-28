@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-28 18:35+0000\n"
+"PO-Revision-Date: 2018-01-28 18:50+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: dsb\n"
@@ -44,107 +44,107 @@ msgstr "Słup"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Njepłaśiwe zašachtelikanje selektorow namakane"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "Syntaksowa zmólka CSS jo nastała"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
-msgstr ""
+msgstr "Waš FTL njejo płaśiwy."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "Waša FTL-dataja njejo dała se parsowaś."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Daloke skripty njejsu dowólone pó pšawidłach dodankow."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Skripty inline se pó standarźe blokěruju"
 
 #: src/messages/javascript.js:107
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "JS-biblioteka tśeśego póbitowarja zakazana"
 
 #: src/messages/javascript.js:114
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Njeznata JS-biblioteka tśeśego póbitowarja"
 
 #: src/messages/javascript.js:121
 msgid "Known JS library detected"
-msgstr ""
+msgstr "Znata JS-biblioteka namakana"
 
 #: src/messages/javascript.js:139
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} se njepódpěra"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener` wołany z truthy ako stwórty argument."
 
 #: src/messages/javascript.js:140
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "Toś ten API njejo se implementěrował pśez Firefox."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Wopśimjeśowa skriptowa dataja njejo se namakała."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Wopśimjeśowa skriptowa dataja njejo se namakała"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Mě wopśimjeśoweje skriptoweje dataje njeměło prozne byś."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Mě wopśimjeśoweje skriptoweje dataje njeměło prozne byś"
 
 #: src/messages/javascript.js:38
 msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr ""
+msgstr "mozIndexedDB jo se wótwónoźeł; wužywajśo indexedDB město togo"
 
 #: src/messages/javascript.js:39 src/messages/javascript.js:47
 msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr ""
+msgstr "mozIndexedDB jo se wótwónoźeł; wužywajśo indexedDB město togo."
 
 #: src/messages/javascript.js:46
 msgid "mozIndexedDB used as an object key/property"
-msgstr ""
+msgstr "mozIndexedDB jo se ako objektowy kluc/kakosć wužył"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "Syntaksowa zmólka JavaScript"
 
 #: src/messages/javascript.js:92
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Njewócakana globala jo se ako argument pśepódała"
 
 #: src/messages/javascript.js:99
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Wót wužywanja document.write se wuraznje wótraźujo."
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "Waš JSON blokowe komentary wopśiámujo."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "Dwójne kluce njejsu dowólone w JSON-datajach."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "Waš JSON njejo płaśiwy."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "Waša JSON-dataja njejo se dała parsowaś."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
