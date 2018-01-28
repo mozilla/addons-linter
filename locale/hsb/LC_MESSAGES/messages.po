@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-27 13:03+0000\n"
+"PO-Revision-Date: 2018-01-28 21:38+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: hsb\n"
@@ -252,11 +252,11 @@ msgstr "Wočakowana symbolowa dataja na \"%(path)s\" je wobškodźena"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr "W \"default_locale\" lokalizacije feluja."
+msgstr "W \"default_locale\" lokalizacije faluja."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr "\"default_locale\" feluje, ale \"_locales\" eksistuje."
+msgstr "\"default_locale\" faluje, ale \"_locales\" eksistuje."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
@@ -276,7 +276,7 @@ msgstr "Pródzny zapis rěčow"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr "Dataja messages.json w \"%(path)s\" feluje"
+msgstr "Dataja messages.json w \"%(path)s\" faluje"
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
