@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-28 21:31+0000\n"
+"PO-Revision-Date: 2018-01-28 21:36+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: dsb\n"
@@ -180,7 +180,7 @@ msgstr "Pakśik jo južo signěrowany"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
-msgstr ""
+msgstr "Pśejźenje pśeśiwo wužywańskim wuměnjenjam Mozilla."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
