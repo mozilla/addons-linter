@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-28 10:31+0000\n"
+"PO-Revision-Date: 2018-01-28 10:45+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -64,7 +64,7 @@ msgstr "A távoli parancsfájlok a kiegészítők irányelvei szerint nem enged�
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "A soron belüli parancsfájlok alapértelmezetten blokkoltak"
 
 #: src/messages/javascript.js:107
 msgid "Banned 3rd-party JS library"
@@ -84,7 +84,7 @@ msgstr "A(z) {{api}} nem támogatott"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "`addEventListener` igaz értékű negyedik argumentummal meghívva."
 
 #: src/messages/javascript.js:140
 msgid "This API has not been implemented by Firefox."
@@ -92,19 +92,19 @@ msgstr "Ez az API még nincs megvalósítva a Firefoxban."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "A tartalomparancsfájl nem található."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "A tartalomparancsfájl nem található"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "A tartalomparancsfájl neve nem lehet üres."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "A tartalomparancsfájl neve nem lehet üres"
 
 #: src/messages/javascript.js:38
 msgid "mozIndexedDB has been removed; use indexedDB instead"
@@ -260,43 +260,43 @@ msgstr "A „default_locale” hiányzik, de a „_locales” létezik."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "A jogosultságtípus nem támogatott."
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "Nem támogatott képkiterjesztés"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG, JPEG, WebP, GIFF, PNG or SVG."
-msgstr ""
+msgstr "A ikonoknak JPG, JPEG, WebP, GIFF, PNG vagy GIF fájloknak kell lenniük."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
-msgstr ""
+msgstr "Üres nyelvi könyvtár"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "A messages.json fájl hiányzik innen: „%(path)s”"
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
-msgstr ""
+msgstr "Ismeretlen engedély."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "További információkért lásd: https://mzl.la/1R1n1t0 (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "A manifest.json fájlban szereplő „manifest_version” értéke érvénytelen"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "További információkért lásd: https://mzl.la/20PenXl (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "Az egyéni content_security_policy további értékelést igényel."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
@@ -304,7 +304,7 @@ msgstr "A „name” tulajdonságnak karakterláncnak kell lennie."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "További információkért lásd: http://mzl.la/1STmr48 (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
