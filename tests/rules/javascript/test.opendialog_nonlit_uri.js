@@ -4,7 +4,6 @@ import * as messages from 'messages';
 
 
 describe('opendialog_nonlit_uri', () => {
-  // ??? why we can't pass non-literal uris?
   it('should provide notice on non-literal uris passed to openDialog', async () => {
     const code = `var bar="https://whavever";
                 foo.openDialog(bar);`;

@@ -67,32 +67,22 @@ describe('event_listener_fourth', () => {
     expect(linterMessages.length).toEqual(0);
   });
 
-  // ??? can't see where in event-listener-fourth we are not allowing window identifier
-  // and why all the tests called on window and don't report warnings but here it's not allowed
-  // also why should not allow test doesn't report any warnings
-  it('should not allow a window identifier', () => {
+  it('should not allow a window identifier', async () => {
     const code = oneLine`var foo = window;
       foo.addEventListener("click", function(){}, false, false);`;
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-    return jsScanner.scan()
-      .then(({ linterMessages }) => {
-        expect(linterMessages.length).toEqual(0);
-      });
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages.length).toEqual(0);
   });
 
-  // ??? can't see where in event-listener-fourth we are not allowing window identifier
-  // and why all the tests called on window and don't report warnings but here it's not allowed
-  // also why should not allow test doesn't report any warnings
-  it('should not allow a hidden addEventListener identifier', () => {
+  it('should not allow a hidden addEventListener identifier', async () => {
     const code = oneLine`var foo = window.addEventListener;
       foo("click", function(){}, false, false);`;
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-    return jsScanner.scan()
-      .then(({ linterMessages }) => {
-        expect(linterMessages.length).toEqual(0);
-      });
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages.length).toEqual(0);
   });
 
   it('should not allow a true identifier with untrusted argument', async () => {

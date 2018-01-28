@@ -5,9 +5,6 @@ import { DANGEROUS_EVAL } from 'messages';
 // These rules were mostly copied and adapted from
 // https://github.com/eslint/eslint/blob/master/tests/lib/rules/no-eval.js
 // Please make sure to keep them up-to-date and report upstream errors.
-
-// ??? should I renew validCodes and invalidCodes as
-// they are now in the source? There is some difference.
 describe('no_eval', () => {
   const validCodes = [
     'Eval(foo)',
@@ -27,13 +24,11 @@ describe('no_eval', () => {
   ];
 
   validCodes.forEach((code) => {
-    it(`should allow the use of user defined eval: ${code}`, () => {
+    it(`should allow the use of user defined eval: ${code}`, async () => {
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-      return jsScanner.scan()
-        .then(({ linterMessages }) => {
-          expect(linterMessages.length).toEqual(0);
-        });
+      const { linterMessages } = await jsScanner.scan();
+      expect(linterMessages.length).toEqual(0);
     });
   });
 
@@ -112,27 +107,25 @@ describe('no_eval', () => {
   ];
 
   invalidCodes.forEach((code) => {
-    it(`should not allow the use of eval: ${code.code}`, () => {
+    it(`should not allow the use of eval: ${code.code}`, async () => {
       const jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
-      return jsScanner.scan()
-        .then(({ linterMessages }) => {
-          linterMessages.sort();
+      const { linterMessages } = await jsScanner.scan();
+      linterMessages.sort();
 
-          expect(linterMessages.length).toEqual(code.message.length);
+      expect(linterMessages.length).toEqual(code.message.length);
 
-          code.message.forEach((expectedMessage, idx) => {
-            expect(linterMessages[idx].code).toEqual(DANGEROUS_EVAL.code);
-            expect(linterMessages[idx].message).toEqual(expectedMessage);
-            expect(linterMessages[idx].type).toEqual(VALIDATION_WARNING);
-          });
+      code.message.forEach((expectedMessage, idx) => {
+        expect(linterMessages[idx].code).toEqual(DANGEROUS_EVAL.code);
+        expect(linterMessages[idx].message).toEqual(expectedMessage);
+        expect(linterMessages[idx].type).toEqual(VALIDATION_WARNING);
+      });
 
-          code.description.forEach((expectedDescription, idx) => {
-            expect(linterMessages[idx].description).toEqual(
-              expectedDescription
-            );
-          });
-        });
+      code.description.forEach((expectedDescription, idx) => {
+        expect(linterMessages[idx].description).toEqual(
+          expectedDescription
+        );
+      });
     });
   });
 });

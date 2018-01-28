@@ -4,7 +4,6 @@ import * as messages from 'messages';
 
 
 describe('opendialog_remote_uri', () => {
-  // ??? why we can't use remote uris?
   it('should warn on remote uris passed to openDialog', async () => {
     const code = `foo.openDialog("https://foo.com/bar/");
                 foo.openDialog("http://foo.com/bar/");

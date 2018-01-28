@@ -135,8 +135,6 @@ describe('no_implied_eval', () => {
       message: [expectedErrorMessage],
       description: [NO_IMPLIED_EVAL.description],
     },
-
-    // ??? there is also 'gives the correct node when dealing with nesting' in the source
   ];
 
   invalidCodes.forEach((code) => {
