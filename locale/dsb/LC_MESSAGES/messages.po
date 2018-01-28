@@ -1,45 +1,46 @@
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-19 00:33+0000\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2018-01-28 18:35+0000\n"
+"Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"Content-Type: text/plain; charset=utf-8\n"
 "Language: dsb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"X-Generator: Pontoon\n"
 
 #: src/linter.js:111
 msgid "Validation Summary:"
-msgstr ""
+msgstr "Pśeglědowańske zespominanje:"
 
 #: src/linter.js:128
 msgid "Code"
-msgstr ""
+msgstr "Kod"
 
 #: src/linter.js:134
 msgid "Message"
-msgstr ""
+msgstr "Powěsć"
 
 #: src/linter.js:140
 msgid "Description"
-msgstr ""
+msgstr "Wopisanje"
 
 #: src/linter.js:146
 msgid "File"
-msgstr ""
+msgstr "Dataja"
 
 #: src/linter.js:152
 msgid "Line"
-msgstr ""
+msgstr "Smužka"
 
 #: src/linter.js:158
 msgid "Column"
-msgstr ""
+msgstr "Słup"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
@@ -214,14 +215,11 @@ msgid "The field is invalid."
 msgstr ""
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
