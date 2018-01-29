@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-29 14:19+0000\n"
+"PO-Revision-Date: 2018-01-29 16:20+0000\n"
 "Last-Translator: Bjørn I. <bjorn.svindseth@online.no>\n"
 "Language-Team: none\n"
 "Language: nn_NO\n"
@@ -48,7 +48,7 @@ msgstr "Ugyldig nesting av selektorar funne"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "Det oppstod ein CSS-syntaksfeil"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
