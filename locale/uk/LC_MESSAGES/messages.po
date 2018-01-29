@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-29 09:02+0000\n"
+"PO-Revision-Date: 2018-01-29 14:16+0000\n"
 "Last-Translator: Artem Polivanchuk <artem@mozilla.org.ua>\n"
 "Language-Team: none\n"
 "Language: uk\n"
@@ -108,31 +108,31 @@ msgstr "Назва файлу скрипту вмісту не повинна б
 
 #: src/messages/javascript.js:38
 msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr ""
+msgstr "mozIndexedDB було вилучено; використовуйте натомість indexedDB"
 
 #: src/messages/javascript.js:39 src/messages/javascript.js:47
 msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr ""
+msgstr "mozIndexedDB було вилучено; використовуйте натомість indexedDB."
 
 #: src/messages/javascript.js:46
 msgid "mozIndexedDB used as an object key/property"
-msgstr ""
+msgstr "mozIndexedDB використовується в якості ключа/властивості об'єкта"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "Синтаксична помилка JavaScript"
 
 #: src/messages/javascript.js:92
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Неочікуване використання глобальної змінної в якості аргументу"
 
 #: src/messages/javascript.js:99
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Використання document.write категорично не рекомендується."
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "Ваш JSON містить багаторядкові коментарі."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
