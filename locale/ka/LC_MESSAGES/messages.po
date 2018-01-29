@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-29 17:50+0000\n"
+"PO-Revision-Date: 2018-01-29 18:10+0000\n"
 "Last-Translator: Georgianizator <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -148,47 +148,47 @@ msgstr "თქვენი JSON ფაილის დამუშავებ�
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "Zip არქივის გაშიფვრა, ვერ ხერხდება."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "manifest.json ვერ მოიძებნა"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr ""
+msgstr "დასამუშავებელი ფაილი ზედმეტად დიდია."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "გასაჩივრებული დამალული ფაილი"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "აღმოჩენილია გასაჩივრებული ფაილის სახელი"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "აღმოჩენილია გასაჩივრებული ფაილის გაფართოება"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "აღმოჩენილია გასაჩივრებული ფაილის ტიპი"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
-msgstr ""
+msgstr "პაკეტი უკვე დამოწმებულია"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
-msgstr ""
+msgstr "Mozilla-ს გამოყენების პირობების დარღვევა."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
-msgstr ""
+msgstr "პაკეტი შეიცავს გაორმაგებულ ელემენტებს"
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
+msgstr "იხილეთ https://mzl.la/1ZOhoEN (MDN დოკუმენტაცია) დამატებითი ინფორმაციისთვის."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
