@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-29 12:31+0000\n"
+"PO-Revision-Date: 2018-01-29 12:32+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fy_NL\n"
@@ -80,7 +80,7 @@ msgstr "Bekende JS-biblioteek detektearre"
 
 #: src/messages/javascript.js:139
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} is net stipe"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
