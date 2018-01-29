@@ -27,6 +27,10 @@
             "storeId": {
               "type": "string",
               "description": "The ID of the cookie store in which to look for the cookie. By default, the current execution context's cookie store will be used."
+            },
+            "firstPartyDomain": {
+              "type": "string",
+              "description": "The first-party domain which the cookie to retrieve is associated. This attribute is required if First-Party Isolation is enabled."
             }
           },
           "required": [
@@ -92,6 +96,10 @@
             "storeId": {
               "type": "string",
               "description": "The cookie store to retrieve cookies from. If omitted, the current execution context's cookie store will be used."
+            },
+            "firstPartyDomain": {
+              "type": "string",
+              "description": "Restricts the retrieved cookies to those whose first-party domains match this one. This attribute is required if First-Party Isolation is enabled. To not filter by a specific first-party domain, use `null` or `undefined`."
             }
           }
         },
@@ -157,6 +165,10 @@
             "storeId": {
               "type": "string",
               "description": "The ID of the cookie store in which to set the cookie. By default, the cookie is set in the current execution context's cookie store."
+            },
+            "firstPartyDomain": {
+              "type": "string",
+              "description": "The first-party domain of the cookie. This attribute is required if First-Party Isolation is enabled."
             }
           },
           "required": [
@@ -206,6 +218,10 @@
             "storeId": {
               "type": "string",
               "description": "The ID of the cookie store to look in for the cookie. If unspecified, the cookie is looked for by default in the current execution context's cookie store."
+            },
+            "firstPartyDomain": {
+              "type": "string",
+              "description": "The first-party domain associated with the cookie. This attribute is required if First-Party Isolation is enabled."
             }
           },
           "required": [
@@ -235,12 +251,17 @@
                 "storeId": {
                   "type": "string",
                   "description": "The ID of the cookie store from which the cookie was removed."
+                },
+                "firstPartyDomain": {
+                  "type": "string",
+                  "description": "The first-party domain associated with the cookie that's been removed."
                 }
               },
               "required": [
                 "url",
                 "name",
-                "storeId"
+                "storeId",
+                "firstPartyDomain"
               ]
             }
           ]
@@ -376,6 +397,10 @@
         "storeId": {
           "type": "string",
           "description": "The ID of the cookie store containing this cookie, as provided in getAllCookieStores()."
+        },
+        "firstPartyDomain": {
+          "type": "string",
+          "description": "The first-party domain of the cookie."
         }
       },
       "required": [
@@ -387,7 +412,8 @@
         "secure",
         "httpOnly",
         "session",
-        "storeId"
+        "storeId",
+        "firstPartyDomain"
       ]
     },
     "CookieStore": {

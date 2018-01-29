@@ -59,7 +59,7 @@
                     "levelOfControl": {
                       "allOf": [
                         {
-                          "$ref": "#/types/LevelOfControl"
+                          "$ref": "types#/types/LevelOfControl"
                         },
                         {
                           "description": "The level of control of the setting."
@@ -97,7 +97,7 @@
                 "scope": {
                   "allOf": [
                     {
-                      "$ref": "#/types/SettingScope"
+                      "$ref": "types#/types/SettingScope"
                     },
                     {
                       "description": "Where to set the setting (default: regular)."
@@ -132,7 +132,7 @@
                 "scope": {
                   "allOf": [
                     {
-                      "$ref": "#/types/SettingScope"
+                      "$ref": "types#/types/SettingScope"
                     },
                     {
                       "description": "Where to clear the setting (default: regular)."
@@ -168,7 +168,7 @@
                 "levelOfControl": {
                   "allOf": [
                     {
-                      "$ref": "#/types/LevelOfControl"
+                      "$ref": "types#/types/LevelOfControl"
                     },
                     {
                       "description": "The level of control of the setting."

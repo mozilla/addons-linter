@@ -16,7 +16,14 @@
           "type": "object",
           "properties": {
             "title": {
-              "type": "string",
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
               "description": "The string the sidebar action should display when moused over."
             },
             "tabId": {
@@ -113,7 +120,14 @@
               "description": "Sets the sidebar url for the tab specified by tabId. Automatically resets when the tab is closed."
             },
             "panel": {
-              "type": "string",
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
               "description": "The url to the html file to show in a sidebar.  If set to the empty string (''), no sidebar is shown."
             }
           },
@@ -156,6 +170,25 @@
       "description": "Closes the extension sidebar in the active window if the sidebar belongs to the extension.",
       "async": true,
       "parameters": []
+    },
+    {
+      "name": "isOpen",
+      "type": "function",
+      "description": "Checks whether the sidebar action is open.",
+      "async": true,
+      "parameters": [
+        {
+          "name": "details",
+          "type": "object",
+          "properties": {
+            "windowId": {
+              "type": "integer",
+              "minimum": -2,
+              "description": "Specify the window to get the openness from."
+            }
+          }
+        }
+      ]
     }
   ],
   "definitions": {
