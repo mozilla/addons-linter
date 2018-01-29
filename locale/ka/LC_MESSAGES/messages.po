@@ -1,57 +1,58 @@
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-19 00:33+0000\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2018-01-29 17:30+0000\n"
+"Last-Translator: Georgianizator <georgianization@outlook.com>\n"
 "Language-Team: none\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"Content-Type: text/plain; charset=utf-8\n"
 "Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pontoon\n"
 
 #: src/linter.js:111
 msgid "Validation Summary:"
-msgstr ""
+msgstr "შემოწმების შეჯამება:"
 
 #: src/linter.js:128
 msgid "Code"
-msgstr ""
+msgstr "პირველწყარო"
 
 #: src/linter.js:134
 msgid "Message"
-msgstr ""
+msgstr "შეტყობინება"
 
 #: src/linter.js:140
 msgid "Description"
-msgstr ""
+msgstr "აღწერილობა"
 
 #: src/linter.js:146
 msgid "File"
-msgstr ""
+msgstr "ფაილი"
 
 #: src/linter.js:152
 msgid "Line"
-msgstr ""
+msgstr "სტრიქონი"
 
 #: src/linter.js:158
 msgid "Column"
-msgstr ""
+msgstr "სვეტი"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "აღმოჩენილია არასწორად მოთავსებული სელექტორი"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "შემჩნეულია CSS სინტაქსური შეცდომა"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
-msgstr ""
+msgstr "თქვენი FTL არამართებულია."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
@@ -214,14 +215,11 @@ msgid "The field is invalid."
 msgstr ""
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
