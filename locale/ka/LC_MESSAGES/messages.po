@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-29 17:30+0000\n"
+"PO-Revision-Date: 2018-01-29 17:50+0000\n"
 "Last-Translator: Georgianizator <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -56,95 +56,95 @@ msgstr "თქვენი FTL არამართებულია."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "თქვენი FTL ფაილი ვერ დამუშავდა."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "გარეშე სკრიპტები არაა დაშვებული დამატების დებულებებით."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "ხაზოვანი სკრიპტები შეზღუდულია ნაგულისხმევად"
 
 #: src/messages/javascript.js:107
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "აკრძალული გარეშე JS ბიბლიოთეკა"
 
 #: src/messages/javascript.js:114
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "არასასურველი გარეშე JS ბიბლიოთეკა"
 
 #: src/messages/javascript.js:121
 msgid "Known JS library detected"
-msgstr ""
+msgstr "აღმოჩენილია ცნობილი JS ბიბლიოთეკა"
 
 #: src/messages/javascript.js:139
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} არაა მხარდაჭერილი"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener ` გამოძახებულია ჭეშმარიტი მეოთხე არგუმენტით."
 
 #: src/messages/javascript.js:140
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "ეს API არ გამოიყენება Firefox-ში."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "სკრიპტის შემცველი ფაილი ვერ მოიძებნა."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "სკრიპტის შემცველი ფაილი ვერ მოიძებნა"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "სკრიპტის შემცველი ფაილის სახელი ცარიელი არ უნდა იყოს."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "სკრიპტის შემცველი ფაილის სახელი ცარიელი არ უნდა იყოს"
 
 #: src/messages/javascript.js:38
 msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr ""
+msgstr "mozIndexedDB ამოღებულია; მის ნაცვლად გამოიყენეთ indexedDB"
 
 #: src/messages/javascript.js:39 src/messages/javascript.js:47
 msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr ""
+msgstr "mozIndexedDB ამოღებულია; მის ნაცვლად გამოიყენეთ indexedDB."
 
 #: src/messages/javascript.js:46
 msgid "mozIndexedDB used as an object key/property"
-msgstr ""
+msgstr "mozIndexedDB გამოიყენება როგორც ობიექტის გასაღები/თვისება "
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "JavaScript სინტაქსური შეცდომა"
 
 #: src/messages/javascript.js:92
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "არგუმენტი მოულოდნელი გადაიცა გლობალურად"
 
 #: src/messages/javascript.js:99
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "document.write-ის გამოყენება, მეტად არასასურველია."
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "თქვენი JSON შეიცავს მრავალხაზიან კომენტარებს."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "გაორმაგებული გასაღებები დაუშვებელია JSON ფაილებში."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "თქვენი JSON არამართებულია."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "თქვენი JSON ფაილის დამუშავება, ვერ ხერხდება."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
