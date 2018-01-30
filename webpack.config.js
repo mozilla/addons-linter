@@ -53,8 +53,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json'],
     modules: [
-      path.join(__dirname, 'src'),
-      path.resolve(__dirname, 'node_modules'),
+      'node_modules',
     ],
   },
   devtool: 'sourcemap',
