@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-30 19:27+0000\n"
+"PO-Revision-Date: 2018-01-30 19:34+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: hsb\n"
@@ -188,7 +188,7 @@ msgstr "Pakćik dwójne zapiski wobsahuje"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr "Přidatki Firefox njesmědźa pjenježne kopaki wuwjesć."
+msgstr "Přidatki Firefox njesmědźa pjenjezykopaki wuwjesć."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
@@ -271,9 +271,8 @@ msgid "Unsupported image extension"
 msgstr "Kóncowka wobrazoweje dataje so njepodpěruje"
 
 #: src/messages/manifestjson.js:236
-#, fuzzy
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr "Symbole měli dataje typa JPG, JPEG, WebP, GIFF, PNG abo SVG być."
+msgstr "Symbole měli dataje typa JPG/JPEG, WebP, GIF, PNG abo SVG być."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
