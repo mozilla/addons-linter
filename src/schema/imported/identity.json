@@ -155,7 +155,7 @@
           "type": "object",
           "properties": {
             "url": {
-              "type": "string"
+              "$ref": "manifest#/types/HttpURL"
             },
             "interactive": {
               "type": "boolean"
@@ -184,7 +184,7 @@
       "description": "Generates a redirect URL to be used in |launchWebAuthFlow|.",
       "parameters": [
         {
-          "name": " path",
+          "name": "path",
           "type": "string",
           "default": "",
           "optional": true,

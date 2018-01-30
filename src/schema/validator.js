@@ -1,4 +1,5 @@
 import ajv from 'ajv';
+import ajvMergePatch from 'ajv-merge-patch';
 
 import schemaObject from 'schema/imported/manifest';
 
@@ -8,6 +9,7 @@ import {
   isAbsoluteUrl,
   isStrictRelativeUrl,
   isSecureUrl,
+  isUnresolvedRelativeUrl,
   isValidVersionString,
 } from './formats';
 import schemas from './imported';
@@ -19,6 +21,8 @@ const validator = ajv({
   verbose: true,
   schemas,
 });
+
+ajvMergePatch(validator);
 
 validator.addFormat('versionString', isValidVersionString);
 validator.addFormat('deprecated', () => false);
@@ -33,18 +37,36 @@ validator.addFormat('ignore', () => true);
 validator.addFormat('url', isAbsoluteUrl);
 validator.addFormat('relativeUrl', isAnyUrl);
 validator.addFormat('strictRelativeUrl', isStrictRelativeUrl);
+validator.addFormat('unresolvedRelativeUrl', isUnresolvedRelativeUrl);
 validator.addFormat('secureUrl', isSecureUrl);
 
 validator.addFormat('imageDataOrStrictRelativeUrl', imageDataOrStrictRelativeUrl);
 
-export const validateAddon = validator.compile({
+function filterErrors(errors) {
+  if (errors) {
+    return errors.filter((error) => error.keyword !== '$merge');
+  }
+  return errors;
+}
+
+const _validateAddon = validator.compile({
   ...schemaObject,
   id: 'manifest',
   $ref: '#/types/WebExtensionManifest',
 });
+export const validateAddon = (...args) => {
+  const isValid = _validateAddon(...args);
+  validateAddon.errors = filterErrors(_validateAddon.errors);
+  return isValid;
+};
 
-export const validateLangPack = validator.compile({
+const _validateLangPack = validator.compile({
   ...schemaObject,
   id: 'langpack-manifest',
   $ref: '#/types/WebExtensionLangpackManifest',
 });
+export const validateLangPack = (...args) => {
+  const isValid = _validateLangPack(...args);
+  validateLangPack.errors = filterErrors(_validateLangPack.errors);
+  return isValid;
+};

@@ -25,6 +25,16 @@
         }
       ]
     },
+    "contextMenuShowEvent": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "Controls after which mouse event context menus popup. This setting's value is of type ContextMenuMouseEvent, which has possible values of <code>mouseup</code> and <code>mousedown</code>."
+        }
+      ]
+    },
     "homepageOverride": {
       "allOf": [
         {
@@ -52,6 +62,36 @@
         },
         {
           "description": "Returns the value of the overridden new tab page. Read-only."
+        }
+      ]
+    },
+    "openBookmarksInNewTabs": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "This boolean setting controls whether bookmarks are opened in the current tab or in a new tab."
+        }
+      ]
+    },
+    "openSearchResultsInNewTabs": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "This boolean setting controls whether search results are opened in the current tab or in a new tab."
+        }
+      ]
+    },
+    "proxyConfig": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "Configures proxy settings. This setting's value is an object of type ProxyConfig."
         }
       ]
     },
@@ -93,6 +133,73 @@
         "once"
       ],
       "description": "How images should be animated in the browser."
+    },
+    "ContextMenuMouseEvent": {
+      "type": "string",
+      "enum": [
+        "mouseup",
+        "mousedown"
+      ],
+      "description": "After which mouse event context menus should popup."
+    },
+    "ProxyConfig": {
+      "type": "object",
+      "description": "An object which describes proxy settings.",
+      "properties": {
+        "proxyType": {
+          "type": "string",
+          "enum": [
+            "none",
+            "autoDetect",
+            "system",
+            "manual",
+            "autoConfig"
+          ],
+          "description": "The type of proxy to use."
+        },
+        "http": {
+          "type": "string",
+          "description": "The address of the http proxy, can include a port."
+        },
+        "httpProxyAll": {
+          "type": "boolean",
+          "description": "Use the http proxy server for all protocols."
+        },
+        "ftp": {
+          "type": "string",
+          "description": "The address of the ftp proxy, can include a port."
+        },
+        "ssl": {
+          "type": "string",
+          "description": "The address of the ssl proxy, can include a port."
+        },
+        "socks": {
+          "type": "string",
+          "description": "The address of the socks proxy, can include a port."
+        },
+        "socksVersion": {
+          "type": "integer",
+          "description": "The version of the socks proxy.",
+          "minimum": 4,
+          "maximum": 5
+        },
+        "passthrough": {
+          "type": "string",
+          "description": "A list of hosts which should not be proxied."
+        },
+        "autoConfigUrl": {
+          "type": "string",
+          "description": "A URL to use to configure the proxy."
+        },
+        "autoLogin": {
+          "type": "boolean",
+          "description": "Do not prompt for authentication if password is saved."
+        },
+        "proxyDNS": {
+          "type": "boolean",
+          "description": "Proxy DNS when using SOCKS v5."
+        }
+      }
     }
   }
 }

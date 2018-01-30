@@ -105,3 +105,5 @@ export function imageDataOrStrictRelativeUrl(value) {
     || value.startsWith('data:image/jpeg;base64,')
     || isStrictRelativeUrl(value);
 }
+
+export const isUnresolvedRelativeUrl = isStrictRelativeUrl;
