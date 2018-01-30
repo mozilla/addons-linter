@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-27 17:21+0000\n"
-"Last-Translator: Maykon Chagas <mchagas@riseup.net>\n"
+"PO-Revision-Date: 2018-01-30 22:25+0000\n"
+"Last-Translator: Marco Aurélio <fxhelp@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -188,12 +188,11 @@ msgstr "O pacote contém entradas duplicadas"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "As extensões do Firefox não têm permissão para executar mineradores de moeda."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"Veja https://mzl.la/1ZOhoEN (Documentação da MDN) para mais informações."
+msgstr "Veja https://mzl.la/1ZOhoEN (Documentação da MDN) para mais informações."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -220,19 +219,12 @@ msgid "The field is invalid."
 msgstr "O campo é inválido."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"O script de conteúdo definido no manifesto não foi encontrado em \"%(path)s"
-"\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "O script de conteúdo definido no manifesto não foi encontrado em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"O script de conteúdo do arquivo css definido no manifesto não foi encontrado "
-"em \"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "O script de conteúdo do arquivo css definido no manifesto não foi encontrado em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -279,10 +271,8 @@ msgid "Unsupported image extension"
 msgstr "Extensão de imagem não suportada"
 
 #: src/messages/manifestjson.js:236
-#, fuzzy
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
-"Os ícones devem ter uma das extensões JPG, JPEG, WebP, GIFF, PNG ou SVG."
+msgstr "Os ícones devem ter uma das extensões JPG /JPEG, WebP, GIF, PNG ou SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
@@ -306,13 +296,11 @@ msgstr "O \"manifest_version\" no manifest.json não é válido"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"Veja https://mzl.la/20PenXl (Documentação da MDN) para mais informações."
+msgstr "Veja https://mzl.la/20PenXl (Documentação da MDN) para mais informações."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
-"É necessário revisão adicional para o content_security_policy personalizado."
+msgstr "É necessário revisão adicional para o content_security_policy personalizado."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
