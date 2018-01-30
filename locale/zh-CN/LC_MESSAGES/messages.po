@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-28 14:22+0000\n"
-"Last-Translator: xcffl <xcffl@outlook.com>\n"
+"PO-Revision-Date: 2018-01-30 21:49+0000\n"
+"Last-Translator: YFdyh000 <yfdyh000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -188,7 +188,7 @@ msgstr "包包含重复的项"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "Firefox 附加组件不允许运行挖矿程序。"
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
@@ -219,14 +219,11 @@ msgid "The field is invalid."
 msgstr "该字段无效。"
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "manifest 中定义的一个内容脚本无法在“%(path)s”找到。"
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "manifest 中定义的一个内容脚本 css 文件无法在“%(path)s”找到。"
 
 #: src/messages/manifestjson.js:173
@@ -274,9 +271,8 @@ msgid "Unsupported image extension"
 msgstr "不支持的图像扩展名"
 
 #: src/messages/manifestjson.js:236
-#, fuzzy
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr "图标应该为 JPG、JPEG、WebP、GIFF、PNG 或 SVG 文件。"
+msgstr "图标应该为 JPG/JPEG、WebP、GIFF、PNG 或 SVG 文件。"
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
