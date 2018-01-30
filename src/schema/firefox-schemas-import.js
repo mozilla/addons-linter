@@ -523,13 +523,12 @@ export function importSchemas(firefoxPath, ourPath, importedPath) {
 }
 
 export function downloadUrl(version) {
-  const base = 'https://hg.mozilla.org/mozilla-central/archive/';
+  const base = 'https://hg.mozilla.org/mozilla-unified/archive/';
   if (version === 'nightly') {
     return `${base}tip.tar.gz`;
-  } else if (parseInt(version, 10) >= 55) {
-    return `${base}FIREFOX_BETA_${version}_BASE.tar.gz`;
   }
-  return `${base}FIREFOX_AURORA_${version}_BASE.tar.gz`;
+
+  return `${base}${version}.tar.gz`;
 }
 
 inner.isBrowserSchema = (_path) => {

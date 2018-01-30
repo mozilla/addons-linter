@@ -55,6 +55,16 @@
         }
       ]
     },
+    "contextMenuShowEvent": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "Controls after which mouse event context menus popup. This setting's value is of type ContextMenuMouseEvent, which has possible values of <code>mouseup</code> and <code>mousedown</code>."
+        }
+      ]
+    },
     "webNotificationsDisabled": {
       "allOf": [
         {
@@ -93,6 +103,14 @@
         "once"
       ],
       "description": "How images should be animated in the browser."
+    },
+    "ContextMenuMouseEvent": {
+      "type": "string",
+      "enum": [
+        "mouseup",
+        "mousedown"
+      ],
+      "description": "After which mouse event context menus should popup."
     }
   }
 }
