@@ -1,44 +1,45 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-01-19 00:33+0000\n"
+"POT-Creation-Date: 2018-01-30 18:56+0000\n"
 "PO-Revision-Date: 2018-01-26 14:33+0000\n"
 "Last-Translator: Nihad Suljić <nihad.suljic92@gmail.com>\n"
 "Language-Team: none\n"
 "Language: bs\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:111
+#: src/linter.js:117
 msgid "Validation Summary:"
 msgstr "Validacija sažetka:"
 
-#: src/linter.js:128
+#: src/linter.js:134
 msgid "Code"
 msgstr "Kod"
 
-#: src/linter.js:134
+#: src/linter.js:140
 msgid "Message"
 msgstr "Poruka"
 
-#: src/linter.js:140
+#: src/linter.js:146
 msgid "Description"
 msgstr "Opis"
 
-#: src/linter.js:146
+#: src/linter.js:152
 msgid "File"
 msgstr "Datoteka"
 
-#: src/linter.js:152
+#: src/linter.js:158
 msgid "Line"
 msgstr "Linija"
 
-#: src/linter.js:158
+#: src/linter.js:164
 msgid "Column"
 msgstr "Kolona"
 
@@ -186,6 +187,10 @@ msgstr "Kršenje Mozillinih uslova korištenja."
 msgid "Package contains duplicate entries"
 msgstr "Pošiljka sadrži duple unose"
 
+#: src/messages/layout.js:90
+msgid "Firefox add-ons are not allowed to run coin miners."
+msgstr ""
+
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Pogledajte https://mzl.la/1ZOhoEN (MDN dokumente) za više informacija."
@@ -215,12 +220,16 @@ msgid "The field is invalid."
 msgstr "Polje je nevažeće."
 
 #: src/messages/manifestjson.js:161
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Sadržaj skripte definisan u manifestu nije pronađen na \"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Sadržaj skripte css datoteke u manifestu nije pronađen na \"%(path)s\"."
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"Sadržaj skripte css datoteke u manifestu nije pronađen na \"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -267,7 +276,8 @@ msgid "Unsupported image extension"
 msgstr "Nepodržano proširenje slike"
 
 #: src/messages/manifestjson.js:236
-msgid "Icons should be one of JPG, JPEG, WebP, GIFF, PNG or SVG."
+#, fuzzy
+msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Ikone moraju biti JPG, JPEG, WebP, GIFF, PNG ili SVG."
 
 #: src/messages/manifestjson.js:244

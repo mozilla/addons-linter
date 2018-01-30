@@ -1,44 +1,45 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-01-19 00:33+0000\n"
+"POT-Creation-Date: 2018-01-30 18:56+0000\n"
 "PO-Revision-Date: 2018-01-27 16:01+0000\n"
 "Last-Translator: Alexander Slovesnik <unghost@mozilla-russia.org>\n"
 "Language-Team: none\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:111
+#: src/linter.js:117
 msgid "Validation Summary:"
 msgstr "Сводка валидации:"
 
-#: src/linter.js:128
+#: src/linter.js:134
 msgid "Code"
 msgstr "Код"
 
-#: src/linter.js:134
+#: src/linter.js:140
 msgid "Message"
 msgstr "Сообщение"
 
-#: src/linter.js:140
+#: src/linter.js:146
 msgid "Description"
 msgstr "Описание"
 
-#: src/linter.js:146
+#: src/linter.js:152
 msgid "File"
 msgstr "Файл"
 
-#: src/linter.js:152
+#: src/linter.js:158
 msgid "Line"
 msgstr "Строка"
 
-#: src/linter.js:158
+#: src/linter.js:164
 msgid "Column"
 msgstr "Столбец"
 
@@ -186,9 +187,15 @@ msgstr "Нарушение правил использования продук�
 msgid "Package contains duplicate entries"
 msgstr "Пакет содержит дублирующиеся записи"
 
+#: src/messages/layout.js:90
+msgid "Firefox add-ons are not allowed to run coin miners."
+msgstr ""
+
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr "Смотрите https://mzl.la/1ZOhoEN (Документацию на MDN) для получения дополнительной информации."
+msgstr ""
+"Смотрите https://mzl.la/1ZOhoEN (Документацию на MDN) для получения "
+"дополнительной информации."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -215,12 +222,19 @@ msgid "The field is invalid."
 msgstr "Недопустимое поле."
 
 #: src/messages/manifestjson.js:161
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Не удалось найти скрипт содержимого, обозначенный в манифесте, по пути \"%(path)s\"."
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"Не удалось найти скрипт содержимого, обозначенный в манифесте, по пути "
+"\"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "CSS файл скрипта содержимого, обозначенный в манифесте, не найден по пути \"%(path)s\"."
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"CSS файл скрипта содержимого, обозначенный в манифесте, не найден по пути "
+"\"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -267,8 +281,11 @@ msgid "Unsupported image extension"
 msgstr "Неподдерживаемое расширение изображения"
 
 #: src/messages/manifestjson.js:236
-msgid "Icons should be one of JPG, JPEG, WebP, GIFF, PNG or SVG."
-msgstr "Значок должен быть в одном из следующих форматов - JPG, JPEG, WebP, GIFF, PNG или SVG."
+#, fuzzy
+msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
+msgstr ""
+"Значок должен быть в одном из следующих форматов - JPG, JPEG, WebP, GIFF, "
+"PNG или SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
@@ -284,7 +301,9 @@ msgstr "Неизвестное разрешение."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "Смотрите https://mzl.la/1R1n1t0 (Документацию на MDN) для получения дополнительной информации."
+msgstr ""
+"Смотрите https://mzl.la/1R1n1t0 (Документацию на MDN) для получения "
+"дополнительной информации."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -292,11 +311,14 @@ msgstr "\"manifest_version\" в файле manifest.json имеет некорр
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "Смотрите https://mzl.la/20PenXl (Документацию на MDN) для получения дополнительной информации."
+msgstr ""
+"Смотрите https://mzl.la/20PenXl (Документацию на MDN) для получения "
+"дополнительной информации."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr "Пользовательская content_security_policy требует дополнительной проверки."
+msgstr ""
+"Пользовательская content_security_policy требует дополнительной проверки."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
@@ -304,7 +326,9 @@ msgstr "Свойство \"name\" должно быть строкой."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "Смотрите http://mzl.la/1STmr48 (Документацию на MDN) для получения дополнительной информации."
+msgstr ""
+"Смотрите http://mzl.la/1STmr48 (Документацию на MDN) для получения "
+"дополнительной информации."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
@@ -312,7 +336,9 @@ msgstr "Свойство \"version\" должно быть строкой."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "Смотрите http://mzl.la/1kXIADa (Документацию на MDN) для получения дополнительной информации."
+msgstr ""
+"Смотрите http://mzl.la/1kXIADa (Документацию на MDN) для получения "
+"дополнительной информации."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."

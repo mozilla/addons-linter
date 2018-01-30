@@ -2,42 +2,41 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-01-19 00:33+0000\n"
+"POT-Creation-Date: 2018-01-30 18:56+0000\n"
 "PO-Revision-Date: 2018-01-19 00:33+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Language: sk\n"
 
-#: src/linter.js:111
+#: src/linter.js:117
 msgid "Validation Summary:"
 msgstr ""
 
-#: src/linter.js:128
+#: src/linter.js:134
 msgid "Code"
 msgstr ""
 
-#: src/linter.js:134
+#: src/linter.js:140
 msgid "Message"
 msgstr ""
 
-#: src/linter.js:140
+#: src/linter.js:146
 msgid "Description"
 msgstr ""
 
-#: src/linter.js:146
+#: src/linter.js:152
 msgid "File"
 msgstr ""
 
-#: src/linter.js:152
+#: src/linter.js:158
 msgid "Line"
 msgstr ""
 
-#: src/linter.js:158
+#: src/linter.js:164
 msgid "Column"
 msgstr ""
 
@@ -185,6 +184,10 @@ msgstr ""
 msgid "Package contains duplicate entries"
 msgstr ""
 
+#: src/messages/layout.js:90
+msgid "Firefox add-ons are not allowed to run coin miners."
+msgstr ""
+
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr ""
@@ -269,7 +272,7 @@ msgid "Unsupported image extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:236
-msgid "Icons should be one of JPG, JPEG, WebP, GIFF, PNG or SVG."
+msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr ""
 
 #: src/messages/manifestjson.js:244

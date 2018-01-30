@@ -1,44 +1,44 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-01-19 00:33+0000\n"
+"POT-Creation-Date: 2018-01-30 18:56+0000\n"
 "PO-Revision-Date: 2018-01-30 11:45+0000\n"
 "Last-Translator: Francesco Lodolo <francesco.lodolo@mozillaitalia.org>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:111
+#: src/linter.js:117
 msgid "Validation Summary:"
 msgstr "Riepilogo della convalida:"
 
-#: src/linter.js:128
+#: src/linter.js:134
 msgid "Code"
 msgstr "Codice"
 
-#: src/linter.js:134
+#: src/linter.js:140
 msgid "Message"
 msgstr "Messaggio"
 
-#: src/linter.js:140
+#: src/linter.js:146
 msgid "Description"
 msgstr "Descrizione"
 
-#: src/linter.js:146
+#: src/linter.js:152
 msgid "File"
 msgstr "File"
 
-#: src/linter.js:152
+#: src/linter.js:158
 msgid "Line"
 msgstr "Riga"
 
-#: src/linter.js:158
+#: src/linter.js:164
 msgid "Column"
 msgstr "Colonna"
 
@@ -60,7 +60,9 @@ msgstr "Impossibile analizzare il file FTL."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr "Gli script remoti non sono consentiti secondo la politica dei componenti aggiuntivi."
+msgstr ""
+"Gli script remoti non sono consentiti secondo la politica dei componenti "
+"aggiuntivi."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
@@ -186,9 +188,14 @@ msgstr "Violazione delle Condizioni di utilizzo di Mozilla."
 msgid "Package contains duplicate entries"
 msgstr "Il pacchetto contiene voci duplicate"
 
+#: src/messages/layout.js:90
+msgid "Firefox add-ons are not allowed to run coin miners."
+msgstr ""
+
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr "Visita https://mzl.la/1ZOhoEN (Documentazione MDN) per maggiori informazioni."
+msgstr ""
+"Visita https://mzl.la/1ZOhoEN (Documentazione MDN) per maggiori informazioni."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -215,12 +222,18 @@ msgid "The field is invalid."
 msgstr "Il campo è non valido."
 
 #: src/messages/manifestjson.js:161
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Impossibile trovare il content script definito nel manifesto in \"%(path)s\"."
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"Impossibile trovare il content script definito nel manifesto in \"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Impossibile trovare il file content script css definito nel manifesto in \"%(path)s\"."
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"Impossibile trovare il file content script css definito nel manifesto in "
+"\"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -267,7 +280,7 @@ msgid "Unsupported image extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:236
-msgid "Icons should be one of JPG, JPEG, WebP, GIFF, PNG or SVG."
+msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr ""
 
 #: src/messages/manifestjson.js:244

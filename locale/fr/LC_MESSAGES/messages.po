@@ -1,44 +1,44 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-01-19 00:33+0000\n"
+"POT-Creation-Date: 2018-01-30 18:56+0000\n"
 "PO-Revision-Date: 2018-01-30 12:53+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:111
+#: src/linter.js:117
 msgid "Validation Summary:"
 msgstr "Résumé des validations :"
 
-#: src/linter.js:128
+#: src/linter.js:134
 msgid "Code"
 msgstr "Code"
 
-#: src/linter.js:134
+#: src/linter.js:140
 msgid "Message"
 msgstr "Message"
 
-#: src/linter.js:140
+#: src/linter.js:146
 msgid "Description"
 msgstr "Description"
 
-#: src/linter.js:146
+#: src/linter.js:152
 msgid "File"
 msgstr "Fichier"
 
-#: src/linter.js:152
+#: src/linter.js:158
 msgid "Line"
 msgstr "Ligne"
 
-#: src/linter.js:158
+#: src/linter.js:164
 msgid "Column"
 msgstr "Colonne"
 
@@ -60,7 +60,9 @@ msgstr "Votre fichier FTL n’a pas pu être analysé."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr "Les scripts externes ne sont pas autorisés, comme indiqué dans les termes relatifs aux modules."
+msgstr ""
+"Les scripts externes ne sont pas autorisés, comme indiqué dans les termes "
+"relatifs aux modules."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
@@ -186,6 +188,10 @@ msgstr "Violation des conditions d’utilisation Mozilla."
 msgid "Package contains duplicate entries"
 msgstr ""
 
+#: src/messages/layout.js:90
+msgid "Firefox add-ons are not allowed to run coin miners."
+msgstr ""
+
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr ""
@@ -215,11 +221,14 @@ msgid "The field is invalid."
 msgstr "Le champ est invalide."
 
 #: src/messages/manifestjson.js:161
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
@@ -267,7 +276,8 @@ msgid "Unsupported image extension"
 msgstr "Extension d’image non prise en charge"
 
 #: src/messages/manifestjson.js:236
-msgid "Icons should be one of JPG, JPEG, WebP, GIFF, PNG or SVG."
+#, fuzzy
+msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Les icônes doivent être au format JPG, JPEG, WebP, GIFF, PNG ou SVG."
 
 #: src/messages/manifestjson.js:244
@@ -288,7 +298,8 @@ msgstr ""
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "La valeur « manifest_version » dans le fichier manifest.json est invalide"
+msgstr ""
+"La valeur « manifest_version » dans le fichier manifest.json est invalide"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -296,7 +307,9 @@ msgstr ""
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr "Une revue supplémentaire est nécessaire lorsque content_security_policy est définie de manière spécifique."
+msgstr ""
+"Une revue supplémentaire est nécessaire lorsque content_security_policy est "
+"définie de manière spécifique."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
