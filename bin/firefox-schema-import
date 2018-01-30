@@ -18,7 +18,7 @@ try {
   fs.statSync(arg);
   filePath = arg;
 } catch (e) {
-  if (/^[0-9]+$/.test(arg) || arg === 'nightly') {
+  if (/^[0-9A-Z_]+$/.test(arg) || arg === 'nightly') {
     version = arg;
   }
 }

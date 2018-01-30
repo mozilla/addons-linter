@@ -173,10 +173,22 @@
             "toolbar_text": {
               "type": "string"
             },
+            "bookmark_text": {
+              "type": "string"
+            },
             "toolbar_field": {
               "type": "string"
             },
             "toolbar_field_text": {
+              "type": "string"
+            },
+            "toolbar_top_separator": {
+              "type": "string"
+            },
+            "toolbar_bottom_separator": {
+              "type": "string"
+            },
+            "toolbar_vertical_separator": {
               "type": "string"
             }
           }
