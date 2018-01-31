@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-28 11:38+0000\n"
+"PO-Revision-Date: 2018-01-31 04:45+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -188,7 +188,7 @@ msgstr "封包包含重複項目"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "Firefox 附加元件中不允許進行挖礦。"
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
@@ -219,14 +219,11 @@ msgid "The field is invalid."
 msgstr "欄位無效。"
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "無法在「%(path)s」找到安裝資訊檔中定義的內容指令碼。"
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "無法在「%(path)s」找到安裝資訊檔中定義的內容指令碼 CSS 檔案。"
 
 #: src/messages/manifestjson.js:173
@@ -274,9 +271,8 @@ msgid "Unsupported image extension"
 msgstr "不支援的圖片副檔名"
 
 #: src/messages/manifestjson.js:236
-#, fuzzy
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr "圖示格式應為 JPG、JPEG、WebP、GIF、PNG 或 SVG 任一。"
+msgstr "圖示格式應為 JPG/JPEG、WebP、GIF、PNG 或 SVG 任一。"
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
