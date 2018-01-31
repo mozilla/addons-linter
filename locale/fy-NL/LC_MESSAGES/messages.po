@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-29 12:32+0000\n"
+"PO-Revision-Date: 2018-01-31 11:31+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fy_NL\n"
@@ -44,11 +44,11 @@ msgstr "Kolom"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Unjildich nesten fan selectors fûn"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "Der is in CSS-syntaksisflater oantroffen"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -84,186 +84,183 @@ msgstr "{{api}} is net stipe"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener` oanroppen mei ‘truthy’ fjirde argumint."
 
 #: src/messages/javascript.js:140
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "Dizze API is net troch Firefox ymplemintearre."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Ynhâldsscriptbestân koe net fûn wurde."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Ynhâldsscriptbestân koe net fûn wurde"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Namme fan ynhâldsscriptbestân mei net leech wêze."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Namme fan ynhâldsscriptbestân mei net leech wêze"
 
 #: src/messages/javascript.js:38
 msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr ""
+msgstr "mozIndexedDB is fuortsmiten; brûk yn stee dêrfan indexedDB"
 
 #: src/messages/javascript.js:39 src/messages/javascript.js:47
 msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr ""
+msgstr "mozIndexedDB is fuortsmiten; brûk yn stee dêrfan indexedDB."
 
 #: src/messages/javascript.js:46
 msgid "mozIndexedDB used as an object key/property"
-msgstr ""
+msgstr "mozIndexedDB brûkt as in objektkaai/-eigenskip"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "JavaScript-syntaksisflater"
 
 #: src/messages/javascript.js:92
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Unferwachte globale fariabele trochjûn as argumint"
 
 #: src/messages/javascript.js:99
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Gebrûk fan document.write wurdt strang ôfrêd."
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "Jo JSON befettet blokkommentaren."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "Dûbele kaaien binne net tastien yn JSON-bestannen."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "Jo JSON is net jildich."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "Jo JSON-bestân koe net ferwurke wurde."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "Wy koene it zip-bestân net útpakke."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "manifest.json is net fûn"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr ""
+msgstr "Bestân is te grut om te parsen."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "Ferburgen bestân markearre"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "Markearre bestânsnamme fûn"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "Markearre bestânsútwreidingen fûn"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "Markearre bestânstype fûn"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
-msgstr ""
+msgstr "Pakket al ûndertekene"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
-msgstr ""
+msgstr "Skeining fan de brûksbetingsten fan Mozilla."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
-msgstr ""
+msgstr "Pakket befettet dûbele fermeldingen"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "Firefox-add-ons meie gjin coinminers útfiere."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
+msgstr "Sjoch https://mzl.la/1ZOhoEN (MDN Docs) foar mear ynformaasje."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
-msgstr ""
+msgstr "‘strict_max_version’ net fereaske."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
+msgstr "In yn it manifest definiearre piktogram koe net yn it pakket fûn wurde."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Piktogram koe net fûn wurde fûn yn ‘%(path)s’."
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Achtergrûnscript koe net fûn wurde yn ‘%(path)s’."
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Achtergrûnside koe net fûn wurde yn ‘%(path)s’."
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
-msgstr ""
+msgstr "It fjild is ûnjildich."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Yn it manifest definiearre ynhâldsscript koe net fûn wurde yn ‘%(path)s’."
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Yn it manifest definiearre CSS-bestân fan ynhâldsscript koe net fûn wurde yn ‘%(path)s’."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "Ferbeane ynhâld fûn yn add-on."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "Dizze add-on befettet ferbeane ynhâld."
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr ""
+msgstr "Piktogrammen moatte fjouwerkant wêze."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "Piktogram yn ‘%(path)s’ moat fjouwerkant wêze."
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "De grutte fan it piktogram komt net oerien mei it manifest."
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
-msgstr ""
+msgstr "Skansearre ôfbyldingsbestân"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "Ferwacht piktogrambestân yn ‘%(path)s’ is skansearre"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "De ‘default_locale’ mist lokalisaasjes."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "De ‘default_locale’ ûntbrekt, mar ‘_locales’ bestiet."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
