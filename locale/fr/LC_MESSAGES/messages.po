@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-30 12:53+0000\n"
+"PO-Revision-Date: 2018-01-31 23:04+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -60,9 +60,7 @@ msgstr "Votre fichier FTL n’a pas pu être analysé."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
-"Les scripts externes ne sont pas autorisés, comme indiqué dans les termes "
-"relatifs aux modules."
+msgstr "Les scripts externes ne sont pas autorisés, comme indiqué dans les termes relatifs aux modules."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
@@ -178,7 +176,7 @@ msgstr ""
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
-msgstr ""
+msgstr "Le paquet est déjà signé"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
@@ -186,7 +184,7 @@ msgstr "Violation des conditions d’utilisation Mozilla."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
-msgstr ""
+msgstr "Le paquet contient des entrées dupliquées"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -194,7 +192,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
+msgstr "Voir https://mzl.la/1ZOhoEN (MDN Docs) pour plus d’informations."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -202,7 +200,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
+msgstr "Une icône définie dans le manifeste est introuvable dans le paquet."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
@@ -221,14 +219,11 @@ msgid "The field is invalid."
 msgstr "Le champ est invalide."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
@@ -276,9 +271,8 @@ msgid "Unsupported image extension"
 msgstr "Extension d’image non prise en charge"
 
 #: src/messages/manifestjson.js:236
-#, fuzzy
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr "Les icônes doivent être au format JPG, JPEG, WebP, GIFF, PNG ou SVG."
+msgstr "Les icônes doivent être au format JPG/JPEG, WebP, GIF, PNG ou SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
@@ -294,22 +288,19 @@ msgstr "Permission inconnue."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "Voir https://mzl.la/1R1n1t0 (MDN Docs) pour plus d’informations."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
-"La valeur « manifest_version » dans le fichier manifest.json est invalide"
+msgstr "La valeur « manifest_version » dans le fichier manifest.json est invalide"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "Voir https://mzl.la/20PenXl (MDN Docs) pour plus d’informations."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
-"Une revue supplémentaire est nécessaire lorsque content_security_policy est "
-"définie de manière spécifique."
+msgstr "Une revue supplémentaire est nécessaire lorsque content_security_policy est définie de manière spécifique."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
@@ -317,7 +308,7 @@ msgstr "La propriété « name » doit être une chaîne de caractères."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "Voir https://mzl.la/1STmr48 (MDN Docs) pour plus d’informations."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
@@ -325,7 +316,7 @@ msgstr "La propriété « version » doit être une chaîne de caractères."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "Voir https://mzl.la/1kXIADa (MDN Docs) pour plus d’informations."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
