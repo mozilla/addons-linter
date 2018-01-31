@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-31 06:38+0000\n"
-"Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
+"PO-Revision-Date: 2018-01-31 10:27+0000\n"
+"Last-Translator: Ton <tonnes.mb@gmail.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -280,7 +280,7 @@ msgstr "Lege taalmap"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr "bestand messages.json ontbreekt in ‘%(path)s’"
+msgstr "Bestand messages.json ontbreekt in ‘%(path)s’"
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
