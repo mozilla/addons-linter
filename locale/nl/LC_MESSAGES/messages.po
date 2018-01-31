@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-29 18:40+0000\n"
-"Last-Translator: Ton <tonnes.mb@gmail.com>\n"
+"PO-Revision-Date: 2018-01-31 06:38+0000\n"
+"Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
 "Language-Team: none\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -188,7 +188,7 @@ msgstr "Pakket bevat dubbele vermeldingen"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "Firefox-add-ons mogen geen coinminers uitvoeren."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
@@ -200,9 +200,7 @@ msgstr "‘strict_max_version’ niet vereist."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
-"Een in het manifest gedefinieerd pictogram kon niet in het pakket worden "
-"gevonden."
+msgstr "Een in het manifest gedefinieerd pictogram kon niet in het pakket worden gevonden."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
@@ -221,19 +219,12 @@ msgid "The field is invalid."
 msgstr "Het veld is ongeldig."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"In het manifest gedefinieerd inhoudsscript kon niet worden gevonden in "
-"‘%(path)s’."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "In het manifest gedefinieerd inhoudsscript kon niet worden gevonden in ‘%(path)s’."
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"In het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet worden "
-"gevonden in ‘%(path)s’."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "In het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet worden gevonden in ‘%(path)s’."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -280,9 +271,8 @@ msgid "Unsupported image extension"
 msgstr "Niet-ondersteunde afbeeldingsextensie"
 
 #: src/messages/manifestjson.js:236
-#, fuzzy
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr "Pictogrammen dienen JPG, JPEG, WebP, GIFF, PNG of SVG te zijn."
+msgstr "Pictogrammen dienen JPG/JPEG, WebP, GIF, PNG of SVG te zijn."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
@@ -310,8 +300,7 @@ msgstr "Zie https://mzl.la/20PenXl (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
-"Een aangepast content_security_policy heeft aanvullende beoordeling nodig."
+msgstr "Een aangepast content_security_policy heeft aanvullende beoordeling nodig."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
