@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-28 09:58+0000\n"
+"PO-Revision-Date: 2018-01-31 19:50+0000\n"
 "Last-Translator: Andreas Pettersson <az@kth.se>\n"
 "Language-Team: none\n"
 "Language: sv_SE\n"
@@ -219,18 +219,12 @@ msgid "The field is invalid."
 msgstr "Fältet är ogiltigt."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Innehållsskript definierat i manifestet kunde inte hittas på \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Innehållsskript definierat i manifestet kunde inte hittas på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Innehållsskriptets css-fil definierat i manifestet kunde inte hittas på "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Innehållsskriptets css-fil definierat i manifestet kunde inte hittas på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -277,9 +271,8 @@ msgid "Unsupported image extension"
 msgstr "Filändelse för bild stöds ej"
 
 #: src/messages/manifestjson.js:236
-#, fuzzy
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr "Ikoner bör vara av JPG, JPEG, WebP, GIFF, PNG eller SVG."
+msgstr "Ikoner bör vara av JPG/JPEG, WebP, GIFF, PNG eller SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
