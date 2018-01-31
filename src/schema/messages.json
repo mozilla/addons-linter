@@ -1,0 +1,51 @@
+{
+  "id": "messages",
+  "types": {
+    "i18nPlaceholder": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "example": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "i18nMessage": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "placeholders": {
+          "type": "object",
+          "patternProperties": {
+            "^[A-Za-z0-9_@]+$": {
+              "$ref": "#/types/i18nPlaceholder"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "message"
+      ]
+    },
+    "WebExtensionMessages": {
+      "type": "object",
+      "patternProperties": {
+        "^[A-Za-z0-9_@]+$": {
+          "$ref": "#/types/i18nMessage"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
