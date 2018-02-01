@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-02-01 09:43+0000\n"
-"Last-Translator: Elio <elio.gi@gmail.com>\n"
+"PO-Revision-Date: 2018-02-01 10:14+0000\n"
+"Last-Translator: Sara Todaro <sara.todaro@mozillaitalia.org>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -188,7 +188,7 @@ msgstr "Il pacchetto contiene voci duplicate"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "Il Bitcoin mining non è consentito nei componenti aggiuntivi per Firefox."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
@@ -260,7 +260,7 @@ msgstr "La traduzione per \"default_locale\" è incompleta."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "Rilevato \"_locales\", ma non \"default_locale\"."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
@@ -272,11 +272,11 @@ msgstr "Estensione di immagine non supportata"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
+msgstr "Le icone devono essere in formato JPG/JPEG, WebP, GIF, PNG o SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
-msgstr ""
+msgstr "Cartella lingue vuota"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
@@ -300,36 +300,36 @@ msgstr "Visita https://mzl.la/20PenXl (Documentazione MDN) per maggiori informaz
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "Un content_security_policy personalizzato necessita di revisione aggiuntiva."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "La proprietà \"name\" deve essere di tipo stringa."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "Visita http://mzl.la/1STmr48 (Documentazione MDN) per maggiori informazioni."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "La proprietà \"version\" deve essere di tipo stringa."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "Visita http://mzl.la/1kXIADa (Documentazione MDN) per maggiori informazioni."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "La proprietà \"version\" utilizza un formato specifico di Firefox."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "\"update_url\" non è consentito."
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
-msgstr ""
+msgstr "Campo obbligatorio."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "La proprietà \"update_url\" non viene utilizzata da Firefox."
