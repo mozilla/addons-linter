@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-29 10:10+0000\n"
-"Last-Translator: Jakub Rychlý <jrychly@mozilla.cz>\n"
+"PO-Revision-Date: 2018-01-31 14:06+0000\n"
+"Last-Translator: Michal Vašíček <michalvasicek@icloud.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -60,11 +60,11 @@ msgstr "Váš FTL nemohl být parsován."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Vzdálené skripty nejsou povoleny bezpečnostní politikou doplňků."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Vložené skripty jsou ve výchozím nastavení zablokovány"
 
 #: src/messages/javascript.js:107
 msgid "Banned 3rd-party JS library"
@@ -192,8 +192,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na https://mzl.la/1ZOhoEN (MDN dokumentace) pro více informací."
+msgstr "Podívejte se na https://mzl.la/1ZOhoEN (MDN dokumentace) pro více informací."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -220,14 +219,11 @@ msgid "The field is invalid."
 msgstr "Pole není platné."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
@@ -293,8 +289,7 @@ msgstr "Neznámé oprávnění."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na https://mzl.la/1R1n1t0 (MDN dokumentace) pro více informací."
+msgstr "Podívejte se na https://mzl.la/1R1n1t0 (MDN dokumentace) pro více informací."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -302,8 +297,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na https://mzl.la/20PenXl (MDN dokumentace) pro více informací."
+msgstr "Podívejte se na https://mzl.la/20PenXl (MDN dokumentace) pro více informací."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
@@ -315,8 +309,7 @@ msgstr "Hodnota \"name\" musí být řetězec."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na http://mzl.la/1STmr48 (MDN Dokumenty) pro více informací."
+msgstr "Podívejte se na http://mzl.la/1STmr48 (MDN Dokumenty) pro více informací."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
@@ -324,8 +317,7 @@ msgstr "Hodnota \"version\" musí být řetězec."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na http://mzl.la/1kXIADa (MDN Dokumenty) pro více informací."
+msgstr "Podívejte se na http://mzl.la/1kXIADa (MDN Dokumenty) pro více informací."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
