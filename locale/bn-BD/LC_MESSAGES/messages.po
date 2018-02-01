@@ -1,16 +1,18 @@
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-19 00:33+0000\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2018-02-01 22:10+0000\n"
+"Last-Translator: S M Sarwar Nobin <smsarwar1996@gmail.com>\n"
 "Language-Team: none\n"
-"Language: bn-BD\n"
+"Language: bn_BD\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pontoon\n"
 
 #: src/linter.js:117
 msgid "Validation Summary:"
@@ -18,27 +20,27 @@ msgstr ""
 
 #: src/linter.js:134
 msgid "Code"
-msgstr ""
+msgstr "কোড"
 
 #: src/linter.js:140
 msgid "Message"
-msgstr ""
+msgstr "মেসেজ"
 
 #: src/linter.js:146
 msgid "Description"
-msgstr ""
+msgstr "বর্ণনা"
 
 #: src/linter.js:152
 msgid "File"
-msgstr ""
+msgstr "ফাইল"
 
 #: src/linter.js:158
 msgid "Line"
-msgstr ""
+msgstr "লাইন"
 
 #: src/linter.js:164
 msgid "Column"
-msgstr ""
+msgstr "কলাম"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
@@ -118,7 +120,7 @@ msgstr ""
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "JavaScript সিনট্যাক্স ভুল"
 
 #: src/messages/javascript.js:92
 msgid "Unexpected global passed as an argument"
@@ -194,7 +196,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
-msgstr ""
+msgstr "\"strict_max_version\" প্রয়োজন ছিল না।"
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
@@ -214,17 +216,14 @@ msgstr ""
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
-msgstr ""
+msgstr "ফিল্ডটি অবৈধ।"
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
@@ -237,7 +236,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr ""
+msgstr "আইকন অবশ্যই বর্গাকৃতির হবে।"
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
@@ -249,7 +248,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
-msgstr ""
+msgstr "নষ্ট হওয়া ছবির ফাইল"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
@@ -285,52 +284,52 @@ msgstr ""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
-msgstr ""
+msgstr "অজানা অনুমতি।"
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "আরও তথ্যের জন্য https://mzl.la/1R1n1t0 (MDN ডকস) দেখুন।"
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "manifest.json এ \"manifest_version\" এর মান ঠিক নাই"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "আরও তথ্যের জন্য https://mzl.la/20PenXl (MDN ডকস) দেখুন।"
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "কাস্টম content_security_policy আরও রিভিউয়ের প্রয়োজন।"
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "\"name\" প্রোপার্টি অবশ্যই একটি স্ট্রিং হবে।"
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "আরও তথ্যের জন্য http://mzl.la/1STmr48 (MDN ডকস) দেখুন।"
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "\"version\" প্রোপার্টি অবশ্যই একটি স্ট্রিং হবে।"
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "আরও তথ্যের জন্য http://mzl.la/1kXIADa (MDN ডকস) দেখুন।"
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "\"version\" প্রোপার্টি Firefox এর নির্দিষ্ট ফরম্যাট ব্যবহার করে।"
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "\"update_url\" অনুমোদিত নয়।"
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
-msgstr ""
+msgstr "ফিল্ডটি প্রয়োজনীয়।"
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "\"update_url\" প্রোপার্টি টি Firefox এর দ্বারা ব্যবহৃত হয় না।"
