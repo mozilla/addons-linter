@@ -41,20 +41,13 @@ describe('Base Scanner Class', () => {
     expect(baseScannerWithOptions.options.foo).toEqual('bar');
   });
 
-  it('should reject when _getContents is not implemented', () => {
+  it('should reject when _getContents is not implemented', async () => {
     const baseScanner = new BaseScanner('', 'index.html');
 
-    return baseScanner.scan()
-      .then(() => {
-        expect(false).toBe(true);
-      })
-      .catch((err) => {
-        expect(err).toBeInstanceOf(Error);
-        expect(err.message).toEqual('_getContents is not implemented');
-      });
+    await expect(baseScanner.scan()).rejects.toThrow('_getContents is not implemented');
   });
 
-  it('should run all rules', () => {
+  it('should run all rules', async () => {
     const baseScanner = new BaseScannerWithContents('', 'index.html');
 
     const fakeRules = {
@@ -62,45 +55,39 @@ describe('Base Scanner Class', () => {
       iAmAAnotherFakeRule: sinon.stub(),
     };
 
-    return baseScanner.scan(fakeRules)
-      .then(() => {
-        expect(fakeRules.iAmAFakeRule.calledOnce).toBeTruthy();
-        expect(fakeRules.iAmAAnotherFakeRule.calledOnce).toBeTruthy();
-      });
+    await baseScanner.scan(fakeRules);
+    expect(fakeRules.iAmAFakeRule.calledOnce).toBeTruthy();
+    expect(fakeRules.iAmAAnotherFakeRule.calledOnce).toBeTruthy();
   });
 
-  it('should pass metadata to rules', () => {
+  it('should pass metadata to rules', async () => {
     const fakeRules = { metadataPassedCheck: () => {} };
 
     // This rule calls assert.fail() if no metadata is passed to it.
     sinon.stub(fakeRules, 'metadataPassedCheck').callsFake(metadataPassCheck);
 
-    const scanner = new BaseScannerWithContents('', 'fake.zip', {
+    const baseScanner = new BaseScannerWithContents('', 'fake.zip', {
       addonMetadata: validMetadata({ guid: 'snowflake' }),
     });
 
-    return scanner.scan(fakeRules)
-      .then(({ linterMessages }) => {
-        expect(fakeRules.metadataPassedCheck.called).toBeTruthy();
-        expect(linterMessages.length).toEqual(0);
-      });
+    const { linterMessages } = await baseScanner.scan(fakeRules);
+    expect(fakeRules.metadataPassedCheck.called).toBeTruthy();
+    expect(linterMessages.length).toEqual(0);
   });
 
-  it('should not run private function inside rules', () => {
+  it('should not run private function inside rules', async () => {
     const baseScanner = new BaseScannerWithContents('', 'manifest.json');
     const fakeRules = {
       iAmAFakeRule: sinon.stub(),
       _iAmAPrivateFunction: sinon.stub(),
     };
 
-    return baseScanner.scan(fakeRules)
-      .then(() => {
-        expect(fakeRules.iAmAFakeRule.calledOnce).toBeTruthy();
-        expect(fakeRules._iAmAPrivateFunction.calledOnce).toBeFalsy();
-      });
+    await baseScanner.scan(fakeRules);
+    expect(fakeRules.iAmAFakeRule.calledOnce).toBeTruthy();
+    expect(fakeRules._iAmAPrivateFunction.calledOnce).toBeFalsy();
   });
 
-  it('should increment the number of rules run', () => {
+  it('should increment the number of rules run', async () => {
     const baseScanner = new BaseScannerWithContents('', 'manifest.json');
     const fakeRules = {
       iAmAFakeRule: sinon.stub(),
@@ -108,15 +95,13 @@ describe('Base Scanner Class', () => {
       iAmTheOtherFakeRule: sinon.stub(),
     };
 
-    return baseScanner.scan(fakeRules)
-      .then(() => {
-        expect(
-          baseScanner._rulesProcessed
-        ).toEqual(Object.keys(ignorePrivateFunctions(fakeRules)).length);
-      });
+    await baseScanner.scan(fakeRules);
+    expect(
+      baseScanner._rulesProcessed
+    ).toEqual(Object.keys(ignorePrivateFunctions(fakeRules)).length);
   });
 
   it('should ask for a string', () => {
-    expect(BaseScanner.fileResultType).toBeTruthy();
+    expect(BaseScanner.fileResultType).toEqual('string');
   });
 });
