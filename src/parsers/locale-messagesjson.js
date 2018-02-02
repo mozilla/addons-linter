@@ -3,10 +3,10 @@ import RJSON from 'relaxed-json';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
 import { MESSAGES_JSON, MESSAGE_PLACEHOLDER_REGEXP } from 'const';
-import { validateMessages } from 'schema/validator';
+import { validateLocaleMessages } from 'schema/validator';
 import log from 'logger';
 
-export default class MessagesJSONParser extends JSONParser {
+export default class LocaleMessagesJSONParser extends JSONParser {
   constructor(jsonString, collector, {
     filename = MESSAGES_JSON, RelaxedJSON = RJSON,
   } = {}) {
@@ -16,6 +16,7 @@ export default class MessagesJSONParser extends JSONParser {
 
   parse() {
     super.parse(this.relaxedJSON);
+    this.lowercasePlaceholders = {};
 
     // Set up some defaults in case parsing fails.
     if (typeof this.parsedJSON === 'undefined' || this.isValid === false) {
@@ -30,18 +31,9 @@ export default class MessagesJSONParser extends JSONParser {
     // This is the default message.
     let baseObject = messages.JSON_INVALID;
 
-    // This is the default from webextension-manifest-schema, but it's not a
-    // super helpful error. We'll tidy it up a bit:
-    if (error && error.message) {
-      const lowerCaseMessage = error.message.toLowerCase();
-      if (lowerCaseMessage === 'should not have additional properties') {
-        // eslint-disable-next-line no-param-reassign
-        error.message = 'is not a valid key or has invalid extra properties';
-      }
-    }
-
     const overrides = {
       dataPath: error.dataPath,
+      line: error.line,
       file: this.filename,
     };
 
@@ -63,28 +55,53 @@ export default class MessagesJSONParser extends JSONParser {
     return Object.assign({}, baseObject, overrides);
   }
 
+  getLowercasePlaceholders(message) {
+    const messageObj = this.parsedJSON[message];
+    if (!Object.prototype.hasOwnProperty.call(messageObj, 'placeholders')) {
+      return undefined;
+    }
+    if (!Object.prototype.hasOwnProperty.call(this.lowercasePlaceholders, message)) {
+      this.lowercasePlaceholders[message] = Object.keys(messageObj.placeholders)
+        .map((placeholder) => placeholder.toLowerCase());
+    }
+    return this.lowercasePlaceholders[message];
+  }
+
   hasPlaceholder(message, placeholder) {
     const messageObj = this.parsedJSON[message];
-    return 'placeholders' in messageObj &&
-           placeholder in messageObj.placeholders;
+    return Object.prototype.hasOwnProperty.call(messageObj, 'placeholders') &&
+      this.getLowercasePlaceholders(message).includes(placeholder.toLowerCase());
   }
 
   _validate() {
-    this.isValid = validateMessages(this.parsedJSON);
+    this.isValid = validateLocaleMessages(this.parsedJSON);
     if (!this.isValid) {
-      log.debug('Schema Validation messages', validateMessages.errors);
+      log.debug('Schema Validation messages', validateLocaleMessages.errors);
 
-      validateMessages.errors.forEach((error) => {
+      validateLocaleMessages.errors.forEach((error) => {
         const message = this.errorLookup(error);
         this.collector.addError(message);
       });
     }
 
     const regexp = new RegExp(MESSAGE_PLACEHOLDER_REGEXP, 'ig');
+    const visitedLowercaseMessages = [];
     Object.keys(this.parsedJSON).forEach((message) => {
+      if (!visitedLowercaseMessages.includes(message.toLowerCase())) {
+        visitedLowercaseMessages.push(message.toLowerCase());
+      } else {
+        this.collector.addError(Object.assign({}, messages.JSON_DUPLICATE_KEY, {
+          file: this.filename,
+          description: `Case-insensitive duplicate message name: ${message} found in JSON`,
+          dataPath: `/${message}`,
+        }));
+        this.isValid = false;
+      }
+
       if (message.startsWith('@@')) {
         this.collector.addWarning(Object.assign({
           file: this.filename,
+          dataPath: `/${message}`,
         }, messages.PREDEFINED_MESSAGE_NAME));
       }
 
@@ -94,10 +111,28 @@ export default class MessagesJSONParser extends JSONParser {
         if (!this.hasPlaceholder(message, matches[1])) {
           this.collector.addWarning(Object.assign({
             file: this.filename,
+            dataPath: `/${message}/placeholders/${matches[1]}`,
           }, messages.MISSING_PLACEHOLDER));
         }
         matches = regexp.exec(messageContent);
       }
+
+      if (Object.prototype.hasOwnProperty.call(this.parsedJSON[message], 'placeholders')) {
+        const visitedLowercasePlaceholders = [];
+        Object.keys(this.parsedJSON[message].placeholders).forEach((placeholder) => {
+          if (!visitedLowercasePlaceholders.includes(placeholder.toLowerCase())) {
+            visitedLowercasePlaceholders.push(placeholder.toLowerCase());
+          } else {
+            this.collector.addError(Object.assign({}, messages.JSON_DUPLICATE_KEY, {
+              file: this.filename,
+              description: `Case-insensitive duplicate placeholder name: ${placeholder} found in JSON`,
+              dataPath: `/${message}/placeholders/${placeholder}`,
+            }));
+            this.isValid = false;
+          }
+        });
+      }
+
       // Reset the regexp
       regexp.lastIndex = 0;
     });

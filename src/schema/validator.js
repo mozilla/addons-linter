@@ -72,13 +72,13 @@ export const validateLangPack = (...args) => {
   return isValid;
 };
 
-const _validateMessages = validator.compile({
+const _validateLocaleMessages = validator.compile({
   ...messagesSchemaObject,
   id: 'messages',
   $ref: '#/types/WebExtensionMessages',
 });
-export const validateMessages = (...args) => {
-  const isValid = _validateMessages(...args);
-  validateMessages.errors = filterErrors(_validateMessages.errors);
+export const validateLocaleMessages = (...args) => {
+  const isValid = _validateLocaleMessages(...args);
+  validateLocaleMessages.errors = filterErrors(_validateLocaleMessages.errors);
   return isValid;
 };

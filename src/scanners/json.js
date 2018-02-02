@@ -1,5 +1,5 @@
 import JSONParser from 'parsers/json';
-import MessagesJSONParser from 'parsers/messagesjson';
+import LocaleMessagesJSONParser from 'parsers/locale-messagesjson';
 import BaseScanner from 'scanners/base';
 import { MESSAGES_JSON, LOCALES_DIRECTORY } from 'const';
 
@@ -17,12 +17,12 @@ export default class JSONScanner extends BaseScanner {
     const json = await this.getContents();
 
     if (this.filename.endsWith(MESSAGES_JSON) && this.filename.startsWith(LOCALES_DIRECTORY)) {
-      const messagesJSONParser = new MessagesJSONParser(
+      const localeMessagesJSONParser = new LocaleMessagesJSONParser(
         json,
         this.options.collector,
         { filename: this.filename }
       );
-      messagesJSONParser.parse();
+      localeMessagesJSONParser.parse();
     } else {
       const jsonParser = new JSONParser(
         json,

@@ -104,7 +104,7 @@ export function validLangpackManifestJSON(extra) {
   }, extra));
 }
 
-export function validMessagesJSON() {
+export function validLocaleMessagesJSON() {
   return JSON.stringify(Object.assign({}, {
     foo: {
       message: 'bar',

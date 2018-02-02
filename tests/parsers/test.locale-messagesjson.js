@@ -1,16 +1,16 @@
 import Linter from 'linter';
-import MessagesJSONParser from 'parsers/messagesjson';
+import LocaleMessagesJSONParser from 'parsers/locale-messagesjson';
 import * as messages from 'messages';
 
-import { validMessagesJSON } from '../helpers';
+import { validLocaleMessagesJSON } from '../helpers';
 
-describe('MessagesJSONParser', () => {
+describe('LocaleMessagesJSONParser', () => {
   it('should be invalid if bad JSON', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
-    const messagesJSONParser = new MessagesJSONParser('blah',
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser('blah',
       addonsLinter.collector);
-    messagesJSONParser.parse();
-    expect(messagesJSONParser.isValid).toEqual(false);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(false);
     const { errors } = addonsLinter.collector;
     expect(errors.length).toEqual(1);
     expect(errors[0].code).toEqual(messages.JSON_INVALID.code);
@@ -19,7 +19,7 @@ describe('MessagesJSONParser', () => {
 
   it('should be invalid if placeholder has no content', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
-    const messagesJSONParser = new MessagesJSONParser(`{
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
   "blah": {
     "message": "$CONTENT$",
     "placeholders": {
@@ -29,8 +29,8 @@ describe('MessagesJSONParser', () => {
     }
   }
 }`, addonsLinter.collector);
-    messagesJSONParser.parse();
-    expect(messagesJSONParser.isValid).toEqual(false);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(false);
     const { errors } = addonsLinter.collector;
     expect(errors.length).toEqual(1);
     expect(errors[0].code).toEqual(messages.NO_PLACEHOLDER_CONTENT.code);
@@ -39,13 +39,13 @@ describe('MessagesJSONParser', () => {
 
   it('should be invalid without message property for string', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
-    const messagesJSONParser = new MessagesJSONParser(`{
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
   "blah": {
     "mesage": "foo"
   }
 }`, addonsLinter.collector);
-    messagesJSONParser.parse();
-    expect(messagesJSONParser.isValid).toEqual(false);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(false);
     const { errors } = addonsLinter.collector;
     expect(errors.length).toEqual(1);
     expect(errors[0].code).toEqual(messages.NO_MESSAGE.code);
@@ -54,13 +54,13 @@ describe('MessagesJSONParser', () => {
 
   it('should show a warning for reserved message names', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
-    const messagesJSONParser = new MessagesJSONParser(`{
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
   "@@extension_id": {
     "message": "foo"
   }
 }`, addonsLinter.collector);
-    messagesJSONParser.parse();
-    expect(messagesJSONParser.isValid).toEqual(true);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(true);
     const { warnings } = addonsLinter.collector;
     expect(warnings.length).toEqual(1);
     expect(warnings[0].code).toEqual(messages.PREDEFINED_MESSAGE_NAME.code);
@@ -69,7 +69,7 @@ describe('MessagesJSONParser', () => {
 
   it('should show warnings for missing placeholders', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
-    const messagesJSONParser = new MessagesJSONParser(`{
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
   "blah": {
     "message": "foo $BAR$ $BAZ$",
     "placeholders": {
@@ -82,8 +82,8 @@ describe('MessagesJSONParser', () => {
     "message": "$EMPTY$"
   }
 }`, addonsLinter.collector);
-    messagesJSONParser.parse();
-    expect(messagesJSONParser.isValid).toEqual(true);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(true);
     const { warnings } = addonsLinter.collector;
     expect(warnings.length).toEqual(2);
     expect(warnings[0].code).toEqual(messages.MISSING_PLACEHOLDER.code);
@@ -94,13 +94,13 @@ describe('MessagesJSONParser', () => {
 
   it('should be invalid if bad message name', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
-    const messagesJSONParser = new MessagesJSONParser(`{
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
   "not-valid": {
     "message": "foo"
   }
 }`, addonsLinter.collector);
-    messagesJSONParser.parse();
-    expect(messagesJSONParser.isValid).toEqual(false);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(false);
     const { errors } = addonsLinter.collector;
     expect(errors.length).toEqual(1);
     expect(errors[0].code).toEqual(messages.INVALID_MESSAGE_NAME.code);
@@ -109,7 +109,7 @@ describe('MessagesJSONParser', () => {
 
   it('should be invalid if bad placeholder name', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
-    const messagesJSONParser = new MessagesJSONParser(`{
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
   "invalid_placeholder": {
     "message": "$PH-1$",
     "placeholders": {
@@ -119,8 +119,8 @@ describe('MessagesJSONParser', () => {
     }
   }
 }`, addonsLinter.collector);
-    messagesJSONParser.parse();
-    expect(messagesJSONParser.isValid).toEqual(false);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(false);
     const { errors } = addonsLinter.collector;
     expect(errors.length).toEqual(1);
     expect(errors[0].code).toEqual(messages.INVALID_PLACEHOLDER_NAME.code);
@@ -129,10 +129,72 @@ describe('MessagesJSONParser', () => {
 
   it('should not have any issues with a valid messages JSON', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
-    const messagesJSONParser = new MessagesJSONParser(validMessagesJSON(), addonsLinter.collector);
-    messagesJSONParser.parse();
-    expect(messagesJSONParser.isValid).toEqual(true);
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(
+      validLocaleMessagesJSON(),
+      addonsLinter.collector
+    );
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(true);
     const { warnings } = addonsLinter.collector;
     expect(warnings.length).toEqual(0);
+  });
+
+  it('should find placeholders with different casing in definition', () => {
+    const addonsLinter = new Linter({ _: ['bar'] });
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
+  "placeholder_case": {
+    "message": "$fooBar$",
+    "placeholders": {
+      "foobar": {
+        "content": "FOO BAR"
+      }
+    }
+  }
+}`, addonsLinter.collector);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(true);
+    const { warnings } = addonsLinter.collector;
+    expect(warnings.length).toEqual(0);
+  });
+
+  it('should be invalid with case-insensitive duplicate message names', () => {
+    const addonsLinter = new Linter({ _: ['bar'] });
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
+  "duplicate": {
+    "message": "foo"
+  },
+  "DUPLICATE": {
+    "message": "bar"
+  }
+}`, addonsLinter.collector);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(false);
+    const { errors } = addonsLinter.collector;
+    expect(errors.length).toEqual(1);
+    expect(errors[0].code).toEqual(messages.JSON_DUPLICATE_KEY.code);
+    expect(errors[0].description).toContain('Case-insensitive duplicate message name');
+  });
+
+  it('should be invalid with case-insensitive duplicate placeholder names', () => {
+    const addonsLinter = new Linter({ _: ['bar'] });
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
+  "duplicate": {
+    "message": "$foo$",
+    "placeholders": {
+      "FOO": {
+        "content": "foo"
+      },
+      "foo": {
+        "content": "FOO"
+      }
+    }
+  }
+}`, addonsLinter.collector);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(false);
+    const { errors } = addonsLinter.collector;
+    expect(errors.length).toEqual(1);
+    expect(errors[0].code).toEqual(messages.JSON_DUPLICATE_KEY.code);
+    expect(errors[0].description).toContain('Case-insensitive duplicate placeholder name');
   });
 });

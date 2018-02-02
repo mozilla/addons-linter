@@ -27,7 +27,7 @@ describe('JSONScanner', () => {
       });
   });
 
-  it('should use special parser for message.json', () => {
+  it('should use special parser for messages.json', () => {
     const addonsLinter = new Linter({ _: ['foo'] });
     const jsonScanner = new JSONScanner('{ "blah": {} }', '_locales/en/messages.json', {
       collector: addonsLinter.collector,
