@@ -1,40 +1,42 @@
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-19 00:33+0000\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2018-02-02 12:10+0000\n"
+"Last-Translator: Sahithi <sahithi.thinker@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pontoon\n"
 
 #: src/linter.js:117
 msgid "Validation Summary:"
-msgstr ""
+msgstr "ధ్రువీకరణ సారాంశం:"
 
 #: src/linter.js:134
 msgid "Code"
-msgstr ""
+msgstr "కోడ్"
 
 #: src/linter.js:140
 msgid "Message"
-msgstr ""
+msgstr "సందేశం"
 
 #: src/linter.js:146
 msgid "Description"
-msgstr ""
+msgstr "వివరణ"
 
 #: src/linter.js:152
 msgid "File"
-msgstr ""
+msgstr "ఫైలు"
 
 #: src/linter.js:158
 msgid "Line"
-msgstr ""
+msgstr "వరుస"
 
 #: src/linter.js:164
 msgid "Column"
@@ -50,7 +52,7 @@ msgstr ""
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
-msgstr ""
+msgstr "మీ FTL చెల్లదు."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
@@ -74,11 +76,11 @@ msgstr ""
 
 #: src/messages/javascript.js:121
 msgid "Known JS library detected"
-msgstr ""
+msgstr "తెలిసిన JS లైబ్రరీ కనుగొనబడింది"
 
 #: src/messages/javascript.js:139
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} కు మద్దతు లేదు"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
@@ -86,31 +88,31 @@ msgstr ""
 
 #: src/messages/javascript.js:140
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "ఈ API Firefox ద్వారా అమలు చేయబడలేదు."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "కంటెంట్ స్క్రిప్ట్ ఫైలు కనుగొనబడలేదు."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "కంటెంట్ స్క్రిప్ట్ ఫైల్ కనుగొనబడలేదు"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "కంటెంట్ స్క్రిప్ట్ ఫైలు పేరు ఖాళీగా ఉండకూడదు."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "కంటెంట్ స్క్రిప్ట్ ఫైలు పేరు ఖాళీగా ఉండకూడదు"
 
 #: src/messages/javascript.js:38
 msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr ""
+msgstr "mozIndexedDB తీసివేయబడింది; దాని బదులుగా indexedDBని ఉపయోగించండి"
 
 #: src/messages/javascript.js:39 src/messages/javascript.js:47
 msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr ""
+msgstr "mozIndexedDB తీసివేయబడింది; దాని బదులుగా indexedDBని ఉపయోగించండి."
 
 #: src/messages/javascript.js:46
 msgid "mozIndexedDB used as an object key/property"
@@ -118,7 +120,7 @@ msgstr ""
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "JavaScript సింటాక్స్ లోపం"
 
 #: src/messages/javascript.js:92
 msgid "Unexpected global passed as an argument"
@@ -138,7 +140,7 @@ msgstr ""
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "మీ JSON చెల్లదు."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
@@ -150,7 +152,7 @@ msgstr ""
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "manifest.json దొరకలేదు"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
@@ -217,14 +219,11 @@ msgid "The field is invalid."
 msgstr ""
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
@@ -233,11 +232,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "ఈ పొడిగింత నిషిద్ధ కంటెంట్ను కలిగి ఉంది."
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr ""
+msgstr "చిహ్నాలు చదరపు ఆకారంలో ఉండాలి."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
@@ -285,19 +284,19 @@ msgstr ""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
-msgstr ""
+msgstr "తెలియని అనుమతి."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "మరింత సమాచారం కోసం https://mzl.la/1R1n1t0 (MDN డాక్స్) చూడండి."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "manifest.json లోని \"manifest_version\" చెల్లుబాటు కాదు"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "మరింత సమాచారం కోసం https://mzl.la/20PenXl (MDN డాక్స్) చూడండి."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
@@ -309,7 +308,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "మరింత సమాచారం కోసం http://mzl.la/1STmr48 (MDN డాక్స్) చూడండి."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
