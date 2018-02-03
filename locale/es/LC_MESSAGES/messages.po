@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-29 17:58+0000\n"
-"Last-Translator: avelper <avelper@mozilla-hispano.org>\n"
+"PO-Revision-Date: 2018-02-03 23:29+0000\n"
+"Last-Translator: jlG <jlg.l10n.es@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -60,8 +60,7 @@ msgstr "Tu archivo FTL no se ha podido interpretar."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
-"Los scripts remotos no están permitidos por las políticas de complementos."
+msgstr "Los scripts remotos no están permitidos por las políticas de complementos."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
@@ -93,19 +92,19 @@ msgstr "Firefox no ha implementado esta API."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "No se puede encontrar el archivo script de contenido."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "No se puede encontrar el archivo script de contenido"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "El nombre del archivo script de contenido no puede estar vacío."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "El nombre del archivo script de contenido no puede estar vacío"
 
 #: src/messages/javascript.js:38
 msgid "mozIndexedDB has been removed; use indexedDB instead"
@@ -220,14 +219,11 @@ msgid "The field is invalid."
 msgstr ""
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
