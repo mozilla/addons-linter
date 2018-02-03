@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-02-03 23:29+0000\n"
+"PO-Revision-Date: 2018-02-03 23:32+0000\n"
 "Last-Translator: jlG <jlg.l10n.es@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -108,19 +108,19 @@ msgstr "El nombre del archivo script de contenido no puede estar vacío"
 
 #: src/messages/javascript.js:38
 msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr ""
+msgstr "mozIndexedDB ha sido eliminado; en su lugar, utiliza indexedDB"
 
 #: src/messages/javascript.js:39 src/messages/javascript.js:47
 msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr ""
+msgstr "mozIndexedDB ha sido eliminado; en su lugar, utiliza indexedDB."
 
 #: src/messages/javascript.js:46
 msgid "mozIndexedDB used as an object key/property"
-msgstr ""
+msgstr "mozIndexedDB usado como una clave/propiedad de objeto"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "error de sintaxis de JavaScript"
 
 #: src/messages/javascript.js:92
 msgid "Unexpected global passed as an argument"
@@ -128,7 +128,7 @@ msgstr ""
 
 #: src/messages/javascript.js:99
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Se desaconseja el uso de document.write."
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -140,23 +140,23 @@ msgstr ""
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "Tu JSON no es válido."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "No se puede analizar tu archivo JSON."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "No pudimos descomprimir el archivo zip."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "no se encontró manifest.json"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr ""
+msgstr "Archivo demasiado largo para su análisis."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
