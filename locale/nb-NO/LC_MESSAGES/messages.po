@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-02-04 12:47+0000\n"
+"PO-Revision-Date: 2018-02-04 20:18+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: none\n"
 "Language: nb_NO\n"
@@ -20,19 +20,19 @@ msgstr ""
 
 #: src/linter.js:134
 msgid "Code"
-msgstr ""
+msgstr "Kode"
 
 #: src/linter.js:140
 msgid "Message"
-msgstr ""
+msgstr "Melding"
 
 #: src/linter.js:146
 msgid "Description"
-msgstr ""
+msgstr "Beskrivelse"
 
 #: src/linter.js:152
 msgid "File"
-msgstr ""
+msgstr "Fil"
 
 #: src/linter.js:158
 msgid "Line"
@@ -236,11 +236,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr ""
+msgstr "Ikoner må være kvadratisk."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "Ikonet på \"%(path)s\" må være kvadratisk."
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
