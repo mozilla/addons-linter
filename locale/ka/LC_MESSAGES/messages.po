@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-02-04 09:29+0000\n"
+"PO-Revision-Date: 2018-02-04 09:45+0000\n"
 "Last-Translator: Georgianizator <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -252,84 +252,84 @@ msgstr "სურათი დაზიანებულია"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "მითითებულ \"%(path)s\" მისამართზე ხატულის ფაილი დაზიანებულია"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "\"ნაგულისხმევი ენა\" ვერ მოიძებნა არსებულ ენებში."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "\"ნაგულისხმევი ენა\" ვერ მოიძებნა, თუმცა \"_locales\" არსებობს."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "ამ სახის ნებართვა არაა მხარდაჭერილი."
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "სურათის ეს გაფართოება არაა მხარდაჭერილი"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
+msgstr "ხატულა უნდა იყოს JPG/JPEG, WebP, GIF, PNG, ან SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
-msgstr ""
+msgstr "ენის საქაღალდე ცარიელია"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "messages.json ფაილის ვერ მოიძებნა \"%(path)s\" მისამართზე"
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
-msgstr ""
+msgstr "უცნობი სახის ნებართვა."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "იხილეთ https://mzl.la/1R1n1t0 (MDN მასალები), დამატებითი ინფორმაციისთვის."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "\"manifest_version\"-ს manifest.json ფაილში არამართებული მნიშვნელობა აქვს"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "იხილეთ https://mzl.la/20PenXl (MDN მასალები), დამატებითი ინფორმაციისთვის."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "მითითებული content_security_policy საჭიროებს დამატებით განხილვას."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "თვისება \"name\" უნდა წარმოადგენდეს სტრიქონს."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "იხილეთ http://mzl.la/1STmr48 (MDN მასალები), დამატებითი ინფორმაციისთვის."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "თვისება \"version\" უნდა წარმოადგენდეს სტრიქონს."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "იხილეთ http://mzl.la/1kXIADa (MDN მასალები), დამატებითი ინფორმაციისთვის."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "თვისება \"version\" იყენებს Firefox-ის სახის ფორმატს."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "\"update_url\" არაა დაშვებული."
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
-msgstr ""
+msgstr "ველის შევსება აუცილებელია."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "\"update_url\" თვისებას არ იყენებს Firefox."
