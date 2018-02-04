@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-02-04 07:04+0000\n"
-"Last-Translator: Belayet Hossain <bellayet@gmail.com>\n"
+"PO-Revision-Date: 2018-02-01 21:30+0000\n"
+"Last-Translator: S M Sarwar Nobin <smsarwar1996@gmail.com>\n"
 "Language-Team: none\n"
 "Language: bn_BD\n"
 "MIME-Version: 1.0\n"
@@ -160,15 +160,15 @@ msgstr ""
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "লুকানো ফাইল ফ্লাগ করা হয়েছে"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "ফ্লাগ করা ফাইল পাওয়া যায়নি"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "ফ্লাগকরা ফাইল এক্সটেনশন পাওয়া গেছে"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
@@ -176,7 +176,7 @@ msgstr ""
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
-msgstr ""
+msgstr "প্যাকেজ ইতোমধ্যেই সাইন করা হয়েছে"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
