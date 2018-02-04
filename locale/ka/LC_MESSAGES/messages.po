@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-29 18:20+0000\n"
+"PO-Revision-Date: 2018-02-04 09:29+0000\n"
 "Last-Translator: Georgianizator <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -188,12 +188,11 @@ msgstr "პაკეტი შეიცავს გაორმაგებუ�
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "Firefox დამატებებით კრიპტოვალუტის წარმოება არაა დაშვებული."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"იხილეთ https://mzl.la/1ZOhoEN (MDN დოკუმენტაცია) დამატებითი ინფორმაციისთვის."
+msgstr "იხილეთ https://mzl.la/1ZOhoEN (MDN დოკუმენტაცია) დამატებითი ინფორმაციისთვის."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -220,19 +219,12 @@ msgid "The field is invalid."
 msgstr "ველი არამართებულია."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"მანიფესტში განსაზღვრული შიგთავსის სკრიპტი, ვერ მოიძებნა \"%(path)s\" "
-"მისამართზე."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "მანიფესტში განსაზღვრული შიგთავსის სკრიპტი, ვერ მოიძებნა \"%(path)s\" მისამართზე."
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"მანიფესტში განსაზღვრული შიგთავსის სკრიპტის css ფაილი, ვერ მოიძებნა \"%(path)s"
-"\" მისამართზე."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "მანიფესტში განსაზღვრული შიგთავსის სკრიპტის css ფაილი, ვერ მოიძებნა \"%(path)s\" მისამართზე."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
