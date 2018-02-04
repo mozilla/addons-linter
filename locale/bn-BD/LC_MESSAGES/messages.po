@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-02-01 22:15+0000\n"
-"Last-Translator: Mahay Alam Khan <mahayalamkhan@gmail.com>\n"
+"PO-Revision-Date: 2018-02-04 06:47+0000\n"
+"Last-Translator: Belayet Hossain <bellayet@gmail.com>\n"
 "Language-Team: none\n"
 "Language: bn_BD\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: src/linter.js:117
 msgid "Validation Summary:"
-msgstr ""
+msgstr "যাচাইকরণ সারাংশ:"
 
 #: src/linter.js:134
 msgid "Code"
@@ -44,7 +44,7 @@ msgstr "কলাম"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "সিলেক্টরের অকার্যকর নেস্টিং পাওয়া গেছে"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
@@ -52,7 +52,7 @@ msgstr ""
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
-msgstr ""
+msgstr "আপনার FTL অকার্যকর।"
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
@@ -140,7 +140,7 @@ msgstr ""
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "আপনার JSON অকার্যকর।"
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
