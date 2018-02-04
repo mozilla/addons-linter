@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-02-04 06:47+0000\n"
+"PO-Revision-Date: 2018-02-04 07:04+0000\n"
 "Last-Translator: Belayet Hossain <bellayet@gmail.com>\n"
 "Language-Team: none\n"
 "Language: bn_BD\n"
@@ -80,7 +80,7 @@ msgstr ""
 
 #: src/messages/javascript.js:139
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} সাপোর্ট করে না"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
@@ -88,31 +88,31 @@ msgstr ""
 
 #: src/messages/javascript.js:140
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "এই API টি Firefox দ্বারা বাস্তবায়িত হয়নি।"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "কনটেন্ট স্ক্রিপ্ট ফাইল খুঁজে পাওয়া যায়নি।"
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "কনটেন্ট স্ক্রিপ্ট ফাইল খুঁজে পাওয়া যায়নি"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "কনটেন্ট স্ক্রিপ্ট ফাইলের নাম ফাঁকা হবে না।"
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "কনটেন্ট স্ক্রিপ্ট ফাইলের নাম ফাঁকা হবে না"
 
 #: src/messages/javascript.js:38
 msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr ""
+msgstr "mozIndexedDB অপসারিত হয়েছে; পরিবর্তে indexedDB ব্যবহার করুন"
 
 #: src/messages/javascript.js:39 src/messages/javascript.js:47
 msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr ""
+msgstr "mozIndexedDB অপসারিত হয়েছে; পরিবর্তে indexedDB ব্যবহার করুন।"
 
 #: src/messages/javascript.js:46
 msgid "mozIndexedDB used as an object key/property"
@@ -128,11 +128,11 @@ msgstr ""
 
 #: src/messages/javascript.js:99
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "document.write ব্যবহারে জোড়ালোভাবে অনুৎসাহিত করা হচ্ছে।"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "আপনার JSON ব্লক কমেন্ট ধারণ করে।"
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
@@ -152,7 +152,7 @@ msgstr ""
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "manifest.json পাওয়া যায়নি"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
