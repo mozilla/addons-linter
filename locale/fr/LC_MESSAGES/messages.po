@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-31 23:04+0000\n"
+"PO-Revision-Date: 2018-02-05 03:11+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -132,7 +132,7 @@ msgstr "L’utilisation de document.write est fortement déconseillée."
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "Le code JSON contient des blocs de commentaires."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
@@ -196,7 +196,7 @@ msgstr "Voir https://mzl.la/1ZOhoEN (MDN Docs) pour plus d’informations."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
-msgstr ""
+msgstr "« strict_max_version » n’est pas nécessaire."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
@@ -244,7 +244,7 @@ msgstr "L’icône située à l’emplacement « %(path)s » doit être carré
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "La taille de l’icône ne correspond pas au manifeste."
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
