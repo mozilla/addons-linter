@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-02-05 03:11+0000\n"
+"PO-Revision-Date: 2018-02-05 03:17+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -124,7 +124,7 @@ msgstr "Erreur de syntaxe JavaScript"
 
 #: src/messages/javascript.js:92
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Variable globale inattendue passée comme un argument"
 
 #: src/messages/javascript.js:99
 msgid "Use of document.write strongly discouraged."
@@ -256,11 +256,11 @@ msgstr "L’icône attendue, située à l’emplacement « %(path)s » est cor
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "Des traductions sont manquantes pour « default_locale »."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "« default_locale » est manquant, mais « _locales » existe."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
