@@ -9,7 +9,7 @@ import upath from 'upath';
 
 import { validateAddon, validateLangPack } from 'schema/validator';
 import { getConfig } from 'cli';
-import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE, IMAGE_FILE_EXTENSIONS } from 'const';
+import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE, IMAGE_FILE_EXTENSIONS, LOCALES_DIRECTORY, MESSAGES_JSON } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
@@ -194,7 +194,7 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (this.parsedJSON.default_locale) {
       const msg = path.join(
-        '_locales', this.parsedJSON.default_locale, 'messages.json');
+        LOCALES_DIRECTORY, this.parsedJSON.default_locale, 'messages.json');
 
       // Convert filename to unix path separator before
       // searching it into the scanned files map.
@@ -218,16 +218,17 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.default_locale && this.io.path) {
-      const rootPath = path.join(this.io.path, '_locales');
+      const rootPath = path.join(this.io.path, LOCALES_DIRECTORY);
       if (existsSync(rootPath)) {
         readdirSync(rootPath).forEach((langDir) => {
           if (statSync(path.join(rootPath, langDir)).isDirectory()) {
-            const filePath = path.join('_locales', langDir, 'messages.json');
+            const filePath = path.join(LOCALES_DIRECTORY, langDir, MESSAGES_JSON);
 
             // Convert filename to unix path separator before
             // searching it into the scanned files map.
             if (!this.io.files[upath.toUnix(filePath)]) {
-              this.collector.addError(messages.noMessagesFileInLocales(path.join('_locales', langDir)));
+              this.collector.addError(messages.noMessagesFileInLocales(
+                path.join(LOCALES_DIRECTORY, langDir)));
               this.isValid = false;
             }
           }

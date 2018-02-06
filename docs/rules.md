@@ -335,3 +335,9 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :white_check_mark: | error   | Web extension | Temporary error on content script `matches` | | | | MANIFEST_INVALID_CONTENT |
 | :white_check_mark: | error   | Web extension | Content script file could not be found | | | | CONTENT_SCRIPT_NOT_FOUND |
 | :white_check_mark: | error   | Web extension | Content script file name should not be empty | | | | CONTENT_SCRIPT_EMPTY |
+| :white_check_mark: | error   | Web extension | Translation string is missing the message property | | | | NO_MESSAGE |
+| :white_check_mark: | warning | Web extension | String name is reserved for a predefined message | | | | PREDEFINED_MESSAGE_NAME |
+| :white_check_mark: | error   | Web extension | String name contains invalid characters | | | | INVALID_MESSAGE_NAME |
+| :white_check_mark: | warning | Web extension | Placeholder for message is not defined | | | | MISSING_PLACEHOLDER |
+| :white_check_mark: | error   | Web extension | Placeholder name contains invalid characters | | | | INVALID_PLACEHOLDER_NAME |
+| :white_check_mark: | error   | Web extension | Placeholder is missing the content property | | | | NO_PLACEHOLDER_CONTENT |

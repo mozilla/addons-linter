@@ -174,3 +174,9 @@ export const CSP_KEYWORD_RE = new RegExp([
 export const BADWORDS_RE = {
   en: new RegExp(`\\b(?:${badwords.en.join('|')})\\b`, 'gi'),
 };
+
+export const MESSAGES_JSON = 'messages.json';
+export const LOCALES_DIRECTORY = '_locales';
+
+// This is a string, since it has to be matched globally on a message string.
+export const MESSAGE_PLACEHOLDER_REGEXP = '\\$([a-z0-9_@]+)\\$';
