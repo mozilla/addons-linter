@@ -99,7 +99,7 @@
     "fluent": "0.4.1",
     "glob": "7.1.2",
     "jed": "1.1.1",
-    "pino": "4.10.3",
+    "pino": "4.10.4",
     "po2json": "0.4.5",
     "postcss": "6.0.14",
     "probe-image-size": "3.2.0",
