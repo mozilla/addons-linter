@@ -75,7 +75,7 @@
     "raw-loader": "0.5.1",
     "request": "2.83.0",
     "sinon": "4.2.2",
-    "tar": "4.3.0",
+    "tar": "4.3.1",
     "webpack": "3.10.0",
     "webpack-dev-server": "2.11.1"
   },
