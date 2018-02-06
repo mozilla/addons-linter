@@ -197,4 +197,18 @@ describe('LocaleMessagesJSONParser', () => {
     expect(errors[0].code).toEqual(messages.JSON_DUPLICATE_KEY.code);
     expect(errors[0].description).toContain('Case-insensitive duplicate placeholder name');
   });
+
+  describe('getLowercasePlaceholders', () => {
+    it('should return undefined if there are no placeholders defined', () => {
+      const addonsLinter = new Linter({ _: ['bar'] });
+      const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
+  "foo": {
+    "message": "foo"
+  }
+}`, addonsLinter.collector);
+      localeMessagesJSONParser.parse();
+      const result = localeMessagesJSONParser.getLowercasePlaceholders('foo');
+      expect(result).toEqual(undefined);
+    });
+  });
 });
