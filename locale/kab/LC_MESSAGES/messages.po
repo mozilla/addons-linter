@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-02-06 11:50+0000\n"
+"PO-Revision-Date: 2018-02-06 11:51+0000\n"
 "Last-Translator: Slimane Amiri <slimane.amiri@gmail.com>\n"
 "Language-Team: none\n"
 "Language: kab\n"
@@ -76,7 +76,7 @@ msgstr ""
 
 #: src/messages/javascript.js:121
 msgid "Known JS library detected"
-msgstr ""
+msgstr "Tamkarḍit JS tettwaf"
 
 #: src/messages/javascript.js:139
 msgid "{{api}} is not supported"
