@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-31 14:06+0000\n"
-"Last-Translator: Michal Vašíček <michalvasicek@icloud.com>\n"
+"PO-Revision-Date: 2018-02-06 15:17+0000\n"
+"Last-Translator: Jakub Rychlý <jrychly@mozilla.cz>\n"
 "Language-Team: none\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "Bylo nalezeno neplatné vnoření"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "Byla zjištěna chyba syntaxe CSS"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -84,7 +84,7 @@ msgstr "{{api}} není podporováno"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener` bylo voláno se čtvrtým parametrem."
 
 #: src/messages/javascript.js:140
 msgid "This API has not been implemented by Firefox."
@@ -96,15 +96,15 @@ msgstr "Obsah souboru se skriptem nebyl nalezen."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Obsah skriptu nemohl být nalezen"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Název skriptu by neměl být prázdný."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Název skriptu by neměl být prázdný"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
@@ -112,19 +112,19 @@ msgstr "JavaScript syntax error"
 
 #: src/messages/javascript.js:92
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Neočekávaná globální proměnná byla předaná jako parametr"
 
 #: src/messages/javascript.js:99
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Používání document.write není zcela doporučováno."
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "Váš JSON obsahuje blokové komentáře."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "V JSON souborech nejsou duplicitní klíče povoleny."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
@@ -148,23 +148,23 @@ msgstr "Soubor je příliš velký pro parsování."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "Skrytý soubor označen"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "Označený soubor nalezen"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "Označený soubor rozšíření nalezen"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "Typ označených souborů nalezen"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
-msgstr ""
+msgstr "Balíček již byl podepsán"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."

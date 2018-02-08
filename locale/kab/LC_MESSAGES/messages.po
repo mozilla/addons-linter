@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-31 09:53+0000\n"
+"PO-Revision-Date: 2018-02-06 11:51+0000\n"
 "Last-Translator: Slimane Amiri <slimane.amiri@gmail.com>\n"
 "Language-Team: none\n"
 "Language: kab\n"
@@ -56,7 +56,7 @@ msgstr "FTL inek mačči d ameγtu."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "Ur d-yelli wamek ad yettwasleḍ FTL inek."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
@@ -76,11 +76,11 @@ msgstr ""
 
 #: src/messages/javascript.js:121
 msgid "Known JS library detected"
-msgstr ""
+msgstr "Tamkarḍit JS tettwaf"
 
 #: src/messages/javascript.js:139
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} ur yettwaqbel"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
@@ -300,7 +300,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "Talγut \"version\" isefk ad tili d aḍris."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
@@ -312,7 +312,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "\"update_url\" ur ittwasireg ara."
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."

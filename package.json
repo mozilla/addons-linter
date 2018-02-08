@@ -1,6 +1,6 @@
 {
   "name": "addons-linter",
-  "version": "0.35.0",
+  "version": "0.36.1",
   "description": "Mozilla Add-ons Linter",
   "main": "dist/addons-linter.js",
   "bin": {
@@ -88,7 +88,7 @@
     "columnify": "1.5.4",
     "common-tags": "1.7.2",
     "crx-parser": "0.1.2",
-    "dispensary": "0.12.0",
+    "dispensary": "0.14.0",
     "doctoc": "1.3.0",
     "es6-promisify": "5.0.0",
     "eslint": "4.15.0",
@@ -99,7 +99,7 @@
     "fluent": "0.4.1",
     "glob": "7.1.2",
     "jed": "1.1.1",
-    "pino": "4.10.3",
+    "pino": "4.10.4",
     "po2json": "0.4.5",
     "postcss": "6.0.14",
     "probe-image-size": "3.2.0",
