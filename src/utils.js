@@ -125,9 +125,9 @@ export function getVariable(context, name) {
  * a proper l10n solution.
  *
  */
-export function gettext() {
-  const jed = new Jed({});
-  return jed.gettext;
+export function gettext(str) {
+  const jed = new Jed({}); // pass json localization data here
+  return jed.gettext(str);
 }
 
 /*
