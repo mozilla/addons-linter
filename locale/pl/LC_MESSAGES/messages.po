@@ -106,18 +106,6 @@ msgstr "Nazwa pliku skryptu treści nie może być pusta."
 msgid "Content script file name should not be empty"
 msgstr "Nazwa pliku skryptu treści nie może być pusta"
 
-#: src/messages/javascript.js:38
-msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr "mozIndexedDB zostało usunięte, użyj indexedDB zamiast tego"
-
-#: src/messages/javascript.js:39 src/messages/javascript.js:47
-msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr "mozIndexedDB zostało usunięte, użyj indexedDB zamiast tego."
-
-#: src/messages/javascript.js:46
-msgid "mozIndexedDB used as an object key/property"
-msgstr "mozIndexedDB używane jako klucz/właściwość obiektu"
-
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "Błąd składni języka JavaScript"

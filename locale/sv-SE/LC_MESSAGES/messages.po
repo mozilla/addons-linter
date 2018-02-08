@@ -106,18 +106,6 @@ msgstr "Innehållsskriptfilnamnet ska inte vara tomt."
 msgid "Content script file name should not be empty"
 msgstr "Innehållsskriptfilnamnet ska inte vara tomt"
 
-#: src/messages/javascript.js:38
-msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr "mozIndexedDB har tagits bort; använd indexedDB istället"
-
-#: src/messages/javascript.js:39 src/messages/javascript.js:47
-msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr "mozIndexedDB har tagits bort; använd indexedDB istället."
-
-#: src/messages/javascript.js:46
-msgid "mozIndexedDB used as an object key/property"
-msgstr "mozIndexedDB som används som en objektnyckel/egenskap"
-
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "JavaScript-syntaxfel"

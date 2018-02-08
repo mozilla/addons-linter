@@ -106,18 +106,6 @@ msgstr "A tartalomparancsfájl neve nem lehet üres."
 msgid "Content script file name should not be empty"
 msgstr "A tartalomparancsfájl neve nem lehet üres"
 
-#: src/messages/javascript.js:38
-msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr "A mozIndexedDB eltávolításra került, használja helyette az indexedDB-t"
-
-#: src/messages/javascript.js:39 src/messages/javascript.js:47
-msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr "A mozIndexedDB eltávolításra került, használja helyette az indexedDB-t."
-
-#: src/messages/javascript.js:46
-msgid "mozIndexedDB used as an object key/property"
-msgstr "mozIndexedDB objektumkulcsként/tulajdonságként használva"
-
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "JavaScript szintaktikai hiba"

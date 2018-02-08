@@ -106,18 +106,6 @@ msgstr "O nome do arquivo de script de conteúdo não deve estar vazio."
 msgid "Content script file name should not be empty"
 msgstr "O nome do arquivo de script de conteúdo não deve estar vazio"
 
-#: src/messages/javascript.js:38
-msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr "mozIndexedDB foi removido; como alternativa, use indexedDB"
-
-#: src/messages/javascript.js:39 src/messages/javascript.js:47
-msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr "mozIndexedDB foi removido; como alternativa, use indexedDB."
-
-#: src/messages/javascript.js:46
-msgid "mozIndexedDB used as an object key/property"
-msgstr "mozIndexedDB usado como uma chave/propriedade de objeto"
-
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "Erro de sintaxe JavaScript"
