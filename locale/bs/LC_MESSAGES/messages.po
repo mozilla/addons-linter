@@ -106,6 +106,18 @@ msgstr "Sadržaj naziva datoteke skripte ne bi trebao biti prazan."
 msgid "Content script file name should not be empty"
 msgstr "Sadržaj naziva datoteke skripte ne bi trebao biti prazan"
 
+#: src/messages/javascript.js:38
+msgid "mozIndexedDB has been removed; use indexedDB instead"
+msgstr "mozIndexedDB je uklonjen; koristite indexedDB umjesto njega"
+
+#: src/messages/javascript.js:39 src/messages/javascript.js:47
+msgid "mozIndexedDB has been removed; use indexedDB instead."
+msgstr "mozIndexedDB je uklonjen; koristite indexedDB umjesto njega."
+
+#: src/messages/javascript.js:46
+msgid "mozIndexedDB used as an object key/property"
+msgstr "mozIndexedDB je korišten kao ključ/svojstvo objekta"
+
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "Greška JavaScript sintakse"

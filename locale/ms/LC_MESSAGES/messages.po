@@ -106,6 +106,18 @@ msgstr "Nama fail skrip kandungan tidak boleh kosong."
 msgid "Content script file name should not be empty"
 msgstr "Nama fail skrip kandungan tidak boleh kosong"
 
+#: src/messages/javascript.js:38
+msgid "mozIndexedDB has been removed; use indexedDB instead"
+msgstr "mozIndexedDB telah dibuang; gunakan indexedDB"
+
+#: src/messages/javascript.js:39 src/messages/javascript.js:47
+msgid "mozIndexedDB has been removed; use indexedDB instead."
+msgstr "mozIndexedDB telah dibuang; gunakan indexedDB."
+
+#: src/messages/javascript.js:46
+msgid "mozIndexedDB used as an object key/property"
+msgstr "mozIndexedDB digunakan sebagai objek utama/sifat"
+
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "Ralat sintaks JavaScript"

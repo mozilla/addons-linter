@@ -106,6 +106,18 @@ msgstr "სკრიპტის შემცველი ფაილის ს
 msgid "Content script file name should not be empty"
 msgstr "სკრიპტის შემცველი ფაილის სახელი ცარიელი არ უნდა იყოს"
 
+#: src/messages/javascript.js:38
+msgid "mozIndexedDB has been removed; use indexedDB instead"
+msgstr "mozIndexedDB ამოღებულია; მის ნაცვლად გამოიყენეთ indexedDB"
+
+#: src/messages/javascript.js:39 src/messages/javascript.js:47
+msgid "mozIndexedDB has been removed; use indexedDB instead."
+msgstr "mozIndexedDB ამოღებულია; მის ნაცვლად გამოიყენეთ indexedDB."
+
+#: src/messages/javascript.js:46
+msgid "mozIndexedDB used as an object key/property"
+msgstr "mozIndexedDB გამოიყენება როგორც ობიექტის გასაღები/თვისება "
+
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "JavaScript სინტაქსური შეცდომა"

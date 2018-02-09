@@ -106,6 +106,18 @@ msgstr "Mjeno wobsahoweje skriptoweje dataje njeměło prózdne być."
 msgid "Content script file name should not be empty"
 msgstr "Mjeno wobsahoweje skriptoweje dataje njeměło prózdne być"
 
+#: src/messages/javascript.js:38
+msgid "mozIndexedDB has been removed; use indexedDB instead"
+msgstr "mozIndexedDB je so wotstronił; wužiwajće indexedDB město toho"
+
+#: src/messages/javascript.js:39 src/messages/javascript.js:47
+msgid "mozIndexedDB has been removed; use indexedDB instead."
+msgstr "mozIndexedDB je so wotstronił; wužiwajće indexedDB město toho."
+
+#: src/messages/javascript.js:46
+msgid "mozIndexedDB used as an object key/property"
+msgstr "mozIndexedDB je so jako objektowy kluč/kajkosć wužił"
+
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "Syntaksowy zmylk JavaScript"

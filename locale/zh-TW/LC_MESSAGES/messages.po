@@ -106,6 +106,18 @@ msgstr "內容指令碼檔案名稱不應為空白。"
 msgid "Content script file name should not be empty"
 msgstr "內容指令碼檔案名稱不應為空白"
 
+#: src/messages/javascript.js:38
+msgid "mozIndexedDB has been removed; use indexedDB instead"
+msgstr "mozIndexedDB 已被移除，請改用 indexedDB"
+
+#: src/messages/javascript.js:39 src/messages/javascript.js:47
+msgid "mozIndexedDB has been removed; use indexedDB instead."
+msgstr "mozIndexedDB 已被移除，請改用 indexedDB。"
+
+#: src/messages/javascript.js:46
+msgid "mozIndexedDB used as an object key/property"
+msgstr "使用了 mozIndexedDB 作為物件鍵值/屬性"
+
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "JavaScript 語法錯誤"

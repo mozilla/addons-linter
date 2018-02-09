@@ -106,6 +106,18 @@ msgstr "কনটেন্ট স্ক্রিপ্ট ফাইলের ন
 msgid "Content script file name should not be empty"
 msgstr "কনটেন্ট স্ক্রিপ্ট ফাইলের নাম ফাঁকা হবে না"
 
+#: src/messages/javascript.js:38
+msgid "mozIndexedDB has been removed; use indexedDB instead"
+msgstr "mozIndexedDB অপসারিত হয়েছে; পরিবর্তে indexedDB ব্যবহার করুন"
+
+#: src/messages/javascript.js:39 src/messages/javascript.js:47
+msgid "mozIndexedDB has been removed; use indexedDB instead."
+msgstr "mozIndexedDB অপসারিত হয়েছে; পরিবর্তে indexedDB ব্যবহার করুন।"
+
+#: src/messages/javascript.js:46
+msgid "mozIndexedDB used as an object key/property"
+msgstr ""
+
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "JavaScript সিনট্যাক্স ভুল"
