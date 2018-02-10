@@ -56,8 +56,8 @@ describe('Base Scanner Class', () => {
     };
 
     await baseScanner.scan(fakeRules);
-    expect(fakeRules.iAmAFakeRule.calledOnce).toBeTruthy();
-    expect(fakeRules.iAmAAnotherFakeRule.calledOnce).toBeTruthy();
+    sinon.assert.calledOnce(fakeRules.iAmAFakeRule);
+    sinon.assert.calledOnce(fakeRules.iAmAAnotherFakeRule);
   });
 
   it('should pass metadata to rules', async () => {
@@ -71,7 +71,7 @@ describe('Base Scanner Class', () => {
     });
 
     const { linterMessages } = await baseScanner.scan(fakeRules);
-    expect(fakeRules.metadataPassedCheck.called).toBeTruthy();
+    sinon.assert.called(fakeRules.metadataPassedCheck);
     expect(linterMessages.length).toEqual(0);
   });
 
@@ -83,8 +83,8 @@ describe('Base Scanner Class', () => {
     };
 
     await baseScanner.scan(fakeRules);
-    expect(fakeRules.iAmAFakeRule.calledOnce).toBeTruthy();
-    expect(fakeRules._iAmAPrivateFunction.calledOnce).toBeFalsy();
+    sinon.assert.calledOnce(fakeRules.iAmAFakeRule);
+    sinon.assert.notCalled(fakeRules._iAmAPrivateFunction);
   });
 
   it('should increment the number of rules run', async () => {

@@ -42,7 +42,7 @@ describe('CSSScanner', async () => {
     });
 
     const { linterMessages } = await cssScanner.scan(fakeRules);
-    expect(fakeRules.metadataPassedCheck.calledTwice).toBeTruthy();
+    sinon.assert.calledTwice(fakeRules.metadataPassedCheck);
     expect(linterMessages.length).toEqual(0);
   });
 

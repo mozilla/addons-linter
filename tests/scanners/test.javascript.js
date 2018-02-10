@@ -80,7 +80,7 @@ describe('JavaScript Scanner', () => {
     expect(jsScanner.disabledRules).toEqual(['no-eval', 'no-implied-eval', 'no-unsafe-innerhtml/no-unsafe-innerhtml']);
   });
 
-  it('should be initialised with empty excluded rules object, when there is not a string', () => {
+  it('should be initialised with empty excluded rules object, when there is no string', () => {
     const jsScanner = new JavaScriptScanner('', 'filename.txt', {
       disabledRules: true,
     });
@@ -118,22 +118,23 @@ describe('JavaScript Scanner', () => {
     expect(linterMessages.length).toEqual(0);
   });
 
-  it('should create an error message when encountering a syntax error (option 1)', async () => {
-    const code = 'var m = "d;';
-    const jsScanner = new JavaScriptScanner(code, 'badcode.js');
+  it('should create an error message when encountering a syntax error', async () => {
+    let code = 'var m = "d;';
+    let jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     const { linterMessages } = await jsScanner.scan();
     expect(linterMessages[0].code).toEqual(messages.JS_SYNTAX_ERROR.code);
     expect(linterMessages[0].type).toEqual(VALIDATION_ERROR);
-  });
 
-  it('should create an error message when encountering a syntax error (option 2)', async () => {
-    const code = 'var aVarThatDoesnt != exist;';
-    const jsScanner = new JavaScriptScanner(code, 'badcode.js');
+    // Test another error for good measure.
+    code = 'var aVarThatDoesnt != exist;';
+    jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-    const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages[0].code).toEqual(messages.JS_SYNTAX_ERROR.code);
-    expect(linterMessages[0].type).toEqual(VALIDATION_ERROR);
+    const { linterMessages: moreValidationMessages } = await jsScanner.scan();
+    expect(moreValidationMessages[0].code).toEqual(
+      messages.JS_SYNTAX_ERROR.code);
+    expect(moreValidationMessages[0].type).toEqual(
+      VALIDATION_ERROR);
   });
 
   it('should reject on missing message code', async () => {
@@ -163,8 +164,7 @@ describe('JavaScript Scanner', () => {
 
     const jsScanner = new JavaScriptScanner('whatever', 'badcode.js');
 
-    await expect(jsScanner.scan(FakeESLint)).rejects.toThrow(oneLine`JS rules must pass a valid message as
-    the second argument to context.report()`);
+    await expect(jsScanner.scan(FakeESLint)).rejects.toThrow(/JS rules must pass a valid message/);
   });
 
   it('ignores /*eslint-disable*/ comments', async () => {
@@ -289,7 +289,7 @@ describe('JavaScript Scanner', () => {
       _messages: fakeMessages,
     });
 
-    expect(fakeRules['metadata-not-passed'].create.calledOnce).toBeTruthy();
+    sinon.assert.calledOnce(fakeRules['metadata-not-passed'].create);
   });
 
   it('should export all rules in rules/javascript', async () => {

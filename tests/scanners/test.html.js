@@ -116,7 +116,7 @@ describe('HTML', () => {
 
     await htmlScanner.getContents();
     await htmlScanner.getContents();
-    expect(cheerio.load.calledOnce).toBeTruthy();
+    sinon.assert.calledOnce(cheerio.load);
   });
 
   it('should export and run all rules in rules/html', async () => {

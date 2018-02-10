@@ -18,7 +18,7 @@ describe('LangpackScanner', () => {
 
     const { linterMessages } = await langpackScanner.scan();
     expect(linterMessages.length).toEqual(0);
-    expect(PropertiesParser.prototype.parse.calledOnce).toBeTruthy();
+    sinon.assert.calledOnce(PropertiesParser.prototype.parse);
   });
 
   it('should scan dtd files', async () => {
@@ -29,7 +29,7 @@ describe('LangpackScanner', () => {
 
     const { linterMessages } = await langpackScanner.scan();
     expect(linterMessages.length).toEqual(0);
-    expect(DoctypeParser.prototype.parse.calledOnce).toBeTruthy();
+    sinon.assert.calledOnce(DoctypeParser.prototype.parse);
   });
 
   it('should scan fluent files', async () => {
@@ -40,7 +40,7 @@ describe('LangpackScanner', () => {
 
     const { linterMessages } = await langpackScanner.scan();
     expect(linterMessages.length).toEqual(0);
-    expect(FluentParser.prototype.parse.calledOnce).toBeTruthy();
+    sinon.assert.calledOnce(FluentParser.prototype.parse);
   });
 
   it('should throw an error on unsupported file types', async () => {
