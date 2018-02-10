@@ -31,22 +31,6 @@ export const CONTENT_SCRIPT_EMPTY = {
   description: _('Content script file name should not be empty'),
 };
 
-export const MOZINDEXEDDB = {
-  code: 'MOZINDEXEDDB',
-  // Original code appeared to have a non-unique err_id which is no
-  // use for comparsions. ('testcases_regex', 'generic', '_generated')
-  message: _('mozIndexedDB has been removed; use indexedDB instead'),
-  description: _('mozIndexedDB has been removed; use indexedDB instead.'),
-};
-
-export const MOZINDEXEDDB_PROPERTY = {
-  code: 'MOZINDEXEDDB_PROPERTY',
-  // Original code appeared to have a non-unique err_id which is no
-  // use for comparsions. ('testcases_regex', 'generic', '_generated')
-  message: _('mozIndexedDB used as an object key/property'),
-  description: _('mozIndexedDB has been removed; use indexedDB instead.'),
-};
-
 export function _nonLiteralUri(method) {
   return {
     code: `${method}_NONLIT_URI`.toUpperCase(),
