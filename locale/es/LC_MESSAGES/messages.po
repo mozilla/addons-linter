@@ -1,0 +1,335 @@
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: messages\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-01-30 18:56+0000\n"
+"PO-Revision-Date: 2018-02-09 21:44+0000\n"
+"Last-Translator: jlG <jlg.l10n.es@gmail.com>\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pontoon\n"
+
+#: src/linter.js:117
+msgid "Validation Summary:"
+msgstr "Resumen de la validación:"
+
+#: src/linter.js:134
+msgid "Code"
+msgstr "Código"
+
+#: src/linter.js:140
+msgid "Message"
+msgstr "Mensaje"
+
+#: src/linter.js:146
+msgid "Description"
+msgstr "Descripción"
+
+#: src/linter.js:152
+msgid "File"
+msgstr "Archivo"
+
+#: src/linter.js:158
+msgid "Line"
+msgstr "Línea"
+
+#: src/linter.js:164
+msgid "Column"
+msgstr "Columna"
+
+#: src/messages/css.js:16
+msgid "Invalid nesting of selectors found"
+msgstr "Encontrado anidamiento incorrecto de selectores"
+
+#: src/messages/css.js:9
+msgid "A CSS syntax error was encountered"
+msgstr "Encontrado un error de sintaxis CSS"
+
+#: src/messages/fluent.js:5
+msgid "Your FTL is not valid."
+msgstr "Tu FTL no es válido."
+
+#: src/messages/fluent.js:6
+msgid "Your FTL file could not be parsed."
+msgstr "Tu archivo FTL no se ha podido interpretar."
+
+#: src/messages/html.js:16
+msgid "Remote scripts are not allowed as per the Add-on Policies."
+msgstr "Los scripts remotos no están permitidos por las políticas de complementos."
+
+#: src/messages/html.js:8
+msgid "Inline scripts blocked by default"
+msgstr "Los scripts incrustados están bloqueados por defecto"
+
+#: src/messages/javascript.js:107
+msgid "Banned 3rd-party JS library"
+msgstr "Biblioteca JS de terceros prohibida"
+
+#: src/messages/javascript.js:114
+msgid "Unadvised 3rd-party JS library"
+msgstr "Biblioteca JS de terceros desaconsejada"
+
+#: src/messages/javascript.js:121
+msgid "Known JS library detected"
+msgstr "Detectada biblioteca JS conocida"
+
+#: src/messages/javascript.js:139
+msgid "{{api}} is not supported"
+msgstr "{{api}} no compatible"
+
+#: src/messages/javascript.js:14
+msgid "addEventListener` called with truthy fourth argument."
+msgstr "addEventListenerllamado con un cuarto argumento válido."
+
+#: src/messages/javascript.js:140
+msgid "This API has not been implemented by Firefox."
+msgstr "Firefox no ha implementado esta API."
+
+#: src/messages/javascript.js:23
+msgid "Content script file could not be found."
+msgstr "No se puede encontrar el archivo script de contenido."
+
+#: src/messages/javascript.js:24
+msgid "Content script file could not be found"
+msgstr "No se puede encontrar el archivo script de contenido"
+
+#: src/messages/javascript.js:30
+msgid "Content script file name should not be empty."
+msgstr "El nombre del archivo script de contenido no puede estar vacío."
+
+#: src/messages/javascript.js:31
+msgid "Content script file name should not be empty"
+msgstr "El nombre del archivo script de contenido no puede estar vacío"
+
+#: src/messages/javascript.js:38
+msgid "mozIndexedDB has been removed; use indexedDB instead"
+msgstr "mozIndexedDB ha sido eliminado; en su lugar, utiliza indexedDB"
+
+#: src/messages/javascript.js:39 src/messages/javascript.js:47
+msgid "mozIndexedDB has been removed; use indexedDB instead."
+msgstr "mozIndexedDB ha sido eliminado; en su lugar, utiliza indexedDB."
+
+#: src/messages/javascript.js:46
+msgid "mozIndexedDB used as an object key/property"
+msgstr "mozIndexedDB usado como una clave/propiedad de objeto"
+
+#: src/messages/javascript.js:7
+msgid "JavaScript syntax error"
+msgstr "error de sintaxis de JavaScript"
+
+#: src/messages/javascript.js:92
+msgid "Unexpected global passed as an argument"
+msgstr "Variable global inesperada pasada como argumento"
+
+#: src/messages/javascript.js:99
+msgid "Use of document.write strongly discouraged."
+msgstr "Se desaconseja el uso de document.write."
+
+#: src/messages/json.js:13
+msgid "Your JSON contains block comments."
+msgstr "Tu archivo JSON incluye comentarios multilínea."
+
+#: src/messages/json.js:21
+msgid "Duplicate keys are not allowed in JSON files."
+msgstr "No se pueden duplicar claves en los archivos JSON."
+
+#: src/messages/json.js:7
+msgid "Your JSON is not valid."
+msgstr "Tu JSON no es válido."
+
+#: src/messages/json.js:8
+msgid "Your JSON file could not be parsed."
+msgstr "No se puede analizar tu archivo JSON."
+
+#: src/messages/layout.js:18
+msgid "We were unable to decompress the zip file."
+msgstr "No pudimos descomprimir el archivo zip."
+
+#: src/messages/layout.js:23
+msgid "manifest.json was not found"
+msgstr "no se encontró manifest.json"
+
+#: src/messages/layout.js:31
+msgid "File is too large to parse."
+msgstr "Archivo demasiado largo para su análisis."
+
+#: src/messages/layout.js:40
+msgid "Hidden file flagged"
+msgstr "Se destacó un archivo oculto"
+
+#: src/messages/layout.js:49
+msgid "Flagged filename found"
+msgstr "Se encontró un nombre de archivo destacado"
+
+#: src/messages/layout.js:56
+msgid "Flagged file extensions found"
+msgstr "Se encontraron extensiones de archivo destacadas"
+
+#: src/messages/layout.js:63
+msgid "Flagged file type found"
+msgstr "Se encontró un tipo de archivo destacado"
+
+#: src/messages/layout.js:73
+msgid "Package already signed"
+msgstr "Paquete ya firmado"
+
+#: src/messages/layout.js:81
+msgid "Violation of Mozilla conditions of use."
+msgstr "Infracción de las condiciones de uso de Mozilla."
+
+#: src/messages/layout.js:9
+msgid "Package contains duplicate entries"
+msgstr "El paquete incluye algunas entradas duplicadas"
+
+#: src/messages/layout.js:90
+msgid "Firefox add-ons are not allowed to run coin miners."
+msgstr "Los complementos de Firefox no tienen permitido minar criptomonedas."
+
+#: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
+msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
+msgstr "Para más información, consulta https://mzl.la/1ZOhoEN (documento de MDN)."
+
+#: src/messages/manifestjson.js:103
+msgid "\"strict_max_version\" not required."
+msgstr "\"strict_max_version\" no es obligatoria."
+
+#: src/messages/manifestjson.js:122
+msgid "An icon defined in the manifest could not be found in the package."
+msgstr "No se pudo encontrar en el paquete un icono definido en el manifiesto."
+
+#: src/messages/manifestjson.js:125
+msgid "Icon could not be found at \"%(path)s\"."
+msgstr "No se pudo encontrar el icono en \"%(path)s\"."
+
+#: src/messages/manifestjson.js:142
+msgid "Background script could not be found at \"%(path)s\"."
+msgstr "No se pudo encontrar el script de segundo plano en \"%(path)s\"."
+
+#: src/messages/manifestjson.js:143
+msgid "Background page could not be found at \"%(path)s\"."
+msgstr "No se pudo encontrar la página en segundo plano en \"%(path)s\"."
+
+#: src/messages/manifestjson.js:16
+msgid "The field is invalid."
+msgstr "El campo no es válido."
+
+#: src/messages/manifestjson.js:161
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "El script de contenido definido en el manifiesto no se pudo encontrar en \"%(path)s\"."
+
+#: src/messages/manifestjson.js:162
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "No se encontró en \"%(path)s\" el archivo css de script de contenido definido en el manifiesto."
+
+#: src/messages/manifestjson.js:173
+msgid "Forbidden content found in add-on."
+msgstr "Se encontró contenido prohibido en el complemento."
+
+#: src/messages/manifestjson.js:174
+msgid "This add-on contains forbidden content."
+msgstr "Este complemento incluye contenido prohibido."
+
+#: src/messages/manifestjson.js:182
+msgid "Icons must be square."
+msgstr "Los iconos deben ser cuadrados."
+
+#: src/messages/manifestjson.js:183
+msgid "Icon at \"%(path)s\" must be square."
+msgstr "El icono en \"%(path)s\" debe ser cuadrado."
+
+#: src/messages/manifestjson.js:192
+msgid "The size of the icon does not match the manifest."
+msgstr "El tamaño del icono no coincide con el del manifiesto."
+
+#: src/messages/manifestjson.js:204
+msgid "Corrupt image file"
+msgstr "Archivo de imagen corrupto"
+
+#: src/messages/manifestjson.js:206
+msgid "Expected icon file at \"%(path)s\" is corrupted"
+msgstr "El archivo de icono previsto en \"%(path)s\" está corrupto"
+
+#: src/messages/manifestjson.js:217
+msgid "The \"default_locale\" is missing localizations."
+msgstr "Faltan traducciones en \"default_locale\"."
+
+#: src/messages/manifestjson.js:226
+msgid "The \"default_locale\" is missing but \"_locales\" exist."
+msgstr "Falta \"default_locale\", pero sí existe \"_locales\"."
+
+#: src/messages/manifestjson.js:23
+msgid "The permission type is unsupported."
+msgstr "No se admite el tipo de permiso."
+
+#: src/messages/manifestjson.js:235
+msgid "Unsupported image extension"
+msgstr "Extensión de imagen no admitida"
+
+#: src/messages/manifestjson.js:236
+msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
+msgstr "Los iconos deberían ser JPG/JPEG, WebP, GIF, PNG o SVG."
+
+#: src/messages/manifestjson.js:244
+msgid "Empty language directory"
+msgstr "Directorio de idioma vacío"
+
+#: src/messages/manifestjson.js:245
+msgid "messages.json file missing in \"%(path)s\""
+msgstr "No existe el archivo messages.json en \"%(path)s\""
+
+#: src/messages/manifestjson.js:31
+msgid "Unknown permission."
+msgstr "Permiso desconocido."
+
+#: src/messages/manifestjson.js:32
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr "Para más información, consulta https://mzl.la/1R1n1t0 (documento de MDN)."
+
+#: src/messages/manifestjson.js:38
+msgid "\"manifest_version\" in the manifest.json is not a valid value"
+msgstr "\"manifest_version\" en el archivo manifest.json no tiene un valor válido"
+
+#: src/messages/manifestjson.js:39
+msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
+msgstr "Para más información, consulta https://mzl.la/20PenXl (documento de MDN)."
+
+#: src/messages/manifestjson.js:49
+msgid "A custom content_security_policy needs additional review."
+msgstr "Personalizar content_security_policy necesita una revisión adicional."
+
+#: src/messages/manifestjson.js:65
+msgid "The \"name\" property must be a string."
+msgstr "La propiedad \"name\" debe ser un string."
+
+#: src/messages/manifestjson.js:66
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr "Para más información, consulta http://mzl.la/1STmr48 (documento de MDN)."
+
+#: src/messages/manifestjson.js:72
+msgid "The \"version\" property must be a string."
+msgstr "La propiedad \"version\" debe ser un string."
+
+#: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr "Para más información, consulta http://mzl.la/1kXIADa (documento de MDN)."
+
+#: src/messages/manifestjson.js:79
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "La propiedad \"version\" utiliza un formato específico de Firefox."
+
+#: src/messages/manifestjson.js:86
+msgid "\"update_url\" is not allowed."
+msgstr "no se permite \"update_url\"."
+
+#: src/messages/manifestjson.js:9
+msgid "The field is required."
+msgstr "Este campo es obligatorio."
+
+#: src/messages/manifestjson.js:94
+msgid "The \"update_url\" property is not used by Firefox."
+msgstr "Firefox no utiliza la propiedad \"update_url\"."

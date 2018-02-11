@@ -1470,4 +1470,41 @@ describe('firefox schema import', () => {
         /archive\/tip.tar.gz$/);
     });
   });
+
+  describe('$import', () => {
+    it('rewrites a $import to a $merge', () => {
+      const schemaWithImport = [{
+        namespace: 'manifest',
+        types: [{
+          id: 'ManifestBase',
+          properties: { name: { type: 'string' } },
+        }, {
+          id: 'WebExtensionManifest',
+          $import: 'ManifestBase',
+          properties: { something: { type: 'boolean' } },
+        }],
+      }];
+      const result = inner.loadSchema(schemaWithImport, 'dollar-import.json');
+      expect(result).toEqual({
+        id: 'dollar-import',
+        definitions: {},
+        refs: {},
+        types: {
+          ManifestBase: {
+            properties: { name: { type: 'string' } },
+            required: ['name'],
+          },
+          WebExtensionManifest: {
+            $merge: {
+              source: { $ref: 'dollar-import#/types/ManifestBase' },
+              with: {
+                properties: { something: { type: 'boolean' } },
+                required: ['something'],
+              },
+            },
+          },
+        },
+      });
+    });
+  });
 });

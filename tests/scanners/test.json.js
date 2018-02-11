@@ -1,5 +1,6 @@
 import Linter from 'linter';
 import JSONScanner from 'scanners/json';
+import * as messages from 'messages';
 
 import { unexpectedSuccess } from '../helpers';
 
@@ -24,5 +25,19 @@ describe('JSONScanner', () => {
       .catch((err) => {
         expect(err.message).toEqual('Explode!');
       });
+  });
+
+  it('should use special parser for messages.json', () => {
+    const addonsLinter = new Linter({ _: ['foo'] });
+    const jsonScanner = new JSONScanner('{ "blah": {} }', '_locales/en/messages.json', {
+      collector: addonsLinter.collector,
+    });
+
+    return jsonScanner.scan().then(() => {
+      const { errors } = addonsLinter.collector;
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual(messages.NO_MESSAGE.code);
+      expect(errors[0].message).toEqual(messages.NO_MESSAGE.message);
+    });
   });
 });

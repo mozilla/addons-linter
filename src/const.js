@@ -26,8 +26,6 @@ export const ESLINT_RULE_MAPPING = Object.assign({
   'deprecated-entities': ESLINT_WARNING,
   'event-listener-fourth': ESLINT_WARNING,
   'global-require-arg': ESLINT_WARNING,
-  mozindexeddb: ESLINT_WARNING,
-  'mozindexeddb-property': ESLINT_WARNING,
   'opendialog-nonlit-uri': ESLINT_WARNING,
   'opendialog-remote-uri': ESLINT_WARNING,
   'webextension-api': ESLINT_WARNING,
@@ -118,7 +116,7 @@ export const IMAGE_FILE_EXTENSIONS = [
   'jpg',
   'jpeg',
   'webp',
-  'giff',
+  'gif',
   'png',
   'svg',
 ];
@@ -174,3 +172,9 @@ export const CSP_KEYWORD_RE = new RegExp([
 export const BADWORDS_RE = {
   en: new RegExp(`\\b(?:${badwords.en.join('|')})\\b`, 'gi'),
 };
+
+export const MESSAGES_JSON = 'messages.json';
+export const LOCALES_DIRECTORY = '_locales';
+
+// This is a string, since it has to be matched globally on a message string.
+export const MESSAGE_PLACEHOLDER_REGEXP = '\\$([a-z0-9_@]+)\\$';

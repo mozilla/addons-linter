@@ -106,9 +106,18 @@ function isUnrecognizedProperty(value) {
   return false;
 }
 
-export function rewriteValue(key, value) {
+function rewriteIdRef(value, namespace = '') {
+  let _path = value;
+  let schemaId = namespace;
+  if (value.includes('.')) {
+    [schemaId, _path] = value.split('.', 2);
+  }
+  return `${schemaId}#/types/${_path}`;
+}
+
+export function rewriteValue(key, value, namespace) {
   if (Array.isArray(value)) {
-    return value.map((val) => rewriteValue(key, val));
+    return value.map((val) => rewriteValue(key, val, namespace));
   } else if (key === 'additionalProperties' &&
       isUnrecognizedProperty(value)) {
     return undefined;
@@ -117,18 +126,18 @@ export function rewriteValue(key, value) {
       const { $ref, ...rest } = value;
       if (Object.keys(rest).length === 1 && 'optional' in rest) {
         return {
-          $ref: rewriteValue('$ref', $ref),
+          $ref: rewriteValue('$ref', $ref, namespace),
           ...rest,
         };
       }
       return {
         allOf: [
-          { $ref: rewriteValue('$ref', $ref) },
-          rewriteValue(key, rest),
+          { $ref: rewriteValue('$ref', $ref, namespace) },
+          rewriteValue(key, rest, namespace),
         ],
       };
     }
-    const rewritten = inner.rewriteObject(value);
+    const rewritten = inner.rewriteObject(value, namespace);
     if ('properties' in rewritten) {
       const { required, ...properties } = rewriteOptionalToRequired(
         rewritten.properties);
@@ -144,12 +153,7 @@ export function rewriteValue(key, value) {
     } else if (value in refMap) {
       return refMap[value];
     }
-    let _path = value;
-    let schemaId = '';
-    if (value.includes('.')) {
-      [schemaId, _path] = value.split('.', 2);
-    }
-    return `${schemaId}#/types/${_path}`;
+    return rewriteIdRef(value);
   } else if (key === 'type' && value === 'any') {
     return undefined;
   } else if (key === 'id') {
@@ -167,9 +171,23 @@ export function rewriteKey(key) {
   return key;
 }
 
-inner.rewriteObject = (schema) => {
+function rewriteImport(schema, namespace) {
+  const { $import, ...rest } = schema;
+  const $ref = rewriteIdRef($import, namespace);
+  return {
+    $merge: {
+      source: { $ref },
+      with: rewriteValue('$merge', rest, namespace),
+    },
+  };
+}
+
+inner.rewriteObject = (schema, namespace) => {
+  if ('$import' in schema) {
+    return rewriteImport(schema, namespace);
+  }
   return Object.keys(schema).reduce((obj, key) => {
-    const value = rewriteValue(key, schema[key]);
+    const value = rewriteValue(key, schema[key], namespace);
     if (value === undefined) {
       return obj;
     }
@@ -414,8 +432,7 @@ inner.normalizeSchema = (schemas, file) => {
 
 inner.loadSchema = (schema, file) => {
   const { id, ...rest } = inner.normalizeSchema(schema, file);
-  const newSchema = { id, ...inner.rewriteObject(rest) };
-  return newSchema;
+  return { id, ...inner.rewriteObject(rest, id) };
 };
 
 inner.mergeSchemas = (schemaLists) => {

@@ -730,7 +730,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
 
-    it('does not allow invalid .. relative paths', () => {
+    it('does not allow invalid .. relative paths', async () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         icons: {
@@ -744,27 +744,26 @@ describe('ManifestJSONParser', () => {
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, { io: getStreamableIO(files) });
-      return manifestJSONParser.validateIcons()
-        .then(() => {
-          expect(manifestJSONParser.isValid).toBeFalsy();
-          assertHasMatchingError(addonLinter.collector.errors, {
-            code: messages.MANIFEST_ICON_NOT_FOUND,
-            message:
-              'An icon defined in the manifest could not be found in the package.',
-            description:
-              'Icon could not be found at "foo/icons/icon-32.png".',
-          });
-          assertHasMatchingError(addonLinter.collector.errors, {
-            code: messages.MANIFEST_ICON_NOT_FOUND,
-            message:
-              'An icon defined in the manifest could not be found in the package.',
-            description:
-              'Icon could not be found at "foo/icons/icon-64.png".',
-          });
-        });
+
+      await manifestJSONParser.validateIcons();
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.MANIFEST_ICON_NOT_FOUND,
+        message:
+          'An icon defined in the manifest could not be found in the package.',
+        description:
+          'Icon could not be found at "foo/icons/icon-32.png".',
+      });
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.MANIFEST_ICON_NOT_FOUND,
+        message:
+          'An icon defined in the manifest could not be found in the package.',
+        description:
+          'Icon could not be found at "foo/icons/icon-64.png".',
+      });
     });
 
-    it('adds an error if the icon is not in the package', () => {
+    it('adds an error if the icon is not in the package', async () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         icons: {
@@ -777,19 +776,18 @@ describe('ManifestJSONParser', () => {
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, { io: getStreamableIO(files) });
-      return manifestJSONParser.validateIcons()
-        .then(() => {
-          expect(manifestJSONParser.isValid).toBeFalsy();
-          assertHasMatchingError(addonLinter.collector.errors, {
-            code: messages.MANIFEST_ICON_NOT_FOUND,
-            message:
-              'An icon defined in the manifest could not be found in the package.',
-            description: 'Icon could not be found at "icons/icon-64.png".',
-          });
-        });
+
+      await manifestJSONParser.validateIcons();
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.MANIFEST_ICON_NOT_FOUND,
+        message:
+          'An icon defined in the manifest could not be found in the package.',
+        description: 'Icon could not be found at "icons/icon-64.png".',
+      });
     });
 
-    it('adds a warning if the icon does not have a valid extension', () => {
+    it('adds a warning if the icon does not have a valid extension', async () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         icons: {
@@ -808,125 +806,136 @@ describe('ManifestJSONParser', () => {
       };
       const manifestJSONParser = new ManifestJSONParser(
         json, addonLinter.collector, { io: getStreamableIO(files) });
-      return manifestJSONParser.validateIcons()
-        .then(() => {
-          expect(manifestJSONParser.isValid).toBeTruthy();
-          const { warnings } = addonLinter.collector;
-          expect(warnings.length).toEqual(4);
-          expect(warnings[0].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
-          expect(warnings[1].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
-        });
+
+      await manifestJSONParser.validateIcons();
+      expect(manifestJSONParser.isValid).toBeTruthy();
+      const { warnings } = addonLinter.collector;
+      expect(warnings.length).toEqual(4);
+      expect(warnings[0].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
+      expect(warnings[1].code).toEqual(messages.WRONG_ICON_EXTENSION.code);
     });
 
-    it('does not add a warning if the icon file is not corrupt', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({
-        icons: {
-          32: 'tests/fixtures/default.png',
-          2048: 'tests/fixtures/default.svg',
-        },
-      });
-      const files = {
-        'tests/fixtures/default.png': fs.createReadStream('tests/fixtures/default.png'),
-        'tests/fixtures/default.svg': fs.createReadStream('tests/fixtures/default.svg'),
-      };
-
-      const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: getStreamableIO(files) });
-      return manifestJSONParser.validateIcons()
-        .then(() => {
-          expect(manifestJSONParser.isValid).toBeTruthy();
-          const { warnings } = addonLinter.collector;
-          expect(warnings.length).toEqual(0);
+    describe('validate icon', () => {
+      it('does not add a warning if the icon file is not corrupt', async () => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const icon32 = 'tests/fixtures/default.png';
+        const icon2048 = 'tests/fixtures/default.svg';
+        const size32 = 32;
+        const size2048 = 2048;
+        const json = validManifestJSON({
+          icons: {
+            [size32]: icon32,
+            [size2048]: icon2048,
+          },
         });
-    });
+        const files = {
+          [icon32]: fs.createReadStream(icon32),
+          [icon2048]: fs.createReadStream(icon2048),
+        };
 
-    it('adds a warning if the icon file is corrupt', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({
-        icons: {
-          32: 'tests/fixtures/default-corrupted.png',
-        },
+        const manifestJSONParser = new ManifestJSONParser(
+          json, addonLinter.collector, { io: getStreamableIO(files) });
+
+        await Promise.all([
+          manifestJSONParser.validateIcon(icon32, size32),
+          manifestJSONParser.validateIcon(icon2048, size2048),
+        ]);
+        expect(manifestJSONParser.isValid).toBeTruthy();
+        const { warnings } = addonLinter.collector;
+        expect(warnings.length).toEqual(0);
       });
-      const files = {
-        'tests/fixtures/default-corrupted.png': fs.createReadStream('tests/fixtures/default-corrupted.png'),
-      };
 
-      const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: getStreamableIO(files) });
-      return manifestJSONParser.validateIcons()
-        .then(() => {
-          expect(manifestJSONParser.isValid).toBeTruthy();
-          const { warnings } = addonLinter.collector;
-          expect(warnings.length).toEqual(1);
+      it('adds a warning if the icon file is corrupt', async () => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const icon32 = 'tests/fixtures/default-corrupted.png';
+        const size32 = 32;
+        const json = validManifestJSON({
+          icons: {
+            [size32]: icon32,
+          },
         });
-    });
+        const files = {
+          [icon32]: fs.createReadStream(icon32),
+        };
 
-    it('adds a warning if the image size is not the same as mentioned', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({
-        icons: {
-          32: 'tests/fixtures/icon-33.png',
-        },
+        const manifestJSONParser = new ManifestJSONParser(
+          json, addonLinter.collector, { io: getStreamableIO(files) });
+
+        await manifestJSONParser.validateIcon(icon32, size32);
+        expect(manifestJSONParser.isValid).toBeTruthy();
+        const { warnings } = addonLinter.collector;
+        expect(warnings.length).toEqual(1);
       });
-      const files = {
-        'tests/fixtures/icon-33.png': fs.createReadStream('tests/fixtures/icon-33.png'),
-      };
-      const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: getStreamableIO(files) });
-      return manifestJSONParser.validateIcons()
-        .then(() => {
-          expect(manifestJSONParser.isValid).toBeTruthy();
-          const { warnings } = addonLinter.collector;
-          expect(warnings.length).toEqual(1);
-          assertHasMatchingError(warnings, {
-            code: messages.ICON_SIZE_INVALID,
-            message: 'The size of the icon does not match the manifest.',
-            description:
-              'Expected icon at "tests/fixtures/icon-33.png" to be 32 pixels wide but was 33.',
-          });
-        });
-    });
 
-    it('does not add a warning if the icon is SVG but the image size is not the same as mentioned', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({
-        icons: {
-          32: 'tests/fixtures/default.svg',
-        },
-      });
-      const files = {
-        'tests/fixtures/default.svg': fs.createReadStream('tests/fixtures/default.svg'),
-      };
-      const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: getStreamableIO(files) });
-      return manifestJSONParser.validateIcons()
-        .then(() => {
-          expect(manifestJSONParser.isValid).toBeTruthy();
-          const { warnings } = addonLinter.collector;
-          expect(warnings.length).toEqual(0);
+      it('adds a warning if the image size is not the same as mentioned', async () => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const icon33 = 'tests/fixtures/icon-33.png';
+        const size32 = 32;
+        const json = validManifestJSON({
+          icons: {
+            [size32]: icon33,
+          },
         });
-    });
+        const files = {
+          [icon33]: fs.createReadStream(icon33),
+        };
+        const manifestJSONParser = new ManifestJSONParser(
+          json, addonLinter.collector, { io: getStreamableIO(files) });
 
-    it('adds an error if the dimensions of the image are not the same', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({
-        icons: {
-          32: 'tests/fixtures/rectangle.png',
-        },
-      });
-      const files = {
-        'tests/fixtures/rectangle.png': fs.createReadStream('tests/fixtures/rectangle.png'),
-      };
-      const manifestJSONParser = new ManifestJSONParser(
-        json, addonLinter.collector, { io: getStreamableIO(files) });
-      return manifestJSONParser.validateIcons()
-        .then(() => {
-          expect(manifestJSONParser.isValid).toBeFalsy();
-          const { errors } = addonLinter.collector;
-          expect(errors.length).toEqual(1);
-          expect(errors[0].code).toEqual(messages.ICON_NOT_SQUARE);
+        await manifestJSONParser.validateIcon(icon33, size32);
+        expect(manifestJSONParser.isValid).toBeTruthy();
+        const { warnings } = addonLinter.collector;
+        expect(warnings.length).toEqual(1);
+        assertHasMatchingError(warnings, {
+          code: messages.ICON_SIZE_INVALID,
+          message: 'The size of the icon does not match the manifest.',
+          description:
+            'Expected icon at "tests/fixtures/icon-33.png" to be 32 pixels wide but was 33.',
         });
+      });
+
+      it('does not add a warning if the icon is SVG but the image size is not the same as mentioned', async () => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const icon32 = 'tests/fixtures/default.svg';
+        const size32 = 32;
+        const json = validManifestJSON({
+          icons: {
+            [size32]: icon32,
+          },
+        });
+        const files = {
+          [icon32]: fs.createReadStream(icon32),
+        };
+        const manifestJSONParser = new ManifestJSONParser(
+          json, addonLinter.collector, { io: getStreamableIO(files) });
+
+        await manifestJSONParser.validateIcon(icon32, size32);
+        expect(manifestJSONParser.isValid).toBeTruthy();
+        const { warnings } = addonLinter.collector;
+        expect(warnings.length).toEqual(0);
+      });
+
+      it('adds an error if the dimensions of the image are not the same', async () => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const icon32 = 'tests/fixtures/rectangle.png';
+        const size32 = 32;
+        const json = validManifestJSON({
+          icons: {
+            [size32]: icon32,
+          },
+        });
+        const files = {
+          [icon32]: fs.createReadStream(icon32),
+        };
+        const manifestJSONParser = new ManifestJSONParser(
+          json, addonLinter.collector, { io: getStreamableIO(files) });
+
+        await manifestJSONParser.validateIcon(icon32, size32);
+        expect(manifestJSONParser.isValid).toBeFalsy();
+        const { errors } = addonLinter.collector;
+        expect(errors.length).toEqual(1);
+        expect(errors[0].code).toEqual(messages.ICON_NOT_SQUARE);
+      });
     });
   });
 
