@@ -104,6 +104,26 @@ export function validLangpackManifestJSON(extra) {
   }, extra));
 }
 
+export function validLocaleMessagesJSON() {
+  return JSON.stringify(Object.assign({}, {
+    foo: {
+      message: 'bar',
+    },
+    Placeh0lder_Test: {
+      message: '$foo$ bar $BA2$',
+      placeholders: {
+        foo: {
+          content: '$1',
+          example: 'FOO',
+        },
+        BA2: {
+          content: 'baz',
+        },
+      },
+    },
+  }));
+}
+
 export function unexpectedSuccess() {
   return assert.fail(null, null, 'Unexpected success');
 }
