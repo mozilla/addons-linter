@@ -10,6 +10,7 @@
     "start": "grunt start",
     "build": "grunt build",
     "eslint": "eslint bin/* .",
+    "extract-locales": "webpack --verbose --bail --display-error-details --progress --colors --config webpack.l10n.config.babel.js",
     "test": "jest --runInBand --watch 'tests/.*'",
     "test-coverage": "jest --runInBand --coverage --watch 'tests/.*'",
     "test-once": "jest --runInBand",
