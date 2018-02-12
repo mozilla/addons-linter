@@ -6,10 +6,10 @@ We maintain a list of banned and unadvised third-party JavaScript libraries; the
 
 ### AngularJS `1.x`
 
-AngularJS `1.x` versions below `1.6.5` are not allowed due to a [CSP vulnerability](http://www.slideshare.net/x00mario/an-abusive-relationship-with-angularjs).
+We allow the latest 1.x version at submission time; previous versions are not accepted.
 
-We allow the latest 1.x version at submission time; all previous versions are banned.
+### jQuery
 
-### jQuery `1.x`
+`1.x`: jQuery versions older than 2.0 are not supported by the jQuery team for development inside extensions. Please use a recent version.
 
-jQuery versions older than 2.0 are not supported by the jQuery team for development inside extensions. Please use a recent version.
+`2.x`: jQuery 2.x is no longer supported by the jQuery team. Due to open security vulnerabilities, you should migrate to jQuery 3.x as soon as possible. Starting September 2018, add-on submissions using jQuery 2.x will no longer be allowed.

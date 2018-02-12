@@ -180,30 +180,6 @@ describe('JavaScript Scanner', () => {
       });
   });
 
-  it('ignores /*eslint-disable*/ comments', () => {
-    const code = oneLine`/*eslint-disable*/
-                                var myDatabase = indexeddb || mozIndexedDB;`;
-    const jsScanner = new JavaScriptScanner(code, 'badcode.js');
-
-    return jsScanner.scan()
-      .then(({ linterMessages }) => {
-        expect(linterMessages.length).toEqual(1);
-        expect(linterMessages[0].code).toEqual(messages.MOZINDEXEDDB.code);
-      });
-  });
-
-  it('ignores // eslint-disable-line comments', () => {
-    const code = oneLine`var myDatabase = indexeddb || mozIndexedDB;
-                                // eslint-disable-line`;
-    const jsScanner = new JavaScriptScanner(code, 'badcode.js');
-
-    return jsScanner.scan()
-      .then(({ linterMessages }) => {
-        expect(linterMessages.length).toEqual(1);
-        expect(linterMessages[0].code).toEqual(messages.MOZINDEXEDDB.code);
-      });
-  });
-
   // This should not cause a syntax error; it should still be parsing code
   // as ES6 because it ignores the env change.
   it('ignores /*eslint-env*/', () => {

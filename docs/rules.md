@@ -259,8 +259,6 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :negative_squared_cross_mark: | warning | new_tab_override |  |  Possible attempt to override new tab page |  | | | |
 | :x: | warning | unsafe_template_escape |  | Potentially unsafe template escape sequence | | | | |
 | :x: | warning | js_protoype_extension_dissallowed |  | JS prototype extension not allowed  | | | | |
-| :white_check_mark: | warning | mozindexdb_removed |  | mozIndexedDB has been removed |  | | | MOZINDEXEDDB |
-| :white_check_mark: | warning | mozIndexedDB property is deprecated |  | mozIndexedDB has been removed |  | N/A | N/A | MOZINDEXEDDB_PROPERTY |
 | :negative_squared_cross_mark: | warning | composition_features_removed |  | nsICompositionStringSynthesizer, sendCompositionEvent and createCompositionStringSynthesizer were removed | | | | |
 | :negative_squared_cross_mark: | warning | asyncfetch2_newchannel2_deprecated |  | asyncFetch2 and newChannel2 are now deprecated | | | | |
 | :negative_squared_cross_mark: | warning | onproxyavailable_asyncresolve_changed |  | The onProxyAvailable and asyncResolve functions have changed |  | | | |
