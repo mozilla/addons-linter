@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-01-30 18:56+0000\n"
+"POT-Creation-Date: 2018-02-12 15:56+0000\n"
 "PO-Revision-Date: 2018-01-30 21:49+0000\n"
 "Last-Translator: YFdyh000 <yfdyh000@gmail.com>\n"
 "Language-Team: none\n"
@@ -66,29 +66,21 @@ msgstr "附加组件政策不允许远程脚本。"
 msgid "Inline scripts blocked by default"
 msgstr "内联脚本默认被屏蔽"
 
-#: src/messages/javascript.js:107
-msgid "Banned 3rd-party JS library"
-msgstr "被禁止的第三方 JS 库"
-
-#: src/messages/javascript.js:114
-msgid "Unadvised 3rd-party JS library"
-msgstr "不推荐的第三方 JS 库"
-
-#: src/messages/javascript.js:121
+#: src/messages/javascript.js:105
 msgid "Known JS library detected"
 msgstr "检测到已知 JS 库"
 
-#: src/messages/javascript.js:139
+#: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
 msgstr "不支持 {{api}}"
+
+#: src/messages/javascript.js:124
+msgid "This API has not been implemented by Firefox."
+msgstr "Firefox 尚未实现此 API。"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
 msgstr "调用了 addEventListener，且第四个参数为真。"
-
-#: src/messages/javascript.js:140
-msgid "This API has not been implemented by Firefox."
-msgstr "Firefox 尚未实现此 API。"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -106,29 +98,25 @@ msgstr "内容脚本文件名不应为空。"
 msgid "Content script file name should not be empty"
 msgstr "内容脚本文件名不应为空"
 
-#: src/messages/javascript.js:38
-msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr "mozIndexedDB 已被删除；请改用 indexedDB"
-
-#: src/messages/javascript.js:39 src/messages/javascript.js:47
-msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr "mozIndexedDB 已被删除；请改用 indexedDB。"
-
-#: src/messages/javascript.js:46
-msgid "mozIndexedDB used as an object key/property"
-msgstr "mozIndexedDB 被用作对象键/属性"
-
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "JavaScript 语法错误"
 
-#: src/messages/javascript.js:92
+#: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
 msgstr "意外的将 global 传递为一个参数"
 
-#: src/messages/javascript.js:99
+#: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
 msgstr "强烈不建议使用 document.write。"
+
+#: src/messages/javascript.js:91
+msgid "Banned 3rd-party JS library"
+msgstr "被禁止的第三方 JS 库"
+
+#: src/messages/javascript.js:98
+msgid "Unadvised 3rd-party JS library"
+msgstr "不推荐的第三方 JS 库"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -190,6 +178,35 @@ msgstr "包包含重复的项"
 msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Firefox 附加组件不允许运行挖矿程序。"
 
+#: src/messages/locale-messagesjson.js:13
+msgid "String name is reserved for a predefined message"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:27
+msgid "Placeholder for message is missing"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:28
+msgid "A placeholder used in the message is not defined."
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:33
+msgid "Placeholder name contains invalid characters"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:40
+msgid "Placeholder is missing the content property"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:7
+msgid "Translation string is missing the message property"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:8
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "详细信息请参阅 https://mzl.la/1ZOhoEN (MDN 文档)。"
@@ -219,11 +236,14 @@ msgid "The field is invalid."
 msgstr "该字段无效。"
 
 #: src/messages/manifestjson.js:161
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "manifest 中定义的一个内容脚本无法在“%(path)s”找到。"
 
 #: src/messages/manifestjson.js:162
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
 msgstr "manifest 中定义的一个内容脚本 css 文件无法在“%(path)s”找到。"
 
 #: src/messages/manifestjson.js:173
@@ -333,3 +353,12 @@ msgstr "该字段必填。"
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "Firefox 不使用 \"update_url\" 属性。"
+
+#~ msgid "mozIndexedDB has been removed; use indexedDB instead"
+#~ msgstr "mozIndexedDB 已被删除；请改用 indexedDB"
+
+#~ msgid "mozIndexedDB has been removed; use indexedDB instead."
+#~ msgstr "mozIndexedDB 已被删除；请改用 indexedDB。"
+
+#~ msgid "mozIndexedDB used as an object key/property"
+#~ msgstr "mozIndexedDB 被用作对象键/属性"

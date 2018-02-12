@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-01-30 18:56+0000\n"
+"POT-Creation-Date: 2018-02-12 15:56+0000\n"
 "PO-Revision-Date: 2018-01-31 10:27+0000\n"
 "Last-Translator: Ton <tonnes.mb@gmail.com>\n"
 "Language-Team: none\n"
@@ -66,29 +66,21 @@ msgstr "Externe scripts zijn volgens het add-onbeleid niet toegestaan."
 msgid "Inline scripts blocked by default"
 msgstr "Inline scripts zijn standaard geblokkeerd"
 
-#: src/messages/javascript.js:107
-msgid "Banned 3rd-party JS library"
-msgstr "Geblokkeerde JS-bibliotheek van derden"
-
-#: src/messages/javascript.js:114
-msgid "Unadvised 3rd-party JS library"
-msgstr "Niet-geadviseerde JS-bibliotheek van derden"
-
-#: src/messages/javascript.js:121
+#: src/messages/javascript.js:105
 msgid "Known JS library detected"
 msgstr "Bekende JS-bibliotheek gedetecteerd"
 
-#: src/messages/javascript.js:139
+#: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
 msgstr "{{api}} wordt niet ondersteund"
+
+#: src/messages/javascript.js:124
+msgid "This API has not been implemented by Firefox."
+msgstr "Deze API is niet door Firefox geïmplementeerd."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
 msgstr "addEventListener` aangeroepen met ‘truthy’ vierde argument."
-
-#: src/messages/javascript.js:140
-msgid "This API has not been implemented by Firefox."
-msgstr "Deze API is niet door Firefox geïmplementeerd."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -106,29 +98,25 @@ msgstr "Naam van inhoudsscriptbestand mag niet leeg zijn."
 msgid "Content script file name should not be empty"
 msgstr "Naam van inhoudsscriptbestand mag niet leeg zijn"
 
-#: src/messages/javascript.js:38
-msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr "mozIndexedDB is verwijderd; gebruik in plaats daarvan indexedDB"
-
-#: src/messages/javascript.js:39 src/messages/javascript.js:47
-msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr "mozIndexedDB is verwijderd; gebruik in plaats daarvan indexedDB."
-
-#: src/messages/javascript.js:46
-msgid "mozIndexedDB used as an object key/property"
-msgstr "mozIndexedDB gebruikt als een objectsleutel/-eigenschap"
-
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "JavaScript-syntaxisfout"
 
-#: src/messages/javascript.js:92
+#: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
 msgstr "Onverwachte globale variabele doorgegeven als argument"
 
-#: src/messages/javascript.js:99
+#: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
 msgstr "Gebruik van document.write wordt sterk afgeraden."
+
+#: src/messages/javascript.js:91
+msgid "Banned 3rd-party JS library"
+msgstr "Geblokkeerde JS-bibliotheek van derden"
+
+#: src/messages/javascript.js:98
+msgid "Unadvised 3rd-party JS library"
+msgstr "Niet-geadviseerde JS-bibliotheek van derden"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -190,6 +178,35 @@ msgstr "Pakket bevat dubbele vermeldingen"
 msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Firefox-add-ons mogen geen coinminers uitvoeren."
 
+#: src/messages/locale-messagesjson.js:13
+msgid "String name is reserved for a predefined message"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:27
+msgid "Placeholder for message is missing"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:28
+msgid "A placeholder used in the message is not defined."
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:33
+msgid "Placeholder name contains invalid characters"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:40
+msgid "Placeholder is missing the content property"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:7
+msgid "Translation string is missing the message property"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:8
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Zie https://mzl.la/1ZOhoEN (MDN Docs) voor meer informatie."
@@ -200,7 +217,9 @@ msgstr "‘strict_max_version’ niet vereist."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr "Een in het manifest gedefinieerd pictogram kon niet in het pakket worden gevonden."
+msgstr ""
+"Een in het manifest gedefinieerd pictogram kon niet in het pakket worden "
+"gevonden."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
@@ -219,12 +238,19 @@ msgid "The field is invalid."
 msgstr "Het veld is ongeldig."
 
 #: src/messages/manifestjson.js:161
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "In het manifest gedefinieerd inhoudsscript kon niet worden gevonden in ‘%(path)s’."
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"In het manifest gedefinieerd inhoudsscript kon niet worden gevonden in "
+"‘%(path)s’."
 
 #: src/messages/manifestjson.js:162
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "In het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet worden gevonden in ‘%(path)s’."
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"In het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet worden "
+"gevonden in ‘%(path)s’."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -300,7 +326,8 @@ msgstr "Zie https://mzl.la/20PenXl (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr "Een aangepast content_security_policy heeft aanvullende beoordeling nodig."
+msgstr ""
+"Een aangepast content_security_policy heeft aanvullende beoordeling nodig."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
@@ -333,3 +360,12 @@ msgstr "Het veld is vereist."
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "De eigenschap ‘update_url’ wordt niet door Firefox gebruikt."
+
+#~ msgid "mozIndexedDB has been removed; use indexedDB instead"
+#~ msgstr "mozIndexedDB is verwijderd; gebruik in plaats daarvan indexedDB"
+
+#~ msgid "mozIndexedDB has been removed; use indexedDB instead."
+#~ msgstr "mozIndexedDB is verwijderd; gebruik in plaats daarvan indexedDB."
+
+#~ msgid "mozIndexedDB used as an object key/property"
+#~ msgstr "mozIndexedDB gebruikt als een objectsleutel/-eigenschap"
