@@ -9,82 +9,68 @@ describe('deprecated_entities', () => {
     const obj = entity.object;
     const prop = entity.property;
 
-    it(`should warn about using ${obj}.${prop}()`, () => {
+    it(`should warn about using ${obj}.${prop}()`, async () => {
       const code = `${obj}.${prop}();`;
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-      return jsScanner.scan()
-        .then(({ linterMessages }) => {
-          linterMessages.sort();
-          expect(linterMessages.length).toEqual(1);
-          expect(linterMessages[0].code).toEqual(entity.error.code);
-          expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
-        });
+      const { linterMessages } = await jsScanner.scan();
+      linterMessages.sort();
+      expect(linterMessages.length).toEqual(1);
+      expect(linterMessages[0].code).toEqual(entity.error.code);
+      expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
     });
 
-    it(`should know when a variable references ${obj}`, () => {
+    it(`should know when a variable references ${obj}`, async () => {
       const code = oneLine`var foo = ${obj};
         foo.${prop}();`;
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-      return jsScanner.scan()
-        .then(({ linterMessages }) => {
-          expect(linterMessages.length).toEqual(1);
-          expect(linterMessages[0].code).toEqual(entity.error.code);
-          expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
-        });
+      const { linterMessages } = await jsScanner.scan();
+      expect(linterMessages.length).toEqual(1);
+      expect(linterMessages[0].code).toEqual(entity.error.code);
+      expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
     });
 
-    it(`should still work with variables aliased to ${obj}.${prop}`, () => {
+    it(`should still work with variables aliased to ${obj}.${prop}`, async () => {
       const code = `var foo = ${obj}.${prop}; foo();`;
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-      return jsScanner.scan()
-        .then(({ linterMessages }) => {
-          expect(linterMessages.length).toEqual(1);
-          expect(linterMessages[0].code).toEqual(entity.error.code);
-          expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
-        });
+      const { linterMessages } = await jsScanner.scan();
+      expect(linterMessages.length).toEqual(1);
+      expect(linterMessages[0].code).toEqual(entity.error.code);
+      expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
     });
 
-    it('should not warn about using other member functions', () => {
+    it('should not warn about using other member functions', async () => {
       const code = `${obj}.doNothing();`;
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-      return jsScanner.scan()
-        .then(({ linterMessages }) => {
-          expect(linterMessages.length).toEqual(0);
-        });
+      const { linterMessages } = await jsScanner.scan();
+      expect(linterMessages.length).toEqual(0);
     });
 
-    it(`should not warn about calling ${prop} in general`, () => {
+    it(`should not warn about calling ${prop} in general`, async () => {
       const code = `foo.${prop}();`;
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-      return jsScanner.scan()
-        .then(({ linterMessages }) => {
-          expect(linterMessages.length).toEqual(0);
-        });
+      const { linterMessages } = await jsScanner.scan();
+      expect(linterMessages.length).toEqual(0);
     });
 
-    it(`should not warn about calling ${prop} to a non-global ${obj}`, () => {
+    it(`should not warn about calling ${prop} to a non-global ${obj}`, async () => {
       const code = `foo.${obj}.${prop}();`;
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-      return jsScanner.scan()
-        .then(({ linterMessages }) => {
-          expect(linterMessages.length).toEqual(0);
-        });
+      const { linterMessages } = await jsScanner.scan();
+      expect(linterMessages.length).toEqual(0);
     });
 
-    it(`should not warn about calling ${prop} to non member of ${obj}`, () => {
+    it(`should not warn about calling ${prop} to non member of ${obj}`, async () => {
       const code = `${obj}.foo.${prop}();`;
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-      return jsScanner.scan()
-        .then(({ linterMessages }) => {
-          expect(linterMessages.length).toEqual(0);
-        });
+      const { linterMessages } = await jsScanner.scan();
+      expect(linterMessages.length).toEqual(0);
     });
   });
 });
