@@ -15,10 +15,10 @@ export const fakeMessageData = {
   message: 'message',
 };
 
-export const EMPTY_PNG = Buffer
-  .from(oneLine`iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMA
-                AQAABQABDQottAAAAABJRU5ErkJggg==`,
-    'base64');
+export const EMPTY_PNG = Buffer.from(
+  oneLine`iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMA
+          AQAABQABDQottAAAAABJRU5ErkJggg==`,
+  'base64');
 
 export function getRuleFiles(ruleType) {
   const ruleFiles = fs.readdirSync(`src/rules/${ruleType}`);
