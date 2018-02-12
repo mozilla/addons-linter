@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-09 21:44+0000\n"
-"Last-Translator: jlG <jlg.l10n.es@gmail.com>\n"
+"PO-Revision-Date: 2018-02-12 19:53+0000\n"
+"Last-Translator: avelper <avelper@mozilla-hispano.org>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -60,8 +60,7 @@ msgstr "Tu archivo FTL no se ha podido interpretar."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
-"Los scripts remotos no están permitidos por las políticas de complementos."
+msgstr "Los scripts remotos no están permitidos por las políticas de complementos."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
@@ -181,7 +180,7 @@ msgstr "Los complementos de Firefox no tienen permitido minar criptomonedas."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "El nombre de la cadena está reservado para un mensaje predefinido"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -201,17 +200,15 @@ msgstr ""
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "Falta la propiedad del mensaje en la cadena de traducción"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"Para más información, consulta https://mzl.la/1ZOhoEN (documento de MDN)."
+msgstr "Para más información, consulta https://mzl.la/1ZOhoEN (documento de MDN)."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -238,19 +235,12 @@ msgid "The field is invalid."
 msgstr "El campo no es válido."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"El script de contenido definido en el manifiesto no se pudo encontrar en "
-"\"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "El script de contenido definido en el manifiesto no se pudo encontrar en \"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"No se encontró en \"%(path)s\" el archivo css de script de contenido "
-"definido en el manifiesto."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "No se encontró en \"%(path)s\" el archivo css de script de contenido definido en el manifiesto."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -314,18 +304,15 @@ msgstr "Permiso desconocido."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"Para más información, consulta https://mzl.la/1R1n1t0 (documento de MDN)."
+msgstr "Para más información, consulta https://mzl.la/1R1n1t0 (documento de MDN)."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
-"\"manifest_version\" en el archivo manifest.json no tiene un valor válido"
+msgstr "\"manifest_version\" en el archivo manifest.json no tiene un valor válido"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"Para más información, consulta https://mzl.la/20PenXl (documento de MDN)."
+msgstr "Para más información, consulta https://mzl.la/20PenXl (documento de MDN)."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
@@ -337,8 +324,7 @@ msgstr "La propiedad \"name\" debe ser un string."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
-"Para más información, consulta http://mzl.la/1STmr48 (documento de MDN)."
+msgstr "Para más información, consulta http://mzl.la/1STmr48 (documento de MDN)."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
@@ -346,8 +332,7 @@ msgstr "La propiedad \"version\" debe ser un string."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
-"Para más información, consulta http://mzl.la/1kXIADa (documento de MDN)."
+msgstr "Para más información, consulta http://mzl.la/1kXIADa (documento de MDN)."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
