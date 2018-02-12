@@ -10,6 +10,8 @@ AngularJS `1.x` versions below `1.6.5` are not allowed due to a [CSP vulnerabili
 
 We allow the latest 1.x version at submission time; all previous versions are banned.
 
-### jQuery `1.x`
+### jQuery
 
-jQuery versions older than 2.0 are not supported by the jQuery team for development inside extensions. Please use a recent version.
+`1.x`: jQuery versions older than 2.0 are not supported by the jQuery team for development inside extensions. Please use a recent version.
+
+`2.x`: jQuery 2.x is no longer supported by the jQuery team. Due to open security vulnerabilities, you should migrate to jQuery 3.x as soon as possible. Starting September 2018, add-on submissions using jQuery 2.x will no longer be allowed.
