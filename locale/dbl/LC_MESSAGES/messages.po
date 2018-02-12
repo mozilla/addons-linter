@@ -2,13 +2,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-01-30 18:56+0000\n"
+"POT-Creation-Date: 2018-02-12 15:56+0000\n"
 "PO-Revision-Date: 2018-01-19 00:33+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: dbl\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
@@ -64,28 +64,20 @@ msgstr ""
 msgid "Inline scripts blocked by default"
 msgstr ""
 
-#: src/messages/javascript.js:107
-msgid "Banned 3rd-party JS library"
-msgstr ""
-
-#: src/messages/javascript.js:114
-msgid "Unadvised 3rd-party JS library"
-msgstr ""
-
-#: src/messages/javascript.js:121
+#: src/messages/javascript.js:105
 msgid "Known JS library detected"
 msgstr ""
 
-#: src/messages/javascript.js:139
+#: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
+msgstr ""
+
+#: src/messages/javascript.js:124
+msgid "This API has not been implemented by Firefox."
 msgstr ""
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
-
-#: src/messages/javascript.js:140
-msgid "This API has not been implemented by Firefox."
 msgstr ""
 
 #: src/messages/javascript.js:23
@@ -104,28 +96,24 @@ msgstr ""
 msgid "Content script file name should not be empty"
 msgstr ""
 
-#: src/messages/javascript.js:38
-msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr ""
-
-#: src/messages/javascript.js:39 src/messages/javascript.js:47
-msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr ""
-
-#: src/messages/javascript.js:46
-msgid "mozIndexedDB used as an object key/property"
-msgstr ""
-
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr ""
 
-#: src/messages/javascript.js:92
+#: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
 msgstr ""
 
-#: src/messages/javascript.js:99
+#: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
+msgstr ""
+
+#: src/messages/javascript.js:91
+msgid "Banned 3rd-party JS library"
+msgstr ""
+
+#: src/messages/javascript.js:98
+msgid "Unadvised 3rd-party JS library"
 msgstr ""
 
 #: src/messages/json.js:13
@@ -186,6 +174,35 @@ msgstr ""
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:13
+msgid "String name is reserved for a predefined message"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:27
+msgid "Placeholder for message is missing"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:28
+msgid "A placeholder used in the message is not defined."
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:33
+msgid "Placeholder name contains invalid characters"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:40
+msgid "Placeholder is missing the content property"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:7
+msgid "Translation string is missing the message property"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:8
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17

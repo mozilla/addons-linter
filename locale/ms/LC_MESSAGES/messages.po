@@ -1,15 +1,15 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-01-30 18:56+0000\n"
+"POT-Creation-Date: 2018-02-12 15:56+0000\n"
 "PO-Revision-Date: 2018-01-31 05:17+0000\n"
 "Last-Translator: manxmensch <manxmensch@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ms\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pontoon\n"
@@ -66,29 +66,21 @@ msgstr "Skrip jauh tidak dibenarkan mengikut Polisi Add-on."
 msgid "Inline scripts blocked by default"
 msgstr "Skrip sebaris disekat secara piawai"
 
-#: src/messages/javascript.js:107
-msgid "Banned 3rd-party JS library"
-msgstr "Pustaka JS pihak ke-3 yang disekat"
-
-#: src/messages/javascript.js:114
-msgid "Unadvised 3rd-party JS library"
-msgstr "Pustaka JS pihak ke-3 yang tidak disyorkan"
-
-#: src/messages/javascript.js:121
+#: src/messages/javascript.js:105
 msgid "Known JS library detected"
 msgstr "Mengesan pustaka JS yang diketahui"
 
-#: src/messages/javascript.js:139
+#: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
 msgstr "{{api}} tidak disokong"
+
+#: src/messages/javascript.js:124
+msgid "This API has not been implemented by Firefox."
+msgstr "API ini tidak dilaksanakan oleh Firefox."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
 msgstr "addEventListener` dipanggil dengan hujah keempat yang dipercayai."
-
-#: src/messages/javascript.js:140
-msgid "This API has not been implemented by Firefox."
-msgstr "API ini tidak dilaksanakan oleh Firefox."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -106,29 +98,25 @@ msgstr "Nama fail skrip kandungan tidak boleh kosong."
 msgid "Content script file name should not be empty"
 msgstr "Nama fail skrip kandungan tidak boleh kosong"
 
-#: src/messages/javascript.js:38
-msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr "mozIndexedDB telah dibuang; gunakan indexedDB"
-
-#: src/messages/javascript.js:39 src/messages/javascript.js:47
-msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr "mozIndexedDB telah dibuang; gunakan indexedDB."
-
-#: src/messages/javascript.js:46
-msgid "mozIndexedDB used as an object key/property"
-msgstr "mozIndexedDB digunakan sebagai objek utama/sifat"
-
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "Ralat sintaks JavaScript"
 
-#: src/messages/javascript.js:92
+#: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
 msgstr "Global tidak dijangka diluluskan sebagai hujah"
 
-#: src/messages/javascript.js:99
+#: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
 msgstr "Penggunaan document.write sangat tidak digalakkan."
+
+#: src/messages/javascript.js:91
+msgid "Banned 3rd-party JS library"
+msgstr "Pustaka JS pihak ke-3 yang disekat"
+
+#: src/messages/javascript.js:98
+msgid "Unadvised 3rd-party JS library"
+msgstr "Pustaka JS pihak ke-3 yang tidak disyorkan"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -190,6 +178,35 @@ msgstr "Pakej mengandungi penyertaan berganda"
 msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Add-ons Firefox tidak diizinkan melaksanakan melombong syiling."
 
+#: src/messages/locale-messagesjson.js:13
+msgid "String name is reserved for a predefined message"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:27
+msgid "Placeholder for message is missing"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:28
+msgid "A placeholder used in the message is not defined."
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:33
+msgid "Placeholder name contains invalid characters"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:40
+msgid "Placeholder is missing the content property"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:7
+msgid "Translation string is missing the message property"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:8
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Lihat https://mzl.la/1ZOhoEN (Dokumen MDN) untuk maklumat lanjut."
@@ -219,12 +236,18 @@ msgid "The field is invalid."
 msgstr "Medan ini tidak sah."
 
 #: src/messages/manifestjson.js:161
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Skrip kandungan yang ditakrif dalam manifes tidak ditemui dalam \"%(path)s\"."
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"Skrip kandungan yang ditakrif dalam manifes tidak ditemui dalam \"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Fail css skrip kandungan yang ditakrif dalam manifes tidak ditemui dalam \"%(path)s\"."
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"Fail css skrip kandungan yang ditakrif dalam manifes tidak ditemui dalam "
+"\"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -333,3 +356,12 @@ msgstr "Medan ini diperlukan."
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "Sifat \"update_url\" tidak digunakan oleh Firefox."
+
+#~ msgid "mozIndexedDB has been removed; use indexedDB instead"
+#~ msgstr "mozIndexedDB telah dibuang; gunakan indexedDB"
+
+#~ msgid "mozIndexedDB has been removed; use indexedDB instead."
+#~ msgstr "mozIndexedDB telah dibuang; gunakan indexedDB."
+
+#~ msgid "mozIndexedDB used as an object key/property"
+#~ msgstr "mozIndexedDB digunakan sebagai objek utama/sifat"

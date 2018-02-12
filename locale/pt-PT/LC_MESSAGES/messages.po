@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-01-30 18:56+0000\n"
+"POT-Creation-Date: 2018-02-12 15:56+0000\n"
 "PO-Revision-Date: 2018-01-30 22:28+0000\n"
 "Last-Translator: Rodrigo <rodrigo.mcunha@hotmail.com>\n"
 "Language-Team: none\n"
@@ -66,29 +66,21 @@ msgstr "Scripts remotos não são permitidos conforme as políticas de extras."
 msgid "Inline scripts blocked by default"
 msgstr "Scripts inline bloqueados por predefinição"
 
-#: src/messages/javascript.js:107
-msgid "Banned 3rd-party JS library"
-msgstr "Biblioteca JS de terceiros banida"
-
-#: src/messages/javascript.js:114
-msgid "Unadvised 3rd-party JS library"
-msgstr "Biblioteca JS de terceiros desaconselhada"
-
-#: src/messages/javascript.js:121
+#: src/messages/javascript.js:105
 msgid "Known JS library detected"
 msgstr "Biblioteca JS conhecida detetada"
 
-#: src/messages/javascript.js:139
+#: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
 msgstr "{{api}} não é suportado"
+
+#: src/messages/javascript.js:124
+msgid "This API has not been implemented by Firefox."
+msgstr "Esta API ainda não foi implementada pelo Firefox."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
 msgstr "addEventListener chamado com o quarto argumento."
-
-#: src/messages/javascript.js:140
-msgid "This API has not been implemented by Firefox."
-msgstr "Esta API ainda não foi implementada pelo Firefox."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -106,29 +98,25 @@ msgstr "O nome do ficheiro de script de conteúdo não deve estar vazio."
 msgid "Content script file name should not be empty"
 msgstr "O nome do ficheiro de script de conteúdo não deve estar vazio"
 
-#: src/messages/javascript.js:38
-msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr "mozIndexedDB foi removido; em alternativa, utilize indexedDB"
-
-#: src/messages/javascript.js:39 src/messages/javascript.js:47
-msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr "mozIndexedDB foi removido; em alternativa, utilize indexedDB."
-
-#: src/messages/javascript.js:46
-msgid "mozIndexedDB used as an object key/property"
-msgstr "mozIndexedDB utilizado como uma chave/propriedade de objeto"
-
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "Erro de sintaxe JavaScript"
 
-#: src/messages/javascript.js:92
+#: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
 msgstr "Global inesperado passado como um argumento"
 
-#: src/messages/javascript.js:99
+#: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
 msgstr "Utilização de document.write fortemente desencorajada."
+
+#: src/messages/javascript.js:91
+msgid "Banned 3rd-party JS library"
+msgstr "Biblioteca JS de terceiros banida"
+
+#: src/messages/javascript.js:98
+msgid "Unadvised 3rd-party JS library"
+msgstr "Biblioteca JS de terceiros desaconselhada"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -190,6 +178,35 @@ msgstr "O pacote contém entradas duplicadas"
 msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Extras do Firefox não têm permissão para executar \"coin miners\"."
 
+#: src/messages/locale-messagesjson.js:13
+msgid "String name is reserved for a predefined message"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:27
+msgid "Placeholder for message is missing"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:28
+msgid "A placeholder used in the message is not defined."
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:33
+msgid "Placeholder name contains invalid characters"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:40
+msgid "Placeholder is missing the content property"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:7
+msgid "Translation string is missing the message property"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:8
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Ver https://mzl.la/1ZOhoEN (MDN Docs) para mais informação."
@@ -219,12 +236,19 @@ msgid "The field is invalid."
 msgstr "O campo é inválido."
 
 #: src/messages/manifestjson.js:161
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "O script de conteúdo definido no manifesto não pôde ser encontrado em \"%(path)s\"."
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"O script de conteúdo definido no manifesto não pôde ser encontrado em "
+"\"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "O ficheiro de css do script de conteúdo definido no manifesto não pôde ser encontrado em \"%(path)s\"."
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"O ficheiro de css do script de conteúdo definido no manifesto não pôde ser "
+"encontrado em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -300,7 +324,8 @@ msgstr "Veja https://mzl.la/20PenXl (MDN Docs) para mais informação."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr "Uma content_security_policy personalizada precisa de revisão adicional."
+msgstr ""
+"Uma content_security_policy personalizada precisa de revisão adicional."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
@@ -333,3 +358,12 @@ msgstr "O campo é requerido."
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "A propriedade \"update_url\" não é utilizada pelo Firefox."
+
+#~ msgid "mozIndexedDB has been removed; use indexedDB instead"
+#~ msgstr "mozIndexedDB foi removido; em alternativa, utilize indexedDB"
+
+#~ msgid "mozIndexedDB has been removed; use indexedDB instead."
+#~ msgstr "mozIndexedDB foi removido; em alternativa, utilize indexedDB."
+
+#~ msgid "mozIndexedDB used as an object key/property"
+#~ msgstr "mozIndexedDB utilizado como uma chave/propriedade de objeto"
