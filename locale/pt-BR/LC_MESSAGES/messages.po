@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-01-31 00:10+0000\n"
+"PO-Revision-Date: 2018-02-12 23:07+0000\n"
 "Last-Translator: Maykon Chagas <mchagas@riseup.net>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -176,42 +176,39 @@ msgstr "O pacote contém entradas duplicadas"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
-"As extensões do Firefox não têm permissão para executar mineradores de moeda."
+msgstr "As extensões do Firefox não têm permissão para executar mineradores de moeda."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "O nome da string é reservado para uma mensagem predefinida"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "Está faltando o marcador de posição da mensagem"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "Um marcador de posição utilizado na mensagem não está definido."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "O nome do marcador de posição contém caracteres inválidos"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "Está faltando a propriedade de conteúdo do marcador de posição"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "Está faltando a propriedade da mensagem de tradução da string"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Nenhuma propriedade de mensagem \"message\" está definida para uma string (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"Veja https://mzl.la/1ZOhoEN (Documentação da MDN) para mais informações."
+msgstr "Veja https://mzl.la/1ZOhoEN (Documentação da MDN) para mais informações."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -238,19 +235,12 @@ msgid "The field is invalid."
 msgstr "O campo é inválido."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"O script de conteúdo definido no manifesto não foi encontrado em \"%(path)s"
-"\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "O script de conteúdo definido no manifesto não foi encontrado em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"O script de conteúdo do arquivo css definido no manifesto não foi encontrado "
-"em \"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "O script de conteúdo do arquivo css definido no manifesto não foi encontrado em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -298,8 +288,7 @@ msgstr "Extensão de imagem não suportada"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
-"Os ícones devem ter uma das extensões JPG/JPEG,, WebP, GIF, PNG ou SVG."
+msgstr "Os ícones devem ter uma das extensões JPG/JPEG,, WebP, GIF, PNG ou SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
@@ -323,13 +312,11 @@ msgstr "O \"manifest_version\" no manifest.json não é válido"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"Veja https://mzl.la/20PenXl (Documentação da MDN) para mais informações."
+msgstr "Veja https://mzl.la/20PenXl (Documentação da MDN) para mais informações."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
-"É necessário revisão adicional para o content_security_policy personalizado."
+msgstr "É necessário revisão adicional para o content_security_policy personalizado."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
