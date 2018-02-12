@@ -1,18 +1,17 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-01-30 19:32+0000\n"
+"PO-Revision-Date: 2018-02-12 20:49+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: dsb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 "X-Generator: Pontoon\n"
 
 #: src/linter.js:117
@@ -181,32 +180,31 @@ msgstr "Dodanki Firefox njesměju pjenjezekopaki wuwjasć."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "Mě znamuškowego rjeśazka jo wuměnjone za pśeddefiněrowanu powěźeńku"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "Zastupujucy symbol za powěźeńku felujo"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "Zastupujucy symbol, kótaryž se w powěźeńce wužywa, njejo definěrowany."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "Mě zastupujucego symbola njepłaśiwe znamuška wopśimujo"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "Zastupujucemu symboloju kakosć content felujo"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "Pśełožowańskemu znamuškowemu rjeśazkoju kakosć message felujo"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Zdźěleńska kakosć \"message\" njejo za znamuškowy rjeśazk nastajona (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
@@ -218,8 +216,7 @@ msgstr "\"strict_max_version\" njejo trěbny."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
-"Symbol, kótaryž jo se w manifesće definěrował, njedajo se w pakśiku namakaś."
+msgstr "Symbol, kótaryž jo se w manifesće definěrował, njedajo se w pakśiku namakaś."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
@@ -238,19 +235,12 @@ msgid "The field is invalid."
 msgstr "Pólo jo njepłaśiwe."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Wopśimjeśowy skript, kótaryž jo se w manifesće definěrował, njedajo se na "
-"\"%(path)s\" namakaś."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Wopśimjeśowy skript, kótaryž jo se w manifesće definěrował, njedajo se na \"%(path)s\" namakaś."
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"CSS-dataja wopśimjeśowego skripta, kótaraž jo se w manifesće definěrowała, "
-"njedajo se na \"%(path)s\" namakaś."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "CSS-dataja wopśimjeśowego skripta, kótaraž jo se w manifesće definěrowała, njedajo se na \"%(path)s\" namakaś."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
