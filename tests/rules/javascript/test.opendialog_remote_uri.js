@@ -4,7 +4,7 @@ import * as messages from 'messages';
 
 
 describe('opendialog_remote_uri', () => {
-  it('should warn on remote uris passed to openDialog', () => {
+  it('should warn on remote uris passed to openDialog', async () => {
     const code = `foo.openDialog("https://foo.com/bar/");
                 foo.openDialog("http://foo.com/bar/");
                 foo.openDialog("ftps://foo.com/bar/");
@@ -13,26 +13,22 @@ describe('opendialog_remote_uri', () => {
                 foo.openDialog("data:whatever");`;
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-    return jsScanner.scan()
-      .then(({ linterMessages }) => {
-        expect(linterMessages.length).toEqual(6);
-        linterMessages.forEach((message) => {
-          expect(message.code).toEqual(messages.OPENDIALOG_REMOTE_URI.code);
-          expect(message.type).toEqual(VALIDATION_WARNING);
-        });
-      });
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages.length).toEqual(6);
+    linterMessages.forEach((message) => {
+      expect(message.code).toEqual(messages.OPENDIALOG_REMOTE_URI.code);
+      expect(message.type).toEqual(VALIDATION_WARNING);
+    });
   });
 
-  it('should not warn on local uris passed to openDialog', () => {
+  it('should not warn on local uris passed to openDialog', async () => {
     const code = `foo.openDialog("/foo/bar/");
                 foo.openDialog("chrome://foo.com/bar/");
                 foo.openDialog("bar");
                 foo.openDialog("resource://foo.com/bar/")`;
     const jsScanner = new JavaScriptScanner(code, 'goodcode.js');
 
-    return jsScanner.scan()
-      .then(({ linterMessages }) => {
-        expect(linterMessages.length).toEqual(0);
-      });
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages.length).toEqual(0);
   });
 });

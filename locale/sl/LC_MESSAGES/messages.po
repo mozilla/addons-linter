@@ -5,7 +5,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
 "PO-Revision-Date: 2018-02-12 15:19+0000\n"
-"Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
+"Last-Translator: Rok Žerdin <rok.zerdin1990@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -129,7 +129,7 @@ msgstr "V datotekah JSON podvojeni ključi niso dovoljeni."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "Vaša datoteka JSON ni veljavna."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
@@ -169,7 +169,7 @@ msgstr ""
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
-msgstr ""
+msgstr "Kršitev Mozillinih pogojev uporabe."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
@@ -214,7 +214,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
-msgstr ""
+msgstr "\"strict_max_version\" ni zahtevan."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
@@ -234,7 +234,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
-msgstr ""
+msgstr "Polje je neveljavno."
 
 #: src/messages/manifestjson.js:161
 msgid ""
@@ -269,7 +269,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
-msgstr ""
+msgstr "Pokvarjena slikovna datoteka"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
@@ -305,7 +305,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
-msgstr ""
+msgstr "Neznano dovoljenje."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -345,12 +345,12 @@ msgstr ""
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "\"update_url\" ni dovoljen."
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
-msgstr ""
+msgstr "Polje je zahtevano."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "Lastnosti \"update_url\" Firefox ne uporablja."
