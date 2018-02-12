@@ -15,10 +15,10 @@ export const fakeMessageData = {
   message: 'message',
 };
 
-export const EMPTY_PNG = Buffer
-  .from(oneLine`iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMA
-                AQAABQABDQottAAAAABJRU5ErkJggg==`,
-    'base64');
+export const EMPTY_PNG = Buffer.from(
+  oneLine`iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMA
+          AQAABQABDQottAAAAABJRU5ErkJggg==`,
+  'base64');
 
 export function getRuleFiles(ruleType) {
   const ruleFiles = fs.readdirSync(`src/rules/${ruleType}`);
@@ -102,6 +102,26 @@ export function validLangpackManifestJSON(extra) {
       },
     },
   }, extra));
+}
+
+export function validLocaleMessagesJSON() {
+  return JSON.stringify(Object.assign({}, {
+    foo: {
+      message: 'bar',
+    },
+    Placeh0lder_Test: {
+      message: '$foo$ bar $BA2$',
+      placeholders: {
+        foo: {
+          content: '$1',
+          example: 'FOO',
+        },
+        BA2: {
+          content: 'baz',
+        },
+      },
+    },
+  }));
 }
 
 export function unexpectedSuccess() {

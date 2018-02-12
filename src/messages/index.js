@@ -8,3 +8,4 @@ export * from './json';
 export * from './layout';
 export * from './manifestjson';
 export * from './fluent';
+export * from './locale-messagesjson';

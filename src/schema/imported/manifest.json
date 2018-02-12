@@ -4,262 +4,9 @@
   "definitions": {},
   "refs": {},
   "types": {
-    "WebExtensionManifest": {
-      "allOf": [
-        {
-          "type": "object",
-          "description": "Represents a WebExtension manifest.json file",
-          "properties": {
-            "manifest_version": {
-              "type": "integer",
-              "minimum": 2,
-              "maximum": 2
-            },
-            "minimum_chrome_version": {
-              "type": "string"
-            },
-            "minimum_opera_version": {
-              "type": "string"
-            },
-            "applications": {
-              "type": "object",
-              "properties": {
-                "gecko": {
-                  "$ref": "#/types/FirefoxSpecificProperties"
-                }
-              }
-            },
-            "browser_specific_settings": {
-              "type": "object",
-              "properties": {
-                "gecko": {
-                  "$ref": "#/types/FirefoxSpecificProperties"
-                }
-              }
-            },
-            "name": {
-              "type": "string",
-              "preprocess": "localize",
-              "maxLength": 45,
-              "minLength": 2
-            },
-            "short_name": {
-              "type": "string",
-              "preprocess": "localize"
-            },
-            "description": {
-              "type": "string",
-              "preprocess": "localize"
-            },
-            "author": {
-              "type": "string",
-              "preprocess": "localize",
-              "onError": "warn"
-            },
-            "version": {
-              "type": "string",
-              "description": "Version string must be a string comprising one to four dot-separated integers (0-65535). E.g: 1.2.3.",
-              "format": "versionString"
-            },
-            "homepage_url": {
-              "type": "string",
-              "format": "ignore",
-              "preprocess": "localize",
-              "oneOf": [
-                {
-                  "format": "url"
-                },
-                {
-                  "pattern": "^__MSG_.*?__$"
-                }
-              ]
-            },
-            "icons": {
-              "type": "object",
-              "patternProperties": {
-                "^[1-9]\\d*$": {
-                  "type": "string"
-                }
-              },
-              "additionalProperties": false
-            },
-            "incognito": {
-              "type": "string",
-              "enum": [
-                "spanning"
-              ],
-              "onError": "warn"
-            },
-            "background": {
-              "anyOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "page": {
-                      "$ref": "manifest#/types/ExtensionURL"
-                    },
-                    "persistent": {
-                      "$ref": "#/types/PersistentBackgroundProperty"
-                    }
-                  },
-                  "required": [
-                    "page"
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "scripts": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "manifest#/types/ExtensionURL"
-                      }
-                    },
-                    "persistent": {
-                      "$ref": "#/types/PersistentBackgroundProperty"
-                    }
-                  },
-                  "required": [
-                    "scripts"
-                  ],
-                  "additionalProperties": false
-                }
-              ]
-            },
-            "options_ui": {
-              "type": "object",
-              "properties": {
-                "page": {
-                  "$ref": "manifest#/types/ExtensionURL"
-                },
-                "browser_style": {
-                  "type": "boolean"
-                },
-                "chrome_style": {
-                  "type": "boolean"
-                },
-                "open_in_tab": {
-                  "type": "boolean"
-                }
-              },
-              "additionalProperties": {
-                "deprecated": "An unexpected property was found in the WebExtension manifest"
-              },
-              "required": [
-                "page"
-              ]
-            },
-            "content_scripts": {
-              "type": "array",
-              "items": {
-                "$ref": "#/types/ContentScript"
-              }
-            },
-            "content_security_policy": {
-              "type": "string",
-              "format": "contentSecurityPolicy",
-              "onError": "warn"
-            },
-            "permissions": {
-              "type": "array",
-              "default": [],
-              "items": {
-                "allOf": [
-                  {
-                    "$ref": "#/types/PermissionOrOrigin"
-                  },
-                  {
-                    "onError": "warn"
-                  }
-                ],
-                "anyOf": [
-                  {},
-                  {
-                    "format": "deprecated"
-                  }
-                ]
-              },
-              "uniqueItems": true
-            },
-            "optional_permissions": {
-              "type": "array",
-              "items": {
-                "allOf": [
-                  {
-                    "$ref": "#/types/OptionalPermissionOrOrigin"
-                  },
-                  {
-                    "onError": "warn"
-                  }
-                ]
-              },
-              "default": []
-            },
-            "web_accessible_resources": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "developer": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "preprocess": "localize"
-                },
-                "url": {
-                  "type": "string",
-                  "preprocess": "localize"
-                }
-              }
-            }
-          },
-          "required": [
-            "manifest_version",
-            "name",
-            "version"
-          ]
-        },
-        {
-          "$ref": "browserAction#/definitions/WebExtensionManifest"
-        },
-        {
-          "$ref": "chrome_settings_overrides#/definitions/WebExtensionManifest"
-        },
-        {
-          "$ref": "commands#/definitions/WebExtensionManifest"
-        },
-        {
-          "$ref": "devtools#/definitions/WebExtensionManifest"
-        },
-        {
-          "$ref": "extension_protocol_handlers#/definitions/WebExtensionManifest"
-        },
-        {
-          "$ref": "i18n#/definitions/WebExtensionManifest"
-        },
-        {
-          "$ref": "omnibox#/definitions/WebExtensionManifest"
-        },
-        {
-          "$ref": "pageAction#/definitions/WebExtensionManifest"
-        },
-        {
-          "$ref": "sidebarAction#/definitions/WebExtensionManifest"
-        },
-        {
-          "$ref": "theme#/definitions/WebExtensionManifest"
-        },
-        {
-          "$ref": "url_overrides#/definitions/WebExtensionManifest"
-        }
-      ]
-    },
-    "WebExtensionLangpackManifest": {
+    "ManifestBase": {
       "type": "object",
-      "description": "Represents a WebExtension language pack manifest.json file",
+      "description": "Common properties for all manifest.json files",
       "properties": {
         "manifest_version": {
           "type": "integer",
@@ -284,7 +31,9 @@
         },
         "name": {
           "type": "string",
-          "preprocess": "localize"
+          "preprocess": "localize",
+          "maxLength": 45,
+          "minLength": 2
         },
         "short_name": {
           "type": "string",
@@ -300,85 +49,311 @@
           "onError": "warn"
         },
         "version": {
-          "type": "string"
+          "type": "string",
+          "description": "Version string must be a string comprising one to four dot-separated integers (0-65535). E.g: 1.2.3.",
+          "format": "versionString"
         },
         "homepage_url": {
           "type": "string",
-          "format": "url",
-          "preprocess": "localize"
-        },
-        "langpack_id": {
-          "type": "string",
-          "pattern": "^[a-zA-Z][a-zA-Z-]+$"
-        },
-        "languages": {
-          "type": "object",
-          "patternProperties": {
-            "^[a-z]{2}[a-zA-Z-]*$": {
-              "type": "object",
-              "properties": {
-                "chrome_resources": {
-                  "type": "object",
-                  "patternProperties": {
-                    "^[a-zA-Z-.]+$": {
-                      "anyOf": [
-                        {
-                          "$ref": "manifest#/types/ExtensionURL"
-                        },
-                        {
-                          "type": "object",
-                          "patternProperties": {
-                            "^[a-z]+$": {
-                              "$ref": "manifest#/types/ExtensionURL"
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  }
-                },
-                "version": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "chrome_resources",
-                "version"
-              ]
+          "format": "ignore",
+          "preprocess": "localize",
+          "oneOf": [
+            {
+              "format": "url"
+            },
+            {
+              "pattern": "^__MSG_.*?__$"
             }
-          }
-        },
-        "sources": {
-          "type": "object",
-          "patternProperties": {
-            "^[a-z]+$": {
-              "type": "object",
-              "properties": {
-                "base_path": {
-                  "$ref": "manifest#/types/ExtensionURL"
-                },
-                "paths": {
-                  "type": "array",
-                  "items": {
-                    "type": "string",
-                    "format": "strictRelativeUrl"
-                  }
-                }
-              },
-              "required": [
-                "base_path"
-              ]
-            }
-          }
+          ]
         }
       },
       "required": [
         "manifest_version",
         "name",
-        "version",
-        "langpack_id",
-        "languages"
+        "version"
       ]
+    },
+    "WebExtensionManifest": {
+      "allOf": [
+        {
+          "$merge": {
+            "source": {
+              "$ref": "manifest#/types/ManifestBase"
+            },
+            "with": {
+              "type": "object",
+              "description": "Represents a WebExtension manifest.json file",
+              "properties": {
+                "minimum_chrome_version": {
+                  "type": "string"
+                },
+                "minimum_opera_version": {
+                  "type": "string"
+                },
+                "icons": {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[1-9]\\d*$": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "incognito": {
+                  "type": "string",
+                  "enum": [
+                    "spanning"
+                  ],
+                  "onError": "warn"
+                },
+                "background": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "page": {
+                          "$ref": "manifest#/types/ExtensionURL"
+                        },
+                        "persistent": {
+                          "$ref": "#/types/PersistentBackgroundProperty"
+                        }
+                      },
+                      "required": [
+                        "page"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "scripts": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "manifest#/types/ExtensionURL"
+                          }
+                        },
+                        "persistent": {
+                          "$ref": "#/types/PersistentBackgroundProperty"
+                        }
+                      },
+                      "required": [
+                        "scripts"
+                      ]
+                    }
+                  ]
+                },
+                "options_ui": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "$ref": "manifest#/types/ExtensionURL"
+                    },
+                    "browser_style": {
+                      "type": "boolean"
+                    },
+                    "chrome_style": {
+                      "type": "boolean"
+                    },
+                    "open_in_tab": {
+                      "type": "boolean"
+                    }
+                  },
+                  "additionalProperties": {
+                    "deprecated": "An unexpected property was found in the WebExtension manifest"
+                  },
+                  "required": [
+                    "page"
+                  ]
+                },
+                "content_scripts": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/types/ContentScript"
+                  }
+                },
+                "content_security_policy": {
+                  "type": "string",
+                  "format": "contentSecurityPolicy",
+                  "onError": "warn"
+                },
+                "permissions": {
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/types/PermissionOrOrigin"
+                      },
+                      {
+                        "onError": "warn"
+                      }
+                    ],
+                    "anyOf": [
+                      {},
+                      {
+                        "format": "deprecated"
+                      }
+                    ]
+                  },
+                  "uniqueItems": true
+                },
+                "optional_permissions": {
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/types/OptionalPermissionOrOrigin"
+                      },
+                      {
+                        "onError": "warn"
+                      }
+                    ]
+                  },
+                  "default": []
+                },
+                "web_accessible_resources": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "developer": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "preprocess": "localize"
+                    },
+                    "url": {
+                      "type": "string",
+                      "preprocess": "localize"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$ref": "browserAction#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "chrome_settings_overrides#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "commands#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "devtools#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "experiments#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "extension_protocol_handlers#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "i18n#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "omnibox#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "pageAction#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "sidebarAction#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "url_overrides#/definitions/WebExtensionManifest"
+        }
+      ]
+    },
+    "WebExtensionLangpackManifest": {
+      "$merge": {
+        "source": {
+          "$ref": "manifest#/types/ManifestBase"
+        },
+        "with": {
+          "type": "object",
+          "description": "Represents a WebExtension language pack manifest.json file",
+          "properties": {
+            "homepage_url": {
+              "type": "string",
+              "format": "url",
+              "preprocess": "localize"
+            },
+            "langpack_id": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z-]+$"
+            },
+            "languages": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-z]{2}[a-zA-Z-]*$": {
+                  "type": "object",
+                  "properties": {
+                    "chrome_resources": {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[a-zA-Z-.]+$": {
+                          "anyOf": [
+                            {
+                              "$ref": "manifest#/types/ExtensionURL"
+                            },
+                            {
+                              "type": "object",
+                              "patternProperties": {
+                                "^[a-z]+$": {
+                                  "$ref": "manifest#/types/ExtensionURL"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "version": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "chrome_resources",
+                    "version"
+                  ]
+                }
+              }
+            },
+            "sources": {
+              "type": "object",
+              "patternProperties": {
+                "^[a-z]+$": {
+                  "type": "object",
+                  "properties": {
+                    "base_path": {
+                      "$ref": "manifest#/types/ExtensionURL"
+                    },
+                    "paths": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "format": "strictRelativeUrl"
+                      }
+                    }
+                  },
+                  "required": [
+                    "base_path"
+                  ]
+                }
+              }
+            }
+          },
+          "required": [
+            "langpack_id",
+            "languages"
+          ]
+        }
+      }
     },
     "ThemeIcons": {
       "type": "object",
@@ -661,7 +636,7 @@
         },
         "js": {
           "type": "array",
-          "description": "The list of CSS files to inject",
+          "description": "The list of JS files to inject",
           "items": {
             "$ref": "manifest#/types/ExtensionURL"
           }

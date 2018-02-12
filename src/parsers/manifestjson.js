@@ -9,7 +9,7 @@ import upath from 'upath';
 
 import { validateAddon, validateLangPack } from 'schema/validator';
 import { getConfig } from 'cli';
-import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE, IMAGE_FILE_EXTENSIONS } from 'const';
+import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE, IMAGE_FILE_EXTENSIONS, LOCALES_DIRECTORY, MESSAGES_JSON } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
@@ -17,7 +17,8 @@ import { isToolkitVersionString } from 'schema/formats';
 import { parseCspPolicy, normalizePath } from 'utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
-function getImageMetadata(io, iconPath) {
+
+async function getImageMetadata(io, iconPath) {
   // Get a non-utf8 input stream by setting encoding to null.
   // (only needed for the 'io/directory' module which open the file using the utf-8
   // encoding by default).
@@ -27,7 +28,8 @@ function getImageMetadata(io, iconPath) {
     encoding = 'utf-8';
   }
 
-  return io.getFileAsStream(iconPath, { encoding }).then(probeImageSize);
+  const data = await io.getFileAsStream(iconPath, { encoding });
+  return probeImageSize(data);
 }
 
 
@@ -192,7 +194,7 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (this.parsedJSON.default_locale) {
       const msg = path.join(
-        '_locales', this.parsedJSON.default_locale, 'messages.json');
+        LOCALES_DIRECTORY, this.parsedJSON.default_locale, 'messages.json');
 
       // Convert filename to unix path separator before
       // searching it into the scanned files map.
@@ -216,21 +218,44 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.default_locale && this.io.path) {
-      const rootPath = path.join(this.io.path, '_locales');
+      const rootPath = path.join(this.io.path, LOCALES_DIRECTORY);
       if (existsSync(rootPath)) {
         readdirSync(rootPath).forEach((langDir) => {
           if (statSync(path.join(rootPath, langDir)).isDirectory()) {
-            const filePath = path.join('_locales', langDir, 'messages.json');
+            const filePath = path.join(LOCALES_DIRECTORY, langDir, MESSAGES_JSON);
 
             // Convert filename to unix path separator before
             // searching it into the scanned files map.
             if (!this.io.files[upath.toUnix(filePath)]) {
-              this.collector.addError(messages.noMessagesFileInLocales(path.join('_locales', langDir)));
+              this.collector.addError(messages.noMessagesFileInLocales(
+                path.join(LOCALES_DIRECTORY, langDir)));
               this.isValid = false;
             }
           }
         });
       }
+    }
+  }
+
+  async validateIcon(iconPath, expectedSize) {
+    try {
+      const info = await getImageMetadata(this.io, iconPath);
+      if (info.width !== info.height) {
+        this.collector.addError(messages.iconIsNotSquare(iconPath));
+        this.isValid = false;
+      } else if (info.mime !== 'image/svg+xml' &&
+                  parseInt(info.width, 10) !== parseInt(expectedSize, 10)) {
+        this.collector.addWarning(messages.iconSizeInvalid({
+          path: iconPath,
+          expected: parseInt(expectedSize, 10),
+          actual: parseInt(info.width, 10),
+        }));
+      }
+    } catch (err) {
+      log.debug(`Unexpected error raised while validating icon "${iconPath}"`, err);
+      this.collector.addWarning(messages.corruptIconFile({
+        path: iconPath,
+      }));
     }
   }
 
@@ -245,27 +270,7 @@ export default class ManifestJSONParser extends JSONParser {
       } else if (!IMAGE_FILE_EXTENSIONS.includes(_path.split('.').pop().toLowerCase())) {
         this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
       } else {
-        promises.push(
-          getImageMetadata(this.io, _path)
-            .then((info) => {
-              if (info.width !== info.height) {
-                this.collector.addError(messages.iconIsNotSquare(_path));
-                this.isValid = false;
-              } else if (info.mime !== 'image/svg+xml' &&
-                         parseInt(info.width, 10) !== parseInt(size, 10)) {
-                this.collector.addWarning(messages.iconSizeInvalid({
-                  path: _path,
-                  expected: parseInt(size, 10),
-                  actual: parseInt(info.width, 10),
-                }));
-              }
-            })
-            .catch(() => {
-              this.collector.addWarning(messages.corruptIconFile({
-                path: _path,
-              }));
-            })
-        );
+        promises.push(this.validateIcon(_path, size));
       }
     });
     return Promise.all(promises);

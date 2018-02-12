@@ -1,45 +1,46 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-01-19 00:33+0000\n"
-"PO-Revision-Date: 2018-01-19 00:33+0000\n"
-"Last-Translator: Automatically generated\n"
+"POT-Creation-Date: 2018-01-30 18:56+0000\n"
+"PO-Revision-Date: 2018-01-26 17:21+0000\n"
+"Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: none\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Language: tr\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pontoon\n"
 
-#: src/linter.js:111
+#: src/linter.js:117
 msgid "Validation Summary:"
-msgstr ""
-
-#: src/linter.js:128
-msgid "Code"
-msgstr ""
+msgstr "Doğrulama özeti:"
 
 #: src/linter.js:134
-msgid "Message"
-msgstr ""
+msgid "Code"
+msgstr "Kod"
 
 #: src/linter.js:140
-msgid "Description"
-msgstr ""
+msgid "Message"
+msgstr "Mesaj"
 
 #: src/linter.js:146
-msgid "File"
-msgstr ""
+msgid "Description"
+msgstr "Açıklama"
 
 #: src/linter.js:152
-msgid "Line"
-msgstr ""
+msgid "File"
+msgstr "Dosya"
 
 #: src/linter.js:158
+msgid "Line"
+msgstr "Satır"
+
+#: src/linter.js:164
 msgid "Column"
-msgstr ""
+msgstr "Sütun"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
@@ -119,7 +120,7 @@ msgstr ""
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "JavaScript söz dizimi hatası"
 
 #: src/messages/javascript.js:92
 msgid "Unexpected global passed as an argument"
@@ -185,6 +186,10 @@ msgstr ""
 msgid "Package contains duplicate entries"
 msgstr ""
 
+#: src/messages/layout.js:90
+msgid "Firefox add-ons are not allowed to run coin miners."
+msgstr ""
+
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr ""
@@ -211,7 +216,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
-msgstr ""
+msgstr "Alan geçersiz."
 
 #: src/messages/manifestjson.js:161
 msgid ""
@@ -226,15 +231,15 @@ msgstr ""
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "Eklentide yasaklı içerik bulundu."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "Bu eklentide yasaklı içerik bulunuyor."
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr ""
+msgstr "Simgeler kare olmalıdır."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
@@ -246,7 +251,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
-msgstr ""
+msgstr "Hasarlı resim dosyası"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
@@ -269,7 +274,7 @@ msgid "Unsupported image extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:236
-msgid "Icons should be one of JPG, JPEG, WebP, GIFF, PNG or SVG."
+msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr ""
 
 #: src/messages/manifestjson.js:244
@@ -282,7 +287,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
-msgstr ""
+msgstr "Bilinmeyen izin."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -326,7 +331,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
-msgstr ""
+msgstr "Bu alan zorunludur."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
