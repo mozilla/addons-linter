@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-01-31 19:51+0000\n"
+"PO-Revision-Date: 2018-02-12 21:50+0000\n"
 "Last-Translator: Andreas Pettersson <az@kth.se>\n"
 "Language-Team: none\n"
 "Language: sv_SE\n"
@@ -180,19 +180,19 @@ msgstr "Firefox tillägg får inte köra coin-miners."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "Strängnamn är reserverat för ett fördefinierat meddelande"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "Platshållare för meddelande saknas"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "En platshållare som används i meddelandet är inte definierad."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "Namn på platshållare innehåller ogiltiga tecken"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
@@ -203,8 +203,7 @@ msgid "Translation string is missing the message property"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
@@ -236,18 +235,12 @@ msgid "The field is invalid."
 msgstr "Fältet är ogiltigt."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Innehållsskript definierat i manifestet kunde inte hittas på \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Innehållsskript definierat i manifestet kunde inte hittas på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Innehållsskriptets css-fil definierat i manifestet kunde inte hittas på "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Innehållsskriptets css-fil definierat i manifestet kunde inte hittas på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
