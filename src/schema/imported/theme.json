@@ -89,23 +89,12 @@
           ]
         }
       ]
-    },
-    "WebExtensionManifest": {
-      "properties": {
-        "theme": {
-          "$ref": "#/types/ThemeType"
-        }
-      }
     }
   },
   "refs": {
     "theme#/definitions/Permission": {
       "namespace": "manifest",
       "type": "Permission"
-    },
-    "theme#/definitions/WebExtensionManifest": {
-      "namespace": "manifest",
-      "type": "WebExtensionManifest"
     }
   },
   "types": {
@@ -124,6 +113,31 @@
       },
       "required": [
         "theme"
+      ]
+    },
+    "ThemeColor": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+          }
+        },
+        {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "number"
+          }
+        }
       ]
     },
     "ThemeType": {
@@ -150,34 +164,46 @@
           "type": "object",
           "properties": {
             "accentcolor": {
-              "type": "string"
+              "$ref": "#/types/ThemeColor"
             },
             "frame": {
-              "type": "array",
-              "items": {
-                "type": "number"
-              }
-            },
-            "tab_text": {
-              "type": "array",
-              "items": {
-                "type": "number"
-              }
+              "$ref": "#/types/ThemeColor"
             },
             "textcolor": {
-              "type": "string"
+              "$ref": "#/types/ThemeColor"
+            },
+            "background_tab_text": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "tab_text": {
+              "$ref": "#/types/ThemeColor"
             },
             "toolbar": {
-              "type": "string"
+              "$ref": "#/types/ThemeColor"
             },
             "toolbar_text": {
-              "type": "string"
+              "$ref": "#/types/ThemeColor"
+            },
+            "bookmark_text": {
+              "$ref": "#/types/ThemeColor"
             },
             "toolbar_field": {
-              "type": "string"
+              "$ref": "#/types/ThemeColor"
             },
             "toolbar_field_text": {
-              "type": "string"
+              "$ref": "#/types/ThemeColor"
+            },
+            "toolbar_field_border": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "toolbar_top_separator": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "toolbar_bottom_separator": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "toolbar_vertical_separator": {
+              "$ref": "#/types/ThemeColor"
             }
           }
         },
@@ -464,6 +490,33 @@
               }
             }
           }
+        }
+      }
+    },
+    "ThemeManifest": {
+      "$merge": {
+        "source": {
+          "$ref": "manifest#/types/ManifestBase"
+        },
+        "with": {
+          "type": "object",
+          "description": "Contents of manifest.json for a static theme",
+          "properties": {
+            "theme": {
+              "$ref": "#/types/ThemeType"
+            },
+            "icons": {
+              "type": "object",
+              "patternProperties": {
+                "^[1-9]\\d*$": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "required": [
+            "theme"
+          ]
         }
       }
     }

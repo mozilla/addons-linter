@@ -353,6 +353,7 @@
         "video",
         "audio",
         "launcher",
+        "bookmark",
         "browser_action",
         "page_action",
         "tab"
@@ -435,6 +436,10 @@
           "type": "boolean",
           "description": "A flag indicating the state of a checkbox or radio item after it is clicked."
         },
+        "bookmarkId": {
+          "type": "string",
+          "description": "The id of the bookmark where the context menu was clicked, if it was on a bookmark."
+        },
         "modifiers": {
           "type": "array",
           "items": {
@@ -453,6 +458,7 @@
       "required": [
         "menuItemId",
         "editable",
+        "bookmarkId",
         "modifiers"
       ]
     }

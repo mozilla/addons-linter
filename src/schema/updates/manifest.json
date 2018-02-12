@@ -21,52 +21,57 @@
       "WebExtensionManifest": {
         "allOf": [
           {
-            "properties": {
-              "background": {
-                "anyOf": [
-                  {
+            "$merge": {
+              "with": {
+                "properties": {
+                  "background": {
+                    "anyOf": [
+                      {
+                        "additionalProperties": false
+                      }
+                    ]
+                  },
+                  "icons": {
                     "additionalProperties": false
                   },
-                  {
-                    "additionalProperties": false
+                  "permissions": {
+                    "items": {
+                      "anyOf": [
+                        {},
+                        { "format": "deprecated" }
+                      ]
+                    },
+                    "uniqueItems": true
                   }
-                ]
-              },
-              "homepage_url": {
-                "format": "ignore",
-                "type": "string",
-                "oneOf": [
-                  {
-                    "format": "url"
-                  },
-                  {
-                    "pattern": "^__MSG_.*?__$"
-                  }
-                ]
-              },
-              "icons": {
-                "additionalProperties": false
-              },
-              "permissions": {
-                "items": {
-                  "anyOf": [
-                    {},
-                    { "format": "deprecated" }
-                  ]
-                },
-                "uniqueItems": true
-              },
-              "name": {
-                "maxLength": 45,
-                "minLength": 2
-              },
-              "version": {
-                "description": "Version string must be a string comprising one to four dot-separated integers (0-65535). E.g: 1.2.3.",
-                "format": "versionString"
+                }
               }
             }
           }
         ]
+      },
+      "ManifestBase": {
+        "properties": {
+          "homepage_url": {
+            "format": "ignore",
+            "type": "string",
+            "oneOf": [
+              {
+                "format": "url"
+              },
+              {
+                "pattern": "^__MSG_.*?__$"
+              }
+            ]
+          },
+          "name": {
+            "maxLength": 45,
+            "minLength": 2
+          },
+          "version": {
+            "description": "Version string must be a string comprising one to four dot-separated integers (0-65535). E.g: 1.2.3.",
+            "format": "versionString"
+          }
+        }
       }
     }
   }

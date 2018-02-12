@@ -1,0 +1,133 @@
+{
+  "id": "contentScripts",
+  "functions": [
+    {
+      "name": "register",
+      "type": "function",
+      "description": "Register a content script programmatically",
+      "async": true,
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/RegisteredContentScriptOptions"
+            },
+            {
+              "name": "contentScriptOptions"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {},
+  "refs": {},
+  "types": {
+    "ExtensionFileOrCode": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "file": {
+              "$ref": "manifest#/types/ExtensionURL"
+            }
+          },
+          "required": [
+            "file"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "code"
+          ]
+        }
+      ]
+    },
+    "RegisteredContentScriptOptions": {
+      "type": "object",
+      "description": "Details of a content script registered programmatically",
+      "properties": {
+        "matches": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "manifest#/types/MatchPattern"
+          }
+        },
+        "excludeMatches": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "manifest#/types/MatchPattern"
+          }
+        },
+        "includeGlobs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "excludeGlobs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "css": {
+          "type": "array",
+          "description": "The list of CSS files to inject",
+          "items": {
+            "$ref": "#/types/ExtensionFileOrCode"
+          }
+        },
+        "js": {
+          "type": "array",
+          "description": "The list of JS files to inject",
+          "items": {
+            "$ref": "#/types/ExtensionFileOrCode"
+          }
+        },
+        "allFrames": {
+          "type": "boolean",
+          "description": "If allFrames is <code>true</code>, implies that the JavaScript or CSS should be injected into all frames of current page. By default, it's <code>false</code> and is only injected into the top frame."
+        },
+        "matchAboutBlank": {
+          "type": "boolean",
+          "description": "If matchAboutBlank is true, then the code is also injected in about:blank and about:srcdoc frames if your extension has access to its parent document. Code cannot be inserted in top-level about:-frames. By default it is <code>false</code>."
+        },
+        "runAt": {
+          "allOf": [
+            {
+              "$ref": "extensionTypes#/types/RunAt"
+            },
+            {
+              "description": "The soonest that the JavaScript or CSS will be injected into the tab. Defaults to \"document_idle\"."
+            }
+          ]
+        }
+      },
+      "required": [
+        "matches"
+      ]
+    },
+    "RegisteredContentScript": {
+      "type": "object",
+      "description": "An object that represents a content script registered programmatically",
+      "functions": [
+        {
+          "name": "unregister",
+          "type": "function",
+          "description": "Unregister a content script registered programmatically",
+          "async": true,
+          "parameters": []
+        }
+      ]
+    }
+  }
+}

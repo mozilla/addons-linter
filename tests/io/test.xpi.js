@@ -5,7 +5,7 @@ import { EventEmitter } from 'events';
 import { Xpi } from 'io';
 import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
 
-import { unexpectedSuccess } from '../helpers';
+import { readStringFromStream } from '../helpers';
 
 
 const defaultData = {
@@ -60,25 +60,23 @@ describe('Xpi.open()', function xpiCallback() {
     };
   });
 
-  it('should resolve with zipfile', () => {
+  it('should resolve with zipfile', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     // Return the fake zip to the open callback.
     this.openStub.yieldsAsync(null, this.fakeZipFile);
-    return myXpi.open()
-      .then((zipfile) => {
-        expect(zipfile.testprop).toEqual('I am the fake zip');
-      });
+
+    const zipfile = await myXpi.open();
+    expect(zipfile.testprop).toEqual('I am the fake zip');
   });
 
-  it('should reject on error', () => {
+  it('should reject on error', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     // Return the fake zip to the open callback.
     this.openStub.yieldsAsync(new Error('open() test error'));
-    return myXpi.open()
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('open() test');
-      });
+
+    await expect(
+      myXpi.open()
+    ).rejects.toThrow('open() test');
   });
 });
 
@@ -110,20 +108,20 @@ describe('xpi.getFiles()', function getFilesCallback() {
     expect(Object.keys(myXpi.files).length).toEqual(0);
   });
 
-  it('should return cached data when available', () => {
+  it('should return cached data when available', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
-    return myXpi.getFiles()
-      .then((files) => {
-        expect(files).toEqual(myXpi.files);
-        expect(this.openStub.called).toBeFalsy();
-      });
+
+    await expect(
+      myXpi.getFiles()
+    ).resolves.toEqual(myXpi.files);
+    expect(this.openStub.called).toBeFalsy();
   });
 
-  it('should contain expected files', () => {
+  it('should contain expected files', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     const expected = {
       'manifest.json': installFileEntry,
@@ -149,13 +147,12 @@ describe('xpi.getFiles()', function getFilesCallback() {
     // Call the close event callback
     this.closeStub.yieldsAsync();
 
-    return myXpi.getFiles(onEventsSubscribed)
-      .then((files) => {
-        expect(files).toEqual(expected);
-      });
+    await expect(
+      myXpi.getFiles(onEventsSubscribed)
+    ).resolves.toEqual(expected);
   });
 
-  it('can be configured to exclude files', () => {
+  it('can be configured to exclude files', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
 
     // Return the fake zip to the open callback.
@@ -177,14 +174,13 @@ describe('xpi.getFiles()', function getFilesCallback() {
     myXpi.setScanFileCallback((filePath) => {
       return !/manifest\.json/.test(filePath);
     });
-    return myXpi.getFiles(onEventsSubscribed)
-      .then((files) => {
-        expect(files['chrome.manifest']).toEqual(chromeManifestEntry);
-        expect(files['manifest.json']).not.toBeDefined();
-      });
+
+    const files = await myXpi.getFiles(onEventsSubscribed);
+    expect(files['chrome.manifest']).toEqual(chromeManifestEntry);
+    expect(files['manifest.json']).not.toBeDefined();
   });
 
-  it('can be configured to exclude files when cached', () => {
+  it('can be configured to exclude files when cached', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     // Populate the file cache:
     myXpi.files = {
@@ -201,14 +197,13 @@ describe('xpi.getFiles()', function getFilesCallback() {
     myXpi.setScanFileCallback((filePath) => {
       return !/manifest\.json/.test(filePath);
     });
-    return myXpi.getFiles()
-      .then((files) => {
-        expect(files['chrome.manifest']).toEqual(chromeManifestEntry);
-        expect(files['manifest.json']).not.toBeDefined();
-      });
+
+    const files = await myXpi.getFiles();
+    expect(files['chrome.manifest']).toEqual(chromeManifestEntry);
+    expect(files['manifest.json']).not.toBeDefined();
   });
 
-  it('should reject on duplicate entries', () => {
+  it('should reject on duplicate entries', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     this.openStub.yieldsAsync(null, this.fakeZipFile);
 
@@ -218,23 +213,19 @@ describe('xpi.getFiles()', function getFilesCallback() {
       entryCallback.call(null, dupeInstallFileEntry);
     };
 
-    return myXpi.getFiles(onEventsSubscribed)
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err).toBeInstanceOf(Error);
-        expect(err.message).toContain('DuplicateZipEntry');
-      });
+    await expect(
+      myXpi.getFiles(onEventsSubscribed)
+    ).rejects.toThrow('DuplicateZipEntry');
   });
 
-  it('should reject on errors in open()', () => {
+  it('should reject on errors in open()', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
 
     this.openStub.yieldsAsync(new Error('open test'), this.fakeZipFile);
-    return myXpi.getFiles()
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('open test');
-      });
+
+    await expect(
+      myXpi.getFiles()
+    ).rejects.toThrow('open test');
   });
 });
 
@@ -265,21 +256,19 @@ describe('Xpi.getFile()', function getFileCallback() {
 });
 
 describe('Xpi.checkPath()', function checkPathCallback() {
-  it('should reject if path does not exist', () => {
+  it('should reject if path does not exist', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'manifest.json': installFileEntry,
       'chrome.manifest': chromeManifestEntry,
     };
 
-    return myXpi.getFileAsStream('whatever')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('Path "whatever" does not exist');
-      });
+    await expect(
+      myXpi.getFileAsStream('whatever')
+    ).rejects.toThrow('Path "whatever" does not exist');
   });
 
-  it('should reject if file is too big', () => {
+  it('should reject if file is too big', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     const fakeFileMeta = {
       uncompressedSize: 1024 * 1024 * 102,
@@ -290,14 +279,12 @@ describe('Xpi.checkPath()', function checkPathCallback() {
       'chrome.manifest': fakeFileMeta,
     };
 
-    return myXpi.getFileAsStream('manifest.json')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('File "manifest.json" is too large');
-      });
+    await expect(
+      myXpi.getFileAsStream('manifest.json')
+    ).rejects.toThrow('File "manifest.json" is too large');
   });
 
-  it('should reject if file is too big for getFileAsString too', () => {
+  it('should reject if file is too big for getFileAsString too', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     const fakeFileMeta = {
       uncompressedSize: 1024 * 1024 * 102,
@@ -308,11 +295,9 @@ describe('Xpi.checkPath()', function checkPathCallback() {
       'chrome.manifest': fakeFileMeta,
     };
 
-    return myXpi.getFileAsString('manifest.json')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('File "manifest.json" is too large');
-      });
+    await expect(
+      myXpi.getFileAsString('manifest.json')
+    ).rejects.toThrow('File "manifest.json" is too large');
   });
 });
 
@@ -336,7 +321,7 @@ describe('Xpi.getChunkAsBuffer()', function getChunkAsBufferCallback() {
     };
   });
 
-  it('should reject if error in openReadStream', () => {
+  it('should reject if error in openReadStream', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'manifest.json': installFileEntry,
@@ -346,14 +331,12 @@ describe('Xpi.getChunkAsBuffer()', function getChunkAsBufferCallback() {
     this.openReadStreamStub.yieldsAsync(
       new Error('getChunkAsBuffer openReadStream test'));
 
-    return myXpi.getChunkAsBuffer('manifest.json')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('getChunkAsBuffer openReadStream test');
-      });
+    await expect(
+      myXpi.getChunkAsBuffer('manifest.json')
+    ).rejects.toThrow('getChunkAsBuffer openReadStream test');
   });
 
-  it('should resolve with a buffer', () => {
+  it('should resolve with a buffer', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'manifest.json': installFileEntry,
@@ -368,12 +351,10 @@ describe('Xpi.getChunkAsBuffer()', function getChunkAsBufferCallback() {
     this.openReadStreamStub.yields(null, rstream);
 
     // Just grab the first two characters.
-    return myXpi.getChunkAsBuffer('manifest.json', 2)
-      .then((buffer) => {
-        // The file contains: 123\n. This tests that we are getting just
-        // the first two characters in the buffer.
-        expect(buffer.toString()).toEqual('12');
-      });
+    const buffer = await myXpi.getChunkAsBuffer('manifest.json', 2);
+    // The file contains: 123\n. This tests that we are getting just
+    // the first two characters in the buffer.
+    expect(buffer.toString()).toEqual('12');
   });
 });
 
@@ -391,7 +372,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
     };
   });
 
-  it('should reject if error in openReadStream', () => {
+  it('should reject if error in openReadStream', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'manifest.json': installFileEntry,
@@ -402,14 +383,12 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
     this.openReadStreamStub.yieldsAsync(
       new Error('getFileAsStream openReadStream test'));
 
-    return myXpi.getFileAsStream('manifest.json')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('getFileAsStream openReadStream test');
-      });
+    await expect(
+      myXpi.getFileAsStream('manifest.json')
+    ).rejects.toThrow('getFileAsStream openReadStream test');
   });
 
-  it('should resolve with a readable stream', () => {
+  it('should resolve with a readable stream', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'manifest.json': installFileEntry,
@@ -425,34 +404,15 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
 
     this.openReadStreamStub.yields(null, rstream);
 
-    return myXpi.getFileAsStream('manifest.json')
-      .then((readStream) => {
-        return new Promise((resolve, reject) => {
-          let chunks = '';
-          readStream
-            .on('readable', () => {
-              let chunk;
-              // eslint-disable-next-line no-cond-assign
-              while ((chunk = readStream.read()) !== null) {
-                chunks += chunk.toString();
-              }
-            })
-            .on('end', () => {
-              resolve(chunks);
-            })
-            .on('error', (err) => {
-              reject(err);
-            });
-        })
-          .then((chunks) => {
-            const [chunk1, chunk2] = chunks.split('\n');
-            expect(chunk1).toEqual('line one');
-            expect(chunk2).toEqual('line two');
-          });
-      });
+    const readStream = await myXpi.getFileAsStream('manifest.json');
+
+    const chunks = await readStringFromStream(readStream);
+    const [chunk1, chunk2] = chunks.split('\n');
+    expect(chunk1).toEqual('line one');
+    expect(chunk2).toEqual('line two');
   });
 
-  it('should resolve with a string', () => {
+  it('should resolve with a string', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'manifest.json': installFileEntry,
@@ -468,13 +428,12 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
 
     this.openReadStreamStub.yields(null, rstream);
 
-    return myXpi.getFileAsString('manifest.json')
-      .then((string) => {
-        expect(string).toEqual('line one\nline two');
-      });
+    await expect(
+      myXpi.getFileAsString('manifest.json')
+    ).resolves.toBe('line one\nline two');
   });
 
-  it('should strip a BOM', () => {
+  it('should strip a BOM', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'manifest.json': installFileEntry,
@@ -486,13 +445,11 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
     const rstream = fs.createReadStream('tests/fixtures/io/dir3/foo.txt');
     this.openReadStreamStub.yields(null, rstream);
 
-    return myXpi.getFileAsString('manifest.json')
-      .then((string) => {
-        expect(string.charCodeAt(0) === 0xFEFF).toBeFalsy();
-      });
+    const string = await myXpi.getFileAsString('manifest.json');
+    expect(string.charCodeAt(0) === 0xFEFF).toBeFalsy();
   });
 
-  it('should reject if error in openReadStream from readAsString', () => {
+  it('should reject if error in openReadStream from readAsString', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'manifest.json': installFileEntry,
@@ -503,14 +460,12 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
     this.openReadStreamStub.yields(
       new Error('getFileAsString openReadStream test'));
 
-    return myXpi.getFileAsString('manifest.json')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('getFileAsString openReadStream test');
-      });
+    await expect(
+      myXpi.getFileAsString('manifest.json')
+    ).rejects.toThrow('getFileAsString openReadStream test');
   });
 
-  it('should reject if stream emits error', () => {
+  it('should reject if stream emits error', async () => {
     const fakeStreamEmitter = new EventEmitter();
 
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
@@ -526,11 +481,9 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
       return Promise.resolve(fakeStreamEmitter);
     };
 
-    return myXpi.getFileAsString('manifest.json')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('¡hola!');
-      });
+    await expect(
+      myXpi.getFileAsString('manifest.json')
+    ).rejects.toThrow('¡hola!');
   });
 });
 
@@ -541,7 +494,7 @@ describe('Xpi.getFilesByExt()', function getFilesByExtCallback() {
     };
   });
 
-  it('should return all JS files', () => {
+  it('should return all JS files', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'manifest.json': installFileEntry,
@@ -550,19 +503,17 @@ describe('Xpi.getFilesByExt()', function getFilesByExtCallback() {
       'secondary.js': jsSecondaryFileEntry,
     };
 
-    return myXpi.getFilesByExt('.js')
-      .then((jsFiles) => {
-        expect(jsFiles.length).toEqual(2);
-        expect(jsFiles[0]).toEqual('main.js');
-        expect(jsFiles[1]).toEqual('secondary.js');
+    const jsFiles = await myXpi.getFilesByExt('.js');
+    expect(jsFiles.length).toEqual(2);
+    expect(jsFiles[0]).toEqual('main.js');
+    expect(jsFiles[1]).toEqual('secondary.js');
 
-        for (let i = 0; i < jsFiles.length; i++) {
-          expect(jsFiles[i].endsWith('.js')).toBeTruthy();
-        }
-      });
+    for (let i = 0; i < jsFiles.length; i++) {
+      expect(jsFiles[i].endsWith('.js')).toBeTruthy();
+    }
   });
 
-  it('should return all CSS files', () => {
+  it('should return all CSS files', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'other.css': installFileEntry,
@@ -571,19 +522,17 @@ describe('Xpi.getFilesByExt()', function getFilesByExtCallback() {
       'secondary.js': jsSecondaryFileEntry,
     };
 
-    return myXpi.getFilesByExt('.css')
-      .then((cssFiles) => {
-        expect(cssFiles.length).toEqual(2);
-        expect(cssFiles[0]).toEqual('other.css');
-        expect(cssFiles[1]).toEqual('styles.css');
+    const cssFiles = await myXpi.getFilesByExt('.css');
+    expect(cssFiles.length).toEqual(2);
+    expect(cssFiles[0]).toEqual('other.css');
+    expect(cssFiles[1]).toEqual('styles.css');
 
-        for (let i = 0; i < cssFiles.length; i++) {
-          expect(cssFiles[i].endsWith('.css')).toBeTruthy();
-        }
-      });
+    for (let i = 0; i < cssFiles.length; i++) {
+      expect(cssFiles[i].endsWith('.css')).toBeTruthy();
+    }
   });
 
-  it('should return all HTML files', () => {
+  it('should return all HTML files', async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
     myXpi.files = {
       'manifest.json': installFileEntry,
@@ -594,26 +543,23 @@ describe('Xpi.getFilesByExt()', function getFilesByExtCallback() {
       'secondary.js': jsSecondaryFileEntry,
     };
 
-    return myXpi.getFilesByExt('.html', '.htm')
-      .then((htmlFiles) => {
-        expect(htmlFiles.length).toEqual(3);
-        expect(htmlFiles[0]).toEqual('index.html');
-        expect(htmlFiles[1]).toEqual('second.htm');
-        expect(htmlFiles[2]).toEqual('third.html');
+    const htmlFiles = await myXpi.getFilesByExt('.html', '.htm');
+    expect(htmlFiles.length).toEqual(3);
+    expect(htmlFiles[0]).toEqual('index.html');
+    expect(htmlFiles[1]).toEqual('second.htm');
+    expect(htmlFiles[2]).toEqual('third.html');
 
-        for (let i = 0; i < htmlFiles.length; i++) {
-          expect(htmlFiles[i].endsWith('.html') ||
-                    htmlFiles[i].endsWith('.htm')).toBeTruthy();
-        }
-      });
+    for (let i = 0; i < htmlFiles.length; i++) {
+      expect(htmlFiles[i].endsWith('.html') ||
+                htmlFiles[i].endsWith('.htm')).toBeTruthy();
+    }
   });
 
-  it("should throw if file extension doesn't start with '.'", () => {
+  it("should throw if file extension doesn't start with '.'", async () => {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
-    return myXpi.getFilesByExt('css')
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('File extension must start with');
-      });
+
+    await expect(
+      myXpi.getFilesByExt('css')
+    ).rejects.toThrow('File extension must start with');
   });
 });

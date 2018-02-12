@@ -1,5 +1,6 @@
 dist
 coverage
 tests/fixtures/jslibs
+tests/fixtures/coinminers
 tests/**/*.json
 src/schema/imported/index.js

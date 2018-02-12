@@ -8,6 +8,7 @@ import browsingData from './browsing_data.json';
 import chrome_settings_overrides from './chrome_settings_overrides.json';
 import clipboard from './clipboard.json';
 import commands from './commands.json';
+import contentScripts from './content_scripts.json';
 import contextualIdentities from './contextual_identities.json';
 import cookies from './cookies.json';
 import devtools from './devtools.json';
@@ -47,7 +48,7 @@ import url_overrides from './url_overrides.json';
 import webNavigation from './web_navigation.json';
 import webRequest from './web_request.json';
 import windows from './windows.json';
-import contextMenus from './contextMenus.json';
+import contextMenus from './context_menus.json';
 export default [
   alarms,
   bookmarks,
@@ -57,6 +58,7 @@ export default [
   chrome_settings_overrides,
   clipboard,
   commands,
+  contentScripts,
   contextualIdentities,
   cookies,
   devtools,

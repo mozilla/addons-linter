@@ -230,6 +230,7 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :white_check_mark: | error |  |  | Bad zip file  | |  | | BAD_ZIPFILE |
 | :white_check_mark: | warning |  |  | Already signed  | | https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagelayout.py  | | ALREADY_SIGNED |
 | :white_check_mark: | notice | MOZILLA_COND_OF_USE | | Mozilla conditions of use violation | | | | |
+| :white_check_mark: | warning | COINMINER_USAGE_DETECTED | Firefox add-ons are not allowed to run coin miners | | | | |
 
 ## Type detection
 
@@ -258,8 +259,6 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :negative_squared_cross_mark: | warning | new_tab_override |  |  Possible attempt to override new tab page |  | | | |
 | :x: | warning | unsafe_template_escape |  | Potentially unsafe template escape sequence | | | | |
 | :x: | warning | js_protoype_extension_dissallowed |  | JS prototype extension not allowed  | | | | |
-| :white_check_mark: | warning | mozindexdb_removed |  | mozIndexedDB has been removed |  | | | MOZINDEXEDDB |
-| :white_check_mark: | warning | mozIndexedDB property is deprecated |  | mozIndexedDB has been removed |  | N/A | N/A | MOZINDEXEDDB_PROPERTY |
 | :negative_squared_cross_mark: | warning | composition_features_removed |  | nsICompositionStringSynthesizer, sendCompositionEvent and createCompositionStringSynthesizer were removed | | | | |
 | :negative_squared_cross_mark: | warning | asyncfetch2_newchannel2_deprecated |  | asyncFetch2 and newChannel2 are now deprecated | | | | |
 | :negative_squared_cross_mark: | warning | onproxyavailable_asyncresolve_changed |  | The onProxyAvailable and asyncResolve functions have changed |  | | | |
@@ -334,3 +333,9 @@ A :white_check_mark: next to a section of rules means they have all been filed i
 | :white_check_mark: | error   | Web extension | Temporary error on content script `matches` | | | | MANIFEST_INVALID_CONTENT |
 | :white_check_mark: | error   | Web extension | Content script file could not be found | | | | CONTENT_SCRIPT_NOT_FOUND |
 | :white_check_mark: | error   | Web extension | Content script file name should not be empty | | | | CONTENT_SCRIPT_EMPTY |
+| :white_check_mark: | error   | Web extension | Translation string is missing the message property | | | | NO_MESSAGE |
+| :white_check_mark: | warning | Web extension | String name is reserved for a predefined message | | | | PREDEFINED_MESSAGE_NAME |
+| :white_check_mark: | error   | Web extension | String name contains invalid characters | | | | INVALID_MESSAGE_NAME |
+| :white_check_mark: | warning | Web extension | Placeholder for message is not defined | | | | MISSING_PLACEHOLDER |
+| :white_check_mark: | error   | Web extension | Placeholder name contains invalid characters | | | | INVALID_PLACEHOLDER_NAME |
+| :white_check_mark: | error   | Web extension | Placeholder is missing the content property | | | | NO_PLACEHOLDER_CONTENT |

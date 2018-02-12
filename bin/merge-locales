@@ -1,0 +1,17 @@
+const path = require('path');
+
+const glob = require('glob');
+const shell = require('shelljs');
+
+const localeDir = path.join(__dirname, '../locale');
+
+const poFiles = glob.sync(`${localeDir}/**/messages.po`);
+const template = path.join(localeDir, `templates/LC_MESSAGES/messages.pot`);
+
+poFiles.forEach((poFile) => {
+  const dir = path.dirname(poFile);
+  const stem = path.basename(poFile, '.po');
+  const tempFile = path.join(dir, `${stem}.po.tmp`);
+  shell.exec(`msgmerge -q -o ${tempFile} ${poFile} ${template}`);
+  shell.mv(tempFile, poFile);
+});
