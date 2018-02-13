@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-01-31 08:54+0000\n"
+"PO-Revision-Date: 2018-02-13 10:27+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -60,8 +60,7 @@ msgstr "Az FTL fájl nem dolgozható fel."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
-"A távoli parancsfájlok a kiegészítők irányelvei szerint nem engedélyezettek."
+msgstr "A távoli parancsfájlok a kiegészítők irányelvei szerint nem engedélyezettek."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
@@ -177,42 +176,39 @@ msgstr "A csomag ismétlődő bejegyzéseket tartalmaz"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
-"A Firefox kiegészítők nem futtathatnak kriptovaluta bányász programokat."
+msgstr "A Firefox kiegészítők nem futtathatnak kriptovaluta bányász programokat."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "A karakterlánc neve egy előre definiált üzenetnek van fenntartva"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "Az üzenet helykitöltője hiányzik"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "Az üzenetben használt helykitöltő nincs definiálva."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "A helykitöltő neve érvénytelen karaktereket tartalmaz"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "A helykitöltőből hiányzik a content tulajdonság"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "A fordítási karakterláncból hiányzik a message tulajdonság"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Nincs „message” üzenettulajdonság beállítva a karakterlánchoz (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"További információkért lásd: https://mzl.la/1ZOhoEN (MDN dokumentáció)."
+msgstr "További információkért lásd: https://mzl.la/1ZOhoEN (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -239,15 +235,11 @@ msgid "The field is invalid."
 msgstr "A mező érvénytelen."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"A leíróban definiált tartalomparancsfájl nem található itt: „%(path)s”."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "A leíróban definiált tartalomparancsfájl nem található itt: „%(path)s”."
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "A leíróban definiált tartalom CSS fájl nem található itt: „%(path)s”. "
 
 #: src/messages/manifestjson.js:173
@@ -312,8 +304,7 @@ msgstr "Ismeretlen engedély."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"További információkért lásd: https://mzl.la/1R1n1t0 (MDN dokumentáció)."
+msgstr "További információkért lásd: https://mzl.la/1R1n1t0 (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -321,8 +312,7 @@ msgstr "A manifest.json fájlban szereplő „manifest_version” értéke érv�
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"További információkért lásd: https://mzl.la/20PenXl (MDN dokumentáció)."
+msgstr "További információkért lásd: https://mzl.la/20PenXl (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
@@ -361,12 +351,10 @@ msgid "The \"update_url\" property is not used by Firefox."
 msgstr "Az „update_url” tulajdonságot nem használja a Firefox."
 
 #~ msgid "mozIndexedDB has been removed; use indexedDB instead"
-#~ msgstr ""
-#~ "A mozIndexedDB eltávolításra került, használja helyette az indexedDB-t"
+#~ msgstr "A mozIndexedDB eltávolításra került, használja helyette az indexedDB-t"
 
 #~ msgid "mozIndexedDB has been removed; use indexedDB instead."
-#~ msgstr ""
-#~ "A mozIndexedDB eltávolításra került, használja helyette az indexedDB-t."
+#~ msgstr "A mozIndexedDB eltávolításra került, használja helyette az indexedDB-t."
 
 #~ msgid "mozIndexedDB used as an object key/property"
 #~ msgstr "mozIndexedDB objektumkulcsként/tulajdonságként használva"
