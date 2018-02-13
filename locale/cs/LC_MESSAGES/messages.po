@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-12 12:05+0000\n"
+"PO-Revision-Date: 2018-02-13 09:47+0000\n"
 "Last-Translator: Jakub Rychlý <jrychly@mozilla.cz>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -184,7 +184,7 @@ msgstr ""
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "Placeholder pro zprávu chybí"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
@@ -203,14 +203,12 @@ msgid "Translation string is missing the message property"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na https://mzl.la/1ZOhoEN (MDN dokumentace) pro více informací."
+msgstr "Podívejte se na https://mzl.la/1ZOhoEN (MDN dokumentace) pro více informací."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -237,18 +235,12 @@ msgid "The field is invalid."
 msgstr "Pole není platné."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Obsahový skript definovaný v manifestu nebyl na cestě „%(path)s“ nalezen."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Obsahový skript definovaný v manifestu nebyl na cestě „%(path)s“ nalezen."
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Styly obsahového skriptu definované v manifestu nebyly na cestě „%(path)s“ "
-"nalezeny."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Styly obsahového skriptu definované v manifestu nebyly na cestě „%(path)s“ nalezeny."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -312,8 +304,7 @@ msgstr "Neznámé oprávnění."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na https://mzl.la/1R1n1t0 (MDN dokumentace) pro více informací."
+msgstr "Podívejte se na https://mzl.la/1R1n1t0 (MDN dokumentace) pro více informací."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -321,8 +312,7 @@ msgstr "\"manifest_version\" není v souboru manifest.json platná hodnota."
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na https://mzl.la/20PenXl (MDN dokumentace) pro více informací."
+msgstr "Podívejte se na https://mzl.la/20PenXl (MDN dokumentace) pro více informací."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
@@ -334,8 +324,7 @@ msgstr "Hodnota \"name\" musí být řetězec."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na http://mzl.la/1STmr48 (MDN Dokumenty) pro více informací."
+msgstr "Podívejte se na http://mzl.la/1STmr48 (MDN Dokumenty) pro více informací."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
@@ -343,8 +332,7 @@ msgstr "Hodnota \"version\" musí být řetězec."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na http://mzl.la/1kXIADa (MDN Dokumenty) pro více informací."
+msgstr "Podívejte se na http://mzl.la/1kXIADa (MDN Dokumenty) pro více informací."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
