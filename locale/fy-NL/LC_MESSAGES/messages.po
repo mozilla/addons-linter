@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-01-31 11:37+0000\n"
+"PO-Revision-Date: 2018-02-13 14:07+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fy_NL\n"
@@ -180,32 +180,31 @@ msgstr "Firefox-add-ons meie gjin coinminers útfiere."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "Stringnamme is reservearre foar in yn it foar definiearre berjocht"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "Placeholder foar berjocht mist"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "In placeholder brûkt yn it berjocht is net definiearre."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "Placeholdernamme befettet net jildige karakters"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "Placeholder mist de eigenskip ynhâld"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "Oersetrigel mist de eigenskip berjocht"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Der is gjin ‘berjocht’ foar de eigenskip berjocht ynsteld foar in rigel (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
@@ -217,8 +216,7 @@ msgstr "‘strict_max_version’ net fereaske."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
-"In yn it manifest definiearre piktogram koe net yn it pakket fûn wurde."
+msgstr "In yn it manifest definiearre piktogram koe net yn it pakket fûn wurde."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
@@ -237,18 +235,12 @@ msgid "The field is invalid."
 msgstr "It fjild is ûnjildich."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Yn it manifest definiearre ynhâldsscript koe net fûn wurde yn ‘%(path)s’."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Yn it manifest definiearre ynhâldsscript koe net fûn wurde yn ‘%(path)s’."
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Yn it manifest definiearre CSS-bestân fan ynhâldsscript koe net fûn wurde yn "
-"‘%(path)s’."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Yn it manifest definiearre CSS-bestân fan ynhâldsscript koe net fûn wurde yn ‘%(path)s’."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -324,8 +316,7 @@ msgstr "Sjoch https://mzl.la/20PenXl (MDN Docs) foar mear ynformaasje."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
-"In oanpast content_security_policy hat oanfoljende beoardieling nedich."
+msgstr "In oanpast content_security_policy hat oanfoljende beoardieling nedich."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
