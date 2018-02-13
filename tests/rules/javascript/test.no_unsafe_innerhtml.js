@@ -59,13 +59,11 @@ describe('no_unsafe_innerhtml', () => {
 
 
   validCodes.forEach((code) => {
-    it(`should allow the use of innerHTML: ${code}`, () => {
+    it(`should allow the use of innerHTML: ${code}`, async () => {
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-      return jsScanner.scan()
-        .then(({ linterMessages }) => {
-          expect(linterMessages.length).toEqual(0);
-        });
+      const { linterMessages } = await jsScanner.scan();
+      expect(linterMessages.length).toEqual(0);
     });
   });
 
@@ -213,30 +211,28 @@ describe('no_unsafe_innerhtml', () => {
   ];
 
   invalidCodes.forEach((code) => {
-    it(`should not allow the use of innerHTML examples ${code.code}`, () => {
+    it(`should not allow the use of innerHTML examples ${code.code}`, async () => {
       const jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
-      return jsScanner.scan()
-        .then(({ linterMessages }) => {
-          linterMessages.sort();
+      const { linterMessages } = await jsScanner.scan();
+      linterMessages.sort();
 
-          expect(linterMessages.length).toEqual(code.message.length);
+      expect(linterMessages.length).toEqual(code.message.length);
 
-          code.message.forEach((expectedMessage, idx) => {
-            expect(linterMessages[idx].message).toEqual(expectedMessage);
-            expect(linterMessages[idx].type).toEqual(VALIDATION_WARNING);
-          });
+      code.message.forEach((expectedMessage, idx) => {
+        expect(linterMessages[idx].message).toEqual(expectedMessage);
+        expect(linterMessages[idx].type).toEqual(VALIDATION_WARNING);
+      });
 
-          code.id.forEach((expectedId, idx) => {
-            expect(linterMessages[idx].code).toEqual(expectedId);
-          });
+      code.id.forEach((expectedId, idx) => {
+        expect(linterMessages[idx].code).toEqual(expectedId);
+      });
 
-          code.description.forEach((expectedDescription, idx) => {
-            expect(linterMessages[idx].description).toEqual(
-              expectedDescription
-            );
-          });
-        });
+      code.description.forEach((expectedDescription, idx) => {
+        expect(linterMessages[idx].description).toEqual(
+          expectedDescription
+        );
+      });
     });
   });
 });

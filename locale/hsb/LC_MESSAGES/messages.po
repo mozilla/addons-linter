@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-01-30 18:56+0000\n"
-"PO-Revision-Date: 2018-01-30 19:34+0000\n"
+"POT-Creation-Date: 2018-02-12 15:56+0000\n"
+"PO-Revision-Date: 2018-02-12 20:50+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: hsb\n"
@@ -66,29 +66,21 @@ msgstr "Zdalene skripty po prawidłach přidatkow dowolene njejsu."
 msgid "Inline scripts blocked by default"
 msgstr "Skripty inline so po standardźe blokuja"
 
-#: src/messages/javascript.js:107
-msgid "Banned 3rd-party JS library"
-msgstr "JS-biblioteka třećeho poskićowarja zakazana"
-
-#: src/messages/javascript.js:114
-msgid "Unadvised 3rd-party JS library"
-msgstr "Njeznata JS-biblioteka třećeho poskićowarja"
-
-#: src/messages/javascript.js:121
+#: src/messages/javascript.js:105
 msgid "Known JS library detected"
 msgstr "Znata JS-biblioteka namakana"
 
-#: src/messages/javascript.js:139
+#: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
 msgstr "{{api}} so njepodpěruje"
+
+#: src/messages/javascript.js:124
+msgid "This API has not been implemented by Firefox."
+msgstr "Tutón API njeje so přez Firefox implementował."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
 msgstr "addEventListener` wołany z truthy jako štwórty argument."
-
-#: src/messages/javascript.js:140
-msgid "This API has not been implemented by Firefox."
-msgstr "Tutón API njeje so přez Firefox implementował."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -106,29 +98,25 @@ msgstr "Mjeno wobsahoweje skriptoweje dataje njeměło prózdne być."
 msgid "Content script file name should not be empty"
 msgstr "Mjeno wobsahoweje skriptoweje dataje njeměło prózdne być"
 
-#: src/messages/javascript.js:38
-msgid "mozIndexedDB has been removed; use indexedDB instead"
-msgstr "mozIndexedDB je so wotstronił; wužiwajće indexedDB město toho"
-
-#: src/messages/javascript.js:39 src/messages/javascript.js:47
-msgid "mozIndexedDB has been removed; use indexedDB instead."
-msgstr "mozIndexedDB je so wotstronił; wužiwajće indexedDB město toho."
-
-#: src/messages/javascript.js:46
-msgid "mozIndexedDB used as an object key/property"
-msgstr "mozIndexedDB je so jako objektowy kluč/kajkosć wužił"
-
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
 msgstr "Syntaksowy zmylk JavaScript"
 
-#: src/messages/javascript.js:92
+#: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
 msgstr "Njewočakowana globala je so jako argument přepodała"
 
-#: src/messages/javascript.js:99
+#: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
 msgstr "Wot wužiwanja document.write so wuraznje wotradźuje."
+
+#: src/messages/javascript.js:91
+msgid "Banned 3rd-party JS library"
+msgstr "JS-biblioteka třećeho poskićowarja zakazana"
+
+#: src/messages/javascript.js:98
+msgid "Unadvised 3rd-party JS library"
+msgstr "Njeznata JS-biblioteka třećeho poskićowarja"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -189,6 +177,34 @@ msgstr "Pakćik dwójne zapiski wobsahuje"
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Přidatki Firefox njesmědźa pjenjezykopaki wuwjesć."
+
+#: src/messages/locale-messagesjson.js:13
+msgid "String name is reserved for a predefined message"
+msgstr "Mjeno znamješkoweho rjećazka je wuměnjene za předdefinowanu zdźělenku"
+
+#: src/messages/locale-messagesjson.js:27
+msgid "Placeholder for message is missing"
+msgstr "Zastupowacy symbol za zdźělenku faluje"
+
+#: src/messages/locale-messagesjson.js:28
+msgid "A placeholder used in the message is not defined."
+msgstr "Zastupowacy symbol, kotryž so w zdźělence wužiwa, njeje definowany."
+
+#: src/messages/locale-messagesjson.js:33
+msgid "Placeholder name contains invalid characters"
+msgstr "Mjeno zastupowaceho symbola njepłaćiwe znamješka wobsahuje"
+
+#: src/messages/locale-messagesjson.js:40
+msgid "Placeholder is missing the content property"
+msgstr "Zastupowacemu symbolej kajkosć content faluje"
+
+#: src/messages/locale-messagesjson.js:7
+msgid "Translation string is missing the message property"
+msgstr "Přełožowanskemu znamješkowemu rjećazkej kajkosć message faluje"
+
+#: src/messages/locale-messagesjson.js:8
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Zdźělenska kajkosć \"message\" njeje za znamješkowy rjećazk nastajena (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
@@ -333,3 +349,12 @@ msgstr "Polo je trěbne."
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "Kajkosć \"update_url\" so wot Firefox njewužiwa."
+
+#~ msgid "mozIndexedDB has been removed; use indexedDB instead"
+#~ msgstr "mozIndexedDB je so wotstronił; wužiwajće indexedDB město toho"
+
+#~ msgid "mozIndexedDB has been removed; use indexedDB instead."
+#~ msgstr "mozIndexedDB je so wotstronił; wužiwajće indexedDB město toho."
+
+#~ msgid "mozIndexedDB used as an object key/property"
+#~ msgstr "mozIndexedDB je so jako objektowy kluč/kajkosć wužił"

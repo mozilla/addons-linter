@@ -53,6 +53,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json'],
     modules: [
+      'src',
       'node_modules',
     ],
   },
