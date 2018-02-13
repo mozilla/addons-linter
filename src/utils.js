@@ -10,7 +10,7 @@ import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
 const locale = process.env.LOCALE_LANG || 'en-US';
 
-var i18ndata = require('./locale/de/messages.js')
+var i18ndata = require(`./locale/${locale}/messages.js`)
 
 const SOURCE_MAP_RE = new RegExp(/\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/);
 
