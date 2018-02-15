@@ -1081,15 +1081,13 @@ describe('firefox schema import', () => {
       removeDir(outputPath);
     });
 
-    it('rejects if there is no inputPath or version', () => {
-      return fetchSchemas({}).then(
-        () => expect(false).toBeTruthy(),
-        (err) => expect(err.message).toEqual(
-          'inputPath or version is required'
-        ));
+    it('rejects if there is no inputPath or version', async () => {
+      await expect(
+        fetchSchemas({})
+      ).rejects.toThrow('inputPath or version is required');
     });
 
-    it('downloads the firefox source and extracts the schemas', () => {
+    it('downloads the firefox source and extracts the schemas', async () => {
       const cwd = 'tests/schema';
       const schemaPath = 'firefox';
       const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
@@ -1104,13 +1102,11 @@ describe('firefox schema import', () => {
         .withArgs('https://hg.mozilla.org/mozilla-central/archive/FIREFOX_AURORA_54_BASE.tar.gz')
         .returns(tarball);
       expect(fs.readdirSync(outputPath)).toEqual([]);
-      return fetchSchemas({ version: 54, outputPath })
-        .then(() => {
-          expect(fs.readdirSync(outputPath)).toEqual(['manifest.json']);
-        });
+      await fetchSchemas({ version: 54, outputPath });
+      expect(fs.readdirSync(outputPath)).toEqual(['manifest.json']);
     });
 
-    it('extracts the schemas from a local file', () => {
+    it('extracts the schemas from a local file', async () => {
       const cwd = 'tests/schema';
       const schemaPath = 'firefox';
       const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
@@ -1129,13 +1125,11 @@ describe('firefox schema import', () => {
         .withArgs('mozilla-central.tgz')
         .returns(undefined);
       expect(fs.readdirSync(outputPath)).toEqual([]);
-      return fetchSchemas({ inputPath: 'mozilla-central.tgz', outputPath })
-        .then(() => {
-          expect(fs.readdirSync(outputPath)).toEqual(['manifest.json']);
-        });
+      await fetchSchemas({ inputPath: 'mozilla-central.tgz', outputPath });
+      expect(fs.readdirSync(outputPath)).toEqual(['manifest.json']);
     });
 
-    it('handles errors when parsing the tarball', () => {
+    it('handles errors when parsing the tarball', async () => {
       const cwd = 'tests/schema';
       const schemaPath = 'firefox';
       const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
@@ -1152,15 +1146,12 @@ describe('firefox schema import', () => {
         .stub(tar, 'Parse')
         .returns(extractedStream);
       expect(fs.readdirSync(outputPath)).toEqual([]);
-      return fetchSchemas({ inputPath: 'mozilla-central.tgz', outputPath })
-        .then(() => {
-          expect(true).toBeFalsy();
-        }, () => {
-          expect(true).toBeTruthy();
-        });
+      await expect(
+        fetchSchemas({ inputPath: 'mozilla-central.tgz', outputPath })
+      ).rejects.toThrow();
     });
 
-    it('handles errors when downloading', () => {
+    it('handles errors when downloading', async () => {
       const mockStream = new stream.Readable({
         read() {
           this.emit('error', new Error('stream error'));
@@ -1171,17 +1162,14 @@ describe('firefox schema import', () => {
         .withArgs('https://hg.mozilla.org/mozilla-central/archive/FIREFOX_AURORA_54_BASE.tar.gz')
         .returns(mockStream);
       expect(fs.readdirSync(outputPath)).toEqual([]);
-      return fetchSchemas({ version: 54, outputPath })
-        .then(() => {
-          expect(true).toBeFalsy();
-        }, () => {
-          // Manually remove the tar file since it doesn't get cleaned up.
-          fs.unlinkSync('tmp/FIREFOX_AURORA_54_BASE.tar.gz');
-          expect(true).toBeTruthy();
-        });
+      await expect(
+        fetchSchemas({ version: 54, outputPath })
+      ).rejects.toThrow();
+      // Manually remove the tar file since it doesn't get cleaned up.
+      fs.unlinkSync('tmp/FIREFOX_AURORA_54_BASE.tar.gz');
     });
 
-    it('handles errors when writing the download', () => {
+    it('handles errors when writing the download', async () => {
       const cwd = 'tests/schema';
       const schemaPath = 'firefox';
       const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
@@ -1202,12 +1190,9 @@ describe('firefox schema import', () => {
         .withArgs('tmp/FIREFOX_AURORA_54_BASE.tar.gz')
         .returns(mockStream);
       expect(fs.readdirSync(outputPath)).toEqual([]);
-      return fetchSchemas({ version: 54, outputPath })
-        .then(() => {
-          expect(true).toBeFalsy();
-        }, () => {
-          expect(true).toBeTruthy();
-        });
+      await expect(
+        fetchSchemas({ version: 54, outputPath })
+      ).rejects.toThrow();
     });
   });
 
