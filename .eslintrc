@@ -2,7 +2,8 @@
   "rules":{
     "no-console": 0,
     // Inherited from airbnb via eslint-config-amo
-    "function-paren-newline": 0
+    "function-paren-newline": 0,
+    "import/no-dynamic-require": 0
   },
   "env": {
     "node": true,
