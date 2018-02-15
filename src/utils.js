@@ -8,7 +8,8 @@ import { oneLine } from 'common-tags';
 
 import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
-const locale = process.env.LOCALE_LANG || 'en-US';
+const env = process.env
+const locale = env.LANG || env.LANGUAGE || env.LC_ALL || env.LC_MESSAGES;
 
 var i18ndata = require(`./locale/${locale}/messages.js`)
 
