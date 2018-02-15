@@ -11,10 +11,9 @@ describe('LangpackScanner', () => {
   });
 
   it('should scan property files', async () => {
+    sinon.spy(PropertiesParser.prototype, 'parse');
     const code = 'foo = bar';
     const langpackScanner = new LangpackScanner(code, 'foo.properties');
-
-    sinon.spy(PropertiesParser.prototype, 'parse');
 
     const { linterMessages } = await langpackScanner.scan();
     expect(linterMessages.length).toEqual(0);
@@ -22,10 +21,9 @@ describe('LangpackScanner', () => {
   });
 
   it('should scan dtd files', async () => {
+    sinon.spy(DoctypeParser.prototype, 'parse');
     const code = '<!ENTITY foo "bar">';
     const langpackScanner = new LangpackScanner(code, 'foo.dtd');
-
-    sinon.spy(DoctypeParser.prototype, 'parse');
 
     const { linterMessages } = await langpackScanner.scan();
     expect(linterMessages.length).toEqual(0);
@@ -33,10 +31,9 @@ describe('LangpackScanner', () => {
   });
 
   it('should scan fluent files', async () => {
+    sinon.spy(FluentParser.prototype, 'parse');
     const code = 'foo = Hello World';
     const langpackScanner = new LangpackScanner(code, 'foo.ftl');
-
-    sinon.spy(FluentParser.prototype, 'parse');
 
     const { linterMessages } = await langpackScanner.scan();
     expect(linterMessages.length).toEqual(0);
