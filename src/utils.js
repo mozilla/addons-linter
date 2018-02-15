@@ -8,10 +8,10 @@ import { oneLine } from 'common-tags';
 
 import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
-const env = process.env
+const [env] = process;
 const locale = env.LANG || env.LANGUAGE || env.LC_ALL || env.LC_MESSAGES;
 
-var i18ndata = require(`./locale/${locale}/messages.js`)
+const i18ndata = require(`./locale/${locale}/messages.js`);
 
 const SOURCE_MAP_RE = new RegExp(/\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/);
 
