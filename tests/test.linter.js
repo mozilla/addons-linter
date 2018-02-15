@@ -15,7 +15,6 @@ import { Xpi } from 'io';
 
 import {
   fakeMessageData,
-  unexpectedSuccess,
   validManifestJSON,
   EMPTY_PNG,
   assertHasMatchingError } from './helpers';
@@ -111,13 +110,12 @@ describe('Linter', () => {
     // Stub print to prevent output.
     addonLinter.print = sinon.stub();
     expect(addonLinter.collector.errors.length).toEqual(0);
-    try {
-      await addonLinter.scan();
-    } catch (e) {
-      expect(addonLinter.collector.errors.length).toEqual(1);
-      expect(addonLinter.collector.errors[0].code).toEqual(
-        messages.BAD_ZIPFILE.code);
-    }
+    await expect(
+      addonLinter.scan()
+    ).rejects.toThrow();
+    expect(addonLinter.collector.errors.length).toEqual(1);
+    expect(addonLinter.collector.errors[0].code).toEqual(
+      messages.BAD_ZIPFILE.code);
   });
 
   // Uses an extension with a mozIndexedDB warning in it.
@@ -150,7 +148,6 @@ describe('Linter', () => {
     const getFileSpy = sinon.spy(addonLinter, 'scanFile');
 
     await addonLinter.scan();
-
     sinon.assert.callOrder(
       getFileSpy.withArgs('components/main.js'),
       getFileSpy.withArgs('components/secondary.js'),
@@ -169,7 +166,6 @@ describe('Linter', () => {
     const getFileSpy = sinon.spy(addonLinter, 'scanFile');
 
     await addonLinter.scan();
-
     sinon.assert.callOrder(
       getFileSpy.withArgs('manifest.json'),
       getFileSpy.withArgs('subdir/test.js')
@@ -186,7 +182,6 @@ describe('Linter', () => {
     addonLinter.print = sinon.stub();
 
     await addonLinter.scan();
-
     expect(addonLinter.collector.scannedFiles).toEqual({
       'index.js': ['javascript'],
       'bower_components/bar.js': ['javascript'],
@@ -206,7 +201,6 @@ describe('Linter', () => {
     const getFileSpy = sinon.spy(addonLinter, 'scanFile');
 
     await addonLinter.scan();
-
     sinon.assert.callOrder(
       getFileSpy.withArgs('manifest.json'),
       getFileSpy.withArgs('subdir/test.js'),
@@ -281,15 +275,13 @@ describe('Linter', () => {
         return this.getMetadata();
       }
     }
-    try {
-      await addonLinter.scan({ _Xpi: FakeXpi });
-      unexpectedSuccess();
-    } catch (e) {
-      sinon.assert.calledWith(
-        addonLinter.collector.addError,
-        messages.DUPLICATE_XPI_ENTRY);
-      sinon.assert.calledOnce(addonLinter.print);
-    }
+    await expect(
+      addonLinter.scan({ _Xpi: FakeXpi })
+    ).rejects.toThrow();
+    sinon.assert.calledWith(
+      addonLinter.collector.addError,
+      messages.DUPLICATE_XPI_ENTRY);
+    sinon.assert.calledOnce(addonLinter.print);
   });
 
   it('should throw if invalid type is passed to colorize', () => {
@@ -637,7 +629,6 @@ describe('Linter.getAddonMetadata()', () => {
     await getMetadata();
     sinon.assert.notCalled(fakeLog.debug);
     expect(typeof addonLinter.addonMetadata).toBe('object');
-
     await getMetadata();
     sinon.assert.calledOnce(fakeLog.debug);
     sinon.assert.calledWith(
@@ -678,7 +669,6 @@ describe('Linter.getAddonMetadata()', () => {
     await addonLinter.getAddonMetadata({
       ManifestJSONParser: FakeManifestParser,
     });
-
     sinon.assert.calledOnce(FakeManifestParser);
     expect(FakeManifestParser.firstCall.args[2].selfHosted).toEqual(true);
   });
@@ -700,7 +690,6 @@ describe('Linter.getAddonMetadata()', () => {
     await addonLinter.getAddonMetadata({
       ManifestJSONParser: FakeManifestParser,
     });
-
     sinon.assert.calledOnce(FakeManifestParser);
     expect(
       FakeManifestParser.firstCall.args[2].isLanguagePack).toEqual(true);
@@ -715,7 +704,6 @@ describe('Linter.getAddonMetadata()', () => {
       },
     };
     await addonLinter.getAddonMetadata();
-
     const { notices } = addonLinter.collector;
     expect(notices.length).toEqual(1);
     expect(notices[0].code).toEqual(messages.TYPE_NO_MANIFEST_JSON.code);
@@ -1209,13 +1197,10 @@ describe('Linter.extractMetadata()', () => {
         };
       }
     }
-    try {
-      await addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole });
-      unexpectedSuccess();
-    } catch (err) {
-      sinon.assert.calledOnce(markEmptyFilesSpy);
-      expect(err.message).toEqual('No size available for whatever');
-    }
+    await expect(
+      addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole })
+    ).rejects.toThrow('No size available for whatever');
+    sinon.assert.calledOnce(markEmptyFilesSpy);
   });
 
   it('should error if file size of a non-binary file is too large', async () => {
@@ -1245,7 +1230,6 @@ describe('Linter.extractMetadata()', () => {
       }
     }
     await addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole });
-
     expect(addonLinter.collector.errors[0].code).toEqual(
       messages.FILE_TOO_LARGE.code
     );
@@ -1313,7 +1297,6 @@ describe('Linter.extractMetadata()', () => {
     addonLinter.print = sinon.stub();
 
     await addonLinter.scan({ _console: fakeConsole });
-
     expect(addonLinter.output.metadata.totalScannedFileSize).toEqual(2929);
   });
 
@@ -1324,7 +1307,6 @@ describe('Linter.extractMetadata()', () => {
     const markBadwordusageSpy = sinon.spy(addonLinter, '_markBadwordUsage');
 
     await addonLinter.scan({ _console: fakeConsole });
-
     sinon.assert.calledTwice(markBadwordusageSpy);
     const errors = addonLinter.collector.notices;
     expect(errors.length).toEqual(1);
@@ -1363,7 +1345,6 @@ describe('Linter.extractMetadata()', () => {
       }
     }
     await addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole });
-
     // Only manifest and js files, binary files like the .png are ignored
     sinon.assert.callCount(markBadwordusageSpy, 3);
     const errors = addonLinter.collector.notices;
@@ -1402,7 +1383,6 @@ describe('Linter.extractMetadata()', () => {
       }
     }
     await addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole });
-
     // Only manifest and js files, binary files like the .png are ignored
     sinon.assert.callCount(markCoinMinerUsageSpy, 4);
     const { warnings } = addonLinter.collector;
@@ -1496,7 +1476,6 @@ describe('Linter.extractMetadata()', () => {
       }
     }
     await addonLinter.scan({ _Xpi: FakeXpi });
-
     sinon.assert.callCount(markBadwordusageSpy, 1);
   });
 });
@@ -1528,7 +1507,6 @@ describe('Linter.run()', () => {
     }
 
     await addonLinter.run({ _Xpi: FakeXpi, _console: fakeConsole });
-
     sinon.assert.calledOnce(addonLinter.toJSON);
     sinon.assert.calledOnce(addonLinter.markSpecialFiles);
     expect(addonLinter.toJSON.firstCall.args[0].input).toEqual({
@@ -1544,17 +1522,17 @@ describe('Linter.run()', () => {
     addonLinter.scan.returns(Promise.resolve());
 
     await addonLinter.run({ _console: fakeConsole });
-
     sinon.assert.calledOnce(addonLinter.scan);
   });
 
   it('should surface errors when metadata is true', async () => {
     const addonLinter = new Linter({ _: ['foo'], metadata: true });
+    const expectedError = new Error('metadata explosion');
     addonLinter.toJSON = sinon.stub();
     addonLinter.handleError = sinon.spy();
 
     addonLinter.getAddonMetadata = async () => {
-      throw new Error('metadata explosion');
+      throw expectedError;
     };
 
     addonLinter.checkFileExists = fakeCheckFileExists;
@@ -1565,15 +1543,11 @@ describe('Linter.run()', () => {
 
     class FakeXpi extends FakeIOBase {
     }
-
-    try {
-      await addonLinter.run({ _Xpi: FakeXpi, _console: fakeConsole });
-      unexpectedSuccess();
-    } catch (err) {
-      sinon.assert.calledOnce(addonLinter.handleError);
-      expect(err).toBeInstanceOf(Error);
-      expect(err.message).toContain('metadata explosion');
-    }
+    
+    await expect(
+      addonLinter.run({ _Xpi: FakeXpi, _console: fakeConsole })
+    ).rejects.toThrowError(expectedError);
+    sinon.assert.calledOnce(addonLinter.handleError);
   });
 
   it('should resolve to the linting results object', async () => {
@@ -1583,7 +1557,6 @@ describe('Linter.run()', () => {
     addonLinter.scan.returns(Promise.resolve());
 
     const result = await addonLinter.run({ _console: fakeConsole });
-
     expect(result).toEqual(addonLinter.output);
   });
 
@@ -1594,7 +1567,6 @@ describe('Linter.run()', () => {
     addonLinter.extractMetadata.returns(Promise.resolve());
 
     const result = await addonLinter.run({ _console: fakeConsole });
-
     expect(result).toEqual(addonLinter.output);
   });
 });
