@@ -1543,7 +1543,7 @@ describe('Linter.run()', () => {
 
     class FakeXpi extends FakeIOBase {
     }
-    
+
     await expect(
       addonLinter.run({ _Xpi: FakeXpi, _console: fakeConsole })
     ).rejects.toThrowError(expectedError);
