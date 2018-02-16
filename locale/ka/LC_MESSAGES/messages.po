@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-16 16:27+0000\n"
+"PO-Revision-Date: 2018-02-16 16:39+0000\n"
 "Last-Translator: Georgianizator <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -184,23 +184,23 @@ msgstr "სტრიქონის დასახელება განკ�
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "შეტყობინების ჩანაცვლების არე ვერ მოიძებნა"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "ამ შეტყობინებაში გამოყენებული ჩანაცვლების არე არაა განსაზღვრული."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "ჩანაცვლების არის დასახელება შეიცავს დაუშვებელ სიმბოლოებს"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "ჩანაცვლების არეს არ გააჩნია შიგთავსის თვისება"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "თარგმნილ სტრიქონს არ გააჩნია შეტყობინების თვისება"
 
 #: src/messages/locale-messagesjson.js:8
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
