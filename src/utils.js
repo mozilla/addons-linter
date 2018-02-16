@@ -6,11 +6,19 @@ import Jed from 'jed';
 import semver from 'semver';
 import { oneLine } from 'common-tags';
 
+import log from 'logger';
 import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
 const [env] = process;
 const locale = env.LANG || env.LANGUAGE || env.LC_ALL || env.LC_MESSAGES || 'en-US';
-const i18ndata = require(`./locale/${locale}/messages.js`);
+let i18ndata = {};
+try {
+  // eslint-disable-next-line global-require, import/no-dynamic-require
+  i18ndata = require(`./locale/${locale}/messages.js`);
+} catch (err) {
+  log.info('Initialize locales using extract-locales command');
+}
+
 
 const SOURCE_MAP_RE = new RegExp(/\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/);
 
