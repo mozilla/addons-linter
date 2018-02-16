@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-05 03:40+0000\n"
+"PO-Revision-Date: 2018-02-16 11:17+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -60,9 +60,7 @@ msgstr "Votre fichier FTL n’a pas pu être analysé."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
-"Les scripts externes ne sont pas autorisés, comme indiqué dans les termes "
-"relatifs aux modules."
+msgstr "Les scripts externes ne sont pas autorisés, comme indiqué dans les termes relatifs aux modules."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
@@ -154,15 +152,15 @@ msgstr ""
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "Nom de fichier signalé détecté"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "Extensions de fichiers signalées détectées"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "Type de fichier signalé détecté"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
@@ -205,8 +203,7 @@ msgid "Translation string is missing the message property"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
@@ -238,14 +235,11 @@ msgid "The field is invalid."
 msgstr "Le champ est invalide."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
@@ -314,8 +308,7 @@ msgstr "Voir https://mzl.la/1R1n1t0 (MDN Docs) pour plus d’informations."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
-"La valeur « manifest_version » dans le fichier manifest.json est invalide"
+msgstr "La valeur « manifest_version » dans le fichier manifest.json est invalide"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -323,9 +316,7 @@ msgstr "Voir https://mzl.la/20PenXl (MDN Docs) pour plus d’informations."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
-"Une revue supplémentaire est nécessaire lorsque content_security_policy est "
-"définie de manière spécifique."
+msgstr "Une revue supplémentaire est nécessaire lorsque content_security_policy est définie de manière spécifique."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
