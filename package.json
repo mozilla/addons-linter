@@ -102,7 +102,7 @@
     "jed": "1.1.1",
     "pino": "4.10.4",
     "po2json": "0.4.5",
-    "postcss": "6.0.17",
+    "postcss": "6.0.19",
     "probe-image-size": "3.2.0",
     "relaxed-json": "1.0.1",
     "semver": "5.5.0",
