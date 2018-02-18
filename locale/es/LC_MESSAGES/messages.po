@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-12 19:53+0000\n"
+"PO-Revision-Date: 2018-02-18 14:27+0000\n"
 "Last-Translator: avelper <avelper@mozilla-hispano.org>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -184,19 +184,19 @@ msgstr "El nombre de la cadena está reservado para un mensaje predefinido"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "Falta el marcador de posición para mensajes"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "No se definió el marcador de posición que se utilizó en el mensaje."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "El nombre del marcador de posición contiene caracteres no válidos"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "Al marcador de posición le faltan propiedades de contenido"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
@@ -204,7 +204,7 @@ msgstr "Falta la propiedad del mensaje en la cadena de traducción"
 
 #: src/messages/locale-messagesjson.js:8
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
+msgstr "No se configuró ninguna propiedad de mensaje en la cadena (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
