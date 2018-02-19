@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-19 11:32+0000\n"
+"PO-Revision-Date: 2018-02-19 12:06+0000\n"
 "Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: src/linter.js:117
 msgid "Validation Summary:"
-msgstr ""
+msgstr "Povzetek preverjanja:"
 
 #: src/linter.js:134
 msgid "Code"
@@ -56,11 +56,11 @@ msgstr "Vaš FTL ni veljaven."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "Vaše datoteke FTL ni bilo mogoče razčleniti."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Pravilnik dodatkov ne dovoljuje oddaljenih skriptov."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
@@ -108,7 +108,7 @@ msgstr ""
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Uporaba document.write se močno odsvetuje."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
@@ -132,7 +132,7 @@ msgstr "Vaša datoteka JSON ni veljavna."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "Vaše datoteke JSON ni bilo mogoče razčleniti."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
@@ -144,7 +144,7 @@ msgstr "Datoteke manifest.json ni bilo mogoče najti"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr ""
+msgstr "Datoteka je prevelika za razčlenjevanje."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
@@ -224,7 +224,7 @@ msgstr "V mapi \"%(path)s\" ni bilo mogoče najti ikone."
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "V mapi \"%(path)s\" ni bilo mogoče najti skripta ozadja."
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
@@ -236,7 +236,7 @@ msgstr "Polje je neveljavno."
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "V mapi \"%(path)s\" ni bilo mogoče najti skripta vsebine, določenega v manifestu."
 
 #: src/messages/manifestjson.js:162
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
@@ -268,7 +268,7 @@ msgstr "Pokvarjena slikovna datoteka"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "Pričakovana datoteka ikone v mapi \"%(path)s\" je pokvarjena"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
@@ -276,19 +276,19 @@ msgstr ""
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "\"default_locale\" manjka, vendar obstaja \"_locales\"."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "Vrsta dovoljenja ni podprta."
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "Nepodprta pripona slike"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
+msgstr "Ikone morajo biti vrste JPG/JPEG, WebP, GIF, PNG ali SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
@@ -304,7 +304,7 @@ msgstr "Neznano dovoljenje."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "Za več informacij glejte https://mzl.la/1R1n1t0 (dokumente na MDN-u)."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -312,31 +312,31 @@ msgstr ""
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "Za več informacij glejte https://mzl.la/20PenXl (dokumente na MDN-u)."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "content_security_policy po meri potrebuje dodaten pregled."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "Lastnost \"name\" mora biti niz."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "Za več informacij glejte http://mzl.la/1STmr48 (dokumente na MDN-u)."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "Lastnost \"version\" mora biti niz."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "Za več informacij glejte http://mzl.la/1kXIADa (dokumente na MDN-u)."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "Lastnost \"version\" uporablja obliko, posebno za Firefox."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
