@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-19 22:50+0000\n"
+"PO-Revision-Date: 2018-02-19 23:10+0000\n"
 "Last-Translator: Juan Esteban Ajsivinac Sián <ajtzibsyan@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: cak\n"
@@ -160,43 +160,43 @@ msgstr "Xilitäj kik'amal yakb'äl ya'on ruq'ij"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "Xilitäj ruwäch yakb'äl ya'on ruq'ij"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
-msgstr ""
+msgstr "Juch'un chik ri pisoj"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
-msgstr ""
+msgstr "Kitz'ilanem kokisaxik kojqanem Mozilla."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
-msgstr ""
+msgstr "Ri pisoj ruk'wan jujun kamulun taq okitz'ib'"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "Man ya'on ta q'ij chi ke ri kichokoy Firefox richin yekisamajij taq ko'in-miner."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "Ri rub'i' cholajil q'aton richin jun tzijol k'o wi"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "Nrajo' na ri retanel kik'ojlib'al taq tzijol"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "Man xjikib'äx ta ri retanel k'ojlib'äl xokisäx pa ri rutzijol."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "Ri rub'i' retanel k'ojlib'äl ruk'wan man okel ta taq tz'ib'"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "Nrajo' na richinil rupam ri retanel k'ojlib'äl"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
