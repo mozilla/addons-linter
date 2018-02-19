@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-03 21:09+0000\n"
+"PO-Revision-Date: 2018-02-19 22:09+0000\n"
 "Last-Translator: Juan Esteban Ajsivinac Sián <ajtzibsyan@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: cak\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: src/linter.js:117
 msgid "Validation Summary:"
-msgstr ""
+msgstr "Ruch'utitzijol Junamana'oj:"
 
 #: src/linter.js:134
 msgid "Code"
@@ -44,15 +44,15 @@ msgstr "Tem"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Ye'ilitäj itzel kisok cha'onela'"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "Xilitäj jun rusachj CSS cholb'ab'"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
-msgstr ""
+msgstr "Man okel ta ri FTL."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
@@ -203,8 +203,7 @@ msgid "Translation string is missing the message property"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
@@ -236,14 +235,11 @@ msgid "The field is invalid."
 msgstr ""
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
