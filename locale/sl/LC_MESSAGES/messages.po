@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-19 10:38+0000\n"
+"PO-Revision-Date: 2018-02-19 11:32+0000\n"
 "Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -228,7 +228,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "V mapi \"%(path)s\" ni bilo mogoče najti strani ozadja."
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
@@ -244,23 +244,23 @@ msgstr ""
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "V dodatku je bila najdena prepovedana vsebina."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "Ta dodatek vsebuje prepovedano vsebino."
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr ""
+msgstr "Ikone morajo biti kvadratne."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "Ikona v mapi \"%(path)s\" mora biti kvadratna."
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "Velikost ikone se ne ujema z manifestom."
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
