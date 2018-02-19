@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-19 22:30+0000\n"
+"PO-Revision-Date: 2018-02-19 22:50+0000\n"
 "Last-Translator: Juan Esteban Ajsivinac Sián <ajtzibsyan@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: cak\n"
@@ -104,59 +104,59 @@ msgstr "Sachoj JavaScript cholb'äl"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Chijun jalajonel man oyob'en ta ojer achi'el jun na'oj"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Man nichilab'ëx ta rokisaxik ri document.write."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "Q'ilon 3ox-winäq JS wujb'äl"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Mechilab'en 3ox-winäq JS wujb'äl"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "Ri JSON ruk'wan k'ïy cholaj taq tzij."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "Man tikirel ta yekamulüx ewan taq tzij pa JSON taq yakb'äl."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "Man okel ta ri JSON."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "Man xpachq'ominïx ta ri JSON ayakb'al."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "Man xojtikïr ta xsol ri zip yakb'äl."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "ma xilitäj ta ri manifest.json"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr ""
+msgstr "Yalan nïm ri yakb'äl richin nich'ob'."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "Xya' ruq'ij jun ewan yakb'äl"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "Xilitäj rub'i' yakb'äl ya'on ruq'ij"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "Xilitäj kik'amal yakb'äl ya'on ruq'ij"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
