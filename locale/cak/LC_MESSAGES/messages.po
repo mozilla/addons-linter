@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-19 22:09+0000\n"
+"PO-Revision-Date: 2018-02-19 22:30+0000\n"
 "Last-Translator: Juan Esteban Ajsivinac Sián <ajtzibsyan@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: cak\n"
@@ -56,51 +56,51 @@ msgstr "Man okel ta ri FTL."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "Man xpachq'ominïx ta ri FTL ayakb'al."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Man yek'ul ta ri näj taq skrip kuma ri Chokoy taq Na'ojil."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Kan eq'aton wi ri ch'ikon taq skrip"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
-msgstr ""
+msgstr "Xilitäj etaman JS wujib'äl"
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} man nuk'äm ta ri'"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "Man ya'on ta rusamajib'al re API re' ruma ri Firefox."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener` oyon rik'in jun okel rukaj na'oj."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Man nilitäj ta ri skrip ruyakb'al rupam."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Man nilitäj ta ri ruyakb'al rupam skrip "
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Man tikirel ta nikowe' kan ri rub'i' ri ruyakb'al rupam script."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Man tikirel ta nikowe' kan ri rub'i' ri ruyakb'al rupam script"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "Sachoj JavaScript cholb'äl"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
