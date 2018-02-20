@@ -2,8 +2,6 @@ import { oneLine } from 'common-tags';
 
 import * as utils from 'utils';
 
-import { unexpectedSuccess } from './helpers';
-
 
 describe('utils.getRootExpression()', () => {
   const node = {
@@ -200,15 +198,13 @@ describe('utils.ensureFilenameExists()', () => {
 
 
 describe('utils.checkMinNodeVersion()', () => {
-  it('should reject if version is not high enough', () => {
+  it('should reject if version is not high enough', async () => {
     const fakeProcess = {
       version: 'v0.12.4',
     };
-    return utils.checkMinNodeVersion('0.12.7', fakeProcess)
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toContain('Node version must be 0.12.7 or greater');
-      });
+    await expect(
+      utils.checkMinNodeVersion('0.12.7', fakeProcess)
+    ).rejects.toThrow('Node version must be 0.12.7 or greater');
   });
 
   it('should not reject if version is not high enough', () => {
