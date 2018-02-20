@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-20 21:58+0000\n"
+"PO-Revision-Date: 2018-02-20 22:31+0000\n"
 "Last-Translator: Juan Esteban Ajsivinac Sián <ajtzibsyan@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: cak\n"
@@ -288,55 +288,55 @@ msgstr "Man nik'ul ta ri ruk'amal wachib'äl"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
+msgstr "Ri taq wachib'äl k'o ta chi e JPG/JPEG, WebP, GIF, PNG o SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
-msgstr ""
+msgstr "Kowöl kicholb'al ch'ab'äl"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "man k'o ta ri messages.json yakb'äl pa \"%(path)s\""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
-msgstr ""
+msgstr "Man etaman ta ruwäch ya'oj q'ij."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "Titz'et https://mzl.la/1R1n1t0 (MDN Wujil) richin ch'aqa' chik etamab'äl."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "\"manifest_version\" pa ri manifest.json man okel ta ri rejqalem"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "Titz'et https://mzl.la/20PenXl (MDN Wujil) richin ch'aqa' chik etamab'äl."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "Richin nichinäx ri content_security_policy nrajo' chi ninik'öx chik."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "Ri richinil \"name\" k'o chi jun string."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "Titz'et http://mzl.la/1STmr48 (MDN Wujil) richin ch'aqa' chik etamab'äl."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "Ri richinil \"version\" k'o chi jun string."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "Titz'et http://mzl.la/1kXIADa (MDN Wujil) richin ch'aqa' chik etamab'äl."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "Ri \"version\" ichinil nrokisaj jun jikil rub'anikil Firefox."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
