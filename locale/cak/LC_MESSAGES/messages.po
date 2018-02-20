@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-20 21:25+0000\n"
+"PO-Revision-Date: 2018-02-20 21:50+0000\n"
 "Last-Translator: Juan Esteban Ajsivinac Sián <ajtzibsyan@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: cak\n"
@@ -236,27 +236,27 @@ msgstr "Man okel ta ri k'ojlem."
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Man xilitäj ta ri ruskrip rupam jikib'an pa tzijoxïk pa \"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Man xilitäj ta ri css yakb'äl ruskrip rupam jikib'an pa tzijoxïk pa \"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "Xilitäj man ruk'amon ta rupam pa ri tz'aqat."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "Re tz'aqat re' ruk'wan man ruk'amon ta rupam."
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr ""
+msgstr "K'o chi kajtz'ik kib'anikil ri taq wachib'äl."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "Ri wachib'äl pa \"%(path)s\" k'o chi kajtz'ik rub'anikil."
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
