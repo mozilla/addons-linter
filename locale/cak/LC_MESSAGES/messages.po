@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-20 21:50+0000\n"
+"PO-Revision-Date: 2018-02-20 21:58+0000\n"
 "Last-Translator: Juan Esteban Ajsivinac Sián <ajtzibsyan@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: cak\n"
@@ -260,31 +260,31 @@ msgstr "Ri wachib'äl pa \"%(path)s\" k'o chi kajtz'ik rub'anikil."
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "Ri runimilem wachib'äl man nuk'äm ta ri' rik'in ri tzijoxïk."
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
-msgstr ""
+msgstr "Ruyakb'al itzel wachib'äl"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "Itzelan ri ruyakb'al wachib'al pa \"%(path)s\""
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "Ri \"default_locale\" nrajo' na rutzalq'omanik."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "Nrajo' na ri \"default_locale\" po ri \"_locales\" e k'o."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "Man nik'ul ta ri ruwäch ya'oj q'ij."
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "Man nik'ul ta ri ruk'amal wachib'äl"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
