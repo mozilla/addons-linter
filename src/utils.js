@@ -10,16 +10,6 @@ import log from 'logger';
 import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
 
-const locale = process.env.LANG || process.env.LANGUAGE || process.env.LC_ALL || process.env.LC_MESSAGES || 'en-US';
-let i18ndata = {};
-try {
-  // eslint-disable-next-line global-require, import/no-dynamic-require
-  i18ndata = require(`./locale/${locale}/messages.js`);
-} catch (err) {
-  log.info('Initialize locales using extract-locales command');
-}
-
-
 const SOURCE_MAP_RE = new RegExp(/\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/);
 
 export function normalizePath(iconPath) {
@@ -137,6 +127,14 @@ export function getVariable(context, name) {
  *
  */
 export function gettext(str) {
+  const locale = process.env.LANG || process.env.LANGUAGE || process.env.LC_ALL || process.env.LC_MESSAGES || 'en-US';
+  let i18ndata = {};
+  try {
+    // eslint-disable-next-line global-require, import/no-dynamic-require
+    i18ndata = require(`./locale/${locale}/messages.js`);
+  } catch (err) {
+    log.info('Initialize locales using extract-locales command');
+  }
   const jed = new Jed(i18ndata);
   return jed.gettext(str);
 }
