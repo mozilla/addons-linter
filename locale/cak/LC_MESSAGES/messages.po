@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-19 23:17+0000\n"
+"PO-Revision-Date: 2018-02-20 21:25+0000\n"
 "Last-Translator: Juan Esteban Ajsivinac Sián <ajtzibsyan@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: cak\n"
@@ -220,19 +220,19 @@ msgstr "Man xilitäj ta pa ri pisoj jun wachib'äl jikib'an pa ri tzijoxik."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Man nilitäj ta ri wachib'äl pa \"%(path)s\"."
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Man nilitäj ta ri ruskrip ruka'n b'ey pa \"%(path)s\"."
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Man nilitäj ta ri ruxaq richin ruka'n b'ey pa \"%(path)s\"."
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
-msgstr ""
+msgstr "Man okel ta ri k'ojlem."
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
