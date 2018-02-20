@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-13 09:47+0000\n"
+"PO-Revision-Date: 2018-02-13 21:15+0000\n"
 "Last-Translator: Jakub Rychlý <jrychly@mozilla.cz>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -188,11 +188,11 @@ msgstr "Placeholder pro zprávu chybí"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "Placeholder použitý ve zprávě není definován."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "Placeholder obsahuje neplatné znaky"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
