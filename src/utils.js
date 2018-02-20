@@ -9,8 +9,8 @@ import { oneLine } from 'common-tags';
 import log from 'logger';
 import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
-const [env] = process;
-const locale = env.LANG || env.LANGUAGE || env.LC_ALL || env.LC_MESSAGES || 'en-US';
+
+const locale = process.env.LANG || process.env.LANGUAGE || process.env.LC_ALL || process.env.LC_MESSAGES || 'en-US';
 let i18ndata = {};
 try {
   // eslint-disable-next-line global-require, import/no-dynamic-require
