@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-20 22:31+0000\n"
+"PO-Revision-Date: 2018-02-20 22:37+0000\n"
 "Last-Translator: Juan Esteban Ajsivinac Sián <ajtzibsyan@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: cak\n"
@@ -320,7 +320,7 @@ msgstr "Richin nichinäx ri content_security_policy nrajo' chi ninik'öx chik."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr "Ri richinil \"name\" k'o chi jun string."
+msgstr "Ri \"name\" ichinil k'o chi jun string."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -340,12 +340,12 @@ msgstr "Ri \"version\" ichinil nrokisaj jun jikil rub'anikil Firefox."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "\"update_url\" man niya' q'ij chi re."
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
-msgstr ""
+msgstr "K'atzinel ri k'ojlib'äl."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "Ri \"update_url\" ichinil man nokisäx ta ruma ri Firefox."
