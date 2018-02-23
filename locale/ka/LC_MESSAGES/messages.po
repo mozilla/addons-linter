@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-16 17:36+0000\n"
+"PO-Revision-Date: 2018-02-23 20:09+0000\n"
 "Last-Translator: Georgianizator <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -172,7 +172,7 @@ msgstr "Mozilla-ს გამოყენების პირობები�
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
-msgstr "პაკეტი შეიცავს გაორმაგებულ ელემენტებს"
+msgstr "პაკეტი შეიცავს გაორმაგებულ ერთეულებს"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
