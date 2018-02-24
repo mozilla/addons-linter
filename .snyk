@@ -42,4 +42,8 @@ ignore:
     - eslint-plugin-no-unsafe-innerhtml > eslint > shelljs:
         reason: None given
         expires: '2018-03-25T13:24:50.215Z'
-patch: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:qs:20140806-1':
+    - grunt-gh-pages > q-io > qs:
+        patched: '2018-02-24T23:22:29.179Z'
