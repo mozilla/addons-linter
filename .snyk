@@ -1,0 +1,45 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.10.1
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  'npm:braces:20180219':
+    - webpack > watchpack > chokidar > anymatch > micromatch > braces:
+        reason: None given
+        expires: '2018-03-25T13:24:50.215Z'
+  'npm:gettext-parser:20180220':
+    - po2json > gettext-parser:
+        reason: None given
+        expires: '2018-03-25T13:24:50.215Z'
+  'npm:hoek:20180212':
+    - webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > hoek:
+        reason: None given
+        expires: '2018-03-25T13:24:50.215Z'
+    - webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > boom > hoek:
+        reason: None given
+        expires: '2018-03-25T13:24:50.215Z'
+    - webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > cryptiles > boom > hoek:
+        reason: None given
+        expires: '2018-03-25T13:24:50.215Z'
+    - webpack > watchpack > chokidar > fsevents > node-pre-gyp > request > hawk > cryptiles > boom > hoek:
+        reason: None given
+        expires: '2018-03-25T13:24:50.215Z'
+    - webpack > watchpack > chokidar > fsevents > node-pre-gyp > request > hawk > boom > hoek:
+        reason: None given
+        expires: '2018-03-25T13:24:50.215Z'
+    - webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > sntp > hoek:
+        reason: None given
+        expires: '2018-03-25T13:24:50.215Z'
+    - webpack > watchpack > chokidar > fsevents > node-pre-gyp > request > hawk > sntp > hoek:
+        reason: None given
+        expires: '2018-03-25T13:24:50.215Z'
+    - webpack > watchpack > chokidar > fsevents > node-pre-gyp > request > hawk > hoek:
+        reason: None given
+        expires: '2018-03-25T13:24:50.215Z'
+  'npm:shelljs:20140723':
+    - shelljs:
+        reason: None given
+        expires: '2018-03-25T13:24:50.215Z'
+    - eslint-plugin-no-unsafe-innerhtml > eslint > shelljs:
+        reason: None given
+        expires: '2018-03-25T13:24:50.215Z'
+patch: {}
