@@ -19,9 +19,7 @@
     "lint": "npm run eslint",
     "publish-rules": "grunt copy build-rules-html publish-rules",
     "publish-coverage": "grunt coveralls",
-    "gen-contributing-toc": "doctoc CONTRIBUTING.md",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "gen-contributing-toc": "doctoc CONTRIBUTING.md"
   },
   "repository": {
     "type": "git",
