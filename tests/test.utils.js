@@ -42,7 +42,8 @@ describe('utils.getRootExpression()', () => {
 describe('utils.gettext()', () => {
   it('should return localizable message', () => {
     expect('This is a test').toEqual('This is a test');
-    let realUtils = require('utils');
+    // eslint-disable-next-line global-require
+    const realUtils = require('utils');
     jest.unmock('utils');
     const myMock = jest.fn();
     realUtils.lib.getLocaleDir = myMock;

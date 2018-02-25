@@ -127,12 +127,16 @@ export function getLocale() {
 }
 
 export function getLocaleDir(locale) {
-  return `./locale/${locale}/messages.js`
+  return `./locale/${locale}/messages.js`;
 }
 
+export const lib = {
+  getLocaleDir,
+};
+
 export function getI18Data(locale) {
-  var i18ndata = {};
-  var path = lib.getLocaleDir(locale);
+  let i18ndata = {};
+  const path = lib.getLocaleDir(locale);
   try {
     // eslint-disable-next-line global-require, import/no-dynamic-require
     i18ndata = require(path);
@@ -143,17 +147,14 @@ export function getI18Data(locale) {
   return i18ndata;
 }
 
-export const lib = {
-  getLocaleDir
-};
 /*
  * Gettext utils. No-op until we have proper
  * a proper l10n solution.n
  *
  */
 export function gettext(str) {
-  const locale = getLocale()
-  let i18ndata = getI18Data(locale);
+  const locale = getLocale();
+  const i18ndata = getI18Data(locale);
   const jed = new Jed(i18ndata);
   return jed.gettext(str);
 }
