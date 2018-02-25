@@ -39,6 +39,19 @@ describe('utils.getRootExpression()', () => {
   });
 });
 
+describe('utils.gettext()', () => {
+  it('should return localizable message', () => {
+    expect('This is a test').toEqual('This is a test');
+    let realUtils = require('utils');
+    jest.unmock('utils');
+    const myMock = jest.fn();
+    realUtils.lib.getLocaleDir = myMock;
+    myMock.mockReturnValue('../tests/fixtures/fr.js');
+    expect(realUtils.gettext('This is a test')).toEqual('C\'est un test');
+  });
+});
+
+
 describe('utils.getNodeReference()', () => {
   // Represents scope for following code:
   // const foo = window; foo = bar;

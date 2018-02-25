@@ -5,6 +5,7 @@ import { URL } from 'whatwg-url';
 import Jed from 'jed';
 import semver from 'semver';
 import { oneLine } from 'common-tags';
+import osLocale from 'os-locale';
 
 import log from 'logger';
 import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
@@ -121,20 +122,38 @@ export function getVariable(context, name) {
   return result;
 }
 
-/*
- * Gettext utils. No-op until we have proper
- * a proper l10n solution.
- *
- */
-export function gettext(str) {
-  const locale = process.env.LANG || process.env.LANGUAGE || process.env.LC_ALL || process.env.LC_MESSAGES || 'en-US';
-  let i18ndata = {};
+export function getLocale() {
+  return osLocale.sync();
+}
+
+export function getLocaleDir(locale) {
+  return `./locale/${locale}/messages.js`
+}
+
+export function getI18Data(locale) {
+  var i18ndata = {};
+  var path = lib.getLocaleDir(locale);
   try {
     // eslint-disable-next-line global-require, import/no-dynamic-require
-    i18ndata = require(`./locale/${locale}/messages.js`);
+    i18ndata = require(path);
   } catch (err) {
     log.info('Initialize locales using extract-locales command');
   }
+
+  return i18ndata;
+}
+
+export const lib = {
+  getLocaleDir
+};
+/*
+ * Gettext utils. No-op until we have proper
+ * a proper l10n solution.n
+ *
+ */
+export function gettext(str) {
+  const locale = getLocale()
+  let i18ndata = getI18Data(locale);
   const jed = new Jed(i18ndata);
   return jed.gettext(str);
 }
