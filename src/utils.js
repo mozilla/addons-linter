@@ -148,8 +148,7 @@ export function getI18Data(locale) {
 }
 
 /*
- * Gettext utils. No-op until we have proper
- * a proper l10n solution.n
+ * Gettext utils. Used for translating strings.
  *
  */
 export function gettext(str) {
