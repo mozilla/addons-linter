@@ -5,7 +5,7 @@ install:
   - ps: Install-Product node $env:nodejs_version x64
   - set CI=true
   - set PATH=%APPDATA%\npm;%PATH%
-  - npm install
+  - yarn install
 
 matrix:
   fast_finish: true
@@ -22,10 +22,13 @@ environment:
 test_script:
   - node --version
   - npm --version
+  - yarn --version
   ### This npm script will execute the same tests executed by test-ci
   ### but it skips coveralls (which is not currently recognized when
   ### used from appveyor).
-  - npm run test-coverage-once
+  - yarn run test-coverage-once
   ### Building the dist file is needed by the linting step.
-  - npm run build
-  - npm run lint
+  - yarn run build
+  - yarn run lint
+  # run integration tests using an addons-linter binary in a production-like environment
+  - yarn run test-integration:production

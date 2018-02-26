@@ -1028,10 +1028,10 @@ describe('firefox schema import', () => {
     const schemaFiles = [
       'manifest.json', 'cookies.json',
     ];
-    const firefoxPath = 'tests/schema/firefox';
-    const ourPath = 'tests/schema/updates';
-    const outputPath = 'tests/schema/imported';
-    const expectedPath = 'tests/schema/expected';
+    const firefoxPath = 'tests/fixtures/schema/firefox';
+    const ourPath = 'tests/fixtures/schema/updates';
+    const outputPath = 'tests/fixtures/schema/imported';
+    const expectedPath = 'tests/fixtures/schema/expected';
 
     beforeEach(() => {
       createDir(outputPath);
@@ -1066,7 +1066,7 @@ describe('firefox schema import', () => {
   });
 
   describe('fetchSchemas', () => {
-    const outputPath = 'tests/schema/imported';
+    const outputPath = 'tests/fixtures/schema/imported';
     const expectedTarballPath = 'tmp/FIREFOX_AURORA_54_BASE.tar.gz';
 
     beforeEach(() => {
@@ -1080,7 +1080,7 @@ describe('firefox schema import', () => {
     });
 
     it('extracts the schemas from a local file', async () => {
-      const cwd = 'tests/schema';
+      const cwd = 'tests/fixtures/schema';
       const schemaPath = 'firefox';
       const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
       sinon
@@ -1103,7 +1103,7 @@ describe('firefox schema import', () => {
     });
 
     it('handles errors when parsing the tarball', async () => {
-      const cwd = 'tests/schema';
+      const cwd = 'tests/fixtures/schema';
       const schemaPath = 'firefox';
       const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
       sinon

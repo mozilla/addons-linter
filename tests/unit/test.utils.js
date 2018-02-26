@@ -60,7 +60,7 @@ describe('gettext()', () => {
     jest.doMock('utils', () => {
       return {
         // eslint-disable-next-line global-require
-        i18n: buildI18nObject(require('../tests/fixtures/fr.js')),
+        i18n: buildI18nObject(require('../fixtures/fr.js')),
       };
     });
 
@@ -79,7 +79,7 @@ describe('gettext()', () => {
     jest.doMock('utils', () => {
       return {
         // eslint-disable-next-line global-require
-        i18n: buildI18nObject(require('../tests/fixtures/ja.js')),
+        i18n: buildI18nObject(require('../fixtures/ja.js')),
       };
     });
 
@@ -94,19 +94,21 @@ describe('gettext()', () => {
 
 describe('sprintf()', () => {
   it('should return localizable message for dynamic messages', () => {
-    const path = '../tests/fixtures/no-image.png';
-    expect(i18n.sprintf(i18n._('Icon could not be found at "%(path)s".'), { path })).toEqual('Icon could not be found at "../tests/fixtures/no-image.png".');
+    const path = '../fixtures/no-image.png';
+    expect(i18n.sprintf(i18n._('Icon could not be found at "%(path)s".'), { path }))
+      .toEqual('Icon could not be found at "../fixtures/no-image.png".');
 
     jest.doMock('utils', () => {
       return {
         // eslint-disable-next-line global-require
-        i18n: buildI18nObject(require('../tests/fixtures/de.js')),
+        i18n: buildI18nObject(require('../fixtures/de.js')),
       };
     });
 
     // eslint-disable-next-line global-require
     const mockedI18n = require('utils').i18n;
-    expect(mockedI18n.sprintf(mockedI18n._("Icon could not be found at '%(path)s'."), { path })).toEqual('Symbol konnte nicht unter „../tests/fixtures/no-image.png“ gefunden werden.');
+    expect(mockedI18n.sprintf(mockedI18n._("Icon could not be found at '%(path)s'."), { path }))
+      .toEqual('Symbol konnte nicht unter „../fixtures/no-image.png“ gefunden werden.');
 
     jest.resetModules();
   });
