@@ -21,7 +21,10 @@ const validator = ajv({
   jsonPointers: true,
   verbose: true,
   schemas,
+  schemaId: 'auto',
 });
+
+validator.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
 
 ajvMergePatch(validator);
 

@@ -69,7 +69,7 @@ export default class ManifestJSONParser extends JSONParser {
     // super helpful error. We'll tidy it up a bit:
     if (error && error.message) {
       const lowerCaseMessage = error.message.toLowerCase();
-      if (lowerCaseMessage === 'should not have additional properties') {
+      if (lowerCaseMessage === 'should match some schema in anyof') {
         // eslint-disable-next-line no-param-reassign
         error.message = 'is not a valid key or has invalid extra properties';
       }

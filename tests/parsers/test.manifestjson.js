@@ -542,7 +542,7 @@ describe('ManifestJSONParser', () => {
       const { errors } = addonLinter.collector;
       assertHasMatchingError(errors, {
         code: messages.JSON_INVALID.code,
-        message: '"/background/script" is not a valid key or has invalid '
+        message: '"/background" is not a valid key or has invalid '
                  + 'extra properties',
       });
     });

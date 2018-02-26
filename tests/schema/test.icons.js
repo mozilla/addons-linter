@@ -29,7 +29,7 @@ describe('/icons', () => {
     expect(validateAddon.errors.length).toEqual(1);
     expect(validateAddon.errors[0].dataPath).toEqual('/icons/wat');
     expect(validateAddon.errors[0].message).toEqual(
-      'should NOT have additional properties'
+      'is an invalid additional property'
     );
   });
 });
