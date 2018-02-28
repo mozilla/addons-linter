@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-19 12:06+0000\n"
-"Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
+"PO-Revision-Date: 2018-01-26 10:28+0000\n"
+"Last-Translator: Peter Klofutar <peter_klofutar@telemach.net>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -44,11 +44,11 @@ msgstr "Stolpec"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Najdeno je bilo neveljavno gnezdenje izbirnikov."
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "Najdena je bila napaka skladnje CSS."
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -64,7 +64,7 @@ msgstr "Pravilnik dodatkov ne dovoljuje oddaljenih skriptov."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Notranji skripti so privzeto zavrnjeni."
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
@@ -76,7 +76,7 @@ msgstr "{{api}} ni podprt"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "Firefox ne podpira tega API-ja."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
@@ -84,23 +84,23 @@ msgstr ""
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Datoteke skripta vsebine ni bilo mogoče najti."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Datoteke skripta vsebine ni bilo mogoče najti."
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Ime datoteke skripta vsebine ne sme biti prazno."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Ime datoteke skripta vsebine ne sme biti prazno."
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "Napaka skladnje JavaScripta."
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
@@ -120,7 +120,7 @@ msgstr "Nepriporočena knjižnica JS tretje osebe"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "Vaša datoteka JSON vsebuje bloke komentarjev."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
@@ -240,7 +240,7 @@ msgstr "V mapi \"%(path)s\" ni bilo mogoče najti skripta vsebine, določenega v
 
 #: src/messages/manifestjson.js:162
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "V mapi \"%(path)s\" ni bilo mogoče najti datoteke css skripta vsebine, določene v manifestu."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -292,11 +292,11 @@ msgstr "Ikone morajo biti vrste JPG/JPEG, WebP, GIF, PNG ali SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
-msgstr ""
+msgstr "Prazna jezikovna mapa"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "V mapi \"%(path)s\" manjka datoteka messages.json."
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
@@ -308,7 +308,7 @@ msgstr "Za več informacij glejte https://mzl.la/1R1n1t0 (dokumente na MDN-u)."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "\"manifest_version\" v datoteki manifest.json ni veljavna vrednost."
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
