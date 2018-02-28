@@ -6,7 +6,6 @@ import {
   checkMinNodeVersion,
   ensureFilenameExists,
   getNodeReference,
-  getNodeReference,
   getPackageTypeAsString,
   getRootExpression,
   getVariable,
@@ -14,7 +13,7 @@ import {
   ignorePrivateFunctions,
   isBrowserNamespace,
   isLocalUrl,
-  normalizePath
+  normalizePath,
   parseCspPolicy,
 } from 'utils';
 
@@ -65,9 +64,9 @@ describe('gettext()', () => {
       }
     });
 
-    const realI18n = require('utils').i18n;
+    const mockedI18n = require('utils').i18n;
 
-    expect(realI18n.jed.translate('This is a test').fetch()).toEqual('C\'est un test');
+    expect(mockedI18n.gettext('This is a test')).toEqual('C\'est un test');
   });
 });
 
