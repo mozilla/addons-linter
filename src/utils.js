@@ -133,6 +133,7 @@ export function getLocaleDir(locale) {
 
 export function getI18Data(locale) {
   const path = getLocaleDir(locale);
+  let i18ndata = {}
   try {
     // eslint-disable-next-line global-require, import/no-dynamic-require
     i18ndata = require(path);
@@ -144,14 +145,14 @@ export function getI18Data(locale) {
 }
 
 export const i18n = {
-  jed: new Jed(getI18Data(getLocale()))
-};
+  jed: new Jed(getI18Data(getLocale())),
+  _: (str) => { str }
+}
 
 
 /*
  * Gettext utils. Used for translating strings.
  */
-
 i18n.gettext = i18n.jed.gettext;
 i18n._ = i18n.jed.gettext;
 

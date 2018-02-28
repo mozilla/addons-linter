@@ -1,10 +1,3 @@
-import {
-  DANGEROUS_EVAL,
-  NO_IMPLIED_EVAL,
-  UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
-  UNSUPPORTED_API,
-} from 'messages/javascript';
-
 // eslint-disable-next-line import/extensions
 import badwords from './badwords.json';
 
@@ -32,14 +25,6 @@ export const ESLINT_RULE_MAPPING = Object.assign({
   'webextension-unsupported-api': ESLINT_WARNING,
   'content-scripts-file-absent': ESLINT_ERROR,
 }, EXTERNAL_RULE_MAPPING);
-
-export const ESLINT_OVERWRITE_MESSAGE = {
-  'no-eval': DANGEROUS_EVAL,
-  'no-implied-eval': NO_IMPLIED_EVAL,
-  'no-new-func': DANGEROUS_EVAL,
-  'no-unsafe-innerhtml/no-unsafe-innerhtml': UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
-  'webextension-unsupported-api': UNSUPPORTED_API,
-};
 
 export const VALIDATION_ERROR = 'error';
 export const VALIDATION_NOTICE = 'notice';

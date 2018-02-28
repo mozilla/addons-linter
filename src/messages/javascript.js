@@ -159,3 +159,11 @@ function temporaryAPI(api) {
 export const STORAGE_LOCAL = temporaryAPI('storage.local');
 export const STORAGE_SYNC = temporaryAPI('storage.sync');
 export const IDENTITY_GETREDIRECTURL = temporaryAPI('identity.getRedirectURL');
+
+export const ESLINT_OVERWRITE_MESSAGE = {
+  'no-eval': DANGEROUS_EVAL,
+  'no-implied-eval': NO_IMPLIED_EVAL,
+  'no-new-func': DANGEROUS_EVAL,
+  'no-unsafe-innerhtml/no-unsafe-innerhtml': UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
+  'webextension-unsupported-api': UNSUPPORTED_API,
+};
