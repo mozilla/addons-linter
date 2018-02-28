@@ -68,23 +68,23 @@ describe('gettext()', () => {
     const mockedI18n = require('utils').i18n;
 
     expect(mockedI18n.gettext('This is a test')).toEqual('C\'est un test');
+
+    // But messages where we don't have a translation are still original
+    expect(mockedI18n.gettext('This is an untranslated test')).toEqual('This is an untranslated test');
   });
 
   it('should support unicode messages', () => {
     jest.doMock('utils', () => {
       return {
         // eslint-disable-next-line global-require
-        i18n: buildI18nObject(require('../tests/fixtures/fr.js')),
+        i18n: buildI18nObject(require('../tests/fixtures/ja.js')),
       };
     });
 
     // eslint-disable-next-line global-require
     const mockedI18n = require('utils').i18n;
 
-    expect(mockedI18n.gettext('This is a test')).toEqual('C\'est un test');
-
-    // But messages where we don't have a translation are still original
-    expect(mockedI18n.gettext('This is an untranslated test')).toEqual('This is an untranslated test');
+    expect(mockedI18n.gettext('This is a test')).toEqual('これはテストです');
   });
 });
 
