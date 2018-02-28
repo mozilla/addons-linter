@@ -144,17 +144,22 @@ export function getI18Data(locale) {
   return i18ndata;
 }
 
-const _jed = new Jed(getI18Data(getLocale()));
-
 /*
  * Gettext utils. Used for translating strings.
  */
-export const i18n = {
-  jed: _jed,
-  _: (str) => { return _jed.gettext(str); },
-  gettext: (str) => { return _jed.gettext(str); },
+export function buildI18nObject(i18nData) {
+  const _jed = new Jed(i18nData);
+
+  return {
+    jed: _jed,
+    getI18Data: getI18Data,
+    _: (str) => { return _jed.gettext(str); },
+    gettext: (str) => { return _jed.gettext(str); },
+    sprintf: (fmt, args) => { return _jed.sprintf(fmt, args) }
+  }
 }
 
+export const i18n = buildI18nObject(getI18Data(getLocale()));
 
 /*
  * Check the minimum node version is met

@@ -131,7 +131,7 @@ export default class JavaScriptScanner {
           } = _messages[code]);
         } else if (Object.prototype.hasOwnProperty.call(
             messages.ESLINT_OVERWRITE_MESSAGE, message.ruleId)) {
-          const overwrites = ESLINT_OVERWRITE_MESSAGE[message.ruleId];
+          const overwrites = messages.ESLINT_OVERWRITE_MESSAGE[message.ruleId];
           shortDescription = overwrites.message || message.message;
           description = overwrites.description || message.description;
 
