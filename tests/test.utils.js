@@ -1,6 +1,9 @@
 import { oneLine } from 'common-tags';
 
-import * as utils from 'utils';
+import {
+  getRootExpression,
+  i18n,
+} from 'utils';
 
 
 describe('utils.getRootExpression()', () => {
@@ -42,14 +45,7 @@ describe('utils.getRootExpression()', () => {
 describe('utils.gettext()', () => {
   it('should return localizable message', () => {
     expect('This is a test').toEqual('This is a test');
-    // eslint-disable-next-line global-require
-    let realUtils = require('utils');
-
-
-    realUtils = require('utils');
-
-    console.log('AAAAAAAAAAAAAAAAAAA');
-    expect(realUtils.gettext('This is a test')).toEqual('C\'est un test');
+    expect(i18n.gettext('This is a test')).toEqual('C\'est un test');
   });
 });
 
