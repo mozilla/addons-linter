@@ -151,7 +151,10 @@ export const i18n = {
 /*
  * Gettext utils. Used for translating strings.
  */
-export const { gettext, sprintf } = i18n.jed;
+
+i18n.gettext = i18n.jed.gettext;
+i18n._ = i18n.jed.gettext;
+
 
 /*
  * Check the minimum node version is met
