@@ -133,7 +133,7 @@ export function getLocaleDir(locale) {
 
 export function getI18Data(locale) {
   const path = getLocaleDir(locale);
-  let i18ndata = {}
+  let i18ndata = {};
   try {
     // eslint-disable-next-line global-require, import/no-dynamic-require
     i18ndata = require(path);
@@ -152,11 +152,11 @@ export function buildI18nObject(i18nData) {
 
   return {
     jed: _jed,
-    getI18Data: getI18Data,
+    getI18Data,
     _: (str) => { return _jed.gettext(str); },
     gettext: (str) => { return _jed.gettext(str); },
-    sprintf: (fmt, args) => { return _jed.sprintf(fmt, args) }
-  }
+    sprintf: (fmt, args) => { return _jed.sprintf(fmt, args); },
+  };
 }
 
 export const i18n = buildI18nObject(getI18Data(getLocale()));
