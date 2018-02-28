@@ -1,8 +1,11 @@
-import { isBrowserNamespace, normalizePath } from 'utils';
+import * as path from 'path';
+
+import { isBrowserNamespace } from 'utils';
 import { CONTENT_SCRIPT_NOT_FOUND, CONTENT_SCRIPT_EMPTY } from 'messages/javascript';
 
 export default {
   create(context) {
+    const dirname = path.dirname(context.getFilename());
     const existingFiles = context.settings.existingFiles || {};
     return {
       MemberExpression(node) {
@@ -36,9 +39,15 @@ export default {
             });
             return;
           }
-          const normalizedName = normalizePath(fileValue);
+          let normalizedName = path.resolve(dirname, fileValue);
+          if (path.isAbsolute(fileValue)) {
+            normalizedName = path.join(path.resolve('.'), path.resolve(fileValue));
+          }
+          let existingFileNames = Object.keys(existingFiles);
+          existingFileNames = existingFileNames.map((fileName) => path.resolve(fileName));
+
           // If file exists then we are good.
-          if (Object.prototype.hasOwnProperty.call(existingFiles, normalizedName)) {
+          if (existingFileNames.includes(normalizedName)) {
             return;
           }
           // File not exists report an issue.
