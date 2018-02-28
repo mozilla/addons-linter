@@ -144,17 +144,16 @@ export function getI18Data(locale) {
   return i18ndata;
 }
 
-export const i18n = {
-  jed: new Jed(getI18Data(getLocale())),
-  _: (str) => { str }
-}
-
+const _jed = new Jed(getI18Data(getLocale()));
 
 /*
  * Gettext utils. Used for translating strings.
  */
-i18n.gettext = i18n.jed.gettext;
-i18n._ = i18n.jed.gettext;
+export const i18n = {
+  jed: _jed,
+  _: (str) => { return _jed.gettext(str); },
+  gettext: (str) => { return _jed.gettext(str); },
+}
 
 
 /*

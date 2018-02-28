@@ -45,6 +45,8 @@ describe('utils.getRootExpression()', () => {
 describe('utils.gettext()', () => {
   it('should return localizable message', () => {
     expect('This is a test').toEqual('This is a test');
+    console.log(i18n.gettext);
+
     expect(i18n.gettext('This is a test')).toEqual('C\'est un test');
   });
 });
