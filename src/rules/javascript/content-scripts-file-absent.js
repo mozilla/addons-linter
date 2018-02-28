@@ -41,7 +41,7 @@ export default {
           }
           let normalizedName = path.resolve(dirname, fileValue);
           if (path.isAbsolute(fileValue)) {
-            normalizedName = path.join(path.resolve('.'), path.resolve(fileValue));
+            normalizedName = path.join(path.resolve('.'), path.normalize(fileValue));
           }
           let existingFileNames = Object.keys(existingFiles);
           existingFileNames = existingFileNames.map((fileName) => path.resolve(fileName));
