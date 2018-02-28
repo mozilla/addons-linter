@@ -13,6 +13,7 @@ import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
 const SOURCE_MAP_RE = new RegExp(/\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/);
 
+
 export function normalizePath(iconPath) {
   // Convert the icon path to a URL so we can strip any fragments and resolve
   // . and .. automatically. We need an absolute URL to use as a base so we're
@@ -130,13 +131,8 @@ export function getLocaleDir(locale) {
   return `./locale/${locale}/messages.js`;
 }
 
-export const lib = {
-  getLocaleDir,
-};
-
 export function getI18Data(locale) {
-  let i18ndata = {};
-  const path = lib.getLocaleDir(locale);
+  const path = getLocaleDir(locale);
   try {
     // eslint-disable-next-line global-require, import/no-dynamic-require
     i18ndata = require(path);
@@ -147,22 +143,23 @@ export function getI18Data(locale) {
   return i18ndata;
 }
 
+export const i18n = {
+  jed: new Jed(getI18Data(getLocale()))
+};
+
+
 /*
  * Gettext utils. Used for translating strings.
  *
  */
-export function gettext(str) {
-  const locale = getLocale();
-  const i18ndata = getI18Data(locale);
-  const jed = new Jed(i18ndata);
-  return jed.gettext(str);
-}
+export const gettext = i18n.jed.gettext;
 
 /*
  * An sprintf to use with gettext. Imported from Jed for when we have a proper
  * l10n solution.
  */
-export const { sprintf } = Jed;
+
+export const sprintf = i18n.jed.sprintf;
 
 /*
  * Check the minimum node version is met

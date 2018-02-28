@@ -43,11 +43,12 @@ describe('utils.gettext()', () => {
   it('should return localizable message', () => {
     expect('This is a test').toEqual('This is a test');
     // eslint-disable-next-line global-require
-    const realUtils = require('utils');
-    jest.unmock('utils');
-    const myMock = jest.fn();
-    realUtils.lib.getLocaleDir = myMock;
-    myMock.mockReturnValue('../tests/fixtures/fr.js');
+    let realUtils = require('utils');
+
+
+    realUtils = require('utils');
+
+    console.log('AAAAAAAAAAAAAAAAAAA');
     expect(realUtils.gettext('This is a test')).toEqual('C\'est un test');
   });
 });
