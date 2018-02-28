@@ -8,7 +8,7 @@ describe('Messages', () => {
   Object.keys(messages).forEach((message) => {
     const { code, description, msg } = messages[message];
 
-    if (typeof messages[message] === 'object') {
+    if (typeof messages[message] === 'object' && code !== undefined) {
       it('should have a code set', () => {
         expect(code).not.toEqual(null);
       });
