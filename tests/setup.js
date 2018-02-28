@@ -25,6 +25,4 @@ jest.mock('cli', () => {
 
 afterEach(() => {
   global.sinon.restore();
-  jest.resetModules();
-  jest.resetAllMocks();
 });

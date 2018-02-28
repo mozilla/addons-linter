@@ -71,6 +71,8 @@ describe('gettext()', () => {
 
     // But messages where we don't have a translation are still original
     expect(mockedI18n.gettext('This is an untranslated test')).toEqual('This is an untranslated test');
+
+    jest.resetModules();
   });
 
   it('should support unicode messages', () => {
@@ -85,6 +87,8 @@ describe('gettext()', () => {
     const mockedI18n = require('utils').i18n;
 
     expect(mockedI18n.gettext('This is a test')).toEqual('これはテストです');
+
+    jest.resetModules();
   });
 });
 
