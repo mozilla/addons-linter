@@ -4,61 +4,49 @@ import PropertiesParser from 'parsers/properties';
 import DoctypeParser from 'parsers/doctype';
 import FluentParser from 'parsers/fluent';
 
-import { unexpectedSuccess } from '../helpers';
-
 
 describe('LangpackScanner', () => {
   it('should report a proper scanner name', () => {
     expect(LangpackScanner.scannerName).toEqual('langpack');
   });
 
-  it('scan property files', () => {
-    const spy = sinon.spy(PropertiesParser.prototype, 'parse');
+  it('should scan property files', async () => {
+    sinon.spy(PropertiesParser.prototype, 'parse');
     const code = 'foo = bar';
-    const scanner = new LangpackScanner(code, 'foo.properties');
+    const langpackScanner = new LangpackScanner(code, 'foo.properties');
 
-    return scanner.scan()
-      .then(({ linterMessages }) => {
-        expect(linterMessages.length).toEqual(0);
-        sinon.assert.calledOnce(spy);
-      });
+    const { linterMessages } = await langpackScanner.scan();
+    expect(linterMessages.length).toEqual(0);
+    sinon.assert.calledOnce(PropertiesParser.prototype.parse);
   });
 
-  it('scan dtd files', () => {
-    const spy = sinon.spy(DoctypeParser.prototype, 'parse');
+  it('should scan dtd files', async () => {
+    sinon.spy(DoctypeParser.prototype, 'parse');
     const code = '<!ENTITY foo "bar">';
-    const scanner = new LangpackScanner(code, 'foo.dtd');
+    const langpackScanner = new LangpackScanner(code, 'foo.dtd');
 
-    return scanner.scan()
-      .then(({ linterMessages }) => {
-        expect(linterMessages.length).toEqual(0);
-        sinon.assert.calledOnce(spy);
-      });
+    const { linterMessages } = await langpackScanner.scan();
+    expect(linterMessages.length).toEqual(0);
+    sinon.assert.calledOnce(DoctypeParser.prototype.parse);
   });
 
-  it('scan fluent files', () => {
-    const spy = sinon.spy(FluentParser.prototype, 'parse');
+  it('should scan fluent files', async () => {
+    sinon.spy(FluentParser.prototype, 'parse');
     const code = 'foo = Hello World';
-    const scanner = new LangpackScanner(code, 'foo.ftl');
+    const langpackScanner = new LangpackScanner(code, 'foo.ftl');
 
-    return scanner.scan()
-      .then(({ linterMessages }) => {
-        expect(linterMessages.length).toEqual(0);
-        sinon.assert.calledOnce(spy);
-      });
+    const { linterMessages } = await langpackScanner.scan();
+    expect(linterMessages.length).toEqual(0);
+    sinon.assert.calledOnce(FluentParser.prototype.parse);
   });
 
-  it('throws on unsupported file types', () => {
-    const scanner = new LangpackScanner('', 'foo.js');
+  it('should throw an error on unsupported file types', async () => {
+    const langpackScanner = new LangpackScanner('', 'foo.js');
 
-    return scanner.scan()
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toEqual('Unsupported file type');
-      });
+    await expect(langpackScanner.scan()).rejects.toThrow('Unsupported file type');
   });
 
-  it('should throw an error if getContents fails', () => {
+  it('should throw an error if getContents fails', async () => {
     const addonsLinter = new Linter({ _: ['foo'] });
     const langpackScanner = new LangpackScanner('', 'test.properties', {
       collector: addonsLinter.collector,
@@ -68,10 +56,6 @@ describe('LangpackScanner', () => {
       return Promise.reject(new Error('Explode!'));
     });
 
-    return langpackScanner.scan()
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        expect(err.message).toEqual('Explode!');
-      });
+    await expect(langpackScanner.scan()).rejects.toThrow('Explode!');
   });
 });

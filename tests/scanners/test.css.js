@@ -9,48 +9,44 @@ import { ignorePrivateFunctions } from 'utils';
 import { getRuleFiles, metadataPassCheck, validMetadata } from '../helpers';
 
 
-describe('CSSScanner', () => {
+describe('CSSScanner', async () => {
   it('should report a proper scanner name', () => {
     expect(CSSScanner.scannerName).toEqual('css');
   });
 
-  it('should add CSS_SYNTAX_ERROR with invalid css', () => {
+  it('should add CSS_SYNTAX_ERROR with invalid css', async () => {
     const code = '#something {';
     const cssScanner = new CSSScanner(code, 'fakeFile.css');
 
-    return cssScanner.scan()
-      .then(({ linterMessages }) => {
-        expect(linterMessages.length).toEqual(1);
-        expect(linterMessages[0].code).toEqual(messages.CSS_SYNTAX_ERROR.code);
-        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
-        expect(linterMessages[0].message).toEqual('Unclosed block');
-        expect(linterMessages[0].line).toEqual(1);
-        expect(linterMessages[0].column).toEqual(1);
-        expect(linterMessages[0].file).toEqual('fakeFile.css');
-      });
+    const { linterMessages } = await cssScanner.scan();
+    expect(linterMessages.length).toEqual(1);
+    expect(linterMessages[0].code).toEqual(messages.CSS_SYNTAX_ERROR.code);
+    expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
+    expect(linterMessages[0].message).toEqual('Unclosed block');
+    expect(linterMessages[0].line).toEqual(1);
+    expect(linterMessages[0].column).toEqual(1);
+    expect(linterMessages[0].file).toEqual('fakeFile.css');
   });
 
-  it('should pass metadata to rules', () => {
+  it('should pass metadata to rules', async () => {
     const code = oneLine`/* whatever code */
       #myName { position: relative; }
       .myClass { background: #000; }`;
-    const fakeRules = { metadataPassCheck: () => {} };
+    const fakeRules = { metadataPassedCheck: () => {} };
 
     // This rule calls assert.fail() if no metadata is passed to it.
-    sinon.stub(fakeRules, 'metadataPassCheck').callsFake(metadataPassCheck);
+    sinon.stub(fakeRules, 'metadataPassedCheck').callsFake(metadataPassCheck);
 
-    const scanner = new CSSScanner(code, 'fake.css', {
+    const cssScanner = new CSSScanner(code, 'fake.css', {
       addonMetadata: validMetadata({ guid: 'snowflake' }),
     });
 
-    return scanner.scan(fakeRules)
-      .then(({ linterMessages }) => {
-        sinon.assert.calledTwice(fakeRules.metadataPassCheck);
-        expect(linterMessages.length).toEqual(0);
-      });
+    const { linterMessages } = await cssScanner.scan(fakeRules);
+    sinon.assert.calledTwice(fakeRules.metadataPassedCheck);
+    expect(linterMessages.length).toEqual(0);
   });
 
-  it('should reject if parser throws non-error', () => {
+  it('should reject if parser throws non-error', async () => {
     const code = '/* whatever code */';
     const cssScanner = new CSSScanner(code, 'fakeFile.css');
 
@@ -63,20 +59,10 @@ describe('CSSScanner', () => {
     // We load the fake CSS parser into the scanner the only way possible:
     // using the private _getContents method, which will take an alternate
     // parser.
-    return cssScanner._getContents(fakeCSSParser)
-      .then(() => {
-        return cssScanner.scan();
-      })
-      .then(() => {
-        expect(false).toBe(true);
-      })
-      .catch((err) => {
-        expect(err).toBeInstanceOf(TypeError);
-        expect(err.message).toEqual('Awooga');
-      });
+    await expect(cssScanner._getContents(fakeCSSParser)).rejects.toThrow('Awooga');
   });
 
-  it('should export and run all rules in rules/css', () => {
+  it('should export and run all rules in rules/css', async () => {
     const ruleFiles = getRuleFiles('css');
     const code = oneLine`/* whatever code */
       #myName { position: relative; }
@@ -86,29 +72,25 @@ describe('CSSScanner', () => {
     expect(ruleFiles.length).toEqual(
       Object.keys(ignorePrivateFunctions(rules)).length);
 
-    return cssScanner.scan()
-      .then(() => {
-        expect(cssScanner._rulesProcessed).toEqual(
-          Object.keys(ignorePrivateFunctions(rules)).length);
-      });
+    await cssScanner.scan();
+    expect(cssScanner._rulesProcessed).toEqual(
+      Object.keys(ignorePrivateFunctions(rules)).length);
   });
 
-  it('should not blow-up on empty media query', () => {
+  it('should not blow-up on empty media query', async () => {
     const code = '@media only screen and (max-width: 959px) {}';
     const cssScanner = new CSSScanner(code, 'fakeFile.css');
-    return cssScanner.scan()
-      .then(({ linterMessages }) => {
-        expect(linterMessages.length).toEqual(0);
-      });
+
+    const { linterMessages } = await cssScanner.scan();
+    expect(linterMessages.length).toEqual(0);
   });
 
   // See: https://github.com/mozilla/addons-linter/issues/693
-  it('should not blow-up on `initial` value', () => {
+  it('should not blow-up on `initial` value', async () => {
     const code = '.myClass { -moz-binding: url(initial); }';
     const cssScanner = new CSSScanner(code, 'fakeFile.css');
-    return cssScanner.scan()
-      .then(({ linterMessages }) => {
-        expect(linterMessages.length).toEqual(0);
-      });
+
+    const { linterMessages } = await cssScanner.scan();
+    expect(linterMessages.length).toEqual(0);
   });
 });

@@ -25,7 +25,7 @@ export function excludeRules(excludeFrom = {}, excludeWhat = []) {
 
 export default class JavaScriptScanner {
   _defaultRules = rules;
-  disabledRules = {};
+  disabledRules = [];
 
   constructor(code, filename, options = {}) {
     this.code = code;
