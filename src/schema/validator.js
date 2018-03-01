@@ -1,8 +1,6 @@
 import ajv from 'ajv';
 import ajvMergePatch from 'ajv-merge-patch';
 
-import jsonSchemaDraft06 from 'ajv/lib/refs/json-schema-draft-06.json';
-
 import schemaObject from 'schema/imported/manifest';
 import messagesSchemaObject from 'schema/messages';
 
@@ -26,7 +24,7 @@ const validator = ajv({
   schemaId: 'auto',
 });
 
-validator.addMetaSchema(jsonSchemaDraft06);
+validator.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
 
 ajvMergePatch(validator);
 
