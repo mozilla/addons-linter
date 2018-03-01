@@ -12,7 +12,7 @@ describe('Binary', () => {
   });
 
   it('should notice a flagged file', async () => {
-    FLAGGED_FILE_MAGIC_NUMBERS.forEach(async (magic) => {
+    await Promise.all(FLAGGED_FILE_MAGIC_NUMBERS.map(async (magic) => {
       const buffer = Buffer.from(magic);
       const binaryScanner = new BinaryScanner(buffer, 'wat.txt');
 
@@ -22,7 +22,7 @@ describe('Binary', () => {
         messages.FLAGGED_FILE_TYPE.code
       );
       expect(linterMessages[0].file).toEqual('wat.txt');
-    });
+    }));
   });
 
   it('should ask for a chunk', () => {
