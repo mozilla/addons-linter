@@ -69,7 +69,7 @@ describe('Linter', () => {
     };
     await expect(
       addonLinter.checkFileExists(addonLinter.packagePath, fakeLstat)
-    ).rejects.toThrowError(fakeError);
+    ).rejects.toThrow(fakeError);
   });
 
   it('should reject if not a file', async () => {
@@ -91,7 +91,7 @@ describe('Linter', () => {
     const expectedError = new Error('Path "bar" is not a file or directory or does not exist.');
     await expect(
       addonLinter.checkFileExists(addonLinter.packagePath, fakeLstat)
-    ).rejects.toThrowError(expectedError);
+    ).rejects.toThrow(expectedError);
     sinon.assert.calledOnce(isFileSpy);
   });
 
@@ -112,7 +112,7 @@ describe('Linter', () => {
     expect(addonLinter.collector.errors.length).toEqual(0);
     await expect(
       addonLinter.scan()
-    ).rejects.toThrow();
+    ).rejects.toThrow(constants.ZIP_LIB_CORRUPT_FILE_ERROR);
     expect(addonLinter.collector.errors.length).toEqual(1);
     expect(addonLinter.collector.errors[0].code).toEqual(
       messages.BAD_ZIPFILE.code);
@@ -267,9 +267,10 @@ describe('Linter', () => {
     addonLinter.checkFileExists = fakeCheckFileExists;
     addonLinter.collector.addError = sinon.stub();
     addonLinter.print = sinon.stub();
+    const expectedError = new Error('DuplicateZipEntry the zip has dupes!');
     class FakeXpi extends FakeIOBase {
       async getFiles() {
-        throw new Error('DuplicateZipEntry the zip has dupes!');
+        throw expectedError;
       }
       getFilesByExt() {
         return this.getMetadata();
@@ -277,7 +278,7 @@ describe('Linter', () => {
     }
     await expect(
       addonLinter.scan({ _Xpi: FakeXpi })
-    ).rejects.toThrow();
+    ).rejects.toThrow(expectedError);
     sinon.assert.calledWith(
       addonLinter.collector.addError,
       messages.DUPLICATE_XPI_ENTRY);
@@ -1546,7 +1547,7 @@ describe('Linter.run()', () => {
 
     await expect(
       addonLinter.run({ _Xpi: FakeXpi, _console: fakeConsole })
-    ).rejects.toThrowError(expectedError);
+    ).rejects.toThrow(expectedError);
     sinon.assert.calledOnce(addonLinter.handleError);
   });
 

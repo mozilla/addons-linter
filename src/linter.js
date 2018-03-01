@@ -80,7 +80,7 @@ export default class Linter {
       this.collector.addError(messages.DUPLICATE_XPI_ENTRY);
       this.print(_console);
     } else if (err.message.includes(
-      'end of central directory record signature not found')) {
+      constants.ZIP_LIB_CORRUPT_FILE_ERROR)) {
       this.collector.addError(messages.BAD_ZIPFILE);
       this.print(_console);
     } else if (this.config.stack === true) {
