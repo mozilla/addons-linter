@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-13 10:57+0000\n"
-"Last-Translator: Selim Şumlu <selim@sum.lu>\n"
+"PO-Revision-Date: 2018-02-27 21:26+0000\n"
+"Last-Translator: Ali Demirtaş <alidemirtas94@gmail.com>\n"
 "Language-Team: none\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -72,7 +72,7 @@ msgstr ""
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} desteklenmiyor"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
