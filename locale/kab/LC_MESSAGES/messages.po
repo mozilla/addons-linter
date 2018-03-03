@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-10 11:35+0000\n"
+"PO-Revision-Date: 2018-03-03 12:07+0000\n"
 "Last-Translator: Muḥend Belqasem <belkacem77@gmail.com>\n"
 "Language-Team: none\n"
 "Language: kab\n"
@@ -44,11 +44,11 @@ msgstr "Tigejdit"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Yir amnekcem gar imsefran yettwaf"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "Tuccḍa n tseddast CSS tettwaf"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -60,7 +60,7 @@ msgstr "Ur d-yelli wamek ad yettwasleḍ FTL inek."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Iskripten inmeggagen ur ttwasirgen ara akken i d-yettwalmmel deg tiwtilin icudden ar izegrar."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
@@ -203,8 +203,7 @@ msgid "Translation string is missing the message property"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
@@ -236,14 +235,11 @@ msgid "The field is invalid."
 msgstr "Aferdis arameγtu."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
@@ -292,8 +288,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
-"Yessefk tignitin ad ilint d yiwet seg  JPG/JPEG, WebP, GIF, PNG neɣ SVG."
+msgstr "Yessefk tignitin ad ilint d yiwet seg  JPG/JPEG, WebP, GIF, PNG neɣ SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
