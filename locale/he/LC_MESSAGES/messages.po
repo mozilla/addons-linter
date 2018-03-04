@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-13 07:36+0000\n"
-"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"PO-Revision-Date: 2018-03-04 19:47+0000\n"
+"Last-Translator: Tomer Cohen <tomer.mozilla@tomercohen.com>\n"
 "Language-Team: none\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -60,11 +60,11 @@ msgstr "לא ניתן לפענח את קובץ ה־FTL שלך."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "תסריטים מרוחקים אסורים לפי מדיניות התוספת."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "תסריטים פנימיים חסומים כבררת מחדל"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
@@ -84,19 +84,19 @@ msgstr ""
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "לא ניתן למצוא קובץ תסריט תוכן."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "לא ניתן למצוא קובץ תסריט תוכן"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "שם קובץ תסריט תוכן לא אמור להיות ריק."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "שם קובץ תסריט תוכן לא אמור להיות ריק"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
