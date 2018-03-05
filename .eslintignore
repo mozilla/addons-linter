@@ -7,3 +7,4 @@ src/schema/imported/index.js
 locale/
 tests/fixtures/fr.js
 tests/fixtures/ja.js
+tests/fixtures/de.js
