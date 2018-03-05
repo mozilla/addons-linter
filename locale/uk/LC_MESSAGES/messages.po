@@ -1,18 +1,17 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-05 14:16+0000\n"
+"PO-Revision-Date: 2018-03-05 11:39+0000\n"
 "Last-Translator: Artem Polivanchuk <artem@mozilla.org.ua>\n"
 "Language-Team: none\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pontoon\n"
 
 #: src/linter.js:117
@@ -181,38 +180,35 @@ msgstr "Додаткам Firefox не дозволено виконувати м
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "Назва рядка зарезервована для попередньо визначеного повідомлення"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "Текст заміщення для повідомлення не задано"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "Текст заміщення, що використовується в повідомленні, не визначено."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "Назва тексту заміщення містить неприпустимі символи"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "В тексті заміщення відсутня властивість вмісту"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"Перегляньте https://mzl.la/1ZOhoEN (Документацію MDN) для отримання "
-"докладної інформації."
+msgstr "Перегляньте https://mzl.la/1ZOhoEN (Документацію MDN) для отримання докладної інформації."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -239,14 +235,11 @@ msgid "The field is invalid."
 msgstr "Це поле неправильне."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Не вдалося знайти визначений в маніфесті скрипт вмісту в \"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Не вдалося знайти визначений в маніфесті css файл в \"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
@@ -311,9 +304,7 @@ msgstr "Невідомий дозвіл."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"Перегляньте https://mzl.la/1R1n1t0 (Документацію MDN) для отримання "
-"докладної інформації."
+msgstr "Перегляньте https://mzl.la/1R1n1t0 (Документацію MDN) для отримання докладної інформації."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -321,9 +312,7 @@ msgstr "\"manifest_version\" в файлі manifest.json має неправил
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"Перегляньте https://mzl.la/20PenXl (Документацію MDN) для отримання "
-"докладної інформації."
+msgstr "Перегляньте https://mzl.la/20PenXl (Документацію MDN) для отримання докладної інформації."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
@@ -335,9 +324,7 @@ msgstr "Властивість \"name\" повинна бути рядком."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
-"Перегляньте http://mzl.la/1STmr48 (Документацію MDN) для отримання докладної "
-"інформації."
+msgstr "Перегляньте http://mzl.la/1STmr48 (Документацію MDN) для отримання докладної інформації."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
@@ -345,9 +332,7 @@ msgstr "Властивість \"version\" повинна бути рядком.
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
-"Перегляньте http://mzl.la/1kXIADa (Документацію MDN) для отримання докладної "
-"інформації."
+msgstr "Перегляньте http://mzl.la/1kXIADa (Документацію MDN) для отримання докладної інформації."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
