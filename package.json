@@ -105,7 +105,7 @@
     "pino": "4.13.0",
     "po2json": "0.4.5",
     "postcss": "6.0.19",
-    "probe-image-size": "3.2.0",
+    "probe-image-size": "4.0.0",
     "relaxed-json": "1.0.1",
     "semver": "5.5.0",
     "shelljs": "0.8.1",
