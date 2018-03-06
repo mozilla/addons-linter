@@ -1,7 +1,7 @@
 import ajv from 'ajv';
 import ajvMergePatch from 'ajv-merge-patch';
-import merge from 'schema/deepmerge';
 
+import merge from 'schema/deepmerge';
 import schemaObject from 'schema/imported/manifest';
 import themeSchemaObject from 'schema/imported/theme';
 import messagesSchemaObject from 'schema/messages';
@@ -90,12 +90,12 @@ const _validateStaticTheme = validator.compile({
         ThemeManifest: {
           $merge: {
             with: {
-              additionalProperties: false
-            }
-          }
-        }
-      }
-    })
+              additionalProperties: false,
+            },
+          },
+        },
+      },
+    }),
   ),
   id: 'static-theme-manifest',
   $ref: '#/types/ThemeManifest',

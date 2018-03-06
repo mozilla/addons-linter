@@ -112,11 +112,11 @@ export function validStaticThemeManifestJSON(extra) {
     version: '1.0',
     theme: {
       images: {
-        headerURL: 'weta.png'
+        headerURL: 'weta.png',
       },
       colors: {
-       accentcolor: "#adb09f",
-       textcolor: "#000"
+        accentcolor: '#adb09f',
+        textcolor: '#000',
       },
     },
   }, extra));

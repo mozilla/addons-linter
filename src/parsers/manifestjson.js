@@ -8,7 +8,7 @@ import probeImageSize from 'probe-image-size';
 import upath from 'upath';
 
 import {
-  validateAddon, validateLangPack, validateStaticTheme
+  validateAddon, validateLangPack, validateStaticTheme,
 } from 'schema/validator';
 import { getConfig } from 'cli';
 import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE, IMAGE_FILE_EXTENSIONS, LOCALES_DIRECTORY, MESSAGES_JSON } from 'const';
@@ -110,7 +110,7 @@ export default class ManifestJSONParser extends JSONParser {
     // Not all messages returned by the schema are fatal to Firefox, messages
     // that are just warnings should be added to this array.
     const warnings = [messages.MANIFEST_PERMISSIONS.code];
-    const isStaticTheme = this.parsedJSON.hasOwnProperty('theme');
+    const isStaticTheme = Object.prototype.hasOwnProperty.call(this.parsedJSON, 'theme');
     let validate = validateAddon;
 
     if (isStaticTheme) {
