@@ -111,28 +111,13 @@ export default class ManifestJSONParser extends JSONParser {
     // that are just warnings should be added to this array.
     const warnings = [messages.MANIFEST_PERMISSIONS.code];
     const isStaticTheme = this.parsedJSON.hasOwnProperty('theme');
-    let packageType = 'addon';
+    let validate = validateAddon;
 
-    const manifestValidators = {
-      static_theme: [
-        isStaticTheme,
-        validateStaticTheme],
-      langpack: [
-        this.isLanguagePack,
-        validateLangPack],
-      addon: [
-        !isStaticTheme && !this.isLanguagePack,
-        validateAddon],
-    };
-
-    Object.keys(manifestValidators).forEach((id) => {
-      if (manifestValidators[id][0]) {
-        packageType = id;
-      }
-    })
-
-
-    const validate = manifestValidators[packageType][1];
+    if (isStaticTheme) {
+      validate = validateStaticTheme;
+    } else if (this.isLanguagePack) {
+      validate = validateLangPack;
+    }
 
     this.isValid = validate(this.parsedJSON);
     if (!this.isValid) {
