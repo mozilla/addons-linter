@@ -9,6 +9,7 @@ import {
   assertHasMatchingError,
   validManifestJSON,
   validLangpackManifestJSON,
+  validStaticThemeManifestJSON,
   getStreamableIO,
   EMPTY_PNG,
 } from '../helpers';
@@ -1091,6 +1092,34 @@ describe('ManifestJSONParser', () => {
     });
   });
 
+  describe('static theme', () => {
+    it('supports simple valid static theme', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validStaticThemeManifestJSON();
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
+    it('throws warning on additional properties', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validStaticThemeManifestJSON({ content_scripts: ['foo.js'] });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.JSON_INVALID.code,
+        message: '"/content_scripts" is an invalid additional property',
+        description: 'Your JSON file could not be parsed.',
+      });
+    });
+  });
 
   describe('locales', () => {
     it('error if messages.json is  missing in language directory', () => {

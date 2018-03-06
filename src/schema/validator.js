@@ -1,7 +1,9 @@
 import ajv from 'ajv';
 import ajvMergePatch from 'ajv-merge-patch';
+import merge from 'schema/deepmerge';
 
 import schemaObject from 'schema/imported/manifest';
+import themeSchemaObject from 'schema/imported/theme';
 import messagesSchemaObject from 'schema/messages';
 
 import {
@@ -58,6 +60,7 @@ const _validateAddon = validator.compile({
   id: 'manifest',
   $ref: '#/types/WebExtensionManifest',
 });
+
 export const validateAddon = (...args) => {
   const isValid = _validateAddon(...args);
   validateAddon.errors = filterErrors(_validateAddon.errors);
@@ -69,9 +72,38 @@ const _validateLangPack = validator.compile({
   id: 'langpack-manifest',
   $ref: '#/types/WebExtensionLangpackManifest',
 });
+
 export const validateLangPack = (...args) => {
   const isValid = _validateLangPack(...args);
   validateLangPack.errors = filterErrors(_validateLangPack.errors);
+  return isValid;
+};
+
+
+const _validateStaticTheme = validator.compile({
+  ...merge(
+    schemaObject,
+    merge(themeSchemaObject, {
+      // Hack to add in additional property validation as long as upstream
+      // doesn't define that.
+      types: {
+        ThemeManifest: {
+          $merge: {
+            with: {
+              additionalProperties: false
+            }
+          }
+        }
+      }
+    })
+  ),
+  id: 'static-theme-manifest',
+  $ref: '#/types/ThemeManifest',
+});
+
+export const validateStaticTheme = (...args) => {
+  const isValid = _validateStaticTheme(...args);
+  validateStaticTheme.errors = filterErrors(_validateStaticTheme.errors);
   return isValid;
 };
 
@@ -80,6 +112,7 @@ const _validateLocaleMessages = validator.compile({
   id: 'messages',
   $ref: '#/types/WebExtensionMessages',
 });
+
 export const validateLocaleMessages = (...args) => {
   const isValid = _validateLocaleMessages(...args);
   validateLocaleMessages.errors = filterErrors(_validateLocaleMessages.errors);
