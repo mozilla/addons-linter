@@ -12,7 +12,7 @@ import { BANNED_LIBRARIES, UNADVISED_LIBRARIES } from 'libraries';
 import * as messages from 'messages';
 import {
   checkMinNodeVersion,
-  gettext as _,
+  i18n,
   couldBeMinifiedCode,
   getLineAndColumnFromMatch,
 } from 'utils';
@@ -114,7 +114,7 @@ export default class Linter {
     const maxColumns = _terminalWidth();
     const out = [];
 
-    out.push(_('Validation Summary:'));
+    out.push(i18n._('Validation Summary:'));
     out.push('');
     out.push(columnify(this.output.summary, {
       showHeaders: false,
@@ -131,37 +131,37 @@ export default class Linter {
               return this.colorize(type)(value);
             },
             headingTransform: () => {
-              return _('Code');
+              return i18n._('Code');
             },
             maxWidth: 35,
           },
           message: {
             headingTransform: () => {
-              return _('Message');
+              return i18n._('Message');
             },
             maxWidth: (maxColumns - 35) * 0.25,
           },
           description: {
             headingTransform: () => {
-              return _('Description');
+              return i18n._('Description');
             },
             maxWidth: (maxColumns - 35) * 0.5,
           },
           file: {
             headingTransform: () => {
-              return _('File');
+              return i18n._('File');
             },
             maxWidth: (maxColumns - 35) * 0.25,
           },
           line: {
             headingTransform: () => {
-              return _('Line');
+              return i18n._('Line');
             },
             maxWidth: 6,
           },
           column: {
             headingTransform: () => {
-              return _('Column');
+              return i18n._('Column');
             },
             maxWidth: 6,
           },

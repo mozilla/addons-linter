@@ -1,9 +1,23 @@
 import { oneLine } from 'common-tags';
 
-import * as utils from 'utils';
+import {
+  buildI18nObject,
+  checkMinNodeVersion,
+  ensureFilenameExists,
+  getNodeReference,
+  getPackageTypeAsString,
+  getRootExpression,
+  getVariable,
+  i18n,
+  ignorePrivateFunctions,
+  isBrowserNamespace,
+  isLocalUrl,
+  normalizePath,
+  parseCspPolicy,
+} from 'utils';
 
 
-describe('utils.getRootExpression()', () => {
+describe('getRootExpression()', () => {
   const node = {
     type: 'CallExpression',
     callee: { // <-- bar()
@@ -33,13 +47,73 @@ describe('utils.getRootExpression()', () => {
   };
 
   it('should verify that the root node is what was expected', () => {
-    const root = utils.getRootExpression(node);
+    const root = getRootExpression(node);
 
     expect(root.name).toEqual('pref');
   });
 });
 
-describe('utils.getNodeReference()', () => {
+describe('gettext()', () => {
+  it('should return localizable message', () => {
+    expect(i18n.gettext('This is a test')).toEqual('This is a test');
+
+    jest.doMock('utils', () => {
+      return {
+        // eslint-disable-next-line global-require
+        i18n: buildI18nObject(require('../tests/fixtures/fr.js')),
+      };
+    });
+
+    // eslint-disable-next-line global-require
+    const mockedI18n = require('utils').i18n;
+
+    expect(mockedI18n.gettext('This is a test')).toEqual('C\'est un test');
+
+    // But messages where we don't have a translation are still original
+    expect(mockedI18n.gettext('This is an untranslated test')).toEqual('This is an untranslated test');
+
+    jest.resetModules();
+  });
+
+  it('should support unicode messages', () => {
+    jest.doMock('utils', () => {
+      return {
+        // eslint-disable-next-line global-require
+        i18n: buildI18nObject(require('../tests/fixtures/ja.js')),
+      };
+    });
+
+    // eslint-disable-next-line global-require
+    const mockedI18n = require('utils').i18n;
+
+    expect(mockedI18n.gettext('This is a test')).toEqual('これはテストです');
+
+    jest.resetModules();
+  });
+});
+
+describe('sprintf()', () => {
+  it('should return localizable message for dynamic messages', () => {
+    const path = '../tests/fixtures/no-image.png';
+    expect(i18n.sprintf(i18n._('Icon could not be found at "%(path)s".'), { path })).toEqual('Icon could not be found at "../tests/fixtures/no-image.png".');
+
+    jest.doMock('utils', () => {
+      return {
+        // eslint-disable-next-line global-require
+        i18n: buildI18nObject(require('../tests/fixtures/de.js')),
+      };
+    });
+
+    // eslint-disable-next-line global-require
+    const mockedI18n = require('utils').i18n;
+    expect(mockedI18n.sprintf(mockedI18n._("Icon could not be found at '%(path)s'."), { path })).toEqual('Symbol konnte nicht unter „../tests/fixtures/no-image.png“ gefunden werden.');
+
+    jest.resetModules();
+  });
+});
+
+
+describe('getNodeReference()', () => {
   // Represents scope for following code:
   // const foo = window; foo = bar;
   const context = {
@@ -79,20 +153,20 @@ describe('utils.getNodeReference()', () => {
 
   it('should return the name of the referenced variable', () => {
     const ref = { name: 'foo' };
-    const val = utils.getNodeReference(context, ref);
+    const val = getNodeReference(context, ref);
 
     expect(val.name).toEqual('bar');
   });
 
   it('should return the name of the reference if not in scope', () => {
     const ref = { name: 'doesNotExist' };
-    const val = utils.getNodeReference(context, ref);
+    const val = getNodeReference(context, ref);
 
     expect(val.name).toEqual(ref.name);
   });
 });
 
-describe('utils.getVariable()', () => {
+describe('getVariable()', () => {
   // This is the expected schema from eslint
   const context = {
     getScope: () => {
@@ -130,23 +204,23 @@ describe('utils.getVariable()', () => {
   };
 
   it('should return the correct variable in the given context.', () => {
-    const foo = utils.getVariable(context, 'foo');
+    const foo = getVariable(context, 'foo');
     expect(foo.type).toEqual('Literal');
     expect(foo.value).toEqual('bar');
   });
 
   it("should return undefined if the variable doesn't exist.", () => {
-    const undef = utils.getVariable(context, 'doesNotExist');
+    const undef = getVariable(context, 'doesNotExist');
     expect(typeof undef).toEqual('undefined');
   });
 
   it("should return undefined if the init property isn't on the parent", () => {
-    const undef = utils.getVariable(contextWithoutParent, 'foo');
+    const undef = getVariable(contextWithoutParent, 'foo');
     expect(typeof undef).toEqual('undefined');
   });
 });
 
-describe('utils.checkOtherReferences', () => {
+describe('checkOtherReferences', () => {
   const context = {
     getScope: () => {
       return {
@@ -156,54 +230,54 @@ describe('utils.checkOtherReferences', () => {
   };
 
   it('should return the node if reference is a Literal', () => {
-    const literal = utils.getNodeReference(context, { type: 'Literal' });
+    const literal = getNodeReference(context, { type: 'Literal' });
     expect(literal.type).toEqual('Literal');
   });
 
   it('should return the node if reference is undefined', () => {
-    const undef = utils.getNodeReference(context, { type: 'undefined' });
+    const undef = getNodeReference(context, { type: 'undefined' });
     expect(undef.type).toEqual('undefined');
   });
 });
 
-describe('utils.ensureFilenameExists()', () => {
+describe('ensureFilenameExists()', () => {
   it('should throw error when filename is not a string', () => {
     expect(() => {
-      utils.ensureFilenameExists();
+      ensureFilenameExists();
     }).toThrow('Filename is required');
     expect(() => {
-      utils.ensureFilenameExists(0);
+      ensureFilenameExists(0);
     }).toThrow('Filename is required');
     expect(() => {
-      utils.ensureFilenameExists(undefined);
+      ensureFilenameExists(undefined);
     }).toThrow('Filename is required');
     expect(() => {
-      utils.ensureFilenameExists(null);
+      ensureFilenameExists(null);
     }).toThrow('Filename is required');
   });
 
   it('should throw error when filename is empty', () => {
     expect(() => {
-      utils.ensureFilenameExists('');
+      ensureFilenameExists('');
     }).toThrow('Filename is required');
   });
 
   it('should accept filenames', () => {
     expect(() => {
-      utils.ensureFilenameExists('foo.js');
-      utils.ensureFilenameExists('0');
+      ensureFilenameExists('foo.js');
+      ensureFilenameExists('0');
     }).not.toThrow();
   });
 });
 
 
-describe('utils.checkMinNodeVersion()', () => {
+describe('checkMinNodeVersion()', () => {
   it('should reject if version is not high enough', async () => {
     const fakeProcess = {
       version: 'v0.12.4',
     };
     await expect(
-      utils.checkMinNodeVersion('0.12.7', fakeProcess)
+      checkMinNodeVersion('0.12.7', fakeProcess)
     ).rejects.toThrow('Node version must be 0.12.7 or greater');
   });
 
@@ -211,11 +285,11 @@ describe('utils.checkMinNodeVersion()', () => {
     const fakeProcess = {
       version: 'v4.1.2',
     };
-    return utils.checkMinNodeVersion('0.12.7', fakeProcess);
+    return checkMinNodeVersion('0.12.7', fakeProcess);
   });
 });
 
-describe('utils.ignorePrivateFunctions()', () => {
+describe('ignorePrivateFunctions()', () => {
   it('should return only "public" functions', () => {
     const listOfRuleFunctions = {
       checkForEval: sinon.stub(),
@@ -225,7 +299,7 @@ describe('utils.ignorePrivateFunctions()', () => {
       i_am_an_underscore_function: sinon.stub(),
     };
 
-    const publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
+    const publicFunctions = ignorePrivateFunctions(listOfRuleFunctions);
     expect(typeof publicFunctions).toBe('object');
     expect(Object.keys(publicFunctions).length).toBe(3);
     expect(Object.keys(publicFunctions)).not.toContain('_parseEvalPossibility');
@@ -238,7 +312,7 @@ describe('utils.ignorePrivateFunctions()', () => {
       __checkForFunctions: sinon.stub(),
     };
 
-    const publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
+    const publicFunctions = ignorePrivateFunctions(listOfRuleFunctions);
     expect(typeof publicFunctions).toBe('object');
     expect(Object.keys(publicFunctions).length).toBe(0);
   });
@@ -250,7 +324,7 @@ describe('utils.ignorePrivateFunctions()', () => {
       IAMCONSTANT: 'foo',
     };
 
-    const publicFunctions = utils.ignorePrivateFunctions(listOfRuleFunctions);
+    const publicFunctions = ignorePrivateFunctions(listOfRuleFunctions);
     Object.keys(publicFunctions).forEach((functionName) => {
       expect(typeof publicFunctions[functionName]).toEqual('function');
     });
@@ -258,83 +332,83 @@ describe('utils.ignorePrivateFunctions()', () => {
 });
 
 
-describe('utils.getPackageTypeAsString()', () => {
+describe('getPackageTypeAsString()', () => {
   it('should look up a package type when passed a number', () => {
-    expect(utils.getPackageTypeAsString(2)).toEqual('PACKAGE_THEME');
+    expect(getPackageTypeAsString(2)).toEqual('PACKAGE_THEME');
   });
 
   it('should look up a package type when passed a string', () => {
-    expect(utils.getPackageTypeAsString('2')).toEqual('PACKAGE_THEME');
+    expect(getPackageTypeAsString('2')).toEqual('PACKAGE_THEME');
   });
 
   it('should throw if given a non-existent package type value', () => {
     expect(() => {
-      utils.getPackageTypeAsString(127);
+      getPackageTypeAsString(127);
     }).toThrow('Invalid package type constant "127"');
   });
 
   it('should throw if given a bogus package type value', () => {
     expect(() => {
-      utils.getPackageTypeAsString('whatevs');
+      getPackageTypeAsString('whatevs');
     }).toThrow('Invalid package type constant "whatevs"');
   });
 });
 
 
-describe('utils.isLocalUrl', () => {
+describe('isLocalUrl', () => {
   it('should not match remote urls', () => {
-    expect(utils.isLocalUrl('http://foo.com')).toBeFalsy();
-    expect(utils.isLocalUrl('https://foo.com')).toBeFalsy();
-    expect(utils.isLocalUrl('ftp://foo.com')).toBeFalsy();
-    expect(utils.isLocalUrl('//foo.com')).toBeFalsy();
+    expect(isLocalUrl('http://foo.com')).toBeFalsy();
+    expect(isLocalUrl('https://foo.com')).toBeFalsy();
+    expect(isLocalUrl('ftp://foo.com')).toBeFalsy();
+    expect(isLocalUrl('//foo.com')).toBeFalsy();
   });
 
   it('should not match data uri', () => {
-    expect(utils.isLocalUrl('data:image/gif;base64,R0' +
+    expect(isLocalUrl('data:image/gif;base64,R0' +
       'lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')).toBeFalsy();
   });
 
   it('should match chrome protocol', () => {
-    expect(utils.isLocalUrl('chrome://bar/foo')).toBeTruthy();
+    expect(isLocalUrl('chrome://bar/foo')).toBeTruthy();
   });
 
   it('should match resource protocol', () => {
-    expect(utils.isLocalUrl('resource://bar/foo')).toBeTruthy();
+    expect(isLocalUrl('resource://bar/foo')).toBeTruthy();
   });
 
   it('should match non-remote urls starting with /', () => {
-    expect(utils.isLocalUrl('/bar/foo')).toBeTruthy();
+    expect(isLocalUrl('/bar/foo')).toBeTruthy();
   });
 
   it('should match non-remote urls starting with alpha', () => {
-    expect(utils.isLocalUrl('bar')).toBeTruthy();
+    expect(isLocalUrl('bar')).toBeTruthy();
   });
 });
 
 
-describe('utils.isBrowserNamespace', () => {
+describe('isBrowserNamespace', () => {
   it('is true for browser', () => {
-    expect(utils.isBrowserNamespace('browser')).toEqual(true);
+    expect(isBrowserNamespace('browser')).toEqual(true);
   });
 
   it('is true for chrome', () => {
-    expect(utils.isBrowserNamespace('chrome')).toEqual(true);
+    expect(isBrowserNamespace('chrome')).toEqual(true);
   });
 
   it('is not true for other strings', () => {
-    expect(utils.isBrowserNamespace('foo')).toEqual(false);
-    expect(utils.isBrowserNamespace('bar')).toEqual(false);
-    expect(utils.isBrowserNamespace('BROWSER')).toEqual(false);
-    expect(utils.isBrowserNamespace('chrOme')).toEqual(false);
+    expect(isBrowserNamespace('foo')).toEqual(false);
+    expect(isBrowserNamespace('bar')).toEqual(false);
+    expect(isBrowserNamespace('BROWSER')).toEqual(false);
+    expect(isBrowserNamespace('chrOme')).toEqual(false);
   });
 });
 
 
-describe('utils.parseCspPolicy', () => {
+describe('parseCspPolicy', () => {
   it('should allow empty policies', () => {
-    expect(utils.parseCspPolicy('')).toEqual({});
-    expect(utils.parseCspPolicy(null)).toEqual({});
-    expect(utils.parseCspPolicy(undefined)).toEqual({});
+    expect(parseCspPolicy('')).toEqual({});
+    expect(parseCspPolicy(null)).toEqual({});
+    expect(parseCspPolicy(undefined)).toEqual({});
   });
 
   it('should parse directives correctly', () => {
@@ -343,7 +417,7 @@ describe('utils.parseCspPolicy', () => {
       img-src 'self'; style-src 'self';
     `;
 
-    const parsedPolicy = utils.parseCspPolicy(rawPolicy);
+    const parsedPolicy = parseCspPolicy(rawPolicy);
 
     expect(parsedPolicy['script-src']).toEqual(['\'self\'']);
     expect(parsedPolicy['default-src']).toEqual(['\'none\'']);
@@ -353,28 +427,28 @@ describe('utils.parseCspPolicy', () => {
   });
 
   it('should handle upper case correctly', () => {
-    const parsedPolicy = utils.parseCspPolicy('DEFAULT-SRC \'NoNe\'');
+    const parsedPolicy = parseCspPolicy('DEFAULT-SRC \'NoNe\'');
 
     expect(parsedPolicy['default-src']).toEqual(['\'none\'']);
   });
 });
 
 
-describe('utils.normalizePath', () => {
+describe('normalizePath', () => {
   it('should normalize given "absolute" path to relative path', () => {
-    expect(utils.normalizePath('/foo/bar/baz')).toEqual('foo/bar/baz');
+    expect(normalizePath('/foo/bar/baz')).toEqual('foo/bar/baz');
   });
 
   it('should normalize ./ and ../ relative paths', () => {
-    expect(utils.normalizePath('./foo/bar/baz')).toEqual('foo/bar/baz');
-    expect(utils.normalizePath('qux/../foo/bar/baz')).toEqual('foo/bar/baz');
+    expect(normalizePath('./foo/bar/baz')).toEqual('foo/bar/baz');
+    expect(normalizePath('qux/../foo/bar/baz')).toEqual('foo/bar/baz');
   });
 
   it('should normalize path with fragment identifier', () => {
-    expect(utils.normalizePath('foo/bar/baz#qux')).toEqual('foo/bar/baz');
+    expect(normalizePath('foo/bar/baz#qux')).toEqual('foo/bar/baz');
   });
 
   it('should not escape spaces within path', () => {
-    expect(utils.normalizePath('foo/bar baz/qux')).toEqual('foo/bar baz/qux');
+    expect(normalizePath('foo/bar baz/qux')).toEqual('foo/bar baz/qux');
   });
 });

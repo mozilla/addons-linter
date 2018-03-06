@@ -2,14 +2,17 @@ import url from 'url';
 
 import upath from 'upath';
 import { URL } from 'whatwg-url';
-import jed from 'jed';
+import Jed from 'jed';
 import semver from 'semver';
 import { oneLine } from 'common-tags';
+import osLocale from 'os-locale';
 
+import log from 'logger';
 import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
 
 const SOURCE_MAP_RE = new RegExp(/\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/);
+
 
 export function normalizePath(iconPath) {
   // Convert the icon path to a URL so we can strip any fragments and resolve
@@ -120,20 +123,43 @@ export function getVariable(context, name) {
   return result;
 }
 
-/*
- * Gettext utils. No-op until we have proper
- * a proper l10n solution.
- *
- */
-export function gettext(str) {
-  return str;
+export function getLocale() {
+  return osLocale.sync();
+}
+
+export function getLocaleDir(locale) {
+  return `./locale/${locale}/messages.js`;
+}
+
+export function getI18Data(locale) {
+  const path = getLocaleDir(locale);
+  let i18ndata = {};
+  try {
+    // eslint-disable-next-line global-require, import/no-dynamic-require
+    i18ndata = require(path);
+  } catch (err) {
+    log.info('Initialize locales using extract-locales command');
+  }
+
+  return i18ndata;
 }
 
 /*
- * An sprintf to use with gettext. Imported from Jed for when we have a proper
- * l10n solution.
+ * Gettext utils. Used for translating strings.
  */
-export const { sprintf } = jed;
+export function buildI18nObject(i18nData) {
+  const _jed = new Jed(i18nData);
+
+  return {
+    jed: _jed,
+    getI18Data,
+    _: (str) => { return _jed.gettext(str); },
+    gettext: (str) => { return _jed.gettext(str); },
+    sprintf: (fmt, args) => { return _jed.sprintf(fmt, args); },
+  };
+}
+
+export const i18n = buildI18nObject(getI18Data(getLocale()));
 
 /*
  * Check the minimum node version is met

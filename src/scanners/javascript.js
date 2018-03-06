@@ -6,7 +6,6 @@ import { oneLine } from 'common-tags';
 import {
   ESLINT_RULE_MAPPING,
   ESLINT_TYPES,
-  ESLINT_OVERWRITE_MESSAGE,
 } from 'const';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
@@ -131,8 +130,8 @@ export default class JavaScriptScanner {
             description,
           } = _messages[code]);
         } else if (Object.prototype.hasOwnProperty.call(
-          ESLINT_OVERWRITE_MESSAGE, message.ruleId)) {
-          const overwrites = ESLINT_OVERWRITE_MESSAGE[message.ruleId];
+          messages.ESLINT_OVERWRITE_MESSAGE, message.ruleId)) {
+          const overwrites = messages.ESLINT_OVERWRITE_MESSAGE[message.ruleId];
           shortDescription = overwrites.message || message.message;
           description = overwrites.description || message.description;
 
