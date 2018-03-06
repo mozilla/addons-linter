@@ -34,9 +34,20 @@ describe('content_scripts_file_absent', () => {
   });
 
   it('should not show an error when content script file exists', async () => {
-    const code = `browser.tabs.executeScript({ file: '/content_scripts/existingFile.js' });`;
+    const code = `
+      browser.tabs.executeScript({ file: '/content_scripts/existingFile.js' });
+
+      // File path is relative to current file.
+      browser.tabs.executeScript({ file: 'anotherFolder/contentScript.js' });
+      browser.tabs.executeScript({ file: 'contentScript.js' });
+    `;
     const fileRequiresContentScript = 'file-requires-content-script.js';
-    const jsScanner = createJsScanner(code, fileRequiresContentScript, { 'content_scripts/existingFile.js': '' });
+    const existingFiles = {
+      'content_scripts/existingFile.js': '',
+      'anotherFolder/contentScript.js': '',
+      'contentScript.js': '',
+    };
+    const jsScanner = createJsScanner(code, fileRequiresContentScript, existingFiles);
 
     const { linterMessages } = await jsScanner.scan();
     expect(linterMessages).toEqual([]);
