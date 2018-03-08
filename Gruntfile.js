@@ -31,14 +31,6 @@ module.exports = (grunt) => {
     fs.writeFileSync('docs/html/index.html', html);
   });
 
-  grunt.registerTask('start', [
-    'webpack:buildwatch',
-  ]);
-
-  grunt.registerTask('build', [
-    'webpack:build',
-  ]);
-
   grunt.registerTask('publish-rules', 'travis rule doc publishing', () => {
     // Require the rules build and copy.
     this.requires(['copy', 'build-rules-html']);

@@ -127,16 +127,11 @@ export function getLocale() {
   return osLocale.sync();
 }
 
-export function getLocaleDir(locale) {
-  return `./locale/${locale}/messages.js`;
-}
-
 export function getI18Data(locale) {
-  const path = getLocaleDir(locale);
   let i18ndata = {};
   try {
     // eslint-disable-next-line global-require, import/no-dynamic-require
-    i18ndata = require(path);
+    i18ndata = require(`./locale/${locale}/messages.js`);
   } catch (err) {
     log.info('Initialize locales using extract-locales command');
   }

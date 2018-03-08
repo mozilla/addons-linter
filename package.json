@@ -7,8 +7,7 @@
     "addons-linter": "bin/addons-linter"
   },
   "scripts": {
-    "start": "grunt start",
-    "build": "grunt build",
+    "build": "webpack --verbose --bail --display-error-details --progress --colors --config webpack.config.js",
     "eslint": "eslint bin/* .",
     "extract-locales": "webpack --verbose --bail --display-error-details --progress --colors --config webpack.l10n.config.babel.js",
     "test": "jest --runInBand --watch 'tests/.*'",
@@ -61,7 +60,6 @@
     "grunt-contrib-copy": "1.0.0",
     "grunt-gh-pages": "2.0.0",
     "grunt-newer": "1.3.0",
-    "grunt-webpack": "3.0.2",
     "hashish": "0.0.4",
     "is-mergeable-object": "1.1.0",
     "isparta": "4.0.0",
