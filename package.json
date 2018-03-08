@@ -79,8 +79,7 @@
     "request": "2.83.0",
     "sinon": "4.4.2",
     "tar": "4.4.0",
-    "webpack": "3.10.0",
-    "webpack-dev-server": "2.11.1"
+    "webpack": "3.10.0"
   },
   "dependencies": {
     "ajv": "6.2.1",
@@ -109,6 +108,7 @@
     "relaxed-json": "1.0.1",
     "semver": "5.5.0",
     "shelljs": "0.8.1",
+    "snyk": "^1.69.9",
     "source-map-support": "0.5.3",
     "strip-bom-stream": "3.0.0",
     "tosource": "1.0.0",
@@ -116,8 +116,7 @@
     "whatwg-url": "6.3.0",
     "xmldom": "0.1.27",
     "yargs": "11.0.0",
-    "yauzl": "2.9.1",
-    "snyk": "^1.69.9"
+    "yauzl": "2.9.1"
   },
   "snyk": true
 }
