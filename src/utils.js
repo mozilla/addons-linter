@@ -10,6 +10,8 @@ import osLocale from 'os-locale';
 import log from 'logger';
 import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
+/* global nodeRequire, localesRoot */
+
 
 const SOURCE_MAP_RE = new RegExp(/\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/);
 
@@ -127,16 +129,11 @@ export function getLocale() {
   return osLocale.sync();
 }
 
-export function getLocaleDir(locale) {
-  return `./locale/${locale}/messages.js`;
-}
-
 export function getI18Data(locale) {
-  const path = getLocaleDir(locale);
   let i18ndata = {};
   try {
     // eslint-disable-next-line global-require, import/no-dynamic-require
-    i18ndata = require(path);
+    i18ndata = nodeRequire(`${localesRoot}/${locale}/messages.js`);
   } catch (err) {
     log.info('Initialize locales using extract-locales command');
   }

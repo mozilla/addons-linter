@@ -5,6 +5,7 @@ node_js:
 - '8'
 script:
   - yarn run test-ci
+  - node bin/build-locales
   - yarn run build
   - yarn run lint
 notifications:
