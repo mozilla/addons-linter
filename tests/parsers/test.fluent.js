@@ -20,33 +20,6 @@ choose-download-folder-title =
     parser.parse();
 
     expect(parser.isValid).toEqual(true);
-    expect(parser.parsedData).toEqual({
-      'choose-download-folder-title': {
-        val: [
-          {
-            def: 0,
-            exp: null,
-            type: 'sel',
-            vars: [
-              {
-                key: {
-                  name: 'nominative',
-                  type: 'sym',
-                },
-                val: 'Foo',
-              },
-              {
-                key: {
-                  name: 'accusative',
-                  type: 'sym',
-                },
-                val: 'Foo2',
-              },
-            ],
-          },
-        ],
-      },
-    });
   });
 
   it('support key assignments', () => {
@@ -65,29 +38,26 @@ key69
     parser.parse();
 
     expect(parser.isValid).toEqual(true);
-    expect(parser.parsedData).toEqual({
-      key67: {
-        attrs: {
-          accesskey: 'Y',
-          label: 'Sign In To &syncBrand.shortName.label;…',
-        },
-        val: undefined,
-      },
-      key68: {
-        attrs: {
-          accesskey: 'S',
-          label: 'Sync Now',
-        },
-        val: undefined,
-      },
-      key69: {
-        attrs: {
-          accesskey: 'R',
-          label: 'Reconnect to &syncBrand.shortName.label;…',
-        },
-        val: undefined,
-      },
-    });
+    expect(parser.parsedData.key67.attributes[0].value.elements[0].value).toEqual(
+      'Sign In To &syncBrand.shortName.label;…'
+    );
+    expect(parser.parsedData.key67.attributes[1].value.elements[0].value).toEqual(
+      'Y'
+    );
+
+    expect(parser.parsedData.key68.attributes[0].value.elements[0].value).toEqual(
+      'Sync Now'
+    );
+    expect(parser.parsedData.key68.attributes[1].value.elements[0].value).toEqual(
+      'S'
+    );
+
+    expect(parser.parsedData.key69.attributes[0].value.elements[0].value).toEqual(
+      'Reconnect to &syncBrand.shortName.label;…'
+    );
+    expect(parser.parsedData.key69.attributes[1].value.elements[0].value).toEqual(
+      'R'
+    );
   });
 
   it('supports placeable', () => {
@@ -103,56 +73,6 @@ shared-photos =
     parser.parse();
 
     expect(parser.isValid).toEqual(true);
-    expect(parser.parsedData).toEqual({
-      'shared-photos': {
-        val: [
-          {
-            name: 'user_name',
-            type: 'ext',
-          },
-          ' ',
-          {
-            def: 2,
-            exp: {
-              name: 'photo_count',
-              type: 'ext',
-            },
-            type: 'sel',
-            vars: [
-              {
-                key: {
-                  type: 'num',
-                  val: '0',
-                },
-                val: 'hasn\'t added any photos yet',
-              },
-              {
-                key: {
-                  name: 'one',
-                  type: 'sym',
-                },
-                val: 'added a new photo',
-              },
-              {
-                key: {
-                  name: 'other',
-                  type: 'sym',
-                },
-                val: [
-                  'added ',
-                  {
-                    name: 'photo_count',
-                    type: 'ext',
-                  },
-                  ' new photos',
-                ],
-              },
-            ],
-          },
-          '.',
-        ],
-      },
-    });
   });
 
   it('catches syntax errors and throws warnings', () => {
@@ -166,8 +86,66 @@ shared-photos =
       code: messages.FLUENT_INVALID.code,
       message: 'Your FTL is not valid.',
       description: oneLine`
-        Expected a value (like: " = value") or an attribute
-        (like: ".key = value")`,
+        Expected message "shared-photos" to have a value or attributes`,
     });
+  });
+
+  it('supports firefox 60 beta en-gb file', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const parser = new FluentParser(`
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+do-not-track-description = Send web sites a “Do Not Track” signal that you don’t want to be tracked
+do-not-track-learn-more = Learn more
+do-not-track-option-default =
+    .label = Only when using Tracking Protection
+do-not-track-option-always =
+    .label = Always
+pref-page =
+    .title = { PLATFORM() ->
+            [windows] Options
+           *[other] Preferences
+        }
+# This is used to determine the width of the search field in about:preferences,
+# in order to make the entire placeholder string visible
+#
+# Notice: The value of the .style attribute is a CSS string, and the width
+# is the name of the CSS property. It is intended only to adjust the element's width.
+# Do not translate.
+search-input =
+    .style = width: 15.4em
+pane-general-title = General
+category-general =
+    .tooltiptext = { pane-general-title }
+pane-search-title = Search
+category-search =
+    .tooltiptext = { pane-search-title }
+pane-privacy-title = Privacy & Security
+category-privacy =
+    .tooltiptext = { pane-privacy-title }
+# The word "account" can be translated, do not translate or transliterate "Firefox".
+pane-sync-title = Firefox Account
+category-sync =
+    .tooltiptext = { pane-sync-title }
+help-button-label = { -brand-short-name } Support
+focus-search =
+    .key = f
+close-button =
+    .aria-label = Close
+
+## Browser Restart Dialog
+
+feature-enable-requires-restart = { -brand-short-name } must restart to enable this feature.
+feature-disable-requires-restart = { -brand-short-name } must restart to disable this feature.
+should-restart-title = Restart { -brand-short-name }
+should-restart-ok = Restart { -brand-short-name } now
+revert-no-restart-button = Revert
+restart-later = Restart Later`, addonLinter.collector);
+
+    parser.parse();
+
+    expect(parser.isValid).toEqual(true);
   });
 });

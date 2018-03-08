@@ -1,4 +1,5 @@
-import { _parse as parseFluent } from 'fluent';
+// Use compat build for node6 compatibility
+import { FluentParser as FluentSyntaxParser } from 'fluent-syntax/compat';
 
 import * as messages from 'messages';
 
@@ -18,30 +19,47 @@ export default class FluentParser {
     this.isValid = null;
   }
 
+  getLineAndColumnFromSpan(span) {
+    const matchedLines = this._sourceString
+      .substr(0, span.end)
+      .split('\n');
+
+    const matchedColumn = matchedLines.slice('-1')[0].length + 1;
+    const matchedLine = matchedLines.length;
+
+    return { matchedLine, matchedColumn };
+  }
+
   parse() {
-    const [entries, errors] = parseFluent(this._sourceString);
+    const parser = new FluentSyntaxParser();
+    const resource = parser.parse(this._sourceString);
+
     this.parsedData = {};
 
-    Object.keys(entries).forEach((id) => {
-      this.parsedData[id] = entries[id];
-    });
+    resource.body.forEach((entry) => {
+      if (entry.type === 'Junk') {
+        this.isValid = false;
 
-    if (errors.length) {
-      this.isValid = false;
+        // There is always just one annotation for a junk entry
+        const annotation = entry.annotations[0];
 
-      errors.forEach((error) => {
-        // We only have the message being passed down from fluent, unfortunately
-        // it doesn't log any line numbers or columns.
+        const {
+          matchedLine,
+          matchedColumn } = this.getLineAndColumnFromSpan(annotation.span);
+
         const errorData = {
           ...messages.FLUENT_INVALID,
           file: this.filename,
-          // normalize newlines and flatten the message a bit.
-          description: error.message.replace(/(?:\n(?:\s*))+/g, ' '),
+          description: entry.annotations[0].message,
+          column: matchedColumn,
+          line: matchedLine,
         };
 
         this.collector.addError(errorData);
-      });
-    }
+      } else if (entry.id !== undefined) {
+        this.parsedData[entry.id.name] = entry;
+      }
+    });
 
     if (this.isValid !== false) {
       this.isValid = true;
