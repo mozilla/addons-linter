@@ -87,6 +87,8 @@ shared-photos =
       message: 'Your FTL is not valid.',
       description: oneLine`
         Expected message "shared-photos" to have a value or attributes`,
+      line: 1,
+      column: 15,
     });
   });
 

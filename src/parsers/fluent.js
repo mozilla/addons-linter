@@ -1,5 +1,8 @@
-// Use compat build for node6 compatibility
-import { FluentParser as FluentSyntaxParser } from 'fluent-syntax/compat';
+import {
+  FluentParser as FluentSyntaxParser,
+  lineOffset,
+  columnOffset,
+} from 'fluent-syntax';
 
 import * as messages from 'messages';
 
@@ -19,17 +22,6 @@ export default class FluentParser {
     this.isValid = null;
   }
 
-  getLineAndColumnFromSpan(span) {
-    const matchedLines = this._sourceString
-      .substr(0, span.end)
-      .split('\n');
-
-    const matchedColumn = matchedLines.slice('-1')[0].length + 1;
-    const matchedLine = matchedLines.length;
-
-    return { matchedLine, matchedColumn };
-  }
-
   parse() {
     const parser = new FluentSyntaxParser();
     const resource = parser.parse(this._sourceString);
@@ -42,10 +34,8 @@ export default class FluentParser {
 
         // There is always just one annotation for a junk entry
         const annotation = entry.annotations[0];
-
-        const {
-          matchedLine,
-          matchedColumn } = this.getLineAndColumnFromSpan(annotation.span);
+        const matchedLine = lineOffset(this._sourceString, annotation.span.end) + 1;
+        const matchedColumn = columnOffset(this._sourceString, annotation.span.end);
 
         const errorData = {
           ...messages.FLUENT_INVALID,
