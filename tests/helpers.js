@@ -104,7 +104,6 @@ export function validLangpackManifestJSON(extra) {
   }, extra));
 }
 
-
 export function validStaticThemeManifestJSON(extra) {
   return JSON.stringify(Object.assign({}, {
     manifest_version: 2,

@@ -79,13 +79,17 @@ export const validateLangPack = (...args) => {
   return isValid;
 };
 
-
+// Create a new schema object that merges theme.json and the regular
+// manifest.json schema.
+// Then modify the result of that to allow `additionalProperties = false`
+// so that additional properties are not allowed for themes.
+// We have to use deepmerge here to make sure we can overwrite the nested
+// structure and can use object-destructuring at the root level
+// because we only overwrite `id` and `$ref` in root of the resulting object.
 const _validateStaticTheme = validator.compile({
   ...merge(
     schemaObject,
     merge(themeSchemaObject, {
-      // Hack to add in additional property validation as long as upstream
-      // doesn't define that.
       types: {
         ThemeManifest: {
           $merge: {

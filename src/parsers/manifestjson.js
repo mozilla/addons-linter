@@ -58,6 +58,8 @@ export default class ManifestJSONParser extends JSONParser {
       // We've parsed the JSON; now we can validate the manifest.
       this.selfHosted = selfHosted;
       this.isLanguagePack = isLanguagePack;
+      this.isStaticTheme = Object.prototype.hasOwnProperty.call(
+        this.parsedJSON, 'theme');
       this.io = io;
       this._validate();
     }
@@ -110,10 +112,9 @@ export default class ManifestJSONParser extends JSONParser {
     // Not all messages returned by the schema are fatal to Firefox, messages
     // that are just warnings should be added to this array.
     const warnings = [messages.MANIFEST_PERMISSIONS.code];
-    const isStaticTheme = Object.prototype.hasOwnProperty.call(this.parsedJSON, 'theme');
     let validate = validateAddon;
 
-    if (isStaticTheme) {
+    if (this.isStaticTheme) {
       validate = validateStaticTheme;
     } else if (this.isLanguagePack) {
       validate = validateLangPack;
