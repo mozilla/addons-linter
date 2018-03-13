@@ -9,7 +9,9 @@ script:
   - yarn run build
   - yarn run lint
 
-  # run addons-linter binary in a yarn production environment
+  # run addons-linter binary in a yarn production environment, clean parent
+  # environment first though.
+  - rm -rf ./node_modules
   - mkdir -p artifacts
   - yarn pack --filename artifacts/addons-linter-test-release.tar.gz
   - cd artifacts
