@@ -19,7 +19,6 @@ script:
   - cd package
   - yarn install --production=true && test $? -eq 0
   - ./bin/addons-linter --version && test $? -eq 0
-
 notifications:
   irc:
     channels:
