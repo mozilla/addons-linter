@@ -74,7 +74,7 @@
     "markdown-it-anchor": "4.0.0",
     "markdown-it-emoji": "1.4.0",
     "raw-loader": "0.5.1",
-    "request": "2.83.0",
+    "request": "2.84.0",
     "sinon": "4.4.2",
     "tar": "4.4.0",
     "webpack": "3.10.0"
