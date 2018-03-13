@@ -1,4 +1,8 @@
-import { _parse as parseFluent } from 'fluent';
+import {
+  FluentParser as FluentSyntaxParser,
+  lineOffset,
+  columnOffset,
+} from 'fluent-syntax';
 
 import * as messages from 'messages';
 
@@ -19,29 +23,33 @@ export default class FluentParser {
   }
 
   parse() {
-    const [entries, errors] = parseFluent(this._sourceString);
+    const parser = new FluentSyntaxParser();
+    const resource = parser.parse(this._sourceString);
+
     this.parsedData = {};
 
-    Object.keys(entries).forEach((id) => {
-      this.parsedData[id] = entries[id];
-    });
+    resource.body.forEach((entry) => {
+      if (entry.type === 'Junk') {
+        this.isValid = false;
 
-    if (errors.length) {
-      this.isValid = false;
+        // There is always just one annotation for a junk entry
+        const annotation = entry.annotations[0];
+        const matchedLine = lineOffset(this._sourceString, annotation.span.end) + 1;
+        const matchedColumn = columnOffset(this._sourceString, annotation.span.end);
 
-      errors.forEach((error) => {
-        // We only have the message being passed down from fluent, unfortunately
-        // it doesn't log any line numbers or columns.
         const errorData = {
           ...messages.FLUENT_INVALID,
           file: this.filename,
-          // normalize newlines and flatten the message a bit.
-          description: error.message.replace(/(?:\n(?:\s*))+/g, ' '),
+          description: entry.annotations[0].message,
+          column: matchedColumn,
+          line: matchedLine,
         };
 
         this.collector.addError(errorData);
-      });
-    }
+      } else if (entry.id !== undefined) {
+        this.parsedData[entry.id.name] = entry;
+      }
+    });
 
     if (this.isValid !== false) {
       this.isValid = true;
