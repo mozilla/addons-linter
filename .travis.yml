@@ -8,6 +8,17 @@ script:
   - node bin/build-locales
   - yarn run build
   - yarn run lint
+
+  # run addons-linter binary in a yarn production environment, clean parent
+  # environment first though.
+  - rm -rf ./node_modules
+  - mkdir -p artifacts
+  - yarn pack --filename artifacts/addons-linter-test-release.tar.gz
+  - cd artifacts
+  - tar -xvzf addons-linter-test-release.tar.gz
+  - cd package
+  - yarn install --production=true && test $? -eq 0
+  - ./bin/addons-linter --version && test $? -eq 0
 notifications:
   irc:
     channels:
