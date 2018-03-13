@@ -8,6 +8,14 @@ script:
   - node bin/build-locales
   - yarn run build
   - yarn run lint
+
+  # run addons-linter binary in a yarn production environment
+  - mkdir -p artifacts/production
+  - cd artifacts/production
+  - yarn install --production=true; export YARN_INSTALL_EXIT_CODE=$?
+  - cd -
+  - test $YARN_INSTALL_EXIT_CODE -eq 0 && ./artifacts/production/bin/addons-linter --version
+
 notifications:
   irc:
     channels:
