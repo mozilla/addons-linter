@@ -116,6 +116,9 @@ export function validStaticThemeManifestJSON(extra) {
       colors: {
         accentcolor: '#adb09f',
         textcolor: '#000',
+        background_tab_text: 'rgba(255, 192, 0, 0)',
+        toolbar_text: 'rgb(255, 255, 255),',
+        toolbar_field_text: 'hsl(120, 100%, 50%)',
       },
     },
   }, extra));
