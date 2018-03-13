@@ -4,7 +4,7 @@ node_js:
 - '6'
 - '8'
 script:
-  # - yarn run test-ci
+  - yarn run test-ci
   - node bin/build-locales
   - yarn run build
   - yarn run lint
