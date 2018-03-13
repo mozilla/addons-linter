@@ -51,7 +51,7 @@
     "coveralls": "3.0.0",
     "eslint-config-amo": "1.6.0",
     "eslint-plugin-async-await": "0.0.0",
-    "eslint-plugin-jest": "21.14.0",
+    "eslint-plugin-jest": "21.14.1",
     "eslint-plugin-promise": "3.5.0",
     "gfm.css": "1.1.2",
     "grunt": "1.0.2",
