@@ -104,6 +104,26 @@ export function validLangpackManifestJSON(extra) {
   }, extra));
 }
 
+export function validStaticThemeManifestJSON(extra) {
+  return JSON.stringify(Object.assign({}, {
+    manifest_version: 2,
+    name: 'My Static Theme',
+    version: '1.0',
+    theme: {
+      images: {
+        headerURL: 'weta.png',
+      },
+      colors: {
+        accentcolor: '#adb09f',
+        textcolor: '#000',
+        background_tab_text: 'rgba(255, 192, 0, 0)',
+        toolbar_text: 'rgb(255, 255, 255),',
+        toolbar_field_text: 'hsl(120, 100%, 50%)',
+      },
+    },
+  }, extra));
+}
+
 export function validLocaleMessagesJSON() {
   return JSON.stringify(Object.assign({}, {
     foo: {

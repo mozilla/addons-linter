@@ -7,7 +7,9 @@ import { oneLine } from 'common-tags';
 import probeImageSize from 'probe-image-size';
 import upath from 'upath';
 
-import { validateAddon, validateLangPack } from 'schema/validator';
+import {
+  validateAddon, validateLangPack, validateStaticTheme,
+} from 'schema/validator';
 import { getConfig } from 'cli';
 import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE, IMAGE_FILE_EXTENSIONS, LOCALES_DIRECTORY, MESSAGES_JSON } from 'const';
 import log from 'logger';
@@ -56,6 +58,8 @@ export default class ManifestJSONParser extends JSONParser {
       // We've parsed the JSON; now we can validate the manifest.
       this.selfHosted = selfHosted;
       this.isLanguagePack = isLanguagePack;
+      this.isStaticTheme = Object.prototype.hasOwnProperty.call(
+        this.parsedJSON, 'theme');
       this.io = io;
       this._validate();
     }
@@ -108,7 +112,13 @@ export default class ManifestJSONParser extends JSONParser {
     // Not all messages returned by the schema are fatal to Firefox, messages
     // that are just warnings should be added to this array.
     const warnings = [messages.MANIFEST_PERMISSIONS.code];
-    const validate = this.isLanguagePack ? validateLangPack : validateAddon;
+    let validate = validateAddon;
+
+    if (this.isStaticTheme) {
+      validate = validateStaticTheme;
+    } else if (this.isLanguagePack) {
+      validate = validateLangPack;
+    }
 
     this.isValid = validate(this.parsedJSON);
     if (!this.isValid) {

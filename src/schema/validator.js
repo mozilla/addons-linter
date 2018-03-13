@@ -1,7 +1,9 @@
 import ajv from 'ajv';
 import ajvMergePatch from 'ajv-merge-patch';
 
+import merge from 'schema/deepmerge';
 import schemaObject from 'schema/imported/manifest';
+import themeSchemaObject from 'schema/imported/theme';
 import messagesSchemaObject from 'schema/messages';
 
 import {
@@ -58,6 +60,7 @@ const _validateAddon = validator.compile({
   id: 'manifest',
   $ref: '#/types/WebExtensionManifest',
 });
+
 export const validateAddon = (...args) => {
   const isValid = _validateAddon(...args);
   validateAddon.errors = filterErrors(_validateAddon.errors);
@@ -69,9 +72,42 @@ const _validateLangPack = validator.compile({
   id: 'langpack-manifest',
   $ref: '#/types/WebExtensionLangpackManifest',
 });
+
 export const validateLangPack = (...args) => {
   const isValid = _validateLangPack(...args);
   validateLangPack.errors = filterErrors(_validateLangPack.errors);
+  return isValid;
+};
+
+// Create a new schema object that merges theme.json and the regular
+// manifest.json schema.
+// Then modify the result of that to allow `additionalProperties = false`
+// so that additional properties are not allowed for themes.
+// We have to use deepmerge here to make sure we can overwrite the nested
+// structure and can use object-destructuring at the root level
+// because we only overwrite `id` and `$ref` in root of the resulting object.
+const _validateStaticTheme = validator.compile({
+  ...merge(
+    schemaObject,
+    merge(themeSchemaObject, {
+      types: {
+        ThemeManifest: {
+          $merge: {
+            with: {
+              additionalProperties: false,
+            },
+          },
+        },
+      },
+    }),
+  ),
+  id: 'static-theme-manifest',
+  $ref: '#/types/ThemeManifest',
+});
+
+export const validateStaticTheme = (...args) => {
+  const isValid = _validateStaticTheme(...args);
+  validateStaticTheme.errors = filterErrors(_validateStaticTheme.errors);
   return isValid;
 };
 
@@ -80,6 +116,7 @@ const _validateLocaleMessages = validator.compile({
   id: 'messages',
   $ref: '#/types/WebExtensionMessages',
 });
+
 export const validateLocaleMessages = (...args) => {
   const isValid = _validateLocaleMessages(...args);
   validateLocaleMessages.errors = filterErrors(_validateLocaleMessages.errors);
