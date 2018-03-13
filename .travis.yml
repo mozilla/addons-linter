@@ -10,11 +10,13 @@ script:
   - yarn run lint
 
   # run addons-linter binary in a yarn production environment
-  - mkdir -p artifacts/production
-  - cd artifacts/production
+  - mkdir -p artifacts
+  - yarn pack --filename artifacts/addons-linter-test-release.tar.gz
+  - cd artifacts
+  - tar -xvzf addons-linter-test-release.tar.gz
+  - cd package
   - yarn install --production=true && test $? -eq 0
-  - cd -
-  - ./artifacts/production/bin/addons-linter --version && test $? -eq 0
+  - ./bin/addons-linter --version && test $? -eq 0
 
 notifications:
   irc:
