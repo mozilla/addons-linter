@@ -169,10 +169,16 @@
             "frame": {
               "$ref": "#/types/ThemeColor"
             },
+            "frame_inactive": {
+              "$ref": "#/types/ThemeColor"
+            },
             "textcolor": {
               "$ref": "#/types/ThemeColor"
             },
             "background_tab_text": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "tab_loading": {
               "$ref": "#/types/ThemeColor"
             },
             "tab_text": {
@@ -196,6 +202,9 @@
             "toolbar_field_border": {
               "$ref": "#/types/ThemeColor"
             },
+            "toolbar_field_separator": {
+              "$ref": "#/types/ThemeColor"
+            },
             "toolbar_top_separator": {
               "$ref": "#/types/ThemeColor"
             },
@@ -203,6 +212,27 @@
               "$ref": "#/types/ThemeColor"
             },
             "toolbar_vertical_separator": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "icons": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "icons_attention": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "button_background_hover": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "button_background_active": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "popup": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "popup_text": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "popup_border": {
               "$ref": "#/types/ThemeColor"
             }
           }

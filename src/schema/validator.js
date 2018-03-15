@@ -42,6 +42,8 @@ validator.addFormat('ignore', () => true);
 // strictRelativeUrl -> MUST be relative, but not protocol relative (path only)
 validator.addFormat('url', isAbsoluteUrl);
 validator.addFormat('relativeUrl', isAnyUrl);
+// homepageUrl is the same as relativeUrl but Firefox will encode | characters.
+validator.addFormat('homepageUrl', isAnyUrl);
 validator.addFormat('strictRelativeUrl', isStrictRelativeUrl);
 validator.addFormat('unresolvedRelativeUrl', isUnresolvedRelativeUrl);
 validator.addFormat('secureUrl', isSecureUrl);

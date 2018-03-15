@@ -8,7 +8,7 @@
           "properties": {
             "homepage": {
               "type": "string",
-              "format": "relativeUrl",
+              "format": "homepageUrl",
               "preprocess": "localize"
             },
             "search_provider": {
