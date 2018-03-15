@@ -107,7 +107,7 @@
     "semver": "5.5.0",
     "shelljs": "0.8.1",
     "snyk": "^1.69.9",
-    "source-map-support": "0.5.3",
+    "source-map-support": "0.5.4",
     "strip-bom-stream": "3.0.0",
     "tosource": "1.0.0",
     "upath": "1.0.4",
