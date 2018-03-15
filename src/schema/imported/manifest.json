@@ -569,6 +569,14 @@
           ]
         },
         {
+          "$ref": "#/types/MatchPatternRestricted"
+        }
+      ]
+    },
+    "MatchPatternRestricted": {
+      "description": "Same as MatchPattern above, but excludes <all_urls>",
+      "anyOf": [
+        {
           "type": "string",
           "pattern": "^(https?|wss?|file|ftp|\\*)://(\\*|\\*\\.[^*/]+|[^*/]+)/.*$"
         },

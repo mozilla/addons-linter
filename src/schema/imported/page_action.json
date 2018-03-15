@@ -315,7 +315,7 @@
               "type": "array",
               "minItems": 1,
               "items": {
-                "$ref": "manifest#/types/MatchPattern"
+                "$ref": "manifest#/types/MatchPatternRestricted"
               }
             }
           }
