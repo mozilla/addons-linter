@@ -73,7 +73,7 @@
     "markdown-it-emoji": "1.4.0",
     "raw-loader": "0.5.1",
     "request": "2.83.0",
-    "sinon": "4.4.5",
+    "sinon": "4.4.6",
     "tar": "4.4.0",
     "webpack": "3.10.0"
   },
