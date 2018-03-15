@@ -427,3 +427,6 @@ patch:
   'npm:qs:20140806-1':
     - grunt-gh-pages > q-io > qs:
         patched: '2018-02-26T19:09:02.501Z'
+  'npm:qs:20140806':
+    - grunt-gh-pages > q-io > qs:
+        patched: '2018-03-15T13:20:34.588Z'
