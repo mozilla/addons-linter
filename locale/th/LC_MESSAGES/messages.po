@@ -1,16 +1,18 @@
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-01-19 00:33+0000\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2018-03-04 13:53+0000\n"
+"Last-Translator: Wannaphong Phatthiyaphaibun <wannaphong@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pontoon\n"
 
 #: src/linter.js:117
 msgid "Validation Summary:"
@@ -22,23 +24,23 @@ msgstr ""
 
 #: src/linter.js:140
 msgid "Message"
-msgstr ""
+msgstr "ข้อความ"
 
 #: src/linter.js:146
 msgid "Description"
-msgstr ""
+msgstr "คำอธิบาย"
 
 #: src/linter.js:152
 msgid "File"
-msgstr ""
+msgstr "ไฟล์"
 
 #: src/linter.js:158
 msgid "Line"
-msgstr ""
+msgstr "บรรทัด"
 
 #: src/linter.js:164
 msgid "Column"
-msgstr ""
+msgstr "คอลัมน์"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
@@ -201,8 +203,7 @@ msgid "Translation string is missing the message property"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
@@ -234,14 +235,11 @@ msgid "The field is invalid."
 msgstr ""
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
