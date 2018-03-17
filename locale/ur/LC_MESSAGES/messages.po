@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-03-08 08:36+0000\n"
-"Last-Translator: um.qshi <um.qshi@gmail.com>\n"
+"PO-Revision-Date: 2018-03-17 06:42+0000\n"
+"Last-Translator: Adeel <meetadeel@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ur\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr "پیغام"
 
 #: src/linter.js:146
 msgid "Description"
-msgstr ""
+msgstr "وضاحت"
 
 #: src/linter.js:152
 msgid "File"
@@ -36,7 +36,7 @@ msgstr "مسل"
 
 #: src/linter.js:158
 msgid "Line"
-msgstr ""
+msgstr "سطر"
 
 #: src/linter.js:164
 msgid "Column"
@@ -232,7 +232,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
-msgstr ""
+msgstr "قطعہ ناجائز ہے۔"
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -280,11 +280,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "اجازت قسم غیر تائید شدہ ہے۔"
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "غیر تائید شدہ تصویر توسیع"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
@@ -300,7 +300,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
-msgstr ""
+msgstr "نامعلوم اجازت۔"
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -344,7 +344,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
-msgstr ""
+msgstr "قطعہ درکار ہے۔"
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
