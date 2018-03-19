@@ -44,12 +44,6 @@ export default class LocaleMessagesJSONParser extends JSONParser {
       } else if (error.params.missingProperty === 'content') {
         baseObject = messages.NO_PLACEHOLDER_CONTENT;
       }
-    } else if (error.keyword === 'additionalProperties') {
-      if (error.schemaPath === '#/additionalProperties') {
-        baseObject = messages.INVALID_MESSAGE_NAME;
-      } else if (error.schemaPath === '#/properties/placeholders/additionalProperties') {
-        baseObject = messages.INVALID_PLACEHOLDER_NAME;
-      }
     }
 
     return Object.assign({}, baseObject, overrides);

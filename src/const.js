@@ -162,7 +162,7 @@ export const MESSAGES_JSON = 'messages.json';
 export const LOCALES_DIRECTORY = '_locales';
 
 // This is a string, since it has to be matched globally on a message string.
-export const MESSAGE_PLACEHOLDER_REGEXP = '\\$([a-z0-9_@]+)\\$';
+export const MESSAGE_PLACEHOLDER_REGEXP = '\\$([a-z0-9_@.]+)\\$';
 
 // yauzl should trow error with this message in case of corrupt zip file
 export const ZIP_LIB_CORRUPT_FILE_ERROR = 'end of central directory record signature not found';
