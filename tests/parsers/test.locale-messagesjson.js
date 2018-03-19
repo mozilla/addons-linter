@@ -17,6 +17,41 @@ describe('LocaleMessagesJSONParser', () => {
     expect(errors[0].message).toContain('Your JSON is not valid.');
   });
 
+  it('should be invalid if placeholder has no content', () => {
+    const addonsLinter = new Linter({ _: ['bar'] });
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
+  "blah": {
+    "message": "$CONTENT$",
+    "placeholders": {
+      "CONTENT": {
+        "example": "Content"
+      }
+    }
+  }
+}`, addonsLinter.collector);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(false);
+    const { errors } = addonsLinter.collector;
+    expect(errors.length).toEqual(1);
+    expect(errors[0].code).toEqual(messages.NO_PLACEHOLDER_CONTENT.code);
+    expect(errors[0].message).toEqual(messages.NO_PLACEHOLDER_CONTENT.message);
+  });
+
+  it('should be invalid without message property for string', () => {
+    const addonsLinter = new Linter({ _: ['bar'] });
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
+  "blah": {
+    "mesage": "foo"
+  }
+}`, addonsLinter.collector);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(false);
+    const { errors } = addonsLinter.collector;
+    expect(errors.length).toEqual(1);
+    expect(errors[0].code).toEqual(messages.NO_MESSAGE.code);
+    expect(errors[0].message).toEqual(messages.NO_MESSAGE.message);
+  });
+
   it('should show a warning for reserved message names', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
     const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
