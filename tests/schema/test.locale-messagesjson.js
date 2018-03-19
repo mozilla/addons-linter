@@ -25,7 +25,7 @@ describe('messages', () => {
     messages['invalid-property'] = {};
     validateLocaleMessages(messages);
     expect(validateLocaleMessages.errors.length).toEqual(1);
-    expect(validateLocaleMessages.errors[0].dataPath).toEqual('/invalid-property');
+    expect(validateLocaleMessages.errors[0].dataPath).toEqual('/invalid-property/message');
   });
 
   it('should fail on missing placeholder content', () => {
@@ -41,6 +41,6 @@ describe('messages', () => {
     messages.Placeh0lder_Test.placeholders['invalid.placeholder'] = {};
     validateLocaleMessages(messages);
     expect(validateLocaleMessages.errors.length).toEqual(1);
-    expect(validateLocaleMessages.errors[0].dataPath).toEqual('/Placeh0lder_Test/placeholders/invalid.placeholder');
+    expect(validateLocaleMessages.errors[0].dataPath).toEqual('/Placeh0lder_Test/placeholders/invalid.placeholder/content');
   });
 });
