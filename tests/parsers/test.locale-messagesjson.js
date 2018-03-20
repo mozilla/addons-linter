@@ -92,7 +92,7 @@ describe('LocaleMessagesJSONParser', () => {
     expect(warnings[1].message).toEqual(messages.MISSING_PLACEHOLDER.message);
   });
 
-  it('should be invalid if bad message name', () => {
+  it('should not be invalid on non alphanumeric message name', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
     const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
   "not-valid": {
@@ -100,11 +100,20 @@ describe('LocaleMessagesJSONParser', () => {
   }
 }`, addonsLinter.collector);
     localeMessagesJSONParser.parse();
-    expect(localeMessagesJSONParser.isValid).toEqual(false);
+    expect(localeMessagesJSONParser.isValid).toEqual(true);
     const { errors } = addonsLinter.collector;
-    expect(errors.length).toEqual(1);
-    expect(errors[0].code).toEqual(messages.INVALID_MESSAGE_NAME.code);
-    expect(errors[0].message).toEqual(messages.INVALID_MESSAGE_NAME.message);
+    expect(errors.length).toEqual(0);
+  });
+
+  it('should not be invalid on empty message', () => {
+    const addonsLinter = new Linter({ _: ['bar'] });
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
+  "": {
+    "message": "foo bar is the new bar foo"
+  }
+}`, addonsLinter.collector);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(true);
   });
 
   it('should be invalid if bad placeholder name', () => {
@@ -125,6 +134,22 @@ describe('LocaleMessagesJSONParser', () => {
     expect(errors.length).toEqual(1);
     expect(errors[0].code).toEqual(messages.INVALID_PLACEHOLDER_NAME.code);
     expect(errors[0].message).toEqual(messages.INVALID_PLACEHOLDER_NAME.message);
+  });
+
+  it('should not be case sensitive for placeholder names', () => {
+    const addonsLinter = new Linter({ _: ['bar'] });
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
+  "perfectlyValidPlaceholderName": {
+    "message": "$fooBarIsGreat$",
+    "placeholders": {
+      "fooBarIsGreat": {
+        "content": "placeholder 1"
+      }
+    }
+  }
+}`, addonsLinter.collector);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(true);
   });
 
   it('should not have any issues with a valid messages JSON', () => {

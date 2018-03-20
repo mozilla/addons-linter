@@ -20,12 +20,11 @@ describe('messages', () => {
     expect(validateLocaleMessages.errors[0].dataPath).toEqual('/foo/message');
   });
 
-  it('should fail on invalid message name', () => {
+  it('should not validate the message name', () => {
     const messages = cloneDeep(JSON.parse(validLocaleMessagesJSON()));
-    messages['invalid-property'] = {};
+    messages[''] = { message: 'foo' };
     validateLocaleMessages(messages);
-    expect(validateLocaleMessages.errors.length).toEqual(1);
-    expect(validateLocaleMessages.errors[0].dataPath).toEqual('/invalid-property');
+    expect(validateLocaleMessages.errors).toBeNull();
   });
 
   it('should fail on missing placeholder content', () => {
