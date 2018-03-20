@@ -61,3 +61,10 @@ const options = {
 };
 
 export default options;
+
+export function getDefaultConfigValue(name) {
+  if (options[name] && 'default' in options[name]) {
+    return options[name].default;
+  }
+  return undefined;
+}

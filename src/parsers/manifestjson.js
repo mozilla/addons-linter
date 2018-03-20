@@ -7,10 +7,10 @@ import { oneLine } from 'common-tags';
 import probeImageSize from 'probe-image-size';
 import upath from 'upath';
 
+import { getDefaultConfigValue } from 'yargs-options';
 import {
   validateAddon, validateLangPack, validateStaticTheme,
 } from 'schema/validator';
-import { getConfig } from 'cli';
 import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE, IMAGE_FILE_EXTENSIONS, LOCALES_DIRECTORY, MESSAGES_JSON } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
@@ -38,8 +38,8 @@ async function getImageMetadata(io, iconPath) {
 export default class ManifestJSONParser extends JSONParser {
   constructor(jsonString, collector, {
     filename = MANIFEST_JSON, RelaxedJSON = RJSON,
-    selfHosted = getConfig().argv.selfHosted,
-    isLanguagePack = getConfig().argv.langpack,
+    selfHosted = getDefaultConfigValue('self-hosted'),
+    isLanguagePack = getDefaultConfigValue('langpack'),
     io = null,
   } = {}) {
     super(jsonString, collector, { filename });
