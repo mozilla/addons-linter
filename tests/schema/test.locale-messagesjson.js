@@ -41,6 +41,6 @@ describe('messages', () => {
     messages.Placeh0lder_Test.placeholders['invalid.placeholder'] = {};
     validateLocaleMessages(messages);
     expect(validateLocaleMessages.errors.length).toEqual(1);
-    expect(validateLocaleMessages.errors[0].dataPath).toEqual('/Placeh0lder_Test/placeholders/invalid.placeholder/content');
+    expect(validateLocaleMessages.errors[0].dataPath).toEqual('/Placeh0lder_Test/placeholders/invalid.placeholder');
   });
 });

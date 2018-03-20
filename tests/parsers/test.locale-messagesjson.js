@@ -92,7 +92,7 @@ describe('LocaleMessagesJSONParser', () => {
     expect(warnings[1].message).toEqual(messages.MISSING_PLACEHOLDER.message);
   });
 
-  it('should not be an error if bad message name', () => {
+  it('should not be invalid on non alphanumeric message name', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
     const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
   "not-valid": {
@@ -118,27 +118,11 @@ describe('LocaleMessagesJSONParser', () => {
   }
 }`, addonsLinter.collector);
     localeMessagesJSONParser.parse();
-    expect(localeMessagesJSONParser.isValid).toEqual(true);
+    expect(localeMessagesJSONParser.isValid).toEqual(false);
     const { errors } = addonsLinter.collector;
-    expect(errors.length).toEqual(0);
-  });
-
-  it('should support dot in placeholder name', () => {
-    const addonsLinter = new Linter({ _: ['bar'] });
-    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
-  "invalid_placeholder": {
-    "message": "$PH-1$",
-    "placeholders": {
-      "foo.bar": {
-        "content": "placeholder 1"
-      }
-    }
-  }
-}`, addonsLinter.collector);
-    localeMessagesJSONParser.parse();
-    expect(localeMessagesJSONParser.isValid).toEqual(true);
-    const { warnings } = addonsLinter.collector;
-    expect(warnings.length).toEqual(0);
+    expect(errors.length).toEqual(1);
+    expect(errors[0].code).toEqual(messages.INVALID_PLACEHOLDER_NAME.code);
+    expect(errors[0].message).toEqual(messages.INVALID_PLACEHOLDER_NAME.message);
   });
 
   it('should not have any issues with a valid messages JSON', () => {
