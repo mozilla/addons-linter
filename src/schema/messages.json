@@ -41,7 +41,7 @@
     "WebExtensionMessages": {
       "type": "object",
       "patternProperties": {
-        "^.+$": {
+        "^.*$": {
           "$ref": "#/types/i18nMessage"
         }
       },
