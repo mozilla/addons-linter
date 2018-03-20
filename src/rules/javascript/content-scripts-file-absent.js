@@ -40,10 +40,20 @@ export default {
             });
             return;
           }
-          let normalizedName = path.resolve(dirname, fileValue);
-          if (path.isAbsolute(fileValue)) {
-            normalizedName = path.join(dirname, path.normalize(fileValue));
+
+          // We can't reliably validate relative file names because their
+          // behavior depends on the current page and the behavior for
+          // Firefox and Chrome differntiates too. So we choose only to
+          // validate absolute file paths to avoid false positives.
+
+          if (!path.isAbsolute(fileValue)) {
+            return;
           }
+
+          const normalizedName = path.join(
+            dirname,
+            path.normalize(fileValue));
+
           let existingFileNames = Object.keys(existingFiles);
 
           existingFileNames = existingFileNames.map((fileName) => {
