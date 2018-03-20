@@ -105,7 +105,7 @@ describe('LocaleMessagesJSONParser', () => {
     expect(errors.length).toEqual(0);
   });
 
-  it('should not be an error if bad placeholder name', () => {
+  it('should be invalid if bad placeholder name', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
     const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
   "invalid_placeholder": {
