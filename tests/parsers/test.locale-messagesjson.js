@@ -105,6 +105,17 @@ describe('LocaleMessagesJSONParser', () => {
     expect(errors.length).toEqual(0);
   });
 
+  it('should not be invalid on empty message', () => {
+    const addonsLinter = new Linter({ _: ['bar'] });
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
+  "foo": {
+    "message": ""
+  }
+}`, addonsLinter.collector);
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(true);
+  });
+
   it('should be invalid if bad placeholder name', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
     const localeMessagesJSONParser = new LocaleMessagesJSONParser(`{
