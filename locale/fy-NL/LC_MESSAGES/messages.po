@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-13 14:07+0000\n"
+"PO-Revision-Date: 2018-03-20 12:33+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fy_NL\n"
@@ -224,11 +224,11 @@ msgstr "Piktogram koe net fûn wurde fûn yn ‘%(path)s’."
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr "Achtergrûnscript koe net fûn wurde yn ‘%(path)s’."
+msgstr "Eftergrûnscript koe net fûn wurde yn ‘%(path)s’."
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr "Achtergrûnside koe net fûn wurde yn ‘%(path)s’."
+msgstr "Eftergrûnside koe net fûn wurde yn ‘%(path)s’."
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
