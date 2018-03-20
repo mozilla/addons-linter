@@ -42,10 +42,9 @@ export default {
           }
 
           // We can't reliably validate relative file names because their
-          // behavior depends on the current page and the behavior for
-          // Firefox and Chrome differntiates too. So we choose only to
+          // behaviour depends on the current page and the behaviour for
+          // Firefox and Chrome differentiates too. So we chose only to
           // validate absolute file paths to avoid false positives.
-
           if (!path.isAbsolute(fileValue)) {
             return;
           }
