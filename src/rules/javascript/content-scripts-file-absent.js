@@ -6,6 +6,7 @@ import { CONTENT_SCRIPT_NOT_FOUND, CONTENT_SCRIPT_EMPTY } from 'messages/javascr
 export default {
   create(context) {
     const dirname = path.dirname(context.getFilename());
+
     const existingFiles = context.settings.existingFiles || {};
     return {
       MemberExpression(node) {
@@ -41,10 +42,13 @@ export default {
           }
           let normalizedName = path.resolve(dirname, fileValue);
           if (path.isAbsolute(fileValue)) {
-            normalizedName = path.join(path.resolve('.'), path.normalize(fileValue));
+            normalizedName = path.join(dirname, path.normalize(fileValue));
           }
           let existingFileNames = Object.keys(existingFiles);
-          existingFileNames = existingFileNames.map((fileName) => path.resolve(fileName));
+
+          existingFileNames = existingFileNames.map((fileName) => {
+            return path.resolve(dirname, fileName);
+          });
 
           // If file exists then we are good.
           if (existingFileNames.includes(normalizedName)) {
