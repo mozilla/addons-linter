@@ -20,9 +20,9 @@ describe('messages', () => {
     expect(validateLocaleMessages.errors[0].dataPath).toEqual('/foo/message');
   });
 
-  it('should not fail on invalid message name', () => {
+  it('should not validate the message name', () => {
     const messages = cloneDeep(JSON.parse(validLocaleMessagesJSON()));
-    messages['invalid-property'] = { message: 'foo' };
+    messages[''] = { message: 'foo' };
     validateLocaleMessages(messages);
     expect(validateLocaleMessages.errors).toBeNull();
   });
