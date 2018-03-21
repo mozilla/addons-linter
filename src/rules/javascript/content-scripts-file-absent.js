@@ -5,9 +5,8 @@ import { CONTENT_SCRIPT_NOT_FOUND, CONTENT_SCRIPT_EMPTY } from 'messages/javascr
 
 export default {
   create(context) {
-    const dirname = path.dirname(context.getFilename());
-
     const existingFiles = context.settings.existingFiles || {};
+
     return {
       MemberExpression(node) {
         if (!node.object.object || !isBrowserNamespace(node.object.object.name)) {
