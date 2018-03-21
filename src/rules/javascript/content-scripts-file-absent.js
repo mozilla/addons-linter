@@ -5,8 +5,12 @@ import { CONTENT_SCRIPT_NOT_FOUND, CONTENT_SCRIPT_EMPTY } from 'messages/javascr
 
 export default {
   create(context) {
-    const dirname = path.dirname(context.getFilename());
-    const existingFiles = context.settings.existingFiles || {};
+    const existingFiles = Object.keys(
+      context.settings.existingFiles || {}
+    ).map((fileName) => {
+      return path.resolve('/', fileName);
+    });
+
     return {
       MemberExpression(node) {
         if (!node.object.object || !isBrowserNamespace(node.object.object.name)) {
@@ -39,17 +43,25 @@ export default {
             });
             return;
           }
-          let normalizedName = path.resolve(dirname, fileValue);
-          if (path.isAbsolute(fileValue)) {
-            normalizedName = path.join(path.resolve('.'), path.normalize(fileValue));
-          }
-          let existingFileNames = Object.keys(existingFiles);
-          existingFileNames = existingFileNames.map((fileName) => path.resolve(fileName));
 
-          // If file exists then we are good.
-          if (existingFileNames.includes(normalizedName)) {
+          // We can't reliably validate relative file names because they
+          // are resolved as relative to the current page url on Firefox
+          // and the rule itself doesn't know the path of the html file (or
+          // files) where the js file is going to be loaded, and so we chose
+          // to validate only the absolute file paths to avoid false positive.
+          // (Also note that Firefox and Chrome behave differently when
+          // resolving relative content script paths used in a tabs.executeScript API call).
+          if (!path.isAbsolute(fileValue)) {
             return;
           }
+
+          const normalizedName = path.resolve('/', path.normalize(fileValue));
+
+          // If file exists then we are good.
+          if (existingFiles.includes(normalizedName)) {
+            return;
+          }
+
           // File not exists report an issue.
           context.report({
             loc: fileProperty.value.loc,
