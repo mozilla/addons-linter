@@ -7,9 +7,9 @@ export default {
   create(context) {
     const existingFiles = Object.keys(
       context.settings.existingFiles || {}
-    ).map((fileName => {
+    ).map((fileName) => {
       return path.resolve('/', fileName);
-    }));
+    });
 
     return {
       MemberExpression(node) {
