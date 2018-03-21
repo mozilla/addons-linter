@@ -49,20 +49,17 @@ export default {
             return;
           }
 
-          const normalizedName = path.join(
-            dirname,
-            path.normalize(fileValue));
+          const normalizedName = path.resolve('/', path.normalize(fileValue));
 
-          let existingFileNames = Object.keys(existingFiles);
-
-          existingFileNames = existingFileNames.map((fileName) => {
-            return path.resolve(dirname, fileName);
+          const existingFileNames = Object.keys(existingFiles).map((fileName) => {
+            return path.resolve('/', fileName);
           });
 
           // If file exists then we are good.
           if (existingFileNames.includes(normalizedName)) {
             return;
           }
+
           // File not exists report an issue.
           context.report({
             loc: fileProperty.value.loc,
