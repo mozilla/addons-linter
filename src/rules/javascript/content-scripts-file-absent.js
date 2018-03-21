@@ -5,7 +5,11 @@ import { CONTENT_SCRIPT_NOT_FOUND, CONTENT_SCRIPT_EMPTY } from 'messages/javascr
 
 export default {
   create(context) {
-    const existingFiles = context.settings.existingFiles || {};
+    const existingFiles = Object.keys(
+      context.settings.existingFiles || {}
+    ).map((fileName => {
+      return path.resolve('/', fileName);
+    }));
 
     return {
       MemberExpression(node) {
@@ -50,12 +54,8 @@ export default {
 
           const normalizedName = path.resolve('/', path.normalize(fileValue));
 
-          const existingFileNames = Object.keys(existingFiles).map((fileName) => {
-            return path.resolve('/', fileName);
-          });
-
           // If file exists then we are good.
-          if (existingFileNames.includes(normalizedName)) {
+          if (existingFiles.includes(normalizedName)) {
             return;
           }
 
