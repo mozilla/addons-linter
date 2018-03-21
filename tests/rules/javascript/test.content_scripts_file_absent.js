@@ -14,35 +14,29 @@ function createJsScanner(code, validatedFilename, existingFiles = {}) {
 
 describe('content_scripts_file_absent', () => {
   it('should show an error when content script is missing', async () => {
-    const nonExistentFiles = [
-      // absolute path since we don't validate relative paths
-      '/really/absent/absentFile.js',
-    ];
+    // absolute path since we don't validate relative paths
+    const nonExistentFile = '/really/absent/absentFile.js';
 
-    nonExistentFiles.forEach(async (filename) => {
-      const code = `browser.tabs.executeScript({ file: '${filename}' });`;
-      const fileRequiresContentScript = 'file-requires-content-script.js';
-      const jsScanner = createJsScanner(code, fileRequiresContentScript);
+    const code = `browser.tabs.executeScript({ file: '${nonExistentFile}' });`;
+    const fileRequiresContentScript = 'file-requires-content-script.js';
+    const jsScanner = createJsScanner(code, fileRequiresContentScript);
 
-      const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await jsScanner.scan();
 
-      expect(linterMessages.length).toEqual(1);
-      expect(linterMessages[0].code).toEqual(CONTENT_SCRIPT_NOT_FOUND.code);
-      expect(linterMessages[0].type).toEqual(VALIDATION_ERROR);
-    });
+    expect(linterMessages.length).toEqual(1);
+    expect(linterMessages[0].code).toEqual(CONTENT_SCRIPT_NOT_FOUND.code);
+    expect(linterMessages[0].type).toEqual(VALIDATION_ERROR);
   });
 
   it('should not show an error when relative content script is missing', async () => {
-    const nonExistentFiles = ['absentFile.js'];
+    const filename = ['absentFile.js'];
 
-    nonExistentFiles.forEach(async (filename) => {
-      const code = `browser.tabs.executeScript({ file: '${filename}' });`;
-      const fileRequiresContentScript = 'file-requires-content-script.js';
-      const jsScanner = createJsScanner(code, fileRequiresContentScript);
+    const code = `browser.tabs.executeScript({ file: '${filename}' });`;
+    const fileRequiresContentScript = 'file-requires-content-script.js';
+    const jsScanner = createJsScanner(code, fileRequiresContentScript);
 
-      const { linterMessages } = await jsScanner.scan();
-      expect(linterMessages.length).toEqual(0);
-    });
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages.length).toEqual(0);
   });
 
   it('should not show an error when content script file exists', async () => {
