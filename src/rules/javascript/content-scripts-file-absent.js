@@ -44,10 +44,13 @@ export default {
             return;
           }
 
-          // We can't reliably validate relative file names because their
-          // behaviour depends on the current page and the behaviour for
-          // Firefox and Chrome differentiates too. So we chose only to
-          // validate absolute file paths to avoid false positives.
+          // We can't reliably validate relative file names because they
+          // are resolved as relative to the current page url on Firefox
+          // and the rule itself doesn't know the path of the html file (or
+          // files) where the js file is going to be loaded, and so we chose
+          // to validate only the absolute file paths to avoid false positive.
+          // (Also note that Firefox and Chrome behave differently when
+          // resolving relative content script paths used in a tabs.executeScript API call).
           if (!path.isAbsolute(fileValue)) {
             return;
           }

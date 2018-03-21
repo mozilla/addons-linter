@@ -13,7 +13,7 @@ function createJsScanner(code, validatedFilename, existingFiles = {}) {
 }
 
 describe('content_scripts_file_absent', () => {
-  it('should show an error when content script is missing', async () => {
+  it('should show an error for a missing absolute content script path', async () => {
     // absolute path since we don't validate relative paths
     const nonExistentFile = '/really/absent/absentFile.js';
 
