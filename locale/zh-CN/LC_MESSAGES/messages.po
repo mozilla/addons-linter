@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-13 11:19+0000\n"
-"Last-Translator: YFdyh000 <yfdyh000@gmail.com>\n"
+"PO-Revision-Date: 2018-03-24 11:10+0000\n"
+"Last-Translator: xcffl <xcffl@outlook.com>\n"
 "Language-Team: none\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -176,7 +176,7 @@ msgstr "包包含重复的项"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr "Firefox 附加组件不允许运行挖矿程序。"
+msgstr "Firefox 附加组件不得进行挖矿。"
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -320,15 +320,15 @@ msgstr "自定义的 content_security_policy 需要额外审查。"
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr "\"name\" 属性必须是一个字符串。"
+msgstr "“name”属性必须是字符串。"
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "详细信息请参阅 http://mzl.la/1STmr48 (MDN文档)。"
+msgstr "详细信息请参阅 http://mzl.la/1STmr48 (MDN 文档)。"
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr "\"version\" 属性必须是一个字符串。"
+msgstr "“version”属性必须是字符串。"
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
