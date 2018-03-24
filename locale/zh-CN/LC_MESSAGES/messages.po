@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-03-24 11:10+0000\n"
+"PO-Revision-Date: 2018-03-24 11:15+0000\n"
 "Last-Translator: xcffl <xcffl@outlook.com>\n"
 "Language-Team: none\n"
 "Language: zh_CN\n"
@@ -60,7 +60,7 @@ msgstr "您的 FTL 文件无法解析。"
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr "附加组件政策不允许远程脚本。"
+msgstr "依照附加组件政策，不允许执行远程脚本。"
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
@@ -244,11 +244,11 @@ msgstr "manifest 中定义的一个内容脚本 css 文件无法在“%(path)s�
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr "找到附加组件中含有禁止的内容。"
+msgstr "附加组件含有违禁内容。"
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
-msgstr "此附加组件包含禁止的内容。"
+msgstr "此附加组件包含被禁止的内容。"
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
@@ -256,7 +256,7 @@ msgstr "图标必须为正方形。"
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr "在“%(path)s”的图标必须为正方形。"
+msgstr "位于“%(path)s”的图标必须为正方形。"
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
@@ -264,19 +264,19 @@ msgstr "图标的大小与清单不匹配。"
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
-msgstr "损坏的图像文件"
+msgstr "图像损坏"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr "预期在“%(path)s”的图标文件已损坏"
+msgstr "应该位于“%(path)s”的图标文件已损坏"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr "有 \"default_locale\" 但缺少本地化内容。"
+msgstr "“default_locale”缺少本地化内容。"
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr "\"_locales\" 存在但缺少 \"default_locale\"。"
+msgstr "“_locales”存在但缺少“default_locale”。"
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
@@ -316,7 +316,7 @@ msgstr "详细信息请参阅 https://mzl.la/20PenXl (MDN文档)。"
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr "自定义的 content_security_policy 需要额外审查。"
+msgstr "自定义的 content_security_policy 将需要额外审查。"
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
@@ -340,7 +340,7 @@ msgstr "\"version\" 属性须使用 Firefox 要求的格式。"
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr "不允许 \"update_url\"。"
+msgstr "不应含有“update_url”。"
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
