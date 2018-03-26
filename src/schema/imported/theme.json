@@ -163,6 +163,9 @@
         "colors": {
           "type": "object",
           "properties": {
+            "tab_selected": {
+              "$ref": "#/types/ThemeColor"
+            },
             "accentcolor": {
               "$ref": "#/types/ThemeColor"
             },
@@ -175,13 +178,16 @@
             "textcolor": {
               "$ref": "#/types/ThemeColor"
             },
-            "background_tab_text": {
+            "tab_background_text": {
               "$ref": "#/types/ThemeColor"
             },
             "tab_loading": {
               "$ref": "#/types/ThemeColor"
             },
             "tab_text": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "tab_line": {
               "$ref": "#/types/ThemeColor"
             },
             "toolbar": {

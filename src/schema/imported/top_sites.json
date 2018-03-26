@@ -20,9 +20,11 @@
               "items": {
                 "type": "string"
               },
-              "description": "Which providers to get top sites from. Possible values are \"places\" and \"activityStream\"."
+              "description": "Which providers to get top sites from. Possible values are \"places\" and \"activityStream\".",
+              "default": []
             }
           },
+          "default": {},
           "optional": true
         },
         {
