@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Download a mozilla-unified tag into a temporary file
+#
+# Usage:
+#  * run `bin/list-firefox-tags 59` (change release as necessary) to list available tags
+#  * import the schema by running `bin/download-import-tag FIREFOX_60_0b10_RELEASE` (change the tag as necessary)
+
+
+if [ ! -e "tmp/$1.tar.gz" ]; then
+    echo "tmp/$1.tar.gz doesn't exist, downloading..."
+    curl "https://hg.mozilla.org/mozilla-unified/archive/$1.tar.gz" > "tmp/$1.tar.gz"
+else
+    echo "tmp/$1.tar.gz already exists, please make sure it's valid!"
+fi
+
+echo "Importing with bin/firefox-schema-import tmp/$1.tar.gz"
+
+# Now import the schema from that tag
+bin/firefox-schema-import "tmp/$1.tar.gz"

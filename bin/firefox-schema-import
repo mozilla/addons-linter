@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-let version;
 let filePath;
 require('babel-register');
 
@@ -18,15 +17,8 @@ try {
   fs.statSync(arg);
   filePath = arg;
 } catch (e) {
-  if (/^[0-9]+$/.test(arg) || arg === 'nightly') {
-    version = arg;
-  }
-}
-
-
-if (!(filePath || version)) {
   // eslint-disable-next-line no-console
-  console.error(`Usage: ${process.argv[1]} version|filePath`);
+  console.error(`File not found: ${arg}\nUsage: ${process.argv[1]} filePath`);
   process.exit(1);
 }
 
@@ -50,7 +42,7 @@ emptyDir(importedDir, /.*\.json$/);
 emptyDir(importedDir, /index\.js$/);
 
 schemaImport.fetchSchemas(
-  { inputPath: filePath, outputPath: firefoxDir, version })
+  { inputPath: filePath, outputPath: firefoxDir })
   .then(() => {
     schemaImport.importSchemas(firefoxDir, updatesDir, importedDir);
   })

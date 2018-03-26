@@ -3,7 +3,6 @@ import path from 'path';
 
 /* eslint-disable import/no-extraneous-dependencies */
 import commentJson from 'comment-json';
-import request from 'request';
 import tar from 'tar';
 /* eslint-enable import/no-extraneous-dependencies */
 
@@ -539,16 +538,6 @@ export function importSchemas(firefoxPath, ourPath, importedPath) {
   writeSchemasToFile(firefoxPath, importedPath, updatedSchemas);
 }
 
-export function downloadUrl(version) {
-  const base = 'https://hg.mozilla.org/mozilla-central/archive/';
-  if (version === 'nightly') {
-    return `${base}tip.tar.gz`;
-  } else if (parseInt(version, 10) >= 55) {
-    return `${base}FIREFOX_BETA_${version}_BASE.tar.gz`;
-  }
-  return `${base}FIREFOX_AURORA_${version}_BASE.tar.gz`;
-}
-
 inner.isBrowserSchema = (_path) => {
   return schemaRegexes.some((re) => re.test(_path));
 };
@@ -563,34 +552,8 @@ export function stripTrailingNullByte(str) {
   return str;
 }
 
-async function getTarballPath({ inputPath, version }) {
-  if (inputPath) {
-    return inputPath;
-  } else if (version) {
-    const url = downloadUrl(version);
-    const tmpPath = path.join('tmp', path.basename(url));
-    return new Promise((resolve, reject) => {
-      request
-        .get(url)
-        .on('error', (error) => {
-          reject(error);
-        })
-        .pipe(fs.createWriteStream(tmpPath))
-        .on('error', (error) => {
-          reject(error);
-        })
-        .on('close', () => {
-          resolve(tmpPath);
-        });
-    });
-  }
-
-  throw new Error('inputPath or version is required');
-}
-
-export async function fetchSchemas({ inputPath, outputPath, version }) {
-  const tarballPath = await getTarballPath({ inputPath, version });
-  const tarball = fs.createReadStream(tarballPath);
+export async function fetchSchemas({ inputPath, outputPath }) {
+  const tarball = fs.createReadStream(inputPath);
   return new Promise((resolve, reject) => {
     tarball
       .pipe(new tar.Parse())
@@ -609,9 +572,6 @@ export async function fetchSchemas({ inputPath, outputPath, version }) {
         reject(error);
       })
       .on('end', () => {
-        if (version && !inputPath) {
-          fs.unlinkSync(tarballPath);
-        }
         resolve();
       });
   });

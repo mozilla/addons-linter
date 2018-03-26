@@ -1,3 +1,5 @@
+bin/download-import-tag
+bin/list-firefox-tags
 dist
 coverage
 tests/fixtures/jslibs
