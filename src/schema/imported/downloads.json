@@ -521,7 +521,7 @@
     }
   ],
   "definitions": {
-    "Permission": {
+    "OptionalPermission": {
       "anyOf": [
         {
           "type": "string",
@@ -534,9 +534,9 @@
     }
   },
   "refs": {
-    "downloads#/definitions/Permission": {
+    "downloads#/definitions/OptionalPermission": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "OptionalPermission"
     }
   },
   "types": {

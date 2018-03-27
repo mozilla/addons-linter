@@ -1,0 +1,95 @@
+{
+  "id": "dns",
+  "description": "Asynchronous DNS API",
+  "permissions": [
+    "dns"
+  ],
+  "functions": [
+    {
+      "name": "resolve",
+      "type": "function",
+      "description": "Resolves a hostname to a DNS record.",
+      "async": true,
+      "parameters": [
+        {
+          "name": "hostname",
+          "type": "string"
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/ResolveFlags"
+            },
+            {
+              "name": "flags",
+              "optional": true,
+              "default": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "Permission": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "dns"
+          ]
+        }
+      ]
+    }
+  },
+  "refs": {
+    "dns#/definitions/Permission": {
+      "namespace": "manifest",
+      "type": "Permission"
+    }
+  },
+  "types": {
+    "DNSRecord": {
+      "type": "object",
+      "description": "An object encapsulating a DNS Record.",
+      "properties": {
+        "canonicalName": {
+          "type": "string",
+          "description": "The canonical hostname for this record.  this value is empty if the record was not fetched with the 'canonical_name' flag."
+        },
+        "isTRR": {
+          "type": "string",
+          "description": "Record retreived with TRR."
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "isTRR",
+        "addresses"
+      ]
+    },
+    "ResolveFlags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "allow_name_collisions",
+          "bypass_cache",
+          "canonical_name",
+          "disable_ipv4",
+          "disable_ipv6",
+          "disable_trr",
+          "offline",
+          "priority_low",
+          "priority_medium",
+          "speculate"
+        ]
+      }
+    }
+  }
+}

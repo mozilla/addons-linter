@@ -1,7 +1,7 @@
 {
   "id": "devtools",
   "permissions": [
-    "devtools"
+    "manifest:devtools_page"
   ],
   "allowedContexts": [
     "devtools",

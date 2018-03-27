@@ -12,6 +12,7 @@ import contentScripts from './content_scripts.json';
 import contextualIdentities from './contextual_identities.json';
 import cookies from './cookies.json';
 import devtools from './devtools.json';
+import dns from './dns.json';
 import downloads from './downloads.json';
 import events from './events.json';
 import experiments from './experiments.json';
@@ -62,6 +63,7 @@ export default [
   contextualIdentities,
   cookies,
   devtools,
+  dns,
   downloads,
   events,
   experiments,

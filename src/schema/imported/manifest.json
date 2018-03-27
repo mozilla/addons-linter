@@ -411,6 +411,9 @@
           "$ref": "cookies#/definitions/OptionalPermission"
         },
         {
+          "$ref": "downloads#/definitions/OptionalPermission"
+        },
+        {
           "$ref": "find#/definitions/OptionalPermission"
         },
         {
@@ -464,7 +467,7 @@
           "$ref": "devtools#/definitions/Permission"
         },
         {
-          "$ref": "downloads#/definitions/Permission"
+          "$ref": "dns#/definitions/Permission"
         },
         {
           "$ref": "experiments#/definitions/Permission"
