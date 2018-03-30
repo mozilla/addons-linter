@@ -1,21 +1,10 @@
-.babelrc
-.eslintignore
-.eslintrc
-.gitignore
-.grunt
-.npmignore
-.npmrc
-.travis.yml
-Gruntfile.js
-bower.json
-coverage/
-dist/tests.js
-dist/tests.js.map
-docs/
-karma.conf.js
-node_modules/
-src/
-tasks/
-tests/
-webpack.config.js
-locale/
+# Exclude everything by default.
+*
+
+# Only include in the released npm package the following globs.
+!package.json
+!LICENSE
+!README.md
+!bin/addons-linter
+!dist/addons-linter.*
+!dist/locale/**
