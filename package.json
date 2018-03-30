@@ -74,7 +74,8 @@
     "request": "2.83.0",
     "sinon": "4.4.6",
     "tar": "4.4.1",
-    "webpack": "3.10.0"
+    "webpack": "4.4.1",
+    "webpack-cli": "2.0.13"
   },
   "dependencies": {
     "ajv": "6.3.0",

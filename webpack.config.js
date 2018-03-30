@@ -18,6 +18,9 @@ fs.readdirSync('node_modules')
 
 
 module.exports = {
+  // Set the webpack4 mode 'none' for compatibility with the behavior
+  // of the webpack3 bundling step.
+  mode: 'none',
   entry: './src/main.js',
   target: 'node',
   output: {
