@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+/* eslint-disable global-require */
+
 const path = require('path');
 
 const glob = require('glob');
@@ -7,6 +10,11 @@ const localeDir = path.join(__dirname, '../locale');
 
 const poFiles = glob.sync(`${localeDir}/**/messages.po`);
 const template = path.join(localeDir, `templates/LC_MESSAGES/messages.pot`);
+
+if (!shell.which('msgmerge')) {
+  shell.echo('This script requires msgmerge');
+  shell.exit(1);
+}
 
 poFiles.forEach((poFile) => {
   const dir = path.dirname(poFile);
