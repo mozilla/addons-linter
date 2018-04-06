@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+curl -s https://hg.mozilla.org/mozilla-unified/tags | grep -o "FIREFOX_$1[_a-zA-Z0-9]*" | sort -r | uniq | xargs -L1 echo bin/download-import-tag

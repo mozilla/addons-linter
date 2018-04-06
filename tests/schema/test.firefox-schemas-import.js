@@ -2,12 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import stream from 'stream';
 
-import request from 'request';
 import tar from 'tar';
 
 import {
   FLAG_PATTERN_REWRITES,
-  downloadUrl,
   fetchSchemas,
   filterSchemas,
   foldSchemas,
@@ -1081,31 +1079,6 @@ describe('firefox schema import', () => {
       removeDir(outputPath);
     });
 
-    it('rejects if there is no inputPath or version', async () => {
-      await expect(
-        fetchSchemas({})
-      ).rejects.toThrow('inputPath or version is required');
-    });
-
-    it('downloads the firefox source and extracts the schemas', async () => {
-      const cwd = 'tests/schema';
-      const schemaPath = 'firefox';
-      const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
-      sinon
-        .stub(inner, 'isBrowserSchema')
-        .withArgs('firefox/cookies.json')
-        .returns(false)
-        .withArgs('firefox/manifest.json')
-        .returns(true);
-      sinon
-        .stub(request, 'get')
-        .withArgs('https://hg.mozilla.org/mozilla-central/archive/FIREFOX_AURORA_54_BASE.tar.gz')
-        .returns(tarball);
-      expect(fs.readdirSync(outputPath)).toEqual([]);
-      await fetchSchemas({ version: 54, outputPath });
-      expect(fs.readdirSync(outputPath)).toEqual(['manifest.json']);
-    });
-
     it('extracts the schemas from a local file', async () => {
       const cwd = 'tests/schema';
       const schemaPath = 'firefox';
@@ -1148,50 +1121,6 @@ describe('firefox schema import', () => {
       expect(fs.readdirSync(outputPath)).toEqual([]);
       await expect(
         fetchSchemas({ inputPath: 'mozilla-central.tgz', outputPath })
-      ).rejects.toThrow();
-    });
-
-    it('handles errors when downloading', async () => {
-      const mockStream = new stream.Readable({
-        read() {
-          this.emit('error', new Error('stream error'));
-        },
-      });
-      sinon
-        .stub(request, 'get')
-        .withArgs('https://hg.mozilla.org/mozilla-central/archive/FIREFOX_AURORA_54_BASE.tar.gz')
-        .returns(mockStream);
-      expect(fs.readdirSync(outputPath)).toEqual([]);
-      await expect(
-        fetchSchemas({ version: 54, outputPath })
-      ).rejects.toThrow();
-      // Manually remove the tar file since it doesn't get cleaned up.
-      fs.unlinkSync('tmp/FIREFOX_AURORA_54_BASE.tar.gz');
-    });
-
-    it('handles errors when writing the download', async () => {
-      const cwd = 'tests/schema';
-      const schemaPath = 'firefox';
-      const tarball = tar.create({ cwd, gzip: true }, [schemaPath]);
-      sinon
-        .stub(request, 'get')
-        .withArgs('https://hg.mozilla.org/mozilla-central/archive/FIREFOX_AURORA_54_BASE.tar.gz')
-        .returns(tarball);
-      const mockStream = new stream.Duplex({
-        read() {
-          this.emit('error', new Error('stream error'));
-        },
-        write() {
-          this.emit('error', new Error('stream error'));
-        },
-      });
-      sinon
-        .stub(fs, 'createWriteStream')
-        .withArgs('tmp/FIREFOX_AURORA_54_BASE.tar.gz')
-        .returns(mockStream);
-      expect(fs.readdirSync(outputPath)).toEqual([]);
-      await expect(
-        fetchSchemas({ version: 54, outputPath })
       ).rejects.toThrow();
     });
   });
@@ -1432,27 +1361,6 @@ describe('firefox schema import', () => {
     it('handles empty strings', () => {
       const str = '';
       expect(stripTrailingNullByte(str)).toBe(str);
-    });
-  });
-
-  describe('downloadUrl', () => {
-    it('uses aurora if version is < 55', () => {
-      expect(downloadUrl(48)).toMatch(
-        /archive\/FIREFOX_AURORA_48_BASE.tar.gz$/);
-      expect(downloadUrl(54)).toMatch(
-        /archive\/FIREFOX_AURORA_54_BASE.tar.gz$/);
-    });
-
-    it('uses beta if version is >= 55', () => {
-      expect(downloadUrl(55)).toMatch(
-        /archive\/FIREFOX_BETA_55_BASE.tar.gz$/);
-      expect(downloadUrl(60)).toMatch(
-        /archive\/FIREFOX_BETA_60_BASE.tar.gz$/);
-    });
-
-    it('uses tip for nightly', () => {
-      expect(downloadUrl('nightly')).toMatch(
-        /archive\/tip.tar.gz$/);
     });
   });
 
