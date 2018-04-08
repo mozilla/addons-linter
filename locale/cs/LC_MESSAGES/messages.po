@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-13 21:15+0000\n"
-"Last-Translator: Jakub Rychlý <jrychly@mozilla.cz>\n"
+"PO-Revision-Date: 2018-04-06 09:04+0000\n"
+"Last-Translator: Michal Vašíček <mvasicek@mozilla.cz>\n"
 "Language-Team: none\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -180,7 +180,7 @@ msgstr "Doplňky Firefoxu nesmí těžit kryptoměny."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "Jméno řetězce je rezervováno pro předdefinovanou zprávu"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -196,15 +196,15 @@ msgstr "Placeholder obsahuje neplatné znaky"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "Zástupnému textu chybí vlastnost content"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "Řetězci překladu chybí parametr message"
 
 #: src/messages/locale-messagesjson.js:8
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
+msgstr "Pro řetězec není nastavena zpráva ve vlastnosti „message“ (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
