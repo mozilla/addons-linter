@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-24 08:54+0000\n"
+"PO-Revision-Date: 2018-04-09 13:27+0000\n"
 "Last-Translator: Bjørn I. <bjorn.svindseth@online.no>\n"
 "Language-Team: none\n"
 "Language: nn_NO\n"
@@ -208,7 +208,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
+msgstr "Sjå https://mzl.la/1ZOhoEN (MDN Docs) for meir informasjon."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -244,19 +244,19 @@ msgstr ""
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "Forbydd innhald funne i utvidinga."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "Denne utvidinga inneheld forbydd innhald."
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr ""
+msgstr "Ikon må vere kvadratiske."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "Ikona på \"%(path)s\" må vere kvadratiske."
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
@@ -304,7 +304,7 @@ msgstr "Ukjent løyve."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "Sjå https://mzl.la/1R1n1t0 (MDN Docs) for meir informasjon."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -312,7 +312,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "Sjå https://mzl.la/20PenXl (MDN Docs) for meir informasjon."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
@@ -348,4 +348,4 @@ msgstr "Feltet er påkravd."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "Eigenskapen \"update_url\" vert ikkje brukt av Firefox."
