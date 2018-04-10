@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-04-10 08:36+0000\n"
+"PO-Revision-Date: 2018-04-10 09:40+0000\n"
 "Last-Translator: Sahithi <sahithi.thinker@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -152,15 +152,15 @@ msgstr ""
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "ఫ్లాగ్ చేయబడిన ఫైల్ పేరు కనుగొనబడింది"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "ఫ్లాగ్ చేయబడిన ఫైల్ పొడిగింతలు కనుగొనబడ్డాయి"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "ఫ్లాగ్ చేయబడిన ఫైల్ రకం కనుగొనబడింది"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
@@ -168,7 +168,7 @@ msgstr ""
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
-msgstr ""
+msgstr "ఉపయోగం యొక్క మొజిల్లా పరిస్థితుల ఉల్లంఘన."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
@@ -180,7 +180,7 @@ msgstr ""
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "ముందే నిర్వచించబడిన సందేశానికి స్ట్రింగ్ పేరు రిజర్వ్ చేయబడింది"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
