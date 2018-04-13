@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-04-09 13:27+0000\n"
+"PO-Revision-Date: 2018-04-13 08:03+0000\n"
 "Last-Translator: Bjørn I. <bjorn.svindseth@online.no>\n"
 "Language-Team: none\n"
 "Language: nn_NO\n"
@@ -224,15 +224,15 @@ msgstr ""
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Fann ikkje bakgrunnsskriptet på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Fann ikkje bakgrunnssida på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
-msgstr ""
+msgstr "Feltet er ugyldig."
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -284,7 +284,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "Ustøtta bildefilending"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
@@ -296,7 +296,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "messages.json fil manglar i \"%(path)s\""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
@@ -308,7 +308,7 @@ msgstr "Sjå https://mzl.la/1R1n1t0 (MDN Docs) for meir informasjon."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "\"manifest_version\" i manifest.json er ikkje ein gyldig verdi"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
