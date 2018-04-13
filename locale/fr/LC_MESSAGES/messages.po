@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-16 11:17+0000\n"
+"PO-Revision-Date: 2018-04-13 07:59+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -64,7 +64,7 @@ msgstr "Les scripts externes ne sont pas autorisés, comme indiqué dans les ter
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Les scripts inline sont bloqués par défaut"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
@@ -240,7 +240,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:162
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Le script de contenu CSS défini dans le manifeste est introuvable à l’emplacement « %(path)s »."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
