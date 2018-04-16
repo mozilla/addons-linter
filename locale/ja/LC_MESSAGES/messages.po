@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-24 12:42+0000\n"
-"Last-Translator: marsf <chimantaea_mirabilis@yahoo.co.jp>\n"
+"PO-Revision-Date: 2018-04-16 19:51+0000\n"
+"Last-Translator: Kohei Yoshino <kohei.yoshino@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: src/linter.js:117
 msgid "Validation Summary:"
-msgstr ""
+msgstr "検証結果:"
 
 #: src/linter.js:134
 msgid "Code"
@@ -80,23 +80,23 @@ msgstr "この API は Firefox に実装されていません。"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener の第 4 引数が true と評価される値となっています。"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "コンテンツスクリプトファイルが見つかりませんでした。"
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "コンテンツスクリプトファイルが見つかりませんでした"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "コンテンツスクリプトファイル名は空欄にできません。"
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "コンテンツスクリプトファイル名は空欄にできません"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
@@ -104,7 +104,7 @@ msgstr "JavaScript 構文エラー"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "予期せぬグローバル変数が引数として渡されています"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
@@ -112,27 +112,27 @@ msgstr "document.write の使用は避けてください。"
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr "禁止された第三者 JS ライブラリー"
+msgstr "禁止されているサードパーティ JS ライブラリー"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "不明なサードパーティ JS ライブラリ"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "JSON にブロックコメントが含まれています。"
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "JSON ファイルには重複するキーを含められません。"
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "JSON の形式が正しくありません。"
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "JSON ファイルを解析できませんでした。"
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
@@ -148,19 +148,19 @@ msgstr "ファイルサイズが大きすぎるため解析できません。"
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "隠しファイルが特定されました"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "特定のファイル名が確認されました"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "特定のファイル拡張子が確認されました"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "特定のファイル形式が確認されました"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
@@ -180,23 +180,23 @@ msgstr "Firefox アドオンで仮想通貨のマイニングを行うことは�
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "文字列名が定義済みメッセージ用に予約されています"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "メッセージのプレースホルダーが見当たりません"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "メッセージ内で使用されているプレースホルダーが定義されていません。"
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "プレースホルダー名に不正な文字が含まれています"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "プレースホルダーにコンテンツプロパティが含まれていません"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
