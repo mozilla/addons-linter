@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-04-20 07:47+0000\n"
+"PO-Revision-Date: 2018-04-26 07:50+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: none\n"
 "Language: nb_NO\n"
@@ -64,7 +64,7 @@ msgstr "Eksterne skripter er ikke tillatt, i henhold til utvidelsesretningslinje
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Inline-script er blokkert som standard"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
