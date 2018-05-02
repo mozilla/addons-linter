@@ -76,7 +76,7 @@
     "sinon": "5.0.0",
     "tar": "4.4.2",
     "webpack": "4.6.0",
-    "webpack-cli": "2.0.15"
+    "webpack-cli": "2.1.2"
   },
   "dependencies": {
     "ajv": "6.4.0",
