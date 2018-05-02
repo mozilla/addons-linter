@@ -111,7 +111,7 @@
     "source-map-support": "0.5.4",
     "strip-bom-stream": "3.0.0",
     "tosource": "1.0.0",
-    "upath": "1.0.4",
+    "upath": "1.0.5",
     "whatwg-url": "6.3.0",
     "xmldom": "0.1.27",
     "yargs": "11.0.0",
