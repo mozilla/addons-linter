@@ -1054,14 +1054,14 @@ describe('firefox schema import', () => {
       importSchemas(firefoxPath, ourPath, outputPath);
 
       expect(
-        fs.exists(path.join(expectedPath, 'native_host_manifest.json'))
-      ).toBeFalsy();
+        fs.existsSync(path.join(expectedPath, 'native_host_manifest.json'))
+      ).toEqual(false);
 
       // Dummy test to make sure we join correctly and the import
       // actually worked
       expect(
-        fs.exists(path.join(expectedPath, 'manifest.json'))
-      ).toBeFalsy();
+        fs.existsSync(path.join(expectedPath, 'manifest.json'))
+      ).toEqual(true);
     });
   });
 
@@ -1070,12 +1070,12 @@ describe('firefox schema import', () => {
     const expectedTarballPath = 'tmp/FIREFOX_AURORA_54_BASE.tar.gz';
 
     beforeEach(() => {
-      expect(fs.existsSync(expectedTarballPath)).toBeFalsy();
+      expect(fs.existsSync(expectedTarballPath)).toEqual(false);
       createDir(outputPath);
     });
 
     afterEach(() => {
-      expect(fs.existsSync(expectedTarballPath)).toBeFalsy();
+      expect(fs.existsSync(expectedTarballPath)).toEqual(false);
       removeDir(outputPath);
     });
 
