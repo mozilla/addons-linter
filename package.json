@@ -69,7 +69,7 @@
     "jest-raw-loader": "1.0.1",
     "json-loader": "0.5.7",
     "load-grunt-configs": "1.0.0",
-    "load-grunt-tasks": "3.5.2",
+    "load-grunt-tasks": "4.0.0",
     "lodash.clonedeep": "4.5.0",
     "lodash.ismatchwith": "4.4.0",
     "markdown-it": "8.4.1",
