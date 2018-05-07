@@ -23,7 +23,8 @@
     "publish-coverage": "grunt coveralls",
     "gen-contributing-toc": "doctoc CONTRIBUTING.md",
     "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "prepublish": "npm run snyk-protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -113,7 +114,7 @@
     "relaxed-json": "1.0.1",
     "semver": "5.5.0",
     "shelljs": "0.8.1",
-    "snyk": "^1.70.1",
+    "snyk": "^1.78.1",
     "source-map-support": "0.5.4",
     "strip-bom-stream": "3.0.0",
     "tosource": "1.0.0",
