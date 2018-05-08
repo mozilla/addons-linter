@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-01-26 18:03+0000\n"
+"PO-Revision-Date: 2018-01-26 18:02+0000\n"
 "Last-Translator: హరి ప్రియ <haripriyagundala@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -48,7 +48,7 @@ msgstr ""
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "CSS సింటాక్స్ లోపం ఏర్పడింది"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -340,7 +340,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "\"update_url\" అనుమతించబడదు."
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
