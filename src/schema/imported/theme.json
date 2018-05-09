@@ -240,6 +240,21 @@
             },
             "popup_border": {
               "$ref": "#/types/ThemeColor"
+            },
+            "toolbar_field_focus": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "toolbar_field_text_focus": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "toolbar_field_border_focus": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "popup_highlight": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "popup_highlight_text": {
+              "$ref": "#/types/ThemeColor"
             }
           }
         },
@@ -540,6 +555,9 @@
           "properties": {
             "theme": {
               "$ref": "#/types/ThemeType"
+            },
+            "default_locale": {
+              "type": "string"
             },
             "icons": {
               "type": "object",
