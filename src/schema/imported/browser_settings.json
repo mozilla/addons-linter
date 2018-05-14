@@ -25,6 +25,16 @@
         }
       ]
     },
+    "closeTabsByDoubleClick": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "This boolean setting controls whether the selected tab can be closed with a double click."
+        }
+      ]
+    },
     "contextMenuShowEvent": {
       "allOf": [
         {
@@ -65,6 +75,16 @@
         }
       ]
     },
+    "newTabPosition": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "Controls where new tabs are opened. `afterCurrent` will open all new tabs next to the current tab, `relatedAfterCurrent` will open only related tabs next to the current tab, and `atEnd` will open all tabs at the end of the tab strip. The default is `relatedAfterCurrent`."
+        }
+      ]
+    },
     "openBookmarksInNewTabs": {
       "allOf": [
         {
@@ -85,13 +105,13 @@
         }
       ]
     },
-    "proxyConfig": {
+    "openUrlbarResultsInNewTabs": {
       "allOf": [
         {
           "$ref": "types#/types/Setting"
         },
         {
-          "description": "Configures proxy settings. This setting's value is an object of type ProxyConfig."
+          "description": "This boolean setting controls whether urlbar results are opened in the current tab or in a new tab."
         }
       ]
     },
@@ -102,6 +122,26 @@
         },
         {
           "description": "Disables webAPI notifications."
+        }
+      ]
+    },
+    "overrideDocumentColors": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "This setting controls whether the user-chosen colors override the page's colors."
+        }
+      ]
+    },
+    "useDocumentFonts": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "This setting controls whether the document's fonts are used."
         }
       ]
     }
@@ -141,65 +181,6 @@
         "mousedown"
       ],
       "description": "After which mouse event context menus should popup."
-    },
-    "ProxyConfig": {
-      "type": "object",
-      "description": "An object which describes proxy settings.",
-      "properties": {
-        "proxyType": {
-          "type": "string",
-          "enum": [
-            "none",
-            "autoDetect",
-            "system",
-            "manual",
-            "autoConfig"
-          ],
-          "description": "The type of proxy to use."
-        },
-        "http": {
-          "type": "string",
-          "description": "The address of the http proxy, can include a port."
-        },
-        "httpProxyAll": {
-          "type": "boolean",
-          "description": "Use the http proxy server for all protocols."
-        },
-        "ftp": {
-          "type": "string",
-          "description": "The address of the ftp proxy, can include a port."
-        },
-        "ssl": {
-          "type": "string",
-          "description": "The address of the ssl proxy, can include a port."
-        },
-        "socks": {
-          "type": "string",
-          "description": "The address of the socks proxy, can include a port."
-        },
-        "socksVersion": {
-          "type": "integer",
-          "description": "The version of the socks proxy.",
-          "minimum": 4,
-          "maximum": 5
-        },
-        "passthrough": {
-          "type": "string",
-          "description": "A list of hosts which should not be proxied."
-        },
-        "autoConfigUrl": {
-          "type": "string",
-          "description": "A URL to use to configure the proxy."
-        },
-        "autoLogin": {
-          "type": "boolean",
-          "description": "Do not prompt for authentication if password is saved."
-        },
-        "proxyDNS": {
-          "type": "boolean",
-          "description": "Proxy DNS when using SOCKS v5."
-        }
-      }
     }
   }
 }
