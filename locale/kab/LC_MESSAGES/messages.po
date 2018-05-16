@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-05-16 14:51+0000\n"
+"PO-Revision-Date: 2018-05-16 15:07+0000\n"
 "Last-Translator: Muḥend Belqasem <belkacem77@gmail.com>\n"
 "Language-Team: none\n"
 "Language: kab\n"
@@ -80,51 +80,51 @@ msgstr "Asnas-agi API yettwabna di Firefox."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener` yessawl-as-d s tiɣiret n tidet tis kuẓ."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Afaylu n uskript n ugbur ulac-it."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Afaylu n uskript n ugbur ulac-it"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Isem n ufaylu n uskript n ugbur ur yessefk ara ad yili d ilem."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Isem n ufaylu n uskript n ugbur ur yessefk ara ad yili d ilem"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "Tuccḍa n tseddast JavaScript"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Amutti amatu iɛedda am tɣiret"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Aseqdec n document.write ur yelhi ara."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "Tamkerḍit JS tis kraḍ tegdel i useqdec"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Tamkerḍit JS tis kraḍ d iritt i useqdec"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "Tangalt-ik JSON tegber iḥder n yiwenniten."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "Tiisura tusligin ur ttwasirgent ara deg ifuyla JSON."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
@@ -132,39 +132,39 @@ msgstr "JSON inek mačči d ameγtu."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "Tangalt-ik JSON ur tezmir ara tettwasleḍ."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "Ur nezmir ara ad n sefruri afaylu zip."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "Afaylu manifest.json ur yettwaf ara"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr ""
+msgstr "Afaylu meqqer aṭas akken ad yettwasleḍ."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "Afaylu uffir yettwacreḍ"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "Isem n ufaylu yettwacerḍen yettwaf"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "Isiɣzaf n ufaylu yettwacerḍen ttwafen"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "Anaw n ufaylu yettwacerḍen yettwaf"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
-msgstr ""
+msgstr "Akemmus yettwasezmel yakan"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
