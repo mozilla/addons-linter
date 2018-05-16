@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-03-03 12:07+0000\n"
+"PO-Revision-Date: 2018-05-16 14:51+0000\n"
 "Last-Translator: Muḥend Belqasem <belkacem77@gmail.com>\n"
 "Language-Team: none\n"
 "Language: kab\n"
@@ -64,7 +64,7 @@ msgstr "Iskripten inmeggagen ur ttwasirgen ara akken i d-yettwalmmel deg tiwtili
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Iskripten inline weḥlen si tazwara"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
@@ -76,7 +76,7 @@ msgstr "{{api}} ur yettwaqbel"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "Asnas-agi API yettwabna di Firefox."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
