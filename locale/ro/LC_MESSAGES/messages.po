@@ -76,7 +76,7 @@ msgstr "{{api}} nu este suportat"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "Acest API nu a fost implementat de Firefox."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
