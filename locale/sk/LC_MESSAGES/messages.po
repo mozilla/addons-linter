@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-27 22:27+0000\n"
+"PO-Revision-Date: 2018-05-23 15:45+0000\n"
 "Last-Translator: Juraj Cigáň <kusavica@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -128,7 +128,7 @@ msgstr ""
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "Váš JSON nie je platný."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
@@ -304,7 +304,7 @@ msgstr "Neznáme povolenie."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "Ďalšie informácie nájdete na https://mzl.la/1R1n1t0 (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"

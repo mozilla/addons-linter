@@ -1295,6 +1295,20 @@
             }
           ]
         }
+      ],
+      "extraParameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/UpdateFilter"
+            },
+            {
+              "name": "filter",
+              "optional": true,
+              "description": "A set of filters that restricts the events that will be sent to this listener."
+            }
+          ]
+        }
       ]
     },
     {
@@ -2022,6 +2036,50 @@
         "devtools"
       ],
       "description": "The type of window."
+    },
+    "UpdatePropertyName": {
+      "type": "string",
+      "enum": [
+        "audible",
+        "discarded",
+        "favIconUrl",
+        "hidden",
+        "isarticle",
+        "mutedInfo",
+        "pinned",
+        "sharingState",
+        "status",
+        "title"
+      ],
+      "description": "Event names supported in onUpdated."
+    },
+    "UpdateFilter": {
+      "type": "object",
+      "description": "An object describing filters to apply to tabs.onUpdated events.",
+      "properties": {
+        "urls": {
+          "type": "array",
+          "description": "A list of URLs or URL patterns. Events that cannot match any of the URLs will be filtered out.  Filtering with urls requires the <code>\"tabs\"</code> or  <code>\"activeTab\"</code> permission.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "properties": {
+          "type": "array",
+          "description": "A list of property names. Events that do not match any of the names will be filtered out.",
+          "items": {
+            "$ref": "#/types/UpdatePropertyName"
+          },
+          "minItems": 1
+        },
+        "tabId": {
+          "type": "integer"
+        },
+        "windowId": {
+          "type": "integer"
+        }
+      }
     }
   }
 }

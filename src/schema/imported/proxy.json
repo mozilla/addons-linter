@@ -4,6 +4,18 @@
   "permissions": [
     "proxy"
   ],
+  "properties": {
+    "settings": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "Configures proxy settings. This setting's value is an object of type ProxyConfig."
+        }
+      ]
+    }
+  },
   "functions": [
     {
       "name": "register",
@@ -194,5 +206,65 @@
       "type": "Permission"
     }
   },
-  "types": {}
+  "types": {
+    "ProxyConfig": {
+      "type": "object",
+      "description": "An object which describes proxy settings.",
+      "properties": {
+        "proxyType": {
+          "type": "string",
+          "enum": [
+            "none",
+            "autoDetect",
+            "system",
+            "manual",
+            "autoConfig"
+          ],
+          "description": "The type of proxy to use."
+        },
+        "http": {
+          "type": "string",
+          "description": "The address of the http proxy, can include a port."
+        },
+        "httpProxyAll": {
+          "type": "boolean",
+          "description": "Use the http proxy server for all protocols."
+        },
+        "ftp": {
+          "type": "string",
+          "description": "The address of the ftp proxy, can include a port."
+        },
+        "ssl": {
+          "type": "string",
+          "description": "The address of the ssl proxy, can include a port."
+        },
+        "socks": {
+          "type": "string",
+          "description": "The address of the socks proxy, can include a port."
+        },
+        "socksVersion": {
+          "type": "integer",
+          "description": "The version of the socks proxy.",
+          "minimum": 4,
+          "maximum": 5
+        },
+        "passthrough": {
+          "type": "string",
+          "description": "A list of hosts which should not be proxied."
+        },
+        "autoConfigUrl": {
+          "type": "string",
+          "description": "A URL to use to configure the proxy."
+        },
+        "autoLogin": {
+          "type": "boolean",
+          "description": "Do not prompt for authentication if password is saved."
+        },
+        "proxyDNS": {
+          "type": "boolean",
+          "description": "Proxy DNS when using SOCKS v5."
+        }
+      }
+    }
+  }
 }

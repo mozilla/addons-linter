@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-09 16:22+0000\n"
-"Last-Translator: Ali Demirtaş <alidemirtas94@gmail.com>\n"
+"PO-Revision-Date: 2018-05-14 18:34+0000\n"
+"Last-Translator: Ali Can YILDIZ <anotherglitchinthematrix@gmail.com>\n"
 "Language-Team: none\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -56,7 +56,7 @@ msgstr "FTL geçerli değil."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "FTL dosyanız işlenemedi."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
@@ -256,7 +256,7 @@ msgstr "Simgeler kare olmalıdır."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "\"%(path)s\" yolundaki simge kare olmalıdır."
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
@@ -284,11 +284,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "Desteklenmeyen resim uzantısı"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
+msgstr "Simgeler JPG/JPEG, WebP, GIF, PNG ya da SVG türlerinden biri olmalıdır."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
@@ -308,7 +308,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "manifest.json dosyasındaki \"manifest_version\" geçerli bir değer değil"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
