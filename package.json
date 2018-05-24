@@ -79,7 +79,7 @@
     "raw-loader": "0.5.1",
     "request": "2.83.0",
     "sinon": "5.0.6",
-    "tar": "4.4.2",
+    "tar": "4.4.3",
     "tar-fs": "^1.16.0",
     "tmp-promise": "^1.0.4",
     "webpack": "4.8.2",
