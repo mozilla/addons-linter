@@ -107,7 +107,7 @@
     "is-mergeable-object": "1.1.0",
     "jed": "1.1.1",
     "os-locale": "2.1.0",
-    "pino": "4.16.1",
+    "pino": "4.17.0",
     "po2json": "0.4.5",
     "postcss": "6.0.19",
     "probe-image-size": "4.0.0",
