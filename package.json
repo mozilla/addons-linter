@@ -82,7 +82,7 @@
     "tar": "4.4.4",
     "tar-fs": "^1.16.0",
     "tmp-promise": "^1.0.4",
-    "webpack": "4.8.3",
+    "webpack": "4.9.0",
     "webpack-cli": "2.1.4"
   },
   "dependencies": {
