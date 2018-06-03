@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-03 03:49+0000\n"
+"PO-Revision-Date: 2018-06-03 03:53+0000\n"
 "Last-Translator: Muḥend Belqasem <belkacem77@gmail.com>\n"
 "Language-Team: none\n"
 "Language: kab\n"
@@ -184,19 +184,19 @@ msgstr "ISem n uzrir n yisekkilen yettwaḥeṛṛ i yizen yettwasbadun yakan"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "Amḍiq yettwaḥ€rzen i yizen ulac-it"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "Amḍiq yettwaḥ€rzen yettwasqedcen deg izen ur yettwasbadu ara."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "Amḍiq yettwaḥ€rzen yegber yir isekkilen"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "Amḍiq yettwaḥ€rzen ulac-it di tmeẓlit n ugbur"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
