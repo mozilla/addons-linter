@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-05-17 21:10+0000\n"
+"PO-Revision-Date: 2018-06-03 03:49+0000\n"
 "Last-Translator: Muḥend Belqasem <belkacem77@gmail.com>\n"
 "Language-Team: none\n"
 "Language: kab\n"
@@ -216,7 +216,7 @@ msgstr "\"strict_max_version\" ilaq."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
+msgstr "Tignit yettwasbadun deg umeskan ulac-itt deg ukemmus."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
@@ -244,23 +244,23 @@ msgstr "Askript n ugbur deg ufaylu CSS deg umeskan ulac-it di \"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "Agbur igedlen yettwaf deg uzegrir."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "Azegrir-agi yegber iferdisen yettwagedlen."
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr ""
+msgstr "Yessefk tignitin ad ilint d amkuz."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "Tignit yellan deg wadi \"%(path)s\" yessefk ad tili d amkuz."
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "Teɣzi n tignit ur temṣada ara akked umeskan."
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
@@ -268,19 +268,19 @@ msgstr "Afaylu n tugna irreẓ"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "Tignit yettwarǧan deg wadig \"%(path)s\" texseṛ"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "Tisuqilin ulac-iten i \"default_locale\"."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "\"default_locale\" ulac-it acu kan \"_locales\" yella."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "Anaw-agi n tsiregt ur yettwasefrak ara."
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
@@ -308,7 +308,7 @@ msgstr "Wali https://mzl.la/1R1n1t0 (MDN Docs) i wugar n telɣut."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "Azal n \"manifest_version\" di manifest.json mačči d ameɣtu"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -316,11 +316,11 @@ msgstr "Wali https://mzl.la/20PenXl (MDN Docs) i wugar n telɣut."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "Aceggir-nniḍen ilaq ticki content_security_policy d udmawan."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "Yessefk timeẓlit \"name\" ad tili d azrir n yisekkilen."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -336,7 +336,7 @@ msgstr "Wali http://mzl.la/1kXIADa (MDN Docs) i wugar n telɣut."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "Timeẓlit \"version\" tseqdac kan  masal n Firefox."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
