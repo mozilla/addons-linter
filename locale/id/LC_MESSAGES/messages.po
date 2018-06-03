@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-07 22:08+0000\n"
+"PO-Revision-Date: 2018-06-03 20:49+0000\n"
 "Last-Translator: eljuno <eljunotrie_anggoro@yahoo.co.id>\n"
 "Language-Team: none\n"
 "Language: id\n"
@@ -68,7 +68,7 @@ msgstr ""
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
-msgstr ""
+msgstr "Pustaka JS yang diketahui terdeteksi"
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
@@ -76,7 +76,7 @@ msgstr "{{api}} tidak didukung"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "API ini belum diimplementasikan oleh Firefox."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
@@ -84,19 +84,19 @@ msgstr ""
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Berkas skrip konten tidak dapat ditemukan."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Berkas skrip konten tidak dapat ditemukan"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Nama berkas skrip konten tidak boleh kosong."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Nama berkas skrip konten tidak boleh kosong"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
@@ -140,7 +140,7 @@ msgstr ""
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "manifest.json tidak ditemukan"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
@@ -176,7 +176,7 @@ msgstr ""
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "Pengaya Firefox tidak diizinkan untuk menjalankan penambang koin."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -208,11 +208,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
+msgstr "Lihat https://mzl.la/1ZOhoEN (MDN Docs) untuk informasi lebih lanjut."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
-msgstr ""
+msgstr "\"strict_max_version\" tidak diperlukan."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
@@ -224,7 +224,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Skrip latar tidak dapat ditemukan di \"%(path)s\"."
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
@@ -244,19 +244,19 @@ msgstr ""
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "Konten yang dilarang ditemukan di pengaya."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "Pengaya ini berisi konten yang dilarang."
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr ""
+msgstr "Ikon harus persegi."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "Ikon di \"%(path)s\" harus persegi."
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
@@ -280,19 +280,19 @@ msgstr ""
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "Tipe izin tidak didukung."
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "Ekstensi gambar tidak didukung"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
+msgstr "Ikon harus salah satu dari JPG/JPEG, WebP, GIF, PNG, atau SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
-msgstr ""
+msgstr "Direktori bahasa kosong"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
@@ -300,11 +300,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
-msgstr ""
+msgstr "Izin tidak dikenal."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "Lihat https://mzl.la/1R1n1t0 (MDN Docs) untuk informasi lebih lanjut."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -320,19 +320,19 @@ msgstr ""
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "Properti \"name\" harus sebuah string."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "Lihat http://mzl.la/1STmr48 (MDN Docs) untuk informasi lebih lanjut."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "Properti \"version\" harus sebuah string."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "Lihat http://mzl.la/1kXIADa (MDN Docs) untuk informasi lebih lanjut."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
@@ -340,7 +340,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "\"update_url\" tidak diizinkan."
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
@@ -348,4 +348,4 @@ msgstr ""
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "Properti \"update_url\" tidak digunakan oleh Firefox."
