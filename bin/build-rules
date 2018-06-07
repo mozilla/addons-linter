@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+/* eslint-disable import/no-extraneous-dependencies, global-require */
+
+const fs = require('fs');
+
+const md = require('markdown-it')();
+const emoji = require('markdown-it-emoji');
+const markdownItAnchor = require('markdown-it-anchor');
+
+md.use(emoji);
+md.use(markdownItAnchor, {
+  permalink: true,
+});
+const markdown = md.render(fs.readFileSync('docs/rules.md', { encoding: 'utf8' }));
+const template = fs.readFileSync('docs/rules.tmpl', { encoding: 'utf8' });
+const html = template.replace('{{MARKDOWN}}', markdown);
+fs.writeFileSync('docs/html/index.html', html);
