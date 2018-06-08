@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-07 10:02+0000\n"
+"PO-Revision-Date: 2018-06-07 10:01+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: none\n"
 "Language: fi\n"
@@ -244,11 +244,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "Lisäosasta löytyi kiellettyä sisältöä."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "Tämä lisäosa sisältää kiellettyä sisältöä."
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
@@ -288,7 +288,7 @@ msgstr "Kuvan tiedostotyyppiä ei tueta"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
+msgstr "Kuvakkeen tulee olla muotoa JPG/JPEG, WebP, GIF, PNG tai SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
