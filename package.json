@@ -57,6 +57,7 @@
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-jest": "21.15.2",
     "eslint-plugin-promise": "3.8.0",
+    "fsevents": "1.2.4",
     "gfm.css": "1.1.2",
     "gh-pages": "^1.2.0",
     "gunzip-maybe": "^1.4.1",
