@@ -73,11 +73,11 @@ describe('JavaScript Scanner', () => {
 
   it('should be initialised with disabledRules from options', () => {
     const jsScanner = new JavaScriptScanner('', 'filename.txt', {
-      disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml',
+      disabledRules: 'no-eval, no-implied-eval, no-unsanitized/no-unsanitized',
     });
     expect(typeof jsScanner.disabledRules).toEqual('object');
     // This test assures us the disabledRules built properly.
-    expect(jsScanner.disabledRules).toEqual(['no-eval', 'no-implied-eval', 'no-unsafe-innerhtml/no-unsafe-innerhtml']);
+    expect(jsScanner.disabledRules).toEqual(['no-eval', 'no-implied-eval', 'no-unsanitized/no-unsanitized']);
   });
 
   it('should be initialised with empty excluded rules object, when there is no string', () => {
@@ -89,12 +89,12 @@ describe('JavaScript Scanner', () => {
 
   it('should be initialised with valid rules only', () => {
     const jsScanner = new JavaScriptScanner('', 'filename.txt', {
-      disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml,,,,,',
+      disabledRules: 'no-eval, no-implied-eval, no-unsanitized/no-unsanitized,,,,,',
     });
     expect(jsScanner.disabledRules).toEqual([
       'no-eval',
       'no-implied-eval',
-      'no-unsafe-innerhtml/no-unsafe-innerhtml',
+      'no-unsanitized/no-unsanitized',
     ]);
   });
 
@@ -383,7 +383,7 @@ describe('JavaScript Scanner', () => {
   describe('scanner options tests', () => {
     it('should define valid set of rules for linter', () => {
       const jsScanner = new JavaScriptScanner('', 'filename.txt', {
-        disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml',
+        disabledRules: 'no-eval, no-implied-eval, no-unsanitized/no-unsanitized',
       });
       const original = linterMock.defineRule;
       sinon.stub(linterMock, 'defineRule').callsFake(original);
