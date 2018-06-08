@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-08 14:46+0000\n"
+"PO-Revision-Date: 2018-06-08 15:10+0000\n"
 "Last-Translator: Juraj Cigáň <kusavica@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -44,7 +44,7 @@ msgstr "Stĺpec"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Bolo nájdené neplatné vnorenie"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
