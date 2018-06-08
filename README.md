@@ -8,7 +8,7 @@
 
 The Add-ons Linter, JS edition.
 
-Here is the [canonical list of rules](http://mozilla.github.io/addons-linter/) we're working from.
+Here is the [canonical list of rules](https://mozilla.github.io/addons-linter/) we're working from.
 
 ## Usage
 
