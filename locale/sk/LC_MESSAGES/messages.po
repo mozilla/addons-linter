@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-08 15:17+0000\n"
+"PO-Revision-Date: 2018-06-08 18:16+0000\n"
 "Last-Translator: Juraj Cigáň <kusavica@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -244,7 +244,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "V doplnku bol nájdený zakázaný obsah."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
@@ -340,7 +340,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "„update_url“ nie je povolené."
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
