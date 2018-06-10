@@ -81,7 +81,7 @@
     "webpack-cli": "3.0.3"
   },
   "dependencies": {
-    "ajv": "6.5.0",
+    "ajv": "6.5.1",
     "ajv-merge-patch": "3.0.0",
     "babel-register": "6.26.0",
     "chalk": "2.4.0",
