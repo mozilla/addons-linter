@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-11 13:11+0000\n"
+"PO-Revision-Date: 2018-06-11 13:31+0000\n"
 "Last-Translator: Bjørn I. <bjorn.svindseth@online.no>\n"
 "Language-Team: none\n"
 "Language: nn_NO\n"
@@ -80,23 +80,23 @@ msgstr "Denne API-en har ikkje blitt implementert av Firefox."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener' kalla med truthy som fjerde argument."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Fann ikkje innhaldskriptfila."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Fann ikkje innhaldskriptfila"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Innhaldskriptfil-namnet skal ikkje vere tomt."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Innhaldsskript-filnamnet skal ikkje vere tomt"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
@@ -104,11 +104,11 @@ msgstr "JavaScript-syntaxfeil"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Uventa global sendt som eit argument"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Bruk av document.write er ikkje tilrådd."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
@@ -116,59 +116,59 @@ msgstr "Forbydt tredjeparts JS-bibliotek"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Ikkje-tilrådd tredjeparts JS-bibliotek"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "JSON-en din inneheld blokkkommentarar."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "Doble nøklar er ikkje tillatne i JSON-filer."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "JSON-en din er ugyldig."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "Klarte ikkje å tolke JSON-en din."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "Vi klarte ikkje å pakke ut zip-fila."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "manifest.json vart ikkje funne"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr ""
+msgstr "Fila er for stor for å tolkast."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "Skjult fil flagga"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "Flagga filnamn vart funne"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "Flagga filutviding funne"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "Flagga filtype vart funne"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
-msgstr ""
+msgstr "Pakken er allereie signert"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
-msgstr ""
+msgstr "Krenking av Mozillas brukarvilkår."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
@@ -220,7 +220,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Klarte ikkje å finne ikon på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
@@ -292,7 +292,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
-msgstr ""
+msgstr "Tom språkkatalog"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
@@ -320,7 +320,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "Eigenskapen «namn» må vere ein streng."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -328,7 +328,7 @@ msgstr "Sjå http://mzl.la/1STmr48 (MDN Docs) for meir informasjon."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "Eigenskapen «versjon» må vere ein streng."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
@@ -336,11 +336,11 @@ msgstr "Sjå http://mzl.la/1kXIADa (MDN Docs) for meir informasjon."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "Eigenskapen «versjon» nyttar eit Firefox-spesifikt format."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "«update_url» er ikkje lov."
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
