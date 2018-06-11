@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-05-25 09:25+0000\n"
+"PO-Revision-Date: 2018-06-11 13:11+0000\n"
 "Last-Translator: Bjørn I. <bjorn.svindseth@online.no>\n"
 "Language-Team: none\n"
 "Language: nn_NO\n"
@@ -60,11 +60,11 @@ msgstr "Klarte ikkje å tolke FTL-fila di."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Eksterne skript er ikkje tillatne ifølgje utvidingsretningslinjene."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Inline-script er blokkerte som standard"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
@@ -76,7 +76,7 @@ msgstr "{{api}} er ikkje støtta"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "Denne API-en har ikkje blitt implementert av Firefox."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
@@ -112,7 +112,7 @@ msgstr ""
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "Forbydt tredjeparts JS-bibliotek"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
