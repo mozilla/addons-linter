@@ -72,7 +72,7 @@
     "markdown-it-emoji": "1.4.0",
     "raw-loader": "0.5.1",
     "request": "2.87.0",
-    "sinon": "5.0.6",
+    "sinon": "5.1.1",
     "snyk": "^1.78.1",
     "tar": "4.4.4",
     "tar-fs": "^1.16.0",
