@@ -138,11 +138,6 @@ yarn install
 
 Dependencies are automatically kept up-to-date using [greenkeeper](http://greenkeeper.io/).
 
-### yarn scripts and grunt tasks
-
-Run basic automation tasks via yarn (e.g. `yarn test`).
-These don't need `grunt-cli` installed globally.
-
 #### yarn scripts
 
 Most of these scripts will also run with npm by substuting `yarn` with `npm`.
@@ -165,7 +160,7 @@ Once you build the library you can use the CLI in `bin/addons-linter`.
 
 ### Testing
 
-Tests use `grunt` but don't require global `grunt`. Just run `yarn test` or `npm test`.
+Run `yarn test` or `npm test`.
 
 #### Coverage
 
