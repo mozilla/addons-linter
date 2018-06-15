@@ -57,7 +57,6 @@
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-jest": "21.15.2",
     "eslint-plugin-promise": "3.8.0",
-    "fsevents": "1.2.4",
     "gfm.css": "1.1.2",
     "gh-pages": "^1.2.0",
     "gunzip-maybe": "^1.4.1",
@@ -80,6 +79,9 @@
     "tmp-promise": "^1.0.4",
     "webpack": "4.12.0",
     "webpack-cli": "3.0.3"
+  },
+  "optionalDependencies": {
+    "fsevents": "1.2.4",
   },
   "dependencies": {
     "ajv": "6.5.0",
