@@ -81,7 +81,7 @@
     "webpack-cli": "3.0.3"
   },
   "optionalDependencies": {
-    "fsevents": "1.2.4",
+    "fsevents": "1.2.4"
   },
   "dependencies": {
     "ajv": "6.5.0",
