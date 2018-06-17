@@ -404,4 +404,8 @@ export default class ManifestJSONParser extends JSONParser {
       version: this.parsedJSON.version,
     };
   }
+
+  getParsedJSON() {
+    return this.parsedJSON;
+  }
 }

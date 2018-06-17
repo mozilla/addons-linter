@@ -39,6 +39,7 @@ export default class Linter {
       { enabled: !this.config.boring });
     this.collector = new Collector(config);
     this.addonMetadata = null;
+    this.addonParsedJSON = null;
     this.shouldScanFile = this.shouldScanFile.bind(this);
   }
 
@@ -259,10 +260,12 @@ export default class Linter {
         await manifestParser.validateIcons();
       }
       this.addonMetadata = manifestParser.getMetadata();
+      this.addonParsedJSON = manifestParser.getParsedJSON();
     } else {
       _log.warn(`No ${constants.MANIFEST_JSON} was found in the package metadata`);
       this.collector.addNotice(messages.TYPE_NO_MANIFEST_JSON);
       this.addonMetadata = {};
+      this.addonParsedJSON = {};
     }
     this.addonMetadata.totalScannedFileSize = 0;
     return this.addonMetadata;
@@ -362,6 +365,10 @@ export default class Linter {
         // TODO: Bring this in line with other scanners, see:
         // https://github.com/mozilla/addons-linter/issues/895
         collector: this.collector,
+        // This is used by the JavaScript scanner to determine the contents
+        // of background-pages to enable module support
+        io: this.io,
+        parsedJSON: this.addonParsedJSON,
         // list of disabled rules for js scanner
         disabledLinterRules: this.config.disableLinterRules,
         existingFiles: this.io.files,

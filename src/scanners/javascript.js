@@ -2,6 +2,7 @@ import path from 'path';
 
 import ESLint from 'eslint';
 import { oneLine } from 'common-tags';
+import cheerio from 'cheerio';
 
 import {
   ESLINT_RULE_MAPPING,
@@ -32,6 +33,7 @@ export default class JavaScriptScanner {
     this.options = options;
     this.linterMessages = [];
     this.scannedFiles = [];
+    this.referencedModules = null;
     this._rulesProcessed = 0;
     this.disabledRules = typeof options.disabledRules === 'string' ? options.disabledRules.split(',')
       .map((rule) => rule.trim())
@@ -45,6 +47,40 @@ export default class JavaScriptScanner {
 
   static get scannerName() {
     return 'javascript';
+  }
+
+  /*
+    Analyze `background.page` in the manifest.json to figure out
+    if we should enable `sourceType: module` instead of parsing the file
+    as a regular script.
+  */
+  async getSourceType(filename) {
+    if (this.referencedModules === null) {
+      this.referencedModules = [];
+
+      if (this.options.parsedJSON && this.options.parsedJSON.background) {
+        if (this.options.parsedJSON.background.page) {
+          const backgroundPageContents = await this.options.io.getFile(
+            this.options.parsedJSON.background.page, 'string');
+
+          const htmlDoc = cheerio.load(backgroundPageContents);
+          htmlDoc('script').each((i, element) => {
+            const type = htmlDoc(element).attr('type');
+            const src = htmlDoc(element).attr('src');
+
+            if (src !== undefined && type === 'module') {
+              this.referencedModules.push(filename);
+            }
+          });
+        }
+      }
+    }
+
+    if (this.referencedModules && this.referencedModules.includes(filename)) {
+      return 'module';
+    }
+
+    return 'script';
   }
 
   async scan(_ESLint = ESLint, {
@@ -66,6 +102,7 @@ export default class JavaScriptScanner {
       },
       parserOptions: {
         ecmaVersion: 2017,
+        sourceType: await this.getSourceType(this.filename),
         ecmaFeatures: {
           experimentalObjectRestSpread: true,
         },
