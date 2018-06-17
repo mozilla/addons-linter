@@ -381,13 +381,13 @@ describe('JavaScript Scanner', () => {
   });
 
   describe('scanner options tests', () => {
-    it('should define valid set of rules for linter', () => {
+    it('should define valid set of rules for linter', async () => {
       const jsScanner = new JavaScriptScanner('', 'filename.txt', {
         disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml',
       });
       const original = linterMock.defineRule;
       sinon.stub(linterMock, 'defineRule').callsFake(original);
-      jsScanner.scan(esLintMock, {
+      await jsScanner.scan(esLintMock, {
         _rules: {
           test: {},
           'no-eval': {},
