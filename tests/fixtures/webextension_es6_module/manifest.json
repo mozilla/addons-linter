@@ -1,0 +1,14 @@
+{
+  "applications": {
+    "gecko": {
+      "id": "webExtTest@asamuzak.jp"
+    }
+  },
+  "description": "WebExtensions ES module test",
+  "manifest_version": 2,
+  "name": "WebExtensions test",
+  "permissions": [
+    "activeTab"
+  ],
+  "version": "0.0.2"
+}

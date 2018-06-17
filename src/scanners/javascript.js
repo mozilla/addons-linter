@@ -1,7 +1,7 @@
-import path from 'path';
-
 import ESLint from 'eslint';
 import { oneLine } from 'common-tags';
+import espree from 'espree';
+import vk from 'eslint-visitor-keys';
 
 import {
   ESLINT_RULE_MAPPING,
@@ -10,6 +10,9 @@ import {
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
 import { ensureFilenameExists } from 'utils';
+
+
+const ECMA_VERSION = 2019;
 
 
 export function excludeRules(excludeFrom = {}, excludeWhat = []) {
@@ -52,7 +55,10 @@ export default class JavaScriptScanner {
     _ruleMapping = ESLINT_RULE_MAPPING,
     _messages = messages,
   } = {}) {
-    const cli = new _ESLint.CLIEngine({
+    this._ESLint = ESLint;
+    this.sourceType = this.detectSourceType(this.filename);
+
+    const configDefaults = {
       baseConfig: {
         env: {
           es6: true,
@@ -64,8 +70,13 @@ export default class JavaScriptScanner {
           existingFiles: this.options.existingFiles,
         },
       },
+      // It's the default but also shouldn't change since we're using
+      // espree to parse javascript files below manually to figure out
+      // if they're modules or not
+      parser: 'espree',
       parserOptions: {
-        ecmaVersion: 2019,
+        ecmaVersion: ECMA_VERSION,
+        sourceType: this.sourceType,
       },
       rules: _ruleMapping,
       plugins: ['no-unsafe-innerhtml'],
@@ -78,9 +89,12 @@ export default class JavaScriptScanner {
       patterns: ['!bower_components/*', '!node_modules/*'],
 
       filename: this.filename,
+
       // Avoid loading the addons-linter .eslintrc file
       useEslintrc: false,
-    });
+    };
+
+    const cli = new _ESLint.CLIEngine(configDefaults);
 
     const rulesAfterExclusion = excludeRules(_rules, this.disabledRules);
     Object.keys(rulesAfterExclusion).forEach((name) => {
@@ -88,17 +102,14 @@ export default class JavaScriptScanner {
       cli.linter.defineRule(name, rulesAfterExclusion[name]);
     });
 
-    // ESLint is synchronous and doesn't accept streams, so we need to
-    // pass it the entire source file as a string.
+    // Parse and lint the JavaScript code
     const report = cli.executeOnText(this.code, this.filename, true);
 
+    // eslint prepends the filename with the current working directory,
+    // strip that out.
+    this.scannedFiles.push(this.filename);
+
     report.results.forEach((result) => {
-      // eslint prepends the filename with the current working directory,
-      // strip that out.
-      const relativePath = path.relative(process.cwd(), result.filePath);
-
-      this.scannedFiles.push(relativePath);
-
       result.messages.forEach((message) => {
         // Fatal error messages (like SyntaxErrors) are a bit different, we
         // need to handle them specially.
@@ -152,9 +163,67 @@ export default class JavaScriptScanner {
         });
       });
     });
+
     return {
       linterMessages: this.linterMessages,
       scannedFiles: this.scannedFiles,
     };
+  }
+
+  _getSourceType(node) {
+    const possibleImportExportTypes = [
+      'ExportAllDeclaration', 'ExportDefaultDeclaration',
+      'ExportNamedDeclaration', 'ExportSpecifier',
+      'ImportDeclaration', 'ImportDefaultSpecifier',
+      'ImportNamespaceSpecifier', 'ImportSpecifier',
+    ];
+
+    if (possibleImportExportTypes.includes(node.type)) {
+      return 'module';
+    }
+
+    const keys = vk.KEYS[node.type];
+
+    if (keys.length >= 1) {
+      for (let i = 0; i < keys.length; ++i) {
+        const child = node[keys[i]];
+
+        if (Array.isArray(child)) {
+          for (let j = 0; j < child.length; ++j) {
+            return this._getSourceType(child[j]);
+          }
+        } else {
+          return this._getSourceType(child);
+        }
+      }
+    }
+
+    return 'script';
+  }
+
+  /*
+    Analyze the source-code by by parsing the source code manually and
+    check for import/export syntax errors.
+
+    This returns `script` or `module`.
+  */
+  detectSourceType(filename) {
+    // Default options taken from eslint/lib/linter:parse
+    const parserOptions = {
+      filePath: filename,
+      sourceType: 'module',
+      ecmaVersion: ECMA_VERSION,
+    };
+
+    let sourceType = 'module';
+
+    try {
+      const ast = espree.parse(this.code, parserOptions);
+      sourceType = this._getSourceType(ast);
+    } catch (exc) {
+      sourceType = 'script';
+    }
+
+    return sourceType;
   }
 }
