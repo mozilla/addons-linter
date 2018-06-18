@@ -14,6 +14,7 @@ import * as messages from 'messages';
 import { rules } from 'rules/javascript';
 import { apiToMessage } from 'utils';
 import JavaScriptScanner, { excludeRules } from 'scanners/javascript';
+import Linter from 'linter';
 
 import {
   fakeMessageData,
@@ -116,6 +117,17 @@ describe('JavaScript Scanner', () => {
 
     const { linterMessages } = await jsScanner.scan();
     expect(linterMessages.length).toEqual(0);
+  });
+
+  it('should support es6 modules via background page', async () => {
+    const addonLinter = new Linter({
+      _: ['tests/fixtures/webextension_es6_module.zip'],
+    });
+    addonLinter.print = sinon.stub();
+
+    await addonLinter.scan();
+    expect(addonLinter.collector.errors.length).toEqual(0);
+    expect(addonLinter.collector.warnings.length).toEqual(0);
   });
 
   it('should create an error message when encountering a syntax error', async () => {
@@ -381,13 +393,13 @@ describe('JavaScript Scanner', () => {
   });
 
   describe('scanner options tests', () => {
-    it('should define valid set of rules for linter', () => {
+    it('should define valid set of rules for linter', async () => {
       const jsScanner = new JavaScriptScanner('', 'filename.txt', {
         disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml',
       });
       const original = linterMock.defineRule;
       sinon.stub(linterMock, 'defineRule').callsFake(original);
-      jsScanner.scan(esLintMock, {
+      await jsScanner.scan(esLintMock, {
         _rules: {
           test: {},
           'no-eval': {},
