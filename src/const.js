@@ -12,7 +12,7 @@ export const EXTERNAL_RULE_MAPPING = {
   'no-eval': [ESLINT_WARNING, { allowIndirect: false }],
   'no-implied-eval': ESLINT_WARNING,
   'no-new-func': ESLINT_WARNING,
-  'no-unsafe-innerhtml/no-unsafe-innerhtml': ESLINT_WARNING,
+  'no-unsanitized/no-unsanitized': ESLINT_WARNING,
 };
 
 export const ESLINT_RULE_MAPPING = Object.assign({
