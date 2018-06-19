@@ -32,16 +32,31 @@ function spawnWithShell(cmd, args, options) {
   return spawn(cmd, args, Object.assign({}, baseSpawnOptions, options));
 }
 
-function createPackage(archiveFilePath) {
+function getPackedName() {
+  return new Promise((resolve, reject) => {
+    fs.readFile('package.json', (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        const info = JSON.parse(data.toString());
+        resolve(`${info.name}-${info.version}.tgz`);
+      }
+    });
+  });
+}
+
+function createPackage(tmpDirPath) {
   console.log(chalk.green('Create a pre-release npm package archive'));
   return new Promise((resolve, reject) => {
-    const pkgPack = spawnWithShell('yarn', ['pack', '--filename', archiveFilePath]);
+    const pkgPack = spawnWithShell('npm', ['pack', process.cwd()], { cwd: tmpDirPath });
 
     pkgPack.stdout.pipe(process.stdout);
     pkgPack.stderr.pipe(process.stderr);
     pkgPack.on('close', (exitCode) => {
       if (exitCode === 0) {
-        resolve();
+        resolve(getPackedName().then((filename) => {
+          return path.join(tmpDirPath, filename);
+        }));
       } else {
         reject(new Error('Failed to create npm package archive'));
       }
@@ -64,7 +79,7 @@ function unpackTarPackage(packagePath, destDir) {
 function installPackageDeps(packageDir) {
   console.log(chalk.green('Install production package dependencies'));
   return new Promise((resolve, reject) => {
-    const pkgInstall = spawnWithShell('yarn', ['install', '--production', '--no-lockfile'], {
+    const pkgInstall = spawnWithShell('npm', ['install', '--production', '--no-lockfile'], {
       cwd: packageDir,
     });
     pkgInstall.stdout.pipe(process.stdout);
@@ -82,11 +97,11 @@ function installPackageDeps(packageDir) {
 function runIntegrationTests(packageDir) {
   console.log(chalk.green('Running integration tests in production-like environent'));
   return new Promise((resolve, reject) => {
-    const testRun = spawnWithShell('yarn', ['run', npmScript, '--', jestTestsPath], {
-      env: {
+    const testRun = spawnWithShell('npm', ['run', npmScript, '--', jestTestsPath], {
+      env: Object.assign({}, process.env, {
         PATH: process.env.PATH,
         TEST_BIN_PATH: path.join(packageDir, 'bin'),
-      },
+      }),
     });
 
     testRun.stdout.pipe(process.stdout);
@@ -105,11 +120,10 @@ function runIntegrationTests(packageDir) {
 // and then run the integration tests on it.
 tmp.withDir((tmpDir) => {
   const tmpDirPath = tmpDir.path;
-  const archiveFilePath = path.join(tmpDirPath, 'pre-release-package.tar.gz');
   const unpackedDirPath = path.join(tmpDirPath, 'package');
 
-  return createPackage(archiveFilePath)
-    .then(() => unpackTarPackage(archiveFilePath, tmpDirPath))
+  return createPackage(tmpDirPath)
+    .then((archiveFilePath) => unpackTarPackage(archiveFilePath, tmpDirPath))
     .then(() => installPackageDeps(unpackedDirPath))
     .then(() => runIntegrationTests(unpackedDirPath));
 }, tmpOptions).catch((err) => {

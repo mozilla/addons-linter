@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-08 15:10+0000\n"
+"PO-Revision-Date: 2018-06-08 18:16+0000\n"
 "Last-Translator: Juraj Cigáň <kusavica@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -56,15 +56,15 @@ msgstr "Vaše FTL je neplatné."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "Vaše FTL nemohlo byť parsované."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Vzdialené skripty nie sú povolené bezpečnostnou politikou doplnkov."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Vložené skripty sú v predvolenom nastavení zakázané"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
@@ -80,43 +80,43 @@ msgstr "Toto API nebolo Firefoxom implementované."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener bol volaný so štvrtým parametrom nastaveným na true."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Obsah súboru so skriptom nebol nájdený."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Obsah súboru so skriptom nebol nájdený"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Názov súboru so skriptom by nemal byť prázdny."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Názov súboru so skriptom by nemal byť prázdny"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "Chyba v syntaxi JavaScriptu"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Neočakávaná globálna premenná prešla ako parameter"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Použitie document.write sa neodporúča."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "Zakázaná JS knižnica tretej strany"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Neodporúčaná JS knižnica tretej strany"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -140,11 +140,11 @@ msgstr "Nepodarilo sa nám rozbaliť zip archív."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "manifest.json sa nepodarilo nájsť"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr ""
+msgstr "Súbor je na analýzu príliš veľký."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
@@ -164,7 +164,7 @@ msgstr ""
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
-msgstr ""
+msgstr "Balíček už bol podpísaný"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
@@ -244,7 +244,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "V doplnku bol nájdený zakázaný obsah."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
@@ -340,7 +340,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "„update_url“ nie je povolené."
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."

@@ -8,7 +8,7 @@
 
 The Add-ons Linter, JS edition.
 
-Here is the [canonical list of rules](http://mozilla.github.io/addons-linter/) we're working from.
+Here is the [canonical list of rules](https://mozilla.github.io/addons-linter/) we're working from.
 
 ## Usage
 
@@ -19,23 +19,21 @@ You need node.js to use the add-ons linter.
 To validate your add-on locally, install the linter from
 [npm](http://nodejs.org/):
 
-```
+```sh
 # Install globally so you can use the linter from any directory on
 # your machine.
-yarn global add addons-linter
-# or
 npm install -g addons-linter
 ```
 
 After installation, run the linter and direct it to your add-on file:
 
-```
+```sh
 addons-linter my-addon.zip
 ```
 
 Alternatively you can point it at a directory:
 
-```
+```sh
 addons-linter my/package/dir
 ```
 
@@ -43,7 +41,7 @@ The addons-linter will check your add-on and show you errors, warnings,
 and friendly messages for your add-on. If you want more info on the options
 you can enable/disable for the command-line app, use the `--help` option:
 
-```
+```sh
 addons-linter --help
 ```
 
@@ -113,11 +111,11 @@ pretty easy to get started, you just need node.js installed on your machine.
 If you have node.js installed, here's the quick start to getting
 your development dependencies installed and building the binary:
 
-```
+```sh
 git clone https://github.com/mozilla/addons-linter.git
 cd addons-linter
-yarn install
-yarn start
+npm install
+npm start
 # Leave running to watch for changes or cancel to stop watching.
 bin/addons-linter my-addon.zip
 ```
@@ -130,42 +128,35 @@ easiest way to manage multiple node versions side by side. See
 
 ### Install dependencies
 
-Install dependencies with [yarn](https://yarnpkg.com/lang/en/docs/install/):
+Install dependencies with npm:
 
-```
-yarn install
+```sh
+npm install
 ```
 
 Dependencies are automatically kept up-to-date using [greenkeeper](http://greenkeeper.io/).
 
-### yarn scripts and grunt tasks
+#### npm scripts
 
-Run basic automation tasks via yarn (e.g. `yarn test`).
-These don't need `grunt-cli` installed globally.
-
-#### yarn scripts
-
-Most of these scripts will also run with npm by substuting `yarn` with `npm`.
-
-| Script                 | Description                                        |
-|------------------------|----------------------------------------------------|
-| yarn test              | Runs the tests                                     |
-| yarn test-coverage     | Runs the tests with coverage (watches for changes) |
-| yarn test              | Runs the tests once                                |
-| yarn lint              | Runs eslint                                        |
-| yarn test-coverage-once| Runs the tests once with coverage                  |
-| yarn start             | Builds the lib and watches for changes             |
-| yarn [run] build       | Builds the lib (used by Travis)                    |
+| Script                | Description                                        |
+|-----------------------|----------------------------------------------------|
+| npm test              | Runs the tests                                     |
+| npm test-coverage     | Runs the tests with coverage (watches for changes) |
+| npm test              | Runs the tests once                                |
+| npm lint              | Runs eslint                                        |
+| npm test-coverage-once| Runs the tests once with coverage                  |
+| npm start             | Builds the lib and watches for changes             |
+| npm [run] build       | Builds the lib (used by Travis)                    |
 
 ### Building and watching for changes
 
-You can run `yarn start` to build the library and then rebuild on file changes.
+You can run `npm start` to build the library and then rebuild on file changes.
 
 Once you build the library you can use the CLI in `bin/addons-linter`.
 
 ### Testing
 
-Tests use `grunt` but don't require global `grunt`. Just run `yarn test` or `npm test`.
+Run `npm test`.
 
 #### Coverage
 
@@ -219,7 +210,6 @@ We use [bunyan](https://github.com/trentm/node-bunyan) for logging:
 * Bunyan by default logs JSON. If you want the json to be pretty printed
   pipe anything that logs into `bunyan` e.g. `LOG_LEVEL=debug jest test
   | node_modules/bunyan/bin/bunyan`
-
 
 ## Architecture
 
