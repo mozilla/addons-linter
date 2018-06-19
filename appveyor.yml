@@ -5,7 +5,9 @@ install:
   - ps: Install-Product node $env:nodejs_version x64
   - set CI=true
   - set PATH=%APPDATA%\npm;%PATH%
-  - yarn install
+  # Node.js 8 comes with an npm that doesn't support "npm ci"
+  - IF %nodejs_version% EQU 8 npm install -g npm@^5.7.1
+  - npm ci
 
 matrix:
   fast_finish: true
@@ -22,13 +24,12 @@ environment:
 test_script:
   - node --version
   - npm --version
-  - yarn --version
   ### This npm script will execute the same tests executed by test-ci
   ### but it skips coveralls (which is not currently recognized when
   ### used from appveyor).
-  - yarn run test-coverage-once
+  - npm run test-coverage-once
   ### Building the dist file is needed by the linting step.
-  - yarn run build
-  - yarn run lint
+  - npm run build
+  - npm run lint
   # run integration tests using an addons-linter binary in a production-like environment
-  - yarn run test-integration:production
+  - npm run test-integration:production
