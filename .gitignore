@@ -33,3 +33,5 @@ dist/*
 coverage/*
 
 docs/html/*
+
+yarn.lock
