@@ -41,7 +41,7 @@ describe('Messages', () => {
         // Asserting using indexOf rather than assert.include
         // to avoid inclusion of the whole rules.md as part
         // of the error.
-        expect(markdown.indexOf(code) > -1).toBeTruthy();
+        expect(markdown.indexOf(code) > -1).toEqual(true);
       }
     });
   });

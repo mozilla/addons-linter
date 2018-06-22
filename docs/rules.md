@@ -1,341 +1,119 @@
-
 # Linter Rules
 
 This document is automatically published on [github pages](http://mozilla.github.io/addons-linter/).
 To update it edit `docs/rules.md` in the
 [github repo](https://github.com/mozilla/addons-linter).
 
-* :white_check_mark: means the rule has been ported/implemented
-* :negative_squared_cross_mark: means the rule has been removed
-* :x: means the rule hasn't been ported yet
-
-A :white_check_mark: next to a section of rules means they have all been filed in our [issues database](https://github.com/mozilla/addons-validator/issues).
-
 ## JavaScript
 
-### Actions :white_check_mark:
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :negative_squared_cross_mark: | warning | dangerous_contract | | Dangerous XPCOM contract ID |  | [testcases/javascript/actions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/actions.py) | ('js', 'actions', 'dangerous_contract') | **Removed** |
-| :x: | warning | called_dangerous_global | | `%s` called in potentially dangerous manner' | | | | |
-| :white_check_mark: | warning | eval | | In order to prevent vulnerabilities, the `setTimeout` 'and `setInterval` functions should be called only with function expressions as their first argument. | | [testcases/javascript/actions.py](https://github.com/mozilla/amo-validator/blob/7a8011aba8bf8c665aef2b51eb26d0697b3e19c3/validator/testcases/javascript/actions.py#L488) | | NO_IMPLIED_EVAL |
-| :negative_squared_cross_mark: | notice |  \_readonly_top | | window.top is a reserved variable | | | ('testcases_javascript_actions', '_readonly_top' | **Removed** |
-| :x: | warning | global_overwrite | | Global variable overwrite | | | | |
-| :white_check_mark: | warning | unexpected_global_arg [NEW] | | Unexpected global passed as an argument | | | null | UNEXPECTED_GLOGAL_ARG |
-
-### Call definitions :white_check_mark:
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :negative_squared_cross_mark: | warning | webbrowserpersist | | nsIWebBrowserPersist should no longer be used |  | [testcases/javascript/call_definitions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/call_definitions.py)| ('testcases_javascript_call_definititions', 'webbrowserpersist') | **Removed** |
-| :negative_squared_cross_mark: | warning | webbrowserpersist_saveuri | | saveURI should not be called with a null load context | | | ('testcases_javascript_call_definititions', 'webbrowserpersist_saveuri') | **Removed** |
-| :negative_squared_cross_mark: | notice | deprec | | Deprecated nsIJSON methods in use | | | ('testcases_javascript_calldefinitions', 'nsIJSON', 'deprec') | **Removed** |
-| :negative_squared_cross_mark: | notice | %s_nonliteral | | `%s` called with non-literal parameter. | | | | |
-| :white_check_mark: | notice | opendialog_nonlit_uri |  | openDialog called with non-literal parameter | | | ('js', 'instanceactions', 'openDialog_nonliteral' | OPENDIALOG_NONLIT_URI |
-| :negative_squared_cross_mark: | warning | %s_remote_uri | | `%s` called with non-local URI. | | | | |
-| :white_check_mark: | warning | opendialog_remote_uri |  | openDialog called with non-local URI | | | ('js', 'instanceactions', 'openDialog_remote_uri' | OPENDIALOG_REMOTE_URI |
-
-###  Entity values
-
-*Deprecated entities are checked with a generated set of rules*
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :negative_squared_cross_mark: | warning | deprecated_entity | | THIS IS A GENERATED ERROR |  | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py)| | |
-| :white_check_mark: | warning | evil | | Use of `document.write` strongly discouraged. | | | [testcases/javascript/entity_values.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/entity_values.py#L64) | NO_DOCUMENT_WRITE |
-| :white_check_mark: | warning | override | | Extensions must not alter user preferences such as the new tab URL without explicit user consent.  | | |
-
-### instanceactions
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :white_check_mark: | notice | addEventListener_fourth | | `addEventListener` called with truthy fourth argument |  | [testcases/javascript/instanceactions.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/instanceactions.py)| | EVENT_LISTENER_FOURTH |
-| :x: | warning | called_createelement | | createElement() used to create script tag | | | | |
-| :x: | warning | createelement_variable | | Variable element type being created | | | | |
-| :x: | warning | setting_on\*  | | on\* attribute being set using setAttribute | | | | |
-| :negative_squared_cross_mark: | warning | launch | | Potentially dangerous use of `launch()` | | | | |
-| :negative_squared_cross_mark: | warning | executeSimpleSQL_dynamic | | SQL statements should be static strings | | | | |
-| :negative_squared_cross_mark: | warning | executeSimpleSQL | | Synchronous SQL should not be used | | | | |
-| :x: | warning | called_set_preference | | Attempt to set a dangerous preference | | | | |
-
-
-### instanceproperties
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :x: | warning | event_assignment | | Event handler assignment via %s |  | [testcases/javascript/instanceproperties.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/instanceproperties.py)| | |
-| :x: | warning | script_assignment | | Scripts should not be created with `%s` | | | | |
-| :x: | warning | variable_assignment | | Markup should not be passed to `%s` dynamically. | | | | |
-| :x: | warning | on\*_str_assignment | | on\* property being assigned string | | | | |
-| :negative_squared_cross_mark: | warning | handleEvent | | `handleEvent` no longer implemented in Gecko 18 | | | | |
-| :negative_squared_cross_mark: | warning | \_\_proto\_\_ | | Using `__proto__` or `setPrototypeOf` to set a prototype is now deprecated | | | | |
-| :negative_squared_cross_mark: | warning | \_\_exposedProps\_\_ | | Use of deprecated `__exposedProps__` declaration | | | | |
-| :negative_squared_cross_mark: | warning | set_non_literal | | `contentScript` properties should not be used | | | | |
-
-### jsshell
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :white_check_mark: | warning | syntax_error | | JavaScript Compile-Time Error |  | [testcases/javascript/jsshell.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/jsshell.py)| | JS_SYNTAX_ERROR |
-| :negative_squared_cross_mark: | notice | recursion_error | | JS too deeply nested for validation | | | | |
-| :negative_squared_cross_mark: | error | retrieving_tree | | JS reflection error prevented validation | | | | |
-
-### jstypes
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :negative_squared_cross_mark: | warning | unwrapped_js_object | | Assignment of unwrapped JS Object's properties |  | [testcases/javascript/jstypes.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/jstypes.py)| | |
-| :negative_squared_cross_mark: | warning | const_overwrite | | Overwritten constant value | | | | |
-| :negative_squared_cross_mark: | warning | global_overwrite | | Global overwrite. An attempt to overwrite a global variable was made in some JS code | | | | |
-| :negative_squared_cross_mark: | warning | global_member_deletion | | Members of global object may not be deleted | | | | |
-| :negative_squared_cross_mark: | warning | jetpack_abs_uri |  | Absolute URIs in Jetpack 1.4 are disallowed | | | | |
-
-### predefinedentities
-
-*this file appear to contain lot of data but looks to be used elsewhere a second pass would be good to check*
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :negative_squared_cross_mark: | warning | dangerous_global | | The FUEL library is now deprecated |  | [testcases/javascript/predefinedentities.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/predefinedentities.py)| | |
-| :negative_squared_cross_mark: | warning | changes (search_service) | | Potentially dangerous use of the search service | | | |  |
-| :negative_squared_cross_mark: | warning | write (windows_registry) | | Writes to the registry may be dangerous | | | | |
-
-### Traverser
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :negative_squared_cross_mark: | warning | namespace_pollution | | JavaScript namespace pollution |  | [testcases/javascript/traverser.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/javascript/traverser.py)| | |
-| :negative_squared_cross_mark: | warning | dangerous_global | | Access to the `%s` property is deprecated for security or other reasons. | | | | |
-
-### Libraries
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :white_check_mark: | error | BANNED_LIBRARY | | This version of a JS library is banned for security reasons. | | | | BANNED_LIBRARY |
-| :white_check_mark: | warning | UNADVISED_LIBRARY | | This version of a JS library is not recommended. | | | | UNADVISED_LIBRARY |
-| :white_check_mark: | notice | KNOWN_LIBRARY | This version of a JS library is known and generally accepted. | | | blacklisted_js_library | KNOWN_LIBRARY |
+| Message code                | Type          | Description                         |
+| ----------------------------|---------------|-------------------------------------|
+| `NO_IMPLIED_EVAL`           | warning       | disallow the use of `eval()`-like methods |
+| `UNEXPECTED_GLOGAL_ARG`     | warning       | Unexpected global passed as an argument |
+| `OPENDIALOG_NONLIT_URI`     | notice        | openDialog called with non-literal parameter |
+| `OPENDIALOG_REMOTE_URI`     | warning       | openDialog called with non-local URI |
+| `NO_DOCUMENT_WRITE`         | warning       | Use of `document.write` strongly discouraged. |
+| `EVENT_LISTENER_FOURTH`     | notice        | `addEventListener` called with truthy fourth argument |
+| `JS_SYNTAX_ERROR`           | warning       | JavaScript compile-time error |
+| `BANNED_LIBRARY`            | error         | This version of a JS library is banned for security reasons. |
+| `UNADVISED_LIBRARY`         | warning       | This version of a JS library is not recommended. |
+| `KNOWN_LIBRARY`             | notice        | This is version of a JS library is known and generally accepted. |
+| `TABS_GETSELECTED`          | warning       | Deprecated API tabs.getSelected |
+| `TABS_SENDREQUEST`          | warning       | Deprecated API tabs.sendRequest |
+| `TABS_GETALLINWINDOW`       | warning       | Deprecated API tabs.getAllInWindow |
+| `TABS_ONSELECTIONCHANGED`   | warning       | Deprecated API tabs.onSelectionChanged |
+| `TABS_ONACTIVECHANGED`      | warning       | Deprecated API tabs.onActiveChanged |
+| `EXT_SENDREQUEST`           | warning       | Deprecated API extension.sendRequest |
+| `EXT_ONREQUESTEXTERNAL`     | warning       | Deprecated API extension.onRequestExternal |
+| `EXT_ONREQUEST`             | warning       | Deprecated API extension.onRequest |
+| `APP_GETDETAILS`            | warning       | Deprecated API app.getDetails |
+| `STORAGE_LOCAL`             | warning       | Temporary IDs can cause issues with storage.local |
+| `STORAGE_SYNC`              | warning       | Temporary IDs can cause issues with storage.sync |
+| `IDENTITY_GETREDIRECTURL`   | warning       | Temporary IDs can cause issues with identity.getRedirectURL |
 
 ## Markup
 
 ### CSS
 
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :negative_squared_cross_mark: | warning | -moz-binding_external | | Illegal reference to external scripts |  | [testcases/markup/csstester.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/markup/csstester.py)| | |
-| :x: | warning | remote_url | | Themes may not reference remote resources | | | | |
-| :negative_squared_cross_mark: | warning | identity_box | | Modification to identity box | | | | |
-| :x: | info? (should be an error) | unicode_decode | | Unicode decode error. | | | | |
-| :white_check_mark: | error | CSS syntax error | | A CSS syntax error was detected | | N/A | N/A | CSS_SYNTAX_ERROR |
-| :white_check_mark: | error | Invalid nesting | | CSS selectors should not be nested | | N/A | N/A | INVALID_SELECTOR_NESTING |
+| Message code                | Type      | Description                         |
+| ----------------------------|-----------|-------------------------------------|
+| `CSS_SYNTAX_ERROR`          | error     | A CSS syntax error was detected     |
+| `INVALID_SELECTOR_NESTING`  | error     | CSS selectors should not be nested  |
 
 ### HTML
 
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :x: | warning | parse_error | | There was an error parsing a markup file |  | [testcases/markup/markuptester.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/markup/markuptester.py)| | |
-| :negative_squared_cross_mark: | error | banned_element | | A banned markup element was found | | | | |
-| :negative_squared_cross_mark: | warning | unsafe_theme_xbl_element | theme | Certain XBL elements are disallowed in full themes | | | | |
-| :negative_squared_cross_mark: | warning | theme_xbl_property | theme | Themes are not allowed to use XBL properties | | | | |
-| :negative_squared_cross_mark: | warning | unsafe_langpack_theme | theme / langpack | Unsafe tag for add-on type | | | | |
-| :x: | warning | remote_src_href | theme / langpack | `src`/`href` attributes must be local | | | | |
-| :x: | warning | iframe_type_unsafe | | iframe/browser missing 'type' attribute | | | | |
-| :x: | warning | iframe_type_unsafe | | Typeless iframes/browsers must be local | | | | |
-| :x: | warning | banned_remote_scripts | | Scripts must not be remote | | | | |
-| :negative_squared_cross_mark: | warning | jetpack_abs_uri | | Absolute URI referenced in Jetpack 1.4 | | | | |
-| :negative_squared_cross_mark: | warning | theme_attr_prefix | theme | Attribute contains banned prefix | | | | |
-| :negative_squared_cross_mark: | warning | dom_manipulation_handler | | DOM Mutation Events Prohibited | | | | |
-| :negative_squared_cross_mark: | warning | generic_ids | | Overlay contains generically-named IDs | | | | |
-| :x: | warning | complex_script | | Long inline script | | | | |
-| :x: | warning | extra_closing_tags | | Markup parsing error | | | | |
-| :x: | warning | extra_closing_tags | | Parse error: tag closed before opened | | | | |
-| :x: | warning | invalid_nesting | | Markup invalidly nested | | | | |
-| :white_check_mark: | warning | inline script | | Inline script is disallowed by CSP | | | | INLINE_SCRIPT |
-| :white_check_mark: | warning | remote script | | Remote scripts are not allowed as per Add-on Policies | | | | REMOTE_SCRIPT |
+| Message code              | Type      | Description                         |
+| --------------------------|-----------|-------------------------------------|
+| `INLINE_SCRIPT`             | warning   | Inline script is disallowed by CSP  |
+| `REMOTE_SCRIPT`             | warning   | Remote scripts are not allowed as per Add-on Policies |
 
 ## Content
 
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :negative_squared_cross_mark: | warning | found_in_chrome_manifest| | xpcnativewrappers not allowed in chrome.manifest |  chrome.manifest | [testcases/content.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/content.py)| | |
-| :negative_squared_cross_mark: | warning | found_in_chrome_manifest| | newTab.xul is now newTab.xhtml |  chrome.manifest | | | |
-| :white_check_mark: | warning | hidden_files | | Hidden file flagged | | | [testcases/content.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/content.py) | HIDDEN_FILE |
-| :white_check_mark: | warning | flagged_files | | Flagged filename found | | |[testcases/content.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/content.py) | FLAGGED_FILE |
-| :negative_squared_cross_mark: | warning | invalid_chrome_url | | Invalid chrome URL | | | | |
-| :x: | warning | too_much_js | | TOO MUCH JS FOR EXHAUSTIVE VALIDATION | | | | |
-| :negative_squared_cross_mark: | error | unsigned_sub_xpi | | Sub-package must be signed | | | | |
-| :x: | warning | signed_xpi | | Package already signed | | | | |
-| :negative_squared_cross_mark: | error | jar_subpackage_corrupt  | | Subpackage corrupt | | | | |
+| Message code            | Type      | Description                         |
+| ------------------------|-----------|-------------------------------------|
+| `HIDDEN_FILE`           | warning   | Hidden file flagged                 |
+| `FLAGGED_FILE`          | warning   | Flagged filename found              |
 
+## Package layout
 
-## Jetpack
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :negative_squared_cross_mark: | warning | mismatched_version | | Jetpack module version mismatch |  | [testcases/jetpack.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/jetpack.py) | | |
-| :negative_squared_cross_mark: | warning | extra_hashes | | Extra hashes registered in harness-options | harness-options.json | | | |
-| :negative_squared_cross_mark: | warning | bad_harness-options.json | | harness-options.json is not decodable JSON | harness-options.json | | | |
-| :negative_squared_cross_mark: | warning | harness-options_missing_elements | | Elements are missing from harness-options.json | harness-options.json | | | |
-| :negative_squared_cross_mark: | error | redacted_version | | Unsupported version of Add-on SDK | | | | |
-| :negative_squared_cross_mark: | warning | outdated_version | | Outdated version of Add-on SDK | | | | |
-| :negative_squared_cross_mark: | notice | future_version | | Future version of Add-on SDK unrecognized | | | | |
-| :negative_squared_cross_mark: | warning | irregular_module_location | | Irregular Jetpack module location | harness-options.json | | | |
-| :negative_squared_cross_mark: | warning | irregular_module_elements | | Irregular Jetpack module elements | harness-options.json | | | |
-| :negative_squared_cross_mark: | warning | missing_jetpack_module | | Missing Jetpack module | harness-options.json | | | |
-| :negative_squared_cross_mark: | warning | mismatched_checksum | | Jetpack module hash mismatch | | | | |
-
-
-## l10ncompleteness
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :x: | warning | manager_absent | | Listed locale does not exist   | chrome.manifest | [testcases/l10ncompleteness.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/l10ncompleteness.py) | | |
-| :x: | notice | no_locales | | Add-on appears not to be localized | chrome.manifest | | | |
-| :x: | info? | missing_app_support |  | Supported app missing in localization completeness | | | | |
-| :x: | warning | find_corresponding_locale | | Could not find corresponding locale | chrome.manifest | | | |
-| :x: | warning | missing_file | | Missing translation file | | | | |
-| :x: | warning | missing_translation_entity | | Missing translation entity |   | | | |
-| :x: | notice | unchanged_entities | | Unchanged translation entities | | | | |
-| :x: | warning | unexpected_encodings | | Unexpected encodings in locale files | | | | |
-
-
-## langpacks
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :white_check_mark: | warning | invalid_fluent | langpack | Invalid FTP file | .ftl files | | | FLUENT_INVALID |
-
-
-## package.json :white_check_mark:
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :x: | error | field_required | | Your package.json is missing a required field | | [testcases/packagejson.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagejson.py) | | |
-
-
-## Package layout :white_check_mark:
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :x: | notice | deprecated_file | |  Extension contains a deprecated file | | [testcases/packagelayout.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagelayout.py) | | |
-| :x: | warning | FLAGGED_FILE_TYPE_type | | Flagged file type found | | | | |
-| :white_check_mark: | error | FILE_TOO_LARGE | webextension | File is too large to parse | | | | FILE_TOO_LARGE |
-| :x: | warning | java_jar | | Java JAR file detected | | | | |
-| :white_check_mark: | warning | disallowed_extension | | Flagged file extensions found | | https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagelayout.py | | FLAGGED_FILE_EXTENSION |
-| :negative_squared_cross_mark: | error | test_godlikea | | Banned 'godlikea' chrome namespace | | | | |
-| :white_check_mark: | notice | disallowed_type | | (Binary) Flagged file type found | | https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagelayout.py | | FLAGGED_FILE_TYPE |
-| :white_check_mark: | warning | duplicate_entries | | Package contains duplicate entries | | | | DUPLICATE_XPI_ENTRY |
-| :negative_squared_cross_mark: | warning | should_be_true | | Add-on should set `<em:unpack>` to true | | | | |
-| :negative_squared_cross_mark: | notice | should_be_false | | Add-on contains JAR files, no `<em:unpack>` | | | | |
-| :x: | warning | unknown_file | | Unknown file found in add-on | | | | |
-| :x: | warning | missing_required | | Required file missing | | | | |
-| :white_check_mark: | error |  |  | Bad zip file  | |  | | BAD_ZIPFILE |
-| :white_check_mark: | warning |  |  | Already signed  | | https://github.com/mozilla/amo-validator/blob/master/validator/testcases/packagelayout.py  | | ALREADY_SIGNED |
-| :white_check_mark: | notice | MOZILLA_COND_OF_USE | | Mozilla conditions of use violation | | | | |
-| :white_check_mark: | warning | COINMINER_USAGE_DETECTED | Firefox add-ons are not allowed to run coin miners | | | | |
+| Message code                | Type      | Description                         |
+| ----------------------------|-----------|-------------------------------------|
+| `FILE_TOO_LARGE`            | error     | File is too large to parse |
+| `FLAGGED_FILE_EXTENSION`    | warning   | Flagged file extensions found |
+| `FLAGGED_FILE_TYPE`         | notice    | (Binary) Flagged file type found |
+| `DUPLICATE_XPI_ENTRY`       | warning   | Package contains duplicate entries |
+| `BAD_ZIPFILE`               | error     | Bad zip file |
+| `ALREADY_SIGNED`            | warning   | Already signed  |
+| `MOZILLA_COND_OF_USE`       | notice    | Mozilla conditions of use violation |
+| `COINMINER_USAGE_DETECTED`  | warning   | Firefox add-ons are not allowed to run coin miners |
 
 ## Type detection
 
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :white_check_mark: | notice | missing_manifest_json | | Add-on missing manifest_json for type detection | | | ('typedetection', 'detect_type', 'missing_manifest_json') | TYPE_NO_MANIFEST_JSON |
+| Message code                | Type      | Description                         |
+| ----------------------------|-----------|-------------------------------------|
+| `TYPE_NO_MANIFEST_JSON`     | notice    | Add-on missing manifest_json for type detection |
 
+## Language packs
 
-## Themes
+| Message code                | Type      | Description                         |
+| ----------------------------|-----------|-------------------------------------|
+| FLUENT_INVALID              | warning   | Invalid fluent template file        |
 
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :negative_squared_cross_mark: | warning | invalid_chrome_manifest_subject | theme | chrome.manifest files for full themes are only allowed to have 'skin' and 'style' items. Other types of items are disallowed for security reasons.' | chrome.manifest | [testcases/themes.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/themes.py) | | |
-| :negative_squared_cross_mark: | warning | theme_js | theme | Themes should not contain executable code. | \*.js | [testcases/scripting.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/themes.py) | | |
+## Web Extensions / manifest.json
 
-
-## Regex Tests
-
-*Note the rule names for these do not come from the code*
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :negative_squared_cross_mark: | warning | invalid_sync_services_object_reuse |   | Sync services objects are not intended to be re-used |  | [testcases/regex.py](https://github.com/mozilla/amo-validator/blob/master/validator/testcases/regex.py) | | |
-| :x: | warning | warn_mouse_events |   | Mouse events may cause performance issues |  |  | | |
-| :x: | warning | dom_mutation_events_disallowed |  | DOM mutation event use prohibited |  | | | |
-| :negative_squared_cross_mark: | warning | new_tab_override |  |  Possible attempt to override new tab page |  | | | |
-| :x: | warning | unsafe_template_escape |  | Potentially unsafe template escape sequence | | | | |
-| :x: | warning | js_protoype_extension_dissallowed |  | JS prototype extension not allowed  | | | | |
-| :negative_squared_cross_mark: | warning | composition_features_removed |  | nsICompositionStringSynthesizer, sendCompositionEvent and createCompositionStringSynthesizer were removed | | | | |
-| :negative_squared_cross_mark: | warning | asyncfetch2_newchannel2_deprecated |  | asyncFetch2 and newChannel2 are now deprecated | | | | |
-| :negative_squared_cross_mark: | warning | onproxyavailable_asyncresolve_changed |  | The onProxyAvailable and asyncResolve functions have changed |  | | | |
-| :negative_squared_cross_mark: | warning | noSuchMethod_deprecated |  | The \_\_noSuchMethod__ property has been deprecated |  | | | |
-| :negative_squared_cross_mark: | warning | sendAsBinary_removed |  | The function sendAsBinary() in XMLHttpRequest has been removed |  | | | |
-| :negative_squared_cross_mark: | warning | theme_prefs_changed | | The preferences used to store theme selection have changed |  | | | |
-| :negative_squared_cross_mark: | warning | old_keywords_api_deprecated | | The old keywords API is deprecated | | | | |
-| :negative_squared_cross_mark: | warning | fuel_library_deprecated | | The FUEL library is now deprecated | | | | |
-| :negative_squared_cross_mark: | warning | dictjsm_removed | | The Dict.jsm module has been removed | | | | |
-| :negative_squared_cross_mark: | warning | sessionstore_state_write_removed | | The sessionstore-state-write notification has been removed. | | | | |
-| :negative_squared_cross_mark: | warning | nsISSLErrorListener_removed | | The nsISSLErrorListener interface has been removed |  | | | |
-| :negative_squared_cross_mark: | warning | widget_module_removed | | The widget module has been removed | | | | |
-| :negative_squared_cross_mark: | warning | user_profile_data_reference | | Reference to critical user profile data | | | | |
-| :negative_squared_cross_mark: | warning | em_action_requested | | Obsolete Extension Manager API | | | | |
-| :negative_squared_cross_mark: | warning | unsafe_pref_branch_ref | | Potentially unsafe preference branch  referenced (x2) | | | | |
-| :negative_squared_cross_mark: | warning | browsernewtaburl_pref_removed |  |  The browser.newtab.url preference has been removed | | | | |
-| :negative_squared_cross_mark: | warning | password_stored_in_prefs | | Passwords should not be stored in preferences | | | | |
-
-## Thunderbird Regex Tests
-
-*Note the rule names for these do not come from the code*
-
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-| :negative_squared_cross_mark: | warning | removed_labels_in_use |  | Removed labels in use (Repeated for multiple versions) | | | | |
-
-## Web Extensions
-
-*Note these are all new and don't exist in the old validator*
-
-| Done? | MsgType | Rule name | Addon type | Description | File Type | Source ref | Old Code | New Code |
-| ----- | ------- | --------- | ---------- | ----------- | --------- | ---------- | -------- | -------- |
-
-| :white_check_mark: | error | Web extension | Icons must have valid extension. | manifest.json | | null | WRONG_ICON_EXTENSION |
-| :white_check_mark: | warning | Web extension | Icons must not be corrupt. | manifest.json | | null | CORRUPT_ICON_FILE |
-| :white_check_mark: | error | Web extension | JSON is not well formed. | manifest.json | | null | JSON_INVALID |
-| :white_check_mark: | error | Web extension | Duplicate key in JSON. | manifest.json | | null | JSON_DUPLICATE_KEY |
-| :white_check_mark: | error | Web extension | manifest_version in manifest.json is not valid. | manifest.json | | null | MANIFEST_VERSION_INVALID |
-| :white_check_mark: | error | Web extension | name property missing from manifest.json | manifest.json | | null | PROP_NAME_MISSING |
-| :white_check_mark: | error | Web extension | name property is invalid in manifest.json | manifest.json | | null | PROP_NAME_INVALID |
-| :white_check_mark: | error | Web extension | version property missing from manifest.json | manifest.json | | null | PROP_VERSION_MISSING |
-| :white_check_mark: | error | Web extension | version is invalid in manifest.json | manifest.json | | null | PROP_VERSION_INVALID |
-| :white_check_mark: | notice | Web extension | version is in the toolkit format in manifest.json | manifest.json | | null | PROP_VERSION_TOOLKIT_ONLY |
-| :white_check_mark: | warning | Web extension | content_security_policy in manifest.json means more review | manifest.json | | null | MANIFEST_CSP |
-| :white_check_mark: | warning | Web extension | usage of 'unsafe-eval' is strongly discouraged | manifest.json | null | MANIFEST_CSP_UNSAFE_EVAL |
-| :white_check_mark: | error | Web extension | update_url not allowed in manifest.json | manifest.json | | null | MANIFEST_UPDATE_URL |
-| :white_check_mark: | notice | Web extension | update_url ignored in manifest.json | manifest.json | | null | MANIFEST_UNUSED_UPDATE |
-| :white_check_mark: | error | Web extension | A required field is missing | manifest.json | | null | MANIFEST_FIELD_REQUIRED |
-| :white_check_mark: | error | Web extension | A field is invalid | manifest.json | | null | MANIFEST_FIELD_INVALID |
-| :white_check_mark: | error | Web extension | Bad permission | manifest.json | | null | MANIFEST_BAD_PERMISSION |
-| :white_check_mark: | warning | Web extension | Unknown permission | manifest.json | | null | MANIFEST_PERMISSIONS |
-| :white_check_mark: | error | Web extension | Block Comments are not allowed in JSON | manifest.json | | null | JSON_BLOCK_COMMENTS |
-| :white_check_mark: | warning | Web extension | Deprecated API tabs.getSelected | | | null | TABS_GETSELECTED |
-| :white_check_mark: | warning | Web extension | Deprecated API tabs.sendRequest | | | null | TABS_SENDREQUEST |
-| :white_check_mark: | warning | Web extension | Deprecated API tabs.getAllInWindow | | | null | TABS_GETALLINWINDOW |
-| :white_check_mark: | warning | Web extension | Deprecated API tabs.onSelectionChanged | | | null | TABS_ONSELECTIONCHANGED |
-| :white_check_mark: | warning | Web extension | Deprecated API tabs.onActiveChanged | | | null | TABS_ONACTIVECHANGED |
-| :white_check_mark: | warning | Web extension | Deprecated API extension.sendRequest | | | null | EXT_SENDREQUEST |
-| :white_check_mark: | warning | Web extension | Deprecated API extension.onRequestExternal | | | null | EXT_ONREQUESTEXTERNAL |
-| :white_check_mark: | warning | Web extension | Deprecated API extension.onRequest | | | null | EXT_ONREQUEST |
-| :white_check_mark: | warning | Web extension | Deprecated API app.getDetails | | | null | APP_GETDETAILS |
-| :white_check_mark: | warning | Web extension | Temporary IDs can cause issues with storage.local | | | null | STORAGE_LOCAL |
-| :white_check_mark: | warning | Web extension | Temporary IDs can cause issues with storage.sync | | | null | STORAGE_SYNC |
-| :white_check_mark: | warning | Web extension | Temporary IDs can cause issues with identity.getRedirectURL | | | null | IDENTITY_GETREDIRECTURL |
-| :white_check_mark: | warning | Web extension | When default_locale is specified a matching messages.json must exist | | | null | NO_MESSAGES_FILE |
-| :white_check_mark: | warning | Web extension | When _locales directory exists, default_locale must exist | | | null | NO_DEFAULT_LOCALE |
-| :white_check_mark: | warning | Web extension | | | | | UNSAFE_VAR_ASSIGNMENT |
-| :white_check_mark: | warning | Web extension | Unsupported or unknown browser API | | | null | UNSUPPORTED_API |
-| :white_check_mark: | warning | Web extension | | | | | DANGEROUS_EVAL |
-| :white_check_mark: | warning | Web extension | strict_max_version not required | | | null | STRICT_MAX_VERSION |
-| :white_check_mark: | error   | Web extension | Temporary error on content script `matches` | | | | MANIFEST_INVALID_CONTENT |
-| :white_check_mark: | error   | Web extension | Content script file could not be found | | | | CONTENT_SCRIPT_NOT_FOUND |
-| :white_check_mark: | error   | Web extension | Content script file name should not be empty | | | | CONTENT_SCRIPT_EMPTY |
-| :white_check_mark: | error   | Web extension | Translation string is missing the message property | | | | NO_MESSAGE |
-| :white_check_mark: | warning | Web extension | String name is reserved for a predefined message | | | | PREDEFINED_MESSAGE_NAME |
-| :white_check_mark: | error   | Web extension | String name contains invalid characters | | | | INVALID_MESSAGE_NAME |
-| :white_check_mark: | warning | Web extension | Placeholder for message is not defined | | | | MISSING_PLACEHOLDER |
-| :white_check_mark: | error   | Web extension | Placeholder name contains invalid characters | | | | INVALID_PLACEHOLDER_NAME |
-| :white_check_mark: | error   | Web extension | Placeholder is missing the content property | | | | NO_PLACEHOLDER_CONTENT |
+| Message code                | Type          | Description                         |
+| ----------------------------|---------------|-------------------------------------|
+| `WRONG_ICON_EXTENSION`      | error         | Icons must have valid extension. |
+| `CORRUPT_ICON_FILE`         | warning       | Icons must not be corrupt. |
+| `JSON_INVALID`              | error         | JSON is not well formed. |
+| `JSON_DUPLICATE_KEY`        | error         | Duplicate key in JSON. |
+| `MANIFEST_VERSION_INVALID`  | error         | manifest_version in manifest.json is not valid. |
+| `PROP_NAME_MISSING`         | error         | name property missing from manifest.json |
+| `PROP_NAME_INVALID`         | error         | name property is invalid in manifest.json |
+| `PROP_VERSION_MISSING`      | error         | version property missing from manifest.json |
+| `PROP_VERSION_INVALID`      | error         | version is invalid in manifest.json |
+| `PROP_VERSION_TOOLKIT_ONLY` | notice        | version is in the toolkit format in manifest.json |
+| `MANIFEST_CSP`              | warning       | content_security_policy in manifest.json means more review |
+| `MANIFEST_CSP_UNSAFE_EVAL`  | warning       | usage of 'unsafe-eval' is strongly discouraged |
+| `MANIFEST_UPDATE_URL`       | error         | update_url not allowed in manifest.json |
+| `MANIFEST_UNUSED_UPDATE`    | notice        | update_url ignored in manifest.json |
+| `MANIFEST_FIELD_REQUIRED`   | error         | A required field is missing |
+| `MANIFEST_FIELD_INVALID`    | error         | A field is invalid |
+| `MANIFEST_BAD_PERMISSION`   | error         | Bad permission |
+| `MANIFEST_PERMISSIONS`      | warning       | Unknown permission |
+| `JSON_BLOCK_COMMENTS`       | error         | Block Comments are not allowed in JSON |
+| `NO_MESSAGES_FILE`          | warning       | When default_locale is specified a matching messages.json must exist |
+| `NO_DEFAULT_LOCALE`         | warning       | When _locales directory exists, default_locale must exist |
+| `UNSAFE_VAR_ASSIGNMENT`     | warning       | Assignment using dynamic, unsanitized values. |
+| `UNSUPPORTED_API`           | warning       | Unsupported or unknown browser API |
+| `DANGEROUS_EVAL`            | warning       | `eval` and the `Function` constructor are discouraged |
+| `STRICT_MAX_VERSION`        | warning       | strict_max_version not required |
+| `MANIFEST_INVALID_CONTENT`  | error         | Temporary error on content script `matches|
+| `CONTENT_SCRIPT_NOT_FOUND`  | error         | Content script file could not be |
+| `CONTENT_SCRIPT_EMPTY`      | error         | Content script file name should not be |
+| `NO_MESSAGE`                | error         | Translation string is missing the message |
+| `PREDEFINED_MESSAGE_NAME`   | warning       | String name is reserved for a predefined |
+| `INVALID_MESSAGE_NAME`      | error         | String name contains invalid |
+| `MISSING_PLACEHOLDER`       | warning       | Placeholder for message is not |
+| `INVALID_PLACEHOLDER_NAME`  | error         | Placeholder name contains invalid |
+| `NO_PLACEHOLDER_CONTENT`    | error         | Placeholder is missing the content |
