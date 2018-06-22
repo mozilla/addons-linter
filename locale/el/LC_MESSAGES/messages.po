@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-20 10:39+0000\n"
+"PO-Revision-Date: 2018-06-22 17:11+0000\n"
 "Last-Translator: Jim Spentzos <jim.spentzos@outlook.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -272,19 +272,19 @@ msgstr ""
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "Λείπουν μεταφράσεις από τo \"default_locale\"."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "Το \"default_locale\" λείπει αλλά το \"_locales\" υπάρχει."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "Ο τύπος δικαιώματος δεν υποστηρίζεται."
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "Μη υποστηριζόμενη επέκταση εικόνας"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
