@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-18 13:47+0000\n"
-"Last-Translator: digressingme <digressingme@gmail.com>\n"
+"PO-Revision-Date: 2018-06-24 07:16+0000\n"
+"Last-Translator: alamanda <dian.ina@gmail.com>\n"
 "Language-Team: none\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
@@ -56,7 +56,7 @@ msgstr "FTL Anda tidak valid."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "File FTL Anda tidak dapat diurai."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
