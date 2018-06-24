@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-24 07:16+0000\n"
+"PO-Revision-Date: 2018-06-24 08:08+0000\n"
 "Last-Translator: alamanda <dian.ina@gmail.com>\n"
 "Language-Team: none\n"
 "Language: id\n"
@@ -44,7 +44,7 @@ msgstr "Kolom"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Pemilih beranak yang tidak valid ditemukan"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
@@ -64,7 +64,7 @@ msgstr "Skrip jarak jauh tidak diperkenankan menurut Kebijakan Pengaya."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Skrip selarik berkelanjutan diblokir"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
@@ -80,7 +80,7 @@ msgstr "API ini belum diimplementasikan oleh Firefox."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener disebut dengan argumen yang seolah benar keempat."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -100,7 +100,7 @@ msgstr "Nama berkas skrip konten tidak boleh kosong"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "Galat sintaksis JavaScript"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
@@ -112,19 +112,19 @@ msgstr ""
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "Pustaka JS pihak ke-3 yang dilarang"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Pustaka JS pihak ke-3 yang tidak dianjurkan"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "JSON Anda mengandung komentar pemblokiran."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "Kunci duplikat tidak diizinkan dalam berkas JSON."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
@@ -132,11 +132,11 @@ msgstr "JSON Anda tidak valid."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "File JSON Anda tidak bisa diurai."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "Kami tidak dapat mendekompresi berkas yang di-zip."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
@@ -144,23 +144,23 @@ msgstr "manifest.json tidak ditemukan"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr ""
+msgstr "Berkas terlalu besar untuk diurai."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "Berkas tersembunyi yang ditandai"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "Nama berkas yang ditandai ditemukan"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "Ekstensi berkas yang ditandai ditemukan"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "Jenis berkas yang ditandai ditemukan"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
@@ -168,11 +168,11 @@ msgstr "Paket yang sudah ditandatangani"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
-msgstr ""
+msgstr "Pelanggaran terhadap ketentuan penggunaan Mozilla."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
-msgstr ""
+msgstr "Paket mengandung entri ganda"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -220,7 +220,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Ikon tidak ditemukan dalam \"%(path)s\"."
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
@@ -228,7 +228,7 @@ msgstr "Skrip latar tidak dapat ditemukan di \"%(path)s\"."
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Laman latar belakang tidak dapat ditemukan dalam \"%(path)s\"."
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
@@ -272,7 +272,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "\"default_locale\" tidak memiliki pelokalan."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -308,11 +308,11 @@ msgstr "Lihat https://mzl.la/1R1n1t0 (MDN Docs) untuk informasi lebih lanjut."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "\"manifest_version\" dalam manifest.json bukan nilai yang valid"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "Lihat https://mzl.la/20PenXl (Dokumen MDN) untuk informasi lebih lanjut."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
