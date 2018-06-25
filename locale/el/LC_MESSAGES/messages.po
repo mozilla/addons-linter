@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-22 17:15+0000\n"
+"PO-Revision-Date: 2018-06-24 22:47+0000\n"
 "Last-Translator: Jim Spentzos <jim.spentzos@outlook.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -212,7 +212,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
-msgstr ""
+msgstr "Δεν απαιτείται \"strict_max_version\"."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
@@ -220,7 +220,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εύρεση του εικονιδίου στο \"%(path)s\"."
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
@@ -244,11 +244,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "Βρέθηκε απαγορευμένο περιεχόμενο στο πρόσθετο."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "Αυτό το πρόσθετο περιέχει απαγορευμένο περιεχόμενο."
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
