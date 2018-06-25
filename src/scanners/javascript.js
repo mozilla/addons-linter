@@ -65,10 +65,7 @@ export default class JavaScriptScanner {
         },
       },
       parserOptions: {
-        ecmaVersion: 2017,
-        ecmaFeatures: {
-          experimentalObjectRestSpread: true,
-        },
+        ecmaVersion: 2018,
       },
       rules: _ruleMapping,
       plugins: ['no-unsafe-innerhtml'],
