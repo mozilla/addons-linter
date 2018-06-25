@@ -22,7 +22,7 @@
     "publish-rules": "bin/build-rules && cp node_modules/gfm.css/gfm.css docs/html/gfm.css && bin/publish-rules",
     "gen-contributing-toc": "doctoc CONTRIBUTING.md",
     "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect",
+    "prepublishOnly": "npm run snyk-protect",
     "prepare": "npm run snyk-protect"
   },
   "repository": {
