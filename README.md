@@ -6,9 +6,11 @@
 
 # addons-linter
 
-The Add-ons Linter, JS edition.
+The Add-ons Linter is being used by [web-ext](https://github.com/mozilla/web-ext/) and [addons.mozilla.org](https://github.com/mozilla/addons-server/) to lint [WebExtensions](https://developer.mozilla.org/en-US/Add-ons/WebExtensions).
 
-Here is the [canonical list of rules](https://mozilla.github.io/addons-linter/) we're working from.
+It can also be used as a standalone binary and library.
+
+You can find more information about the linter and it's implemented rules in our [documentation](https://mozilla.github.io/addons-linter/).
 
 ## Usage
 
@@ -34,7 +36,7 @@ addons-linter my-addon.zip
 Alternatively you can point it at a directory:
 
 ```sh
-addons-linter my/package/dir
+addons-linter my-addon/src/
 ```
 
 The addons-linter will check your add-on and show you errors, warnings,
@@ -45,7 +47,9 @@ you can enable/disable for the command-line app, use the `--help` option:
 addons-linter --help
 ```
 
-### Import Linter API into another NodeJS application
+### Linter API Usage
+
+You can use the linter directly as a library to integrate it better into your development process.
 
 ```js
 import linter from 'addons-linter';
@@ -109,22 +113,33 @@ pretty easy to get started, you just need node.js installed on your machine.
 ### Quick Start
 
 If you have node.js installed, here's the quick start to getting
-your development dependencies installed and building the binary:
+your development dependencies installed and running the tests
 
 ```sh
 git clone https://github.com/mozilla/addons-linter.git
 cd addons-linter
 npm install
-npm start
-# Leave running to watch for changes or cancel to stop watching.
+# Run the test-suite and watch for changes. Use `npm run test-once` to
+# just run it once.
+npm run test
+```
+
+You can also build the addons-linter binary to test your changes.
+
+```sh
+npm run build
+# Now run it against your add-on. Please note that for every change
+# in the linter itself you'll have to re-build the linter.
 bin/addons-linter my-addon.zip
 ```
 
 ### Required node version
 
-addons-linter requires node.js v6 or greater. Using nvm is probably the
-easiest way to manage multiple node versions side by side. See
+addons-linter requires node.js v8 or greater. Have a look at our `.travis.yml` file which node.js versions we officially test.
+
+Using nvm is probably the easiest way to manage multiple node versions side by side. See
 [nvm on github](https://github.com/creationix/nvm) for more details.
+
 
 ### Install dependencies
 
@@ -138,78 +153,45 @@ Dependencies are automatically kept up-to-date using [greenkeeper](http://greenk
 
 #### npm scripts
 
-| Script                | Description                                        |
-|-----------------------|----------------------------------------------------|
-| npm test              | Runs the tests                                     |
-| npm test-coverage     | Runs the tests with coverage (watches for changes) |
-| npm test              | Runs the tests once                                |
-| npm lint              | Runs eslint                                        |
-| npm test-coverage-once| Runs the tests once with coverage                  |
-| npm start             | Builds the lib and watches for changes             |
-| npm [run] build       | Builds the lib (used by Travis)                    |
+| Script                  | Description                                        |
+|-------------------------|----------------------------------------------------|
+| npm test                | Runs the tests (watches for changes)               |
+| npm test-coverage       | Runs the tests with coverage (watches for changes) |
+| npm test-once           | Runs the tests once                                |
+| npm lint                | Runs eslint                                        |
+| npm test-coverage-once  | Runs the tests once with coverage                  |
+| test-integration-linter | Runs our integration test-suite                    |
+| npm [run] build         | Builds the lib (used by Travis)                    |
 
-### Building and watching for changes
+### Building
 
-You can run `npm start` to build the library and then rebuild on file changes.
+You can run `npm build` to build the library.
 
 Once you build the library you can use the CLI in `bin/addons-linter`.
 
 ### Testing
 
-Run `npm test`.
+Run `npm test`. This will watch for file-changes and re-runs the test suite.
 
 #### Coverage
 
 We're looking to maintain coverage at 100%. Use the coverage data in the
 test output to work out what lines aren't covered and ensure they're covered.
 
-#### Testing and promises
-
-Tests using promises should return the promise. This removes the need to call
-`done()` in your tests:
-
-```javascript
-it('should do something promise-y', () => {
-  return somePromiseCall()
-    .then(() => {
-      // Assert stuff here.
-    });
-})
-```
-
-To test for rejection you can use this pattern:
-
-```javascript
-import { unexpectedSuccess } from './helpers';
-...
-it('should reject because of x', () => {
-  return somePromiseCall()
-    .then(unexpectedSuccess)
-    .catch((err) => {
-      // make assertions about err here.
-    });
-})
-```
-
 #### Assertions and testing APIs
 
-`assert`, `describe`, `it`, `beforeEach`, and `afterEach` are
-available in tests by default–you don't need to import anything
-for those to work.
+We are using using sinon for assertions, mocks, stubs and more [see the Sinon docs for the API
+available](http://sinonjs.org/).
 
-We're using chai for assertions [see the Chai docs for the API
-available](http://chaijs.com/api/assert/)
+[Jest](https://facebook.github.io/jest/) is being used as a test-runner but also provides helpful tools. Please make sure you read their documentation for more details.
 
 ### Logging
 
-We use [bunyan](https://github.com/trentm/node-bunyan) for logging:
+We use [pino](https://github.com/pinojs/pino) for logging:
 
 * By default logging is off (level is set to 'fatal') .
 * Logging in tests can be enabled using an env var e.g: `LOG_LEVEL=debug jest test`
 * Logging on the cli can be enabled with `--log-level [level]`.
-* Bunyan by default logs JSON. If you want the json to be pretty printed
-  pipe anything that logs into `bunyan` e.g. `LOG_LEVEL=debug jest test
-  | node_modules/bunyan/bin/bunyan`
 
 ## Architecture
 
@@ -217,7 +199,7 @@ In a nutshell the way the linter works is to take an add-on
 package, extract the metadata from the xpi (zip) format and then
 process the files it finds through various content scanners.
 
-![Architecture diagram](https://raw.github.com/mozilla/addons-linter/master/docs/diagrams/addon-linter-flow.png)
+We are heavily relying on [Eslint](https://eslint.org/) for JavaScript linting, [cheerio](https://github.com/cheeriojs/cheerio) for HTML parsing as well as [fluent.js](https://github.com/projectfluent/fluent.js) for parsing language packs.
 
 ### Scanners
 
