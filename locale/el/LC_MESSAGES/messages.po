@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-24 22:47+0000\n"
+"PO-Revision-Date: 2018-06-27 14:52+0000\n"
 "Last-Translator: Jim Spentzos <jim.spentzos@outlook.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -164,15 +164,15 @@ msgstr ""
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
-msgstr ""
+msgstr "Το πακέτο έχει ήδη υπογραφεί"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
-msgstr ""
+msgstr "Παραβίαση των όρων χρήσης της Mozilla."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
-msgstr ""
+msgstr "Το πακέτο περιέχει διπλότυπες καταχωρήσεις"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -224,11 +224,11 @@ msgstr "Δεν ήταν δυνατή η εύρεση του εικονιδίου
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εύρεση σεναρίου παρασκηνίου στο \"%(path)s\"."
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εύρεση σελίδας παρασκηνίου στο \"%(path)s\"."
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
