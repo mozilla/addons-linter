@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-27 22:27+0000\n"
+"PO-Revision-Date: 2018-06-08 18:16+0000\n"
 "Last-Translator: Juraj Cigáň <kusavica@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: src/linter.js:117
 msgid "Validation Summary:"
-msgstr ""
+msgstr "Súhrn overenia:"
 
 #: src/linter.js:134
 msgid "Code"
@@ -44,11 +44,11 @@ msgstr "Stĺpec"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Bolo nájdené neplatné vnorenie"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "Naša sa chyba syntaxe CSS"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -56,19 +56,19 @@ msgstr "Vaše FTL je neplatné."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "Vaše FTL nemohlo byť parsované."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Vzdialené skripty nie sú povolené bezpečnostnou politikou doplnkov."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Vložené skripty sú v predvolenom nastavení zakázané"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
-msgstr ""
+msgstr "Bola rozpoznaná známa JS knižnica"
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
@@ -80,71 +80,71 @@ msgstr "Toto API nebolo Firefoxom implementované."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener bol volaný so štvrtým parametrom nastaveným na true."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Obsah súboru so skriptom nebol nájdený."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Obsah súboru so skriptom nebol nájdený"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Názov súboru so skriptom by nemal byť prázdny."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Názov súboru so skriptom by nemal byť prázdny"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "Chyba v syntaxi JavaScriptu"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Neočakávaná globálna premenná prešla ako parameter"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Použitie document.write sa neodporúča."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "Zakázaná JS knižnica tretej strany"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Neodporúčaná JS knižnica tretej strany"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "Váš JSON obsahuje blokové komentáre."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "V súboroch JSON nie sú povolené duplicitné kľúče."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "Váš JSON nie je platný."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "Váš JSON nemohol byť parsovaný."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "Nepodarilo sa nám rozbaliť zip archív."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "manifest.json sa nepodarilo nájsť"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr ""
+msgstr "Súbor je na analýzu príliš veľký."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
@@ -164,19 +164,19 @@ msgstr ""
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
-msgstr ""
+msgstr "Balíček už bol podpísaný"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
-msgstr ""
+msgstr "Porušenie podmienok použitia spoločnosti Mozilla."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
-msgstr ""
+msgstr "Balíček obsahuje duplicitné položky"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "Doplnky Firefoxu nesmú ťažiť kryptomeny."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -208,11 +208,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
+msgstr "Ďalšie informácie nájdete na https://mzl.la/1ZOhoEN (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
-msgstr ""
+msgstr "„strict_max_version“ nie je vyžadované."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
@@ -244,11 +244,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "V doplnku bol nájdený zakázaný obsah."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "Doplnok obsahuje zakázaný obsah."
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
@@ -256,19 +256,19 @@ msgstr "Ikony musia byť štvorcové."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "Ikona v „%(path)s“ musí byť štvorcová."
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "Veľkosť ikony nezodpovedá manifestu."
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
-msgstr ""
+msgstr "Poškodený súbor s obrázkom"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "Očakávaný súbor ikony v „%(path)s“ je poškodený"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
@@ -280,23 +280,23 @@ msgstr ""
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "Tento typ povolenia nie je podporovaný."
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "Nepodporovaný formát obrázku"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
+msgstr "Ikony by mala mať formát JPG/JPEG, WebP, GIF, PNG alebo SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
-msgstr ""
+msgstr "Prázdny adresár s jazykmy"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "V „%(path)s“ chýba súbor messages.json"
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
@@ -304,7 +304,7 @@ msgstr "Neznáme povolenie."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "Ďalšie informácie nájdete na https://mzl.la/1R1n1t0 (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -312,7 +312,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "Ďalšie informácie nájdete na https://mzl.la/20PenXl (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
@@ -324,7 +324,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "Ďalšie informácie nájdete na http://mzl.la/1STmr48 (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
@@ -332,7 +332,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "Ďalšie informácie nájdete na http://mzl.la/1kXIADa (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
@@ -340,7 +340,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "„update_url“ nie je povolené."
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."

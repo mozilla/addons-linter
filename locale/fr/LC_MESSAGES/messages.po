@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-04-24 21:49+0000\n"
+"PO-Revision-Date: 2018-06-27 11:54+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -148,7 +148,7 @@ msgstr "Le fichier est trop volumineux pour être analysé."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "Un fichier caché a été détecté"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
@@ -180,7 +180,7 @@ msgstr "Les modules Firefox ne peuvent pas miner de cryptomonnaies."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "Le nom de la chaîne est déjà réservé à un message prédéfini"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
