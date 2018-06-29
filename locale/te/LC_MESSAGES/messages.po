@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-14 09:01+0000\n"
+"PO-Revision-Date: 2018-06-29 16:30+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -120,7 +120,7 @@ msgstr ""
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "మీ JSONలో బ్లాక్ వ్యాఖ్యలు ఉన్నాయి."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
