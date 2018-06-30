@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-28 10:56+0000\n"
+"PO-Revision-Date: 2018-06-30 09:08+0000\n"
 "Last-Translator: Jim Spentzos <jim.spentzos@outlook.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -136,7 +136,7 @@ msgstr ""
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "Δεν ήταν δυνατή η αποσυμπίεση του αρχείου zip."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
@@ -316,7 +316,7 @@ msgstr "Δείτε το https://mzl.la/20PenXl (Έγγραφα MDN) για πε�
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "Μια προσαρμοσμένη content_security_policy απαιτεί περαιτέρω αξιολόγηση."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
