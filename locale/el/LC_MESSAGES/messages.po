@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-30 11:05+0000\n"
+"PO-Revision-Date: 2018-07-01 08:48+0000\n"
 "Last-Translator: Jim Spentzos <jim.spentzos@outlook.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -60,7 +60,7 @@ msgstr "Αδυναμία λήψης του αρχείου FTL σας."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Τα απομακρυσμένα σενάρια δεν επιτρέπονται σύμφωνα με τις Πολιτικές Προσθέτων."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
@@ -68,7 +68,7 @@ msgstr ""
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
-msgstr ""
+msgstr "Ανιχνεύθηκε γνωστή βιβλιοθήκη JS"
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
@@ -84,19 +84,19 @@ msgstr ""
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εύρεση του αρχείου σεναρίου περιεχομένου."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εύρεση του αρχείου σεναρίου περιεχομένου"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Το όνομα του αρχείου σεναρίου περιεχομένου δεν πρέπει να είναι κενό."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Το όνομα του αρχείου σεναρίου περιεχομένου δεν πρέπει να είναι κενό"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
@@ -184,7 +184,7 @@ msgstr ""
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "Το σύμβολο υποκατάστασης για το μήνυμα λείπει"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
@@ -200,7 +200,7 @@ msgstr ""
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "Η ιδιότητα \"message\" λείπει από το νήμα μετάφρασης"
 
 #: src/messages/locale-messagesjson.js:8
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
@@ -336,7 +336,7 @@ msgstr "Δείτε το http://mzl.la/1kXIADa (Έγγραφα MDN) για περ
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "Η ιδιότητα \"version\" χρησιμοποιεί μια μορφή, ειδικά για το Firefox."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
