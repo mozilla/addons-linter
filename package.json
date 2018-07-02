@@ -37,7 +37,6 @@
   "homepage": "https://github.com/mozilla/addons-linter#readme",
   "dependencies": {
     "ajv": "6.5.2",
-    "ajv": "6.5.1",
     "ajv-merge-patch": "4.1.0",
     "babel-register": "6.26.0",
     "chalk": "2.4.0",
