@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-29 16:30+0000\n"
+"PO-Revision-Date: 2018-07-03 09:29+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -60,7 +60,7 @@ msgstr ""
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "పొడగింతల విధానాల ప్రకారం రిమోట్ స్క్రిప్టులు అనుమతించబడవు."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
