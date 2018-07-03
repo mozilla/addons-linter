@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-03-17 06:42+0000\n"
+"PO-Revision-Date: 2018-03-17 06:39+0000\n"
 "Last-Translator: Adeel <meetadeel@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ur\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: src/linter.js:134
 msgid "Code"
-msgstr ""
+msgstr "ضابطہ"
 
 #: src/linter.js:140
 msgid "Message"
