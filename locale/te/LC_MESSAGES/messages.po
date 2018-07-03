@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-07-03 09:29+0000\n"
+"PO-Revision-Date: 2018-07-03 09:40+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -108,7 +108,7 @@ msgstr ""
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "document.write వాడకం వారించబడింది."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
@@ -124,7 +124,7 @@ msgstr "మీ JSONలో బ్లాక్ వ్యాఖ్యలు ఉన�
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "JSON ఫైళ్ళలో నకిలీ కీలు అనుమతించబడవు."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
@@ -136,7 +136,7 @@ msgstr "మీ JSON ఫైలు పార్స్ చెయ్యబడలే�
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "మేము జిప్ ఫైలుని డీకంప్రెస్ చెయ్యలేకపోయాం."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
@@ -148,7 +148,7 @@ msgstr "ఫైలు చాలా పెద్దగా ఉన్నందున
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "దాచిన ఫైల్ ఫ్లాగ్ చేయబడింది"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
@@ -224,11 +224,11 @@ msgstr "\"%(path)s\" వద్ద ప్రతీకం కనబడలేదు
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "వెనుతలపు స్క్రిప్టు \"%(path)s\"లో కనబడలేదు."
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "వెనుతలపు పేజీ \"%(path)s\"లో కనబడలేదు."
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
@@ -244,7 +244,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "పొడగింతలో నిషేధిత కంటెంట్ కనబడింది."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
@@ -256,11 +256,11 @@ msgstr "చిహ్నాలు చదరపు ఆకారంలో ఉండ
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "\"%(path)s\" లో ప్రతీకాలు చదరంగా ఉండాలి."
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "ప్రతీకపు పరిమాణం మానిఫెస్ట్‌తో సరిపోలలేదు."
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
@@ -272,15 +272,15 @@ msgstr ""
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "ఈ \"default_locale\" లో స్థానికీకరణలు లేవు."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "\"default_locale\" లేదు కానీ \"_locales\" మాత్రం ఉన్నాయి."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "ఆ అనుమతి రకానికి తోడ్పాటు లేదు."
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
@@ -296,7 +296,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "\"%(path)s\" లలో messages.json ఫైలు లేదు"
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
@@ -316,7 +316,7 @@ msgstr "మరింత సమాచారం కోసం https://mzl.la/20PenX
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "ఒక అభిమత content_security_policyకు అదనపు సమీక్ష అవసరం."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
@@ -336,7 +336,7 @@ msgstr "మరింత సమాచారం కోసం http://mzl.la/1kXIADa
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "\"version\" లక్షణం Firefoxకి ప్రత్యేకమైన ఫార్మాటును వాడుతుంది."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
@@ -348,7 +348,7 @@ msgstr "ఫీల్డ్ అవసరం."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "\"update_url\" లక్షణాన్ని Firefox వాడుకోదు."
 
 #~ msgid "mozIndexedDB has been removed; use indexedDB instead"
 #~ msgstr "mozIndexedDB తీసివేయబడింది; దాని బదులుగా indexedDBని ఉపయోగించండి"
