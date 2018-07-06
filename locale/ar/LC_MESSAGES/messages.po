@@ -1,44 +1,46 @@
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-01-19 00:33+0000\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2018-07-06 19:31+0000\n"
+"Last-Translator: صفا الفليج <safa1996alfulaij@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+"X-Generator: Pontoon\n"
 
 #: src/linter.js:117
 msgid "Validation Summary:"
-msgstr ""
+msgstr "ملخص التحقق:"
 
 #: src/linter.js:134
 msgid "Code"
-msgstr ""
+msgstr "الرمز"
 
 #: src/linter.js:140
 msgid "Message"
-msgstr ""
+msgstr "الرسالة"
 
 #: src/linter.js:146
 msgid "Description"
-msgstr ""
+msgstr "الوصف"
 
 #: src/linter.js:152
 msgid "File"
-msgstr ""
+msgstr "الملف"
 
 #: src/linter.js:158
 msgid "Line"
-msgstr ""
+msgstr "السطر"
 
 #: src/linter.js:164
 msgid "Column"
-msgstr ""
+msgstr "العمود"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
@@ -46,7 +48,7 @@ msgstr ""
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "عُثر على خطأ في صياغة CSS"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -58,15 +60,15 @@ msgstr ""
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "ليس مسموحا بالسكربتات البعيدة حسب سياسات الإضافات."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "السكربتات الداخلية/Inline ممنوعة مبدئيا"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
-msgstr ""
+msgstr "اكتُشفت مكتبة جافاسكربت معروفة"
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
@@ -201,8 +203,7 @@ msgid "Translation string is missing the message property"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
@@ -234,14 +235,11 @@ msgid "The field is invalid."
 msgstr ""
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
