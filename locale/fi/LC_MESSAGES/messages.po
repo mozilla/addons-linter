@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-07 10:01+0000\n"
+"PO-Revision-Date: 2018-07-05 14:50+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: none\n"
 "Language: fi\n"
@@ -132,11 +132,11 @@ msgstr ""
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "JSON-tiedostoasi ei voitu jäsentää."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "Zip-tiedostoa ei voitu purkaa."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
@@ -292,7 +292,7 @@ msgstr "Kuvakkeen tulee olla muotoa JPG/JPEG, WebP, GIF, PNG tai SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
-msgstr ""
+msgstr "Tyhjä kielihakemisto"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
@@ -300,7 +300,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
-msgstr ""
+msgstr "Tuntematon käyttöoikeus."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -348,4 +348,4 @@ msgstr "Tämä kenttä vaaditaan."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "Firefox ei käytä \"update_url\"-ominaisuutta."
