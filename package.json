@@ -98,7 +98,7 @@
     "gh-pages": "^1.2.0",
     "gunzip-maybe": "^1.4.1",
     "hashish": "0.0.4",
-    "isparta": "4.0.0",
+    "isparta": "4.1.0",
     "jest": "22.1.4",
     "jest-raw-loader": "1.0.1",
     "json-loader": "0.5.7",
