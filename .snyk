@@ -433,3 +433,5 @@ patch:
   'npm:minimatch:20160620':
     - webpack > node-libs-browser > crypto-browserify > create-ecdh > standard > standard-format > esformatter-jsx > babel-core > minimatch:
         patched: '2018-05-07T13:43:48.682Z'
+    - isparta > istanbul > fileset > minimatch:
+        patched: '2018-07-10T10:54:11.989Z'
