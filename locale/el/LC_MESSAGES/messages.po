@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-07-01 08:48+0000\n"
+"PO-Revision-Date: 2018-07-14 17:50+0000\n"
 "Last-Translator: Jim Spentzos <jim.spentzos@outlook.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -44,7 +44,7 @@ msgstr "Στήλη"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Βρέθηκε άκυρη εμφώλευση επιλογέων"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
@@ -120,11 +120,11 @@ msgstr ""
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "Το JSON σας περιέχει σχόλια μπλοκ."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "Δεν επιτρέπονται διπλότυπα κλειδιά στα αρχεία JSON."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
@@ -176,7 +176,7 @@ msgstr "Το πακέτο περιέχει διπλότυπες καταχωρή
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "Τα πρόσθετα του Firefox δεν επιτρέπεται να εκτελούν εξόρυξη κρυπτονομισμάτων."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
