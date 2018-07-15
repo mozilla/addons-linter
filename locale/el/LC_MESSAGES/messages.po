@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-07-15 23:01+0000\n"
+"PO-Revision-Date: 2018-07-15 23:04+0000\n"
 "Last-Translator: Jim Spentzos <jim.spentzos@outlook.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -64,7 +64,7 @@ msgstr "Τα απομακρυσμένα σενάρια δεν επιτρέπον
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Τα inline σενάρια αποκλείονται από προεπιλογή"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
