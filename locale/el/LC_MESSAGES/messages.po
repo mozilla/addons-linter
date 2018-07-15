@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-07-14 17:50+0000\n"
+"PO-Revision-Date: 2018-07-15 23:01+0000\n"
 "Last-Translator: Jim Spentzos <jim.spentzos@outlook.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -112,7 +112,7 @@ msgstr "Η χρήση του document.write δεν προτείνεται."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "Απαγορευμένη βιβλιοθήκη JS τρίτου"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
@@ -148,19 +148,19 @@ msgstr "Το αρχείο είναι πολύ μεγάλο για λήψη."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "Το κρυφό αρχείο επισημάνθηκε"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "Βρέθηκε επισημασμένο όνομα αρχείου"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "Βρέθηκαν επισημασμένες επεκτάσεις αρχείου"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "Βρέθηκε επισημασμένος τύπος αρχείου"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
@@ -216,7 +216,7 @@ msgstr "Δεν απαιτείται \"strict_max_version\"."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εύρεση ενός αρχείου, ορισμένου στο μανιφέστο, στο πακέτο."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
