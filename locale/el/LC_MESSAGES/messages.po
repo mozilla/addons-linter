@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-07-15 23:04+0000\n"
+"PO-Revision-Date: 2018-07-16 14:32+0000\n"
 "Last-Translator: Jim Spentzos <jim.spentzos@outlook.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -80,7 +80,7 @@ msgstr "Αυτό το API δεν έχει υλοποιηθεί από το Firef
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener` κλήθηκε με τέταρτο όρισμα truthy."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -104,7 +104,7 @@ msgstr "Συντακτικό σφάλμα JavaScript"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Μια απροσδόκητη καθολική μεταβλητή πέρασε ως όρισμα"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
@@ -116,7 +116,7 @@ msgstr "Απαγορευμένη βιβλιοθήκη JS τρίτου"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Ασύνετη βιβλιοθήκη JS τρίτου"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -180,7 +180,7 @@ msgstr "Τα πρόσθετα του Firefox δεν επιτρέπεται να 
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "Το όνομα νήματος κρατείται για ένα προκαθορισμένο μήνυμα"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
