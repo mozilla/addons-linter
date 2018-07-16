@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-07-16 14:32+0000\n"
+"PO-Revision-Date: 2018-07-16 14:36+0000\n"
 "Last-Translator: Jim Spentzos <jim.spentzos@outlook.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -188,15 +188,15 @@ msgstr "Το σύμβολο υποκατάστασης για το μήνυμα 
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "Ένα σύμβολο υποκατάστασης, που χρησιμοποιείται στο μήνυμα, δεν έχει οριστεί."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "Το όνομα συμβόλου υποκατάστασης περιέχει άκυρους χαρακτήρες"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "Η ιδιότητα \"content\" λείπει από το σύμβολο υποκατάστασης"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
@@ -236,11 +236,11 @@ msgstr "Το πεδίο δεν είναι έγκυρο."
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Δεν είναι δυνατή η εύρεση του σεναρίου περιεχομένου, ορισμένου στο μανιφέστο, στο \"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Δεν είναι δυνατή η εύρεση του σεναρίου περιεχομένου του αρχείου css, ορισμένου στο μανιφέστο, στο \"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
