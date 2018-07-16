@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-08 18:16+0000\n"
+"PO-Revision-Date: 2018-07-16 21:20+0000\n"
 "Last-Translator: Juraj Cigáň <kusavica@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -148,19 +148,19 @@ msgstr "Súbor je na analýzu príliš veľký."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "Bol označený skrytý súbor"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "Bol nájdený označený názov súboru"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "Bol nájdený označený súbor rozšírenia"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "Bol nájdený označený typ súboru"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
@@ -180,19 +180,19 @@ msgstr "Doplnky Firefoxu nesmú ťažiť kryptomeny."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "Názov reťazca je rezervovaný pre preddefinovanú správu"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "Placeholder pre správu chýba"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "Placeholder použitý v správe nie je definovaný."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "Placeholder obsahuje neplatné znaky"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
@@ -216,11 +216,11 @@ msgstr "„strict_max_version“ nie je vyžadované."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
+msgstr "Ikona definovaná v manifeste nebola v balíčku nájdená."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "V umiestnení „%(path)s“ nebola nájdená ikona."
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
