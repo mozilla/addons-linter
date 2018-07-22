@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-03-17 06:39+0000\n"
-"Last-Translator: Adeel <meetadeel@gmail.com>\n"
+"PO-Revision-Date: 2018-07-22 16:53+0000\n"
+"Last-Translator: عمر <um.qshi@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ur\n"
 "MIME-Version: 1.0\n"
@@ -244,7 +244,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "اظافہ جات میں ممنوعہ مواد پایا گیا۔"
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
@@ -252,7 +252,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr ""
+msgstr "آئیکن کا چکور ہونا ظروری پے۔"
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
@@ -340,7 +340,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "\"update_url\" کی اجازت نہیں۔"
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
@@ -348,4 +348,4 @@ msgstr "قطعہ درکار ہے۔"
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "\"update_url\" کی خصوصیت Firefoxکی جانب سے استعمال نہیں ہوتی۔"
