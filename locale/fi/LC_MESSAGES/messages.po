@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-07-05 14:50+0000\n"
+"PO-Revision-Date: 2018-07-21 17:34+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: none\n"
 "Language: fi\n"
@@ -76,7 +76,7 @@ msgstr "{{api}} ei ole tuettu"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "Tätä API:a ei ole vielä toteutettu Firefoxissa."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
@@ -100,7 +100,7 @@ msgstr ""
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr "JavaScript syntaksivirhe"
+msgstr "JavaScript-syntaksivirhe"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
@@ -140,7 +140,7 @@ msgstr "Zip-tiedostoa ei voitu purkaa."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr "manifest.json -tiedostoa ei löytynyt"
+msgstr "manifest.json-tiedostoa ei löytynyt"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
