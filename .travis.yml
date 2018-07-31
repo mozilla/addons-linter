@@ -3,6 +3,9 @@ sudo: false
 node_js:
   - '8'
   - '10'
+before_install:
+- npm install -g greenkeeper-lockfile@1
+before_script: greenkeeper-lockfile-update
 script:
   - npm run test-ci
   - node bin/build-locales
@@ -16,7 +19,9 @@ notifications:
     - irc.mozilla.org#amo-bots
     on_success: change
     on_failure: always
-after_script: npm run publish-coverage
+after_script:
+  - npm run publish-coverage
+  - greenkeeper-lockfile-upload
 cache:
   directories:
   - node_modules
