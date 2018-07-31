@@ -70,7 +70,8 @@
     "whatwg-url": "6.5.0",
     "xmldom": "0.1.27",
     "yargs": "12.0.1",
-    "yauzl": "2.9.2"
+    "yauzl": "2.9.2",
+    "snyk": "^1.88.2"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
@@ -104,13 +105,12 @@
     "json-loader": "0.5.7",
     "lodash.clonedeep": "4.5.0",
     "lodash.ismatchwith": "4.4.0",
-    "markdown-it": "8.4.1",
+    "markdown-it": "8.4.2",
     "markdown-it-anchor": "5.0.2",
     "markdown-it-emoji": "1.4.0",
     "raw-loader": "0.5.1",
     "request": "2.87.0",
     "sinon": "6.0.1",
-    "snyk": "^1.78.1",
     "tar": "4.4.4",
     "tar-fs": "^1.16.0",
     "tmp-promise": "^1.0.4",
