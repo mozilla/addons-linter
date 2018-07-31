@@ -1044,7 +1044,7 @@ describe('Linter.extractMetadata()', () => {
     sinon.assert.calledOnce(markBannedSpy);
     expect(Object.keys(metadata.jsLibs).length).toEqual(2);
     expect(metadata.jsLibs).toEqual({
-      'data/angular-1.2.28.min.js': 'angularjs.1.2.28.angular.min.js',
+      'data/angular.min.js': 'angularjs.1.3.3.angular.min.js',
       'data/jquery-3.2.1.min.js': 'jquery.3.2.1.jquery.min.js',
     });
 
