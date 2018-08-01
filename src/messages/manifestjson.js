@@ -166,6 +166,21 @@ export function manifestContentScriptFileMissing(path, type) {
   };
 }
 
+export const MANIFEST_DICTIONARY_FILE_NOT_FOUND = 'MANIFEST_DICTIONARY_FILE_NOT_FOUND';
+export function manifestDictionaryFileMissing(path, type) {
+  return {
+    code: MANIFEST_DICTIONARY_FILE_NOT_FOUND,
+    legacyCode: null,
+    message: 'A dictionary file defined in the manifest could not be found.',
+    description:
+      i18n.sprintf(
+        i18n._('Dictionary file defined in the manifest could not be found at "%(path)s".'),
+        { path }
+      ),
+    file: MANIFEST_JSON,
+  };
+}
+
 // https://github.com/mozilla/addons-linter/issues/1650
 // Potentially temporary
 export const MANIFEST_INVALID_CONTENT = {

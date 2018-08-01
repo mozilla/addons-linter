@@ -9,7 +9,7 @@ import upath from 'upath';
 
 import { getDefaultConfigValue } from 'yargs-options';
 import {
-  validateAddon, validateLangPack, validateStaticTheme,
+  validateAddon, validateDictionary, validateLangPack, validateStaticTheme,
 } from 'schema/validator';
 import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE, IMAGE_FILE_EXTENSIONS, LOCALES_DIRECTORY, MESSAGES_JSON } from 'const';
 import log from 'logger';
@@ -58,6 +58,8 @@ export default class ManifestJSONParser extends JSONParser {
       this.selfHosted = selfHosted;
       this.isLanguagePack = Object.prototype.hasOwnProperty.call(
         this.parsedJSON, 'langpack_id');
+      this.isDictionary = Object.prototype.hasOwnProperty.call(
+        this.parsedJSON, 'dictionaries');
       this.isStaticTheme = Object.prototype.hasOwnProperty.call(
         this.parsedJSON, 'theme');
       this.io = io;
@@ -118,6 +120,8 @@ export default class ManifestJSONParser extends JSONParser {
       validate = validateStaticTheme;
     } else if (this.isLanguagePack) {
       validate = validateLangPack;
+    } else if (this.isDictionary) {
+      validate = validateDictionary;
     }
 
     this.isValid = validate(this.parsedJSON);
@@ -182,6 +186,20 @@ export default class ManifestJSONParser extends JSONParser {
               style, 'css', messages.manifestContentScriptFileMissing);
           });
         }
+      });
+    }
+
+    log.info(this.parsedJSON.dictionaries);
+
+    if (this.parsedJSON.dictionaries) {
+      Object.keys(this.parsedJSON.dictionaries).forEach((locale) => {
+        let filepath = this.parsedJSON.dictionaries[locale];
+        this.validateFileExistsInPackage(
+          filepath, 'binary', messages.manifestDictionaryFileMissing);
+          // A corresponding .aff file should exist for every .dic.
+          this.validateFileExistsInPackage(
+              filepath.replace(/\.dic$/, '.aff'), 'binary',
+              messages.manifestDictionaryFileMissing);
       });
     }
 
