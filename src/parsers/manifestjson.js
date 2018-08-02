@@ -193,7 +193,7 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (this.parsedJSON.dictionaries) {
       Object.keys(this.parsedJSON.dictionaries).forEach((locale) => {
-        let filepath = this.parsedJSON.dictionaries[locale];
+        const filepath = this.parsedJSON.dictionaries[locale];
         this.validateFileExistsInPackage(
           filepath, 'binary', messages.manifestDictionaryFileMissing);
           // A corresponding .aff file should exist for every .dic.
