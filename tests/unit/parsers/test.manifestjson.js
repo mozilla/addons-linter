@@ -1104,6 +1104,22 @@ describe('ManifestJSONParser', () => {
       );
       expect(manifestJSONParser.isValid).toEqual(false);
     });
+
+    it('throws warning on additional properties', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validLangpackManifestJSON({ content_scripts: ['foo.js'] });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.JSON_INVALID.code,
+        message: '"/content_scripts" is an invalid additional property',
+        description: 'Your JSON file could not be parsed.',
+      });
+    });
   });
 
   describe('static theme', () => {
