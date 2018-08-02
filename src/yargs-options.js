@@ -42,11 +42,6 @@ const options = {
     type: 'boolean',
     default: false,
   },
-  langpack: {
-    describe: 'Treat this package as a WebExtension Language Pack.',
-    type: 'boolean',
-    default: false,
-  },
   'scan-file': {
     alias: ['f'],
     describe: 'Scan a selected file',

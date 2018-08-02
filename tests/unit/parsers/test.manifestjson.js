@@ -340,6 +340,22 @@ describe('ManifestJSONParser', () => {
       expect(notices[0].code).toEqual(messages.STRICT_MAX_VERSION.code);
       expect(notices[0].message).toContain('strict_max_version');
     });
+
+    it('does not warn on strict_max_version in language packs', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validLangpackManifestJSON({
+        applications: {
+          gecko: {
+            strict_max_version: '58.0',
+          },
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(json,
+        addonLinter.collector);
+      console.log(addonLinter.collector.notices);
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.notices.length).toEqual(0);
+    });
   });
 
   describe('content security policy', () => {
@@ -1072,7 +1088,6 @@ describe('ManifestJSONParser', () => {
       const json = validLangpackManifestJSON();
       const manifestJSONParser = new ManifestJSONParser(
         json, linter.collector, {
-          isLanguagePack: true,
           io: { files: {} },
         }
       );
@@ -1084,11 +1099,26 @@ describe('ManifestJSONParser', () => {
       const json = validLangpackManifestJSON({ langpack_id: null });
       const manifestJSONParser = new ManifestJSONParser(
         json, linter.collector, {
-          isLanguagePack: true,
           io: { files: {} },
         }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
+    });
+
+    it('throws warning on additional properties', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validLangpackManifestJSON({ content_scripts: ['foo.js'] });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.JSON_INVALID.code,
+        message: '"/content_scripts" is an invalid additional property',
+        description: 'Your JSON file could not be parsed.',
+      });
     });
   });
 

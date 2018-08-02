@@ -39,7 +39,6 @@ export default class ManifestJSONParser extends JSONParser {
   constructor(jsonString, collector, {
     filename = MANIFEST_JSON, RelaxedJSON = RJSON,
     selfHosted = getDefaultConfigValue('self-hosted'),
-    isLanguagePack = getDefaultConfigValue('langpack'),
     io = null,
   } = {}) {
     super(jsonString, collector, { filename });
@@ -57,7 +56,8 @@ export default class ManifestJSONParser extends JSONParser {
     } else {
       // We've parsed the JSON; now we can validate the manifest.
       this.selfHosted = selfHosted;
-      this.isLanguagePack = isLanguagePack;
+      this.isLanguagePack = Object.prototype.hasOwnProperty.call(
+        this.parsedJSON, 'langpack_id');
       this.isStaticTheme = Object.prototype.hasOwnProperty.call(
         this.parsedJSON, 'theme');
       this.io = io;
@@ -192,7 +192,8 @@ export default class ManifestJSONParser extends JSONParser {
       this.isValid = false;
     }
 
-    if (this.parsedJSON.applications &&
+    if (!this.isLanguagePack &&
+        this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.strict_max_version) {
       this.collector.addNotice(messages.STRICT_MAX_VERSION);
