@@ -93,7 +93,7 @@ export function validLangpackManifestJSON(extra) {
   return JSON.stringify(Object.assign({}, {
     manifest_version: 2,
     name: 'My Language Pack',
-    version: '57.0a1',
+    version: '57.0',
     langpack_id: 'de',
     languages: {
       de: {

@@ -192,7 +192,8 @@ export default class ManifestJSONParser extends JSONParser {
       this.isValid = false;
     }
 
-    if (this.parsedJSON.applications &&
+    if (!this.isLanguagePack &&
+        this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.strict_max_version) {
       this.collector.addNotice(messages.STRICT_MAX_VERSION);

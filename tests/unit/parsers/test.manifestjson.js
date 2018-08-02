@@ -340,6 +340,22 @@ describe('ManifestJSONParser', () => {
       expect(notices[0].code).toEqual(messages.STRICT_MAX_VERSION.code);
       expect(notices[0].message).toContain('strict_max_version');
     });
+
+    it('does not warn on strict_max_version in language packs', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validLangpackManifestJSON({
+        applications: {
+          gecko: {
+            strict_max_version: '58.0',
+          },
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(json,
+        addonLinter.collector);
+      console.log(addonLinter.collector.notices);
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.notices.length).toEqual(0);
+    });
   });
 
   describe('content security policy', () => {
