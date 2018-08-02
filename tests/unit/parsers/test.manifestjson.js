@@ -8,6 +8,7 @@ import * as messages from 'messages';
 import {
   assertHasMatchingError,
   validManifestJSON,
+  validDictionaryManifestJSON,
   validLangpackManifestJSON,
   validStaticThemeManifestJSON,
   getStreamableIO,
@@ -1079,6 +1080,64 @@ describe('ManifestJSONParser', () => {
         message: 'Forbidden content found in add-on.',
         description: 'This add-on contains forbidden content.',
       });
+    });
+  });
+
+  describe('dictionary', () => {
+    it('supports simple valid dictionary', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON();
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: { 'path/to/fr.dic': '', 'path/to/fr.aff': '' } },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
+    it('does error if the dictionary file does not exist', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON();
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_DICTIONARY_FILE_NOT_FOUND,
+        message: 'A dictionary file defined in the manifest could not be found.',
+        description: 'Dictionary file defined in the manifest could not be found at "path/to/fr.dic".',
+      });
+    });
+
+    it('does error if the dictionary file exists but not the .aff file', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON();
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: { '/path/to/fr.dic': '' } },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_DICTIONARY_FILE_NOT_FOUND,
+        message: 'A dictionary file defined in the manifest could not be found.',
+        description: 'Dictionary file defined in the manifest could not be found at "path/to/fr.aff".',
+      });
+    });
+
+    it('throws error on dictionary file not ending with .dic', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON({ dictionaries: { fr: 'invalid.txt' } });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
     });
   });
 

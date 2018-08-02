@@ -129,6 +129,18 @@ export const validateLangPack = (...args) => {
   return isValid;
 };
 
+const _validateDictionary = validator.compile({
+  ...schemaObject,
+  id: 'dictionary-manifest',
+  $ref: '#/types/WebExtensionDictionaryManifest',
+});
+
+export const validateDictionary = (...args) => {
+  const isValid = _validateDictionary(...args);
+  validateDictionary.errors = filterErrors(_validateDictionary.errors);
+  return isValid;
+};
+
 const _validateLocaleMessages = validator.compile({
   ...messagesSchemaObject,
   id: 'messages',

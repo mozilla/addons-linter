@@ -89,6 +89,17 @@ export function validManifestJSON(extra) {
   }, extra));
 }
 
+export function validDictionaryManifestJSON(extra) {
+  return JSON.stringify(Object.assign({}, {
+    manifest_version: 2,
+    name: 'My French Dictionary',
+    version: '57.0a1',
+    dictionaries: {
+      fr: '/path/to/fr.dic',
+    },
+  }, extra));
+}
+
 export function validLangpackManifestJSON(extra) {
   return JSON.stringify(Object.assign({}, {
     manifest_version: 2,

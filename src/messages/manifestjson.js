@@ -134,8 +134,8 @@ export function manifestBackgroundMissing(path, type) {
     code: MANIFEST_BACKGROUND_FILE_NOT_FOUND,
     legacyCode: null,
     message: type === 'script' ?
-      'A background script defined in the manifest could not be found.' :
-      'A background page defined in the manifest could not be found.',
+      i18n._('A background script defined in the manifest could not be found.') :
+      i18n._('A background page defined in the manifest could not be found.'),
     description:
       i18n.sprintf(
         type === 'script' ?
@@ -153,13 +153,28 @@ export function manifestContentScriptFileMissing(path, type) {
     code: MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND,
     legacyCode: null,
     message: type === 'script' ?
-      'A content script defined in the manifest could not be found.' :
-      'A content script css file defined in the manifest could not be found.',
+      i18n._('A content script defined in the manifest could not be found.') :
+      i18n._('A content script css file defined in the manifest could not be found.'),
     description:
       i18n.sprintf(
         type === 'script' ?
           i18n._('Content script defined in the manifest could not be found at "%(path)s".') :
           i18n._('Content script css file defined in the manifest could not be found at "%(path)s".'),
+        { path }
+      ),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const MANIFEST_DICTIONARY_FILE_NOT_FOUND = 'MANIFEST_DICTIONARY_FILE_NOT_FOUND';
+export function manifestDictionaryFileMissing(path) {
+  return {
+    code: MANIFEST_DICTIONARY_FILE_NOT_FOUND,
+    legacyCode: null,
+    message: i18n._('A dictionary file defined in the manifest could not be found.'),
+    description:
+      i18n.sprintf(
+        i18n._('Dictionary file defined in the manifest could not be found at "%(path)s".'),
         { path }
       ),
     file: MANIFEST_JSON,
