@@ -1089,7 +1089,7 @@ describe('ManifestJSONParser', () => {
       const json = validDictionaryManifestJSON();
       const manifestJSONParser = new ManifestJSONParser(
         json, linter.collector, {
-          io: { files: { 'path/to/fr.dic': '', 'path/to/fr.aff': ''} },
+          io: { files: { 'path/to/fr.dic': '', 'path/to/fr.aff': '' } },
         }
       );
       expect(manifestJSONParser.isValid).toEqual(true);
@@ -1117,7 +1117,7 @@ describe('ManifestJSONParser', () => {
       const json = validDictionaryManifestJSON();
       const manifestJSONParser = new ManifestJSONParser(
         json, linter.collector, {
-          io: { files: { '/path/to/fr.dic': ''} },
+          io: { files: { '/path/to/fr.dic': '' } },
         }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
@@ -1131,7 +1131,7 @@ describe('ManifestJSONParser', () => {
 
     it('throws error on dictionary file not ending with .dic', () => {
       const linter = new Linter({ _: ['bar'] });
-      const json = validDictionaryManifestJSON({ dictionaries: { fr: 'invalid.txt' }});
+      const json = validDictionaryManifestJSON({ dictionaries: { fr: 'invalid.txt' } });
       const manifestJSONParser = new ManifestJSONParser(
         json, linter.collector, {
           io: { files: {} },

@@ -189,17 +189,15 @@ export default class ManifestJSONParser extends JSONParser {
       });
     }
 
-    log.info(this.parsedJSON.dictionaries);
-
     if (this.parsedJSON.dictionaries) {
       Object.keys(this.parsedJSON.dictionaries).forEach((locale) => {
         const filepath = this.parsedJSON.dictionaries[locale];
         this.validateFileExistsInPackage(
           filepath, 'binary', messages.manifestDictionaryFileMissing);
-          // A corresponding .aff file should exist for every .dic.
-          this.validateFileExistsInPackage(
-              filepath.replace(/\.dic$/, '.aff'), 'binary',
-              messages.manifestDictionaryFileMissing);
+        // A corresponding .aff file should exist for every .dic.
+        this.validateFileExistsInPackage(
+          filepath.replace(/\.dic$/, '.aff'), 'binary',
+          messages.manifestDictionaryFileMissing);
       });
     }
 
