@@ -251,7 +251,6 @@ export default class Linter {
         this.collector,
         {
           selfHosted: this.config.selfHosted,
-          isLanguagePack: this.config.langpack,
           io: this.io,
         },
       );

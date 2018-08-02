@@ -674,29 +674,6 @@ describe('Linter.getAddonMetadata()', () => {
     expect(FakeManifestParser.firstCall.args[2].selfHosted).toEqual(true);
   });
 
-  it('should pass isLanguagePack flag to ManifestJSONParser', async () => {
-    const addonLinter = new Linter({ _: ['bar'], langpack: true });
-    addonLinter.io = {
-      getFiles: async () => {
-        return {
-          'manifest.json': {},
-        };
-      },
-      getFileAsString: async () => {
-        return validManifestJSON({});
-      },
-    };
-
-    const FakeManifestParser = sinon.spy(ManifestJSONParser);
-    await addonLinter.getAddonMetadata({
-      ManifestJSONParser: FakeManifestParser,
-    });
-    sinon.assert.calledOnce(FakeManifestParser);
-    expect(
-      FakeManifestParser.firstCall.args[2].isLanguagePack).toEqual(true);
-  });
-
-
   it('should collect notices if no manifest', async () => {
     const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.io = {

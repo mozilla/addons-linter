@@ -69,7 +69,6 @@ const linter = linter.createInstance({
     output: 'none',
     boring: false,
     selfHosted: false,
-    langpack: false,
     // Lint only the selected files
     //   scanFile: ['path/...', ...]
     //

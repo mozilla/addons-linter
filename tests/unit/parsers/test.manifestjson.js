@@ -1072,7 +1072,6 @@ describe('ManifestJSONParser', () => {
       const json = validLangpackManifestJSON();
       const manifestJSONParser = new ManifestJSONParser(
         json, linter.collector, {
-          isLanguagePack: true,
           io: { files: {} },
         }
       );
@@ -1084,7 +1083,6 @@ describe('ManifestJSONParser', () => {
       const json = validLangpackManifestJSON({ langpack_id: null });
       const manifestJSONParser = new ManifestJSONParser(
         json, linter.collector, {
-          isLanguagePack: true,
           io: { files: {} },
         }
       );
