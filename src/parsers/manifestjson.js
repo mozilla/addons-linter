@@ -212,7 +212,14 @@ export default class ManifestJSONParser extends JSONParser {
         this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.strict_max_version) {
-      this.collector.addNotice(messages.STRICT_MAX_VERSION);
+        if (this.isDictionary) {
+          // Dictionaries should not have a strict_max_version at all.
+          this.isValid = false;
+          this.collector.addError(messages.STRICT_MAX_VERSION);
+        } else {
+          // Rest of the extensions can, even though it's not recommended.
+          this.collector.addNotice(messages.STRICT_MAX_VERSION);
+        }
     }
 
     if (isToolkitVersionString(this.parsedJSON.version)) {

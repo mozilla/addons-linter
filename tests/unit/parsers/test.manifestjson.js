@@ -353,9 +353,27 @@ describe('ManifestJSONParser', () => {
       });
       const manifestJSONParser = new ManifestJSONParser(json,
         addonLinter.collector);
-      console.log(addonLinter.collector.notices);
       expect(manifestJSONParser.isValid).toEqual(true);
       expect(addonLinter.collector.notices.length).toEqual(0);
+    });
+
+    it('errors on strict_max_version in dictionaries', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON({
+        applications: {
+          gecko: {
+            strict_max_version: '58.0',
+          },
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(json,
+        addonLinter.collector,
+        { io: { files: { 'path/to/fr.dic': '', 'path/to/fr.aff': '' } } }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      const { errors } = addonLinter.collector;
+      expect(errors[0].code).toEqual(messages.STRICT_MAX_VERSION.code);
+      expect(errors[0].message).toContain('strict_max_version');
     });
   });
 
@@ -1140,7 +1158,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
     });
 
-    it('throws warning on additional properties', () => {
+    it('throws error on additional properties', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validDictionaryManifestJSON({ content_scripts: ['foo.js'] });
       const manifestJSONParser = new ManifestJSONParser(
@@ -1180,7 +1198,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
     });
 
-    it('throws warning on additional properties', () => {
+    it('throws error on additional properties', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validLangpackManifestJSON({ content_scripts: ['foo.js'] });
       const manifestJSONParser = new ManifestJSONParser(
