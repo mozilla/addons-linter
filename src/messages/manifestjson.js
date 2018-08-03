@@ -166,10 +166,10 @@ export function manifestContentScriptFileMissing(path, type) {
   };
 }
 
-export const MANIFEST_DICTIONARY_FILE_NOT_FOUND = 'MANIFEST_DICTIONARY_FILE_NOT_FOUND';
+export const MANIFEST_DICT_NOT_FOUND = 'MANIFEST_DICT_NOT_FOUND';
 export function manifestDictionaryFileMissing(path) {
   return {
-    code: MANIFEST_DICTIONARY_FILE_NOT_FOUND,
+    code: MANIFEST_DICT_NOT_FOUND,
     legacyCode: null,
     message: i18n._('A dictionary file defined in the manifest could not be found.'),
     description:
@@ -180,6 +180,24 @@ export function manifestDictionaryFileMissing(path) {
     file: MANIFEST_JSON,
   };
 }
+
+export const MANIFEST_MULTIPLE_DICTS = {
+  code: 'MANIFEST_MULTIPLE_DICTS',
+  legacyCode: null,
+  message: i18n._('The manifest contains multiple dictionaries.'),
+  description:
+      i18n._('Multiple dictionaries were defined in the manifest, which is unsupported.'),
+  file: MANIFEST_JSON,
+};
+
+export const MANIFEST_EMPTY_DICTS = {
+  code: 'MANIFEST_EMPTY_DICTS',
+  legacyCode: null,
+  message: i18n._('The manifest contains a dictionaries object, but it is empty.'),
+  description:
+      i18n._('A dictionaries object was defined in the manifest, but it was empty.'),
+  file: MANIFEST_JSON,
+};
 
 // https://github.com/mozilla/addons-linter/issues/1650
 // Potentially temporary

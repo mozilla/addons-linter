@@ -1124,7 +1124,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
 
       assertHasMatchingError(linter.collector.errors, {
-        code: messages.MANIFEST_DICTIONARY_FILE_NOT_FOUND,
+        code: messages.MANIFEST_DICT_NOT_FOUND,
         message: 'A dictionary file defined in the manifest could not be found.',
         description: 'Dictionary file defined in the manifest could not be found at "path/to/fr.dic".',
       });
@@ -1141,7 +1141,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
 
       assertHasMatchingError(linter.collector.errors, {
-        code: messages.MANIFEST_DICTIONARY_FILE_NOT_FOUND,
+        code: messages.MANIFEST_DICT_NOT_FOUND,
         message: 'A dictionary file defined in the manifest could not be found.',
         description: 'Dictionary file defined in the manifest could not be found at "path/to/fr.aff".',
       });
@@ -1156,6 +1156,40 @@ describe('ManifestJSONParser', () => {
         }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
+    });
+
+    it('throws error on add-on containing multiple dictionaries', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON(
+        { dictionaries: { fr: 'fr.dic', de: 'de.dic' } });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_MULTIPLE_DICTS.code,
+        message: 'The manifest contains multiple dictionaries.',
+        description: 'Multiple dictionaries were defined in the manifest, which is unsupported.',
+      });
+    });
+
+    it('throws error on dictionary containing empty dictionaries object', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON(
+        { dictionaries: {} });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_EMPTY_DICTS.code,
+        message: 'The manifest contains a dictionaries object, but it is empty.',
+        description: 'A dictionaries object was defined in the manifest, but it was empty.',
+      });
     });
 
     it('throws error on additional properties', () => {

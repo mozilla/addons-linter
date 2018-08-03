@@ -190,6 +190,15 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.dictionaries) {
+      const numberOfDictionaries = Object.keys(
+        this.parsedJSON.dictionaries).length;
+      if (numberOfDictionaries < 1) {
+        this.collector.addError(messages.MANIFEST_EMPTY_DICTS);
+        this.isValid = false;
+      } else if (numberOfDictionaries > 1) {
+        this.collector.addError(messages.MANIFEST_MULTIPLE_DICTS);
+        this.isValid = false;
+      }
       Object.keys(this.parsedJSON.dictionaries).forEach((locale) => {
         const filepath = this.parsedJSON.dictionaries[locale];
         this.validateFileExistsInPackage(
@@ -212,14 +221,14 @@ export default class ManifestJSONParser extends JSONParser {
         this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.strict_max_version) {
-        if (this.isDictionary) {
-          // Dictionaries should not have a strict_max_version at all.
-          this.isValid = false;
-          this.collector.addError(messages.STRICT_MAX_VERSION);
-        } else {
-          // Rest of the extensions can, even though it's not recommended.
-          this.collector.addNotice(messages.STRICT_MAX_VERSION);
-        }
+      if (this.isDictionary) {
+        // Dictionaries should not have a strict_max_version at all.
+        this.isValid = false;
+        this.collector.addError(messages.STRICT_MAX_VERSION);
+      } else {
+        // Rest of the extensions can, even though it's not recommended.
+        this.collector.addNotice(messages.STRICT_MAX_VERSION);
+      }
     }
 
     if (isToolkitVersionString(this.parsedJSON.version)) {
