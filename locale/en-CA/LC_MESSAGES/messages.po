@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-08-05 18:51+0000\n"
+"PO-Revision-Date: 2018-08-05 21:31+0000\n"
 "Last-Translator: Kohei Yoshino <kohei.yoshino@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en_CA\n"
@@ -204,7 +204,7 @@ msgstr "Translation string is missing the message property"
 
 #: src/messages/locale-messagesjson.js:8
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "No “message” message property is set for a string (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
@@ -212,7 +212,7 @@ msgstr "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
-msgstr "\"strict_max_version\" not required."
+msgstr "“strict_max_version” not required."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
@@ -220,15 +220,15 @@ msgstr "An icon defined in the manifest could not be found in the package."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr "Icon could not be found at \"%(path)s\"."
+msgstr "Icon could not be found at “%(path)s”."
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr "Background script could not be found at \"%(path)s\"."
+msgstr "Background script could not be found at “%(path)s”."
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr "Background page could not be found at \"%(path)s\"."
+msgstr "Background page could not be found at “%(path)s”."
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
@@ -236,11 +236,11 @@ msgstr "The field is invalid."
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Content script defined in the manifest could not be found at “%(path)s”."
 
 #: src/messages/manifestjson.js:162
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Content script CSS file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Content script CSS file defined in the manifest could not be found at “%(path)s”."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -256,7 +256,7 @@ msgstr "Icons must be square."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr "Icon at \"%(path)s\" must be square."
+msgstr "Icon at “%(path)s” must be square."
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
@@ -268,15 +268,15 @@ msgstr "Corrupt image file"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr "Expected icon file at \"%(path)s\" is corrupted"
+msgstr "Expected icon file at “%(path)s” is corrupted"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr "The \"default_locale\" is missing localizations."
+msgstr "The “default_locale” is missing localizations."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr "The \"default_locale\" is missing but \"_locales\" exist."
+msgstr "The “default_locale” is missing but “_locales” exist."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
@@ -296,7 +296,7 @@ msgstr "Empty language directory"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr "messages.json file missing in \"%(path)s\""
+msgstr "messages.json file missing in “%(path)s”"
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
@@ -308,7 +308,7 @@ msgstr "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "\"manifest_version\" in the manifest.json is not a valid value"
+msgstr "“manifest_version” in the manifest.json is not a valid value"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -320,7 +320,7 @@ msgstr "A custom content_security_policy needs additional review."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr "The \"name\" property must be a string."
+msgstr "The “name” property must be a string."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -328,7 +328,7 @@ msgstr "See http://mzl.la/1STmr48 (MDN Docs) for more information."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr "The \"version\" property must be a string."
+msgstr "The “version” property must be a string."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
@@ -336,11 +336,11 @@ msgstr "See http://mzl.la/1kXIADa (MDN Docs) for more information."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "The \"version\" property uses a Firefox-specific format."
+msgstr "The “version” property uses a Firefox-specific format."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr "\"update_url\" is not allowed."
+msgstr "“update_url” is not allowed."
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
@@ -348,4 +348,4 @@ msgstr "The field is required."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr "The \"update_url\" property is not used by Firefox."
+msgstr "The “update_url” property is not used by Firefox."
