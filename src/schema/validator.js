@@ -129,8 +129,22 @@ export const validateLangPack = (...args) => {
   return isValid;
 };
 
+// Like with langpacks, we don't want additional properties in dictionaries,
+// and there is no separate schema file.
 const _validateDictionary = validator.compile({
-  ...schemaObject,
+  ...merge(
+    schemaObject, {
+      types: {
+        WebExtensionDictionaryManifest: {
+          $merge: {
+            with: {
+              additionalProperties: false,
+            },
+          },
+        },
+      },
+    }
+  ),
   id: 'dictionary-manifest',
   $ref: '#/types/WebExtensionDictionaryManifest',
 });
