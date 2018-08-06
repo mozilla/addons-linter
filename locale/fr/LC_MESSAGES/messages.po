@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-07-26 09:28+0000\n"
+"PO-Revision-Date: 2018-08-06 08:53+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -184,19 +184,19 @@ msgstr "Le nom de la chaîne est déjà réservé à un message prédéfini"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "L’emplacement pour le message est manquant"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "L’emplacement utilisé dans le message n’est pas défini."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "Le nom de l’emplacement contient des caractères invalides"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "L’emplacement ne possède pas de propriété de contenu"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
@@ -224,11 +224,11 @@ msgstr "Icône introuvable à l’emplacement « %(path)s »."
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Le script d’arrière-plan n’a pu être trouvé à l’emplacement « %(path)s »."
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "La page d’arrière-plan n’a pu être trouvée à l’emplacement « %(path)s »."
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
