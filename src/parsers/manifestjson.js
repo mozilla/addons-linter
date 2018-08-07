@@ -9,7 +9,7 @@ import upath from 'upath';
 
 import { getDefaultConfigValue } from 'yargs-options';
 import {
-  validateAddon, validateLangPack, validateStaticTheme,
+  validateAddon, validateDictionary, validateLangPack, validateStaticTheme,
 } from 'schema/validator';
 import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE, IMAGE_FILE_EXTENSIONS, LOCALES_DIRECTORY, MESSAGES_JSON } from 'const';
 import log from 'logger';
@@ -39,7 +39,6 @@ export default class ManifestJSONParser extends JSONParser {
   constructor(jsonString, collector, {
     filename = MANIFEST_JSON, RelaxedJSON = RJSON,
     selfHosted = getDefaultConfigValue('self-hosted'),
-    isLanguagePack = getDefaultConfigValue('langpack'),
     io = null,
   } = {}) {
     super(jsonString, collector, { filename });
@@ -57,7 +56,10 @@ export default class ManifestJSONParser extends JSONParser {
     } else {
       // We've parsed the JSON; now we can validate the manifest.
       this.selfHosted = selfHosted;
-      this.isLanguagePack = isLanguagePack;
+      this.isLanguagePack = Object.prototype.hasOwnProperty.call(
+        this.parsedJSON, 'langpack_id');
+      this.isDictionary = Object.prototype.hasOwnProperty.call(
+        this.parsedJSON, 'dictionaries');
       this.isStaticTheme = Object.prototype.hasOwnProperty.call(
         this.parsedJSON, 'theme');
       this.io = io;
@@ -118,6 +120,8 @@ export default class ManifestJSONParser extends JSONParser {
       validate = validateStaticTheme;
     } else if (this.isLanguagePack) {
       validate = validateLangPack;
+    } else if (this.isDictionary) {
+      validate = validateDictionary;
     }
 
     this.isValid = validate(this.parsedJSON);
@@ -185,6 +189,27 @@ export default class ManifestJSONParser extends JSONParser {
       });
     }
 
+    if (this.parsedJSON.dictionaries) {
+      const numberOfDictionaries = Object.keys(
+        this.parsedJSON.dictionaries).length;
+      if (numberOfDictionaries < 1) {
+        this.collector.addError(messages.MANIFEST_EMPTY_DICTS);
+        this.isValid = false;
+      } else if (numberOfDictionaries > 1) {
+        this.collector.addError(messages.MANIFEST_MULTIPLE_DICTS);
+        this.isValid = false;
+      }
+      Object.keys(this.parsedJSON.dictionaries).forEach((locale) => {
+        const filepath = this.parsedJSON.dictionaries[locale];
+        this.validateFileExistsInPackage(
+          filepath, 'binary', messages.manifestDictionaryFileMissing);
+        // A corresponding .aff file should exist for every .dic.
+        this.validateFileExistsInPackage(
+          filepath.replace(/\.dic$/, '.aff'), 'binary',
+          messages.manifestDictionaryFileMissing);
+      });
+    }
+
     if (!this.selfHosted && this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.update_url) {
@@ -192,10 +217,18 @@ export default class ManifestJSONParser extends JSONParser {
       this.isValid = false;
     }
 
-    if (this.parsedJSON.applications &&
+    if (!this.isLanguagePack &&
+        this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.strict_max_version) {
-      this.collector.addNotice(messages.STRICT_MAX_VERSION);
+      if (this.isDictionary) {
+        // Dictionaries should not have a strict_max_version at all.
+        this.isValid = false;
+        this.collector.addError(messages.STRICT_MAX_VERSION);
+      } else {
+        // Rest of the extensions can, even though it's not recommended.
+        this.collector.addNotice(messages.STRICT_MAX_VERSION);
+      }
     }
 
     if (isToolkitVersionString(this.parsedJSON.version)) {

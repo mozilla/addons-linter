@@ -87,35 +87,38 @@ Rules are sorted by severity.
 | ----------------------------|---------------|-------------------------------------|
 | `MANIFEST_UNUSED_UPDATE`    | notice        | update_url ignored in manifest.json |
 | `PROP_VERSION_TOOLKIT_ONLY` | notice        | version is in the toolkit format in manifest.json |
-| `CORRUPT_ICON_FILE`         | warning       | Icons must not be corrupt. |
+| `CORRUPT_ICON_FILE`         | warning       | Icons must not be corrupt |
 | `MANIFEST_CSP`              | warning       | content_security_policy in manifest.json means more review |
 | `MANIFEST_CSP_UNSAFE_EVAL`  | warning       | usage of 'unsafe-eval' is strongly discouraged |
 | `MANIFEST_PERMISSIONS`      | warning       | Unknown permission |
 | `NO_MESSAGES_FILE`          | warning       | When default_locale is specified a matching messages.json must exist |
 | `NO_DEFAULT_LOCALE`         | warning       | When _locales directory exists, default_locale must exist |
-| `UNSAFE_VAR_ASSIGNMENT`     | warning       | Assignment using dynamic, unsanitized values. |
+| `UNSAFE_VAR_ASSIGNMENT`     | warning       | Assignment using dynamic, unsanitized values |
 | `UNSUPPORTED_API`           | warning       | Unsupported or unknown browser API |
 | `DANGEROUS_EVAL`            | warning       | `eval` and the `Function` constructor are discouraged |
 | `STRICT_MAX_VERSION`        | warning       | strict_max_version not required |
 | `PREDEFINED_MESSAGE_NAME`   | warning       | String name is reserved for a predefined |
 | `MISSING_PLACEHOLDER`       | warning       | Placeholder for message is not |
-| `WRONG_ICON_EXTENSION`      | error         | Icons must have valid extension. |
+| `WRONG_ICON_EXTENSION`      | error         | Icons must have valid extension |
 | `MANIFEST_UPDATE_URL`       | error         | update_url not allowed in manifest.json |
 | `MANIFEST_FIELD_REQUIRED`   | error         | A required field is missing |
 | `MANIFEST_FIELD_INVALID`    | error         | A field is invalid |
 | `MANIFEST_BAD_PERMISSION`   | error         | Bad permission |
 | `JSON_BLOCK_COMMENTS`       | error         | Block Comments are not allowed in JSON |
-| `MANIFEST_INVALID_CONTENT`  | error         | Temporary error on content script `matches|
-| `CONTENT_SCRIPT_NOT_FOUND`  | error         | Content script file could not be |
-| `CONTENT_SCRIPT_EMPTY`      | error         | Content script file name should not be |
+| `MANIFEST_INVALID_CONTENT`  | error         | This add-on contains forbidden content |
+| `CONTENT_SCRIPT_NOT_FOUND`  | error         | Content script file could not be found |
+| `CONTENT_SCRIPT_EMPTY`      | error         | Content script file name should not be empty |
 | `NO_MESSAGE`                | error         | Translation string is missing the message |
-| `INVALID_MESSAGE_NAME`      | error         | String name contains invalid |
-| `INVALID_PLACEHOLDER_NAME`  | error         | Placeholder name contains invalid |
+| `INVALID_MESSAGE_NAME`      | error         | String name contains invalid characters |
+| `INVALID_PLACEHOLDER_NAME`  | error         | Placeholder name contains invalid characters |
 | `NO_PLACEHOLDER_CONTENT`    | error         | Placeholder is missing the content |
-| `JSON_INVALID`              | error         | JSON is not well formed. |
-| `JSON_DUPLICATE_KEY`        | error         | Duplicate key in JSON. |
+| `JSON_INVALID`              | error         | JSON is not well formed |
+| `JSON_DUPLICATE_KEY`        | error         | Duplicate key in JSON |
 | `MANIFEST_VERSION_INVALID`  | error         | manifest_version in manifest.json is not valid. |
 | `PROP_NAME_MISSING`         | error         | name property missing from manifest.json |
 | `PROP_NAME_INVALID`         | error         | name property is invalid in manifest.json |
 | `PROP_VERSION_MISSING`      | error         | version property missing from manifest.json |
 | `PROP_VERSION_INVALID`      | error         | version is invalid in manifest.json |
+| `MANIFEST_DICT_NOT_FOUND`   | error         | A dictionary file defined in the manifest could not be found |
+| `MANIFEST_MULTIPLE_DICTS`   | error         | Multiple dictionaries found |
+| `MANIFEST_EMPTY_DICTS`      | error         | Empty `dictionaries` object |

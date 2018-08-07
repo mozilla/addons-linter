@@ -1,6 +1,6 @@
 {
   "name": "addons-linter",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Mozilla Add-ons Linter",
   "main": "dist/addons-linter.js",
   "bin": {
@@ -55,7 +55,7 @@
     "glob": "7.1.2",
     "is-mergeable-object": "1.1.0",
     "jed": "1.1.1",
-    "os-locale": "2.1.0",
+    "os-locale": "3.0.0",
     "pino": "5.0.0-rc.4",
     "po2json": "0.4.5",
     "postcss": "6.0.23",
@@ -111,10 +111,10 @@
     "raw-loader": "0.5.1",
     "request": "2.87.0",
     "sinon": "6.0.1",
-    "tar": "4.4.4",
+    "tar": "4.4.6",
     "tar-fs": "^1.16.0",
     "tmp-promise": "^1.0.4",
-    "webpack": "4.15.0",
+    "webpack": "4.16.4",
     "webpack-cli": "3.1.0"
   },
   "optionalDependencies": {

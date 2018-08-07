@@ -8,6 +8,7 @@ import * as messages from 'messages';
 import {
   assertHasMatchingError,
   validManifestJSON,
+  validDictionaryManifestJSON,
   validLangpackManifestJSON,
   validStaticThemeManifestJSON,
   getStreamableIO,
@@ -339,6 +340,40 @@ describe('ManifestJSONParser', () => {
       const { notices } = addonLinter.collector;
       expect(notices[0].code).toEqual(messages.STRICT_MAX_VERSION.code);
       expect(notices[0].message).toContain('strict_max_version');
+    });
+
+    it('does not warn on strict_max_version in language packs', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validLangpackManifestJSON({
+        applications: {
+          gecko: {
+            strict_max_version: '58.0',
+          },
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(json,
+        addonLinter.collector);
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.notices.length).toEqual(0);
+    });
+
+    it('errors on strict_max_version in dictionaries', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON({
+        applications: {
+          gecko: {
+            strict_max_version: '58.0',
+          },
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(json,
+        addonLinter.collector,
+        { io: { files: { 'path/to/fr.dic': '', 'path/to/fr.aff': '' } } }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      const { errors } = addonLinter.collector;
+      expect(errors[0].code).toEqual(messages.STRICT_MAX_VERSION.code);
+      expect(errors[0].message).toContain('strict_max_version');
     });
   });
 
@@ -1066,13 +1101,120 @@ describe('ManifestJSONParser', () => {
     });
   });
 
+  describe('dictionary', () => {
+    it('supports simple valid dictionary', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON();
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: { 'path/to/fr.dic': '', 'path/to/fr.aff': '' } },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
+    it('does error if the dictionary file does not exist', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON();
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_DICT_NOT_FOUND,
+        message: 'A dictionary file defined in the manifest could not be found.',
+        description: 'Dictionary file defined in the manifest could not be found at "path/to/fr.dic".',
+      });
+    });
+
+    it('does error if the dictionary file exists but not the .aff file', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON();
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: { '/path/to/fr.dic': '' } },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_DICT_NOT_FOUND,
+        message: 'A dictionary file defined in the manifest could not be found.',
+        description: 'Dictionary file defined in the manifest could not be found at "path/to/fr.aff".',
+      });
+    });
+
+    it('throws error on dictionary file not ending with .dic', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON({ dictionaries: { fr: 'invalid.txt' } });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+    });
+
+    it('throws error on add-on containing multiple dictionaries', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON(
+        { dictionaries: { fr: 'fr.dic', de: 'de.dic' } });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_MULTIPLE_DICTS.code,
+        message: 'The manifest contains multiple dictionaries.',
+        description: 'Multiple dictionaries were defined in the manifest, which is unsupported.',
+      });
+    });
+
+    it('throws error on dictionary containing empty dictionaries object', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON(
+        { dictionaries: {} });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_EMPTY_DICTS.code,
+        message: 'The manifest contains a dictionaries object, but it is empty.',
+        description: 'A dictionaries object was defined in the manifest, but it was empty.',
+      });
+    });
+
+    it('throws error on additional properties', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON({ content_scripts: ['foo.js'] });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.JSON_INVALID.code,
+        message: '"/content_scripts" is an invalid additional property',
+        description: 'Your JSON file could not be parsed.',
+      });
+    });
+  });
+
   describe('langpack', () => {
     it('supports simple valid langpack', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validLangpackManifestJSON();
       const manifestJSONParser = new ManifestJSONParser(
         json, linter.collector, {
-          isLanguagePack: true,
           io: { files: {} },
         }
       );
@@ -1084,11 +1226,26 @@ describe('ManifestJSONParser', () => {
       const json = validLangpackManifestJSON({ langpack_id: null });
       const manifestJSONParser = new ManifestJSONParser(
         json, linter.collector, {
-          isLanguagePack: true,
           io: { files: {} },
         }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
+    });
+
+    it('throws error on additional properties', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validLangpackManifestJSON({ content_scripts: ['foo.js'] });
+      const manifestJSONParser = new ManifestJSONParser(
+        json, linter.collector, {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.JSON_INVALID.code,
+        message: '"/content_scripts" is an invalid additional property',
+        description: 'Your JSON file could not be parsed.',
+      });
     });
   });
 

@@ -16,7 +16,6 @@ jest.mock('cli', () => {
     getConfig: () => ({
       argv: {
         selfHosted: false,
-        langpack: false,
       },
     }),
     terminalWidth: () => 78,

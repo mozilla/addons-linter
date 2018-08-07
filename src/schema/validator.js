@@ -69,21 +69,9 @@ export const validateAddon = (...args) => {
   return isValid;
 };
 
-const _validateLangPack = validator.compile({
-  ...schemaObject,
-  id: 'langpack-manifest',
-  $ref: '#/types/WebExtensionLangpackManifest',
-});
-
-export const validateLangPack = (...args) => {
-  const isValid = _validateLangPack(...args);
-  validateLangPack.errors = filterErrors(_validateLangPack.errors);
-  return isValid;
-};
-
 // Create a new schema object that merges theme.json and the regular
 // manifest.json schema.
-// Then modify the result of that to allow `additionalProperties = false`
+// Then modify the result of that to set `additionalProperties = false`
 // so that additional properties are not allowed for themes.
 // We have to use deepmerge here to make sure we can overwrite the nested
 // structure and can use object-destructuring at the root level
@@ -110,6 +98,60 @@ const _validateStaticTheme = validator.compile({
 export const validateStaticTheme = (...args) => {
   const isValid = _validateStaticTheme(...args);
   validateStaticTheme.errors = filterErrors(_validateStaticTheme.errors);
+  return isValid;
+};
+
+// Like with static themes, we don't want additional properties in langpacks.
+// The only difference is, this time, there is no additional schema file, we
+// just need to reference WebExtensionLangpackManifest and merge it with the
+// object that has additionalProperties: false.
+const _validateLangPack = validator.compile({
+  ...merge(
+    schemaObject, {
+      types: {
+        WebExtensionLangpackManifest: {
+          $merge: {
+            with: {
+              additionalProperties: false,
+            },
+          },
+        },
+      },
+    }
+  ),
+  id: 'langpack-manifest',
+  $ref: '#/types/WebExtensionLangpackManifest',
+});
+
+export const validateLangPack = (...args) => {
+  const isValid = _validateLangPack(...args);
+  validateLangPack.errors = filterErrors(_validateLangPack.errors);
+  return isValid;
+};
+
+// Like with langpacks, we don't want additional properties in dictionaries,
+// and there is no separate schema file.
+const _validateDictionary = validator.compile({
+  ...merge(
+    schemaObject, {
+      types: {
+        WebExtensionDictionaryManifest: {
+          $merge: {
+            with: {
+              additionalProperties: false,
+            },
+          },
+        },
+      },
+    }
+  ),
+  id: 'dictionary-manifest',
+  $ref: '#/types/WebExtensionDictionaryManifest',
+});
+
+export const validateDictionary = (...args) => {
+  const isValid = _validateDictionary(...args);
+  validateDictionary.errors = filterErrors(_validateDictionary.errors);
   return isValid;
 };
 
