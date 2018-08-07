@@ -118,6 +118,17 @@ describe('JavaScript Scanner', () => {
     expect(linterMessages.length).toEqual(0);
   });
 
+  it('should support optional catch binding', async () => {
+    const code = oneLine`
+      try {} catch {}
+    `;
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages.length).toEqual(0);
+  });
+
   it('should create an error message when encountering a syntax error', async () => {
     let code = 'var m = "d;';
     let jsScanner = new JavaScriptScanner(code, 'badcode.js');
