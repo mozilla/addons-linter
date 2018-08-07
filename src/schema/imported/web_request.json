@@ -43,6 +43,33 @@
         "additionalProperties": {},
         "isInstanceOf": "StreamFilter"
       }
+    },
+    {
+      "name": "getSecurityInfo",
+      "type": "function",
+      "async": true,
+      "description": "Retrieves the security information for the request.  Returns a promise that will resolve to a SecurityInfo object.",
+      "parameters": [
+        {
+          "name": "requestId",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "optional": true,
+          "type": "object",
+          "properties": {
+            "certificateChain": {
+              "type": "boolean",
+              "description": "Include the entire certificate chain."
+            },
+            "rawDER": {
+              "type": "boolean",
+              "description": "Include raw certificate data for processing by the extension."
+            }
+          }
+        }
+      ]
     }
   ],
   "events": [
@@ -1343,6 +1370,188 @@
           ]
         }
       }
+    },
+    "CertificateInfo": {
+      "type": "object",
+      "description": "Contains the certificate properties of the request if it is a secure request.",
+      "properties": {
+        "subject": {
+          "type": "string"
+        },
+        "issuer": {
+          "type": "string"
+        },
+        "validity": {
+          "type": "object",
+          "description": "Contains start and end timestamps.",
+          "properties": {
+            "start": {
+              "type": "integer"
+            },
+            "end": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "start",
+            "end"
+          ]
+        },
+        "fingerprint": {
+          "type": "object",
+          "properties": {
+            "sha1": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "sha1",
+            "sha256"
+          ]
+        },
+        "serialNumber": {
+          "type": "string"
+        },
+        "isBuiltInRoot": {
+          "type": "boolean"
+        },
+        "subjectPublicKeyInfoDigest": {
+          "type": "object",
+          "properties": {
+            "sha256": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "sha256"
+          ]
+        },
+        "rawDER": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        }
+      },
+      "required": [
+        "subject",
+        "issuer",
+        "validity",
+        "fingerprint",
+        "serialNumber",
+        "isBuiltInRoot",
+        "subjectPublicKeyInfoDigest"
+      ]
+    },
+    "CertificateTransparencyStatus": {
+      "type": "string",
+      "enum": [
+        "not_applicable",
+        "policy_compliant",
+        "policy_not_enough_scts",
+        "policy_not_diverse_scts"
+      ]
+    },
+    "TransportWeaknessReasons": {
+      "type": "string",
+      "enum": [
+        "cipher"
+      ]
+    },
+    "SecurityInfo": {
+      "type": "object",
+      "description": "Contains the security properties of the request (ie. SSL/TLS information).",
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "insecure",
+            "weak",
+            "broken",
+            "secure"
+          ]
+        },
+        "errorMessage": {
+          "type": "string",
+          "description": "Error message if state is \"broken\""
+        },
+        "protocolVersion": {
+          "type": "string",
+          "description": "Protocol version if state is \"secure\"",
+          "enum": [
+            "TLSv1",
+            "TLSv1.1",
+            "TLSv1.2",
+            "TLSv1.3",
+            "unknown"
+          ]
+        },
+        "cipherSuite": {
+          "type": "string",
+          "description": "The cipher suite used in this request if state is \"secure\"."
+        },
+        "keaGroupName": {
+          "type": "string",
+          "description": "The key exchange algorithm used in this request if state is \"secure\"."
+        },
+        "signatureSchemeName": {
+          "type": "string",
+          "description": "The signature scheme used in this request if state is \"secure\"."
+        },
+        "certificates": {
+          "description": "Certificate data if state is \"secure\".  Will only contain one entry unless <code>certificateChain</code> is passed as an option.",
+          "type": "array",
+          "items": {
+            "$ref": "#/types/CertificateInfo"
+          }
+        },
+        "isDomainMismatch": {
+          "description": "The domain name does not match the certificate domain.",
+          "type": "boolean"
+        },
+        "isExtendedValidation": {
+          "type": "boolean"
+        },
+        "isNotValidAtThisTime": {
+          "description": "The certificate is either expired or is not yet valid.  See <code>CertificateInfo.validity</code> for start and end dates.",
+          "type": "boolean"
+        },
+        "isUntrusted": {
+          "type": "boolean"
+        },
+        "certificateTransparencyStatus": {
+          "allOf": [
+            {
+              "$ref": "#/types/CertificateTransparencyStatus"
+            },
+            {
+              "description": "Certificate transparency compliance per RFC 6962.  See <code>https://www.certificate-transparency.org/what-is-ct</code> for more information."
+            }
+          ]
+        },
+        "hsts": {
+          "type": "boolean",
+          "description": "True if host uses Strict Transport Security and state is \"secure\"."
+        },
+        "hpkp": {
+          "type": "string",
+          "description": "True if host uses Public Key Pinning and state is \"secure\"."
+        },
+        "weaknessReasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/types/TransportWeaknessReasons"
+          },
+          "description": "list of reasons that cause the request to be considered weak, if state is \"weak\""
+        }
+      },
+      "required": [
+        "state",
+        "certificates"
+      ]
     },
     "UploadData": {
       "type": "object",

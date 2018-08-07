@@ -230,12 +230,18 @@
               "$ref": "manifest#/types/IconPath"
             },
             "browser_style": {
-              "type": "boolean"
+              "type": "boolean",
+              "default": true
             },
             "default_panel": {
               "type": "string",
               "format": "strictRelativeUrl",
               "preprocess": "localize"
+            },
+            "open_at_install": {
+              "type": "boolean",
+              "default": true,
+              "description": "Whether or not the sidebar is opened at install. Default is <code>true</code>."
             }
           },
           "required": [

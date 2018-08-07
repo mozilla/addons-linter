@@ -149,7 +149,8 @@
                       "$ref": "manifest#/types/ExtensionURL"
                     },
                     "browser_style": {
-                      "type": "boolean"
+                      "type": "boolean",
+                      "default": true
                     },
                     "chrome_style": {
                       "type": "boolean"
@@ -604,6 +605,9 @@
         },
         {
           "$ref": "#/types/MatchPatternRestricted"
+        },
+        {
+          "$ref": "#/types/MatchPatternUnestricted"
         }
       ]
     },
@@ -617,6 +621,15 @@
         {
           "type": "string",
           "pattern": "^file:///.*$"
+        }
+      ]
+    },
+    "MatchPatternUnestricted": {
+      "description": "Mostly unrestricted match patterns for privileged add-ons. This should technically be rejected for unprivileged add-ons, but, reasons. The MatchPattern class will still refuse privileged schemes for those extensions.",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^resource://(\\*|\\*\\.[^*/]+|[^*/]+)/.*$|^about:"
         }
       ]
     },
