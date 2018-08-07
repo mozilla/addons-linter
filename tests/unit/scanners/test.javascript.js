@@ -14,6 +14,7 @@ import * as messages from 'messages';
 import { rules } from 'rules/javascript';
 import { apiToMessage } from 'utils';
 import JavaScriptScanner, { excludeRules } from 'scanners/javascript';
+import Linter from 'linter';
 
 import {
   fakeMessageData,
@@ -116,6 +117,17 @@ describe('JavaScript Scanner', () => {
 
     const { linterMessages } = await jsScanner.scan();
     expect(linterMessages.length).toEqual(0);
+  });
+
+  it('should support es6 modules', async () => {
+    const addonLinter = new Linter({
+      _: ['tests/fixtures/webextension_es6_module'],
+    });
+    addonLinter.print = sinon.stub();
+
+    await addonLinter.scan();
+    expect(addonLinter.collector.errors.length).toEqual(0);
+    expect(addonLinter.collector.warnings.length).toEqual(0);
   });
 
   it('should support optional catch binding', async () => {
@@ -392,13 +404,13 @@ describe('JavaScript Scanner', () => {
   });
 
   describe('scanner options tests', () => {
-    it('should define valid set of rules for linter', () => {
+    it('should define valid set of rules for linter', async () => {
       const jsScanner = new JavaScriptScanner('', 'filename.txt', {
         disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml',
       });
       const original = linterMock.defineRule;
       sinon.stub(linterMock, 'defineRule').callsFake(original);
-      jsScanner.scan(esLintMock, {
+      await jsScanner.scan(esLintMock, {
         _rules: {
           test: {},
           'no-eval': {},
@@ -410,6 +422,41 @@ describe('JavaScript Scanner', () => {
       });
       const spyCalls = linterMock.defineRule.getCalls();
       expect(spyCalls.length).toBe(1);
+    });
+  });
+
+  describe('detectSourceType', () => {
+    it('should detect module', async () => {
+      const code = oneLine`
+        import 'foo';
+      `;
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await jsScanner.scan();
+
+      expect(jsScanner.sourceType).toEqual('module');
+    });
+
+    it('should detect script', async () => {
+      const code = oneLine`
+        eval('foo');
+      `;
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await jsScanner.scan();
+
+      expect(jsScanner.sourceType).toEqual('script');
+    });
+
+    it('should default to script in case of SyntaxError', async () => {
+      const code = oneLine`
+        import foo
+      `;
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await jsScanner.scan();
+
+      expect(jsScanner.sourceType).toEqual('script');
     });
   });
 });

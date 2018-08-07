@@ -2,8 +2,7 @@ bin/download-import-tag
 bin/list-firefox-tags
 dist
 coverage
-tests/fixtures/jslibs
-tests/fixtures/coinminers
+tests/fixtures/**
 tests/**/*.json
 src/schema/imported/index.js
 locale/

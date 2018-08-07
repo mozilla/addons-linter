@@ -1,4 +1,4 @@
-import { extname } from 'path';
+import path from 'path';
 
 import columnify from 'columnify';
 import chalk from 'chalk';
@@ -294,12 +294,12 @@ export default class Linter {
   getScanner(filename) {
     if (filename.match(constants.HIDDEN_FILE_REGEX) ||
         filename.match(constants.FLAGGED_FILE_REGEX) ||
-        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filename)) ||
+        constants.FLAGGED_FILE_EXTENSIONS.includes(path.extname(filename)) ||
         filename.match(constants.ALREADY_SIGNED_REGEX)) {
       return FilenameScanner;
     }
 
-    switch (extname(filename)) {
+    switch (path.extname(filename)) {
       case '.css':
         return CSSScanner;
       case '.html':
@@ -473,7 +473,7 @@ export default class Linter {
       await this.scanFiles(filesWithoutJSLibraries);
 
       this.print(deps._console);
-      // This is skipped in the code coverage because the
+      // This is skipped in code coverage because the
       // test runs against un-instrumented code.
       /* istanbul ignore if */
       if (this.config.runAsBinary === true) {
