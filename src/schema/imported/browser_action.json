@@ -12,28 +12,31 @@
       "async": "callback",
       "parameters": [
         {
-          "name": "details",
-          "type": "object",
-          "properties": {
-            "title": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "description": "The string the browser action should display when moused over."
+          "$merge": {
+            "source": {
+              "$ref": "browserAction#/types/Details"
             },
-            "tabId": {
-              "type": "integer",
-              "description": "Limits the change to when a particular tab is selected. Automatically resets when the tab is closed."
+            "with": {
+              "name": "details",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "The string the browser action should display when moused over."
+                }
+              },
+              "required": [
+                "title"
+              ]
             }
-          },
-          "required": [
-            "title"
-          ]
+          }
         },
         {
           "type": "function",
@@ -50,14 +53,14 @@
       "async": "callback",
       "parameters": [
         {
-          "name": "details",
-          "type": "object",
-          "properties": {
-            "tabId": {
-              "type": "integer",
-              "description": "Specify the tab to get the title from. If no tab is specified, the non-tab-specific title is returned."
+          "allOf": [
+            {
+              "$ref": "#/types/Details"
+            },
+            {
+              "name": "details"
             }
-          }
+          ]
         },
         {
           "type": "function",
@@ -78,44 +81,47 @@
       "async": "callback",
       "parameters": [
         {
-          "name": "details",
-          "type": "object",
-          "properties": {
-            "imageData": {
-              "anyOf": [
-                {
-                  "$ref": "#/types/ImageDataType"
-                },
-                {
-                  "type": "object",
-                  "patternProperties": {
-                    "^[1-9]\\d*$": {
+          "$merge": {
+            "source": {
+              "$ref": "browserAction#/types/Details"
+            },
+            "with": {
+              "name": "details",
+              "type": "object",
+              "properties": {
+                "imageData": {
+                  "anyOf": [
+                    {
                       "$ref": "#/types/ImageDataType"
+                    },
+                    {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[1-9]\\d*$": {
+                          "$ref": "#/types/ImageDataType"
+                        }
+                      }
                     }
-                  }
-                }
-              ],
-              "description": "Either an ImageData object or a dictionary {size -> ImageData} representing icon to be set. If the icon is specified as a dictionary, the actual image to be used is chosen depending on screen's pixel density. If the number of image pixels that fit into one screen space unit equals <code>scale</code>, then image with size <code>scale</code> * 19 will be selected. Initially only scales 1 and 2 will be supported. At least one image must be specified. Note that 'details.imageData = foo' is equivalent to 'details.imageData = {'19': foo}'"
-            },
-            "path": {
-              "anyOf": [
-                {
-                  "type": "string"
+                  ],
+                  "description": "Either an ImageData object or a dictionary {size -> ImageData} representing icon to be set. If the icon is specified as a dictionary, the actual image to be used is chosen depending on screen's pixel density. If the number of image pixels that fit into one screen space unit equals <code>scale</code>, then image with size <code>scale</code> * 19 will be selected. Initially only scales 1 and 2 will be supported. At least one image must be specified. Note that 'details.imageData = foo' is equivalent to 'details.imageData = {'19': foo}'"
                 },
-                {
-                  "type": "object",
-                  "patternProperties": {
-                    "^[1-9]\\d*$": {
+                "path": {
+                  "anyOf": [
+                    {
                       "type": "string"
+                    },
+                    {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[1-9]\\d*$": {
+                          "type": "string"
+                        }
+                      }
                     }
-                  }
+                  ],
+                  "description": "Either a relative image path or a dictionary {size -> relative image path} pointing to icon to be set. If the icon is specified as a dictionary, the actual image to be used is chosen depending on screen's pixel density. If the number of image pixels that fit into one screen space unit equals <code>scale</code>, then image with size <code>scale</code> * 19 will be selected. Initially only scales 1 and 2 will be supported. At least one image must be specified. Note that 'details.path = foo' is equivalent to 'details.imageData = {'19': foo}'"
                 }
-              ],
-              "description": "Either a relative image path or a dictionary {size -> relative image path} pointing to icon to be set. If the icon is specified as a dictionary, the actual image to be used is chosen depending on screen's pixel density. If the number of image pixels that fit into one screen space unit equals <code>scale</code>, then image with size <code>scale</code> * 19 will be selected. Initially only scales 1 and 2 will be supported. At least one image must be specified. Note that 'details.path = foo' is equivalent to 'details.imageData = {'19': foo}'"
-            },
-            "tabId": {
-              "type": "integer",
-              "description": "Limits the change to when a particular tab is selected. Automatically resets when the tab is closed."
+              }
             }
           }
         },
@@ -134,29 +140,31 @@
       "async": "callback",
       "parameters": [
         {
-          "name": "details",
-          "type": "object",
-          "properties": {
-            "tabId": {
-              "type": "integer",
-              "minimum": 0,
-              "description": "Limits the change to when a particular tab is selected. Automatically resets when the tab is closed."
+          "$merge": {
+            "source": {
+              "$ref": "browserAction#/types/Details"
             },
-            "popup": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
+            "with": {
+              "name": "details",
+              "type": "object",
+              "properties": {
+                "popup": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "The html file to show in a popup.  If set to the empty string (''), no popup is shown."
                 }
-              ],
-              "description": "The html file to show in a popup.  If set to the empty string (''), no popup is shown."
+              },
+              "required": [
+                "popup"
+              ]
             }
-          },
-          "required": [
-            "popup"
-          ]
+          }
         },
         {
           "type": "function",
@@ -173,14 +181,14 @@
       "async": "callback",
       "parameters": [
         {
-          "name": "details",
-          "type": "object",
-          "properties": {
-            "tabId": {
-              "type": "integer",
-              "description": "Specify the tab to get the popup from. If no tab is specified, the non-tab-specific popup is returned."
+          "allOf": [
+            {
+              "$ref": "#/types/Details"
+            },
+            {
+              "name": "details"
             }
-          }
+          ]
         },
         {
           "type": "function",
@@ -201,28 +209,31 @@
       "async": "callback",
       "parameters": [
         {
-          "name": "details",
-          "type": "object",
-          "properties": {
-            "text": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "description": "Any number of characters can be passed, but only about four can fit in the space."
+          "$merge": {
+            "source": {
+              "$ref": "browserAction#/types/Details"
             },
-            "tabId": {
-              "type": "integer",
-              "description": "Limits the change to when a particular tab is selected. Automatically resets when the tab is closed."
+            "with": {
+              "name": "details",
+              "type": "object",
+              "properties": {
+                "text": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "Any number of characters can be passed, but only about four can fit in the space."
+                }
+              },
+              "required": [
+                "text"
+              ]
             }
-          },
-          "required": [
-            "text"
-          ]
+          }
         },
         {
           "type": "function",
@@ -235,18 +246,18 @@
     {
       "name": "getBadgeText",
       "type": "function",
-      "description": "Gets the badge text of the browser action. If no tab is specified, the non-tab-specific badge text is returned.",
+      "description": "Gets the badge text of the browser action. If no tab nor window is specified is specified, the global badge text is returned.",
       "async": "callback",
       "parameters": [
         {
-          "name": "details",
-          "type": "object",
-          "properties": {
-            "tabId": {
-              "type": "integer",
-              "description": "Specify the tab to get the badge text from. If no tab is specified, the non-tab-specific badge text is returned."
+          "allOf": [
+            {
+              "$ref": "#/types/Details"
+            },
+            {
+              "name": "details"
             }
-          }
+          ]
         },
         {
           "type": "function",
@@ -267,31 +278,34 @@
       "async": "callback",
       "parameters": [
         {
-          "name": "details",
-          "type": "object",
-          "properties": {
-            "color": {
-              "description": "An array of four integers in the range [0,255] that make up the RGBA color of the badge. For example, opaque red is <code>[255, 0, 0, 255]</code>. Can also be a string with a CSS value, with opaque red being <code>#FF0000</code> or <code>#F00</code>.",
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "$ref": "#/types/ColorArray"
-                },
-                {
-                  "type": "null"
-                }
-              ]
+          "$merge": {
+            "source": {
+              "$ref": "browserAction#/types/Details"
             },
-            "tabId": {
-              "type": "integer",
-              "description": "Limits the change to when a particular tab is selected. Automatically resets when the tab is closed."
+            "with": {
+              "name": "details",
+              "type": "object",
+              "properties": {
+                "color": {
+                  "description": "An array of four integers in the range [0,255] that make up the RGBA color of the badge. For example, opaque red is <code>[255, 0, 0, 255]</code>. Can also be a string with a CSS value, with opaque red being <code>#FF0000</code> or <code>#F00</code>.",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "$ref": "#/types/ColorArray"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "color"
+              ]
             }
-          },
-          "required": [
-            "color"
-          ]
+          }
         },
         {
           "type": "function",
@@ -308,14 +322,14 @@
       "async": "callback",
       "parameters": [
         {
-          "name": "details",
-          "type": "object",
-          "properties": {
-            "tabId": {
-              "type": "integer",
-              "description": "Specify the tab to get the badge background color from. If no tab is specified, the non-tab-specific badge background color is returned."
+          "allOf": [
+            {
+              "$ref": "#/types/Details"
+            },
+            {
+              "name": "details"
             }
-          }
+          ]
         },
         {
           "type": "function",
@@ -384,14 +398,14 @@
       "async": true,
       "parameters": [
         {
-          "name": "details",
-          "type": "object",
-          "properties": {
-            "tabId": {
-              "type": "integer",
-              "description": "Specify the tab to get the enabledness from. If no tab is specified, the non-tab-specific enabledness is returned."
+          "allOf": [
+            {
+              "$ref": "#/types/Details"
+            },
+            {
+              "name": "details"
             }
-          }
+          ]
         }
       ]
     },
@@ -450,7 +464,8 @@
               "preprocess": "localize"
             },
             "browser_style": {
-              "type": "boolean"
+              "type": "boolean",
+              "default": false
             },
             "default_area": {
               "description": "Defines the location the browserAction will appear by default.  The default location is navbar.",
@@ -474,6 +489,22 @@
     }
   },
   "types": {
+    "Details": {
+      "type": "object",
+      "description": "Specifies to which tab or window the value should be set, or from which one it should be retrieved. If no tab nor window is specified, the global value is set or retrieved.",
+      "properties": {
+        "tabId": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "When setting a value, it will be specific to the specified tab, and will automatically reset when the tab navigates. When getting, specifies the tab to get the value from; if there is no tab-specific value, the window one will be inherited."
+        },
+        "windowId": {
+          "type": "integer",
+          "minimum": -2,
+          "description": "When setting a value, it will be specific to the specified window. When getting, specifies the window to get the value from; if there is no window-specific value, the global one will be inherited."
+        }
+      }
+    },
     "ColorArray": {
       "type": "array",
       "items": {

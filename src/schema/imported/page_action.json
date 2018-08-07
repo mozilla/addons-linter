@@ -302,7 +302,8 @@
               "preprocess": "localize"
             },
             "browser_style": {
-              "type": "boolean"
+              "type": "boolean",
+              "default": false
             },
             "show_matches": {
               "type": "array",

@@ -1,9 +1,6 @@
 {
   "id": "theme",
   "description": "The theme API allows customizing of visual elements of the browser.",
-  "permissions": [
-    "theme"
-  ],
   "events": [
     {
       "name": "onUpdated",
@@ -44,6 +41,9 @@
       "type": "function",
       "async": true,
       "description": "Make complete updates to the theme. Resolves when the update has completed.",
+      "permissions": [
+        "theme"
+      ],
       "parameters": [
         {
           "type": "integer",
@@ -69,6 +69,9 @@
       "type": "function",
       "async": true,
       "description": "Removes the updates made to the theme.",
+      "permissions": [
+        "theme"
+      ],
       "parameters": [
         {
           "type": "integer",
@@ -179,6 +182,9 @@
               "$ref": "#/types/ThemeColor"
             },
             "tab_background_text": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "tab_background_separator": {
               "$ref": "#/types/ThemeColor"
             },
             "tab_loading": {
