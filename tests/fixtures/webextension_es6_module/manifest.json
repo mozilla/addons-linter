@@ -1,7 +1,7 @@
 {
   "applications": {
     "gecko": {
-      "id": "webExtTest@asamuzak.jp"
+      "id": "@webextension-guid"
     }
   },
   "description": "WebExtensions ES module test",
