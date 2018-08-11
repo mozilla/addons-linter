@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-07-22 16:53+0000\n"
+"PO-Revision-Date: 2018-08-11 08:01+0000\n"
 "Last-Translator: عمر <um.qshi@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ur\n"
@@ -52,7 +52,7 @@ msgstr ""
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
-msgstr ""
+msgstr "آپ کا FTL جائز نہیں ہے۔"
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
@@ -76,7 +76,7 @@ msgstr ""
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "اس API کی Firefox کی طرف سے تنصیب نہیں کی گئی۔"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
@@ -128,7 +128,7 @@ msgstr ""
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "آپ کا JSONجائز نہیں ہے۔"
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
