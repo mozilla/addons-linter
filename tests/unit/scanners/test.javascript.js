@@ -437,6 +437,18 @@ describe('JavaScript Scanner', () => {
       expect(jsScanner.sourceType).toEqual('module');
     });
 
+    it('should detect module (multiple statements)', async () => {
+      const code = oneLine`
+        let value = 0;
+        export { value };
+      `;
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await jsScanner.scan();
+
+      expect(jsScanner.sourceType).toEqual('module');
+    });
+
     it('should detect script', async () => {
       const code = oneLine`
         eval('foo');
