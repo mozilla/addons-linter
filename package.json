@@ -63,7 +63,7 @@
     "postcss": "6.0.23",
     "probe-image-size": "4.0.0",
     "relaxed-json": "1.0.1",
-    "semver": "5.5.0",
+    "semver": "5.5.1",
     "shelljs": "0.8.2",
     "source-map-support": "0.5.6",
     "strip-bom-stream": "3.0.0",
