@@ -27,6 +27,8 @@ for (let i = 0; i < supportedLangs.length; i++) {
     continue; // eslint-disable-line no-continue
   }
 
-  shell.exec(`msginit --no-translator --input=${templateDir}/messages.pot
-              --output-file=${outputFile} -l ${locale}`.replace('\n', ' '));
+  shell.exec(
+    `msginit --no-translator --input=${templateDir}/messages.pot
+              --output-file=${outputFile} -l ${locale}`.replace('\n', ' '),
+  );
 }
