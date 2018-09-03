@@ -1,10 +1,19 @@
 # exclude everything by default
 *.*
+
+# exclude these files
+bin/download-import-tag
+bin/list-firefox-tags
+package-lock.json
+LICENSE
+
 # exclude these directories
-/bin/
+/tmp/
 /dist/
 /locale/
 /node_modules/
+/tests/fixtures/
+
 # white-list files we want to process
 !*.js
 !*.md
