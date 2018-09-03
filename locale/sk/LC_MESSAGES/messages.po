@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-07-16 21:20+0000\n"
+"PO-Revision-Date: 2018-08-20 16:39+0000\n"
 "Last-Translator: Juraj Cigáň <kusavica@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -196,15 +196,15 @@ msgstr "Placeholder obsahuje neplatné znaky"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "Placeholderu chýba vlastnosť content"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "Reťazcu prekladu chýba vlastnosť message"
 
 #: src/messages/locale-messagesjson.js:8
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
+msgstr "Pre reťazec nie je nastavená správa vo vlastnosti „message“ (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
@@ -224,11 +224,11 @@ msgstr "V umiestnení „%(path)s“ nebola nájdená ikona."
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Skript nebol nájdený v „%(path)s“."
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Stránka pozadia nebola nájdená v „%(path)s“."
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
@@ -236,11 +236,11 @@ msgstr "Pole je neplatné."
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Skript obsahu definovaný v manifeste nebol nájdený v „%(path)s“."
 
 #: src/messages/manifestjson.js:162
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Skript obsahu súboru css definovaný v manifeste nebol nájdený v „%(path)s“."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -272,11 +272,11 @@ msgstr "Očakávaný súbor ikony v „%(path)s“ je poškodený"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "Jazyku „default_locale“ chýbajú preklady."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "Jazyk „default_locale“ chýba, no „_locales“ existuje."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
@@ -308,7 +308,7 @@ msgstr "Ďalšie informácie nájdete na https://mzl.la/1R1n1t0 (dokumentácia n
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "„manifest_version“ nie je v súbore manifest.json platná hodnota"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -316,11 +316,11 @@ msgstr "Ďalšie informácie nájdete na https://mzl.la/20PenXl (dokumentácia n
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "Vlastný content_security_policy vyžaduje dodatočné schválenie."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "Vlastnosť „name“ musí byť reťazec."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -328,7 +328,7 @@ msgstr "Ďalšie informácie nájdete na http://mzl.la/1STmr48 (dokumentácia na
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "Vlastnosť „version“ musí byť reťazec."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
@@ -336,7 +336,7 @@ msgstr "Ďalšie informácie nájdete na http://mzl.la/1kXIADa (dokumentácia na
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "Vlastnosť „version“ používa vo Firefoxe špecifický formát."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
@@ -348,4 +348,4 @@ msgstr "Toto pole je povinné."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "Vlastnosť „update_url“ nie je Firefoxom používaná."
