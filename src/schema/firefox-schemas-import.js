@@ -98,9 +98,11 @@ export function rewriteOptionalToRequired(schema) {
 function isUnrecognizedProperty(value) {
   if (typeof value === 'object') {
     const keys = Object.keys(value);
-    return keys.length === 1
-      && '$ref' in value
-      && UNRECOGNIZED_PROPERTY_REFS.includes(value.$ref);
+    return (
+      keys.length === 1 &&
+      '$ref' in value &&
+      UNRECOGNIZED_PROPERTY_REFS.includes(value.$ref)
+    );
   }
   return false;
 }
@@ -117,10 +119,11 @@ function rewriteIdRef(value, namespace = '') {
 export function rewriteValue(key, value, namespace) {
   if (Array.isArray(value)) {
     return value.map((val) => rewriteValue(key, val, namespace));
-  } if (key === 'additionalProperties'
-      && isUnrecognizedProperty(value)) {
+  }
+  if (key === 'additionalProperties' && isUnrecognizedProperty(value)) {
     return undefined;
-  } if (typeof value === 'object') {
+  }
+  if (typeof value === 'object') {
     if ('$ref' in value && Object.keys(value).length > 1) {
       const { $ref, ...rest } = value;
       if (Object.keys(rest).length === 1 && 'optional' in rest) {
@@ -139,25 +142,31 @@ export function rewriteValue(key, value, namespace) {
     const rewritten = inner.rewriteObject(value, namespace);
     if ('properties' in rewritten) {
       const { required, ...properties } = rewriteOptionalToRequired(
-        rewritten.properties);
+        rewritten.properties,
+      );
       if (required.length > 0) {
         return { ...rewritten, properties, required };
       }
       return { ...rewritten, properties };
     }
     return rewritten;
-  } if (key === '$ref') {
+  }
+  if (key === '$ref') {
     if (value.includes('#/types')) {
       return value;
-    } if (value in refMap) {
+    }
+    if (value in refMap) {
       return refMap[value];
     }
     return rewriteIdRef(value);
-  } if (key === 'type' && value === 'any') {
+  }
+  if (key === 'type' && value === 'any') {
     return undefined;
-  } if (key === 'id') {
+  }
+  if (key === 'id') {
     return undefined;
-  } if (key === 'pattern') {
+  }
+  if (key === 'pattern') {
     return rewritePatternFlags(value);
   }
   return value;
@@ -255,17 +264,22 @@ inner.updateWithAddonsLinterData = (firefoxSchemas, ourSchemas) => {
 
 export function loadTypes(types = []) {
   // Convert the array of types to an object.
-  return types.reduce((obj, type) => ({
-    ...obj,
-    [type.id]: type,
-  }), {});
+  return types.reduce(
+    (obj, type) => ({
+      ...obj,
+      [type.id]: type,
+    }),
+    {},
+  );
 }
 
 function rewriteExtendRefs(definition, namespace, types) {
   if (Array.isArray(definition)) {
-    return definition.map(
-      (value) => rewriteExtendRefs(value, namespace, types));
-  } if (typeof definition === 'object') {
+    return definition.map((value) =>
+      rewriteExtendRefs(value, namespace, types),
+    );
+  }
+  if (typeof definition === 'object') {
     return Object.keys(definition).reduce((obj, key) => {
       const value = definition[key];
       if (key === '$ref') {
@@ -361,8 +375,10 @@ export function foldSchemas(schemas) {
     const prefixedSchemas = schemasByPrefix[prefix];
     // Continue if there are multiple properties (baseNamespace and something
     // else) or there is one property that isn't baseNamespace.
-    return Object.keys(prefixedSchemas).length > 1
-      || !('baseNamespace' in prefixedSchemas);
+    return (
+      Object.keys(prefixedSchemas).length > 1 ||
+      !('baseNamespace' in prefixedSchemas)
+    );
   });
   if (!hasMatchingPrefixes) {
     return schemas;
@@ -403,14 +419,16 @@ inner.normalizeSchema = (schemas, file) => {
 
   if (filteredSchemas.length === 1) {
     // If there is only a manifest namespace then this just extends the manifest.
-    if (filteredSchemas[0].namespace === 'manifest'
-        && file !== 'manifest.json') {
+    if (
+      filteredSchemas[0].namespace === 'manifest' &&
+      file !== 'manifest.json'
+    ) {
       primarySchema = {
         namespace: file.slice(0, file.indexOf('.')),
       };
       extendSchemas = [filteredSchemas[0]];
     } else {
-      ([primarySchema] = filteredSchemas);
+      [primarySchema] = filteredSchemas;
       extendSchemas = [];
     }
   } else {
@@ -419,7 +437,9 @@ inner.normalizeSchema = (schemas, file) => {
   }
   const { namespace, types, ...rest } = primarySchema;
   const { types: extendTypes, ...extendRest } = rewriteExtend(
-    extendSchemas, namespace);
+    extendSchemas,
+    namespace,
+  );
   const updatedTypes = { ...loadTypes(types), ...extendTypes };
   return {
     ...rest,
@@ -439,7 +459,7 @@ inner.mergeSchemas = (schemaLists) => {
   Object.keys(schemaLists).forEach((namespace) => {
     const namespaceSchemas = schemaLists[namespace];
     if (namespaceSchemas.length === 1) {
-      ([schemas[namespace]] = namespaceSchemas);
+      [schemas[namespace]] = namespaceSchemas;
     } else {
       const file = `${namespace}.json`;
       const merged = namespaceSchemas.reduce((memo, { schema }) => {
@@ -468,9 +488,7 @@ export function processSchemas(schemas) {
   return inner.mapExtendToRef(mergedSchemasByNamespace);
 }
 
-const SKIP_SCHEMAS = [
-  'native_host_manifest.json',
-];
+const SKIP_SCHEMAS = ['native_host_manifest.json'];
 
 function readSchema(basePath, file) {
   return commentJson.parse(
@@ -483,7 +501,8 @@ function readSchema(basePath, file) {
 function writeSchema(basePath, file, schema) {
   fs.writeFileSync(
     path.join(basePath, file),
-    `${JSON.stringify(schema, undefined, 2)}\n`);
+    `${JSON.stringify(schema, undefined, 2)}\n`,
+  );
 }
 
 function schemaFiles(basePath) {
@@ -498,16 +517,25 @@ function writeSchemasToFile(basePath, importedPath, loadedSchemas) {
     writeSchema(importedPath, file, schema);
   });
   // Write out the index.js to easily import all schemas.
-  const imports = ids.filter((id) => { return id !== 'manifest'; }).map((id) => {
-    const { file } = loadedSchemas[id];
-    const basename = path.basename(file);
-    return `import ${id} from './${basename}'`;
-  }).join(';\n');
+  const imports = ids
+    .filter((id) => {
+      return id !== 'manifest';
+    })
+    .map((id) => {
+      const { file } = loadedSchemas[id];
+      const basename = path.basename(file);
+      return `import ${id} from './${basename}'`;
+    })
+    .join(';\n');
   const fileContents = `// This file is generated by the schema import script.
 
 ${imports};
 export default [
-  ${ids.filter((id) => { return id !== 'manifest'; }).join(',\n  ')},
+  ${ids
+    .filter((id) => {
+      return id !== 'manifest';
+    })
+    .join(',\n  ')},
 ];
 `;
   fs.writeFileSync(path.join(importedPath, 'index.js'), fileContents);
@@ -534,7 +562,9 @@ export function importSchemas(firefoxPath, ourPath, importedPath) {
   };
   const processedSchemas = processSchemas(rawSchemas);
   const updatedSchemas = inner.updateWithAddonsLinterData(
-    processedSchemas, ourSchemas);
+    processedSchemas,
+    ourSchemas,
+  );
   writeSchemasToFile(firefoxPath, importedPath, updatedSchemas);
 }
 

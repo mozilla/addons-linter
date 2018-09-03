@@ -38,8 +38,9 @@ describe('firefox schema import', () => {
   }
 
   function removeDir(dirPath) {
-    fs.readdirSync(dirPath).forEach(
-      (file) => unlinkSync(path.join(dirPath, file)));
+    fs.readdirSync(dirPath).forEach((file) =>
+      unlinkSync(path.join(dirPath, file)),
+    );
     fs.rmdirSync(dirPath);
   }
 
@@ -96,10 +97,7 @@ describe('firefox schema import', () => {
       expect(rewriteOptionalToRequired(obj)).toEqual({
         foo: { type: 'string' },
         bar: {
-          allOf: [
-            { $ref: '#/types/Whatever' },
-            { description: 'a thing' },
-          ],
+          allOf: [{ $ref: '#/types/Whatever' }, { description: 'a thing' }],
         },
         baz: { type: 'boolean' },
         required: ['baz'],
@@ -110,20 +108,14 @@ describe('firefox schema import', () => {
       const obj = {
         foo: { type: 'string', optional: true },
         bar: {
-          allOf: [
-            { $ref: '#/types/Whatever' },
-            { type: 'string' },
-          ],
+          allOf: [{ $ref: '#/types/Whatever' }, { type: 'string' }],
         },
         baz: { type: 'boolean' },
       };
       expect(rewriteOptionalToRequired(obj)).toEqual({
         foo: { type: 'string' },
         bar: {
-          allOf: [
-            { $ref: '#/types/Whatever' },
-            { type: 'string' },
-          ],
+          allOf: [{ $ref: '#/types/Whatever' }, { type: 'string' }],
         },
         baz: { type: 'boolean' },
         required: ['bar', 'baz'],
@@ -186,9 +178,9 @@ describe('firefox schema import', () => {
       });
 
       it('throws on an unknown pattern with flags', () => {
-        expect(
-          () => rewriteValue('pattern', '(?i)^abc$')
-        ).toThrow('pattern (?i)^abc$ must be rewritten');
+        expect(() => rewriteValue('pattern', '(?i)^abc$')).toThrow(
+          'pattern (?i)^abc$ must be rewritten',
+        );
       });
 
       it('rewrites known patterns', () => {
@@ -202,9 +194,9 @@ describe('firefox schema import', () => {
 
     it('updates $ref to JSON pointer', () => {
       expect(rewriteValue('$ref', 'Manifest')).toEqual('#/types/Manifest');
-      expect(
-        rewriteValue('$ref', 'extension_types.Timer')
-      ).toEqual('extension_types#/types/Timer');
+      expect(rewriteValue('$ref', 'extension_types.Timer')).toEqual(
+        'extension_types#/types/Timer',
+      );
     });
 
     it("doesn't update $refs that have been updated already", () => {
@@ -214,9 +206,11 @@ describe('firefox schema import', () => {
 
     it('handles arrays', () => {
       const original = [{ type: 'string' }, { type: 'any' }, { $ref: 'Foo' }];
-      expect(rewriteValue('anyOf', original)).toEqual(
-        [{ type: 'string' }, {}, { $ref: '#/types/Foo' }]
-      );
+      expect(rewriteValue('anyOf', original)).toEqual([
+        { type: 'string' },
+        {},
+        { $ref: '#/types/Foo' },
+      ]);
     });
 
     it('writes out a required when needed', () => {
@@ -274,17 +268,21 @@ describe('firefox schema import', () => {
 
     it('strips UnrecognizedProperty in additionalProperties', () => {
       expect(
-        rewriteValue('additionalProperties', { $ref: 'UnrecognizedProperty' })
+        rewriteValue('additionalProperties', { $ref: 'UnrecognizedProperty' }),
       ).toEqual(undefined);
     });
 
     describe('known refs that are not specific', () => {
-      beforeEach(() => { refMap.SomeType = 'manifest#/types/SomeType'; });
-      afterEach(() => { delete refMap.SomeType; });
+      beforeEach(() => {
+        refMap.SomeType = 'manifest#/types/SomeType';
+      });
+      afterEach(() => {
+        delete refMap.SomeType;
+      });
 
       it('get rewritten to good paths', () => {
         expect(rewriteValue('$ref', 'SomeType')).toEqual(
-          'manifest#/types/SomeType'
+          'manifest#/types/SomeType',
         );
       });
     });
@@ -308,18 +306,21 @@ describe('firefox schema import', () => {
         isUndefined: undefined,
         keepMe: 'yay',
       };
-      expect(inner.rewriteObject(schema)).toEqual(
-        { anyOf: [{ type: 'string' }, { type: 'number' }], keepMe: 'yay' }
-      );
+      expect(inner.rewriteObject(schema)).toEqual({
+        anyOf: [{ type: 'string' }, { type: 'number' }],
+        keepMe: 'yay',
+      });
     });
   });
 
   describe('loadTypes', () => {
     it('converts the types array to an object', () => {
-      expect(loadTypes([
-        { id: 'Foo', type: 'object' },
-        { id: 'Bar', type: 'string' },
-      ])).toEqual({
+      expect(
+        loadTypes([
+          { id: 'Foo', type: 'object' },
+          { id: 'Bar', type: 'string' },
+        ]),
+      ).toEqual({
         Foo: { id: 'Foo', type: 'object' },
         Bar: { id: 'Bar', type: 'string' },
       });
@@ -335,12 +336,12 @@ describe('firefox schema import', () => {
       const schemas = [
         {
           namespace: 'manifest',
-          types: [{
-            $extend: 'WebExtensionManifest',
-            choices: [
-              { type: 'string', enum: ['cookies'] },
-            ],
-          }],
+          types: [
+            {
+              $extend: 'WebExtensionManifest',
+              choices: [{ type: 'string', enum: ['cookies'] }],
+            },
+          ],
         },
         {
           namespace: 'cookies',
@@ -391,14 +392,16 @@ describe('firefox schema import', () => {
       const schemas = [
         {
           namespace: 'manifest',
-          types: [{
-            $extend: 'WebExtensionManifest',
-            properties: {
-              chrome_url_overrides: {
-                type: 'object',
+          types: [
+            {
+              $extend: 'WebExtensionManifest',
+              properties: {
+                chrome_url_overrides: {
+                  type: 'object',
+                },
               },
             },
-          }],
+          ],
         },
       ];
       expect(inner.normalizeSchema(schemas, 'url_overrides.json')).toEqual({
@@ -431,9 +434,10 @@ describe('firefox schema import', () => {
         .stub(inner, 'rewriteObject')
         .withArgs({ normalized: true })
         .returns({ rewritten: true });
-      expect(inner.loadSchema({ the: 'schema' })).toEqual(
-        { id: 'Foo', rewritten: true }
-      );
+      expect(inner.loadSchema({ the: 'schema' })).toEqual({
+        id: 'Foo',
+        rewritten: true,
+      });
     });
 
     it('adds a $ref for the manifest namespace', () => {
@@ -470,35 +474,47 @@ describe('firefox schema import', () => {
         .stub(inner, 'mapExtendToRef')
         .withArgs({ mergeSchemas: 'done' })
         .returns({ mapExtendToRef: 'done' });
-      expect(processSchemas([
-        { file: 'one', schema: firstSchema },
-        { file: 'two', schema: secondSchema },
-      ])).toEqual({ mapExtendToRef: 'done' });
+      expect(
+        processSchemas([
+          { file: 'one', schema: firstSchema },
+          { file: 'two', schema: secondSchema },
+        ]),
+      ).toEqual({ mapExtendToRef: 'done' });
     });
   });
 
   describe('mergeSchemas', () => {
     it('merges schemas with the same namespace', () => {
-      const schemas = [{
-        file: 'foo_foo.json',
-        schema: [{
-          namespace: 'foo',
-          types: [{ id: 'Foo', type: 'string' }],
-        }],
-      }, {
-        file: 'foo_bar.json',
-        schema: [{
-          namespace: 'foo.bar',
-          types: [{ id: 'FooBar', type: 'number' }],
-          properties: { thing: {} },
-        }],
-      }, {
-        file: 'bar.json',
-        schema: [{
-          namespace: 'bar',
-          types: [{ id: 'Bar', type: 'string' }],
-        }],
-      }];
+      const schemas = [
+        {
+          file: 'foo_foo.json',
+          schema: [
+            {
+              namespace: 'foo',
+              types: [{ id: 'Foo', type: 'string' }],
+            },
+          ],
+        },
+        {
+          file: 'foo_bar.json',
+          schema: [
+            {
+              namespace: 'foo.bar',
+              types: [{ id: 'FooBar', type: 'number' }],
+              properties: { thing: {} },
+            },
+          ],
+        },
+        {
+          file: 'bar.json',
+          schema: [
+            {
+              namespace: 'bar',
+              types: [{ id: 'Bar', type: 'string' }],
+            },
+          ],
+        },
+      ];
 
       expect(processSchemas(schemas)).toEqual({
         foo: {
@@ -534,9 +550,11 @@ describe('firefox schema import', () => {
       if (typeof obj === 'object') {
         Object.keys(obj).forEach((key) => {
           const value = obj[key];
-          if (typeof value === 'object'
-              && value !== null
-              && !Object.isFrozen(value)) {
+          if (
+            typeof value === 'object' &&
+            value !== null &&
+            !Object.isFrozen(value)
+          ) {
             deepFreeze(value);
           }
         });
@@ -684,13 +702,17 @@ describe('firefox schema import', () => {
 
   describe('rewriteExtend', () => {
     it('moves $extend into definitions and refs', () => {
-      const schemas = [{
-        namespace: 'manifest',
-        types: [{
-          $extend: 'WebExtensionManifest',
-          properties: { something: { type: 'string' } },
-        }],
-      }];
+      const schemas = [
+        {
+          namespace: 'manifest',
+          types: [
+            {
+              $extend: 'WebExtensionManifest',
+              properties: { something: { type: 'string' } },
+            },
+          ],
+        },
+      ];
       const expected = {
         definitions: {
           WebExtensionManifest: {
@@ -709,13 +731,17 @@ describe('firefox schema import', () => {
     });
 
     it('returns types in an object of types', () => {
-      const schemas = [{
-        namespace: 'manifest',
-        types: [{
-          id: 'Yo',
-          properties: { hey: { type: 'string' } },
-        }],
-      }];
+      const schemas = [
+        {
+          namespace: 'manifest',
+          types: [
+            {
+              id: 'Yo',
+              properties: { hey: { type: 'string' } },
+            },
+          ],
+        },
+      ];
       const expected = {
         definitions: {},
         refs: {},
@@ -727,24 +753,31 @@ describe('firefox schema import', () => {
     });
 
     it('rewrites the extend for $refs defined in the object', () => {
-      const original = [{
-        namespace: 'manifest',
-        types: [{
-          id: 'KeyName',
-          type: 'string',
-        }, {
-          $extend: 'WebExtensionManifest',
-          properties: {
-            browser_action: {
-              type: 'object',
-              additionalProperties: { $ref: 'UnrecognizedProperty' },
-              properties: { default_title: { type: 'string', optional: true } },
-              optional: true,
+      const original = [
+        {
+          namespace: 'manifest',
+          types: [
+            {
+              id: 'KeyName',
+              type: 'string',
             },
-            whatever: { $ref: 'KeyName' },
-          },
-        }],
-      }];
+            {
+              $extend: 'WebExtensionManifest',
+              properties: {
+                browser_action: {
+                  type: 'object',
+                  additionalProperties: { $ref: 'UnrecognizedProperty' },
+                  properties: {
+                    default_title: { type: 'string', optional: true },
+                  },
+                  optional: true,
+                },
+                whatever: { $ref: 'KeyName' },
+              },
+            },
+          ],
+        },
+      ];
       const expected = {
         definitions: {
           WebExtensionManifest: {
@@ -775,15 +808,19 @@ describe('firefox schema import', () => {
     });
 
     it('throws if there is no $extend or id', () => {
-      const schemas = [{
-        namespace: 'manifest',
-        types: [{
-          properties: { uhoh: { type: 'number' } },
-        }],
-      }];
-      expect(
-        () => rewriteExtend(schemas, 'foo')
-      ).toThrow('$extend or id is required');
+      const schemas = [
+        {
+          namespace: 'manifest',
+          types: [
+            {
+              properties: { uhoh: { type: 'number' } },
+            },
+          ],
+        },
+      ];
+      expect(() => rewriteExtend(schemas, 'foo')).toThrow(
+        '$extend or id is required',
+      );
     });
   });
 
@@ -822,8 +859,8 @@ describe('firefox schema import', () => {
                 strict_min_version: {
                   default: '42a1',
                   description:
-                    'Minimum version of Gecko to support. '
-                    + "Defaults to '42a1'. (Requires Gecko 45)",
+                    'Minimum version of Gecko to support. ' +
+                    "Defaults to '42a1'. (Requires Gecko 45)",
                   pattern: '^[0-9]{1,3}(\\.[a-z0-9]+)+$',
                 },
               },
@@ -841,8 +878,8 @@ describe('firefox schema import', () => {
                   strict_min_version: {
                     default: '42a1',
                     description:
-                      'Minimum version of Gecko to support. '
-                      + "Defaults to '42a1'. (Requires Gecko 45)",
+                      'Minimum version of Gecko to support. ' +
+                      "Defaults to '42a1'. (Requires Gecko 45)",
                     pattern: '^[0-9]{1,3}(\\.[a-z0-9]+)+$',
                     type: 'string',
                   },
@@ -853,7 +890,7 @@ describe('firefox schema import', () => {
         },
       };
       expect(
-        inner.updateWithAddonsLinterData(firefoxSchemas, ourSchemas)
+        inner.updateWithAddonsLinterData(firefoxSchemas, ourSchemas),
       ).toEqual(expected);
     });
 
@@ -879,9 +916,9 @@ describe('firefox schema import', () => {
           foo: { type: 'string', pattern: '[fF][oO]{2}' },
         },
       });
-      expect(
-        inner.updateWithAddonsLinterData(original, linterUpdates)
-      ).toEqual(expected);
+      expect(inner.updateWithAddonsLinterData(original, linterUpdates)).toEqual(
+        expected,
+      );
     });
 
     it('overwrites existing values', () => {
@@ -906,9 +943,9 @@ describe('firefox schema import', () => {
           foo: { type: 'string' },
         },
       });
-      expect(
-        inner.updateWithAddonsLinterData(original, linterUpdates)
-      ).toEqual(expected);
+      expect(inner.updateWithAddonsLinterData(original, linterUpdates)).toEqual(
+        expected,
+      );
     });
 
     it('extends arrays', () => {
@@ -933,59 +970,69 @@ describe('firefox schema import', () => {
           name: { type: 'string', enum: ['foo', 'bar', 'baz'] },
         },
       });
-      expect(
-        inner.updateWithAddonsLinterData(original, linterUpdates)
-      ).toEqual(expected);
+      expect(inner.updateWithAddonsLinterData(original, linterUpdates)).toEqual(
+        expected,
+      );
     });
 
     it('updates the first item of an allOf array', () => {
       const original = makeSchemaWithType('WebExtensionManifest', {
-        allOf: [{
-          properties: {
-            icons: {
-              type: 'object',
-              // eslint-disable-next-line no-useless-escape
-              patternProperties: { '\d+': { type: 'string' } },
+        allOf: [
+          {
+            properties: {
+              icons: {
+                type: 'object',
+                // eslint-disable-next-line no-useless-escape
+                patternProperties: { 'd+': { type: 'string' } },
+              },
             },
           },
-        }, {
-          $ref: 'browserAction#/definitions/WebExtensionManifest',
-        }, {
-          $ref: 'commands#/definitions/WebExtensionManifest',
-        }],
+          {
+            $ref: 'browserAction#/definitions/WebExtensionManifest',
+          },
+          {
+            $ref: 'commands#/definitions/WebExtensionManifest',
+          },
+        ],
       });
       const linterUpdates = {
         manifest: {
           types: {
             WebExtensionManifest: {
-              allOf: [{
-                properties: {
-                  icons: { additionalProperties: false },
+              allOf: [
+                {
+                  properties: {
+                    icons: { additionalProperties: false },
+                  },
                 },
-              }],
+              ],
             },
           },
         },
       };
       const expected = makeSchemaWithType('WebExtensionManifest', {
-        allOf: [{
-          properties: {
-            icons: {
-              type: 'object',
-              additionalProperties: false,
-              // eslint-disable-next-line no-useless-escape
-              patternProperties: { '\d+': { type: 'string' } },
+        allOf: [
+          {
+            properties: {
+              icons: {
+                type: 'object',
+                additionalProperties: false,
+                // eslint-disable-next-line no-useless-escape
+                patternProperties: { 'd+': { type: 'string' } },
+              },
             },
           },
-        }, {
-          $ref: 'browserAction#/definitions/WebExtensionManifest',
-        }, {
-          $ref: 'commands#/definitions/WebExtensionManifest',
-        }],
+          {
+            $ref: 'browserAction#/definitions/WebExtensionManifest',
+          },
+          {
+            $ref: 'commands#/definitions/WebExtensionManifest',
+          },
+        ],
       });
-      expect(
-        inner.updateWithAddonsLinterData(original, linterUpdates)
-      ).toEqual(expected);
+      expect(inner.updateWithAddonsLinterData(original, linterUpdates)).toEqual(
+        expected,
+      );
     });
 
     it('can create a copy of a namepsace with updates', () => {
@@ -1018,16 +1065,14 @@ describe('firefox schema import', () => {
           },
         },
       };
-      expect(
-        inner.updateWithAddonsLinterData(original, linterUpdates)
-      ).toEqual(expected);
+      expect(inner.updateWithAddonsLinterData(original, linterUpdates)).toEqual(
+        expected,
+      );
     });
   });
 
   describe('from filesystem', () => {
-    const schemaFiles = [
-      'manifest.json', 'cookies.json',
-    ];
+    const schemaFiles = ['manifest.json', 'cookies.json'];
     const firefoxPath = 'tests/fixtures/schema/firefox';
     const ourPath = 'tests/fixtures/schema/updates';
     const outputPath = 'tests/fixtures/schema/imported';
@@ -1045,7 +1090,7 @@ describe('firefox schema import', () => {
       importSchemas(firefoxPath, ourPath, outputPath);
       schemaFiles.forEach((file) => {
         expect(
-          JSON.parse(fs.readFileSync(path.join(outputPath, file)))
+          JSON.parse(fs.readFileSync(path.join(outputPath, file))),
         ).toEqual(JSON.parse(fs.readFileSync(path.join(expectedPath, file))));
       });
     });
@@ -1054,14 +1099,14 @@ describe('firefox schema import', () => {
       importSchemas(firefoxPath, ourPath, outputPath);
 
       expect(
-        fs.existsSync(path.join(expectedPath, 'native_host_manifest.json'))
+        fs.existsSync(path.join(expectedPath, 'native_host_manifest.json')),
       ).toEqual(false);
 
       // Dummy test to make sure we join correctly and the import
       // actually worked
-      expect(
-        fs.existsSync(path.join(expectedPath, 'manifest.json'))
-      ).toEqual(true);
+      expect(fs.existsSync(path.join(expectedPath, 'manifest.json'))).toEqual(
+        true,
+      );
     });
   });
 
@@ -1115,12 +1160,10 @@ describe('firefox schema import', () => {
           this.emit('error', new Error('stream error'));
         },
       });
-      sinon
-        .stub(tar, 'Parse')
-        .returns(extractedStream);
+      sinon.stub(tar, 'Parse').returns(extractedStream);
       expect(fs.readdirSync(outputPath)).toEqual([]);
       await expect(
-        fetchSchemas({ inputPath: 'mozilla-central.tgz', outputPath })
+        fetchSchemas({ inputPath: 'mozilla-central.tgz', outputPath }),
       ).rejects.toThrow();
     });
   });
@@ -1141,10 +1184,7 @@ describe('firefox schema import', () => {
 
   describe('foldSchemas', () => {
     it('does not fold non-matching schemas', () => {
-      const schemas = [
-        { namespace: 'manifest' },
-        { namespace: 'omnibox' },
-      ];
+      const schemas = [{ namespace: 'manifest' }, { namespace: 'omnibox' }];
       // Copy the schemas so we can verify they're unchanged and un-mutated.
       const expectedSchemas = schemas.map((schema) => ({ ...schema }));
       expect(foldSchemas(schemas)).toEqual(expectedSchemas);
@@ -1156,20 +1196,24 @@ describe('firefox schema import', () => {
         {
           namespace: 'privacy.network',
           properties: { networkPredictionEnabled: {} },
-          types: [{
-            id: 'IPHandlingPolicy',
-            type: 'string',
-            enum: ['default', 'disable_non_proxied_udp'],
-          }],
+          types: [
+            {
+              id: 'IPHandlingPolicy',
+              type: 'string',
+              enum: ['default', 'disable_non_proxied_udp'],
+            },
+          ],
         },
         {
           namespace: 'privacy',
           permissions: ['privacy'],
           properties: { foo: {} },
-          types: [{
-            $extend: 'permission',
-            choices: [{ type: 'string', enum: ['privacy'] }],
-          }],
+          types: [
+            {
+              $extend: 'permission',
+              choices: [{ type: 'string', enum: ['privacy'] }],
+            },
+          ],
         },
         {
           namespace: 'privacy.websites',
@@ -1190,14 +1234,17 @@ describe('firefox schema import', () => {
               properties: { thirdPartyCookiesAllowed: {} },
             },
           },
-          types: [{
-            $extend: 'permission',
-            choices: [{ type: 'string', enum: ['privacy'] }],
-          }, {
-            id: 'IPHandlingPolicy',
-            type: 'string',
-            enum: ['default', 'disable_non_proxied_udp'],
-          }],
+          types: [
+            {
+              $extend: 'permission',
+              choices: [{ type: 'string', enum: ['privacy'] }],
+            },
+            {
+              id: 'IPHandlingPolicy',
+              type: 'string',
+              enum: ['default', 'disable_non_proxied_udp'],
+            },
+          ],
         },
       ]);
     });
@@ -1279,9 +1326,9 @@ describe('firefox schema import', () => {
           properties: { createSidebar: {} },
         },
       ];
-      expect(
-        () => foldSchemas(schemas)
-      ).toThrow(/may only have one level of nesting/);
+      expect(() => foldSchemas(schemas)).toThrow(
+        /may only have one level of nesting/,
+      );
     });
 
     it('throws if there is more than one matching namespace', () => {
@@ -1366,17 +1413,22 @@ describe('firefox schema import', () => {
 
   describe('$import', () => {
     it('rewrites a $import to a $merge', () => {
-      const schemaWithImport = [{
-        namespace: 'manifest',
-        types: [{
-          id: 'ManifestBase',
-          properties: { name: { type: 'string' } },
-        }, {
-          id: 'WebExtensionManifest',
-          $import: 'ManifestBase',
-          properties: { something: { type: 'boolean' } },
-        }],
-      }];
+      const schemaWithImport = [
+        {
+          namespace: 'manifest',
+          types: [
+            {
+              id: 'ManifestBase',
+              properties: { name: { type: 'string' } },
+            },
+            {
+              id: 'WebExtensionManifest',
+              $import: 'ManifestBase',
+              properties: { something: { type: 'boolean' } },
+            },
+          ],
+        },
+      ];
       const result = inner.loadSchema(schemaWithImport, 'dollar-import.json');
       expect(result).toEqual({
         id: 'dollar-import',

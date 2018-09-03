@@ -2,7 +2,6 @@ import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 
-
 describe('opendialog_remote_uri', () => {
   it('should warn on remote uris passed to openDialog', async () => {
     const code = `foo.openDialog("https://foo.com/bar/");

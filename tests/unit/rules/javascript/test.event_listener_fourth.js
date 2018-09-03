@@ -11,14 +11,13 @@ describe('event_listener_fourth', () => {
 
     const { linterMessages } = await jsScanner.scan();
     expect(linterMessages.length).toEqual(1);
-    expect(linterMessages[0].code).toEqual(
-      messages.EVENT_LISTENER_FOURTH.code
-    );
+    expect(linterMessages[0].code).toEqual(messages.EVENT_LISTENER_FOURTH.code);
     expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
   });
 
   it('should allow a false literal', async () => {
-    const code = 'window.addEventListener("click", function(){}, false, false);';
+    const code =
+      'window.addEventListener("click", function(){}, false, false);';
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     const { linterMessages } = await jsScanner.scan();
@@ -26,14 +25,13 @@ describe('event_listener_fourth', () => {
   });
 
   it('should not allow a truthy literal', async () => {
-    const code = 'window.addEventListener("click", function(){}, false, "true");';
+    const code =
+      'window.addEventListener("click", function(){}, false, "true");';
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     const { linterMessages } = await jsScanner.scan();
     expect(linterMessages.length).toEqual(1);
-    expect(linterMessages[0].code).toEqual(
-      messages.EVENT_LISTENER_FOURTH.code
-    );
+    expect(linterMessages[0].code).toEqual(messages.EVENT_LISTENER_FOURTH.code);
     expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
   });
 
@@ -52,9 +50,7 @@ describe('event_listener_fourth', () => {
 
     const { linterMessages } = await jsScanner.scan();
     expect(linterMessages.length).toEqual(1);
-    expect(linterMessages[0].code).toEqual(
-      messages.EVENT_LISTENER_FOURTH.code
-    );
+    expect(linterMessages[0].code).toEqual(messages.EVENT_LISTENER_FOURTH.code);
     expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
   });
 
@@ -92,9 +88,7 @@ describe('event_listener_fourth', () => {
 
     const { linterMessages } = await jsScanner.scan();
     expect(linterMessages.length).toEqual(1);
-    expect(linterMessages[0].code).toEqual(
-      messages.EVENT_LISTENER_FOURTH.code
-    );
+    expect(linterMessages[0].code).toEqual(messages.EVENT_LISTENER_FOURTH.code);
     expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
   });
 
@@ -105,9 +99,7 @@ describe('event_listener_fourth', () => {
 
     const { linterMessages } = await jsScanner.scan();
     expect(linterMessages.length).toEqual(1);
-    expect(linterMessages[0].code).toEqual(
-      messages.EVENT_LISTENER_FOURTH.code
-    );
+    expect(linterMessages[0].code).toEqual(messages.EVENT_LISTENER_FOURTH.code);
     expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
   });
 });

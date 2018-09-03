@@ -2,7 +2,6 @@ import { VALIDATION_WARNING } from 'const';
 import { isStrictRelativeUrl } from 'schema/formats';
 import * as messages from 'messages';
 
-
 export async function warnOnRemoteScript($, filename) {
   const linterMessages = [];
 
@@ -14,7 +13,7 @@ export async function warnOnRemoteScript($, filename) {
         Object.assign({}, messages.REMOTE_SCRIPT, {
           type: VALIDATION_WARNING,
           file: filename,
-        })
+        }),
       );
     }
   });

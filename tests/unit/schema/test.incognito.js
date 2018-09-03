@@ -5,7 +5,6 @@ import { validateAddon } from 'schema/validator';
 import { validManifest } from './helpers';
 import { assertHasMatchingError } from '../helpers';
 
-
 describe('/incognito', () => {
   it('"spanning" should be valid', () => {
     const manifest = cloneDeep(validManifest);

@@ -10,7 +10,8 @@ describe('deepmerge', () => {
   it('throws an error if you try to specify your own opts', () => {
     const base = { foo: [{ bar: 'BAR' }] };
     const add = { foo: [{ baz: 'BAZ' }] };
-    expect(() => merge(base, add, { some: 'opts' }))
-      .toThrow(/use the deepmerge package directly/);
+    expect(() => merge(base, add, { some: 'opts' })).toThrow(
+      /use the deepmerge package directly/,
+    );
   });
 });

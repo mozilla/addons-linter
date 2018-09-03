@@ -6,7 +6,6 @@ import { oneLine } from 'common-tags';
 import { IOBase } from 'io/base';
 import log from 'logger';
 
-
 /*
  * Simple Promise wrapper for the Yauzl unzipping lib to unpack add-on .xpis.
  * Note: We're using the autoclose feature of yauzl as a result every operation
@@ -43,8 +42,10 @@ export class Xpi extends IOBase {
     }
     if (this.entries.includes(entry.fileName)) {
       log.info('Found duplicate file entry: "%s" in package', entry.fileName);
-      reject(new Error(oneLine`DuplicateZipEntry: Entry
-        "${entry.fileName}" has already been seen`));
+      reject(
+        new Error(oneLine`DuplicateZipEntry: Entry
+        "${entry.fileName}" has already been seen`),
+      );
       return;
     }
     this.entries.push(entry.fileName);
@@ -144,11 +145,9 @@ export class Xpi extends IOBase {
           return;
         }
         readStream.pipe(
-          firstChunkStream({ chunkLength },
-            (_, enc) => {
-              resolve(enc);
-            }
-          )
+          firstChunkStream({ chunkLength }, (_, enc) => {
+            resolve(enc);
+          }),
         );
       });
     });

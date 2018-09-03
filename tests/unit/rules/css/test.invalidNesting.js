@@ -4,7 +4,6 @@ import * as messages from 'messages';
 import { VALIDATION_WARNING } from 'const';
 import CSSScanner from 'scanners/css';
 
-
 describe('CSS Rule InvalidNesting', () => {
   it('should detect invalid nesting', async () => {
     const code = oneLine`/* I'm a comment */
@@ -18,7 +17,7 @@ describe('CSS Rule InvalidNesting', () => {
     const { linterMessages } = await cssScanner.scan();
     expect(linterMessages.length).toEqual(1);
     expect(linterMessages[0].code).toEqual(
-      messages.INVALID_SELECTOR_NESTING.code
+      messages.INVALID_SELECTOR_NESTING.code,
     );
     expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
   });
@@ -50,7 +49,7 @@ describe('CSS Rule InvalidNesting', () => {
     const { linterMessages } = await cssScanner.scan();
     expect(linterMessages.length).toEqual(1);
     expect(linterMessages[0].code).toEqual(
-      messages.INVALID_SELECTOR_NESTING.code
+      messages.INVALID_SELECTOR_NESTING.code,
     );
     expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
   });

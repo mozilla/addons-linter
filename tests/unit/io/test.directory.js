@@ -4,7 +4,6 @@ import { Directory } from 'io';
 
 import { readStringFromStream } from '../helpers';
 
-
 describe('Directory.getFiles()', () => {
   it('should return cached data when available', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
@@ -68,9 +67,9 @@ describe('Directory._getPath()', () => {
     const myDirectory = new Directory('tests/fixtures/io/');
 
     await myDirectory.getFiles();
-    await expect(
-      myDirectory.getPath('whatever')
-    ).rejects.toThrow('"whatever" does not exist in this dir.');
+    await expect(myDirectory.getPath('whatever')).rejects.toThrow(
+      '"whatever" does not exist in this dir.',
+    );
   });
 
   it('should reject if path does not start with base', async () => {
@@ -79,9 +78,9 @@ describe('Directory._getPath()', () => {
       '../file1.txt': {},
     };
 
-    await expect(
-      myDirectory.getPath('../file1.txt')
-    ).rejects.toThrow('Path argument must be relative');
+    await expect(myDirectory.getPath('../file1.txt')).rejects.toThrow(
+      'Path argument must be relative',
+    );
   });
 
   it("should reject if path starts with '/'", async () => {
@@ -90,9 +89,9 @@ describe('Directory._getPath()', () => {
       '/file1.txt': {},
     };
 
-    await expect(
-      myDirectory.getPath('/file1.txt')
-    ).rejects.toThrow('Path argument must be relative');
+    await expect(myDirectory.getPath('/file1.txt')).rejects.toThrow(
+      'Path argument must be relative',
+    );
   });
 });
 
@@ -103,24 +102,32 @@ describe('Directory.getFileAsStream()', () => {
 
     const readStream = await myDirectory.getFileAsStream('dir2/dir3/file3.txt');
 
-    await expect(
-      readStringFromStream(readStream)
-    ).resolves.toBe('123\n');
+    await expect(readStringFromStream(readStream)).resolves.toBe('123\n');
   });
 
   it('should not enforce utf-8 when encoding = null', async () => {
     const myDirectory = new Directory('tests/fixtures/io/');
     await myDirectory.getFiles();
 
-    const readStreamEncodingDefault = await myDirectory.getFileAsStream('dir2/dir3/file.png');
+    const readStreamEncodingDefault = await myDirectory.getFileAsStream(
+      'dir2/dir3/file.png',
+    );
 
     const readStreamEncodingNull = await myDirectory.getFileAsStream(
-      'dir2/dir3/file.png', {
+      'dir2/dir3/file.png',
+      {
         encoding: null,
-      });
+      },
+    );
 
-    const stringFromEncodingDefault = await readStringFromStream(readStreamEncodingDefault, 'binary');
-    const stringFromEncodingNull = await readStringFromStream(readStreamEncodingNull, 'binary');
+    const stringFromEncodingDefault = await readStringFromStream(
+      readStreamEncodingDefault,
+      'binary',
+    );
+    const stringFromEncodingNull = await readStringFromStream(
+      readStreamEncodingNull,
+      'binary',
+    );
 
     // Ensure that by setting the encoding to null, the utf-8 encoding is not enforced
     // while reading binary data from the stream.
@@ -128,7 +135,9 @@ describe('Directory.getFileAsStream()', () => {
 
     // Confirms that the default "utf-8" encoding behavior is still preserved when the encoding
     // is not been explicitly specified.
-    expect(stringFromEncodingDefault.slice(0, 8)).not.toEqual('\x89PNG\r\n\x1a\n');
+    expect(stringFromEncodingDefault.slice(0, 8)).not.toEqual(
+      '\x89PNG\r\n\x1a\n',
+    );
   });
 
   it('should reject if file is too big', async () => {
@@ -141,12 +150,11 @@ describe('Directory.getFileAsStream()', () => {
       'chrome.manifest': fakeFileMeta,
     };
 
-    await expect(
-      myDirectory.getFileAsStream('manifest.json')
-    ).rejects.toThrow('File "manifest.json" is too large');
+    await expect(myDirectory.getFileAsStream('manifest.json')).rejects.toThrow(
+      'File "manifest.json" is too large',
+    );
   });
 });
-
 
 describe('Directory.getFileAsString()', () => {
   it('should strip a BOM', async () => {
@@ -154,7 +162,7 @@ describe('Directory.getFileAsString()', () => {
 
     await myDirectory.getFiles();
     const content = await myDirectory.getFileAsString('dir3/foo.txt');
-    expect(content.charCodeAt(0)).not.toEqual(0xFEFF);
+    expect(content.charCodeAt(0)).not.toEqual(0xfeff);
   });
 
   it('should return a string', async () => {
@@ -162,7 +170,7 @@ describe('Directory.getFileAsString()', () => {
 
     await myDirectory.getFiles();
     await expect(
-      myDirectory.getFileAsString('dir2/dir3/file3.txt')
+      myDirectory.getFileAsString('dir2/dir3/file3.txt'),
     ).resolves.toBe('123\n');
   });
 
@@ -182,9 +190,9 @@ describe('Directory.getFileAsString()', () => {
       return Promise.resolve(fakeStreamEmitter);
     };
 
-    await expect(
-      myDirectory.getFileAsString('manifest.json')
-    ).rejects.toThrow('¡hola!');
+    await expect(myDirectory.getFileAsString('manifest.json')).rejects.toThrow(
+      '¡hola!',
+    );
   });
 
   it('should reject if file is too big', async () => {
@@ -197,9 +205,9 @@ describe('Directory.getFileAsString()', () => {
       'chrome.manifest': fakeFileMeta,
     };
 
-    await expect(
-      myDirectory.getFileAsString('manifest.json')
-    ).rejects.toThrow('File "manifest.json" is too large');
+    await expect(myDirectory.getFileAsString('manifest.json')).rejects.toThrow(
+      'File "manifest.json" is too large',
+    );
   });
 });
 

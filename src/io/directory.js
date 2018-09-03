@@ -43,8 +43,8 @@ export class Directory extends IOBase {
     // This is belt and braces. Should never happen that a file was in
     // the files object and yet doesn't meet these requirements.
     if (
-      !filePath.startsWith(absoluteDirPath)
-      || relativeFilePath.startsWith('/')
+      !filePath.startsWith(absoluteDirPath) ||
+      relativeFilePath.startsWith('/')
     ) {
       throw new Error(`Path argument must be relative to ${this.path}`);
     }

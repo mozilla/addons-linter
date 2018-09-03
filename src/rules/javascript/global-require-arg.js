@@ -10,9 +10,11 @@ export default {
     return {
       // eslint-disable-next-line consistent-return
       CallExpression(node) {
-        if (node.callee.name === 'require'
-            && node.arguments
-            && node.arguments.length) {
+        if (
+          node.callee.name === 'require' &&
+          node.arguments &&
+          node.arguments.length
+        ) {
           const firstArg = node.arguments[0];
           if (firstArg.type === 'Identifier') {
             const pathVar = getVariable(context, firstArg.name);

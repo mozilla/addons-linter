@@ -48,7 +48,10 @@ validator.addFormat('strictRelativeUrl', isStrictRelativeUrl);
 validator.addFormat('unresolvedRelativeUrl', isUnresolvedRelativeUrl);
 validator.addFormat('secureUrl', isSecureUrl);
 
-validator.addFormat('imageDataOrStrictRelativeUrl', imageDataOrStrictRelativeUrl);
+validator.addFormat(
+  'imageDataOrStrictRelativeUrl',
+  imageDataOrStrictRelativeUrl,
+);
 
 function filterErrors(errors) {
   if (errors) {
@@ -106,19 +109,17 @@ export const validateStaticTheme = (...args) => {
 // just need to reference WebExtensionLangpackManifest and merge it with the
 // object that has additionalProperties: false.
 const _validateLangPack = validator.compile({
-  ...merge(
-    schemaObject, {
-      types: {
-        WebExtensionLangpackManifest: {
-          $merge: {
-            with: {
-              additionalProperties: false,
-            },
+  ...merge(schemaObject, {
+    types: {
+      WebExtensionLangpackManifest: {
+        $merge: {
+          with: {
+            additionalProperties: false,
           },
         },
       },
-    }
-  ),
+    },
+  }),
   id: 'langpack-manifest',
   $ref: '#/types/WebExtensionLangpackManifest',
 });
@@ -132,19 +133,17 @@ export const validateLangPack = (...args) => {
 // Like with langpacks, we don't want additional properties in dictionaries,
 // and there is no separate schema file.
 const _validateDictionary = validator.compile({
-  ...merge(
-    schemaObject, {
-      types: {
-        WebExtensionDictionaryManifest: {
-          $merge: {
-            with: {
-              additionalProperties: false,
-            },
+  ...merge(schemaObject, {
+    types: {
+      WebExtensionDictionaryManifest: {
+        $merge: {
+          with: {
+            additionalProperties: false,
           },
         },
       },
-    }
-  ),
+    },
+  }),
   id: 'dictionary-manifest',
   $ref: '#/types/WebExtensionDictionaryManifest',
 });

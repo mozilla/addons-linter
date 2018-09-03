@@ -101,9 +101,11 @@ export function isSecureUrl(value) {
 export function imageDataOrStrictRelativeUrl(value) {
   // Do not accept a string which resolves as an absolute URL, or any
   // protocol-relative URL, except PNG or JPG data URLs.
-  return value.startsWith('data:image/png;base64,')
-    || value.startsWith('data:image/jpeg;base64,')
-    || isStrictRelativeUrl(value);
+  return (
+    value.startsWith('data:image/png;base64,') ||
+    value.startsWith('data:image/jpeg;base64,') ||
+    isStrictRelativeUrl(value)
+  );
 }
 
 export const isUnresolvedRelativeUrl = isStrictRelativeUrl;

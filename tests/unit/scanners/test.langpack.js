@@ -4,7 +4,6 @@ import PropertiesParser from 'parsers/properties';
 import DoctypeParser from 'parsers/doctype';
 import FluentParser from 'parsers/fluent';
 
-
 describe('LangpackScanner', () => {
   it('should report a proper scanner name', () => {
     expect(LangpackScanner.scannerName).toEqual('langpack');
@@ -43,7 +42,9 @@ describe('LangpackScanner', () => {
   it('should throw an error on unsupported file types', async () => {
     const langpackScanner = new LangpackScanner('', 'foo.js');
 
-    await expect(langpackScanner.scan()).rejects.toThrow('Unsupported file type');
+    await expect(langpackScanner.scan()).rejects.toThrow(
+      'Unsupported file type',
+    );
   });
 
   it('should throw an error if getContents fails', async () => {

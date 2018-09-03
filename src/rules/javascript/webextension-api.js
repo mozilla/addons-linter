@@ -15,8 +15,10 @@ export default {
             return context.report(node, apiToMessage(api));
           }
 
-          if (!context.settings.addonMetadata.id
-              && isTemporaryApi(namespace, property)) {
+          if (
+            !context.settings.addonMetadata.id &&
+            isTemporaryApi(namespace, property)
+          ) {
             return context.report(node, apiToMessage(api));
           }
         }

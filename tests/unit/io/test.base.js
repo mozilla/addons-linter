@@ -3,7 +3,6 @@ import { FLAGGED_FILE_MAGIC_NUMBERS_LENGTH } from 'const';
 
 import { unexpectedSuccess } from '../helpers';
 
-
 describe('io.IOBase()', () => {
   it('should init class props as expected', () => {
     const io = new IOBase('foo/bar');
@@ -80,8 +79,12 @@ describe('io.IOBase()', () => {
     const io = new IOBase('foo/bar');
     io.getChunkAsBuffer = sinon.stub();
     io.getFile('get-a-chunk-as-buffer', 'chunk');
-    expect(io.getChunkAsBuffer.calledWith('get-a-chunk-as-buffer',
-      FLAGGED_FILE_MAGIC_NUMBERS_LENGTH)).toBeTruthy();
+    expect(
+      io.getChunkAsBuffer.calledWith(
+        'get-a-chunk-as-buffer',
+        FLAGGED_FILE_MAGIC_NUMBERS_LENGTH,
+      ),
+    ).toBeTruthy();
   });
 
   it('should scan all files by default', () => {

@@ -4,7 +4,6 @@ import { validateLocaleMessages } from 'schema/validator';
 
 import { validLocaleMessagesJSON } from '../helpers';
 
-
 describe('messages', () => {
   it('should be valid', () => {
     const messages = cloneDeep(JSON.parse(validLocaleMessagesJSON()));
@@ -32,7 +31,9 @@ describe('messages', () => {
     delete messages.Placeh0lder_Test.placeholders.foo.content;
     validateLocaleMessages(messages);
     expect(validateLocaleMessages.errors.length).toEqual(1);
-    expect(validateLocaleMessages.errors[0].dataPath).toEqual('/Placeh0lder_Test/placeholders/foo/content');
+    expect(validateLocaleMessages.errors[0].dataPath).toEqual(
+      '/Placeh0lder_Test/placeholders/foo/content',
+    );
   });
 
   it('should fail on invalid placeholder name', () => {
@@ -40,6 +41,8 @@ describe('messages', () => {
     messages.Placeh0lder_Test.placeholders['invalid.placeholder'] = {};
     validateLocaleMessages(messages);
     expect(validateLocaleMessages.errors.length).toEqual(1);
-    expect(validateLocaleMessages.errors[0].dataPath).toEqual('/Placeh0lder_Test/placeholders/invalid.placeholder');
+    expect(validateLocaleMessages.errors[0].dataPath).toEqual(
+      '/Placeh0lder_Test/placeholders/invalid.placeholder',
+    );
   });
 });

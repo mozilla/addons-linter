@@ -18,7 +18,8 @@ function oldArrayMerge(target, source, optionsArgument) {
 
   source.forEach((e, i) => {
     if (typeof destination[i] === 'undefined') {
-      const cloneRequested = !optionsArgument || optionsArgument.clone !== false;
+      const cloneRequested =
+        !optionsArgument || optionsArgument.clone !== false;
       const shouldClone = cloneRequested && isMergeableObject(e);
       destination[i] = shouldClone ? clone(e, optionsArgument) : e;
     } else if (isMergeableObject(e)) {
@@ -33,7 +34,9 @@ function oldArrayMerge(target, source, optionsArgument) {
 
 export default (a, b, opts) => {
   if (opts) {
-    throw new Error('opts are not supported, use the deepmerge package directly');
+    throw new Error(
+      'opts are not supported, use the deepmerge package directly',
+    );
   }
   return merge(a, b, { arrayMerge: oldArrayMerge });
 };

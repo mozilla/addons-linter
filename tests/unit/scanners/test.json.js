@@ -2,7 +2,6 @@ import Linter from 'linter';
 import JSONScanner from 'scanners/json';
 import * as messages from 'messages';
 
-
 describe('JSONScanner', () => {
   it('should report a proper scanner name', () => {
     expect(JSONScanner.scannerName).toEqual('json');
@@ -23,9 +22,13 @@ describe('JSONScanner', () => {
 
   it('should use special parser for messages.json', async () => {
     const addonsLinter = new Linter({ _: ['foo'] });
-    const jsonScanner = new JSONScanner('{ "blah": {} }', '_locales/en/messages.json', {
-      collector: addonsLinter.collector,
-    });
+    const jsonScanner = new JSONScanner(
+      '{ "blah": {} }',
+      '_locales/en/messages.json',
+      {
+        collector: addonsLinter.collector,
+      },
+    );
 
     await jsonScanner.scan();
 

@@ -16,7 +16,6 @@ fs.readdirSync('node_modules')
     nodeModules[mod] = `commonjs ${mod}`;
   });
 
-
 module.exports = {
   // Set the webpack4 mode 'none' for compatibility with the behavior
   // of the webpack3 bundling step.
@@ -45,20 +44,15 @@ module.exports = {
   },
   externals: nodeModules,
   plugins: [
-    new webpack.BannerPlugin(
-      {
-        banner: 'require("source-map-support").install();',
-        raw: true,
-        entryOnly: false,
-      }
-    ),
+    new webpack.BannerPlugin({
+      banner: 'require("source-map-support").install();',
+      raw: true,
+      entryOnly: false,
+    }),
   ],
   resolve: {
     extensions: ['.js', '.json'],
-    modules: [
-      'src',
-      'node_modules',
-    ],
+    modules: ['src', 'node_modules'],
   },
   devtool: 'sourcemap',
 };

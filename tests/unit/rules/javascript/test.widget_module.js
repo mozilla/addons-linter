@@ -14,9 +14,7 @@ describe('widget_module', () => {
 
     const { linterMessages } = await jsScanner.scan();
     expect(linterMessages.length).toEqual(1);
-    expect(linterMessages[0].code).toEqual(
-      messages.UNEXPECTED_GLOGAL_ARG.code
-    );
+    expect(linterMessages[0].code).toEqual(messages.UNEXPECTED_GLOGAL_ARG.code);
     expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
   });
 });

@@ -5,7 +5,6 @@ import PropertiesParser from 'parsers/properties';
 import DoctypeParser from 'parsers/doctype';
 import BaseScanner from 'scanners/base';
 
-
 export default class LangpackScanner extends BaseScanner {
   static get scannerName() {
     return 'langpack';

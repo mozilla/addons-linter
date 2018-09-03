@@ -321,5 +321,4 @@ export const BANNED_LIBRARIES = [
   'jquery.2.2.4.jquery.min.js',
 ];
 
-export const UNADVISED_LIBRARIES = [
-];
+export const UNADVISED_LIBRARIES = [];

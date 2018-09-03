@@ -3,7 +3,6 @@ import LocaleMessagesJSONParser from 'parsers/locale-messagesjson';
 import BaseScanner from 'scanners/base';
 import { MESSAGES_JSON, LOCALES_DIRECTORY } from 'const';
 
-
 export default class JSONScanner extends BaseScanner {
   static get scannerName() {
     return 'json';
@@ -16,19 +15,20 @@ export default class JSONScanner extends BaseScanner {
   async scan() {
     const json = await this.getContents();
 
-    if (this.filename.endsWith(MESSAGES_JSON) && this.filename.startsWith(LOCALES_DIRECTORY)) {
+    if (
+      this.filename.endsWith(MESSAGES_JSON) &&
+      this.filename.startsWith(LOCALES_DIRECTORY)
+    ) {
       const localeMessagesJSONParser = new LocaleMessagesJSONParser(
         json,
         this.options.collector,
-        { filename: this.filename }
+        { filename: this.filename },
       );
       localeMessagesJSONParser.parse();
     } else {
-      const jsonParser = new JSONParser(
-        json,
-        this.options.collector,
-        { filename: this.filename }
-      );
+      const jsonParser = new JSONParser(json, this.options.collector, {
+        filename: this.filename,
+      });
       jsonParser.parse();
     }
 

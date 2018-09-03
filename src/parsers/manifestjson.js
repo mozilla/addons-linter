@@ -9,16 +9,25 @@ import upath from 'upath';
 
 import { getDefaultConfigValue } from 'yargs-options';
 import {
-  validateAddon, validateDictionary, validateLangPack, validateStaticTheme,
+  validateAddon,
+  validateDictionary,
+  validateLangPack,
+  validateStaticTheme,
 } from 'schema/validator';
-import { MANIFEST_JSON, PACKAGE_EXTENSION, CSP_KEYWORD_RE, IMAGE_FILE_EXTENSIONS, LOCALES_DIRECTORY, MESSAGES_JSON } from 'const';
+import {
+  MANIFEST_JSON,
+  PACKAGE_EXTENSION,
+  CSP_KEYWORD_RE,
+  IMAGE_FILE_EXTENSIONS,
+  LOCALES_DIRECTORY,
+  MESSAGES_JSON,
+} from 'const';
 import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
 import { parseCspPolicy, normalizePath } from 'utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
-
 
 async function getImageMetadata(io, iconPath) {
   // Get a non-utf8 input stream by setting encoding to null.
@@ -34,13 +43,17 @@ async function getImageMetadata(io, iconPath) {
   return probeImageSize(data);
 }
 
-
 export default class ManifestJSONParser extends JSONParser {
-  constructor(jsonString, collector, {
-    filename = MANIFEST_JSON, RelaxedJSON = RJSON,
-    selfHosted = getDefaultConfigValue('self-hosted'),
-    io = null,
-  } = {}) {
+  constructor(
+    jsonString,
+    collector,
+    {
+      filename = MANIFEST_JSON,
+      RelaxedJSON = RJSON,
+      selfHosted = getDefaultConfigValue('self-hosted'),
+      io = null,
+    } = {},
+  ) {
     super(jsonString, collector, { filename });
 
     this.parse(RelaxedJSON);
@@ -57,11 +70,17 @@ export default class ManifestJSONParser extends JSONParser {
       // We've parsed the JSON; now we can validate the manifest.
       this.selfHosted = selfHosted;
       this.isLanguagePack = Object.prototype.hasOwnProperty.call(
-        this.parsedJSON, 'langpack_id');
+        this.parsedJSON,
+        'langpack_id',
+      );
       this.isDictionary = Object.prototype.hasOwnProperty.call(
-        this.parsedJSON, 'dictionaries');
+        this.parsedJSON,
+        'dictionaries',
+      );
       this.isStaticTheme = Object.prototype.hasOwnProperty.call(
-        this.parsedJSON, 'theme');
+        this.parsedJSON,
+        'theme',
+      );
       this.io = io;
       this._validate();
     }
@@ -88,9 +107,11 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (error.keyword === 'required') {
       baseObject = messages.MANIFEST_FIELD_REQUIRED;
-    } else if (error.dataPath.startsWith('/permissions')
-               && typeof error.data !== 'undefined'
-               && typeof error.data !== 'string') {
+    } else if (
+      error.dataPath.startsWith('/permissions') &&
+      typeof error.data !== 'undefined' &&
+      typeof error.data !== 'string'
+    ) {
       baseObject = messages.MANIFEST_BAD_PERMISSION;
       overrides.message = `Permissions ${error.message}.`;
     } else if (error.keyword === 'type') {
@@ -160,11 +181,17 @@ export default class ManifestJSONParser extends JSONParser {
         });
       }
       if (this.parsedJSON.background.page) {
-        this.validateFileExistsInPackage(this.parsedJSON.background.page, 'page');
+        this.validateFileExistsInPackage(
+          this.parsedJSON.background.page,
+          'page',
+        );
       }
     }
 
-    if (this.parsedJSON.content_scripts && this.parsedJSON.content_scripts.length) {
+    if (
+      this.parsedJSON.content_scripts &&
+      this.parsedJSON.content_scripts.length
+    ) {
       this.parsedJSON.content_scripts.forEach((scriptRule) => {
         if (scriptRule.matches && scriptRule.matches.length) {
           // Since `include_globs` only get's checked for patterns that are in
@@ -177,21 +204,27 @@ export default class ManifestJSONParser extends JSONParser {
         if (scriptRule.js && scriptRule.js.length) {
           scriptRule.js.forEach((script) => {
             this.validateFileExistsInPackage(
-              script, 'script', messages.manifestContentScriptFileMissing);
+              script,
+              'script',
+              messages.manifestContentScriptFileMissing,
+            );
           });
         }
         if (scriptRule.css && scriptRule.css.length) {
           scriptRule.css.forEach((style) => {
             this.validateFileExistsInPackage(
-              style, 'css', messages.manifestContentScriptFileMissing);
+              style,
+              'css',
+              messages.manifestContentScriptFileMissing,
+            );
           });
         }
       });
     }
 
     if (this.parsedJSON.dictionaries) {
-      const numberOfDictionaries = Object.keys(
-        this.parsedJSON.dictionaries).length;
+      const numberOfDictionaries = Object.keys(this.parsedJSON.dictionaries)
+        .length;
       if (numberOfDictionaries < 1) {
         this.collector.addError(messages.MANIFEST_EMPTY_DICTS);
         this.isValid = false;
@@ -202,25 +235,35 @@ export default class ManifestJSONParser extends JSONParser {
       Object.keys(this.parsedJSON.dictionaries).forEach((locale) => {
         const filepath = this.parsedJSON.dictionaries[locale];
         this.validateFileExistsInPackage(
-          filepath, 'binary', messages.manifestDictionaryFileMissing);
+          filepath,
+          'binary',
+          messages.manifestDictionaryFileMissing,
+        );
         // A corresponding .aff file should exist for every .dic.
         this.validateFileExistsInPackage(
-          filepath.replace(/\.dic$/, '.aff'), 'binary',
-          messages.manifestDictionaryFileMissing);
+          filepath.replace(/\.dic$/, '.aff'),
+          'binary',
+          messages.manifestDictionaryFileMissing,
+        );
       });
     }
 
-    if (!this.selfHosted && this.parsedJSON.applications
-        && this.parsedJSON.applications.gecko
-        && this.parsedJSON.applications.gecko.update_url) {
+    if (
+      !this.selfHosted &&
+      this.parsedJSON.applications &&
+      this.parsedJSON.applications.gecko &&
+      this.parsedJSON.applications.gecko.update_url
+    ) {
       this.collector.addError(messages.MANIFEST_UPDATE_URL);
       this.isValid = false;
     }
 
-    if (!this.isLanguagePack
-        && this.parsedJSON.applications
-        && this.parsedJSON.applications.gecko
-        && this.parsedJSON.applications.gecko.strict_max_version) {
+    if (
+      !this.isLanguagePack &&
+      this.parsedJSON.applications &&
+      this.parsedJSON.applications.gecko &&
+      this.parsedJSON.applications.gecko.strict_max_version
+    ) {
       if (this.isDictionary) {
         // Dictionaries should not have a strict_max_version at all.
         this.isValid = false;
@@ -237,7 +280,10 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (this.parsedJSON.default_locale) {
       const msg = path.join(
-        LOCALES_DIRECTORY, this.parsedJSON.default_locale, 'messages.json');
+        LOCALES_DIRECTORY,
+        this.parsedJSON.default_locale,
+        'messages.json',
+      );
 
       // Convert filename to unix path separator before
       // searching it into the scanned files map.
@@ -265,13 +311,20 @@ export default class ManifestJSONParser extends JSONParser {
       if (existsSync(rootPath)) {
         readdirSync(rootPath).forEach((langDir) => {
           if (statSync(path.join(rootPath, langDir)).isDirectory()) {
-            const filePath = path.join(LOCALES_DIRECTORY, langDir, MESSAGES_JSON);
+            const filePath = path.join(
+              LOCALES_DIRECTORY,
+              langDir,
+              MESSAGES_JSON,
+            );
 
             // Convert filename to unix path separator before
             // searching it into the scanned files map.
             if (!this.io.files[upath.toUnix(filePath)]) {
-              this.collector.addError(messages.noMessagesFileInLocales(
-                path.join(LOCALES_DIRECTORY, langDir)));
+              this.collector.addError(
+                messages.noMessagesFileInLocales(
+                  path.join(LOCALES_DIRECTORY, langDir),
+                ),
+              );
               this.isValid = false;
             }
           }
@@ -286,19 +339,28 @@ export default class ManifestJSONParser extends JSONParser {
       if (info.width !== info.height) {
         this.collector.addError(messages.iconIsNotSquare(iconPath));
         this.isValid = false;
-      } else if (info.mime !== 'image/svg+xml'
-                  && parseInt(info.width, 10) !== parseInt(expectedSize, 10)) {
-        this.collector.addWarning(messages.iconSizeInvalid({
-          path: iconPath,
-          expected: parseInt(expectedSize, 10),
-          actual: parseInt(info.width, 10),
-        }));
+      } else if (
+        info.mime !== 'image/svg+xml' &&
+        parseInt(info.width, 10) !== parseInt(expectedSize, 10)
+      ) {
+        this.collector.addWarning(
+          messages.iconSizeInvalid({
+            path: iconPath,
+            expected: parseInt(expectedSize, 10),
+            actual: parseInt(info.width, 10),
+          }),
+        );
       }
     } catch (err) {
-      log.debug(`Unexpected error raised while validating icon "${iconPath}"`, err);
-      this.collector.addWarning(messages.corruptIconFile({
-        path: iconPath,
-      }));
+      log.debug(
+        `Unexpected error raised while validating icon "${iconPath}"`,
+        err,
+      );
+      this.collector.addWarning(
+        messages.corruptIconFile({
+          path: iconPath,
+        }),
+      );
     }
   }
 
@@ -310,7 +372,14 @@ export default class ManifestJSONParser extends JSONParser {
       if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
         this.collector.addError(messages.manifestIconMissing(_path));
         this.isValid = false;
-      } else if (!IMAGE_FILE_EXTENSIONS.includes(_path.split('.').pop().toLowerCase())) {
+      } else if (
+        !IMAGE_FILE_EXTENSIONS.includes(
+          _path
+            .split('.')
+            .pop()
+            .toLowerCase(),
+        )
+      ) {
         this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
       } else {
         promises.push(this.validateIcon(_path, size));
@@ -319,11 +388,14 @@ export default class ManifestJSONParser extends JSONParser {
     return Promise.all(promises);
   }
 
-  validateFileExistsInPackage(filePath, type, messageFunc = messages.manifestBackgroundMissing) {
+  validateFileExistsInPackage(
+    filePath,
+    type,
+    messageFunc = messages.manifestBackgroundMissing,
+  ) {
     const _path = normalizePath(filePath);
     if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
-      this.collector.addError(messageFunc(
-        _path, type));
+      this.collector.addError(messageFunc(_path, type));
       this.isValid = false;
     }
   }
@@ -358,10 +430,12 @@ export default class ManifestJSONParser extends JSONParser {
 
         // If the 'default-src' is insecure, check whether the 'script-src'
         // makes it secure, ie 'script-src: self;'
-        if (insecureSrcDirective
-            && candidate === 'script-src'
-            && values.length === 1
-            && values[0] === '\'self\'') {
+        if (
+          insecureSrcDirective &&
+          candidate === 'script-src' &&
+          values.length === 1 &&
+          values[0] === "'self'"
+        ) {
           insecureSrcDirective = false;
         }
 
@@ -373,9 +447,9 @@ export default class ManifestJSONParser extends JSONParser {
             continue;
           }
 
-          const hasProtocol = (
-            (value.endsWith(':') && validProtocols.includes(value))
-            || (validProtocols.some((x) => value.startsWith(x))));
+          const hasProtocol =
+            (value.endsWith(':') && validProtocols.includes(value)) ||
+            validProtocols.some((x) => value.startsWith(x));
 
           if (hasProtocol) {
             if (candidate === 'default-src') {

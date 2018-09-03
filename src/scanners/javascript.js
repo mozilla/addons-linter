@@ -3,17 +3,12 @@ import { oneLine } from 'common-tags';
 import espree from 'espree';
 import vk from 'eslint-visitor-keys';
 
-import {
-  ESLINT_RULE_MAPPING,
-  ESLINT_TYPES,
-} from 'const';
+import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
 import { ensureFilenameExists } from 'utils';
 
-
 const ECMA_VERSION = 2019;
-
 
 export function excludeRules(excludeFrom = {}, excludeWhat = []) {
   return Object.keys(excludeFrom).reduce((result, ruleName) => {
@@ -37,9 +32,13 @@ export default class JavaScriptScanner {
     this.linterMessages = [];
     this.scannedFiles = [];
     this._rulesProcessed = 0;
-    this.disabledRules = typeof options.disabledRules === 'string' ? options.disabledRules.split(',')
-      .map((rule) => rule.trim())
-      .filter((notEmptyRule) => notEmptyRule) : [];
+    this.disabledRules =
+      typeof options.disabledRules === 'string'
+        ? options.disabledRules
+            .split(',')
+            .map((rule) => rule.trim())
+            .filter((notEmptyRule) => notEmptyRule)
+        : [];
     ensureFilenameExists(this.filename);
   }
 
@@ -51,11 +50,14 @@ export default class JavaScriptScanner {
     return 'javascript';
   }
 
-  async scan(_ESLint = ESLint, {
-    _rules = this._defaultRules,
-    _ruleMapping = ESLINT_RULE_MAPPING,
-    _messages = messages,
-  } = {}) {
+  async scan(
+    _ESLint = ESLint,
+    {
+      _rules = this._defaultRules,
+      _ruleMapping = ESLINT_RULE_MAPPING,
+      _messages = messages,
+    } = {},
+  ) {
     this._ESLint = ESLint;
     this.sourceType = this.detectSourceType(this.filename);
 
@@ -122,7 +124,8 @@ export default class JavaScriptScanner {
         if (typeof message.message === 'undefined') {
           throw new Error(
             oneLine`JS rules must pass a valid message as
-            the second argument to context.report()`);
+            the second argument to context.report()`,
+          );
         }
 
         // Fallback to looking up the message object by the message
@@ -134,12 +137,13 @@ export default class JavaScriptScanner {
         // message structure and allow us to optionally overwrite
         // their `message` and `description`.
         if (Object.prototype.hasOwnProperty.call(_messages, code)) {
-          ({
-            message: shortDescription,
-            description,
-          } = _messages[code]);
-        } else if (Object.prototype.hasOwnProperty.call(
-          messages.ESLINT_OVERWRITE_MESSAGE, message.ruleId)) {
+          ({ message: shortDescription, description } = _messages[code]);
+        } else if (
+          Object.prototype.hasOwnProperty.call(
+            messages.ESLINT_OVERWRITE_MESSAGE,
+            message.ruleId,
+          )
+        ) {
           const overwrites = messages.ESLINT_OVERWRITE_MESSAGE[message.ruleId];
           shortDescription = overwrites.message || message.message;
           description = overwrites.description || message.description;
@@ -173,10 +177,14 @@ export default class JavaScriptScanner {
 
   _getSourceType(node) {
     const possibleImportExportTypes = [
-      'ExportAllDeclaration', 'ExportDefaultDeclaration',
-      'ExportNamedDeclaration', 'ExportSpecifier',
-      'ImportDeclaration', 'ImportDefaultSpecifier',
-      'ImportNamespaceSpecifier', 'ImportSpecifier',
+      'ExportAllDeclaration',
+      'ExportDefaultDeclaration',
+      'ExportNamedDeclaration',
+      'ExportSpecifier',
+      'ImportDeclaration',
+      'ImportDefaultSpecifier',
+      'ImportNamespaceSpecifier',
+      'ImportSpecifier',
     ];
 
     if (possibleImportExportTypes.includes(node.type)) {

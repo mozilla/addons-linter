@@ -11,7 +11,9 @@ describe('Basic CLI tests', function cliCallback() {
     // Override yargs fail func so we can introspect the right errors
     // are happening when we hand it bogus input.
     this.fakeFail = sinon.stub();
-    cli = getConfig().exitProcess(false).fail(this.fakeFail);
+    cli = getConfig()
+      .exitProcess(false)
+      .fail(this.fakeFail);
   });
 
   it('should default logLevel type to "fatal"', () => {
@@ -52,8 +54,11 @@ describe('Basic CLI tests', function cliCallback() {
     expect(args.scanFile).toEqual('dir/test1.txt');
 
     args = cli.parse([
-      'foo/', '--scan-file', 'dir/test1.txt',
-      '--scan-file', 'dir/test2.txt',
+      'foo/',
+      '--scan-file',
+      'dir/test1.txt',
+      '--scan-file',
+      'dir/test2.txt',
     ]);
     expect(args.scanFile).toEqual(['dir/test1.txt', 'dir/test2.txt']);
 
@@ -68,14 +73,18 @@ describe('Basic CLI tests', function cliCallback() {
 
   it('should show error on missing xpi', () => {
     cli.parse([]);
-    expect(this.fakeFail.calledWithMatch(
-      'Not enough non-option arguments')).toBeTruthy();
+    expect(
+      this.fakeFail.calledWithMatch('Not enough non-option arguments'),
+    ).toBeTruthy();
   });
 
   it('should show error if incorrect output', () => {
     cli.parse(['-o', 'false', 'whatevs']);
-    expect(this.fakeFail.calledWithMatch(
-      'Invalid values:\n  Argument: output, Given: "false"')).toBeTruthy();
+    expect(
+      this.fakeFail.calledWithMatch(
+        'Invalid values:\n  Argument: output, Given: "false"',
+      ),
+    ).toBeTruthy();
   });
 
   it('should use 78 as a width if process.stdout.columns is undefined', () => {

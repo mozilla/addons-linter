@@ -2,7 +2,6 @@ import { oneLine } from 'common-tags';
 
 import { i18n } from 'utils';
 
-
 export const CSS_SYNTAX_ERROR = {
   code: 'CSS_SYNTAX_ERROR',
   // This will be overriden by the reason passed from the error.

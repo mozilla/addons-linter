@@ -4,7 +4,6 @@ import { validateStaticTheme } from 'schema/validator';
 
 import { validStaticThemeManifestJSON } from '../helpers';
 
-
 describe('static theme', () => {
   it('should be valid', () => {
     const manifest = cloneDeep(JSON.parse(validStaticThemeManifestJSON()));
@@ -37,6 +36,8 @@ describe('static theme', () => {
     validateStaticTheme(manifest);
     expect(validateStaticTheme.errors.length).toEqual(1);
     expect(validateStaticTheme.errors[0].dataPath).toEqual('/content_scripts');
-    expect(validateStaticTheme.errors[0].message).toEqual('is an invalid additional property');
+    expect(validateStaticTheme.errors[0].message).toEqual(
+      'is an invalid additional property',
+    );
   });
 });

@@ -1,6 +1,5 @@
 import { ensureFilenameExists, ignorePrivateFunctions } from 'utils';
 
-
 export default class BaseScanner {
   static get fileResultType() {
     /*
@@ -49,10 +48,12 @@ export default class BaseScanner {
     // to include them in our linter's rules.)
     const rules = ignorePrivateFunctions(_rules);
 
-    const ruleResults = await Promise.all(Object.keys(rules).map((rule) => {
-      this._rulesProcessed++;
-      return rules[rule](contents, this.filename, this.options);
-    }));
+    const ruleResults = await Promise.all(
+      Object.keys(rules).map((rule) => {
+        this._rulesProcessed++;
+        return rules[rule](contents, this.filename, this.options);
+      }),
+    );
 
     ruleResults.forEach((messages) => {
       this.linterMessages = this.linterMessages.concat(messages);

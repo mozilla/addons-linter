@@ -15,16 +15,19 @@ export const EXTERNAL_RULE_MAPPING = {
   'no-unsafe-innerhtml/no-unsafe-innerhtml': ESLINT_WARNING,
 };
 
-export const ESLINT_RULE_MAPPING = Object.assign({
-  'deprecated-entities': ESLINT_WARNING,
-  'event-listener-fourth': ESLINT_WARNING,
-  'global-require-arg': ESLINT_WARNING,
-  'opendialog-nonlit-uri': ESLINT_WARNING,
-  'opendialog-remote-uri': ESLINT_WARNING,
-  'webextension-api': ESLINT_WARNING,
-  'webextension-unsupported-api': ESLINT_WARNING,
-  'content-scripts-file-absent': ESLINT_ERROR,
-}, EXTERNAL_RULE_MAPPING);
+export const ESLINT_RULE_MAPPING = Object.assign(
+  {
+    'deprecated-entities': ESLINT_WARNING,
+    'event-listener-fourth': ESLINT_WARNING,
+    'global-require-arg': ESLINT_WARNING,
+    'opendialog-nonlit-uri': ESLINT_WARNING,
+    'opendialog-remote-uri': ESLINT_WARNING,
+    'webextension-api': ESLINT_WARNING,
+    'webextension-unsupported-api': ESLINT_WARNING,
+    'content-scripts-file-absent': ESLINT_ERROR,
+  },
+  EXTERNAL_RULE_MAPPING,
+);
 
 export const VALIDATION_ERROR = 'error';
 export const VALIDATION_NOTICE = 'notice';
@@ -143,12 +146,14 @@ export const TEMPORARY_APIS = [
 // All valid CSP keywords that are options to keys like `default-src` and
 // `script-src`. Used in manifest.json parser for validation.
 // See https://mzl.la/2vwqbGU for more details and allowed options.
-export const CSP_KEYWORD_RE = new RegExp([
-  '(self|none|unsafe-inline|strict-dynamic|unsafe-hashed-attributes)',
-  // Only match these keywords, anything else is forbidden
-  '(?!.)',
-  '|(sha(256|384|512)-|nonce-)',
-].join(''));
+export const CSP_KEYWORD_RE = new RegExp(
+  [
+    '(self|none|unsafe-inline|strict-dynamic|unsafe-hashed-attributes)',
+    // Only match these keywords, anything else is forbidden
+    '(?!.)',
+    '|(sha(256|384|512)-|nonce-)',
+  ].join(''),
+);
 
 // All badwords grouped by language as pre-compild regular expression.
 // Note: \b matches a very limited set of 'word boundaries' which might
@@ -167,4 +172,5 @@ export const LOCALES_DIRECTORY = '_locales';
 export const MESSAGE_PLACEHOLDER_REGEXP = '\\$([a-zA-Z0-9_@]+)\\$';
 
 // yauzl should trow error with this message in case of corrupt zip file
-export const ZIP_LIB_CORRUPT_FILE_ERROR = 'end of central directory record signature not found';
+export const ZIP_LIB_CORRUPT_FILE_ERROR =
+  'end of central directory record signature not found';

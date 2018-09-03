@@ -298,10 +298,10 @@ export default class Linter {
 
   getScanner(filename) {
     if (
-      filename.match(constants.HIDDEN_FILE_REGEX)
-      || filename.match(constants.FLAGGED_FILE_REGEX)
-      || constants.FLAGGED_FILE_EXTENSIONS.includes(path.extname(filename))
-      || filename.match(constants.ALREADY_SIGNED_REGEX)
+      filename.match(constants.HIDDEN_FILE_REGEX) ||
+      filename.match(constants.FLAGGED_FILE_REGEX) ||
+      constants.FLAGGED_FILE_EXTENSIONS.includes(path.extname(filename)) ||
+      filename.match(constants.ALREADY_SIGNED_REGEX)
     ) {
       return FilenameScanner;
     }
@@ -336,9 +336,10 @@ export default class Linter {
     // First: check that this file is under our 2MB parsing limit. Otherwise
     // it will be very slow and may crash the lint with an out-of-memory
     // error.
-    const fileSize = typeof this.io.files[filename].size !== 'undefined'
-      ? this.io.files[filename].size
-      : this.io.files[filename].uncompressedSize;
+    const fileSize =
+      typeof this.io.files[filename].size !== 'undefined'
+        ? this.io.files[filename].size
+        : this.io.files[filename].uncompressedSize;
     const maxSize = 1024 * 1024 * constants.MAX_FILE_SIZE_TO_PARSE_MB;
 
     if (ScannerClass !== BinaryScanner && fileSize >= maxSize) {
@@ -471,8 +472,8 @@ export default class Linter {
       const files = await this.io.getFiles();
 
       if (
-        this.config.scanFile
-        && !this.config.scanFile.some((f) => Object.keys(files).includes(f))
+        this.config.scanFile &&
+        !this.config.scanFile.some((f) => Object.keys(files).includes(f))
       ) {
         const _files = this.config.scanFile.join(', ');
         throw new Error(`Selected file(s) not found: ${_files}`);
@@ -564,15 +565,15 @@ export default class Linter {
     const files = await this.io.getFiles();
     Object.keys(files).forEach((filename) => {
       if (
-        typeof files[filename].size === 'undefined'
-        && typeof files[filename].uncompressedSize === 'undefined'
+        typeof files[filename].size === 'undefined' &&
+        typeof files[filename].uncompressedSize === 'undefined'
       ) {
         throw new Error(`No size available for ${filename}`);
       }
 
       if (
-        files[filename].size === 0
-        || files[filename].uncompressedSize === 0
+        files[filename].size === 0 ||
+        files[filename].uncompressedSize === 0
       ) {
         emptyFiles.push(filename);
       }

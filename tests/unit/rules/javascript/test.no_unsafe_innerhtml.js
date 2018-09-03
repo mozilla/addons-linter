@@ -6,25 +6,23 @@ import {
   NO_DOCUMENT_WRITE,
 } from 'messages';
 
-
 // These rules were mostly copied and adapted from
 // https://github.com/mozfreddyb/eslint-plugin-no-unsafe-innerhtml/
 // Please make sure to keep them up-to-date and report upstream errors.
 // Some notes are not included since we have our own rules
 // marking them as invalid (e.g document.write)
 
-
 describe('no_unsafe_innerhtml', () => {
   const validCodes = [
     // innerHTML equals
-    'a.innerHTML = \'\';',
+    "a.innerHTML = '';",
     'c.innerHTML = ``;',
     'g.innerHTML = Sanitizer.escapeHTML``;',
     'h.innerHTML = Sanitizer.escapeHTML`foo`;',
     'i.innerHTML = Sanitizer.escapeHTML`foo${bar}baz`;',
 
     // tests for innerHTML update (+= operator)
-    'a.innerHTML += \'\';',
+    "a.innerHTML += '';",
     'b.innerHTML += "";',
     'c.innerHTML += ``;',
     'g.innerHTML += Sanitizer.escapeHTML``;',
@@ -57,7 +55,6 @@ describe('no_unsafe_innerhtml', () => {
     'w.innerHTML = `<span>${"lulz"+"meh"}</span>`;',
   ];
 
-
   validCodes.forEach((code) => {
     it(`should allow the use of innerHTML: ${code}`, async () => {
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
@@ -66,7 +63,6 @@ describe('no_unsafe_innerhtml', () => {
       expect(linterMessages.length).toEqual(0);
     });
   });
-
 
   const invalidCodes = [
     // innerHTML examples
@@ -142,12 +138,11 @@ describe('no_unsafe_innerhtml', () => {
         'Use of document.write strongly discouraged.',
         'Unsafe call to document.write',
       ],
-      id: [
-        NO_DOCUMENT_WRITE.code,
-        UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
+      id: [NO_DOCUMENT_WRITE.code, UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
       description: [
         NO_DOCUMENT_WRITE.description,
-        UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
+        UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description,
+      ],
     },
     {
       code: 'document.write(undefined);',
@@ -155,12 +150,11 @@ describe('no_unsafe_innerhtml', () => {
         'Use of document.write strongly discouraged.',
         'Unsafe call to document.write',
       ],
-      id: [
-        NO_DOCUMENT_WRITE.code,
-        UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
+      id: [NO_DOCUMENT_WRITE.code, UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
       description: [
         NO_DOCUMENT_WRITE.description,
-        UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
+        UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description,
+      ],
     },
     {
       code: 'document.writeln(evil);',
@@ -211,7 +205,9 @@ describe('no_unsafe_innerhtml', () => {
   ];
 
   invalidCodes.forEach((code) => {
-    it(`should not allow the use of innerHTML examples ${code.code}`, async () => {
+    it(`should not allow the use of innerHTML examples ${
+      code.code
+    }`, async () => {
       const jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
       const { linterMessages } = await jsScanner.scan();
@@ -229,9 +225,7 @@ describe('no_unsafe_innerhtml', () => {
       });
 
       code.description.forEach((expectedDescription, idx) => {
-        expect(linterMessages[idx].description).toEqual(
-          expectedDescription
-        );
+        expect(linterMessages[idx].description).toEqual(expectedDescription);
       });
     });
   });

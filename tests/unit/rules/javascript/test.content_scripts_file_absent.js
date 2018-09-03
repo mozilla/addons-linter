@@ -1,5 +1,8 @@
 import { VALIDATION_ERROR } from 'const';
-import { CONTENT_SCRIPT_NOT_FOUND, CONTENT_SCRIPT_EMPTY } from 'messages/javascript';
+import {
+  CONTENT_SCRIPT_NOT_FOUND,
+  CONTENT_SCRIPT_EMPTY,
+} from 'messages/javascript';
 import JavaScriptScanner from 'scanners/javascript';
 
 function createJsScanner(code, validatedFilename, existingFiles = {}) {
@@ -53,7 +56,11 @@ describe('content_scripts_file_absent', () => {
       'anotherFolder/contentScript.js': '',
       'contentScript.js': '',
     };
-    const jsScanner = createJsScanner(code, fileRequiresContentScript, existingFiles);
+    const jsScanner = createJsScanner(
+      code,
+      fileRequiresContentScript,
+      existingFiles,
+    );
 
     const { linterMessages } = await jsScanner.scan();
     expect(linterMessages).toEqual([]);
@@ -68,14 +75,19 @@ describe('content_scripts_file_absent', () => {
       browser.tabs.executeScript({ file: 'contentScript.js' });
       browser.tabs.executeScript({ file: 'files/script/preload.js' });
     `;
-    const fileRequiresContentScript = 'files/script/file-requires-content-script.js';
+    const fileRequiresContentScript =
+      'files/script/file-requires-content-script.js';
     const existingFiles = {
       'content_scripts/existingFile.js': '',
       'anotherFolder/contentScript.js': '',
       'files/script/preload.js': '',
       'contentScript.js': '',
     };
-    const jsScanner = createJsScanner(code, fileRequiresContentScript, existingFiles);
+    const jsScanner = createJsScanner(
+      code,
+      fileRequiresContentScript,
+      existingFiles,
+    );
 
     const { linterMessages } = await jsScanner.scan();
     expect(linterMessages).toEqual([]);
@@ -106,11 +118,16 @@ describe('content_scripts_file_absent', () => {
       browser.tabs.executeScript;
     `;
     const fileRequiresContentScript = 'file-requires-content-script.js';
-    const jsScanner = createJsScanner(code, fileRequiresContentScript, { 'content_scripts/existingFile.js': '' });
+    const jsScanner = createJsScanner(code, fileRequiresContentScript, {
+      'content_scripts/existingFile.js': '',
+    });
 
     let { linterMessages } = await jsScanner.scan();
     linterMessages = linterMessages.filter((message) => {
-      return message.code in [CONTENT_SCRIPT_EMPTY.code, CONTENT_SCRIPT_NOT_FOUND.code];
+      return (
+        message.code in
+        [CONTENT_SCRIPT_EMPTY.code, CONTENT_SCRIPT_NOT_FOUND.code]
+      );
     });
     expect(linterMessages).toEqual([]);
   });

@@ -16,7 +16,6 @@ describe('/background', () => {
     });
   });
 
-
   it('script relative URL should be valid', () => {
     const manifest = cloneDeep(validManifest);
     manifest.background = { scripts: ['js/jquery.js', '/js/jquery.js'] };

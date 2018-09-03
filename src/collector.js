@@ -7,7 +7,6 @@ import * as constants from 'const';
 // "I have a display case ready and waiting for our newest acquisitions!"
 // --Taneleer Tivan
 
-
 export default class Collector {
   constructor(config = {}) {
     this.config = config;

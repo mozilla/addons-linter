@@ -4,7 +4,6 @@ import FilenameScanner from 'scanners/filename';
 import * as constants from 'const';
 import * as messages from 'messages';
 
-
 describe('FilenameScanner', () => {
   it('should report a proper scanner name', () => {
     expect(FilenameScanner.scannerName).toEqual('filename');
@@ -34,7 +33,7 @@ describe('FilenameScanner', () => {
     const { linterMessages } = await filenameScanner.scan();
     expect(linterMessages.length).toEqual(1);
     expect(linterMessages[0].code).toEqual(
-      messages.FLAGGED_FILE_EXTENSION.code
+      messages.FLAGGED_FILE_EXTENSION.code,
     );
     expect(linterMessages[0].file).toEqual('wat.exe');
   });
@@ -51,15 +50,14 @@ describe('FilenameScanner', () => {
   it('should error out when it fails the regexes', async () => {
     const filenameScanner = new FilenameScanner('', 'wat.txt');
 
-    await expect(filenameScanner.scan()).rejects.toThrow("Filename didn't match a regex: wat.txt.");
+    await expect(filenameScanner.scan()).rejects.toThrow(
+      "Filename didn't match a regex: wat.txt.",
+    );
   });
 });
 
 describe('Hidden and Flagged File Regexes', () => {
-  const matchingHiddenFiles = [
-    '__MACOSX/foo.txt',
-    '__MACOSX/.DS_Store',
-  ];
+  const matchingHiddenFiles = ['__MACOSX/foo.txt', '__MACOSX/.DS_Store'];
 
   matchingHiddenFiles.forEach((filePath) => {
     it(`should match ${filePath} as a hidden file`, () => {
@@ -67,10 +65,7 @@ describe('Hidden and Flagged File Regexes', () => {
     });
   });
 
-  const nonMatchingHiddenFiles = [
-    '__MACOSXfoo.txt',
-    'foo/__MACOSX',
-  ];
+  const nonMatchingHiddenFiles = ['__MACOSXfoo.txt', 'foo/__MACOSX'];
 
   nonMatchingHiddenFiles.forEach((filePath) => {
     it(`should not match ${filePath} as a hidden file`, () => {
@@ -123,20 +118,17 @@ describe('Hidden and Flagged File Regexes', () => {
   matchingFlaggedFileExtensions.forEach((filePath) => {
     it(`should match ${filePath} as a flagged file extensions`, () => {
       expect(
-        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filePath))
+        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filePath)),
       ).toBeTruthy();
     });
   });
 
-  const nonMatchingFlaggedFileExtensions = [
-    'wat.exe/something',
-    'wat_exe',
-  ];
+  const nonMatchingFlaggedFileExtensions = ['wat.exe/something', 'wat_exe'];
 
   nonMatchingFlaggedFileExtensions.forEach((filePath) => {
     it(`should not match ${filePath} as a flagged file extension`, () => {
       expect(
-        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filePath))
+        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filePath)),
       ).toBeFalsy();
     });
   });

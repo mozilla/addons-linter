@@ -4,7 +4,6 @@ import { validateAddon } from 'schema/validator';
 
 import { validManifest } from './helpers';
 
-
 describe('/icons', () => {
   it('should be valid', () => {
     const manifest = cloneDeep(validManifest);
@@ -29,7 +28,7 @@ describe('/icons', () => {
     expect(validateAddon.errors.length).toEqual(1);
     expect(validateAddon.errors[0].dataPath).toEqual('/icons/wat');
     expect(validateAddon.errors[0].message).toEqual(
-      'is an invalid additional property'
+      'is an invalid additional property',
     );
   });
 });

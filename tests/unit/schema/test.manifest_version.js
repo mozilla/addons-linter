@@ -4,7 +4,6 @@ import { validateAddon } from 'schema/validator';
 
 import { validManifest } from './helpers';
 
-
 describe('/manifest_version', () => {
   it('should be invalid due to old manifest_version', () => {
     const manifest = cloneDeep(validManifest);
@@ -21,7 +20,7 @@ describe('/manifest_version', () => {
     expect(validateAddon.errors.length).toEqual(1);
     expect(validateAddon.errors[0].dataPath).toEqual('/manifest_version');
     expect(validateAddon.errors[0].params.missingProperty).toEqual(
-      'manifest_version'
+      'manifest_version',
     );
   });
 });

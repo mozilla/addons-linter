@@ -2,7 +2,6 @@ import * as messages from 'messages';
 import { VALIDATION_WARNING } from 'const';
 import CSSScanner from 'scanners/css';
 
-
 describe('CSS Rule General', () => {
   it("Check bogus comments don't break parser", async () => {
     // This code was reported upstream as causing the previous

@@ -41,7 +41,9 @@ export default class JSONParser {
         // See:
         // http://stackoverflow.com/questions/23752156/are-all-json-objects-also-valid-javascript-objects/23753148#23753148
         // https://github.com/judofyr/timeless/issues/57#issuecomment-31872462
-        const tokens = esprima.tokenize(manifestString, { comment: true }).slice(3);
+        const tokens = esprima
+          .tokenize(manifestString, { comment: true })
+          .slice(3);
         this._jsonString = tokens.reduce((json, token) => {
           // Ignore line comments (`// comments`) and just return the existing
           // json we've built.

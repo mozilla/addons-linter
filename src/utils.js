@@ -12,9 +12,7 @@ import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
 /* global nodeRequire, localesRoot */
 
-
 const SOURCE_MAP_RE = new RegExp(/\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/);
-
 
 export function normalizePath(iconPath) {
   // Convert the icon path to a URL so we can strip any fragments and resolve
@@ -75,22 +73,31 @@ export function getNodeReference(context, node) {
     }
   }
 
-  if (scopeVar && scopeVar.defs && scopeVar.defs[0]
-      && scopeVar.defs[0].parent && scopeVar.defs[0].parent.parent
-      && scopeVar.defs[0].parent.parent.body) {
+  if (
+    scopeVar &&
+    scopeVar.defs &&
+    scopeVar.defs[0] &&
+    scopeVar.defs[0].parent &&
+    scopeVar.defs[0].parent.parent &&
+    scopeVar.defs[0].parent.parent.body
+  ) {
     // This represents all occurrences of the variable
     const occurances = scopeVar.defs[0].parent.parent.body;
     let lastAssignment;
 
     if (occurances instanceof Array) {
       occurances.forEach((occurance) => {
-        if (occurance.type === 'VariableDeclaration'
-            && occurance.declarations[0].init !== null) {
+        if (
+          occurance.type === 'VariableDeclaration' &&
+          occurance.declarations[0].init !== null
+        ) {
           // Get what the name of what it was assigned to or the raw
           // value depending on the initalization
           lastAssignment = occurance.declarations[0].init;
-        } else if (occurance.type === 'ExpressionStatement'
-                   && occurance.expression.type === 'AssignmentExpression') {
+        } else if (
+          occurance.type === 'ExpressionStatement' &&
+          occurance.expression.type === 'AssignmentExpression'
+        ) {
           // Get the right hand side of the assignment
           lastAssignment = occurance.expression.right;
         }
@@ -117,8 +124,13 @@ export function getVariable(context, name) {
   const { variables } = context.getScope();
   let result;
   variables.forEach((variable) => {
-    if (variable.name === name && variable.defs && variable.defs[0]
-      && variable.defs[0].name && variable.defs[0].name.parent) {
+    if (
+      variable.name === name &&
+      variable.defs &&
+      variable.defs[0] &&
+      variable.defs[0].name &&
+      variable.defs[0].name.parent
+    ) {
       result = variable.defs[0].name.parent.init;
     }
   });
@@ -150,9 +162,15 @@ export function buildI18nObject(i18nData) {
   return {
     jed: _jed,
     getI18Data,
-    _: (str) => { return _jed.gettext(str); },
-    gettext: (str) => { return _jed.gettext(str); },
-    sprintf: (fmt, args) => { return _jed.sprintf(fmt, args); },
+    _: (str) => {
+      return _jed.gettext(str);
+    },
+    gettext: (str) => {
+      return _jed.gettext(str);
+    },
+    sprintf: (fmt, args) => {
+      return _jed.sprintf(fmt, args);
+    },
   };
 }
 
@@ -196,15 +214,16 @@ export function ignorePrivateFunctions(list) {
   const filteredList = {};
 
   Object.keys(list).forEach((functionName) => {
-    if (functionName.startsWith('_') === false
-        && typeof list[functionName] === 'function') {
+    if (
+      functionName.startsWith('_') === false &&
+      typeof list[functionName] === 'function'
+    ) {
       filteredList[functionName] = list[functionName];
     }
   });
 
   return filteredList;
 }
-
 
 /*
  * Check a filename to make sure it's valid; used by scanners so we never
@@ -215,7 +234,6 @@ export function ensureFilenameExists(filename) {
     throw new Error('Filename is required');
   }
 }
-
 
 export function isLocalUrl(urlInput) {
   const parsedUrl = url.parse(urlInput);
@@ -272,17 +290,13 @@ export function parseCspPolicy(policy) {
   return parsedPolicy;
 }
 
-
 export function getLineAndColumnFromMatch(match) {
-  const matchedLines = match.input
-    .substr(0, match.index)
-    .split('\n');
+  const matchedLines = match.input.substr(0, match.index).split('\n');
   const matchedColumn = matchedLines.slice(-1)[0].length + 1;
   const matchedLine = matchedLines.length;
 
   return { matchedLine, matchedColumn };
 }
-
 
 /**
  * Determines if the source text is minified.
@@ -347,7 +361,7 @@ export function couldBeMinifiedCode(code) {
   }
 
   return (
-    ((indentCount / lines) * 100) < indentCountThreshold
-    || hugeLinesCount > hugeLinesThreshold
+    (indentCount / lines) * 100 < indentCountThreshold ||
+    hugeLinesCount > hugeLinesThreshold
   );
 }

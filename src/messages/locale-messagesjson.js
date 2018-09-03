@@ -5,7 +5,9 @@ import { i18n } from 'utils';
 export const NO_MESSAGE = {
   code: 'NO_MESSAGE',
   message: i18n._('Translation string is missing the message property'),
-  description: i18n._('No "message" message property is set for a string (https://mzl.la/2DSBTjA).'),
+  description: i18n._(
+    'No "message" message property is set for a string (https://mzl.la/2DSBTjA).',
+  ),
 };
 
 export const PREDEFINED_MESSAGE_NAME = {

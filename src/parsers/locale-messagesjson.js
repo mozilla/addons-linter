@@ -7,9 +7,11 @@ import { validateLocaleMessages } from 'schema/validator';
 import log from 'logger';
 
 export default class LocaleMessagesJSONParser extends JSONParser {
-  constructor(jsonString, collector, {
-    filename = MESSAGES_JSON, RelaxedJSON = RJSON,
-  } = {}) {
+  constructor(
+    jsonString,
+    collector,
+    { filename = MESSAGES_JSON, RelaxedJSON = RJSON } = {},
+  ) {
     super(jsonString, collector, { filename });
     this.relaxedJSON = RelaxedJSON;
   }
@@ -45,7 +47,9 @@ export default class LocaleMessagesJSONParser extends JSONParser {
         baseObject = messages.NO_PLACEHOLDER_CONTENT;
       }
     } else if (error.keyword === 'additionalProperties') {
-      if (error.schemaPath === '#/properties/placeholders/additionalProperties') {
+      if (
+        error.schemaPath === '#/properties/placeholders/additionalProperties'
+      ) {
         baseObject = messages.INVALID_PLACEHOLDER_NAME;
       }
     }
@@ -58,17 +62,22 @@ export default class LocaleMessagesJSONParser extends JSONParser {
     if (!Object.prototype.hasOwnProperty.call(messageObj, 'placeholders')) {
       return undefined;
     }
-    if (!Object.prototype.hasOwnProperty.call(this.lowercasePlaceholders, message)) {
-      this.lowercasePlaceholders[message] = Object.keys(messageObj.placeholders)
-        .map((placeholder) => placeholder.toLowerCase());
+    if (
+      !Object.prototype.hasOwnProperty.call(this.lowercasePlaceholders, message)
+    ) {
+      this.lowercasePlaceholders[message] = Object.keys(
+        messageObj.placeholders,
+      ).map((placeholder) => placeholder.toLowerCase());
     }
     return this.lowercasePlaceholders[message];
   }
 
   hasPlaceholder(message, placeholder) {
     const messageObj = this.parsedJSON[message];
-    return Object.prototype.hasOwnProperty.call(messageObj, 'placeholders')
-      && this.getLowercasePlaceholders(message).includes(placeholder.toLowerCase());
+    return (
+      Object.prototype.hasOwnProperty.call(messageObj, 'placeholders') &&
+      this.getLowercasePlaceholders(message).includes(placeholder.toLowerCase())
+    );
   }
 
   _validate() {
@@ -88,47 +97,70 @@ export default class LocaleMessagesJSONParser extends JSONParser {
       if (!visitedLowercaseMessages.includes(message.toLowerCase())) {
         visitedLowercaseMessages.push(message.toLowerCase());
       } else {
-        this.collector.addError(Object.assign({}, messages.JSON_DUPLICATE_KEY, {
-          file: this.filename,
-          description: `Case-insensitive duplicate message name: ${message} found in JSON`,
-          dataPath: `/${message}`,
-        }));
+        this.collector.addError(
+          Object.assign({}, messages.JSON_DUPLICATE_KEY, {
+            file: this.filename,
+            description: `Case-insensitive duplicate message name: ${message} found in JSON`,
+            dataPath: `/${message}`,
+          }),
+        );
         this.isValid = false;
       }
 
       if (message.startsWith('@@')) {
-        this.collector.addWarning(Object.assign({
-          file: this.filename,
-          dataPath: `/${message}`,
-        }, messages.PREDEFINED_MESSAGE_NAME));
+        this.collector.addWarning(
+          Object.assign(
+            {
+              file: this.filename,
+              dataPath: `/${message}`,
+            },
+            messages.PREDEFINED_MESSAGE_NAME,
+          ),
+        );
       }
 
       const messageContent = this.parsedJSON[message].message;
       let matches = regexp.exec(messageContent);
       while (matches !== null) {
         if (!this.hasPlaceholder(message, matches[1])) {
-          this.collector.addWarning(Object.assign({
-            file: this.filename,
-            dataPath: `/${message}/placeholders/${matches[1]}`,
-          }, messages.MISSING_PLACEHOLDER));
+          this.collector.addWarning(
+            Object.assign(
+              {
+                file: this.filename,
+                dataPath: `/${message}/placeholders/${matches[1]}`,
+              },
+              messages.MISSING_PLACEHOLDER,
+            ),
+          );
         }
         matches = regexp.exec(messageContent);
       }
 
-      if (Object.prototype.hasOwnProperty.call(this.parsedJSON[message], 'placeholders')) {
+      if (
+        Object.prototype.hasOwnProperty.call(
+          this.parsedJSON[message],
+          'placeholders',
+        )
+      ) {
         const visitedLowercasePlaceholders = [];
-        Object.keys(this.parsedJSON[message].placeholders).forEach((placeholder) => {
-          if (!visitedLowercasePlaceholders.includes(placeholder.toLowerCase())) {
-            visitedLowercasePlaceholders.push(placeholder.toLowerCase());
-          } else {
-            this.collector.addError(Object.assign({}, messages.JSON_DUPLICATE_KEY, {
-              file: this.filename,
-              description: `Case-insensitive duplicate placeholder name: ${placeholder} found in JSON`,
-              dataPath: `/${message}/placeholders/${placeholder}`,
-            }));
-            this.isValid = false;
-          }
-        });
+        Object.keys(this.parsedJSON[message].placeholders).forEach(
+          (placeholder) => {
+            if (
+              !visitedLowercasePlaceholders.includes(placeholder.toLowerCase())
+            ) {
+              visitedLowercasePlaceholders.push(placeholder.toLowerCase());
+            } else {
+              this.collector.addError(
+                Object.assign({}, messages.JSON_DUPLICATE_KEY, {
+                  file: this.filename,
+                  description: `Case-insensitive duplicate placeholder name: ${placeholder} found in JSON`,
+                  dataPath: `/${message}/placeholders/${placeholder}`,
+                }),
+              );
+              this.isValid = false;
+            }
+          },
+        );
       }
 
       // Reset the regexp

@@ -7,9 +7,11 @@ export default {
       // eslint-disable-next-line consistent-return
       CallExpression(node) {
         let referenceNode = getNodeReference(context, node.callee);
-        if (typeof referenceNode.property !== 'undefined'
-            && referenceNode.property.type === 'Identifier'
-            && referenceNode.property.name === 'addEventListener') {
+        if (
+          typeof referenceNode.property !== 'undefined' &&
+          referenceNode.property.type === 'Identifier' &&
+          referenceNode.property.name === 'addEventListener'
+        ) {
           if (node.arguments.length > 3) {
             const wantsUntrusted = node.arguments[3];
             if (wantsUntrusted.type === 'Literal') {

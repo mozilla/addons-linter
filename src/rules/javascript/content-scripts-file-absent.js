@@ -1,19 +1,25 @@
 import * as path from 'path';
 
 import { isBrowserNamespace } from 'utils';
-import { CONTENT_SCRIPT_NOT_FOUND, CONTENT_SCRIPT_EMPTY } from 'messages/javascript';
+import {
+  CONTENT_SCRIPT_NOT_FOUND,
+  CONTENT_SCRIPT_EMPTY,
+} from 'messages/javascript';
 
 export default {
   create(context) {
-    const existingFiles = Object.keys(
-      context.settings.existingFiles || {}
-    ).map((fileName) => {
-      return path.resolve('/', fileName);
-    });
+    const existingFiles = Object.keys(context.settings.existingFiles || {}).map(
+      (fileName) => {
+        return path.resolve('/', fileName);
+      },
+    );
 
     return {
       MemberExpression(node) {
-        if (!node.object.object || !isBrowserNamespace(node.object.object.name)) {
+        if (
+          !node.object.object ||
+          !isBrowserNamespace(node.object.object.name)
+        ) {
           // Early return when it's not our case.
           return;
         }
@@ -21,7 +27,11 @@ export default {
         const property = node.property.name;
         // Namespace should be tabs function should be executeScript and it should be a call.
         // I.E. browser.tabs.executeScript().
-        if (namespace !== 'tabs' || property !== 'executeScript' || node.parent.type !== 'CallExpression') {
+        if (
+          namespace !== 'tabs' ||
+          property !== 'executeScript' ||
+          node.parent.type !== 'CallExpression'
+        ) {
           return;
         }
         node.parent.arguments.forEach((arg) => {
@@ -29,10 +39,17 @@ export default {
           if (arg.type !== 'ObjectExpression') {
             return;
           }
-          const fileProperty = arg.properties.find((prop) => prop.key && prop.key.name === 'file');
-          const fileValue = fileProperty && fileProperty.value && fileProperty.value.value;
+          const fileProperty = arg.properties.find(
+            (prop) => prop.key && prop.key.name === 'file',
+          );
+          const fileValue =
+            fileProperty && fileProperty.value && fileProperty.value.value;
           // Skipping the argument if there is no file property, or value is not a static string.
-          if (!fileProperty || fileProperty.value.type !== 'Literal' || typeof fileValue !== 'string') {
+          if (
+            !fileProperty ||
+            fileProperty.value.type !== 'Literal' ||
+            typeof fileValue !== 'string'
+          ) {
             return;
           }
           // If filename is empty, report an issue.

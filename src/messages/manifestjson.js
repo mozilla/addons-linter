@@ -147,7 +147,8 @@ export function manifestIconMissing(path) {
   };
 }
 
-export const MANIFEST_BACKGROUND_FILE_NOT_FOUND = 'MANIFEST_BACKGROUND_FILE_NOT_FOUND';
+export const MANIFEST_BACKGROUND_FILE_NOT_FOUND =
+  'MANIFEST_BACKGROUND_FILE_NOT_FOUND';
 export function manifestBackgroundMissing(path, type) {
   return {
     code: MANIFEST_BACKGROUND_FILE_NOT_FOUND,
@@ -155,11 +156,11 @@ export function manifestBackgroundMissing(path, type) {
     message:
       type === 'script'
         ? i18n._(
-          'A background script defined in the manifest could not be found.',
-        )
+            'A background script defined in the manifest could not be found.',
+          )
         : i18n._(
-          'A background page defined in the manifest could not be found.',
-        ),
+            'A background page defined in the manifest could not be found.',
+          ),
     description: i18n.sprintf(
       type === 'script'
         ? i18n._('Background script could not be found at "%(path)s".')
@@ -170,7 +171,8 @@ export function manifestBackgroundMissing(path, type) {
   };
 }
 
-export const MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND = 'MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND';
+export const MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND =
+  'MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND';
 export function manifestContentScriptFileMissing(path, type) {
   return {
     code: MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND,
@@ -179,16 +181,16 @@ export function manifestContentScriptFileMissing(path, type) {
       type === 'script'
         ? i18n._('A content script defined in the manifest could not be found.')
         : i18n._(
-          'A content script css file defined in the manifest could not be found.',
-        ),
+            'A content script css file defined in the manifest could not be found.',
+          ),
     description: i18n.sprintf(
       type === 'script'
         ? i18n._(
-          'Content script defined in the manifest could not be found at "%(path)s".',
-        )
+            'Content script defined in the manifest could not be found at "%(path)s".',
+          )
         : i18n._(
-          'Content script css file defined in the manifest could not be found at "%(path)s".',
-        ),
+            'Content script css file defined in the manifest could not be found at "%(path)s".',
+          ),
       { path },
     ),
     file: MANIFEST_JSON,

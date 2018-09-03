@@ -5,7 +5,6 @@ import { validateAddon } from 'schema/validator';
 import { validManifest } from './helpers';
 import { assertHasMatchingError } from '../helpers';
 
-
 describe('/homepage_url', () => {
   const validURLs = [
     'https://example.com/some/page',
@@ -22,10 +21,7 @@ describe('/homepage_url', () => {
     });
   });
 
-  const invalidURLs = [
-    '__MSG_',
-    'wat',
-  ];
+  const invalidURLs = ['__MSG_', 'wat'];
 
   invalidURLs.forEach((invalidURL) => {
     it(`${invalidURL} a URI should be invalid`, () => {
