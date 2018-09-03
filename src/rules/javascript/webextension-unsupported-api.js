@@ -6,9 +6,9 @@ export default {
   create(context) {
     return {
       MemberExpression(node) {
-        if (!node.computed &&
-            node.object.object &&
-            isBrowserNamespace(node.object.object.name)) {
+        if (!node.computed
+            && node.object.object
+            && isBrowserNamespace(node.object.object.name)) {
           const namespace = node.object.property.name;
           const property = node.property.name;
           const api = `${namespace}.${property}`;

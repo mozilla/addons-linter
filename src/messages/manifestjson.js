@@ -3,18 +3,21 @@ import { oneLine } from 'common-tags';
 import { i18n } from 'utils';
 import { MANIFEST_JSON } from 'const';
 
-
 export const MANIFEST_FIELD_REQUIRED = {
   code: 'MANIFEST_FIELD_REQUIRED',
   message: i18n._('The field is required.'),
-  description: i18n._('See https://mzl.la/1ZOhoEN (MDN Docs) for more information.'),
+  description: i18n._(
+    'See https://mzl.la/1ZOhoEN (MDN Docs) for more information.',
+  ),
   file: MANIFEST_JSON,
 };
 
 export const MANIFEST_FIELD_INVALID = {
   code: 'MANIFEST_FIELD_INVALID',
   message: i18n._('The field is invalid.'),
-  description: i18n._('See https://mzl.la/1ZOhoEN (MDN Docs) for more information.'),
+  description: i18n._(
+    'See https://mzl.la/1ZOhoEN (MDN Docs) for more information.',
+  ),
   file: MANIFEST_JSON,
 };
 
@@ -29,14 +32,20 @@ export const MANIFEST_BAD_PERMISSION = {
 export const MANIFEST_PERMISSIONS = {
   code: 'MANIFEST_PERMISSIONS',
   message: i18n._('Unknown permission.'),
-  description: i18n._('See https://mzl.la/1R1n1t0 (MDN Docs) for more information.'),
+  description: i18n._(
+    'See https://mzl.la/1R1n1t0 (MDN Docs) for more information.',
+  ),
   file: MANIFEST_JSON,
 };
 
 export const MANIFEST_VERSION_INVALID = {
   code: 'MANIFEST_VERSION_INVALID',
-  message: i18n._('"manifest_version" in the manifest.json is not a valid value'),
-  description: i18n._('See https://mzl.la/20PenXl (MDN Docs) for more information.'),
+  message: i18n._(
+    '"manifest_version" in the manifest.json is not a valid value',
+  ),
+  description: i18n._(
+    'See https://mzl.la/20PenXl (MDN Docs) for more information.',
+  ),
   file: MANIFEST_JSON,
 };
 
@@ -46,7 +55,9 @@ export const MANIFEST_CSP = {
   code: 'MANIFEST_CSP',
   message: i18n._(oneLine`
     "content_security_policy" allows remote code execution in manifest.json`),
-  description: i18n._('A custom content_security_policy needs additional review.'),
+  description: i18n._(
+    'A custom content_security_policy needs additional review.',
+  ),
   file: MANIFEST_JSON,
 };
 
@@ -63,21 +74,27 @@ export const MANIFEST_CSP_UNSAFE_EVAL = {
 export const PROP_NAME_INVALID = {
   code: 'PROP_NAME_INVALID',
   message: i18n._('The "name" property must be a string.'),
-  description: i18n._('See http://mzl.la/1STmr48 (MDN Docs) for more information.'),
+  description: i18n._(
+    'See http://mzl.la/1STmr48 (MDN Docs) for more information.',
+  ),
   file: MANIFEST_JSON,
 };
 
 export const PROP_VERSION_INVALID = {
   code: 'PROP_VERSION_INVALID',
   message: i18n._('The "version" property must be a string.'),
-  description: i18n._('See http://mzl.la/1kXIADa (MDN Docs) for more information.'),
+  description: i18n._(
+    'See http://mzl.la/1kXIADa (MDN Docs) for more information.',
+  ),
   file: MANIFEST_JSON,
 };
 
 export const PROP_VERSION_TOOLKIT_ONLY = {
   code: 'PROP_VERSION_TOOLKIT_ONLY',
   message: i18n._('The "version" property uses a Firefox-specific format.'),
-  description: i18n._('See http://mzl.la/1kXIADa (MDN Docs) for more information.'),
+  description: i18n._(
+    'See http://mzl.la/1kXIADa (MDN Docs) for more information.',
+  ),
   file: MANIFEST_JSON,
 };
 
@@ -120,10 +137,12 @@ export function manifestIconMissing(path) {
   return {
     code: MANIFEST_ICON_NOT_FOUND,
     message: i18n._(
-      'An icon defined in the manifest could not be found in the package.'),
+      'An icon defined in the manifest could not be found in the package.',
+    ),
     description: i18n.sprintf(
       i18n._('Icon could not be found at "%(path)s".'),
-      { path }),
+      { path },
+    ),
     file: MANIFEST_JSON,
   };
 }
@@ -133,16 +152,20 @@ export function manifestBackgroundMissing(path, type) {
   return {
     code: MANIFEST_BACKGROUND_FILE_NOT_FOUND,
     legacyCode: null,
-    message: type === 'script' ?
-      i18n._('A background script defined in the manifest could not be found.') :
-      i18n._('A background page defined in the manifest could not be found.'),
-    description:
-      i18n.sprintf(
-        type === 'script' ?
-          i18n._('Background script could not be found at "%(path)s".') :
-          i18n._('Background page could not be found at "%(path)s".'),
-        { path }
-      ),
+    message:
+      type === 'script'
+        ? i18n._(
+          'A background script defined in the manifest could not be found.',
+        )
+        : i18n._(
+          'A background page defined in the manifest could not be found.',
+        ),
+    description: i18n.sprintf(
+      type === 'script'
+        ? i18n._('Background script could not be found at "%(path)s".')
+        : i18n._('Background page could not be found at "%(path)s".'),
+      { path },
+    ),
     file: MANIFEST_JSON,
   };
 }
@@ -152,16 +175,22 @@ export function manifestContentScriptFileMissing(path, type) {
   return {
     code: MANIFEST_CONTENT_SCRIPT_FILE_NOT_FOUND,
     legacyCode: null,
-    message: type === 'script' ?
-      i18n._('A content script defined in the manifest could not be found.') :
-      i18n._('A content script css file defined in the manifest could not be found.'),
-    description:
-      i18n.sprintf(
-        type === 'script' ?
-          i18n._('Content script defined in the manifest could not be found at "%(path)s".') :
-          i18n._('Content script css file defined in the manifest could not be found at "%(path)s".'),
-        { path }
-      ),
+    message:
+      type === 'script'
+        ? i18n._('A content script defined in the manifest could not be found.')
+        : i18n._(
+          'A content script css file defined in the manifest could not be found.',
+        ),
+    description: i18n.sprintf(
+      type === 'script'
+        ? i18n._(
+          'Content script defined in the manifest could not be found at "%(path)s".',
+        )
+        : i18n._(
+          'Content script css file defined in the manifest could not be found at "%(path)s".',
+        ),
+      { path },
+    ),
     file: MANIFEST_JSON,
   };
 }
@@ -171,12 +200,15 @@ export function manifestDictionaryFileMissing(path) {
   return {
     code: MANIFEST_DICT_NOT_FOUND,
     legacyCode: null,
-    message: i18n._('A dictionary file defined in the manifest could not be found.'),
-    description:
-      i18n.sprintf(
-        i18n._('Dictionary file defined in the manifest could not be found at "%(path)s".'),
-        { path }
+    message: i18n._(
+      'A dictionary file defined in the manifest could not be found.',
+    ),
+    description: i18n.sprintf(
+      i18n._(
+        'Dictionary file defined in the manifest could not be found at "%(path)s".',
       ),
+      { path },
+    ),
     file: MANIFEST_JSON,
   };
 }
@@ -185,17 +217,21 @@ export const MANIFEST_MULTIPLE_DICTS = {
   code: 'MANIFEST_MULTIPLE_DICTS',
   legacyCode: null,
   message: i18n._('The manifest contains multiple dictionaries.'),
-  description:
-      i18n._('Multiple dictionaries were defined in the manifest, which is unsupported.'),
+  description: i18n._(
+    'Multiple dictionaries were defined in the manifest, which is unsupported.',
+  ),
   file: MANIFEST_JSON,
 };
 
 export const MANIFEST_EMPTY_DICTS = {
   code: 'MANIFEST_EMPTY_DICTS',
   legacyCode: null,
-  message: i18n._('The manifest contains a dictionaries object, but it is empty.'),
-  description:
-      i18n._('A dictionaries object was defined in the manifest, but it was empty.'),
+  message: i18n._(
+    'The manifest contains a dictionaries object, but it is empty.',
+  ),
+  description: i18n._(
+    'A dictionaries object was defined in the manifest, but it was empty.',
+  ),
   file: MANIFEST_JSON,
 };
 
@@ -213,7 +249,9 @@ export function iconIsNotSquare(path) {
   return {
     code: ICON_NOT_SQUARE,
     message: i18n._('Icons must be square.'),
-    description: i18n.sprintf(i18n._('Icon at "%(path)s" must be square.'), { path }),
+    description: i18n.sprintf(i18n._('Icon at "%(path)s" must be square.'), {
+      path,
+    }),
     file: MANIFEST_JSON,
   };
 }
@@ -223,9 +261,12 @@ export function iconSizeInvalid({ path, expected, actual }) {
   return {
     code: ICON_SIZE_INVALID,
     message: i18n._('The size of the icon does not match the manifest.'),
-    description: i18n.sprintf(i18n._(oneLine`
+    description: i18n.sprintf(
+      i18n._(oneLine`
       Expected icon at "%(path)s" to be %(expected)d pixels wide but was %(actual)d.
-    `), { path, expected, actual }),
+    `),
+      { path, expected, actual },
+    ),
     file: MANIFEST_JSON,
   };
 }
@@ -237,7 +278,8 @@ export function corruptIconFile({ path }) {
     message: i18n._('Corrupt image file'),
     description: i18n.sprintf(
       i18n._('Expected icon file at "%(path)s" is corrupted'),
-      { path }),
+      { path },
+    ),
     file: MANIFEST_JSON,
   };
 }
@@ -266,7 +308,9 @@ export const NO_DEFAULT_LOCALE = {
 export const WRONG_ICON_EXTENSION = {
   code: 'WRONG_ICON_EXTENSION',
   message: i18n._('Unsupported image extension'),
-  description: i18n._('Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG.'),
+  description: i18n._(
+    'Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG.',
+  ),
   file: MANIFEST_JSON,
 };
 
@@ -275,7 +319,10 @@ export function noMessagesFileInLocales(path) {
   return {
     code: NO_MESSAGES_FILE_IN_LOCALES,
     message: i18n._('Empty language directory'),
-    description: i18n.sprintf(i18n._('messages.json file missing in "%(path)s"'), { path }),
+    description: i18n.sprintf(
+      i18n._('messages.json file missing in "%(path)s"'),
+      { path },
+    ),
     file: MANIFEST_JSON,
   };
 }

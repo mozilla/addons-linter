@@ -75,22 +75,22 @@ export function getNodeReference(context, node) {
     }
   }
 
-  if (scopeVar && scopeVar.defs && scopeVar.defs[0] &&
-      scopeVar.defs[0].parent && scopeVar.defs[0].parent.parent &&
-      scopeVar.defs[0].parent.parent.body) {
+  if (scopeVar && scopeVar.defs && scopeVar.defs[0]
+      && scopeVar.defs[0].parent && scopeVar.defs[0].parent.parent
+      && scopeVar.defs[0].parent.parent.body) {
     // This represents all occurrences of the variable
     const occurances = scopeVar.defs[0].parent.parent.body;
     let lastAssignment;
 
     if (occurances instanceof Array) {
       occurances.forEach((occurance) => {
-        if (occurance.type === 'VariableDeclaration' &&
-            occurance.declarations[0].init !== null) {
+        if (occurance.type === 'VariableDeclaration'
+            && occurance.declarations[0].init !== null) {
           // Get what the name of what it was assigned to or the raw
           // value depending on the initalization
           lastAssignment = occurance.declarations[0].init;
-        } else if (occurance.type === 'ExpressionStatement' &&
-                   occurance.expression.type === 'AssignmentExpression') {
+        } else if (occurance.type === 'ExpressionStatement'
+                   && occurance.expression.type === 'AssignmentExpression') {
           // Get the right hand side of the assignment
           lastAssignment = occurance.expression.right;
         }
@@ -117,8 +117,8 @@ export function getVariable(context, name) {
   const { variables } = context.getScope();
   let result;
   variables.forEach((variable) => {
-    if (variable.name === name && variable.defs && variable.defs[0] &&
-      variable.defs[0].name && variable.defs[0].name.parent) {
+    if (variable.name === name && variable.defs && variable.defs[0]
+      && variable.defs[0].name && variable.defs[0].name.parent) {
       result = variable.defs[0].name.parent.init;
     }
   });
@@ -196,8 +196,8 @@ export function ignorePrivateFunctions(list) {
   const filteredList = {};
 
   Object.keys(list).forEach((functionName) => {
-    if (functionName.startsWith('_') === false &&
-        typeof list[functionName] === 'function') {
+    if (functionName.startsWith('_') === false
+        && typeof list[functionName] === 'function') {
       filteredList[functionName] = list[functionName];
     }
   });
@@ -347,7 +347,7 @@ export function couldBeMinifiedCode(code) {
   }
 
   return (
-    ((indentCount / lines) * 100) < indentCountThreshold ||
-    hugeLinesCount > hugeLinesThreshold
+    ((indentCount / lines) * 100) < indentCountThreshold
+    || hugeLinesCount > hugeLinesThreshold
   );
 }

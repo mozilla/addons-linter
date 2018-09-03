@@ -88,9 +88,9 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (error.keyword === 'required') {
       baseObject = messages.MANIFEST_FIELD_REQUIRED;
-    } else if (error.dataPath.startsWith('/permissions') &&
-               typeof error.data !== 'undefined' &&
-               typeof error.data !== 'string') {
+    } else if (error.dataPath.startsWith('/permissions')
+               && typeof error.data !== 'undefined'
+               && typeof error.data !== 'string') {
       baseObject = messages.MANIFEST_BAD_PERMISSION;
       overrides.message = `Permissions ${error.message}.`;
     } else if (error.keyword === 'type') {
@@ -210,17 +210,17 @@ export default class ManifestJSONParser extends JSONParser {
       });
     }
 
-    if (!this.selfHosted && this.parsedJSON.applications &&
-        this.parsedJSON.applications.gecko &&
-        this.parsedJSON.applications.gecko.update_url) {
+    if (!this.selfHosted && this.parsedJSON.applications
+        && this.parsedJSON.applications.gecko
+        && this.parsedJSON.applications.gecko.update_url) {
       this.collector.addError(messages.MANIFEST_UPDATE_URL);
       this.isValid = false;
     }
 
-    if (!this.isLanguagePack &&
-        this.parsedJSON.applications &&
-        this.parsedJSON.applications.gecko &&
-        this.parsedJSON.applications.gecko.strict_max_version) {
+    if (!this.isLanguagePack
+        && this.parsedJSON.applications
+        && this.parsedJSON.applications.gecko
+        && this.parsedJSON.applications.gecko.strict_max_version) {
       if (this.isDictionary) {
         // Dictionaries should not have a strict_max_version at all.
         this.isValid = false;
@@ -286,8 +286,8 @@ export default class ManifestJSONParser extends JSONParser {
       if (info.width !== info.height) {
         this.collector.addError(messages.iconIsNotSquare(iconPath));
         this.isValid = false;
-      } else if (info.mime !== 'image/svg+xml' &&
-                  parseInt(info.width, 10) !== parseInt(expectedSize, 10)) {
+      } else if (info.mime !== 'image/svg+xml'
+                  && parseInt(info.width, 10) !== parseInt(expectedSize, 10)) {
         this.collector.addWarning(messages.iconSizeInvalid({
           path: iconPath,
           expected: parseInt(expectedSize, 10),
@@ -358,10 +358,10 @@ export default class ManifestJSONParser extends JSONParser {
 
         // If the 'default-src' is insecure, check whether the 'script-src'
         // makes it secure, ie 'script-src: self;'
-        if (insecureSrcDirective &&
-            candidate === 'script-src' &&
-            values.length === 1 &&
-            values[0] === '\'self\'') {
+        if (insecureSrcDirective
+            && candidate === 'script-src'
+            && values.length === 1
+            && values[0] === '\'self\'') {
           insecureSrcDirective = false;
         }
 
@@ -374,8 +374,8 @@ export default class ManifestJSONParser extends JSONParser {
           }
 
           const hasProtocol = (
-            (value.endsWith(':') && validProtocols.includes(value)) ||
-            (validProtocols.some((x) => value.startsWith(x))));
+            (value.endsWith(':') && validProtocols.includes(value))
+            || (validProtocols.some((x) => value.startsWith(x))));
 
           if (hasProtocol) {
             if (candidate === 'default-src') {

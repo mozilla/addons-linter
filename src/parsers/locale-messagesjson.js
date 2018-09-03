@@ -67,8 +67,8 @@ export default class LocaleMessagesJSONParser extends JSONParser {
 
   hasPlaceholder(message, placeholder) {
     const messageObj = this.parsedJSON[message];
-    return Object.prototype.hasOwnProperty.call(messageObj, 'placeholders') &&
-      this.getLowercasePlaceholders(message).includes(placeholder.toLowerCase());
+    return Object.prototype.hasOwnProperty.call(messageObj, 'placeholders')
+      && this.getLowercasePlaceholders(message).includes(placeholder.toLowerCase());
   }
 
   _validate() {

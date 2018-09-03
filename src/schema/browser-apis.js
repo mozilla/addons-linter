@@ -25,8 +25,8 @@ function hasObjectProperty(schema, property) {
 function hasArrayProperty(schema, property) {
   return schemaArrayNames.some((schemaProperty) => {
     const namespaceProperties = schema[schemaProperty];
-    return Array.isArray(namespaceProperties) &&
-      namespaceProperties.some((schemaItem) => {
+    return Array.isArray(namespaceProperties)
+      && namespaceProperties.some((schemaItem) => {
         return schemaItem.name === property;
       });
   });

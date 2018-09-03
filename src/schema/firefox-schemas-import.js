@@ -117,10 +117,10 @@ function rewriteIdRef(value, namespace = '') {
 export function rewriteValue(key, value, namespace) {
   if (Array.isArray(value)) {
     return value.map((val) => rewriteValue(key, val, namespace));
-  } else if (key === 'additionalProperties' &&
-      isUnrecognizedProperty(value)) {
+  } if (key === 'additionalProperties'
+      && isUnrecognizedProperty(value)) {
     return undefined;
-  } else if (typeof value === 'object') {
+  } if (typeof value === 'object') {
     if ('$ref' in value && Object.keys(value).length > 1) {
       const { $ref, ...rest } = value;
       if (Object.keys(rest).length === 1 && 'optional' in rest) {
@@ -146,18 +146,18 @@ export function rewriteValue(key, value, namespace) {
       return { ...rewritten, properties };
     }
     return rewritten;
-  } else if (key === '$ref') {
+  } if (key === '$ref') {
     if (value.includes('#/types')) {
       return value;
-    } else if (value in refMap) {
+    } if (value in refMap) {
       return refMap[value];
     }
     return rewriteIdRef(value);
-  } else if (key === 'type' && value === 'any') {
+  } if (key === 'type' && value === 'any') {
     return undefined;
-  } else if (key === 'id') {
+  } if (key === 'id') {
     return undefined;
-  } else if (key === 'pattern') {
+  } if (key === 'pattern') {
     return rewritePatternFlags(value);
   }
   return value;
@@ -265,7 +265,7 @@ function rewriteExtendRefs(definition, namespace, types) {
   if (Array.isArray(definition)) {
     return definition.map(
       (value) => rewriteExtendRefs(value, namespace, types));
-  } else if (typeof definition === 'object') {
+  } if (typeof definition === 'object') {
     return Object.keys(definition).reduce((obj, key) => {
       const value = definition[key];
       if (key === '$ref') {

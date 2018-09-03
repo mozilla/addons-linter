@@ -29,14 +29,12 @@ import LangpackScanner from 'scanners/langpack';
 import { Crx, Directory, Xpi } from 'io';
 import { MINER_BLOCKLIST } from 'miner_blocklist';
 
-
 export default class Linter {
   constructor(config) {
     this.config = config;
-    ([this.packagePath] = config._);
+    [this.packagePath] = config._;
     this.io = null;
-    this.chalk = new chalk.constructor(
-      { enabled: !this.config.boring });
+    this.chalk = new chalk.constructor({ enabled: !this.config.boring });
     this.collector = new Collector(config);
     this.addonMetadata = null;
     this.shouldScanFile = this.shouldScanFile.bind(this);
@@ -49,8 +47,9 @@ export default class Linter {
     // convert into an array if needed and filter out any undefined
     // or empty strings.
     if (this._config.scanFile) {
-      let scanFile = Array.isArray(this._config.scanFile) ?
-        this._config.scanFile : [this._config.scanFile];
+      let scanFile = Array.isArray(this._config.scanFile)
+        ? this._config.scanFile
+        : [this._config.scanFile];
       scanFile = scanFile.filter((el) => el && el.length > 0);
 
       this._config.scanFile = scanFile;
@@ -79,8 +78,7 @@ export default class Linter {
     if (err.message.includes('DuplicateZipEntry')) {
       this.collector.addError(messages.DUPLICATE_XPI_ENTRY);
       this.print(_console);
-    } else if (err.message.includes(
-      constants.ZIP_LIB_CORRUPT_FILE_ERROR)) {
+    } else if (err.message.includes(constants.ZIP_LIB_CORRUPT_FILE_ERROR)) {
       this.collector.addError(messages.BAD_ZIPFILE);
       this.print(_console);
     } else if (this.config.stack === true) {
@@ -101,7 +99,11 @@ export default class Linter {
     }
   }
 
-  toJSON({ input = this.output, pretty = this.config.pretty, _JSON = JSON } = {}) {
+  toJSON({
+    input = this.output,
+    pretty = this.config.pretty,
+    _JSON = JSON,
+  } = {}) {
     const args = [input];
     if (pretty === true) {
       args.push(null);
@@ -116,10 +118,12 @@ export default class Linter {
 
     out.push(i18n._('Validation Summary:'));
     out.push('');
-    out.push(columnify(this.output.summary, {
-      showHeaders: false,
-      minWidth: 15,
-    }));
+    out.push(
+      columnify(this.output.summary, {
+        showHeaders: false,
+        minWidth: 15,
+      }),
+    );
     out.push('');
 
     constants.MESSAGE_TYPES.forEach((type) => {
@@ -198,12 +202,14 @@ export default class Linter {
 
         out.push(`${messageType.toUpperCase()}:`);
         out.push('');
-        out.push(columnify(this.output[messageType], {
-          maxWidth: 35,
-          columns: outputColumns,
-          columnSplitter: '   ',
-          config: outputConfig,
-        }));
+        out.push(
+          columnify(this.output[messageType], {
+            maxWidth: 35,
+            columns: outputColumns,
+            columnSplitter: '   ',
+            config: outputConfig,
+          }),
+        );
       }
     });
 
@@ -246,20 +252,18 @@ export default class Linter {
     if (Object.prototype.hasOwnProperty.call(files, constants.MANIFEST_JSON)) {
       _log.info('Retrieving metadata from manifest.json');
       const json = await this.io.getFileAsString(constants.MANIFEST_JSON);
-      const manifestParser = new ManifestJSONParser(
-        json,
-        this.collector,
-        {
-          selfHosted: this.config.selfHosted,
-          io: this.io,
-        },
-      );
+      const manifestParser = new ManifestJSONParser(json, this.collector, {
+        selfHosted: this.config.selfHosted,
+        io: this.io,
+      });
       if (manifestParser.parsedJSON.icons) {
         await manifestParser.validateIcons();
       }
       this.addonMetadata = manifestParser.getMetadata();
     } else {
-      _log.warn(`No ${constants.MANIFEST_JSON} was found in the package metadata`);
+      _log.warn(
+        `No ${constants.MANIFEST_JSON} was found in the package metadata`,
+      );
       this.collector.addNotice(messages.TYPE_NO_MANIFEST_JSON);
       this.addonMetadata = {};
     }
@@ -269,7 +273,8 @@ export default class Linter {
 
   async checkFileExists(filepath, _lstatPromise = lstatPromise) {
     const invalidMessage = new Error(
-      `Path "${filepath}" is not a file or directory or does not exist.`);
+      `Path "${filepath}" is not a file or directory or does not exist.`,
+    );
     try {
       const stats = await _lstatPromise(filepath);
       if (stats.isFile() === true || stats.isDirectory() === true) {
@@ -292,10 +297,12 @@ export default class Linter {
   }
 
   getScanner(filename) {
-    if (filename.match(constants.HIDDEN_FILE_REGEX) ||
-        filename.match(constants.FLAGGED_FILE_REGEX) ||
-        constants.FLAGGED_FILE_EXTENSIONS.includes(path.extname(filename)) ||
-        filename.match(constants.ALREADY_SIGNED_REGEX)) {
+    if (
+      filename.match(constants.HIDDEN_FILE_REGEX)
+      || filename.match(constants.FLAGGED_FILE_REGEX)
+      || constants.FLAGGED_FILE_EXTENSIONS.includes(path.extname(filename))
+      || filename.match(constants.ALREADY_SIGNED_REGEX)
+    ) {
       return FilenameScanner;
     }
 
@@ -321,14 +328,17 @@ export default class Linter {
   async scanFile(filename) {
     let scanResult = { linterMessages: [], scannedFiles: [] };
     const ScannerClass = this.getScanner(filename);
-    const fileData = await this.io.getFile(filename, ScannerClass.fileResultType);
+    const fileData = await this.io.getFile(
+      filename,
+      ScannerClass.fileResultType,
+    );
 
     // First: check that this file is under our 2MB parsing limit. Otherwise
     // it will be very slow and may crash the lint with an out-of-memory
     // error.
-    const fileSize = typeof this.io.files[filename].size !== 'undefined' ?
-      this.io.files[filename].size :
-      this.io.files[filename].uncompressedSize;
+    const fileSize = typeof this.io.files[filename].size !== 'undefined'
+      ? this.io.files[filename].size
+      : this.io.files[filename].uncompressedSize;
     const maxSize = 1024 * 1024 * constants.MAX_FILE_SIZE_TO_PARSE_MB;
 
     if (ScannerClass !== BinaryScanner && fileSize >= maxSize) {
@@ -385,7 +395,10 @@ export default class Linter {
   }
 
   async extractMetadata({
-    _Crx = Crx, _console = console, _Directory = Directory, _Xpi = Xpi,
+    _Crx = Crx,
+    _console = console,
+    _Directory = Directory,
+    _Xpi = Xpi,
   } = {}) {
     await checkMinNodeVersion();
 
@@ -437,9 +450,7 @@ export default class Linter {
     }
 
     if (this.config.scanFile) {
-      const manifestFileNames = [
-        'manifest.json', 'package.json',
-      ];
+      const manifestFileNames = ['manifest.json', 'package.json'];
 
       // Always scan sub directories and the manifest files,
       // or the linter will not be able to detect the addon type.
@@ -459,15 +470,20 @@ export default class Linter {
       await this.extractMetadata(deps);
       const files = await this.io.getFiles();
 
-      if (this.config.scanFile &&
-        !this.config.scanFile.some((f) => Object.keys(files).includes(f))) {
+      if (
+        this.config.scanFile
+        && !this.config.scanFile.some((f) => Object.keys(files).includes(f))
+      ) {
         const _files = this.config.scanFile.join(', ');
         throw new Error(`Selected file(s) not found: ${_files}`);
       }
 
       // Known libraries do not need to be scanned
       const filesWithoutJSLibraries = Object.keys(files).filter((file) => {
-        return !Object.prototype.hasOwnProperty.call(this.addonMetadata.jsLibs, file);
+        return !Object.prototype.hasOwnProperty.call(
+          this.addonMetadata.jsLibs,
+          file,
+        );
       });
 
       await this.scanFiles(filesWithoutJSLibraries);
@@ -526,7 +542,7 @@ export default class Linter {
         this.collector.addError(
           Object.assign({}, messages.BANNED_LIBRARY, {
             file: pathToFile,
-          })
+          }),
         );
       }
 
@@ -534,7 +550,7 @@ export default class Linter {
         this.collector.addWarning(
           Object.assign({}, messages.UNADVISED_LIBRARY, {
             file: pathToFile,
-          })
+          }),
         );
       }
     });
@@ -547,13 +563,17 @@ export default class Linter {
 
     const files = await this.io.getFiles();
     Object.keys(files).forEach((filename) => {
-      if (typeof files[filename].size === 'undefined' &&
-          typeof files[filename].uncompressedSize === 'undefined') {
+      if (
+        typeof files[filename].size === 'undefined'
+        && typeof files[filename].uncompressedSize === 'undefined'
+      ) {
         throw new Error(`No size available for ${filename}`);
       }
 
-      if (files[filename].size === 0 ||
-          files[filename].uncompressedSize === 0) {
+      if (
+        files[filename].size === 0
+        || files[filename].uncompressedSize === 0
+      ) {
         emptyFiles.push(filename);
       }
     });
@@ -568,21 +588,23 @@ export default class Linter {
     const jsLibs = {};
     const files = await this.io.getFilesByExt('.js');
 
-    await Promise.all(files.map(async (filename) => {
-      const file = await this.io.getFile(filename);
-      const hashResult = dispensary.match(file);
+    await Promise.all(
+      files.map(async (filename) => {
+        const file = await this.io.getFile(filename);
+        const hashResult = dispensary.match(file);
 
-      if (hashResult !== false) {
-        log.debug(`${hashResult} detected in ${filename}`);
-        jsLibs[filename] = hashResult;
+        if (hashResult !== false) {
+          log.debug(`${hashResult} detected in ${filename}`);
+          jsLibs[filename] = hashResult;
 
-        this.collector.addNotice(
-          Object.assign({}, messages.KNOWN_LIBRARY, {
-            file: filename,
-          })
-        );
-      }
-    }));
+          this.collector.addNotice(
+            Object.assign({}, messages.KNOWN_LIBRARY, {
+              file: filename,
+            }),
+          );
+        }
+      }),
+    );
 
     // eslint-disable-next-line no-param-reassign
     addonMetadata.jsLibs = jsLibs;
@@ -594,16 +616,18 @@ export default class Linter {
 
     const files = await this.io.getFilesByExt('.js');
 
-    await Promise.all(files.map(async (filename) => {
-      if (filename in addonMetadata.jsLibs) {
-        return;
-      }
-      const fileData = await this.io.getFile(filename);
-      if (couldBeMinifiedCode(fileData)) {
-        log.debug(`Minified code detected in ${filename}`);
-        unknownMinifiedFiles.push(filename);
-      }
-    }));
+    await Promise.all(
+      files.map(async (filename) => {
+        if (filename in addonMetadata.jsLibs) {
+          return;
+        }
+        const fileData = await this.io.getFile(filename);
+        if (couldBeMinifiedCode(fileData)) {
+          log.debug(`Minified code detected in ${filename}`);
+          unknownMinifiedFiles.push(filename);
+        }
+      }),
+    );
 
     // eslint-disable-next-line no-param-reassign
     addonMetadata.unknownMinifiedFiles = unknownMinifiedFiles;
@@ -618,7 +642,7 @@ export default class Linter {
         this.collector.addNotice(
           Object.assign({}, messages.MOZILLA_COND_OF_USE, {
             file: filename,
-          })
+          }),
         );
       }
     }
@@ -633,21 +657,24 @@ export default class Linter {
           this.collector.addWarning(
             Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
               file: filename,
-            }));
+            }),
+          );
         }
 
         const fileDataMatch = fileData.match(nameRegex);
 
         if (fileDataMatch) {
           const { matchedLine, matchedColumn } = getLineAndColumnFromMatch(
-            fileDataMatch);
+            fileDataMatch,
+          );
 
           this.collector.addWarning(
             Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
               file: filename,
               column: matchedColumn,
               line: matchedLine,
-            }));
+            }),
+          );
         }
       });
 
@@ -655,7 +682,9 @@ export default class Linter {
         const match = fileData.match(codeRegex);
 
         if (match) {
-          const { matchedLine, matchedColumn } = getLineAndColumnFromMatch(match);
+          const { matchedLine, matchedColumn } = getLineAndColumnFromMatch(
+            match,
+          );
 
           this.collector.addWarning(
             Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
@@ -665,7 +694,8 @@ export default class Linter {
               // use dataPath for our actual match to avoid any obvious
               // duplicates
               dataPath: match[0],
-            }));
+            }),
+          );
         }
       });
     }

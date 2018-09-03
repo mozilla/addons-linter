@@ -9,7 +9,6 @@ import { IOBase } from 'io/base';
 import { walkPromise } from 'io/utils';
 import log from 'logger';
 
-
 export class Directory extends IOBase {
   async getFiles(_walkPromise = walkPromise) {
     // If we have already processed this directory and have data
@@ -20,10 +19,9 @@ export class Directory extends IOBase {
       return this.files;
     }
 
-    const files = await _walkPromise(
-      this.path, {
-        shouldIncludePath: (...args) => this.shouldScanFile(...args),
-      });
+    const files = await _walkPromise(this.path, {
+      shouldIncludePath: (...args) => this.shouldScanFile(...args),
+    });
 
     this.files = files;
     this.entries = Object.keys(files);
@@ -44,8 +42,10 @@ export class Directory extends IOBase {
 
     // This is belt and braces. Should never happen that a file was in
     // the files object and yet doesn't meet these requirements.
-    if (!filePath.startsWith(absoluteDirPath) ||
-        relativeFilePath.startsWith('/')) {
+    if (
+      !filePath.startsWith(absoluteDirPath)
+      || relativeFilePath.startsWith('/')
+    ) {
       throw new Error(`Path argument must be relative to ${this.path}`);
     }
 
@@ -95,14 +95,11 @@ export class Directory extends IOBase {
         // bytes if you are doing a binary check.
         encoding: null,
         autoClose: true,
-      })
-        .pipe(
-          firstChunkStream({ chunkLength },
-            (_, enc) => {
-              resolve(enc);
-            }
-          )
-        );
+      }).pipe(
+        firstChunkStream({ chunkLength }, (_, enc) => {
+          resolve(enc);
+        }),
+      );
     });
   }
 }
