@@ -366,8 +366,8 @@ describe('isLocalUrl', () => {
   });
 
   it('should not match data uri', () => {
-    expect(isLocalUrl('data:image/gif;base64,R0' +
-      'lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')).toBeFalsy();
+    expect(isLocalUrl('data:image/gif;base64,R0'
+      + 'lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')).toBeFalsy();
   });
 
   it('should match chrome protocol', () => {

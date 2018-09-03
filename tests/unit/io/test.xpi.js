@@ -550,8 +550,8 @@ describe('Xpi.getFilesByExt()', function getFilesByExtCallback() {
     expect(htmlFiles[2]).toEqual('third.html');
 
     for (let i = 0; i < htmlFiles.length; i++) {
-      expect(htmlFiles[i].endsWith('.html') ||
-                htmlFiles[i].endsWith('.htm')).toBeTruthy();
+      expect(htmlFiles[i].endsWith('.html')
+                || htmlFiles[i].endsWith('.htm')).toBeTruthy();
     }
   });
 

@@ -1321,4 +1321,3 @@ describe('ManifestJSONParser', () => {
     });
   });
 });
-

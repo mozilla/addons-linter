@@ -41,8 +41,7 @@ describe('unsupported browser APIs', () => {
   });
 
   it('does not flag on 3 levels of nesting', async () => {
-    const code =
-      'browser.privacy.websites.thirdPartyCookiesAllowed.get({}, () => {})';
+    const code = 'browser.privacy.websites.thirdPartyCookiesAllowed.get({}, () => {})';
     const jsScanner = new JavaScriptScanner(code, 'goodcode.js', {
       addonMetadata: { id: '@supported-api' },
     });
@@ -67,8 +66,7 @@ describe('unsupported browser APIs', () => {
   // We only test the first two levels for now.
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('flags when 3 levels of nesting is unsupported', async () => {
-    const code =
-      'browser.privacy.websites.unsupportedSetting.get({}, () => {})';
+    const code = 'browser.privacy.websites.unsupportedSetting.get({}, () => {})';
     const jsScanner = new JavaScriptScanner(code, 'badcode.js', {
       addonMetadata: { id: '@unsupported-api' },
     });

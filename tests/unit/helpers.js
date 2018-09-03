@@ -182,9 +182,9 @@ export function getStreamableIO(files) {
       return Promise.resolve(files);
     },
     getFileAsStream: (path) => {
-      if (files[path] instanceof Stream &&
-          typeof files[path]._read === 'function' &&
-          typeof files[path]._readableState === 'object') {
+      if (files[path] instanceof Stream
+          && typeof files[path]._read === 'function'
+          && typeof files[path]._readableState === 'object') {
         return Promise.resolve(files[path]);
       }
 

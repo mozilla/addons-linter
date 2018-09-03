@@ -534,9 +534,9 @@ describe('firefox schema import', () => {
       if (typeof obj === 'object') {
         Object.keys(obj).forEach((key) => {
           const value = obj[key];
-          if (typeof value === 'object' &&
-              value !== null &&
-              !Object.isFrozen(value)) {
+          if (typeof value === 'object'
+              && value !== null
+              && !Object.isFrozen(value)) {
             deepFreeze(value);
           }
         });

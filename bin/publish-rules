@@ -33,8 +33,8 @@ function publish() {
   });
 }
 
-if (process.env.TRAVIS_SECURE_ENV_VARS === 'true' &&
-    process.env.TRAVIS_PULL_REQUEST === 'false') {
+if (process.env.TRAVIS_SECURE_ENV_VARS === 'true'
+    && process.env.TRAVIS_PULL_REQUEST === 'false') {
   console.log('Pushing branch for docker build');
   publish();
 } else {

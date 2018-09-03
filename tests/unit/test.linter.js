@@ -35,12 +35,15 @@ class FakeIOBase {
   async getFile() {
     return '';
   }
+
   async getFiles() {
     return {};
   }
+
   async getFilesByExt() {
     return [];
   }
+
   setScanFileCallback() {
   }
 }
@@ -272,6 +275,7 @@ describe('Linter', () => {
       async getFiles() {
         throw expectedError;
       }
+
       getFilesByExt() {
         return this.getMetadata();
       }
@@ -939,6 +943,7 @@ describe('Linter.extractMetadata()', () => {
       async getFile(path) {
         return fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`, 'utf-8');
       }
+
       async getFiles() {
         const files = {};
         Object.keys(fakeFiles).forEach((filename) => {
@@ -946,6 +951,7 @@ describe('Linter.extractMetadata()', () => {
         });
         return files;
       }
+
       async getFilesByExt() {
         return Object.keys(fakeFiles);
       }
@@ -981,6 +987,7 @@ describe('Linter.extractMetadata()', () => {
       async getFile(path) {
         return fs.readFileSync(`tests/fixtures/jslibs/${fakeFiles[path]}`, 'utf-8');
       }
+
       async getFiles() {
         const files = {};
         Object.keys(fakeFiles).forEach((filename) => {
@@ -988,6 +995,7 @@ describe('Linter.extractMetadata()', () => {
         });
         return files;
       }
+
       async getFilesByExt() {
         return Object.keys(fakeFiles);
       }
@@ -1096,6 +1104,7 @@ describe('Linter.extractMetadata()', () => {
       getFile(filename) {
         return this.getFileAsString(filename);
       }
+
       async getFiles() {
         const files = {};
         Object.keys(fakeFiles).forEach((filename) => {
@@ -1103,9 +1112,11 @@ describe('Linter.extractMetadata()', () => {
         });
         return files;
       }
+
       async getFilesByExt() {
         return Object.keys(fakeFiles);
       }
+
       async getFileAsString(filename) {
         return fakeFiles[filename];
       }
@@ -1193,18 +1204,22 @@ describe('Linter.extractMetadata()', () => {
         'myfile.css': { uncompressedSize: largeFileSize },
         'myfile.js': { uncompressedSize: largeFileSize },
       };
+
       getFile(filename) {
         return this.getFileAsString(filename);
       }
+
       async getFiles() {
         return this.files;
       }
+
       async getFilesByExt(type) {
         return type === 'js' ? ['myfile.js'] : ['myfile.css'];
       }
+
       async getFileAsString(filename) {
-        return (filename === constants.MANIFEST_JSON) ?
-          validManifestJSON() : 'const foo = "bar";';
+        return (filename === constants.MANIFEST_JSON)
+          ? validManifestJSON() : 'const foo = "bar";';
       }
     }
     await addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole });
@@ -1226,18 +1241,22 @@ describe('Linter.extractMetadata()', () => {
         'manifest.json': { uncompressedSize: 839 },
         'myfile.jpg': { uncompressedSize: largeFileSize },
       };
+
       getFile(filename) {
         return this.getFileAsString(filename);
       }
+
       async getFiles() {
         return this.files;
       }
+
       async getFilesByExt(type) {
         return type === 'json' ? ['manifest.json'] : ['myfile.jpg'];
       }
+
       async getFileAsString(filename) {
-        return (filename === constants.MANIFEST_JSON) ?
-          validManifestJSON() : '';
+        return (filename === constants.MANIFEST_JSON)
+          ? validManifestJSON() : '';
       }
     }
     await addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole });
@@ -1306,12 +1325,15 @@ describe('Linter.extractMetadata()', () => {
         'm1.js': { uncompressedSize: 20 },
         'm2.js': { uncompressedSize: 20 },
       };
+
       getFile(filename) {
         return this.getFileAsString(filename);
       }
+
       async getFiles() {
         return this.files;
       }
+
       async getFileAsString(filename) {
         const words = {
           'm1.js': 'const a = "butt fuck"',
@@ -1346,12 +1368,15 @@ describe('Linter.extractMetadata()', () => {
         'coinhive_disguised_renamed.js': { uncompressedSize: 20 },
         'coinhive.min.js': { uncompressedSize: 20 },
       };
+
       getFile(filename) {
         return this.getFileAsString(filename);
       }
+
       async getFiles() {
         return this.files;
       }
+
       async getFileAsString(filename) {
         const contents = fs.readFileSync(
           `tests/fixtures/coinminers/${filename}`,
@@ -1422,12 +1447,15 @@ describe('Linter.extractMetadata()', () => {
         'foo.png': { uncompressedSize: 386 },
         '.DS_Store': { uncompressedSize: 232 },
       };
+
       getFile(filename) {
         return this.getFileAsString(filename);
       }
+
       async getFiles() {
         return this.files;
       }
+
       async getFilesByExt(...extensions) {
         const files = [];
 
@@ -1441,6 +1469,7 @@ describe('Linter.extractMetadata()', () => {
 
         return files;
       }
+
       async getFileAsString(filename) {
         const contents = {
           'manifest.json': validManifestJSON({ name: 'Buttonmania' }),
