@@ -80,7 +80,7 @@
     "babel-eslint": "9.0.0",
     "babel-gettext-extractor": "git+https://github.com/muffinresearch/babel-gettext-extractor.git#0d39d3882bc846e7dcb6c9ff6463896c96920ce6",
     "babel-jest": "23.0.1",
-    "babel-loader": "7.1.5",
+    "babel-loader": "8.0.2",
     "babel-plugin-syntax-async-functions": "6.13.0",
     "babel-plugin-transform-async-to-generator": "6.24.1",
     "babel-plugin-transform-class-properties": "6.24.1",
