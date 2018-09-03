@@ -141,18 +141,18 @@ Dependencies are automatically kept up-to-date using [greenkeeper](http://greenk
 
 #### npm scripts
 
-| Script                          | Description                                                                      |
-| ------------------------------- | -------------------------------------------------------------------------------- |
-| npm test                        | Runs the tests (watches for changes)                                             |
-| npm [run] build                 | Builds the lib (used by Travis)                                                  |
-| npm run test-coverage           | Runs the tests with coverage (watches for changes)                               |
-| npm run test-once               | Runs the tests once                                                              |
-| npm run lint                    | Runs eslint                                                                      |
-| npm run test-coverage-once      | Runs the tests once with coverage                                                |
-| npm run test-integration-linter | Runs our integration test-suite                                                  |
-| npm prettier                    | Automatically format the whole code-base with Prettier                           |
-| npm prettier-dev                | Automatically compare and format modified source files against the master branch |
-| npm prettier-ci                 | Fail if some code has been changed without being formatted                       |
+| Script                              | Description                                                                      |
+| ------------------------------------| -------------------------------------------------------------------------------- |
+| npm test                            | Runs the tests (watches for changes)                                             |
+| npm [run] build                     | Builds the lib (used by Travis)                                                  |
+| npm run test-coverage               | Runs the tests with coverage (watches for changes)                               |
+| npm run test-once                   | Runs the tests once                                                              |
+| npm run lint                        | Runs eslint                                                                      |
+| npm run test-coverage-once          | Runs the tests once with coverage                                                |
+| npm run test-integration-linter     | Runs our integration test-suite                                                  |
+| npm run prettier                    | Automatically format the whole code-base with Prettier                           |
+| npm run prettier-dev                | Automatically compare and format modified source files against the master branch |
+| npm run prettier-ci                 | Fail if some code has been changed without being formatted                       |
 
 ### Building
 
