@@ -1,0 +1,10 @@
+# exclude everything by default
+*.*
+# exclude these directories
+/bin/
+/dist/
+/locale/
+/node_modules/
+# white-list files we want to process
+!*.js
+!*.md
