@@ -258,9 +258,15 @@ export function checkOutput(func, argv, callback) {
   const logs = [];
   const warnings = [];
 
-  console.error = function(msg) { errors.push(msg); }; // eslint-disable-line
-  console.log = function(msg) { logs.push(msg); }; // eslint-disable-line
-  console.warn = function(msg) { warnings.push(msg); }; // eslint-disable-line
+  console.error = function(msg) {
+    errors.push(msg);
+  }; // eslint-disable-line
+  console.log = function(msg) {
+    logs.push(msg);
+  }; // eslint-disable-line
+  console.warn = function(msg) {
+    warnings.push(msg);
+  }; // eslint-disable-line
 
   let result;
 
