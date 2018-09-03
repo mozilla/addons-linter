@@ -1,20 +1,29 @@
 {
   "presets": [
-    "env",
-    "stage-2",
-    "es2015"
+    "@babel/preset-env"
   ],
   "plugins": [
-    "transform-class-properties",
-    "transform-es2015-modules-commonjs",
     "syntax-async-functions",
-    "transform-async-to-generator",
+    "@babel/plugin-transform-modules-commonjs",
+    "@babel/plugin-transform-async-to-generator",
     [
-      "transform-runtime",
+      "@babel/plugin-transform-runtime",
       {
-        "polyfill": false,
         "regenerator": true
       }
-    ]
+    ],
+    "@babel/plugin-syntax-async-generators",
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    "@babel/plugin-proposal-function-sent",
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/plugin-proposal-numeric-separator",
+    "@babel/plugin-proposal-throw-expressions",
+    "@babel/plugin-proposal-async-generator-functions",
+    "@babel/plugin-proposal-class-properties",
   ]
 }
