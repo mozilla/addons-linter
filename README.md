@@ -152,7 +152,6 @@ Dependencies are automatically kept up-to-date using [greenkeeper](http://greenk
 | npm run test-integration-linter     | Runs our integration test-suite                                                  |
 | npm run prettier                    | Automatically format the whole code-base with Prettier                           |
 | npm run prettier-dev                | Automatically compare and format modified source files against the master branch |
-| npm run prettier-ci                 | Fail if some code has been changed without being formatted                       |
 
 ### Building
 
