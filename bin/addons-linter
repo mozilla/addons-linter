@@ -8,13 +8,20 @@ global.localesRoot = path.join(absoluteAppRoot, 'dist', 'locale');
 global.nodeRequire = require;
 
 try {
+  // `../dist/addons-linter` doesn't exist if the linter has not been
+  // built yet. Disable this eslinting so that users don't get confused
+  // needlessly and aren't required to build the linter for eslint
+  // to pass.
+  // eslint-disable-next-line import/no-unresolved
   require('../dist/addons-linter')
     .createInstance({ runAsBinary: true })
     .run();
 } catch (err) {
   if (err.code === 'MODULE_NOT_FOUND') {
     console.log('You did not build addons-linter yet.');
-    console.log('Please run `npm install` and `npm run build` or see README.md for more information.');
+    console.log(
+      'Please run `npm install` and `npm run build` or see README.md for more information.'
+    );
 
     process.exitCode = 1;
     return;

@@ -6,7 +6,6 @@ import {
 
 import * as messages from 'messages';
 
-
 export default class FluentParser {
   /*
    * Parse FTL files (https://projectfluent.io)
@@ -34,8 +33,12 @@ export default class FluentParser {
 
         // There is always just one annotation for a junk entry
         const annotation = entry.annotations[0];
-        const matchedLine = lineOffset(this._sourceString, annotation.span.end) + 1;
-        const matchedColumn = columnOffset(this._sourceString, annotation.span.end);
+        const matchedLine =
+          lineOffset(this._sourceString, annotation.span.end) + 1;
+        const matchedColumn = columnOffset(
+          this._sourceString,
+          annotation.span.end
+        );
 
         const errorData = {
           ...messages.FLUENT_INVALID,

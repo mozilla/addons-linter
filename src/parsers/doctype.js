@@ -1,6 +1,5 @@
 const ENTITY_RE = /<!ENTITY\s+([\w.]*)\s+("[^"]*"|'[^']*')\s*>/;
 
-
 export default class DoctypeParser {
   /*
    * Minimalistic parser for DTD files.

@@ -41,8 +41,8 @@ try {
 emptyDir(importedDir, /.*\.json$/);
 emptyDir(importedDir, /index\.js$/);
 
-schemaImport.fetchSchemas(
-  { inputPath: filePath, outputPath: firefoxDir })
+schemaImport
+  .fetchSchemas({ inputPath: filePath, outputPath: firefoxDir })
   .then(() => {
     schemaImport.importSchemas(firefoxDir, updatesDir, importedDir);
   })

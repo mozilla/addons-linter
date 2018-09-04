@@ -31,5 +31,7 @@ poFiles.forEach((pofile) => {
   const localeObject = JSON.parse(json);
 
   fs.writeFileSync(
-    localeOutputFilePath, `module.exports = ${toSource(localeObject)}`);
+    localeOutputFilePath,
+    `module.exports = ${toSource(localeObject)}`
+  );
 });

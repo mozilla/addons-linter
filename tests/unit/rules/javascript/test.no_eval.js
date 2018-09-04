@@ -32,7 +32,6 @@ describe('no_eval', () => {
     });
   });
 
-
   const invalidCodes = [
     {
       code: '(0, eval)("foo")',
@@ -122,9 +121,7 @@ describe('no_eval', () => {
       });
 
       code.description.forEach((expectedDescription, idx) => {
-        expect(linterMessages[idx].description).toEqual(
-          expectedDescription
-        );
+        expect(linterMessages[idx].description).toEqual(expectedDescription);
       });
     });
   });

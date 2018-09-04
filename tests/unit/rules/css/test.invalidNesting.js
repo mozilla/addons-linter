@@ -4,7 +4,6 @@ import * as messages from 'messages';
 import { VALIDATION_WARNING } from 'const';
 import CSSScanner from 'scanners/css';
 
-
 describe('CSS Rule InvalidNesting', () => {
   it('should detect invalid nesting', async () => {
     const code = oneLine`/* I'm a comment */

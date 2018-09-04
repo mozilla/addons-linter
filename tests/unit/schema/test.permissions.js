@@ -5,7 +5,6 @@ import { validateAddon } from 'schema/validator';
 import { validManifest } from './helpers';
 import { assertHasMatchingError } from '../helpers';
 
-
 describe('/permissions', () => {
   it('should allow a valid permission', () => {
     const manifest = cloneDeep(validManifest);

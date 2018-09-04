@@ -28,13 +28,17 @@ function publish() {
       name: process.env.GH_USER,
       email: process.env.GH_EMAIL,
     },
-    repo: 'https://' + process.env.GH_TOKEN + '@github.com/mozilla/addons-linter.git', // eslint-disable-line
+    repo: `https://${
+      process.env.GH_TOKEN
+    }@github.com/mozilla/addons-linter.git`,
     message: `Publish rules (auto)${getDeployMessage()}`,
   });
 }
 
-if (process.env.TRAVIS_SECURE_ENV_VARS === 'true' &&
-    process.env.TRAVIS_PULL_REQUEST === 'false') {
+if (
+  process.env.TRAVIS_SECURE_ENV_VARS === 'true' &&
+  process.env.TRAVIS_PULL_REQUEST === 'false'
+) {
   console.log('Pushing branch for docker build');
   publish();
 } else {

@@ -7,7 +7,6 @@ import log from 'logger';
 
 import { Xpi } from './xpi';
 
-
 /*
  * A CRX file is just a ZIP file (eg an XPI) with some extra header
  * information. So we handle opening the file with a CRX parser, then treat

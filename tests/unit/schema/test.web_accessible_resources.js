@@ -4,14 +4,15 @@ import { validateAddon } from 'schema/validator';
 
 import { validManifest } from './helpers';
 
-
 describe('/web_accessible_resources', () => {
   it('should be an array', () => {
     const manifest = cloneDeep(validManifest);
     manifest.web_accessible_resources = 'foo.png';
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual('/web_accessible_resources');
+    expect(validateAddon.errors[0].dataPath).toEqual(
+      '/web_accessible_resources'
+    );
     expect(validateAddon.errors[0].message).toEqual('should be array');
   });
 
@@ -20,7 +21,9 @@ describe('/web_accessible_resources', () => {
     manifest.web_accessible_resources = ['foo.png', 1];
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual('/web_accessible_resources/1');
+    expect(validateAddon.errors[0].dataPath).toEqual(
+      '/web_accessible_resources/1'
+    );
     expect(validateAddon.errors[0].message).toEqual('should be string');
   });
 

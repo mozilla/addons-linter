@@ -5,7 +5,6 @@ import { ESLINT_RULE_MAPPING } from 'const';
 import * as jsRules from 'rules/javascript';
 import { ignorePrivateFunctions } from 'utils';
 
-
 describe('Eslint rules object', () => {
   it('should have keys that match the file names', () => {
     Object.keys(ignorePrivateFunctions(jsRules)).forEach((jsRule) => {
@@ -15,11 +14,16 @@ describe('Eslint rules object', () => {
   });
 
   it('should have files that match the keys', () => {
-    const files = readdirSync('src/rules/javascript')
-      .filter((fileName) => fileName !== 'index.js');
+    const files = readdirSync('src/rules/javascript').filter(
+      (fileName) => fileName !== 'index.js'
+    );
     files.forEach((fileName) => {
-      expect(Object.prototype.hasOwnProperty.call(
-        ESLINT_RULE_MAPPING, path.parse(fileName).name)).toBe(true);
+      expect(
+        Object.prototype.hasOwnProperty.call(
+          ESLINT_RULE_MAPPING,
+          path.parse(fileName).name
+        )
+      ).toBe(true);
     });
   });
 });

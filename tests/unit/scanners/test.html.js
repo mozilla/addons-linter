@@ -9,7 +9,6 @@ import { ignorePrivateFunctions } from 'utils';
 
 import { getRuleFiles, validHTML } from '../helpers';
 
-
 describe('HTML', () => {
   it('should report a proper scanner name', () => {
     expect(HTMLScanner.scannerName).toEqual('html');
@@ -42,7 +41,9 @@ describe('HTML', () => {
   });
 
   it('should warn on <script> tag without a src attribute but a type attribute whose value is "text/javascript"', async () => {
-    const badHTML = validHTML('<script type="text/javascript">alert()</script>');
+    const badHTML = validHTML(
+      '<script type="text/javascript">alert()</script>'
+    );
     const htmlScanner = new HTMLScanner(badHTML, 'index.html');
 
     const { linterMessages } = await htmlScanner.scan();

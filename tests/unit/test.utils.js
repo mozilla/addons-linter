@@ -16,19 +16,21 @@ import {
   parseCspPolicy,
 } from 'utils';
 
-
 describe('getRootExpression()', () => {
   const node = {
     type: 'CallExpression',
-    callee: { // <-- bar()
+    callee: {
+      // <-- bar()
       type: 'MemberExpression',
       object: {
         type: 'CallExpression',
-        callee: { // <-- foo()
+        callee: {
+          // <-- foo()
           type: 'MemberExpression',
           object: {
             type: 'CallExpression',
-            callee: { // <-- pref()
+            callee: {
+              // <-- pref()
               type: 'Identifier',
               name: 'pref',
             },
@@ -67,10 +69,12 @@ describe('gettext()', () => {
     // eslint-disable-next-line global-require
     const mockedI18n = require('utils').i18n;
 
-    expect(mockedI18n.gettext('This is a test')).toEqual('C\'est un test');
+    expect(mockedI18n.gettext('This is a test')).toEqual("C'est un test");
 
     // But messages where we don't have a translation are still original
-    expect(mockedI18n.gettext('This is an untranslated test')).toEqual('This is an untranslated test');
+    expect(mockedI18n.gettext('This is an untranslated test')).toEqual(
+      'This is an untranslated test'
+    );
 
     jest.resetModules();
   });
@@ -95,8 +99,9 @@ describe('gettext()', () => {
 describe('sprintf()', () => {
   it('should return localizable message for dynamic messages', () => {
     const path = '../fixtures/no-image.png';
-    expect(i18n.sprintf(i18n._('Icon could not be found at "%(path)s".'), { path }))
-      .toEqual('Icon could not be found at "../fixtures/no-image.png".');
+    expect(
+      i18n.sprintf(i18n._('Icon could not be found at "%(path)s".'), { path })
+    ).toEqual('Icon could not be found at "../fixtures/no-image.png".');
 
     jest.doMock('utils', () => {
       return {
@@ -107,13 +112,18 @@ describe('sprintf()', () => {
 
     // eslint-disable-next-line global-require
     const mockedI18n = require('utils').i18n;
-    expect(mockedI18n.sprintf(mockedI18n._("Icon could not be found at '%(path)s'."), { path }))
-      .toEqual('Symbol konnte nicht unter „../fixtures/no-image.png“ gefunden werden.');
+    expect(
+      mockedI18n.sprintf(
+        mockedI18n._("Icon could not be found at '%(path)s'."),
+        { path }
+      )
+    ).toEqual(
+      'Symbol konnte nicht unter „../fixtures/no-image.png“ gefunden werden.'
+    );
 
     jest.resetModules();
   });
 });
-
 
 describe('getNodeReference()', () => {
   // Represents scope for following code:
@@ -122,33 +132,41 @@ describe('getNodeReference()', () => {
     getScope: () => {
       // TODO: Look into generating these AST nodes using ESPrima
       return {
-        variables: [{
-          name: 'foo', // Reference name
-          type: 'Identifier',
-          defs: [{
-            parent: {
-              parent: {
-                body: [{
-                  type: 'VariableDeclaration',
-                  declarations: [{
-                    init: {
-                      name: 'window',
-                    },
-                  }],
-                }, {
-                  type: 'ExpressionStatement',
-                  expression: {
-                    type: 'AssignmentExpression',
-                    right: {
-                      name: 'bar',
-                    },
+        variables: [
+          {
+            name: 'foo', // Reference name
+            type: 'Identifier',
+            defs: [
+              {
+                parent: {
+                  parent: {
+                    body: [
+                      {
+                        type: 'VariableDeclaration',
+                        declarations: [
+                          {
+                            init: {
+                              name: 'window',
+                            },
+                          },
+                        ],
+                      },
+                      {
+                        type: 'ExpressionStatement',
+                        expression: {
+                          type: 'AssignmentExpression',
+                          right: {
+                            name: 'bar',
+                          },
+                        },
+                      },
+                    ],
                   },
                 },
-                ],
               },
-            },
-          }],
-        }],
+            ],
+          },
+        ],
       };
     },
   };
@@ -173,20 +191,24 @@ describe('getVariable()', () => {
   const context = {
     getScope: () => {
       return {
-        variables: [{
-          name: 'foo',
-          defs: [{
-            type: 'Variable',
-            name: {
-              parent: {
-                init: {
-                  type: 'Literal',
-                  value: 'bar',
+        variables: [
+          {
+            name: 'foo',
+            defs: [
+              {
+                type: 'Variable',
+                name: {
+                  parent: {
+                    init: {
+                      type: 'Literal',
+                      value: 'bar',
+                    },
+                  },
                 },
               },
-            },
-          }],
-        }],
+            ],
+          },
+        ],
       };
     },
   };
@@ -194,13 +216,17 @@ describe('getVariable()', () => {
   const contextWithoutParent = {
     getScope: () => {
       return {
-        variables: [{
-          name: 'foo',
-          defs: [{
-            type: 'Variable',
-            name: {},
-          }],
-        }],
+        variables: [
+          {
+            name: 'foo',
+            defs: [
+              {
+                type: 'Variable',
+                name: {},
+              },
+            ],
+          },
+        ],
       };
     },
   };
@@ -272,15 +298,14 @@ describe('ensureFilenameExists()', () => {
   });
 });
 
-
 describe('checkMinNodeVersion()', () => {
   it('should reject if version is not high enough', async () => {
     const fakeProcess = {
       version: 'v0.12.4',
     };
-    await expect(
-      checkMinNodeVersion('0.12.7', fakeProcess)
-    ).rejects.toThrow('Node version must be 0.12.7 or greater');
+    await expect(checkMinNodeVersion('0.12.7', fakeProcess)).rejects.toThrow(
+      'Node version must be 0.12.7 or greater'
+    );
   });
 
   it('should not reject if version is not high enough', () => {
@@ -333,7 +358,6 @@ describe('ignorePrivateFunctions()', () => {
   });
 });
 
-
 describe('getPackageTypeAsString()', () => {
   it('should look up a package type when passed a number', () => {
     expect(getPackageTypeAsString(2)).toEqual('PACKAGE_THEME');
@@ -356,7 +380,6 @@ describe('getPackageTypeAsString()', () => {
   });
 });
 
-
 describe('isLocalUrl', () => {
   it('should not match remote urls', () => {
     expect(isLocalUrl('http://foo.com')).toBeFalsy();
@@ -366,8 +389,12 @@ describe('isLocalUrl', () => {
   });
 
   it('should not match data uri', () => {
-    expect(isLocalUrl('data:image/gif;base64,R0' +
-      'lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')).toBeFalsy();
+    expect(
+      isLocalUrl(
+        'data:image/gif;base64,R0' +
+          'lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+      )
+    ).toBeFalsy();
   });
 
   it('should match chrome protocol', () => {
@@ -387,7 +414,6 @@ describe('isLocalUrl', () => {
   });
 });
 
-
 describe('isBrowserNamespace', () => {
   it('is true for browser', () => {
     expect(isBrowserNamespace('browser')).toEqual(true);
@@ -405,7 +431,6 @@ describe('isBrowserNamespace', () => {
   });
 });
 
-
 describe('parseCspPolicy', () => {
   it('should allow empty policies', () => {
     expect(parseCspPolicy('')).toEqual({});
@@ -421,20 +446,19 @@ describe('parseCspPolicy', () => {
 
     const parsedPolicy = parseCspPolicy(rawPolicy);
 
-    expect(parsedPolicy['script-src']).toEqual(['\'self\'']);
-    expect(parsedPolicy['default-src']).toEqual(['\'none\'']);
-    expect(parsedPolicy['connect-src']).toEqual(['https:', '\'self\'']);
-    expect(parsedPolicy['img-src']).toEqual(['\'self\'']);
-    expect(parsedPolicy['style-src']).toEqual(['\'self\'']);
+    expect(parsedPolicy['script-src']).toEqual(["'self'"]);
+    expect(parsedPolicy['default-src']).toEqual(["'none'"]);
+    expect(parsedPolicy['connect-src']).toEqual(['https:', "'self'"]);
+    expect(parsedPolicy['img-src']).toEqual(["'self'"]);
+    expect(parsedPolicy['style-src']).toEqual(["'self'"]);
   });
 
   it('should handle upper case correctly', () => {
-    const parsedPolicy = parseCspPolicy('DEFAULT-SRC \'NoNe\'');
+    const parsedPolicy = parseCspPolicy("DEFAULT-SRC 'NoNe'");
 
-    expect(parsedPolicy['default-src']).toEqual(['\'none\'']);
+    expect(parsedPolicy['default-src']).toEqual(["'none'"]);
   });
 });
-
 
 describe('normalizePath', () => {
   it('should normalize given "absolute" path to relative path', () => {

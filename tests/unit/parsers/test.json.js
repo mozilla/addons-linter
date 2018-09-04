@@ -6,7 +6,6 @@ import * as messages from 'messages';
 
 import { validManifestJSON } from '../helpers';
 
-
 describe('JSONParser', () => {
   it('should show a message if bad JSON', () => {
     const addonLinter = new Linter({ _: ['bar'] });
@@ -28,18 +27,20 @@ describe('JSONParser duplicate keys', () => {
     // We aren't using oneLine here so we can test the line number
     // reporting.
     /* eslint-disable indent */
-    const json = ['{',
+    const json = [
+      '{',
       '"description": "Very good music.",',
       '"manifest_version": 2,',
       '"name": "Prince",',
       '"version": "0.0.1",',
       '"name": "The Artist Formerly Known As Prince",',
       '"applications": {',
-          '"gecko": {',
-              '"id": "@webextension-guid"',
-          '}',
+      '"gecko": {',
+      '"id": "@webextension-guid"',
       '}',
-    '}'].join('\n');
+      '}',
+      '}',
+    ].join('\n');
     /* eslint-enable indent */
 
     const jsonParser = new JSONParser(json, addonLinter.collector);
@@ -91,17 +92,19 @@ describe('JSONParser duplicate keys', () => {
     // We aren't using oneLine here so we can test the line number
     // reporting.
     /* eslint-disable indent */
-    const json = ['{',
+    const json = [
+      '{',
       '"description": "Very good music.",',
       '"manifest_version": 2,',
       '"name": "Prince",',
       '"version": "0.0.1",',
       '"applications": {',
-          '"gecko": {',
-              '"id": "@webextension-guid"',
-          '}',
+      '"gecko": {',
+      '"id": "@webextension-guid"',
       '}',
-    '}'].join('\n');
+      '}',
+      '}',
+    ].join('\n');
     /* eslint-enable indent */
     const fakeRJSON = { parse: () => {} };
     const parseStub = sinon.stub(fakeRJSON, 'parse').callsFake(() => {

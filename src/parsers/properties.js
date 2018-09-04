@@ -1,4 +1,3 @@
-
 export default class PropertiesParser {
   /*
    * Parser for .properties files.
@@ -30,7 +29,8 @@ export default class PropertiesParser {
       // Skip empty lines and comments
       if (!cleanedLine) {
         return;
-      } else if (cleanedLine.startsWith('#')) {
+      }
+      if (cleanedLine.startsWith('#')) {
         return;
       }
 

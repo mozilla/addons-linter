@@ -4,7 +4,8 @@ import PropertiesParser from 'parsers/properties';
 describe('PropertiesParser', () => {
   it('should parse valid .properties file correctly', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const propertiesParser = new PropertiesParser(`
+    const propertiesParser = new PropertiesParser(
+      `
       foo=bar
       abc.def = xyz
       #Comment
@@ -14,7 +15,9 @@ describe('PropertiesParser', () => {
 
       this.is.a =test
       overwrite=foo
-      overwrite=bar`, addonLinter.collector);
+      overwrite=bar`,
+      addonLinter.collector
+    );
 
     propertiesParser.parse();
 
@@ -30,7 +33,8 @@ describe('PropertiesParser', () => {
 
   it('should ignore invalid entities', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const propertiesParser = new PropertiesParser(`
+    const propertiesParser = new PropertiesParser(
+      `
         this should be ignored.
         foo=
         bar
@@ -39,7 +43,9 @@ describe('PropertiesParser', () => {
         three.lines=a
         b
         c
-        d`, addonLinter.collector);
+        d`,
+      addonLinter.collector
+    );
 
     propertiesParser.parse();
 

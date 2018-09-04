@@ -48,15 +48,19 @@ function getPackedName() {
 function createPackage(tmpDirPath) {
   console.log(chalk.green('Create a pre-release npm package archive'));
   return new Promise((resolve, reject) => {
-    const pkgPack = spawnWithShell('npm', ['pack', process.cwd()], { cwd: tmpDirPath });
+    const pkgPack = spawnWithShell('npm', ['pack', process.cwd()], {
+      cwd: tmpDirPath,
+    });
 
     pkgPack.stdout.pipe(process.stdout);
     pkgPack.stderr.pipe(process.stderr);
     pkgPack.on('close', (exitCode) => {
       if (exitCode === 0) {
-        resolve(getPackedName().then((filename) => {
-          return path.join(tmpDirPath, filename);
-        }));
+        resolve(
+          getPackedName().then((filename) => {
+            return path.join(tmpDirPath, filename);
+          })
+        );
       } else {
         reject(new Error('Failed to create npm package archive'));
       }
@@ -65,7 +69,9 @@ function createPackage(tmpDirPath) {
 }
 
 function unpackTarPackage(packagePath, destDir) {
-  console.log(chalk.green(['Unpacking', packagePath, 'package into', destDir].join(' ')));
+  console.log(
+    chalk.green(['Unpacking', packagePath, 'package into', destDir].join(' '))
+  );
 
   return new Promise((resolve, reject) => {
     fs.createReadStream(packagePath)
@@ -79,9 +85,13 @@ function unpackTarPackage(packagePath, destDir) {
 function installPackageDeps(packageDir) {
   console.log(chalk.green('Install production package dependencies'));
   return new Promise((resolve, reject) => {
-    const pkgInstall = spawnWithShell('npm', ['install', '--production', '--no-lockfile'], {
-      cwd: packageDir,
-    });
+    const pkgInstall = spawnWithShell(
+      'npm',
+      ['install', '--production', '--no-lockfile'],
+      {
+        cwd: packageDir,
+      }
+    );
     pkgInstall.stdout.pipe(process.stdout);
     pkgInstall.stderr.pipe(process.stderr);
     pkgInstall.on('close', (exitCode) => {
@@ -95,14 +105,20 @@ function installPackageDeps(packageDir) {
 }
 
 function runIntegrationTests(packageDir) {
-  console.log(chalk.green('Running integration tests in production-like environent'));
+  console.log(
+    chalk.green('Running integration tests in production-like environent')
+  );
   return new Promise((resolve, reject) => {
-    const testRun = spawnWithShell('npm', ['run', npmScript, '--', jestTestsPath], {
-      env: Object.assign({}, process.env, {
-        PATH: process.env.PATH,
-        TEST_BIN_PATH: path.join(packageDir, 'bin'),
-      }),
-    });
+    const testRun = spawnWithShell(
+      'npm',
+      ['run', npmScript, '--', jestTestsPath],
+      {
+        env: Object.assign({}, process.env, {
+          PATH: process.env.PATH,
+          TEST_BIN_PATH: path.join(packageDir, 'bin'),
+        }),
+      }
+    );
 
     testRun.stdout.pipe(process.stdout);
     testRun.stderr.pipe(process.stderr);
@@ -118,15 +134,17 @@ function runIntegrationTests(packageDir) {
 
 // Create a production-like environment in a temporarily created directory
 // and then run the integration tests on it.
-tmp.withDir((tmpDir) => {
-  const tmpDirPath = tmpDir.path;
-  const unpackedDirPath = path.join(tmpDirPath, 'package');
+tmp
+  .withDir((tmpDir) => {
+    const tmpDirPath = tmpDir.path;
+    const unpackedDirPath = path.join(tmpDirPath, 'package');
 
-  return createPackage(tmpDirPath)
-    .then((archiveFilePath) => unpackTarPackage(archiveFilePath, tmpDirPath))
-    .then(() => installPackageDeps(unpackedDirPath))
-    .then(() => runIntegrationTests(unpackedDirPath));
-}, tmpOptions).catch((err) => {
-  console.error(err.stack ? chalk.red(err.stack) : chalk.red(err));
-  process.exit(1);
-});
+    return createPackage(tmpDirPath)
+      .then((archiveFilePath) => unpackTarPackage(archiveFilePath, tmpDirPath))
+      .then(() => installPackageDeps(unpackedDirPath))
+      .then(() => runIntegrationTests(unpackedDirPath));
+  }, tmpOptions)
+  .catch((err) => {
+    console.error(err.stack ? chalk.red(err.stack) : chalk.red(err));
+    process.exit(1);
+  });

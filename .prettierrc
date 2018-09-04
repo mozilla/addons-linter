@@ -1,0 +1,14 @@
+{
+  "arrowParens": "always",
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "proseWrap": "never",
+  "overrides": [
+    {
+      "files": "bin/*",
+      "options": {
+        "parser": "babylon"
+      }
+    }
+  ]
+}

@@ -3,7 +3,6 @@ import { ignorePrivateFunctions } from 'utils';
 
 import { metadataPassCheck, validMetadata } from '../helpers';
 
-
 class BaseScannerWithContents extends BaseScanner {
   _getContents() {
     return Promise.resolve({});
@@ -44,7 +43,9 @@ describe('Base Scanner Class', () => {
   it('should reject when _getContents is not implemented', async () => {
     const baseScanner = new BaseScanner('', 'index.html');
 
-    await expect(baseScanner.scan()).rejects.toThrow('_getContents is not implemented');
+    await expect(baseScanner.scan()).rejects.toThrow(
+      '_getContents is not implemented'
+    );
   });
 
   it('should run all rules', async () => {
@@ -96,9 +97,9 @@ describe('Base Scanner Class', () => {
     };
 
     await baseScanner.scan(fakeRules);
-    expect(
-      baseScanner._rulesProcessed
-    ).toEqual(Object.keys(ignorePrivateFunctions(fakeRules)).length);
+    expect(baseScanner._rulesProcessed).toEqual(
+      Object.keys(ignorePrivateFunctions(fakeRules)).length
+    );
   });
 
   it('should ask for a string', () => {

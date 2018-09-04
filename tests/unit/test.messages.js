@@ -3,7 +3,6 @@ import { readFileSync } from 'fs';
 
 import * as messages from 'messages';
 
-
 describe('Messages', () => {
   Object.keys(messages).forEach((message) => {
     const { code, description, msg } = messages[message];

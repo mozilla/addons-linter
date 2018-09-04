@@ -2,7 +2,6 @@ import { oneLine } from 'common-tags';
 
 import { FLAGGED_FILE_MAGIC_NUMBERS_LENGTH, MAX_FILE_SIZE_MB } from 'const';
 
-
 /*
  * Base class for io operations for both an Xpi or
  * a directory

@@ -2,7 +2,6 @@ import { VALIDATION_WARNING } from 'const';
 import { isStrictRelativeUrl } from 'schema/formats';
 import * as messages from 'messages';
 
-
 export async function warnOnRemoteScript($, filename) {
   const linterMessages = [];
 

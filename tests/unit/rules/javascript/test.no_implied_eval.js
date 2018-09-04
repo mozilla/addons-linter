@@ -4,7 +4,6 @@ import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import { NO_IMPLIED_EVAL } from 'messages';
 
-
 // These rules were mostly copied and adapted from
 // https://github.com/eslint/eslint/blob/master/tests/lib/rules/no-implied-eval.js
 // Please make sure to keep them up-to-date and report upstream errors.
@@ -153,9 +152,7 @@ describe('no_implied_eval', () => {
       });
 
       code.description.forEach((expectedDescription, idx) => {
-        expect(linterMessages[idx].description).toEqual(
-          expectedDescription
-        );
+        expect(linterMessages[idx].description).toEqual(expectedDescription);
       });
     });
   });

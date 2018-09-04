@@ -2,7 +2,6 @@ import { oneLine } from 'common-tags';
 
 import { MESSAGE_TYPES } from 'const';
 
-
 // These are the props we expect to pull out of
 // the data object passed to the Message constructor.
 export const props = [
@@ -15,11 +14,7 @@ export const props = [
   'dataPath',
 ];
 
-export const requiredProps = [
-  'code',
-  'message',
-  'description',
-];
+export const requiredProps = ['code', 'message', 'description'];
 
 export default class Message {
   constructor(type, data = {}) {
@@ -57,8 +52,11 @@ export default class Message {
   }
 
   matches(other) {
-    return this.type === other.type && props.every((prop) => {
-      return this[prop] === other[prop];
-    });
+    return (
+      this.type === other.type &&
+      props.every((prop) => {
+        return this[prop] === other[prop];
+      })
+    );
   }
 }

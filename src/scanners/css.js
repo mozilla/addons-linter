@@ -7,7 +7,6 @@ import { VALIDATION_WARNING } from 'const';
 import { ignorePrivateFunctions } from 'utils';
 import * as cssRules from 'rules/css';
 
-
 export default class CSSScanner extends BaseScanner {
   _defaultRules = cssRules;
 
@@ -45,11 +44,11 @@ export default class CSSScanner extends BaseScanner {
       return;
     }
 
-    log.debug('Passing CSS code to rule function "%s"',
-      cssInstruction, info);
+    log.debug('Passing CSS code to rule function "%s"', cssInstruction, info);
 
     this.linterMessages = this.linterMessages.concat(
-      _rules[cssInstruction](cssNode, file, cssOptions));
+      _rules[cssInstruction](cssNode, file, cssOptions)
+    );
   }
 
   async scan(_rules = this._defaultRules) {
@@ -80,17 +79,19 @@ export default class CSSScanner extends BaseScanner {
         throw e;
       }
 
-      this.linterMessages.push(Object.assign({}, CSS_SYNTAX_ERROR, {
-        type: VALIDATION_WARNING,
-        // Use the reason for the error as the message.
-        // e.message includes an absolute path.
-        message: e.reason,
-        column: e.column,
-        line: e.line,
-        // We use our own ref to the file as postcss outputs
-        // absolute paths.
-        file: this.filename,
-      }));
+      this.linterMessages.push(
+        Object.assign({}, CSS_SYNTAX_ERROR, {
+          type: VALIDATION_WARNING,
+          // Use the reason for the error as the message.
+          // e.message includes an absolute path.
+          message: e.reason,
+          column: e.column,
+          line: e.line,
+          // We use our own ref to the file as postcss outputs
+          // absolute paths.
+          file: this.filename,
+        })
+      );
 
       // A syntax error has been encounted so it's game over.
       return null;

@@ -8,7 +8,6 @@ import { ignorePrivateFunctions } from 'utils';
 
 import { getRuleFiles, metadataPassCheck, validMetadata } from '../helpers';
 
-
 describe('CSSScanner', async () => {
   it('should report a proper scanner name', () => {
     expect(CSSScanner.scannerName).toEqual('css');
@@ -59,7 +58,9 @@ describe('CSSScanner', async () => {
     // We load the fake CSS parser into the scanner the only way possible:
     // using the private _getContents method, which will take an alternate
     // parser.
-    await expect(cssScanner._getContents(fakeCSSParser)).rejects.toThrow('Awooga');
+    await expect(cssScanner._getContents(fakeCSSParser)).rejects.toThrow(
+      'Awooga'
+    );
   });
 
   it('should export and run all rules in rules/css', async () => {
@@ -70,11 +71,13 @@ describe('CSSScanner', async () => {
     const cssScanner = new CSSScanner(code, 'fakeFile.css');
 
     expect(ruleFiles.length).toEqual(
-      Object.keys(ignorePrivateFunctions(rules)).length);
+      Object.keys(ignorePrivateFunctions(rules)).length
+    );
 
     await cssScanner.scan();
     expect(cssScanner._rulesProcessed).toEqual(
-      Object.keys(ignorePrivateFunctions(rules)).length);
+      Object.keys(ignorePrivateFunctions(rules)).length
+    );
   });
 
   it('should not blow-up on empty media query', async () => {

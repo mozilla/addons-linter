@@ -30,7 +30,6 @@ const linterMock = {
   }),
 };
 
-
 const esLintMock = {
   CLIEngine: (engineOptions) => {
     return {
@@ -42,7 +41,6 @@ const esLintMock = {
     };
   },
 };
-
 
 describe('JavaScript Scanner', () => {
   it('should report a proper scanner name', () => {
@@ -74,11 +72,16 @@ describe('JavaScript Scanner', () => {
 
   it('should be initialised with disabledRules from options', () => {
     const jsScanner = new JavaScriptScanner('', 'filename.txt', {
-      disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml',
+      disabledRules:
+        'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml',
     });
     expect(typeof jsScanner.disabledRules).toEqual('object');
     // This test assures us the disabledRules built properly.
-    expect(jsScanner.disabledRules).toEqual(['no-eval', 'no-implied-eval', 'no-unsafe-innerhtml/no-unsafe-innerhtml']);
+    expect(jsScanner.disabledRules).toEqual([
+      'no-eval',
+      'no-implied-eval',
+      'no-unsafe-innerhtml/no-unsafe-innerhtml',
+    ]);
   });
 
   it('should be initialised with empty excluded rules object, when there is no string', () => {
@@ -90,7 +93,8 @@ describe('JavaScript Scanner', () => {
 
   it('should be initialised with valid rules only', () => {
     const jsScanner = new JavaScriptScanner('', 'filename.txt', {
-      disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml,,,,,',
+      disabledRules:
+        'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml,,,,,',
     });
     expect(jsScanner.disabledRules).toEqual([
       'no-eval',
@@ -155,9 +159,9 @@ describe('JavaScript Scanner', () => {
 
     const { linterMessages: moreValidationMessages } = await jsScanner.scan();
     expect(moreValidationMessages[0].code).toEqual(
-      messages.JS_SYNTAX_ERROR.code);
-    expect(moreValidationMessages[0].type).toEqual(
-      VALIDATION_ERROR);
+      messages.JS_SYNTAX_ERROR.code
+    );
+    expect(moreValidationMessages[0].type).toEqual(VALIDATION_ERROR);
   });
 
   it('should reject on missing message code', async () => {
@@ -166,12 +170,16 @@ describe('JavaScript Scanner', () => {
       constructor() {},
       executeOnText: () => {
         return {
-          results: [{
-            filePath: 'badcode.js',
-            messages: [{
-              fatal: false,
-            }],
-          }],
+          results: [
+            {
+              filePath: 'badcode.js',
+              messages: [
+                {
+                  fatal: false,
+                },
+              ],
+            },
+          ],
         };
       },
       linter: {
@@ -187,7 +195,9 @@ describe('JavaScript Scanner', () => {
 
     const jsScanner = new JavaScriptScanner('whatever', 'badcode.js');
 
-    await expect(jsScanner.scan(FakeESLint)).rejects.toThrow(/JS rules must pass a valid message/);
+    await expect(jsScanner.scan(FakeESLint)).rejects.toThrow(
+      /JS rules must pass a valid message/
+    );
   });
 
   // This should not cause a syntax error; it should still be parsing code
@@ -210,7 +220,9 @@ describe('JavaScript Scanner', () => {
       },
     });
 
-    eslint.verify('/*eslint-env browser*/', config, { allowInlineConfig: false });
+    eslint.verify('/*eslint-env browser*/', config, {
+      allowInlineConfig: false,
+    });
     expect(ok).toBeTruthy();
   });
 
@@ -262,29 +274,34 @@ describe('JavaScript Scanner', () => {
         description: 'Should not happen',
       }),
     };
-    const fakeMetadata = { addonMetadata: validMetadata({ guid: 'snowflake' }) };
+    const fakeMetadata = {
+      addonMetadata: validMetadata({ guid: 'snowflake' }),
+    };
     const fakeESLintMapping = { 'metadata-not-passed': ESLINT_ERROR };
 
-    sinon.stub(
-      fakeRules['metadata-not-passed'], 'create'
-    ).callsFake((context) => {
-      return {
-        Identifier: () => {
-          const metadata = context.settings.addonMetadata;
+    sinon
+      .stub(fakeRules['metadata-not-passed'], 'create')
+      .callsFake((context) => {
+        return {
+          Identifier: () => {
+            const metadata = context.settings.addonMetadata;
 
-          if (typeof metadata !== 'object') {
-            assert.fail(null, null, 'Metadata should be an object.');
-          }
+            if (typeof metadata !== 'object') {
+              assert.fail(null, null, 'Metadata should be an object.');
+            }
 
-          if (metadata.guid !== 'snowflake') {
-            assert.fail(null, null, 'Metadata properties not present.');
-          }
-        },
-      };
-    });
+            if (metadata.guid !== 'snowflake') {
+              assert.fail(null, null, 'Metadata properties not present.');
+            }
+          },
+        };
+      });
 
-    const jsScanner = new JavaScriptScanner('var hello = "something";',
-      'index.html', fakeMetadata);
+    const jsScanner = new JavaScriptScanner(
+      'var hello = "something";',
+      'index.html',
+      fakeMetadata
+    );
 
     await jsScanner.scan(ESLint, {
       _rules: fakeRules,
@@ -301,7 +318,8 @@ describe('JavaScript Scanner', () => {
     const externalRulesCount = Object.keys(EXTERNAL_RULE_MAPPING).length;
 
     expect(ruleFiles.length + externalRulesCount).toEqual(
-      Object.keys(ESLINT_RULE_MAPPING).length);
+      Object.keys(ESLINT_RULE_MAPPING).length
+    );
 
     const jsScanner = new JavaScriptScanner('', 'badcode.js');
 
@@ -312,7 +330,9 @@ describe('JavaScript Scanner', () => {
   DEPRECATED_APIS.forEach((api) => {
     it(`should return warning when ${api} is used`, async () => {
       const jsScanner = new JavaScriptScanner(
-        `chrome.${api}(function() {});`, 'code.js');
+        `chrome.${api}(function() {});`,
+        'code.js'
+      );
 
       const { linterMessages } = await jsScanner.scan();
       expect(linterMessages.length).toEqual(1);
@@ -325,7 +345,10 @@ describe('JavaScript Scanner', () => {
     it(`should return warning when ${api} is used with no id`, async () => {
       const fakeMetadata = { addonMetadata: validMetadata({}) };
       const jsScanner = new JavaScriptScanner(
-        `chrome.${api}(function() {});`, 'code.js', fakeMetadata);
+        `chrome.${api}(function() {});`,
+        'code.js',
+        fakeMetadata
+      );
 
       const { linterMessages } = await jsScanner.scan();
       expect(linterMessages.length).toEqual(1);
@@ -338,7 +361,10 @@ describe('JavaScript Scanner', () => {
     it(`should pass when ${api} is used with an id`, async () => {
       const fakeMetadata = { addonMetadata: validMetadata({ id: 'snark' }) };
       const jsScanner = new JavaScriptScanner(
-        `chrome.${api}(function() {});`, 'code.js', fakeMetadata);
+        `chrome.${api}(function() {});`,
+        'code.js',
+        fakeMetadata
+      );
 
       const { linterMessages } = await jsScanner.scan();
       expect(linterMessages.length).toEqual(0);
@@ -359,7 +385,10 @@ describe('JavaScript Scanner', () => {
     const fakeMetadata = { addonMetadata: validMetadata({}) };
     const jsScanner = new JavaScriptScanner('foo.bar', 'code.js', fakeMetadata);
 
-    const { linterMessages } = await jsScanner.scan(undefined, { _rules, _ruleMapping });
+    const { linterMessages } = await jsScanner.scan(undefined, {
+      _rules,
+      _ruleMapping,
+    });
     expect(linterMessages.length).toEqual(1);
     expect(linterMessages[0].code).toEqual('this is the message');
     expect(linterMessages[0].message).toEqual('this is the message');
@@ -375,28 +404,39 @@ describe('JavaScript Scanner', () => {
     });
 
     it('should work without exclusions', () => {
-      expect(excludeRules({
-        test: {},
-      })).toEqual({
+      expect(
+        excludeRules({
+          test: {},
+        })
+      ).toEqual({
         test: {},
       });
     });
 
     it('should should exclude test rule', () => {
-      expect(excludeRules({
-        test: {},
-        'next-test': {},
-      },
-      ['test'])).toEqual({
+      expect(
+        excludeRules(
+          {
+            test: {},
+            'next-test': {},
+          },
+          ['test']
+        )
+      ).toEqual({
         'next-test': {},
       });
     });
 
     it('should work if rule doesnt exist', () => {
-      expect(excludeRules({
-        test: {},
-        'next-test': {},
-      }, ['i-dont-exist'])).toEqual({
+      expect(
+        excludeRules(
+          {
+            test: {},
+            'next-test': {},
+          },
+          ['i-dont-exist']
+        )
+      ).toEqual({
         test: {},
         'next-test': {},
       });
@@ -406,7 +446,8 @@ describe('JavaScript Scanner', () => {
   describe('scanner options tests', () => {
     it('should define valid set of rules for linter', async () => {
       const jsScanner = new JavaScriptScanner('', 'filename.txt', {
-        disabledRules: 'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml',
+        disabledRules:
+          'no-eval, no-implied-eval,                 no-unsafe-innerhtml/no-unsafe-innerhtml',
       });
       const original = linterMock.defineRule;
       sinon.stub(linterMock, 'defineRule').callsFake(original);

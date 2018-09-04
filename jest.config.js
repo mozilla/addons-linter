@@ -5,14 +5,8 @@ module.exports = {
     '<rootDir>/config/',
   ],
   collectCoverageFrom: ['src/**/*.js'],
-  moduleDirectories: [
-    'src',
-    'node_modules',
-  ],
-  moduleFileExtensions: [
-    'js',
-    'json',
-  ],
+  moduleDirectories: ['src', 'node_modules'],
+  moduleFileExtensions: ['js', 'json'],
   moduleNameMapper: {
     // Alias tests for tests to be able to import helpers.
     '^tests/(.*)$': '<rootDir>/tests/$1',
@@ -31,9 +25,7 @@ module.exports = {
     '^.+\\.js$': 'babel-jest',
     '^.+\\.txt$': 'jest-raw-loader',
   },
-  transformIgnorePatterns: [
-    '<rootDir>/node_modules/',
-  ],
+  transformIgnorePatterns: ['<rootDir>/node_modules/'],
   testEnvironment: 'node',
   verbose: false,
 };

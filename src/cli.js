@@ -30,13 +30,17 @@ export function getConfig({ useCLI = true, argv } = {}) {
   // See #1762 for a rationale.
   const cliArgv = argv ? yargs(argv) : yargs;
 
-  return cliArgv
-    .usage(`Usage: ./$0 [options] addon-package-or-dir \n\n
-      Add-ons Linter (JS Edition) v${version}`)
-    .options(options)
-    // Require one non-option.
-    .demand(1)
-    .help('help')
-    .alias('h', 'help')
-    .wrap(terminalWidth());
+  return (
+    cliArgv
+      .usage(
+        `Usage: ./$0 [options] addon-package-or-dir \n\n
+      Add-ons Linter (JS Edition) v${version}`
+      )
+      .options(options)
+      // Require one non-option.
+      .demand(1)
+      .help('help')
+      .alias('h', 'help')
+      .wrap(terminalWidth())
+  );
 }

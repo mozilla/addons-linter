@@ -4,7 +4,6 @@ import { validateAddon } from 'schema/validator';
 
 import { validManifest } from './helpers';
 
-
 describe('/manifest_version', () => {
   it('should be invalid due to old manifest_version', () => {
     const manifest = cloneDeep(validManifest);

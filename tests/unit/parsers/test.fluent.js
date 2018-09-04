@@ -6,16 +6,18 @@ import * as messages from 'messages';
 
 import { assertHasMatchingError } from '../helpers';
 
-
 describe('FluentParser', () => {
   it('should parse valid .ftl file correctly', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const parser = new FluentParser(`
+    const parser = new FluentParser(
+      `
 choose-download-folder-title =
   {
     *[nominative] Foo
      [accusative] Foo2
-  }`, addonLinter.collector);
+  }`,
+      addonLinter.collector
+    );
 
     parser.parse();
 
@@ -24,7 +26,8 @@ choose-download-folder-title =
 
   it('support key assignments', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const parser = new FluentParser(`
+    const parser = new FluentParser(
+      `
 key67
     .label = Sign In To &syncBrand.shortName.label;…
     .accesskey = Y
@@ -33,42 +36,47 @@ key68
     .accesskey = S
 key69
     .label = Reconnect to &syncBrand.shortName.label;…
-    .accesskey = R`, addonLinter.collector);
+    .accesskey = R`,
+      addonLinter.collector
+    );
 
     parser.parse();
 
     expect(parser.isValid).toEqual(true);
-    expect(parser.parsedData.key67.attributes[0].value.elements[0].value).toEqual(
-      'Sign In To &syncBrand.shortName.label;…'
-    );
-    expect(parser.parsedData.key67.attributes[1].value.elements[0].value).toEqual(
-      'Y'
-    );
+    expect(
+      parser.parsedData.key67.attributes[0].value.elements[0].value
+    ).toEqual('Sign In To &syncBrand.shortName.label;…');
+    expect(
+      parser.parsedData.key67.attributes[1].value.elements[0].value
+    ).toEqual('Y');
 
-    expect(parser.parsedData.key68.attributes[0].value.elements[0].value).toEqual(
-      'Sync Now'
-    );
-    expect(parser.parsedData.key68.attributes[1].value.elements[0].value).toEqual(
-      'S'
-    );
+    expect(
+      parser.parsedData.key68.attributes[0].value.elements[0].value
+    ).toEqual('Sync Now');
+    expect(
+      parser.parsedData.key68.attributes[1].value.elements[0].value
+    ).toEqual('S');
 
-    expect(parser.parsedData.key69.attributes[0].value.elements[0].value).toEqual(
-      'Reconnect to &syncBrand.shortName.label;…'
-    );
-    expect(parser.parsedData.key69.attributes[1].value.elements[0].value).toEqual(
-      'R'
-    );
+    expect(
+      parser.parsedData.key69.attributes[0].value.elements[0].value
+    ).toEqual('Reconnect to &syncBrand.shortName.label;…');
+    expect(
+      parser.parsedData.key69.attributes[1].value.elements[0].value
+    ).toEqual('R');
   });
 
   it('supports placeable', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const parser = new FluentParser(`
+    const parser = new FluentParser(
+      `
 shared-photos =
   { $user_name } { $photo_count ->
       [0] hasn't added any photos yet
       [one] added a new photo
      *[other] added { $photo_count } new photos
-  }.`, addonLinter.collector);
+  }.`,
+      addonLinter.collector
+    );
 
     parser.parse();
 
@@ -94,7 +102,8 @@ shared-photos =
 
   it('supports firefox 60 beta en-gb file', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const parser = new FluentParser(`
+    const parser = new FluentParser(
+      `
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -144,7 +153,9 @@ feature-disable-requires-restart = { -brand-short-name } must restart to disable
 should-restart-title = Restart { -brand-short-name }
 should-restart-ok = Restart { -brand-short-name } now
 revert-no-restart-button = Revert
-restart-later = Restart Later`, addonLinter.collector);
+restart-later = Restart Later`,
+      addonLinter.collector
+    );
 
     parser.parse();
 

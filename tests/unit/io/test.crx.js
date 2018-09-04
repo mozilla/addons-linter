@@ -5,7 +5,6 @@ import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
 
 import { unexpectedSuccess } from '../helpers';
 
-
 const defaultData = {
   compressionMethod: DEFLATE_COMPRESSION,
 };
@@ -59,7 +58,6 @@ describe('Crx.open()', function openCallback() {
   });
 });
 
-
 describe('crx.getFiles()', function getFilesCallback() {
   beforeEach(() => {
     const onStub = sinon.stub();
@@ -102,8 +100,12 @@ describe('crx.getFiles()', function getFilesCallback() {
   });
 
   it('should contain expected files', async () => {
-    const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
-      this.fakeFs);
+    const myCrx = new Crx(
+      'foo/bar',
+      this.fakeZipLib,
+      this.fakeParseCrx,
+      this.fakeFs
+    );
     const expected = {
       'chrome.manifest': chromeManifestEntry,
     };
@@ -133,8 +135,12 @@ describe('crx.getFiles()', function getFilesCallback() {
   });
 
   it('should reject on duplicate entries', async () => {
-    const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
-      this.fakeFs);
+    const myCrx = new Crx(
+      'foo/bar',
+      this.fakeZipLib,
+      this.fakeParseCrx,
+      this.fakeFs
+    );
     this.fromBufferStub.yieldsAsync(null, this.fakeZipFile);
     this.fakeParseCrx.yieldsAsync(null, { body: Buffer.from('foo') });
     this.readFileStub.yieldsAsync(null, Buffer.from('bar'));
@@ -155,8 +161,12 @@ describe('crx.getFiles()', function getFilesCallback() {
   });
 
   it('should reject on errors in readFile() in open()', async () => {
-    const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
-      this.fakeFs);
+    const myCrx = new Crx(
+      'foo/bar',
+      this.fakeZipLib,
+      this.fakeParseCrx,
+      this.fakeFs
+    );
 
     this.readFileStub.yieldsAsync(new Error('open test'), Buffer.from('bar'));
 
@@ -169,8 +179,12 @@ describe('crx.getFiles()', function getFilesCallback() {
   });
 
   it('should reject on errors in parseCRX() in open()', async () => {
-    const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
-      this.fakeFs);
+    const myCrx = new Crx(
+      'foo/bar',
+      this.fakeZipLib,
+      this.fakeParseCrx,
+      this.fakeFs
+    );
 
     this.readFileStub.yieldsAsync(null, Buffer.from('bar'));
     this.fakeParseCrx.yieldsAsync(new Error('open test'), null);
@@ -184,8 +198,12 @@ describe('crx.getFiles()', function getFilesCallback() {
   });
 
   it('should reject on errors in fromBuffer() in open()', async () => {
-    const myCrx = new Crx('foo/bar', this.fakeZipLib, this.fakeParseCrx,
-      this.fakeFs);
+    const myCrx = new Crx(
+      'foo/bar',
+      this.fakeZipLib,
+      this.fakeParseCrx,
+      this.fakeFs
+    );
 
     this.fromBufferStub.yieldsAsync(new Error('open test'), this.fakeZipFile);
     this.fakeParseCrx.yieldsAsync(null, { body: Buffer.from('foo') });

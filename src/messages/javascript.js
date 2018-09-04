@@ -136,13 +136,13 @@ function deprecatedAPI(api) {
 export const APP_GETDETAILS = deprecatedAPI('app.getDetails');
 export const EXT_ONREQUEST = deprecatedAPI('extension.onRequest');
 export const EXT_ONREQUESTEXTERNAL = deprecatedAPI(
-  'extension.onRequestExternal');
+  'extension.onRequestExternal'
+);
 export const EXT_SENDREQUEST = deprecatedAPI('extension.sendRequest');
 export const TABS_GETALLINWINDOW = deprecatedAPI('tabs.getAllInWindow');
 export const TABS_GETSELECTED = deprecatedAPI('tabs.getSelected');
 export const TABS_ONACTIVECHANGED = deprecatedAPI('tabs.onActiveChanged');
-export const TABS_ONSELECTIONCHANGED = deprecatedAPI(
-  'tabs.onSelectionChanged');
+export const TABS_ONSELECTIONCHANGED = deprecatedAPI('tabs.onSelectionChanged');
 export const TABS_SENDREQUEST = deprecatedAPI('tabs.sendRequest');
 
 function temporaryAPI(api) {

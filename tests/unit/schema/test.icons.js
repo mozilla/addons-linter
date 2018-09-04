@@ -4,7 +4,6 @@ import { validateAddon } from 'schema/validator';
 
 import { validManifest } from './helpers';
 
-
 describe('/icons', () => {
   it('should be valid', () => {
     const manifest = cloneDeep(validManifest);

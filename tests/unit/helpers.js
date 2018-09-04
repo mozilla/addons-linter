@@ -8,7 +8,6 @@ import { oneLine } from 'common-tags';
 
 import { PACKAGE_EXTENSION } from 'const';
 
-
 export const fakeMessageData = {
   code: 'WHATEVER_CODE',
   description: 'description',
@@ -18,7 +17,8 @@ export const fakeMessageData = {
 export const EMPTY_PNG = Buffer.from(
   oneLine`iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMA
           AQAABQABDQottAAAAABJRU5ErkJggg==`,
-  'base64');
+  'base64'
+);
 
 export function getRuleFiles(ruleType) {
   const ruleFiles = fs.readdirSync(`src/rules/${ruleType}`);
@@ -48,7 +48,11 @@ export function getVariable(scope, name) {
   return variable;
 }
 
-export function metadataPassCheck(contents, filename, { addonMetadata = null } = {}) {
+export function metadataPassCheck(
+  contents,
+  filename,
+  { addonMetadata = null } = {}
+) {
   if (!addonMetadata || typeof addonMetadata.guid === 'undefined') {
     assert.fail(null, null, 'Add-on metadata not found');
   }
@@ -70,89 +74,122 @@ export function validHTML(contents = '') {
 }
 
 export function validMetadata(metadata = {}) {
-  return Object.assign({}, {
-    type: PACKAGE_EXTENSION,
-  }, metadata);
+  return Object.assign(
+    {},
+    {
+      type: PACKAGE_EXTENSION,
+    },
+    metadata
+  );
 }
 
 export function validManifestJSON(extra) {
-  return JSON.stringify(Object.assign({}, {
-    name: 'my extension',
-    manifest_version: 2,
-    applications: {
-      gecko: {
-        id: '{daf44bf7-a45e-4450-979c-91cf07434c3d}',
-        strict_min_version: '40.0.0',
+  return JSON.stringify(
+    Object.assign(
+      {},
+      {
+        name: 'my extension',
+        manifest_version: 2,
+        applications: {
+          gecko: {
+            id: '{daf44bf7-a45e-4450-979c-91cf07434c3d}',
+            strict_min_version: '40.0.0',
+          },
+        },
+        version: '0.1',
       },
-    },
-    version: '0.1',
-  }, extra));
+      extra
+    )
+  );
 }
 
 export function validDictionaryManifestJSON(extra) {
-  return JSON.stringify(Object.assign({}, {
-    manifest_version: 2,
-    name: 'My French Dictionary',
-    version: '57.0a1',
-    dictionaries: {
-      fr: '/path/to/fr.dic',
-    },
-  }, extra));
+  return JSON.stringify(
+    Object.assign(
+      {},
+      {
+        manifest_version: 2,
+        name: 'My French Dictionary',
+        version: '57.0a1',
+        dictionaries: {
+          fr: '/path/to/fr.dic',
+        },
+      },
+      extra
+    )
+  );
 }
 
 export function validLangpackManifestJSON(extra) {
-  return JSON.stringify(Object.assign({}, {
-    manifest_version: 2,
-    name: 'My Language Pack',
-    version: '57.0',
-    langpack_id: 'de',
-    languages: {
-      de: {
-        chrome_resources: {},
-        version: '57.0a1',
+  return JSON.stringify(
+    Object.assign(
+      {},
+      {
+        manifest_version: 2,
+        name: 'My Language Pack',
+        version: '57.0',
+        langpack_id: 'de',
+        languages: {
+          de: {
+            chrome_resources: {},
+            version: '57.0a1',
+          },
+        },
       },
-    },
-  }, extra));
+      extra
+    )
+  );
 }
 
 export function validStaticThemeManifestJSON(extra) {
-  return JSON.stringify(Object.assign({}, {
-    manifest_version: 2,
-    name: 'My Static Theme',
-    version: '1.0',
-    theme: {
-      images: {
-        headerURL: 'weta.png',
+  return JSON.stringify(
+    Object.assign(
+      {},
+      {
+        manifest_version: 2,
+        name: 'My Static Theme',
+        version: '1.0',
+        theme: {
+          images: {
+            headerURL: 'weta.png',
+          },
+          colors: {
+            accentcolor: '#adb09f',
+            textcolor: '#000',
+            background_tab_text: 'rgba(255, 192, 0, 0)',
+            toolbar_text: 'rgb(255, 255, 255),',
+            toolbar_field_text: 'hsl(120, 100%, 50%)',
+          },
+        },
       },
-      colors: {
-        accentcolor: '#adb09f',
-        textcolor: '#000',
-        background_tab_text: 'rgba(255, 192, 0, 0)',
-        toolbar_text: 'rgb(255, 255, 255),',
-        toolbar_field_text: 'hsl(120, 100%, 50%)',
-      },
-    },
-  }, extra));
+      extra
+    )
+  );
 }
 
 export function validLocaleMessagesJSON() {
-  return JSON.stringify(Object.assign({}, {
-    foo: {
-      message: 'bar',
-    },
-    Placeh0lder_Test: {
-      message: '$foo$ bar $BA2$',
-      placeholders: {
+  return JSON.stringify(
+    Object.assign(
+      {},
+      {
         foo: {
-          content: '$1',
-          example: 'FOO',
+          message: 'bar',
         },
-        BA2: {
-          content: 'baz',
+        Placeh0lder_Test: {
+          message: '$foo$ bar $BA2$',
+          placeholders: {
+            foo: {
+              content: '$1',
+              example: 'FOO',
+            },
+            BA2: {
+              content: 'baz',
+            },
+          },
         },
-      },
-    },
-  }));
+      }
+    )
+  );
 }
 
 export function unexpectedSuccess() {
@@ -182,9 +219,11 @@ export function getStreamableIO(files) {
       return Promise.resolve(files);
     },
     getFileAsStream: (path) => {
-      if (files[path] instanceof Stream &&
-          typeof files[path]._read === 'function' &&
-          typeof files[path]._readableState === 'object') {
+      if (
+        files[path] instanceof Stream &&
+        typeof files[path]._read === 'function' &&
+        typeof files[path]._readableState === 'object'
+      ) {
         return Promise.resolve(files[path]);
       }
 
@@ -209,7 +248,9 @@ export function checkOutput(func, argv, callback) {
   var _log = console.log; // eslint-disable-line
   var _warn = console.warn; // eslint-disable-line
 
-  process.exit = function(code) { exitCode = code; };
+  process.exit = function(code) {
+    exitCode = code;
+  };
   process.env = Hash.merge(process.env, { _: 'node' });
   process.argv = argv || ['./usage'];
 
@@ -217,9 +258,15 @@ export function checkOutput(func, argv, callback) {
   const logs = [];
   const warnings = [];
 
-  console.error = function(msg) { errors.push(msg); }; // eslint-disable-line
-  console.log = function(msg) { logs.push(msg); }; // eslint-disable-line
-  console.warn = function(msg) { warnings.push(msg); }; // eslint-disable-line
+  console.error = function(msg) {
+    errors.push(msg);
+  }; // eslint-disable-line
+  console.log = function(msg) {
+    logs.push(msg);
+  }; // eslint-disable-line
+  console.warn = function(msg) {
+    warnings.push(msg);
+  }; // eslint-disable-line
 
   let result;
 

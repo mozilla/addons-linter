@@ -49,9 +49,7 @@ describe('no_new_func', () => {
       });
 
       code.description.forEach((expectedDescription, idx) => {
-        expect(linterMessages[idx].description).toEqual(
-          expectedDescription
-        );
+        expect(linterMessages[idx].description).toEqual(expectedDescription);
       });
     });
   });

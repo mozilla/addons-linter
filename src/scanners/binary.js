@@ -2,7 +2,6 @@ import BaseScanner from 'scanners/base';
 import * as messages from 'messages';
 import * as constants from 'const';
 
-
 export default class BinaryScanner extends BaseScanner {
   static get fileStreamType() {
     return 'chunk';

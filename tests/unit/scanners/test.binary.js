@@ -12,17 +12,17 @@ describe('Binary', () => {
   });
 
   it('should notice a flagged file', async () => {
-    await Promise.all(FLAGGED_FILE_MAGIC_NUMBERS.map(async (magic) => {
-      const buffer = Buffer.from(magic);
-      const binaryScanner = new BinaryScanner(buffer, 'wat.txt');
+    await Promise.all(
+      FLAGGED_FILE_MAGIC_NUMBERS.map(async (magic) => {
+        const buffer = Buffer.from(magic);
+        const binaryScanner = new BinaryScanner(buffer, 'wat.txt');
 
-      const { linterMessages } = await binaryScanner.scan();
-      expect(linterMessages.length).toEqual(1);
-      expect(linterMessages[0].code).toEqual(
-        messages.FLAGGED_FILE_TYPE.code
-      );
-      expect(linterMessages[0].file).toEqual('wat.txt');
-    }));
+        const { linterMessages } = await binaryScanner.scan();
+        expect(linterMessages.length).toEqual(1);
+        expect(linterMessages[0].code).toEqual(messages.FLAGGED_FILE_TYPE.code);
+        expect(linterMessages[0].file).toEqual('wat.txt');
+      })
+    );
   });
 
   it('should ask for a chunk', () => {

@@ -11,7 +11,9 @@ md.use(emoji);
 md.use(markdownItAnchor, {
   permalink: true,
 });
-const markdown = md.render(fs.readFileSync('docs/rules.md', { encoding: 'utf8' }));
+const markdown = md.render(
+  fs.readFileSync('docs/rules.md', { encoding: 'utf8' })
+);
 const template = fs.readFileSync('docs/rules.tmpl', { encoding: 'utf8' });
 const html = template.replace('{{MARKDOWN}}', markdown);
 fs.writeFileSync('docs/html/index.html', html);

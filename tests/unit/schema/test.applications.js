@@ -4,7 +4,6 @@ import { validateAddon } from 'schema/validator';
 
 import { validManifest } from './helpers';
 
-
 describe('/applications/*', () => {
   it('should not require an application object', () => {
     const manifest = cloneDeep(validManifest);

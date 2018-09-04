@@ -34,9 +34,12 @@ describe('DoctypeParser', () => {
 
   it('should ignore invalid entities', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const dtdParser = new DoctypeParser(`
+    const dtdParser = new DoctypeParser(
+      `
         <!ENTITY "foobar">
-        <!ENTITY bar.foo "barfoo">`, addonLinter.collector);
+        <!ENTITY bar.foo "barfoo">`,
+      addonLinter.collector
+    );
 
     dtdParser.parse();
 
@@ -48,9 +51,12 @@ describe('DoctypeParser', () => {
 
   it('should overwrite duplicate entities', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const dtdParser = new DoctypeParser(`
+    const dtdParser = new DoctypeParser(
+      `
         <!ENTITY foo 'bar'>
-        <!ENTITY foo 'faz'>`, addonLinter.collector);
+        <!ENTITY foo 'faz'>`,
+      addonLinter.collector
+    );
 
     dtdParser.parse();
 
@@ -71,7 +77,8 @@ describe('DoctypeParser', () => {
 
   it('should parse excessive line breaks correctly', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const dtdParser = new DoctypeParser(`
+    const dtdParser = new DoctypeParser(
+      `
           <!ENTITY
           foo
           "bar">
@@ -93,7 +100,9 @@ describe('DoctypeParser', () => {
           'foo'>
           <!ENTITY overwrite 'bar'
         >
-    `, addonLinter.collector);
+    `,
+      addonLinter.collector
+    );
 
     dtdParser.parse();
 
@@ -111,7 +120,8 @@ describe('DoctypeParser', () => {
 
   it('should ignore malformed lines but parse valid ones', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    const dtdParser = new DoctypeParser(`
+    const dtdParser = new DoctypeParser(
+      `
       <!ENTITY foo "bar">
       <!--Malformed line should not overwrite -->
       <!ENTITY< foo "oops">
@@ -122,7 +132,9 @@ describe('DoctypeParser', () => {
       <!ENTITY this.is.a 'test'>
       <!ENTITY overwrite 'foo'>
       <!ENTITY overwrite 'bar'>
-    `, addonLinter.collector);
+    `,
+      addonLinter.collector
+    );
 
     dtdParser.parse();
 

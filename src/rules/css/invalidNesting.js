@@ -1,8 +1,10 @@
 import * as messages from 'messages';
 
-
-export function invalidNesting(cssNode, filename,
-  { startLine, startColumn } = {}) {
+export function invalidNesting(
+  cssNode,
+  filename,
+  { startLine, startColumn } = {}
+) {
   const messageList = [];
   if (cssNode.type === 'rule') {
     for (let i = 0; i < cssNode.nodes.length; i++) {
@@ -14,7 +16,8 @@ export function invalidNesting(cssNode, filename,
             line: startLine,
             column: startColumn,
             file: filename,
-          }));
+          })
+        );
         break;
       }
     }

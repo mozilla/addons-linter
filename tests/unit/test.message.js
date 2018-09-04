@@ -4,7 +4,6 @@ import { default as Message, props } from 'message';
 
 import { fakeMessageData } from './helpers';
 
-
 describe('Message', () => {
   it('should throw on missing type', () => {
     expect(() => {
@@ -30,22 +29,28 @@ describe('Message', () => {
   });
 
   it("shouldn't define random opts", () => {
-    const MyMessage = new Message('error',
-      Object.assign({}, fakeMessageData, { random: 'foo' }));
+    const MyMessage = new Message(
+      'error',
+      Object.assign({}, fakeMessageData, { random: 'foo' })
+    );
     expect(MyMessage.random).not.toEqual('foo');
   });
 
   it('should throw on missing required prop', () => {
     expect(() => {
-      const MyMessage = new Message('error',
-        Object.assign({}, { description: 'foo' }));
+      const MyMessage = new Message(
+        'error',
+        Object.assign({}, { description: 'foo' })
+      );
     }).toThrow(/Message data object is missing the following props/);
   });
 
   it('should throw on incorrect file prop filename', () => {
     expect(() => {
-      const MyMessage = new Message('error',
-        Object.assign({}, { filename: 'foo' }));
+      const MyMessage = new Message(
+        'error',
+        Object.assign({}, { filename: 'foo' })
+      );
     }).toThrow(/The key for the file is "file"/);
   });
 
@@ -53,10 +58,13 @@ describe('Message', () => {
     let fakeData;
 
     beforeAll(() => {
-      fakeData = props.reduce((obj, prop) => ({
-        ...obj,
-        [prop]: prop,
-      }), {});
+      fakeData = props.reduce(
+        (obj, prop) => ({
+          ...obj,
+          [prop]: prop,
+        }),
+        {}
+      );
     });
 
     it('is a match if the props are all the same', () => {

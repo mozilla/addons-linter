@@ -30,10 +30,12 @@ export function walkPromise(curPath, { shouldIncludePath = () => true } = {}) {
       // Map the list of files and make a list of readdir
       // promises to pass to Promise.all so we can recursively
       // get the data on all the files in the directory.
-      await Promise.all(files.map(async (fileName) => {
-        await walk(path.join(_curPath, fileName));
-      }));
+      await Promise.all(
+        files.map(async (fileName) => {
+          await walk(path.join(_curPath, fileName));
+        })
+      );
     }
     return result;
-  }(curPath));
+  })(curPath);
 }
