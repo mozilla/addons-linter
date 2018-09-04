@@ -19,7 +19,7 @@ export default class BinaryScanner extends BaseScanner {
       Object.assign({}, messages.FLAGGED_FILE_TYPE, {
         type: constants.VALIDATION_NOTICE,
         file: this.filename,
-      }),
+      })
     );
   }
 

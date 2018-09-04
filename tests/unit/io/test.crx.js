@@ -104,7 +104,7 @@ describe('crx.getFiles()', function getFilesCallback() {
       'foo/bar',
       this.fakeZipLib,
       this.fakeParseCrx,
-      this.fakeFs,
+      this.fakeFs
     );
     const expected = {
       'chrome.manifest': chromeManifestEntry,
@@ -139,7 +139,7 @@ describe('crx.getFiles()', function getFilesCallback() {
       'foo/bar',
       this.fakeZipLib,
       this.fakeParseCrx,
-      this.fakeFs,
+      this.fakeFs
     );
     this.fromBufferStub.yieldsAsync(null, this.fakeZipFile);
     this.fakeParseCrx.yieldsAsync(null, { body: Buffer.from('foo') });
@@ -165,7 +165,7 @@ describe('crx.getFiles()', function getFilesCallback() {
       'foo/bar',
       this.fakeZipLib,
       this.fakeParseCrx,
-      this.fakeFs,
+      this.fakeFs
     );
 
     this.readFileStub.yieldsAsync(new Error('open test'), Buffer.from('bar'));
@@ -183,7 +183,7 @@ describe('crx.getFiles()', function getFilesCallback() {
       'foo/bar',
       this.fakeZipLib,
       this.fakeParseCrx,
-      this.fakeFs,
+      this.fakeFs
     );
 
     this.readFileStub.yieldsAsync(null, Buffer.from('bar'));
@@ -202,7 +202,7 @@ describe('crx.getFiles()', function getFilesCallback() {
       'foo/bar',
       this.fakeZipLib,
       this.fakeParseCrx,
-      this.fakeFs,
+      this.fakeFs
     );
 
     this.fromBufferStub.yieldsAsync(new Error('open test'), this.fakeZipFile);

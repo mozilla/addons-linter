@@ -23,7 +23,7 @@ export default {
         ) {
           const referenceObject = getNodeReference(
             context,
-            referenceNode.object,
+            referenceNode.object
           );
 
           for (let i = 0; i < DEPRECATED_ENTITIES.length; i++) {

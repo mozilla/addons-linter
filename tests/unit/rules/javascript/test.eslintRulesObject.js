@@ -15,14 +15,14 @@ describe('Eslint rules object', () => {
 
   it('should have files that match the keys', () => {
     const files = readdirSync('src/rules/javascript').filter(
-      (fileName) => fileName !== 'index.js',
+      (fileName) => fileName !== 'index.js'
     );
     files.forEach((fileName) => {
       expect(
         Object.prototype.hasOwnProperty.call(
           ESLINT_RULE_MAPPING,
-          path.parse(fileName).name,
-        ),
+          path.parse(fileName).name
+        )
       ).toBe(true);
     });
   });

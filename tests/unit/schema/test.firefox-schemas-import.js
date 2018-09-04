@@ -39,7 +39,7 @@ describe('firefox schema import', () => {
 
   function removeDir(dirPath) {
     fs.readdirSync(dirPath).forEach((file) =>
-      unlinkSync(path.join(dirPath, file)),
+      unlinkSync(path.join(dirPath, file))
     );
     fs.rmdirSync(dirPath);
   }
@@ -179,7 +179,7 @@ describe('firefox schema import', () => {
 
       it('throws on an unknown pattern with flags', () => {
         expect(() => rewriteValue('pattern', '(?i)^abc$')).toThrow(
-          'pattern (?i)^abc$ must be rewritten',
+          'pattern (?i)^abc$ must be rewritten'
         );
       });
 
@@ -195,7 +195,7 @@ describe('firefox schema import', () => {
     it('updates $ref to JSON pointer', () => {
       expect(rewriteValue('$ref', 'Manifest')).toEqual('#/types/Manifest');
       expect(rewriteValue('$ref', 'extension_types.Timer')).toEqual(
-        'extension_types#/types/Timer',
+        'extension_types#/types/Timer'
       );
     });
 
@@ -268,7 +268,7 @@ describe('firefox schema import', () => {
 
     it('strips UnrecognizedProperty in additionalProperties', () => {
       expect(
-        rewriteValue('additionalProperties', { $ref: 'UnrecognizedProperty' }),
+        rewriteValue('additionalProperties', { $ref: 'UnrecognizedProperty' })
       ).toEqual(undefined);
     });
 
@@ -282,7 +282,7 @@ describe('firefox schema import', () => {
 
       it('get rewritten to good paths', () => {
         expect(rewriteValue('$ref', 'SomeType')).toEqual(
-          'manifest#/types/SomeType',
+          'manifest#/types/SomeType'
         );
       });
     });
@@ -319,7 +319,7 @@ describe('firefox schema import', () => {
         loadTypes([
           { id: 'Foo', type: 'object' },
           { id: 'Bar', type: 'string' },
-        ]),
+        ])
       ).toEqual({
         Foo: { id: 'Foo', type: 'object' },
         Bar: { id: 'Bar', type: 'string' },
@@ -478,7 +478,7 @@ describe('firefox schema import', () => {
         processSchemas([
           { file: 'one', schema: firstSchema },
           { file: 'two', schema: secondSchema },
-        ]),
+        ])
       ).toEqual({ mapExtendToRef: 'done' });
     });
   });
@@ -819,7 +819,7 @@ describe('firefox schema import', () => {
         },
       ];
       expect(() => rewriteExtend(schemas, 'foo')).toThrow(
-        '$extend or id is required',
+        '$extend or id is required'
       );
     });
   });
@@ -890,7 +890,7 @@ describe('firefox schema import', () => {
         },
       };
       expect(
-        inner.updateWithAddonsLinterData(firefoxSchemas, ourSchemas),
+        inner.updateWithAddonsLinterData(firefoxSchemas, ourSchemas)
       ).toEqual(expected);
     });
 
@@ -917,7 +917,7 @@ describe('firefox schema import', () => {
         },
       });
       expect(inner.updateWithAddonsLinterData(original, linterUpdates)).toEqual(
-        expected,
+        expected
       );
     });
 
@@ -944,7 +944,7 @@ describe('firefox schema import', () => {
         },
       });
       expect(inner.updateWithAddonsLinterData(original, linterUpdates)).toEqual(
-        expected,
+        expected
       );
     });
 
@@ -971,7 +971,7 @@ describe('firefox schema import', () => {
         },
       });
       expect(inner.updateWithAddonsLinterData(original, linterUpdates)).toEqual(
-        expected,
+        expected
       );
     });
 
@@ -1031,7 +1031,7 @@ describe('firefox schema import', () => {
         ],
       });
       expect(inner.updateWithAddonsLinterData(original, linterUpdates)).toEqual(
-        expected,
+        expected
       );
     });
 
@@ -1066,7 +1066,7 @@ describe('firefox schema import', () => {
         },
       };
       expect(inner.updateWithAddonsLinterData(original, linterUpdates)).toEqual(
-        expected,
+        expected
       );
     });
   });
@@ -1090,7 +1090,7 @@ describe('firefox schema import', () => {
       importSchemas(firefoxPath, ourPath, outputPath);
       schemaFiles.forEach((file) => {
         expect(
-          JSON.parse(fs.readFileSync(path.join(outputPath, file))),
+          JSON.parse(fs.readFileSync(path.join(outputPath, file)))
         ).toEqual(JSON.parse(fs.readFileSync(path.join(expectedPath, file))));
       });
     });
@@ -1099,13 +1099,13 @@ describe('firefox schema import', () => {
       importSchemas(firefoxPath, ourPath, outputPath);
 
       expect(
-        fs.existsSync(path.join(expectedPath, 'native_host_manifest.json')),
+        fs.existsSync(path.join(expectedPath, 'native_host_manifest.json'))
       ).toEqual(false);
 
       // Dummy test to make sure we join correctly and the import
       // actually worked
       expect(fs.existsSync(path.join(expectedPath, 'manifest.json'))).toEqual(
-        true,
+        true
       );
     });
   });
@@ -1163,7 +1163,7 @@ describe('firefox schema import', () => {
       sinon.stub(tar, 'Parse').returns(extractedStream);
       expect(fs.readdirSync(outputPath)).toEqual([]);
       await expect(
-        fetchSchemas({ inputPath: 'mozilla-central.tgz', outputPath }),
+        fetchSchemas({ inputPath: 'mozilla-central.tgz', outputPath })
       ).rejects.toThrow();
     });
   });
@@ -1327,7 +1327,7 @@ describe('firefox schema import', () => {
         },
       ];
       expect(() => foldSchemas(schemas)).toThrow(
-        /may only have one level of nesting/,
+        /may only have one level of nesting/
       );
     });
 

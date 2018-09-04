@@ -43,7 +43,7 @@ describe('LangpackScanner', () => {
     const langpackScanner = new LangpackScanner('', 'foo.js');
 
     await expect(langpackScanner.scan()).rejects.toThrow(
-      'Unsupported file type',
+      'Unsupported file type'
     );
   });
 

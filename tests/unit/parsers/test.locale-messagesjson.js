@@ -9,7 +9,7 @@ describe('LocaleMessagesJSONParser', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
     const localeMessagesJSONParser = new LocaleMessagesJSONParser(
       'blah',
-      addonsLinter.collector,
+      addonsLinter.collector
     );
     localeMessagesJSONParser.parse();
     expect(localeMessagesJSONParser.isValid).toEqual(false);
@@ -32,7 +32,7 @@ describe('LocaleMessagesJSONParser', () => {
     }
   }
 }`,
-      addonsLinter.collector,
+      addonsLinter.collector
     );
     localeMessagesJSONParser.parse();
     expect(localeMessagesJSONParser.isValid).toEqual(false);
@@ -50,7 +50,7 @@ describe('LocaleMessagesJSONParser', () => {
     "mesage": "foo"
   }
 }`,
-      addonsLinter.collector,
+      addonsLinter.collector
     );
     localeMessagesJSONParser.parse();
     expect(localeMessagesJSONParser.isValid).toEqual(false);
@@ -68,7 +68,7 @@ describe('LocaleMessagesJSONParser', () => {
     "message": "foo"
   }
 }`,
-      addonsLinter.collector,
+      addonsLinter.collector
     );
     localeMessagesJSONParser.parse();
     expect(localeMessagesJSONParser.isValid).toEqual(true);
@@ -76,7 +76,7 @@ describe('LocaleMessagesJSONParser', () => {
     expect(warnings.length).toEqual(1);
     expect(warnings[0].code).toEqual(messages.PREDEFINED_MESSAGE_NAME.code);
     expect(warnings[0].message).toEqual(
-      messages.PREDEFINED_MESSAGE_NAME.message,
+      messages.PREDEFINED_MESSAGE_NAME.message
     );
   });
 
@@ -96,7 +96,7 @@ describe('LocaleMessagesJSONParser', () => {
     "message": "$EMPTY$"
   }
 }`,
-      addonsLinter.collector,
+      addonsLinter.collector
     );
     localeMessagesJSONParser.parse();
     expect(localeMessagesJSONParser.isValid).toEqual(true);
@@ -116,7 +116,7 @@ describe('LocaleMessagesJSONParser', () => {
     "message": "foo"
   }
 }`,
-      addonsLinter.collector,
+      addonsLinter.collector
     );
     localeMessagesJSONParser.parse();
     expect(localeMessagesJSONParser.isValid).toEqual(true);
@@ -132,7 +132,7 @@ describe('LocaleMessagesJSONParser', () => {
     "message": "foo bar is the new bar foo"
   }
 }`,
-      addonsLinter.collector,
+      addonsLinter.collector
     );
     localeMessagesJSONParser.parse();
     expect(localeMessagesJSONParser.isValid).toEqual(true);
@@ -151,7 +151,7 @@ describe('LocaleMessagesJSONParser', () => {
     }
   }
 }`,
-      addonsLinter.collector,
+      addonsLinter.collector
     );
     localeMessagesJSONParser.parse();
     expect(localeMessagesJSONParser.isValid).toEqual(false);
@@ -159,7 +159,7 @@ describe('LocaleMessagesJSONParser', () => {
     expect(errors.length).toEqual(1);
     expect(errors[0].code).toEqual(messages.INVALID_PLACEHOLDER_NAME.code);
     expect(errors[0].message).toEqual(
-      messages.INVALID_PLACEHOLDER_NAME.message,
+      messages.INVALID_PLACEHOLDER_NAME.message
     );
   });
 
@@ -176,7 +176,7 @@ describe('LocaleMessagesJSONParser', () => {
     }
   }
 }`,
-      addonsLinter.collector,
+      addonsLinter.collector
     );
     localeMessagesJSONParser.parse();
     expect(localeMessagesJSONParser.isValid).toEqual(true);
@@ -186,7 +186,7 @@ describe('LocaleMessagesJSONParser', () => {
     const addonsLinter = new Linter({ _: ['bar'] });
     const localeMessagesJSONParser = new LocaleMessagesJSONParser(
       validLocaleMessagesJSON(),
-      addonsLinter.collector,
+      addonsLinter.collector
     );
     localeMessagesJSONParser.parse();
     expect(localeMessagesJSONParser.isValid).toEqual(true);
@@ -207,7 +207,7 @@ describe('LocaleMessagesJSONParser', () => {
     }
   }
 }`,
-      addonsLinter.collector,
+      addonsLinter.collector
     );
     localeMessagesJSONParser.parse();
     expect(localeMessagesJSONParser.isValid).toEqual(true);
@@ -226,7 +226,7 @@ describe('LocaleMessagesJSONParser', () => {
     "message": "bar"
   }
 }`,
-      addonsLinter.collector,
+      addonsLinter.collector
     );
     localeMessagesJSONParser.parse();
     expect(localeMessagesJSONParser.isValid).toEqual(false);
@@ -234,7 +234,7 @@ describe('LocaleMessagesJSONParser', () => {
     expect(errors.length).toEqual(1);
     expect(errors[0].code).toEqual(messages.JSON_DUPLICATE_KEY.code);
     expect(errors[0].description).toContain(
-      'Case-insensitive duplicate message name',
+      'Case-insensitive duplicate message name'
     );
   });
 
@@ -254,7 +254,7 @@ describe('LocaleMessagesJSONParser', () => {
     }
   }
 }`,
-      addonsLinter.collector,
+      addonsLinter.collector
     );
     localeMessagesJSONParser.parse();
     expect(localeMessagesJSONParser.isValid).toEqual(false);
@@ -262,7 +262,7 @@ describe('LocaleMessagesJSONParser', () => {
     expect(errors.length).toEqual(1);
     expect(errors[0].code).toEqual(messages.JSON_DUPLICATE_KEY.code);
     expect(errors[0].description).toContain(
-      'Case-insensitive duplicate placeholder name',
+      'Case-insensitive duplicate placeholder name'
     );
   });
 
@@ -275,7 +275,7 @@ describe('LocaleMessagesJSONParser', () => {
     "message": "foo"
   }
 }`,
-        addonsLinter.collector,
+        addonsLinter.collector
       );
       localeMessagesJSONParser.parse();
       const result = localeMessagesJSONParser.getLowercasePlaceholders('foo');

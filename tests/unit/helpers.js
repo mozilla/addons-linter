@@ -17,7 +17,7 @@ export const fakeMessageData = {
 export const EMPTY_PNG = Buffer.from(
   oneLine`iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMA
           AQAABQABDQottAAAAABJRU5ErkJggg==`,
-  'base64',
+  'base64'
 );
 
 export function getRuleFiles(ruleType) {
@@ -51,7 +51,7 @@ export function getVariable(scope, name) {
 export function metadataPassCheck(
   contents,
   filename,
-  { addonMetadata = null } = {},
+  { addonMetadata = null } = {}
 ) {
   if (!addonMetadata || typeof addonMetadata.guid === 'undefined') {
     assert.fail(null, null, 'Add-on metadata not found');
@@ -79,7 +79,7 @@ export function validMetadata(metadata = {}) {
     {
       type: PACKAGE_EXTENSION,
     },
-    metadata,
+    metadata
   );
 }
 
@@ -98,8 +98,8 @@ export function validManifestJSON(extra) {
         },
         version: '0.1',
       },
-      extra,
-    ),
+      extra
+    )
   );
 }
 
@@ -115,8 +115,8 @@ export function validDictionaryManifestJSON(extra) {
           fr: '/path/to/fr.dic',
         },
       },
-      extra,
-    ),
+      extra
+    )
   );
 }
 
@@ -136,8 +136,8 @@ export function validLangpackManifestJSON(extra) {
           },
         },
       },
-      extra,
-    ),
+      extra
+    )
   );
 }
 
@@ -162,8 +162,8 @@ export function validStaticThemeManifestJSON(extra) {
           },
         },
       },
-      extra,
-    ),
+      extra
+    )
   );
 }
 
@@ -187,8 +187,8 @@ export function validLocaleMessagesJSON() {
             },
           },
         },
-      },
-    ),
+      }
+    )
   );
 }
 

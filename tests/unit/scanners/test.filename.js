@@ -33,7 +33,7 @@ describe('FilenameScanner', () => {
     const { linterMessages } = await filenameScanner.scan();
     expect(linterMessages.length).toEqual(1);
     expect(linterMessages[0].code).toEqual(
-      messages.FLAGGED_FILE_EXTENSION.code,
+      messages.FLAGGED_FILE_EXTENSION.code
     );
     expect(linterMessages[0].file).toEqual('wat.exe');
   });
@@ -51,7 +51,7 @@ describe('FilenameScanner', () => {
     const filenameScanner = new FilenameScanner('', 'wat.txt');
 
     await expect(filenameScanner.scan()).rejects.toThrow(
-      "Filename didn't match a regex: wat.txt.",
+      "Filename didn't match a regex: wat.txt."
     );
   });
 });
@@ -118,7 +118,7 @@ describe('Hidden and Flagged File Regexes', () => {
   matchingFlaggedFileExtensions.forEach((filePath) => {
     it(`should match ${filePath} as a flagged file extensions`, () => {
       expect(
-        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filePath)),
+        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filePath))
       ).toBeTruthy();
     });
   });
@@ -128,7 +128,7 @@ describe('Hidden and Flagged File Regexes', () => {
   nonMatchingFlaggedFileExtensions.forEach((filePath) => {
     it(`should not match ${filePath} as a flagged file extension`, () => {
       expect(
-        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filePath)),
+        constants.FLAGGED_FILE_EXTENSIONS.includes(extname(filePath))
       ).toBeFalsy();
     });
   });

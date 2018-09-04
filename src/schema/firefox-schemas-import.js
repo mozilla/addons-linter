@@ -142,7 +142,7 @@ export function rewriteValue(key, value, namespace) {
     const rewritten = inner.rewriteObject(value, namespace);
     if ('properties' in rewritten) {
       const { required, ...properties } = rewriteOptionalToRequired(
-        rewritten.properties,
+        rewritten.properties
       );
       if (required.length > 0) {
         return { ...rewritten, properties, required };
@@ -269,14 +269,14 @@ export function loadTypes(types = []) {
       ...obj,
       [type.id]: type,
     }),
-    {},
+    {}
   );
 }
 
 function rewriteExtendRefs(definition, namespace, types) {
   if (Array.isArray(definition)) {
     return definition.map((value) =>
-      rewriteExtendRefs(value, namespace, types),
+      rewriteExtendRefs(value, namespace, types)
     );
   }
   if (typeof definition === 'object') {
@@ -438,7 +438,7 @@ inner.normalizeSchema = (schemas, file) => {
   const { namespace, types, ...rest } = primarySchema;
   const { types: extendTypes, ...extendRest } = rewriteExtend(
     extendSchemas,
-    namespace,
+    namespace
   );
   const updatedTypes = { ...loadTypes(types), ...extendTypes };
   return {
@@ -494,14 +494,14 @@ function readSchema(basePath, file) {
   return commentJson.parse(
     fs.readFileSync(path.join(basePath, file), 'utf-8'),
     null, // reviver
-    true, // remove_comments
+    true // remove_comments
   );
 }
 
 function writeSchema(basePath, file, schema) {
   fs.writeFileSync(
     path.join(basePath, file),
-    `${JSON.stringify(schema, undefined, 2)}\n`,
+    `${JSON.stringify(schema, undefined, 2)}\n`
   );
 }
 
@@ -563,7 +563,7 @@ export function importSchemas(firefoxPath, ourPath, importedPath) {
   const processedSchemas = processSchemas(rawSchemas);
   const updatedSchemas = inner.updateWithAddonsLinterData(
     processedSchemas,
-    ourSchemas,
+    ourSchemas
   );
   writeSchemasToFile(firefoxPath, importedPath, updatedSchemas);
 }

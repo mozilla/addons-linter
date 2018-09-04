@@ -59,7 +59,7 @@ function createPackage(tmpDirPath) {
         resolve(
           getPackedName().then((filename) => {
             return path.join(tmpDirPath, filename);
-          }),
+          })
         );
       } else {
         reject(new Error('Failed to create npm package archive'));
@@ -70,7 +70,7 @@ function createPackage(tmpDirPath) {
 
 function unpackTarPackage(packagePath, destDir) {
   console.log(
-    chalk.green(['Unpacking', packagePath, 'package into', destDir].join(' ')),
+    chalk.green(['Unpacking', packagePath, 'package into', destDir].join(' '))
   );
 
   return new Promise((resolve, reject) => {
@@ -90,7 +90,7 @@ function installPackageDeps(packageDir) {
       ['install', '--production', '--no-lockfile'],
       {
         cwd: packageDir,
-      },
+      }
     );
     pkgInstall.stdout.pipe(process.stdout);
     pkgInstall.stderr.pipe(process.stderr);
@@ -106,7 +106,7 @@ function installPackageDeps(packageDir) {
 
 function runIntegrationTests(packageDir) {
   console.log(
-    chalk.green('Running integration tests in production-like environent'),
+    chalk.green('Running integration tests in production-like environent')
   );
   return new Promise((resolve, reject) => {
     const testRun = spawnWithShell(
@@ -117,7 +117,7 @@ function runIntegrationTests(packageDir) {
           PATH: process.env.PATH,
           TEST_BIN_PATH: path.join(packageDir, 'bin'),
         }),
-      },
+      }
     );
 
     testRun.stdout.pipe(process.stdout);

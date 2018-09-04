@@ -33,7 +33,7 @@ export function walkPromise(curPath, { shouldIncludePath = () => true } = {}) {
       await Promise.all(
         files.map(async (fileName) => {
           await walk(path.join(_curPath, fileName));
-        }),
+        })
       );
     }
     return result;

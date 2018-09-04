@@ -42,7 +42,7 @@ describe('HTML', () => {
 
   it('should warn on <script> tag without a src attribute but a type attribute whose value is "text/javascript"', async () => {
     const badHTML = validHTML(
-      '<script type="text/javascript">alert()</script>',
+      '<script type="text/javascript">alert()</script>'
     );
     const htmlScanner = new HTMLScanner(badHTML, 'index.html');
 
@@ -126,12 +126,12 @@ describe('HTML', () => {
     const htmlScanner = new HTMLScanner(contents, 'index.html');
 
     expect(ruleFiles.length).toEqual(
-      Object.keys(ignorePrivateFunctions(rules)).length,
+      Object.keys(ignorePrivateFunctions(rules)).length
     );
 
     await htmlScanner.scan();
     expect(htmlScanner._rulesProcessed).toEqual(
-      Object.keys(ignorePrivateFunctions(rules)).length,
+      Object.keys(ignorePrivateFunctions(rules)).length
     );
   });
 });

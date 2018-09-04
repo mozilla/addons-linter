@@ -50,7 +50,7 @@ validator.addFormat('secureUrl', isSecureUrl);
 
 validator.addFormat(
   'imageDataOrStrictRelativeUrl',
-  imageDataOrStrictRelativeUrl,
+  imageDataOrStrictRelativeUrl
 );
 
 function filterErrors(errors) {
@@ -92,7 +92,7 @@ const _validateStaticTheme = validator.compile({
           },
         },
       },
-    }),
+    })
   ),
   id: 'static-theme-manifest',
   $ref: '#/types/ThemeManifest',

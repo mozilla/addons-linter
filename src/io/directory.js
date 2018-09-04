@@ -98,7 +98,7 @@ export class Directory extends IOBase {
       }).pipe(
         firstChunkStream({ chunkLength }, (_, enc) => {
           resolve(enc);
-        }),
+        })
       );
     });
   }

@@ -21,7 +21,7 @@ describe('Binary', () => {
         expect(linterMessages.length).toEqual(1);
         expect(linterMessages[0].code).toEqual(messages.FLAGGED_FILE_TYPE.code);
         expect(linterMessages[0].file).toEqual('wat.txt');
-      }),
+      })
     );
   });
 

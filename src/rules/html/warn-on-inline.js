@@ -16,7 +16,7 @@ export async function warnOnInline($, filename) {
             */
           type: VALIDATION_WARNING,
           file: filename,
-        }),
+        })
       );
     }
   });

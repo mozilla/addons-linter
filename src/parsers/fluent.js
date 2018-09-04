@@ -37,7 +37,7 @@ export default class FluentParser {
           lineOffset(this._sourceString, annotation.span.end) + 1;
         const matchedColumn = columnOffset(
           this._sourceString,
-          annotation.span.end,
+          annotation.span.end
         );
 
         const errorData = {

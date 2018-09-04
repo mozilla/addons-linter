@@ -56,7 +56,7 @@ export default class JavaScriptScanner {
       _rules = this._defaultRules,
       _ruleMapping = ESLINT_RULE_MAPPING,
       _messages = messages,
-    } = {},
+    } = {}
   ) {
     this._ESLint = ESLint;
     this.sourceType = this.detectSourceType(this.filename);
@@ -124,7 +124,7 @@ export default class JavaScriptScanner {
         if (typeof message.message === 'undefined') {
           throw new Error(
             oneLine`JS rules must pass a valid message as
-            the second argument to context.report()`,
+            the second argument to context.report()`
           );
         }
 
@@ -141,7 +141,7 @@ export default class JavaScriptScanner {
         } else if (
           Object.prototype.hasOwnProperty.call(
             messages.ESLINT_OVERWRITE_MESSAGE,
-            message.ruleId,
+            message.ruleId
           )
         ) {
           const overwrites = messages.ESLINT_OVERWRITE_MESSAGE[message.ruleId];

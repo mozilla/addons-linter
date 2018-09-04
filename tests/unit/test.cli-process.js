@@ -22,7 +22,7 @@ describe('Process', () => {
         }).not.toThrow();
 
         expect(output.exitCode).toEqual(0);
-      },
+      }
     );
   });
 
@@ -43,7 +43,7 @@ describe('Process', () => {
         }).not.toThrow();
 
         expect(output.exitCode).toEqual(1);
-      },
+      }
     );
   });
 
@@ -65,7 +65,7 @@ describe('Process', () => {
         }).not.toThrow();
 
         expect(output.exitCode).toEqual(1);
-      },
+      }
     );
   });
 
@@ -83,7 +83,7 @@ describe('Process', () => {
         }).not.toThrow();
 
         expect(output.exitCode).toEqual(0);
-      },
+      }
     );
   });
 
@@ -101,7 +101,7 @@ describe('Process', () => {
         }).not.toThrow();
 
         expect(output.exitCode).toEqual(1);
-      },
+      }
     );
   });
 });

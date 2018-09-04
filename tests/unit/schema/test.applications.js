@@ -27,7 +27,7 @@ describe('/applications/gecko/*', () => {
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
     expect(validateAddon.errors[0].dataPath).toEqual(
-      '/applications/gecko/update_url',
+      '/applications/gecko/update_url'
     );
   });
 
@@ -37,7 +37,7 @@ describe('/applications/gecko/*', () => {
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
     expect(validateAddon.errors[0].dataPath).toEqual(
-      '/applications/gecko/update_url',
+      '/applications/gecko/update_url'
     );
   });
 
@@ -54,7 +54,7 @@ describe('/applications/gecko/*', () => {
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
     expect(validateAddon.errors[0].dataPath).toEqual(
-      '/applications/gecko/strict_min_version',
+      '/applications/gecko/strict_min_version'
     );
   });
 
@@ -77,7 +77,7 @@ describe('/applications/gecko/*', () => {
       validateAddon(manifest);
       expect(validateAddon.errors.length).toEqual(1);
       expect(validateAddon.errors[0].dataPath).toEqual(
-        '/applications/gecko/strict_min_version',
+        '/applications/gecko/strict_min_version'
       );
     });
   });
@@ -88,7 +88,7 @@ describe('/applications/gecko/*', () => {
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
     expect(validateAddon.errors[0].dataPath).toEqual(
-      '/applications/gecko/strict_max_version',
+      '/applications/gecko/strict_max_version'
     );
   });
 

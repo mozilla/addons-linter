@@ -82,8 +82,8 @@ describe('io.IOBase()', () => {
     expect(
       io.getChunkAsBuffer.calledWith(
         'get-a-chunk-as-buffer',
-        FLAGGED_FILE_MAGIC_NUMBERS_LENGTH,
-      ),
+        FLAGGED_FILE_MAGIC_NUMBERS_LENGTH
+      )
     ).toBeTruthy();
   });
 

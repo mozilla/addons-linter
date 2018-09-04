@@ -57,7 +57,7 @@ describe('Linter', () => {
       throw fakeError;
     };
     await expect(
-      addonLinter.checkFileExists(addonLinter.packagePath, fakeLstat),
+      addonLinter.checkFileExists(addonLinter.packagePath, fakeLstat)
     ).rejects.toThrow('Path "foo" is not a file');
   });
 
@@ -69,7 +69,7 @@ describe('Linter', () => {
       throw fakeError;
     };
     await expect(
-      addonLinter.checkFileExists(addonLinter.packagePath, fakeLstat),
+      addonLinter.checkFileExists(addonLinter.packagePath, fakeLstat)
     ).rejects.toThrow(fakeError);
   });
 
@@ -90,10 +90,10 @@ describe('Linter', () => {
       };
     };
     const expectedError = new Error(
-      'Path "bar" is not a file or directory or does not exist.',
+      'Path "bar" is not a file or directory or does not exist.'
     );
     await expect(
-      addonLinter.checkFileExists(addonLinter.packagePath, fakeLstat),
+      addonLinter.checkFileExists(addonLinter.packagePath, fakeLstat)
     ).rejects.toThrow(expectedError);
     sinon.assert.calledOnce(isFileSpy);
   });
@@ -114,11 +114,11 @@ describe('Linter', () => {
     addonLinter.print = sinon.stub();
     expect(addonLinter.collector.errors.length).toEqual(0);
     await expect(addonLinter.scan()).rejects.toThrow(
-      constants.ZIP_LIB_CORRUPT_FILE_ERROR,
+      constants.ZIP_LIB_CORRUPT_FILE_ERROR
     );
     expect(addonLinter.collector.errors.length).toEqual(1);
     expect(addonLinter.collector.errors[0].code).toEqual(
-      messages.BAD_ZIPFILE.code,
+      messages.BAD_ZIPFILE.code
     );
   });
 
@@ -155,7 +155,7 @@ describe('Linter', () => {
     sinon.assert.callOrder(
       getFileSpy.withArgs('components/main.js'),
       getFileSpy.withArgs('components/secondary.js'),
-      getFileSpy.withArgs('prefs.html'),
+      getFileSpy.withArgs('prefs.html')
     );
   });
 
@@ -172,7 +172,7 @@ describe('Linter', () => {
     await addonLinter.scan();
     sinon.assert.callOrder(
       getFileSpy.withArgs('manifest.json'),
-      getFileSpy.withArgs('subdir/test.js'),
+      getFileSpy.withArgs('subdir/test.js')
     );
   });
 
@@ -208,7 +208,7 @@ describe('Linter', () => {
     sinon.assert.callOrder(
       getFileSpy.withArgs('manifest.json'),
       getFileSpy.withArgs('subdir/test.js'),
-      getFileSpy.withArgs('subdir/test2.js'),
+      getFileSpy.withArgs('subdir/test2.js')
     );
   });
 
@@ -222,7 +222,7 @@ describe('Linter', () => {
     addonLinter.print = sinon.stub();
 
     await expect(addonLinter.scan()).rejects.toThrow(
-      `Selected file(s) not found: ${files.join(', ')}`,
+      `Selected file(s) not found: ${files.join(', ')}`
     );
   });
 
@@ -241,7 +241,7 @@ describe('Linter', () => {
     }
     addonLinter.getScanner.returns(FakeScanner);
     await expect(addonLinter.scanFile('whatever')).rejects.toThrow(
-      'message.type must be defined',
+      'message.type must be defined'
     );
   });
 
@@ -261,7 +261,7 @@ describe('Linter', () => {
     }
 
     await expect(addonLinter.scan({ _Xpi: FakeXpi })).rejects.toThrow(
-      'scanFiles explosion',
+      'scanFiles explosion'
     );
   });
 
@@ -281,11 +281,11 @@ describe('Linter', () => {
       }
     }
     await expect(addonLinter.scan({ _Xpi: FakeXpi })).rejects.toThrow(
-      expectedError,
+      expectedError
     );
     sinon.assert.calledWith(
       addonLinter.collector.addError,
-      messages.DUPLICATE_XPI_ENTRY,
+      messages.DUPLICATE_XPI_ENTRY
     );
     sinon.assert.calledOnce(addonLinter.print);
   });
@@ -572,7 +572,7 @@ describe('Linter.textOutput()', () => {
       expect(text).not.toContain('5');
       expect(text).not.toContain('Line');
       expect(text).not.toContain('20');
-    },
+    }
   );
 
   it('should survive even a 1 column terminal', () => {
@@ -635,7 +635,7 @@ describe('Linter.getAddonMetadata()', () => {
     sinon.assert.calledOnce(fakeLog.debug);
     sinon.assert.calledWith(
       fakeLog.debug,
-      'Metadata already set; returning cached metadata.',
+      'Metadata already set; returning cached metadata.'
     );
   });
 
@@ -942,7 +942,7 @@ describe('Linter.extractMetadata()', () => {
       async getFile(path) {
         return fs.readFileSync(
           `tests/fixtures/jslibs/${fakeFiles[path]}`,
-          'utf-8',
+          'utf-8'
         );
       }
 
@@ -989,7 +989,7 @@ describe('Linter.extractMetadata()', () => {
       async getFile(path) {
         return fs.readFileSync(
           `tests/fixtures/jslibs/${fakeFiles[path]}`,
-          'utf-8',
+          'utf-8'
         );
       }
 
@@ -1073,7 +1073,7 @@ describe('Linter.extractMetadata()', () => {
     const addonLinter = new Linter({ _: ['foo'] });
     const markUnknownOrMinifiedCodeSpy = sinon.spy(
       addonLinter,
-      '_markUnknownOrMinifiedCode',
+      '_markUnknownOrMinifiedCode'
     );
 
     addonLinter.checkFileExists = fakeCheckFileExists;
@@ -1106,7 +1106,7 @@ describe('Linter.extractMetadata()', () => {
 
       // Should not match because > 20% of lines that are properly indented
       'minified-less-than-20percent.js': read(
-        'minified-less-than-20percent.js',
+        'minified-less-than-20percent.js'
       ).trim(),
     };
 
@@ -1197,7 +1197,7 @@ describe('Linter.extractMetadata()', () => {
       }
     }
     await expect(
-      addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole }),
+      addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole })
     ).rejects.toThrow('No size available for whatever');
     sinon.assert.calledOnce(markEmptyFilesSpy);
   });
@@ -1235,7 +1235,7 @@ describe('Linter.extractMetadata()', () => {
     }
     await addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole });
     expect(addonLinter.collector.errors[0].code).toEqual(
-      messages.FILE_TOO_LARGE.code,
+      messages.FILE_TOO_LARGE.code
     );
     // CSS and JS files that are too large should be flagged.
     expect(addonLinter.collector.errors.length).toBe(2);
@@ -1389,7 +1389,7 @@ describe('Linter.extractMetadata()', () => {
       async getFileAsString(filename) {
         const contents = fs.readFileSync(
           `tests/fixtures/coinminers/${filename}`,
-          'utf-8',
+          'utf-8'
         );
         return contents;
       }
@@ -1485,11 +1485,11 @@ describe('Linter.extractMetadata()', () => {
           'foo.png': EMPTY_PNG,
           'jquery.js': fs.readFileSync(
             'tests/fixtures/jslibs/jquery-3.2.1.min.js',
-            'utf-8',
+            'utf-8'
           ),
           '.DS_Store': fs.readFileSync(
             'tests/fixtures/Dummy_DS_Store',
-            'binary',
+            'binary'
           ),
         };
         return contents[filename];
@@ -1565,7 +1565,7 @@ describe('Linter.run()', () => {
     class FakeXpi extends FakeIOBase {}
 
     await expect(
-      addonLinter.run({ _Xpi: FakeXpi, _console: fakeConsole }),
+      addonLinter.run({ _Xpi: FakeXpi, _console: fakeConsole })
     ).rejects.toThrow(expectedError);
     sinon.assert.calledOnce(addonLinter.handleError);
   });

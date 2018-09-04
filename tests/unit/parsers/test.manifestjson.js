@@ -20,7 +20,7 @@ describe('ManifestJSONParser', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     const manifestJSONParser = new ManifestJSONParser(
       'blah',
-      addonLinter.collector,
+      addonLinter.collector
     );
     expect(manifestJSONParser.isValid).toEqual(false);
     const { errors } = addonLinter.collector;
@@ -40,7 +40,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON();
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(true);
       const metadata = manifestJSONParser.getMetadata();
@@ -56,7 +56,7 @@ describe('ManifestJSONParser', () => {
       });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(addonLinter.collector.errors, {
@@ -70,7 +70,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({ applications: {} });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(true);
       const metadata = manifestJSONParser.getMetadata();
@@ -84,7 +84,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({ manifest_version: 'whatever' });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
@@ -98,7 +98,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({ manifest_version: '1' });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
@@ -111,7 +111,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON();
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(true);
       const metadata = manifestJSONParser.getMetadata();
@@ -128,7 +128,7 @@ describe('ManifestJSONParser', () => {
 
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { warnings } = addonLinter.collector;
@@ -152,7 +152,7 @@ describe('ManifestJSONParser', () => {
 
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
@@ -168,7 +168,7 @@ describe('ManifestJSONParser', () => {
 
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
@@ -184,7 +184,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON();
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(true);
       const metadata = manifestJSONParser.getMetadata();
@@ -196,7 +196,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({ type: 'whatevs' });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(true);
       const metadata = manifestJSONParser.getMetadata();
@@ -211,7 +211,7 @@ describe('ManifestJSONParser', () => {
         const addonLinter = new Linter({ _: ['bar'] });
         const parser = new ManifestJSONParser(
           validManifestJSON(),
-          addonLinter.collector,
+          addonLinter.collector
         );
         const message = parser.errorLookup({ dataPath: '' });
         expect(message.code).toEqual(messages.JSON_INVALID.code);
@@ -222,7 +222,7 @@ describe('ManifestJSONParser', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const parser = new ManifestJSONParser(
         validManifestJSON(),
-        addonLinter.collector,
+        addonLinter.collector
       );
       const message = parser.errorLookup({ dataPath: '', keyword: 'required' });
       expect(message.code).toEqual(messages.MANIFEST_FIELD_REQUIRED.code);
@@ -232,7 +232,7 @@ describe('ManifestJSONParser', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const parser = new ManifestJSONParser(
         validManifestJSON(),
-        addonLinter.collector,
+        addonLinter.collector
       );
       const message = parser.errorLookup({ dataPath: '', keyword: 'type' });
       expect(message.code).toEqual(messages.MANIFEST_FIELD_INVALID.code);
@@ -242,7 +242,7 @@ describe('ManifestJSONParser', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const parser = new ManifestJSONParser(
         validManifestJSON(),
-        addonLinter.collector,
+        addonLinter.collector
       );
       const message = parser.errorLookup({ dataPath: '/permissions/0' });
       expect(message.code).toEqual(messages.MANIFEST_PERMISSIONS.code);
@@ -255,14 +255,14 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({ permissions: ['tabs', 'wat'] });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { warnings } = addonLinter.collector;
       expect(warnings.length).toEqual(1);
       expect(warnings[0].code).toEqual(messages.MANIFEST_PERMISSIONS.code);
       expect(warnings[0].message).toContain(
-        '/permissions: Unknown permissions "wat" at 1.',
+        '/permissions: Unknown permissions "wat" at 1.'
       );
     });
   });
@@ -274,7 +274,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({ name: 'my-awesome-ext' });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(true);
       const metadata = manifestJSONParser.getMetadata();
@@ -286,7 +286,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({ name: undefined });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
@@ -299,7 +299,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({ name: 1 });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
@@ -314,7 +314,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({ version: '1.0' });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(true);
       const metadata = manifestJSONParser.getMetadata();
@@ -326,7 +326,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({ version: undefined });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
@@ -339,7 +339,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({ version: 1 });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
@@ -352,7 +352,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({ version: '1.0.0.0pre0' });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(true);
       const { notices } = addonLinter.collector;
@@ -373,7 +373,7 @@ describe('ManifestJSONParser', () => {
       });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(true);
       const { notices } = addonLinter.collector;
@@ -392,7 +392,7 @@ describe('ManifestJSONParser', () => {
       });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(true);
       expect(addonLinter.collector.notices.length).toEqual(0);
@@ -410,7 +410,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: { files: { 'path/to/fr.dic': '', 'path/to/fr.aff': '' } } },
+        { io: { files: { 'path/to/fr.dic': '', 'path/to/fr.aff': '' } } }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
@@ -427,7 +427,7 @@ describe('ManifestJSONParser', () => {
       });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
 
       expect(manifestJSONParser.isValid).toEqual(true);
@@ -489,7 +489,7 @@ describe('ManifestJSONParser', () => {
 
         const manifestJSONParser = new ManifestJSONParser(
           json,
-          addonLinter.collector,
+          addonLinter.collector
         );
 
         expect(manifestJSONParser.isValid).toEqual(true);
@@ -532,7 +532,7 @@ describe('ManifestJSONParser', () => {
 
         const manifestJSONParser = new ManifestJSONParser(
           json,
-          addonLinter.collector,
+          addonLinter.collector
         );
 
         expect(manifestJSONParser.isValid).toEqual(true);
@@ -550,14 +550,14 @@ describe('ManifestJSONParser', () => {
 
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
 
       expect(manifestJSONParser.isValid).toEqual(true);
       const { warnings } = addonLinter.collector;
       expect(warnings[0].code).toEqual(messages.MANIFEST_CSP_UNSAFE_EVAL.code);
       expect(warnings[0].message).toEqual(
-        "Using 'eval' has strong security and performance implications.",
+        "Using 'eval' has strong security and performance implications."
       );
     });
   });
@@ -572,7 +572,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { selfHosted: false },
+        { selfHosted: false }
       );
       expect(manifestJSONParser.isValid).toEqual(true);
       const { notices } = addonLinter.collector;
@@ -594,7 +594,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { selfHosted: false },
+        { selfHosted: false }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
@@ -614,7 +614,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { selfHosted: true },
+        { selfHosted: true }
       );
       manifestJSONParser.selfHosted = true;
       expect(manifestJSONParser.isValid).toEqual(true);
@@ -632,7 +632,7 @@ describe('ManifestJSONParser', () => {
       });
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
@@ -652,7 +652,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: { files: {} } },
+        { io: { files: {} } }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
@@ -664,7 +664,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({});
       const manifestJSONParser = new ManifestJSONParser(
         json,
-        addonLinter.collector,
+        addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(true);
     });
@@ -675,7 +675,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: { files: { '_locales/fr/messages.json': {} } } },
+        { io: { files: { '_locales/fr/messages.json': {} } } }
       );
       expect(manifestJSONParser.isValid).toEqual(true);
     });
@@ -686,7 +686,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: { files: { '_locales/fr/messages.json': {} } } },
+        { io: { files: { '_locales/fr/messages.json': {} } } }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
@@ -710,7 +710,7 @@ describe('ManifestJSONParser', () => {
         const manifestJSONParser = new ManifestJSONParser(
           json,
           addonLinter.collector,
-          { io: { files } },
+          { io: { files } }
         );
         expect(manifestJSONParser.isValid).toEqual(true);
       });
@@ -738,7 +738,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: fakeIO },
+        { io: fakeIO }
       );
 
       await manifestJSONParser.validateIcons();
@@ -772,7 +772,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: getStreamableIO(files) },
+        { io: getStreamableIO(files) }
       );
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
@@ -792,7 +792,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: getStreamableIO(files) },
+        { io: getStreamableIO(files) }
       );
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
@@ -812,7 +812,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: getStreamableIO(files) },
+        { io: getStreamableIO(files) }
       );
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
@@ -831,7 +831,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: getStreamableIO(files) },
+        { io: getStreamableIO(files) }
       );
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
@@ -851,7 +851,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: getStreamableIO(files) },
+        { io: getStreamableIO(files) }
       );
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
@@ -871,7 +871,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: getStreamableIO(files) },
+        { io: getStreamableIO(files) }
       );
 
       await manifestJSONParser.validateIcons();
@@ -904,7 +904,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: getStreamableIO(files) },
+        { io: getStreamableIO(files) }
       );
 
       await manifestJSONParser.validateIcons();
@@ -932,14 +932,14 @@ describe('ManifestJSONParser', () => {
         'icons/icon-32.txt': 'some random text',
         'icons/icon-64.html': '<html></html>',
         'tests/fixtures/icon-128.png': fs.createReadStream(
-          'tests/fixtures/icon-128.png',
+          'tests/fixtures/icon-128.png'
         ),
         'icons/icon.svg': '<svg></svg>',
       };
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: getStreamableIO(files) },
+        { io: getStreamableIO(files) }
       );
 
       await manifestJSONParser.validateIcons();
@@ -971,7 +971,7 @@ describe('ManifestJSONParser', () => {
         const manifestJSONParser = new ManifestJSONParser(
           json,
           addonLinter.collector,
-          { io: getStreamableIO(files) },
+          { io: getStreamableIO(files) }
         );
 
         await Promise.all([
@@ -999,7 +999,7 @@ describe('ManifestJSONParser', () => {
         const manifestJSONParser = new ManifestJSONParser(
           json,
           addonLinter.collector,
-          { io: getStreamableIO(files) },
+          { io: getStreamableIO(files) }
         );
 
         await manifestJSONParser.validateIcon(icon32, size32);
@@ -1023,7 +1023,7 @@ describe('ManifestJSONParser', () => {
         const manifestJSONParser = new ManifestJSONParser(
           json,
           addonLinter.collector,
-          { io: getStreamableIO(files) },
+          { io: getStreamableIO(files) }
         );
 
         await manifestJSONParser.validateIcon(icon33, size32);
@@ -1053,7 +1053,7 @@ describe('ManifestJSONParser', () => {
         const manifestJSONParser = new ManifestJSONParser(
           json,
           addonLinter.collector,
-          { io: getStreamableIO(files) },
+          { io: getStreamableIO(files) }
         );
 
         await manifestJSONParser.validateIcon(icon32, size32);
@@ -1077,7 +1077,7 @@ describe('ManifestJSONParser', () => {
         const manifestJSONParser = new ManifestJSONParser(
           json,
           addonLinter.collector,
-          { io: getStreamableIO(files) },
+          { io: getStreamableIO(files) }
         );
 
         await manifestJSONParser.validateIcon(icon32, size32);
@@ -1098,7 +1098,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         linter.collector,
-        { io: { files: { 'foo.js': '' } } },
+        { io: { files: { 'foo.js': '' } } }
       );
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
@@ -1111,7 +1111,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         linter.collector,
-        { io: { files: {} } },
+        { io: { files: {} } }
       );
       expect(manifestJSONParser.isValid).toBeFalsy();
       assertHasMatchingError(linter.collector.errors, {
@@ -1130,7 +1130,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         linter.collector,
-        { io: { files: { 'foo.html': '' } } },
+        { io: { files: { 'foo.html': '' } } }
       );
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
@@ -1143,7 +1143,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         linter.collector,
-        { io: { files: {} } },
+        { io: { files: {} } }
       );
       expect(manifestJSONParser.isValid).toBeFalsy();
       assertHasMatchingError(linter.collector.errors, {
@@ -1177,7 +1177,7 @@ describe('ManifestJSONParser', () => {
               'content_scripts/bar.css': '',
             },
           },
-        },
+        }
       );
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
@@ -1196,7 +1196,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         linter.collector,
-        { io: { files: { 'content_scripts/bar.css': '' } } },
+        { io: { files: { 'content_scripts/bar.css': '' } } }
       );
       expect(manifestJSONParser.isValid).toBeFalsy();
       assertHasMatchingError(linter.collector.errors, {
@@ -1221,7 +1221,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         linter.collector,
-        { io: { files: { 'content_scripts/foo.js': '' } } },
+        { io: { files: { 'content_scripts/foo.js': '' } } }
       );
       expect(manifestJSONParser.isValid).toBeFalsy();
       assertHasMatchingError(linter.collector.errors, {
@@ -1246,7 +1246,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         linter.collector,
-        { io: { files: { 'content_scripts/foo.js': '' } } },
+        { io: { files: { 'content_scripts/foo.js': '' } } }
       );
       expect(manifestJSONParser.isValid).toBeFalsy();
       assertHasMatchingError(linter.collector.errors, {
@@ -1266,7 +1266,7 @@ describe('ManifestJSONParser', () => {
         linter.collector,
         {
           io: { files: { 'path/to/fr.dic': '', 'path/to/fr.aff': '' } },
-        },
+        }
       );
       expect(manifestJSONParser.isValid).toEqual(true);
     });
@@ -1279,7 +1279,7 @@ describe('ManifestJSONParser', () => {
         linter.collector,
         {
           io: { files: {} },
-        },
+        }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
 
@@ -1300,7 +1300,7 @@ describe('ManifestJSONParser', () => {
         linter.collector,
         {
           io: { files: { '/path/to/fr.dic': '' } },
-        },
+        }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
 
@@ -1323,7 +1323,7 @@ describe('ManifestJSONParser', () => {
         linter.collector,
         {
           io: { files: {} },
-        },
+        }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
     });
@@ -1338,7 +1338,7 @@ describe('ManifestJSONParser', () => {
         linter.collector,
         {
           io: { files: {} },
-        },
+        }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(linter.collector.errors, {
@@ -1357,7 +1357,7 @@ describe('ManifestJSONParser', () => {
         linter.collector,
         {
           io: { files: {} },
-        },
+        }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(linter.collector.errors, {
@@ -1377,7 +1377,7 @@ describe('ManifestJSONParser', () => {
         linter.collector,
         {
           io: { files: {} },
-        },
+        }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(linter.collector.errors, {
@@ -1397,7 +1397,7 @@ describe('ManifestJSONParser', () => {
         linter.collector,
         {
           io: { files: {} },
-        },
+        }
       );
       expect(manifestJSONParser.isValid).toEqual(true);
     });
@@ -1410,7 +1410,7 @@ describe('ManifestJSONParser', () => {
         linter.collector,
         {
           io: { files: {} },
-        },
+        }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
     });
@@ -1423,7 +1423,7 @@ describe('ManifestJSONParser', () => {
         linter.collector,
         {
           io: { files: {} },
-        },
+        }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(linter.collector.errors, {
@@ -1443,7 +1443,7 @@ describe('ManifestJSONParser', () => {
         linter.collector,
         {
           io: { files: {} },
-        },
+        }
       );
       expect(manifestJSONParser.isValid).toEqual(true);
     });
@@ -1458,7 +1458,7 @@ describe('ManifestJSONParser', () => {
         linter.collector,
         {
           io: { files: {} },
-        },
+        }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(linter.collector.errors, {
@@ -1486,7 +1486,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: directory },
+        { io: directory }
       );
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
@@ -1510,7 +1510,7 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector,
-        { io: directory },
+        { io: directory }
       );
       expect(manifestJSONParser.isValid).toEqual(true);
       const { errors } = addonLinter.collector;

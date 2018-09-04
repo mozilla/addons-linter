@@ -204,7 +204,7 @@ describe('xpi.getFiles()', function getFilesCallback() {
     };
 
     await expect(myXpi.getFiles(onEventsSubscribed)).rejects.toThrow(
-      'DuplicateZipEntry',
+      'DuplicateZipEntry'
     );
   });
 
@@ -251,7 +251,7 @@ describe('Xpi.checkPath()', function checkPathCallback() {
     };
 
     await expect(myXpi.getFileAsStream('whatever')).rejects.toThrow(
-      'Path "whatever" does not exist',
+      'Path "whatever" does not exist'
     );
   });
 
@@ -267,7 +267,7 @@ describe('Xpi.checkPath()', function checkPathCallback() {
     };
 
     await expect(myXpi.getFileAsStream('manifest.json')).rejects.toThrow(
-      'File "manifest.json" is too large',
+      'File "manifest.json" is too large'
     );
   });
 
@@ -283,7 +283,7 @@ describe('Xpi.checkPath()', function checkPathCallback() {
     };
 
     await expect(myXpi.getFileAsString('manifest.json')).rejects.toThrow(
-      'File "manifest.json" is too large',
+      'File "manifest.json" is too large'
     );
   });
 });
@@ -316,11 +316,11 @@ describe('Xpi.getChunkAsBuffer()', function getChunkAsBufferCallback() {
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
     this.openReadStreamStub.yieldsAsync(
-      new Error('getChunkAsBuffer openReadStream test'),
+      new Error('getChunkAsBuffer openReadStream test')
     );
 
     await expect(myXpi.getChunkAsBuffer('manifest.json')).rejects.toThrow(
-      'getChunkAsBuffer openReadStream test',
+      'getChunkAsBuffer openReadStream test'
     );
   });
 
@@ -368,11 +368,11 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
     this.openReadStreamStub.yieldsAsync(
-      new Error('getFileAsStream openReadStream test'),
+      new Error('getFileAsStream openReadStream test')
     );
 
     await expect(myXpi.getFileAsStream('manifest.json')).rejects.toThrow(
-      'getFileAsStream openReadStream test',
+      'getFileAsStream openReadStream test'
     );
   });
 
@@ -417,7 +417,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
     this.openReadStreamStub.yields(null, rstream);
 
     await expect(myXpi.getFileAsString('manifest.json')).resolves.toBe(
-      'line one\nline two',
+      'line one\nline two'
     );
   });
 
@@ -446,11 +446,11 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
 
     this.openStub.yieldsAsync(null, this.fakeZipFile);
     this.openReadStreamStub.yields(
-      new Error('getFileAsString openReadStream test'),
+      new Error('getFileAsString openReadStream test')
     );
 
     await expect(myXpi.getFileAsString('manifest.json')).rejects.toThrow(
-      'getFileAsString openReadStream test',
+      'getFileAsString openReadStream test'
     );
   });
 
@@ -471,7 +471,7 @@ describe('Xpi.getFileAsStream()', function getFileAsStreamCallback() {
     };
 
     await expect(myXpi.getFileAsString('manifest.json')).rejects.toThrow(
-      '¡hola!',
+      '¡hola!'
     );
   });
 });
@@ -540,7 +540,7 @@ describe('Xpi.getFilesByExt()', function getFilesByExtCallback() {
 
     for (let i = 0; i < htmlFiles.length; i++) {
       expect(
-        htmlFiles[i].endsWith('.html') || htmlFiles[i].endsWith('.htm'),
+        htmlFiles[i].endsWith('.html') || htmlFiles[i].endsWith('.htm')
       ).toBeTruthy();
     }
   });
@@ -549,7 +549,7 @@ describe('Xpi.getFilesByExt()', function getFilesByExtCallback() {
     const myXpi = new Xpi('foo/bar', this.fakeZipLib);
 
     await expect(myXpi.getFilesByExt('css')).rejects.toThrow(
-      'File extension must start with',
+      'File extension must start with'
     );
   });
 });

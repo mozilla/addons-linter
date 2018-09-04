@@ -10,7 +10,7 @@ export default class LocaleMessagesJSONParser extends JSONParser {
   constructor(
     jsonString,
     collector,
-    { filename = MESSAGES_JSON, RelaxedJSON = RJSON } = {},
+    { filename = MESSAGES_JSON, RelaxedJSON = RJSON } = {}
   ) {
     super(jsonString, collector, { filename });
     this.relaxedJSON = RelaxedJSON;
@@ -66,7 +66,7 @@ export default class LocaleMessagesJSONParser extends JSONParser {
       !Object.prototype.hasOwnProperty.call(this.lowercasePlaceholders, message)
     ) {
       this.lowercasePlaceholders[message] = Object.keys(
-        messageObj.placeholders,
+        messageObj.placeholders
       ).map((placeholder) => placeholder.toLowerCase());
     }
     return this.lowercasePlaceholders[message];
@@ -102,7 +102,7 @@ export default class LocaleMessagesJSONParser extends JSONParser {
             file: this.filename,
             description: `Case-insensitive duplicate message name: ${message} found in JSON`,
             dataPath: `/${message}`,
-          }),
+          })
         );
         this.isValid = false;
       }
@@ -114,8 +114,8 @@ export default class LocaleMessagesJSONParser extends JSONParser {
               file: this.filename,
               dataPath: `/${message}`,
             },
-            messages.PREDEFINED_MESSAGE_NAME,
-          ),
+            messages.PREDEFINED_MESSAGE_NAME
+          )
         );
       }
 
@@ -129,8 +129,8 @@ export default class LocaleMessagesJSONParser extends JSONParser {
                 file: this.filename,
                 dataPath: `/${message}/placeholders/${matches[1]}`,
               },
-              messages.MISSING_PLACEHOLDER,
-            ),
+              messages.MISSING_PLACEHOLDER
+            )
           );
         }
         matches = regexp.exec(messageContent);
@@ -139,7 +139,7 @@ export default class LocaleMessagesJSONParser extends JSONParser {
       if (
         Object.prototype.hasOwnProperty.call(
           this.parsedJSON[message],
-          'placeholders',
+          'placeholders'
         )
       ) {
         const visitedLowercasePlaceholders = [];
@@ -155,11 +155,11 @@ export default class LocaleMessagesJSONParser extends JSONParser {
                   file: this.filename,
                   description: `Case-insensitive duplicate placeholder name: ${placeholder} found in JSON`,
                   dataPath: `/${message}/placeholders/${placeholder}`,
-                }),
+                })
               );
               this.isValid = false;
             }
-          },
+          }
         );
       }
 

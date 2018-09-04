@@ -47,7 +47,7 @@ export default class CSSScanner extends BaseScanner {
     log.debug('Passing CSS code to rule function "%s"', cssInstruction, info);
 
     this.linterMessages = this.linterMessages.concat(
-      _rules[cssInstruction](cssNode, file, cssOptions),
+      _rules[cssInstruction](cssNode, file, cssOptions)
     );
   }
 
@@ -90,7 +90,7 @@ export default class CSSScanner extends BaseScanner {
           // We use our own ref to the file as postcss outputs
           // absolute paths.
           file: this.filename,
-        }),
+        })
       );
 
       // A syntax error has been encounted so it's game over.

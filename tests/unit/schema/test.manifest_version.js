@@ -20,7 +20,7 @@ describe('/manifest_version', () => {
     expect(validateAddon.errors.length).toEqual(1);
     expect(validateAddon.errors[0].dataPath).toEqual('/manifest_version');
     expect(validateAddon.errors[0].params.missingProperty).toEqual(
-      'manifest_version',
+      'manifest_version'
     );
   });
 });

@@ -122,7 +122,7 @@ export default class Linter {
       columnify(this.output.summary, {
         showHeaders: false,
         minWidth: 15,
-      }),
+      })
     );
     out.push('');
 
@@ -208,7 +208,7 @@ export default class Linter {
             columns: outputColumns,
             columnSplitter: '   ',
             config: outputConfig,
-          }),
+          })
         );
       }
     });
@@ -262,7 +262,7 @@ export default class Linter {
       this.addonMetadata = manifestParser.getMetadata();
     } else {
       _log.warn(
-        `No ${constants.MANIFEST_JSON} was found in the package metadata`,
+        `No ${constants.MANIFEST_JSON} was found in the package metadata`
       );
       this.collector.addNotice(messages.TYPE_NO_MANIFEST_JSON);
       this.addonMetadata = {};
@@ -273,7 +273,7 @@ export default class Linter {
 
   async checkFileExists(filepath, _lstatPromise = lstatPromise) {
     const invalidMessage = new Error(
-      `Path "${filepath}" is not a file or directory or does not exist.`,
+      `Path "${filepath}" is not a file or directory or does not exist.`
     );
     try {
       const stats = await _lstatPromise(filepath);
@@ -330,7 +330,7 @@ export default class Linter {
     const ScannerClass = this.getScanner(filename);
     const fileData = await this.io.getFile(
       filename,
-      ScannerClass.fileResultType,
+      ScannerClass.fileResultType
     );
 
     // First: check that this file is under our 2MB parsing limit. Otherwise
@@ -483,7 +483,7 @@ export default class Linter {
       const filesWithoutJSLibraries = Object.keys(files).filter((file) => {
         return !Object.prototype.hasOwnProperty.call(
           this.addonMetadata.jsLibs,
-          file,
+          file
         );
       });
 
@@ -543,7 +543,7 @@ export default class Linter {
         this.collector.addError(
           Object.assign({}, messages.BANNED_LIBRARY, {
             file: pathToFile,
-          }),
+          })
         );
       }
 
@@ -551,7 +551,7 @@ export default class Linter {
         this.collector.addWarning(
           Object.assign({}, messages.UNADVISED_LIBRARY, {
             file: pathToFile,
-          }),
+          })
         );
       }
     });
@@ -601,10 +601,10 @@ export default class Linter {
           this.collector.addNotice(
             Object.assign({}, messages.KNOWN_LIBRARY, {
               file: filename,
-            }),
+            })
           );
         }
-      }),
+      })
     );
 
     // eslint-disable-next-line no-param-reassign
@@ -627,7 +627,7 @@ export default class Linter {
           log.debug(`Minified code detected in ${filename}`);
           unknownMinifiedFiles.push(filename);
         }
-      }),
+      })
     );
 
     // eslint-disable-next-line no-param-reassign
@@ -643,7 +643,7 @@ export default class Linter {
         this.collector.addNotice(
           Object.assign({}, messages.MOZILLA_COND_OF_USE, {
             file: filename,
-          }),
+          })
         );
       }
     }
@@ -658,7 +658,7 @@ export default class Linter {
           this.collector.addWarning(
             Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
               file: filename,
-            }),
+            })
           );
         }
 
@@ -666,7 +666,7 @@ export default class Linter {
 
         if (fileDataMatch) {
           const { matchedLine, matchedColumn } = getLineAndColumnFromMatch(
-            fileDataMatch,
+            fileDataMatch
           );
 
           this.collector.addWarning(
@@ -674,7 +674,7 @@ export default class Linter {
               file: filename,
               column: matchedColumn,
               line: matchedLine,
-            }),
+            })
           );
         }
       });
@@ -684,7 +684,7 @@ export default class Linter {
 
         if (match) {
           const { matchedLine, matchedColumn } = getLineAndColumnFromMatch(
-            match,
+            match
           );
 
           this.collector.addWarning(
@@ -695,7 +695,7 @@ export default class Linter {
               // use dataPath for our actual match to avoid any obvious
               // duplicates
               dataPath: match[0],
-            }),
+            })
           );
         }
       });

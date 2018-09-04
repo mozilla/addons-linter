@@ -59,7 +59,7 @@ describe('content_scripts_file_absent', () => {
     const jsScanner = createJsScanner(
       code,
       fileRequiresContentScript,
-      existingFiles,
+      existingFiles
     );
 
     const { linterMessages } = await jsScanner.scan();
@@ -86,7 +86,7 @@ describe('content_scripts_file_absent', () => {
     const jsScanner = createJsScanner(
       code,
       fileRequiresContentScript,
-      existingFiles,
+      existingFiles
     );
 
     const { linterMessages } = await jsScanner.scan();

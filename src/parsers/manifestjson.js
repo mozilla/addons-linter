@@ -52,7 +52,7 @@ export default class ManifestJSONParser extends JSONParser {
       RelaxedJSON = RJSON,
       selfHosted = getDefaultConfigValue('self-hosted'),
       io = null,
-    } = {},
+    } = {}
   ) {
     super(jsonString, collector, { filename });
 
@@ -71,15 +71,15 @@ export default class ManifestJSONParser extends JSONParser {
       this.selfHosted = selfHosted;
       this.isLanguagePack = Object.prototype.hasOwnProperty.call(
         this.parsedJSON,
-        'langpack_id',
+        'langpack_id'
       );
       this.isDictionary = Object.prototype.hasOwnProperty.call(
         this.parsedJSON,
-        'dictionaries',
+        'dictionaries'
       );
       this.isStaticTheme = Object.prototype.hasOwnProperty.call(
         this.parsedJSON,
-        'theme',
+        'theme'
       );
       this.io = io;
       this._validate();
@@ -183,7 +183,7 @@ export default class ManifestJSONParser extends JSONParser {
       if (this.parsedJSON.background.page) {
         this.validateFileExistsInPackage(
           this.parsedJSON.background.page,
-          'page',
+          'page'
         );
       }
     }
@@ -206,7 +206,7 @@ export default class ManifestJSONParser extends JSONParser {
             this.validateFileExistsInPackage(
               script,
               'script',
-              messages.manifestContentScriptFileMissing,
+              messages.manifestContentScriptFileMissing
             );
           });
         }
@@ -215,7 +215,7 @@ export default class ManifestJSONParser extends JSONParser {
             this.validateFileExistsInPackage(
               style,
               'css',
-              messages.manifestContentScriptFileMissing,
+              messages.manifestContentScriptFileMissing
             );
           });
         }
@@ -237,13 +237,13 @@ export default class ManifestJSONParser extends JSONParser {
         this.validateFileExistsInPackage(
           filepath,
           'binary',
-          messages.manifestDictionaryFileMissing,
+          messages.manifestDictionaryFileMissing
         );
         // A corresponding .aff file should exist for every .dic.
         this.validateFileExistsInPackage(
           filepath.replace(/\.dic$/, '.aff'),
           'binary',
-          messages.manifestDictionaryFileMissing,
+          messages.manifestDictionaryFileMissing
         );
       });
     }
@@ -282,7 +282,7 @@ export default class ManifestJSONParser extends JSONParser {
       const msg = path.join(
         LOCALES_DIRECTORY,
         this.parsedJSON.default_locale,
-        'messages.json',
+        'messages.json'
       );
 
       // Convert filename to unix path separator before
@@ -314,7 +314,7 @@ export default class ManifestJSONParser extends JSONParser {
             const filePath = path.join(
               LOCALES_DIRECTORY,
               langDir,
-              MESSAGES_JSON,
+              MESSAGES_JSON
             );
 
             // Convert filename to unix path separator before
@@ -322,8 +322,8 @@ export default class ManifestJSONParser extends JSONParser {
             if (!this.io.files[upath.toUnix(filePath)]) {
               this.collector.addError(
                 messages.noMessagesFileInLocales(
-                  path.join(LOCALES_DIRECTORY, langDir),
-                ),
+                  path.join(LOCALES_DIRECTORY, langDir)
+                )
               );
               this.isValid = false;
             }
@@ -348,18 +348,18 @@ export default class ManifestJSONParser extends JSONParser {
             path: iconPath,
             expected: parseInt(expectedSize, 10),
             actual: parseInt(info.width, 10),
-          }),
+          })
         );
       }
     } catch (err) {
       log.debug(
         `Unexpected error raised while validating icon "${iconPath}"`,
-        err,
+        err
       );
       this.collector.addWarning(
         messages.corruptIconFile({
           path: iconPath,
-        }),
+        })
       );
     }
   }
@@ -377,7 +377,7 @@ export default class ManifestJSONParser extends JSONParser {
           _path
             .split('.')
             .pop()
-            .toLowerCase(),
+            .toLowerCase()
         )
       ) {
         this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
@@ -391,7 +391,7 @@ export default class ManifestJSONParser extends JSONParser {
   validateFileExistsInPackage(
     filePath,
     type,
-    messageFunc = messages.manifestBackgroundMissing,
+    messageFunc = messages.manifestBackgroundMissing
   ) {
     const _path = normalizePath(filePath);
     if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {

@@ -7,7 +7,7 @@ export function createLogger(_process = process) {
       name: 'AddonLinterJS',
       level,
     },
-    process.stdout,
+    process.stdout
   );
 }
 

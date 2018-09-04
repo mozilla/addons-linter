@@ -159,7 +159,7 @@ describe('JavaScript Scanner', () => {
 
     const { linterMessages: moreValidationMessages } = await jsScanner.scan();
     expect(moreValidationMessages[0].code).toEqual(
-      messages.JS_SYNTAX_ERROR.code,
+      messages.JS_SYNTAX_ERROR.code
     );
     expect(moreValidationMessages[0].type).toEqual(VALIDATION_ERROR);
   });
@@ -196,7 +196,7 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner('whatever', 'badcode.js');
 
     await expect(jsScanner.scan(FakeESLint)).rejects.toThrow(
-      /JS rules must pass a valid message/,
+      /JS rules must pass a valid message/
     );
   });
 
@@ -300,7 +300,7 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner(
       'var hello = "something";',
       'index.html',
-      fakeMetadata,
+      fakeMetadata
     );
 
     await jsScanner.scan(ESLint, {
@@ -318,7 +318,7 @@ describe('JavaScript Scanner', () => {
     const externalRulesCount = Object.keys(EXTERNAL_RULE_MAPPING).length;
 
     expect(ruleFiles.length + externalRulesCount).toEqual(
-      Object.keys(ESLINT_RULE_MAPPING).length,
+      Object.keys(ESLINT_RULE_MAPPING).length
     );
 
     const jsScanner = new JavaScriptScanner('', 'badcode.js');
@@ -331,7 +331,7 @@ describe('JavaScript Scanner', () => {
     it(`should return warning when ${api} is used`, async () => {
       const jsScanner = new JavaScriptScanner(
         `chrome.${api}(function() {});`,
-        'code.js',
+        'code.js'
       );
 
       const { linterMessages } = await jsScanner.scan();
@@ -347,7 +347,7 @@ describe('JavaScript Scanner', () => {
       const jsScanner = new JavaScriptScanner(
         `chrome.${api}(function() {});`,
         'code.js',
-        fakeMetadata,
+        fakeMetadata
       );
 
       const { linterMessages } = await jsScanner.scan();
@@ -363,7 +363,7 @@ describe('JavaScript Scanner', () => {
       const jsScanner = new JavaScriptScanner(
         `chrome.${api}(function() {});`,
         'code.js',
-        fakeMetadata,
+        fakeMetadata
       );
 
       const { linterMessages } = await jsScanner.scan();
@@ -407,7 +407,7 @@ describe('JavaScript Scanner', () => {
       expect(
         excludeRules({
           test: {},
-        }),
+        })
       ).toEqual({
         test: {},
       });
@@ -420,8 +420,8 @@ describe('JavaScript Scanner', () => {
             test: {},
             'next-test': {},
           },
-          ['test'],
-        ),
+          ['test']
+        )
       ).toEqual({
         'next-test': {},
       });
@@ -434,8 +434,8 @@ describe('JavaScript Scanner', () => {
             test: {},
             'next-test': {},
           },
-          ['i-dont-exist'],
-        ),
+          ['i-dont-exist']
+        )
       ).toEqual({
         test: {},
         'next-test': {},

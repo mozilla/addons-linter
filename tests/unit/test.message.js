@@ -31,7 +31,7 @@ describe('Message', () => {
   it("shouldn't define random opts", () => {
     const MyMessage = new Message(
       'error',
-      Object.assign({}, fakeMessageData, { random: 'foo' }),
+      Object.assign({}, fakeMessageData, { random: 'foo' })
     );
     expect(MyMessage.random).not.toEqual('foo');
   });
@@ -40,7 +40,7 @@ describe('Message', () => {
     expect(() => {
       const MyMessage = new Message(
         'error',
-        Object.assign({}, { description: 'foo' }),
+        Object.assign({}, { description: 'foo' })
       );
     }).toThrow(/Message data object is missing the following props/);
   });
@@ -49,7 +49,7 @@ describe('Message', () => {
     expect(() => {
       const MyMessage = new Message(
         'error',
-        Object.assign({}, { filename: 'foo' }),
+        Object.assign({}, { filename: 'foo' })
       );
     }).toThrow(/The key for the file is "file"/);
   });
@@ -63,7 +63,7 @@ describe('Message', () => {
           ...obj,
           [prop]: prop,
         }),
-        {},
+        {}
       );
     });
 

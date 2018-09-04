@@ -11,7 +11,7 @@ describe('/web_accessible_resources', () => {
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
     expect(validateAddon.errors[0].dataPath).toEqual(
-      '/web_accessible_resources',
+      '/web_accessible_resources'
     );
     expect(validateAddon.errors[0].message).toEqual('should be array');
   });
@@ -22,7 +22,7 @@ describe('/web_accessible_resources', () => {
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
     expect(validateAddon.errors[0].dataPath).toEqual(
-      '/web_accessible_resources/1',
+      '/web_accessible_resources/1'
     );
     expect(validateAddon.errors[0].message).toEqual('should be string');
   });

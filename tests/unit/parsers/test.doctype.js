@@ -6,7 +6,7 @@ describe('DoctypeParser', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     const dtdParser = new DoctypeParser(
       '<!ENTITY foo.bar "foobar">',
-      addonLinter.collector,
+      addonLinter.collector
     );
 
     dtdParser.parse();
@@ -21,7 +21,7 @@ describe('DoctypeParser', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     const dtdParser = new DoctypeParser(
       '<!entity foo.bar "foobar">',
-      addonLinter.collector,
+      addonLinter.collector
     );
 
     dtdParser.parse();
@@ -38,7 +38,7 @@ describe('DoctypeParser', () => {
       `
         <!ENTITY "foobar">
         <!ENTITY bar.foo "barfoo">`,
-      addonLinter.collector,
+      addonLinter.collector
     );
 
     dtdParser.parse();
@@ -55,7 +55,7 @@ describe('DoctypeParser', () => {
       `
         <!ENTITY foo 'bar'>
         <!ENTITY foo 'faz'>`,
-      addonLinter.collector,
+      addonLinter.collector
     );
 
     dtdParser.parse();
@@ -101,7 +101,7 @@ describe('DoctypeParser', () => {
           <!ENTITY overwrite 'bar'
         >
     `,
-      addonLinter.collector,
+      addonLinter.collector
     );
 
     dtdParser.parse();
@@ -133,7 +133,7 @@ describe('DoctypeParser', () => {
       <!ENTITY overwrite 'foo'>
       <!ENTITY overwrite 'bar'>
     `,
-      addonLinter.collector,
+      addonLinter.collector
     );
 
     dtdParser.parse();

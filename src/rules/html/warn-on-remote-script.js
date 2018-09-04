@@ -13,7 +13,7 @@ export async function warnOnRemoteScript($, filename) {
         Object.assign({}, messages.REMOTE_SCRIPT, {
           type: VALIDATION_WARNING,
           file: filename,
-        }),
+        })
       );
     }
   });

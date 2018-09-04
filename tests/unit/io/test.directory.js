@@ -68,7 +68,7 @@ describe('Directory._getPath()', () => {
 
     await myDirectory.getFiles();
     await expect(myDirectory.getPath('whatever')).rejects.toThrow(
-      '"whatever" does not exist in this dir.',
+      '"whatever" does not exist in this dir.'
     );
   });
 
@@ -79,7 +79,7 @@ describe('Directory._getPath()', () => {
     };
 
     await expect(myDirectory.getPath('../file1.txt')).rejects.toThrow(
-      'Path argument must be relative',
+      'Path argument must be relative'
     );
   });
 
@@ -90,7 +90,7 @@ describe('Directory._getPath()', () => {
     };
 
     await expect(myDirectory.getPath('/file1.txt')).rejects.toThrow(
-      'Path argument must be relative',
+      'Path argument must be relative'
     );
   });
 });
@@ -110,23 +110,23 @@ describe('Directory.getFileAsStream()', () => {
     await myDirectory.getFiles();
 
     const readStreamEncodingDefault = await myDirectory.getFileAsStream(
-      'dir2/dir3/file.png',
+      'dir2/dir3/file.png'
     );
 
     const readStreamEncodingNull = await myDirectory.getFileAsStream(
       'dir2/dir3/file.png',
       {
         encoding: null,
-      },
+      }
     );
 
     const stringFromEncodingDefault = await readStringFromStream(
       readStreamEncodingDefault,
-      'binary',
+      'binary'
     );
     const stringFromEncodingNull = await readStringFromStream(
       readStreamEncodingNull,
-      'binary',
+      'binary'
     );
 
     // Ensure that by setting the encoding to null, the utf-8 encoding is not enforced
@@ -136,7 +136,7 @@ describe('Directory.getFileAsStream()', () => {
     // Confirms that the default "utf-8" encoding behavior is still preserved when the encoding
     // is not been explicitly specified.
     expect(stringFromEncodingDefault.slice(0, 8)).not.toEqual(
-      '\x89PNG\r\n\x1a\n',
+      '\x89PNG\r\n\x1a\n'
     );
   });
 
@@ -151,7 +151,7 @@ describe('Directory.getFileAsStream()', () => {
     };
 
     await expect(myDirectory.getFileAsStream('manifest.json')).rejects.toThrow(
-      'File "manifest.json" is too large',
+      'File "manifest.json" is too large'
     );
   });
 });
@@ -170,7 +170,7 @@ describe('Directory.getFileAsString()', () => {
 
     await myDirectory.getFiles();
     await expect(
-      myDirectory.getFileAsString('dir2/dir3/file3.txt'),
+      myDirectory.getFileAsString('dir2/dir3/file3.txt')
     ).resolves.toBe('123\n');
   });
 
@@ -191,7 +191,7 @@ describe('Directory.getFileAsString()', () => {
     };
 
     await expect(myDirectory.getFileAsString('manifest.json')).rejects.toThrow(
-      '¡hola!',
+      '¡hola!'
     );
   });
 
@@ -206,7 +206,7 @@ describe('Directory.getFileAsString()', () => {
     };
 
     await expect(myDirectory.getFileAsString('manifest.json')).rejects.toThrow(
-      'File "manifest.json" is too large',
+      'File "manifest.json" is too large'
     );
   });
 });

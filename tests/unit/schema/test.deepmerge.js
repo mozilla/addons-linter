@@ -11,7 +11,7 @@ describe('deepmerge', () => {
     const base = { foo: [{ bar: 'BAR' }] };
     const add = { foo: [{ baz: 'BAZ' }] };
     expect(() => merge(base, add, { some: 'opts' })).toThrow(
-      /use the deepmerge package directly/,
+      /use the deepmerge package directly/
     );
   });
 });

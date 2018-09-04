@@ -44,7 +44,7 @@ describe('Base Scanner Class', () => {
     const baseScanner = new BaseScanner('', 'index.html');
 
     await expect(baseScanner.scan()).rejects.toThrow(
-      '_getContents is not implemented',
+      '_getContents is not implemented'
     );
   });
 
@@ -98,7 +98,7 @@ describe('Base Scanner Class', () => {
 
     await baseScanner.scan(fakeRules);
     expect(baseScanner._rulesProcessed).toEqual(
-      Object.keys(ignorePrivateFunctions(fakeRules)).length,
+      Object.keys(ignorePrivateFunctions(fakeRules)).length
     );
   });
 

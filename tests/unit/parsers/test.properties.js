@@ -16,7 +16,7 @@ describe('PropertiesParser', () => {
       this.is.a =test
       overwrite=foo
       overwrite=bar`,
-      addonLinter.collector,
+      addonLinter.collector
     );
 
     propertiesParser.parse();
@@ -44,7 +44,7 @@ describe('PropertiesParser', () => {
         b
         c
         d`,
-      addonLinter.collector,
+      addonLinter.collector
     );
 
     propertiesParser.parse();

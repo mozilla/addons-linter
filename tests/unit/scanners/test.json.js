@@ -27,7 +27,7 @@ describe('JSONScanner', () => {
       '_locales/en/messages.json',
       {
         collector: addonsLinter.collector,
-      },
+      }
     );
 
     await jsonScanner.scan();

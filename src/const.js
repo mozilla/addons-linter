@@ -26,7 +26,7 @@ export const ESLINT_RULE_MAPPING = Object.assign(
     'webextension-unsupported-api': ESLINT_WARNING,
     'content-scripts-file-absent': ESLINT_ERROR,
   },
-  EXTERNAL_RULE_MAPPING,
+  EXTERNAL_RULE_MAPPING
 );
 
 export const VALIDATION_ERROR = 'error';
@@ -152,7 +152,7 @@ export const CSP_KEYWORD_RE = new RegExp(
     // Only match these keywords, anything else is forbidden
     '(?!.)',
     '|(sha(256|384|512)-|nonce-)',
-  ].join(''),
+  ].join('')
 );
 
 // All badwords grouped by language as pre-compild regular expression.

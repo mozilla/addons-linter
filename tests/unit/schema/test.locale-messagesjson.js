@@ -32,7 +32,7 @@ describe('messages', () => {
     validateLocaleMessages(messages);
     expect(validateLocaleMessages.errors.length).toEqual(1);
     expect(validateLocaleMessages.errors[0].dataPath).toEqual(
-      '/Placeh0lder_Test/placeholders/foo/content',
+      '/Placeh0lder_Test/placeholders/foo/content'
     );
   });
 
@@ -42,7 +42,7 @@ describe('messages', () => {
     validateLocaleMessages(messages);
     expect(validateLocaleMessages.errors.length).toEqual(1);
     expect(validateLocaleMessages.errors[0].dataPath).toEqual(
-      '/Placeh0lder_Test/placeholders/invalid.placeholder',
+      '/Placeh0lder_Test/placeholders/invalid.placeholder'
     );
   });
 });

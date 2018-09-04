@@ -37,7 +37,7 @@ describe('static theme', () => {
     expect(validateStaticTheme.errors.length).toEqual(1);
     expect(validateStaticTheme.errors[0].dataPath).toEqual('/content_scripts');
     expect(validateStaticTheme.errors[0].message).toEqual(
-      'is an invalid additional property',
+      'is an invalid additional property'
     );
   });
 });

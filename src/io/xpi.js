@@ -44,7 +44,7 @@ export class Xpi extends IOBase {
       log.info('Found duplicate file entry: "%s" in package', entry.fileName);
       reject(
         new Error(oneLine`DuplicateZipEntry: Entry
-        "${entry.fileName}" has already been seen`),
+        "${entry.fileName}" has already been seen`)
       );
       return;
     }
@@ -147,7 +147,7 @@ export class Xpi extends IOBase {
         readStream.pipe(
           firstChunkStream({ chunkLength }, (_, enc) => {
             resolve(enc);
-          }),
+          })
         );
       });
     });

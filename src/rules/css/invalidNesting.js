@@ -3,7 +3,7 @@ import * as messages from 'messages';
 export function invalidNesting(
   cssNode,
   filename,
-  { startLine, startColumn } = {},
+  { startLine, startColumn } = {}
 ) {
   const messageList = [];
   if (cssNode.type === 'rule') {
@@ -16,7 +16,7 @@ export function invalidNesting(
             line: startLine,
             column: startColumn,
             file: filename,
-          }),
+          })
         );
         break;
       }

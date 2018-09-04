@@ -8,7 +8,7 @@ const schemas = schemaList.reduce(
     ...all,
     [current.id]: current,
   }),
-  {},
+  {}
 );
 
 export function isDeprecatedApi(namespace, property) {

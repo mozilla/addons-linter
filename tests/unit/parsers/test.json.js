@@ -133,7 +133,7 @@ describe('JSONParser duplicate keys', () => {
     expect(errors[0].message).toContain('Duplicate keys are not allowed');
     expect(errors[0].line).toEqual(1);
     expect(errors[0].description).toContain(
-      'Duplicate key: not actually found but this is a test',
+      'Duplicate key: not actually found but this is a test'
     );
   });
 

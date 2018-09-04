@@ -11,7 +11,7 @@ export default {
     const existingFiles = Object.keys(context.settings.existingFiles || {}).map(
       (fileName) => {
         return path.resolve('/', fileName);
-      },
+      }
     );
 
     return {
@@ -40,7 +40,7 @@ export default {
             return;
           }
           const fileProperty = arg.properties.find(
-            (prop) => prop.key && prop.key.name === 'file',
+            (prop) => prop.key && prop.key.name === 'file'
           );
           const fileValue =
             fileProperty && fileProperty.value && fileProperty.value.value;

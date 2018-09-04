@@ -52,7 +52,7 @@ export default class BaseScanner {
       Object.keys(rules).map((rule) => {
         this._rulesProcessed++;
         return rules[rule](contents, this.filename, this.options);
-      }),
+      })
     );
 
     ruleResults.forEach((messages) => {

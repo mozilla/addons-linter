@@ -25,7 +25,7 @@ export function executeScript(scriptName, args = [], options = {}) {
           stderr,
           stdout,
         });
-      },
+      }
     );
   });
 }

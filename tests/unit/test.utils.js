@@ -73,7 +73,7 @@ describe('gettext()', () => {
 
     // But messages where we don't have a translation are still original
     expect(mockedI18n.gettext('This is an untranslated test')).toEqual(
-      'This is an untranslated test',
+      'This is an untranslated test'
     );
 
     jest.resetModules();
@@ -100,7 +100,7 @@ describe('sprintf()', () => {
   it('should return localizable message for dynamic messages', () => {
     const path = '../fixtures/no-image.png';
     expect(
-      i18n.sprintf(i18n._('Icon could not be found at "%(path)s".'), { path }),
+      i18n.sprintf(i18n._('Icon could not be found at "%(path)s".'), { path })
     ).toEqual('Icon could not be found at "../fixtures/no-image.png".');
 
     jest.doMock('utils', () => {
@@ -115,10 +115,10 @@ describe('sprintf()', () => {
     expect(
       mockedI18n.sprintf(
         mockedI18n._("Icon could not be found at '%(path)s'."),
-        { path },
-      ),
+        { path }
+      )
     ).toEqual(
-      'Symbol konnte nicht unter „../fixtures/no-image.png“ gefunden werden.',
+      'Symbol konnte nicht unter „../fixtures/no-image.png“ gefunden werden.'
     );
 
     jest.resetModules();
@@ -304,7 +304,7 @@ describe('checkMinNodeVersion()', () => {
       version: 'v0.12.4',
     };
     await expect(checkMinNodeVersion('0.12.7', fakeProcess)).rejects.toThrow(
-      'Node version must be 0.12.7 or greater',
+      'Node version must be 0.12.7 or greater'
     );
   });
 
@@ -392,8 +392,8 @@ describe('isLocalUrl', () => {
     expect(
       isLocalUrl(
         'data:image/gif;base64,R0' +
-          'lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
-      ),
+          'lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+      )
     ).toBeFalsy();
   });
 

@@ -34,7 +34,7 @@ export function getConfig({ useCLI = true, argv } = {}) {
     cliArgv
       .usage(
         `Usage: ./$0 [options] addon-package-or-dir \n\n
-      Add-ons Linter (JS Edition) v${version}`,
+      Add-ons Linter (JS Edition) v${version}`
       )
       .options(options)
       // Require one non-option.

@@ -16,7 +16,7 @@ choose-download-folder-title =
     *[nominative] Foo
      [accusative] Foo2
   }`,
-      addonLinter.collector,
+      addonLinter.collector
     );
 
     parser.parse();
@@ -37,31 +37,31 @@ key68
 key69
     .label = Reconnect to &syncBrand.shortName.label;…
     .accesskey = R`,
-      addonLinter.collector,
+      addonLinter.collector
     );
 
     parser.parse();
 
     expect(parser.isValid).toEqual(true);
     expect(
-      parser.parsedData.key67.attributes[0].value.elements[0].value,
+      parser.parsedData.key67.attributes[0].value.elements[0].value
     ).toEqual('Sign In To &syncBrand.shortName.label;…');
     expect(
-      parser.parsedData.key67.attributes[1].value.elements[0].value,
+      parser.parsedData.key67.attributes[1].value.elements[0].value
     ).toEqual('Y');
 
     expect(
-      parser.parsedData.key68.attributes[0].value.elements[0].value,
+      parser.parsedData.key68.attributes[0].value.elements[0].value
     ).toEqual('Sync Now');
     expect(
-      parser.parsedData.key68.attributes[1].value.elements[0].value,
+      parser.parsedData.key68.attributes[1].value.elements[0].value
     ).toEqual('S');
 
     expect(
-      parser.parsedData.key69.attributes[0].value.elements[0].value,
+      parser.parsedData.key69.attributes[0].value.elements[0].value
     ).toEqual('Reconnect to &syncBrand.shortName.label;…');
     expect(
-      parser.parsedData.key69.attributes[1].value.elements[0].value,
+      parser.parsedData.key69.attributes[1].value.elements[0].value
     ).toEqual('R');
   });
 
@@ -75,7 +75,7 @@ shared-photos =
       [one] added a new photo
      *[other] added { $photo_count } new photos
   }.`,
-      addonLinter.collector,
+      addonLinter.collector
     );
 
     parser.parse();
@@ -154,7 +154,7 @@ should-restart-title = Restart { -brand-short-name }
 should-restart-ok = Restart { -brand-short-name } now
 revert-no-restart-button = Revert
 restart-later = Restart Later`,
-      addonLinter.collector,
+      addonLinter.collector
     );
 
     parser.parse();

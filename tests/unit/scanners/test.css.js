@@ -59,7 +59,7 @@ describe('CSSScanner', async () => {
     // using the private _getContents method, which will take an alternate
     // parser.
     await expect(cssScanner._getContents(fakeCSSParser)).rejects.toThrow(
-      'Awooga',
+      'Awooga'
     );
   });
 
@@ -71,12 +71,12 @@ describe('CSSScanner', async () => {
     const cssScanner = new CSSScanner(code, 'fakeFile.css');
 
     expect(ruleFiles.length).toEqual(
-      Object.keys(ignorePrivateFunctions(rules)).length,
+      Object.keys(ignorePrivateFunctions(rules)).length
     );
 
     await cssScanner.scan();
     expect(cssScanner._rulesProcessed).toEqual(
-      Object.keys(ignorePrivateFunctions(rules)).length,
+      Object.keys(ignorePrivateFunctions(rules)).length
     );
   });
 

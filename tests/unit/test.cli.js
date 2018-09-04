@@ -74,7 +74,7 @@ describe('Basic CLI tests', function cliCallback() {
   it('should show error on missing xpi', () => {
     cli.parse([]);
     expect(
-      this.fakeFail.calledWithMatch('Not enough non-option arguments'),
+      this.fakeFail.calledWithMatch('Not enough non-option arguments')
     ).toBeTruthy();
   });
 
@@ -82,8 +82,8 @@ describe('Basic CLI tests', function cliCallback() {
     cli.parse(['-o', 'false', 'whatevs']);
     expect(
       this.fakeFail.calledWithMatch(
-        'Invalid values:\n  Argument: output, Given: "false"',
-      ),
+        'Invalid values:\n  Argument: output, Given: "false"'
+      )
     ).toBeTruthy();
   });
 
