@@ -8,6 +8,10 @@ global.localesRoot = path.join(absoluteAppRoot, 'dist', 'locale');
 global.nodeRequire = require;
 
 try {
+  // `../dist/addons-linter` doesn't exist if the linter has not been
+  // built yet. Disable this eslinting so that users don't get confused
+  // needlessly and aren't required to build the linter for eslint
+  // to pass.
   // eslint-disable-next-line import/no-unresolved
   require('../dist/addons-linter')
     .createInstance({ runAsBinary: true })
