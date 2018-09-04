@@ -32,6 +32,6 @@ poFiles.forEach((pofile) => {
 
   fs.writeFileSync(
     localeOutputFilePath,
-    `module.exports = ${toSource(localeObject)}`,
+    `module.exports = ${toSource(localeObject)}`
   );
 });

@@ -20,7 +20,7 @@ try {
   if (err.code === 'MODULE_NOT_FOUND') {
     console.log('You did not build addons-linter yet.');
     console.log(
-      'Please run `npm install` and `npm run build` or see README.md for more information.',
+      'Please run `npm install` and `npm run build` or see README.md for more information.'
     );
 
     process.exitCode = 1;

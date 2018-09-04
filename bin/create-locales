@@ -29,6 +29,6 @@ for (let i = 0; i < supportedLangs.length; i++) {
 
   shell.exec(
     `msginit --no-translator --input=${templateDir}/messages.pot
-              --output-file=${outputFile} -l ${locale}`.replace('\n', ' '),
+              --output-file=${outputFile} -l ${locale}`.replace('\n', ' ')
   );
 }
