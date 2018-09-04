@@ -1,7 +1,7 @@
 {
   "arrowParens": "always",
   "singleQuote": true,
-  "trailingComma": "all",
+  "trailingComma": "es5",
   "proseWrap": "never",
   "overrides": [
     {
