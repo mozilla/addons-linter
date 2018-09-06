@@ -20,8 +20,30 @@
               "items": {
                 "type": "string"
               },
-              "description": "Which providers to get top sites from. Possible values are \"places\" and \"activityStream\".",
+              "deprecated": "Please use the other options to tune the results received from topSites.",
               "default": []
+            },
+            "limit": {
+              "type": "integer",
+              "default": 12,
+              "maximum": 100,
+              "minimum": 1,
+              "description": "The number of top sites to return, defaults to the value used by Firefox"
+            },
+            "onePerDomain": {
+              "type": "boolean",
+              "default": true,
+              "description": "Limit the result to a single top site link per domain"
+            },
+            "includeBlocked": {
+              "type": "boolean",
+              "default": false,
+              "description": "Include sites that the user has blocked from appearing on the Firefox new tab."
+            },
+            "includeFavicon": {
+              "type": "boolean",
+              "default": false,
+              "description": "Include sites favicon if available."
             }
           },
           "default": {},
@@ -73,6 +95,10 @@
         "title": {
           "type": "string",
           "description": "The title of the page."
+        },
+        "favicon": {
+          "type": "string",
+          "description": "Data URL for the favicon, if available."
         }
       },
       "required": [

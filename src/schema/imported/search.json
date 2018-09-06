@@ -1,0 +1,89 @@
+{
+  "id": "search",
+  "description": "Use browser.search to interact with search engines.",
+  "permissions": [
+    "search"
+  ],
+  "functions": [
+    {
+      "name": "get",
+      "type": "function",
+      "description": "Gets a list of search engines.",
+      "async": true,
+      "parameters": []
+    },
+    {
+      "name": "search",
+      "type": "function",
+      "requireUserInput": true,
+      "description": "Perform a search.",
+      "async": true,
+      "parameters": [
+        {
+          "type": "object",
+          "name": "searchProperties",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Terms to search for."
+            },
+            "engine": {
+              "type": "string",
+              "description": "Search engine to use. Uses the default if not specified."
+            },
+            "tabId": {
+              "type": "integer",
+              "description": "The ID of the tab for the search results. If not specified, a new tab is created."
+            }
+          },
+          "required": [
+            "query"
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "OptionalPermission": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "search"
+          ]
+        }
+      ]
+    }
+  },
+  "refs": {
+    "search#/definitions/OptionalPermission": {
+      "namespace": "manifest",
+      "type": "OptionalPermission"
+    }
+  },
+  "types": {
+    "SearchEngine": {
+      "type": "object",
+      "description": "An object encapsulating a search engine",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "isDefault": {
+          "type": "boolean"
+        },
+        "alias": {
+          "type": "string"
+        },
+        "favIconUrl": {
+          "type": "string",
+          "format": "url"
+        }
+      },
+      "required": [
+        "name",
+        "isDefault"
+      ]
+    }
+  }
+}

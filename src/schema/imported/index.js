@@ -27,7 +27,6 @@ import identity from './identity.json';
 import idle from './idle.json';
 import management from './management.json';
 import menus from './menus.json';
-import menusInternal from './menus_internal.json';
 import native_manifest from './native_manifest.json';
 import notifications from './notifications.json';
 import omnibox from './omnibox.json';
@@ -37,10 +36,12 @@ import pkcs11 from './pkcs11.json';
 import privacy from './privacy.json';
 import proxy from './proxy.json';
 import runtime from './runtime.json';
+import search from './search.json';
 import sessions from './sessions.json';
 import sidebarAction from './sidebar_action.json';
 import storage from './storage.json';
 import tabs from './tabs.json';
+import telemetry from './telemetry.json';
 import test from './test.json';
 import theme from './theme.json';
 import topSites from './top_sites.json';
@@ -78,7 +79,6 @@ export default [
   idle,
   management,
   menus,
-  menusInternal,
   native_manifest,
   notifications,
   omnibox,
@@ -88,10 +88,12 @@ export default [
   privacy,
   proxy,
   runtime,
+  search,
   sessions,
   sidebarAction,
   storage,
   tabs,
+  telemetry,
   test,
   theme,
   topSites,

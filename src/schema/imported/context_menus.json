@@ -13,9 +13,9 @@
   },
   "functions": [
     {
-      "name": "create",
+      "name": "getTargetElement",
       "type": "function",
-      "description": "Creates a new context menu item. Note that if an error occurs during creation, you may not find out until the creation callback fires (the details will be in $(ref:runtime.lastError)).",
+      "description": "Retrieve the element that was associated with a recent contextmenu event.",
       "returns": {
         "anyOf": [
           {
@@ -25,12 +25,16 @@
             "type": "string"
           }
         ],
-        "description": "The ID of the newly created item."
+        "description": "The ID of the newly created item.",
+        "type": "object",
+        "optional": true,
+        "isInstanceOf": "Element",
+        "additionalProperties": {}
       },
       "parameters": [
         {
-          "type": "object",
-          "name": "createProperties",
+          "type": "integer",
+          "name": "targetElementId",
           "properties": {
             "type": {
               "allOf": [
@@ -70,6 +74,10 @@
               "minItems": 1,
               "description": "List of contexts this menu item will appear in. Defaults to ['page'] if not specified."
             },
+            "visible": {
+              "type": "boolean",
+              "description": "Whether the item is visible in the menu."
+            },
             "onclick": {
               "type": "function",
               "description": "A function that will be called back when the menu item is clicked. Event pages cannot use this; instead, they should register a listener for $(ref:contextMenus.onClicked).",
@@ -77,7 +85,7 @@
                 {
                   "allOf": [
                     {
-                      "$ref": "contextMenusInternal#/types/OnClickData"
+                      "$ref": "#/types/OnClickData"
                     },
                     {
                       "name": "info",
@@ -131,7 +139,8 @@
               "type": "string",
               "description": "Specifies a command to issue for the context click.  Currently supports internal commands _execute_page_action, _execute_browser_action and _execute_sidebar_action."
             }
-          }
+          },
+          "description": "The identifier of the clicked element, available as info.targetElementId in the menus.onShown, onClicked or onclick event."
         },
         {
           "type": "function",
@@ -140,6 +149,10 @@
           "description": "Called when the item has been created in the browser. If there were any problems creating the item, details will be available in $(ref:runtime.lastError).",
           "parameters": []
         }
+      ],
+      "allowedContexts": [
+        "content",
+        "devtools"
       ]
     },
     {
@@ -181,13 +194,17 @@
               },
               "minItems": 1
             },
+            "visible": {
+              "type": "boolean",
+              "description": "Whether the item is visible in the menu."
+            },
             "onclick": {
               "type": "function",
               "parameters": [
                 {
                   "allOf": [
                     {
-                      "$ref": "menusInternal#/types/OnClickData"
+                      "$ref": "#/types/OnClickData"
                     },
                     {
                       "name": "info"
@@ -333,7 +350,7 @@
         {
           "name": "info",
           "type": "object",
-          "description": "Information about the context of the menu action and the created menu items. For more information about each property, see contextMenusInternal.OnClickData. The following properties are only set if the extension has host permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl, selectionText.",
+          "description": "Information about the context of the menu action and the created menu items. For more information about each property, see OnClickData. The following properties are only set if the extension has host permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl, selectionText.",
           "properties": {
             "menuIds": {
               "description": "A list of IDs of the menu items that were shown.",
@@ -379,6 +396,9 @@
             },
             "selectionText": {
               "type": "string"
+            },
+            "targetElementId": {
+              "type": "integer"
             }
           },
           "required": [
@@ -541,6 +561,10 @@
             ]
           },
           "description": "An array of keyboard modifiers that were held while the menu item was clicked."
+        },
+        "targetElementId": {
+          "type": "integer",
+          "description": "An identifier of the clicked element, if any. Use menus.getTargetElement in the page to find the corresponding element."
         }
       },
       "required": [
@@ -550,5 +574,9 @@
         "modifiers"
       ]
     }
-  }
+  },
+  "allowedContexts": [
+    "content",
+    "devtools"
+  ]
 }

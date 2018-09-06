@@ -230,6 +230,10 @@
                       "preprocess": "localize"
                     }
                   }
+                },
+                "hidden": {
+                  "type": "boolean",
+                  "default": false
                 }
               }
             }
@@ -264,6 +268,9 @@
         },
         {
           "$ref": "sidebarAction#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "theme#/definitions/WebExtensionManifest"
         },
         {
           "$ref": "url_overrides#/definitions/WebExtensionManifest"
@@ -452,6 +459,9 @@
           "$ref": "history#/definitions/OptionalPermission"
         },
         {
+          "$ref": "search#/definitions/OptionalPermission"
+        },
+        {
           "$ref": "tabs#/definitions/OptionalPermission"
         },
         {
@@ -530,6 +540,9 @@
         },
         {
           "$ref": "sessions#/definitions/Permission"
+        },
+        {
+          "$ref": "telemetry#/definitions/Permission"
         },
         {
           "$ref": "theme#/definitions/Permission"
