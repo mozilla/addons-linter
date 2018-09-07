@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-26 03:34+0000\n"
+"PO-Revision-Date: 2018-09-07 12:25+0000\n"
 "Last-Translator: alamanda <dian.ina@gmail.com>\n"
 "Language-Team: none\n"
 "Language: id\n"
@@ -108,7 +108,7 @@ msgstr ""
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr "penggunaan document.write sangat tidak dianjurkan."
+msgstr "Penggunaan document.write sangat tidak dianjurkan."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
