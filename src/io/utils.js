@@ -15,7 +15,7 @@ export function walkPromise(curPath, { shouldIncludePath = () => true } = {}) {
   // so all file paths (the result keys) can
   // be relative to the starting point.
   const basePath = curPath;
-  return (async function walk(_curPath) {
+  const walk = async function walk(_curPath) {
     const stat = await lstatPromise(_curPath);
     const relPath = upath.toUnix(path.relative(basePath, _curPath));
 
@@ -37,5 +37,6 @@ export function walkPromise(curPath, { shouldIncludePath = () => true } = {}) {
       );
     }
     return result;
-  })(curPath);
+  };
+  return walk(curPath);
 }
