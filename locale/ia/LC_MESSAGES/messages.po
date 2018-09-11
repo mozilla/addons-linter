@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-09-11 06:30+0000\n"
+"PO-Revision-Date: 2018-09-11 06:46+0000\n"
 "Last-Translator: Melo46 <melo@carmu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -116,11 +116,11 @@ msgstr "Bibliotheca JS de tertie partes blocate"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Bibliotheca JS de tertie partes non consiliate"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "Tu JSON contine commentos in bloco."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
@@ -148,7 +148,7 @@ msgstr "File troppo grande pro ser analysate."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "File occulte signalate"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
@@ -176,11 +176,11 @@ msgstr "Le pacchetto contine entratas duplicate"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "Le additivos de Firefox pro facer fluer excavatores de moneta non es consentite."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr "Nomine de catena reservate pro message predefinite"
+msgstr "Nomine de catena reservate a un message predefinite"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
