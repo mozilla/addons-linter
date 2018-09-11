@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-09-11 07:27+0000\n"
+"PO-Revision-Date: 2018-09-11 12:21+0000\n"
 "Last-Translator: Melo46 <melo@carmu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -272,11 +272,11 @@ msgstr "Le file icone expectate al \"%(path)s\" es corrupte"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "Le \"default_locale\" manca de localisationes."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "Le \"default_locale\" manca, ma \"_locales\" existe."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
@@ -292,11 +292,11 @@ msgstr "Icones debe ser uno de JPG/JPEG, WebP, GIF, PNG o SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
-msgstr ""
+msgstr "Plica del linguas vacue"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "File messages.json mancante in \"%(path)s\""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
@@ -304,19 +304,19 @@ msgstr "Permisso incognite."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "Vide https://mzl.la/1R1n1t0 (MDN Docs) pro altere informationes."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "\"manifest_version\" in le file manifest.json non es un valor valide"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "Vide https://mzl.la/20PenXl (MDN Docs) pro altere informationes."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "Un content_security_policy personalisate require un altere revision."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
@@ -324,7 +324,7 @@ msgstr "Le proprietate del \"nomine\" debe ser un catena."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "Vider http://mzl.la/1STmr48 (MDN Docs) pro altere informationes."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
@@ -332,11 +332,11 @@ msgstr "Le proprietate del \"version\" debe ser un catena."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "Vider http://mzl.la/1kXIADa (MDN Docs) pro altere informationes."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "Le proprietate \"version\" usa un formato Firefox-specific."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
@@ -348,4 +348,4 @@ msgstr "Le campo es obligatori."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "Le proprietate \"update_url\" non es usate per Firefox."
