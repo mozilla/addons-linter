@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-10 15:32+0000\n"
+"PO-Revision-Date: 2018-09-13 23:53+0000\n"
 "Last-Translator: Enol <enolp@softastur.org>\n"
 "Language-Team: none\n"
 "Language: ast\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: src/linter.js:117
 msgid "Validation Summary:"
-msgstr "Sumariu de validación:"
+msgstr "Sumariu de la validación:"
 
 #: src/linter.js:134
 msgid "Code"
@@ -203,8 +203,7 @@ msgid "Translation string is missing the message property"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
@@ -233,17 +232,14 @@ msgstr ""
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
-msgstr ""
+msgstr "El campu nun ye válidu."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
@@ -256,7 +252,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr ""
+msgstr "Los iconos han ser cuadraos."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
@@ -324,7 +320,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "La propiedá «name» ha ser una cadena."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -332,7 +328,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "La propiedá «version» ha ser una cadena."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
@@ -348,7 +344,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
-msgstr ""
+msgstr "Ríquese'l campu."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
