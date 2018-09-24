@@ -223,6 +223,10 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.dictionaries) {
+      if (!this.getAddonId()) {
+        this.collector.addError(messages.MANIFEST_DICT_MISSING_ID);
+        this.isValid = false;
+      }
       const numberOfDictionaries = Object.keys(this.parsedJSON.dictionaries)
         .length;
       if (numberOfDictionaries < 1) {

@@ -237,6 +237,16 @@ export const MANIFEST_EMPTY_DICTS = {
   file: MANIFEST_JSON,
 };
 
+export const MANIFEST_DICT_MISSING_ID = {
+  code: 'MANIFEST_DICT_MISSING_ID',
+  legacyCode: null,
+  message: i18n._('The manifest contains a dictionary but no id property.'),
+  description: i18n._(
+    'A dictionary was found in the manifest, but there was no id set.'
+  ),
+  file: MANIFEST_JSON,
+};
+
 // https://github.com/mozilla/addons-linter/issues/1650
 // Potentially temporary
 export const MANIFEST_INVALID_CONTENT = {
