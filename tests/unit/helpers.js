@@ -114,6 +114,11 @@ export function validDictionaryManifestJSON(extra) {
         dictionaries: {
           fr: '/path/to/fr.dic',
         },
+        applications: {
+          gecko: {
+            id: '@my-dictionary',
+          }
+        },
       },
       extra
     )

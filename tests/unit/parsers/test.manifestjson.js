@@ -403,6 +403,7 @@ describe('ManifestJSONParser', () => {
       const json = validDictionaryManifestJSON({
         applications: {
           gecko: {
+            id: '@my-dictionary',
             strict_max_version: '58.0',
           },
         },
@@ -1310,6 +1311,74 @@ describe('ManifestJSONParser', () => {
           'A dictionary file defined in the manifest could not be found.',
         description:
           'Dictionary file defined in the manifest could not be found at "path/to/fr.aff".',
+      });
+    });
+
+    it('throws error on dictionary with missing applications', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = JSON.stringify({
+        manifest_version: 2,
+        name: 'My French Dictionary',
+        version: '57.0a1',
+        dictionaries: {
+          fr: '/path/to/fr.dic',
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        linter.collector,
+        {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_DICT_MISSING_ID.code,
+        message: 'The manifest contains a dictionary but no id property.',
+        description:
+          'A dictionary was found in the manifest, but there was no id set.',
+      });
+    });
+
+    it('throws error on dictionary with missing applications->gecko', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON({
+        applications: {},
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        linter.collector,
+        {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_DICT_MISSING_ID.code,
+        message: 'The manifest contains a dictionary but no id property.',
+        description:
+          'A dictionary was found in the manifest, but there was no id set.',
+      });
+    });
+
+    it('throws error on dictionary with missing applications->gecko->id', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON({
+        applications: {gecko: {}},
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        linter.collector,
+        {
+          io: { files: {} },
+        }
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_DICT_MISSING_ID.code,
+        message: 'The manifest contains a dictionary but no id property.',
+        description:
+          'A dictionary was found in the manifest, but there was no id set.',
       });
     });
 
