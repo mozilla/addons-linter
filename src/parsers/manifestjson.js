@@ -223,9 +223,7 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.dictionaries) {
-      const {applications: {gecko: {
-        id: addonId = null} = {}} = {}} = this.parsedJSON;
-      if (!addonId) {
+      if (!this.getAddonId()) {
         this.collector.addError(messages.MANIFEST_DICT_MISSING_ID);
         this.isValid = false;
       }
