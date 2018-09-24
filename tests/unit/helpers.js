@@ -117,7 +117,7 @@ export function validDictionaryManifestJSON(extra) {
         applications: {
           gecko: {
             id: '@my-dictionary',
-          }
+          },
         },
       },
       extra

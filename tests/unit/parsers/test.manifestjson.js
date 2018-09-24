@@ -1364,7 +1364,7 @@ describe('ManifestJSONParser', () => {
     it('throws error on dictionary with missing applications->gecko->id', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validDictionaryManifestJSON({
-        applications: {gecko: {}},
+        applications: { gecko: {} },
       });
       const manifestJSONParser = new ManifestJSONParser(
         json,

@@ -245,7 +245,7 @@ export const MANIFEST_DICT_MISSING_ID = {
     'A dictionary was found in the manifest, but there was no id set.'
   ),
   file: MANIFEST_JSON,
-}
+};
 
 // https://github.com/mozilla/addons-linter/issues/1650
 // Potentially temporary
