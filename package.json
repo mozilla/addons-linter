@@ -63,7 +63,7 @@
     "os-locale": "3.0.1",
     "pino": "5.5.0",
     "po2json": "0.4.5",
-    "postcss": "6.0.23",
+    "postcss": "7.0.4",
     "probe-image-size": "4.0.0",
     "relaxed-json": "1.0.1",
     "semver": "5.5.1",
@@ -79,10 +79,10 @@
     "yauzl": "2.9.2"
   },
   "devDependencies": {
-    "@babel/cli": "7.1.0",
-    "@babel/core": "7.1.0",
+    "@babel/cli": "7.1.2",
+    "@babel/core": "7.1.2",
     "@babel/plugin-proposal-class-properties": "7.1.0",
-    "@babel/plugin-proposal-decorators": "7.1.0",
+    "@babel/plugin-proposal-decorators": "7.1.2",
     "@babel/plugin-proposal-export-namespace-from": "7.0.0",
     "@babel/plugin-proposal-function-sent": "7.1.0",
     "@babel/plugin-proposal-numeric-separator": "7.0.0",
@@ -90,7 +90,7 @@
     "@babel/plugin-transform-runtime": "7.1.0",
     "@babel/preset-env": "7.1.0",
     "@babel/register": "7.0.0",
-    "@babel/runtime": "7.0.0",
+    "@babel/runtime": "7.1.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.0",
     "babel-gettext-extractor": "git+https://github.com/muffinresearch/babel-gettext-extractor.git#0d39d3882bc846e7dcb6c9ff6463896c96920ce6",
@@ -104,7 +104,7 @@
     "eslint-config-prettier": "3.1.0",
     "eslint-plugin-amo": "^1.7.0",
     "eslint-plugin-async-await": "0.0.0",
-    "eslint-plugin-jest": "21.22.1",
+    "eslint-plugin-jest": "21.24.0",
     "eslint-plugin-prettier": "3.0.0",
     "eslint-plugin-promise": "4.0.1",
     "gfm.css": "1.1.2",
@@ -128,8 +128,8 @@
     "tar": "4.4.6",
     "tar-fs": "^1.16.0",
     "tmp-promise": "^1.0.4",
-    "webpack": "4.20.1",
-    "webpack-cli": "3.1.1"
+    "webpack": "4.20.2",
+    "webpack-cli": "3.1.2"
   },
   "optionalDependencies": {
     "fsevents": "1.2.4"
