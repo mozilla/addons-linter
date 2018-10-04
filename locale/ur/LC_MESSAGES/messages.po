@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-10-04 13:11+0000\n"
+"PO-Revision-Date: 2018-10-04 13:13+0000\n"
 "Last-Translator: Tanzeel Khan <tanzeelkhan94@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ur\n"
@@ -196,7 +196,7 @@ msgstr "پلیس ہولڈر کا نآم غلط حروف پر مشتمل ہے"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr "پلیس ہولڈر کو مواد کی پراپرٹی غائب ہے"
+msgstr "پلیس ہولڈر میں مواد کی خصوصیات غائب ہے"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
