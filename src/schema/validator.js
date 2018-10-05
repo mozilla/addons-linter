@@ -14,6 +14,7 @@ import {
   isSecureUrl,
   isUnresolvedRelativeUrl,
   isValidVersionString,
+  manifestShortcutKey,
 } from './formats';
 import schemas from './imported';
 
@@ -34,6 +35,7 @@ validator.addFormat('versionString', isValidVersionString);
 validator.addFormat('deprecated', () => false);
 validator.addFormat('contentSecurityPolicy', () => true);
 validator.addFormat('ignore', () => true);
+validator.addFormat('manifestShortcutKey', manifestShortcutKey);
 
 // URL formats. The format names don't mean what you'd think, see bug 1354342.
 //

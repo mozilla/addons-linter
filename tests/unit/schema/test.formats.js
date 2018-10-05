@@ -5,6 +5,7 @@ import {
   isSecureUrl,
   isStrictRelativeUrl,
   isValidVersionString,
+  manifestShortcutKey,
 } from 'schema/formats';
 
 describe('formats', () => {
@@ -53,6 +54,26 @@ describe('formats', () => {
       it(`should find ${invalidVersionString} to be invalid`, () => {
         expect(isValidVersionString(invalidVersionString)).toEqual(false);
       });
+    });
+  });
+
+  describe('manifestShortcutKey', () => {
+    it('Accept supported formats', () => {
+      // Only a small variation to see if it works as expected
+      expect(manifestShortcutKey('Alt+Shift+U')).toEqual(true);
+      expect(manifestShortcutKey('Ctrl+Shift+U')).toEqual(true);
+
+      // Already taken shortcuts are allowed to be defined but won't work,
+      // that's a problem for Firefox though, not for us
+      expect(manifestShortcutKey('Ctrl+P')).toEqual(true);
+    });
+
+    it('Warn on invalid formats', () => {
+      // Only a small variation to see if it works as expected
+      expect(manifestShortcutKey('Win+F')).toEqual(false);
+
+      // It's MediaPlayPause
+      expect(manifestShortcutKey('MediaStart')).toEqual(false);
     });
   });
 
