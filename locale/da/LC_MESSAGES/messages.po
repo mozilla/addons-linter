@@ -1,16 +1,18 @@
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-01-19 00:33+0000\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2018-09-19 20:39+0000\n"
+"Last-Translator: Jakob Kappel <jakobkpetersen@gmail.com>\n"
 "Language-Team: none\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pontoon\n"
 
 #: src/linter.js:117
 msgid "Validation Summary:"
@@ -18,27 +20,27 @@ msgstr ""
 
 #: src/linter.js:134
 msgid "Code"
-msgstr ""
+msgstr "Kode"
 
 #: src/linter.js:140
 msgid "Message"
-msgstr ""
+msgstr "Meddelelse"
 
 #: src/linter.js:146
 msgid "Description"
-msgstr ""
+msgstr "Beskrivelse"
 
 #: src/linter.js:152
 msgid "File"
-msgstr ""
+msgstr "Fil"
 
 #: src/linter.js:158
 msgid "Line"
-msgstr ""
+msgstr "Linje"
 
 #: src/linter.js:164
 msgid "Column"
-msgstr ""
+msgstr "Kolonne"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
@@ -70,7 +72,7 @@ msgstr ""
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} er ikke understøttet"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
@@ -201,8 +203,7 @@ msgid "Translation string is missing the message property"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
@@ -231,17 +232,14 @@ msgstr ""
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
-msgstr ""
+msgstr "Feltet er ugyldigt."
 
 #: src/messages/manifestjson.js:161
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:162
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:173
@@ -302,7 +300,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
-msgstr ""
+msgstr "Ukendt tilladelse."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -346,7 +344,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
-msgstr ""
+msgstr "Dette felt er påkrævet."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."

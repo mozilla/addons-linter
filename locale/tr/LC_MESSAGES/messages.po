@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-06-22 11:33+0000\n"
+"PO-Revision-Date: 2018-10-04 11:45+0000\n"
 "Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -60,15 +60,15 @@ msgstr "FTL dosyanız işlenemedi."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Eklenti Politikası gereğince uzak betikler kabul edilmemektedir."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Satıriçi betikler varsayılan olarak engellenmiştir"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
-msgstr ""
+msgstr "Bilindik JS kütüphanesi algılandı"
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
@@ -76,7 +76,7 @@ msgstr "{{api}} desteklenmiyor"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "Bu API Firefox'ta kullanılamamaktadır."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
@@ -92,11 +92,11 @@ msgstr "İçerik betik dosyası bulunamadı"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "İçerik betiği adı boş bırakılmamalıdır."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "İçerik betiği adı boş bırakılmamalıdır"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
@@ -108,15 +108,15 @@ msgstr ""
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "document.write kullanımı kesinlikle önerilmez."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "Yasaklı üçüncü taraf JS kütüphanesi"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Önerilmeyen üçüncü taraf JS kütüphanesi"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -144,19 +144,19 @@ msgstr "manifest.json dosyası bulunamadı"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr ""
+msgstr "Dosya ayrıştırma için çok büyük."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "Gizli dosya işaretlendi"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "İşaretli dosya adı bulundu"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "İşaretli dosya uzantıları bulundu"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
@@ -172,7 +172,7 @@ msgstr "Mozilla kullanım koşullarının ihlali."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
-msgstr ""
+msgstr "Paket yinelenen girdiler içermektedir"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -272,11 +272,11 @@ msgstr "\"%(path)s\" yolundaki beklenilen simge dosyası bozuk."
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "\"default_locale\" değerinde yerelleştirmeler eksik."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "\"default_locale\" eksik fakat \"_locales\" mevcut."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
@@ -304,7 +304,7 @@ msgstr "Bilinmeyen izin."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "Daha fazla bilgi için https://mzl.la/1R1n1t0 (MDN Docs) sayfasına bakın."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -312,11 +312,11 @@ msgstr "manifest.json dosyasındaki \"manifest_version\" geçerli bir değer de�
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "Daha fazla bilgi için https://mzl.la/20PenXl (MDN Docs) sayfasına bakın."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "Özel bir content_security_policy ek inceleme gerektirir."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
@@ -324,7 +324,7 @@ msgstr "\"name\" özelliği bir string olmalıdır."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "Daha fazla bilgi için http://mzl.la/1STmr48 (MDN Docs) sayfasına bakın."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."

@@ -120,3 +120,4 @@ Rules are sorted by severity.
 | `MANIFEST_DICT_NOT_FOUND`   | error    | A dictionary file defined in the manifest could not be found         |
 | `MANIFEST_MULTIPLE_DICTS`   | error    | Multiple dictionaries found                                          |
 | `MANIFEST_EMPTY_DICTS`      | error    | Empty `dictionaries` object                                          |
+| `MANIFEST_DICT_MISSING_ID`  | error    | Missing `applications.gecko.id` property for a dictionary            |
