@@ -7,23 +7,20 @@
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import merge from 'deepmerge';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import isMergeableObject from 'is-mergeable-object';
 
 const emptyTarget = (value) => (Array.isArray(value) ? [] : {});
 const clone = (value, options) => merge(emptyTarget(value), value, options);
 
-function oldArrayMerge(target, source, optionsArgument) {
+function oldArrayMerge(target, source, options) {
   const destination = target.slice();
 
   source.forEach((e, i) => {
     if (typeof destination[i] === 'undefined') {
-      const cloneRequested =
-        !optionsArgument || optionsArgument.clone !== false;
-      const shouldClone = cloneRequested && isMergeableObject(e);
-      destination[i] = shouldClone ? clone(e, optionsArgument) : e;
-    } else if (isMergeableObject(e)) {
-      destination[i] = merge(target[i], e, optionsArgument);
+      const cloneRequested = options.clone !== false;
+      const shouldClone = cloneRequested && options.isMergeableObject(e);
+      destination[i] = shouldClone ? clone(e, options) : e;
+    } else if (options.isMergeableObject(e)) {
+      destination[i] = merge(target[i], e, options);
     } else if (target.indexOf(e) === -1) {
       destination.push(e);
     }
