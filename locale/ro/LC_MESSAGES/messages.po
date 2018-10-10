@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-10-08 15:47+0000\n"
-"Last-Translator: robbp <robbpaun@gmail.com>\n"
+"PO-Revision-Date: 2018-10-09 18:54+0000\n"
+"Last-Translator: Henrietta Maior <hmaior@mozilla.com>\n"
 "Language-Team: none\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: src/linter.js:134
 msgid "Code"
-msgstr ""
+msgstr "Cod"
 
 #: src/linter.js:140
 msgid "Message"
@@ -100,7 +100,7 @@ msgstr ""
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "Eroare de sintaxă JavaScript"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
@@ -344,7 +344,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
-msgstr ""
+msgstr "Câmpul este necesar."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
