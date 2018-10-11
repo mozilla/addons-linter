@@ -216,7 +216,7 @@ ignore:
   'npm:gettext-parser:20180220':
     - po2json > gettext-parser:
         reason: None given
-        expires: '2018-03-25T13:24:50.215Z'
+        expires: '2018-11-10T07:02:08.706Z'
   'npm:hoek:20180212':
     - webpack > watchpack > chokidar > fsevents > node-pre-gyp > hawk > hoek:
         reason: None given
@@ -366,9 +366,15 @@ ignore:
     - shelljs:
         reason: None given
         expires: '2018-03-25T13:24:50.215Z'
+      eslint-plugin-no-unsafe-innerhtml > eslint > shelljs:
+        reason: None given
+        expires: '2018-11-10T07:02:08.706Z'
     - eslint-plugin-no-unsafe-innerhtml > eslint > shelljs:
         reason: None given
         expires: '2018-03-25T13:24:50.215Z'
+      shelljs:
+        reason: None given
+        expires: '2018-11-10T07:02:08.706Z'
   'npm:content-type-parser:20170905':
     - jest > jest-cli > jest-environment-jsdom > jsdom > content-type-parser:
         reason: None given
@@ -422,6 +428,10 @@ ignore:
     - markdown-it-anchor > string:
         reason: None given
         expires: '2018-03-28T19:09:02.498Z'
+  'npm:eslint:20180222':
+    - eslint-plugin-no-unsafe-innerhtml > eslint:
+        reason: None given
+        expires: '2018-11-10T07:02:08.706Z'
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   'npm:qs:20140806-1':
