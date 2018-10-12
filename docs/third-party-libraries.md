@@ -10,4 +10,4 @@ We allow the latest 1.x version at submission time; previous versions are not ac
 
 ### jQuery < 3.0
 
-jQuery versions older than 3.0 are no longer allowed in extensinos. These versions are not supported by the jQuery team and may contain security vulnerabilities.
+jQuery versions older than 3.0 are no longer allowed in extensions. These versions are not supported by the jQuery team and may contain security vulnerabilities.
