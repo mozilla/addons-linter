@@ -12,9 +12,9 @@
   },
   "functions": [
     {
-      "name": "getTargetElement",
+      "name": "create",
       "type": "function",
-      "description": "Retrieve the element that was associated with a recent contextmenu event.",
+      "description": "Creates a new context menu item. Note that if an error occurs during creation, you may not find out until the creation callback fires (the details will be in $(ref:runtime.lastError)).",
       "returns": {
         "anyOf": [
           {
@@ -24,16 +24,12 @@
             "type": "string"
           }
         ],
-        "description": "The ID of the newly created item.",
-        "type": "object",
-        "optional": true,
-        "isInstanceOf": "Element",
-        "additionalProperties": {}
+        "description": "The ID of the newly created item."
       },
       "parameters": [
         {
-          "type": "integer",
-          "name": "targetElementId",
+          "type": "object",
+          "name": "createProperties",
           "properties": {
             "type": {
               "allOf": [
@@ -138,8 +134,7 @@
               "type": "string",
               "description": "Specifies a command to issue for the context click.  Currently supports internal commands _execute_page_action, _execute_browser_action and _execute_sidebar_action."
             }
-          },
-          "description": "The identifier of the clicked element, available as info.targetElementId in the menus.onShown, onClicked or onclick event."
+          }
         },
         {
           "type": "function",
@@ -148,10 +143,6 @@
           "description": "Called when the item has been created in the browser. If there were any problems creating the item, details will be available in $(ref:runtime.lastError).",
           "parameters": []
         }
-      ],
-      "allowedContexts": [
-        "content",
-        "devtools"
       ]
     },
     {
@@ -308,6 +299,28 @@
       "description": "Updates the extension items in the shown menu, including changes that have been made since the menu was shown. Has no effect if the menu is hidden. Rebuilding a shown menu is an expensive operation, only invoke this method when necessary.",
       "async": true,
       "parameters": []
+    },
+    {
+      "name": "getTargetElement",
+      "type": "function",
+      "allowedContexts": [
+        "content",
+        "devtools"
+      ],
+      "description": "Retrieve the element that was associated with a recent contextmenu event.",
+      "parameters": [
+        {
+          "type": "integer",
+          "description": "The identifier of the clicked element, available as info.targetElementId in the menus.onShown, onClicked or onclick event.",
+          "name": "targetElementId"
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "optional": true,
+        "isInstanceOf": "Element",
+        "additionalProperties": {}
+      }
     }
   ],
   "events": [
