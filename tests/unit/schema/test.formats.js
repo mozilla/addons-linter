@@ -72,8 +72,18 @@ describe('formats', () => {
       // Only a small variation to see if it works as expected
       expect(manifestShortcutKey('Win+F')).toEqual(false);
 
-      // It's MediaPlayPause
-      expect(manifestShortcutKey('MediaStart')).toEqual(false);
+      // It's 'Period'
+      expect(manifestShortcutKey('Periad')).toEqual(false);
+    });
+
+    it('Accepts accept media keys', () => {
+      expect(manifestShortcutKey('MediaNextTrack')).toEqual(true);
+      expect(manifestShortcutKey('MediaPlayPause')).toEqual(true);
+      expect(manifestShortcutKey('MediaPrevTrack')).toEqual(true);
+      expect(manifestShortcutKey('MediaStop')).toEqual(true);
+
+      // But they can't be combined with other keys
+      expect(manifestShortcutKey('MediaStop+F7')).toEqual(false);
     });
 
     it('Doesnt accept missing modifier', () => {
