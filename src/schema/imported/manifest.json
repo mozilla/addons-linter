@@ -96,7 +96,8 @@
                     "^[1-9]\\d*$": {
                       "type": "string"
                     }
-                  }
+                  },
+                  "additionalProperties": false
                 },
                 "incognito": {
                   "type": "string",
@@ -119,7 +120,8 @@
                       },
                       "required": [
                         "page"
-                      ]
+                      ],
+                      "additionalProperties": false
                     },
                     {
                       "type": "object",
@@ -186,8 +188,15 @@
                       {
                         "onError": "warn"
                       }
+                    ],
+                    "anyOf": [
+                      {},
+                      {
+                        "format": "deprecated"
+                      }
                     ]
-                  }
+                  },
+                  "uniqueItems": true
                 },
                 "optional_permissions": {
                   "type": "array",
@@ -265,35 +274,6 @@
         },
         {
           "$ref": "url_overrides#/definitions/WebExtensionManifest"
-        },
-        {
-          "$merge": {
-            "with": {
-              "properties": {
-                "background": {
-                  "anyOf": [
-                    {
-                      "additionalProperties": false
-                    }
-                  ]
-                },
-                "icons": {
-                  "additionalProperties": false
-                },
-                "permissions": {
-                  "items": {
-                    "anyOf": [
-                      {},
-                      {
-                        "format": "deprecated"
-                      }
-                    ]
-                  },
-                  "uniqueItems": true
-                }
-              }
-            }
-          }
         }
       ]
     },

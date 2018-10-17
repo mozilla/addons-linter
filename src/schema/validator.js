@@ -1,7 +1,7 @@
 import ajv from 'ajv';
 import ajvMergePatch from 'ajv-merge-patch';
 
-import merge from 'schema/deepmerge';
+import deepmergeWithComplexArrays from 'schema/deepmerge';
 import schemaObject from 'schema/imported/manifest';
 import themeSchemaObject from 'schema/imported/theme';
 import messagesSchemaObject from 'schema/messages';
@@ -82,9 +82,9 @@ export const validateAddon = (...args) => {
 // structure and can use object-destructuring at the root level
 // because we only overwrite `id` and `$ref` in root of the resulting object.
 const _validateStaticTheme = validator.compile({
-  ...merge(
+  ...deepmergeWithComplexArrays(
     schemaObject,
-    merge(themeSchemaObject, {
+    deepmergeWithComplexArrays(themeSchemaObject, {
       types: {
         ThemeManifest: {
           $merge: {
@@ -111,7 +111,7 @@ export const validateStaticTheme = (...args) => {
 // just need to reference WebExtensionLangpackManifest and merge it with the
 // object that has additionalProperties: false.
 const _validateLangPack = validator.compile({
-  ...merge(schemaObject, {
+  ...deepmergeWithComplexArrays(schemaObject, {
     types: {
       WebExtensionLangpackManifest: {
         $merge: {
@@ -135,7 +135,7 @@ export const validateLangPack = (...args) => {
 // Like with langpacks, we don't want additional properties in dictionaries,
 // and there is no separate schema file.
 const _validateDictionary = validator.compile({
-  ...merge(schemaObject, {
+  ...deepmergeWithComplexArrays(schemaObject, {
     types: {
       WebExtensionDictionaryManifest: {
         $merge: {

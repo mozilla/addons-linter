@@ -1,59 +1,44 @@
-import isMergeableObject from 'is-mergeable-object';
+/**
+ * deepmerge 2.0 changed the way the array merge worked. This is the suggested
+ * solution from their README for how to use the old version.
+ *
+ * https://github.com/KyleAMathews/deepmerge/blob/3ab89f2d2c938fc2e045c4ba822da0ffb81e4891/readme.md#arraymerge
+ */
 
-const empty = (val) => {
-  return Array.isArray(val) ? [] : {};
-};
+// eslint-disable-next-line import/no-extraneous-dependencies
+import merge from 'deepmerge';
 
-const isObject = (obj) => obj && typeof obj === 'object';
+const emptyTarget = (value) => (Array.isArray(value) ? [] : {});
+const clone = (value, options) => merge(emptyTarget(value), value, options);
 
-const clone = (value) => {
-  return isMergeableObject(value) ? merge(empty(value), value) : value;
-};
-
-const mergeArray = (target, source) => {
+function mergeComplexArrays(target, source, options) {
   const destination = target.slice();
+
   source.forEach((e, i) => {
     if (typeof destination[i] === 'undefined') {
-      destination[i] = clone(e);
-    } else if (isObject(e)) {
-      destination[i] = merge(target[i], e);
-    } else {
-      destination.push(clone(e));
+      const cloneRequested = options.clone !== false;
+      const shouldClone = cloneRequested && options.isMergeableObject(e);
+      destination[i] = shouldClone ? clone(e, options) : e;
+    } else if (options.isMergeableObject(e)) {
+      destination[i] = merge(target[i], e, options);
+    } else if (target.indexOf(e) === -1) {
+      destination.push(e);
     }
   });
+
   return destination;
-};
-
-function merge(...objects) {
-  return objects.reduce((target, source) => {
-    const retval = Object.assign({}, target);
-
-    Object.keys(source).forEach((key) => {
-      const targetValue = target[key];
-      const sourceValue = source[key];
-
-      if (Array.isArray(targetValue) && Array.isArray(sourceValue)) {
-        retval[key] = [...targetValue, ...sourceValue].filter(
-          (element, index, array) => array.indexOf(element) === index
-        );
-
-        // If I use `mergeArray` instead then it's working "as before"
-        // but merges a few keys incorrectly (see the output after the import)
-        //
-        // retval[key] = mergeArray(targetValue, sourceValue).filter(
-        //   (element, index, array) => array.indexOf(element) === index
-        // );
-      } else if (isObject(targetValue) && isObject(sourceValue)) {
-        retval[key] = merge(targetValue, sourceValue);
-      } else {
-        retval[key] = sourceValue;
-      }
-    });
-
-    return retval;
-  }, {});
 }
 
-export default (a, b) => {
-  return merge(a, b);
+function mergeSimpleArrays(target, source) {
+  return [...target, ...source].filter(
+    (element, index, array) => array.indexOf(element) === index
+  );
+}
+
+export const deepmerge = (a, b) => {
+  return merge(a, b, { arrayMerge: mergeSimpleArrays });
+};
+
+export const deepmergeWithComplexArrays = (a, b) => {
+  return merge(a, b, { arrayMerge: mergeComplexArrays });
 };
