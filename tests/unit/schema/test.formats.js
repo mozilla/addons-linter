@@ -94,7 +94,8 @@ describe('formats', () => {
     });
 
     it('Doesnt accept duplicate key', () => {
-      expect(manifestShortcutKey('Alt+Alt')).toEqual(false);
+      expect(manifestShortcutKey('Alt+Alt+F8')).toEqual(false);
+      expect(manifestShortcutKey('Ctrl+Shift+Alt+F8')).toEqual(false);
     });
 
     it('Doesnt accept shift with non-function key', () => {
