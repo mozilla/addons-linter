@@ -75,6 +75,19 @@ describe('formats', () => {
       // It's MediaPlayPause
       expect(manifestShortcutKey('MediaStart')).toEqual(false);
     });
+
+    it('Doesnt accept missing modifier', () => {
+      expect(manifestShortcutKey('Win')).toEqual(false);
+    });
+
+    it('Doesnt accept duplicate key', () => {
+      expect(manifestShortcutKey('Alt+Alt')).toEqual(false);
+    });
+
+    it('Doesnt accept shift with non-function key', () => {
+      expect(manifestShortcutKey('Shift+F8')).toEqual(true);
+      expect(manifestShortcutKey('Shift+Alt')).toEqual(false);
+    });
   });
 
   describe('URL formats', () => {
