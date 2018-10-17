@@ -100,7 +100,7 @@ describe('formats', () => {
 
     it('Doesnt accept shift with non-function key', () => {
       expect(manifestShortcutKey('Shift+F8')).toEqual(true);
-      expect(manifestShortcutKey('Shift+Alt')).toEqual(false);
+      expect(manifestShortcutKey('Shift+Home')).toEqual(false);
     });
   });
 
