@@ -1,6 +1,6 @@
 # Linter Rules
 
-This document is automatically published on [github pages](http://mozilla.github.io/addons-linter/). To update it edit `docs/rules.md` in the [github repo](https://github.com/mozilla/addons-linter).
+This document is automatically published on [GitHub pages](http://mozilla.github.io/addons-linter/). To update it edit `docs/rules.md` in the [GitHub repo](https://github.com/mozilla/addons-linter).
 
 Rules are sorted by severity.
 
@@ -9,75 +9,75 @@ Rules are sorted by severity.
 | Message code              | Severity | Description                                                      |
 | ------------------------- | -------- | ---------------------------------------------------------------- |
 | `KNOWN_LIBRARY`           | notice   | This is version of a JS library is known and generally accepted. |
-| `OPENDIALOG_NONLIT_URI`   | notice   | openDialog called with non-literal parameter                     |
-| `EVENT_LISTENER_FOURTH`   | notice   | `addEventListener` called with truthy fourth argument            |
-| `UNEXPECTED_GLOGAL_ARG`   | warning  | Unexpected global passed as an argument                          |
-| `NO_IMPLIED_EVAL`         | warning  | disallow the use of `eval()`-like methods                        |
-| `OPENDIALOG_REMOTE_URI`   | warning  | openDialog called with non-local URI                             |
+| `OPENDIALOG_NONLIT_URI`   | notice   | openDialog called with non-literal parameter.                    |
+| `EVENT_LISTENER_FOURTH`   | notice   | `addEventListener` called with truthy fourth argument.           |
+| `UNEXPECTED_GLOGAL_ARG`   | warning  | Unexpected global passed as an argument.                         |
+| `NO_IMPLIED_EVAL`         | warning  | disallow the use of `eval()`-like methods.                       |
+| `OPENDIALOG_REMOTE_URI`   | warning  | openDialog called with non-local URI.                            |
 | `NO_DOCUMENT_WRITE`       | warning  | Use of `document.write` strongly discouraged.                    |
-| `JS_SYNTAX_ERROR`         | warning  | JavaScript compile-time error                                    |
+| `JS_SYNTAX_ERROR`         | warning  | JavaScript compile-time error.                                   |
 | `UNADVISED_LIBRARY`       | warning  | This version of a JS library is not recommended.                 |
-| `TABS_GETSELECTED`        | warning  | Deprecated API tabs.getSelected                                  |
-| `TABS_SENDREQUEST`        | warning  | Deprecated API tabs.sendRequest                                  |
-| `TABS_GETALLINWINDOW`     | warning  | Deprecated API tabs.getAllInWindow                               |
-| `TABS_ONSELECTIONCHANGED` | warning  | Deprecated API tabs.onSelectionChanged                           |
-| `TABS_ONACTIVECHANGED`    | warning  | Deprecated API tabs.onActiveChanged                              |
-| `EXT_SENDREQUEST`         | warning  | Deprecated API extension.sendRequest                             |
-| `EXT_ONREQUESTEXTERNAL`   | warning  | Deprecated API extension.onRequestExternal                       |
-| `EXT_ONREQUEST`           | warning  | Deprecated API extension.onRequest                               |
-| `APP_GETDETAILS`          | warning  | Deprecated API app.getDetails                                    |
-| `STORAGE_LOCAL`           | warning  | Temporary IDs can cause issues with storage.local                |
-| `STORAGE_SYNC`            | warning  | Temporary IDs can cause issues with storage.sync                 |
-| `IDENTITY_GETREDIRECTURL` | warning  | Temporary IDs can cause issues with identity.getRedirectURL      |
+| `TABS_GETSELECTED`        | warning  | Deprecated API `tabs.getSelected`.                               |
+| `TABS_SENDREQUEST`        | warning  | Deprecated API `tabs.sendRequest`.                               |
+| `TABS_GETALLINWINDOW`     | warning  | Deprecated API `tabs.getAllInWindow`.                            |
+| `TABS_ONSELECTIONCHANGED` | warning  | Deprecated API `tabs.onSelectionChanged`.                        |
+| `TABS_ONACTIVECHANGED`    | warning  | Deprecated API `tabs.onActiveChanged`.                           |
+| `EXT_SENDREQUEST`         | warning  | Deprecated API `extension.sendRequest`.                          |
+| `EXT_ONREQUESTEXTERNAL`   | warning  | Deprecated API `extension.onRequestExternal`.                    |
+| `EXT_ONREQUEST`           | warning  | Deprecated API `extension.onRequest`.                            |
+| `APP_GETDETAILS`          | warning  | Deprecated API `app.getDetails`.                                 |
+| `STORAGE_LOCAL`           | warning  | Temporary IDs can cause issues with `storage.local`.             |
+| `STORAGE_SYNC`            | warning  | Temporary IDs can cause issues with `storage.sync`.              |
+| `IDENTITY_GETREDIRECTURL` | warning  | Temporary IDs can cause issues with `identity.getRedirectURL`.   |
 | `BANNED_LIBRARY`          | error    | This version of a JS library is banned for security reasons.     |
 
 ## Markup
 
 ### CSS
 
-| Message code               | Severity | Description                        |
-| -------------------------- | -------- | ---------------------------------- |
-| `CSS_SYNTAX_ERROR`         | error    | A CSS syntax error was detected    |
-| `INVALID_SELECTOR_NESTING` | error    | CSS selectors should not be nested |
+| Message code               | Severity | Description                         |
+| -------------------------- | -------- | ----------------------------------- |
+| `CSS_SYNTAX_ERROR`         | error    | A CSS syntax error was detected.    |
+| `INVALID_SELECTOR_NESTING` | error    | CSS selectors should not be nested. |
 
 ### HTML
 
-| Message code    | Severity | Description                                           |
-| --------------- | -------- | ----------------------------------------------------- |
-| `INLINE_SCRIPT` | warning  | Inline script is disallowed by CSP                    |
-| `REMOTE_SCRIPT` | warning  | Remote scripts are not allowed as per Add-on Policies |
+| Message code    | Severity | Description                                            |
+| --------------- | -------- | ------------------------------------------------------ |
+| `INLINE_SCRIPT` | warning  | Inline script is disallowed by CSP.                    |
+| `REMOTE_SCRIPT` | warning  | Remote scripts are not allowed as per Add-on Policies. |
 
 ## Content
 
 | Message code   | Severity | Description            |
 | -------------- | -------- | ---------------------- |
-| `HIDDEN_FILE`  | warning  | Hidden file flagged    |
-| `FLAGGED_FILE` | warning  | Flagged filename found |
+| `HIDDEN_FILE`  | warning  | Hidden file flagged.     |
+| `FLAGGED_FILE` | warning  | Flagged filename found. |
 
 ## Package layout
 
-| Message code               | Severity | Description                                        |
-| -------------------------- | -------- | -------------------------------------------------- |
-| `MOZILLA_COND_OF_USE`      | notice   | Mozilla conditions of use violation                |
-| `FLAGGED_FILE_TYPE`        | notice   | (Binary) Flagged file type found                   |
-| `FLAGGED_FILE_EXTENSION`   | warning  | Flagged file extensions found                      |
-| `DUPLICATE_XPI_ENTRY`      | warning  | Package contains duplicate entries                 |
-| `ALREADY_SIGNED`           | warning  | Already signed                                     |
-| `COINMINER_USAGE_DETECTED` | warning  | Firefox add-ons are not allowed to run coin miners |
-| `BAD_ZIPFILE`              | error    | Bad zip file                                       |
-| `FILE_TOO_LARGE`           | error    | File is too large to parse                         |
+| Message code               | Severity | Description                                         |
+| -------------------------- | -------- | --------------------------------------------------- |
+| `MOZILLA_COND_OF_USE`      | notice   | Mozilla conditions of use violation.                |
+| `FLAGGED_FILE_TYPE`        | notice   | (Binary) Flagged file type found.                    |
+| `FLAGGED_FILE_EXTENSION`   | warning  | Flagged file extensions found                        |
+| `DUPLICATE_XPI_ENTRY`      | warning  | Package contains duplicate entries                  |
+| `ALREADY_SIGNED`           | warning  | Already signed                                      |
+| `COINMINER_USAGE_DETECTED` | warning  | Firefox add-ons are not allowed to run coin miners. |
+| `BAD_ZIPFILE`              | error    | Bad zip file                                         |
+| `FILE_TOO_LARGE`           | error    | File is too large to parse                          |
 
 ## Type detection
 
-| Message code            | Severity | Description                                     |
-| ----------------------- | -------- | ----------------------------------------------- |
-| `TYPE_NO_MANIFEST_JSON` | notice   | Add-on missing manifest_json for type detection |
+| Message code            | Severity | Description                                      |
+| ----------------------- | -------- | ------------------------------------------------ |
+| `TYPE_NO_MANIFEST_JSON` | notice   | Add-on missing manifest_json for type detection. |
 
 ## Language packs
 
-| Message code   | Severity | Description                  |
-| -------------- | -------- | ---------------------------- |
-| FLUENT_INVALID | warning  | Invalid fluent template file |
+| Message code   | Severity | Description                 |
+| -------------- | -------- | --------------------------- |
+| FLUENT_INVALID | warning  | Invalid fluent template file. |
 
 ## Web Extensions / manifest.json
 

@@ -12,7 +12,7 @@ You can find more information about the linter and it's implemented rules in our
 
 ### Command Line
 
-You need node.js to use the add-ons linter.
+You need Node.js to use the add-ons linter.
 
 To validate your add-on locally, install the linter from [npm](http://nodejs.org/):
 
@@ -99,11 +99,11 @@ linter.run()
 
 ## Development
 
-If you'd like to help us develop the addons-linter, that's great! It's pretty easy to get started, you just need node.js installed on your machine.
+If you'd like to help us develop the addons-linter, that's great! It's pretty easy to get started, you just need Node.js installed on your machine.
 
 ### Quick Start
 
-If you have node.js installed, here's the quick start to getting your development dependencies installed and running the tests
+If you have Node.js installed, here's the quick start to getting your development dependencies installed and running the tests
 
 ```sh
 git clone https://github.com/mozilla/addons-linter.git
@@ -123,11 +123,11 @@ npm run build
 bin/addons-linter my-addon.zip
 ```
 
-### Required node version
+### Required Node version
 
-addons-linter requires node.js v8 or greater. Have a look at our `.travis.yml` file which node.js versions we officially test.
+addons-linter requires Node.js v8 or greater. Have a look at our `.travis.yml` file which Node.js versions we officially test.
 
-Using nvm is probably the easiest way to manage multiple node versions side by side. See [nvm on github](https://github.com/creationix/nvm) for more details.
+Using nvm is probably the easiest way to manage multiple Node versions side by side. See [nvm on GitHub](https://github.com/creationix/nvm) for more details.
 
 ### Install dependencies
 
@@ -147,11 +147,11 @@ Dependencies are automatically kept up-to-date using [greenkeeper](http://greenk
 | npm [run] build                 | Builds the lib (used by Travis)                                                  |
 | npm run test-coverage           | Runs the tests with coverage (watches for changes)                               |
 | npm run test-once               | Runs the tests once                                                              |
-| npm run lint                    | Runs eslint                                                                      |
+| npm run lint                    | Runs ESLint                                                                      |
 | npm run test-coverage-once      | Runs the tests once with coverage                                                |
 | npm run test-integration-linter | Runs our integration test-suite                                                  |
 | npm run prettier                | Automatically format the whole code-base with Prettier                           |
-| npm run prettier-dev            | Automatically compare and format modified source files against the master branch |
+| npm run prettier-dev            | Automatically compare and format modified source files against the master branch   |
 
 ### Building
 
@@ -169,7 +169,7 @@ We're looking to maintain coverage at 100%. Use the coverage data in the test ou
 
 #### Assertions and testing APIs
 
-We are using using sinon for assertions, mocks, stubs and more [see the Sinon docs for the API available](http://sinonjs.org/).
+We are using using Sinon for assertions, mocks, stubs and more [see the Sinon docs for the API available](http://sinonjs.org/).
 
 [Jest](https://facebook.github.io/jest/) is being used as a test-runner but also provides helpful tools. Please make sure you read their documentation for more details.
 
@@ -179,7 +179,7 @@ We use [pino](https://github.com/pinojs/pino) for logging:
 
 - By default logging is off (level is set to 'fatal') .
 - Logging in tests can be enabled using an env var e.g: `LOG_LEVEL=debug jest test`
-- Logging on the cli can be enabled with `--log-level [level]`.
+- Logging on the CLI can be enabled with `--log-level [level]`.
 
 ### Prettier
 
@@ -189,11 +189,11 @@ We use [Prettier](https://prettier.io/) to automatically format our JavaScript c
 
 In a nutshell the way the linter works is to take an add-on package, extract the metadata from the xpi (zip) format and then process the files it finds through various content scanners.
 
-We are heavily relying on [Eslint](https://eslint.org/) for JavaScript linting, [cheerio](https://github.com/cheeriojs/cheerio) for HTML parsing as well as [fluent.js](https://github.com/projectfluent/fluent.js) for parsing language packs.
+We are heavily relying on [ESLint](https://eslint.org/) for JavaScript linting, [cheerio](https://github.com/cheeriojs/cheerio) for HTML parsing as well as [fluent.js](https://github.com/projectfluent/fluent.js) for parsing language packs.
 
 ### Scanners
 
-Each file-type has a scanner. For example: CSS files use `CSSScanner`; Javascript files use `JavaScriptScanner`. Each scanner looks at relevant files and passes each file through a parser which then hands off to a set of rules that look for specific things.
+Each file-type has a scanner. For example: CSS files use `CSSScanner`; JavaScript files use `JavaScriptScanner`. Each scanner looks at relevant files and passes each file through a parser which then hands off to a set of rules that look for specific things.
 
 ### Rules
 

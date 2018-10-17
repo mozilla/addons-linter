@@ -1,6 +1,6 @@
 # Add-on Type Support [DRAFT]
 
-Going forward the amo-validator will continue to be the linter for legacy addo-ns. This document lists what types of addons the addon-linter will support and provides somde details as to the scope of the features needed.
+Going forward the amo-validator will continue to be the linter for legacy add-ons. This document lists what types of add-ons the addon-linter will support and provides some details as to the scope of the features needed.
 
 - Web Extensions
 - Dictionaries
@@ -11,10 +11,10 @@ Going forward the amo-validator will continue to be the linter for legacy addo-n
 
 Required features for linting:
 
-- Validation of the `manifest.json`. Swtich to JSON scheme for this.
+- Validation of the `manifest.json`. Switch to JSON scheme for this.
 - Look into rules for to guard against inadvertent privilege escalation holes. This type of issue would come from a site exploiting an extension.
 - js validation of content scripts (Rules need TBD)
-- Flag un-approved libs based on file name that match libs
+- Flag unapproved libs based on file name that match libs
 - Skip JS linting on libs that match the approved list.
 - Rules for specific APIs.
 
@@ -39,10 +39,10 @@ Docs: https://developer.mozilla.org/docs/Creating_a_spell_check_dictionary_add-o
 
 Docs appear to be a bit thin on the ground for these. They need looking into further and we should look at the existing rules.
 
-## Search Addons
+## Search Add-ons
 
 What's needed?
 
-- Validation of the opensearch xml
+- Validation of the opensearch XML
 
 Old code is here https://github.com/mozilla/amo-validator/blob/master/validator/opensearch.py
