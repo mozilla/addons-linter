@@ -87,7 +87,7 @@ describe('formats', () => {
     });
 
     it('Doesnt accept missing modifier', () => {
-      expect(manifestShortcutKey('Win')).toEqual(false);
+      expect(manifestShortcutKey('Home')).toEqual(false);
 
       // except for function keys
       expect(manifestShortcutKey('F8')).toEqual(true);
