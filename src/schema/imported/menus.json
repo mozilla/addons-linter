@@ -3,7 +3,7 @@
   "permissions": [
     "menus"
   ],
-  "description": "Use the browser.menus API to add items to the browser's menus. You can choose what types of objects your context menu additions apply to, such as images, hyperlinks, and pages.",
+  "description": "The part of the menus API that is available in all extension contexts, including content scripts.",
   "properties": {
     "ACTION_MENU_TOP_LEVEL_LIMIT": {
       "value": 6,
@@ -69,6 +69,10 @@
               "minItems": 1,
               "description": "List of contexts this menu item will appear in. Defaults to ['page'] if not specified."
             },
+            "visible": {
+              "type": "boolean",
+              "description": "Whether the item is visible in the menu."
+            },
             "onclick": {
               "type": "function",
               "description": "A function that will be called back when the menu item is clicked. Event pages cannot use this; instead, they should register a listener for $(ref:contextMenus.onClicked).",
@@ -76,7 +80,7 @@
                 {
                   "allOf": [
                     {
-                      "$ref": "contextMenusInternal#/types/OnClickData"
+                      "$ref": "#/types/OnClickData"
                     },
                     {
                       "name": "info",
@@ -180,13 +184,17 @@
               },
               "minItems": 1
             },
+            "visible": {
+              "type": "boolean",
+              "description": "Whether the item is visible in the menu."
+            },
             "onclick": {
               "type": "function",
               "parameters": [
                 {
                   "allOf": [
                     {
-                      "$ref": "menusInternal#/types/OnClickData"
+                      "$ref": "#/types/OnClickData"
                     },
                     {
                       "name": "info"
@@ -291,6 +299,28 @@
       "description": "Updates the extension items in the shown menu, including changes that have been made since the menu was shown. Has no effect if the menu is hidden. Rebuilding a shown menu is an expensive operation, only invoke this method when necessary.",
       "async": true,
       "parameters": []
+    },
+    {
+      "name": "getTargetElement",
+      "type": "function",
+      "allowedContexts": [
+        "content",
+        "devtools"
+      ],
+      "description": "Retrieve the element that was associated with a recent contextmenu event.",
+      "parameters": [
+        {
+          "type": "integer",
+          "description": "The identifier of the clicked element, available as info.targetElementId in the menus.onShown, onClicked or onclick event.",
+          "name": "targetElementId"
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "optional": true,
+        "isInstanceOf": "Element",
+        "additionalProperties": {}
+      }
     }
   ],
   "events": [
@@ -332,7 +362,7 @@
         {
           "name": "info",
           "type": "object",
-          "description": "Information about the context of the menu action and the created menu items. For more information about each property, see contextMenusInternal.OnClickData. The following properties are only set if the extension has host permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl, selectionText.",
+          "description": "Information about the context of the menu action and the created menu items. For more information about each property, see OnClickData. The following properties are only set if the extension has host permissions for the given context: linkUrl, linkText, srcUrl, pageUrl, frameUrl, selectionText.",
           "properties": {
             "menuIds": {
               "description": "A list of IDs of the menu items that were shown.",
@@ -378,6 +408,9 @@
             },
             "selectionText": {
               "type": "string"
+            },
+            "targetElementId": {
+              "type": "integer"
             }
           },
           "required": [
@@ -540,6 +573,10 @@
             ]
           },
           "description": "An array of keyboard modifiers that were held while the menu item was clicked."
+        },
+        "targetElementId": {
+          "type": "integer",
+          "description": "An identifier of the clicked element, if any. Use menus.getTargetElement in the page to find the corresponding element."
         }
       },
       "required": [
@@ -549,5 +586,9 @@
         "modifiers"
       ]
     }
-  }
+  },
+  "allowedContexts": [
+    "content",
+    "devtools"
+  ]
 }

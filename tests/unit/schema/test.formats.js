@@ -5,6 +5,7 @@ import {
   isSecureUrl,
   isStrictRelativeUrl,
   isValidVersionString,
+  manifestShortcutKey,
 } from 'schema/formats';
 
 describe('formats', () => {
@@ -53,6 +54,53 @@ describe('formats', () => {
       it(`should find ${invalidVersionString} to be invalid`, () => {
         expect(isValidVersionString(invalidVersionString)).toEqual(false);
       });
+    });
+  });
+
+  describe('manifestShortcutKey', () => {
+    it('Accept supported formats', () => {
+      // Only a small variation to see if it works as expected
+      expect(manifestShortcutKey('Alt+Shift+U')).toEqual(true);
+      expect(manifestShortcutKey('Ctrl+Shift+U')).toEqual(true);
+
+      // Already taken shortcuts are allowed to be defined but won't work,
+      // that's a problem for Firefox though, not for us
+      expect(manifestShortcutKey('Ctrl+P')).toEqual(true);
+    });
+
+    it('Warn on invalid formats', () => {
+      // Only a small variation to see if it works as expected
+      expect(manifestShortcutKey('Win+F')).toEqual(false);
+
+      // It's 'Period'
+      expect(manifestShortcutKey('Periad')).toEqual(false);
+    });
+
+    it('Accepts accept media keys', () => {
+      expect(manifestShortcutKey('MediaNextTrack')).toEqual(true);
+      expect(manifestShortcutKey('MediaPlayPause')).toEqual(true);
+      expect(manifestShortcutKey('MediaPrevTrack')).toEqual(true);
+      expect(manifestShortcutKey('MediaStop')).toEqual(true);
+
+      // But they can't be combined with other keys
+      expect(manifestShortcutKey('MediaStop+F7')).toEqual(false);
+    });
+
+    it('Doesnt accept missing modifier', () => {
+      expect(manifestShortcutKey('Home')).toEqual(false);
+
+      // except for function keys
+      expect(manifestShortcutKey('F8')).toEqual(true);
+    });
+
+    it('Doesnt accept duplicate key', () => {
+      expect(manifestShortcutKey('Alt+Alt+F8')).toEqual(false);
+      expect(manifestShortcutKey('Ctrl+Shift+Alt+F8')).toEqual(false);
+    });
+
+    it('Doesnt accept shift with non-function key', () => {
+      expect(manifestShortcutKey('Shift+F8')).toEqual(true);
+      expect(manifestShortcutKey('Shift+Home')).toEqual(false);
     });
   });
 

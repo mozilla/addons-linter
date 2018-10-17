@@ -6,7 +6,7 @@ import commentJson from 'comment-json';
 import tar from 'tar';
 /* eslint-enable import/no-extraneous-dependencies */
 
-import merge from './deepmerge';
+import { deepmerge, deepPatch } from './deepmerge';
 
 const FLAG_PATTERN_REGEX = /^\(\?[im]*\)(.*)/;
 /* There are some patterns in the Firefox schemas that have case insensitive
@@ -250,12 +250,16 @@ inner.updateWithAddonsLinterData = (firefoxSchemas, ourSchemas) => {
       schemas[ourSchema.id || namespace] = {
         ...firefoxSchema,
         file,
-        schema: merge(firefoxSchema.schema, ourSchema),
+        // Use `deepPatch` to actually patch (instead of simply merging them)
+        // the original schema with our own linter-specific tweaks
+        schema: deepPatch(firefoxSchema.schema, ourSchema),
       };
     } else {
       schemas[namespace] = {
         ...firefoxSchema,
-        schema: merge(firefoxSchema.schema, ourSchema),
+        // Use `deepPatch` to actually patch (instead of simply merging them)
+        // the original schema with our own linter-specific tweaks
+        schema: deepPatch(firefoxSchema.schema, ourSchema),
       };
     }
   });
@@ -463,7 +467,7 @@ inner.mergeSchemas = (schemaLists) => {
     } else {
       const file = `${namespace}.json`;
       const merged = namespaceSchemas.reduce((memo, { schema }) => {
-        return merge(memo, schema);
+        return deepmerge(memo, schema);
       }, {});
       schemas[namespace] = { file, schema: merged };
     }

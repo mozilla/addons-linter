@@ -185,7 +185,7 @@
         "origins": {
           "type": "array",
           "items": {
-            "$ref": "manifest#/types/MatchPatternInternal"
+            "$ref": "manifest#/types/MatchPattern"
           },
           "default": []
         }

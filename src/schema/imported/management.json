@@ -67,6 +67,61 @@
       ]
     },
     {
+      "name": "install",
+      "type": "function",
+      "requireUserInput": true,
+      "permissions": [
+        "management"
+      ],
+      "description": "Installs and enables a theme extension from the given url.",
+      "async": "callback",
+      "parameters": [
+        {
+          "name": "options",
+          "type": "object",
+          "properties": {
+            "url": {
+              "allOf": [
+                {
+                  "$ref": "manifest#/types/HttpURL"
+                },
+                {
+                  "description": "URL pointing to the XPI file on addons.mozilla.org or similar."
+                }
+              ]
+            },
+            "hash": {
+              "type": "string",
+              "pattern": "^(sha256|sha512):[0-9a-fA-F]{64,128}$",
+              "description": "A hash of the XPI file, using sha256 or stronger."
+            }
+          },
+          "required": [
+            "url"
+          ]
+        },
+        {
+          "name": "callback",
+          "type": "function",
+          "optional": true,
+          "parameters": [
+            {
+              "name": "result",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "$ref": "manifest#/types/ExtensionID"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "getSelf",
       "type": "function",
       "description": "Returns information about the calling extension. Note: This function can be used without requesting the 'management' permission in the manifest.",
@@ -276,7 +331,7 @@
       ]
     },
     "ExtensionType": {
-      "description": "The type of this extension. Will always be 'extension'.",
+      "description": "The type of this extension, 'extension' or 'theme'.",
       "type": "string",
       "enum": [
         "extension",
@@ -345,7 +400,7 @@
               "$ref": "#/types/ExtensionType"
             },
             {
-              "description": "The type of this extension. Will always return 'extension'."
+              "description": "The type of this extension, 'extension' or 'theme'."
             }
           ]
         },

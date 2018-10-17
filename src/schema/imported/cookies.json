@@ -158,6 +158,17 @@
               "type": "boolean",
               "description": "Whether the cookie should be marked as HttpOnly. Defaults to false."
             },
+            "sameSite": {
+              "allOf": [
+                {
+                  "$ref": "#/types/SameSiteStatus"
+                },
+                {
+                  "description": "The cookie's same-site status.",
+                  "default": "no_restriction"
+                }
+              ]
+            },
             "expirationDate": {
               "type": "number",
               "description": "The expiration date of the cookie as the number of seconds since the UNIX epoch. If omitted, the cookie becomes a session cookie."
@@ -354,6 +365,15 @@
     }
   },
   "types": {
+    "SameSiteStatus": {
+      "type": "string",
+      "enum": [
+        "no_restriction",
+        "lax",
+        "strict"
+      ],
+      "description": "A cookie's 'SameSite' state (https://tools.ietf.org/html/draft-west-first-party-cookies). 'no_restriction' corresponds to a cookie set without a 'SameSite' attribute, 'lax' to 'SameSite=Lax', and 'strict' to 'SameSite=Strict'."
+    },
     "Cookie": {
       "type": "object",
       "description": "Represents information about an HTTP cookie.",
@@ -386,6 +406,16 @@
           "type": "boolean",
           "description": "True if the cookie is marked as HttpOnly (i.e. the cookie is inaccessible to client-side scripts)."
         },
+        "sameSite": {
+          "allOf": [
+            {
+              "$ref": "#/types/SameSiteStatus"
+            },
+            {
+              "description": "The cookie's same-site status (i.e. whether the cookie is sent with cross-site requests)."
+            }
+          ]
+        },
         "session": {
           "type": "boolean",
           "description": "True if the cookie is a session cookie, as opposed to a persistent cookie with an expiration date."
@@ -411,6 +441,7 @@
         "path",
         "secure",
         "httpOnly",
+        "sameSite",
         "session",
         "storeId",
         "firstPartyDomain"

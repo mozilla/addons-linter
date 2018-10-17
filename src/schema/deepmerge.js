@@ -7,23 +7,20 @@
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import merge from 'deepmerge';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import isMergeableObject from 'is-mergeable-object';
 
 const emptyTarget = (value) => (Array.isArray(value) ? [] : {});
 const clone = (value, options) => merge(emptyTarget(value), value, options);
 
-function oldArrayMerge(target, source, optionsArgument) {
+function patchArrays(target, source, options) {
   const destination = target.slice();
 
   source.forEach((e, i) => {
     if (typeof destination[i] === 'undefined') {
-      const cloneRequested =
-        !optionsArgument || optionsArgument.clone !== false;
-      const shouldClone = cloneRequested && isMergeableObject(e);
-      destination[i] = shouldClone ? clone(e, optionsArgument) : e;
-    } else if (isMergeableObject(e)) {
-      destination[i] = merge(target[i], e, optionsArgument);
+      const cloneRequested = options.clone !== false;
+      const shouldClone = cloneRequested && options.isMergeableObject(e);
+      destination[i] = shouldClone ? clone(e, options) : e;
+    } else if (options.isMergeableObject(e)) {
+      destination[i] = merge(target[i], e, options);
     } else if (target.indexOf(e) === -1) {
       destination.push(e);
     }
@@ -32,11 +29,16 @@ function oldArrayMerge(target, source, optionsArgument) {
   return destination;
 }
 
-export default (a, b, opts) => {
-  if (opts) {
-    throw new Error(
-      'opts are not supported, use the deepmerge package directly'
-    );
-  }
-  return merge(a, b, { arrayMerge: oldArrayMerge });
+function concatArrays(target, source) {
+  return [...target, ...source].filter(
+    (element, index, array) => array.indexOf(element) === index
+  );
+}
+
+export const deepmerge = (a, b) => {
+  return merge(a, b, { arrayMerge: concatArrays });
+};
+
+export const deepPatch = (a, b) => {
+  return merge(a, b, { arrayMerge: patchArrays });
 };

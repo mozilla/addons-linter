@@ -92,12 +92,23 @@
           ]
         }
       ]
+    },
+    "WebExtensionManifest": {
+      "properties": {
+        "theme_experiment": {
+          "$ref": "#/types/ThemeExperiment"
+        }
+      }
     }
   },
   "refs": {
     "theme#/definitions/Permission": {
       "namespace": "manifest",
       "type": "Permission"
+    },
+    "theme#/definitions/WebExtensionManifest": {
+      "namespace": "manifest",
+      "type": "WebExtensionManifest"
     }
   },
   "types": {
@@ -143,6 +154,32 @@
         }
       ]
     },
+    "ThemeExperiment": {
+      "type": "object",
+      "properties": {
+        "stylesheet": {
+          "$ref": "manifest#/types/ExtensionURL"
+        },
+        "images": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "colors": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "properties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "ThemeType": {
       "type": "object",
       "properties": {
@@ -153,7 +190,8 @@
               "type": "array",
               "items": {
                 "$ref": "manifest#/types/ImageDataOrExtensionURL"
-              }
+              },
+              "maxItems": 15
             },
             "headerURL": {
               "$ref": "manifest#/types/ImageDataOrExtensionURL"
@@ -161,6 +199,9 @@
             "theme_frame": {
               "$ref": "manifest#/types/ImageDataOrExtensionURL"
             }
+          },
+          "additionalProperties": {
+            "$ref": "manifest#/types/ImageDataOrExtensionURL"
           }
         },
         "colors": {
@@ -261,7 +302,28 @@
             },
             "popup_highlight_text": {
               "$ref": "#/types/ThemeColor"
+            },
+            "ntp_background": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "ntp_text": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "sidebar": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "sidebar_text": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "sidebar_highlight": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "sidebar_highlight_text": {
+              "$ref": "#/types/ThemeColor"
             }
+          },
+          "additionalProperties": {
+            "$ref": "#/types/ThemeColor"
           }
         },
         "icons": {
@@ -532,7 +594,8 @@
                   "right center",
                   "right top"
                 ]
-              }
+              },
+              "maxItems": 15
             },
             "additional_backgrounds_tiling": {
               "type": "array",
@@ -544,8 +607,12 @@
                   "repeat-x",
                   "repeat-y"
                 ]
-              }
+              },
+              "maxItems": 15
             }
+          },
+          "additionalProperties": {
+            "type": "string"
           }
         }
       }
@@ -564,6 +631,9 @@
             },
             "default_locale": {
               "type": "string"
+            },
+            "theme_experiment": {
+              "$ref": "#/types/ThemeExperiment"
             },
             "icons": {
               "type": "object",

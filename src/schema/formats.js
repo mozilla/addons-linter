@@ -109,3 +109,64 @@ export function imageDataOrStrictRelativeUrl(value) {
 }
 
 export const isUnresolvedRelativeUrl = isStrictRelativeUrl;
+
+export function manifestShortcutKey(value) {
+  // Partially taken from Firefox directly via
+  // https://searchfox.org/mozilla-central/source/toolkit/components/extensions/Schemas.jsm#987
+  // Please make sure to always update this function when doing a schema update
+  // to pull in the most recent implementation to stay up-to-date with upstream.
+
+  const MEDIA_KEYS = /^(MediaNextTrack|MediaPlayPause|MediaPrevTrack|MediaStop)$/;
+  const BASIC_KEYS = /^([A-Z0-9]|Comma|Period|Home|End|PageUp|PageDown|Space|Insert|Delete|Up|Down|Left|Right)$/;
+  const FUNCTION_KEYS = /^(F[1-9]|F1[0-2])$/;
+
+  if (MEDIA_KEYS.test(value.trim())) {
+    return true;
+  }
+
+  const modifiers = value.split('+').map((s) => s.trim());
+  const key = modifiers.pop();
+
+  if (!BASIC_KEYS.test(key) && !FUNCTION_KEYS.test(key)) {
+    return false;
+  }
+
+  const chromeModifierKeyMap = {
+    Alt: 'alt',
+    Command: 'accel',
+    Ctrl: 'accel',
+    MacCtrl: 'control',
+    Shift: 'shift',
+  };
+
+  const chromeModifiers = modifiers.map((m) => chromeModifierKeyMap[m]);
+
+  // If the modifier wasn't found it will be undefined.
+  if (chromeModifiers.some((modifier) => !modifier)) {
+    return false;
+  }
+
+  switch (modifiers.length) {
+    case 0:
+      // A lack of modifiers is only allowed with function keys.
+      if (!FUNCTION_KEYS.test(key)) {
+        return false;
+      }
+      break;
+    case 1:
+      // Shift is only allowed on its own with function keys.
+      if (chromeModifiers[0] === 'shift' && !FUNCTION_KEYS.test(key)) {
+        return false;
+      }
+      break;
+    case 2:
+      if (chromeModifiers[0] === chromeModifiers[1]) {
+        return false;
+      }
+      break;
+    default:
+      return false;
+  }
+
+  return true;
+}
