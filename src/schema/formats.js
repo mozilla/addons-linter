@@ -113,6 +113,8 @@ export const isUnresolvedRelativeUrl = isStrictRelativeUrl;
 export function manifestShortcutKey(value) {
   // Partially taken from Firefox directly via
   // https://searchfox.org/mozilla-central/source/toolkit/components/extensions/Schemas.jsm#987
+  // Please make sure to always update this function when doing a schema update
+  // to pull in the most recent implementation to stay up-to-date with upstream.
 
   const MEDIA_KEYS = /^(MediaNextTrack|MediaPlayPause|MediaPrevTrack|MediaStop)$/;
   const BASIC_KEYS = /^([A-Z0-9]|Comma|Period|Home|End|PageUp|PageDown|Space|Insert|Delete|Up|Down|Left|Right)$/;

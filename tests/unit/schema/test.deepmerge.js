@@ -1,4 +1,4 @@
-import { deepmerge, deepmergeWithComplexArrays } from 'schema/deepmerge';
+import { deepmerge, deepPatch } from 'schema/deepmerge';
 
 describe('deepmerge', () => {
   it('merges simple arrays', () => {
@@ -57,11 +57,11 @@ describe('deepmerge', () => {
   });
 });
 
-describe('deepmergeWithComplexArrays', () => {
+describe('deepPatch', () => {
   it('merges complex arrays', () => {
     const base = { foo: [{ bar: 'BAR' }] };
     const add = { foo: [{ baz: 'BAZ' }] };
-    expect(deepmergeWithComplexArrays(base, add)).toEqual({
+    expect(deepPatch(base, add)).toEqual({
       foo: [{ bar: 'BAR', baz: 'BAZ' }],
     });
   });
@@ -73,7 +73,7 @@ describe('deepmergeWithComplexArrays', () => {
       { key1: { subkey: 'one' } },
       { key2: { subkey: 'three' } },
     ];
-    expect(deepmergeWithComplexArrays(src, target)).toEqual(expected);
+    expect(deepPatch(src, target)).toEqual(expected);
   });
 
   it('should add nested object in target', () => {
@@ -94,7 +94,7 @@ describe('deepmergeWithComplexArrays', () => {
       },
     };
 
-    expect(deepmergeWithComplexArrays(target, src)).toEqual(expected);
+    expect(deepPatch(target, src)).toEqual(expected);
   });
 
   it('should replace object with simple key in target', () => {
@@ -109,6 +109,6 @@ describe('deepmergeWithComplexArrays', () => {
 
     const expected = { key1: 'value1', key2: 'value2' };
 
-    expect(deepmergeWithComplexArrays(target, src)).toEqual(expected);
+    expect(deepPatch(target, src)).toEqual(expected);
   });
 });

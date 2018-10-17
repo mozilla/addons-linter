@@ -6,7 +6,7 @@ import commentJson from 'comment-json';
 import tar from 'tar';
 /* eslint-enable import/no-extraneous-dependencies */
 
-import { deepmerge, deepmergeWithComplexArrays } from './deepmerge';
+import { deepmerge, deepPatch } from './deepmerge';
 
 const FLAG_PATTERN_REGEX = /^\(\?[im]*\)(.*)/;
 /* There are some patterns in the Firefox schemas that have case insensitive
@@ -250,12 +250,16 @@ inner.updateWithAddonsLinterData = (firefoxSchemas, ourSchemas) => {
       schemas[ourSchema.id || namespace] = {
         ...firefoxSchema,
         file,
-        schema: deepmergeWithComplexArrays(firefoxSchema.schema, ourSchema),
+        // Use `deepPatch` to actually patch (instead of simply merging them)
+        // the original schema with our own linter-specific tweaks
+        schema: deepPatch(firefoxSchema.schema, ourSchema),
       };
     } else {
       schemas[namespace] = {
         ...firefoxSchema,
-        schema: deepmergeWithComplexArrays(firefoxSchema.schema, ourSchema),
+        // Use `deepPatch` to actually patch (instead of simply merging them)
+        // the original schema with our own linter-specific tweaks
+        schema: deepPatch(firefoxSchema.schema, ourSchema),
       };
     }
   });

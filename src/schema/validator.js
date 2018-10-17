@@ -1,7 +1,7 @@
 import ajv from 'ajv';
 import ajvMergePatch from 'ajv-merge-patch';
 
-import { deepmergeWithComplexArrays } from 'schema/deepmerge';
+import { deepPatch } from 'schema/deepmerge';
 import schemaObject from 'schema/imported/manifest';
 import themeSchemaObject from 'schema/imported/theme';
 import messagesSchemaObject from 'schema/messages';
@@ -81,10 +81,12 @@ export const validateAddon = (...args) => {
 // We have to use deepmerge here to make sure we can overwrite the nested
 // structure and can use object-destructuring at the root level
 // because we only overwrite `id` and `$ref` in root of the resulting object.
+// Uses ``deepPatch`` (instead of deepmerge) because we're patching a
+// complicated schema instead of simply merging them together.
 const _validateStaticTheme = validator.compile({
-  ...deepmergeWithComplexArrays(
+  ...deepPatch(
     schemaObject,
-    deepmergeWithComplexArrays(themeSchemaObject, {
+    deepPatch(themeSchemaObject, {
       types: {
         ThemeManifest: {
           $merge: {
@@ -110,8 +112,10 @@ export const validateStaticTheme = (...args) => {
 // The only difference is, this time, there is no additional schema file, we
 // just need to reference WebExtensionLangpackManifest and merge it with the
 // object that has additionalProperties: false.
+// Uses ``deepPatch`` (instead of deepmerge) because we're patching a
+// complicated schema instead of simply merging them together.
 const _validateLangPack = validator.compile({
-  ...deepmergeWithComplexArrays(schemaObject, {
+  ...deepPatch(schemaObject, {
     types: {
       WebExtensionLangpackManifest: {
         $merge: {
@@ -134,8 +138,10 @@ export const validateLangPack = (...args) => {
 
 // Like with langpacks, we don't want additional properties in dictionaries,
 // and there is no separate schema file.
+// Uses ``deepPatch`` (instead of deepmerge) because we're patching a
+// complicated schema instead of simply merging them together.
 const _validateDictionary = validator.compile({
-  ...deepmergeWithComplexArrays(schemaObject, {
+  ...deepPatch(schemaObject, {
     types: {
       WebExtensionDictionaryManifest: {
         $merge: {

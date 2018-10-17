@@ -11,7 +11,7 @@ import merge from 'deepmerge';
 const emptyTarget = (value) => (Array.isArray(value) ? [] : {});
 const clone = (value, options) => merge(emptyTarget(value), value, options);
 
-function mergeComplexArrays(target, source, options) {
+function patchArrays(target, source, options) {
   const destination = target.slice();
 
   source.forEach((e, i) => {
@@ -29,16 +29,16 @@ function mergeComplexArrays(target, source, options) {
   return destination;
 }
 
-function mergeSimpleArrays(target, source) {
+function concatArrays(target, source) {
   return [...target, ...source].filter(
     (element, index, array) => array.indexOf(element) === index
   );
 }
 
 export const deepmerge = (a, b) => {
-  return merge(a, b, { arrayMerge: mergeSimpleArrays });
+  return merge(a, b, { arrayMerge: concatArrays });
 };
 
-export const deepmergeWithComplexArrays = (a, b) => {
-  return merge(a, b, { arrayMerge: mergeComplexArrays });
+export const deepPatch = (a, b) => {
+  return merge(a, b, { arrayMerge: patchArrays });
 };
