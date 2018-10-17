@@ -1,7 +1,7 @@
 import ajv from 'ajv';
 import ajvMergePatch from 'ajv-merge-patch';
 
-import deepmergeWithComplexArrays from 'schema/deepmerge';
+import { deepmergeWithComplexArrays } from 'schema/deepmerge';
 import schemaObject from 'schema/imported/manifest';
 import themeSchemaObject from 'schema/imported/theme';
 import messagesSchemaObject from 'schema/messages';
