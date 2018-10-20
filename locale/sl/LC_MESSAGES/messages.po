@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-10-20 11:46+0000\n"
+"PO-Revision-Date: 2018-10-20 11:35+0000\n"
 "Last-Translator: Matjaž Horvat <matjaz.horvat@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -80,7 +80,7 @@ msgstr "Firefox ne podpira tega API-ja."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "Klic addEventListener s četrtim argumentom truthy."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
