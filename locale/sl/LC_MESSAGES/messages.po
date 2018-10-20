@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-10-20 11:56+0000\n"
+"PO-Revision-Date: 2018-10-20 11:46+0000\n"
 "Last-Translator: Matjaž Horvat <matjaz.horvat@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -104,7 +104,7 @@ msgstr "Napaka skladnje JavaScripta."
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Globalna spremenljivka nepričakovano podana kot argument"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
