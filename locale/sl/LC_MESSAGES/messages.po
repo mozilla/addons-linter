@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-07-25 18:28+0000\n"
+"PO-Revision-Date: 2018-10-20 11:36+0000\n"
 "Last-Translator: Matjaž Horvat <matjaz.horvat@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -204,7 +204,7 @@ msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
+msgstr "Za niz ni bilo nastavljeno nobeno sporočilo \"message\" (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
