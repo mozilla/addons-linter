@@ -53,7 +53,12 @@
                 "search_url_post_params": {
                   "type": "string",
                   "preprocess": "localize",
-                  "deprecated": "Unsupported on Firefox at this time."
+                  "description": "POST parameters to the search_url as a query string."
+                },
+                "suggest_url_post_params": {
+                  "type": "string",
+                  "preprocess": "localize",
+                  "description": "POST parameters to the suggest_url as a query string."
                 },
                 "instant_url_post_params": {
                   "type": "string",
@@ -81,6 +86,49 @@
                 "is_default": {
                   "type": "boolean",
                   "description": "Sets the default engine to a built-in engine only."
+                },
+                "params": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "A url parameter name"
+                      },
+                      "condition": {
+                        "type": "string",
+                        "enum": [
+                          "purpose",
+                          "pref"
+                        ],
+                        "description": "The type of param can be either \"purpose\" or \"pref\"."
+                      },
+                      "pref": {
+                        "type": "string",
+                        "description": "The preference to retreive the value from."
+                      },
+                      "purpose": {
+                        "type": "string",
+                        "enum": [
+                          "contextmenu",
+                          "searchbar",
+                          "homepage",
+                          "keyword",
+                          "newtab"
+                        ],
+                        "description": "The context that initiates a search, required if condition is \"purpose\"."
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "A url parameter value."
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ]
+                  },
+                  "description": "A list of optional search url parameters. This allows the additon of search url parameters based on how the search is performed in Firefox."
                 }
               },
               "required": [

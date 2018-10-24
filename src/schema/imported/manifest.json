@@ -274,6 +274,9 @@
         },
         {
           "$ref": "url_overrides#/definitions/WebExtensionManifest"
+        },
+        {
+          "$ref": "userScripts#/definitions/WebExtensionManifest"
         }
       ]
     },
@@ -457,6 +460,9 @@
         },
         {
           "$ref": "history#/definitions/OptionalPermission"
+        },
+        {
+          "$ref": "menus#/definitions/OptionalPermission"
         },
         {
           "$ref": "search#/definitions/OptionalPermission"

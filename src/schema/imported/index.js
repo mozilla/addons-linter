@@ -47,6 +47,7 @@ import theme from './theme.json';
 import topSites from './top_sites.json';
 import types from './types.json';
 import url_overrides from './url_overrides.json';
+import userScripts from './userScripts.json';
 import webNavigation from './web_navigation.json';
 import webRequest from './web_request.json';
 import windows from './windows.json';
@@ -99,6 +100,7 @@ export default [
   topSites,
   types,
   url_overrides,
+  userScripts,
   webNavigation,
   webRequest,
   windows,
