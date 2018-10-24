@@ -249,6 +249,10 @@
               "type": "boolean",
               "description": "Allow scripts to close the window."
             },
+            "cookieStoreId": {
+              "type": "string",
+              "description": "The CookieStoreId to use for all tabs that were created when the window is opened."
+            },
             "titlePreface": {
               "type": "string",
               "description": "A string to add to the beginning of the window title."

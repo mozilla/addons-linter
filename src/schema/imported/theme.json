@@ -312,6 +312,9 @@
             "sidebar": {
               "$ref": "#/types/ThemeColor"
             },
+            "sidebar_border": {
+              "$ref": "#/types/ThemeColor"
+            },
             "sidebar_text": {
               "$ref": "#/types/ThemeColor"
             },

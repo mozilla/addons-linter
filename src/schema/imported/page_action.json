@@ -318,6 +318,10 @@
               "items": {
                 "$ref": "manifest#/types/MatchPatternRestricted"
               }
+            },
+            "pinned": {
+              "type": "boolean",
+              "default": true
             }
           }
         }

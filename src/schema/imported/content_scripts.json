@@ -23,32 +23,6 @@
   "definitions": {},
   "refs": {},
   "types": {
-    "ExtensionFileOrCode": {
-      "anyOf": [
-        {
-          "type": "object",
-          "properties": {
-            "file": {
-              "$ref": "manifest#/types/ExtensionURL"
-            }
-          },
-          "required": [
-            "file"
-          ]
-        },
-        {
-          "type": "object",
-          "properties": {
-            "code": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "code"
-          ]
-        }
-      ]
-    },
     "RegisteredContentScriptOptions": {
       "type": "object",
       "description": "Details of a content script registered programmatically",
@@ -83,14 +57,14 @@
           "type": "array",
           "description": "The list of CSS files to inject",
           "items": {
-            "$ref": "#/types/ExtensionFileOrCode"
+            "$ref": "extensionTypes#/types/ExtensionFileOrCode"
           }
         },
         "js": {
           "type": "array",
           "description": "The list of JS files to inject",
           "items": {
-            "$ref": "#/types/ExtensionFileOrCode"
+            "$ref": "extensionTypes#/types/ExtensionFileOrCode"
           }
         },
         "allFrames": {

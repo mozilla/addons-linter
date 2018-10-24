@@ -1,0 +1,169 @@
+{
+  "id": "userScripts",
+  "permissions": [
+    "manifest:user_scripts"
+  ],
+  "functions": [
+    {
+      "name": "register",
+      "type": "function",
+      "description": "Register a user script programmatically given its $(ref:userScripts.UserScriptOptions), and resolves to a $(ref:userScripts.RegisteredUserScript) instance",
+      "async": true,
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/UserScriptOptions"
+            },
+            {
+              "name": "userScriptOptions"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "setScriptAPIs",
+      "permissions": [
+        "manifest:user_scripts.api_script"
+      ],
+      "allowedContexts": [
+        "content",
+        "content_only"
+      ],
+      "type": "function",
+      "description": "Provides a set of custom API methods available to the registered userScripts",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/ExportedAPIMethods"
+            },
+            {
+              "name": "exportedAPIMethods"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "WebExtensionManifest": {
+      "properties": {
+        "user_scripts": {
+          "type": "object",
+          "properties": {
+            "api_script": {
+              "$ref": "manifest#/types/ExtensionURL"
+            }
+          }
+        }
+      }
+    }
+  },
+  "refs": {
+    "userScripts#/definitions/WebExtensionManifest": {
+      "namespace": "manifest",
+      "type": "WebExtensionManifest"
+    }
+  },
+  "types": {
+    "UserScriptOptions": {
+      "type": "object",
+      "description": "Details of a user script",
+      "properties": {
+        "js": {
+          "type": "array",
+          "description": "The list of JS files to inject",
+          "minItems": 1,
+          "items": {
+            "$ref": "extensionTypes#/types/ExtensionFileOrCode"
+          }
+        },
+        "scriptMetadata": {
+          "allOf": [
+            {
+              "$ref": "extensionTypes#/types/PlainJSONValue"
+            },
+            {
+              "description": "An opaque user script metadata value"
+            }
+          ]
+        },
+        "matches": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "manifest#/types/MatchPattern"
+          }
+        },
+        "excludeMatches": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "manifest#/types/MatchPattern"
+          }
+        },
+        "includeGlobs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "excludeGlobs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allFrames": {
+          "type": "boolean",
+          "default": false,
+          "description": "If allFrames is <code>true</code>, implies that the JavaScript should be injected into all frames of current page. By default, it's <code>false</code> and is only injected into the top frame."
+        },
+        "matchAboutBlank": {
+          "type": "boolean",
+          "default": false,
+          "description": "If matchAboutBlank is true, then the code is also injected in about:blank and about:srcdoc frames if your extension has access to its parent document. Code cannot be inserted in top-level about:-frames. By default it is <code>false</code>."
+        },
+        "runAt": {
+          "allOf": [
+            {
+              "$ref": "extensionTypes#/types/RunAt"
+            },
+            {
+              "default": "document_idle",
+              "description": "The soonest that the JavaScript will be injected into the tab. Defaults to \"document_idle\"."
+            }
+          ]
+        }
+      },
+      "required": [
+        "matches"
+      ]
+    },
+    "RegisteredUserScript": {
+      "type": "object",
+      "description": "An object that represents a user script registered programmatically",
+      "functions": [
+        {
+          "name": "unregister",
+          "type": "function",
+          "description": "Unregister a user script registered programmatically",
+          "async": true,
+          "parameters": []
+        }
+      ]
+    },
+    "ExportedAPIMethods": {
+      "type": "object",
+      "description": "A set of API methods provided by the extensions to its userScripts",
+      "additionalProperties": {
+        "type": "function"
+      }
+    }
+  },
+  "allowedContexts": [
+    "content"
+  ]
+}

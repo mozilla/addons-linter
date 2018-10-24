@@ -115,6 +115,61 @@
           "additionalProperties": {}
         }
       ]
+    },
+    "ExtensionFileOrCode": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "file": {
+              "$ref": "manifest#/types/ExtensionURL"
+            }
+          },
+          "required": [
+            "file"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "code"
+          ]
+        }
+      ]
+    },
+    "PlainJSONValue": {
+      "description": "A plain JSON value",
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/types/PlainJSONValue"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/types/PlainJSONValue"
+          }
+        }
+      ]
     }
   }
 }
