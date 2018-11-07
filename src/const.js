@@ -109,6 +109,19 @@ export const IMAGE_FILE_EXTENSIONS = [
   'svg',
 ];
 
+// Map the image mime to the expected file extensions
+// (used in the the static theme images validation).
+export const MIME_TO_FILE_EXTENSIONS = {
+  'image/svg+xml': ['svg'],
+  'image/gif': ['gif'],
+  'image/jpeg': ['jpg', 'jpeg'],
+  'image/png': ['png'],
+  'image/webp': ['webp'],
+};
+
+// List of the mime types for the allowed static theme images.
+export const STATIC_THEME_IMAGE_MIMES = Object.keys(MIME_TO_FILE_EXTENSIONS);
+
 // A list of magic numbers that we won't allow.
 export const FLAGGED_FILE_MAGIC_NUMBERS = [
   [0x4d, 0x5a], // EXE or DLL,

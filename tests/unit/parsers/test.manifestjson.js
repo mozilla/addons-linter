@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+import { oneLine } from 'common-tags';
+
 import Linter from 'linter';
 import ManifestJSONParser from 'parsers/manifestjson';
 import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
@@ -13,6 +15,12 @@ import {
   validStaticThemeManifestJSON,
   getStreamableIO,
   EMPTY_PNG,
+  EMPTY_APNG,
+  EMPTY_GIF,
+  EMPTY_JPG,
+  EMPTY_SVG,
+  EMPTY_TIFF,
+  EMPTY_WEBP,
 } from '../helpers';
 
 describe('ManifestJSONParser', () => {
@@ -1535,6 +1543,290 @@ describe('ManifestJSONParser', () => {
         message: '"/content_scripts" is an invalid additional property',
         description: 'Your JSON file could not be parsed.',
       });
+    });
+
+    it('adds a validation error on missing theme image files', async () => {
+      const propName = 'theme.images.headerURL';
+      const fileName = 'missing-image-file.png';
+
+      const linter = new Linter({ _: ['bar'] });
+      const manifest = validStaticThemeManifestJSON({
+        theme: {
+          images: {
+            headerURL: fileName,
+          },
+        },
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        manifest,
+        linter.collector,
+        {
+          io: { files: {} },
+        }
+      );
+
+      await manifestJSONParser.validateStaticThemeImages();
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_THEME_IMAGE_NOT_FOUND,
+        message: `Theme image for "${propName}" could not be found in the package`,
+        description: `Theme image for "${propName}" could not be found at "${fileName}"`,
+      });
+    });
+
+    it('adds a validation error on theme image file with unsupported file extension', async () => {
+      const files = {
+        'unsupported-image-ext.tiff': '',
+        'unsupported-image-ext.webp': '',
+      };
+      const fileNames = Object.keys(files);
+
+      const linter = new Linter({ _: ['bar'] });
+      const manifest = validStaticThemeManifestJSON({
+        theme: {
+          images: {
+            headerURL: fileNames[0],
+            additional_backgrounds: fileNames[1],
+          },
+        },
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        manifest,
+        linter.collector,
+        { io: { files } }
+      );
+
+      await manifestJSONParser.validateStaticThemeImages();
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+
+      for (const name of fileNames) {
+        assertHasMatchingError(linter.collector.errors, {
+          code: messages.MANIFEST_THEME_IMAGE_WRONG_EXT,
+          message: `Theme image file has an unsupported file extension`,
+          description: `Theme image file at "${name}" has an unsupported file extension`,
+        });
+      }
+    });
+
+    it('adds a validation error on theme image file in unsupported formats', async () => {
+      const files = {
+        'tiff-image-with-png-filext.png': EMPTY_TIFF,
+        'webp-image-with-png-filext.png': EMPTY_WEBP,
+      };
+      const fileNames = Object.keys(files);
+      const fileMimes = ['image/tiff', 'image/webp'];
+
+      const linter = new Linter({ _: ['bar'] });
+      const manifest = validStaticThemeManifestJSON({
+        theme: {
+          images: {
+            headerURL: fileNames[0],
+            addional_backgrounds: fileNames[1],
+          },
+        },
+      });
+
+      const fakeIO = getStreamableIO(files);
+      fakeIO.getFileAsStream = jest.fn(fakeIO.getFileAsStream);
+
+      const manifestJSONParser = new ManifestJSONParser(
+        manifest,
+        linter.collector,
+        { io: fakeIO }
+      );
+
+      await manifestJSONParser.validateStaticThemeImages();
+
+      // Expect getFileAsStream to have been called to read the
+      // image file.
+      expect(fakeIO.getFileAsStream.mock.calls.length).toBe(2);
+      for (let i = 0; i < fileNames; i++) {
+        expect(fakeIO.getFileAsStream.mock.calls[i]).toEqual([
+          fileNames[i],
+          { encoding: null },
+        ]);
+      }
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+
+      for (let i = 0; i < fileNames; i++) {
+        const fileName = fileNames[i];
+        const fileMime = fileMimes[i];
+        assertHasMatchingError(linter.collector.errors, {
+          code: messages.MANIFEST_THEME_IMAGE_WRONG_MIME,
+          message: `Theme image file has an unsupported mime type`,
+          description: `Theme image file at "${fileName}" has the unsupported mime type "${fileMime}"`,
+        });
+      }
+    });
+
+    it('adds a validation warning on supported theme image mime with file extension mismatch', async () => {
+      const fileName = 'png-image-with-gif-filext.gif';
+      const fileMime = 'image/png';
+
+      const linter = new Linter({ _: ['bar'] });
+      const manifest = validStaticThemeManifestJSON({
+        theme: {
+          images: {
+            headerURL: fileName,
+          },
+        },
+      });
+
+      const files = { [fileName]: EMPTY_PNG };
+      const fakeIO = getStreamableIO(files);
+      fakeIO.getFileAsStream = jest.fn(fakeIO.getFileAsStream);
+
+      const manifestJSONParser = new ManifestJSONParser(
+        manifest,
+        linter.collector,
+        { io: fakeIO }
+      );
+
+      await manifestJSONParser.validateStaticThemeImages();
+
+      // Expect getFileAsStream to have been called to read the
+      // image file.
+      expect(fakeIO.getFileAsStream.mock.calls.length).toBe(1);
+      expect(fakeIO.getFileAsStream.mock.calls[0]).toEqual([
+        fileName,
+        { encoding: null },
+      ]);
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      assertHasMatchingError(linter.collector.warnings, {
+        code: messages.MANIFEST_THEME_IMAGE_MIME_MISMATCH,
+        message: `Theme image file mime type does not match its file extension`,
+        description: oneLine`Theme image file extension at "${fileName}"
+                             does not match its actual mime type "${fileMime}"`,
+      });
+    });
+
+    it('adds a validation error if unable to validate theme images files mime type', async () => {
+      const fileName = 'corrupted-image-file.png';
+
+      const linter = new Linter({ _: ['bar'] });
+      const manifest = validStaticThemeManifestJSON({
+        theme: {
+          images: {
+            headerURL: fileName,
+          },
+        },
+      });
+
+      // Set the image file content as empty, so that the validation is going to be
+      // unable to retrive the file mime type.
+      const files = { [fileName]: '' };
+      const fakeIO = getStreamableIO(files);
+      fakeIO.getFileAsStream = jest.fn(fakeIO.getFileAsStream);
+
+      const manifestJSONParser = new ManifestJSONParser(
+        manifest,
+        linter.collector,
+        { io: fakeIO }
+      );
+
+      await manifestJSONParser.validateStaticThemeImages();
+
+      // Expect getFileAsStream to have been called to read the
+      // image file.
+      expect(fakeIO.getFileAsStream.mock.calls.length).toBe(1);
+      expect(fakeIO.getFileAsStream.mock.calls[0]).toEqual([
+        fileName,
+        { encoding: null },
+      ]);
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_THEME_IMAGE_CORRUPTED,
+        message: `Corrupted theme image file`,
+        description: `Theme image file at "${fileName}" is corrupted`,
+      });
+    });
+
+    it('validates all image paths when the manifest property value is an array', async () => {
+      const linter = new Linter({ _: ['bar'] });
+      const imageFiles = [
+        'bg1.svg',
+        'bg2.png',
+        'bg2-apng.png',
+        'bg3.gif',
+        'bg4.jpg',
+        'bg4-1.jpeg',
+      ];
+      const manifest = validStaticThemeManifestJSON({
+        theme: {
+          images: {
+            additional_backgrounds: imageFiles,
+          },
+        },
+      });
+
+      const files = {
+        'bg1.svg': EMPTY_SVG,
+        'bg2.png': EMPTY_PNG,
+        'bg2-apng.png': EMPTY_APNG,
+        'bg3.gif': EMPTY_GIF,
+        'bg4.jpg': EMPTY_JPG,
+        'bg4-1.jpeg': EMPTY_JPG,
+      };
+      const fakeIO = getStreamableIO(files);
+      fakeIO.getFileAsStream = jest.fn(fakeIO.getFileAsStream);
+
+      const manifestJSONParser = new ManifestJSONParser(
+        manifest,
+        linter.collector,
+        { io: fakeIO }
+      );
+
+      await manifestJSONParser.validateStaticThemeImages();
+
+      // Expect getFileAsStream to have been called to read all the image files.
+      expect(fakeIO.getFileAsStream.mock.calls.length).toBe(imageFiles.length);
+      expect(fakeIO.getFileAsStream.mock.calls.map((call) => call[0])).toEqual(
+        imageFiles
+      );
+
+      const { errors, warnings } = linter.collector;
+      expect({ errors, warnings }).toEqual({
+        errors: [],
+        warnings: [],
+      });
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
+    it('considers theme.images as optional', async () => {
+      const linter = new Linter({ _: ['bar'] });
+      const manifest = validStaticThemeManifestJSON({
+        theme: {
+          colors: {
+            accentcolor: '#adb09f',
+            textcolor: '#000',
+            background_tab_text: 'rgba(255, 192, 0, 0)',
+            toolbar_text: 'rgb(255, 255, 255),',
+            toolbar_field_text: 'hsl(120, 100%, 50%)',
+          },
+        },
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        manifest,
+        linter.collector,
+        { io: { files: {} } }
+      );
+
+      await manifestJSONParser.validateStaticThemeImages();
+
+      const { errors, warnings } = linter.collector;
+      expect({ errors, warnings }).toEqual({
+        errors: [],
+        warnings: [],
+      });
+      expect(manifestJSONParser.isValid).toEqual(true);
     });
   });
 
