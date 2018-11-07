@@ -259,6 +259,10 @@ export default class Linter {
       if (manifestParser.parsedJSON.icons) {
         await manifestParser.validateIcons();
       }
+      if (manifestParser.isStaticTheme) {
+        await manifestParser.validateStaticThemeImages();
+      }
+
       this.addonMetadata = manifestParser.getMetadata();
     } else {
       _log.warn(

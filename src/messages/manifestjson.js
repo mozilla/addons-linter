@@ -296,6 +296,84 @@ export function corruptIconFile({ path }) {
   };
 }
 
+export const MANIFEST_THEME_IMAGE_NOT_FOUND = 'MANIFEST_THEME_IMAGE_NOT_FOUND';
+export function manifestThemeImageMissing(path, type) {
+  return {
+    code: MANIFEST_THEME_IMAGE_NOT_FOUND,
+    message: i18n.sprintf(
+      'Theme image for "%(type)s" could not be found in the package',
+      { type }
+    ),
+    description: i18n.sprintf(
+      i18n._('Theme image for "%(type)s" could not be found at "%(path)s"'),
+      { path, type }
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const MANIFEST_THEME_IMAGE_CORRUPTED = 'MANIFEST_THEME_IMAGE_CORRUPTED';
+export function manifestThemeImageCorrupted({ path }) {
+  return {
+    code: MANIFEST_THEME_IMAGE_CORRUPTED,
+    message: i18n._('Corrupted theme image file'),
+    description: i18n.sprintf(
+      i18n._('Theme image file at "%(path)s" is corrupted'),
+      { path }
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const MANIFEST_THEME_IMAGE_WRONG_EXT = 'MANIFEST_THEME_IMAGE_WRONG_EXT';
+export function manifestThemeImageWrongExtension({ path }) {
+  return {
+    code: MANIFEST_THEME_IMAGE_WRONG_EXT,
+    message: i18n._('Theme image file has an unsupported file extension'),
+    description: i18n.sprintf(
+      i18n._(
+        'Theme image file at "%(path)s" has an unsupported file extension'
+      ),
+      { path }
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const MANIFEST_THEME_IMAGE_WRONG_MIME =
+  'MANIFEST_THEME_IMAGE_WRONG_MIME';
+export function manifestThemeImageWrongMime({ path, mime }) {
+  return {
+    code: MANIFEST_THEME_IMAGE_WRONG_MIME,
+    message: i18n._('Theme image file has an unsupported mime type'),
+    description: i18n.sprintf(
+      i18n._(
+        'Theme image file at "%(path)s" has the unsupported mime type "%(mime)s"'
+      ),
+      { path, mime }
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const MANIFEST_THEME_IMAGE_MIME_MISMATCH =
+  'MANIFEST_THEME_IMAGE_MIME_MISMATCH';
+export function manifestThemeImageMimeMismatch({ path, mime }) {
+  return {
+    code: MANIFEST_THEME_IMAGE_MIME_MISMATCH,
+    message: i18n._(
+      'Theme image file mime type does not match its file extension'
+    ),
+    description: i18n.sprintf(
+      i18n._(
+        'Theme image file extension at "%(path)s" does not match its actual mime type "%(mime)s"'
+      ),
+      { path, mime }
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
 export const PROP_NAME_MISSING = manifestPropMissing('name');
 export const PROP_VERSION_MISSING = manifestPropMissing('version');
 

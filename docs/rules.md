@@ -121,3 +121,13 @@ Rules are sorted by severity.
 | `MANIFEST_MULTIPLE_DICTS`   | error    | Multiple dictionaries found                                          |
 | `MANIFEST_EMPTY_DICTS`      | error    | Empty `dictionaries` object                                          |
 | `MANIFEST_DICT_MISSING_ID`  | error    | Missing `applications.gecko.id` property for a dictionary            |
+
+### Static Theme / manifest.json
+
+| Message code                         | Severity | Description                                                 |
+| ------------------------------------ | -------- | ----------------------------------------------------------- |
+| `MANIFEST_THEME_IMAGE_MIME_MISMATCH` | warning  | Theme image file extension should match its mime type       |
+| `MANIFEST_THEME_IMAGE_NOT_FOUND`     | error    | Theme images must not be missing                            |
+| `MANIFEST_THEME_IMAGE_CORRUPTED`     | error    | Theme images must not be corrupted                          |
+| `MANIFEST_THEME_IMAGE_WRONG_EXT`     | error    | Theme images must have one of the supported file extensions |
+| `MANIFEST_THEME_IMAGE_WRONG_MIME`    | error    | Theme images mime type must be a supported format           |

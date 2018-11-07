@@ -21,6 +21,8 @@ import {
   IMAGE_FILE_EXTENSIONS,
   LOCALES_DIRECTORY,
   MESSAGES_JSON,
+  STATIC_THEME_IMAGE_MIMES,
+  MIME_TO_FILE_EXTENSIONS,
 } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
@@ -392,6 +394,87 @@ export default class ManifestJSONParser extends JSONParser {
     return Promise.all(promises);
   }
 
+  async validateThemeImage(imagePath, manifestPropName) {
+    const _path = normalizePath(imagePath);
+    const ext = path
+      .extname(imagePath)
+      .substring(1)
+      .toLowerCase();
+
+    const fileExists = this.validateFileExistsInPackage(
+      _path,
+      `theme.images.${manifestPropName}`,
+      messages.manifestThemeImageMissing
+    );
+
+    // No need to validate the image format if the file doesn't exist
+    // on disk.
+    if (!fileExists) {
+      return;
+    }
+
+    if (!IMAGE_FILE_EXTENSIONS.includes(ext) || ext === 'webp') {
+      this.collector.addError(
+        messages.manifestThemeImageWrongExtension({ path: _path })
+      );
+      this.isValid = false;
+      return;
+    }
+
+    try {
+      const info = await getImageMetadata(this.io, _path);
+      if (
+        !STATIC_THEME_IMAGE_MIMES.includes(info.mime) ||
+        info.mime === 'image/webp'
+      ) {
+        this.collector.addError(
+          messages.manifestThemeImageWrongMime({
+            path: _path,
+            mime: info.mime,
+          })
+        );
+        this.isValid = false;
+      } else if (!MIME_TO_FILE_EXTENSIONS[info.mime].includes(ext)) {
+        this.collector.addWarning(
+          messages.manifestThemeImageMimeMismatch({
+            path: _path,
+            mime: info.mime,
+          })
+        );
+      }
+    } catch (err) {
+      log.debug(
+        `Unexpected error raised while validating theme image "${_path}"`,
+        err.message
+      );
+      this.collector.addError(
+        messages.manifestThemeImageCorrupted({ path: _path })
+      );
+      this.isValid = false;
+    }
+  }
+
+  validateStaticThemeImages() {
+    const promises = [];
+    const themeImages = this.parsedJSON.theme && this.parsedJSON.theme.images;
+
+    // The theme.images manifest property is mandatory on Firefox < 60, but optional
+    // on Firefox >= 60.
+    if (themeImages) {
+      for (const prop of Object.keys(themeImages)) {
+        if (Array.isArray(themeImages[prop])) {
+          themeImages[prop].forEach((imagePath) => {
+            promises.push(this.validateThemeImage(imagePath, prop));
+          });
+        } else {
+          promises.push(this.validateThemeImage(themeImages[prop], prop));
+        }
+      }
+    }
+
+    return Promise.all(promises);
+  }
+
   validateFileExistsInPackage(
     filePath,
     type,
@@ -401,7 +484,9 @@ export default class ManifestJSONParser extends JSONParser {
     if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
       this.collector.addError(messageFunc(_path, type));
       this.isValid = false;
+      return false;
     }
+    return true;
   }
 
   validateContentScriptMatchPattern(matchPattern) {

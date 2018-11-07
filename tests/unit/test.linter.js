@@ -16,6 +16,7 @@ import { Xpi } from 'io';
 import {
   fakeMessageData,
   validManifestJSON,
+  validStaticThemeManifestJSON,
   EMPTY_PNG,
   assertHasMatchingError,
 } from './helpers';
@@ -687,6 +688,51 @@ describe('Linter.getAddonMetadata()', () => {
     const { notices } = addonLinter.collector;
     expect(notices.length).toEqual(1);
     expect(notices[0].code).toEqual(messages.TYPE_NO_MANIFEST_JSON.code);
+  });
+
+  it('should validate static theme images defined in the manifest', async () => {
+    const files = { 'manifest.json': {} };
+    const getFiles = async () => files;
+
+    // Spy the manifest parser.
+    let spyManifestParser;
+    const FakeManifestParser = sinon.spy((...args) => {
+      spyManifestParser = new ManifestJSONParser(...args);
+      spyManifestParser.validateStaticThemeImages = sinon.spy();
+      return spyManifestParser;
+    });
+
+    // Test on a static theme manifest.
+    const addonLinterTheme = new Linter({ _: ['bar'] });
+    addonLinterTheme.io = {
+      getFiles,
+      getFileAsString: async () => {
+        return validStaticThemeManifestJSON({});
+      },
+    };
+
+    const themeMetadata = await addonLinterTheme.getAddonMetadata({
+      ManifestJSONParser: FakeManifestParser,
+    });
+    expect(themeMetadata.type).toEqual(constants.PACKAGE_EXTENSION);
+    sinon.assert.calledOnce(FakeManifestParser);
+    sinon.assert.calledOnce(spyManifestParser.validateStaticThemeImages);
+
+    // Test on a non theme manifest.
+    const addonLinterExt = new Linter({ _: ['bar'] });
+    addonLinterExt.io = {
+      getFiles,
+      getFileAsString: async () => {
+        return validManifestJSON({});
+      },
+    };
+
+    const extMetadata = await addonLinterExt.getAddonMetadata({
+      ManifestJSONParser: FakeManifestParser,
+    });
+    expect(extMetadata.type).toEqual(constants.PACKAGE_EXTENSION);
+    sinon.assert.calledTwice(FakeManifestParser);
+    sinon.assert.notCalled(spyManifestParser.validateStaticThemeImages);
   });
 });
 
