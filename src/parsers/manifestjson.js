@@ -22,8 +22,9 @@ import {
   IMAGE_FILE_EXTENSIONS,
   LOCALES_DIRECTORY,
   MESSAGES_JSON,
-  STATIC_THEME_IMAGE_MIMES,
   MIME_TO_FILE_EXTENSIONS,
+  STATIC_THEME_IMAGE_MIMES,
+  STATIC_THEME_LWT_ALIASES,
 } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
@@ -193,6 +194,19 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (error.keyword === 'required') {
       baseObject = messages.MANIFEST_FIELD_REQUIRED;
+    } else if (error.keyword === 'deprecated') {
+      if (
+        this.isStaticTheme &&
+        STATIC_THEME_LWT_ALIASES.includes(error.dataPath)
+      ) {
+        baseObject = messages.MANIFEST_THEME_LWT_ALIAS;
+        // Overwrite the message with the shorter one included in the linter messages.
+        overrides.message = baseObject.message;
+      }
+      // TODO: add a messages.MANIFEST_FIELD_DEPRECATED and ensure that deprecated
+      // properties are handled properly (e.g. we should also detect when the deprecated
+      // keyword is actually used to warn the developer of additional properties not
+      // explicitly defined in the schemas).
     } else if (
       error.dataPath.startsWith('/permissions') &&
       typeof error.data !== 'undefined' &&
@@ -220,7 +234,12 @@ export default class ManifestJSONParser extends JSONParser {
   _validate() {
     // Not all messages returned by the schema are fatal to Firefox, messages
     // that are just warnings should be added to this array.
-    const warnings = [messages.MANIFEST_PERMISSIONS.code];
+    const warnings = [
+      messages.MANIFEST_PERMISSIONS.code,
+      // Remove the following once the LWT aliases deprecated property should
+      // become errors on submission.
+      messages.MANIFEST_THEME_LWT_ALIAS.code,
+    ];
     let validate = validateAddon;
 
     if (this.isStaticTheme) {
@@ -233,7 +252,10 @@ export default class ManifestJSONParser extends JSONParser {
 
     this.isValid = validate(this.parsedJSON);
     if (!this.isValid) {
-      log.debug('Schema Validation messages', validate.errors);
+      log.debug(
+        'Schema Validation messages',
+        JSON.stringify(validate.errors, null, 2)
+      );
 
       validate.errors.forEach((error) => {
         const message = this.errorLookup(error);

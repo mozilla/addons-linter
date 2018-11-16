@@ -1525,6 +1525,28 @@ describe('ManifestJSONParser', () => {
     });
   });
 
+  describe('deprecated properties', () => {
+    // NOTE: this test currently checks that we don't add any unexpected validation errors
+    // for schema properties marked as deprecated (until we add proper handling for them).
+    it('does not add validation error for manifest properties marked as deprecated', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        options_ui: {
+          page: 'options.html',
+          unexpected_property: true,
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        linter.collector,
+        { io: { files: { 'options.html': '' } } }
+      );
+      expect(manifestJSONParser.isValid).toBeTruthy();
+      expect(linter.collector.errors.length).toBe(0);
+      expect(linter.collector.warnings.length).toBe(0);
+    });
+  });
+
   describe('dictionary', () => {
     it('supports simple valid dictionary', () => {
       const linter = new Linter({ _: ['bar'] });
@@ -1805,14 +1827,14 @@ describe('ManifestJSONParser', () => {
     });
 
     it('adds a validation error on missing theme image files', async () => {
-      const propName = 'theme.images.headerURL';
+      const propName = 'theme.images.frame';
       const fileName = 'missing-image-file.png';
 
       const linter = new Linter({ _: ['bar'] });
       const manifest = validStaticThemeManifestJSON({
         theme: {
           images: {
-            headerURL: fileName,
+            frame: fileName,
           },
         },
       });
@@ -1846,7 +1868,7 @@ describe('ManifestJSONParser', () => {
       const manifest = validStaticThemeManifestJSON({
         theme: {
           images: {
-            headerURL: fileNames[0],
+            frame: fileNames[0],
             additional_backgrounds: fileNames[1],
           },
         },
@@ -1883,7 +1905,7 @@ describe('ManifestJSONParser', () => {
       const manifest = validStaticThemeManifestJSON({
         theme: {
           images: {
-            headerURL: fileNames[0],
+            frame: fileNames[0],
             addional_backgrounds: fileNames[1],
           },
         },
@@ -1931,7 +1953,7 @@ describe('ManifestJSONParser', () => {
       const manifest = validStaticThemeManifestJSON({
         theme: {
           images: {
-            headerURL: fileName,
+            frame: fileName,
           },
         },
       });
@@ -1972,7 +1994,7 @@ describe('ManifestJSONParser', () => {
       const manifest = validStaticThemeManifestJSON({
         theme: {
           images: {
-            headerURL: fileName,
+            frame: fileName,
           },
         },
       });
@@ -2063,8 +2085,8 @@ describe('ManifestJSONParser', () => {
       const manifest = validStaticThemeManifestJSON({
         theme: {
           colors: {
-            accentcolor: '#adb09f',
-            textcolor: '#000',
+            frame: '#adb09f',
+            tab_background_text: '#000',
             background_tab_text: 'rgba(255, 192, 0, 0)',
             toolbar_text: 'rgb(255, 255, 255),',
             toolbar_field_text: 'hsl(120, 100%, 50%)',
@@ -2086,6 +2108,57 @@ describe('ManifestJSONParser', () => {
         warnings: [],
       });
       expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
+    describe('deprecated LWT aliases', () => {
+      it('does add validation warnings for LWT alias manifest properties marked as deprecated', () => {
+        const linter = new Linter({ _: ['bar'] });
+        const manifest = validStaticThemeManifestJSON({
+          theme: {
+            images: {
+              headerURL: 'header.png',
+            },
+            colors: {
+              accentcolor: '#000',
+              textcolor: '#000',
+            },
+          },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          manifest,
+          linter.collector,
+          { io: { files: {} } }
+        );
+
+        const { errors, warnings } = linter.collector;
+
+        expect(manifestJSONParser.isValid).toBeFalsy();
+
+        expect(errors).toEqual([]);
+
+        const actualWarnings = warnings.map((warn) => {
+          const { code, dataPath, file, message, description } = warn;
+          return { code, dataPath, file, message, description };
+        });
+
+        const commonWarnProps = { ...messages.MANIFEST_THEME_LWT_ALIAS };
+        const expectedWarnings = [
+          {
+            ...commonWarnProps,
+            dataPath: '/theme/images/headerURL',
+          },
+          {
+            ...commonWarnProps,
+            dataPath: '/theme/colors/accentcolor',
+          },
+          {
+            ...commonWarnProps,
+            dataPath: '/theme/colors/textcolor',
+          },
+        ];
+
+        expect(actualWarnings).toEqual(expectedWarnings);
+      });
     });
   });
 

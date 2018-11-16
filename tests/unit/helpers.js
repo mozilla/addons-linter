@@ -195,11 +195,11 @@ export function validStaticThemeManifestJSON(extra) {
         version: '1.0',
         theme: {
           images: {
-            headerURL: 'weta.png',
+            theme_frame: 'weta.png',
           },
           colors: {
-            accentcolor: '#adb09f',
-            textcolor: '#000',
+            frame: '#adb09f',
+            tab_background_text: '#000',
             background_tab_text: 'rgba(255, 192, 0, 0)',
             toolbar_text: 'rgb(255, 255, 255),',
             toolbar_field_text: 'hsl(120, 100%, 50%)',
