@@ -42,6 +42,21 @@ describe('ManifestJSONParser', () => {
     expect(metadata.version).toEqual(null);
   });
 
+  it('should see browser_specific_settings as alias of applications', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const json = validManifestJSON({
+      applications: undefined,
+      browser_specific_settings: {gecko: { id: 'foo@baa' } },
+    });
+    const manifestJSONParser = new ManifestJSONParser(
+      json,
+      addonLinter.collector
+    );
+    expect(manifestJSONParser.isValid).toEqual(true);
+    const metadata = manifestJSONParser.getMetadata();
+    expect(metadata.id).toEqual('foo@baa');
+  });
+
   describe('id', () => {
     it('should return the correct id', () => {
       const addonLinter = new Linter({ _: ['bar'] });
