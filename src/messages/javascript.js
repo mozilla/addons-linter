@@ -151,8 +151,8 @@ function temporaryAPI(api) {
     message: i18n._(`"${api}" can cause issues when loaded temporarily`),
     description: i18n._(oneLine`This API can cause issues when loaded
       temporarily using about:debugging in Firefox unless you specify
-      applications > gecko > id in the manifest. Please see:
-      https://mzl.la/2hizK4a for more.`),
+      applications|browser_specific_settings > gecko > id in the manifest.
+      Please see: https://mzl.la/2hizK4a for more.`),
   };
 }
 

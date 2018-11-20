@@ -101,8 +101,10 @@ export const PROP_VERSION_TOOLKIT_ONLY = {
 export const MANIFEST_UPDATE_URL = {
   code: 'MANIFEST_UPDATE_URL',
   message: i18n._('"update_url" is not allowed.'),
-  description: i18n._(oneLine`"applications.gecko.update_url" is not allowed
-    for Mozilla-hosted add-ons.`),
+  description: i18n._(oneLine`
+    "applications.gecko.update_url" or
+    "browser_specific_settings.gecko.update_url" are not allowed for
+    Mozilla-hosted add-ons.`),
   file: MANIFEST_JSON,
 };
 
