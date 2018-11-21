@@ -46,7 +46,7 @@ describe('ManifestJSONParser', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     const json = validManifestJSON({
       applications: undefined,
-      browser_specific_settings: {gecko: { id: 'foo@baa' } },
+      browser_specific_settings: { gecko: { id: 'foo@baa' } },
     });
     const manifestJSONParser = new ManifestJSONParser(
       json,
