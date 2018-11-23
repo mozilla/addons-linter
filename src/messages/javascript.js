@@ -160,10 +160,34 @@ export const STORAGE_LOCAL = temporaryAPI('storage.local');
 export const STORAGE_SYNC = temporaryAPI('storage.sync');
 export const IDENTITY_GETREDIRECTURL = temporaryAPI('identity.getRedirectURL');
 
+export const INCOMPATIBLE_API = {
+  code: 'INCOMPATIBLE_API',
+  message: null,
+  messageFormat: i18n._(
+    '{{api}} is not supported in Firefox version {{minVersion}}'
+  ),
+  description: i18n._(
+    'This API is not implemented by the given minimum Firefox version'
+  ),
+};
+
+export const ANDROID_INCOMPATIBLE_API = {
+  code: 'ANDROID_INCOMPATIBLE_API',
+  message: null,
+  messageFormat: i18n._(
+    '{{api}} is not supported in Firefox for Android version {{minVersion}}'
+  ),
+  description: i18n._(
+    'This API is not implemented by the given minimum Firefox for Android version'
+  ),
+};
+
 export const ESLINT_OVERWRITE_MESSAGE = {
   'no-eval': DANGEROUS_EVAL,
   'no-implied-eval': NO_IMPLIED_EVAL,
   'no-new-func': DANGEROUS_EVAL,
   'no-unsafe-innerhtml/no-unsafe-innerhtml': UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
   'webextension-unsupported-api': UNSUPPORTED_API,
+  'webextension-api-compat': INCOMPATIBLE_API,
+  'webextension-api-compat-android': ANDROID_INCOMPATIBLE_API,
 };

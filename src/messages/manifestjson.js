@@ -418,3 +418,91 @@ export function noMessagesFileInLocales(path) {
     file: MANIFEST_JSON,
   };
 }
+
+export const KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION =
+  'KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION';
+export function keyFirefoxUnsupportedByMinVersion(
+  key,
+  minVersion,
+  versionAdded
+) {
+  return {
+    code: KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION,
+    message: i18n._(
+      'Manifest key not supported by the specified minimum Firefox version'
+    ),
+    description: i18n.sprintf(
+      i18n._(oneLine`"strict_min_version" requires Firefox %(minVersion)s, which
+        was released before version %(versionAdded)s introduced support for
+        "%(key)s".`),
+      { key, minVersion, versionAdded }
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const PERMISSION_FIREFOX_UNSUPPORTED_BY_MIN_VERSION =
+  'èERMISSION_FIREFOX_UNSUPPORTED_BY_MIN_VERSION';
+export function permissionFirefoxUnsupportedByMinVersion(
+  key,
+  minVersion,
+  versionAdded
+) {
+  return {
+    code: PERMISSION_FIREFOX_UNSUPPORTED_BY_MIN_VERSION,
+    message: i18n._(
+      'Permission not supported by the specified minimum Firefox version'
+    ),
+    description: i18n.sprintf(
+      i18n._(oneLine`"strict_min_version" requires Firefox %(minVersion)s, which
+        was released before version %(versionAdded)s introduced support for
+        "%(key)s".`),
+      { key, minVersion, versionAdded }
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION =
+  'KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION';
+export function keyFirefoxAndroidUnsupportedByMinVersion(
+  key,
+  minVersion,
+  versionAdded
+) {
+  return {
+    code: KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION,
+    message: i18n._(
+      'Manifest key not supported by the specified minimum Firefox for Android version'
+    ),
+    description: i18n.sprintf(
+      i18n._(oneLine`"strict_min_version" requires Firefox for Android
+        %(minVersion)s, which was released before version %(versionAdded)s
+        introduced support for "%(key)s".`),
+      { key, minVersion, versionAdded }
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const PERMISSION_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION =
+  'PERMISSION_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION';
+export function permissionFirefoxAndroidUnsupportedByMinVersion(
+  key,
+  minVersion,
+  versionAdded
+) {
+  return {
+    code: PERMISSION_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION,
+    message: i18n._(
+      'Permission not supported by the specified minimum Firefox for Android version'
+    ),
+    description: i18n.sprintf(
+      i18n._(oneLine`"strict_min_version" requires Firefox for Android
+        %(minVersion)s, which was released before version %(versionAdded)s
+        introduced support for "%(key)s".`),
+      { key, minVersion, versionAdded }
+    ),
+    file: MANIFEST_JSON,
+  };
+}

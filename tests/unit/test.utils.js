@@ -14,6 +14,9 @@ import {
   isLocalUrl,
   normalizePath,
   parseCspPolicy,
+  firefoxStrictMinVersion,
+  basicCompatVersionComparison,
+  isCompatible,
 } from 'utils';
 
 describe('getRootExpression()', () => {
@@ -476,5 +479,131 @@ describe('normalizePath', () => {
 
   it('should not escape spaces within path', () => {
     expect(normalizePath('foo/bar baz/qux')).toEqual('foo/bar baz/qux');
+  });
+});
+
+describe('firefoxStrictMinVersion', () => {
+  it('should return null without applications key', () => {
+    expect(firefoxStrictMinVersion({})).toEqual(null);
+  });
+
+  it('should return null without applications.gecko key', () => {
+    expect(firefoxStrictMinVersion({ applications: null })).toEqual(null);
+  });
+
+  it('should return null without applications.gecko.strict_min_version key', () => {
+    expect(firefoxStrictMinVersion({ applications: { gecko: null } })).toEqual(
+      null
+    );
+  });
+
+  it('should return the first number in applications.gecko.strict_min_version', () => {
+    expect(
+      firefoxStrictMinVersion({
+        applications: { gecko: { strict_min_version: '6' } },
+      })
+    ).toEqual(6);
+    expect(
+      firefoxStrictMinVersion({
+        applications: { gecko: { strict_min_version: '60.0a1' } },
+      })
+    ).toEqual(60);
+  });
+});
+
+describe('basicCompatVersionComparison', () => {
+  it('should return false when version added is a boolean', () => {
+    expect(basicCompatVersionComparison(false, 60)).toBe(false);
+  });
+
+  it('should return false when version added is undefined', () => {
+    expect(basicCompatVersionComparison(undefined, 60)).toBe(false);
+  });
+
+  it('should return true when version added is bigger than min version', () => {
+    expect(basicCompatVersionComparison('61', 60)).toBe(true);
+  });
+
+  it('should return false when version added is smaller than min version', () => {
+    expect(basicCompatVersionComparison('59', 60)).toBe(false);
+  });
+});
+
+describe('isCompatible', () => {
+  const getBCD = (data) => ({
+    webextensions: {
+      api: data,
+    },
+  });
+
+  it('should be true if the given key path is not in the object', () => {
+    expect(isCompatible(getBCD({}), 'foo.bar', 60, 'firefox')).toBe(true);
+  });
+
+  it('should be true if the given key path has a compatibility of false', () => {
+    expect(
+      isCompatible(
+        getBCD({
+          foo: { __compat: { support: { firefox: { version_added: false } } } },
+        }),
+        'foo',
+        60,
+        'firefox'
+      )
+    ).toBe(true);
+  });
+
+  it('should be true if the given key path is compatible with the minVersion', () => {
+    expect(
+      isCompatible(
+        getBCD({
+          foo: { __compat: { support: { firefox: { version_added: '60' } } } },
+        }),
+        'foo',
+        60,
+        'firefox'
+      )
+    ).toBe(true);
+  });
+
+  it('should be false if the given key path is incompatible with the minVersion', () => {
+    expect(
+      isCompatible(
+        getBCD({
+          foo: {
+            __compat: { support: { firefox_android: { version_added: '61' } } },
+          },
+        }),
+        'foo',
+        60,
+        'firefox_android'
+      )
+    ).toBe(false);
+  });
+
+  it('should fall back to deepest matching compat info', () => {
+    expect(
+      isCompatible(
+        getBCD({
+          foo: { __compat: { support: { firefox: { version_added: '61' } } } },
+        }),
+        'foo.bar',
+        60,
+        'firefox'
+      )
+    ).toBe(false);
+  });
+
+  it('should be compatible if no specific version is specified', () => {
+    expect(
+      isCompatible(
+        getBCD({
+          foo: { __compat: { support: { firefox: { version_added: true } } } },
+        }),
+        'foo.bar',
+        60,
+        'firefox'
+      )
+    ).toBe(true);
   });
 });

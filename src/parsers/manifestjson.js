@@ -6,6 +6,7 @@ import RJSON from 'relaxed-json';
 import { oneLine } from 'common-tags';
 import probeImageSize from 'probe-image-size';
 import upath from 'upath';
+import bcd from 'mdn-browser-compat-data';
 
 import { getDefaultConfigValue } from 'yargs-options';
 import {
@@ -28,7 +29,12 @@ import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
-import { parseCspPolicy, normalizePath } from 'utils';
+import {
+  parseCspPolicy,
+  normalizePath,
+  firefoxStrictMinVersion,
+  basicCompatVersionComparison,
+} from 'utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
 async function getImageMetadata(io, iconPath) {
@@ -85,6 +91,84 @@ export default class ManifestJSONParser extends JSONParser {
       );
       this.io = io;
       this._validate();
+    }
+  }
+
+  checkKeySupport(support, minVersion, key, isPermission = false) {
+    if (support.firefox) {
+      const versionAdded = support.firefox.version_added;
+      if (basicCompatVersionComparison(versionAdded, minVersion)) {
+        if (!isPermission) {
+          this.collector.addWarning(
+            messages.keyFirefoxUnsupportedByMinVersion(
+              key,
+              this.parsedJSON.applications.gecko.strict_min_version,
+              versionAdded
+            )
+          );
+        } else {
+          this.collector.addNotice(
+            messages.permissionFirefoxUnsupportedByMinVersion(
+              key,
+              this.parsedJSON.applications.gecko.strict_min_version,
+              versionAdded
+            )
+          );
+        }
+      }
+    }
+    if (support.firefox_android) {
+      const versionAddedAndroid = support.firefox_android.version_added;
+      if (basicCompatVersionComparison(versionAddedAndroid, minVersion)) {
+        if (!isPermission) {
+          this.collector.addWarning(
+            messages.keyFirefoxAndroidUnsupportedByMinVersion(
+              key,
+              this.parsedJSON.applications.gecko.strict_min_version,
+              versionAddedAndroid
+            )
+          );
+        } else {
+          this.collector.addNotice(
+            messages.permissionFirefoxAndroidUnsupportedByMinVersion(
+              key,
+              this.parsedJSON.applications.gecko.strict_min_version,
+              versionAddedAndroid
+            )
+          );
+        }
+      }
+    }
+  }
+
+  checkCompatInfo(compatInfo, minVersion, key, manifestKeyValue) {
+    for (const subkey in compatInfo) {
+      if (Object.prototype.hasOwnProperty.call(compatInfo, subkey)) {
+        const subkeyInfo = compatInfo[subkey];
+        if (subkey === '__compat') {
+          this.checkKeySupport(subkeyInfo.support, minVersion, key);
+        } else if (
+          typeof manifestKeyValue === 'object' &&
+          Object.prototype.hasOwnProperty.call(manifestKeyValue, subkey)
+        ) {
+          this.checkCompatInfo(
+            subkeyInfo,
+            minVersion,
+            `${key}.${subkey}`,
+            manifestKeyValue[subkey]
+          );
+        } else if (
+          (key === 'permissions' || key === 'optional_permissions') &&
+          manifestKeyValue.includes(subkey)
+        ) {
+          this.checkKeySupport(
+            subkeyInfo.__compat.support,
+            minVersion,
+            `${key}:${subkey}`,
+            true
+          );
+        }
+      }
     }
   }
 
@@ -284,6 +368,21 @@ export default class ManifestJSONParser extends JSONParser {
       } else {
         // Rest of the extensions can, even though it's not recommended.
         this.collector.addNotice(messages.STRICT_MAX_VERSION);
+      }
+    }
+
+    const minVersion = firefoxStrictMinVersion(this.parsedJSON);
+    if (!this.isLanguagePack && !this.isDictionary && minVersion) {
+      for (const key in bcd.webextensions.manifest) {
+        if (Object.prototype.hasOwnProperty.call(this.parsedJSON, key)) {
+          const compatInfo = bcd.webextensions.manifest[key];
+          this.checkCompatInfo(
+            compatInfo,
+            minVersion,
+            key,
+            this.parsedJSON[key]
+          );
+        }
       }
     }
 
@@ -605,6 +704,10 @@ export default class ManifestJSONParser extends JSONParser {
       name: this.parsedJSON.name,
       type: PACKAGE_EXTENSION,
       version: this.parsedJSON.version,
+      firefoxMinVersion:
+        this.parsedJSON.applications &&
+        this.parsedJSON.applications.gecko &&
+        this.parsedJSON.applications.gecko.strict_min_version,
     };
   }
 }

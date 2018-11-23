@@ -25,6 +25,8 @@ export const ESLINT_RULE_MAPPING = Object.assign(
     'webextension-api': ESLINT_WARNING,
     'webextension-unsupported-api': ESLINT_WARNING,
     'content-scripts-file-absent': ESLINT_ERROR,
+    'webextension-api-compat': ESLINT_WARNING,
+    'webextension-api-compat-android': ESLINT_WARNING,
   },
   EXTERNAL_RULE_MAPPING
 );
