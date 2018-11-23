@@ -2088,7 +2088,7 @@ describe('ManifestJSONParser', () => {
             frame: '#adb09f',
             tab_background_text: '#000',
             background_tab_text: 'rgba(255, 192, 0, 0)',
-            toolbar_text: 'rgb(255, 255, 255),',
+            bookmark_text: 'rgb(255, 255, 255),',
             toolbar_field_text: 'hsl(120, 100%, 50%)',
           },
         },
@@ -2121,6 +2121,7 @@ describe('ManifestJSONParser', () => {
             colors: {
               accentcolor: '#000',
               textcolor: '#000',
+              toolbar_text: '#000',
             },
           },
         });
@@ -2154,6 +2155,10 @@ describe('ManifestJSONParser', () => {
           {
             ...commonWarnProps,
             dataPath: '/theme/colors/textcolor',
+          },
+          {
+            ...commonWarnProps,
+            dataPath: '/theme/colors/toolbar_text',
           },
         ];
 

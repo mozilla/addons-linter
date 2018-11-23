@@ -16,6 +16,7 @@ import {
   validateStaticTheme,
 } from 'schema/validator';
 import {
+  DEPRECATED_STATIC_THEME_LWT_ALIASES,
   MANIFEST_JSON,
   PACKAGE_EXTENSION,
   CSP_KEYWORD_RE,
@@ -24,7 +25,6 @@ import {
   MESSAGES_JSON,
   MIME_TO_FILE_EXTENSIONS,
   STATIC_THEME_IMAGE_MIMES,
-  STATIC_THEME_LWT_ALIASES,
 } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
@@ -197,7 +197,7 @@ export default class ManifestJSONParser extends JSONParser {
     } else if (error.keyword === 'deprecated') {
       if (
         this.isStaticTheme &&
-        STATIC_THEME_LWT_ALIASES.includes(error.dataPath)
+        DEPRECATED_STATIC_THEME_LWT_ALIASES.includes(error.dataPath)
       ) {
         baseObject = messages.MANIFEST_THEME_LWT_ALIAS;
         // Overwrite the message with the shorter one included in the linter messages.

@@ -124,11 +124,12 @@ export const MIME_TO_FILE_EXTENSIONS = {
 // List of the mime types for the allowed static theme images.
 export const STATIC_THEME_IMAGE_MIMES = Object.keys(MIME_TO_FILE_EXTENSIONS);
 
-// List of deprecated static theme's LWT aliases.
-export const STATIC_THEME_LWT_ALIASES = [
+// List of the "schema data paths" of the deprecated static theme's LWT aliases.
+export const DEPRECATED_STATIC_THEME_LWT_ALIASES = [
   '/theme/images/headerURL',
   '/theme/colors/accentcolor',
   '/theme/colors/textcolor',
+  '/theme/colors/toolbar_text',
 ];
 
 // A list of magic numbers that we won't allow.
