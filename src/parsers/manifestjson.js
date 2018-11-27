@@ -168,6 +168,13 @@ export default class ManifestJSONParser extends JSONParser {
       });
     }
 
+    if (
+      this.parsedJSON.browser_specific_settings &&
+      this.parsedJSON.browser_specific_settings.gecko
+    ) {
+      this.parsedJSON.applications = this.parsedJSON.browser_specific_settings;
+    }
+
     if (this.parsedJSON.content_security_policy) {
       this.validateCspPolicy(this.parsedJSON.content_security_policy);
     }

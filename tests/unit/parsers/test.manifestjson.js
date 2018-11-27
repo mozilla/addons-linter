@@ -42,6 +42,35 @@ describe('ManifestJSONParser', () => {
     expect(metadata.version).toEqual(null);
   });
 
+  it('should see browser_specific_settings as alias of applications', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const json = validManifestJSON({
+      applications: undefined,
+      browser_specific_settings: {
+        gecko: {
+          id: 'foo@baa',
+          update_url: '',
+        },
+      },
+    });
+    const manifestJSONParser = new ManifestJSONParser(
+      json,
+      addonLinter.collector
+    );
+    const metadata = manifestJSONParser.getMetadata();
+    expect(metadata.id).toEqual('foo@baa');
+
+    // Verify that any lint error added from the schema
+    // validation is not produced twice.
+    expect(manifestJSONParser.isValid).toEqual(false);
+    expect(addonLinter.collector.errors.length).toEqual(1);
+    assertHasMatchingError(addonLinter.collector.errors, {
+      code: messages.JSON_INVALID.code,
+      message: /update_url" should match format "secureUrl"/,
+      dataPath: '/browser_specific_settings/gecko/update_url',
+    });
+  });
+
   describe('id', () => {
     it('should return the correct id', () => {
       const addonLinter = new Linter({ _: ['bar'] });
