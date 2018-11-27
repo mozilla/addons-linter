@@ -9,6 +9,6 @@ describe('logger.createLogger()', () => {
         },
       };
       createLogger(fakeProcess);
-    }).toThrow(/unknown level whatever/);
+    }).toThrow(/level:whatever must be included in custom levels/);
   });
 });

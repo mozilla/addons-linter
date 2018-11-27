@@ -12,8 +12,8 @@ export async function warnOnInline($, filename) {
       linterMessages.push(
         Object.assign({}, messages.INLINE_SCRIPT, {
           /* This could occur in any HTML file, so let's make it
-            * a warning in case they've included any other file.
-            */
+           * a warning in case they've included any other file.
+           */
           type: VALIDATION_WARNING,
           file: filename,
         })
