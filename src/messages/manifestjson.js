@@ -442,7 +442,7 @@ export function keyFirefoxUnsupportedByMinVersion(
 }
 
 export const PERMISSION_FIREFOX_UNSUPPORTED_BY_MIN_VERSION =
-  'èERMISSION_FIREFOX_UNSUPPORTED_BY_MIN_VERSION';
+  'PERMISSION_FIREFOX_UNSUPPORTED_BY_MIN_VERSION';
 export function permissionFirefoxUnsupportedByMinVersion(
   key,
   minVersion,
