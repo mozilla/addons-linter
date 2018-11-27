@@ -70,7 +70,10 @@ export default class ManifestJSONParser extends JSONParser {
       };
     } else {
       // We've parsed the JSON; now we can validate the manifest.
-      if (this.parsedJSON.browser_specific_settings) {
+      if (
+        this.parsedJSON.browser_specific_settings &&
+        this.parsedJSON.browser_specific_settings.gecko
+      ) {
         this.parsedJSON.applications = this.parsedJSON.browser_specific_settings;
       }
       this.selfHosted = selfHosted;
