@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-12 20:19+0000\n"
+"PO-Revision-Date: 2018-12-01 22:49+0000\n"
 "Last-Translator: Rodrigo <rodrigo.mcunha@hotmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_PT\n"
@@ -144,7 +144,7 @@ msgstr "manifest.json não foi encontrado"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr "O ficheiro é muito grande para analisar."
+msgstr "Ficheiro é muito grande para analisar."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
@@ -172,7 +172,7 @@ msgstr "Violação das condições de utilização da Mozilla."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
-msgstr "O pacote contém entradas duplicadas"
+msgstr "Pacote contém entradas duplicadas"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -208,7 +208,7 @@ msgstr "Nenhuma propriedade de mensagem \"message\" está definida para uma stri
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr "Ver https://mzl.la/1ZOhoEN (MDN Docs) para mais informação."
+msgstr "Veja https://mzl.la/1ZOhoEN (MDN Docs) para mais informação."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -220,7 +220,7 @@ msgstr "Um ícone definido no manifesto não pôde ser encontrado no pacote."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr "O ícone não pôde ser encontrado em \"%(path)s\"."
+msgstr "Ícone não pôde ser encontrado em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
@@ -236,11 +236,11 @@ msgstr "O campo é inválido."
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "O script de conteúdo definido no manifesto não pôde ser encontrado em \"%(path)s\"."
+msgstr "Script de conteúdo definido no manifesto não pôde ser encontrado em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "O ficheiro de css do script de conteúdo definido no manifesto não pôde ser encontrado em \"%(path)s\"."
+msgstr "Ficheiro de css do script de conteúdo definido no manifesto não pôde ser encontrado em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -252,11 +252,11 @@ msgstr "Este extra contém conteúdo proibido."
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr "Os ícones têm de ser quadrados."
+msgstr "Ícones têm de ser quadrados."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr "O ícone em \"%(path)s\" tem de ser quadrado."
+msgstr "Ícone em \"%(path)s\" tem de ser quadrado."
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
@@ -268,7 +268,7 @@ msgstr "Ficheiro de imagem corrupto"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr "O ficheiro de ícone esperado em \"%(path)s\" está corrompido"
+msgstr "Ficheiro de ícone esperado em \"%(path)s\" está corrompido"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
@@ -288,7 +288,7 @@ msgstr "Extensão de imagem não suportada"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr "Os ícones devem ser um de JPG/JPEG, WebP, GIF, PNG ou SVG."
+msgstr "Íones devem ser um de JPG/JPEG, WebP, GIF, PNG ou SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
