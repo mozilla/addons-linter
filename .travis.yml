@@ -5,7 +5,7 @@ node_js:
   - '10'
 script:
   - npm run test-ci
-  - node bin/build-locales
+  - node scripts/build-locales
   - npm run build
   - npm run lint
   # run integration tests using an addons-linter binary in a production-like environment
