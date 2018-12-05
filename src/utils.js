@@ -402,3 +402,46 @@ export function isCompatible(bcd, path, minVersion, application) {
   }
   return true;
 }
+
+export function createCompatibilityRule(
+  application,
+  message,
+  context,
+  bcd,
+  hasBrowserApi
+) {
+  const minVersion =
+    context.settings.addonMetadata &&
+    firefoxStrictMinVersion({
+      applications: {
+        gecko: {
+          strict_min_version: context.settings.addonMetadata.firefoxMinVersion,
+        },
+      },
+    });
+  if (minVersion) {
+    return {
+      MemberExpression(node) {
+        if (
+          !node.computed &&
+          node.object.object &&
+          isBrowserNamespace(node.object.object.name)
+        ) {
+          const namespace = node.object.property.name;
+          const property = node.property.name;
+          const api = `${namespace}.${property}`;
+          if (
+            hasBrowserApi(namespace, property) &&
+            !isCompatible(bcd, api, minVersion, application)
+          ) {
+            context.report(node, message.messageFormat, {
+              api,
+              minVersion: context.settings.addonMetadata.firefoxMinVersion,
+            });
+          }
+        }
+      },
+    };
+  }
+  return {};
+}
