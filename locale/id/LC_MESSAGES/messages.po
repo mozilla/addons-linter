@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-12-07 18:50+0000\n"
+"PO-Revision-Date: 2018-12-07 19:01+0000\n"
 "Last-Translator: Ringgo <armen.ringgo@yahoo.de>\n"
 "Language-Team: none\n"
 "Language: id\n"
@@ -104,7 +104,7 @@ msgstr "Galat sintaksis JavaScript"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Variabel global tiba-tiba diluluskan sebagai argumen"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
@@ -316,7 +316,7 @@ msgstr "Lihat https://mzl.la/20PenXl (Dokumen MDN) untuk informasi lebih lanjut.
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "content_security_policy ubah suai memerlukan tinjauan tambahan."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
