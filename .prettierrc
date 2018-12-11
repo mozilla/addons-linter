@@ -9,6 +9,12 @@
       "options": {
         "parser": "babylon"
       }
+    },
+    {
+      "files": "scripts/*",
+      "options": {
+        "parser": "babylon"
+      }
     }
   ]
 }

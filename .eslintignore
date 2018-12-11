@@ -1,5 +1,5 @@
-bin/download-import-tag
-bin/list-firefox-tags
+scripts/download-import-tag
+scripts/list-firefox-tags
 dist
 coverage
 tests/fixtures/**
