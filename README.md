@@ -151,7 +151,7 @@ Dependencies are automatically kept up-to-date using [greenkeeper](http://greenk
 | npm run test-coverage-once      | Runs the tests once with coverage                                                |
 | npm run test-integration-linter | Runs our integration test-suite                                                  |
 | npm run prettier                | Automatically format the whole code-base with Prettier                           |
-| npm run prettier-dev            | Automatically compare and format modified source files against the master branch   |
+| npm run prettier-dev            | Automatically compare and format modified source files against the master branch |
 
 ### Building
 

@@ -29,5 +29,5 @@ And import the schema.
 
 ## Things to check for further updates
 
-* Review the schema update carefully and see if there are any updates that require additional linting / warning from the linter (e.g properties that are meant for internal add-ons and shouldn't be used by regular add-ons, ask around if unsure)
-* Check for custom format validations in ``src/schema/formats.js`` and update accordingly with upstream code (e.g ``manifestShortcutKey``)
+- Review the schema update carefully and see if there are any updates that require additional linting / warning from the linter (e.g properties that are meant for internal add-ons and shouldn't be used by regular add-ons, ask around if unsure)
+- Check for custom format validations in `src/schema/formats.js` and update accordingly with upstream code (e.g `manifestShortcutKey`)

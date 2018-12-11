@@ -365,3 +365,83 @@ export function couldBeMinifiedCode(code) {
     hugeLinesCount > hugeLinesThreshold
   );
 }
+
+export function firefoxStrictMinVersion(manifestJson) {
+  if (
+    manifestJson.applications &&
+    manifestJson.applications.gecko &&
+    manifestJson.applications.gecko.strict_min_version
+  ) {
+    return parseInt(
+      manifestJson.applications.gecko.strict_min_version.split('.')[0],
+      10
+    );
+  }
+  return null;
+}
+
+export function basicCompatVersionComparison(versionAdded, minVersion) {
+  const asNumber = parseInt(versionAdded, 10);
+  return !Number.isNaN(asNumber) && asNumber > minVersion;
+}
+
+export function isCompatible(bcd, path, minVersion, application) {
+  const steps = path.split('.');
+  let { api } = bcd.webextensions;
+  for (const step of steps) {
+    if (Object.prototype.hasOwnProperty.call(api, step)) {
+      api = api[step];
+    } else {
+      break;
+    }
+  }
+  // API namespace may be undocumented or not implemented, ignore in that case.
+  if (api.__compat) {
+    const versionAdded = api.__compat.support[application].version_added;
+    return !basicCompatVersionComparison(versionAdded, minVersion);
+  }
+  return true;
+}
+
+export function createCompatibilityRule(
+  application,
+  message,
+  context,
+  bcd,
+  hasBrowserApi
+) {
+  const minVersion =
+    context.settings.addonMetadata &&
+    firefoxStrictMinVersion({
+      applications: {
+        gecko: {
+          strict_min_version: context.settings.addonMetadata.firefoxMinVersion,
+        },
+      },
+    });
+  if (minVersion) {
+    return {
+      MemberExpression(node) {
+        if (
+          !node.computed &&
+          node.object.object &&
+          isBrowserNamespace(node.object.object.name)
+        ) {
+          const namespace = node.object.property.name;
+          const property = node.property.name;
+          const api = `${namespace}.${property}`;
+          if (
+            hasBrowserApi(namespace, property) &&
+            !isCompatible(bcd, api, minVersion, application)
+          ) {
+            context.report(node, message.messageFormat, {
+              api,
+              minVersion: context.settings.addonMetadata.firefoxMinVersion,
+            });
+          }
+        }
+      },
+    };
+  }
+  return {};
+}

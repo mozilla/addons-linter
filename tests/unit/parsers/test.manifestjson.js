@@ -289,7 +289,7 @@ describe('ManifestJSONParser', () => {
   describe('enum', () => {
     it('should only return one message', () => {
       const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({ permissions: ['tabs', 'wat'] });
+      const json = validManifestJSON({ permissions: ['alarms', 'wat'] });
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector
@@ -454,6 +454,236 @@ describe('ManifestJSONParser', () => {
       const { errors } = addonLinter.collector;
       expect(errors[0].code).toEqual(messages.STRICT_MAX_VERSION.code);
       expect(errors[0].message).toContain('strict_max_version');
+    });
+  });
+
+  describe('strict_min_version', () => {
+    it('should warn when using a manifest key before Firefox marks it as supported', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        applications: {
+          gecko: {
+            strict_min_version: '47.0',
+          },
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.warnings.length).toEqual(6);
+      let fxIncompatCount = 0;
+      for (const warning of addonLinter.collector.warnings) {
+        if (
+          warning.code !==
+          messages.KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION
+        ) {
+          expect(warning.code).toEqual(
+            messages.KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION
+          );
+          ++fxIncompatCount;
+        }
+      }
+      expect(fxIncompatCount).toBeGreaterThan(0);
+    });
+
+    it('should warn when using a manifest key before Firefox for Android marks it as supported', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        applications: {
+          gecko: {
+            strict_min_version: '47.0',
+          },
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.warnings.length).toEqual(6);
+      let fxaIncompatCount = 0;
+      for (const warning of addonLinter.collector.warnings) {
+        if (warning.code !== messages.KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION) {
+          expect(warning.code).toEqual(
+            messages.KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION
+          );
+          ++fxaIncompatCount;
+        }
+      }
+      expect(fxaIncompatCount).toBeGreaterThan(0);
+    });
+
+    it('should not warn when using an unsupported manifest key without strict_min_version', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON();
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.warnings.length).toEqual(0);
+    });
+
+    it('should not warn when all manifest keys are supported in Firefox and Firefox for Android with the given strict_min_version', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        applications: {
+          gecko: {
+            strict_min_version: '48.0a1',
+          },
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.warnings.length).toEqual(0);
+    });
+
+    it('should ignore manifest key version support for dictionaries', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validDictionaryManifestJSON({
+        applications: {
+          gecko: {
+            id: '@my-dictionary',
+            strict_min_version: '47.0',
+          },
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        {
+          io: { files: { 'path/to/fr.dic': '', 'path/to/fr.aff': '' } },
+        }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.warnings.length).toEqual(0);
+    });
+
+    it('should ignore manifest key version support for langpacks', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validLangpackManifestJSON({
+        applications: {
+          gecko: {
+            strict_min_version: '47.0',
+          },
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.warnings.length).toEqual(0);
+    });
+
+    it('should warn on unsupported subkeys', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        applications: {
+          gecko: {
+            strict_min_version: '54.0',
+          },
+        },
+        chrome_settings_overrides: {
+          homepage: 'https://example.com',
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      const { warnings } = addonLinter.collector;
+      expect(warnings.length).toEqual(2);
+      for (const warning of warnings) {
+        expect(warning.code).toEqual(
+          messages.KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION
+        );
+      }
+    });
+
+    it('should warn on unsupported subsubkeys', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        applications: {
+          gecko: {
+            strict_min_version: '56.0',
+          },
+        },
+        chrome_settings_overrides: {
+          search_provider: {
+            name: 'test',
+            search_url: 'https://example.com',
+            is_default: true,
+          },
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      const { warnings } = addonLinter.collector;
+      expect(warnings.length).toEqual(1);
+      expect(warnings[0].code).toEqual(
+        messages.KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION
+      );
+    });
+
+    it('should add a notice on unsupported permissions', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        applications: {
+          gecko: {
+            strict_min_version: '56.0',
+          },
+        },
+        optional_permissions: ['find'],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.warnings.length).toEqual(0);
+      expect(addonLinter.collector.notices.length).toEqual(1);
+      expect(addonLinter.collector.notices[0].code).toEqual(
+        messages.PERMISSION_FIREFOX_UNSUPPORTED_BY_MIN_VERSION
+      );
+    });
+    it('should add a notice on unsupported permissions on android', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        applications: {
+          gecko: {
+            strict_min_version: '55.0',
+          },
+        },
+        permissions: ['browsingData'],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.warnings.length).toEqual(0);
+      expect(addonLinter.collector.notices.length).toEqual(1);
+      expect(addonLinter.collector.notices[0].code).toEqual(
+        messages.PERMISSION_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION
+      );
     });
   });
 

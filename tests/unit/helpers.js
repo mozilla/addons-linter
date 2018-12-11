@@ -132,7 +132,7 @@ export function validManifestJSON(extra) {
         applications: {
           gecko: {
             id: '{daf44bf7-a45e-4450-979c-91cf07434c3d}',
-            strict_min_version: '40.0.0',
+            strict_min_version: '48.0.0',
           },
         },
         version: '0.1',

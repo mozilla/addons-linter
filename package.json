@@ -58,6 +58,7 @@
     "glob": "7.1.3",
     "is-mergeable-object": "1.1.0",
     "jed": "1.1.1",
+    "mdn-browser-compat-data": "0.0.58",
     "os-locale": "3.0.1",
     "pino": "5.9.0",
     "po2json": "0.4.5",
