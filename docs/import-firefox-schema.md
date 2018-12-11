@@ -6,26 +6,26 @@ We are trying to import the next major Firefox schema right after the beta merge
 
 List the current Mercurial tags on mozilla-unified repository
 
-    $ ./bin/list-firefox-tags 63
-    bin/download-import-tag FIREFOX_63_0_BUILD1
-    bin/download-import-tag FIREFOX_63_0b9_RELEASE
-    bin/download-import-tag FIREFOX_63_0b9_BUILD1
-    bin/download-import-tag FIREFOX_63_0b8_RELEASE
-    bin/download-import-tag FIREFOX_63_0b8_BUILD1
+    $ ./scripts/list-firefox-tags 63
+    scripts/download-import-tag FIREFOX_63_0_BUILD1
+    scripts/download-import-tag FIREFOX_63_0b9_RELEASE
+    scripts/download-import-tag FIREFOX_63_0b9_BUILD1
+    scripts/download-import-tag FIREFOX_63_0b8_RELEASE
+    scripts/download-import-tag FIREFOX_63_0b8_BUILD1
     …
-    bin/download-import-tag FIREFOX_63_0b14_RELEASE
-    bin/download-import-tag FIREFOX_63_0b14_BUILD1
+    scripts/download-import-tag FIREFOX_63_0b14_RELEASE
+    scripts/download-import-tag FIREFOX_63_0b14_BUILD1
     …
-    bin/download-import-tag FIREFOX_63_0b10_RELEASE
-    bin/download-import-tag FIREFOX_63_0b10_BUILD1
+    scripts/download-import-tag FIREFOX_63_0b10_RELEASE
+    scripts/download-import-tag FIREFOX_63_0b10_BUILD1
 
 Now download the most recent tag (this takes a while, releases are approx 370MB big)
 
-    $ ./bin/download-import-tag FIREFOX_63_0b14_RELEASE
+    $ ./scripts/download-import-tag FIREFOX_63_0b14_RELEASE
 
 And import the schema.
 
-    $ ./bin/firefox-schema-import tmp/FIREFOX_63_0b14_RELEASE.tar.gz
+    $ ./scripts/firefox-schema-import tmp/FIREFOX_63_0b14_RELEASE.tar.gz
 
 ## Things to check for further updates
 

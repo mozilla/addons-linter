@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-12-02 17:31+0000\n"
+"PO-Revision-Date: 2018-12-06 11:18+0000\n"
 "Last-Translator: robbp <robbpaun@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ro\n"
@@ -184,19 +184,19 @@ msgstr ""
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "Substituentul pentru mesaj lipsește"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "Un substituent utilizat în mesaj nu este definit."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "Denumirea substituentului conține caractere invalide"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "Substituentului îi lipsește proprietatea de conținut"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"

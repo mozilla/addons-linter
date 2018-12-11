@@ -2,8 +2,8 @@
 *.*
 
 # exclude these files
-bin/download-import-tag
-bin/list-firefox-tags
+scripts/download-import-tag
+scripts/list-firefox-tags
 package-lock.json
 LICENSE
 
