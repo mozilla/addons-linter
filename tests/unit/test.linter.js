@@ -195,6 +195,18 @@ describe('Linter', () => {
     });
   });
 
+  it('Eslint shouldnt ignore dotfiles', async () => {
+    const addonLinter = new Linter({
+      _: ['tests/fixtures/webextension_hidden_files/'],
+    });
+    addonLinter.print = sinon.stub();
+
+    await addonLinter.scan();
+    expect(addonLinter.collector.scannedFiles).toEqual({
+      '.hidden.js': ['javascript'],
+    });
+  });
+
   it('should optionally scan selected files', async () => {
     const addonLinter = new Linter({
       _: ['tests/fixtures/webextension_scan_file'],

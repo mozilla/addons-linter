@@ -90,6 +90,8 @@ export default class JavaScriptScanner {
       // the scan. See: https://github.com/mozilla/addons-linter/issues/1288
       ignore: false,
       patterns: ['!bower_components/*', '!node_modules/*'],
+      // Also, don't ignore dotfiles in scans.
+      dotfiles: true,
 
       filename: this.filename,
 
