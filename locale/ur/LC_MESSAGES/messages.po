@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-10-04 13:13+0000\n"
-"Last-Translator: Tanzeel Khan <tanzeelkhan94@gmail.com>\n"
+"PO-Revision-Date: 2018-12-14 03:34+0000\n"
+"Last-Translator: عمر <um.qshi@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ur\n"
 "MIME-Version: 1.0\n"
@@ -140,7 +140,7 @@ msgstr ""
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "manifest.json نہیں ملا"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
