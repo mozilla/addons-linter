@@ -93,7 +93,7 @@
           "properties": {
             "keyword": {
               "type": "string",
-              "pattern": "^[^?\\s:]([^\\s:]*[^/\\s:])?$"
+              "pattern": "^[^?\\s:][^\\s:]*$"
             }
           },
           "required": [

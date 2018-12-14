@@ -83,6 +83,10 @@
                   "type": "integer",
                   "deprecated": "Unsupported on Firefox."
                 },
+                "encoding": {
+                  "type": "string",
+                  "description": "Encoding of the search term."
+                },
                 "is_default": {
                   "type": "boolean",
                   "description": "Sets the default engine to a built-in engine only."

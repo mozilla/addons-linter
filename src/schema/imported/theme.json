@@ -194,7 +194,14 @@
               "maxItems": 15
             },
             "headerURL": {
-              "$ref": "manifest#/types/ImageDataOrExtensionURL"
+              "allOf": [
+                {
+                  "$ref": "manifest#/types/ImageDataOrExtensionURL"
+                },
+                {
+                  "deprecated": "Please use <em>theme.images.theme_frame</em>, this alias will be removed in Firefox 69."
+                }
+              ]
             },
             "theme_frame": {
               "$ref": "manifest#/types/ImageDataOrExtensionURL"
@@ -211,7 +218,14 @@
               "$ref": "#/types/ThemeColor"
             },
             "accentcolor": {
-              "$ref": "#/types/ThemeColor"
+              "allOf": [
+                {
+                  "$ref": "#/types/ThemeColor"
+                },
+                {
+                  "deprecated": "Please use <em>theme.colors.frame</em>, this alias will be removed in Firefox 69."
+                }
+              ]
             },
             "frame": {
               "$ref": "#/types/ThemeColor"
@@ -220,7 +234,14 @@
               "$ref": "#/types/ThemeColor"
             },
             "textcolor": {
-              "$ref": "#/types/ThemeColor"
+              "allOf": [
+                {
+                  "$ref": "#/types/ThemeColor"
+                },
+                {
+                  "deprecated": "Please use <em>theme.colors.tab_background_text</em>, this alias will be removed in Firefox 69."
+                }
+              ]
             },
             "tab_background_text": {
               "$ref": "#/types/ThemeColor"
@@ -241,7 +262,14 @@
               "$ref": "#/types/ThemeColor"
             },
             "toolbar_text": {
-              "$ref": "#/types/ThemeColor"
+              "allOf": [
+                {
+                  "$ref": "#/types/ThemeColor"
+                },
+                {
+                  "deprecated": "Please use <em>theme.colors.bookmark_text</em>, this alias will be removed in Firefox 69."
+                }
+              ]
             },
             "bookmark_text": {
               "$ref": "#/types/ThemeColor"
