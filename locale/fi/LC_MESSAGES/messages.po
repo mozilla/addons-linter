@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-12-11 20:58+0000\n"
-"Last-Translator: Rasmus <rasmus.bertell@zoho.com>\n"
+"PO-Revision-Date: 2018-12-20 18:32+0000\n"
+"Last-Translator: Jarmo <jarmo@juslin.me>\n"
 "Language-Team: none\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -272,7 +272,7 @@ msgstr "Odotettu kuvatiedosto polussa \"%(path)s\" on vioittunut"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "Kohteesta \"default_locale\" puuttuu lokalisaatioita."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -296,7 +296,7 @@ msgstr "Tyhjä kielihakemisto"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "messages.json -tiedosto puuttuu polusta \"%(path)s\""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
