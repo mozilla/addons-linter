@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-12-24 15:11+0000\n"
+"PO-Revision-Date: 2019-01-04 11:59+0000\n"
 "Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
@@ -92,11 +92,11 @@ msgstr "Không thể tìm thấy tập lệnh nội dung"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr "Tên tệp nội dung không được để trống."
+msgstr "Tên tập tin nội dung không được để trống."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr "Tên tệp nội dung không được để trống"
+msgstr "Tên tập tin nội dung không được để trống"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
@@ -132,11 +132,11 @@ msgstr "JSON của bạn không hợp lệ."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr "Tệp JSON của bạn không thể phân tích cú pháp."
+msgstr "Tập tin JSON của bạn không thể phân tích cú pháp."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr "Chúng tôi không thể giải nén tệp zip."
+msgstr "Chúng tôi không thể giải nén tập tin zip."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
@@ -144,23 +144,23 @@ msgstr "Không tìm thấy manifest.json"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr "Tệp quá lớn để phân tích cú pháp."
+msgstr "Tập tin quá lớn để phân tích cú pháp."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr "Tệp ẩn được gắn cờ"
+msgstr "Tập tin ẩn được gắn cờ"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr "Đã tìm thấy tên tệp được gắn cờ"
+msgstr "Đã tìm thấy tên tập tin được gắn cờ"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr "Đã tìm thấy phần mở rộng tệp được gắn cờ"
+msgstr "Đã tìm thấy phần mở rộng tập tin được gắn cờ"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr "Đã tìm thấy loại tệp được gắn cờ"
+msgstr "Đã tìm thấy loại tập tin được gắn cờ"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
@@ -216,7 +216,7 @@ msgstr "\"strict_max_version\" không bắt buộc."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr "Không thể tìm thấy biểu tượng được xác định trong tệp manifest trong gói."
+msgstr "Không thể tìm thấy biểu tượng được xác định trong tập tin manifest trong gói."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
@@ -264,11 +264,11 @@ msgstr "Kích thước của biểu tượng không phù hợp với manifest."
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
-msgstr "Tệp bị hỏng"
+msgstr "Tập tin bị hỏng"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr "Tệp biểu tượng tại \"%(path)s\" bị hỏng"
+msgstr "Tập tin biểu tượng tại \"%(path)s\" bị hỏng"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
@@ -296,7 +296,7 @@ msgstr "Thư mục ngôn ngữ trống"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr "Thiếu tệp messages.json trong \"%(path)s\""
+msgstr "Thiếu tập tin messages.json trong \"%(path)s\""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
