@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-10-04 11:45+0000\n"
+"PO-Revision-Date: 2019-01-04 17:43+0000\n"
 "Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -44,7 +44,7 @@ msgstr "Sütun"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Seçicilerin geçersiz gruplanması tespit edildi"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
@@ -124,7 +124,7 @@ msgstr "JSON dosyanız blok yorumlar çeriyor."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "JSON dosyalarında yinelenen anahtarlara izin verilmemektedir."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
@@ -180,7 +180,7 @@ msgstr "Firefox eklentilerinin sanal para kazıcıları çalıştırmasına izin
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "Dizge adı önceden tanımlanmış bir iletiye ayrılmış"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -196,15 +196,15 @@ msgstr "Yer tutucu adında geçersiz karakterler var"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "Yer tutucuda content özelliği eksik"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "Çeviri dizgesinin message özelliği eksik"
 
 #: src/messages/locale-messagesjson.js:8
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
+msgstr "Bir dizge için \"message\" mesaj özelliği ayarlanmadı (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
@@ -236,11 +236,11 @@ msgstr "Alan geçersiz."
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Bildirgede tanımlanan içerik betiği \"%(path)s\" yolunda bulunamadı."
 
 #: src/messages/manifestjson.js:162
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Bildirgede tanımlanan içerik betiği css dosyası \"%(path)s\" yolunda bulunamadı."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
