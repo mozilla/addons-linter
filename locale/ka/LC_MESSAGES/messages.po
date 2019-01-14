@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2019-01-06 19:02+0000\n"
+"PO-Revision-Date: 2019-01-14 18:37+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -120,7 +120,7 @@ msgstr "არასასურველი გარეშე JS ბიბლ�
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr "თქვენი JSON შეიცავს მრავალხაზიან კომენტარებს."
+msgstr "თქვენი JSON შეიცავს მრავალხაზიან შენიშვნებს."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
