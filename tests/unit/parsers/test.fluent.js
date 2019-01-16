@@ -12,7 +12,7 @@ describe('FluentParser', () => {
     const parser = new FluentParser(
       `
 choose-download-folder-title =
-  {
+  { $faz ->
     *[nominative] Foo
      [accusative] Foo2
   }`,
@@ -28,13 +28,13 @@ choose-download-folder-title =
     const addonLinter = new Linter({ _: ['bar'] });
     const parser = new FluentParser(
       `
-key67
+key67 =
     .label = Sign In To &syncBrand.shortName.label;…
     .accesskey = Y
-key68
+key68 =
     .label = Sync Now
     .accesskey = S
-key69
+key69 =
     .label = Reconnect to &syncBrand.shortName.label;…
     .accesskey = R`,
       addonLinter.collector
@@ -90,7 +90,7 @@ shared-photos =
     parser.parse();
 
     expect(parser.isValid).toEqual(false);
-    assertHasMatchingError(addonLinter.collector.errors, {
+    assertHasMatchingError(addonLinter.collector.warnings, {
       code: messages.FLUENT_INVALID.code,
       message: 'Your FTL is not valid.',
       description: oneLine`
