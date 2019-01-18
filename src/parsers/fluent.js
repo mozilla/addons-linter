@@ -1,8 +1,4 @@
-import {
-  FluentParser as FluentSyntaxParser,
-  lineOffset,
-  columnOffset,
-} from 'fluent-syntax';
+import { parse, lineOffset, columnOffset } from 'fluent-syntax';
 
 import * as messages from 'messages';
 
@@ -22,8 +18,7 @@ export default class FluentParser {
   }
 
   parse() {
-    const parser = new FluentSyntaxParser();
-    const resource = parser.parse(this._sourceString);
+    const resource = parse(this._sourceString);
 
     this.parsedData = {};
 
@@ -40,7 +35,7 @@ export default class FluentParser {
           annotation.span.end
         );
 
-        const errorData = {
+        const warningData = {
           ...messages.FLUENT_INVALID,
           file: this.filename,
           description: entry.annotations[0].message,
@@ -48,7 +43,7 @@ export default class FluentParser {
           line: matchedLine,
         };
 
-        this.collector.addError(errorData);
+        this.collector.addWarning(warningData);
       } else if (entry.id !== undefined) {
         this.parsedData[entry.id.name] = entry;
       }
