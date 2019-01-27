@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2019-01-04 11:59+0000\n"
-"Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
+"PO-Revision-Date: 2019-01-27 01:51+0000\n"
+"Last-Translator: Cloney 173741 <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr "Đoạn mã"
 
 #: src/linter.js:140
 msgid "Message"
-msgstr ""
+msgstr "Tin nhắn"
 
 #: src/linter.js:146
 msgid "Description"
@@ -336,7 +336,7 @@ msgstr "Xem http://mzl.la/1kXIADa (Tài liệu MDN) để biết thêm thông ti
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "Thuộc tính \"version\" sử dụng định dạng dành riêng cho Firefox."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
