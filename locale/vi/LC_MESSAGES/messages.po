@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2019-01-27 01:51+0000\n"
+"PO-Revision-Date: 2019-01-27 02:08+0000\n"
 "Last-Translator: Cloney 173741 <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
@@ -44,7 +44,7 @@ msgstr "Cột"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Đã tìm thấy lồng ghép không hợp lệ"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
@@ -52,19 +52,19 @@ msgstr "Đã xảy ra lỗi cú pháp CSS"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
-msgstr ""
+msgstr "FTL của bạn không hợp lệ."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "Tệp FTL của bạn không thể phân tích cú pháp."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Các tập lệnh từ xa không được phép theo Chính sách tiện ích mở rộng."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Các tập lệnh nội tuyến bị chặn theo mặc định"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
@@ -104,11 +104,11 @@ msgstr "Lỗi cú pháp JavaScript"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Việc sử dụng biến toàn cục làm đối số không mong muốn"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Không khuyến khích sử dụng document.write."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
@@ -180,7 +180,7 @@ msgstr "Tiện ích Firefox không được phép chạy các công cụ khai th
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "Tên chuỗi được dành riêng cho một tin nhắn được xác định trước"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -200,7 +200,7 @@ msgstr ""
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "Chuỗi dịch bị thiếu thuộc tính tin nhắn"
 
 #: src/messages/locale-messagesjson.js:8
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
@@ -236,11 +236,11 @@ msgstr "Trường không hợp lệ."
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin manifest tại \"%(path)s\"."
 
 #: src/messages/manifestjson.js:162
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Không thể tìm thấy tệp css tập lệnh nội dung được xác định trong tập tin manifest tại \"%(path)s\"."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -272,15 +272,15 @@ msgstr "Tập tin biểu tượng tại \"%(path)s\" bị hỏng"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "Thuộc tính \"default_locale\" bị thiếu bản địa hóa."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "Thuộc tính \"default_locale\" bị thiếu nhưng \"_locales\" tồn tại."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "Loại quyền hạn không được hỗ trợ."
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
@@ -304,7 +304,7 @@ msgstr "Không rõ quyền hạn."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "Xem https://mzl.la/1R1n1t0 (Tài liệu MDN) để biết thêm thông tin."
+msgstr "Xem tại https://mzl.la/1R1n1t0 (Tài liệu MDN) để biết thêm thông tin."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -312,11 +312,11 @@ msgstr "\"manifest_version\" trong manifest.json không phải là một giá tr
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "Xem https://mzl.la/20PenXl (Tài liệu MDN) để biết thêm thông tin."
+msgstr "Xem tại https://mzl.la/20PenXl (Tài liệu MDN) để biết thêm thông tin."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "Một tùy chỉnh content_security_policy cần xem xét bổ sung."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
@@ -324,7 +324,7 @@ msgstr "Thuộc tính \"name\" phải là một chuỗi kí tự."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "Xem http://mzl.la/1STmr48 (Tài liệu MDN) để biết thêm thông tin."
+msgstr "Xem tại http://mzl.la/1STmr48 (Tài liệu MDN) để biết thêm thông tin."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
@@ -332,7 +332,7 @@ msgstr "Thuộc tính \"version\" phải là một chuỗi kí tự."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "Xem http://mzl.la/1kXIADa (Tài liệu MDN) để biết thêm thông tin."
+msgstr "Xem tại http://mzl.la/1kXIADa (Tài liệu MDN) để biết thêm thông tin."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
