@@ -111,7 +111,7 @@
     "gunzip-maybe": "1.4.1",
     "hashish": "0.0.4",
     "isparta": "4.1.1",
-    "jest": "22.1.4",
+    "jest": "24.0.0",
     "jest-raw-loader": "1.0.1",
     "json-loader": "0.5.7",
     "lodash.clonedeep": "4.5.0",
