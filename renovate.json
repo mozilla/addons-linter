@@ -1,5 +1,5 @@
 {
-  "timezone": "Europe/Berlin",
+  "timezone": "UTC",
   "extends": [
     "config:base",
     ":maintainLockFilesWeekly",
@@ -7,7 +7,7 @@
   ],
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": "before 4pm on Tuesday"
+    "schedule": "before 8am on Tuesday"
   },
   "packageRules": [
     {
