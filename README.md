@@ -137,7 +137,7 @@ Install dependencies with npm:
 npm install
 ```
 
-Dependencies are automatically kept up-to-date using [greenkeeper](http://greenkeeper.io/).
+Dependencies are automatically kept up-to-date using [renovatebot](https://renovatebot.com/).
 
 #### npm scripts
 
