@@ -29,7 +29,7 @@ describe('firefox schema import', () => {
   // Skip the Firefox schema import tests on windows.
   if (process.platform === 'win32') {
     // eslint-disable-next-line jest/no-disabled-tests
-    test.skip('skip test suite on Windows');
+    pending();
     return;
   }
 
