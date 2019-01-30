@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2019-01-04 17:43+0000\n"
+"PO-Revision-Date: 2019-01-30 17:16+0000\n"
 "Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -80,7 +80,7 @@ msgstr "Bu API Firefox'ta kullanılamamaktadır."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener` truthy dördüncü argüman ile çağrıldı."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -104,7 +104,7 @@ msgstr "JavaScript söz dizimi hatası"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Argüman olarak beklenmeyen global aktarıldı"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
