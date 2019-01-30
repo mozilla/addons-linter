@@ -1,5 +1,20 @@
 {
+  "timezone": "Europe/Berlin",
   "extends": [
-    "config:base"
+    "config:base",
+    ":maintainLockFilesWeekly",
+    ":prNotPending"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": "before 4pm on Tuesday"
+  },
+  "packageRules": [
+    {
+      "packagePatterns": [
+        "*"
+      ],
+      "rangeStrategy": "pin"
+    }
   ]
 }
