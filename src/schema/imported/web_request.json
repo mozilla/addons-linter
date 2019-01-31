@@ -1212,14 +1212,16 @@
       "enum": [
         "blocking",
         "requestBody"
-      ]
+      ],
+      "postprocess": "webRequestBlockingPermissionRequired"
     },
     "OnBeforeSendHeadersOptions": {
       "type": "string",
       "enum": [
         "requestHeaders",
         "blocking"
-      ]
+      ],
+      "postprocess": "webRequestBlockingPermissionRequired"
     },
     "OnSendHeadersOptions": {
       "type": "string",
@@ -1232,7 +1234,8 @@
       "enum": [
         "blocking",
         "responseHeaders"
-      ]
+      ],
+      "postprocess": "webRequestBlockingPermissionRequired"
     },
     "OnAuthRequiredOptions": {
       "type": "string",
@@ -1240,7 +1243,8 @@
         "responseHeaders",
         "blocking",
         "asyncBlocking"
-      ]
+      ],
+      "postprocess": "webRequestBlockingPermissionRequired"
     },
     "OnResponseStartedOptions": {
       "type": "string",
