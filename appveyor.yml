@@ -5,8 +5,6 @@ install:
   - ps: Install-Product node $env:nodejs_version x64
   - set CI=true
   - set PATH=%APPDATA%\npm;%PATH%
-  # Node.js 8 comes with an npm that doesn't support "npm ci"
-  - IF %nodejs_version% EQU 8 npm install -g npm@^5.7.1
   - npm ci
 
 matrix:
@@ -18,7 +16,6 @@ shallow_clone: true
 # Keep the following configs in sync with .travis.yml
 environment:
   matrix:
-    - nodejs_version: '8'
     - nodejs_version: '10'
 
 test_script:
