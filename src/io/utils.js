@@ -1,7 +1,7 @@
 import { lstat, readdir } from 'fs';
 import * as path from 'path';
 
-import promisify from 'es6-promisify';
+import { promisify } from 'es6-promisify';
 import upath from 'upath';
 
 import log from 'logger';
