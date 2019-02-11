@@ -209,6 +209,8 @@ export const BANNED_LIBRARIES = [
   'angularjs.1.7.4.angular.min.js',
   'angularjs.1.7.5.angular.js',
   'angularjs.1.7.5.angular.min.js',
+  'angularjs.1.7.6.angular.js',
+  'angularjs.1.7.6.angular.min.js',
   'jquery.1.2.1.jquery.js',
   'jquery.1.2.1.jquery.min.js',
   'jquery.1.2.2.jquery.js',
