@@ -104,7 +104,7 @@
                   "enum": [
                     "spanning"
                   ],
-                  "onError": "warn"
+                  "default": "spanning"
                 },
                 "background": {
                   "anyOf": [
@@ -574,6 +574,11 @@
       "type": "string",
       "format": "strictRelativeUrl"
     },
+    "ExtensionFileUrl": {
+      "type": "string",
+      "format": "strictRelativeUrl",
+      "pattern": "\\S"
+    },
     "ImageDataOrExtensionURL": {
       "type": "string",
       "format": "imageDataOrStrictRelativeUrl"
@@ -726,13 +731,13 @@
           "type": "object",
           "patternProperties": {
             "^[1-9]\\d*$": {
-              "$ref": "manifest#/types/ExtensionURL"
+              "$ref": "#/types/ExtensionFileUrl"
             }
           },
           "additionalProperties": false
         },
         {
-          "$ref": "manifest#/types/ExtensionURL"
+          "$ref": "#/types/ExtensionFileUrl"
         }
       ]
     },
@@ -761,8 +766,21 @@
       "deprecated": "An unexpected property was found in the WebExtension manifest."
     },
     "PersistentBackgroundProperty": {
-      "type": "boolean",
-      "deprecated": "Event pages are not currently supported. This will run as a persistent background page."
+      "anyOf": [
+        {
+          "type": "boolean",
+          "enum": [
+            true
+          ]
+        },
+        {
+          "type": "boolean",
+          "enum": [
+            false
+          ],
+          "deprecated": "Event pages are not currently supported. This will run as a persistent background page."
+        }
+      ]
     }
   }
 }

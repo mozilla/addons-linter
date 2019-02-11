@@ -702,7 +702,6 @@
         "filename",
         "incognito",
         "danger",
-        "mime",
         "startTime",
         "state",
         "paused",
@@ -811,8 +810,7 @@
         },
         "totalBytesGreater": {
           "description": "Limits results to downloads whose totalBytes is greater than the given integer.",
-          "type": "number",
-          "default": -1
+          "type": "number"
         },
         "totalBytesLess": {
           "description": "Limits results to downloads whose totalBytes is less than the given integer.",
