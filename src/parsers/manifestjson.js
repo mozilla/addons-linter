@@ -203,7 +203,7 @@ export default class ManifestJSONParser extends JSONParser {
         // Overwrite the message with the shorter one included in the linter messages.
         overrides.message = baseObject.message;
       }
-      // TODO: add a messages.MANIFEST_FIELD_DEPRECATED and ensure that deprecated
+      // TODO(#2462): add a messages.MANIFEST_FIELD_DEPRECATED and ensure that deprecated
       // properties are handled properly (e.g. we should also detect when the deprecated
       // keyword is actually used to warn the developer of additional properties not
       // explicitly defined in the schemas).
