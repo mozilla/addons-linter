@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2019-02-28 08:11+0000\n"
+"PO-Revision-Date: 2019-02-28 08:21+0000\n"
 "Last-Translator: robbp <robbpaun@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ro\n"
@@ -218,31 +218,31 @@ msgstr "„strict_max_version\" nu este necesar."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
+msgstr "O pictogramă definită în manifest nu se regăsește în pachet."
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Pictograma nu a fost găsită la „%(path)s”."
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Scriptul de fundal nu a fost găsit la „%(path)s”."
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Pagina de fundal nu a fost găsită la „%(path)s”."
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
-msgstr ""
+msgstr "Câmpul este invalid."
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Scriptul de conținut definit în manifest nu se regăsește la „%(path)s”."
 
 #: src/messages/manifestjson.js:162
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Fișierul css cu scriptul de conținut definit în manifest nu se regăsește la „%(path)s”."
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
@@ -254,43 +254,43 @@ msgstr "Acest supliment are conținut interzis."
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr ""
+msgstr "Pictogramele trebuie să fie pătrate."
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "Pictograma de la „%(path)s” trebuie să fie pătrată."
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "Mărimea pictogramei nu corespunde manifestului."
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
-msgstr ""
+msgstr "Fișier de imagine corupt"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "Fișierul așteptat de pictogramă de la „%(path)s” este corupt"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "„default_locale\" nu are traduceri."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "„default_locale\" lipsește, dar „_locales\" există."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "Tipul de permisiune nu are suport."
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "Extensie nepermisă de imagine"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
+msgstr "Pictogramele trebuie să fie fișiere JPG/JPEG, WebP, GIF, PNG sau SVG."
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
@@ -298,7 +298,7 @@ msgstr "Director de limbi gol"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "Fișierul messages.json lipsește în „%(path)s\""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
@@ -306,43 +306,43 @@ msgstr "Permisiune necunoscută."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "Vezi https://mzl.la/1R1n1t0 (documente MDN) pentru mai multe informații."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "„manifest_version\" din manifest.json nu este o valoare validă"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "Vezi https://mzl.la/20PenXl (documente MDN) pentru mai multe informații."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "O content_security_policy personalizată necesită o recenzie suplimentară."
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "Proprietatea „name” trebuie să fie un șir."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "Vezi http://mzl.la/1STmr48 (documente MDN) pentru mai multe informații."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "Proprietatea „versiune” trebuie să fie un șir."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "Vezi http://mzl.la/1kXIADa (documente MDN) pentru mai multe informații."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "Proprietatea „version” folosește un format specific Firefox."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "Nu se permite „update_url\"."
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
@@ -350,4 +350,4 @@ msgstr "Câmpul este necesar."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "Proprietatea „update_url\" nu este folosită de Firefox."
