@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-12-13 14:22+0000\n"
+"PO-Revision-Date: 2019-02-28 08:11+0000\n"
 "Last-Translator: robbp <robbpaun@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ro\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: src/linter.js:117
 msgid "Validation Summary:"
-msgstr ""
+msgstr "Rezumat validări:"
 
 #: src/linter.js:134
 msgid "Code"
@@ -48,19 +48,19 @@ msgstr "S-a depistat o imbricare invalidă a selectoarelor"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "S-a depistat o eroare de sintaxă CSS"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
-msgstr ""
+msgstr "FTL invalid."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "Fișierul FTL nu a putut fi analizat."
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Scripturile la distanță nu sunt permise conform politicilor privind suplimentele."
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
@@ -68,11 +68,11 @@ msgstr "Scripturile inline sunt blocate implicit"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
-msgstr ""
+msgstr "S-a depistat o bibliotecă JS cunoscută"
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
-msgstr "{{api}} nu este suportat"
+msgstr "{{api}} nu are suport"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
@@ -84,19 +84,19 @@ msgstr "addEventListener` a fost apelat cu un al patrulea argument adevărat."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Nu s-a găsit fișierul cu scriptul de conținut."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Nu s-a găsit fișierul cu scriptul de conținut"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Fișierul cu scriptul de conținut nu trebuie să fie gol."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Numele fișierului cu scriptul de conținut nu poate fi lăsat gol"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
@@ -104,83 +104,83 @@ msgstr "Eroare de sintaxă JavaScript"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Variabilă globală neașteptată trecută ca argument"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Utilizarea document.write este puternic nerecomandată."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "Bibliotecă JS de la terți interzisă"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Bibliotecă JS de la terți nerecomandată"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "Fișierul tău JSON conține blocuri de comentarii."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "În fișierele JSON nu se permit duplicate de chei."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "Fișierul tău JSON nu este valid."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "Fișierul tău JSON nu a putut fi analizat."
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "Nu am reușit să dezarhivăm fișierul zip."
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "Nu s-a găsit fișierul manifest.json"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr ""
+msgstr "Fișierul este prea mare ca să poată fi analizat."
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "S-a semnalat un fișier ascuns"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "S-a depistat o denumire de fișier semnalat"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "S-au depistat extensii de fișiere semnalate"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "S-a depistat un tip de fișier semnalat"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
-msgstr ""
+msgstr "Pachetul este deja semnat"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
-msgstr ""
+msgstr "Încălcarea condițiilor de utilizare Mozilla."
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
-msgstr ""
+msgstr "Pachetul conține intrări duplicate"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "Suplimentelor Firefox nu li se permite să ruleze mineri de criptomonede."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "Denumirea șirului este rezervată pentru un mesaj predefinit"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -200,19 +200,21 @@ msgstr "Substituentului îi lipsește proprietatea de conținut"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "Proprietatea mesajului lipsește în șirul de traducere"
 
 #: src/messages/locale-messagesjson.js:8
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
+msgstr "Nu este setată nicio proprietate de mesaj „mesaj” pentru un șir (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr ""
+"Vezi https://mzl.la/1ZOhoEN (documente MDN) pentru mai multe informații.\n"
+"\n"
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
-msgstr ""
+msgstr "„strict_max_version\" nu este necesar."
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
@@ -244,11 +246,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "S-a depistat conținut interzis în supliment."
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "Acest supliment are conținut interzis."
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
