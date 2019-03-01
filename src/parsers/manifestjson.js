@@ -236,8 +236,8 @@ export default class ManifestJSONParser extends JSONParser {
     // that are just warnings should be added to this array.
     const warnings = [
       messages.MANIFEST_PERMISSIONS.code,
-      // Remove the following once the LWT aliases deprecated property should
-      // become errors on submission.
+      // TODO(#2463): Remove the following once the LWT aliases deprecated
+      // property should become errors on submission.
       messages.MANIFEST_THEME_LWT_ALIAS.code,
     ];
     let validate = validateAddon;
