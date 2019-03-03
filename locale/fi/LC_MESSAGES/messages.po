@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-12-20 18:32+0000\n"
+"PO-Revision-Date: 2018-12-20 18:36+0000\n"
 "Last-Translator: Jarmo <jarmo@juslin.me>\n"
 "Language-Team: none\n"
 "Language: fi\n"
@@ -116,7 +116,7 @@ msgstr "Kielletty kolmannen osapuolen JS-kirjasto"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Ei suositeltu kolmannen osapuolen JS-kirjasto"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -208,7 +208,7 @@ msgstr "Viestiominaisuutta \"message\" ei ole asetettu merkkijonolle (https://mz
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
+msgstr "Katso lisätietoja osoitteesta https://mzl.la/1ZOhoEN (MDN-dokumentit)."
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
@@ -276,7 +276,7 @@ msgstr "Kohteesta \"default_locale\" puuttuu lokalisaatioita."
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "\"default_locale\" puuttuu, mutta \"_locales\" on olemassa."
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
@@ -304,7 +304,7 @@ msgstr "Tuntematon käyttöoikeus."
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "Katso lisätietoja osoitteesta https://mzl.la/1R1n1t0 (MDN-dokumentit)."
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -312,7 +312,7 @@ msgstr "\"manifest_version\" manifest.json-tiedostossa ei ole kelvollinen arvo"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "Katso lisätietoja osoitteesta https://mzl.la/20PenXl (MDN-dokumentit)."
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
@@ -320,23 +320,23 @@ msgstr ""
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "Ominaisuuden \"name\" täytyy olla merkkijono."
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "Katso lisätietoja osoitteesta http://mzl.la/1STmr48 (MDN-dokumentit)."
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "Ominaisuuden \"version\" pitää olla merkkijono."
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "Katso lisätietoja osoitteesta http://mzl.la/1kXIADa (MDN web docs)."
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "Ominaisuus \"version\" käyttää Firefoxin formaattia."
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
