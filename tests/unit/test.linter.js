@@ -1016,10 +1016,11 @@ describe('Linter.extractMetadata()', () => {
 
       async getFileAsString(filename) {
         return filename === constants.MANIFEST_JSON
-           ? validManifestJSON() : fs.readFileSync(
-          `tests/fixtures/jslibs/${fakeFiles[filename]}`,
-          'utf-8'
-        );
+          ? validManifestJSON()
+          : fs.readFileSync(
+              `tests/fixtures/jslibs/${fakeFiles[filename]}`,
+              'utf-8'
+            );
       }
     }
 
