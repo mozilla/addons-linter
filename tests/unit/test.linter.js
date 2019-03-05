@@ -689,7 +689,7 @@ describe('Linter.getAddonMetadata()', () => {
     expect(FakeManifestParser.firstCall.args[2].selfHosted).toEqual(true);
   });
 
-  it('should collect notices if no manifest', async () => {
+  it('should error if no manifest', async () => {
     const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.io = {
       getFiles: async () => {
@@ -697,9 +697,9 @@ describe('Linter.getAddonMetadata()', () => {
       },
     };
     await addonLinter.getAddonMetadata();
-    const { notices } = addonLinter.collector;
-    expect(notices.length).toEqual(1);
-    expect(notices[0].code).toEqual(messages.TYPE_NO_MANIFEST_JSON.code);
+    const { errors } = addonLinter.collector;
+    expect(errors.length).toEqual(1);
+    expect(errors[0].code).toEqual(messages.TYPE_NO_MANIFEST_JSON.code);
   });
 
   it('should validate static theme images defined in the manifest', async () => {
