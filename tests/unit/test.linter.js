@@ -997,15 +997,13 @@ describe('Linter.extractMetadata()', () => {
     };
 
     class FakeXpi extends FakeIOBase {
-      async getFile(path) {
-        return fs.readFileSync(
-          `tests/fixtures/jslibs/${fakeFiles[path]}`,
-          'utf-8'
-        );
+      async getFile(filename) {
+        return this.getFileAsString(filename);
       }
 
       async getFiles() {
         const files = {};
+        files['manifest.json'] = { uncompressedSize: 839 };
         Object.keys(fakeFiles).forEach((filename) => {
           files[filename] = { uncompressedSize: 5 };
         });
@@ -1013,7 +1011,15 @@ describe('Linter.extractMetadata()', () => {
       }
 
       async getFilesByExt() {
-        return Object.keys(fakeFiles);
+        return Object.keys(fakeFiles).concat([constants.MANIFEST_JSON]);
+      }
+
+      async getFileAsString(filename) {
+        return filename === constants.MANIFEST_JSON
+           ? validManifestJSON() : fs.readFileSync(
+          `tests/fixtures/jslibs/${fakeFiles[filename]}`,
+          'utf-8'
+        );
       }
     }
 
@@ -1028,8 +1034,8 @@ describe('Linter.extractMetadata()', () => {
     });
 
     const { notices } = addonLinter.collector;
-    expect(notices.length).toEqual(2);
-    expect(notices[1].code).toEqual(messages.KNOWN_LIBRARY.code);
+    expect(notices.length).toEqual(1);
+    expect(notices[0].code).toEqual(messages.KNOWN_LIBRARY.code);
   });
 
   it('should not scan known JS libraries', async () => {
