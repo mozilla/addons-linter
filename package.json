@@ -73,7 +73,7 @@
     "upath": "1.1.0",
     "whatwg-url": "7.0.0",
     "xmldom": "0.1.27",
-    "yargs": "13.2.1",
+    "yargs": "13.2.2",
     "yauzl": "2.10.0"
   },
   "devDependencies": {
