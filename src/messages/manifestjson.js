@@ -298,6 +298,15 @@ export function corruptIconFile({ path }) {
   };
 }
 
+export const MANIFEST_THEME_LWT_ALIAS = {
+  code: 'MANIFEST_THEME_LWT_ALIAS',
+  message: i18n._('This theme LWT alias is deprecated.'),
+  description: i18n._(
+    'See https://mzl.la/2T11Lkc (MDN Docs) for more information.'
+  ),
+  file: MANIFEST_JSON,
+};
+
 export const MANIFEST_THEME_IMAGE_NOT_FOUND = 'MANIFEST_THEME_IMAGE_NOT_FOUND';
 export function manifestThemeImageMissing(path, type) {
   return {

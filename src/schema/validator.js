@@ -5,6 +5,7 @@ import { deepPatch } from 'schema/deepmerge';
 import schemaObject from 'schema/imported/manifest';
 import themeSchemaObject from 'schema/imported/theme';
 import messagesSchemaObject from 'schema/messages';
+import { DEPRECATED_STATIC_THEME_LWT_ALIASES } from 'const';
 
 import {
   imageDataOrStrictRelativeUrl,
@@ -54,6 +55,27 @@ validator.addFormat(
   'imageDataOrStrictRelativeUrl',
   imageDataOrStrictRelativeUrl
 );
+
+validator.addKeyword('deprecated', {
+  validate: function validateDeprecated(message, propValue, schema, dataPath) {
+    if (!DEPRECATED_STATIC_THEME_LWT_ALIASES.includes(dataPath)) {
+      // Do not emit errors for every deprecated property, as it may introduce
+      // regressions due to unexpected new deprecation messages raised as errors,
+      // better to deal with it separately.
+      return true;
+    }
+
+    validateDeprecated.errors = [
+      {
+        keyword: 'deprecated',
+        message,
+      },
+    ];
+
+    return false;
+  },
+  errors: true,
+});
 
 function filterErrors(errors) {
   if (errors) {
