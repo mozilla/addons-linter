@@ -120,7 +120,7 @@
     "markdown-it-emoji": "1.4.0",
     "prettier": "1.16.4",
     "pretty-quick": "1.10.0",
-    "raw-loader": "1.0.0",
+    "raw-loader": "2.0.0",
     "request": "2.88.0",
     "shelljs": "0.8.3",
     "sinon": "7.2.7",
