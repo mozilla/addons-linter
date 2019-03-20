@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2019-03-20 16:51+0000\n"
+"PO-Revision-Date: 2019-03-20 17:03+0000\n"
 "Last-Translator: aefgh39622 <aefgh39622@gmail.com>\n"
 "Language-Team: none\n"
 "Language: th\n"
@@ -212,91 +212,91 @@ msgstr "ดู https://mzl.la/1ZOhoEN (คู่มือ MDN) สำหรั�
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
-msgstr ""
+msgstr "ไม่จำเป็นต้องมี \"strict_max_version\""
 
 #: src/messages/manifestjson.js:122
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
+msgstr "ไม่พบไอคอนที่กำหนดไว้ในไฟล์กำกับในแพ็คเกจ"
 
 #: src/messages/manifestjson.js:125
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "ไม่พบไอคอนที่ \"%(path)s\""
 
 #: src/messages/manifestjson.js:142
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "ไม่พบสคริปต์เบื้องหลังที่ \"%(path)s\""
 
 #: src/messages/manifestjson.js:143
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "ไม่พบหน้าเบื้องหลังที่ \"%(path)s\""
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
-msgstr ""
+msgstr "ช่องกรอกไม่ถูกต้อง"
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "ไม่พบสคริปต์เนื้อหาที่กำหนดไว้ในไฟล์กำกับที่ \"%(path)s\""
 
 #: src/messages/manifestjson.js:162
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "ไม่พบไฟล์ CSS สคริปต์เนื้อหาที่กำหนดไว้ในไฟล์กำกับที่ \"%(path)s\""
 
 #: src/messages/manifestjson.js:173
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "พบเนื้อหาที่ไม่ได้รับอนุญาตในส่วนเสริม"
 
 #: src/messages/manifestjson.js:174
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "ส่วนเสริมนี้มีเนื้อหาที่ไม่ได้รับอนุญาต"
 
 #: src/messages/manifestjson.js:182
 msgid "Icons must be square."
-msgstr ""
+msgstr "ไอคอนต้องเป็นสี่เหลี่ยมจัตุรัส"
 
 #: src/messages/manifestjson.js:183
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "ไอคอนที่ \"%(path)s\" ต้องเป็นสี่เหลี่ยมจัตุรัส"
 
 #: src/messages/manifestjson.js:192
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "ขนาดของไอคอนไม่ตรงกับไฟล์กำกับ"
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
-msgstr ""
+msgstr "ไฟล์รูปภาพเสียหาย"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "ไฟล์ไอคอนที่คาดไว้ที่ \"%(path)s\" เสียหาย"
 
 #: src/messages/manifestjson.js:217
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "\"default_locale\" ขาดข้อมูลการแปลเป็นภาษาท้องถิ่น"
 
 #: src/messages/manifestjson.js:226
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "\"default_locale\" ขาดหายไป แต่มี \"_locales\" อยู่"
 
 #: src/messages/manifestjson.js:23
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "ไม่รองรับชนิดการอนุญาตนี้"
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "ไม่รองรับนามสกุลไฟล์รูปภาพนี้"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
+msgstr "ไอคอนควรมีนามสกุลไฟล์เป็น JPG/JPEG, WebP, GIF, PNG หรือ SVG"
 
 #: src/messages/manifestjson.js:244
 msgid "Empty language directory"
-msgstr ""
+msgstr "ไดเรกทอรีภาษาที่ว่างเปล่า"
 
 #: src/messages/manifestjson.js:245
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "ไฟล์ messages.json ขาดหายไปใน \"%(path)s\""
 
 #: src/messages/manifestjson.js:31
 msgid "Unknown permission."
@@ -304,48 +304,48 @@ msgstr "ไม่ทราบการอนุญาต"
 
 #: src/messages/manifestjson.js:32
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "ดู https://mzl.la/1R1n1t0 (คู่มือ MDN) สำหรับข้อมูลเพิ่มเติม"
 
 #: src/messages/manifestjson.js:38
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "\"manifest_version\" ที่อยู่ใน manifest.json ไม่ใช่ค่าที่ถูกต้อง"
 
 #: src/messages/manifestjson.js:39
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "ดู https://mzl.la/20PenXl (คู่มือ MDN) สำหรับข้อมูลเพิ่มเติม"
 
 #: src/messages/manifestjson.js:49
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "content_security_policy ที่กำหนดเองจำเป็นต้องมีการตรวจทานเพิ่มเติม"
 
 #: src/messages/manifestjson.js:65
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "คุณสมบัติ \"name\" ต้องเป็นสตริง"
 
 #: src/messages/manifestjson.js:66
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "ดู http://mzl.la/1STmr48 (คู่มือ MDN) สำหรับข้อมูลเพิ่มเติม"
 
 #: src/messages/manifestjson.js:72
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "คุณสมบัติ \"version\" ต้องเป็นสตริง"
 
 #: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "ดู http://mzl.la/1kXIADa (คู่มือ MDN) สำหรับข้อมูลเพิ่มเติม"
 
 #: src/messages/manifestjson.js:79
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "คุณสมบัติ \"version\" ใช้รูปแบบเฉพาะของ Firefox"
 
 #: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "ไม่ได้รับอนุญาตให้ใช้ \"update_url\""
 
 #: src/messages/manifestjson.js:9
 msgid "The field is required."
-msgstr ""
+msgstr "จำเป็นต้องกรอกข้อมูลในช่องนี้"
 
 #: src/messages/manifestjson.js:94
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "คุณสมบัติ \"update_url\" ไม่ได้ถูกใช้โดย Firefox"
