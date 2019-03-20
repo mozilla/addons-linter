@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-04-06 10:09+0000\n"
-"Last-Translator: Top <teerapatxtop@yahoo.com>\n"
+"PO-Revision-Date: 2019-03-20 16:51+0000\n"
+"Last-Translator: aefgh39622 <aefgh39622@gmail.com>\n"
 "Language-Team: none\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -16,11 +16,11 @@ msgstr ""
 
 #: src/linter.js:117
 msgid "Validation Summary:"
-msgstr ""
+msgstr "ข้อมูลสรุปการตรวจสอบความถูกต้อง:"
 
 #: src/linter.js:134
 msgid "Code"
-msgstr ""
+msgstr "โค้ด"
 
 #: src/linter.js:140
 msgid "Message"
@@ -44,11 +44,11 @@ msgstr "คอลัมน์"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "พบการซ้อนกันของตัวเลือกที่ไม่ถูกต้อง"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "พบข้อผิดพลาดไวยากรณ์ CSS"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -60,155 +60,155 @@ msgstr "ไม่สามารถแยกวิเคราะห์ไฟล
 
 #: src/messages/html.js:16
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "ไม่อนุญาตให้ใช้สคริปต์ระยะไกลตามที่ระบุไว้ในนโยบายส่วนเสริม"
 
 #: src/messages/html.js:8
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "สคริปต์แบบอินไลน์ถูกบล็อกตามค่าเริ่มต้น"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
-msgstr ""
+msgstr "ตรวจพบไลบรารี JS ที่รู้จัก"
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "ไม่รองรับ {{api}}"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "API นี้ยังไม่ได้ถูกนำมาใช้โดย Firefox"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener ถูกเรียกโดยอาร์กิวเมนต์ที่ 4 ที่เป็นค่าจริง"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "ไม่พบไฟล์สคริปต์เนื้อหา"
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "ไม่พบไฟล์สคริปต์เนื้อหา"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "ชื่อไฟล์สคริปต์เนื้อหาไม่ควรว่างเปล่า"
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "ชื่อไฟล์สคริปต์เนื้อหาไม่ควรว่างเปล่า"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "ข้อผิดพลาดไวยากรณ์ JavaScript"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "ตัวแปรส่วนกลางที่ไม่คาดคิดถูกส่งผ่านเป็นอาร์กิวเมนต์"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "ไม่แนะนำให้ใช้ document.write เป็นอย่างยิ่ง"
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "ไลบรารี JS ของบุคคลที่สามที่ถูกห้าม"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "ไลบรารี JS ของบุคคลที่สามที่ไม่แนะนำให้ใช้"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "JSON ของคุณมีหมายเหตุการบล็อก"
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "ไม่อนุญาตให้ใช้คีย์ที่ซ้ำกันในไฟล์ JSON"
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "JSON ของคุณไม่ถูกต้อง"
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "ไม่สามารถแยกวิเคราะห์ไฟล์ JSON ของคุณได้"
 
 #: src/messages/layout.js:18
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "เราไม่สามารถคลายการบีบอัดไฟล์ zip ได้"
 
 #: src/messages/layout.js:23
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "ไม่พบ manifest.json"
 
 #: src/messages/layout.js:31
 msgid "File is too large to parse."
-msgstr ""
+msgstr "ไฟล์มีขนาดใหญ่เกินกว่าที่จะแยกวิเคราะห์ได้"
 
 #: src/messages/layout.js:40
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "ตั้งค่าสถานะไฟล์ที่ซ่อนอยู่แล้ว"
 
 #: src/messages/layout.js:49
 msgid "Flagged filename found"
-msgstr ""
+msgstr "พบชื่อไฟล์ที่ถูกตั้งค่าสถานะ"
 
 #: src/messages/layout.js:56
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "พบนามสกุลไฟล์ที่ถูกตั้งค่าสถานะ"
 
 #: src/messages/layout.js:63
 msgid "Flagged file type found"
-msgstr ""
+msgstr "พบชนิดไฟล์ที่ถูกตั้งค่าสถานะ"
 
 #: src/messages/layout.js:73
 msgid "Package already signed"
-msgstr ""
+msgstr "แพ็คเกจถูกเซ็นชื่อแล้ว"
 
 #: src/messages/layout.js:81
 msgid "Violation of Mozilla conditions of use."
-msgstr ""
+msgstr "การละเมิดเงื่อนไขการใช้งานของ Mozilla"
 
 #: src/messages/layout.js:9
 msgid "Package contains duplicate entries"
-msgstr ""
+msgstr "แพ็คเกจมีรายการที่ซ้ำกัน"
 
 #: src/messages/layout.js:90
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "ส่วนเสริมของ Firefox ไม่ได้รับอนุญาตให้เรียกใช้ตัวทำเหมืองเหรียญ"
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "ชื่อสตริงถูกสงวนไว้สำหรับข้อความที่กำหนดไว้ล่วงหน้า"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "ตัวยึดตำแหน่งสำหรับข้อความขาดหายไป"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "ตัวยึดตำแหน่งที่ใช้ในข้อความไม่ได้ถูกกำหนดไว้"
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "ชื่อตัวยึดตำแหน่งมีอักขระที่ไม่ถูกต้อง"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "ตัวยึดตำแหน่งขาดคุณสมบัติเนื้อหา"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "สตริงการแปลขาดคุณสมบัติข้อความ"
 
 #: src/messages/locale-messagesjson.js:8
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
+msgstr "ไม่ได้ตั้งค่าคุณสมบัติข้อความ \"message\" สำหรับสตริง (https://mzl.la/2DSBTjA)"
 
 #: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
+msgstr "ดู https://mzl.la/1ZOhoEN (คู่มือ MDN) สำหรับข้อมูลเพิ่มเติม"
 
 #: src/messages/manifestjson.js:103
 msgid "\"strict_max_version\" not required."
