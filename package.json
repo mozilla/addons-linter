@@ -60,7 +60,7 @@
     "jed": "1.1.1",
     "mdn-browser-compat-data": "0.0.71",
     "os-locale": "3.1.0",
-    "pino": "5.11.1",
+    "pino": "5.11.3",
     "po2json": "0.4.5",
     "postcss": "7.0.14",
     "probe-image-size": "4.0.0",
