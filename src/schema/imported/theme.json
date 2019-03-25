@@ -351,6 +351,12 @@
             },
             "sidebar_highlight_text": {
               "$ref": "#/types/ThemeColor"
+            },
+            "toolbar_field_highlight": {
+              "$ref": "#/types/ThemeColor"
+            },
+            "toolbar_field_highlight_text": {
+              "$ref": "#/types/ThemeColor"
             }
           },
           "additionalProperties": {
