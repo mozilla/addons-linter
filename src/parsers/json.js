@@ -1,4 +1,4 @@
-import esprima from 'esprima';
+import * as esprima from 'esprima';
 import RJSON from 'relaxed-json';
 
 import * as messages from 'messages';

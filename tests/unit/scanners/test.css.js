@@ -8,7 +8,7 @@ import { ignorePrivateFunctions } from 'utils';
 
 import { getRuleFiles, metadataPassCheck, validMetadata } from '../helpers';
 
-describe('CSSScanner', async () => {
+describe('CSSScanner', () => {
   it('should report a proper scanner name', () => {
     expect(CSSScanner.scannerName).toEqual('css');
   });
