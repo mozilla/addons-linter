@@ -268,7 +268,7 @@ export default class Linter {
       _log.warn(
         `No ${constants.MANIFEST_JSON} was found in the package metadata`
       );
-      this.collector.addNotice(messages.TYPE_NO_MANIFEST_JSON);
+      this.collector.addError(messages.TYPE_NO_MANIFEST_JSON);
       this.addonMetadata = {};
     }
     this.addonMetadata.totalScannedFileSize = 0;

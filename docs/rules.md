@@ -132,6 +132,7 @@ Rules are sorted by severity.
 
 | Message code                         | Severity | Description                                                 |
 | ------------------------------------ | -------- | ----------------------------------------------------------- |
+| `MANIFEST_THEME_LWT_ALIAS`           | warning  | Theme LWT aliases are deprecated                            |
 | `MANIFEST_THEME_IMAGE_MIME_MISMATCH` | warning  | Theme image file extension should match its mime type       |
 | `MANIFEST_THEME_IMAGE_NOT_FOUND`     | error    | Theme images must not be missing                            |
 | `MANIFEST_THEME_IMAGE_CORRUPTED`     | error    | Theme images must not be corrupted                          |
