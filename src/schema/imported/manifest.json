@@ -94,7 +94,7 @@
                   "type": "object",
                   "patternProperties": {
                     "^[1-9]\\d*$": {
-                      "type": "string"
+                      "$ref": "#/types/ExtensionFileUrl"
                     }
                   },
                   "additionalProperties": false
@@ -102,6 +102,7 @@
                 "incognito": {
                   "type": "string",
                   "enum": [
+                    "not_allowed",
                     "spanning"
                   ],
                   "default": "spanning"
