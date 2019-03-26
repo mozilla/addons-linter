@@ -54,7 +54,7 @@
     "espree": "5.0.1",
     "esprima": "4.0.1",
     "first-chunk-stream": "2.0.0",
-    "fluent-syntax": "0.10.0",
+    "fluent-syntax": "0.12.0",
     "glob": "7.1.3",
     "is-mergeable-object": "1.1.0",
     "jed": "1.1.1",
