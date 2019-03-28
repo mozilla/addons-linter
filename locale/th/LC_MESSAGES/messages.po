@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2019-03-20 17:03+0000\n"
+"PO-Revision-Date: 2019-03-28 17:48+0000\n"
 "Last-Translator: aefgh39622 <aefgh39622@gmail.com>\n"
 "Language-Team: none\n"
 "Language: th\n"
@@ -264,7 +264,7 @@ msgstr "ขนาดของไอคอนไม่ตรงกับไฟล
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
-msgstr "ไฟล์รูปภาพเสียหาย"
+msgstr "ไฟล์ภาพเสียหาย"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
@@ -284,7 +284,7 @@ msgstr "ไม่รองรับชนิดการอนุญาตนี
 
 #: src/messages/manifestjson.js:235
 msgid "Unsupported image extension"
-msgstr "ไม่รองรับนามสกุลไฟล์รูปภาพนี้"
+msgstr "ไม่รองรับนามสกุลไฟล์ภาพนี้"
 
 #: src/messages/manifestjson.js:236
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
