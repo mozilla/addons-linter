@@ -118,7 +118,7 @@
     "markdown-it": "8.4.2",
     "markdown-it-anchor": "5.0.2",
     "markdown-it-emoji": "1.4.0",
-    "prettier": "1.16.4",
+    "prettier": "1.17.0",
     "pretty-quick": "1.10.0",
     "raw-loader": "2.0.0",
     "request": "2.88.0",
