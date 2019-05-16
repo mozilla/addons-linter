@@ -17,7 +17,6 @@ import {
   fakeMessageData,
   validManifestJSON,
   validStaticThemeManifestJSON,
-  EMPTY_PNG,
   assertHasMatchingError,
 } from './helpers';
 
