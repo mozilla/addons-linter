@@ -75,15 +75,6 @@ export const ALREADY_SIGNED = {
     on the add-on.`),
 };
 
-export const MOZILLA_COND_OF_USE = {
-  code: 'MOZILLA_COND_OF_USE',
-  message: i18n._('Violation of Mozilla conditions of use.'),
-  description: i18n._(oneLine`Words found that violate the Mozilla
-    conditions of use.
-    See https://www.mozilla.org/en-US/about/legal/acceptable-use/ for more
-    details.`),
-};
-
 export const COINMINER_USAGE_DETECTED = {
   code: 'COINMINER_USAGE_DETECTED',
   message: i18n._('Firefox add-ons are not allowed to run coin miners.'),
