@@ -17,7 +17,6 @@ import {
   fakeMessageData,
   validManifestJSON,
   validStaticThemeManifestJSON,
-  EMPTY_PNG,
   assertHasMatchingError,
 } from './helpers';
 
@@ -1372,59 +1371,6 @@ describe('Linter.extractMetadata()', () => {
     expect(addonLinter.output.metadata.totalScannedFileSize).toEqual(2929);
   });
 
-  it('should flag files with badwords', async () => {
-    const addonLinter = new Linter({
-      _: ['tests/fixtures/webextension_badwords.zip'],
-    });
-    const markBadwordusageSpy = sinon.spy(addonLinter, '_markBadwordUsage');
-
-    await addonLinter.scan({ _console: fakeConsole });
-    sinon.assert.calledTwice(markBadwordusageSpy);
-    const errors = addonLinter.collector.notices;
-    expect(errors.length).toEqual(1);
-    expect(errors[0].code).toEqual(messages.MOZILLA_COND_OF_USE.code);
-  });
-
-  it('should not flag files only with partial badword matches', async () => {
-    const addonLinter = new Linter({ _: ['bar'] });
-    const markBadwordusageSpy = sinon.spy(addonLinter, '_markBadwordUsage');
-
-    // suppress output.
-    addonLinter.print = sinon.stub();
-    addonLinter.checkFileExists = fakeCheckFileExists;
-
-    class FakeXpi extends FakeIOBase {
-      files = {
-        'manifest.json': { uncompressedSize: 839 },
-        'm1.js': { uncompressedSize: 20 },
-        'm2.js': { uncompressedSize: 20 },
-      };
-
-      getFile(filename) {
-        return this.getFileAsString(filename);
-      }
-
-      async getFiles() {
-        return this.files;
-      }
-
-      async getFileAsString(filename) {
-        const words = {
-          'm1.js': 'const a = "butt fuck"',
-          'm2.js': 'const a = "m-fucking"',
-          'manifest.json': validManifestJSON({ name: 'Buttonmania' }),
-        };
-
-        return words[filename];
-      }
-    }
-    await addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole });
-    // Only manifest and js files, binary files like the .png are ignored
-    sinon.assert.callCount(markBadwordusageSpy, 3);
-    const errors = addonLinter.collector.notices;
-    expect(errors.length).toEqual(2);
-  });
-
   it('should flag coin miners', async () => {
     const addonLinter = new Linter({
       _: ['tests/fixtures/webextension_badwords.zip'],
@@ -1504,64 +1450,6 @@ describe('Linter.extractMetadata()', () => {
       dataPath: undefined,
       file: 'coinhive.min.js',
     });
-  });
-
-  it('should not flag binary files and known libraries', async () => {
-    const addonLinter = new Linter({ _: ['bar'] });
-    const markBadwordusageSpy = sinon.spy(addonLinter, '_markBadwordUsage');
-
-    // suppress output.
-    addonLinter.print = sinon.stub();
-    addonLinter.checkFileExists = fakeCheckFileExists;
-
-    class FakeXpi extends FakeIOBase {
-      files = {
-        'manifest.json': { uncompressedSize: 839 },
-        'jquery.js': { uncompressedSize: 7 },
-        'foo.png': { uncompressedSize: 386 },
-        '.DS_Store': { uncompressedSize: 232 },
-      };
-
-      getFile(filename) {
-        return this.getFileAsString(filename);
-      }
-
-      async getFiles() {
-        return this.files;
-      }
-
-      async getFilesByExt(...extensions) {
-        const files = [];
-
-        Object.keys(this.files).forEach((filename) => {
-          extensions.forEach((ext) => {
-            if (filename.endsWith(ext)) {
-              files.push(filename);
-            }
-          });
-        });
-
-        return files;
-      }
-
-      async getFileAsString(filename) {
-        const contents = {
-          'manifest.json': validManifestJSON({ name: 'Buttonmania' }),
-          'foo.png': EMPTY_PNG,
-          'jquery.js': fs.readFileSync(
-            'tests/fixtures/jslibs/jquery-3.2.1.min.js',
-            'utf-8'
-          ),
-          '.DS_Store': fs.readFileSync(
-            'tests/fixtures/Dummy_DS_Store',
-            'binary'
-          ),
-        };
-        return contents[filename];
-      }
-    }
-    await addonLinter.scan({ _Xpi: FakeXpi });
-    sinon.assert.callCount(markBadwordusageSpy, 1);
   });
 });
 
