@@ -1,6 +1,6 @@
 import yauzl from 'yauzl';
 import stripBomStream from 'strip-bom-stream';
-import firstChunkStream from 'first-chunk-stream';
+import FirstChunkStream from 'first-chunk-stream';
 import { oneLine } from 'common-tags';
 
 import { IOBase } from 'io/base';
@@ -145,7 +145,7 @@ export class Xpi extends IOBase {
           return;
         }
         readStream.pipe(
-          firstChunkStream({ chunkLength }, (_, enc) => {
+          new FirstChunkStream({ chunkLength }, (_, enc) => {
             resolve(enc);
           })
         );
