@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { createReadStream } from 'fs';
 
-import firstChunkStream from 'first-chunk-stream';
+import FirstChunkStream from 'first-chunk-stream';
 import stripBomStream from 'strip-bom-stream';
 import { oneLine } from 'common-tags';
 
@@ -96,7 +96,7 @@ export class Directory extends IOBase {
         encoding: null,
         autoClose: true,
       }).pipe(
-        firstChunkStream({ chunkLength }, (_, enc) => {
+        new FirstChunkStream({ chunkLength }, (_, enc) => {
           resolve(enc);
         })
       );
