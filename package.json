@@ -116,7 +116,7 @@
     "markdown-it-anchor": "5.0.2",
     "markdown-it-emoji": "1.4.0",
     "prettier": "1.17.1",
-    "pretty-quick": "1.10.0",
+    "pretty-quick": "1.11.0",
     "raw-loader": "2.0.0",
     "shelljs": "0.8.3",
     "sinon": "7.3.2",
