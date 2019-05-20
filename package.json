@@ -124,7 +124,7 @@
     "tar": "4.4.8",
     "tar-fs": "2.0.0",
     "tmp-promise": "1.1.0",
-    "webpack": "4.31.0",
+    "webpack": "4.32.0",
     "webpack-cli": "3.3.2"
   },
   "optionalDependencies": {
