@@ -1,4 +1,4 @@
-import { isLocalUrl } from 'utils';
+import { isLocalUrl } from 'linter/utils';
 import { OPENDIALOG_REMOTE_URI } from 'messages';
 
 export default {

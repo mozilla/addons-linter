@@ -1,6 +1,6 @@
 import { UNSUPPORTED_API } from 'messages/javascript';
 import { hasBrowserApi } from 'schema/browser-apis';
-import { isBrowserNamespace } from 'utils';
+import { isBrowserNamespace } from 'linter/utils';
 
 export default {
   create(context) {

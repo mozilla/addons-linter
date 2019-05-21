@@ -3,7 +3,7 @@ import fs from 'fs';
 import parseCRX from 'crx-parser';
 import yauzl from 'yauzl';
 
-import log from 'logger';
+import log from 'linter/logger';
 
 import { Xpi } from './xpi';
 

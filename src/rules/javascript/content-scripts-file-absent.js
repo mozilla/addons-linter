@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import { isBrowserNamespace } from 'utils';
+import { isBrowserNamespace } from 'linter/utils';
 import {
   CONTENT_SCRIPT_NOT_FOUND,
   CONTENT_SCRIPT_EMPTY,

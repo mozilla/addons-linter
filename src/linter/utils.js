@@ -7,8 +7,8 @@ import semver from 'semver';
 import { oneLine } from 'common-tags';
 import osLocale from 'os-locale';
 
-import log from 'logger';
-import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
+import log from 'linter/logger';
+import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'linter/const';
 
 /* global nodeRequire, localesRoot */
 

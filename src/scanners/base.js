@@ -1,4 +1,4 @@
-import { ensureFilenameExists, ignorePrivateFunctions } from 'utils';
+import { ensureFilenameExists, ignorePrivateFunctions } from 'linter/utils';
 
 export default class BaseScanner {
   static get fileResultType() {

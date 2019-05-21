@@ -17,7 +17,7 @@ import {
   firefoxStrictMinVersion,
   basicCompatVersionComparison,
   isCompatible,
-} from 'utils';
+} from 'linter/utils';
 
 describe('getRootExpression()', () => {
   const node = {

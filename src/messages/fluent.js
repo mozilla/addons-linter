@@ -1,4 +1,4 @@
-import { i18n } from 'utils';
+import { i18n } from 'linter/utils';
 
 export const FLUENT_INVALID = {
   code: 'FLUENT_INVALID',

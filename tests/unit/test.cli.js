@@ -1,4 +1,4 @@
-import { getConfig, terminalWidth } from 'cli';
+import { getConfig, terminalWidth } from 'linter/cli';
 
 // Unmock cli to test it (jest automatically host this call before the import
 // section above.

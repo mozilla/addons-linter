@@ -1,7 +1,7 @@
 import { oneLine } from 'common-tags';
 
-import { i18n } from 'utils';
-import { MANIFEST_JSON } from 'const';
+import { i18n } from 'linter/utils';
+import { MANIFEST_JSON } from 'linter/const';
 
 export const MANIFEST_FIELD_REQUIRED = {
   code: 'MANIFEST_FIELD_REQUIRED',

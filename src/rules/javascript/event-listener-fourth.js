@@ -1,5 +1,5 @@
 import { EVENT_LISTENER_FOURTH } from 'messages/javascript';
-import { getNodeReference } from 'utils';
+import { getNodeReference } from 'linter/utils';
 
 export default {
   create(context) {

@@ -1,4 +1,4 @@
-import { createLogger } from 'logger';
+import { createLogger } from 'linter/logger';
 
 describe('logger.createLogger()', () => {
   it('should throw if LOG_LEVEL is not an expected value', () => {

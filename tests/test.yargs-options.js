@@ -1,4 +1,4 @@
-import { getDefaultConfigValue } from 'yargs-options';
+import { getDefaultConfigValue } from 'linter/yargs-options';
 
 describe('getDefaultConfigValue()', () => {
   it('should return the default value', () => {

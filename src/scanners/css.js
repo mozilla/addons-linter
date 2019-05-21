@@ -1,10 +1,10 @@
 import * as postcss from 'postcss';
 
 import BaseScanner from 'scanners/base';
-import log from 'logger';
+import log from 'linter/logger';
 import { CSS_SYNTAX_ERROR } from 'messages';
-import { VALIDATION_WARNING } from 'const';
-import { ignorePrivateFunctions } from 'utils';
+import { VALIDATION_WARNING } from 'linter/const';
+import { ignorePrivateFunctions } from 'linter/utils';
 import * as cssRules from 'rules/css';
 
 export default class CSSScanner extends BaseScanner {

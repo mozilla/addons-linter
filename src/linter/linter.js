@@ -6,28 +6,28 @@ import Dispensary from 'dispensary';
 import { oneLine } from 'common-tags';
 
 import { lstatPromise } from 'io/utils';
-import { terminalWidth } from 'cli';
-import * as constants from 'const';
-import { BANNED_LIBRARIES, UNADVISED_LIBRARIES } from 'libraries';
+import { terminalWidth } from 'linter/cli';
+import * as constants from 'linter/const';
+import { BANNED_LIBRARIES, UNADVISED_LIBRARIES } from 'linter/libraries';
 import * as messages from 'messages';
 import {
   checkMinNodeVersion,
   i18n,
   couldBeMinifiedCode,
   getLineAndColumnFromMatch,
-} from 'utils';
-import log from 'logger';
-import Collector from 'collector';
-import DefaultManifestJSONParser from 'parsers/manifestjson';
-import BinaryScanner from 'scanners/binary';
-import CSSScanner from 'scanners/css';
-import FilenameScanner from 'scanners/filename';
-import HTMLScanner from 'scanners/html';
-import JavaScriptScanner from 'scanners/javascript';
-import JSONScanner from 'scanners/json';
-import LangpackScanner from 'scanners/langpack';
-import { Crx, Directory, Xpi } from 'io';
-import { MINER_BLOCKLIST } from 'miner_blocklist';
+} from 'linter/utils';
+import log from 'linter/logger';
+import Collector from 'linter/collector';
+import DefaultManifestJSONParser from '../parsers/manifestjson';
+import BinaryScanner from '../scanners/binary';
+import CSSScanner from '../scanners/css';
+import FilenameScanner from '../scanners/filename';
+import HTMLScanner from '../scanners/html';
+import JavaScriptScanner from '../scanners/javascript';
+import JSONScanner from '../scanners/json';
+import LangpackScanner from '../scanners/langpack';
+import { Crx, Directory, Xpi } from '../io';
+import { MINER_BLOCKLIST } from './miner_blocklist';
 
 export default class Linter {
   constructor(config) {

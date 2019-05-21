@@ -1,4 +1,4 @@
-import { getConfig } from 'cli';
+import { getConfig } from 'linter/cli';
 import { createInstance, isRunFromCLI } from 'main';
 
 // Unmock cli to test it (jest automatically host this call before the import

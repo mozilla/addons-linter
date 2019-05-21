@@ -1,8 +1,8 @@
 import upath from 'upath';
 
 // eslint-disable-next-line import/no-named-default
-import { default as Message } from 'message';
-import * as constants from 'const';
+import { default as Message } from 'linter/message';
+import * as constants from 'linter/const';
 
 // "I have a display case ready and waiting for our newest acquisitions!"
 // --Taneleer Tivan

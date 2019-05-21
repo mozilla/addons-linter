@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/extensions
-import badwords from './badwords.json';
+import badwords from 'badwords.json';
 
 export const DEFLATE_COMPRESSION = 8;
 export const NO_COMPRESSION = 0;

@@ -6,7 +6,7 @@ import isMatchWith from 'lodash.ismatchwith';
 import Hash from 'hashish';
 import { oneLine } from 'common-tags';
 
-import { PACKAGE_EXTENSION } from 'const';
+import { PACKAGE_EXTENSION } from 'linter/const';
 
 export const fakeMessageData = {
   code: 'WHATEVER_CODE',

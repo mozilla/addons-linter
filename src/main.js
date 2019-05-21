@@ -1,6 +1,6 @@
-import { getConfig } from 'cli';
-import Linter from 'linter';
-import log from 'logger';
+import { getConfig } from 'linter/cli';
+import Linter from 'linter/linter';
+import log from 'linter/logger';
 
 export function isRunFromCLI(_module = module) {
   return require.main === _module;

@@ -1,5 +1,5 @@
 import { UNEXPECTED_GLOGAL_ARG } from 'messages';
-import { getVariable } from 'utils';
+import { getVariable } from 'linter/utils';
 
 /*
  * This rule will detect a global passed to `require()` as the first arg

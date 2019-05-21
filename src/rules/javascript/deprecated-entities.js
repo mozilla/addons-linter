@@ -1,5 +1,5 @@
 import { NO_DOCUMENT_WRITE } from 'messages';
-import { getNodeReference } from 'utils';
+import { getNodeReference } from 'linter/utils';
 
 export const DEPRECATED_ENTITIES = [
   {

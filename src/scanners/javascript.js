@@ -3,10 +3,10 @@ import { oneLine } from 'common-tags';
 import espree from 'espree';
 import vk from 'eslint-visitor-keys';
 
-import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
+import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'linter/const';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
-import { ensureFilenameExists } from 'utils';
+import { ensureFilenameExists } from 'linter/utils';
 
 const ECMA_VERSION = 2019;
 

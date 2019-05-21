@@ -1,7 +1,7 @@
 import { oneLine } from 'common-tags';
 
-import { MAX_FILE_SIZE_TO_PARSE_MB } from 'const';
-import { i18n } from 'utils';
+import { MAX_FILE_SIZE_TO_PARSE_MB } from 'linter/const';
+import { i18n } from 'linter/utils';
 
 export const DUPLICATE_XPI_ENTRY = {
   code: 'DUPLICATE_XPI_ENTRY',

@@ -4,7 +4,7 @@ import * as path from 'path';
 import { promisify } from 'es6-promisify';
 import upath from 'upath';
 
-import log from 'logger';
+import log from 'linter/logger';
 
 export const lstatPromise = promisify(lstat);
 export const readdirPromise = promisify(readdir);

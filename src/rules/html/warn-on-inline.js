@@ -1,4 +1,4 @@
-import { VALIDATION_WARNING } from 'const';
+import { VALIDATION_WARNING } from 'linter/const';
 import * as messages from 'messages';
 
 export async function warnOnInline($, filename) {

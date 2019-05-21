@@ -2,9 +2,9 @@ import RJSON from 'relaxed-json';
 
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
-import { MESSAGES_JSON, MESSAGE_PLACEHOLDER_REGEXP } from 'const';
+import { MESSAGES_JSON, MESSAGE_PLACEHOLDER_REGEXP } from 'linter/const';
 import { validateLocaleMessages } from 'schema/validator';
-import log from 'logger';
+import log from 'linter/logger';
 
 export default class LocaleMessagesJSONParser extends JSONParser {
   constructor(

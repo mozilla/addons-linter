@@ -4,7 +4,7 @@ import firstChunkStream from 'first-chunk-stream';
 import { oneLine } from 'common-tags';
 
 import { IOBase } from 'io/base';
-import log from 'logger';
+import log from 'linter/logger';
 
 /*
  * Simple Promise wrapper for the Yauzl unzipping lib to unpack add-on .xpis.

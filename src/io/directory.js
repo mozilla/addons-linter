@@ -7,7 +7,7 @@ import { oneLine } from 'common-tags';
 
 import { IOBase } from 'io/base';
 import { walkPromise } from 'io/utils';
-import log from 'logger';
+import log from 'linter/logger';
 
 export class Directory extends IOBase {
   async getFiles(_walkPromise = walkPromise) {

@@ -1,10 +1,10 @@
 import yargs from 'yargs';
 import { oneLine } from 'common-tags';
 
-import log from 'logger';
-import options from 'yargs-options';
+import log from 'linter/logger';
+import options from 'linter/yargs-options';
 
-import { version } from '../package';
+import { version } from '../../package';
 
 export function terminalWidth(_process = process) {
   if (_process && _process.stdout && _process.stdout.columns > 0) {

@@ -1,7 +1,7 @@
 import JSONParser from 'parsers/json';
 import LocaleMessagesJSONParser from 'parsers/locale-messagesjson';
 import BaseScanner from 'scanners/base';
-import { MESSAGES_JSON, LOCALES_DIRECTORY } from 'const';
+import { MESSAGES_JSON, LOCALES_DIRECTORY } from 'linter/const';
 
 export default class JSONScanner extends BaseScanner {
   static get scannerName() {

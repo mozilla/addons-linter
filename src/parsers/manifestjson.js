@@ -8,7 +8,7 @@ import probeImageSize from 'probe-image-size';
 import upath from 'upath';
 import bcd from 'mdn-browser-compat-data';
 
-import { getDefaultConfigValue } from 'yargs-options';
+import { getDefaultConfigValue } from 'linter/yargs-options';
 import {
   validateAddon,
   validateDictionary,
@@ -25,8 +25,8 @@ import {
   MESSAGES_JSON,
   MIME_TO_FILE_EXTENSIONS,
   STATIC_THEME_IMAGE_MIMES,
-} from 'const';
-import log from 'logger';
+} from 'linter/const';
+import log from 'linter/logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
 import { isToolkitVersionString } from 'schema/formats';
@@ -35,7 +35,7 @@ import {
   normalizePath,
   firefoxStrictMinVersion,
   basicCompatVersionComparison,
-} from 'utils';
+} from 'linter/utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
 async function getImageMetadata(io, iconPath) {

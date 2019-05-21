@@ -1,6 +1,6 @@
 import BaseScanner from 'scanners/base';
 import * as messages from 'messages';
-import * as constants from 'const';
+import * as constants from 'linter/const';
 
 export default class BinaryScanner extends BaseScanner {
   static get fileStreamType() {

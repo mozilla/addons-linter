@@ -5,7 +5,7 @@ import { deepPatch } from 'schema/deepmerge';
 import schemaObject from 'schema/imported/manifest';
 import themeSchemaObject from 'schema/imported/theme';
 import messagesSchemaObject from 'schema/messages';
-import { DEPRECATED_STATIC_THEME_LWT_ALIASES } from 'const';
+import { DEPRECATED_STATIC_THEME_LWT_ALIASES } from 'linter/const';
 
 import {
   imageDataOrStrictRelativeUrl,

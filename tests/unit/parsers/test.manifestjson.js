@@ -4,7 +4,7 @@ import { oneLine } from 'common-tags';
 
 import Linter from 'linter';
 import ManifestJSONParser from 'parsers/manifestjson';
-import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
+import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'linter/const';
 import * as messages from 'messages';
 
 import {

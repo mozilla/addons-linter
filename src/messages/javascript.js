@@ -1,6 +1,6 @@
 import { oneLine } from 'common-tags';
 
-import { apiToMessage, i18n } from 'utils';
+import { apiToMessage, i18n } from 'linter/utils';
 
 export const JS_SYNTAX_ERROR = {
   code: 'JS_SYNTAX_ERROR',

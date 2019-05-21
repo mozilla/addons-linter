@@ -1,6 +1,6 @@
 import { oneLine } from 'common-tags';
 
-import { MESSAGE_TYPES } from 'const';
+import { MESSAGE_TYPES } from 'linter/const';
 
 // These are the props we expect to pull out of
 // the data object passed to the Message constructor.

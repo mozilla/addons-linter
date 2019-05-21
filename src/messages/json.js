@@ -1,6 +1,6 @@
 import { oneLine } from 'common-tags';
 
-import { i18n } from 'utils';
+import { i18n } from 'linter/utils';
 
 export const JSON_INVALID = {
   code: 'JSON_INVALID',
