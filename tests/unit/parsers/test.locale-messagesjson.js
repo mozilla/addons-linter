@@ -1,4 +1,4 @@
-import Linter from 'linter';
+import Linter from 'linter/linter';
 import LocaleMessagesJSONParser from 'parsers/locale-messagesjson';
 import * as messages from 'messages';
 

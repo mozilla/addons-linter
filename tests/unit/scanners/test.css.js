@@ -1,10 +1,10 @@
 import { oneLine } from 'common-tags';
 
+import { VALIDATION_WARNING } from 'linter/const';
+import { ignorePrivateFunctions } from 'linter/utils';
 import * as messages from 'messages';
-import { VALIDATION_WARNING } from 'const';
 import CSSScanner from 'scanners/css';
 import * as rules from 'rules/css';
-import { ignorePrivateFunctions } from 'utils';
 
 import { getRuleFiles, metadataPassCheck, validMetadata } from '../helpers';
 

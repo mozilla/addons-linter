@@ -1,4 +1,4 @@
-import Linter from 'linter';
+import Linter from 'linter/linter';
 import JSONScanner from 'scanners/json';
 import * as messages from 'messages';
 

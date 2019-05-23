@@ -9,12 +9,12 @@ import {
   TEMPORARY_APIS,
   VALIDATION_ERROR,
   VALIDATION_WARNING,
-} from 'const';
+} from 'linter/const';
 import * as messages from 'messages';
 import { rules } from 'rules/javascript';
-import { apiToMessage } from 'utils';
+import { apiToMessage } from 'linter/utils';
 import JavaScriptScanner, { excludeRules } from 'scanners/javascript';
-import Linter from 'linter';
+import Linter from 'linter/linter';
 
 import {
   fakeMessageData,

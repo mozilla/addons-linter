@@ -1,4 +1,4 @@
-import { getConfig } from 'cli';
+import { getConfig } from 'linter/cli';
 import { createInstance } from 'main';
 
 import { checkOutput } from './helpers';

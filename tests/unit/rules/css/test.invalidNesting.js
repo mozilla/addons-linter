@@ -1,7 +1,7 @@
 import { oneLine } from 'common-tags';
 
+import { VALIDATION_WARNING } from 'linter/const';
 import * as messages from 'messages';
-import { VALIDATION_WARNING } from 'const';
 import CSSScanner from 'scanners/css';
 
 describe('CSS Rule InvalidNesting', () => {

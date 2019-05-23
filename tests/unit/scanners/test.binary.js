@@ -1,5 +1,5 @@
+import { FLAGGED_FILE_MAGIC_NUMBERS } from 'linter/const';
 import BinaryScanner from 'scanners/binary';
-import { FLAGGED_FILE_MAGIC_NUMBERS } from 'const';
 import * as messages from 'messages';
 
 describe('Binary', () => {

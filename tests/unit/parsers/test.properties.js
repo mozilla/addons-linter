@@ -1,4 +1,4 @@
-import Linter from 'linter';
+import Linter from 'linter/linter';
 import PropertiesParser from 'parsers/properties';
 
 describe('PropertiesParser', () => {

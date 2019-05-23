@@ -1,5 +1,5 @@
+import { FLAGGED_FILE_MAGIC_NUMBERS_LENGTH } from 'linter/const';
 import { IOBase } from 'io/base';
-import { FLAGGED_FILE_MAGIC_NUMBERS_LENGTH } from 'const';
 
 import { unexpectedSuccess } from '../helpers';
 

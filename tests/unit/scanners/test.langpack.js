@@ -1,4 +1,4 @@
-import Linter from 'linter';
+import Linter from 'linter/linter';
 import LangpackScanner from 'scanners/langpack';
 import PropertiesParser from 'parsers/properties';
 import DoctypeParser from 'parsers/doctype';

@@ -1,11 +1,11 @@
 import cheerio from 'cheerio';
 import { oneLine } from 'common-tags';
 
-import { VALIDATION_WARNING } from 'const';
+import { VALIDATION_WARNING } from 'linter/const';
 import HTMLScanner from 'scanners/html';
 import * as rules from 'rules/html';
 import * as messages from 'messages';
-import { ignorePrivateFunctions } from 'utils';
+import { ignorePrivateFunctions } from 'linter/utils';
 
 import { getRuleFiles, validHTML } from '../helpers';
 

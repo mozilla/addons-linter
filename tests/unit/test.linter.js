@@ -2,7 +2,7 @@ import fs from 'fs';
 
 import { oneLine } from 'common-tags';
 
-import Linter from 'linter';
+import Linter from 'linter/linter';
 import * as constants from 'linter/const';
 import * as messages from 'messages';
 import ManifestJSONParser from 'parsers/manifestjson';

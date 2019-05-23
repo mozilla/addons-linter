@@ -2,8 +2,8 @@ import fs from 'fs';
 import { Readable } from 'stream';
 import { EventEmitter } from 'events';
 
+import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'linter/const';
 import { Xpi } from 'io';
-import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
 
 import { readStringFromStream } from '../helpers';
 

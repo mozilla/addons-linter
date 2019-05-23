@@ -1,7 +1,7 @@
 import { extname } from 'path';
 
+import * as constants from 'linter/const';
 import FilenameScanner from 'scanners/filename';
-import * as constants from 'const';
 import * as messages from 'messages';
 
 describe('FilenameScanner', () => {

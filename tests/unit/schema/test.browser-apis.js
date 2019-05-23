@@ -1,4 +1,4 @@
-import { DEPRECATED_APIS, TEMPORARY_APIS } from 'const';
+import { DEPRECATED_APIS, TEMPORARY_APIS } from 'linter/const';
 import {
   hasBrowserApi,
   isDeprecatedApi,

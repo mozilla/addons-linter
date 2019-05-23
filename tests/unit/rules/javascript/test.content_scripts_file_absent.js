@@ -1,4 +1,4 @@
-import { VALIDATION_ERROR } from 'const';
+import { VALIDATION_ERROR } from 'linter/const';
 import {
   CONTENT_SCRIPT_NOT_FOUND,
   CONTENT_SCRIPT_EMPTY,

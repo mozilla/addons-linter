@@ -1,9 +1,9 @@
 import path from 'path';
 import { existsSync, readdirSync } from 'fs';
 
-import { ESLINT_RULE_MAPPING } from 'const';
+import { ESLINT_RULE_MAPPING } from 'linter/const';
+import { ignorePrivateFunctions } from 'linter/utils';
 import * as jsRules from 'rules/javascript';
-import { ignorePrivateFunctions } from 'utils';
 
 describe('Eslint rules object', () => {
   it('should have keys that match the file names', () => {

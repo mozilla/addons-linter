@@ -1,7 +1,7 @@
 import { ZipFile } from 'yauzl';
 
+import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'linter/const';
 import { Crx } from 'io';
-import { DEFLATE_COMPRESSION, NO_COMPRESSION } from 'const';
 
 import { unexpectedSuccess } from '../helpers';
 

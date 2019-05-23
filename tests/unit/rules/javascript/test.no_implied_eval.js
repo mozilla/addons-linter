@@ -1,6 +1,6 @@
 import { oneLine } from 'common-tags';
 
-import { VALIDATION_WARNING } from 'const';
+import { VALIDATION_WARNING } from 'linter/const';
 import JavaScriptScanner from 'scanners/javascript';
 import { NO_IMPLIED_EVAL } from 'messages';
 

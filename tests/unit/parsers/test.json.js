@@ -1,6 +1,6 @@
 import { oneLine } from 'common-tags';
 
-import Linter from 'linter';
+import Linter from 'linter/linter';
 import JSONParser from 'parsers/json';
 import * as messages from 'messages';
 

@@ -1,4 +1,4 @@
-import { VALIDATION_WARNING } from 'const';
+import { VALIDATION_WARNING } from 'linter/const';
 import JavaScriptScanner from 'scanners/javascript';
 import { DANGEROUS_EVAL } from 'messages';
 

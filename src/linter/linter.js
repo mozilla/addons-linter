@@ -18,6 +18,7 @@ import {
 } from 'linter/utils';
 import log from 'linter/logger';
 import Collector from 'linter/collector';
+
 import DefaultManifestJSONParser from '../parsers/manifestjson';
 import BinaryScanner from '../scanners/binary';
 import CSSScanner from '../scanners/css';

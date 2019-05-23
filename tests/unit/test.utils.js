@@ -70,7 +70,7 @@ describe('gettext()', () => {
     });
 
     // eslint-disable-next-line global-require
-    const mockedI18n = require('utils').i18n;
+    const mockedI18n = require('linter/utils').i18n;
 
     expect(mockedI18n.gettext('This is a test')).toEqual("C'est un test");
 
@@ -91,7 +91,7 @@ describe('gettext()', () => {
     });
 
     // eslint-disable-next-line global-require
-    const mockedI18n = require('utils').i18n;
+    const mockedI18n = require('linter/utils').i18n;
 
     expect(mockedI18n.gettext('This is a test')).toEqual('これはテストです');
 
@@ -114,7 +114,7 @@ describe('sprintf()', () => {
     });
 
     // eslint-disable-next-line global-require
-    const mockedI18n = require('utils').i18n;
+    const mockedI18n = require('linter/utils').i18n;
     expect(
       mockedI18n.sprintf(
         mockedI18n._("Icon could not be found at '%(path)s'."),

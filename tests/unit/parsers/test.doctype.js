@@ -1,4 +1,4 @@
-import Linter from 'linter';
+import Linter from 'linter/linter';
 import DoctypeParser from 'parsers/doctype';
 
 describe('DoctypeParser', () => {
