@@ -1,6 +1,3 @@
-// eslint-disable-next-line import/extensions
-import badwords from 'badwords.json';
-
 export const DEFLATE_COMPRESSION = 8;
 export const NO_COMPRESSION = 0;
 
@@ -177,14 +174,6 @@ export const CSP_KEYWORD_RE = new RegExp(
     '|(sha(256|384|512)-|nonce-)',
   ].join('')
 );
-
-// All badwords grouped by language as pre-compild regular expression.
-// Note: \b matches a very limited set of 'word boundaries' which might
-// not work properly once other languages should be matched too.
-// See http://www.ecma-international.org/ecma-262/5.1/#sec-15.10.2.6
-export const BADWORDS_RE = {
-  en: new RegExp(`\\b(?:${badwords.en.join('|')})\\b`, 'gi'),
-};
 
 export const MESSAGES_JSON = 'messages.json';
 export const LOCALES_DIRECTORY = '_locales';

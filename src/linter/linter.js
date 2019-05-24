@@ -359,9 +359,6 @@ export default class Linter {
       };
     } else {
       if (ScannerClass !== BinaryScanner && ScannerClass !== FilenameScanner) {
-        // Check for badwords across all code files
-        this._markBadwordUsage(filename, fileData);
-
         // Check for coin miners
         this._markCoinMinerUsage(filename, fileData);
 
@@ -638,20 +635,6 @@ export default class Linter {
     // eslint-disable-next-line no-param-reassign
     addonMetadata.unknownMinifiedFiles = unknownMinifiedFiles;
     return addonMetadata;
-  }
-
-  _markBadwordUsage(filename, fileData) {
-    if (fileData && fileData.trim()) {
-      const matches = fileData.match(constants.BADWORDS_RE.en);
-
-      if (matches) {
-        this.collector.addNotice(
-          Object.assign({}, messages.MOZILLA_COND_OF_USE, {
-            file: filename,
-          })
-        );
-      }
-    }
   }
 
   _markCoinMinerUsage(filename, fileData) {
