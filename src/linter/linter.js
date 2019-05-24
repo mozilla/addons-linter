@@ -18,17 +18,16 @@ import {
 } from 'linter/utils';
 import log from 'linter/logger';
 import Collector from 'linter/collector';
-
-import DefaultManifestJSONParser from '../parsers/manifestjson';
-import BinaryScanner from '../scanners/binary';
-import CSSScanner from '../scanners/css';
-import FilenameScanner from '../scanners/filename';
-import HTMLScanner from '../scanners/html';
-import JavaScriptScanner from '../scanners/javascript';
-import JSONScanner from '../scanners/json';
-import LangpackScanner from '../scanners/langpack';
-import { Crx, Directory, Xpi } from '../io';
-import { MINER_BLOCKLIST } from './miner_blocklist';
+import DefaultManifestJSONParser from 'parsers/manifestjson';
+import BinaryScanner from 'scanners/binary';
+import CSSScanner from 'scanners/css';
+import FilenameScanner from 'scanners/filename';
+import HTMLScanner from 'scanners/html';
+import JavaScriptScanner from 'scanners/javascript';
+import JSONScanner from 'scanners/json';
+import LangpackScanner from 'scanners/langpack';
+import { Crx, Directory, Xpi } from 'io';
+import { MINER_BLOCKLIST } from 'miner_blocklist';
 
 export default class Linter {
   constructor(config) {
