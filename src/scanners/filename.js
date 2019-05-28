@@ -43,7 +43,7 @@ export default class FilenameScanner extends BaseScanner {
       );
     } else if (constants.RESERVED_FILENAMES.includes(filenameWithoutPath)) {
       this.linterMessages.push(
-        Object.assign({}, messages.RESERVED_FILENAME_DETECTED, {
+        Object.assign({}, messages.RESERVED_FILENAME, {
           type: constants.VALIDATION_ERROR,
           file: this.filename,
         })

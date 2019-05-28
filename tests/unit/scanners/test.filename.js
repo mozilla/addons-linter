@@ -158,7 +158,7 @@ describe('Reserved file names', () => {
 
       const { linterMessages } = await filenameScanner.scan();
       expect(linterMessages.length).toEqual(1);
-      expect(linterMessages[0].code).toEqual(messages.RESERVED_FILENAME_DETECTED.code);
+      expect(linterMessages[0].code).toEqual(messages.RESERVED_FILENAME.code);
       expect(linterMessages[0].file).toEqual(filePath);
     });
   });
