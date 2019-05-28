@@ -145,3 +145,35 @@ describe('Hidden and Flagged File Regexes', () => {
     });
   });
 });
+
+describe('Reserved file names', () => {
+  const matchingReservedFiles = [
+    'mozilla-recommendation.json',
+    'foo/bar/.git/mozilla-recommendation.json',
+  ];
+
+  matchingReservedFiles.forEach((filePath) => {
+    it(`should match ${filePath} as a reserved file`, async () => {
+      const filenameScanner = new FilenameScanner('', filePath);
+
+      const { linterMessages } = await filenameScanner.scan();
+      expect(linterMessages.length).toEqual(1);
+      expect(linterMessages[0].code).toEqual(messages.RESERVED_FILENAME.code);
+      expect(linterMessages[0].file).toEqual(filePath);
+    });
+  });
+
+  // Make sure we don't match by regular expressions of any kind. Only exact
+  // matches count
+  const nonMatchingReservedFiles = ['mozilla-recommendations.json'];
+
+  nonMatchingReservedFiles.forEach((filePath) => {
+    it(`should not match ${filePath} as a reserved file`, async () => {
+      const filenameScanner = new FilenameScanner('', filePath);
+
+      await expect(filenameScanner.scan()).rejects.toThrow(
+        "Filename didn't match a regex: mozilla-recommendations.json."
+      );
+    });
+  });
+});

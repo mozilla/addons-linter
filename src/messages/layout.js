@@ -83,3 +83,9 @@ export const COINMINER_USAGE_DETECTED = {
     See https://github.com/mozilla/addons-linter/issues/1643 for more
     details.`),
 };
+
+export const RESERVED_FILENAME = {
+  code: 'RESERVED_FILENAME',
+  message: i18n._(oneLine`Files whose names are reserved have been found in
+    the add-on. Please refrain from using them and rename your files.`),
+};

@@ -305,7 +305,8 @@ export default class Linter {
       filename.match(constants.HIDDEN_FILE_REGEX) ||
       filename.match(constants.FLAGGED_FILE_REGEX) ||
       constants.FLAGGED_FILE_EXTENSIONS.includes(path.extname(filename)) ||
-      filename.match(constants.ALREADY_SIGNED_REGEX)
+      filename.match(constants.ALREADY_SIGNED_REGEX) ||
+      constants.RESERVED_FILENAMES.includes(filename)
     ) {
       return FilenameScanner;
     }
