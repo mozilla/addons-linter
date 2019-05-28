@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ANIMASI KLIWON</title>
+</head>
+<body>
+
+
+
+</body>
+</html>
+<html><head><title>KLIWON ANIMASI</title>
+</head>
+<body style="margin:0px;">
+<canvas style="background-color:#000;" width="360" height="560"></canvas>
+<script>
+var canvas = document.querySelector("canvas");
+var context = canvas.getContext('2d');
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+var no = window.prompt("Enter your favourite number","250");
+if(no==""||no==undefined|| no==null){
+no=250;
+}
+var a=0;
+var color=360*Math.random();
+function animate() {
+a+=0.01;
+context.beginPath();
+var x=canvas.width/2+canvas.width/2*Math.cos(no*a)*Math.cos(a);
+var y=-(-canvas.height/2+canvas.width/2*Math.cos(no*a)*Math.sin(a));
+context.arc(x,y,1,0,2*Math.PI,false);
+context.strokeStyle ="hsl("+color++ +",100%,50%)";
+context.stroke();
+if(a > 6.5){ 
+a=0.01; 
+no=Math.floor(Math.random()*9)+2;
+context.clearRect(0,0,canvas.width,canvas.height); 
+}
+requestAnimationFrame(animate)|| webkitRequestAnimationFrame(animate)|| mozRequestAnimationFrame(animate) || oRequestAnimationFrame (animate)|| msRequestAnimationFrame(animate);
+}
+requestAnimationFrame(animate)|| webkitRequestAnimationFrame(animate)|| mozRequestAnimationFrame(animate) || oRequestAnimationFrame (animate)|| msRequestAnimationFrame(animate);
+</script>
+
+
+</body></html>
+18 bin/KLIWON BERGERAK.html
+@@ -0,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TULISAN BERJALAN KLIWON</title>
+</head>
+<body>
+
+</body>
+</html>
+ <marquee behavior="alternate" onmouseover="this.stop()" onmouseout="this.start()">ORA Kerjo Ora BADOG Bro</marquee>
+ <marquee bgcolor="#8B0000" style="font-family: impact; font-size:35px; color: #A9A9A9;">SELAMAT DATANG UNDANGAN TAMU TAK DIUNDANG</marquee>
+ <div id="play" align="center">
+<audio controls="" preload="auto" style="width: 100%;"> <source src="http://v1710.wapka-file.com/g03/music/58886852/5232875/ZDYwMUdoazlPZjlsZzZFWkZ0OTAxdmFKUTh3aEwzeUdKb1lyQ05TWXR2R3RGN3JFd3c=/Siti+Badriah+Ft+RPH+%26+DJ+Donall+Lagi+Tamvan.mp3" type="audio/mpeg"> </audio> <script>var orignalstring = document.getElementById("play").innerHTML;var newstring = orignalstring.replace("http://carilaguin.net/music/down/","http://v1710.wapka-file.com/g03/music/");document.getElementById("play").innerHTML = newstring;</script> </div>
+<div id="infolagu" style="text-align: center;">
+<strong><a href="https://www.donatecars.website/p/donating-car-to-charity.html?url=aHR0cDovL3YxNzEwLndhcGthLWZpbGUuY29tL2cwMy9tdXNpYy81ODg4Njg1Mi81MjMyODc1L1pEWXdNVWRvYXpsUFpqbHNaelpGV2taME9UQXhkbUZLVVRoM2FFd3plVWRLYjFseVEwNVRXWFIyUjNSR04zSkZkM2M9L1NpdGkrQmFkcmlhaCtGdCtSUEgrJTI2K0RKK0RvbmFsbCtMYWdpK1RhbXZhbi5tcDM=" 
+
+
+ KLIWON_Jagung 
