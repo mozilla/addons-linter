@@ -149,7 +149,7 @@ describe('Hidden and Flagged File Regexes', () => {
 describe('Reserved file names', () => {
   const matchingReservedFiles = [
     'mozilla-recommendation.js',
-    'foo/bar/.git/mozilla-recommendation.js'
+    'foo/bar/.git/mozilla-recommendation.js',
   ];
 
   matchingReservedFiles.forEach((filePath) => {
