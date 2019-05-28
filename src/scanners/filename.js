@@ -1,4 +1,4 @@
-import { extname } from 'path';
+import { extname, basename } from 'path';
 
 import BaseScanner from 'scanners/base';
 import * as messages from 'messages';
@@ -11,6 +11,7 @@ export default class FilenameScanner extends BaseScanner {
 
   async scan() {
     const extension = extname(this.filename);
+    const filenameWithoutPath = basename(this.filename);
 
     if (this.filename.match(constants.ALREADY_SIGNED_REGEX)) {
       this.linterMessages.push(
@@ -37,6 +38,13 @@ export default class FilenameScanner extends BaseScanner {
       this.linterMessages.push(
         Object.assign({}, messages.FLAGGED_FILE_EXTENSION, {
           type: constants.VALIDATION_WARNING,
+          file: this.filename,
+        })
+      );
+    } else if (constants.RESERVED_FILENAMES.includes(filenameWithoutPath)) {
+      this.linterMessages.push(
+        Object.assign({}, messages.RESERVED_FILENAME_DETECTED, {
+          type: constants.VALIDATION_ERROR,
           file: this.filename,
         })
       );
