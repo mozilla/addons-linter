@@ -68,6 +68,7 @@ Rules are sorted by severity.
 | `COINMINER_USAGE_DETECTED` | warning  | Firefox add-ons are not allowed to run coin miners. |
 | `BAD_ZIPFILE`              | error    | Bad zip file                                        |
 | `FILE_TOO_LARGE`           | error    | File is too large to parse                          |
+| `RESERVED_FILENAME`        | error    | Reserved filename detected.                         |
 
 ## Type detection
 
