@@ -86,6 +86,7 @@ export const COINMINER_USAGE_DETECTED = {
 
 export const RESERVED_FILENAME = {
   code: 'RESERVED_FILENAME',
-  message: i18n._(oneLine`Files whose names are reserved have been found in
+  message: i18n._('Reserved filename found.'),
+  description: i18n._(oneLine`Files whose names are reserved have been found in
     the add-on. Please refrain from using them and rename your files.`),
 };
