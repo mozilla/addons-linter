@@ -160,7 +160,7 @@ describe('Reserved file names', () => {
       expect(linterMessages.length).toEqual(1);
       expect(linterMessages[0].code).toEqual(messages.RESERVED_FILENAME.code);
       expect(linterMessages[0].message).toEqual('Reserved filename found.');
-      expect(linterMessages[0].description.startsWith('Files whose names are reserved')).toEqual(true)
+      expect(linterMessages[0].description).toMatch(/^Files whose names are reserved/)
       expect(linterMessages[0].file).toEqual(filePath);
     });
   });
