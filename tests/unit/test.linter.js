@@ -345,6 +345,8 @@ describe('Linter.getScanner()', () => {
     '__MACOSX/foo.txt',
     'wat.dll',
     'META-INF/manifest.mf',
+    'mozilla-recommendation.json',
+    'some/subfolder/mozilla-recommendation.json',
   ];
 
   shouldBeFilenameScanned.forEach((filename) => {
