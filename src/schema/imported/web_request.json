@@ -101,6 +101,14 @@
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
             },
+            "incognito": {
+              "type": "boolean",
+              "description": "True for private browsing requests."
+            },
+            "cookieStoreId": {
+              "type": "string",
+              "description": "The cookie store ID of the contextual identity."
+            },
             "originUrl": {
               "type": "string",
               "description": "URL of the resource that triggered this request."
@@ -230,6 +238,14 @@
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
             },
+            "incognito": {
+              "type": "boolean",
+              "description": "True for private browsing requests."
+            },
+            "cookieStoreId": {
+              "type": "string",
+              "description": "The cookie store ID of the contextual identity."
+            },
             "originUrl": {
               "type": "string",
               "description": "URL of the resource that triggered this request."
@@ -341,6 +357,14 @@
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
             },
+            "incognito": {
+              "type": "boolean",
+              "description": "True for private browsing requests."
+            },
+            "cookieStoreId": {
+              "type": "string",
+              "description": "The cookie store ID of the contextual identity."
+            },
             "originUrl": {
               "type": "string",
               "description": "URL of the resource that triggered this request."
@@ -440,6 +464,14 @@
             "parentFrameId": {
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
+            },
+            "incognito": {
+              "type": "boolean",
+              "description": "True for private browsing requests."
+            },
+            "cookieStoreId": {
+              "type": "string",
+              "description": "The cookie store ID of the contextual identity."
             },
             "originUrl": {
               "type": "string",
@@ -561,6 +593,14 @@
             "parentFrameId": {
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
+            },
+            "incognito": {
+              "type": "boolean",
+              "description": "True for private browsing requests."
+            },
+            "cookieStoreId": {
+              "type": "string",
+              "description": "The cookie store ID of the contextual identity."
             },
             "originUrl": {
               "type": "string",
@@ -731,6 +771,14 @@
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
             },
+            "incognito": {
+              "type": "boolean",
+              "description": "True for private browsing requests."
+            },
+            "cookieStoreId": {
+              "type": "string",
+              "description": "The cookie store ID of the contextual identity."
+            },
             "originUrl": {
               "type": "string",
               "description": "URL of the resource that triggered this request."
@@ -849,6 +897,14 @@
             "parentFrameId": {
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
+            },
+            "incognito": {
+              "type": "boolean",
+              "description": "True for private browsing requests."
+            },
+            "cookieStoreId": {
+              "type": "string",
+              "description": "The cookie store ID of the contextual identity."
             },
             "originUrl": {
               "type": "string",
@@ -974,6 +1030,14 @@
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
             },
+            "incognito": {
+              "type": "boolean",
+              "description": "True for private browsing requests."
+            },
+            "cookieStoreId": {
+              "type": "string",
+              "description": "The cookie store ID of the contextual identity."
+            },
             "originUrl": {
               "type": "string",
               "description": "URL of the resource that triggered this request."
@@ -1092,6 +1156,14 @@
             "parentFrameId": {
               "type": "integer",
               "description": "ID of frame that wraps the frame which sent the request. Set to -1 if no parent frame exists."
+            },
+            "incognito": {
+              "type": "boolean",
+              "description": "True for private browsing requests."
+            },
+            "cookieStoreId": {
+              "type": "string",
+              "description": "The cookie store ID of the contextual identity."
             },
             "originUrl": {
               "type": "string",
@@ -1289,6 +1361,10 @@
         },
         "windowId": {
           "type": "integer"
+        },
+        "incognito": {
+          "type": "boolean",
+          "description": "If provided, requests that do not match the incognito state will be filtered out."
         }
       },
       "required": [

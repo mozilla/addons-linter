@@ -5,6 +5,7 @@ import bookmarks from './bookmarks.json';
 import browserAction from './browser_action.json';
 import browserSettings from './browser_settings.json';
 import browsingData from './browsing_data.json';
+import captivePortal from './captive_portal.json';
 import chrome_settings_overrides from './chrome_settings_overrides.json';
 import clipboard from './clipboard.json';
 import commands from './commands.json';
@@ -58,6 +59,7 @@ export default [
   browserAction,
   browserSettings,
   browsingData,
+  captivePortal,
   chrome_settings_overrides,
   clipboard,
   commands,
