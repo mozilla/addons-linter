@@ -510,6 +510,9 @@
           "$ref": "browsingData#/definitions/Permission"
         },
         {
+          "$ref": "captivePortal#/definitions/Permission"
+        },
+        {
           "$ref": "contextualIdentities#/definitions/Permission"
         },
         {
@@ -578,7 +581,8 @@
     "ExtensionFileUrl": {
       "type": "string",
       "format": "strictRelativeUrl",
-      "pattern": "\\S"
+      "pattern": "\\S",
+      "preprocess": "localize"
     },
     "ImageDataOrExtensionURL": {
       "type": "string",
