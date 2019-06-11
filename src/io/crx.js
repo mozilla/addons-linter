@@ -1,11 +1,34 @@
 import fs from 'fs';
 
-import parseCRX from 'crx-parser';
+import { promisify } from 'es6-promisify';
 import yauzl from 'yauzl';
 
 import log from 'logger';
 
 import { Xpi } from './xpi';
+
+async function parseCRX(buffer) {
+  if (buffer.readUInt32BE(0) !== 0x43723234) {
+    throw new Error('Invalid header: Does not start with Cr24.');
+  }
+
+  const version = buffer.readUInt32LE(4);
+
+  if (version === 2) {
+    const publicKeyLength = buffer.readUInt32LE(8);
+    const signatureLength = buffer.readUInt32LE(12);
+    // 16 = Magic number (4), CRX format version (4), lengths (2x4)
+    return buffer.slice(16 + publicKeyLength + signatureLength);
+  }
+
+  if (version === 3) {
+    const crx3HeaderLength = buffer.readUInt32LE(8);
+    // 12 = Magic number (4), CRX format version (4), header length (4)
+    return buffer.slice(12 + crx3HeaderLength);
+  }
+
+  throw new Error('Unexpected crx format version number.');
+}
 
 /*
  * A CRX file is just a ZIP file (eg an XPI) with some extra header
@@ -20,33 +43,16 @@ export class Crx extends Xpi {
     this.parseCRX = _parseCRX;
   }
 
-  open() {
-    return new Promise((resolve, reject) => {
-      /* eslint-disable consistent-return, no-shadow */
-      // First, read the file manually, as we need to pass the whole thing
-      // to crx-parser.
-      this.fs.readFile(this.path, (err, buffer) => {
-        if (err) {
-          return reject(err);
-        }
-        // Parse out the CRX header data from the actual ZIP contents.
-        this.parseCRX(buffer, (err, data) => {
-          if (err) {
-            return reject(err);
-          }
+  async open() {
+    let buffer = await promisify(this.fs.readFile)(this.path);
 
-          log.debug('Obtained zip data from CRX file', data);
-          // Finally we can read in the zip data as a buffer into yauzl.
-          this.zipLib.fromBuffer(data.body, (err, zipFile) => {
-            if (err) {
-              return reject(err);
-            }
+    // Parse out the CRX header data from the actual ZIP contents.
+    buffer = await this.parseCRX(buffer);
 
-            resolve(zipFile);
-          });
-        });
-      });
-    });
+    log.debug('Obtained zip data from CRX file', buffer);
+
+    // Finally we can read in the zip data as a buffer into yauzl.
+    return promisify(this.zipLib.fromBuffer)(buffer);
   }
 
   async getFiles(_onEventsSubscribed) {
