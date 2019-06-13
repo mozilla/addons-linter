@@ -102,6 +102,22 @@ describe('ManifestJSONParser', () => {
       });
     });
 
+    it('should fail on id longer than 255 characters', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        applications: { gecko: { id: '@' + 'a'.repeat(255) } },  // 256 chars.
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.JSON_INVALID.code,
+        message: /"\/applications\/gecko\/id" should NOT be longer than 255 characters/,
+      });
+    });
+
     it('should return null if undefined', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({ applications: {} });
