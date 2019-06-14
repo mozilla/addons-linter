@@ -105,7 +105,7 @@ describe('ManifestJSONParser', () => {
     it('should fail on id longer than 255 characters', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: { gecko: { id: '@' + 'a'.repeat(255) } },  // 256 chars.
+        applications: { gecko: { id: `@${'a'.repeat(255)}` } }, // 256 chars
       });
       const manifestJSONParser = new ManifestJSONParser(
         json,
