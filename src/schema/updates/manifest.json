@@ -18,6 +18,9 @@
           }
         }
       },
+      "ExtensionID": {
+        "maxLength": 255
+      },
       "WebExtensionManifest": {
         "allOf": [
           {
