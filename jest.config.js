@@ -11,7 +11,7 @@ module.exports = {
     // Alias tests for tests to be able to import helpers.
     '^tests/(.*)$': '<rootDir>/tests/$1',
   },
-  setupTestFrameworkScriptFile: '<rootDir>/tests/setup.js',
+  setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/tests/fixtures/',
