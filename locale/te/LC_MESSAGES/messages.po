@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-11-04 06:35+0000\n"
-"Last-Translator: priyahamskatroju <priyahamskatroju@gmail.com>\n"
+"PO-Revision-Date: 2019-06-29 10:14+0000\n"
+"Last-Translator: Sahithi <sahithi@swecha.net>\n"
 "Language-Team: none\n"
 "Language: te\n"
 "MIME-Version: 1.0\n"
@@ -264,7 +264,7 @@ msgstr "ప్రతీకపు పరిమాణం మానిఫెస్�
 
 #: src/messages/manifestjson.js:204
 msgid "Corrupt image file"
-msgstr ""
+msgstr "చెడిపోయిన చిత్రం ఫైలు"
 
 #: src/messages/manifestjson.js:206
 msgid "Expected icon file at \"%(path)s\" is corrupted"
