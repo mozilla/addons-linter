@@ -45,7 +45,7 @@
     "columnify": "1.5.4",
     "common-tags": "1.8.0",
     "deepmerge": "3.3.0",
-    "dispensary": "0.37.0",
+    "dispensary": "0.38.0",
     "es6-promisify": "6.0.1",
     "eslint": "5.16.0",
     "eslint-plugin-no-unsafe-innerhtml": "1.0.16",
