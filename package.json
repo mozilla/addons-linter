@@ -72,7 +72,8 @@
     "upath": "1.1.2",
     "whatwg-url": "7.0.0",
     "yargs": "13.2.4",
-    "yauzl": "2.10.0"
+    "yauzl": "2.10.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@babel/cli": "7.4.4",
@@ -119,7 +120,6 @@
     "raw-loader": "3.0.0",
     "shelljs": "0.8.3",
     "sinon": "7.3.2",
-    "snyk": "1.187.1",
     "tar": "4.4.10",
     "tar-fs": "2.0.0",
     "tmp-promise": "1.1.0",
