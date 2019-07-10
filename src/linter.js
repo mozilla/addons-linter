@@ -256,9 +256,7 @@ export default class Linter {
         selfHosted: this.config.selfHosted,
         io: this.io,
       });
-      if (manifestParser.parsedJSON.icons) {
-        await manifestParser.validateIcons();
-      }
+      await manifestParser.validateIcons();
       if (manifestParser.isStaticTheme) {
         await manifestParser.validateStaticThemeImages();
       }

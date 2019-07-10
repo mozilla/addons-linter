@@ -52,6 +52,13 @@ async function getImageMetadata(io, iconPath) {
   return probeImageSize(data);
 }
 
+function getNormalizedExtension(_path) {
+  return path
+    .extname(_path)
+    .substring(1)
+    .toLowerCase();
+}
+
 export default class ManifestJSONParser extends JSONParser {
   constructor(
     jsonString,
@@ -499,22 +506,57 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateIcons() {
+    const icons = [];
+
+    if (this.parsedJSON.icons) {
+      Object.keys(this.parsedJSON.icons).forEach((size) => {
+        icons.push([size, this.parsedJSON.icons[size]]);
+      });
+    }
+
+    // Check for default_icon key at each of the action properties
+    ['browser_action', 'page_action', 'sidebar_action'].forEach((key) => {
+      if (this.parsedJSON[key] && this.parsedJSON[key].default_icon) {
+        if (typeof this.parsedJSON[key].default_icon === 'string') {
+          icons.push([null, this.parsedJSON[key].default_icon]);
+        } else {
+          Object.keys(this.parsedJSON[key].default_icon).forEach((size) => {
+            icons.push([size, this.parsedJSON[key].default_icon[size]]);
+          });
+        }
+      }
+    });
+
+    // Check for the theme_icons from the browser_action
+    if (
+      this.parsedJSON.browser_action &&
+      this.parsedJSON.browser_action.theme_icons
+    ) {
+      this.parsedJSON.browser_action.theme_icons.forEach((icon) => {
+        ['dark', 'light'].forEach((theme) => {
+          if (icon[theme]) {
+            icons.push([icon.size, icon[theme]]);
+          }
+        });
+      });
+    }
+
     const promises = [];
-    const { icons } = this.parsedJSON;
-    Object.keys(icons).forEach((size) => {
-      const _path = normalizePath(icons[size]);
+    const errorIcons = [];
+    icons.forEach(([size, iconPath]) => {
+      const _path = normalizePath(iconPath);
       if (!Object.prototype.hasOwnProperty.call(this.io.files, _path)) {
-        this.collector.addError(messages.manifestIconMissing(_path));
-        this.isValid = false;
+        if (!errorIcons.includes(_path)) {
+          this.collector.addError(messages.manifestIconMissing(_path));
+          this.isValid = false;
+          errorIcons.push(_path);
+        }
       } else if (
-        !IMAGE_FILE_EXTENSIONS.includes(
-          _path
-            .split('.')
-            .pop()
-            .toLowerCase()
-        )
+        !IMAGE_FILE_EXTENSIONS.includes(getNormalizedExtension(_path))
       ) {
-        this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
+        if (!errorIcons.includes(_path)) {
+          this.collector.addWarning(messages.WRONG_ICON_EXTENSION);
+        }
       } else {
         promises.push(this.validateIcon(_path, size));
       }
@@ -524,10 +566,7 @@ export default class ManifestJSONParser extends JSONParser {
 
   async validateThemeImage(imagePath, manifestPropName) {
     const _path = normalizePath(imagePath);
-    const ext = path
-      .extname(imagePath)
-      .substring(1)
-      .toLowerCase();
+    const ext = getNormalizedExtension(imagePath);
 
     const fileExists = this.validateFileExistsInPackage(
       _path,
