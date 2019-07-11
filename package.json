@@ -65,7 +65,7 @@
     "probe-image-size": "4.1.0",
     "regenerator-runtime": "0.13.2",
     "relaxed-json": "1.0.3",
-    "semver": "6.1.2",
+    "semver": "6.2.0",
     "source-map-support": "0.5.12",
     "strip-bom-stream": "4.0.0",
     "tosource": "1.0.0",
