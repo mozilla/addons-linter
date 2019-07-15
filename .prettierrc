@@ -7,13 +7,13 @@
     {
       "files": "bin/*",
       "options": {
-        "parser": "babylon"
+        "parser": "babel"
       }
     },
     {
       "files": "scripts/*",
       "options": {
-        "parser": "babylon"
+        "parser": "babel"
       }
     }
   ]

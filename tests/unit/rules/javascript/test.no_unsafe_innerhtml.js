@@ -205,9 +205,7 @@ describe('no_unsafe_innerhtml', () => {
   ];
 
   invalidCodes.forEach((code) => {
-    it(`should not allow the use of innerHTML examples ${
-      code.code
-    }`, async () => {
+    it(`should not allow the use of innerHTML examples ${code.code}`, async () => {
       const jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
       const { linterMessages } = await jsScanner.scan();
