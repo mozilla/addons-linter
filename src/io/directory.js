@@ -85,7 +85,7 @@ export class Directory extends IOBase {
     });
   }
 
-  async getChunkAsBuffer(relativeFilePath, chunkLength) {
+  async getChunkAsBuffer(relativeFilePath, chunkSize) {
     const filePath = await this.getPath(relativeFilePath);
 
     return new Promise((resolve) => {
@@ -96,7 +96,7 @@ export class Directory extends IOBase {
         encoding: null,
         autoClose: true,
       }).pipe(
-        new FirstChunkStream({ chunkLength }, (_, enc) => {
+        new FirstChunkStream({ chunkSize }, (_, enc) => {
           resolve(enc);
         })
       );

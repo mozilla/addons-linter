@@ -135,7 +135,7 @@ export class Xpi extends IOBase {
     });
   }
 
-  async getChunkAsBuffer(path, chunkLength) {
+  async getChunkAsBuffer(path, chunkSize) {
     this.checkPath(path);
     const zipfile = await this.open();
     return new Promise((resolve, reject) => {
@@ -145,7 +145,7 @@ export class Xpi extends IOBase {
           return;
         }
         readStream.pipe(
-          new FirstChunkStream({ chunkLength }, (_, enc) => {
+          new FirstChunkStream({ chunkSize }, (_, enc) => {
             resolve(enc);
           })
         );
