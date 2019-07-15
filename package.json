@@ -111,7 +111,7 @@
     "jest-raw-loader": "1.0.1",
     "lodash.clonedeep": "4.5.0",
     "lodash.ismatchwith": "4.4.0",
-    "markdown-it": "9.0.0",
+    "markdown-it": "9.0.1",
     "markdown-it-anchor": "5.2.4",
     "markdown-it-emoji": "1.4.0",
     "prettier": "1.17.1",
