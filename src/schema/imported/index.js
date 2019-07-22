@@ -29,6 +29,7 @@ import idle from './idle.json';
 import management from './management.json';
 import menus from './menus.json';
 import native_manifest from './native_manifest.json';
+import normandyAddonStudy from './normandyAddonStudy.json';
 import notifications from './notifications.json';
 import omnibox from './omnibox.json';
 import pageAction from './page_action.json';
@@ -48,6 +49,7 @@ import theme from './theme.json';
 import topSites from './top_sites.json';
 import types from './types.json';
 import url_overrides from './url_overrides.json';
+import urlbar from './urlbar.json';
 import userScripts from './userScripts.json';
 import webNavigation from './web_navigation.json';
 import webRequest from './web_request.json';
@@ -83,6 +85,7 @@ export default [
   management,
   menus,
   native_manifest,
+  normandyAddonStudy,
   notifications,
   omnibox,
   pageAction,
@@ -102,6 +105,7 @@ export default [
   topSites,
   types,
   url_overrides,
+  urlbar,
   userScripts,
   webNavigation,
   webRequest,
