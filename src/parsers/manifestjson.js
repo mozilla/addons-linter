@@ -241,12 +241,7 @@ export default class ManifestJSONParser extends JSONParser {
   _validate() {
     // Not all messages returned by the schema are fatal to Firefox, messages
     // that are just warnings should be added to this array.
-    const warnings = [
-      messages.MANIFEST_PERMISSIONS.code,
-      // TODO(#2463): Remove the following once the LWT aliases deprecated
-      // property should become errors on submission.
-      messages.MANIFEST_THEME_LWT_ALIAS.code,
-    ];
+    const warnings = [messages.MANIFEST_PERMISSIONS.code];
     let validate = validateAddon;
 
     if (this.isStaticTheme) {

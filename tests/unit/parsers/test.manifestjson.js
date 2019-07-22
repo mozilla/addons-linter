@@ -2334,7 +2334,7 @@ describe('ManifestJSONParser', () => {
     });
 
     describe('deprecated LWT aliases', () => {
-      it('does add validation warnings for LWT alias manifest properties marked as deprecated', () => {
+      it('does add validation errors for LWT alias manifest properties marked as deprecated', () => {
         const linter = new Linter({ _: ['bar'] });
         const manifest = validStaticThemeManifestJSON({
           theme: {
@@ -2344,6 +2344,9 @@ describe('ManifestJSONParser', () => {
             colors: {
               accentcolor: '#000',
               textcolor: '#000',
+              // This is not a deprecated property anymore, but it is still
+              // part of this test to ensure we don't raise linting errors
+              // for it.
               toolbar_text: '#000',
             },
           },
@@ -2358,34 +2361,30 @@ describe('ManifestJSONParser', () => {
 
         expect(manifestJSONParser.isValid).toBeFalsy();
 
-        expect(errors).toEqual([]);
+        expect(warnings).toEqual([]);
 
-        const actualWarnings = warnings.map((warn) => {
-          const { code, dataPath, file, message, description } = warn;
+        const actualErrors = errors.map((err) => {
+          const { code, dataPath, file, message, description } = err;
           return { code, dataPath, file, message, description };
         });
 
-        const commonWarnProps = { ...messages.MANIFEST_THEME_LWT_ALIAS };
-        const expectedWarnings = [
+        const commonErrorProps = { ...messages.MANIFEST_THEME_LWT_ALIAS };
+        const expectedErrors = [
           {
-            ...commonWarnProps,
+            ...commonErrorProps,
             dataPath: '/theme/images/headerURL',
           },
           {
-            ...commonWarnProps,
+            ...commonErrorProps,
             dataPath: '/theme/colors/accentcolor',
           },
           {
-            ...commonWarnProps,
+            ...commonErrorProps,
             dataPath: '/theme/colors/textcolor',
-          },
-          {
-            ...commonWarnProps,
-            dataPath: '/theme/colors/toolbar_text',
           },
         ];
 
-        expect(actualWarnings).toEqual(expectedWarnings);
+        expect(actualErrors).toEqual(expectedErrors);
       });
     });
   });
