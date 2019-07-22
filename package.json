@@ -122,7 +122,7 @@
     "snyk": "1.196.0",
     "tar": "4.4.10",
     "tar-fs": "2.0.0",
-    "tmp-promise": "1.1.0",
+    "tmp-promise": "2.0.2",
     "webpack": "4.36.1",
     "webpack-cli": "3.3.6"
   },
