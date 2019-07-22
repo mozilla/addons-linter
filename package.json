@@ -97,7 +97,7 @@
     "comment-json": "2.1.0",
     "coveralls": "3.0.5",
     "doctoc": "1.4.0",
-    "eslint-config-amo": "1.16.0",
+    "eslint-config-amo": "1.17.0",
     "eslint-config-prettier": "6.0.0",
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-jest": "22.8.0",
