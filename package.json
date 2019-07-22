@@ -63,7 +63,7 @@
     "po2json": "0.4.5",
     "postcss": "7.0.17",
     "probe-image-size": "4.1.1",
-    "regenerator-runtime": "0.13.2",
+    "regenerator-runtime": "0.13.3",
     "relaxed-json": "1.0.3",
     "semver": "6.2.0",
     "source-map-support": "0.5.12",
