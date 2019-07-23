@@ -28,9 +28,7 @@ function publish() {
       name: process.env.GH_USER,
       email: process.env.GH_EMAIL,
     },
-    repo: `https://${
-      process.env.GH_TOKEN
-    }@github.com/mozilla/addons-linter.git`,
+    repo: `https://${process.env.GH_TOKEN}@github.com/mozilla/addons-linter.git`,
     message: `Publish rules (auto)${getDeployMessage()}`,
   });
 }

@@ -26,6 +26,10 @@
           "properties": {
             "gecko": {
               "$ref": "#/types/FirefoxSpecificProperties"
+            },
+            "edge": {
+              "type": "object",
+              "additionalProperties": {}
             }
           }
         },
@@ -537,6 +541,9 @@
           "$ref": "menus#/definitions/Permission"
         },
         {
+          "$ref": "normandyAddonStudy#/definitions/Permission"
+        },
+        {
           "$ref": "pkcs11#/definitions/Permission"
         },
         {
@@ -556,6 +563,9 @@
         },
         {
           "$ref": "theme#/definitions/Permission"
+        },
+        {
+          "$ref": "urlbar#/definitions/Permission"
         }
       ]
     },

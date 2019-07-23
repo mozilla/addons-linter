@@ -300,7 +300,7 @@ export function corruptIconFile({ path }) {
 
 export const MANIFEST_THEME_LWT_ALIAS = {
   code: 'MANIFEST_THEME_LWT_ALIAS',
-  message: i18n._('This theme LWT alias is deprecated.'),
+  message: i18n._('This theme LWT alias has been removed in Firefox 70.'),
   description: i18n._(
     'See https://mzl.la/2T11Lkc (MDN Docs) for more information.'
   ),

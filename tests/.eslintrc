@@ -11,6 +11,7 @@
     "sinon": true,
   },
   "plugins": [
+    "jest",
     "promise",
   ],
   "rules": {

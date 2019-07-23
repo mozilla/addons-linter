@@ -128,7 +128,6 @@ export const DEPRECATED_STATIC_THEME_LWT_ALIASES = [
   '/theme/images/headerURL',
   '/theme/colors/accentcolor',
   '/theme/colors/textcolor',
-  '/theme/colors/toolbar_text',
 ];
 
 // A list of magic numbers that we won't allow.

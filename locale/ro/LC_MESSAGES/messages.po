@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2019-05-25 08:08+0000\n"
+"PO-Revision-Date: 2019-06-27 17:41+0000\n"
 "Last-Translator: Cristian Silaghi <cristian.silaghi@mozilla.ro>\n"
 "Language-Team: none\n"
 "Language: ro\n"
@@ -44,7 +44,7 @@ msgstr "Coloană"
 
 #: src/messages/css.js:16
 msgid "Invalid nesting of selectors found"
-msgstr "S-a depistat o imbricare invalidă a selectoarelor"
+msgstr "S-a depistat o imbricare nevalidă a selectorilor"
 
 #: src/messages/css.js:9
 msgid "A CSS syntax error was encountered"
@@ -52,7 +52,7 @@ msgstr "S-a depistat o eroare de sintaxă CSS"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
-msgstr "FTL invalid."
+msgstr "FTL nevalid."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
@@ -192,7 +192,7 @@ msgstr "Un substituent utilizat în mesaj nu este definit."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr "Denumirea substituentului conține caractere invalide"
+msgstr "Denumirea substituentului conține caractere nevalide"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
@@ -234,7 +234,7 @@ msgstr "Pagina de fundal nu a fost găsită la „%(path)s”."
 
 #: src/messages/manifestjson.js:16
 msgid "The field is invalid."
-msgstr "Câmpul este invalid."
+msgstr "Câmpul este nevalid."
 
 #: src/messages/manifestjson.js:161
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."

@@ -35,26 +35,68 @@ const chromeContentDir = {
 };
 
 describe('Crx.open()', function openCallback() {
-  beforeEach(() => {
-    this.fakeCrxFile = {
-      testprop: 'I am the fake zip',
-    };
-    this.openStub = sinon.stub();
-    this.fakeParseCrx = sinon.stub();
-    this.fakeZipLib = {
-      open: this.openStub,
-    };
-    this.fakeFs = {
-      readFile: () => {
-        return Buffer.from('');
+  async function verifyCrxFixture(zipfile) {
+    const results = [];
+    zipfile.on('entry', (entry) => {
+      results.push({
+        name: entry.fileName,
+        size: entry.uncompressedSize,
+      });
+    });
+    await new Promise((resolve) => {
+      zipfile.on('end', resolve);
+    });
+    expect(results).toEqual([
+      {
+        name: 'manifest.json',
+        size: 645,
       },
-    };
-  });
+      {
+        name: 'scripts/',
+        size: 0,
+      },
+      {
+        name: 'scripts/background.js',
+        size: 16,
+      },
+    ]);
+  }
 
   it('should open a CRX and return a zip', async () => {
     const myCrx = new Crx('tests/fixtures/extension.crx');
     const zipfile = await myCrx.open();
     expect(zipfile).toBeInstanceOf(ZipFile);
+    await verifyCrxFixture(zipfile);
+  });
+
+  it('should open a CRX3 and return a zip', async () => {
+    const myCrx = new Crx('tests/fixtures/crx3.crx');
+    const zipfile = await myCrx.open();
+    expect(zipfile).toBeInstanceOf(ZipFile);
+    await verifyCrxFixture(zipfile);
+  });
+
+  it('should not accept a regular zip file as a CRX file', async () => {
+    const notCrx = new Crx('tests/fixtures/good.zip');
+    await expect(notCrx.open()).rejects.toThrow(
+      'Invalid header: Does not start with Cr24.'
+    );
+  });
+
+  it('should reject CRX4 files', async () => {
+    const fakeFs = {
+      readFile: sinon.stub(),
+    };
+    // CRX4 format does not exist yet. Reject files with such a header.
+    // This is "Cr24" followed by the bytes 4 0 0 0.
+    fakeFs.readFile.yieldsAsync(
+      null,
+      Buffer.from([67, 114, 50, 52, 4, 0, 0, 0])
+    );
+    const notCrx = new Crx('foo/bar', undefined, undefined, fakeFs);
+    await expect(notCrx.open()).rejects.toThrow(
+      'Unexpected crx format version number.'
+    );
   });
 });
 
@@ -112,7 +154,7 @@ describe('crx.getFiles()', function getFilesCallback() {
 
     // Return the fake zip to the open callback.
     this.fromBufferStub.yieldsAsync(null, this.fakeZipFile);
-    this.fakeParseCrx.yieldsAsync(null, { body: Buffer.from('foo') });
+    this.fakeParseCrx.resolves(Buffer.from('foo'));
     this.readFileStub.yieldsAsync(null, Buffer.from('bar'));
 
     // If we could use yields multiple times here we would
@@ -142,7 +184,7 @@ describe('crx.getFiles()', function getFilesCallback() {
       this.fakeFs
     );
     this.fromBufferStub.yieldsAsync(null, this.fakeZipFile);
-    this.fakeParseCrx.yieldsAsync(null, { body: Buffer.from('foo') });
+    this.fakeParseCrx.resolves(Buffer.from('foo'));
     this.readFileStub.yieldsAsync(null, Buffer.from('bar'));
 
     const onEventsSubscribed = () => {
@@ -187,7 +229,7 @@ describe('crx.getFiles()', function getFilesCallback() {
     );
 
     this.readFileStub.yieldsAsync(null, Buffer.from('bar'));
-    this.fakeParseCrx.yieldsAsync(new Error('open test'), null);
+    this.fakeParseCrx.rejects(new Error('open test'));
 
     try {
       await myCrx.getFiles();
@@ -206,7 +248,7 @@ describe('crx.getFiles()', function getFilesCallback() {
     );
 
     this.fromBufferStub.yieldsAsync(new Error('open test'), this.fakeZipFile);
-    this.fakeParseCrx.yieldsAsync(null, { body: Buffer.from('foo') });
+    this.fakeParseCrx.resolves(Buffer.from('foo'));
     this.readFileStub.yieldsAsync(null, Buffer.from('bar'));
 
     try {

@@ -9,6 +9,7 @@ import * as messages from 'messages';
 
 import {
   assertHasMatchingError,
+  assertHasMatchingErrorCount,
   validManifestJSON,
   validDictionaryManifestJSON,
   validLangpackManifestJSON,
@@ -1219,6 +1220,188 @@ describe('ManifestJSONParser', () => {
       });
     });
 
+    it('adds an error if the browser_action icon is not in the package', async () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        browser_action: {
+          default_icon: {
+            32: 'icons/icon-32.png',
+            64: 'icons/icon-64.png',
+          },
+        },
+      });
+      const files = {
+        'icons/icon-32.png': EMPTY_PNG.toString('binary'),
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { io: getStreamableIO(files) }
+      );
+
+      await manifestJSONParser.validateIcons();
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.MANIFEST_ICON_NOT_FOUND,
+        message:
+          'An icon defined in the manifest could not be found in the package.',
+        description: 'Icon could not be found at "icons/icon-64.png".',
+      });
+    });
+
+    it('adds an error if the browser_action string icon is not in the package', async () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        browser_action: {
+          default_icon: 'icons/icon.png',
+        },
+      });
+      const files = {};
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { io: getStreamableIO(files) }
+      );
+
+      await manifestJSONParser.validateIcons();
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.MANIFEST_ICON_NOT_FOUND,
+        message:
+          'An icon defined in the manifest could not be found in the package.',
+        description: 'Icon could not be found at "icons/icon.png".',
+      });
+    });
+
+    it('adds an error if the browser_action theme icon is not in the package', async () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        browser_action: {
+          theme_icons: [
+            {
+              light: 'icons/light-32.png',
+              dark: 'icons/dark-32.png',
+              size: 32,
+            },
+          ],
+        },
+      });
+      const files = {
+        'icons/light-32.png': EMPTY_PNG.toString('binary'),
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { io: getStreamableIO(files) }
+      );
+
+      await manifestJSONParser.validateIcons();
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.MANIFEST_ICON_NOT_FOUND,
+        message:
+          'An icon defined in the manifest could not be found in the package.',
+        description: 'Icon could not be found at "icons/dark-32.png".',
+      });
+    });
+
+    it('adds an error if the page_action icon is not in the package', async () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        page_action: {
+          default_icon: {
+            32: 'icons/icon-32.png',
+            64: 'icons/icon-64.png',
+          },
+        },
+      });
+      const files = {
+        'icons/icon-32.png': EMPTY_PNG.toString('binary'),
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { io: getStreamableIO(files) }
+      );
+
+      await manifestJSONParser.validateIcons();
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.MANIFEST_ICON_NOT_FOUND,
+        message:
+          'An icon defined in the manifest could not be found in the package.',
+        description: 'Icon could not be found at "icons/icon-64.png".',
+      });
+    });
+
+    it('adds an error if the sidebar_action icon is not in the package', async () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        sidebar_action: {
+          default_icon: {
+            32: 'icons/icon-32.png',
+            64: 'icons/icon-64.png',
+          },
+        },
+      });
+      const files = {
+        'icons/icon-32.png': EMPTY_PNG.toString('binary'),
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { io: getStreamableIO(files) }
+      );
+
+      await manifestJSONParser.validateIcons();
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.MANIFEST_ICON_NOT_FOUND,
+        message:
+          'An icon defined in the manifest could not be found in the package.',
+        description: 'Icon could not be found at "icons/icon-64.png".',
+      });
+    });
+
+    it('filters duplicate errors if a missing icon is reused', async () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        browser_action: {
+          default_icon: {
+            32: 'icons/icon-32.png',
+            64: 'icons/icon-64.png',
+          },
+        },
+        sidebar_action: {
+          default_icon: {
+            32: 'icons/icon-32.png',
+            64: 'icons/icon-64.png',
+          },
+        },
+      });
+      const files = {
+        'icons/icon-32.png': EMPTY_PNG.toString('binary'),
+      };
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { io: getStreamableIO(files) }
+      );
+
+      await manifestJSONParser.validateIcons();
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingErrorCount(
+        addonLinter.collector.errors,
+        {
+          code: messages.MANIFEST_ICON_NOT_FOUND,
+          message:
+            'An icon defined in the manifest could not be found in the package.',
+          description: 'Icon could not be found at "icons/icon-64.png".',
+        },
+        1
+      );
+    });
+
     it('adds a warning if the icon does not have a valid extension', async () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
@@ -2151,7 +2334,7 @@ describe('ManifestJSONParser', () => {
     });
 
     describe('deprecated LWT aliases', () => {
-      it('does add validation warnings for LWT alias manifest properties marked as deprecated', () => {
+      it('does add validation errors for LWT alias manifest properties marked as deprecated', () => {
         const linter = new Linter({ _: ['bar'] });
         const manifest = validStaticThemeManifestJSON({
           theme: {
@@ -2161,6 +2344,9 @@ describe('ManifestJSONParser', () => {
             colors: {
               accentcolor: '#000',
               textcolor: '#000',
+              // This is not a deprecated property anymore, but it is still
+              // part of this test to ensure we don't raise linting errors
+              // for it.
               toolbar_text: '#000',
             },
           },
@@ -2175,34 +2361,30 @@ describe('ManifestJSONParser', () => {
 
         expect(manifestJSONParser.isValid).toBeFalsy();
 
-        expect(errors).toEqual([]);
+        expect(warnings).toEqual([]);
 
-        const actualWarnings = warnings.map((warn) => {
-          const { code, dataPath, file, message, description } = warn;
+        const actualErrors = errors.map((err) => {
+          const { code, dataPath, file, message, description } = err;
           return { code, dataPath, file, message, description };
         });
 
-        const commonWarnProps = { ...messages.MANIFEST_THEME_LWT_ALIAS };
-        const expectedWarnings = [
+        const commonErrorProps = { ...messages.MANIFEST_THEME_LWT_ALIAS };
+        const expectedErrors = [
           {
-            ...commonWarnProps,
+            ...commonErrorProps,
             dataPath: '/theme/images/headerURL',
           },
           {
-            ...commonWarnProps,
+            ...commonErrorProps,
             dataPath: '/theme/colors/accentcolor',
           },
           {
-            ...commonWarnProps,
+            ...commonErrorProps,
             dataPath: '/theme/colors/textcolor',
-          },
-          {
-            ...commonWarnProps,
-            dataPath: '/theme/colors/toolbar_text',
           },
         ];
 
-        expect(actualWarnings).toEqual(expectedWarnings);
+        expect(actualErrors).toEqual(expectedErrors);
       });
     });
   });

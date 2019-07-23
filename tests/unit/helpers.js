@@ -256,6 +256,12 @@ export function assertHasMatchingError(errors, expected) {
   expect(errors.some((error) => isMatch(error, expected))).toBe(true);
 }
 
+export function assertHasMatchingErrorCount(errors, expected, count) {
+  expect(Array.isArray(errors)).toBe(true);
+  expect(errors.length).toBeGreaterThan(0);
+  expect(errors.filter((error) => isMatch(error, expected)).length).toBe(count);
+}
+
 export function getStreamableIO(files) {
   return {
     files,
