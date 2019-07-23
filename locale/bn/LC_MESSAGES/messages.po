@@ -7,7 +7,7 @@ msgstr ""
 "PO-Revision-Date: 2018-02-01 21:30+0000\n"
 "Last-Translator: S M Sarwar Nobin <smsarwar1996@gmail.com>\n"
 "Language-Team: none\n"
-"Language: bn\n"
+"Language: bn_BD\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -359,4 +359,3 @@ msgstr "\"update_url\" প্রোপার্টি টি Firefox এর দ�
 
 #~ msgid "mozIndexedDB has been removed; use indexedDB instead."
 #~ msgstr "mozIndexedDB অপসারিত হয়েছে; পরিবর্তে indexedDB ব্যবহার করুন।"
-
