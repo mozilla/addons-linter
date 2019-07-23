@@ -1249,6 +1249,39 @@ describe('ManifestJSONParser', () => {
       });
     });
 
+    it('does not add a warning if the browser_action default icon file is valid', async () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const icon = 'tests/fixtures/default.png';
+      const json = validManifestJSON({
+        // Avoid any type of warning by setting the appropriate
+        // firefox version.
+        applications: {
+          gecko: {
+            id: '{daf44bf7-a45e-4450-979c-91cf07434c3d}',
+            strict_min_version: '55.0.0',
+          },
+        },
+        browser_action: {
+          default_icon: icon,
+        },
+      });
+      const files = {
+        [icon]: fs.createReadStream(icon),
+      };
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { io: getStreamableIO(files) }
+      );
+
+      await manifestJSONParser.validateIcons();
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      const { warnings } = addonLinter.collector;
+      expect(warnings.length).toEqual(0);
+    });
+
     it('adds an error if the browser_action string icon is not in the package', async () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
