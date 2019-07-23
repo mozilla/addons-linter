@@ -1,0 +1,362 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: messages\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-02-12 15:56+0000\n"
+"PO-Revision-Date: 2018-02-01 21:30+0000\n"
+"Last-Translator: S M Sarwar Nobin <smsarwar1996@gmail.com>\n"
+"Language-Team: none\n"
+"Language: bn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pontoon\n"
+
+#: src/linter.js:117
+msgid "Validation Summary:"
+msgstr "যাচাইকরণ সারাংশ:"
+
+#: src/linter.js:134
+msgid "Code"
+msgstr "কোড"
+
+#: src/linter.js:140
+msgid "Message"
+msgstr "বার্তা"
+
+#: src/linter.js:146
+msgid "Description"
+msgstr "বর্ণনা"
+
+#: src/linter.js:152
+msgid "File"
+msgstr "ফাইল"
+
+#: src/linter.js:158
+msgid "Line"
+msgstr "লাইন"
+
+#: src/linter.js:164
+msgid "Column"
+msgstr "কলাম"
+
+#: src/messages/css.js:16
+msgid "Invalid nesting of selectors found"
+msgstr "সিলেক্টরের অকার্যকর নেস্টিং পাওয়া গেছে"
+
+#: src/messages/css.js:9
+msgid "A CSS syntax error was encountered"
+msgstr ""
+
+#: src/messages/fluent.js:5
+msgid "Your FTL is not valid."
+msgstr "আপনার FTL অকার্যকর।"
+
+#: src/messages/fluent.js:6
+msgid "Your FTL file could not be parsed."
+msgstr ""
+
+#: src/messages/html.js:16
+msgid "Remote scripts are not allowed as per the Add-on Policies."
+msgstr ""
+
+#: src/messages/html.js:8
+msgid "Inline scripts blocked by default"
+msgstr ""
+
+#: src/messages/javascript.js:105
+msgid "Known JS library detected"
+msgstr ""
+
+#: src/messages/javascript.js:123
+msgid "{{api}} is not supported"
+msgstr "{{api}} সাপোর্ট করে না"
+
+#: src/messages/javascript.js:124
+msgid "This API has not been implemented by Firefox."
+msgstr "এই API টি Firefox দ্বারা বাস্তবায়িত হয়নি।"
+
+#: src/messages/javascript.js:14
+msgid "addEventListener` called with truthy fourth argument."
+msgstr ""
+
+#: src/messages/javascript.js:23
+msgid "Content script file could not be found."
+msgstr "কনটেন্ট স্ক্রিপ্ট ফাইল খুঁজে পাওয়া যায়নি।"
+
+#: src/messages/javascript.js:24
+msgid "Content script file could not be found"
+msgstr "কনটেন্ট স্ক্রিপ্ট ফাইল খুঁজে পাওয়া যায়নি"
+
+#: src/messages/javascript.js:30
+msgid "Content script file name should not be empty."
+msgstr "কনটেন্ট স্ক্রিপ্ট ফাইলের নাম ফাঁকা হবে না।"
+
+#: src/messages/javascript.js:31
+msgid "Content script file name should not be empty"
+msgstr "কনটেন্ট স্ক্রিপ্ট ফাইলের নাম ফাঁকা হবে না"
+
+#: src/messages/javascript.js:7
+msgid "JavaScript syntax error"
+msgstr "JavaScript সিনট্যাক্স ভুল"
+
+#: src/messages/javascript.js:76
+msgid "Unexpected global passed as an argument"
+msgstr ""
+
+#: src/messages/javascript.js:83
+msgid "Use of document.write strongly discouraged."
+msgstr "document.write ব্যবহারে জোড়ালোভাবে অনুৎসাহিত করা হচ্ছে।"
+
+#: src/messages/javascript.js:91
+msgid "Banned 3rd-party JS library"
+msgstr ""
+
+#: src/messages/javascript.js:98
+msgid "Unadvised 3rd-party JS library"
+msgstr ""
+
+#: src/messages/json.js:13
+msgid "Your JSON contains block comments."
+msgstr "আপনার JSON ব্লক কমেন্ট ধারণ করে।"
+
+#: src/messages/json.js:21
+msgid "Duplicate keys are not allowed in JSON files."
+msgstr ""
+
+#: src/messages/json.js:7
+msgid "Your JSON is not valid."
+msgstr "আপনার JSON অকার্যকর।"
+
+#: src/messages/json.js:8
+msgid "Your JSON file could not be parsed."
+msgstr ""
+
+#: src/messages/layout.js:18
+msgid "We were unable to decompress the zip file."
+msgstr ""
+
+#: src/messages/layout.js:23
+msgid "manifest.json was not found"
+msgstr "manifest.json পাওয়া যায়নি"
+
+#: src/messages/layout.js:31
+msgid "File is too large to parse."
+msgstr ""
+
+#: src/messages/layout.js:40
+msgid "Hidden file flagged"
+msgstr "লুকানো ফাইল ফ্লাগ করা হয়েছে"
+
+#: src/messages/layout.js:49
+msgid "Flagged filename found"
+msgstr "ফ্লাগ করা ফাইল পাওয়া যায়নি"
+
+#: src/messages/layout.js:56
+msgid "Flagged file extensions found"
+msgstr "ফ্লাগকরা ফাইল এক্সটেনশন পাওয়া গেছে"
+
+#: src/messages/layout.js:63
+msgid "Flagged file type found"
+msgstr ""
+
+#: src/messages/layout.js:73
+msgid "Package already signed"
+msgstr "প্যাকেজ ইতোমধ্যেই সাইন করা হয়েছে"
+
+#: src/messages/layout.js:81
+msgid "Violation of Mozilla conditions of use."
+msgstr ""
+
+#: src/messages/layout.js:9
+msgid "Package contains duplicate entries"
+msgstr ""
+
+#: src/messages/layout.js:90
+msgid "Firefox add-ons are not allowed to run coin miners."
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:13
+msgid "String name is reserved for a predefined message"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:27
+msgid "Placeholder for message is missing"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:28
+msgid "A placeholder used in the message is not defined."
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:33
+msgid "Placeholder name contains invalid characters"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:40
+msgid "Placeholder is missing the content property"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:7
+msgid "Translation string is missing the message property"
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:8
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+
+#: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
+msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
+msgstr ""
+
+#: src/messages/manifestjson.js:103
+msgid "\"strict_max_version\" not required."
+msgstr "\"strict_max_version\" প্রয়োজন ছিল না।"
+
+#: src/messages/manifestjson.js:122
+msgid "An icon defined in the manifest could not be found in the package."
+msgstr ""
+
+#: src/messages/manifestjson.js:125
+msgid "Icon could not be found at \"%(path)s\"."
+msgstr ""
+
+#: src/messages/manifestjson.js:142
+msgid "Background script could not be found at \"%(path)s\"."
+msgstr ""
+
+#: src/messages/manifestjson.js:143
+msgid "Background page could not be found at \"%(path)s\"."
+msgstr ""
+
+#: src/messages/manifestjson.js:16
+msgid "The field is invalid."
+msgstr "ফিল্ডটি অবৈধ।"
+
+#: src/messages/manifestjson.js:161
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+
+#: src/messages/manifestjson.js:162
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+
+#: src/messages/manifestjson.js:173
+msgid "Forbidden content found in add-on."
+msgstr ""
+
+#: src/messages/manifestjson.js:174
+msgid "This add-on contains forbidden content."
+msgstr ""
+
+#: src/messages/manifestjson.js:182
+msgid "Icons must be square."
+msgstr "আইকন অবশ্যই বর্গাকৃতির হবে।"
+
+#: src/messages/manifestjson.js:183
+msgid "Icon at \"%(path)s\" must be square."
+msgstr ""
+
+#: src/messages/manifestjson.js:192
+msgid "The size of the icon does not match the manifest."
+msgstr ""
+
+#: src/messages/manifestjson.js:204
+msgid "Corrupt image file"
+msgstr "নষ্ট হওয়া ছবির ফাইল"
+
+#: src/messages/manifestjson.js:206
+msgid "Expected icon file at \"%(path)s\" is corrupted"
+msgstr ""
+
+#: src/messages/manifestjson.js:217
+msgid "The \"default_locale\" is missing localizations."
+msgstr ""
+
+#: src/messages/manifestjson.js:226
+msgid "The \"default_locale\" is missing but \"_locales\" exist."
+msgstr ""
+
+#: src/messages/manifestjson.js:23
+msgid "The permission type is unsupported."
+msgstr ""
+
+#: src/messages/manifestjson.js:235
+msgid "Unsupported image extension"
+msgstr ""
+
+#: src/messages/manifestjson.js:236
+msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
+msgstr ""
+
+#: src/messages/manifestjson.js:244
+msgid "Empty language directory"
+msgstr ""
+
+#: src/messages/manifestjson.js:245
+msgid "messages.json file missing in \"%(path)s\""
+msgstr ""
+
+#: src/messages/manifestjson.js:31
+msgid "Unknown permission."
+msgstr "অজানা অনুমতি।"
+
+#: src/messages/manifestjson.js:32
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr "আরও তথ্যের জন্য https://mzl.la/1R1n1t0 (MDN ডকস) দেখুন।"
+
+#: src/messages/manifestjson.js:38
+msgid "\"manifest_version\" in the manifest.json is not a valid value"
+msgstr "manifest.json এ \"manifest_version\" এর মান ঠিক নাই"
+
+#: src/messages/manifestjson.js:39
+msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
+msgstr "আরও তথ্যের জন্য https://mzl.la/20PenXl (MDN ডকস) দেখুন।"
+
+#: src/messages/manifestjson.js:49
+msgid "A custom content_security_policy needs additional review."
+msgstr "কাস্টম content_security_policy আরও রিভিউয়ের প্রয়োজন।"
+
+#: src/messages/manifestjson.js:65
+msgid "The \"name\" property must be a string."
+msgstr "\"name\" প্রোপার্টি অবশ্যই একটি স্ট্রিং হবে।"
+
+#: src/messages/manifestjson.js:66
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr "আরও তথ্যের জন্য http://mzl.la/1STmr48 (MDN ডকস) দেখুন।"
+
+#: src/messages/manifestjson.js:72
+msgid "The \"version\" property must be a string."
+msgstr "\"version\" প্রোপার্টি অবশ্যই একটি স্ট্রিং হবে।"
+
+#: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr "আরও তথ্যের জন্য http://mzl.la/1kXIADa (MDN ডকস) দেখুন।"
+
+#: src/messages/manifestjson.js:79
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "\"version\" প্রোপার্টি Firefox এর নির্দিষ্ট ফরম্যাট ব্যবহার করে।"
+
+#: src/messages/manifestjson.js:86
+msgid "\"update_url\" is not allowed."
+msgstr "\"update_url\" অনুমোদিত নয়।"
+
+#: src/messages/manifestjson.js:9
+msgid "The field is required."
+msgstr "ফিল্ডটি প্রয়োজনীয়।"
+
+#: src/messages/manifestjson.js:94
+msgid "The \"update_url\" property is not used by Firefox."
+msgstr "\"update_url\" প্রোপার্টি টি Firefox এর দ্বারা ব্যবহৃত হয় না।"
+
+#~ msgid "mozIndexedDB has been removed; use indexedDB instead"
+#~ msgstr "mozIndexedDB অপসারিত হয়েছে; পরিবর্তে indexedDB ব্যবহার করুন"
+
+#~ msgid "mozIndexedDB has been removed; use indexedDB instead."
+#~ msgstr "mozIndexedDB অপসারিত হয়েছে; পরিবর্তে indexedDB ব্যবহার করুন।"
+
