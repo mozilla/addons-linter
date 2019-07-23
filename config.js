@@ -4,7 +4,7 @@ module.exports = {
     'ar',
     'ast',
     'bg',
-    'bn-BD',
+    'bn',
     'bs',
     'ca',
     'cak',
