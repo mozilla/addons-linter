@@ -444,7 +444,7 @@ msgstr "Manifest-Schlüssel wird von der angegebenen Mindestversion von Firefox 
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Die Berechtigung wird von der angegebenen Mindestversion von Firefox für Android nicht unterstützt"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
