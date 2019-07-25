@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-25 18:06+0000\n"
+"PO-Revision-Date: 2019-07-25 19:43+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: hsb\n"
@@ -348,7 +348,7 @@ msgstr "Wočakowana symbolowa dataja na \"%(path)s\" je wobškodźena"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr "Alias LWZ tuteje drasty je so w Firefox 70 wotstronił."
+msgstr "Alias LWT tuteje drasty je so w Firefox 70 wotstronił."
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
