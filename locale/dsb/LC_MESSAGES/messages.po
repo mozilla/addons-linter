@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-25 19:31+0000\n"
+"PO-Revision-Date: 2019-07-25 19:41+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: dsb\n"
@@ -87,18 +87,16 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr "{{api}} se we wersiji {{minVersion}} Firefox njepódpěra"
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Toś ten API njejo se implementěrował pśez Firefox."
+msgstr "Toś ten API njejo se implementěrował pśez pódanu minimalnu wersiju Firefox"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} se we wersiji {{minVersion}} Firefox za Android njepódpěra"
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Toś ten API njejo se implementěrował pśez Firefox."
+msgstr "Toś ten API njejo se implementěrował pśez pódanu minimalnu wersiju Firefox za Android"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -193,9 +191,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Dodanki Firefox njesměju pjenjezekopaki wuwjasć."
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "Wóznamjenjone datajowe mě namakane"
+msgstr "Rezerwěrowane datajowe mě namakane."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -246,14 +243,12 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Symbol njedajo se na \"%(path)s\" namakaś."
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr "Wopśimjeśowy skript, kótaryž jo se w manifesće definěrował, njedajo se na \"%(path)s\" namakaś."
+msgstr "Slězynowy skript, kótaryž jo se definěrował w manifesće, njedajo se namakaś."
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "Symbol, kótaryž jo se w manifesće definěrował, njedajo se w pakśiku namakaś."
+msgstr "Slězynowy bok, kótaryž jo se definěrował w manifesće, njedajo se namakaś."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -272,14 +267,12 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Glejśo https://mzl.la/1ZOhoEN (MDN Docs) za dalšne informacije."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "Wopśimjeśowy skript, kótaryž jo se w manifesće definěrował, njedajo se na \"%(path)s\" namakaś."
+msgstr "Wopśimjeśowy skript, kótaryž jo se definěrował w manifesće, njedajo se namakaś."
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "CSS-dataja wopśimjeśowego skripta, kótaraž jo se w manifesće definěrowała, njedajo se na \"%(path)s\" namakaś."
+msgstr "CSS-dataja wopśimjeśowego skripta, kótaraž jo se definěrowała w manifesće, njedajo se namakaś."
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -290,14 +283,12 @@ msgid "Content script css file defined in the manifest could not be found at \"%
 msgstr "CSS-dataja wopśimjeśowego skripta, kótaraž jo se w manifesće definěrowała, njedajo se na \"%(path)s\" namakaś."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Symbol, kótaryž jo se w manifesće definěrował, njedajo se w pakśiku namakaś."
+msgstr "Słownikowa dataja, kótaraž jo se definěrowała w manifesće, njedajo se namakaś."
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "CSS-dataja wopśimjeśowego skripta, kótaraž jo se w manifesće definěrowała, njedajo se na \"%(path)s\" namakaś."
+msgstr "Słownikowa dataja, kótaraž jo se definěrowała w manifesće, njedajo se na \"%(path)s\" namakaś."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
@@ -360,24 +351,20 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "Alias LWT toś teje drastwy jo se wótwónoźeł w Firefox 70."
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Glejśo https://mzl.la/1R1n1t0 (MDN Docs) za dalšne informacije."
+msgstr "Glejśo https://mzl.la/2T11Lkc (MDN Docs) za dalšne informacije."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Slězynowy bok njedajo se na \"%(path)s\" namakaś."
+msgstr "Drastwowy wobraz za \"%(type)s\" njedajo se na \"%(path)s\" namakaś"
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "Wobškóźona wobrazowa dataja"
+msgstr "Wobškóźona wobrazowa dataja drastwy"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "Wócakana symbolowa dataja na \"%(path)s\" jo wobškóźona"
+msgstr "Wobrazowa dataja drastwy na \"%(path)s\" jo wobškóźona"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
@@ -453,11 +440,11 @@ msgstr "Pšawo se pśez pódanu minimalnu wersiju Firefox njepódpěra"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Manifestowy kluc se pśez pódanu minimalnu wersiju Firefox za Android njepódpěra"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Pšawo se pśez pódanu minimalnu wersiju Firefox za Android njepódpěra"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
