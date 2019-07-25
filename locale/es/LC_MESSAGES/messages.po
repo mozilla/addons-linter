@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2018-02-18 14:27+0000\n"
+"PO-Revision-Date: 2019-07-25 20:10+0000\n"
 "Last-Translator: avelper <avelper@mozilla-hispano.org>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -60,8 +60,7 @@ msgstr "Tu archivo FTL no se ha podido interpretar."
 
 #: src/messages/html.js:14
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
-"Los scripts remotos no están permitidos por las políticas de complementos."
+msgstr "Los scripts remotos no están permitidos por las políticas de complementos."
 
 #: src/messages/html.js:7
 msgid "Inline scripts blocked by default"
@@ -98,8 +97,7 @@ msgstr ""
 
 #: src/messages/javascript.js:180
 #, fuzzy
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "Firefox no ha implementado esta API."
 
 #: src/messages/javascript.js:23
@@ -224,11 +222,8 @@ msgid "Translation string is missing the message property"
 msgstr "Falta la propiedad del mensaje en la cadena de traducción"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"No se configuró ninguna propiedad de mensaje en la cadena (https://mzl."
-"la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "No se configuró ninguna propiedad de mensaje en la cadena (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:103
 msgid "\"update_url\" is not allowed."
@@ -253,9 +248,7 @@ msgstr "No se pudo encontrar el icono en \"%(path)s\"."
 #: src/messages/manifestjson.js:160
 #, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr ""
-"El script de contenido definido en el manifiesto no se pudo encontrar en "
-"\"%(path)s\"."
+msgstr "El script de contenido definido en el manifiesto no se pudo encontrar en \"%(path)s\"."
 
 #: src/messages/manifestjson.js:163
 #, fuzzy
@@ -276,37 +269,25 @@ msgstr "El campo no es válido."
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"Para más información, consulta https://mzl.la/1ZOhoEN (documento de MDN)."
+msgstr "Para más información, consulta https://mzl.la/1ZOhoEN (documento de MDN)."
 
 #: src/messages/manifestjson.js:184
 #, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr ""
-"El script de contenido definido en el manifiesto no se pudo encontrar en "
-"\"%(path)s\"."
+msgstr "El script de contenido definido en el manifiesto no se pudo encontrar en \"%(path)s\"."
 
 #: src/messages/manifestjson.js:185
 #, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
-"No se encontró en \"%(path)s\" el archivo css de script de contenido "
-"definido en el manifiesto."
+msgstr "No se encontró en \"%(path)s\" el archivo css de script de contenido definido en el manifiesto."
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"El script de contenido definido en el manifiesto no se pudo encontrar en "
-"\"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "El script de contenido definido en el manifiesto no se pudo encontrar en \"%(path)s\"."
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"No se encontró en \"%(path)s\" el archivo css de script de contenido "
-"definido en el manifiesto."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "No se encontró en \"%(path)s\" el archivo css de script de contenido definido en el manifiesto."
 
 #: src/messages/manifestjson.js:207
 #, fuzzy
@@ -315,19 +296,15 @@ msgstr "No se pudo encontrar en el paquete un icono definido en el manifiesto."
 
 #: src/messages/manifestjson.js:211
 #, fuzzy
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"No se encontró en \"%(path)s\" el archivo css de script de contenido "
-"definido en el manifiesto."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "No se encontró en \"%(path)s\" el archivo css de script de contenido definido en el manifiesto."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "El manifesto incluye varios diccionarios."
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
 #: src/messages/manifestjson.js:233
@@ -385,8 +362,7 @@ msgstr ""
 #: src/messages/manifestjson.js:304
 #, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
-"Para más información, consulta https://mzl.la/1R1n1t0 (documento de MDN)."
+msgstr "Para más información, consulta https://mzl.la/1R1n1t0 (documento de MDN)."
 
 #: src/messages/manifestjson.js:319
 #, fuzzy
@@ -417,16 +393,14 @@ msgstr ""
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"Para más información, consulta https://mzl.la/1R1n1t0 (documento de MDN)."
+msgstr "Para más información, consulta https://mzl.la/1R1n1t0 (documento de MDN)."
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:375
@@ -434,9 +408,7 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:393
@@ -465,8 +437,7 @@ msgstr "No existe el archivo messages.json en \"%(path)s\""
 
 #: src/messages/manifestjson.js:43
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
-"\"manifest_version\" en el archivo manifest.json no tiene un valor válido"
+msgstr "\"manifest_version\" en el archivo manifest.json no tiene un valor válido"
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
@@ -474,22 +445,18 @@ msgstr ""
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"Para más información, consulta https://mzl.la/20PenXl (documento de MDN)."
+msgstr "Para más información, consulta https://mzl.la/20PenXl (documento de MDN)."
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:58
@@ -502,8 +469,7 @@ msgstr "La propiedad \"name\" debe ser un string."
 
 #: src/messages/manifestjson.js:77
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
-"Para más información, consulta http://mzl.la/1STmr48 (documento de MDN)."
+msgstr "Para más información, consulta http://mzl.la/1STmr48 (documento de MDN)."
 
 #: src/messages/manifestjson.js:8
 msgid "The field is required."
@@ -515,8 +481,7 @@ msgstr "La propiedad \"version\" debe ser un string."
 
 #: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
-"Para más información, consulta http://mzl.la/1kXIADa (documento de MDN)."
+msgstr "Para más información, consulta http://mzl.la/1kXIADa (documento de MDN)."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"version\" property uses a Firefox-specific format."
