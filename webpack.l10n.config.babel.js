@@ -7,7 +7,6 @@ const webpackConfig = require('./webpack.config');
 
 const babelrc = fs.readFileSync('./.babelrc');
 const babelrcObject = JSON.parse(babelrc);
-babelrcObject.presets = ['es2015', 'stage-2'];
 const babelPlugins = babelrcObject.plugins || [];
 
 // Create UTC creation date in the correct format.
@@ -18,7 +17,7 @@ const potCreationDate = new Date()
 
 const babelL10nPlugins = [
   [
-    'babel-gettext-extractor',
+    'module:babel-gettext-extractor',
     {
       headers: {
         'Project-Id-Version': 'messages',
