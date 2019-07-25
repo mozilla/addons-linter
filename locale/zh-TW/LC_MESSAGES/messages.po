@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-25 13:11+0000\n"
+"PO-Revision-Date: 2019-07-25 13:14+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -84,7 +84,7 @@ msgstr "使用 truthy fourth argument 呼叫了 addEventListener"
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "Firefox 版本 {{minVersion}} 不支援 {{api}}"
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
@@ -92,7 +92,7 @@ msgstr "最小 Firefox 版本尚未實做此 API。"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "Firefox for Android 版本 {{minVersion}} 不支援 {{api}}"
 
 #: src/messages/javascript.js:180
 msgid "This API is not implemented by the given minimum Firefox for Android version"
@@ -283,26 +283,24 @@ msgid "Content script css file defined in the manifest could not be found at \"%
 msgstr "無法在「%(path)s」找到安裝資訊檔中定義的內容指令碼 CSS 檔案。"
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "無法在封裝檔案找到 manifest 中定義的圖示。"
+msgstr "找不到安裝資訊檔中定義的字典檔案。"
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "無法在「%(path)s」找到安裝資訊檔中定義的內容指令碼 CSS 檔案。"
+msgstr "無法在「%(path)s」找到安裝資訊檔中定義的字典檔案。"
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "安裝資訊檔中包含多個字典。"
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "不支援在安裝資訊檔中定義多個字典。"
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "安裝資訊檔中包含字典物件，但是是空白的。"
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
@@ -353,14 +351,12 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "請參考 https://mzl.la/1R1n1t0（MDN 文件）上的更多資訊。"
+msgstr "請參考 https://mzl.la/2T11Lkc（MDN 文件）的更多資訊。"
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "無法在「%(path)s」找到背景頁面。"
+msgstr "無法在「%(path)s」找到「%(type)s」的佈景主題圖片"
 
 #: src/messages/manifestjson.js:330
 msgid "Corrupted theme image file"
