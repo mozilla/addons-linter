@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-25 13:14+0000\n"
+"PO-Revision-Date: 2019-07-25 13:46+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -76,11 +76,11 @@ msgstr "不支援 {{api}}"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
-msgstr "Firefox 尚未實做此 API。"
+msgstr "Firefox 尚未實作此 API。"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr "使用 truthy fourth argument 呼叫了 addEventListener"
+msgstr "使用 truthy fourth argument 呼叫了 addEventListener。"
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -88,7 +88,7 @@ msgstr "Firefox 版本 {{minVersion}} 不支援 {{api}}"
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "最小 Firefox 版本尚未實做此 API。"
+msgstr "指定的最小 Firefox 版本尚未實作此 API。"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
@@ -96,7 +96,7 @@ msgstr "Firefox for Android 版本 {{minVersion}} 不支援 {{api}}"
 
 #: src/messages/javascript.js:180
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "最小 Firefox for Android 版本尚未實做此 API。"
+msgstr "指定的最小 Firefox for Android 版本尚未實做此 API。"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -304,15 +304,15 @@ msgstr "安裝資訊檔中包含字典物件，但是是空白的。"
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "安裝資訊檔中定義了字典物件，但是是空白的。"
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "安裝資訊中包含字典，但沒有 ID 屬性。"
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "在安裝資訊檔中找到字典，但沒有設定 ID。"
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -348,7 +348,7 @@ msgstr "位於「%(path)s」的圖示檔案已損壞。"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "此佈景主題的 LWT 別名，已於 Firefox 70 移除。"
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
@@ -372,11 +372,11 @@ msgstr "權限未知。"
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "此圖片使用不支援的副檔名"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "位於「%(path)s」的佈景主題圖檔，副檔名不支援"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -384,19 +384,19 @@ msgstr "請參考 https://mzl.la/1R1n1t0（MDN 文件）上的更多資訊。"
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "佈景主題圖檔的 MIME 類型不受支援"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "位於「%(path)s」的佈景主題圖檔，其 MIME 類型「%(mime)s」不受支援"
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "佈景主題圖檔的 MIME 類型，與其副檔名不符"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "位於「%(path)s」的佈景主題圖檔，其 MIME 類型「%(mime)s」與副檔名不符"
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
@@ -428,7 +428,7 @@ msgstr "manifest.json 當中的「manifest_version」不是有效值"
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "指定的最小 Firefox 版本，不支援安裝資訊鍵值"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -436,15 +436,15 @@ msgstr "請參考 https://mzl.la/20PenXl（MDN 文件）上的更多資訊。"
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "指定的最小 Firefox 版本，不支援權限"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "指定的最小 Firefox for Android 版本，不支援安裝資訊鍵值"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "指定的最小 Firefox for Android 版本，不支援權限"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
