@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2018-02-13 05:18+0000\n"
+"PO-Revision-Date: 2019-07-25 13:11+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -87,19 +87,16 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr ""
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Firefox 尚未實做此 API。"
+msgstr "最小 Firefox 版本尚未實做此 API。"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr ""
 
 #: src/messages/javascript.js:180
-#, fuzzy
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Firefox 尚未實做此 API。"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "最小 Firefox for Android 版本尚未實做此 API。"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -194,9 +191,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Firefox 附加元件中不允許進行挖礦。"
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "找到被標記的檔案名稱"
+msgstr "找到保留的檔案名稱。"
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -223,8 +219,7 @@ msgid "Translation string is missing the message property"
 msgstr "翻譯字串缺少訊息屬性"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr "字串中，未為訊息設定「message」屬性（https://mzl.la/2DSBTjA）。"
 
 #: src/messages/manifestjson.js:103
@@ -241,21 +236,19 @@ msgstr "「strict_max_version」不是必要的。"
 
 #: src/messages/manifestjson.js:141
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr "無法在封裝檔案找到 manifest 中定義的圖示。"
+msgstr "無法在封裝檔案找到安裝資訊中定義的圖示。"
 
 #: src/messages/manifestjson.js:145
 msgid "Icon could not be found at \"%(path)s\"."
 msgstr "無法在「%(path)s」找到圖示。"
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr "無法在「%(path)s」找到安裝資訊檔中定義的內容指令碼。"
+msgstr "找不到安裝資訊檔中定義的背景指令碼。"
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "無法在封裝檔案找到 manifest 中定義的圖示。"
+msgstr "找不到安裝資訊檔中定義的背景頁面。"
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -274,24 +267,19 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "請參考 https://mzl.la/1ZOhoEN（MDN 文件）上的更多資訊。"
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "無法在「%(path)s」找到安裝資訊檔中定義的內容指令碼。"
+msgstr "找不到安裝資訊檔中定義的內容指令碼。"
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "無法在「%(path)s」找到安裝資訊檔中定義的內容指令碼 CSS 檔案。"
+msgstr "找不到安裝資訊檔中定義的內容指令碼 CSS 檔案。"
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "無法在「%(path)s」找到安裝資訊檔中定義的內容指令碼。"
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "無法在「%(path)s」找到安裝資訊檔中定義的內容指令碼 CSS 檔案。"
 
 #: src/messages/manifestjson.js:207
@@ -301,8 +289,7 @@ msgstr "無法在封裝檔案找到 manifest 中定義的圖示。"
 
 #: src/messages/manifestjson.js:211
 #, fuzzy
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "無法在「%(path)s」找到安裝資訊檔中定義的內容指令碼 CSS 檔案。"
 
 #: src/messages/manifestjson.js:223
@@ -310,8 +297,7 @@ msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
 #: src/messages/manifestjson.js:233
@@ -377,14 +363,12 @@ msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "無法在「%(path)s」找到背景頁面。"
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "圖檔已損壞"
+msgstr "損壞的佈景主題圖檔"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "位於「%(path)s」的圖示檔案已損壞。"
+msgstr "位於「%(path)s」的佈景主題圖檔已毀損"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
@@ -407,8 +391,7 @@ msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:375
@@ -416,9 +399,7 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:393
@@ -462,14 +443,11 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:58
