@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-25 13:52+0000\n"
+"PO-Revision-Date: 2019-07-25 13:57+0000\n"
 "Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -317,11 +317,11 @@ msgstr "Er is een woordenboek-object gedefinieerd in het manifest, maar het is l
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "Het manifest bevat een woordenboek maar geen id-eigenschap."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "Er is een woordenboek gevonden in het manifest, maar er is geen id ingesteld."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -357,7 +357,7 @@ msgstr "Verwacht pictogrambestand in ‘%(path)s’ is beschadigd"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Het LWT-alias van dit thema is verwijderd in Firefox 70."
 
 #: src/messages/manifestjson.js:304
 #, fuzzy
@@ -385,11 +385,11 @@ msgstr "Onbekende toestemming."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "Thema-afbeeldingsbestand heeft een niet-ondersteunde bestandsextensie"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "Thema-afbeeldingsbestand op ‘%(path)s’ heeft een niet-ondersteunde bestandsextensie"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -397,19 +397,19 @@ msgstr "Zie https://mzl.la/1R1n1t0 (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "Thema-afbeeldingsbestand heeft een niet-ondersteund mime-type"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "Thema-afbeeldingsbestand op ‘%(path)s’ heeft het niet-ondersteunde mime-type ‘%(mime)s’"
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "Mime-type van het thema-afbeeldingsbestand komt niet overeen met de bestandsextensie"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "Thema-afbeeldingsbestand op ‘%(path)s’ komt niet overeen met het werkelijke mime-type ‘%(mime)s’"
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
@@ -441,7 +441,7 @@ msgstr "‘manifest_version’ in het bestand manifest.json is geen geldige waar
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Manifestsleutel niet ondersteund door de opgegeven minimale Firefox-versie"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -449,15 +449,15 @@ msgstr "Zie https://mzl.la/20PenXl (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Toestemming niet ondersteund door de opgegeven minimale Firefox-versie"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Manifestsleutel niet ondersteund door de opgegeven minimale Firefox voor Android-versie"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Toestemming niet ondersteund door de opgegeven minimale Firefox voor Android-versie"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
