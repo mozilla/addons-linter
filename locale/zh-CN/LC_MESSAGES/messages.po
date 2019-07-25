@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-25 14:17+0000\n"
+"PO-Revision-Date: 2019-07-25 14:33+0000\n"
 "Last-Translator: passionforlife <eloli@foxmail.com>\n"
 "Language-Team: none\n"
 "Language: zh_CN\n"
@@ -88,7 +88,7 @@ msgstr "Firefox 版本 {{minVersion}} 不支持 {{api}}"
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr ""
+msgstr "给定的最低 Firefox 版本尚未实现此 API"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
@@ -96,7 +96,7 @@ msgstr "适用于 Android 的 Firefox 版本 {{minVersion}} 不支持 {{api}}"
 
 #: src/messages/javascript.js:180
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
+msgstr "给定的最低适用于 Android 的 Firefox 版本尚未实现此 API"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -192,7 +192,7 @@ msgstr "Firefox 附加组件不得进行挖矿。"
 
 #: src/messages/layout.js:89
 msgid "Reserved filename found."
-msgstr ""
+msgstr "发现保留的文件名。"
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -244,11 +244,11 @@ msgstr "无法在“%(path)s”找到图标。"
 
 #: src/messages/manifestjson.js:160
 msgid "A background script defined in the manifest could not be found."
-msgstr ""
+msgstr "未找到清单文件中定义的后台脚本。"
 
 #: src/messages/manifestjson.js:163
 msgid "A background page defined in the manifest could not be found."
-msgstr ""
+msgstr "未找到清单文件中定义的背景页面。"
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -268,11 +268,11 @@ msgstr "详细信息请参阅 https://mzl.la/1ZOhoEN (MDN 文档)。"
 
 #: src/messages/manifestjson.js:184
 msgid "A content script defined in the manifest could not be found."
-msgstr ""
+msgstr "未找到清单文件中定义的内容脚本。"
 
 #: src/messages/manifestjson.js:185
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
+msgstr "未找到清单文件中定义的内容脚本 CSS 文件。"
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -284,11 +284,11 @@ msgstr "manifest 中定义的一个内容脚本 css 文件无法在“%(path)s�
 
 #: src/messages/manifestjson.js:207
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr ""
+msgstr "未找到清单文件中定义的字典文件。"
 
 #: src/messages/manifestjson.js:211
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "未在“%(path)s”找到清单文件中定义的字典文件。"
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
@@ -352,19 +352,19 @@ msgstr "此主题的 LWT 别名已在 Firefox 70 中移除。"
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
+msgstr "详细信息请参阅 https://mzl.la/2T11Lkc (MDN 文档)。"
 
 #: src/messages/manifestjson.js:319
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr ""
+msgstr "未在“%(path)s”找到“%(type)s”的主题图像"
 
 #: src/messages/manifestjson.js:330
 msgid "Corrupted theme image file"
-msgstr ""
+msgstr "损坏的主题图像文件"
 
 #: src/messages/manifestjson.js:332
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "位于“%(path)s”的主题图像文件已损坏"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
