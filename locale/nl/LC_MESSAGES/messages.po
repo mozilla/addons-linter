@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-26 06:32+0000\n"
+"PO-Revision-Date: 2019-07-26 06:33+0000\n"
 "Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -355,19 +355,16 @@ msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr "Zie https://mzl.la/2T11Lkc (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Achtergrondpagina kon niet worden gevonden in ‘%(path)s’."
+msgstr "Thema-afbeelding voor ‘%(type)s’ kon niet worden gevonden in ‘%(path)s’"
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "Beschadigd afbeeldingsbestand"
+msgstr "Beschadigd thema-afbeeldingsbestand"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "Verwacht pictogrambestand in ‘%(path)s’ is beschadigd"
+msgstr "Thema-afbeeldingsbestand in ‘%(path)s’ is beschadigd"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
