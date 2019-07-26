@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-25 13:57+0000\n"
+"PO-Revision-Date: 2019-07-26 06:32+0000\n"
 "Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -87,18 +87,16 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr "{{api}} wordt niet ondersteund in Firefox versie {{minVersion}}"
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Deze API is niet door Firefox geïmplementeerd."
+msgstr "Deze API is niet door de opgegeven minimumversie van Firefox geïmplementeerd"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} wordt niet ondersteund in Firefox voor Android versie {{minVersion}}"
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Deze API is niet door Firefox geïmplementeerd."
+msgstr "Deze API is niet door de opgegeven minimumversie van Firefox voor Android geïmplementeerd"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -193,9 +191,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Firefox-add-ons mogen geen coinminers uitvoeren."
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "Gemarkeerde bestandsnaam gevonden"
+msgstr "Gereserveerde bestandsnaam gevonden."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -246,14 +243,12 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Pictogram kon niet worden gevonden in ‘%(path)s’."
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr "In het manifest gedefinieerd inhoudsscript kon niet worden gevonden in ‘%(path)s’."
+msgstr "Een in het manifest gedefinieerd achtergrondscript kon niet worden gevonden."
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "Een in het manifest gedefinieerd pictogram kon niet in het pakket worden gevonden."
+msgstr "Een in het manifest gedefinieerde achtergrondpagina kon niet worden gevonden."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -272,14 +267,12 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Zie https://mzl.la/1ZOhoEN (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "In het manifest gedefinieerd inhoudsscript kon niet worden gevonden in ‘%(path)s’."
+msgstr "Een in het manifest gedefinieerd inhoudsscript kon niet worden gevonden."
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "In het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet worden gevonden in ‘%(path)s’."
+msgstr "Een in het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet worden gevonden."
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -290,14 +283,12 @@ msgid "Content script css file defined in the manifest could not be found at \"%
 msgstr "In het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet worden gevonden in ‘%(path)s’."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Een in het manifest gedefinieerd pictogram kon niet in het pakket worden gevonden."
+msgstr "Een in het manifest gedefinieerd bibliotheekbestand kon niet worden gevonden."
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "In het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet worden gevonden in ‘%(path)s’."
+msgstr "In het manifest gedefinieerd bibliotheekbestand kon niet worden gevonden in ‘%(path)s’."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
@@ -360,9 +351,8 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "Het LWT-alias van dit thema is verwijderd in Firefox 70."
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Zie https://mzl.la/1R1n1t0 (MDN Docs) voor meer informatie."
+msgstr "Zie https://mzl.la/2T11Lkc (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:319
 #, fuzzy
