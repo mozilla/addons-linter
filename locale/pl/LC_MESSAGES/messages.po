@@ -1,18 +1,17 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2018-02-13 15:36+0000\n"
+"PO-Revision-Date: 2019-07-27 12:27+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pontoon\n"
 
 #: src/linter.js:119
@@ -81,28 +80,23 @@ msgstr "To API nie zostało zaimplementowane w Firefoksie."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
-"„addEventListener`” zostało wywołane z czwartym parametrem o wartości "
-"„prawda”."
+msgstr "„addEventListener`” zostało wywołane z czwartym parametrem o wartości „prawda”."
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "„{{api}}” nie jest obsługiwane w wersji Firefoksa {{minVersion}}"
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "To API nie zostało zaimplementowane w Firefoksie."
+msgstr "To API nie jest zaimplementowane w podanej minimalnej wersji Firefoksa"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "„{{api}}” nie jest obsługiwane w wersji Firefoksa na Androida {{minVersion}}"
 
 #: src/messages/javascript.js:180
-#, fuzzy
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
-msgstr "To API nie zostało zaimplementowane w Firefoksie."
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "To API nie jest zaimplementowane w podanej minimalnej wersji Firefoksa na Androida"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -197,9 +191,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Dodatki do Firefoksa nie mogą zawierać kodu wydobywającego waluty."
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "Odnaleziono oznaczoną nazwę pliku"
+msgstr "Odnaleziono zastrzeżoną nazwę pliku."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -226,11 +219,8 @@ msgid "Translation string is missing the message property"
 msgstr "W ciągu tłumaczenia brak właściwości komunikatu"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Dla ciągu nie jest ustawiona właściwość komunikatu „message” (https://mzl."
-"la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Dla ciągu nie jest ustawiona właściwość komunikatu „message” (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:103
 msgid "\"update_url\" is not allowed."
@@ -253,15 +243,12 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Nie można odnaleźć ikony w „%(path)s”."
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr ""
-"Nie można odnaleźć w „%(path)s” skryptu treści określonego w manifeście."
+msgstr "Nie można odnaleźć skryptu tła określonego w manifeście."
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "Nie można odnaleźć w pakiecie ikony określonej w manifeście."
+msgstr "Nie można odnaleźć strony tła określonej w manifeście."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -280,69 +267,52 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "https://mzl.la/1ZOhoEN (dokumentacja MDN) zawiera więcej informacji."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr ""
-"Nie można odnaleźć w „%(path)s” skryptu treści określonego w manifeście."
+msgstr "Nie można odnaleźć skryptu treści określonego w manifeście."
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
-"Nie można odnaleźć w „%(path)s” pliku CSS skryptu treści określonego "
-"w manifeście."
+msgstr "Nie można odnaleźć pliku CSS skryptu treści określonego w manifeście."
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Nie można odnaleźć w „%(path)s” skryptu treści określonego w manifeście."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Nie można odnaleźć w „%(path)s” skryptu treści określonego w manifeście."
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Nie można odnaleźć w „%(path)s” pliku CSS skryptu treści określonego "
-"w manifeście."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Nie można odnaleźć w „%(path)s” pliku CSS skryptu treści określonego w manifeście."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Nie można odnaleźć w pakiecie ikony określonej w manifeście."
+msgstr "Nie można odnaleźć pliku słownika określonego w manifeście."
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Nie można odnaleźć w „%(path)s” pliku CSS skryptu treści określonego "
-"w manifeście."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Nie można odnaleźć w „%(path)s” pliku słownika określonego w manifeście."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "Manifest zawiera wiele słowników."
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+msgstr "W manifeście określono wiele słowników, co jest nieobsługiwane."
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "Manifest zawiera obiekt słowników, ale jest pusty."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "W manifeście określono obiekt słowników, ale był pusty."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "Manifest zawiera słownik, ale nie ma właściwości identyfikatora."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "W manifeście odnaleziono słownik, ale nie było ustawionego identyfikatora."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -378,27 +348,23 @@ msgstr "Oczekiwany plik ikony w „%(path)s” jest uszkodzony"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Ten alias LWT motywu został usunięty w Firefoksie 70."
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "https://mzl.la/1R1n1t0 (dokumentacja MDN) zawiera więcej informacji."
+msgstr "https://mzl.la/2T11Lkc (dokumentacja MDN) zawiera więcej informacji."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Nie można odnaleźć strony tła w „%(path)s”."
+msgstr "Nie można odnaleźć obrazu motywu dla „%(type)s” w „%(path)s”"
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "Uszkodzony plik obrazu"
+msgstr "Uszkodzony plik obrazu motywu"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "Oczekiwany plik ikony w „%(path)s” jest uszkodzony"
+msgstr "Plik obrazu motywu w „%(path)s” jest uszkodzony"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
@@ -406,11 +372,11 @@ msgstr "Nieznane uprawnienie."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "Plik obrazu motywu ma nieobsługiwane rozszerzenie pliku"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "Plik obrazu motywu w „%(path)s” ma nieobsługiwane rozszerzenie pliku"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -418,22 +384,19 @@ msgstr "https://mzl.la/1R1n1t0 (dokumentacja MDN) zawiera więcej informacji."
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "Plik obrazu motywu ma nieobsługiwany typ MIME"
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "Plik obrazu motywu w „%(path)s” ma nieobsługiwany typ MIME „%(mime)s”"
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "Typ MIME pliku obrazu motywu nie zgadza się z jego rozszerzeniem"
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "Rozszerzenie pliku obrazu motywu w „%(path)s” nie zgadza się z jego rzeczywistym typem MIME „%(mime)s”"
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
@@ -465,7 +428,7 @@ msgstr "„manifest_version” w pliku manifest.json jest nieprawidłową warto
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Klucz manifestu nie jest obsługiwany przez podaną minimalną wersję Firefoksa"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -473,23 +436,19 @@ msgstr "https://mzl.la/20PenXl (dokumentacja MDN) zawiera więcej informacji."
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Uprawnienie nie jest obsługiwane przez podaną minimalną wersję Firefoksa"
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
-msgstr ""
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "Klucz manifestu nie jest obsługiwany przez podaną minimalną wersję Firefoksa na Androida"
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgstr "Uprawnienie nie jest obsługiwane przez podaną minimalną wersję Firefoksa na Androida"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
-"Niestandardowe „content_security_policy” wymaga dodatkowego sprawdzenia."
+msgstr "Niestandardowe „content_security_policy” wymaga dodatkowego sprawdzenia."
 
 #: src/messages/manifestjson.js:76
 msgid "The \"name\" property must be a string."
