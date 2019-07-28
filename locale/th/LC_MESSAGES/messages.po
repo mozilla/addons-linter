@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-28 11:29+0000\n"
+"PO-Revision-Date: 2019-07-28 11:52+0000\n"
 "Last-Translator: aefgh39622 <aefgh39622@gmail.com>\n"
 "Language-Team: none\n"
 "Language: th\n"
@@ -84,7 +84,7 @@ msgstr "addEventListener ถูกเรียกโดยอาร์กิว�
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "ไม่รองรับ {{api}} ใน Firefox รุ่น {{minVersion}}"
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
@@ -92,12 +92,11 @@ msgstr "API นี้ไม่ได้ถูกนำมาใช้โดย F
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "ไม่รองรับ {{api}} ใน Firefox สำหรับ Android รุ่น {{minVersion}}"
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "API นี้ยังไม่ได้ถูกนำมาใช้โดย Firefox"
+msgstr "API นี้ไม่ได้ถูกนำมาใช้โดย Firefox สำหรับ Android รุ่นต่ำสุดที่ระบุ"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -192,9 +191,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "ส่วนเสริมของ Firefox ไม่ได้รับอนุญาตให้เรียกใช้ตัวทำเหมืองเหรียญ"
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "พบชื่อไฟล์ที่ถูกตั้งค่าสถานะ"
+msgstr "พบชื่อไฟล์ที่สงวนไว้"
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -245,14 +243,12 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "ไม่พบไอคอนที่ \"%(path)s\""
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr "ไม่พบสคริปต์เนื้อหาที่กำหนดไว้ในไฟล์กำกับที่ \"%(path)s\""
+msgstr "ไม่พบสคริปต์เบื้องหลังที่กำหนดไว้ในไฟล์กำกับ"
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "ไม่พบไอคอนที่กำหนดไว้ในไฟล์กำกับในแพ็คเกจ"
+msgstr "ไม่พบหน้าเบื้องหลังที่กำหนดไว้ในไฟล์กำกับ"
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -271,14 +267,12 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "ดู https://mzl.la/1ZOhoEN (คู่มือ MDN) สำหรับข้อมูลเพิ่มเติม"
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "ไม่พบสคริปต์เนื้อหาที่กำหนดไว้ในไฟล์กำกับที่ \"%(path)s\""
+msgstr "ไม่พบสคริปต์เนื้อหาที่กำหนดไว้ในไฟล์กำกับ"
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "ไม่พบไฟล์ CSS สคริปต์เนื้อหาที่กำหนดไว้ในไฟล์กำกับที่ \"%(path)s\""
+msgstr "ไม่พบไฟล์ CSS สคริปต์เนื้อหาที่กำหนดไว้ในไฟล์กำกับ"
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
