@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-28 20:29+0000\n"
+"PO-Revision-Date: 2019-07-28 20:43+0000\n"
 "Last-Translator: Andreas Pettersson <az@kth.se>\n"
 "Language-Team: none\n"
 "Language: sv_SE\n"
@@ -88,16 +88,15 @@ msgstr "{{api}} stöds inte i Firefox version {{minVersion}}"
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Detta API har inte implementerats den givna minsta Firefox-versionen"
+msgstr "Detta API har inte implementerats den givna lägsta Firefox-versionen"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} stöds inte i Firefox för Android version {{minVersion}}"
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Detta API har inte implementerats av Firefox."
+msgstr "Detta API har inte implementerats av den givna lägsta Firefox-versionen för Android"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -244,14 +243,12 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Ikonen kunde inte hittas på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr "Innehållsskript definierat i manifestet kunde inte hittas på \"%(path)s\"."
+msgstr "Ett bakgrundsskript definierat i manifestet kunde inte hittas."
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "En ikon definierad i manifestet kunde inte hittas i paketet."
+msgstr "En bakgrundssida definierad i manifestet kunde inte hittas."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -270,14 +267,12 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Se https://mzl.la/1ZOhoEN (MDN Docs) för mer information."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "Innehållsskript definierat i manifestet kunde inte hittas på \"%(path)s\"."
+msgstr "Ett innehållsskript som definierats i manifestet kunde inte hittas."
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Innehållsskriptets css-fil definierat i manifestet kunde inte hittas på \"%(path)s\"."
+msgstr "En css-fil med innehållsskript definierat i manifestet kunde inte hittas."
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -288,38 +283,36 @@ msgid "Content script css file defined in the manifest could not be found at \"%
 msgstr "Innehållsskriptets css-fil definierat i manifestet kunde inte hittas på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "En ikon definierad i manifestet kunde inte hittas i paketet."
+msgstr "En ordboksfil som definierats i manifestet kunde inte hittas."
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Innehållsskriptets css-fil definierat i manifestet kunde inte hittas på \"%(path)s\"."
+msgstr "Ordbokfil definierad i manifestet kunde inte hittas på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "Manifestet innehåller flera ordböcker."
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "Flera ordböcker definierades i manifestet, vilket inte stöds."
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "Manifestet innehåller ett ordboksobjekt, men det är tomt."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "Ett ordboksobjekt definierades i manifestet, men det var tomt."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "Manifestet innehåller en ordbok men ingen ID-egenskap."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "En ordbok hittades i manifestet, men det fanns ingen angiven ID."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -355,27 +348,23 @@ msgstr "Förväntad ikonfil på \"%(path)s\" är skadad"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Detta tema LWT-alias har tagits bort i Firefox 70."
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Se https://mzl.la/1R1n1t0 (MDN Docs) för mer information."
+msgstr "Se https://mzl.la/2T11Lkc (MDN Docs) för mer information."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Bakgrundssidan kunde inte hittas på \"%(path)s\"."
+msgstr "Temabild för \"%(type)s\" kunde inte hittas på \"%(path)s\""
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "Skadad bildfil"
+msgstr "Skadad temabildfil"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "Förväntad ikonfil på \"%(path)s\" är skadad"
+msgstr "Temabildfil \"%(path)s\" är skadad"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
@@ -383,11 +372,11 @@ msgstr "Okänd behörighet."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "Temabildfil har ett filändelse som inte stöds"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "Temabildfil på \"%(path)s\" har en filändelse som inte stöds"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -395,19 +384,19 @@ msgstr "Se https://mzl.la/1R1n1t0 (MDN Docs) för mer information."
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "Temabildfil har en mime-typ som inte stöds"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "Temabildfil på \"%(path)s\" har en mime-typ \"%(mime)s\" som inte stöds"
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "Mime-typ för temabildfil matchar inte filändelsen"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "Filändelsen för temabildfil på \"%(path)s\" matchar inte med den verkliga mime-typen \"%(mime)s\""
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
@@ -439,7 +428,7 @@ msgstr "\"manifest_version\" i manifest.json har inte ett giltigt värde"
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Manifest-nyckel stöds inte av den angivna lägsta Firefox-versionen"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -447,15 +436,15 @@ msgstr "Se https://mzl.la/20PenXl (MDN Docs) för mer information."
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Behörighet stöds inte av den angivna lägsta Firefox-versionen"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Manifest-nyckel stöds inte av den angivna lägsta versionen av Firefox för Android"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Behörighet stöds inte av den angivna lägsta Firefox-versionen för Android"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
