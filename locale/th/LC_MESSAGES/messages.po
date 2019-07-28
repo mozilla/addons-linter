@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-04-15 07:13+0000\n"
-"Last-Translator: Top <teerapatxtop@yahoo.com>\n"
+"PO-Revision-Date: 2019-07-28 11:29+0000\n"
+"Last-Translator: aefgh39622 <aefgh39622@gmail.com>\n"
 "Language-Team: none\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -87,9 +87,8 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr ""
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "API นี้ยังไม่ได้ถูกนำมาใช้โดย Firefox"
+msgstr "API นี้ไม่ได้ถูกนำมาใช้โดย Firefox รุ่นต่ำสุดที่ระบุ"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
@@ -97,8 +96,7 @@ msgstr ""
 
 #: src/messages/javascript.js:180
 #, fuzzy
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "API นี้ยังไม่ได้ถูกนำมาใช้โดย Firefox"
 
 #: src/messages/javascript.js:23
@@ -223,8 +221,7 @@ msgid "Translation string is missing the message property"
 msgstr "สตริงการแปลขาดคุณสมบัติข้อความ"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr "ไม่ได้ตั้งค่าคุณสมบัติข้อความ \"message\" สำหรับสตริง (https://mzl.la/2DSBTjA)"
 
 #: src/messages/manifestjson.js:103
@@ -284,14 +281,11 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr "ไม่พบไฟล์ CSS สคริปต์เนื้อหาที่กำหนดไว้ในไฟล์กำกับที่ \"%(path)s\""
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "ไม่พบสคริปต์เนื้อหาที่กำหนดไว้ในไฟล์กำกับที่ \"%(path)s\""
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "ไม่พบไฟล์ CSS สคริปต์เนื้อหาที่กำหนดไว้ในไฟล์กำกับที่ \"%(path)s\""
 
 #: src/messages/manifestjson.js:207
@@ -301,8 +295,7 @@ msgstr "ไม่พบไอคอนที่กำหนดไว้ในไ
 
 #: src/messages/manifestjson.js:211
 #, fuzzy
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "ไม่พบไฟล์ CSS สคริปต์เนื้อหาที่กำหนดไว้ในไฟล์กำกับที่ \"%(path)s\""
 
 #: src/messages/manifestjson.js:223
@@ -310,8 +303,7 @@ msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
 #: src/messages/manifestjson.js:233
@@ -407,8 +399,7 @@ msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:375
@@ -416,9 +407,7 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:393
@@ -462,14 +451,11 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:58
