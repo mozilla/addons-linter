@@ -1,18 +1,17 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2018-03-05 11:53+0000\n"
+"PO-Revision-Date: 2019-07-29 05:20+0000\n"
 "Last-Translator: Artem Polivanchuk <artem@mozilla.org.ua>\n"
 "Language-Team: none\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pontoon\n"
 
 #: src/linter.js:119
@@ -88,19 +87,16 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr ""
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Цей API не було впроваджено в Firefox."
+msgstr "Цей API не впроваджено в Firefox вказаної мінімальної версії"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr ""
 
 #: src/messages/javascript.js:180
-#, fuzzy
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Цей API не було впроваджено в Firefox."
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "Цей API не впроваджено в Firefox для Android вказаної мінімальної версії"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -195,9 +191,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Додаткам Firefox не дозволено виконувати майнинг."
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "Знайдено позначену назву файлу"
+msgstr "Знайдено зарезервовану назву файлу."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -224,11 +219,8 @@ msgid "Translation string is missing the message property"
 msgstr "В рядку перекладу відсутня властивість \"message\""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Властивість повідомлення \"message\" для рядка не задано (https://mzl."
-"la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Властивість повідомлення \"message\" для рядка не задано (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:103
 msgid "\"update_url\" is not allowed."
@@ -251,14 +243,12 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Не вдалося знайти піктограму в \"%(path)s\"."
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr "Не вдалося знайти визначений в маніфесті скрипт вмісту в \"%(path)s\"."
+msgstr "Не вдалося знайти визначений в маніфесті скрипт заднього плану."
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "Не вдалося знайти визначену в маніфесті піктограму в пакунку."
+msgstr "Не вдалося знайти визначену в маніфесті сторінку заднього плану."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -274,49 +264,38 @@ msgstr "Це поле неправильне."
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"Перегляньте https://mzl.la/1ZOhoEN (Документацію MDN) для отримання "
-"докладної інформації."
+msgstr "Перегляньте https://mzl.la/1ZOhoEN (Документацію MDN) для отримання докладної інформації."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "Не вдалося знайти визначений в маніфесті скрипт вмісту в \"%(path)s\"."
+msgstr "Не вдалося знайти визначений в маніфесті скрипт вмісту."
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Не вдалося знайти визначений в маніфесті css файл в \"%(path)s\"."
+msgstr "Не вдалося знайти визначений в маніфесті css файл зі скриптом вмісту."
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Не вдалося знайти визначений в маніфесті скрипт вмісту в \"%(path)s\"."
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Не вдалося знайти визначений в маніфесті css файл в \"%(path)s\"."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Не вдалося знайти визначену в маніфесті піктограму в пакунку."
+msgstr "Не вдалося знайти визначений в маніфесті файл словника."
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Не вдалося знайти визначений в маніфесті css файл в \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Файл словника, визначений в маніфесті, не вдалося знайти  в \"%(path)s\"."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
 #: src/messages/manifestjson.js:233
@@ -372,26 +351,20 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
-"Перегляньте https://mzl.la/1R1n1t0 (Документацію MDN) для отримання "
-"докладної інформації."
+msgstr "Перегляньте https://mzl.la/2T11Lkc (Документацію MDN) для отримання докладної інформації."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Не вдалося знайти фонову сторінку в \"%(path)s\"."
+msgstr "Зображення теми для \"%(type)s\" не вдалося знайти в \"%(path)s\""
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "Пошкоджений файл зображення"
+msgstr "Пошкоджений файл зображення теми"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "Очікуваний файл піктограми в \"%(path)s\" пошкоджений"
+msgstr "Файл зображення теми в \"%(path)s\" пошкоджений"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
@@ -407,17 +380,14 @@ msgstr ""
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"Перегляньте https://mzl.la/1R1n1t0 (Документацію MDN) для отримання "
-"докладної інформації."
+msgstr "Перегляньте https://mzl.la/1R1n1t0 (Документацію MDN) для отримання докладної інформації."
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:375
@@ -425,9 +395,7 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:393
@@ -464,23 +432,18 @@ msgstr ""
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"Перегляньте https://mzl.la/20PenXl (Документацію MDN) для отримання "
-"докладної інформації."
+msgstr "Перегляньте https://mzl.la/20PenXl (Документацію MDN) для отримання докладної інформації."
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:58
@@ -493,9 +456,7 @@ msgstr "Властивість \"name\" повинна бути рядком."
 
 #: src/messages/manifestjson.js:77
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
-"Перегляньте http://mzl.la/1STmr48 (Документацію MDN) для отримання докладної "
-"інформації."
+msgstr "Перегляньте http://mzl.la/1STmr48 (Документацію MDN) для отримання докладної інформації."
 
 #: src/messages/manifestjson.js:8
 msgid "The field is required."
@@ -507,9 +468,7 @@ msgstr "Властивість \"version\" повинна бути рядком.
 
 #: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
-"Перегляньте http://mzl.la/1kXIADa (Документацію MDN) для отримання докладної "
-"інформації."
+msgstr "Перегляньте http://mzl.la/1kXIADa (Документацію MDN) для отримання докладної інформації."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"version\" property uses a Firefox-specific format."
