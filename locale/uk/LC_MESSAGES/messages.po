@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-29 05:20+0000\n"
+"PO-Revision-Date: 2019-07-29 05:45+0000\n"
 "Last-Translator: Artem Polivanchuk <artem@mozilla.org.ua>\n"
 "Language-Team: none\n"
 "Language: uk\n"
@@ -84,7 +84,7 @@ msgstr "addEventListener` викликається справжнім четве
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} не підтримується в Firefox версії {{minVersion}}"
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
@@ -92,7 +92,7 @@ msgstr "Цей API не впроваджено в Firefox вказаної мі�
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} не підтримується в Firefox для Android версії {{minVersion}}"
 
 #: src/messages/javascript.js:180
 msgid "This API is not implemented by the given minimum Firefox for Android version"
@@ -292,27 +292,27 @@ msgstr "Файл словника, визначений в маніфесті, �
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "Маніфест містить декілька словників."
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "В маніфесті визначено декілька словників, що не підтримується."
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "Маніфест містить об'єкт словників, але він порожній."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "В маніфесті визначено об'єкт словників, але він порожній."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "Маніфест містить словник, але не властивість id."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "В маніфесті знайдено словник, але немає встановленого id."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -348,7 +348,7 @@ msgstr "Очікуваний файл піктограми в \"%(path)s\" по�
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Цей псевдонім LWT-теми було вилучено в Firefox 70."
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
@@ -372,11 +372,11 @@ msgstr "Невідомий дозвіл."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "Файл зображення теми має непідтримуване розширення"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "Файл зображення теми в \"%(path)s\" має непідтримуване розширення"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -384,19 +384,19 @@ msgstr "Перегляньте https://mzl.la/1R1n1t0 (Документацію 
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "Файл зображення теми має непідтримуваний тип mime"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "Файл зображення теми в \"%(path)s\" має непідтримуваний тип mime \"%(mime)s\""
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "Тип mime файлу зображення теми не збігається з його розширенням файлу"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "Розширення файлу зображення теми в \"%(path)s\" не збігається з його типом mime \"%(mime)s\""
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
@@ -428,7 +428,7 @@ msgstr "\"manifest_version\" в файлі manifest.json має неправил
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Ключ маніфесту не підтримується в Firefox вказаної мінімальної версії"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -436,15 +436,15 @@ msgstr "Перегляньте https://mzl.la/20PenXl (Документацію 
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Дозвіл не підтримується в Firefox вказаної мінімальної версії"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Ключ маніфесту не підтримується в Firefox для Android вказаної мінімальної версії"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Дозвіл не підтримується в Firefox для Android вказаної мінімальної версії"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
