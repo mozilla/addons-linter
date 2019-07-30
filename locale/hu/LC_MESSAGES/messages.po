@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-28 18:48+0000\n"
+"PO-Revision-Date: 2019-07-30 20:08+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -324,7 +324,7 @@ msgstr "Ez a kiegészítő tiltott tartalmat tartalmaz."
 
 #: src/messages/manifestjson.js:26
 msgid "The permission type is unsupported."
-msgstr "A jogosultságtípus nem támogatott."
+msgstr "Az engedélytípus nem támogatott."
 
 #: src/messages/manifestjson.js:265
 msgid "Icons must be square."
@@ -436,7 +436,7 @@ msgstr "További információkért lásd: https://mzl.la/20PenXl (MDN dokumentá
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Az engedély nem támogatott a megadott minimális Firefox verzióban"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
@@ -444,7 +444,7 @@ msgstr "A leírókulcs nem támogatott a megadott minimális Firefox for Android
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Az engedély nem támogatott a megadott minimális Firefox for Android verzióban"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
