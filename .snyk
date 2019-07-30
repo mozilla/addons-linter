@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.13.1
+version: v1.13.5
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:braces:20180219':
@@ -366,21 +366,21 @@ ignore:
     - shelljs:
         reason: None given
         expires: '2018-03-25T13:24:50.215Z'
-      eslint-plugin-no-unsafe-innerhtml > eslint > shelljs:
-        reason: None given
-        expires: '2018-12-21T12:01:19.219Z'
     - eslint-plugin-no-unsafe-innerhtml > eslint > shelljs:
         reason: None given
         expires: '2018-03-25T13:24:50.215Z'
-      shelljs:
-        reason: None given
-        expires: '2018-12-21T12:01:19.219Z'
     - eslint-plugin-no-unsafe-innerhtml > eslint > shelljs:
         reason: None given
         expires: '2018-11-10T07:02:08.706Z'
     - shelljs:
         reason: None given
         expires: '2018-11-10T07:02:08.706Z'
+    - eslint-plugin-no-unsafe-innerhtml > eslint > shelljs:
+        reason: None given
+        expires: '2018-12-21T12:01:19.219Z'
+    - shelljs:
+        reason: None given
+        expires: '2018-12-21T12:01:19.219Z'
   'npm:content-type-parser:20170905':
     - jest > jest-cli > jest-environment-jsdom > jsdom > content-type-parser:
         reason: None given
@@ -477,3 +477,12 @@ patch:
         patched: '2018-05-07T13:43:48.682Z'
     - isparta > istanbul > fileset > minimatch:
         patched: '2018-07-10T10:54:11.989Z'
+  SNYK-JS-LODASH-450202:
+    - babel-gettext-extractor > @babel/core > @babel/template > @babel/types > lodash:
+        patched: '2019-07-25T09:43:24.682Z'
+    - babel-gettext-extractor > @babel/core > @babel/helpers > @babel/template > @babel/types > lodash:
+        patched: '2019-07-25T09:43:24.682Z'
+    - babel-gettext-extractor > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2019-07-25T09:43:24.682Z'
+    - babel-gettext-extractor > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2019-07-25T09:43:24.682Z'
