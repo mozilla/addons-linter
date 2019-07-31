@@ -267,14 +267,12 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Visita https://mzl.la/1ZOhoEN (Documentazione MDN) per maggiori informazioni."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "Impossibile trovare il content script definito nel manifesto in \"%(path)s\"."
+msgstr ""
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Impossibile trovare il file content script css definito nel manifesto in \"%(path)s\"."
+msgstr ""
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -285,14 +283,12 @@ msgid "Content script css file defined in the manifest could not be found at \"%
 msgstr "Impossibile trovare il file content script css definito nel manifesto in \"%(path)s\"."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Non è possibile trovare nel pacchetto un'icona definita nel manifesto."
+msgstr ""
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Impossibile trovare il file content script css definito nel manifesto in \"%(path)s\"."
+msgstr ""
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
@@ -355,14 +351,12 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Visita https://mzl.la/1R1n1t0 (Documentazione MDN) per maggiori informazioni."
+msgstr ""
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Impossibile trovare in \"%(path)s\" la background page."
+msgstr ""
 
 #: src/messages/manifestjson.js:330
 #, fuzzy
