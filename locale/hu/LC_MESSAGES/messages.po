@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-30 20:08+0000\n"
+"PO-Revision-Date: 2019-08-01 16:41+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -348,7 +348,7 @@ msgstr "A(z) „%(path)s” helyen várt ikon sérült"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "A téma LWT álneve eltávolításra került a Firefox 70-ben."
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
@@ -372,11 +372,11 @@ msgstr "Ismeretlen engedély."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "A téma képfájlja nem támogatott fájlkiterjesztéssel rendelkezik"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "A(z) „%(path)s” helyen lévő témafájl kiterjesztése nem támogatott"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -384,19 +384,19 @@ msgstr "További információkért lásd: https://mzl.la/1R1n1t0 (MDN dokumentá
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "A téma képfájlja nem támogatott MIME-típussal rendelkezik"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "A(z) „%(path)s” helyen lévő képfájl nem támogatott MIME-típussal rendelkezik"
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "A téma képfájljának MIME-típusa nem egyezik a fájlkiterjesztésével"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "A(z) „%(path)s” helyen lévő képfájl kiterjesztése nem egyezik a tényleges „%(mime)s” MIME-típusával."
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
