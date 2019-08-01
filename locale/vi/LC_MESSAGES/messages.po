@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-01-27 02:08+0000\n"
-"Last-Translator: Cloney 173741 <best.cloney.1301@gmail.com>\n"
+"PO-Revision-Date: 2019-08-01 05:59+0000\n"
+"Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -97,8 +97,7 @@ msgstr ""
 
 #: src/messages/javascript.js:180
 #, fuzzy
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "API này chưa được Firefox triển khai."
 
 #: src/messages/javascript.js:23
@@ -191,9 +190,7 @@ msgstr "Gói chứa các mục trùng lặp"
 
 #: src/messages/layout.js:80
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
-"Tiện ích Firefox không được phép chạy các công cụ khai thác tiền ảo (coin "
-"miners)."
+msgstr "Tiện ích Firefox không được phép chạy các công cụ khai thác tiền ảo (coin miners)."
 
 #: src/messages/layout.js:89
 #, fuzzy
@@ -225,11 +222,8 @@ msgid "Translation string is missing the message property"
 msgstr "Chuỗi dịch bị thiếu thuộc tính tin nhắn"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Không có thuộc tính thông báo \"message\" nào được đặt cho một chuỗi "
-"(https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Không có thuộc tính thông báo \"message\" nào được đặt cho một chuỗi (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:103
 msgid "\"update_url\" is not allowed."
@@ -245,25 +239,19 @@ msgstr "\"strict_max_version\" không bắt buộc."
 
 #: src/messages/manifestjson.js:141
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
-"Không thể tìm thấy biểu tượng được xác định trong tập tin manifest trong gói."
+msgstr "Không thể tìm thấy biểu tượng được xác định trong tập tin manifest trong gói."
 
 #: src/messages/manifestjson.js:145
 msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Không thể tìm thấy biểu tượng ở \"%(path)s\"."
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr ""
-"Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin manifest "
-"tại \"%(path)s\"."
+msgstr "Không thể tìm thấy tập lệnh nền được xác định trong tập tin kê khai."
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr ""
-"Không thể tìm thấy biểu tượng được xác định trong tập tin manifest trong gói."
+msgstr "Không thể tìm thấy một trang nền được xác định trong tập tin kê khai."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -282,55 +270,35 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Xem https://mzl.la/1ZOhoEN (Tài liệu MDN) để biết thêm thông tin."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr ""
-"Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin manifest "
-"tại \"%(path)s\"."
+msgstr "Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin kê khai."
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
-"Không thể tìm thấy tệp css tập lệnh nội dung được xác định trong tập tin "
-"manifest tại \"%(path)s\"."
+msgstr "Không thể tìm thấy tập tin css tập lệnh nội dung được xác định trong tập tin kê khai."
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin manifest "
-"tại \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin manifest tại \"%(path)s\"."
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Không thể tìm thấy tệp css tập lệnh nội dung được xác định trong tập tin "
-"manifest tại \"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy tệp css tập lệnh nội dung được xác định trong tập tin manifest tại \"%(path)s\"."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr ""
-"Không thể tìm thấy biểu tượng được xác định trong tập tin manifest trong gói."
+msgstr "Không thể tìm thấy tập tin từ điển được xác định trong tập tin kê khai."
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Không thể tìm thấy tệp css tập lệnh nội dung được xác định trong tập tin "
-"manifest tại \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy tập tin từ điển được xác định trong tập tin kê khai tại \"%(path)s\"."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
 #: src/messages/manifestjson.js:233
@@ -386,24 +354,20 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Xem tại https://mzl.la/1R1n1t0 (Tài liệu MDN) để biết thêm thông tin."
+msgstr "Xem tại https://mzl.la/2T11Lkc (Tài liệu MDN) để biết thêm thông tin."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Không thể tìm thấy trang nền tại \"%(path)s\"."
+msgstr "Không thể tìm thấy hình ảnh của chủ đề cho \"%(type)s\" tại \"%(path)s\""
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "Tập tin bị hỏng"
+msgstr "Tập tin hình ảnh của chủ đề bị hỏng"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "Tập tin biểu tượng tại \"%(path)s\" bị hỏng"
+msgstr "Tập tin hình ảnh của chủ đề tại \"%(path)s\" bị hỏng"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
@@ -426,8 +390,7 @@ msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:375
@@ -435,9 +398,7 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:393
@@ -466,8 +427,7 @@ msgstr "Thiếu tập tin messages.json trong \"%(path)s\""
 
 #: src/messages/manifestjson.js:43
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
-"\"manifest_version\" trong manifest.json không phải là một giá trị hợp lệ"
+msgstr "\"manifest_version\" trong manifest.json không phải là một giá trị hợp lệ"
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
@@ -482,14 +442,11 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:58
