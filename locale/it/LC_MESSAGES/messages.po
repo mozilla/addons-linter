@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-31 13:28+0000\n"
-"Last-Translator: Sara Todaro <sara.todaro@mozillaitalia.org>\n"
+"PO-Revision-Date: 2019-08-02 11:05+0000\n"
+"Last-Translator: Sav22999 <saverio.morelli@outlook.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -84,7 +84,7 @@ msgstr "addEventListener chiamato con il quarto argomento truthy."
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} non è supportata nella versione {{minVersion}} di Firefox"
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
@@ -92,7 +92,7 @@ msgstr "Questa API non è stata implementata nella versione minima richiesta di 
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} non è supportata nella versione {{minVersion}} di Firefox per Android"
 
 #: src/messages/javascript.js:180
 msgid "This API is not implemented by the given minimum Firefox for Android version"
@@ -244,11 +244,11 @@ msgstr "Impossibile trovare l’icona in \"%(path)s\"."
 
 #: src/messages/manifestjson.js:160
 msgid "A background script defined in the manifest could not be found."
-msgstr ""
+msgstr "Impossibile trovare uno script di background definito nel file manifesto."
 
 #: src/messages/manifestjson.js:163
 msgid "A background page defined in the manifest could not be found."
-msgstr ""
+msgstr "Impossibile trovare una pagina di background definita nel file manifesto."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -296,15 +296,15 @@ msgstr "Il file manifesto contiene più dizionari."
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "Nel file manifesto sono stati definiti più dizionari. Questa opzione non è supportata."
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "Il file manifesto contiene un oggetto dizionario, che tuttavia risulta vuoto."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "Nel file manifesto è stato definito un oggetto dizionario, che tuttavia risulta vuoto."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
@@ -360,7 +360,7 @@ msgstr "Impossibile trovare l’immagine del tema “%(type)s” in “%(path)s�
 
 #: src/messages/manifestjson.js:330
 msgid "Corrupted theme image file"
-msgstr ""
+msgstr "File immagine del tema danneggiato"
 
 #: src/messages/manifestjson.js:332
 msgid "Theme image file at \"%(path)s\" is corrupted"
@@ -384,19 +384,19 @@ msgstr "Visita https://mzl.la/1R1n1t0 (Documentazione MDN) per maggiori informaz
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "Il tipo MIME del file immagine del tema non è supportato"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "Il tipo MIME “%(mime)s” del file immagine del tema in “%(path)s” non è supportato"
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "Il tipo MIME del file immagine del tema non corrisponde all’estensione del file"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "L’estensione del file immagine del tema in “%(path)s” non corrisponde al tipo MIME effettivo “%(mime)s”"
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
