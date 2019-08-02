@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2018-02-21 09:55+0000\n"
+"PO-Revision-Date: 2019-07-31 13:18+0000\n"
 "Last-Translator: Sara Todaro <sara.todaro@mozillaitalia.org>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -88,7 +88,7 @@ msgstr ""
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr ""
+msgstr "Questa API non è stata implementata nella versione minima richiesta di Firefox"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
@@ -96,7 +96,7 @@ msgstr ""
 
 #: src/messages/javascript.js:180
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
+msgstr "Questa API non è stata implementata nella versione minima richiesta di Firefox per Android"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -192,7 +192,7 @@ msgstr "Il Bitcoin mining non è consentito nei componenti aggiuntivi per Firefo
 
 #: src/messages/layout.js:89
 msgid "Reserved filename found."
-msgstr ""
+msgstr "Rilevato un nome di file riservato."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -268,11 +268,11 @@ msgstr "Visita https://mzl.la/1ZOhoEN (Documentazione MDN) per maggiori informaz
 
 #: src/messages/manifestjson.js:184
 msgid "A content script defined in the manifest could not be found."
-msgstr ""
+msgstr "Impossibile trovare uno script di contenuto definito nel file manifesto."
 
 #: src/messages/manifestjson.js:185
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
+msgstr "Impossibile trovare il file css con uno script di contenuto definito nel file manifesto."
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -284,11 +284,11 @@ msgstr "Impossibile trovare il file content script css definito nel manifesto in
 
 #: src/messages/manifestjson.js:207
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr ""
+msgstr "Impossibile trovare un file dizionario definito nel file manifesto."
 
 #: src/messages/manifestjson.js:211
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Impossibile trovare il file dizionario definito nel file manifesto in “%(path)s”."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
