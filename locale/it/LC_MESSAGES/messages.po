@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-02 11:05+0000\n"
-"Last-Translator: Sav22999 <saverio.morelli@outlook.it>\n"
+"PO-Revision-Date: 2019-08-02 12:12+0000\n"
+"Last-Translator: Sara Todaro <sara.todaro@mozillaitalia.org>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -300,11 +300,11 @@ msgstr "Nel file manifesto sono stati definiti più dizionari. Questa opzione no
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr "Il file manifesto contiene un oggetto dizionario, che tuttavia risulta vuoto."
+msgstr "Il file manifesto contiene un oggetto dictionaries, che tuttavia risulta vuoto."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr "Nel file manifesto è stato definito un oggetto dizionario, che tuttavia risulta vuoto."
+msgstr "Nel file manifesto è stato definito un oggetto dictionaries, che tuttavia risulta vuoto."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
@@ -364,7 +364,7 @@ msgstr "File immagine del tema danneggiato"
 
 #: src/messages/manifestjson.js:332
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "Il file immagine del tema in “%(path)s” è danneggiato"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
