@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-31 13:18+0000\n"
+"PO-Revision-Date: 2019-07-31 13:28+0000\n"
 "Last-Translator: Sara Todaro <sara.todaro@mozillaitalia.org>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -292,7 +292,7 @@ msgstr "Impossibile trovare il file dizionario definito nel file manifesto in �
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "Il file manifesto contiene più dizionari."
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
@@ -308,11 +308,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "Il file manifesto contiene un dizionario, ma è privo di proprietà ID."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "Nel file manifesto è stato rilevato un dizionario senza set ID."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -348,25 +348,23 @@ msgstr "Il file icona previsto in \"%(path)s\" è danneggiato"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Il tema LWT alias è stato rimosso in Firefox 70."
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
+msgstr "Visita https://mzl.la/2T11Lkc (Documentazione MDN) per maggiori informazioni."
 
 #: src/messages/manifestjson.js:319
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr ""
+msgstr "Impossibile trovare l’immagine del tema “%(type)s” in “%(path)s”"
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "File immagine danneggiato"
+msgstr ""
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "Il file icona previsto in \"%(path)s\" è danneggiato"
+msgstr ""
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
@@ -374,11 +372,11 @@ msgstr "Permesso sconosciuto."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "L’estensione del file immagine del tema non è supportata"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "L’estensione del file immagine del tema in “%(path)s” non è supportata"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -430,7 +428,7 @@ msgstr "\"manifest_version\" nel file manifest.json non è un valore valido"
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Il manifest key non è supportato nella versione minima specificata di Firefox"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -438,15 +436,15 @@ msgstr "Visita https://mzl.la/20PenXl (Documentazione MDN) per maggiori informaz
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Il permesso non è supportato nella versione minima specificata di Firefox"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Il manifest key non è supportato nella versione minima specificata di Firefox per Android"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Il permesso non è supportato nella versione minima specificata di Firefox per Android"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
