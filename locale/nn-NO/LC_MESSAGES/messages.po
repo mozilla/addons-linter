@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2018-06-11 13:44+0000\n"
-"Last-Translator: Bjørn I. <bjorn.svindseth@online.no>\n"
+"PO-Revision-Date: 2019-08-03 10:40+0000\n"
+"Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: nn_NO\n"
 "MIME-Version: 1.0\n"
@@ -97,8 +97,7 @@ msgstr ""
 
 #: src/messages/javascript.js:180
 #, fuzzy
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "Denne API-en har ikkje blitt implementert av Firefox."
 
 #: src/messages/javascript.js:23
@@ -223,11 +222,8 @@ msgid "Translation string is missing the message property"
 msgstr "Omsettingsstrengen manglar meldingseigenskapen"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Ingen meldingseigenskap «message» er sett for ein streng (https://mzl."
-"la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Ingen meldingseigenskap «message» er sett for ein streng (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:103
 msgid "\"update_url\" is not allowed."
@@ -283,20 +279,15 @@ msgstr "Fann ikkje innhaldsskriptet definert i manifestet på \"%(path)s\"."
 #: src/messages/manifestjson.js:185
 #, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
-"Fann ikkje innhaldsskriptet til css-fila definert i manifestet på «%(path)s»."
+msgstr "Fann ikkje innhaldsskriptet til css-fila definert i manifestet på «%(path)s»."
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Fann ikkje innhaldsskriptet definert i manifestet på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Fann ikkje innhaldsskriptet til css-fila definert i manifestet på «%(path)s»."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Fann ikkje innhaldsskriptet til css-fila definert i manifestet på «%(path)s»."
 
 #: src/messages/manifestjson.js:207
 #, fuzzy
@@ -305,18 +296,15 @@ msgstr "Eit ikon definert i manifestet kunne ikkje finnast i pakka."
 
 #: src/messages/manifestjson.js:211
 #, fuzzy
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Fann ikkje innhaldsskriptet til css-fila definert i manifestet på «%(path)s»."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Fann ikkje innhaldsskriptet til css-fila definert i manifestet på «%(path)s»."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "Manifestet inneheld fleire ordbøker."
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
 #: src/messages/manifestjson.js:233
@@ -382,9 +370,8 @@ msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "Fann ikkje bakgrunnssida på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "Skada bildefil"
+msgstr "Skada temabildefil"
 
 #: src/messages/manifestjson.js:332
 #, fuzzy
@@ -412,8 +399,7 @@ msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:375
@@ -421,9 +407,7 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:393
@@ -467,14 +451,11 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:58
