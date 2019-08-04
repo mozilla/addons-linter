@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-04 11:52+0000\n"
+"PO-Revision-Date: 2019-08-04 22:34+0000\n"
 "Last-Translator: Melo46 <melo@carmu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -87,18 +87,16 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr ""
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Iste API non ha essite implementate per Firefox."
+msgstr "Iste API non ha essite implementate per version minime de Firefox indicate"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} non es supportate in le version {{minVersion}} de Firefox pro Android"
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Iste API non ha essite implementate per Firefox."
+msgstr "Iste API non ha essite implementate per version minime de Firefox pro Android indicate"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -193,9 +191,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Le additivos de Firefox pro facer fluer excavatores de moneta non es consentite."
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "Nomine de file signalate trovate"
+msgstr "Nomine de file reservate trovate."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -246,14 +243,12 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Icone non pote ser trovate al \"%(path)s\"."
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr "Le script de contento definite in le file manifesto non pote ser trovate al \"%(path)s\"."
+msgstr "Un script de fundo definite in le file manifesto non pote ser trovate."
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "Un icone definite in le file manifesto non pote ser trovate in le pacchetto."
+msgstr "Un pagina de fundo definite in le file manifesto non pote ser trovate."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -272,14 +267,12 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Vide https://mzl.la/1ZOhoEN (MDN Docs) pro plus de informationes."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "Le script de contento definite in le file manifesto non pote ser trovate al \"%(path)s\"."
+msgstr "Un script de contento definite in le file manifesto non pote ser trovate."
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Le file css script de contento definite in le file manifesto non pote ser trovate al \"%(path)s\"."
+msgstr "Le file css script de contento definite in le file manifesto non pote ser trovate."
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -290,14 +283,12 @@ msgid "Content script css file defined in the manifest could not be found at \"%
 msgstr "Le file css script de contento definite in le file manifesto non pote ser trovate al \"%(path)s\"."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Un icone definite in le file manifesto non pote ser trovate in le pacchetto."
+msgstr "Un file dictionario definite in le file manifesto non pote ser trovate."
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Le file css script de contento definite in le file manifesto non pote ser trovate al \"%(path)s\"."
+msgstr "Le file dictionario definite in le file manifesto non pote ser trovate in \"%(path)s\"."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
@@ -360,19 +351,16 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Vide https://mzl.la/1R1n1t0 (MDN Docs) pro altere informationes."
+msgstr "Vide https://mzl.la/2T11Lkc (MDN Docs) pro saper plus."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Le pagina de fundo non pote ser trovate al \"%(path)s\"."
+msgstr "Le imagine de thema pro \"%(type)s\" non pote ser trovate al \"%(path)s\""
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "File imagine corrupte"
+msgstr "File imagine de thema corrupte"
 
 #: src/messages/manifestjson.js:332
 #, fuzzy
