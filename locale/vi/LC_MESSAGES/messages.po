@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-01 05:59+0000\n"
+"PO-Revision-Date: 2019-08-04 03:25+0000\n"
 "Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
@@ -84,7 +84,7 @@ msgstr ""
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} không được hỗ trợ trong Firefox phiên bản {{minVersion}}"
 
 #: src/messages/javascript.js:169
 #, fuzzy
@@ -93,7 +93,7 @@ msgstr "API này chưa được Firefox triển khai."
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} không được hỗ trợ trong Firefox dành cho Android phiên bản {{minVersion}}"
 
 #: src/messages/javascript.js:180
 #, fuzzy
@@ -295,27 +295,27 @@ msgstr "Không thể tìm thấy tập tin từ điển được xác định tr
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "Tập tin kê khai chứa nhiều từ điển."
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "Nhiều từ điển đã được định nghĩa trong kê khai, mà nó không được hỗ trợ."
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "Tập tin kê khai chứa một đối tượng từ điển, nhưng nó trống."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "Một đối tượng từ điển đã được định nghĩa trong tập tin kê khai, nhưng nó trống."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "Tập tin kê khai chứa một từ điển nhưng không có thuộc tính id."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "Một từ điển đã được tìm thấy trong tập tin kê khai, nhưng không được đặt id."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -351,7 +351,7 @@ msgstr "Tập tin biểu tượng tại \"%(path)s\" bị hỏng"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Bí danh chủ đề LWT này đã bị xóa trong Firefox 70."
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
@@ -375,11 +375,11 @@ msgstr "Không rõ quyền hạn."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "Tập tin hình ảnh chủ đề có phần mở rộng không được hỗ trợ"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "Tập tin hình ảnh chủ đề tại \"%(path)s\" có phần mở rộng không được hỗ trợ"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -431,7 +431,7 @@ msgstr "\"manifest_version\" trong manifest.json không phải là một giá tr
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Khóa kê khai không được hỗ trợ bởi phiên bản Firefox tối thiểu đã chỉ định"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -439,15 +439,15 @@ msgstr "Xem tại https://mzl.la/20PenXl (Tài liệu MDN) để biết thêm th
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Quyền hạn không được hỗ trợ bởi phiên bản Firefox tối thiểu đã chỉ định"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Khóa kê khai không được hỗ trợ bởi Firefox dành cho Android phiên bản tối thiểu đã chỉ định"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Quyền hạn không được hỗ trợ bởi Firefox dành cho Android phiên bản tối thiểu đã chỉ định"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
