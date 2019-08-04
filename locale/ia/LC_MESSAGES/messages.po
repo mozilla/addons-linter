@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-04 22:34+0000\n"
+"PO-Revision-Date: 2019-08-04 22:45+0000\n"
 "Last-Translator: Melo46 <melo@carmu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -84,7 +84,7 @@ msgstr "addEventListener` appellate con un quarte argumento verificate."
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} non es supportate in le version {{minVersion}} de Firefox"
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
@@ -363,9 +363,8 @@ msgid "Corrupted theme image file"
 msgstr "File imagine de thema corrupte"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "Le file icone expectate al \"%(path)s\" es corrupte"
+msgstr "File imagine de thema corrupte a \"%(path)s\" es corrupte"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
