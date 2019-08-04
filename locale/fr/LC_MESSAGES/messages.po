@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2018-08-07 12:41+0000\n"
-"Last-Translator: goofy <goofy@babelzilla.org>\n"
+"PO-Revision-Date: 2019-08-04 08:07+0000\n"
+"Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -76,7 +76,7 @@ msgstr "{{api}} n’est pas pris en charge"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
-msgstr "Cette API n’a pas été implémentée dans Firfox."
+msgstr "Cette API n’a pas été implémentée dans Firefox."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
@@ -88,7 +88,7 @@ msgstr ""
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr ""
+msgstr "Cette API n'est pas implémentée par la version minimale de Firefox indiquée"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
@@ -96,7 +96,7 @@ msgstr ""
 
 #: src/messages/javascript.js:180
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
+msgstr "Cette API n'est pas implémentée par la version minimale donnée de Firefox pour Android"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
