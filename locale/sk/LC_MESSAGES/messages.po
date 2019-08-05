@@ -355,9 +355,8 @@ msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr ""
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Stránka pozadia nebola nájdená v „%(path)s“."
+msgstr ""
 
 #: src/messages/manifestjson.js:330
 #, fuzzy
@@ -365,9 +364,8 @@ msgid "Corrupted theme image file"
 msgstr "Poškodený súbor s obrázkom"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "Očakávaný súbor ikony v „%(path)s“ je poškodený"
+msgstr ""
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
