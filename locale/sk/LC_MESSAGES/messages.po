@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2018-08-20 16:39+0000\n"
+"PO-Revision-Date: 2019-08-05 23:32+0000\n"
 "Last-Translator: Juraj Cigáň <kusavica@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -84,19 +84,19 @@ msgstr "addEventListener bol volaný so štvrtým parametrom nastaveným na true
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} nie je podporované vo Firefoxe {{minVersion}}"
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr ""
+msgstr "Toto API nebolo danou verziou Firefoxu implementované"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} nie je podporované vo Firefoxe pre Android {{minVersion}}"
 
 #: src/messages/javascript.js:180
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
+msgstr "Toto API nebolo danou verziou Firefoxu pre Android implementované"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -192,7 +192,7 @@ msgstr "Doplnky Firefoxu nesmú ťažiť kryptomeny."
 
 #: src/messages/layout.js:89
 msgid "Reserved filename found."
-msgstr ""
+msgstr "Bol nájdený súbor s rezervovaným názvom."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -244,11 +244,11 @@ msgstr "V umiestnení „%(path)s“ nebola nájdená ikona."
 
 #: src/messages/manifestjson.js:160
 msgid "A background script defined in the manifest could not be found."
-msgstr ""
+msgstr "Skript obsahu definovaný v manifeste nebol nájdený."
 
 #: src/messages/manifestjson.js:163
 msgid "A background page defined in the manifest could not be found."
-msgstr ""
+msgstr "Ikona pozadia definovaná v manifeste nebola v balíčku nájdená."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -268,11 +268,11 @@ msgstr "Ďalšie informácie nájdete na https://mzl.la/1ZOhoEN (dokumentácia n
 
 #: src/messages/manifestjson.js:184
 msgid "A content script defined in the manifest could not be found."
-msgstr ""
+msgstr "Skript obsahu definovaný v manifeste nebol nájdený."
 
 #: src/messages/manifestjson.js:185
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
+msgstr "Skript obsahu súboru css definovaný v manifeste nebol nájdený."
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -284,35 +284,35 @@ msgstr "Skript obsahu súboru css definovaný v manifeste nebol nájdený v „%
 
 #: src/messages/manifestjson.js:207
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr ""
+msgstr "Slovník definovaný v manifeste nebol nájdený."
 
 #: src/messages/manifestjson.js:211
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Slovník definovaný v manifeste nebol nájdený v „%(path)s“."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "Manifest obsahuje viacero slovníkov."
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "V manifeste boli uvedené viaceré slovníky. Toto nie je podporované."
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "Manifest obsahuje objekt so slovníkom, no ten je prázdny."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "Objekt so slovníkom bol v manifeste definovaný, no je prázdny."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "Manifest obsahuje slovník, no žiadne id."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "V manifeste bol nájdený slovník, no nemá nastavené id."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -348,24 +348,23 @@ msgstr "Očakávaný súbor ikony v „%(path)s“ je poškodený"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Tento LWT alias témy vzhľadu bol odstránený vo Firefoxe 70."
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
+msgstr "Ďalšie informácie nájdete na https://mzl.la/2T11Lkc (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:319
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr ""
+msgstr "Obrázok témy vzhľadu pre „%(type)s“ nebol v „%(path)s“ nájdený"
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
 msgstr "Poškodený súbor s obrázkom"
 
 #: src/messages/manifestjson.js:332
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "Obrázok témy vzhľadu v „%(path)s“ je poškodený"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
@@ -373,11 +372,11 @@ msgstr "Neznáme povolenie."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "Súbor s obrázkom témy vzhľadu obsahuje nepodporované rozšírenie"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "Súbor s obrázkom témy vzhľadu v „%(path)s“ obsahuje nepodporované rozšírenie"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -385,19 +384,19 @@ msgstr "Ďalšie informácie nájdete na https://mzl.la/1R1n1t0 (dokumentácia n
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "Súbor s obrázkom témy vzhľadu má nepodporovaný typ mime"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "Súbor s obrázkom témy vzhľadu v „%(path)s“ má nepodporovaný typ mime „%(mime)s“"
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "Typ mime súboru s obrázkom témy vzhľadu nezodpovedá svojmu rozšíreniu"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "Rozšírenie obrázka témy vzhľadu v „%(path)s“ nezodpovedá typu mime „%(mime)s“"
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
@@ -429,7 +428,7 @@ msgstr "„manifest_version“ nie je v súbore manifest.json platná hodnota"
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Kľúč manifestu nie je podporovaný danou minimálnou verziou Firefoxu"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -437,15 +436,15 @@ msgstr "Ďalšie informácie nájdete na https://mzl.la/20PenXl (dokumentácia n
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Povolenie nie je podporované danou minimálnou verziou Firefoxu"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Kľúč manifestu nie je podporovaný danou minimálnou verziou Firefoxu pre Android"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Povolenie nie je podporované danou minimálnou verziou Firefoxu pre Android"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
