@@ -1,4 +1,4 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
@@ -87,19 +87,16 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr ""
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Toto API nebolo Firefoxom implementované."
+msgstr ""
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr ""
 
 #: src/messages/javascript.js:180
-#, fuzzy
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Toto API nebolo Firefoxom implementované."
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr ""
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -194,9 +191,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Doplnky Firefoxu nesmú ťažiť kryptomeny."
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "Bol nájdený označený názov súboru"
+msgstr ""
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -223,11 +219,8 @@ msgid "Translation string is missing the message property"
 msgstr "Reťazcu prekladu chýba vlastnosť message"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Pre reťazec nie je nastavená správa vo vlastnosti „message“ (https://mzl."
-"la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Pre reťazec nie je nastavená správa vo vlastnosti „message“ (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:103
 msgid "\"update_url\" is not allowed."
@@ -250,14 +243,12 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "V umiestnení „%(path)s“ nebola nájdená ikona."
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr "Skript obsahu definovaný v manifeste nebol nájdený v „%(path)s“."
+msgstr ""
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "Ikona definovaná v manifeste nebola v balíčku nájdená."
+msgstr ""
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -273,51 +264,38 @@ msgstr "Pole je neplatné."
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"Ďalšie informácie nájdete na https://mzl.la/1ZOhoEN (dokumentácia na MDN)."
+msgstr "Ďalšie informácie nájdete na https://mzl.la/1ZOhoEN (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "Skript obsahu definovaný v manifeste nebol nájdený v „%(path)s“."
+msgstr ""
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
 msgstr ""
-"Skript obsahu súboru css definovaný v manifeste nebol nájdený v „%(path)s“."
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Skript obsahu definovaný v manifeste nebol nájdený v „%(path)s“."
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Skript obsahu súboru css definovaný v manifeste nebol nájdený v „%(path)s“."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Skript obsahu súboru css definovaný v manifeste nebol nájdený v „%(path)s“."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Ikona definovaná v manifeste nebola v balíčku nájdená."
+msgstr ""
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
-"Skript obsahu súboru css definovaný v manifeste nebol nájdený v „%(path)s“."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
 #: src/messages/manifestjson.js:233
@@ -373,10 +351,8 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr ""
-"Ďalšie informácie nájdete na https://mzl.la/1R1n1t0 (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:319
 #, fuzzy
@@ -407,16 +383,14 @@ msgstr ""
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"Ďalšie informácie nájdete na https://mzl.la/1R1n1t0 (dokumentácia na MDN)."
+msgstr "Ďalšie informácie nájdete na https://mzl.la/1R1n1t0 (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:375
@@ -424,9 +398,7 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:393
@@ -463,22 +435,18 @@ msgstr ""
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"Ďalšie informácie nájdete na https://mzl.la/20PenXl (dokumentácia na MDN)."
+msgstr "Ďalšie informácie nájdete na https://mzl.la/20PenXl (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:58
@@ -491,8 +459,7 @@ msgstr "Vlastnosť „name“ musí byť reťazec."
 
 #: src/messages/manifestjson.js:77
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
-"Ďalšie informácie nájdete na http://mzl.la/1STmr48 (dokumentácia na MDN)."
+msgstr "Ďalšie informácie nájdete na http://mzl.la/1STmr48 (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:8
 msgid "The field is required."
@@ -504,8 +471,7 @@ msgstr "Vlastnosť „version“ musí byť reťazec."
 
 #: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
-"Ďalšie informácie nájdete na http://mzl.la/1kXIADa (dokumentácia na MDN)."
+msgstr "Ďalšie informácie nájdete na http://mzl.la/1kXIADa (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"version\" property uses a Firefox-specific format."
