@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-08 18:32+0000\n"
+"PO-Revision-Date: 2019-08-08 18:50+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -240,7 +240,7 @@ msgstr "მანიფესტში განსაზღვრული ხ�
 
 #: src/messages/manifestjson.js:145
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr "ხატულა, ვერ მოიძებნა „%(path)s“ მისამართზე."
+msgstr "ხატულა, ვერ მოიძებნა მისამართზე „%(path)s“."
 
 #: src/messages/manifestjson.js:160
 msgid "A background script defined in the manifest could not be found."
@@ -252,11 +252,11 @@ msgstr "მანიფესტში განსაზღვრული ფ�
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr "ფონური სკრიპტი ვერ მოიძებნა „%(path)s“ მისამართზე."
+msgstr "ფონური სკრიპტი ვერ მოიძებნა მისამართზე „%(path)s“."
 
 #: src/messages/manifestjson.js:169
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr "ფონური გვერდი ვერ მოიძებნა „%(path)s“ მისამართზე."
+msgstr "ფონური გვერდი ვერ მოიძებნა მისამართზე „%(path)s“."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
@@ -276,11 +276,11 @@ msgstr "მანიფესტში განსაზღვრული შ�
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "მანიფესტში განსაზღვრული შიგთავსის სკრიპტი, ვერ მოიძებნა „%(path)s“ მისამართზე."
+msgstr "მანიფესტში განსაზღვრული შიგთავსის სკრიპტი, ვერ მოიძებნა მისამართზე „%(path)s“."
 
 #: src/messages/manifestjson.js:193
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "მანიფესტში განსაზღვრული შიგთავსის სკრიპტის css ფაილი, ვერ მოიძებნა \"%(path)s\" მისამართზე."
+msgstr "მანიფესტში განსაზღვრული შიგთავსის სკრიპტის css-ფაილი, ვერ მოიძებნა მისამართზე „%(path)s“."
 
 #: src/messages/manifestjson.js:207
 msgid "A dictionary file defined in the manifest could not be found."
@@ -304,15 +304,15 @@ msgstr "მანიფესტი შეიცავს ლექსიკო�
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "ლექსიკონების ობიექტი მანიფესტში განსაზღვრული, მაგრამ ცარიელი იყო."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "მანიფესტი შეიცავს ლექსიკონს, მაგრამ id-თვისების გარეშე."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "მანიფესტში ნაპოვნი იყო ლექსიკონი, მაგრამ მითითებული არ ჰქონდა id."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -348,27 +348,23 @@ msgstr "მითითებულ „%(path)s“ მისამართზ�
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "თემის LWT-მეტსახელი მოცილებულია Firefox 70-იდან."
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "იხილეთ https://mzl.la/1R1n1t0 (MDN მასალები), დამატებითი ინფორმაციისთვის."
+msgstr "იხილეთ https://mzl.la/2T11Lkc (MDN-მასალები), დამატებითი ინფორმაციისთვის."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "ფონური გვერდი ვერ მოიძებნა „%(path)s“ მისამართზე."
+msgstr "თემის გამოსახულება სახეობით „%(type)s“ ვერ მოიძებნა მისამართზე „%(path)s“"
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "სურათი დაზიანებულია"
+msgstr "თემის გამოსახულება დაზიანებულია"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "მითითებულ „%(path)s“ მისამართზე ხატულის ფაილი დაზიანებულია"
+msgstr "თემის გამოსახულება მისამართზე „%(path)s“ დაზიანებულია"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
@@ -376,11 +372,11 @@ msgstr "უცნობი სახის ნებართვა."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "თემის გამოსახულებას ფაილის მხარდაუჭერელი გაფართოება აქვს"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "თემის გამოსახულებას მისამართზე „%(path)s“ ფაილის მხარდაუჭერელი გაფართოება აქვს"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -388,19 +384,19 @@ msgstr "იხილეთ https://mzl.la/1R1n1t0 (MDN მასალები)
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "თემის გამოსახულება მხარდაუჭერელი mime-სახისაა"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "თემის გამოსახულება მისამართზე „%(path)s“ მხარდაუჭერელი mime-სახისაა „%(mime)s“"
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "თემის გამოსახულების mime-სახეობა არ ემთხვევა ფაილის გაფართოებას"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "თემის გამოსახულების გაფართოება მისამართზე „%(path)s“ არ ემთხვევა მის არსებულ mime-სახეობას „%(mime)s“"
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
@@ -432,7 +428,7 @@ msgstr "„manifest_version“-ს manifest.json ფაილში არამ
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "მანიფესტის გასაღები მხარდაუჭერელია Firefox-ის მითითებული უმცირესი ვერსიით"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -440,15 +436,15 @@ msgstr "იხილეთ https://mzl.la/20PenXl (MDN მასალები)
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "ნებართვები მხარდაუჭერელია Firefox-ის მითითებული უმცირესი ვერსიით"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "მანიფესტის გასაღები არ არის მხარდაჭერილი Firefox Android-ის მითითებული უმცირესი ვერსიით"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "ნებართვები მხარდაუჭერელია Firefox Android-ის მითითებული უმცირესი ვერსიით"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
