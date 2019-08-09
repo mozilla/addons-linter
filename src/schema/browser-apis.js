@@ -1,4 +1,4 @@
-import { DEPRECATED_APIS, TEMPORARY_APIS } from 'const';
+import { DEPRECATED_JAVASCRIPT_APIS, TEMPORARY_APIS } from 'const';
 import schemaList from 'schema/imported';
 
 const schemaArrayNames = ['functions', 'events'];
@@ -11,39 +11,54 @@ const schemas = schemaList.reduce(
   {}
 );
 
-export function isDeprecatedApi(namespace, property) {
-  return DEPRECATED_APIS.includes(`${namespace}.${property}`);
+function getObjectProperty(schema, property) {
+  return schemaObjectNames.some((schemaProperty) => {
+    if (schema[schemaProperty] && property in schema[schemaProperty]) {
+      return schema[schemaProperty][property];
+    }
+    return false;
+  });
+}
+
+function getArrayProperty(schema, property) {
+  return schemaArrayNames.some((schemaProperty) => {
+    const namespaceProperties = schema[schemaProperty];
+    return (
+      Array.isArray(namespaceProperties) &&
+      namespaceProperties.some((schemaItem) => {
+        if (schemaItem.name === property) {
+          return schemaItem;
+        }
+        return false;
+      })
+    );
+  });
 }
 
 export function isTemporaryApi(namespace, property) {
   return TEMPORARY_APIS.includes(`${namespace}.${property}`);
 }
 
-function hasObjectProperty(schema, property) {
-  return schemaObjectNames.some((schemaProperty) => {
-    return schema[schemaProperty] && property in schema[schemaProperty];
-  });
-}
+export function isDeprecatedApi(namespace, property) {
+  const schema = schemas[namespace];
+  let schemaItem = getObjectProperty(schema, property);
 
-function hasArrayProperty(schema, property) {
-  return schemaArrayNames.some((schemaProperty) => {
-    const namespaceProperties = schema[schemaProperty];
-    return (
-      Array.isArray(namespaceProperties) &&
-      namespaceProperties.some((schemaItem) => {
-        return schemaItem.name === property;
-      })
-    );
-  });
+  if (!schemaItem) {
+    schemaItem = getArrayProperty(schema, property);
+  }
+
+  console.log('sss', schemaItem);
+  return (
+    schemaItem.deprecated !== undefined &&
+    DEPRECATED_JAVASCRIPT_APIS.includes(`${namespace}.${property}`)
+  );
 }
 
 export function hasBrowserApi(namespace, property) {
   const schema = schemas[namespace];
-  // We "have" the API if it's deprecated or temporary so
-  // we don't double warn.
   if (
-    isDeprecatedApi(namespace, property) ||
-    isTemporaryApi(namespace, property)
+    isTemporaryApi(namespace, property) ||
+    isDeprecatedApi(namespace, property)
   ) {
     return true;
   }
@@ -51,6 +66,6 @@ export function hasBrowserApi(namespace, property) {
     return false;
   }
   return (
-    hasObjectProperty(schema, property) || hasArrayProperty(schema, property)
+    getObjectProperty(schema, property) || getArrayProperty(schema, property)
   );
 }

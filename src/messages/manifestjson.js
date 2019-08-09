@@ -298,12 +298,10 @@ export function corruptIconFile({ path }) {
   };
 }
 
-export const MANIFEST_THEME_LWT_ALIAS = {
-  code: 'MANIFEST_THEME_LWT_ALIAS',
-  message: i18n._('This theme LWT alias has been removed in Firefox 70.'),
-  description: i18n._(
-    'See https://mzl.la/2T11Lkc (MDN Docs) for more information.'
-  ),
+export const MANIFEST_FIELD_DEPRECATED = {
+  code: 'MANIFEST_FIELD_DEPRECATED',
+  message: i18n._('This property has been deprecated.'),
+  description: null,
   file: MANIFEST_JSON,
 };
 

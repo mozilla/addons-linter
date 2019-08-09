@@ -2401,19 +2401,29 @@ describe('ManifestJSONParser', () => {
           return { code, dataPath, file, message, description };
         });
 
-        const commonErrorProps = { ...messages.MANIFEST_THEME_LWT_ALIAS };
+        const commonErrorProps = {
+          code: messages.MANIFEST_FIELD_DEPRECATED.code,
+          message: messages.MANIFEST_FIELD_DEPRECATED.message,
+          file: messages.MANIFEST_FIELD_DEPRECATED.file,
+        };
         const expectedErrors = [
           {
             ...commonErrorProps,
             dataPath: '/theme/images/headerURL',
+            description:
+              'Please use theme.images.theme_frame, this alias will be removed in Firefox 69.',
           },
           {
             ...commonErrorProps,
             dataPath: '/theme/colors/accentcolor',
+            description:
+              'Please use theme.colors.frame, this alias will be removed in Firefox 69.',
           },
           {
             ...commonErrorProps,
             dataPath: '/theme/colors/textcolor',
+            description:
+              'Please use theme.colors.tab_background_text, this alias will be removed in Firefox 69.',
           },
         ];
 

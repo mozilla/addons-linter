@@ -1,4 +1,4 @@
-import { isDeprecatedApi, isTemporaryApi } from 'schema/browser-apis';
+import { isTemporaryApi } from 'schema/browser-apis';
 import { apiToMessage, isBrowserNamespace } from 'utils';
 
 export default {
@@ -10,10 +10,6 @@ export default {
           const namespace = node.object.property.name;
           const property = node.property.name;
           const api = `${namespace}.${property}`;
-
-          if (isDeprecatedApi(namespace, property)) {
-            return context.report(node, apiToMessage(api));
-          }
 
           if (
             !context.settings.addonMetadata.id &&
