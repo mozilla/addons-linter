@@ -21,6 +21,7 @@ export const ESLINT_RULE_MAPPING = Object.assign(
     'opendialog-remote-uri': ESLINT_WARNING,
     'webextension-api': ESLINT_WARNING,
     'webextension-unsupported-api': ESLINT_WARNING,
+    'webextension-deprecated-api': ESLINT_WARNING,
     'content-scripts-file-absent': ESLINT_ERROR,
     'webextension-api-compat': ESLINT_WARNING,
     'webextension-api-compat-android': ESLINT_WARNING,
@@ -123,11 +124,18 @@ export const MIME_TO_FILE_EXTENSIONS = {
 // List of the mime types for the allowed static theme images.
 export const STATIC_THEME_IMAGE_MIMES = Object.keys(MIME_TO_FILE_EXTENSIONS);
 
-// List of the "schema data paths" of the deprecated static theme's LWT aliases.
-export const DEPRECATED_STATIC_THEME_LWT_ALIASES = [
+// List of the "schema data paths" of the deprecated properties that we
+// issue warnings for
+export const DEPRECATED_MANIFEST_PROPERTIES = [
   '/theme/images/headerURL',
   '/theme/colors/accentcolor',
   '/theme/colors/textcolor',
+];
+
+export const DEPRECATED_JAVASCRIPT_APIS = [
+  'proxy.register',
+  'proxy.unregister',
+  'proxy.onProxyError',
 ];
 
 // A list of magic numbers that we won't allow.
@@ -144,24 +152,16 @@ export const FLAGGED_FILE_MAGIC_NUMBERS = [
 // Based on the above, this is how deep we need to look into a file.
 export const FLAGGED_FILE_MAGIC_NUMBERS_LENGTH = 4;
 
-export const DEPRECATED_APIS = [
-  'app.getDetails',
-  'extension.onRequest',
-  'extension.onRequestExternal',
-  'extension.sendRequest',
-  'tabs.getAllInWindow',
-  'tabs.getSelected',
-  'tabs.onActiveChanged',
-  'tabs.onSelectionChanged',
-  'tabs.sendRequest',
-];
-
 // These are APIs that will cause problems when loaded temporarily
 // in about:debugging.
+// APIs listed here should be defined in https://mzl.la/31p4AMc
 export const TEMPORARY_APIS = [
   'identity.getRedirectURL',
-  'storage.local',
   'storage.sync',
+  'storage.managed',
+  'identity.getRedirectURL',
+  'runtime.onMessageExternal',
+  'runtime.onConnectExternal',
 ];
 
 // All valid CSP keywords that are options to keys like `default-src` and

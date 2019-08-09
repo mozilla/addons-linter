@@ -124,26 +124,12 @@ export const UNSUPPORTED_API = {
   description: i18n._('This API has not been implemented by Firefox.'),
 };
 
-function deprecatedAPI(api) {
-  return {
-    code: apiToMessage(api),
-    message: i18n._(`"${api}" is deprecated or unimplemented`),
-    description: i18n._(oneLine`This API has been deprecated by Chrome
-      and has not been implemented by Firefox.`),
-  };
-}
-
-export const APP_GETDETAILS = deprecatedAPI('app.getDetails');
-export const EXT_ONREQUEST = deprecatedAPI('extension.onRequest');
-export const EXT_ONREQUESTEXTERNAL = deprecatedAPI(
-  'extension.onRequestExternal'
-);
-export const EXT_SENDREQUEST = deprecatedAPI('extension.sendRequest');
-export const TABS_GETALLINWINDOW = deprecatedAPI('tabs.getAllInWindow');
-export const TABS_GETSELECTED = deprecatedAPI('tabs.getSelected');
-export const TABS_ONACTIVECHANGED = deprecatedAPI('tabs.onActiveChanged');
-export const TABS_ONSELECTIONCHANGED = deprecatedAPI('tabs.onSelectionChanged');
-export const TABS_SENDREQUEST = deprecatedAPI('tabs.sendRequest');
+export const DEPRECATED_API = {
+  code: 'DEPRECATED_API',
+  message: null,
+  messageFormat: i18n._('{{api}} is deprecated'),
+  description: i18n._('This API has been deprecated by Firefox.'),
+};
 
 function temporaryAPI(api) {
   return {
@@ -159,6 +145,13 @@ function temporaryAPI(api) {
 export const STORAGE_LOCAL = temporaryAPI('storage.local');
 export const STORAGE_SYNC = temporaryAPI('storage.sync');
 export const IDENTITY_GETREDIRECTURL = temporaryAPI('identity.getRedirectURL');
+export const STORAGE_MANAGED = temporaryAPI('storage.managed');
+export const RUNTIME_ONMESSAGEEXTERNAL = temporaryAPI(
+  'runtime.onMessageExternal'
+);
+export const RUNTIME_ONCONNECTEXTERNAL = temporaryAPI(
+  'runtime.onConnectExternal'
+);
 
 export const INCOMPATIBLE_API = {
   code: 'INCOMPATIBLE_API',

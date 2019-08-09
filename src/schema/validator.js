@@ -5,7 +5,7 @@ import { deepPatch } from 'schema/deepmerge';
 import schemaObject from 'schema/imported/manifest';
 import themeSchemaObject from 'schema/imported/theme';
 import messagesSchemaObject from 'schema/messages';
-import { DEPRECATED_STATIC_THEME_LWT_ALIASES } from 'const';
+import { DEPRECATED_MANIFEST_PROPERTIES } from 'const';
 
 import {
   imageDataOrStrictRelativeUrl,
@@ -33,7 +33,6 @@ validator.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
 ajvMergePatch(validator);
 
 validator.addFormat('versionString', isValidVersionString);
-validator.addFormat('deprecated', () => false);
 validator.addFormat('contentSecurityPolicy', () => true);
 validator.addFormat('ignore', () => true);
 validator.addFormat('manifestShortcutKey', manifestShortcutKey);
@@ -58,7 +57,7 @@ validator.addFormat(
 
 validator.addKeyword('deprecated', {
   validate: function validateDeprecated(message, propValue, schema, dataPath) {
-    if (!DEPRECATED_STATIC_THEME_LWT_ALIASES.includes(dataPath)) {
+    if (!DEPRECATED_MANIFEST_PROPERTIES.includes(dataPath)) {
       // Do not emit errors for every deprecated property, as it may introduce
       // regressions due to unexpected new deprecation messages raised as errors,
       // better to deal with it separately.

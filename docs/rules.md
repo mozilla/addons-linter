@@ -17,18 +17,14 @@ Rules are sorted by severity.
 | `NO_DOCUMENT_WRITE`        | warning  | Use of `document.write` strongly discouraged.                                          |
 | `JS_SYNTAX_ERROR`          | warning  | JavaScript compile-time error.                                                         |
 | `UNADVISED_LIBRARY`        | warning  | This version of a JS library is not recommended.                                       |
-| `TABS_GETSELECTED`         | warning  | Deprecated API `tabs.getSelected`.                                                     |
-| `TABS_SENDREQUEST`         | warning  | Deprecated API `tabs.sendRequest`.                                                     |
-| `TABS_GETALLINWINDOW`      | warning  | Deprecated API `tabs.getAllInWindow`.                                                  |
-| `TABS_ONSELECTIONCHANGED`  | warning  | Deprecated API `tabs.onSelectionChanged`.                                              |
-| `TABS_ONACTIVECHANGED`     | warning  | Deprecated API `tabs.onActiveChanged`.                                                 |
-| `EXT_SENDREQUEST`          | warning  | Deprecated API `extension.sendRequest`.                                                |
-| `EXT_ONREQUESTEXTERNAL`    | warning  | Deprecated API `extension.onRequestExternal`.                                          |
-| `EXT_ONREQUEST`            | warning  | Deprecated API `extension.onRequest`.                                                  |
-| `APP_GETDETAILS`           | warning  | Deprecated API `app.getDetails`.                                                       |
-| `STORAGE_LOCAL`            | warning  | Temporary IDs can cause issues with `storage.local`.                                   |
+| `PROXY_REGISTER`           | warning  | Deprecated API `proxy.register`.                                                       |
+| `PROXY_UNREGISTER`         | warning  | Deprecated API `proxy.unregister`.                                                     |
+| `PROXY_ONPROXYERROR`       | warning  | Deprecated API `proxy.onProxyError`.                                                   |
 | `STORAGE_SYNC`             | warning  | Temporary IDs can cause issues with `storage.sync`.                                    |
+| `STORAGE_MANAGED`          | warning  | Temporary IDs can cause issues with `storage.managed`.                                 |
 | `IDENTITY_GETREDIRECTURL`  | warning  | Temporary IDs can cause issues with `identity.getRedirectURL`.                         |
+| `RUNTIME_ONMESSAGEEXTERNAL`| warning  | Temporary IDs can cause issues with `runtime.onMessageExternal`.                       |
+| `RUNTIME_ONCONNECTEXTERNAL`| warning  | Temporary IDs can cause issues with `runtime.onConnectExternal`.                       |
 | `BANNED_LIBRARY`           | error    | This version of a JS library is banned for security reasons.                           |
 | `INCOMPATIBLE_API`         | warning  | API not compatible with `applications.gecko.strict_min_version`                        |
 | `ANDROID_INCOMPATIBLE_API` | warning  | API not compatible with Firefox for Android at `applications.gecko.strict_min_version` |
