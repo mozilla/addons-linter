@@ -123,7 +123,8 @@ export const MIME_TO_FILE_EXTENSIONS = {
 // List of the mime types for the allowed static theme images.
 export const STATIC_THEME_IMAGE_MIMES = Object.keys(MIME_TO_FILE_EXTENSIONS);
 
-// List of the "schema data paths" of the deprecated static theme's LWT aliases.
+// List of the "schema data paths" of the deprecated properties that we
+// issue warnings for
 export const DEPRECATED_STATIC_THEME_LWT_ALIASES = [
   '/theme/images/headerURL',
   '/theme/colors/accentcolor',
@@ -158,10 +159,14 @@ export const DEPRECATED_APIS = [
 
 // These are APIs that will cause problems when loaded temporarily
 // in about:debugging.
+// APIs listed here should be defined in https://mzl.la/31p4AMc
 export const TEMPORARY_APIS = [
   'identity.getRedirectURL',
-  'storage.local',
   'storage.sync',
+  'storage.managed',
+  'identity.getRedirectURL',
+  'runtime.onMessageExternal',
+  'runtime.onConnectExternal',
 ];
 
 // All valid CSP keywords that are options to keys like `default-src` and
