@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-13 09:12+0000\n"
+"PO-Revision-Date: 2019-08-13 09:17+0000\n"
 "Last-Translator: ItielMaN <itiel_yn8@walla.com>\n"
 "Language-Team: none\n"
 "Language: he\n"
@@ -367,14 +367,12 @@ msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "לא ניתן למצוא את תמונת ערכת הנושא עבור ״%(type)s״ ב־״%(path)s״"
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "קובץ התמונה פגום"
+msgstr "קובץ התמונה של ערכת הנושא פגום"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "קובץ הסמל המצופה ב־„%(path)s” פגום"
+msgstr "קובץ תמונת ערכת הנושא ב״%(path)s״ פגום"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
