@@ -84,7 +84,7 @@ msgstr "addEventListener a été appelé avec un quatrième argument considéré
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} n’est pas pris en charge par la version {{minVersion}} de Firefox"
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
@@ -92,7 +92,7 @@ msgstr "Cette API n'est pas implémentée par la version minimale de Firefox ind
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} n’est pas pris en charge par la version {{minVersion}} de Firefox pour Android"
 
 #: src/messages/javascript.js:180
 msgid "This API is not implemented by the given minimum Firefox for Android version"
