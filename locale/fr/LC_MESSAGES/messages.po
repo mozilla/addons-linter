@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-13 17:09+0000\n"
-"Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
+"PO-Revision-Date: 2019-08-15 20:54+0000\n"
+"Last-Translator: elched <elched@hotmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -191,9 +191,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Les modules Firefox ne peuvent pas miner de cryptomonnaies."
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "Nom de fichier signalé détecté"
+msgstr "Nom de fichier réservé détecté."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
