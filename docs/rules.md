@@ -17,9 +17,7 @@ Rules are sorted by severity.
 | `NO_DOCUMENT_WRITE`        | warning  | Use of `document.write` strongly discouraged.                                          |
 | `JS_SYNTAX_ERROR`          | warning  | JavaScript compile-time error.                                                         |
 | `UNADVISED_LIBRARY`        | warning  | This version of a JS library is not recommended.                                       |
-| `PROXY_REGISTER`           | warning  | Deprecated API `proxy.register`.                                                       |
-| `PROXY_UNREGISTER`         | warning  | Deprecated API `proxy.unregister`.                                                     |
-| `PROXY_ONPROXYERROR`       | warning  | Deprecated API `proxy.onProxyError`.                                                   |
+| `DEPRECATED_API`           | warning  | API is deprecated.                                                                     |
 | `STORAGE_SYNC`             | warning  | Temporary IDs can cause issues with `storage.sync`.                                    |
 | `STORAGE_MANAGED`          | warning  | Temporary IDs can cause issues with `storage.managed`.                                 |
 | `IDENTITY_GETREDIRECTURL`  | warning  | Temporary IDs can cause issues with `identity.getRedirectURL`.                         |
@@ -100,6 +98,7 @@ Rules are sorted by severity.
 | `MANIFEST_UPDATE_URL`                                   | error    | update_url not allowed in manifest.json                                                         |
 | `MANIFEST_FIELD_REQUIRED`                               | error    | A required field is missing                                                                     |
 | `MANIFEST_FIELD_INVALID`                                | error    | A field is invalid                                                                              |
+| `MANIFEST_FIELD_DEPRECATED`                             | error    | A field is deprecated                                                                           |
 | `MANIFEST_BAD_PERMISSION`                               | error    | Bad permission                                                                                  |
 | `JSON_BLOCK_COMMENTS`                                   | error    | Block Comments are not allowed in JSON                                                          |
 | `MANIFEST_INVALID_CONTENT`                              | error    | This add-on contains forbidden content                                                          |
@@ -134,4 +133,3 @@ Rules are sorted by severity.
 | `MANIFEST_THEME_IMAGE_CORRUPTED`     | error    | Theme images must not be corrupted                          |
 | `MANIFEST_THEME_IMAGE_WRONG_EXT`     | error    | Theme images must have one of the supported file extensions |
 | `MANIFEST_THEME_IMAGE_WRONG_MIME`    | error    | Theme images mime type must be a supported format           |
-| `MANIFEST_THEME_LWT_ALIAS`           | error    | Theme LWT aliases are deprecated                            |

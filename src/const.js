@@ -159,7 +159,6 @@ export const TEMPORARY_APIS = [
   'identity.getRedirectURL',
   'storage.sync',
   'storage.managed',
-  'identity.getRedirectURL',
   'runtime.onMessageExternal',
   'runtime.onConnectExternal',
 ];

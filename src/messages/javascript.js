@@ -142,7 +142,6 @@ function temporaryAPI(api) {
   };
 }
 
-export const STORAGE_LOCAL = temporaryAPI('storage.local');
 export const STORAGE_SYNC = temporaryAPI('storage.sync');
 export const IDENTITY_GETREDIRECTURL = temporaryAPI('identity.getRedirectURL');
 export const STORAGE_MANAGED = temporaryAPI('storage.managed');
