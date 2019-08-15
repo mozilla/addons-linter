@@ -1,5 +1,4 @@
 import { VALIDATION_WARNING, DEPRECATED_JAVASCRIPT_APIS } from 'const';
-import { DEPRECATED_API } from 'messages/javascript';
 import JavaScriptScanner from 'scanners/javascript';
 
 import { validMetadata } from '../../helpers';
