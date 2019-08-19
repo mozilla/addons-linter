@@ -15,12 +15,11 @@ export default class BinaryScanner extends BaseScanner {
     if (Object.keys(values).some((v) => values[v] !== buffer[v])) {
       return;
     }
-    this.linterMessages.push(
-      Object.assign({}, messages.FLAGGED_FILE_TYPE, {
-        type: constants.VALIDATION_NOTICE,
-        file: this.filename,
-      })
-    );
+    this.linterMessages.push({
+      ...messages.FLAGGED_FILE_TYPE,
+      type: constants.VALIDATION_NOTICE,
+      file: this.filename,
+    });
   }
 
   async scan() {

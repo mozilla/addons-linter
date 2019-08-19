@@ -10,14 +10,13 @@ export function invalidNesting(
     for (let i = 0; i < cssNode.nodes.length; i++) {
       const node = cssNode.nodes[i];
       if (node.type === 'rule') {
-        messageList.push(
-          Object.assign({}, messages.INVALID_SELECTOR_NESTING, {
-            type: 'warning',
-            line: startLine,
-            column: startColumn,
-            file: filename,
-          })
-        );
+        messageList.push({
+          ...messages.INVALID_SELECTOR_NESTING,
+          type: 'warning',
+          line: startLine,
+          column: startColumn,
+          file: filename,
+        });
         break;
       }
     }

@@ -29,7 +29,7 @@ if (!jestTestsPath) {
 tmp.setGracefulCleanup(tmpOptions);
 
 function spawnWithShell(cmd, args, options) {
-  return spawn(cmd, args, Object.assign({}, baseSpawnOptions, options));
+  return spawn(cmd, args, { ...baseSpawnOptions, ...options });
 }
 
 function getPackedName() {
@@ -113,10 +113,11 @@ function runIntegrationTests(packageDir) {
       'npm',
       ['run', npmScript, '--', jestTestsPath],
       {
-        env: Object.assign({}, process.env, {
+        env: {
+          ...process.env,
           PATH: process.env.PATH,
           TEST_BIN_PATH: path.join(packageDir, 'bin'),
-        }),
+        },
       }
     );
 

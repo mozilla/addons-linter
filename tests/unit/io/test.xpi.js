@@ -11,35 +11,40 @@ const defaultData = {
   compressionMethod: DEFLATE_COMPRESSION,
 };
 
-const chromeManifestEntry = Object.assign({}, defaultData, {
+const chromeManifestEntry = {
+  ...defaultData,
   compressedSize: 138,
   uncompressedSize: 275,
   fileName: 'chrome.manifest',
-});
+};
 
-const installFileEntry = Object.assign({}, defaultData, {
+const installFileEntry = {
+  ...defaultData,
   compressedSize: 416,
   uncompressedSize: 851,
   fileName: 'manifest.json',
-});
+};
 
-const dupeInstallFileEntry = Object.assign({}, defaultData, {
+const dupeInstallFileEntry = {
+  ...defaultData,
   compressedSize: 416,
   uncompressedSize: 851,
   fileName: 'manifest.json',
-});
+};
 
-const jsMainFileEntry = Object.assign({}, defaultData, {
+const jsMainFileEntry = {
+  ...defaultData,
   compressedSize: 41,
   uncompressedSize: 85,
   fileName: 'main.js',
-});
+};
 
-const jsSecondaryFileEntry = Object.assign({}, defaultData, {
+const jsSecondaryFileEntry = {
+  ...defaultData,
   compressedSize: 456,
   uncompressedSize: 851,
   fileName: 'secondary.js',
-});
+};
 
 const chromeContentDir = {
   compressionMethod: NO_COMPRESSION,
