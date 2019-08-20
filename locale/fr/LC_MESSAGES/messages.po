@@ -243,14 +243,12 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Icône introuvable à l’emplacement « %(path)s »."
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr "Impossible de trouver dans « %(path)s » le script de contenu défini dans le manifeste."
+msgstr ""
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "Une icône définie dans le manifeste est introuvable dans le paquet."
+msgstr ""
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -269,14 +267,12 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Voir https://mzl.la/1ZOhoEN (MDN Docs) pour plus d’informations."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "Impossible de trouver dans « %(path)s » le script de contenu défini dans le manifeste."
+msgstr ""
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Le script de contenu CSS défini dans le manifeste est introuvable à l’emplacement « %(path)s »."
+msgstr ""
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -287,14 +283,12 @@ msgid "Content script css file defined in the manifest could not be found at \"%
 msgstr "Le script de contenu CSS défini dans le manifeste est introuvable à l’emplacement « %(path)s »."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Une icône définie dans le manifeste est introuvable dans le paquet."
+msgstr ""
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Le script de contenu CSS défini dans le manifeste est introuvable à l’emplacement « %(path)s »."
+msgstr ""
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
@@ -357,24 +351,20 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Voir https://mzl.la/1R1n1t0 (MDN Docs) pour plus d’informations."
+msgstr ""
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "La page d’arrière-plan n’a pu être trouvée à l’emplacement « %(path)s »."
+msgstr ""
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "Fichier image corrompu"
+msgstr ""
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "L’icône attendue, située à l’emplacement « %(path)s » est corrompue"
+msgstr ""
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
