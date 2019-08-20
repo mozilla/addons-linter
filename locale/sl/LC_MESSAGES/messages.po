@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-26 09:27+0000\n"
-"Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
+"PO-Revision-Date: 2019-08-20 11:08+0000\n"
+"Last-Translator: Matjaž Horvat <matjaz.horvat@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -303,7 +303,7 @@ msgstr "V manifestu je bilo določenih več slovarjev, kar ni podprto."
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "Manifest vsebuje predmet slovarjev, vendar je prazen."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
@@ -315,7 +315,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "V manifestu je bil najden slovar, ki nima nastavljenega id."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
