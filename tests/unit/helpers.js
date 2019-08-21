@@ -113,127 +113,99 @@ export function validHTML(contents = '') {
 }
 
 export function validMetadata(metadata = {}) {
-  return Object.assign(
-    {},
-    {
-      type: PACKAGE_EXTENSION,
-    },
-    metadata
-  );
+  return {
+    type: PACKAGE_EXTENSION,
+    ...metadata,
+  };
 }
 
 export function validManifestJSON(extra) {
-  return JSON.stringify(
-    Object.assign(
-      {},
-      {
-        name: 'my extension',
-        manifest_version: 2,
-        applications: {
-          gecko: {
-            id: '{daf44bf7-a45e-4450-979c-91cf07434c3d}',
-            strict_min_version: '48.0.0',
-          },
-        },
-        version: '0.1',
+  return JSON.stringify({
+    name: 'my extension',
+    manifest_version: 2,
+    applications: {
+      gecko: {
+        id: '{daf44bf7-a45e-4450-979c-91cf07434c3d}',
+        strict_min_version: '48.0.0',
       },
-      extra
-    )
-  );
+    },
+    version: '0.1',
+    ...extra,
+  });
 }
 
 export function validDictionaryManifestJSON(extra) {
-  return JSON.stringify(
-    Object.assign(
-      {},
-      {
-        manifest_version: 2,
-        name: 'My French Dictionary',
-        version: '57.0a1',
-        dictionaries: {
-          fr: '/path/to/fr.dic',
-        },
-        applications: {
-          gecko: {
-            id: '@my-dictionary',
-          },
-        },
+  return JSON.stringify({
+    manifest_version: 2,
+    name: 'My French Dictionary',
+    version: '57.0a1',
+    dictionaries: {
+      fr: '/path/to/fr.dic',
+    },
+    applications: {
+      gecko: {
+        id: '@my-dictionary',
       },
-      extra
-    )
-  );
+    },
+    ...extra,
+  });
 }
 
 export function validLangpackManifestJSON(extra) {
-  return JSON.stringify(
-    Object.assign(
-      {},
-      {
-        manifest_version: 2,
-        name: 'My Language Pack',
-        version: '57.0',
-        langpack_id: 'de',
-        languages: {
-          de: {
-            chrome_resources: {},
-            version: '57.0a1',
-          },
-        },
+  return JSON.stringify({
+    manifest_version: 2,
+    name: 'My Language Pack',
+    version: '57.0',
+    langpack_id: 'de',
+    languages: {
+      de: {
+        chrome_resources: {},
+        version: '57.0a1',
       },
-      extra
-    )
-  );
+    },
+    ...extra,
+  });
 }
 
 export function validStaticThemeManifestJSON(extra) {
-  return JSON.stringify(
-    Object.assign(
-      {},
-      {
-        manifest_version: 2,
-        name: 'My Static Theme',
-        version: '1.0',
-        theme: {
-          images: {
-            theme_frame: 'weta.png',
-          },
-          colors: {
-            frame: '#adb09f',
-            tab_background_text: '#000',
-            background_tab_text: 'rgba(255, 192, 0, 0)',
-            bookmark_text: 'rgb(255, 255, 255),',
-            toolbar_field_text: 'hsl(120, 100%, 50%)',
-          },
-        },
+  return JSON.stringify({
+    manifest_version: 2,
+    name: 'My Static Theme',
+    version: '1.0',
+    theme: {
+      images: {
+        theme_frame: 'weta.png',
       },
-      extra
-    )
-  );
+      colors: {
+        frame: '#adb09f',
+        tab_background_text: '#000',
+        background_tab_text: 'rgba(255, 192, 0, 0)',
+        bookmark_text: 'rgb(255, 255, 255),',
+        toolbar_field_text: 'hsl(120, 100%, 50%)',
+      },
+    },
+    ...extra,
+  });
 }
 
 export function validLocaleMessagesJSON() {
-  return JSON.stringify(
-    Object.assign(
-      {},
-      {
+  return JSON.stringify({
+    foo: {
+      message: 'bar',
+    },
+    Placeh0lder_Test: {
+      message: '$foo$ bar $BA2$',
+      placeholders: {
         foo: {
-          message: 'bar',
+          content: '$1',
+          example: 'FOO',
         },
-        Placeh0lder_Test: {
-          message: '$foo$ bar $BA2$',
-          placeholders: {
-            foo: {
-              content: '$1',
-              example: 'FOO',
-            },
-            BA2: {
-              content: 'baz',
-            },
-          },
+        BA2: {
+          content: 'baz',
         },
-      }
-    )
-  );
+      },
+    },
+  });
 }
 
 export function unexpectedSuccess() {

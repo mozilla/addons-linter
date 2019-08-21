@@ -9,12 +9,11 @@ export async function warnOnRemoteScript($, filename) {
     const src = $(element).attr('src');
 
     if (src !== undefined && !isStrictRelativeUrl(src)) {
-      linterMessages.push(
-        Object.assign({}, messages.REMOTE_SCRIPT, {
-          type: VALIDATION_WARNING,
-          file: filename,
-        })
-      );
+      linterMessages.push({
+        ...messages.REMOTE_SCRIPT,
+        type: VALIDATION_WARNING,
+        file: filename,
+      });
     }
   });
 

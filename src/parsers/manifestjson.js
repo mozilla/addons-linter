@@ -235,7 +235,7 @@ export default class ManifestJSONParser extends JSONParser {
           "${error.data}" at ${match[2]}.`;
     }
 
-    return Object.assign({}, baseObject, overrides);
+    return { ...baseObject, ...overrides };
   }
 
   _validate() {

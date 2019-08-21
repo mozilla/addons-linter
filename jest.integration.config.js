@@ -1,5 +1,6 @@
 const config = require('./jest.config');
 
-module.exports = Object.assign({}, config, {
+module.exports = {
+  ...config,
   testMatch: ['<rootDir>/**/integration(*).js?(x)'],
-});
+};

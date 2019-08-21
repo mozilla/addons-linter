@@ -12,21 +12,19 @@ export const EXTERNAL_RULE_MAPPING = {
   'no-unsafe-innerhtml/no-unsafe-innerhtml': ESLINT_WARNING,
 };
 
-export const ESLINT_RULE_MAPPING = Object.assign(
-  {
-    'deprecated-entities': ESLINT_WARNING,
-    'event-listener-fourth': ESLINT_WARNING,
-    'global-require-arg': ESLINT_WARNING,
-    'opendialog-nonlit-uri': ESLINT_WARNING,
-    'opendialog-remote-uri': ESLINT_WARNING,
-    'webextension-api': ESLINT_WARNING,
-    'webextension-unsupported-api': ESLINT_WARNING,
-    'content-scripts-file-absent': ESLINT_ERROR,
-    'webextension-api-compat': ESLINT_WARNING,
-    'webextension-api-compat-android': ESLINT_WARNING,
-  },
-  EXTERNAL_RULE_MAPPING
-);
+export const ESLINT_RULE_MAPPING = {
+  'deprecated-entities': ESLINT_WARNING,
+  'event-listener-fourth': ESLINT_WARNING,
+  'global-require-arg': ESLINT_WARNING,
+  'opendialog-nonlit-uri': ESLINT_WARNING,
+  'opendialog-remote-uri': ESLINT_WARNING,
+  'webextension-api': ESLINT_WARNING,
+  'webextension-unsupported-api': ESLINT_WARNING,
+  'content-scripts-file-absent': ESLINT_ERROR,
+  'webextension-api-compat': ESLINT_WARNING,
+  'webextension-api-compat-android': ESLINT_WARNING,
+  ...EXTERNAL_RULE_MAPPING,
+};
 
 export const VALIDATION_ERROR = 'error';
 export const VALIDATION_NOTICE = 'notice';
