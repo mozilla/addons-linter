@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-26 01:22+0000\n"
+"PO-Revision-Date: 2019-08-26 06:33+0000\n"
 "Last-Translator: Ringgo <armen.ringgo@yahoo.de>\n"
 "Language-Team: none\n"
 "Language: id\n"
@@ -84,7 +84,7 @@ msgstr "addEventListener disebut dengan argumen yang seolah benar keempat."
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} tidak didukung di Firefox versi {{minVersion}}"
 
 #: src/messages/javascript.js:169
 #, fuzzy
@@ -93,7 +93,7 @@ msgstr "API ini belum diimplementasikan oleh Firefox."
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} tidak didukung di Firefox untuk Android versi {{minVersion}}"
 
 #: src/messages/javascript.js:180
 #, fuzzy
@@ -294,7 +294,7 @@ msgstr "Berkas kamus yang ditentukan di manifes tidak ditemukan di \"%(path)s\".
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "Manifes berisi berbagai kamus."
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
