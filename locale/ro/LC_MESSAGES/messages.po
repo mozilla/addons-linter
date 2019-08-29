@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-29 23:31+0000\n"
+"PO-Revision-Date: 2019-08-29 23:43+0000\n"
 "Last-Translator: Cristian Silaghi <cristian.silaghi@mozilla.ro>\n"
 "Language-Team: none\n"
 "Language: ro\n"
@@ -87,18 +87,16 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr "{{api}} nu are suport în versiunea Firefox {{minVersion}}"
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Acest API nu a fost implementat de Firefox."
+msgstr "Acest API nu este implementat de versiunea minimă indicată de Firefox"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} nu are suport în Firefox pentru versiunea Android {{minVersion}}"
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Acest API nu a fost implementat de Firefox."
+msgstr "Acest API nu este implementat de versiunea minimă indicată de Firefox pentru Android"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -242,24 +240,23 @@ msgstr "O pictogramă definită în manifest nu se regăsește în pachet."
 
 #: src/messages/manifestjson.js:145
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr "Pictograma nu a fost găsită la „%(path)s”."
+msgstr "Pictograma nu a putut fi găsită la „%(path)s”."
 
 #: src/messages/manifestjson.js:160
 msgid "A background script defined in the manifest could not be found."
 msgstr "Un script de fundal definit în manifest nu a putut fi găsit."
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "O pictogramă definită în manifest nu se regăsește în pachet."
+msgstr "O pagină de fundal definită în manifest nu a putut fi găsită."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr "Scriptul de fundal nu a fost găsit la „%(path)s”."
+msgstr "Scriptul de fundal nu a putut fi găsit la „%(path)s”."
 
 #: src/messages/manifestjson.js:169
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr "Pagina de fundal nu a fost găsită la „%(path)s”."
+msgstr "Pagina de fundal nu a putut fi găsită la „%(path)s”."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
@@ -268,36 +265,32 @@ msgstr "Câmpul este nevalid."
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr ""
-"Vezi https://mzl.la/1ZOhoEN (documente MDN) pentru mai multe informații.\n"
+"Vezi https://mzl.la/1ZOhoEN (Documentația MDN) pentru mai multe informații.\n"
 "\n"
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "Scriptul de conținut definit în manifest nu se regăsește la „%(path)s”."
+msgstr "Un script de conținut definit în manifest nu a putut fi găsit."
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Fișierul css cu scriptul de conținut definit în manifest nu se regăsește la „%(path)s”."
+msgstr "Un fișier css cu script de conținut, definit în manifest nu a putut fi găsit."
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Scriptul de conținut definit în manifest nu se regăsește la „%(path)s”."
+msgstr "Scriptul de conținut definit în manifest nu a putut fi găsit la „%(path)s”."
 
 #: src/messages/manifestjson.js:193
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Fișierul css cu scriptul de conținut definit în manifest nu se regăsește la „%(path)s”."
+msgstr "Fișierul css cu script de conținut definit în manifest nu a putut fi găsit la „%(path)s”."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "O pictogramă definită în manifest nu se regăsește în pachet."
+msgstr "Un fișier dicționar definit în manifest nu a putut fi găsit."
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Fișierul css cu scriptul de conținut definit în manifest nu se regăsește la „%(path)s”."
+msgstr "Fișierul dicționar definit în manifest nu a putut fi găsit la „%(path)s”."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
@@ -360,9 +353,10 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "Acest alias LWT de temă a fost eliminat din Firefox 70."
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Vezi https://mzl.la/1R1n1t0 (documente MDN) pentru mai multe informații."
+msgstr ""
+"Vezi https://mzl.la/2T11Lkc (Documentația MDN) pentru mai multe informații.\n"
+"\n"
 
 #: src/messages/manifestjson.js:319
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
@@ -390,7 +384,7 @@ msgstr "Fișierul de imagine al temei de la „%(path)s” are o extensie de fi�
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "Vezi https://mzl.la/1R1n1t0 (documente MDN) pentru mai multe informații."
+msgstr "Vezi https://mzl.la/1R1n1t0 (Documentația MDN) pentru mai multe informații."
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
@@ -442,7 +436,7 @@ msgstr "Cheia manifestului nu are suport în versiunea Firefox minimă specifica
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "Vezi https://mzl.la/20PenXl (documente MDN) pentru mai multe informații."
+msgstr "Vezi https://mzl.la/20PenXl (Documentația MDN) pentru mai multe informații."
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -466,7 +460,7 @@ msgstr "Proprietatea „name” trebuie să fie un șir."
 
 #: src/messages/manifestjson.js:77
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "Vezi http://mzl.la/1STmr48 (documente MDN) pentru mai multe informații."
+msgstr "Vezi http://mzl.la/1STmr48 (Documentația MDN) pentru mai multe informații."
 
 #: src/messages/manifestjson.js:8
 msgid "The field is required."
@@ -478,7 +472,7 @@ msgstr "Proprietatea „versiune” trebuie să fie un șir."
 
 #: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "Vezi http://mzl.la/1kXIADa (documente MDN) pentru mai multe informații."
+msgstr "Vezi http://mzl.la/1kXIADa (Documentația MDN) pentru mai multe informații."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"version\" property uses a Firefox-specific format."
