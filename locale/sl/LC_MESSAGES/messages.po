@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-28 06:46+0000\n"
+"PO-Revision-Date: 2019-08-28 06:48+0000\n"
 "Last-Translator: Rok Žerdin <zerdo90@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -271,9 +271,8 @@ msgid "A content script defined in the manifest could not be found."
 msgstr "Skripta vsebine, določenega v manifestu, ni bilo mogoče najti."
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "V mapi \"%(path)s\" ni bilo mogoče najti datoteke css skripta vsebine, določene v manifestu."
+msgstr "Datoteke css skripta vsebine, določene v manifestu, ni bilo mogoče najti."
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -356,9 +355,8 @@ msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr "Za več informacij glejte https://mzl.la/2T11Lkc (dokumente na omrežju MDN)."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "V mapi \"%(path)s\" ni bilo mogoče najti strani ozadja."
+msgstr "V mapi \"%(path)s\" ni bilo mogoče najti slike teme za \"%(type)s\""
 
 #: src/messages/manifestjson.js:330
 msgid "Corrupted theme image file"
