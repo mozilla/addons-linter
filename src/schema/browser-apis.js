@@ -12,27 +12,32 @@ const schemas = schemaList.reduce(
 );
 
 function getObjectProperty(schema, property) {
-  return schemaObjectNames.some((schemaProperty) => {
-    if (schema[schemaProperty] && property in schema[schemaProperty]) {
+  for (const schemaProperty of schemaObjectNames) {
+    if (
+      schema &&
+      schema[schemaProperty] &&
+      property in schema[schemaProperty]
+    ) {
       return schema[schemaProperty][property];
     }
-    return false;
-  });
+  }
+  return null;
 }
 
 function getArrayProperty(schema, property) {
-  return schemaArrayNames.some((schemaProperty) => {
-    const namespaceProperties = schema[schemaProperty];
-    return (
-      Array.isArray(namespaceProperties) &&
-      namespaceProperties.some((schemaItem) => {
-        if (schemaItem.name === property) {
-          return schemaItem;
+  for (const schemaProperty of schemaArrayNames) {
+    if (schema && schemaProperty in schema) {
+      const namespaceProperties = schema[schemaProperty];
+      if (Array.isArray(namespaceProperties)) {
+        for (const schemaItem of namespaceProperties) {
+          if (schemaItem.name === property) {
+            return schemaItem;
+          }
         }
-        return false;
-      })
-    );
-  });
+      }
+    }
+  }
+  return null;
 }
 
 export function isTemporaryApi(namespace, property) {
@@ -41,14 +46,12 @@ export function isTemporaryApi(namespace, property) {
 
 export function isDeprecatedApi(namespace, property) {
   const schema = schemas[namespace];
-  let schemaItem = getObjectProperty(schema, property);
 
-  if (!schemaItem) {
-    schemaItem = getArrayProperty(schema, property);
-  }
+  const schemaItem =
+    getObjectProperty(schema, property) || getArrayProperty(schema, property);
 
-  console.log('sss', schemaItem);
   return (
+    schemaItem !== null &&
     schemaItem.deprecated !== undefined &&
     DEPRECATED_JAVASCRIPT_APIS.includes(`${namespace}.${property}`)
   );

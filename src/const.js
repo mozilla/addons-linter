@@ -131,15 +131,9 @@ export const DEPRECATED_MANIFEST_PROPERTIES = [
 ];
 
 export const DEPRECATED_JAVASCRIPT_APIS = [
-  'app.getDetails',
-  'extension.onRequest',
-  'extension.onRequestExternal',
-  'extension.sendRequest',
-  'tabs.getAllInWindow',
-  'tabs.getSelected',
-  'tabs.onActiveChanged',
-  'tabs.onSelectionChanged',
-  'tabs.sendRequest',
+  'proxy.register',
+  'proxy.unregister',
+  'proxy.onProxyError',
 ];
 
 // A list of magic numbers that we won't allow.
@@ -163,7 +157,6 @@ export const TEMPORARY_APIS = [
   'identity.getRedirectURL',
   'storage.sync',
   'storage.managed',
-  'identity.getRedirectURL',
   'runtime.onMessageExternal',
   'runtime.onConnectExternal',
 ];

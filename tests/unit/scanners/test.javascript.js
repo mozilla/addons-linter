@@ -2,7 +2,6 @@ import ESLint from 'eslint';
 import { oneLine } from 'common-tags';
 
 import {
-  DEPRECATED_APIS,
   ESLINT_ERROR,
   ESLINT_RULE_MAPPING,
   EXTERNAL_RULE_MAPPING,
@@ -41,18 +40,6 @@ const esLintMock = {
     };
   },
 };
-
-const DEPRECATED_APIS_TO_TEST = [
-  'app.getDetails',
-  'extension.onRequest',
-  'extension.onRequestExternal',
-  'extension.sendRequest',
-  'tabs.getAllInWindow',
-  'tabs.getSelected',
-  'tabs.onActiveChanged',
-  'tabs.onSelectionChanged',
-  'tabs.sendRequest'
-];
 
 describe('JavaScript Scanner', () => {
   it('should report a proper scanner name', () => {
@@ -338,20 +325,6 @@ describe('JavaScript Scanner', () => {
 
     await jsScanner.scan();
     expect(jsScanner._rulesProcessed).toEqual(Object.keys(rules).length);
-  });
-
-  DEPRECATED_APIS_TO_TEST.forEach((api) => {
-    it(`should return deprecation warning when ${api} is used`, async () => {
-      const fakeMetadata = { addonMetadata: validMetadata({}) };
-      const code = `browser.${api}(function() {});`;
-      const jsScanner = new JavaScriptScanner(code, 'code.js', fakeMetadata);
-
-      const { linterMessages } = await jsScanner.scan();
-      console.log(linterMessages);
-      expect(linterMessages.length).toEqual(1);
-      // expect(linterMessages[0].code).toEqual(apiToMessage(api));
-      // expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
-    });
   });
 
   TEMPORARY_APIS.forEach((api) => {

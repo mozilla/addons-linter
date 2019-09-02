@@ -1,4 +1,4 @@
-import { DEPRECATED_APIS, TEMPORARY_APIS } from 'const';
+import { DEPRECATED_JAVASCRIPT_APIS, TEMPORARY_APIS } from 'const';
 import { hasBrowserApi, isTemporaryApi } from 'schema/browser-apis';
 
 describe('browserApis', () => {
@@ -17,7 +17,7 @@ describe('browserApis', () => {
     });
 
     it('has the API when it is deprecated', () => {
-      const [namespace, property] = DEPRECATED_APIS[0].split('.');
+      const [namespace, property] = DEPRECATED_JAVASCRIPT_APIS[0].split('.');
       expect(hasBrowserApi(namespace, property)).toBeTruthy();
     });
   });
