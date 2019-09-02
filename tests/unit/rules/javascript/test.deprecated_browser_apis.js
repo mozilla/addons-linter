@@ -7,7 +7,7 @@ describe('deprecated browser APIs', () => {
   DEPRECATED_JAVASCRIPT_APIS.forEach((api) => {
     it(`should return deprecation warning when ${api} is used`, async () => {
       const fakeMetadata = { addonMetadata: validMetadata({}) };
-      const code = `chrome.${api}(function() {});`;
+      const code = `chrome.${api}();`;
       const jsScanner = new JavaScriptScanner(code, 'code.js', fakeMetadata);
 
       const { linterMessages } = await jsScanner.scan();

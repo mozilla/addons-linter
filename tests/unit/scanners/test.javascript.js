@@ -331,7 +331,7 @@ describe('JavaScript Scanner', () => {
     it(`should return warning when ${api} is used with no id`, async () => {
       const fakeMetadata = { addonMetadata: validMetadata({}) };
       const jsScanner = new JavaScriptScanner(
-        `chrome.${api}(function() {});`,
+        `chrome.${api}();`,
         'code.js',
         fakeMetadata
       );
@@ -347,7 +347,7 @@ describe('JavaScript Scanner', () => {
     it(`should pass when ${api} is used with an id`, async () => {
       const fakeMetadata = { addonMetadata: validMetadata({ id: 'snark' }) };
       const jsScanner = new JavaScriptScanner(
-        `chrome.${api}(function() {});`,
+        `chrome.${api}();`,
         'code.js',
         fakeMetadata
       );
