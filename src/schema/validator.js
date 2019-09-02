@@ -57,7 +57,12 @@ validator.addFormat(
 
 validator.addKeyword('deprecated', {
   validate: function validateDeprecated(message, propValue, schema, dataPath) {
-    if (!DEPRECATED_MANIFEST_PROPERTIES.includes(dataPath)) {
+    if (
+      !Object.prototype.hasOwnProperty.call(
+        DEPRECATED_MANIFEST_PROPERTIES,
+        dataPath
+      )
+    ) {
       // Do not emit errors for every deprecated property, as it may introduce
       // regressions due to unexpected new deprecation messages raised as errors,
       // better to deal with it separately.

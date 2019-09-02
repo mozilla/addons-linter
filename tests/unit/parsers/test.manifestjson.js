@@ -2406,22 +2406,29 @@ describe('ManifestJSONParser', () => {
           message: messages.MANIFEST_FIELD_DEPRECATED.message,
           file: messages.MANIFEST_FIELD_DEPRECATED.file,
         };
+
         const expectedErrors = [
           {
             ...commonErrorProps,
+            code: messages.MANIFEST_THEME_LWT_ALIAS.code,
             dataPath: '/theme/images/headerURL',
+            message: 'This theme LWT alias has been removed in Firefox 70.',
             description:
               'Please use theme.images.theme_frame, this alias will be removed in Firefox 69.',
           },
           {
             ...commonErrorProps,
+            code: messages.MANIFEST_THEME_LWT_ALIAS.code,
             dataPath: '/theme/colors/accentcolor',
+            message: 'This theme LWT alias has been removed in Firefox 70.',
             description:
               'Please use theme.colors.frame, this alias will be removed in Firefox 69.',
           },
           {
             ...commonErrorProps,
+            code: messages.MANIFEST_THEME_LWT_ALIAS.code,
             dataPath: '/theme/colors/textcolor',
+            message: 'This theme LWT alias has been removed in Firefox 70.',
             description:
               'Please use theme.colors.tab_background_text, this alias will be removed in Firefox 69.',
           },

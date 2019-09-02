@@ -203,8 +203,18 @@ export default class ManifestJSONParser extends JSONParser {
     if (error.keyword === 'required') {
       baseObject = messages.MANIFEST_FIELD_REQUIRED;
     } else if (error.keyword === 'deprecated') {
-      if (DEPRECATED_MANIFEST_PROPERTIES.includes(error.dataPath)) {
-        baseObject = messages.MANIFEST_FIELD_DEPRECATED;
+      if (
+        Object.prototype.hasOwnProperty.call(
+          DEPRECATED_MANIFEST_PROPERTIES,
+          error.dataPath
+        )
+      ) {
+        baseObject = messages[DEPRECATED_MANIFEST_PROPERTIES[error.dataPath]];
+
+        if (baseObject === null) {
+          baseObject = messages.MANIFEST_FIELD_DEPRECATED;
+        }
+
         const parsedHtml = cheerio.load(error.message);
         // Cleanup deprecated error messages and clean HTML inside them
         const cleanedErrorMessage = parsedHtml.text();

@@ -1,5 +1,5 @@
 import { DEPRECATED_API } from 'messages/javascript';
-import { isDeprecatedApi } from 'schema/browser-apis';
+import { isDeprecatedApi, hasBrowserApi } from 'schema/browser-apis';
 import { isBrowserNamespace } from 'utils';
 
 export default {
@@ -15,12 +15,11 @@ export default {
           const property = node.property.name;
           const api = `${namespace}.${property}`;
 
-          if (isDeprecatedApi(namespace, property)) {
-            context.report({
-              node,
-              message: DEPRECATED_API.messageFormat,
-              data: { api },
-            });
+          if (
+            hasBrowserApi(namespace, property) &&
+            isDeprecatedApi(namespace, property)
+          ) {
+            context.report(node, DEPRECATED_API.messageFormat, { api });
           }
         }
       },

@@ -59,6 +59,7 @@ export function isDeprecatedApi(namespace, property) {
 
 export function hasBrowserApi(namespace, property) {
   const schema = schemas[namespace];
+  // We "have" the API if it's deprecated or temporary so we don't double warn.
   if (
     isTemporaryApi(namespace, property) ||
     isDeprecatedApi(namespace, property)
