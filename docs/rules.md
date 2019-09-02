@@ -133,3 +133,4 @@ Rules are sorted by severity.
 | `MANIFEST_THEME_IMAGE_CORRUPTED`     | error    | Theme images must not be corrupted                          |
 | `MANIFEST_THEME_IMAGE_WRONG_EXT`     | error    | Theme images must have one of the supported file extensions |
 | `MANIFEST_THEME_IMAGE_WRONG_MIME`    | error    | Theme images mime type must be a supported format           |
+| `MANIFEST_THEME_LWT_ALIAS`           | error    | Theme LWT aliases are deprecated                            |
