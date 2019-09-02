@@ -66,10 +66,13 @@ export function hasBrowserApi(namespace, property) {
   ) {
     return true;
   }
-  if (!schema) {
+
+  const schemaItem =
+    getObjectProperty(schema, property) || getArrayProperty(schema, property);
+
+  if (schemaItem !== null && schemaItem.unsupported !== undefined) {
     return false;
   }
-  return (
-    getObjectProperty(schema, property) || getArrayProperty(schema, property)
-  );
+
+  return schemaItem !== null;
 }
