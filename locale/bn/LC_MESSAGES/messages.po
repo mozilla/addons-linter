@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2018-02-01 21:30+0000\n"
+"PO-Revision-Date: 2018-02-04 14:17+0000\n"
 "Last-Translator: S M Sarwar Nobin <smsarwar1996@gmail.com>\n"
 "Language-Team: none\n"
 "Language: bn\n"
@@ -48,7 +48,7 @@ msgstr "সিলেক্টরের অকার্যকর নেস্ট�
 
 #: src/messages/css.js:8
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "একটি CSS সিনট্যাক্স ভুল হয়েছে"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -56,7 +56,7 @@ msgstr "আপনার FTL অকার্যকর।"
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "আপনার FTL ফাইল পার্স করা যায় নি।"
 
 #: src/messages/html.js:14
 msgid "Remote scripts are not allowed as per the Add-on Policies."
@@ -68,7 +68,7 @@ msgstr ""
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
-msgstr ""
+msgstr "পরিচিত JS লাইব্রেরি সন্ধান পাওয়া গেছে"
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
@@ -97,8 +97,7 @@ msgstr ""
 
 #: src/messages/javascript.js:180
 #, fuzzy
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "এই API টি Firefox দ্বারা বাস্তবায়িত হয়নি।"
 
 #: src/messages/javascript.js:23
@@ -151,7 +150,7 @@ msgstr "আপনার JSON অকার্যকর।"
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "আপনার JSON ফাইল পার্স করা যায়নি।"
 
 #: src/messages/layout.js:17
 msgid "We were unable to decompress the zip file."
@@ -163,7 +162,7 @@ msgstr "manifest.json পাওয়া যায়নি"
 
 #: src/messages/layout.js:30
 msgid "File is too large to parse."
-msgstr ""
+msgstr "ফাইল পার্স করার জন্য বেশ বড়।"
 
 #: src/messages/layout.js:39
 msgid "Hidden file flagged"
@@ -179,7 +178,7 @@ msgstr "ফ্লাগকরা ফাইল এক্সটেনশন পা
 
 #: src/messages/layout.js:62
 msgid "Flagged file type found"
-msgstr ""
+msgstr "ফ্লাগকরা ফাইল টাইপ পাওয়া গেছে"
 
 #: src/messages/layout.js:72
 msgid "Package already signed"
@@ -223,8 +222,7 @@ msgid "Translation string is missing the message property"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:103
@@ -245,7 +243,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:145
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "\"%(path)s\" এ কোন আইকন পাওয়া যায়নি।"
 
 #: src/messages/manifestjson.js:160
 #, fuzzy
@@ -259,11 +257,11 @@ msgstr "কনটেন্ট স্ক্রিপ্ট ফাইল খুঁ
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "\"%(path)s\"-এ কোন ব্যাকগ্রাউন্ড স্ক্রিপ্ট পাওয়া যায়নি।"
 
 #: src/messages/manifestjson.js:169
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "\"%(path)s\"-এ কোন ব্যাকগ্রাউন্ড পাতা পাওয়া যায়নি।"
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
@@ -284,14 +282,11 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr "কনটেন্ট স্ক্রিপ্ট ফাইল খুঁজে পাওয়া যায়নি।"
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:207
@@ -300,8 +295,7 @@ msgid "A dictionary file defined in the manifest could not be found."
 msgstr "কনটেন্ট স্ক্রিপ্ট ফাইল খুঁজে পাওয়া যায়নি।"
 
 #: src/messages/manifestjson.js:211
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:223
@@ -309,8 +303,7 @@ msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
 #: src/messages/manifestjson.js:233
@@ -331,11 +324,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "অ্যাড-অনে নিষিদ্ধ কনটেন্ট পাওয়া গেছে।"
 
 #: src/messages/manifestjson.js:257
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "অ্যাড-অনটি নিষিদ্ধ কনটেন্টে পরিপূর্ণ রয়েছে।"
 
 #: src/messages/manifestjson.js:26
 msgid "The permission type is unsupported."
@@ -347,11 +340,11 @@ msgstr "আইকন অবশ্যই বর্গাকৃতির হবে
 
 #: src/messages/manifestjson.js:266
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "\"%(path)s\" এর আইকনটি অবশ্যই বর্গাকৃতির হবে।"
 
 #: src/messages/manifestjson.js:277
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "নীতিমালার সাথে আইকনের সাইজ যায় না।"
 
 #: src/messages/manifestjson.js:292
 msgid "Corrupt image file"
@@ -404,8 +397,7 @@ msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:375
@@ -413,22 +405,20 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "\"default_locale\" লোকালাইজেশন ছাড়া।"
 
 #: src/messages/manifestjson.js:402
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "\"default_locale\" ছাড়া কিন্তু \"_locales\" আছে।"
 
 #: src/messages/manifestjson.js:411
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "অসমর্থিত ছবি এক্সটেনসন"
 
 #: src/messages/manifestjson.js:412
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
@@ -436,7 +426,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:422
 msgid "Empty language directory"
-msgstr ""
+msgstr "খালি ভাষা ডিরেক্টরি"
 
 #: src/messages/manifestjson.js:424
 msgid "messages.json file missing in \"%(path)s\""
@@ -459,14 +449,11 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:58

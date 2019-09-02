@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-04 22:45+0000\n"
+"PO-Revision-Date: 2019-08-18 09:01+0000\n"
 "Last-Translator: Melo46 <melo@carmu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -300,19 +300,19 @@ msgstr "In le file manifesto era definite plure dictionarios, ma isto non es sup
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "Le file manifesto contine un objecto dictionarios, ma illo es vacue."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "Un objecto dictionarios ha essite definite in le file manifesto, ma illo era vacue."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "Le file manifesto contine un dictionario ma nulle id proprietate."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "Un dictionario ha essite trovate in le file manifesto, ma illo habeva nulle id stabilite."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -348,7 +348,7 @@ msgstr "Le file icone expectate al \"%(path)s\" es corrupte"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Iste thema LWT alias ha essite eliminate in Firefox 70."
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
@@ -372,11 +372,11 @@ msgstr "Permisso incognite."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "Le file imagine del thema ha un extension non supportate"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "Le file imagine del thema a \"%(path)s\" ha un extension non supportate"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -384,19 +384,19 @@ msgstr "Vide https://mzl.la/1R1n1t0 (MDN Docs) pro altere informationes."
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "Le file imagine del thema ha un typo de mime non supportate"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "Le file imagine del thema a \"%(path)s\" ha le typo de mime non tractate \"%(mime)s\""
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "Le typo de mime del file imagine del thema non concorda su extension"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "Le extension del file imagine del thema a \"%(path)s\" non concorda su actual typo de mime \"%(mime)s\""
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
@@ -428,7 +428,7 @@ msgstr "\"manifest_version\" in le file manifest.json non es un valor valide"
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Clave de file manifesto non supportate per le minime version de Firefox specificate"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -436,15 +436,15 @@ msgstr "Vide https://mzl.la/20PenXl (MDN Docs) pro altere informationes."
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Permisso non supportate per le minime version de Firefox specificate"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Clave del file manifesto non supportate per le minime version specificate de Firefox pro Android"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Permisso non supportate per le minimo specificate version de Firefox pro Android"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."

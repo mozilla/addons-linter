@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2018-04-16 20:03+0000\n"
-"Last-Translator: Kohei Yoshino <kohei.yoshino@gmail.com>\n"
+"PO-Revision-Date: 2019-08-19 10:11+0000\n"
+"Last-Translator: marsf <chimantaea_mirabilis@yahoo.co.jp>\n"
 "Language-Team: none\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -84,22 +84,19 @@ msgstr "addEventListener の第 4 引数が true と評価される値となっ�
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} は Firefox バージョン {{minVersion}} でサポートされていません"
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "この API は Firefox に実装されていません。"
+msgstr "この API は指定された最低バージョンの Firefox に実装されていません"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} は Android 版 Firefox バージョン {{minVersion}} でサポートされていません"
 
 #: src/messages/javascript.js:180
-#, fuzzy
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
-msgstr "この API は Firefox に実装されていません。"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "この API は指定された最低バージョンの Android 版 Firefox に実装されていません"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -194,9 +191,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Firefox アドオンで仮想通貨のマイニングを行うことは許可されていません。"
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "特定のファイル名が確認されました"
+msgstr "予約済みのファイル名が見つかりました。"
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -223,11 +219,8 @@ msgid "Translation string is missing the message property"
 msgstr "翻訳メッセージにメッセージプロパティが含まれていません"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"文字列に「message」メッセージプロパティが設定されていません。(https://mzl."
-"la/2DSBTjA)"
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "文字列に「message」メッセージプロパティが設定されていません。(https://mzl.la/2DSBTjA)"
 
 #: src/messages/manifestjson.js:103
 msgid "\"update_url\" is not allowed."
@@ -250,16 +243,12 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "アイコンが \"%(path)s\" に見つかりませんでした。"
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr ""
-"マニフェストで定義されているコンテンツスクリプトが「%(path)s」に見つかりませ"
-"んでした。"
+msgstr "manifest で定義されたバックグラウンドスクリプトが見つかりませんでした。"
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "manifest で定義されたアイコンがパッケージ内に見つかりませんでした。"
+msgstr "manifest で定義されたバックグラウンドページが見つかりませんでした。"
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -278,71 +267,52 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "詳しい情報は、https://mzl.la/1ZOhoEN (MDN Docs) をご覧ください。"
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr ""
-"マニフェストで定義されているコンテンツスクリプトが「%(path)s」に見つかりませ"
-"んでした。"
+msgstr "manifest で定義されたコンテンツスクリプトが見つかりませんでした。"
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
-"マニフェストで定義されているコンテンツスクリプト CSS ファイルが「%(path)s」に"
-"見つかりませんでした。"
+msgstr "manifest で定義されたコンテンツスクリプト CSS ファイルが見つかりませんでした。"
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"マニフェストで定義されているコンテンツスクリプトが「%(path)s」に見つかりませ"
-"んでした。"
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "マニフェストで定義されているコンテンツスクリプトが「%(path)s」に見つかりませんでした。"
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"マニフェストで定義されているコンテンツスクリプト CSS ファイルが「%(path)s」に"
-"見つかりませんでした。"
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "マニフェストで定義されているコンテンツスクリプト CSS ファイルが「%(path)s」に見つかりませんでした。"
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "manifest で定義されたアイコンがパッケージ内に見つかりませんでした。"
+msgstr "manifest で定義された辞書ファイルが見つかりませんでした。"
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"マニフェストで定義されているコンテンツスクリプト CSS ファイルが「%(path)s」に"
-"見つかりませんでした。"
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "manifest で定義された辞書ファイルが「%(path)s」に見つかりませんでした。"
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "manifest に複数の辞書が含まれています。"
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+msgstr "manifest で複数の辞書が定義されていましたが、これはサポートされていません。"
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "manifest に辞書オブジェクトが含まれていますが、中身が空です。"
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "manifest で辞書オブジェクトが定義されていましたが、中身が空でした。"
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "manifest に辞書が含まれていますが、id プロパティがありません。"
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "manifest に辞書が見つかりましたが、id が設定されていませんでした。"
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -378,27 +348,23 @@ msgstr "「%(path)s」にあると期待されるアイコンファイルが壊�
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "このテーマ LWT エイリアスは Firefox 70 で削除されました。"
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "詳しくは https://mzl.la/1R1n1t0 (MDN Docs) をご覧ください。"
+msgstr "詳しくは https://mzl.la/2T11Lkc (MDN Docs) をご覧ください。"
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "バックグラウンドページが \"%(path)s\" に見つかりませんでした。"
+msgstr "「%(type)s」のテーマ画像が「%(path)s」に見つかりませんでした"
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "壊れた画像ファイル"
+msgstr "壊れたテーマ画像ファイル"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "「%(path)s」にあると期待されるアイコンファイルが壊れています"
+msgstr "「%(path)s」にあるテーマ画像ファイルが壊れています"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
@@ -406,11 +372,11 @@ msgstr "不明な許可設定です。"
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "テーマ画像ファイルのファイル拡張子はサポートされていません"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "「%(path)s」のテーマ画像ファイルのファイル拡張子はサポートされていません"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -418,22 +384,19 @@ msgstr "詳しくは https://mzl.la/1R1n1t0 (MDN Docs) をご覧ください。"
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "テーマ画像ファイルの MIME タイプはサポートされていません"
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "「%(path)s」のテーマ画像ファイルの MIME タイプ「%(mime)s」はサポートされていません"
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "テーマ画像ファイルの MIME タイプがファイル拡張子と一致しません"
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "「%(path)s」のテーマ画像ファイルの拡張子が実際の MIME タイプ「%(mime)s」と一致しません"
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
@@ -449,9 +412,7 @@ msgstr "非対応画像拡張子"
 
 #: src/messages/manifestjson.js:412
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
-"アイコンは、JPG/JPEG、WebP、GIF、PNG あるいは SVG のいずれかでなければなりま"
-"せん。"
+msgstr "アイコンは、JPG/JPEG、WebP、GIF、PNG あるいは SVG のいずれかでなければなりません。"
 
 #: src/messages/manifestjson.js:422
 msgid "Empty language directory"
@@ -467,7 +428,7 @@ msgstr "manifest.json 内の「manifest_version」の値が不正です"
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "manifest キーは指定された Firefox の最低バージョンでサポートされていません"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -475,18 +436,15 @@ msgstr "詳しくは https://mzl.la/20PenXl (MDN Docs) をご覧ください。"
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "許可設定は指定された Firefox の最低バージョンでサポートされていません"
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
-msgstr ""
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "manifest キーは指定された Android 版 Firefox の最低バージョンでサポートされていません"
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgstr "許可設定は指定された Android 版 Firefox の最低バージョンでサポートされていません"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."

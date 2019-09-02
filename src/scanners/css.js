@@ -16,10 +16,11 @@ export default class CSSScanner extends BaseScanner {
 
   processCode(cssNode, cssInstruction, _rules = this._defaultRules) {
     const file = this.filename;
-    const cssOptions = Object.assign({}, this.options, {
+    const cssOptions = {
+      ...this.options,
       startLine: cssNode.source.start.line,
       startColumn: cssNode.source.start.column,
-    });
+    };
 
     const info = {
       file,
@@ -79,19 +80,18 @@ export default class CSSScanner extends BaseScanner {
         throw e;
       }
 
-      this.linterMessages.push(
-        Object.assign({}, CSS_SYNTAX_ERROR, {
-          type: VALIDATION_WARNING,
-          // Use the reason for the error as the message.
-          // e.message includes an absolute path.
-          message: e.reason,
-          column: e.column,
-          line: e.line,
-          // We use our own ref to the file as postcss outputs
-          // absolute paths.
-          file: this.filename,
-        })
-      );
+      this.linterMessages.push({
+        ...CSS_SYNTAX_ERROR,
+        type: VALIDATION_WARNING,
+        // Use the reason for the error as the message.
+        // e.message includes an absolute path.
+        message: e.reason,
+        column: e.column,
+        line: e.line,
+        // We use our own ref to the file as postcss outputs
+        // absolute paths.
+        file: this.filename,
+      });
 
       // A syntax error has been encounted so it's game over.
       return null;

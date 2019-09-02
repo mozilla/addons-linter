@@ -48,9 +48,10 @@ const babelL10nPlugins = [
   ],
 ];
 
-const BABEL_QUERY = Object.assign({}, babelrcObject, {
+const BABEL_QUERY = {
+  ...babelrcObject,
   plugins: babelPlugins.concat(babelL10nPlugins),
-});
+};
 
 const [rule] = webpackConfig.module.rules;
 rule.loader = 'babel-loader';
@@ -59,7 +60,8 @@ delete rule.use;
 const rules = [rule];
 rules.concat(webpackConfig.module.rules.splice(0));
 
-module.exports = Object.assign({}, webpackConfig, {
+module.exports = {
+  ...webpackConfig,
   module: {
     rules,
   },
@@ -68,4 +70,4 @@ module.exports = Object.assign({}, webpackConfig, {
     new webpack.IgnorePlugin(new RegExp(`locale\\/.*\\/messages\\.js$`)),
     ...webpackConfig.plugins,
   ],
-});
+};

@@ -70,10 +70,11 @@ export default class JSONParser {
       } catch (error) {
         // There was still an error, so looks like this manifest is actually
         // invalid.
-        const errorData = Object.assign({}, messages.JSON_INVALID, {
+        const errorData = {
+          ...messages.JSON_INVALID,
           file: this.filename,
           description: error.message,
-        });
+        };
         this.collector.addError(errorData);
         this.isValid = false;
         return;
@@ -96,11 +97,12 @@ export default class JSONParser {
       if (err.warnings && err.warnings.length > 0) {
         err.warnings.forEach((error) => {
           if (error.message.startsWith('Duplicate key:')) {
-            const message = Object.assign({}, messages.JSON_DUPLICATE_KEY, {
+            const message = {
+              ...messages.JSON_DUPLICATE_KEY,
               file: this.filename,
               line: error.line,
               description: `${error.message} found in JSON`,
-            });
+            };
             this.collector.addError(message);
             this.isValid = false;
           }

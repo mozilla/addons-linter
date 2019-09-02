@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2018-03-04 19:47+0000\n"
-"Last-Translator: Tomer Cohen <tomer.mozilla@tomercohen.com>\n"
+"PO-Revision-Date: 2019-08-13 09:17+0000\n"
+"Last-Translator: ItielMaN <itiel_yn8@walla.com>\n"
 "Language-Team: none\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -97,8 +97,7 @@ msgstr ""
 
 #: src/messages/javascript.js:180
 #, fuzzy
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "ה־API הזה לא הוטמע על ידי Firefox."
 
 #: src/messages/javascript.js:23
@@ -194,9 +193,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "התוספות של Firefox אינן מורשות להריץ כורי מטבעות."
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "נמצא שם קובץ שסומן בדגל"
+msgstr "נמצא שם קובץ שמור."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -223,8 +221,7 @@ msgid "Translation string is missing the message property"
 msgstr "למחרוזת התרגום חסר המאפיין message"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr "לא הוגדר מאפיין „message” למחרוזת (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:103
@@ -284,14 +281,11 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr "לא ניתן למצוא קובץ תסריט תוכן."
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:207
@@ -301,8 +295,7 @@ msgstr "לא ניתן למצוא קובץ תסריט תוכן."
 
 #: src/messages/manifestjson.js:211
 #, fuzzy
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "לא ניתן למצוא את עמוד הרקע ב־„%(path)s”."
 
 #: src/messages/manifestjson.js:223
@@ -310,8 +303,7 @@ msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
 #: src/messages/manifestjson.js:233
@@ -367,24 +359,20 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "יש לעיין ב־https://mzl.la/1R1n1t0 (מסמכי MDN) למידע נוסף."
+msgstr "יש לעיין ב־https://mzl.la/2T11Lkc (מסמכי MDN) למידע נוסף."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "לא ניתן למצוא את עמוד הרקע ב־„%(path)s”."
+msgstr "לא ניתן למצוא את תמונת ערכת הנושא עבור ״%(type)s״ ב־״%(path)s״"
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "קובץ התמונה פגום"
+msgstr "קובץ התמונה של ערכת הנושא פגום"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "קובץ הסמל המצופה ב־„%(path)s” פגום"
+msgstr "קובץ תמונת ערכת הנושא ב״%(path)s״ פגום"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
@@ -407,8 +395,7 @@ msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:375
@@ -416,9 +403,7 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:393
@@ -435,8 +420,7 @@ msgstr "סוג קובץ התמונה לא נתמך"
 
 #: src/messages/manifestjson.js:412
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
-"הסמלים אמורים להיות אחד מסוגי התמונות הבאים: JPG/JPEG‏, WebP‏, GIF‏, PNG או SVG."
+msgstr "הסמלים אמורים להיות אחד מסוגי התמונות הבאים: JPG/JPEG‏, WebP‏, GIF‏, PNG או SVG."
 
 #: src/messages/manifestjson.js:422
 msgid "Empty language directory"
@@ -463,14 +447,11 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:58

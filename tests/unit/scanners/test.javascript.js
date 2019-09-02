@@ -280,11 +280,12 @@ describe('JavaScript Scanner', () => {
     const fakeRules = { 'metadata-not-passed': { create: () => {} } };
 
     const fakeMessages = {
-      METADATA_NOT_PASSED: Object.assign({}, fakeMessageData, {
+      METADATA_NOT_PASSED: {
+        ...fakeMessageData,
         code: 'METADATA_NOT_PASSED',
         message: 'Should not happen',
         description: 'Should not happen',
-      }),
+      },
     };
     const fakeMetadata = {
       addonMetadata: validMetadata({ guid: 'snowflake' }),
