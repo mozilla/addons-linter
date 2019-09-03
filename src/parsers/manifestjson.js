@@ -217,6 +217,8 @@ export default class ManifestJSONParser extends JSONParser {
 
         let errorDescription = baseObject.description;
 
+        // We're going to move this into the schema-import at some point
+        // https://github.com/mozilla/addons-linter/issues/2774
         if (errorDescription === null) {
           const parsedHtml = cheerio.load(error.message);
 

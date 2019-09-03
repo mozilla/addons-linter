@@ -319,6 +319,22 @@ describe('ManifestJSONParser', () => {
       const message = parser.errorLookup({ dataPath: '/permissions/0' });
       expect(message.code).toEqual(messages.MANIFEST_PERMISSIONS.code);
     });
+
+    it('Lookup LWT alias with custom message overwrite', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const parser = new ManifestJSONParser(
+        validManifestJSON(),
+        addonLinter.collector
+      );
+      const message = parser.errorLookup({
+        keyword: 'deprecated',
+        dataPath: '/theme/images/headerURL',
+        message: 'This is going to be ignored...',
+      });
+      expect(message.message).toEqual(
+        'This theme LWT alias has been removed in Firefox 70.'
+      );
+    })
   });
 
   describe('enum', () => {

@@ -1,4 +1,3 @@
-/* eslint-disable import/namespace */
 import * as messages from 'messages';
 import { VALIDATION_WARNING, DEPRECATED_JAVASCRIPT_APIS } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
@@ -20,6 +19,7 @@ describe('deprecated browser APIs', () => {
         let message = `${api} is deprecated`;
 
         if (messageOverride) {
+          // eslint-disable-next-line import/namespace
           message = replacePlaceholders(
             messages[messageOverride].messageFormat,
             { api }
