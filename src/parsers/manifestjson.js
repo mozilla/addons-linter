@@ -215,13 +215,18 @@ export default class ManifestJSONParser extends JSONParser {
           baseObject = messages.MANIFEST_FIELD_DEPRECATED;
         }
 
-        const parsedHtml = cheerio.load(error.message);
-        // Cleanup deprecated error messages and clean HTML inside them
-        const cleanedErrorMessage = parsedHtml.text();
+        let errorDescription = baseObject.description;
+
+        if (errorDescription === null) {
+          const parsedHtml = cheerio.load(error.message);
+
+          // Cleanup deprecated error messages and clean HTML inside them
+          errorDescription = parsedHtml.text();
+        }
 
         // Set the description to the actual message from the schema
         overrides.message = baseObject.message;
-        overrides.description = cleanedErrorMessage;
+        overrides.description = errorDescription;
       }
       // TODO(#2462): add a messages.MANIFEST_FIELD_DEPRECATED and ensure that deprecated
       // properties are handled properly (e.g. we should also detect when the deprecated

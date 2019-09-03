@@ -2414,7 +2414,7 @@ describe('ManifestJSONParser', () => {
             dataPath: '/theme/images/headerURL',
             message: 'This theme LWT alias has been removed in Firefox 70.',
             description:
-              'Please use theme.images.theme_frame, this alias will be removed in Firefox 69.',
+              'See https://mzl.la/2T11Lkc (MDN Docs) for more information.',
           },
           {
             ...commonErrorProps,
@@ -2422,7 +2422,7 @@ describe('ManifestJSONParser', () => {
             dataPath: '/theme/colors/accentcolor',
             message: 'This theme LWT alias has been removed in Firefox 70.',
             description:
-              'Please use theme.colors.frame, this alias will be removed in Firefox 69.',
+              'See https://mzl.la/2T11Lkc (MDN Docs) for more information.',
           },
           {
             ...commonErrorProps,
@@ -2430,7 +2430,7 @@ describe('ManifestJSONParser', () => {
             dataPath: '/theme/colors/textcolor',
             message: 'This theme LWT alias has been removed in Firefox 70.',
             description:
-              'Please use theme.colors.tab_background_text, this alias will be removed in Firefox 69.',
+              'See https://mzl.la/2T11Lkc (MDN Docs) for more information.',
           },
         ];
 
