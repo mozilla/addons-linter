@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-18 09:01+0000\n"
-"Last-Translator: Melo46 <melo@carmu.com>\n"
+"PO-Revision-Date: 2019-09-03 15:25+0000\n"
+"Last-Translator: Martijn Dekker <martijn@inlv.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
 "MIME-Version: 1.0\n"
@@ -188,7 +188,7 @@ msgstr "Le pacchetto contine entratas duplicate"
 
 #: src/messages/layout.js:80
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr "Le additivos de Firefox pro facer fluer excavatores de moneta non es consentite."
+msgstr "Le additivos de Firefox non es autorisate a minar cryptomonetas."
 
 #: src/messages/layout.js:89
 msgid "Reserved filename found."
