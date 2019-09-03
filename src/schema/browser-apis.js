@@ -51,9 +51,11 @@ export function isDeprecatedApi(namespace, property) {
     getObjectProperty(schema, property) || getArrayProperty(schema, property);
 
   return (
-    schemaItem !== null &&
-    schemaItem.deprecated !== undefined &&
-    DEPRECATED_JAVASCRIPT_APIS.includes(`${namespace}.${property}`)
+    (schemaItem !== null && schemaItem.deprecated !== undefined) ||
+    Object.prototype.hasOwnProperty.call(
+      DEPRECATED_JAVASCRIPT_APIS,
+      `${namespace}.${property}`
+    )
   );
 }
 

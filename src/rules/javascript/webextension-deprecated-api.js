@@ -1,4 +1,5 @@
-import { DEPRECATED_API } from 'messages/javascript';
+import * as messages from 'messages';
+import { DEPRECATED_JAVASCRIPT_APIS } from 'const';
 import { isDeprecatedApi, hasBrowserApi } from 'schema/browser-apis';
 import { isBrowserNamespace } from 'utils';
 
@@ -19,7 +20,14 @@ export default {
             hasBrowserApi(namespace, property) &&
             isDeprecatedApi(namespace, property)
           ) {
-            context.report(node, DEPRECATED_API.messageFormat, { api });
+            let messageObject = messages.DEPRECATED_API;
+
+            if (DEPRECATED_JAVASCRIPT_APIS[api] !== null) {
+              // eslint-disable-next-line import/namespace
+              messageObject = messages[DEPRECATED_JAVASCRIPT_APIS[api]];
+            }
+
+            context.report(node, messageObject.messageFormat, { api });
           }
         }
       },

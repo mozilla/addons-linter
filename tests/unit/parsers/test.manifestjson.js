@@ -2401,28 +2401,26 @@ describe('ManifestJSONParser', () => {
           return { code, dataPath, file, message, description };
         });
 
-        const commonErrorProps = { ...messages.MANIFEST_THEME_LWT_ALIAS };
-
         const expectedErrors = [
           {
-            ...commonErrorProps,
             code: messages.MANIFEST_THEME_LWT_ALIAS.code,
+            file: 'manifest.json',
             dataPath: '/theme/images/headerURL',
             message: 'This theme LWT alias has been removed in Firefox 70.',
             description:
               'See https://mzl.la/2T11Lkc (MDN Docs) for more information.',
           },
           {
-            ...commonErrorProps,
             code: messages.MANIFEST_THEME_LWT_ALIAS.code,
+            file: 'manifest.json',
             dataPath: '/theme/colors/accentcolor',
             message: 'This theme LWT alias has been removed in Firefox 70.',
             description:
               'See https://mzl.la/2T11Lkc (MDN Docs) for more information.',
           },
           {
-            ...commonErrorProps,
             code: messages.MANIFEST_THEME_LWT_ALIAS.code,
+            file: 'manifest.json',
             dataPath: '/theme/colors/textcolor',
             message: 'This theme LWT alias has been removed in Firefox 70.',
             description:

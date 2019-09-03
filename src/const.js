@@ -133,11 +133,28 @@ export const DEPRECATED_MANIFEST_PROPERTIES = {
   '/theme/colors/textcolor': 'MANIFEST_THEME_LWT_ALIAS',
 };
 
-export const DEPRECATED_JAVASCRIPT_APIS = [
-  'proxy.register',
-  'proxy.unregister',
-  'proxy.onProxyError',
-];
+// Mapping of deprecated javascript apis.
+// If the value is `null` we will be using the `deprecated` message
+// from the schema. Otherwise `code`, `message` and `description` will be taken
+// from the object provided.
+export const DEPRECATED_JAVASCRIPT_APIS = {
+  // These APIs were already deprecated by Chrome and Firefox never
+  // supported them. We do still issue deprecation warnings for them.
+  'app.getDetails': 'DEPRECATED_CHROME_API',
+  'extension.onRequest': 'DEPRECATED_CHROME_API',
+  'extension.onRequestExternal': 'DEPRECATED_CHROME_API',
+  'extension.sendRequest': 'DEPRECATED_CHROME_API',
+  'tabs.getAllInWindow': 'DEPRECATED_CHROME_API',
+  'tabs.getSelected': 'DEPRECATED_CHROME_API',
+  'tabs.onActiveChanged': 'DEPRECATED_CHROME_API',
+  'tabs.onSelectionChanged': 'DEPRECATED_CHROME_API',
+  'tabs.sendRequest': 'DEPRECATED_CHROME_API',
+
+  // https://github.com/mozilla/addons-linter/issues/2556
+  'proxy.register': null,
+  'proxy.unregister': null,
+  'proxy.onProxyError': null,
+};
 
 // A list of magic numbers that we won't allow.
 export const FLAGGED_FILE_MAGIC_NUMBERS = [

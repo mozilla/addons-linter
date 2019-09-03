@@ -360,3 +360,24 @@ export function readStringFromStream(readStream, transform) {
     readStream.on('error', reject);
   });
 }
+
+export function replacePlaceholders(text, data) {
+  // Taken and adapted from eslint, as it can't be imported unfortunately.
+  if (!data) {
+    return text;
+  }
+
+  // Substitution content for any {{ }} markers.
+  return text.replace(
+    /\{\{([^{}]+?)\}\}/gu,
+    (fullMatch, termWithWhitespace) => {
+      const term = termWithWhitespace.trim();
+
+      if (term in data) {
+        return data[term];
+      }
+
+      return fullMatch;
+    }
+  );
+}

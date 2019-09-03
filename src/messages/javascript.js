@@ -131,6 +131,14 @@ export const DEPRECATED_API = {
   description: i18n._('This API has been deprecated by Firefox.'),
 };
 
+export const DEPRECATED_CHROME_API = {
+  code: 'DEPRECATED_API',
+  message: null,
+  messageFormat: i18n._('"{{api}}" is deprecated or unimplemented'),
+  description: i18n._(oneLine`This API has been deprecated by Chrome
+      and has not been implemented by Firefox.`),
+};
+
 function temporaryAPI(api) {
   return {
     code: apiToMessage(api),

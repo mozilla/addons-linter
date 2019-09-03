@@ -17,7 +17,9 @@ describe('browserApis', () => {
     });
 
     it('has the API when it is deprecated', () => {
-      const [namespace, property] = DEPRECATED_JAVASCRIPT_APIS[0].split('.');
+      const [namespace, property] = Object.keys(
+        DEPRECATED_JAVASCRIPT_APIS
+      )[0].split('.');
       expect(hasBrowserApi(namespace, property)).toBeTruthy();
     });
   });

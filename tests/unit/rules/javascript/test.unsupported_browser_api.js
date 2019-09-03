@@ -56,7 +56,9 @@ describe('unsupported browser APIs', () => {
 
       const { linterMessages } = await jsScanner.scan();
       expect(linterMessages.length).toEqual(1);
-      expect(linterMessages[0].message).toEqual(`${api} is not supported`);
+      expect(linterMessages[0].message).toEqual(
+        `"${api}" is deprecated or unimplemented`
+      );
       expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
     });
   });
