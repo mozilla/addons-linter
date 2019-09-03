@@ -7,7 +7,6 @@ import { oneLine } from 'common-tags';
 import probeImageSize from 'probe-image-size';
 import upath from 'upath';
 import bcd from 'mdn-browser-compat-data';
-import cheerio from 'cheerio';
 
 import { getDefaultConfigValue } from 'yargs-options';
 import {
@@ -217,13 +216,8 @@ export default class ManifestJSONParser extends JSONParser {
 
         let errorDescription = baseObject.description;
 
-        // We're going to move this into the schema-import at some point
-        // https://github.com/mozilla/addons-linter/issues/2774
         if (errorDescription === null) {
-          const parsedHtml = cheerio.load(error.message);
-
-          // Cleanup deprecated error messages and clean HTML inside them
-          errorDescription = parsedHtml.text();
+          errorDescription = error.message;
         }
 
         // Set the description to the actual message from the schema
