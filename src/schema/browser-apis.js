@@ -70,9 +70,5 @@ export function hasBrowserApi(namespace, property) {
   const schemaItem =
     getObjectProperty(schema, property) || getArrayProperty(schema, property);
 
-  if (schemaItem !== null && schemaItem.unsupported !== undefined) {
-    return false;
-  }
-
-  return schemaItem !== null;
+  return schemaItem && !schemaItem.unsupported;
 }

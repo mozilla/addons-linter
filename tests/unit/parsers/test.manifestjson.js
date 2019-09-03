@@ -2401,11 +2401,7 @@ describe('ManifestJSONParser', () => {
           return { code, dataPath, file, message, description };
         });
 
-        const commonErrorProps = {
-          code: messages.MANIFEST_FIELD_DEPRECATED.code,
-          message: messages.MANIFEST_FIELD_DEPRECATED.message,
-          file: messages.MANIFEST_FIELD_DEPRECATED.file,
-        };
+        const commonErrorProps = { ...messages.MANIFEST_THEME_LWT_ALIAS };
 
         const expectedErrors = [
           {

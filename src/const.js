@@ -125,7 +125,7 @@ export const STATIC_THEME_IMAGE_MIMES = Object.keys(MIME_TO_FILE_EXTENSIONS);
 // Mapping of "schema data paths" of the deprecated properties that we
 // issue warnings for.
 // If the value is `null` we will be using the `deprecated` message
-// from the schema. Otherwise `code`, ?message` and `description` will be taken
+// from the schema. Otherwise `code`, `message` and `description` will be taken
 // from the object provided.
 export const DEPRECATED_MANIFEST_PROPERTIES = {
   '/theme/images/headerURL': 'MANIFEST_THEME_LWT_ALIAS',

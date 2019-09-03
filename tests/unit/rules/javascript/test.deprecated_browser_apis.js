@@ -7,13 +7,16 @@ describe('deprecated browser APIs', () => {
   DEPRECATED_JAVASCRIPT_APIS.forEach((api) => {
     it(`should return deprecation warning when ${api} is used`, async () => {
       const fakeMetadata = { addonMetadata: validMetadata({}) };
-      const code = `chrome.${api}();`;
+      const code = `chrome.${api}(); browser.${api}();`;
       const jsScanner = new JavaScriptScanner(code, 'code.js', fakeMetadata);
 
       const { linterMessages } = await jsScanner.scan();
-      expect(linterMessages.length).toEqual(1);
+      // Two warnings for chrome.* and browser.* related calls.
+      expect(linterMessages.length).toEqual(2);
       expect(linterMessages[0].message).toEqual(`${api} is deprecated`);
       expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
+      expect(linterMessages[1].message).toEqual(`${api} is deprecated`);
+      expect(linterMessages[1].type).toEqual(VALIDATION_WARNING);
     });
   });
 });
