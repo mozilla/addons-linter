@@ -334,7 +334,7 @@ describe('ManifestJSONParser', () => {
       expect(message.message).toEqual(
         'This theme LWT alias has been removed in Firefox 70.'
       );
-    })
+    });
   });
 
   describe('enum', () => {

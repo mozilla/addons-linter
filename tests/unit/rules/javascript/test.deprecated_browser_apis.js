@@ -19,8 +19,8 @@ describe('deprecated browser APIs', () => {
         let message = `${api} is deprecated`;
 
         if (messageOverride) {
-          // eslint-disable-next-line import/namespace
           message = replacePlaceholders(
+            // eslint-disable-next-line import/namespace
             messages[messageOverride].messageFormat,
             { api }
           );

@@ -23,7 +23,8 @@ export default {
             const msgId = DEPRECATED_JAVASCRIPT_APIS[api];
 
             // eslint-disable-next-line import/namespace
-            const messageObject  = (msgId && messages[msgId]) || messages.DEPRECATED_API;
+            const messageObject =
+              (msgId && messages[msgId]) || messages.DEPRECATED_API;
 
             context.report(node, messageObject.messageFormat, { api });
           }
