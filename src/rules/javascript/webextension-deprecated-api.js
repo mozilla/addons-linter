@@ -22,8 +22,8 @@ export default {
           ) {
             const msgId = DEPRECATED_JAVASCRIPT_APIS[api];
 
-            // eslint-disable-next-line import/namespace
             const messageObject =
+              // eslint-disable-next-line import/namespace
               (msgId && messages[msgId]) || messages.DEPRECATED_API;
 
             context.report(node, messageObject.messageFormat, { api });
