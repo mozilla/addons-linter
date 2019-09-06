@@ -126,14 +126,14 @@ export const UNSUPPORTED_API = {
 
 export const DEPRECATED_API = {
   code: 'DEPRECATED_API',
-  message: null,
+  message: 'is deprecated',
   messageFormat: i18n._('{{api}} is deprecated'),
   description: i18n._('This API has been deprecated by Firefox.'),
 };
 
 export const DEPRECATED_CHROME_API = {
-  code: 'DEPRECATED_API',
-  message: null,
+  code: 'DEPRECATED_CHROME_API',
+  message: 'is deprecated',
   messageFormat: i18n._('"{{api}}" is deprecated or unimplemented'),
   description: i18n._(oneLine`This API has been deprecated by Chrome
       and has not been implemented by Firefox.`),
@@ -190,4 +190,5 @@ export const ESLINT_OVERWRITE_MESSAGE = {
   'webextension-unsupported-api': UNSUPPORTED_API,
   'webextension-api-compat': INCOMPATIBLE_API,
   'webextension-api-compat-android': ANDROID_INCOMPATIBLE_API,
+  'webextension-deprecated-api': DEPRECATED_API,
 };

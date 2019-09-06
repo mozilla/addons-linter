@@ -26,6 +26,8 @@ describe('deprecated browser APIs', () => {
           );
         }
 
+        console.log('XXXXXXXXXXXXXXX', linterMessages[0].code)
+
         expect(linterMessages[0].message).toEqual(message);
         expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
         expect(linterMessages[1].message).toEqual(message);

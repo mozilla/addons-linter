@@ -127,6 +127,8 @@ export const STATIC_THEME_IMAGE_MIMES = Object.keys(MIME_TO_FILE_EXTENSIONS);
 // If the value is `null` we will be using the `deprecated` message
 // from the schema. Otherwise `code`, `message` and `description` will be taken
 // from the object provided.
+// Note that we have to use the constants name as we can't import
+// the message object here.
 export const DEPRECATED_MANIFEST_PROPERTIES = {
   '/theme/images/headerURL': 'MANIFEST_THEME_LWT_ALIAS',
   '/theme/colors/accentcolor': 'MANIFEST_THEME_LWT_ALIAS',
@@ -137,6 +139,8 @@ export const DEPRECATED_MANIFEST_PROPERTIES = {
 // If the value is `null` we will be using the `deprecated` message
 // from the schema. Otherwise `code`, `message` and `description` will be taken
 // from the object provided.
+// Note that we have to use the constants name as we can't import
+// the message object here.
 export const DEPRECATED_JAVASCRIPT_APIS = {
   // These APIs were already deprecated by Chrome and Firefox never
   // supported them. We do still issue deprecation warnings for them.

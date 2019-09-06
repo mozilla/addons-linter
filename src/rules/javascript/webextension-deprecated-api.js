@@ -26,7 +26,7 @@ export default {
               // eslint-disable-next-line import/namespace
               (msgId && messages[msgId]) || messages.DEPRECATED_API;
 
-            context.report(node, messageObject.messageFormat, { api });
+            context.report(node, messageObject);
           }
         }
       },
