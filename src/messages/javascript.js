@@ -132,6 +132,10 @@ export const DEPRECATED_API = {
 };
 
 export const DEPRECATED_CHROME_API = {
+  // We are re-using the same code here for consistency and for technical
+  // reasons. We aren't really able to issue different codes from the same
+  // rule, so until we have to, we're going to re-use the `DEPRECATED_API`
+  // code.
   code: 'DEPRECATED_API',
   message: null,
   messageFormat: i18n._('"{{api}}" is deprecated or unimplemented'),
@@ -188,6 +192,7 @@ export const ESLINT_OVERWRITE_MESSAGE = {
   'no-new-func': DANGEROUS_EVAL,
   'no-unsafe-innerhtml/no-unsafe-innerhtml': UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
   'webextension-unsupported-api': UNSUPPORTED_API,
+  'webextension-deprecated-api': DEPRECATED_API,
   'webextension-api-compat': INCOMPATIBLE_API,
   'webextension-api-compat-android': ANDROID_INCOMPATIBLE_API,
 };

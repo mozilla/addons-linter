@@ -5,32 +5,33 @@ import JavaScriptScanner from 'scanners/javascript';
 import { validMetadata, replacePlaceholders } from '../../helpers';
 
 describe('deprecated browser APIs', () => {
-  Object.entries(DEPRECATED_JAVASCRIPT_APIS).forEach(
-    ([api, messageOverride]) => {
-      it(`should return deprecation warning when ${api} is used`, async () => {
-        const fakeMetadata = { addonMetadata: validMetadata({}) };
-        const code = `chrome.${api}(); browser.${api}();`;
-        const jsScanner = new JavaScriptScanner(code, 'code.js', fakeMetadata);
+  Object.keys(DEPRECATED_JAVASCRIPT_APIS).forEach((api) => {
+    it(`should return deprecation warning when ${api} is used`, async () => {
+      const fakeMetadata = { addonMetadata: validMetadata({}) };
+      const code = `chrome.${api}(); browser.${api}();`;
+      const jsScanner = new JavaScriptScanner(code, 'code.js', fakeMetadata);
 
-        const { linterMessages } = await jsScanner.scan();
-        // Two warnings for chrome.* and browser.* related calls.
-        expect(linterMessages.length).toEqual(2);
+      const { linterMessages } = await jsScanner.scan();
+      // Two warnings for chrome.* and browser.* related calls.
+      expect(linterMessages.length).toEqual(2);
 
-        let message = `${api} is deprecated`;
+      let message = `${api} is deprecated`;
 
-        if (messageOverride) {
-          message = replacePlaceholders(
-            // eslint-disable-next-line import/namespace
-            messages[messageOverride].messageFormat,
-            { api }
-          );
-        }
+      const msgId = DEPRECATED_JAVASCRIPT_APIS[api];
 
-        expect(linterMessages[0].message).toEqual(message);
-        expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
-        expect(linterMessages[1].message).toEqual(message);
-        expect(linterMessages[1].type).toEqual(VALIDATION_WARNING);
-      });
-    }
-  );
+      const messageObject =
+        // eslint-disable-next-line import/namespace
+        (msgId && messages[msgId]) || messages.DEPRECATED_API;
+
+      message = replacePlaceholders(messageObject.messageFormat, { api });
+
+      // The code for all deprecated messages is exactly the same.
+      expect(linterMessages[0].code).toEqual(messages.DEPRECATED_API.code);
+      expect(linterMessages[0].message).toEqual(message);
+      expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
+      expect(linterMessages[1].code).toEqual(messages.DEPRECATED_API.code);
+      expect(linterMessages[1].message).toEqual(message);
+      expect(linterMessages[1].type).toEqual(VALIDATION_WARNING);
+    });
+  });
 });
