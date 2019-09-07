@@ -87,18 +87,16 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr "{{api}} không được hỗ trợ trong Firefox phiên bản {{minVersion}}"
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "API này chưa được Firefox triển khai."
+msgstr ""
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} không được hỗ trợ trong Firefox dành cho Android phiên bản {{minVersion}}"
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "API này chưa được Firefox triển khai."
+msgstr ""
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -193,9 +191,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Tiện ích Firefox không được phép chạy các công cụ khai thác tiền ảo (coin miners)."
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "Đã tìm thấy tên tập tin được gắn cờ"
+msgstr ""
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
