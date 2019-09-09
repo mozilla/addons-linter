@@ -155,9 +155,9 @@ export const DEPRECATED_JAVASCRIPT_APIS = {
   'tabs.sendRequest': 'DEPRECATED_CHROME_API',
 
   // https://github.com/mozilla/addons-linter/issues/2556
-  'proxy.register': null,
-  'proxy.unregister': null,
-  'proxy.onProxyError': null,
+  'proxy.register': 'DEPRECATED_API',
+  'proxy.unregister': 'DEPRECATED_API',
+  'proxy.onProxyError': 'DEPRECATED_API',
 };
 
 // A list of magic numbers that we won't allow.
