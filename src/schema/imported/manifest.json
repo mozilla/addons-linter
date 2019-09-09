@@ -511,6 +511,9 @@
           ]
         },
         {
+          "$ref": "activityLog#/definitions/Permission"
+        },
+        {
           "$ref": "browsingData#/definitions/Permission"
         },
         {
@@ -539,6 +542,9 @@
         },
         {
           "$ref": "menus#/definitions/Permission"
+        },
+        {
+          "$ref": "networkStatus#/definitions/Permission"
         },
         {
           "$ref": "normandyAddonStudy#/definitions/Permission"
