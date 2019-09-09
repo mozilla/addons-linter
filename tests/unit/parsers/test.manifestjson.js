@@ -319,6 +319,22 @@ describe('ManifestJSONParser', () => {
       const message = parser.errorLookup({ dataPath: '/permissions/0' });
       expect(message.code).toEqual(messages.MANIFEST_PERMISSIONS.code);
     });
+
+    it('Lookup LWT alias with custom message overwrite', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const parser = new ManifestJSONParser(
+        validManifestJSON(),
+        addonLinter.collector
+      );
+      const message = parser.errorLookup({
+        keyword: 'deprecated',
+        dataPath: '/theme/images/headerURL',
+        message: 'This is going to be ignored...',
+      });
+      expect(message.message).toEqual(
+        'This theme LWT alias has been removed in Firefox 70.'
+      );
+    });
   });
 
   describe('enum', () => {
@@ -2401,19 +2417,30 @@ describe('ManifestJSONParser', () => {
           return { code, dataPath, file, message, description };
         });
 
-        const commonErrorProps = { ...messages.MANIFEST_THEME_LWT_ALIAS };
         const expectedErrors = [
           {
-            ...commonErrorProps,
+            code: messages.MANIFEST_THEME_LWT_ALIAS.code,
+            file: 'manifest.json',
             dataPath: '/theme/images/headerURL',
+            message: 'This theme LWT alias has been removed in Firefox 70.',
+            description:
+              'See https://mzl.la/2T11Lkc (MDN Docs) for more information.',
           },
           {
-            ...commonErrorProps,
+            code: messages.MANIFEST_THEME_LWT_ALIAS.code,
+            file: 'manifest.json',
             dataPath: '/theme/colors/accentcolor',
+            message: 'This theme LWT alias has been removed in Firefox 70.',
+            description:
+              'See https://mzl.la/2T11Lkc (MDN Docs) for more information.',
           },
           {
-            ...commonErrorProps,
+            code: messages.MANIFEST_THEME_LWT_ALIAS.code,
+            file: 'manifest.json',
             dataPath: '/theme/colors/textcolor',
+            message: 'This theme LWT alias has been removed in Firefox 70.',
+            description:
+              'See https://mzl.la/2T11Lkc (MDN Docs) for more information.',
           },
         ];
 

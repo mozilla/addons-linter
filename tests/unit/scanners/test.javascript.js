@@ -2,7 +2,6 @@ import ESLint from 'eslint';
 import { oneLine } from 'common-tags';
 
 import {
-  DEPRECATED_APIS,
   ESLINT_ERROR,
   ESLINT_RULE_MAPPING,
   EXTERNAL_RULE_MAPPING,
@@ -328,25 +327,11 @@ describe('JavaScript Scanner', () => {
     expect(jsScanner._rulesProcessed).toEqual(Object.keys(rules).length);
   });
 
-  DEPRECATED_APIS.forEach((api) => {
-    it(`should return warning when ${api} is used`, async () => {
-      const jsScanner = new JavaScriptScanner(
-        `chrome.${api}(function() {});`,
-        'code.js'
-      );
-
-      const { linterMessages } = await jsScanner.scan();
-      expect(linterMessages.length).toEqual(1);
-      expect(linterMessages[0].code).toEqual(apiToMessage(api));
-      expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
-    });
-  });
-
   TEMPORARY_APIS.forEach((api) => {
     it(`should return warning when ${api} is used with no id`, async () => {
       const fakeMetadata = { addonMetadata: validMetadata({}) };
       const jsScanner = new JavaScriptScanner(
-        `chrome.${api}(function() {});`,
+        `chrome.${api}();`,
         'code.js',
         fakeMetadata
       );
@@ -362,7 +347,7 @@ describe('JavaScript Scanner', () => {
     it(`should pass when ${api} is used with an id`, async () => {
       const fakeMetadata = { addonMetadata: validMetadata({ id: 'snark' }) };
       const jsScanner = new JavaScriptScanner(
-        `chrome.${api}(function() {});`,
+        `chrome.${api}();`,
         'code.js',
         fakeMetadata
       );

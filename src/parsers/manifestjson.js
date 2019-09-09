@@ -16,7 +16,7 @@ import {
   validateStaticTheme,
 } from 'schema/validator';
 import {
-  DEPRECATED_STATIC_THEME_LWT_ALIASES,
+  DEPRECATED_MANIFEST_PROPERTIES,
   MANIFEST_JSON,
   PACKAGE_EXTENSION,
   CSP_KEYWORD_RE,
@@ -203,12 +203,26 @@ export default class ManifestJSONParser extends JSONParser {
       baseObject = messages.MANIFEST_FIELD_REQUIRED;
     } else if (error.keyword === 'deprecated') {
       if (
-        this.isStaticTheme &&
-        DEPRECATED_STATIC_THEME_LWT_ALIASES.includes(error.dataPath)
+        Object.prototype.hasOwnProperty.call(
+          DEPRECATED_MANIFEST_PROPERTIES,
+          error.dataPath
+        )
       ) {
-        baseObject = messages.MANIFEST_THEME_LWT_ALIAS;
-        // Overwrite the message with the shorter one included in the linter messages.
+        baseObject = messages[DEPRECATED_MANIFEST_PROPERTIES[error.dataPath]];
+
+        if (baseObject === null) {
+          baseObject = messages.MANIFEST_FIELD_DEPRECATED;
+        }
+
+        let errorDescription = baseObject.description;
+
+        if (errorDescription === null) {
+          errorDescription = error.message;
+        }
+
+        // Set the description to the actual message from the schema
         overrides.message = baseObject.message;
+        overrides.description = errorDescription;
       }
       // TODO(#2462): add a messages.MANIFEST_FIELD_DEPRECATED and ensure that deprecated
       // properties are handled properly (e.g. we should also detect when the deprecated
