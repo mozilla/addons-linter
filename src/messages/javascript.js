@@ -126,17 +126,22 @@ export const UNSUPPORTED_API = {
 
 export const DEPRECATED_API = {
   code: 'DEPRECATED_API',
-  message: 'is deprecated',
+  message: null,
   messageFormat: i18n._('{{api}} is deprecated'),
   description: i18n._('This API has been deprecated by Firefox.'),
 };
 
 export const DEPRECATED_CHROME_API = {
-  code: 'DEPRECATED_CHROME_API',
-  message: 'is deprecated',
+  // We are re-using the same code here for consistency and for technical
+  // reasons. We aren't really able to issue different codes from the same
+  // rule, so until we have to, we're going to re-use the `DEPRECATED_API`
+  // code.
+  // Because of that implementation detail ``description`` isn't being usable
+  // too.
+  code: 'DEPRECATED_API',
+  message: null,
   messageFormat: i18n._('"{{api}}" is deprecated or unimplemented'),
-  description: i18n._(oneLine`This API has been deprecated by Chrome
-      and has not been implemented by Firefox.`),
+  description: null,
 };
 
 function temporaryAPI(api) {
@@ -188,7 +193,7 @@ export const ESLINT_OVERWRITE_MESSAGE = {
   'no-new-func': DANGEROUS_EVAL,
   'no-unsafe-innerhtml/no-unsafe-innerhtml': UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
   'webextension-unsupported-api': UNSUPPORTED_API,
+  'webextension-deprecated-api': DEPRECATED_API,
   'webextension-api-compat': INCOMPATIBLE_API,
   'webextension-api-compat-android': ANDROID_INCOMPATIBLE_API,
-  'webextension-deprecated-api': DEPRECATED_API,
 };
