@@ -162,6 +162,16 @@
             "timeStamp": {
               "type": "number",
               "description": "The time when this signal is triggered, in milliseconds since the epoch."
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
             }
           },
           "required": [
@@ -279,6 +289,16 @@
                 },
                 {
                   "description": "The HTTP request headers that are going to be sent out with this request."
+                }
+              ]
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
                 }
               ]
             }
@@ -400,6 +420,16 @@
                   "description": "The HTTP request headers that have been sent out with this request."
                 }
               ]
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
             }
           },
           "required": [
@@ -516,6 +546,16 @@
             "statusCode": {
               "type": "integer",
               "description": "Standard HTTP status code returned by the server."
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
             }
           },
           "required": [
@@ -673,6 +713,16 @@
             "statusCode": {
               "type": "integer",
               "description": "Standard HTTP status code returned by the server."
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
             }
           },
           "required": [
@@ -830,6 +880,16 @@
             "statusLine": {
               "type": "string",
               "description": "HTTP status line of the response or the 'HTTP/0.9 200 OK' string for HTTP/0.9 responses (i.e., responses that lack a status line) or an empty string if there are no headers."
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
             }
           },
           "required": [
@@ -961,6 +1021,16 @@
             "statusLine": {
               "type": "string",
               "description": "HTTP status line of the response or the 'HTTP/0.9 200 OK' string for HTTP/0.9 responses (i.e., responses that lack a status line) or an empty string if there are no headers."
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
             }
           },
           "required": [
@@ -1089,6 +1159,16 @@
             "statusLine": {
               "type": "string",
               "description": "HTTP status line of the response or the 'HTTP/0.9 200 OK' string for HTTP/0.9 responses (i.e., responses that lack a status line) or an empty string if there are no headers."
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
             }
           },
           "required": [
@@ -1102,7 +1182,8 @@
             "timeStamp",
             "fromCache",
             "statusCode",
-            "statusLine"
+            "statusLine",
+            "urlClassification"
           ]
         }
       ],
@@ -1202,6 +1283,16 @@
             "error": {
               "type": "string",
               "description": "The error description. This string is <em>not</em> guaranteed to remain backwards compatible between releases. You must not parse and act based upon its content."
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
             }
           },
           "required": [
@@ -1646,6 +1737,60 @@
         }
       },
       "description": "Contains data uploaded in a URL request."
+    },
+    "UrlClassificationFlags": {
+      "type": "string",
+      "enum": [
+        "fingerprinting",
+        "fingerprinting_content",
+        "cryptomining",
+        "cryptomining_content",
+        "tracking",
+        "tracking_ad",
+        "tracking_analytics",
+        "tracking_social",
+        "tracking_content",
+        "any_basic_tracking",
+        "any_strict_tracking",
+        "any_social_tracking"
+      ],
+      "description": "Tracking flags that match our internal tracking classification"
+    },
+    "UrlClassificationParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/types/UrlClassificationFlags"
+      },
+      "description": "If the request has been classified this is an array of $(ref:UrlClassificationFlags)."
+    },
+    "UrlClassification": {
+      "type": "object",
+      "properties": {
+        "firstParty": {
+          "allOf": [
+            {
+              "$ref": "#/types/UrlClassificationParty"
+            },
+            {
+              "description": "First party classification flags if the request has been classified."
+            }
+          ]
+        },
+        "thirdParty": {
+          "allOf": [
+            {
+              "$ref": "#/types/UrlClassificationParty"
+            },
+            {
+              "description": "Third party classification flags if the request has been classified."
+            }
+          ]
+        }
+      },
+      "required": [
+        "firstParty",
+        "thirdParty"
+      ]
     }
   }
 }
