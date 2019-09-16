@@ -62,7 +62,7 @@
     "pino": "5.13.3",
     "po2json": "0.4.5",
     "postcss": "7.0.18",
-    "probe-image-size": "4.1.1",
+    "probe-image-size": "5.0.0",
     "regenerator-runtime": "0.13.3",
     "relaxed-json": "1.0.3",
     "semver": "6.3.0",
