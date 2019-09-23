@@ -118,7 +118,7 @@
     "pretty-quick": "1.11.1",
     "raw-loader": "3.1.0",
     "shelljs": "0.8.3",
-    "sinon": "7.4.2",
+    "sinon": "7.5.0",
     "snyk": "1.228.0",
     "tar": "4.4.10",
     "tar-fs": "2.0.0",
