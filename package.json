@@ -95,7 +95,7 @@
     "babel-loader": "8.0.6",
     "babel-plugin-syntax-async-functions": "6.13.0",
     "codecov": "3.5.0",
-    "comment-json": "2.1.0",
+    "comment-json": "2.2.0",
     "doctoc": "1.4.0",
     "eslint-config-amo": "1.21.0",
     "eslint-config-prettier": "6.3.0",
