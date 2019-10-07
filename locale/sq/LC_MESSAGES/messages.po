@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-10-05 11:01+0000\n"
+"PO-Revision-Date: 2019-10-07 10:12+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: none\n"
 "Language: sq\n"
@@ -84,21 +84,19 @@ msgstr ""
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} nuk mbulohet në versionin {{minVersion}} të Firefox-it"
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Kjo API s’është sendërtuar nga Firefox-i."
+msgstr "Kjo API s’është e sendërtuar nga versioni minimum i dhënë për Firefox-in"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} nuk mbulohet në versionin {{minVersion}} të Firefox-it për Android"
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Kjo API s’është sendërtuar nga Firefox-i."
+msgstr "Kjo API s’është e sendërtuar nga versioni minimum i dhënë për Firefox-in për Android"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -245,14 +243,12 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "S’u gjet ikonë te \"%(path)s\"."
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr "Te \"%(path)s\" s’u gjet dot programth lënde i përkufizuar te manifesti."
+msgstr "S’u gjet dot programth prapaskene i përkufizuar te manifesti."
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "Te manifesti s’u gjet dot një ikonë e përkufizuar te paketa."
+msgstr "S’u gjet dot një faqe prapaskene e përkufizuar te manifesti."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -271,14 +267,12 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Për më tepër informacion, shihni te https://mzl.la/1ZOhoEN (Dokumentim MDN)."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "Te \"%(path)s\" s’u gjet dot programth lënde i përkufizuar te manifesti."
+msgstr "S’u gjet dot programth lënde i përkufizuar te manifesti."
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Te \"%(path)s\" s’u gjet dot kartelë CSS programthi lënde të përkufizuar te manifesti."
+msgstr "S’u gjet dot kartelë CSS programthi lënde të përkufizuar te manifesti."
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -289,38 +283,36 @@ msgid "Content script css file defined in the manifest could not be found at \"%
 msgstr "Te \"%(path)s\" s’u gjet dot kartelë CSS programthi lënde të përkufizuar te manifesti."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Te manifesti s’u gjet dot një ikonë e përkufizuar te paketa."
+msgstr "S’u gjet dot një kartelë fjalori e përkufizuar te manifesti."
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Te \"%(path)s\" s’u gjet dot kartelë CSS programthi lënde të përkufizuar te manifesti."
+msgstr "Te \"%(path)s\" s’u gjet dot kartelë fjalori e përkufizuar te manifesti."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "Manifesti përmban fjalorë të shumtë."
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "Në manifest janë përkufizuar fjalorë të shumtë, gjë që nuk mbulohet."
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "Manifesti përmban objekt fjalorësh, por është i zbrazët."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "Te manifesti qe përkufizuar objekt fjalorësh, por qe i zbrazët."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "Manifesti përmban një fjalor, por pa veti ID-je."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "Te manifesti u gjet një fjalor, por s’pat ID të caktuar."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -356,25 +348,23 @@ msgstr "Kartela e pritshme e ikonës te \"%(path)s\" është e dëmtuar"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Ky alias LWT teme është hequr në Firefox 70."
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr "Për më tepër të dhëna, shihni https://mzl.la/2T11Lkc (Dokumentim te MDN)."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "S’u gjet faqe sfondi te \"%(path)s\"."
+msgstr "Te \"%(path)s\" s’u gjet dot figurë teme për \"%(type)s\""
 
 #: src/messages/manifestjson.js:330
 msgid "Corrupted theme image file"
 msgstr "Kartelë figure teme e dëmtuar"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "Kartela e pritshme e ikonës te \"%(path)s\" është e dëmtuar"
+msgstr "Kartela e figurës së temës te \"%(path)s\" është e dëmtuar"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
@@ -382,11 +372,11 @@ msgstr "Leje e panjohur."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "Kartela e figurës së temës ka një zgjerim të pambuluar kartelash"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "Kartela e figurës së temës te \"%(path)s\" ka një zgjerim të pambuluar kartelash"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -394,11 +384,11 @@ msgstr "Për më tepër të dhëna, shihni https://mzl.la/1R1n1t0 (Dokumentim te
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "Kartela e figurës së temës ka një lloj MIME të pambuluar"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "Kartela e figurës së temës te \"%(path)s\" ka një lloj MIME \"%(mime)s\" të pambuluar"
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
