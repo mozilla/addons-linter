@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-10-07 10:12+0000\n"
+"PO-Revision-Date: 2019-10-07 10:15+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: none\n"
 "Language: sq\n"
@@ -392,11 +392,11 @@ msgstr "Kartela e figurës së temës te \"%(path)s\" ka një lloj MIME \"%(mime
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "Lloji MIME i kartelës së figurës së temës nuk përputhet me zgjatimin e vet të kartelës"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "Zgjatimi i kartelës së figurës së temës te \"%(path)s\" nuk përputhet me llojin e vet aktual MIME \"%(mime)s\""
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
@@ -428,7 +428,7 @@ msgstr "\"manifest_version\" te manifest.json s’është vlerë e vlefshme"
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Zë manifesti i pambuluar nga versioni minimum i specifikuar për Firefox-in"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -436,15 +436,15 @@ msgstr "Për më tepër të dhëna, shihni https://mzl.la/20PenXl (Dokumentim te
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Leje e pambuluar nga versioni minimum i specifikuar për Firefox-in"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Zë manifesti i pambuluar nga versioni minimum i specifikuar për Firefox-in për Android"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Leje e pambuluar nga versioni minimum i specifikuar për Firefox-in për Android"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
