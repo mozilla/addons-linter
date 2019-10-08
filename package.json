@@ -120,6 +120,7 @@
     "raw-loader": "3.1.0",
     "shelljs": "0.8.3",
     "sinon": "7.5.0",
+    "snyk": "1.232.0",
     "tar": "5.0.5",
     "tar-fs": "2.0.0",
     "tmp-promise": "2.0.2",
