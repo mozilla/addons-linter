@@ -128,7 +128,7 @@
     "webpack-cli": "3.3.9"
   },
   "optionalDependencies": {
-    "fsevents": "2.1.0"
+    "fsevents": "2.1.1"
   },
   "snyk": true
 }
