@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-09-03 15:25+0000\n"
+"PO-Revision-Date: 2019-10-19 18:57+0000\n"
 "Last-Translator: Martijn Dekker <martijn@inlv.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -416,7 +416,7 @@ msgstr "Icones debe ser uno de JPG/JPEG, WebP, GIF, PNG o SVG."
 
 #: src/messages/manifestjson.js:422
 msgid "Empty language directory"
-msgstr "Plica del linguas vacue"
+msgstr "Directorio de linguas vacue"
 
 #: src/messages/manifestjson.js:424
 msgid "messages.json file missing in \"%(path)s\""
