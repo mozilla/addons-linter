@@ -50,7 +50,7 @@
     "eslint": "5.16.0",
     "eslint-plugin-no-unsafe-innerhtml": "1.0.16",
     "eslint-visitor-keys": "1.1.0",
-    "espree": "6.1.1",
+    "espree": "6.1.2",
     "esprima": "4.0.1",
     "first-chunk-stream": "3.0.0",
     "fluent-syntax": "0.13.0",
