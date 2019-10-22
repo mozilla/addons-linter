@@ -60,7 +60,6 @@
     "mdn-browser-compat-data": "0.0.97",
     "os-locale": "4.0.0",
     "pino": "5.13.5",
-    "po2json": "0.4.5",
     "postcss": "7.0.18",
     "probe-image-size": "5.0.0",
     "regenerator-runtime": "0.13.3",
@@ -73,7 +72,6 @@
     "whatwg-url": "7.1.0",
     "yargs": "14.0.0",
     "yauzl": "2.10.0",
-    "snyk": "1.236.1"
   },
   "devDependencies": {
     "@babel/cli": "7.6.4",
@@ -117,6 +115,7 @@
     "markdown-it-emoji": "1.4.0",
     "prettier": "1.18.2",
     "pretty-quick": "2.0.0",
+    "po2json": "0.4.5",
     "raw-loader": "3.1.0",
     "shelljs": "0.8.3",
     "sinon": "7.5.0",
