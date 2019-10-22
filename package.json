@@ -71,7 +71,7 @@
     "upath": "1.2.0",
     "whatwg-url": "7.1.0",
     "yargs": "14.0.0",
-    "yauzl": "2.10.0",
+    "yauzl": "2.10.0"
   },
   "devDependencies": {
     "@babel/cli": "7.6.4",
