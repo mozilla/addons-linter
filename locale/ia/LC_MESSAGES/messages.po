@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-10-19 18:57+0000\n"
+"PO-Revision-Date: 2019-10-22 00:33+0000\n"
 "Last-Translator: Martijn Dekker <martijn@inlv.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -324,7 +324,7 @@ msgstr "Iste additivo ha contento prohibite."
 
 #: src/messages/manifestjson.js:26
 msgid "The permission type is unsupported."
-msgstr "Iste typo de permisso non es supportate."
+msgstr "Iste typo de permission non es supportate."
 
 #: src/messages/manifestjson.js:265
 msgid "Icons must be square."
@@ -368,7 +368,7 @@ msgstr "File imagine de thema corrupte a \"%(path)s\" es corrupte"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
-msgstr "Permisso incognite."
+msgstr "Permission incognite."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
@@ -436,7 +436,7 @@ msgstr "Vide https://mzl.la/20PenXl (MDN Docs) pro altere informationes."
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr "Permisso non supportate per le minime version de Firefox specificate"
+msgstr "Permission non supportate per le version minime de Firefox specificate"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
@@ -444,7 +444,7 @@ msgstr "Clave del file manifesto non supportate per le minime version specificat
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr "Permisso non supportate per le minimo specificate version de Firefox pro Android"
+msgstr "Permission non supportate per le version minime specificate de Firefox pro Android"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
