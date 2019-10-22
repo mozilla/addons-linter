@@ -44,7 +44,7 @@
     "cheerio": "1.0.0-rc.3",
     "columnify": "1.5.4",
     "common-tags": "1.8.0",
-    "deepmerge": "4.1.1",
+    "deepmerge": "4.2.0",
     "dispensary": "0.44.0",
     "es6-promisify": "6.0.2",
     "eslint": "5.16.0",
