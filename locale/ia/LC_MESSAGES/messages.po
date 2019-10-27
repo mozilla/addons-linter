@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-10-27 22:12+0000\n"
+"PO-Revision-Date: 2019-10-27 22:13+0000\n"
 "Last-Translator: Martijn Dekker <martijn@inlv.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -212,7 +212,7 @@ msgstr "Le nomine del spatio reservate contine characteres non valide"
 
 #: src/messages/locale-messagesjson.js:42
 msgid "Placeholder is missing the content property"
-msgstr "Le nomine de signa-loco contine characteres non valide"
+msgstr "Le spatio reservate non ha le proprietate de contento"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
