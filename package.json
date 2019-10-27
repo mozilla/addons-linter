@@ -101,7 +101,7 @@
     "eslint-config-amo": "1.24.0",
     "eslint-config-prettier": "6.4.0",
     "eslint-plugin-async-await": "0.0.0",
-    "eslint-plugin-jest": "22.20.0",
+    "eslint-plugin-jest": "22.21.0",
     "eslint-plugin-prettier": "3.1.1",
     "eslint-plugin-promise": "4.2.1",
     "gfm.css": "1.1.2",
