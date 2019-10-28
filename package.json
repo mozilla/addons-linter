@@ -60,7 +60,7 @@
     "mdn-browser-compat-data": "0.0.97",
     "os-locale": "4.0.0",
     "pino": "5.13.5",
-    "postcss": "7.0.18",
+    "postcss": "7.0.21",
     "probe-image-size": "5.0.0",
     "regenerator-runtime": "0.13.3",
     "relaxed-json": "1.0.3",
@@ -71,7 +71,8 @@
     "upath": "1.2.0",
     "whatwg-url": "7.1.0",
     "yargs": "14.0.0",
-    "yauzl": "2.10.0"
+    "yauzl": "2.10.0",
+    "snyk": "1.239.0"
   },
   "devDependencies": {
     "@babel/cli": "7.6.4",
@@ -97,9 +98,9 @@
     "comment-json": "2.2.0",
     "doctoc": "1.4.0",
     "eslint-config-amo": "1.24.0",
-    "eslint-config-prettier": "6.4.0",
+    "eslint-config-prettier": "6.5.0",
     "eslint-plugin-async-await": "0.0.0",
-    "eslint-plugin-jest": "22.20.0",
+    "eslint-plugin-jest": "23.0.0",
     "eslint-plugin-prettier": "3.1.1",
     "eslint-plugin-promise": "4.2.1",
     "gfm.css": "1.1.2",
@@ -119,7 +120,6 @@
     "raw-loader": "3.1.0",
     "shelljs": "0.8.3",
     "sinon": "7.5.0",
-    "snyk": "1.236.1",
     "tar": "5.0.5",
     "tar-fs": "2.0.0",
     "tmp-promise": "2.0.2",
