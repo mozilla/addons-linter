@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-10-22 00:33+0000\n"
+"PO-Revision-Date: 2019-10-27 22:13+0000\n"
 "Last-Translator: Martijn Dekker <martijn@inlv.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -200,19 +200,19 @@ msgstr "Nomine de catena reservate a un message predefinite"
 
 #: src/messages/locale-messagesjson.js:29
 msgid "Placeholder for message is missing"
-msgstr "Signa-loco pro messages mancante"
+msgstr "Manca un spatio reservate del message"
 
 #: src/messages/locale-messagesjson.js:30
 msgid "A placeholder used in the message is not defined."
-msgstr "Un signa-loco usate in le message non es definite."
+msgstr "Un spatio reservate usate in le message non es definite."
 
 #: src/messages/locale-messagesjson.js:35
 msgid "Placeholder name contains invalid characters"
-msgstr "Le nomine de signa-loco contine characteres non valide"
+msgstr "Le nomine del spatio reservate contine characteres non valide"
 
 #: src/messages/locale-messagesjson.js:42
 msgid "Placeholder is missing the content property"
-msgstr "Le nomine de signa-loco contine characteres non valide"
+msgstr "Le spatio reservate non ha le proprietate de contento"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
