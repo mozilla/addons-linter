@@ -8,11 +8,6 @@ global.sinon.createStubInstance = realSinon.createStubInstance;
 global.sinon.format = realSinon.format;
 global.sinon.assert = realSinon.assert;
 
-if (process.env.APPVEYOR) {
-  // Set an higher timeout while the tests are running on appveyor CI jobs.
-  jest.setTimeout(30000);
-}
-
 // mock the cli module for every test (the ones that needs to use the real
 // module may use jest.unmock, e.g. as in test.cli.js),
 // See #1762 for a rationale.
