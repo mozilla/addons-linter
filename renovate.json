@@ -1,4 +1,8 @@
 {
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
   "timezone": "UTC",
   "extends": [
     "config:base",
@@ -16,5 +20,6 @@
       ],
       "rangeStrategy": "pin"
     }
-  ]
+  ],
+  "stabilityDays": 7
 }
