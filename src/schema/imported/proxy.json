@@ -1,6 +1,6 @@
 {
   "id": "proxy",
-  "description": "Use the browser.proxy API to register proxy scripts in Firefox. Proxy scripts in Firefox are proxy auto-config files with extra contextual information and support for additional return types.",
+  "description": "Provides access to global proxy settings for Firefox and proxy event listeners to handle dynamic proxy implementations.",
   "permissions": [
     "proxy"
   ],
@@ -16,44 +16,6 @@
       ]
     }
   },
-  "functions": [
-    {
-      "name": "register",
-      "type": "function",
-      "deprecated": "proxy.register has been deprecated and will be removed in Firefox 71.",
-      "description": "Registers the proxy script for the extension.",
-      "async": true,
-      "parameters": [
-        {
-          "name": "url",
-          "type": "string",
-          "format": "strictRelativeUrl"
-        }
-      ]
-    },
-    {
-      "name": "unregister",
-      "type": "function",
-      "deprecated": "proxy.unregister has been deprecated and will be removed in Firefox 71.",
-      "description": "Unregisters the proxy script for the extension.",
-      "async": true,
-      "parameters": []
-    },
-    {
-      "name": "registerProxyScript",
-      "type": "function",
-      "deprecated": "proxy.registerProxyScript has been deprecated and will be removed in Firefox 71.",
-      "description": "Registers the proxy script for the extension. This is an alias for proxy.register.",
-      "async": true,
-      "parameters": [
-        {
-          "name": "url",
-          "type": "string",
-          "format": "strictRelativeUrl"
-        }
-      ]
-    }
-  ],
   "events": [
     {
       "name": "onRequest",
@@ -117,10 +79,6 @@
               "type": "number",
               "description": "The time when this signal is triggered, in milliseconds since the epoch."
             },
-            "ip": {
-              "type": "string",
-              "description": "The server IP address that the request was actually sent to. Note that it may be a literal IPv6 address."
-            },
             "fromCache": {
               "type": "boolean",
               "description": "Indicates if this response was fetched from disk cache."
@@ -134,6 +92,16 @@
                   "description": "The HTTP request headers that are going to be sent out with this request."
                 }
               ]
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "webRequest#/types/UrlClassification"
+                },
+                {
+                  "description": "Url classification if the request has been classified."
+                }
+              ]
             }
           },
           "required": [
@@ -145,7 +113,8 @@
             "tabId",
             "type",
             "timeStamp",
-            "fromCache"
+            "fromCache",
+            "urlClassification"
           ]
         }
       ],
