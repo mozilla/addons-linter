@@ -72,7 +72,7 @@
     "whatwg-url": "7.1.0",
     "yargs": "14.0.0",
     "yauzl": "2.10.0",
-    "snyk": "1.239.0"
+    "snyk": "1.239.3"
   },
   "devDependencies": {
     "@babel/cli": "7.6.4",
