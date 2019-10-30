@@ -1,6 +1,6 @@
 {
   "name": "addons-linter",
-  "version": "1.15.2",
+  "version": "1.15.3",
   "description": "Mozilla Add-ons Linter",
   "main": "dist/addons-linter.js",
   "bin": {
@@ -45,7 +45,7 @@
     "columnify": "1.5.4",
     "common-tags": "1.8.0",
     "deepmerge": "4.2.2",
-    "dispensary": "0.44.0",
+    "dispensary": "0.45.0",
     "es6-promisify": "6.0.2",
     "eslint": "5.16.0",
     "eslint-plugin-no-unsafe-innerhtml": "1.0.16",
