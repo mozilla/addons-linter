@@ -124,7 +124,7 @@
     "tar-fs": "2.0.0",
     "tmp-promise": "2.0.2",
     "webpack": "4.41.2",
-    "webpack-cli": "3.3.9"
+    "webpack-cli": "3.3.10"
   },
   "optionalDependencies": {
     "fsevents": "2.1.1"
