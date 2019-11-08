@@ -22,10 +22,7 @@
     "prettier": "prettier --write '**'",
     "prettier-dev": "pretty-quick --branch master",
     "publish-rules": "scripts/build-rules && cp node_modules/gfm.css/gfm.css docs/html/gfm.css && scripts/publish-rules",
-    "gen-contributing-toc": "doctoc CONTRIBUTING.md",
-    "snyk-protect": "snyk protect",
-    "prepublishOnly": "npm run snyk-protect",
-    "prepare": "npm run snyk-protect"
+    "gen-contributing-toc": "doctoc CONTRIBUTING.md"
   },
   "repository": {
     "type": "git",
@@ -65,14 +62,13 @@
     "regenerator-runtime": "0.13.3",
     "relaxed-json": "1.0.3",
     "semver": "6.3.0",
-    "source-map-support": "0.5.15",
+    "source-map-support": "0.5.16",
     "strip-bom-stream": "4.0.0",
     "tosource": "1.0.0",
     "upath": "1.2.0",
     "whatwg-url": "7.1.0",
     "yargs": "14.0.0",
-    "yauzl": "2.10.0",
-    "snyk": "1.239.3"
+    "yauzl": "2.10.0"
   },
   "devDependencies": {
     "@babel/cli": "7.6.4",
@@ -124,10 +120,9 @@
     "tar-fs": "2.0.0",
     "tmp-promise": "2.0.2",
     "webpack": "4.41.2",
-    "webpack-cli": "3.3.9"
+    "webpack-cli": "3.3.10"
   },
   "optionalDependencies": {
     "fsevents": "2.1.1"
-  },
-  "snyk": true
+  }
 }

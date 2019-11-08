@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-10-27 22:13+0000\n"
+"PO-Revision-Date: 2019-11-01 03:00+0000\n"
 "Last-Translator: Martijn Dekker <martijn@inlv.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -220,7 +220,7 @@ msgstr "Catena de traduction mancante del proprietates del message"
 
 #: src/messages/locale-messagesjson.js:8
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "Nulle proprietate message \"message\" es definite a un catena (https://mzl.la/2DSBTjA)."
+msgstr "Nulle proprietate de message \"message\" es definite pro un catena (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:103
 msgid "\"update_url\" is not allowed."
@@ -308,11 +308,11 @@ msgstr "Un objecto dictionarios ha essite definite in le file manifesto, ma illo
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr "Le file manifesto contine un dictionario ma nulle id proprietate."
+msgstr "Le manifesto contine un dictionario ma nulle proprietate id."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr "Un dictionario ha essite trovate in le file manifesto, ma illo habeva nulle id stabilite."
+msgstr "Un dictionario ha essite trovate in le manifesto, ma sin id definite."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
