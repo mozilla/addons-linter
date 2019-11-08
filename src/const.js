@@ -158,6 +158,7 @@ export const DEPRECATED_JAVASCRIPT_APIS = {
   'proxy.register': 'DEPRECATED_API',
   'proxy.unregister': 'DEPRECATED_API',
   'proxy.onProxyError': 'DEPRECATED_API',
+  'proxy.registerProxyScript': 'DEPRECATED_API',
 };
 
 // A list of magic numbers that we won't allow.
