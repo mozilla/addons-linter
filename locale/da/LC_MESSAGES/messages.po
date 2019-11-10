@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2018-09-19 20:39+0000\n"
-"Last-Translator: Jakob Kappel <jakobkpetersen@gmail.com>\n"
+"PO-Revision-Date: 2019-11-10 15:36+0000\n"
+"Last-Translator: Joergen <joergenr@stofanet.dk>\n"
 "Language-Team: none\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: src/linter.js:119
 msgid "Validation Summary:"
-msgstr ""
+msgstr "Valideringsoversigt:"
 
 #: src/linter.js:138
 msgid "Code"
@@ -44,31 +44,31 @@ msgstr "Kolonne"
 
 #: src/messages/css.js:15
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Ugyldig indlejring af selektorer fundet"
 
 #: src/messages/css.js:8
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "Der opstod en CSS-syntaksfejl"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
-msgstr ""
+msgstr "FTL er ikke gyldig."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "Din FTL-fil kunne ikke tolkes."
 
 #: src/messages/html.js:14
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Eksterne scripts er ikke tilladt i henhold til politikken for tilføjelser."
 
 #: src/messages/html.js:7
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Inline-scripts er blokeret som standard"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
-msgstr ""
+msgstr "Kendt JS-bibliotek detekteret"
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
@@ -76,68 +76,67 @@ msgstr "{{api}} er ikke understøttet"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "Denne API er ikke blevet implementeret af Firefox."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener blev kaldt med truthy fjerde argument."
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} understøttes ikke i Firefox {{minVersion}}"
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr ""
+msgstr "Denne API er ikke implementeret af den angivne minimumsversion af Firefox"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} understøttes ikke i Firefox til Android version {{minVersion}}"
 
 #: src/messages/javascript.js:180
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "Denne API er ikke implementeret af den angivne minimumsversion af Firefox til Android"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Indholds-scriptfilen blev ikke fundet."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Indholds-scriptfilen blev ikke fundet"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Indholds-scriptfilens navn bør ikke være tomt."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Indholds-scriptfilens navn bør ikke være tomt"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "JavaScript-syntaksfejl"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Uventet global blev anvendt som argument"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Brug af document.write frarådes kraftigt."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "Forbudt tredjeparts JS-bibliotek"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Ikke-anbefalet tredjeparts JS-bibliotek"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "JSON indeholder block-kommentarer."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
@@ -145,23 +144,23 @@ msgstr ""
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "Din JSON er ikke gyldig."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "Din JSON-fil kunne ikke fortolkes."
 
 #: src/messages/layout.js:17
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "Vi kunne ikke pakke zip-filen ud."
 
 #: src/messages/layout.js:22
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "manifest.json blev ikke fundet"
 
 #: src/messages/layout.js:30
 msgid "File is too large to parse."
-msgstr ""
+msgstr "Filen er for stor til at kunne fortolkes."
 
 #: src/messages/layout.js:39
 msgid "Hidden file flagged"
@@ -220,8 +219,7 @@ msgid "Translation string is missing the message property"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:103
@@ -277,14 +275,11 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr ""
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:207
@@ -292,8 +287,7 @@ msgid "A dictionary file defined in the manifest could not be found."
 msgstr ""
 
 #: src/messages/manifestjson.js:211
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:223
@@ -301,8 +295,7 @@ msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
 #: src/messages/manifestjson.js:233
@@ -394,8 +387,7 @@ msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:375
@@ -403,9 +395,7 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:393
@@ -449,14 +439,11 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:58
