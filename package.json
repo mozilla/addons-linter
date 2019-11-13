@@ -51,7 +51,7 @@
     "esprima": "4.0.1",
     "first-chunk-stream": "3.0.0",
     "fluent-syntax": "0.13.0",
-    "glob": "7.1.5",
+    "glob": "7.1.6",
     "is-mergeable-object": "1.1.1",
     "jed": "1.1.1",
     "mdn-browser-compat-data": "0.0.98",
