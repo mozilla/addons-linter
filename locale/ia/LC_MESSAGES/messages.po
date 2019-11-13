@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-11-01 03:00+0000\n"
+"PO-Revision-Date: 2019-11-13 08:37+0000\n"
 "Last-Translator: Martijn Dekker <martijn@inlv.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -160,7 +160,7 @@ msgstr "manifest.json non esseva trovate"
 
 #: src/messages/layout.js:30
 msgid "File is too large to parse."
-msgstr "File troppo grande pro ser analysate."
+msgstr "Le file es troppo grande pro esser analysate."
 
 #: src/messages/layout.js:39
 msgid "Hidden file flagged"
