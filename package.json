@@ -56,7 +56,7 @@
     "jed": "1.1.1",
     "mdn-browser-compat-data": "0.0.98",
     "os-locale": "4.0.0",
-    "pino": "5.13.5",
+    "pino": "5.13.6",
     "postcss": "7.0.21",
     "probe-image-size": "5.0.0",
     "regenerator-runtime": "0.13.3",
