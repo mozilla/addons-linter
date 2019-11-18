@@ -93,7 +93,7 @@
     "codecov": "3.6.1",
     "comment-json": "2.2.0",
     "doctoc": "1.4.0",
-    "eslint-config-amo": "1.25.0",
+    "eslint-config-amo": "1.27.0",
     "eslint-config-prettier": "6.5.0",
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-jest": "23.0.2",
