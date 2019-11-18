@@ -6,8 +6,7 @@
   "timezone": "UTC",
   "extends": [
     "config:base",
-    ":maintainLockFilesWeekly",
-    ":prNotPending"
+    ":maintainLockFilesWeekly"
   ],
   "lockFileMaintenance": {
     "enabled": true,
