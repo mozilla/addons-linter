@@ -23,6 +23,6 @@
   "stabilityDays": 7,
   "node": {
     "enabled": true,
-    "supportPolicy": ["lts_latest", "current"]
+    "supportPolicy": ["lts"]
   }
 }
