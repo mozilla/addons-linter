@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-11-13 08:37+0000\n"
+"PO-Revision-Date: 2019-11-23 23:32+0000\n"
 "Last-Translator: Martijn Dekker <martijn@inlv.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -60,7 +60,7 @@ msgstr "Tu file FTL non pote ser analysate."
 
 #: src/messages/html.js:14
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr "Como pro le politicas del additivos non es consentite scripts remote."
+msgstr "Le scripts remote non es permittite per le politicas concernente le additivos."
 
 #: src/messages/html.js:7
 msgid "Inline scripts blocked by default"
@@ -140,7 +140,7 @@ msgstr "Tu JSON contine commentos in bloco."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr "Le claves duplicate non es consentite in le files JSON."
+msgstr "Le claves duplicate non es permittite in le files JSON."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
@@ -224,7 +224,7 @@ msgstr "Nulle proprietate de message \"message\" es definite pro un catena (http
 
 #: src/messages/manifestjson.js:103
 msgid "\"update_url\" is not allowed."
-msgstr "\"update_url\" non es consentite."
+msgstr "\"update_url\" non es permittite."
 
 #: src/messages/manifestjson.js:113
 msgid "The \"update_url\" property is not used by Firefox."
