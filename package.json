@@ -7,7 +7,7 @@
     "addons-linter": "bin/addons-linter"
   },
   "engines": {
-    "node": "13.2.0"
+    "node": ">=10.13"
   },
   "scripts": {
     "build": "webpack --verbose --bail --display-error-details --progress --colors --config webpack.config.js",
