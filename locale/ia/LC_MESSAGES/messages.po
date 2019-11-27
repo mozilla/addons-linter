@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-11-23 23:32+0000\n"
+"PO-Revision-Date: 2019-11-27 18:03+0000\n"
 "Last-Translator: Martijn Dekker <martijn@inlv.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -164,7 +164,7 @@ msgstr "Le file es troppo grande pro esser analysate."
 
 #: src/messages/layout.js:39
 msgid "Hidden file flagged"
-msgstr "File occulte signalate"
+msgstr "File celate signalate"
 
 #: src/messages/layout.js:48
 msgid "Flagged filename found"
