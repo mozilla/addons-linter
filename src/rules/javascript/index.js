@@ -19,5 +19,6 @@ module.exports = {
     'webextension-api-compat': require('./webextension-api-compat').default,
     'webextension-api-compat-android': require('./webextension-api-compat-android')
       .default,
+    'message-exists': require('./message-exists').default,
   },
 };

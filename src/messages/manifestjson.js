@@ -522,3 +522,18 @@ export function permissionFirefoxAndroidUnsupportedByMinVersion(
     file: MANIFEST_JSON,
   };
 }
+
+const MISSING_MESSAGE_IN_DEFAULT_LOCALE = 'MISSING_MESSAGE_IN_DEFAULT_LOCALE';
+export function missingMessageInDefaultLocale({ message, defaultLocale }) {
+  return {
+    code: MISSING_MESSAGE_IN_DEFAULT_LOCALE,
+    message: i18n._('Message can not be translated in default locale'),
+    description: i18n.sprintf(
+      i18n._(
+        'Message "%(message)s" not found for default locale "(%defaultLocale)s"'
+      ),
+      { message, defaultLocale }
+    ),
+    file: MANIFEST_JSON,
+  };
+}

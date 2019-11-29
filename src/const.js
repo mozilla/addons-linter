@@ -24,6 +24,7 @@ export const ESLINT_RULE_MAPPING = {
   'content-scripts-file-absent': ESLINT_ERROR,
   'webextension-api-compat': ESLINT_WARNING,
   'webextension-api-compat-android': ESLINT_WARNING,
+  'message-exists': ESLINT_WARNING,
   ...EXTERNAL_RULE_MAPPING,
 };
 
@@ -209,3 +210,19 @@ export const MESSAGE_PLACEHOLDER_REGEXP = '\\$([a-zA-Z0-9_@]+)\\$';
 // yauzl should trow error with this message in case of corrupt zip file
 export const ZIP_LIB_CORRUPT_FILE_ERROR =
   'end of central directory record signature not found';
+
+// Localized values of manifest properties need to match this regexp.
+// This should match
+// https://searchfox.org/mozilla-central/rev/42c2ecdc429115c32e6bcb78bf087a228a051044/toolkit/components/extensions/ExtensionCommon.jsm#2010
+// Note that fluent based localization also allows dashes.
+export const MANFIEST_MESSAGE_NAME_REGEXP = '__MSG_([A-Za-z0-9@_]+?)__';
+
+// This should match https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Predefined_messages
+export const PREDEFINED_MESSAGES = [
+  '@@extension_id',
+  '@@ui_locale',
+  '@@bidi_dir',
+  '@@bidi_reversed_dir',
+  '@@bidi_start_edge',
+  '@@bidi_end_edge',
+];

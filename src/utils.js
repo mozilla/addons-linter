@@ -1,4 +1,5 @@
 import url from 'url';
+import nodePath from 'path';
 
 import upath from 'upath';
 import { URL } from 'whatwg-url';
@@ -8,7 +9,14 @@ import { oneLine } from 'common-tags';
 import osLocale from 'os-locale';
 
 import log from 'logger';
-import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
+import {
+  PACKAGE_TYPES,
+  LOCAL_PROTOCOLS,
+  MANFIEST_MESSAGE_NAME_REGEXP,
+  PREDEFINED_MESSAGES,
+  MESSAGES_JSON,
+  LOCALES_DIRECTORY,
+} from 'const';
 
 /* global nodeRequire, localesRoot */
 
@@ -444,4 +452,39 @@ export function createCompatibilityRule(
     };
   }
   return {};
+}
+
+export function getMessagesInFile(rawFile) {
+  const messageNameRegexp = new RegExp(MANFIEST_MESSAGE_NAME_REGEXP, 'g');
+  const messages = [];
+
+  let match = messageNameRegexp.exec(rawFile);
+  while (match !== null) {
+    const message = match[1];
+    const startsAt = messageNameRegexp.lastIndex - message.length;
+    messages.push({
+      message,
+      startsAt,
+    });
+    match = messageNameRegexp.exec(rawFile);
+  }
+  return messages;
+}
+
+export function getAvailableMessages(messagesJson) {
+  try {
+    return Object.keys(messagesJson).concat(PREDEFINED_MESSAGES);
+  } catch (error) {
+    return [];
+  }
+}
+
+export function getColumnAndLineFromOffset(rawFile, offset) {
+  const lines = rawFile.slice(0, offset).split('/n');
+  const line = lines.length;
+  const column = lines.pop().length;
+  return {
+    column,
+    line,
+  };
 }

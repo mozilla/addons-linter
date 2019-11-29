@@ -35,6 +35,9 @@ import {
   normalizePath,
   firefoxStrictMinVersion,
   basicCompatVersionComparison,
+  getMessagesInFile,
+  getAvailableMessages,
+  getColumnAndLineFromOffset,
 } from 'utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
@@ -476,6 +479,8 @@ export default class ManifestJSONParser extends JSONParser {
                 )
               );
               this.isValid = false;
+            } else if (langDir === this.parsedJSON.default_locale) {
+              this.validateMessagesForDefaultLocale();
             }
           }
         });
@@ -758,6 +763,34 @@ export default class ManifestJSONParser extends JSONParser {
     }
   }
 
+  validateMessagesForDefaultLocale() {
+    const availableMessages = getAvailableMessages(
+      this.io.getFile(
+        path.join(
+          LOCALES_DIRECTORY,
+          this.parsedJSON.default_locale,
+          MANIFEST_JSON
+        )
+      )
+    );
+    const messagesInManifest = getMessagesInFile(this._jsonString);
+    for (const matchInfo of messagesInManifest) {
+      if (!availableMessages.includes(matchInfo.message)) {
+        const locationInfo = getColumnAndLineFromOffset(
+          this._jsonString,
+          matchInfo.startsAt
+        );
+        this.collector.addWarning({
+          ...messages.missingMessageInDefaultLocale({
+            message: matchInfo.message,
+            defaultLocale: this.parsedJSON.default_locale,
+          }),
+          ...locationInfo,
+        });
+      }
+    }
+  }
+
   getAddonId() {
     try {
       const { id } = this.parsedJSON.applications.gecko;
@@ -779,6 +812,18 @@ export default class ManifestJSONParser extends JSONParser {
         this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.strict_min_version,
+      defaultLocale: this.parsedJSON.default_locale,
+      defaultMessagesFile:
+        this.parsedJSON.default_locale &&
+        JSON.parse(
+          this.io.getFile(
+            path.join(
+              LOCALES_DIRECTORY,
+              this.parsedJSON.default_locale,
+              MANIFEST_JSON
+            )
+          )
+        ),
     };
   }
 }

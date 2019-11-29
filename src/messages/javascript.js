@@ -187,7 +187,35 @@ export const ANDROID_INCOMPATIBLE_API = {
   ),
 };
 
+export const MESSAGE_MISSING_IN_DEFAULT_LOCALE = {
+  code: 'MESSAGE_MISSING_IN_DEFAULT_LOCALE',
+  message: null,
+  messageFormat: i18n.sprintf(
+    i18n._(
+      'Message "%(message)s" not found for default locale "%(defaultLocale)s"'
+    ),
+    {
+      message: '{{message}}',
+      defaultLocale: '{{defaultLocale}}',
+    }
+  ),
+  description: i18n._('Message can not be translated in default locale'),
+};
+
+export const MESSAGE_MISSING_PLACEHOLDER_IN_DEFAULT_LOCALE = {
+  cose: 'MESSAGE_MISSING_PLACEHOLDER_IN_DEFAULT_LOCALE',
+  message: null,
+  messageFormat: i18n._(
+    'Message "{{message}} has no placeholder {{placeholder}} in default locale "{{defaultLocale}}"'
+  ),
+  description: i18n._(
+    'Message does not use a placeholder in the default locale'
+  ),
+};
+
 export const ESLINT_OVERWRITE_MESSAGE = {
+  'message-exists': MESSAGE_MISSING_IN_DEFAULT_LOCALE,
+  'message-placeholder-exists': MESSAGE_MISSING_PLACEHOLDER_IN_DEFAULT_LOCALE,
   'no-eval': DANGEROUS_EVAL,
   'no-implied-eval': NO_IMPLIED_EVAL,
   'no-new-func': DANGEROUS_EVAL,
