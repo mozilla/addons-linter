@@ -385,6 +385,22 @@ export function basicCompatVersionComparison(versionAdded, minVersion) {
   return !Number.isNaN(asNumber) && asNumber > minVersion;
 }
 
+function firstStableVersion(supportInfo) {
+  return supportInfo.reduce((versionAdded, supportEntry) => {
+    if (
+      !Object.prototype.hasOwnProperty.call(supportEntry, 'flags') &&
+      (!versionAdded ||
+        !basicCompatVersionComparison(
+          supportEntry.version_added,
+          parseInt(versionAdded, 10)
+        ))
+    ) {
+      return supportEntry.version_added;
+    }
+    return versionAdded;
+  }, false);
+}
+
 export function isCompatible(bcd, path, minVersion, application) {
   const steps = path.split('.');
   let { api } = bcd.webextensions;
@@ -397,7 +413,11 @@ export function isCompatible(bcd, path, minVersion, application) {
   }
   // API namespace may be undocumented or not implemented, ignore in that case.
   if (api.__compat) {
-    const versionAdded = api.__compat.support[application].version_added;
+    const supportInfo = api.__compat.support[application];
+    const versionAdded = Array.isArray(supportInfo)
+      ? firstStableVersion(supportInfo)
+      : !Object.prototype.hasOwnProperty.call(supportInfo, 'flags') &&
+        supportInfo.version_added;
     return !basicCompatVersionComparison(versionAdded, minVersion);
   }
   return true;

@@ -606,4 +606,105 @@ describe('isCompatible', () => {
       )
     ).toBe(true);
   });
+
+  it('should be compatible if version is behind flag and no other version is available', () => {
+    expect(
+      isCompatible(
+        getBCD({
+          foo: {
+            __compat: {
+              support: { firefox: { flags: [], version_added: true } },
+            },
+          },
+        }),
+        'foo',
+        60,
+        'firefox'
+      )
+    ).toBe(true);
+  });
+
+  it('should be compatible if version is behind flag starting at a later release', () => {
+    expect(
+      isCompatible(
+        getBCD({
+          foo: {
+            __compat: {
+              support: { firefox: { flags: [], version_added: '61' } },
+            },
+          },
+        }),
+        'foo',
+        60,
+        'firefox'
+      )
+    ).toBe(true);
+  });
+
+  it('should be compatible with multiple support versions', () => {
+    expect(
+      isCompatible(
+        getBCD({
+          foo: {
+            __compat: {
+              support: {
+                firefox: [
+                  { version_added: '60' },
+                  { flags: [], version_added: '59' },
+                ],
+              },
+            },
+          },
+        }),
+        'foo',
+        60,
+        'firefox'
+      )
+    ).toBe(true);
+  });
+
+  it('should be incompatible with multiple support versions', () => {
+    expect(
+      isCompatible(
+        getBCD({
+          foo: {
+            __compat: {
+              support: {
+                firefox: [
+                  { version_added: '61' },
+                  { flags: [], version_added: '59' },
+                ],
+              },
+            },
+          },
+        }),
+        'foo',
+        60,
+        'firefox'
+      )
+    ).toBe(false);
+  });
+
+  it('should be compatible with oldest viable compat entry', () => {
+    expect(
+      isCompatible(
+        getBCD({
+          foo: {
+            __compat: {
+              support: {
+                firefox: [
+                  { version_added: '61' },
+                  { version_added: '60' },
+                  { flags: [], version_added: '59' },
+                ],
+              },
+            },
+          },
+        }),
+        'foo',
+        60,
+        'firefox'
+      )
+    ).toBe(true);
+  });
 });
