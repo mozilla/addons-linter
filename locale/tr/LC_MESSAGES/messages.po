@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-10-24 18:29+0000\n"
+"PO-Revision-Date: 2019-12-03 11:59+0000\n"
 "Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -87,18 +87,16 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr "{{api}} Firefox'un {{minVersion}}. sürümünde desteklenmiyor"
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Bu API Firefox'ta kullanılamamaktadır."
+msgstr "Bu API, belirtilen minimum Firefox sürümünde kullanılamamaktadır"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} Android için Firefox'un {{minVersion}}. sürümünde desteklenmiyor"
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Bu API Firefox'ta kullanılamamaktadır."
+msgstr "Bu API, belirtilen minimum Android için Firefox sürümünde kullanılamamaktadır"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -193,9 +191,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Firefox eklentilerinin sanal para kazıcıları çalıştırmasına izin verilmemektedir."
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "İşaretli dosya adı bulundu"
+msgstr "Rezerve dosya adı bulundu."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -251,9 +248,8 @@ msgid "A background script defined in the manifest could not be found."
 msgstr "Bildirgede tanımlanan içerik betiği \"%(path)s\" yolunda bulunamadı."
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "Manifest dosyasında tanımlanan bir simge paketin içinde bulunamadı."
+msgstr "Manifest dosyasında tanımlanan bir arka plan sayfası bulunamadı."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -290,9 +286,8 @@ msgid "Content script css file defined in the manifest could not be found at \"%
 msgstr "Bildirgede tanımlanan içerik betiği css dosyası \"%(path)s\" yolunda bulunamadı."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Manifest dosyasında tanımlanan bir simge paketin içinde bulunamadı."
+msgstr "Manifest dosyasında tanımlanan bir sözlük dosyası bulunamadı."
 
 #: src/messages/manifestjson.js:211
 #, fuzzy
@@ -360,9 +355,8 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Daha fazla bilgi için https://mzl.la/1R1n1t0 (MDN Docs) sayfasına bakın."
+msgstr "Daha fazla bilgi için https://mzl.la/2T11Lkc (MDN Docs) sayfasına bakın."
 
 #: src/messages/manifestjson.js:319
 #, fuzzy
