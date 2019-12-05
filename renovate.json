@@ -18,11 +18,15 @@
         "*"
       ],
       "rangeStrategy": "pin"
-    }
+    },
+    {
+      "depTypeList": ["engines"],
+      "rangeStrategy": "auto"
+    },
+
   ],
   "stabilityDays": 7,
   "node": {
-    "enabled": true,
     "supportPolicy": ["lts"]
   }
 }
