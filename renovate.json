@@ -22,8 +22,7 @@
     {
       "depTypeList": ["engines"],
       "rangeStrategy": "auto"
-    },
-
+    }
   ],
   "stabilityDays": 7,
   "node": {
