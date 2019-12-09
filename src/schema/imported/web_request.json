@@ -172,6 +172,10 @@
                   "description": "Tracking classification if the request has been classified."
                 }
               ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -182,7 +186,8 @@
             "parentFrameId",
             "tabId",
             "type",
-            "timeStamp"
+            "timeStamp",
+            "thirdParty"
           ]
         }
       ],
@@ -301,6 +306,10 @@
                   "description": "Tracking classification if the request has been classified."
                 }
               ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -311,7 +320,8 @@
             "parentFrameId",
             "tabId",
             "type",
-            "timeStamp"
+            "timeStamp",
+            "thirdParty"
           ]
         }
       ],
@@ -430,6 +440,10 @@
                   "description": "Tracking classification if the request has been classified."
                 }
               ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -440,7 +454,8 @@
             "parentFrameId",
             "tabId",
             "type",
-            "timeStamp"
+            "timeStamp",
+            "thirdParty"
           ]
         }
       ],
@@ -556,6 +571,10 @@
                   "description": "Tracking classification if the request has been classified."
                 }
               ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -568,7 +587,8 @@
             "type",
             "timeStamp",
             "statusLine",
-            "statusCode"
+            "statusCode",
+            "thirdParty"
           ]
         }
       ],
@@ -723,6 +743,10 @@
                   "description": "Tracking classification if the request has been classified."
                 }
               ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -738,7 +762,8 @@
             "challenger",
             "isProxy",
             "statusLine",
-            "statusCode"
+            "statusCode",
+            "thirdParty"
           ]
         },
         {
@@ -890,6 +915,10 @@
                   "description": "Tracking classification if the request has been classified."
                 }
               ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -903,7 +932,8 @@
             "timeStamp",
             "fromCache",
             "statusCode",
-            "statusLine"
+            "statusLine",
+            "thirdParty"
           ]
         }
       ],
@@ -1031,6 +1061,10 @@
                   "description": "Tracking classification if the request has been classified."
                 }
               ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -1045,7 +1079,8 @@
             "fromCache",
             "statusCode",
             "redirectUrl",
-            "statusLine"
+            "statusLine",
+            "thirdParty"
           ]
         }
       ],
@@ -1169,6 +1204,18 @@
                   "description": "Tracking classification if the request has been classified."
                 }
               ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
+            },
+            "requestSize": {
+              "type": "integer",
+              "description": "For http requests, the bytes transferred in the request. Only available in onCompleted."
+            },
+            "responseSize": {
+              "type": "integer",
+              "description": "For http requests, the bytes received in the request. Only available in onCompleted."
             }
           },
           "required": [
@@ -1183,7 +1230,10 @@
             "fromCache",
             "statusCode",
             "statusLine",
-            "urlClassification"
+            "urlClassification",
+            "thirdParty",
+            "requestSize",
+            "responseSize"
           ]
         }
       ],
@@ -1293,6 +1343,10 @@
                   "description": "Tracking classification if the request has been classified."
                 }
               ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -1305,7 +1359,8 @@
             "type",
             "timeStamp",
             "fromCache",
-            "error"
+            "error",
+            "thirdParty"
           ]
         }
       ],
@@ -1772,7 +1827,7 @@
               "$ref": "#/types/UrlClassificationParty"
             },
             {
-              "description": "First party classification flags if the request has been classified."
+              "description": "Classification flags if the request has been classified and it is first party."
             }
           ]
         },
@@ -1782,7 +1837,7 @@
               "$ref": "#/types/UrlClassificationParty"
             },
             {
-              "description": "Third party classification flags if the request has been classified."
+              "description": "Classification flags if the request has been classified and it or its window hierarchy is third party."
             }
           ]
         }
