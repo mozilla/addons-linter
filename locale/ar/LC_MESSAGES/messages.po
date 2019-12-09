@@ -1,18 +1,17 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2018-07-22 16:10+0000\n"
+"PO-Revision-Date: 2019-12-09 17:30+0000\n"
 "Last-Translator: صفا الفليج <safa1996alfulaij@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
 "X-Generator: Pontoon\n"
 
 #: src/linter.js:119
@@ -98,8 +97,7 @@ msgstr ""
 
 #: src/messages/javascript.js:180
 #, fuzzy
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "لم يُنفّذ فَيَرفُكس واجهة API هذه."
 
 #: src/messages/javascript.js:23
@@ -223,8 +221,7 @@ msgid "Translation string is missing the message property"
 msgstr "سلسلة الترجمة النصية ناقصة في صفة الرسالة/message"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr "لم تُضبط صفة الرسالة ”message“ للسلسلة النصية (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:103
@@ -233,7 +230,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:113
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "لا يستعمل Firefox الصفة ”update_url“."
 
 #: src/messages/manifestjson.js:122
 msgid "\"strict_max_version\" not required."
@@ -284,14 +281,11 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr "تعذر العثور على ملف سكربت المحتوى."
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:207
@@ -300,8 +294,7 @@ msgid "A dictionary file defined in the manifest could not be found."
 msgstr "تعذر العثور على ملف سكربت المحتوى."
 
 #: src/messages/manifestjson.js:211
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:223
@@ -309,8 +302,7 @@ msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
 #: src/messages/manifestjson.js:233
@@ -403,8 +395,7 @@ msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:375
@@ -412,9 +403,7 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:393
@@ -458,14 +447,11 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:58
@@ -478,23 +464,23 @@ msgstr ""
 
 #: src/messages/manifestjson.js:77
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "طالِع http://mzl.la/1STmr48 (وثائق MDN) لمعلومات أكثر."
 
 #: src/messages/manifestjson.js:8
 msgid "The field is required."
-msgstr ""
+msgstr "هذا الحقل مطلوب."
 
 #: src/messages/manifestjson.js:85
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "يجب أن تكون الصفة ”version“ سلسلة نصية."
 
 #: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "طالِع http://mzl.la/1kXIADa (وثائق MDN) لمعلومات أكثر."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "تستعمل صفة ”version“ نسقًا مخصّصًا لمتصفّح Firefox."
 
 #~ msgid "Violation of Mozilla conditions of use."
 #~ msgstr "انتُهكت شروط استخدام موزيلا."
