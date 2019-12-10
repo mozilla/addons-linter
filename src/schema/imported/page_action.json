@@ -279,6 +279,17 @@
               "name": "tab"
             }
           ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/OnClickData"
+            },
+            {
+              "name": "info",
+              "optional": true
+            }
+          ]
         }
       ]
     }
@@ -341,6 +352,33 @@
       "additionalProperties": {},
       "postprocess": "convertImageDataToURL",
       "description": "Pixel data for an image. Must be an ImageData object (for example, from a <code>canvas</code> element)."
+    },
+    "OnClickData": {
+      "type": "object",
+      "description": "Information sent when a page action is clicked.",
+      "properties": {
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Shift",
+              "Alt",
+              "Command",
+              "Ctrl",
+              "MacCtrl"
+            ]
+          },
+          "description": "An array of keyboard modifiers that were held while the menu item was clicked."
+        },
+        "button": {
+          "type": "integer",
+          "description": "An integer value of button by which menu item was clicked."
+        }
+      },
+      "required": [
+        "modifiers"
+      ]
     }
   }
 }

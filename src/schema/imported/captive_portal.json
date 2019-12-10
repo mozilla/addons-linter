@@ -4,6 +4,18 @@
   "permissions": [
     "captivePortal"
   ],
+  "properties": {
+    "canonicalURL": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "Return the canonical captive-portal detection URL. Read-only."
+        }
+      ]
+    }
+  },
   "functions": [
     {
       "name": "getState",

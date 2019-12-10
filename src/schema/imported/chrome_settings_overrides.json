@@ -30,7 +30,7 @@
                 },
                 "favicon_url": {
                   "type": "string",
-                  "format": "url",
+                  "format": "relativeUrl",
                   "preprocess": "localize"
                 },
                 "suggest_url": {
@@ -126,7 +126,8 @@
                       },
                       "pref": {
                         "type": "string",
-                        "description": "The preference to retreive the value from."
+                        "description": "The preference to retrieve the value from.",
+                        "preprocess": "localize"
                       },
                       "purpose": {
                         "type": "string",

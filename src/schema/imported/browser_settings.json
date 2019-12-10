@@ -45,6 +45,16 @@
         }
       ]
     },
+    "ftpProtocolEnabled": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "This boolean setting controls whether the FTP protocol is enabled."
+        }
+      ]
+    },
     "homepageOverride": {
       "allOf": [
         {

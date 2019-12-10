@@ -178,9 +178,26 @@
                   }
                 },
                 "content_security_policy": {
-                  "type": "string",
-                  "format": "contentSecurityPolicy",
-                  "onError": "warn"
+                  "onError": "warn",
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "format": "contentSecurityPolicy"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "extension_pages": {
+                          "type": "string",
+                          "format": "contentSecurityPolicy"
+                        },
+                        "content_scripts": {
+                          "type": "string",
+                          "format": "contentSecurityPolicy"
+                        }
+                      }
+                    }
+                  ]
                 },
                 "permissions": {
                   "type": "array",
