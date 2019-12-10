@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-12-09 17:30+0000\n"
+"PO-Revision-Date: 2019-12-10 04:29+0000\n"
 "Last-Translator: صفا الفليج <safa1996alfulaij@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
@@ -134,7 +134,7 @@ msgstr "مكتبة جافاسكربت من طرف ثالث محجوبة"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "مكتبة جافاسكربت من طرف ثالث غير منصوح بها"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -238,11 +238,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:141
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
+msgstr "لم توجد إحدى الأيقونات المعرّفة في البيان داخل الحزمة."
 
 #: src/messages/manifestjson.js:145
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "لم توجد الأيقونة في ”%(path)s“."
 
 #: src/messages/manifestjson.js:160
 #, fuzzy
@@ -256,15 +256,15 @@ msgstr "تعذر العثور على ملف سكربت المحتوى."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "لم يوجد سكربت الخلفية في ”%(path)s“."
 
 #: src/messages/manifestjson.js:169
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "لم توجد صفحة الخلفية في ”%(path)s“."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
-msgstr ""
+msgstr "هذا الحقل غير صالح."
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
@@ -323,31 +323,31 @@ msgstr ""
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "وُجد محتوى محظور في الإضافة."
 
 #: src/messages/manifestjson.js:257
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "في هذه الإضافة محتوًى محظور."
 
 #: src/messages/manifestjson.js:26
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "نوع التصريح غير مدعوم."
 
 #: src/messages/manifestjson.js:265
 msgid "Icons must be square."
-msgstr ""
+msgstr "يجب أن تكون الأيقونات مربعة الشكل."
 
 #: src/messages/manifestjson.js:266
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "يجب أن تكون الأيقونة في ”%(path)s“ مربعة الشكل."
 
 #: src/messages/manifestjson.js:277
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "لا يتطابق مقاس الأيقونة مع البيان."
 
 #: src/messages/manifestjson.js:292
 msgid "Corrupt image file"
-msgstr ""
+msgstr "ملف الصورة معطوب"
 
 #: src/messages/manifestjson.js:294
 msgid "Expected icon file at \"%(path)s\" is corrupted"
@@ -376,23 +376,23 @@ msgstr ""
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
-msgstr ""
+msgstr "التصريح مجهول."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "لملف صورة السمة امتدادًا غير مدعوم"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "لملف صورة السمة في ”%(path)s“ امتدادًا غير مدعوم"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "طالع https://mzl.la/1R1n1t0 (وثائق MDN) لمعلومات أكثر."
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "لملف صورة السمة نوع MIME غير مدعوم"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
@@ -416,11 +416,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:411
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "امتداد الصورة غير مدعوم"
 
 #: src/messages/manifestjson.js:412
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
+msgstr "يجب أن تكون الصورة: JPG/JPEG أو WebP أو GIF أو PNG أو SVG."
 
 #: src/messages/manifestjson.js:422
 msgid "Empty language directory"
@@ -440,7 +440,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "طالع https://mzl.la/20PenXl (وثائق MDN) لمعلومات أكثر."
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -456,11 +456,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "تحتاج content_security_policy المخصّصة مراجعة أخرى."
 
 #: src/messages/manifestjson.js:76
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "يجب أن تكون الصفة ”name“ سلسلة نصية."
 
 #: src/messages/manifestjson.js:77
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
