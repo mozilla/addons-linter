@@ -20,7 +20,7 @@ const options = {
   metadata: {
     describe: 'Output only metadata as JSON',
     type: 'boolean',
-    default: 'false',
+    default: false,
   },
   pretty: {
     describe: 'Prettify JSON output',
