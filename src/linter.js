@@ -34,7 +34,7 @@ export default class Linter {
     this.config = config;
     [this.packagePath] = config._;
     this.io = null;
-    this.chalk = new chalk.constructor({ enabled: !this.config.boring });
+    this.chalk = new chalk.Instance({ enabled: !this.config.boring });
     this.collector = new Collector(config);
     this.addonMetadata = null;
     this.shouldScanFile = this.shouldScanFile.bind(this);
