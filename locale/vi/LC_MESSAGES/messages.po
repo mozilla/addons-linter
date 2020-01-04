@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-04 03:25+0000\n"
-"Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
+"PO-Revision-Date: 2019-11-25 21:32+0000\n"
+"Last-Translator: Thao NP <thaonp@amvietnam.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -136,7 +136,7 @@ msgstr "Thư viện JS của bên thứ 3 không được chấp nhận"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr "JSON của bạn chứa các bình luận (comments) bị chặn."
+msgstr "JSON của bạn chứa các bình luận (comment) bị chặn."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
