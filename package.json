@@ -103,7 +103,7 @@
     "eslint-plugin-prettier": "3.1.2",
     "eslint-plugin-promise": "4.2.1",
     "gfm.css": "1.1.2",
-    "gh-pages": "2.1.1",
+    "gh-pages": "2.2.0",
     "gunzip-maybe": "1.4.1",
     "hashish": "0.0.4",
     "jest": "24.9.0",
