@@ -1,8 +1,8 @@
 language: node_js
 sudo: false
 node_js:
-  - 'v10.18.0'
-  - 'v12.14.0'
+  - 'v10.18.1'
+  - 'v12.14.1'
 script:
   - npm run test-ci
   - node scripts/build-locales
