@@ -1,20 +1,9 @@
-const fs = require('fs');
 const path = require('path');
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 const webpack = require('webpack');
-
-const nodeModules = {};
-
-// This is to filter out node_modules as we don't want them
-// to be made part of any bundles.
-fs.readdirSync('node_modules')
-  .filter((x) => {
-    return ['.bin'].indexOf(x) === -1;
-  })
-  .forEach((mod) => {
-    nodeModules[mod] = `commonjs ${mod}`;
-  });
+// eslint-disable-next-line import/no-extraneous-dependencies
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   // Set the webpack4 mode 'none' for compatibility with the behavior
@@ -42,7 +31,11 @@ module.exports = {
       },
     ],
   },
-  externals: nodeModules,
+  externals: [
+    nodeExternals({
+      modulesFromFile: true,
+    }),
+  ],
   plugins: [
     new webpack.BannerPlugin({
       banner: 'require("source-map-support").install();',
