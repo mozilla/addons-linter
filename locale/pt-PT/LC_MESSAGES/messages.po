@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2018-12-01 22:49+0000\n"
-"Last-Translator: Rodrigo <rodrigo.mcunha@hotmail.com>\n"
+"PO-Revision-Date: 2020-01-15 01:31+0000\n"
+"Last-Translator: Cláudio Esperança <cesperanc@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_PT\n"
 "MIME-Version: 1.0\n"
@@ -84,7 +84,7 @@ msgstr "addEventListener chamado com o quarto argumento."
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} não é suportado na versão {{minVersion}} do Firefox"
 
 #: src/messages/javascript.js:169
 #, fuzzy
@@ -93,12 +93,11 @@ msgstr "Esta API ainda não foi implementada pelo Firefox."
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} não é suportado na versão {{minVersion}} do Firefox para Android"
 
 #: src/messages/javascript.js:180
 #, fuzzy
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "Esta API ainda não foi implementada pelo Firefox."
 
 #: src/messages/javascript.js:23
@@ -223,11 +222,8 @@ msgid "Translation string is missing the message property"
 msgstr "String de tradução está em falta na propriedade de mensagem"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Nenhuma propriedade de mensagem \"message\" está definida para uma string "
-"(https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Nenhuma propriedade de mensagem \"message\" está definida para uma string (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:103
 msgid "\"update_url\" is not allowed."
@@ -252,9 +248,7 @@ msgstr "Ícone não pôde ser encontrado em \"%(path)s\"."
 #: src/messages/manifestjson.js:160
 #, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr ""
-"Script de conteúdo definido no manifesto não pôde ser encontrado em "
-"\"%(path)s\"."
+msgstr "Script de conteúdo definido no manifesto não pôde ser encontrado em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:163
 #, fuzzy
@@ -280,31 +274,20 @@ msgstr "Veja https://mzl.la/1ZOhoEN (MDN Docs) para mais informação."
 #: src/messages/manifestjson.js:184
 #, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr ""
-"Script de conteúdo definido no manifesto não pôde ser encontrado em "
-"\"%(path)s\"."
+msgstr "Script de conteúdo definido no manifesto não pôde ser encontrado em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:185
 #, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
-"Ficheiro de css do script de conteúdo definido no manifesto não pôde ser "
-"encontrado em \"%(path)s\"."
+msgstr "Ficheiro de css do script de conteúdo definido no manifesto não pôde ser encontrado em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Script de conteúdo definido no manifesto não pôde ser encontrado em "
-"\"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Script de conteúdo definido no manifesto não pôde ser encontrado em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Ficheiro de css do script de conteúdo definido no manifesto não pôde ser "
-"encontrado em \"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Ficheiro de css do script de conteúdo definido no manifesto não pôde ser encontrado em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:207
 #, fuzzy
@@ -313,36 +296,32 @@ msgstr "Um ícone definido no manifesto não pôde ser encontrado no pacote."
 
 #: src/messages/manifestjson.js:211
 #, fuzzy
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Ficheiro de css do script de conteúdo definido no manifesto não pôde ser "
-"encontrado em \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Ficheiro de css do script de conteúdo definido no manifesto não pôde ser encontrado em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "O manifesto contém múltiplos dicionários."
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+msgstr "Foram definidos múltiplos dicionários no manifesto, o que não é suportado."
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "O manifesto contém um objeto de dicionários, mas está vazio."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "Foi definido um objeto de dicionários no manifesto, mas este estava vazio."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "O manifesto contém um dicionário, mas nenhuma propriedade de identificação."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "Foi encontrado um dicionário no manifesto, mas não havia nenhuma identificação definida."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -378,7 +357,7 @@ msgstr "Ficheiro de ícone esperado em \"%(path)s\" está corrompido"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Este nome alternativo do tema LWT foi removido no Firefox 70."
 
 #: src/messages/manifestjson.js:304
 #, fuzzy
@@ -406,11 +385,11 @@ msgstr "Permissão desconhecida."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "O ficheiro de imagem do tema tem uma extensão de ficheiro não suportada"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "O ficheiro de imagem do tema em \"%(path)s\" tem uma extensão de ficheiro não suportada"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -418,22 +397,19 @@ msgstr "Veja https://mzl.la/1R1n1t0 (MDN Docs) para mais informação."
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "O ficheiro de imagem do tema tem um tipo de MIME não suportado"
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "O ficheiro de imagem do tema em \"%(path)s\" tem um tipo de MIME \"%(mime)s\" não suportado"
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "O tipo de MIME do ficheiro de imagem do tema não corresponde com a sua extensão de ficheiro"
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "O ficheiro de imagem do tema em \"%(path)s\" não corresponde com o seu tipo de MIME \"%(mime)s\" atual"
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
@@ -465,7 +441,7 @@ msgstr "\"manifest_version\" no manifest.json não é um valor válido"
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Chave de manifesto não suportada pela versão mínima especificada do Firefox"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -476,20 +452,16 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
-"Uma content_security_policy personalizada precisa de revisão adicional."
+msgstr "Uma content_security_policy personalizada precisa de revisão adicional."
 
 #: src/messages/manifestjson.js:76
 msgid "The \"name\" property must be a string."
