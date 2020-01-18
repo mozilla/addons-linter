@@ -38,7 +38,7 @@
   },
   "homepage": "https://github.com/mozilla/addons-linter#readme",
   "dependencies": {
-    "ajv": "6.10.2",
+    "ajv": "6.11.0",
     "ajv-merge-patch": "4.1.0",
     "chalk": "3.0.0",
     "cheerio": "1.0.0-rc.3",
