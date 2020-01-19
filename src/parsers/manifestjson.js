@@ -102,6 +102,25 @@ export default class ManifestJSONParser extends JSONParser {
       );
       this.io = io;
       this._validate();
+
+      if (this.parsedJSON.default_locale) {
+        try {
+          // TODO should this also have the relaxed parsing? -> optimally this would use the same parser run as the check for the messages.json file.
+          this.defaultMessages = JSON.parse(
+            this.io.getFile(
+              path.join(
+                LOCALES_DIRECTORY,
+                this.parsedJSON.default_locale,
+                MESSAGES_JSON
+              )
+            )
+          );
+        } catch (error) {
+          // If the default messages.json contains errors the default
+          // message checking is disabled. Errors in the file will
+          // be reported by the locale-messagesjson parser.
+        }
+      }
     }
   }
 
@@ -813,17 +832,7 @@ export default class ManifestJSONParser extends JSONParser {
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.strict_min_version,
       defaultLocale: this.parsedJSON.default_locale,
-      defaultMessagesFile:
-        this.parsedJSON.default_locale &&
-        JSON.parse(
-          this.io.getFile(
-            path.join(
-              LOCALES_DIRECTORY,
-              this.parsedJSON.default_locale,
-              MANIFEST_JSON
-            )
-          )
-        ),
+      defaultMessagesFile: this.defaultMessages,
     };
   }
 }
