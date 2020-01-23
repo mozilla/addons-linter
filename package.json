@@ -93,7 +93,7 @@
     "babel-jest": "24.9.0",
     "babel-loader": "8.0.6",
     "babel-plugin-syntax-async-functions": "6.13.0",
-    "codecov": "3.6.1",
+    "codecov": "3.6.2",
     "comment-json": "2.4.1",
     "doctoc": "1.4.0",
     "eslint-config-amo": "1.32.0",
