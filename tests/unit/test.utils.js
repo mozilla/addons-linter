@@ -675,7 +675,7 @@ describe('isCompatible', () => {
     ).toBe(true);
   });
 
-  it('should report devtools.network.onRequestFinished as incompatible for Firefox 60', () => {
+  it('should report devtools.network.onRequestFinished as incompatible for Firefox 59', () => {
     expect(
       isCompatible(bcd, 'devtools.network.onRequestFinished', 59, 'firefox')
     ).toBe(false);
