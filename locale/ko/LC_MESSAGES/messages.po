@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-10-05 19:03+0000\n"
-"Last-Translator: Jonathan Joseph Chiarella <jonathan.chiarella@gmail.com>\n"
+"PO-Revision-Date: 2020-01-31 22:43+0000\n"
+"Last-Translator: Kim YoungCheon <circcc@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgstr "파일"
 
 #: src/linter.js:162
 msgid "Line"
-msgstr ""
+msgstr "행"
 
 #: src/linter.js:168
 msgid "Column"
