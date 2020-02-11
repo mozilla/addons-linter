@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-12-03 11:59+0000\n"
+"PO-Revision-Date: 2020-02-11 13:02+0000\n"
 "Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -296,19 +296,19 @@ msgstr "Bildirgede tanımlanan içerik betiği css dosyası \"%(path)s\" yolunda
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "Manifest birden fazla sözlük içeriyor."
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "Manifest'te birden fazla sözlük tanımlandı. Bu durum desteklenmiyor."
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "Manifest'te dictionaries nesnesi var ama nesne boş."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "Manifest'te dictionaries nesnesi tanımlanmış ama nesne boş."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
@@ -441,7 +441,7 @@ msgstr "Daha fazla bilgi için https://mzl.la/20PenXl (MDN Docs) sayfasına bak�
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Bu İzin, belirtilen minimum Firefox sürümü tarafından desteklenmiyor"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
