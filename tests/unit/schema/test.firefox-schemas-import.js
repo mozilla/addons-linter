@@ -24,6 +24,24 @@ import {
 // Get a reference to unlinkSync so it won't get stubbed later
 const { unlinkSync } = fs;
 
+async function createZipFile() {
+  const cwd = 'tests/fixtures/schema';
+  const schemaPath = `${cwd}/firefox`;
+  const zipfile = new yazl.ZipFile();
+
+  const files = ['cookies.json', 'manifest.json', 'native_host_manifest.json'];
+
+  await new Promise((resolve) => {
+    files.forEach((file) => {
+      zipfile.addFile(`${schemaPath}/${file}`, file);
+    });
+    zipfile.outputStream
+      .pipe(fs.createWriteStream('mozilla-central.zip'))
+      .on('close', () => resolve());
+    zipfile.end();
+  });
+}
+
 describe('firefox schema import', () => {
   // Skip the Firefox schema import tests on windows.
   if (process.platform === 'win32') {
@@ -1124,25 +1142,7 @@ describe('firefox schema import', () => {
     });
 
     it('extracts the schemas from a local file', async () => {
-      const cwd = 'tests/fixtures/schema';
-      const schemaPath = `${cwd}/firefox`;
-      const zipfile = new yazl.ZipFile();
-
-      const files = [
-        'cookies.json',
-        'manifest.json',
-        'native_host_manifest.json',
-      ];
-
-      await new Promise((resolve) => {
-        files.forEach((file) => {
-          zipfile.addFile(`${schemaPath}/${file}`, file);
-        });
-        zipfile.outputStream
-          .pipe(fs.createWriteStream('mozilla-central.zip'))
-          .on('close', () => resolve());
-        zipfile.end();
-      });
+      const zipfile = await createZipFile();
 
       sinon
         .stub(inner, 'isBrowserSchema')
@@ -1164,25 +1164,7 @@ describe('firefox schema import', () => {
     });
 
     it('handles errors when parsing the zipfile', async () => {
-      const cwd = 'tests/fixtures/schema';
-      const schemaPath = `${cwd}/firefox`;
-      const zipfile = new yazl.ZipFile();
-
-      const files = [
-        'cookies.json',
-        'manifest.json',
-        'native_host_manifest.json',
-      ];
-
-      await new Promise((resolve) => {
-        files.forEach((file) => {
-          zipfile.addFile(`${schemaPath}/${file}`, file);
-        });
-        zipfile.outputStream
-          .pipe(fs.createWriteStream('mozilla-central.zip'))
-          .on('close', () => resolve());
-        zipfile.end();
-      });
+      const zipfile = await createZipFile();
 
       sinon
         .stub(fs, 'createReadStream')
