@@ -87,7 +87,6 @@
     "@babel/preset-env": "7.8.4",
     "@babel/register": "7.8.3",
     "@babel/runtime": "7.8.4",
-    "archiver": "3.1.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.3",
     "babel-gettext-extractor": "4.1.3",
