@@ -1163,7 +1163,7 @@ describe('firefox schema import', () => {
       expect(fs.readdirSync(outputPath)).toEqual(['manifest.json']);
     });
 
-    it('handles errors when parsing the zipfile', async () => {
+    it('handles errors when opening the zipfile', async () => {
       const zipfile = await createZipFile();
 
       sinon
@@ -1176,6 +1176,17 @@ describe('firefox schema import', () => {
       await expect(
         fetchSchemas({ inputPath: 'mozilla-central.zip', outputPath })
       ).rejects.toThrow();
+    });
+
+    it('handles errors when parsing and processing the zipfile', async () => {
+      await expect(
+        fetchSchemas({
+          inputPath: 'tests/fixtures/wrong-entry-sizes.zip',
+          outputPath,
+        })
+      ).rejects.toThrow(
+        'compressed/uncompressed size mismatch for stored file: 0 != 1024'
+      );
     });
   });
 
