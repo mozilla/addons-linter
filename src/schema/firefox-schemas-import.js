@@ -582,21 +582,30 @@ export async function fetchSchemas({ inputPath, outputPath }) {
   const openZip = util.promisify(yauzl.open);
   const zipfile = await openZip(inputPath);
   const openReadStream = util.promisify(zipfile.openReadStream.bind(zipfile));
+  const writeStreamsPromises = [];
 
   return new Promise((resolve, reject) => {
     zipfile
       .on('entry', async (entry) => {
         if (inner.isBrowserSchema(entry.fileName)) {
           const filePath = path.join(outputPath, path.basename(entry.fileName));
+
+          // Collect the file streams we're creating here to be able to wait
+          // for them to ensure we're closing their streams
+          const destFileStream = fs.createWriteStream(filePath);
+          writeStreamsPromises.push(
+            new Promise((res) => destFileStream.on('close', res))
+          );
           const readStream = await openReadStream(entry);
-          readStream.pipe(fs.createWriteStream(filePath));
+
+          readStream.pipe(destFileStream);
         }
       })
       .on('error', (error) => {
         reject(error);
       })
       .on('end', () => {
-        resolve();
+        Promise.all(writeStreamsPromises).then(resolve, reject);
       });
   });
 }
