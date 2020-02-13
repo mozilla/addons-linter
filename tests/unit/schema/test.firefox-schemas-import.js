@@ -31,10 +31,11 @@ async function createZipFile() {
 
   const files = ['cookies.json', 'manifest.json', 'native_host_manifest.json'];
 
+  files.forEach((file) => {
+    zipfile.addFile(`${schemaPath}/${file}`, file);
+  });
+
   await new Promise((resolve) => {
-    files.forEach((file) => {
-      zipfile.addFile(`${schemaPath}/${file}`, file);
-    });
     zipfile.outputStream
       .pipe(fs.createWriteStream('mozilla-central.zip'))
       .on('close', () => resolve());
