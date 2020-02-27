@@ -1,4 +1,5 @@
 import { oneLine } from 'common-tags';
+import bcd from 'mdn-browser-compat-data';
 
 import {
   buildI18nObject,
@@ -535,6 +536,13 @@ describe('isCompatible', () => {
       api: data,
     },
   });
+  const getBCDForFeature = (
+    supportData,
+    { apiName = 'foo', appName = 'firefox' } = {}
+  ) =>
+    getBCD({
+      [apiName]: { __compat: { support: { [appName]: supportData } } },
+    });
 
   it('should be true if the given key path is not in the object', () => {
     expect(isCompatible(getBCD({}), 'foo.bar', 60, 'firefox')).toBe(true);
@@ -543,9 +551,7 @@ describe('isCompatible', () => {
   it('should be true if the given key path has a compatibility of false', () => {
     expect(
       isCompatible(
-        getBCD({
-          foo: { __compat: { support: { firefox: { version_added: false } } } },
-        }),
+        getBCDForFeature({ version_added: false }),
         'foo',
         60,
         'firefox'
@@ -556,9 +562,7 @@ describe('isCompatible', () => {
   it('should be true if the given key path is compatible with the minVersion', () => {
     expect(
       isCompatible(
-        getBCD({
-          foo: { __compat: { support: { firefox: { version_added: '60' } } } },
-        }),
+        getBCDForFeature({ version_added: '60' }),
         'foo',
         60,
         'firefox'
@@ -567,16 +571,13 @@ describe('isCompatible', () => {
   });
 
   it('should be false if the given key path is incompatible with the minVersion', () => {
+    const appName = 'firefox_android';
     expect(
       isCompatible(
-        getBCD({
-          foo: {
-            __compat: { support: { firefox_android: { version_added: '61' } } },
-          },
-        }),
+        getBCDForFeature({ version_added: '61' }, { appName }),
         'foo',
         60,
-        'firefox_android'
+        appName
       )
     ).toBe(false);
   });
@@ -584,9 +585,7 @@ describe('isCompatible', () => {
   it('should fall back to deepest matching compat info', () => {
     expect(
       isCompatible(
-        getBCD({
-          foo: { __compat: { support: { firefox: { version_added: '61' } } } },
-        }),
+        getBCDForFeature({ version_added: '61' }),
         'foo.bar',
         60,
         'firefox'
@@ -597,13 +596,96 @@ describe('isCompatible', () => {
   it('should be compatible if no specific version is specified', () => {
     expect(
       isCompatible(
-        getBCD({
-          foo: { __compat: { support: { firefox: { version_added: true } } } },
-        }),
+        getBCDForFeature({ version_added: true }),
         'foo.bar',
         60,
         'firefox'
       )
     ).toBe(true);
+  });
+
+  it('should be compatible if version is behind flag and no other version is available', () => {
+    expect(
+      isCompatible(
+        getBCDForFeature({ flags: [], version_added: true }),
+        'foo',
+        60,
+        'firefox'
+      )
+    ).toBe(true);
+  });
+
+  it('should be compatible if version is behind flag starting at a later release', () => {
+    expect(
+      isCompatible(
+        getBCDForFeature({ flags: [], version_added: '61' }),
+        'foo',
+        60,
+        'firefox'
+      )
+    ).toBe(true);
+  });
+
+  it('should be compatible with multiple support versions', () => {
+    expect(
+      isCompatible(
+        getBCDForFeature([
+          { version_added: '60' },
+          { flags: [], version_added: '59' },
+        ]),
+        'foo',
+        60,
+        'firefox'
+      )
+    ).toBe(true);
+  });
+
+  it('should be incompatible with multiple support versions', () => {
+    expect(
+      isCompatible(
+        getBCDForFeature([
+          { version_added: '61' },
+          { flags: [], version_added: '59' },
+        ]),
+        'foo',
+        60,
+        'firefox'
+      )
+    ).toBe(false);
+  });
+
+  it('should be compatible with oldest viable compat entry', () => {
+    expect(
+      isCompatible(
+        getBCDForFeature([
+          { version_added: '61' },
+          { version_added: '60' },
+          { flags: [], version_added: '59' },
+        ]),
+        'foo',
+        60,
+        'firefox'
+      )
+    ).toBe(true);
+  });
+
+  it('should report devtools.network.onRequestFinished as compatible for Firefox 60', () => {
+    expect(
+      isCompatible(bcd, 'devtools.network.onRequestFinished', 60, 'firefox')
+    ).toBe(true);
+  });
+
+  it('should report devtools.network.onRequestFinished as incompatible for Firefox 59', () => {
+    expect(
+      isCompatible(bcd, 'devtools.network.onRequestFinished', 59, 'firefox')
+    ).toBe(false);
+  });
+
+  it('should report runtime.getURL as compatible for Firefox 45', () => {
+    expect(isCompatible(bcd, 'runtime.getURL', 45, 'firefox')).toBe(true);
+  });
+
+  it('should report runtime.getURL as incompatible for Firefox 44', () => {
+    expect(isCompatible(bcd, 'runtime.getURL', 44, 'firefox')).toBe(false);
   });
 });
