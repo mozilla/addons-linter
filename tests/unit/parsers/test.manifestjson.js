@@ -853,6 +853,7 @@ describe('ManifestJSONParser', () => {
             `content_security_policy.${keys[i]}`
           );
         }
+        expect(warnings.length).toBe(3);
       });
     });
 
@@ -977,6 +978,7 @@ describe('ManifestJSONParser', () => {
           `content_security_policy.${keys[i]}`
         );
       }
+      expect(warningsV3.length).toBe(3);
     });
   });
 
