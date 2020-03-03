@@ -63,7 +63,7 @@ export default class JavaScriptScanner {
     this.sourceType = this.detectSourceType(this.filename);
 
     const configDefaults = {
-      env: {
+      envs: {
         es6: true,
         webextensions: true,
         browser: true,
