@@ -49,27 +49,31 @@ export const MANIFEST_VERSION_INVALID = {
   file: MANIFEST_JSON,
 };
 
-export const MANIFEST_CSP = {
-  // Note: don't change this 'code' without updating addons-server first, as
-  // it depends on it to detect add-ons with a custom content security policy.
-  code: 'MANIFEST_CSP',
-  message: i18n._(oneLine`
-    "content_security_policy" allows remote code execution in manifest.json`),
-  description: i18n._(
-    'A custom content_security_policy needs additional review.'
-  ),
-  file: MANIFEST_JSON,
-};
+export const MANIFEST_CSP = 'MANIFEST_CSP';
+export function manifestCsp(property) {
+  return {
+    // Note: don't change this 'code' without updating addons-server first, as
+    // it depends on it to detect add-ons with a custom content security policy.
+    code: MANIFEST_CSP,
+    message: i18n._(oneLine`
+      "${property}" allows remote code execution in manifest.json`),
+    description: i18n._(`A custom ${property} needs additional review.`),
+    file: MANIFEST_JSON,
+  };
+}
 
-export const MANIFEST_CSP_UNSAFE_EVAL = {
-  code: 'MANIFEST_CSP_UNSAFE_EVAL',
-  message: i18n._(oneLine`
-    Using 'eval' has strong security and performance implications.`),
-  description: i18n._(oneLine`
-    In most cases the same result can be achieved differently,
-    therefore it is generally prohibited`),
-  file: MANIFEST_JSON,
-};
+export const MANIFEST_CSP_UNSAFE_EVAL = 'MANIFEST_CSP_UNSAFE_EVAL';
+export function manifestCspUnsafeEval(property) {
+  return {
+    code: MANIFEST_CSP_UNSAFE_EVAL,
+    message: i18n._(oneLine`
+      ${property} allows 'eval', which has strong security and performance implications.`),
+    description: i18n._(oneLine`
+      In most cases the same result can be achieved differently,
+      therefore it is generally prohibited`),
+    file: MANIFEST_JSON,
+  };
+}
 
 export const PROP_NAME_INVALID = {
   code: 'PROP_NAME_INVALID',

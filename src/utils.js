@@ -385,6 +385,31 @@ export function basicCompatVersionComparison(versionAdded, minVersion) {
   return !Number.isNaN(asNumber) && asNumber > minVersion;
 }
 
+/**
+ * @param {*} supportInfo - bcd support info of a feature
+ * @returns {string|boolean} The first version number to suppor the feature
+ *          or a boolean indicating if the feature is at all supported.
+ */
+function firstStableVersion(supportInfo) {
+  let supportInfoArray = supportInfo;
+  if (!Array.isArray(supportInfo)) {
+    supportInfoArray = [supportInfo];
+  }
+  return supportInfoArray.reduce((versionAdded, supportEntry) => {
+    if (
+      !Object.prototype.hasOwnProperty.call(supportEntry, 'flags') &&
+      (!versionAdded ||
+        !basicCompatVersionComparison(
+          supportEntry.version_added,
+          parseInt(versionAdded, 10)
+        ))
+    ) {
+      return supportEntry.version_added;
+    }
+    return versionAdded;
+  }, false);
+}
+
 export function isCompatible(bcd, path, minVersion, application) {
   const steps = path.split('.');
   let { api } = bcd.webextensions;
@@ -397,7 +422,8 @@ export function isCompatible(bcd, path, minVersion, application) {
   }
   // API namespace may be undocumented or not implemented, ignore in that case.
   if (api.__compat) {
-    const versionAdded = api.__compat.support[application].version_added;
+    const supportInfo = api.__compat.support[application];
+    const versionAdded = firstStableVersion(supportInfo);
     return !basicCompatVersionComparison(versionAdded, minVersion);
   }
   return true;

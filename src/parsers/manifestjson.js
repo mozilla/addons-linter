@@ -678,6 +678,20 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateCspPolicy(policy) {
+    if (typeof policy === 'string') {
+      this.validateCspPolicyString(policy, 'content_security_policy');
+    } else if (policy != null) {
+      const keys = Object.keys(policy);
+      for (const key of keys) {
+        this.validateCspPolicyString(
+          policy[key],
+          `content_security_policy.${key}`
+        );
+      }
+    }
+  }
+
+  validateCspPolicyString(policy, manifestPropName) {
     const directives = parseCspPolicy(policy);
 
     // Not sure about FTP here but CSP spec treats ws/wss as
@@ -723,7 +737,7 @@ export default class ManifestJSONParser extends JSONParser {
               // 'script-src' makes it secure
               insecureSrcDirective = true;
             } else {
-              this.collector.addWarning(messages.MANIFEST_CSP);
+              this.collector.addWarning(messages.manifestCsp(manifestPropName));
             }
             continue;
           }
@@ -734,7 +748,9 @@ export default class ManifestJSONParser extends JSONParser {
           // Add a more detailed message for unsafe-eval to avoid confusion
           // about why it's forbidden.
           if (value === 'unsafe-eval') {
-            this.collector.addWarning(messages.MANIFEST_CSP_UNSAFE_EVAL);
+            this.collector.addWarning(
+              messages.manifestCspUnsafeEval(manifestPropName)
+            );
             continue;
           }
 
@@ -746,7 +762,7 @@ export default class ManifestJSONParser extends JSONParser {
               // 'script-src' makes it secure
               insecureSrcDirective = true;
             } else {
-              this.collector.addWarning(messages.MANIFEST_CSP);
+              this.collector.addWarning(messages.manifestCsp(manifestPropName));
             }
             continue;
           }
@@ -754,7 +770,7 @@ export default class ManifestJSONParser extends JSONParser {
       }
     }
     if (insecureSrcDirective) {
-      this.collector.addWarning(messages.MANIFEST_CSP);
+      this.collector.addWarning(messages.manifestCsp(manifestPropName));
     }
   }
 
