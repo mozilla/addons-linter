@@ -34,7 +34,7 @@ export default class Linter {
     this.config = config;
     [this.packagePath] = config._;
     this.io = null;
-    this.chalk = new chalk.constructor({ enabled: !this.config.boring });
+    this.chalk = new chalk.Instance({ enabled: !this.config.boring });
     this.collector = new Collector(config);
     this.addonMetadata = null;
     this.shouldScanFile = this.shouldScanFile.bind(this);
@@ -348,10 +348,11 @@ export default class Linter {
     const maxSize = 1024 * 1024 * constants.MAX_FILE_SIZE_TO_PARSE_MB;
 
     if (ScannerClass !== BinaryScanner && fileSize >= maxSize) {
-      const filesizeError = Object.assign({}, messages.FILE_TOO_LARGE, {
+      const filesizeError = {
+        ...messages.FILE_TOO_LARGE,
         file: filename,
         type: constants.VALIDATION_ERROR,
-      });
+      };
 
       scanResult = {
         linterMessages: [filesizeError],
@@ -542,19 +543,17 @@ export default class Linter {
   _markBannedLibs(addonMetadata, _unadvisedLibraries = UNADVISED_LIBRARIES) {
     Object.keys(addonMetadata.jsLibs).forEach((pathToFile) => {
       if (BANNED_LIBRARIES.includes(addonMetadata.jsLibs[pathToFile])) {
-        this.collector.addError(
-          Object.assign({}, messages.BANNED_LIBRARY, {
-            file: pathToFile,
-          })
-        );
+        this.collector.addError({
+          ...messages.BANNED_LIBRARY,
+          file: pathToFile,
+        });
       }
 
       if (_unadvisedLibraries.includes(addonMetadata.jsLibs[pathToFile])) {
-        this.collector.addWarning(
-          Object.assign({}, messages.UNADVISED_LIBRARY, {
-            file: pathToFile,
-          })
-        );
+        this.collector.addWarning({
+          ...messages.UNADVISED_LIBRARY,
+          file: pathToFile,
+        });
       }
     });
 
@@ -600,11 +599,10 @@ export default class Linter {
           log.debug(`${hashResult} detected in ${filename}`);
           jsLibs[filename] = hashResult;
 
-          this.collector.addNotice(
-            Object.assign({}, messages.KNOWN_LIBRARY, {
-              file: filename,
-            })
-          );
+          this.collector.addNotice({
+            ...messages.KNOWN_LIBRARY,
+            file: filename,
+          });
         }
       })
     );
@@ -643,11 +641,10 @@ export default class Linter {
         const filenameMatch = filename.match(nameRegex);
 
         if (filenameMatch) {
-          this.collector.addWarning(
-            Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
-              file: filename,
-            })
-          );
+          this.collector.addWarning({
+            ...messages.COINMINER_USAGE_DETECTED,
+            file: filename,
+          });
         }
 
         const fileDataMatch = fileData.match(nameRegex);
@@ -657,13 +654,12 @@ export default class Linter {
             fileDataMatch
           );
 
-          this.collector.addWarning(
-            Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
-              file: filename,
-              column: matchedColumn,
-              line: matchedLine,
-            })
-          );
+          this.collector.addWarning({
+            ...messages.COINMINER_USAGE_DETECTED,
+            file: filename,
+            column: matchedColumn,
+            line: matchedLine,
+          });
         }
       });
 
@@ -675,16 +671,15 @@ export default class Linter {
             match
           );
 
-          this.collector.addWarning(
-            Object.assign({}, messages.COINMINER_USAGE_DETECTED, {
-              file: filename,
-              line: matchedLine,
-              column: matchedColumn,
-              // use dataPath for our actual match to avoid any obvious
-              // duplicates
-              dataPath: match[0],
-            })
-          );
+          this.collector.addWarning({
+            ...messages.COINMINER_USAGE_DETECTED,
+            file: filename,
+            line: matchedLine,
+            column: matchedColumn,
+            // use dataPath for our actual match to avoid any obvious
+            // duplicates
+            dataPath: match[0],
+          });
         }
       });
     }

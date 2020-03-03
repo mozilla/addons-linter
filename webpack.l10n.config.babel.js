@@ -7,7 +7,6 @@ const webpackConfig = require('./webpack.config');
 
 const babelrc = fs.readFileSync('./.babelrc');
 const babelrcObject = JSON.parse(babelrc);
-babelrcObject.presets = ['es2015', 'stage-2'];
 const babelPlugins = babelrcObject.plugins || [];
 
 // Create UTC creation date in the correct format.
@@ -18,7 +17,7 @@ const potCreationDate = new Date()
 
 const babelL10nPlugins = [
   [
-    'babel-gettext-extractor',
+    'module:babel-gettext-extractor',
     {
       headers: {
         'Project-Id-Version': 'messages',
@@ -49,9 +48,10 @@ const babelL10nPlugins = [
   ],
 ];
 
-const BABEL_QUERY = Object.assign({}, babelrcObject, {
+const BABEL_QUERY = {
+  ...babelrcObject,
   plugins: babelPlugins.concat(babelL10nPlugins),
-});
+};
 
 const [rule] = webpackConfig.module.rules;
 rule.loader = 'babel-loader';
@@ -60,7 +60,8 @@ delete rule.use;
 const rules = [rule];
 rules.concat(webpackConfig.module.rules.splice(0));
 
-module.exports = Object.assign({}, webpackConfig, {
+module.exports = {
+  ...webpackConfig,
   module: {
     rules,
   },
@@ -69,4 +70,4 @@ module.exports = Object.assign({}, webpackConfig, {
     new webpack.IgnorePlugin(new RegExp(`locale\\/.*\\/messages\\.js$`)),
     ...webpackConfig.plugins,
   ],
-});
+};

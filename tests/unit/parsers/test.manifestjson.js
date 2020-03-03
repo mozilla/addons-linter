@@ -319,6 +319,22 @@ describe('ManifestJSONParser', () => {
       const message = parser.errorLookup({ dataPath: '/permissions/0' });
       expect(message.code).toEqual(messages.MANIFEST_PERMISSIONS.code);
     });
+
+    it('Lookup LWT alias with custom message overwrite', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const parser = new ManifestJSONParser(
+        validManifestJSON(),
+        addonLinter.collector
+      );
+      const message = parser.errorLookup({
+        keyword: 'deprecated',
+        dataPath: '/theme/images/headerURL',
+        message: 'This is going to be ignored...',
+      });
+      expect(message.message).toEqual(
+        'This theme LWT alias has been removed in Firefox 70.'
+      );
+    });
   });
 
   describe('enum', () => {
@@ -783,6 +799,7 @@ describe('ManifestJSONParser', () => {
         "default-src http:; worker-src: 'self'",
       ];
 
+      // Manifest v2 formats.
       invalidValues.forEach((invalidValue) => {
         const addonLinter = new Linter({ _: ['bar'] });
 
@@ -797,8 +814,46 @@ describe('ManifestJSONParser', () => {
 
         expect(manifestJSONParser.isValid).toEqual(true);
         const { warnings } = addonLinter.collector;
-        expect(warnings[0].code).toEqual(messages.MANIFEST_CSP.code);
+        expect(warnings[0].code).toEqual(messages.MANIFEST_CSP);
         expect(warnings[0].message).toContain('content_security_policy');
+      });
+
+      // Manifest v3 formats.
+      invalidValues.forEach((invalidValue) => {
+        const addonLinter = new Linter({ _: ['bar'] });
+
+        const contentSecurityPolicy = {
+          extension_pages: invalidValue,
+          content_scripts: invalidValue,
+          // Alias for content_scripts.
+          isolated_world: invalidValue,
+        };
+
+        const jsonV3 = validManifestJSON({
+          content_security_policy: contentSecurityPolicy,
+          applications: {
+            // The new content_security_policy syntax is only supported
+            // on Firefox >= 72.
+            gecko: { strict_min_version: '72.0' },
+          },
+        });
+
+        const manifestV3JSONParser = new ManifestJSONParser(
+          jsonV3,
+          addonLinter.collector
+        );
+
+        expect(manifestV3JSONParser.isValid).toEqual(true);
+        const { warnings } = addonLinter.collector;
+
+        const keys = Object.keys(contentSecurityPolicy);
+        for (let i = 0; i < keys.length; i++) {
+          expect(warnings[i].code).toEqual(messages.MANIFEST_CSP);
+          expect(warnings[i].message).toContain(
+            `content_security_policy.${keys[i]}`
+          );
+        }
+        expect(warnings.length).toBe(3);
       });
     });
 
@@ -829,6 +884,7 @@ describe('ManifestJSONParser', () => {
       validValues.forEach((validValue) => {
         const addonLinter = new Linter({ _: ['bar'] });
 
+        // Manifest v2 format.
         const json = validManifestJSON({
           content_security_policy: validValue,
         });
@@ -840,6 +896,28 @@ describe('ManifestJSONParser', () => {
 
         expect(manifestJSONParser.isValid).toEqual(true);
         expect(addonLinter.collector.warnings.length).toEqual(0);
+
+        // Manifest v3 format.
+        const jsonV3 = validManifestJSON({
+          content_security_policy: {
+            extension_pages: validValue,
+            content_scripts: validValue,
+            isolated_world: validValue,
+          },
+          applications: {
+            // The new content_security_policy syntax is only supported
+            // on Firefox >= 72.
+            gecko: { strict_min_version: '72.0' },
+          },
+        });
+
+        const manifestV3JSONParser = new ManifestJSONParser(
+          jsonV3,
+          addonLinter.collector
+        );
+
+        expect(manifestV3JSONParser.isValid).toEqual(true);
+        expect(addonLinter.collector.warnings.length).toEqual(0);
       });
     });
 
@@ -847,6 +925,7 @@ describe('ManifestJSONParser', () => {
       const invalidValue = "script-src 'self' 'unsafe-eval';";
       const addonLinter = new Linter({ _: ['bar'] });
 
+      // Manifest v2 formats.
       const json = validManifestJSON({
         content_security_policy: invalidValue,
       });
@@ -858,10 +937,48 @@ describe('ManifestJSONParser', () => {
 
       expect(manifestJSONParser.isValid).toEqual(true);
       const { warnings } = addonLinter.collector;
-      expect(warnings[0].code).toEqual(messages.MANIFEST_CSP_UNSAFE_EVAL.code);
+      expect(warnings[0].code).toEqual(messages.MANIFEST_CSP_UNSAFE_EVAL);
       expect(warnings[0].message).toEqual(
-        "Using 'eval' has strong security and performance implications."
+        messages.manifestCspUnsafeEval('content_security_policy').message
       );
+
+      // Clear any warnings and errors collected.
+      addonLinter.collector.warnings = [];
+      addonLinter.collector.errors = [];
+
+      // Manifest v3 formats.
+      const contentSecurityPolicy = {
+        extension_pages: invalidValue,
+        content_scripts: invalidValue,
+        // Alias for content_scripts.
+        isolated_world: invalidValue,
+      };
+
+      const jsonV3 = validManifestJSON({
+        content_security_policy: contentSecurityPolicy,
+        applications: {
+          // The new content_security_policy syntax is only supported
+          // on Firefox >= 72.
+          gecko: { strict_min_version: '72.0' },
+        },
+      });
+
+      const manifestV3JSONParser = new ManifestJSONParser(
+        jsonV3,
+        addonLinter.collector
+      );
+
+      expect(manifestV3JSONParser.isValid).toEqual(true);
+      const warningsV3 = addonLinter.collector.warnings;
+
+      const keys = Object.keys(contentSecurityPolicy);
+      for (let i = 0; i < keys.length; i++) {
+        expect(warningsV3[i].code).toEqual(messages.MANIFEST_CSP_UNSAFE_EVAL);
+        expect(warningsV3[i].message).toContain(
+          `content_security_policy.${keys[i]}`
+        );
+      }
+      expect(warningsV3.length).toBe(3);
     });
   });
 
@@ -1247,6 +1364,39 @@ describe('ManifestJSONParser', () => {
           'An icon defined in the manifest could not be found in the package.',
         description: 'Icon could not be found at "icons/icon-64.png".',
       });
+    });
+
+    it('does not add a warning if the browser_action default icon file is valid', async () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const icon = 'tests/fixtures/default.png';
+      const json = validManifestJSON({
+        // Avoid any type of warning by setting the appropriate
+        // firefox version.
+        applications: {
+          gecko: {
+            id: '{daf44bf7-a45e-4450-979c-91cf07434c3d}',
+            strict_min_version: '55.0.0',
+          },
+        },
+        browser_action: {
+          default_icon: icon,
+        },
+      });
+      const files = {
+        [icon]: fs.createReadStream(icon),
+      };
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { io: getStreamableIO(files) }
+      );
+
+      await manifestJSONParser.validateIcons();
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      const { warnings } = addonLinter.collector;
+      expect(warnings.length).toEqual(0);
     });
 
     it('adds an error if the browser_action string icon is not in the package', async () => {
@@ -2368,19 +2518,30 @@ describe('ManifestJSONParser', () => {
           return { code, dataPath, file, message, description };
         });
 
-        const commonErrorProps = { ...messages.MANIFEST_THEME_LWT_ALIAS };
         const expectedErrors = [
           {
-            ...commonErrorProps,
+            code: messages.MANIFEST_THEME_LWT_ALIAS.code,
+            file: 'manifest.json',
             dataPath: '/theme/images/headerURL',
+            message: 'This theme LWT alias has been removed in Firefox 70.',
+            description:
+              'See https://mzl.la/2T11Lkc (MDN Docs) for more information.',
           },
           {
-            ...commonErrorProps,
+            code: messages.MANIFEST_THEME_LWT_ALIAS.code,
+            file: 'manifest.json',
             dataPath: '/theme/colors/accentcolor',
+            message: 'This theme LWT alias has been removed in Firefox 70.',
+            description:
+              'See https://mzl.la/2T11Lkc (MDN Docs) for more information.',
           },
           {
-            ...commonErrorProps,
+            code: messages.MANIFEST_THEME_LWT_ALIAS.code,
+            file: 'manifest.json',
             dataPath: '/theme/colors/textcolor',
+            message: 'This theme LWT alias has been removed in Firefox 70.',
+            description:
+              'See https://mzl.la/2T11Lkc (MDN Docs) for more information.',
           },
         ];
 

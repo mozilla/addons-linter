@@ -1,9 +1,12 @@
 {
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
   "timezone": "UTC",
   "extends": [
     "config:base",
-    ":maintainLockFilesWeekly",
-    ":prNotPending"
+    ":maintainLockFilesWeekly"
   ],
   "lockFileMaintenance": {
     "enabled": true,
@@ -15,6 +18,14 @@
         "*"
       ],
       "rangeStrategy": "pin"
+    },
+    {
+      "depTypeList": ["engines"],
+      "rangeStrategy": "auto"
     }
-  ]
+  ],
+  "stabilityDays": 7,
+  "node": {
+    "supportPolicy": ["lts"]
+  }
 }

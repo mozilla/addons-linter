@@ -1,9 +1,11 @@
 import fs from 'fs';
 import path from 'path';
+import util from 'util';
 
 /* eslint-disable import/no-extraneous-dependencies */
 import commentJson from 'comment-json';
-import tar from 'tar';
+import yauzl from 'yauzl';
+
 /* eslint-enable import/no-extraneous-dependencies */
 
 import { deepmerge, deepPatch } from './deepmerge';
@@ -576,37 +578,34 @@ inner.isBrowserSchema = (_path) => {
   return schemaRegexes.some((re) => re.test(_path));
 };
 
-/**
- * Strip a null byte if it's the last character in a string.
- * */
-export function stripTrailingNullByte(str) {
-  if (str.indexOf('\u0000') === str.length - 1) {
-    return str.slice(0, -1);
-  }
-  return str;
-}
-
 export async function fetchSchemas({ inputPath, outputPath }) {
-  const tarball = fs.createReadStream(inputPath);
+  const openZip = util.promisify(yauzl.open);
+  const zipfile = await openZip(inputPath);
+  const openReadStream = util.promisify(zipfile.openReadStream.bind(zipfile));
+  const writeStreamsPromises = [];
+
   return new Promise((resolve, reject) => {
-    tarball
-      .pipe(new tar.Parse())
-      .on('entry', (entry) => {
-        // The updated tar library doesn't always strip null bytes from the
-        // end of strings anymore so we get to do that here.
-        const entryPath = stripTrailingNullByte(entry.path);
-        if (inner.isBrowserSchema(entryPath)) {
-          const filePath = path.join(outputPath, path.basename(entryPath));
-          entry.pipe(fs.createWriteStream(filePath));
-        } else {
-          entry.resume();
+    zipfile
+      .on('entry', async (entry) => {
+        if (inner.isBrowserSchema(entry.fileName)) {
+          const filePath = path.join(outputPath, path.basename(entry.fileName));
+
+          // Collect the file streams we're creating here to be able to wait
+          // for them to ensure we're closing their streams
+          const destFileStream = fs.createWriteStream(filePath);
+          writeStreamsPromises.push(
+            new Promise((res) => destFileStream.on('close', res))
+          );
+          const readStream = await openReadStream(entry);
+
+          readStream.pipe(destFileStream);
         }
       })
       .on('error', (error) => {
         reject(error);
       })
       .on('end', () => {
-        resolve();
+        Promise.all(writeStreamsPromises).then(resolve, reject);
       });
   });
 }

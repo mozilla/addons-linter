@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 import fs from 'fs';
 
 import { oneLine } from 'common-tags';

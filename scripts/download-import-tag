@@ -6,14 +6,14 @@
 #  * import the schema by running `scripts/download-import-tag FIREFOX_60_0b10_RELEASE`
 #    (change the tag as necessary)
 
-if [ ! -e "tmp/$1.tar.gz" ]; then
-    echo "tmp/$1.tar.gz doesn't exist, downloading..."
-    curl "https://hg.mozilla.org/mozilla-unified/archive/$1.tar.gz" > "tmp/$1.tar.gz"
+if [ ! -e "tmp/$1.zip" ]; then
+    echo "tmp/$1.zip doesn't exist, downloading..."
+    curl "https://hg.mozilla.org/mozilla-unified/archive/$1.zip" > "tmp/$1.zip"
 else
-    echo "tmp/$1.tar.gz already exists, please make sure it's valid!"
+    echo "tmp/$1.zip already exists, please make sure it's valid!"
 fi
 
-echo "Importing with scripts/firefox-schema-import tmp/$1.tar.gz"
+echo "Importing with scripts/firefox-schema-import tmp/$1.zip"
 
 # Now import the schema from that tag
-scripts/firefox-schema-import "tmp/$1.tar.gz"
+scripts/firefox-schema-import "tmp/$1.zip"

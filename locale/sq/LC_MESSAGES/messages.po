@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-13 21:16+0000\n"
+"POT-Creation-Date: 2019-07-25 10:01+0000\n"
+"PO-Revision-Date: 2020-01-22 09:23+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: none\n"
 "Language: sq\n"
@@ -14,39 +14,39 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:117
+#: src/linter.js:119
 msgid "Validation Summary:"
 msgstr "Përmbledhje Vleftësimi:"
 
-#: src/linter.js:134
+#: src/linter.js:138
 msgid "Code"
 msgstr "Kod"
 
-#: src/linter.js:140
+#: src/linter.js:144
 msgid "Message"
 msgstr "Mesazh"
 
-#: src/linter.js:146
+#: src/linter.js:150
 msgid "Description"
 msgstr "Përshkrim"
 
-#: src/linter.js:152
+#: src/linter.js:156
 msgid "File"
 msgstr "Kartelë"
 
-#: src/linter.js:158
+#: src/linter.js:162
 msgid "Line"
 msgstr "Rresht"
 
-#: src/linter.js:164
+#: src/linter.js:168
 msgid "Column"
 msgstr "Shtyllë"
 
-#: src/messages/css.js:16
+#: src/messages/css.js:15
 msgid "Invalid nesting of selectors found"
 msgstr ""
 
-#: src/messages/css.js:9
+#: src/messages/css.js:8
 msgid "A CSS syntax error was encountered"
 msgstr "U has një gabim sintakse CSS"
 
@@ -58,13 +58,13 @@ msgstr "FTL-ja juaj s’është e vlefshme."
 msgid "Your FTL file could not be parsed."
 msgstr "Kartela juaj FTL s’u përtyp dot."
 
-#: src/messages/html.js:16
+#: src/messages/html.js:14
 msgid "Remote scripts are not allowed as per the Add-on Policies."
 msgstr "Programthet e largët nuk lejohen, siç tregohet te Rregulla Shtesash."
 
-#: src/messages/html.js:8
+#: src/messages/html.js:7
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "Programthe të brendshëm të bllokuar si parazgjedhje"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
@@ -81,6 +81,22 @@ msgstr "Kjo API s’është sendërtuar nga Firefox-i."
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
 msgstr ""
+
+#: src/messages/javascript.js:166
+msgid "{{api}} is not supported in Firefox version {{minVersion}}"
+msgstr "{{api}} nuk mbulohet në versionin {{minVersion}} të Firefox-it"
+
+#: src/messages/javascript.js:169
+msgid "This API is not implemented by the given minimum Firefox version"
+msgstr "Kjo API s’është e sendërtuar nga versioni minimum i dhënë për Firefox-in"
+
+#: src/messages/javascript.js:177
+msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
+msgstr "{{api}} nuk mbulohet në versionin {{minVersion}} të Firefox-it për Android"
+
+#: src/messages/javascript.js:180
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "Kjo API s’është e sendërtuar nga versioni minimum i dhënë për Firefox-in për Android"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -134,67 +150,67 @@ msgstr "Kartela juaj JSON s’është e vlefshme."
 msgid "Your JSON file could not be parsed."
 msgstr "Kartela juaj JSON s’u përtyp dot."
 
-#: src/messages/layout.js:18
+#: src/messages/layout.js:17
 msgid "We were unable to decompress the zip file."
 msgstr "S’qemë në gjendje të shngjeshim kartelën zip."
 
-#: src/messages/layout.js:23
+#: src/messages/layout.js:22
 msgid "manifest.json was not found"
 msgstr "S’u gjet manifest.json"
 
-#: src/messages/layout.js:31
+#: src/messages/layout.js:30
 msgid "File is too large to parse."
 msgstr "Kartela është shumë e madhe për t’u përtypur."
 
-#: src/messages/layout.js:40
+#: src/messages/layout.js:39
 msgid "Hidden file flagged"
 msgstr ""
 
-#: src/messages/layout.js:49
+#: src/messages/layout.js:48
 msgid "Flagged filename found"
 msgstr ""
 
-#: src/messages/layout.js:56
+#: src/messages/layout.js:55
 msgid "Flagged file extensions found"
 msgstr ""
 
-#: src/messages/layout.js:63
+#: src/messages/layout.js:62
 msgid "Flagged file type found"
 msgstr ""
 
-#: src/messages/layout.js:73
+#: src/messages/layout.js:72
 msgid "Package already signed"
 msgstr "Paketë tashmë e nënshkruar"
 
-#: src/messages/layout.js:81
-msgid "Violation of Mozilla conditions of use."
-msgstr "Cenim i kushteve të përdorimit të Mozilla-s."
-
-#: src/messages/layout.js:9
+#: src/messages/layout.js:8
 msgid "Package contains duplicate entries"
 msgstr "Paketa përmban zëra të përsëdytur"
 
-#: src/messages/layout.js:90
+#: src/messages/layout.js:80
 msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Shtesat Firefox nuk janë të lejuara të xhirojnë nxjerrës monedhash."
 
-#: src/messages/locale-messagesjson.js:13
+#: src/messages/layout.js:89
+msgid "Reserved filename found."
+msgstr "U gjet emër kartele i rezervuar."
+
+#: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
 msgstr "Emri i vargut është i rezervuar për një mesazh të paracaktuar"
 
-#: src/messages/locale-messagesjson.js:27
+#: src/messages/locale-messagesjson.js:29
 msgid "Placeholder for message is missing"
 msgstr "Mungon vendmbajtëse për mesazhin"
 
-#: src/messages/locale-messagesjson.js:28
+#: src/messages/locale-messagesjson.js:30
 msgid "A placeholder used in the message is not defined."
 msgstr "Një vendmbajtëse e përdorur te mesazhi s’është e përkufizuar."
 
-#: src/messages/locale-messagesjson.js:33
+#: src/messages/locale-messagesjson.js:35
 msgid "Placeholder name contains invalid characters"
 msgstr "Emri i vendmbajtëses përmban shenja të pavlefshme"
 
-#: src/messages/locale-messagesjson.js:40
+#: src/messages/locale-messagesjson.js:42
 msgid "Placeholder is missing the content property"
 msgstr "Mungon vendmbajtëse te veti lënde"
 
@@ -206,149 +222,260 @@ msgstr "Mungon varg përkthimi te veti mesazhi"
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr "S’ka të caktuar veti mesazhi \"message\" për një varg (https://mzl.la/2DSBTjA)."
 
-#: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
-msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr "Për më tepër informacion, shihni te https://mzl.la/1ZOhoEN (Dokumentim MDN)."
-
 #: src/messages/manifestjson.js:103
-msgid "\"strict_max_version\" not required."
-msgstr "\"strict_max_version\" jo i domosdoshëm."
-
-#: src/messages/manifestjson.js:122
-msgid "An icon defined in the manifest could not be found in the package."
-msgstr "Te manifesti s’u gjet dot një ikonë e përkufizuar te paketa."
-
-#: src/messages/manifestjson.js:125
-msgid "Icon could not be found at \"%(path)s\"."
-msgstr "S’u gjet ikonë te \"%(path)s\"."
-
-#: src/messages/manifestjson.js:142
-msgid "Background script could not be found at \"%(path)s\"."
-msgstr "S’u gjet programth sfondi te \"%(path)s\"."
-
-#: src/messages/manifestjson.js:143
-msgid "Background page could not be found at \"%(path)s\"."
-msgstr "S’u gjet faqe sfondi te \"%(path)s\"."
-
-#: src/messages/manifestjson.js:16
-msgid "The field is invalid."
-msgstr "Fusha është e pavlefshme."
-
-#: src/messages/manifestjson.js:161
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Te \"%(path)s\" s’u gjet dot programth lënde i përkufizuar te manifesti."
-
-#: src/messages/manifestjson.js:162
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Te \"%(path)s\" s’u gjet dot kartelë CSS programthi lënde të përkufizuar te manifesti."
-
-#: src/messages/manifestjson.js:173
-msgid "Forbidden content found in add-on."
-msgstr "U gjet lëndë e ndaluar në shtesë."
-
-#: src/messages/manifestjson.js:174
-msgid "This add-on contains forbidden content."
-msgstr "Kjo shtesë përmban lëndë të ndaluar."
-
-#: src/messages/manifestjson.js:182
-msgid "Icons must be square."
-msgstr "Ikonat duhet të jenë katrore."
-
-#: src/messages/manifestjson.js:183
-msgid "Icon at \"%(path)s\" must be square."
-msgstr "Ikona te \"%(path)s\" duhet të jenë katrore."
-
-#: src/messages/manifestjson.js:192
-msgid "The size of the icon does not match the manifest."
-msgstr "Madhësia e ikonës nuk përputhet me atë në manifest."
-
-#: src/messages/manifestjson.js:204
-msgid "Corrupt image file"
-msgstr "Kartelë figure e dëmtuar"
-
-#: src/messages/manifestjson.js:206
-msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr "Kartela e pritshme e ikonës te \"%(path)s\" është e dëmtuar"
-
-#: src/messages/manifestjson.js:217
-msgid "The \"default_locale\" is missing localizations."
-msgstr "\"default_locale\" i mungojnë përkthime."
-
-#: src/messages/manifestjson.js:226
-msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr "\"default_locale\" mungon, por \"_locales\" ekziston."
-
-#: src/messages/manifestjson.js:23
-msgid "The permission type is unsupported."
-msgstr "Lloji i lejes është i pambuluar."
-
-#: src/messages/manifestjson.js:235
-msgid "Unsupported image extension"
-msgstr "Zgjerim i pambuluar figurash"
-
-#: src/messages/manifestjson.js:236
-msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr "Ikonat duhet të jenë JPG/JPEG, WebP, GIF, PNG ose SVG."
-
-#: src/messages/manifestjson.js:244
-msgid "Empty language directory"
-msgstr "Drejtori gjuhësh e zbrazët"
-
-#: src/messages/manifestjson.js:245
-msgid "messages.json file missing in \"%(path)s\""
-msgstr "Mungon kartelë messages.json te \"%(path)s\""
-
-#: src/messages/manifestjson.js:31
-msgid "Unknown permission."
-msgstr "Leje e panjohur."
-
-#: src/messages/manifestjson.js:32
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "Për më tepër të dhëna, shihni https://mzl.la/1R1n1t0 (Dokumentim te MDN)."
-
-#: src/messages/manifestjson.js:38
-msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "\"manifest_version\" te manifest.json s’është vlerë e vlefshme"
-
-#: src/messages/manifestjson.js:39
-msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "Për më tepër të dhëna, shihni https://mzl.la/20PenXl (Dokumentim te MDN)."
-
-#: src/messages/manifestjson.js:49
-msgid "A custom content_security_policy needs additional review."
-msgstr "Lypset shqyrtim shtesë për një content_security_policy vetjake."
-
-#: src/messages/manifestjson.js:65
-msgid "The \"name\" property must be a string."
-msgstr "Vetia \"name\" duhet të jetë një varg."
-
-#: src/messages/manifestjson.js:66
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "Për më tepër të dhëna, shihni http://mzl.la/1STmr48 (Dokumentim te MDN)."
-
-#: src/messages/manifestjson.js:72
-msgid "The \"version\" property must be a string."
-msgstr "Vetia \"version\" duhet të jetë një varg."
-
-#: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "Për më tepër të dhëna, shihni http://mzl.la/1kXIADa (Dokumentim te MDN)."
-
-#: src/messages/manifestjson.js:79
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "Vetia \"version\" përdor një format Firefox specifik."
-
-#: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
 msgstr "\"update_url\" nuk lejohet."
 
-#: src/messages/manifestjson.js:9
+#: src/messages/manifestjson.js:113
+msgid "The \"update_url\" property is not used by Firefox."
+msgstr "Vetia \"update_url\" nuk përdoret nga Firefox-i."
+
+#: src/messages/manifestjson.js:122
+msgid "\"strict_max_version\" not required."
+msgstr "\"strict_max_version\" jo i domosdoshëm."
+
+#: src/messages/manifestjson.js:141
+msgid "An icon defined in the manifest could not be found in the package."
+msgstr "Te manifesti s’u gjet dot një ikonë e përkufizuar te paketa."
+
+#: src/messages/manifestjson.js:145
+msgid "Icon could not be found at \"%(path)s\"."
+msgstr "S’u gjet ikonë te \"%(path)s\"."
+
+#: src/messages/manifestjson.js:160
+msgid "A background script defined in the manifest could not be found."
+msgstr "S’u gjet dot programth prapaskene i përkufizuar te manifesti."
+
+#: src/messages/manifestjson.js:163
+msgid "A background page defined in the manifest could not be found."
+msgstr "S’u gjet dot një faqe prapaskene e përkufizuar te manifesti."
+
+#: src/messages/manifestjson.js:168
+msgid "Background script could not be found at \"%(path)s\"."
+msgstr "S’u gjet programth sfondi te \"%(path)s\"."
+
+#: src/messages/manifestjson.js:169
+msgid "Background page could not be found at \"%(path)s\"."
+msgstr "S’u gjet faqe sfondi te \"%(path)s\"."
+
+#: src/messages/manifestjson.js:17
+msgid "The field is invalid."
+msgstr "Fusha është e pavlefshme."
+
+#: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
+msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
+msgstr "Për më tepër informacion, shihni te https://mzl.la/1ZOhoEN (Dokumentim MDN)."
+
+#: src/messages/manifestjson.js:184
+msgid "A content script defined in the manifest could not be found."
+msgstr "S’u gjet dot programth lënde i përkufizuar te manifesti."
+
+#: src/messages/manifestjson.js:185
+msgid "A content script css file defined in the manifest could not be found."
+msgstr "S’u gjet dot kartelë CSS programthi lënde të përkufizuar te manifesti."
+
+#: src/messages/manifestjson.js:190
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Te \"%(path)s\" s’u gjet dot programth lënde i përkufizuar te manifesti."
+
+#: src/messages/manifestjson.js:193
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Te \"%(path)s\" s’u gjet dot kartelë CSS programthi lënde të përkufizuar te manifesti."
+
+#: src/messages/manifestjson.js:207
+msgid "A dictionary file defined in the manifest could not be found."
+msgstr "S’u gjet dot një kartelë fjalori e përkufizuar te manifesti."
+
+#: src/messages/manifestjson.js:211
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Te \"%(path)s\" s’u gjet dot kartelë fjalori e përkufizuar te manifesti."
+
+#: src/messages/manifestjson.js:223
+msgid "The manifest contains multiple dictionaries."
+msgstr "Manifesti përmban fjalorë të shumtë."
+
+#: src/messages/manifestjson.js:224
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+msgstr "Në manifest janë përkufizuar fjalorë të shumtë, gjë që nuk mbulohet."
+
+#: src/messages/manifestjson.js:233
+msgid "The manifest contains a dictionaries object, but it is empty."
+msgstr "Manifesti përmban objekt fjalorësh, por është i zbrazët."
+
+#: src/messages/manifestjson.js:236
+msgid "A dictionaries object was defined in the manifest, but it was empty."
+msgstr "Te manifesti qe përkufizuar objekt fjalorësh, por qe i zbrazët."
+
+#: src/messages/manifestjson.js:245
+msgid "The manifest contains a dictionary but no id property."
+msgstr "Manifesti përmban një fjalor, por pa veti ID-je."
+
+#: src/messages/manifestjson.js:246
+msgid "A dictionary was found in the manifest, but there was no id set."
+msgstr "Te manifesti u gjet një fjalor, por s’pat ID të caktuar."
+
+#: src/messages/manifestjson.js:256
+msgid "Forbidden content found in add-on."
+msgstr "U gjet lëndë e ndaluar në shtesë."
+
+#: src/messages/manifestjson.js:257
+msgid "This add-on contains forbidden content."
+msgstr "Kjo shtesë përmban lëndë të ndaluar."
+
+#: src/messages/manifestjson.js:26
+msgid "The permission type is unsupported."
+msgstr "Lloji i lejes është i pambuluar."
+
+#: src/messages/manifestjson.js:265
+msgid "Icons must be square."
+msgstr "Ikonat duhet të jenë katrore."
+
+#: src/messages/manifestjson.js:266
+msgid "Icon at \"%(path)s\" must be square."
+msgstr "Ikona te \"%(path)s\" duhet të jenë katrore."
+
+#: src/messages/manifestjson.js:277
+msgid "The size of the icon does not match the manifest."
+msgstr "Madhësia e ikonës nuk përputhet me atë në manifest."
+
+#: src/messages/manifestjson.js:292
+msgid "Corrupt image file"
+msgstr "Kartelë figure e dëmtuar"
+
+#: src/messages/manifestjson.js:294
+msgid "Expected icon file at \"%(path)s\" is corrupted"
+msgstr "Kartela e pritshme e ikonës te \"%(path)s\" është e dëmtuar"
+
+#: src/messages/manifestjson.js:303
+msgid "This theme LWT alias has been removed in Firefox 70."
+msgstr "Ky alias LWT teme është hequr në Firefox 70."
+
+#: src/messages/manifestjson.js:304
+msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
+msgstr "Për më tepër të dhëna, shihni https://mzl.la/2T11Lkc (Dokumentim te MDN)."
+
+#: src/messages/manifestjson.js:319
+msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
+msgstr "Te \"%(path)s\" s’u gjet dot figurë teme për \"%(type)s\""
+
+#: src/messages/manifestjson.js:330
+msgid "Corrupted theme image file"
+msgstr "Kartelë figure teme e dëmtuar"
+
+#: src/messages/manifestjson.js:332
+msgid "Theme image file at \"%(path)s\" is corrupted"
+msgstr "Kartela e figurës së temës te \"%(path)s\" është e dëmtuar"
+
+#: src/messages/manifestjson.js:34
+msgid "Unknown permission."
+msgstr "Leje e panjohur."
+
+#: src/messages/manifestjson.js:343
+msgid "Theme image file has an unsupported file extension"
+msgstr "Kartela e figurës së temës ka një zgjerim të pambuluar kartelash"
+
+#: src/messages/manifestjson.js:345
+msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
+msgstr "Kartela e figurës së temës te \"%(path)s\" ka një zgjerim të pambuluar kartelash"
+
+#: src/messages/manifestjson.js:35
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr "Për më tepër të dhëna, shihni https://mzl.la/1R1n1t0 (Dokumentim te MDN)."
+
+#: src/messages/manifestjson.js:359
+msgid "Theme image file has an unsupported mime type"
+msgstr "Kartela e figurës së temës ka një lloj MIME të pambuluar"
+
+#: src/messages/manifestjson.js:361
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "Kartela e figurës së temës te \"%(path)s\" ka një lloj MIME \"%(mime)s\" të pambuluar"
+
+#: src/messages/manifestjson.js:375
+msgid "Theme image file mime type does not match its file extension"
+msgstr "Lloji MIME i kartelës së figurës së temës nuk përputhet me zgjatimin e vet të kartelës"
+
+#: src/messages/manifestjson.js:379
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "Zgjatimi i kartelës së figurës së temës te \"%(path)s\" nuk përputhet me llojin e vet aktual MIME \"%(mime)s\""
+
+#: src/messages/manifestjson.js:393
+msgid "The \"default_locale\" is missing localizations."
+msgstr "\"default_locale\" i mungojnë përkthime."
+
+#: src/messages/manifestjson.js:402
+msgid "The \"default_locale\" is missing but \"_locales\" exist."
+msgstr "\"default_locale\" mungon, por \"_locales\" ekziston."
+
+#: src/messages/manifestjson.js:411
+msgid "Unsupported image extension"
+msgstr "Zgjerim i pambuluar figurash"
+
+#: src/messages/manifestjson.js:412
+msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
+msgstr "Ikonat duhet të jenë JPG/JPEG, WebP, GIF, PNG ose SVG."
+
+#: src/messages/manifestjson.js:422
+msgid "Empty language directory"
+msgstr "Drejtori gjuhësh e zbrazët"
+
+#: src/messages/manifestjson.js:424
+msgid "messages.json file missing in \"%(path)s\""
+msgstr "Mungon kartelë messages.json te \"%(path)s\""
+
+#: src/messages/manifestjson.js:43
+msgid "\"manifest_version\" in the manifest.json is not a valid value"
+msgstr "\"manifest_version\" te manifest.json s’është vlerë e vlefshme"
+
+#: src/messages/manifestjson.js:440
+msgid "Manifest key not supported by the specified minimum Firefox version"
+msgstr "Zë manifesti i pambuluar nga versioni minimum i specifikuar për Firefox-in"
+
+#: src/messages/manifestjson.js:46
+msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
+msgstr "Për më tepër të dhëna, shihni https://mzl.la/20PenXl (Dokumentim te MDN)."
+
+#: src/messages/manifestjson.js:462
+msgid "Permission not supported by the specified minimum Firefox version"
+msgstr "Leje e pambuluar nga versioni minimum i specifikuar për Firefox-in"
+
+#: src/messages/manifestjson.js:484
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "Zë manifesti i pambuluar nga versioni minimum i specifikuar për Firefox-in për Android"
+
+#: src/messages/manifestjson.js:506
+msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgstr "Leje e pambuluar nga versioni minimum i specifikuar për Firefox-in për Android"
+
+#: src/messages/manifestjson.js:58
+msgid "A custom content_security_policy needs additional review."
+msgstr "Lypset shqyrtim shtesë për një content_security_policy vetjake."
+
+#: src/messages/manifestjson.js:76
+msgid "The \"name\" property must be a string."
+msgstr "Vetia \"name\" duhet të jetë një varg."
+
+#: src/messages/manifestjson.js:77
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr "Për më tepër të dhëna, shihni http://mzl.la/1STmr48 (Dokumentim te MDN)."
+
+#: src/messages/manifestjson.js:8
 msgid "The field is required."
 msgstr "Fusha është e domosdoshme."
 
+#: src/messages/manifestjson.js:85
+msgid "The \"version\" property must be a string."
+msgstr "Vetia \"version\" duhet të jetë një varg."
+
+#: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr "Për më tepër të dhëna, shihni http://mzl.la/1kXIADa (Dokumentim te MDN)."
+
 #: src/messages/manifestjson.js:94
-msgid "The \"update_url\" property is not used by Firefox."
-msgstr "Vetia \"update_url\" nuk përdoret nga Firefox-i."
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "Vetia \"version\" përdor një format Firefox specifik."
+
+#~ msgid "Violation of Mozilla conditions of use."
+#~ msgstr "Cenim i kushteve të përdorimit të Mozilla-s."
 
 #~ msgid "mozIndexedDB has been removed; use indexedDB instead"
 #~ msgstr "mozIndexedDB është hequr; në vend të saj përdorni indexedDB"

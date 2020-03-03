@@ -178,9 +178,33 @@
                   }
                 },
                 "content_security_policy": {
-                  "type": "string",
-                  "format": "contentSecurityPolicy",
-                  "onError": "warn"
+                  "onError": "warn",
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "format": "contentSecurityPolicy"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "extension_pages": {
+                          "type": "string",
+                          "format": "contentSecurityPolicy",
+                          "description": "The Content Security Policy used for extension pages."
+                        },
+                        "content_scripts": {
+                          "type": "string",
+                          "format": "contentSecurityPolicy",
+                          "description": "The Content Security Policy used for content scripts."
+                        },
+                        "isolated_world": {
+                          "type": "string",
+                          "format": "contentSecurityPolicy",
+                          "description": "An alias for content_scripts to support Chrome compatibility.  Content Security Policy implementations may differ between Firefox and Chrome.  If both isolated_world and content_scripts exist, the value from content_scripts will be used."
+                        }
+                      }
+                    }
+                  ]
                 },
                 "permissions": {
                   "type": "array",
@@ -511,6 +535,9 @@
           ]
         },
         {
+          "$ref": "activityLog#/definitions/Permission"
+        },
+        {
           "$ref": "browsingData#/definitions/Permission"
         },
         {
@@ -539,6 +566,9 @@
         },
         {
           "$ref": "menus#/definitions/Permission"
+        },
+        {
+          "$ref": "networkStatus#/definitions/Permission"
         },
         {
           "$ref": "normandyAddonStudy#/definitions/Permission"

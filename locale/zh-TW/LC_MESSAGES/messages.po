@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2018-02-13 05:18+0000\n"
+"POT-Creation-Date: 2019-07-25 10:01+0000\n"
+"PO-Revision-Date: 2019-07-25 13:46+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -14,39 +14,39 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:117
+#: src/linter.js:119
 msgid "Validation Summary:"
 msgstr "驗證摘要:"
 
-#: src/linter.js:134
+#: src/linter.js:138
 msgid "Code"
 msgstr "程式碼"
 
-#: src/linter.js:140
+#: src/linter.js:144
 msgid "Message"
 msgstr "訊息"
 
-#: src/linter.js:146
+#: src/linter.js:150
 msgid "Description"
 msgstr "描述"
 
-#: src/linter.js:152
+#: src/linter.js:156
 msgid "File"
 msgstr "檔案"
 
-#: src/linter.js:158
+#: src/linter.js:162
 msgid "Line"
 msgstr "行"
 
-#: src/linter.js:164
+#: src/linter.js:168
 msgid "Column"
 msgstr "欄"
 
-#: src/messages/css.js:16
+#: src/messages/css.js:15
 msgid "Invalid nesting of selectors found"
 msgstr "找到無效的巢狀選擇器"
 
-#: src/messages/css.js:9
+#: src/messages/css.js:8
 msgid "A CSS syntax error was encountered"
 msgstr "發生 CSS 語法錯誤"
 
@@ -58,11 +58,11 @@ msgstr "您的 FTL 無效。"
 msgid "Your FTL file could not be parsed."
 msgstr "無法剖析您的 FTL 檔案。"
 
-#: src/messages/html.js:16
+#: src/messages/html.js:14
 msgid "Remote scripts are not allowed as per the Add-on Policies."
 msgstr "依照附加元件政策，不允許遠端指令碼。"
 
-#: src/messages/html.js:8
+#: src/messages/html.js:7
 msgid "Inline scripts blocked by default"
 msgstr "預設封鎖行內指令碼"
 
@@ -76,11 +76,27 @@ msgstr "不支援 {{api}}"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
-msgstr "Firefox 尚未實做此 API。"
+msgstr "Firefox 尚未實作此 API。"
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr "使用 truthy fourth argument 呼叫了 addEventListener"
+msgstr "使用 truthy fourth argument 呼叫了 addEventListener。"
+
+#: src/messages/javascript.js:166
+msgid "{{api}} is not supported in Firefox version {{minVersion}}"
+msgstr "Firefox 版本 {{minVersion}} 不支援 {{api}}"
+
+#: src/messages/javascript.js:169
+msgid "This API is not implemented by the given minimum Firefox version"
+msgstr "指定的最小 Firefox 版本尚未實作此 API。"
+
+#: src/messages/javascript.js:177
+msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
+msgstr "Firefox for Android 版本 {{minVersion}} 不支援 {{api}}"
+
+#: src/messages/javascript.js:180
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "指定的最小 Firefox for Android 版本尚未實做此 API。"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -134,67 +150,67 @@ msgstr "您的 JSON 無效。"
 msgid "Your JSON file could not be parsed."
 msgstr "無法剖析您的 JSON 檔案。"
 
-#: src/messages/layout.js:18
+#: src/messages/layout.js:17
 msgid "We were unable to decompress the zip file."
 msgstr "無法解壓縮 zip 檔案。"
 
-#: src/messages/layout.js:23
+#: src/messages/layout.js:22
 msgid "manifest.json was not found"
 msgstr "找不到 manifest.json"
 
-#: src/messages/layout.js:31
+#: src/messages/layout.js:30
 msgid "File is too large to parse."
 msgstr "檔案太大無法剖析。"
 
-#: src/messages/layout.js:40
+#: src/messages/layout.js:39
 msgid "Hidden file flagged"
 msgstr "標示了隱藏檔案"
 
-#: src/messages/layout.js:49
+#: src/messages/layout.js:48
 msgid "Flagged filename found"
 msgstr "找到被標記的檔案名稱"
 
-#: src/messages/layout.js:56
+#: src/messages/layout.js:55
 msgid "Flagged file extensions found"
 msgstr "找到被標記的檔案副檔名"
 
-#: src/messages/layout.js:63
+#: src/messages/layout.js:62
 msgid "Flagged file type found"
 msgstr "找到被標記的檔案類型"
 
-#: src/messages/layout.js:73
+#: src/messages/layout.js:72
 msgid "Package already signed"
 msgstr "封包已簽名"
 
-#: src/messages/layout.js:81
-msgid "Violation of Mozilla conditions of use."
-msgstr "違反 Mozilla 的使用條件。"
-
-#: src/messages/layout.js:9
+#: src/messages/layout.js:8
 msgid "Package contains duplicate entries"
 msgstr "封包包含重複項目"
 
-#: src/messages/layout.js:90
+#: src/messages/layout.js:80
 msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Firefox 附加元件中不允許進行挖礦。"
 
-#: src/messages/locale-messagesjson.js:13
+#: src/messages/layout.js:89
+msgid "Reserved filename found."
+msgstr "找到保留的檔案名稱。"
+
+#: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
 msgstr "字串名稱是為預設訊息保留的名稱"
 
-#: src/messages/locale-messagesjson.js:27
+#: src/messages/locale-messagesjson.js:29
 msgid "Placeholder for message is missing"
 msgstr "缺少訊息的預留位置"
 
-#: src/messages/locale-messagesjson.js:28
+#: src/messages/locale-messagesjson.js:30
 msgid "A placeholder used in the message is not defined."
 msgstr "未定義訊息中使用的預留位置。"
 
-#: src/messages/locale-messagesjson.js:33
+#: src/messages/locale-messagesjson.js:35
 msgid "Placeholder name contains invalid characters"
 msgstr "預留位置名稱包含無效字元"
 
-#: src/messages/locale-messagesjson.js:40
+#: src/messages/locale-messagesjson.js:42
 msgid "Placeholder is missing the content property"
 msgstr "缺少預留位置的內容屬性"
 
@@ -206,149 +222,260 @@ msgstr "翻譯字串缺少訊息屬性"
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr "字串中，未為訊息設定「message」屬性（https://mzl.la/2DSBTjA）。"
 
-#: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
-msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr "請參考 https://mzl.la/1ZOhoEN（MDN 文件）上的更多資訊。"
-
 #: src/messages/manifestjson.js:103
-msgid "\"strict_max_version\" not required."
-msgstr "「strict_max_version」不是必要的。"
-
-#: src/messages/manifestjson.js:122
-msgid "An icon defined in the manifest could not be found in the package."
-msgstr "無法在封裝檔案找到 manifest 中定義的圖示。"
-
-#: src/messages/manifestjson.js:125
-msgid "Icon could not be found at \"%(path)s\"."
-msgstr "無法在「%(path)s」找到圖示。"
-
-#: src/messages/manifestjson.js:142
-msgid "Background script could not be found at \"%(path)s\"."
-msgstr "無法在「%(path)s」找到背景指令碼。"
-
-#: src/messages/manifestjson.js:143
-msgid "Background page could not be found at \"%(path)s\"."
-msgstr "無法在「%(path)s」找到背景頁面。"
-
-#: src/messages/manifestjson.js:16
-msgid "The field is invalid."
-msgstr "欄位無效。"
-
-#: src/messages/manifestjson.js:161
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "無法在「%(path)s」找到安裝資訊檔中定義的內容指令碼。"
-
-#: src/messages/manifestjson.js:162
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "無法在「%(path)s」找到安裝資訊檔中定義的內容指令碼 CSS 檔案。"
-
-#: src/messages/manifestjson.js:173
-msgid "Forbidden content found in add-on."
-msgstr "附加元件中出現被禁止的內容。"
-
-#: src/messages/manifestjson.js:174
-msgid "This add-on contains forbidden content."
-msgstr "此附加元件包含被禁止的內容。"
-
-#: src/messages/manifestjson.js:182
-msgid "Icons must be square."
-msgstr "圖示必須是正方形。"
-
-#: src/messages/manifestjson.js:183
-msgid "Icon at \"%(path)s\" must be square."
-msgstr "位於「%(path)s」的圖示應為正方形。"
-
-#: src/messages/manifestjson.js:192
-msgid "The size of the icon does not match the manifest."
-msgstr "圖示大小與安裝資訊檔不同。"
-
-#: src/messages/manifestjson.js:204
-msgid "Corrupt image file"
-msgstr "圖檔已損壞"
-
-#: src/messages/manifestjson.js:206
-msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr "位於「%(path)s」的圖示檔案已損壞。"
-
-#: src/messages/manifestjson.js:217
-msgid "The \"default_locale\" is missing localizations."
-msgstr "「default_locale」缺少在地化內容。"
-
-#: src/messages/manifestjson.js:226
-msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr "缺少「default_locale」但有「_locales」存在。"
-
-#: src/messages/manifestjson.js:23
-msgid "The permission type is unsupported."
-msgstr "不受支援的權限類型。"
-
-#: src/messages/manifestjson.js:235
-msgid "Unsupported image extension"
-msgstr "不支援的圖片副檔名"
-
-#: src/messages/manifestjson.js:236
-msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr "圖示格式應為 JPG/JPEG、WebP、GIF、PNG 或 SVG 任一。"
-
-#: src/messages/manifestjson.js:244
-msgid "Empty language directory"
-msgstr "語言目錄空白"
-
-#: src/messages/manifestjson.js:245
-msgid "messages.json file missing in \"%(path)s\""
-msgstr "無法在「%(path)s」找到 messages.json 檔案。"
-
-#: src/messages/manifestjson.js:31
-msgid "Unknown permission."
-msgstr "權限未知。"
-
-#: src/messages/manifestjson.js:32
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "請參考 https://mzl.la/1R1n1t0（MDN 文件）上的更多資訊。"
-
-#: src/messages/manifestjson.js:38
-msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "manifest.json 當中的「manifest_version」不是有效值"
-
-#: src/messages/manifestjson.js:39
-msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "請參考 https://mzl.la/20PenXl（MDN 文件）上的更多資訊。"
-
-#: src/messages/manifestjson.js:49
-msgid "A custom content_security_policy needs additional review."
-msgstr "自訂 content_security_policy 將需要額外審核。"
-
-#: src/messages/manifestjson.js:65
-msgid "The \"name\" property must be a string."
-msgstr "「name」屬性必須是字串。"
-
-#: src/messages/manifestjson.js:66
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "請參考 http://mzl.la/1STmr48（MDN 文件）上的更多資訊。"
-
-#: src/messages/manifestjson.js:72
-msgid "The \"version\" property must be a string."
-msgstr "「version」屬性必須是字串。"
-
-#: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "請參考 http://mzl.la/1kXIADa（MDN 文件）上的更多資訊。"
-
-#: src/messages/manifestjson.js:79
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "「version」屬性使用了 Firefox 專屬格式。"
-
-#: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
 msgstr "不允許「update_url」。"
 
-#: src/messages/manifestjson.js:9
+#: src/messages/manifestjson.js:113
+msgid "The \"update_url\" property is not used by Firefox."
+msgstr "Firefox 不使用「update_url」屬性。"
+
+#: src/messages/manifestjson.js:122
+msgid "\"strict_max_version\" not required."
+msgstr "「strict_max_version」不是必要的。"
+
+#: src/messages/manifestjson.js:141
+msgid "An icon defined in the manifest could not be found in the package."
+msgstr "無法在封裝檔案找到安裝資訊中定義的圖示。"
+
+#: src/messages/manifestjson.js:145
+msgid "Icon could not be found at \"%(path)s\"."
+msgstr "無法在「%(path)s」找到圖示。"
+
+#: src/messages/manifestjson.js:160
+msgid "A background script defined in the manifest could not be found."
+msgstr "找不到安裝資訊檔中定義的背景指令碼。"
+
+#: src/messages/manifestjson.js:163
+msgid "A background page defined in the manifest could not be found."
+msgstr "找不到安裝資訊檔中定義的背景頁面。"
+
+#: src/messages/manifestjson.js:168
+msgid "Background script could not be found at \"%(path)s\"."
+msgstr "無法在「%(path)s」找到背景指令碼。"
+
+#: src/messages/manifestjson.js:169
+msgid "Background page could not be found at \"%(path)s\"."
+msgstr "無法在「%(path)s」找到背景頁面。"
+
+#: src/messages/manifestjson.js:17
+msgid "The field is invalid."
+msgstr "欄位無效。"
+
+#: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
+msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
+msgstr "請參考 https://mzl.la/1ZOhoEN（MDN 文件）上的更多資訊。"
+
+#: src/messages/manifestjson.js:184
+msgid "A content script defined in the manifest could not be found."
+msgstr "找不到安裝資訊檔中定義的內容指令碼。"
+
+#: src/messages/manifestjson.js:185
+msgid "A content script css file defined in the manifest could not be found."
+msgstr "找不到安裝資訊檔中定義的內容指令碼 CSS 檔案。"
+
+#: src/messages/manifestjson.js:190
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "無法在「%(path)s」找到安裝資訊檔中定義的內容指令碼。"
+
+#: src/messages/manifestjson.js:193
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "無法在「%(path)s」找到安裝資訊檔中定義的內容指令碼 CSS 檔案。"
+
+#: src/messages/manifestjson.js:207
+msgid "A dictionary file defined in the manifest could not be found."
+msgstr "找不到安裝資訊檔中定義的字典檔案。"
+
+#: src/messages/manifestjson.js:211
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "無法在「%(path)s」找到安裝資訊檔中定義的字典檔案。"
+
+#: src/messages/manifestjson.js:223
+msgid "The manifest contains multiple dictionaries."
+msgstr "安裝資訊檔中包含多個字典。"
+
+#: src/messages/manifestjson.js:224
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+msgstr "不支援在安裝資訊檔中定義多個字典。"
+
+#: src/messages/manifestjson.js:233
+msgid "The manifest contains a dictionaries object, but it is empty."
+msgstr "安裝資訊檔中包含字典物件，但是是空白的。"
+
+#: src/messages/manifestjson.js:236
+msgid "A dictionaries object was defined in the manifest, but it was empty."
+msgstr "安裝資訊檔中定義了字典物件，但是是空白的。"
+
+#: src/messages/manifestjson.js:245
+msgid "The manifest contains a dictionary but no id property."
+msgstr "安裝資訊中包含字典，但沒有 ID 屬性。"
+
+#: src/messages/manifestjson.js:246
+msgid "A dictionary was found in the manifest, but there was no id set."
+msgstr "在安裝資訊檔中找到字典，但沒有設定 ID。"
+
+#: src/messages/manifestjson.js:256
+msgid "Forbidden content found in add-on."
+msgstr "附加元件中出現被禁止的內容。"
+
+#: src/messages/manifestjson.js:257
+msgid "This add-on contains forbidden content."
+msgstr "此附加元件包含被禁止的內容。"
+
+#: src/messages/manifestjson.js:26
+msgid "The permission type is unsupported."
+msgstr "不受支援的權限類型。"
+
+#: src/messages/manifestjson.js:265
+msgid "Icons must be square."
+msgstr "圖示必須是正方形。"
+
+#: src/messages/manifestjson.js:266
+msgid "Icon at \"%(path)s\" must be square."
+msgstr "位於「%(path)s」的圖示應為正方形。"
+
+#: src/messages/manifestjson.js:277
+msgid "The size of the icon does not match the manifest."
+msgstr "圖示大小與安裝資訊檔不同。"
+
+#: src/messages/manifestjson.js:292
+msgid "Corrupt image file"
+msgstr "圖檔已損壞"
+
+#: src/messages/manifestjson.js:294
+msgid "Expected icon file at \"%(path)s\" is corrupted"
+msgstr "位於「%(path)s」的圖示檔案已損壞。"
+
+#: src/messages/manifestjson.js:303
+msgid "This theme LWT alias has been removed in Firefox 70."
+msgstr "此佈景主題的 LWT 別名，已於 Firefox 70 移除。"
+
+#: src/messages/manifestjson.js:304
+msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
+msgstr "請參考 https://mzl.la/2T11Lkc（MDN 文件）的更多資訊。"
+
+#: src/messages/manifestjson.js:319
+msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
+msgstr "無法在「%(path)s」找到「%(type)s」的佈景主題圖片"
+
+#: src/messages/manifestjson.js:330
+msgid "Corrupted theme image file"
+msgstr "損壞的佈景主題圖檔"
+
+#: src/messages/manifestjson.js:332
+msgid "Theme image file at \"%(path)s\" is corrupted"
+msgstr "位於「%(path)s」的佈景主題圖檔已毀損"
+
+#: src/messages/manifestjson.js:34
+msgid "Unknown permission."
+msgstr "權限未知。"
+
+#: src/messages/manifestjson.js:343
+msgid "Theme image file has an unsupported file extension"
+msgstr "此圖片使用不支援的副檔名"
+
+#: src/messages/manifestjson.js:345
+msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
+msgstr "位於「%(path)s」的佈景主題圖檔，副檔名不支援"
+
+#: src/messages/manifestjson.js:35
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr "請參考 https://mzl.la/1R1n1t0（MDN 文件）上的更多資訊。"
+
+#: src/messages/manifestjson.js:359
+msgid "Theme image file has an unsupported mime type"
+msgstr "佈景主題圖檔的 MIME 類型不受支援"
+
+#: src/messages/manifestjson.js:361
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "位於「%(path)s」的佈景主題圖檔，其 MIME 類型「%(mime)s」不受支援"
+
+#: src/messages/manifestjson.js:375
+msgid "Theme image file mime type does not match its file extension"
+msgstr "佈景主題圖檔的 MIME 類型，與其副檔名不符"
+
+#: src/messages/manifestjson.js:379
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "位於「%(path)s」的佈景主題圖檔，其 MIME 類型「%(mime)s」與副檔名不符"
+
+#: src/messages/manifestjson.js:393
+msgid "The \"default_locale\" is missing localizations."
+msgstr "「default_locale」缺少在地化內容。"
+
+#: src/messages/manifestjson.js:402
+msgid "The \"default_locale\" is missing but \"_locales\" exist."
+msgstr "缺少「default_locale」但有「_locales」存在。"
+
+#: src/messages/manifestjson.js:411
+msgid "Unsupported image extension"
+msgstr "不支援的圖片副檔名"
+
+#: src/messages/manifestjson.js:412
+msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
+msgstr "圖示格式應為 JPG/JPEG、WebP、GIF、PNG 或 SVG 任一。"
+
+#: src/messages/manifestjson.js:422
+msgid "Empty language directory"
+msgstr "語言目錄空白"
+
+#: src/messages/manifestjson.js:424
+msgid "messages.json file missing in \"%(path)s\""
+msgstr "無法在「%(path)s」找到 messages.json 檔案。"
+
+#: src/messages/manifestjson.js:43
+msgid "\"manifest_version\" in the manifest.json is not a valid value"
+msgstr "manifest.json 當中的「manifest_version」不是有效值"
+
+#: src/messages/manifestjson.js:440
+msgid "Manifest key not supported by the specified minimum Firefox version"
+msgstr "指定的最小 Firefox 版本，不支援安裝資訊鍵值"
+
+#: src/messages/manifestjson.js:46
+msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
+msgstr "請參考 https://mzl.la/20PenXl（MDN 文件）上的更多資訊。"
+
+#: src/messages/manifestjson.js:462
+msgid "Permission not supported by the specified minimum Firefox version"
+msgstr "指定的最小 Firefox 版本，不支援權限"
+
+#: src/messages/manifestjson.js:484
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "指定的最小 Firefox for Android 版本，不支援安裝資訊鍵值"
+
+#: src/messages/manifestjson.js:506
+msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgstr "指定的最小 Firefox for Android 版本，不支援權限"
+
+#: src/messages/manifestjson.js:58
+msgid "A custom content_security_policy needs additional review."
+msgstr "自訂 content_security_policy 將需要額外審核。"
+
+#: src/messages/manifestjson.js:76
+msgid "The \"name\" property must be a string."
+msgstr "「name」屬性必須是字串。"
+
+#: src/messages/manifestjson.js:77
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr "請參考 http://mzl.la/1STmr48（MDN 文件）上的更多資訊。"
+
+#: src/messages/manifestjson.js:8
 msgid "The field is required."
 msgstr "此欄位是必要的。"
 
+#: src/messages/manifestjson.js:85
+msgid "The \"version\" property must be a string."
+msgstr "「version」屬性必須是字串。"
+
+#: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr "請參考 http://mzl.la/1kXIADa（MDN 文件）上的更多資訊。"
+
 #: src/messages/manifestjson.js:94
-msgid "The \"update_url\" property is not used by Firefox."
-msgstr "Firefox 不使用「update_url」屬性。"
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "「version」屬性使用了 Firefox 專屬格式。"
+
+#~ msgid "Violation of Mozilla conditions of use."
+#~ msgstr "違反 Mozilla 的使用條件。"
 
 #~ msgid "mozIndexedDB has been removed; use indexedDB instead"
 #~ msgstr "mozIndexedDB 已被移除，請改用 indexedDB"

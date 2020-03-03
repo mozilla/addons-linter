@@ -14,6 +14,8 @@ module.exports = {
       .default,
     'webextension-unsupported-api': require('./webextension-unsupported-api')
       .default,
+    'webextension-deprecated-api': require('./webextension-deprecated-api')
+      .default,
     'webextension-api-compat': require('./webextension-api-compat').default,
     'webextension-api-compat-android': require('./webextension-api-compat-android')
       .default,

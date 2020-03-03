@@ -162,6 +162,20 @@
             "timeStamp": {
               "type": "number",
               "description": "The time when this signal is triggered, in milliseconds since the epoch."
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -172,7 +186,8 @@
             "parentFrameId",
             "tabId",
             "type",
-            "timeStamp"
+            "timeStamp",
+            "thirdParty"
           ]
         }
       ],
@@ -281,6 +296,20 @@
                   "description": "The HTTP request headers that are going to be sent out with this request."
                 }
               ]
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -291,7 +320,8 @@
             "parentFrameId",
             "tabId",
             "type",
-            "timeStamp"
+            "timeStamp",
+            "thirdParty"
           ]
         }
       ],
@@ -400,6 +430,20 @@
                   "description": "The HTTP request headers that have been sent out with this request."
                 }
               ]
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -410,7 +454,8 @@
             "parentFrameId",
             "tabId",
             "type",
-            "timeStamp"
+            "timeStamp",
+            "thirdParty"
           ]
         }
       ],
@@ -516,6 +561,20 @@
             "statusCode": {
               "type": "integer",
               "description": "Standard HTTP status code returned by the server."
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -528,7 +587,8 @@
             "type",
             "timeStamp",
             "statusLine",
-            "statusCode"
+            "statusCode",
+            "thirdParty"
           ]
         }
       ],
@@ -673,6 +733,20 @@
             "statusCode": {
               "type": "integer",
               "description": "Standard HTTP status code returned by the server."
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -688,7 +762,8 @@
             "challenger",
             "isProxy",
             "statusLine",
-            "statusCode"
+            "statusCode",
+            "thirdParty"
           ]
         },
         {
@@ -830,6 +905,20 @@
             "statusLine": {
               "type": "string",
               "description": "HTTP status line of the response or the 'HTTP/0.9 200 OK' string for HTTP/0.9 responses (i.e., responses that lack a status line) or an empty string if there are no headers."
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -843,7 +932,8 @@
             "timeStamp",
             "fromCache",
             "statusCode",
-            "statusLine"
+            "statusLine",
+            "thirdParty"
           ]
         }
       ],
@@ -961,6 +1051,20 @@
             "statusLine": {
               "type": "string",
               "description": "HTTP status line of the response or the 'HTTP/0.9 200 OK' string for HTTP/0.9 responses (i.e., responses that lack a status line) or an empty string if there are no headers."
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -975,7 +1079,8 @@
             "fromCache",
             "statusCode",
             "redirectUrl",
-            "statusLine"
+            "statusLine",
+            "thirdParty"
           ]
         }
       ],
@@ -1089,6 +1194,28 @@
             "statusLine": {
               "type": "string",
               "description": "HTTP status line of the response or the 'HTTP/0.9 200 OK' string for HTTP/0.9 responses (i.e., responses that lack a status line) or an empty string if there are no headers."
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
+            },
+            "requestSize": {
+              "type": "integer",
+              "description": "For http requests, the bytes transferred in the request. Only available in onCompleted."
+            },
+            "responseSize": {
+              "type": "integer",
+              "description": "For http requests, the bytes received in the request. Only available in onCompleted."
             }
           },
           "required": [
@@ -1102,7 +1229,11 @@
             "timeStamp",
             "fromCache",
             "statusCode",
-            "statusLine"
+            "statusLine",
+            "urlClassification",
+            "thirdParty",
+            "requestSize",
+            "responseSize"
           ]
         }
       ],
@@ -1202,6 +1333,20 @@
             "error": {
               "type": "string",
               "description": "The error description. This string is <em>not</em> guaranteed to remain backwards compatible between releases. You must not parse and act based upon its content."
+            },
+            "urlClassification": {
+              "allOf": [
+                {
+                  "$ref": "#/types/UrlClassification"
+                },
+                {
+                  "description": "Tracking classification if the request has been classified."
+                }
+              ]
+            },
+            "thirdParty": {
+              "type": "boolean",
+              "description": "Indicates if this request and its content window hierarchy is third party."
             }
           },
           "required": [
@@ -1214,7 +1359,8 @@
             "type",
             "timeStamp",
             "fromCache",
-            "error"
+            "error",
+            "thirdParty"
           ]
         }
       ],
@@ -1646,6 +1792,60 @@
         }
       },
       "description": "Contains data uploaded in a URL request."
+    },
+    "UrlClassificationFlags": {
+      "type": "string",
+      "enum": [
+        "fingerprinting",
+        "fingerprinting_content",
+        "cryptomining",
+        "cryptomining_content",
+        "tracking",
+        "tracking_ad",
+        "tracking_analytics",
+        "tracking_social",
+        "tracking_content",
+        "any_basic_tracking",
+        "any_strict_tracking",
+        "any_social_tracking"
+      ],
+      "description": "Tracking flags that match our internal tracking classification"
+    },
+    "UrlClassificationParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/types/UrlClassificationFlags"
+      },
+      "description": "If the request has been classified this is an array of $(ref:UrlClassificationFlags)."
+    },
+    "UrlClassification": {
+      "type": "object",
+      "properties": {
+        "firstParty": {
+          "allOf": [
+            {
+              "$ref": "#/types/UrlClassificationParty"
+            },
+            {
+              "description": "Classification flags if the request has been classified and it is first party."
+            }
+          ]
+        },
+        "thirdParty": {
+          "allOf": [
+            {
+              "$ref": "#/types/UrlClassificationParty"
+            },
+            {
+              "description": "Classification flags if the request has been classified and it or its window hierarchy is third party."
+            }
+          ]
+        }
+      },
+      "required": [
+        "firstParty",
+        "thirdParty"
+      ]
     }
   }
 }

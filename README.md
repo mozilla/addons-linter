@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mozilla/addons-linter.svg?branch=master)](https://travis-ci.org/mozilla/addons-linter) [![Coverage Status](https://coveralls.io/repos/mozilla/addons-linter/badge.svg?branch=master&service=github)](https://coveralls.io/github/mozilla/addons-linter?branch=master) [![Dependency Status](https://david-dm.org/mozilla/addons-linter.svg)](https://david-dm.org/mozilla/addons-linter) [![devDependency Status](https://david-dm.org/mozilla/addons-linter/dev-status.svg)](https://david-dm.org/mozilla/addons-linter#info=devDependencies) [![npm version](https://badge.fury.io/js/addons-linter.svg)](https://badge.fury.io/js/addons-linter)
+[![Build Status](https://travis-ci.org/mozilla/addons-linter.svg?branch=master)](https://travis-ci.org/mozilla/addons-linter) [![codecov](https://codecov.io/gh/mozilla/addons-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/mozilla/addons-linter) [![Dependency Status](https://david-dm.org/mozilla/addons-linter.svg)](https://david-dm.org/mozilla/addons-linter) [![devDependency Status](https://david-dm.org/mozilla/addons-linter/dev-status.svg)](https://david-dm.org/mozilla/addons-linter#info=devDependencies) [![npm version](https://badge.fury.io/js/addons-linter.svg)](https://badge.fury.io/js/addons-linter)
 
 # addons-linter
 
@@ -125,7 +125,7 @@ bin/addons-linter my-addon.zip
 
 ### Required Node version
 
-addons-linter requires Node.js v8 or greater. Have a look at our `.travis.yml` file which Node.js versions we officially test.
+addons-linter requires Node.js v10 or greater. Have a look at our `.travis.yml` file which Node.js versions we officially test.
 
 Using nvm is probably the easiest way to manage multiple Node versions side by side. See [nvm on GitHub](https://github.com/creationix/nvm) for more details.
 

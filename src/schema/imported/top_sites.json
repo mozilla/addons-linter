@@ -54,6 +54,11 @@
               "type": "boolean",
               "default": false,
               "description": "Include search shortcuts appearing on the Firefox new tab."
+            },
+            "newtab": {
+              "type": "boolean",
+              "default": false,
+              "description": "Return the sites that exactly appear on the user's new-tab page. When true, all other options are ignored except limit and includeFavicon."
             }
           },
           "default": {},

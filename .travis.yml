@@ -1,8 +1,8 @@
 language: node_js
 sudo: false
 node_js:
-  - '8'
-  - '10'
+  - 'v10.19.0'
+  - 'v12.16.1'
 script:
   - npm run test-ci
   - node scripts/build-locales
@@ -11,11 +11,11 @@ script:
   # run integration tests using an addons-linter binary in a production-like environment
   - npm run test-integration:production
 notifications:
-  irc:
-    channels:
-    - irc.mozilla.org#amo-bots
+  slack:
+    if: branch = master
     on_success: change
     on_failure: always
+    secure: Y8YmPUEEFzyH6GzX+zz8wSkknwJie/lkTtTXURPtwKEtb4P9QYaiXOZqooRJAFlJbQUKIC+t1Lp5wcdULfgmKf3MxdlXMwlkbS/gTyWJZ9W/T3Xr0FToiLezcM6xX40d7CZu5ZImOPuptPGhPUCEOvT27Z+0LTu5JKdGe9RPxAmJ4lzaUMvT9BQwmPd6eN43OaeKXroi4KjtJhX2cGa0dTfT5/wMjNGKdyO+UpUJUXiNo2U3taui595TLEI9V3+qtu1HInnkzjtm5fdjF8+TqEFAz8Ge0ASbTtDy0jyd22WIJct1kiHjGHRrHfuD9xTIgRaQL1/1lLh/XuCSUqqm1fwP/agMNwZBy5nIsKKkiwVfa0kyMi++ChooJm+hCctwZIsMgAJOPI/vnmsfkyslS8qhdoL+cJJKXRdqov/+yPW6fZq44kthadtqC8Ee3D1YcvBN/FlgeZpShKRrk+a3ro/0gabtGWpArgoD3FYm3mbqa+/QxYd5XsYFtKiNJ7g5hNBPpoMi+y8w7TMdv5tXWpHZ7UjDpklslmREDyxoXfbCURwDy4+cAsKeWMcrpzvQuwFt6TmWTEDL3tplvwwRuYKjaRGngl9JIMRt1caAmPckf8MsGvds7FvY3rhGGIJoVwaa+kKbkbRCI5Z9OJNXBPl1lgE1DobDE9AjGYsAK6g=
 cache:
   directories:
   - node_modules

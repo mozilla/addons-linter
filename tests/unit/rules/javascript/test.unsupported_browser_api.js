@@ -1,6 +1,18 @@
 import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 
+const NOW_UNSUPPORTED_APIS = [
+  'app.getDetails',
+  'extension.onRequest',
+  'extension.onRequestExternal',
+  'extension.sendRequest',
+  'tabs.getAllInWindow',
+  'tabs.getSelected',
+  'tabs.onActiveChanged',
+  'tabs.onSelectionChanged',
+  'tabs.sendRequest',
+];
+
 describe('unsupported browser APIs', () => {
   it('flags gcm usage on chrome', async () => {
     const code = 'chrome.gcm.register(["foo"], function() {})';
@@ -34,6 +46,21 @@ describe('unsupported browser APIs', () => {
 
     const { linterMessages } = await jsScanner.scan();
     expect(linterMessages.length).toEqual(0);
+  });
+
+  NOW_UNSUPPORTED_APIS.forEach((api) => {
+    it(`should return unsupported warning when ${api} is used`, async () => {
+      const fakeMetadata = { addonMetadata: { id: '@unsupported-api' } };
+      const code = `browser.${api}();`;
+      const jsScanner = new JavaScriptScanner(code, 'code.js', fakeMetadata);
+
+      const { linterMessages } = await jsScanner.scan();
+      expect(linterMessages.length).toEqual(1);
+      expect(linterMessages[0].message).toEqual(
+        `"${api}" is deprecated or unimplemented`
+      );
+      expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
+    });
   });
 
   it('does not flag on 3 levels of nesting', async () => {

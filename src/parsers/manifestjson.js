@@ -16,7 +16,7 @@ import {
   validateStaticTheme,
 } from 'schema/validator';
 import {
-  DEPRECATED_STATIC_THEME_LWT_ALIASES,
+  DEPRECATED_MANIFEST_PROPERTIES,
   MANIFEST_JSON,
   PACKAGE_EXTENSION,
   CSP_KEYWORD_RE,
@@ -203,12 +203,26 @@ export default class ManifestJSONParser extends JSONParser {
       baseObject = messages.MANIFEST_FIELD_REQUIRED;
     } else if (error.keyword === 'deprecated') {
       if (
-        this.isStaticTheme &&
-        DEPRECATED_STATIC_THEME_LWT_ALIASES.includes(error.dataPath)
+        Object.prototype.hasOwnProperty.call(
+          DEPRECATED_MANIFEST_PROPERTIES,
+          error.dataPath
+        )
       ) {
-        baseObject = messages.MANIFEST_THEME_LWT_ALIAS;
-        // Overwrite the message with the shorter one included in the linter messages.
+        baseObject = messages[DEPRECATED_MANIFEST_PROPERTIES[error.dataPath]];
+
+        if (baseObject === null) {
+          baseObject = messages.MANIFEST_FIELD_DEPRECATED;
+        }
+
+        let errorDescription = baseObject.description;
+
+        if (errorDescription === null) {
+          errorDescription = error.message;
+        }
+
+        // Set the description to the actual message from the schema
         overrides.message = baseObject.message;
+        overrides.description = errorDescription;
       }
       // TODO(#2462): add a messages.MANIFEST_FIELD_DEPRECATED and ensure that deprecated
       // properties are handled properly (e.g. we should also detect when the deprecated
@@ -235,7 +249,7 @@ export default class ManifestJSONParser extends JSONParser {
           "${error.data}" at ${match[2]}.`;
     }
 
-    return Object.assign({}, baseObject, overrides);
+    return { ...baseObject, ...overrides };
   }
 
   _validate() {
@@ -476,6 +490,7 @@ export default class ManifestJSONParser extends JSONParser {
         this.collector.addError(messages.iconIsNotSquare(iconPath));
         this.isValid = false;
       } else if (
+        expectedSize !== null &&
         info.mime !== 'image/svg+xml' &&
         parseInt(info.width, 10) !== parseInt(expectedSize, 10)
       ) {
@@ -663,6 +678,20 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateCspPolicy(policy) {
+    if (typeof policy === 'string') {
+      this.validateCspPolicyString(policy, 'content_security_policy');
+    } else if (policy != null) {
+      const keys = Object.keys(policy);
+      for (const key of keys) {
+        this.validateCspPolicyString(
+          policy[key],
+          `content_security_policy.${key}`
+        );
+      }
+    }
+  }
+
+  validateCspPolicyString(policy, manifestPropName) {
     const directives = parseCspPolicy(policy);
 
     // Not sure about FTP here but CSP spec treats ws/wss as
@@ -708,7 +737,7 @@ export default class ManifestJSONParser extends JSONParser {
               // 'script-src' makes it secure
               insecureSrcDirective = true;
             } else {
-              this.collector.addWarning(messages.MANIFEST_CSP);
+              this.collector.addWarning(messages.manifestCsp(manifestPropName));
             }
             continue;
           }
@@ -719,7 +748,9 @@ export default class ManifestJSONParser extends JSONParser {
           // Add a more detailed message for unsafe-eval to avoid confusion
           // about why it's forbidden.
           if (value === 'unsafe-eval') {
-            this.collector.addWarning(messages.MANIFEST_CSP_UNSAFE_EVAL);
+            this.collector.addWarning(
+              messages.manifestCspUnsafeEval(manifestPropName)
+            );
             continue;
           }
 
@@ -731,7 +762,7 @@ export default class ManifestJSONParser extends JSONParser {
               // 'script-src' makes it secure
               insecureSrcDirective = true;
             } else {
-              this.collector.addWarning(messages.MANIFEST_CSP);
+              this.collector.addWarning(messages.manifestCsp(manifestPropName));
             }
             continue;
           }
@@ -739,7 +770,7 @@ export default class ManifestJSONParser extends JSONParser {
       }
     }
     if (insecureSrcDirective) {
-      this.collector.addWarning(messages.MANIFEST_CSP);
+      this.collector.addWarning(messages.manifestCsp(manifestPropName));
     }
   }
 

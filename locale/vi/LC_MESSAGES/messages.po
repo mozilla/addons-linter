@@ -3,9 +3,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-02-12 15:56+0000\n"
-"PO-Revision-Date: 2019-01-27 02:08+0000\n"
-"Last-Translator: Cloney 173741 <best.cloney.1301@gmail.com>\n"
+"POT-Creation-Date: 2019-07-25 10:01+0000\n"
+"PO-Revision-Date: 2019-11-25 21:32+0000\n"
+"Last-Translator: Thao NP <thaonp@amvietnam.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -14,39 +14,39 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:117
+#: src/linter.js:119
 msgid "Validation Summary:"
 msgstr "Tóm tắt xác nhận:"
 
-#: src/linter.js:134
+#: src/linter.js:138
 msgid "Code"
 msgstr "Đoạn mã"
 
-#: src/linter.js:140
+#: src/linter.js:144
 msgid "Message"
 msgstr "Tin nhắn"
 
-#: src/linter.js:146
+#: src/linter.js:150
 msgid "Description"
 msgstr "Mô tả"
 
-#: src/linter.js:152
+#: src/linter.js:156
 msgid "File"
 msgstr "Tập tin"
 
-#: src/linter.js:158
+#: src/linter.js:162
 msgid "Line"
 msgstr "Dòng"
 
-#: src/linter.js:164
+#: src/linter.js:168
 msgid "Column"
 msgstr "Cột"
 
-#: src/messages/css.js:16
+#: src/messages/css.js:15
 msgid "Invalid nesting of selectors found"
 msgstr "Đã tìm thấy lồng ghép không hợp lệ"
 
-#: src/messages/css.js:9
+#: src/messages/css.js:8
 msgid "A CSS syntax error was encountered"
 msgstr "Đã xảy ra lỗi cú pháp CSS"
 
@@ -58,11 +58,11 @@ msgstr "FTL của bạn không hợp lệ."
 msgid "Your FTL file could not be parsed."
 msgstr "Tệp FTL của bạn không thể phân tích cú pháp."
 
-#: src/messages/html.js:16
+#: src/messages/html.js:14
 msgid "Remote scripts are not allowed as per the Add-on Policies."
 msgstr "Các tập lệnh từ xa không được phép theo Chính sách tiện ích mở rộng."
 
-#: src/messages/html.js:8
+#: src/messages/html.js:7
 msgid "Inline scripts blocked by default"
 msgstr "Các tập lệnh nội tuyến bị chặn theo mặc định"
 
@@ -80,6 +80,22 @@ msgstr "API này chưa được Firefox triển khai."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
+msgstr ""
+
+#: src/messages/javascript.js:166
+msgid "{{api}} is not supported in Firefox version {{minVersion}}"
+msgstr "{{api}} không được hỗ trợ trong Firefox phiên bản {{minVersion}}"
+
+#: src/messages/javascript.js:169
+msgid "This API is not implemented by the given minimum Firefox version"
+msgstr ""
+
+#: src/messages/javascript.js:177
+msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
+msgstr "{{api}} không được hỗ trợ trong Firefox dành cho Android phiên bản {{minVersion}}"
+
+#: src/messages/javascript.js:180
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/javascript.js:23
@@ -120,7 +136,7 @@ msgstr "Thư viện JS của bên thứ 3 không được chấp nhận"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr "JSON của bạn chứa các bình luận (comments) bị chặn."
+msgstr "JSON của bạn chứa các bình luận (comment) bị chặn."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
@@ -134,67 +150,67 @@ msgstr "JSON của bạn không hợp lệ."
 msgid "Your JSON file could not be parsed."
 msgstr "Tập tin JSON của bạn không thể phân tích cú pháp."
 
-#: src/messages/layout.js:18
+#: src/messages/layout.js:17
 msgid "We were unable to decompress the zip file."
 msgstr "Chúng tôi không thể giải nén tập tin zip."
 
-#: src/messages/layout.js:23
+#: src/messages/layout.js:22
 msgid "manifest.json was not found"
 msgstr "Không tìm thấy manifest.json"
 
-#: src/messages/layout.js:31
+#: src/messages/layout.js:30
 msgid "File is too large to parse."
 msgstr "Tập tin quá lớn để phân tích cú pháp."
 
-#: src/messages/layout.js:40
+#: src/messages/layout.js:39
 msgid "Hidden file flagged"
 msgstr "Tập tin ẩn được gắn cờ"
 
-#: src/messages/layout.js:49
+#: src/messages/layout.js:48
 msgid "Flagged filename found"
 msgstr "Đã tìm thấy tên tập tin được gắn cờ"
 
-#: src/messages/layout.js:56
+#: src/messages/layout.js:55
 msgid "Flagged file extensions found"
 msgstr "Đã tìm thấy phần mở rộng tập tin được gắn cờ"
 
-#: src/messages/layout.js:63
+#: src/messages/layout.js:62
 msgid "Flagged file type found"
 msgstr "Đã tìm thấy loại tập tin được gắn cờ"
 
-#: src/messages/layout.js:73
+#: src/messages/layout.js:72
 msgid "Package already signed"
 msgstr "Gói đã được ký"
 
-#: src/messages/layout.js:81
-msgid "Violation of Mozilla conditions of use."
-msgstr "Vi phạm các điều khoản sử dụng Mozilla."
-
-#: src/messages/layout.js:9
+#: src/messages/layout.js:8
 msgid "Package contains duplicate entries"
 msgstr "Gói chứa các mục trùng lặp"
 
-#: src/messages/layout.js:90
+#: src/messages/layout.js:80
 msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Tiện ích Firefox không được phép chạy các công cụ khai thác tiền ảo (coin miners)."
 
-#: src/messages/locale-messagesjson.js:13
+#: src/messages/layout.js:89
+msgid "Reserved filename found."
+msgstr ""
+
+#: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
 msgstr "Tên chuỗi được dành riêng cho một tin nhắn được xác định trước"
 
-#: src/messages/locale-messagesjson.js:27
+#: src/messages/locale-messagesjson.js:29
 msgid "Placeholder for message is missing"
 msgstr ""
 
-#: src/messages/locale-messagesjson.js:28
+#: src/messages/locale-messagesjson.js:30
 msgid "A placeholder used in the message is not defined."
 msgstr ""
 
-#: src/messages/locale-messagesjson.js:33
+#: src/messages/locale-messagesjson.js:35
 msgid "Placeholder name contains invalid characters"
 msgstr ""
 
-#: src/messages/locale-messagesjson.js:40
+#: src/messages/locale-messagesjson.js:42
 msgid "Placeholder is missing the content property"
 msgstr ""
 
@@ -206,146 +222,257 @@ msgstr "Chuỗi dịch bị thiếu thuộc tính tin nhắn"
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr "Không có thuộc tính thông báo \"message\" nào được đặt cho một chuỗi (https://mzl.la/2DSBTjA)."
 
-#: src/messages/manifestjson.js:10 src/messages/manifestjson.js:17
-msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr "Xem https://mzl.la/1ZOhoEN (Tài liệu MDN) để biết thêm thông tin."
-
 #: src/messages/manifestjson.js:103
-msgid "\"strict_max_version\" not required."
-msgstr "\"strict_max_version\" không bắt buộc."
-
-#: src/messages/manifestjson.js:122
-msgid "An icon defined in the manifest could not be found in the package."
-msgstr "Không thể tìm thấy biểu tượng được xác định trong tập tin manifest trong gói."
-
-#: src/messages/manifestjson.js:125
-msgid "Icon could not be found at \"%(path)s\"."
-msgstr "Không thể tìm thấy biểu tượng ở \"%(path)s\"."
-
-#: src/messages/manifestjson.js:142
-msgid "Background script could not be found at \"%(path)s\"."
-msgstr "Không thể tìm thấy tập lệnh nền tại \"%(path)s\"."
-
-#: src/messages/manifestjson.js:143
-msgid "Background page could not be found at \"%(path)s\"."
-msgstr "Không thể tìm thấy trang nền tại \"%(path)s\"."
-
-#: src/messages/manifestjson.js:16
-msgid "The field is invalid."
-msgstr "Trường không hợp lệ."
-
-#: src/messages/manifestjson.js:161
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin manifest tại \"%(path)s\"."
-
-#: src/messages/manifestjson.js:162
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Không thể tìm thấy tệp css tập lệnh nội dung được xác định trong tập tin manifest tại \"%(path)s\"."
-
-#: src/messages/manifestjson.js:173
-msgid "Forbidden content found in add-on."
-msgstr "Đã tìm thấy nội dung bị cấm trong tiện ích."
-
-#: src/messages/manifestjson.js:174
-msgid "This add-on contains forbidden content."
-msgstr "Tiện ích này chứa nội dung bị cấm."
-
-#: src/messages/manifestjson.js:182
-msgid "Icons must be square."
-msgstr "Biểu tượng phải là hình vuông."
-
-#: src/messages/manifestjson.js:183
-msgid "Icon at \"%(path)s\" must be square."
-msgstr "Biểu tượng tại \"%(path)s\" phải là hình vuông."
-
-#: src/messages/manifestjson.js:192
-msgid "The size of the icon does not match the manifest."
-msgstr "Kích thước của biểu tượng không phù hợp với manifest."
-
-#: src/messages/manifestjson.js:204
-msgid "Corrupt image file"
-msgstr "Tập tin bị hỏng"
-
-#: src/messages/manifestjson.js:206
-msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr "Tập tin biểu tượng tại \"%(path)s\" bị hỏng"
-
-#: src/messages/manifestjson.js:217
-msgid "The \"default_locale\" is missing localizations."
-msgstr "Thuộc tính \"default_locale\" bị thiếu bản địa hóa."
-
-#: src/messages/manifestjson.js:226
-msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr "Thuộc tính \"default_locale\" bị thiếu nhưng \"_locales\" tồn tại."
-
-#: src/messages/manifestjson.js:23
-msgid "The permission type is unsupported."
-msgstr "Loại quyền hạn không được hỗ trợ."
-
-#: src/messages/manifestjson.js:235
-msgid "Unsupported image extension"
-msgstr "Phần mở rộng của hình ảnh không được hỗ trợ"
-
-#: src/messages/manifestjson.js:236
-msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr "Các biểu tượng phải là một trong JPG/JPEG, WebP, GIF, PNG hoặc SVG."
-
-#: src/messages/manifestjson.js:244
-msgid "Empty language directory"
-msgstr "Thư mục ngôn ngữ trống"
-
-#: src/messages/manifestjson.js:245
-msgid "messages.json file missing in \"%(path)s\""
-msgstr "Thiếu tập tin messages.json trong \"%(path)s\""
-
-#: src/messages/manifestjson.js:31
-msgid "Unknown permission."
-msgstr "Không rõ quyền hạn."
-
-#: src/messages/manifestjson.js:32
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "Xem tại https://mzl.la/1R1n1t0 (Tài liệu MDN) để biết thêm thông tin."
-
-#: src/messages/manifestjson.js:38
-msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "\"manifest_version\" trong manifest.json không phải là một giá trị hợp lệ"
-
-#: src/messages/manifestjson.js:39
-msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "Xem tại https://mzl.la/20PenXl (Tài liệu MDN) để biết thêm thông tin."
-
-#: src/messages/manifestjson.js:49
-msgid "A custom content_security_policy needs additional review."
-msgstr "Một tùy chỉnh content_security_policy cần xem xét bổ sung."
-
-#: src/messages/manifestjson.js:65
-msgid "The \"name\" property must be a string."
-msgstr "Thuộc tính \"name\" phải là một chuỗi kí tự."
-
-#: src/messages/manifestjson.js:66
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "Xem tại http://mzl.la/1STmr48 (Tài liệu MDN) để biết thêm thông tin."
-
-#: src/messages/manifestjson.js:72
-msgid "The \"version\" property must be a string."
-msgstr "Thuộc tính \"version\" phải là một chuỗi kí tự."
-
-#: src/messages/manifestjson.js:73 src/messages/manifestjson.js:80
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "Xem tại http://mzl.la/1kXIADa (Tài liệu MDN) để biết thêm thông tin."
-
-#: src/messages/manifestjson.js:79
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "Thuộc tính \"version\" sử dụng định dạng dành riêng cho Firefox."
-
-#: src/messages/manifestjson.js:86
 msgid "\"update_url\" is not allowed."
 msgstr "\"update_url\" không được cho phép."
 
-#: src/messages/manifestjson.js:9
+#: src/messages/manifestjson.js:113
+msgid "The \"update_url\" property is not used by Firefox."
+msgstr "Thuộc tính \"update_url\" không được sử dụng bởi Firefox."
+
+#: src/messages/manifestjson.js:122
+msgid "\"strict_max_version\" not required."
+msgstr "\"strict_max_version\" không bắt buộc."
+
+#: src/messages/manifestjson.js:141
+msgid "An icon defined in the manifest could not be found in the package."
+msgstr "Không thể tìm thấy biểu tượng được xác định trong tập tin manifest trong gói."
+
+#: src/messages/manifestjson.js:145
+msgid "Icon could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy biểu tượng ở \"%(path)s\"."
+
+#: src/messages/manifestjson.js:160
+msgid "A background script defined in the manifest could not be found."
+msgstr "Không thể tìm thấy tập lệnh nền được xác định trong tập tin kê khai."
+
+#: src/messages/manifestjson.js:163
+msgid "A background page defined in the manifest could not be found."
+msgstr "Không thể tìm thấy một trang nền được xác định trong tập tin kê khai."
+
+#: src/messages/manifestjson.js:168
+msgid "Background script could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy tập lệnh nền tại \"%(path)s\"."
+
+#: src/messages/manifestjson.js:169
+msgid "Background page could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy trang nền tại \"%(path)s\"."
+
+#: src/messages/manifestjson.js:17
+msgid "The field is invalid."
+msgstr "Trường không hợp lệ."
+
+#: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
+msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
+msgstr "Xem https://mzl.la/1ZOhoEN (Tài liệu MDN) để biết thêm thông tin."
+
+#: src/messages/manifestjson.js:184
+msgid "A content script defined in the manifest could not be found."
+msgstr "Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin kê khai."
+
+#: src/messages/manifestjson.js:185
+msgid "A content script css file defined in the manifest could not be found."
+msgstr "Không thể tìm thấy tập tin css tập lệnh nội dung được xác định trong tập tin kê khai."
+
+#: src/messages/manifestjson.js:190
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin manifest tại \"%(path)s\"."
+
+#: src/messages/manifestjson.js:193
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy tệp css tập lệnh nội dung được xác định trong tập tin manifest tại \"%(path)s\"."
+
+#: src/messages/manifestjson.js:207
+msgid "A dictionary file defined in the manifest could not be found."
+msgstr "Không thể tìm thấy tập tin từ điển được xác định trong tập tin kê khai."
+
+#: src/messages/manifestjson.js:211
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy tập tin từ điển được xác định trong tập tin kê khai tại \"%(path)s\"."
+
+#: src/messages/manifestjson.js:223
+msgid "The manifest contains multiple dictionaries."
+msgstr "Tập tin kê khai chứa nhiều từ điển."
+
+#: src/messages/manifestjson.js:224
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+msgstr "Nhiều từ điển đã được định nghĩa trong kê khai, mà nó không được hỗ trợ."
+
+#: src/messages/manifestjson.js:233
+msgid "The manifest contains a dictionaries object, but it is empty."
+msgstr "Tập tin kê khai chứa một đối tượng từ điển, nhưng nó trống."
+
+#: src/messages/manifestjson.js:236
+msgid "A dictionaries object was defined in the manifest, but it was empty."
+msgstr "Một đối tượng từ điển đã được định nghĩa trong tập tin kê khai, nhưng nó trống."
+
+#: src/messages/manifestjson.js:245
+msgid "The manifest contains a dictionary but no id property."
+msgstr "Tập tin kê khai chứa một từ điển nhưng không có thuộc tính id."
+
+#: src/messages/manifestjson.js:246
+msgid "A dictionary was found in the manifest, but there was no id set."
+msgstr "Một từ điển đã được tìm thấy trong tập tin kê khai, nhưng không được đặt id."
+
+#: src/messages/manifestjson.js:256
+msgid "Forbidden content found in add-on."
+msgstr "Đã tìm thấy nội dung bị cấm trong tiện ích."
+
+#: src/messages/manifestjson.js:257
+msgid "This add-on contains forbidden content."
+msgstr "Tiện ích này chứa nội dung bị cấm."
+
+#: src/messages/manifestjson.js:26
+msgid "The permission type is unsupported."
+msgstr "Loại quyền hạn không được hỗ trợ."
+
+#: src/messages/manifestjson.js:265
+msgid "Icons must be square."
+msgstr "Biểu tượng phải là hình vuông."
+
+#: src/messages/manifestjson.js:266
+msgid "Icon at \"%(path)s\" must be square."
+msgstr "Biểu tượng tại \"%(path)s\" phải là hình vuông."
+
+#: src/messages/manifestjson.js:277
+msgid "The size of the icon does not match the manifest."
+msgstr "Kích thước của biểu tượng không phù hợp với manifest."
+
+#: src/messages/manifestjson.js:292
+msgid "Corrupt image file"
+msgstr "Tập tin bị hỏng"
+
+#: src/messages/manifestjson.js:294
+msgid "Expected icon file at \"%(path)s\" is corrupted"
+msgstr "Tập tin biểu tượng tại \"%(path)s\" bị hỏng"
+
+#: src/messages/manifestjson.js:303
+msgid "This theme LWT alias has been removed in Firefox 70."
+msgstr "Bí danh chủ đề LWT này đã bị xóa trong Firefox 70."
+
+#: src/messages/manifestjson.js:304
+msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
+msgstr "Xem tại https://mzl.la/2T11Lkc (Tài liệu MDN) để biết thêm thông tin."
+
+#: src/messages/manifestjson.js:319
+msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
+msgstr "Không thể tìm thấy hình ảnh của chủ đề cho \"%(type)s\" tại \"%(path)s\""
+
+#: src/messages/manifestjson.js:330
+msgid "Corrupted theme image file"
+msgstr "Tập tin hình ảnh của chủ đề bị hỏng"
+
+#: src/messages/manifestjson.js:332
+msgid "Theme image file at \"%(path)s\" is corrupted"
+msgstr "Tập tin hình ảnh của chủ đề tại \"%(path)s\" bị hỏng"
+
+#: src/messages/manifestjson.js:34
+msgid "Unknown permission."
+msgstr "Không rõ quyền hạn."
+
+#: src/messages/manifestjson.js:343
+msgid "Theme image file has an unsupported file extension"
+msgstr "Tập tin hình ảnh chủ đề có phần mở rộng không được hỗ trợ"
+
+#: src/messages/manifestjson.js:345
+msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
+msgstr "Tập tin hình ảnh chủ đề tại \"%(path)s\" có phần mở rộng không được hỗ trợ"
+
+#: src/messages/manifestjson.js:35
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr "Xem tại https://mzl.la/1R1n1t0 (Tài liệu MDN) để biết thêm thông tin."
+
+#: src/messages/manifestjson.js:359
+msgid "Theme image file has an unsupported mime type"
+msgstr ""
+
+#: src/messages/manifestjson.js:361
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr ""
+
+#: src/messages/manifestjson.js:375
+msgid "Theme image file mime type does not match its file extension"
+msgstr ""
+
+#: src/messages/manifestjson.js:379
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr ""
+
+#: src/messages/manifestjson.js:393
+msgid "The \"default_locale\" is missing localizations."
+msgstr "Thuộc tính \"default_locale\" bị thiếu bản địa hóa."
+
+#: src/messages/manifestjson.js:402
+msgid "The \"default_locale\" is missing but \"_locales\" exist."
+msgstr "Thuộc tính \"default_locale\" bị thiếu nhưng \"_locales\" tồn tại."
+
+#: src/messages/manifestjson.js:411
+msgid "Unsupported image extension"
+msgstr "Phần mở rộng của hình ảnh không được hỗ trợ"
+
+#: src/messages/manifestjson.js:412
+msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
+msgstr "Các biểu tượng phải là một trong JPG/JPEG, WebP, GIF, PNG hoặc SVG."
+
+#: src/messages/manifestjson.js:422
+msgid "Empty language directory"
+msgstr "Thư mục ngôn ngữ trống"
+
+#: src/messages/manifestjson.js:424
+msgid "messages.json file missing in \"%(path)s\""
+msgstr "Thiếu tập tin messages.json trong \"%(path)s\""
+
+#: src/messages/manifestjson.js:43
+msgid "\"manifest_version\" in the manifest.json is not a valid value"
+msgstr "\"manifest_version\" trong manifest.json không phải là một giá trị hợp lệ"
+
+#: src/messages/manifestjson.js:440
+msgid "Manifest key not supported by the specified minimum Firefox version"
+msgstr "Khóa kê khai không được hỗ trợ bởi phiên bản Firefox tối thiểu đã chỉ định"
+
+#: src/messages/manifestjson.js:46
+msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
+msgstr "Xem tại https://mzl.la/20PenXl (Tài liệu MDN) để biết thêm thông tin."
+
+#: src/messages/manifestjson.js:462
+msgid "Permission not supported by the specified minimum Firefox version"
+msgstr "Quyền hạn không được hỗ trợ bởi phiên bản Firefox tối thiểu đã chỉ định"
+
+#: src/messages/manifestjson.js:484
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "Khóa kê khai không được hỗ trợ bởi Firefox dành cho Android phiên bản tối thiểu đã chỉ định"
+
+#: src/messages/manifestjson.js:506
+msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgstr "Quyền hạn không được hỗ trợ bởi Firefox dành cho Android phiên bản tối thiểu đã chỉ định"
+
+#: src/messages/manifestjson.js:58
+msgid "A custom content_security_policy needs additional review."
+msgstr "Một tùy chỉnh content_security_policy cần xem xét bổ sung."
+
+#: src/messages/manifestjson.js:76
+msgid "The \"name\" property must be a string."
+msgstr "Thuộc tính \"name\" phải là một chuỗi kí tự."
+
+#: src/messages/manifestjson.js:77
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr "Xem tại http://mzl.la/1STmr48 (Tài liệu MDN) để biết thêm thông tin."
+
+#: src/messages/manifestjson.js:8
 msgid "The field is required."
 msgstr "Trường này là bắt buộc."
 
+#: src/messages/manifestjson.js:85
+msgid "The \"version\" property must be a string."
+msgstr "Thuộc tính \"version\" phải là một chuỗi kí tự."
+
+#: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr "Xem tại http://mzl.la/1kXIADa (Tài liệu MDN) để biết thêm thông tin."
+
 #: src/messages/manifestjson.js:94
-msgid "The \"update_url\" property is not used by Firefox."
-msgstr "Thuộc tính \"update_url\" không được sử dụng bởi Firefox."
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "Thuộc tính \"version\" sử dụng định dạng dành riêng cho Firefox."
+
+#~ msgid "Violation of Mozilla conditions of use."
+#~ msgstr "Vi phạm các điều khoản sử dụng Mozilla."

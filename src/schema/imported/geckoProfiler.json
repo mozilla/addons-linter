@@ -165,7 +165,6 @@
         "js",
         "leaf",
         "mainthreadio",
-        "memory",
         "privacy",
         "responsiveness",
         "screenshots",
@@ -175,7 +174,11 @@
         "threads",
         "trackopts",
         "jstracer",
-        "jsallocations"
+        "jsallocations",
+        "nostacksampling",
+        "nativeallocations",
+        "preferencereads",
+        "ipcmessages"
       ]
     },
     "supports": {

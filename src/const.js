@@ -12,21 +12,20 @@ export const EXTERNAL_RULE_MAPPING = {
   'no-unsafe-innerhtml/no-unsafe-innerhtml': ESLINT_WARNING,
 };
 
-export const ESLINT_RULE_MAPPING = Object.assign(
-  {
-    'deprecated-entities': ESLINT_WARNING,
-    'event-listener-fourth': ESLINT_WARNING,
-    'global-require-arg': ESLINT_WARNING,
-    'opendialog-nonlit-uri': ESLINT_WARNING,
-    'opendialog-remote-uri': ESLINT_WARNING,
-    'webextension-api': ESLINT_WARNING,
-    'webextension-unsupported-api': ESLINT_WARNING,
-    'content-scripts-file-absent': ESLINT_ERROR,
-    'webextension-api-compat': ESLINT_WARNING,
-    'webextension-api-compat-android': ESLINT_WARNING,
-  },
-  EXTERNAL_RULE_MAPPING
-);
+export const ESLINT_RULE_MAPPING = {
+  'deprecated-entities': ESLINT_WARNING,
+  'event-listener-fourth': ESLINT_WARNING,
+  'global-require-arg': ESLINT_WARNING,
+  'opendialog-nonlit-uri': ESLINT_WARNING,
+  'opendialog-remote-uri': ESLINT_WARNING,
+  'webextension-api': ESLINT_WARNING,
+  'webextension-deprecated-api': ESLINT_WARNING,
+  'webextension-unsupported-api': ESLINT_WARNING,
+  'content-scripts-file-absent': ESLINT_ERROR,
+  'webextension-api-compat': ESLINT_WARNING,
+  'webextension-api-compat-android': ESLINT_WARNING,
+  ...EXTERNAL_RULE_MAPPING,
+};
 
 export const VALIDATION_ERROR = 'error';
 export const VALIDATION_NOTICE = 'notice';
@@ -123,12 +122,44 @@ export const MIME_TO_FILE_EXTENSIONS = {
 // List of the mime types for the allowed static theme images.
 export const STATIC_THEME_IMAGE_MIMES = Object.keys(MIME_TO_FILE_EXTENSIONS);
 
-// List of the "schema data paths" of the deprecated static theme's LWT aliases.
-export const DEPRECATED_STATIC_THEME_LWT_ALIASES = [
-  '/theme/images/headerURL',
-  '/theme/colors/accentcolor',
-  '/theme/colors/textcolor',
-];
+// Mapping of "schema data paths" of the deprecated properties that we
+// issue warnings for.
+// If the value is `null` we will be using the `deprecated` message
+// from the schema. Otherwise `code`, `message` and `description` will be taken
+// from the object provided.
+// Note that we have to use the constants name as we can't import
+// the message object here.
+export const DEPRECATED_MANIFEST_PROPERTIES = {
+  '/theme/images/headerURL': 'MANIFEST_THEME_LWT_ALIAS',
+  '/theme/colors/accentcolor': 'MANIFEST_THEME_LWT_ALIAS',
+  '/theme/colors/textcolor': 'MANIFEST_THEME_LWT_ALIAS',
+};
+
+// Mapping of deprecated javascript apis.
+// If the value is `null` we will be using the `deprecated` message
+// from the schema. Otherwise `code`, `message` and `description` will be taken
+// from the object provided.
+// Note that we have to use the constants name as we can't import
+// the message object here.
+export const DEPRECATED_JAVASCRIPT_APIS = {
+  // These APIs were already deprecated by Chrome and Firefox never
+  // supported them. We do still issue deprecation warnings for them.
+  'app.getDetails': 'DEPRECATED_CHROME_API',
+  'extension.onRequest': 'DEPRECATED_CHROME_API',
+  'extension.onRequestExternal': 'DEPRECATED_CHROME_API',
+  'extension.sendRequest': 'DEPRECATED_CHROME_API',
+  'tabs.getAllInWindow': 'DEPRECATED_CHROME_API',
+  'tabs.getSelected': 'DEPRECATED_CHROME_API',
+  'tabs.onActiveChanged': 'DEPRECATED_CHROME_API',
+  'tabs.onSelectionChanged': 'DEPRECATED_CHROME_API',
+  'tabs.sendRequest': 'DEPRECATED_CHROME_API',
+
+  // https://github.com/mozilla/addons-linter/issues/2556
+  'proxy.register': 'DEPRECATED_API',
+  'proxy.unregister': 'DEPRECATED_API',
+  'proxy.onProxyError': 'DEPRECATED_API',
+  'proxy.registerProxyScript': 'DEPRECATED_API',
+};
 
 // A list of magic numbers that we won't allow.
 export const FLAGGED_FILE_MAGIC_NUMBERS = [
@@ -144,24 +175,15 @@ export const FLAGGED_FILE_MAGIC_NUMBERS = [
 // Based on the above, this is how deep we need to look into a file.
 export const FLAGGED_FILE_MAGIC_NUMBERS_LENGTH = 4;
 
-export const DEPRECATED_APIS = [
-  'app.getDetails',
-  'extension.onRequest',
-  'extension.onRequestExternal',
-  'extension.sendRequest',
-  'tabs.getAllInWindow',
-  'tabs.getSelected',
-  'tabs.onActiveChanged',
-  'tabs.onSelectionChanged',
-  'tabs.sendRequest',
-];
-
 // These are APIs that will cause problems when loaded temporarily
 // in about:debugging.
+// APIs listed here should be defined in https://mzl.la/31p4AMc
 export const TEMPORARY_APIS = [
   'identity.getRedirectURL',
-  'storage.local',
   'storage.sync',
+  'storage.managed',
+  'runtime.onMessageExternal',
+  'runtime.onConnectExternal',
 ];
 
 // All valid CSP keywords that are options to keys like `default-src` and

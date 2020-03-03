@@ -29,28 +29,22 @@ describe('Message', () => {
   });
 
   it("shouldn't define random opts", () => {
-    const MyMessage = new Message(
-      'error',
-      Object.assign({}, fakeMessageData, { random: 'foo' })
-    );
+    const MyMessage = new Message('error', {
+      ...fakeMessageData,
+      random: 'foo',
+    });
     expect(MyMessage.random).not.toEqual('foo');
   });
 
   it('should throw on missing required prop', () => {
     expect(() => {
-      const MyMessage = new Message(
-        'error',
-        Object.assign({}, { description: 'foo' })
-      );
+      const MyMessage = new Message('error', { description: 'foo' });
     }).toThrow(/Message data object is missing the following props/);
   });
 
   it('should throw on incorrect file prop filename', () => {
     expect(() => {
-      const MyMessage = new Message(
-        'error',
-        Object.assign({}, { filename: 'foo' })
-      );
+      const MyMessage = new Message('error', { filename: 'foo' });
     }).toThrow(/The key for the file is "file"/);
   });
 
