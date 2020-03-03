@@ -63,16 +63,14 @@ export default class JavaScriptScanner {
     this.sourceType = this.detectSourceType(this.filename);
 
     const configDefaults = {
-      baseConfig: {
-        env: {
-          es6: true,
-          webextensions: true,
-          browser: true,
-        },
-        settings: {
-          addonMetadata: this.options.addonMetadata,
-          existingFiles: this.options.existingFiles,
-        },
+      env: {
+        es6: true,
+        webextensions: true,
+        browser: true,
+      },
+      settings: {
+        addonMetadata: this.options.addonMetadata,
+        existingFiles: this.options.existingFiles,
       },
       // It's the default but also shouldn't change since we're using
       // espree to parse javascript files below manually to figure out
