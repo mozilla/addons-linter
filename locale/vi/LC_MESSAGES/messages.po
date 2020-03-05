@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-11-25 21:32+0000\n"
-"Last-Translator: Thao NP <thaonp@amvietnam.com>\n"
+"PO-Revision-Date: 2019-10-03 15:45+0000\n"
+"Last-Translator: Chien L.I <lechien.thientam@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -88,7 +88,7 @@ msgstr "{{api}} không được hỗ trợ trong Firefox phiên bản {{minVersi
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr ""
+msgstr "API này không được triển khai bởi phiên bản Firefox tối thiểu quy định"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
@@ -96,7 +96,7 @@ msgstr "{{api}} không được hỗ trợ trong Firefox dành cho Android phiê
 
 #: src/messages/javascript.js:180
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
+msgstr "API này không được triển khai bởi phiên bản Firefox tối thiểu dành cho Android"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
