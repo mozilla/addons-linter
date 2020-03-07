@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-01-31 22:43+0000\n"
+"PO-Revision-Date: 2020-03-07 22:51+0000\n"
 "Last-Translator: Kim YoungCheon <circcc@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ko\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: src/linter.js:119
 msgid "Validation Summary:"
-msgstr ""
+msgstr "유효성 검증 요약:"
 
 #: src/linter.js:138
 msgid "Code"
@@ -56,7 +56,7 @@ msgstr "FTL이 유효하지 않습니다."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "FTL 파일을 파싱하지 못했습니다."
 
 #: src/messages/html.js:14
 msgid "Remote scripts are not allowed as per the Add-on Policies."
@@ -68,7 +68,7 @@ msgstr ""
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
-msgstr ""
+msgstr "알려진 JS 라이브러리 감지됨"
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
@@ -84,7 +84,7 @@ msgstr "addEventListener` 가 참으로 계산되는 네 번째 인수와 함께
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}는 Firefox 버전 {{minVersion}}에서 지원되지 않습니다"
 
 #: src/messages/javascript.js:169
 #, fuzzy
