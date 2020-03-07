@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-03-07 22:51+0000\n"
+"PO-Revision-Date: 2020-03-07 22:58+0000\n"
 "Last-Translator: Kim YoungCheon <circcc@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ko\n"
@@ -87,34 +87,32 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr "{{api}는 Firefox 버전 {{minVersion}}에서 지원되지 않습니다"
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "이 API는 Firefox에서 구현되지 않았습니다."
+msgstr "이 API는 제공된 최소 Firefox 버전에서 구현되지 않습니다"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}}는 안드로이드용 Firefox {{minVersion}}에서 지원되지 않습니다"
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "이 API는 Firefox에서 구현되지 않았습니다."
+msgstr "이 API는 제공된 최소 안드로이드용 Firefox 버전에서 구현되지 않습니다"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "컨텐츠 스크립트 파일을 찾을 수 없습니다."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "컨텐츠 스크립트 파일을 찾을 수 없습니다"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "컨텐츠 스크립트 파일의 이름은 비어 있을 수 없습니다."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "컨텐츠 스크립트 파일의 이름은 비어 있을 수 없습니다"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
@@ -130,7 +128,7 @@ msgstr ""
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "금지된 타사 JS 라이브러리"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
@@ -142,15 +140,15 @@ msgstr ""
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "JSON 파일에서는 중복된 키가 허용될 수 없습니다."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "JSON 파일이 유효하지 않습니다."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "JSON 파일을 파싱하지 못했습니다."
 
 #: src/messages/layout.js:17
 msgid "We were unable to decompress the zip file."
