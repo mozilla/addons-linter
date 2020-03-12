@@ -6,8 +6,9 @@ import {
   NO_DOCUMENT_WRITE,
 } from 'messages';
 
-// These rules were mostly copied and adapted from
-// https://github.com/mozfreddyb/eslint-plugin-no-unsafe-innerhtml/
+// These rules were mostly copied and adapted from:
+// https://github.com/mozilla/eslint-plugin-no-unsanitized/tree/master/tests/rules
+//
 // Please make sure to keep them up-to-date and report upstream errors.
 // Some notes are not included since we have our own rules
 // marking them as invalid (e.g document.write)
@@ -38,9 +39,6 @@ describe('no_unsafe_innerhtml', () => {
     'n.insertAdjacentHTML("afterend", "meh");',
     'n.insertAdjacentHTML("afterend", `<br>`);',
     'n.insertAdjacentHTML("afterend", Sanitizer.escapeHTML`${title}`);',
-
-    // override for manual review and legacy code
-    'g.innerHTML = potentiallyUnsafe; // a=legacy, bug 1155131',
 
     // (binary) expressions
     'x.innerHTML = `foo`+`bar`;',
@@ -102,17 +100,26 @@ describe('no_unsafe_innerhtml', () => {
       id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
       description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
+    {
+      // This used to be allowed by the upstream npm package, 
+      // but it has been deprecated (and disallowed) starting from
+      // https://github.com/mozilla/eslint-plugin-no-unsanitized/pull/20
+      code: 'g.innerHTML = potentiallyUnsafe; // a=legacy, bug 1155131',
+      message: ['Unsafe assignment to innerHTML'],
+      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
+    },
 
     // insertAdjacentHTML examples
     {
       code: 'node.insertAdjacentHTML("beforebegin", htmlString);',
-      message: ['Unsafe call to insertAdjacentHTML'],
+      message: ['Unsafe call to node.insertAdjacentHTML for argument 1'],
       id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
       description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'node.insertAdjacentHTML("beforebegin", template.getHTML());',
-      message: ['Unsafe call to insertAdjacentHTML'],
+      message: ['Unsafe call to node.insertAdjacentHTML for argument 1'],
       id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
       description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
@@ -136,7 +143,7 @@ describe('no_unsafe_innerhtml', () => {
       code: 'document.write("<span>" + htmlInput + "</span>");',
       message: [
         'Use of document.write strongly discouraged.',
-        'Unsafe call to document.write',
+        'Unsafe call to document.write for argument 0',
       ],
       id: [NO_DOCUMENT_WRITE.code, UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
       description: [
@@ -148,7 +155,7 @@ describe('no_unsafe_innerhtml', () => {
       code: 'document.write(undefined);',
       message: [
         'Use of document.write strongly discouraged.',
-        'Unsafe call to document.write',
+        'Unsafe call to document.write for argument 0',
       ],
       id: [NO_DOCUMENT_WRITE.code, UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
       description: [
@@ -158,7 +165,7 @@ describe('no_unsafe_innerhtml', () => {
     },
     {
       code: 'document.writeln(evil);',
-      message: ['Unsafe call to document.writeln'],
+      message: ['Unsafe call to document.writeln for argument 0'],
       id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
       description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
