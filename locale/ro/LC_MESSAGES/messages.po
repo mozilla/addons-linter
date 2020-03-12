@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-29 23:43+0000\n"
+"PO-Revision-Date: 2020-03-12 22:54+0000\n"
 "Last-Translator: Cristian Silaghi <cristian.silaghi@mozilla.ro>\n"
 "Language-Team: none\n"
 "Language: ro\n"
@@ -68,7 +68,7 @@ msgstr "Scripturile inline sunt blocate implicit"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
-msgstr "S-a depistat o bibliotecă JS cunoscută"
+msgstr "S-a depistat o librărie JS cunoscută"
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
@@ -128,11 +128,11 @@ msgstr "Utilizarea document.write este puternic nerecomandată."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr "Bibliotecă JS de la terți interzisă"
+msgstr "Librărie JS de la terți interzisă"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr "Bibliotecă JS de la terți nerecomandată"
+msgstr "Librărie JS de la terți nerecomandată"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
