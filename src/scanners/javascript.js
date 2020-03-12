@@ -82,7 +82,7 @@ export default class JavaScriptScanner {
         sourceType: this.sourceType,
       },
       rules: _ruleMapping,
-      plugins: ['no-unsafe-innerhtml'],
+      plugins: ['no-unsanitized'],
       allowInlineConfig: false,
 
       // Disable ignore-mode and overwrite eslint default ignore patterns
