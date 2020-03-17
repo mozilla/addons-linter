@@ -19,19 +19,11 @@ describe('no_unsafe_innerhtml', () => {
     "a.innerHTML = '';",
     "a.innerHTML *= 'test';",
     'c.innerHTML = ``;',
-    'g.innerHTML = Sanitizer.escapeHTML``;',
-    'h.innerHTML = Sanitizer.escapeHTML`foo`;',
-    'i.innerHTML = Sanitizer.escapeHTML`foo${bar}baz`;',
 
     // tests for innerHTML update (+= operator)
     "a.innerHTML += '';",
     'b.innerHTML += "";',
     'c.innerHTML += ``;',
-    'g.innerHTML += Sanitizer.escapeHTML``;',
-    'h.innerHTML += Sanitizer.escapeHTML`foo`;',
-    'i.innerHTML += Sanitizer.escapeHTML`foo${bar}baz`;',
-    'i.innerHTML += Sanitizer.unwrapSafeHTML(htmlSnippet)',
-    'i.outerHTML += Sanitizer.unwrapSafeHTML(htmlSnippet)',
 
     // (binary) expressions
     'x.innerHTML = `foo`+`bar`;',
@@ -42,9 +34,6 @@ describe('no_unsafe_innerhtml', () => {
     "v.innerHTML = `<span>${'lulz'}</span>${55}`;",
     "w.innerHTML = `<span>${'lulz'+'meh'}</span>`;",
 
-    // testing unwrapSafeHTML spread
-    'this.imeList.innerHTML = Sanitizer.unwrapSafeHTML(...listHtml);',
-
     // Native method (Check customize code doesn't include these)
     'document.toString = evil;',
     'document.toString(evil);',
@@ -52,10 +41,8 @@ describe('no_unsafe_innerhtml', () => {
     // tests for insertAdjacentHTML calls
     'n.insertAdjacentHTML("afterend", "meh");',
     'n.insertAdjacentHTML("afterend", `<br>`);',
-    'n.insertAdjacentHTML("afterend", Sanitizer.escapeHTML`${title}`);',
 
     // document.write/writeln
-    'document.writeln(Sanitizer.escapeHTML`<em>${evil}</em>`);',
     'otherNodeWeDontCheckFor.writeln(evil);',
 
     // template string expression tests
@@ -252,6 +239,45 @@ describe('no_unsafe_innerhtml', () => {
     },
     {
       code: 'y.innerHTML = ((arrow_function)=>null)`some HTML`',
+    },
+
+    // Escapers and unwrappers allowed by default should be disabled
+    // by the addons-linter customized config for this rule.
+    {
+      code: 'g.innerHTML += Sanitizer.escapeHTML``;',
+    },
+    {
+      code: 'g.innerHTML = Sanitizer.escapeHTML``;',
+    },
+    {
+      code: 'h.innerHTML = Sanitizer.escapeHTML`foo`;',
+    },
+    {
+      code: 'i.innerHTML = Sanitizer.escapeHTML`foo${bar}baz`;',
+    },
+    {
+      code: 'h.innerHTML += Sanitizer.escapeHTML`foo`;',
+    },
+    {
+      code: 'i.innerHTML += Sanitizer.escapeHTML`foo${bar}baz`;',
+    },
+    {
+      code: 'i.innerHTML += Sanitizer.unwrapSafeHTML(htmlSnippet)',
+    },
+    {
+      code: 'i.outerHTML += Sanitizer.unwrapSafeHTML(htmlSnippet)',
+      message: ['Unsafe assignment to outerHTML'],
+    },
+    {
+      code: 'this.imeList.innerHTML = Sanitizer.unwrapSafeHTML(...listHtml);',
+    },
+    {
+      code: 'n.insertAdjacentHTML("afterend", Sanitizer.escapeHTML`${title}`);',
+      message: ['Unsafe call to n.insertAdjacentHTML for argument 1'],
+    },
+    {
+      code: 'document.writeln(Sanitizer.escapeHTML`<em>${evil}</em>`);',
+      message: ['Unsafe call to document.writeln for argument 0'],
     },
   ];
 
