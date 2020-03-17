@@ -17,6 +17,7 @@ describe('no_unsafe_innerhtml', () => {
   const validCodes = [
     // innerHTML equals
     "a.innerHTML = '';",
+    "a.innerHTML *= 'test';",
     'c.innerHTML = ``;',
     'g.innerHTML = Sanitizer.escapeHTML``;',
     'h.innerHTML = Sanitizer.escapeHTML`foo`;',
@@ -32,25 +33,47 @@ describe('no_unsafe_innerhtml', () => {
     'i.innerHTML += Sanitizer.unwrapSafeHTML(htmlSnippet)',
     'i.outerHTML += Sanitizer.unwrapSafeHTML(htmlSnippet)',
 
+    // (binary) expressions
+    'x.innerHTML = `foo`+`bar`;',
+    'y.innerHTML = "<span>" + 5 + "</span>";',
+
+    // template string expression tests
+    "u.innerHTML = `<span>${'lulz'}</span>`;",
+    "v.innerHTML = `<span>${'lulz'}</span>${55}`;",
+    "w.innerHTML = `<span>${'lulz'+'meh'}</span>`;",
+
     // testing unwrapSafeHTML spread
     'this.imeList.innerHTML = Sanitizer.unwrapSafeHTML(...listHtml);',
+
+    // Native method (Check customize code doesn't include these)
+    'document.toString = evil;',
+    'document.toString(evil);',
 
     // tests for insertAdjacentHTML calls
     'n.insertAdjacentHTML("afterend", "meh");',
     'n.insertAdjacentHTML("afterend", `<br>`);',
     'n.insertAdjacentHTML("afterend", Sanitizer.escapeHTML`${title}`);',
 
-    // (binary) expressions
-    'x.innerHTML = `foo`+`bar`;',
-    'y.innerHTML = "<span>" + 5 + "</span>";',
-
     // document.write/writeln
     'document.writeln(Sanitizer.escapeHTML`<em>${evil}</em>`);',
+    'otherNodeWeDontCheckFor.writeln(evil);',
 
     // template string expression tests
     'u.innerHTML = `<span>${"lulz"}</span>`;',
     'v.innerHTML = `<span>${"lulz"}</span>${55}`;',
     'w.innerHTML = `<span>${"lulz"+"meh"}</span>`;',
+
+    // rule should not barf on a CallExpression result being called again
+    '  _tests.shift()();',
+    '(Async.checkAppReady = function() { return true; })();',
+    'let endTime = (mapEnd || (e => e.delta))(this._data[this._data.length - 1]);',
+    "(text.endsWith('\\n') ? document.write : document.writeln)(text)",
+
+    // issue 71 https://github.com/mozilla/eslint-plugin-no-unsanitized/issues/71
+    'function foo() { return this().bar(); };',
+
+    // issue 79 https://github.com/mozilla/eslint-plugin-no-unsanitized/issues/79
+    `range.createContextualFragment('<p class="greeting">Hello!</p>');`,
   ];
 
   validCodes.forEach((code) => {
@@ -66,76 +89,82 @@ describe('no_unsafe_innerhtml', () => {
     // innerHTML examples
     {
       code: 'm.innerHTML = htmlString;',
-      message: ['Unsafe assignment to innerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'a.innerHTML += htmlString;',
-      message: ['Unsafe assignment to innerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'a.innerHTML += template.toHtml();',
-      message: ['Unsafe assignment to innerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'm.outerHTML = htmlString;',
       message: ['Unsafe assignment to outerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 't.innerHTML = `<span>${name}</span>`;',
-      message: ['Unsafe assignment to innerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 't.innerHTML = `<span>${"foobar"}</span>${evil}`;',
-      message: ['Unsafe assignment to innerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
+    },
+
+    // (binary) expressions
+    {
+      code: "node.innerHTML = '<span>'+ htmlInput;",
     },
     {
-      // This used to be allowed by the upstream npm package, 
+      code: "node.innerHTML = '<span>'+ htmlInput + '</span>';",
+    },
+
+    // bug https://bugzilla.mozilla.org/show_bug.cgi?id=1198200
+    {
+      code: "title.innerHTML = _('WB_LT_TIPS_S_SEARCH', {value0:engine});",
+    },
+
+    // https://bugzilla.mozilla.org/show_bug.cgi?id=1192595
+    {
+      code: 'x.innerHTML = Sanitizer.escapeHTML(evil)',
+    },
+    {
+      code: 'x.innerHTML = Sanitizer.escapeHTML(`evil`)',
+    },
+    {
+      code: 'y.innerHTML = ((arrow_function)=>null)`some HTML`',
+    },
+
+    // testing unwrapSafeHTML spread sanitizer typo
+    {
+      code: 'this.imeList.innerHTML = Sanitizer.unrapSafeHTML(...listHtml);',
+    },
+
+    // the previous override for manual review and legacy code is now invalid
+    {
+      // This used to be allowed by the upstream npm package,
       // but it has been deprecated (and disallowed) starting from
       // https://github.com/mozilla/eslint-plugin-no-unsanitized/pull/20
       code: 'g.innerHTML = potentiallyUnsafe; // a=legacy, bug 1155131',
-      message: ['Unsafe assignment to innerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
+    },
+    {
+      code: 'function foo() { return this().innerHTML = evil; };',
     },
 
     // insertAdjacentHTML examples
     {
       code: 'node.insertAdjacentHTML("beforebegin", htmlString);',
       message: ['Unsafe call to node.insertAdjacentHTML for argument 1'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'node.insertAdjacentHTML("beforebegin", template.getHTML());',
       message: ['Unsafe call to node.insertAdjacentHTML for argument 1'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
 
     // (binary) expressions
     {
       code: 'node.innerHTML = "<span>"+ htmlInput;',
       message: ['Unsafe assignment to innerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'node.innerHTML = "<span>" + htmlInput + "</span>";',
       message: ['Unsafe assignment to innerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
 
     // document.write / writeln
@@ -152,6 +181,19 @@ describe('no_unsafe_innerhtml', () => {
       ],
     },
     {
+      code: 'documentish.write("<span>" + htmlInput + "</span>");',
+      message: ['Unsafe call to documentish.write for argument 0'],
+      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
+    },
+    {
+      code: 'documentIframe.write("<span>" + htmlInput + "</span>");',
+      message: ['Unsafe call to documentIframe.write for argument 0'],
+      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
+    },
+
+    {
       code: 'document.write(undefined);',
       message: [
         'Use of document.write strongly discouraged.',
@@ -166,52 +208,62 @@ describe('no_unsafe_innerhtml', () => {
     {
       code: 'document.writeln(evil);',
       message: ['Unsafe call to document.writeln for argument 0'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
+    },
+    {
+      code: 'window.document.writeln(bad);',
+      message: ['Unsafe call to window.document.writeln for argument 0'],
+    },
+
+    // issue 71 https://github.com/mozilla/eslint-plugin-no-unsanitized/issues/71
+    {
+      code: 'function foo() { return this().insertAdjacentHTML(foo, bar); };',
+      message: ['Unsafe call to this().insertAdjacentHTML for argument 1'],
+    },
+
+    // Test that stem from formar parser errors and breakage
+    {
+      code: 'getDocument(myID).write(evil)',
+      message: ['Unsafe call to getDocument(myID).write for argument 0'],
+    },
+
+    // Issue 79: Warn for use of createContextualFragment
+    {
+      code: 'range.createContextualFragment(badness)',
+      message: ['Unsafe call to range.createContextualFragment for argument 0'],
     },
 
     // bug https://bugzilla.mozilla.org/show_bug.cgi?id=1198200
     {
       code: 'title.innerHTML = _("WB_LT_TIPS_S_SEARCH", {value0:engine});',
-      message: ['Unsafe assignment to innerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
 
     // https://bugzilla.mozilla.org/show_bug.cgi?id=1192595
     {
       code: 'x.innerHTML = Sanitizer.escapeHTML(evil)',
-      message: ['Unsafe assignment to innerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'x.innerHTML = Sanitizer.escapeHTML(`evil`)',
-      message: ['Unsafe assignment to innerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'y.innerHTML = ((arrow_function)=>null)`some HTML`',
-      message: ['Unsafe assignment to innerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'y.innerHTML = ((arrow_function)=>null)`some HTML`',
-      message: ['Unsafe assignment to innerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'y.innerHTML = ((arrow_function)=>null)`some HTML`',
-      message: ['Unsafe assignment to innerHTML'],
-      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
   ];
 
-  invalidCodes.forEach((code) => {
+  const defaultProps = {
+    message: ['Unsafe assignment to innerHTML'],
+    id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
+    description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
+  };
+
+  invalidCodes.forEach((testCase) => {
+    const code = { ...defaultProps, ...testCase };
+
     it(`should not allow the use of innerHTML examples ${code.code}`, async () => {
       const jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
