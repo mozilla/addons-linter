@@ -4,13 +4,20 @@ export const NO_COMPRESSION = 0;
 export const ESLINT_ERROR = 2;
 export const ESLINT_WARNING = 1;
 
+// Disable escapers (Sanitizer.escapeHTML, escapeHTML)
+// and unwrappers (Sanitizer.unwrapSafeHTML, unwrapSafeHTML)
+// which are allowed by default by this plugin.
+const DISABLE_ALLOWED_ESCAPERS = {
+  escape: { taggedTemplates: [], methods: [] },
+};
+
 // 3rd party / eslint-internal rules
 export const EXTERNAL_RULE_MAPPING = {
   'no-eval': [ESLINT_WARNING, { allowIndirect: false }],
   'no-implied-eval': ESLINT_WARNING,
   'no-new-func': ESLINT_WARNING,
-  'no-unsanitized/method': ESLINT_WARNING,
-  'no-unsanitized/property': ESLINT_WARNING,
+  'no-unsanitized/method': [ESLINT_WARNING, DISABLE_ALLOWED_ESCAPERS],
+  'no-unsanitized/property': [ESLINT_WARNING, DISABLE_ALLOWED_ESCAPERS],
 };
 
 export const ESLINT_RULE_MAPPING = {
