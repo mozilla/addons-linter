@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-02-12 17:25+0000\n"
+"PO-Revision-Date: 2020-03-21 02:22+0000\n"
 "Last-Translator: Enol <enolp@softastur.org>\n"
 "Language-Team: none\n"
 "Language: ast\n"
@@ -152,7 +152,7 @@ msgstr ""
 
 #: src/messages/layout.js:17
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "Nun fuimos a descomprimir el ficheru ZIP."
 
 #: src/messages/layout.js:22
 msgid "manifest.json was not found"
@@ -188,7 +188,7 @@ msgstr ""
 
 #: src/messages/layout.js:80
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "Los complementos pa Firefox nun tienen permisu pa executar mineros de divises dixitales."
 
 #: src/messages/layout.js:89
 msgid "Reserved filename found."
@@ -316,11 +316,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "Alcontróse conteníu prohibíu nel complementu."
 
 #: src/messages/manifestjson.js:257
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "Esti complementu contién conteníu prohibíu."
 
 #: src/messages/manifestjson.js:26
 msgid "The permission type is unsupported."
