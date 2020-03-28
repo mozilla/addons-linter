@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-03-28 06:43+0000\n"
+"PO-Revision-Date: 2020-03-28 06:53+0000\n"
 "Last-Translator: Muhend Belkacem <taqbaylitassa@gmail.com>\n"
 "Language-Team: none\n"
 "Language: kab\n"
@@ -87,18 +87,16 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr "{{api}} ur yettwasefrak ara deg lqem-a n Firefox {{minVersion}}"
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Asnas-agi API yettwabna di Firefox."
+msgstr "Asnas-agi API ur yettwabna ara deg lqem adday n Firefox"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} ur yettwasefrak ara deg lqem-a n Firefox i Android {{minVersion}}"
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Asnas-agi API yettwabna di Firefox."
+msgstr "Asnas-agi API ur yettwabna ara deg lqem adday n Firefox Android"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -193,9 +191,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Izegrar Firefox ur zmiren ara ad selkemen tifextin n tedrimt."
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "Isem n ufaylu yettwacerḍen yettwaf"
+msgstr "Isem n ufauylu ittuḥaṛṛen yettwaf."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -246,9 +243,8 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Ulac-ot di \"%(path)s\"."
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr "Askript n ugbur deg umeskan ulac-it di \"%(path)s\"."
+msgstr "Ur izmir ara ad d-yaf askript n ugilal i yettusbadun deg umeskan."
 
 #: src/messages/manifestjson.js:163
 #, fuzzy
@@ -309,19 +305,19 @@ msgstr "Ddeqs n yimawalen ttusbadun deg umeskan, ayen ur nettusefrak ara."
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "Ameskan yegber taɣawsa amawal, maca d ilem."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "Taɣawsa amawal tettusbadu deg umeskan, maca d ilem."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "Ameskan yegber amawal, maca ulac timeẓlit id."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "Amawal yettwaf deg umeskan, maca ulac asulay id i yettusbadun."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -357,7 +353,7 @@ msgstr "Tignit yettwarǧan deg wadig \"%(path)s\" texseṛ"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Isem n usentel LWT yettwakkes deg Firefox 70."
 
 #: src/messages/manifestjson.js:304
 #, fuzzy
@@ -385,11 +381,11 @@ msgstr "Tasiragt tarussint."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "Asiɣzef n ufaylu n tugna n usentel ur yettusefrak ara"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "Asiɣzef n ufaylu deg \"%(path)s\" ɣer-s asiɣzef ur yettusefraken ara"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -397,19 +393,19 @@ msgstr "Wali https://mzl.la/1R1n1t0 (MDN Docs) i wugar n telɣut."
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "Tugna n usentel ɣur-s anaw mime ur yettisefraken ara"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "Tugna n usentel deg \"%(path)s\" ɣur-s anaw mime \"%(mime)s\" ur yettusefraken ara"
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "Anaw mime n ufaylu n tugna n usentel ur yemṣada ara d usiɣzef n ufaylu-is"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "Asiɣzef n ufaylu n usentel deg \"%(path)s\" ur yemṣada ara akked wanaw-is mime amiran \"%(mime)s\""
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
@@ -441,7 +437,7 @@ msgstr "Azal n \"manifest_version\" di manifest.json mačči d ameɣtu"
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Tasarut n umeskan ur tettusefrak ara deg lqem Firefox adday i d-ittunefken"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -449,15 +445,15 @@ msgstr "Wali https://mzl.la/20PenXl (MDN Docs) i wugar n telɣut."
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Tasiregt ur tettusefrak ara deg lqem Firefox adday i d-ittunefken"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Tasarut n umeskan ur tettusefrak ara deg lqem Firefox Android adday i d-ittunefken"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Tasiregt ur tettusefrak ara deg lqem Firefox Android adday i d-ittunefken"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
