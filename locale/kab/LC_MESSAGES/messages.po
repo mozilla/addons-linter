@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-03-28 06:53+0000\n"
+"PO-Revision-Date: 2020-03-28 06:57+0000\n"
 "Last-Translator: Muhend Belkacem <taqbaylitassa@gmail.com>\n"
 "Language-Team: none\n"
 "Language: kab\n"
@@ -247,9 +247,8 @@ msgid "A background script defined in the manifest could not be found."
 msgstr "Ur izmir ara ad d-yaf askript n ugilal i yettusbadun deg umeskan."
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "Tignit yettwasbadun deg umeskan ulac-itt deg ukemmus."
+msgstr "Ur izmir ara ad d-yaf tugna n ugilal i yettusbadun deg umeskan."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -268,14 +267,12 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Wali https://mzl.la/1ZOhoEN (MDN Docs) i wugar n telɣut."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "Askript n ugbur deg umeskan ulac-it di \"%(path)s\"."
+msgstr "Ur izmir ara ad d-yaf askript n ugbur i yettusbadun deg umeskan."
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Askript n ugbur deg ufaylu CSS deg umeskan ulac-it di \"%(path)s\"."
+msgstr "Ur izmir ara ad d-yaf afaylu css n uskript n ugbur i yettusbadun deg umeskan."
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -286,14 +283,12 @@ msgid "Content script css file defined in the manifest could not be found at \"%
 msgstr "Askript n ugbur deg ufaylu CSS deg umeskan ulac-it di \"%(path)s\"."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Tignit yettwasbadun deg umeskan ulac-itt deg ukemmus."
+msgstr "Ur izmir ara ad d-yaf afaylu n umawal i yettusbadun deg umeskan."
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Askript n ugbur deg ufaylu CSS deg umeskan ulac-it di \"%(path)s\"."
+msgstr "Ur izmir ara ad d-yaf afaylu n umawal i yettusbadun deg umeskan deg \"%(path)s\"."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
@@ -356,24 +351,20 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "Isem n usentel LWT yettwakkes deg Firefox 70."
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Wali https://mzl.la/1R1n1t0 (MDN Docs) i wugar n telɣut."
+msgstr "Wali https://mzl.la/2T11Lkc (MDN Docs) i wugar n yisallen."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Asebter n ugilal ulac-it di \"%(path)s\"."
+msgstr "Tugna n usentel i \"%(type)s\" ur tettwaf ara deg \"%(path)s\""
 
 #: src/messages/manifestjson.js:330
-#, fuzzy
 msgid "Corrupted theme image file"
-msgstr "Afaylu n tugna irreẓ"
+msgstr "Afaylu n tugna n usentel yeṛṛez"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "Tignit yettwarǧan deg wadig \"%(path)s\" texseṛ"
+msgstr "Afaylu ntugna n usentel deg \"%(path)s\" yexṣer"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
