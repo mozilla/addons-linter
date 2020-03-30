@@ -270,7 +270,7 @@ export function checkOutput(func, argv, callback) {
   var _log = console.log; // eslint-disable-line
   var _warn = console.warn; // eslint-disable-line
 
-  process.exit = function(code) {
+  process.exit = function (code) {
     exitCode = code;
   };
   process.env = Hash.merge(process.env, { _: 'node' });
@@ -280,13 +280,13 @@ export function checkOutput(func, argv, callback) {
   const logs = [];
   const warnings = [];
 
-  console.error = function(msg) {
+  console.error = function (msg) {
     errors.push(msg);
   }; // eslint-disable-line
-  console.log = function(msg) {
+  console.log = function (msg) {
     logs.push(msg);
   }; // eslint-disable-line
-  console.warn = function(msg) {
+  console.warn = function (msg) {
     warnings.push(msg);
   }; // eslint-disable-line
 
@@ -316,12 +316,12 @@ export function checkOutput(func, argv, callback) {
   }
 
   if (typeof cb === 'function') {
-    process.exit = function(code) {
+    process.exit = function (code) {
       exitCode = code;
       callback(null, done());
     };
 
-    process.emit = function(ev, value) {
+    process.emit = function (ev, value) {
       if (ev === 'uncaughtException') {
         done();
         callback(value);
