@@ -13,9 +13,7 @@ try {
   // needlessly and aren't required to build the linter for eslint
   // to pass.
   // eslint-disable-next-line import/no-unresolved
-  require('../dist/addons-linter')
-    .createInstance({ runAsBinary: true })
-    .run();
+  require('../dist/addons-linter').createInstance({ runAsBinary: true }).run();
 } catch (err) {
   if (err.code === 'MODULE_NOT_FOUND') {
     console.log('You did not build addons-linter yet.');
