@@ -53,10 +53,7 @@ async function getImageMetadata(io, iconPath) {
 }
 
 function getNormalizedExtension(_path) {
-  return path
-    .extname(_path)
-    .substring(1)
-    .toLowerCase();
+  return path.extname(_path).substring(1).toLowerCase();
 }
 
 export default class ManifestJSONParser extends JSONParser {

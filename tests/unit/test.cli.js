@@ -11,9 +11,7 @@ describe('Basic CLI tests', function cliCallback() {
     // Override yargs fail func so we can introspect the right errors
     // are happening when we hand it bogus input.
     this.fakeFail = sinon.stub();
-    cli = getConfig()
-      .exitProcess(false)
-      .fail(this.fakeFail);
+    cli = getConfig().exitProcess(false).fail(this.fakeFail);
   });
 
   it('should default logLevel type to "fatal"', () => {
