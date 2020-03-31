@@ -2038,8 +2038,12 @@
     },
     "PageSettings": {
       "type": "object",
-      "description": "The page settings including: orientation, scale, background, margins, headers, footers.",
+      "description": "Defines the page settings to be used when saving a page as a pdf file.",
       "properties": {
+        "toFileName": {
+          "type": "string",
+          "description": "The name of the file. May include optional .pdf extension."
+        },
         "paperSizeUnit": {
           "type": "integer",
           "description": "The page size unit: 0 = inches, 1 = millimeters. Default: 0."
