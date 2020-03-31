@@ -154,6 +154,26 @@
           "description": "This setting controls whether the document's fonts are used."
         }
       ]
+    },
+    "zoomFullPage": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "This boolean setting controls whether zoom is applied to the full page or to text only."
+        }
+      ]
+    },
+    "zoomSiteSpecific": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "This boolean setting controls whether zoom is applied on a per-site basis or to the current tab only. If privacy.resistFingerprinting is true, this setting has no effect and zoom is applied to the current tab only."
+        }
+      ]
     }
   },
   "definitions": {

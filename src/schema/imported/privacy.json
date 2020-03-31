@@ -181,7 +181,7 @@
     }
   },
   "definitions": {
-    "Permission": {
+    "OptionalPermission": {
       "anyOf": [
         {
           "type": "string",
@@ -193,9 +193,9 @@
     }
   },
   "refs": {
-    "privacy#/definitions/Permission": {
+    "privacy#/definitions/OptionalPermission": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "OptionalPermission"
     }
   },
   "types": {

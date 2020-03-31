@@ -494,6 +494,9 @@
           "$ref": "menus#/definitions/OptionalPermission"
         },
         {
+          "$ref": "privacy#/definitions/OptionalPermission"
+        },
+        {
           "$ref": "search#/definitions/OptionalPermission"
         },
         {
@@ -575,9 +578,6 @@
         },
         {
           "$ref": "pkcs11#/definitions/Permission"
-        },
-        {
-          "$ref": "privacy#/definitions/Permission"
         },
         {
           "$ref": "proxy#/definitions/Permission"
