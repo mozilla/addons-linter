@@ -3,6 +3,7 @@ import path from 'path';
 
 import yazl from 'yazl';
 import yauzl from 'yauzl';
+import tmp from 'tmp-promise';
 
 import {
   FLAG_PATTERN_REWRITES,
@@ -21,10 +22,17 @@ import {
   rewriteValue,
 } from 'schema/firefox-schemas-import';
 
-// Get a reference to unlinkSync so it won't get stubbed later
-const { unlinkSync } = fs;
+function prepareTmpDir() {
+  const tmpDir = tmp.dirSync({ mode: '0750', unsafeCleanup: true });
+  const outputPath = `${tmpDir.name}/schema-imported`;
+  const inputPath = `${tmpDir.name}/mozilla-central.zip`;
+  const cleanup = () => tmpDir.removeCallback();
 
-async function createZipFile() {
+  fs.mkdirSync(outputPath);
+  return { outputPath, inputPath, cleanup };
+}
+
+async function createZipFile(inputPath) {
   const cwd = 'tests/fixtures/schema';
   const schemaPath = `${cwd}/firefox`;
   const zipfile = new yazl.ZipFile();
@@ -37,7 +45,7 @@ async function createZipFile() {
 
   await new Promise((resolve) => {
     zipfile.outputStream
-      .pipe(fs.createWriteStream('mozilla-central.zip'))
+      .pipe(fs.createWriteStream(inputPath))
       .on('close', () => resolve());
     zipfile.end();
   });
@@ -49,17 +57,6 @@ describe('firefox schema import', () => {
     // eslint-disable-next-line jest/no-disabled-tests
     pending();
     return;
-  }
-
-  function createDir(dirPath) {
-    fs.mkdirSync(dirPath);
-  }
-
-  function removeDir(dirPath) {
-    fs.readdirSync(dirPath).forEach((file) =>
-      unlinkSync(path.join(dirPath, file))
-    );
-    fs.rmdirSync(dirPath);
   }
 
   describe('rewriteOptionalToRequired', () => {
@@ -1093,18 +1090,20 @@ describe('firefox schema import', () => {
     const schemaFiles = ['manifest.json', 'cookies.json'];
     const firefoxPath = 'tests/fixtures/schema/firefox';
     const ourPath = 'tests/fixtures/schema/updates';
-    const outputPath = 'tests/fixtures/schema/imported';
     const expectedPath = 'tests/fixtures/schema/expected';
+    let tmpDir;
 
     beforeEach(() => {
-      createDir(outputPath);
+      tmpDir = prepareTmpDir();
     });
 
     afterEach(() => {
-      removeDir(outputPath);
+      tmpDir.cleanup();
     });
 
     it('imports schemas from filesystem', () => {
+      const { outputPath } = tmpDir;
+
       importSchemas(firefoxPath, ourPath, outputPath);
       schemaFiles.forEach((file) => {
         expect(
@@ -1114,8 +1113,9 @@ describe('firefox schema import', () => {
     });
 
     it('skips native_host_manifest.json', () => {
-      importSchemas(firefoxPath, ourPath, outputPath);
+      const { outputPath } = tmpDir;
 
+      importSchemas(firefoxPath, ourPath, outputPath);
       expect(
         fs.existsSync(path.join(expectedPath, 'native_host_manifest.json'))
       ).toEqual(false);
@@ -1129,21 +1129,19 @@ describe('firefox schema import', () => {
   });
 
   describe('fetchSchemas', () => {
-    const outputPath = 'tests/fixtures/schema/imported';
-    const expectedZipfilePath = 'tmp/FIREFOX_AURORA_54_BASE.zip';
+    let tmpDir;
 
     beforeEach(() => {
-      expect(fs.existsSync(expectedZipfilePath)).toEqual(false);
-      createDir(outputPath);
+      tmpDir = prepareTmpDir();
     });
 
     afterEach(() => {
-      expect(fs.existsSync(expectedZipfilePath)).toEqual(false);
-      removeDir(outputPath);
+      tmpDir.cleanup();
     });
 
     it('extracts the schemas from a local file', async () => {
-      const zipfile = await createZipFile();
+      const { inputPath, outputPath } = tmpDir;
+      const zipfile = await createZipFile(inputPath);
 
       sinon
         .stub(inner, 'isBrowserSchema')
@@ -1151,35 +1149,28 @@ describe('firefox schema import', () => {
         .returns(false)
         .withArgs('manifest.json')
         .returns(true);
-      sinon
-        .stub(fs, 'createReadStream')
-        .withArgs('mozilla-central.zip')
-        .returns(zipfile);
-      sinon
-        .stub(fs, 'unlinkSync')
-        .withArgs('mozilla-central.zip')
-        .returns(undefined);
+      sinon.stub(fs, 'createReadStream').withArgs(inputPath).returns(zipfile);
+      sinon.stub(fs, 'unlinkSync').withArgs(inputPath).returns(undefined);
+
       expect(fs.readdirSync(outputPath)).toEqual([]);
-      await fetchSchemas({ inputPath: 'mozilla-central.zip', outputPath });
+      await fetchSchemas({ inputPath, outputPath });
       expect(fs.readdirSync(outputPath)).toEqual(['manifest.json']);
     });
 
     it('handles errors when opening the zipfile', async () => {
-      const zipfile = await createZipFile();
+      const { inputPath, outputPath } = tmpDir;
+      const zipfile = await createZipFile(inputPath);
 
-      sinon
-        .stub(fs, 'createReadStream')
-        .withArgs('mozilla-central.zip')
-        .returns(zipfile);
+      sinon.stub(fs, 'createReadStream').withArgs(inputPath).returns(zipfile);
 
       sinon.stub(yauzl, 'open').throws();
       expect(fs.readdirSync(outputPath)).toEqual([]);
-      await expect(
-        fetchSchemas({ inputPath: 'mozilla-central.zip', outputPath })
-      ).rejects.toThrow();
+      await expect(fetchSchemas({ inputPath, outputPath })).rejects.toThrow();
     });
 
     it('handles errors when parsing and processing the zipfile', async () => {
+      const { outputPath } = tmpDir;
+
       await expect(
         fetchSchemas({
           inputPath: 'tests/fixtures/wrong-entry-sizes.zip',
