@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - 'v10.20.0'
-  - 'v12.16.1'
+  - 'v10.20.1'
+  - 'v12.16.2'
 script:
   - npm run test-ci
   - node scripts/build-locales
