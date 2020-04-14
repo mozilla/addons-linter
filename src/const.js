@@ -217,3 +217,6 @@ export const MESSAGE_PLACEHOLDER_REGEXP = '\\$([a-zA-Z0-9_@]+)\\$';
 // yauzl should trow error with this message in case of corrupt zip file
 export const ZIP_LIB_CORRUPT_FILE_ERROR =
   'end of central directory record signature not found';
+
+// A list of not allowed words to use on extension name.
+export const NOT_ALLOWED_NAME_WORDS = ['mozilla', 'firefox'];

@@ -25,6 +25,7 @@ import {
   MESSAGES_JSON,
   MIME_TO_FILE_EXTENSIONS,
   STATIC_THEME_IMAGE_MIMES,
+  NOT_ALLOWED_NAME_WORDS,
 } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
@@ -476,6 +477,20 @@ export default class ManifestJSONParser extends JSONParser {
             }
           }
         });
+      }
+    }
+
+    if (this.parsedJSON.name) {
+      const nameLowerCase = String(this.parsedJSON.name).toLowerCase();
+      const nameContainsInvalidWords = NOT_ALLOWED_NAME_WORDS.some((word) =>
+        nameLowerCase.includes(word)
+      );
+
+      if (nameContainsInvalidWords) {
+        this.collector.addError(
+          messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX
+        );
+        this.isValid = false;
       }
     }
   }
