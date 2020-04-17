@@ -403,8 +403,8 @@ describe('ManifestJSONParser', () => {
         addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(false);
-      const { errors } = addonLinter.collector;
-      expect(errors[0].code).toEqual(
+      const { warnings } = addonLinter.collector;
+      expect(warnings[0].code).toEqual(
         messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX.code
       );
     });

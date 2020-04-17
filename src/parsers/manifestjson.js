@@ -480,14 +480,14 @@ export default class ManifestJSONParser extends JSONParser {
       }
     }
 
-    if (this.parsedJSON.name) {
-      const nameLowerCase = String(this.parsedJSON.name).toLowerCase();
+    if (this.parsedJSON.name && typeof this.parsedJSON.name === 'string') {
+      const nameLowerCase = this.parsedJSON.name.toLowerCase();
       const nameContainsInvalidWords = NOT_ALLOWED_NAME_WORDS.some((word) =>
         nameLowerCase.includes(word)
       );
 
       if (nameContainsInvalidWords) {
-        this.collector.addError(
+        this.collector.addWarning(
           messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX
         );
         this.isValid = false;
