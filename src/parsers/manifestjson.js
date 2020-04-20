@@ -481,16 +481,30 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.name && typeof this.parsedJSON.name === 'string') {
-      const nameLowerCase = this.parsedJSON.name.toLowerCase();
-      const nameContainsInvalidWords = NOT_ALLOWED_NAME_WORDS.some((word) =>
-        nameLowerCase.includes(word)
+      const placeholderName = this.parsedJSON.name.replace(
+        /__MSG_([A-Za-z0-9@_]+?)__/g,
+        (match, messageName) => {
+          if (messageName) {
+            return messageName;
+          }
+          return null;
+        }
       );
-
-      if (nameContainsInvalidWords) {
-        this.collector.addWarning(
-          messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX
+      if (placeholderName) {
+        // We've set global value to the extension name placeholder to use in locale-messages parser
+        global.placeholderExtensionName = placeholderName;
+      } else {
+        const nameLowerCase = this.parsedJSON.name.toLowerCase();
+        const nameContainsInvalidWords = NOT_ALLOWED_NAME_WORDS.some((word) =>
+          nameLowerCase.includes(word)
         );
-        this.isValid = false;
+
+        if (nameContainsInvalidWords) {
+          this.collector.addWarning(
+            messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX
+          );
+          this.isValid = false;
+        }
       }
     }
   }
