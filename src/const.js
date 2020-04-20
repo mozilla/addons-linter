@@ -214,6 +214,8 @@ export const LOCALES_DIRECTORY = '_locales';
 // https://searchfox.org/mozilla-central/rev/3abf6fa7e2a6d9a7bfb88796141b0f012e68c2db/toolkit/components/extensions/ExtensionCommon.jsm#1711
 export const MESSAGE_PLACEHOLDER_REGEXP = '\\$([a-zA-Z0-9_@]+)\\$';
 
+export const MANFIEST_MESSAGE_NAME_REGEXP = '__MSG_([A-Za-z0-9@_]+?)__';
+
 // yauzl should trow error with this message in case of corrupt zip file
 export const ZIP_LIB_CORRUPT_FILE_ERROR =
   'end of central directory record signature not found';

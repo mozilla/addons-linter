@@ -26,6 +26,7 @@ import {
   MIME_TO_FILE_EXTENSIONS,
   STATIC_THEME_IMAGE_MIMES,
   NOT_ALLOWED_NAME_WORDS,
+  MANFIEST_MESSAGE_NAME_REGEXP,
 } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
@@ -481,24 +482,18 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.name && typeof this.parsedJSON.name === 'string') {
-      const placeholderName = this.parsedJSON.name.replace(
-        /__MSG_([A-Za-z0-9@_]+?)__/g,
-        (match, messageName) => {
-          if (messageName) {
-            return messageName;
-          }
-          return null;
-        }
-      );
-      if (placeholderName) {
+      const messageNameRegexp = new RegExp(MANFIEST_MESSAGE_NAME_REGEXP, 'g');
+      const match = messageNameRegexp.exec(this.parsedJSON.name);
+      if (match) {
+        const messageName = match[1];
         // We've set global value to the extension name placeholder to use in locale-messages parser
-        global.placeholderExtensionName = placeholderName;
+        global.placeholderExtensionName = messageName;
       } else {
         const nameLowerCase = this.parsedJSON.name.toLowerCase();
         const nameContainsInvalidWords = NOT_ALLOWED_NAME_WORDS.some((word) =>
           nameLowerCase.includes(word)
         );
-
+        console.log(`nameContainsInvalidWords -> ${nameContainsInvalidWords}`);
         if (nameContainsInvalidWords) {
           this.collector.addWarning(
             messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX
