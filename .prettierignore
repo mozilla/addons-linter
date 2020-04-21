@@ -13,6 +13,7 @@ LICENSE
 /locale/
 /node_modules/
 /tests/fixtures/
+/coverage/
 
 # white-list files we want to process
 !*.js
