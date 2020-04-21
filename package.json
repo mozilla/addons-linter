@@ -23,6 +23,7 @@
     "test-integration:production": "node tests/integration/run-as-production-env.js test-integration tests/integration/addons-linter",
     "lint": "npm run eslint",
     "prettier": "prettier --write '**'",
+    "prettier-ci": "prettier --list-different '**' || (echo '\n\nThis failure means you did not run `npm run prettier-dev` before committing\n\n' && exit 1)",
     "prettier-dev": "pretty-quick --branch master",
     "publish-rules": "scripts/build-rules && cp node_modules/gfm.css/gfm.css docs/html/gfm.css && scripts/publish-rules",
     "gen-contributing-toc": "doctoc CONTRIBUTING.md"

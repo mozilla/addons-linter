@@ -141,17 +141,18 @@ Dependencies are automatically kept up-to-date using [renovatebot](https://renov
 
 #### npm scripts
 
-| Script                          | Description                                                                      |
-| ------------------------------- | -------------------------------------------------------------------------------- |
-| npm test                        | Runs the tests (watches for changes)                                             |
-| npm [run] build                 | Builds the lib (used by Travis)                                                  |
-| npm run test-coverage           | Runs the tests with coverage (watches for changes)                               |
-| npm run test-once               | Runs the tests once                                                              |
-| npm run lint                    | Runs ESLint                                                                      |
-| npm run test-coverage-once      | Runs the tests once with coverage                                                |
-| npm run test-integration-linter | Runs our integration test-suite                                                  |
-| npm run prettier                | Automatically format the whole code-base with Prettier                           |
-| npm run prettier-dev            | Automatically compare and format modified source files against the master branch |
+| Script | Description |
+| --- | --- |
+| npm test | Runs the tests (watches for changes) |
+| npm [run] build | Builds the lib (used by Travis) |
+| npm run test-coverage | Runs the tests with coverage (watches for changes) |
+| npm run test-once | Runs the tests once |
+| npm run lint | Runs ESLint |
+| npm run test-coverage-once | Runs the tests once with coverage |
+| npm run test-integration-linter | Runs our integration test-suite |
+| npm run prettier | Automatically format the whole code-base with Prettier |
+| npm run prettier-ci | Run [Prettier][] and fail if some code has been changed without being formatted |
+| npm run prettier-dev | Automatically compare and format modified source files against the master branch |
 
 ### Building
 
@@ -221,3 +222,4 @@ After merging the PR, [create a new release][new release] with the same tag name
 
 [new release]: https://github.com/mozilla/addons-linter/releases/new
 [semver]: http://semver.org/
+[prettier]: https://prettier.io/
