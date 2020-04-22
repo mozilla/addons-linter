@@ -22,6 +22,7 @@ export default class JSONScanner extends BaseScanner {
       const localeMessagesJSONParser = new LocaleMessagesJSONParser(
         json,
         this.options.collector,
+        this.options.addonMetadata,
         { filename: this.filename }
       );
       localeMessagesJSONParser.parse();

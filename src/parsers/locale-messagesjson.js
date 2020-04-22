@@ -6,6 +6,7 @@ import {
   MESSAGES_JSON,
   MESSAGE_PLACEHOLDER_REGEXP,
   NOT_ALLOWED_NAME_WORDS,
+  MANFIEST_MESSAGE_NAME_REGEXP,
 } from 'const';
 import { validateLocaleMessages } from 'schema/validator';
 import log from 'logger';
@@ -14,9 +15,10 @@ export default class LocaleMessagesJSONParser extends JSONParser {
   constructor(
     jsonString,
     collector,
+    addonMetadata,
     { filename = MESSAGES_JSON, RelaxedJSON = RJSON } = {}
   ) {
-    super(jsonString, collector, { filename });
+    super(jsonString, collector, addonMetadata, { filename });
     this.relaxedJSON = RelaxedJSON;
   }
 
@@ -156,30 +158,32 @@ export default class LocaleMessagesJSONParser extends JSONParser {
           }
         );
       }
-      // We assign value to this in manifest parser with the correspondent localized extension name placeholder
-      if (global.placeholderExtensionName) {
-        let nameContainsInvalidWords = false;
-        Object.keys(this.parsedJSON).forEach((msg) => {
-          if (msg === global.placeholderExtensionName) {
-            const nameLowerCase = this.parsedJSON[msg].message.toLowerCase();
+
+      if (this.addonMetadata && typeof this.addonMetadata.name === 'string') {
+        const messageNameRegexp = new RegExp(MANFIEST_MESSAGE_NAME_REGEXP, 'g');
+        const match = messageNameRegexp.exec(this.addonMetadata.name);
+        if (match) {
+          const messageName = match[1];
+          let nameContainsInvalidWords = false;
+          if (message === messageName) {
+            const nameLowerCase = this.parsedJSON[
+              message
+            ].message.toLowerCase();
             nameContainsInvalidWords = NOT_ALLOWED_NAME_WORDS.some((word) =>
               nameLowerCase.includes(word)
             );
           }
-        });
-        if (nameContainsInvalidWords) {
-          this.collector.addWarning(
-            messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX
-          );
-          this.isValid = false;
+          if (nameContainsInvalidWords) {
+            this.collector.addWarning(
+              messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX
+            );
+            this.isValid = false;
+          }
         }
       }
 
       // Reset the regexp
       regexp.lastIndex = 0;
-
-      // Reset global placeholder extension name
-      global.placeholderExtensionName = undefined;
     });
   }
 }

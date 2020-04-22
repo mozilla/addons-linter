@@ -4,7 +4,7 @@ import RJSON from 'relaxed-json';
 import * as messages from 'messages';
 
 export default class JSONParser {
-  constructor(jsonString, collector, { filename = null } = {}) {
+  constructor(jsonString, collector, addonMetadata, { filename = null } = {}) {
     // Add the JSON string to the object; we'll use this for testing.
     this._jsonString = jsonString;
 
@@ -18,6 +18,9 @@ export default class JSONParser {
     // This marks whether a JSON file is valid; in the case of the base JSON
     // parser, that's just whether it can be parsed and has duplicate keys.
     this.isValid = null;
+
+    // Provides access to addon information from scanners
+    this.addonMetadata = addonMetadata;
   }
 
   parse(RelaxedJSON = RJSON) {

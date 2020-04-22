@@ -484,16 +484,11 @@ export default class ManifestJSONParser extends JSONParser {
     if (this.parsedJSON.name && typeof this.parsedJSON.name === 'string') {
       const messageNameRegexp = new RegExp(MANFIEST_MESSAGE_NAME_REGEXP, 'g');
       const match = messageNameRegexp.exec(this.parsedJSON.name);
-      if (match) {
-        const messageName = match[1];
-        // We've set global value to the extension name placeholder to use in locale-messages parser
-        global.placeholderExtensionName = messageName;
-      } else {
+      if (!match) {
         const nameLowerCase = this.parsedJSON.name.toLowerCase();
         const nameContainsInvalidWords = NOT_ALLOWED_NAME_WORDS.some((word) =>
           nameLowerCase.includes(word)
         );
-        console.log(`nameContainsInvalidWords -> ${nameContainsInvalidWords}`);
         if (nameContainsInvalidWords) {
           this.collector.addWarning(
             messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX

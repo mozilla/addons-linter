@@ -268,7 +268,6 @@ describe('LocaleMessagesJSONParser', () => {
 
   it('should not contain the words "mozilla" or "firefox" on localized extension name', () => {
     const addonLinter = new Linter({ _: ['bar'] });
-    global.placeholderExtensionName = 'extensionName';
     const localeMessagesJSONParser = new LocaleMessagesJSONParser(
       `{
   "extensionName": {
@@ -276,11 +275,11 @@ describe('LocaleMessagesJSONParser', () => {
     "description": "Name of the extension."    
   }
 }`,
-      addonLinter.collector
+      addonLinter.collector,
+      { name: '__MSG_extensionName__' }
     );
 
     localeMessagesJSONParser.parse();
-    global.placeholderExtensionName = undefined;
     expect(localeMessagesJSONParser.isValid).toEqual(false);
     const { warnings } = addonLinter.collector;
     expect(warnings[0].code).toEqual(
