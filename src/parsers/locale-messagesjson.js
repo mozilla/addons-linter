@@ -99,6 +99,13 @@ export default class LocaleMessagesJSONParser extends JSONParser {
 
     const regexp = new RegExp(MESSAGE_PLACEHOLDER_REGEXP, 'ig');
     const visitedLowercaseMessages = [];
+    const messageNameRegexp = new RegExp(MANFIEST_MESSAGE_NAME_REGEXP, 'g');
+    let messageNameMatch = null;
+
+    if (this.addonMetadata && typeof this.addonMetadata.name === 'string') {
+      messageNameMatch = messageNameRegexp.exec(this.addonMetadata.name);
+    }
+
     Object.keys(this.parsedJSON).forEach((message) => {
       if (!visitedLowercaseMessages.includes(message.toLowerCase())) {
         visitedLowercaseMessages.push(message.toLowerCase());
@@ -159,26 +166,20 @@ export default class LocaleMessagesJSONParser extends JSONParser {
         );
       }
 
-      if (this.addonMetadata && typeof this.addonMetadata.name === 'string') {
-        const messageNameRegexp = new RegExp(MANFIEST_MESSAGE_NAME_REGEXP, 'g');
-        const match = messageNameRegexp.exec(this.addonMetadata.name);
-        if (match) {
-          const messageName = match[1];
-          let nameContainsInvalidWords = false;
-          if (message === messageName) {
-            const nameLowerCase = this.parsedJSON[
-              message
-            ].message.toLowerCase();
-            nameContainsInvalidWords = NOT_ALLOWED_NAME_WORDS.some((word) =>
-              nameLowerCase.includes(word)
-            );
-          }
-          if (nameContainsInvalidWords) {
-            this.collector.addWarning(
-              messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX
-            );
-            this.isValid = false;
-          }
+      if (messageNameMatch) {
+        const messageName = messageNameMatch[1];
+        let nameContainsInvalidWords = false;
+        if (message === messageName) {
+          const nameLowerCase = this.parsedJSON[message].message.toLowerCase();
+          nameContainsInvalidWords = NOT_ALLOWED_NAME_WORDS.some((word) =>
+            nameLowerCase.includes(word)
+          );
+        }
+        if (nameContainsInvalidWords) {
+          this.collector.addWarning(
+            messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX
+          );
+          this.isValid = false;
         }
       }
 
