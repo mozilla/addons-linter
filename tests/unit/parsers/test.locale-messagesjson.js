@@ -1,6 +1,7 @@
 import Linter from 'linter';
 import LocaleMessagesJSONParser from 'parsers/locale-messagesjson';
 import * as messages from 'messages';
+import { MESSAGES_JSON } from 'const';
 
 import { validLocaleMessagesJSON } from '../helpers';
 
@@ -285,6 +286,7 @@ describe('LocaleMessagesJSONParser', () => {
     expect(warnings[0].code).toEqual(
       messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX.code
     );
+    expect(warnings[0].file).toEqual(MESSAGES_JSON);
   });
 
   describe('getLowercasePlaceholders', () => {

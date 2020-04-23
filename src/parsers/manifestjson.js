@@ -483,8 +483,7 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (this.parsedJSON.name && typeof this.parsedJSON.name === 'string') {
       const messageNameRegexp = new RegExp(MANFIEST_MESSAGE_NAME_REGEXP, 'g');
-      const match = messageNameRegexp.exec(this.parsedJSON.name);
-      if (!match) {
+      if (!messageNameRegexp.exec(this.parsedJSON.name)) {
         const nameLowerCase = this.parsedJSON.name.toLowerCase();
         const nameContainsInvalidWords = NOT_ALLOWED_NAME_WORDS.some((word) =>
           nameLowerCase.includes(word)

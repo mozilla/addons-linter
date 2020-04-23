@@ -166,19 +166,17 @@ export default class LocaleMessagesJSONParser extends JSONParser {
         );
       }
 
-      if (messageNameMatch) {
-        const messageName = messageNameMatch[1];
+      if (messageNameMatch && message === messageNameMatch[1]) {
         let nameContainsInvalidWords = false;
-        if (message === messageName) {
-          const nameLowerCase = this.parsedJSON[message].message.toLowerCase();
-          nameContainsInvalidWords = NOT_ALLOWED_NAME_WORDS.some((word) =>
-            nameLowerCase.includes(word)
-          );
-        }
+        const nameLowerCase = this.parsedJSON[message].message.toLowerCase();
+        nameContainsInvalidWords = NOT_ALLOWED_NAME_WORDS.some((word) =>
+          nameLowerCase.includes(word)
+        );
         if (nameContainsInvalidWords) {
-          this.collector.addWarning(
-            messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX
-          );
+          this.collector.addWarning({
+            ...messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX,
+            file: this.filename,
+          });
           this.isValid = false;
         }
       }
