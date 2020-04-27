@@ -104,7 +104,7 @@
     "eslint-plugin-promise": "4.2.1",
     "gfm.css": "1.1.2",
     "gh-pages": "2.2.0",
-    "gunzip-maybe": "1.4.1",
+    "gunzip-maybe": "1.4.2",
     "hashish": "0.0.4",
     "jest": "25.4.0",
     "jest-raw-loader": "1.0.1",
