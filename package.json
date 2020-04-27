@@ -65,7 +65,7 @@
     "probe-image-size": "5.0.0",
     "relaxed-json": "1.0.3",
     "semver": "7.3.2",
-    "source-map-support": "0.5.16",
+    "source-map-support": "0.5.19",
     "strip-bom-stream": "4.0.0",
     "tosource": "1.0.0",
     "upath": "1.2.0",
