@@ -6,26 +6,26 @@ Rules are sorted by severity.
 
 ## JavaScript
 
-| Message code               | Severity | Description                                                                            |
-| -------------------------- | -------- | -------------------------------------------------------------------------------------- |
-| `KNOWN_LIBRARY`            | notice   | This is version of a JS library is known and generally accepted.                       |
-| `OPENDIALOG_NONLIT_URI`    | notice   | openDialog called with non-literal parameter.                                          |
-| `EVENT_LISTENER_FOURTH`    | notice   | `addEventListener` called with truthy fourth argument.                                 |
-| `UNEXPECTED_GLOGAL_ARG`    | warning  | Unexpected global passed as an argument.                                               |
-| `NO_IMPLIED_EVAL`          | warning  | disallow the use of `eval()`-like methods.                                             |
-| `OPENDIALOG_REMOTE_URI`    | warning  | openDialog called with non-local URI.                                                  |
-| `NO_DOCUMENT_WRITE`        | warning  | Use of `document.write` strongly discouraged.                                          |
-| `JS_SYNTAX_ERROR`          | warning  | JavaScript compile-time error.                                                         |
-| `UNADVISED_LIBRARY`        | warning  | This version of a JS library is not recommended.                                       |
-| `DEPRECATED_API`           | warning  | API is deprecated.                                                                     |
-| `STORAGE_SYNC`             | warning  | Temporary IDs can cause issues with `storage.sync`.                                    |
-| `STORAGE_MANAGED`          | warning  | Temporary IDs can cause issues with `storage.managed`.                                 |
-| `IDENTITY_GETREDIRECTURL`  | warning  | Temporary IDs can cause issues with `identity.getRedirectURL`.                         |
-| `RUNTIME_ONMESSAGEEXTERNAL`| warning  | Temporary IDs can cause issues with `runtime.onMessageExternal`.                       |
-| `RUNTIME_ONCONNECTEXTERNAL`| warning  | Temporary IDs can cause issues with `runtime.onConnectExternal`.                       |
-| `BANNED_LIBRARY`           | error    | This version of a JS library is banned for security reasons.                           |
-| `INCOMPATIBLE_API`         | warning  | API not compatible with `applications.gecko.strict_min_version`                        |
-| `ANDROID_INCOMPATIBLE_API` | warning  | API not compatible with Firefox for Android at `applications.gecko.strict_min_version` |
+| Message code                | Severity | Description                                                                            |
+| --------------------------- | -------- | -------------------------------------------------------------------------------------- |
+| `KNOWN_LIBRARY`             | notice   | This is version of a JS library is known and generally accepted.                       |
+| `OPENDIALOG_NONLIT_URI`     | notice   | openDialog called with non-literal parameter.                                          |
+| `EVENT_LISTENER_FOURTH`     | notice   | `addEventListener` called with truthy fourth argument.                                 |
+| `UNEXPECTED_GLOGAL_ARG`     | warning  | Unexpected global passed as an argument.                                               |
+| `NO_IMPLIED_EVAL`           | warning  | disallow the use of `eval()`-like methods.                                             |
+| `OPENDIALOG_REMOTE_URI`     | warning  | openDialog called with non-local URI.                                                  |
+| `NO_DOCUMENT_WRITE`         | warning  | Use of `document.write` strongly discouraged.                                          |
+| `JS_SYNTAX_ERROR`           | warning  | JavaScript compile-time error.                                                         |
+| `UNADVISED_LIBRARY`         | warning  | This version of a JS library is not recommended.                                       |
+| `DEPRECATED_API`            | warning  | API is deprecated.                                                                     |
+| `STORAGE_SYNC`              | warning  | Temporary IDs can cause issues with `storage.sync`.                                    |
+| `STORAGE_MANAGED`           | warning  | Temporary IDs can cause issues with `storage.managed`.                                 |
+| `IDENTITY_GETREDIRECTURL`   | warning  | Temporary IDs can cause issues with `identity.getRedirectURL`.                         |
+| `RUNTIME_ONMESSAGEEXTERNAL` | warning  | Temporary IDs can cause issues with `runtime.onMessageExternal`.                       |
+| `RUNTIME_ONCONNECTEXTERNAL` | warning  | Temporary IDs can cause issues with `runtime.onConnectExternal`.                       |
+| `BANNED_LIBRARY`            | error    | This version of a JS library is banned for security reasons.                           |
+| `INCOMPATIBLE_API`          | warning  | API not compatible with `applications.gecko.strict_min_version`                        |
+| `ANDROID_INCOMPATIBLE_API`  | warning  | API not compatible with Firefox for Android at `applications.gecko.strict_min_version` |
 
 ## Markup
 
