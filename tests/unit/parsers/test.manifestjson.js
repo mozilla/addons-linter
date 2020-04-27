@@ -394,6 +394,20 @@ describe('ManifestJSONParser', () => {
       expect(errors[0].code).toEqual(messages.MANIFEST_FIELD_INVALID.code);
       expect(errors[0].message).toContain('/name');
     });
+
+    it('should not contain the words "mozilla" or "firefox" on name value', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({ name: 'my-awesome-ext for Firefox' });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      const { warnings } = addonLinter.collector;
+      expect(warnings[0].code).toEqual(
+        messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX.code
+      );
+    });
   });
 
   describe('version', () => {

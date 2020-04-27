@@ -1,6 +1,7 @@
 import Linter from 'linter';
 import LocaleMessagesJSONParser from 'parsers/locale-messagesjson';
 import * as messages from 'messages';
+import { MESSAGES_JSON } from 'const';
 
 import { validLocaleMessagesJSON } from '../helpers';
 
@@ -264,6 +265,28 @@ describe('LocaleMessagesJSONParser', () => {
     expect(errors[0].description).toContain(
       'Case-insensitive duplicate placeholder name'
     );
+  });
+
+  it('should not contain the words "mozilla" or "firefox" on localized extension name', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const localeMessagesJSONParser = new LocaleMessagesJSONParser(
+      `{
+  "extensionName": {
+    "message": "My Awesome Ext for Mozilla Firefox",
+    "description": "Name of the extension."    
+  }
+}`,
+      addonLinter.collector,
+      { name: '__MSG_extensionName__' }
+    );
+
+    localeMessagesJSONParser.parse();
+    expect(localeMessagesJSONParser.isValid).toEqual(false);
+    const { warnings } = addonLinter.collector;
+    expect(warnings[0].code).toEqual(
+      messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX.code
+    );
+    expect(warnings[0].file).toEqual(MESSAGES_JSON);
   });
 
   describe('getLowercasePlaceholders', () => {

@@ -2,7 +2,12 @@ import RJSON from 'relaxed-json';
 
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
-import { MESSAGES_JSON, MESSAGE_PLACEHOLDER_REGEXP } from 'const';
+import {
+  MESSAGES_JSON,
+  MESSAGE_PLACEHOLDER_REGEXP,
+  NOT_ALLOWED_NAME_WORDS,
+  MANFIEST_MESSAGE_NAME_REGEXP,
+} from 'const';
 import { validateLocaleMessages } from 'schema/validator';
 import log from 'logger';
 
@@ -10,9 +15,10 @@ export default class LocaleMessagesJSONParser extends JSONParser {
   constructor(
     jsonString,
     collector,
+    addonMetadata,
     { filename = MESSAGES_JSON, RelaxedJSON = RJSON } = {}
   ) {
-    super(jsonString, collector, { filename });
+    super(jsonString, collector, addonMetadata, { filename });
     this.relaxedJSON = RelaxedJSON;
   }
 
@@ -93,6 +99,13 @@ export default class LocaleMessagesJSONParser extends JSONParser {
 
     const regexp = new RegExp(MESSAGE_PLACEHOLDER_REGEXP, 'ig');
     const visitedLowercaseMessages = [];
+    const messageNameRegexp = new RegExp(MANFIEST_MESSAGE_NAME_REGEXP, 'g');
+    let messageNameMatch = null;
+
+    if (this.addonMetadata && typeof this.addonMetadata.name === 'string') {
+      messageNameMatch = messageNameRegexp.exec(this.addonMetadata.name);
+    }
+
     Object.keys(this.parsedJSON).forEach((message) => {
       if (!visitedLowercaseMessages.includes(message.toLowerCase())) {
         visitedLowercaseMessages.push(message.toLowerCase());
@@ -151,6 +164,21 @@ export default class LocaleMessagesJSONParser extends JSONParser {
             }
           }
         );
+      }
+
+      if (messageNameMatch && message === messageNameMatch[1]) {
+        let nameContainsInvalidWords = false;
+        const nameLowerCase = this.parsedJSON[message].message.toLowerCase();
+        nameContainsInvalidWords = NOT_ALLOWED_NAME_WORDS.some((word) =>
+          nameLowerCase.includes(word)
+        );
+        if (nameContainsInvalidWords) {
+          this.collector.addWarning({
+            ...messages.PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX,
+            file: this.filename,
+          });
+          this.isValid = false;
+        }
       }
 
       // Reset the regexp
