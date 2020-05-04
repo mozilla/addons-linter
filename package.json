@@ -48,7 +48,7 @@
     "common-tags": "1.8.0",
     "deepmerge": "4.2.2",
     "dispensary": "0.51.2",
-    "es6-promisify": "6.1.0",
+    "es6-promisify": "6.1.1",
     "eslint": "5.16.0",
     "eslint-plugin-no-unsanitized": "3.1.0",
     "eslint-visitor-keys": "1.1.0",
