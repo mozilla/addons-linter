@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-02-11 13:02+0000\n"
+"PO-Revision-Date: 2020-05-14 13:40+0000\n"
 "Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -312,11 +312,11 @@ msgstr "Manifest'te dictionaries nesnesi tanımlanmış ama nesne boş."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "Manifest bir sözlük içeriyor ancak id özelliği içermiyor."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "Manifest'te bir sözlük bulundu, ancak id'si yoktu."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -352,7 +352,7 @@ msgstr "\"%(path)s\" yolundaki beklenilen simge dosyası bozuk."
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Bu tema LWT alias'ı Firefox 70'te kaldırılmıştır."
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
@@ -397,11 +397,11 @@ msgstr "\"%(path)s\" adresindeki tema resmi desteklenmeyen \"%(mime)s\" mime tü
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "Tema resmi dosyasının mime türü, dosya uzantısıyla eşleşmiyor"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "\"%(path)s\" konumundaki tema resmi dosya uzantısı gerçek \"%(mime)s\" mime türüyle eşleşmiyor"
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
@@ -433,7 +433,7 @@ msgstr "manifest.json dosyasındaki \"manifest_version\" geçerli bir değer de�
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Manifest anahtarı belirtilen minimum Firefox sürümü tarafından desteklenmiyor"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -445,11 +445,11 @@ msgstr "Bu İzin, belirtilen minimum Firefox sürümü tarafından desteklenmiyo
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Manifest anahtarı, Android için belirtilen minimum Firefox sürümü tarafından desteklenmiyor"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Bu izin, Android için belirtilen minimum Firefox sürümü tarafından desteklenmiyor"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
