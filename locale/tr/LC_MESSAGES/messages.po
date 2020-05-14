@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-05-14 13:40+0000\n"
+"PO-Revision-Date: 2020-05-14 13:42+0000\n"
 "Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -243,9 +243,8 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Simge \"%(path)s\" yolunda bulunamadı."
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr "Bildirgede tanımlanan içerik betiği \"%(path)s\" yolunda bulunamadı."
+msgstr "Manifest dosyasında tanımlanan bir arka plan betiği bulunamadı."
 
 #: src/messages/manifestjson.js:163
 msgid "A background page defined in the manifest could not be found."
@@ -268,14 +267,12 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Daha fazla bilgi için https://mzl.la/1ZOhoEN (MDN Docs) adresine bakabilirsiniz."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "Bildirgede tanımlanan içerik betiği \"%(path)s\" yolunda bulunamadı."
+msgstr "Manifest dosyasında tanımlanan bir içerik betiği bulunamadı."
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Bildirgede tanımlanan içerik betiği css dosyası \"%(path)s\" yolunda bulunamadı."
+msgstr "Manifest dosyasında tanımlanan bir içerik betiği css dosyası bulunamadı."
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -290,9 +287,8 @@ msgid "A dictionary file defined in the manifest could not be found."
 msgstr "Manifest dosyasında tanımlanan bir sözlük dosyası bulunamadı."
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Bildirgede tanımlanan içerik betiği css dosyası \"%(path)s\" yolunda bulunamadı."
+msgstr "Manifest dosyasında tanımlanan sözlük dosyası \"%(path)s\" konumunda bulunamadı."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
@@ -359,9 +355,8 @@ msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr "Daha fazla bilgi için https://mzl.la/2T11Lkc (MDN Docs) sayfasına bakın."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Arka plan sayfası \"%(path)s\" yolunda bulunamadı."
+msgstr "\"%(type)s\" için tema görseli \"%(path)s\" konumunda bulunamadı"
 
 #: src/messages/manifestjson.js:330
 msgid "Corrupted theme image file"
