@@ -162,7 +162,7 @@
     }
   ],
   "definitions": {
-    "Permission": {
+    "OptionalPermission": {
       "anyOf": [
         {
           "type": "string",
@@ -174,9 +174,9 @@
     }
   },
   "refs": {
-    "proxy#/definitions/Permission": {
+    "proxy#/definitions/OptionalPermission": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "OptionalPermission"
     }
   },
   "types": {

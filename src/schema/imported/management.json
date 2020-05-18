@@ -286,7 +286,7 @@
     }
   ],
   "definitions": {
-    "Permission": {
+    "OptionalPermission": {
       "anyOf": [
         {
           "type": "string",
@@ -298,9 +298,9 @@
     }
   },
   "refs": {
-    "management#/definitions/Permission": {
+    "management#/definitions/OptionalPermission": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "OptionalPermission"
     }
   },
   "types": {

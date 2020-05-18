@@ -43,7 +43,7 @@
     }
   ],
   "definitions": {
-    "OptionalPermission": {
+    "OptionalPermissionNoPrompt": {
       "anyOf": [
         {
           "type": "string",
@@ -55,9 +55,9 @@
     }
   },
   "refs": {
-    "search#/definitions/OptionalPermission": {
+    "search#/definitions/OptionalPermissionNoPrompt": {
       "namespace": "manifest",
-      "type": "OptionalPermission"
+      "type": "OptionalPermissionNoPrompt"
     }
   },
   "types": {

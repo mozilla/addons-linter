@@ -315,7 +315,7 @@
     }
   ],
   "definitions": {
-    "Permission": {
+    "PermissionNoPrompt": {
       "anyOf": [
         {
           "type": "string",
@@ -327,9 +327,9 @@
     }
   },
   "refs": {
-    "telemetry#/definitions/Permission": {
+    "telemetry#/definitions/PermissionNoPrompt": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "PermissionNoPrompt"
     }
   },
   "types": {

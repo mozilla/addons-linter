@@ -347,7 +347,7 @@
     }
   ],
   "definitions": {
-    "OptionalPermission": {
+    "OptionalPermissionNoPrompt": {
       "anyOf": [
         {
           "type": "string",
@@ -359,9 +359,9 @@
     }
   },
   "refs": {
-    "cookies#/definitions/OptionalPermission": {
+    "cookies#/definitions/OptionalPermissionNoPrompt": {
       "namespace": "manifest",
-      "type": "OptionalPermission"
+      "type": "OptionalPermissionNoPrompt"
     }
   },
   "types": {
