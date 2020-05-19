@@ -196,7 +196,7 @@
     }
   ],
   "definitions": {
-    "Permission": {
+    "PermissionNoPrompt": {
       "anyOf": [
         {
           "type": "string",
@@ -208,9 +208,9 @@
     }
   },
   "refs": {
-    "contextualIdentities#/definitions/Permission": {
+    "contextualIdentities#/definitions/PermissionNoPrompt": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "PermissionNoPrompt"
     }
   },
   "types": {

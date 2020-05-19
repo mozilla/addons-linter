@@ -506,7 +506,7 @@
     }
   ],
   "definitions": {
-    "Permission": {
+    "PermissionNoPrompt": {
       "anyOf": [
         {
           "type": "string",
@@ -517,7 +517,7 @@
         }
       ]
     },
-    "OptionalPermission": {
+    "OptionalPermissionNoPrompt": {
       "anyOf": [
         {
           "type": "string",
@@ -529,13 +529,13 @@
     }
   },
   "refs": {
-    "menus#/definitions/Permission": {
+    "menus#/definitions/PermissionNoPrompt": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "PermissionNoPrompt"
     },
-    "menus#/definitions/OptionalPermission": {
+    "menus#/definitions/OptionalPermissionNoPrompt": {
       "namespace": "manifest",
-      "type": "OptionalPermission"
+      "type": "OptionalPermissionNoPrompt"
     }
   },
   "types": {

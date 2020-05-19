@@ -221,7 +221,7 @@
     }
   ],
   "definitions": {
-    "Permission": {
+    "PermissionNoPrompt": {
       "anyOf": [
         {
           "type": "string",
@@ -233,9 +233,9 @@
     }
   },
   "refs": {
-    "identity#/definitions/Permission": {
+    "identity#/definitions/PermissionNoPrompt": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "PermissionNoPrompt"
     }
   },
   "types": {

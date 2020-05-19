@@ -116,7 +116,6 @@
     {
       "name": "onAdded",
       "type": "function",
-      "unsupported": true,
       "description": "Fired when the extension acquires new permissions.",
       "parameters": [
         {
@@ -134,7 +133,6 @@
     {
       "name": "onRemoved",
       "type": "function",
-      "unsupported": true,
       "description": "Fired when permissions are removed from the extension.",
       "parameters": [
         {

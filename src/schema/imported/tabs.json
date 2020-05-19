@@ -325,6 +325,21 @@
           "description": "The ID of the tab which is to be duplicated."
         },
         {
+          "type": "object",
+          "name": "duplicateProperties",
+          "optional": true,
+          "properties": {
+            "index": {
+              "type": "integer",
+              "description": "The position the new tab should take in the window. The provided value will be clamped to between zero and the number of tabs in the window."
+            },
+            "active": {
+              "type": "boolean",
+              "description": "Whether the tab should become the active tab in the window. Does not affect whether the window is focused (see $(ref:windows.update)). Defaults to <var>true</var>."
+            }
+          }
+        },
+        {
           "type": "function",
           "name": "callback",
           "optional": true,
@@ -1275,6 +1290,48 @@
           }
         }
       ]
+    },
+    {
+      "name": "goForward",
+      "type": "function",
+      "description": "Navigate to next page in tab's history, if available",
+      "async": "callback",
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0,
+          "optional": true,
+          "description": "The ID of the tab to navigate forward."
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "goBack",
+      "type": "function",
+      "description": "Navigate to previous page in tab's history, if available.",
+      "async": "callback",
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0,
+          "optional": true,
+          "description": "The ID of the tab to navigate backward."
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": []
+        }
+      ]
     }
   ],
   "events": [
@@ -1738,12 +1795,21 @@
     }
   ],
   "definitions": {
+    "OptionalPermissionNoPrompt": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "activeTab"
+          ]
+        }
+      ]
+    },
     "OptionalPermission": {
       "anyOf": [
         {
           "type": "string",
           "enum": [
-            "activeTab",
             "tabs",
             "tabHide"
           ]
@@ -1752,6 +1818,10 @@
     }
   },
   "refs": {
+    "tabs#/definitions/OptionalPermissionNoPrompt": {
+      "namespace": "manifest",
+      "type": "OptionalPermissionNoPrompt"
+    },
     "tabs#/definitions/OptionalPermission": {
       "namespace": "manifest",
       "type": "OptionalPermission"

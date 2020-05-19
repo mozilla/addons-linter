@@ -460,15 +460,42 @@
         "size"
       ]
     },
+    "OptionalPermissionNoPrompt": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "idle"
+          ]
+        },
+        {
+          "$ref": "cookies#/definitions/OptionalPermissionNoPrompt"
+        },
+        {
+          "$ref": "menus#/definitions/OptionalPermissionNoPrompt"
+        },
+        {
+          "$ref": "search#/definitions/OptionalPermissionNoPrompt"
+        },
+        {
+          "$ref": "tabs#/definitions/OptionalPermissionNoPrompt"
+        },
+        {
+          "$ref": "webRequest#/definitions/OptionalPermissionNoPrompt"
+        }
+      ]
+    },
     "OptionalPermission": {
       "anyOf": [
+        {
+          "$ref": "#/types/OptionalPermissionNoPrompt"
+        },
         {
           "type": "string",
           "enum": [
             "clipboardRead",
             "clipboardWrite",
             "geolocation",
-            "idle",
             "notifications"
           ]
         },
@@ -479,7 +506,10 @@
           "$ref": "browserSettings#/definitions/OptionalPermission"
         },
         {
-          "$ref": "cookies#/definitions/OptionalPermission"
+          "$ref": "browsingData#/definitions/OptionalPermission"
+        },
+        {
+          "$ref": "devtools#/definitions/OptionalPermission"
         },
         {
           "$ref": "downloads#/definitions/OptionalPermission"
@@ -491,13 +521,19 @@
           "$ref": "history#/definitions/OptionalPermission"
         },
         {
-          "$ref": "menus#/definitions/OptionalPermission"
+          "$ref": "management#/definitions/OptionalPermission"
+        },
+        {
+          "$ref": "pkcs11#/definitions/OptionalPermission"
         },
         {
           "$ref": "privacy#/definitions/OptionalPermission"
         },
         {
-          "$ref": "search#/definitions/OptionalPermission"
+          "$ref": "proxy#/definitions/OptionalPermission"
+        },
+        {
+          "$ref": "sessions#/definitions/OptionalPermission"
         },
         {
           "$ref": "tabs#/definitions/OptionalPermission"
@@ -507,9 +543,6 @@
         },
         {
           "$ref": "webNavigation#/definitions/OptionalPermission"
-        },
-        {
-          "$ref": "webRequest#/definitions/OptionalPermission"
         }
       ]
     },
@@ -523,7 +556,7 @@
         }
       ]
     },
-    "Permission": {
+    "PermissionNoPrompt": {
       "anyOf": [
         {
           "$ref": "#/types/OptionalPermission"
@@ -538,64 +571,56 @@
           ]
         },
         {
-          "$ref": "activityLog#/definitions/Permission"
+          "$ref": "activityLog#/definitions/PermissionNoPrompt"
         },
         {
-          "$ref": "browsingData#/definitions/Permission"
+          "$ref": "captivePortal#/definitions/PermissionNoPrompt"
         },
         {
-          "$ref": "captivePortal#/definitions/Permission"
+          "$ref": "contextualIdentities#/definitions/PermissionNoPrompt"
         },
         {
-          "$ref": "contextualIdentities#/definitions/Permission"
+          "$ref": "dns#/definitions/PermissionNoPrompt"
         },
         {
-          "$ref": "devtools#/definitions/Permission"
+          "$ref": "geckoProfiler#/definitions/PermissionNoPrompt"
         },
         {
-          "$ref": "dns#/definitions/Permission"
+          "$ref": "identity#/definitions/PermissionNoPrompt"
+        },
+        {
+          "$ref": "menus#/definitions/PermissionNoPrompt"
+        },
+        {
+          "$ref": "networkStatus#/definitions/PermissionNoPrompt"
+        },
+        {
+          "$ref": "normandyAddonStudy#/definitions/PermissionNoPrompt"
+        },
+        {
+          "$ref": "telemetry#/definitions/PermissionNoPrompt"
+        },
+        {
+          "$ref": "theme#/definitions/PermissionNoPrompt"
+        },
+        {
+          "$ref": "urlbar#/definitions/PermissionNoPrompt"
+        }
+      ]
+    },
+    "Permission": {
+      "anyOf": [
+        {
+          "$ref": "#/types/PermissionNoPrompt"
+        },
+        {
+          "$ref": "#/types/OptionalPermission"
         },
         {
           "$ref": "experiments#/definitions/Permission"
         },
         {
-          "$ref": "geckoProfiler#/definitions/Permission"
-        },
-        {
-          "$ref": "identity#/definitions/Permission"
-        },
-        {
-          "$ref": "management#/definitions/Permission"
-        },
-        {
-          "$ref": "menus#/definitions/Permission"
-        },
-        {
-          "$ref": "networkStatus#/definitions/Permission"
-        },
-        {
-          "$ref": "normandyAddonStudy#/definitions/Permission"
-        },
-        {
-          "$ref": "pkcs11#/definitions/Permission"
-        },
-        {
-          "$ref": "proxy#/definitions/Permission"
-        },
-        {
           "$ref": "runtime#/definitions/Permission"
-        },
-        {
-          "$ref": "sessions#/definitions/Permission"
-        },
-        {
-          "$ref": "telemetry#/definitions/Permission"
-        },
-        {
-          "$ref": "theme#/definitions/Permission"
-        },
-        {
-          "$ref": "urlbar#/definitions/Permission"
         }
       ]
     },

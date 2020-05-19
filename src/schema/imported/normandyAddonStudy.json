@@ -56,7 +56,7 @@
     }
   ],
   "definitions": {
-    "Permission": {
+    "PermissionNoPrompt": {
       "anyOf": [
         {
           "type": "string",
@@ -68,9 +68,9 @@
     }
   },
   "refs": {
-    "normandyAddonStudy#/definitions/Permission": {
+    "normandyAddonStudy#/definitions/PermissionNoPrompt": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "PermissionNoPrompt"
     }
   },
   "types": {
