@@ -5,7 +5,7 @@ import { getVariable } from 'utils';
  * This rule will detect a global passed to `require()` as the first arg
  *
  */
-export default {
+module.exports = {
   create(context) {
     return {
       // eslint-disable-next-line consistent-return

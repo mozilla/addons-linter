@@ -1,7 +1,7 @@
 import { EVENT_LISTENER_FOURTH } from 'messages/javascript';
 import { getNodeReference } from 'utils';
 
-export default {
+module.exports = {
   create(context) {
     return {
       // eslint-disable-next-line consistent-return

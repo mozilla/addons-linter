@@ -1,7 +1,7 @@
 import { isLocalUrl } from 'utils';
 import { OPENDIALOG_REMOTE_URI } from 'messages';
 
-export default {
+module.exports = {
   create(context) {
     return {
       // eslint-disable-next-line consistent-return

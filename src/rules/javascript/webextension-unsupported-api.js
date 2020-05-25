@@ -2,7 +2,7 @@ import { UNSUPPORTED_API } from 'messages/javascript';
 import { hasBrowserApi } from 'schema/browser-apis';
 import { isBrowserNamespace } from 'utils';
 
-export default {
+module.exports = {
   create(context) {
     return {
       MemberExpression(node) {

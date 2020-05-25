@@ -6,7 +6,7 @@ import {
   CONTENT_SCRIPT_EMPTY,
 } from 'messages/javascript';
 
-export default {
+module.exports = {
   create(context) {
     const existingFiles = Object.keys(context.settings.existingFiles || {}).map(
       (fileName) => {

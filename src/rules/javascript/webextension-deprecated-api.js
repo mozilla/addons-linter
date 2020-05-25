@@ -3,7 +3,7 @@ import { DEPRECATED_JAVASCRIPT_APIS } from 'const';
 import { isDeprecatedApi, hasBrowserApi } from 'schema/browser-apis';
 import { isBrowserNamespace } from 'utils';
 
-export default {
+module.exports = {
   create(context) {
     return {
       MemberExpression(node) {

@@ -9,7 +9,9 @@ export const DEPRECATED_ENTITIES = [
   },
 ];
 
-export default {
+module.exports = {
+  DEPRECATED_ENTITIES,
+
   create(context) {
     return {
       // eslint-disable-next-line consistent-return
