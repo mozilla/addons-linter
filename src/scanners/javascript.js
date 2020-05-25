@@ -1,4 +1,5 @@
 import ESLint from 'eslint';
+
 import { oneLine } from 'common-tags';
 import espree from 'espree';
 import vk from 'eslint-visitor-keys';
@@ -62,16 +63,14 @@ export default class JavaScriptScanner {
     this.sourceType = this.detectSourceType(this.filename);
 
     const configDefaults = {
-      baseConfig: {
-        env: {
-          es6: true,
-          webextension: true,
-          browser: true,
-        },
-        settings: {
-          addonMetadata: this.options.addonMetadata,
-          existingFiles: this.options.existingFiles,
-        },
+      envs: {
+        es6: true,
+        webextensions: true,
+        browser: true,
+      },
+      settings: {
+        addonMetadata: this.options.addonMetadata,
+        existingFiles: this.options.existingFiles,
       },
       // It's the default but also shouldn't change since we're using
       // espree to parse javascript files below manually to figure out
@@ -82,7 +81,7 @@ export default class JavaScriptScanner {
         sourceType: this.sourceType,
       },
       rules: _ruleMapping,
-      plugins: ['no-unsanitized'],
+      plugins: ['no-unsafe-innerhtml'],
       allowInlineConfig: false,
 
       // Disable ignore-mode and overwrite eslint default ignore patterns
@@ -99,75 +98,73 @@ export default class JavaScriptScanner {
       useEslintrc: false,
     };
 
-    const cli = new _ESLint.CLIEngine(configDefaults);
+    const linter = new _ESLint.Linter();
 
     const rulesAfterExclusion = excludeRules(_rules, this.disabledRules);
+
     Object.keys(rulesAfterExclusion).forEach((name) => {
       this._rulesProcessed++;
-      cli.linter.defineRule(name, rulesAfterExclusion[name]);
+      linter.defineRule(name, rulesAfterExclusion[name]);
     });
 
-    // Parse and lint the JavaScript code
-    const report = cli.executeOnText(this.code, this.filename, true);
+    const results = linter.verify(this.code, configDefaults, this.filename);
 
     // eslint prepends the filename with the current working directory,
     // strip that out.
     this.scannedFiles.push(this.filename);
 
-    report.results.forEach((result) => {
-      result.messages.forEach((message) => {
-        // Fatal error messages (like SyntaxErrors) are a bit different, we
-        // need to handle them specially.
-        if (message.fatal === true) {
-          // eslint-disable-next-line no-param-reassign
-          message.message = _messages.JS_SYNTAX_ERROR.code;
+    results.forEach((message) => {
+      // Fatal error messages (like SyntaxErrors) are a bit different, we
+      // need to handle them specially.
+      if (message.fatal === true) {
+        // eslint-disable-next-line no-param-reassign
+        message.message = _messages.JS_SYNTAX_ERROR.code;
+      }
+
+      if (typeof message.message === 'undefined') {
+        throw new Error(
+          oneLine`JS rules must pass a valid message as
+          the second argument to context.report()`
+        );
+      }
+
+      // Fallback to looking up the message object by the message
+      let code = message.message;
+      let shortDescription;
+      let description;
+
+      // Support 3rd party eslint rules that don't have our internal
+      // message structure and allow us to optionally overwrite
+      // their `message` and `description`.
+      if (Object.prototype.hasOwnProperty.call(_messages, code)) {
+        ({ message: shortDescription, description } = _messages[code]);
+      } else if (
+        Object.prototype.hasOwnProperty.call(
+          messages.ESLINT_OVERWRITE_MESSAGE,
+          message.ruleId
+        )
+      ) {
+        const overwrites = messages.ESLINT_OVERWRITE_MESSAGE[message.ruleId];
+        shortDescription = overwrites.message || message.message;
+        description = overwrites.description || message.description;
+
+        if (overwrites.code) {
+          ({ code } = overwrites);
         }
+      } else {
+        shortDescription = code;
+        description = null;
+      }
 
-        if (typeof message.message === 'undefined') {
-          throw new Error(
-            oneLine`JS rules must pass a valid message as
-            the second argument to context.report()`
-          );
-        }
-
-        // Fallback to looking up the message object by the message
-        let code = message.message;
-        let shortDescription;
-        let description;
-
-        // Support 3rd party eslint rules that don't have our internal
-        // message structure and allow us to optionally overwrite
-        // their `message` and `description`.
-        if (Object.prototype.hasOwnProperty.call(_messages, code)) {
-          ({ message: shortDescription, description } = _messages[code]);
-        } else if (
-          Object.prototype.hasOwnProperty.call(
-            messages.ESLINT_OVERWRITE_MESSAGE,
-            message.ruleId
-          )
-        ) {
-          const overwrites = messages.ESLINT_OVERWRITE_MESSAGE[message.ruleId];
-          shortDescription = overwrites.message || message.message;
-          description = overwrites.description || message.description;
-
-          if (overwrites.code) {
-            ({ code } = overwrites);
-          }
-        } else {
-          shortDescription = code;
-          description = null;
-        }
-
-        this.linterMessages.push({
-          code,
-          column: message.column,
-          description,
-          file: this.filename,
-          line: message.line,
-          message: shortDescription,
-          sourceCode: message.source,
-          type: ESLINT_TYPES[message.severity],
-        });
+      this.linterMessages.push({
+        code,
+        column: message.column,
+        description,
+        file: this.filename,
+        line: message.line,
+        message: shortDescription,
+        sourceCode: message.source,
+        type: ESLINT_TYPES[message.severity],
       });
     });
 
