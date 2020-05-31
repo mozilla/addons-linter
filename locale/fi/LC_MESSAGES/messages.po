@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-10-06 10:18+0000\n"
-"Last-Translator: Teemu <teemu.kaiturinmaki@gmail.com>\n"
+"PO-Revision-Date: 2020-05-31 09:49+0000\n"
+"Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
 "Language-Team: none\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -84,7 +84,7 @@ msgstr ""
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} ei ole tuettu Firefox-versiossa {{minVersion}}"
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
@@ -101,19 +101,19 @@ msgstr "Tätä API:a ei ole vielä toteutettu Firefoxissa."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Sisältökriptitiedostoa ei löytynyt."
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Sisältökriptitiedostoa ei löytynyt"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Sisällön skriptitiedoston nimi ei saa olla tyhjä."
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Sisällön skriptitiedoston nimi ei saa olla tyhjä"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
@@ -125,7 +125,7 @@ msgstr ""
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Document.write:n käyttöä ei suositella."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
@@ -165,7 +165,7 @@ msgstr "Tiedosto on liian suuri jäsennettäväksi."
 
 #: src/messages/layout.js:39
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "Piilotettu tiedosto merkitty"
 
 #: src/messages/layout.js:48
 msgid "Flagged filename found"
@@ -177,7 +177,7 @@ msgstr ""
 
 #: src/messages/layout.js:62
 msgid "Flagged file type found"
-msgstr ""
+msgstr "Merkitty tiedostotyyppi löytyi"
 
 #: src/messages/layout.js:72
 msgid "Package already signed"
@@ -189,11 +189,11 @@ msgstr ""
 
 #: src/messages/layout.js:80
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "Firefox-lisäosat eivät saa ajaa kolikonkaivajia."
 
 #: src/messages/layout.js:89
 msgid "Reserved filename found."
-msgstr ""
+msgstr "Varattu tiedostonimi löytyi."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
