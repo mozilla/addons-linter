@@ -109,6 +109,8 @@ If you have Node.js installed, here's the quick start to getting your developmen
 git clone https://github.com/mozilla/addons-linter.git
 cd addons-linter
 npm install
+# Build the project.
+npm run build
 # Run the test-suite and watch for changes. Use `npm run test-once` to
 # just run it once.
 npm run test
@@ -156,7 +158,7 @@ Dependencies are automatically kept up-to-date using [renovatebot](https://renov
 
 ### Building
 
-You can run `npm build` to build the library.
+You can run `npm run build` to build the library.
 
 Once you build the library you can use the CLI in `bin/addons-linter`.
 

@@ -8,3 +8,4 @@
 !bin/addons-linter
 !dist/addons-linter.*
 !dist/locale/**
+!dist/rules/**

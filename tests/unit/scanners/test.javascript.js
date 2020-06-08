@@ -15,30 +15,12 @@ import JavaScriptScanner from 'scanners/javascript';
 import Linter from 'linter';
 
 import {
+  getJsRulePathForRule,
   fakeMessageData,
   getRuleFiles,
   getVariable,
   validMetadata,
 } from '../helpers';
-
-const linterMock = {
-  defineRule: (name, options) => ({
-    name,
-    options,
-  }),
-};
-
-const esLintMock = {
-  CLIEngine: (engineOptions) => {
-    return {
-      engineOptions,
-      linter: linterMock,
-      executeOnText: () => ({
-        results: [],
-      }),
-    };
-  },
-};
 
 describe('JavaScript Scanner', () => {
   it('should report a proper scanner name', () => {
@@ -193,7 +175,7 @@ describe('JavaScript Scanner', () => {
 
     const jsScanner = new JavaScriptScanner('whatever', 'badcode.js');
 
-    await expect(jsScanner.scan(FakeESLint)).rejects.toThrow(
+    await expect(jsScanner.scan({ _ESLint: FakeESLint })).rejects.toThrow(
       /JS rules must pass a valid message/
     );
   });
@@ -237,9 +219,7 @@ describe('JavaScript Scanner', () => {
   });
 
   // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should pass addon metadata to rules', async () => {
-    const fakeRules = { 'metadata-not-passed': { create: () => {} } };
-
+  it('should pass addon metadata to rules', async () => {
     const fakeMessages = {
       METADATA_NOT_PASSED: {
         ...fakeMessageData,
@@ -253,37 +233,19 @@ describe('JavaScript Scanner', () => {
     };
     const fakeESLintMapping = { 'metadata-not-passed': ESLINT_ERROR };
 
-    sinon
-      .stub(fakeRules['metadata-not-passed'], 'create')
-      .callsFake((context) => {
-        return {
-          Identifier: () => {
-            const metadata = context.settings.addonMetadata;
-
-            if (typeof metadata !== 'object') {
-              assert.fail(null, null, 'Metadata should be an object.');
-            }
-
-            if (metadata.guid !== 'snowflake') {
-              assert.fail(null, null, 'Metadata properties not present.');
-            }
-          },
-        };
-      });
-
     const jsScanner = new JavaScriptScanner(
       'var hello = "something";',
       'index.html',
       fakeMetadata
     );
 
-    await jsScanner.scan(ESLint, {
-      _rules: fakeRules,
-      _ruleMapping: fakeESLintMapping,
+    const { linterMessages } = await jsScanner.scan({
       _messages: fakeMessages,
+      _ruleMapping: fakeESLintMapping,
+      _rulePaths: [getJsRulePathForRule('metadata-not-passed')],
     });
 
-    sinon.assert.calledOnce(fakeRules['metadata-not-passed'].create);
+    expect(linterMessages).toEqual([]);
   });
 
   it('should export all rules in rules/javascript', async () => {
@@ -332,51 +294,18 @@ describe('JavaScript Scanner', () => {
   });
 
   // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('treats a non-code string message as the message', async () => {
-    const _rules = {
-      'message-rule': (context) => {
-        return {
-          MemberExpression(node) {
-            context.report(node, 'this is the message');
-          },
-        };
-      },
-    };
+  it('treats a non-code string message as the message', async () => {
     const _ruleMapping = { 'message-rule': ESLINT_ERROR };
     const fakeMetadata = { addonMetadata: validMetadata({}) };
     const jsScanner = new JavaScriptScanner('foo.bar', 'code.js', fakeMetadata);
 
-    const { linterMessages } = await jsScanner.scan(undefined, {
-      _rules,
+    const { linterMessages } = await jsScanner.scan({
       _ruleMapping,
+      _rulePaths: [getJsRulePathForRule('message-rule')],
     });
     expect(linterMessages.length).toEqual(1);
     expect(linterMessages[0].code).toEqual('this is the message');
     expect(linterMessages[0].message).toEqual('this is the message');
-  });
-
-  // eslint-disable-next-line jest/no-disabled-tests
-  describe.skip('scanner options tests', () => {
-    it('should define valid set of rules for linter', async () => {
-      const jsScanner = new JavaScriptScanner('', 'filename.txt', {
-        disabledRules:
-          'no-eval, no-implied-eval,                 no-unsanitized/method',
-      });
-      const original = linterMock.defineRule;
-      sinon.stub(linterMock, 'defineRule').callsFake(original);
-      await jsScanner.scan(esLintMock, {
-        _rules: {
-          test: {},
-          'no-eval': {},
-        },
-        _ruleMapping: {
-          test: {},
-          'no-eval': {},
-        },
-      });
-      const spyCalls = linterMock.defineRule.getCalls();
-      expect(spyCalls.length).toBe(1);
-    });
   });
 
   describe('detectSourceType', () => {

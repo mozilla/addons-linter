@@ -1,3 +1,4 @@
+/* global appRoot */
 import path from 'path';
 
 import ESLint from 'eslint';
@@ -39,10 +40,15 @@ export default class JavaScriptScanner {
     return 'javascript';
   }
 
-  async scan(
+  async scan({
     _ESLint = ESLint,
-    { _ruleMapping = ESLINT_RULE_MAPPING, _messages = messages } = {}
-  ) {
+    _messages = messages,
+    _ruleMapping = ESLINT_RULE_MAPPING,
+    // This tells ESLint where to expect the ESLint rules for addons-linter.
+    // Its default value is defined below. This property is mainly used for
+    // testing purposes.
+    _rulePaths = undefined,
+  } = {}) {
     this.sourceType = this.detectSourceType(this.filename);
 
     const rules = {};
@@ -64,7 +70,11 @@ export default class JavaScriptScanner {
         sourceType: this.sourceType,
       },
       rules,
-      rulePaths: [path.join(__dirname, '..', 'rules', 'javascript')],
+      // The default value for `rulePaths` is configured so that it finds the
+      // files exported by webpack when this project is built.
+      rulePaths: _rulePaths || [
+        path.join(appRoot, 'dist', 'rules', 'javascript'),
+      ],
       plugins: ['no-unsanitized'],
       allowInlineConfig: false,
 
@@ -104,7 +114,7 @@ export default class JavaScriptScanner {
         if (typeof message.message === 'undefined') {
           throw new Error(
             oneLine`JS rules must pass a valid message as
-          the second argument to context.report()`
+            the second argument to context.report()`
           );
         }
 

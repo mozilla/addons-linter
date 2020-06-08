@@ -17,4 +17,8 @@ export function createInstance({
   return new Linter(config);
 }
 
-export default Linter;
+export default {
+  Linter,
+  createInstance,
+  isRunFromCLI,
+};

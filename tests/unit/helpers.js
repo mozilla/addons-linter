@@ -1,3 +1,4 @@
+import path from 'path';
 import fs from 'fs';
 import { Readable, Stream } from 'stream';
 import { assert } from 'assert';
@@ -240,17 +241,17 @@ export function getStreamableIO(files) {
     getFiles: () => {
       return Promise.resolve(files);
     },
-    getFileAsStream: (path) => {
+    getFileAsStream: (_path) => {
       if (
-        files[path] instanceof Stream &&
-        typeof files[path]._read === 'function' &&
-        typeof files[path]._readableState === 'object'
+        files[_path] instanceof Stream &&
+        typeof files[_path]._read === 'function' &&
+        typeof files[_path]._readableState === 'object'
       ) {
-        return Promise.resolve(files[path]);
+        return Promise.resolve(files[_path]);
       }
 
       const stream = new Readable();
-      stream.push(files[path]);
+      stream.push(files[_path]);
       stream.push(null);
       return Promise.resolve(stream);
     },
@@ -381,3 +382,9 @@ export function replacePlaceholders(text, data) {
     }
   );
 }
+
+export const FIXTURES_DIR = path.join(__dirname, '..', 'fixtures');
+
+export const getJsRulePathForRule = (ruleName) => {
+  return path.join(FIXTURES_DIR, 'rules', 'javascript', ruleName);
+};
