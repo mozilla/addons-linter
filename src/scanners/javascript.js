@@ -59,6 +59,8 @@ export default class JavaScriptScanner {
       }
     });
 
+    const root =
+      typeof appRoot !== 'undefined' ? appRoot : path.join(__dirname, '..');
     const eslintConfig = {
       envs: ['es6', 'webextensions', 'browser'],
       // It's the default but also shouldn't change since we're using
@@ -70,11 +72,10 @@ export default class JavaScriptScanner {
         sourceType: this.sourceType,
       },
       rules,
+      resolvePluginsRelativeTo: root,
       // The default value for `rulePaths` is configured so that it finds the
       // files exported by webpack when this project is built.
-      rulePaths: _rulePaths || [
-        path.join(appRoot, 'dist', 'rules', 'javascript'),
-      ],
+      rulePaths: _rulePaths || [path.join(root, 'dist', 'rules', 'javascript')],
       plugins: ['no-unsanitized'],
       allowInlineConfig: false,
 
