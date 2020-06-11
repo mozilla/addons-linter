@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-01-15 14:09+0000\n"
+"PO-Revision-Date: 2020-06-11 19:52+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: nn_NO\n"
@@ -84,7 +84,7 @@ msgstr "addEventListener' kalla med truthy som fjerde argument."
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} er ikkje støtta i Firefox {{minVersion}}"
 
 #: src/messages/javascript.js:169
 #, fuzzy
@@ -357,7 +357,7 @@ msgstr "Forventa ikonfil på \"%(path)s\" er skadd"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Temaet LWT-alias er fjerna frå Firefox 70."
 
 #: src/messages/manifestjson.js:304
 #, fuzzy
@@ -384,11 +384,11 @@ msgstr "Ukjent løyve."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "Temabildefila har ei filending som ikkje er støtta."
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "Temabildefila på «%(path)s» har ei filending som ikkje er støtta"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -396,7 +396,7 @@ msgstr "Sjå https://mzl.la/1R1n1t0 (MDN Docs) for meir informasjon."
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "Temabildefila har ein mime-type som ikkje er støtta"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
@@ -404,11 +404,11 @@ msgstr "Temabildefila på \"%(path)s\" har ei mime-type \"%(mime)s\" som ikkje e
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "Mime-typen for temabildefila samsvarar ikkje med filendinga"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "Filendinga for temabildefila på «%(path)s» samsvarar ikkje med den verkelege mime-typen «%(mime)s»"
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
