@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-06-12 03:05+0000\n"
+"PO-Revision-Date: 2020-06-12 03:10+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: nn_NO\n"
@@ -287,9 +287,8 @@ msgid "A dictionary file defined in the manifest could not be found."
 msgstr "Klarte ikkje å finne ei ordboksfil som er definert i manifestet."
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Fann ikkje innhaldsskriptet til css-fila definert i manifestet på «%(path)s»."
+msgstr "Klarte ikkje å finne ordbokfil definiert i manifestet på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
@@ -352,23 +351,20 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "Temaet LWT-alias er fjerna frå Firefox 70."
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Sjå https://mzl.la/1R1n1t0 (MDN Docs) for meir informasjon."
+msgstr "Sjå https://mzl.la/2T11Lkc (MDN Docs) for meir informasjon."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Fann ikkje bakgrunnssida på \"%(path)s\"."
+msgstr "Klarte ikkje å finne temabilde for «%(type)s» på «%(path)s»"
 
 #: src/messages/manifestjson.js:330
 msgid "Corrupted theme image file"
 msgstr "Skada temabildefil"
 
 #: src/messages/manifestjson.js:332
-#, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "Forventa ikonfil på \"%(path)s\" er skadd"
+msgstr "Temabildefil \"%(path)s\" er skadd"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
