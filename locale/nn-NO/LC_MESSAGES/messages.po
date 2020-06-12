@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-06-11 19:52+0000\n"
+"PO-Revision-Date: 2020-06-12 00:58+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: nn_NO\n"
@@ -87,9 +87,8 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr "{{api}} er ikkje støtta i Firefox {{minVersion}}"
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Denne API-en har ikkje blitt implementert av Firefox."
+msgstr "Denne API-en er ikkje implementert av den spesifiserte minimumsversjonen av Firefox."
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
@@ -193,9 +192,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Firefox tillegg får ikkje køyre coin-miners."
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "Flagga filnamn vart funne"
+msgstr "Reservert filnamn funne."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
