@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-06-12 00:58+0000\n"
+"PO-Revision-Date: 2020-06-12 02:44+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: nn_NO\n"
@@ -92,7 +92,7 @@ msgstr "Denne API-en er ikkje implementert av den spesifiserte minimumsversjonen
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} er ikkje støtta i Firefox for Android-versjon {{minVersion}}"
 
 #: src/messages/javascript.js:180
 #, fuzzy
@@ -307,7 +307,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "Manifestet inneheld eit ordboksobjekt, men det er tomt."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
@@ -315,7 +315,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "Manifestet inneheld ei ordbok men ingen ID-eigenskap."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
@@ -438,7 +438,7 @@ msgstr "\"manifest_version\" i manifest.json er ikkje ein gyldig verdi"
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Manifestnøkkel er ikkje støtta av den spesifiserte minimum Firefox-versjonen"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -446,11 +446,11 @@ msgstr "Sjå https://mzl.la/20PenXl (MDN Docs) for meir informasjon."
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Løyve er ikkje støtta av den spesifiserte minimum Firefox-versjonen"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Manifestnøkkelen er ikkje støtta av den spesifiserte minimum Firefox for Android-versjonen"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
