@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-06-12 02:48+0000\n"
+"PO-Revision-Date: 2020-06-12 03:05+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: nn_NO\n"
@@ -95,9 +95,8 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} er ikkje støtta i Firefox for Android-versjon {{minVersion}}"
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Denne API-en har ikkje blitt implementert av Firefox."
+msgstr "Denne API-en har ikkje blitt implementert av den spesifiserte minimumsversjonen av Firefox for Android."
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
@@ -244,14 +243,12 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Klarte ikkje å finne ikon på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr "Fann ikkje innhaldsskriptet definert i manifestet på \"%(path)s\"."
+msgstr "Klarte ikkje å finne eit bakgrunnsskript definiert i manifestet."
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "Eit ikon definert i manifestet kunne ikkje finnast i pakka."
+msgstr "Klarte ikkje å finne ei bakgrunnsside definiert i manifestet."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -270,14 +267,12 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Sjå https://mzl.la/1ZOhoEN (MDN Docs) for meir informasjon."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "Fann ikkje innhaldsskriptet definert i manifestet på \"%(path)s\"."
+msgstr "Klarte ikkje å finne eit innehaldskript som er definiert i manifestet."
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Fann ikkje innhaldsskriptet til css-fila definert i manifestet på «%(path)s»."
+msgstr "Klarte ikkje å finne ei css-fil med innhaldsskript som er definert i manifestet.."
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
@@ -288,9 +283,8 @@ msgid "Content script css file defined in the manifest could not be found at \"%
 msgstr "Fann ikkje innhaldsskriptet til css-fila definert i manifestet på «%(path)s»."
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Eit ikon definert i manifestet kunne ikkje finnast i pakka."
+msgstr "Klarte ikkje å finne ei ordboksfil som er definert i manifestet."
 
 #: src/messages/manifestjson.js:211
 #, fuzzy
