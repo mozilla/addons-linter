@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-06-12 02:44+0000\n"
+"PO-Revision-Date: 2020-06-12 02:48+0000\n"
 "Last-Translator: Björn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: nn_NO\n"
@@ -303,7 +303,7 @@ msgstr "Manifestet inneheld fleire ordbøker."
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "Fleire ordbøker er definert i manifestet som ikkje er støtta."
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
@@ -311,7 +311,7 @@ msgstr "Manifestet inneheld eit ordboksobjekt, men det er tomt."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "Eit ordboksobjekt er definert i manifestet, men det var tomt."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
@@ -319,7 +319,7 @@ msgstr "Manifestet inneheld ei ordbok men ingen ID-eigenskap."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "Ei ordbok vart funnen i manifestet, men ingen ID er spesifisert."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -454,7 +454,7 @@ msgstr "Manifestnøkkelen er ikkje støtta av den spesifiserte minimum Firefox f
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Løyve er ikkje  støtta av den spesifiserte minimum Firefox-versjonen for Android"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
