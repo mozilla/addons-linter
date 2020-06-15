@@ -3,7 +3,7 @@ import { DEPRECATED_JAVASCRIPT_APIS } from 'const';
 import { isDeprecatedApi, hasBrowserApi } from 'schema/browser-apis';
 import { isBrowserNamespace } from 'utils';
 
-export default {
+const rule = {
   create(context) {
     return {
       MemberExpression(node) {
@@ -37,3 +37,6 @@ export default {
     };
   },
 };
+
+export default rule;
+export const { create } = rule;

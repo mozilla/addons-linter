@@ -1,7 +1,7 @@
 import { isTemporaryApi } from 'schema/browser-apis';
 import { apiToMessage, isBrowserNamespace } from 'utils';
 
-export default {
+const rule = {
   create(context) {
     return {
       // eslint-disable-next-line consistent-return
@@ -22,3 +22,6 @@ export default {
     };
   },
 };
+
+export default rule;
+export const { create } = rule;

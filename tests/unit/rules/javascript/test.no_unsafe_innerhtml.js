@@ -6,6 +6,8 @@ import {
   NO_DOCUMENT_WRITE,
 } from 'messages';
 
+import { runJsScanner } from '../../helpers';
+
 // These rules were mostly copied and adapted from:
 // https://github.com/mozilla/eslint-plugin-no-unsanitized/tree/master/tests/rules
 //
@@ -67,7 +69,7 @@ describe('no_unsafe_innerhtml', () => {
     it(`should allow the use of innerHTML: ${code}`, async () => {
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-      const { linterMessages } = await jsScanner.scan();
+      const { linterMessages } = await runJsScanner(jsScanner);
       expect(linterMessages.length).toEqual(0);
     });
   });
@@ -293,7 +295,7 @@ describe('no_unsafe_innerhtml', () => {
     it(`should not allow the use of innerHTML examples ${code.code}`, async () => {
       const jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
-      const { linterMessages } = await jsScanner.scan();
+      const { linterMessages } = await runJsScanner(jsScanner);
       linterMessages.sort();
 
       expect(linterMessages.length).toEqual(code.message.length);

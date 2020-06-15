@@ -2,7 +2,11 @@ import * as messages from 'messages';
 import { VALIDATION_WARNING, DEPRECATED_JAVASCRIPT_APIS } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 
-import { validMetadata, replacePlaceholders } from '../../helpers';
+import {
+  validMetadata,
+  replacePlaceholders,
+  runJsScanner,
+} from '../../helpers';
 
 describe('deprecated browser APIs', () => {
   Object.keys(DEPRECATED_JAVASCRIPT_APIS).forEach((api) => {
@@ -11,7 +15,7 @@ describe('deprecated browser APIs', () => {
       const code = `chrome.${api}(); browser.${api}();`;
       const jsScanner = new JavaScriptScanner(code, 'code.js', fakeMetadata);
 
-      const { linterMessages } = await jsScanner.scan();
+      const { linterMessages } = await runJsScanner(jsScanner);
       // Two warnings for chrome.* and browser.* related calls.
       expect(linterMessages.length).toEqual(2);
 

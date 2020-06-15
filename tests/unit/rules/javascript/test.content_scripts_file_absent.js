@@ -5,6 +5,8 @@ import {
 } from 'messages/javascript';
 import JavaScriptScanner from 'scanners/javascript';
 
+import { runJsScanner } from '../../helpers';
+
 function createJsScanner(code, validatedFilename, existingFiles = {}) {
   return new JavaScriptScanner(code, validatedFilename, {
     addonMetadata: { id: 'test' },
@@ -24,7 +26,7 @@ describe('content_scripts_file_absent', () => {
     const fileRequiresContentScript = 'file-requires-content-script.js';
     const jsScanner = createJsScanner(code, fileRequiresContentScript);
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
 
     expect(linterMessages.length).toEqual(1);
     expect(linterMessages[0].code).toEqual(CONTENT_SCRIPT_NOT_FOUND.code);
@@ -38,7 +40,7 @@ describe('content_scripts_file_absent', () => {
     const fileRequiresContentScript = 'file-requires-content-script.js';
     const jsScanner = createJsScanner(code, fileRequiresContentScript);
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(0);
   });
 
@@ -62,7 +64,7 @@ describe('content_scripts_file_absent', () => {
       existingFiles
     );
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages).toEqual([]);
   });
 
@@ -89,7 +91,7 @@ describe('content_scripts_file_absent', () => {
       existingFiles
     );
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages).toEqual([]);
   });
 
@@ -122,7 +124,7 @@ describe('content_scripts_file_absent', () => {
       'content_scripts/existingFile.js': '',
     });
 
-    let { linterMessages } = await jsScanner.scan();
+    let { linterMessages } = await runJsScanner(jsScanner);
     linterMessages = linterMessages.filter((message) => {
       return (
         message.code in
@@ -137,7 +139,7 @@ describe('content_scripts_file_absent', () => {
     const fileRequiresContentScript = 'file-requires-content-script.js';
     const jsScanner = createJsScanner(code, fileRequiresContentScript);
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(1);
     expect(linterMessages[0].code).toEqual(CONTENT_SCRIPT_EMPTY.code);
     expect(linterMessages[0].type).toEqual(VALIDATION_ERROR);

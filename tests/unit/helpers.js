@@ -388,3 +388,15 @@ export const FIXTURES_DIR = path.join(__dirname, '..', 'fixtures');
 export const getJsRulePathForRule = (ruleName) => {
   return path.join(FIXTURES_DIR, 'rules', 'javascript', ruleName);
 };
+
+export function runJsScanner(
+  jsScanner,
+  { fixtureRules = [], scanOptions } = {}
+) {
+  const ruleSource = path.join(global.appRoot, 'src/rules/javascript');
+  const fixturePaths = fixtureRules.map(getJsRulePathForRule);
+  return jsScanner.scan({
+    ...scanOptions,
+    _rulePaths: [ruleSource].concat(fixturePaths),
+  });
+}

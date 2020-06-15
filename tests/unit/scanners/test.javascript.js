@@ -15,11 +15,11 @@ import JavaScriptScanner from 'scanners/javascript';
 import Linter from 'linter';
 
 import {
-  getJsRulePathForRule,
   fakeMessageData,
   getRuleFiles,
   getVariable,
   validMetadata,
+  runJsScanner,
 } from '../helpers';
 
 describe('JavaScript Scanner', () => {
@@ -239,10 +239,12 @@ describe('JavaScript Scanner', () => {
       fakeMetadata
     );
 
-    const { linterMessages } = await jsScanner.scan({
-      _messages: fakeMessages,
-      _ruleMapping: fakeESLintMapping,
-      _rulePaths: [getJsRulePathForRule('metadata-not-passed')],
+    const { linterMessages } = await runJsScanner(jsScanner, {
+      scanOptions: {
+        _messages: fakeMessages,
+        _ruleMapping: fakeESLintMapping,
+      },
+      fixtureRules: ['metadata-not-passed'],
     });
 
     expect(linterMessages).toEqual([]);
@@ -259,7 +261,7 @@ describe('JavaScript Scanner', () => {
 
     const jsScanner = new JavaScriptScanner('', 'badcode.js');
 
-    await jsScanner.scan();
+    await runJsScanner(jsScanner);
     expect(jsScanner._rulesProcessed).toEqual(16);
   });
 
@@ -272,7 +274,7 @@ describe('JavaScript Scanner', () => {
         fakeMetadata
       );
 
-      const { linterMessages } = await jsScanner.scan();
+      const { linterMessages } = await runJsScanner(jsScanner);
       expect(linterMessages.length).toEqual(1);
       expect(linterMessages[0].code).toEqual(apiToMessage(api));
       expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
@@ -288,7 +290,7 @@ describe('JavaScript Scanner', () => {
         fakeMetadata
       );
 
-      const { linterMessages } = await jsScanner.scan();
+      const { linterMessages } = await runJsScanner(jsScanner);
       expect(linterMessages.length).toEqual(0);
     });
   });
@@ -299,9 +301,9 @@ describe('JavaScript Scanner', () => {
     const fakeMetadata = { addonMetadata: validMetadata({}) };
     const jsScanner = new JavaScriptScanner('foo.bar', 'code.js', fakeMetadata);
 
-    const { linterMessages } = await jsScanner.scan({
-      _ruleMapping,
-      _rulePaths: [getJsRulePathForRule('message-rule')],
+    const { linterMessages } = await runJsScanner(jsScanner, {
+      scanOptions: { _ruleMapping },
+      fixtureRules: ['message-rule'],
     });
     expect(linterMessages.length).toEqual(1);
     expect(linterMessages[0].code).toEqual('this is the message');
@@ -315,7 +317,7 @@ describe('JavaScript Scanner', () => {
       `;
 
       const jsScanner = new JavaScriptScanner(code, 'code.js');
-      await jsScanner.scan();
+      await runJsScanner(jsScanner);
 
       expect(jsScanner.sourceType).toEqual('module');
     });
@@ -327,7 +329,7 @@ describe('JavaScript Scanner', () => {
       `;
 
       const jsScanner = new JavaScriptScanner(code, 'code.js');
-      await jsScanner.scan();
+      await runJsScanner(jsScanner);
 
       expect(jsScanner.sourceType).toEqual('module');
     });
@@ -338,7 +340,7 @@ describe('JavaScript Scanner', () => {
       `;
 
       const jsScanner = new JavaScriptScanner(code, 'code.js');
-      await jsScanner.scan();
+      await runJsScanner(jsScanner);
 
       expect(jsScanner.sourceType).toEqual('script');
     });
@@ -349,7 +351,7 @@ describe('JavaScript Scanner', () => {
       `;
 
       const jsScanner = new JavaScriptScanner(code, 'code.js');
-      await jsScanner.scan();
+      await runJsScanner(jsScanner);
 
       expect(jsScanner.sourceType).toEqual('script');
     });

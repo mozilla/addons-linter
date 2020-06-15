@@ -1,6 +1,8 @@
 import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 
+import { runJsScanner } from '../../helpers';
+
 describe('incompatible browser APIs', () => {
   it('flags event that is not yet implemented at strict_min_version', async () => {
     const code = 'browser.bookmarks.onChanged.addListener(() => {});';
@@ -8,7 +10,7 @@ describe('incompatible browser APIs', () => {
       addonMetadata: { firefoxMinVersion: '50.0' },
     });
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(1);
     expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
     expect(linterMessages[0].message).toEqual(
@@ -22,7 +24,7 @@ describe('incompatible browser APIs', () => {
       addonMetadata: { firefoxMinVersion: '50.0' },
     });
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(2);
     for (const msg of linterMessages) {
       expect(msg.type).toEqual(VALIDATION_WARNING);
@@ -40,7 +42,7 @@ describe('incompatible browser APIs', () => {
       addonMetadata: { firefoxMinVersion: '57.0a1' },
     });
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(0);
   });
 
@@ -50,7 +52,7 @@ describe('incompatible browser APIs', () => {
       addonMetadata: { firefoxMinVersion: '57.0a1' },
     });
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(0);
   });
 
@@ -60,7 +62,7 @@ describe('incompatible browser APIs', () => {
       addonMetadata: {},
     });
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(0);
   });
 });

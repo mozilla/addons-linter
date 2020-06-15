@@ -2,6 +2,8 @@ import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import { DANGEROUS_EVAL } from 'messages';
 
+import { runJsScanner } from '../../helpers';
+
 // These rules were mostly copied and adapted from
 // https://github.com/eslint/eslint/blob/master/tests/lib/rules/no-eval.js
 // Please make sure to keep them up-to-date and report upstream errors.
@@ -27,7 +29,7 @@ describe('no_eval', () => {
     it(`should allow the use of user defined eval: ${code}`, async () => {
       const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-      const { linterMessages } = await jsScanner.scan();
+      const { linterMessages } = await runJsScanner(jsScanner);
       expect(linterMessages.length).toEqual(0);
     });
   });
@@ -109,7 +111,7 @@ describe('no_eval', () => {
     it(`should not allow the use of eval: ${code.code}`, async () => {
       const jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
-      const { linterMessages } = await jsScanner.scan();
+      const { linterMessages } = await runJsScanner(jsScanner);
       linterMessages.sort();
 
       expect(linterMessages.length).toEqual(code.message.length);
