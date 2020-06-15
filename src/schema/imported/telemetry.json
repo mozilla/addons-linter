@@ -54,6 +54,39 @@
       ]
     },
     {
+      "name": "submitEncryptedPing",
+      "type": "function",
+      "description": "Submits a custom ping to the Telemetry back-end, with an encrypted payload. Requires a telemetry entry in the manifest to be used.",
+      "parameters": [
+        {
+          "name": "message",
+          "type": "object",
+          "additionalProperties": {},
+          "description": "The data payload for the ping, which will be encrypted."
+        },
+        {
+          "description": "Options object.",
+          "name": "options",
+          "type": "object",
+          "properties": {
+            "schemaName": {
+              "type": "string",
+              "description": "Schema name used for payload."
+            },
+            "schemaVersion": {
+              "type": "integer",
+              "description": "Schema version used for payload."
+            }
+          },
+          "required": [
+            "schemaName",
+            "schemaVersion"
+          ]
+        }
+      ],
+      "async": true
+    },
+    {
       "name": "canUpload",
       "type": "function",
       "description": "Checks if Telemetry upload is enabled.",
@@ -315,6 +348,62 @@
     }
   ],
   "definitions": {
+    "WebExtensionManifest": {
+      "properties": {
+        "telemetry": {
+          "type": "object",
+          "properties": {
+            "ping_type": {
+              "type": "string"
+            },
+            "schemaNamespace": {
+              "type": "string"
+            },
+            "public_key": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "key": {
+                  "type": "object",
+                  "properties": {
+                    "crv": {
+                      "type": "string"
+                    },
+                    "kty": {
+                      "type": "string"
+                    },
+                    "x": {
+                      "type": "string"
+                    },
+                    "y": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "key"
+              ]
+            },
+            "study_name": {
+              "type": "string"
+            },
+            "pioneer_id": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "required": [
+            "ping_type",
+            "schemaNamespace",
+            "public_key"
+          ]
+        }
+      }
+    },
     "PermissionNoPrompt": {
       "anyOf": [
         {
@@ -327,6 +416,10 @@
     }
   },
   "refs": {
+    "telemetry#/definitions/WebExtensionManifest": {
+      "namespace": "manifest",
+      "type": "WebExtensionManifest"
+    },
     "telemetry#/definitions/PermissionNoPrompt": {
       "namespace": "manifest",
       "type": "PermissionNoPrompt"
