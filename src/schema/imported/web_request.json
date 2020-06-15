@@ -1410,7 +1410,6 @@
         "object",
         "object_subrequest",
         "xmlhttprequest",
-        "xbl",
         "xslt",
         "ping",
         "beacon",
@@ -1498,7 +1497,14 @@
           "type": "array",
           "description": "A list of request types. Requests that cannot match any of the types will be filtered out.",
           "items": {
-            "$ref": "#/types/ResourceType"
+            "allOf": [
+              {
+                "$ref": "#/types/ResourceType"
+              },
+              {
+                "onError": "warn"
+              }
+            ]
           },
           "minItems": 1
         },

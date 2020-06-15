@@ -299,6 +299,9 @@
           "$ref": "sidebarAction#/definitions/WebExtensionManifest"
         },
         {
+          "$ref": "telemetry#/definitions/WebExtensionManifest"
+        },
+        {
           "$ref": "theme#/definitions/WebExtensionManifest"
         },
         {
