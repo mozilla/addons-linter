@@ -2,8 +2,8 @@ import path from 'path';
 
 import { executeScript } from '../helpers';
 
-describe('Integration test for JavaScript rules', () => {
-  it('linter should pass if ran on a simple valid extension', async () => {
+describe('Integration/smoke tests', () => {
+  it('should pass if ran on a simple valid extension', async () => {
     const fixture = path.resolve(
       __dirname,
       '..',
