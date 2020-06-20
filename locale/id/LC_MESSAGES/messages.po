@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-05-30 09:11+0000\n"
+"PO-Revision-Date: 2020-06-20 14:37+0000\n"
 "Last-Translator: Fauzan Alfi <fauzan.alfi@gmail.com>\n"
 "Language-Team: none\n"
 "Language: id\n"
@@ -87,18 +87,16 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr "{{api}} tidak didukung di Firefox versi {{minVersion}}"
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "API ini belum diimplementasikan oleh Firefox."
+msgstr "API ini belum diimplementasikan pada versi Firefox minimum yang diberikan"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} tidak didukung di Firefox untuk Android versi {{minVersion}}"
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "API ini belum diimplementasikan oleh Firefox."
+msgstr "API ini belum diimplementasikan pada versi Firefox untuk Android minimum yang diberikan"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
