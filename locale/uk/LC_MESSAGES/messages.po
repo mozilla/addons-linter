@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-29 05:45+0000\n"
-"Last-Translator: Artem Polivanchuk <artem@mozilla.org.ua>\n"
+"PO-Revision-Date: 2020-06-21 13:24+0000\n"
+"Last-Translator: Artem Polivanchuk <a.polivanchuk@outlook.com>\n"
 "Language-Team: none\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -188,7 +188,7 @@ msgstr "Пакунок містить повторювані записи"
 
 #: src/messages/layout.js:80
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr "Додаткам Firefox не дозволено виконувати майнинг."
+msgstr "Додаткам Firefox не дозволено добування криптовалют."
 
 #: src/messages/layout.js:89
 msgid "Reserved filename found."
