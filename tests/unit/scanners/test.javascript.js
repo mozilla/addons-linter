@@ -126,7 +126,7 @@ describe('JavaScript Scanner', () => {
   });
 
   it('should scan node modules', async () => {
-    const code = oneLine`var a;`;
+    const code = 'el.innerHTML = evilContent';
 
     const jsScanner = new JavaScriptScanner(
       code,
@@ -134,11 +134,11 @@ describe('JavaScript Scanner', () => {
     );
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages[0]).toMatchObject({ code: 'UNSAFE_VAR_ASSIGNMENT' });
   });
 
   it('should scan bower components', async () => {
-    const code = oneLine`var a;`;
+    const code = 'el.innerHTML = evilContent';
 
     const jsScanner = new JavaScriptScanner(
       code,
@@ -146,16 +146,16 @@ describe('JavaScript Scanner', () => {
     );
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages[0]).toMatchObject({ code: 'UNSAFE_VAR_ASSIGNMENT' });
   });
 
   it('should scan dotfiles', async () => {
-    const code = oneLine`var a;`;
+    const code = 'el.innerHTML = evilContent';
 
     const jsScanner = new JavaScriptScanner(code, '.code.js');
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages[0]).toMatchObject({ code: 'UNSAFE_VAR_ASSIGNMENT' });
   });
 
   it('should create an error message when encountering a syntax error', async () => {
