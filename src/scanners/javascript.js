@@ -62,30 +62,39 @@ export default class JavaScriptScanner {
     const root =
       typeof appRoot !== 'undefined' ? appRoot : path.join(__dirname, '..');
     const eslintConfig = {
-      envs: ['es6', 'webextensions', 'browser'],
-      // It's the default but also shouldn't change since we're using
-      // espree to parse javascript files below manually to figure out
-      // if they're modules or not
-      parser: 'espree',
-      parserOptions: {
-        ecmaVersion: ECMA_VERSION,
-        sourceType: this.sourceType,
-      },
-      rules,
-      resolvePluginsRelativeTo: root,
+      resolvePluginsRelativeTo: path.resolve(root),
       // The default value for `rulePaths` is configured so that it finds the
       // files exported by webpack when this project is built.
       rulePaths: _rulePaths || [path.join(root, 'dist', 'rules', 'javascript')],
-      plugins: ['no-unsanitized'],
       allowInlineConfig: false,
 
       // Avoid loading the addons-linter .eslintrc file
       useEslintrc: false,
 
       baseConfig: {
-        // Scan files in `bower_components/`, `node_modules/` as well as
-        // dotfiles. See: https://github.com/mozilla/addons-linter/issues/1288
-        ignorePatterns: ['!bower_components/*', '!node_modules/*', '!.*'],
+        env: {
+          browser: true,
+          es6: true,
+          webextensions: true,
+        },
+
+        // It's the default but also shouldn't change since we're using
+        // espree to parse javascript files below manually to figure out
+        // if they're modules or not
+        parser: 'espree',
+        parserOptions: {
+          ecmaVersion: ECMA_VERSION,
+          sourceType: this.sourceType,
+        },
+
+        rules,
+        plugins: ['no-unsanitized'],
+
+        // Scan files in `node_modules/` as well as dotfiles. As of ESLInt 7.0,
+        // bower files are scanned.
+        // See: https://github.com/mozilla/addons-linter/issues/1288
+        // See: https://eslint.org/docs/user-guide/migrating-to-7.0.0#default-ignore-patterns-have-changed
+        ignorePatterns: ['!node_modules/*', '!.*'],
         settings: {
           addonMetadata: this.options.addonMetadata,
           existingFiles: this.options.existingFiles,
@@ -93,8 +102,11 @@ export default class JavaScriptScanner {
       },
     };
 
-    const cli = new _ESLint.CLIEngine(eslintConfig);
-    const { results } = cli.executeOnText(this.code, this.filename, true);
+    const cli = new _ESLint.ESLint(eslintConfig);
+    const results = await cli.lintText(this.code, {
+      filePath: this.filename,
+      warnIgnored: true,
+    });
 
     // eslint prepends the filename with the current working directory,
     // strip that out.

@@ -225,32 +225,23 @@ describe('JavaScript Scanner', () => {
   });
 
   it('should reject on missing message code', async () => {
-    const FakeCLIEngine = () => {};
-    FakeCLIEngine.prototype = {
-      constructor() {},
-      executeOnText: () => {
-        return {
-          results: [
-            {
-              filePath: 'badcode.js',
-              messages: [
-                {
-                  fatal: false,
-                },
-              ],
-            },
-          ],
-        };
-      },
-      linter: {
-        defineRule: () => {
-          // no-op
-        },
-      },
-    };
+    class FakeESLintClass {
+      async lintText() {
+        return Promise.resolve([
+          {
+            filePath: 'badcode.js',
+            messages: [
+              {
+                fatal: false,
+              },
+            ],
+          },
+        ]);
+      }
+    }
 
     const FakeESLint = {
-      CLIEngine: FakeCLIEngine,
+      ESLint: FakeESLintClass,
     };
 
     const jsScanner = new JavaScriptScanner('whatever', 'badcode.js');
