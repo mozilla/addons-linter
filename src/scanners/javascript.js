@@ -10,7 +10,7 @@ import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
 import * as messages from 'messages';
 import { ensureFilenameExists } from 'utils';
 
-const ECMA_VERSION = 2019;
+const ECMA_VERSION = 2020;
 
 export default class JavaScriptScanner {
   disabledRules = [];
