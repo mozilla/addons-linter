@@ -121,6 +121,33 @@ describe('JavaScript Scanner', () => {
     expect(linterMessages.length).toEqual(0);
   });
 
+  it.skip('should support public class fields', async () => {
+    const code = 'class MyClass { a = 1; }';
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages.length).toEqual(0);
+  });
+
+  it('should support BigInt short-hand notation', async () => {
+    const code = 'const bigInt = 2166136261n;';
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages.length).toEqual(0);
+  });
+
+  it.skip('should support dynamic imports', async () => {
+    const code = "let { hi, bye } = await import('./say.js');";
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages.length).toEqual(0);
+  });
+
   it('should support es6 modules', async () => {
     const addonLinter = new Linter({
       _: ['tests/fixtures/webextension_es6_module'],
