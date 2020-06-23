@@ -103,6 +103,24 @@ describe('JavaScript Scanner', () => {
     expect(linterMessages.length).toEqual(0);
   });
 
+  it('should support optional chaining', async () => {
+    const code = 'const dogName = adventurer.dog?.name;';
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages.length).toEqual(0);
+  });
+
+  it('should support nullish coalescing operator', async () => {
+    const code = 'const baz = 0 ?? 42;';
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages.length).toEqual(0);
+  });
+
   it('should support es6 modules', async () => {
     const addonLinter = new Linter({
       _: ['tests/fixtures/webextension_es6_module'],
