@@ -1,3 +1,6 @@
+/* global appRoot */
+import path from 'path';
+
 import ESLint from 'eslint';
 import { oneLine } from 'common-tags';
 import espree from 'espree';
@@ -5,24 +8,11 @@ import vk from 'eslint-visitor-keys';
 
 import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
 import * as messages from 'messages';
-import { rules } from 'rules/javascript';
 import { ensureFilenameExists } from 'utils';
 
 const ECMA_VERSION = 2019;
 
-export function excludeRules(excludeFrom = {}, excludeWhat = []) {
-  return Object.keys(excludeFrom).reduce((result, ruleName) => {
-    if (excludeWhat.includes(ruleName)) return result;
-    return {
-      ...result,
-      [ruleName]: excludeFrom[ruleName],
-    };
-  }, {});
-}
-
 export default class JavaScriptScanner {
-  _defaultRules = rules;
-
   disabledRules = [];
 
   constructor(code, filename, options = {}) {
@@ -50,29 +40,29 @@ export default class JavaScriptScanner {
     return 'javascript';
   }
 
-  async scan(
+  async scan({
     _ESLint = ESLint,
-    {
-      _rules = this._defaultRules,
-      _ruleMapping = ESLINT_RULE_MAPPING,
-      _messages = messages,
-    } = {}
-  ) {
-    this._ESLint = ESLint;
+    _messages = messages,
+    _ruleMapping = ESLINT_RULE_MAPPING,
+    // This tells ESLint where to expect the ESLint rules for addons-linter.
+    // Its default value is defined below. This property is mainly used for
+    // testing purposes.
+    _rulePaths = undefined,
+  } = {}) {
     this.sourceType = this.detectSourceType(this.filename);
 
-    const configDefaults = {
-      baseConfig: {
-        env: {
-          es6: true,
-          webextension: true,
-          browser: true,
-        },
-        settings: {
-          addonMetadata: this.options.addonMetadata,
-          existingFiles: this.options.existingFiles,
-        },
-      },
+    const rules = {};
+    Object.keys(_ruleMapping).forEach((ruleName) => {
+      if (!this.disabledRules.includes(ruleName)) {
+        rules[ruleName] = _ruleMapping[ruleName];
+        this._rulesProcessed++;
+      }
+    });
+
+    const root =
+      typeof appRoot !== 'undefined' ? appRoot : path.join(__dirname, '..');
+    const eslintConfig = {
+      envs: ['es6', 'webextensions', 'browser'],
       // It's the default but also shouldn't change since we're using
       // espree to parse javascript files below manually to figure out
       // if they're modules or not
@@ -81,40 +71,36 @@ export default class JavaScriptScanner {
         ecmaVersion: ECMA_VERSION,
         sourceType: this.sourceType,
       },
-      rules: _ruleMapping,
+      rules,
+      resolvePluginsRelativeTo: root,
+      // The default value for `rulePaths` is configured so that it finds the
+      // files exported by webpack when this project is built.
+      rulePaths: _rulePaths || [path.join(root, 'dist', 'rules', 'javascript')],
       plugins: ['no-unsanitized'],
       allowInlineConfig: false,
 
-      // Disable ignore-mode and overwrite eslint default ignore patterns
-      // so an add-on's bower and node module folders are included in
-      // the scan. See: https://github.com/mozilla/addons-linter/issues/1288
-      ignore: false,
-      patterns: ['!bower_components/*', '!node_modules/*'],
-      // Also, don't ignore dotfiles in scans.
-      dotfiles: true,
-
-      filename: this.filename,
-
       // Avoid loading the addons-linter .eslintrc file
       useEslintrc: false,
+
+      baseConfig: {
+        // Scan files in `bower_components/`, `node_modules/` as well as
+        // dotfiles. See: https://github.com/mozilla/addons-linter/issues/1288
+        ignorePatterns: ['!bower_components/*', '!node_modules/*', '!.*'],
+        settings: {
+          addonMetadata: this.options.addonMetadata,
+          existingFiles: this.options.existingFiles,
+        },
+      },
     };
 
-    const cli = new _ESLint.CLIEngine(configDefaults);
-
-    const rulesAfterExclusion = excludeRules(_rules, this.disabledRules);
-    Object.keys(rulesAfterExclusion).forEach((name) => {
-      this._rulesProcessed++;
-      cli.linter.defineRule(name, rulesAfterExclusion[name]);
-    });
-
-    // Parse and lint the JavaScript code
-    const report = cli.executeOnText(this.code, this.filename, true);
+    const cli = new _ESLint.CLIEngine(eslintConfig);
+    const { results } = cli.executeOnText(this.code, this.filename, true);
 
     // eslint prepends the filename with the current working directory,
     // strip that out.
     this.scannedFiles.push(this.filename);
 
-    report.results.forEach((result) => {
+    results.forEach((result) => {
       result.messages.forEach((message) => {
         // Fatal error messages (like SyntaxErrors) are a bit different, we
         // need to handle them specially.
@@ -151,7 +137,7 @@ export default class JavaScriptScanner {
           description = overwrites.description || message.description;
 
           if (overwrites.code) {
-            ({ code } = overwrites);
+            code = overwrites.code;
           }
         } else {
           shortDescription = code;

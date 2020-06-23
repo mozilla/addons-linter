@@ -1,3 +1,5 @@
+/* eslint import/order: 0 */
+const glob = require('glob');
 const path = require('path');
 
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -6,15 +8,22 @@ const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  // Set the webpack4 mode 'none' for compatibility with the behavior
-  // of the webpack3 bundling step.
+  // Set the webpack4 mode 'none' for compatibility with the behavior of the
+  // webpack3 bundling step.
   mode: 'none',
-  entry: './src/main.js',
+  entry: {
+    ...glob.sync('./src/rules/javascript/*.js').reduce((acc, file) => {
+      acc[file.replace(/^\.\/src\//, '').replace('.js', '')] = file;
+      return acc;
+    }, {}),
+    'addons-linter': './src/main.js',
+  },
   target: 'node',
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'addons-linter.js',
+    filename: '[name].js',
     libraryTarget: 'commonjs2',
+    libraryExport: 'default',
+    path: path.join(__dirname, 'dist'),
   },
   module: {
     rules: [

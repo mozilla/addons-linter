@@ -2,10 +2,9 @@ import { UNEXPECTED_GLOGAL_ARG } from 'messages';
 import { getVariable } from 'utils';
 
 /*
- * This rule will detect a global passed to `require()` as the first arg
- *
+ * This rule will detect a global passed to `require()` as the first argument.
  */
-export default {
+const rule = {
   create(context) {
     return {
       // eslint-disable-next-line consistent-return
@@ -28,3 +27,6 @@ export default {
     };
   },
 };
+
+export default rule;
+export const { create } = rule;

@@ -2,6 +2,8 @@ import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import * as messages from 'messages';
 
+import { runJsScanner } from '../../helpers';
+
 describe('opendialog_remote_uri', () => {
   it('should warn on remote uris passed to openDialog', async () => {
     const code = `foo.openDialog("https://foo.com/bar/");
@@ -12,7 +14,7 @@ describe('opendialog_remote_uri', () => {
                 foo.openDialog("data:whatever");`;
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(6);
     linterMessages.forEach((message) => {
       expect(message.code).toEqual(messages.OPENDIALOG_REMOTE_URI.code);
@@ -27,7 +29,7 @@ describe('opendialog_remote_uri', () => {
                 foo.openDialog("resource://foo.com/bar/")`;
     const jsScanner = new JavaScriptScanner(code, 'goodcode.js');
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(0);
   });
 });

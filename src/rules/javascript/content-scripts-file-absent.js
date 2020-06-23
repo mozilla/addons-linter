@@ -6,7 +6,7 @@ import {
   CONTENT_SCRIPT_EMPTY,
 } from 'messages/javascript';
 
-export default {
+const rule = {
   create(context) {
     const existingFiles = Object.keys(context.settings.existingFiles || {}).map(
       (fileName) => {
@@ -89,3 +89,6 @@ export default {
     };
   },
 };
+
+export default rule;
+export const { create } = rule;

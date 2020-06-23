@@ -9,7 +9,7 @@ export const DEPRECATED_ENTITIES = [
   },
 ];
 
-export default {
+const rule = {
   create(context) {
     return {
       // eslint-disable-next-line consistent-return
@@ -41,3 +41,6 @@ export default {
     };
   },
 };
+
+export default rule;
+export const { create } = rule;

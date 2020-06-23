@@ -1,3 +1,6 @@
+import fs from 'fs';
+import path from 'path';
+
 import sinon from 'sinon';
 
 // Setup sinon global to be a sandbox which is restored
@@ -21,6 +24,12 @@ jest.mock('cli', () => {
     terminalWidth: () => 78,
   };
 });
+
+global.appRoot = path.join(__dirname, '..');
+
+if (!fs.existsSync(path.join(global.appRoot, 'dist'))) {
+  throw new Error('Please run `npm run build` before running the test suite.');
+}
 
 afterEach(() => {
   global.sinon.restore();

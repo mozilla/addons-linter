@@ -1,6 +1,8 @@
 import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 
+import { runJsScanner } from '../../helpers';
+
 const NOW_UNSUPPORTED_APIS = [
   'app.getDetails',
   'extension.onRequest',
@@ -20,7 +22,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(1);
     expect(linterMessages[0].message).toEqual('gcm.register is not supported');
     expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
@@ -32,7 +34,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(1);
     expect(linterMessages[0].message).toEqual('gcm.register is not supported');
     expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
@@ -44,7 +46,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(0);
   });
 
@@ -54,7 +56,7 @@ describe('unsupported browser APIs', () => {
       const code = `browser.${api}();`;
       const jsScanner = new JavaScriptScanner(code, 'code.js', fakeMetadata);
 
-      const { linterMessages } = await jsScanner.scan();
+      const { linterMessages } = await runJsScanner(jsScanner);
       expect(linterMessages.length).toEqual(1);
       expect(linterMessages[0].message).toEqual(
         `"${api}" is deprecated or unimplemented`
@@ -70,7 +72,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@supported-api' },
     });
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(0);
   });
 
@@ -83,7 +85,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@supported-api' },
     });
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(0);
   });
 
@@ -96,7 +98,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@unsupported-api' },
     });
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(1);
   });
 
@@ -106,7 +108,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@supported-api', permissions: ['menus'] },
     });
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(0);
   });
 
@@ -116,7 +118,7 @@ describe('unsupported browser APIs', () => {
       addonMetadata: { id: '@supported-api', permissions: ['contextMenus'] },
     });
 
-    const { linterMessages } = await jsScanner.scan();
+    const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(0);
   });
 });

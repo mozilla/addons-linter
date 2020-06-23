@@ -3,9 +3,9 @@ node_js:
   - 'v10.21.0'
   - 'v12.18.1'
 script:
-  - npm run test-ci
   - node scripts/build-locales
   - npm run build
+  - npm run test-ci
   - npm run lint
   # run integration tests using an addons-linter binary in a production-like environment
   - npm run test-integration:production
