@@ -121,6 +121,7 @@ describe('JavaScript Scanner', () => {
     expect(linterMessages.length).toEqual(0);
   });
 
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should support public class fields', async () => {
     const code = 'class MyClass { a = 1; }';
 
@@ -139,6 +140,7 @@ describe('JavaScript Scanner', () => {
     expect(linterMessages.length).toEqual(0);
   });
 
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should support dynamic imports', async () => {
     const code = "let { hi, bye } = await import('./say.js');";
 
