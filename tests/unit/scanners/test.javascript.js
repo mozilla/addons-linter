@@ -125,6 +125,39 @@ describe('JavaScript Scanner', () => {
     expect(linterMessages.length).toEqual(0);
   });
 
+  it('should scan node modules', async () => {
+    const code = oneLine`var a;`;
+
+    const jsScanner = new JavaScriptScanner(
+      code,
+      'node_modules/module/code.js'
+    );
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages.length).toEqual(0);
+  });
+
+  it('should scan bower components', async () => {
+    const code = oneLine`var a;`;
+
+    const jsScanner = new JavaScriptScanner(
+      code,
+      'bower_components/component/code.js'
+    );
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages.length).toEqual(0);
+  });
+
+  it('should scan dotfiles', async () => {
+    const code = oneLine`var a;`;
+
+    const jsScanner = new JavaScriptScanner(code, '.code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages.length).toEqual(0);
+  });
+
   it('should create an error message when encountering a syntax error', async () => {
     let code = 'var m = "d;';
     let jsScanner = new JavaScriptScanner(code, 'badcode.js');
@@ -218,7 +251,6 @@ describe('JavaScript Scanner', () => {
     expect(ok).toBeTruthy();
   });
 
-  // eslint-disable-next-line jest/no-disabled-tests
   it('should pass addon metadata to rules', async () => {
     const fakeMessages = {
       METADATA_NOT_PASSED: {
@@ -262,6 +294,8 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner('', 'badcode.js');
 
     await runJsScanner(jsScanner);
+    // This is the number of custom ESLint rules we have in addons-linter. When
+    // adding a new rule, please increase this value.
     expect(jsScanner._rulesProcessed).toEqual(16);
   });
 
@@ -295,7 +329,6 @@ describe('JavaScript Scanner', () => {
     });
   });
 
-  // eslint-disable-next-line jest/no-disabled-tests
   it('treats a non-code string message as the message', async () => {
     const _ruleMapping = { 'message-rule': ESLINT_ERROR };
     const fakeMetadata = { addonMetadata: validMetadata({}) };

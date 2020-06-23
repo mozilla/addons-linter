@@ -79,16 +79,13 @@ export default class JavaScriptScanner {
       plugins: ['no-unsanitized'],
       allowInlineConfig: false,
 
-      // Disable ignore-mode and overwrite eslint default ignore patterns
-      // so an add-on's bower and node module folders are included in
-      // the scan. See: https://github.com/mozilla/addons-linter/issues/1288
-      ignore: false,
-      patterns: ['!bower_components/*', '!node_modules/*'],
-
       // Avoid loading the addons-linter .eslintrc file
       useEslintrc: false,
 
       baseConfig: {
+        // Scan files in `bower_components/`, `node_modules/` as well as
+        // dotfiles. See: https://github.com/mozilla/addons-linter/issues/1288
+        ignorePatterns: ['!bower_components/*', '!node_modules/*', '!.*'],
         settings: {
           addonMetadata: this.options.addonMetadata,
           existingFiles: this.options.existingFiles,
