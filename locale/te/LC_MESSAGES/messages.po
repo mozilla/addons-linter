@@ -1,4 +1,4 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
@@ -97,8 +97,7 @@ msgstr ""
 
 #: src/messages/javascript.js:180
 #, fuzzy
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "ఈ API Firefox ద్వారా అమలు చేయబడలేదు."
 
 #: src/messages/javascript.js:23
@@ -223,8 +222,7 @@ msgid "Translation string is missing the message property"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:103
@@ -248,14 +246,12 @@ msgid "Icon could not be found at \"%(path)s\"."
 msgstr "\"%(path)s\" వద్ద ప్రతీకం కనబడలేదు."
 
 #: src/messages/manifestjson.js:160
-#, fuzzy
 msgid "A background script defined in the manifest could not be found."
-msgstr "మానిఫెస్ట్‌లో నిర్వచించిన ప్రతీకం ప్యాకేజీలో కనబడలేదు."
+msgstr ""
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
 msgid "A background page defined in the manifest could not be found."
-msgstr "మానిఫెస్ట్‌లో నిర్వచించిన ప్రతీకం ప్యాకేజీలో కనబడలేదు."
+msgstr ""
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
@@ -274,44 +270,35 @@ msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "మరింత సమాచారం కోసం https://mzl.la/1ZOhoEN (MDN డాక్స్) చూడండి."
 
 #: src/messages/manifestjson.js:184
-#, fuzzy
 msgid "A content script defined in the manifest could not be found."
-msgstr "మానిఫెస్ట్‌లో నిర్వచించిన ప్రతీకం ప్యాకేజీలో కనబడలేదు."
+msgstr ""
 
 #: src/messages/manifestjson.js:185
-#, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "మానిఫెస్ట్‌లో నిర్వచించిన ప్రతీకం ప్యాకేజీలో కనబడలేదు."
+msgstr ""
 
 #: src/messages/manifestjson.js:190
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:193
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:207
-#, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "మానిఫెస్ట్‌లో నిర్వచించిన ప్రతీకం ప్యాకేజీలో కనబడలేదు."
+msgstr ""
 
 #: src/messages/manifestjson.js:211
-#, fuzzy
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "మానిఫెస్ట్‌లో నిర్వచించిన ప్రతీకం ప్యాకేజీలో కనబడలేదు."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
 #: src/messages/manifestjson.js:224
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
 #: src/messages/manifestjson.js:233
@@ -406,8 +393,7 @@ msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
 #: src/messages/manifestjson.js:361
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:375
@@ -415,9 +401,7 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:379
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:393
@@ -461,14 +445,11 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
 #: src/messages/manifestjson.js:484
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:58
