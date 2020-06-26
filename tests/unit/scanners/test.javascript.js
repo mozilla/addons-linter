@@ -140,9 +140,8 @@ describe('JavaScript Scanner', () => {
     expect(linterMessages.length).toEqual(0);
   });
 
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should support dynamic imports', async () => {
-    const code = "let { hi, bye } = await import('./say.js');";
+  it('should support dynamic imports', async () => {
+    const code = `(async () => { await import('some-script.js'); })();`;
 
     const jsScanner = new JavaScriptScanner(code, 'code.js');
 
