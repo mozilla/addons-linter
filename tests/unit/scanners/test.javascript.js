@@ -88,7 +88,7 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner(code, 'code.js');
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages).toEqual([]);
   });
 
   it('should support object spread syntax', async () => {
@@ -100,7 +100,54 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner(code, 'code.js');
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages).toEqual([]);
+  });
+
+  it('should support optional chaining', async () => {
+    const code = 'const dogName = adventurer.dog?.name;';
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages).toEqual([]);
+  });
+
+  it('should support nullish coalescing operator', async () => {
+    const code = 'const baz = 0 ?? 42;';
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages).toEqual([]);
+  });
+
+  // See: https://github.com/tc39/proposal-class-fields
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('should support public class fields', async () => {
+    const code = 'class MyClass { a = 1; }';
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages).toEqual([]);
+  });
+
+  it('should support BigInt short-hand notation', async () => {
+    const code = 'const bigInt = 2166136261n;';
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages).toEqual([]);
+  });
+
+  it('should support dynamic imports', async () => {
+    const code = `(async () => { await import('some-script.js'); })();`;
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages).toEqual([]);
   });
 
   it('should support es6 modules', async () => {
@@ -122,7 +169,7 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner(code, 'code.js');
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages).toEqual([]);
   });
 
   it('should scan node modules', async () => {
@@ -178,32 +225,23 @@ describe('JavaScript Scanner', () => {
   });
 
   it('should reject on missing message code', async () => {
-    const FakeCLIEngine = () => {};
-    FakeCLIEngine.prototype = {
-      constructor() {},
-      executeOnText: () => {
-        return {
-          results: [
-            {
-              filePath: 'badcode.js',
-              messages: [
-                {
-                  fatal: false,
-                },
-              ],
-            },
-          ],
-        };
-      },
-      linter: {
-        defineRule: () => {
-          // no-op
-        },
-      },
-    };
+    class FakeESLintClass {
+      async lintText() {
+        return Promise.resolve([
+          {
+            filePath: 'badcode.js',
+            messages: [
+              {
+                fatal: false,
+              },
+            ],
+          },
+        ]);
+      }
+    }
 
     const FakeESLint = {
-      CLIEngine: FakeCLIEngine,
+      ESLint: FakeESLintClass,
     };
 
     const jsScanner = new JavaScriptScanner('whatever', 'badcode.js');
@@ -223,7 +261,7 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages).toEqual([]);
   });
 
   // This test is pretty much copied from ESLint, to make sure dependencies
@@ -325,7 +363,7 @@ describe('JavaScript Scanner', () => {
       );
 
       const { linterMessages } = await runJsScanner(jsScanner);
-      expect(linterMessages.length).toEqual(0);
+      expect(linterMessages).toEqual([]);
     });
   });
 
