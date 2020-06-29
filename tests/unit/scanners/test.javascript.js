@@ -88,7 +88,7 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner(code, 'code.js');
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages).toEqual([]);
   });
 
   it('should support object spread syntax', async () => {
@@ -100,7 +100,7 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner(code, 'code.js');
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages).toEqual([]);
   });
 
   it('should support optional chaining', async () => {
@@ -109,7 +109,7 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner(code, 'code.js');
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages).toEqual([]);
   });
 
   it('should support nullish coalescing operator', async () => {
@@ -118,9 +118,10 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner(code, 'code.js');
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages).toEqual([]);
   });
 
+  // See: https://github.com/tc39/proposal-class-fields
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should support public class fields', async () => {
     const code = 'class MyClass { a = 1; }';
@@ -128,7 +129,7 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner(code, 'code.js');
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages).toEqual([]);
   });
 
   it('should support BigInt short-hand notation', async () => {
@@ -137,7 +138,7 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner(code, 'code.js');
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages).toEqual([]);
   });
 
   it('should support dynamic imports', async () => {
@@ -146,7 +147,7 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner(code, 'code.js');
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages).toEqual([]);
   });
 
   it('should support es6 modules', async () => {
@@ -168,7 +169,7 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner(code, 'code.js');
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages).toEqual([]);
   });
 
   it('should scan node modules', async () => {
@@ -260,7 +261,7 @@ describe('JavaScript Scanner', () => {
     const jsScanner = new JavaScriptScanner(code, 'badcode.js');
 
     const { linterMessages } = await jsScanner.scan();
-    expect(linterMessages.length).toEqual(0);
+    expect(linterMessages).toEqual([]);
   });
 
   // This test is pretty much copied from ESLint, to make sure dependencies
@@ -362,7 +363,7 @@ describe('JavaScript Scanner', () => {
       );
 
       const { linterMessages } = await runJsScanner(jsScanner);
-      expect(linterMessages.length).toEqual(0);
+      expect(linterMessages).toEqual([]);
     });
   });
 
