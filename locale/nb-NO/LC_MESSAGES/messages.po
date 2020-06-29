@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-06-21 19:07+0000\n"
+"PO-Revision-Date: 2020-06-29 13:51+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: none\n"
 "Language: nb_NO\n"
@@ -88,16 +88,15 @@ msgstr "{{api}} er ikke støttet i Firefox versjon {{minVersion}}"
 
 #: src/messages/javascript.js:169
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Denne API-en er ikke implementert av den spesifiserte minimumsversjonen av Firefox"
+msgstr "Denne API-en er ikke implementert av den gitte minimumsversjonen av Firefox"
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} er ikke støttet i Firefox for Android versjon {{minVersion}}"
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Denne API-en har ikke blitt implementert av Firefox."
+msgstr "Denne API-en er ikke implementert av den gitte minimumsversjonen av Firefox for Android"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
