@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Build addons-linter
+npm install
+npm run build
+
+# Create (global) addons-linter link
+# See: https://docs.npmjs.com/cli/link
+npm link
+
+# Fetch web-ext
+git clone https://github.com/mozilla/web-ext
+cd web-ext
+
+# Link addons-linter, then install web-ext's dependencies
+npm install
+npm link addons-linter
+
+# Run web-ext functional tests
+npm run test-functional
+status_code=$?
+
+# Cleanup
+cd ..
+rm -rf web-ext
+
+exit $status_code
