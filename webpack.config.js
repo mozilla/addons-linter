@@ -57,4 +57,10 @@ module.exports = {
     modules: ['src', 'node_modules'],
   },
   devtool: 'sourcemap',
+  node: {
+    // This is required because the default value does not seem to be `false`.
+    // If this isn't set to `false`, `__dirname` is likely invalid and it
+    // prevents JS rules to be loaded correctly.
+    __dirname: false,
+  },
 };

@@ -13,6 +13,7 @@ script:
   # run integration tests using an addons-linter binary in a production-like environment
   - npm run test-integration:production
   - npm run prettier-ci
+  - npm run webext-test-functional
 
 notifications:
   slack:
