@@ -1,5 +1,7 @@
 language: node_js
 node_js:
+  # When updating the value below, make sure to update the `node_js` version in
+  # the `deploy` section at the bottom of this file too.
   - 'v10.21.0'
   - 'v12.18.1'
 
