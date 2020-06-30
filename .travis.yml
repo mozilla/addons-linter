@@ -35,7 +35,7 @@ deploy:
     tags: true
     repo: mozilla/addons-linter
     branch: master
-    node_js: 'v10.21.0'
+    node_js: 'v11.21.0'
 
 after_success: npm run publish-rules > /dev/null 2>&1
 env:
