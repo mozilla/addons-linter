@@ -87,9 +87,8 @@ msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr ""
 
 #: src/messages/javascript.js:169
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "ఈ API Firefox ద్వారా అమలు చేయబడలేదు."
+msgstr ""
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
