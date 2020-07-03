@@ -1,0 +1,558 @@
+{
+  "id": "browserAction",
+  "description": "Use toolbar actions to put icons in the mail window toolbar. In addition to its icon, a toolbar action can also have a tooltip, a badge, and a popup. This namespace is called browserAction for compatibility with browser WebExtensions.",
+  "permissions": [
+    "manifest:browser_action"
+  ],
+  "functions": [
+    {
+      "name": "setTitle",
+      "type": "function",
+      "description": "Sets the title of the toolbar action. This shows up in the tooltip.",
+      "async": "callback",
+      "parameters": [
+        {
+          "$merge": {
+            "source": {
+              "$ref": "browserAction#/types/Details"
+            },
+            "with": {
+              "name": "details",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "The string the toolbar action should display when moused over."
+                }
+              },
+              "required": [
+                "title"
+              ]
+            }
+          }
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "getTitle",
+      "type": "function",
+      "description": "Gets the title of the toolbar action.",
+      "async": "callback",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/Details"
+            },
+            {
+              "name": "details"
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "parameters": [
+            {
+              "name": "result",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "setIcon",
+      "type": "function",
+      "description": "Sets the icon for the toolbar action. The icon can be specified either as the path to an image file or as the pixel data from a canvas element, or as dictionary of either one of those. Either the <b>path</b> or the <b>imageData</b> property must be specified.",
+      "async": "callback",
+      "parameters": [
+        {
+          "$merge": {
+            "source": {
+              "$ref": "browserAction#/types/Details"
+            },
+            "with": {
+              "name": "details",
+              "type": "object",
+              "properties": {
+                "imageData": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/types/ImageDataType"
+                    },
+                    {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[1-9]\\d*$": {
+                          "$ref": "#/types/ImageDataType"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Either an ImageData object or a dictionary {size -> ImageData} representing icon to be set. If the icon is specified as a dictionary, the actual image to be used is chosen depending on screen's pixel density. If the number of image pixels that fit into one screen space unit equals <code>scale</code>, then image with size <code>scale</code> * 19 will be selected. Initially only scales 1 and 2 will be supported. At least one image must be specified. Note that 'details.imageData = foo' is equivalent to 'details.imageData = {'19': foo}'"
+                },
+                "path": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "object",
+                      "patternProperties": {
+                        "^[1-9]\\d*$": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  ],
+                  "description": "Either a relative image path or a dictionary {size -> relative image path} pointing to icon to be set. If the icon is specified as a dictionary, the actual image to be used is chosen depending on screen's pixel density. If the number of image pixels that fit into one screen space unit equals <code>scale</code>, then image with size <code>scale</code> * 19 will be selected. Initially only scales 1 and 2 will be supported. At least one image must be specified. Note that 'details.path = foo' is equivalent to 'details.imageData = {'19': foo}'"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "setPopup",
+      "type": "function",
+      "description": "Sets the html document to be opened as a popup when the user clicks on the toolbar action's icon.",
+      "async": "callback",
+      "parameters": [
+        {
+          "$merge": {
+            "source": {
+              "$ref": "browserAction#/types/Details"
+            },
+            "with": {
+              "name": "details",
+              "type": "object",
+              "properties": {
+                "popup": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "The html file to show in a popup.  If set to the empty string (''), no popup is shown."
+                }
+              },
+              "required": [
+                "popup"
+              ]
+            }
+          }
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "getPopup",
+      "type": "function",
+      "description": "Gets the html document set as the popup for this toolbar action.",
+      "async": "callback",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/Details"
+            },
+            {
+              "name": "details"
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "parameters": [
+            {
+              "name": "result",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "setBadgeText",
+      "type": "function",
+      "description": "Sets the badge text for the toolbar action. The badge is displayed on top of the icon.",
+      "async": "callback",
+      "parameters": [
+        {
+          "$merge": {
+            "source": {
+              "$ref": "browserAction#/types/Details"
+            },
+            "with": {
+              "name": "details",
+              "type": "object",
+              "properties": {
+                "text": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "Any number of characters can be passed, but only about four can fit in the space."
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "getBadgeText",
+      "type": "function",
+      "description": "Gets the badge text of the toolbar action. If no tab nor window is specified is specified, the global badge text is returned.",
+      "async": "callback",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/Details"
+            },
+            {
+              "name": "details"
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "parameters": [
+            {
+              "name": "result",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "setBadgeBackgroundColor",
+      "type": "function",
+      "description": "Sets the background color for the badge.",
+      "async": "callback",
+      "parameters": [
+        {
+          "$merge": {
+            "source": {
+              "$ref": "browserAction#/types/Details"
+            },
+            "with": {
+              "name": "details",
+              "type": "object",
+              "properties": {
+                "color": {
+                  "description": "An array of four integers in the range [0,255] that make up the RGBA color of the badge. For example, opaque red is <code>[255, 0, 0, 255]</code>. Can also be a string with a CSS value, with opaque red being <code>#FF0000</code> or <code>#F00</code>.",
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "$ref": "#/types/ColorArray"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "color"
+              ]
+            }
+          }
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "getBadgeBackgroundColor",
+      "type": "function",
+      "description": "Gets the background color of the toolbar action.",
+      "async": "callback",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/Details"
+            },
+            {
+              "name": "details"
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "parameters": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/types/ColorArray"
+                },
+                {
+                  "name": "result"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "enable",
+      "type": "function",
+      "description": "Enables the toolbar action for a tab. By default, toolbar actions are enabled.",
+      "async": "callback",
+      "parameters": [
+        {
+          "type": "integer",
+          "optional": true,
+          "name": "tabId",
+          "minimum": 0,
+          "description": "The id of the tab for which you want to modify the toolbar action."
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "disable",
+      "type": "function",
+      "description": "Disables the toolbar action for a tab.",
+      "async": "callback",
+      "parameters": [
+        {
+          "type": "integer",
+          "optional": true,
+          "name": "tabId",
+          "minimum": 0,
+          "description": "The id of the tab for which you want to modify the toolbar action."
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "isEnabled",
+      "type": "function",
+      "description": "Checks whether the toolbar action is enabled.",
+      "async": true,
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/Details"
+            },
+            {
+              "name": "details"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "openPopup",
+      "type": "function",
+      "requireUserInput": true,
+      "description": "Opens the extension popup window in the active window.",
+      "async": true,
+      "parameters": []
+    }
+  ],
+  "events": [
+    {
+      "name": "onClicked",
+      "type": "function",
+      "description": "Fired when a toolbar action icon is clicked.  This event will not fire if the toolbar action has a popup.",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "tabs#/types/Tab"
+            },
+            {
+              "name": "tab"
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/OnClickData"
+            },
+            {
+              "name": "info",
+              "optional": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "WebExtensionManifest": {
+      "properties": {
+        "browser_action": {
+          "type": "object",
+          "properties": {
+            "default_title": {
+              "type": "string",
+              "preprocess": "localize"
+            },
+            "default_icon": {
+              "$ref": "manifest#/types/IconPath"
+            },
+            "theme_icons": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "manifest#/types/ThemeIcons"
+              },
+              "description": "Specifies icons to use for dark and light themes"
+            },
+            "default_popup": {
+              "type": "string",
+              "format": "relativeUrl",
+              "preprocess": "localize"
+            },
+            "browser_style": {
+              "type": "boolean",
+              "default": false
+            },
+            "default_area": {
+              "description": "Currently unused.",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "refs": {
+    "browserAction#/definitions/WebExtensionManifest": {
+      "namespace": "manifest",
+      "type": "WebExtensionManifest"
+    }
+  },
+  "types": {
+    "Details": {
+      "type": "object",
+      "description": "Specifies to which tab or window the value should be set, or from which one it should be retrieved. If no tab nor window is specified, the global value is set or retrieved.",
+      "properties": {
+        "tabId": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "When setting a value, it will be specific to the specified tab, and will automatically reset when the tab navigates. When getting, specifies the tab to get the value from; if there is no tab-specific value, the window one will be inherited."
+        },
+        "windowId": {
+          "type": "integer",
+          "minimum": -2,
+          "description": "When setting a value, it will be specific to the specified window. When getting, specifies the window to get the value from; if there is no window-specific value, the global one will be inherited."
+        }
+      }
+    },
+    "ColorArray": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 255
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "ImageDataType": {
+      "type": "object",
+      "isInstanceOf": "ImageData",
+      "additionalProperties": {},
+      "postprocess": "convertImageDataToURL",
+      "description": "Pixel data for an image. Must be an ImageData object (for example, from a <code>canvas</code> element)."
+    },
+    "OnClickData": {
+      "type": "object",
+      "description": "Information sent when a browser action is clicked.",
+      "properties": {
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Shift",
+              "Alt",
+              "Command",
+              "Ctrl",
+              "MacCtrl"
+            ]
+          },
+          "description": "An array of keyboard modifiers that were held while the menu item was clicked."
+        },
+        "button": {
+          "type": "integer",
+          "description": "An integer value of button by which menu item was clicked."
+        }
+      },
+      "required": [
+        "modifiers"
+      ]
+    }
+  }
+}

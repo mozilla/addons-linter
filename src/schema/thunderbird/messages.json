@@ -1,0 +1,402 @@
+{
+  "id": "messages",
+  "permissions": [
+    "messagesRead"
+  ],
+  "events": [
+    {
+      "name": "onNewMailReceived",
+      "type": "function",
+      "description": "Fired when a new message is received, and has been through junk classification and message filters.",
+      "permissions": [
+        "accountsRead"
+      ],
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "folders#/types/MailFolder"
+            },
+            {
+              "name": "folder"
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "messages#/types/MessageList"
+            },
+            {
+              "name": "messages"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "list",
+      "type": "function",
+      "description": "Gets all messages in a folder.",
+      "async": true,
+      "permissions": [
+        "accountsRead"
+      ],
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "folders#/types/MailFolder"
+            },
+            {
+              "name": "folder"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "continueList",
+      "type": "function",
+      "description": "Returns the next chunk of messages in a list. See :doc:`how-to/messageLists` for more information.",
+      "async": true,
+      "parameters": [
+        {
+          "name": "messageListId",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "get",
+      "type": "function",
+      "description": "Returns a specified message.",
+      "async": true,
+      "parameters": [
+        {
+          "name": "messageId",
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "name": "getFull",
+      "type": "function",
+      "description": "Returns a specified message, including all headers and MIME parts.",
+      "async": true,
+      "parameters": [
+        {
+          "name": "messageId",
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "name": "getRaw",
+      "type": "function",
+      "description": "Returns the unmodified source of a message.",
+      "async": true,
+      "parameters": [
+        {
+          "name": "messageId",
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "name": "query",
+      "type": "function",
+      "description": "Gets all messages that have the specified properties, or all messages if no properties are specified.",
+      "async": true,
+      "parameters": [
+        {
+          "type": "object",
+          "name": "queryInfo",
+          "properties": {
+            "subject": {
+              "type": "string",
+              "description": "Returns only messages with this value matching the subject."
+            },
+            "fullText": {
+              "type": "string",
+              "description": "Returns only messages with this value somewhere in the mail (subject, body or author)."
+            },
+            "body": {
+              "type": "string",
+              "description": "Returns only messages with this value in the body of the mail."
+            },
+            "author": {
+              "type": "string",
+              "description": "Returns only messages with this value matching the author."
+            },
+            "recipients": {
+              "type": "string",
+              "description": "Returns only messages with this value matching one or more recipients."
+            },
+            "fromMe": {
+              "type": "boolean",
+              "description": "Returns only messages with the author matching any configured identity."
+            },
+            "toMe": {
+              "type": "boolean",
+              "description": "Returns only messages with one or more recipients matching any configured identity."
+            },
+            "unread": {
+              "type": "boolean",
+              "description": "Returns only unread (or read if false) messages."
+            },
+            "flagged": {
+              "type": "boolean",
+              "description": "Returns only flagged (or unflagged if false) messages."
+            },
+            "tags": {
+              "allOf": [
+                {
+                  "$ref": "#/types/TagsDetail"
+                },
+                {
+                  "description": "Returns only messages with the specified tags. For a list of available tags, call the listTags method. Querying for messages that must *not* have a tag does not work."
+                }
+              ]
+            },
+            "folder": {
+              "allOf": [
+                {
+                  "$ref": "folders#/types/MailFolder"
+                },
+                {
+                  "description": "Returns only messages from the specified folder. The ``accountsRead`` permission is required."
+                }
+              ]
+            },
+            "fromDate": {
+              "allOf": [
+                {
+                  "$ref": "extensionTypes#/types/Date"
+                },
+                {
+                  "description": "Returns only messages with a date after this value."
+                }
+              ]
+            },
+            "toDate": {
+              "allOf": [
+                {
+                  "$ref": "extensionTypes#/types/Date"
+                },
+                {
+                  "description": "Returns only messages with a date before this value."
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "update",
+      "type": "function",
+      "description": "Marks or unmarks a message as read, flagged, or tagged.",
+      "async": true,
+      "parameters": [
+        {
+          "name": "messageId",
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "name": "newProperties",
+          "type": "object",
+          "properties": {
+            "read": {
+              "type": "boolean",
+              "description": "Marks the message as read or unread."
+            },
+            "junk": {
+              "type": "boolean",
+              "description": "Marks the message as junk or not junk."
+            },
+            "flagged": {
+              "type": "boolean",
+              "description": "Marks the message as flagged or unflagged."
+            },
+            "tags": {
+              "type": "array",
+              "description": "Sets the tags on the message. For a list of available tags, call the listTags method.",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "move",
+      "type": "function",
+      "description": "Moves messages to a specified folder.",
+      "async": true,
+      "permissions": [
+        "accountsRead",
+        "messagesMove"
+      ],
+      "parameters": [
+        {
+          "name": "messageIds",
+          "type": "array",
+          "description": "The IDs of the messages to move.",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "folders#/types/MailFolder"
+            },
+            {
+              "name": "destination",
+              "description": "The folder to move the messages to."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "copy",
+      "type": "function",
+      "description": "Copies messages to a specified folder.",
+      "async": true,
+      "permissions": [
+        "accountsRead",
+        "messagesMove"
+      ],
+      "parameters": [
+        {
+          "name": "messageIds",
+          "type": "array",
+          "description": "The IDs of the messages to copy.",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "folders#/types/MailFolder"
+            },
+            {
+              "name": "destination",
+              "description": "The folder to copy the messages to."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "delete",
+      "type": "function",
+      "description": "Deletes messages, or moves them to the trash folder.",
+      "async": true,
+      "permissions": [
+        "messagesMove"
+      ],
+      "parameters": [
+        {
+          "name": "messageIds",
+          "type": "array",
+          "description": "The IDs of the messages to delete.",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        {
+          "name": "skipTrash",
+          "type": "boolean",
+          "description": "If true, the message will be permanently deleted without warning the user. If false or not specified, it will be moved to the trash folder.",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "name": "archive",
+      "type": "function",
+      "description": "Archives messages using the current settings.",
+      "async": true,
+      "permissions": [
+        "messagesMove"
+      ],
+      "parameters": [
+        {
+          "name": "messageIds",
+          "type": "array",
+          "description": "The IDs of the messages to archive.",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "listTags",
+      "type": "function",
+      "description": "Returns a list of tags that can be set on messages, and their human-friendly name, colour, and sort order.",
+      "async": true,
+      "parameters": []
+    }
+  ],
+  "definitions": {
+    "OptionalPermission": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "messagesMove",
+            "messagesRead"
+          ]
+        }
+      ]
+    }
+  },
+  "refs": {
+    "messages#/definitions/OptionalPermission": {
+      "namespace": "manifest",
+      "type": "OptionalPermission"
+    }
+  },
+  "types": {
+    "TagsDetail": {
+      "type": "object",
+      "description": "Used for filtering messages by tag in various methods. Note that functions using this type may have a partial implementation.",
+      "properties": {
+        "tags": {
+          "type": "object",
+          "description": "Object keys are tags to filter on, values are <code>true</code> if the message must have the tag, or <code>false</code> if it must not have the tag. For a list of available tags, call the :ref:`messages.listTags` method.",
+          "patternProperties": {
+            ".*": {
+              "type": "boolean"
+            }
+          }
+        },
+        "mode": {
+          "type": "string",
+          "description": "Whether all of the tag filters must apply, or any of them.",
+          "enum": [
+            "all",
+            "any"
+          ]
+        }
+      },
+      "required": [
+        "tags",
+        "mode"
+      ]
+    }
+  }
+}

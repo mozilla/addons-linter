@@ -1,11 +1,14 @@
 scripts/download-import-tag
+scripts/download-thunderbird-tag
 scripts/list-firefox-tags
 scripts/webext-test-functional
+scripts/list-thunderbird-tags
 dist
 coverage
 tests/fixtures/**
 tests/**/*.json
-src/schema/imported/index.js
+src/schema/firefox/index.js
+src/schema/thunderbird/index.js
 locale/
 tests/fixtures/fr.js
 tests/fixtures/ja.js

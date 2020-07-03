@@ -8,11 +8,12 @@ const path = require('path');
 
 const schemaImport = require('../src/schema/firefox-schemas-import');
 
-const firefoxDir = 'tmp/firefox';
-const importedDir = 'src/schema/imported';
-const updatesDir = 'src/schema/updates';
-
 const arg = process.argv[2];
+const component = process.argv[3];
+
+const firefoxDir = `tmp/${component}`;
+const importedDir = `src/schema/${component}`;
+const updatesDir = 'src/schema/updates';
 
 try {
   fs.statSync(arg);

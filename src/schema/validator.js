@@ -2,8 +2,8 @@ import ajv from 'ajv';
 import ajvMergePatch from 'ajv-merge-patch';
 
 import { deepPatch } from 'schema/deepmerge';
-import schemaObject from 'schema/imported/manifest';
-import themeSchemaObject from 'schema/imported/theme';
+import schemaObject from 'schema/firefox/manifest';
+import themeSchemaObject from 'schema/firefox/theme';
 import messagesSchemaObject from 'schema/messages';
 import { DEPRECATED_MANIFEST_PROPERTIES } from 'const';
 
@@ -17,7 +17,19 @@ import {
   isValidVersionString,
   manifestShortcutKey,
 } from './formats';
-import schemas from './imported';
+import firefoxSchemas from './firefox';
+import thunderbirdSchemas from './thunderbird';
+
+const schemas = [
+  ...firefoxSchemas,
+  ...thunderbirdSchemas.filter((schema) => {
+    const duplicated = [];
+    firefoxSchemas.forEach((fxSchema) => {
+      duplicated.push(fxSchema.id === schema.id);
+    });
+    return !duplicated.includes(true);
+  }),
+];
 
 const validator = ajv({
   allErrors: true,
@@ -190,7 +202,7 @@ export const validateDictionary = (...args) => {
 
 const _validateLocaleMessages = validator.compile({
   ...messagesSchemaObject,
-  id: 'messages',
+  id: 'localeMessages',
   $ref: '#/types/WebExtensionMessages',
 });
 

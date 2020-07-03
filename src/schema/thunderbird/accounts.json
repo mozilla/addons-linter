@@ -1,0 +1,62 @@
+{
+  "id": "accounts",
+  "permissions": [
+    "accountsRead"
+  ],
+  "functions": [
+    {
+      "name": "list",
+      "type": "function",
+      "description": "Returns all mail accounts.",
+      "async": true,
+      "parameters": []
+    },
+    {
+      "name": "get",
+      "type": "function",
+      "description": "Returns details of the requested account, or null if it doesn't exist.",
+      "async": true,
+      "parameters": [
+        {
+          "name": "accountId",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "setDefaultIdentity",
+      "type": "function",
+      "description": "Sets the default identity for an account.",
+      "async": true,
+      "parameters": [
+        {
+          "name": "accountId",
+          "type": "string"
+        },
+        {
+          "name": "identityId",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "OptionalPermission": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "accountsRead"
+          ]
+        }
+      ]
+    }
+  },
+  "refs": {
+    "accounts#/definitions/OptionalPermission": {
+      "namespace": "manifest",
+      "type": "OptionalPermission"
+    }
+  },
+  "types": {}
+}

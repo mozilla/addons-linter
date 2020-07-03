@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ ! -e "tmp/$1.zip" ]; then
+    echo "tmp/$1.zip doesn't exist, downloading..."
+    curl "https://hg.mozilla.org/comm-central/archive/$1.zip" > "tmp/$1.zip"
+else
+    echo "tmp/$1.zip already exists, please make sure it's valid!"
+fi
+
+echo "Importing with scripts/thunderbird-schema-import tmp/$1.zip"
+
+# Now import the schema from that tag
+scripts/firefox-schema-import "tmp/$1.zip" "thunderbird"

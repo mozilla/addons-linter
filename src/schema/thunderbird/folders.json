@@ -1,0 +1,132 @@
+{
+  "id": "folders",
+  "permissions": [
+    "accountsFolders"
+  ],
+  "functions": [
+    {
+      "name": "create",
+      "type": "function",
+      "description": "Creates a new subfolder of <code>parentFolder</code>.",
+      "async": true,
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "folders#/types/MailFolder"
+            },
+            {
+              "name": "parentFolder"
+            }
+          ]
+        },
+        {
+          "name": "childName",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "rename",
+      "type": "function",
+      "description": "Renames a folder.",
+      "async": true,
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "folders#/types/MailFolder"
+            },
+            {
+              "name": "folder"
+            }
+          ]
+        },
+        {
+          "name": "newName",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "delete",
+      "type": "function",
+      "description": "Deletes a folder.",
+      "async": true,
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "folders#/types/MailFolder"
+            },
+            {
+              "name": "folder"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "OptionalPermission": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "accountsFolders"
+          ]
+        }
+      ]
+    }
+  },
+  "refs": {
+    "folders#/definitions/OptionalPermission": {
+      "namespace": "manifest",
+      "type": "OptionalPermission"
+    }
+  },
+  "types": {
+    "MailFolder": {
+      "type": "object",
+      "description": "A folder object, as returned by the <var>list</var> and <var>get</var> methods. Use the accountId and path properties to refer to a folder.",
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "description": "The account this folder belongs to."
+        },
+        "name": {
+          "type": "string",
+          "description": "The human-friendly name of this folder."
+        },
+        "path": {
+          "type": "string",
+          "description": "Path to this folder in the account. Although paths look predictable, never guess a folder's path, as there are a number of reasons why it may not be what you think it is."
+        },
+        "subFolders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/types/MailFolder"
+          }
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of folder, for several common types.",
+          "enum": [
+            "inbox",
+            "drafts",
+            "sent",
+            "trash",
+            "templates",
+            "archives",
+            "junk",
+            "outbox"
+          ]
+        }
+      },
+      "required": [
+        "accountId",
+        "path"
+      ]
+    }
+  }
+}

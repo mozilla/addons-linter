@@ -1,0 +1,293 @@
+{
+  "id": "mailTabs",
+  "functions": [
+    {
+      "name": "query",
+      "type": "function",
+      "description": "Gets all mail tabs that have the specified properties, or all mail tabs if no properties are specified.",
+      "async": true,
+      "parameters": [
+        {
+          "type": "object",
+          "name": "queryInfo",
+          "properties": {
+            "active": {
+              "type": "boolean",
+              "description": "Whether the tabs are active in their windows."
+            },
+            "currentWindow": {
+              "type": "boolean",
+              "description": "Whether the tabs are in the current window."
+            },
+            "lastFocusedWindow": {
+              "type": "boolean",
+              "description": "Whether the tabs are in the last focused window."
+            },
+            "windowId": {
+              "type": "integer",
+              "minimum": -2,
+              "description": "The ID of the parent window, or :ref:`windows.WINDOW_ID_CURRENT` for the current window."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "update",
+      "type": "function",
+      "description": "Modifies the properties of a mail tab. Properties that are not specified in <var>updateProperties</var> are not modified.",
+      "async": true,
+      "parameters": [
+        {
+          "name": "tabId",
+          "type": "integer",
+          "description": "Defaults to the active tab of the current window.",
+          "optional": true,
+          "minimum": 1
+        },
+        {
+          "name": "updateProperties",
+          "type": "object",
+          "properties": {
+            "displayedFolder": {
+              "allOf": [
+                {
+                  "$ref": "folders#/types/MailFolder"
+                },
+                {
+                  "description": "Sets the folder displayed in the tab. The extension must have an accounts permission to do this."
+                }
+              ]
+            },
+            "sortType": {
+              "type": "string",
+              "description": "Sorts the list of messages. <var>sortOrder</var> must also be given.",
+              "enum": [
+                "none",
+                "date",
+                "subject",
+                "author",
+                "id",
+                "thread",
+                "priority",
+                "status",
+                "size",
+                "flagged",
+                "unread",
+                "recipient",
+                "location",
+                "tags",
+                "junkStatus",
+                "attachments",
+                "account",
+                "custom",
+                "received",
+                "correspondent"
+              ]
+            },
+            "sortOrder": {
+              "type": "string",
+              "description": "Sorts the list of messages. <var>sortType</var> must also be given.",
+              "enum": [
+                "none",
+                "ascending",
+                "descending"
+              ]
+            },
+            "layout": {
+              "type": "string",
+              "description": "Sets the arrangement of the folder pane, message list pane, and message display pane. Note that setting this applies it to all mail tabs.",
+              "enum": [
+                "standard",
+                "wide",
+                "vertical"
+              ]
+            },
+            "folderPaneVisible": {
+              "type": "boolean",
+              "description": "Shows or hides the folder pane."
+            },
+            "messagePaneVisible": {
+              "type": "boolean",
+              "description": "Shows or hides the message display pane."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "getSelectedMessages",
+      "type": "function",
+      "description": "Lists the selected messages in the current folder. A messages permission is required to do this.",
+      "permissions": [
+        "messagesRead"
+      ],
+      "async": true,
+      "parameters": [
+        {
+          "name": "tabId",
+          "type": "integer",
+          "description": "Defaults to the active tab of the current window.",
+          "optional": true,
+          "minimum": 1
+        }
+      ]
+    },
+    {
+      "name": "setQuickFilter",
+      "type": "function",
+      "description": "Sets the Quick Filter user interface based on the options specified.",
+      "async": true,
+      "parameters": [
+        {
+          "name": "tabId",
+          "type": "integer",
+          "description": "Defaults to the active tab of the current window.",
+          "optional": true,
+          "minimum": 1
+        },
+        {
+          "name": "properties",
+          "type": "object",
+          "properties": {
+            "show": {
+              "type": "boolean",
+              "description": "Shows or hides the Quick Filter bar."
+            },
+            "unread": {
+              "type": "boolean",
+              "description": "Shows only unread messages."
+            },
+            "flagged": {
+              "type": "boolean",
+              "description": "Shows only flagged messages."
+            },
+            "contact": {
+              "type": "boolean",
+              "description": "Shows only messages from people in the address book."
+            },
+            "tags": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "$ref": "messages#/types/TagsDetail"
+                }
+              ],
+              "description": "Shows only messages with tags on them."
+            },
+            "attachment": {
+              "type": "boolean",
+              "description": "Shows only messages with attachments."
+            },
+            "text": {
+              "allOf": [
+                {
+                  "$ref": "#/types/QuickFilterTextDetail"
+                },
+                {
+                  "description": "Shows only messages matching the supplied text."
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "onDisplayedFolderChanged",
+      "type": "function",
+      "description": "Fired when the displayed folder changes in any mail tab.",
+      "permissions": [
+        "accountsRead"
+      ],
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "tabs#/types/Tab"
+            },
+            {
+              "name": "tab"
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "folders#/types/MailFolder"
+            },
+            {
+              "name": "displayedFolder"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "onSelectedMessagesChanged",
+      "type": "function",
+      "description": "Fired when the selected messages change in any mail tab.",
+      "permissions": [
+        "messagesRead"
+      ],
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "tabs#/types/Tab"
+            },
+            {
+              "name": "tab"
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "messages#/types/MessageList"
+            },
+            {
+              "name": "selectedMessages"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {},
+  "refs": {},
+  "types": {
+    "QuickFilterTextDetail": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "String to match against the <var>recipients</var>, <var>author</var>, <var>subject</var>, or <var>body</var>."
+        },
+        "recipients": {
+          "type": "boolean",
+          "description": "Shows messages where <var>text</var> matches the recipients."
+        },
+        "author": {
+          "type": "boolean",
+          "description": "Shows messages where <var>text</var> matches the author."
+        },
+        "subject": {
+          "type": "boolean",
+          "description": "Shows messages where <var>text</var> matches the subject."
+        },
+        "body": {
+          "type": "boolean",
+          "description": "Shows messages where <var>text</var> matches the message body."
+        }
+      },
+      "required": [
+        "text"
+      ]
+    }
+  }
+}

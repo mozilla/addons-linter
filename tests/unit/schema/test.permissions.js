@@ -31,6 +31,13 @@ describe('/permissions', () => {
     });
   });
 
+  it('should allow a valid Thunderbird permissions', () => {
+    const manifest = cloneDeep(validManifest);
+    manifest.permissions = ['addressBooks'];
+    validateAddon(manifest);
+    expect(validateAddon.errors).toBeNull();
+  });
+
   const matchingPatterns = [
     '*://developer.mozilla.org/*',
     'http://developer.mozilla.org/*',

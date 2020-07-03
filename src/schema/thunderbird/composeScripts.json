@@ -1,0 +1,63 @@
+{
+  "id": "composeScripts",
+  "permissions": [
+    "compose"
+  ],
+  "functions": [
+    {
+      "name": "register",
+      "type": "function",
+      "description": "Register a compose script programmatically",
+      "async": true,
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/RegisteredComposeScriptOptions"
+            },
+            {
+              "name": "composeScriptOptions"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {},
+  "refs": {},
+  "types": {
+    "RegisteredComposeScriptOptions": {
+      "type": "object",
+      "description": "Details of a compose script registered programmatically",
+      "properties": {
+        "css": {
+          "type": "array",
+          "description": "The list of CSS files to inject",
+          "items": {
+            "$ref": "extensionTypes#/types/ExtensionFileOrCode"
+          }
+        },
+        "js": {
+          "type": "array",
+          "description": "The list of JavaScript files to inject",
+          "items": {
+            "$ref": "extensionTypes#/types/ExtensionFileOrCode"
+          }
+        }
+      }
+    },
+    "RegisteredComposeScript": {
+      "type": "object",
+      "description": "An object that represents a compose script registered programmatically",
+      "functions": [
+        {
+          "name": "unregister",
+          "type": "function",
+          "description": "Unregister a compose script registered programmatically",
+          "async": true,
+          "parameters": []
+        }
+      ]
+    }
+  }
+}

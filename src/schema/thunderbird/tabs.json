@@ -1,0 +1,932 @@
+{
+  "id": "tabs",
+  "description": "Use the <code>browser.tabs</code> API to interact with the browser's tab system. You can use this API to create, modify, and rearrange tabs in the browser.",
+  "properties": {
+    "TAB_ID_NONE": {
+      "value": -1,
+      "description": "An ID which represents the absence of a browser tab."
+    }
+  },
+  "functions": [
+    {
+      "name": "get",
+      "type": "function",
+      "description": "Retrieves details about the specified tab.",
+      "async": "callback",
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "parameters": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/types/Tab"
+                },
+                {
+                  "name": "tab"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "getCurrent",
+      "type": "function",
+      "description": "Gets the tab that this script call is being made from. May be undefined if called from a non-tab context (for example: a background page or popup view).",
+      "async": "callback",
+      "parameters": [
+        {
+          "type": "function",
+          "name": "callback",
+          "parameters": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/types/Tab"
+                },
+                {
+                  "name": "tab",
+                  "optional": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "create",
+      "type": "function",
+      "description": "Creates a new tab.",
+      "async": "callback",
+      "parameters": [
+        {
+          "type": "object",
+          "name": "createProperties",
+          "properties": {
+            "windowId": {
+              "type": "integer",
+              "minimum": -2,
+              "description": "The window to create the new tab in. Defaults to the current window."
+            },
+            "index": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "The position the tab should take in the window. The provided value will be clamped to between zero and the number of tabs in the window."
+            },
+            "url": {
+              "type": "string",
+              "description": "The URL to navigate the tab to initially. Fully-qualified URLs must include a scheme (i.e. 'http://www.google.com', not 'www.google.com'). Relative URLs will be relative to the current page within the extension. Defaults to the New Tab Page."
+            },
+            "active": {
+              "type": "boolean",
+              "description": "Whether the tab should become the active tab in the window. Does not affect whether the window is focused (see :ref:`windows.update`). Defaults to <var>true</var>."
+            },
+            "selected": {
+              "deprecated": "Please use <em>active</em>.",
+              "unsupported": true,
+              "type": "boolean",
+              "description": "Whether the tab should become the selected tab in the window. Defaults to <var>true</var>"
+            }
+          }
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/types/Tab"
+                },
+                {
+                  "name": "tab",
+                  "optional": true,
+                  "description": "Details about the created tab. Will contain the ID of the new tab."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "duplicate",
+      "type": "function",
+      "description": "Duplicates a tab.",
+      "async": "callback",
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0,
+          "description": "The ID of the tab which is to be duplicated."
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/types/Tab"
+                },
+                {
+                  "name": "tab",
+                  "optional": true,
+                  "description": "Details about the duplicated tab. The :ref:`tabs.Tab` object doesn't contain <code>url</code>, <code>title</code> and <code>favIconUrl</code> if the <code>\"tabs\"</code> permission has not been requested."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "query",
+      "type": "function",
+      "description": "Gets all tabs that have the specified properties, or all tabs if no properties are specified.",
+      "async": "callback",
+      "parameters": [
+        {
+          "type": "object",
+          "name": "queryInfo",
+          "properties": {
+            "mailTab": {
+              "type": "boolean",
+              "description": "Whether the tab is a Thunderbird 3-pane tab."
+            },
+            "active": {
+              "type": "boolean",
+              "description": "Whether the tabs are active in their windows."
+            },
+            "highlighted": {
+              "type": "boolean",
+              "description": "Whether the tabs are highlighted.  Works as an alias of active."
+            },
+            "currentWindow": {
+              "type": "boolean",
+              "description": "Whether the tabs are in the current window."
+            },
+            "lastFocusedWindow": {
+              "type": "boolean",
+              "description": "Whether the tabs are in the last focused window."
+            },
+            "status": {
+              "allOf": [
+                {
+                  "$ref": "#/types/TabStatus"
+                },
+                {
+                  "description": "Whether the tabs have completed loading."
+                }
+              ]
+            },
+            "title": {
+              "type": "string",
+              "description": "Match page titles against a pattern."
+            },
+            "url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ],
+              "description": "Match tabs against one or more `URL Patterns <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Match_patterns>`_. Note that fragment identifiers are not matched."
+            },
+            "windowId": {
+              "type": "integer",
+              "minimum": -2,
+              "description": "The ID of the parent window, or :ref:`windows.WINDOW_ID_CURRENT` for the current window."
+            },
+            "windowType": {
+              "allOf": [
+                {
+                  "$ref": "#/types/WindowType"
+                },
+                {
+                  "description": "The type of window the tabs are in."
+                }
+              ]
+            },
+            "index": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "The position of the tabs within their windows."
+            }
+          }
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "parameters": [
+            {
+              "name": "result",
+              "type": "array",
+              "items": {
+                "$ref": "#/types/Tab"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "update",
+      "type": "function",
+      "description": "Modifies the properties of a tab. Properties that are not specified in <var>updateProperties</var> are not modified.",
+      "async": "callback",
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0,
+          "optional": true,
+          "description": "Defaults to the selected tab of the current window."
+        },
+        {
+          "type": "object",
+          "name": "updateProperties",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "A URL to navigate the tab to."
+            },
+            "active": {
+              "type": "boolean",
+              "description": "Whether the tab should be active. Does not affect whether the window is focused (see :ref:`windows.update`)."
+            }
+          }
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/types/Tab"
+                },
+                {
+                  "name": "tab",
+                  "optional": true,
+                  "description": "Details about the updated tab. The :ref:`tabs.Tab` object doesn't contain <code>url</code>, <code>title</code> and <code>favIconUrl</code> if the <code>\"tabs\"</code> permission has not been requested."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "move",
+      "type": "function",
+      "description": "Moves one or more tabs to a new position within its window, or to a new window. Note that tabs can only be moved to and from normal (window.type === \"normal\") windows.",
+      "async": "callback",
+      "parameters": [
+        {
+          "name": "tabIds",
+          "description": "The tab or list of tabs to move.",
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "moveProperties",
+          "properties": {
+            "windowId": {
+              "type": "integer",
+              "minimum": -2,
+              "description": "Defaults to the window the tab is currently in."
+            },
+            "index": {
+              "type": "integer",
+              "minimum": -1,
+              "description": "The position to move the window to. -1 will place the tab at the end of the window."
+            }
+          },
+          "required": [
+            "index"
+          ]
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": [
+            {
+              "name": "tabs",
+              "description": "Details about the moved tabs.",
+              "anyOf": [
+                {
+                  "$ref": "#/types/Tab"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/types/Tab"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reload",
+      "type": "function",
+      "description": "Reload a tab.",
+      "async": "callback",
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0,
+          "optional": true,
+          "description": "The ID of the tab to reload; defaults to the selected tab of the current window."
+        },
+        {
+          "type": "object",
+          "name": "reloadProperties",
+          "optional": true,
+          "properties": {
+            "bypassCache": {
+              "type": "boolean",
+              "description": "Whether using any local cache. Default is false."
+            }
+          }
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "remove",
+      "type": "function",
+      "description": "Closes one or more tabs.",
+      "async": "callback",
+      "parameters": [
+        {
+          "name": "tabIds",
+          "description": "The tab or list of tabs to close.",
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "executeScript",
+      "type": "function",
+      "description": "Injects JavaScript code into a page. For details, see the `programmatic injection <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts>`_ section of the content scripts doc.",
+      "async": "callback",
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0,
+          "optional": true,
+          "description": "The ID of the tab in which to run the script; defaults to the active tab of the current window."
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "extensionTypes#/types/InjectDetails"
+            },
+            {
+              "name": "details",
+              "description": "Details of the script to run."
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "description": "Called after all the JavaScript has been executed.",
+          "parameters": [
+            {
+              "name": "result",
+              "optional": true,
+              "type": "array",
+              "items": {},
+              "description": "The result of the script in every injected frame."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "insertCSS",
+      "type": "function",
+      "description": "Injects CSS into a page. For details, see the `programmatic injection <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts>`_ section of the content scripts doc.",
+      "async": "callback",
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0,
+          "optional": true,
+          "description": "The ID of the tab in which to insert the CSS; defaults to the active tab of the current window."
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "extensionTypes#/types/InjectDetails"
+            },
+            {
+              "name": "details",
+              "description": "Details of the CSS text to insert."
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "description": "Called when all the CSS has been inserted.",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "removeCSS",
+      "type": "function",
+      "description": "Removes injected CSS from a page. For details, see the `programmatic injection <https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts>`_ section of the content scripts doc.",
+      "async": "callback",
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0,
+          "optional": true,
+          "description": "The ID of the tab from which to remove the injected CSS; defaults to the active tab of the current window."
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "extensionTypes#/types/InjectDetails"
+            },
+            {
+              "name": "details",
+              "description": "Details of the CSS text to remove."
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "callback",
+          "optional": true,
+          "description": "Called when all the CSS has been removed.",
+          "parameters": []
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "onCreated",
+      "type": "function",
+      "description": "Fired when a tab is created. Note that the tab's URL may not be set at the time this event fired, but you can listen to onUpdated events to be notified when a URL is set.",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/Tab"
+            },
+            {
+              "name": "tab",
+              "description": "Details of the tab that was created."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "onUpdated",
+      "type": "function",
+      "description": "Fired when a tab is updated.",
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0
+        },
+        {
+          "type": "object",
+          "name": "changeInfo",
+          "description": "Lists the changes to the state of the tab that was updated.",
+          "properties": {
+            "status": {
+              "type": "string",
+              "description": "The status of the tab. Can be either <em>loading</em> or <em>complete</em>."
+            },
+            "url": {
+              "type": "string",
+              "description": "The tab's URL if it has changed."
+            },
+            "favIconUrl": {
+              "type": "string",
+              "description": "The tab's new favicon URL."
+            }
+          }
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/Tab"
+            },
+            {
+              "name": "tab",
+              "description": "Gives the state of the tab that was updated."
+            }
+          ]
+        }
+      ],
+      "extraParameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/UpdateFilter"
+            },
+            {
+              "name": "filter",
+              "optional": true,
+              "description": "A set of filters that restricts the events that will be sent to this listener."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "onMoved",
+      "type": "function",
+      "description": "Fired when a tab is moved within a window. Only one move event is fired, representing the tab the user directly moved. Move events are not fired for the other tabs that must move in response. This event is not fired when a tab is moved between windows. For that, see :ref:`tabs.onDetached`.",
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0
+        },
+        {
+          "type": "object",
+          "name": "moveInfo",
+          "properties": {
+            "windowId": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "fromIndex": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "toIndex": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "windowId",
+            "fromIndex",
+            "toIndex"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "onActivated",
+      "type": "function",
+      "description": "Fires when the active tab in a window changes. Note that the tab's URL may not be set at the time this event fired, but you can listen to onUpdated events to be notified when a URL is set.",
+      "parameters": [
+        {
+          "type": "object",
+          "name": "activeInfo",
+          "properties": {
+            "tabId": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "The ID of the tab that has become active."
+            },
+            "windowId": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "The ID of the window the active tab changed inside of."
+            }
+          },
+          "required": [
+            "tabId",
+            "windowId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "onDetached",
+      "type": "function",
+      "description": "Fired when a tab is detached from a window, for example because it is being moved between windows.",
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0
+        },
+        {
+          "type": "object",
+          "name": "detachInfo",
+          "properties": {
+            "oldWindowId": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "oldPosition": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "oldWindowId",
+            "oldPosition"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "onAttached",
+      "type": "function",
+      "description": "Fired when a tab is attached to a window, for example because it was moved between windows.",
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0
+        },
+        {
+          "type": "object",
+          "name": "attachInfo",
+          "properties": {
+            "newWindowId": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "newPosition": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "newWindowId",
+            "newPosition"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "onRemoved",
+      "type": "function",
+      "description": "Fired when a tab is closed.",
+      "parameters": [
+        {
+          "type": "integer",
+          "name": "tabId",
+          "minimum": 0
+        },
+        {
+          "type": "object",
+          "name": "removeInfo",
+          "properties": {
+            "windowId": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "The window whose tab is closed."
+            },
+            "isWindowClosing": {
+              "type": "boolean",
+              "description": "True when the tab is being closed because its window is being closed."
+            }
+          },
+          "required": [
+            "windowId",
+            "isWindowClosing"
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "OptionalPermissionNoPrompt": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "activeTab"
+          ]
+        }
+      ]
+    },
+    "OptionalPermission": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "tabs",
+            "tabHide"
+          ]
+        }
+      ]
+    }
+  },
+  "refs": {
+    "tabs#/definitions/OptionalPermissionNoPrompt": {
+      "namespace": "manifest",
+      "type": "OptionalPermissionNoPrompt"
+    },
+    "tabs#/definitions/OptionalPermission": {
+      "namespace": "manifest",
+      "type": "OptionalPermission"
+    }
+  },
+  "types": {
+    "Tab": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": -1,
+          "description": "The ID of the tab. Tab IDs are unique within a browser session. Under some circumstances a Tab may not be assigned an ID. Tab ID can also be set to :ref:`tabs.TAB_ID_NONE` for apps and devtools windows."
+        },
+        "index": {
+          "type": "integer",
+          "minimum": -1,
+          "description": "The zero-based index of the tab within its window."
+        },
+        "windowId": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "The ID of the window the tab is contained within."
+        },
+        "selected": {
+          "type": "boolean",
+          "description": "Whether the tab is selected.",
+          "deprecated": "Please use :ref:`tabs.Tab.highlighted`.",
+          "unsupported": true
+        },
+        "highlighted": {
+          "type": "boolean",
+          "description": "Whether the tab is highlighted. Works as an alias of active"
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Whether the tab is active in its window. (Does not necessarily mean the window is focused.)"
+        },
+        "url": {
+          "type": "string",
+          "permissions": [
+            "tabs"
+          ],
+          "description": "The URL the tab is displaying. This property is only present if the extension's manifest includes the <code>\"tabs\"</code> permission."
+        },
+        "title": {
+          "type": "string",
+          "permissions": [
+            "tabs"
+          ],
+          "description": "The title of the tab. This property is only present if the extension's manifest includes the <code>\"tabs\"</code> permission."
+        },
+        "favIconUrl": {
+          "type": "string",
+          "permissions": [
+            "tabs"
+          ],
+          "description": "The URL of the tab's favicon. This property is only present if the extension's manifest includes the <code>\"tabs\"</code> permission. It may also be an empty string if the tab is loading."
+        },
+        "status": {
+          "type": "string",
+          "description": "Either <em>loading</em> or <em>complete</em>."
+        },
+        "width": {
+          "type": "integer",
+          "description": "The width of the tab in pixels."
+        },
+        "height": {
+          "type": "integer",
+          "description": "The height of the tab in pixels."
+        },
+        "mailTab": {
+          "type": "boolean",
+          "description": "Whether the tab is a 3-pane tab."
+        }
+      },
+      "required": [
+        "index",
+        "selected",
+        "highlighted",
+        "active"
+      ]
+    },
+    "TabStatus": {
+      "type": "string",
+      "enum": [
+        "loading",
+        "complete"
+      ],
+      "description": "Whether the tabs have completed loading."
+    },
+    "WindowType": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "popup",
+        "panel",
+        "app",
+        "devtools"
+      ],
+      "description": "The type of window."
+    },
+    "UpdatePropertyName": {
+      "type": "string",
+      "enum": [
+        "favIconUrl",
+        "status",
+        "title"
+      ],
+      "description": "Event names supported in onUpdated."
+    },
+    "UpdateFilter": {
+      "type": "object",
+      "description": "An object describing filters to apply to tabs.onUpdated events.",
+      "properties": {
+        "urls": {
+          "type": "array",
+          "description": "A list of URLs or URL patterns. Events that cannot match any of the URLs will be filtered out.  Filtering with urls requires the <code>\"tabs\"</code> or  <code>\"activeTab\"</code> permission.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "properties": {
+          "type": "array",
+          "description": "A list of property names. Events that do not match any of the names will be filtered out.",
+          "items": {
+            "$ref": "#/types/UpdatePropertyName"
+          },
+          "minItems": 1
+        },
+        "tabId": {
+          "type": "integer"
+        },
+        "windowId": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

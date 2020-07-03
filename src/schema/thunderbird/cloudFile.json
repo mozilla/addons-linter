@@ -1,0 +1,336 @@
+{
+  "id": "cloudFile",
+  "permissions": [
+    "manifest:cloud_file"
+  ],
+  "allowedContexts": [
+    "content"
+  ],
+  "events": [
+    {
+      "name": "onFileUpload",
+      "type": "function",
+      "description": "Fired when a file should be uploaded to the cloud file provider",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/CloudFileAccount"
+            },
+            {
+              "name": "account",
+              "description": "The created account"
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/CloudFile"
+            },
+            {
+              "name": "fileInfo",
+              "description": "The file to upload"
+            }
+          ]
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "properties": {
+          "aborted": {
+            "type": "boolean",
+            "description": "Set this to true if the file upload was aborted"
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL where the uploaded file can be accessed"
+          }
+        }
+      }
+    },
+    {
+      "name": "onFileUploadAbort",
+      "type": "function",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/CloudFileAccount"
+            },
+            {
+              "name": "account",
+              "description": "The created account"
+            }
+          ]
+        },
+        {
+          "type": "integer",
+          "name": "fileId",
+          "minimum": 1,
+          "description": "An identifier for this file"
+        }
+      ]
+    },
+    {
+      "name": "onFileDeleted",
+      "type": "function",
+      "description": "Fired when a file previously uploaded should be deleted",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/CloudFileAccount"
+            },
+            {
+              "name": "account",
+              "description": "The created account"
+            }
+          ]
+        },
+        {
+          "type": "integer",
+          "name": "fileId",
+          "minimum": 1,
+          "description": "An identifier for this file"
+        }
+      ]
+    },
+    {
+      "name": "onAccountAdded",
+      "type": "function",
+      "description": "Fired when a cloud file account of this add-on was created",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/CloudFileAccount"
+            },
+            {
+              "name": "account",
+              "description": "The created account"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "onAccountDeleted",
+      "type": "function",
+      "description": "Fired when a cloud file account of this add-on was deleted",
+      "parameters": [
+        {
+          "name": "accountId",
+          "type": "string",
+          "description": "The id of the removed account"
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "getAccount",
+      "type": "function",
+      "description": "Retrieve information about a single cloud file account",
+      "allowedContexts": [
+        "content"
+      ],
+      "async": true,
+      "parameters": [
+        {
+          "name": "accountId",
+          "type": "string",
+          "description": "Unique identifier of the account"
+        }
+      ]
+    },
+    {
+      "name": "getAllAccounts",
+      "type": "function",
+      "description": "Retrieve all cloud file accounts for the current add-on",
+      "allowedContexts": [
+        "content"
+      ],
+      "async": true,
+      "parameters": []
+    },
+    {
+      "name": "updateAccount",
+      "type": "function",
+      "description": "Update a cloud file account",
+      "allowedContexts": [
+        "content"
+      ],
+      "async": true,
+      "parameters": [
+        {
+          "name": "accountId",
+          "type": "string",
+          "description": "Unique identifier of the account"
+        },
+        {
+          "name": "updateProperties",
+          "type": "object",
+          "properties": {
+            "configured": {
+              "type": "boolean",
+              "description": "If true, the account is configured and ready to use. This property is currently ignored and all accounts are assumed to be configured."
+            },
+            "uploadSizeLimit": {
+              "type": "integer",
+              "minimum": -1,
+              "description": "The maximum size in bytes for a single file to upload. Set to -1 if unlimited."
+            },
+            "spaceRemaining": {
+              "type": "integer",
+              "minimum": -1,
+              "description": "The amount of remaining space on the cloud provider, in bytes. Set to -1 if unsupported."
+            },
+            "spaceUsed": {
+              "type": "integer",
+              "minimum": -1,
+              "description": "The amount of space already used on the cloud provider, in bytes. Set to -1 if unsupported."
+            },
+            "managementUrl": {
+              "type": "string",
+              "format": "relativeUrl",
+              "description": "A page for configuring accounts, to be displayed in the preferences UI."
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "WebExtensionManifest": {
+      "properties": {
+        "cloud_file": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "preprocess": "localize",
+              "description": "Name of the cloud file service."
+            },
+            "service_url": {
+              "type": "string",
+              "description": "URL to the web page of the cloud file service."
+            },
+            "new_account_url": {
+              "type": "string",
+              "deprecated": true,
+              "description": "This property was never used."
+            },
+            "management_url": {
+              "type": "string",
+              "format": "relativeUrl",
+              "preprocess": "localize",
+              "description": "A page for configuring accounts, to be displayed in the preferences UI."
+            },
+            "data_format": {
+              "type": "string",
+              "default": "ArrayBuffer",
+              "description": "Determines the format of the ``data`` argument in ``onFileUpload``.",
+              "enum": [
+                "ArrayBuffer",
+                "File"
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "management_url"
+          ]
+        }
+      }
+    }
+  },
+  "refs": {
+    "cloudFile#/definitions/WebExtensionManifest": {
+      "namespace": "manifest",
+      "type": "WebExtensionManifest"
+    }
+  },
+  "types": {
+    "CloudFileAccount": {
+      "type": "object",
+      "description": "Information about a cloud file account",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the account"
+        },
+        "configured": {
+          "type": "boolean",
+          "description": "If true, the account is configured and ready to use. This property is currently ignored and all accounts are assumed to be configured."
+        },
+        "name": {
+          "type": "string",
+          "description": "A user-friendly name for this account."
+        },
+        "uploadSizeLimit": {
+          "type": "integer",
+          "minimum": -1,
+          "description": "The maximum size in bytes for a single file to upload. Set to -1 if unlimited."
+        },
+        "spaceRemaining": {
+          "type": "integer",
+          "minimum": -1,
+          "description": "The amount of remaining space on the cloud provider, in bytes. Set to -1 if unsupported."
+        },
+        "spaceUsed": {
+          "type": "integer",
+          "minimum": -1,
+          "description": "The amount of space already used on the cloud provider, in bytes. Set to -1 if unsupported."
+        },
+        "managementUrl": {
+          "type": "string",
+          "format": "relativeUrl",
+          "description": "A page for configuring accounts, to be displayed in the preferences UI."
+        }
+      },
+      "required": [
+        "id",
+        "configured",
+        "name",
+        "managementUrl"
+      ]
+    },
+    "CloudFile": {
+      "type": "object",
+      "description": "Information about a cloud file",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "An identifier for this file"
+        },
+        "name": {
+          "type": "string",
+          "description": "Filename of the file to be transferred"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "object",
+              "isInstanceOf": "ArrayBuffer",
+              "additionalProperties": true,
+              "description": "Contents of the file to be transferred"
+            },
+            {
+              "type": "object",
+              "isInstanceOf": "File",
+              "additionalProperties": true,
+              "description": "Contents of the file to be transferred"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "data"
+      ]
+    }
+  }
+}

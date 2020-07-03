@@ -1,0 +1,53 @@
+{
+  "id": "messageDisplay",
+  "permissions": [
+    "messagesRead"
+  ],
+  "events": [
+    {
+      "name": "onMessageDisplayed",
+      "type": "function",
+      "description": "Fired when a message is displayed, whether in a 3-pane tab, a message tab, or a message window.",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "tabs#/types/Tab"
+            },
+            {
+              "name": "tab"
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "messages#/types/MessageHeader"
+            },
+            {
+              "name": "message"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "getDisplayedMessage",
+      "type": "function",
+      "description": "Gets the currently displayed message in the specified tab, or null if no message is displayed.",
+      "async": true,
+      "parameters": [
+        {
+          "name": "tabId",
+          "type": "integer",
+          "minimum": 1
+        }
+      ]
+    }
+  ],
+  "definitions": {},
+  "refs": {},
+  "types": {}
+}

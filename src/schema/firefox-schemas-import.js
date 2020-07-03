@@ -34,6 +34,7 @@ const UNRECOGNIZED_PROPERTY_REFS = [
 const schemaRegexes = [
   new RegExp('browser/components/extensions/schemas/.*\\.json'),
   new RegExp('toolkit/components/extensions/schemas/.*\\.json'),
+  new RegExp('mail/components/extensions/schemas/.*\\.json'),
 ];
 
 export const refMap = {
@@ -211,7 +212,9 @@ inner.mapExtendToRef = (schemas) => {
     const { schema } = updatedSchemas[id];
     Object.keys(schema.refs).forEach((ref) => {
       const { namespace, type } = schema.refs[ref];
-      const extendSchema = updatedSchemas[namespace].schema;
+      const extendSchema = updatedSchemas[namespace]?.schema;
+      if (!extendSchema) return;
+
       const extendType = extendSchema.types[type];
       let updatedType;
       if ('anyOf' in extendType) {
@@ -261,7 +264,7 @@ inner.updateWithAddonsLinterData = (firefoxSchemas, ourSchemas) => {
         ...firefoxSchema,
         // Use `deepPatch` to actually patch (instead of simply merging them)
         // the original schema with our own linter-specific tweaks
-        schema: deepPatch(firefoxSchema.schema, ourSchema),
+        schema: deepPatch(firefoxSchema?.schema, ourSchema),
       };
     }
   });
@@ -520,6 +523,8 @@ function writeSchemasToFile(basePath, importedPath, loadedSchemas) {
   // Write out the schemas.
   ids.forEach((id) => {
     const { file, schema } = loadedSchemas[id];
+    if (!file) return;
+
     writeSchema(importedPath, file, schema);
   });
   // Write out the index.js to easily import all schemas.

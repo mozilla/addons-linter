@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+curl -s https://hg.mozilla.org/comm-central/tags | grep -o "BETA_[_a-zA-Z0-9]*" | sort -r | xargs -L1 echo scripts/download-thunderbird-tag

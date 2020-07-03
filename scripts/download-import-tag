@@ -16,4 +16,4 @@ fi
 echo "Importing with scripts/firefox-schema-import tmp/$1.zip"
 
 # Now import the schema from that tag
-scripts/firefox-schema-import "tmp/$1.zip"
+scripts/firefox-schema-import "tmp/$1.zip" "firefox"
