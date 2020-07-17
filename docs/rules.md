@@ -123,7 +123,6 @@ Rules are sorted by severity.
 | `KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION`        | warning  | Manifest key not compatible with Firefox for Android at `applications.gecko.strict_min_version` |
 | `PERMISSION_FIREFOX_UNSUPPORTED_BY_MIN_VERSION`         | notice   | Permission not compatible with `applications.gecko.strict_min_version`                          |
 | `PERMISSION_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION` | notice   | Permission not compatible with Firefox for Android at `applications.gecko.strict_min_version`   |
-| `PROP_NAME_NOT_ALLOWED`                                 | warning  | name property must not contain the words `mozilla` or `firefox`.                                |
 
 ### Static Theme / manifest.json
 

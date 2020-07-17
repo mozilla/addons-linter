@@ -84,17 +84,6 @@ export const PROP_NAME_INVALID = {
   file: MANIFEST_JSON,
 };
 
-export const PROP_NAME_MUST_NOT_CONTAIN_MOZILLA_OR_FIREFOX = {
-  code: 'PROP_NAME_NOT_ALLOWED',
-  message: i18n._(
-    'The "name" property must not contain the words "mozilla" or "firefox".'
-  ),
-  description: i18n._(
-    'See http://mzl.la/1STmr48 (MDN Docs) for more information.'
-  ),
-  file: MANIFEST_JSON,
-};
-
 export const PROP_VERSION_INVALID = {
   code: 'PROP_VERSION_INVALID',
   message: i18n._('The "version" property must be a string.'),
