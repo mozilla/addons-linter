@@ -16,6 +16,7 @@ module.exports = {
     '<rootDir>/node_modules/',
     '<rootDir>/tests/fixtures/',
     '<rootDir>/(bin|coverage|dist|docs|src)/',
+    '<rootDir>/web-ext/',
   ],
   testMatch: [
     '<rootDir>/**/[Tt]est(*).js?(x)',
