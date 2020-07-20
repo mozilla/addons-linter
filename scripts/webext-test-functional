@@ -17,7 +17,7 @@ npm install
 npm link addons-linter
 
 # Run web-ext functional tests
-npm run test-functional
+MOCHA_TIMEOUT=60000 npm run test-functional
 status_code=$?
 
 # Cleanup
