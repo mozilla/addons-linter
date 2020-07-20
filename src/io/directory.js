@@ -96,8 +96,9 @@ export class Directory extends IOBase {
         encoding: null,
         autoClose: true,
       }).pipe(
-        new FirstChunkStream({ chunkSize }, (_, enc) => {
-          resolve(enc);
+        new FirstChunkStream({ chunkSize }, (buffer) => {
+          resolve(buffer);
+          return FirstChunkStream.stop;
         })
       );
     });

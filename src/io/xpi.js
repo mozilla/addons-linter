@@ -145,8 +145,9 @@ export class Xpi extends IOBase {
           return;
         }
         readStream.pipe(
-          new FirstChunkStream({ chunkSize }, (_, enc) => {
-            resolve(enc);
+          new FirstChunkStream({ chunkSize }, (buffer) => {
+            resolve(buffer);
+            return FirstChunkStream.stop;
           })
         );
       });
