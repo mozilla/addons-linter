@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-07-17 11:24+0000\n"
+"PO-Revision-Date: 2020-07-20 10:01+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -192,9 +192,8 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr ""
 
 #: src/messages/layout.js:89
-#, fuzzy
 msgid "Reserved filename found."
-msgstr "ఫ్లాగ్ చేయబడిన ఫైల్ పేరు కనుగొనబడింది"
+msgstr "రిజర్వుచేయబడిన ఫైలుపేరు కనబడింది."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
