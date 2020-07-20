@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export MOCHA_TIMEOUT=60000
+
 # Build addons-linter
 npm install
 npm run build
