@@ -7,7 +7,6 @@ const gunzip = require('gunzip-maybe');
 const tar = require('tar-fs');
 const tmp = require('tmp-promise');
 
-const tmpOptions = { unsafeCleanup: true };
 const baseSpawnOptions = { shell: true };
 
 // Get the npm script to run.
@@ -26,7 +25,7 @@ if (!jestTestsPath) {
 }
 
 // Cleanup the temporary even if non empty.
-tmp.setGracefulCleanup(tmpOptions);
+tmp.setGracefulCleanup();
 
 function spawnWithShell(cmd, args, options) {
   return spawn(cmd, args, { ...baseSpawnOptions, ...options });
@@ -144,7 +143,7 @@ tmp
       .then((archiveFilePath) => unpackTarPackage(archiveFilePath, tmpDirPath))
       .then(() => installPackageDeps(unpackedDirPath))
       .then(() => runIntegrationTests(unpackedDirPath));
-  }, tmpOptions)
+  }, { unsafeCleanup: true })
   .catch((err) => {
     console.error(err.stack ? chalk.red(err.stack) : chalk.red(err));
     process.exit(1);
