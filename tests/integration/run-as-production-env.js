@@ -135,15 +135,20 @@ function runIntegrationTests(packageDir) {
 // Create a production-like environment in a temporarily created directory
 // and then run the integration tests on it.
 tmp
-  .withDir((tmpDir) => {
-    const tmpDirPath = tmpDir.path;
-    const unpackedDirPath = path.join(tmpDirPath, 'package');
+  .withDir(
+    (tmpDir) => {
+      const tmpDirPath = tmpDir.path;
+      const unpackedDirPath = path.join(tmpDirPath, 'package');
 
-    return createPackage(tmpDirPath)
-      .then((archiveFilePath) => unpackTarPackage(archiveFilePath, tmpDirPath))
-      .then(() => installPackageDeps(unpackedDirPath))
-      .then(() => runIntegrationTests(unpackedDirPath));
-  }, { unsafeCleanup: true })
+      return createPackage(tmpDirPath)
+        .then((archiveFilePath) =>
+          unpackTarPackage(archiveFilePath, tmpDirPath)
+        )
+        .then(() => installPackageDeps(unpackedDirPath))
+        .then(() => runIntegrationTests(unpackedDirPath));
+    },
+    { unsafeCleanup: true }
+  )
   .catch((err) => {
     console.error(err.stack ? chalk.red(err.stack) : chalk.red(err));
     process.exit(1);
