@@ -1150,7 +1150,6 @@ describe('firefox schema import', () => {
         .withArgs('manifest.json')
         .returns(true);
       sinon.stub(fs, 'createReadStream').withArgs(inputPath).returns(zipfile);
-      sinon.stub(fs, 'unlinkSync').withArgs(inputPath).returns(undefined);
 
       expect(fs.readdirSync(outputPath)).toEqual([]);
       await fetchSchemas({ inputPath, outputPath });
