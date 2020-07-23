@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-03-07 22:58+0000\n"
-"Last-Translator: Kim YoungCheon <circcc@gmail.com>\n"
+"PO-Revision-Date: 2020-07-23 00:24+0000\n"
+"Last-Translator: Hyeonseok Shin <hyeonseok@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,7 @@ msgstr "부가기능 정책에 따라 외부 스크립트는 허용되지 않습
 
 #: src/messages/html.js:7
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "기본적으로 인라인 스크립트 차단"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
@@ -136,7 +136,7 @@ msgstr ""
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "JSON에 블록 주석이 포함되어 있습니다."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
@@ -152,35 +152,35 @@ msgstr "JSON 파일을 파싱하지 못했습니다."
 
 #: src/messages/layout.js:17
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "zip 파일을 압출 해제 할 수 없습니다."
 
 #: src/messages/layout.js:22
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "manifest.json을 찾을 수 없습니다"
 
 #: src/messages/layout.js:30
 msgid "File is too large to parse."
-msgstr ""
+msgstr "분석하기에 파일 용량이 너무 큽니다."
 
 #: src/messages/layout.js:39
 msgid "Hidden file flagged"
-msgstr ""
+msgstr "숨겨진 파일 플래그"
 
 #: src/messages/layout.js:48
 msgid "Flagged filename found"
-msgstr ""
+msgstr "플래그 파일명 발견"
 
 #: src/messages/layout.js:55
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "플래그 파일 확장자 발견"
 
 #: src/messages/layout.js:62
 msgid "Flagged file type found"
-msgstr ""
+msgstr "플래그 파일 형식 발견"
 
 #: src/messages/layout.js:72
 msgid "Package already signed"
-msgstr ""
+msgstr "이미 서명 된 패키지"
 
 #: src/messages/layout.js:8
 msgid "Package contains duplicate entries"
