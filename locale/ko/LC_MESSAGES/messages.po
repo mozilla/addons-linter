@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-07-23 00:24+0000\n"
-"Last-Translator: Hyeonseok Shin <hyeonseok@gmail.com>\n"
+"PO-Revision-Date: 2020-06-03 16:18+0000\n"
+"Last-Translator: jxerry.t <jxerry.t@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -184,7 +184,7 @@ msgstr "이미 서명 된 패키지"
 
 #: src/messages/layout.js:8
 msgid "Package contains duplicate entries"
-msgstr ""
+msgstr "패키지에 중복 된 항목이 있습니다"
 
 #: src/messages/layout.js:80
 msgid "Firefox add-ons are not allowed to run coin miners."
