@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-07-25 01:14+0000\n"
+"PO-Revision-Date: 2020-07-25 01:24+0000\n"
 "Last-Translator: Hyeonseok Shin <hyeonseok@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ko\n"
@@ -224,59 +224,59 @@ msgstr "문자열(https://mzl.la/2DSBTjA)에 \"message\" 메시지 속성이 설
 
 #: src/messages/manifestjson.js:103
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "\"update_url\"은 허용되지 않습니다."
 
 #: src/messages/manifestjson.js:113
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "Firefox에서는 \"update_url\" 속성을 사용하지 않습니다."
 
 #: src/messages/manifestjson.js:122
 msgid "\"strict_max_version\" not required."
-msgstr ""
+msgstr "\"strict_max_version\"은 필요하지 않습니다."
 
 #: src/messages/manifestjson.js:141
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
+msgstr "매니페스트에 정의되어 있는 아이콘을 패키지에서 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:145
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "\"%(path)s\"에서 아이콘을 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:160
 msgid "A background script defined in the manifest could not be found."
-msgstr ""
+msgstr "매니페스트에 정의된 백그라운드 스크립트를 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:163
 msgid "A background page defined in the manifest could not be found."
-msgstr ""
+msgstr "매니페스트에 정의된 백그라운드 페이지를 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:168
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "\"%(path)s\"에서 백그라운드 스크립트를 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:169
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "\"%(path)s\"에서 백그라운드 페이지를 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
-msgstr ""
+msgstr "필드가 유효하지 않습니다."
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
+msgstr "자세한 정보는 https://mzl.la/1ZOhoEN (MDN 문서)에서 볼 수 있습니다."
 
 #: src/messages/manifestjson.js:184
 msgid "A content script defined in the manifest could not be found."
-msgstr ""
+msgstr "매니페스트에 정의된 콘텐트 스크립트를 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:185
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
+msgstr "매니페스트에 정의된 콘텐트 스크립트 css 파일을 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:190
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "매니페스트에 정의된 콘텐트 스크립트를 \"%(path)s\"에서 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:193
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
@@ -284,75 +284,75 @@ msgstr ""
 
 #: src/messages/manifestjson.js:207
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr ""
+msgstr "매니페이스에 정의된 사전 파일을 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:211
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "매니페이스에 정의된 사전 파일을 \"%(path)s\"에서 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "매니페스트가 여러 개의 사전을 포함하고 있습니다."
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "지원되지 않는 여러 개의 사전이 매니페스트에 정의되어 있습니다."
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "매니페스트가 사전 객체를 포함하고 있지만 비어 있습니다."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "사전 객체는 매니페스트에 정의되었지만 비어 있었습니다."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "매니페스트가 사전을 포함하고 있지만 id 속성이 없습니다."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "매니페스트에서 사전이 발견되었지만, id set이 없습니다."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "부가 기능에 금지된 콘텐츠가 있습니다."
 
 #: src/messages/manifestjson.js:257
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "이 부가 기능은 금지된 콘텐츠를 포함하고 있습니다."
 
 #: src/messages/manifestjson.js:26
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "지원하지 않는 권한 타입입니다."
 
 #: src/messages/manifestjson.js:265
 msgid "Icons must be square."
-msgstr ""
+msgstr "아이콘은 사각형이어야 합니다."
 
 #: src/messages/manifestjson.js:266
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "\"%(path)s\"에 있는 아이콘은 사각형이어야 합니다."
 
 #: src/messages/manifestjson.js:277
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "아이콘의 크기가 매니페스트와 일치하지 않습니다."
 
 #: src/messages/manifestjson.js:292
 msgid "Corrupt image file"
-msgstr ""
+msgstr "이미지 파일 손상됨"
 
 #: src/messages/manifestjson.js:294
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "\"%(path)s\"에 있는 예상 아이콘 파일이 손상됨"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "이 테마 LWT 별칭은 Firefox 70 에서 제외되었습니다."
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
+msgstr "자세한 정보는 https://mzl.la/2T11Lkc (MDN 문서)에서 확인할 수 있습니다."
 
 #: src/messages/manifestjson.js:319
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
