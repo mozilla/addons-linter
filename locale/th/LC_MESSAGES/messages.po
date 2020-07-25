@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-07-28 11:54+0000\n"
-"Last-Translator: aefgh39622 <aefgh39622@gmail.com>\n"
+"PO-Revision-Date: 2020-07-25 17:06+0000\n"
+"Last-Translator: aefgh39622@gmail.com <aefgh39622@gmail.com>\n"
 "Language-Team: none\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -372,11 +372,11 @@ msgstr "ไม่ทราบสิทธิอนุญาต"
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "ไฟล์ภาพชุดตกแต่งมีนามสกุลไฟล์ที่ไม่รองรับ"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "ไฟล์ภาพชุดตกแต่งที่ \"%(path)s\" มีนามสกุลไฟล์ที่ไม่รองรับ"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
