@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-07-25 01:32+0000\n"
+"PO-Revision-Date: 2020-07-25 01:38+0000\n"
 "Last-Translator: Hyeonseok Shin <hyeonseok@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ko\n"
@@ -120,11 +120,11 @@ msgstr "JavaScript 구문 오류"
 
 #: src/messages/javascript.js:76
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "예상치 못한 전역이 인수로 전달됨"
 
 #: src/messages/javascript.js:83
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "document.write는 사용하지 않는 것이 좋습니다."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
@@ -132,7 +132,7 @@ msgstr "금지된 타사 JS 라이브러리"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "권장되지 않는 타사 JS 라이브러리"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -280,7 +280,7 @@ msgstr "매니페스트에 정의된 콘텐트 스크립트를 \"%(path)s\"에�
 
 #: src/messages/manifestjson.js:193
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "매니페스트에 서언된 콘텐트 스크립트 CSS 파일을 \"%(path)s\"에서 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:207
 msgid "A dictionary file defined in the manifest could not be found."
