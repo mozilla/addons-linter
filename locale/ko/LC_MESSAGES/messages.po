@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-07-25 01:24+0000\n"
+"PO-Revision-Date: 2020-07-25 01:32+0000\n"
 "Last-Translator: Hyeonseok Shin <hyeonseok@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ko\n"
@@ -356,120 +356,120 @@ msgstr "자세한 정보는 https://mzl.la/2T11Lkc (MDN 문서)에서 확인할 
 
 #: src/messages/manifestjson.js:319
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr ""
+msgstr "\"%(path)s\"에서 \"%(type)s\"의 테마 이미지를 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:330
 msgid "Corrupted theme image file"
-msgstr ""
+msgstr "테마 이미지 파일 손상됨"
 
 #: src/messages/manifestjson.js:332
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "\"%(path)s\"의 테마 이미지 파일 손상됨"
 
 #: src/messages/manifestjson.js:34
 msgid "Unknown permission."
-msgstr ""
+msgstr "알 수 없는 권한입니다."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "테마 이미지 파일에 지원하지 않는 파일 확장자가 있음"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "\"%(path)s\"의 테마 이미지 파일에 지원하지 않는 파일 확장자가 있음"
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "자세한 정보는 https://mzl.la/1R1n1t0 (MDN 문서)에서 확인할 수 있습니다."
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "테마 이미지 파일에 지원하지 않는 MIME 타입이 있음"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "\"%(path)s\"에 있는 테마 이미지 파일에 지원하지 않는 MIME 타입 \"%(mime)s\"이 있음"
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "MIME 타입 테마 이미지 파일이 파일 확장자와 일치하지 않음"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "\"%(path)s\"에 있는 테마 이미지 파일 확장자가 실제 MIME 타입 \"%(mime)s\"와 일치하지 않음"
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "\"default_locale\"은 현지화가 되어 있지 않습니다."
 
 #: src/messages/manifestjson.js:402
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "\"default_locale\"은 존재하지 않지만 \"_locales\"는 존재합니다."
 
 #: src/messages/manifestjson.js:411
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "지원되지 않는 이미지 확장자"
 
 #: src/messages/manifestjson.js:412
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
+msgstr "아이콘은 JPG/JPEG, WebP, GIF, PNG 또는 SVG 중 하나여야 합니다."
 
 #: src/messages/manifestjson.js:422
 msgid "Empty language directory"
-msgstr ""
+msgstr "빈 언어 디렉터리"
 
 #: src/messages/manifestjson.js:424
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "\"%(path)s\"에 messages.json 파일이 없음"
 
 #: src/messages/manifestjson.js:43
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "manifest.json의 \"manifest_version\"이 유효한 값이 아님"
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "매니페스트 키가 명시된 최소 Firefox 버전에서 지원되지 않음"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "자세한 정보는 https://mzl.la/20PenXl (MDN 문서)에서 확인할 수 있습니다."
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "명시된 최소 Firefox 버전에서 지원하지 않는 권한"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "매니페스트 키가 명시된 최소 Android 용 Firefox 버전에서 지원되지 않음"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "명시된 최소 Android 용 Firefox 버전에서 지원하지 않는 권한"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
-msgstr ""
+msgstr "사용자 정의 content_security_policy에 추가적인 검토가 필요합니다."
 
 #: src/messages/manifestjson.js:76
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "\"name\" 속성은 문자열 이어야 합니다."
 
 #: src/messages/manifestjson.js:77
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "자세한 정보는 http://mzl.la/1STmr48 (MDN 문서)에서 확인할 수 있습니다."
 
 #: src/messages/manifestjson.js:8
 msgid "The field is required."
-msgstr ""
+msgstr "이 필드는 필수입니다."
 
 #: src/messages/manifestjson.js:85
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "\"version\" 속성은 반드시 문자열 이어야 합니다."
 
 #: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "자세한 정보는 http://mzl.la/1kXIADa (MDN 문서)에서 확인할 수 있습니다."
 
 #: src/messages/manifestjson.js:94
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "\"version\" 속성은 Firefox만의 특정한 형식을 사용합니다."
