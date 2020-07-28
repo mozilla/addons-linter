@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-07-28 07:13+0000\n"
+"PO-Revision-Date: 2020-07-28 07:15+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -355,9 +355,8 @@ msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr "మరింత సమాచారం కోసం https://mzl.la/2T11Lkc (MDN పత్రావళి) చూడండి."
 
 #: src/messages/manifestjson.js:319
-#, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "వెనుతలపు పేజీ \"%(path)s\"లో కనబడలేదు."
+msgstr "%(type)s కొరకు అలంకారపు బొమ్మ \"%(path)s\" వద్ద కనబడలేదు"
 
 #: src/messages/manifestjson.js:330
 msgid "Corrupted theme image file"
