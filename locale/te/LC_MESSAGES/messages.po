@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-07-24 15:04+0000\n"
+"PO-Revision-Date: 2020-07-28 07:13+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -95,9 +95,8 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr ""
 
 #: src/messages/javascript.js:180
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "ఈ API Firefox ద్వారా అమలు చేయబడలేదు."
+msgstr "పేర్కొన్న ఆండ్రాయిడ్ కొరకు Firefox కనిష్ఠ వెర్షనులో ఈ API అమలుచేయబడలేదు"
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
