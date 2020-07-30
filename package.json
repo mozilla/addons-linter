@@ -60,7 +60,7 @@
     "glob": "7.1.6",
     "is-mergeable-object": "1.1.1",
     "jed": "1.1.1",
-    "mdn-browser-compat-data": "1.0.31",
+    "mdn-browser-compat-data": "1.0.33",
     "os-locale": "5.0.0",
     "pino": "6.4.1",
     "postcss": "7.0.32",
