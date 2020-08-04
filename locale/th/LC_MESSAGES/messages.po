@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-07-25 17:06+0000\n"
+"PO-Revision-Date: 2020-08-04 13:15+0000\n"
 "Last-Translator: aefgh39622@gmail.com <aefgh39622@gmail.com>\n"
 "Language-Team: none\n"
 "Language: th\n"
@@ -136,7 +136,7 @@ msgstr "ไลบรารี JS ของบุคคลที่สามท�
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr "JSON ของคุณมีหมายเหตุการบล็อก"
+msgstr "JSON ของคุณมีความคิดเห็นเกี่ยวกับการปิดกั้น"
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
@@ -292,7 +292,7 @@ msgstr "ไม่พบไฟล์พจนานุกรมที่กำห
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "ไฟล์กำกับประกอบด้วยพจนานุกรมหลายเล่ม"
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
