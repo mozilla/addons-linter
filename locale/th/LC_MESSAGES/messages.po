@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-08-04 13:15+0000\n"
+"PO-Revision-Date: 2020-08-04 13:26+0000\n"
 "Last-Translator: aefgh39622@gmail.com <aefgh39622@gmail.com>\n"
 "Language-Team: none\n"
 "Language: th\n"
@@ -296,23 +296,23 @@ msgstr "ไฟล์กำกับประกอบด้วยพจนาน
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "มีพจนานุกรมหลายเล่มที่กำหนดในไฟล์กำกับซึ่งไม่รองรับ"
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "ไฟล์กำกับประกอบด้วยวัตถุพจนานุกรม แต่ว่างเปล่า"
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "วัตถุพจนานุกรมถูกกำหนดในไฟล์กำกับ แต่ว่างเปล่า"
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "ไฟล์กำกับประกอบด้วยพจนานุกรม แต่ไม่มีคุณลักษณะ id"
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "พบพจนานุกรมในไฟล์กำกับ แต่ไม่ได้ตั้งค่า id ไว้"
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -348,7 +348,7 @@ msgstr "ไฟล์ไอคอนที่คาดไว้ที่ \"%(path
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "นามแฝง LWT ของชุดตกแต่งนี้ได้ถูกเอาออกแล้วใน Firefox 70"
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
@@ -384,19 +384,19 @@ msgstr "ดู https://mzl.la/1R1n1t0 (คู่มือ MDN) สำหรั�
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "ไฟล์ภาพของชุดตกแต่งมีชนิด MIME ที่ไม่รองรับ"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "ไฟล์ภาพของชุดตกแต่งที่ \"%(path)s\" มีชนิด mime ที่ไม่รองรับ \"%(mime)s\""
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "ชนิด mime ของไฟล์ภาพของชุดตกแต่งไม่ตรงกับนามสกุลไฟล์"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "นามสกุลไฟล์ภาพของชุดตกแต่งที่ \"%(path)s\" ไม่ตรงกับชนิด mime จริง \"%(mime)s\""
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
@@ -428,7 +428,7 @@ msgstr "\"manifest_version\" ที่อยู่ใน manifest.json ไม่
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "คีย์ไฟล์กำกับไม่รองรับโดย Firefox รุ่นขั้นต่ำที่ระบุ"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -436,15 +436,15 @@ msgstr "ดู https://mzl.la/20PenXl (คู่มือ MDN) สำหรั�
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "สิทธิอนุญาตไม่รองรับโดย Firefox รุ่นขั้นต่ำที่ระบุ"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "คีย์ไฟล์กำกับไม่รองรับโดย Firefox สำหรับ Android รุ่นขั้นต่ำที่ระบุ"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "สิทธิอนุญาตไม่รองรับโดย Firefox สำหรับ Android รุ่นขั้นต่ำที่ระบุ"
 
 #: src/messages/manifestjson.js:58
 msgid "A custom content_security_policy needs additional review."
