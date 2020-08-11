@@ -314,6 +314,16 @@ export default class ManifestJSONParser extends JSONParser {
           'page'
         );
       }
+      if (this.parsedJSON.background.service_worker) {
+        // TODO: replace this with a call to this.validateFileExistsInPackage
+        // once background.service_worker is supported on the Firefox side and
+        // we can accept it on AMO submissions
+        // (https://github.com/mozilla/addons-linter/issues/3290).
+        this.collector.addError(
+          messages.manifestFieldUnsupported('background.service_worker')
+        );
+        this.isValid = false;
+      }
     }
 
     if (
