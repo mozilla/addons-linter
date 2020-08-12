@@ -1788,6 +1788,25 @@ describe('ManifestJSONParser', () => {
         description: 'Background page could not be found at "foo.html".',
       });
     });
+
+    it('does error if background.service_worker is being used', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        background: { service_worker: 'background_worker.js' },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        linter.collector,
+        { io: { files: {} } }
+      );
+
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_FIELD_UNSUPPORTED,
+        message: 'Manifest field not supported.',
+        description: '"background.service_worker" is not supported.',
+      });
+    });
   });
 
   describe('content_scripts', () => {

@@ -21,6 +21,18 @@ export const MANIFEST_FIELD_INVALID = {
   file: MANIFEST_JSON,
 };
 
+export const MANIFEST_FIELD_UNSUPPORTED = 'MANIFEST_FIELD_UNSUPPORTED';
+export function manifestFieldUnsupported(fieldName) {
+  return {
+    code: 'MANIFEST_FIELD_UNSUPPORTED',
+    message: i18n._('Manifest field not supported.'),
+    description: i18n.sprintf(i18n._('"%(fieldName)s" is not supported.'), {
+      fieldName,
+    }),
+    file: MANIFEST_JSON,
+  };
+}
+
 export const MANIFEST_BAD_PERMISSION = {
   code: 'MANIFEST_BAD_PERMISSION',
   message: i18n._('The permission type is unsupported.'),

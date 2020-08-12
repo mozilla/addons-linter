@@ -144,6 +144,18 @@
                       "required": [
                         "scripts"
                       ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "service_worker": {
+                          "$ref": "manifest#/types/ExtensionURL"
+                        }
+                      },
+                      "postprocess": "requireBackgroundServiceWorkerEnabled",
+                      "required": [
+                        "service_worker"
+                      ]
                     }
                   ]
                 },
