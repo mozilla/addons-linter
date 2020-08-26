@@ -86,7 +86,7 @@ Rules are sorted by severity.
 | `MANIFEST_CSP`                                          | warning  | content_security_policy in manifest.json means more review                                      |
 | `MANIFEST_CSP_UNSAFE_EVAL`                              | warning  | usage of 'unsafe-eval' is strongly discouraged                                                  |
 | `MANIFEST_PERMISSIONS`                                  | warning  | Unknown permission                                                                              |
-| `MANIFEST_OPTIONAL_PERMISSIONS`                                  | warning  | Unknown optional permission                                                                              |
+| `MANIFEST_OPTIONAL_PERMISSIONS`                         | warning  | Unknown optional permission                                                                     |
 | `NO_MESSAGES_FILE`                                      | warning  | When default_locale is specified a matching messages.json must exist                            |
 | `NO_DEFAULT_LOCALE`                                     | warning  | When \_locales directory exists, default_locale must exist                                      |
 | `UNSAFE_VAR_ASSIGNMENT`                                 | warning  | Assignment using dynamic, unsanitized values                                                    |
