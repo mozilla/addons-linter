@@ -239,7 +239,9 @@ export default class ManifestJSONParser extends JSONParser {
     // Arrays can be extremely verbose, this tries to make them a little
     // more sane. Using a regex because there will likely be more as we
     // expand the schema.
-    const match = error.dataPath.match(/^\/(permissions)\/([\d+])/);
+    const match =
+      error.dataPath.match(/^\/(optional_permissions)\/([\d+])/) ||
+      error.dataPath.match(/^\/(permissions)\/([\d+])/);
     if (match && baseObject.code !== messages.MANIFEST_BAD_PERMISSION.code) {
       baseObject = messages[`MANIFEST_${match[1].toUpperCase()}`];
       overrides.message = oneLine`/${match[1]}: Unknown ${match[1]}
@@ -252,7 +254,10 @@ export default class ManifestJSONParser extends JSONParser {
   _validate() {
     // Not all messages returned by the schema are fatal to Firefox, messages
     // that are just warnings should be added to this array.
-    const warnings = [messages.MANIFEST_PERMISSIONS.code];
+    const warnings = [
+      messages.MANIFEST_PERMISSIONS.code,
+      messages.MANIFEST_OPTIONAL_PERMISSIONS.code,
+    ];
     let validate = validateAddon;
 
     if (this.isStaticTheme) {

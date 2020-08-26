@@ -50,6 +50,15 @@ export const MANIFEST_PERMISSIONS = {
   file: MANIFEST_JSON,
 };
 
+export const MANIFEST_OPTIONAL_PERMISSIONS = {
+  code: 'MANIFEST_OPTIONAL_PERMISSIONS',
+  message: i18n._('Unknown permission.'),
+  description: i18n._(
+    'See https://mzl.la/1R1n1t0 (MDN Docs) for more information.'
+  ),
+  file: MANIFEST_JSON,
+};
+
 export const MANIFEST_VERSION_INVALID = {
   code: 'MANIFEST_VERSION_INVALID',
   message: i18n._(
