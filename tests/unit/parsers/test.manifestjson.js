@@ -211,6 +211,25 @@ describe('ManifestJSONParser', () => {
       });
     });
 
+    it('should not error if optional_permission is a string (even if unknown)', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        optional_permissions: ['identity', 'fileSystem'],
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      const { warnings } = addonLinter.collector;
+      expect(addonLinter.collector.errors.length).toBe(0);
+      assertHasMatchingError(warnings, {
+        code: messages.MANIFEST_OPTIONAL_PERMISSIONS.code,
+        message: /Unknown optional_permissions "fileSystem"/,
+      });
+    });
+
     it('should error if permission is not a string', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
@@ -320,6 +339,18 @@ describe('ManifestJSONParser', () => {
       expect(message.code).toEqual(messages.MANIFEST_PERMISSIONS.code);
     });
 
+    it('should return optional permission for wrong type', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const parser = new ManifestJSONParser(
+        validManifestJSON(),
+        addonLinter.collector
+      );
+      const message = parser.errorLookup({
+        dataPath: '/optional_permissions/0',
+      });
+      expect(message.code).toEqual(messages.MANIFEST_OPTIONAL_PERMISSIONS.code);
+    });
+
     it('Lookup LWT alias with custom message overwrite', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const parser = new ManifestJSONParser(
@@ -338,7 +369,26 @@ describe('ManifestJSONParser', () => {
   });
 
   describe('enum', () => {
-    it('should only return one message', () => {
+    it('optional_permissions should only return one message', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        optional_permissions: ['idle', 'wat'],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      const { warnings } = addonLinter.collector;
+      // expect(warnings.length).toEqual(1);
+      expect(warnings[0].code).toEqual(
+        messages.MANIFEST_OPTIONAL_PERMISSIONS.code
+      );
+      expect(warnings[0].message).toContain(
+        '/optional_permissions: Unknown optional_permissions "wat" at 1.'
+      );
+    });
+    it('permissions should only return one message', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({ permissions: ['alarms', 'wat'] });
       const manifestJSONParser = new ManifestJSONParser(

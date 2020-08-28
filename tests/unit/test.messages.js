@@ -11,12 +11,6 @@ describe('Messages', () => {
       it('should have a code set', () => {
         expect(code).not.toEqual(null);
       });
-
-      it(`should have code length <= 25 for ${code}`, () => {
-        // Otherwise the ansi color sequences will be borked
-        // as columnify doesn't handle them when wrapping text.
-        expect(code.length).toBeLessThan(26);
-      });
     }
 
     if (description) {

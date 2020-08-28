@@ -239,9 +239,9 @@ export default class ManifestJSONParser extends JSONParser {
     // Arrays can be extremely verbose, this tries to make them a little
     // more sane. Using a regex because there will likely be more as we
     // expand the schema.
-    const match =
-      error.dataPath.match(/^\/(optional_permissions)\/([\d+])/) ||
-      error.dataPath.match(/^\/(permissions)\/([\d+])/);
+    const match = error.dataPath.match(
+      /^\/(permissions|optional_permissions)\/([\d+])/
+    );
     if (match && baseObject.code !== messages.MANIFEST_BAD_PERMISSION.code) {
       baseObject = messages[`MANIFEST_${match[1].toUpperCase()}`];
       overrides.message = oneLine`/${match[1]}: Unknown ${match[1]}
