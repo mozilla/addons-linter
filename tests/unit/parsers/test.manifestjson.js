@@ -192,43 +192,36 @@ describe('ManifestJSONParser', () => {
   });
 
   describe('bad permissions', () => {
-    it('should not error if permission is a string (even if unknown)', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({
-        permissions: ['identity', 'fileSystem'],
+    for (const manifestKey of ['permissions', 'optional_permissions']) {
+      const expectedMsgCode =
+        manifestKey === 'permissions'
+          ? messages.MANIFEST_PERMISSIONS.code
+          : messages.MANIFEST_OPTIONAL_PERMISSIONS.code;
+      const json =
+        manifestKey === 'permissions'
+          ? validManifestJSON({
+              permissions: ['identity', 'fileSystem'],
+            })
+          : validManifestJSON({
+              optional_permissions: ['idle', 'fileSystem'],
+              applications: { gecko: { strict_max_version: '55.0' } },
+            });
+      it(`should not error if ${manifestKey} is a string (even if unknown)`, () => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+        const { warnings } = addonLinter.collector;
+        console.log({ warnings });
+        expect(addonLinter.collector.errors.length).toBe(0);
+        assertHasMatchingError(warnings, {
+          code: expectedMsgCode,
+          message: `/Unknown ${manifestKey} "fileSystem"/`,
+        });
       });
-
-      const manifestJSONParser = new ManifestJSONParser(
-        json,
-        addonLinter.collector
-      );
-      expect(manifestJSONParser.isValid).toEqual(false);
-      const { warnings } = addonLinter.collector;
-      expect(addonLinter.collector.errors.length).toBe(0);
-      assertHasMatchingError(warnings, {
-        code: messages.MANIFEST_PERMISSIONS.code,
-        message: /Unknown permissions "fileSystem"/,
-      });
-    });
-
-    it('should not error if optional_permission is a string (even if unknown)', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({
-        optional_permissions: ['identity', 'fileSystem'],
-      });
-
-      const manifestJSONParser = new ManifestJSONParser(
-        json,
-        addonLinter.collector
-      );
-      expect(manifestJSONParser.isValid).toEqual(false);
-      const { warnings } = addonLinter.collector;
-      expect(addonLinter.collector.errors.length).toBe(0);
-      assertHasMatchingError(warnings, {
-        code: messages.MANIFEST_OPTIONAL_PERMISSIONS.code,
-        message: /Unknown optional_permissions "fileSystem"/,
-      });
-    });
+    }
 
     it('should error if permission is not a string', () => {
       const addonLinter = new Linter({ _: ['bar'] });
@@ -329,27 +322,22 @@ describe('ManifestJSONParser', () => {
       expect(message.code).toEqual(messages.MANIFEST_FIELD_INVALID.code);
     });
 
-    it('should return permission for wrong type', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const parser = new ManifestJSONParser(
-        validManifestJSON(),
-        addonLinter.collector
-      );
-      const message = parser.errorLookup({ dataPath: '/permissions/0' });
-      expect(message.code).toEqual(messages.MANIFEST_PERMISSIONS.code);
-    });
+    for (const manifestKey of ['permissions', 'optional_permissions']) {
+      const expectedMsgCode =
+        manifestKey === 'permissions'
+          ? messages.MANIFEST_PERMISSIONS.code
+          : messages.MANIFEST_OPTIONAL_PERMISSIONS.code;
 
-    it('should return optional permission for wrong type', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const parser = new ManifestJSONParser(
-        validManifestJSON(),
-        addonLinter.collector
-      );
-      const message = parser.errorLookup({
-        dataPath: '/optional_permissions/0',
+      it(`should return ${manifestKey} for wrong type`, () => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const parser = new ManifestJSONParser(
+          validManifestJSON(),
+          addonLinter.collector
+        );
+        const message = parser.errorLookup({ dataPath: `/${manifestKey}/0` });
+        expect(message.code).toEqual(expectedMsgCode);
       });
-      expect(message.code).toEqual(messages.MANIFEST_OPTIONAL_PERMISSIONS.code);
-    });
+    }
 
     it('Lookup LWT alias with custom message overwrite', () => {
       const addonLinter = new Linter({ _: ['bar'] });
@@ -369,40 +357,30 @@ describe('ManifestJSONParser', () => {
   });
 
   describe('enum', () => {
-    it('optional_permissions should only return one message', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({
-        optional_permissions: ['idle', 'wat'],
+    for (const mainfestKey of ['permissions', 'optional_permissions']) {
+      const expectedMsg =
+        mainfestKey === 'optional_permissions'
+          ? messages.MANIFEST_OPTIONAL_PERMISSIONS
+          : messages.MANIFEST_PERMISSIONS;
+      it(`${mainfestKey} should only return one message`, () => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          [mainfestKey]: ['idle', 'wat'],
+          applications: { gecko: { strict_max_version: '55.0' } },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+        const { warnings } = addonLinter.collector;
+        expect(warnings.length).toEqual(1);
+        expect(warnings[0].code).toEqual(expectedMsg.code);
+        expect(warnings[0].message).toContain(
+          `/${mainfestKey}: Unknown ${mainfestKey} "wat" at 1.`
+        );
       });
-      const manifestJSONParser = new ManifestJSONParser(
-        json,
-        addonLinter.collector
-      );
-      expect(manifestJSONParser.isValid).toEqual(false);
-      const { warnings } = addonLinter.collector;
-      // expect(warnings.length).toEqual(1);
-      expect(warnings[0].code).toEqual(
-        messages.MANIFEST_OPTIONAL_PERMISSIONS.code
-      );
-      expect(warnings[0].message).toContain(
-        '/optional_permissions: Unknown optional_permissions "wat" at 1.'
-      );
-    });
-    it('permissions should only return one message', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({ permissions: ['alarms', 'wat'] });
-      const manifestJSONParser = new ManifestJSONParser(
-        json,
-        addonLinter.collector
-      );
-      expect(manifestJSONParser.isValid).toEqual(false);
-      const { warnings } = addonLinter.collector;
-      expect(warnings.length).toEqual(1);
-      expect(warnings[0].code).toEqual(messages.MANIFEST_PERMISSIONS.code);
-      expect(warnings[0].message).toContain(
-        '/permissions: Unknown permissions "wat" at 1.'
-      );
-    });
+    }
   });
 
   describe('name', () => {
