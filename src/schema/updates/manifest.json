@@ -45,6 +45,15 @@
                       ]
                     },
                     "uniqueItems": true
+                  } ,
+                  "optioanl_permissions": {
+                    "items": {
+                      "anyOf": [
+                        {},
+                        { "format": "deprecated" }
+                      ]
+                    },
+                    "uniqueItems": true
                   }
                 }
               }

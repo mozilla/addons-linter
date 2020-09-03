@@ -102,6 +102,7 @@ Rules are sorted by severity.
 | `MANIFEST_FIELD_DEPRECATED`                             | error    | A field is deprecated                                                                           |
 | `MANIFEST_FIELD_UNSUPPORTED`                            | error    | A manifest field is not supported                                                               |
 | `MANIFEST_BAD_PERMISSION`                               | error    | Bad permission                                                                                  |
+| `MANIFEST_BAD_OPTIONAL_PERMISSION`                      | error    | Bad optional permission                                                                         |
 | `JSON_BLOCK_COMMENTS`                                   | error    | Block Comments are not allowed in JSON                                                          |
 | `MANIFEST_INVALID_CONTENT`                              | error    | This add-on contains forbidden content                                                          |
 | `CONTENT_SCRIPT_NOT_FOUND`                              | error    | Content script file could not be found                                                          |

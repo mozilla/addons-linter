@@ -193,72 +193,77 @@ describe('ManifestJSONParser', () => {
 
   describe('bad permissions', () => {
     for (const manifestKey of ['permissions', 'optional_permissions']) {
-      const expectedMsgCode =
-        manifestKey === 'permissions'
-          ? messages.MANIFEST_PERMISSIONS.code
-          : messages.MANIFEST_OPTIONAL_PERMISSIONS.code;
-      const json =
-        manifestKey === 'permissions'
-          ? validManifestJSON({
-              permissions: ['identity', 'fileSystem'],
-            })
-          : validManifestJSON({
-              optional_permissions: ['idle', 'fileSystem'],
-              applications: { gecko: { strict_max_version: '55.0' } },
-            });
       it(`should not error if ${manifestKey} is a string (even if unknown)`, () => {
         const addonLinter = new Linter({ _: ['bar'] });
+        const expectedMsgCode =
+          manifestKey === 'permissions'
+            ? messages.MANIFEST_PERMISSIONS.code
+            : messages.MANIFEST_OPTIONAL_PERMISSIONS.code;
+
+        const json = validManifestJSON({
+          [manifestKey]: ['idle', 'fileSystem'],
+          applications: { gecko: { strict_min_version: '55.0' } },
+        });
         const manifestJSONParser = new ManifestJSONParser(
           json,
           addonLinter.collector
         );
         expect(manifestJSONParser.isValid).toEqual(false);
         const { warnings } = addonLinter.collector;
-        console.log({ warnings });
         expect(addonLinter.collector.errors.length).toBe(0);
         assertHasMatchingError(warnings, {
           code: expectedMsgCode,
-          message: `/Unknown ${manifestKey} "fileSystem"/`,
+          message: new RegExp(`Unknown ${manifestKey} "fileSystem"`),
         });
       });
+
+      it(`should error if ${manifestKey} is not a string`, () => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const expectedMsgCode =
+          manifestKey === 'permissions'
+            ? messages.MANIFEST_BAD_PERMISSION.code
+            : messages.MANIFEST_BAD_OPTIONAL_PERMISSION.code;
+        const json = validManifestJSON({
+          [manifestKey]: [
+            'idle',
+            {
+              fileSystem: ['write'],
+            },
+          ],
+          applications: { gecko: { strict_min_version: '55.0' } },
+        });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+        const { errors } = addonLinter.collector;
+        expect(errors[0].code).toEqual(expectedMsgCode);
+        expect(errors[0].message).toContain('should be string');
+      });
+
+      it(`should error if ${manifestKey} is duplicated`, () => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const expectedMsgCode =
+          manifestKey === 'permissions'
+            ? messages.MANIFEST_BAD_PERMISSION.code
+            : messages.MANIFEST_BAD_OPTIONAL_PERMISSION.code;
+        const json = validManifestJSON({
+          [manifestKey]: ['idle', 'idle'],
+          applications: { gecko: { strict_min_version: '55.0' } },
+        });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+        const { errors } = addonLinter.collector;
+        expect(errors[0].code).toEqual(expectedMsgCode);
+        expect(errors[0].message).toContain('should NOT have duplicate items');
+      });
     }
-
-    it('should error if permission is not a string', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({
-        permissions: [
-          'identity',
-          {
-            fileSystem: ['write'],
-          },
-        ],
-      });
-
-      const manifestJSONParser = new ManifestJSONParser(
-        json,
-        addonLinter.collector
-      );
-      expect(manifestJSONParser.isValid).toEqual(false);
-      const { errors } = addonLinter.collector;
-      expect(errors[0].code).toEqual(messages.MANIFEST_BAD_PERMISSION.code);
-      expect(errors[0].message).toContain('should be string');
-    });
-
-    it('should error if permission is duplicated', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({
-        permissions: ['identity', 'identity'],
-      });
-
-      const manifestJSONParser = new ManifestJSONParser(
-        json,
-        addonLinter.collector
-      );
-      expect(manifestJSONParser.isValid).toEqual(false);
-      const { errors } = addonLinter.collector;
-      expect(errors[0].code).toEqual(messages.MANIFEST_BAD_PERMISSION.code);
-      expect(errors[0].message).toContain('should NOT have duplicate items');
-    });
   });
 
   describe('type', () => {

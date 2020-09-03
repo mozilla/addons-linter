@@ -41,6 +41,14 @@ export const MANIFEST_BAD_PERMISSION = {
   file: MANIFEST_JSON,
 };
 
+export const MANIFEST_BAD_OPTIONAL_PERMISSION = {
+  code: 'MANIFEST_BAD_OPTIONAL_PERMISSION',
+  message: i18n._('The permission type is unsupported.'),
+  description: i18n._(oneLine`See https://mzl.la/2Qn0fWC
+    (MDN Docs) for more information.`),
+  file: MANIFEST_JSON,
+};
+
 export const MANIFEST_PERMISSIONS = {
   code: 'MANIFEST_PERMISSIONS',
   message: i18n._('Unknown permission.'),

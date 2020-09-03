@@ -232,6 +232,13 @@ export default class ManifestJSONParser extends JSONParser {
     ) {
       baseObject = messages.MANIFEST_BAD_PERMISSION;
       overrides.message = `Permissions ${error.message}.`;
+    } else if (
+      error.dataPath.startsWith('/optional_permissions') &&
+      typeof error.data !== 'undefined' &&
+      typeof error.data !== 'string'
+    ) {
+      baseObject = messages.MANIFEST_BAD_OPTIONAL_PERMISSION;
+      overrides.message = `Permissions ${error.message}.`;
     } else if (error.keyword === 'type') {
       baseObject = messages.MANIFEST_FIELD_INVALID;
     }
@@ -242,7 +249,11 @@ export default class ManifestJSONParser extends JSONParser {
     const match = error.dataPath.match(
       /^\/(permissions|optional_permissions)\/([\d+])/
     );
-    if (match && baseObject.code !== messages.MANIFEST_BAD_PERMISSION.code) {
+    if (
+      match &&
+      baseObject.code !== messages.MANIFEST_BAD_PERMISSION.code &&
+      baseObject.code !== messages.MANIFEST_BAD_OPTIONAL_PERMISSION.code
+    ) {
       baseObject = messages[`MANIFEST_${match[1].toUpperCase()}`];
       overrides.message = oneLine`/${match[1]}: Unknown ${match[1]}
           "${error.data}" at ${match[2]}.`;
