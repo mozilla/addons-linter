@@ -46,7 +46,7 @@
                     },
                     "uniqueItems": true
                   } ,
-                  "optioanl_permissions": {
+                  "optional_permissions": {
                     "items": {
                       "anyOf": [
                         {},

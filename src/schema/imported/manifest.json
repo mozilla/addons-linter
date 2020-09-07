@@ -249,6 +249,11 @@
                       },
                       {
                         "onError": "warn"
+                      }],
+                    "anyOf": [
+                      {},
+                      {
+                        "format": "deprecated"
                       }
                     ]
                   },
