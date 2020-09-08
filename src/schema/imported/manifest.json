@@ -249,9 +249,16 @@
                       {
                         "onError": "warn"
                       }
+                    ],
+                    "anyOf": [
+                      {},
+                      {
+                        "format": "deprecated"
+                      }
                     ]
                   },
-                  "default": []
+                  "default": [],
+                  "uniqueItems": true
                 },
                 "web_accessible_resources": {
                   "type": "array",

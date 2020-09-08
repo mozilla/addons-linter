@@ -86,6 +86,7 @@ Rules are sorted by severity.
 | `MANIFEST_CSP`                                          | warning  | content_security_policy in manifest.json means more review                                      |
 | `MANIFEST_CSP_UNSAFE_EVAL`                              | warning  | usage of 'unsafe-eval' is strongly discouraged                                                  |
 | `MANIFEST_PERMISSIONS`                                  | warning  | Unknown permission                                                                              |
+| `MANIFEST_OPTIONAL_PERMISSIONS`                         | warning  | Unknown optional permission                                                                     |
 | `NO_MESSAGES_FILE`                                      | warning  | When default_locale is specified a matching messages.json must exist                            |
 | `NO_DEFAULT_LOCALE`                                     | warning  | When \_locales directory exists, default_locale must exist                                      |
 | `UNSAFE_VAR_ASSIGNMENT`                                 | warning  | Assignment using dynamic, unsanitized values                                                    |
@@ -101,6 +102,7 @@ Rules are sorted by severity.
 | `MANIFEST_FIELD_DEPRECATED`                             | error    | A field is deprecated                                                                           |
 | `MANIFEST_FIELD_UNSUPPORTED`                            | error    | A manifest field is not supported                                                               |
 | `MANIFEST_BAD_PERMISSION`                               | error    | Bad permission                                                                                  |
+| `MANIFEST_BAD_OPTIONAL_PERMISSION`                      | error    | Bad optional permission                                                                         |
 | `JSON_BLOCK_COMMENTS`                                   | error    | Block Comments are not allowed in JSON                                                          |
 | `MANIFEST_INVALID_CONTENT`                              | error    | This add-on contains forbidden content                                                          |
 | `CONTENT_SCRIPT_NOT_FOUND`                              | error    | Content script file could not be found                                                          |

@@ -45,6 +45,15 @@
                       ]
                     },
                     "uniqueItems": true
+                  } ,
+                  "optional_permissions": {
+                    "items": {
+                      "anyOf": [
+                        {},
+                        { "format": "deprecated" }
+                      ]
+                    },
+                    "uniqueItems": true
                   }
                 }
               }
