@@ -241,7 +241,6 @@
                 },
                 "optional_permissions": {
                   "type": "array",
-                  "default": [],
                   "items": {
                     "allOf": [
                       {
@@ -249,7 +248,8 @@
                       },
                       {
                         "onError": "warn"
-                      }],
+                      }
+                    ],
                     "anyOf": [
                       {},
                       {
@@ -257,6 +257,7 @@
                       }
                     ]
                   },
+                  "default": [],
                   "uniqueItems": true
                 },
                 "web_accessible_resources": {
