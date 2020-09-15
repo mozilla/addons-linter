@@ -19,8 +19,20 @@
                   "preprocess": "localize"
                 },
                 "keyword": {
-                  "type": "string",
-                  "preprocess": "localize"
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "preprocess": "localize"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "preprocess": "localize"
+                      },
+                      "minItems": 1
+                    }
+                  ]
                 },
                 "search_url": {
                   "type": "string",
