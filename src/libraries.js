@@ -271,6 +271,8 @@ export const BANNED_LIBRARIES = [
   'dompurify.2.0.14.purify.min.js',
   'dompurify.2.0.15.purify.js',
   'dompurify.2.0.15.purify.min.js',
+  'dompurify.2.0.16.purify.js',
+  'dompurify.2.0.16.purify.min.js',
   'jquery.1.2.1.jquery.js',
   'jquery.1.2.1.jquery.min.js',
   'jquery.1.2.2.jquery.js',
