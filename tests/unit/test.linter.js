@@ -1,5 +1,6 @@
 /* eslint-disable max-classes-per-file */
 import fs from 'fs';
+import process from 'process';
 
 import { oneLine } from 'common-tags';
 
@@ -20,6 +21,13 @@ import {
   validStaticThemeManifestJSON,
   assertHasMatchingError,
 } from './helpers';
+
+// Increasing jest timeout when running on nodejs 10,
+// due to some intermittency when running this tests
+// on Travis.
+if (process.release.lts === 'Dubnium') {
+  jest.setTimeout(10000);
+}
 
 const fakeCheckFileExists = async () => {
   return {
