@@ -63,7 +63,7 @@
     "mdn-browser-compat-data": "1.0.35",
     "os-locale": "5.0.0",
     "pino": "6.6.1",
-    "postcss": "7.0.32",
+    "postcss": "7.0.34",
     "probe-image-size": "5.0.0",
     "relaxed-json": "1.0.3",
     "semver": "7.3.2",
