@@ -50,7 +50,7 @@
     "deepmerge": "4.2.2",
     "dispensary": "0.56.0",
     "es6-promisify": "6.1.1",
-    "eslint": "7.9.0",
+    "eslint": "7.10.0",
     "eslint-plugin-no-unsanitized": "3.1.2",
     "eslint-visitor-keys": "2.0.0",
     "espree": "7.3.0",
