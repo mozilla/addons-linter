@@ -60,7 +60,7 @@ describe('firefox schema import', () => {
   }
 
   describe('rewriteOptionalToRequired', () => {
-    it('handles non-objects ', () => {
+    it('handles non-objects', () => {
       const obj = {
         foo: 'FOO',
         bar: 10,

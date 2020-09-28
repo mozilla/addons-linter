@@ -380,7 +380,7 @@ describe('Linter.handleError()', () => {
     sinon.assert.calledWith(fakeConsole.error, fakeError.stack);
   });
 
-  it('should show colorized error ', () => {
+  it('should show colorized error', () => {
     const addonLinter = new Linter({ _: ['foo'] });
     addonLinter.chalk = {};
     addonLinter.chalk.red = sinon.stub();
@@ -577,6 +577,7 @@ describe('Linter.textOutput()', () => {
   });
 
   it(
+    // eslint-disable-next-line jest/valid-title
     oneLine`should remove columns, description, and lines when terminal is < 60 columns wide`,
     () => {
       const addonLinter = new Linter({ _: ['bar'] });
