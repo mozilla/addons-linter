@@ -22,6 +22,8 @@ import {
   rewriteValue,
 } from 'schema/firefox-schemas-import';
 
+const { pending } = global;
+
 function prepareTmpDir() {
   const tmpDir = tmp.dirSync({ mode: '0750', unsafeCleanup: true });
   const outputPath = `${tmpDir.name}/schema-imported`;
@@ -54,7 +56,7 @@ async function createZipFile(inputPath) {
 describe('firefox schema import', () => {
   // Skip the Firefox schema import tests on windows.
   if (process.platform === 'win32') {
-    // eslint-disable-next-line jest/no-disabled-tests, no-undef
+    // eslint-disable-next-line jest/no-disabled-tests
     pending();
     return;
   }
