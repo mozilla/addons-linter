@@ -576,28 +576,24 @@ describe('Linter.textOutput()', () => {
     expect(text).not.toContain('whatever error description');
   });
 
-  it(
-    // eslint-disable-next-line jest/valid-title
-    oneLine`should remove columns, description, and lines when terminal is < 60 columns wide`,
-    () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      addonLinter.collector.addError({
-        code: 'WHATEVER_ERROR',
-        message: 'whatever error message',
-        description: 'whatever error description',
-        column: 5,
-        line: 20,
-      });
-      const text = addonLinter.textOutput(smallTerminalWidth);
-      expect(addonLinter.output.summary.errors).toEqual(1);
-      expect(text).not.toContain('Description');
-      expect(text).not.toContain('whatever error description');
-      expect(text).not.toContain('Column');
-      expect(text).not.toContain('5');
-      expect(text).not.toContain('Line');
-      expect(text).not.toContain('20');
-    }
-  );
+  it('should remove columns, description, and lines when terminal is < 60 columns wide', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    addonLinter.collector.addError({
+      code: 'WHATEVER_ERROR',
+      message: 'whatever error message',
+      description: 'whatever error description',
+      column: 5,
+      line: 20,
+    });
+    const text = addonLinter.textOutput(smallTerminalWidth);
+    expect(addonLinter.output.summary.errors).toEqual(1);
+    expect(text).not.toContain('Description');
+    expect(text).not.toContain('whatever error description');
+    expect(text).not.toContain('Column');
+    expect(text).not.toContain('5');
+    expect(text).not.toContain('Line');
+    expect(text).not.toContain('20');
+  });
 
   it('should survive even a 1 column terminal', () => {
     const addonLinter = new Linter({ _: ['bar'] });
