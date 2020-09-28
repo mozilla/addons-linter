@@ -37,7 +37,7 @@ describe('incompatible browser APIs', () => {
   });
 
   it('does not flag APIs that are not implemented on Android', async () => {
-    const code = 'browser.browserAction.setBadgeText({ text: "lorem ipsum" });';
+    const code = 'browser.sidebarAction.open();';
     const jsScanner = new JavaScriptScanner(code, 'badcode.js', {
       addonMetadata: { firefoxMinVersion: '57.0a1' },
     });
