@@ -2,8 +2,9 @@ language: node_js
 node_js:
   # When updating the value below, make sure to update the `node_js` version in
   # the `deploy` section at the bottom of this file too.
-  - 'v10.21.0'
-  - 'v12.18.1'
+  - '10'
+  - '12'
+  - '14'
 
 script:
   - node scripts/build-locales
@@ -13,7 +14,35 @@ script:
   # run integration tests using an addons-linter binary in a production-like environment
   - npm run test-integration:production
   - npm run prettier-ci
-  - npm run webext-test-functional
+
+jobs:
+  fast_finish: true
+  include:
+    - stage: Run web-ext functional tests
+      script:
+        - npm run webext-test-functional
+
+    - stage: Deploy package on npm
+      script: echo 'Deploying to npm...'
+      ## Make sure we have a production build.
+      before_deploy:
+        - node scripts/build-locales
+        - NODE_ENV=production npm run build
+      ## Keep this in sync with the last version listed in the node_js property.
+      node_js: '12'
+      deploy:
+        provider: npm
+        email: addons-dev-automation+npm@mozilla.com
+        # Travis dpl v2 (See https://docs.travis-ci.com/user/deployment-v2/providers/npm/)
+        edge: true
+        # Note that cleanup runs *after* the before_deploy script.
+        cleanup: false
+        api_token:
+          secure: Mj1vxHiJ6TvBAi6Slp4q3V/vePnzG5OTssKlygm5XN8A3t7/h6Zi09NMGWBWUPfnfPzI9LH+fHZpjI8aQmsTuzqnkwDfufBukmDkvwQvWiQa6hn69VJ1+hOEFfzbtu2TauXHVLw+6bLagbD4DMkatM+WGoBsRi3p7ZI4lj9bYM6vN7B3Vx/AwZ9mfDGfapiVE+Mlo2T43nQrXeZ1Od5jQ01r9Femkw5qCXT6DYEccDpbimFeGngqzCz9ks6g3BQZ4y982uR2n2jErZFib7M3VaPO7qJvXIubbpk7iCzk0el4hdzz8syABTvEwPL6qAWtItbxivOApy1xoeBOD4wonyTnBJ7slVWDMr2IlcjHSBPtGqyrmofk8VZCDxSJxj14dmPam9nl3lEYV9bdBBMaatSJnVtEQJEkPiIX+aQBwR/CwjQ5XJkQ3oIMlmqM1qs6APqvbox1ZkMJAEcpnz+ZBTYsZPnN02hTaVXsUqlEJHOX2yP+6Zbfyr9dnXtnKLy+1dpmlQBKmAGMZyujlMJ4xxRxmOZCAECSUvkR0TCLZZ8lSDydR4E4TQlMvtDY7yv8ZRFi09mRqd6mB+xT0n2vihDmKIFROs7kewwL/i7AGBhZ+AhZY7HTP2qdjy/wxCPyRPm+KiXIE+Dvp+ZoRK8BibxErGD/atUNIXwjWypgEWg=
+        on:
+          tags: true
+          repo: mozilla/addons-linter
+          branch: master
 
 notifications:
   slack:
@@ -25,20 +54,6 @@ notifications:
 cache:
   directories:
   - node_modules
-
-deploy:
-  provider: npm
-  email: addons-dev-automation+npm@mozilla.com
-  # Travis dpl v2 (See https://docs.travis-ci.com/user/deployment-v2/providers/npm/)
-  edge: true
-  cleanup: false
-  api_token:
-    secure: Mj1vxHiJ6TvBAi6Slp4q3V/vePnzG5OTssKlygm5XN8A3t7/h6Zi09NMGWBWUPfnfPzI9LH+fHZpjI8aQmsTuzqnkwDfufBukmDkvwQvWiQa6hn69VJ1+hOEFfzbtu2TauXHVLw+6bLagbD4DMkatM+WGoBsRi3p7ZI4lj9bYM6vN7B3Vx/AwZ9mfDGfapiVE+Mlo2T43nQrXeZ1Od5jQ01r9Femkw5qCXT6DYEccDpbimFeGngqzCz9ks6g3BQZ4y982uR2n2jErZFib7M3VaPO7qJvXIubbpk7iCzk0el4hdzz8syABTvEwPL6qAWtItbxivOApy1xoeBOD4wonyTnBJ7slVWDMr2IlcjHSBPtGqyrmofk8VZCDxSJxj14dmPam9nl3lEYV9bdBBMaatSJnVtEQJEkPiIX+aQBwR/CwjQ5XJkQ3oIMlmqM1qs6APqvbox1ZkMJAEcpnz+ZBTYsZPnN02hTaVXsUqlEJHOX2yP+6Zbfyr9dnXtnKLy+1dpmlQBKmAGMZyujlMJ4xxRxmOZCAECSUvkR0TCLZZ8lSDydR4E4TQlMvtDY7yv8ZRFi09mRqd6mB+xT0n2vihDmKIFROs7kewwL/i7AGBhZ+AhZY7HTP2qdjy/wxCPyRPm+KiXIE+Dvp+ZoRK8BibxErGD/atUNIXwjWypgEWg=
-  on:
-    tags: true
-    repo: mozilla/addons-linter
-    branch: master
-    node_js: 'v10.21.0'
 
 after_success: npm run publish-rules > /dev/null 2>&1
 env:
