@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-09-17 09:51+0000\n"
-"Last-Translator: shopov.bogomil <shopov.bogomil@gmail.com>\n"
+"PO-Revision-Date: 2020-05-25 00:45+0000\n"
+"Last-Translator: Teodor P. <teo0321@gmail.com>\n"
 "Language-Team: none\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: src/linter.js:138
 msgid "Code"
-msgstr ""
+msgstr "Код"
 
 #: src/linter.js:144
 msgid "Message"
@@ -28,11 +28,11 @@ msgstr "Съобщение"
 
 #: src/linter.js:150
 msgid "Description"
-msgstr ""
+msgstr "Описание"
 
 #: src/linter.js:156
 msgid "File"
-msgstr ""
+msgstr "Файл"
 
 #: src/linter.js:162
 msgid "Line"
@@ -68,11 +68,11 @@ msgstr ""
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
-msgstr ""
+msgstr "Открита известна JS библиотека"
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} не се поддържа"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
@@ -460,7 +460,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:8
 msgid "The field is required."
-msgstr ""
+msgstr "Полето е задължително."
 
 #: src/messages/manifestjson.js:85
 msgid "The \"version\" property must be a string."
