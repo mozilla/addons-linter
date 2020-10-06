@@ -14,7 +14,7 @@
     },
     "ImageDetails": {
       "type": "object",
-      "description": "Details about the format and quality of an image.",
+      "description": "Details about the format, quality, area and scale of the capture.",
       "properties": {
         "format": {
           "allOf": [
@@ -31,6 +31,34 @@
           "minimum": 0,
           "maximum": 100,
           "description": "When format is <code>\"jpeg\"</code>, controls the quality of the resulting image.  This value is ignored for PNG images.  As quality is decreased, the resulting image will have more visual artifacts, and the number of bytes needed to store it will decrease."
+        },
+        "rect": {
+          "type": "object",
+          "description": "The area of the document to capture, in CSS pixels, relative to the page.  If omitted, capture the visible viewport.",
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y",
+            "width",
+            "height"
+          ]
+        },
+        "scale": {
+          "type": "number",
+          "description": "The scale of the resulting image.  Defaults to <code>devicePixelRatio</code>."
         }
       }
     },
