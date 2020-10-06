@@ -22,8 +22,6 @@ import {
   rewriteValue,
 } from 'schema/firefox-schemas-import';
 
-const { pending } = global;
-
 function prepareTmpDir() {
   const tmpDir = tmp.dirSync({ mode: '0750', unsafeCleanup: true });
   const outputPath = `${tmpDir.name}/schema-imported`;
