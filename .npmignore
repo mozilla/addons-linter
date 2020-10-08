@@ -9,3 +9,8 @@
 !dist/addons-linter.*
 !dist/locale/**
 !dist/rules/**
+
+# Overridden .eslintignore file to prevent addons-linter
+# from loading an arbirary .eslintignore from the cwd
+# (See https://github.com/mozilla/addons-linter/issues/3390)
+!addons-linter.eslintignore
