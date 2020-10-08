@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-05-25 00:45+0000\n"
+"PO-Revision-Date: 2020-05-25 00:44+0000\n"
 "Last-Translator: Teodor P. <teo0321@gmail.com>\n"
 "Language-Team: none\n"
 "Language: bg\n"
@@ -260,7 +260,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
-msgstr ""
+msgstr "Полето е невалидно."
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
