@@ -12,6 +12,8 @@ import { ensureFilenameExists } from 'utils';
 
 const ECMA_VERSION = 2020;
 
+const IGNORE_FILE = 'addons-linter.eslintignore';
+
 export default class JavaScriptScanner {
   disabledRules = [];
 
@@ -70,6 +72,11 @@ export default class JavaScriptScanner {
 
       // Avoid loading the addons-linter .eslintrc file
       useEslintrc: false,
+
+      // Avoid loading the .eslintignore file from the cwd
+      // by explicitly configuring eslint with a custom ignore file
+      // packaged with the addons-linter npm package.
+      ignorePath: path.join(path.resolve(root), IGNORE_FILE),
 
       baseConfig: {
         env: {
