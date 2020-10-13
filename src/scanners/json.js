@@ -27,9 +27,12 @@ export default class JSONScanner extends BaseScanner {
       );
       localeMessagesJSONParser.parse();
     } else {
-      const jsonParser = new JSONParser(json, this.options.collector, {
-        filename: this.filename,
-      });
+      const jsonParser = new JSONParser(
+        json,
+        this.options.collector,
+        this.options.addonMetadata,
+        { filename: this.filename }
+      );
       jsonParser.parse();
     }
 

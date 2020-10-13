@@ -20,6 +20,21 @@ describe('JSONScanner', () => {
     await expect(jsonScanner.scan()).rejects.toThrow('Explode!');
   });
 
+  it('should report invalid JSON', async () => {
+    const addonsLinter = new Linter({ _: ['foo'] });
+    const jsonScanner = new JSONScanner('{ bar: undefined }', 'baz.json', {
+      collector: addonsLinter.collector,
+    });
+
+    await jsonScanner.scan();
+
+    const { errors } = addonsLinter.collector;
+    expect(errors.length).toEqual(1);
+    expect(errors[0].code).toEqual(messages.JSON_INVALID.code);
+    expect(errors[0].file).toEqual('baz.json');
+    expect(errors[0].message).toEqual(messages.JSON_INVALID.message);
+  });
+
   it('should use special parser for messages.json', async () => {
     const addonsLinter = new Linter({ _: ['foo'] });
     const jsonScanner = new JSONScanner(
@@ -35,6 +50,7 @@ describe('JSONScanner', () => {
     const { errors } = addonsLinter.collector;
     expect(errors.length).toEqual(1);
     expect(errors[0].code).toEqual(messages.NO_MESSAGE.code);
+    expect(errors[0].file).toEqual('_locales/en/messages.json');
     expect(errors[0].message).toEqual(messages.NO_MESSAGE.message);
   });
 });
