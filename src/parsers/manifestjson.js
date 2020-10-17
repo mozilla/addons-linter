@@ -510,7 +510,7 @@ export default class ManifestJSONParser extends JSONParser {
     try {
       const info = await getImageMetadata(this.io, iconPath);
       if (info.width !== info.height) {
-        this.collector.addError(messages.iconIsNotSquare(iconPath));
+        this.collector.addWarning(messages.iconIsNotSquare(iconPath));
         this.isValid = false;
       } else if (
         expectedSize !== null &&
