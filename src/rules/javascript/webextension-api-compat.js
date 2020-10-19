@@ -1,4 +1,4 @@
-import bcd from 'mdn-browser-compat-data';
+import bcd from '@mdn/browser-compat-data';
 
 import { INCOMPATIBLE_API } from 'messages/javascript';
 import { createCompatibilityRule } from 'utils';

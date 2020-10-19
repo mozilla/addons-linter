@@ -1,5 +1,5 @@
 import { oneLine } from 'common-tags';
-import bcd from 'mdn-browser-compat-data';
+import bcd from '@mdn/browser-compat-data';
 
 import {
   buildI18nObject,

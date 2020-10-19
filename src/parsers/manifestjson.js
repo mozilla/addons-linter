@@ -6,7 +6,7 @@ import RJSON from 'relaxed-json';
 import { oneLine } from 'common-tags';
 import probeImageSize from 'probe-image-size';
 import upath from 'upath';
-import bcd from 'mdn-browser-compat-data';
+import bcd from '@mdn/browser-compat-data';
 
 import { getDefaultConfigValue } from 'yargs-options';
 import {
