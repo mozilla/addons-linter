@@ -1961,7 +1961,7 @@ describe('ManifestJSONParser', () => {
         { io: { files: { 'options.html': '' } } }
       );
 
-      // Ignore warnings triggered by the rules related to mdn-browser-compat-data.
+      // Ignore warnings triggered by the rules related to @mdn/browser-compat-data.
       const warnings = linter.collector.warnings.filter((msg) => {
         return msg.code !== 'KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION';
       });
