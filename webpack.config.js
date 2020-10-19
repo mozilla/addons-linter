@@ -56,7 +56,7 @@ module.exports = {
     extensions: ['.js', '.json'],
     modules: ['src', 'node_modules'],
   },
-  devtool: 'sourcemap',
+  devtool: 'source-map',
   node: {
     // This is required because the default value does not seem to be `false`.
     // If this isn't set to `false`, `__dirname` is likely invalid and it
