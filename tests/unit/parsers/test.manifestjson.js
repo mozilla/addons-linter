@@ -1730,7 +1730,7 @@ describe('ManifestJSONParser', () => {
         expect(warnings.length).toEqual(0);
       });
 
-      it('adds an error if the dimensions of the image are not the same', async () => {
+      it('adds a warning if the dimensions of the image are not the same', async () => {
         const addonLinter = new Linter({ _: ['bar'] });
         const icon32 = 'tests/fixtures/rectangle.png';
         const size32 = 32;
@@ -1750,9 +1750,9 @@ describe('ManifestJSONParser', () => {
 
         await manifestJSONParser.validateIcon(icon32, size32);
         expect(manifestJSONParser.isValid).toBeFalsy();
-        const { errors } = addonLinter.collector;
-        expect(errors.length).toEqual(1);
-        expect(errors[0].code).toEqual(messages.ICON_NOT_SQUARE);
+        const { warnings } = addonLinter.collector;
+        expect(warnings.length).toEqual(1);
+        expect(warnings[0].code).toEqual(messages.ICON_NOT_SQUARE);
       });
     });
   });
