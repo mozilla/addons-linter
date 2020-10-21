@@ -1754,6 +1754,7 @@ describe('ManifestJSONParser', () => {
         expect(warnings.length).toEqual(1);
         expect(warnings[0].code).toEqual(messages.ICON_NOT_SQUARE);
       });
+
       it('adds an error if the dimensions of the image are not the same', async () => {
         const addonLinter = new Linter({ _: ['bar'] });
         const icon32 = 'tests/fixtures/rectangle.png';
