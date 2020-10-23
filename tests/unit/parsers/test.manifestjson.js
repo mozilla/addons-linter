@@ -1730,7 +1730,7 @@ describe('ManifestJSONParser', () => {
         expect(warnings.length).toEqual(0);
       });
 
-      it('adds a warning if the icon is SVG but the dimensions of the image are not the same', async () => {
+      it('does add a warning if the icon is a non square svg', async () => {
         const addonLinter = new Linter({ _: ['bar'] });
         const icon32 = 'tests/fixtures/rectangle.svg';
         const size32 = 32;
