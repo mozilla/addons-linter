@@ -504,6 +504,10 @@ export default class ManifestJSONParser extends JSONParser {
         });
       }
     }
+
+    if (this.parsedJSON.homepage_url) {
+      this.validateHomePageURL(this.parsedJSON.homepage_url);
+    }
   }
 
   async validateIcon(iconPath, expectedSize) {
@@ -798,6 +802,13 @@ export default class ManifestJSONParser extends JSONParser {
     }
     if (insecureSrcDirective) {
       this.collector.addWarning(messages.manifestCsp(manifestPropName));
+    }
+  }
+
+  validateHomePageURL(url) {
+    const restrictedDomain = 'addons-dev.allizom.org';
+    if (url.indexOf(restrictedDomain) !== -1) {
+      this.collector.addError(messages.RESTRICTED_HOMEPAGE_URL);
     }
   }
 

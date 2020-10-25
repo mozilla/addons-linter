@@ -555,3 +555,12 @@ export function permissionFirefoxAndroidUnsupportedByMinVersion(
     file: MANIFEST_JSON,
   };
 }
+
+export const RESTRICTED_HOMEPAGE_URL = {
+  code: 'RESTRICTED_HOMEPAGE_URL',
+  message: i18n._('Linking to AMO is not allowed'),
+  description: i18n._(
+    'Links directing to AMO domain name are not allowed to be used for homepage'
+  ),
+  file: MANIFEST_JSON,
+};
