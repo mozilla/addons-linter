@@ -1730,6 +1730,31 @@ describe('ManifestJSONParser', () => {
         expect(warnings.length).toEqual(0);
       });
 
+      it('does add a warning if the icon is a non square svg', async () => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const icon32 = 'tests/fixtures/rectangle.svg';
+        const size32 = 32;
+        const json = validManifestJSON({
+          icons: {
+            [size32]: icon32,
+          },
+        });
+        const files = {
+          [icon32]: fs.createReadStream(icon32),
+        };
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector,
+          { io: getStreamableIO(files) }
+        );
+
+        await manifestJSONParser.validateIcon(icon32, size32);
+        expect(manifestJSONParser.isValid).toBeTruthy();
+        const { warnings } = addonLinter.collector;
+        expect(warnings.length).toEqual(1);
+        expect(warnings[0].code).toEqual(messages.ICON_NOT_SQUARE);
+      });
+
       it('adds an error if the dimensions of the image are not the same', async () => {
         const addonLinter = new Linter({ _: ['bar'] });
         const icon32 = 'tests/fixtures/rectangle.png';
