@@ -126,6 +126,7 @@ Rules are sorted by severity.
 | `KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION`        | warning  | Manifest key not compatible with Firefox for Android at `applications.gecko.strict_min_version` |
 | `PERMISSION_FIREFOX_UNSUPPORTED_BY_MIN_VERSION`         | notice   | Permission not compatible with `applications.gecko.strict_min_version`                          |
 | `PERMISSION_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION` | notice   | Permission not compatible with Firefox for Android at `applications.gecko.strict_min_version`   |
+| `DUPLICATE_GECKO_PROPERTY`                              | warning  | Use of both `applications.gecko` and `browser_specific_settings.gecko`                          |
 
 ### Static Theme / manifest.json
 
