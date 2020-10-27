@@ -305,6 +305,15 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (
       this.parsedJSON.browser_specific_settings &&
+      this.parsedJSON.applications &&
+      this.parsedJSON.browser_specific_settings.gecko &&
+      this.parsedJSON.applications.gecko
+    ) {
+      this.collector.addWarning(messages.DUPLICATE_GECKO_PROPERTY);
+    }
+
+    if (
+      this.parsedJSON.browser_specific_settings &&
       this.parsedJSON.browser_specific_settings.gecko
     ) {
       this.parsedJSON.applications = this.parsedJSON.browser_specific_settings;

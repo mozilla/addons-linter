@@ -455,6 +455,15 @@ export const WRONG_ICON_EXTENSION = {
   file: MANIFEST_JSON,
 };
 
+export const DUPLICATE_GECKO_PROPERTY = {
+  code: 'DUPLICATE_GECKO_PROPERTY',
+  message: i18n._('Multiple use of "Gecko" property'),
+  description: i18n._(
+    oneLine`the property Gecko is being used in "applications" and "browser_specific_settings" keys at the same time`
+  ),
+  file: MANIFEST_JSON,
+};
+
 export const NO_MESSAGES_FILE_IN_LOCALES = 'NO_MESSAGES_FILE_IN_LOCALES';
 export function noMessagesFileInLocales(path) {
   return {
