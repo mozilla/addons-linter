@@ -74,6 +74,14 @@ export default class Linter {
     }
   }
 
+  closeIO() {
+    // This is only used when `io` is valid and we disabled the auto-close
+    // feature.
+    if (this.config.disableXpiAutoclose && this.io) {
+      this.io.close();
+    }
+  }
+
   handleError(err, _console = console) {
     if (err.message.includes('DuplicateZipEntry')) {
       this.collector.addError(messages.DUPLICATE_XPI_ENTRY);
@@ -86,6 +94,8 @@ export default class Linter {
     } else {
       _console.error(this.chalk.red(err.message || err));
     }
+
+    this.closeIO();
   }
 
   print(_console = console) {
@@ -421,7 +431,16 @@ export default class Linter {
         this.io = new _Crx({ filePath: this.packagePath, stderr });
       } else {
         log.info('Package is a file. Attempting to parse as an .xpi/.zip');
-        this.io = new _Xpi({ filePath: this.packagePath, stderr });
+
+        // We should set `autoClose` to `false` when we want to disable this
+        // feature. By default, the auto-close feature is enabled.
+        const autoClose = this.config.disableXpiAutoclose !== true;
+
+        if (!autoClose) {
+          log.info('Disabling the auto-close feature');
+        }
+
+        this.io = new _Xpi({ autoClose, filePath: this.packagePath, stderr });
       }
     } else {
       // If not a file then it's a directory.
@@ -485,6 +504,8 @@ export default class Linter {
         this.config.scanFile &&
         !this.config.scanFile.some((f) => Object.keys(files).includes(f))
       ) {
+        this.closeIO();
+
         const _files = this.config.scanFile.join(', ');
         throw new Error(`Selected file(s) not found: ${_files}`);
       }
@@ -498,6 +519,7 @@ export default class Linter {
       });
 
       await this.scanFiles(filesWithoutJSLibraries);
+      this.closeIO();
 
       this.print(deps._console);
       // This is skipped in code coverage because the
@@ -520,6 +542,7 @@ export default class Linter {
     if (this.config.metadata === true) {
       try {
         await this.extractMetadata(deps);
+        this.closeIO();
 
         // This is skipped in the code coverage because the
         // test runs against un-instrumented code.
@@ -537,6 +560,7 @@ export default class Linter {
     }
 
     await this.scan(deps);
+
     return this.output;
   }
 
