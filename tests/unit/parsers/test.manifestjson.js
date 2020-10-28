@@ -72,7 +72,7 @@ describe('ManifestJSONParser', () => {
     });
   });
 
-  it('warn if both "applications" and "browser_specific_settings" have gecko property', () => {
+  it('warn if both "applications" and "browser_specific_settings" properties are being used', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     const json = validManifestJSON({
       applications: {
@@ -93,7 +93,7 @@ describe('ManifestJSONParser', () => {
     expect(manifestJSONParser.isValid).toEqual(true);
     const { warnings } = addonLinter.collector;
     expect(warnings.length).toEqual(1);
-    expect(warnings[0].code).toEqual('DUPLICATE_GECKO_PROPERTY');
+    expect(warnings[0].code).toEqual('IGNORED_APPLICATIONS_PROPERTY');
   });
 
   describe('id', () => {
