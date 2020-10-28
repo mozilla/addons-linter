@@ -3,6 +3,8 @@ import fs from 'fs';
 import process from 'process';
 
 import { oneLine } from 'common-tags';
+import { Xpi } from 'addons-scanner-utils/dist/io';
+import { createFakeStderr } from 'addons-scanner-utils/dist/test-helpers';
 
 import Linter from 'linter';
 import * as constants from 'const';
@@ -13,7 +15,6 @@ import CSSScanner from 'scanners/css';
 import FilenameScanner from 'scanners/filename';
 import JSONScanner from 'scanners/json';
 import LangpackScanner from 'scanners/langpack';
-import { Xpi } from 'io';
 
 import {
   fakeMessageData,
@@ -633,7 +634,10 @@ describe('Linter.getAddonMetadata()', () => {
       _: ['tests/fixtures/webextension.zip'],
     });
 
-    addonLinter.io = new Xpi(addonLinter.packagePath);
+    addonLinter.io = new Xpi({
+      filePath: addonLinter.packagePath,
+      stderr: createFakeStderr(),
+    });
     addonLinter.print = sinon.stub();
 
     // This should only be called when the addonMetadata _is_ populated.
