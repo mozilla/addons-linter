@@ -72,7 +72,7 @@ describe('ManifestJSONParser', () => {
     });
   });
 
-  it('warn if both "applications" and "browser_specific_settings" properties are being used', () => {
+  it('should warn if both "applications" and "browser_specific_settings" properties are being used', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     const json = validManifestJSON({
       applications: {
