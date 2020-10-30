@@ -37,4 +37,16 @@ describe('Integration/smoke tests', () => {
     expect(stderr).toBe('');
     expect(exitCode).toBe(0);
   });
+
+  it('should pass if ran on a simple valid CRX extension', async () => {
+    const fixture = resolveFixturePath('crx3.crx');
+    const { exitCode, stderr, stdout } = await executeScript('addons-linter', [
+      '-o',
+      'json',
+      fixture,
+    ]);
+    expect(stdout).toContain('"summary":{"errors":0,"notices":0,"warnings":1}');
+    expect(stderr).toBe('');
+    expect(exitCode).toBe(0);
+  });
 });
