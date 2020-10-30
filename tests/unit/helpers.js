@@ -209,10 +209,6 @@ export function validLocaleMessagesJSON() {
   });
 }
 
-export function unexpectedSuccess() {
-  return assert.fail(null, null, 'Unexpected success');
-}
-
 function isMatch(target, expected) {
   return isMatchWith(target, expected, (tVal, eVal) => {
     if (eVal instanceof RegExp) {
@@ -343,23 +339,6 @@ export function checkOutput(func, argv, callback) {
 
     return done();
   }
-}
-
-export function readStringFromStream(readStream, transform) {
-  return new Promise((resolve, reject) => {
-    let content = '';
-    readStream.on('readable', () => {
-      let chunk;
-      // eslint-disable-next-line no-cond-assign
-      while ((chunk = readStream.read()) !== null) {
-        content += chunk.toString(transform);
-      }
-    });
-    readStream.on('end', () => {
-      resolve(content);
-    });
-    readStream.on('error', reject);
-  });
 }
 
 export function replacePlaceholders(text, data) {
