@@ -455,6 +455,17 @@ export const WRONG_ICON_EXTENSION = {
   file: MANIFEST_JSON,
 };
 
+export const IGNORED_APPLICATIONS_PROPERTY = {
+  code: 'IGNORED_APPLICATIONS_PROPERTY',
+  message: i18n._(
+    '"applications" property overridden by "browser_specific_settings" property"'
+  ),
+  description: i18n._(
+    oneLine`The "applications" property is being ignored because it is superseded by the "browser_specific_settings" property which is also defined in your manifest. Consider removing applications.`
+  ),
+  file: MANIFEST_JSON,
+};
+
 export const NO_MESSAGES_FILE_IN_LOCALES = 'NO_MESSAGES_FILE_IN_LOCALES';
 export function noMessagesFileInLocales(path) {
   return {
