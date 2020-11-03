@@ -504,8 +504,6 @@ export default class Linter {
         this.config.scanFile &&
         !this.config.scanFile.some((f) => Object.keys(files).includes(f))
       ) {
-        this.closeIO();
-
         const _files = this.config.scanFile.join(', ');
         throw new Error(`Selected file(s) not found: ${_files}`);
       }
