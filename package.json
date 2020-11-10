@@ -126,6 +126,6 @@
     "yazl": "2.5.1"
   },
   "optionalDependencies": {
-    "fsevents": "2.1.3"
+    "fsevents": "2.2.1"
   }
 }
