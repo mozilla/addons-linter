@@ -72,6 +72,30 @@ describe('ManifestJSONParser', () => {
     });
   });
 
+  it('should warn if both "applications" and "browser_specific_settings" properties are being used', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const json = validManifestJSON({
+      applications: {
+        gecko: {
+          strict_max_version: '58.0',
+        },
+      },
+      browser_specific_settings: {
+        gecko: {
+          strict_max_version: '58.0',
+        },
+      },
+    });
+    const manifestJSONParser = new ManifestJSONParser(
+      json,
+      addonLinter.collector
+    );
+    expect(manifestJSONParser.isValid).toEqual(true);
+    const { warnings } = addonLinter.collector;
+    expect(warnings.length).toEqual(1);
+    expect(warnings[0].code).toEqual('IGNORED_APPLICATIONS_PROPERTY');
+  });
+
   describe('id', () => {
     it('should return the correct id', () => {
       const addonLinter = new Linter({ _: ['bar'] });

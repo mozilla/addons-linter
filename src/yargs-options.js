@@ -53,6 +53,11 @@ const options = {
     type: 'string',
     requiresArg: true,
   },
+  'disable-xpi-autoclose': {
+    describe: 'Disable the auto-close feature when linting XPI files',
+    type: 'boolean',
+    default: false,
+  },
 };
 
 export default options;

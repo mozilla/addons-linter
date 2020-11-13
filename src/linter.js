@@ -4,8 +4,9 @@ import columnify from 'columnify';
 import chalk from 'chalk';
 import Dispensary from 'dispensary';
 import { oneLine } from 'common-tags';
+import { lstat } from 'addons-scanner-utils/dist/io/utils';
+import { Directory, Xpi, Crx } from 'addons-scanner-utils/dist/io';
 
-import { lstatPromise } from 'io/utils';
 import { terminalWidth } from 'cli';
 import * as constants from 'const';
 import { BANNED_LIBRARIES, UNADVISED_LIBRARIES } from 'libraries';
@@ -26,7 +27,6 @@ import HTMLScanner from 'scanners/html';
 import JavaScriptScanner from 'scanners/javascript';
 import JSONScanner from 'scanners/json';
 import LangpackScanner from 'scanners/langpack';
-import { Crx, Directory, Xpi } from 'io';
 import { MINER_BLOCKLIST } from 'miner_blocklist';
 
 export default class Linter {
@@ -74,6 +74,14 @@ export default class Linter {
     }
   }
 
+  closeIO() {
+    // This is only used when `io` is valid and we disabled the auto-close
+    // feature.
+    if (this.config.disableXpiAutoclose && this.io) {
+      this.io.close();
+    }
+  }
+
   handleError(err, _console = console) {
     if (err.message.includes('DuplicateZipEntry')) {
       this.collector.addError(messages.DUPLICATE_XPI_ENTRY);
@@ -86,6 +94,8 @@ export default class Linter {
     } else {
       _console.error(this.chalk.red(err.message || err));
     }
+
+    this.closeIO();
   }
 
   print(_console = console) {
@@ -273,12 +283,12 @@ export default class Linter {
     return this.addonMetadata;
   }
 
-  async checkFileExists(filepath, _lstatPromise = lstatPromise) {
+  async checkFileExists(filepath, _lstat = lstat) {
     const invalidMessage = new Error(
       `Path "${filepath}" is not a file or directory or does not exist.`
     );
     try {
-      const stats = await _lstatPromise(filepath);
+      const stats = await _lstat(filepath);
       if (stats.isFile() === true || stats.isDirectory() === true) {
         return stats;
       }
@@ -400,26 +410,42 @@ export default class Linter {
 
   async extractMetadata({
     _Crx = Crx,
-    _console = console,
     _Directory = Directory,
     _Xpi = Xpi,
+    _console = console,
   } = {}) {
     await checkMinNodeVersion();
 
     const stats = await this.checkFileExists(this.packagePath);
 
+    // Simple logging adapter for addons-scanner-utils IO.
+    const stderr = {
+      debug: (message) => log.debug(message),
+      error: (message) => log.error(message),
+      info: (message) => log.info(message),
+    };
+
     if (stats.isFile()) {
       if (this.packagePath.endsWith('.crx')) {
         log.info('Package is a file ending in .crx; parsing as a CRX');
-        this.io = new _Crx(this.packagePath);
+        this.io = new _Crx({ filePath: this.packagePath, stderr });
       } else {
         log.info('Package is a file. Attempting to parse as an .xpi/.zip');
-        this.io = new _Xpi(this.packagePath);
+
+        // We should set `autoClose` to `false` when we want to disable this
+        // feature. By default, the auto-close feature is enabled.
+        const autoClose = this.config.disableXpiAutoclose !== true;
+
+        if (!autoClose) {
+          log.info('Disabling the auto-close feature');
+        }
+
+        this.io = new _Xpi({ autoClose, filePath: this.packagePath, stderr });
       }
     } else {
       // If not a file then it's a directory.
       log.info('Package path is a directory. Parsing as a directory');
-      this.io = new _Directory(this.packagePath);
+      this.io = new _Directory({ filePath: this.packagePath, stderr });
     }
 
     this.io.setScanFileCallback(this.shouldScanFile);
@@ -491,6 +517,7 @@ export default class Linter {
       });
 
       await this.scanFiles(filesWithoutJSLibraries);
+      this.closeIO();
 
       this.print(deps._console);
       // This is skipped in code coverage because the
@@ -513,6 +540,7 @@ export default class Linter {
     if (this.config.metadata === true) {
       try {
         await this.extractMetadata(deps);
+        this.closeIO();
 
         // This is skipped in the code coverage because the
         // test runs against un-instrumented code.
@@ -530,6 +558,7 @@ export default class Linter {
     }
 
     await this.scan(deps);
+
     return this.output;
   }
 

@@ -3,6 +3,8 @@ import fs from 'fs';
 import process from 'process';
 
 import { oneLine } from 'common-tags';
+import { Xpi } from 'addons-scanner-utils/dist/io';
+import { createFakeStderr } from 'addons-scanner-utils/dist/test-helpers';
 
 import Linter from 'linter';
 import * as constants from 'const';
@@ -13,7 +15,6 @@ import CSSScanner from 'scanners/css';
 import FilenameScanner from 'scanners/filename';
 import JSONScanner from 'scanners/json';
 import LangpackScanner from 'scanners/langpack';
-import { Xpi } from 'io';
 
 import {
   fakeMessageData,
@@ -633,7 +634,10 @@ describe('Linter.getAddonMetadata()', () => {
       _: ['tests/fixtures/webextension.zip'],
     });
 
-    addonLinter.io = new Xpi(addonLinter.packagePath);
+    addonLinter.io = new Xpi({
+      filePath: addonLinter.packagePath,
+      stderr: createFakeStderr(),
+    });
     addonLinter.print = sinon.stub();
 
     // This should only be called when the addonMetadata _is_ populated.
@@ -1549,5 +1553,99 @@ describe('Linter.run()', () => {
 
     const result = await addonLinter.run({ _console: fakeConsole });
     expect(result).toEqual(addonLinter.output);
+  });
+
+  describe('auto-close', () => {
+    class FakeXpi extends FakeIOBase {
+      static closeWasCalled = false;
+
+      constructor() {
+        super();
+
+        FakeXpi.closeWasCalled = false;
+      }
+
+      close() {
+        FakeXpi.closeWasCalled = true;
+      }
+    }
+
+    it('should not close the IO object when auto-close feature is enabled (default)', async () => {
+      const addonLinter = new Linter({
+        _: ['tests/fixtures/webextension.zip'],
+        disableXpiAutoclose: false,
+      });
+
+      await addonLinter.run({ _Xpi: FakeXpi });
+
+      expect(FakeXpi.closeWasCalled).toEqual(false);
+    });
+
+    it('should close the IO object when auto-close feature is disabled', async () => {
+      const addonLinter = new Linter({
+        _: ['tests/fixtures/webextension.zip'],
+        disableXpiAutoclose: true,
+      });
+
+      await addonLinter.run({ _Xpi: FakeXpi });
+
+      expect(FakeXpi.closeWasCalled).toEqual(true);
+    });
+
+    it('should not close the IO object when auto-close feature is enabled (default) and metadata is true', async () => {
+      const addonLinter = new Linter({
+        _: ['tests/fixtures/webextension.zip'],
+        metadata: true,
+        disableXpiAutoclose: false,
+      });
+
+      await addonLinter.run({ _Xpi: FakeXpi });
+
+      expect(FakeXpi.closeWasCalled).toEqual(false);
+    });
+
+    it('should close the IO object when auto-close feature is disabled and metadata is true', async () => {
+      const addonLinter = new Linter({
+        _: ['tests/fixtures/webextension.zip'],
+        metadata: true,
+        disableXpiAutoclose: true,
+      });
+
+      await addonLinter.run({ _Xpi: FakeXpi });
+
+      expect(FakeXpi.closeWasCalled).toEqual(true);
+    });
+
+    it('should not close the IO object when auto-close feature is enabled (default) and selected files are missing', async () => {
+      const addonLinter = new Linter({
+        _: ['tests/fixtures/webextension.zip'],
+        scanFile: ['subdir/test.js'],
+        disableXpiAutoclose: false,
+      });
+
+      try {
+        await addonLinter.run({ _Xpi: FakeXpi });
+      } catch (e) {
+        expect(e.message).toContain('Selected file(s) not found');
+      }
+
+      expect(FakeXpi.closeWasCalled).toEqual(false);
+    });
+
+    it('should close the IO object when auto-close feature is disabled and selected files are missing', async () => {
+      const addonLinter = new Linter({
+        _: ['tests/fixtures/webextension.zip'],
+        scanFile: ['subdir/test.js'],
+        disableXpiAutoclose: true,
+      });
+
+      try {
+        await addonLinter.run({ _Xpi: FakeXpi });
+      } catch (e) {
+        expect(e.message).toContain('Selected file(s) not found');
+      }
+
+      expect(FakeXpi.closeWasCalled).toEqual(true);
+    });
   });
 });

@@ -41,8 +41,6 @@ import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
 async function getImageMetadata(io, iconPath) {
   // Get a non-utf8 input stream by setting encoding to null.
-  // (only needed for the 'io/directory' module which open the file using the utf-8
-  // encoding by default).
   let encoding = null;
 
   if (iconPath.endsWith('.svg')) {
@@ -302,6 +300,13 @@ export default class ManifestJSONParser extends JSONParser {
           this.isValid = false;
         }
       });
+    }
+
+    if (
+      this.parsedJSON.browser_specific_settings &&
+      this.parsedJSON.applications
+    ) {
+      this.collector.addWarning(messages.IGNORED_APPLICATIONS_PROPERTY);
     }
 
     if (

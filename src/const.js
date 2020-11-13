@@ -1,6 +1,3 @@
-export const DEFLATE_COMPRESSION = 8;
-export const NO_COMPRESSION = 0;
-
 export const ESLINT_ERROR = 2;
 export const ESLINT_WARNING = 1;
 
@@ -78,9 +75,6 @@ export const MANIFEST_JSON = 'manifest.json';
 
 export const VALID_MANIFEST_VERSION = 2;
 
-// The max file size in MB that the
-// io classes will open as strings or streams.
-export const MAX_FILE_SIZE_MB = 100;
 // This is the limit in megabytes of a file we will parse (eg. CSS, JS, etc.)
 // A singular CSS/JS file over 4MB seems bad and may actually be full of data
 // best stored in JSON/some other data format rather than code.
@@ -179,9 +173,6 @@ export const FLAGGED_FILE_MAGIC_NUMBERS = [
   [0xca, 0xfe, 0xd0, 0x0d], // Java packed
   [0x43, 0x57, 0x53], // Compressed SWF
 ];
-
-// Based on the above, this is how deep we need to look into a file.
-export const FLAGGED_FILE_MAGIC_NUMBERS_LENGTH = 4;
 
 // These are APIs that will cause problems when loaded temporarily
 // in about:debugging.
