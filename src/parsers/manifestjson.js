@@ -812,7 +812,7 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateHomePageURL(url) {
-    for (let restrictedUrl of RESTRICTED_HOMEPAGE_URLS) {
+    for (const restrictedUrl of RESTRICTED_HOMEPAGE_URLS) {
       if (url.indexOf(restrictedUrl) !== -1) {
         this.collector.addError(messages.RESTRICTED_HOMEPAGE_URL);
         this.isValid = false;
