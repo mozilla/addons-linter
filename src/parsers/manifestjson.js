@@ -812,12 +812,13 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateHomePageURL(url) {
-    RESTRICTED_HOMEPAGE_URLS.forEach((domain) => {
-      if (url.indexOf(domain) !== -1) {
+    for (let restrictedUrl of RESTRICTED_HOMEPAGE_URLS) {
+      if (url.indexOf(restrictedUrl) !== -1) {
         this.collector.addError(messages.RESTRICTED_HOMEPAGE_URL);
+        this.isValid = false;
+        return;
       }
-      this.isValid = false;
-    });
+    }
   }
 
   getAddonId() {
