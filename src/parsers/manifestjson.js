@@ -25,6 +25,7 @@ import {
   MESSAGES_JSON,
   MIME_TO_FILE_EXTENSIONS,
   STATIC_THEME_IMAGE_MIMES,
+  RESTRICTED_HOMEPAGE_URLS,
 } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
@@ -806,10 +807,12 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateHomePageURL(url) {
-    const restrictedDomain = 'addons-dev.allizom.org';
-    if (url.indexOf(restrictedDomain) !== -1) {
-      this.collector.addError(messages.RESTRICTED_HOMEPAGE_URL);
-    }
+    RESTRICTED_HOMEPAGE_URLS.forEach((domain) => {
+      if (url.indexOf(domain) !== -1) {
+        this.collector.addError(messages.RESTRICTED_HOMEPAGE_URL);
+      }
+      this.isValid = false;
+    });
   }
 
   getAddonId() {
