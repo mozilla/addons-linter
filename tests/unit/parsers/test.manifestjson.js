@@ -172,6 +172,21 @@ describe('ManifestJSONParser', () => {
       const metadata = manifestJSONParser.getMetadata();
       expect(metadata.id).toEqual(null);
     });
+
+    it('should fail if "homepage_url" links to AMO domain names', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        homepage_url: 'http://addons.mozilla.org',
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      const { errors } = addonLinter.collector;
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual('RESTRICTED_HOMEPAGE_URL');
+    });
   });
 
   describe('manifestVersion', () => {
