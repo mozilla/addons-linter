@@ -569,7 +569,7 @@ export function permissionFirefoxAndroidUnsupportedByMinVersion(
 
 export const RESTRICTED_HOMEPAGE_URL = {
   code: 'RESTRICTED_HOMEPAGE_URL',
-  message: i18n._('Linking to AMO is not allowed'),
+  message: i18n._('Linking to "addons.mozilla.org" is not allowed'),
   description: i18n._(
     'Links directing to "addons.mozilla.org" are not allowed to be used for homepage'
   ),

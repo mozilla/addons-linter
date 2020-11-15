@@ -96,33 +96,6 @@ describe('ManifestJSONParser', () => {
     expect(warnings[0].code).toEqual('IGNORED_APPLICATIONS_PROPERTY');
   });
 
-  it('should fail if "homepage_url" links to AMO domain names', () => {
-    const addonLinter = new Linter({ _: ['bar'] });
-    const json = validManifestJSON({
-      homepage_url: 'http://addons.mozilla.org',
-    });
-    const manifestJSONParser = new ManifestJSONParser(
-      json,
-      addonLinter.collector
-    );
-    expect(manifestJSONParser.isValid).toEqual(false);
-    const { errors } = addonLinter.collector;
-    expect(errors.length).toEqual(1);
-    expect(errors[0].code).toEqual('RESTRICTED_HOMEPAGE_URL');
-  });
-
-  it('should not mark non forbidden homepage url as invalid', () => {
-    const addonLinter = new Linter({ _: ['bar'] });
-    const json = validManifestJSON({
-      homepage_url: 'http://test.org',
-    });
-    const manifestJSONParser = new ManifestJSONParser(
-      json,
-      addonLinter.collector
-    );
-    expect(manifestJSONParser.isValid).toEqual(true);
-  });
-
   describe('id', () => {
     it('should return the correct id', () => {
       const addonLinter = new Linter({ _: ['bar'] });
@@ -2724,6 +2697,41 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(true);
       const { errors } = addonLinter.collector;
       expect(errors.length).toEqual(0);
+    });
+  });
+
+  describe('homepage_url', () => {
+    function testHomepageUrl(homepage_url, expectValid) {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        homepage_url,
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(expectValid);
+      const { errors } = addonLinter.collector;
+      if (expectValid) {
+        expect(errors.length).toEqual(0);
+      } else {
+        expect(errors.length).toEqual(1);
+        expect(errors[0].code).toEqual('RESTRICTED_HOMEPAGE_URL');
+      }
+    }
+    const testInvalidUrls = [
+      'https://addons.mozilla.org',
+      'http://addons.mozilla.org/somepath',
+    ];
+
+    for (const invalidUrl of testInvalidUrls) {
+      it(`should fail on forbidden homepage_url "${invalidUrl}"`, () => {
+        return testHomepageUrl(invalidUrl, false);
+      });
+    }
+
+    it('should not mark non forbidden homepage url as invalid', () => {
+      return testHomepageUrl('http://test.org', true);
     });
   });
 });
