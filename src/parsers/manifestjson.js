@@ -25,6 +25,7 @@ import {
   MESSAGES_JSON,
   MIME_TO_FILE_EXTENSIONS,
   STATIC_THEME_IMAGE_MIMES,
+  RESTRICTED_HOMEPAGE_URLS,
 } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
@@ -509,6 +510,10 @@ export default class ManifestJSONParser extends JSONParser {
         });
       }
     }
+
+    if (this.parsedJSON.homepage_url) {
+      this.validateHomePageURL(this.parsedJSON.homepage_url);
+    }
   }
 
   async validateIcon(iconPath, expectedSize) {
@@ -803,6 +808,16 @@ export default class ManifestJSONParser extends JSONParser {
     }
     if (insecureSrcDirective) {
       this.collector.addWarning(messages.manifestCsp(manifestPropName));
+    }
+  }
+
+  validateHomePageURL(url) {
+    for (const restrictedUrl of RESTRICTED_HOMEPAGE_URLS) {
+      if (url.includes(restrictedUrl)) {
+        this.collector.addError(messages.RESTRICTED_HOMEPAGE_URL);
+        this.isValid = false;
+        return;
+      }
     }
   }
 

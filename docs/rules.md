@@ -127,6 +127,7 @@ Rules are sorted by severity.
 | `PERMISSION_FIREFOX_UNSUPPORTED_BY_MIN_VERSION`         | notice   | Permission not compatible with `applications.gecko.strict_min_version`                          |
 | `PERMISSION_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION` | notice   | Permission not compatible with Firefox for Android at `applications.gecko.strict_min_version`   |
 | `IGNORED_APPLICATIONS_PROPERTY`                         | warning  | Usage of both `applications` and `browser_specific_settings` properties                         |
+| `RESTRICTED_HOMEPAGE_URL`                               | error    | Linking to addons.mozilla.org in `homepage_url` is not allowed                                  |
 
 ### Static Theme / manifest.json
 

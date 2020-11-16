@@ -208,3 +208,9 @@ export const MESSAGE_PLACEHOLDER_REGEXP = '\\$([a-zA-Z0-9_@]+)\\$';
 // yauzl should trow error with this message in case of corrupt zip file
 export const ZIP_LIB_CORRUPT_FILE_ERROR =
   'end of central directory record signature not found';
+
+// URLs in this array are restricted from being used in the manifest.json "homepage_url" prperty
+export const RESTRICTED_HOMEPAGE_URLS = [
+  'addons-dev.allizom.org',
+  'addons.mozilla.org',
+];

@@ -2699,4 +2699,39 @@ describe('ManifestJSONParser', () => {
       expect(errors.length).toEqual(0);
     });
   });
+
+  describe('homepage_url', () => {
+    function testHomepageUrl(homepage_url, expectValid) {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        homepage_url,
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(expectValid);
+      const { errors } = addonLinter.collector;
+      if (expectValid) {
+        expect(errors.length).toEqual(0);
+      } else {
+        expect(errors.length).toEqual(1);
+        expect(errors[0].code).toEqual('RESTRICTED_HOMEPAGE_URL');
+      }
+    }
+    const testInvalidUrls = [
+      'https://addons.mozilla.org',
+      'http://addons.mozilla.org/somepath',
+    ];
+
+    for (const invalidUrl of testInvalidUrls) {
+      it(`should fail on forbidden homepage_url "${invalidUrl}"`, () => {
+        return testHomepageUrl(invalidUrl, false);
+      });
+    }
+
+    it('should not mark non forbidden homepage url as invalid', () => {
+      return testHomepageUrl('http://test.org', true);
+    });
+  });
 });
