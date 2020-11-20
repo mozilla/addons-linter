@@ -51,7 +51,7 @@
     "common-tags": "1.8.0",
     "deepmerge": "4.2.2",
     "dispensary": "0.59.0",
-    "eslint": "7.13.0",
+    "eslint": "7.14.0",
     "eslint-plugin-no-unsanitized": "3.1.4",
     "eslint-visitor-keys": "2.0.0",
     "espree": "7.3.0",
