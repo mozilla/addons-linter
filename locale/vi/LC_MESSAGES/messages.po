@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-10-03 15:45+0000\n"
-"Last-Translator: Chien L.I <lechien.thientam@gmail.com>\n"
+"PO-Revision-Date: 2020-11-27 04:11+0000\n"
+"Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -384,19 +384,19 @@ msgstr "Xem tại https://mzl.la/1R1n1t0 (Tài liệu MDN) để biết thêm th
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "Tập tin hình ảnh chủ đề có loại mime không được hỗ trợ"
 
 #: src/messages/manifestjson.js:361
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "Tập tin hình ảnh chủ đề tại \"%(path)s\" có loại mime không được hỗ trợ \"%(mime)s\""
 
 #: src/messages/manifestjson.js:375
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "Loại mime của tập tin hình ảnh chủ đề không khớp với phần mở rộng tập tin của nó"
 
 #: src/messages/manifestjson.js:379
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "Phần mở rộng Tập tin hình ảnh chủ đề tại \"%(path)s\" không khớp với loại mime thực của nó \"%(mime)s\""
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
