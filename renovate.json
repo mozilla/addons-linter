@@ -24,7 +24,7 @@
       "rangeStrategy": "auto"
     }
   ],
-  "stabilityDays": 7,
+  "stabilityDays": 3,
   "node": {
     "supportPolicy": ["lts"]
   }
