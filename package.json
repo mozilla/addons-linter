@@ -42,7 +42,7 @@
   "dependencies": {
     "@babel/runtime": "7.12.5",
     "@mdn/browser-compat-data": "2.0.7",
-    "addons-scanner-utils": "3.0.0",
+    "addons-scanner-utils": "4.0.0",
     "ajv": "6.12.6",
     "ajv-merge-patch": "4.1.0",
     "chalk": "4.1.0",
