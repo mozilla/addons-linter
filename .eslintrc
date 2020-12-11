@@ -2,20 +2,16 @@
   "rules":{
     "no-console": 0,
     // Inherited from airbnb via eslint-config-amo
-    "function-paren-newline": 0,
-    "prettier/prettier": 2
+    "function-paren-newline": 0
   },
   "env": {
     "node": true,
     "browser": true,
     "es6": true,
   },
-  "extends": ["amo", prettier],
+  "extends": ["amo"],
   "parser": "babel-eslint",
-  "plugins": [
-    "async-await",
-    "prettier"
-  ],
+  "plugins": ["async-await"],
   "settings": {
     "async-await/space-after-async": 2,
     "async-await/space-after-await": 2,

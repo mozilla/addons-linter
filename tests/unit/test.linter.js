@@ -605,10 +605,12 @@ describe('Linter.textOutput()', () => {
       column: 5,
       line: 20,
     });
+
     try {
       addonLinter.textOutput(uselesslyTinyTerminalWidth);
       expect(addonLinter.output.summary.errors).toEqual(1);
     } catch (e) {
+      // eslint-disable-next-line jest/no-conditional-expect, jest/no-try-expect
       expect(false).toBe(true);
     }
   });
@@ -1623,11 +1625,9 @@ describe('Linter.run()', () => {
         disableXpiAutoclose: false,
       });
 
-      try {
-        await addonLinter.run({ _Xpi: FakeXpi });
-      } catch (e) {
-        expect(e.message).toContain('Selected file(s) not found');
-      }
+      await expect(addonLinter.run({ _Xpi: FakeXpi })).rejects.toThrowError(
+        /Selected file\(s\) not found/
+      );
 
       expect(FakeXpi.closeWasCalled).toEqual(false);
     });
@@ -1639,11 +1639,9 @@ describe('Linter.run()', () => {
         disableXpiAutoclose: true,
       });
 
-      try {
-        await addonLinter.run({ _Xpi: FakeXpi });
-      } catch (e) {
-        expect(e.message).toContain('Selected file(s) not found');
-      }
+      await expect(addonLinter.run({ _Xpi: FakeXpi })).rejects.toThrowError(
+        /Selected file\(s\) not found/
+      );
 
       expect(FakeXpi.closeWasCalled).toEqual(true);
     });
