@@ -588,6 +588,7 @@ describe('ManifestJSONParser', () => {
           warning.code !==
           messages.KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION
         ) {
+          // eslint-disable-next-line jest/no-conditional-expect
           expect(warning.code).toEqual(
             messages.KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION
           );
@@ -615,6 +616,7 @@ describe('ManifestJSONParser', () => {
       let fxaIncompatCount = 0;
       for (const warning of addonLinter.collector.warnings) {
         if (warning.code !== messages.KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION) {
+          // eslint-disable-next-line jest/no-conditional-expect
           expect(warning.code).toEqual(
             messages.KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION
           );

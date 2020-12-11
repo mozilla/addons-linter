@@ -34,6 +34,7 @@ describe('Messages', () => {
         // Asserting using indexOf rather than assert.include
         // to avoid inclusion of the whole rules.md as part
         // of the error.
+        // eslint-disable-next-line jest/no-conditional-expect
         expect(markdown.indexOf(code) > -1).toEqual(true);
       }
     });
