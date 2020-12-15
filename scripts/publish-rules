@@ -6,22 +6,21 @@ const ghpages = require('gh-pages');
 // github will turn some of these into clickable links
 function getDeployMessage() {
   let ret = '\n\n';
-  if (process.env.TRAVIS !== 'true') {
-    ret += 'missing env vars for travis-ci';
+  if (process.env.CIRCLECI !== 'true') {
+    ret += 'missing env vars for circle-ci';
     return ret;
   }
-  ret += `branch:       ${process.env.TRAVIS_BRANCH}\n`;
-  ret += `SHA:          ${process.env.TRAVIS_COMMIT}\n`;
-  ret += `range SHA:    ${process.env.TRAVIS_COMMIT_RANGE}\n`;
-  ret += `build id:     ${process.env.TRAVIS_BUILD_ID}\n`;
-  ret += `build number: ${process.env.TRAVIS_BUILD_NUMBER}\n`;
+  ret += `Branch:       ${process.env.CIRCLE_BRANCH}\n`;
+  ret += `SHA:          ${process.env.CIRCLE_SHA1}\n`;
+  ret += `Compare URL:  ${process.env.CIRCLE_COMPARE_URL}\n`;
+  ret += `Build URL:    ${process.env.CIRCLE_BUILD_URL}\n`;
   return ret;
 }
 
 function publish() {
   ghpages.publish('docs/html', {
-    // silent option prevents decrypted credentials leaking into
-    // travis logs. See https://github.com/tschaub/grunt-gh-pages#optionssilent
+    // silent option prevents decrypted credentials leaking into CI logs. See:
+    // https://github.com/tschaub/grunt-gh-pages#optionssilent
     silent: true,
     src: '**',
     user: {
@@ -33,12 +32,15 @@ function publish() {
   });
 }
 
+// `CIRCLE_PR_NUMBER` is the number of the associated GitHub or Bitbucket pull
+// request. Only available on forked PRs. `CIRCLE_PULL_REQUEST` is the URL of
+// the associated pull request.
 if (
-  process.env.TRAVIS_SECURE_ENV_VARS === 'true' &&
-  process.env.TRAVIS_PULL_REQUEST === 'false'
+  typeof process.env.CIRCLE_PR_NUMBER !== 'undefined' ||
+  typeof process.env.CIRCLE_PULL_REQUEST !== 'undefined'
 ) {
+  console.log('Skipping rules publication.');
+} else {
   console.log('Pushing branch for docker build');
   publish();
-} else {
-  console.log('Skipping rules publication.');
 }

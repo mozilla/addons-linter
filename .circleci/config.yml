@@ -1,0 +1,150 @@
+# These environment variables must be set in CircleCI UI
+#
+# NPM_TOKEN - A valid NPM token for releases
+# GH_USER   - A GitHub username
+# GH_EMAIL  - The email linked to the username above
+# GH_TOKEN  - A GitHub token linked to the username above
+version: 2.1
+
+references:
+  defaults: &defaults
+    working_directory: ~/addons-linter
+    docker:
+      # This is the NodeJS version we run in production.
+      - image: circleci/node:12
+    environment:
+      # This environment variable is needed for `scripts/publish-rules`.
+      CIRCLE_COMPARE_URL: << pipeline.project.git_url >>/compare/<< pipeline.git.base_revision >>..<<pipeline.git.revision>>
+
+  defaults-next: &defaults-next
+    working_directory: ~/addons-linter
+    docker:
+      # This is the next NodeJS version we will support.
+      - image: circleci/node:14
+
+  restore_build_cache: &restore_build_cache
+    restore_cache:
+      name: restore npm package cache
+      keys:
+        - npm-packages-{{ checksum "package-lock.json" }}
+
+  run_npm_install: &run_npm_install
+    run:
+      name: install dependencies
+      command: npm install
+
+  save_build_cache: &save_build_cache
+    save_cache:
+      name: save npm package cache
+      key: npm-packages-{{ checksum "package-lock.json" }}
+      paths:
+        - ./node_modules
+
+  make_production_build: &make_production_build
+    run:
+      name: build project
+      command: |
+        node scripts/build-locales
+        NODE_ENV=production npm run build
+
+  configure_global_npm: &configure_global_npm
+    run:
+      name: create custom directory for global npm installs
+      # This is required to avoid a `EACCES` when running `npm link` (which is
+      # executed in the test suite).
+      command: |
+        mkdir -p ~/.npm-global
+        npm config set prefix '~/.npm-global'
+
+  restore_next_build_cache: &restore_next_build_cache
+    restore_cache:
+      name: restore npm package cache
+      keys:
+        - next-npm-packages-{{ checksum "package-lock.json" }}
+
+  save_next_build_cache: &save_next_build_cache
+    save_cache:
+      name: save npm package cache
+      key: next-npm-packages-{{ checksum "package-lock.json" }}
+      paths:
+        - ./node_modules
+
+jobs:
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - *restore_build_cache
+      - *run_npm_install
+      - *save_build_cache
+      - *make_production_build
+      - *configure_global_npm
+      - run: npm run test-ci
+      # run integration tests using an addons-linter binary in a
+      # production-like environment
+      - run: npm run test-integration:production
+      - run: npm run lint
+      - run: npm run prettier-ci
+      - run: npm run webext-test-functional
+      # Set up a workspace to share data between this job and the `release-tag`
+      # one when we want to publish a new npm version.
+      - persist_to_workspace:
+          root: ~/addons-linter
+          paths: .
+      - store_artifacts:
+          path: coverage
+
+  test-next:
+    <<: *defaults-next
+    steps:
+      - checkout
+      - *restore_next_build_cache
+      - *run_npm_install
+      - *save_next_build_cache
+      - *make_production_build
+      - *configure_global_npm
+      - run: npm run test-ci
+      # run integration tests using an addons-linter binary in a
+      # production-like environment
+      - run: npm run test-integration:production
+      - run: npm run webext-test-functional
+
+  publish-rules:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/addons-linter
+      - run: npm run publish-rules > /dev/null 2>&1
+
+  release-tag:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/addons-linter
+      - run:
+          name: authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/addons-linter/.npmrc
+      - run:
+          name: publish package
+          command: npm publish
+
+workflows:
+  version: 2
+  default-workflow:
+    jobs:
+      - test:
+          filters: # required since `release-tag` has tag filters AND requires `test`
+            tags:
+              only: /.*/
+      - test-next
+      - publish-rules:
+          requires:
+            - test
+      - release-tag:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/

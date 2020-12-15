@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mozilla/addons-linter.svg?branch=master)](https://travis-ci.org/mozilla/addons-linter) [![codecov](https://codecov.io/gh/mozilla/addons-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/mozilla/addons-linter) [![Dependency Status](https://david-dm.org/mozilla/addons-linter.svg)](https://david-dm.org/mozilla/addons-linter) [![devDependency Status](https://david-dm.org/mozilla/addons-linter/dev-status.svg)](https://david-dm.org/mozilla/addons-linter#info=devDependencies) [![npm version](https://badge.fury.io/js/addons-linter.svg)](https://badge.fury.io/js/addons-linter)
+[![CircleCI](https://circleci.com/gh/mozilla/addons-linter.svg?style=svg)](https://circleci.com/gh/mozilla/addons-linter) [![codecov](https://codecov.io/gh/mozilla/addons-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/mozilla/addons-linter) [![Dependency Status](https://david-dm.org/mozilla/addons-linter.svg)](https://david-dm.org/mozilla/addons-linter) [![devDependency Status](https://david-dm.org/mozilla/addons-linter/dev-status.svg)](https://david-dm.org/mozilla/addons-linter#info=devDependencies) [![npm version](https://badge.fury.io/js/addons-linter.svg)](https://badge.fury.io/js/addons-linter)
 
 # addons-linter
 
@@ -127,7 +127,7 @@ bin/addons-linter my-addon.zip
 
 ### Required Node version
 
-addons-linter requires Node.js v10 or greater. Have a look at our `.travis.yml` file which Node.js versions we officially test.
+addons-linter requires Node.js v10 or greater. Have a look at our `.circleci/config.yml` file which Node.js versions we officially test.
 
 Using nvm is probably the easiest way to manage multiple Node versions side by side. See [nvm on GitHub](https://github.com/creationix/nvm) for more details.
 
@@ -146,7 +146,7 @@ Dependencies are automatically kept up-to-date using [renovatebot](https://renov
 | Script                          | Description                                                                      |
 | ------------------------------- | -------------------------------------------------------------------------------- |
 | npm test                        | Runs the tests (watches for changes)                                             |
-| npm [run] build                 | Builds the lib (used by Travis)                                                  |
+| npm [run] build                 | Builds the lib (used by CI)                                                      |
 | npm run test-coverage           | Runs the tests with coverage (watches for changes)                               |
 | npm run test-once               | Runs the tests once                                                              |
 | npm run lint                    | Runs ESLint                                                                      |
@@ -218,7 +218,7 @@ Lastly when the processing is complete the linter will output the collected data
 
 ## Deploys
 
-We deploy to npm automatically using TravisCI. To release a new version, increment the version in `package.json` and create a PR. Make sure your version number conforms to the [semver][] format eg: `0.2.1`.
+We deploy to npm automatically using Circle CI. To release a new version, increment the version in `package.json` and create a PR. Make sure your version number conforms to the [semver][] format eg: `0.2.1`.
 
 After merging the PR, [create a new release][new release] with the same tag name as your new version. Once the build passes it will deploy. Magic! ✨
 
