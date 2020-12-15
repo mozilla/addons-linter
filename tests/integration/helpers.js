@@ -1,8 +1,8 @@
 import path from 'path';
 import { exec } from 'child_process';
 
-// Allow to force the scripts bin paths using the TEST_BIN_PATH environment var,
-// used on Travis to run the tests on a production-like addons-linter package.
+// Allow to force the scripts bin paths using the TEST_BIN_PATH environment
+// var, used on CI to run the tests on a production-like addons-linter package.
 export const BIN_PATH = process.env.TEST_BIN_PATH
   ? process.env.TEST_BIN_PATH
   : path.join(__dirname, '../../bin/');
