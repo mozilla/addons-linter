@@ -102,6 +102,7 @@ jobs:
       - *run_npm_install
       - *save_next_build_cache
       - *make_production_build
+      - *configure_global_npm
       - run: npm run test-ci
       # run integration tests using an addons-linter binary in a
       # production-like environment
