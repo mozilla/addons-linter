@@ -140,6 +140,11 @@ workflows:
       - publish-rules:
           requires:
             - test
+          filters:
+            branches:
+              only: master
+            tags:
+              ignore: /.*/
       - release-tag:
           requires:
             - test
