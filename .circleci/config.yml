@@ -124,7 +124,7 @@ jobs:
       - run:
           name: authenticate with registry
           # We don't want to expand the token in this file, npm will do it.
-          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/addons-linter/.npmrc
+          command: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > ~/addons-linter/.npmrc
       - run:
           name: publish package
           command: npm publish
