@@ -84,7 +84,7 @@
     "@babel/plugin-proposal-throw-expressions": "7.12.1",
     "@babel/plugin-transform-runtime": "7.12.10",
     "@babel/polyfill": "7.12.1",
-    "@babel/preset-env": "7.12.10",
+    "@babel/preset-env": "7.12.11",
     "@babel/register": "7.12.10",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.1.0",
