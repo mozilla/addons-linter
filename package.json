@@ -46,7 +46,7 @@
     "ajv": "6.12.6",
     "ajv-merge-patch": "4.1.0",
     "chalk": "4.1.0",
-    "cheerio": "1.0.0-rc.3",
+    "cheerio": "1.0.0-rc.5",
     "columnify": "1.5.4",
     "common-tags": "1.8.0",
     "deepmerge": "4.2.2",
