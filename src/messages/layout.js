@@ -30,8 +30,8 @@ export const FILE_TOO_LARGE = {
   message: i18n._('File is too large to parse.'),
   description: i18n._(oneLine`This file is not binary and is too large to
     parse. Files larger than ${MAX_FILE_SIZE_TO_PARSE_MB}MB will not be
-    parsed. If your JavaScript file has a large list, consider removing the
-    list and loading it as a separate JSON file instead.`),
+    parsed. Consider moving large lists of data out of JavaScript files and
+    into JSON files, or splitting very large files into smaller ones.`),
 };
 
 export const HIDDEN_FILE = {
