@@ -20,7 +20,7 @@
       "devDependencies": true
     }],
     "jest/expect-expect": ["warn", {
-      // Allow Jest, Sinon, or helper lib assertions
+      // Allow Jest or Sinon assertions
       "assertFunctionNames": ["expect", "sinon.assert.*"]
     }],
     "promise/always-return": "off",
