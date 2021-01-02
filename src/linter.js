@@ -386,7 +386,7 @@ export default class Linter {
         // https://github.com/mozilla/addons-linter/issues/895
         collector: this.collector,
         // list of disabled rules for js scanner
-        disabledLinterRules: this.config.disableLinterRules,
+        disabledRules: this.config.disableLinterRules,
         existingFiles: this.io.files,
       });
 
