@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-12-25 20:23+0000\n"
+"PO-Revision-Date: 2021-01-07 18:16+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -348,7 +348,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "ఈ అలంకారపు LWT మారుపేరు Firefox 70లో తొలగించబడింది."
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
@@ -372,7 +372,7 @@ msgstr "తెలియని అనుమతి."
 
 #: src/messages/manifestjson.js:343
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "అలంకారపు బొమ్మ ఫైలు తోడ్పాటులేని ఫైలు ఎక్స్‌టెన్షన్ కలిగివుంది"
 
 #: src/messages/manifestjson.js:345
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
