@@ -49,13 +49,24 @@
               "description": "This property controls the minimum and maximum TLS versions. This setting's value is an object of $(ref:tlsVersionRestrictionConfig)."
             }
           ]
+        },
+        "httpsOnlyMode": {
+          "allOf": [
+            {
+              "$ref": "types#/types/Setting"
+            },
+            {
+              "description": "Allow users to query the mode for 'HTTPS-Only Mode'. This setting's value is of type HTTPSOnlyModeOption, defaulting to <code>never</code>."
+            }
+          ]
         }
       },
       "required": [
         "networkPredictionEnabled",
         "peerConnectionEnabled",
         "webRTCIPHandlingPolicy",
-        "tlsVersionRestriction"
+        "tlsVersionRestriction",
+        "httpsOnlyMode"
       ]
     },
     "services": {
@@ -237,6 +248,15 @@
           "description": "The maximum TLS version supported."
         }
       }
+    },
+    "HTTPSOnlyModeOption": {
+      "type": "string",
+      "enum": [
+        "always",
+        "private_browsing",
+        "never"
+      ],
+      "description": "The mode for https-only mode."
     },
     "TrackingProtectionModeOption": {
       "type": "string",
