@@ -63,7 +63,7 @@
     "os-locale": "5.0.0",
     "pino": "6.10.0",
     "postcss": "8.2.2",
-    "probe-image-size": "5.0.0",
+    "probe-image-size": "6.0.0",
     "relaxed-json": "1.0.3",
     "semver": "7.3.4",
     "source-map-support": "0.5.19",
