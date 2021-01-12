@@ -1549,6 +1549,27 @@ describe('Linter.run()', () => {
     expect(result).toEqual(addonLinter.output);
   });
 
+  it('should pass disabled linting rules to Scanner', async () => {
+    const addonLinter = new Linter({ _: ['tests/fixtures/good.zip'] });
+
+    const fakeScanner = sinon.stub().returns({
+      scan: () => Promise.resolve({ linterMessages: [], scannedFiles: [] }),
+    });
+    addonLinter.getScanner = sinon.stub().returns(fakeScanner);
+
+    addonLinter.config.disableLinterRules = 'foo,bar, baz';
+
+    await addonLinter.run({ _console: fakeConsole });
+
+    sinon.assert.calledWithNew(fakeScanner);
+    sinon.assert.calledWithExactly(
+      fakeScanner,
+      sinon.match.string, // fileData
+      sinon.match.string, // filename
+      sinon.match({ disabledRules: 'foo,bar, baz' })
+    );
+  });
+
   describe('auto-close', () => {
     class FakeXpi extends FakeIOBase {
       static closeWasCalled = false;

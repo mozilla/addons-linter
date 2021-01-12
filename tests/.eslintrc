@@ -19,6 +19,10 @@
       // Allow dev-dependencies in this directory.
       "devDependencies": true
     }],
+    "jest/expect-expect": ["warn", {
+      // Allow Jest or Sinon assertions
+      "assertFunctionNames": ["expect", "sinon.assert.*"]
+    }],
     "promise/always-return": "off",
     "promise/avoid-new": "off",
     "promise/no-nesting": "off",
