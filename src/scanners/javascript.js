@@ -10,7 +10,7 @@ import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
 import * as messages from 'messages';
 import { ensureFilenameExists } from 'utils';
 
-const ECMA_VERSION = 2020;
+const ECMA_VERSION = 2021;
 
 const IGNORE_FILE = 'addons-linter.eslintignore';
 
