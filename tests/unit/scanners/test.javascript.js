@@ -150,7 +150,7 @@ describe('JavaScript Scanner', () => {
     expect(linterMessages).toEqual([]);
   });
 
-  it('numeric separators', async () => {
+  it('should support numeric separators', async () => {
     const code = 'const num = 1_0;';
 
     const jsScanner = new JavaScriptScanner(code, 'code.js');
