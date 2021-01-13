@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2021-01-07 18:17+0000\n"
+"PO-Revision-Date: 2021-01-13 16:47+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -300,7 +300,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "మానిఫెస్ట్‌లో నిఘంటువు వస్తువు ఉంది, కానీ అది ఖాళీగా ఉంది."
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
@@ -408,7 +408,7 @@ msgstr "\"default_locale\" లేదు కానీ \"_locales\" మాత్�
 
 #: src/messages/manifestjson.js:411
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "తోడ్పాటు లేని బొమ్మ ఎక్స్‌టెన్షన్"
 
 #: src/messages/manifestjson.js:412
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
