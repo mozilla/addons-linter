@@ -150,6 +150,15 @@ describe('JavaScript Scanner', () => {
     expect(linterMessages).toEqual([]);
   });
 
+  it('should support numeric separators', async () => {
+    const code = 'const num = 1_0;';
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages).toEqual([]);
+  });
+
   it('should support es6 modules', async () => {
     const addonLinter = new Linter({
       _: ['tests/fixtures/webextension_es6_module'],
