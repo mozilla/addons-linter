@@ -61,7 +61,7 @@
     "is-mergeable-object": "1.1.1",
     "jed": "1.1.1",
     "os-locale": "5.0.0",
-    "pino": "6.10.0",
+    "pino": "6.11.0",
     "postcss": "8.2.4",
     "probe-image-size": "6.0.0",
     "relaxed-json": "1.0.3",
