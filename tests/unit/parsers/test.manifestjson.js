@@ -1,11 +1,13 @@
 import fs from 'fs';
 
 import { oneLine } from 'common-tags';
+import bcd from '@mdn/browser-compat-data';
 
 import Linter from 'linter';
 import ManifestJSONParser from 'parsers/manifestjson';
 import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
 import * as messages from 'messages';
+import { firstStableVersion } from 'utils';
 
 import {
   assertHasMatchingError,
@@ -317,7 +319,7 @@ describe('ManifestJSONParser', () => {
     });
   });
 
-  describe('ManfiestJSONParser lookup', () => {
+  describe('ManifestJSONParser lookup', () => {
     const unknownDataPaths = ['', '/permissions/foo', '/permissions/'];
     unknownDataPaths.forEach((unknownData) => {
       it(`should return invalid for ${unknownData}`, () => {
@@ -773,6 +775,7 @@ describe('ManifestJSONParser', () => {
         messages.PERMISSION_FIREFOX_UNSUPPORTED_BY_MIN_VERSION
       );
     });
+
     it('should add a notice on unsupported permissions on android', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
@@ -2734,6 +2737,196 @@ describe('ManifestJSONParser', () => {
 
     it('should not mark non forbidden homepage url as invalid', () => {
       return testHomepageUrl('http://test.org', true);
+    });
+  });
+
+  describe('@mdn/browser-compat-data: manifest properties', () => {
+    const usesArrayValueForFirefoxDesktopCompat = {
+      // There is a gap in the BCD data between two very old versions so we
+      // ignore it.
+      // Note: this might not be true for all props so we have to check the BCD
+      // data in case a new prop breaks one of the test cases below. In case of
+      // failure we want to double-check if we would need to special case the
+      // new cases or just add them to the list of expected ones that follows.
+      keys: ['browser_specific_settings'],
+    };
+
+    const usesArrayValueForFirefoxAndroidCompat = {
+      keys: ['browser_specific_settings'],
+      subKeys: {
+        permissions: ['browsingData'],
+      },
+    };
+
+    it('should provide the expected `browser_specific_settings` version', () => {
+      const {
+        firefox: firefoxSupport,
+      } = bcd.webextensions.manifest.browser_specific_settings.__compat.support;
+
+      expect(firstStableVersion(firefoxSupport)).toEqual('42');
+    });
+
+    it.each(Object.keys(bcd.webextensions.manifest))(
+      'returns the expected type for Firefox Desktop manifest prop: %s',
+      (key) => {
+        const prop = bcd.webextensions.manifest[key];
+        const { support } = prop.__compat;
+
+        if (usesArrayValueForFirefoxDesktopCompat.keys.includes(key)) {
+          expect(Array.isArray(support.firefox)).toEqual(true);
+
+          support.firefox.forEach((entry) => {
+            expect(entry).toHaveProperty('version_added');
+          });
+        } else {
+          expect(support.firefox).toHaveProperty('version_added');
+        }
+
+        // Also check sub-keys.
+        Object.keys(prop)
+          .filter((subKey) => subKey !== '__compat')
+          .forEach((subKey) => {
+            const { support: subSupport } = prop[subKey].__compat;
+
+            expect(subSupport.firefox).toHaveProperty('version_added');
+          });
+      }
+    );
+
+    it.each(Object.keys(bcd.webextensions.manifest))(
+      'returns the expected type for Firefox Android manifest prop: %s',
+      (key) => {
+        const prop = bcd.webextensions.manifest[key];
+        const { support } = prop.__compat;
+
+        if (usesArrayValueForFirefoxDesktopCompat.keys.includes(key)) {
+          expect(Array.isArray(support.firefox)).toEqual(true);
+
+          support.firefox.forEach((entry) => {
+            expect(entry).toHaveProperty('version_added');
+          });
+        } else {
+          expect(support.firefox).toHaveProperty('version_added');
+        }
+
+        // Also check sub-keys.
+        Object.keys(prop)
+          .filter((subKey) => subKey !== '__compat')
+          .forEach((subKey) => {
+            const { support: subSupport } = prop[subKey].__compat;
+
+            if (
+              usesArrayValueForFirefoxAndroidCompat.subKeys[key]?.includes(
+                subKey
+              )
+            ) {
+              expect(Array.isArray(subSupport.firefox_android)).toEqual(true);
+
+              subSupport.firefox_android.forEach((entry) => {
+                expect(entry).toHaveProperty('version_added');
+              });
+            } else {
+              expect(subSupport.firefox_android).toHaveProperty(
+                'version_added'
+              );
+            }
+          });
+      }
+    );
+  });
+
+  describe('checkKeySupport', () => {
+    // This set of test cases is needed to ensure that the `checkKeySupport()`
+    // implementation can handle various data coming from
+    // `@mdn/browser-compat-data`, which is a third-part library and the format
+    // of the data may change over the time and it may require more changes to
+    // the addons-linter implementation.
+    const key = 'some-key';
+
+    let addonLinter;
+    let manifestJSONParser;
+
+    beforeEach(() => {
+      addonLinter = new Linter({ _: ['bar'] });
+      manifestJSONParser = new ManifestJSONParser(
+        validManifestJSON(),
+        addonLinter.collector
+      );
+    });
+
+    const _checkKeySupport = ({ support, minVersion }) => {
+      const isPermission = true;
+
+      manifestJSONParser.checkKeySupport(
+        support,
+        minVersion,
+        key,
+        isPermission
+      );
+    };
+
+    it('supports array compat data for Android', () => {
+      const support = {
+        firefox_android: [
+          { version_added: '56', version_removed: '79' },
+          { version_added: '85' },
+        ],
+      };
+
+      _checkKeySupport({ support, minVersion: 40 });
+
+      expect(addonLinter.collector.notices).toHaveLength(1);
+      expect(addonLinter.collector.notices[0]).toEqual(
+        expect.objectContaining({
+          description: oneLine`"strict_min_version" requires Firefox for
+            Android 48.0.0, which was released before version 56 introduced
+            support for "${key}".`,
+        })
+      );
+    });
+
+    it('supports array compat data with falsey version_added for Android', () => {
+      const support = {
+        firefox_android: [
+          { version_added: true },
+          { version_added: false },
+          { version_added: '56', version_removed: '79' },
+          { version_added: NaN },
+          { version_added: '23', version_removed: '25' },
+          { version_added: '85' },
+          { version_added: null },
+        ],
+      };
+
+      _checkKeySupport({ support, minVersion: 10 });
+
+      expect(addonLinter.collector.notices).toHaveLength(1);
+      expect(addonLinter.collector.notices[0]).toEqual(
+        expect.objectContaining({
+          description: oneLine`"strict_min_version" requires Firefox for
+            Android 48.0.0, which was released before version 23 introduced
+            support for "${key}".`,
+        })
+      );
+    });
+
+    it('supports an object compat data for Android', () => {
+      const support = {
+        firefox_android: {
+          version_added: '85',
+        },
+      };
+
+      _checkKeySupport({ support, minVersion: 10 });
+
+      expect(addonLinter.collector.notices).toHaveLength(1);
+      expect(addonLinter.collector.notices[0]).toEqual(
+        expect.objectContaining({
+          description: oneLine`"strict_min_version" requires Firefox for
+            Android 48.0.0, which was released before version 85 introduced
+            support for "${key}".`,
+        })
+      );
     });
   });
 });

@@ -386,10 +386,12 @@ export function basicCompatVersionComparison(versionAdded, minVersion) {
 
 /**
  * @param {*} supportInfo - bcd support info of a feature
- * @returns {string|boolean} The first version number to suppor the feature
- *          or a boolean indicating if the feature is at all supported.
+ * @returns {string|boolean} The first version number to support the feature
+ *          or a boolean indicating if the feature is supported at all. We do
+ *          not consider any holes in the supported versions, only the first
+ *          stable version is taken into account.
  */
-function firstStableVersion(supportInfo) {
+export function firstStableVersion(supportInfo) {
   let supportInfoArray = supportInfo;
   if (!Array.isArray(supportInfo)) {
     supportInfoArray = [supportInfo];
@@ -398,10 +400,11 @@ function firstStableVersion(supportInfo) {
     if (
       !Object.prototype.hasOwnProperty.call(supportEntry, 'flags') &&
       (!versionAdded ||
-        !basicCompatVersionComparison(
-          supportEntry.version_added,
-          parseInt(versionAdded, 10)
-        ))
+        (supportEntry.version_added &&
+          !basicCompatVersionComparison(
+            supportEntry.version_added,
+            parseInt(versionAdded, 10)
+          )))
     ) {
       return supportEntry.version_added;
     }
