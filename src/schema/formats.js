@@ -1,5 +1,3 @@
-import { URL } from 'whatwg-url';
-
 const VALIDNUMRX = /^[0-9]{1,5}$/;
 
 // Firefox's version format is laxer than Chrome's, it accepts:

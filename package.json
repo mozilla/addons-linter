@@ -69,7 +69,6 @@
     "source-map-support": "0.5.19",
     "tosource": "1.0.0",
     "upath": "2.0.1",
-    "whatwg-url": "8.4.0",
     "yargs": "16.2.0",
     "yauzl": "2.10.0"
   },

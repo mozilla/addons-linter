@@ -1,7 +1,6 @@
 import url from 'url';
 
 import upath from 'upath';
-import { URL } from 'whatwg-url';
 import Jed from 'jed';
 import semver from 'semver';
 import { oneLine } from 'common-tags';
