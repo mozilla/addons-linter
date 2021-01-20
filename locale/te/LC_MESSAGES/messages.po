@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2021-01-13 16:47+0000\n"
+"PO-Revision-Date: 2021-01-20 17:18+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -292,11 +292,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:223
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "మానిఫెస్ట్ బహుళ నిఘంటువులను కలిగి ఉంది."
 
 #: src/messages/manifestjson.js:224
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "మానిఫెస్ట్‌లో బహుళ నిఘంటువులు నిర్వచించబడ్డాయి, దీనికి తోడ్పాటు లేదు."
 
 #: src/messages/manifestjson.js:233
 msgid "The manifest contains a dictionaries object, but it is empty."
