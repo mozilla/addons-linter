@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2021-01-20 17:18+0000\n"
+"PO-Revision-Date: 2021-01-20 17:20+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -304,15 +304,15 @@ msgstr "మానిఫెస్ట్‌లో నిఘంటువు వస�
 
 #: src/messages/manifestjson.js:236
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "మానిఫెస్ట్‌లో నిఘంటువు వస్తువు నిర్వచించబడింది, కానీ అది ఖాళీగా ఉంది."
 
 #: src/messages/manifestjson.js:245
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "మానిఫెస్ట్‌లో నిఘంటువు ఉంది కాని id లక్షణం లేదు."
 
 #: src/messages/manifestjson.js:246
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "మానిఫెస్ట్‌లో ఒక నిఘంటువు కనుగొనబడింది, కాని id అమర్చి లేదు."
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
@@ -412,7 +412,7 @@ msgstr "తోడ్పాటు లేని బొమ్మ ఎక్స్‌
 
 #: src/messages/manifestjson.js:412
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
+msgstr "ప్రతీకాలు JPG/JPEG, WebP, GIF, PNG లేదా SVGలలో ఒకటయి ఉండాలి."
 
 #: src/messages/manifestjson.js:422
 msgid "Empty language directory"
