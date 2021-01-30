@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2021-01-20 17:20+0000\n"
+"PO-Revision-Date: 2021-01-30 18:43+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -64,7 +64,7 @@ msgstr "పొడగింతల విధానాల ప్రకారం ర
 
 #: src/messages/html.js:7
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "inlinescripts అప్రమేయంగా నిరోధించబడతాయి"
 
 #: src/messages/javascript.js:105
 msgid "Known JS library detected"
@@ -128,11 +128,11 @@ msgstr "document.write వాడకం వారించబడింది."
 
 #: src/messages/javascript.js:91
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "నిషేధించిన 3వ-పక్ష JS లైబ్రరీ"
 
 #: src/messages/javascript.js:98
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "సూచించబడని 3వ-పక్ష JS లైబ్రరీ"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -188,7 +188,7 @@ msgstr "ప్యాకేజిలో ద్వంద్వ పద్దుల�
 
 #: src/messages/layout.js:80
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "కాయిన్ మైనర్లను నపడడానికి Firefox పొడగింతలు అనుమతించబడవు."
 
 #: src/messages/layout.js:89
 msgid "Reserved filename found."
@@ -200,15 +200,15 @@ msgstr "ముందే నిర్వచించబడిన సందేశ�
 
 #: src/messages/locale-messagesjson.js:29
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "సందేశానికి హోల్డర్ లేదు"
 
 #: src/messages/locale-messagesjson.js:30
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "సందేశంలో వాడిన ప్లేస్‌హోల్డర్ నిర్వచించబడలేదు."
 
 #: src/messages/locale-messagesjson.js:35
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "ప్లేస్‌హోల్డర్ పేరులో చెల్లని అక్షరాలు ఉన్నాయి"
 
 #: src/messages/locale-messagesjson.js:42
 msgid "Placeholder is missing the content property"
