@@ -41,7 +41,7 @@
   "homepage": "https://github.com/mozilla/addons-linter#readme",
   "dependencies": {
     "@babel/runtime": "7.12.5",
-    "@mdn/browser-compat-data": "2.0.7",
+    "@mdn/browser-compat-data": "3.0.3",
     "addons-scanner-utils": "4.0.1",
     "ajv": "6.12.6",
     "ajv-merge-patch": "4.1.0",

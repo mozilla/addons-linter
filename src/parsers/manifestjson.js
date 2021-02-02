@@ -36,6 +36,7 @@ import {
   normalizePath,
   firefoxStrictMinVersion,
   basicCompatVersionComparison,
+  firstStableVersion,
 } from 'utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
@@ -100,6 +101,8 @@ export default class ManifestJSONParser extends JSONParser {
 
   checkKeySupport(support, minVersion, key, isPermission = false) {
     if (support.firefox) {
+      // We don't have to support gaps in the `@mdn/browser-compat-data`
+      // information for Firefox Desktop so far.
       const versionAdded = support.firefox.version_added;
       if (basicCompatVersionComparison(versionAdded, minVersion)) {
         if (!isPermission) {
@@ -121,8 +124,20 @@ export default class ManifestJSONParser extends JSONParser {
         }
       }
     }
+
     if (support.firefox_android) {
-      const versionAddedAndroid = support.firefox_android.version_added;
+      // `@mdn/browser-compat-data` sometimes provides data with gaps, e.g., a
+      // feature was supported in Fennec (added in 56 and removed in 79) and
+      // then re-added in Fenix (added in 85) and this is expressed with an
+      // array of objects instead of a single object.
+      //
+      // This is the case of the `permissions.browsingData` on Android for
+      // instance and we decided to only warn the developer if the minVersion
+      // required by the extension is not greater or equal of the first version
+      // where the feature was officially supported for the first time (and do
+      // not warn if the minVersion is in one of the few version gaps).
+      const versionAddedAndroid = firstStableVersion(support.firefox_android);
+
       if (basicCompatVersionComparison(versionAddedAndroid, minVersion)) {
         if (!isPermission) {
           this.collector.addWarning(
