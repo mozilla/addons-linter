@@ -217,8 +217,21 @@
               "description": "The height in pixels of the new window, including the frame. If not specified defaults to a natural height."
             },
             "focused": {
-              "unsupported": true,
-              "type": "boolean",
+              "anyOf": [
+                {
+                  "type": "boolean",
+                  "enum": [
+                    true
+                  ]
+                },
+                {
+                  "type": "boolean",
+                  "enum": [
+                    false
+                  ],
+                  "deprecated": "Opening inactive windows is not supported."
+                }
+              ],
               "description": "If true, opens an active window. If false, opens an inactive window."
             },
             "incognito": {
