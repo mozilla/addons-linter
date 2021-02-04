@@ -886,9 +886,6 @@ describe('ManifestJSONParser', () => {
 
         const contentSecurityPolicy = {
           extension_pages: invalidValue,
-          content_scripts: invalidValue,
-          // Alias for content_scripts.
-          isolated_world: invalidValue,
         };
 
         const jsonV3 = validManifestJSON({
@@ -915,7 +912,7 @@ describe('ManifestJSONParser', () => {
             `content_security_policy.${keys[i]}`
           );
         }
-        expect(warnings.length).toBe(3);
+        expect(warnings.length).toBe(1);
       });
     });
 
