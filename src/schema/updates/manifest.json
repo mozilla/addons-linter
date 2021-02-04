@@ -82,6 +82,9 @@
           "version": {
             "description": "Version string must be a string comprising one to four dot-separated integers (0-65535). E.g: 1.2.3.",
             "format": "versionString"
+          },
+          "manifest_version": {
+            "maximum": 2
           }
         }
       }

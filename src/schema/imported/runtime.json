@@ -735,7 +735,11 @@
     "PlatformArch": {
       "type": "string",
       "enum": [
+        "aarch64",
         "arm",
+        "ppc64",
+        "s390x",
+        "sparc64",
         "x86-32",
         "x86-64"
       ],
