@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-03-21 02:22+0000\n"
+"PO-Revision-Date: 2021-02-16 02:52+0000\n"
 "Last-Translator: Enol <enolp@softastur.org>\n"
 "Language-Team: none\n"
 "Language: ast\n"
@@ -48,7 +48,7 @@ msgstr ""
 
 #: src/messages/css.js:8
 msgid "A CSS syntax error was encountered"
-msgstr "Alcontróse un fallu de sintaxis nel CSS"
+msgstr "Atopóse un fallu de sintaxis nel CSS"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -188,7 +188,7 @@ msgstr ""
 
 #: src/messages/layout.js:80
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr "Los complementos pa Firefox nun tienen permisu pa executar mineros de divises dixitales."
+msgstr "Los complementos pa Firefox nun tienen permisu pa executar criptomineros."
 
 #: src/messages/layout.js:89
 msgid "Reserved filename found."
@@ -316,7 +316,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
-msgstr "Alcontróse conteníu prohibíu nel complementu."
+msgstr "Atopóse conteníu prohibíu nel complementu."
 
 #: src/messages/manifestjson.js:257
 msgid "This add-on contains forbidden content."
