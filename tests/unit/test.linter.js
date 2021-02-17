@@ -12,6 +12,7 @@ import ManifestJSONParser from 'parsers/manifestjson';
 import BinaryScanner from 'scanners/binary';
 import CSSScanner from 'scanners/css';
 import FilenameScanner from 'scanners/filename';
+import JavaScriptScanner from 'scanners/javascript';
 import JSONScanner from 'scanners/json';
 import LangpackScanner from 'scanners/langpack';
 
@@ -178,6 +179,24 @@ describe('Linter', () => {
     );
   });
 
+  it.each(['mjs', 'jsm'])('should scan %s files', async (fileExtension) => {
+    const filename = `file.${fileExtension}`;
+    const addonLinter = new Linter({
+      _: ['tests/fixtures/webextension_scan_file'],
+      scanFile: [filename],
+    });
+    // Stub print to prevent output.
+    addonLinter.print = sinon.stub();
+
+    const getFileSpy = sinon.spy(addonLinter, 'scanFile');
+
+    await addonLinter.scan();
+    sinon.assert.callOrder(
+      getFileSpy.withArgs(filename),
+      getFileSpy.withArgs('manifest.json')
+    );
+  });
+
   it('Eslint ignore patterns and .eslintignorerc should be ignored', async () => {
     // Verify https://github.com/mozilla/addons-linter/issues/1288 is fixed
     const addonLinter = new Linter({
@@ -318,6 +337,15 @@ describe('Linter.getScanner()', () => {
     const Scanner = addonLinter.getScanner('foo.whatever');
     expect(Scanner).toEqual(BinaryScanner);
   });
+
+  it.each(['foo.js', 'bar.jsm', 'baz.mjs'])(
+    'should return JavaScriptScanner for file: %s',
+    (file) => {
+      const addonLinter = new Linter({ _: ['foo'] });
+      const Scanner = addonLinter.getScanner(file);
+      expect(Scanner).toEqual(JavaScriptScanner);
+    }
+  );
 
   it('should return CSSScanner', () => {
     const addonLinter = new Linter({ _: ['foo'] });

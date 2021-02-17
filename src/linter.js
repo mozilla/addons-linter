@@ -328,6 +328,8 @@ export default class Linter {
       case '.htm':
         return HTMLScanner;
       case '.js':
+      case '.jsm':
+      case '.mjs':
         return JavaScriptScanner;
       case '.json':
         return JSONScanner;
