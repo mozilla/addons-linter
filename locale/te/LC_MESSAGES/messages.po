@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2021-01-30 18:43+0000\n"
+"PO-Revision-Date: 2021-02-26 13:40+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -212,7 +212,7 @@ msgstr "ప్లేస్‌హోల్డర్ పేరులో చెల�
 
 #: src/messages/locale-messagesjson.js:42
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "ప్లేస్‌హోల్డర్‌కు కంటెంట్ లక్షణం లేదు"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
