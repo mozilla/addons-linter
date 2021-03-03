@@ -10,9 +10,9 @@
     "node": ">=10.13"
   },
   "scripts": {
-    "build": "webpack --bail --display-error-details --colors --config webpack.config.js",
+    "build": "webpack --bail --stats-error-details --stats-colors --config webpack.config.js",
     "eslint": "eslint bin/* scripts/* .",
-    "extract-locales": "webpack --bail --display-error-details --colors --config webpack.l10n.config.babel.js",
+    "extract-locales": "webpack --bail --stats-error-details --stats-colors --config webpack.l10n.config.babel.js",
     "test": "jest --runInBand --watch 'tests/.*'",
     "test-coverage": "jest --runInBand --coverage --watch 'tests/.*'",
     "test-once": "jest --runInBand",
