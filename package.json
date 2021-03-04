@@ -10,9 +10,9 @@
     "node": ">=10.13"
   },
   "scripts": {
-    "build": "webpack --bail --display-error-details --colors --config webpack.config.js",
+    "build": "webpack --bail --stats-error-details --color --config webpack.config.js",
     "eslint": "eslint bin/* scripts/* .",
-    "extract-locales": "webpack --bail --display-error-details --colors --config webpack.l10n.config.babel.js",
+    "extract-locales": "webpack --bail --stats-error-details --color --config webpack.l10n.config.babel.js",
     "test": "jest --runInBand --watch 'tests/.*'",
     "test-coverage": "jest --runInBand --coverage --watch 'tests/.*'",
     "test-once": "jest --runInBand",
@@ -70,8 +70,7 @@
     "tosource": "1.0.0",
     "upath": "2.0.1",
     "yargs": "16.2.0",
-    "yauzl": "2.10.0",
-    "fsevents": "2.3.2"
+    "yauzl": "2.10.0"
   },
   "devDependencies": {
     "@babel/cli": "7.12.17",
@@ -118,8 +117,8 @@
     "tar": "6.1.0",
     "tar-fs": "2.1.1",
     "tmp-promise": "3.0.2",
-    "webpack": "4.46.0",
-    "webpack-cli": "3.3.12",
+    "webpack": "5.24.2",
+    "webpack-cli": "4.5.0",
     "webpack-node-externals": "2.5.2",
     "yazl": "2.5.1"
   },
