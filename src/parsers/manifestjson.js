@@ -4,7 +4,7 @@ import { readdirSync, existsSync, statSync } from 'fs';
 
 import RJSON from 'relaxed-json';
 import { oneLine } from 'common-tags';
-import probeImageSize from 'probe-image-size';
+import getImageSize from 'image-size';
 import upath from 'upath';
 import bcd from '@mdn/browser-compat-data';
 
@@ -48,8 +48,39 @@ async function getImageMetadata(io, iconPath) {
     encoding = 'utf-8';
   }
 
-  const data = await io.getFileAsStream(iconPath, { encoding });
-  return probeImageSize(data);
+  const fileStream = await io.getFileAsStream(iconPath, { encoding });
+  const buffer = await new Promise((resolve, reject) => {
+    const bufs = [];
+    fileStream.on('data', function(d){ bufs.push(d); });
+    fileStream.on("error", error => reject(error));
+    fileStream.on('end', function(){
+      resolve(Buffer.concat(bufs));
+    })
+  });
+
+
+  let size;
+  try {
+    size = getImageSize(buffer)
+  } catch (error) {
+    if (error.message === 'Invalid SVG') {
+      size = {width: 0, height: 0, type: 'svg'}
+    } else {
+      throw error;
+    }
+  }
+
+  let mime;
+  for (const [currentMime, extensions] of Object.entries(MIME_TO_FILE_EXTENSIONS)) {
+    if(extensions.includes(size.type)) {
+      mime = currentMime
+    }
+  }
+  return {
+    width: size.width,
+    height: size.height,
+    mime
+  }
 }
 
 function getNormalizedExtension(_path) {
