@@ -59,7 +59,6 @@
     "espree": "7.3.1",
     "esprima": "4.0.1",
     "fluent-syntax": "0.13.0",
-    "fsevents": "2.3.2",
     "glob": "7.1.6",
     "is-mergeable-object": "1.1.1",
     "jed": "1.1.1",
@@ -120,8 +119,5 @@
     "webpack-cli": "4.5.0",
     "webpack-node-externals": "2.5.2",
     "yazl": "2.5.1"
-  },
-  "optionalDependencies": {
-    "fsevents": "2.3.2"
   }
 }
