@@ -60,15 +60,7 @@ async function getImageMetadata(io, iconPath) {
 
 
   let size;
-  try {
     size = getImageSize(buffer)
-  } catch (error) {
-    if (error.message === 'Invalid SVG') {
-      size = {width: 0, height: 0, type: 'svg'}
-    } else {
-      throw error;
-    }
-  }
 
   let mime;
   for (const [currentMime, extensions] of Object.entries(MIME_TO_FILE_EXTENSIONS)) {
