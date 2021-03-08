@@ -427,7 +427,7 @@ describe('JavaScript Scanner', () => {
 
     it('should default to script in case of SyntaxError', async () => {
       const code = oneLine`
-        import foo
+        an import foo
       `;
 
       const jsScanner = new JavaScriptScanner(code, 'code.js');

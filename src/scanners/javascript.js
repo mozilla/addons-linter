@@ -1,9 +1,9 @@
 /* global appRoot */
 import path from 'path';
+import * as vm from 'vm';
 
 import ESLint from 'eslint';
 import { oneLine } from 'common-tags';
-import espree from 'espree';
 import vk from 'eslint-visitor-keys';
 
 import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
@@ -85,10 +85,6 @@ export default class JavaScriptScanner {
           webextensions: true,
         },
 
-        // It's the default but also shouldn't change since we're using
-        // espree to parse javascript files below manually to figure out
-        // if they're modules or not
-        parser: 'espree',
         parserOptions: {
           ecmaVersion: ECMA_VERSION,
           sourceType: this.sourceType,
@@ -220,28 +216,24 @@ export default class JavaScriptScanner {
   }
 
   /*
-    Analyze the source-code by by parsing the source code manually and
-    check for import/export syntax errors.
+    Compile the code with Node’s VM to detect its type.
 
     This returns `script` or `module`.
   */
   detectSourceType(filename) {
-    // Default options taken from eslint/lib/linter:parse
-    const parserOptions = {
-      filePath: filename,
-      sourceType: 'module',
-      ecmaVersion: ECMA_VERSION,
-    };
-
-    let sourceType = 'module';
-
     try {
-      const ast = espree.parse(this.code, parserOptions);
-      sourceType = this._getSourceType(ast);
-    } catch (exc) {
-      sourceType = 'script';
+      new vm.Script(this.code);
+    } catch (error) {
+      if (
+        [
+          "Unexpected token 'export'",
+          'Cannot use import statement outside a module',
+        ].includes(error.message)
+        ) {
+          return 'module';
+      }
     }
 
-    return sourceType;
+    return 'script';
   }
 }
