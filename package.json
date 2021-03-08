@@ -9,6 +9,9 @@
   "engines": {
     "node": ">=10.13"
   },
+  "browserslist": [
+    "node >=10.13"
+  ],
   "scripts": {
     "build": "webpack --bail --stats-error-details true --color --config webpack.config.js",
     "eslint": "eslint bin/* scripts/* .",
@@ -56,6 +59,7 @@
     "espree": "7.3.1",
     "esprima": "4.0.1",
     "fluent-syntax": "0.13.0",
+    "fsevents": "2.3.2",
     "glob": "7.1.6",
     "is-mergeable-object": "1.1.1",
     "jed": "1.1.1",
@@ -81,6 +85,7 @@
     "@babel/plugin-proposal-numeric-separator": "7.12.13",
     "@babel/plugin-proposal-throw-expressions": "7.12.13",
     "@babel/polyfill": "7.12.1",
+    "@babel/preset-env": "7.13.9",
     "@babel/register": "7.13.8",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.1.0",
