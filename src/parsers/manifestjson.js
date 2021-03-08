@@ -23,7 +23,7 @@ import {
   IMAGE_FILE_EXTENSIONS,
   LOCALES_DIRECTORY,
   MESSAGES_JSON,
-  MIME_TO_FILE_EXTENSIONS,
+  FILE_EXTENSIONS_TO_MIME,
   STATIC_THEME_IMAGE_MIMES,
   RESTRICTED_HOMEPAGE_URLS,
 } from 'const';
@@ -54,18 +54,6 @@ async function getStreamImageSize(stream) {
   return getImageSize(Buffer.concat(chunks));
 }
 
-function getMimeFromExtension(extension) {
-  for (const [currentMime, extensions] of Object.entries(
-    MIME_TO_FILE_EXTENSIONS
-  )) {
-    if (extensions.includes(extension)) {
-      return currentMime;
-    }
-  }
-
-  return undefined;
-}
-
 async function getImageMetadata(io, iconPath) {
   // Get a non-utf8 input stream by setting encoding to null.
   let encoding = null;
@@ -81,7 +69,7 @@ async function getImageMetadata(io, iconPath) {
   return {
     width: data.width,
     height: data.height,
-    mime: getMimeFromExtension(data.type),
+    mime: FILE_EXTENSIONS_TO_MIME[data.type],
   };
 }
 
@@ -696,7 +684,7 @@ export default class ManifestJSONParser extends JSONParser {
           })
         );
         this.isValid = false;
-      } else if (!MIME_TO_FILE_EXTENSIONS[info.mime].includes(ext)) {
+      } else if (FILE_EXTENSIONS_TO_MIME[ext] !== info.mime) {
         this.collector.addWarning(
           messages.manifestThemeImageMimeMismatch({
             path: _path,

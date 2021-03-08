@@ -111,18 +111,17 @@ export const IMAGE_FILE_EXTENSIONS = [
   'svg',
 ];
 
-// Map the image mime to the expected file extensions
-// (used in the the static theme images validation).
-export const MIME_TO_FILE_EXTENSIONS = {
-  'image/svg+xml': ['svg'],
-  'image/gif': ['gif'],
-  'image/jpeg': ['jpg', 'jpeg'],
-  'image/png': ['png'],
-  'image/webp': ['webp'],
+export const FILE_EXTENSIONS_TO_MIME = {
+  'svg': 'image/svg+xml',
+  'gif': 'image/gif',
+  'jpg': 'image/jpeg',
+  'jpeg': 'image/jpeg',
+  'png': 'image/png',
+  'webp': 'image/webp',
 };
 
-// List of the mime types for the allowed static theme images.
-export const STATIC_THEME_IMAGE_MIMES = Object.keys(MIME_TO_FILE_EXTENSIONS);
+// List of the mime types for the allowed static theme images. "Set" used to deduplicate them
+export const STATIC_THEME_IMAGE_MIMES = [...new Set(Object.values(FILE_EXTENSIONS_TO_MIME))];
 
 // Mapping of "schema data paths" of the deprecated properties that we
 // issue warnings for.
