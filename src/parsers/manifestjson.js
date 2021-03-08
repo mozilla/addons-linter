@@ -40,6 +40,26 @@ import {
 } from 'utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
+async function getStreamImageSize(stream) {
+  const chunks = []
+  for await (const chunk of stream) {
+    chunks.push(chunk)
+    try {
+      return getImageSize(Buffer.concat(chunks));
+    } catch (error) {/* Not ready yet */}
+  }
+
+  return getImageSize(Buffer.concat(chunks));
+}
+
+function getMimeFromExtension(extension) {
+  for (const [currentMime, extensions] of Object.entries(MIME_TO_FILE_EXTENSIONS)) {
+    if(extensions.includes(extension)) {
+      return currentMime;
+    }
+  }
+}
+
 async function getImageMetadata(io, iconPath) {
   // Get a non-utf8 input stream by setting encoding to null.
   let encoding = null;
@@ -49,29 +69,13 @@ async function getImageMetadata(io, iconPath) {
   }
 
   const fileStream = await io.getFileAsStream(iconPath, { encoding });
-  const buffer = await new Promise((resolve, reject) => {
-    const bufs = [];
-    fileStream.on('data', function(d){ bufs.push(d); });
-    fileStream.on("error", error => reject(error));
-    fileStream.on('end', function(){
-      resolve(Buffer.concat(bufs));
-    })
-  });
 
+  const data = await getStreamImageSize(fileStream);
 
-  let size;
-    size = getImageSize(buffer)
-
-  let mime;
-  for (const [currentMime, extensions] of Object.entries(MIME_TO_FILE_EXTENSIONS)) {
-    if(extensions.includes(size.type)) {
-      mime = currentMime
-    }
-  }
   return {
-    width: size.width,
-    height: size.height,
-    mime
+    width: data.width,
+    height: data.height,
+    mime: getMimeFromExtension(data.type)
   }
 }
 
