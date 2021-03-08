@@ -41,23 +41,29 @@ import {
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
 async function getStreamImageSize(stream) {
-  const chunks = []
+  const chunks = [];
   for await (const chunk of stream) {
-    chunks.push(chunk)
+    chunks.push(chunk);
     try {
       return getImageSize(Buffer.concat(chunks));
-    } catch (error) {/* Not ready yet */}
+    } catch (error) {
+      /* Not ready yet */
+    }
   }
 
   return getImageSize(Buffer.concat(chunks));
 }
 
 function getMimeFromExtension(extension) {
-  for (const [currentMime, extensions] of Object.entries(MIME_TO_FILE_EXTENSIONS)) {
-    if(extensions.includes(extension)) {
+  for (const [currentMime, extensions] of Object.entries(
+    MIME_TO_FILE_EXTENSIONS
+  )) {
+    if (extensions.includes(extension)) {
       return currentMime;
     }
   }
+
+  return undefined;
 }
 
 async function getImageMetadata(io, iconPath) {
@@ -75,8 +81,8 @@ async function getImageMetadata(io, iconPath) {
   return {
     width: data.width,
     height: data.height,
-    mime: getMimeFromExtension(data.type)
-  }
+    mime: getMimeFromExtension(data.type),
+  };
 }
 
 function getNormalizedExtension(_path) {
