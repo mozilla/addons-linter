@@ -3,16 +3,7 @@
     "@babel/preset-env"
   ],
   "plugins": [
-    "syntax-async-functions",
     "@babel/plugin-transform-modules-commonjs",
-    "@babel/plugin-transform-async-to-generator",
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "regenerator": true
-      }
-    ],
-    "@babel/plugin-syntax-async-generators",
     [
       "@babel/plugin-proposal-decorators",
       {
@@ -23,7 +14,6 @@
     "@babel/plugin-proposal-export-namespace-from",
     "@babel/plugin-proposal-numeric-separator",
     "@babel/plugin-proposal-throw-expressions",
-    "@babel/plugin-proposal-async-generator-functions",
     "@babel/plugin-proposal-class-properties"
   ]
 }
