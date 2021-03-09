@@ -229,8 +229,8 @@ export default class JavaScriptScanner {
           "Unexpected token 'export'",
           'Cannot use import statement outside a module',
         ].includes(error.message)
-        ) {
-          return 'module';
+      ) {
+        return 'module';
       }
     }
 
