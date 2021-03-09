@@ -220,8 +220,9 @@ export default class JavaScriptScanner {
 
     This returns `script` or `module`.
   */
-  detectSourceType(filename) {
+  detectSourceType() {
     try {
+      // eslint-disable-next-line no-new
       new vm.Script(this.code);
     } catch (error) {
       if (
