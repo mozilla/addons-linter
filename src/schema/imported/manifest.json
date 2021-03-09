@@ -546,6 +546,9 @@
           "$ref": "proxy#/definitions/OptionalPermission"
         },
         {
+          "$ref": "runtime#/definitions/OptionalPermission"
+        },
+        {
           "$ref": "sessions#/definitions/OptionalPermission"
         },
         {
@@ -631,9 +634,6 @@
         },
         {
           "$ref": "experiments#/definitions/Permission"
-        },
-        {
-          "$ref": "runtime#/definitions/Permission"
         }
       ]
     },
