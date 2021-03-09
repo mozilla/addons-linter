@@ -75,15 +75,15 @@
     "yauzl": "2.10.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.13.0",
-    "@babel/core": "7.13.8",
+    "@babel/cli": "7.13.10",
+    "@babel/core": "7.13.10",
     "@babel/plugin-proposal-class-properties": "7.13.0",
     "@babel/plugin-proposal-decorators": "7.13.5",
     "@babel/plugin-proposal-export-namespace-from": "7.12.13",
     "@babel/plugin-proposal-function-sent": "7.12.13",
     "@babel/plugin-proposal-numeric-separator": "7.12.13",
     "@babel/plugin-proposal-throw-expressions": "7.12.13",
-    "@babel/preset-env": "7.13.9",
+    "@babel/preset-env": "7.13.10",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.1.0",
     "babel-gettext-extractor": "4.1.3",
