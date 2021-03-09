@@ -390,6 +390,28 @@ describe('JavaScript Scanner', () => {
     expect(linterMessages[0].message).toEqual('this is the message');
   });
 
+  it('outputs the parsing errors in the message when possible', async () => {
+    const code = `
+      export const FOO = "FOO";
+      // This will produce a syntax error when parsing the file as module.
+      default FOO;
+    `;
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages).toEqual([
+      expect.objectContaining({
+        description: expect.stringContaining(oneLine`might be related to some
+          experimental JavaScript features that aren't an official part of the
+          language specification`),
+        message: oneLine`JavaScript syntax error (Parsing as module error:
+          Unexpected token default at line: 4 and column: 7) (Parsing as script
+          error: 'import' and 'export' may appear only with 'sourceType:
+          module' at line: 2 and column: 7)`,
+      }),
+    ]);
+  });
+
   describe('detectSourceType', () => {
     it('should detect module', async () => {
       const code = oneLine`
@@ -434,6 +456,49 @@ describe('JavaScript Scanner', () => {
       await runJsScanner(jsScanner);
 
       expect(jsScanner.sourceType).toEqual('script');
+    });
+
+    it('returns the "parsing as a module" error', async () => {
+      const code = `
+        export const FOO = "FOO";
+        // This will produce a syntax error when parsing the file as module.
+        default FOO;
+      `;
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      const detectedSourceType = jsScanner.detectSourceType('code.js');
+
+      expect(detectedSourceType.sourceType).toEqual('script');
+      expect(detectedSourceType.parsingError).toEqual({
+        type: 'module',
+        error: 'Unexpected token default at line: 4 and column: 9',
+      });
+    });
+
+    it('should only recurse if the child node is defined', async () => {
+      const code = `(function () {})();`;
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+      const detectedSourceType = jsScanner.detectSourceType('code.js');
+
+      expect(detectedSourceType.sourceType).toEqual('script');
+      expect(detectedSourceType.parsingError).toEqual(null);
+    });
+
+    it('handles "parsing as a module" errors without line/column', async () => {
+      const code = `(function () {})();`;
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      sinon.stub(jsScanner, '_getSourceType').throws(new Error('some error'));
+
+      const detectedSourceType = jsScanner.detectSourceType('code.js');
+
+      expect(detectedSourceType.sourceType).toEqual('script');
+      expect(detectedSourceType.parsingError).toEqual({
+        type: 'module',
+        error: oneLine`some error at line: (unknown) and column: (unknown).
+          This looks like a bug in addons-linter, please open a new issue:
+          https://github.com/mozilla/addons-linter/issues`,
+      });
     });
   });
 });
