@@ -64,7 +64,7 @@
     "jed": "1.1.1",
     "os-locale": "5.0.0",
     "pino": "6.11.1",
-    "postcss": "8.2.7",
+    "postcss": "8.2.8",
     "probe-image-size": "6.0.0",
     "relaxed-json": "1.0.3",
     "semver": "7.3.4",
