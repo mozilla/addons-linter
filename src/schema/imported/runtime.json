@@ -618,7 +618,7 @@
     }
   ],
   "definitions": {
-    "Permission": {
+    "OptionalPermission": {
       "anyOf": [
         {
           "type": "string",
@@ -630,9 +630,9 @@
     }
   },
   "refs": {
-    "runtime#/definitions/Permission": {
+    "runtime#/definitions/OptionalPermission": {
       "namespace": "manifest",
-      "type": "Permission"
+      "type": "OptionalPermission"
     }
   },
   "types": {
