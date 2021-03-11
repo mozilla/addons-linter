@@ -15,7 +15,7 @@ export const fakeMessageData = {
   message: 'message',
 };
 
-export const EMPTY_SVG = Buffer.from('<svg viewBox="0 0 1 1"></svg>');
+export const EMPTY_SVG = Buffer.from('<svg viewbox="0 0 1 1"></svg>');
 
 export const EMPTY_PNG = Buffer.from(
   oneLine`iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMA
