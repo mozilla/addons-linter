@@ -120,7 +120,7 @@ export const FILE_EXTENSIONS_TO_MIME = {
   webp: 'image/webp',
 };
 
-// List of the mime types for the allowed static theme images. "Set" used to deduplicate them
+// Unique list of mime types for the allowed static theme images.
 export const STATIC_THEME_IMAGE_MIMES = [
   ...new Set(Object.values(FILE_EXTENSIONS_TO_MIME)),
 ];
