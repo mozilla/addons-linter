@@ -6,7 +6,9 @@ export const JS_SYNTAX_ERROR = {
   code: 'JS_SYNTAX_ERROR',
   message: i18n._('JavaScript syntax error'),
   description: i18n._(oneLine`There is a JavaScript syntax error in your
-    code; validation cannot continue on this file.`),
+    code, which might be related to some experimental JavaScript features that
+    aren't an official part of the language specification and therefore not
+    supported yet. The validation cannot continue on this file.`),
 };
 
 export const EVENT_LISTENER_FOURTH = {

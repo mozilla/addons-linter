@@ -51,7 +51,8 @@ export default class JavaScriptScanner {
     // testing purposes.
     _rulePaths = undefined,
   } = {}) {
-    this.sourceType = this.detectSourceType(this.filename);
+    const detectedSourceType = this.detectSourceType(this.filename);
+    this.sourceType = detectedSourceType.sourceType;
 
     const rules = {};
     Object.keys(_ruleMapping).forEach((ruleName) => {
@@ -121,9 +122,32 @@ export default class JavaScriptScanner {
 
     results.forEach((result) => {
       result.messages.forEach((message) => {
+        let extraShortDescription = '';
+
         // Fatal error messages (like SyntaxErrors) are a bit different, we
-        // need to handle them specially.
-        if (message.fatal === true) {
+        // need to handle them specially. Messages related to parsing errors do
+        // not have a `ruleId`, which is why we check that, too.
+        if (message.fatal === true && message.ruleId === null) {
+          // If there was a parsing error during the sourceType detection, we
+          // want to add it to the short description. We start by adding it to
+          // a temporary variable in case there are other messages we want to
+          // append to the final short description (which will be the `message`
+          // in the final output).
+          if (detectedSourceType.parsingError !== null) {
+            const { type, error } = detectedSourceType.parsingError;
+            extraShortDescription = `(Parsing as ${type} error: ${error})`;
+          }
+
+          // If there was another error, we want to append it to the short
+          // description as well. `message.message` will contain the full
+          // exception message, which likely includes a prefix that we don't
+          // want to keep.
+          const formattedError = message.message.replace('Parsing error: ', '');
+          extraShortDescription = [
+            extraShortDescription,
+            oneLine`(Parsing as ${this.sourceType} error: ${formattedError} at
+              line: ${message.line} and column: ${message.column})`,
+          ].join(' ');
           // eslint-disable-next-line no-param-reassign
           message.message = _messages.JS_SYNTAX_ERROR.code;
         }
@@ -161,6 +185,10 @@ export default class JavaScriptScanner {
         } else {
           shortDescription = code;
           description = null;
+        }
+
+        if (extraShortDescription.length) {
+          shortDescription += ` ${extraShortDescription}`;
         }
 
         this.linterMessages.push({
@@ -210,7 +238,7 @@ export default class JavaScriptScanner {
               return 'module';
             }
           }
-        } else {
+        } else if (child) {
           return this._getSourceType(child);
         }
       }
@@ -220,10 +248,14 @@ export default class JavaScriptScanner {
   }
 
   /*
-    Analyze the source-code by by parsing the source code manually and
-    check for import/export syntax errors.
+    Analyze the source-code by naively parsing the source code manually and
+    checking for module syntax errors in order to determine the source type of
+    the file.
 
-    This returns `script` or `module`.
+    This function returns an object with the source type (`script` or `module`)
+    and a non-null parsing error object when parsing has failed with the default
+    source type. The parsing error object contains the `error` message and the
+    source `type`.
   */
   detectSourceType(filename) {
     // Default options taken from eslint/lib/linter:parse
@@ -233,15 +265,32 @@ export default class JavaScriptScanner {
       ecmaVersion: ECMA_VERSION,
     };
 
-    let sourceType = 'module';
+    const detected = {
+      sourceType: 'module',
+      parsingError: null,
+    };
 
     try {
       const ast = espree.parse(this.code, parserOptions);
-      sourceType = this._getSourceType(ast);
+      detected.sourceType = this._getSourceType(ast);
     } catch (exc) {
-      sourceType = 'script';
+      const line = exc.lineNumber || '(unknown)';
+      const column = exc.column || '(unknown)';
+      let error = `${exc.message} at line: ${line} and column: ${column}`;
+
+      // When there is no line/column, it likely means something went wrong in
+      // our code (`_getSourceType()`) and we should know about it so we append
+      // a comment to hopefully get new bug reports.
+      if (!exc.lineNumber || !exc.column) {
+        error = oneLine`${error}. This looks like a bug in addons-linter,
+          please open a new issue:
+          https://github.com/mozilla/addons-linter/issues`;
+      }
+
+      detected.sourceType = 'script';
+      detected.parsingError = { type: parserOptions.sourceType, error };
     }
 
-    return sourceType;
+    return detected;
   }
 }
