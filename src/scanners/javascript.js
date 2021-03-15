@@ -5,12 +5,11 @@ import ESLint from 'eslint';
 import { oneLine } from 'common-tags';
 import espree from 'espree';
 import vk from 'eslint-visitor-keys';
+import { ECMA_VERSION } from 'addons-scanner-utils/dist/const';
 
 import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
 import * as messages from 'messages';
 import { ensureFilenameExists } from 'utils';
-
-const ECMA_VERSION = 2021;
 
 const IGNORE_FILE = 'addons-linter.eslintignore';
 
