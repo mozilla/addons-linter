@@ -47,7 +47,7 @@ async function getStreamImageSize(stream) {
     try {
       return getImageSize(Buffer.concat(chunks));
     } catch (error) {
-      /* Not ready yet */
+      /* The size information isn't available yet */
     }
   }
 
