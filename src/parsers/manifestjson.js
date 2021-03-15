@@ -4,7 +4,7 @@ import { readdirSync, existsSync, statSync } from 'fs';
 
 import RJSON from 'relaxed-json';
 import { oneLine } from 'common-tags';
-import probeImageSize from 'probe-image-size';
+import getImageSize from 'image-size';
 import upath from 'upath';
 import bcd from '@mdn/browser-compat-data';
 
@@ -23,7 +23,7 @@ import {
   IMAGE_FILE_EXTENSIONS,
   LOCALES_DIRECTORY,
   MESSAGES_JSON,
-  MIME_TO_FILE_EXTENSIONS,
+  FILE_EXTENSIONS_TO_MIME,
   STATIC_THEME_IMAGE_MIMES,
   RESTRICTED_HOMEPAGE_URLS,
 } from 'const';
@@ -40,6 +40,20 @@ import {
 } from 'utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
+async function getStreamImageSize(stream) {
+  const chunks = [];
+  for await (const chunk of stream) {
+    chunks.push(chunk);
+    try {
+      return getImageSize(Buffer.concat(chunks));
+    } catch (error) {
+      /* The size information isn't available yet */
+    }
+  }
+
+  return getImageSize(Buffer.concat(chunks));
+}
+
 async function getImageMetadata(io, iconPath) {
   // Get a non-utf8 input stream by setting encoding to null.
   let encoding = null;
@@ -48,8 +62,15 @@ async function getImageMetadata(io, iconPath) {
     encoding = 'utf-8';
   }
 
-  const data = await io.getFileAsStream(iconPath, { encoding });
-  return probeImageSize(data);
+  const fileStream = await io.getFileAsStream(iconPath, { encoding });
+
+  const data = await getStreamImageSize(fileStream);
+
+  return {
+    width: data.width,
+    height: data.height,
+    mime: FILE_EXTENSIONS_TO_MIME[data.type],
+  };
 }
 
 function getNormalizedExtension(_path) {
@@ -663,7 +684,7 @@ export default class ManifestJSONParser extends JSONParser {
           })
         );
         this.isValid = false;
-      } else if (!MIME_TO_FILE_EXTENSIONS[info.mime].includes(ext)) {
+      } else if (FILE_EXTENSIONS_TO_MIME[ext] !== info.mime) {
         this.collector.addWarning(
           messages.manifestThemeImageMimeMismatch({
             path: _path,
