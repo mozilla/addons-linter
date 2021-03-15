@@ -7,10 +7,10 @@
     "addons-linter": "bin/addons-linter"
   },
   "engines": {
-    "node": ">=10.13"
+    "node": ">=12.21.0"
   },
   "browserslist": [
-    "node >=10.13"
+    "node >=12.21.0"
   ],
   "scripts": {
     "build": "webpack --bail --stats-error-details true --color --config webpack.config.js",
