@@ -5,6 +5,10 @@ let filePath;
 const fs = require('fs');
 const path = require('path');
 
+// @babel/register has to be required here because mixing commonjs and
+// ESM modules as currently being done from this script isn't something
+// that nodejs native ESM module loading does actually support.
+require('@babel/register');
 const schemaImport = require('../src/schema/firefox-schemas-import');
 
 const firefoxDir = 'tmp/firefox';
