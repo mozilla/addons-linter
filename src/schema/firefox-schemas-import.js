@@ -581,36 +581,50 @@ inner.isBrowserSchema = (_path) => {
 // This method is used automatically when we import the schema files from
 // a local mozilla-central working tree instead of from a zipped archive
 // (e.g. to evaluate impacts of changes to the schema format while they are still
-// in work and not landed yet). 
+// in work and not landed yet).
 async function fetchSchemasFromDir({ inputPath, outputPath }) {
-  const toolkitSchemasBaseDir = 
-    path.join(inputPath, 'toolkit', 'components', 'extensions', 'schemas');
-  const browserSchemasBaseDir = 
-    path.join(inputPath, 'browser', 'components', 'extensions', 'schemas');
+  const toolkitSchemasBaseDir = path.join(
+    inputPath,
+    'toolkit',
+    'components',
+    'extensions',
+    'schemas'
+  );
+  const browserSchemasBaseDir = path.join(
+    inputPath,
+    'browser',
+    'components',
+    'extensions',
+    'schemas'
+  );
 
-  const promiseLoadSchemaFrom = (baseDir) => new Promise((resolve, reject) => {
-    fs.readdir(baseDir, { encoding: 'utf-8' }, (err, files) => {
-      if (err) { 
-        reject(err);
-      } else {
-        resolve(files.filter(fp => fp.endsWith('.json'))
-          .map(fp => path.join(baseDir, fp)));
-      }
+  const promiseLoadSchemaFrom = (baseDir) =>
+    new Promise((resolve, reject) => {
+      fs.readdir(baseDir, { encoding: 'utf-8' }, (err, files) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(
+            files
+              .filter((fp) => fp.endsWith('.json'))
+              .map((fp) => path.join(baseDir, fp))
+          );
+        }
+      });
     });
-  });
 
   return Promise.all([
     promiseLoadSchemaFrom(toolkitSchemasBaseDir),
     promiseLoadSchemaFrom(browserSchemasBaseDir),
-  ]).then(results => {
+  ]).then((results) => {
     const allFiles = results.flat();
-    const writeStreamsPromises = allFiles.map(filePath => {
+    const writeStreamsPromises = allFiles.map((filePath) => {
       const outFilePath = path.join(outputPath, path.basename(filePath));
       const destFileStream = fs.createWriteStream(outFilePath);
       const readStream = fs.createReadStream(filePath);
       readStream.pipe(destFileStream);
       // Ensure we're closing all the creted write streams before resolving.
-      return new Promise((resolve) => destFileStream.on('close', resolve))
+      return new Promise((resolve) => destFileStream.on('close', resolve));
     });
     return Promise.all(writeStreamsPromises);
   });
