@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-11-27 04:11+0000\n"
+"PO-Revision-Date: 2021-03-20 04:53+0000\n"
 "Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
@@ -80,7 +80,7 @@ msgstr "API này chưa được Firefox triển khai."
 
 #: src/messages/javascript.js:14
 msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+msgstr "addEventListener` đã được gọi với tham số thứ tư là True."
 
 #: src/messages/javascript.js:166
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -192,7 +192,7 @@ msgstr "Tiện ích Firefox không được phép chạy các công cụ khai th
 
 #: src/messages/layout.js:89
 msgid "Reserved filename found."
-msgstr ""
+msgstr "Đã tìm thấy tên tập tin dành riêng."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
