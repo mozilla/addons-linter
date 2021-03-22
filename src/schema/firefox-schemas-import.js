@@ -617,7 +617,7 @@ async function fetchSchemasFromDir({ inputPath, outputPath }) {
       const destFileStream = fs.createWriteStream(outFilePath);
       const readStream = fs.createReadStream(filePath);
       readStream.pipe(destFileStream);
-      // Ensure we're closing all the creted write streams before resolving.
+      // Ensure we're closing all the created write streams before resolving.
       return new Promise((resolve) => destFileStream.on('close', resolve));
     });
     return Promise.all(writeStreamsPromises);
