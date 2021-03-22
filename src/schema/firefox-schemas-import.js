@@ -599,19 +599,9 @@ async function fetchSchemasFromDir({ inputPath, outputPath }) {
   );
 
   const promiseLoadSchemaFrom = (baseDir) =>
-    new Promise((resolve, reject) => {
-      fs.readdir(baseDir, { encoding: 'utf-8' }, (err, files) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(
-            files
-              .filter((fp) => fp.endsWith('.json'))
-              .map((fp) => path.join(baseDir, fp))
-          );
-        }
-      });
-    });
+    fs.promises.readdir(baseDir, { encoding: 'utf-8' }).then((files) => 
+      files.filter((fp) => fp.endsWith('.json'))
+           .map((fp) => path.join(baseDir, fp)));
 
   return Promise.all([
     promiseLoadSchemaFrom(toolkitSchemasBaseDir),
