@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2021-02-26 13:40+0000\n"
+"PO-Revision-Date: 2021-03-24 13:13+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -428,7 +428,7 @@ msgstr "manifest.json లోని \"manifest_version\" చెల్లుబా
 
 #: src/messages/manifestjson.js:440
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "పేర్కొన్న కనిష్ట Firefox వెర్షనులో మానిఫెస్ట్ కీ తోడ్పాటు లేదు"
 
 #: src/messages/manifestjson.js:46
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -436,11 +436,11 @@ msgstr "మరింత సమాచారం కోసం https://mzl.la/20PenX
 
 #: src/messages/manifestjson.js:462
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "పేర్కొన్న కనీస Firefox వెర్షనులో అనుమతికి తోడ్పాటు లేదు"
 
 #: src/messages/manifestjson.js:484
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "పేర్కొన్న ఆండ్రాయిడ్ కొరకు Firefox కనిష్ట వెర్షనులో మానిఫెస్ట్ కీ తోడ్పాటు లేదు"
 
 #: src/messages/manifestjson.js:506
 msgid "Permission not supported by the specified minimum Firefox for Android version"
