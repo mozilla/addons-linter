@@ -67,7 +67,7 @@
     "pino": "6.11.2",
     "postcss": "8.2.8",
     "relaxed-json": "1.0.3",
-    "semver": "7.3.4",
+    "semver": "7.3.5",
     "source-map-support": "0.5.19",
     "tosource": "1.0.0",
     "upath": "2.0.1",
