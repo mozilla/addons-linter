@@ -238,11 +238,16 @@ describe('Linter', () => {
     const getFileSpy = sinon.spy(addonLinter, 'scanFile');
 
     await addonLinter.scan();
-    sinon.assert.callOrder(
-      getFileSpy.withArgs('manifest.json'),
-      getFileSpy.withArgs('subdir/test.js'),
-      getFileSpy.withArgs('subdir/test2.js')
-    );
+
+    // There is no guarantee that test.js and test2.js will always
+    // be scanned in the same order (the order will depend from the
+    // order of the files returned by the getFiles method from the
+    // IOBase subclass, part of the addons-scanner-utils) and asserting
+    // a specific calls order here was making this test to fail
+    // intermittently.
+    sinon.assert.calledWith(getFileSpy, 'manifest.json');
+    sinon.assert.calledWith(getFileSpy, 'subdir/test.js');
+    sinon.assert.calledWith(getFileSpy, 'subdir/test2.js');
   });
 
   it('should raise an error if selected file are not found', async () => {
