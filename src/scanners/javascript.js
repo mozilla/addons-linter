@@ -271,7 +271,9 @@ export default class JavaScriptScanner {
 
     try {
       const ast = espree.parse(this.code, parserOptions);
-      detected.sourceType = this._getSourceType(ast);
+      detected.sourceType = filename.endsWith('.mjs')
+        ? 'module'
+        : this._getSourceType(ast);
     } catch (exc) {
       const line = exc.lineNumber || '(unknown)';
       const column = exc.column || '(unknown)';

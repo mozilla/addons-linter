@@ -170,6 +170,15 @@ describe('JavaScript Scanner', () => {
     expect(addonLinter.collector.warnings.length).toEqual(0);
   });
 
+  it('should parse as module .mjs files', async () => {
+    const code = 'const url = import.meta.url;';
+
+    const jsScanner = new JavaScriptScanner(code, 'code.mjs');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages).toEqual([]);
+  });
+
   it('should support optional catch binding', async () => {
     const code = oneLine`
       try {} catch {}
