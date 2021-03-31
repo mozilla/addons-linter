@@ -71,9 +71,7 @@
             "usb",
             "wifi",
             "wimax",
-            "2g",
-            "3g",
-            "4g"
+            "mobile"
           ],
           "description": "If known, the type of network connection that is avialable."
         },

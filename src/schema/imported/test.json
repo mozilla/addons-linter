@@ -222,8 +222,7 @@
               "$ref": "#/types/ExpectedError"
             },
             {
-              "name": "expectedError",
-              "optional": true
+              "name": "expectedError"
             }
           ]
         },
@@ -248,8 +247,7 @@
               "$ref": "#/types/ExpectedError"
             },
             {
-              "name": "expectedError",
-              "optional": true
+              "name": "expectedError"
             }
           ]
         },
