@@ -51,7 +51,7 @@
           "$ref": "types#/types/Setting"
         },
         {
-          "description": "This boolean setting controls whether the FTP protocol is enabled."
+          "description": "Returns whether the FTP protocol is enabled. Read-only."
         }
       ]
     },
