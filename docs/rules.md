@@ -100,7 +100,8 @@ Rules are sorted by severity.
 | `MANIFEST_FIELD_REQUIRED`                               | error    | A required field is missing                                                                     |
 | `MANIFEST_FIELD_INVALID`                                | error    | A field is invalid                                                                              |
 | `MANIFEST_FIELD_DEPRECATED`                             | error    | A field is deprecated                                                                           |
-| `MANIFEST_FIELD_UNSUPPORTED`                            | error    | A manifest field is not supported                                                               |
+| `MANIFEST_FIELD_UNSUPPORTED`                            | error    | A manifest field is not supported (or not supported for the extension manifest_version)         |
+| `MANIFEST_PERMISSION_UNSUPPORTED`                       | error    | A manifest permission is not supported for the extension manifest_version                       |
 | `MANIFEST_BAD_PERMISSION`                               | error    | Bad permission                                                                                  |
 | `MANIFEST_BAD_OPTIONAL_PERMISSION`                      | error    | Bad optional permission                                                                         |
 | `JSON_BLOCK_COMMENTS`                                   | error    | Block Comments are not allowed in JSON                                                          |
