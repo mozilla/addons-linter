@@ -126,6 +126,15 @@ export const UNSUPPORTED_API = {
   description: i18n._('This API has not been implemented by Firefox.'),
 };
 
+export const REMOVED_MV2_API = {
+  code: 'UNSUPPORTED_API',
+  message: null,
+  messageFormat: i18n._(
+    '"{{api}}" has been removed in Manifest Version 3 (`manifest_version` property)'
+  ),
+  description: null,
+};
+
 export const DEPRECATED_API = {
   code: 'DEPRECATED_API',
   message: null,
