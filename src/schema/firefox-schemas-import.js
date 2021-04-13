@@ -299,12 +299,55 @@ function rewriteExtendRefs(definition, namespace, types) {
   return definition;
 }
 
+// This method does propagate a top level supported manifest version
+// range to the type definition properties (needed to make sure the
+// keywords min/max_manifest_version are going to be triggered while
+// validating the extended manifest definition properties)
+//
+// NOTE: we only need this as part of the extended manifest types
+// part of the API namespace schema files.
+function propagateManifestVersionRestrictions({
+  definition,
+  max_manifest_version,
+  min_manifest_version,
+}) {
+  if (min_manifest_version == null && max_manifest_version == null) {
+    return;
+  }
+  for (const prop of Object.values(definition.properties || {})) {
+    let target = prop;
+    // a property using $ref has to be rewritten into an allOf
+    // form to be valid from a JSONSchema perspective (adding any
+    // other prop would make $ref to be ignored):
+    //
+    //   {
+    //     allOf: [
+    //       { $ref: '...' },
+    //       {min/max_manifest_version}
+    //     ]
+    //   }
+    //
+    if ('$ref' in prop) {
+      target = {};
+      prop.allOf = [{ $ref: prop.$ref }, target];
+      delete prop.$ref;
+    }
+    if (max_manifest_version != null && target.max_manifest_version == null) {
+      target.max_manifest_version = max_manifest_version;
+    }
+    if (min_manifest_version != null && target.min_manifest_version == null) {
+      target.min_manifest_version = min_manifest_version;
+    }
+  }
+}
+
 export function rewriteExtend(schemas, schemaId) {
   const definitions = {};
   const refs = {};
   const types = {};
   schemas.forEach((extendSchema) => {
     const extendId = extendSchema.namespace;
+    const { max_manifest_version, min_manifest_version } = extendSchema;
     const extendDefinitions = {};
     const extendTypes = {};
     (extendSchema.types || []).forEach((type) => {
@@ -328,6 +371,18 @@ export function rewriteExtend(schemas, schemaId) {
     Object.keys(extendDefinitions).forEach((id) => {
       // Update $refs to point to the right namespace.
       const definition = extendDefinitions[id];
+      if (extendId === 'manifest') {
+        // if the definition is extending the manifest types, we have to
+        // propagate the min/max_manifest_version keyword to the definitions
+        // attributes (which make sure we will collect validation errors if
+        // the manifest property is part of an API namespace unsupported on
+        // the addon manifest version.
+        propagateManifestVersionRestrictions({
+          definition,
+          max_manifest_version,
+          min_manifest_version,
+        });
+      }
       definitions[id] = rewriteExtendRefs(definition, extendId, extendTypes);
     });
   });
@@ -441,6 +496,7 @@ inner.normalizeSchema = (schemas, file) => {
     extendSchemas = filteredSchemas.slice(0, filteredSchemas.length - 1);
     primarySchema = filteredSchemas[filteredSchemas.length - 1];
   }
+
   const { namespace, types, ...rest } = primarySchema;
   const { types: extendTypes, ...extendRest } = rewriteExtend(
     extendSchemas,

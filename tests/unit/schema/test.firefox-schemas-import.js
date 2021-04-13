@@ -1445,4 +1445,151 @@ describe('firefox schema import', () => {
       });
     });
   });
+
+  describe('propagateManifestVersionRestrictions', () => {
+    const testCases = [
+      {
+        testName: 'propagates max_manifest_version',
+        schemaId: 'page_action',
+        schemaInput: [
+          {
+            namespace: 'manifest',
+            max_manifest_version: 2,
+            types: [
+              {
+                $extend: 'WebExtensionManifest',
+                properties: {
+                  page_action: {
+                    type: 'object',
+                  },
+                },
+              },
+            ],
+          },
+        ],
+        expectedOutput: {
+          definitions: {
+            WebExtensionManifest: {
+              properties: {
+                page_action: {
+                  type: 'object',
+                  max_manifest_version: 2,
+                },
+              },
+            },
+          },
+        },
+      },
+      {
+        testName: 'propagates min_manifest_version',
+        schemaId: 'action',
+        schemaInput: [
+          {
+            namespace: 'manifest',
+            min_manifest_version: 3,
+            types: [
+              {
+                $extend: 'WebExtensionManifest',
+                properties: {
+                  action: {
+                    type: 'object',
+                  },
+                },
+              },
+            ],
+          },
+        ],
+        expectedOutput: {
+          definitions: {
+            WebExtensionManifest: {
+              properties: {
+                action: {
+                  type: 'object',
+                  min_manifest_version: 3,
+                },
+              },
+            },
+          },
+        },
+      },
+      {
+        testName: 'propagates min_manifest_version into a $ref property',
+        schemaId: 'fakeApi',
+        schemaInput: [
+          {
+            namespace: 'manifest',
+            min_manifest_version: 3,
+            types: [
+              {
+                $extend: 'WebExtensionManifest',
+                properties: {
+                  manifestPropWithRef: {
+                    $ref: 'SomeReferencedType',
+                  },
+                },
+              },
+            ],
+          },
+        ],
+        expectedOutput: {
+          definitions: {
+            WebExtensionManifest: {
+              properties: {
+                manifestPropWithRef: {
+                  allOf: [
+                    {
+                      $ref: 'manifest#/types/SomeReferencedType',
+                    },
+                    {
+                      min_manifest_version: 3,
+                    },
+                  ],
+                },
+              },
+            },
+          },
+        },
+      },
+      {
+        testName: 'does only propagates for api extended manifest definitions',
+        schemaId: 'fakeApi',
+        schemaInput: [
+          {
+            namespace: 'fakeApi',
+            min_manifest_version: 3,
+            types: [
+              {
+                $extend: 'SomeOtherType',
+                properties: {
+                  propName: { type: 'object' },
+                },
+              },
+            ],
+          },
+        ],
+        expectedOutput: {
+          definitions: {
+            SomeOtherType: {
+              properties: {
+                propName: { type: 'object' },
+              },
+            },
+          },
+        },
+      },
+    ];
+
+    it.each(
+      testCases.map(({ testName, schemaId, schemaInput, expectedOutput }) => [
+        testName,
+        schemaId,
+        schemaInput,
+        expectedOutput,
+      ])
+    )('%s', (testName, schemaId, schemaInput, expectedOutput) => {
+      expect(rewriteExtend(schemaInput, schemaId)).toEqual(
+        expect.objectContaining(expectedOutput)
+      );
+    });
+  });
 });
