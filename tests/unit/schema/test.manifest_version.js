@@ -20,6 +20,7 @@ describe('/manifest_version', () => {
     manifest.manifest_version = 3;
     validateAddon(manifest);
     expect(validateAddon.errors[0].dataPath).toEqual('/manifest_version');
+    expect(validateAddon.errors[0].message).toEqual('should be <= 2');
     expect(validateAddon.errors.length).toEqual(1);
   });
 

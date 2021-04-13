@@ -73,7 +73,15 @@ export const LOCAL_PROTOCOLS = ['chrome:', 'resource:'];
 
 export const MANIFEST_JSON = 'manifest.json';
 
-export const VALID_MANIFEST_VERSION = 2;
+// The manifest_version value to use to complete the validation if an explicit one
+// was missing from the extension manifest.json (but we will still be collecting the
+// error for the missing manifest_version property, because it is mandatory).
+export const MANIFEST_VERSION_DEFAULT = 2;
+
+// Default min/max_manifest_version values used for schema definitions that do not
+// have an explicit one on their own.
+export const MANIFEST_VERSION_MIN = 2;
+export const MANIFEST_VERSION_MAX = 3;
 
 // This is the limit in megabytes of a file we will parse (eg. CSS, JS, etc.)
 // A singular CSS/JS file over 4MB seems bad and may actually be full of data
@@ -88,6 +96,7 @@ export const MAX_FILE_SIZE_TO_PARSE_MB = 4;
 export const HIDDEN_FILE_REGEX = /^__MACOSX\//;
 export const FLAGGED_FILE_REGEX = /thumbs\.db$|\.DS_Store$|\.orig$|\.old$|~$/i;
 export const ALREADY_SIGNED_REGEX = /^META-INF\/manifest\.mf/;
+export const PERMS_DATAPATH_REGEX = /^\/(permissions|optional_permissions)\/([\d+])/;
 
 export const RESERVED_FILENAMES = ['mozilla-recommendation.json'];
 

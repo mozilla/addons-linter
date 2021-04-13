@@ -42,6 +42,20 @@ const options = {
     type: 'boolean',
     default: false,
   },
+  'min-manifest-version': {
+    describe:
+      'Set a custom minimum allowed value for the manifest_version property',
+    type: 'number',
+    default: 2,
+    requiresArg: true,
+  },
+  'max-manifest-version': {
+    describe:
+      'Set a custom maximum allowed value for the manifest_version property',
+    type: 'number',
+    default: 2,
+    requiresArg: true,
+  },
   'scan-file': {
     alias: ['f'],
     describe: 'Scan a selected file',

@@ -263,8 +263,12 @@ export default class Linter {
       _log.info('Retrieving metadata from manifest.json');
       const json = await this.io.getFileAsString(constants.MANIFEST_JSON);
       const manifestParser = new ManifestJSONParser(json, this.collector, {
-        selfHosted: this.config.selfHosted,
         io: this.io,
+        selfHosted: this.config.selfHosted,
+        schemaValidatorOptions: {
+          minManifestVersion: this.config.minManifestVersion,
+          maxManifestVersion: this.config.maxManifestVersion,
+        },
       });
       await manifestParser.validateIcons();
       if (manifestParser.isStaticTheme) {

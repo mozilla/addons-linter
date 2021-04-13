@@ -1,7 +1,7 @@
 import { oneLine } from 'common-tags';
 
-import { i18n } from 'utils';
-import { MANIFEST_JSON } from 'const';
+import { i18n, errorParamsToUnsupportedVersionRange } from 'utils';
+import { MANIFEST_JSON, PERMS_DATAPATH_REGEX } from 'const';
 
 export const MANIFEST_FIELD_REQUIRED = {
   code: 'MANIFEST_FIELD_REQUIRED',
@@ -22,13 +22,40 @@ export const MANIFEST_FIELD_INVALID = {
 };
 
 export const MANIFEST_FIELD_UNSUPPORTED = 'MANIFEST_FIELD_UNSUPPORTED';
-export function manifestFieldUnsupported(fieldName) {
+export function manifestFieldUnsupported(fieldName, error) {
+  const versionRange = errorParamsToUnsupportedVersionRange(error.params);
+  const messageTmpl = versionRange
+    ? i18n._(oneLine`"%(fieldName)s" is in a format not supported in
+                     manifest versions %(versionRange)s.`)
+    : i18n._(oneLine`"%(fieldName)s" is in an unsupported format.`);
+  const message = i18n.sprintf(messageTmpl, { fieldName, versionRange });
+
   return {
-    code: 'MANIFEST_FIELD_UNSUPPORTED',
-    message: i18n._('Manifest field not supported.'),
-    description: i18n.sprintf(i18n._('"%(fieldName)s" is not supported.'), {
-      fieldName,
-    }),
+    code: MANIFEST_FIELD_UNSUPPORTED,
+    message,
+    description: message,
+    file: MANIFEST_JSON,
+  };
+}
+
+export const MANIFEST_PERMISSION_UNSUPPORTED =
+  'MANIFEST_PERMISSION_UNSUPPORTED';
+export function manifestPermissionUnsupported(permissionName, error) {
+  const versionRange = errorParamsToUnsupportedVersionRange(error.params);
+  const messageTmpl = versionRange
+    ? i18n._(oneLine`/%(fieldName)s: "%(permissionName)s" is not supported in
+                     manifest versions %(versionRange)s.`)
+    : i18n._(oneLine`/%(fieldName)s: "%(permissionName)s" is not supported.`);
+  const message = i18n.sprintf(messageTmpl, {
+    permissionName,
+    versionRange,
+    fieldName: error.dataPath.match(PERMS_DATAPATH_REGEX)[1],
+  });
+
+  return {
+    code: MANIFEST_PERMISSION_UNSUPPORTED,
+    message,
+    description: message,
     file: MANIFEST_JSON,
   };
 }

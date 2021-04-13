@@ -72,11 +72,13 @@ export default class Collector {
     if (message.dataPath) {
       const previousMessages = this.messagesAtDataPath(message.dataPath);
       if (message.file === 'manifest.json') {
-        return previousMessages.length > 0;
+        return previousMessages.some(
+          (prevMessage) => prevMessage.code === message.code
+        );
       }
-      return previousMessages.some((prevMessage) => {
-        return prevMessage.matches(message);
-      });
+      return previousMessages.some((prevMessage) =>
+        prevMessage.matches(message)
+      );
     }
     return false;
   }

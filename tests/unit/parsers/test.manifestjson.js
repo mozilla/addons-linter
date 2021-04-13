@@ -5,9 +5,10 @@ import bcd from '@mdn/browser-compat-data';
 
 import Linter from 'linter';
 import ManifestJSONParser from 'parsers/manifestjson';
-import { PACKAGE_EXTENSION, VALID_MANIFEST_VERSION } from 'const';
+import { MANIFEST_VERSION_DEFAULT, PACKAGE_EXTENSION } from 'const';
 import * as messages from 'messages';
 import { firstStableVersion } from 'utils';
+import { getDefaultConfigValue } from 'yargs-options';
 
 import {
   assertHasMatchingError,
@@ -213,7 +214,22 @@ describe('ManifestJSONParser', () => {
       );
       expect(manifestJSONParser.isValid).toEqual(true);
       const metadata = manifestJSONParser.getMetadata();
-      expect(metadata.manifestVersion).toEqual(VALID_MANIFEST_VERSION);
+      // Make sure it does match the version from the manifest json file.
+      expect(metadata.manifestVersion).toEqual(
+        JSON.parse(json).manifest_version
+      );
+      // Make sure it is >= than the default manifest version.
+      expect(metadata.manifestVersion).toBeGreaterThanOrEqual(
+        MANIFEST_VERSION_DEFAULT
+      );
+      // Make sure it is >= than the default min manifest version.
+      expect(metadata.manifestVersion).toBeGreaterThanOrEqual(
+        getDefaultConfigValue('min-manifest-version')
+      );
+      // Make sure it is <= than the default max manifest version.
+      expect(metadata.manifestVersion).toBeLessThanOrEqual(
+        getDefaultConfigValue('max-manifest-version')
+      );
     });
   });
 
@@ -384,6 +400,50 @@ describe('ManifestJSONParser', () => {
       expect(message.message).toEqual(
         'This theme LWT alias has been removed in Firefox 70.'
       );
+    });
+
+    describe('min/max_manifest_version', () => {
+      for (const manifestKey of [
+        'permissions',
+        'optional_permissions',
+        'another_manifest_field',
+      ]) {
+        it(`returns the expected error code for unsupported ${manifestKey}`, () => {
+          const addonLinter = new Linter({ _: ['bar'] });
+          const parser = new ManifestJSONParser(
+            validManifestJSON(),
+            addonLinter.collector
+          );
+
+          const isPermission = manifestKey.includes('permissions');
+          const errorObject = parser.errorLookup({
+            // Mimic the error reported by the min_manifest_version keyword
+            // (as defined in src/schema/validator.js)
+            keyword: 'min_manifest_version',
+            params: { min_manifest_version: 3 },
+            // The following are properties added by ajv to the ones
+            // explicitly reported by the keyword validate function.
+            data: isPermission ? 'perm-value' : 'unused-field-value',
+            dataPath: manifestKey.includes('permissions')
+              ? `/${manifestKey}/0`
+              : `/${manifestKey}`,
+          });
+
+          const unsupportedRange = 'supported in manifest versions < 3';
+          const message = isPermission
+            ? `/${manifestKey}: "${'perm-value'}" is not ${unsupportedRange}.`
+            : `"/${manifestKey}" is in a format not ${unsupportedRange}.`;
+          const code = isPermission
+            ? messages.MANIFEST_PERMISSION_UNSUPPORTED
+            : messages.MANIFEST_FIELD_UNSUPPORTED;
+
+          expect(errorObject).toMatchObject({
+            message,
+            description: message,
+            code,
+          });
+        });
+      }
     });
   });
 
@@ -889,6 +949,7 @@ describe('ManifestJSONParser', () => {
         };
 
         const jsonV3 = validManifestJSON({
+          manifest_version: 3,
           content_security_policy: contentSecurityPolicy,
           applications: {
             // The new content_security_policy syntax is only supported
@@ -899,7 +960,8 @@ describe('ManifestJSONParser', () => {
 
         const manifestV3JSONParser = new ManifestJSONParser(
           jsonV3,
-          addonLinter.collector
+          addonLinter.collector,
+          { schemaValidatorOptions: { maxManifestVersion: 3 } }
         );
 
         expect(manifestV3JSONParser.isValid).toEqual(true);
@@ -958,6 +1020,7 @@ describe('ManifestJSONParser', () => {
 
         // Manifest v3 format.
         const jsonV3 = validManifestJSON({
+          manifest_version: 3,
           content_security_policy: {
             extension_pages: validValue,
             content_scripts: validValue,
@@ -972,7 +1035,8 @@ describe('ManifestJSONParser', () => {
 
         const manifestV3JSONParser = new ManifestJSONParser(
           jsonV3,
-          addonLinter.collector
+          addonLinter.collector,
+          { schemaValidatorOptions: { maxManifestVersion: 3 } }
         );
 
         expect(manifestV3JSONParser.isValid).toEqual(true);
@@ -1014,6 +1078,7 @@ describe('ManifestJSONParser', () => {
       };
 
       const jsonV3 = validManifestJSON({
+        manifest_version: 3,
         content_security_policy: contentSecurityPolicy,
         applications: {
           // The new content_security_policy syntax is only supported
@@ -1024,7 +1089,8 @@ describe('ManifestJSONParser', () => {
 
       const manifestV3JSONParser = new ManifestJSONParser(
         jsonV3,
-        addonLinter.collector
+        addonLinter.collector,
+        { schemaValidatorOptions: { maxManifestVersion: 3 } }
       );
 
       expect(manifestV3JSONParser.isValid).toEqual(true);
@@ -1881,15 +1947,39 @@ describe('ManifestJSONParser', () => {
       const manifestJSONParser = new ManifestJSONParser(
         json,
         linter.collector,
-        { io: { files: {} } }
+        { io: { files: { 'background_worker.js': '' } } }
       );
 
       expect(manifestJSONParser.isValid).toBeFalsy();
-      assertHasMatchingError(linter.collector.errors, {
-        code: messages.MANIFEST_FIELD_UNSUPPORTED,
-        message: 'Manifest field not supported.',
-        description: '"background.service_worker" is not supported.',
+      expect(linter.collector.errors).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            dataPath: '/background',
+            code: 'MANIFEST_FIELD_UNSUPPORTED',
+            message: expect.stringMatching(
+              /"\/background" is in a format not supported in manifest versions < 3/
+            ),
+          }),
+        ])
+      );
+    });
+
+    it('does not error if background.service_worker is used with manifest_version: 3', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 3,
+        background: { service_worker: 'background_worker.js' },
       });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        linter.collector,
+        {
+          io: { files: { 'background_worker.js': '' } },
+          schemaValidatorOptions: { maxManifestVersion: 3 },
+        }
+      );
+
+      expect(manifestJSONParser.isValid).toBeTruthy();
     });
   });
 

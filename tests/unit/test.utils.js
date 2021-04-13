@@ -2,9 +2,12 @@ import { oneLine } from 'common-tags';
 import bcd from '@mdn/browser-compat-data';
 
 import {
+  basicCompatVersionComparison,
   buildI18nObject,
   checkMinNodeVersion,
   ensureFilenameExists,
+  errorParamsToUnsupportedVersionRange,
+  firefoxStrictMinVersion,
   getNodeReference,
   getPackageTypeAsString,
   getRootExpression,
@@ -12,12 +15,10 @@ import {
   i18n,
   ignorePrivateFunctions,
   isBrowserNamespace,
+  isCompatible,
   isLocalUrl,
   normalizePath,
   parseCspPolicy,
-  firefoxStrictMinVersion,
-  basicCompatVersionComparison,
-  isCompatible,
 } from 'utils';
 
 describe('getRootExpression()', () => {
@@ -688,4 +689,28 @@ describe('isCompatible', () => {
   it('should report runtime.getURL as incompatible for Firefox 44', () => {
     expect(isCompatible(bcd, 'runtime.getURL', 44, 'firefox')).toBe(false);
   });
+});
+
+describe('errorParamsToUnsupportedVersionRange', () => {
+  it.each([
+    ['< 3', { min_manifest_version: 3 }],
+    ['> 2', { max_manifest_version: 2 }],
+    [
+      // This would not be actually used anywhere because each
+      // schema validation would be only including one of them
+      // and generate separate validation errors.
+      '< 2, > 4',
+      { min_manifest_version: 2, max_manifest_version: 4 },
+    ],
+    ['', {}],
+    ['', null],
+    ['', undefined],
+  ])(
+    'returns "%s" as version range string on error params %p',
+    (expectedString, errorParams) => {
+      expect(errorParamsToUnsupportedVersionRange(errorParams)).toEqual(
+        expectedString
+      );
+    }
+  );
 });
