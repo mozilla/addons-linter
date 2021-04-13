@@ -127,7 +127,8 @@
                       "required": [
                         "page"
                       ],
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "max_manifest_version": 2
                     },
                     {
                       "type": "object",
@@ -144,7 +145,8 @@
                       },
                       "required": [
                         "scripts"
-                      ]
+                      ],
+                      "max_manifest_version": 2
                     },
                     {
                       "type": "object",
@@ -156,7 +158,8 @@
                       "postprocess": "requireBackgroundServiceWorkerEnabled",
                       "required": [
                         "service_worker"
-                      ]
+                      ],
+                      "min_manifest_version": 3
                     }
                   ]
                 },

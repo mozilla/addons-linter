@@ -13,6 +13,20 @@ import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
 const SOURCE_MAP_RE = new RegExp(/\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/);
 
+export function errorParamsToUnsupportedVersionRange(errorParams) {
+  const { min_manifest_version, max_manifest_version } = errorParams || {};
+  if (min_manifest_version != null || max_manifest_version != null) {
+    return [
+      min_manifest_version ? `< ${min_manifest_version}` : undefined,
+      max_manifest_version ? `> ${max_manifest_version}` : undefined,
+    ]
+      .filter((e) => e !== undefined)
+      .join(', ');
+  }
+
+  return '';
+}
+
 export function normalizePath(iconPath) {
   // Convert the icon path to a URL so we can strip any fragments and resolve
   // . and .. automatically. We need an absolute URL to use as a base so we're
@@ -438,8 +452,9 @@ export function createCompatibilityRule(
   bcd,
   hasBrowserApi
 ) {
+  const { addonMetadata } = context.settings;
   const minVersion =
-    context.settings.addonMetadata &&
+    addonMetadata &&
     firefoxStrictMinVersion({
       applications: {
         gecko: {
@@ -459,12 +474,12 @@ export function createCompatibilityRule(
           const property = node.property.name;
           const api = `${namespace}.${property}`;
           if (
-            hasBrowserApi(namespace, property) &&
+            hasBrowserApi(namespace, property, addonMetadata) &&
             !isCompatible(bcd, api, minVersion, application)
           ) {
             context.report(node, message.messageFormat, {
               api,
-              minVersion: context.settings.addonMetadata.firefoxMinVersion,
+              minVersion: addonMetadata.firefoxMinVersion,
             });
           }
         }
