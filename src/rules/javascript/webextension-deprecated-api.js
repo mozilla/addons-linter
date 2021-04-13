@@ -15,17 +15,16 @@ const rule = {
           const namespace = node.object.property.name;
           const property = node.property.name;
           const api = `${namespace}.${property}`;
+          const { addonMetadata } = context.settings;
 
           if (
-            hasBrowserApi(namespace, property) &&
-            isDeprecatedApi(namespace, property)
+            hasBrowserApi(namespace, property, addonMetadata) &&
+            isDeprecatedApi(namespace, property, addonMetadata)
           ) {
             const msgId = DEPRECATED_JAVASCRIPT_APIS[api];
-
             const messageObject =
               // eslint-disable-next-line import/namespace
               (msgId && messages[msgId]) || messages.DEPRECATED_API;
-
             context.report({
               node,
               message: messageObject.messageFormat,
