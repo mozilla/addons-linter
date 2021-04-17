@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2021-02-16 02:52+0000\n"
+"PO-Revision-Date: 2021-04-17 03:06+0000\n"
 "Last-Translator: Enol <enolp@softastur.org>\n"
 "Language-Team: none\n"
 "Language: ast\n"
@@ -316,11 +316,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:256
 msgid "Forbidden content found in add-on."
-msgstr "Atopóse conteníu prohibíu nel complementu."
+msgstr "Nel complementu atopóse conteníu que ta prohibíu."
 
 #: src/messages/manifestjson.js:257
 msgid "This add-on contains forbidden content."
-msgstr "Esti complementu contién conteníu prohibíu."
+msgstr "Esti complementu inclúi conteníu que ta prohibíu."
 
 #: src/messages/manifestjson.js:26
 msgid "The permission type is unsupported."
@@ -332,7 +332,7 @@ msgstr "Los iconos han ser cuadraos."
 
 #: src/messages/manifestjson.js:266
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "L'iconu de «%(path)s» ha ser cuadráu."
 
 #: src/messages/manifestjson.js:277
 msgid "The size of the icon does not match the manifest."
@@ -352,7 +352,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
+msgstr "Mira https://mzl.la/2T11Lkc (documentación de MDN) pa más información."
 
 #: src/messages/manifestjson.js:319
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
@@ -380,7 +380,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:35
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "Mira https://mzl.la/1R1n1t0 (documentación de MDN) pa más información."
 
 #: src/messages/manifestjson.js:359
 msgid "Theme image file has an unsupported mime type"
@@ -400,11 +400,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "A «default_locale» fálten-y traducciones."
 
 #: src/messages/manifestjson.js:402
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "Falta «default_locale» mas «_locales» esiste."
 
 #: src/messages/manifestjson.js:411
 msgid "Unsupported image extension"
