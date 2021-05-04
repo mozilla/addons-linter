@@ -2,6 +2,7 @@ import { oneLine } from 'common-tags';
 import bcd from '@mdn/browser-compat-data';
 
 import {
+  AddonsLinterUserError,
   basicCompatVersionComparison,
   buildI18nObject,
   checkMinNodeVersion,
@@ -713,4 +714,22 @@ describe('errorParamsToUnsupportedVersionRange', () => {
       );
     }
   );
+});
+
+describe('AddonsLinterUserError', () => {
+  it('should be an instance of Error', () => {
+    const error = new AddonsLinterUserError();
+    expect(error instanceof Error).toStrictEqual(true);
+  });
+
+  it('should have name set to the expected error name', () => {
+    const error = new AddonsLinterUserError();
+    expect(error.name).toStrictEqual('AddonsLinterUserError');
+  });
+
+  it('should have message set to the expected string', () => {
+    const errorMessage = 'Expected Error Message';
+    const error = new AddonsLinterUserError(errorMessage);
+    expect(error.message).toStrictEqual(errorMessage);
+  });
 });

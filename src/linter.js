@@ -16,6 +16,7 @@ import {
   i18n,
   couldBeMinifiedCode,
   getLineAndColumnFromMatch,
+  AddonsLinterUserError,
 } from 'utils';
 import log from 'logger';
 import Collector from 'collector';
@@ -58,6 +59,20 @@ export default class Linter {
 
   get config() {
     return this._config;
+  }
+
+  validateConfig() {
+    const { minManifestVersion, maxManifestVersion } = this.config;
+    if (maxManifestVersion < minManifestVersion) {
+      throw new AddonsLinterUserError(
+        i18n._(oneLine`
+        Invalid manifest version range requested:
+        --min-manifest-version (currently set to ${minManifestVersion})
+        should not be greater than
+        --max-manifest-version (currently set to ${maxManifestVersion}).
+      `)
+      );
+    }
   }
 
   colorize(type) {
@@ -543,6 +558,11 @@ export default class Linter {
   }
 
   async run(deps = {}) {
+    // Validate the config options from a linter perspective (in addition to the
+    // yargs validation that already happened when the options are being parsed)
+    // and throws if there are invalid options.
+    this.validateConfig();
+
     if (this.config.metadata === true) {
       try {
         await this.extractMetadata(deps);

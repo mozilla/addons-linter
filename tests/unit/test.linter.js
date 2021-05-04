@@ -15,6 +15,7 @@ import FilenameScanner from 'scanners/filename';
 import JavaScriptScanner from 'scanners/javascript';
 import JSONScanner from 'scanners/json';
 import LangpackScanner from 'scanners/langpack';
+import { AddonsLinterUserError } from 'utils';
 
 import {
   fakeMessageData,
@@ -51,6 +52,26 @@ class FakeIOBase {
 }
 
 describe('Linter', () => {
+  describe('validateConfig', () => {
+    it('should throw on invalid manifest version range options', async () => {
+      const addonLinter = new Linter({
+        _: ['foo'],
+        minManifestVersion: 3,
+        maxManifestVersion: 2,
+      });
+
+      sinon.spy(addonLinter, 'validateConfig');
+
+      await expect(addonLinter.run()).rejects.toThrow(AddonsLinterUserError);
+      sinon.assert.calledOnce(addonLinter.validateConfig);
+
+      await expect(addonLinter.run()).rejects.toThrow(
+        /Invalid manifest version range requested/
+      );
+      sinon.assert.calledTwice(addonLinter.validateConfig);
+    });
+  });
+
   it('should detect an invalid file with ENOENT', async () => {
     const addonLinter = new Linter({ _: ['foo'] });
     addonLinter.handleError = sinon.stub();
