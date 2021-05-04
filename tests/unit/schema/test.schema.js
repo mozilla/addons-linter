@@ -3,6 +3,21 @@ import { validateAddon, getValidator } from 'schema/validator';
 import { getValidatorWithFakeSchema, validManifest } from './helpers';
 
 describe('getValidator', () => {
+  it('throws on invalid manifest version range options', () => {
+    expect(() => {
+      const validator = getValidator({
+        minManifestVersion: 3,
+        maxManifestVersion: 2,
+        // No need to cache this validator instance.
+        forceNewValidatorInstance: true,
+      });
+      // Trigger the validator instance initialization
+      // to ensure we hit the error on invalid manifest
+      // version range.
+      validator._lazyInit();
+    }).toThrow(/Invalid manifest version range requested:/);
+  });
+
   it('returns different instances on different options', () => {
     const validatorDefault = getValidator({});
     const validatorMinV2 = getValidator({ minManifestVersion: 2 });

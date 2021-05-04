@@ -255,6 +255,18 @@ export class SchemaValidator {
         maxManifestVersion == null
           ? getDefaultConfigValue('max-manifest-version')
           : maxManifestVersion;
+
+      // Make sure the version range is valid, if it is not:
+      // raise an explicit error.
+      if (maxManifestVersion < minManifestVersion) {
+        throw new Error(
+          `Invalid manifest version range requested: ${JSON.stringify({
+            maxManifestVersion,
+            minManifestVersion,
+          })}`
+        );
+      }
+
       schemaData = deepPatch(this.schemaObject, {
         types: {
           ManifestBase: {

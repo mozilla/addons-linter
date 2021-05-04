@@ -13,6 +13,21 @@ import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
 const SOURCE_MAP_RE = new RegExp(/\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/);
 
+// Represents an error condition related to a user error (e.g. an invalid
+// configuration option passed to the linter class, usually through the
+// command line arguments).
+//
+// In bin/addons-linter instances of this error are recognized through the
+// error name property and by default they will be logged on stderr as
+// plain error messages and the error stack trace omitted (unless explicitly
+// requested by passing --stack as an additional CLI options, useful for
+// debugging reasons).
+export class AddonsLinterUserError extends Error {
+  get name() {
+    return 'AddonsLinterUserError';
+  }
+}
+
 export function errorParamsToUnsupportedVersionRange(errorParams) {
   const { min_manifest_version, max_manifest_version } = errorParams || {};
   if (min_manifest_version != null || max_manifest_version != null) {
