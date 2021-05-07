@@ -284,7 +284,14 @@
               "$ref": "#/types/ThemeColor"
             },
             "toolbar_field_separator": {
-              "$ref": "#/types/ThemeColor"
+              "allOf": [
+                {
+                  "$ref": "#/types/ThemeColor"
+                },
+                {
+                  "deprecated": "This color property is ignored in Firefox >= 89."
+                }
+              ]
             },
             "toolbar_top_separator": {
               "$ref": "#/types/ThemeColor"
