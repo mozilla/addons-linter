@@ -2860,12 +2860,15 @@ describe('ManifestJSONParser', () => {
         const { support } = prop.__compat;
 
         if (usesArrayValueForFirefoxDesktopCompat.keys.includes(key)) {
+          // eslint-disable-next-line jest/no-conditional-expect
           expect(Array.isArray(support.firefox)).toEqual(true);
 
           support.firefox.forEach((entry) => {
+            // eslint-disable-next-line jest/no-conditional-expect
             expect(entry).toHaveProperty('version_added');
           });
         } else {
+          // eslint-disable-next-line jest/no-conditional-expect
           expect(support.firefox).toHaveProperty('version_added');
         }
 
@@ -2887,12 +2890,15 @@ describe('ManifestJSONParser', () => {
         const { support } = prop.__compat;
 
         if (usesArrayValueForFirefoxDesktopCompat.keys.includes(key)) {
+          // eslint-disable-next-line jest/no-conditional-expect
           expect(Array.isArray(support.firefox)).toEqual(true);
 
           support.firefox.forEach((entry) => {
+            // eslint-disable-next-line jest/no-conditional-expect
             expect(entry).toHaveProperty('version_added');
           });
         } else {
+          // eslint-disable-next-line jest/no-conditional-expect
           expect(support.firefox).toHaveProperty('version_added');
         }
 
@@ -2907,12 +2913,15 @@ describe('ManifestJSONParser', () => {
                 subKey
               )
             ) {
+              // eslint-disable-next-line jest/no-conditional-expect
               expect(Array.isArray(subSupport.firefox_android)).toEqual(true);
 
               subSupport.firefox_android.forEach((entry) => {
+                // eslint-disable-next-line jest/no-conditional-expect
                 expect(entry).toHaveProperty('version_added');
               });
             } else {
+              // eslint-disable-next-line jest/no-conditional-expect
               expect(subSupport.firefox_android).toHaveProperty(
                 'version_added'
               );
