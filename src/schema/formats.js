@@ -114,8 +114,10 @@ export function manifestShortcutKey(value) {
   // Please make sure to always update this function when doing a schema update
   // to pull in the most recent implementation to stay up-to-date with upstream.
 
-  const MEDIA_KEYS = /^(MediaNextTrack|MediaPlayPause|MediaPrevTrack|MediaStop)$/;
-  const BASIC_KEYS = /^([A-Z0-9]|Comma|Period|Home|End|PageUp|PageDown|Space|Insert|Delete|Up|Down|Left|Right)$/;
+  const MEDIA_KEYS =
+    /^(MediaNextTrack|MediaPlayPause|MediaPrevTrack|MediaStop)$/;
+  const BASIC_KEYS =
+    /^([A-Z0-9]|Comma|Period|Home|End|PageUp|PageDown|Space|Insert|Delete|Up|Down|Left|Right)$/;
   const FUNCTION_KEYS = /^(F[1-9]|F1[0-2])$/;
 
   if (MEDIA_KEYS.test(value.trim())) {

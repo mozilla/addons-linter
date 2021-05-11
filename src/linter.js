@@ -705,9 +705,8 @@ export default class Linter {
         const fileDataMatch = fileData.match(nameRegex);
 
         if (fileDataMatch) {
-          const { matchedLine, matchedColumn } = getLineAndColumnFromMatch(
-            fileDataMatch
-          );
+          const { matchedLine, matchedColumn } =
+            getLineAndColumnFromMatch(fileDataMatch);
 
           this.collector.addWarning({
             ...messages.COINMINER_USAGE_DETECTED,
@@ -722,9 +721,8 @@ export default class Linter {
         const match = fileData.match(codeRegex);
 
         if (match) {
-          const { matchedLine, matchedColumn } = getLineAndColumnFromMatch(
-            match
-          );
+          const { matchedLine, matchedColumn } =
+            getLineAndColumnFromMatch(match);
 
           this.collector.addWarning({
             ...messages.COINMINER_USAGE_DETECTED,

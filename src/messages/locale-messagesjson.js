@@ -13,7 +13,8 @@ export const NO_MESSAGE = {
 export const PREDEFINED_MESSAGE_NAME = {
   code: 'PREDEFINED_MESSAGE_NAME',
   message: i18n._('String name is reserved for a predefined message'),
-  description: i18n._(oneLine`String names starting with @@ get translated to built-in
+  description:
+    i18n._(oneLine`String names starting with @@ get translated to built-in
     constants (https://mzl.la/2BL9ZjE).`),
 };
 
@@ -40,6 +41,7 @@ export const INVALID_PLACEHOLDER_NAME = {
 export const NO_PLACEHOLDER_CONTENT = {
   code: 'NO_PLACEHOLDER_CONTENT',
   message: i18n._('Placeholder is missing the content property'),
-  description: i18n._(oneLine`A placeholder needs a content property defining the
+  description:
+    i18n._(oneLine`A placeholder needs a content property defining the
     replacement of it (https://mzl.la/2DT1MQd)`),
 };
