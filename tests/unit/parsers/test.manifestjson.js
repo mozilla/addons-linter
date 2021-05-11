@@ -160,7 +160,8 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(addonLinter.collector.errors, {
         code: messages.JSON_INVALID.code,
-        message: /"\/applications\/gecko\/id" should NOT be longer than 255 characters/,
+        message:
+          /"\/applications\/gecko\/id" should NOT be longer than 255 characters/,
       });
     });
 
@@ -2846,9 +2847,8 @@ describe('ManifestJSONParser', () => {
     };
 
     it('should provide the expected `browser_specific_settings` version', () => {
-      const {
-        firefox: firefoxSupport,
-      } = bcd.webextensions.manifest.browser_specific_settings.__compat.support;
+      const { firefox: firefoxSupport } =
+        bcd.webextensions.manifest.browser_specific_settings.__compat.support;
 
       expect(firstStableVersion(firefoxSupport)).toEqual('42');
     });
