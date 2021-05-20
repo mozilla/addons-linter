@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-07-23 08:19+0000\n"
+"PO-Revision-Date: 2021-05-20 11:44+0000\n"
 "Last-Translator: Håvar Henriksen <havar@firefox.no>\n"
 "Language-Team: none\n"
 "Language: nb_NO\n"
@@ -232,7 +232,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:122
 msgid "\"strict_max_version\" not required."
-msgstr ""
+msgstr "«strict_max_version» er ikke påkrevd."
 
 #: src/messages/manifestjson.js:141
 msgid "An icon defined in the manifest could not be found in the package."
