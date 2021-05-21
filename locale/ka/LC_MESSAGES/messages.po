@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-08-08 18:50+0000\n"
+"PO-Revision-Date: 2021-05-21 16:38+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -400,11 +400,11 @@ msgstr "თემის გამოსახულების გაფარ�
 
 #: src/messages/manifestjson.js:393
 msgid "The \"default_locale\" is missing localizations."
-msgstr "„ნაგულისხმევი ენა“ ვერ მოიძებნა არსებულ ენებში."
+msgstr "„default_locale“ აკლია თარგმანებში."
 
 #: src/messages/manifestjson.js:402
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr "„ნაგულისხმევი ენა“ ვერ მოიძებნა, თუმცა „_locales“ არსებობს."
+msgstr "„default_locale“ აკლია, თუმცა „_locales“ არსებობს."
 
 #: src/messages/manifestjson.js:411
 msgid "Unsupported image extension"
