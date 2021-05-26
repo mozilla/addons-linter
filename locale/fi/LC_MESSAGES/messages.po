@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-05-31 09:49+0000\n"
-"Last-Translator: Lasse Liehu <lasse.liehu@iki.fi>\n"
+"PO-Revision-Date: 2021-05-26 09:38+0000\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: none\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -92,7 +92,7 @@ msgstr "Tätä API:a ei ole vielä toteutettu annetussa Firefoxin minimiversioss
 
 #: src/messages/javascript.js:177
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} ei ole tuettu Firefoxin Android-versiossa {{minVersion}}"
 
 #: src/messages/javascript.js:180
 #, fuzzy
@@ -181,7 +181,7 @@ msgstr "Merkitty tiedostotyyppi löytyi"
 
 #: src/messages/layout.js:72
 msgid "Package already signed"
-msgstr ""
+msgstr "Paketti on jo allekirjoitettu"
 
 #: src/messages/layout.js:8
 msgid "Package contains duplicate entries"
