@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2021-05-26 09:38+0000\n"
+"PO-Revision-Date: 2021-05-29 16:32+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: none\n"
 "Language: fi\n"
@@ -358,9 +358,8 @@ msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
 #: src/messages/manifestjson.js:304
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Katso lisätietoja osoitteesta https://mzl.la/1R1n1t0 (MDN-dokumentit)."
+msgstr "Katso lisätietoja osoitteesta https://mzl.la/2T11Lkc (MDN-dokumentit)."
 
 #: src/messages/manifestjson.js:319
 #, fuzzy
