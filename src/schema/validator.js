@@ -23,7 +23,7 @@ import {
 } from './formats';
 import schemas from './imported';
 
-const jsonSchemaDraft06 = require('ajv/lib/refs/json-schema-draft-06.json');
+const jsonSchemaDraft06 = require('ajv/lib/refs/json-schema-draft-06');
 
 function filterErrors(errors) {
   if (errors) {
