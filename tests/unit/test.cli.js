@@ -7,11 +7,13 @@ jest.unmock('cli');
 let cli;
 
 describe('Basic CLI tests', function cliCallback() {
+  let fakeFail;
+
   beforeEach(() => {
     // Override yargs fail func so we can introspect the right errors
     // are happening when we hand it bogus input.
-    this.fakeFail = sinon.stub();
-    cli = getConfig().exitProcess(false).fail(this.fakeFail);
+    fakeFail = sinon.stub();
+    cli = getConfig().exitProcess(false).fail(fakeFail);
   });
 
   it('should default logLevel type to "fatal"', () => {
@@ -77,14 +79,14 @@ describe('Basic CLI tests', function cliCallback() {
   it('should show error on missing xpi', () => {
     cli.parse([]);
     expect(
-      this.fakeFail.calledWithMatch('Not enough non-option arguments')
+      fakeFail.calledWithMatch('Not enough non-option arguments')
     ).toBeTruthy();
   });
 
   it('should show error if incorrect output', () => {
     cli.parse(['-o', 'false', 'whatevs']);
     expect(
-      this.fakeFail.calledWithMatch(
+      fakeFail.calledWithMatch(
         'Invalid values:\n  Argument: output, Given: "false"'
       )
     ).toBeTruthy();
