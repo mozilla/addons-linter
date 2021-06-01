@@ -68,7 +68,7 @@ describe('gettext()', () => {
     jest.doMock('utils', () => {
       return {
         // eslint-disable-next-line global-require
-        i18n: buildI18nObject(require('../fixtures/fr.js')),
+        i18n: buildI18nObject(require('../fixtures/fr')),
       };
     });
 
@@ -89,7 +89,7 @@ describe('gettext()', () => {
     jest.doMock('utils', () => {
       return {
         // eslint-disable-next-line global-require
-        i18n: buildI18nObject(require('../fixtures/ja.js')),
+        i18n: buildI18nObject(require('../fixtures/ja')),
       };
     });
 
@@ -112,7 +112,7 @@ describe('sprintf()', () => {
     jest.doMock('utils', () => {
       return {
         // eslint-disable-next-line global-require
-        i18n: buildI18nObject(require('../fixtures/de.js')),
+        i18n: buildI18nObject(require('../fixtures/de')),
       };
     });
 
