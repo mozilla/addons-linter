@@ -85,12 +85,14 @@ jobs:
       - run: npm run test-integration:production
       - run: npm run lint
       - run: npm run prettier-ci
-      - run: npm run webext-test-functional
       # Set up a workspace to share data between this job and the `release-tag`
       # one when we want to publish a new npm version.
       - persist_to_workspace:
           root: ~/addons-linter
           paths: .
+      # This should run after we persist the workspace because this command
+      # invokes `npm install`.
+      - run: npm run webext-test-functional
       - store_artifacts:
           path: coverage
 
