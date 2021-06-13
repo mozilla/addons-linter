@@ -65,7 +65,7 @@
     "jed": "1.1.1",
     "os-locale": "5.0.0",
     "pino": "6.11.3",
-    "postcss": "8.3.0",
+    "postcss": "8.3.2",
     "relaxed-json": "1.0.3",
     "semver": "7.3.5",
     "source-map-support": "0.5.19",
