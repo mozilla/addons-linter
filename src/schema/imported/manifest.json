@@ -197,10 +197,12 @@
                   "onError": "warn",
                   "anyOf": [
                     {
+                      "max_manifest_version": 2,
                       "type": "string",
                       "format": "contentSecurityPolicy"
                     },
                     {
+                      "min_manifest_version": 3,
                       "type": "object",
                       "properties": {
                         "extension_pages": {
@@ -255,10 +257,40 @@
                   "uniqueItems": true
                 },
                 "web_accessible_resources": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "anyOf": [
+                    {
+                      "max_manifest_version": 2,
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "min_manifest_version": 3,
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "resources": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "matches": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/types/MatchPatternRestricted"
+                            }
+                          }
+                        },
+                        "required": [
+                          "resources",
+                          "matches"
+                        ]
+                      }
+                    }
+                  ]
                 },
                 "developer": {
                   "type": "object",

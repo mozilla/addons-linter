@@ -41,8 +41,17 @@
                   "preprocess": "localize"
                 },
                 "favicon_url": {
-                  "type": "string",
-                  "format": "relativeUrl",
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "format": "relativeUrl",
+                      "max_manifest_version": 2
+                    },
+                    {
+                      "type": "string",
+                      "format": "strictRelativeUrl"
+                    }
+                  ],
                   "preprocess": "localize"
                 },
                 "suggest_url": {
