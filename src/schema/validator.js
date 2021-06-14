@@ -25,11 +25,51 @@ import schemas from './imported';
 
 const jsonSchemaDraft06 = require('ajv/lib/refs/json-schema-draft-06');
 
-function filterErrors(errors) {
+function filterErrors(errors, manifestData = undefined) {
   if (errors) {
-    return errors.filter((error) => {
+    let filteredErrors = errors.filter((error) => {
       return error.keyword !== '$merge';
     });
+
+    // Filter out errors related to future manifest versions.
+    if (
+      filteredErrors.length > 0 &&
+      manifestData?.manifest_version === MANIFEST_VERSION_DEFAULT
+    ) {
+      filteredErrors = filteredErrors.filter((error) => {
+        // Omit errors related to a schema fragment that is only allowed
+        // in a future manifest version (and also if its parent schema
+        // is only allowed in future manifest versions).
+        if (
+          error.params?.min_manifest_version > MANIFEST_VERSION_DEFAULT ||
+          error.parentSchema?.min_manifest_version > MANIFEST_VERSION_DEFAULT
+        ) {
+          return false;
+        }
+
+        // Skip anyOf errors if only one entry is actually allowed in the
+        // currently supported manifest versions.
+        if (error.keyword === 'anyOf') {
+          const anyOfSchemaEntries = error.schema.filter((schema) => {
+            return !(
+              'min_manifest_version' in schema &&
+              schema.min_manifest_version > MANIFEST_VERSION_DEFAULT
+            );
+          });
+
+          // Skip if there is only one or no entries (if there is one entry
+          // we can still omit the anyOf, the linting message related to that
+          // entry would already been separately part of the validation errror
+          // if it should have been).
+          if (anyOfSchemaEntries.length <= 1) {
+            return false;
+          }
+        }
+        return true;
+      });
+    }
+
+    return filteredErrors;
   }
   return errors;
 }
@@ -356,6 +396,23 @@ export class SchemaValidator {
         const manifestVersion =
           (rootData && rootData.manifest_version) || MANIFEST_VERSION_DEFAULT;
         const res = condFn(keywordSchemaValue, manifestVersion);
+
+        // If the min/max_manifest_version is set on a schema entry of type array,
+        // propagate the same keyword to the `items` schema, which is needed to
+        // - be able to recognize that those schema entries are also only allowed on
+        //   certain manifest versions (which becomes part of the linting messages)
+        // - be able to filter out the validation errors related to future (not yet
+        //   supported) manifest versions if they are related to those schema entries
+        //   (which happens based on the current or parent schema in the `filterErrors`
+        //   helper method).
+        if (schema.type === 'array') {
+          // NOTE: the alternative would be to do this for the entire set of schema
+          // entries (either while importing them, or when we load the data into the
+          // SchemaValidator class instance).
+          // eslint-disable-next-line no-param-reassign
+          schema.items[keyword] = schema[keyword];
+        }
+
         if (!res) {
           validate.errors = [
             {
@@ -418,7 +475,10 @@ export function getValidator(validatorOptions) {
 export const validateAddon = (manifestData, validatorOptions = {}) => {
   const validator = getValidator(validatorOptions);
   const isValid = validator.validateAddon(manifestData);
-  validateAddon.errors = filterErrors(validator.validateAddon.errors);
+  validateAddon.errors = filterErrors(
+    validator.validateAddon.errors,
+    manifestData
+  );
   return isValid;
 };
 

@@ -1955,10 +1955,10 @@ describe('ManifestJSONParser', () => {
       expect(linter.collector.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            dataPath: '/background',
-            code: 'MANIFEST_FIELD_UNSUPPORTED',
+            dataPath: '/background/service_worker',
+            code: 'JSON_INVALID',
             message: expect.stringMatching(
-              /"\/background" is in a format not supported in manifest versions < 3/
+              /"\/background\/service_worker" is an invalid additional property/
             ),
           }),
         ])
