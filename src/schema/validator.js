@@ -25,53 +25,122 @@ import schemas from './imported';
 
 const jsonSchemaDraft06 = require('ajv/lib/refs/json-schema-draft-06');
 
-function filterErrors(errors, manifestData = undefined) {
-  if (errors) {
-    let filteredErrors = errors.filter((error) => {
-      return error.keyword !== '$merge';
+function isRelevantError({
+  error,
+  manifest_version,
+  allowedManifestVersionsRange,
+}) {
+  // The errors related to the manifest_version are always relevant,
+  // if an error has been collected for it then it is because the
+  // addon manifest_version is outside or the allowed range.
+  if (error.dataPath === '/manifest_version') {
+    return true;
+  }
+
+  const { minimum, maximum } = allowedManifestVersionsRange;
+
+  const errorMinManifestVersion =
+    error.params?.min_manifest_version ??
+    error.parentSchema?.min_manifest_version ??
+    minimum;
+
+  const errorMaxManifestVersion =
+    error.params?.max_manifest_version ??
+    error.parentSchema?.max_manifest_version ??
+    maximum;
+
+  // Omit errors related to a schema fragment that is not relevant
+  // for the given manifest version (and also if its parent schema
+  // is not relevant for the given manifest version).
+  if (
+    manifest_version < errorMinManifestVersion ||
+    manifest_version > errorMaxManifestVersion
+  ) {
+    return false;
+  }
+
+  // An error collected by an `anyOf` schema entry is relevant only if its the schema
+  // entries are relevant for the given addon manifest_version.
+  if (error.keyword === 'anyOf') {
+    const anyOfSchemaEntries = error.schema.filter((schema) => {
+      const min = schema.min_manifest_version ?? minimum;
+      const max = schema.mix_manifest_version ?? maximum;
+
+      return manifest_version >= min && manifest_version <= max;
     });
 
-    // Filter out errors related to future manifest versions.
-    if (
-      filteredErrors.length > 0 &&
-      manifestData?.manifest_version === MANIFEST_VERSION_DEFAULT
-    ) {
-      filteredErrors = filteredErrors.filter((error) => {
-        // Omit errors related to a schema fragment that is only allowed
-        // in a future manifest version (and also if its parent schema
-        // is only allowed in future manifest versions).
-        if (
-          error.params?.min_manifest_version > MANIFEST_VERSION_DEFAULT ||
-          error.parentSchema?.min_manifest_version > MANIFEST_VERSION_DEFAULT
-        ) {
-          return false;
-        }
-
-        // Skip anyOf errors if only one entry is actually allowed in the
-        // currently supported manifest versions.
-        if (error.keyword === 'anyOf') {
-          const anyOfSchemaEntries = error.schema.filter((schema) => {
-            return !(
-              'min_manifest_version' in schema &&
-              schema.min_manifest_version > MANIFEST_VERSION_DEFAULT
-            );
-          });
-
-          // Skip if there is only one or no entries (if there is one entry
-          // we can still omit the anyOf, the linting message related to that
-          // entry would already been separately part of the validation errror
-          // if it should have been).
-          if (anyOfSchemaEntries.length <= 1) {
-            return false;
-          }
-        }
-        return true;
-      });
+    // The error is irrelevant if:
+    // - there is no anyOf entry that is relevant for the given addon manifest_version
+    // - there is only one relevant entry (in that case an error for that entry would
+    //   have been already collected and there is no need to report it again as part
+    //   of the error collected by anyOf.
+    if (anyOfSchemaEntries.length <= 1) {
+      return false;
     }
-
-    return filteredErrors;
   }
-  return errors;
+
+  return true;
+}
+
+function filterErrors(
+  errors,
+  { manifest_version, allowedManifestVersionsRange } = {}
+) {
+  if (!errors) {
+    return errors;
+  }
+
+  let filteredErrors = errors.filter((error) => {
+    return error.keyword !== '$merge';
+  });
+
+  // Filter out errors that are not relevant for the addon manifest_version,
+  // this means that:
+  //
+  // - for mv2 addons, the errors related to schema only supported in mv3 will not be reported
+  // - similarly for mv3 addons, errors related to schema only supported in mv2 will not be reported
+  //
+  // This should help to avoid to report too many validation errors and to ensure that the
+  // validation errors reported are all relevant for the manifest_version actually set on
+  // the extension.
+  if (
+    filteredErrors.length > 0 &&
+    typeof manifest_version === 'number' &&
+    allowedManifestVersionsRange
+  ) {
+    filteredErrors = filteredErrors.filter((error) =>
+      isRelevantError({ error, manifest_version, allowedManifestVersionsRange })
+    );
+  }
+
+  return filteredErrors;
+}
+
+function getManifestVersionsRange(validatorOptions) {
+  const { minManifestVersion, maxManifestVersion } = validatorOptions;
+
+  const minimum =
+    minManifestVersion == null
+      ? getDefaultConfigValue('min-manifest-version')
+      : minManifestVersion;
+
+  const maximum =
+    maxManifestVersion == null
+      ? getDefaultConfigValue('max-manifest-version')
+      : maxManifestVersion;
+
+  // Make sure the version range is valid, if it is not:
+  // raise an explicit error.
+  if (minimum > maximum) {
+    throw new Error(
+      `Invalid manifest version range requested: ${JSON.stringify({
+        maximum,
+        minimum,
+      })}`
+    );
+  }
+
+  return { minimum, maximum };
 }
 
 export class SchemaValidator {
@@ -109,6 +178,8 @@ export class SchemaValidator {
    */
   constructor(validatorOptions) {
     this._options = validatorOptions;
+    this.allowedManifestVersionsRange =
+      getManifestVersionsRange(validatorOptions);
 
     const validator = ajv({
       allErrors: true,
@@ -147,8 +218,8 @@ export class SchemaValidator {
     // Lazily compile the addon validator, its base manifest definitions
     // are also needed for the static theme, dictionary and langpack validators.
     if (!this._addonValidator) {
-      const { _validator, _options } = this;
-      this._addonValidator = this._compileAddonValidator(_validator, _options);
+      const { _validator } = this;
+      this._addonValidator = this._compileAddonValidator(_validator);
     }
 
     return this._addonValidator;
@@ -281,42 +352,21 @@ export class SchemaValidator {
     return this._localeValidator;
   }
 
-  _compileAddonValidator(validator, validatorOptions) {
-    const { minManifestVersion, maxManifestVersion } = validatorOptions;
+  _compileAddonValidator(validator) {
+    const { minimum, maximum } = this.allowedManifestVersionsRange;
 
-    let schemaData = this.schemaObject;
-
-    if (minManifestVersion != null || maxManifestVersion != null) {
-      const minimum =
-        minManifestVersion == null
-          ? getDefaultConfigValue('min-manifest-version')
-          : minManifestVersion;
-      const maximum =
-        maxManifestVersion == null
-          ? getDefaultConfigValue('max-manifest-version')
-          : maxManifestVersion;
-
-      // Make sure the version range is valid, if it is not:
-      // raise an explicit error.
-      if (maxManifestVersion < minManifestVersion) {
-        throw new Error(
-          `Invalid manifest version range requested: ${JSON.stringify({
-            maxManifestVersion,
-            minManifestVersion,
-          })}`
-        );
-      }
-
-      schemaData = deepPatch(this.schemaObject, {
-        types: {
-          ManifestBase: {
-            properties: {
-              manifest_version: { minimum, maximum },
+    const schemaData = deepPatch(this.schemaObject, {
+      types: {
+        ManifestBase: {
+          properties: {
+            manifest_version: {
+              minimum,
+              maximum,
             },
           },
         },
-      });
-    }
+      },
+    });
 
     return validator.compile({
       ...schemaData,
@@ -406,9 +456,7 @@ export class SchemaValidator {
         //   (which happens based on the current or parent schema in the `filterErrors`
         //   helper method).
         if (schema.type === 'array') {
-          // NOTE: the alternative would be to do this for the entire set of schema
-          // entries (either while importing them, or when we load the data into the
-          // SchemaValidator class instance).
+          // TODO(#3774): move this at "import JSONSchema data" time, and remove it from here.
           // eslint-disable-next-line no-param-reassign
           schema.items[keyword] = schema[keyword];
         }
@@ -475,10 +523,10 @@ export function getValidator(validatorOptions) {
 export const validateAddon = (manifestData, validatorOptions = {}) => {
   const validator = getValidator(validatorOptions);
   const isValid = validator.validateAddon(manifestData);
-  validateAddon.errors = filterErrors(
-    validator.validateAddon.errors,
-    manifestData
-  );
+  validateAddon.errors = filterErrors(validator.validateAddon.errors, {
+    manifest_version: manifestData.manifest_version,
+    allowedManifestVersionsRange: validator.allowedManifestVersionsRange,
+  });
   return isValid;
 };
 
