@@ -109,7 +109,7 @@
     "markdown-it-emoji": "2.0.0",
     "po2json": "0.4.5",
     "prettier": "2.3.1",
-    "pretty-quick": "3.1.0",
+    "pretty-quick": "3.1.1",
     "raw-loader": "4.0.2",
     "shelljs": "0.8.4",
     "sinon": "11.1.1",
