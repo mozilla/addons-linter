@@ -48,7 +48,7 @@ describe('getValidator', () => {
   });
 
   it('can be forced to not cache an instance', () => {
-    const options = { minManifestVersion: 3 };
+    const options = { minManifestVersion: 3, maxManifestVersion: 3 };
     const validator = getValidator(options);
     const validator2 = getValidator(options);
 
