@@ -142,10 +142,12 @@ jobs:
       - *make_production_build
       - *configure_global_npm
       - run: npm run test-ci
-      # run integration tests using an addons-linter binary in a
-      # production-like environment
+        # run integration tests using an addons-linter binary in a
+        # production-like environment
       - run: npm run test-integration:production
-      - run: npm run webext-test-functional
+      # TODO: re-enable this test suite, see:
+      # https://github.com/mozilla/addons-linter/issues/3788
+      #- run: npm run webext-test-functional
 
   publish-rules:
     <<: *defaults
