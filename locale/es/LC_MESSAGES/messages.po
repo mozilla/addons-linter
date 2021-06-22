@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2019-12-22 18:11+0000\n"
-"Last-Translator: avelper <avelper@mozilla-hispano.org>\n"
+"PO-Revision-Date: 2020-07-27 13:01+0000\n"
+"Last-Translator: Paulina Rodriguez <pauli.rodriguez.c@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -348,7 +348,7 @@ msgstr "El archivo de icono previsto en \"%(path)s\" está corrupto"
 
 #: src/messages/manifestjson.js:303
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Este alias del tema LWS se ha eliminado en Firefox 70."
 
 #: src/messages/manifestjson.js:304
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
