@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-08-06 10:22+0000\n"
+"PO-Revision-Date: 2021-06-23 08:42+0000\n"
 "Last-Translator: عمر <um.qshi@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ur\n"
@@ -72,7 +72,7 @@ msgstr ""
 
 #: src/messages/javascript.js:123
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} کی معاونت نہیں ہے"
 
 #: src/messages/javascript.js:124
 msgid "This API has not been implemented by Firefox."
@@ -100,19 +100,19 @@ msgstr ""
 
 #: src/messages/javascript.js:23
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "مواد کی اسکرپٹ فائل نہیں مل سکی۔"
 
 #: src/messages/javascript.js:24
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "مواد کی اسکرپٹ فائل نہیں مل سکی۔"
 
 #: src/messages/javascript.js:30
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "مواد کی اسکرپٹ فائل کا نام خالی نہیں ہونا چاہئے۔"
 
 #: src/messages/javascript.js:31
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "مواد کی اسکرپٹ فائل کا نام خالی نہیں ہونا چاہئے"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
@@ -160,7 +160,7 @@ msgstr "manifest.json نہیں ملا"
 
 #: src/messages/layout.js:30
 msgid "File is too large to parse."
-msgstr ""
+msgstr "تجزیہ کرنے کے لئے فائل بہت بڑی ہے۔"
 
 #: src/messages/layout.js:39
 msgid "Hidden file flagged"
