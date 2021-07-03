@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2021-06-23 08:42+0000\n"
+"PO-Revision-Date: 2021-07-03 07:06+0000\n"
 "Last-Translator: عمر <um.qshi@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ur\n"
@@ -336,7 +336,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:277
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "آئیکن کا سائز منشور سے مماثل نہیں رکھتا  ہے۔"
 
 #: src/messages/manifestjson.js:292
 msgid "Corrupt image file"
