@@ -17,10 +17,18 @@ references:
       CIRCLE_COMPARE_URL: << pipeline.project.git_url >>/compare/<< pipeline.git.base_revision >>..<<pipeline.git.revision>>
 
   defaults-next: &defaults-next
-    working_directory: ~/addons-linter
+    <<: *defaults
     docker:
       # This is the next NodeJS version we will support.
       - image: circleci/node:14
+
+  defaults-alternate: &defaults-alternate
+    <<: *defaults
+    docker:
+      # This is an alternate Node version we support or want to support in the
+      # (far) future. It can either be lower or higher than the current Node
+      # version we run in production.
+      - image: circleci/node:16
 
   restore_build_cache: &restore_build_cache
     restore_cache:
@@ -69,6 +77,19 @@ references:
       paths:
         - ./node_modules
 
+  restore_alternate_build_cache: &restore_alternate_build_cache
+    restore_cache:
+      name: restore npm package cache
+      keys:
+        - alternate-npm-packages-{{ checksum "package-lock.json" }}
+
+  save_alternate_build_cache: &save_alternate_build_cache
+    save_cache:
+      name: save npm package cache
+      key: alternate-npm-packages-{{ checksum "package-lock.json" }}
+      paths:
+        - ./node_modules
+
 jobs:
   test:
     <<: *defaults
@@ -111,6 +132,21 @@ jobs:
       - run: npm run test-integration:production
       - run: npm run webext-test-functional
 
+  test-alternate:
+    <<: *defaults-alternate
+    steps:
+      - checkout
+      - *restore_alternate_build_cache
+      - *run_npm_install
+      - *save_alternate_build_cache
+      - *make_production_build
+      - *configure_global_npm
+      - run: npm run test-ci
+      # run integration tests using an addons-linter binary in a
+      # production-like environment
+      - run: npm run test-integration:production
+      - run: npm run webext-test-functional
+
   publish-rules:
     <<: *defaults
     steps:
@@ -140,6 +176,7 @@ workflows:
             tags:
               only: /.*/
       - test-next
+      - test-alternate
       - publish-rules:
           requires:
             - test

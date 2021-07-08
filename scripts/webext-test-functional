@@ -4,17 +4,17 @@
 npm install
 npm run build
 
-# Create (global) addons-linter link
-# See: https://docs.npmjs.com/cli/link
-npm link
+LINTER_PATH=`pwd`
 
 # Fetch web-ext
 git clone https://github.com/mozilla/web-ext
 cd web-ext
 
-# Link addons-linter, then install web-ext's dependencies
+# install web-ext's dependencies, then link the addons-linter
+# dependency from the local addons-linter repo clone.
 npm install
-npm link addons-linter
+mv node_modules/addons-linter node_modules/addons-linter.npm
+ln -s $LINTER_PATH node_modules/addons-linter
 
 # Run web-ext functional tests
 MOCHA_TIMEOUT=60000 npm run test-functional
