@@ -45,7 +45,7 @@
   "dependencies": {
     "@mdn/browser-compat-data": "3.3.10",
     "addons-scanner-utils": "4.9.0",
-    "ajv": "6.12.6",
+    "ajv": "8.6.1",
     "ajv-merge-patch": "4.1.0",
     "chalk": "4.1.1",
     "cheerio": "1.0.0-rc.10",
