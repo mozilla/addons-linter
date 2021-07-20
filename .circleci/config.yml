@@ -11,7 +11,7 @@ references:
     working_directory: ~/addons-linter
     docker:
       # This is the NodeJS version we run in production.
-      - image: circleci/node:14
+      - image: circleci/node:12
     environment:
       # This environment variable is needed for `scripts/publish-rules`.
       CIRCLE_COMPARE_URL: << pipeline.project.git_url >>/compare/<< pipeline.git.base_revision >>..<<pipeline.git.revision>>
@@ -20,7 +20,7 @@ references:
     <<: *defaults
     docker:
       # This is the next NodeJS version we will support.
-      - image: circleci/node:16
+      - image: circleci/node:14
 
   defaults-alternate: &defaults-alternate
     <<: *defaults
@@ -28,7 +28,7 @@ references:
       # This is an alternate Node version we support or want to support in the
       # (far) future. It can either be lower or higher than the current Node
       # version we run in production.
-      - image: circleci/node:12
+      - image: circleci/node:16
 
   restore_build_cache: &restore_build_cache
     restore_cache:
