@@ -3,7 +3,7 @@ import path from 'path';
 
 import ESLint from 'eslint';
 import { oneLine } from 'common-tags';
-import espree from 'espree';
+import * as espree from 'espree';
 import vk from 'eslint-visitor-keys';
 import { ECMA_VERSION } from 'addons-scanner-utils/dist/const';
 
