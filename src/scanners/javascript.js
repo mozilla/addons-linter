@@ -4,7 +4,7 @@ import path from 'path';
 import ESLint from 'eslint';
 import { oneLine } from 'common-tags';
 import * as espree from 'espree';
-import vk from 'eslint-visitor-keys';
+import * as vk from 'eslint-visitor-keys';
 import { ECMA_VERSION } from 'addons-scanner-utils/dist/const';
 
 import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
