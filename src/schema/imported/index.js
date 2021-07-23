@@ -3,6 +3,7 @@
 import activityLog from './activity_log.json';
 import alarms from './alarms.json';
 import bookmarks from './bookmarks.json';
+import action from './action.json';
 import browserAction from './browser_action.json';
 import browserSettings from './browser_settings.json';
 import browsingData from './browsing_data.json';
@@ -28,6 +29,7 @@ import i18n from './i18n.json';
 import identity from './identity.json';
 import idle from './idle.json';
 import management from './management.json';
+import contextMenus from './context_menus.json';
 import menus from './menus.json';
 import native_manifest from './native_manifest.json';
 import networkStatus from './network_status.json';
@@ -56,11 +58,11 @@ import userScripts from './userScripts.json';
 import webNavigation from './web_navigation.json';
 import webRequest from './web_request.json';
 import windows from './windows.json';
-import contextMenus from './context_menus.json';
 export default [
   activityLog,
   alarms,
   bookmarks,
+  action,
   browserAction,
   browserSettings,
   browsingData,
@@ -86,6 +88,7 @@ export default [
   identity,
   idle,
   management,
+  contextMenus,
   menus,
   native_manifest,
   networkStatus,
@@ -114,5 +117,4 @@ export default [
   webNavigation,
   webRequest,
   windows,
-  contextMenus,
 ];

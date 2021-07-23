@@ -314,6 +314,9 @@
           }
         },
         {
+          "$ref": "action#/definitions/WebExtensionManifest"
+        },
+        {
           "$ref": "browserAction#/definitions/WebExtensionManifest"
         },
         {
@@ -520,6 +523,9 @@
           "$ref": "cookies#/definitions/OptionalPermissionNoPrompt"
         },
         {
+          "$ref": "contextMenus#/definitions/OptionalPermissionNoPrompt"
+        },
+        {
           "$ref": "menus#/definitions/OptionalPermissionNoPrompt"
         },
         {
@@ -638,6 +644,9 @@
         },
         {
           "$ref": "identity#/definitions/PermissionNoPrompt"
+        },
+        {
+          "$ref": "contextMenus#/definitions/PermissionNoPrompt"
         },
         {
           "$ref": "menus#/definitions/PermissionNoPrompt"

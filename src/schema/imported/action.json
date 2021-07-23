@@ -1,51 +1,11 @@
 {
-  "id": "browserAction",
+  "id": "action",
   "description": "Use browser actions to put icons in the main browser toolbar, to the right of the address bar. In addition to its icon, a browser action can also have a tooltip, a badge, and a popup.",
   "permissions": [
     "manifest:action",
     "manifest:browser_action"
   ],
-  "types": {
-    "ActionManifest": {
-      "type": "object",
-      "properties": {
-        "default_title": {
-          "type": "string",
-          "preprocess": "localize"
-        },
-        "default_icon": {
-          "$ref": "manifest#/types/IconPath"
-        },
-        "theme_icons": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "manifest#/types/ThemeIcons"
-          },
-          "description": "Specifies icons to use for dark and light themes"
-        },
-        "default_popup": {
-          "type": "string",
-          "format": "relativeUrl",
-          "preprocess": "localize"
-        },
-        "browser_style": {
-          "type": "boolean",
-          "default": false
-        },
-        "default_area": {
-          "description": "Defines the location the browserAction will appear by default.  The default location is navbar.",
-          "type": "string",
-          "enum": [
-            "navbar",
-            "menupanel",
-            "tabstrip",
-            "personaltoolbar"
-          ]
-        }
-      }
-    }
-  },
+  "min_manifest_version": 3,
   "functions": [
     {
       "name": "setTitle",
@@ -56,7 +16,7 @@
         {
           "$merge": {
             "source": {
-              "$ref": "browserAction#/types/Details"
+              "$ref": "action#/types/Details"
             },
             "with": {
               "name": "details",
@@ -125,7 +85,7 @@
         {
           "$merge": {
             "source": {
-              "$ref": "browserAction#/types/Details"
+              "$ref": "action#/types/Details"
             },
             "with": {
               "name": "details",
@@ -184,7 +144,7 @@
         {
           "$merge": {
             "source": {
-              "$ref": "browserAction#/types/Details"
+              "$ref": "action#/types/Details"
             },
             "with": {
               "name": "details",
@@ -253,7 +213,7 @@
         {
           "$merge": {
             "source": {
-              "$ref": "browserAction#/types/Details"
+              "$ref": "action#/types/Details"
             },
             "with": {
               "name": "details",
@@ -322,7 +282,7 @@
         {
           "$merge": {
             "source": {
-              "$ref": "browserAction#/types/Details"
+              "$ref": "action#/types/Details"
             },
             "with": {
               "name": "details",
@@ -389,7 +349,7 @@
         {
           "$merge": {
             "source": {
-              "$ref": "browserAction#/types/Details"
+              "$ref": "action#/types/Details"
             },
             "with": {
               "name": "details",
@@ -524,7 +484,6 @@
       ]
     }
   ],
-  "max_manifest_version": 2,
   "definitions": {
     "WebExtensionManifest": {
       "properties": {
@@ -552,9 +511,124 @@
     }
   },
   "refs": {
-    "browserAction#/definitions/WebExtensionManifest": {
+    "action#/definitions/WebExtensionManifest": {
       "namespace": "manifest",
       "type": "WebExtensionManifest"
+    }
+  },
+  "types": {
+    "Details": {
+      "type": "object",
+      "description": "Specifies to which tab or window the value should be set, or from which one it should be retrieved. If no tab nor window is specified, the global value is set or retrieved.",
+      "properties": {
+        "tabId": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "When setting a value, it will be specific to the specified tab, and will automatically reset when the tab navigates. When getting, specifies the tab to get the value from; if there is no tab-specific value, the window one will be inherited."
+        },
+        "windowId": {
+          "type": "integer",
+          "minimum": -2,
+          "description": "When setting a value, it will be specific to the specified window. When getting, specifies the window to get the value from; if there is no window-specific value, the global one will be inherited."
+        }
+      }
+    },
+    "ColorArray": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 255
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "ImageDataType": {
+      "type": "object",
+      "isInstanceOf": "ImageData",
+      "additionalProperties": {},
+      "postprocess": "convertImageDataToURL",
+      "description": "Pixel data for an image. Must be an ImageData object (for example, from a <code>canvas</code> element)."
+    },
+    "ColorValue": {
+      "description": "An array of four integers in the range [0,255] that make up the RGBA color of the badge. For example, opaque red is <code>[255, 0, 0, 255]</code>. Can also be a string with a CSS value, with opaque red being <code>#FF0000</code> or <code>#F00</code>.",
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "#/types/ColorArray"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "OnClickData": {
+      "type": "object",
+      "description": "Information sent when a browser action is clicked.",
+      "properties": {
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Shift",
+              "Alt",
+              "Command",
+              "Ctrl",
+              "MacCtrl"
+            ]
+          },
+          "description": "An array of keyboard modifiers that were held while the menu item was clicked."
+        },
+        "button": {
+          "type": "integer",
+          "description": "An integer value of button by which menu item was clicked."
+        }
+      },
+      "required": [
+        "modifiers"
+      ]
+    },
+    "ActionManifest": {
+      "type": "object",
+      "properties": {
+        "default_title": {
+          "type": "string",
+          "preprocess": "localize"
+        },
+        "default_icon": {
+          "$ref": "manifest#/types/IconPath"
+        },
+        "theme_icons": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "manifest#/types/ThemeIcons"
+          },
+          "description": "Specifies icons to use for dark and light themes"
+        },
+        "default_popup": {
+          "type": "string",
+          "format": "relativeUrl",
+          "preprocess": "localize"
+        },
+        "browser_style": {
+          "type": "boolean",
+          "default": false
+        },
+        "default_area": {
+          "description": "Defines the location the browserAction will appear by default.  The default location is navbar.",
+          "type": "string",
+          "enum": [
+            "navbar",
+            "menupanel",
+            "tabstrip",
+            "personaltoolbar"
+          ]
+        }
+      }
     }
   }
 }

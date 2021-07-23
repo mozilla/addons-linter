@@ -140,8 +140,32 @@
               "description": "Whether this context menu item is enabled or disabled. Defaults to true."
             },
             "command": {
-              "type": "string",
-              "description": "Specifies a command to issue for the context click.  Currently supports internal commands _execute_page_action, _execute_browser_action and _execute_sidebar_action."
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "_execute_browser_action",
+                    "_execute_page_action",
+                    "_execute_sidebar_action"
+                  ],
+                  "max_manifest_version": 2,
+                  "description": "Manifest V2 supports internal commands _execute_page_action, _execute_browser_action and _execute_sidebar_action."
+                },
+                {
+                  "type": "string",
+                  "enum": [
+                    "_execute_action",
+                    "_execute_page_action",
+                    "_execute_sidebar_action"
+                  ],
+                  "min_manifest_version": 3,
+                  "description": "Manifest V3 supports internal commands _execute_page_action, _execute_action and _execute_sidebar_action."
+                }
+              ],
+              "description": "Specifies a command to issue for the context click."
             }
           }
         },
@@ -540,25 +564,43 @@
   },
   "types": {
     "ContextType": {
-      "type": "string",
-      "enum": [
-        "all",
-        "page",
-        "frame",
-        "selection",
-        "link",
-        "editable",
-        "password",
-        "image",
-        "video",
-        "audio",
-        "launcher",
-        "bookmark",
-        "browser_action",
-        "page_action",
-        "tab"
-      ],
-      "description": "The different contexts a menu can appear in. Specifying 'all' is equivalent to the combination of all other contexts except for 'tab' and 'tools_menu'."
+      "description": "The different contexts a menu can appear in. Specifying 'all' is equivalent to the combination of all other contexts except for 'tab' and 'tools_menu'.",
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "all",
+            "page",
+            "frame",
+            "selection",
+            "link",
+            "editable",
+            "password",
+            "image",
+            "video",
+            "audio",
+            "launcher",
+            "bookmark",
+            "tab",
+            "tools_menu"
+          ]
+        },
+        {
+          "type": "string",
+          "enum": [
+            "browser_action",
+            "page_action"
+          ],
+          "max_manifest_version": 2
+        },
+        {
+          "type": "string",
+          "enum": [
+            "action"
+          ],
+          "min_manifest_version": 3
+        }
+      ]
     },
     "ItemType": {
       "type": "string",
