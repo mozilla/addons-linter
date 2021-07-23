@@ -44,17 +44,40 @@ function isRelevantError({
     error.parentSchema?.min_manifest_version ??
     minimum;
 
-  const errorMaxManifestVersion =
+  let errorMaxManifestVersion =
     error.params?.max_manifest_version ??
     error.parentSchema?.max_manifest_version ??
     maximum;
 
-  // Omit errors related to a schema fragment that is not relevant
+  // Make sure the computed error max version is always >= to the computed min version.
+  errorMaxManifestVersion = Math.max(
+    errorMaxManifestVersion,
+    errorMinManifestVersion
+  );
+
+  const isTopLevelManifestKey =
+    error.dataPath.split('/').filter((s) => s.length).length === 1;
+  const errorFromAnyOf = error.schemaPath.includes('/anyOf/');
+  // Skip the error if it is not in range, only when the error is:
+  //
+  // - not related to a top level manifest key (e.g. we still want to have a linting error
+  //   if "action" or "browser_action" is being used in the wrong manifest version)
+  //
+  // - or part of a group of anyOf schema definitions (e.g. we don't need the errors related to
+  //   web_accessible_resources schema definition that is only valid on a certain manifest
+  //   version).
+  const skipIfNotInRange = !isTopLevelManifestKey || errorFromAnyOf;
+
+  // Omit errors related to a schema fragment that are not relevant
   // for the given manifest version (and also if its parent schema
-  // is not relevant for the given manifest version).
+  // is not relevant for the given manifest version), but only if
+  // the manifest key nesting level is > 1 (so that we still include
+  // errors related to top level manifest keys that are only supported
+  // in specific manifest versions)
   if (
-    manifest_version < errorMinManifestVersion ||
-    manifest_version > errorMaxManifestVersion
+    skipIfNotInRange &&
+    (manifest_version < errorMinManifestVersion ||
+      manifest_version > errorMaxManifestVersion)
   ) {
     return false;
   }
