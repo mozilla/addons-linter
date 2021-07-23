@@ -2,10 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import util from 'util';
 
+import { oneLine } from 'common-tags';
 /* eslint-disable import/no-extraneous-dependencies */
 import commentJson from 'comment-json';
 import yauzl from 'yauzl';
-
 /* eslint-enable import/no-extraneous-dependencies */
 
 import { deepmerge, deepPatch } from './deepmerge';
@@ -40,6 +40,8 @@ export const refMap = {
   ExtensionURL: 'manifest#/types/ExtensionURL',
   HttpURL: 'manifest#/types/HttpURL',
   ImageDataOrExtensionURL: 'manifest#/types/ImageDataOrExtensionURL',
+  IconPath: 'manifest#/types/IconPath',
+  ThemeIcons: 'manifest#/types/ThemeIcons',
 };
 
 // Reference some functions on inner so they can be stubbed in tests.
@@ -353,8 +355,32 @@ export function rewriteExtend(schemas, schemaId) {
     (extendSchema.types || []).forEach((type) => {
       const { $extend, id, ...rest } = type;
       if ($extend) {
+        // Throw an explicit error if we are going to deep merge a set of properties which may be
+        // overriding an existing one, instead of extending the type with new ones as expected.
+        if (rest.properties) {
+          const newProps = Object.keys(rest.properties);
+          if (
+            !newProps.every(
+              // Make sure that the value set of each property name that we are going to merge
+              // is null or undefined.
+              (k) => extendDefinitions?.[$extend]?.properties?.[k] == null
+            )
+          ) {
+            throw new Error(oneLine`Unsupported schema format:
+              detected multiple extend schema entries overwriting existing properties
+              while processing "${schemaId}" namespace
+            `);
+          }
+        }
         // Move the $extend into definitions.
-        extendDefinitions[$extend] = rest;
+        //
+        // NOTE: some schema files, like browser_action.json, may contain more than one extends
+        // and so here we use deepmerge to merge the multiple extended definitions instead
+        // of overwriting it with the last one processed.
+        extendDefinitions[$extend] = deepmerge(
+          extendDefinitions[$extend] ?? {},
+          rest
+        );
         // Remember the location of this file so we can $ref it later.
         refs[`${schemaId}#/definitions/${$extend}`] = {
           namespace: extendId,
@@ -386,6 +412,7 @@ export function rewriteExtend(schemas, schemaId) {
       definitions[id] = rewriteExtendRefs(definition, extendId, extendTypes);
     });
   });
+
   return { definitions, refs, types };
 }
 
@@ -473,10 +500,15 @@ export function foldSchemas(schemas) {
   return foldedSchemas;
 }
 
+// Normalize the JSONSchema, gets an array of JSONSchema objects and return an array of
+// normalized JSONSchema objects (a JSONSchema file may contain more than one API namespace,
+// e.g. like menus.json and browser_action.json).
+//
+// (schemas: Array<Object>, file: string) -> Array<Object>
 inner.normalizeSchema = (schemas, file) => {
   const filteredSchemas = foldSchemas(filterSchemas(schemas));
-  let extendSchemas;
-  let primarySchema;
+  let manifestExtendSchemas;
+  let apiNamespaceSchemas;
 
   if (filteredSchemas.length === 1) {
     // If there is only a manifest namespace then this just extends the manifest.
@@ -484,36 +516,79 @@ inner.normalizeSchema = (schemas, file) => {
       filteredSchemas[0].namespace === 'manifest' &&
       file !== 'manifest.json'
     ) {
-      primarySchema = {
-        namespace: file.slice(0, file.indexOf('.')),
-      };
-      extendSchemas = [filteredSchemas[0]];
+      apiNamespaceSchemas = [
+        {
+          namespace: file.slice(0, file.indexOf('.')),
+        },
+      ];
+      manifestExtendSchemas = [filteredSchemas[0]];
     } else {
-      [primarySchema] = filteredSchemas;
-      extendSchemas = [];
+      apiNamespaceSchemas = filteredSchemas;
+      manifestExtendSchemas = [];
     }
   } else {
-    extendSchemas = filteredSchemas.slice(0, filteredSchemas.length - 1);
-    primarySchema = filteredSchemas[filteredSchemas.length - 1];
+    manifestExtendSchemas = filteredSchemas.filter((s) => {
+      return s.namespace === 'manifest' && file !== 'manifest.json';
+    });
+    apiNamespaceSchemas = filteredSchemas.filter((s) => {
+      return !manifestExtendSchemas.includes(s);
+    });
   }
 
-  const { namespace, types, ...rest } = primarySchema;
-  const { types: extendTypes, ...extendRest } = rewriteExtend(
-    extendSchemas,
-    namespace
-  );
-  const updatedTypes = { ...loadTypes(types), ...extendTypes };
-  return {
-    ...rest,
-    ...extendRest,
-    id: namespace,
-    types: updatedTypes,
-  };
+  // Rewrite manifest extend types using each api namespace in the file.
+  return apiNamespaceSchemas.map((apiSchema) => {
+    const { namespace, types, $import, ...rest } = apiSchema;
+    const { types: extendTypes, ...extendRest } = rewriteExtend(
+      manifestExtendSchemas,
+      namespace
+    );
+    const updatedTypes = { ...loadTypes(types), ...extendTypes };
+
+    const getImportedProps = () => {
+      if (typeof $import !== 'string') {
+        return {};
+      }
+      // menus.json and browser_action.json contain the definition of two API
+      // namespaces, one just import the other one defined in the same file
+      // (e.g. "contextMenus" imports "menus", "browser_action" imports "action"),
+      // we want to expand those definitions otherwise they will be converted into
+      // a $merge form, which is only used in the manifest validation and so the
+      // eslint rules that look for the API method definitions will not work as expected.
+      const {
+        // We don't want to import into the target schema the `namespace` name and
+        // the manifest versioning fields (e.g. "browserAction" has max_manifest_version 2
+        // and it imports "action" which has min_manifest_version 3, and Firefox seems to
+        // also ignore them while processing the "$import").
+        namespace: importedNamespace,
+        min_manifest_version,
+        max_manifest_version,
+        ...importedRest
+      } = apiNamespaceSchemas.find((schema) => schema.namespace === $import);
+      if (importedRest.$import) {
+        throw new Error(oneLine`Unsupported schema format:
+          "${namespace}" is importing "${importedNamespace}"
+          which also includes an "$import" property
+        `);
+      }
+      return importedRest;
+    };
+
+    return {
+      ...getImportedProps(),
+      ...rest,
+      ...extendRest,
+      id: namespace,
+      types: updatedTypes,
+    };
+  });
 };
 
-inner.loadSchema = (schema, file) => {
-  const { id, ...rest } = inner.normalizeSchema(schema, file);
-  return { id, ...inner.rewriteObject(rest, id) };
+// (schemas: Array<Object>, file: string) -> Array<Object>
+inner.loadSchema = (schemas, file) => {
+  return inner.normalizeSchema(schemas, file).map((normalizedSchema) => {
+    const { id, ...rest } = normalizedSchema;
+    return { id, ...inner.rewriteObject(rest, id) };
+  });
 };
 
 inner.mergeSchemas = (schemaLists) => {
@@ -537,12 +612,13 @@ export function processSchemas(schemas) {
   const schemaListsByNamespace = {};
   schemas.forEach(({ file, schema }) => {
     // Convert the Firefox schema to more standard JSON schema.
-    const loadedSchema = inner.loadSchema(schema, file);
-    const { id } = loadedSchema;
-    if (!(id in schemaListsByNamespace)) {
-      schemaListsByNamespace[id] = [];
-    }
-    schemaListsByNamespace[id].push({ file, schema: loadedSchema });
+    inner.loadSchema(schema, file).forEach((loadedSchema) => {
+      const { id } = loadedSchema;
+      if (!(id in schemaListsByNamespace)) {
+        schemaListsByNamespace[id] = [];
+      }
+      schemaListsByNamespace[id].push({ file, schema: loadedSchema });
+    });
   });
   const mergedSchemasByNamespace = inner.mergeSchemas(schemaListsByNamespace);
   // Now that everything is loaded, we can finish mapping the non-standard
@@ -621,6 +697,13 @@ export function importSchemas(firefoxPath, ourPath, importedPath) {
   const ourSchemas = {
     ...readSchema(ourPath, 'manifest.json'),
     ...readSchema(ourPath, 'contextMenus.json'),
+    // The "action" API namespace is currently part of browser_action.json
+    // along with "browserAction", the following is needed to make sure we
+    // will normalize and import the "action" API namespace in a file named
+    // "src/schema/imported/action.json" (similar to what contextMenus.json
+    // does for the "contextMenus" API namespace which is defined along with
+    // the "menus" API namespaces).
+    ...readSchema(ourPath, 'action.json'),
   };
   const processedSchemas = processSchemas(rawSchemas);
   const updatedSchemas = inner.updateWithAddonsLinterData(

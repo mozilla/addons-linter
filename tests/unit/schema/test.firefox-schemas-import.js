@@ -369,25 +369,27 @@ describe('firefox schema import', () => {
           somethingElse: 'foo',
         },
       ];
-      expect(inner.normalizeSchema(schemas, 'cookies.json')).toEqual({
-        id: 'cookies',
-        types: {
-          Cookie: { id: 'Cookie', type: 'string' },
-          CookieJar: { id: 'CookieJar', type: 'object' },
-        },
-        somethingElse: 'foo',
-        definitions: {
-          WebExtensionManifest: {
-            choices: [{ type: 'string', enum: ['cookies'] }],
+      expect(inner.normalizeSchema(schemas, 'cookies.json')).toEqual([
+        {
+          id: 'cookies',
+          types: {
+            Cookie: { id: 'Cookie', type: 'string' },
+            CookieJar: { id: 'CookieJar', type: 'object' },
+          },
+          somethingElse: 'foo',
+          definitions: {
+            WebExtensionManifest: {
+              choices: [{ type: 'string', enum: ['cookies'] }],
+            },
+          },
+          refs: {
+            'cookies#/definitions/WebExtensionManifest': {
+              namespace: 'manifest',
+              type: 'WebExtensionManifest',
+            },
           },
         },
-        refs: {
-          'cookies#/definitions/WebExtensionManifest': {
-            namespace: 'manifest',
-            type: 'WebExtensionManifest',
-          },
-        },
-      });
+      ]);
     });
 
     it('handles the manifest schema', () => {
@@ -397,12 +399,14 @@ describe('firefox schema import', () => {
           types: [{ id: 'Permission', type: 'string' }],
         },
       ];
-      expect(inner.normalizeSchema(schemas, 'manifest.json')).toEqual({
-        id: 'manifest',
-        types: { Permission: { id: 'Permission', type: 'string' } },
-        definitions: {},
-        refs: {},
-      });
+      expect(inner.normalizeSchema(schemas, 'manifest.json')).toEqual([
+        {
+          id: 'manifest',
+          types: { Permission: { id: 'Permission', type: 'string' } },
+          definitions: {},
+          refs: {},
+        },
+      ]);
     });
 
     it('handles manifest extensions without a schema', () => {
@@ -421,24 +425,88 @@ describe('firefox schema import', () => {
           ],
         },
       ];
-      expect(inner.normalizeSchema(schemas, 'url_overrides.json')).toEqual({
-        id: 'url_overrides',
-        types: {},
-        definitions: {
-          WebExtensionManifest: {
-            properties: {
-              chrome_url_overrides: { type: 'object' },
+      expect(inner.normalizeSchema(schemas, 'url_overrides.json')).toEqual([
+        {
+          id: 'url_overrides',
+          types: {},
+          definitions: {
+            WebExtensionManifest: {
+              properties: {
+                chrome_url_overrides: { type: 'object' },
+              },
+            },
+          },
+          refs: {
+            'url_overrides#/definitions/WebExtensionManifest': {
+              namespace: 'manifest',
+              type: 'WebExtensionManifest',
             },
           },
         },
-        refs: {
-          'url_overrides#/definitions/WebExtensionManifest': {
-            namespace: 'manifest',
-            type: 'WebExtensionManifest',
-          },
-        },
-      });
+      ]);
     });
+
+    it('resolves the top level $import in API namespace definitions', () => {
+      const schemas = [
+        {
+          namespace: 'action',
+          functions: [{ name: 'setTitle', type: 'function', parameters: [] }],
+          events: [{ name: 'onClicked', type: 'function', parameters: [] }],
+          // min/max_manifest_version are expected to not be imported in the
+          // JSONSchema definition importing this one.
+          min_manifest_version: 3,
+          max_manifest_version: 3,
+        },
+        {
+          namespace: 'browserAction',
+          $import: 'action',
+          max_manifest_version: 2,
+        },
+      ];
+
+      expect(inner.normalizeSchema(schemas, 'browser_action.json')).toEqual([
+        {
+          id: 'action',
+          definitions: {},
+          refs: {},
+          types: {},
+          functions: [{ name: 'setTitle', type: 'function', parameters: [] }],
+          events: [{ name: 'onClicked', type: 'function', parameters: [] }],
+          min_manifest_version: 3,
+          max_manifest_version: 3,
+        },
+        {
+          id: 'browserAction',
+          definitions: {},
+          refs: {},
+          types: {},
+          functions: [{ name: 'setTitle', type: 'function', parameters: [] }],
+          events: [{ name: 'onClicked', type: 'function', parameters: [] }],
+          max_manifest_version: 2,
+        },
+      ]);
+    });
+  });
+
+  it('throws an explicit error on $import property in imported namespace', () => {
+    const schemas = [
+      {
+        namespace: 'action',
+        functions: [{ name: 'fn', type: 'function', parameters: [] }],
+      },
+      {
+        namespace: 'action2',
+        $import: 'action',
+      },
+      {
+        namespace: 'action3',
+        $import: 'action2',
+      },
+    ];
+
+    expect(() => inner.normalizeSchema(schemas, 'invalid_import.json')).toThrow(
+      'Unsupported schema format: "action3" is importing "action2" which also includes an "$import" property'
+    );
   });
 
   describe('loadSchema', () => {
@@ -446,30 +514,34 @@ describe('firefox schema import', () => {
       sinon
         .stub(inner, 'normalizeSchema')
         .withArgs({ the: 'schema' })
-        .returns({ id: 'Foo', normalized: true });
+        .returns([{ id: 'Foo', normalized: true }]);
       sinon
         .stub(inner, 'rewriteObject')
         .withArgs({ normalized: true })
         .returns({ rewritten: true });
-      expect(inner.loadSchema({ the: 'schema' })).toEqual({
-        id: 'Foo',
-        rewritten: true,
-      });
+      expect(inner.loadSchema({ the: 'schema' })).toEqual([
+        {
+          id: 'Foo',
+          rewritten: true,
+        },
+      ]);
     });
 
     it('adds a $ref for the manifest namespace', () => {
       sinon
         .stub(inner, 'normalizeSchema')
         .withArgs({ id: 'manifest' })
-        .returns({ id: 'manifest', normalized: true });
+        .returns([{ id: 'manifest', normalized: true }]);
       sinon
         .stub(inner, 'rewriteObject')
         .withArgs({ normalized: true })
         .returns({ rewritten: true });
-      expect(inner.loadSchema({ id: 'manifest' })).toEqual({
-        id: 'manifest',
-        rewritten: true,
-      });
+      expect(inner.loadSchema({ id: 'manifest' })).toEqual([
+        {
+          id: 'manifest',
+          rewritten: true,
+        },
+      ]);
     });
   });
 
@@ -478,8 +550,8 @@ describe('firefox schema import', () => {
       const firstSchema = [{ id: 'manifest' }];
       const secondSchema = [{ id: 'manifest' }, { id: 'cookies' }];
       const loadSchema = sinon.stub(inner, 'loadSchema');
-      loadSchema.withArgs(firstSchema).returns({ id: 'manifest', schema: 1 });
-      loadSchema.withArgs(secondSchema).returns({ id: 'cookies', schema: 2 });
+      loadSchema.withArgs(firstSchema).returns([{ id: 'manifest', schema: 1 }]);
+      loadSchema.withArgs(secondSchema).returns([{ id: 'cookies', schema: 2 }]);
       sinon
         .stub(inner, 'mergeSchemas')
         .withArgs({
@@ -824,6 +896,70 @@ describe('firefox schema import', () => {
       expect(rewriteExtend(original, 'browserAction')).toEqual(expected);
     });
 
+    it('merges extended types property with properties originated by multiple entries', () => {
+      const schemas = [
+        {
+          namespace: 'manifest',
+          types: [
+            {
+              id: 'ActionManifest',
+              type: 'object',
+            },
+            {
+              $extend: 'WebExtensionManifest',
+              properties: {
+                action: {
+                  min_manifest_version: 3,
+                  $ref: 'ActionManifest',
+                  optional: true,
+                },
+              },
+            },
+            {
+              $extend: 'WebExtensionManifest',
+              properties: {
+                browser_action: {
+                  max_manifest_version: 2,
+                  $ref: 'ActionManifest',
+                  optional: true,
+                },
+              },
+            },
+          ],
+        },
+      ];
+
+      const expected = {
+        definitions: {
+          WebExtensionManifest: {
+            properties: {
+              browser_action: {
+                $ref: 'ActionManifest',
+                max_manifest_version: 2,
+                optional: true,
+              },
+              action: {
+                $ref: 'ActionManifest',
+                min_manifest_version: 3,
+                optional: true,
+              },
+            },
+          },
+        },
+        refs: {
+          'action#/definitions/WebExtensionManifest': {
+            namespace: 'manifest',
+            type: 'WebExtensionManifest',
+          },
+        },
+        types: {
+          ActionManifest: { type: 'object' },
+        },
+      };
+
+      expect(rewriteExtend(schemas, 'action')).toEqual(expected);
+    });
+
     it('throws if there is no $extend or id', () => {
       const schemas = [
         {
@@ -837,6 +973,47 @@ describe('firefox schema import', () => {
       ];
       expect(() => rewriteExtend(schemas, 'foo')).toThrow(
         '$extend or id is required'
+      );
+    });
+
+    it('throws if extended types properties are overwritten by a new entry', () => {
+      const schemas = [
+        {
+          namespace: 'manifest',
+          types: [
+            {
+              id: 'ActionManifest',
+              type: 'object',
+            },
+            {
+              $extend: 'WebExtensionManifest',
+              properties: {
+                action: {
+                  min_manifest_version: 3,
+                  $ref: 'ActionManifest',
+                  optional: true,
+                },
+              },
+            },
+            {
+              $extend: 'WebExtensionManifest',
+              properties: {
+                // Fake schema entry which contains a property definition that would overwrite
+                // the previous one above and is expected to throw an explicit unsupport schema
+                // data error.
+                action: {
+                  max_manifest_version: 2,
+                  $ref: 'ActionManifest',
+                  optional: true,
+                },
+              },
+            },
+          ],
+        },
+      ];
+
+      expect(() => rewriteExtend(schemas, 'action')).toThrow(
+        /Unsupported schema format: detected multiple extend schema entries .* while processing "action" namespace/
       );
     });
   });
@@ -1423,26 +1600,28 @@ describe('firefox schema import', () => {
         },
       ];
       const result = inner.loadSchema(schemaWithImport, 'dollar-import.json');
-      expect(result).toEqual({
-        id: 'dollar-import',
-        definitions: {},
-        refs: {},
-        types: {
-          ManifestBase: {
-            properties: { name: { type: 'string' } },
-            required: ['name'],
-          },
-          WebExtensionManifest: {
-            $merge: {
-              source: { $ref: 'dollar-import#/types/ManifestBase' },
-              with: {
-                properties: { something: { type: 'boolean' } },
-                required: ['something'],
+      expect(result).toEqual([
+        {
+          id: 'dollar-import',
+          definitions: {},
+          refs: {},
+          types: {
+            ManifestBase: {
+              properties: { name: { type: 'string' } },
+              required: ['name'],
+            },
+            WebExtensionManifest: {
+              $merge: {
+                source: { $ref: 'dollar-import#/types/ManifestBase' },
+                with: {
+                  properties: { something: { type: 'boolean' } },
+                  required: ['something'],
+                },
               },
             },
           },
         },
-      });
+      ]);
     });
   });
 
