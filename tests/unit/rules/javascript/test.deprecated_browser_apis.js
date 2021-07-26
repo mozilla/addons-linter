@@ -45,3 +45,64 @@ describe('deprecated browser APIs', () => {
     });
   });
 });
+
+describe('browserAction deprecated in manifest v3', () => {
+  const expectedBehaviors = [
+    {
+      namespace: 'browserAction',
+      manifestVersion: 3,
+      message: 'should warn',
+      expectToMatch: expect.arrayContaining([
+        expect.objectContaining({
+          code: messages.UNSUPPORTED_API.code,
+          type: VALIDATION_WARNING,
+          message: expect.stringMatching(
+            /"browserAction.onClicked" has been removed in Manifest Version 3/
+          ),
+        }),
+      ]),
+    },
+    {
+      namespace: 'action',
+      manifestVersion: 2,
+      message: 'should warn',
+      expectToMatch: expect.arrayContaining([
+        expect.objectContaining({
+          code: messages.UNSUPPORTED_API.code,
+          type: VALIDATION_WARNING,
+          message: expect.stringMatching(/action.onClicked is not supported/),
+        }),
+      ]),
+    },
+    {
+      namespace: 'browserAction',
+      manifestVersion: 2,
+      message: 'should not warn',
+      expectToMatch: [],
+    },
+    {
+      namespace: 'action',
+      manifestVersion: 3,
+      message: 'should not warn',
+      expectToMatch: [],
+    },
+  ];
+
+  test.each(expectedBehaviors)(
+    '$message on "$namespace" API call in manifest_version: $manifestVersion',
+    async ({ namespace, manifestVersion, expectToMatch }) => {
+      const jsScanner = new JavaScriptScanner(
+        `browser.${namespace}.onClicked.addListener(() => {});`,
+        'code.js',
+        {
+          addonMetadata: {
+            id: '@test-browserAction-action-api',
+            manifestVersion,
+          },
+        }
+      );
+      const { linterMessages } = await runJsScanner(jsScanner);
+      expect(linterMessages).toEqual(expectToMatch);
+    }
+  );
+});

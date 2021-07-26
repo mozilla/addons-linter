@@ -1,3 +1,5 @@
+import cloneDeep from 'lodash.clonedeep';
+
 import { getValidator } from 'schema/validator';
 
 export const validManifest = {
@@ -10,6 +12,16 @@ export const validManifest = {
     },
   },
 };
+
+export function createValidManifest(overriddenProps) {
+  // Return a deep clone to avoid that changes to the manifest object returned could
+  // change the subproperties nested into the validManifest const or the object passed
+  // to overrideProps (and as a side-effect trigger unexpected test failures).
+  return cloneDeep({
+    ...validManifest,
+    ...overriddenProps,
+  });
+}
 
 /**
  * Create a fake manifest.json schema (in the same format used by
