@@ -91,6 +91,21 @@ describe('JavaScript Scanner', () => {
     expect(linterMessages).toEqual([]);
   });
 
+  it.skip('should support public field declarations', async () => {
+    const code = oneLine`
+      class MyClass {
+        a = 1;
+        b = 2;
+        c = 3;
+      }
+    `;
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages).toEqual([]);
+  });
+
   it('should support object spread syntax', async () => {
     const code = oneLine`
       const config = {};
