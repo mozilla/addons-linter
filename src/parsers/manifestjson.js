@@ -323,6 +323,7 @@ export default class ManifestJSONParser extends JSONParser {
       messages.MANIFEST_PERMISSIONS.code,
       messages.MANIFEST_OPTIONAL_PERMISSIONS.code,
       messages.MANIFEST_PERMISSION_UNSUPPORTED,
+      messages.MANIFEST_FIELD_UNSUPPORTED,
     ];
     let validate = validateAddon;
 
