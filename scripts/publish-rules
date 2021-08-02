@@ -28,7 +28,7 @@ function publish() {
       email: process.env.GH_EMAIL,
     },
     repo: `https://${process.env.GH_TOKEN}@github.com/mozilla/addons-linter.git`,
-    message: `Publish rules (auto)${getDeployMessage()}`,
+    message: `[ci skip] Publish rules (auto)${getDeployMessage()}`,
   });
 }
 
