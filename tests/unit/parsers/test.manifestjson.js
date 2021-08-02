@@ -445,6 +445,32 @@ describe('ManifestJSONParser', () => {
           });
         });
       }
+
+      it('warns on unsupported manifest key', () => {
+        const linter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          action: { default_popup: 'popup.html' },
+          browser_action: { default_popup: 'popup.html' },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          linter.collector,
+          { io: { files: { 'popup.html': '' } } }
+        );
+
+        expect(manifestJSONParser.collector.warnings).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              code: 'MANIFEST_FIELD_UNSUPPORTED',
+              // This would need to be changed to /browser_action
+              // if the manifest_version we test by default becomes
+              // manifest_version 3.
+              dataPath: '/action',
+            }),
+          ])
+        );
+        expect(linter.collector.errors).toEqual([]);
+      });
     });
   });
 
