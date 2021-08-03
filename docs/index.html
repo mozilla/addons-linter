@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Linter Rules</title>
+  <link rel="shortcut icon" type="image/x-icon" href="https://addons.cdn.mozilla.net/static/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="gfm.css">
+</head>
+<style type="text/css">
+  body.markdown-body {
+    padding: 20px;
+    overflow: auto !important;
+  }
+
+  .header-anchor {
+    display: none;
+  }
+
+  h1:hover a,
+  h2:hover a,
+  h3:hover a,
+  h4:hover a,
+  h5:hover a {
+    display: inline;
+    color: #ccc;
+  }
+</style>
+<body class="markdown-body">
+  <h1 id="linter-rules" tabindex="-1">Linter Rules <a class="header-anchor" href="#linter-rules">¶</a></h1>
+<p>This document is automatically published on <a href="http://mozilla.github.io/addons-linter/">GitHub pages</a>. To update it edit <code>docs/rules.md</code> in the <a href="https://github.com/mozilla/addons-linter">GitHub repo</a>.</p>
+<p>Rules are sorted by severity.</p>
+<h2 id="javascript" tabindex="-1">JavaScript <a class="header-anchor" href="#javascript">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Message code</th>
+<th>Severity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>KNOWN_LIBRARY</code></td>
+<td>notice</td>
+<td>This is version of a JS library is known and generally accepted.</td>
+</tr>
+<tr>
+<td><code>OPENDIALOG_NONLIT_URI</code></td>
+<td>notice</td>
+<td>openDialog called with non-literal parameter.</td>
+</tr>
+<tr>
+<td><code>EVENT_LISTENER_FOURTH</code></td>
+<td>notice</td>
+<td><code>addEventListener</code> called with truthy fourth argument.</td>
+</tr>
+<tr>
+<td><code>UNEXPECTED_GLOGAL_ARG</code></td>
+<td>warning</td>
+<td>Unexpected global passed as an argument.</td>
+</tr>
+<tr>
+<td><code>NO_IMPLIED_EVAL</code></td>
+<td>warning</td>
+<td>disallow the use of <code>eval()</code>-like methods.</td>
+</tr>
+<tr>
+<td><code>OPENDIALOG_REMOTE_URI</code></td>
+<td>warning</td>
+<td>openDialog called with non-local URI.</td>
+</tr>
+<tr>
+<td><code>NO_DOCUMENT_WRITE</code></td>
+<td>warning</td>
+<td>Use of <code>document.write</code> strongly discouraged.</td>
+</tr>
+<tr>
+<td><code>JS_SYNTAX_ERROR</code></td>
+<td>warning</td>
+<td>JavaScript compile-time error.</td>
+</tr>
+<tr>
+<td><code>UNADVISED_LIBRARY</code></td>
+<td>warning</td>
+<td>This version of a JS library is not recommended.</td>
+</tr>
+<tr>
+<td><code>DEPRECATED_API</code></td>
+<td>warning</td>
+<td>API is deprecated.</td>
+</tr>
+<tr>
+<td><code>STORAGE_SYNC</code></td>
+<td>warning</td>
+<td>Temporary IDs can cause issues with <code>storage.sync</code>.</td>
+</tr>
+<tr>
+<td><code>STORAGE_MANAGED</code></td>
+<td>warning</td>
+<td>Temporary IDs can cause issues with <code>storage.managed</code>.</td>
+</tr>
+<tr>
+<td><code>IDENTITY_GETREDIRECTURL</code></td>
+<td>warning</td>
+<td>Temporary IDs can cause issues with <code>identity.getRedirectURL</code>.</td>
+</tr>
+<tr>
+<td><code>RUNTIME_ONMESSAGEEXTERNAL</code></td>
+<td>warning</td>
+<td>Temporary IDs can cause issues with <code>runtime.onMessageExternal</code>.</td>
+</tr>
+<tr>
+<td><code>RUNTIME_ONCONNECTEXTERNAL</code></td>
+<td>warning</td>
+<td>Temporary IDs can cause issues with <code>runtime.onConnectExternal</code>.</td>
+</tr>
+<tr>
+<td><code>BANNED_LIBRARY</code></td>
+<td>error</td>
+<td>This version of a JS library is banned for security reasons.</td>
+</tr>
+<tr>
+<td><code>INCOMPATIBLE_API</code></td>
+<td>warning</td>
+<td>API not compatible with <code>applications.gecko.strict_min_version</code></td>
+</tr>
+<tr>
+<td><code>ANDROID_INCOMPATIBLE_API</code></td>
+<td>warning</td>
+<td>API not compatible with Firefox for Android at <code>applications.gecko.strict_min_version</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="markup" tabindex="-1">Markup <a class="header-anchor" href="#markup">¶</a></h2>
+<h3 id="css" tabindex="-1">CSS <a class="header-anchor" href="#css">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Message code</th>
+<th>Severity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CSS_SYNTAX_ERROR</code></td>
+<td>error</td>
+<td>A CSS syntax error was detected.</td>
+</tr>
+<tr>
+<td><code>INVALID_SELECTOR_NESTING</code></td>
+<td>error</td>
+<td>CSS selectors should not be nested.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="html" tabindex="-1">HTML <a class="header-anchor" href="#html">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Message code</th>
+<th>Severity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>INLINE_SCRIPT</code></td>
+<td>warning</td>
+<td>Inline script is disallowed by CSP.</td>
+</tr>
+<tr>
+<td><code>REMOTE_SCRIPT</code></td>
+<td>warning</td>
+<td>Remote scripts are not allowed as per Add-on Policies.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="content" tabindex="-1">Content <a class="header-anchor" href="#content">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Message code</th>
+<th>Severity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HIDDEN_FILE</code></td>
+<td>warning</td>
+<td>Hidden file flagged.</td>
+</tr>
+<tr>
+<td><code>FLAGGED_FILE</code></td>
+<td>warning</td>
+<td>Flagged filename found.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="package-layout" tabindex="-1">Package layout <a class="header-anchor" href="#package-layout">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Message code</th>
+<th>Severity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MOZILLA_COND_OF_USE</code></td>
+<td>notice</td>
+<td>Mozilla conditions of use violation.</td>
+</tr>
+<tr>
+<td><code>FLAGGED_FILE_TYPE</code></td>
+<td>notice</td>
+<td>(Binary) Flagged file type found.</td>
+</tr>
+<tr>
+<td><code>FLAGGED_FILE_EXTENSION</code></td>
+<td>warning</td>
+<td>Flagged file extensions found</td>
+</tr>
+<tr>
+<td><code>DUPLICATE_XPI_ENTRY</code></td>
+<td>warning</td>
+<td>Package contains duplicate entries</td>
+</tr>
+<tr>
+<td><code>ALREADY_SIGNED</code></td>
+<td>warning</td>
+<td>Already signed</td>
+</tr>
+<tr>
+<td><code>COINMINER_USAGE_DETECTED</code></td>
+<td>warning</td>
+<td>Firefox add-ons are not allowed to run coin miners.</td>
+</tr>
+<tr>
+<td><code>BAD_ZIPFILE</code></td>
+<td>error</td>
+<td>Bad zip file</td>
+</tr>
+<tr>
+<td><code>FILE_TOO_LARGE</code></td>
+<td>error</td>
+<td>File is too large to parse</td>
+</tr>
+<tr>
+<td><code>RESERVED_FILENAME</code></td>
+<td>error</td>
+<td>Reserved filename detected.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="type-detection" tabindex="-1">Type detection <a class="header-anchor" href="#type-detection">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Message code</th>
+<th>Severity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TYPE_NO_MANIFEST_JSON</code></td>
+<td>notice</td>
+<td>Add-on missing manifest_json for type detection.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="language-packs" tabindex="-1">Language packs <a class="header-anchor" href="#language-packs">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Message code</th>
+<th>Severity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FLUENT_INVALID</td>
+<td>warning</td>
+<td>Invalid fluent template file.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="web-extensions-%2F-manifest.json" tabindex="-1">Web Extensions / manifest.json <a class="header-anchor" href="#web-extensions-%2F-manifest.json">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Message code</th>
+<th>Severity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MANIFEST_UNUSED_UPDATE</code></td>
+<td>notice</td>
+<td>update_url ignored in manifest.json</td>
+</tr>
+<tr>
+<td><code>PROP_VERSION_TOOLKIT_ONLY</code></td>
+<td>notice</td>
+<td>version is in the toolkit format in manifest.json</td>
+</tr>
+<tr>
+<td><code>CORRUPT_ICON_FILE</code></td>
+<td>warning</td>
+<td>Icons must not be corrupt</td>
+</tr>
+<tr>
+<td><code>MANIFEST_CSP</code></td>
+<td>warning</td>
+<td>content_security_policy in manifest.json means more review</td>
+</tr>
+<tr>
+<td><code>MANIFEST_CSP_UNSAFE_EVAL</code></td>
+<td>warning</td>
+<td>usage of 'unsafe-eval' is strongly discouraged</td>
+</tr>
+<tr>
+<td><code>MANIFEST_PERMISSIONS</code></td>
+<td>warning</td>
+<td>Unknown permission</td>
+</tr>
+<tr>
+<td><code>MANIFEST_OPTIONAL_PERMISSIONS</code></td>
+<td>warning</td>
+<td>Unknown optional permission</td>
+</tr>
+<tr>
+<td><code>NO_MESSAGES_FILE</code></td>
+<td>warning</td>
+<td>When default_locale is specified a matching messages.json must exist</td>
+</tr>
+<tr>
+<td><code>NO_DEFAULT_LOCALE</code></td>
+<td>warning</td>
+<td>When _locales directory exists, default_locale must exist</td>
+</tr>
+<tr>
+<td><code>UNSAFE_VAR_ASSIGNMENT</code></td>
+<td>warning</td>
+<td>Assignment using dynamic, unsanitized values</td>
+</tr>
+<tr>
+<td><code>UNSUPPORTED_API</code></td>
+<td>warning</td>
+<td>Unsupported or unknown browser API</td>
+</tr>
+<tr>
+<td><code>DANGEROUS_EVAL</code></td>
+<td>warning</td>
+<td><code>eval</code> and the <code>Function</code> constructor are discouraged</td>
+</tr>
+<tr>
+<td><code>STRICT_MAX_VERSION</code></td>
+<td>warning</td>
+<td>strict_max_version not required</td>
+</tr>
+<tr>
+<td><code>PREDEFINED_MESSAGE_NAME</code></td>
+<td>warning</td>
+<td>String name is reserved for a predefined</td>
+</tr>
+<tr>
+<td><code>MISSING_PLACEHOLDER</code></td>
+<td>warning</td>
+<td>Placeholder for message is not</td>
+</tr>
+<tr>
+<td><code>MANIFEST_FIELD_UNSUPPORTED</code></td>
+<td>warning</td>
+<td>A manifest field is not supported (or not supported for the extension manifest_version)</td>
+</tr>
+<tr>
+<td><code>MANIFEST_PERMISSION_UNSUPPORTED</code></td>
+<td>warning</td>
+<td>A manifest permission is not supported for the extension manifest_version</td>
+</tr>
+<tr>
+<td><code>WRONG_ICON_EXTENSION</code></td>
+<td>error</td>
+<td>Icons must have valid extension</td>
+</tr>
+<tr>
+<td><code>MANIFEST_UPDATE_URL</code></td>
+<td>error</td>
+<td>update_url not allowed in manifest.json</td>
+</tr>
+<tr>
+<td><code>MANIFEST_FIELD_REQUIRED</code></td>
+<td>error</td>
+<td>A required field is missing</td>
+</tr>
+<tr>
+<td><code>MANIFEST_FIELD_INVALID</code></td>
+<td>error</td>
+<td>A field is invalid</td>
+</tr>
+<tr>
+<td><code>MANIFEST_FIELD_DEPRECATED</code></td>
+<td>error</td>
+<td>A field is deprecated</td>
+</tr>
+<tr>
+<td><code>MANIFEST_BAD_PERMISSION</code></td>
+<td>error</td>
+<td>Bad permission</td>
+</tr>
+<tr>
+<td><code>MANIFEST_BAD_OPTIONAL_PERMISSION</code></td>
+<td>error</td>
+<td>Bad optional permission</td>
+</tr>
+<tr>
+<td><code>JSON_BLOCK_COMMENTS</code></td>
+<td>error</td>
+<td>Block Comments are not allowed in JSON</td>
+</tr>
+<tr>
+<td><code>MANIFEST_INVALID_CONTENT</code></td>
+<td>error</td>
+<td>This add-on contains forbidden content</td>
+</tr>
+<tr>
+<td><code>CONTENT_SCRIPT_NOT_FOUND</code></td>
+<td>error</td>
+<td>Content script file could not be found</td>
+</tr>
+<tr>
+<td><code>CONTENT_SCRIPT_EMPTY</code></td>
+<td>error</td>
+<td>Content script file name should not be empty</td>
+</tr>
+<tr>
+<td><code>NO_MESSAGE</code></td>
+<td>error</td>
+<td>Translation string is missing the message</td>
+</tr>
+<tr>
+<td><code>INVALID_MESSAGE_NAME</code></td>
+<td>error</td>
+<td>String name contains invalid characters</td>
+</tr>
+<tr>
+<td><code>INVALID_PLACEHOLDER_NAME</code></td>
+<td>error</td>
+<td>Placeholder name contains invalid characters</td>
+</tr>
+<tr>
+<td><code>NO_PLACEHOLDER_CONTENT</code></td>
+<td>error</td>
+<td>Placeholder is missing the content</td>
+</tr>
+<tr>
+<td><code>JSON_INVALID</code></td>
+<td>error</td>
+<td>JSON is not well formed</td>
+</tr>
+<tr>
+<td><code>JSON_DUPLICATE_KEY</code></td>
+<td>error</td>
+<td>Duplicate key in JSON</td>
+</tr>
+<tr>
+<td><code>MANIFEST_VERSION_INVALID</code></td>
+<td>error</td>
+<td>manifest_version in manifest.json is not valid.</td>
+</tr>
+<tr>
+<td><code>PROP_NAME_MISSING</code></td>
+<td>error</td>
+<td>name property missing from manifest.json</td>
+</tr>
+<tr>
+<td><code>PROP_NAME_INVALID</code></td>
+<td>error</td>
+<td>name property is invalid in manifest.json</td>
+</tr>
+<tr>
+<td><code>PROP_VERSION_MISSING</code></td>
+<td>error</td>
+<td>version property missing from manifest.json</td>
+</tr>
+<tr>
+<td><code>PROP_VERSION_INVALID</code></td>
+<td>error</td>
+<td>version is invalid in manifest.json</td>
+</tr>
+<tr>
+<td><code>MANIFEST_DICT_NOT_FOUND</code></td>
+<td>error</td>
+<td>A dictionary file defined in the manifest could not be found</td>
+</tr>
+<tr>
+<td><code>MANIFEST_MULTIPLE_DICTS</code></td>
+<td>error</td>
+<td>Multiple dictionaries found</td>
+</tr>
+<tr>
+<td><code>MANIFEST_EMPTY_DICTS</code></td>
+<td>error</td>
+<td>Empty <code>dictionaries</code> object</td>
+</tr>
+<tr>
+<td><code>MANIFEST_DICT_MISSING_ID</code></td>
+<td>error</td>
+<td>Missing <code>applications.gecko.id</code> property for a dictionary</td>
+</tr>
+<tr>
+<td><code>KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION</code></td>
+<td>warning</td>
+<td>Manifest key not compatible with <code>applications.gecko.strict_min_version</code></td>
+</tr>
+<tr>
+<td><code>KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION</code></td>
+<td>warning</td>
+<td>Manifest key not compatible with Firefox for Android at <code>applications.gecko.strict_min_version</code></td>
+</tr>
+<tr>
+<td><code>PERMISSION_FIREFOX_UNSUPPORTED_BY_MIN_VERSION</code></td>
+<td>notice</td>
+<td>Permission not compatible with <code>applications.gecko.strict_min_version</code></td>
+</tr>
+<tr>
+<td><code>PERMISSION_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION</code></td>
+<td>notice</td>
+<td>Permission not compatible with Firefox for Android at <code>applications.gecko.strict_min_version</code></td>
+</tr>
+<tr>
+<td><code>IGNORED_APPLICATIONS_PROPERTY</code></td>
+<td>warning</td>
+<td>Usage of both <code>applications</code> and <code>browser_specific_settings</code> properties</td>
+</tr>
+<tr>
+<td><code>RESTRICTED_HOMEPAGE_URL</code></td>
+<td>error</td>
+<td>Linking to addons.mozilla.org in <code>homepage_url</code> is not allowed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="static-theme-%2F-manifest.json" tabindex="-1">Static Theme / manifest.json <a class="header-anchor" href="#static-theme-%2F-manifest.json">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Message code</th>
+<th>Severity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MANIFEST_THEME_IMAGE_MIME_MISMATCH</code></td>
+<td>warning</td>
+<td>Theme image file extension should match its mime type</td>
+</tr>
+<tr>
+<td><code>MANIFEST_THEME_IMAGE_NOT_FOUND</code></td>
+<td>error</td>
+<td>Theme images must not be missing</td>
+</tr>
+<tr>
+<td><code>MANIFEST_THEME_IMAGE_CORRUPTED</code></td>
+<td>error</td>
+<td>Theme images must not be corrupted</td>
+</tr>
+<tr>
+<td><code>MANIFEST_THEME_IMAGE_WRONG_EXT</code></td>
+<td>error</td>
+<td>Theme images must have one of the supported file extensions</td>
+</tr>
+<tr>
+<td><code>MANIFEST_THEME_IMAGE_WRONG_MIME</code></td>
+<td>error</td>
+<td>Theme images mime type must be a supported format</td>
+</tr>
+<tr>
+<td><code>MANIFEST_THEME_LWT_ALIAS</code></td>
+<td>error</td>
+<td>Theme LWT aliases are deprecated</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

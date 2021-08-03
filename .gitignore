@@ -33,7 +33,5 @@ dist/*
 coverage/*
 web-ext/
 
-docs/html/*
-
 yarn.lock
 .DS_Store
