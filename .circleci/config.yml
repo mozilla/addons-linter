@@ -108,8 +108,8 @@ jobs:
           command: |
             npm run build-rules
             # This will return a non-zero exit code if content in the docs/
-            # folder has changed. If this fails, run the following command and
-            # commit the changs:
+            # folder has changed. When this fails, run the following command
+            # and commit the changes:
             #
             #   npm run build-rules
             #
