@@ -1,9 +1,6 @@
 # These environment variables must be set in CircleCI UI
 #
 # NPM_TOKEN - A valid NPM token for releases
-# GH_USER   - A GitHub username
-# GH_EMAIL  - The email linked to the username above
-# GH_TOKEN  - A GitHub token linked to the username above
 version: 2.1
 
 references:
