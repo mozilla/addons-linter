@@ -12,9 +12,6 @@ references:
     docker:
       # This is the NodeJS version we run in production.
       - image: circleci/node:12
-    environment:
-      # This environment variable is needed for `scripts/publish-rules`.
-      CIRCLE_COMPARE_URL: << pipeline.project.git_url >>/compare/<< pipeline.git.base_revision >>..<<pipeline.git.revision>>
 
   defaults-next: &defaults-next
     <<: *defaults
@@ -106,6 +103,17 @@ jobs:
       - run: npm run test-integration:production
       - run: npm run lint
       - run: npm run prettier-ci
+      - run:
+          name: build rules
+          command: |
+            npm run build-rules
+            # This will return a non-zero exit code if content in the docs/
+            # folder has changed. If this fails, run the following command and
+            # commit the changs:
+            #
+            #   npm run build-rules
+            #
+            git diff --name-only --exit-code docs
       # Set up a workspace to share data between this job and the `release-tag`
       # one when we want to publish a new npm version.
       - persist_to_workspace:
@@ -147,13 +155,6 @@ jobs:
       - run: npm run test-integration:production
       - run: npm run webext-test-functional
 
-  publish-rules:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/addons-linter
-      - run: npm run publish-rules > /dev/null 2>&1
-
   release-tag:
     <<: *defaults
     steps:
@@ -177,14 +178,6 @@ workflows:
               only: /.*/
       - test-next
       - test-alternate
-      - publish-rules:
-          requires:
-            - test
-          filters:
-            branches:
-              only: master
-            tags:
-              ignore: /.*/
       - release-tag:
           requires:
             - test
