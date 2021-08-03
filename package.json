@@ -28,7 +28,7 @@
     "prettier": "prettier --write '**'",
     "prettier-ci": "prettier --list-different '**' || (echo '\n\nThis failure means you did not run `npm run prettier-dev` before committing\n\n' && exit 1)",
     "prettier-dev": "pretty-quick --branch master",
-    "publish-rules": "scripts/build-rules && cp node_modules/gfm.css/gfm.css docs/html/gfm.css && scripts/publish-rules",
+    "build-rules": "scripts/build-rules && cp node_modules/gfm.css/gfm.css docs/gfm.css",
     "gen-contributing-toc": "doctoc CONTRIBUTING.md",
     "webext-test-functional": "scripts/webext-test-functional"
   },
@@ -97,7 +97,6 @@
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-promise": "5.1.0",
     "gfm.css": "1.1.2",
-    "gh-pages": "3.2.3",
     "gunzip-maybe": "1.4.2",
     "hashish": "0.0.4",
     "jest": "27.0.6",
