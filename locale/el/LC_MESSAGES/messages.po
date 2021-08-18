@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2019-07-25 10:01+0000\n"
-"PO-Revision-Date: 2020-11-11 10:54+0000\n"
+"PO-Revision-Date: 2021-08-18 10:14+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -232,7 +232,7 @@ msgstr "Η ιδιότητα \"update_url\" δεν χρησιμοποιείται
 
 #: src/messages/manifestjson.js:122
 msgid "\"strict_max_version\" not required."
-msgstr "Δεν απαιτείται \"strict_max_version\"."
+msgstr "Δεν απαιτείται «strict_max_version»."
 
 #: src/messages/manifestjson.js:141
 msgid "An icon defined in the manifest could not be found in the package."
@@ -404,7 +404,7 @@ msgstr "Λείπουν μεταφράσεις από τo \"default_locale\"."
 
 #: src/messages/manifestjson.js:402
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr "Το \"default_locale\" λείπει αλλά το \"_locales\" υπάρχει."
+msgstr "Το «default_locale» λείπει, αλλά το «_locales» υπάρχει."
 
 #: src/messages/manifestjson.js:411
 msgid "Unsupported image extension"
@@ -420,7 +420,7 @@ msgstr "Κενός κατάλογος γλώσσας"
 
 #: src/messages/manifestjson.js:424
 msgid "messages.json file missing in \"%(path)s\""
-msgstr "Το αρχείο messages.json λείπει από το \"%(path)s\""
+msgstr "Το αρχείο messages.json λείπει από το «%(path)s»"
 
 #: src/messages/manifestjson.js:43
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -472,7 +472,7 @@ msgstr "Δείτε το http://mzl.la/1kXIADa (Έγγραφα MDN) για περ
 
 #: src/messages/manifestjson.js:94
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "Η ιδιότητα \"version\" χρησιμοποιεί μια μορφή, ειδικά για το Firefox."
+msgstr "Η ιδιότητα «version» χρησιμοποιεί μια μορφή, ειδικά για το Firefox."
 
 #~ msgid "Violation of Mozilla conditions of use."
 #~ msgstr "Παραβίαση των όρων χρήσης της Mozilla."
