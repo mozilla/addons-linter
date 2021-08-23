@@ -29,6 +29,10 @@
               "default": false,
               "type": "boolean"
             },
+            "cookieStoreId": {
+              "type": "string",
+              "description": "The cookie store ID of the contextual identity; requires \"cookies\" permission."
+            },
             "conflictAction": {
               "$ref": "#/types/FilenameConflictAction"
             },
@@ -627,6 +631,10 @@
           "description": "False if this download is recorded in the history, true if it is not recorded.",
           "type": "boolean"
         },
+        "cookieStoreId": {
+          "type": "string",
+          "description": "The cookie store ID of the contextual identity."
+        },
         "danger": {
           "allOf": [
             {
@@ -850,6 +858,10 @@
         "filename": {
           "description": "Absolute local path.",
           "type": "string"
+        },
+        "cookieStoreId": {
+          "type": "string",
+          "description": "The cookie store ID of the contextual identity."
         },
         "danger": {
           "allOf": [
