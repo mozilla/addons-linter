@@ -234,6 +234,128 @@ describe('ManifestJSONParser', () => {
     });
   });
 
+  describe('host permissions', () => {
+    it('allows host permissions in permissions manifest key in MV2', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 2,
+        permissions: ['*://example.org/*', '<all_urls>'],
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.collector.errors).toEqual([]);
+    });
+
+    it('disallows host permissions in permissions manifest key in MV3', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 3,
+        permissions: ['*://example.org/*'],
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { schemaValidatorOptions: { maxManifestVersion: 3 } }
+      );
+      expect(manifestJSONParser.collector.warnings).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            code: 'MANIFEST_PERMISSIONS',
+            dataPath: '/permissions/0',
+            message: expect.stringMatching(
+              /Unknown permissions "\*:\/\/example\.org\/\*" at 0/
+            ),
+          }),
+        ])
+      );
+      expect(manifestJSONParser.collector.errors).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            code: 'MANIFEST_BAD_PERMISSION',
+            dataPath: '/permissions',
+          }),
+        ])
+      );
+    });
+
+    it('ignores host_permissions manifest key in MV2', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 2,
+        host_permissions: ['*://example.org/*'],
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.collector.errors).toEqual([]);
+      expect(manifestJSONParser.collector.warnings).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            code: 'MANIFEST_FIELD_UNSUPPORTED',
+            dataPath: '/host_permissions',
+            message: expect.stringMatching(
+              /not supported in manifest versions < 3/
+            ),
+          }),
+        ])
+      );
+    });
+
+    it('allows host_permissions manifest key in MV3', () => {
+      // Test with only valid host permissions.
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 3,
+        host_permissions: ['*://example.org/*'],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { schemaValidatorOptions: { maxManifestVersion: 3 } }
+      );
+      expect(manifestJSONParser.collector.errors).toEqual([]);
+    });
+
+    it('disallows <all_urls> in MV3 permissions', () => {
+      // Test with invalid permission and host permissions.
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json_with_warnings = validManifestJSON({
+        manifest_version: 3,
+        permissions: ['<all_urls>'],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json_with_warnings,
+        addonLinter.collector,
+        { schemaValidatorOptions: { maxManifestVersion: 3 } }
+      );
+      expect(manifestJSONParser.collector.errors).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            code: 'MANIFEST_BAD_PERMISSION',
+            dataPath: '/permissions',
+          }),
+        ])
+      );
+      expect(manifestJSONParser.collector.warnings).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            code: 'MANIFEST_PERMISSIONS',
+            dataPath: '/permissions/0',
+            message: expect.stringMatching(
+              /Unknown permissions "<all_urls>" at 0/
+            ),
+          }),
+        ])
+      );
+    });
+  });
+
   describe('bad permissions', () => {
     for (const manifestKey of ['permissions', 'optional_permissions']) {
       it(`should not error if ${manifestKey} is a string (even if unknown)`, () => {

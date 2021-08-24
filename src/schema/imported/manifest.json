@@ -215,17 +215,38 @@
                   ]
                 },
                 "permissions": {
-                  "type": "array",
                   "default": [],
-                  "items": {
-                    "allOf": [
-                      {
-                        "$ref": "#/types/PermissionOrOrigin"
-                      },
-                      {
-                        "onError": "warn"
+                  "anyOf": [
+                    {
+                      "max_manifest_version": 2,
+                      "type": "array",
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/types/PermissionOrOrigin"
+                          },
+                          {
+                            "onError": "warn"
+                          }
+                        ]
                       }
-                    ],
+                    },
+                    {
+                      "min_manifest_version": 3,
+                      "type": "array",
+                      "items": {
+                        "allOf": [
+                          {
+                            "$ref": "#/types/Permission"
+                          },
+                          {
+                            "onError": "warn"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "items": {
                     "anyOf": [
                       {},
                       {
@@ -234,6 +255,21 @@
                     ]
                   },
                   "uniqueItems": true
+                },
+                "host_permissions": {
+                  "min_manifest_version": 3,
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/types/MatchPattern"
+                      },
+                      {
+                        "onError": "warn"
+                      }
+                    ]
+                  },
+                  "default": []
                 },
                 "optional_permissions": {
                   "type": "array",
