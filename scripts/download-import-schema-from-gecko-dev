@@ -1,0 +1,122 @@
+#!/usr/bin/env node
+
+const path = require('path');
+
+const shell = require('shelljs');
+const tmp = require('tmp-promise');
+
+// auto-cleanup when the script is exiting.
+tmp.setGracefulCleanup();
+
+// Fail as soon as a shelljs command fails.
+shell.config.fatal = true;
+
+const GIT_CONFIG = {
+  repo: 'https://github.com/mozilla/gecko-dev',
+  branch: 'beta',
+  paths: [
+    'browser/config/version.txt',
+    'browser/config/version_display.txt',
+    'toolkit/components/extensions/schemas',
+    'browser/components/extensions/schemas',
+    'mobile/android/components/extensions/schemas',
+  ],
+  partialCloneOptions: '--depth 1 --filter=blob:none --no-checkout',
+  tmpDir: tmp.dirSync({
+    prefix: 'gecko-dev--partial',
+    // Optionally allow to keep the temporary directory for debugging purpose.
+    keep: process.env.KEEP_GECKODEV_TMPDIR === '1',
+    // Allow to cleanup the directory along with the git clone created into it.
+    unsafeCleanup: true,
+  }).name,
+};
+
+function processScriptOptions() {
+  const customBranch = process.argv[2];
+  if (customBranch) {
+    if (!['master', 'beta'].includes(customBranch)) {
+      shell.echo(`ERROR: Invalid gecko-dev branch name "${customBranch}"`);
+      return false;
+    }
+    GIT_CONFIG.branch = customBranch;
+  }
+  return true;
+}
+
+function checkPendingSchemaChanges() {
+  const oldFatal = shell.config.fatal;
+  shell.config.fatal = false;
+  const result = shell.exec(`git diff --exit-code src/schema/imported`, {
+    silent: true,
+  });
+  if (result.code === 1) {
+    shell.echo(
+      'ERROR: Unexpected pending changes in src/schema/imported.\n\n' +
+        'Existing changes should be committed or cleared before importing new schema data:\n'
+    );
+    shell.echo(result.stdout);
+    return false;
+  }
+  shell.config.fatal = oldFatal;
+  return true;
+}
+
+function partialClone() {
+  const { branch, partialCloneOptions, repo, tmpDir, paths } = GIT_CONFIG;
+
+  shell.echo(`Partial cloning gecko-dev branch ${branch}`);
+
+  // Creates the partial clone dir.
+  shell.exec(`git clone -b ${branch} ${partialCloneOptions} ${repo} ${tmpDir}`);
+  // Checkout the working tree paths we need for the import.
+  shell.exec(`git checkout ${branch} -- ${paths.join(' ')}`, {
+    silent: true,
+    cwd: tmpDir,
+  });
+
+  shell.echo(`Partial clone completed\n`);
+}
+
+function importSchemaFromPartialClone() {
+  const { tmpDir } = GIT_CONFIG;
+
+  const version_file_path = path.join(
+    tmpDir,
+    'browser/config/version_display.txt'
+  );
+  if (!shell.test('-e', version_file_path)) {
+    throw new Error(
+      `"${version_file_path}" does not exist. Partial gecko-dev git clone failed`
+    );
+  }
+
+  const version_display = shell.cat(version_file_path);
+  shell.echo(
+    `Importing WebExtensions API JSONSchema data from Gecko ${version_display}`
+  );
+
+  shell.exec(`./scripts/firefox-schema-import ${tmpDir}`);
+
+  shell.echo('Schema changes diff:\n');
+
+  const oldFatal = shell.config.fatal;
+  shell.config.fatal = false;
+  if (shell.exec(`git diff --exit-code src/schema/imported`).code === 0) {
+    shell.echo('No changes to the schema data');
+  }
+  shell.config.fatal = oldFatal;
+}
+
+function main() {
+  if (!processScriptOptions()) {
+    process.exit(1);
+  }
+  if (!checkPendingSchemaChanges()) {
+    process.exit(1);
+  }
+
+  partialClone();
+  importSchemaFromPartialClone();
+}
+
+main();
