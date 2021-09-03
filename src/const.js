@@ -97,7 +97,7 @@ export const HIDDEN_FILE_REGEX = /^__MACOSX\//;
 export const FLAGGED_FILE_REGEX = /thumbs\.db$|\.DS_Store$|\.orig$|\.old$|~$/i;
 export const ALREADY_SIGNED_REGEX = /^META-INF\/manifest\.mf/;
 export const PERMS_DATAPATH_REGEX =
-  /^\/(permissions|optional_permissions)\/([\d+])/;
+  /^\/(permissions|optional_permissions|host_permissions)\/([\d+])/;
 
 export const RESERVED_FILENAMES = ['mozilla-recommendation.json'];
 

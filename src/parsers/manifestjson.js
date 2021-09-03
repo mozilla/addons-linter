@@ -216,6 +216,28 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   errorLookup(error) {
+    if (error.dataPath === '/permissions' && error.keyword === 'anyOf') {
+      // With the addition of the schema data for the manifest_version 3
+      // JSONSchema data, permissions has a top level anyOf schema entry
+      // which include the two alternative set of schema definitions
+      // for manifest_version 2 and manifest_version 3, which will produce
+      // one more validation error in addition to the ones reported by the
+      // manifest_version based entries included into it.
+      //
+      // The validation results from the nested entries are being already reported
+      // before the top level anyOf one and so we can ignore this redundant validation
+      // error.
+      const isManifestVersionAnyOf =
+        error.schema &&
+        error.schema.every(
+          (schema) =>
+            'min_manifest_version' in schema || 'max_manifest_version' in schema
+        );
+      if (isManifestVersionAnyOf) {
+        return null;
+      }
+    }
+
     // This is the default message.
     let baseObject = messages.JSON_INVALID;
 
@@ -293,6 +315,13 @@ export default class ManifestJSONParser extends JSONParser {
     ) {
       baseObject = messages.MANIFEST_BAD_OPTIONAL_PERMISSION;
       overrides.message = `Permissions ${error.message}.`;
+    } else if (
+      error.dataPath.startsWith('/host_permissions') &&
+      typeof error.data !== 'undefined' &&
+      typeof error.data !== 'string'
+    ) {
+      baseObject = messages.MANIFEST_BAD_HOST_PERMISSION;
+      overrides.message = `Permissions ${error.message}.`;
     } else if (error.keyword === 'type') {
       baseObject = messages.MANIFEST_FIELD_INVALID;
     }
@@ -306,11 +335,26 @@ export default class ManifestJSONParser extends JSONParser {
       match &&
       baseObject.code !== messages.MANIFEST_BAD_PERMISSION.code &&
       baseObject.code !== messages.MANIFEST_BAD_OPTIONAL_PERMISSION.code &&
+      baseObject.code !== messages.MANIFEST_BAD_HOST_PERMISSION.code &&
       baseObject.code !== messages.MANIFEST_PERMISSION_UNSUPPORTED
     ) {
       baseObject = messages[`MANIFEST_${match[1].toUpperCase()}`];
       overrides.message = oneLine`/${match[1]}: Unknown ${match[1]}
           "${error.data}" at ${match[2]}.`;
+    }
+
+    // Make sure we filter out warnings and errors code that should never be reported
+    // on manifest version 2 extensions.
+    const ignoredOnMV2 = [
+      messages.MANIFEST_HOST_PERMISSIONS.code,
+      messages.MANIFEST_BAD_HOST_PERMISSION.code,
+    ];
+
+    if (
+      this.parsedJSON.manifest_version === 2 &&
+      ignoredOnMV2.includes(baseObject.code)
+    ) {
+      return null;
     }
 
     return { ...baseObject, ...overrides };
@@ -322,9 +366,11 @@ export default class ManifestJSONParser extends JSONParser {
     const warnings = [
       messages.MANIFEST_PERMISSIONS.code,
       messages.MANIFEST_OPTIONAL_PERMISSIONS.code,
+      messages.MANIFEST_HOST_PERMISSIONS.code,
       messages.MANIFEST_PERMISSION_UNSUPPORTED,
       messages.MANIFEST_FIELD_UNSUPPORTED,
     ];
+
     let validate = validateAddon;
 
     if (this.isStaticTheme) {
@@ -345,6 +391,12 @@ export default class ManifestJSONParser extends JSONParser {
 
       validate.errors.forEach((error) => {
         const message = this.errorLookup(error);
+
+        // errorLookup call returned a null or undefined message,
+        // and so the error should be ignored.
+        if (!message) {
+          return;
+        }
 
         if (warnings.includes(message.code)) {
           this.collector.addWarning(message);
