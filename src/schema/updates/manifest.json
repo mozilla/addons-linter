@@ -19,7 +19,7 @@
         }
       },
       "ExtensionID": {
-        "maxLength": 255
+        "maxLength": 80
       },
       "WebExtensionManifest": {
         "allOf": [
@@ -31,10 +31,10 @@
                     "anyOf": [
                       {
                         "additionalProperties": false,
-                        "max_manifest_version": 2 
+                        "max_manifest_version": 2
                       },
                       {
-                        "max_manifest_version": 2 
+                        "max_manifest_version": 2
                       },
                       {
                         "min_manifest_version": 3
