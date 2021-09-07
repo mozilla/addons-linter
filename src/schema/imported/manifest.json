@@ -757,7 +757,7 @@
           "pattern": "^[a-zA-Z0-9-._]*@[a-zA-Z0-9-._]+$"
         }
       ],
-      "maxLength": 255
+      "maxLength": 80
     },
     "FirefoxSpecificProperties": {
       "type": "object",

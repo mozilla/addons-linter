@@ -146,12 +146,12 @@ describe('ManifestJSONParser', () => {
       });
     });
 
-    it('should fail on id longer than 255 characters', () => {
+    it('should fail on id longer than 80 characters', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         // ids containing non-ascii chars are forbidden per the schema
         // definition so we only need to test ascii here.
-        applications: { gecko: { id: `@${'a'.repeat(255)}` } }, // 256 chars
+        applications: { gecko: { id: `@${'a'.repeat(80)}` } }, // 81 chars
       });
       const manifestJSONParser = new ManifestJSONParser(
         json,
@@ -161,7 +161,7 @@ describe('ManifestJSONParser', () => {
       assertHasMatchingError(addonLinter.collector.errors, {
         code: messages.JSON_INVALID.code,
         message:
-          /"\/applications\/gecko\/id" should NOT be longer than 255 characters/,
+          /"\/applications\/gecko\/id" should NOT be longer than 80 characters/,
       });
     });
 
