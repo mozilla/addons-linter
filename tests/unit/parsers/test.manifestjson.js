@@ -249,7 +249,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.collector.errors).toEqual([]);
     });
 
-    it('disallows host permissions in permissions manifest key in MV3', () => {
+    it('warns on host permissions in permissions manifest key in MV3', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         manifest_version: 3,
@@ -272,21 +272,14 @@ describe('ManifestJSONParser', () => {
           }),
         ])
       );
-      expect(manifestJSONParser.collector.errors).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            code: 'MANIFEST_BAD_PERMISSION',
-            dataPath: '/permissions',
-          }),
-        ])
-      );
+      expect(manifestJSONParser.collector.errors).toEqual([]);
     });
 
-    it('ignores host_permissions manifest key in MV2', () => {
+    it('ignores invalid host_permissions manifest key values in MV2', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         manifest_version: 2,
-        host_permissions: ['*://example.org/*'],
+        host_permissions: ['foo'],
       });
 
       const manifestJSONParser = new ManifestJSONParser(
@@ -322,7 +315,33 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.collector.errors).toEqual([]);
     });
 
-    it('disallows <all_urls> in MV3 permissions', () => {
+    it('warns on invalid host_permissions in MV3', () => {
+      // Test with only valid host permissions.
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 3,
+        host_permissions: ['foo'],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { schemaValidatorOptions: { maxManifestVersion: 3 } }
+      );
+      expect(manifestJSONParser.collector.warnings).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            code: 'MANIFEST_HOST_PERMISSIONS',
+            dataPath: '/host_permissions/0',
+            message: expect.stringMatching(
+              /Unknown host_permissions "foo" at 0/
+            ),
+          }),
+        ])
+      );
+      expect(manifestJSONParser.collector.errors).toEqual([]);
+    });
+
+    it('warns on <all_urls> in MV3 permissions', () => {
       // Test with invalid permission and host permissions.
       const addonLinter = new Linter({ _: ['bar'] });
       const json_with_warnings = validManifestJSON({
@@ -333,14 +352,6 @@ describe('ManifestJSONParser', () => {
         json_with_warnings,
         addonLinter.collector,
         { schemaValidatorOptions: { maxManifestVersion: 3 } }
-      );
-      expect(manifestJSONParser.collector.errors).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            code: 'MANIFEST_BAD_PERMISSION',
-            dataPath: '/permissions',
-          }),
-        ])
       );
       expect(manifestJSONParser.collector.warnings).toEqual(
         expect.arrayContaining([
@@ -353,6 +364,7 @@ describe('ManifestJSONParser', () => {
           }),
         ])
       );
+      expect(manifestJSONParser.collector.errors).toEqual([]);
     });
   });
 
