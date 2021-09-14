@@ -398,7 +398,8 @@ export function firefoxStrictMinVersion(manifestJson) {
   if (
     manifestJson.applications &&
     manifestJson.applications.gecko &&
-    manifestJson.applications.gecko.strict_min_version
+    manifestJson.applications.gecko.strict_min_version &&
+    typeof manifestJson.applications.gecko.strict_min_version === 'string'
   ) {
     return parseInt(
       manifestJson.applications.gecko.strict_min_version.split('.')[0],

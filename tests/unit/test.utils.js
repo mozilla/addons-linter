@@ -512,6 +512,14 @@ describe('firefoxStrictMinVersion', () => {
       })
     ).toEqual(60);
   });
+
+  it('should return null when value is not a string', () => {
+    expect(
+      firefoxStrictMinVersion({
+        applications: { gecko: { strict_min_version: 12.3 } },
+      })
+    ).toEqual(null);
+  });
 });
 
 describe('basicCompatVersionComparison', () => {
