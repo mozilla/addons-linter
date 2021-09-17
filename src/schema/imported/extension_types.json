@@ -59,6 +59,10 @@
         "scale": {
           "type": "number",
           "description": "The scale of the resulting image.  Defaults to <code>devicePixelRatio</code>."
+        },
+        "resetScrollPosition": {
+          "type": "boolean",
+          "description": "If true, temporarily resets the scroll position of the document to 0. Only takes effect if rect is also specified."
         }
       }
     },
