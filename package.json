@@ -59,7 +59,7 @@
     "espree": "9.0.0",
     "esprima": "4.0.1",
     "fluent-syntax": "0.13.0",
-    "glob": "7.1.7",
+    "glob": "7.2.0",
     "image-size": "1.0.0",
     "is-mergeable-object": "1.1.1",
     "jed": "1.1.1",
