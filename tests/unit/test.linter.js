@@ -3,6 +3,10 @@ import fs from 'fs';
 
 import { oneLine } from 'common-tags';
 import { Xpi } from 'addons-scanner-utils/dist/io';
+import {
+  DuplicateZipEntryError,
+  InvalidZipFileError,
+} from 'addons-scanner-utils/dist/errors';
 import { createFakeStderr } from 'addons-scanner-utils/dist/test-helpers';
 
 import Linter from 'linter';
@@ -137,9 +141,7 @@ describe('Linter', () => {
     // Stub print to prevent output.
     addonLinter.print = sinon.stub();
     expect(addonLinter.collector.errors.length).toEqual(0);
-    await expect(addonLinter.scan()).rejects.toThrow(
-      constants.ZIP_LIB_CORRUPT_FILE_ERROR
-    );
+    await addonLinter.scan();
     expect(addonLinter.collector.errors.length).toEqual(1);
     expect(addonLinter.collector.errors[0].code).toEqual(
       messages.BAD_ZIPFILE.code
@@ -329,7 +331,7 @@ describe('Linter', () => {
     addonLinter.checkFileExists = fakeCheckFileExists;
     addonLinter.collector.addError = sinon.stub();
     addonLinter.print = sinon.stub();
-    const expectedError = new Error('DuplicateZipEntry the zip has dupes!');
+    const expectedError = new DuplicateZipEntryError('the zip has dupes!');
     class FakeXpi extends FakeIOBase {
       async getFiles() {
         throw expectedError;
@@ -339,13 +341,36 @@ describe('Linter', () => {
         return this.getMetadata();
       }
     }
-    await expect(addonLinter.scan({ _Xpi: FakeXpi })).rejects.toThrow(
-      expectedError
-    );
+    await addonLinter.scan({ _Xpi: FakeXpi });
     sinon.assert.calledWith(
       addonLinter.collector.addError,
       messages.DUPLICATE_XPI_ENTRY
     );
+    sinon.assert.calledOnce(addonLinter.print);
+  });
+
+  it('should call addError when Xpi rejects with InvalidZipFileError', async () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    addonLinter.checkFileExists = fakeCheckFileExists;
+    addonLinter.collector.addError = sinon.stub();
+    addonLinter.print = sinon.stub();
+    const expectedError = new InvalidZipFileError(
+      'invalid characters in fileName: fake\\file.txt'
+    );
+    class FakeXpi extends FakeIOBase {
+      async getFiles() {
+        throw expectedError;
+      }
+
+      getFilesByExt() {
+        return this.getMetadata();
+      }
+    }
+    await addonLinter.scan({ _Xpi: FakeXpi });
+    sinon.assert.calledWith(addonLinter.collector.addError, {
+      ...messages.INVALID_XPI_ENTRY,
+      message: expectedError.message,
+    });
     sinon.assert.calledOnce(addonLinter.print);
   });
 

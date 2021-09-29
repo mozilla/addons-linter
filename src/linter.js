@@ -5,6 +5,10 @@ import chalk from 'chalk';
 import Dispensary from 'dispensary';
 import { oneLine } from 'common-tags';
 import { lstat } from 'addons-scanner-utils/dist/io/utils';
+import {
+  DuplicateZipEntryError,
+  InvalidZipFileError,
+} from 'addons-scanner-utils/dist/errors';
 import { Directory, Xpi, Crx } from 'addons-scanner-utils/dist/io';
 
 import { terminalWidth } from 'cli';
@@ -98,19 +102,42 @@ export default class Linter {
   }
 
   handleError(err, _console = console) {
-    if (err.message.includes('DuplicateZipEntry')) {
+    // The zip files contains invalid entries (likely path names using invalid
+    // characters like '\\'), the linter can inspect the package but Firefox
+    // would fail to load it.
+    if (err instanceof InvalidZipFileError) {
+      this.collector.addError({
+        ...messages.INVALID_XPI_ENTRY,
+        message: err.message,
+      });
+      this.print(_console);
+      return true;
+    }
+
+    // The zip file contains multiple entries with the exact same file name.
+    if (err instanceof DuplicateZipEntryError) {
       this.collector.addError(messages.DUPLICATE_XPI_ENTRY);
       this.print(_console);
-    } else if (err.message.includes(constants.ZIP_LIB_CORRUPT_FILE_ERROR)) {
+      return true;
+    }
+
+    // The zip file fails to open successfully, the linter can't inspect it
+    // at all.
+    if (err.message.includes(constants.ZIP_LIB_CORRUPT_FILE_ERROR)) {
       this.collector.addError(messages.BAD_ZIPFILE);
       this.print(_console);
-    } else if (this.config.stack === true) {
+      return true;
+    }
+
+    if (this.config.stack === true) {
       _console.error(err.stack);
     } else {
       _console.error(this.chalk.red(err.message || err));
     }
 
     this.closeIO();
+
+    return false;
   }
 
   print(_console = console) {
@@ -552,7 +579,9 @@ export default class Linter {
         process.exit(exitCode);
       }
     } catch (err) {
-      this.handleError(err, deps._console);
+      if (this.handleError(err, deps._console)) {
+        return;
+      }
       throw err;
     }
   }
