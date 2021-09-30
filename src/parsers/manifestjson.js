@@ -7,6 +7,7 @@ import { oneLine } from 'common-tags';
 import getImageSize from 'image-size';
 import upath from 'upath';
 import bcd from '@mdn/browser-compat-data';
+import { mozCompare } from 'addons-moz-compare';
 
 import { getDefaultConfigValue } from 'yargs-options';
 import {
@@ -26,6 +27,7 @@ import {
   FILE_EXTENSIONS_TO_MIME,
   STATIC_THEME_IMAGE_MIMES,
   RESTRICTED_HOMEPAGE_URLS,
+  RESTRICTED_PERMISSIONS,
   PERMS_DATAPATH_REGEX,
 } from 'const';
 import log from 'logger';
@@ -88,6 +90,7 @@ export default class ManifestJSONParser extends JSONParser {
       selfHosted = getDefaultConfigValue('self-hosted'),
       schemaValidatorOptions,
       io = null,
+      restrictedPermissions = RESTRICTED_PERMISSIONS,
     } = {}
   ) {
     super(jsonString, collector, { filename });
@@ -119,6 +122,7 @@ export default class ManifestJSONParser extends JSONParser {
         'theme'
       );
       this.io = io;
+      this.restrictedPermissions = restrictedPermissions;
       this._validate();
     }
   }
@@ -623,6 +627,29 @@ export default class ManifestJSONParser extends JSONParser {
     if (this.parsedJSON.homepage_url) {
       this.validateHomePageURL(this.parsedJSON.homepage_url);
     }
+
+    Object.keys(this.restrictedPermissions).forEach((permission) => {
+      const minVersion = this.restrictedPermissions[permission];
+
+      if (
+        (this.parsedJSON.permissions || [])
+          .map((permission) => permission.toLowerCase())
+          .includes(permission)
+      ) {
+        const { firefoxMinVersion: minVersionSetInManifest } =
+          this.getMetadata();
+
+        if (
+          !minVersionSetInManifest ||
+          mozCompare(String(minVersionSetInManifest), minVersion) === -1
+        ) {
+          this.collector.addError(
+            messages.makeRestrictedPermission(permission, minVersion)
+          );
+          this.isValid = false;
+        }
+      }
+    });
   }
 
   async validateIcon(iconPath, expectedSize) {

@@ -620,3 +620,24 @@ export const RESTRICTED_HOMEPAGE_URL = {
   ),
   file: MANIFEST_JSON,
 };
+
+export const RESTRICTED_PERMISSION = 'RESTRICTED_PERMISSION';
+
+export const makeRestrictedPermission = (permission, minFirefoxVersion) => {
+  return {
+    code: RESTRICTED_PERMISSION,
+    message: i18n.sprintf(
+      i18n._(oneLine`The "%(permission)s" permission requires
+        "strict_min_version" to be set to "%(minFirefoxVersion)s" or above`),
+      { permission, minFirefoxVersion }
+    ),
+    description: i18n.sprintf(
+      i18n._(oneLine`The "%(permission)s" permission requires
+        "strict_min_version" to be set to "%(minFirefoxVersion)s" or above.
+        Please update your manifest.json version to specify a minimum Firefox
+        version.`),
+      { permission, minFirefoxVersion }
+    ),
+    file: MANIFEST_JSON,
+  };
+};
