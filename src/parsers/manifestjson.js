@@ -632,28 +632,31 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateRestrictedPermissions() {
-    Object.keys(this.restrictedPermissions).forEach((permission) => {
-      const minVersion = this.restrictedPermissions[permission];
+    const permissionsInManifest = (this.parsedJSON.permissions || []).map(
+      (permission) => String(permission).toLowerCase()
+    );
 
-      if (
-        (this.parsedJSON.permissions || [])
-          .map((perm) => perm.toLowerCase())
-          .includes(permission)
-      ) {
-        const { firefoxMinVersion: minVersionSetInManifest } =
-          this.getMetadata();
+    if (permissionsInManifest.length === 0) {
+      return;
+    }
+
+    const { firefoxMinVersion: minVersionSetInManifest } = this.getMetadata();
+
+    for (const permission of this.restrictedPermissions.keys()) {
+      if (permissionsInManifest.includes(permission)) {
+        const permMinVersion = this.restrictedPermissions.get(permission);
 
         if (
           !minVersionSetInManifest ||
-          mozCompare(String(minVersionSetInManifest), minVersion) === -1
+          mozCompare(String(minVersionSetInManifest), permMinVersion) === -1
         ) {
           this.collector.addError(
-            messages.makeRestrictedPermission(permission, minVersion)
+            messages.makeRestrictedPermission(permission, permMinVersion)
           );
           this.isValid = false;
         }
       }
-    });
+    }
   }
 
   async validateIcon(iconPath, expectedSize) {

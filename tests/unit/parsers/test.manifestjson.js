@@ -3201,125 +3201,125 @@ describe('ManifestJSONParser', () => {
     it.each([
       [
         'no browser_specific_settings',
-        // manifest props
         {
-          permissions: ['alarms'],
-        },
-        // restricted permissions
-        {
-          alarms: '88.1.3',
+          manifestProps: {
+            permissions: ['alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
         },
       ],
       [
         'no browser_specific_settings.gecko',
-        // manifest props
         {
-          browser_specific_settings: {},
-          permissions: ['alarms'],
-        },
-        // restricted permissions
-        {
-          alarms: '88.1.3',
+          manifestProps: {
+            browser_specific_settings: {},
+            permissions: ['alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
         },
       ],
       [
         'no strict_min_version',
-        // manifest props
         {
-          browser_specific_settings: {
-            gecko: {},
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {},
+            },
+            permissions: ['alarms'],
           },
-          permissions: ['alarms'],
-        },
-        // restricted permissions
-        {
-          alarms: '88.1.3',
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
         },
       ],
       [
         'invalid strict_min_version (version below the strict min)',
-        // manifest props
         {
-          browser_specific_settings: {
-            gecko: {
-              strict_min_version: '88.0',
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '88.0',
+              },
             },
+            permissions: ['alarms'],
           },
-          permissions: ['alarms'],
-        },
-        // restricted permissions
-        {
-          alarms: '88.1.3',
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
         },
       ],
       [
         'invalid strict_min_version (version below the strict min)',
-        // manifest props
         {
-          browser_specific_settings: {
-            gecko: {
-              strict_min_version: '88.1.2',
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '88.1.2',
+              },
             },
+            permissions: ['alarms'],
           },
-          permissions: ['alarms'],
-        },
-        // restricted permissions
-        {
-          alarms: '88.1.3',
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
         },
       ],
       [
         'invalid strict_min_version (version below the strict min) with unrelated restrictions',
-        // manifest props
         {
-          browser_specific_settings: {
-            gecko: {
-              strict_min_version: '88.1.2',
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '88.1.2',
+              },
             },
+            permissions: ['alarms'],
           },
-          permissions: ['alarms'],
-        },
-        // restricted permissions
-        {
-          alarms: '88.1.3',
-          bookmarks: '100.0',
+          restrictedPermissions: new Map([
+            ['alarms', '88.1.3'],
+            [('bookmarks', '100.0')],
+          ]),
         },
       ],
       [
         'multiple permissions and version below the strict min',
-        // manifest props
         {
-          browser_specific_settings: {
-            gecko: {
-              strict_min_version: '88.0',
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '88.0',
+              },
             },
+            permissions: ['bookmarks', 'alarms'],
           },
-          permissions: ['bookmarks', 'alarms'],
-        },
-        // restricted permissions
-        {
-          alarms: '88.1.3',
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
         },
       ],
       [
         'uppercase permission and version below the strict min',
-        // manifest props
         {
-          browser_specific_settings: {
-            gecko: {
-              strict_min_version: '88.0',
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '88.0',
+              },
             },
+            permissions: ['ALARMS'],
           },
-          permissions: ['ALARMS'],
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
         },
-        // restricted permissions
+      ],
+      [
+        'versions contain non-numeric chars',
         {
-          alarms: '88.1.3',
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '1.1pre1a',
+              },
+            },
+            permissions: ['ALARMS'],
+          },
+          restrictedPermissions: new Map([['alarms', '1.1pre1aa']]),
         },
       ],
     ])(
       'reports an error when: %s',
-      (title, manifestProps, restrictedPermissions) => {
+      (title, { manifestProps, restrictedPermissions }) => {
         const { parser, linter } = validate({
           manifestProps,
           restrictedPermissions,
@@ -3344,9 +3344,35 @@ describe('ManifestJSONParser', () => {
             },
             permissions: ['alarms'],
           },
-          restrictedPermissions: {
-            alarms: '88.1.3',
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'strict_min_version > min version required',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '90.0',
+              },
+            },
+            permissions: ['alarms'],
           },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'strict_min_version > min version required and uppercase permission',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '90.0',
+              },
+            },
+            permissions: ['ALARMS'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
         },
       ],
       [
@@ -3360,9 +3386,7 @@ describe('ManifestJSONParser', () => {
             },
             permissions: ['bookmarks'],
           },
-          restrictedPermissions: {
-            alarms: '88.1.3',
-          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
         },
       ],
       [
@@ -3376,9 +3400,7 @@ describe('ManifestJSONParser', () => {
             },
             permissions: [],
           },
-          restrictedPermissions: {
-            alarms: '88.1.3',
-          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
         },
       ],
       [
@@ -3392,9 +3414,7 @@ describe('ManifestJSONParser', () => {
             },
             permissions: undefined,
           },
-          restrictedPermissions: {
-            alarms: '88.1.3',
-          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
         },
       ],
       [
@@ -3408,9 +3428,7 @@ describe('ManifestJSONParser', () => {
             },
             permissions: ['bookmarks', 'alarms'],
           },
-          restrictedPermissions: {
-            alarms: '88.1.3',
-          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
         },
       ],
       [
@@ -3424,25 +3442,68 @@ describe('ManifestJSONParser', () => {
             },
             permissions: ['bookmarks', 'alarms'],
           },
-          restrictedPermissions: {},
+          restrictedPermissions: new Map([]),
+        },
+      ],
+      [
+        'versions contain non-numeric chars',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '1.1pre',
+              },
+            },
+            permissions: ['alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '1.1c']]),
         },
       ],
     ])(
       'does not report an error when: %s',
       (title, { manifestProps, restrictedPermissions }) => {
-        const { parser } = validate({
+        const { linter } = validate({
           manifestProps,
           restrictedPermissions,
         });
+        const { errors } = linter.collector;
 
-        expect(parser.isValid).toEqual(true);
+        // We cannot assert `parser.isValid` because some (unrelated) warnings
+        // could set this prop to `false`.
+        expect(errors.length).toEqual(0);
+      }
+    );
+
+    it.each(['1', 'a'])(
+      'reports an error when the strict_min_version value is invalid (%s)',
+      (strict_min_version) => {
+        const { parser, linter } = validate({
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version,
+              },
+            },
+            permissions: ['alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '1.01']]),
+        });
+        const { errors } = linter.collector;
+
+        expect(parser.isValid).toEqual(false);
+        expect(errors.length).toEqual(2);
+        expect(errors[0].code).toEqual(messages.JSON_INVALID.code);
+        expect(errors[1].code).toEqual(messages.RESTRICTED_PERMISSION);
       }
     );
 
     it('adds specific information to the error message/description', () => {
       const { parser, linter } = validate({
         manifestProps: { permissions: ['alarms'] },
-        restrictedPermissions: { alarms: '78.1', bookmarks: '123.4' },
+        restrictedPermissions: new Map([
+          ['alarms', '78.1'],
+          ['bookmarks', '123.4'],
+        ]),
       });
       const { errors } = linter.collector;
 
