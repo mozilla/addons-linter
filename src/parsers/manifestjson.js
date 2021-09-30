@@ -628,12 +628,16 @@ export default class ManifestJSONParser extends JSONParser {
       this.validateHomePageURL(this.parsedJSON.homepage_url);
     }
 
+    this.validateRestrictedPermissions();
+  }
+
+  validateRestrictedPermissions() {
     Object.keys(this.restrictedPermissions).forEach((permission) => {
       const minVersion = this.restrictedPermissions[permission];
 
       if (
         (this.parsedJSON.permissions || [])
-          .map((permission) => permission.toLowerCase())
+          .map((perm) => perm.toLowerCase())
           .includes(permission)
       ) {
         const { firefoxMinVersion: minVersionSetInManifest } =
