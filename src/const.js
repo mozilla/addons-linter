@@ -225,3 +225,7 @@ export const RESTRICTED_HOMEPAGE_URLS = [
   'addons-dev.allizom.org',
   'addons.mozilla.org',
 ];
+
+// This map should contain entries with a permission name as key and a min
+// Firefox version as value (both string values).
+export const RESTRICTED_PERMISSIONS = new Map([]);

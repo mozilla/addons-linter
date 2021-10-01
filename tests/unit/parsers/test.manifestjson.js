@@ -3185,4 +3185,361 @@ describe('ManifestJSONParser', () => {
       );
     });
   });
+
+  describe('restricted permissions', () => {
+    const validate = ({ manifestProps, restrictedPermissions }) => {
+      const linter = new Linter({ _: ['bar'] });
+      const parser = new ManifestJSONParser(
+        validManifestJSON(manifestProps),
+        linter.collector,
+        { restrictedPermissions }
+      );
+
+      return { parser, linter };
+    };
+
+    it.each([
+      [
+        'no browser_specific_settings',
+        {
+          manifestProps: {
+            permissions: ['alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'no browser_specific_settings.gecko',
+        {
+          manifestProps: {
+            browser_specific_settings: {},
+            permissions: ['alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'no strict_min_version',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {},
+            },
+            permissions: ['alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'invalid strict_min_version (version below the strict min)',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '88.0',
+              },
+            },
+            permissions: ['alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'invalid strict_min_version (version below the strict min)',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '88.1.2',
+              },
+            },
+            permissions: ['alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'invalid strict_min_version (version below the strict min) with unrelated restrictions',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '88.1.2',
+              },
+            },
+            permissions: ['alarms'],
+          },
+          restrictedPermissions: new Map([
+            ['alarms', '88.1.3'],
+            [('bookmarks', '100.0')],
+          ]),
+        },
+      ],
+      [
+        'multiple permissions and version below the strict min',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '88.0',
+              },
+            },
+            permissions: ['bookmarks', 'alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'uppercase permission and version below the strict min',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '88.0',
+              },
+            },
+            permissions: ['ALARMS'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'versions contain non-numeric chars',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '1.1pre1a',
+              },
+            },
+            permissions: ['ALARMS'],
+          },
+          restrictedPermissions: new Map([['alarms', '1.1pre1aa']]),
+        },
+      ],
+    ])(
+      'reports an error when: %s',
+      (title, { manifestProps, restrictedPermissions }) => {
+        const { parser, linter } = validate({
+          manifestProps,
+          restrictedPermissions,
+        });
+        const { errors } = linter.collector;
+
+        expect(parser.isValid).toEqual(false);
+        expect(errors).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              code: messages.RESTRICTED_PERMISSION,
+              file: 'manifest.json',
+            }),
+          ])
+        );
+      }
+    );
+
+    it.each([
+      [
+        'strict_min_version = min version required',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '88.1.3',
+              },
+            },
+            permissions: ['alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'strict_min_version > min version required',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '90.0',
+              },
+            },
+            permissions: ['alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'strict_min_version > min version required and uppercase permission',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '90.0',
+              },
+            },
+            permissions: ['ALARMS'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'unrelated permission',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '88.0',
+              },
+            },
+            permissions: ['bookmarks'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'empty permissions',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '88.0',
+              },
+            },
+            permissions: [],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'no permissions',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '88.0',
+              },
+            },
+            permissions: undefined,
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'multiple permissions but strict_min_version > min version',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '89.0',
+              },
+            },
+            permissions: ['bookmarks', 'alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '88.1.3']]),
+        },
+      ],
+      [
+        'no restricted permissions',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '87.0',
+              },
+            },
+            permissions: ['bookmarks', 'alarms'],
+          },
+          restrictedPermissions: new Map([]),
+        },
+      ],
+      [
+        'versions contain non-numeric chars',
+        {
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version: '1.1pre',
+              },
+            },
+            permissions: ['alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '1.1c']]),
+        },
+      ],
+    ])(
+      'does not report an error when: %s',
+      (title, { manifestProps, restrictedPermissions }) => {
+        const { linter } = validate({
+          manifestProps,
+          restrictedPermissions,
+        });
+        const { errors } = linter.collector;
+
+        // We cannot assert `parser.isValid` because some (unrelated) warnings
+        // could set this prop to `false`.
+        expect(errors).toEqual([]);
+      }
+    );
+
+    it.each(['1', 'a', { notAString: true }])(
+      'reports an error when the strict_min_version value is invalid (%s)',
+      (strict_min_version) => {
+        const { parser, linter } = validate({
+          manifestProps: {
+            browser_specific_settings: {
+              gecko: {
+                strict_min_version,
+              },
+            },
+            permissions: ['alarms'],
+          },
+          restrictedPermissions: new Map([['alarms', '1.01']]),
+        });
+        const { errors } = linter.collector;
+
+        expect(parser.isValid).toEqual(false);
+        const errorOnInvalidStrictVersion =
+          typeof strict_min_version === 'string'
+            ? expect.objectContaining({ code: messages.JSON_INVALID.code })
+            : expect.objectContaining({
+                code: messages.MANIFEST_FIELD_INVALID.code,
+              });
+
+        expect(errors).toEqual(
+          expect.arrayContaining([
+            errorOnInvalidStrictVersion,
+            expect.objectContaining({
+              code: messages.RESTRICTED_PERMISSION,
+              file: 'manifest.json',
+            }),
+          ])
+        );
+      }
+    );
+
+    it('adds specific information to the error message/description', () => {
+      const { parser, linter } = validate({
+        manifestProps: { permissions: ['alarms'] },
+        restrictedPermissions: new Map([
+          ['alarms', '78.1'],
+          ['bookmarks', '123.4'],
+        ]),
+      });
+      const { errors } = linter.collector;
+
+      expect(parser.isValid).toEqual(false);
+      expect(errors).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            code: messages.RESTRICTED_PERMISSION,
+            message: oneLine`The "alarms" permission
+              requires "strict_min_version" to be set to "78.1" or above`,
+            description: oneLine`The "alarms" permission
+              requires "strict_min_version" to be set to "78.1" or above. Please
+              update your manifest.json version to specify a minimum Firefox
+              version.`,
+          }),
+        ])
+      );
+    });
+  });
 });

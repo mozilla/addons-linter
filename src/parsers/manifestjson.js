@@ -7,6 +7,7 @@ import { oneLine } from 'common-tags';
 import getImageSize from 'image-size';
 import upath from 'upath';
 import bcd from '@mdn/browser-compat-data';
+import { mozCompare } from 'addons-moz-compare';
 
 import { getDefaultConfigValue } from 'yargs-options';
 import {
@@ -26,6 +27,7 @@ import {
   FILE_EXTENSIONS_TO_MIME,
   STATIC_THEME_IMAGE_MIMES,
   RESTRICTED_HOMEPAGE_URLS,
+  RESTRICTED_PERMISSIONS,
   PERMS_DATAPATH_REGEX,
 } from 'const';
 import log from 'logger';
@@ -88,6 +90,7 @@ export default class ManifestJSONParser extends JSONParser {
       selfHosted = getDefaultConfigValue('self-hosted'),
       schemaValidatorOptions,
       io = null,
+      restrictedPermissions = RESTRICTED_PERMISSIONS,
     } = {}
   ) {
     super(jsonString, collector, { filename });
@@ -119,6 +122,7 @@ export default class ManifestJSONParser extends JSONParser {
         'theme'
       );
       this.io = io;
+      this.restrictedPermissions = restrictedPermissions;
       this._validate();
     }
   }
@@ -622,6 +626,38 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (this.parsedJSON.homepage_url) {
       this.validateHomePageURL(this.parsedJSON.homepage_url);
+    }
+
+    this.validateRestrictedPermissions();
+  }
+
+  validateRestrictedPermissions() {
+    const permissionsInManifest = (this.parsedJSON.permissions || []).map(
+      (permission) => String(permission).toLowerCase()
+    );
+
+    if (permissionsInManifest.length === 0) {
+      return;
+    }
+
+    const minVersionSetInManifest = String(
+      this.getMetadata().firefoxMinVersion
+    );
+
+    for (const permission of this.restrictedPermissions.keys()) {
+      if (permissionsInManifest.includes(permission)) {
+        const permMinVersion = this.restrictedPermissions.get(permission);
+
+        if (
+          !minVersionSetInManifest ||
+          mozCompare(minVersionSetInManifest, permMinVersion) === -1
+        ) {
+          this.collector.addError(
+            messages.makeRestrictedPermission(permission, permMinVersion)
+          );
+          this.isValid = false;
+        }
+      }
     }
   }
 
