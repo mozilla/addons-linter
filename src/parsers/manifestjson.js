@@ -640,7 +640,9 @@ export default class ManifestJSONParser extends JSONParser {
       return;
     }
 
-    const { firefoxMinVersion: minVersionSetInManifest } = this.getMetadata();
+    const minVersionSetInManifest = String(
+      this.getMetadata().firefoxMinVersion
+    );
 
     for (const permission of this.restrictedPermissions.keys()) {
       if (permissionsInManifest.includes(permission)) {
@@ -648,7 +650,7 @@ export default class ManifestJSONParser extends JSONParser {
 
         if (
           !minVersionSetInManifest ||
-          mozCompare(String(minVersionSetInManifest), permMinVersion) === -1
+          mozCompare(minVersionSetInManifest, permMinVersion) === -1
         ) {
           this.collector.addError(
             messages.makeRestrictedPermission(permission, permMinVersion)

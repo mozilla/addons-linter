@@ -3327,8 +3327,14 @@ describe('ManifestJSONParser', () => {
         const { errors } = linter.collector;
 
         expect(parser.isValid).toEqual(false);
-        expect(errors.length).toEqual(1);
-        expect(errors[0].code).toEqual(messages.RESTRICTED_PERMISSION);
+        expect(errors).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              code: messages.RESTRICTED_PERMISSION,
+              file: 'manifest.json',
+            }),
+          ])
+        );
       }
     );
 
@@ -3470,11 +3476,11 @@ describe('ManifestJSONParser', () => {
 
         // We cannot assert `parser.isValid` because some (unrelated) warnings
         // could set this prop to `false`.
-        expect(errors.length).toEqual(0);
+        expect(errors).toEqual([]);
       }
     );
 
-    it.each(['1', 'a'])(
+    it.each(['1', 'a', { notAString: true }])(
       'reports an error when the strict_min_version value is invalid (%s)',
       (strict_min_version) => {
         const { parser, linter } = validate({
@@ -3491,9 +3497,22 @@ describe('ManifestJSONParser', () => {
         const { errors } = linter.collector;
 
         expect(parser.isValid).toEqual(false);
-        expect(errors.length).toEqual(2);
-        expect(errors[0].code).toEqual(messages.JSON_INVALID.code);
-        expect(errors[1].code).toEqual(messages.RESTRICTED_PERMISSION);
+        const errorOnInvalidStrictVersion =
+          typeof strict_min_version === 'string'
+            ? expect.objectContaining({ code: messages.JSON_INVALID.code })
+            : expect.objectContaining({
+                code: messages.MANIFEST_FIELD_INVALID.code,
+              });
+
+        expect(errors).toEqual(
+          expect.arrayContaining([
+            errorOnInvalidStrictVersion,
+            expect.objectContaining({
+              code: messages.RESTRICTED_PERMISSION,
+              file: 'manifest.json',
+            }),
+          ])
+        );
       }
     );
 
@@ -3508,14 +3527,19 @@ describe('ManifestJSONParser', () => {
       const { errors } = linter.collector;
 
       expect(parser.isValid).toEqual(false);
-      expect(errors.length).toEqual(1);
-      expect(errors[0].code).toEqual(messages.RESTRICTED_PERMISSION);
-      expect(errors[0].message).toEqual(oneLine`The "alarms" permission
-        requires "strict_min_version" to be set to "78.1" or above`);
-      expect(errors[0].description).toEqual(oneLine`The "alarms" permission
-        requires "strict_min_version" to be set to "78.1" or above. Please
-        update your manifest.json version to specify a minimum Firefox
-        version.`);
+      expect(errors).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            code: messages.RESTRICTED_PERMISSION,
+            message: oneLine`The "alarms" permission
+              requires "strict_min_version" to be set to "78.1" or above`,
+            description: oneLine`The "alarms" permission
+              requires "strict_min_version" to be set to "78.1" or above. Please
+              update your manifest.json version to specify a minimum Firefox
+              version.`,
+          }),
+        ])
+      );
     });
   });
 });
