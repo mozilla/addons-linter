@@ -45,7 +45,7 @@
   "dependencies": {
     "@mdn/browser-compat-data": "4.0.5",
     "addons-moz-compare": "1.2.0",
-    "addons-scanner-utils": "4.11.0",
+    "addons-scanner-utils": "5.0.0",
     "ajv": "6.12.6",
     "ajv-merge-patch": "4.1.0",
     "chalk": "4.1.2",
