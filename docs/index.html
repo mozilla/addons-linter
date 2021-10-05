@@ -225,11 +225,6 @@
 <td>Flagged file extensions found</td>
 </tr>
 <tr>
-<td><code>DUPLICATE_XPI_ENTRY</code></td>
-<td>warning</td>
-<td>Package contains duplicate entries</td>
-</tr>
-<tr>
 <td><code>ALREADY_SIGNED</code></td>
 <td>warning</td>
 <td>Already signed</td>
@@ -240,9 +235,19 @@
 <td>Firefox add-ons are not allowed to run coin miners.</td>
 </tr>
 <tr>
+<td><code>DUPLICATE_XPI_ENTRY</code></td>
+<td>error</td>
+<td>Package contains duplicate entries.</td>
+</tr>
+<tr>
+<td><code>INVALID_XPI_ENTRY</code></td>
+<td>error</td>
+<td>Package contains invalid entries (e.g. invalid characters in entries path name).</td>
+</tr>
+<tr>
 <td><code>BAD_ZIPFILE</code></td>
 <td>error</td>
-<td>Bad zip file</td>
+<td>Bad zip file.</td>
 </tr>
 <tr>
 <td><code>FILE_TOO_LARGE</code></td>

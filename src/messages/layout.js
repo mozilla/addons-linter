@@ -11,6 +11,23 @@ export const DUPLICATE_XPI_ENTRY = {
     and re-zipping your add-on package and try again.`),
 };
 
+export const INVALID_XPI_ENTRY = {
+  code: 'INVALID_XPI_ENTRY',
+  // `message` will be replaced with the `InvalidZipFileError` message
+  // got from the addons-scanner-utils dependency when we were reading
+  // the zip file entries (in particular this would be triggered by
+  // a zipfile entry using invalid characters, like '\' as a path
+  // separator, and the underlying yauzl error message follows the
+  // format:
+  //   `invalid characters in fileName: nameOfTheInvalidZipFileEntry`
+  message: 'Invalid ZIP file entry',
+  description: i18n._(oneLine`The package is invalid. It may contain
+    entries using invalid characters, as an example using '\\' as a
+    path separator is not allowed in Firefox. Try to recreate your
+    add-on package (ZIP) and make sure all entries are using '/' as the
+    path separator.`),
+};
+
 export const BAD_ZIPFILE = {
   code: 'BAD_ZIPFILE',
   message: 'Corrupt ZIP file',
