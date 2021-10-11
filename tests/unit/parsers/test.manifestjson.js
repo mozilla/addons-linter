@@ -3541,5 +3541,62 @@ describe('ManifestJSONParser', () => {
         ])
       );
     });
+
+    describe('proxy', () => {
+      it('requires a strict_min_version value for the proxy permission', () => {
+        const { parser, linter } = validate({
+          manifestProps: { permissions: ['PROXY'] },
+        });
+        const { errors } = linter.collector;
+
+        expect(parser.isValid).toEqual(false);
+        expect(errors).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              code: messages.RESTRICTED_PERMISSION,
+              file: 'manifest.json',
+            }),
+          ])
+        );
+      });
+
+      it.each(['91.0', '91.0.1', '90.1'])(
+        'reports an error when strict_min_version is set to %s for the proxy permission',
+        (strict_min_version) => {
+          const { parser, linter } = validate({
+            manifestProps: {
+              browser_specific_settings: { gecko: { strict_min_version } },
+              permissions: ['Proxy'],
+            },
+          });
+          const { errors } = linter.collector;
+
+          expect(parser.isValid).toEqual(false);
+          expect(errors).toEqual(
+            expect.arrayContaining([
+              expect.objectContaining({
+                code: messages.RESTRICTED_PERMISSION,
+                file: 'manifest.json',
+              }),
+            ])
+          );
+        }
+      );
+
+      it.each(['91.1.0', '91.1', '91.2', '92.0'])(
+        'accepts a strict_min_version set to %s for the proxy permission',
+        (strict_min_version) => {
+          const { linter } = validate({
+            manifestProps: {
+              browser_specific_settings: { gecko: { strict_min_version } },
+              permissions: ['proxy'],
+            },
+          });
+          const { errors } = linter.collector;
+
+          expect(errors).toEqual([]);
+        }
+      );
+    });
   });
 });

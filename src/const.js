@@ -228,4 +228,7 @@ export const RESTRICTED_HOMEPAGE_URLS = [
 
 // This map should contain entries with a permission name as key and a min
 // Firefox version as value (both string values).
-export const RESTRICTED_PERMISSIONS = new Map([]);
+export const RESTRICTED_PERMISSIONS = new Map([
+  // See: https://bugzilla.mozilla.org/show_bug.cgi?id=1733159
+  ['proxy', '91.1.0'],
+]);
