@@ -93,7 +93,7 @@
     "babel-loader": "8.2.2",
     "codecov": "3.8.3",
     "comment-json": "4.1.1",
-    "doctoc": "2.0.1",
+    "doctoc": "2.1.0",
     "eslint-config-amo": "4.11.0",
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-promise": "5.1.0",
