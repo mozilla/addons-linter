@@ -341,6 +341,9 @@
             "ntp_background": {
               "$ref": "#/types/ThemeColor"
             },
+            "ntp_card_background": {
+              "$ref": "#/types/ThemeColor"
+            },
             "ntp_text": {
               "$ref": "#/types/ThemeColor"
             },
