@@ -121,9 +121,7 @@ describe('JavaScript Scanner', () => {
     expect(linterMessages).toEqual([]);
   });
 
-  // See: https://github.com/tc39/proposal-class-fields
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should support public class fields', async () => {
+  it('should support public class fields', async () => {
     const code = 'class MyClass { a = 1; }';
 
     const jsScanner = new JavaScriptScanner(code, 'code.js');
@@ -286,7 +284,7 @@ describe('JavaScript Scanner', () => {
   // don't change behaviour on us.
   // https://github.com/mozilla/addons-linter/pull/98#issuecomment-158890847
   it('ignores /*global foo*/', () => {
-    const eslint = ESLint.linter;
+    const eslint = new ESLint.Linter();
     const config = { rules: { test: 2 } };
     let ok = false;
 
