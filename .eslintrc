@@ -1,6 +1,7 @@
 {
-  "rules":{
-    "no-console": 0,
+  "rules": {
+    // This project uses `console.log()`.
+    "no-console": "off"
   },
   "env": {
     "node": true,

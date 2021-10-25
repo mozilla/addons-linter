@@ -20,8 +20,13 @@
       "devDependencies": true
     }],
     "jest/expect-expect": ["warn", {
-      // Allow Jest or Sinon assertions
-      "assertFunctionNames": ["expect", "sinon.assert.*"]
+      // Register the custom matchers we use in this project.
+      "assertFunctionNames": [
+        "expect",
+        "sinon.assert.*",
+        "assertHasMatchingError",
+        "checkMinNodeVersion",
+      ],
     }],
     "promise/always-return": "off",
     "promise/avoid-new": "off",
