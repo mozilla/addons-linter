@@ -2978,11 +2978,13 @@ describe('ManifestJSONParser', () => {
     ];
 
     for (const invalidUrl of testInvalidUrls) {
+      // eslint-disable-next-line jest/expect-expect
       it(`should fail on forbidden homepage_url "${invalidUrl}"`, () => {
         return testHomepageUrl(invalidUrl, false);
       });
     }
 
+    // eslint-disable-next-line jest/expect-expect
     it('should not mark non forbidden homepage url as invalid', () => {
       return testHomepageUrl('http://test.org', true);
     });

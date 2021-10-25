@@ -102,6 +102,7 @@ describe('HTML', () => {
     expect(linterMessages.length).toEqual(0);
   });
 
+  // eslint-disable-next-line jest/expect-expect
   it('should not blow up when handed malformed HTML', async () => {
     const html = validHTML('<div>Howdy <!-- >');
     const htmlScanner = new HTMLScanner(html, 'index.html');
