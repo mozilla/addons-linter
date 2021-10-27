@@ -3,6 +3,9 @@
 # NPM_TOKEN - A valid NPM token for releases
 version: 2.1
 
+orbs:
+  codecov: codecov/codecov@3.2.0
+
 references:
   defaults: &defaults
     working_directory: ~/addons-linter
@@ -95,6 +98,7 @@ jobs:
       - *make_production_build
       - *configure_global_npm
       - run: npm run test-ci
+      - codecov/upload
       # run integration tests using an addons-linter binary in a
       # production-like environment
       - run: npm run test-integration:production
