@@ -6,15 +6,30 @@ const VALIDNUMRX = /^[0-9]{1,5}$/;
 // permissive than Chrome) to allow Beta addons, per:
 // https://developer.mozilla.org/en-US/Add-ons/AMO/Policy/Maintenance
 const TOOLKIT_VERSION_REGEX = /^(\d+\.?){1,3}\.(\d+([A-z]+(-?\d+)?))$/;
+// 1.2.3buildid5.6 is used in practice but not matched by TOOLKIT_VERSION_REGEX.
+// Use this pattern to accept the used format without being too permissive.
+// See https://github.com/mozilla/addons-linter/issues/3998
+const TOOLKIT_WITH_BUILDID_REGEX = /^\d+(?:\.\d+){0,2}buildid\d{8}\.\d{6}$/;
 
-export function isValidVersionString(version) {
+export function isToolkitVersionString(version) {
   // We should be starting with a string. Limit length, see bug 1393644
   if (typeof version !== 'string' || version.length > 100) {
     return false;
   }
+  return (
+    TOOLKIT_VERSION_REGEX.test(version) ||
+    TOOLKIT_WITH_BUILDID_REGEX.test(version)
+  );
+}
+
+export function isValidVersionString(version) {
   // If valid toolkit version string, return true early
-  if (TOOLKIT_VERSION_REGEX.test(version)) {
+  if (isToolkitVersionString(version)) {
     return true;
+  }
+  // We should be starting with a string. Limit length, see bug 1393644
+  if (typeof version !== 'string' || version.length > 100) {
+    return false;
   }
   const parts = version.split('.');
   if (parts.length > 4) {
@@ -37,14 +52,6 @@ export function isValidVersionString(version) {
     }
   }
   return true;
-}
-
-export function isToolkitVersionString(version) {
-  // We should be starting with a string. Limit length, see bug 1393644
-  if (typeof version !== 'string' || version.length > 100) {
-    return false;
-  }
-  return TOOLKIT_VERSION_REGEX.test(version) && isValidVersionString(version);
 }
 
 export function isAbsoluteUrl(value) {
