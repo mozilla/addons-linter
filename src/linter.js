@@ -2,7 +2,6 @@ import path from 'path';
 
 import columnify from 'columnify';
 import chalk from 'chalk';
-import Dispensary from 'dispensary';
 import { oneLine } from 'common-tags';
 import { lstat } from 'addons-scanner-utils/dist/io/utils';
 import {
@@ -33,6 +32,7 @@ import JavaScriptScanner from 'scanners/javascript';
 import JSONScanner from 'scanners/json';
 import LangpackScanner from 'scanners/langpack';
 import { MINER_BLOCKLIST } from 'miner_blocklist';
+import Dispensary from 'dispensary';
 
 export default class Linter {
   constructor(config) {

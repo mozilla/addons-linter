@@ -1,4 +1,5 @@
 import { getConfig } from 'cli';
+import Dispensary from 'dispensary';
 import Linter from 'linter';
 import log from 'logger';
 
@@ -18,6 +19,7 @@ export function createInstance({
 }
 
 export default {
+  Dispensary,
   Linter,
   createInstance,
   isRunFromCLI,
