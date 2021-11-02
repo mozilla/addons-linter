@@ -3,7 +3,9 @@ const path = require('path');
 
 const yargs = require('yargs');
 
-const { Dispensary } = require('../dist/addons-linter');
+require('@babel/register');
+
+const Updater = require('../src/dispensary/updater').default;
 
 const DEFAULT_LIBRARIES_JSON = path.join(
   __dirname,
@@ -45,6 +47,6 @@ const { argv: config } = yargs
   .help('help')
   .alias('h', 'help');
 
-new Dispensary(config).run().catch((err) => {
+new Updater(config).run().catch((err) => {
   console.error('Uncaught error', err);
 });

@@ -261,7 +261,7 @@ This is the (manual) process to update libraries in dispensary:
 4. For major upgrades, take a quick look at the code changes
 5. Add new versions to `src/dispensary/libraries.json`
 6. Run `scripts/dispensary > src/dispensary/hashes.txt`
-7. Commit the changes in `src/libraries.json`and `src/hashes.txt`
+7. Commit the changes in `src/dispensary/libraries.json`and `src/dispensary/hashes.txt`
 8. Open a Pull Request
 
 [new release]: https://github.com/mozilla/addons-linter/releases/new
