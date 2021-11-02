@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 
 import async from 'async';
-import request from 'request';
+import fetch from 'node-fetch';
 import naturalCompare from 'natural-compare-lite';
 
 import log from '../logger';
@@ -156,43 +156,41 @@ export default class Updater {
     });
   }
 
-  _getFile(fileInfo, callback, _request = request) {
+  async _getFile(fileInfo, callback, _fetch = fetch) {
     const url = this._buildDownloadURL(fileInfo);
     log.debug(`Requesting ${url}`);
 
-    const processResponse = (err, response, data) => {
-      if (err || !response) {
-        log.error(`${url} encountered an error: ${err}.`);
-        return callback(new Error(err));
-      }
+    let response;
 
-      if (response && response.statusCode && response.statusCode !== 200) {
-        log.warn(`${url} produced code ${response.statusCode}`);
-        return callback(new Error(`ResponseError: ${response.statusCode}`));
-      }
-      if (response && !response.statusCode) {
-        log.warn(
-          `${url} has an invalid response code (${response.statusCode})`
-        );
-        return callback(
-          new Error(`InvalidResponseError: ${response.statusCode}`)
-        );
-      }
+    try {
+      response = await _fetch(url);
+    } catch (err) {
+      log.error(`${url} encountered an error: ${err}.`);
+      return callback(new Error(err));
+    }
 
-      log.debug(`Downloaded ${url}`);
+    if (response && response.status && response.status !== 200) {
+      log.warn(`${url} produced code ${response.status}`);
+      return callback(new Error(`ResponseError: ${response.status}`));
+    }
 
-      _files.push({
-        contents: data,
-        file: fileInfo.file,
-        fileOut: fileInfo.fileOut,
-        index: fileInfo.index,
-        version: fileInfo.version,
-      });
+    if (response && !response.status) {
+      log.warn(`${url} has an invalid response code (${response.status})`);
+      return callback(new Error(`InvalidResponseError: ${response.status}`));
+    }
 
-      return callback();
-    };
+    const data = await response.text();
+    log.debug(`Downloaded ${url}`);
 
-    _request.get({ url, timeout: 10000 }, processResponse);
+    _files.push({
+      contents: data,
+      file: fileInfo.file,
+      fileOut: fileInfo.fileOut,
+      index: fileInfo.index,
+      version: fileInfo.version,
+    });
+
+    return callback();
   }
 
   getHashes(libraries) {

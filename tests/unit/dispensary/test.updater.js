@@ -218,11 +218,7 @@ describe(__filename, () => {
       expect(err.message).toEqual('Error: Fail');
       done();
     };
-    const fakeRequest = {
-      get: (params, callback) => {
-        return callback(new Error('Fail'));
-      },
-    };
+    const fakeFetch = () => Promise.reject(new Error('Fail'));
 
     const updater = new Updater();
     updater._getFile(
@@ -234,7 +230,7 @@ describe(__filename, () => {
         version: '1.1.2',
       },
       testAssert,
-      fakeRequest
+      fakeFetch
     );
   });
 
@@ -245,11 +241,7 @@ describe(__filename, () => {
       expect(err.message).toEqual('ResponseError: 404');
       done();
     };
-    const fakeRequest = {
-      get: (params, callback) => {
-        return callback(null, { statusCode: 404 });
-      },
-    };
+    const fakeFetch = () => Promise.resolve({ status: 404 });
 
     const updater = new Updater();
     updater._getFile(
@@ -261,7 +253,7 @@ describe(__filename, () => {
         version: '1.1.2',
       },
       testAssert,
-      fakeRequest
+      fakeFetch
     );
   });
 
@@ -272,11 +264,7 @@ describe(__filename, () => {
       expect(err.message).toEqual('InvalidResponseError: undefined');
       done();
     };
-    const fakeRequest = {
-      get: (params, callback) => {
-        return callback(null, {});
-      },
-    };
+    const fakeFetch = jest.fn(() => Promise.resolve({}));
 
     const updater = new Updater();
     updater._getFile(
@@ -288,7 +276,7 @@ describe(__filename, () => {
         version: '1.1.2',
       },
       testAssert,
-      fakeRequest
+      fakeFetch
     );
   });
 
