@@ -1,52 +1,8 @@
 #!/usr/bin/env node
-const path = require('path');
-
-const yargs = require('yargs');
-
 require('@babel/register');
 
 const Updater = require('../src/dispensary/updater').default;
 
-const DEFAULT_LIBRARIES_JSON = path.join(
-  __dirname,
-  '..',
-  'src',
-  'dispensary',
-  'libraries.json'
-);
-
-const { argv: config } = yargs
-  .usage('Usage: ./$0 [options] \n\n Dispensary')
-  .option('log-level', {
-    describe: 'The log-level to generate',
-    type: 'string',
-    default: 'fatal',
-    choices: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
-  })
-  .option('max', {
-    describe: 'Maximum number of concurrent HTTP requests',
-    type: 'string',
-    default: '35',
-  })
-  .option('stack', {
-    describe: 'Show stacktraces when errors are thrown',
-    type: 'boolean',
-    default: false,
-  })
-  .option('boring', {
-    describe: 'Disables colorful shell output',
-    type: 'boolean',
-    default: false,
-  })
-  .option('libraries', {
-    describe: 'Custom library file',
-    type: 'string',
-    default: DEFAULT_LIBRARIES_JSON,
-  })
-  .demand(0)
-  .help('help')
-  .alias('h', 'help');
-
-new Updater(config).run().catch((err) => {
+new Updater().run().catch((err) => {
   console.error('Uncaught error', err);
 });

@@ -10,7 +10,6 @@
     "name": "backbone.localStorage",
     "versions": ["1.1.10", "1.1.12", "1.1.13", "1.1.14", "1.1.15", "1.1.16"],
     "filename": "backbone.localStorage.js",
-    "filenameMinified": "backbone.localStorage-min.js",
     "url": "https://raw.githubusercontent.com/jeromegn/Backbone.localStorage/v$VERSION/$FILENAME"
   }
 ]

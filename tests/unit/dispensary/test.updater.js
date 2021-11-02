@@ -49,15 +49,15 @@ describe(__filename, () => {
   ];
 
   it('should output an error if something explodes', () => {
-    const dispensary = new Updater();
+    const updater = new Updater();
 
     const fakeConsole = { error: () => {}, log: () => {} };
     const consoleErrorSpy = sinon.spy(fakeConsole, 'error');
-    sinon.stub(dispensary, 'getLibraries').callsFake(() => {
+    sinon.stub(updater, 'getLibraries').callsFake(() => {
       return Promise.reject(new Error('Error!'));
     });
 
-    return dispensary
+    return updater
       .run(fakeConsole)
       .then(unexpectedSuccess)
       .catch((err) => {
@@ -68,135 +68,75 @@ describe(__filename, () => {
       });
   });
 
-  it('should send the update command and output', () => {
-    const dispensary = new Updater({
-      _: ['update'],
-      libraries: TEST_LIBRARIES_JSON_PATH,
-      pathToHashes: 'dist/hashes.txt',
-    });
-
-    const fakeConsole = { error: () => {}, log: () => {} };
-    const consoleLogSpy = sinon.spy(fakeConsole, 'log');
-    const updateSpy = sinon.spy(dispensary, 'updateCommand');
-
-    sinon.stub(dispensary, '_getCachedHashes').callsFake(() => {
-      return [];
-    });
-
-    return dispensary.run(fakeConsole).then(() => {
-      expect(
-        fs.readFileSync('dist/hashes.txt', 'utf8').split('\n').length
-      ).toBe(21);
-      expect(updateSpy.calledOnce).toBeTruthy();
-      expect(consoleLogSpy.calledOnce).toBeTruthy();
-      expect(
-        consoleLogSpy.calledWith('hashes.txt updated successfully.')
-      ).toBeTruthy();
-    });
-  });
-
-  it('should error if there was a problem updating hashes', () => {
-    const dispensary = new Updater({
-      _: ['update'],
-      libraries: TEST_LIBRARIES_JSON_PATH,
-      pathToHashes: 'dist/hashes.txt',
-    });
-
-    const fakeConsole = { error: () => {}, log: () => {} };
-    const fakeFS = {
-      writeFile: (filename, contents, options, callback) => {
-        callback(new Error('Fail!'));
-      },
-    };
-
-    sinon.stub(dispensary, '_getCachedHashes').callsFake(() => {
-      return [];
-    });
-
-    return dispensary
-      .updateCommand([], fakeConsole, fakeFS)
-      .then(unexpectedSuccess)
-      .catch((err) => {
-        // eslint-disable-next-line jest/no-conditional-expect
-        expect(err.message).toEqual('UpdateError: Error: Fail!');
-        // eslint-disable-next-line jest/no-conditional-expect
-        expect(err).toBeInstanceOf(Error);
-      });
-  });
-
   it('should return an array of hashes', () => {
-    const dispensary = new Updater({
-      libraries: TEST_LIBRARIES_JSON_PATH,
-    });
+    const updater = new Updater({ libraryFile: TEST_LIBRARIES_JSON_PATH });
     const fakeConsole = { error: () => {}, log: () => {} };
 
-    sinon.stub(dispensary, '_getCachedHashes').callsFake(() => {
+    sinon.stub(updater, '_getCachedHashes').callsFake(() => {
       return [];
     });
 
-    return dispensary.run(fakeConsole).then((hashes) => {
-      expect(hashes.length).toBe(20);
+    return updater.run(fakeConsole).then((hashes) => {
+      // 14 = 2 * 4 versions for backbone + 1 * 6 versions for
+      // backbone.localStorage (because there is no minified filename for it)
+      expect(hashes.length).toBe(14);
       expect(hashes).toBeInstanceOf(Array);
     });
   });
 
   it('should set files', () => {
-    const dispensary = new Updater({
-      libraries: TEST_LIBRARIES_JSON_PATH,
-    });
+    const updater = new Updater({ libraryFile: TEST_LIBRARIES_JSON_PATH });
 
-    return dispensary
+    return updater
       .getLibraries()
       .then((libraries) => {
-        return dispensary.getFiles(libraries);
+        return updater.getFiles(libraries);
       })
       .then((libraries) => {
         expect(libraries[0].name).toEqual('backbone');
-        expect(libraries[0].files.length).toBe(24);
+        expect(libraries[0].files.length).toBe(8);
+        // No `filenameMinified` for this lib.
+        expect(libraries[1].name).toEqual('backbone.localStorage');
+        expect(libraries[1].files.length).toBe(6);
       });
   });
 
   it('should set hashes', () => {
-    const dispensary = new Updater({
-      libraries: TEST_LIBRARIES_JSON_PATH,
-    });
+    const updater = new Updater({ libraryFile: TEST_LIBRARIES_JSON_PATH });
 
-    return dispensary
+    return updater
       .getLibraries()
       .then((libraries) => {
-        return dispensary.getFiles(libraries);
+        return updater.getFiles(libraries);
       })
       .then((libraries) => {
-        return dispensary.getHashes(libraries);
+        return updater.getHashes(libraries);
       })
       .then((libraries) => {
-        expect(libraries[0].files.length).toBe(32);
+        expect(libraries[0].files.length).toBe(8);
         expect(
           libraries[0].files.filter((file) => {
             return file.hash.length > 0;
           }).length
-        ).toBe(32);
+        ).toBe(8);
       });
   });
 
   it('should try to read and parse the library file supplied', () => {
-    const dispensary = new Updater({
-      libraries: TEST_LIBRARIES_JSON_PATH,
-    });
-    expect(dispensary.libraryFile).toEqual(TEST_LIBRARIES_JSON_PATH);
-    return dispensary.getLibraries().then((libraries) => {
+    const updater = new Updater({ libraryFile: TEST_LIBRARIES_JSON_PATH });
+    expect(updater.libraryFile).toEqual(TEST_LIBRARIES_JSON_PATH);
+
+    return updater.getLibraries().then((libraries) => {
       expect(libraries[0].versions).toContain('1.1.1');
       expect(Object.keys(libraries).length).toEqual(2);
     });
   });
 
   it('should fail if the library does not exist', () => {
-    const dispensary = new Updater({
-      libraries: 'whatever-foo-bar',
-    });
-    expect(dispensary.libraryFile).toEqual('whatever-foo-bar');
+    const updater = new Updater({ libraryFile: 'whatever-foo-bar' });
+    expect(updater.libraryFile).toEqual('whatever-foo-bar');
 
-    return dispensary
+    return updater
       .getLibraries()
       .then(unexpectedSuccess)
       .catch((err) => {
@@ -210,35 +150,31 @@ describe(__filename, () => {
   });
 
   it('should return cached libraries after first call to getLibraries', async () => {
-    const dispensary = new Updater({
-      libraries: TEST_LIBRARIES_JSON_PATH,
-    });
+    const updater = new Updater({ libraryFile: TEST_LIBRARIES_JSON_PATH });
     const spy = jest.spyOn(fs, 'readFileSync');
 
-    await dispensary.getLibraries();
+    await updater.getLibraries();
     expect(spy).toHaveBeenCalled();
 
-    await dispensary.getLibraries();
+    await updater.getLibraries();
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('should add cached hashes in outputHashes()', () => {
-    const dispensary = new Updater({}, fakeLibraries);
+    const updater = new Updater({ _libraries: fakeLibraries });
 
-    sinon.stub(dispensary, '_buildHashes').callsFake(() => {
+    sinon.stub(updater, '_buildHashes').callsFake(() => {
       return [];
     });
 
-    const cachedStub = sinon
-      .stub(dispensary, '_getCachedHashes')
-      .callsFake(() => {
-        return [
-          '1657a7293da6afcd29e9243886725c8f90c8399e826dba9978e51a0a19e9bed6 yui.2.7.0.mylib.js',
-          '2657a7293da6afcd29e9243886725c8f90c8399e826dba9978e51a0a19e9bed6 yui.2.7.1.mylib.js',
-        ];
-      });
+    const cachedStub = sinon.stub(updater, '_getCachedHashes').callsFake(() => {
+      return [
+        '1657a7293da6afcd29e9243886725c8f90c8399e826dba9978e51a0a19e9bed6 yui.2.7.0.mylib.js',
+        '2657a7293da6afcd29e9243886725c8f90c8399e826dba9978e51a0a19e9bed6 yui.2.7.1.mylib.js',
+      ];
+    });
 
-    return dispensary.outputHashes(fakeLibraries).then((hashes) => {
+    return updater.outputHashes(fakeLibraries).then((hashes) => {
       expect(hashes).toBeInstanceOf(Array);
       expect(hashes.length).toBe(2);
       expect(hashes).toContain(
@@ -249,24 +185,22 @@ describe(__filename, () => {
   });
 
   it('should resolve with an array in outputHashes()', () => {
-    const dispensary = new Updater({}, fakeLibraries);
+    const updater = new Updater({ _libraries: fakeLibraries });
 
-    sinon.stub(dispensary, '_getCachedHashes').callsFake(() => {
+    sinon.stub(updater, '_getCachedHashes').callsFake(() => {
       return [];
     });
 
-    return dispensary.outputHashes(fakeLibraries).then((hashes) => {
+    return updater.outputHashes(fakeLibraries).then((hashes) => {
       expect(hashes).toBeInstanceOf(Array);
       expect(hashes.length).toBe(3);
     });
   });
 
   it('should output hashes in the correct format', () => {
-    const dispensary = new Updater({
-      libraries: TEST_LIBRARIES_JSON_PATH,
-    });
+    const updater = new Updater({ libraryFile: TEST_LIBRARIES_JSON_PATH });
 
-    const hashes = dispensary._buildHashes(fakeLibraries);
+    const hashes = updater._buildHashes(fakeLibraries);
     expect(hashes).toBeInstanceOf(Array);
     expect(hashes.length).toBe(3);
     expect(hashes[0]).toEqual(
@@ -290,8 +224,8 @@ describe(__filename, () => {
       },
     };
 
-    const dispensary = new Updater();
-    dispensary._getFile(
+    const updater = new Updater();
+    updater._getFile(
       {
         library: {
           url: 'http://nowhere.bad.idontexist/$VERSION-$FILENAME.js',
@@ -317,8 +251,8 @@ describe(__filename, () => {
       },
     };
 
-    const dispensary = new Updater();
-    dispensary._getFile(
+    const updater = new Updater();
+    updater._getFile(
       {
         library: {
           url: 'http://nowhere.bad.idontexist/$VERSION-$FILENAME.js',
@@ -344,8 +278,8 @@ describe(__filename, () => {
       },
     };
 
-    const dispensary = new Updater();
-    dispensary._getFile(
+    const updater = new Updater();
+    updater._getFile(
       {
         library: {
           url: 'http://nowhere.bad.idontexist/$VERSION-$FILENAME.js',
@@ -364,11 +298,11 @@ describe(__filename, () => {
         return '{"bad": "jsonData"';
       },
     };
-    const dispensary = new Updater({
-      libraries: 'fake.json',
+    const updater = new Updater({
+      libraryFile: 'fake.json',
     });
 
-    return dispensary
+    return updater
       .getLibraries(fakeFS)
       .then(unexpectedSuccess)
       .catch((err) => {
@@ -380,13 +314,13 @@ describe(__filename, () => {
   });
 
   it('should use filenameOutput if present', () => {
-    const dispensary = new Updater();
+    const updater = new Updater();
     const library = {
       filename: 'mylibrary-$VERSION.js',
       filenameOutput: 'mylibrary.js',
       versions: ['1.1.0', '1.1.1'],
     };
-    const files = dispensary._getAllFilesFromLibrary(library, 2);
+    const files = updater._getAllFilesFromLibrary(library, 2);
 
     expect(files).toEqual([
       {
@@ -409,8 +343,8 @@ describe(__filename, () => {
   });
 
   it('should sort hashes output', () => {
-    const dispensary = new Updater();
-    sinon.stub(dispensary, '_getCachedHashes').callsFake(() => {
+    const updater = new Updater();
+    sinon.stub(updater, '_getCachedHashes').callsFake(() => {
       return [];
     });
 
@@ -444,7 +378,7 @@ describe(__filename, () => {
       },
     ];
 
-    return dispensary.outputHashes(fakeUnsortedLibraries).then((libraries) => {
+    return updater.outputHashes(fakeUnsortedLibraries).then((libraries) => {
       expect(libraries[0]).toEqual(
         '7657a7293da6afcd29e9243886725c8f90c8399e826dba9978e51a0a19e9bed6 myalib.1.1.99.myalib.js'
       );
@@ -458,7 +392,7 @@ describe(__filename, () => {
   });
 
   it('should construct the correct file download path', () => {
-    const dispensary = new Updater();
+    const updater = new Updater();
     const library = {
       url: 'https://myserver.com/moment/moment/$VERSION/$FILENAME',
       urlMin: 'https://myserver.com/moment/moment/$VERSION/min/$FILENAME',
@@ -471,7 +405,7 @@ describe(__filename, () => {
       version: '1.0.0',
       minified: false,
     };
-    expect(dispensary._buildDownloadURL(file)).toEqual(
+    expect(updater._buildDownloadURL(file)).toEqual(
       'https://myserver.com/moment/moment/1.0.0/moment.js'
     );
 
@@ -482,7 +416,7 @@ describe(__filename, () => {
       version: '1.0.0',
       minified: true,
     };
-    expect(dispensary._buildDownloadURL(fileMin)).toEqual(
+    expect(updater._buildDownloadURL(fileMin)).toEqual(
       'https://myserver.com/moment/moment/1.0.0/min/moment.min.js'
     );
   });

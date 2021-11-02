@@ -1,4 +1,5 @@
 /* eslint  import/no-extraneous-dependencies: 0 */
+import path from 'path';
 import fs from 'fs';
 
 import async from 'async';
@@ -9,37 +10,24 @@ import log from '../logger';
 import createHash from './hasher';
 import { urlFormat } from './utils';
 
+const DEFAULT_PATH_TO_HASHES = path.join(__dirname, 'hashes.txt');
+const DEFAULT_LIBRARY_FILE = path.join(__dirname, 'libraries.json');
+
 // HACK: We use this global for now to store files inside the async queue.
-const _files = [];
+let _files = [];
 
 export default class Updater {
-  constructor(config = {}, _libraries = null) {
+  constructor({
+    _libraries = null,
+    _pathToHashes = DEFAULT_PATH_TO_HASHES,
+    libraryFile = DEFAULT_LIBRARY_FILE,
+  } = {}) {
     this._cachedHashes = null;
     this._libraries = _libraries;
-    this._pathToHashes = './src/dispensary/hashes.txt';
-    this.command = 'output';
-    this.libraryFile = config.libraries;
-    this.maxHTTPRequests = 35;
-
-    // The `config._` array is from yargs; it is all CLI arguments passed
-    // to bin/dispensary that aren't option arguments. If you ran:
-    //
-    //     bin/dispensary --stack=true update
-    //
-    // config._[0] would equal 'update'
-    if (config._ && config._[0]) {
-      this.command = config._[0];
-    }
-
-    if (config) {
-      if (config.max) {
-        this.maxHTTPRequests = parseInt(config.max, 10);
-      }
-
-      if (config.pathToHashes) {
-        this._pathToHashes = config.pathToHashes;
-      }
-    }
+    this._pathToHashes = _pathToHashes;
+    this.libraryFile = libraryFile;
+    // This is needed for the test suite.
+    _files = [];
   }
 
   run(_console = console) {
@@ -54,7 +42,8 @@ export default class Updater {
         return this.outputHashes(libraries);
       })
       .then((hashes) => {
-        return this[`${this.command}Command`](hashes, _console);
+        _console.log(hashes.join('\n'));
+        return Promise.resolve(hashes);
       })
       .catch((err) => {
         _console.error('ERROR', err);
@@ -63,40 +52,15 @@ export default class Updater {
       });
   }
 
-  // Output command; this is the default and just echoes out all hashes
-  outputCommand(hashes, _console) {
-    _console.log(hashes.join('\n'));
-
-    return Promise.resolve(hashes);
-  }
-
-  // Update command; this gets all hashes and writes them to hashes.txt
-  updateCommand(hashes, _console, _fs = fs) {
-    return new Promise((resolve) => {
-      _fs.writeFile(
-        this._pathToHashes,
-        `${hashes.join('\n')}\n`,
-        'utf8',
-        (err) => {
-          if (err) {
-            throw new Error(`UpdateError: ${err}`);
-          }
-
-          _console.log('hashes.txt updated successfully.');
-
-          resolve(hashes);
-        }
-      );
-    });
-  }
-
   getLibraries(_fs = fs) {
     if (this._libraries !== null) {
       return Promise.resolve(this._libraries);
     }
 
     try {
-      const libraryJSON = _fs.readFileSync(this.libraryFile);
+      const libraryJSON = _fs.readFileSync(this.libraryFile, {
+        encoding: 'utf8',
+      });
       this._libraries = JSON.parse(libraryJSON);
       return Promise.resolve(this._libraries);
     } catch (err) {
@@ -145,10 +109,7 @@ export default class Updater {
   getFiles(libraries, referenceFiles = _files) {
     return new Promise((resolve) => {
       let files = [];
-      const queue = async.queue(
-        this._getFile.bind(this),
-        this.maxHTTPRequests || 35
-      );
+      const queue = async.queue(this._getFile.bind(this), 35);
 
       queue.drain(() => {
         log.debug('All downloads completed.');
