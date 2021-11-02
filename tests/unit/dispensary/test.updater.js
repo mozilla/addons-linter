@@ -408,4 +408,14 @@ describe(__filename, () => {
       'https://myserver.com/moment/moment/1.0.0/min/moment.min.js'
     );
   });
+
+  describe('_getCachedHashes', () => {
+    it('reads the hashes.txt file', () => {
+      const updater = new Updater();
+
+      const hashes = updater._getCachedHashes();
+
+      expect(hashes.length).toBeGreaterThan(1);
+    });
+  });
 });
