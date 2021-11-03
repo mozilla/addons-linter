@@ -10,10 +10,7 @@
   },
   "extends": ["amo/base"],
   "parser": "@babel/eslint-parser",
-  "plugins": ["async-await"],
   "settings": {
-    "async-await/space-after-async": 2,
-    "async-await/space-after-await": 2,
     "import/resolver": {
       "node": {
         // This adds ./src for relative imports.
