@@ -238,7 +238,7 @@ As of November 2021, [dispensary](https://github.com/mozilla/dispensary) has bee
 
 ### Libraries updates
 
-This is the (manual) process to update libraries in dispensary:
+This is the (manual) process to update the "dispensary" libraries:
 
 1. Open `src/dispensary/libraries.json`
 2. Open the release pages of each library. Here is a list:
@@ -260,7 +260,7 @@ This is the (manual) process to update libraries in dispensary:
 3. On each page, check whether there are newer release versions than what is in `src/dispensary/libraries.json`. Note that some libraries, like react, support several versions, so we need to check each "branch".
 4. For major upgrades, take a quick look at the code changes
 5. Add new versions to `src/dispensary/libraries.json`
-6. Run `scripts/dispensary > src/dispensary/hashes.txt`
+6. Run `npm run update-hashes`
 7. Commit the changes in `src/dispensary/libraries.json`and `src/dispensary/hashes.txt`
 8. Open a Pull Request
 

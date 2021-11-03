@@ -30,7 +30,8 @@
     "prettier-dev": "pretty-quick --branch master",
     "build-rules": "scripts/build-rules && cp node_modules/github-markdown-css/github-markdown.css docs/github-markdown.css",
     "gen-contributing-toc": "doctoc CONTRIBUTING.md",
-    "webext-test-functional": "scripts/webext-test-functional"
+    "webext-test-functional": "scripts/webext-test-functional",
+    "update-hashes": "scripts/dispensary > src/dispensary/hashes.txt"
   },
   "repository": {
     "type": "git",
