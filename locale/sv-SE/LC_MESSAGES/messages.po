@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2021-11-03 17:46+0000\n"
+"PO-Revision-Date: 2021-11-03 17:55+0000\n"
 "Last-Translator: Andreas Pettersson <az@kth.se>\n"
 "Language-Team: none\n"
 "Language: sv_SE\n"
@@ -84,19 +84,19 @@ msgstr "Detta API har inte implementerats av Firefox."
 
 #: src/messages/javascript.js:132
 msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr ""
+msgstr "\"{{api}}\" har tagits bort i Manifest Version 3 (egenskapen `manifest_version`)"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
-msgstr ""
+msgstr "{{api}} är föråldrat"
 
 #: src/messages/javascript.js:142
 msgid "This API has been deprecated by Firefox."
-msgstr ""
+msgstr "Detta API har föråldrats av Firefox."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "\"{{api}}\" är föråldrat eller ej implementerat"
 
 #: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
@@ -244,7 +244,7 @@ msgstr "Se https://mzl.la/2Qn0fWC (MDN Docs) för mer information."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
 msgid "Invalid host permission."
-msgstr ""
+msgstr "Ogiltig värdbehörighet."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -396,7 +396,7 @@ msgstr "Förväntad ikonfil på \"%(path)s\" är skadad"
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Den här egenskapen är föråldrad."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
@@ -460,7 +460,7 @@ msgstr "Ikoner bör vara av JPG/JPEG, WebP, GIFF, PNG eller SVG."
 
 #: src/messages/manifestjson.js:505
 msgid "\"applications\" property overridden by \"browser_specific_settings\" property\""
-msgstr ""
+msgstr "Egenskapen \"applications\" åsidosatt av egenskapen \"browser_specific_settings\""
 
 #: src/messages/manifestjson.js:518
 msgid "Empty language directory"
@@ -488,11 +488,11 @@ msgstr "Behörighet stöds inte av den angivna lägsta Firefox-versionen för An
 
 #: src/messages/manifestjson.js:617
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr ""
+msgstr "Det är inte tillåtet att länka till \"addons.mozilla.org\"."
 
 #: src/messages/manifestjson.js:618
 msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr ""
+msgstr "Länkar som leder till \"addons.mozilla.org\" är inte tillåtna att användas för hemsidan"
 
 #: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
