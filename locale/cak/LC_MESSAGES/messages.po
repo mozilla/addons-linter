@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-07-25 10:01+0000\n"
+"POT-Creation-Date: 2021-11-03 08:14+0000\n"
 "PO-Revision-Date: 2018-02-20 22:37+0000\n"
 "Last-Translator: Juan Esteban Ajsivinac Sián <ajtzibsyan@yahoo.com>\n"
 "Language-Team: none\n"
@@ -14,31 +14,31 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:119
+#: src/linter.js:171
 msgid "Validation Summary:"
 msgstr "Ruch'utitzijol Junamana'oj:"
 
-#: src/linter.js:138
+#: src/linter.js:190
 msgid "Code"
 msgstr "Bitz'ib'"
 
-#: src/linter.js:144
+#: src/linter.js:196
 msgid "Message"
 msgstr "Tzijol"
 
-#: src/linter.js:150
+#: src/linter.js:202
 msgid "Description"
 msgstr "Cholonem"
 
-#: src/linter.js:156
+#: src/linter.js:208
 msgid "File"
 msgstr "Yakb'äl"
 
-#: src/linter.js:162
+#: src/linter.js:214
 msgid "Line"
 msgstr "B'ey"
 
-#: src/linter.js:168
+#: src/linter.js:220
 msgid "Column"
 msgstr "Tem"
 
@@ -66,54 +66,78 @@ msgstr "Man yek'ul ta ri näj taq skrip kuma ri Chokoy taq Na'ojil."
 msgid "Inline scripts blocked by default"
 msgstr "Kan eq'aton wi ri ch'ikon taq skrip"
 
-#: src/messages/javascript.js:105
+#: src/messages/javascript.js:100
+msgid "Unadvised 3rd-party JS library"
+msgstr "Mechilab'en 3ox-winäq JS wujb'äl"
+
+#: src/messages/javascript.js:107
 msgid "Known JS library detected"
 msgstr "Xilitäj etaman JS wujib'äl"
 
-#: src/messages/javascript.js:123
+#: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
 msgstr "{{api}} man nuk'äm ta ri'"
 
-#: src/messages/javascript.js:124
+#: src/messages/javascript.js:126
 msgid "This API has not been implemented by Firefox."
 msgstr "Man ya'on ta rusamajib'al re API re' ruma ri Firefox."
 
-#: src/messages/javascript.js:14
+#: src/messages/javascript.js:132
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
+msgstr ""
+
+#: src/messages/javascript.js:141
+#, fuzzy
+msgid "{{api}} is deprecated"
+msgstr "{{api}} man nuk'äm ta ri'"
+
+#: src/messages/javascript.js:142
+#, fuzzy
+msgid "This API has been deprecated by Firefox."
+msgstr "Man ya'on ta rusamajib'al re API re' ruma ri Firefox."
+
+#: src/messages/javascript.js:154
+msgid "\"{{api}}\" is deprecated or unimplemented"
+msgstr ""
+
+#: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
 msgstr "addEventListener` oyon rik'in jun okel rukaj na'oj."
 
-#: src/messages/javascript.js:166
+#: src/messages/javascript.js:182
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr ""
 
-#: src/messages/javascript.js:169
+#: src/messages/javascript.js:185
 #, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
 msgstr "Man ya'on ta rusamajib'al re API re' ruma ri Firefox."
 
-#: src/messages/javascript.js:177
+#: src/messages/javascript.js:193
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr ""
 
-#: src/messages/javascript.js:180
+#: src/messages/javascript.js:196
 #, fuzzy
 msgid ""
 "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "Man ya'on ta rusamajib'al re API re' ruma ri Firefox."
 
-#: src/messages/javascript.js:23
+#: src/messages/javascript.js:25
 msgid "Content script file could not be found."
 msgstr "Man nilitäj ta ri skrip ruyakb'al rupam."
 
-#: src/messages/javascript.js:24
+#: src/messages/javascript.js:26
 msgid "Content script file could not be found"
 msgstr "Man nilitäj ta ri ruyakb'al rupam skrip "
 
-#: src/messages/javascript.js:30
+#: src/messages/javascript.js:32
 msgid "Content script file name should not be empty."
 msgstr "Man tikirel ta nikowe' kan ri rub'i' ri ruyakb'al rupam script."
 
-#: src/messages/javascript.js:31
+#: src/messages/javascript.js:33
 msgid "Content script file name should not be empty"
 msgstr "Man tikirel ta nikowe' kan ri rub'i' ri ruyakb'al rupam script"
 
@@ -121,21 +145,17 @@ msgstr "Man tikirel ta nikowe' kan ri rub'i' ri ruyakb'al rupam script"
 msgid "JavaScript syntax error"
 msgstr "Sachoj JavaScript cholb'äl"
 
-#: src/messages/javascript.js:76
+#: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
 msgstr "Chijun jalajonel man oyob'en ta ojer achi'el jun na'oj"
 
-#: src/messages/javascript.js:83
+#: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
 msgstr "Man nichilab'ëx ta rokisaxik ri document.write."
 
-#: src/messages/javascript.js:91
+#: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
 msgstr "Q'ilon 3ox-winäq JS wujb'äl"
-
-#: src/messages/javascript.js:98
-msgid "Unadvised 3rd-party JS library"
-msgstr "Mechilab'en 3ox-winäq JS wujb'äl"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -153,70 +173,70 @@ msgstr "Man okel ta ri JSON."
 msgid "Your JSON file could not be parsed."
 msgstr "Man xpachq'ominïx ta ri JSON ayakb'al."
 
-#: src/messages/layout.js:17
+#: src/messages/layout.js:107
+#, fuzzy
+msgid "Reserved filename found."
+msgstr "Xilitäj rub'i' yakb'äl ya'on ruq'ij"
+
+#: src/messages/layout.js:34
 msgid "We were unable to decompress the zip file."
 msgstr "Man xojtikïr ta xsol ri zip yakb'äl."
 
-#: src/messages/layout.js:22
+#: src/messages/layout.js:39
 msgid "manifest.json was not found"
 msgstr "ma xilitäj ta ri manifest.json"
 
-#: src/messages/layout.js:30
+#: src/messages/layout.js:48
 msgid "File is too large to parse."
 msgstr "Yalan nïm ri yakb'äl richin nich'ob'."
 
-#: src/messages/layout.js:39
+#: src/messages/layout.js:57
 msgid "Hidden file flagged"
 msgstr "Xya' ruq'ij jun ewan yakb'äl"
 
-#: src/messages/layout.js:48
+#: src/messages/layout.js:66
 msgid "Flagged filename found"
 msgstr "Xilitäj rub'i' yakb'äl ya'on ruq'ij"
 
-#: src/messages/layout.js:55
+#: src/messages/layout.js:73
 msgid "Flagged file extensions found"
 msgstr "Xilitäj kik'amal yakb'äl ya'on ruq'ij"
-
-#: src/messages/layout.js:62
-msgid "Flagged file type found"
-msgstr "Xilitäj ruwäch yakb'äl ya'on ruq'ij"
-
-#: src/messages/layout.js:72
-msgid "Package already signed"
-msgstr "Juch'un chik ri pisoj"
 
 #: src/messages/layout.js:8
 msgid "Package contains duplicate entries"
 msgstr "Ri pisoj ruk'wan jujun kamulun taq okitz'ib'"
 
 #: src/messages/layout.js:80
+msgid "Flagged file type found"
+msgstr "Xilitäj ruwäch yakb'äl ya'on ruq'ij"
+
+#: src/messages/layout.js:90
+msgid "Package already signed"
+msgstr "Juch'un chik ri pisoj"
+
+#: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr ""
 "Man ya'on ta q'ij chi ke ri kichokoy Firefox richin yekisamajij taq ko'in-"
 "miner."
 
-#: src/messages/layout.js:89
-#, fuzzy
-msgid "Reserved filename found."
-msgstr "Xilitäj rub'i' yakb'äl ya'on ruq'ij"
-
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
 msgstr "Ri rub'i' cholajil q'aton richin jun tzijol k'o wi"
 
-#: src/messages/locale-messagesjson.js:29
+#: src/messages/locale-messagesjson.js:30
 msgid "Placeholder for message is missing"
 msgstr "Nrajo' na ri retanel kik'ojlib'al taq tzijol"
 
-#: src/messages/locale-messagesjson.js:30
+#: src/messages/locale-messagesjson.js:31
 msgid "A placeholder used in the message is not defined."
 msgstr "Man xjikib'äx ta ri retanel k'ojlib'äl xokisäx pa ri rutzijol."
 
-#: src/messages/locale-messagesjson.js:35
+#: src/messages/locale-messagesjson.js:36
 msgid "Placeholder name contains invalid characters"
 msgstr "Ri rub'i' retanel k'ojlib'äl ruk'wan man okel ta taq tz'ib'"
 
-#: src/messages/locale-messagesjson.js:42
+#: src/messages/locale-messagesjson.js:43
 msgid "Placeholder is missing the content property"
 msgstr "Nrajo' na richinil rupam ri retanel k'ojlib'äl"
 
@@ -231,71 +251,113 @@ msgstr ""
 "Majun richinil rutzijol \"rutzijol\" xb'an runuk'ulem pa ri rucholajil "
 "(https://mzl.la/2DSBTjA)."
 
-#: src/messages/manifestjson.js:103
-msgid "\"update_url\" is not allowed."
-msgstr "\"update_url\" man niya' q'ij chi re."
-
-#: src/messages/manifestjson.js:113
-msgid "The \"update_url\" property is not used by Firefox."
-msgstr "Ri \"update_url\" ichinil man nokisäx ta ruma ri Firefox."
-
-#: src/messages/manifestjson.js:122
-msgid "\"strict_max_version\" not required."
-msgstr "\"strict_max_version\" man k'atzinel ta."
-
-#: src/messages/manifestjson.js:141
-msgid "An icon defined in the manifest could not be found in the package."
-msgstr "Man xilitäj ta pa ri pisoj jun wachib'äl jikib'an pa ri tzijoxik."
-
-#: src/messages/manifestjson.js:145
-msgid "Icon could not be found at \"%(path)s\"."
-msgstr "Man nilitäj ta ri wachib'äl pa \"%(path)s\"."
-
-#: src/messages/manifestjson.js:160
+#: src/messages/manifestjson.js:100
 #, fuzzy
-msgid "A background script defined in the manifest could not be found."
-msgstr "Man xilitäj ta ri ruskrip rupam jikib'an pa tzijoxïk pa \"%(path)s\"."
+msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
+msgstr ""
+"Titz'et https://mzl.la/20PenXl (MDN Wujil) richin ch'aqa' chik etamab'äl."
+
+#: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
+#, fuzzy
+msgid "Invalid host permission."
+msgstr "Man etaman ta ruwäch ya'oj q'ij."
+
+#: src/messages/manifestjson.js:117
+msgid "\"manifest_version\" in the manifest.json is not a valid value"
+msgstr "\"manifest_version\" pa ri manifest.json man okel ta ri rejqalem"
+
+#: src/messages/manifestjson.js:120
+msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
+msgstr ""
+"Titz'et https://mzl.la/20PenXl (MDN Wujil) richin ch'aqa' chik etamab'äl."
+
+#: src/messages/manifestjson.js:154
+msgid "The \"name\" property must be a string."
+msgstr "Ri \"name\" ichinil k'o chi jun string."
+
+#: src/messages/manifestjson.js:155
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr ""
+"Titz'et http://mzl.la/1STmr48 (MDN Wujil) richin ch'aqa' chik etamab'äl."
 
 #: src/messages/manifestjson.js:163
-#, fuzzy
-msgid "A background page defined in the manifest could not be found."
-msgstr "Man xilitäj ta pa ri pisoj jun wachib'äl jikib'an pa ri tzijoxik."
+msgid "The \"version\" property must be a string."
+msgstr "Ri richinil \"version\" k'o chi jun string."
 
-#: src/messages/manifestjson.js:168
-msgid "Background script could not be found at \"%(path)s\"."
-msgstr "Man nilitäj ta ri ruskrip ruka'n b'ey pa \"%(path)s\"."
-
-#: src/messages/manifestjson.js:169
-msgid "Background page could not be found at \"%(path)s\"."
-msgstr "Man nilitäj ta ri ruxaq richin ruka'n b'ey pa \"%(path)s\"."
+#: src/messages/manifestjson.js:164 src/messages/manifestjson.js:173
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr ""
+"Titz'et http://mzl.la/1kXIADa (MDN Wujil) richin ch'aqa' chik etamab'äl."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
 msgstr "Man okel ta ri k'ojlem."
+
+#: src/messages/manifestjson.js:172
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "Ri \"version\" ichinil nrokisaj jun jikil rub'anikil Firefox."
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr ""
 "Titz'et https://mzl.la/1ZOhoEN (MDN Wujil) richin ch'aqa' chik etamab'äl."
 
-#: src/messages/manifestjson.js:184
+#: src/messages/manifestjson.js:181
+msgid "\"update_url\" is not allowed."
+msgstr "\"update_url\" man niya' q'ij chi re."
+
+#: src/messages/manifestjson.js:191
+msgid "The \"update_url\" property is not used by Firefox."
+msgstr "Ri \"update_url\" ichinil man nokisäx ta ruma ri Firefox."
+
+#: src/messages/manifestjson.js:200
+msgid "\"strict_max_version\" not required."
+msgstr "\"strict_max_version\" man k'atzinel ta."
+
+#: src/messages/manifestjson.js:219
+msgid "An icon defined in the manifest could not be found in the package."
+msgstr "Man xilitäj ta pa ri pisoj jun wachib'äl jikib'an pa ri tzijoxik."
+
+#: src/messages/manifestjson.js:223
+msgid "Icon could not be found at \"%(path)s\"."
+msgstr "Man nilitäj ta ri wachib'äl pa \"%(path)s\"."
+
+#: src/messages/manifestjson.js:238
+#, fuzzy
+msgid "A background script defined in the manifest could not be found."
+msgstr "Man xilitäj ta ri ruskrip rupam jikib'an pa tzijoxïk pa \"%(path)s\"."
+
+#: src/messages/manifestjson.js:241
+#, fuzzy
+msgid "A background page defined in the manifest could not be found."
+msgstr "Man xilitäj ta pa ri pisoj jun wachib'äl jikib'an pa ri tzijoxik."
+
+#: src/messages/manifestjson.js:246
+msgid "Background script could not be found at \"%(path)s\"."
+msgstr "Man nilitäj ta ri ruskrip ruka'n b'ey pa \"%(path)s\"."
+
+#: src/messages/manifestjson.js:247
+msgid "Background page could not be found at \"%(path)s\"."
+msgstr "Man nilitäj ta ri ruxaq richin ruka'n b'ey pa \"%(path)s\"."
+
+#: src/messages/manifestjson.js:262
 #, fuzzy
 msgid "A content script defined in the manifest could not be found."
 msgstr "Man xilitäj ta ri ruskrip rupam jikib'an pa tzijoxïk pa \"%(path)s\"."
 
-#: src/messages/manifestjson.js:185
+#: src/messages/manifestjson.js:263
 #, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
 msgstr ""
 "Man xilitäj ta ri css yakb'äl ruskrip rupam jikib'an pa tzijoxïk pa "
 "\"%(path)s\"."
 
-#: src/messages/manifestjson.js:190
+#: src/messages/manifestjson.js:268
 msgid ""
 "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Man xilitäj ta ri ruskrip rupam jikib'an pa tzijoxïk pa \"%(path)s\"."
 
-#: src/messages/manifestjson.js:193
+#: src/messages/manifestjson.js:271
 msgid ""
 "Content script css file defined in the manifest could not be found at "
 "\"%(path)s\"."
@@ -303,12 +365,12 @@ msgstr ""
 "Man xilitäj ta ri css yakb'äl ruskrip rupam jikib'an pa tzijoxïk pa "
 "\"%(path)s\"."
 
-#: src/messages/manifestjson.js:207
+#: src/messages/manifestjson.js:285
 #, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "Man xilitäj ta pa ri pisoj jun wachib'äl jikib'an pa ri tzijoxik."
 
-#: src/messages/manifestjson.js:211
+#: src/messages/manifestjson.js:289
 #, fuzzy
 msgid ""
 "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
@@ -316,205 +378,195 @@ msgstr ""
 "Man xilitäj ta ri css yakb'äl ruskrip rupam jikib'an pa tzijoxïk pa "
 "\"%(path)s\"."
 
-#: src/messages/manifestjson.js:223
+#: src/messages/manifestjson.js:301
 msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
-#: src/messages/manifestjson.js:224
+#: src/messages/manifestjson.js:302
 msgid ""
 "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
-#: src/messages/manifestjson.js:233
+#: src/messages/manifestjson.js:311
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr ""
 
-#: src/messages/manifestjson.js:236
+#: src/messages/manifestjson.js:314
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr ""
 
-#: src/messages/manifestjson.js:245
+#: src/messages/manifestjson.js:323
 msgid "The manifest contains a dictionary but no id property."
 msgstr ""
 
-#: src/messages/manifestjson.js:246
+#: src/messages/manifestjson.js:324
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr ""
 
-#: src/messages/manifestjson.js:256
+#: src/messages/manifestjson.js:334
 msgid "Forbidden content found in add-on."
 msgstr "Xilitäj man ruk'amon ta rupam pa ri tz'aqat."
 
-#: src/messages/manifestjson.js:257
+#: src/messages/manifestjson.js:335
 msgid "This add-on contains forbidden content."
 msgstr "Re tz'aqat re' ruk'wan man ruk'amon ta rupam."
 
-#: src/messages/manifestjson.js:26
-msgid "The permission type is unsupported."
-msgstr "Man nik'ul ta ri ruwäch ya'oj q'ij."
-
-#: src/messages/manifestjson.js:265
+#: src/messages/manifestjson.js:343
 msgid "Icons must be square."
 msgstr "K'o chi kajtz'ik kib'anikil ri taq wachib'äl."
 
-#: src/messages/manifestjson.js:266
+#: src/messages/manifestjson.js:344
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "Ri wachib'äl pa \"%(path)s\" k'o chi kajtz'ik rub'anikil."
 
-#: src/messages/manifestjson.js:277
+#: src/messages/manifestjson.js:355
 msgid "The size of the icon does not match the manifest."
 msgstr "Ri runimilem wachib'äl man nuk'äm ta ri' rik'in ri tzijoxïk."
 
-#: src/messages/manifestjson.js:292
+#: src/messages/manifestjson.js:370
 msgid "Corrupt image file"
 msgstr "Ruyakb'al itzel wachib'äl"
 
-#: src/messages/manifestjson.js:294
+#: src/messages/manifestjson.js:372
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr "Itzelan ri ruyakb'al wachib'al pa \"%(path)s\""
 
-#: src/messages/manifestjson.js:303
+#: src/messages/manifestjson.js:381
+msgid "This property has been deprecated."
+msgstr ""
+
+#: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
-#: src/messages/manifestjson.js:304
+#: src/messages/manifestjson.js:389
 #, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr ""
 "Titz'et https://mzl.la/1R1n1t0 (MDN Wujil) richin ch'aqa' chik etamab'äl."
 
-#: src/messages/manifestjson.js:319
+#: src/messages/manifestjson.js:404
 #, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "Man nilitäj ta ri ruxaq richin ruka'n b'ey pa \"%(path)s\"."
 
-#: src/messages/manifestjson.js:330
+#: src/messages/manifestjson.js:415
 #, fuzzy
 msgid "Corrupted theme image file"
 msgstr "Ruyakb'al itzel wachib'äl"
 
-#: src/messages/manifestjson.js:332
+#: src/messages/manifestjson.js:417
 #, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "Itzelan ri ruyakb'al wachib'al pa \"%(path)s\""
 
-#: src/messages/manifestjson.js:34
-msgid "Unknown permission."
-msgstr "Man etaman ta ruwäch ya'oj q'ij."
-
-#: src/messages/manifestjson.js:343
+#: src/messages/manifestjson.js:428
 msgid "Theme image file has an unsupported file extension"
 msgstr ""
 
-#: src/messages/manifestjson.js:345
+#: src/messages/manifestjson.js:430
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
 msgstr ""
 
-#: src/messages/manifestjson.js:35
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"Titz'et https://mzl.la/1R1n1t0 (MDN Wujil) richin ch'aqa' chik etamab'äl."
-
-#: src/messages/manifestjson.js:359
+#: src/messages/manifestjson.js:444
 msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
-#: src/messages/manifestjson.js:361
+#: src/messages/manifestjson.js:446
 msgid ""
 "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
-#: src/messages/manifestjson.js:375
+#: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
-#: src/messages/manifestjson.js:379
+#: src/messages/manifestjson.js:464
 msgid ""
 "Theme image file extension at \"%(path)s\" does not match its actual mime "
 "type \"%(mime)s\""
 msgstr ""
 
-#: src/messages/manifestjson.js:393
+#: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
 msgstr "Ri \"default_locale\" nrajo' na rutzalq'omanik."
 
-#: src/messages/manifestjson.js:402
+#: src/messages/manifestjson.js:487
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "Nrajo' na ri \"default_locale\" po ri \"_locales\" e k'o."
 
-#: src/messages/manifestjson.js:411
+#: src/messages/manifestjson.js:496
 msgid "Unsupported image extension"
 msgstr "Man nik'ul ta ri ruk'amal wachib'äl"
 
-#: src/messages/manifestjson.js:412
+#: src/messages/manifestjson.js:497
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Ri taq wachib'äl k'o ta chi e JPG/JPEG, WebP, GIF, PNG o SVG."
 
-#: src/messages/manifestjson.js:422
+#: src/messages/manifestjson.js:505
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property\""
+msgstr ""
+
+#: src/messages/manifestjson.js:518
 msgid "Empty language directory"
 msgstr "Kowöl kicholb'al ch'ab'äl"
 
-#: src/messages/manifestjson.js:424
+#: src/messages/manifestjson.js:520
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "man k'o ta ri messages.json yakb'äl pa \"%(path)s\""
 
-#: src/messages/manifestjson.js:43
-msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "\"manifest_version\" pa ri manifest.json man okel ta ri rejqalem"
-
-#: src/messages/manifestjson.js:440
+#: src/messages/manifestjson.js:536
 msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr ""
 
-#: src/messages/manifestjson.js:46
-msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"Titz'et https://mzl.la/20PenXl (MDN Wujil) richin ch'aqa' chik etamab'äl."
-
-#: src/messages/manifestjson.js:462
+#: src/messages/manifestjson.js:558
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
-#: src/messages/manifestjson.js:484
+#: src/messages/manifestjson.js:580
 msgid ""
 "Manifest key not supported by the specified minimum Firefox for Android "
 "version"
 msgstr ""
 
-#: src/messages/manifestjson.js:506
+#: src/messages/manifestjson.js:602
 msgid ""
 "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
-#: src/messages/manifestjson.js:58
-msgid "A custom content_security_policy needs additional review."
-msgstr "Richin nichinäx ri content_security_policy nrajo' chi ninik'öx chik."
-
-#: src/messages/manifestjson.js:76
-msgid "The \"name\" property must be a string."
-msgstr "Ri \"name\" ichinil k'o chi jun string."
-
-#: src/messages/manifestjson.js:77
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+#: src/messages/manifestjson.js:617
+msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr ""
-"Titz'et http://mzl.la/1STmr48 (MDN Wujil) richin ch'aqa' chik etamab'äl."
+
+#: src/messages/manifestjson.js:618
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
+
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
+#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+msgid "The permission type is unsupported."
+msgstr "Man nik'ul ta ri ruwäch ya'oj q'ij."
 
 #: src/messages/manifestjson.js:8
 msgid "The field is required."
 msgstr "K'atzinel ri k'ojlib'äl."
 
-#: src/messages/manifestjson.js:85
-msgid "The \"version\" property must be a string."
-msgstr "Ri richinil \"version\" k'o chi jun string."
+#: src/messages/manifestjson.js:90 src/messages/manifestjson.js:99
+msgid "Unknown permission."
+msgstr "Man etaman ta ruwäch ya'oj q'ij."
 
-#: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+#: src/messages/manifestjson.js:91
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
 msgstr ""
-"Titz'et http://mzl.la/1kXIADa (MDN Wujil) richin ch'aqa' chik etamab'äl."
+"Titz'et https://mzl.la/1R1n1t0 (MDN Wujil) richin ch'aqa' chik etamab'äl."
 
-#: src/messages/manifestjson.js:94
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "Ri \"version\" ichinil nrokisaj jun jikil rub'anikil Firefox."
+#~ msgid "A custom content_security_policy needs additional review."
+#~ msgstr ""
+#~ "Richin nichinäx ri content_security_policy nrajo' chi ninik'öx chik."
 
 #~ msgid "Violation of Mozilla conditions of use."
 #~ msgstr "Kitz'ilanem kokisaxik kojqanem Mozilla."

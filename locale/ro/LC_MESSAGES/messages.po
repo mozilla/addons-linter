@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-07-25 10:01+0000\n"
+"POT-Creation-Date: 2021-11-03 08:14+0000\n"
 "PO-Revision-Date: 2020-04-25 04:37+0000\n"
 "Last-Translator: robbp <robbpaun@gmail.com>\n"
 "Language-Team: none\n"
@@ -11,34 +11,35 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:119
+#: src/linter.js:171
 msgid "Validation Summary:"
 msgstr "Rezumatul validărilor:"
 
-#: src/linter.js:138
+#: src/linter.js:190
 msgid "Code"
 msgstr "Cod"
 
-#: src/linter.js:144
+#: src/linter.js:196
 msgid "Message"
 msgstr "Mesaj"
 
-#: src/linter.js:150
+#: src/linter.js:202
 msgid "Description"
 msgstr "Descriere"
 
-#: src/linter.js:156
+#: src/linter.js:208
 msgid "File"
 msgstr "Fișier"
 
-#: src/linter.js:162
+#: src/linter.js:214
 msgid "Line"
 msgstr "Rând"
 
-#: src/linter.js:168
+#: src/linter.js:220
 msgid "Column"
 msgstr "Coloană"
 
@@ -60,57 +61,87 @@ msgstr "Fișierul FTL nu a putut fi analizat."
 
 #: src/messages/html.js:14
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr "Scripturile la distanță nu sunt permise conform politicilor privind suplimentele."
+msgstr ""
+"Scripturile la distanță nu sunt permise conform politicilor privind "
+"suplimentele."
 
 #: src/messages/html.js:7
 msgid "Inline scripts blocked by default"
 msgstr "Scripturile inline sunt blocate implicit"
 
-#: src/messages/javascript.js:105
+#: src/messages/javascript.js:100
+msgid "Unadvised 3rd-party JS library"
+msgstr "Bibliotecă JS de la terți nerecomandată"
+
+#: src/messages/javascript.js:107
 msgid "Known JS library detected"
 msgstr "S-a depistat o bibliotecă JS cunoscută"
 
-#: src/messages/javascript.js:123
+#: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
 msgstr "{{api}} nu are suport"
 
-#: src/messages/javascript.js:124
+#: src/messages/javascript.js:126
 msgid "This API has not been implemented by Firefox."
 msgstr "Acest API nu a fost implementat de Firefox."
 
-#: src/messages/javascript.js:14
+#: src/messages/javascript.js:132
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
+msgstr ""
+
+#: src/messages/javascript.js:141
+#, fuzzy
+msgid "{{api}} is deprecated"
+msgstr "{{api}} nu are suport"
+
+#: src/messages/javascript.js:142
+#, fuzzy
+msgid "This API has been deprecated by Firefox."
+msgstr "Acest API nu a fost implementat de Firefox."
+
+#: src/messages/javascript.js:154
+msgid "\"{{api}}\" is deprecated or unimplemented"
+msgstr ""
+
+#: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
 msgstr "addEventListener` a fost apelat cu un al patrulea argument adevărat."
 
-#: src/messages/javascript.js:166
+#: src/messages/javascript.js:182
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr "{{api}} nu are suport în versiunea Firefox {{minVersion}}"
 
-#: src/messages/javascript.js:169
+#: src/messages/javascript.js:185
 msgid "This API is not implemented by the given minimum Firefox version"
 msgstr "Acest API nu este implementat de versiunea minimă indicată de Firefox"
 
-#: src/messages/javascript.js:177
+#: src/messages/javascript.js:193
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr "{{api}} nu are suport în Firefox pentru versiunea Android {{minVersion}}"
+msgstr ""
+"{{api}} nu are suport în Firefox pentru versiunea Android {{minVersion}}"
 
-#: src/messages/javascript.js:180
-msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Acest API nu este implementat de versiunea minimă indicată de Firefox pentru Android"
+#: src/messages/javascript.js:196
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
+msgstr ""
+"Acest API nu este implementat de versiunea minimă indicată de Firefox pentru "
+"Android"
 
-#: src/messages/javascript.js:23
+#: src/messages/javascript.js:25
 msgid "Content script file could not be found."
 msgstr "Nu s-a găsit fișierul cu scriptul de conținut."
 
-#: src/messages/javascript.js:24
+#: src/messages/javascript.js:26
 msgid "Content script file could not be found"
 msgstr "Nu s-a găsit fișierul cu scriptul de conținut"
 
-#: src/messages/javascript.js:30
+#: src/messages/javascript.js:32
 msgid "Content script file name should not be empty."
 msgstr "Fișierul cu scriptul de conținut nu trebuie să fie gol."
 
-#: src/messages/javascript.js:31
+#: src/messages/javascript.js:33
 msgid "Content script file name should not be empty"
 msgstr "Numele fișierului cu scriptul de conținut nu poate fi lăsat gol"
 
@@ -118,21 +149,17 @@ msgstr "Numele fișierului cu scriptul de conținut nu poate fi lăsat gol"
 msgid "JavaScript syntax error"
 msgstr "Eroare de sintaxă JavaScript"
 
-#: src/messages/javascript.js:76
+#: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
 msgstr "Variabilă globală neașteptată trecută ca argument"
 
-#: src/messages/javascript.js:83
+#: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
 msgstr "Utilizarea document.write este puternic nerecomandată."
 
-#: src/messages/javascript.js:91
+#: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
 msgstr "Bibliotecă JS de la terți interzisă"
-
-#: src/messages/javascript.js:98
-msgid "Unadvised 3rd-party JS library"
-msgstr "Bibliotecă JS de la terți nerecomandată"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -150,67 +177,68 @@ msgstr "Fișierul tău JSON nu este valid."
 msgid "Your JSON file could not be parsed."
 msgstr "Fișierul tău JSON nu a putut fi analizat."
 
-#: src/messages/layout.js:17
+#: src/messages/layout.js:107
+msgid "Reserved filename found."
+msgstr "S-a depistat o denumire de fișier rezervat."
+
+#: src/messages/layout.js:34
 msgid "We were unable to decompress the zip file."
 msgstr "Nu am reușit să dezarhivăm fișierul zip."
 
-#: src/messages/layout.js:22
+#: src/messages/layout.js:39
 msgid "manifest.json was not found"
 msgstr "Nu s-a găsit fișierul manifest.json"
 
-#: src/messages/layout.js:30
+#: src/messages/layout.js:48
 msgid "File is too large to parse."
 msgstr "Fișierul este prea mare ca să poată fi analizat."
 
-#: src/messages/layout.js:39
+#: src/messages/layout.js:57
 msgid "Hidden file flagged"
 msgstr "S-a semnalat un fișier ascuns"
 
-#: src/messages/layout.js:48
+#: src/messages/layout.js:66
 msgid "Flagged filename found"
 msgstr "S-a depistat o denumire de fișier semnalat"
 
-#: src/messages/layout.js:55
+#: src/messages/layout.js:73
 msgid "Flagged file extensions found"
 msgstr "S-au depistat extensii de fișiere semnalate"
-
-#: src/messages/layout.js:62
-msgid "Flagged file type found"
-msgstr "S-a depistat un tip de fișier semnalat"
-
-#: src/messages/layout.js:72
-msgid "Package already signed"
-msgstr "Pachetul este deja semnat"
 
 #: src/messages/layout.js:8
 msgid "Package contains duplicate entries"
 msgstr "Pachetul conține intrări duplicate"
 
 #: src/messages/layout.js:80
-msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr "Suplimentelor Firefox nu li se permite să ruleze mineri de criptomonede."
+msgid "Flagged file type found"
+msgstr "S-a depistat un tip de fișier semnalat"
 
-#: src/messages/layout.js:89
-msgid "Reserved filename found."
-msgstr "S-a depistat o denumire de fișier rezervat."
+#: src/messages/layout.js:90
+msgid "Package already signed"
+msgstr "Pachetul este deja semnat"
+
+#: src/messages/layout.js:98
+msgid "Firefox add-ons are not allowed to run coin miners."
+msgstr ""
+"Suplimentelor Firefox nu li se permite să ruleze mineri de criptomonede."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
 msgstr "Denumirea șirului este rezervată pentru un mesaj predefinit"
 
-#: src/messages/locale-messagesjson.js:29
+#: src/messages/locale-messagesjson.js:30
 msgid "Placeholder for message is missing"
 msgstr "Substituentul pentru mesaj lipsește"
 
-#: src/messages/locale-messagesjson.js:30
+#: src/messages/locale-messagesjson.js:31
 msgid "A placeholder used in the message is not defined."
 msgstr "Un substituent utilizat în mesaj nu este definit."
 
-#: src/messages/locale-messagesjson.js:35
+#: src/messages/locale-messagesjson.js:36
 msgid "Placeholder name contains invalid characters"
 msgstr "Denumirea substituentului conține caractere nevalide"
 
-#: src/messages/locale-messagesjson.js:42
+#: src/messages/locale-messagesjson.js:43
 msgid "Placeholder is missing the content property"
 msgstr "Substituentului îi lipsește proprietatea de conținut"
 
@@ -219,48 +247,57 @@ msgid "Translation string is missing the message property"
 msgstr "Proprietatea mesajului lipsește în șirul de traducere"
 
 #: src/messages/locale-messagesjson.js:8
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "Nu este setată nicio proprietate de mesaj „mesaj” pentru un șir (https://mzl.la/2DSBTjA)."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+"Nu este setată nicio proprietate de mesaj „mesaj” pentru un șir (https://mzl."
+"la/2DSBTjA)."
 
-#: src/messages/manifestjson.js:103
-msgid "\"update_url\" is not allowed."
-msgstr "Nu se permite „update_url\"."
+#: src/messages/manifestjson.js:100
+#, fuzzy
+msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
+msgstr ""
+"Vezi https://mzl.la/20PenXl (Documentația MDN) pentru mai multe informații."
 
-#: src/messages/manifestjson.js:113
-msgid "The \"update_url\" property is not used by Firefox."
-msgstr "Proprietatea „update_url\" nu este folosită de Firefox."
+#: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
+#, fuzzy
+msgid "Invalid host permission."
+msgstr "Permisiune necunoscută."
 
-#: src/messages/manifestjson.js:122
-msgid "\"strict_max_version\" not required."
-msgstr "„strict_max_version\" nu este necesar."
+#: src/messages/manifestjson.js:117
+msgid "\"manifest_version\" in the manifest.json is not a valid value"
+msgstr "„manifest_version\" din manifest.json nu este o valoare validă"
 
-#: src/messages/manifestjson.js:141
-msgid "An icon defined in the manifest could not be found in the package."
-msgstr "O pictogramă definită în manifest nu se regăsește în pachet."
+#: src/messages/manifestjson.js:120
+msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
+msgstr ""
+"Vezi https://mzl.la/20PenXl (Documentația MDN) pentru mai multe informații."
 
-#: src/messages/manifestjson.js:145
-msgid "Icon could not be found at \"%(path)s\"."
-msgstr "Pictograma nu a putut fi găsită la „%(path)s”."
+#: src/messages/manifestjson.js:154
+msgid "The \"name\" property must be a string."
+msgstr "Proprietatea „name” trebuie să fie un șir."
 
-#: src/messages/manifestjson.js:160
-msgid "A background script defined in the manifest could not be found."
-msgstr "Un script de fundal definit în manifest nu a putut fi găsit."
+#: src/messages/manifestjson.js:155
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr ""
+"Vezi http://mzl.la/1STmr48 (Documentația MDN) pentru mai multe informații."
 
 #: src/messages/manifestjson.js:163
-msgid "A background page defined in the manifest could not be found."
-msgstr "O pagină de fundal definită în manifest nu a putut fi găsită."
+msgid "The \"version\" property must be a string."
+msgstr "Proprietatea „versiune” trebuie să fie un șir."
 
-#: src/messages/manifestjson.js:168
-msgid "Background script could not be found at \"%(path)s\"."
-msgstr "Scriptul de fundal nu a putut fi găsit la „%(path)s”."
-
-#: src/messages/manifestjson.js:169
-msgid "Background page could not be found at \"%(path)s\"."
-msgstr "Pagina de fundal nu a putut fi găsită la „%(path)s”."
+#: src/messages/manifestjson.js:164 src/messages/manifestjson.js:173
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr ""
+"Vezi http://mzl.la/1kXIADa (Documentația MDN) pentru mai multe informații."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
 msgstr "Câmpul este nevalid."
+
+#: src/messages/manifestjson.js:172
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "Proprietatea „version” folosește un format specific Firefox."
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
@@ -268,215 +305,274 @@ msgstr ""
 "Vezi https://mzl.la/1ZOhoEN (Documentația MDN) pentru mai multe informații.\n"
 "\n"
 
-#: src/messages/manifestjson.js:184
+#: src/messages/manifestjson.js:181
+msgid "\"update_url\" is not allowed."
+msgstr "Nu se permite „update_url\"."
+
+#: src/messages/manifestjson.js:191
+msgid "The \"update_url\" property is not used by Firefox."
+msgstr "Proprietatea „update_url\" nu este folosită de Firefox."
+
+#: src/messages/manifestjson.js:200
+msgid "\"strict_max_version\" not required."
+msgstr "„strict_max_version\" nu este necesar."
+
+#: src/messages/manifestjson.js:219
+msgid "An icon defined in the manifest could not be found in the package."
+msgstr "O pictogramă definită în manifest nu se regăsește în pachet."
+
+#: src/messages/manifestjson.js:223
+msgid "Icon could not be found at \"%(path)s\"."
+msgstr "Pictograma nu a putut fi găsită la „%(path)s”."
+
+#: src/messages/manifestjson.js:238
+msgid "A background script defined in the manifest could not be found."
+msgstr "Un script de fundal definit în manifest nu a putut fi găsit."
+
+#: src/messages/manifestjson.js:241
+msgid "A background page defined in the manifest could not be found."
+msgstr "O pagină de fundal definită în manifest nu a putut fi găsită."
+
+#: src/messages/manifestjson.js:246
+msgid "Background script could not be found at \"%(path)s\"."
+msgstr "Scriptul de fundal nu a putut fi găsit la „%(path)s”."
+
+#: src/messages/manifestjson.js:247
+msgid "Background page could not be found at \"%(path)s\"."
+msgstr "Pagina de fundal nu a putut fi găsită la „%(path)s”."
+
+#: src/messages/manifestjson.js:262
 msgid "A content script defined in the manifest could not be found."
 msgstr "Un script de conținut definit în manifest nu a putut fi găsit."
 
-#: src/messages/manifestjson.js:185
+#: src/messages/manifestjson.js:263
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Un fișier css cu script de conținut, definit în manifest nu a putut fi găsit."
+msgstr ""
+"Un fișier css cu script de conținut, definit în manifest nu a putut fi găsit."
 
-#: src/messages/manifestjson.js:190
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Scriptul de conținut definit în manifest nu a putut fi găsit la „%(path)s”."
+#: src/messages/manifestjson.js:268
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"Scriptul de conținut definit în manifest nu a putut fi găsit la „%(path)s”."
 
-#: src/messages/manifestjson.js:193
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Fișierul css cu script de conținut definit în manifest nu a putut fi găsit la „%(path)s”."
+#: src/messages/manifestjson.js:271
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"Fișierul css cu script de conținut definit în manifest nu a putut fi găsit "
+"la „%(path)s”."
 
-#: src/messages/manifestjson.js:207
+#: src/messages/manifestjson.js:285
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "Un fișier dicționar definit în manifest nu a putut fi găsit."
 
-#: src/messages/manifestjson.js:211
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Fișierul dicționar definit în manifest nu a putut fi găsit la „%(path)s”."
+#: src/messages/manifestjson.js:289
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"Fișierul dicționar definit în manifest nu a putut fi găsit la „%(path)s”."
 
-#: src/messages/manifestjson.js:223
+#: src/messages/manifestjson.js:301
 msgid "The manifest contains multiple dictionaries."
 msgstr "Manifestul conține mai multe dicționare."
 
-#: src/messages/manifestjson.js:224
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+#: src/messages/manifestjson.js:302
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "În manifest au fost definite mai multe dicționare care nu au suport."
 
-#: src/messages/manifestjson.js:233
+#: src/messages/manifestjson.js:311
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr "Manifestul conține un obiect de dicționare, dar este gol."
 
-#: src/messages/manifestjson.js:236
+#: src/messages/manifestjson.js:314
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr "În manifest a fost definit un obiect de dicționare, dar era gol."
 
-#: src/messages/manifestjson.js:245
+#: src/messages/manifestjson.js:323
 msgid "The manifest contains a dictionary but no id property."
 msgstr "Manifestul conține un dicționar, dar nu are nicio proprietate ID."
 
-#: src/messages/manifestjson.js:246
+#: src/messages/manifestjson.js:324
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr "S-a găsit un dicționar în manifest, dar nu avea setat niciun ID."
 
-#: src/messages/manifestjson.js:256
+#: src/messages/manifestjson.js:334
 msgid "Forbidden content found in add-on."
 msgstr "S-a depistat conținut interzis în supliment."
 
-#: src/messages/manifestjson.js:257
+#: src/messages/manifestjson.js:335
 msgid "This add-on contains forbidden content."
 msgstr "Acest supliment are conținut interzis."
 
-#: src/messages/manifestjson.js:26
-msgid "The permission type is unsupported."
-msgstr "Tipul de permisiune nu are suport."
-
-#: src/messages/manifestjson.js:265
+#: src/messages/manifestjson.js:343
 msgid "Icons must be square."
 msgstr "Pictogramele trebuie să fie pătrate."
 
-#: src/messages/manifestjson.js:266
+#: src/messages/manifestjson.js:344
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "Pictograma de la „%(path)s” trebuie să fie pătrată."
 
-#: src/messages/manifestjson.js:277
+#: src/messages/manifestjson.js:355
 msgid "The size of the icon does not match the manifest."
 msgstr "Mărimea pictogramei nu corespunde manifestului."
 
-#: src/messages/manifestjson.js:292
+#: src/messages/manifestjson.js:370
 msgid "Corrupt image file"
 msgstr "Fișier de imagine corupt"
 
-#: src/messages/manifestjson.js:294
+#: src/messages/manifestjson.js:372
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr "Fișierul pictogramă așteptat, de la „%(path)s” este corupt"
 
-#: src/messages/manifestjson.js:303
+#: src/messages/manifestjson.js:381
+msgid "This property has been deprecated."
+msgstr ""
+
+#: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "Acest alias LWT de temă a fost eliminat din Firefox 70."
 
-#: src/messages/manifestjson.js:304
+#: src/messages/manifestjson.js:389
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr ""
 "Vezi https://mzl.la/2T11Lkc (Documentația MDN) pentru mai multe informații.\n"
 "\n"
 
-#: src/messages/manifestjson.js:319
+#: src/messages/manifestjson.js:404
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "Imaginea temei pentru „%(type)s” nu a putut fi găsită la „%(path)s”"
 
-#: src/messages/manifestjson.js:330
+#: src/messages/manifestjson.js:415
 msgid "Corrupted theme image file"
 msgstr "Fișier imagine al temei corupt"
 
-#: src/messages/manifestjson.js:332
+#: src/messages/manifestjson.js:417
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "Fișierul imagine al temei de la „%(path)s” este corupt"
 
-#: src/messages/manifestjson.js:34
-msgid "Unknown permission."
-msgstr "Permisiune necunoscută."
-
-#: src/messages/manifestjson.js:343
+#: src/messages/manifestjson.js:428
 msgid "Theme image file has an unsupported file extension"
 msgstr "Fișierul de imagine al temei are o extensie de fișier fără suport"
 
-#: src/messages/manifestjson.js:345
+#: src/messages/manifestjson.js:430
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr "Fișierul de imagine al temei de la „%(path)s” are o extensie de fișier fără suport"
+msgstr ""
+"Fișierul de imagine al temei de la „%(path)s” are o extensie de fișier fără "
+"suport"
 
-#: src/messages/manifestjson.js:35
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "Vezi https://mzl.la/1R1n1t0 (Documentația MDN) pentru mai multe informații."
-
-#: src/messages/manifestjson.js:359
+#: src/messages/manifestjson.js:444
 msgid "Theme image file has an unsupported mime type"
 msgstr "Fișierul de imagine al temei are un tip mime fără suport"
 
-#: src/messages/manifestjson.js:361
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr "Fișierul de imagine al temei de la „%(path)s” are un tip mime „%(mime)s” fără suport"
+#: src/messages/manifestjson.js:446
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr ""
+"Fișierul de imagine al temei de la „%(path)s” are un tip mime „%(mime)s” "
+"fără suport"
 
-#: src/messages/manifestjson.js:375
+#: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
-msgstr "Tipul mime al fișierului de imagine al temei nu se potrivește cu extensia fișierului"
+msgstr ""
+"Tipul mime al fișierului de imagine al temei nu se potrivește cu extensia "
+"fișierului"
 
-#: src/messages/manifestjson.js:379
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr "Extensia fișierului de imagine al temei de la „%(path)s” nu se potrivește cu tipul mime „%(mime)s” efectiv"
+#: src/messages/manifestjson.js:464
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
+msgstr ""
+"Extensia fișierului de imagine al temei de la „%(path)s” nu se potrivește cu "
+"tipul mime „%(mime)s” efectiv"
 
-#: src/messages/manifestjson.js:393
+#: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
 msgstr "„default_locale\" nu are traduceri."
 
-#: src/messages/manifestjson.js:402
+#: src/messages/manifestjson.js:487
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "„default_locale\" lipsește, dar „_locales\" există."
 
-#: src/messages/manifestjson.js:411
+#: src/messages/manifestjson.js:496
 msgid "Unsupported image extension"
 msgstr "Extensie nepermisă de imagine"
 
-#: src/messages/manifestjson.js:412
+#: src/messages/manifestjson.js:497
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Pictogramele trebuie să fie fișiere JPG/JPEG, WebP, GIF, PNG sau SVG."
 
-#: src/messages/manifestjson.js:422
+#: src/messages/manifestjson.js:505
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property\""
+msgstr ""
+
+#: src/messages/manifestjson.js:518
 msgid "Empty language directory"
 msgstr "Director de limbi gol"
 
-#: src/messages/manifestjson.js:424
+#: src/messages/manifestjson.js:520
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "Fișierul messages.json lipsește în „%(path)s\""
 
-#: src/messages/manifestjson.js:43
-msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "„manifest_version\" din manifest.json nu este o valoare validă"
-
-#: src/messages/manifestjson.js:440
+#: src/messages/manifestjson.js:536
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr "Cheia manifestului nu are suport în versiunea Firefox minimă specificată"
+msgstr ""
+"Cheia manifestului nu are suport în versiunea Firefox minimă specificată"
 
-#: src/messages/manifestjson.js:46
-msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "Vezi https://mzl.la/20PenXl (Documentația MDN) pentru mai multe informații."
-
-#: src/messages/manifestjson.js:462
+#: src/messages/manifestjson.js:558
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Permisiunea nu are suport în versiunea Firefox minimă specificată"
 
-#: src/messages/manifestjson.js:484
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr "Cheia manifestului nu are suport în versiunea Firefox minimă specificată pentru versiunea Android"
+#: src/messages/manifestjson.js:580
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
+msgstr ""
+"Cheia manifestului nu are suport în versiunea Firefox minimă specificată "
+"pentru versiunea Android"
 
-#: src/messages/manifestjson.js:506
-msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr "Permisiunea nu are suport în versiunea Firefox minimă specificată pentru versiunea Android"
+#: src/messages/manifestjson.js:602
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
+msgstr ""
+"Permisiunea nu are suport în versiunea Firefox minimă specificată pentru "
+"versiunea Android"
 
-#: src/messages/manifestjson.js:58
-msgid "A custom content_security_policy needs additional review."
-msgstr "O content_security_policy personalizată necesită o recenzie suplimentară."
+#: src/messages/manifestjson.js:617
+msgid "Linking to \"addons.mozilla.org\" is not allowed"
+msgstr ""
 
-#: src/messages/manifestjson.js:76
-msgid "The \"name\" property must be a string."
-msgstr "Proprietatea „name” trebuie să fie un șir."
+#: src/messages/manifestjson.js:618
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
 
-#: src/messages/manifestjson.js:77
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "Vezi http://mzl.la/1STmr48 (Documentația MDN) pentru mai multe informații."
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
+#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+msgid "The permission type is unsupported."
+msgstr "Tipul de permisiune nu are suport."
 
 #: src/messages/manifestjson.js:8
 msgid "The field is required."
 msgstr "Câmpul este necesar."
 
-#: src/messages/manifestjson.js:85
-msgid "The \"version\" property must be a string."
-msgstr "Proprietatea „versiune” trebuie să fie un șir."
+#: src/messages/manifestjson.js:90 src/messages/manifestjson.js:99
+msgid "Unknown permission."
+msgstr "Permisiune necunoscută."
 
-#: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "Vezi http://mzl.la/1kXIADa (Documentația MDN) pentru mai multe informații."
+#: src/messages/manifestjson.js:91
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr ""
+"Vezi https://mzl.la/1R1n1t0 (Documentația MDN) pentru mai multe informații."
 
-#: src/messages/manifestjson.js:94
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "Proprietatea „version” folosește un format specific Firefox."
+#~ msgid "A custom content_security_policy needs additional review."
+#~ msgstr ""
+#~ "O content_security_policy personalizată necesită o recenzie suplimentară."
 
 #~ msgid "Violation of Mozilla conditions of use."
 #~ msgstr "Încălcarea condițiilor de utilizare Mozilla."
