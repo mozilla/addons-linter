@@ -43,7 +43,6 @@
   },
   "homepage": "https://github.com/mozilla/addons-linter#readme",
   "dependencies": {
-    "@babel/eslint-parser": "7.15.8",
     "@mdn/browser-compat-data": "4.0.8",
     "addons-moz-compare": "1.2.0",
     "addons-scanner-utils": "6.1.0",
@@ -79,6 +78,7 @@
   "devDependencies": {
     "@babel/cli": "7.16.0",
     "@babel/core": "7.16.0",
+    "@babel/eslint-parser": "7.15.8",
     "@babel/plugin-proposal-class-properties": "7.16.0",
     "@babel/plugin-proposal-decorators": "7.16.0",
     "@babel/plugin-proposal-export-namespace-from": "7.16.0",
@@ -94,7 +94,6 @@
     "comment-json": "4.1.1",
     "doctoc": "2.1.0",
     "eslint-config-amo": "5.1.0",
-    "eslint-plugin-async-await": "0.0.0",
     "github-markdown-css": "5.0.0",
     "gunzip-maybe": "1.4.2",
     "hashish": "0.0.4",
