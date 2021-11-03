@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2021-11-03 12:11+0000\n"
+"PO-Revision-Date: 2021-11-03 12:15+0000\n"
 "Last-Translator: Іhor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: none\n"
 "Language: uk\n"
@@ -87,14 +87,12 @@ msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` pr
 msgstr "\"{{api}}\" вилучено у маніфесті версії 3 (властивість `manifest_version`)"
 
 #: src/messages/javascript.js:141
-#, fuzzy
 msgid "{{api}} is deprecated"
-msgstr "{{api}} не підтримується"
+msgstr "{{api}} більше не підтримується"
 
 #: src/messages/javascript.js:142
-#, fuzzy
 msgid "This API has been deprecated by Firefox."
-msgstr "Цей API не було впроваджено в Firefox."
+msgstr "Firefox більше не підтримує цей API."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
@@ -241,14 +239,12 @@ msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBT
 msgstr "Властивість повідомлення \"message\" для рядка не задано (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:100
-#, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr "Перегляньте https://mzl.la/20PenXl (Документацію MDN) для отримання докладної інформації."
+msgstr "Перегляньте https://mzl.la/2Qn0fWC (Документацію MDN) для отримання докладної інформації."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
-#, fuzzy
 msgid "Invalid host permission."
-msgstr "Невідомий дозвіл."
+msgstr "Недійсний дозвіл вузла."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -400,7 +396,7 @@ msgstr "Очікуваний файл піктограми в \"%(path)s\" по�
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr "Ця властивість застаріла."
+msgstr "Ця властивість більше не підтримується."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
