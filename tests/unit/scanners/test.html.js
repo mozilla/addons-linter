@@ -102,11 +102,13 @@ describe('HTML', () => {
     expect(linterMessages.length).toEqual(0);
   });
 
-  it('should not blow up when handed malformed HTML', async () => {
+  it('should not blow up when handed malformed HTML', () => {
     const html = validHTML('<div>Howdy <!-- >');
     const htmlScanner = new HTMLScanner(html, 'index.html');
 
-    await htmlScanner.scan();
+    expect(async () => {
+      await htmlScanner.scan();
+    }).not.toThrow();
   });
 
   it('should return an already-parsed htmlDoc if exists', async () => {

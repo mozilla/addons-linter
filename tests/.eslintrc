@@ -3,28 +3,24 @@
     "jest": true,
     "jest/globals": true,
   },
-  "extends": [
-    "plugin:promise/recommended",
-  ],
   "globals": {
     "assert": true,
     "sinon": true,
   },
-  "plugins": [
-    "jest",
-    "promise",
-  ],
+  "plugins": ["jest"],
   "rules": {
     "import/no-extraneous-dependencies": ["error", {
       // Allow dev-dependencies in this directory.
       "devDependencies": true
     }],
     "jest/expect-expect": ["warn", {
-      // Allow Jest or Sinon assertions
-      "assertFunctionNames": ["expect", "sinon.assert.*"]
+      // Register the custom matchers we use in this project.
+      "assertFunctionNames": [
+        "expect",
+        "sinon.assert.*",
+        "assertHasMatchingError",
+        "checkMinNodeVersion",
+      ],
     }],
-    "promise/always-return": "off",
-    "promise/avoid-new": "off",
-    "promise/no-nesting": "off",
   },
 }
