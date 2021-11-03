@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-07-25 10:01+0000\n"
+"POT-Creation-Date: 2021-11-03 08:14+0000\n"
 "PO-Revision-Date: 2020-07-25 01:38+0000\n"
 "Last-Translator: Hyeonseok Shin <hyeonseok@gmail.com>\n"
 "Language-Team: none\n"
@@ -14,31 +14,31 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:119
+#: src/linter.js:171
 msgid "Validation Summary:"
 msgstr "유효성 검증 요약:"
 
-#: src/linter.js:138
+#: src/linter.js:190
 msgid "Code"
 msgstr "코드"
 
-#: src/linter.js:144
+#: src/linter.js:196
 msgid "Message"
 msgstr "메시지"
 
-#: src/linter.js:150
+#: src/linter.js:202
 msgid "Description"
 msgstr "설명"
 
-#: src/linter.js:156
+#: src/linter.js:208
 msgid "File"
 msgstr "파일"
 
-#: src/linter.js:162
+#: src/linter.js:214
 msgid "Line"
 msgstr "행"
 
-#: src/linter.js:168
+#: src/linter.js:220
 msgid "Column"
 msgstr "열"
 
@@ -66,51 +66,77 @@ msgstr "부가기능 정책에 따라 외부 스크립트는 허용되지 않습
 msgid "Inline scripts blocked by default"
 msgstr "기본적으로 인라인 스크립트 차단"
 
-#: src/messages/javascript.js:105
+#: src/messages/javascript.js:100
+msgid "Unadvised 3rd-party JS library"
+msgstr "권장되지 않는 타사 JS 라이브러리"
+
+#: src/messages/javascript.js:107
 msgid "Known JS library detected"
 msgstr "알려진 JS 라이브러리 감지됨"
 
-#: src/messages/javascript.js:123
+#: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
 msgstr "{{api}}는 지원되지 않음"
 
-#: src/messages/javascript.js:124
+#: src/messages/javascript.js:126
 msgid "This API has not been implemented by Firefox."
 msgstr "이 API는 Firefox에서 구현되지 않았습니다."
 
-#: src/messages/javascript.js:14
-msgid "addEventListener` called with truthy fourth argument."
-msgstr "addEventListener` 가 참으로 계산되는 네 번째 인수와 함께 호출되었습니다."
+#: src/messages/javascript.js:132
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
+msgstr ""
 
-#: src/messages/javascript.js:166
+#: src/messages/javascript.js:141
+#, fuzzy
+msgid "{{api}} is deprecated"
+msgstr "{{api}}는 지원되지 않음"
+
+#: src/messages/javascript.js:142
+#, fuzzy
+msgid "This API has been deprecated by Firefox."
+msgstr "이 API는 Firefox에서 구현되지 않았습니다."
+
+#: src/messages/javascript.js:154
+msgid "\"{{api}}\" is deprecated or unimplemented"
+msgstr ""
+
+#: src/messages/javascript.js:16
+msgid "addEventListener` called with truthy fourth argument."
+msgstr ""
+"addEventListener` 가 참으로 계산되는 네 번째 인수와 함께 호출되었습니다."
+
+#: src/messages/javascript.js:182
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr "{{api}는 Firefox 버전 {{minVersion}}에서 지원되지 않습니다"
 
-#: src/messages/javascript.js:169
+#: src/messages/javascript.js:185
 msgid "This API is not implemented by the given minimum Firefox version"
 msgstr "이 API는 제공된 최소 Firefox 버전에서 구현되지 않습니다"
 
-#: src/messages/javascript.js:177
+#: src/messages/javascript.js:193
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}}는 안드로이드용 Firefox {{minVersion}}에서 지원되지 않습니다"
 
-#: src/messages/javascript.js:180
-msgid "This API is not implemented by the given minimum Firefox for Android version"
+#: src/messages/javascript.js:196
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
 msgstr "이 API는 제공된 최소 안드로이드용 Firefox 버전에서 구현되지 않습니다"
 
-#: src/messages/javascript.js:23
+#: src/messages/javascript.js:25
 msgid "Content script file could not be found."
 msgstr "컨텐츠 스크립트 파일을 찾을 수 없습니다."
 
-#: src/messages/javascript.js:24
+#: src/messages/javascript.js:26
 msgid "Content script file could not be found"
 msgstr "컨텐츠 스크립트 파일을 찾을 수 없습니다"
 
-#: src/messages/javascript.js:30
+#: src/messages/javascript.js:32
 msgid "Content script file name should not be empty."
 msgstr "컨텐츠 스크립트 파일의 이름은 비어 있을 수 없습니다."
 
-#: src/messages/javascript.js:31
+#: src/messages/javascript.js:33
 msgid "Content script file name should not be empty"
 msgstr "컨텐츠 스크립트 파일의 이름은 비어 있을 수 없습니다"
 
@@ -118,21 +144,17 @@ msgstr "컨텐츠 스크립트 파일의 이름은 비어 있을 수 없습니�
 msgid "JavaScript syntax error"
 msgstr "JavaScript 구문 오류"
 
-#: src/messages/javascript.js:76
+#: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
 msgstr "예상치 못한 전역이 인수로 전달됨"
 
-#: src/messages/javascript.js:83
+#: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
 msgstr "document.write는 사용하지 않는 것이 좋습니다."
 
-#: src/messages/javascript.js:91
+#: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
 msgstr "금지된 타사 JS 라이브러리"
-
-#: src/messages/javascript.js:98
-msgid "Unadvised 3rd-party JS library"
-msgstr "권장되지 않는 타사 JS 라이브러리"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -150,67 +172,67 @@ msgstr "JSON 파일이 유효하지 않습니다."
 msgid "Your JSON file could not be parsed."
 msgstr "JSON 파일을 파싱하지 못했습니다."
 
-#: src/messages/layout.js:17
+#: src/messages/layout.js:107
+msgid "Reserved filename found."
+msgstr "예약된 파일명이 있습니다."
+
+#: src/messages/layout.js:34
 msgid "We were unable to decompress the zip file."
 msgstr "zip 파일을 압출 해제 할 수 없습니다."
 
-#: src/messages/layout.js:22
+#: src/messages/layout.js:39
 msgid "manifest.json was not found"
 msgstr "manifest.json을 찾을 수 없습니다"
 
-#: src/messages/layout.js:30
+#: src/messages/layout.js:48
 msgid "File is too large to parse."
 msgstr "분석하기에 파일 용량이 너무 큽니다."
 
-#: src/messages/layout.js:39
+#: src/messages/layout.js:57
 msgid "Hidden file flagged"
 msgstr "숨겨진 파일 플래그"
 
-#: src/messages/layout.js:48
+#: src/messages/layout.js:66
 msgid "Flagged filename found"
 msgstr "플래그 파일명 발견"
 
-#: src/messages/layout.js:55
+#: src/messages/layout.js:73
 msgid "Flagged file extensions found"
 msgstr "플래그 파일 확장자 발견"
-
-#: src/messages/layout.js:62
-msgid "Flagged file type found"
-msgstr "플래그 파일 형식 발견"
-
-#: src/messages/layout.js:72
-msgid "Package already signed"
-msgstr "이미 서명 된 패키지"
 
 #: src/messages/layout.js:8
 msgid "Package contains duplicate entries"
 msgstr "패키지에 중복 된 항목이 있습니다"
 
 #: src/messages/layout.js:80
+msgid "Flagged file type found"
+msgstr "플래그 파일 형식 발견"
+
+#: src/messages/layout.js:90
+msgid "Package already signed"
+msgstr "이미 서명 된 패키지"
+
+#: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Firefox 부가기능은 가상화폐 채굴 코드 운영을 허용하지 않습니다."
-
-#: src/messages/layout.js:89
-msgid "Reserved filename found."
-msgstr "예약된 파일명이 있습니다."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
 msgstr "String 이름이 사전 정의된 메시지에 예약되어 있음"
 
-#: src/messages/locale-messagesjson.js:29
+#: src/messages/locale-messagesjson.js:30
 msgid "Placeholder for message is missing"
 msgstr "메시지 자리 표시자가 없음"
 
-#: src/messages/locale-messagesjson.js:30
+#: src/messages/locale-messagesjson.js:31
 msgid "A placeholder used in the message is not defined."
 msgstr "메시지에 사용 된 자리 표시자가 정의되지 않았습니다."
 
-#: src/messages/locale-messagesjson.js:35
+#: src/messages/locale-messagesjson.js:36
 msgid "Placeholder name contains invalid characters"
 msgstr "자리 표시자 이름에 잘못된 문자가 포함됨"
 
-#: src/messages/locale-messagesjson.js:42
+#: src/messages/locale-messagesjson.js:43
 msgid "Placeholder is missing the content property"
 msgstr "자리 표시자에 콘텐츠 속성이 없음"
 
@@ -219,257 +241,312 @@ msgid "Translation string is missing the message property"
 msgstr "번역 문자열에 메시지 속성이 없음"
 
 #: src/messages/locale-messagesjson.js:8
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "문자열(https://mzl.la/2DSBTjA)에 \"message\" 메시지 속성이 설정되어 있지 않습니다."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+"문자열(https://mzl.la/2DSBTjA)에 \"message\" 메시지 속성이 설정되어 있지 않습"
+"니다."
 
-#: src/messages/manifestjson.js:103
-msgid "\"update_url\" is not allowed."
-msgstr "\"update_url\"은 허용되지 않습니다."
+#: src/messages/manifestjson.js:100
+#, fuzzy
+msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
+msgstr ""
+"자세한 정보는 https://mzl.la/20PenXl (MDN 문서)에서 확인할 수 있습니다."
 
-#: src/messages/manifestjson.js:113
-msgid "The \"update_url\" property is not used by Firefox."
-msgstr "Firefox에서는 \"update_url\" 속성을 사용하지 않습니다."
+#: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
+#, fuzzy
+msgid "Invalid host permission."
+msgstr "알 수 없는 권한입니다."
 
-#: src/messages/manifestjson.js:122
-msgid "\"strict_max_version\" not required."
-msgstr "\"strict_max_version\"은 필요하지 않습니다."
+#: src/messages/manifestjson.js:117
+msgid "\"manifest_version\" in the manifest.json is not a valid value"
+msgstr "manifest.json의 \"manifest_version\"이 유효한 값이 아님"
 
-#: src/messages/manifestjson.js:141
-msgid "An icon defined in the manifest could not be found in the package."
-msgstr "매니페스트에 정의되어 있는 아이콘을 패키지에서 찾을 수 없습니다."
+#: src/messages/manifestjson.js:120
+msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
+msgstr ""
+"자세한 정보는 https://mzl.la/20PenXl (MDN 문서)에서 확인할 수 있습니다."
 
-#: src/messages/manifestjson.js:145
-msgid "Icon could not be found at \"%(path)s\"."
-msgstr "\"%(path)s\"에서 아이콘을 찾을 수 없습니다."
+#: src/messages/manifestjson.js:154
+msgid "The \"name\" property must be a string."
+msgstr "\"name\" 속성은 문자열 이어야 합니다."
 
-#: src/messages/manifestjson.js:160
-msgid "A background script defined in the manifest could not be found."
-msgstr "매니페스트에 정의된 백그라운드 스크립트를 찾을 수 없습니다."
+#: src/messages/manifestjson.js:155
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr "자세한 정보는 http://mzl.la/1STmr48 (MDN 문서)에서 확인할 수 있습니다."
 
 #: src/messages/manifestjson.js:163
-msgid "A background page defined in the manifest could not be found."
-msgstr "매니페스트에 정의된 백그라운드 페이지를 찾을 수 없습니다."
+msgid "The \"version\" property must be a string."
+msgstr "\"version\" 속성은 반드시 문자열 이어야 합니다."
 
-#: src/messages/manifestjson.js:168
-msgid "Background script could not be found at \"%(path)s\"."
-msgstr "\"%(path)s\"에서 백그라운드 스크립트를 찾을 수 없습니다."
-
-#: src/messages/manifestjson.js:169
-msgid "Background page could not be found at \"%(path)s\"."
-msgstr "\"%(path)s\"에서 백그라운드 페이지를 찾을 수 없습니다."
+#: src/messages/manifestjson.js:164 src/messages/manifestjson.js:173
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr "자세한 정보는 http://mzl.la/1kXIADa (MDN 문서)에서 확인할 수 있습니다."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
 msgstr "필드가 유효하지 않습니다."
 
+#: src/messages/manifestjson.js:172
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "\"version\" 속성은 Firefox만의 특정한 형식을 사용합니다."
+
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "자세한 정보는 https://mzl.la/1ZOhoEN (MDN 문서)에서 볼 수 있습니다."
 
-#: src/messages/manifestjson.js:184
+#: src/messages/manifestjson.js:181
+msgid "\"update_url\" is not allowed."
+msgstr "\"update_url\"은 허용되지 않습니다."
+
+#: src/messages/manifestjson.js:191
+msgid "The \"update_url\" property is not used by Firefox."
+msgstr "Firefox에서는 \"update_url\" 속성을 사용하지 않습니다."
+
+#: src/messages/manifestjson.js:200
+msgid "\"strict_max_version\" not required."
+msgstr "\"strict_max_version\"은 필요하지 않습니다."
+
+#: src/messages/manifestjson.js:219
+msgid "An icon defined in the manifest could not be found in the package."
+msgstr "매니페스트에 정의되어 있는 아이콘을 패키지에서 찾을 수 없습니다."
+
+#: src/messages/manifestjson.js:223
+msgid "Icon could not be found at \"%(path)s\"."
+msgstr "\"%(path)s\"에서 아이콘을 찾을 수 없습니다."
+
+#: src/messages/manifestjson.js:238
+msgid "A background script defined in the manifest could not be found."
+msgstr "매니페스트에 정의된 백그라운드 스크립트를 찾을 수 없습니다."
+
+#: src/messages/manifestjson.js:241
+msgid "A background page defined in the manifest could not be found."
+msgstr "매니페스트에 정의된 백그라운드 페이지를 찾을 수 없습니다."
+
+#: src/messages/manifestjson.js:246
+msgid "Background script could not be found at \"%(path)s\"."
+msgstr "\"%(path)s\"에서 백그라운드 스크립트를 찾을 수 없습니다."
+
+#: src/messages/manifestjson.js:247
+msgid "Background page could not be found at \"%(path)s\"."
+msgstr "\"%(path)s\"에서 백그라운드 페이지를 찾을 수 없습니다."
+
+#: src/messages/manifestjson.js:262
 msgid "A content script defined in the manifest could not be found."
 msgstr "매니페스트에 정의된 콘텐트 스크립트를 찾을 수 없습니다."
 
-#: src/messages/manifestjson.js:185
+#: src/messages/manifestjson.js:263
 msgid "A content script css file defined in the manifest could not be found."
 msgstr "매니페스트에 정의된 콘텐트 스크립트 css 파일을 찾을 수 없습니다."
 
-#: src/messages/manifestjson.js:190
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "매니페스트에 정의된 콘텐트 스크립트를 \"%(path)s\"에서 찾을 수 없습니다."
+#: src/messages/manifestjson.js:268
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"매니페스트에 정의된 콘텐트 스크립트를 \"%(path)s\"에서 찾을 수 없습니다."
 
-#: src/messages/manifestjson.js:193
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "매니페스트에 서언된 콘텐트 스크립트 CSS 파일을 \"%(path)s\"에서 찾을 수 없습니다."
+#: src/messages/manifestjson.js:271
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"매니페스트에 서언된 콘텐트 스크립트 CSS 파일을 \"%(path)s\"에서 찾을 수 없습"
+"니다."
 
-#: src/messages/manifestjson.js:207
+#: src/messages/manifestjson.js:285
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "매니페이스에 정의된 사전 파일을 찾을 수 없습니다."
 
-#: src/messages/manifestjson.js:211
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+#: src/messages/manifestjson.js:289
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "매니페이스에 정의된 사전 파일을 \"%(path)s\"에서 찾을 수 없습니다."
 
-#: src/messages/manifestjson.js:223
+#: src/messages/manifestjson.js:301
 msgid "The manifest contains multiple dictionaries."
 msgstr "매니페스트가 여러 개의 사전을 포함하고 있습니다."
 
-#: src/messages/manifestjson.js:224
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+#: src/messages/manifestjson.js:302
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "지원되지 않는 여러 개의 사전이 매니페스트에 정의되어 있습니다."
 
-#: src/messages/manifestjson.js:233
+#: src/messages/manifestjson.js:311
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr "매니페스트가 사전 객체를 포함하고 있지만 비어 있습니다."
 
-#: src/messages/manifestjson.js:236
+#: src/messages/manifestjson.js:314
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr "사전 객체는 매니페스트에 정의되었지만 비어 있었습니다."
 
-#: src/messages/manifestjson.js:245
+#: src/messages/manifestjson.js:323
 msgid "The manifest contains a dictionary but no id property."
 msgstr "매니페스트가 사전을 포함하고 있지만 id 속성이 없습니다."
 
-#: src/messages/manifestjson.js:246
+#: src/messages/manifestjson.js:324
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr "매니페스트에서 사전이 발견되었지만, id set이 없습니다."
 
-#: src/messages/manifestjson.js:256
+#: src/messages/manifestjson.js:334
 msgid "Forbidden content found in add-on."
 msgstr "부가 기능에 금지된 콘텐츠가 있습니다."
 
-#: src/messages/manifestjson.js:257
+#: src/messages/manifestjson.js:335
 msgid "This add-on contains forbidden content."
 msgstr "이 부가 기능은 금지된 콘텐츠를 포함하고 있습니다."
 
-#: src/messages/manifestjson.js:26
-msgid "The permission type is unsupported."
-msgstr "지원하지 않는 권한 타입입니다."
-
-#: src/messages/manifestjson.js:265
+#: src/messages/manifestjson.js:343
 msgid "Icons must be square."
 msgstr "아이콘은 사각형이어야 합니다."
 
-#: src/messages/manifestjson.js:266
+#: src/messages/manifestjson.js:344
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "\"%(path)s\"에 있는 아이콘은 사각형이어야 합니다."
 
-#: src/messages/manifestjson.js:277
+#: src/messages/manifestjson.js:355
 msgid "The size of the icon does not match the manifest."
 msgstr "아이콘의 크기가 매니페스트와 일치하지 않습니다."
 
-#: src/messages/manifestjson.js:292
+#: src/messages/manifestjson.js:370
 msgid "Corrupt image file"
 msgstr "이미지 파일 손상됨"
 
-#: src/messages/manifestjson.js:294
+#: src/messages/manifestjson.js:372
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr "\"%(path)s\"에 있는 예상 아이콘 파일이 손상됨"
 
-#: src/messages/manifestjson.js:303
+#: src/messages/manifestjson.js:381
+msgid "This property has been deprecated."
+msgstr ""
+
+#: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "이 테마 LWT 별칭은 Firefox 70 에서 제외되었습니다."
 
-#: src/messages/manifestjson.js:304
+#: src/messages/manifestjson.js:389
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "자세한 정보는 https://mzl.la/2T11Lkc (MDN 문서)에서 확인할 수 있습니다."
+msgstr ""
+"자세한 정보는 https://mzl.la/2T11Lkc (MDN 문서)에서 확인할 수 있습니다."
 
-#: src/messages/manifestjson.js:319
+#: src/messages/manifestjson.js:404
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "\"%(path)s\"에서 \"%(type)s\"의 테마 이미지를 찾을 수 없습니다."
 
-#: src/messages/manifestjson.js:330
+#: src/messages/manifestjson.js:415
 msgid "Corrupted theme image file"
 msgstr "테마 이미지 파일 손상됨"
 
-#: src/messages/manifestjson.js:332
+#: src/messages/manifestjson.js:417
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "\"%(path)s\"의 테마 이미지 파일 손상됨"
 
-#: src/messages/manifestjson.js:34
-msgid "Unknown permission."
-msgstr "알 수 없는 권한입니다."
-
-#: src/messages/manifestjson.js:343
+#: src/messages/manifestjson.js:428
 msgid "Theme image file has an unsupported file extension"
 msgstr "테마 이미지 파일에 지원하지 않는 파일 확장자가 있음"
 
-#: src/messages/manifestjson.js:345
+#: src/messages/manifestjson.js:430
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
 msgstr "\"%(path)s\"의 테마 이미지 파일에 지원하지 않는 파일 확장자가 있음"
 
-#: src/messages/manifestjson.js:35
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "자세한 정보는 https://mzl.la/1R1n1t0 (MDN 문서)에서 확인할 수 있습니다."
-
-#: src/messages/manifestjson.js:359
+#: src/messages/manifestjson.js:444
 msgid "Theme image file has an unsupported mime type"
 msgstr "테마 이미지 파일에 지원하지 않는 MIME 타입이 있음"
 
-#: src/messages/manifestjson.js:361
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr "\"%(path)s\"에 있는 테마 이미지 파일에 지원하지 않는 MIME 타입 \"%(mime)s\"이 있음"
+#: src/messages/manifestjson.js:446
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr ""
+"\"%(path)s\"에 있는 테마 이미지 파일에 지원하지 않는 MIME 타입 \"%(mime)s"
+"\"이 있음"
 
-#: src/messages/manifestjson.js:375
+#: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
 msgstr "MIME 타입 테마 이미지 파일이 파일 확장자와 일치하지 않음"
 
-#: src/messages/manifestjson.js:379
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr "\"%(path)s\"에 있는 테마 이미지 파일 확장자가 실제 MIME 타입 \"%(mime)s\"와 일치하지 않음"
+#: src/messages/manifestjson.js:464
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
+msgstr ""
+"\"%(path)s\"에 있는 테마 이미지 파일 확장자가 실제 MIME 타입 \"%(mime)s\"와 "
+"일치하지 않음"
 
-#: src/messages/manifestjson.js:393
+#: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
 msgstr "\"default_locale\"은 현지화가 되어 있지 않습니다."
 
-#: src/messages/manifestjson.js:402
+#: src/messages/manifestjson.js:487
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "\"default_locale\"은 존재하지 않지만 \"_locales\"는 존재합니다."
 
-#: src/messages/manifestjson.js:411
+#: src/messages/manifestjson.js:496
 msgid "Unsupported image extension"
 msgstr "지원되지 않는 이미지 확장자"
 
-#: src/messages/manifestjson.js:412
+#: src/messages/manifestjson.js:497
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "아이콘은 JPG/JPEG, WebP, GIF, PNG 또는 SVG 중 하나여야 합니다."
 
-#: src/messages/manifestjson.js:422
+#: src/messages/manifestjson.js:505
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property\""
+msgstr ""
+
+#: src/messages/manifestjson.js:518
 msgid "Empty language directory"
 msgstr "빈 언어 디렉터리"
 
-#: src/messages/manifestjson.js:424
+#: src/messages/manifestjson.js:520
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "\"%(path)s\"에 messages.json 파일이 없음"
 
-#: src/messages/manifestjson.js:43
-msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "manifest.json의 \"manifest_version\"이 유효한 값이 아님"
-
-#: src/messages/manifestjson.js:440
+#: src/messages/manifestjson.js:536
 msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr "매니페스트 키가 명시된 최소 Firefox 버전에서 지원되지 않음"
 
-#: src/messages/manifestjson.js:46
-msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "자세한 정보는 https://mzl.la/20PenXl (MDN 문서)에서 확인할 수 있습니다."
-
-#: src/messages/manifestjson.js:462
+#: src/messages/manifestjson.js:558
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "명시된 최소 Firefox 버전에서 지원하지 않는 권한"
 
-#: src/messages/manifestjson.js:484
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+#: src/messages/manifestjson.js:580
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
 msgstr "매니페스트 키가 명시된 최소 Android 용 Firefox 버전에서 지원되지 않음"
 
-#: src/messages/manifestjson.js:506
-msgid "Permission not supported by the specified minimum Firefox for Android version"
+#: src/messages/manifestjson.js:602
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
 msgstr "명시된 최소 Android 용 Firefox 버전에서 지원하지 않는 권한"
 
-#: src/messages/manifestjson.js:58
-msgid "A custom content_security_policy needs additional review."
-msgstr "사용자 정의 content_security_policy에 추가적인 검토가 필요합니다."
+#: src/messages/manifestjson.js:617
+msgid "Linking to \"addons.mozilla.org\" is not allowed"
+msgstr ""
 
-#: src/messages/manifestjson.js:76
-msgid "The \"name\" property must be a string."
-msgstr "\"name\" 속성은 문자열 이어야 합니다."
+#: src/messages/manifestjson.js:618
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
 
-#: src/messages/manifestjson.js:77
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "자세한 정보는 http://mzl.la/1STmr48 (MDN 문서)에서 확인할 수 있습니다."
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
+#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+msgid "The permission type is unsupported."
+msgstr "지원하지 않는 권한 타입입니다."
 
 #: src/messages/manifestjson.js:8
 msgid "The field is required."
 msgstr "이 필드는 필수입니다."
 
-#: src/messages/manifestjson.js:85
-msgid "The \"version\" property must be a string."
-msgstr "\"version\" 속성은 반드시 문자열 이어야 합니다."
+#: src/messages/manifestjson.js:90 src/messages/manifestjson.js:99
+msgid "Unknown permission."
+msgstr "알 수 없는 권한입니다."
 
-#: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "자세한 정보는 http://mzl.la/1kXIADa (MDN 문서)에서 확인할 수 있습니다."
+#: src/messages/manifestjson.js:91
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr ""
+"자세한 정보는 https://mzl.la/1R1n1t0 (MDN 문서)에서 확인할 수 있습니다."
 
-#: src/messages/manifestjson.js:94
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "\"version\" 속성은 Firefox만의 특정한 형식을 사용합니다."
+#~ msgid "A custom content_security_policy needs additional review."
+#~ msgstr "사용자 정의 content_security_policy에 추가적인 검토가 필요합니다."

@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-07-25 10:01+0000\n"
+"POT-Creation-Date: 2021-11-03 08:14+0000\n"
 "PO-Revision-Date: 2021-03-24 13:13+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
@@ -14,31 +14,31 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:119
+#: src/linter.js:171
 msgid "Validation Summary:"
 msgstr "ధ్రువీకరణ సారాంశం:"
 
-#: src/linter.js:138
+#: src/linter.js:190
 msgid "Code"
 msgstr "కోడ్"
 
-#: src/linter.js:144
+#: src/linter.js:196
 msgid "Message"
 msgstr "సందేశం"
 
-#: src/linter.js:150
+#: src/linter.js:202
 msgid "Description"
 msgstr "వివరణ"
 
-#: src/linter.js:156
+#: src/linter.js:208
 msgid "File"
 msgstr "ఫైలు"
 
-#: src/linter.js:162
+#: src/linter.js:214
 msgid "Line"
 msgstr "వరుస"
 
-#: src/linter.js:168
+#: src/linter.js:220
 msgid "Column"
 msgstr "నిలువు వరుస"
 
@@ -66,51 +66,76 @@ msgstr "పొడగింతల విధానాల ప్రకారం ర
 msgid "Inline scripts blocked by default"
 msgstr "inlinescripts అప్రమేయంగా నిరోధించబడతాయి"
 
-#: src/messages/javascript.js:105
+#: src/messages/javascript.js:100
+msgid "Unadvised 3rd-party JS library"
+msgstr "సూచించబడని 3వ-పక్ష JS లైబ్రరీ"
+
+#: src/messages/javascript.js:107
 msgid "Known JS library detected"
 msgstr "తెలిసిన JS లైబ్రరీ కనుగొనబడింది"
 
-#: src/messages/javascript.js:123
+#: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
 msgstr "{{api}} కు మద్దతు లేదు"
 
-#: src/messages/javascript.js:124
+#: src/messages/javascript.js:126
 msgid "This API has not been implemented by Firefox."
 msgstr "ఈ API Firefox ద్వారా అమలు చేయబడలేదు."
 
-#: src/messages/javascript.js:14
+#: src/messages/javascript.js:132
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
+msgstr ""
+
+#: src/messages/javascript.js:141
+#, fuzzy
+msgid "{{api}} is deprecated"
+msgstr "{{api}} కు మద్దతు లేదు"
+
+#: src/messages/javascript.js:142
+#, fuzzy
+msgid "This API has been deprecated by Firefox."
+msgstr "ఈ API Firefox ద్వారా అమలు చేయబడలేదు."
+
+#: src/messages/javascript.js:154
+msgid "\"{{api}}\" is deprecated or unimplemented"
+msgstr ""
+
+#: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
 msgstr ""
 
-#: src/messages/javascript.js:166
+#: src/messages/javascript.js:182
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr ""
 
-#: src/messages/javascript.js:169
+#: src/messages/javascript.js:185
 msgid "This API is not implemented by the given minimum Firefox version"
 msgstr ""
 
-#: src/messages/javascript.js:177
+#: src/messages/javascript.js:193
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr ""
 
-#: src/messages/javascript.js:180
-msgid "This API is not implemented by the given minimum Firefox for Android version"
+#: src/messages/javascript.js:196
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
 msgstr "పేర్కొన్న ఆండ్రాయిడ్ కొరకు Firefox కనిష్ఠ వెర్షనులో ఈ API అమలుచేయబడలేదు"
 
-#: src/messages/javascript.js:23
+#: src/messages/javascript.js:25
 msgid "Content script file could not be found."
 msgstr "కంటెంట్ స్క్రిప్ట్ ఫైలు కనుగొనబడలేదు."
 
-#: src/messages/javascript.js:24
+#: src/messages/javascript.js:26
 msgid "Content script file could not be found"
 msgstr "కంటెంట్ స్క్రిప్ట్ ఫైల్ కనుగొనబడలేదు"
 
-#: src/messages/javascript.js:30
+#: src/messages/javascript.js:32
 msgid "Content script file name should not be empty."
 msgstr "కంటెంట్ స్క్రిప్ట్ ఫైలు పేరు ఖాళీగా ఉండకూడదు."
 
-#: src/messages/javascript.js:31
+#: src/messages/javascript.js:33
 msgid "Content script file name should not be empty"
 msgstr "కంటెంట్ స్క్రిప్ట్ ఫైలు పేరు ఖాళీగా ఉండకూడదు"
 
@@ -118,21 +143,17 @@ msgstr "కంటెంట్ స్క్రిప్ట్ ఫైలు పే
 msgid "JavaScript syntax error"
 msgstr "JavaScript సింటాక్స్ లోపం"
 
-#: src/messages/javascript.js:76
+#: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
 msgstr ""
 
-#: src/messages/javascript.js:83
+#: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
 msgstr "document.write వాడకం వారించబడింది."
 
-#: src/messages/javascript.js:91
+#: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
 msgstr "నిషేధించిన 3వ-పక్ష JS లైబ్రరీ"
-
-#: src/messages/javascript.js:98
-msgid "Unadvised 3rd-party JS library"
-msgstr "సూచించబడని 3వ-పక్ష JS లైబ్రరీ"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -150,67 +171,67 @@ msgstr "మీ JSON చెల్లదు."
 msgid "Your JSON file could not be parsed."
 msgstr "మీ JSON ఫైలు పార్స్ చెయ్యబడలేదు."
 
-#: src/messages/layout.js:17
+#: src/messages/layout.js:107
+msgid "Reserved filename found."
+msgstr "రిజర్వుచేయబడిన ఫైలుపేరు కనబడింది."
+
+#: src/messages/layout.js:34
 msgid "We were unable to decompress the zip file."
 msgstr "మేము జిప్ ఫైలుని డీకంప్రెస్ చెయ్యలేకపోయాం."
 
-#: src/messages/layout.js:22
+#: src/messages/layout.js:39
 msgid "manifest.json was not found"
 msgstr "manifest.json దొరకలేదు"
 
-#: src/messages/layout.js:30
+#: src/messages/layout.js:48
 msgid "File is too large to parse."
 msgstr "ఫైలు చాలా పెద్దగా ఉన్నందున పార్స్ చెయ్యలేము."
 
-#: src/messages/layout.js:39
+#: src/messages/layout.js:57
 msgid "Hidden file flagged"
 msgstr "దాచిన ఫైల్ ఫ్లాగ్ చేయబడింది"
 
-#: src/messages/layout.js:48
+#: src/messages/layout.js:66
 msgid "Flagged filename found"
 msgstr "ఫ్లాగ్ చేయబడిన ఫైల్ పేరు కనుగొనబడింది"
 
-#: src/messages/layout.js:55
+#: src/messages/layout.js:73
 msgid "Flagged file extensions found"
 msgstr "ఫ్లాగ్ చేయబడిన ఫైల్ పొడిగింతలు కనుగొనబడ్డాయి"
-
-#: src/messages/layout.js:62
-msgid "Flagged file type found"
-msgstr "ఫ్లాగ్ చేయబడిన ఫైల్ రకం కనుగొనబడింది"
-
-#: src/messages/layout.js:72
-msgid "Package already signed"
-msgstr "ప్యాకేజీ ఇప్పటికే సంతకం చేయబడింది"
 
 #: src/messages/layout.js:8
 msgid "Package contains duplicate entries"
 msgstr "ప్యాకేజిలో ద్వంద్వ పద్దులు ఉన్నాయి"
 
 #: src/messages/layout.js:80
+msgid "Flagged file type found"
+msgstr "ఫ్లాగ్ చేయబడిన ఫైల్ రకం కనుగొనబడింది"
+
+#: src/messages/layout.js:90
+msgid "Package already signed"
+msgstr "ప్యాకేజీ ఇప్పటికే సంతకం చేయబడింది"
+
+#: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "కాయిన్ మైనర్లను నపడడానికి Firefox పొడగింతలు అనుమతించబడవు."
-
-#: src/messages/layout.js:89
-msgid "Reserved filename found."
-msgstr "రిజర్వుచేయబడిన ఫైలుపేరు కనబడింది."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
 msgstr "ముందే నిర్వచించబడిన సందేశానికి స్ట్రింగ్ పేరు రిజర్వ్ చేయబడింది"
 
-#: src/messages/locale-messagesjson.js:29
+#: src/messages/locale-messagesjson.js:30
 msgid "Placeholder for message is missing"
 msgstr "సందేశానికి హోల్డర్ లేదు"
 
-#: src/messages/locale-messagesjson.js:30
+#: src/messages/locale-messagesjson.js:31
 msgid "A placeholder used in the message is not defined."
 msgstr "సందేశంలో వాడిన ప్లేస్‌హోల్డర్ నిర్వచించబడలేదు."
 
-#: src/messages/locale-messagesjson.js:35
+#: src/messages/locale-messagesjson.js:36
 msgid "Placeholder name contains invalid characters"
 msgstr "ప్లేస్‌హోల్డర్ పేరులో చెల్లని అక్షరాలు ఉన్నాయి"
 
-#: src/messages/locale-messagesjson.js:42
+#: src/messages/locale-messagesjson.js:43
 msgid "Placeholder is missing the content property"
 msgstr "ప్లేస్‌హోల్డర్‌కు కంటెంట్ లక్షణం లేదు"
 
@@ -219,260 +240,302 @@ msgid "Translation string is missing the message property"
 msgstr "అనువాద పదబంధానికి సందేశపు లక్షణం లేదు"
 
 #: src/messages/locale-messagesjson.js:8
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
-#: src/messages/manifestjson.js:103
-msgid "\"update_url\" is not allowed."
-msgstr "\"update_url\" అనుమతించబడదు."
+#: src/messages/manifestjson.js:100
+#, fuzzy
+msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
+msgstr "మరింత సమాచారం కోసం https://mzl.la/20PenXl (MDN డాక్స్) చూడండి."
 
-#: src/messages/manifestjson.js:113
-msgid "The \"update_url\" property is not used by Firefox."
-msgstr "\"update_url\" లక్షణాన్ని Firefox వాడుకోదు."
+#: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
+#, fuzzy
+msgid "Invalid host permission."
+msgstr "తెలియని అనుమతి."
 
-#: src/messages/manifestjson.js:122
-msgid "\"strict_max_version\" not required."
-msgstr "\"strict_max_version\" అవసరం లేదు."
+#: src/messages/manifestjson.js:117
+msgid "\"manifest_version\" in the manifest.json is not a valid value"
+msgstr "manifest.json లోని \"manifest_version\" చెల్లుబాటు కాదు"
 
-#: src/messages/manifestjson.js:141
-msgid "An icon defined in the manifest could not be found in the package."
-msgstr "మానిఫెస్ట్‌లో నిర్వచించిన ప్రతీకం ప్యాకేజీలో కనబడలేదు."
+#: src/messages/manifestjson.js:120
+msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
+msgstr "మరింత సమాచారం కోసం https://mzl.la/20PenXl (MDN డాక్స్) చూడండి."
 
-#: src/messages/manifestjson.js:145
-msgid "Icon could not be found at \"%(path)s\"."
-msgstr "\"%(path)s\" వద్ద ప్రతీకం కనబడలేదు."
+#: src/messages/manifestjson.js:154
+msgid "The \"name\" property must be a string."
+msgstr "\"name\" లక్షణం స్ట్రింగ్ అయి ఉండాలి."
 
-#: src/messages/manifestjson.js:160
-msgid "A background script defined in the manifest could not be found."
-msgstr ""
+#: src/messages/manifestjson.js:155
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr "మరింత సమాచారం కోసం http://mzl.la/1STmr48 (MDN డాక్స్) చూడండి."
 
 #: src/messages/manifestjson.js:163
-msgid "A background page defined in the manifest could not be found."
-msgstr ""
+msgid "The \"version\" property must be a string."
+msgstr "\"version\" లక్షణం స్ట్రింగ్ అయి ఉండాలి."
 
-#: src/messages/manifestjson.js:168
-msgid "Background script could not be found at \"%(path)s\"."
-msgstr "వెనుతలపు స్క్రిప్టు \"%(path)s\"లో కనబడలేదు."
-
-#: src/messages/manifestjson.js:169
-msgid "Background page could not be found at \"%(path)s\"."
-msgstr "వెనుతలపు పేజీ \"%(path)s\"లో కనబడలేదు."
+#: src/messages/manifestjson.js:164 src/messages/manifestjson.js:173
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr "మరింత సమాచారం కోసం http://mzl.la/1kXIADa (MDN డాక్స్) చూడండి."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
 msgstr "ఆ ఖాళీ చెల్లదు."
 
+#: src/messages/manifestjson.js:172
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "\"version\" లక్షణం Firefoxకి ప్రత్యేకమైన ఫార్మాటును వాడుతుంది."
+
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "మరింత సమాచారం కోసం https://mzl.la/1ZOhoEN (MDN డాక్స్) చూడండి."
 
-#: src/messages/manifestjson.js:184
+#: src/messages/manifestjson.js:181
+msgid "\"update_url\" is not allowed."
+msgstr "\"update_url\" అనుమతించబడదు."
+
+#: src/messages/manifestjson.js:191
+msgid "The \"update_url\" property is not used by Firefox."
+msgstr "\"update_url\" లక్షణాన్ని Firefox వాడుకోదు."
+
+#: src/messages/manifestjson.js:200
+msgid "\"strict_max_version\" not required."
+msgstr "\"strict_max_version\" అవసరం లేదు."
+
+#: src/messages/manifestjson.js:219
+msgid "An icon defined in the manifest could not be found in the package."
+msgstr "మానిఫెస్ట్‌లో నిర్వచించిన ప్రతీకం ప్యాకేజీలో కనబడలేదు."
+
+#: src/messages/manifestjson.js:223
+msgid "Icon could not be found at \"%(path)s\"."
+msgstr "\"%(path)s\" వద్ద ప్రతీకం కనబడలేదు."
+
+#: src/messages/manifestjson.js:238
+msgid "A background script defined in the manifest could not be found."
+msgstr ""
+
+#: src/messages/manifestjson.js:241
+msgid "A background page defined in the manifest could not be found."
+msgstr ""
+
+#: src/messages/manifestjson.js:246
+msgid "Background script could not be found at \"%(path)s\"."
+msgstr "వెనుతలపు స్క్రిప్టు \"%(path)s\"లో కనబడలేదు."
+
+#: src/messages/manifestjson.js:247
+msgid "Background page could not be found at \"%(path)s\"."
+msgstr "వెనుతలపు పేజీ \"%(path)s\"లో కనబడలేదు."
+
+#: src/messages/manifestjson.js:262
 msgid "A content script defined in the manifest could not be found."
 msgstr ""
 
-#: src/messages/manifestjson.js:185
+#: src/messages/manifestjson.js:263
 msgid "A content script css file defined in the manifest could not be found."
 msgstr ""
 
-#: src/messages/manifestjson.js:190
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+#: src/messages/manifestjson.js:268
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
-#: src/messages/manifestjson.js:193
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+#: src/messages/manifestjson.js:271
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
 msgstr ""
 
-#: src/messages/manifestjson.js:207
+#: src/messages/manifestjson.js:285
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr ""
 
-#: src/messages/manifestjson.js:211
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+#: src/messages/manifestjson.js:289
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
-#: src/messages/manifestjson.js:223
+#: src/messages/manifestjson.js:301
 msgid "The manifest contains multiple dictionaries."
 msgstr "మానిఫెస్ట్ బహుళ నిఘంటువులను కలిగి ఉంది."
 
-#: src/messages/manifestjson.js:224
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+#: src/messages/manifestjson.js:302
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "మానిఫెస్ట్‌లో బహుళ నిఘంటువులు నిర్వచించబడ్డాయి, దీనికి తోడ్పాటు లేదు."
 
-#: src/messages/manifestjson.js:233
+#: src/messages/manifestjson.js:311
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr "మానిఫెస్ట్‌లో నిఘంటువు వస్తువు ఉంది, కానీ అది ఖాళీగా ఉంది."
 
-#: src/messages/manifestjson.js:236
+#: src/messages/manifestjson.js:314
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr "మానిఫెస్ట్‌లో నిఘంటువు వస్తువు నిర్వచించబడింది, కానీ అది ఖాళీగా ఉంది."
 
-#: src/messages/manifestjson.js:245
+#: src/messages/manifestjson.js:323
 msgid "The manifest contains a dictionary but no id property."
 msgstr "మానిఫెస్ట్‌లో నిఘంటువు ఉంది కాని id లక్షణం లేదు."
 
-#: src/messages/manifestjson.js:246
+#: src/messages/manifestjson.js:324
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr "మానిఫెస్ట్‌లో ఒక నిఘంటువు కనుగొనబడింది, కాని id అమర్చి లేదు."
 
-#: src/messages/manifestjson.js:256
+#: src/messages/manifestjson.js:334
 msgid "Forbidden content found in add-on."
 msgstr "పొడగింతలో నిషేధిత కంటెంట్ కనబడింది."
 
-#: src/messages/manifestjson.js:257
+#: src/messages/manifestjson.js:335
 msgid "This add-on contains forbidden content."
 msgstr "ఈ పొడిగింత నిషిద్ధ కంటెంట్ను కలిగి ఉంది."
 
-#: src/messages/manifestjson.js:26
-msgid "The permission type is unsupported."
-msgstr "ఆ అనుమతి రకానికి తోడ్పాటు లేదు."
-
-#: src/messages/manifestjson.js:265
+#: src/messages/manifestjson.js:343
 msgid "Icons must be square."
 msgstr "చిహ్నాలు చదరపు ఆకారంలో ఉండాలి."
 
-#: src/messages/manifestjson.js:266
+#: src/messages/manifestjson.js:344
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "\"%(path)s\" లో ప్రతీకాలు చదరంగా ఉండాలి."
 
-#: src/messages/manifestjson.js:277
+#: src/messages/manifestjson.js:355
 msgid "The size of the icon does not match the manifest."
 msgstr "ప్రతీకపు పరిమాణం మానిఫెస్ట్‌తో సరిపోలలేదు."
 
-#: src/messages/manifestjson.js:292
+#: src/messages/manifestjson.js:370
 msgid "Corrupt image file"
 msgstr "చెడిపోయిన చిత్రం ఫైలు"
 
-#: src/messages/manifestjson.js:294
+#: src/messages/manifestjson.js:372
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr ""
 
-#: src/messages/manifestjson.js:303
+#: src/messages/manifestjson.js:381
+msgid "This property has been deprecated."
+msgstr ""
+
+#: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "ఈ అలంకారపు LWT మారుపేరు Firefox 70లో తొలగించబడింది."
 
-#: src/messages/manifestjson.js:304
+#: src/messages/manifestjson.js:389
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr "మరింత సమాచారం కోసం https://mzl.la/2T11Lkc (MDN పత్రావళి) చూడండి."
 
-#: src/messages/manifestjson.js:319
+#: src/messages/manifestjson.js:404
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "%(type)s కొరకు అలంకారపు బొమ్మ \"%(path)s\" వద్ద కనబడలేదు"
 
-#: src/messages/manifestjson.js:330
+#: src/messages/manifestjson.js:415
 msgid "Corrupted theme image file"
 msgstr "పాడైన అలంకారపు బొమ్మ ఫైలు"
 
-#: src/messages/manifestjson.js:332
+#: src/messages/manifestjson.js:417
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr ""
 
-#: src/messages/manifestjson.js:34
-msgid "Unknown permission."
-msgstr "తెలియని అనుమతి."
-
-#: src/messages/manifestjson.js:343
+#: src/messages/manifestjson.js:428
 msgid "Theme image file has an unsupported file extension"
 msgstr "అలంకారపు బొమ్మ ఫైలు తోడ్పాటులేని ఫైలు ఎక్స్‌టెన్షన్ కలిగివుంది"
 
-#: src/messages/manifestjson.js:345
+#: src/messages/manifestjson.js:430
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
 msgstr ""
 
-#: src/messages/manifestjson.js:35
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "మరింత సమాచారం కోసం https://mzl.la/1R1n1t0 (MDN డాక్స్) చూడండి."
-
-#: src/messages/manifestjson.js:359
+#: src/messages/manifestjson.js:444
 msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
-#: src/messages/manifestjson.js:361
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+#: src/messages/manifestjson.js:446
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
-#: src/messages/manifestjson.js:375
+#: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
 msgstr "అలంకారపు బొమ్మ ఫైలు యొక్క మైమ్ రకం దాని ఎక్స్‌టెన్షనుతో సరిపోలలేదు"
 
-#: src/messages/manifestjson.js:379
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+#: src/messages/manifestjson.js:464
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
 msgstr ""
 
-#: src/messages/manifestjson.js:393
+#: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
 msgstr "ఈ \"default_locale\" లో స్థానికీకరణలు లేవు."
 
-#: src/messages/manifestjson.js:402
+#: src/messages/manifestjson.js:487
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "\"default_locale\" లేదు కానీ \"_locales\" మాత్రం ఉన్నాయి."
 
-#: src/messages/manifestjson.js:411
+#: src/messages/manifestjson.js:496
 msgid "Unsupported image extension"
 msgstr "తోడ్పాటు లేని బొమ్మ ఎక్స్‌టెన్షన్"
 
-#: src/messages/manifestjson.js:412
+#: src/messages/manifestjson.js:497
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "ప్రతీకాలు JPG/JPEG, WebP, GIF, PNG లేదా SVGలలో ఒకటయి ఉండాలి."
 
-#: src/messages/manifestjson.js:422
+#: src/messages/manifestjson.js:505
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property\""
+msgstr ""
+
+#: src/messages/manifestjson.js:518
 msgid "Empty language directory"
 msgstr ""
 
-#: src/messages/manifestjson.js:424
+#: src/messages/manifestjson.js:520
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "\"%(path)s\" లలో messages.json ఫైలు లేదు"
 
-#: src/messages/manifestjson.js:43
-msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "manifest.json లోని \"manifest_version\" చెల్లుబాటు కాదు"
-
-#: src/messages/manifestjson.js:440
+#: src/messages/manifestjson.js:536
 msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr "పేర్కొన్న కనిష్ట Firefox వెర్షనులో మానిఫెస్ట్ కీ తోడ్పాటు లేదు"
 
-#: src/messages/manifestjson.js:46
-msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "మరింత సమాచారం కోసం https://mzl.la/20PenXl (MDN డాక్స్) చూడండి."
-
-#: src/messages/manifestjson.js:462
+#: src/messages/manifestjson.js:558
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "పేర్కొన్న కనీస Firefox వెర్షనులో అనుమతికి తోడ్పాటు లేదు"
 
-#: src/messages/manifestjson.js:484
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+#: src/messages/manifestjson.js:580
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
 msgstr "పేర్కొన్న ఆండ్రాయిడ్ కొరకు Firefox కనిష్ట వెర్షనులో మానిఫెస్ట్ కీ తోడ్పాటు లేదు"
 
-#: src/messages/manifestjson.js:506
-msgid "Permission not supported by the specified minimum Firefox for Android version"
+#: src/messages/manifestjson.js:602
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
-#: src/messages/manifestjson.js:58
-msgid "A custom content_security_policy needs additional review."
-msgstr "ఒక అభిమత content_security_policyకు అదనపు సమీక్ష అవసరం."
+#: src/messages/manifestjson.js:617
+msgid "Linking to \"addons.mozilla.org\" is not allowed"
+msgstr ""
 
-#: src/messages/manifestjson.js:76
-msgid "The \"name\" property must be a string."
-msgstr "\"name\" లక్షణం స్ట్రింగ్ అయి ఉండాలి."
+#: src/messages/manifestjson.js:618
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
 
-#: src/messages/manifestjson.js:77
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "మరింత సమాచారం కోసం http://mzl.la/1STmr48 (MDN డాక్స్) చూడండి."
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
+#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+msgid "The permission type is unsupported."
+msgstr "ఆ అనుమతి రకానికి తోడ్పాటు లేదు."
 
 #: src/messages/manifestjson.js:8
 msgid "The field is required."
 msgstr "ఫీల్డ్ అవసరం."
 
-#: src/messages/manifestjson.js:85
-msgid "The \"version\" property must be a string."
-msgstr "\"version\" లక్షణం స్ట్రింగ్ అయి ఉండాలి."
+#: src/messages/manifestjson.js:90 src/messages/manifestjson.js:99
+msgid "Unknown permission."
+msgstr "తెలియని అనుమతి."
 
-#: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "మరింత సమాచారం కోసం http://mzl.la/1kXIADa (MDN డాక్స్) చూడండి."
+#: src/messages/manifestjson.js:91
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr "మరింత సమాచారం కోసం https://mzl.la/1R1n1t0 (MDN డాక్స్) చూడండి."
 
-#: src/messages/manifestjson.js:94
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "\"version\" లక్షణం Firefoxకి ప్రత్యేకమైన ఫార్మాటును వాడుతుంది."
+#~ msgid "A custom content_security_policy needs additional review."
+#~ msgstr "ఒక అభిమత content_security_policyకు అదనపు సమీక్ష అవసరం."
 
 #~ msgid "Violation of Mozilla conditions of use."
 #~ msgstr "ఉపయోగం యొక్క మొజిల్లా పరిస్థితుల ఉల్లంఘన."

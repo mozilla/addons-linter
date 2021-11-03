@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-07-25 10:01+0000\n"
+"POT-Creation-Date: 2021-11-03 08:14+0000\n"
 "PO-Revision-Date: 2019-08-01 16:41+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: none\n"
@@ -14,31 +14,31 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:119
+#: src/linter.js:171
 msgid "Validation Summary:"
 msgstr "Ellenőrzési összefoglaló:"
 
-#: src/linter.js:138
+#: src/linter.js:190
 msgid "Code"
 msgstr "Kód"
 
-#: src/linter.js:144
+#: src/linter.js:196
 msgid "Message"
 msgstr "Üzenet"
 
-#: src/linter.js:150
+#: src/linter.js:202
 msgid "Description"
 msgstr "Leírás"
 
-#: src/linter.js:156
+#: src/linter.js:208
 msgid "File"
 msgstr "Fájl"
 
-#: src/linter.js:162
+#: src/linter.js:214
 msgid "Line"
 msgstr "Sor"
 
-#: src/linter.js:168
+#: src/linter.js:220
 msgid "Column"
 msgstr "Oszlop"
 
@@ -60,57 +60,87 @@ msgstr "Az FTL fájl nem dolgozható fel."
 
 #: src/messages/html.js:14
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr "A távoli parancsfájlok a kiegészítők irányelvei szerint nem engedélyezettek."
+msgstr ""
+"A távoli parancsfájlok a kiegészítők irányelvei szerint nem engedélyezettek."
 
 #: src/messages/html.js:7
 msgid "Inline scripts blocked by default"
 msgstr "A soron belüli parancsfájlok alapértelmezetten blokkoltak"
 
-#: src/messages/javascript.js:105
+#: src/messages/javascript.js:100
+msgid "Unadvised 3rd-party JS library"
+msgstr "Nem tanácsolt harmadik féltől származó JS könyvtár"
+
+#: src/messages/javascript.js:107
 msgid "Known JS library detected"
 msgstr "Ismert JS könyvtár észlelve"
 
-#: src/messages/javascript.js:123
+#: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
 msgstr "A(z) {{api}} nem támogatott"
 
-#: src/messages/javascript.js:124
+#: src/messages/javascript.js:126
 msgid "This API has not been implemented by Firefox."
 msgstr "Ez az API még nincs megvalósítva a Firefoxban."
 
-#: src/messages/javascript.js:14
+#: src/messages/javascript.js:132
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
+msgstr ""
+
+#: src/messages/javascript.js:141
+#, fuzzy
+msgid "{{api}} is deprecated"
+msgstr "A(z) {{api}} nem támogatott"
+
+#: src/messages/javascript.js:142
+#, fuzzy
+msgid "This API has been deprecated by Firefox."
+msgstr "Ez az API még nincs megvalósítva a Firefoxban."
+
+#: src/messages/javascript.js:154
+msgid "\"{{api}}\" is deprecated or unimplemented"
+msgstr ""
+
+#: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
 msgstr "`addEventListener` igaz értékű negyedik argumentummal meghívva."
 
-#: src/messages/javascript.js:166
+#: src/messages/javascript.js:182
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr "A(z) {{api}} nem támogatott a Firefox {{minVersion}} verzióban"
 
-#: src/messages/javascript.js:169
+#: src/messages/javascript.js:185
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Ez az API még nincs megvalósítva a megadott minimális Firefox verzióban"
+msgstr ""
+"Ez az API még nincs megvalósítva a megadott minimális Firefox verzióban"
 
-#: src/messages/javascript.js:177
+#: src/messages/javascript.js:193
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr "A(z) {{api}} nem támogatott a Firefox for Android {{minVersion}} verzióban"
+msgstr ""
+"A(z) {{api}} nem támogatott a Firefox for Android {{minVersion}} verzióban"
 
-#: src/messages/javascript.js:180
-msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Ez az API még nincs megvalósítva a megadott minimális Firefox for Android verzióban"
+#: src/messages/javascript.js:196
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
+msgstr ""
+"Ez az API még nincs megvalósítva a megadott minimális Firefox for Android "
+"verzióban"
 
-#: src/messages/javascript.js:23
+#: src/messages/javascript.js:25
 msgid "Content script file could not be found."
 msgstr "A tartalomparancsfájl nem található."
 
-#: src/messages/javascript.js:24
+#: src/messages/javascript.js:26
 msgid "Content script file could not be found"
 msgstr "A tartalomparancsfájl nem található"
 
-#: src/messages/javascript.js:30
+#: src/messages/javascript.js:32
 msgid "Content script file name should not be empty."
 msgstr "A tartalomparancsfájl neve nem lehet üres."
 
-#: src/messages/javascript.js:31
+#: src/messages/javascript.js:33
 msgid "Content script file name should not be empty"
 msgstr "A tartalomparancsfájl neve nem lehet üres"
 
@@ -118,21 +148,17 @@ msgstr "A tartalomparancsfájl neve nem lehet üres"
 msgid "JavaScript syntax error"
 msgstr "JavaScript szintaktikai hiba"
 
-#: src/messages/javascript.js:76
+#: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
 msgstr "Nem várt argumentumként átadott globális változó"
 
-#: src/messages/javascript.js:83
+#: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
 msgstr "A document.write használata erősen ellenjavallt."
 
-#: src/messages/javascript.js:91
+#: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
 msgstr "Tiltott harmadik féltől származó JS könyvtár"
-
-#: src/messages/javascript.js:98
-msgid "Unadvised 3rd-party JS library"
-msgstr "Nem tanácsolt harmadik féltől származó JS könyvtár"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -150,67 +176,68 @@ msgstr "A JSON érvénytelen."
 msgid "Your JSON file could not be parsed."
 msgstr "Az JSON fájl nem dolgozható fel."
 
-#: src/messages/layout.js:17
+#: src/messages/layout.js:107
+msgid "Reserved filename found."
+msgstr "Fenntartott fájlnév találva."
+
+#: src/messages/layout.js:34
 msgid "We were unable to decompress the zip file."
 msgstr "Nem sikerült a zip fájl kibontása."
 
-#: src/messages/layout.js:22
+#: src/messages/layout.js:39
 msgid "manifest.json was not found"
 msgstr "a manifest.json nem található"
 
-#: src/messages/layout.js:30
+#: src/messages/layout.js:48
 msgid "File is too large to parse."
 msgstr "A fájl túl nagy a feldolgozáshoz"
 
-#: src/messages/layout.js:39
+#: src/messages/layout.js:57
 msgid "Hidden file flagged"
 msgstr "Rejtett fájl megjelölve"
 
-#: src/messages/layout.js:48
+#: src/messages/layout.js:66
 msgid "Flagged filename found"
 msgstr "Megjelölt fájlnév találva"
 
-#: src/messages/layout.js:55
+#: src/messages/layout.js:73
 msgid "Flagged file extensions found"
 msgstr "Megjelölt fájlkiterjesztés találva"
-
-#: src/messages/layout.js:62
-msgid "Flagged file type found"
-msgstr "Megjelölt fájltípus találva"
-
-#: src/messages/layout.js:72
-msgid "Package already signed"
-msgstr "A csomag már aláírt"
 
 #: src/messages/layout.js:8
 msgid "Package contains duplicate entries"
 msgstr "A csomag ismétlődő bejegyzéseket tartalmaz"
 
 #: src/messages/layout.js:80
-msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr "A Firefox kiegészítők nem futtathatnak kriptovaluta bányász programokat."
+msgid "Flagged file type found"
+msgstr "Megjelölt fájltípus találva"
 
-#: src/messages/layout.js:89
-msgid "Reserved filename found."
-msgstr "Fenntartott fájlnév találva."
+#: src/messages/layout.js:90
+msgid "Package already signed"
+msgstr "A csomag már aláírt"
+
+#: src/messages/layout.js:98
+msgid "Firefox add-ons are not allowed to run coin miners."
+msgstr ""
+"A Firefox kiegészítők nem futtathatnak kriptovaluta bányász programokat."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
 msgstr "A karakterlánc neve egy előre definiált üzenetnek van fenntartva"
 
-#: src/messages/locale-messagesjson.js:29
+#: src/messages/locale-messagesjson.js:30
 msgid "Placeholder for message is missing"
 msgstr "Az üzenet helykitöltője hiányzik"
 
-#: src/messages/locale-messagesjson.js:30
+#: src/messages/locale-messagesjson.js:31
 msgid "A placeholder used in the message is not defined."
 msgstr "Az üzenetben használt helykitöltő nincs definiálva."
 
-#: src/messages/locale-messagesjson.js:35
+#: src/messages/locale-messagesjson.js:36
 msgid "Placeholder name contains invalid characters"
 msgstr "A helykitöltő neve érvénytelen karaktereket tartalmaz"
 
-#: src/messages/locale-messagesjson.js:42
+#: src/messages/locale-messagesjson.js:43
 msgid "Placeholder is missing the content property"
 msgstr "A helykitöltőből hiányzik a content tulajdonság"
 
@@ -219,269 +246,327 @@ msgid "Translation string is missing the message property"
 msgstr "A fordítási karakterláncból hiányzik a message tulajdonság"
 
 #: src/messages/locale-messagesjson.js:8
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "Nincs „message” üzenettulajdonság beállítva a karakterlánchoz (https://mzl.la/2DSBTjA)."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+"Nincs „message” üzenettulajdonság beállítva a karakterlánchoz (https://mzl."
+"la/2DSBTjA)."
 
-#: src/messages/manifestjson.js:103
-msgid "\"update_url\" is not allowed."
-msgstr "Az „update_url” nem engedélyezett."
+#: src/messages/manifestjson.js:100
+#, fuzzy
+msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
+msgstr ""
+"További információkért lásd: https://mzl.la/20PenXl (MDN dokumentáció)."
 
-#: src/messages/manifestjson.js:113
-msgid "The \"update_url\" property is not used by Firefox."
-msgstr "Az „update_url” tulajdonságot nem használja a Firefox."
+#: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
+#, fuzzy
+msgid "Invalid host permission."
+msgstr "Ismeretlen engedély."
 
-#: src/messages/manifestjson.js:122
-msgid "\"strict_max_version\" not required."
-msgstr "A „strict_max_version” nem kötelező."
+#: src/messages/manifestjson.js:117
+msgid "\"manifest_version\" in the manifest.json is not a valid value"
+msgstr "A manifest.json fájlban szereplő „manifest_version” értéke érvénytelen"
 
-#: src/messages/manifestjson.js:141
-msgid "An icon defined in the manifest could not be found in the package."
-msgstr "A leíróban definiált ikon nem található a csomagban."
+#: src/messages/manifestjson.js:120
+msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
+msgstr ""
+"További információkért lásd: https://mzl.la/20PenXl (MDN dokumentáció)."
 
-#: src/messages/manifestjson.js:145
-msgid "Icon could not be found at \"%(path)s\"."
-msgstr "A(z) „%(path)s” helyen lévő ikon nem található."
+#: src/messages/manifestjson.js:154
+msgid "The \"name\" property must be a string."
+msgstr "A „name” tulajdonságnak karakterláncnak kell lennie."
 
-#: src/messages/manifestjson.js:160
-msgid "A background script defined in the manifest could not be found."
-msgstr "A leíróban definiált háttérparancsfájl nem található."
+#: src/messages/manifestjson.js:155
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr "További információkért lásd: http://mzl.la/1STmr48 (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:163
-msgid "A background page defined in the manifest could not be found."
-msgstr "A leíróban definiált háttéroldal nem található."
+msgid "The \"version\" property must be a string."
+msgstr "A „version” tulajdonságnak karakterláncnak kell lennie."
 
-#: src/messages/manifestjson.js:168
-msgid "Background script could not be found at \"%(path)s\"."
-msgstr "A háttérparancsfájl nem található itt: „%(path)s”."
-
-#: src/messages/manifestjson.js:169
-msgid "Background page could not be found at \"%(path)s\"."
-msgstr "A háttéroldal nem található itt: „%(path)s”."
+#: src/messages/manifestjson.js:164 src/messages/manifestjson.js:173
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr "További információkért lásd: http://mzl.la/1kXIADa (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
 msgstr "A mező érvénytelen."
 
+#: src/messages/manifestjson.js:172
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "A „name” tulajdonságnak Firefox-függő formátumot használ."
+
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr "További információkért lásd: https://mzl.la/1ZOhoEN (MDN dokumentáció)."
+msgstr ""
+"További információkért lásd: https://mzl.la/1ZOhoEN (MDN dokumentáció)."
 
-#: src/messages/manifestjson.js:184
+#: src/messages/manifestjson.js:181
+msgid "\"update_url\" is not allowed."
+msgstr "Az „update_url” nem engedélyezett."
+
+#: src/messages/manifestjson.js:191
+msgid "The \"update_url\" property is not used by Firefox."
+msgstr "Az „update_url” tulajdonságot nem használja a Firefox."
+
+#: src/messages/manifestjson.js:200
+msgid "\"strict_max_version\" not required."
+msgstr "A „strict_max_version” nem kötelező."
+
+#: src/messages/manifestjson.js:219
+msgid "An icon defined in the manifest could not be found in the package."
+msgstr "A leíróban definiált ikon nem található a csomagban."
+
+#: src/messages/manifestjson.js:223
+msgid "Icon could not be found at \"%(path)s\"."
+msgstr "A(z) „%(path)s” helyen lévő ikon nem található."
+
+#: src/messages/manifestjson.js:238
+msgid "A background script defined in the manifest could not be found."
+msgstr "A leíróban definiált háttérparancsfájl nem található."
+
+#: src/messages/manifestjson.js:241
+msgid "A background page defined in the manifest could not be found."
+msgstr "A leíróban definiált háttéroldal nem található."
+
+#: src/messages/manifestjson.js:246
+msgid "Background script could not be found at \"%(path)s\"."
+msgstr "A háttérparancsfájl nem található itt: „%(path)s”."
+
+#: src/messages/manifestjson.js:247
+msgid "Background page could not be found at \"%(path)s\"."
+msgstr "A háttéroldal nem található itt: „%(path)s”."
+
+#: src/messages/manifestjson.js:262
 msgid "A content script defined in the manifest could not be found."
 msgstr "A leíróban definiált tartalomparancsfájl nem található."
 
-#: src/messages/manifestjson.js:185
+#: src/messages/manifestjson.js:263
 msgid "A content script css file defined in the manifest could not be found."
 msgstr "A leíróban definiált css fájl nem található."
 
-#: src/messages/manifestjson.js:190
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "A leíróban definiált tartalomparancsfájl nem található itt: „%(path)s”."
+#: src/messages/manifestjson.js:268
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"A leíróban definiált tartalomparancsfájl nem található itt: „%(path)s”."
 
-#: src/messages/manifestjson.js:193
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+#: src/messages/manifestjson.js:271
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
 msgstr "A leíróban definiált tartalom CSS fájl nem található itt: „%(path)s”. "
 
-#: src/messages/manifestjson.js:207
+#: src/messages/manifestjson.js:285
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "A leíróban definiált szótárfájl nem található."
 
-#: src/messages/manifestjson.js:211
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+#: src/messages/manifestjson.js:289
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "A leíróban definiált szótárfájl nem található itt: „%(path)s”."
 
-#: src/messages/manifestjson.js:223
+#: src/messages/manifestjson.js:301
 msgid "The manifest contains multiple dictionaries."
 msgstr "A leíró több szótárat is tartalmaz."
 
-#: src/messages/manifestjson.js:224
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+#: src/messages/manifestjson.js:302
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "Több szótárat is definiált a leíróban, amely nem támogatott."
 
-#: src/messages/manifestjson.js:233
+#: src/messages/manifestjson.js:311
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr "A leíró szótárobjektumot tartalmaz, de az üres."
 
-#: src/messages/manifestjson.js:236
+#: src/messages/manifestjson.js:314
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr "A leíróban egy szótár lett definiálva, de az üres volt."
 
-#: src/messages/manifestjson.js:245
+#: src/messages/manifestjson.js:323
 msgid "The manifest contains a dictionary but no id property."
 msgstr "A leírófájl szótárat tartalmaz, de nincs id tulajdonsága."
 
-#: src/messages/manifestjson.js:246
+#: src/messages/manifestjson.js:324
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr "Egy szótár található a leíróban, de nincs id tulajdonság megadva."
 
-#: src/messages/manifestjson.js:256
+#: src/messages/manifestjson.js:334
 msgid "Forbidden content found in add-on."
 msgstr "Tiltott tartalom található a kiegészítőben."
 
-#: src/messages/manifestjson.js:257
+#: src/messages/manifestjson.js:335
 msgid "This add-on contains forbidden content."
 msgstr "Ez a kiegészítő tiltott tartalmat tartalmaz."
 
-#: src/messages/manifestjson.js:26
-msgid "The permission type is unsupported."
-msgstr "Az engedélytípus nem támogatott."
-
-#: src/messages/manifestjson.js:265
+#: src/messages/manifestjson.js:343
 msgid "Icons must be square."
 msgstr "Az ikonoknak négyzetesnek kell lennie."
 
-#: src/messages/manifestjson.js:266
+#: src/messages/manifestjson.js:344
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "A(z) „%(path)s” helyen lévő ikonnak négyzetesnek kell lennie."
 
-#: src/messages/manifestjson.js:277
+#: src/messages/manifestjson.js:355
 msgid "The size of the icon does not match the manifest."
 msgstr "Az ikon mérete nem egyezik a leíróval."
 
-#: src/messages/manifestjson.js:292
+#: src/messages/manifestjson.js:370
 msgid "Corrupt image file"
 msgstr "Sérült képfájl"
 
-#: src/messages/manifestjson.js:294
+#: src/messages/manifestjson.js:372
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr "A(z) „%(path)s” helyen várt ikon sérült"
 
-#: src/messages/manifestjson.js:303
+#: src/messages/manifestjson.js:381
+msgid "This property has been deprecated."
+msgstr ""
+
+#: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "A téma LWT álneve eltávolításra került a Firefox 70-ben."
 
-#: src/messages/manifestjson.js:304
+#: src/messages/manifestjson.js:389
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "További információkért lásd: https://mzl.la/2T11Lkc (MDN dokumentáció)."
+msgstr ""
+"További információkért lásd: https://mzl.la/2T11Lkc (MDN dokumentáció)."
 
-#: src/messages/manifestjson.js:319
+#: src/messages/manifestjson.js:404
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "A(z) „%(type)s” típushoz tartozó témakép nem található itt: „%(path)s”"
 
-#: src/messages/manifestjson.js:330
+#: src/messages/manifestjson.js:415
 msgid "Corrupted theme image file"
 msgstr "Sérült témaképfájl"
 
-#: src/messages/manifestjson.js:332
+#: src/messages/manifestjson.js:417
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "A(z) „%(path)s” helyen lévő témaképfájl sérült"
 
-#: src/messages/manifestjson.js:34
-msgid "Unknown permission."
-msgstr "Ismeretlen engedély."
-
-#: src/messages/manifestjson.js:343
+#: src/messages/manifestjson.js:428
 msgid "Theme image file has an unsupported file extension"
 msgstr "A téma képfájlja nem támogatott fájlkiterjesztéssel rendelkezik"
 
-#: src/messages/manifestjson.js:345
+#: src/messages/manifestjson.js:430
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
 msgstr "A(z) „%(path)s” helyen lévő témafájl kiterjesztése nem támogatott"
 
-#: src/messages/manifestjson.js:35
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "További információkért lásd: https://mzl.la/1R1n1t0 (MDN dokumentáció)."
-
-#: src/messages/manifestjson.js:359
+#: src/messages/manifestjson.js:444
 msgid "Theme image file has an unsupported mime type"
 msgstr "A téma képfájlja nem támogatott MIME-típussal rendelkezik"
 
-#: src/messages/manifestjson.js:361
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr "A(z) „%(path)s” helyen lévő képfájl nem támogatott MIME-típussal rendelkezik"
+#: src/messages/manifestjson.js:446
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr ""
+"A(z) „%(path)s” helyen lévő képfájl nem támogatott MIME-típussal rendelkezik"
 
-#: src/messages/manifestjson.js:375
+#: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
 msgstr "A téma képfájljának MIME-típusa nem egyezik a fájlkiterjesztésével"
 
-#: src/messages/manifestjson.js:379
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr "A(z) „%(path)s” helyen lévő képfájl kiterjesztése nem egyezik a tényleges „%(mime)s” MIME-típusával."
+#: src/messages/manifestjson.js:464
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
+msgstr ""
+"A(z) „%(path)s” helyen lévő képfájl kiterjesztése nem egyezik a tényleges "
+"„%(mime)s” MIME-típusával."
 
-#: src/messages/manifestjson.js:393
+#: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
 msgstr "A „default_locale” területi beállításhoz hiányoznak a fordítások."
 
-#: src/messages/manifestjson.js:402
+#: src/messages/manifestjson.js:487
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "A „default_locale” hiányzik, de a „_locales” létezik."
 
-#: src/messages/manifestjson.js:411
+#: src/messages/manifestjson.js:496
 msgid "Unsupported image extension"
 msgstr "Nem támogatott képkiterjesztés"
 
-#: src/messages/manifestjson.js:412
+#: src/messages/manifestjson.js:497
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Az ikonoknak JPG/JPEG, WebP, GIF, PNG vagy SVG fájloknak kell lenniük."
 
-#: src/messages/manifestjson.js:422
+#: src/messages/manifestjson.js:505
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property\""
+msgstr ""
+
+#: src/messages/manifestjson.js:518
 msgid "Empty language directory"
 msgstr "Üres nyelvi könyvtár"
 
-#: src/messages/manifestjson.js:424
+#: src/messages/manifestjson.js:520
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "A messages.json fájl hiányzik innen: „%(path)s”"
 
-#: src/messages/manifestjson.js:43
-msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "A manifest.json fájlban szereplő „manifest_version” értéke érvénytelen"
-
-#: src/messages/manifestjson.js:440
+#: src/messages/manifestjson.js:536
 msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr "A leírókulcs nem támogatott a megadott minimális Firefox verzióban"
 
-#: src/messages/manifestjson.js:46
-msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "További információkért lásd: https://mzl.la/20PenXl (MDN dokumentáció)."
-
-#: src/messages/manifestjson.js:462
+#: src/messages/manifestjson.js:558
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Az engedély nem támogatott a megadott minimális Firefox verzióban"
 
-#: src/messages/manifestjson.js:484
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr "A leírókulcs nem támogatott a megadott minimális Firefox for Android verzióban"
+#: src/messages/manifestjson.js:580
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
+msgstr ""
+"A leírókulcs nem támogatott a megadott minimális Firefox for Android "
+"verzióban"
 
-#: src/messages/manifestjson.js:506
-msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr "Az engedély nem támogatott a megadott minimális Firefox for Android verzióban"
+#: src/messages/manifestjson.js:602
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
+msgstr ""
+"Az engedély nem támogatott a megadott minimális Firefox for Android verzióban"
 
-#: src/messages/manifestjson.js:58
-msgid "A custom content_security_policy needs additional review."
-msgstr "Az egyéni content_security_policy további értékelést igényel."
+#: src/messages/manifestjson.js:617
+msgid "Linking to \"addons.mozilla.org\" is not allowed"
+msgstr ""
 
-#: src/messages/manifestjson.js:76
-msgid "The \"name\" property must be a string."
-msgstr "A „name” tulajdonságnak karakterláncnak kell lennie."
+#: src/messages/manifestjson.js:618
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
 
-#: src/messages/manifestjson.js:77
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "További információkért lásd: http://mzl.la/1STmr48 (MDN dokumentáció)."
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
+#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+msgid "The permission type is unsupported."
+msgstr "Az engedélytípus nem támogatott."
 
 #: src/messages/manifestjson.js:8
 msgid "The field is required."
 msgstr "A mező kötelező."
 
-#: src/messages/manifestjson.js:85
-msgid "The \"version\" property must be a string."
-msgstr "A „version” tulajdonságnak karakterláncnak kell lennie."
+#: src/messages/manifestjson.js:90 src/messages/manifestjson.js:99
+msgid "Unknown permission."
+msgstr "Ismeretlen engedély."
 
-#: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "További információkért lásd: http://mzl.la/1kXIADa (MDN dokumentáció)."
+#: src/messages/manifestjson.js:91
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr ""
+"További információkért lásd: https://mzl.la/1R1n1t0 (MDN dokumentáció)."
 
-#: src/messages/manifestjson.js:94
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "A „name” tulajdonságnak Firefox-függő formátumot használ."
+#~ msgid "A custom content_security_policy needs additional review."
+#~ msgstr "Az egyéni content_security_policy további értékelést igényel."
 
 #~ msgid "Violation of Mozilla conditions of use."
 #~ msgstr "Megsérti a Mozilla használati feltételeit."
 
 #~ msgid "mozIndexedDB has been removed; use indexedDB instead"
-#~ msgstr "A mozIndexedDB eltávolításra került, használja helyette az indexedDB-t"
+#~ msgstr ""
+#~ "A mozIndexedDB eltávolításra került, használja helyette az indexedDB-t"
 
 #~ msgid "mozIndexedDB has been removed; use indexedDB instead."
-#~ msgstr "A mozIndexedDB eltávolításra került, használja helyette az indexedDB-t."
+#~ msgstr ""
+#~ "A mozIndexedDB eltávolításra került, használja helyette az indexedDB-t."
 
 #~ msgid "mozIndexedDB used as an object key/property"
 #~ msgstr "mozIndexedDB objektumkulcsként/tulajdonságként használva"

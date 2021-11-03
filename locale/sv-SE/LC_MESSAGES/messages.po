@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-07-25 10:01+0000\n"
+"POT-Creation-Date: 2021-11-03 08:14+0000\n"
 "PO-Revision-Date: 2019-07-28 20:43+0000\n"
 "Last-Translator: Andreas Pettersson <az@kth.se>\n"
 "Language-Team: none\n"
@@ -14,31 +14,31 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:119
+#: src/linter.js:171
 msgid "Validation Summary:"
 msgstr "Valideringsöversikt:"
 
-#: src/linter.js:138
+#: src/linter.js:190
 msgid "Code"
 msgstr "Kod"
 
-#: src/linter.js:144
+#: src/linter.js:196
 msgid "Message"
 msgstr "Meddelande"
 
-#: src/linter.js:150
+#: src/linter.js:202
 msgid "Description"
 msgstr "Beskrivning"
 
-#: src/linter.js:156
+#: src/linter.js:208
 msgid "File"
 msgstr "Fil"
 
-#: src/linter.js:162
+#: src/linter.js:214
 msgid "Line"
 msgstr "Rad"
 
-#: src/linter.js:168
+#: src/linter.js:220
 msgid "Column"
 msgstr "Kolumn"
 
@@ -66,51 +66,78 @@ msgstr "Fjärrskript är inte tillåtna enligt tilläggspolicyn."
 msgid "Inline scripts blocked by default"
 msgstr "Inline-skript blockeras som standard"
 
-#: src/messages/javascript.js:105
+#: src/messages/javascript.js:100
+msgid "Unadvised 3rd-party JS library"
+msgstr "Ej rekommenderat JS-biblioteket från tredje part"
+
+#: src/messages/javascript.js:107
 msgid "Known JS library detected"
 msgstr "Känt JS-bibliotek upptäckt"
 
-#: src/messages/javascript.js:123
+#: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
 msgstr "{{api}} stöds ej"
 
-#: src/messages/javascript.js:124
+#: src/messages/javascript.js:126
 msgid "This API has not been implemented by Firefox."
 msgstr "Detta API har inte implementerats av Firefox."
 
-#: src/messages/javascript.js:14
+#: src/messages/javascript.js:132
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
+msgstr ""
+
+#: src/messages/javascript.js:141
+#, fuzzy
+msgid "{{api}} is deprecated"
+msgstr "{{api}} stöds ej"
+
+#: src/messages/javascript.js:142
+#, fuzzy
+msgid "This API has been deprecated by Firefox."
+msgstr "Detta API har inte implementerats av Firefox."
+
+#: src/messages/javascript.js:154
+msgid "\"{{api}}\" is deprecated or unimplemented"
+msgstr ""
+
+#: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
 msgstr "addEventListener` kallas med truthy som fjärde argument."
 
-#: src/messages/javascript.js:166
+#: src/messages/javascript.js:182
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr "{{api}} stöds inte i Firefox version {{minVersion}}"
 
-#: src/messages/javascript.js:169
+#: src/messages/javascript.js:185
 msgid "This API is not implemented by the given minimum Firefox version"
 msgstr "Detta API har inte implementerats den givna lägsta Firefox-versionen"
 
-#: src/messages/javascript.js:177
+#: src/messages/javascript.js:193
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} stöds inte i Firefox för Android version {{minVersion}}"
 
-#: src/messages/javascript.js:180
-msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Detta API har inte implementerats av den givna lägsta Firefox-versionen för Android"
+#: src/messages/javascript.js:196
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
+msgstr ""
+"Detta API har inte implementerats av den givna lägsta Firefox-versionen för "
+"Android"
 
-#: src/messages/javascript.js:23
+#: src/messages/javascript.js:25
 msgid "Content script file could not be found."
 msgstr "Innehållsskriptfilen kunde inte hittas."
 
-#: src/messages/javascript.js:24
+#: src/messages/javascript.js:26
 msgid "Content script file could not be found"
 msgstr "Innehållsskriptfilen kunde inte hittas"
 
-#: src/messages/javascript.js:30
+#: src/messages/javascript.js:32
 msgid "Content script file name should not be empty."
 msgstr "Innehållsskriptfilnamnet ska inte vara tomt."
 
-#: src/messages/javascript.js:31
+#: src/messages/javascript.js:33
 msgid "Content script file name should not be empty"
 msgstr "Innehållsskriptfilnamnet ska inte vara tomt"
 
@@ -118,21 +145,17 @@ msgstr "Innehållsskriptfilnamnet ska inte vara tomt"
 msgid "JavaScript syntax error"
 msgstr "JavaScript-syntaxfel"
 
-#: src/messages/javascript.js:76
+#: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
 msgstr "Oväntad global skickad som ett argument"
 
-#: src/messages/javascript.js:83
+#: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
 msgstr "Användning av document.write rekommenderas inte."
 
-#: src/messages/javascript.js:91
+#: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
 msgstr "Förbjudet JS-bibliotek från tredje part"
-
-#: src/messages/javascript.js:98
-msgid "Unadvised 3rd-party JS library"
-msgstr "Ej rekommenderat JS-biblioteket från tredje part"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -150,67 +173,67 @@ msgstr "Din JSON är inte giltig."
 msgid "Your JSON file could not be parsed."
 msgstr "Din JSON-fil kunde inte tolkas."
 
-#: src/messages/layout.js:17
+#: src/messages/layout.js:107
+msgid "Reserved filename found."
+msgstr "Reserverat filnamn hittades."
+
+#: src/messages/layout.js:34
 msgid "We were unable to decompress the zip file."
 msgstr "Vi kunde inte dekomprimera zip-filen."
 
-#: src/messages/layout.js:22
+#: src/messages/layout.js:39
 msgid "manifest.json was not found"
 msgstr "manifest.json hittades inte"
 
-#: src/messages/layout.js:30
+#: src/messages/layout.js:48
 msgid "File is too large to parse."
 msgstr "Filen är för stor för att tolkas."
 
-#: src/messages/layout.js:39
+#: src/messages/layout.js:57
 msgid "Hidden file flagged"
 msgstr "Dold fil flaggad"
 
-#: src/messages/layout.js:48
+#: src/messages/layout.js:66
 msgid "Flagged filename found"
 msgstr "Flaggat filnamn hittades"
 
-#: src/messages/layout.js:55
+#: src/messages/layout.js:73
 msgid "Flagged file extensions found"
 msgstr "Flaggad filändelse hittades"
-
-#: src/messages/layout.js:62
-msgid "Flagged file type found"
-msgstr "Flaggad filtyp hittades"
-
-#: src/messages/layout.js:72
-msgid "Package already signed"
-msgstr "Paket redan signerat"
 
 #: src/messages/layout.js:8
 msgid "Package contains duplicate entries"
 msgstr "Paket innehåller dubbla poster"
 
 #: src/messages/layout.js:80
+msgid "Flagged file type found"
+msgstr "Flaggad filtyp hittades"
+
+#: src/messages/layout.js:90
+msgid "Package already signed"
+msgstr "Paket redan signerat"
+
+#: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Firefox tillägg får inte köra coin-miners."
-
-#: src/messages/layout.js:89
-msgid "Reserved filename found."
-msgstr "Reserverat filnamn hittades."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
 msgstr "Strängnamn är reserverat för ett fördefinierat meddelande"
 
-#: src/messages/locale-messagesjson.js:29
+#: src/messages/locale-messagesjson.js:30
 msgid "Placeholder for message is missing"
 msgstr "Platshållare för meddelande saknas"
 
-#: src/messages/locale-messagesjson.js:30
+#: src/messages/locale-messagesjson.js:31
 msgid "A placeholder used in the message is not defined."
 msgstr "En platshållare som används i meddelandet är inte definierad."
 
-#: src/messages/locale-messagesjson.js:35
+#: src/messages/locale-messagesjson.js:36
 msgid "Placeholder name contains invalid characters"
 msgstr "Namn på platshållare innehåller ogiltiga tecken"
 
-#: src/messages/locale-messagesjson.js:42
+#: src/messages/locale-messagesjson.js:43
 msgid "Placeholder is missing the content property"
 msgstr "Platshållaren saknar innehållsegenskapen"
 
@@ -219,260 +242,314 @@ msgid "Translation string is missing the message property"
 msgstr "Översättningssträngen saknar meddelandegenskapen"
 
 #: src/messages/locale-messagesjson.js:8
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "Ingen meddelandeegenskap \"message\" är satt för en sträng (https://mzl.la/2DSBTjA)."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+"Ingen meddelandeegenskap \"message\" är satt för en sträng (https://mzl."
+"la/2DSBTjA)."
 
-#: src/messages/manifestjson.js:103
-msgid "\"update_url\" is not allowed."
-msgstr "\"update_url\" är inte tillåtet."
+#: src/messages/manifestjson.js:100
+#, fuzzy
+msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
+msgstr "Se https://mzl.la/20PenXl (MDN Docs) för mer information."
 
-#: src/messages/manifestjson.js:113
-msgid "The \"update_url\" property is not used by Firefox."
-msgstr "Egenskapen \"update_url\" används inte av Firefox."
+#: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
+#, fuzzy
+msgid "Invalid host permission."
+msgstr "Okänd behörighet."
 
-#: src/messages/manifestjson.js:122
-msgid "\"strict_max_version\" not required."
-msgstr "\"strict_max_version\" krävs inte."
+#: src/messages/manifestjson.js:117
+msgid "\"manifest_version\" in the manifest.json is not a valid value"
+msgstr "\"manifest_version\" i manifest.json har inte ett giltigt värde"
 
-#: src/messages/manifestjson.js:141
-msgid "An icon defined in the manifest could not be found in the package."
-msgstr "En ikon definierad i manifestet kunde inte hittas i paketet."
+#: src/messages/manifestjson.js:120
+msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
+msgstr "Se https://mzl.la/20PenXl (MDN Docs) för mer information."
 
-#: src/messages/manifestjson.js:145
-msgid "Icon could not be found at \"%(path)s\"."
-msgstr "Ikonen kunde inte hittas på \"%(path)s\"."
+#: src/messages/manifestjson.js:154
+msgid "The \"name\" property must be a string."
+msgstr "Egenskapen \"namn\" måste vara en sträng."
 
-#: src/messages/manifestjson.js:160
-msgid "A background script defined in the manifest could not be found."
-msgstr "Ett bakgrundsskript definierat i manifestet kunde inte hittas."
+#: src/messages/manifestjson.js:155
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr "Se http://mzl.la/1STmr48 (MDN Docs) för mer information."
 
 #: src/messages/manifestjson.js:163
-msgid "A background page defined in the manifest could not be found."
-msgstr "En bakgrundssida definierad i manifestet kunde inte hittas."
+msgid "The \"version\" property must be a string."
+msgstr "Egenskapen \"version\" måste vara en sträng."
 
-#: src/messages/manifestjson.js:168
-msgid "Background script could not be found at \"%(path)s\"."
-msgstr "Bakgrundsskript kunde inte hittas på \"%(path)s\"."
-
-#: src/messages/manifestjson.js:169
-msgid "Background page could not be found at \"%(path)s\"."
-msgstr "Bakgrundssidan kunde inte hittas på \"%(path)s\"."
+#: src/messages/manifestjson.js:164 src/messages/manifestjson.js:173
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr "Se http://mzl.la/1kXIADa (MDN Docs) för mer information."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
 msgstr "Fältet är ogiltigt."
 
+#: src/messages/manifestjson.js:172
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "Egenskapen \"version\" använder ett Firefox-specifikt format."
+
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Se https://mzl.la/1ZOhoEN (MDN Docs) för mer information."
 
-#: src/messages/manifestjson.js:184
+#: src/messages/manifestjson.js:181
+msgid "\"update_url\" is not allowed."
+msgstr "\"update_url\" är inte tillåtet."
+
+#: src/messages/manifestjson.js:191
+msgid "The \"update_url\" property is not used by Firefox."
+msgstr "Egenskapen \"update_url\" används inte av Firefox."
+
+#: src/messages/manifestjson.js:200
+msgid "\"strict_max_version\" not required."
+msgstr "\"strict_max_version\" krävs inte."
+
+#: src/messages/manifestjson.js:219
+msgid "An icon defined in the manifest could not be found in the package."
+msgstr "En ikon definierad i manifestet kunde inte hittas i paketet."
+
+#: src/messages/manifestjson.js:223
+msgid "Icon could not be found at \"%(path)s\"."
+msgstr "Ikonen kunde inte hittas på \"%(path)s\"."
+
+#: src/messages/manifestjson.js:238
+msgid "A background script defined in the manifest could not be found."
+msgstr "Ett bakgrundsskript definierat i manifestet kunde inte hittas."
+
+#: src/messages/manifestjson.js:241
+msgid "A background page defined in the manifest could not be found."
+msgstr "En bakgrundssida definierad i manifestet kunde inte hittas."
+
+#: src/messages/manifestjson.js:246
+msgid "Background script could not be found at \"%(path)s\"."
+msgstr "Bakgrundsskript kunde inte hittas på \"%(path)s\"."
+
+#: src/messages/manifestjson.js:247
+msgid "Background page could not be found at \"%(path)s\"."
+msgstr "Bakgrundssidan kunde inte hittas på \"%(path)s\"."
+
+#: src/messages/manifestjson.js:262
 msgid "A content script defined in the manifest could not be found."
 msgstr "Ett innehållsskript som definierats i manifestet kunde inte hittas."
 
-#: src/messages/manifestjson.js:185
+#: src/messages/manifestjson.js:263
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "En css-fil med innehållsskript definierat i manifestet kunde inte hittas."
+msgstr ""
+"En css-fil med innehållsskript definierat i manifestet kunde inte hittas."
 
-#: src/messages/manifestjson.js:190
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Innehållsskript definierat i manifestet kunde inte hittas på \"%(path)s\"."
+#: src/messages/manifestjson.js:268
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"Innehållsskript definierat i manifestet kunde inte hittas på \"%(path)s\"."
 
-#: src/messages/manifestjson.js:193
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Innehållsskriptets css-fil definierat i manifestet kunde inte hittas på \"%(path)s\"."
+#: src/messages/manifestjson.js:271
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"Innehållsskriptets css-fil definierat i manifestet kunde inte hittas på "
+"\"%(path)s\"."
 
-#: src/messages/manifestjson.js:207
+#: src/messages/manifestjson.js:285
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "En ordboksfil som definierats i manifestet kunde inte hittas."
 
-#: src/messages/manifestjson.js:211
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+#: src/messages/manifestjson.js:289
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Ordbokfil definierad i manifestet kunde inte hittas på \"%(path)s\"."
 
-#: src/messages/manifestjson.js:223
+#: src/messages/manifestjson.js:301
 msgid "The manifest contains multiple dictionaries."
 msgstr "Manifestet innehåller flera ordböcker."
 
-#: src/messages/manifestjson.js:224
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+#: src/messages/manifestjson.js:302
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "Flera ordböcker definierades i manifestet, vilket inte stöds."
 
-#: src/messages/manifestjson.js:233
+#: src/messages/manifestjson.js:311
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr "Manifestet innehåller ett ordboksobjekt, men det är tomt."
 
-#: src/messages/manifestjson.js:236
+#: src/messages/manifestjson.js:314
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr "Ett ordboksobjekt definierades i manifestet, men det var tomt."
 
-#: src/messages/manifestjson.js:245
+#: src/messages/manifestjson.js:323
 msgid "The manifest contains a dictionary but no id property."
 msgstr "Manifestet innehåller en ordbok men ingen ID-egenskap."
 
-#: src/messages/manifestjson.js:246
+#: src/messages/manifestjson.js:324
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr "En ordbok hittades i manifestet, men det fanns ingen angiven ID."
 
-#: src/messages/manifestjson.js:256
+#: src/messages/manifestjson.js:334
 msgid "Forbidden content found in add-on."
 msgstr "Förbjudet innehåll hittades i tillägget."
 
-#: src/messages/manifestjson.js:257
+#: src/messages/manifestjson.js:335
 msgid "This add-on contains forbidden content."
 msgstr "Detta tillägg innehåller förbjudet innehåll."
 
-#: src/messages/manifestjson.js:26
-msgid "The permission type is unsupported."
-msgstr "Behörighetstyp stöds inte."
-
-#: src/messages/manifestjson.js:265
+#: src/messages/manifestjson.js:343
 msgid "Icons must be square."
 msgstr "Ikoner måste vara kvadratiska."
 
-#: src/messages/manifestjson.js:266
+#: src/messages/manifestjson.js:344
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "Ikonen på \"%(path)s\" måste vara kvadratisk."
 
-#: src/messages/manifestjson.js:277
+#: src/messages/manifestjson.js:355
 msgid "The size of the icon does not match the manifest."
 msgstr "Ikonens storlek matchar inte manifestet."
 
-#: src/messages/manifestjson.js:292
+#: src/messages/manifestjson.js:370
 msgid "Corrupt image file"
 msgstr "Skadad bildfil"
 
-#: src/messages/manifestjson.js:294
+#: src/messages/manifestjson.js:372
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr "Förväntad ikonfil på \"%(path)s\" är skadad"
 
-#: src/messages/manifestjson.js:303
+#: src/messages/manifestjson.js:381
+msgid "This property has been deprecated."
+msgstr ""
+
+#: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "Detta tema LWT-alias har tagits bort i Firefox 70."
 
-#: src/messages/manifestjson.js:304
+#: src/messages/manifestjson.js:389
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr "Se https://mzl.la/2T11Lkc (MDN Docs) för mer information."
 
-#: src/messages/manifestjson.js:319
+#: src/messages/manifestjson.js:404
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "Temabild för \"%(type)s\" kunde inte hittas på \"%(path)s\""
 
-#: src/messages/manifestjson.js:330
+#: src/messages/manifestjson.js:415
 msgid "Corrupted theme image file"
 msgstr "Skadad temabildfil"
 
-#: src/messages/manifestjson.js:332
+#: src/messages/manifestjson.js:417
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "Temabildfil \"%(path)s\" är skadad"
 
-#: src/messages/manifestjson.js:34
-msgid "Unknown permission."
-msgstr "Okänd behörighet."
-
-#: src/messages/manifestjson.js:343
+#: src/messages/manifestjson.js:428
 msgid "Theme image file has an unsupported file extension"
 msgstr "Temabildfil har ett filändelse som inte stöds"
 
-#: src/messages/manifestjson.js:345
+#: src/messages/manifestjson.js:430
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
 msgstr "Temabildfil på \"%(path)s\" har en filändelse som inte stöds"
 
-#: src/messages/manifestjson.js:35
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "Se https://mzl.la/1R1n1t0 (MDN Docs) för mer information."
-
-#: src/messages/manifestjson.js:359
+#: src/messages/manifestjson.js:444
 msgid "Theme image file has an unsupported mime type"
 msgstr "Temabildfil har en mime-typ som inte stöds"
 
-#: src/messages/manifestjson.js:361
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr "Temabildfil på \"%(path)s\" har en mime-typ \"%(mime)s\" som inte stöds"
+#: src/messages/manifestjson.js:446
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr ""
+"Temabildfil på \"%(path)s\" har en mime-typ \"%(mime)s\" som inte stöds"
 
-#: src/messages/manifestjson.js:375
+#: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
 msgstr "Mime-typ för temabildfil matchar inte filändelsen"
 
-#: src/messages/manifestjson.js:379
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr "Filändelsen för temabildfil på \"%(path)s\" matchar inte med den verkliga mime-typen \"%(mime)s\""
+#: src/messages/manifestjson.js:464
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
+msgstr ""
+"Filändelsen för temabildfil på \"%(path)s\" matchar inte med den verkliga "
+"mime-typen \"%(mime)s\""
 
-#: src/messages/manifestjson.js:393
+#: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
 msgstr "\"default_locale\" saknar lokaliseringar."
 
-#: src/messages/manifestjson.js:402
+#: src/messages/manifestjson.js:487
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "\"default_locale\" saknas men \"_locales\" existerar."
 
-#: src/messages/manifestjson.js:411
+#: src/messages/manifestjson.js:496
 msgid "Unsupported image extension"
 msgstr "Filändelse för bild stöds ej"
 
-#: src/messages/manifestjson.js:412
+#: src/messages/manifestjson.js:497
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Ikoner bör vara av JPG/JPEG, WebP, GIFF, PNG eller SVG."
 
-#: src/messages/manifestjson.js:422
+#: src/messages/manifestjson.js:505
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property\""
+msgstr ""
+
+#: src/messages/manifestjson.js:518
 msgid "Empty language directory"
 msgstr "Tom språkkatalog"
 
-#: src/messages/manifestjson.js:424
+#: src/messages/manifestjson.js:520
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "messages.json fil saknas i \"%(path)s\""
 
-#: src/messages/manifestjson.js:43
-msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "\"manifest_version\" i manifest.json har inte ett giltigt värde"
-
-#: src/messages/manifestjson.js:440
+#: src/messages/manifestjson.js:536
 msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr "Manifest-nyckel stöds inte av den angivna lägsta Firefox-versionen"
 
-#: src/messages/manifestjson.js:46
-msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "Se https://mzl.la/20PenXl (MDN Docs) för mer information."
-
-#: src/messages/manifestjson.js:462
+#: src/messages/manifestjson.js:558
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Behörighet stöds inte av den angivna lägsta Firefox-versionen"
 
-#: src/messages/manifestjson.js:484
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr "Manifest-nyckel stöds inte av den angivna lägsta versionen av Firefox för Android"
+#: src/messages/manifestjson.js:580
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
+msgstr ""
+"Manifest-nyckel stöds inte av den angivna lägsta versionen av Firefox för "
+"Android"
 
-#: src/messages/manifestjson.js:506
-msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr "Behörighet stöds inte av den angivna lägsta Firefox-versionen för Android"
+#: src/messages/manifestjson.js:602
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
+msgstr ""
+"Behörighet stöds inte av den angivna lägsta Firefox-versionen för Android"
 
-#: src/messages/manifestjson.js:58
-msgid "A custom content_security_policy needs additional review."
-msgstr "En anpassad content_security_policy behöver ytterligare granskning."
+#: src/messages/manifestjson.js:617
+msgid "Linking to \"addons.mozilla.org\" is not allowed"
+msgstr ""
 
-#: src/messages/manifestjson.js:76
-msgid "The \"name\" property must be a string."
-msgstr "Egenskapen \"namn\" måste vara en sträng."
+#: src/messages/manifestjson.js:618
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
 
-#: src/messages/manifestjson.js:77
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "Se http://mzl.la/1STmr48 (MDN Docs) för mer information."
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
+#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+msgid "The permission type is unsupported."
+msgstr "Behörighetstyp stöds inte."
 
 #: src/messages/manifestjson.js:8
 msgid "The field is required."
 msgstr "Fältet är obligatoriskt."
 
-#: src/messages/manifestjson.js:85
-msgid "The \"version\" property must be a string."
-msgstr "Egenskapen \"version\" måste vara en sträng."
+#: src/messages/manifestjson.js:90 src/messages/manifestjson.js:99
+msgid "Unknown permission."
+msgstr "Okänd behörighet."
 
-#: src/messages/manifestjson.js:86 src/messages/manifestjson.js:95
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "Se http://mzl.la/1kXIADa (MDN Docs) för mer information."
+#: src/messages/manifestjson.js:91
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr "Se https://mzl.la/1R1n1t0 (MDN Docs) för mer information."
 
-#: src/messages/manifestjson.js:94
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "Egenskapen \"version\" använder ett Firefox-specifikt format."
+#~ msgid "A custom content_security_policy needs additional review."
+#~ msgstr "En anpassad content_security_policy behöver ytterligare granskning."
 
 #~ msgid "Violation of Mozilla conditions of use."
 #~ msgstr "Kränkning av Mozilla:s användarvillkor."
