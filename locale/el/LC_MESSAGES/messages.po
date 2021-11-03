@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2021-11-03 14:08+0000\n"
+"PO-Revision-Date: 2021-11-03 15:18+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -84,7 +84,7 @@ msgstr "Αυτό το API δεν έχει υλοποιηθεί από το Firef
 
 #: src/messages/javascript.js:132
 msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr ""
+msgstr "Το «{{api}}» έχει αφαιρεθεί στην έκδοση 3 του μανιφέστου (ιδιότητα `manifest_version`)"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
@@ -96,7 +96,7 @@ msgstr "Αυτό το API έχει καταργηθεί από το Firefox."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "Το «{{api}}» είναι παρωχημένο ή δεν έχει υλοποιηθεί"
 
 #: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
@@ -460,7 +460,7 @@ msgstr "Τα εικονίδια πρέπει να είναι JPG/JPEG, WebP, GIF
 
 #: src/messages/manifestjson.js:505
 msgid "\"applications\" property overridden by \"browser_specific_settings\" property\""
-msgstr ""
+msgstr "Η ιδιότητα «applications» αντικαταστάθηκε από την ιδιότητα «browser_specific_settings»"
 
 #: src/messages/manifestjson.js:518
 msgid "Empty language directory"
@@ -492,7 +492,7 @@ msgstr "Δεν επιτρέπεται σύνδεσμος για το «addons.mo
 
 #: src/messages/manifestjson.js:618
 msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr ""
+msgstr "Δεν επιτρέπεται η χρήση συνδέσμων προς το «addons.mozilla.org» για την αρχική σελίδα"
 
 #: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
