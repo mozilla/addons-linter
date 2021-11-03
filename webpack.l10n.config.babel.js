@@ -1,4 +1,4 @@
-/* eslint-disable no-console, import/no-extraneous-dependencies */
+/* eslint-disable import/no-extraneous-dependencies */
 const fs = require('fs');
 
 const webpack = require('webpack');
@@ -48,17 +48,22 @@ const babelL10nPlugins = [
   ],
 ];
 
-const BABEL_QUERY = {
-  ...babelrcObject,
-  plugins: babelPlugins.concat(babelL10nPlugins),
-};
+const rules = webpackConfig.module.rules.map((rule) => {
+  // Add l10n plugins to the babel config.
+  if (rule.use === 'babel-loader') {
+    return {
+      ...rule,
+      use: undefined,
+      loader: 'babel-loader',
+      options: {
+        ...babelrcObject,
+        plugins: babelPlugins.concat(babelL10nPlugins),
+      },
+    };
+  }
 
-const [rule] = webpackConfig.module.rules;
-rule.loader = 'babel-loader';
-rule.query = BABEL_QUERY;
-delete rule.use;
-const rules = [rule];
-rules.concat(webpackConfig.module.rules.splice(0));
+  return rule;
+});
 
 module.exports = {
   ...webpackConfig,
@@ -67,7 +72,9 @@ module.exports = {
   },
   plugins: [
     // Don't generate modules for locale files.
-    new webpack.IgnorePlugin(new RegExp(`locale\\/.*\\/messages\\.js$`)),
+    new webpack.IgnorePlugin({
+      resourceRegExp: new RegExp(`locale\\/.*\\/messages\\.js$`),
+    }),
     ...webpackConfig.plugins,
   ],
 };
