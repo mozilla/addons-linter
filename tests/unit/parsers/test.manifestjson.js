@@ -3601,4 +3601,119 @@ describe('ManifestJSONParser', () => {
       );
     });
   });
+
+  describe('install_origins', () => {
+    function testInstallOrigins(origins, expectValid) {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        browser_specific_settings: {
+          gecko: {
+            id: 'foo@bar',
+            install_origins: origins,
+          },
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(expectValid);
+      return addonLinter.collector;
+    }
+
+    it('allows install origins with valid origin', () => {
+      testInstallOrigins(['https://example.com'], true);
+    });
+
+    it('allows install origins with subdomain origin', () => {
+      testInstallOrigins(['https://foo.example.com'], true);
+    });
+
+    it('allows install origins with punnycode origin', () => {
+      testInstallOrigins(['https://xn--fo-9ja.com'], true);
+    });
+
+    it('allows install origins with IDN origin', () => {
+      testInstallOrigins(['https://foo.bar.栃木.jp'], true);
+    });
+
+    it('allows install origins with port', () => {
+      testInstallOrigins(['https://example.com:8888'], true);
+    });
+
+    it('disallows empty list', () => {
+      const { errors } = testInstallOrigins([], false);
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual('JSON_INVALID');
+    });
+
+    it('disallows non array (object)', () => {
+      const { errors } = testInstallOrigins({}, false);
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual('MANIFEST_FIELD_INVALID');
+    });
+
+    it('disallows non array (string)', () => {
+      const { errors } = testInstallOrigins('', false);
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual('MANIFEST_FIELD_INVALID');
+    });
+
+    it('disallows non array (null)', () => {
+      const { errors } = testInstallOrigins(null, false);
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual('MANIFEST_FIELD_INVALID');
+    });
+
+    it('disallows non array (int)', () => {
+      const { errors } = testInstallOrigins(42, false);
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual('MANIFEST_FIELD_INVALID');
+    });
+
+    it('disallows list too large', () => {
+      const { errors } = testInstallOrigins(
+        new Array(6).fill('https://example.com'),
+        false
+      );
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual('JSON_INVALID');
+    });
+
+    it('disallows wildcards', () => {
+      const { errors } = testInstallOrigins(['https://*.example.com'], false);
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual('JSON_INVALID');
+    });
+
+    it('disallows invalid origin (trailing slash)', () => {
+      const { errors } = testInstallOrigins(['https://example.com/'], false);
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual('JSON_INVALID');
+    });
+
+    it('disallows invalid origin (no scheme)', () => {
+      const { errors } = testInstallOrigins(['example.com'], false);
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual('JSON_INVALID');
+    });
+
+    it('disallows invalid origin (no hostname)', () => {
+      const { errors } = testInstallOrigins(['http://'], false);
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual('JSON_INVALID');
+    });
+
+    it('disallows invalid origin (path present)', () => {
+      const { errors } = testInstallOrigins(['https://example.com/path'], false);
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual('JSON_INVALID');
+    });
+
+    it('considers entire install_origins invalid if a single value is invalid', () => {
+      const { errors } = testInstallOrigins(['https://bar.com', 'https://foo.com/path'], false);
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual('JSON_INVALID');
+    });
+  });
 });

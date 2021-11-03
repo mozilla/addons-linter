@@ -103,6 +103,31 @@ export function isSecureUrl(value) {
   return ['https:', 'wss:'].includes(url.protocol);
 }
 
+export function isOrigin(value) {  // FIXME: should we only have isSecureOrigin ?
+  let url, reconstructed;
+  try {
+    url = new URL(value);
+  } catch (e) {
+    // It's invalid or not absolute.
+    return false;
+  }
+  if (value.includes('*')) {
+    // Wildcards are not valid in origins.
+    return false;
+  }
+  if (url.pathname != '/' || value.endsWith('/')) {
+    // Paths shouldn't be included in origins. URL().pathname will always be
+    // '/' if no path is provided, so we have to check value doesn't end with
+    // one either.
+    return false;
+  }
+  // value === url.origin would be enough if it wasn't for IDNs but
+  //  URL().origin returns punycode, so we have to compare against URL().href
+  // minus the trailing '/' instead, having checked that there was no path
+  // earlier.
+  return url.href.slice(0, -1) === url.origin
+}
+
 export function imageDataOrStrictRelativeUrl(value) {
   // Do not accept a string which resolves as an absolute URL, or any
   // protocol-relative URL, except PNG or JPG data URLs.

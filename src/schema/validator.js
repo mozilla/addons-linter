@@ -15,6 +15,7 @@ import {
   imageDataOrStrictRelativeUrl,
   isAnyUrl,
   isAbsoluteUrl,
+  isOrigin,
   isStrictRelativeUrl,
   isSecureUrl,
   isUnresolvedRelativeUrl,
@@ -416,6 +417,7 @@ export class SchemaValidator {
     validator.addFormat('strictRelativeUrl', isStrictRelativeUrl);
     validator.addFormat('unresolvedRelativeUrl', isUnresolvedRelativeUrl);
     validator.addFormat('secureUrl', isSecureUrl);
+    validator.addFormat('origin', isOrigin);
 
     validator.addFormat(
       'imageDataOrStrictRelativeUrl',
