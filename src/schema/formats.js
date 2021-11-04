@@ -103,7 +103,8 @@ export function isSecureUrl(value) {
   return ['https:', 'wss:'].includes(url.protocol);
 }
 
-export function isOrigin(value) {  // FIXME: should we only have isSecureOrigin ?
+export function isOrigin(value) {
+  // FIXME: should we only have isSecureOrigin ?
   let url, reconstructed;
   try {
     url = new URL(value);
@@ -115,7 +116,12 @@ export function isOrigin(value) {  // FIXME: should we only have isSecureOrigin 
     // Wildcards are not valid in origins.
     return false;
   }
-  if (url.pathname !== '/' || url.hash !== "" || url.search !== "" || value.endsWith('/')) {
+  if (
+    url.pathname !== '/' ||
+    url.hash !== '' ||
+    url.search !== '' ||
+    value.endsWith('/')
+  ) {
     // Path, query string and hash shouldn't be included in origins.
     // URL().pathname will always be '/' if no path is provided, so we have to
     // check value doesn't end with one either.
@@ -125,7 +131,7 @@ export function isOrigin(value) {  // FIXME: should we only have isSecureOrigin 
   //  URL().origin returns punycode, so we have to compare against URL().href
   // minus the last character instead, having checked that there was no path,
   // query string or hash earlier.
-  return url.href.slice(0, -1) === url.origin
+  return url.href.slice(0, -1) === url.origin;
 }
 
 export function imageDataOrStrictRelativeUrl(value) {

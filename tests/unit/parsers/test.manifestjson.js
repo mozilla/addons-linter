@@ -3705,13 +3705,19 @@ describe('ManifestJSONParser', () => {
     });
 
     it('disallows invalid origin (path present)', () => {
-      const { errors } = testInstallOrigins(['https://example.com/path'], false);
+      const { errors } = testInstallOrigins(
+        ['https://example.com/path'],
+        false
+      );
       expect(errors.length).toEqual(1);
       expect(errors[0].code).toEqual('JSON_INVALID');
     });
 
     it('considers entire install_origins invalid if a single value is invalid', () => {
-      const { errors } = testInstallOrigins(['https://bar.com', 'https://foo.com/path'], false);
+      const { errors } = testInstallOrigins(
+        ['https://bar.com', 'https://foo.com/path'],
+        false
+      );
       expect(errors.length).toEqual(1);
       expect(errors[0].code).toEqual('JSON_INVALID');
     });
