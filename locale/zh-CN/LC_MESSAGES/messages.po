@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2021-11-04 01:47+0000\n"
+"PO-Revision-Date: 2021-11-04 01:53+0000\n"
 "Last-Translator: 你我皆凡人 <yuanbingyan@mail.ee>\n"
 "Language-Team: none\n"
 "Language: zh_CN\n"
@@ -91,9 +91,8 @@ msgid "{{api}} is deprecated"
 msgstr "{{api}} 已不赞成使用"
 
 #: src/messages/javascript.js:142
-#, fuzzy
 msgid "This API has been deprecated by Firefox."
-msgstr "Firefox 尚未实现此 API。"
+msgstr "此 API 已不赞成在 Firefox 上使用。"
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
@@ -244,9 +243,8 @@ msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
 msgstr "详细信息请参阅 https://mzl.la/2Qn0fWC （MDN 文档）。"
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
-#, fuzzy
 msgid "Invalid host permission."
-msgstr "未知权限。"
+msgstr "主机权限无效。"
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
