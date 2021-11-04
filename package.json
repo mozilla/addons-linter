@@ -109,7 +109,7 @@
     "pretty-quick": "3.1.1",
     "raw-loader": "4.0.2",
     "shelljs": "0.8.4",
-    "sinon": "11.1.2",
+    "sinon": "12.0.1",
     "tar": "6.1.11",
     "tar-fs": "2.1.1",
     "tmp-promise": "3.0.3",
