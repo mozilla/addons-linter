@@ -115,16 +115,16 @@ export function isOrigin(value) {  // FIXME: should we only have isSecureOrigin 
     // Wildcards are not valid in origins.
     return false;
   }
-  if (url.pathname != '/' || value.endsWith('/')) {
-    // Paths shouldn't be included in origins. URL().pathname will always be
-    // '/' if no path is provided, so we have to check value doesn't end with
-    // one either.
+  if (url.pathname !== '/' || url.hash !== "" || url.search !== "" || value.endsWith('/')) {
+    // Path, query string and hash shouldn't be included in origins.
+    // URL().pathname will always be '/' if no path is provided, so we have to
+    // check value doesn't end with one either.
     return false;
   }
   // value === url.origin would be enough if it wasn't for IDNs but
   //  URL().origin returns punycode, so we have to compare against URL().href
-  // minus the trailing '/' instead, having checked that there was no path
-  // earlier.
+  // minus the last character instead, having checked that there was no path,
+  // query string or hash earlier.
   return url.href.slice(0, -1) === url.origin
 }
 

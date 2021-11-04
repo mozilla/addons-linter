@@ -154,6 +154,30 @@ describe('formats', () => {
       expect(isOrigin(value)).toEqual(false);
     });
 
+    it('domain with no path but with query string', () => {
+      const value = 'https://example.com?like=true&this=that';
+
+      expect(isAnyUrl(value)).toEqual(true);
+      expect(isAbsoluteUrl(value)).toEqual(true);
+      expect(isSecureUrl(value)).toEqual(true);
+
+      expect(isStrictRelativeUrl(value)).toEqual(false);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(false);
+      expect(isOrigin(value)).toEqual(false);
+    });
+
+    it('domain with no path but with hash', () => {
+      const value = 'https://example.com#fool';
+
+      expect(isAnyUrl(value)).toEqual(true);
+      expect(isAbsoluteUrl(value)).toEqual(true);
+      expect(isSecureUrl(value)).toEqual(true);
+
+      expect(isStrictRelativeUrl(value)).toEqual(false);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(false);
+      expect(isOrigin(value)).toEqual(false);
+    });
+
     it('domain only but in mixed case', () => {
       const value = 'https://ExAmPle.coM';
 
