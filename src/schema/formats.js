@@ -105,7 +105,7 @@ export function isSecureUrl(value) {
 
 export function isOrigin(value) {
   // FIXME: should we only have isSecureOrigin ?
-  let url, reconstructed;
+  let url;
   try {
     url = new URL(value);
   } catch (e) {
