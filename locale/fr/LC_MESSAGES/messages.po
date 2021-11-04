@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2021-11-04 08:06+0000\n"
+"PO-Revision-Date: 2021-11-04 09:20+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -96,7 +96,7 @@ msgstr ""
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "« {{api}} » est obsolète ou non implémenté"
 
 #: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
@@ -460,7 +460,7 @@ msgstr "Les icônes doivent être au format JPG/JPEG, WebP, GIF, PNG ou SVG."
 
 #: src/messages/manifestjson.js:505
 msgid "\"applications\" property overridden by \"browser_specific_settings\" property\""
-msgstr ""
+msgstr "Propriété « applications » remplacée par la propriété « browser_specific_settings »"
 
 #: src/messages/manifestjson.js:518
 msgid "Empty language directory"
@@ -488,11 +488,11 @@ msgstr "La permission n’est pas prise en charge par la version minimale de Fir
 
 #: src/messages/manifestjson.js:617
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr ""
+msgstr "Les liens vers « addons.mozilla.org » ne sont pas autorisés"
 
 #: src/messages/manifestjson.js:618
 msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr ""
+msgstr "Les liens vers « addons.mozilla.org » ne sont pas autorisés comme page d’accueil"
 
 #: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
