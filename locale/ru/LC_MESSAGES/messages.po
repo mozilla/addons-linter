@@ -1,18 +1,17 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2019-08-04 10:35+0000\n"
-"Last-Translator: Victor Bychek <a@bychek.ru>\n"
+"PO-Revision-Date: 2021-11-05 13:10+0000\n"
+"Last-Translator: Alexander Slovesnik <unghost@mozilla-russia.org>\n"
 "Language-Team: none\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pontoon\n"
 
 #: src/linter.js:171
@@ -84,15 +83,12 @@ msgid "This API has not been implemented by Firefox."
 msgstr "Это API не реализовано в Firefox."
 
 #: src/messages/javascript.js:132
-msgid ""
-"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
-"property)"
+msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
 msgstr ""
 
 #: src/messages/javascript.js:141
-#, fuzzy
 msgid "{{api}} is deprecated"
-msgstr "{{api}} не поддерживается"
+msgstr "{{api}} устарело"
 
 #: src/messages/javascript.js:142
 #, fuzzy
@@ -120,10 +116,8 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} не поддерживается в Firefox для Android {{minVersion}}"
 
 #: src/messages/javascript.js:196
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
-"Это API не реализовано в указанной минимальной версии Firefox для Android"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "Это API не реализовано в указанной минимальной версии Firefox для Android"
 
 #: src/messages/javascript.js:25
 msgid "Content script file could not be found."
@@ -242,22 +236,16 @@ msgid "Translation string is missing the message property"
 msgstr "В переведённой строке отсутствует свойство \"message\""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Свойство сообщения \"message\" для строки не задано (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Свойство сообщения \"message\" для строки не задано (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:100
-#, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr ""
-"Смотрите https://mzl.la/20PenXl (Документацию на MDN) для получения "
-"дополнительной информации."
+msgstr "Смотрите https://mzl.la/2Qn0fWC (Документацию на MDN) для получения дополнительной информации."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
-#, fuzzy
 msgid "Invalid host permission."
-msgstr "Неизвестное разрешение."
+msgstr "Недействительное разрешение хоста."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -265,9 +253,7 @@ msgstr "\"manifest_version\" в файле manifest.json имеет некорр
 
 #: src/messages/manifestjson.js:120
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"Смотрите https://mzl.la/20PenXl (Документацию на MDN) для получения "
-"дополнительной информации."
+msgstr "Смотрите https://mzl.la/20PenXl (Документацию на MDN) для получения дополнительной информации."
 
 #: src/messages/manifestjson.js:154
 msgid "The \"name\" property must be a string."
@@ -275,9 +261,7 @@ msgstr "Свойство \"name\" должно быть строкой."
 
 #: src/messages/manifestjson.js:155
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
-"Смотрите http://mzl.la/1STmr48 (Документацию на MDN) для получения "
-"дополнительной информации."
+msgstr "Смотрите http://mzl.la/1STmr48 (Документацию на MDN) для получения дополнительной информации."
 
 #: src/messages/manifestjson.js:163
 msgid "The \"version\" property must be a string."
@@ -285,9 +269,7 @@ msgstr "Свойство \"version\" должно быть строкой."
 
 #: src/messages/manifestjson.js:164 src/messages/manifestjson.js:173
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
-"Смотрите http://mzl.la/1kXIADa (Документацию на MDN) для получения "
-"дополнительной информации."
+msgstr "Смотрите http://mzl.la/1kXIADa (Документацию на MDN) для получения дополнительной информации."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
@@ -299,9 +281,7 @@ msgstr "Свойство \"version\" использует специфичный
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"Смотрите https://mzl.la/1ZOhoEN (Документацию на MDN) для получения "
-"дополнительной информации."
+msgstr "Смотрите https://mzl.la/1ZOhoEN (Документацию на MDN) для получения дополнительной информации."
 
 #: src/messages/manifestjson.js:181
 msgid "\"update_url\" is not allowed."
@@ -345,42 +325,30 @@ msgstr "Не удалось найти скрипт содержимого, оп
 
 #: src/messages/manifestjson.js:263
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
-"Не удалось найти CSS файл скрипта содержимого, определённый в манифесте."
+msgstr "Не удалось найти CSS файл скрипта содержимого, определённый в манифесте."
 
 #: src/messages/manifestjson.js:268
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Не удалось найти скрипт содержимого, обозначенный в манифесте, по пути "
-"\"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Не удалось найти скрипт содержимого, обозначенный в манифесте, по пути \"%(path)s\"."
 
 #: src/messages/manifestjson.js:271
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"CSS файл скрипта содержимого, обозначенный в манифесте, не найден по пути "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "CSS файл скрипта содержимого, обозначенный в манифесте, не найден по пути \"%(path)s\"."
 
 #: src/messages/manifestjson.js:285
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "Не удалось найти файл словаря, определённый в манифесте."
 
 #: src/messages/manifestjson.js:289
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Не удалось найти файл словаря, определённый в манифесте, по пути \"%(path)s"
-"\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Не удалось найти файл словаря, определённый в манифесте, по пути \"%(path)s\"."
 
 #: src/messages/manifestjson.js:301
 msgid "The manifest contains multiple dictionaries."
 msgstr "Манифест содержит несколько словарей."
 
 #: src/messages/manifestjson.js:302
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "В манифесте определены несколько словарей, что не поддерживается."
 
 #: src/messages/manifestjson.js:311
@@ -429,7 +397,7 @@ msgstr "Ожидаемый файл значка по пути \"%(path)s\" по
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Это свойство устарело."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
@@ -437,9 +405,7 @@ msgstr "LWT-алиас этой темы был удалён в Firefox 70."
 
 #: src/messages/manifestjson.js:389
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
-"Смотрите https://mzl.la/2T11Lkc (Документацию на MDN) для получения "
-"дополнительной информации."
+msgstr "Смотрите https://mzl.la/2T11Lkc (Документацию на MDN) для получения дополнительной информации."
 
 #: src/messages/manifestjson.js:404
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
@@ -459,31 +425,23 @@ msgstr "Файл изображения темы имеет неподдержи
 
 #: src/messages/manifestjson.js:430
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
-"Файл изображения темы по пути \"%(path)s\" имеет неподдерживаемое расширение"
+msgstr "Файл изображения темы по пути \"%(path)s\" имеет неподдерживаемое расширение"
 
 #: src/messages/manifestjson.js:444
 msgid "Theme image file has an unsupported mime type"
 msgstr "Файл изображения темы имеет неподдерживаемый MIME-тип"
 
 #: src/messages/manifestjson.js:446
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
-"Файл изображения темы по пути \"%(path)s\" имеет неподдерживаемый MIME-тип "
-"\"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "Файл изображения темы по пути \"%(path)s\" имеет неподдерживаемый MIME-тип \"%(mime)s\""
 
 #: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
 msgstr "MIME-тип файла изображения темы не соответствует его расширению"
 
 #: src/messages/manifestjson.js:464
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
-"Расширение файла изображения темы по пути \"%(path)s\" не соответствует его "
-"MIME-типу \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "Расширение файла изображения темы по пути \"%(path)s\" не соответствует его MIME-типу \"%(mime)s\""
 
 #: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
@@ -499,14 +457,10 @@ msgstr "Неподдерживаемое расширение изображен
 
 #: src/messages/manifestjson.js:497
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
-"Значок должен быть в одном из следующих форматов — JPG/JPEG, WebP, GIF, PNG "
-"или SVG."
+msgstr "Значок должен быть в одном из следующих форматов — JPG/JPEG, WebP, GIF, PNG или SVG."
 
 #: src/messages/manifestjson.js:505
-msgid ""
-"\"applications\" property overridden by \"browser_specific_settings\" "
-"property\""
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property\""
 msgstr ""
 
 #: src/messages/manifestjson.js:518
@@ -526,32 +480,22 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Разрешение не поддерживается указанной минимальной версией Firefox"
 
 #: src/messages/manifestjson.js:580
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
-msgstr ""
-"Ключ манифеста не поддерживается указанной минимальной версией Firefox для "
-"Android"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "Ключ манифеста не поддерживается указанной минимальной версией Firefox для Android"
 
 #: src/messages/manifestjson.js:602
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
-"Разрешение не поддерживается указанной минимальной версией Firefox для "
-"Android"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgstr "Разрешение не поддерживается указанной минимальной версией Firefox для Android"
 
 #: src/messages/manifestjson.js:617
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr ""
 
 #: src/messages/manifestjson.js:618
-msgid ""
-"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
-"homepage"
+msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
 msgstr ""
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
-#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
 msgstr "Неподдерживаемый тип разрешения."
 
@@ -565,13 +509,10 @@ msgstr "Неизвестное разрешение."
 
 #: src/messages/manifestjson.js:91
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"Смотрите https://mzl.la/1R1n1t0 (Документацию на MDN) для получения "
-"дополнительной информации."
+msgstr "Смотрите https://mzl.la/1R1n1t0 (Документацию на MDN) для получения дополнительной информации."
 
 #~ msgid "A custom content_security_policy needs additional review."
-#~ msgstr ""
-#~ "Пользовательская content_security_policy требует дополнительной проверки."
+#~ msgstr "Пользовательская content_security_policy требует дополнительной проверки."
 
 #~ msgid "Violation of Mozilla conditions of use."
 #~ msgstr "Нарушение правил использования продуктов Mozilla."
