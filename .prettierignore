@@ -4,6 +4,7 @@
 # exclude these files
 scripts/download-import-tag
 scripts/list-firefox-tags
+scripts/run-l10n-extraction
 scripts/webext-test-functional
 package-lock.json
 LICENSE
