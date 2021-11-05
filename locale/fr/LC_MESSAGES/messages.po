@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2021-11-04 09:20+0000\n"
+"PO-Revision-Date: 2021-11-05 15:07+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -84,7 +84,7 @@ msgstr "Cette API n’a pas été implémentée dans Firefox."
 
 #: src/messages/javascript.js:132
 msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr ""
+msgstr "« {{api}} » a été supprimé dans Manifest Version 3 (propriété `manifest_version`)"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
@@ -92,7 +92,7 @@ msgstr "{{api}} n’est pas pris en charge"
 
 #: src/messages/javascript.js:142
 msgid "This API has been deprecated by Firefox."
-msgstr ""
+msgstr "Firefox considère désormais cette API obsolète."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
@@ -396,7 +396,7 @@ msgstr "L’icône attendue, située à l’emplacement « %(path)s » est cor
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Cette propriété est désormais obsolète."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
