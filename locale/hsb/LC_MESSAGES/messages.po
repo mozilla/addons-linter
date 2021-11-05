@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2021-11-04 21:55+0000\n"
+"PO-Revision-Date: 2021-11-05 21:33+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: hsb\n"
@@ -84,7 +84,7 @@ msgstr "Tutón API njeje so přez Firefox implementował."
 
 #: src/messages/javascript.js:132
 msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr ""
+msgstr "„{{api}}“ je so we wersiji 3 manifest wotstronił (kajkosć `manifest_version`)"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
@@ -96,7 +96,7 @@ msgstr "Tutón API so přez Firefox hižo njepodpěruje."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "„{{api}}“ so hižo njepodpěruje abo je njeimplementowany"
 
 #: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
@@ -396,7 +396,7 @@ msgstr "Wočakowana symbolowa dataja na \"%(path)s\" je wobškodźena"
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Tuta kajkosć so hižo njepodpěruje."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
@@ -460,7 +460,7 @@ msgstr "Symbole měli dataje typa JPG/JPEG, WebP, GIF, PNG abo SVG być."
 
 #: src/messages/manifestjson.js:505
 msgid "\"applications\" property overridden by \"browser_specific_settings\" property\""
-msgstr ""
+msgstr "Kajkosć „applications“ je so přez kajkosć „browser_specific_settings“ přepisała"
 
 #: src/messages/manifestjson.js:518
 msgid "Empty language directory"
@@ -488,7 +488,7 @@ msgstr "Prawo so přez podatu minimalnu wersiju Firefox za Android njepodpěruje
 
 #: src/messages/manifestjson.js:617
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr ""
+msgstr "Wotkazowanje na „addons.mozilla.org“ dowolene njeje"
 
 #: src/messages/manifestjson.js:618
 msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
