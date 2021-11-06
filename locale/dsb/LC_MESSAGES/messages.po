@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2021-11-06 22:42+0000\n"
+"PO-Revision-Date: 2021-11-06 22:48+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: dsb\n"
@@ -87,14 +87,12 @@ msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` pr
 msgstr "„{{api}}“ jo se wótwónoźeł we wersiji 3 manifest (kakosć `manifest_version`)"
 
 #: src/messages/javascript.js:141
-#, fuzzy
 msgid "{{api}} is deprecated"
-msgstr "{{api}} se njepódpěra"
+msgstr "{{api}} se wěcej njepódpěra"
 
 #: src/messages/javascript.js:142
-#, fuzzy
 msgid "This API has been deprecated by Firefox."
-msgstr "Toś ten API njejo se implementěrował pśez Firefox."
+msgstr "Toś ten API se pśez Firefox wěcej njepódpěra."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
@@ -241,14 +239,12 @@ msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBT
 msgstr "Zdźěleńska kakosć \"message\" njejo za znamuškowy rjeśazk nastajona (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:100
-#, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr "Glejśo https://mzl.la/20PenXl (MDN Docs) za dalšne informacije."
+msgstr "Glejśo https://mzl.la/2Qn0fWC (MDN Docs) za dalšne informacije."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
-#, fuzzy
 msgid "Invalid host permission."
-msgstr "Njeznata dowólnosć."
+msgstr "Njepłaśiwe hostowe pšawo"
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
