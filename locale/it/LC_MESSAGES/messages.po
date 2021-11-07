@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2021-11-07 14:08+0000\n"
-"Last-Translator: Jenny <leanintocuriosity@gmx.com>\n"
+"PO-Revision-Date: 2021-11-07 14:44+0000\n"
+"Last-Translator: Francesco Lodolo [:flod] <flod+pontoon@mozilla.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -84,7 +84,7 @@ msgstr "Questa API non è stata implementata da Firefox."
 
 #: src/messages/javascript.js:132
 msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr ""
+msgstr "“{{api}}” è stato rimosso dalla versione 3 del manifesto (proprietà “manifest_version”)"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
@@ -92,7 +92,7 @@ msgstr "{{api}} è deprecato"
 
 #: src/messages/javascript.js:142
 msgid "This API has been deprecated by Firefox."
-msgstr ""
+msgstr "Questa API è deprecata in Firefox."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
@@ -244,7 +244,7 @@ msgstr "Visita https://mzl.la/2Qn0fWC (Documentazione MDN) per maggiori informaz
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
 msgid "Invalid host permission."
-msgstr ""
+msgstr "“host permission\" non valido."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -396,7 +396,7 @@ msgstr "Il file icona previsto in \"%(path)s\" è danneggiato"
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Questa proprietà è deprecata."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
@@ -460,7 +460,7 @@ msgstr "Le icone devono essere in formato JPG/JPEG, WebP, GIF, PNG o SVG."
 
 #: src/messages/manifestjson.js:505
 msgid "\"applications\" property overridden by \"browser_specific_settings\" property\""
-msgstr ""
+msgstr "Proprietà “applications” sostituita dalla proprietà “browser_specific_settings”"
 
 #: src/messages/manifestjson.js:518
 msgid "Empty language directory"
@@ -492,7 +492,7 @@ msgstr "Il collegamento a “addons.mozilla.org” non è consentito"
 
 #: src/messages/manifestjson.js:618
 msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr ""
+msgstr "Non è possibile utilizzare link che puntano a “addons.mozilla.org” come pagina iniziale"
 
 #: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
