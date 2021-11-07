@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2019-08-02 12:12+0000\n"
-"Last-Translator: Sara Todaro <sara.todaro@mozillaitalia.org>\n"
+"PO-Revision-Date: 2021-11-07 14:08+0000\n"
+"Last-Translator: Jenny <leanintocuriosity@gmx.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -88,7 +88,7 @@ msgstr ""
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
-msgstr ""
+msgstr "{{api}} è deprecato"
 
 #: src/messages/javascript.js:142
 msgid "This API has been deprecated by Firefox."
@@ -96,7 +96,7 @@ msgstr ""
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "“{{api}}” è deprecato o non implementato"
 
 #: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
@@ -240,7 +240,7 @@ msgstr "Nessuna proprietà “message“ è impostata per una stringa (https://m
 
 #: src/messages/manifestjson.js:100
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr ""
+msgstr "Visita https://mzl.la/2Qn0fWC (Documentazione MDN) per maggiori informazioni."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
 msgid "Invalid host permission."
@@ -488,7 +488,7 @@ msgstr "Il permesso non è supportato nella versione minima specificata di Firef
 
 #: src/messages/manifestjson.js:617
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr ""
+msgstr "Il collegamento a “addons.mozilla.org” non è consentito"
 
 #: src/messages/manifestjson.js:618
 msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
