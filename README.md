@@ -264,6 +264,8 @@ This is the (manual) process to update the "dispensary" libraries:
 7. Commit the changes in `src/dispensary/libraries.json`and `src/dispensary/hashes.txt`
 8. Open a Pull Request
 
+Note: `hashes.txt` will be embedded into the addons-linter bundle.
+
 [new release]: https://github.com/mozilla/addons-linter/releases/new
 [semver]: http://semver.org/
 [prettier]: https://prettier.io/

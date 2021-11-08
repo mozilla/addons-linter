@@ -1,3 +1,5 @@
+// The entire content of hashes.txt will be part of the addons-linter.js
+// bundle.
 import HASHES from 'dispensary/hashes.txt';
 import createHash from 'dispensary/hasher';
 

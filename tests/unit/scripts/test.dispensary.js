@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import Updater from 'dispensary/updater';
+import { Updater } from '../../../scripts/dispensary';
 
 describe(__filename, () => {
   const ROOT_DIR = path.join(__dirname, '..', '..', '..');
