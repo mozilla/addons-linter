@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-03 08:14+0000\n"
+"POT-Creation-Date: 2021-11-05 18:17+0000\n"
 "PO-Revision-Date: 2021-11-03 14:55+0000\n"
 "Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
 "Language-Team: none\n"
@@ -83,8 +83,11 @@ msgid "This API has not been implemented by Firefox."
 msgstr "Deze API is niet door Firefox geïmplementeerd."
 
 #: src/messages/javascript.js:132
-msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr "‘{{api}}’ is verwijderd in Manifest versie 3 (eigenschap ‘manifest_version’)"
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
+msgstr ""
+"‘{{api}}’ is verwijderd in Manifest versie 3 (eigenschap ‘manifest_version’)"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
@@ -108,15 +111,20 @@ msgstr "{{api}} wordt niet ondersteund in Firefox versie {{minVersion}}"
 
 #: src/messages/javascript.js:185
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Deze API is niet door de opgegeven minimumversie van Firefox geïmplementeerd"
+msgstr ""
+"Deze API is niet door de opgegeven minimumversie van Firefox geïmplementeerd"
 
 #: src/messages/javascript.js:193
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr "{{api}} wordt niet ondersteund in Firefox voor Android versie {{minVersion}}"
+msgstr ""
+"{{api}} wordt niet ondersteund in Firefox voor Android versie {{minVersion}}"
 
 #: src/messages/javascript.js:196
-msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Deze API is niet door de opgegeven minimumversie van Firefox voor Android geïmplementeerd"
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
+msgstr ""
+"Deze API is niet door de opgegeven minimumversie van Firefox voor Android "
+"geïmplementeerd"
 
 #: src/messages/javascript.js:25
 msgid "Content script file could not be found."
@@ -212,7 +220,8 @@ msgstr "Firefox-add-ons mogen geen coinminers uitvoeren."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
-msgstr "Naam van tekenreeks is voor een vooraf gedefinieerd bericht gereserveerd"
+msgstr ""
+"Naam van tekenreeks is voor een vooraf gedefinieerd bericht gereserveerd"
 
 #: src/messages/locale-messagesjson.js:30
 msgid "Placeholder for message is missing"
@@ -235,8 +244,11 @@ msgid "Translation string is missing the message property"
 msgstr "Te vertalen tekenreeks bevat geen berichteigenschap"
 
 #: src/messages/locale-messagesjson.js:8
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "Geen berichteigenschap ‘message’ voor een tekenreeks ingesteld (https://mzl.la/2DSBTjA)."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+"Geen berichteigenschap ‘message’ voor een tekenreeks ingesteld (https://mzl."
+"la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:100
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
@@ -296,7 +308,9 @@ msgstr "‘strict_max_version’ niet vereist."
 
 #: src/messages/manifestjson.js:219
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr "Een in het manifest gedefinieerd pictogram kon niet in het pakket worden gevonden."
+msgstr ""
+"Een in het manifest gedefinieerd pictogram kon niet in het pakket worden "
+"gevonden."
 
 #: src/messages/manifestjson.js:223
 msgid "Icon could not be found at \"%(path)s\"."
@@ -304,11 +318,13 @@ msgstr "Pictogram kon niet worden gevonden in ‘%(path)s’."
 
 #: src/messages/manifestjson.js:238
 msgid "A background script defined in the manifest could not be found."
-msgstr "Een in het manifest gedefinieerd achtergrondscript kon niet worden gevonden."
+msgstr ""
+"Een in het manifest gedefinieerd achtergrondscript kon niet worden gevonden."
 
 #: src/messages/manifestjson.js:241
 msgid "A background page defined in the manifest could not be found."
-msgstr "Een in het manifest gedefinieerde achtergrondpagina kon niet worden gevonden."
+msgstr ""
+"Een in het manifest gedefinieerde achtergrondpagina kon niet worden gevonden."
 
 #: src/messages/manifestjson.js:246
 msgid "Background script could not be found at \"%(path)s\"."
@@ -320,35 +336,52 @@ msgstr "Achtergrondpagina kon niet worden gevonden in ‘%(path)s’."
 
 #: src/messages/manifestjson.js:262
 msgid "A content script defined in the manifest could not be found."
-msgstr "Een in het manifest gedefinieerd inhoudsscript kon niet worden gevonden."
+msgstr ""
+"Een in het manifest gedefinieerd inhoudsscript kon niet worden gevonden."
 
 #: src/messages/manifestjson.js:263
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Een in het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet worden gevonden."
+msgstr ""
+"Een in het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet "
+"worden gevonden."
 
 #: src/messages/manifestjson.js:268
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "In het manifest gedefinieerd inhoudsscript kon niet worden gevonden in ‘%(path)s’."
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"In het manifest gedefinieerd inhoudsscript kon niet worden gevonden in "
+"‘%(path)s’."
 
 #: src/messages/manifestjson.js:271
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "In het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet worden gevonden in ‘%(path)s’."
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"In het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet worden "
+"gevonden in ‘%(path)s’."
 
 #: src/messages/manifestjson.js:285
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Een in het manifest gedefinieerd bibliotheekbestand kon niet worden gevonden."
+msgstr ""
+"Een in het manifest gedefinieerd bibliotheekbestand kon niet worden gevonden."
 
 #: src/messages/manifestjson.js:289
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "In het manifest gedefinieerd bibliotheekbestand kon niet worden gevonden in ‘%(path)s’."
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"In het manifest gedefinieerd bibliotheekbestand kon niet worden gevonden in "
+"‘%(path)s’."
 
 #: src/messages/manifestjson.js:301
 msgid "The manifest contains multiple dictionaries."
 msgstr "Het manifest bevat meerdere woordenboeken."
 
 #: src/messages/manifestjson.js:302
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr "Er zijn meerdere woordenboeken gedefinieerd in het manifest, wat niet wordt ondersteund."
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgstr ""
+"Er zijn meerdere woordenboeken gedefinieerd in het manifest, wat niet wordt "
+"ondersteund."
 
 #: src/messages/manifestjson.js:311
 msgid "The manifest contains a dictionaries object, but it is empty."
@@ -356,7 +389,8 @@ msgstr "Het manifest bevat een woordenboek-object, maar het is leeg."
 
 #: src/messages/manifestjson.js:314
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr "Er is een woordenboek-object gedefinieerd in het manifest, maar het is leeg."
+msgstr ""
+"Er is een woordenboek-object gedefinieerd in het manifest, maar het is leeg."
 
 #: src/messages/manifestjson.js:323
 msgid "The manifest contains a dictionary but no id property."
@@ -364,7 +398,8 @@ msgstr "Het manifest bevat een woordenboek maar geen id-eigenschap."
 
 #: src/messages/manifestjson.js:324
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr "Er is een woordenboek gevonden in het manifest, maar er is geen id ingesteld."
+msgstr ""
+"Er is een woordenboek gevonden in het manifest, maar er is geen id ingesteld."
 
 #: src/messages/manifestjson.js:334
 msgid "Forbidden content found in add-on."
@@ -408,7 +443,8 @@ msgstr "Zie https://mzl.la/2T11Lkc (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:404
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Thema-afbeelding voor ‘%(type)s’ kon niet worden gevonden in ‘%(path)s’"
+msgstr ""
+"Thema-afbeelding voor ‘%(type)s’ kon niet worden gevonden in ‘%(path)s’"
 
 #: src/messages/manifestjson.js:415
 msgid "Corrupted theme image file"
@@ -424,23 +460,34 @@ msgstr "Thema-afbeeldingsbestand heeft een niet-ondersteunde bestandsextensie"
 
 #: src/messages/manifestjson.js:430
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr "Thema-afbeeldingsbestand op ‘%(path)s’ heeft een niet-ondersteunde bestandsextensie"
+msgstr ""
+"Thema-afbeeldingsbestand op ‘%(path)s’ heeft een niet-ondersteunde "
+"bestandsextensie"
 
 #: src/messages/manifestjson.js:444
 msgid "Theme image file has an unsupported mime type"
 msgstr "Thema-afbeeldingsbestand heeft een niet-ondersteund mime-type"
 
 #: src/messages/manifestjson.js:446
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr "Thema-afbeeldingsbestand op ‘%(path)s’ heeft het niet-ondersteunde mime-type ‘%(mime)s’"
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr ""
+"Thema-afbeeldingsbestand op ‘%(path)s’ heeft het niet-ondersteunde mime-type "
+"‘%(mime)s’"
 
 #: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
-msgstr "Mime-type van het thema-afbeeldingsbestand komt niet overeen met de bestandsextensie"
+msgstr ""
+"Mime-type van het thema-afbeeldingsbestand komt niet overeen met de "
+"bestandsextensie"
 
 #: src/messages/manifestjson.js:464
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr "Thema-afbeeldingsbestand op ‘%(path)s’ komt niet overeen met het werkelijke mime-type ‘%(mime)s’"
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
+msgstr ""
+"Thema-afbeeldingsbestand op ‘%(path)s’ komt niet overeen met het werkelijke "
+"mime-type ‘%(mime)s’"
 
 #: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
@@ -459,8 +506,13 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Pictogrammen dienen JPG/JPEG, WebP, GIF, PNG of SVG te zijn."
 
 #: src/messages/manifestjson.js:505
-msgid "\"applications\" property overridden by \"browser_specific_settings\" property\""
-msgstr "Eigenschap ‘applications’ wordt overschreven door de eigenschap ‘browser_specific_settings’"
+#, fuzzy
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property"
+msgstr ""
+"Eigenschap ‘applications’ wordt overschreven door de eigenschap "
+"‘browser_specific_settings’"
 
 #: src/messages/manifestjson.js:518
 msgid "Empty language directory"
@@ -472,29 +524,42 @@ msgstr "Bestand messages.json ontbreekt in ‘%(path)s’"
 
 #: src/messages/manifestjson.js:536
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr "Manifestsleutel niet ondersteund door de opgegeven minimale Firefox-versie"
+msgstr ""
+"Manifestsleutel niet ondersteund door de opgegeven minimale Firefox-versie"
 
 #: src/messages/manifestjson.js:558
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Toestemming niet ondersteund door de opgegeven minimale Firefox-versie"
 
 #: src/messages/manifestjson.js:580
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr "Manifestsleutel niet ondersteund door de opgegeven minimale Firefox voor Android-versie"
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
+msgstr ""
+"Manifestsleutel niet ondersteund door de opgegeven minimale Firefox voor "
+"Android-versie"
 
 #: src/messages/manifestjson.js:602
-msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr "Toestemming niet ondersteund door de opgegeven minimale Firefox voor Android-versie"
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
+msgstr ""
+"Toestemming niet ondersteund door de opgegeven minimale Firefox voor Android-"
+"versie"
 
 #: src/messages/manifestjson.js:617
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "Koppelen naar ‘addons.mozilla.org’ is niet toegestaan"
 
 #: src/messages/manifestjson.js:618
-msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr "Koppelingen die verwijzen naar ‘addons.mozilla.org’ mogen niet voor de startpagina worden gebruikt"
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
+"Koppelingen die verwijzen naar ‘addons.mozilla.org’ mogen niet voor de "
+"startpagina worden gebruikt"
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
+#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
 msgstr "Het toestemmingstype wordt niet ondersteund."
 
@@ -511,7 +576,8 @@ msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
 msgstr "Zie https://mzl.la/1R1n1t0 (MDN Docs) voor meer informatie."
 
 #~ msgid "A custom content_security_policy needs additional review."
-#~ msgstr "Een aangepast content_security_policy heeft aanvullende beoordeling nodig."
+#~ msgstr ""
+#~ "Een aangepast content_security_policy heeft aanvullende beoordeling nodig."
 
 #~ msgid "Violation of Mozilla conditions of use."
 #~ msgstr "Schending van de gebruiksvoorwaarden van Mozilla."

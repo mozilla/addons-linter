@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-03 08:14+0000\n"
+"POT-Creation-Date: 2021-11-05 18:17+0000\n"
 "PO-Revision-Date: 2018-01-19 00:33+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -471,7 +471,7 @@ msgstr ""
 #: src/messages/manifestjson.js:505
 msgid ""
 "\"applications\" property overridden by \"browser_specific_settings\" "
-"property\""
+"property"
 msgstr ""
 
 #: src/messages/manifestjson.js:518
