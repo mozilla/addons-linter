@@ -2972,21 +2972,84 @@ describe('ManifestJSONParser', () => {
         expect(errors[0].code).toEqual('RESTRICTED_HOMEPAGE_URL');
       }
     }
-    const testInvalidUrls = [
+
+    // eslint-disable-next-line jest/expect-expect
+    it.each([
       'https://addons.mozilla.org',
       'http://addons.mozilla.org/somepath',
-    ];
-
-    for (const invalidUrl of testInvalidUrls) {
-      // eslint-disable-next-line jest/expect-expect
-      it(`should fail on forbidden homepage_url "${invalidUrl}"`, () => {
-        return testHomepageUrl(invalidUrl, false);
-      });
-    }
+    ])('should fail on forbidden homepage_url "%s"', (invalidUrl) => {
+      return testHomepageUrl(invalidUrl, false);
+    });
 
     // eslint-disable-next-line jest/expect-expect
     it('should not mark non forbidden homepage url as invalid', () => {
       return testHomepageUrl('http://test.org', true);
+    });
+  });
+
+  describe('/developer/name', () => {
+    it('overrides the author property', () => {
+      const name = 'other in /developer/name';
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        developer: { name },
+        author: 'some-author',
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+
+      expect(manifestJSONParser.parsedJSON.author).toEqual(name);
+    });
+  });
+
+  describe('/developer/url', () => {
+    function testDeveloperUrl(url, expectValid) {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({ developer: { url } });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(expectValid);
+
+      const { errors } = addonLinter.collector;
+      if (expectValid) {
+        expect(errors.length).toEqual(0);
+      } else {
+        expect(errors.length).toEqual(1);
+        expect(errors[0].code).toEqual('RESTRICTED_HOMEPAGE_URL');
+      }
+    }
+
+    // eslint-disable-next-line jest/expect-expect
+    it.each([
+      'https://addons.mozilla.org',
+      'http://addons.mozilla.org/somepath',
+    ])('should fail on forbidden developer URL "%s"', (invalidUrl) => {
+      return testDeveloperUrl(invalidUrl, false);
+    });
+
+    // eslint-disable-next-line jest/expect-expect
+    it('should not mark non forbidden developer URL as invalid', () => {
+      return testDeveloperUrl('http://test.org', true);
+    });
+
+    it('overrides the homepage_url property', () => {
+      const url = 'some url in /developer/url';
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        developer: { url },
+        homepage_url: 'some homepage',
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+
+      expect(manifestJSONParser.parsedJSON.homepage_url).toEqual(url);
     });
   });
 

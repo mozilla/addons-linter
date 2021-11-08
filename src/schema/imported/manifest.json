@@ -337,7 +337,16 @@
                     },
                     "url": {
                       "type": "string",
-                      "preprocess": "localize"
+                      "preprocess": "localize",
+                      "format": "ignore",
+                      "oneOf": [
+                        {
+                          "format": "url"
+                        },
+                        {
+                          "pattern": "^__MSG_.*?__$"
+                        }
+                      ]
                     }
                   }
                 },
