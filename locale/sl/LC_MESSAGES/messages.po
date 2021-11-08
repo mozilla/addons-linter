@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-03 08:14+0000\n"
+"POT-Creation-Date: 2021-11-05 18:17+0000\n"
 "PO-Revision-Date: 2019-08-30 11:48+0000\n"
 "Last-Translator: Matjaž Horvat <matjaz.horvat@gmail.com>\n"
 "Language-Team: none\n"
@@ -491,7 +491,7 @@ msgstr "Ikone morajo biti vrste JPG/JPEG, WebP, GIF, PNG ali SVG."
 #: src/messages/manifestjson.js:505
 msgid ""
 "\"applications\" property overridden by \"browser_specific_settings\" "
-"property\""
+"property"
 msgstr ""
 
 #: src/messages/manifestjson.js:518
