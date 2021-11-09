@@ -232,6 +232,40 @@ We deploy to npm automatically using Circle CI. To release a new version, increm
 
 After merging the PR, [create a new release][new release] with the same tag name as your new version. Once the build passes it will deploy. Magic! ✨
 
+## Dispensary
+
+As of November 2021, [dispensary](https://github.com/mozilla/dispensary) has been merged into this project and a CLI is available by running `./scripts/dispensary`.
+
+### Libraries updates
+
+This is the (manual) process to update the "dispensary" libraries:
+
+1. Open `src/dispensary/libraries.json`
+2. Open the release pages of each library. Here is a list:
+
+   - https://github.com/angular/angular.js/releases
+   - https://github.com/jashkenas/backbone/releases
+   - https://github.com/twbs/bootstrap/releases
+   - https://download.dojotoolkit.org/
+   - https://github.com/cure53/DOMPurify/releases
+   - https://github.com/jquery/jquery/releases
+   - https://github.com/jquery/jquery-ui/releases
+   - https://github.com/moment/moment/releases
+   - https://github.com/mootools/mootools-core/releases
+   - http://prototypejs.org/
+   - https://github.com/facebook/react/releases
+   - https://github.com/jashkenas/underscore/releases
+   - https://github.com/mozilla/webextension-polyfill/releases
+
+3. On each page, check whether there are newer release versions than what is in `src/dispensary/libraries.json`. Note that some libraries, like react, support several versions, so we need to check each "branch".
+4. For major upgrades, take a quick look at the code changes
+5. Add new versions to `src/dispensary/libraries.json`
+6. Run `npm run update-hashes`
+7. Commit the changes in `src/dispensary/libraries.json`and `src/dispensary/hashes.txt`
+8. Open a Pull Request
+
+Note: `hashes.txt` will be embedded into the addons-linter bundle.
+
 [new release]: https://github.com/mozilla/addons-linter/releases/new
 [semver]: http://semver.org/
 [prettier]: https://prettier.io/
