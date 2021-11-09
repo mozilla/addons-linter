@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-05 18:17+0000\n"
-"PO-Revision-Date: 2021-11-06 04:16+0000\n"
+"PO-Revision-Date: 2021-11-09 01:16+0000\n"
 "Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
@@ -83,10 +83,8 @@ msgid "This API has not been implemented by Firefox."
 msgstr "API này chưa được Firefox triển khai."
 
 #: src/messages/javascript.js:132
-msgid ""
-"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
-"property)"
-msgstr ""
+msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
+msgstr "\"{{api}}\" đã bị xóa trong Manifest phiên bản 3 (thuộc tính `manifest_version`)"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
@@ -98,7 +96,7 @@ msgstr "API này đã bị loại bỏ khỏi Firefox."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "\"{{api}}\" không được dùng nữa và sẽ không hỗ trợ"
 
 #: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
@@ -114,16 +112,11 @@ msgstr "API này không được triển khai bởi phiên bản Firefox tối t
 
 #: src/messages/javascript.js:193
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
-"{{api}} không được hỗ trợ trong Firefox dành cho Android phiên bản "
-"{{minVersion}}"
+msgstr "{{api}} không được hỗ trợ trong Firefox dành cho Android phiên bản {{minVersion}}"
 
 #: src/messages/javascript.js:196
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
-"API này không được triển khai bởi phiên bản Firefox tối thiểu dành cho "
-"Android"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "API này không được triển khai bởi phiên bản Firefox tối thiểu dành cho Android"
 
 #: src/messages/javascript.js:25
 msgid "Content script file could not be found."
@@ -215,9 +208,7 @@ msgstr "Gói đã được ký"
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
-"Tiện ích Firefox không được phép chạy các công cụ khai thác tiền ảo (coin "
-"miners)."
+msgstr "Tiện ích Firefox không được phép chạy các công cụ khai thác tiền ảo (coin miners)."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -244,11 +235,8 @@ msgid "Translation string is missing the message property"
 msgstr "Chuỗi dịch bị thiếu thuộc tính tin nhắn"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Không có thuộc tính thông báo \"message\" nào được đặt cho một chuỗi "
-"(https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Không có thuộc tính thông báo \"message\" nào được đặt cho một chuỗi (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:100
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
@@ -260,8 +248,7 @@ msgstr "Quyền hạn host không hợp lệ."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
-"\"manifest_version\" trong manifest.json không phải là một giá trị hợp lệ"
+msgstr "\"manifest_version\" trong manifest.json không phải là một giá trị hợp lệ"
 
 #: src/messages/manifestjson.js:120
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -309,8 +296,7 @@ msgstr "\"strict_max_version\" không bắt buộc."
 
 #: src/messages/manifestjson.js:219
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
-"Không thể tìm thấy biểu tượng được xác định trong tập tin manifest trong gói."
+msgstr "Không thể tìm thấy biểu tượng được xác định trong tập tin manifest trong gói."
 
 #: src/messages/manifestjson.js:223
 msgid "Icon could not be found at \"%(path)s\"."
@@ -334,51 +320,35 @@ msgstr "Không thể tìm thấy trang nền tại \"%(path)s\"."
 
 #: src/messages/manifestjson.js:262
 msgid "A content script defined in the manifest could not be found."
-msgstr ""
-"Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin kê khai."
+msgstr "Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin kê khai."
 
 #: src/messages/manifestjson.js:263
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
-"Không thể tìm thấy tập tin css tập lệnh nội dung được xác định trong tập tin "
-"kê khai."
+msgstr "Không thể tìm thấy tập tin css tập lệnh nội dung được xác định trong tập tin kê khai."
 
 #: src/messages/manifestjson.js:268
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin manifest "
-"tại \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin manifest tại \"%(path)s\"."
 
 #: src/messages/manifestjson.js:271
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Không thể tìm thấy tệp css tập lệnh nội dung được xác định trong tập tin "
-"manifest tại \"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy tệp css tập lệnh nội dung được xác định trong tập tin manifest tại \"%(path)s\"."
 
 #: src/messages/manifestjson.js:285
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr ""
-"Không thể tìm thấy tập tin từ điển được xác định trong tập tin kê khai."
+msgstr "Không thể tìm thấy tập tin từ điển được xác định trong tập tin kê khai."
 
 #: src/messages/manifestjson.js:289
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Không thể tìm thấy tập tin từ điển được xác định trong tập tin kê khai tại "
-"\"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy tập tin từ điển được xác định trong tập tin kê khai tại \"%(path)s\"."
 
 #: src/messages/manifestjson.js:301
 msgid "The manifest contains multiple dictionaries."
 msgstr "Tập tin kê khai chứa nhiều từ điển."
 
 #: src/messages/manifestjson.js:302
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
-"Nhiều từ điển đã được định nghĩa trong kê khai, mà nó không được hỗ trợ."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+msgstr "Nhiều từ điển đã được định nghĩa trong kê khai, mà nó không được hỗ trợ."
 
 #: src/messages/manifestjson.js:311
 msgid "The manifest contains a dictionaries object, but it is empty."
@@ -386,9 +356,7 @@ msgstr "Tập tin kê khai chứa một đối tượng từ điển, nhưng nó
 
 #: src/messages/manifestjson.js:314
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
-"Một đối tượng từ điển đã được định nghĩa trong tập tin kê khai, nhưng nó "
-"trống."
+msgstr "Một đối tượng từ điển đã được định nghĩa trong tập tin kê khai, nhưng nó trống."
 
 #: src/messages/manifestjson.js:323
 msgid "The manifest contains a dictionary but no id property."
@@ -396,8 +364,7 @@ msgstr "Tập tin kê khai chứa một từ điển nhưng không có thuộc t
 
 #: src/messages/manifestjson.js:324
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
-"Một từ điển đã được tìm thấy trong tập tin kê khai, nhưng không được đặt id."
+msgstr "Một từ điển đã được tìm thấy trong tập tin kê khai, nhưng không được đặt id."
 
 #: src/messages/manifestjson.js:334
 msgid "Forbidden content found in add-on."
@@ -429,7 +396,7 @@ msgstr "Tập tin biểu tượng tại \"%(path)s\" bị hỏng"
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Thuộc tính này đã không còn được dùng nữa."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
@@ -441,8 +408,7 @@ msgstr "Xem tại https://mzl.la/2T11Lkc (Tài liệu MDN) để biết thêm th
 
 #: src/messages/manifestjson.js:404
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr ""
-"Không thể tìm thấy hình ảnh của chủ đề cho \"%(type)s\" tại \"%(path)s\""
+msgstr "Không thể tìm thấy hình ảnh của chủ đề cho \"%(type)s\" tại \"%(path)s\""
 
 #: src/messages/manifestjson.js:415
 msgid "Corrupted theme image file"
@@ -458,33 +424,23 @@ msgstr "Tập tin hình ảnh chủ đề có phần mở rộng không được
 
 #: src/messages/manifestjson.js:430
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
-"Tập tin hình ảnh chủ đề tại \"%(path)s\" có phần mở rộng không được hỗ trợ"
+msgstr "Tập tin hình ảnh chủ đề tại \"%(path)s\" có phần mở rộng không được hỗ trợ"
 
 #: src/messages/manifestjson.js:444
 msgid "Theme image file has an unsupported mime type"
 msgstr "Tập tin hình ảnh chủ đề có loại mime không được hỗ trợ"
 
 #: src/messages/manifestjson.js:446
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
-"Tập tin hình ảnh chủ đề tại \"%(path)s\" có loại mime không được hỗ trợ "
-"\"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "Tập tin hình ảnh chủ đề tại \"%(path)s\" có loại mime không được hỗ trợ \"%(mime)s\""
 
 #: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
-"Loại mime của tập tin hình ảnh chủ đề không khớp với phần mở rộng tập tin "
-"của nó"
+msgstr "Loại mime của tập tin hình ảnh chủ đề không khớp với phần mở rộng tập tin của nó"
 
 #: src/messages/manifestjson.js:464
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
-"Phần mở rộng Tập tin hình ảnh chủ đề tại \"%(path)s\" không khớp với loại "
-"mime thực của nó \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "Phần mở rộng Tập tin hình ảnh chủ đề tại \"%(path)s\" không khớp với loại mime thực của nó \"%(mime)s\""
 
 #: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
@@ -503,10 +459,8 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Các biểu tượng phải là một trong JPG/JPEG, WebP, GIF, PNG hoặc SVG."
 
 #: src/messages/manifestjson.js:505
-msgid ""
-"\"applications\" property overridden by \"browser_specific_settings\" "
-"property"
-msgstr ""
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
+msgstr "Thuộc tính \"applications\" bị ghi đè bởi thuộc tính \"browser_specific_settings\""
 
 #: src/messages/manifestjson.js:518
 msgid "Empty language directory"
@@ -518,41 +472,29 @@ msgstr "Thiếu tập tin messages.json trong \"%(path)s\""
 
 #: src/messages/manifestjson.js:536
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
-"Khóa kê khai không được hỗ trợ bởi phiên bản Firefox tối thiểu đã chỉ định"
+msgstr "Khóa kê khai không được hỗ trợ bởi phiên bản Firefox tối thiểu đã chỉ định"
 
 #: src/messages/manifestjson.js:558
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
-"Quyền hạn không được hỗ trợ bởi phiên bản Firefox tối thiểu đã chỉ định"
+msgstr "Quyền hạn không được hỗ trợ bởi phiên bản Firefox tối thiểu đã chỉ định"
 
 #: src/messages/manifestjson.js:580
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
-msgstr ""
-"Khóa kê khai không được hỗ trợ bởi Firefox dành cho Android phiên bản tối "
-"thiểu đã chỉ định"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "Khóa kê khai không được hỗ trợ bởi Firefox dành cho Android phiên bản tối thiểu đã chỉ định"
 
 #: src/messages/manifestjson.js:602
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
-"Quyền hạn không được hỗ trợ bởi Firefox dành cho Android phiên bản tối thiểu "
-"đã chỉ định"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgstr "Quyền hạn không được hỗ trợ bởi Firefox dành cho Android phiên bản tối thiểu đã chỉ định"
 
 #: src/messages/manifestjson.js:617
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr ""
+msgstr "Liên kết đến \"addons.mozilla.org\" không được phép"
 
 #: src/messages/manifestjson.js:618
-msgid ""
-"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
-"homepage"
-msgstr ""
+msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
+msgstr "Các liên kết trực tiếp đến \"addons.mozilla.org\" đều không được phép sử dụng cho trang chủ"
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
-#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
 msgstr "Loại quyền hạn không được hỗ trợ."
 
