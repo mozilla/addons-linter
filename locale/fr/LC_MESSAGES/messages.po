@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-05 18:17+0000\n"
-"PO-Revision-Date: 2021-11-08 14:24+0000\n"
+"PO-Revision-Date: 2021-11-10 19:23+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -244,7 +244,7 @@ msgstr "Voir https://mzl.la/2Qn0fWC (MDN Docs) pour plus d’informations."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
 msgid "Invalid host permission."
-msgstr ""
+msgstr "Autorisation de l’hôte invalide."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
