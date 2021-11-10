@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-05 18:17+0000\n"
-"PO-Revision-Date: 2021-11-10 07:53+0000\n"
+"PO-Revision-Date: 2021-11-10 08:00+0000\n"
 "Last-Translator: Michal Stanke <mstanke@mozilla.cz>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -84,7 +84,7 @@ msgstr "Tato API nemohla být přidána do Firefoxu."
 
 #: src/messages/javascript.js:132
 msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr ""
+msgstr "\"{{api}}\" bylo v Manifestu verze 3 (`manifest_version`) odstraněno"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
@@ -96,7 +96,7 @@ msgstr "Toto API je ve Firefoxu označeno jako zastaralé."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "\"{{api}}\" je zastaralé, nebo není vůbec implementované"
 
 #: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
@@ -396,7 +396,7 @@ msgstr "Očekávaný soubor ikony na cestě „%(path)s“ je poškozený"
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Tato vlastnost je zastaralá."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
@@ -460,7 +460,7 @@ msgstr "Ikona by měla mít formát JPG, JPEG, WebP, GIFF, PNG nebo SVG."
 
 #: src/messages/manifestjson.js:505
 msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
-msgstr ""
+msgstr "Vlastnost \"applications\" je nahrazena za \"browser_specific_settings\""
 
 #: src/messages/manifestjson.js:518
 msgid "Empty language directory"
@@ -488,11 +488,11 @@ msgstr "Oprávnění nepodporované uvedenou minimální verzí Firefoxu pro And
 
 #: src/messages/manifestjson.js:617
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr ""
+msgstr "Odkazování ní \"addons.mozilla.org\" není dovoleno"
 
 #: src/messages/manifestjson.js:618
 msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr ""
+msgstr "Odkazy směřující na \"addons.mozilla.org\" není možné nastavit jako domovskou stránku"
 
 #: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
