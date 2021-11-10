@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-05 18:17+0000\n"
-"PO-Revision-Date: 2019-10-13 15:47+0000\n"
+"PO-Revision-Date: 2021-11-10 07:53+0000\n"
 "Last-Translator: Michal Stanke <mstanke@mozilla.cz>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -83,20 +83,16 @@ msgid "This API has not been implemented by Firefox."
 msgstr "Tato API nemohla být přidána do Firefoxu."
 
 #: src/messages/javascript.js:132
-msgid ""
-"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
-"property)"
+msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
 msgstr ""
 
 #: src/messages/javascript.js:141
-#, fuzzy
 msgid "{{api}} is deprecated"
-msgstr "{{api}} není podporováno"
+msgstr "{{api}} je zastaralé"
 
 #: src/messages/javascript.js:142
-#, fuzzy
 msgid "This API has been deprecated by Firefox."
-msgstr "Tato API nemohla být přidána do Firefoxu."
+msgstr "Toto API je ve Firefoxu označeno jako zastaralé."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
@@ -119,10 +115,8 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} není ve verzi Firefoxu pro Android {{minVersion}} podporováno"
 
 #: src/messages/javascript.js:196
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
-"Tato API nejsou uvedenou minimální verzí Firefoxu pro Android implementována"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "Tato API nejsou uvedenou minimální verzí Firefoxu pro Android implementována"
 
 #: src/messages/javascript.js:25
 msgid "Content script file could not be found."
@@ -241,22 +235,16 @@ msgid "Translation string is missing the message property"
 msgstr "Řetězci překladu chybí parametr message"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Pro řetězec není nastavena zpráva ve vlastnosti „message“ (https://mzl."
-"la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Pro řetězec není nastavena zpráva ve vlastnosti „message“ (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:100
-#, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na https://mzl.la/20PenXl (MDN dokumentace) pro více informací."
+msgstr "Podrobnosti najdete v MDN Docs na adrese https://mzl.la/2Qn0fWC."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
-#, fuzzy
 msgid "Invalid host permission."
-msgstr "Neznámé oprávnění."
+msgstr "Neplatné oprávnění pro server."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -264,8 +252,7 @@ msgstr "\"manifest_version\" není v souboru manifest.json platná hodnota."
 
 #: src/messages/manifestjson.js:120
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na https://mzl.la/20PenXl (MDN dokumentace) pro více informací."
+msgstr "Podívejte se na https://mzl.la/20PenXl (MDN dokumentace) pro více informací."
 
 #: src/messages/manifestjson.js:154
 msgid "The \"name\" property must be a string."
@@ -273,8 +260,7 @@ msgstr "Hodnota \"name\" musí být řetězec."
 
 #: src/messages/manifestjson.js:155
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na http://mzl.la/1STmr48 (MDN Dokumenty) pro více informací."
+msgstr "Podívejte se na http://mzl.la/1STmr48 (MDN Dokumenty) pro více informací."
 
 #: src/messages/manifestjson.js:163
 msgid "The \"version\" property must be a string."
@@ -282,8 +268,7 @@ msgstr "Hodnota \"version\" musí být řetězec."
 
 #: src/messages/manifestjson.js:164 src/messages/manifestjson.js:173
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na http://mzl.la/1kXIADa (MDN Dokumenty) pro více informací."
+msgstr "Podívejte se na http://mzl.la/1kXIADa (MDN Dokumenty) pro více informací."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
@@ -295,8 +280,7 @@ msgstr "Hodnota \"version\" používá ve Firefoxu specifický formát."
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na https://mzl.la/1ZOhoEN (MDN dokumentace) pro více informací."
+msgstr "Podívejte se na https://mzl.la/1ZOhoEN (MDN dokumentace) pro více informací."
 
 #: src/messages/manifestjson.js:181
 msgid "\"update_url\" is not allowed."
@@ -343,36 +327,27 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr "Styly obsahového skriptu definované v manifestu nebyly nalezeny."
 
 #: src/messages/manifestjson.js:268
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Obsahový skript definovaný v manifestu nebyl na cestě „%(path)s“ nalezen."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Obsahový skript definovaný v manifestu nebyl na cestě „%(path)s“ nalezen."
 
 #: src/messages/manifestjson.js:271
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Styly obsahového skriptu definované v manifestu nebyly na cestě „%(path)s“ "
-"nalezeny."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Styly obsahového skriptu definované v manifestu nebyly na cestě „%(path)s“ nalezeny."
 
 #: src/messages/manifestjson.js:285
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "Slovníkový soubor definovaný v manifestu nebyl nalezen."
 
 #: src/messages/manifestjson.js:289
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Slovníkový soubor definovaný v manifestu nebyl na cestě „%(path)s“ nalezen."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Slovníkový soubor definovaný v manifestu nebyl na cestě „%(path)s“ nalezen."
 
 #: src/messages/manifestjson.js:301
 msgid "The manifest contains multiple dictionaries."
 msgstr "Manifest obsahuje vícero slovníků."
 
 #: src/messages/manifestjson.js:302
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "V manifestu bylo definováno vícero slovníků, což není podporováno."
 
 #: src/messages/manifestjson.js:311
@@ -429,8 +404,7 @@ msgstr "Tento LWT alias vzhledu je od verze Firefoxu 70 odstraněn."
 
 #: src/messages/manifestjson.js:389
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
-"Více informací najdete v dokumentaci MDN na adrese https://mzl.la/2T11Lkc ."
+msgstr "Více informací najdete v dokumentaci MDN na adrese https://mzl.la/2T11Lkc ."
 
 #: src/messages/manifestjson.js:404
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
@@ -457,22 +431,16 @@ msgid "Theme image file has an unsupported mime type"
 msgstr "Obrázek vzhledu je nepodporovaného typu"
 
 #: src/messages/manifestjson.js:446
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
-"Soubor s obrázkem \"%(path)s\" je typu \"%(mime)s\", který není podporován"
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "Soubor s obrázkem \"%(path)s\" je typu \"%(mime)s\", který není podporován"
 
 #: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
 msgstr "Typ a koncovka názvu obrázku nesouhlasí"
 
 #: src/messages/manifestjson.js:464
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
-"Koncovka souboru s obrázkem \"%(path)s\" neodpovídá jeho skutečnému typu "
-"\"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "Koncovka souboru s obrázkem \"%(path)s\" neodpovídá jeho skutečnému typu \"%(mime)s\""
 
 #: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
@@ -491,9 +459,7 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Ikona by měla mít formát JPG, JPEG, WebP, GIFF, PNG nebo SVG."
 
 #: src/messages/manifestjson.js:505
-msgid ""
-"\"applications\" property overridden by \"browser_specific_settings\" "
-"property"
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
 msgstr ""
 
 #: src/messages/manifestjson.js:518
@@ -513,16 +479,11 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Oprávnění nepodporované uvedenou minimální verzí Firefoxu"
 
 #: src/messages/manifestjson.js:580
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
-msgstr ""
-"Klíč v manifestu není uvedenou minimální verzí Firefoxu pro Android "
-"podporován"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "Klíč v manifestu není uvedenou minimální verzí Firefoxu pro Android podporován"
 
 #: src/messages/manifestjson.js:602
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr "Oprávnění nepodporované uvedenou minimální verzí Firefoxu pro Android"
 
 #: src/messages/manifestjson.js:617
@@ -530,13 +491,10 @@ msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr ""
 
 #: src/messages/manifestjson.js:618
-msgid ""
-"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
-"homepage"
+msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
 msgstr ""
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
-#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
 msgstr "Tento typ oprávnění není podporován."
 
@@ -550,8 +508,7 @@ msgstr "Neznámé oprávnění."
 
 #: src/messages/manifestjson.js:91
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"Podívejte se na https://mzl.la/1R1n1t0 (MDN dokumentace) pro více informací."
+msgstr "Podívejte se na https://mzl.la/1R1n1t0 (MDN dokumentace) pro více informací."
 
 #~ msgid "A custom content_security_policy needs additional review."
 #~ msgstr "Vlastní content_security_policy vyžaduje dodatečné schválení."
