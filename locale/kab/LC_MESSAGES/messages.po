@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-05 18:17+0000\n"
-"PO-Revision-Date: 2020-04-03 16:18+0000\n"
-"Last-Translator: Muhend Belkacem <taqbaylitassa@gmail.com>\n"
+"PO-Revision-Date: 2021-11-10 17:59+0000\n"
+"Last-Translator: ZiriSut <rgebbid@gmail.com>\n"
 "Language-Team: none\n"
 "Language: kab\n"
 "MIME-Version: 1.0\n"
@@ -60,9 +60,7 @@ msgstr "Ur d-yelli wamek ad yettwasleḍ FTL inek."
 
 #: src/messages/html.js:14
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
-"Iskripten inmeggagen ur ttwasirgen ara akken i d-yettwalmmel deg tiwtilin "
-"icudden ar izegrar."
+msgstr "Iskripten inmeggagen ur ttwasirgen ara akken i d-yettwalmmel deg tiwtilin icudden ar izegrar."
 
 #: src/messages/html.js:7
 msgid "Inline scripts blocked by default"
@@ -85,20 +83,16 @@ msgid "This API has not been implemented by Firefox."
 msgstr "Asnas-agi API yettwabna di Firefox."
 
 #: src/messages/javascript.js:132
-msgid ""
-"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
-"property)"
+msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
 msgstr ""
 
 #: src/messages/javascript.js:141
-#, fuzzy
 msgid "{{api}} is deprecated"
-msgstr "{{api}} ur yettwaqbel"
+msgstr "{{api}} ur yettwaqbel ara"
 
 #: src/messages/javascript.js:142
-#, fuzzy
 msgid "This API has been deprecated by Firefox."
-msgstr "Asnas-agi API yettwabna di Firefox."
+msgstr "Asnas-a API yettuneḥsab d aqbur sɣur Firefox."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
@@ -118,12 +112,10 @@ msgstr "Asnas-agi API ur yettwabna ara deg lqem adday n Firefox"
 
 #: src/messages/javascript.js:193
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
-"{{api}} ur yettwasefrak ara deg lqem-a n Firefox i Android {{minVersion}}"
+msgstr "{{api}} ur yettwasefrak ara deg lqem-a n Firefox i Android {{minVersion}}"
 
 #: src/messages/javascript.js:196
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "Asnas-agi API ur yettwabna ara deg lqem adday n Firefox Android"
 
 #: src/messages/javascript.js:25
@@ -243,20 +235,16 @@ msgid "Translation string is missing the message property"
 msgstr "Azrir n tsuqilt ur yegbir ara taɣara n yizen"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Ulac taɣara n yizen \"message yettusbadun i uzrir (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Ulac taɣara n yizen \"message yettusbadun i uzrir (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:100
-#, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
 msgstr "Wali https://mzl.la/20PenXl (MDN Docs) i wugar n telɣut."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
-#, fuzzy
 msgid "Invalid host permission."
-msgstr "Tasiragt tarussint."
+msgstr "Tasiregt n usenneftaɣ d tarameɣtut."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -336,18 +324,14 @@ msgstr "Ur izmir ara ad d-yaf askript n ugbur i yettusbadun deg umeskan."
 
 #: src/messages/manifestjson.js:263
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
-"Ur izmir ara ad d-yaf afaylu css n uskript n ugbur i yettusbadun deg umeskan."
+msgstr "Ur izmir ara ad d-yaf afaylu css n uskript n ugbur i yettusbadun deg umeskan."
 
 #: src/messages/manifestjson.js:268
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Askript n ugbur deg umeskan ulac-it di \"%(path)s\"."
 
 #: src/messages/manifestjson.js:271
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Askript n ugbur deg ufaylu CSS deg umeskan ulac-it di \"%(path)s\"."
 
 #: src/messages/manifestjson.js:285
@@ -355,19 +339,15 @@ msgid "A dictionary file defined in the manifest could not be found."
 msgstr "Ur izmir ara ad d-yaf afaylu n umawal i yettusbadun deg umeskan."
 
 #: src/messages/manifestjson.js:289
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Ur izmir ara ad d-yaf afaylu n umawal i yettusbadun deg umeskan deg "
-"\"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Ur izmir ara ad d-yaf afaylu n umawal i yettusbadun deg umeskan deg \"%(path)s\"."
 
 #: src/messages/manifestjson.js:301
 msgid "The manifest contains multiple dictionaries."
 msgstr "Afaylu ameskan igber ddeqs n yimawalen."
 
 #: src/messages/manifestjson.js:302
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "Ddeqs n yimawalen ttusbadun deg umeskan, ayen ur nettusefrak ara."
 
 #: src/messages/manifestjson.js:311
@@ -451,24 +431,16 @@ msgid "Theme image file has an unsupported mime type"
 msgstr "Tugna n usentel ɣur-s anaw mime ur yettisefraken ara"
 
 #: src/messages/manifestjson.js:446
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
-"Tugna n usentel deg \"%(path)s\" ɣur-s anaw mime \"%(mime)s\" ur "
-"yettusefraken ara"
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "Tugna n usentel deg \"%(path)s\" ɣur-s anaw mime \"%(mime)s\" ur yettusefraken ara"
 
 #: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
-"Anaw mime n ufaylu n tugna n usentel ur yemṣada ara d usiɣzef n ufaylu-is"
+msgstr "Anaw mime n ufaylu n tugna n usentel ur yemṣada ara d usiɣzef n ufaylu-is"
 
 #: src/messages/manifestjson.js:464
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
-"Asiɣzef n ufaylu n usentel deg \"%(path)s\" ur yemṣada ara akked wanaw-is "
-"mime amiran \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "Asiɣzef n ufaylu n usentel deg \"%(path)s\" ur yemṣada ara akked wanaw-is mime amiran \"%(mime)s\""
 
 #: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
@@ -484,13 +456,10 @@ msgstr "Asiɣzef n tugna ur yettusefrak ara"
 
 #: src/messages/manifestjson.js:497
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
-"Yessefk tignitin ad ilint d yiwet seg  JPG/JPEG, WebP, GIF, PNG neɣ SVG."
+msgstr "Yessefk tignitin ad ilint d yiwet seg  JPG/JPEG, WebP, GIF, PNG neɣ SVG."
 
 #: src/messages/manifestjson.js:505
-msgid ""
-"\"applications\" property overridden by \"browser_specific_settings\" "
-"property"
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
 msgstr ""
 
 #: src/messages/manifestjson.js:518
@@ -503,39 +472,29 @@ msgstr "Afaylu messages.json ulac-it di \"%(path)s\""
 
 #: src/messages/manifestjson.js:536
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
-"Tasarut n umeskan ur tettusefrak ara deg lqem Firefox adday i d-ittunefken"
+msgstr "Tasarut n umeskan ur tettusefrak ara deg lqem Firefox adday i d-ittunefken"
 
 #: src/messages/manifestjson.js:558
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Tasiregt ur tettusefrak ara deg lqem Firefox adday i d-ittunefken"
 
 #: src/messages/manifestjson.js:580
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
-msgstr ""
-"Tasarut n umeskan ur tettusefrak ara deg lqem Firefox Android adday i d-"
-"ittunefken"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "Tasarut n umeskan ur tettusefrak ara deg lqem Firefox Android adday i d-ittunefken"
 
 #: src/messages/manifestjson.js:602
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
-"Tasiregt ur tettusefrak ara deg lqem Firefox Android adday i d-ittunefken"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgstr "Tasiregt ur tettusefrak ara deg lqem Firefox Android adday i d-ittunefken"
 
 #: src/messages/manifestjson.js:617
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr ""
 
 #: src/messages/manifestjson.js:618
-msgid ""
-"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
-"homepage"
+msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
 msgstr ""
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
-#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
 msgstr "Anaw-agi n tsiregt ur yettwasefrak ara."
 
