@@ -32,7 +32,9 @@ const UNRECOGNIZED_PROPERTY_REFS = [
 ];
 
 const schemaRegexes = [
+  // eslint-disable-next-line prefer-regex-literals
   new RegExp('browser/components/extensions/schemas/.*\\.json'),
+  // eslint-disable-next-line prefer-regex-literals
   new RegExp('toolkit/components/extensions/schemas/.*\\.json'),
 ];
 
@@ -757,7 +759,9 @@ async function fetchSchemasFromDir({ inputPath, outputPath }) {
       const readStream = fs.createReadStream(filePath);
       readStream.pipe(destFileStream);
       // Ensure we're closing all the created write streams before resolving.
-      return new Promise((resolve) => destFileStream.on('close', resolve));
+      return new Promise((resolve) => {
+        destFileStream.on('close', resolve);
+      });
     });
     return Promise.all(writeStreamsPromises);
   });
@@ -784,7 +788,9 @@ export async function fetchSchemas({ inputPath, outputPath }) {
           // for them to ensure we're closing their streams
           const destFileStream = fs.createWriteStream(filePath);
           writeStreamsPromises.push(
-            new Promise((res) => destFileStream.on('close', res))
+            new Promise((res) => {
+              destFileStream.on('close', res);
+            })
           );
           const readStream = await openReadStream(entry);
 

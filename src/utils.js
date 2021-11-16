@@ -11,7 +11,7 @@ import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 
 /* global nodeRequire, localesRoot */
 
-const SOURCE_MAP_RE = new RegExp(/\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/);
+const SOURCE_MAP_RE = /\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/;
 
 // Represents an error condition related to a user error (e.g. an invalid
 // configuration option passed to the linter class, usually through the
