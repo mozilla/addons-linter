@@ -3630,10 +3630,13 @@ describe('ManifestJSONParser', () => {
         origins: ['https://foo.com', 'https://bar.com/path'],
         expectedError: 'JSON_INVALID',
       }, // One valid, one invalid
-      { origins: ['https://foo.com', null], expectedError: 'MANIFEST_FIELD_INVALID' }, // One valid, one invalid
+      {
+        origins: ['https://foo.com', null],
+        expectedError: 'MANIFEST_FIELD_INVALID',
+      }, // One valid, one invalid
     ])(
       'should disallow invalid install origins "$origins"',
-      ({origins, expectedError}) => {
+      ({ origins, expectedError }) => {
         const addonLinter = new Linter({ _: ['bar'] });
         const json = validManifestJSON({
           install_origins: origins,
@@ -3660,7 +3663,7 @@ describe('ManifestJSONParser', () => {
       { origins: ['https://foo.bar.栃木.jp'] }, // ... or unicode.
       { origins: ['https://example.com:8888'] },
       { origins: ['https://foo.example.com', 'https://foo.bar.栃木.jp:9999'] },
-    ])('should allow valid install origins "$origins"', ({origins}) => {
+    ])('should allow valid install origins "$origins"', ({ origins }) => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         install_origins: origins,
