@@ -116,6 +116,10 @@ export function isOrigin(value) {
     // Wildcards are not valid in origins.
     return false;
   }
+  if (!['http:', 'https:'].includes(url.protocol)) {
+    // URL protocol is not one of the allowed ones (e.g. ["http:", "https:"]).
+    return false;
+  }
   if (
     url.pathname !== '/' ||
     url.hash !== '' ||

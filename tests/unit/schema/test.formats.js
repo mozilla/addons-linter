@@ -262,8 +262,32 @@ describe('formats', () => {
       expect(isOrigin(value)).toEqual(false);
     });
 
-    it('ftp: scheme', () => {
+    it('ftp: scheme with a path', () => {
       const value = 'ftp://example.org/favicon.ico';
+
+      expect(isAnyUrl(value)).toEqual(true);
+      expect(isAbsoluteUrl(value)).toEqual(true);
+
+      expect(isStrictRelativeUrl(value)).toEqual(false);
+      expect(isSecureUrl(value)).toEqual(false);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(false);
+      expect(isOrigin(value)).toEqual(false);
+    });
+
+    it('ftp: scheme', () => {
+      const value = 'ftp://example.org';
+
+      expect(isAnyUrl(value)).toEqual(true);
+      expect(isAbsoluteUrl(value)).toEqual(true);
+
+      expect(isStrictRelativeUrl(value)).toEqual(false);
+      expect(isSecureUrl(value)).toEqual(false);
+      expect(imageDataOrStrictRelativeUrl(value)).toEqual(false);
+      expect(isOrigin(value)).toEqual(false);
+    });
+
+    it('file: scheme without path', () => {
+      const value = 'file://';
 
       expect(isAnyUrl(value)).toEqual(true);
       expect(isAbsoluteUrl(value)).toEqual(true);
