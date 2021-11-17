@@ -3603,7 +3603,64 @@ describe('ManifestJSONParser', () => {
   });
 
   describe('install_origins', () => {
-    function testInstallOrigins(origins, expectValid) {
+    it.each([
+      {
+        origins: ['https://example.com/testing'],
+        expectedError: 'JSON_INVALID',
+      }, // Extra path
+      { origins: ['file:/foo/bar'], expectedError: 'JSON_INVALID' }, // Disallowed scheme
+      { origins: [' '], expectedError: 'JSON_INVALID' },
+      { origins: ['https://foo.bar.栃木.jp/'], expectedError: 'JSON_INVALID' }, // Trailing slash
+      { origins: [''], expectedError: 'JSON_INVALID' },
+      { origins: [[]], expectedError: 'MANIFEST_FIELD_INVALID' },
+      { origins: [{}], expectedError: 'MANIFEST_FIELD_INVALID' },
+      { origins: {}, expectedError: 'MANIFEST_FIELD_INVALID' },
+      { origins: null, expectedError: 'MANIFEST_FIELD_INVALID' },
+      { origins: 42, expectedError: 'MANIFEST_FIELD_INVALID' },
+      { origins: '', expectedError: 'MANIFEST_FIELD_INVALID' },
+      { origins: [], expectedError: 'JSON_INVALID' }, // Empty array
+      {
+        origins: new Array(6).fill('https://example.com'),
+        expectedError: 'JSON_INVALID',
+      }, // Too large
+      { origins: ['https://*.example.com'], expectedError: 'JSON_INVALID' }, // Wildcard
+      { origins: ['example.com'], expectedError: 'JSON_INVALID' }, // No scheme
+      { origins: ['https://'], expectedError: 'JSON_INVALID' }, // No hostname
+      {
+        origins: ['https://foo.com', 'https://bar.com/path'],
+        expectedError: 'JSON_INVALID',
+      }, // One valid, one invalid
+      { origins: ['https://foo.com', null], expectedError: 'MANIFEST_FIELD_INVALID' }, // One valid, one invalid
+    ])(
+      'should disallow invalid install origins "$origins"',
+      ({origins, expectedError}) => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          install_origins: origins,
+          browser_specific_settings: {
+            gecko: {
+              id: 'foo@bar',
+            },
+          },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+        expect(addonLinter.collector.errors.length).toEqual(1);
+        expect(addonLinter.collector.errors[0].code).toEqual(expectedError);
+      }
+    );
+
+    it.each([
+      { origins: ['https://example.com'] },
+      { origins: ['https://foo.example.com'] },
+      { origins: ['https://xn--fo-9ja.com'] }, // IDNs are accepted in punycode (ascii)...
+      { origins: ['https://foo.bar.栃木.jp'] }, // ... or unicode.
+      { origins: ['https://example.com:8888'] },
+      { origins: ['https://foo.example.com', 'https://foo.bar.栃木.jp:9999'] },
+    ])('should allow valid install origins "$origins"', ({origins}) => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         install_origins: origins,
@@ -3617,109 +3674,7 @@ describe('ManifestJSONParser', () => {
         json,
         addonLinter.collector
       );
-      expect(manifestJSONParser.isValid).toEqual(expectValid);
-      return addonLinter.collector;
-    }
-
-    it('allows install origins with valid origin', () => {
-      testInstallOrigins(['https://example.com'], true);
-    });
-
-    it('allows install origins with subdomain origin', () => {
-      testInstallOrigins(['https://foo.example.com'], true);
-    });
-
-    it('allows install origins with punnycode origin', () => {
-      testInstallOrigins(['https://xn--fo-9ja.com'], true);
-    });
-
-    it('allows install origins with IDN origin', () => {
-      testInstallOrigins(['https://foo.bar.栃木.jp'], true);
-    });
-
-    it('allows install origins with port', () => {
-      testInstallOrigins(['https://example.com:8888'], true);
-    });
-
-    it('disallows empty list', () => {
-      const { errors } = testInstallOrigins([], false);
-      expect(errors.length).toEqual(1);
-      expect(errors[0].code).toEqual('JSON_INVALID');
-    });
-
-    it('disallows non array (object)', () => {
-      const { errors } = testInstallOrigins({}, false);
-      expect(errors.length).toEqual(1);
-      expect(errors[0].code).toEqual('MANIFEST_FIELD_INVALID');
-    });
-
-    it('disallows non array (string)', () => {
-      const { errors } = testInstallOrigins('', false);
-      expect(errors.length).toEqual(1);
-      expect(errors[0].code).toEqual('MANIFEST_FIELD_INVALID');
-    });
-
-    it('disallows non array (null)', () => {
-      const { errors } = testInstallOrigins(null, false);
-      expect(errors.length).toEqual(1);
-      expect(errors[0].code).toEqual('MANIFEST_FIELD_INVALID');
-    });
-
-    it('disallows non array (int)', () => {
-      const { errors } = testInstallOrigins(42, false);
-      expect(errors.length).toEqual(1);
-      expect(errors[0].code).toEqual('MANIFEST_FIELD_INVALID');
-    });
-
-    it('disallows list too large', () => {
-      const { errors } = testInstallOrigins(
-        new Array(6).fill('https://example.com'),
-        false
-      );
-      expect(errors.length).toEqual(1);
-      expect(errors[0].code).toEqual('JSON_INVALID');
-    });
-
-    it('disallows wildcards', () => {
-      const { errors } = testInstallOrigins(['https://*.example.com'], false);
-      expect(errors.length).toEqual(1);
-      expect(errors[0].code).toEqual('JSON_INVALID');
-    });
-
-    it('disallows invalid origin (trailing slash)', () => {
-      const { errors } = testInstallOrigins(['https://example.com/'], false);
-      expect(errors.length).toEqual(1);
-      expect(errors[0].code).toEqual('JSON_INVALID');
-    });
-
-    it('disallows invalid origin (no scheme)', () => {
-      const { errors } = testInstallOrigins(['example.com'], false);
-      expect(errors.length).toEqual(1);
-      expect(errors[0].code).toEqual('JSON_INVALID');
-    });
-
-    it('disallows invalid origin (no hostname)', () => {
-      const { errors } = testInstallOrigins(['http://'], false);
-      expect(errors.length).toEqual(1);
-      expect(errors[0].code).toEqual('JSON_INVALID');
-    });
-
-    it('disallows invalid origin (path present)', () => {
-      const { errors } = testInstallOrigins(
-        ['https://example.com/path'],
-        false
-      );
-      expect(errors.length).toEqual(1);
-      expect(errors[0].code).toEqual('JSON_INVALID');
-    });
-
-    it('considers entire install_origins invalid if a single value is invalid', () => {
-      const { errors } = testInstallOrigins(
-        ['https://bar.com', 'https://foo.com/path'],
-        false
-      );
-      expect(errors.length).toEqual(1);
-      expect(errors[0].code).toEqual('JSON_INVALID');
+      expect(manifestJSONParser.isValid).toEqual(true);
     });
   });
 });
