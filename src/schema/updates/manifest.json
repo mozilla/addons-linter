@@ -92,6 +92,15 @@
           },
           "manifest_version": {
             "maximum": 2
+          },
+          "install_origins": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 5,
+            "items": {
+              "type": "string",
+              "format": "origin"
+            }
           }
         }
       }

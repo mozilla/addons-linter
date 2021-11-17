@@ -3606,10 +3606,10 @@ describe('ManifestJSONParser', () => {
     function testInstallOrigins(origins, expectValid) {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
+        install_origins: origins,
         browser_specific_settings: {
           gecko: {
             id: 'foo@bar',
-            install_origins: origins,
           },
         },
       });
