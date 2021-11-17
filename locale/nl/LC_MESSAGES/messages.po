@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2019-07-26 06:33+0000\n"
+"POT-Creation-Date: 2021-11-05 18:17+0000\n"
+"PO-Revision-Date: 2021-11-08 14:23+0000\n"
 "Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -84,19 +84,19 @@ msgstr "Deze API is niet door Firefox geïmplementeerd."
 
 #: src/messages/javascript.js:132
 msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr ""
+msgstr "‘{{api}}’ is verwijderd in Manifest versie 3 (eigenschap ‘manifest_version’)"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
-msgstr ""
+msgstr "{{api}} is verouderd"
 
 #: src/messages/javascript.js:142
 msgid "This API has been deprecated by Firefox."
-msgstr ""
+msgstr "Deze API is in Firefox verouderd."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "‘{{api}}’ is verouderd of niet geïmplementeerd"
 
 #: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
@@ -240,11 +240,11 @@ msgstr "Geen berichteigenschap ‘message’ voor een tekenreeks ingesteld (http
 
 #: src/messages/manifestjson.js:100
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr ""
+msgstr "Zie https://mzl.la/2Qn0fWC (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
 msgid "Invalid host permission."
-msgstr ""
+msgstr "Onbekende hosttoestemming."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -396,7 +396,7 @@ msgstr "Verwacht pictogrambestand in ‘%(path)s’ is beschadigd"
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Deze eigenschap is verouderd."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
@@ -459,8 +459,8 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Pictogrammen dienen JPG/JPEG, WebP, GIF, PNG of SVG te zijn."
 
 #: src/messages/manifestjson.js:505
-msgid "\"applications\" property overridden by \"browser_specific_settings\" property\""
-msgstr ""
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
+msgstr "Eigenschap ‘applications’ wordt overschreven door de eigenschap ‘browser_specific_settings’"
 
 #: src/messages/manifestjson.js:518
 msgid "Empty language directory"
@@ -488,11 +488,11 @@ msgstr "Toestemming niet ondersteund door de opgegeven minimale Firefox voor And
 
 #: src/messages/manifestjson.js:617
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr ""
+msgstr "Koppelen naar ‘addons.mozilla.org’ is niet toegestaan"
 
 #: src/messages/manifestjson.js:618
 msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr ""
+msgstr "Koppelingen die verwijzen naar ‘addons.mozilla.org’ mogen niet voor de startpagina worden gebruikt"
 
 #: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."

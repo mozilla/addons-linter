@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2020-01-22 09:23+0000\n"
+"POT-Creation-Date: 2021-11-05 18:17+0000\n"
+"PO-Revision-Date: 2021-11-08 16:50+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: none\n"
 "Language: sq\n"
@@ -83,24 +83,20 @@ msgid "This API has not been implemented by Firefox."
 msgstr "Kjo API s’është sendërtuar nga Firefox-i."
 
 #: src/messages/javascript.js:132
-msgid ""
-"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
-"property)"
-msgstr ""
+msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
+msgstr "\"{{api}}\" është hequr te Manifest Version 3 (vetia `manifest_version`)"
 
 #: src/messages/javascript.js:141
-#, fuzzy
 msgid "{{api}} is deprecated"
-msgstr "{{api}} nuk mbulohet"
+msgstr "{{api}} është nxjerrë nga përdorimi"
 
 #: src/messages/javascript.js:142
-#, fuzzy
 msgid "This API has been deprecated by Firefox."
-msgstr "Kjo API s’është sendërtuar nga Firefox-i."
+msgstr "Kjo API është nxjerrë nga përdorimi nga Firefox-i."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "\"{{api}}\" është nxjerrë nga përdorimi, ose s’është sendërtuar"
 
 #: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
@@ -112,20 +108,15 @@ msgstr "{{api}} nuk mbulohet në versionin {{minVersion}} të Firefox-it"
 
 #: src/messages/javascript.js:185
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr ""
-"Kjo API s’është e sendërtuar nga versioni minimum i dhënë për Firefox-in"
+msgstr "Kjo API s’është e sendërtuar nga versioni minimum i dhënë për Firefox-in"
 
 #: src/messages/javascript.js:193
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
-"{{api}} nuk mbulohet në versionin {{minVersion}} të Firefox-it për Android"
+msgstr "{{api}} nuk mbulohet në versionin {{minVersion}} të Firefox-it për Android"
 
 #: src/messages/javascript.js:196
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
-"Kjo API s’është e sendërtuar nga versioni minimum i dhënë për Firefox-in për "
-"Android"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "Kjo API s’është e sendërtuar nga versioni minimum i dhënë për Firefox-in për Android"
 
 #: src/messages/javascript.js:25
 msgid "Content script file could not be found."
@@ -244,22 +235,16 @@ msgid "Translation string is missing the message property"
 msgstr "Mungon varg përkthimi te veti mesazhi"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"S’ka të caktuar veti mesazhi \"message\" për një varg (https://mzl."
-"la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "S’ka të caktuar veti mesazhi \"message\" për një varg (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:100
-#, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr ""
-"Për më tepër të dhëna, shihni https://mzl.la/20PenXl (Dokumentim te MDN)."
+msgstr "Për më tepër hollësi, shihni https://mzl.la/2Qn0fWC (Dokumentin te MDN)."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
-#, fuzzy
 msgid "Invalid host permission."
-msgstr "Leje e panjohur."
+msgstr "Leje strehe e panjohur."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -267,8 +252,7 @@ msgstr "\"manifest_version\" te manifest.json s’është vlerë e vlefshme"
 
 #: src/messages/manifestjson.js:120
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"Për më tepër të dhëna, shihni https://mzl.la/20PenXl (Dokumentim te MDN)."
+msgstr "Për më tepër të dhëna, shihni https://mzl.la/20PenXl (Dokumentim te MDN)."
 
 #: src/messages/manifestjson.js:154
 msgid "The \"name\" property must be a string."
@@ -276,8 +260,7 @@ msgstr "Vetia \"name\" duhet të jetë një varg."
 
 #: src/messages/manifestjson.js:155
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
-"Për më tepër të dhëna, shihni http://mzl.la/1STmr48 (Dokumentim te MDN)."
+msgstr "Për më tepër të dhëna, shihni http://mzl.la/1STmr48 (Dokumentim te MDN)."
 
 #: src/messages/manifestjson.js:163
 msgid "The \"version\" property must be a string."
@@ -285,8 +268,7 @@ msgstr "Vetia \"version\" duhet të jetë një varg."
 
 #: src/messages/manifestjson.js:164 src/messages/manifestjson.js:173
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
-"Për më tepër të dhëna, shihni http://mzl.la/1kXIADa (Dokumentim te MDN)."
+msgstr "Për më tepër të dhëna, shihni http://mzl.la/1kXIADa (Dokumentim te MDN)."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
@@ -298,8 +280,7 @@ msgstr "Vetia \"version\" përdor një format Firefox specifik."
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"Për më tepër informacion, shihni te https://mzl.la/1ZOhoEN (Dokumentim MDN)."
+msgstr "Për më tepër informacion, shihni te https://mzl.la/1ZOhoEN (Dokumentim MDN)."
 
 #: src/messages/manifestjson.js:181
 msgid "\"update_url\" is not allowed."
@@ -346,36 +327,27 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr "S’u gjet dot kartelë CSS programthi lënde të përkufizuar te manifesti."
 
 #: src/messages/manifestjson.js:268
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Te \"%(path)s\" s’u gjet dot programth lënde i përkufizuar te manifesti."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Te \"%(path)s\" s’u gjet dot programth lënde i përkufizuar te manifesti."
 
 #: src/messages/manifestjson.js:271
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Te \"%(path)s\" s’u gjet dot kartelë CSS programthi lënde të përkufizuar te "
-"manifesti."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Te \"%(path)s\" s’u gjet dot kartelë CSS programthi lënde të përkufizuar te manifesti."
 
 #: src/messages/manifestjson.js:285
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "S’u gjet dot një kartelë fjalori e përkufizuar te manifesti."
 
 #: src/messages/manifestjson.js:289
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Te \"%(path)s\" s’u gjet dot kartelë fjalori e përkufizuar te manifesti."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Te \"%(path)s\" s’u gjet dot kartelë fjalori e përkufizuar te manifesti."
 
 #: src/messages/manifestjson.js:301
 msgid "The manifest contains multiple dictionaries."
 msgstr "Manifesti përmban fjalorë të shumtë."
 
 #: src/messages/manifestjson.js:302
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "Në manifest janë përkufizuar fjalorë të shumtë, gjë që nuk mbulohet."
 
 #: src/messages/manifestjson.js:311
@@ -424,7 +396,7 @@ msgstr "Kartela e pritshme e ikonës te \"%(path)s\" është e dëmtuar"
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Kjo veti është nxjerrë nga përdorimi."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
@@ -432,8 +404,7 @@ msgstr "Ky alias LWT teme është hequr në Firefox 70."
 
 #: src/messages/manifestjson.js:389
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
-"Për më tepër të dhëna, shihni https://mzl.la/2T11Lkc (Dokumentim te MDN)."
+msgstr "Për më tepër të dhëna, shihni https://mzl.la/2T11Lkc (Dokumentim te MDN)."
 
 #: src/messages/manifestjson.js:404
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
@@ -453,34 +424,23 @@ msgstr "Kartela e figurës së temës ka një zgjerim të pambuluar kartelash"
 
 #: src/messages/manifestjson.js:430
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
-"Kartela e figurës së temës te \"%(path)s\" ka një zgjerim të pambuluar "
-"kartelash"
+msgstr "Kartela e figurës së temës te \"%(path)s\" ka një zgjerim të pambuluar kartelash"
 
 #: src/messages/manifestjson.js:444
 msgid "Theme image file has an unsupported mime type"
 msgstr "Kartela e figurës së temës ka një lloj MIME të pambuluar"
 
 #: src/messages/manifestjson.js:446
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
-"Kartela e figurës së temës te \"%(path)s\" ka një lloj MIME \"%(mime)s\" të "
-"pambuluar"
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "Kartela e figurës së temës te \"%(path)s\" ka një lloj MIME \"%(mime)s\" të pambuluar"
 
 #: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
-"Lloji MIME i kartelës së figurës së temës nuk përputhet me zgjatimin e vet "
-"të kartelës"
+msgstr "Lloji MIME i kartelës së figurës së temës nuk përputhet me zgjatimin e vet të kartelës"
 
 #: src/messages/manifestjson.js:464
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
-"Zgjatimi i kartelës së figurës së temës te \"%(path)s\" nuk përputhet me "
-"llojin e vet aktual MIME \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "Zgjatimi i kartelës së figurës së temës te \"%(path)s\" nuk përputhet me llojin e vet aktual MIME \"%(mime)s\""
 
 #: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
@@ -499,10 +459,8 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Ikonat duhet të jenë JPG/JPEG, WebP, GIF, PNG ose SVG."
 
 #: src/messages/manifestjson.js:505
-msgid ""
-"\"applications\" property overridden by \"browser_specific_settings\" "
-"property\""
-msgstr ""
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
+msgstr "Vetia “applications” e anashkaluar nga vetia “browser_specific_settings”"
 
 #: src/messages/manifestjson.js:518
 msgid "Empty language directory"
@@ -514,40 +472,29 @@ msgstr "Mungon kartelë messages.json te \"%(path)s\""
 
 #: src/messages/manifestjson.js:536
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
-"Zë manifesti i pambuluar nga versioni minimum i specifikuar për Firefox-in"
+msgstr "Zë manifesti i pambuluar nga versioni minimum i specifikuar për Firefox-in"
 
 #: src/messages/manifestjson.js:558
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Leje e pambuluar nga versioni minimum i specifikuar për Firefox-in"
 
 #: src/messages/manifestjson.js:580
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
-msgstr ""
-"Zë manifesti i pambuluar nga versioni minimum i specifikuar për Firefox-in "
-"për Android"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "Zë manifesti i pambuluar nga versioni minimum i specifikuar për Firefox-in për Android"
 
 #: src/messages/manifestjson.js:602
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
-"Leje e pambuluar nga versioni minimum i specifikuar për Firefox-in për "
-"Android"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgstr "Leje e pambuluar nga versioni minimum i specifikuar për Firefox-in për Android"
 
 #: src/messages/manifestjson.js:617
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr ""
+msgstr "Nuk lejohet krijim lidhjesh për te “addons.mozilla.org”"
 
 #: src/messages/manifestjson.js:618
-msgid ""
-"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
-"homepage"
-msgstr ""
+msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
+msgstr "Lidhje që shpien te “addons.mozilla.org” nuk lejohen të përdoren për faqe hyrëse"
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
-#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
 msgstr "Lloji i lejes është i pambuluar."
 
@@ -561,8 +508,7 @@ msgstr "Leje e panjohur."
 
 #: src/messages/manifestjson.js:91
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"Për më tepër të dhëna, shihni https://mzl.la/1R1n1t0 (Dokumentim te MDN)."
+msgstr "Për më tepër të dhëna, shihni https://mzl.la/1R1n1t0 (Dokumentim te MDN)."
 
 #~ msgid "A custom content_security_policy needs additional review."
 #~ msgstr "Lypset shqyrtim shtesë për një content_security_policy vetjake."

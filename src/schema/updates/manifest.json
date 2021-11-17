@@ -61,6 +61,21 @@
                       ]
                     },
                     "uniqueItems": true
+                  },
+                  "developer": {
+                    "properties": {
+                      "url": {
+                        "format": "ignore",
+                        "oneOf": [
+                          {
+                            "format": "url"
+                          },
+                          {
+                            "pattern": "^__MSG_.*?__$"
+                          }
+                        ]
+                      }
+                    }
                   }
                 }
               }
@@ -72,7 +87,6 @@
         "properties": {
           "homepage_url": {
             "format": "ignore",
-            "type": "string",
             "oneOf": [
               {
                 "format": "url"

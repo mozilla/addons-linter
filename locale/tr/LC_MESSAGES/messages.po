@@ -3,9 +3,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2020-05-14 13:42+0000\n"
-"Last-Translator: Selim Şumlu <selim@sum.lu>\n"
+"POT-Creation-Date: 2021-11-05 18:17+0000\n"
+"PO-Revision-Date: 2021-11-03 12:41+0000\n"
+"Last-Translator: Grk <gu0townkg@relay.firefox.com>\n"
 "Language-Team: none\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -89,14 +89,12 @@ msgid ""
 msgstr ""
 
 #: src/messages/javascript.js:141
-#, fuzzy
 msgid "{{api}} is deprecated"
-msgstr "{{api}} desteklenmiyor"
+msgstr "{{api}} kullanımdan kaldırıldı"
 
 #: src/messages/javascript.js:142
-#, fuzzy
 msgid "This API has been deprecated by Firefox."
-msgstr "Bu API Firefox'ta kullanılamamaktadır."
+msgstr "Bu API, Firefox tarafından kullanımdan kaldırıldı."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
@@ -251,15 +249,13 @@ msgstr ""
 "la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:100
-#, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
 msgstr ""
-"Daha fazla bilgi için https://mzl.la/20PenXl (MDN Docs) sayfasına bakın."
+"Daha fazla bilgi için https://mzl.la/2Qn0fWC (MDN Docs) sayfasına bakın."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
-#, fuzzy
 msgid "Invalid host permission."
-msgstr "Bilinmeyen izin."
+msgstr "Geçersiz sunucu izni."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -428,7 +424,7 @@ msgstr "\"%(path)s\" yolundaki beklenilen simge dosyası bozuk."
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Bu özellik kullanımdan kaldırıldı."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
@@ -503,7 +499,7 @@ msgstr ""
 #: src/messages/manifestjson.js:505
 msgid ""
 "\"applications\" property overridden by \"browser_specific_settings\" "
-"property\""
+"property"
 msgstr ""
 
 #: src/messages/manifestjson.js:518

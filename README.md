@@ -188,6 +188,16 @@ We use [pino](https://github.com/pinojs/pino) for logging:
 
 We use [Prettier](https://prettier.io/) to automatically format our JavaScript code and stop all the on-going debates over styles. As a developer, you have to run it (with `npm run prettier-dev`) before submitting a Pull Request.
 
+### L10n extraction
+
+The localization process is very similar to [how we do it for addons-frontend](https://addons-frontend.readthedocs.io/en/latest/i18n/#updating-locales): locales are always updated on the `master` branch, any PR that changes or introduces new localized strings should be merged on `master` first.
+
+In order to update the locales (when new localized strings are added to the codebase), run the following script from the `master` branch. This script automates _all_ the steps described in the addons-frontend docs, without any confirmation step.
+
+```
+./scripts/run-l10n-extraction
+```
+
 ## Architecture
 
 In a nutshell the way the linter works is to take an add-on package, extract the metadata from the xpi (zip) format and then process the files it finds through various content scanners.
@@ -221,6 +231,40 @@ Lastly when the processing is complete the linter will output the collected data
 We deploy to npm automatically using Circle CI. To release a new version, increment the version in `package.json` and create a PR. Make sure your version number conforms to the [semver][] format eg: `0.2.1`.
 
 After merging the PR, [create a new release][new release] with the same tag name as your new version. Once the build passes it will deploy. Magic! ✨
+
+## Dispensary
+
+As of November 2021, [dispensary](https://github.com/mozilla/dispensary) has been merged into this project and a CLI is available by running `./scripts/dispensary`.
+
+### Libraries updates
+
+This is the (manual) process to update the "dispensary" libraries:
+
+1. Open `src/dispensary/libraries.json`
+2. Open the release pages of each library. Here is a list:
+
+   - https://github.com/angular/angular.js/releases
+   - https://github.com/jashkenas/backbone/releases
+   - https://github.com/twbs/bootstrap/releases
+   - https://download.dojotoolkit.org/
+   - https://github.com/cure53/DOMPurify/releases
+   - https://github.com/jquery/jquery/releases
+   - https://github.com/jquery/jquery-ui/releases
+   - https://github.com/moment/moment/releases
+   - https://github.com/mootools/mootools-core/releases
+   - http://prototypejs.org/
+   - https://github.com/facebook/react/releases
+   - https://github.com/jashkenas/underscore/releases
+   - https://github.com/mozilla/webextension-polyfill/releases
+
+3. On each page, check whether there are newer release versions than what is in `src/dispensary/libraries.json`. Note that some libraries, like react, support several versions, so we need to check each "branch".
+4. For major upgrades, take a quick look at the code changes
+5. Add new versions to `src/dispensary/libraries.json`
+6. Run `npm run update-hashes`
+7. Commit the changes in `src/dispensary/libraries.json`and `src/dispensary/hashes.txt`
+8. Open a Pull Request
+
+Note: `hashes.txt` will be embedded into the addons-linter bundle.
 
 [new release]: https://github.com/mozilla/addons-linter/releases/new
 [semver]: http://semver.org/

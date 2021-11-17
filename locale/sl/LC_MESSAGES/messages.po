@@ -1,18 +1,17 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2019-08-30 11:48+0000\n"
-"Last-Translator: Matjaž Horvat <matjaz.horvat@gmail.com>\n"
+"POT-Creation-Date: 2021-11-05 18:17+0000\n"
+"PO-Revision-Date: 2021-11-13 12:24+0000\n"
+"Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 "X-Generator: Pontoon\n"
 
 #: src/linter.js:171
@@ -84,24 +83,20 @@ msgid "This API has not been implemented by Firefox."
 msgstr "Firefox ne podpira tega API-ja."
 
 #: src/messages/javascript.js:132
-msgid ""
-"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
-"property)"
-msgstr ""
+msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
+msgstr "\"{{api}}\" je bil odstranjen v različici manifesta 3 (lastnost 'manifest_version')"
 
 #: src/messages/javascript.js:141
-#, fuzzy
 msgid "{{api}} is deprecated"
-msgstr "{{api}} ni podprt"
+msgstr "{{api}} ni več podprt"
 
 #: src/messages/javascript.js:142
-#, fuzzy
 msgid "This API has been deprecated by Firefox."
-msgstr "Firefox ne podpira tega API-ja."
+msgstr "Firefox je opustil ta API."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "\"{{api}}\" je zastarel ali neuveljavljen"
 
 #: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
@@ -120,8 +115,7 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} ni podprt v različici Firefox za Android {{minVersion}}"
 
 #: src/messages/javascript.js:196
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "Ta API ni uveljavljen v najnižji podprti različici Firefoxa za Android"
 
 #: src/messages/javascript.js:25
@@ -241,21 +235,16 @@ msgid "Translation string is missing the message property"
 msgstr "Nizu prevoda manjka lastnost sporočila"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Za niz ni bilo nastavljeno nobeno sporočilo \"message\" (https://mzl."
-"la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Za niz ni bilo nastavljeno nobeno sporočilo \"message\" (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:100
-#, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr "Za več informacij glejte https://mzl.la/20PenXl (dokumente na MDN-u)."
+msgstr "Za več informacij glejte https://mzl.la/2Qn0fWC (dokumente na MDN-u)."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
-#, fuzzy
 msgid "Invalid host permission."
-msgstr "Neznano dovoljenje."
+msgstr "Neveljavno dovoljenje gostitelja."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -335,42 +324,30 @@ msgstr "Skripta vsebine, določenega v manifestu, ni bilo mogoče najti."
 
 #: src/messages/manifestjson.js:263
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
-"Datoteke css skripta vsebine, določene v manifestu, ni bilo mogoče najti."
+msgstr "Datoteke css skripta vsebine, določene v manifestu, ni bilo mogoče najti."
 
 #: src/messages/manifestjson.js:268
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"V mapi \"%(path)s\" ni bilo mogoče najti skripta vsebine, določenega v "
-"manifestu."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "V mapi \"%(path)s\" ni bilo mogoče najti skripta vsebine, določenega v manifestu."
 
 #: src/messages/manifestjson.js:271
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"V mapi \"%(path)s\" ni bilo mogoče najti datoteke css skripta vsebine, "
-"določene v manifestu."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "V mapi \"%(path)s\" ni bilo mogoče najti datoteke css skripta vsebine, določene v manifestu."
 
 #: src/messages/manifestjson.js:285
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "Datoteke slovarja, določene v manifestu, ni bilo mogoče najti."
 
 #: src/messages/manifestjson.js:289
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"V mapi \"%(path)s\" ni bilo mogoče najti datoteke slovarja, določene v "
-"manifestu."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "V mapi \"%(path)s\" ni bilo mogoče najti datoteke slovarja, določene v manifestu."
 
 #: src/messages/manifestjson.js:301
 msgid "The manifest contains multiple dictionaries."
 msgstr "Manifest vsebuje več slovarjev."
 
 #: src/messages/manifestjson.js:302
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "V manifestu je bilo določenih več slovarjev, kar ni podprto."
 
 #: src/messages/manifestjson.js:311
@@ -419,7 +396,7 @@ msgstr "Pričakovana datoteka ikone v mapi \"%(path)s\" je pokvarjena"
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Ta lastnost je opuščena."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
@@ -427,8 +404,7 @@ msgstr "Ta vzdevek LWT teme je bil odstranjen v Firefoxu 70."
 
 #: src/messages/manifestjson.js:389
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
-"Za več informacij glejte https://mzl.la/2T11Lkc (dokumente na omrežju MDN)."
+msgstr "Za več informacij glejte https://mzl.la/2T11Lkc (dokumente na omrežju MDN)."
 
 #: src/messages/manifestjson.js:404
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
@@ -455,22 +431,16 @@ msgid "Theme image file has an unsupported mime type"
 msgstr "Slikovna datoteka teme ima nepodprto vrsto mime"
 
 #: src/messages/manifestjson.js:446
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
-"Slikovna datoteka na \"%(path)s\" ima nepodprto vrsto mime \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "Slikovna datoteka na \"%(path)s\" ima nepodprto vrsto mime \"%(mime)s\""
 
 #: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
 msgstr "Vrsta mime slikovne datoteke se ne ujema s pripono datoteke"
 
 #: src/messages/manifestjson.js:464
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
-"Vrsta mime slikovne datoteke na \"%(path)s\" se ne ujema z njeno dejansko "
-"vrsto mime \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "Vrsta mime slikovne datoteke na \"%(path)s\" se ne ujema z njeno dejansko vrsto mime \"%(mime)s\""
 
 #: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
@@ -489,10 +459,8 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Ikone morajo biti vrste JPG/JPEG, WebP, GIF, PNG ali SVG."
 
 #: src/messages/manifestjson.js:505
-msgid ""
-"\"applications\" property overridden by \"browser_specific_settings\" "
-"property\""
-msgstr ""
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
+msgstr "Lastnost \"applications\" je preglašena z lastnostjo \"browser_specific_settings\""
 
 #: src/messages/manifestjson.js:518
 msgid "Empty language directory"
@@ -511,29 +479,22 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Dovoljenje ni podprto v najnižji podprti različici Firefoxa"
 
 #: src/messages/manifestjson.js:580
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
-msgstr ""
-"Ključ manifesta ni podprt v najnižji podprti različici Firefoxa za Android"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "Ključ manifesta ni podprt v najnižji podprti različici Firefoxa za Android"
 
 #: src/messages/manifestjson.js:602
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr "Dovoljenje ni podprto v najnižji podprti različici Firefoxa za Android"
 
 #: src/messages/manifestjson.js:617
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr ""
+msgstr "Povezovanje na \"addons.mozilla.org\" ni dovoljeno"
 
 #: src/messages/manifestjson.js:618
-msgid ""
-"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
-"homepage"
-msgstr ""
+msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
+msgstr "Za domačo stran ni dovoljeno uporabljati povezav, ki usmerjajo na \"addons.mozilla.org\""
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
-#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
 msgstr "Vrsta dovoljenja ni podprta."
 

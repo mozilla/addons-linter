@@ -3,9 +3,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2019-08-04 10:35+0000\n"
-"Last-Translator: Victor Bychek <a@bychek.ru>\n"
+"POT-Creation-Date: 2021-11-05 18:17+0000\n"
+"PO-Revision-Date: 2021-11-05 13:10+0000\n"
+"Last-Translator: Alexander Slovesnik <unghost@mozilla-russia.org>\n"
 "Language-Team: none\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -90,9 +90,8 @@ msgid ""
 msgstr ""
 
 #: src/messages/javascript.js:141
-#, fuzzy
 msgid "{{api}} is deprecated"
-msgstr "{{api}} не поддерживается"
+msgstr "{{api}} устарело"
 
 #: src/messages/javascript.js:142
 #, fuzzy
@@ -248,16 +247,14 @@ msgstr ""
 "Свойство сообщения \"message\" для строки не задано (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:100
-#, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
 msgstr ""
-"Смотрите https://mzl.la/20PenXl (Документацию на MDN) для получения "
+"Смотрите https://mzl.la/2Qn0fWC (Документацию на MDN) для получения "
 "дополнительной информации."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
-#, fuzzy
 msgid "Invalid host permission."
-msgstr "Неизвестное разрешение."
+msgstr "Недействительное разрешение хоста."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -429,7 +426,7 @@ msgstr "Ожидаемый файл значка по пути \"%(path)s\" по
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Это свойство устарело."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
@@ -506,7 +503,7 @@ msgstr ""
 #: src/messages/manifestjson.js:505
 msgid ""
 "\"applications\" property overridden by \"browser_specific_settings\" "
-"property\""
+"property"
 msgstr ""
 
 #: src/messages/manifestjson.js:518

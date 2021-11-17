@@ -146,6 +146,16 @@
         }
       ]
     },
+    "overrideContentColorScheme": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "This setting controls whether a light or dark color scheme overrides the page's preferred color scheme."
+        }
+      ]
+    },
     "useDocumentFonts": {
       "allOf": [
         {

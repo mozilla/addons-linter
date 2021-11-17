@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-03 08:14+0000\n"
-"PO-Revision-Date: 2019-07-28 20:43+0000\n"
+"POT-Creation-Date: 2021-11-05 18:17+0000\n"
+"PO-Revision-Date: 2021-11-08 14:24+0000\n"
 "Last-Translator: Andreas Pettersson <az@kth.se>\n"
 "Language-Team: none\n"
 "Language: sv_SE\n"
@@ -83,24 +83,20 @@ msgid "This API has not been implemented by Firefox."
 msgstr "Detta API har inte implementerats av Firefox."
 
 #: src/messages/javascript.js:132
-msgid ""
-"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
-"property)"
-msgstr ""
+msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
+msgstr "\"{{api}}\" har tagits bort i Manifest Version 3 (egenskapen `manifest_version`)"
 
 #: src/messages/javascript.js:141
-#, fuzzy
 msgid "{{api}} is deprecated"
-msgstr "{{api}} stöds ej"
+msgstr "{{api}} är föråldrat"
 
 #: src/messages/javascript.js:142
-#, fuzzy
 msgid "This API has been deprecated by Firefox."
-msgstr "Detta API har inte implementerats av Firefox."
+msgstr "Detta API har föråldrats av Firefox."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "\"{{api}}\" är föråldrat eller ej implementerat"
 
 #: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
@@ -119,11 +115,8 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} stöds inte i Firefox för Android version {{minVersion}}"
 
 #: src/messages/javascript.js:196
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
-"Detta API har inte implementerats av den givna lägsta Firefox-versionen för "
-"Android"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "Detta API har inte implementerats av den givna lägsta Firefox-versionen för Android"
 
 #: src/messages/javascript.js:25
 msgid "Content script file could not be found."
@@ -242,21 +235,16 @@ msgid "Translation string is missing the message property"
 msgstr "Översättningssträngen saknar meddelandegenskapen"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Ingen meddelandeegenskap \"message\" är satt för en sträng (https://mzl."
-"la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Ingen meddelandeegenskap \"message\" är satt för en sträng (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:100
-#, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr "Se https://mzl.la/20PenXl (MDN Docs) för mer information."
+msgstr "Se https://mzl.la/2Qn0fWC (MDN Docs) för mer information."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
-#, fuzzy
 msgid "Invalid host permission."
-msgstr "Okänd behörighet."
+msgstr "Ogiltig värdbehörighet."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -336,30 +324,22 @@ msgstr "Ett innehållsskript som definierats i manifestet kunde inte hittas."
 
 #: src/messages/manifestjson.js:263
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
-"En css-fil med innehållsskript definierat i manifestet kunde inte hittas."
+msgstr "En css-fil med innehållsskript definierat i manifestet kunde inte hittas."
 
 #: src/messages/manifestjson.js:268
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Innehållsskript definierat i manifestet kunde inte hittas på \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Innehållsskript definierat i manifestet kunde inte hittas på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:271
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Innehållsskriptets css-fil definierat i manifestet kunde inte hittas på "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Innehållsskriptets css-fil definierat i manifestet kunde inte hittas på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:285
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "En ordboksfil som definierats i manifestet kunde inte hittas."
 
 #: src/messages/manifestjson.js:289
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Ordbokfil definierad i manifestet kunde inte hittas på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:301
@@ -367,8 +347,7 @@ msgid "The manifest contains multiple dictionaries."
 msgstr "Manifestet innehåller flera ordböcker."
 
 #: src/messages/manifestjson.js:302
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "Flera ordböcker definierades i manifestet, vilket inte stöds."
 
 #: src/messages/manifestjson.js:311
@@ -417,7 +396,7 @@ msgstr "Förväntad ikonfil på \"%(path)s\" är skadad"
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Den här egenskapen är föråldrad."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
@@ -452,22 +431,16 @@ msgid "Theme image file has an unsupported mime type"
 msgstr "Temabildfil har en mime-typ som inte stöds"
 
 #: src/messages/manifestjson.js:446
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
-"Temabildfil på \"%(path)s\" har en mime-typ \"%(mime)s\" som inte stöds"
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "Temabildfil på \"%(path)s\" har en mime-typ \"%(mime)s\" som inte stöds"
 
 #: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
 msgstr "Mime-typ för temabildfil matchar inte filändelsen"
 
 #: src/messages/manifestjson.js:464
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
-"Filändelsen för temabildfil på \"%(path)s\" matchar inte med den verkliga "
-"mime-typen \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "Filändelsen för temabildfil på \"%(path)s\" matchar inte med den verkliga mime-typen \"%(mime)s\""
 
 #: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
@@ -486,10 +459,8 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Ikoner bör vara av JPG/JPEG, WebP, GIFF, PNG eller SVG."
 
 #: src/messages/manifestjson.js:505
-msgid ""
-"\"applications\" property overridden by \"browser_specific_settings\" "
-"property\""
-msgstr ""
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
+msgstr "Egenskapen \"applications\" åsidosatt av egenskapen \"browser_specific_settings\""
 
 #: src/messages/manifestjson.js:518
 msgid "Empty language directory"
@@ -508,31 +479,22 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Behörighet stöds inte av den angivna lägsta Firefox-versionen"
 
 #: src/messages/manifestjson.js:580
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
-msgstr ""
-"Manifest-nyckel stöds inte av den angivna lägsta versionen av Firefox för "
-"Android"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "Manifest-nyckel stöds inte av den angivna lägsta versionen av Firefox för Android"
 
 #: src/messages/manifestjson.js:602
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
-"Behörighet stöds inte av den angivna lägsta Firefox-versionen för Android"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgstr "Behörighet stöds inte av den angivna lägsta Firefox-versionen för Android"
 
 #: src/messages/manifestjson.js:617
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr ""
+msgstr "Det är inte tillåtet att länka till \"addons.mozilla.org\"."
 
 #: src/messages/manifestjson.js:618
-msgid ""
-"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
-"homepage"
-msgstr ""
+msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
+msgstr "Länkar som leder till \"addons.mozilla.org\" är inte tillåtna att användas för hemsidan"
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
-#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
 msgstr "Behörighetstyp stöds inte."
 

@@ -624,6 +624,18 @@ export default class ManifestJSONParser extends JSONParser {
       }
     }
 
+    if (this.parsedJSON.developer) {
+      const { name, url } = this.parsedJSON.developer;
+
+      if (name) {
+        this.parsedJSON.author = name;
+      }
+
+      if (url) {
+        this.parsedJSON.homepage_url = url;
+      }
+    }
+
     if (this.parsedJSON.homepage_url) {
       this.validateHomePageURL(this.parsedJSON.homepage_url);
     }

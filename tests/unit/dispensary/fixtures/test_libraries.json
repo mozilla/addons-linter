@@ -1,0 +1,15 @@
+[
+  {
+    "name": "backbone",
+    "versions": ["1.0.0", "1.1.0", "1.1.1", "1.1.2"],
+    "filename": "backbone.js",
+    "filenameMinified": "backbone-min.js",
+    "url": "https://raw.githubusercontent.com/jashkenas/backbone/$VERSION/$FILENAME"
+  },
+  {
+    "name": "backbone.localStorage",
+    "versions": ["1.1.10", "1.1.12", "1.1.13", "1.1.14", "1.1.15", "1.1.16"],
+    "filename": "backbone.localStorage.js",
+    "url": "https://raw.githubusercontent.com/jeromegn/Backbone.localStorage/v$VERSION/$FILENAME"
+  }
+]
