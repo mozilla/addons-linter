@@ -73,7 +73,7 @@ module.exports = {
   plugins: [
     // Don't generate modules for locale files.
     new webpack.IgnorePlugin({
-      resourceRegExp: new RegExp(`locale\\/.*\\/messages\\.js$`),
+      resourceRegExp: /locale\/.*\/messages\.js$/,
     }),
     ...webpackConfig.plugins,
   ],
