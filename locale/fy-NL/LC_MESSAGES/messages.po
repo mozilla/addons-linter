@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-05 18:17+0000\n"
-"PO-Revision-Date: 2021-11-08 14:24+0000\n"
+"PO-Revision-Date: 2021-11-18 11:06+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fy_NL\n"
@@ -492,7 +492,7 @@ msgstr "Keppeljen nei ‘addons.mozilla.org’ is net tastien"
 
 #: src/messages/manifestjson.js:618
 msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr "Keppelingen dy't ferwize nei ‘addons.mozilla.org’ meie net foar de startside brûkt wurde"
+msgstr "Keppelingen dy’t ferwize nei ‘addons.mozilla.org’ meie net foar de startside brûkt wurde"
 
 #: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
