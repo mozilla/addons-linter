@@ -95,7 +95,7 @@
     "babel-loader": "8.2.3",
     "comment-json": "4.1.1",
     "doctoc": "2.1.0",
-    "eslint-config-amo": "5.2.0",
+    "eslint-config-amo": "5.1.0",
     "github-markdown-css": "5.0.0",
     "gunzip-maybe": "1.4.2",
     "hashish": "0.0.4",
