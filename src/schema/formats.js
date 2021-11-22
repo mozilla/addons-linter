@@ -103,7 +103,6 @@ export function isSecureUrl(value) {
   return ['https:', 'wss:'].includes(url.protocol);
 }
 
-
 export function isOrigin(value) {
   let url;
   try {
@@ -120,7 +119,7 @@ export function isOrigin(value) {
   // url.origin is punycode so a direct check against string wont work.
   // url.href appends a slash even if not in the original string, we we
   // additionally check that string does not end in slash.
-  if (value.endsWith("/") || url.href != new URL(url.origin).href) {
+  if (value.endsWith('/') || url.href !== new URL(url.origin).href) {
     return false;
   }
   return true;
