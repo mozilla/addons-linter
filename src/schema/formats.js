@@ -103,39 +103,27 @@ export function isSecureUrl(value) {
   return ['https:', 'wss:'].includes(url.protocol);
 }
 
+
 export function isOrigin(value) {
-  // FIXME: should we only have isSecureOrigin ?
   let url;
   try {
     url = new URL(value);
   } catch (e) {
-    // It's invalid or not absolute.
+    return false;
+  }
+  if (!/^https?:/.test(url.protocol)) {
     return false;
   }
   if (value.includes('*')) {
-    // Wildcards are not valid in origins.
     return false;
   }
-  if (!['http:', 'https:'].includes(url.protocol)) {
-    // URL protocol is not one of the allowed ones (e.g. ["http:", "https:"]).
+  // url.origin is punycode so a direct check against string wont work.
+  // url.href appends a slash even if not in the original string, we we
+  // additionally check that string does not end in slash.
+  if (value.endsWith("/") || url.href != new URL(url.origin).href) {
     return false;
   }
-  if (
-    url.pathname !== '/' ||
-    url.hash !== '' ||
-    url.search !== '' ||
-    value.endsWith('/')
-  ) {
-    // Path, query string and hash shouldn't be included in origins.
-    // URL().pathname will always be '/' if no path is provided, so we have to
-    // check value doesn't end with one either.
-    return false;
-  }
-  // value === url.origin would be enough if it wasn't for IDNs but
-  //  URL().origin returns punycode, so we have to compare against URL().href
-  // minus the last character instead, having checked that there was no path,
-  // query string or hash earlier.
-  return url.href.slice(0, -1) === url.origin;
+  return true;
 }
 
 export function imageDataOrStrictRelativeUrl(value) {
