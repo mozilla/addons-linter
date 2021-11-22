@@ -3681,7 +3681,6 @@ describe('ManifestJSONParser', () => {
       { origins: null, expectedError: 'MANIFEST_FIELD_INVALID' },
       { origins: 42, expectedError: 'MANIFEST_FIELD_INVALID' },
       { origins: '', expectedError: 'MANIFEST_FIELD_INVALID' },
-      { origins: [], expectedError: 'JSON_INVALID' }, // Empty array
       {
         origins: new Array(6).fill('https://example.com'),
         expectedError: 'JSON_INVALID',
@@ -3726,6 +3725,7 @@ describe('ManifestJSONParser', () => {
       { origins: ['https://foo.bar.栃木.jp'] }, // ... or unicode.
       { origins: ['https://example.com:8888'] },
       { origins: ['https://foo.example.com', 'https://foo.bar.栃木.jp:9999'] },
+      { origins: [] }, // Empty array is valid
     ])('should allow valid install origins "$origins"', ({ origins }) => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({

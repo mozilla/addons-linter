@@ -109,7 +109,6 @@
           },
           "install_origins": {
             "type": "array",
-            "minItems": 1,
             "maxItems": 5,
             "items": {
               "type": "string",
