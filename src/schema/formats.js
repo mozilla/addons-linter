@@ -107,7 +107,7 @@ export function isOrigin(value) {
   let url;
   try {
     url = new URL(value);
-  } catch (e) {
+  } catch {
     return false;
   }
   if (!/^https?:/.test(url.protocol)) {
@@ -116,9 +116,9 @@ export function isOrigin(value) {
   if (value.includes('*')) {
     return false;
   }
-  // url.origin is punycode so a direct check against string wont work.
-  // url.href appends a slash even if not in the original string, we we
-  // additionally check that string does not end in slash.
+  // url.origin is punycode so a direct check against string won't work.
+  // url.href appends a slash even if not in the original string, so we
+  // additionally check that the value does not ends with slash.
   if (value.endsWith('/') || url.href !== new URL(url.origin).href) {
     return false;
   }
