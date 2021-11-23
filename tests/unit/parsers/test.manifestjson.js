@@ -3664,4 +3664,83 @@ describe('ManifestJSONParser', () => {
       );
     });
   });
+
+  describe('install_origins', () => {
+    it.each([
+      {
+        origins: ['https://example.com/testing'],
+        expectedError: 'JSON_INVALID',
+      }, // Extra path
+      { origins: ['file:/foo/bar'], expectedError: 'JSON_INVALID' }, // Disallowed scheme
+      { origins: [' '], expectedError: 'JSON_INVALID' },
+      { origins: ['https://foo.bar.栃木.jp/'], expectedError: 'JSON_INVALID' }, // Trailing slash
+      { origins: [''], expectedError: 'JSON_INVALID' },
+      { origins: [[]], expectedError: 'MANIFEST_FIELD_INVALID' },
+      { origins: [{}], expectedError: 'MANIFEST_FIELD_INVALID' },
+      { origins: {}, expectedError: 'MANIFEST_FIELD_INVALID' },
+      { origins: null, expectedError: 'MANIFEST_FIELD_INVALID' },
+      { origins: 42, expectedError: 'MANIFEST_FIELD_INVALID' },
+      { origins: '', expectedError: 'MANIFEST_FIELD_INVALID' },
+      {
+        origins: new Array(6).fill('https://example.com'),
+        expectedError: 'JSON_INVALID',
+      }, // Too large
+      { origins: ['https://*.example.com'], expectedError: 'JSON_INVALID' }, // Wildcard
+      { origins: ['example.com'], expectedError: 'JSON_INVALID' }, // No scheme
+      { origins: ['https://'], expectedError: 'JSON_INVALID' }, // No hostname
+      {
+        origins: ['https://foo.com', 'https://bar.com/path'],
+        expectedError: 'JSON_INVALID',
+      }, // One valid, one invalid
+      {
+        origins: ['https://foo.com', null],
+        expectedError: 'MANIFEST_FIELD_INVALID',
+      }, // One valid, one invalid
+    ])(
+      'should disallow invalid install origins "$origins"',
+      ({ origins, expectedError }) => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          install_origins: origins,
+          browser_specific_settings: {
+            gecko: {
+              id: 'foo@bar',
+            },
+          },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+        expect(addonLinter.collector.errors.length).toEqual(1);
+        expect(addonLinter.collector.errors[0].code).toEqual(expectedError);
+      }
+    );
+
+    it.each([
+      { origins: ['https://example.com'] },
+      { origins: ['https://foo.example.com'] },
+      { origins: ['https://xn--fo-9ja.com'] }, // IDNs are accepted in punycode (ascii)...
+      { origins: ['https://foo.bar.栃木.jp'] }, // ... or unicode.
+      { origins: ['https://example.com:8888'] },
+      { origins: ['https://foo.example.com', 'https://foo.bar.栃木.jp:9999'] },
+      { origins: [] }, // Empty array is valid
+    ])('should allow valid install origins "$origins"', ({ origins }) => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        install_origins: origins,
+        browser_specific_settings: {
+          gecko: {
+            id: 'foo@bar',
+          },
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+  });
 });

@@ -70,6 +70,14 @@
               "pattern": "^__MSG_.*?__$"
             }
           ]
+        },
+        "install_origins": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "format": "origin"
+          }
         }
       },
       "required": [

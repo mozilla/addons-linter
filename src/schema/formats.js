@@ -103,6 +103,28 @@ export function isSecureUrl(value) {
   return ['https:', 'wss:'].includes(url.protocol);
 }
 
+export function isOrigin(value) {
+  let url;
+  try {
+    url = new URL(value);
+  } catch {
+    return false;
+  }
+  if (!/^https?:/.test(url.protocol)) {
+    return false;
+  }
+  if (value.includes('*')) {
+    return false;
+  }
+  // url.origin is punycode so a direct check against string won't work.
+  // url.href appends a slash even if not in the original string, so we
+  // additionally check that the value does not end with slash.
+  if (value.endsWith('/') || url.href !== new URL(url.origin).href) {
+    return false;
+  }
+  return true;
+}
+
 export function imageDataOrStrictRelativeUrl(value) {
   // Do not accept a string which resolves as an absolute URL, or any
   // protocol-relative URL, except PNG or JPG data URLs.

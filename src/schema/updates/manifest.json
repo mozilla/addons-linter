@@ -106,6 +106,14 @@
           },
           "manifest_version": {
             "maximum": 2
+          },
+          "install_origins": {
+            "type": "array",
+            "maxItems": 5,
+            "items": {
+              "type": "string",
+              "format": "origin"
+            }
           }
         }
       }
