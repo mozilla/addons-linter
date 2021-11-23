@@ -118,7 +118,7 @@ export function isOrigin(value) {
   }
   // url.origin is punycode so a direct check against string won't work.
   // url.href appends a slash even if not in the original string, so we
-  // additionally check that the value does not ends with slash.
+  // additionally check that the value does not end with slash.
   if (value.endsWith('/') || url.href !== new URL(url.origin).href) {
     return false;
   }
