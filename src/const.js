@@ -1,10 +1,11 @@
 export const ESLINT_ERROR = 2;
 export const ESLINT_WARNING = 1;
 
-// Disable escapers (Sanitizer.escapeHTML, escapeHTML)
-// and unwrappers (Sanitizer.unwrapSafeHTML, unwrapSafeHTML)
-// which are allowed by default by this plugin.
-const DISABLE_ALLOWED_ESCAPERS = {
+const NO_UNSANITIZED_OPTIONS = {
+  variableTracing: false,
+  // Disable escapers (Sanitizer.escapeHTML, escapeHTML) and unwrappers
+  // (Sanitizer.unwrapSafeHTML, unwrapSafeHTML) which are allowed by default by
+  // this plugin.
   escape: { taggedTemplates: [], methods: [] },
 };
 
@@ -13,8 +14,8 @@ export const EXTERNAL_RULE_MAPPING = {
   'no-eval': [ESLINT_WARNING, { allowIndirect: false }],
   'no-implied-eval': ESLINT_WARNING,
   'no-new-func': ESLINT_WARNING,
-  'no-unsanitized/method': [ESLINT_WARNING, DISABLE_ALLOWED_ESCAPERS],
-  'no-unsanitized/property': [ESLINT_WARNING, DISABLE_ALLOWED_ESCAPERS],
+  'no-unsanitized/method': [ESLINT_WARNING, NO_UNSANITIZED_OPTIONS],
+  'no-unsanitized/property': [ESLINT_WARNING, NO_UNSANITIZED_OPTIONS],
 };
 
 export const ESLINT_RULE_MAPPING = {

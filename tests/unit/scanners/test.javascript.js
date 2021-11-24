@@ -419,6 +419,23 @@ describe('JavaScript Scanner', () => {
     ]);
   });
 
+  // See: https://github.com/mozilla/eslint-plugin-no-unsanitized/issues/188
+  it('has variable tracing disabled to avoid a bug', async () => {
+    // eslint-disable-next-line no-template-curly-in-string
+    const code = 'let c; a.innerHTML = `${c}`;';
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    // We are not so much interested in the actual result. This would throw an
+    // error because of the bug in the upstream library.
+    return expect(jsScanner.scan()).resolves.toEqual({
+      linterMessages: [
+        expect.objectContaining({ code: 'UNSAFE_VAR_ASSIGNMENT' }),
+      ],
+      scannedFiles: ['code.js'],
+    });
+  });
+
   describe('detectSourceType', () => {
     it('should detect module', async () => {
       const code = oneLine`
