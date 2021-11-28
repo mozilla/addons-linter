@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-05 18:17+0000\n"
-"PO-Revision-Date: 2021-11-03 11:28+0000\n"
+"PO-Revision-Date: 2021-11-08 14:24+0000\n"
 "Last-Translator: marsf <chimantaea_mirabilis@yahoo.co.jp>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -83,12 +83,8 @@ msgid "This API has not been implemented by Firefox."
 msgstr "この API は Firefox に実装されていません。"
 
 #: src/messages/javascript.js:132
-msgid ""
-"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
-"property)"
-msgstr ""
-"\"{{api}}\" はマニフェストバージョン 3 (`manifest_version` プロパティ) で削除"
-"されました"
+msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
+msgstr "\"{{api}}\" はマニフェストバージョン 3 (`manifest_version` プロパティ) で削除されました"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
@@ -116,15 +112,11 @@ msgstr "この API は指定された最低バージョンの Firefox に実装�
 
 #: src/messages/javascript.js:193
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
-"{{api}} は Android 版 Firefox バージョン {{minVersion}} でサポートされていま"
-"せん"
+msgstr "{{api}} は Android 版 Firefox バージョン {{minVersion}} でサポートされていません"
 
 #: src/messages/javascript.js:196
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
-"この API は指定された最低バージョンの Android 版 Firefox に実装されていません"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "この API は指定された最低バージョンの Android 版 Firefox に実装されていません"
 
 #: src/messages/javascript.js:25
 msgid "Content script file could not be found."
@@ -243,11 +235,8 @@ msgid "Translation string is missing the message property"
 msgstr "翻訳メッセージにメッセージプロパティが含まれていません"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"文字列に「message」メッセージプロパティが設定されていません。(https://mzl."
-"la/2DSBTjA)"
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "文字列に「message」メッセージプロパティが設定されていません。(https://mzl.la/2DSBTjA)"
 
 #: src/messages/manifestjson.js:100
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
@@ -315,8 +304,7 @@ msgstr "アイコンが \"%(path)s\" に見つかりませんでした。"
 
 #: src/messages/manifestjson.js:238
 msgid "A background script defined in the manifest could not be found."
-msgstr ""
-"manifest で定義されたバックグラウンドスクリプトが見つかりませんでした。"
+msgstr "manifest で定義されたバックグラウンドスクリプトが見つかりませんでした。"
 
 #: src/messages/manifestjson.js:241
 msgid "A background page defined in the manifest could not be found."
@@ -336,44 +324,31 @@ msgstr "manifest で定義されたコンテンツスクリプトが見つかり
 
 #: src/messages/manifestjson.js:263
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
-"manifest で定義されたコンテンツスクリプト CSS ファイルが見つかりませんでし"
-"た。"
+msgstr "manifest で定義されたコンテンツスクリプト CSS ファイルが見つかりませんでした。"
 
 #: src/messages/manifestjson.js:268
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"マニフェストで定義されているコンテンツスクリプトが「%(path)s」に見つかりませ"
-"んでした。"
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "マニフェストで定義されているコンテンツスクリプトが「%(path)s」に見つかりませんでした。"
 
 #: src/messages/manifestjson.js:271
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"マニフェストで定義されているコンテンツスクリプト CSS ファイルが「%(path)s」に"
-"見つかりませんでした。"
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "マニフェストで定義されているコンテンツスクリプト CSS ファイルが「%(path)s」に見つかりませんでした。"
 
 #: src/messages/manifestjson.js:285
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "manifest で定義された辞書ファイルが見つかりませんでした。"
 
 #: src/messages/manifestjson.js:289
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"manifest で定義された辞書ファイルが「%(path)s」に見つかりませんでした。"
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "manifest で定義された辞書ファイルが「%(path)s」に見つかりませんでした。"
 
 #: src/messages/manifestjson.js:301
 msgid "The manifest contains multiple dictionaries."
 msgstr "manifest に複数の辞書が含まれています。"
 
 #: src/messages/manifestjson.js:302
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
-"manifest で複数の辞書が定義されていましたが、これはサポートされていません。"
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+msgstr "manifest で複数の辞書が定義されていましたが、これはサポートされていません。"
 
 #: src/messages/manifestjson.js:311
 msgid "The manifest contains a dictionaries object, but it is empty."
@@ -449,31 +424,23 @@ msgstr "テーマ画像ファイルのファイル拡張子はサポートされ
 
 #: src/messages/manifestjson.js:430
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
-"「%(path)s」のテーマ画像ファイルのファイル拡張子はサポートされていません"
+msgstr "「%(path)s」のテーマ画像ファイルのファイル拡張子はサポートされていません"
 
 #: src/messages/manifestjson.js:444
 msgid "Theme image file has an unsupported mime type"
 msgstr "テーマ画像ファイルの MIME タイプはサポートされていません"
 
 #: src/messages/manifestjson.js:446
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
-"「%(path)s」のテーマ画像ファイルの MIME タイプ「%(mime)s」はサポートされてい"
-"ません"
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "「%(path)s」のテーマ画像ファイルの MIME タイプ「%(mime)s」はサポートされていません"
 
 #: src/messages/manifestjson.js:460
 msgid "Theme image file mime type does not match its file extension"
 msgstr "テーマ画像ファイルの MIME タイプがファイル拡張子と一致しません"
 
 #: src/messages/manifestjson.js:464
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
-"「%(path)s」のテーマ画像ファイルの拡張子が実際の MIME タイプ「%(mime)s」と一"
-"致しません"
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "「%(path)s」のテーマ画像ファイルの拡張子が実際の MIME タイプ「%(mime)s」と一致しません"
 
 #: src/messages/manifestjson.js:478
 msgid "The \"default_locale\" is missing localizations."
@@ -489,18 +456,11 @@ msgstr "非対応画像拡張子"
 
 #: src/messages/manifestjson.js:497
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
-"アイコンは、JPG/JPEG、WebP、GIF、PNG あるいは SVG のいずれかでなければなりま"
-"せん。"
+msgstr "アイコンは、JPG/JPEG、WebP、GIF、PNG あるいは SVG のいずれかでなければなりません。"
 
 #: src/messages/manifestjson.js:505
-#, fuzzy
-msgid ""
-"\"applications\" property overridden by \"browser_specific_settings\" "
-"property"
-msgstr ""
-"\"applications\" プロパティは \"browser_specific_settings\" プロパティによっ"
-"て上書きされます"
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
+msgstr "\"applications\" プロパティは \"browser_specific_settings\" プロパティによって上書きされます"
 
 #: src/messages/manifestjson.js:518
 msgid "Empty language directory"
@@ -512,42 +472,29 @@ msgstr "messages.json が「%(path)s」に存在しません"
 
 #: src/messages/manifestjson.js:536
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
-"manifest キーは指定された Firefox の最低バージョンでサポートされていません"
+msgstr "manifest キーは指定された Firefox の最低バージョンでサポートされていません"
 
 #: src/messages/manifestjson.js:558
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "許可設定は指定された Firefox の最低バージョンでサポートされていません"
 
 #: src/messages/manifestjson.js:580
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
-msgstr ""
-"manifest キーは指定された Android 版 Firefox の最低バージョンでサポートされて"
-"いません"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "manifest キーは指定された Android 版 Firefox の最低バージョンでサポートされていません"
 
 #: src/messages/manifestjson.js:602
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
-"許可設定は指定された Android 版 Firefox の最低バージョンでサポートされていま"
-"せん"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgstr "許可設定は指定された Android 版 Firefox の最低バージョンでサポートされていません"
 
 #: src/messages/manifestjson.js:617
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "\"addons.mozilla.org\" へのリンクは許可されていません"
 
 #: src/messages/manifestjson.js:618
-msgid ""
-"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
-"homepage"
-msgstr ""
-"\"addons.mozilla.org\" へのリンクをホームページに使用することは許可されていま"
-"せん"
+msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
+msgstr "\"addons.mozilla.org\" へのリンクをホームページに使用することは許可されていません"
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
-#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
 msgstr "この許可タイプには対応していません。"
 
