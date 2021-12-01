@@ -25,9 +25,7 @@ jest.mock('cli', () => {
   };
 });
 
-global.appRoot = path.join(__dirname, '..');
-
-if (!fs.existsSync(path.join(global.appRoot, 'dist'))) {
+if (!fs.existsSync(path.join(__dirname, '..', 'dist'))) {
   throw new Error('Please run `npm run build` before running the test suite.');
 }
 

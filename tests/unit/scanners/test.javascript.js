@@ -241,23 +241,18 @@ describe('JavaScript Scanner', () => {
   });
 
   it('should reject on missing message code', async () => {
-    class FakeESLintClass {
-      async lintText() {
-        return Promise.resolve([
-          {
-            filePath: 'badcode.js',
-            messages: [
-              {
-                fatal: false,
-              },
-            ],
-          },
-        ]);
+    class FakeLinterClass {
+      defineRule() {}
+
+      defineParser() {}
+
+      verify() {
+        return [{ fatal: false }];
       }
     }
 
     const FakeESLint = {
-      ESLint: FakeESLintClass,
+      Linter: FakeLinterClass,
     };
 
     const jsScanner = new JavaScriptScanner('whatever', 'badcode.js');
@@ -317,7 +312,6 @@ describe('JavaScript Scanner', () => {
     const fakeMetadata = {
       addonMetadata: validMetadata({ guid: 'snowflake' }),
     };
-    const fakeESLintMapping = { 'metadata-not-passed': ESLINT_ERROR };
 
     const jsScanner = new JavaScriptScanner(
       'var hello = "something";',
@@ -328,7 +322,7 @@ describe('JavaScript Scanner', () => {
     const { linterMessages } = await runJsScanner(jsScanner, {
       scanOptions: {
         _messages: fakeMessages,
-        _ruleMapping: fakeESLintMapping,
+        _ruleMapping: { 'metadata-not-passed': ESLINT_ERROR },
       },
       fixtureRules: ['metadata-not-passed'],
     });
