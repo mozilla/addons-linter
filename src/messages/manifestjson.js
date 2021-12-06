@@ -1,7 +1,7 @@
 import { oneLine } from 'common-tags';
 
 import { i18n, errorParamsToUnsupportedVersionRange } from 'utils';
-import { MANIFEST_JSON, PERMS_DATAPATH_REGEX } from 'const';
+import { MANIFEST_JSON, COMPLEX_ARRAYS_DATAPATH_REGEX } from 'const';
 
 export const MANIFEST_FIELD_REQUIRED = {
   code: 'MANIFEST_FIELD_REQUIRED',
@@ -49,7 +49,7 @@ export function manifestPermissionUnsupported(permissionName, error) {
   const message = i18n.sprintf(messageTmpl, {
     permissionName,
     versionRange,
-    fieldName: error.dataPath.match(PERMS_DATAPATH_REGEX)[1],
+    fieldName: error.dataPath.match(COMPLEX_ARRAYS_DATAPATH_REGEX)[1],
   });
 
   return {
@@ -109,6 +109,17 @@ export const MANIFEST_HOST_PERMISSIONS = {
   // TODO(https://github.com/mozilla/addons-linter/issues/3893): link host_permissions
   // MDN doc page here once we have created it.
   description: i18n._('Invalid host permission.'),
+  file: MANIFEST_JSON,
+};
+
+export const MANIFEST_INSTALL_ORIGINS = {
+  code: 'MANIFEST_INSTALL_ORIGINS',
+  message: i18n._('Invalid install origin.'),
+  // TODO(https://github.com/mozilla/addons-linter/issues/4084): link install_origins
+  // MDN doc page here once we have created it.
+  description: i18n._(
+    'Invalid install origin (A valid origin has - only - a scheme, hostname and optional port.'
+  ),
   file: MANIFEST_JSON,
 };
 

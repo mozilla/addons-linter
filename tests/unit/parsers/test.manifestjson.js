@@ -267,7 +267,7 @@ describe('ManifestJSONParser', () => {
             code: 'MANIFEST_PERMISSIONS',
             dataPath: '/permissions/0',
             message: expect.stringMatching(
-              /Unknown permissions "\*:\/\/example\.org\/\*" at 0/
+              /Invalid permissions "\*:\/\/example\.org\/\*" at 0/
             ),
           }),
         ])
@@ -333,7 +333,7 @@ describe('ManifestJSONParser', () => {
             code: 'MANIFEST_HOST_PERMISSIONS',
             dataPath: '/host_permissions/0',
             message: expect.stringMatching(
-              /Unknown host_permissions "foo" at 0/
+              /Invalid host_permissions "foo" at 0/
             ),
           }),
         ])
@@ -359,7 +359,7 @@ describe('ManifestJSONParser', () => {
             code: 'MANIFEST_PERMISSIONS',
             dataPath: '/permissions/0',
             message: expect.stringMatching(
-              /Unknown permissions "<all_urls>" at 0/
+              /Invalid permissions "<all_urls>" at 0/
             ),
           }),
         ])
@@ -390,7 +390,7 @@ describe('ManifestJSONParser', () => {
         expect(addonLinter.collector.errors.length).toBe(0);
         assertHasMatchingError(warnings, {
           code: expectedMsgCode,
-          message: new RegExp(`Unknown ${manifestKey} "fileSystem"`),
+          message: new RegExp(`Invalid ${manifestKey} "fileSystem"`),
         });
       });
 
@@ -629,7 +629,7 @@ describe('ManifestJSONParser', () => {
         expect(warnings.length).toEqual(1);
         expect(warnings[0].code).toEqual(expectedMsg.code);
         expect(warnings[0].message).toContain(
-          `/${mainfestKey}: Unknown ${mainfestKey} "wat" at 1.`
+          `/${mainfestKey}: Invalid ${mainfestKey} "wat" at 1.`
         );
       });
     }
@@ -3669,14 +3669,57 @@ describe('ManifestJSONParser', () => {
     it.each([
       {
         origins: ['https://example.com/testing'],
-        expectedError: 'JSON_INVALID',
+        expectedError: 'MANIFEST_INSTALL_ORIGINS',
       }, // Extra path
-      { origins: ['file:/foo/bar'], expectedError: 'JSON_INVALID' }, // Disallowed scheme
-      { origins: [' '], expectedError: 'JSON_INVALID' },
-      { origins: ['https://foo.bar.栃木.jp/'], expectedError: 'JSON_INVALID' }, // Trailing slash
-      { origins: [''], expectedError: 'JSON_INVALID' },
-      { origins: [[]], expectedError: 'MANIFEST_FIELD_INVALID' },
-      { origins: [{}], expectedError: 'MANIFEST_FIELD_INVALID' },
+      { origins: ['file:/foo/bar'], expectedError: 'MANIFEST_INSTALL_ORIGINS' }, // Disallowed scheme
+      { origins: [' '], expectedError: 'MANIFEST_INSTALL_ORIGINS' },
+      {
+        origins: ['https://foo.bar.栃木.jp/'],
+        expectedError: 'MANIFEST_INSTALL_ORIGINS',
+      }, // Trailing slash
+      { origins: [''], expectedError: 'MANIFEST_INSTALL_ORIGINS' },
+      { origins: [[]], expectedError: 'MANIFEST_INSTALL_ORIGINS' },
+      { origins: [{}], expectedError: 'MANIFEST_INSTALL_ORIGINS' },
+      {
+        origins: ['https://*.example.com'],
+        expectedError: 'MANIFEST_INSTALL_ORIGINS',
+      }, // Wildcard
+      { origins: ['example.com'], expectedError: 'MANIFEST_INSTALL_ORIGINS' }, // No scheme
+      { origins: ['https://'], expectedError: 'MANIFEST_INSTALL_ORIGINS' }, // No hostname
+      {
+        origins: ['https://foo.com', 'https://bar.com/path'],
+        expectedError: 'MANIFEST_INSTALL_ORIGINS',
+      }, // One valid, one invalid
+      {
+        origins: ['https://foo.com', null],
+        expectedError: 'MANIFEST_INSTALL_ORIGINS',
+      }, // One valid, one invalid
+    ])(
+      'should disallow invalid install origins content "$origins"',
+      ({ origins, expectedError }) => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          install_origins: origins,
+          browser_specific_settings: {
+            gecko: {
+              id: 'foo@bar',
+            },
+          },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+        expect(addonLinter.collector.errors.length).toEqual(1);
+        expect(addonLinter.collector.errors[0].code).toEqual(expectedError);
+        expect(addonLinter.collector.errors[0].message).toMatch(
+          /\/install_origins: Invalid install_origins ".*" at \d+/
+        );
+      }
+    );
+
+    it.each([
       { origins: {}, expectedError: 'MANIFEST_FIELD_INVALID' },
       { origins: null, expectedError: 'MANIFEST_FIELD_INVALID' },
       { origins: 42, expectedError: 'MANIFEST_FIELD_INVALID' },
@@ -3685,17 +3728,6 @@ describe('ManifestJSONParser', () => {
         origins: new Array(6).fill('https://example.com'),
         expectedError: 'JSON_INVALID',
       }, // Too large
-      { origins: ['https://*.example.com'], expectedError: 'JSON_INVALID' }, // Wildcard
-      { origins: ['example.com'], expectedError: 'JSON_INVALID' }, // No scheme
-      { origins: ['https://'], expectedError: 'JSON_INVALID' }, // No hostname
-      {
-        origins: ['https://foo.com', 'https://bar.com/path'],
-        expectedError: 'JSON_INVALID',
-      }, // One valid, one invalid
-      {
-        origins: ['https://foo.com', null],
-        expectedError: 'MANIFEST_FIELD_INVALID',
-      }, // One valid, one invalid
     ])(
       'should disallow invalid install origins "$origins"',
       ({ origins, expectedError }) => {

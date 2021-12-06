@@ -28,7 +28,7 @@ import {
   STATIC_THEME_IMAGE_MIMES,
   RESTRICTED_HOMEPAGE_URLS,
   RESTRICTED_PERMISSIONS,
-  PERMS_DATAPATH_REGEX,
+  COMPLEX_ARRAYS_DATAPATH_REGEX,
 } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
@@ -295,7 +295,7 @@ export default class ManifestJSONParser extends JSONParser {
     ) {
       // Choose a different message for permissions unsupported with the
       // add-on manifest_version.
-      if (PERMS_DATAPATH_REGEX.test(error.dataPath)) {
+      if (COMPLEX_ARRAYS_DATAPATH_REGEX.test(error.dataPath)) {
         baseObject = messages.manifestPermissionUnsupported(error.data, error);
       } else {
         baseObject = messages.manifestFieldUnsupported(error.dataPath, error);
@@ -333,7 +333,7 @@ export default class ManifestJSONParser extends JSONParser {
     // Arrays can be extremely verbose, this tries to make them a little
     // more sane. Using a regex because there will likely be more as we
     // expand the schema.
-    const match = error.dataPath.match(PERMS_DATAPATH_REGEX);
+    const match = error.dataPath.match(COMPLEX_ARRAYS_DATAPATH_REGEX);
 
     if (
       match &&
@@ -343,7 +343,7 @@ export default class ManifestJSONParser extends JSONParser {
       baseObject.code !== messages.MANIFEST_PERMISSION_UNSUPPORTED
     ) {
       baseObject = messages[`MANIFEST_${match[1].toUpperCase()}`];
-      overrides.message = oneLine`/${match[1]}: Unknown ${match[1]}
+      overrides.message = oneLine`/${match[1]}: Invalid ${match[1]}
           "${error.data}" at ${match[2]}.`;
     }
 
