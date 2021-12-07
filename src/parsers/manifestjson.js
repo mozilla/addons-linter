@@ -25,7 +25,7 @@ import {
   LOCALES_DIRECTORY,
   MESSAGES_JSON,
   FILE_EXTENSIONS_TO_MIME,
-  INSTALLORIGIN_DATAPATH_REGEX,
+  INSTALL_ORIGINS_DATAPATH_REGEX,
   STATIC_THEME_IMAGE_MIMES,
   RESTRICTED_HOMEPAGE_URLS,
   RESTRICTED_PERMISSIONS,
@@ -338,7 +338,7 @@ export default class ManifestJSONParser extends JSONParser {
     // want to adjust this if they start to differ.
     const match =
       error.dataPath.match(PERMS_DATAPATH_REGEX) ||
-      error.dataPath.match(INSTALLORIGIN_DATAPATH_REGEX);
+      error.dataPath.match(INSTALL_ORIGINS_DATAPATH_REGEX);
 
     if (
       match &&
