@@ -25,6 +25,7 @@ import {
   LOCALES_DIRECTORY,
   MESSAGES_JSON,
   FILE_EXTENSIONS_TO_MIME,
+  INSTALL_ORIGINS_DATAPATH_REGEX,
   STATIC_THEME_IMAGE_MIMES,
   RESTRICTED_HOMEPAGE_URLS,
   RESTRICTED_PERMISSIONS,
@@ -333,7 +334,11 @@ export default class ManifestJSONParser extends JSONParser {
     // Arrays can be extremely verbose, this tries to make them a little
     // more sane. Using a regex because there will likely be more as we
     // expand the schema.
-    const match = error.dataPath.match(PERMS_DATAPATH_REGEX);
+    // Note that this works because the 2 regexps use similar patterns. We'll
+    // want to adjust this if they start to differ.
+    const match =
+      error.dataPath.match(PERMS_DATAPATH_REGEX) ||
+      error.dataPath.match(INSTALL_ORIGINS_DATAPATH_REGEX);
 
     if (
       match &&
@@ -343,7 +348,7 @@ export default class ManifestJSONParser extends JSONParser {
       baseObject.code !== messages.MANIFEST_PERMISSION_UNSUPPORTED
     ) {
       baseObject = messages[`MANIFEST_${match[1].toUpperCase()}`];
-      overrides.message = oneLine`/${match[1]}: Unknown ${match[1]}
+      overrides.message = oneLine`/${match[1]}: Invalid ${match[1]}
           "${error.data}" at ${match[2]}.`;
     }
 

@@ -107,6 +107,7 @@ Rules are sorted by severity.
 | `MANIFEST_BAD_PERMISSION`                               | error    | Bad permission                                                                                  |
 | `MANIFEST_BAD_OPTIONAL_PERMISSION`                      | error    | Bad optional permission                                                                         |
 | `MANIFEST_BAD_HOST_PERMISSION`                          | error    | Bad host permission                                                                             |
+| `MANIFEST_INSTALL_ORIGINS`                              | error    | Invalid install_origins                                                                         |
 | `JSON_BLOCK_COMMENTS`                                   | error    | Block Comments are not allowed in JSON                                                          |
 | `MANIFEST_INVALID_CONTENT`                              | error    | This add-on contains forbidden content                                                          |
 | `CONTENT_SCRIPT_NOT_FOUND`                              | error    | Content script file could not be found                                                          |

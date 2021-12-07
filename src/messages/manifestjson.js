@@ -112,6 +112,17 @@ export const MANIFEST_HOST_PERMISSIONS = {
   file: MANIFEST_JSON,
 };
 
+export const MANIFEST_INSTALL_ORIGINS = {
+  code: 'MANIFEST_INSTALL_ORIGINS',
+  message: i18n._('Invalid install origin.'),
+  // TODO(https://github.com/mozilla/addons-linter/issues/4084): link install_origins
+  // MDN doc page here once we have created it.
+  description: i18n._(
+    'Invalid install origin. A valid origin has - only - a scheme, hostname and optional port.'
+  ),
+  file: MANIFEST_JSON,
+};
+
 export const MANIFEST_VERSION_INVALID = {
   code: 'MANIFEST_VERSION_INVALID',
   message: i18n._(
