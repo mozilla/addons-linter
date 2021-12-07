@@ -1,0 +1,11 @@
+{
+  "name": "eslint-versions-conflicts-package",
+  "version": "1.0.0",
+  "description": "test issues with conflicting eslint versions under the same package",
+  "keywords": [],
+  "author": "",
+  "license": "MPL-v2",
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  }
+}
