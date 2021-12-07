@@ -118,7 +118,7 @@ export const MANIFEST_INSTALL_ORIGINS = {
   // TODO(https://github.com/mozilla/addons-linter/issues/4084): link install_origins
   // MDN doc page here once we have created it.
   description: i18n._(
-    'Invalid install origin (A valid origin has - only - a scheme, hostname and optional port.'
+    'Invalid install origin. A valid origin has - only - a scheme, hostname and optional port.'
   ),
   file: MANIFEST_JSON,
 };
