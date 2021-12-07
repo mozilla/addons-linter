@@ -25,10 +25,11 @@ import {
   LOCALES_DIRECTORY,
   MESSAGES_JSON,
   FILE_EXTENSIONS_TO_MIME,
+  INSTALLORIGIN_DATAPATH_REGEX,
   STATIC_THEME_IMAGE_MIMES,
   RESTRICTED_HOMEPAGE_URLS,
   RESTRICTED_PERMISSIONS,
-  COMPLEX_ARRAYS_DATAPATH_REGEX,
+  PERMS_DATAPATH_REGEX,
 } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
@@ -295,7 +296,7 @@ export default class ManifestJSONParser extends JSONParser {
     ) {
       // Choose a different message for permissions unsupported with the
       // add-on manifest_version.
-      if (COMPLEX_ARRAYS_DATAPATH_REGEX.test(error.dataPath)) {
+      if (PERMS_DATAPATH_REGEX.test(error.dataPath)) {
         baseObject = messages.manifestPermissionUnsupported(error.data, error);
       } else {
         baseObject = messages.manifestFieldUnsupported(error.dataPath, error);
@@ -333,7 +334,11 @@ export default class ManifestJSONParser extends JSONParser {
     // Arrays can be extremely verbose, this tries to make them a little
     // more sane. Using a regex because there will likely be more as we
     // expand the schema.
-    const match = error.dataPath.match(COMPLEX_ARRAYS_DATAPATH_REGEX);
+    // Note that this works because the 2 regexps use similar patterns. We'll
+    // want to adjust this if they start to differ.
+    const match =
+      error.dataPath.match(PERMS_DATAPATH_REGEX) ||
+      error.dataPath.match(INSTALLORIGIN_DATAPATH_REGEX);
 
     if (
       match &&

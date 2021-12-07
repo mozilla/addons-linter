@@ -1,7 +1,7 @@
 import { oneLine } from 'common-tags';
 
 import { i18n, errorParamsToUnsupportedVersionRange } from 'utils';
-import { MANIFEST_JSON, COMPLEX_ARRAYS_DATAPATH_REGEX } from 'const';
+import { MANIFEST_JSON, PERMS_DATAPATH_REGEX } from 'const';
 
 export const MANIFEST_FIELD_REQUIRED = {
   code: 'MANIFEST_FIELD_REQUIRED',
@@ -49,7 +49,7 @@ export function manifestPermissionUnsupported(permissionName, error) {
   const message = i18n.sprintf(messageTmpl, {
     permissionName,
     versionRange,
-    fieldName: error.dataPath.match(COMPLEX_ARRAYS_DATAPATH_REGEX)[1],
+    fieldName: error.dataPath.match(PERMS_DATAPATH_REGEX)[1],
   });
 
   return {
