@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-05 18:17+0000\n"
-"PO-Revision-Date: 2021-12-11 12:54+0000\n"
+"PO-Revision-Date: 2021-12-11 12:55+0000\n"
 "Last-Translator: Alexander Slovesnik <unghost@mozilla-russia.org>\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -91,9 +91,8 @@ msgid "{{api}} is deprecated"
 msgstr "{{api}} устарело"
 
 #: src/messages/javascript.js:142
-#, fuzzy
 msgid "This API has been deprecated by Firefox."
-msgstr "Это API не реализовано в Firefox."
+msgstr "Это API объявлено Firefox устаревшим."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
