@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -e
+
+LINTER_PATH=$(pwd)
+TARGET_TEST_PATH="$LINTER_PATH/tmp/test-project"
+FIXTURE_TEST_PATH="$LINTER_PATH/tests/fixtures/eslint-versions-conflicts-package"
+LINTER_VERSION=$(node -p 'require("./package.json").version')
+
+# Fail if the target path already exists.
+[[ -f "$TARGET_TEST_PATH" ]] && (
+  echo "ERROR: Temporary test dir '$TARGET_TEST_PATH' already exists."
+  exit 1
+)
+
+echo -e "INFO: Initializing test environment\n"
+
+# Build addons-linter
+npm ci
+npm run build
+
+# Create target test path directory and cleanup on exit.
+cp -rf "$FIXTURE_TEST_PATH" "$TARGET_TEST_PATH"
+trap 'rm -rf "$TARGET_TEST_PATH"' EXIT
+
+pushd "$TARGET_TEST_PATH"
+npm pack "$LINTER_PATH"
+npm install
+npm install --save-dev "./addons-linter-$LINTER_VERSION.tgz"
+
+echo -e "INFO: Run addons-linter on the test fixture project\n"
+
+npx addons-linter ./src || (
+  echo "ERROR: addons-linter validation failed".
+  exit 2
+)

@@ -368,14 +368,17 @@ export const getJsRulePathForRule = (ruleName) => {
   return path.join(FIXTURES_DIR, 'rules', 'javascript', ruleName);
 };
 
-export function runJsScanner(
+export async function runJsScanner(
   jsScanner,
   { fixtureRules = [], scanOptions } = {}
 ) {
-  const ruleSource = path.join(global.appRoot, 'src/rules/javascript');
-  const fixturePaths = fixtureRules.map(getJsRulePathForRule);
+  const _rules = {};
+  for (const ruleName of fixtureRules) {
+    const mod = await import(getJsRulePathForRule(ruleName));
+    _rules[ruleName] = mod.default ? mod.default : mod;
+  }
   return jsScanner.scan({
     ...scanOptions,
-    _rulePaths: [ruleSource].concat(fixturePaths),
+    _rules,
   });
 }

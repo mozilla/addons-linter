@@ -3,7 +3,6 @@
 const path = require('path');
 
 const absoluteAppRoot = path.resolve(path.join(__dirname, '..'));
-global.appRoot = path.relative(process.cwd(), absoluteAppRoot);
 global.localesRoot = path.join(absoluteAppRoot, 'dist', 'locale');
 global.nodeRequire = require;
 

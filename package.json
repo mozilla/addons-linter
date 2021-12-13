@@ -31,6 +31,7 @@
     "build-rules": "scripts/build-rules && cp node_modules/github-markdown-css/github-markdown.css docs/github-markdown.css",
     "gen-contributing-toc": "doctoc CONTRIBUTING.md",
     "webext-test-functional": "scripts/webext-test-functional",
+    "smoke-test-eslint-version-conflicts": "scripts/smoke-test-eslint-version-conflicts",
     "update-hashes": "scripts/dispensary > src/dispensary/hashes.txt"
   },
   "repository": {

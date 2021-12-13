@@ -123,6 +123,7 @@ jobs:
       # This should run after we persist the workspace because this command
       # invokes `npm install`.
       - run: npm run webext-test-functional
+      - run: npm run smoke-test-eslint-version-conflicts
       - store_artifacts:
           path: coverage
 
@@ -140,6 +141,7 @@ jobs:
       # production-like environment
       - run: npm run test-integration:production
       - run: npm run webext-test-functional
+      - run: npm run smoke-test-eslint-version-conflicts
 
   test-alternate:
     <<: *defaults-alternate
@@ -155,6 +157,7 @@ jobs:
       # production-like environment
       - run: npm run test-integration:production
       - run: npm run webext-test-functional
+      - run: npm run smoke-test-eslint-version-conflicts
 
   release-tag:
     <<: *defaults

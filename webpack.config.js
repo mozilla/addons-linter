@@ -1,5 +1,4 @@
 /* eslint import/order: 0 */
-const glob = require('glob');
 const path = require('path');
 
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -12,10 +11,6 @@ module.exports = {
   // webpack3 bundling step.
   mode: 'none',
   entry: {
-    ...glob.sync('./src/rules/javascript/*.js').reduce((acc, file) => {
-      acc[file.replace(/^\.\/src\//, '').replace('.js', '')] = file;
-      return acc;
-    }, {}),
     'addons-linter': './src/main.js',
   },
   target: 'node',
