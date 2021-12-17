@@ -42,6 +42,7 @@ import pkcs11 from './pkcs11.json';
 import privacy from './privacy.json';
 import proxy from './proxy.json';
 import runtime from './runtime.json';
+import scripting from './scripting.json';
 import search from './search.json';
 import sessions from './sessions.json';
 import sidebarAction from './sidebar_action.json';
@@ -101,6 +102,7 @@ export default [
   privacy,
   proxy,
   runtime,
+  scripting,
   search,
   sessions,
   sidebarAction,

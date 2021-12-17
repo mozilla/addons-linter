@@ -1,0 +1,135 @@
+{
+  "id": "scripting",
+  "description": "Use the scripting API to execute script in different contexts.",
+  "permissions": [
+    "scripting"
+  ],
+  "min_manifest_version": 3,
+  "functions": [
+    {
+      "name": "executeScript",
+      "type": "function",
+      "description": "Injects a script into a target context. The script will be run at <code>document_idle</code>.",
+      "async": "callback",
+      "parameters": [
+        {
+          "allOf": [
+            {
+              "$ref": "#/types/ScriptInjection"
+            },
+            {
+              "name": "injection",
+              "description": "The details of the script which to inject."
+            }
+          ]
+        },
+        {
+          "name": "callback",
+          "type": "function",
+          "description": "Invoked upon completion of the injection. The resulting array contains the result of execution for each frame where the injection succeeded.",
+          "parameters": [
+            {
+              "name": "results",
+              "type": "array",
+              "items": {
+                "$ref": "#/types/InjectionResult"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "OptionalPermissionNoPrompt": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "scripting"
+          ],
+          "min_manifest_version": 3
+        }
+      ]
+    }
+  },
+  "refs": {
+    "scripting#/definitions/OptionalPermissionNoPrompt": {
+      "namespace": "manifest",
+      "type": "OptionalPermissionNoPrompt"
+    }
+  },
+  "types": {
+    "ScriptInjection": {
+      "type": "object",
+      "description": "Details of a script injection",
+      "properties": {
+        "args": {
+          "type": "array",
+          "description": "The arguments to curry into a provided function. This is only valid if the <code>func</code> parameter is specified. These arguments must be JSON-serializable.",
+          "items": {}
+        },
+        "files": {
+          "type": "array",
+          "description": "The path of the JS or CSS files to inject, relative to the extension's root directory. Exactly one of <code>files</code> and <code>func</code> must be specified.",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "func": {
+          "type": "function",
+          "description": "A JavaScript function to inject. This function will be serialized, and then deserialized for injection. This means that any bound parameters and execution context will be lost. Exactly one of <code>files</code> and <code>func</code> must be specified."
+        },
+        "target": {
+          "allOf": [
+            {
+              "$ref": "#/types/InjectionTarget"
+            },
+            {
+              "description": "Details specifying the target into which to inject the script."
+            }
+          ]
+        }
+      },
+      "required": [
+        "target"
+      ]
+    },
+    "InjectionResult": {
+      "type": "object",
+      "description": "Result of a script injection.",
+      "properties": {
+        "frameId": {
+          "type": "number",
+          "description": "The frame ID associated with the injection."
+        },
+        "result": {
+          "description": "The result of the script execution."
+        }
+      },
+      "required": [
+        "frameId"
+      ]
+    },
+    "InjectionTarget": {
+      "type": "object",
+      "properties": {
+        "frameIds": {
+          "type": "array",
+          "description": "The IDs of specific frames to inject into.",
+          "items": {
+            "type": "number"
+          }
+        },
+        "tabId": {
+          "type": "number",
+          "description": "The ID of the tab into which to inject."
+        }
+      },
+      "required": [
+        "tabId"
+      ]
+    }
+  }
+}
