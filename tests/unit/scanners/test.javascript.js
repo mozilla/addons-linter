@@ -454,9 +454,31 @@ describe('JavaScript Scanner', () => {
       expect(jsScanner.sourceType).toEqual('module');
     });
 
+    it('should detect module (await top level)', async () => {
+      const code = oneLine`
+        let value = await Promise.resolve(0);
+      `;
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await runJsScanner(jsScanner);
+
+      expect(jsScanner.sourceType).toEqual('module');
+    });
+
     it('should detect script', async () => {
       const code = oneLine`
         eval('foo');
+      `;
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await runJsScanner(jsScanner);
+
+      expect(jsScanner.sourceType).toEqual('script');
+    });
+
+    it('should detect script (re-define eval)', async () => {
+      const code = oneLine`
+        var eval = 0;
       `;
 
       const jsScanner = new JavaScriptScanner(code, 'code.js');
@@ -501,22 +523,6 @@ describe('JavaScript Scanner', () => {
 
       expect(detectedSourceType.sourceType).toEqual('script');
       expect(detectedSourceType.parsingError).toEqual(null);
-    });
-
-    it('handles "parsing as a module" errors without line/column', async () => {
-      const code = `(function () {})();`;
-      const jsScanner = new JavaScriptScanner(code, 'code.js');
-      sinon.stub(jsScanner, '_getSourceType').throws(new Error('some error'));
-
-      const detectedSourceType = jsScanner.detectSourceType('code.js');
-
-      expect(detectedSourceType.sourceType).toEqual('script');
-      expect(detectedSourceType.parsingError).toEqual({
-        type: 'module',
-        error: oneLine`some error at line: (unknown) and column: (unknown).
-          This looks like a bug in addons-linter, please open a new issue:
-          https://github.com/mozilla/addons-linter/issues`,
-      });
     });
   });
 });

@@ -2,7 +2,6 @@ import ESLint from 'eslint';
 import noUnsanitized from 'eslint-plugin-no-unsanitized';
 import { oneLine } from 'common-tags';
 import * as espree from 'espree';
-import * as vk from 'eslint-visitor-keys';
 import { ECMA_VERSION } from 'addons-scanner-utils/dist/const';
 
 import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
@@ -206,43 +205,6 @@ export default class JavaScriptScanner {
     };
   }
 
-  _getSourceType(node) {
-    const possibleImportExportTypes = [
-      'ExportAllDeclaration',
-      'ExportDefaultDeclaration',
-      'ExportNamedDeclaration',
-      'ExportSpecifier',
-      'ImportDeclaration',
-      'ImportDefaultSpecifier',
-      'ImportNamespaceSpecifier',
-      'ImportSpecifier',
-    ];
-
-    if (possibleImportExportTypes.includes(node.type)) {
-      return 'module';
-    }
-
-    const keys = vk.KEYS[node.type];
-
-    if (keys.length >= 1) {
-      for (let i = 0; i < keys.length; ++i) {
-        const child = node[keys[i]];
-
-        if (Array.isArray(child)) {
-          for (let j = 0; j < child.length; ++j) {
-            if (this._getSourceType(child[j]) === 'module') {
-              return 'module';
-            }
-          }
-        } else if (child) {
-          return this._getSourceType(child);
-        }
-      }
-    }
-
-    return 'script';
-  }
-
   /*
     Analyze the source-code by naively parsing the source code manually and
     checking for module syntax errors in order to determine the source type of
@@ -260,35 +222,36 @@ export default class JavaScriptScanner {
       sourceType: 'module',
       ecmaVersion: ECMA_VERSION,
     };
-
-    const detected = {
-      sourceType: 'module',
-      parsingError: null,
-    };
-
     try {
-      const ast = espree.parse(this.code, parserOptions);
-      detected.sourceType = filename.endsWith('.mjs')
-        ? 'module'
-        : this._getSourceType(ast);
+      espree.parse(this.code, parserOptions);
     } catch (exc) {
       const line = exc.lineNumber || '(unknown)';
       const column = exc.column || '(unknown)';
-      let error = `${exc.message} at line: ${line} and column: ${column}`;
+      const error = `${exc.message} at line: ${line} and column: ${column}`;
 
-      // When there is no line/column, it likely means something went wrong in
-      // our code (`_getSourceType()`) and we should know about it so we append
-      // a comment to hopefully get new bug reports.
-      if (!exc.lineNumber || !exc.column) {
-        error = oneLine`${error}. This looks like a bug in addons-linter,
-          please open a new issue:
-          https://github.com/mozilla/addons-linter/issues`;
-      }
-
-      detected.sourceType = 'script';
-      detected.parsingError = { type: parserOptions.sourceType, error };
+      return {
+        sourceType: 'script',
+        parsingError: { type: parserOptions.sourceType, error },
+      };
     }
 
-    return detected;
+    parserOptions.sourceType = 'script';
+    try {
+      espree.parse(this.code, parserOptions);
+    } catch (exc) {
+      const line = exc.lineNumber || '(unknown)';
+      const column = exc.column || '(unknown)';
+      const error = `${exc.message} at line: ${line} and column: ${column}`;
+
+      return {
+        sourceType: 'module',
+        parsingError: { type: parserOptions.sourceType, error },
+      };
+    }
+
+    return {
+      sourceType: 'script',
+      parsingError: null,
+    };
   }
 }
