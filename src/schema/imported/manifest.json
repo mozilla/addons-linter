@@ -15,24 +15,17 @@
           "postprocess": "manifestVersionCheck"
         },
         "applications": {
-          "type": "object",
-          "properties": {
-            "gecko": {
-              "$ref": "#/types/FirefoxSpecificProperties"
+          "allOf": [
+            {
+              "$ref": "#/types/BrowserSpecificSettings"
+            },
+            {
+              "description": "The applications property is deprecated, please use 'browser_specific_settings'"
             }
-          }
+          ]
         },
         "browser_specific_settings": {
-          "type": "object",
-          "properties": {
-            "gecko": {
-              "$ref": "#/types/FirefoxSpecificProperties"
-            },
-            "edge": {
-              "type": "object",
-              "additionalProperties": {}
-            }
-          }
+          "$ref": "#/types/BrowserSpecificSettings"
         },
         "name": {
           "type": "string",
@@ -73,10 +66,25 @@
         },
         "install_origins": {
           "type": "array",
-          "maxItems": 5,
           "items": {
             "type": "string",
             "format": "origin"
+          },
+          "maxItems": 5
+        },
+        "developer": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "preprocess": "localize"
+            },
+            "url": {
+              "type": "string",
+              "format": "url",
+              "preprocess": "localize",
+              "onError": "warn"
+            }
           }
         }
       },
@@ -336,16 +344,13 @@
                     }
                   ]
                 },
+                "hidden": {
+                  "type": "boolean",
+                  "default": false
+                },
                 "developer": {
-                  "type": "object",
                   "properties": {
-                    "name": {
-                      "type": "string",
-                      "preprocess": "localize"
-                    },
                     "url": {
-                      "type": "string",
-                      "preprocess": "localize",
                       "format": "ignore",
                       "oneOf": [
                         {
@@ -357,10 +362,6 @@
                       ]
                     }
                   }
-                },
-                "hidden": {
-                  "type": "boolean",
-                  "default": false
                 }
               }
             }
@@ -582,6 +583,9 @@
           "$ref": "menus#/definitions/OptionalPermissionNoPrompt"
         },
         {
+          "$ref": "scripting#/definitions/OptionalPermissionNoPrompt"
+        },
+        {
           "$ref": "search#/definitions/OptionalPermissionNoPrompt"
         },
         {
@@ -799,6 +803,15 @@
           "pattern": "^[0-9]{1,3}(\\.[a-z0-9*]+)+$"
         }
       }
+    },
+    "BrowserSpecificSettings": {
+      "type": "object",
+      "properties": {
+        "gecko": {
+          "$ref": "#/types/FirefoxSpecificProperties"
+        }
+      },
+      "additionalProperties": {}
     },
     "MatchPattern": {
       "anyOf": [
