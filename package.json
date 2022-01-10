@@ -65,7 +65,7 @@
     "image-size": "1.0.0",
     "is-mergeable-object": "1.1.1",
     "jed": "1.1.1",
-    "os-locale": "5.0.0",
+    "os-locale": "6.0.2",
     "pino": "7.6.2",
     "postcss": "8.4.5",
     "relaxed-json": "1.0.3",
