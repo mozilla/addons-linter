@@ -78,7 +78,7 @@
     "yauzl": "2.10.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.16.7",
+    "@babel/cli": "7.16.8",
     "@babel/core": "7.16.7",
     "@babel/eslint-parser": "7.16.5",
     "@babel/plugin-proposal-class-properties": "7.16.7",
@@ -87,8 +87,8 @@
     "@babel/plugin-proposal-function-sent": "7.16.7",
     "@babel/plugin-proposal-numeric-separator": "7.16.7",
     "@babel/plugin-proposal-throw-expressions": "7.16.7",
-    "@babel/preset-env": "7.16.7",
-    "@babel/register": "7.16.7",
+    "@babel/preset-env": "7.16.8",
+    "@babel/register": "7.16.8",
     "async": "3.2.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-gettext-extractor": "4.1.3",
