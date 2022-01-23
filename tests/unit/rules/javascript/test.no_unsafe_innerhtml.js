@@ -1,10 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
 import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
-import {
-  UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT,
-  NO_DOCUMENT_WRITE,
-} from 'messages';
+import { UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT } from 'messages';
 
 import { runJsScanner } from '../../helpers';
 
@@ -159,15 +156,9 @@ describe('no_unsafe_innerhtml', () => {
     // document.write / writeln
     {
       code: 'document.write("<span>" + htmlInput + "</span>");',
-      message: [
-        'Use of document.write strongly discouraged.',
-        'Unsafe call to document.write for argument 0',
-      ],
-      id: [NO_DOCUMENT_WRITE.code, UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [
-        NO_DOCUMENT_WRITE.description,
-        UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description,
-      ],
+      message: ['Unsafe call to document.write for argument 0'],
+      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'documentish.write("<span>" + htmlInput + "</span>");',
@@ -184,15 +175,9 @@ describe('no_unsafe_innerhtml', () => {
 
     {
       code: 'document.write(undefined);',
-      message: [
-        'Use of document.write strongly discouraged.',
-        'Unsafe call to document.write for argument 0',
-      ],
-      id: [NO_DOCUMENT_WRITE.code, UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
-      description: [
-        NO_DOCUMENT_WRITE.description,
-        UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description,
-      ],
+      message: ['Unsafe call to document.write for argument 0'],
+      id: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.code],
+      description: [UNSAFE_DYNAMIC_VARIABLE_ASSIGNMENT.description],
     },
     {
       code: 'document.writeln(evil);',

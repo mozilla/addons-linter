@@ -19,7 +19,6 @@ export const EXTERNAL_RULE_MAPPING = {
 };
 
 export const ESLINT_RULE_MAPPING = {
-  'deprecated-entities': ESLINT_WARNING,
   'event-listener-fourth': ESLINT_WARNING,
   'global-require-arg': ESLINT_WARNING,
   'opendialog-nonlit-uri': ESLINT_WARNING,

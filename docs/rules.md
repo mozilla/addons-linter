@@ -14,7 +14,6 @@ Rules are sorted by severity.
 | `UNEXPECTED_GLOGAL_ARG`     | warning  | Unexpected global passed as an argument.                                               |
 | `NO_IMPLIED_EVAL`           | warning  | disallow the use of `eval()`-like methods.                                             |
 | `OPENDIALOG_REMOTE_URI`     | warning  | openDialog called with non-local URI.                                                  |
-| `NO_DOCUMENT_WRITE`         | warning  | Use of `document.write` strongly discouraged.                                          |
 | `JS_SYNTAX_ERROR`           | warning  | JavaScript compile-time error.                                                         |
 | `UNADVISED_LIBRARY`         | warning  | This version of a JS library is not recommended.                                       |
 | `DEPRECATED_API`            | warning  | API is deprecated.                                                                     |
