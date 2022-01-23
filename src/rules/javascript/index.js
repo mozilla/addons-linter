@@ -1,5 +1,4 @@
 import content_scripts_file_absent from './content-scripts-file-absent';
-import event_listener_fourth from './event-listener-fourth';
 import global_require_arg from './global-require-arg';
 import opendialog_nonlit_uri from './opendialog-nonlit-uri';
 import opendialog_remote_uri from './opendialog-remote-uri';
@@ -11,7 +10,6 @@ import webextension_unsupported_api from './webextension-unsupported-api';
 
 export default {
   'content-scripts-file-absent': content_scripts_file_absent,
-  'event-listener-fourth': event_listener_fourth,
   'global-require-arg': global_require_arg,
   'opendialog-nonlit-uri': opendialog_nonlit_uri,
   'opendialog-remote-uri': opendialog_remote_uri,

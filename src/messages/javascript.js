@@ -11,14 +11,6 @@ export const JS_SYNTAX_ERROR = {
     supported yet. The validation cannot continue on this file.`),
 };
 
-export const EVENT_LISTENER_FOURTH = {
-  code: 'EVENT_LISTENER_FOURTH',
-  message: i18n._('addEventListener` called with truthy fourth argument.'),
-  description: i18n._(oneLine`When called with a truthy forth argument,
-    listeners can be triggered potentially unsafely by untrusted code. This
-    requires careful review.`),
-};
-
 export const CONTENT_SCRIPT_NOT_FOUND = {
   code: 'CONTENT_SCRIPT_NOT_FOUND',
   legacyCode: null,

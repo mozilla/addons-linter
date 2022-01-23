@@ -19,7 +19,6 @@ export const EXTERNAL_RULE_MAPPING = {
 };
 
 export const ESLINT_RULE_MAPPING = {
-  'event-listener-fourth': ESLINT_WARNING,
   'global-require-arg': ESLINT_WARNING,
   'opendialog-nonlit-uri': ESLINT_WARNING,
   'opendialog-remote-uri': ESLINT_WARNING,
