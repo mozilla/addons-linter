@@ -344,7 +344,7 @@ describe('JavaScript Scanner', () => {
     await runJsScanner(jsScanner);
     // This is the number of custom ESLint rules we have in addons-linter. When
     // adding a new rule, please increase this value.
-    expect(jsScanner._rulesProcessed).toEqual(16);
+    expect(jsScanner._rulesProcessed).toEqual(14);
   });
 
   TEMPORARY_APIS.forEach((api) => {

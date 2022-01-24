@@ -9,7 +9,6 @@ import {
   ensureFilenameExists,
   errorParamsToUnsupportedVersionRange,
   firefoxStrictMinVersion,
-  getNodeReference,
   getPackageTypeAsString,
   getRootExpression,
   getVariable,
@@ -131,67 +130,6 @@ describe('sprintf()', () => {
   });
 });
 
-describe('getNodeReference()', () => {
-  // Represents scope for following code:
-  // const foo = window; foo = bar;
-  const context = {
-    getScope: () => {
-      // TODO: Look into generating these AST nodes using ESPrima
-      return {
-        variables: [
-          {
-            name: 'foo', // Reference name
-            type: 'Identifier',
-            defs: [
-              {
-                parent: {
-                  parent: {
-                    body: [
-                      {
-                        type: 'VariableDeclaration',
-                        declarations: [
-                          {
-                            init: {
-                              name: 'window',
-                            },
-                          },
-                        ],
-                      },
-                      {
-                        type: 'ExpressionStatement',
-                        expression: {
-                          type: 'AssignmentExpression',
-                          right: {
-                            name: 'bar',
-                          },
-                        },
-                      },
-                    ],
-                  },
-                },
-              },
-            ],
-          },
-        ],
-      };
-    },
-  };
-
-  it('should return the name of the referenced variable', () => {
-    const ref = { name: 'foo' };
-    const val = getNodeReference(context, ref);
-
-    expect(val.name).toEqual('bar');
-  });
-
-  it('should return the name of the reference if not in scope', () => {
-    const ref = { name: 'doesNotExist' };
-    const val = getNodeReference(context, ref);
-
-    expect(val.name).toEqual(ref.name);
-  });
-});
-
 describe('getVariable()', () => {
   // This is the expected schema from eslint
   const context = {
@@ -251,26 +189,6 @@ describe('getVariable()', () => {
   it("should return undefined if the init property isn't on the parent", () => {
     const undef = getVariable(contextWithoutParent, 'foo');
     expect(typeof undef).toEqual('undefined');
-  });
-});
-
-describe('checkOtherReferences', () => {
-  const context = {
-    getScope: () => {
-      return {
-        variables: [],
-      };
-    },
-  };
-
-  it('should return the node if reference is a Literal', () => {
-    const literal = getNodeReference(context, { type: 'Literal' });
-    expect(literal.type).toEqual('Literal');
-  });
-
-  it('should return the node if reference is undefined', () => {
-    const undef = getNodeReference(context, { type: 'undefined' });
-    expect(undef.type).toEqual('undefined');
   });
 });
 
