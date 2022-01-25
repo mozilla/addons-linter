@@ -459,7 +459,17 @@
               "description": "The position of the tabs within their windows."
             },
             "cookieStoreId": {
-              "type": "string",
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ],
               "description": "The CookieStoreId used for the tab."
             },
             "openerTabId": {
