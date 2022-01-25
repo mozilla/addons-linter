@@ -72,6 +72,14 @@ export const UNEXPECTED_GLOGAL_ARG = {
     is not recommended. Please make this a var instead.`),
 };
 
+export const NO_DOCUMENT_WRITE = {
+  code: 'NO_DOCUMENT_WRITE',
+  message: i18n._('Use of document.write strongly discouraged.'),
+  description: i18n._(oneLine`document.write will fail in many
+    circumstances when used in extensions, and has potentially severe security
+    repercussions when used improperly. Therefore, it should not be used.`),
+};
+
 export const BANNED_LIBRARY = {
   code: 'BANNED_LIBRARY',
   message: i18n._('Banned 3rd-party JS library'),

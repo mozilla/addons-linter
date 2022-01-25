@@ -20,6 +20,7 @@ export const EXTERNAL_RULE_MAPPING = {
 
 export const ESLINT_RULE_MAPPING = {
   'global-require-arg': ESLINT_WARNING,
+  'no-document-write': ESLINT_WARNING,
   'opendialog-nonlit-uri': ESLINT_WARNING,
   'opendialog-remote-uri': ESLINT_WARNING,
   'webextension-api': ESLINT_WARNING,
