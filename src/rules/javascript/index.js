@@ -1,5 +1,6 @@
 import content_scripts_file_absent from './content-scripts-file-absent';
 import global_require_arg from './global-require-arg';
+import no_document_write from './no-document-write';
 import opendialog_nonlit_uri from './opendialog-nonlit-uri';
 import opendialog_remote_uri from './opendialog-remote-uri';
 import webextension_api from './webextension-api';
@@ -11,6 +12,7 @@ import webextension_unsupported_api from './webextension-unsupported-api';
 export default {
   'content-scripts-file-absent': content_scripts_file_absent,
   'global-require-arg': global_require_arg,
+  'no-document-write': no_document_write,
   'opendialog-nonlit-uri': opendialog_nonlit_uri,
   'opendialog-remote-uri': opendialog_remote_uri,
   'webextension-api': webextension_api,
