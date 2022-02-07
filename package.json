@@ -29,7 +29,6 @@
     "prettier-ci": "prettier --list-different '**' || (echo '\n\nThis failure means you did not run `npm run prettier-dev` before committing\n\n' && exit 1)",
     "prettier-dev": "pretty-quick --branch master",
     "build-rules": "scripts/build-rules && cp node_modules/github-markdown-css/github-markdown.css docs/github-markdown.css",
-    "gen-contributing-toc": "doctoc CONTRIBUTING.md",
     "webext-test-functional": "scripts/webext-test-functional",
     "smoke-test-eslint-version-conflicts": "scripts/smoke-test-eslint-version-conflicts",
     "update-hashes": "scripts/dispensary > src/dispensary/hashes.txt"
@@ -95,7 +94,6 @@
     "babel-jest": "27.5.0",
     "babel-loader": "8.2.3",
     "comment-json": "4.2.2",
-    "doctoc": "2.1.0",
     "eslint-config-amo": "5.4.0",
     "github-markdown-css": "5.1.0",
     "gunzip-maybe": "1.4.2",
