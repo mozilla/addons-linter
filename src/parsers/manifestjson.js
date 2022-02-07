@@ -14,6 +14,7 @@ import {
   validateAddon,
   validateDictionary,
   validateLangPack,
+  validateSitePermission,
   validateStaticTheme,
 } from 'schema/validator';
 import {
@@ -110,18 +111,28 @@ export default class ManifestJSONParser extends JSONParser {
       // We've parsed the JSON; now we can validate the manifest.
       this.selfHosted = selfHosted;
       this.schemaValidatorOptions = schemaValidatorOptions;
-      this.isLanguagePack = Object.prototype.hasOwnProperty.call(
-        this.parsedJSON,
-        'langpack_id'
-      );
-      this.isDictionary = Object.prototype.hasOwnProperty.call(
-        this.parsedJSON,
-        'dictionaries'
-      );
-      this.isStaticTheme = Object.prototype.hasOwnProperty.call(
-        this.parsedJSON,
-        'theme'
-      );
+
+      const hasManifestKey = (key) =>
+        Object.prototype.hasOwnProperty.call(this.parsedJSON, key);
+
+      this.isStaticTheme = false;
+      this.isLanguagePack = false;
+      this.isDictionary = false;
+      this.isSitePermission = false;
+
+      // Keep the addon type detection in sync with the most updated logic
+      // used on the Firefox side, as defined in ExtensionData parseManifest
+      // method.
+      if (hasManifestKey('theme')) {
+        this.isStaticTheme = true;
+      } else if (hasManifestKey('langpack_id')) {
+        this.isLanguagePack = true;
+      } else if (hasManifestKey('dictionaries')) {
+        this.isDictionary = true;
+      } else if (hasManifestKey('site_permissions')) {
+        this.isSitePermission = true;
+      }
+
       this.io = io;
       this.restrictedPermissions = restrictedPermissions;
       this._validate();
@@ -388,6 +399,8 @@ export default class ManifestJSONParser extends JSONParser {
       validate = validateLangPack;
     } else if (this.isDictionary) {
       validate = validateDictionary;
+    } else if (this.isSitePermission) {
+      validate = validateSitePermission;
     }
 
     this.isValid = validate(this.parsedJSON, this.schemaValidatorOptions);
