@@ -5,10 +5,6 @@ This linter is used to help develop and publish [Add-ons](https://developer.mozi
 Here are links to all the sections in this document:
 
 <!-- If you change any of the headings in this document, remember to update the table of contents. -->
-<!-- To update the TOC, run the command `npm run gen-contributing-toc` from your root directory and you will auto generate a new TOC. -->
-
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Picking an issue](#picking-an-issue)
 - [Installation](#installation)
@@ -20,8 +16,6 @@ Here are links to all the sections in this document:
 - [Creating a pull request](#creating-a-pull-request)
 - [Writing commit messages](#writing-commit-messages)
   - [Tips](#tips)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Picking an issue
 
