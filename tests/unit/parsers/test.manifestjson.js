@@ -1350,6 +1350,23 @@ describe('ManifestJSONParser', () => {
           'extra properties',
       });
     });
+
+    it('does not break when background.scripts is not an array', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        background: { scripts: 'background.js' },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      const { errors } = addonLinter.collector;
+      assertHasMatchingError(errors, {
+        code: messages.MANIFEST_FIELD_INVALID.code,
+        message: '"/background/scripts" should be array',
+      });
+    });
   });
 
   describe('default_locale', () => {

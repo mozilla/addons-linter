@@ -457,7 +457,7 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.background) {
-      if (this.parsedJSON.background.scripts) {
+      if (Array.isArray(this.parsedJSON.background.scripts)) {
         this.parsedJSON.background.scripts.forEach((script) => {
           this.validateFileExistsInPackage(script, 'script');
         });
