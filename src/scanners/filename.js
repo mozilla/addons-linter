@@ -13,19 +13,19 @@ export default class FilenameScanner extends BaseScanner {
     const extension = extname(this.filename);
     const filenameWithoutPath = basename(this.filename);
 
-    if (this.filename.match(constants.ALREADY_SIGNED_REGEX)) {
+    if (constants.ALREADY_SIGNED_REGEX.test(this.filename)) {
       this.linterMessages.push({
         ...messages.ALREADY_SIGNED,
         type: constants.VALIDATION_WARNING,
         file: this.filename,
       });
-    } else if (this.filename.match(constants.HIDDEN_FILE_REGEX)) {
+    } else if (constants.HIDDEN_FILE_REGEX.test(this.filename)) {
       this.linterMessages.push({
         ...messages.HIDDEN_FILE,
         type: constants.VALIDATION_WARNING,
         file: this.filename,
       });
-    } else if (this.filename.match(constants.FLAGGED_FILE_REGEX)) {
+    } else if (constants.FLAGGED_FILE_REGEX.test(this.filename)) {
       this.linterMessages.push({
         ...messages.FLAGGED_FILE,
         type: constants.VALIDATION_WARNING,
