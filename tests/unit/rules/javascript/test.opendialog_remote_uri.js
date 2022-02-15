@@ -4,7 +4,7 @@ import * as messages from 'messages';
 
 import { runJsScanner } from '../../helpers';
 
-describe('opendialog_remote_uri', () => {
+describe(__filename, () => {
   it('should warn on remote uris passed to openDialog', async () => {
     const code = `foo.openDialog("https://foo.com/bar/");
                 foo.openDialog("http://foo.com/bar/");
@@ -31,5 +31,15 @@ describe('opendialog_remote_uri', () => {
 
     const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(0);
+  });
+
+  it('should not throw an error when the first argument is null', async () => {
+    const code = 'foo.openDialog(null)';
+    const jsScanner = new JavaScriptScanner(code, 'badcode.js');
+
+    const { linterMessages } = await runJsScanner(jsScanner);
+    expect(linterMessages.length).toEqual(1);
+    expect(linterMessages[0].code).toEqual(messages.OPENDIALOG_REMOTE_URI.code);
+    expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
   });
 });
