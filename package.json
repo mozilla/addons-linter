@@ -44,7 +44,7 @@
   },
   "homepage": "https://github.com/mozilla/addons-linter#readme",
   "dependencies": {
-    "@mdn/browser-compat-data": "4.1.8",
+    "@mdn/browser-compat-data": "4.1.9",
     "addons-moz-compare": "1.2.0",
     "addons-scanner-utils": "6.3.0",
     "ajv": "6.12.6",
