@@ -65,7 +65,7 @@
     "is-mergeable-object": "1.1.1",
     "jed": "1.1.1",
     "os-locale": "5.0.0",
-    "pino": "7.8.0",
+    "pino": "7.8.1",
     "postcss": "8.4.8",
     "relaxed-json": "1.0.3",
     "semver": "7.3.5",
