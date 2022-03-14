@@ -112,6 +112,21 @@
               "description": "The soonest that the JavaScript will be injected into the tab. Defaults to \"document_idle\"."
             }
           ]
+        },
+        "cookieStoreId": {
+          "anyOf": [
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "description": "limit the set of matched tabs to those that belong to the given cookie store id"
         }
       },
       "required": [
