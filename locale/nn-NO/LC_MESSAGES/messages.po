@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-05 18:17+0000\n"
-"PO-Revision-Date: 2022-03-20 11:53+0000\n"
+"PO-Revision-Date: 2022-03-20 11:55+0000\n"
 "Last-Translator: Bjørn I. <bjorni.svindseth@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: nn_NO\n"
@@ -87,14 +87,12 @@ msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` pr
 msgstr "\"{{api}}\" er tatt bort i Manifest Version 3 (eigenskapen `manifest_version`)"
 
 #: src/messages/javascript.js:141
-#, fuzzy
 msgid "{{api}} is deprecated"
-msgstr "{{api}} er ikkje støtta"
+msgstr "{{api}} er forelda"
 
 #: src/messages/javascript.js:142
-#, fuzzy
 msgid "This API has been deprecated by Firefox."
-msgstr "Denne API-en har ikkje blitt implementert av Firefox."
+msgstr "Denne API-en har blitt forelda av Firefox."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
@@ -241,14 +239,12 @@ msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBT
 msgstr "Ingen meldingseigenskap «message» er sett for ein streng (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:100
-#, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr "Sjå https://mzl.la/20PenXl (MDN Docs) for meir informasjon."
+msgstr "Sjå https://mzl.la/2Qn0fWC (MDN Docs) for meir informasjon."
 
 #: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
-#, fuzzy
 msgid "Invalid host permission."
-msgstr "Ukjent løyve."
+msgstr "Ugyldig vertsløyve."
 
 #: src/messages/manifestjson.js:117
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
