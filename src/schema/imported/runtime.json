@@ -762,7 +762,8 @@
         "s390x",
         "sparc64",
         "x86-32",
-        "x86-64"
+        "x86-64",
+        "noarch"
       ],
       "allowedContexts": [
         "content",
