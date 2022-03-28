@@ -26,6 +26,10 @@ references:
       # (far) future. It can either be lower or higher than the current Node
       # version we run in production.
       - image: cimg/node:17.7
+    environment:
+      ## workaround `npm run build` issue triggered by webpack
+      ## on nodejs 17.
+      NODE_OPTIONS: --openssl-legacy-provider
 
   restore_build_cache: &restore_build_cache
     restore_cache:
