@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-05 18:17+0000\n"
-"PO-Revision-Date: 2021-11-16 02:41+0000\n"
+"PO-Revision-Date: 2022-04-08 20:14+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -84,7 +84,7 @@ msgstr "ეს API არ გამოიყენება Firefox-ში."
 
 #: src/messages/javascript.js:132
 msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr "„{{api}}“ მოცილებულია მანიფესტის 3-ე ვერსიიდან (`manifest_version` – თვისება)"
+msgstr "„{{api}}“ მოცილებულია მანიფესტის მე-3 ვერსიიდან (`manifest_version` – თვისება)"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
