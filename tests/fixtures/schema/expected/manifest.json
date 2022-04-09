@@ -1,5 +1,5 @@
 {
-  "id": "manifest",
+  "$id": "manifest",
   "permissions": [],
   "definitions": {},
   "refs": {},

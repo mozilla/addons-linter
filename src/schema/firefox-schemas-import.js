@@ -652,9 +652,16 @@ function schemaFiles(basePath) {
 function writeSchemasToFile(basePath, importedPath, loadedSchemas) {
   const ids = Object.keys(loadedSchemas);
   // Write out the schemas.
-  ids.forEach((id) => {
-    const { file, schema } = loadedSchemas[id];
-    writeSchema(importedPath, file, schema);
+  ids.forEach((currId) => {
+    const { file, schema } = loadedSchemas[currId];
+    const { id, ...rest } = schema;
+    writeSchema(
+      importedPath,
+      file,
+      // Normalize schema to draft7 spec
+      // (required for ajv v8).
+      { $id: id, ...rest }
+    );
   });
   // Write out the index.js to easily import all schemas.
   const imports = ids
