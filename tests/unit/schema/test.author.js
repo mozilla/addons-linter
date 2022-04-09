@@ -17,6 +17,6 @@ describe('/author', () => {
     manifest.author = {};
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual('/author');
+    expect(validateAddon.errors[0].instancePath).toEqual('/author');
   });
 });

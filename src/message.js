@@ -11,7 +11,7 @@ export const props = [
   'column',
   'file',
   'line',
-  'dataPath',
+  'instancePath',
 ];
 
 export const requiredProps = ['code', 'message', 'description'];

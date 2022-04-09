@@ -10,7 +10,7 @@ describe('/name', () => {
     manifest.name = 'a'.repeat(46);
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual('/name');
+    expect(validateAddon.errors[0].instancePath).toEqual('/name');
   });
 
   it('should be invalid due to name < 2 chars', () => {
@@ -18,7 +18,7 @@ describe('/name', () => {
     manifest.name = 'a';
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual('/name');
+    expect(validateAddon.errors[0].instancePath).toEqual('/name');
   });
 
   it('should be invalid due to missing a name', () => {
@@ -26,7 +26,7 @@ describe('/name', () => {
     manifest.name = undefined;
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual('/name');
+    expect(validateAddon.errors[0].instancePath).toEqual('');
     expect(validateAddon.errors[0].params.missingProperty).toEqual('name');
   });
 });

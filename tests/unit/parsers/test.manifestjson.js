@@ -71,8 +71,8 @@ describe('ManifestJSONParser', () => {
     expect(addonLinter.collector.errors.length).toEqual(1);
     assertHasMatchingError(addonLinter.collector.errors, {
       code: messages.JSON_INVALID.code,
-      message: /update_url" should match format "secureUrl"/,
-      dataPath: '/browser_specific_settings/gecko/update_url',
+      message: /update_url" must match format "secureUrl"/,
+      instancePath: '/browser_specific_settings/gecko/update_url',
     });
   });
 
@@ -127,7 +127,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(addonLinter.collector.errors, {
         code: messages.JSON_INVALID.code,
-        message: /"\/applications\/gecko\/id" should match pattern/,
+        message: /"\/applications\/gecko\/id" must match pattern/,
       });
     });
 
@@ -143,7 +143,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(addonLinter.collector.errors, {
         code: messages.JSON_INVALID.code,
-        message: /"\/applications\/gecko\/id" should match pattern/,
+        message: /"\/applications\/gecko\/id" must match pattern/,
       });
     });
 
@@ -162,7 +162,7 @@ describe('ManifestJSONParser', () => {
       assertHasMatchingError(addonLinter.collector.errors, {
         code: messages.JSON_INVALID.code,
         message:
-          /"\/applications\/gecko\/id" should NOT be longer than 80 characters/,
+          /"\/applications\/gecko\/id" must NOT have more than 80 characters/,
       });
     });
 
@@ -266,7 +266,7 @@ describe('ManifestJSONParser', () => {
         expect.arrayContaining([
           expect.objectContaining({
             code: 'MANIFEST_PERMISSIONS',
-            dataPath: '/permissions/0',
+            instancePath: '/permissions/0',
             message: expect.stringMatching(
               /Invalid permissions "\*:\/\/example\.org\/\*" at 0/
             ),
@@ -292,7 +292,7 @@ describe('ManifestJSONParser', () => {
         expect.arrayContaining([
           expect.objectContaining({
             code: 'MANIFEST_FIELD_UNSUPPORTED',
-            dataPath: '/host_permissions',
+            instancePath: '/host_permissions',
             message: expect.stringMatching(
               /not supported in manifest versions < 3/
             ),
@@ -332,7 +332,7 @@ describe('ManifestJSONParser', () => {
         expect.arrayContaining([
           expect.objectContaining({
             code: 'MANIFEST_HOST_PERMISSIONS',
-            dataPath: '/host_permissions/0',
+            instancePath: '/host_permissions/0',
             message: expect.stringMatching(
               /Invalid host_permissions "foo" at 0/
             ),
@@ -358,7 +358,7 @@ describe('ManifestJSONParser', () => {
         expect.arrayContaining([
           expect.objectContaining({
             code: 'MANIFEST_PERMISSIONS',
-            dataPath: '/permissions/0',
+            instancePath: '/permissions/0',
             message: expect.stringMatching(
               /Invalid permissions "<all_urls>" at 0/
             ),
@@ -418,7 +418,7 @@ describe('ManifestJSONParser', () => {
         expect(manifestJSONParser.isValid).toEqual(false);
         const { errors } = addonLinter.collector;
         expect(errors[0].code).toEqual(expectedMsgCode);
-        expect(errors[0].message).toContain('should be string');
+        expect(errors[0].message).toContain('must be string');
       });
 
       it(`should error if ${manifestKey} is duplicated`, () => {
@@ -439,7 +439,7 @@ describe('ManifestJSONParser', () => {
         expect(manifestJSONParser.isValid).toEqual(false);
         const { errors } = addonLinter.collector;
         expect(errors[0].code).toEqual(expectedMsgCode);
-        expect(errors[0].message).toContain('should NOT have duplicate items');
+        expect(errors[0].message).toContain('must NOT have duplicate items');
       });
     }
   });
@@ -480,7 +480,7 @@ describe('ManifestJSONParser', () => {
           validManifestJSON(),
           addonLinter.collector
         );
-        const message = parser.errorLookup({ dataPath: '' });
+        const message = parser.errorLookup({ instancePath: '' });
         expect(message.code).toEqual(messages.JSON_INVALID.code);
       });
     });
@@ -491,7 +491,10 @@ describe('ManifestJSONParser', () => {
         validManifestJSON(),
         addonLinter.collector
       );
-      const message = parser.errorLookup({ dataPath: '', keyword: 'required' });
+      const message = parser.errorLookup({
+        instancePath: '',
+        keyword: 'required',
+      });
       expect(message.code).toEqual(messages.MANIFEST_FIELD_REQUIRED.code);
     });
 
@@ -501,7 +504,7 @@ describe('ManifestJSONParser', () => {
         validManifestJSON(),
         addonLinter.collector
       );
-      const message = parser.errorLookup({ dataPath: '', keyword: 'type' });
+      const message = parser.errorLookup({ instancePath: '', keyword: 'type' });
       expect(message.code).toEqual(messages.MANIFEST_FIELD_INVALID.code);
     });
 
@@ -517,7 +520,9 @@ describe('ManifestJSONParser', () => {
           validManifestJSON(),
           addonLinter.collector
         );
-        const message = parser.errorLookup({ dataPath: `/${manifestKey}/0` });
+        const message = parser.errorLookup({
+          instancePath: `/${manifestKey}/0`,
+        });
         expect(message.code).toEqual(expectedMsgCode);
       });
     }
@@ -530,7 +535,7 @@ describe('ManifestJSONParser', () => {
       );
       const message = parser.errorLookup({
         keyword: 'deprecated',
-        dataPath: '/theme/images/headerURL',
+        instancePath: '/theme/images/headerURL',
         message: 'This is going to be ignored...',
       });
       expect(message.message).toEqual(
@@ -560,7 +565,7 @@ describe('ManifestJSONParser', () => {
             // The following are properties added by ajv to the ones
             // explicitly reported by the keyword validate function.
             data: isPermission ? 'perm-value' : 'unused-field-value',
-            dataPath: manifestKey.includes('permissions')
+            instancePath: manifestKey.includes('permissions')
               ? `/${manifestKey}/0`
               : `/${manifestKey}`,
           });
@@ -600,7 +605,7 @@ describe('ManifestJSONParser', () => {
               // This would need to be changed to /browser_action
               // if the manifest_version we test by default becomes
               // manifest_version 3.
-              dataPath: '/action',
+              instancePath: '/action',
             }),
           ])
         );
@@ -627,11 +632,11 @@ describe('ManifestJSONParser', () => {
         );
         expect(manifestJSONParser.isValid).toEqual(false);
         const { warnings } = addonLinter.collector;
-        expect(warnings.length).toEqual(1);
         expect(warnings[0].code).toEqual(expectedMsg.code);
         expect(warnings[0].message).toContain(
           `/${mainfestKey}: Invalid ${mainfestKey} "wat" at 1.`
         );
+        expect(warnings.length).toEqual(1);
       });
     }
   });
@@ -660,7 +665,9 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
       expect(errors[0].code).toEqual(messages.MANIFEST_FIELD_REQUIRED.code);
-      expect(errors[0].message).toContain('/name');
+      expect(errors[0].message).toContain(
+        `"/" must have required property 'name'`
+      );
     });
 
     it('should collect an error on non-string name value', () => {
@@ -700,7 +707,9 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
       expect(errors[0].code).toEqual(messages.MANIFEST_FIELD_REQUIRED.code);
-      expect(errors[0].message).toContain('/version');
+      expect(errors[0].message).toContain(
+        `"/" must have required property 'version'`
+      );
     });
 
     it('should collect an error on non-string version value', () => {
@@ -1341,7 +1350,6 @@ describe('ManifestJSONParser', () => {
         json,
         addonLinter.collector
       );
-      expect(manifestJSONParser.isValid).toEqual(false);
       const { errors } = addonLinter.collector;
       assertHasMatchingError(errors, {
         code: messages.JSON_INVALID.code,
@@ -1349,6 +1357,7 @@ describe('ManifestJSONParser', () => {
           '"/background" is not a valid key or has invalid ' +
           'extra properties',
       });
+      expect(manifestJSONParser.isValid).toEqual(false);
     });
 
     it('does not break when background.scripts is not an array', () => {
@@ -1364,7 +1373,7 @@ describe('ManifestJSONParser', () => {
       const { errors } = addonLinter.collector;
       assertHasMatchingError(errors, {
         code: messages.MANIFEST_FIELD_INVALID.code,
-        message: '"/background/scripts" should be array',
+        message: '"/background/scripts" must be array',
       });
     });
   });
@@ -2133,10 +2142,10 @@ describe('ManifestJSONParser', () => {
       expect(linter.collector.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            dataPath: '/background/service_worker',
+            instancePath: '/background',
             code: 'JSON_INVALID',
             message: expect.stringMatching(
-              /"\/background\/service_worker" is an invalid additional property/
+              /"\/background" .* has invalid extra properties/
             ),
           }),
         ])
@@ -2485,7 +2494,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(linter.collector.errors, {
         code: messages.JSON_INVALID.code,
-        message: '"/content_scripts" is an invalid additional property',
+        message: '"/" must NOT have additional properties',
         description: 'Your JSON file could not be parsed.',
       });
     });
@@ -2505,7 +2514,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(true);
     });
 
-    it('throws warning on missing langpack_id', () => {
+    it('adds a validation error on missing langpack_id', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validLangpackManifestJSON({ langpack_id: null });
       const manifestJSONParser = new ManifestJSONParser(
@@ -2518,7 +2527,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
     });
 
-    it('throws error on additional properties', () => {
+    it('adds a validation error on additional properties', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validLangpackManifestJSON({ content_scripts: ['foo.js'] });
       const manifestJSONParser = new ManifestJSONParser(
@@ -2531,7 +2540,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(linter.collector.errors, {
         code: messages.JSON_INVALID.code,
-        message: '"/content_scripts" is an invalid additional property',
+        message: '"/" must NOT have additional properties',
         description: 'Your JSON file could not be parsed.',
       });
     });
@@ -2551,7 +2560,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(true);
     });
 
-    it('throws warning on additional properties', () => {
+    it('adds a validation error on additional properties', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validStaticThemeManifestJSON({
         content_scripts: ['foo.js'],
@@ -2566,7 +2575,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(linter.collector.errors, {
         code: messages.JSON_INVALID.code,
-        message: '"/content_scripts" is an invalid additional property',
+        message: '"/" must NOT have additional properties',
         description: 'Your JSON file could not be parsed.',
       });
     });
@@ -2886,15 +2895,15 @@ describe('ManifestJSONParser', () => {
         expect(warnings).toEqual([]);
 
         const actualErrors = errors.map((err) => {
-          const { code, dataPath, file, message, description } = err;
-          return { code, dataPath, file, message, description };
+          const { code, instancePath, file, message, description } = err;
+          return { code, instancePath, file, message, description };
         });
 
         const expectedErrors = [
           {
             code: messages.MANIFEST_THEME_LWT_ALIAS.code,
             file: 'manifest.json',
-            dataPath: '/theme/images/headerURL',
+            instancePath: '/theme/images/headerURL',
             message: 'This theme LWT alias has been removed in Firefox 70.',
             description:
               'See https://mzl.la/2T11Lkc (MDN Docs) for more information.',
@@ -2902,7 +2911,7 @@ describe('ManifestJSONParser', () => {
           {
             code: messages.MANIFEST_THEME_LWT_ALIAS.code,
             file: 'manifest.json',
-            dataPath: '/theme/colors/accentcolor',
+            instancePath: '/theme/colors/accentcolor',
             message: 'This theme LWT alias has been removed in Firefox 70.',
             description:
               'See https://mzl.la/2T11Lkc (MDN Docs) for more information.',
@@ -2910,7 +2919,7 @@ describe('ManifestJSONParser', () => {
           {
             code: messages.MANIFEST_THEME_LWT_ALIAS.code,
             file: 'manifest.json',
-            dataPath: '/theme/colors/textcolor',
+            instancePath: '/theme/colors/textcolor',
             message: 'This theme LWT alias has been removed in Firefox 70.',
             description:
               'See https://mzl.la/2T11Lkc (MDN Docs) for more information.',
@@ -2989,8 +2998,8 @@ describe('ManifestJSONParser', () => {
         expect.arrayContaining([
           expect.objectContaining({
             code: messages.JSON_INVALID.code,
-            message: '"/install_origins" should NOT have more than 1 items',
-            dataPath: '/install_origins',
+            message: '"/install_origins" must NOT have more than 1 items',
+            instancePath: '/install_origins',
           }),
         ])
       );
@@ -3009,7 +3018,7 @@ describe('ManifestJSONParser', () => {
             code: messages.JSON_INVALID.code,
             message:
               '"/site_permissions/1" is not a valid key or has invalid extra properties',
-            dataPath: '/site_permissions/1',
+            instancePath: '/site_permissions/1',
           }),
         ])
       );

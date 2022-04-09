@@ -66,10 +66,10 @@ describe('Collector', () => {
     expect(collection.notices.length).toEqual(0);
   });
 
-  it('should not add a duplicate message with a dataPath', () => {
+  it('should not add a duplicate message with a instancePath', () => {
     const collection = new Collector();
-    collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
-    collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
+    collection.addWarning({ ...fakeMessageData, instancePath: '/foo' });
+    collection.addWarning({ ...fakeMessageData, instancePath: '/foo' });
     expect(collection.warnings.length).toEqual(1);
     expect(collection.warnings[0].type).toEqual('warning');
     expect(collection.errors.length).toEqual(0);
@@ -88,17 +88,17 @@ describe('Collector', () => {
     });
   });
 
-  it('for manifest should add one message for dataPath', () => {
+  it('for manifest should add one message for instancePath', () => {
     const collection = new Collector();
     collection.addError({
       ...fakeMessageData,
       file: 'manifest.json',
-      dataPath: '/foo/1',
+      instancePath: '/foo/1',
     });
     collection.addError({
       ...fakeMessageData,
       file: 'manifest.json',
-      dataPath: '/foo/1',
+      instancePath: '/foo/1',
       message: 'foo bar',
     });
     expect(collection.errors.length).toBe(1);
@@ -108,13 +108,13 @@ describe('Collector', () => {
     const collection = new Collector();
     collection.addWarning({
       ...fakeMessageData,
-      dataPath: '/foo',
+      instancePath: '/foo',
       file: 'foo.js',
       line: 25,
     });
     collection.addWarning({
       ...fakeMessageData,
-      dataPath: '/foo',
+      instancePath: '/foo',
       file: 'foo.js',
       line: 26,
     });
@@ -127,10 +127,10 @@ describe('Collector', () => {
 
   it('should add a message that differs on one prop', () => {
     const collection = new Collector();
-    collection.addWarning({ ...fakeMessageData, dataPath: '/foo' });
+    collection.addWarning({ ...fakeMessageData, instancePath: '/foo' });
     collection.addWarning({
       ...fakeMessageData,
-      dataPath: '/foo',
+      instancePath: '/foo',
       message: 'Foo message',
     });
     expect(collection.warnings.length).toEqual(2);
@@ -197,10 +197,10 @@ describe('Collector', () => {
     expect(collection.notices[0].file).toEqual('test.js');
   });
 
-  it('should throw when getting messages for an undefined dataPath', () => {
+  it('should throw when getting messages for an undefined instancePath', () => {
     const collection = new Collector();
     expect(() => {
       collection.messagesAtDataPath(undefined);
-    }).toThrow(/dataPath is required/);
+    }).toThrow(/instancePath is required/);
   });
 });

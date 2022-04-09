@@ -1,5 +1,5 @@
 {
-  "id": "cookies",
+  "$id": "cookies",
   "description": "Use the <code>browser.cookies</code> API to query and modify cookies, and to be notified when they change.",
   "permissions": [
     "cookies"

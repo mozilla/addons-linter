@@ -1,5 +1,5 @@
 {
-  "id": "dns",
+  "$id": "dns",
   "description": "Asynchronous DNS API",
   "permissions": [
     "dns"

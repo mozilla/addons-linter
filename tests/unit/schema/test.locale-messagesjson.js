@@ -16,7 +16,7 @@ describe('messages', () => {
     delete messages.foo.message;
     validateLocaleMessages(messages);
     expect(validateLocaleMessages.errors.length).toEqual(1);
-    expect(validateLocaleMessages.errors[0].dataPath).toEqual('/foo/message');
+    expect(validateLocaleMessages.errors[0].instancePath).toEqual('/foo');
   });
 
   it('should not validate the message name', () => {
@@ -31,8 +31,8 @@ describe('messages', () => {
     delete messages.Placeh0lder_Test.placeholders.foo.content;
     validateLocaleMessages(messages);
     expect(validateLocaleMessages.errors.length).toEqual(1);
-    expect(validateLocaleMessages.errors[0].dataPath).toEqual(
-      '/Placeh0lder_Test/placeholders/foo/content'
+    expect(validateLocaleMessages.errors[0].instancePath).toEqual(
+      '/Placeh0lder_Test/placeholders/foo'
     );
   });
 
@@ -41,8 +41,8 @@ describe('messages', () => {
     messages.Placeh0lder_Test.placeholders['invalid.placeholder'] = {};
     validateLocaleMessages(messages);
     expect(validateLocaleMessages.errors.length).toEqual(1);
-    expect(validateLocaleMessages.errors[0].dataPath).toEqual(
-      '/Placeh0lder_Test/placeholders/invalid.placeholder'
+    expect(validateLocaleMessages.errors[0].instancePath).toEqual(
+      '/Placeh0lder_Test/placeholders'
     );
   });
 });

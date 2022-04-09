@@ -32,11 +32,11 @@ describe('/developer', () => {
       validateAddon(manifest);
 
       assertHasMatchingError(validateAddon.errors, {
-        dataPath: '/developer/url',
-        message: /should match format "url"/,
+        instancePath: '/developer/url',
+        message: /must match format "url"/,
       });
       assertHasMatchingError(validateAddon.errors, {
-        message: 'should match pattern "^__MSG_.*?__$"',
+        message: 'must match pattern "^__MSG_.*?__$"',
       });
     });
   });
@@ -66,7 +66,7 @@ describe('/developer', () => {
       validateAddon(manifest);
 
       expect(validateAddon.errors.length).toEqual(1);
-      expect(validateAddon.errors[0].dataPath).toEqual('/developer/name');
+      expect(validateAddon.errors[0].instancePath).toEqual('/developer/name');
     });
   });
 });

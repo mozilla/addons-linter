@@ -1,5 +1,5 @@
 {
-  "id": "activityLog",
+  "$id": "activityLog",
   "description": "Monitor extension activity",
   "permissions": [
     "activityLog"

@@ -11,8 +11,8 @@ describe('/background', () => {
     manifest.background = { scripts: ['http://foo'] };
     validateAddon(manifest);
     assertHasMatchingError(validateAddon.errors, {
-      dataPath: '/background/scripts/0',
-      message: /should match format "strictRelativeUrl"/,
+      instancePath: '/background/scripts/0',
+      message: /must match format "strictRelativeUrl"/,
     });
   });
 
@@ -42,8 +42,8 @@ describe('/background', () => {
     manifest.background = { page: 'http://foo' };
     validateAddon(manifest);
     assertHasMatchingError(validateAddon.errors, {
-      dataPath: '/background/page',
-      message: /should match format "strictRelativeUrl"/,
+      instancePath: '/background/page',
+      message: /must match format "strictRelativeUrl"/,
     });
   });
 

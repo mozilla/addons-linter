@@ -1,5 +1,5 @@
 {
-  "id": "browsingData",
+  "$id": "browsingData",
   "description": "Use the <code>chrome.browsingData</code> API to remove browsing data from a user's local profile.",
   "permissions": [
     "browsingData"

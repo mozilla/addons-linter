@@ -1,5 +1,5 @@
 {
-  "id": "windows",
+  "$id": "windows",
   "description": "Use the <code>browser.windows</code> API to interact with browser windows. You can use this API to create, modify, and rearrange windows in the browser.",
   "properties": {
     "WINDOW_ID_NONE": {

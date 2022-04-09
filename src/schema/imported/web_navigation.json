@@ -1,5 +1,5 @@
 {
-  "id": "webNavigation",
+  "$id": "webNavigation",
   "description": "Use the <code>browser.webNavigation</code> API to receive notifications about the status of navigation requests in-flight.",
   "permissions": [
     "webNavigation"

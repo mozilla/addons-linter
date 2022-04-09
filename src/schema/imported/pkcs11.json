@@ -1,5 +1,5 @@
 {
-  "id": "pkcs11",
+  "$id": "pkcs11",
   "description": "PKCS#11 module management API",
   "permissions": [
     "pkcs11"

@@ -1,5 +1,5 @@
 {
-  "id": "topSites",
+  "$id": "topSites",
   "description": "Use the chrome.topSites API to access the top sites that are displayed on the new tab page. ",
   "permissions": [
     "topSites"

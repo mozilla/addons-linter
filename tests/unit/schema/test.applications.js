@@ -26,7 +26,7 @@ describe('/applications/gecko/*', () => {
     manifest.applications.gecko.update_url = 'whatevs';
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual(
+    expect(validateAddon.errors[0].instancePath).toEqual(
       '/applications/gecko/update_url'
     );
   });
@@ -36,7 +36,7 @@ describe('/applications/gecko/*', () => {
     manifest.applications.gecko.update_url = 'http://foo.com';
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual(
+    expect(validateAddon.errors[0].instancePath).toEqual(
       '/applications/gecko/update_url'
     );
   });
@@ -53,7 +53,7 @@ describe('/applications/gecko/*', () => {
     manifest.applications.gecko.strict_min_version = 42;
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual(
+    expect(validateAddon.errors[0].instancePath).toEqual(
       '/applications/gecko/strict_min_version'
     );
   });
@@ -76,7 +76,7 @@ describe('/applications/gecko/*', () => {
       manifest.applications.gecko.strict_min_version = version;
       validateAddon(manifest);
       expect(validateAddon.errors.length).toEqual(1);
-      expect(validateAddon.errors[0].dataPath).toEqual(
+      expect(validateAddon.errors[0].instancePath).toEqual(
         '/applications/gecko/strict_min_version'
       );
     });
@@ -87,7 +87,7 @@ describe('/applications/gecko/*', () => {
     manifest.applications.gecko.strict_max_version = 42;
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual(
+    expect(validateAddon.errors[0].instancePath).toEqual(
       '/applications/gecko/strict_max_version'
     );
   });
@@ -131,7 +131,9 @@ describe('/applications/gecko/*', () => {
     manifest.applications.gecko.id = 10;
     validateAddon(manifest);
     expect(validateAddon.errors.length >= 1).toBeTruthy();
-    expect(validateAddon.errors[0].dataPath).toEqual('/applications/gecko/id');
+    expect(validateAddon.errors[0].instancePath).toEqual(
+      '/applications/gecko/id'
+    );
   });
 
   it('should be invalid id format', () => {
@@ -139,7 +141,9 @@ describe('/applications/gecko/*', () => {
     manifest.applications.gecko.id = 'whatevs';
     validateAddon(manifest);
     expect(validateAddon.errors.length >= 1).toBeTruthy();
-    expect(validateAddon.errors[0].dataPath).toEqual('/applications/gecko/id');
+    expect(validateAddon.errors[0].instancePath).toEqual(
+      '/applications/gecko/id'
+    );
   });
 
   it('should accept an add-on without an id', () => {

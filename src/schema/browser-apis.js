@@ -12,7 +12,7 @@ const schemaObjectNames = ['types', 'properties'];
 const schemas = schemaList.reduce(
   (all, current) => ({
     ...all,
-    [current.id]: current,
+    [current.$id]: current,
   }),
   {}
 );

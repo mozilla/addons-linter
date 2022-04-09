@@ -1,5 +1,5 @@
 {
-  "id": "sidebarAction",
+  "$id": "sidebarAction",
   "description": "Use sidebar actions to add a sidebar to Firefox.",
   "permissions": [
     "manifest:sidebar_action"

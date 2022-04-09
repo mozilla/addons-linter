@@ -1,5 +1,5 @@
 {
-  "id": "find",
+  "$id": "find",
   "description": "Use the <code>browser.find</code> API to interact with the browser's <code>Find</code> interface.",
   "permissions": [
     "find"

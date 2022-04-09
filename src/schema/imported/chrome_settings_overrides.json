@@ -1,5 +1,5 @@
 {
-  "id": "chrome_settings_overrides",
+  "$id": "chrome_settings_overrides",
   "definitions": {
     "WebExtensionManifest": {
       "properties": {

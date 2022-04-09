@@ -1,5 +1,5 @@
 {
-  "id": "types",
+  "$id": "types",
   "description": "Contains types used by other schemas.",
   "definitions": {},
   "refs": {},

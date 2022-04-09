@@ -1,5 +1,5 @@
 {
-  "id": "telemetry",
+  "$id": "telemetry",
   "description": "Use the <code>browser.telemetry</code> API to send telemetry data to the Mozilla Telemetry service. Restricted to Mozilla privileged webextensions.",
   "permissions": [
     "telemetry"

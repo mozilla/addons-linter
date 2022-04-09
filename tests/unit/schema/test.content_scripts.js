@@ -42,8 +42,8 @@ describe('/content_scripts', () => {
     ];
     validateAddon(manifest);
     assertHasMatchingError(validateAddon.errors, {
-      dataPath: '/content_scripts/0/run_at',
-      message: 'should be equal to one of the allowed values',
+      instancePath: '/content_scripts/0/run_at',
+      message: 'must be equal to one of the allowed values',
     });
   });
 });

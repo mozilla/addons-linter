@@ -1,5 +1,5 @@
 {
-  "id": "extension_protocol_handlers",
+  "$id": "extension_protocol_handlers",
   "definitions": {
     "WebExtensionManifest": {
       "properties": {

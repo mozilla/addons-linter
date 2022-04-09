@@ -1,5 +1,5 @@
 {
-  "id": "contentScripts",
+  "$id": "contentScripts",
   "functions": [
     {
       "name": "register",

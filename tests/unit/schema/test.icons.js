@@ -17,8 +17,8 @@ describe('/icons', () => {
     manifest.icons = { 48: 1 };
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual('/icons/48');
-    expect(validateAddon.errors[0].message).toEqual('should be string');
+    expect(validateAddon.errors[0].instancePath).toEqual('/icons/48');
+    expect(validateAddon.errors[0].message).toEqual('must be string');
   });
 
   it('should fail on non-number key', () => {
@@ -26,9 +26,9 @@ describe('/icons', () => {
     manifest.icons = { wat: 'foo' };
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual('/icons/wat');
+    expect(validateAddon.errors[0].instancePath).toEqual('/icons');
     expect(validateAddon.errors[0].message).toEqual(
-      'is an invalid additional property'
+      'must NOT have additional properties'
     );
   });
 });

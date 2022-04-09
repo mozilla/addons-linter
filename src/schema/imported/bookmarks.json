@@ -1,5 +1,5 @@
 {
-  "id": "bookmarks",
+  "$id": "bookmarks",
   "description": "Use the <code>browser.bookmarks</code> API to create, organize, and otherwise manipulate bookmarks. Also see $(topic:override)[Override Pages], which you can use to create a custom Bookmark Manager page.",
   "permissions": [
     "bookmarks"

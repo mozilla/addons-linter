@@ -1,5 +1,5 @@
 {
-  "id": "scripting",
+  "$id": "scripting",
   "description": "Use the scripting API to execute script in different contexts.",
   "permissions": [
     "scripting"

@@ -1,5 +1,5 @@
 {
-  "id": "browserSettings",
+  "$id": "browserSettings",
   "description": "Use the <code>browser.browserSettings</code> API to control global settings of the browser.",
   "permissions": [
     "browserSettings"

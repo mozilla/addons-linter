@@ -39,7 +39,7 @@ export function createValidManifest(overriddenProps) {
  *
  *      {
  *        page_action: {
- *          id: "page_action",
+ *          $id: "page_action",
  *          definitions: {
  *            WebExtensionManifest: { ... }
  *          },
@@ -86,8 +86,8 @@ export function getValidatorWithFakeSchema({
       // We are only interested in the api Schemas
       return !!schema.definitions?.WebExtensionManifest;
     })
-    .map(({ id }) => {
-      return { $ref: `${id}#/definitions/WebExtensionManifest` };
+    .map(({ $id }) => {
+      return { $ref: `${$id}#/definitions/WebExtensionManifest` };
     });
 
   const fakeWebExtensionManifest = {
@@ -112,7 +112,7 @@ export function getValidatorWithFakeSchema({
     maxManifestVersion,
     schemas: apiSchemas,
     schemaObject: {
-      id: 'manifest',
+      $id: 'manifest',
       refs: {},
       types: {
         ExtensionURL: {

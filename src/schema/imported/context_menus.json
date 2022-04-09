@@ -1,5 +1,5 @@
 {
-  "id": "contextMenus",
+  "$id": "contextMenus",
   "permissions": [
     "menus",
     "contextMenus"

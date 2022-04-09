@@ -1,5 +1,5 @@
 {
-  "id": "omnibox",
+  "$id": "omnibox",
   "description": "The omnibox API allows you to register a keyword with Firefox's address bar.",
   "permissions": [
     "manifest:omnibox"

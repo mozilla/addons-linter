@@ -1,5 +1,5 @@
 {
-  "id": "devtools",
+  "$id": "devtools",
   "permissions": [
     "manifest:devtools_page"
   ],

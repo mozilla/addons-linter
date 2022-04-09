@@ -1,5 +1,5 @@
 {
-  "id": "privacy",
+  "$id": "privacy",
   "permissions": [
     "privacy"
   ],

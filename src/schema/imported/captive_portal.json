@@ -1,5 +1,5 @@
 {
-  "id": "captivePortal",
+  "$id": "captivePortal",
   "description": "This API provides the ability detect the captive portal state of the users connection.",
   "permissions": [
     "captivePortal"

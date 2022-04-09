@@ -1,4 +1,4 @@
-import ajv from 'ajv';
+import Ajv from 'ajv';
 import ajvMergePatch from 'ajv-merge-patch';
 
 import { getDefaultConfigValue } from 'yargs-options';
@@ -24,8 +24,6 @@ import {
 } from './formats';
 import schemas from './imported';
 
-const jsonSchemaDraft06 = require('ajv/lib/refs/json-schema-draft-06');
-
 function isRelevantError({
   error,
   manifest_version,
@@ -34,7 +32,7 @@ function isRelevantError({
   // The errors related to the manifest_version are always relevant,
   // if an error has been collected for it then it is because the
   // addon manifest_version is outside or the allowed range.
-  if (error.dataPath === '/manifest_version') {
+  if (error.instancePath === '/manifest_version') {
     return true;
   }
 
@@ -57,7 +55,7 @@ function isRelevantError({
   );
 
   const isTopLevelManifestKey =
-    error.dataPath.split('/').filter((s) => s.length).length === 1;
+    error.instancePath.split('/').filter((s) => s.length).length === 1;
   const errorFromAnyOf = error.schemaPath.includes('/anyOf/');
   // Skip the error if it is not in range, only when the error is:
   //
@@ -86,7 +84,7 @@ function isRelevantError({
   // An error collected by an `anyOf` schema entry is relevant only if its the schema
   // entries are relevant for the given addon manifest_version.
   if (error.keyword === 'anyOf') {
-    const anyOfSchemaEntries = error.schema.filter((schema) => {
+    const anyOfSchemaEntries = error.schema?.filter((schema) => {
       const min = schema.min_manifest_version ?? minimum;
       const max = schema.mix_manifest_version ?? maximum;
 
@@ -98,7 +96,7 @@ function isRelevantError({
     // - there is only one relevant entry (in that case an error for that entry would
     //   have been already collected and there is no need to report it again as part
     //   of the error collected by anyOf.
-    if (anyOfSchemaEntries.length <= 1) {
+    if (anyOfSchemaEntries?.length <= 1) {
       return false;
     }
   }
@@ -205,17 +203,23 @@ export class SchemaValidator {
     this.allowedManifestVersionsRange =
       getManifestVersionsRange(validatorOptions);
 
-    const validator = ajv({
+    const validator = new Ajv({
+      strict: false,
       allErrors: true,
-      errorDataPath: 'property',
-      jsonPointers: true,
+      // include schema and data properties in error objects.
       verbose: true,
-      schemas: this.schemas,
-      schemaId: 'auto',
+      // TODO: do the following options have new replacements in ajv v8?
+      // what was the reason for setting these options in older ajv version?
+      //
+      // errorDataPath: 'property',
+      // jsonPointers: true,
     });
 
-    validator.addMetaSchema(jsonSchemaDraft06);
+    for (const schema of Object.values(this.schemas)) {
+      validator.addSchema(schema);
+    }
     ajvMergePatch(validator);
+
     this._addCustomFormats(validator);
     this._addCustomKeywords(validator);
     this._validator = validator;
@@ -298,7 +302,7 @@ export class SchemaValidator {
             },
           })
         ),
-        id: 'static-theme-manifest',
+        $id: 'static-theme-manifest',
         $ref: '#/types/ThemeManifest',
       });
     }
@@ -328,7 +332,7 @@ export class SchemaValidator {
             },
           },
         }),
-        id: 'langpack-manifest',
+        $id: 'langpack-manifest',
         $ref: '#/types/WebExtensionLangpackManifest',
       });
     }
@@ -356,7 +360,7 @@ export class SchemaValidator {
             },
           },
         }),
-        id: 'dictionary-manifest',
+        $id: 'dictionary-manifest',
         $ref: '#/types/WebExtensionDictionaryManifest',
       });
     }
@@ -368,7 +372,7 @@ export class SchemaValidator {
     if (!this._localeValidator) {
       this._localeValidator = this._validator.compile({
         ...this.messagesSchemaObject,
-        id: 'messages',
+        $id: 'messages',
         $ref: '#/types/WebExtensionMessages',
       });
     }
@@ -396,7 +400,7 @@ export class SchemaValidator {
             },
           },
         }),
-        id: 'sitepermission-manifest',
+        $id: 'sitepermission-manifest',
         $ref: '#/types/WebExtensionSitePermissionsManifest',
       });
     }
@@ -422,7 +426,7 @@ export class SchemaValidator {
 
     return validator.compile({
       ...schemaData,
-      id: 'manifest',
+      $id: 'manifest',
       $ref: '#/types/WebExtensionManifest',
     });
   }
@@ -454,17 +458,19 @@ export class SchemaValidator {
   }
 
   _addCustomKeywords(validator) {
-    validator.addKeyword('deprecated', {
+    validator.removeKeyword('deprecated');
+    validator.addKeyword({
+      keyword: 'deprecated',
       validate: function validateDeprecated(
         message,
         propValue,
         schema,
-        dataPath
+        { instancePath }
       ) {
         if (
           !Object.prototype.hasOwnProperty.call(
             DEPRECATED_MANIFEST_PROPERTIES,
-            dataPath
+            instancePath
           )
         ) {
           // Do not emit errors for every deprecated property, as it may introduce
@@ -491,10 +497,7 @@ export class SchemaValidator {
         keywordSchemaValue,
         propValue,
         schema,
-        dataPath,
-        parentData,
-        parentDataProperty,
-        rootData
+        { rootData /* instancePath, parentData, parentDataProperty, */ }
       ) {
         const manifestVersion =
           (rootData && rootData.manifest_version) || MANIFEST_VERSION_DEFAULT;
@@ -526,7 +529,8 @@ export class SchemaValidator {
       };
     }
 
-    validator.addKeyword('max_manifest_version', {
+    validator.addKeyword({
+      keyword: 'max_manifest_version',
       // function of type SchemaValidateFunction (see ajv typescript signatures).
       validate: createManifestVersionValidateFn(
         'max_manifest_version',
@@ -535,7 +539,8 @@ export class SchemaValidator {
       errors: true,
     });
 
-    validator.addKeyword('min_manifest_version', {
+    validator.addKeyword({
+      keyword: 'min_manifest_version',
       validate: createManifestVersionValidateFn(
         'min_manifest_version',
         (minMV, manifestVersion) => minMV <= manifestVersion

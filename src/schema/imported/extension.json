@@ -1,5 +1,5 @@
 {
-  "id": "extension",
+  "$id": "extension",
   "allowedContexts": [
     "content",
     "devtools"

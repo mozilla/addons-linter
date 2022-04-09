@@ -1,5 +1,5 @@
 {
-  "id": "theme",
+  "$id": "theme",
   "description": "The theme API allows customizing of visual elements of the browser.",
   "events": [
     {

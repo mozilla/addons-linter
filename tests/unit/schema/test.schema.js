@@ -78,7 +78,7 @@ describe('Schema JSON', () => {
         maxManifestVersion: 3,
         apiSchemas: {
           action: {
-            id: 'action',
+            $id: 'action',
             definitions: {
               WebExtensionManifest: {
                 properties: {
@@ -104,7 +104,7 @@ describe('Schema JSON', () => {
       expect(validator.validateAddon.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            dataPath: '/action',
+            instancePath: '/action',
             keyword: 'min_manifest_version',
             params: { min_manifest_version: 3 },
           }),
@@ -130,8 +130,8 @@ describe('Schema JSON', () => {
       const validator = getValidatorWithFakeSchema({
         maxManifestVersion: 3,
         apiSchemas: {
-          action: {
-            id: 'page_action',
+          page_action: {
+            $id: 'page_action',
             definitions: {
               WebExtensionManifest: {
                 properties: {
@@ -167,7 +167,7 @@ describe('Schema JSON', () => {
       expect(validator.validateAddon.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            dataPath: '/page_action',
+            instancePath: '/page_action',
             keyword: 'max_manifest_version',
             params: { max_manifest_version: 2 },
           }),

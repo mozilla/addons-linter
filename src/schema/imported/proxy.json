@@ -1,5 +1,5 @@
 {
-  "id": "proxy",
+  "$id": "proxy",
   "description": "Provides access to global proxy settings for Firefox and proxy event listeners to handle dynamic proxy implementations.",
   "permissions": [
     "proxy"

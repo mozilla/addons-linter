@@ -31,8 +31,8 @@ describe('/commands', () => {
     };
     validateAddon(manifest);
     assertHasMatchingError(validateAddon.errors, {
-      dataPath: '/commands/up/suggested_key/mac',
-      message: 'should match format "manifestShortcutKey"',
+      instancePath: '/commands/up/suggested_key/mac',
+      message: 'must match format "manifestShortcutKey"',
     });
   });
 });

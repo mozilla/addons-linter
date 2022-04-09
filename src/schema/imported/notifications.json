@@ -1,5 +1,5 @@
 {
-  "id": "notifications",
+  "$id": "notifications",
   "permissions": [
     "notifications"
   ],

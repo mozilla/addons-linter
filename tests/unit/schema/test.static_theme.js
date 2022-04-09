@@ -17,8 +17,10 @@ describe('static theme', () => {
     validateStaticTheme(manifest);
 
     expect(validateStaticTheme.errors.length).toEqual(1);
-    expect(validateStaticTheme.errors[0].dataPath).toEqual('/manifest_version');
-    expect(validateStaticTheme.errors[0].message).toEqual('should be integer');
+    expect(validateStaticTheme.errors[0].instancePath).toEqual(
+      '/manifest_version'
+    );
+    expect(validateStaticTheme.errors[0].message).toEqual('must be integer');
   });
 
   it('should fail on missing theme property', () => {
@@ -26,8 +28,8 @@ describe('static theme', () => {
     manifest.theme = null;
     validateStaticTheme(manifest);
     expect(validateStaticTheme.errors.length).toEqual(1);
-    expect(validateStaticTheme.errors[0].dataPath).toEqual('/theme');
-    expect(validateStaticTheme.errors[0].message).toEqual('should be object');
+    expect(validateStaticTheme.errors[0].instancePath).toEqual('/theme');
+    expect(validateStaticTheme.errors[0].message).toEqual('must be object');
   });
 
   it('should fail on invalid additional properties', () => {
@@ -35,9 +37,9 @@ describe('static theme', () => {
     manifest.content_scripts = ['foo.js'];
     validateStaticTheme(manifest);
     expect(validateStaticTheme.errors.length).toEqual(1);
-    expect(validateStaticTheme.errors[0].dataPath).toEqual('/content_scripts');
+    expect(validateStaticTheme.errors[0].instancePath).toEqual('');
     expect(validateStaticTheme.errors[0].message).toEqual(
-      'is an invalid additional property'
+      'must NOT have additional properties'
     );
   });
 });
