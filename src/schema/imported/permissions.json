@@ -1,8 +1,5 @@
 {
   "$id": "permissions",
-  "permissions": [
-    "manifest:optional_permissions"
-  ],
   "functions": [
     {
       "name": "getAll",

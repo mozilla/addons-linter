@@ -276,6 +276,10 @@
                   },
                   "uniqueItems": true
                 },
+                "granted_host_permissions": {
+                  "type": "boolean",
+                  "default": false
+                },
                 "host_permissions": {
                   "min_manifest_version": 3,
                   "type": "array",

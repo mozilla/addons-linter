@@ -411,6 +411,24 @@
                 ]
               },
               "maxItems": 15
+            },
+            "color_scheme": {
+              "type": "string",
+              "enum": [
+                "auto",
+                "light",
+                "dark",
+                "system"
+              ]
+            },
+            "content_color_scheme": {
+              "type": "string",
+              "enum": [
+                "auto",
+                "light",
+                "dark",
+                "system"
+              ]
             }
           },
           "additionalProperties": {
