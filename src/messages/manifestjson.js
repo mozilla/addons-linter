@@ -21,6 +21,19 @@ export const MANIFEST_FIELD_INVALID = {
   file: MANIFEST_JSON,
 };
 
+export const MANIFEST_FIELD_PRIVILEGEDONLY = 'MANIFEST_FIELD_PRIVILEGEDONLY';
+export function manifestFieldPrivilegedOnly(fieldName) {
+  return {
+    code: MANIFEST_FIELD_PRIVILEGEDONLY,
+    message: i18n._(`"${fieldName}" is ignored for non-privileged add-ons.`),
+    description: i18n._(
+      oneLine`"${fieldName} manifest field is only used for privileged
+             and temporarily installed extensions.`
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
 export const MANIFEST_FIELD_UNSUPPORTED = 'MANIFEST_FIELD_UNSUPPORTED';
 export function manifestFieldUnsupported(fieldName, error) {
   const versionRange = errorParamsToUnsupportedVersionRange(error.params);
