@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-11-05 18:17+0000\n"
-"PO-Revision-Date: 2020-10-08 12:15+0000\n"
+"PO-Revision-Date: 2022-04-26 19:38+0000\n"
 "Last-Translator: :stoyan <stoyan@gmx.com>\n"
 "Language-Team: none\n"
 "Language: bg\n"
@@ -83,23 +83,20 @@ msgid "This API has not been implemented by Firefox."
 msgstr ""
 
 #: src/messages/javascript.js:132
-msgid ""
-"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
-"property)"
+msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
 msgstr ""
 
 #: src/messages/javascript.js:141
-#, fuzzy
 msgid "{{api}} is deprecated"
-msgstr "{{api}} не се поддържа"
+msgstr "{{api}} е изведено от употреба"
 
 #: src/messages/javascript.js:142
 msgid "This API has been deprecated by Firefox."
-msgstr ""
+msgstr "Този ППИ е изведен от употреба от Firefox."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "„{{api}}“ е изведено от употреба или нереализирано"
 
 #: src/messages/javascript.js:16
 msgid "addEventListener` called with truthy fourth argument."
@@ -118,8 +115,7 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr ""
 
 #: src/messages/javascript.js:196
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/javascript.js:25
@@ -239,8 +235,7 @@ msgid "Translation string is missing the message property"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
 #: src/messages/manifestjson.js:100
@@ -332,14 +327,11 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr ""
 
 #: src/messages/manifestjson.js:268
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:271
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:285
@@ -347,8 +339,7 @@ msgid "A dictionary file defined in the manifest could not be found."
 msgstr ""
 
 #: src/messages/manifestjson.js:289
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:301
@@ -356,8 +347,7 @@ msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
 #: src/messages/manifestjson.js:302
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
 #: src/messages/manifestjson.js:311
@@ -406,7 +396,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:381
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Това свойство е изведено от употреба."
 
 #: src/messages/manifestjson.js:388
 msgid "This theme LWT alias has been removed in Firefox 70."
@@ -441,8 +431,7 @@ msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
 #: src/messages/manifestjson.js:446
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:460
@@ -450,9 +439,7 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:464
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:478
@@ -472,9 +459,7 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr ""
 
 #: src/messages/manifestjson.js:505
-msgid ""
-"\"applications\" property overridden by \"browser_specific_settings\" "
-"property"
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
 msgstr ""
 
 #: src/messages/manifestjson.js:518
@@ -494,14 +479,11 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
 #: src/messages/manifestjson.js:580
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:602
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:617
@@ -509,13 +491,10 @@ msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr ""
 
 #: src/messages/manifestjson.js:618
-msgid ""
-"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
-"homepage"
+msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
 msgstr ""
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
-#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
 msgid "The permission type is unsupported."
 msgstr ""
 
