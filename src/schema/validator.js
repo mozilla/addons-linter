@@ -208,11 +208,6 @@ export class SchemaValidator {
       allErrors: true,
       // include schema and data properties in error objects.
       verbose: true,
-      // TODO: do the following options have new replacements in ajv v8?
-      // what was the reason for setting these options in older ajv version?
-      //
-      // errorDataPath: 'property',
-      // jsonPointers: true,
     });
 
     for (const schema of Object.values(this.schemas)) {
