@@ -200,7 +200,7 @@ describe('Collector', () => {
   it('should throw when getting messages for an undefined instancePath', () => {
     const collection = new Collector();
     expect(() => {
-      collection.messagesAtDataPath(undefined);
+      collection.messagesAtInstancePath(undefined);
     }).toThrow(/instancePath is required/);
   });
 });
