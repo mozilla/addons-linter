@@ -758,9 +758,9 @@ export default class Linter {
             file: filename,
             line: matchedLine,
             column: matchedColumn,
-            // use dataPath for our actual match to avoid any obvious
+            // use instancePath for our actual match to avoid any obvious
             // duplicates
-            dataPath: match[0],
+            instancePath: match[0],
           });
         }
       });
