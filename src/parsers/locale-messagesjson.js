@@ -35,7 +35,7 @@ export default class LocaleMessagesJSONParser extends JSONParser {
     let baseObject = messages.JSON_INVALID;
 
     const overrides = {
-      dataPath: error.dataPath,
+      instancePath: error.instancePath,
       line: error.line,
       file: this.filename,
     };
@@ -103,7 +103,7 @@ export default class LocaleMessagesJSONParser extends JSONParser {
           ...messages.JSON_DUPLICATE_KEY,
           file: this.filename,
           description: `Case-insensitive duplicate message name: ${message} found in JSON`,
-          dataPath: `/${message}`,
+          instancePath: `/${message}`,
         });
         this.isValid = false;
       }
@@ -111,7 +111,7 @@ export default class LocaleMessagesJSONParser extends JSONParser {
       if (message.startsWith('@@')) {
         this.collector.addWarning({
           file: this.filename,
-          dataPath: `/${message}`,
+          instancePath: `/${message}`,
           ...messages.PREDEFINED_MESSAGE_NAME,
         });
       }
@@ -122,7 +122,7 @@ export default class LocaleMessagesJSONParser extends JSONParser {
         if (!this.hasPlaceholder(message, matches[1])) {
           this.collector.addWarning({
             file: this.filename,
-            dataPath: `/${message}/placeholders/${matches[1]}`,
+            instancePath: `/${message}/placeholders/${matches[1]}`,
             ...messages.MISSING_PLACEHOLDER,
           });
         }
@@ -147,7 +147,7 @@ export default class LocaleMessagesJSONParser extends JSONParser {
                 ...messages.JSON_DUPLICATE_KEY,
                 file: this.filename,
                 description: `Case-insensitive duplicate placeholder name: ${placeholder} found in JSON`,
-                dataPath: `/${message}/placeholders/${placeholder}`,
+                instancePath: `/${message}/placeholders/${placeholder}`,
               });
               this.isValid = false;
             }
