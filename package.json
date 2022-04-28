@@ -99,7 +99,6 @@
     "gunzip-maybe": "1.4.2",
     "hashish": "0.0.4",
     "jest": "28.0.2",
-    "jest-raw-loader": "1.0.1",
     "lodash.clonedeep": "4.5.0",
     "lodash.ismatchwith": "4.4.0",
     "markdown-it": "13.0.0",
