@@ -1,5 +1,5 @@
 {
-  "id": "idle",
+  "$id": "idle",
   "description": "Use the <code>browser.idle</code> API to detect when the machine's idle state changes.",
   "permissions": [
     "idle"

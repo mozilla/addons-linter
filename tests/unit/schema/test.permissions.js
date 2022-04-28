@@ -18,7 +18,7 @@ describe('/permissions', () => {
     manifest.permissions = ['tabs', 'tabs'];
     validateAddon(manifest);
     assertHasMatchingError(validateAddon.errors, {
-      dataPath: '/permissions',
+      instancePath: '/permissions',
     });
   });
 
@@ -27,7 +27,7 @@ describe('/permissions', () => {
     manifest.permissions = ['wat'];
     validateAddon(manifest);
     assertHasMatchingError(validateAddon.errors, {
-      dataPath: '/permissions/0',
+      instancePath: '/permissions/0',
     });
   });
 

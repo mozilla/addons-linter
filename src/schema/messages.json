@@ -1,5 +1,5 @@
 {
-  "id": "messages",
+  "$id": "messages",
   "types": {
     "i18nPlaceholder": {
       "type": "object",

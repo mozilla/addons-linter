@@ -1,5 +1,5 @@
 {
-  "id": "extensionTypes",
+  "$id": "extensionTypes",
   "description": "The <code>browser.extensionTypes</code> API contains type declarations for WebExtensions.",
   "definitions": {},
   "refs": {},

@@ -1,5 +1,5 @@
 {
-  "id": "identity",
+  "$id": "identity",
   "description": "Use the chrome.identity API to get OAuth2 access tokens. ",
   "permissions": [
     "identity"

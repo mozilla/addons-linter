@@ -18,8 +18,8 @@ describe('/incognito', () => {
     manifest.incognito = 'wat';
     validateAddon(manifest);
     assertHasMatchingError(validateAddon.errors, {
-      dataPath: '/incognito',
-      message: 'should be equal to one of the allowed values',
+      instancePath: '/incognito',
+      message: 'must be equal to one of the allowed values',
     });
   });
 });

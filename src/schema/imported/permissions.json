@@ -1,5 +1,5 @@
 {
-  "id": "permissions",
+  "$id": "permissions",
   "permissions": [
     "manifest:optional_permissions"
   ],

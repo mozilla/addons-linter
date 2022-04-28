@@ -1,5 +1,5 @@
 {
-  "id": "clipboard",
+  "$id": "clipboard",
   "description": "Offers the ability to write to the clipboard. Reading is not supported because the clipboard can already be read through the standard web platform APIs.",
   "permissions": [
     "clipboardWrite"

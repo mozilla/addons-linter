@@ -23,7 +23,7 @@ describe('/browser_action', () => {
       { maxManifestVersion: 3 }
     );
     assertHasMatchingError(validateAddon.errors, {
-      dataPath: '/browser_action',
+      instancePath: '/browser_action',
       keyword: 'max_manifest_version',
       params: { max_manifest_version: 2 },
     });
@@ -50,7 +50,7 @@ describe('/action', () => {
       })
     );
     assertHasMatchingError(validateAddon.errors, {
-      dataPath: '/action',
+      instancePath: '/action',
       keyword: 'min_manifest_version',
       params: { min_manifest_version: 3 },
     });

@@ -10,7 +10,7 @@ describe('/version', () => {
     manifest.version = '01';
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual('/version');
+    expect(validateAddon.errors[0].instancePath).toEqual('/version');
   });
 
   it('should be invalid due to missing version', () => {
@@ -18,7 +18,7 @@ describe('/version', () => {
     manifest.version = undefined;
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual('/version');
+    expect(validateAddon.errors[0].instancePath).toEqual('');
     expect(validateAddon.errors[0].params.missingProperty).toEqual('version');
   });
 

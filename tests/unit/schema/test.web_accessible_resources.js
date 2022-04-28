@@ -11,10 +11,10 @@ describe('/web_accessible_resources', () => {
       manifest.web_accessible_resources = 'foo.png';
       validateAddon(manifest);
       expect(validateAddon.errors.length).toEqual(1);
-      expect(validateAddon.errors[0].dataPath).toEqual(
+      expect(validateAddon.errors[0].instancePath).toEqual(
         '/web_accessible_resources'
       );
-      expect(validateAddon.errors[0].message).toEqual('should be array');
+      expect(validateAddon.errors[0].message).toEqual('must be array');
     });
 
     it('should fail if not an array of strings', () => {
@@ -22,10 +22,10 @@ describe('/web_accessible_resources', () => {
       manifest.web_accessible_resources = ['foo.png', 1];
       validateAddon(manifest);
       expect(validateAddon.errors.length).toEqual(1);
-      expect(validateAddon.errors[0].dataPath).toEqual(
+      expect(validateAddon.errors[0].instancePath).toEqual(
         '/web_accessible_resources/1'
       );
-      expect(validateAddon.errors[0].message).toEqual('should be string');
+      expect(validateAddon.errors[0].message).toEqual('must be string');
     });
 
     it('should be array of strings', () => {
@@ -63,8 +63,8 @@ describe('/web_accessible_resources', () => {
       expect(validateAddon.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            dataPath: '/web_accessible_resources/0',
-            message: expect.stringMatching('should be object'),
+            instancePath: '/web_accessible_resources/0',
+            message: expect.stringMatching('must be object'),
           }),
         ])
       );
@@ -86,8 +86,8 @@ describe('/web_accessible_resources', () => {
       expect(validateAddon.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            dataPath: '/web_accessible_resources/0/resources',
-            message: expect.stringMatching('should be array'),
+            instancePath: '/web_accessible_resources/0/resources',
+            message: expect.stringMatching('must be array'),
           }),
         ])
       );

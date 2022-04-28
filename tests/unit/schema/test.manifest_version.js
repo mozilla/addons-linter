@@ -9,7 +9,7 @@ describe('/manifest_version', () => {
     const manifest = cloneDeep(validManifest);
     manifest.manifest_version = 1;
     validateAddon(manifest);
-    expect(validateAddon.errors[0].dataPath).toEqual('/manifest_version');
+    expect(validateAddon.errors[0].instancePath).toEqual('/manifest_version');
     expect(validateAddon.errors.length).toEqual(1);
   });
 
@@ -19,8 +19,8 @@ describe('/manifest_version', () => {
     const manifest = cloneDeep(validManifest);
     manifest.manifest_version = 3;
     validateAddon(manifest);
-    expect(validateAddon.errors[0].dataPath).toEqual('/manifest_version');
-    expect(validateAddon.errors[0].message).toEqual('should be <= 2');
+    expect(validateAddon.errors[0].instancePath).toEqual('/manifest_version');
+    expect(validateAddon.errors[0].message).toEqual('must be <= 2');
     expect(validateAddon.errors.length).toEqual(1);
   });
 
@@ -29,7 +29,7 @@ describe('/manifest_version', () => {
     manifest.manifest_version = undefined;
     validateAddon(manifest);
     expect(validateAddon.errors.length).toEqual(1);
-    expect(validateAddon.errors[0].dataPath).toEqual('/manifest_version');
+    expect(validateAddon.errors[0].instancePath).toEqual('');
     expect(validateAddon.errors[0].params.missingProperty).toEqual(
       'manifest_version'
     );

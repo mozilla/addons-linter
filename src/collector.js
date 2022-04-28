@@ -10,7 +10,7 @@ import * as constants from 'const';
 export default class Collector {
   constructor(config = {}) {
     this.config = config;
-    this.messagesByDataPath = {};
+    this.messagesByInstancePath = {};
     this.scannedFiles = {};
 
     constants.MESSAGE_TYPES.forEach((type) => {
@@ -51,26 +51,28 @@ export default class Collector {
     return this[`${type}s`];
   }
 
-  messagesAtDataPath(dataPath) {
-    if (dataPath === undefined) {
-      throw new Error('dataPath is required');
+  messagesAtInstancePath(instancePath) {
+    if (instancePath === undefined) {
+      throw new Error('instancePath is required');
     }
-    if (!this.messagesByDataPath[dataPath]) {
-      this.messagesByDataPath[dataPath] = [];
+    if (!this.messagesByInstancePath[instancePath]) {
+      this.messagesByInstancePath[instancePath] = [];
     }
-    return this.messagesByDataPath[dataPath];
+    return this.messagesByInstancePath[instancePath];
   }
 
   _recordMessage(message, type) {
-    if (message.dataPath) {
-      this.messagesAtDataPath(message.dataPath).push(message);
+    if (message.instancePath) {
+      this.messagesAtInstancePath(message.instancePath).push(message);
     }
     this.messageList(type).push(message);
   }
 
   isDuplicateMessage(message) {
-    if (message.dataPath) {
-      const previousMessages = this.messagesAtDataPath(message.dataPath);
+    if (message.instancePath) {
+      const previousMessages = this.messagesAtInstancePath(
+        message.instancePath
+      );
       if (message.file === 'manifest.json') {
         return previousMessages.some(
           (prevMessage) => prevMessage.code === message.code

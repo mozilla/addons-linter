@@ -1,5 +1,5 @@
 {
-  "id": "search",
+  "$id": "search",
   "description": "Use browser.search to interact with search engines.",
   "permissions": [
     "search"

@@ -49,7 +49,7 @@ export function manifestPermissionUnsupported(permissionName, error) {
   const message = i18n.sprintf(messageTmpl, {
     permissionName,
     versionRange,
-    fieldName: error.dataPath.match(PERMS_DATAPATH_REGEX)[1],
+    fieldName: error.instancePath.match(PERMS_DATAPATH_REGEX)[1],
   });
 
   return {

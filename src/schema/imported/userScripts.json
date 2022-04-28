@@ -1,5 +1,5 @@
 {
-  "id": "userScripts",
+  "$id": "userScripts",
   "permissions": [
     "manifest:user_scripts"
   ],

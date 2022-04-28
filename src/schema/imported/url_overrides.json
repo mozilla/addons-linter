@@ -1,5 +1,5 @@
 {
-  "id": "url_overrides",
+  "$id": "url_overrides",
   "definitions": {
     "WebExtensionManifest": {
       "properties": {

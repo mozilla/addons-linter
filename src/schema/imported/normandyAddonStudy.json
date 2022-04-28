@@ -1,5 +1,5 @@
 {
-  "id": "normandyAddonStudy",
+  "$id": "normandyAddonStudy",
   "description": "Normandy Study API",
   "allowedContexts": [
     "content",

@@ -1,5 +1,5 @@
 {
-  "id": "experiments",
+  "$id": "experiments",
   "definitions": {
     "Permission": {
       "anyOf": [

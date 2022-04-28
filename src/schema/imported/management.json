@@ -1,5 +1,5 @@
 {
-  "id": "management",
+  "$id": "management",
   "description": "The <code>browser.management</code> API provides ways to manage the list of extensions that are installed and running.",
   "functions": [
     {

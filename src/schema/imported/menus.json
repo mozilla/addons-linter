@@ -1,5 +1,5 @@
 {
-  "id": "menus",
+  "$id": "menus",
   "permissions": [
     "menus"
   ],

@@ -1,5 +1,5 @@
 {
-  "id": "runtime",
+  "$id": "runtime",
   "allowedContexts": [
     "content",
     "devtools"

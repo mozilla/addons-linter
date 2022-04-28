@@ -1,5 +1,5 @@
 {
-  "id": "storage",
+  "$id": "storage",
   "allowedContexts": [
     "content",
     "devtools"

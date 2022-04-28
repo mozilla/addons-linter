@@ -28,11 +28,11 @@ describe('/homepage_url', () => {
     manifest.homepage_url = invalidURL;
     validateAddon(manifest);
     assertHasMatchingError(validateAddon.errors, {
-      dataPath: '/homepage_url',
-      message: /should match format "url"/,
+      instancePath: '/homepage_url',
+      message: /must match format "url"/,
     });
     assertHasMatchingError(validateAddon.errors, {
-      message: 'should match pattern "^__MSG_.*?__$"',
+      message: 'must match pattern "^__MSG_.*?__$"',
     });
   });
 });
