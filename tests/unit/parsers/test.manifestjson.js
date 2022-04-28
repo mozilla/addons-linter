@@ -445,7 +445,7 @@ describe('ManifestJSONParser', () => {
   });
 
   describe('granted_host_permissions', () => {
-    it('warns on granted_permissions manifest key', () => {
+    it('warns on granted_permissions manifest key set to true', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         manifest_version: 2,
@@ -467,6 +467,21 @@ describe('ManifestJSONParser', () => {
           }),
         ])
       );
+    });
+
+    it('does not warn on granted_permissions manifest key set to false', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 2,
+        granted_host_permissions: false,
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.collector.errors).toEqual([]);
+      expect(manifestJSONParser.collector.warnings).toEqual([]);
     });
   });
 
