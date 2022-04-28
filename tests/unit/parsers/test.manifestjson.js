@@ -444,6 +444,47 @@ describe('ManifestJSONParser', () => {
     }
   });
 
+  describe('granted_host_permissions', () => {
+    it('warns on granted_permissions manifest key set to true', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 2,
+        granted_host_permissions: true,
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.collector.errors).toEqual([]);
+      expect(manifestJSONParser.collector.warnings).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            code: 'MANIFEST_FIELD_PRIVILEGEDONLY',
+            message: expect.stringMatching(
+              /"granted_host_permissions" is ignored for non-privileged add-ons/
+            ),
+          }),
+        ])
+      );
+    });
+
+    it('does not warn on granted_permissions manifest key set to false', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 2,
+        granted_host_permissions: false,
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.collector.errors).toEqual([]);
+      expect(manifestJSONParser.collector.warnings).toEqual([]);
+    });
+  });
+
   describe('type', () => {
     it('should have the right type', () => {
       // Type is always returned as PACKAGE_EXTENSION presently.

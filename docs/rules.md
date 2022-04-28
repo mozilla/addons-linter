@@ -96,6 +96,7 @@ Rules are sorted by severity.
 | `STRICT_MAX_VERSION`                                    | warning  | strict_max_version not required                                                                 |
 | `PREDEFINED_MESSAGE_NAME`                               | warning  | String name is reserved for a predefined                                                        |
 | `MISSING_PLACEHOLDER`                                   | warning  | Placeholder for message is not                                                                  |
+| `MANIFEST_FIELD_PRIVILEGEDONLY`                         | warning  | A manifest field ignored on non-privileged add-ons                                              |
 | `MANIFEST_FIELD_UNSUPPORTED`                            | warning  | A manifest field is not supported (or not supported for the extension manifest_version)         |
 | `MANIFEST_PERMISSION_UNSUPPORTED`                       | warning  | A manifest permission is not supported for the extension manifest_version                       |
 | `WRONG_ICON_EXTENSION`                                  | error    | Icons must have valid extension                                                                 |

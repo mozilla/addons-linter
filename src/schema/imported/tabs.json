@@ -288,6 +288,10 @@
             "title": {
               "type": "string",
               "description": "The title used for display if the tab is created in discarded mode."
+            },
+            "muted": {
+              "type": "boolean",
+              "description": "Whether the tab should be muted when created."
             }
           }
         },

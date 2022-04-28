@@ -460,6 +460,12 @@ export default class ManifestJSONParser extends JSONParser {
       this.collector.addNotice(messages.MANIFEST_UNUSED_UPDATE);
     }
 
+    if (this.parsedJSON.granted_host_permissions) {
+      this.collector.addWarning(
+        messages.manifestFieldPrivilegedOnly('granted_host_permissions')
+      );
+    }
+
     if (this.parsedJSON.background) {
       if (Array.isArray(this.parsedJSON.background.scripts)) {
         this.parsedJSON.background.scripts.forEach((script) => {
