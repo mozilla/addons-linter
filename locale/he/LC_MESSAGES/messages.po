@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-04-29 09:25+0000\n"
-"PO-Revision-Date: 2022-04-29 14:07+0000\n"
+"PO-Revision-Date: 2022-04-29 14:10+0000\n"
 "Last-Translator: Itiel <itiel_yn8@walla.com>\n"
 "Language-Team: none\n"
 "Language: he\n"
@@ -76,20 +76,19 @@ msgstr "ה־API הזה לא הוטמע על ידי Firefox."
 
 #: src/messages/javascript.js:124
 msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr "‏\"{{api}}\" הוסר מגרסה 3 של Manifest (מאפיין `manifest_version`)"
+msgstr "‏״{{api}}״ הוסר מגרסה 3 של Manifest (מאפיין `manifest_version`)"
 
 #: src/messages/javascript.js:133
-#, fuzzy
 msgid "{{api}} is deprecated"
-msgstr "אין תמיכה ב־{{api}}"
+msgstr "‏{{api}} הוצא משימוש"
 
 #: src/messages/javascript.js:134
 msgid "This API has been deprecated by Firefox."
-msgstr ""
+msgstr "ה־API הזה הוצא משימוש על־ידי Firefox."
 
 #: src/messages/javascript.js:146
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "‏״{{api}}״ הוצא משימוש או שאינו מיושם"
 
 #: src/messages/javascript.js:17
 msgid "Content script file could not be found."
@@ -445,7 +444,7 @@ msgstr "לקובץ תמונת ערכת הנושא יש סיומת קובץ שא�
 
 #: src/messages/manifestjson.js:454
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "לקובץ תמונת ערכת הנושא ב־״%(path)s״ יש סיומת קובץ שאינה נתמכת"
 
 #: src/messages/manifestjson.js:468
 msgid "Theme image file has an unsupported mime type"
