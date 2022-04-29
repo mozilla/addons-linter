@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-05 18:17+0000\n"
+"POT-Creation-Date: 2022-04-29 09:25+0000\n"
 "PO-Revision-Date: 2021-11-08 14:24+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: none\n"
@@ -11,7 +11,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pontoon\n"
 
 #: src/linter.js:171
@@ -66,71 +67,67 @@ msgstr "Zdalne skrypty są niedozwolone zgodnie z zasadami dodatków."
 msgid "Inline scripts blocked by default"
 msgstr "Wstawione skrypty są domyślnie blokowane"
 
-#: src/messages/javascript.js:100
-msgid "Unadvised 3rd-party JS library"
-msgstr "Niezalecana biblioteka JS od firmy trzeciej"
-
-#: src/messages/javascript.js:107
-msgid "Known JS library detected"
-msgstr "Wykryto znaną bibliotekę JS"
-
-#: src/messages/javascript.js:125
+#: src/messages/javascript.js:117
 msgid "{{api}} is not supported"
 msgstr "„{{api}}” jest nieobsługiwane"
 
-#: src/messages/javascript.js:126
+#: src/messages/javascript.js:118
 msgid "This API has not been implemented by Firefox."
 msgstr "To API nie zostało zaimplementowane w Firefoksie."
 
-#: src/messages/javascript.js:132
-msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr "„{{api}}” zostało usunięte w 3. wersji Manifestu (właściwość „manifest_version”)"
+#: src/messages/javascript.js:124
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
+msgstr ""
+"„{{api}}” zostało usunięte w 3. wersji Manifestu (właściwość "
+"„manifest_version”)"
 
-#: src/messages/javascript.js:141
+#: src/messages/javascript.js:133
 msgid "{{api}} is deprecated"
 msgstr "„{{api}}” jest przestarzałe"
 
-#: src/messages/javascript.js:142
+#: src/messages/javascript.js:134
 msgid "This API has been deprecated by Firefox."
 msgstr "To API zostało oznaczone jako przestarzałe w Firefoksie."
 
-#: src/messages/javascript.js:154
+#: src/messages/javascript.js:146
 msgid "\"{{api}}\" is deprecated or unimplemented"
 msgstr "„{{api}}” jest przestarzałe lub niezaimplementowane"
 
-#: src/messages/javascript.js:16
-msgid "addEventListener` called with truthy fourth argument."
-msgstr "„addEventListener`” zostało wywołane z czwartym parametrem o wartości „prawda”."
-
-#: src/messages/javascript.js:182
-msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr "„{{api}}” nie jest obsługiwane w wersji Firefoksa {{minVersion}}"
-
-#: src/messages/javascript.js:185
-msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "To API nie jest zaimplementowane w podanej minimalnej wersji Firefoksa"
-
-#: src/messages/javascript.js:193
-msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr "„{{api}}” nie jest obsługiwane w wersji Firefoksa na Androida {{minVersion}}"
-
-#: src/messages/javascript.js:196
-msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "To API nie jest zaimplementowane w podanej minimalnej wersji Firefoksa na Androida"
-
-#: src/messages/javascript.js:25
+#: src/messages/javascript.js:17
 msgid "Content script file could not be found."
 msgstr "Nie można odnaleźć pliku skryptu treści."
 
-#: src/messages/javascript.js:26
+#: src/messages/javascript.js:174
+msgid "{{api}} is not supported in Firefox version {{minVersion}}"
+msgstr "„{{api}}” nie jest obsługiwane w wersji Firefoksa {{minVersion}}"
+
+#: src/messages/javascript.js:177
+msgid "This API is not implemented by the given minimum Firefox version"
+msgstr "To API nie jest zaimplementowane w podanej minimalnej wersji Firefoksa"
+
+#: src/messages/javascript.js:18
 msgid "Content script file could not be found"
 msgstr "Nie można odnaleźć pliku skryptu treści"
 
-#: src/messages/javascript.js:32
+#: src/messages/javascript.js:185
+msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
+msgstr ""
+"„{{api}}” nie jest obsługiwane w wersji Firefoksa na Androida {{minVersion}}"
+
+#: src/messages/javascript.js:188
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
+msgstr ""
+"To API nie jest zaimplementowane w podanej minimalnej wersji Firefoksa na "
+"Androida"
+
+#: src/messages/javascript.js:24
 msgid "Content script file name should not be empty."
 msgstr "Nazwa pliku skryptu treści nie może być pusta."
 
-#: src/messages/javascript.js:33
+#: src/messages/javascript.js:25
 msgid "Content script file name should not be empty"
 msgstr "Nazwa pliku skryptu treści nie może być pusta"
 
@@ -138,17 +135,25 @@ msgstr "Nazwa pliku skryptu treści nie może być pusta"
 msgid "JavaScript syntax error"
 msgstr "Błąd składni języka JavaScript"
 
-#: src/messages/javascript.js:78
+#: src/messages/javascript.js:70
 msgid "Unexpected global passed as an argument"
 msgstr "Nieoczekiwane „global” przekazane jako parametr"
 
-#: src/messages/javascript.js:85
+#: src/messages/javascript.js:77
 msgid "Use of document.write strongly discouraged."
 msgstr "Użycie document.write jest mocno niezalecane."
 
-#: src/messages/javascript.js:93
+#: src/messages/javascript.js:85
 msgid "Banned 3rd-party JS library"
 msgstr "Zabroniona biblioteka JS od firmy trzeciej"
+
+#: src/messages/javascript.js:92
+msgid "Unadvised 3rd-party JS library"
+msgstr "Niezalecana biblioteka JS od firmy trzeciej"
+
+#: src/messages/javascript.js:99
+msgid "Known JS library detected"
+msgstr "Wykryto znaną bibliotekę JS"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -235,266 +240,320 @@ msgid "Translation string is missing the message property"
 msgstr "W ciągu tłumaczenia brak właściwości komunikatu"
 
 #: src/messages/locale-messagesjson.js:8
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "Dla ciągu nie jest ustawiona właściwość komunikatu „message” (https://mzl.la/2DSBTjA)."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+"Dla ciągu nie jest ustawiona właściwość komunikatu „message” (https://mzl."
+"la/2DSBTjA)."
 
-#: src/messages/manifestjson.js:100
+#: src/messages/manifestjson.js:103 src/messages/manifestjson.js:112
+msgid "Unknown permission."
+msgstr "Nieznane uprawnienie."
+
+#: src/messages/manifestjson.js:104
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr "https://mzl.la/1R1n1t0 (dokumentacja MDN) zawiera więcej informacji."
+
+#: src/messages/manifestjson.js:113
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
 msgstr "https://mzl.la/2Qn0fWC (dokumentacja MDN) zawiera więcej informacji."
 
-#: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
+#: src/messages/manifestjson.js:121 src/messages/manifestjson.js:124
 msgid "Invalid host permission."
 msgstr "Nieprawidłowe uprawnienie hosta."
 
-#: src/messages/manifestjson.js:117
+#: src/messages/manifestjson.js:130
+#, fuzzy
+msgid "Invalid install origin."
+msgstr "Nieprawidłowe uprawnienie hosta."
+
+#: src/messages/manifestjson.js:133
+msgid ""
+"Invalid install origin. A valid origin has - only - a scheme, hostname and "
+"optional port."
+msgstr ""
+
+#: src/messages/manifestjson.js:141
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
 msgstr "„manifest_version” w pliku manifest.json jest nieprawidłową wartością"
 
-#: src/messages/manifestjson.js:120
+#: src/messages/manifestjson.js:144
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
 msgstr "https://mzl.la/20PenXl (dokumentacja MDN) zawiera więcej informacji."
-
-#: src/messages/manifestjson.js:154
-msgid "The \"name\" property must be a string."
-msgstr "Właściwość „name” musi być ciągiem."
-
-#: src/messages/manifestjson.js:155
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "http://mzl.la/1STmr48 (dokumentacja MDN) zawiera więcej informacji."
-
-#: src/messages/manifestjson.js:163
-msgid "The \"version\" property must be a string."
-msgstr "Właściwość „version” musi być ciągiem."
-
-#: src/messages/manifestjson.js:164 src/messages/manifestjson.js:173
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "http://mzl.la/1kXIADa (dokumentacja MDN) zawiera więcej informacji."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
 msgstr "Nieprawidłowe pole."
 
-#: src/messages/manifestjson.js:172
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "Właściwość „version” używa formatu specyficznego dla Firefoksa."
+#: src/messages/manifestjson.js:178
+msgid "The \"name\" property must be a string."
+msgstr "Właściwość „name” musi być ciągiem."
+
+#: src/messages/manifestjson.js:179
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr "http://mzl.la/1STmr48 (dokumentacja MDN) zawiera więcej informacji."
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "https://mzl.la/1ZOhoEN (dokumentacja MDN) zawiera więcej informacji."
 
-#: src/messages/manifestjson.js:181
+#: src/messages/manifestjson.js:187
+msgid "The \"version\" property must be a string."
+msgstr "Właściwość „version” musi być ciągiem."
+
+#: src/messages/manifestjson.js:188 src/messages/manifestjson.js:197
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr "http://mzl.la/1kXIADa (dokumentacja MDN) zawiera więcej informacji."
+
+#: src/messages/manifestjson.js:196
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "Właściwość „version” używa formatu specyficznego dla Firefoksa."
+
+#: src/messages/manifestjson.js:205
 msgid "\"update_url\" is not allowed."
 msgstr "„update_url” jest niedozwolone."
 
-#: src/messages/manifestjson.js:191
+#: src/messages/manifestjson.js:215
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "Właściwość „update_url” nie jest używana w Firefoksie."
 
-#: src/messages/manifestjson.js:200
+#: src/messages/manifestjson.js:224
 msgid "\"strict_max_version\" not required."
 msgstr "„strict_max_version” nie jest wymagane."
 
-#: src/messages/manifestjson.js:219
+#: src/messages/manifestjson.js:243
 msgid "An icon defined in the manifest could not be found in the package."
 msgstr "Nie można odnaleźć w pakiecie ikony określonej w manifeście."
 
-#: src/messages/manifestjson.js:223
+#: src/messages/manifestjson.js:247
 msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Nie można odnaleźć ikony w „%(path)s”."
 
-#: src/messages/manifestjson.js:238
+#: src/messages/manifestjson.js:262
 msgid "A background script defined in the manifest could not be found."
 msgstr "Nie można odnaleźć skryptu tła określonego w manifeście."
 
-#: src/messages/manifestjson.js:241
+#: src/messages/manifestjson.js:265
 msgid "A background page defined in the manifest could not be found."
 msgstr "Nie można odnaleźć strony tła określonej w manifeście."
 
-#: src/messages/manifestjson.js:246
+#: src/messages/manifestjson.js:270
 msgid "Background script could not be found at \"%(path)s\"."
 msgstr "Nie można odnaleźć skryptu tła w „%(path)s”."
 
-#: src/messages/manifestjson.js:247
+#: src/messages/manifestjson.js:271
 msgid "Background page could not be found at \"%(path)s\"."
 msgstr "Nie można odnaleźć strony tła w „%(path)s”."
 
-#: src/messages/manifestjson.js:262
+#: src/messages/manifestjson.js:286
 msgid "A content script defined in the manifest could not be found."
 msgstr "Nie można odnaleźć skryptu treści określonego w manifeście."
 
-#: src/messages/manifestjson.js:263
+#: src/messages/manifestjson.js:287
 msgid "A content script css file defined in the manifest could not be found."
 msgstr "Nie można odnaleźć pliku CSS skryptu treści określonego w manifeście."
 
-#: src/messages/manifestjson.js:268
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Nie można odnaleźć w „%(path)s” skryptu treści określonego w manifeście."
+#: src/messages/manifestjson.js:292
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"Nie można odnaleźć w „%(path)s” skryptu treści określonego w manifeście."
 
-#: src/messages/manifestjson.js:271
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Nie można odnaleźć w „%(path)s” pliku CSS skryptu treści określonego w manifeście."
+#: src/messages/manifestjson.js:295
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"Nie można odnaleźć w „%(path)s” pliku CSS skryptu treści określonego "
+"w manifeście."
 
-#: src/messages/manifestjson.js:285
+#: src/messages/manifestjson.js:309
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "Nie można odnaleźć pliku słownika określonego w manifeście."
 
-#: src/messages/manifestjson.js:289
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Nie można odnaleźć w „%(path)s” pliku słownika określonego w manifeście."
+#: src/messages/manifestjson.js:313
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"Nie można odnaleźć w „%(path)s” pliku słownika określonego w manifeście."
 
-#: src/messages/manifestjson.js:301
+#: src/messages/manifestjson.js:325
 msgid "The manifest contains multiple dictionaries."
 msgstr "Manifest zawiera wiele słowników."
 
-#: src/messages/manifestjson.js:302
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+#: src/messages/manifestjson.js:326
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "W manifeście określono wiele słowników, co jest nieobsługiwane."
 
-#: src/messages/manifestjson.js:311
+#: src/messages/manifestjson.js:335
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr "Manifest zawiera obiekt słowników, ale jest pusty."
 
-#: src/messages/manifestjson.js:314
+#: src/messages/manifestjson.js:338
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr "W manifeście określono obiekt słowników, ale był pusty."
 
-#: src/messages/manifestjson.js:323
+#: src/messages/manifestjson.js:347
 msgid "The manifest contains a dictionary but no id property."
 msgstr "Manifest zawiera słownik, ale nie ma właściwości identyfikatora."
 
-#: src/messages/manifestjson.js:324
+#: src/messages/manifestjson.js:348
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr "W manifeście odnaleziono słownik, ale nie było ustawionego identyfikatora."
+msgstr ""
+"W manifeście odnaleziono słownik, ale nie było ustawionego identyfikatora."
 
-#: src/messages/manifestjson.js:334
+#: src/messages/manifestjson.js:358
 msgid "Forbidden content found in add-on."
 msgstr "W dodatku odnaleziono zabronione treści."
 
-#: src/messages/manifestjson.js:335
+#: src/messages/manifestjson.js:359
 msgid "This add-on contains forbidden content."
 msgstr "Ten dodatek zawiera zabronione treści."
 
-#: src/messages/manifestjson.js:343
+#: src/messages/manifestjson.js:367
 msgid "Icons must be square."
 msgstr "Ikona musi być kwadratowa."
 
-#: src/messages/manifestjson.js:344
+#: src/messages/manifestjson.js:368
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "Ikona w „%(path)s” musi być kwadratowa."
 
-#: src/messages/manifestjson.js:355
+#: src/messages/manifestjson.js:379
 msgid "The size of the icon does not match the manifest."
 msgstr "Wymiary ikony nie zgadzają się z manifestem."
 
-#: src/messages/manifestjson.js:370
+#: src/messages/manifestjson.js:394
 msgid "Corrupt image file"
 msgstr "Uszkodzony plik obrazu"
 
-#: src/messages/manifestjson.js:372
+#: src/messages/manifestjson.js:396
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr "Oczekiwany plik ikony w „%(path)s” jest uszkodzony"
 
-#: src/messages/manifestjson.js:381
+#: src/messages/manifestjson.js:405
 msgid "This property has been deprecated."
 msgstr "Ta właściwość została oznaczona jako przestarzała."
 
-#: src/messages/manifestjson.js:388
+#: src/messages/manifestjson.js:412
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "Ten alias LWT motywu został usunięty w Firefoksie 70."
 
-#: src/messages/manifestjson.js:389
+#: src/messages/manifestjson.js:413
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr "https://mzl.la/2T11Lkc (dokumentacja MDN) zawiera więcej informacji."
 
-#: src/messages/manifestjson.js:404
+#: src/messages/manifestjson.js:428
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "Nie można odnaleźć obrazu motywu dla „%(type)s” w „%(path)s”"
 
-#: src/messages/manifestjson.js:415
+#: src/messages/manifestjson.js:439
 msgid "Corrupted theme image file"
 msgstr "Uszkodzony plik obrazu motywu"
 
-#: src/messages/manifestjson.js:417
+#: src/messages/manifestjson.js:441
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "Plik obrazu motywu w „%(path)s” jest uszkodzony"
 
-#: src/messages/manifestjson.js:428
+#: src/messages/manifestjson.js:452
 msgid "Theme image file has an unsupported file extension"
 msgstr "Plik obrazu motywu ma nieobsługiwane rozszerzenie pliku"
 
-#: src/messages/manifestjson.js:430
+#: src/messages/manifestjson.js:454
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
 msgstr "Plik obrazu motywu w „%(path)s” ma nieobsługiwane rozszerzenie pliku"
 
-#: src/messages/manifestjson.js:444
+#: src/messages/manifestjson.js:468
 msgid "Theme image file has an unsupported mime type"
 msgstr "Plik obrazu motywu ma nieobsługiwany typ MIME"
 
-#: src/messages/manifestjson.js:446
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+#: src/messages/manifestjson.js:470
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr "Plik obrazu motywu w „%(path)s” ma nieobsługiwany typ MIME „%(mime)s”"
 
-#: src/messages/manifestjson.js:460
+#: src/messages/manifestjson.js:484
 msgid "Theme image file mime type does not match its file extension"
 msgstr "Typ MIME pliku obrazu motywu nie zgadza się z jego rozszerzeniem"
 
-#: src/messages/manifestjson.js:464
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr "Rozszerzenie pliku obrazu motywu w „%(path)s” nie zgadza się z jego rzeczywistym typem MIME „%(mime)s”"
+#: src/messages/manifestjson.js:488
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
+msgstr ""
+"Rozszerzenie pliku obrazu motywu w „%(path)s” nie zgadza się z jego "
+"rzeczywistym typem MIME „%(mime)s”"
 
-#: src/messages/manifestjson.js:478
+#: src/messages/manifestjson.js:502
 msgid "The \"default_locale\" is missing localizations."
 msgstr "„default_locale” nie ma lokalizacji."
 
-#: src/messages/manifestjson.js:487
+#: src/messages/manifestjson.js:511
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "Brakuje „default_locale”, ale istnieje „_locales”."
 
-#: src/messages/manifestjson.js:496
+#: src/messages/manifestjson.js:520
 msgid "Unsupported image extension"
 msgstr "Nieobsługiwane rozszerzenie obrazu"
 
-#: src/messages/manifestjson.js:497
+#: src/messages/manifestjson.js:521
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Ikony muszą być typu JPG/JPEG, WebP, GIF, PNG lub SVG."
 
-#: src/messages/manifestjson.js:505
-msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
-msgstr "Właściwość „applications” zastąpiona właściwością „browser_specific_settings”"
+#: src/messages/manifestjson.js:529
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property"
+msgstr ""
+"Właściwość „applications” zastąpiona właściwością „browser_specific_settings”"
 
-#: src/messages/manifestjson.js:518
+#: src/messages/manifestjson.js:542
 msgid "Empty language directory"
 msgstr "Pusty katalog języka"
 
-#: src/messages/manifestjson.js:520
+#: src/messages/manifestjson.js:544
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "W „%(path)s” brakuje pliku messages.json"
 
-#: src/messages/manifestjson.js:536
+#: src/messages/manifestjson.js:560
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr "Klucz manifestu nie jest obsługiwany przez podaną minimalną wersję Firefoksa"
+msgstr ""
+"Klucz manifestu nie jest obsługiwany przez podaną minimalną wersję Firefoksa"
 
-#: src/messages/manifestjson.js:558
+#: src/messages/manifestjson.js:582
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr "Uprawnienie nie jest obsługiwane przez podaną minimalną wersję Firefoksa"
+msgstr ""
+"Uprawnienie nie jest obsługiwane przez podaną minimalną wersję Firefoksa"
 
-#: src/messages/manifestjson.js:580
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr "Klucz manifestu nie jest obsługiwany przez podaną minimalną wersję Firefoksa na Androida"
+#: src/messages/manifestjson.js:604
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
+msgstr ""
+"Klucz manifestu nie jest obsługiwany przez podaną minimalną wersję Firefoksa "
+"na Androida"
 
-#: src/messages/manifestjson.js:602
-msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr "Uprawnienie nie jest obsługiwane przez podaną minimalną wersję Firefoksa na Androida"
+#: src/messages/manifestjson.js:626
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
+msgstr ""
+"Uprawnienie nie jest obsługiwane przez podaną minimalną wersję Firefoksa na "
+"Androida"
 
-#: src/messages/manifestjson.js:617
+#: src/messages/manifestjson.js:641
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "Odsyłanie do „addons.mozilla.org” jest niedozwolone"
 
-#: src/messages/manifestjson.js:618
-msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr "Odnośniki prowadzące do „addons.mozilla.org” nie mogą być używane jako strona domowa"
+#: src/messages/manifestjson.js:642
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
+"Odnośniki prowadzące do „addons.mozilla.org” nie mogą być używane jako "
+"strona domowa"
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:78 src/messages/manifestjson.js:86
+#: src/messages/manifestjson.js:94 src/messages/manifestjson.js:97
 msgid "The permission type is unsupported."
 msgstr "Typ uprawnienia jest nieobsługiwany."
 
@@ -502,16 +561,14 @@ msgstr "Typ uprawnienia jest nieobsługiwany."
 msgid "The field is required."
 msgstr "Pole jest wymagane."
 
-#: src/messages/manifestjson.js:90 src/messages/manifestjson.js:99
-msgid "Unknown permission."
-msgstr "Nieznane uprawnienie."
-
-#: src/messages/manifestjson.js:91
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "https://mzl.la/1R1n1t0 (dokumentacja MDN) zawiera więcej informacji."
+#~ msgid "addEventListener` called with truthy fourth argument."
+#~ msgstr ""
+#~ "„addEventListener`” zostało wywołane z czwartym parametrem o wartości "
+#~ "„prawda”."
 
 #~ msgid "A custom content_security_policy needs additional review."
-#~ msgstr "Niestandardowe „content_security_policy” wymaga dodatkowego sprawdzenia."
+#~ msgstr ""
+#~ "Niestandardowe „content_security_policy” wymaga dodatkowego sprawdzenia."
 
 #~ msgid "Violation of Mozilla conditions of use."
 #~ msgstr "Naruszenie warunków korzystania Mozilli."
