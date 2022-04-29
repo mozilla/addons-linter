@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-05 18:17+0000\n"
+"POT-Creation-Date: 2022-04-29 09:25+0000\n"
 "PO-Revision-Date: 2022-04-08 20:14+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
@@ -66,71 +66,64 @@ msgstr "გარეშე სკრიპტები არაა დაშვ
 msgid "Inline scripts blocked by default"
 msgstr "ხაზოვანი სკრიპტები შეზღუდულია ნაგულისხმევად"
 
-#: src/messages/javascript.js:100
-msgid "Unadvised 3rd-party JS library"
-msgstr "არასასურველი გარეშე JS ბიბლიოთეკა"
-
-#: src/messages/javascript.js:107
-msgid "Known JS library detected"
-msgstr "აღმოჩენილია ცნობილი JS ბიბლიოთეკა"
-
-#: src/messages/javascript.js:125
+#: src/messages/javascript.js:117
 msgid "{{api}} is not supported"
 msgstr "{{api}} არაა მხარდაჭერილი"
 
-#: src/messages/javascript.js:126
+#: src/messages/javascript.js:118
 msgid "This API has not been implemented by Firefox."
 msgstr "ეს API არ გამოიყენება Firefox-ში."
 
-#: src/messages/javascript.js:132
-msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr "„{{api}}“ მოცილებულია მანიფესტის მე-3 ვერსიიდან (`manifest_version` – თვისება)"
+#: src/messages/javascript.js:124
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
+msgstr ""
+"„{{api}}“ მოცილებულია მანიფესტის მე-3 ვერსიიდან (`manifest_version` – "
+"თვისება)"
 
-#: src/messages/javascript.js:141
+#: src/messages/javascript.js:133
 msgid "{{api}} is deprecated"
 msgstr "{{api}} მოძველებულია"
 
-#: src/messages/javascript.js:142
+#: src/messages/javascript.js:134
 msgid "This API has been deprecated by Firefox."
 msgstr "ეს API მოძველებულია Firefox-ში."
 
-#: src/messages/javascript.js:154
+#: src/messages/javascript.js:146
 msgid "\"{{api}}\" is deprecated or unimplemented"
 msgstr "„{{api}}“ მოძველებულია და არ დანერგილა"
 
-#: src/messages/javascript.js:16
-msgid "addEventListener` called with truthy fourth argument."
-msgstr "addEventListener ` გამოძახებულია ჭეშმარიტი მეოთხე არგუმენტით."
-
-#: src/messages/javascript.js:182
-msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr "{{api}} არაა მხარდაჭერილი Firefox-ის {{minVersion}} ვერსიაში"
-
-#: src/messages/javascript.js:185
-msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "ეს API არ გამოიყენება Firefox-ის მოცემულ უმცირეს ვერსიაში"
-
-#: src/messages/javascript.js:193
-msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr "{{api}} არაა მხარდაჭერილი Firefox-ის Android-ვერსიაში"
-
-#: src/messages/javascript.js:196
-msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "ეს API არ გამოიყენება Firefox-ის მოცემულ უმცირეს Android-ვერსიაში"
-
-#: src/messages/javascript.js:25
+#: src/messages/javascript.js:17
 msgid "Content script file could not be found."
 msgstr "სკრიპტის შემცველი ფაილი ვერ მოიძებნა."
 
-#: src/messages/javascript.js:26
+#: src/messages/javascript.js:174
+msgid "{{api}} is not supported in Firefox version {{minVersion}}"
+msgstr "{{api}} არაა მხარდაჭერილი Firefox-ის {{minVersion}} ვერსიაში"
+
+#: src/messages/javascript.js:177
+msgid "This API is not implemented by the given minimum Firefox version"
+msgstr "ეს API არ გამოიყენება Firefox-ის მოცემულ უმცირეს ვერსიაში"
+
+#: src/messages/javascript.js:18
 msgid "Content script file could not be found"
 msgstr "სკრიპტის შემცველი ფაილი ვერ მოიძებნა"
 
-#: src/messages/javascript.js:32
+#: src/messages/javascript.js:185
+msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
+msgstr "{{api}} არაა მხარდაჭერილი Firefox-ის Android-ვერსიაში"
+
+#: src/messages/javascript.js:188
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
+msgstr "ეს API არ გამოიყენება Firefox-ის მოცემულ უმცირეს Android-ვერსიაში"
+
+#: src/messages/javascript.js:24
 msgid "Content script file name should not be empty."
 msgstr "სკრიპტის შემცველი ფაილის სახელი ცარიელი არ უნდა იყოს."
 
-#: src/messages/javascript.js:33
+#: src/messages/javascript.js:25
 msgid "Content script file name should not be empty"
 msgstr "სკრიპტის შემცველი ფაილის სახელი ცარიელი არ უნდა იყოს"
 
@@ -138,17 +131,25 @@ msgstr "სკრიპტის შემცველი ფაილის ს
 msgid "JavaScript syntax error"
 msgstr "JavaScript სინტაქსური შეცდომა"
 
-#: src/messages/javascript.js:78
+#: src/messages/javascript.js:70
 msgid "Unexpected global passed as an argument"
 msgstr "არგუმენტი მოულოდნელი გადაიცა გლობალურად"
 
-#: src/messages/javascript.js:85
+#: src/messages/javascript.js:77
 msgid "Use of document.write strongly discouraged."
 msgstr "document.write-ის გამოყენება, მეტად არასასურველია."
 
-#: src/messages/javascript.js:93
+#: src/messages/javascript.js:85
 msgid "Banned 3rd-party JS library"
 msgstr "აკრძალული გარეშე JS ბიბლიოთეკა"
+
+#: src/messages/javascript.js:92
+msgid "Unadvised 3rd-party JS library"
+msgstr "არასასურველი გარეშე JS ბიბლიოთეკა"
+
+#: src/messages/javascript.js:99
+msgid "Known JS library detected"
+msgstr "აღმოჩენილია ცნობილი JS ბიბლიოთეკა"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -212,7 +213,8 @@ msgstr "Firefox დამატებებით კრიპტოვალუ
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
-msgstr "სტრიქონის დასახელება დაკავებულია წინასწარ განსაზღვრული შეტყობინებისთვის"
+msgstr ""
+"სტრიქონის დასახელება დაკავებულია წინასწარ განსაზღვრული შეტყობინებისთვის"
 
 #: src/messages/locale-messagesjson.js:30
 msgid "Placeholder for message is missing"
@@ -235,266 +237,329 @@ msgid "Translation string is missing the message property"
 msgstr "თარგმნილ სტრიქონს არ გააჩნია შეტყობინების თვისება"
 
 #: src/messages/locale-messagesjson.js:8
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "„message“ შეტყობინების თვისება არაა განსაზღვრული სტრიქონისთვის (https://mzl.la/2DSBTjA)."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+"„message“ შეტყობინების თვისება არაა განსაზღვრული სტრიქონისთვის (https://mzl."
+"la/2DSBTjA)."
 
-#: src/messages/manifestjson.js:100
+#: src/messages/manifestjson.js:103 src/messages/manifestjson.js:112
+msgid "Unknown permission."
+msgstr "უცნობი სახის ნებართვა."
+
+#: src/messages/manifestjson.js:104
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr ""
+"იხილეთ https://mzl.la/1R1n1t0 (MDN მასალები), დამატებითი ინფორმაციისთვის."
+
+#: src/messages/manifestjson.js:113
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
 msgstr "იხილეთ ვრცლად https://mzl.la/2Qn0fWC (MDN-მასალები)."
 
-#: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
+#: src/messages/manifestjson.js:121 src/messages/manifestjson.js:124
 msgid "Invalid host permission."
 msgstr "შენახვის უმართებულო უფლება."
 
-#: src/messages/manifestjson.js:117
+#: src/messages/manifestjson.js:130
+#, fuzzy
+msgid "Invalid install origin."
+msgstr "შენახვის უმართებულო უფლება."
+
+#: src/messages/manifestjson.js:133
+msgid ""
+"Invalid install origin. A valid origin has - only - a scheme, hostname and "
+"optional port."
+msgstr ""
+
+#: src/messages/manifestjson.js:141
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "„manifest_version“-ს manifest.json ფაილში არამართებული მნიშვნელობა აქვს"
+msgstr ""
+"„manifest_version“-ს manifest.json ფაილში არამართებული მნიშვნელობა აქვს"
 
-#: src/messages/manifestjson.js:120
+#: src/messages/manifestjson.js:144
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "იხილეთ https://mzl.la/20PenXl (MDN მასალები), დამატებითი ინფორმაციისთვის."
-
-#: src/messages/manifestjson.js:154
-msgid "The \"name\" property must be a string."
-msgstr "თვისება „name“ უნდა წარმოადგენდეს სტრიქონს."
-
-#: src/messages/manifestjson.js:155
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "იხილეთ http://mzl.la/1STmr48 (MDN მასალები), დამატებითი ინფორმაციისთვის."
-
-#: src/messages/manifestjson.js:163
-msgid "The \"version\" property must be a string."
-msgstr "თვისება „version“ უნდა წარმოადგენდეს სტრიქონს."
-
-#: src/messages/manifestjson.js:164 src/messages/manifestjson.js:173
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "იხილეთ http://mzl.la/1kXIADa (MDN მასალები), დამატებითი ინფორმაციისთვის."
+msgstr ""
+"იხილეთ https://mzl.la/20PenXl (MDN მასალები), დამატებითი ინფორმაციისთვის."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
 msgstr "ველი არამართებულია."
 
-#: src/messages/manifestjson.js:172
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "თვისება „version“ იყენებს Firefox-ის სახის ფორმატს."
+#: src/messages/manifestjson.js:178
+msgid "The \"name\" property must be a string."
+msgstr "თვისება „name“ უნდა წარმოადგენდეს სტრიქონს."
+
+#: src/messages/manifestjson.js:179
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr ""
+"იხილეთ http://mzl.la/1STmr48 (MDN მასალები), დამატებითი ინფორმაციისთვის."
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr "იხილეთ https://mzl.la/1ZOhoEN (MDN დოკუმენტაცია) დამატებითი ინფორმაციისთვის."
+msgstr ""
+"იხილეთ https://mzl.la/1ZOhoEN (MDN დოკუმენტაცია) დამატებითი ინფორმაციისთვის."
 
-#: src/messages/manifestjson.js:181
+#: src/messages/manifestjson.js:187
+msgid "The \"version\" property must be a string."
+msgstr "თვისება „version“ უნდა წარმოადგენდეს სტრიქონს."
+
+#: src/messages/manifestjson.js:188 src/messages/manifestjson.js:197
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr ""
+"იხილეთ http://mzl.la/1kXIADa (MDN მასალები), დამატებითი ინფორმაციისთვის."
+
+#: src/messages/manifestjson.js:196
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "თვისება „version“ იყენებს Firefox-ის სახის ფორმატს."
+
+#: src/messages/manifestjson.js:205
 msgid "\"update_url\" is not allowed."
 msgstr "„update_url“ არაა დაშვებული."
 
-#: src/messages/manifestjson.js:191
+#: src/messages/manifestjson.js:215
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "„update_url“ თვისებას არ იყენებს Firefox."
 
-#: src/messages/manifestjson.js:200
+#: src/messages/manifestjson.js:224
 msgid "\"strict_max_version\" not required."
 msgstr "\"strict_max_version\" არაა აუცილებელი."
 
-#: src/messages/manifestjson.js:219
+#: src/messages/manifestjson.js:243
 msgid "An icon defined in the manifest could not be found in the package."
 msgstr "მანიფესტში განსაზღვრული ხატულა, ნაკრებში ვერ მოიძებნა."
 
-#: src/messages/manifestjson.js:223
+#: src/messages/manifestjson.js:247
 msgid "Icon could not be found at \"%(path)s\"."
 msgstr "ხატულა, ვერ მოიძებნა მისამართზე „%(path)s“."
 
-#: src/messages/manifestjson.js:238
+#: src/messages/manifestjson.js:262
 msgid "A background script defined in the manifest could not be found."
 msgstr "მანიფესტში განსაზღვრული ფონური სკრიპტი, ვერ მოიძებნა."
 
-#: src/messages/manifestjson.js:241
+#: src/messages/manifestjson.js:265
 msgid "A background page defined in the manifest could not be found."
 msgstr "მანიფესტში განსაზღვრული ფონური გვერდი, ვერ მოიძებნა."
 
-#: src/messages/manifestjson.js:246
+#: src/messages/manifestjson.js:270
 msgid "Background script could not be found at \"%(path)s\"."
 msgstr "ფონური სკრიპტი ვერ მოიძებნა მისამართზე „%(path)s“."
 
-#: src/messages/manifestjson.js:247
+#: src/messages/manifestjson.js:271
 msgid "Background page could not be found at \"%(path)s\"."
 msgstr "ფონური გვერდი ვერ მოიძებნა მისამართზე „%(path)s“."
 
-#: src/messages/manifestjson.js:262
+#: src/messages/manifestjson.js:286
 msgid "A content script defined in the manifest could not be found."
 msgstr "მანიფესტში განსაზღვრული შიგთავსის სკრიპტი, ვერ მოიძებნა."
 
-#: src/messages/manifestjson.js:263
+#: src/messages/manifestjson.js:287
 msgid "A content script css file defined in the manifest could not be found."
 msgstr "მანიფესტში განსაზღვრული შიგთავსის სკრიპტის css-ფაილი, ვერ მოიძებნა."
 
-#: src/messages/manifestjson.js:268
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "მანიფესტში განსაზღვრული შიგთავსის სკრიპტი, ვერ მოიძებნა მისამართზე „%(path)s“."
+#: src/messages/manifestjson.js:292
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"მანიფესტში განსაზღვრული შიგთავსის სკრიპტი, ვერ მოიძებნა მისამართზე "
+"„%(path)s“."
 
-#: src/messages/manifestjson.js:271
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "მანიფესტში განსაზღვრული შიგთავსის სკრიპტის css-ფაილი, ვერ მოიძებნა მისამართზე „%(path)s“."
+#: src/messages/manifestjson.js:295
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"მანიფესტში განსაზღვრული შიგთავსის სკრიპტის css-ფაილი, ვერ მოიძებნა "
+"მისამართზე „%(path)s“."
 
-#: src/messages/manifestjson.js:285
+#: src/messages/manifestjson.js:309
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "მანიფესტში განსაზღვრული ლექსიკონის ფაილი, ვერ მოიძებნა."
 
-#: src/messages/manifestjson.js:289
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "მანიფესტში განსაზღვრული ლექსიკონის ფაილი, ვერ მოიძებნა მისამართზე „%(path)s“."
+#: src/messages/manifestjson.js:313
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"მანიფესტში განსაზღვრული ლექსიკონის ფაილი, ვერ მოიძებნა მისამართზე „%(path)s“."
 
-#: src/messages/manifestjson.js:301
+#: src/messages/manifestjson.js:325
 msgid "The manifest contains multiple dictionaries."
 msgstr "მანიფესტი შეიცავს რამდენიმე ლექსიკონს."
 
-#: src/messages/manifestjson.js:302
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr "მანიფესტში განსაზღვრულია რამდენიმე ლექსიკონი, რაც არ არის მხარდაჭერილი."
+#: src/messages/manifestjson.js:326
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgstr ""
+"მანიფესტში განსაზღვრულია რამდენიმე ლექსიკონი, რაც არ არის მხარდაჭერილი."
 
-#: src/messages/manifestjson.js:311
+#: src/messages/manifestjson.js:335
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr "მანიფესტი შეიცავს ლექსიკონების ობიექტს, მაგრამ იგი ცარიელია."
 
-#: src/messages/manifestjson.js:314
+#: src/messages/manifestjson.js:338
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr "ლექსიკონების ობიექტი მანიფესტში განსაზღვრული, მაგრამ ცარიელი იყო."
 
-#: src/messages/manifestjson.js:323
+#: src/messages/manifestjson.js:347
 msgid "The manifest contains a dictionary but no id property."
 msgstr "მანიფესტი შეიცავს ლექსიკონს, მაგრამ id-თვისების გარეშე."
 
-#: src/messages/manifestjson.js:324
+#: src/messages/manifestjson.js:348
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr "მანიფესტში ნაპოვნი იყო ლექსიკონი, მაგრამ მითითებული არ ჰქონდა id."
 
-#: src/messages/manifestjson.js:334
+#: src/messages/manifestjson.js:358
 msgid "Forbidden content found in add-on."
 msgstr "დამატებაში აღმოჩენილია აკრძალული შიგთავსი."
 
-#: src/messages/manifestjson.js:335
+#: src/messages/manifestjson.js:359
 msgid "This add-on contains forbidden content."
 msgstr "დამატება შეიცავს აკრძალულ შიგთავსს."
 
-#: src/messages/manifestjson.js:343
+#: src/messages/manifestjson.js:367
 msgid "Icons must be square."
 msgstr "ხატულები უნდა იყოს კვადრატული ფორმის."
 
-#: src/messages/manifestjson.js:344
+#: src/messages/manifestjson.js:368
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "ხატულა „%(path)s“ მისამართზე უნდა იყოს კვადრატული."
 
-#: src/messages/manifestjson.js:355
+#: src/messages/manifestjson.js:379
 msgid "The size of the icon does not match the manifest."
 msgstr "ხატულის ზომა არ ემთხვევა მანიფესტში განსაზღვრულს."
 
-#: src/messages/manifestjson.js:370
+#: src/messages/manifestjson.js:394
 msgid "Corrupt image file"
 msgstr "სურათი დაზიანებულია"
 
-#: src/messages/manifestjson.js:372
+#: src/messages/manifestjson.js:396
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr "მითითებულ „%(path)s“ მისამართზე ხატულის ფაილი დაზიანებულია"
 
-#: src/messages/manifestjson.js:381
+#: src/messages/manifestjson.js:405
 msgid "This property has been deprecated."
 msgstr "ეს თვისება მოძველებულია."
 
-#: src/messages/manifestjson.js:388
+#: src/messages/manifestjson.js:412
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "თემის LWT-მეტსახელი მოცილებულია Firefox 70-იდან."
 
-#: src/messages/manifestjson.js:389
+#: src/messages/manifestjson.js:413
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "იხილეთ https://mzl.la/2T11Lkc (MDN-მასალები), დამატებითი ინფორმაციისთვის."
+msgstr ""
+"იხილეთ https://mzl.la/2T11Lkc (MDN-მასალები), დამატებითი ინფორმაციისთვის."
 
-#: src/messages/manifestjson.js:404
+#: src/messages/manifestjson.js:428
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "თემის გამოსახულება სახეობით „%(type)s“ ვერ მოიძებნა მისამართზე „%(path)s“"
+msgstr ""
+"თემის გამოსახულება სახეობით „%(type)s“ ვერ მოიძებნა მისამართზე „%(path)s“"
 
-#: src/messages/manifestjson.js:415
+#: src/messages/manifestjson.js:439
 msgid "Corrupted theme image file"
 msgstr "თემის გამოსახულება დაზიანებულია"
 
-#: src/messages/manifestjson.js:417
+#: src/messages/manifestjson.js:441
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "თემის გამოსახულება მისამართზე „%(path)s“ დაზიანებულია"
 
-#: src/messages/manifestjson.js:428
+#: src/messages/manifestjson.js:452
 msgid "Theme image file has an unsupported file extension"
 msgstr "თემის გამოსახულებას ფაილის მხარდაუჭერელი გაფართოება აქვს"
 
-#: src/messages/manifestjson.js:430
+#: src/messages/manifestjson.js:454
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr "თემის გამოსახულებას მისამართზე „%(path)s“ ფაილის მხარდაუჭერელი გაფართოება აქვს"
+msgstr ""
+"თემის გამოსახულებას მისამართზე „%(path)s“ ფაილის მხარდაუჭერელი გაფართოება "
+"აქვს"
 
-#: src/messages/manifestjson.js:444
+#: src/messages/manifestjson.js:468
 msgid "Theme image file has an unsupported mime type"
 msgstr "თემის გამოსახულება მხარდაუჭერელი mime-სახისაა"
 
-#: src/messages/manifestjson.js:446
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr "თემის გამოსახულება მისამართზე „%(path)s“ მხარდაუჭერელი mime-სახისაა „%(mime)s“"
+#: src/messages/manifestjson.js:470
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr ""
+"თემის გამოსახულება მისამართზე „%(path)s“ მხარდაუჭერელი mime-სახისაა "
+"„%(mime)s“"
 
-#: src/messages/manifestjson.js:460
+#: src/messages/manifestjson.js:484
 msgid "Theme image file mime type does not match its file extension"
 msgstr "თემის გამოსახულების mime-სახეობა არ ემთხვევა ფაილის გაფართოებას"
 
-#: src/messages/manifestjson.js:464
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr "თემის გამოსახულების გაფართოება მისამართზე „%(path)s“ არ ემთხვევა მის არსებულ mime-სახეობას „%(mime)s“"
+#: src/messages/manifestjson.js:488
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
+msgstr ""
+"თემის გამოსახულების გაფართოება მისამართზე „%(path)s“ არ ემთხვევა მის არსებულ "
+"mime-სახეობას „%(mime)s“"
 
-#: src/messages/manifestjson.js:478
+#: src/messages/manifestjson.js:502
 msgid "The \"default_locale\" is missing localizations."
 msgstr "„default_locale“ აკლია თარგმანებში."
 
-#: src/messages/manifestjson.js:487
+#: src/messages/manifestjson.js:511
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "„default_locale“ აკლია, თუმცა „_locales“ არსებობს."
 
-#: src/messages/manifestjson.js:496
+#: src/messages/manifestjson.js:520
 msgid "Unsupported image extension"
 msgstr "სურათის ეს გაფართოება არაა მხარდაჭერილი"
 
-#: src/messages/manifestjson.js:497
+#: src/messages/manifestjson.js:521
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "ხატულა უნდა იყოს JPG/JPEG, WebP, GIF, PNG, ან SVG."
 
-#: src/messages/manifestjson.js:505
-msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
+#: src/messages/manifestjson.js:529
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property"
 msgstr "„applications“ თვისებას ანაცვლებს „browser_specific_settings“ თვისება"
 
-#: src/messages/manifestjson.js:518
+#: src/messages/manifestjson.js:542
 msgid "Empty language directory"
 msgstr "ენის საქაღალდე ცარიელია"
 
-#: src/messages/manifestjson.js:520
+#: src/messages/manifestjson.js:544
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "messages.json ფაილი ვერ მოიძებნა „%(path)s“ მისამართზე"
 
-#: src/messages/manifestjson.js:536
+#: src/messages/manifestjson.js:560
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr "მანიფესტის გასაღები მხარდაუჭერელია Firefox-ის მითითებული უმცირესი ვერსიით"
+msgstr ""
+"მანიფესტის გასაღები მხარდაუჭერელია Firefox-ის მითითებული უმცირესი ვერსიით"
 
-#: src/messages/manifestjson.js:558
+#: src/messages/manifestjson.js:582
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "ნებართვები მხარდაუჭერელია Firefox-ის მითითებული უმცირესი ვერსიით"
 
-#: src/messages/manifestjson.js:580
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr "მანიფესტის გასაღები არ არის მხარდაჭერილი Firefox Android-ის მითითებული უმცირესი ვერსიით"
+#: src/messages/manifestjson.js:604
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
+msgstr ""
+"მანიფესტის გასაღები არ არის მხარდაჭერილი Firefox Android-ის მითითებული "
+"უმცირესი ვერსიით"
 
-#: src/messages/manifestjson.js:602
-msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr "ნებართვები მხარდაუჭერელია Firefox Android-ის მითითებული უმცირესი ვერსიით"
+#: src/messages/manifestjson.js:626
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
+msgstr ""
+"ნებართვები მხარდაუჭერელია Firefox Android-ის მითითებული უმცირესი ვერსიით"
 
-#: src/messages/manifestjson.js:617
+#: src/messages/manifestjson.js:641
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "ბმული „addons.mozilla.org“ საიტთან აკრძალულია"
 
-#: src/messages/manifestjson.js:618
-msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr "ბმულის დადება მისამართზე „addons.mozilla.org“ აკრძალულია მთავარ გვერდზე"
+#: src/messages/manifestjson.js:642
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
+"ბმულის დადება მისამართზე „addons.mozilla.org“ აკრძალულია მთავარ გვერდზე"
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:78 src/messages/manifestjson.js:86
+#: src/messages/manifestjson.js:94 src/messages/manifestjson.js:97
 msgid "The permission type is unsupported."
 msgstr "ამ სახის ნებართვა არაა მხარდაჭერილი."
 
@@ -502,13 +567,8 @@ msgstr "ამ სახის ნებართვა არაა მხა�
 msgid "The field is required."
 msgstr "ველის შევსება აუცილებელია."
 
-#: src/messages/manifestjson.js:90 src/messages/manifestjson.js:99
-msgid "Unknown permission."
-msgstr "უცნობი სახის ნებართვა."
-
-#: src/messages/manifestjson.js:91
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "იხილეთ https://mzl.la/1R1n1t0 (MDN მასალები), დამატებითი ინფორმაციისთვის."
+#~ msgid "addEventListener` called with truthy fourth argument."
+#~ msgstr "addEventListener ` გამოძახებულია ჭეშმარიტი მეოთხე არგუმენტით."
 
 #~ msgid "A custom content_security_policy needs additional review."
 #~ msgstr "მითითებული content_security_policy საჭიროებს დამატებით განხილვას."

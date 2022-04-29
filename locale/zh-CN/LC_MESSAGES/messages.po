@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-05 18:17+0000\n"
+"POT-Creation-Date: 2022-04-29 09:25+0000\n"
 "PO-Revision-Date: 2021-11-08 14:23+0000\n"
 "Last-Translator: 你我皆凡人 <yuanbingyan@mail.ee>\n"
 "Language-Team: none\n"
@@ -66,71 +66,62 @@ msgstr "依照附加组件政策，不允许执行远程脚本。"
 msgid "Inline scripts blocked by default"
 msgstr "内联脚本默认被屏蔽"
 
-#: src/messages/javascript.js:100
-msgid "Unadvised 3rd-party JS library"
-msgstr "不建议使用的第三方 JS 库"
-
-#: src/messages/javascript.js:107
-msgid "Known JS library detected"
-msgstr "检测到已知 JS 库"
-
-#: src/messages/javascript.js:125
+#: src/messages/javascript.js:117
 msgid "{{api}} is not supported"
 msgstr "不支持 {{api}}"
 
-#: src/messages/javascript.js:126
+#: src/messages/javascript.js:118
 msgid "This API has not been implemented by Firefox."
 msgstr "Firefox 尚未实现此 API。"
 
-#: src/messages/javascript.js:132
-msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
+#: src/messages/javascript.js:124
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
 msgstr "“{{api}}”已从 Manifest V3 中删除（“manifest_version”属性）"
 
-#: src/messages/javascript.js:141
+#: src/messages/javascript.js:133
 msgid "{{api}} is deprecated"
 msgstr "{{api}} 已不赞成使用"
 
-#: src/messages/javascript.js:142
+#: src/messages/javascript.js:134
 msgid "This API has been deprecated by Firefox."
 msgstr "此 API 已不赞成在 Firefox 上使用。"
 
-#: src/messages/javascript.js:154
+#: src/messages/javascript.js:146
 msgid "\"{{api}}\" is deprecated or unimplemented"
 msgstr "“{{api}}”已不赞成使用或尚未实现"
 
-#: src/messages/javascript.js:16
-msgid "addEventListener` called with truthy fourth argument."
-msgstr "调用了 addEventListener，且第四个参数为真。"
-
-#: src/messages/javascript.js:182
-msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr "Firefox 版本 {{minVersion}} 不支持 {{api}}"
-
-#: src/messages/javascript.js:185
-msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "给定的最低 Firefox 版本尚未实现此 API"
-
-#: src/messages/javascript.js:193
-msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr "适用于 Android 的 Firefox 版本 {{minVersion}} 不支持 {{api}}"
-
-#: src/messages/javascript.js:196
-msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "给定的最低适用于 Android 的 Firefox 版本尚未实现此 API"
-
-#: src/messages/javascript.js:25
+#: src/messages/javascript.js:17
 msgid "Content script file could not be found."
 msgstr "无法找到内容脚本文件。"
 
-#: src/messages/javascript.js:26
+#: src/messages/javascript.js:174
+msgid "{{api}} is not supported in Firefox version {{minVersion}}"
+msgstr "Firefox 版本 {{minVersion}} 不支持 {{api}}"
+
+#: src/messages/javascript.js:177
+msgid "This API is not implemented by the given minimum Firefox version"
+msgstr "给定的最低 Firefox 版本尚未实现此 API"
+
+#: src/messages/javascript.js:18
 msgid "Content script file could not be found"
 msgstr "无法找到内容脚本文件"
 
-#: src/messages/javascript.js:32
+#: src/messages/javascript.js:185
+msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
+msgstr "适用于 Android 的 Firefox 版本 {{minVersion}} 不支持 {{api}}"
+
+#: src/messages/javascript.js:188
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
+msgstr "给定的最低适用于 Android 的 Firefox 版本尚未实现此 API"
+
+#: src/messages/javascript.js:24
 msgid "Content script file name should not be empty."
 msgstr "内容脚本文件名不应为空。"
 
-#: src/messages/javascript.js:33
+#: src/messages/javascript.js:25
 msgid "Content script file name should not be empty"
 msgstr "内容脚本文件名不应为空"
 
@@ -138,17 +129,25 @@ msgstr "内容脚本文件名不应为空"
 msgid "JavaScript syntax error"
 msgstr "JavaScript 语法错误"
 
-#: src/messages/javascript.js:78
+#: src/messages/javascript.js:70
 msgid "Unexpected global passed as an argument"
 msgstr "意外的将 global 传递为一个参数"
 
-#: src/messages/javascript.js:85
+#: src/messages/javascript.js:77
 msgid "Use of document.write strongly discouraged."
 msgstr "强烈不建议使用 document.write。"
 
-#: src/messages/javascript.js:93
+#: src/messages/javascript.js:85
 msgid "Banned 3rd-party JS library"
 msgstr "被禁止的第三方 JS 库"
+
+#: src/messages/javascript.js:92
+msgid "Unadvised 3rd-party JS library"
+msgstr "不建议使用的第三方 JS 库"
+
+#: src/messages/javascript.js:99
+msgid "Known JS library detected"
+msgstr "检测到已知 JS 库"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -235,266 +234,302 @@ msgid "Translation string is missing the message property"
 msgstr "翻译字符串缺少消息属性"
 
 #: src/messages/locale-messagesjson.js:8
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr "一个字符串没有设置 \"message\" 消息属性 (https://mzl.la/2DSBTjA)。"
 
-#: src/messages/manifestjson.js:100
+#: src/messages/manifestjson.js:103 src/messages/manifestjson.js:112
+msgid "Unknown permission."
+msgstr "未知权限。"
+
+#: src/messages/manifestjson.js:104
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr "详细信息请参阅 https://mzl.la/1R1n1t0 (MDN 文档)。"
+
+#: src/messages/manifestjson.js:113
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
 msgstr "详细信息请参阅 https://mzl.la/2Qn0fWC （MDN 文档）。"
 
-#: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
+#: src/messages/manifestjson.js:121 src/messages/manifestjson.js:124
 msgid "Invalid host permission."
 msgstr "主机权限无效。"
 
-#: src/messages/manifestjson.js:117
+#: src/messages/manifestjson.js:130
+#, fuzzy
+msgid "Invalid install origin."
+msgstr "主机权限无效。"
+
+#: src/messages/manifestjson.js:133
+msgid ""
+"Invalid install origin. A valid origin has - only - a scheme, hostname and "
+"optional port."
+msgstr ""
+
+#: src/messages/manifestjson.js:141
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
 msgstr "manifest.json 中的 \"manifest_version\" 不是有效的值"
 
-#: src/messages/manifestjson.js:120
+#: src/messages/manifestjson.js:144
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
 msgstr "详细信息请参阅 https://mzl.la/20PenXl (MDN文档)。"
-
-#: src/messages/manifestjson.js:154
-msgid "The \"name\" property must be a string."
-msgstr "“name”属性必须是字符串。"
-
-#: src/messages/manifestjson.js:155
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "详细信息请参阅 http://mzl.la/1STmr48 (MDN 文档)。"
-
-#: src/messages/manifestjson.js:163
-msgid "The \"version\" property must be a string."
-msgstr "“version”属性必须是字符串。"
-
-#: src/messages/manifestjson.js:164 src/messages/manifestjson.js:173
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "详细信息请参阅 http://mzl.la/1kXIADa (MDN文档)。"
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
 msgstr "该字段无效。"
 
-#: src/messages/manifestjson.js:172
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "\"version\" 属性须使用 Firefox 要求的格式。"
+#: src/messages/manifestjson.js:178
+msgid "The \"name\" property must be a string."
+msgstr "“name”属性必须是字符串。"
+
+#: src/messages/manifestjson.js:179
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr "详细信息请参阅 http://mzl.la/1STmr48 (MDN 文档)。"
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "详细信息请参阅 https://mzl.la/1ZOhoEN (MDN 文档)。"
 
-#: src/messages/manifestjson.js:181
+#: src/messages/manifestjson.js:187
+msgid "The \"version\" property must be a string."
+msgstr "“version”属性必须是字符串。"
+
+#: src/messages/manifestjson.js:188 src/messages/manifestjson.js:197
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr "详细信息请参阅 http://mzl.la/1kXIADa (MDN文档)。"
+
+#: src/messages/manifestjson.js:196
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "\"version\" 属性须使用 Firefox 要求的格式。"
+
+#: src/messages/manifestjson.js:205
 msgid "\"update_url\" is not allowed."
 msgstr "不应含有“update_url”。"
 
-#: src/messages/manifestjson.js:191
+#: src/messages/manifestjson.js:215
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "Firefox 不使用 \"update_url\" 属性。"
 
-#: src/messages/manifestjson.js:200
+#: src/messages/manifestjson.js:224
 msgid "\"strict_max_version\" not required."
 msgstr "\"strict_max_version\" 不是必需的。"
 
-#: src/messages/manifestjson.js:219
+#: src/messages/manifestjson.js:243
 msgid "An icon defined in the manifest could not be found in the package."
 msgstr "manifest 中定义的一个图标未在包中找到。"
 
-#: src/messages/manifestjson.js:223
+#: src/messages/manifestjson.js:247
 msgid "Icon could not be found at \"%(path)s\"."
 msgstr "无法在“%(path)s”找到图标。"
 
-#: src/messages/manifestjson.js:238
+#: src/messages/manifestjson.js:262
 msgid "A background script defined in the manifest could not be found."
 msgstr "未找到清单文件中定义的后台脚本。"
 
-#: src/messages/manifestjson.js:241
+#: src/messages/manifestjson.js:265
 msgid "A background page defined in the manifest could not be found."
 msgstr "未找到清单文件中定义的背景页面。"
 
-#: src/messages/manifestjson.js:246
+#: src/messages/manifestjson.js:270
 msgid "Background script could not be found at \"%(path)s\"."
 msgstr "无法在“%(path)s”找到后台脚本。"
 
-#: src/messages/manifestjson.js:247
+#: src/messages/manifestjson.js:271
 msgid "Background page could not be found at \"%(path)s\"."
 msgstr "无法在“%(path)s”找到后台页面。"
 
-#: src/messages/manifestjson.js:262
+#: src/messages/manifestjson.js:286
 msgid "A content script defined in the manifest could not be found."
 msgstr "未找到清单文件中定义的内容脚本。"
 
-#: src/messages/manifestjson.js:263
+#: src/messages/manifestjson.js:287
 msgid "A content script css file defined in the manifest could not be found."
 msgstr "未找到清单文件中定义的内容脚本 CSS 文件。"
 
-#: src/messages/manifestjson.js:268
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+#: src/messages/manifestjson.js:292
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "manifest 中定义的一个内容脚本无法在“%(path)s”找到。"
 
-#: src/messages/manifestjson.js:271
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+#: src/messages/manifestjson.js:295
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
 msgstr "manifest 中定义的一个内容脚本 css 文件无法在“%(path)s”找到。"
 
-#: src/messages/manifestjson.js:285
+#: src/messages/manifestjson.js:309
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "未找到清单文件中定义的字典文件。"
 
-#: src/messages/manifestjson.js:289
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+#: src/messages/manifestjson.js:313
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "未在“%(path)s”找到清单文件中定义的字典文件。"
 
-#: src/messages/manifestjson.js:301
+#: src/messages/manifestjson.js:325
 msgid "The manifest contains multiple dictionaries."
 msgstr "清单文件中包含多个字典。"
 
-#: src/messages/manifestjson.js:302
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+#: src/messages/manifestjson.js:326
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "不支持在清单文件中定义多个字典。"
 
-#: src/messages/manifestjson.js:311
+#: src/messages/manifestjson.js:335
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr "清单文件中包含字典对象，但是为空。"
 
-#: src/messages/manifestjson.js:314
+#: src/messages/manifestjson.js:338
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr "清单文件中定义了字典对象，但是为空。"
 
-#: src/messages/manifestjson.js:323
+#: src/messages/manifestjson.js:347
 msgid "The manifest contains a dictionary but no id property."
 msgstr "清单文件中包含字典对象，但无 ID 属性。"
 
-#: src/messages/manifestjson.js:324
+#: src/messages/manifestjson.js:348
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr "清单文件中找到字典，但未设置 ID。"
 
-#: src/messages/manifestjson.js:334
+#: src/messages/manifestjson.js:358
 msgid "Forbidden content found in add-on."
 msgstr "附加组件含有违禁内容。"
 
-#: src/messages/manifestjson.js:335
+#: src/messages/manifestjson.js:359
 msgid "This add-on contains forbidden content."
 msgstr "此附加组件包含被禁止的内容。"
 
-#: src/messages/manifestjson.js:343
+#: src/messages/manifestjson.js:367
 msgid "Icons must be square."
 msgstr "图标必须为正方形。"
 
-#: src/messages/manifestjson.js:344
+#: src/messages/manifestjson.js:368
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "位于“%(path)s”的图标必须为正方形。"
 
-#: src/messages/manifestjson.js:355
+#: src/messages/manifestjson.js:379
 msgid "The size of the icon does not match the manifest."
 msgstr "图标的大小与清单不匹配。"
 
-#: src/messages/manifestjson.js:370
+#: src/messages/manifestjson.js:394
 msgid "Corrupt image file"
 msgstr "图像损坏"
 
-#: src/messages/manifestjson.js:372
+#: src/messages/manifestjson.js:396
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr "应该位于“%(path)s”的图标文件已损坏"
 
-#: src/messages/manifestjson.js:381
+#: src/messages/manifestjson.js:405
 msgid "This property has been deprecated."
 msgstr "此属性已不赞成使用。"
 
-#: src/messages/manifestjson.js:388
+#: src/messages/manifestjson.js:412
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "此主题的 LWT 别名已在 Firefox 70 中移除。"
 
-#: src/messages/manifestjson.js:389
+#: src/messages/manifestjson.js:413
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr "详细信息请参阅 https://mzl.la/2T11Lkc (MDN 文档)。"
 
-#: src/messages/manifestjson.js:404
+#: src/messages/manifestjson.js:428
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "未在“%(path)s”找到“%(type)s”的主题图像"
 
-#: src/messages/manifestjson.js:415
+#: src/messages/manifestjson.js:439
 msgid "Corrupted theme image file"
 msgstr "损坏的主题图像文件"
 
-#: src/messages/manifestjson.js:417
+#: src/messages/manifestjson.js:441
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "位于“%(path)s”的主题图像文件已损坏"
 
-#: src/messages/manifestjson.js:428
+#: src/messages/manifestjson.js:452
 msgid "Theme image file has an unsupported file extension"
 msgstr "该主题图像文件使用不支持的扩展名"
 
-#: src/messages/manifestjson.js:430
+#: src/messages/manifestjson.js:454
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
 msgstr "位于“%(path)s”的主题图像文件使用不支持的扩展名"
 
-#: src/messages/manifestjson.js:444
+#: src/messages/manifestjson.js:468
 msgid "Theme image file has an unsupported mime type"
 msgstr "该主题图像使用不支持的 MIME 类型"
 
-#: src/messages/manifestjson.js:446
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+#: src/messages/manifestjson.js:470
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr "位于“%(path)s”的主题图像文件使用不支持的 MIME 类型：%(mime)s"
 
-#: src/messages/manifestjson.js:460
+#: src/messages/manifestjson.js:484
 msgid "Theme image file mime type does not match its file extension"
 msgstr "该主题图像文件的 MIME 类型与其扩展名不匹配"
 
-#: src/messages/manifestjson.js:464
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+#: src/messages/manifestjson.js:488
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
 msgstr "位于“%(path)s”的主题图像文件的 MIME 类型（%(mime)s）与其扩展名不匹配"
 
-#: src/messages/manifestjson.js:478
+#: src/messages/manifestjson.js:502
 msgid "The \"default_locale\" is missing localizations."
 msgstr "“default_locale”缺少本地化内容。"
 
-#: src/messages/manifestjson.js:487
+#: src/messages/manifestjson.js:511
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "“_locales”存在但缺少“default_locale”。"
 
-#: src/messages/manifestjson.js:496
+#: src/messages/manifestjson.js:520
 msgid "Unsupported image extension"
 msgstr "不支持的图像扩展名"
 
-#: src/messages/manifestjson.js:497
+#: src/messages/manifestjson.js:521
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "图标应该为 JPG/JPEG、WebP、GIFF、PNG 或 SVG 文件。"
 
-#: src/messages/manifestjson.js:505
-msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
+#: src/messages/manifestjson.js:529
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property"
 msgstr "“applications”属性已被“browser_specific_settings”属性覆盖"
 
-#: src/messages/manifestjson.js:518
+#: src/messages/manifestjson.js:542
 msgid "Empty language directory"
 msgstr "空的语言目录"
 
-#: src/messages/manifestjson.js:520
+#: src/messages/manifestjson.js:544
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "“%(path)s”中缺少 messages.json 文件"
 
-#: src/messages/manifestjson.js:536
+#: src/messages/manifestjson.js:560
 msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr "指定的最低 Firefox 版本不支持清单文件标识值"
 
-#: src/messages/manifestjson.js:558
+#: src/messages/manifestjson.js:582
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "指定的最低 Firefox 版本不支持权限"
 
-#: src/messages/manifestjson.js:580
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+#: src/messages/manifestjson.js:604
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
 msgstr "指定的最低适用于 Android 的 Firefox 版本，不支持清单文件标识值"
 
-#: src/messages/manifestjson.js:602
-msgid "Permission not supported by the specified minimum Firefox for Android version"
+#: src/messages/manifestjson.js:626
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
 msgstr "指定的最低适用于 Android 的 Firefox 版本，不支持权限"
 
-#: src/messages/manifestjson.js:617
+#: src/messages/manifestjson.js:641
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "不允许链接到“addons.mozilla.org”"
 
-#: src/messages/manifestjson.js:618
-msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
+#: src/messages/manifestjson.js:642
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
 msgstr "不允许将指向“addons.mozilla.org”的链接用于主页"
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:78 src/messages/manifestjson.js:86
+#: src/messages/manifestjson.js:94 src/messages/manifestjson.js:97
 msgid "The permission type is unsupported."
 msgstr "不支持该权限类型。"
 
@@ -502,13 +537,8 @@ msgstr "不支持该权限类型。"
 msgid "The field is required."
 msgstr "该字段必填。"
 
-#: src/messages/manifestjson.js:90 src/messages/manifestjson.js:99
-msgid "Unknown permission."
-msgstr "未知权限。"
-
-#: src/messages/manifestjson.js:91
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "详细信息请参阅 https://mzl.la/1R1n1t0 (MDN 文档)。"
+#~ msgid "addEventListener` called with truthy fourth argument."
+#~ msgstr "调用了 addEventListener，且第四个参数为真。"
 
 #~ msgid "A custom content_security_policy needs additional review."
 #~ msgstr "自定义的 content_security_policy 将需要额外审查。"

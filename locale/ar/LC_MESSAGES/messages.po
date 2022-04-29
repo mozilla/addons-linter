@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-05 18:17+0000\n"
+"POT-Creation-Date: 2022-04-29 09:25+0000\n"
 "PO-Revision-Date: 2020-01-26 16:26+0000\n"
 "Last-Translator: صفا الفليج <safa1996alfulaij@gmail.com>\n"
 "Language-Team: none\n"
@@ -67,78 +67,66 @@ msgstr "ليس مسموحا بالسكربتات البعيدة حسب سياس�
 msgid "Inline scripts blocked by default"
 msgstr "السكربتات الداخلية/Inline ممنوعة مبدئيا"
 
-#: src/messages/javascript.js:100
-msgid "Unadvised 3rd-party JS library"
-msgstr "مكتبة جافاسكربت من طرف ثالث غير منصوح بها"
-
-#: src/messages/javascript.js:107
-msgid "Known JS library detected"
-msgstr "اكتُشفت مكتبة جافاسكربت معروفة"
-
-#: src/messages/javascript.js:125
+#: src/messages/javascript.js:117
 msgid "{{api}} is not supported"
 msgstr "{{api}} غير مدعومة"
 
-#: src/messages/javascript.js:126
+#: src/messages/javascript.js:118
 msgid "This API has not been implemented by Firefox."
 msgstr "لم يُنفّذ فَيَرفُكس واجهة API هذه."
 
-#: src/messages/javascript.js:132
+#: src/messages/javascript.js:124
 msgid ""
 "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
 "property)"
 msgstr ""
 
-#: src/messages/javascript.js:141
+#: src/messages/javascript.js:133
 #, fuzzy
 msgid "{{api}} is deprecated"
 msgstr "{{api}} غير مدعومة"
 
-#: src/messages/javascript.js:142
+#: src/messages/javascript.js:134
 #, fuzzy
 msgid "This API has been deprecated by Firefox."
 msgstr "لم يُنفّذ فَيَرفُكس واجهة API هذه."
 
-#: src/messages/javascript.js:154
+#: src/messages/javascript.js:146
 msgid "\"{{api}}\" is deprecated or unimplemented"
 msgstr ""
 
-#: src/messages/javascript.js:16
-msgid "addEventListener` called with truthy fourth argument."
-msgstr ""
+#: src/messages/javascript.js:17
+msgid "Content script file could not be found."
+msgstr "تعذر العثور على ملف سكربت المحتوى."
 
-#: src/messages/javascript.js:182
+#: src/messages/javascript.js:174
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
 msgstr ""
 
-#: src/messages/javascript.js:185
+#: src/messages/javascript.js:177
 #, fuzzy
 msgid "This API is not implemented by the given minimum Firefox version"
 msgstr "لم يُنفّذ فَيَرفُكس واجهة API هذه."
 
-#: src/messages/javascript.js:193
+#: src/messages/javascript.js:18
+msgid "Content script file could not be found"
+msgstr "تعذر العثور على ملف سكربت المحتوى"
+
+#: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr ""
 
-#: src/messages/javascript.js:196
+#: src/messages/javascript.js:188
 #, fuzzy
 msgid ""
 "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "لم يُنفّذ فَيَرفُكس واجهة API هذه."
 
-#: src/messages/javascript.js:25
-msgid "Content script file could not be found."
-msgstr "تعذر العثور على ملف سكربت المحتوى."
-
-#: src/messages/javascript.js:26
-msgid "Content script file could not be found"
-msgstr "تعذر العثور على ملف سكربت المحتوى"
-
-#: src/messages/javascript.js:32
+#: src/messages/javascript.js:24
 msgid "Content script file name should not be empty."
 msgstr "لا يمكن أن يكون اسم ملف المحتوى فارغا."
 
-#: src/messages/javascript.js:33
+#: src/messages/javascript.js:25
 msgid "Content script file name should not be empty"
 msgstr "لا يمكن أن يكون اسم ملف المحتوى فارغا"
 
@@ -146,17 +134,25 @@ msgstr "لا يمكن أن يكون اسم ملف المحتوى فارغا"
 msgid "JavaScript syntax error"
 msgstr "خطأ في صياغة جافاسكربت"
 
-#: src/messages/javascript.js:78
+#: src/messages/javascript.js:70
 msgid "Unexpected global passed as an argument"
 msgstr "مُرّر متغير عالمي باعتباره معطى بشكل غير متوقع"
 
-#: src/messages/javascript.js:85
+#: src/messages/javascript.js:77
 msgid "Use of document.write strongly discouraged."
 msgstr "لا يُنصح بتاتا باستخدام document.write."
 
-#: src/messages/javascript.js:93
+#: src/messages/javascript.js:85
 msgid "Banned 3rd-party JS library"
 msgstr "مكتبة جافاسكربت من طرف ثالث محجوبة"
+
+#: src/messages/javascript.js:92
+msgid "Unadvised 3rd-party JS library"
+msgstr "مكتبة جافاسكربت من طرف ثالث غير منصوح بها"
+
+#: src/messages/javascript.js:99
+msgid "Known JS library detected"
+msgstr "اكتُشفت مكتبة جافاسكربت معروفة"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -247,301 +243,312 @@ msgid ""
 "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr "لم تُضبط صفة الرسالة ”message“ للسلسلة النصية (https://mzl.la/2DSBTjA)."
 
-#: src/messages/manifestjson.js:100
+#: src/messages/manifestjson.js:103 src/messages/manifestjson.js:112
+msgid "Unknown permission."
+msgstr "التصريح مجهول."
+
+#: src/messages/manifestjson.js:104
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr "طالع https://mzl.la/1R1n1t0 (وثائق MDN) لمعلومات أكثر."
+
+#: src/messages/manifestjson.js:113
 #, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
 msgstr "طالع https://mzl.la/20PenXl (وثائق MDN) لمعلومات أكثر."
 
-#: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
+#: src/messages/manifestjson.js:121 src/messages/manifestjson.js:124
 #, fuzzy
 msgid "Invalid host permission."
 msgstr "التصريح مجهول."
 
-#: src/messages/manifestjson.js:117
+#: src/messages/manifestjson.js:130
+#, fuzzy
+msgid "Invalid install origin."
+msgstr "التصريح مجهول."
+
+#: src/messages/manifestjson.js:133
+msgid ""
+"Invalid install origin. A valid origin has - only - a scheme, hostname and "
+"optional port."
+msgstr ""
+
+#: src/messages/manifestjson.js:141
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
 msgstr "ليس لِ‍ ”manifest_version“ في manifest.json قيمة صالحة"
 
-#: src/messages/manifestjson.js:120
+#: src/messages/manifestjson.js:144
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
 msgstr "طالع https://mzl.la/20PenXl (وثائق MDN) لمعلومات أكثر."
-
-#: src/messages/manifestjson.js:154
-msgid "The \"name\" property must be a string."
-msgstr "يجب أن تكون الصفة ”name“ سلسلة نصية."
-
-#: src/messages/manifestjson.js:155
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "طالِع http://mzl.la/1STmr48 (وثائق MDN) لمعلومات أكثر."
-
-#: src/messages/manifestjson.js:163
-msgid "The \"version\" property must be a string."
-msgstr "يجب أن تكون الصفة ”version“ سلسلة نصية."
-
-#: src/messages/manifestjson.js:164 src/messages/manifestjson.js:173
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "طالِع http://mzl.la/1kXIADa (وثائق MDN) لمعلومات أكثر."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
 msgstr "هذا الحقل غير صالح."
 
-#: src/messages/manifestjson.js:172
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "تستعمل صفة ”version“ نسقًا مخصّصًا لمتصفّح Firefox."
+#: src/messages/manifestjson.js:178
+msgid "The \"name\" property must be a string."
+msgstr "يجب أن تكون الصفة ”name“ سلسلة نصية."
+
+#: src/messages/manifestjson.js:179
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr "طالِع http://mzl.la/1STmr48 (وثائق MDN) لمعلومات أكثر."
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "طالع https://mzl.la/1ZOhoEN (وثائق MDN) لمعلومات أكثر."
 
-#: src/messages/manifestjson.js:181
+#: src/messages/manifestjson.js:187
+msgid "The \"version\" property must be a string."
+msgstr "يجب أن تكون الصفة ”version“ سلسلة نصية."
+
+#: src/messages/manifestjson.js:188 src/messages/manifestjson.js:197
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr "طالِع http://mzl.la/1kXIADa (وثائق MDN) لمعلومات أكثر."
+
+#: src/messages/manifestjson.js:196
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "تستعمل صفة ”version“ نسقًا مخصّصًا لمتصفّح Firefox."
+
+#: src/messages/manifestjson.js:205
 msgid "\"update_url\" is not allowed."
 msgstr "ليس مسموحًا بِ‍ ”update_url“."
 
-#: src/messages/manifestjson.js:191
+#: src/messages/manifestjson.js:215
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "لا يستعمل Firefox الصفة ”update_url“."
 
-#: src/messages/manifestjson.js:200
+#: src/messages/manifestjson.js:224
 msgid "\"strict_max_version\" not required."
 msgstr "‏”strict_max_version“ ليس مطلوبًا."
 
-#: src/messages/manifestjson.js:219
+#: src/messages/manifestjson.js:243
 msgid "An icon defined in the manifest could not be found in the package."
 msgstr "لم توجد إحدى الأيقونات المعرّفة في البيان داخل الحزمة."
 
-#: src/messages/manifestjson.js:223
+#: src/messages/manifestjson.js:247
 msgid "Icon could not be found at \"%(path)s\"."
 msgstr "لم توجد الأيقونة في ”%(path)s“."
 
-#: src/messages/manifestjson.js:238
+#: src/messages/manifestjson.js:262
 #, fuzzy
 msgid "A background script defined in the manifest could not be found."
 msgstr "تعذر العثور على ملف سكربت المحتوى."
 
-#: src/messages/manifestjson.js:241
+#: src/messages/manifestjson.js:265
 #, fuzzy
 msgid "A background page defined in the manifest could not be found."
 msgstr "تعذر العثور على ملف سكربت المحتوى."
 
-#: src/messages/manifestjson.js:246
+#: src/messages/manifestjson.js:270
 msgid "Background script could not be found at \"%(path)s\"."
 msgstr "لم يوجد سكربت الخلفية في ”%(path)s“."
 
-#: src/messages/manifestjson.js:247
+#: src/messages/manifestjson.js:271
 msgid "Background page could not be found at \"%(path)s\"."
 msgstr "لم توجد صفحة الخلفية في ”%(path)s“."
 
-#: src/messages/manifestjson.js:262
+#: src/messages/manifestjson.js:286
 #, fuzzy
 msgid "A content script defined in the manifest could not be found."
 msgstr "تعذر العثور على ملف سكربت المحتوى."
 
-#: src/messages/manifestjson.js:263
+#: src/messages/manifestjson.js:287
 #, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
 msgstr "تعذر العثور على ملف سكربت المحتوى."
 
-#: src/messages/manifestjson.js:268
+#: src/messages/manifestjson.js:292
 msgid ""
 "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "لم يوجد سكربت المحتوى المعرّف في البيان في ”%(path)s“."
 
-#: src/messages/manifestjson.js:271
+#: src/messages/manifestjson.js:295
 msgid ""
 "Content script css file defined in the manifest could not be found at "
 "\"%(path)s\"."
 msgstr "لم يوجد سكربت CSS للمحتوى المعرّف في البيان في ”%(path)s“."
 
-#: src/messages/manifestjson.js:285
+#: src/messages/manifestjson.js:309
 #, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "تعذر العثور على ملف سكربت المحتوى."
 
-#: src/messages/manifestjson.js:289
+#: src/messages/manifestjson.js:313
 msgid ""
 "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
-#: src/messages/manifestjson.js:301
+#: src/messages/manifestjson.js:325
 msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
-#: src/messages/manifestjson.js:302
+#: src/messages/manifestjson.js:326
 msgid ""
 "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
-#: src/messages/manifestjson.js:311
+#: src/messages/manifestjson.js:335
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr ""
 
-#: src/messages/manifestjson.js:314
+#: src/messages/manifestjson.js:338
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr ""
 
-#: src/messages/manifestjson.js:323
+#: src/messages/manifestjson.js:347
 msgid "The manifest contains a dictionary but no id property."
 msgstr ""
 
-#: src/messages/manifestjson.js:324
+#: src/messages/manifestjson.js:348
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr ""
 
-#: src/messages/manifestjson.js:334
+#: src/messages/manifestjson.js:358
 msgid "Forbidden content found in add-on."
 msgstr "وُجد محتوى محظور في الإضافة."
 
-#: src/messages/manifestjson.js:335
+#: src/messages/manifestjson.js:359
 msgid "This add-on contains forbidden content."
 msgstr "في هذه الإضافة محتوًى محظور."
 
-#: src/messages/manifestjson.js:343
+#: src/messages/manifestjson.js:367
 msgid "Icons must be square."
 msgstr "يجب أن تكون الأيقونات مربعة الشكل."
 
-#: src/messages/manifestjson.js:344
+#: src/messages/manifestjson.js:368
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "يجب أن تكون الأيقونة في ”%(path)s“ مربعة الشكل."
 
-#: src/messages/manifestjson.js:355
+#: src/messages/manifestjson.js:379
 msgid "The size of the icon does not match the manifest."
 msgstr "لا يتطابق مقاس الأيقونة مع البيان."
 
-#: src/messages/manifestjson.js:370
+#: src/messages/manifestjson.js:394
 msgid "Corrupt image file"
 msgstr "ملف الصورة معطوب"
 
-#: src/messages/manifestjson.js:372
+#: src/messages/manifestjson.js:396
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr "توقّعت ملف أيقونة في ”%(path)s“، ولكنّه تالف"
 
-#: src/messages/manifestjson.js:381
+#: src/messages/manifestjson.js:405
 msgid "This property has been deprecated."
 msgstr ""
 
-#: src/messages/manifestjson.js:388
+#: src/messages/manifestjson.js:412
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
-#: src/messages/manifestjson.js:389
+#: src/messages/manifestjson.js:413
 #, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr "طالع https://mzl.la/1ZOhoEN (وثائق MDN) لمعلومات أكثر."
 
-#: src/messages/manifestjson.js:404
+#: src/messages/manifestjson.js:428
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr ""
 
-#: src/messages/manifestjson.js:415
+#: src/messages/manifestjson.js:439
 msgid "Corrupted theme image file"
 msgstr ""
 
-#: src/messages/manifestjson.js:417
+#: src/messages/manifestjson.js:441
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr ""
 
-#: src/messages/manifestjson.js:428
+#: src/messages/manifestjson.js:452
 msgid "Theme image file has an unsupported file extension"
 msgstr "لملف صورة السمة امتدادًا غير مدعوم"
 
-#: src/messages/manifestjson.js:430
+#: src/messages/manifestjson.js:454
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
 msgstr "لملف صورة السمة في ”%(path)s“ امتدادًا غير مدعوم"
 
-#: src/messages/manifestjson.js:444
+#: src/messages/manifestjson.js:468
 msgid "Theme image file has an unsupported mime type"
 msgstr "لملف صورة السمة نوع MIME غير مدعوم"
 
-#: src/messages/manifestjson.js:446
+#: src/messages/manifestjson.js:470
 msgid ""
 "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
-#: src/messages/manifestjson.js:460
+#: src/messages/manifestjson.js:484
 msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
-#: src/messages/manifestjson.js:464
+#: src/messages/manifestjson.js:488
 msgid ""
 "Theme image file extension at \"%(path)s\" does not match its actual mime "
 "type \"%(mime)s\""
 msgstr ""
 
-#: src/messages/manifestjson.js:478
+#: src/messages/manifestjson.js:502
 msgid "The \"default_locale\" is missing localizations."
 msgstr "ليس في ”default_locale“ أيّ ملفات توطين."
 
-#: src/messages/manifestjson.js:487
+#: src/messages/manifestjson.js:511
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "‏”default_locale“ ليس موجودًا، ولكنّ ”‎_locales“ موجود."
 
-#: src/messages/manifestjson.js:496
+#: src/messages/manifestjson.js:520
 msgid "Unsupported image extension"
 msgstr "امتداد الصورة غير مدعوم"
 
-#: src/messages/manifestjson.js:497
+#: src/messages/manifestjson.js:521
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "يجب أن تكون الصورة: JPG/JPEG أو WebP أو GIF أو PNG أو SVG."
 
-#: src/messages/manifestjson.js:505
+#: src/messages/manifestjson.js:529
 msgid ""
 "\"applications\" property overridden by \"browser_specific_settings\" "
 "property"
 msgstr ""
 
-#: src/messages/manifestjson.js:518
+#: src/messages/manifestjson.js:542
 msgid "Empty language directory"
 msgstr "دليل اللغات فارغ"
 
-#: src/messages/manifestjson.js:520
+#: src/messages/manifestjson.js:544
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "لم يوجد الملف messages.json في ”%(path)s“."
 
-#: src/messages/manifestjson.js:536
+#: src/messages/manifestjson.js:560
 msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr ""
 
-#: src/messages/manifestjson.js:558
+#: src/messages/manifestjson.js:582
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
-#: src/messages/manifestjson.js:580
+#: src/messages/manifestjson.js:604
 msgid ""
 "Manifest key not supported by the specified minimum Firefox for Android "
 "version"
 msgstr ""
 
-#: src/messages/manifestjson.js:602
+#: src/messages/manifestjson.js:626
 msgid ""
 "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
-#: src/messages/manifestjson.js:617
+#: src/messages/manifestjson.js:641
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr ""
 
-#: src/messages/manifestjson.js:618
+#: src/messages/manifestjson.js:642
 msgid ""
 "Links directing to \"addons.mozilla.org\" are not allowed to be used for "
 "homepage"
 msgstr ""
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73
-#: src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:78 src/messages/manifestjson.js:86
+#: src/messages/manifestjson.js:94 src/messages/manifestjson.js:97
 msgid "The permission type is unsupported."
 msgstr "نوع التصريح غير مدعوم."
 
 #: src/messages/manifestjson.js:8
 msgid "The field is required."
 msgstr "هذا الحقل مطلوب."
-
-#: src/messages/manifestjson.js:90 src/messages/manifestjson.js:99
-msgid "Unknown permission."
-msgstr "التصريح مجهول."
-
-#: src/messages/manifestjson.js:91
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "طالع https://mzl.la/1R1n1t0 (وثائق MDN) لمعلومات أكثر."
 
 #~ msgid "A custom content_security_policy needs additional review."
 #~ msgstr "تحتاج content_security_policy المخصّصة مراجعة أخرى."

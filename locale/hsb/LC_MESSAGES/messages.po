@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-11-05 18:17+0000\n"
+"POT-Creation-Date: 2022-04-29 09:25+0000\n"
 "PO-Revision-Date: 2021-11-08 14:24+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
@@ -11,7 +11,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 "X-Generator: Pontoon\n"
 
 #: src/linter.js:171
@@ -66,71 +67,65 @@ msgstr "Zdalene skripty po prawidłach přidatkow dowolene njejsu."
 msgid "Inline scripts blocked by default"
 msgstr "Skripty inline so po standardźe blokuja"
 
-#: src/messages/javascript.js:100
-msgid "Unadvised 3rd-party JS library"
-msgstr "Njeznata JS-biblioteka třećeho poskićowarja"
-
-#: src/messages/javascript.js:107
-msgid "Known JS library detected"
-msgstr "Znata JS-biblioteka namakana"
-
-#: src/messages/javascript.js:125
+#: src/messages/javascript.js:117
 msgid "{{api}} is not supported"
 msgstr "{{api}} so njepodpěruje"
 
-#: src/messages/javascript.js:126
+#: src/messages/javascript.js:118
 msgid "This API has not been implemented by Firefox."
 msgstr "Tutón API njeje so přez Firefox implementował."
 
-#: src/messages/javascript.js:132
-msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr "„{{api}}“ je so we wersiji 3 manifest wotstronił (kajkosć `manifest_version`)"
+#: src/messages/javascript.js:124
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
+msgstr ""
+"„{{api}}“ je so we wersiji 3 manifest wotstronił (kajkosć `manifest_version`)"
 
-#: src/messages/javascript.js:141
+#: src/messages/javascript.js:133
 msgid "{{api}} is deprecated"
 msgstr "{{api}} je zestarjeny"
 
-#: src/messages/javascript.js:142
+#: src/messages/javascript.js:134
 msgid "This API has been deprecated by Firefox."
 msgstr "Tutón API so přez Firefox hižo njepodpěruje."
 
-#: src/messages/javascript.js:154
+#: src/messages/javascript.js:146
 msgid "\"{{api}}\" is deprecated or unimplemented"
 msgstr "„{{api}}“ so hižo njepodpěruje abo je njeimplementowany"
 
-#: src/messages/javascript.js:16
-msgid "addEventListener` called with truthy fourth argument."
-msgstr "addEventListener` wołany z truthy jako štwórty argument."
-
-#: src/messages/javascript.js:182
-msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr "{{api}} so we wersiji {{minVersion}} Firefox njepodpěruje"
-
-#: src/messages/javascript.js:185
-msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Tutón API njeje so přez podatu minimalnu wersiju Firefox implementował"
-
-#: src/messages/javascript.js:193
-msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr "{{api}} so we wersiji {{minVersion}} Firefox za Android njepodpěruje"
-
-#: src/messages/javascript.js:196
-msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Tutón API njeje so přez podatu minimalnu wersiju Firefox za Android implementował"
-
-#: src/messages/javascript.js:25
+#: src/messages/javascript.js:17
 msgid "Content script file could not be found."
 msgstr "Wobsahowa skriptowa dataja njeda so namakać."
 
-#: src/messages/javascript.js:26
+#: src/messages/javascript.js:174
+msgid "{{api}} is not supported in Firefox version {{minVersion}}"
+msgstr "{{api}} so we wersiji {{minVersion}} Firefox njepodpěruje"
+
+#: src/messages/javascript.js:177
+msgid "This API is not implemented by the given minimum Firefox version"
+msgstr "Tutón API njeje so přez podatu minimalnu wersiju Firefox implementował"
+
+#: src/messages/javascript.js:18
 msgid "Content script file could not be found"
 msgstr "Wobsahowa skriptowa dataja njeda so namakać"
 
-#: src/messages/javascript.js:32
+#: src/messages/javascript.js:185
+msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
+msgstr "{{api}} so we wersiji {{minVersion}} Firefox za Android njepodpěruje"
+
+#: src/messages/javascript.js:188
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
+msgstr ""
+"Tutón API njeje so přez podatu minimalnu wersiju Firefox za Android "
+"implementował"
+
+#: src/messages/javascript.js:24
 msgid "Content script file name should not be empty."
 msgstr "Mjeno wobsahoweje skriptoweje dataje njeměło prózdne być."
 
-#: src/messages/javascript.js:33
+#: src/messages/javascript.js:25
 msgid "Content script file name should not be empty"
 msgstr "Mjeno wobsahoweje skriptoweje dataje njeměło prózdne być"
 
@@ -138,17 +133,25 @@ msgstr "Mjeno wobsahoweje skriptoweje dataje njeměło prózdne być"
 msgid "JavaScript syntax error"
 msgstr "Syntaksowy zmylk JavaScript"
 
-#: src/messages/javascript.js:78
+#: src/messages/javascript.js:70
 msgid "Unexpected global passed as an argument"
 msgstr "Njewočakowana globala je so jako argument přepodała"
 
-#: src/messages/javascript.js:85
+#: src/messages/javascript.js:77
 msgid "Use of document.write strongly discouraged."
 msgstr "Wot wužiwanja document.write so wuraznje wotradźuje."
 
-#: src/messages/javascript.js:93
+#: src/messages/javascript.js:85
 msgid "Banned 3rd-party JS library"
 msgstr "JS-biblioteka třećeho poskićowarja zakazana"
+
+#: src/messages/javascript.js:92
+msgid "Unadvised 3rd-party JS library"
+msgstr "Njeznata JS-biblioteka třećeho poskićowarja"
+
+#: src/messages/javascript.js:99
+msgid "Known JS library detected"
+msgstr "Znata JS-biblioteka namakana"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -235,266 +238,330 @@ msgid "Translation string is missing the message property"
 msgstr "Přełožowanskemu znamješkowemu rjećazkej kajkosć message faluje"
 
 #: src/messages/locale-messagesjson.js:8
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "Zdźělenska kajkosć \"message\" njeje za znamješkowy rjećazk nastajena (https://mzl.la/2DSBTjA)."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+"Zdźělenska kajkosć \"message\" njeje za znamješkowy rjećazk nastajena "
+"(https://mzl.la/2DSBTjA)."
 
-#: src/messages/manifestjson.js:100
+#: src/messages/manifestjson.js:103 src/messages/manifestjson.js:112
+msgid "Unknown permission."
+msgstr "Njeznata dowolnosć."
+
+#: src/messages/manifestjson.js:104
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr "Hlejće https://mzl.la/1R1n1t0 (MDN Docs) za dalše informacije."
+
+#: src/messages/manifestjson.js:113
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
 msgstr "Hlejće https://mzl.la/2Qn0fWC (MDN Docs) za dalše informacije."
 
-#: src/messages/manifestjson.js:108 src/messages/manifestjson.js:111
+#: src/messages/manifestjson.js:121 src/messages/manifestjson.js:124
 msgid "Invalid host permission."
 msgstr "Njepłaćiwe hostowe prawo"
 
-#: src/messages/manifestjson.js:117
+#: src/messages/manifestjson.js:130
+#, fuzzy
+msgid "Invalid install origin."
+msgstr "Njepłaćiwe hostowe prawo"
+
+#: src/messages/manifestjson.js:133
+msgid ""
+"Invalid install origin. A valid origin has - only - a scheme, hostname and "
+"optional port."
+msgstr ""
+
+#: src/messages/manifestjson.js:141
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
 msgstr "\"manifest_version\" w manifest.json płaćiwa hódnota njeje"
 
-#: src/messages/manifestjson.js:120
+#: src/messages/manifestjson.js:144
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
 msgstr "Hlejće https://mzl.la/20PenXl (MDN Docs) za dalše informacije."
-
-#: src/messages/manifestjson.js:154
-msgid "The \"name\" property must be a string."
-msgstr "Kajkosć \"name\" dyrbi znamješkowy rjećazk być."
-
-#: src/messages/manifestjson.js:155
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "Hlejće http://mzl.la/1STmr48 (MDN Docs) za dalše informacije."
-
-#: src/messages/manifestjson.js:163
-msgid "The \"version\" property must be a string."
-msgstr "Kajkosć \"version\" dyrbi znamješkowy rjećazk być."
-
-#: src/messages/manifestjson.js:164 src/messages/manifestjson.js:173
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "Hlejće http://mzl.la/1kXIADa (MDN Docs) za dalše informacije."
 
 #: src/messages/manifestjson.js:17
 msgid "The field is invalid."
 msgstr "Polo je njepłaćiwe."
 
-#: src/messages/manifestjson.js:172
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "Kajkosć \"version\" format wužiwa, kotryž je specifiski za Firefox."
+#: src/messages/manifestjson.js:178
+msgid "The \"name\" property must be a string."
+msgstr "Kajkosć \"name\" dyrbi znamješkowy rjećazk być."
+
+#: src/messages/manifestjson.js:179
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr "Hlejće http://mzl.la/1STmr48 (MDN Docs) za dalše informacije."
 
 #: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Hlejće https://mzl.la/1ZOhoEN (MDN Docs) za dalše informacije."
 
-#: src/messages/manifestjson.js:181
+#: src/messages/manifestjson.js:187
+msgid "The \"version\" property must be a string."
+msgstr "Kajkosć \"version\" dyrbi znamješkowy rjećazk być."
+
+#: src/messages/manifestjson.js:188 src/messages/manifestjson.js:197
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr "Hlejće http://mzl.la/1kXIADa (MDN Docs) za dalše informacije."
+
+#: src/messages/manifestjson.js:196
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "Kajkosć \"version\" format wužiwa, kotryž je specifiski za Firefox."
+
+#: src/messages/manifestjson.js:205
 msgid "\"update_url\" is not allowed."
 msgstr "\"update_url\" dowoleny njeje."
 
-#: src/messages/manifestjson.js:191
+#: src/messages/manifestjson.js:215
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "Kajkosć \"update_url\" so wot Firefox njewužiwa."
 
-#: src/messages/manifestjson.js:200
+#: src/messages/manifestjson.js:224
 msgid "\"strict_max_version\" not required."
 msgstr "\"strict_max_version\" trěbny njeje."
 
-#: src/messages/manifestjson.js:219
+#: src/messages/manifestjson.js:243
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr "Symbol, kotryž je so w manifesće definował, njeda so w pakćiku namakać."
+msgstr ""
+"Symbol, kotryž je so w manifesće definował, njeda so w pakćiku namakać."
 
-#: src/messages/manifestjson.js:223
+#: src/messages/manifestjson.js:247
 msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Symbol njeda so na \"%(path)s\" namakać."
 
-#: src/messages/manifestjson.js:238
+#: src/messages/manifestjson.js:262
 msgid "A background script defined in the manifest could not be found."
-msgstr "Pozadkowy skript, kotryž je so w manifesće definował, njeda so namakać."
+msgstr ""
+"Pozadkowy skript, kotryž je so w manifesće definował, njeda so namakać."
 
-#: src/messages/manifestjson.js:241
+#: src/messages/manifestjson.js:265
 msgid "A background page defined in the manifest could not be found."
-msgstr "Pozadkowa strona, kotraž je so w manifesće definowała, njeda so namakać."
+msgstr ""
+"Pozadkowa strona, kotraž je so w manifesće definowała, njeda so namakać."
 
-#: src/messages/manifestjson.js:246
+#: src/messages/manifestjson.js:270
 msgid "Background script could not be found at \"%(path)s\"."
 msgstr "Pozadkowy skript njeda so na \"%(path)s\" namakać."
 
-#: src/messages/manifestjson.js:247
+#: src/messages/manifestjson.js:271
 msgid "Background page could not be found at \"%(path)s\"."
 msgstr "Pozadkowa strona njeda so na \"%(path)s\" namakać."
 
-#: src/messages/manifestjson.js:262
+#: src/messages/manifestjson.js:286
 msgid "A content script defined in the manifest could not be found."
-msgstr "Wobsahowy skript, kotryž je so w manifesće definował, njeda so namakać."
+msgstr ""
+"Wobsahowy skript, kotryž je so w manifesće definował, njeda so namakać."
 
-#: src/messages/manifestjson.js:263
+#: src/messages/manifestjson.js:287
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "CSS-dataja wobsahoweho skripta, kotraž je so w manifesće definowała, njeda so namakać."
+msgstr ""
+"CSS-dataja wobsahoweho skripta, kotraž je so w manifesće definowała, njeda "
+"so namakać."
 
-#: src/messages/manifestjson.js:268
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Wobsahowy skript, kotryž je so w manifesće definował, njeda so na \"%(path)s\" namakać."
+#: src/messages/manifestjson.js:292
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"Wobsahowy skript, kotryž je so w manifesće definował, njeda so na \"%(path)s"
+"\" namakać."
 
-#: src/messages/manifestjson.js:271
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "CSS-dataja wobsahoweho skripta, kotraž je so w manifesće definowała, njeda so na \"%(path)s\" namakać."
+#: src/messages/manifestjson.js:295
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"CSS-dataja wobsahoweho skripta, kotraž je so w manifesće definowała, njeda "
+"so na \"%(path)s\" namakać."
 
-#: src/messages/manifestjson.js:285
+#: src/messages/manifestjson.js:309
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Słownikowa dataja, kotraž je so w manifesće definowała, njeda so namakać."
+msgstr ""
+"Słownikowa dataja, kotraž je so w manifesće definowała, njeda so namakać."
 
-#: src/messages/manifestjson.js:289
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Słownikowa dataja, kotraž je so w manifesće definowała, njeda so na \"%(path)s\" namakać."
+#: src/messages/manifestjson.js:313
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"Słownikowa dataja, kotraž je so w manifesće definowała, njeda so na "
+"\"%(path)s\" namakać."
 
-#: src/messages/manifestjson.js:301
+#: src/messages/manifestjson.js:325
 msgid "The manifest contains multiple dictionaries."
 msgstr "Manifest wjacore słowniki wobsahuje."
 
-#: src/messages/manifestjson.js:302
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+#: src/messages/manifestjson.js:326
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "Wjacore słowniki su so w manifesće definowali, štož so njepodpěruje."
 
-#: src/messages/manifestjson.js:311
+#: src/messages/manifestjson.js:335
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr "Manifest słownikowy objekt wobsahuje, ale je prózdny."
 
-#: src/messages/manifestjson.js:314
+#: src/messages/manifestjson.js:338
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr "Słownikowy objekt je so w manifesće definował, ale je prózdny był."
 
-#: src/messages/manifestjson.js:323
+#: src/messages/manifestjson.js:347
 msgid "The manifest contains a dictionary but no id property."
 msgstr "Manifest słownik wobsahuje, ale nic kajkosć ID."
 
-#: src/messages/manifestjson.js:324
+#: src/messages/manifestjson.js:348
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr "Słownik je so w manifesće namakał, ale njeje so žadyn ID postajił."
 
-#: src/messages/manifestjson.js:334
+#: src/messages/manifestjson.js:358
 msgid "Forbidden content found in add-on."
 msgstr "Zakazany wobsah w přidatku namakany."
 
-#: src/messages/manifestjson.js:335
+#: src/messages/manifestjson.js:359
 msgid "This add-on contains forbidden content."
 msgstr "Tutón přidatk zakazany wobsah wobsahuje."
 
-#: src/messages/manifestjson.js:343
+#: src/messages/manifestjson.js:367
 msgid "Icons must be square."
 msgstr "Symbole dyrbja kwadratiske być."
 
-#: src/messages/manifestjson.js:344
+#: src/messages/manifestjson.js:368
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "Symbol na \"%(path)s\" dyrbi kwadratiski być."
 
-#: src/messages/manifestjson.js:355
+#: src/messages/manifestjson.js:379
 msgid "The size of the icon does not match the manifest."
 msgstr "Wulkosć symbola manifestej njewotpowěduje."
 
-#: src/messages/manifestjson.js:370
+#: src/messages/manifestjson.js:394
 msgid "Corrupt image file"
 msgstr "Wobškodźena wobrazowa dataja"
 
-#: src/messages/manifestjson.js:372
+#: src/messages/manifestjson.js:396
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr "Wočakowana symbolowa dataja na \"%(path)s\" je wobškodźena"
 
-#: src/messages/manifestjson.js:381
+#: src/messages/manifestjson.js:405
 msgid "This property has been deprecated."
 msgstr "Tuta kajkosć so hižo njepodpěruje."
 
-#: src/messages/manifestjson.js:388
+#: src/messages/manifestjson.js:412
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "Alias LWT tuteje drasty je so w Firefox 70 wotstronił."
 
-#: src/messages/manifestjson.js:389
+#: src/messages/manifestjson.js:413
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr "Hlejće https://mzl.la/2T11Lkc (MDN Docs) za dalše informacije."
 
-#: src/messages/manifestjson.js:404
+#: src/messages/manifestjson.js:428
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "Drastowy wobraz za \"%(type)s\" njeda so na \"%(path)s\" namakać"
 
-#: src/messages/manifestjson.js:415
+#: src/messages/manifestjson.js:439
 msgid "Corrupted theme image file"
 msgstr "Wobškodźena wobrazowa dataja drasty"
 
-#: src/messages/manifestjson.js:417
+#: src/messages/manifestjson.js:441
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "Wobrazowa dataja drasty na \"%(path)s\" je wobškodźena"
 
-#: src/messages/manifestjson.js:428
+#: src/messages/manifestjson.js:452
 msgid "Theme image file has an unsupported file extension"
 msgstr "Wobrazowa dataja drasty ma datajowu kóncowku, kotraž so njepodpěruje"
 
-#: src/messages/manifestjson.js:430
+#: src/messages/manifestjson.js:454
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr "Wobrazowa dataja drasty na \"%(path)s\" ma datajowu kóncowku, kotraž so njepodpěruje"
+msgstr ""
+"Wobrazowa dataja drasty na \"%(path)s\" ma datajowu kóncowku, kotraž so "
+"njepodpěruje"
 
-#: src/messages/manifestjson.js:444
+#: src/messages/manifestjson.js:468
 msgid "Theme image file has an unsupported mime type"
 msgstr "Wobrazowa dataja drasty ma typ MIME, kotryž so njepodpěruje"
 
-#: src/messages/manifestjson.js:446
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr "Wobrazowa dataja drasty na \"%(path)s\" ma typ MIME \"%(mime)s\", kotryž so njepodpěruje"
+#: src/messages/manifestjson.js:470
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr ""
+"Wobrazowa dataja drasty na \"%(path)s\" ma typ MIME \"%(mime)s\", kotryž so "
+"njepodpěruje"
 
-#: src/messages/manifestjson.js:460
+#: src/messages/manifestjson.js:484
 msgid "Theme image file mime type does not match its file extension"
-msgstr "Typ MIME wobrazoweje dataje drasty jeje datajowej kóncowce njewotpowěduje"
+msgstr ""
+"Typ MIME wobrazoweje dataje drasty jeje datajowej kóncowce njewotpowěduje"
 
-#: src/messages/manifestjson.js:464
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr "Kóncowka wobrazoweje dataje drasty na \"%(path)s\" jeje woprawdźitemu typej MIME \"%(mime)s\" njewotpowěduje"
+#: src/messages/manifestjson.js:488
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
+msgstr ""
+"Kóncowka wobrazoweje dataje drasty na \"%(path)s\" jeje woprawdźitemu typej "
+"MIME \"%(mime)s\" njewotpowěduje"
 
-#: src/messages/manifestjson.js:478
+#: src/messages/manifestjson.js:502
 msgid "The \"default_locale\" is missing localizations."
 msgstr "W \"default_locale\" lokalizacije faluja."
 
-#: src/messages/manifestjson.js:487
+#: src/messages/manifestjson.js:511
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "\"default_locale\" faluje, ale \"_locales\" eksistuje."
 
-#: src/messages/manifestjson.js:496
+#: src/messages/manifestjson.js:520
 msgid "Unsupported image extension"
 msgstr "Kóncowka wobrazoweje dataje so njepodpěruje"
 
-#: src/messages/manifestjson.js:497
+#: src/messages/manifestjson.js:521
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Symbole měli dataje typa JPG/JPEG, WebP, GIF, PNG abo SVG być."
 
-#: src/messages/manifestjson.js:505
-msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
-msgstr "Kajkosć „applications“ je so přez kajkosć „browser_specific_settings“ přepisała"
+#: src/messages/manifestjson.js:529
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property"
+msgstr ""
+"Kajkosć „applications“ je so přez kajkosć „browser_specific_settings“ "
+"přepisała"
 
-#: src/messages/manifestjson.js:518
+#: src/messages/manifestjson.js:542
 msgid "Empty language directory"
 msgstr "Pródzny zapis rěčow"
 
-#: src/messages/manifestjson.js:520
+#: src/messages/manifestjson.js:544
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "Dataja messages.json w \"%(path)s\" faluje"
 
-#: src/messages/manifestjson.js:536
+#: src/messages/manifestjson.js:560
 msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr "Manifestowy kluč so přez podatu minimalnu wersiju Firefox njepodpěruje"
 
-#: src/messages/manifestjson.js:558
+#: src/messages/manifestjson.js:582
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Prawo so přez podatu minimalnu wersiju Firefox njepodpěruje"
 
-#: src/messages/manifestjson.js:580
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr "Manifestowy kluč so přez podatu minimalnu wersiju Firefox za Android njepodpěruje"
+#: src/messages/manifestjson.js:604
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
+msgstr ""
+"Manifestowy kluč so přez podatu minimalnu wersiju Firefox za Android "
+"njepodpěruje"
 
-#: src/messages/manifestjson.js:602
-msgid "Permission not supported by the specified minimum Firefox for Android version"
+#: src/messages/manifestjson.js:626
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
 msgstr "Prawo so přez podatu minimalnu wersiju Firefox za Android njepodpěruje"
 
-#: src/messages/manifestjson.js:617
+#: src/messages/manifestjson.js:641
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "Wotkazowanje na „addons.mozilla.org“ dowolene njeje"
 
-#: src/messages/manifestjson.js:618
-msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr "Wotkazy, kotrež na „addons.mozilla.org“ pokazuja, njesmědźa so za startowu stronu wužiwać."
+#: src/messages/manifestjson.js:642
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
+"Wotkazy, kotrež na „addons.mozilla.org“ pokazuja, njesmědźa so za startowu "
+"stronu wužiwać."
 
-#: src/messages/manifestjson.js:65 src/messages/manifestjson.js:73 src/messages/manifestjson.js:81 src/messages/manifestjson.js:84
+#: src/messages/manifestjson.js:78 src/messages/manifestjson.js:86
+#: src/messages/manifestjson.js:94 src/messages/manifestjson.js:97
 msgid "The permission type is unsupported."
 msgstr "Typ dowolnosće so njepodpěruje."
 
@@ -502,16 +569,12 @@ msgstr "Typ dowolnosće so njepodpěruje."
 msgid "The field is required."
 msgstr "Polo je trěbne."
 
-#: src/messages/manifestjson.js:90 src/messages/manifestjson.js:99
-msgid "Unknown permission."
-msgstr "Njeznata dowolnosć."
-
-#: src/messages/manifestjson.js:91
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "Hlejće https://mzl.la/1R1n1t0 (MDN Docs) za dalše informacije."
+#~ msgid "addEventListener` called with truthy fourth argument."
+#~ msgstr "addEventListener` wołany z truthy jako štwórty argument."
 
 #~ msgid "A custom content_security_policy needs additional review."
-#~ msgstr "Swójski content_security_policy sej přidatne přepruwowanje wužaduje."
+#~ msgstr ""
+#~ "Swójski content_security_policy sej přidatne přepruwowanje wužaduje."
 
 #~ msgid "Violation of Mozilla conditions of use."
 #~ msgstr "Přeńdźenje přećiwo wužiwanskim wuměnjenjam Mozilla."
