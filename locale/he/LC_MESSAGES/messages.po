@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-04-29 09:25+0000\n"
-"PO-Revision-Date: 2022-04-29 14:23+0000\n"
+"PO-Revision-Date: 2022-04-29 14:26+0000\n"
 "Last-Translator: Itiel <itiel_yn8@walla.com>\n"
 "Language-Team: none\n"
 "Language: he\n"
@@ -100,7 +100,7 @@ msgstr "‏{{api}} אינו נתמך ב־Firefox בגרסה {{minVersion}}"
 
 #: src/messages/javascript.js:177
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr ""
+msgstr "ה־API הזה אינו מיושם על־ידי גרסת Firefox המינימלית הנתונה"
 
 #: src/messages/javascript.js:18
 msgid "Content script file could not be found"
@@ -111,9 +111,8 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "‏{{api}} אינו נתמך ב־Firefox עבור Android בגרסה {{minVersion}}"
 
 #: src/messages/javascript.js:188
-#, fuzzy
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "ה־API הזה לא הוטמע על ידי Firefox."
+msgstr "ה־API הזה אינו מיושם על־ידי גרסת Firefox עבור Android המינימלית הנתונה"
 
 #: src/messages/javascript.js:24
 msgid "Content script file name should not be empty."
@@ -496,19 +495,19 @@ msgstr "מפתח ה־manifest אינו נתמך על־ידי גרסת Firefox ה
 
 #: src/messages/manifestjson.js:582
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "ההרשאה אינה נתמכת על־ידי גרסת Firefox המינימלית שצוינה"
 
 #: src/messages/manifestjson.js:604
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "מפתח ה־manifest אינו נתמך על־ידי גרסת Firefox עבור Android המינימלית שצוינה"
 
 #: src/messages/manifestjson.js:626
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "ההרשאה אינה נתמכת על־ידי גרסת Firefox עבור Android המינימלית שצוינה"
 
 #: src/messages/manifestjson.js:641
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr ""
+msgstr "קישור אל ״addons.mozilla.org״ אינו מורשה"
 
 #: src/messages/manifestjson.js:642
 msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
