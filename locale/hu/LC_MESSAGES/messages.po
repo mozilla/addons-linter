@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-04-29 09:25+0000\n"
-"PO-Revision-Date: 2022-04-29 09:57+0000\n"
+"PO-Revision-Date: 2022-04-29 10:00+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -256,7 +256,7 @@ msgstr "Érvénytelen telepítési eredet."
 
 #: src/messages/manifestjson.js:133
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
-msgstr ""
+msgstr "Érvénytelen telepítési eredet. Egy érvényes eredet csak sémát, gépnevet és portot (nem kötelező) tartalmaz."
 
 #: src/messages/manifestjson.js:141
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
