@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-04-29 09:25+0000\n"
-"PO-Revision-Date: 2022-04-29 14:10+0000\n"
+"PO-Revision-Date: 2022-04-29 14:23+0000\n"
 "Last-Translator: Itiel <itiel_yn8@walla.com>\n"
 "Language-Team: none\n"
 "Language: he\n"
@@ -440,27 +440,27 @@ msgstr "קובץ תמונת ערכת הנושא ב״%(path)s״ פגום"
 
 #: src/messages/manifestjson.js:452
 msgid "Theme image file has an unsupported file extension"
-msgstr "לקובץ תמונת ערכת הנושא יש סיומת קובץ שאינה נתמכת"
+msgstr "קובץ תמונת ערכת הנושא בעל סיומת קובץ שאינה נתמכת"
 
 #: src/messages/manifestjson.js:454
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr "לקובץ תמונת ערכת הנושא ב־״%(path)s״ יש סיומת קובץ שאינה נתמכת"
+msgstr "קובץ תמונת ערכת הנושא ב־״%(path)s״ בעל סיומת קובץ שאינה נתמכת"
 
 #: src/messages/manifestjson.js:468
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "קובץ תמונת ערכת הנושא בעל סוג mime שאינו נתמך"
 
 #: src/messages/manifestjson.js:470
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "קובץ תמונת ערכת הנושא ב־״%(path)s״ בעל סוג mime שאינו נתמך ״%(mime)s״"
 
 #: src/messages/manifestjson.js:484
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "קובץ תמונת ערכת הנושא בעל סוג mime שאינו תואם את סיומת הקובץ שלו"
 
 #: src/messages/manifestjson.js:488
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "סיומת קובץ תמונת ערכת הנושא ב־״%(path)s״ אינה תואמת את סוג ה־mime האמיתי שלו ״%(mime)s״"
 
 #: src/messages/manifestjson.js:502
 msgid "The \"default_locale\" is missing localizations."
@@ -480,7 +480,7 @@ msgstr "הסמלים אמורים להיות אחד מסוגי התמונות ה
 
 #: src/messages/manifestjson.js:529
 msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
-msgstr ""
+msgstr "המאפיין ״applications״ נדרס על־ידי המאפיין ״browser_specific_settings״"
 
 #: src/messages/manifestjson.js:542
 msgid "Empty language directory"
@@ -492,7 +492,7 @@ msgstr "הקובץ messages.json חסר תחת „%(path)s”"
 
 #: src/messages/manifestjson.js:560
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "מפתח ה־manifest אינו נתמך על־ידי גרסת Firefox המינימלית שצוינה"
 
 #: src/messages/manifestjson.js:582
 msgid "Permission not supported by the specified minimum Firefox version"
