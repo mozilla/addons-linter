@@ -252,7 +252,7 @@ msgstr "Neplatné oprávnění pro server."
 
 #: src/messages/manifestjson.js:130
 msgid "Invalid install origin."
-msgstr "Neplatné oprávnění pro server."
+msgstr "Neplatný origin instalace."
 
 #: src/messages/manifestjson.js:133
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
