@@ -24,7 +24,7 @@ module.exports = {
   ],
   transform: {
     '^.+\\.js$': 'babel-jest',
-    '^.+\\.txt$': 'jest-raw-loader',
+    '^.+\\.txt$': '<rootDir>/tests/jest-raw-loader.js',
   },
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
   testEnvironment: 'node',
