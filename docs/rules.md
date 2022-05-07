@@ -96,9 +96,13 @@ Rules are sorted by severity.
 | `STRICT_MAX_VERSION`                                    | warning  | strict_max_version not required                                                                 |
 | `PREDEFINED_MESSAGE_NAME`                               | warning  | String name is reserved for a predefined                                                        |
 | `MISSING_PLACEHOLDER`                                   | warning  | Placeholder for message is not                                                                  |
-| `MANIFEST_FIELD_PRIVILEGEDONLY`                         | warning  | A manifest field ignored on non-privileged add-ons                                              |
+| `MANIFEST_FIELD_PRIVILEGEDONLY`                         | warning  | A manifest field ignored on non-privileged extensions                                           |
 | `MANIFEST_FIELD_UNSUPPORTED`                            | warning  | A manifest field is not supported (or not supported for the extension manifest_version)         |
 | `MANIFEST_PERMISSION_UNSUPPORTED`                       | warning  | A manifest permission is not supported for the extension manifest_version                       |
+| `MANIFEST_PERMISSIONS_PRIVILEGED`                       | error    | A manifest permission is only allowed in privileged extensions                                  |
+| `MOZILLA_ADDONS_PERMISSION_REQUIRED`                    | error    | The "mozillaAddons" permission must be specified in privileged extensions                       |
+| `PRIVILEGED_FEATURES_REQUIRED`                          | error    | Privileged features are mandatory for privileged extensions, but none has been detected         |
+| `MANIFEST_FIELD_PRIVILEGED`                             | error    | A manifest field is only allowed in privileged extensions                                       |
 | `WRONG_ICON_EXTENSION`                                  | error    | Icons must have valid extension                                                                 |
 | `MANIFEST_UPDATE_URL`                                   | error    | update_url not allowed in manifest.json                                                         |
 | `MANIFEST_FIELD_REQUIRED`                               | error    | A required field is missing                                                                     |

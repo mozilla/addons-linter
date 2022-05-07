@@ -9,6 +9,7 @@ import messagesSchemaObject from 'schema/messages';
 import {
   DEPRECATED_MANIFEST_PROPERTIES,
   MANIFEST_VERSION_DEFAULT,
+  SCHEMA_KEYWORDS,
 } from 'const';
 
 import {
@@ -248,6 +249,10 @@ export class SchemaValidator {
     return this._addonValidator;
   }
 
+  get isPrivilegedAddon() {
+    return this._options?.privileged ?? false;
+  }
+
   get schemas() {
     return this._options?.schemas ?? schemas;
   }
@@ -453,9 +458,9 @@ export class SchemaValidator {
   }
 
   _addCustomKeywords(validator) {
-    validator.removeKeyword('deprecated');
+    validator.removeKeyword(SCHEMA_KEYWORDS.DEPRECATED);
     validator.addKeyword({
-      keyword: 'deprecated',
+      keyword: SCHEMA_KEYWORDS.DEPRECATED,
       validate: function validateDeprecated(
         message,
         propValue,
@@ -476,7 +481,7 @@ export class SchemaValidator {
 
         validateDeprecated.errors = [
           {
-            keyword: 'deprecated',
+            keyword: SCHEMA_KEYWORDS.DEPRECATED,
             message,
           },
         ];
@@ -525,23 +530,146 @@ export class SchemaValidator {
     }
 
     validator.addKeyword({
-      keyword: 'max_manifest_version',
+      keyword: SCHEMA_KEYWORDS.MAX_MANIFEST_VERSION,
       // function of type SchemaValidateFunction (see ajv typescript signatures).
       validate: createManifestVersionValidateFn(
-        'max_manifest_version',
+        SCHEMA_KEYWORDS.MAX_MANIFEST_VERSION,
         (maxMV, manifestVersion) => maxMV >= manifestVersion
       ),
       errors: true,
     });
 
     validator.addKeyword({
-      keyword: 'min_manifest_version',
+      keyword: SCHEMA_KEYWORDS.MIN_MANIFEST_VERSION,
       validate: createManifestVersionValidateFn(
-        'min_manifest_version',
+        SCHEMA_KEYWORDS.MIN_MANIFEST_VERSION,
         (minMV, manifestVersion) => minMV <= manifestVersion
       ),
       errors: true,
     });
+
+    const validatePrivilegedPermissions = (keywordSchemaValue, propValue) => {
+      const privilegedPermissions = this.getPrivilegedPermissionsSet(validator);
+      const found = new Set();
+
+      for (const permission of propValue) {
+        if (privilegedPermissions.has(permission)) {
+          found.add(permission);
+        }
+      }
+
+      const hasMozillaAddonsPermission = found.has('mozillaAddons');
+
+      // If the addon is expected to be privileged, we report a linting error if:
+      // - there are no privileged permissions required
+      // - and/or if the "mozillaAddons" permission isn't requested (which is going
+      //   to be a mandatory requirement even if there are also other privileged
+      //   permissions already required).
+      if (this.isPrivilegedAddon) {
+        if (found.size === 0 || !hasMozillaAddonsPermission) {
+          validatePrivilegedPermissions.errors = [
+            {
+              keyword: SCHEMA_KEYWORDS.VALIDATE_PRIVILEGED_PERMISSIONS,
+              params: {
+                postprocess: keywordSchemaValue,
+                privilegedPermissions: Array.from(found),
+                hasMozillaAddonsPermission,
+              },
+            },
+          ];
+
+          return false;
+        }
+
+        return true;
+      }
+
+      if (found.size > 0) {
+        validatePrivilegedPermissions.errors = [
+          {
+            keyword: SCHEMA_KEYWORDS.VALIDATE_PRIVILEGED_PERMISSIONS,
+            params: {
+              postprocess: keywordSchemaValue,
+              privilegedPermissions: Array.from(found),
+              hasMozillaAddonsPermission: found.has('mozillaAddons'),
+            },
+          },
+        ];
+        return false;
+      }
+
+      return true;
+    };
+
+    validator.addKeyword({
+      keyword: SCHEMA_KEYWORDS.VALIDATE_PRIVILEGED_PERMISSIONS,
+      validate: validatePrivilegedPermissions,
+    });
+
+    const validatePrivilegedManifestFields = (
+      keywordSchemaValue,
+      propValue,
+      schema,
+      { rootData /* instancePath, parentData, parentDataProperty, */ }
+    ) => {
+      const hasMozillaAddonsPermission =
+        Array.isArray(rootData.permissions) &&
+        rootData.permissions.includes('mozillaAddons');
+
+      if (this.isPrivilegedAddon) {
+        if (!hasMozillaAddonsPermission) {
+          validatePrivilegedManifestFields.errors = [
+            {
+              keyword: SCHEMA_KEYWORDS.PRIVILEGED,
+              params: {
+                hasMozillaAddonsPermission,
+              },
+            },
+          ];
+          return false;
+        }
+        return true;
+      }
+
+      validatePrivilegedManifestFields.errors = [
+        {
+          keyword: SCHEMA_KEYWORDS.PRIVILEGED,
+          params: {
+            hasMozillaAddonsPermission,
+          },
+        },
+      ];
+      return false;
+    };
+
+    validator.addKeyword({
+      keyword: SCHEMA_KEYWORDS.PRIVILEGED,
+      validate: validatePrivilegedManifestFields,
+    });
+  }
+
+  getPrivilegedPermissionsSet(validator) {
+    const schemaManifest = validator.getSchema('manifest').schema;
+    const schemaPermissionPrivileged =
+      schemaManifest.types.PermissionPrivileged.anyOf;
+
+    const results = new Set();
+    for (const schemaPermission of schemaPermissionPrivileged) {
+      const { type, $ref } = schemaPermission;
+      if (type === 'string' && schemaPermission.enum) {
+        schemaPermission.enum.forEach((str) => results.add(str));
+      } else if ($ref) {
+        const [namespace] = $ref.split('#');
+        const schemaNamespace = validator.getSchema(namespace).schema;
+        schemaNamespace.permissions.forEach((str) => results.add(str));
+      }
+    }
+    if (results.size === 0) {
+      throw new Error(
+        'Unable to retrieve the Privileged Permissions set from the schema data'
+      );
+    }
+    return results;
   }
 }
 

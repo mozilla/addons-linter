@@ -474,6 +474,226 @@ describe('ManifestJSONParser', () => {
     }
   });
 
+  describe('privileged add-ons', () => {
+    it('should not report privileged permissions and properties as issues', () => {
+      const expectedPermissions = ['mozillaAddons', 'telemetry'];
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        permissions: ['tabs', ...expectedPermissions],
+        l10n_resources: [],
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        {
+          schemaValidatorOptions: {
+            privileged: true,
+          },
+        }
+      );
+      expect(addonLinter.collector.warnings).toEqual([]);
+      expect(addonLinter.collector.errors).toEqual([]);
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
+    // Verify that if no privileged permissions are required or mozillaAddons mandatory permission
+    // isn't required the privileged add-on isn't considered valid (because the linter is expected
+    // to prevent signing of privileged extensions until these conditions are met).
+    it.each([
+      [
+        'with no privileged permissions',
+        ['tabs'],
+        {
+          code: 'PRIVILEGED_FEATURES_REQUIRED',
+          message: expect.stringMatching(
+            /\/permissions: Privileged extensions should declare privileged permissions/
+          ),
+          description: oneLine`
+            This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate.
+            Please upload it directly to https://addons.mozilla.org/.
+          `,
+        },
+      ],
+      [
+        'without the mandatory mozillaAddons permission',
+        ['tabs', 'telemetry'],
+        {
+          code: 'MOZILLA_ADDONS_PERMISSION_REQUIRED',
+          message: expect.stringMatching(
+            /\/permissions: The "mozillaAddons" permission is required for privileged extensions/
+          ),
+        },
+      ],
+    ])(
+      'should report an error %s',
+      (description, permissions, expectedError) => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          permissions,
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector,
+          {
+            schemaValidatorOptions: {
+              privileged: true,
+            },
+          }
+        );
+        expect(addonLinter.collector.warnings).toEqual([]);
+        expect(addonLinter.collector.errors).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              ...expectedError,
+              file: 'manifest.json',
+              instancePath: '/permissions',
+            }),
+          ])
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+      }
+    );
+
+    // Verify that an extension requiring a privileged manifest field (e.g. l10n_resources or extension_apis)
+    // isn't considered valid if it does not also require the "mozillaAddons" permission (because the linter is
+    // expected to prevent signing of privileged extensions until these conditions are met).
+    it.each([
+      [
+        'l10n_resources',
+        [],
+        {
+          code: 'MOZILLA_ADDONS_PERMISSION_REQUIRED',
+          message: expect.stringMatching(
+            /\/l10n_resources: The "mozillaAddons" permission is required for extensions that include privileged manifest fields\./
+          ),
+          instancePath: '/l10n_resources',
+        },
+      ],
+      [
+        'experiment_apis',
+        {},
+        {
+          code: 'MOZILLA_ADDONS_PERMISSION_REQUIRED',
+          message: expect.stringMatching(
+            /\/experiment_apis: The "mozillaAddons" permission is required for extensions that include privileged manifest fields\./
+          ),
+          instancePath: '/experiment_apis',
+        },
+      ],
+    ])(
+      'should report an error on "%s" privileged manifest field and no "mozillaAddons" permission',
+      (fieldName, fieldValue, expectedError) => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          permissions: [],
+          [fieldName]: fieldValue,
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector,
+          {
+            schemaValidatorOptions: {
+              privileged: true,
+            },
+          }
+        );
+        expect(addonLinter.collector.warnings).toEqual([]);
+        expect(addonLinter.collector.errors).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              ...expectedError,
+              file: 'manifest.json',
+            }),
+          ])
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+      }
+    );
+  });
+
+  describe('privileged property', () => {
+    // This test confirms that if an extension that should be signed as privileged
+    // is submitted to AMO it would be blocked on the linting checks and not
+    // wrongly signed with a non-privileged signature.
+    it.each([
+      ['errors', { isAlreadySigned: false }],
+      ['warnings', { isAlreadySigned: true }],
+    ])(
+      `should report %s on privileged properties if %p`,
+      (severity, { isAlreadySigned }) => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          l10n_resources: [],
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector,
+          { isAlreadySigned }
+        );
+        expect(manifestJSONParser.collector[severity]).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              code: 'MANIFEST_FIELD_PRIVILEGED',
+              file: 'manifest.json',
+              message: expect.stringMatching(
+                /\/l10n_resources: privileged manifest fields .* allowed in privileged extensions/
+              ),
+            }),
+          ])
+        );
+        expect(
+          manifestJSONParser.collector[
+            severity === 'errors' ? 'warnings' : 'errors'
+          ]
+        ).toEqual([]);
+      }
+    );
+  });
+
+  describe('privileged permissions', () => {
+    // This test confirms that if an extension that should be signed as privileged
+    // is submitted to AMO it would be blocked on the linting checks and not
+    // wrongly signed with a non-privileged signature.
+    it.each([
+      ['errors', { isAlreadySigned: false }],
+      ['warnings', { isAlreadySigned: true }],
+    ])(
+      `should report %s on privileged permissions if %p`,
+      (severity, { isAlreadySigned }) => {
+        const expectedPermissions = ['mozillaAddons', 'telemetry'];
+        const addonLinter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          permissions: ['tabs', ...expectedPermissions],
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector,
+          { isAlreadySigned }
+        );
+        expect(manifestJSONParser.collector[severity]).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              code: 'MANIFEST_PERMISSIONS_PRIVILEGED',
+              file: 'manifest.json',
+              message: expect.stringMatching(
+                new RegExp(
+                  `/permissions: the following privileged permissions .* ${JSON.stringify(
+                    expectedPermissions
+                  )}`
+                )
+              ),
+            }),
+          ])
+        );
+        expect(
+          manifestJSONParser.collector[
+            severity === 'errors' ? 'warnings' : 'errors'
+          ]
+        ).toEqual([]);
+      }
+    );
+  });
+
   describe('granted_host_permissions', () => {
     it('warns on granted_permissions manifest key set to true', () => {
       const addonLinter = new Linter({ _: ['bar'] });

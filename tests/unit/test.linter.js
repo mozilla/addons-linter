@@ -773,6 +773,41 @@ describe('Linter.getAddonMetadata()', () => {
     expect(FakeManifestParser.firstCall.args[2].selfHosted).toEqual(true);
   });
 
+  it.each([
+    [true, ['META-INF/manifest.mf']],
+    [false, ['META-INF/manifest.non-signature-file']],
+    [false, ['ANOTHER-DIR/manifest.mf']],
+    [false, ['manifest.mf']],
+  ])(
+    'should pass isAlreadySigned flag set as %p to ManifestJSONParser with packaged files: %p',
+    async (isAlreadySigned, files) => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      addonLinter.io = {
+        getFiles: async () => {
+          return {
+            'manifest.json': {},
+            ...files.reduce((acc, k) => {
+              acc[k] = {};
+              return acc;
+            }, {}),
+          };
+        },
+        getFileAsString: async () => {
+          return validManifestJSON({});
+        },
+      };
+
+      const FakeManifestParser = sinon.spy(ManifestJSONParser);
+      await addonLinter.getAddonMetadata({
+        ManifestJSONParser: FakeManifestParser,
+      });
+      sinon.assert.calledOnce(FakeManifestParser);
+      expect(FakeManifestParser.firstCall.args[2].isAlreadySigned).toEqual(
+        isAlreadySigned
+      );
+    }
+  );
+
   it('should error if no manifest', async () => {
     const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.io = {

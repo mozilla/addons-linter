@@ -233,3 +233,23 @@ export const RESTRICTED_PERMISSIONS = new Map([
   // See: https://bugzilla.mozilla.org/show_bug.cgi?id=1733159
   ['proxy', '91.1.0'],
 ]);
+
+export const SCHEMA_KEYWORDS_CUSTOM = {
+  MIN_MANIFEST_VERSION: 'min_manifest_version',
+  MAX_MANIFEST_VERSION: 'max_manifest_version',
+  PRIVILEGED: 'privileged',
+  // This custom keyword doesn't exist on the Firefox side, but it is injected into the
+  // schema data as part of the schema data inmport and used by the linter to hook up
+  // custom validation logic for privileged permissions.
+  VALIDATE_PRIVILEGED_PERMISSIONS: 'validatePrivilegedPermissions',
+};
+
+export const SCHEMA_KEYWORDS = {
+  // Keywords defined in the JSON schema specs.
+  ANY_OF: 'anyOf',
+  DEPRECATED: 'deprecated',
+  REQUIRED: 'required',
+  TYPE: 'type',
+  // Non-standard JSONSchema keywords (defined and used by the Firefox and/or addons-linter).
+  ...SCHEMA_KEYWORDS_CUSTOM,
+};

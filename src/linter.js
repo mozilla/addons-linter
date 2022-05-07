@@ -306,8 +306,12 @@ export default class Linter {
       const json = await this.io.getFileAsString(constants.MANIFEST_JSON);
       const manifestParser = new ManifestJSONParser(json, this.collector, {
         io: this.io,
+        isAlreadySigned: Object.keys(files).some((filename) =>
+          constants.ALREADY_SIGNED_REGEX.test(filename)
+        ),
         selfHosted: this.config.selfHosted,
         schemaValidatorOptions: {
+          privileged: this.config.privileged,
           minManifestVersion: this.config.minManifestVersion,
           maxManifestVersion: this.config.maxManifestVersion,
         },
