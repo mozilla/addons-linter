@@ -281,6 +281,23 @@
             }
           ]
         }
+      ],
+      "events": [
+        {
+          "name": "onChanged",
+          "type": "function",
+          "description": "Fired when one or more items change.",
+          "parameters": [
+            {
+              "name": "changes",
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/types/StorageChange"
+              },
+              "description": "Object mapping each key that changed to its corresponding $(ref:storage.StorageChange) for that item."
+            }
+          ]
+        }
       ]
     },
     "StorageAreaSync": {
@@ -427,6 +444,23 @@
               "description": "Callback on success, or on failure (in which case $(ref:runtime.lastError) will be set).",
               "parameters": [],
               "optional": true
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "onChanged",
+          "type": "function",
+          "description": "Fired when one or more items change.",
+          "parameters": [
+            {
+              "name": "changes",
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/types/StorageChange"
+              },
+              "description": "Object mapping each key that changed to its corresponding $(ref:storage.StorageChange) for that item."
             }
           ]
         }

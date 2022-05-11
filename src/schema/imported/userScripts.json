@@ -1,5 +1,6 @@
 {
   "$id": "userScripts",
+  "max_manifest_version": 2,
   "permissions": [
     "manifest:user_scripts"
   ],
@@ -28,6 +29,7 @@
       "properties": {
         "user_scripts": {
           "type": "object",
+          "max_manifest_version": 2,
           "properties": {
             "api_script": {
               "$ref": "manifest#/types/ExtensionURL"
