@@ -134,6 +134,7 @@ Rules are sorted by severity.
 | `IGNORED_APPLICATIONS_PROPERTY`                         | warning  | Usage of both `applications` and `browser_specific_settings` properties                         |
 | `RESTRICTED_HOMEPAGE_URL`                               | error    | Linking to addons.mozilla.org in `homepage_url` or `developer.url` is not allowed               |
 | `RESTRICTED_PERMISSION`                                 | error    | A permission requires "strict_min_version" to be set to a specific Firefox version              |
+| `EXTENSION_ID_REQUIRED`                                 | error    | The extension ID is mandatory for Manifest Version 3 (and above) extensions.                    |
 
 ### Static Theme / manifest.json
 

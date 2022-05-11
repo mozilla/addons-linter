@@ -669,6 +669,7 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     this.validateRestrictedPermissions();
+    this.validateExtensionID();
   }
 
   validateRestrictedPermissions() {
@@ -698,6 +699,17 @@ export default class ManifestJSONParser extends JSONParser {
           this.isValid = false;
         }
       }
+    }
+  }
+
+  validateExtensionID() {
+    if (this.parsedJSON.manifest_version < 3) {
+      return;
+    }
+
+    if (!this.parsedJSON.applications?.gecko?.id) {
+      this.collector.addError(messages.EXTENSION_ID_REQUIRED);
+      this.isValid = false;
     }
   }
 

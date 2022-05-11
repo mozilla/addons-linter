@@ -177,6 +177,36 @@ describe('ManifestJSONParser', () => {
       const metadata = manifestJSONParser.getMetadata();
       expect(metadata.id).toEqual(null);
     });
+
+    it('is optional in MV2', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 2,
+        browser_specific_settings: { gecko: {} },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
+    it('should be mandatory in MV3', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 3,
+        browser_specific_settings: { gecko: {} },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(
+        addonLinter.collector.errors,
+        messages.EXTENSION_ID_REQUIRED
+      );
+    });
   });
 
   describe('manifestVersion', () => {
@@ -1166,7 +1196,7 @@ describe('ManifestJSONParser', () => {
           applications: {
             // The new content_security_policy syntax is only supported
             // on Firefox >= 72.
-            gecko: { strict_min_version: '72.0' },
+            gecko: { strict_min_version: '72.0', id: 'some@id' },
           },
         });
 
@@ -1241,7 +1271,7 @@ describe('ManifestJSONParser', () => {
           applications: {
             // The new content_security_policy syntax is only supported
             // on Firefox >= 72.
-            gecko: { strict_min_version: '72.0' },
+            gecko: { strict_min_version: '72.0', id: 'some@id' },
           },
         });
 
@@ -1295,7 +1325,7 @@ describe('ManifestJSONParser', () => {
         applications: {
           // The new content_security_policy syntax is only supported
           // on Firefox >= 72.
-          gecko: { strict_min_version: '72.0' },
+          gecko: { strict_min_version: '72.0', id: 'some@id' },
         },
       });
 
