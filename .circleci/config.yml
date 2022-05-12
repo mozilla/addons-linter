@@ -56,15 +56,6 @@ references:
         node scripts/build-locales
         NODE_ENV=production npm run build
 
-  configure_global_npm: &configure_global_npm
-    run:
-      name: create custom directory for global npm installs
-      # This is required to avoid a `EACCES` when running `npm link` (which is
-      # executed in the test suite).
-      command: |
-        mkdir -p ~/.npm-global
-        npm config set prefix '~/.npm-global'
-
   restore_next_build_cache: &restore_next_build_cache
     restore_cache:
       name: restore npm package cache
@@ -100,7 +91,6 @@ jobs:
       - *run_npm_install
       - *save_build_cache
       - *make_production_build
-      - *configure_global_npm
       - run: npm run test-ci
       - codecov/upload
       # run integration tests using an addons-linter binary in a
@@ -139,7 +129,6 @@ jobs:
       - *run_npm_install
       - *save_next_build_cache
       - *make_production_build
-      - *configure_global_npm
       - run: npm run test-ci
       # run integration tests using an addons-linter binary in a
       # production-like environment
@@ -155,7 +144,6 @@ jobs:
       - *run_npm_install
       - *save_alternate_build_cache
       - *make_production_build
-      - *configure_global_npm
       - run: npm run test-ci
       # run integration tests using an addons-linter binary in a
       # production-like environment
