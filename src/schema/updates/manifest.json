@@ -51,7 +51,8 @@
                         { "format": "deprecated" }
                       ]
                     },
-                    "uniqueItems": true
+                    "uniqueItems": true,
+                    "validatePrivilegedPermissions": true
                   } ,
                   "optional_permissions": {
                     "items": {
