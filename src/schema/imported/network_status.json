@@ -33,7 +33,7 @@
     }
   ],
   "definitions": {
-    "PermissionNoPrompt": {
+    "PermissionPrivileged": {
       "anyOf": [
         {
           "type": "string",
@@ -45,9 +45,9 @@
     }
   },
   "refs": {
-    "networkStatus#/definitions/PermissionNoPrompt": {
+    "networkStatus#/definitions/PermissionPrivileged": {
       "namespace": "manifest",
-      "type": "PermissionNoPrompt"
+      "type": "PermissionPrivileged"
     }
   },
   "types": {

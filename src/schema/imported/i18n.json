@@ -130,7 +130,8 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "privileged": true
         }
       }
     }
