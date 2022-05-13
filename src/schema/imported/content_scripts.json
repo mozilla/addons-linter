@@ -1,5 +1,6 @@
 {
   "$id": "contentScripts",
+  "max_manifest_version": 2,
   "functions": [
     {
       "name": "register",
