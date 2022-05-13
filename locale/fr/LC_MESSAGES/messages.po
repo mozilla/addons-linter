@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-04-29 09:25+0000\n"
-"PO-Revision-Date: 2021-11-10 19:23+0000\n"
+"PO-Revision-Date: 2022-05-13 15:19+0000\n"
 "Last-Translator: Théo Chevalier <theo.chevalier11@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -252,11 +252,11 @@ msgstr "Autorisation de l’hôte invalide."
 
 #: src/messages/manifestjson.js:130
 msgid "Invalid install origin."
-msgstr ""
+msgstr "Origine d’installation invalide."
 
 #: src/messages/manifestjson.js:133
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
-msgstr ""
+msgstr "Origine d’installation invalide. Une origine valide a (uniquement) un schéma, un nom d’hôte et facultativement un port."
 
 #: src/messages/manifestjson.js:141
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
