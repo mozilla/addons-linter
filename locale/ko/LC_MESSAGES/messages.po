@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-29 09:25+0000\n"
+"POT-Creation-Date: 2022-05-16 10:44+0000\n"
 "PO-Revision-Date: 2022-02-05 15:46+0000\n"
 "Last-Translator: Channy Yun <channy@mozilla.or.kr>\n"
 "Language-Team: none\n"
@@ -542,6 +542,16 @@ msgid ""
 "homepage"
 msgstr ""
 "\"addons.mozilla.org\"로 연결되는 링크는 홈페이지에 사용할 수 없습니다."
+
+#: src/messages/manifestjson.js:671
+msgid "The extension ID is required in Manifest Version 3 and above."
+msgstr ""
+
+#: src/messages/manifestjson.js:674
+msgid ""
+"See https://extensionworkshop.com/documentation/develop/extensions-and-the-"
+"add-on-id/ for more information."
+msgstr ""
 
 #: src/messages/manifestjson.js:78 src/messages/manifestjson.js:86
 #: src/messages/manifestjson.js:94 src/messages/manifestjson.js:97

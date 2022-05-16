@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-29 09:25+0000\n"
+"POT-Creation-Date: 2022-05-16 10:44+0000\n"
 "PO-Revision-Date: 2022-04-29 11:09+0000\n"
 "Last-Translator: 你我皆凡人 <yuanbingyan@mail.ee>\n"
 "Language-Team: none\n"
@@ -75,7 +75,9 @@ msgid "This API has not been implemented by Firefox."
 msgstr "Firefox 尚未实现此 API。"
 
 #: src/messages/javascript.js:124
-msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
 msgstr "“{{api}}”已从 Manifest V3 中删除（“manifest_version”属性）"
 
 #: src/messages/javascript.js:133
@@ -111,7 +113,8 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "适用于 Android 的 Firefox 版本 {{minVersion}} 不支持 {{api}}"
 
 #: src/messages/javascript.js:188
-msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
 msgstr "给定的最低适用于 Android 的 Firefox 版本尚未实现此 API"
 
 #: src/messages/javascript.js:24
@@ -231,7 +234,8 @@ msgid "Translation string is missing the message property"
 msgstr "翻译字符串缺少消息属性"
 
 #: src/messages/locale-messagesjson.js:8
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr "一个字符串没有设置 \"message\" 消息属性 (https://mzl.la/2DSBTjA)。"
 
 #: src/messages/manifestjson.js:103 src/messages/manifestjson.js:112
@@ -255,8 +259,11 @@ msgid "Invalid install origin."
 msgstr "安装来源无效。"
 
 #: src/messages/manifestjson.js:133
-msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
-msgstr "安装来源无效。有效的来源有且只能有一套规范（Scheme）、主机名和可选填的端口。"
+msgid ""
+"Invalid install origin. A valid origin has - only - a scheme, hostname and "
+"optional port."
+msgstr ""
+"安装来源无效。有效的来源有且只能有一套规范（Scheme）、主机名和可选填的端口。"
 
 #: src/messages/manifestjson.js:141
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -339,11 +346,14 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr "未找到清单文件中定义的内容脚本 CSS 文件。"
 
 #: src/messages/manifestjson.js:292
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "manifest 中定义的一个内容脚本无法在“%(path)s”找到。"
 
 #: src/messages/manifestjson.js:295
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
 msgstr "manifest 中定义的一个内容脚本 css 文件无法在“%(path)s”找到。"
 
 #: src/messages/manifestjson.js:309
@@ -351,7 +361,8 @@ msgid "A dictionary file defined in the manifest could not be found."
 msgstr "未找到清单文件中定义的字典文件。"
 
 #: src/messages/manifestjson.js:313
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "未在“%(path)s”找到清单文件中定义的字典文件。"
 
 #: src/messages/manifestjson.js:325
@@ -359,7 +370,8 @@ msgid "The manifest contains multiple dictionaries."
 msgstr "清单文件中包含多个字典。"
 
 #: src/messages/manifestjson.js:326
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "不支持在清单文件中定义多个字典。"
 
 #: src/messages/manifestjson.js:335
@@ -443,7 +455,8 @@ msgid "Theme image file has an unsupported mime type"
 msgstr "该主题图像使用不支持的 MIME 类型"
 
 #: src/messages/manifestjson.js:470
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr "位于“%(path)s”的主题图像文件使用不支持的 MIME 类型：%(mime)s"
 
 #: src/messages/manifestjson.js:484
@@ -451,7 +464,9 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr "该主题图像文件的 MIME 类型与其扩展名不匹配"
 
 #: src/messages/manifestjson.js:488
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
 msgstr "位于“%(path)s”的主题图像文件的 MIME 类型（%(mime)s）与其扩展名不匹配"
 
 #: src/messages/manifestjson.js:502
@@ -471,7 +486,9 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "图标应该为 JPG/JPEG、WebP、GIFF、PNG 或 SVG 文件。"
 
 #: src/messages/manifestjson.js:529
-msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property"
 msgstr "“applications”属性已被“browser_specific_settings”属性覆盖"
 
 #: src/messages/manifestjson.js:542
@@ -491,11 +508,14 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "指定的最低 Firefox 版本不支持权限"
 
 #: src/messages/manifestjson.js:604
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
 msgstr "指定的最低适用于 Android 的 Firefox 版本，不支持清单文件标识值"
 
 #: src/messages/manifestjson.js:626
-msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
 msgstr "指定的最低适用于 Android 的 Firefox 版本，不支持权限"
 
 #: src/messages/manifestjson.js:641
@@ -503,10 +523,23 @@ msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "不允许链接到“addons.mozilla.org”"
 
 #: src/messages/manifestjson.js:642
-msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
 msgstr "不允许将指向“addons.mozilla.org”的链接用于主页"
 
-#: src/messages/manifestjson.js:78 src/messages/manifestjson.js:86 src/messages/manifestjson.js:94 src/messages/manifestjson.js:97
+#: src/messages/manifestjson.js:671
+msgid "The extension ID is required in Manifest Version 3 and above."
+msgstr ""
+
+#: src/messages/manifestjson.js:674
+msgid ""
+"See https://extensionworkshop.com/documentation/develop/extensions-and-the-"
+"add-on-id/ for more information."
+msgstr ""
+
+#: src/messages/manifestjson.js:78 src/messages/manifestjson.js:86
+#: src/messages/manifestjson.js:94 src/messages/manifestjson.js:97
 msgid "The permission type is unsupported."
 msgstr "不支持该权限类型。"
 

@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-04-29 09:25+0000\n"
+"POT-Creation-Date: 2022-05-16 10:44+0000\n"
 "PO-Revision-Date: 2022-05-03 00:17+0000\n"
 "Last-Translator: Ian Neal <iann_bugzilla@blueyonder.co.uk>\n"
 "Language-Team: none\n"
@@ -75,8 +75,12 @@ msgid "This API has not been implemented by Firefox."
 msgstr "This API has not been implemented by Firefox."
 
 #: src/messages/javascript.js:124
-msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
+msgstr ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
 
 #: src/messages/javascript.js:133
 msgid "{{api}} is deprecated"
@@ -111,8 +115,10 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 
 #: src/messages/javascript.js:188
-msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "This API is not implemented by the given minimum Firefox for Android version"
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
+msgstr ""
+"This API is not implemented by the given minimum Firefox for Android version"
 
 #: src/messages/javascript.js:24
 msgid "Content script file name should not be empty."
@@ -231,8 +237,10 @@ msgid "Translation string is missing the message property"
 msgstr "Translation string is missing the message property"
 
 #: src/messages/locale-messagesjson.js:8
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:103 src/messages/manifestjson.js:112
 msgid "Unknown permission."
@@ -255,8 +263,12 @@ msgid "Invalid install origin."
 msgstr "Invalid install origin."
 
 #: src/messages/manifestjson.js:133
-msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
-msgstr "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
+msgid ""
+"Invalid install origin. A valid origin has - only - a scheme, hostname and "
+"optional port."
+msgstr ""
+"Invalid install origin. A valid origin has - only - a scheme, hostname and "
+"optional port."
 
 #: src/messages/manifestjson.js:141
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -339,28 +351,38 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr "A content script css file defined in the manifest could not be found."
 
 #: src/messages/manifestjson.js:292
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
 
 #: src/messages/manifestjson.js:295
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
 
 #: src/messages/manifestjson.js:309
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "A dictionary file defined in the manifest could not be found."
 
 #: src/messages/manifestjson.js:313
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 
 #: src/messages/manifestjson.js:325
 msgid "The manifest contains multiple dictionaries."
 msgstr "The manifest contains multiple dictionaries."
 
 #: src/messages/manifestjson.js:326
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr "Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgstr ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
 
 #: src/messages/manifestjson.js:335
 msgid "The manifest contains a dictionaries object, but it is empty."
@@ -443,16 +465,22 @@ msgid "Theme image file has an unsupported mime type"
 msgstr "Theme image file has an unsupported mime type"
 
 #: src/messages/manifestjson.js:470
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 
 #: src/messages/manifestjson.js:484
 msgid "Theme image file mime type does not match its file extension"
 msgstr "Theme image file mime type does not match its file extension"
 
 #: src/messages/manifestjson.js:488
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
+msgstr ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
 
 #: src/messages/manifestjson.js:502
 msgid "The \"default_locale\" is missing localizations."
@@ -471,8 +499,12 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 
 #: src/messages/manifestjson.js:529
-msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
-msgstr "\"applications\" property overridden by \"browser_specific_settings\" property"
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property"
+msgstr ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property"
 
 #: src/messages/manifestjson.js:542
 msgid "Empty language directory"
@@ -491,22 +523,43 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Permission not supported by the specified minimum Firefox version"
 
 #: src/messages/manifestjson.js:604
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr "Manifest key not supported by the specified minimum Firefox for Android version"
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
+msgstr ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
 
 #: src/messages/manifestjson.js:626
-msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr "Permission not supported by the specified minimum Firefox for Android version"
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
+msgstr ""
+"Permission not supported by the specified minimum Firefox for Android version"
 
 #: src/messages/manifestjson.js:641
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "Linking to \"addons.mozilla.org\" is not allowed"
 
 #: src/messages/manifestjson.js:642
-msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
 
-#: src/messages/manifestjson.js:78 src/messages/manifestjson.js:86 src/messages/manifestjson.js:94 src/messages/manifestjson.js:97
+#: src/messages/manifestjson.js:671
+msgid "The extension ID is required in Manifest Version 3 and above."
+msgstr ""
+
+#: src/messages/manifestjson.js:674
+msgid ""
+"See https://extensionworkshop.com/documentation/develop/extensions-and-the-"
+"add-on-id/ for more information."
+msgstr ""
+
+#: src/messages/manifestjson.js:78 src/messages/manifestjson.js:86
+#: src/messages/manifestjson.js:94 src/messages/manifestjson.js:97
 msgid "The permission type is unsupported."
 msgstr "The permission type is unsupported."
 
