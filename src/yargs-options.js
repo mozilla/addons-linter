@@ -6,7 +6,7 @@ const options = {
     choices: ['fatal', 'error', 'warn', 'info', 'debug', 'trace'],
   },
   'warnings-as-errors': {
-    describe: 'Treat warning as errors',
+    describe: 'Treat warnings as errors',
     type: 'boolean',
     default: false,
   },
@@ -33,12 +33,17 @@ const options = {
     default: false,
   },
   boring: {
-    describe: 'Disables colorful shell output',
+    describe: 'Disable colorful shell output',
+    type: 'boolean',
+    default: false,
+  },
+  privileged: {
+    describe: 'Treat the input file (or directory) as a privileged extension',
     type: 'boolean',
     default: false,
   },
   'self-hosted': {
-    describe: 'Disables messages related to hosting on addons.mozilla.org.',
+    describe: 'Disable messages related to hosting on addons.mozilla.org',
     type: 'boolean',
     default: false,
   },

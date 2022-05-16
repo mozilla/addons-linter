@@ -40,6 +40,13 @@ The addons-linter will check your add-on and show you errors, warnings, and frie
 addons-linter --help
 ```
 
+#### Privileged extensions
+
+The addons-linter can lint privileged extensions **only** when the `--privileged` option is passed to it. This option changes the behavior of the linter to:
+
+1. emit errors when the input file (or directory) is a regular extension (i.e. the extension does not use privileged features)
+2. hide messages related to privileged features (e.g., permissions and properties) when the input file (or directory) is a privileged extension
+
 ### Linter API Usage
 
 You can use the linter directly as a library to integrate it better into your development process.
