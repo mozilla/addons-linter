@@ -1389,6 +1389,60 @@ describe('ManifestJSONParser', () => {
       expect(errors[0].message).toContain('update_url');
     });
 
+    it('emits a warning for privileged extensions', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        applications: {
+          gecko: {
+            update_url: 'https://foo.com/bar',
+          },
+        },
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        {
+          selfHosted: false,
+          schemaValidatorOptions: {
+            privileged: true,
+          },
+        }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.errors.length).toBe(0);
+      const { warnings } = addonLinter.collector;
+      expect(warnings[0].code).toEqual(messages.MANIFEST_UPDATE_URL.code);
+      expect(warnings[0].message).toContain('update_url');
+    });
+
+    it('is not an issue if self-hosted and privileged', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        applications: {
+          gecko: {
+            update_url: 'https://foo.com/bar',
+          },
+        },
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        {
+          selfHosted: true,
+          schemaValidatorOptions: {
+            privileged: true,
+          },
+        }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.errors).toEqual([]);
+      expect(addonLinter.collector.warnings).toEqual([]);
+    });
+
     it('is not an issue if self-hosted', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({

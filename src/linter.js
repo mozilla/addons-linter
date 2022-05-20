@@ -308,6 +308,7 @@ export default class Linter {
         io: this.io,
         selfHosted: this.config.selfHosted,
         schemaValidatorOptions: {
+          privileged: this.config.privileged,
           minManifestVersion: this.config.minManifestVersion,
           maxManifestVersion: this.config.maxManifestVersion,
         },

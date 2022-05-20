@@ -134,6 +134,7 @@ export default class ManifestJSONParser extends JSONParser {
       }
 
       this.io = io;
+      this.isPrivilegedAddon = this.schemaValidatorOptions?.privileged ?? false;
       this.restrictedPermissions = restrictedPermissions;
       this._validate();
     }
@@ -559,8 +560,15 @@ export default class ManifestJSONParser extends JSONParser {
       this.parsedJSON.applications.gecko &&
       this.parsedJSON.applications.gecko.update_url
     ) {
-      this.collector.addError(messages.MANIFEST_UPDATE_URL);
-      this.isValid = false;
+      if (this.isPrivilegedAddon) {
+        // We cannot know whether a privileged add-on will be listed or
+        // unlisted so we only emit a warning for MANIFEST_UPDATE_URL (not an
+        // error).
+        this.collector.addWarning(messages.MANIFEST_UPDATE_URL);
+      } else {
+        this.collector.addError(messages.MANIFEST_UPDATE_URL);
+        this.isValid = false;
+      }
     }
 
     if (
