@@ -274,7 +274,8 @@
                       }
                     ]
                   },
-                  "uniqueItems": true
+                  "uniqueItems": true,
+                  "validatePrivilegedPermissions": true
                 },
                 "granted_host_permissions": {
                   "type": "boolean",
@@ -711,22 +712,46 @@
         }
       ]
     },
+    "PermissionPrivileged": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "mozillaAddons"
+          ]
+        },
+        {
+          "$ref": "activityLog#/definitions/PermissionPrivileged"
+        },
+        {
+          "$ref": "networkStatus#/definitions/PermissionPrivileged"
+        },
+        {
+          "$ref": "normandyAddonStudy#/definitions/PermissionPrivileged"
+        },
+        {
+          "$ref": "telemetry#/definitions/PermissionPrivileged"
+        },
+        {
+          "$ref": "urlbar#/definitions/PermissionPrivileged"
+        }
+      ]
+    },
     "PermissionNoPrompt": {
       "anyOf": [
         {
-          "$ref": "#/types/OptionalPermission"
+          "$ref": "#/types/OptionalPermissionNoPrompt"
+        },
+        {
+          "$ref": "#/types/PermissionPrivileged"
         },
         {
           "type": "string",
           "enum": [
             "alarms",
-            "mozillaAddons",
             "storage",
             "unlimitedStorage"
           ]
-        },
-        {
-          "$ref": "activityLog#/definitions/PermissionNoPrompt"
         },
         {
           "$ref": "captivePortal#/definitions/PermissionNoPrompt"
@@ -750,19 +775,7 @@
           "$ref": "menus#/definitions/PermissionNoPrompt"
         },
         {
-          "$ref": "networkStatus#/definitions/PermissionNoPrompt"
-        },
-        {
-          "$ref": "normandyAddonStudy#/definitions/PermissionNoPrompt"
-        },
-        {
-          "$ref": "telemetry#/definitions/PermissionNoPrompt"
-        },
-        {
           "$ref": "theme#/definitions/PermissionNoPrompt"
-        },
-        {
-          "$ref": "urlbar#/definitions/PermissionNoPrompt"
         }
       ]
     },

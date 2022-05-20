@@ -383,7 +383,7 @@
 <tr>
 <td><code>MANIFEST_FIELD_PRIVILEGEDONLY</code></td>
 <td>warning</td>
-<td>A manifest field ignored on non-privileged add-ons</td>
+<td>A manifest field ignored on non-privileged extensions</td>
 </tr>
 <tr>
 <td><code>MANIFEST_FIELD_UNSUPPORTED</code></td>
@@ -394,6 +394,26 @@
 <td><code>MANIFEST_PERMISSION_UNSUPPORTED</code></td>
 <td>warning</td>
 <td>A manifest permission is not supported for the extension manifest_version</td>
+</tr>
+<tr>
+<td><code>MANIFEST_PERMISSIONS_PRIVILEGED</code></td>
+<td>error</td>
+<td>A manifest permission is only allowed in privileged extensions</td>
+</tr>
+<tr>
+<td><code>MOZILLA_ADDONS_PERMISSION_REQUIRED</code></td>
+<td>error</td>
+<td>The &quot;mozillaAddons&quot; permission must be specified in privileged extensions</td>
+</tr>
+<tr>
+<td><code>PRIVILEGED_FEATURES_REQUIRED</code></td>
+<td>error</td>
+<td>Privileged features are mandatory for privileged extensions, but none has been detected</td>
+</tr>
+<tr>
+<td><code>MANIFEST_FIELD_PRIVILEGED</code></td>
+<td>error</td>
+<td>A manifest field is only allowed in privileged extensions</td>
 </tr>
 <tr>
 <td><code>WRONG_ICON_EXTENSION</code></td>

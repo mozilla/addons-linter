@@ -90,7 +90,7 @@
     }
   ],
   "definitions": {
-    "PermissionNoPrompt": {
+    "PermissionPrivileged": {
       "anyOf": [
         {
           "type": "string",
@@ -102,9 +102,9 @@
     }
   },
   "refs": {
-    "activityLog#/definitions/PermissionNoPrompt": {
+    "activityLog#/definitions/PermissionPrivileged": {
       "namespace": "manifest",
-      "type": "PermissionNoPrompt"
+      "type": "PermissionPrivileged"
     }
   },
   "types": {}

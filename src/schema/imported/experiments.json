@@ -15,7 +15,8 @@
           "type": "object",
           "additionalProperties": {
             "$ref": "experiments#/types/ExperimentAPI"
-          }
+          },
+          "privileged": true
         }
       }
     }

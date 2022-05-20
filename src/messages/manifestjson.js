@@ -3,6 +3,10 @@ import { oneLine } from 'common-tags';
 import { i18n, errorParamsToUnsupportedVersionRange } from 'utils';
 import { MANIFEST_JSON, PERMS_DATAPATH_REGEX } from 'const';
 
+const PRIVILEGED_EXTENSION_SIGNING_DOCS = i18n._(oneLine`
+  Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing.
+`);
+
 export const MANIFEST_FIELD_REQUIRED = {
   code: 'MANIFEST_FIELD_REQUIRED',
   message: i18n._('The field is required.'),
@@ -47,6 +51,23 @@ export function manifestFieldUnsupported(fieldName, error) {
     code: MANIFEST_FIELD_UNSUPPORTED,
     message,
     description: message,
+    file: MANIFEST_JSON,
+  };
+}
+
+export const MANIFEST_FIELD_PRIVILEGED = 'MANIFEST_FIELD_PRIVILEGED';
+export function manifestFieldPrivileged(error) {
+  const messageTmpl =
+    i18n._(oneLine`%(instancePath)s: privileged manifest fields
+                     are only allowed in privileged extensions.`);
+  const message = i18n.sprintf(messageTmpl, {
+    instancePath: error.instancePath,
+  });
+
+  return {
+    code: MANIFEST_FIELD_PRIVILEGED,
+    message,
+    description: PRIVILEGED_EXTENSION_SIGNING_DOCS,
     file: MANIFEST_JSON,
   };
 }
@@ -106,6 +127,26 @@ export const MANIFEST_PERMISSIONS = {
   ),
   file: MANIFEST_JSON,
 };
+
+export const MANIFEST_PERMISSIONS_PRIVILEGED =
+  'MANIFEST_PERMISSIONS_PRIVILEGED';
+export function manifestPermissionsPrivileged(error) {
+  const messageTmpl =
+    i18n._(oneLine`%(instancePath)s: the following privileged permissions
+                     are only allowed in privileged extensions:
+                     %(privilegedPermissions)s.`);
+  const message = i18n.sprintf(messageTmpl, {
+    instancePath: error.instancePath,
+    privilegedPermissions: JSON.stringify(error.params.privilegedPermissions),
+  });
+
+  return {
+    code: MANIFEST_PERMISSIONS_PRIVILEGED,
+    message,
+    description: PRIVILEGED_EXTENSION_SIGNING_DOCS,
+    file: MANIFEST_JSON,
+  };
+}
 
 export const MANIFEST_OPTIONAL_PERMISSIONS = {
   code: 'MANIFEST_OPTIONAL_PERMISSIONS',
@@ -676,3 +717,53 @@ export const EXTENSION_ID_REQUIRED = {
   ),
   file: MANIFEST_JSON,
 };
+
+export const PRIVILEGED_FEATURES_REQUIRED = 'PRIVILEGED_FEATURES_REQUIRED';
+export function privilegedFeaturesRequired(error) {
+  const messageTmpl = i18n._(
+    oneLine`%(instancePath)s: Privileged extensions should declare privileged permissions.`
+  );
+
+  const message = i18n.sprintf(messageTmpl, {
+    instancePath: error.instancePath,
+  });
+
+  return {
+    code: PRIVILEGED_FEATURES_REQUIRED,
+    message,
+    description: i18n._(oneLine`
+      This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate.
+      Please upload it directly to https://addons.mozilla.org/.
+    `),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const MOZILLA_ADDONS_PERMISSION_REQUIRED =
+  'MOZILLA_ADDONS_PERMISSION_REQUIRED';
+export function mozillaAddonsPermissionRequired(error) {
+  const messageTmpl =
+    error.instancePath === '/permissions'
+      ? i18n._(
+          oneLine`%(instancePath)s: The "mozillaAddons" permission is required for privileged extensions.`
+        )
+      : i18n._(
+          oneLine`%(instancePath)s: The "mozillaAddons" permission is required for extensions that include privileged manifest fields.`
+        );
+
+  const message = i18n.sprintf(messageTmpl, {
+    instancePath: error.instancePath,
+  });
+
+  return {
+    code: MOZILLA_ADDONS_PERMISSION_REQUIRED,
+    message,
+    description:
+      error.instancePath === '/permissions'
+        ? i18n._(
+            oneLine`This extension does not include the "mozillaAddons" permission, which is required for privileged extensions.`
+          )
+        : message,
+    file: MANIFEST_JSON,
+  };
+}

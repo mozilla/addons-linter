@@ -404,7 +404,7 @@
         }
       }
     },
-    "PermissionNoPrompt": {
+    "PermissionPrivileged": {
       "anyOf": [
         {
           "type": "string",
@@ -420,9 +420,9 @@
       "namespace": "manifest",
       "type": "WebExtensionManifest"
     },
-    "telemetry#/definitions/PermissionNoPrompt": {
+    "telemetry#/definitions/PermissionPrivileged": {
       "namespace": "manifest",
-      "type": "PermissionNoPrompt"
+      "type": "PermissionPrivileged"
     }
   },
   "types": {

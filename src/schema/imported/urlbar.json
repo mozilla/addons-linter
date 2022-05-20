@@ -214,7 +214,7 @@
     }
   ],
   "definitions": {
-    "PermissionNoPrompt": {
+    "PermissionPrivileged": {
       "anyOf": [
         {
           "type": "string",
@@ -226,9 +226,9 @@
     }
   },
   "refs": {
-    "urlbar#/definitions/PermissionNoPrompt": {
+    "urlbar#/definitions/PermissionPrivileged": {
       "namespace": "manifest",
-      "type": "PermissionNoPrompt"
+      "type": "PermissionPrivileged"
     }
   },
   "types": {
