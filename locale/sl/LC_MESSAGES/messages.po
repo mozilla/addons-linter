@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-16 10:44+0000\n"
+"POT-Creation-Date: 2022-05-23 10:25+0000\n"
 "PO-Revision-Date: 2022-05-16 16:05+0000\n"
 "Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
 "Language-Team: none\n"
@@ -11,7 +11,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 "X-Generator: Pontoon\n"
 
 #: src/linter.js:171
@@ -75,8 +76,12 @@ msgid "This API has not been implemented by Firefox."
 msgstr "Firefox ne podpira tega API-ja."
 
 #: src/messages/javascript.js:124
-msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr "\"{{api}}\" je bil odstranjen v različici manifesta 3 (lastnost 'manifest_version')"
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
+msgstr ""
+"\"{{api}}\" je bil odstranjen v različici manifesta 3 (lastnost "
+"'manifest_version')"
 
 #: src/messages/javascript.js:133
 msgid "{{api}} is deprecated"
@@ -111,7 +116,8 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} ni podprt v različici Firefox za Android {{minVersion}}"
 
 #: src/messages/javascript.js:188
-msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
 msgstr "Ta API ni uveljavljen v najnižji podprti različici Firefoxa za Android"
 
 #: src/messages/javascript.js:24
@@ -231,296 +237,339 @@ msgid "Translation string is missing the message property"
 msgstr "Nizu prevoda manjka lastnost sporočila"
 
 #: src/messages/locale-messagesjson.js:8
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "Za niz ni bilo nastavljeno nobeno sporočilo \"message\" (https://mzl.la/2DSBTjA)."
-
-#: src/messages/manifestjson.js:103 src/messages/manifestjson.js:112
-msgid "Unknown permission."
-msgstr "Neznano dovoljenje."
-
-#: src/messages/manifestjson.js:104
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "Za več informacij glejte https://mzl.la/1R1n1t0 (dokumente na MDN-u)."
-
-#: src/messages/manifestjson.js:113
-msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr "Za več informacij glejte https://mzl.la/2Qn0fWC (dokumente na MDN-u)."
-
-#: src/messages/manifestjson.js:121 src/messages/manifestjson.js:124
-msgid "Invalid host permission."
-msgstr "Neveljavno dovoljenje gostitelja."
-
-#: src/messages/manifestjson.js:130
-msgid "Invalid install origin."
-msgstr "Neveljavno poreklo namestitve."
-
-#: src/messages/manifestjson.js:133
-msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
-msgstr "Neveljavno poreklo namestitve. Veljavno poreklo vsebuje samo shemo, ime gostitelja in po izbiri vrata."
-
-#: src/messages/manifestjson.js:141
-msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "\"manifest_version\" v datoteki manifest.json ni veljavna vrednost."
-
-#: src/messages/manifestjson.js:144
-msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "Za več informacij glejte https://mzl.la/20PenXl (dokumente na MDN-u)."
-
-#: src/messages/manifestjson.js:17
-msgid "The field is invalid."
-msgstr "Polje je neveljavno."
-
-#: src/messages/manifestjson.js:178
-msgid "The \"name\" property must be a string."
-msgstr "Lastnost \"name\" mora biti niz."
-
-#: src/messages/manifestjson.js:179
-msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "Za več informacij glejte http://mzl.la/1STmr48 (dokumente na MDN-u)."
-
-#: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
-msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr "Za več informacij glejte https://mzl.la/1ZOhoEN (dokumente na MDN-u)."
-
-#: src/messages/manifestjson.js:187
-msgid "The \"version\" property must be a string."
-msgstr "Lastnost \"version\" mora biti niz."
-
-#: src/messages/manifestjson.js:188 src/messages/manifestjson.js:197
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "Za več informacij glejte http://mzl.la/1kXIADa (dokumente na MDN-u)."
-
-#: src/messages/manifestjson.js:196
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "Lastnost \"version\" uporablja obliko, posebno za Firefox."
-
-#: src/messages/manifestjson.js:205
-msgid "\"update_url\" is not allowed."
-msgstr "\"update_url\" ni dovoljen."
-
-#: src/messages/manifestjson.js:215
-msgid "The \"update_url\" property is not used by Firefox."
-msgstr "Lastnosti \"update_url\" Firefox ne uporablja."
-
-#: src/messages/manifestjson.js:224
-msgid "\"strict_max_version\" not required."
-msgstr "\"strict_max_version\" ni zahtevan."
-
-#: src/messages/manifestjson.js:243
-msgid "An icon defined in the manifest could not be found in the package."
-msgstr "V paketu ni bilo mogoče najti ikone, določene v manifestu."
-
-#: src/messages/manifestjson.js:247
-msgid "Icon could not be found at \"%(path)s\"."
-msgstr "V mapi \"%(path)s\" ni bilo mogoče najti ikone."
-
-#: src/messages/manifestjson.js:262
-msgid "A background script defined in the manifest could not be found."
-msgstr "Skripta ozadja, določenega v manifestu, ni bilo mogoče najti."
-
-#: src/messages/manifestjson.js:265
-msgid "A background page defined in the manifest could not be found."
-msgstr "Strani ozadja, določene v manifestu, ni bilo mogoče najti."
-
-#: src/messages/manifestjson.js:270
-msgid "Background script could not be found at \"%(path)s\"."
-msgstr "V mapi \"%(path)s\" ni bilo mogoče najti skripta ozadja."
-
-#: src/messages/manifestjson.js:271
-msgid "Background page could not be found at \"%(path)s\"."
-msgstr "V mapi \"%(path)s\" ni bilo mogoče najti strani ozadja."
-
-#: src/messages/manifestjson.js:286
-msgid "A content script defined in the manifest could not be found."
-msgstr "Skripta vsebine, določenega v manifestu, ni bilo mogoče najti."
-
-#: src/messages/manifestjson.js:287
-msgid "A content script css file defined in the manifest could not be found."
-msgstr "Datoteke css skripta vsebine, določene v manifestu, ni bilo mogoče najti."
-
-#: src/messages/manifestjson.js:292
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "V mapi \"%(path)s\" ni bilo mogoče najti skripta vsebine, določenega v manifestu."
-
-#: src/messages/manifestjson.js:295
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "V mapi \"%(path)s\" ni bilo mogoče najti datoteke css skripta vsebine, določene v manifestu."
-
-#: src/messages/manifestjson.js:309
-msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Datoteke slovarja, določene v manifestu, ni bilo mogoče najti."
-
-#: src/messages/manifestjson.js:313
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "V mapi \"%(path)s\" ni bilo mogoče najti datoteke slovarja, določene v manifestu."
-
-#: src/messages/manifestjson.js:325
-msgid "The manifest contains multiple dictionaries."
-msgstr "Manifest vsebuje več slovarjev."
-
-#: src/messages/manifestjson.js:326
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr "V manifestu je bilo določenih več slovarjev, kar ni podprto."
-
-#: src/messages/manifestjson.js:335
-msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr "Manifest vsebuje predmet slovarjev, vendar je prazen."
-
-#: src/messages/manifestjson.js:338
-msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr "V manifestu je bil opredeljen predmet slovarjev, vendar je bil prazen."
-
-#: src/messages/manifestjson.js:347
-msgid "The manifest contains a dictionary but no id property."
-msgstr "Manifest vsebuje predmet slovarjev, vendar nima lastnosti id."
-
-#: src/messages/manifestjson.js:348
-msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr "V manifestu je bil najden slovar, ki nima nastavljenega id."
-
-#: src/messages/manifestjson.js:358
-msgid "Forbidden content found in add-on."
-msgstr "V dodatku je bila najdena prepovedana vsebina."
-
-#: src/messages/manifestjson.js:359
-msgid "This add-on contains forbidden content."
-msgstr "Ta dodatek vsebuje prepovedano vsebino."
-
-#: src/messages/manifestjson.js:367
-msgid "Icons must be square."
-msgstr "Ikone morajo biti kvadratne."
-
-#: src/messages/manifestjson.js:368
-msgid "Icon at \"%(path)s\" must be square."
-msgstr "Ikona v mapi \"%(path)s\" mora biti kvadratna."
-
-#: src/messages/manifestjson.js:379
-msgid "The size of the icon does not match the manifest."
-msgstr "Velikost ikone se ne ujema z manifestom."
-
-#: src/messages/manifestjson.js:394
-msgid "Corrupt image file"
-msgstr "Pokvarjena slikovna datoteka"
-
-#: src/messages/manifestjson.js:396
-msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr "Pričakovana datoteka ikone v mapi \"%(path)s\" je pokvarjena"
-
-#: src/messages/manifestjson.js:405
-msgid "This property has been deprecated."
-msgstr "Ta lastnost je opuščena."
-
-#: src/messages/manifestjson.js:412
-msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr "Ta vzdevek LWT teme je bil odstranjen v Firefoxu 70."
-
-#: src/messages/manifestjson.js:413
-msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Za več informacij glejte https://mzl.la/2T11Lkc (dokumente na omrežju MDN)."
-
-#: src/messages/manifestjson.js:428
-msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "V mapi \"%(path)s\" ni bilo mogoče najti slike teme za \"%(type)s\""
-
-#: src/messages/manifestjson.js:439
-msgid "Corrupted theme image file"
-msgstr "Pokvarjena slikovna datoteka teme"
-
-#: src/messages/manifestjson.js:441
-msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "Slika teme v mapi \"%(path)s\" je pokvarjena"
-
-#: src/messages/manifestjson.js:452
-msgid "Theme image file has an unsupported file extension"
-msgstr "Slikovna datoteka teme ima nepodprto pripono"
-
-#: src/messages/manifestjson.js:454
-msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr "Slikovna datoteka na \"%(path)s\" ima nepodprto pripono"
-
-#: src/messages/manifestjson.js:468
-msgid "Theme image file has an unsupported mime type"
-msgstr "Slikovna datoteka teme ima nepodprto vrsto mime"
-
-#: src/messages/manifestjson.js:470
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr "Slikovna datoteka na \"%(path)s\" ima nepodprto vrsto mime \"%(mime)s\""
-
-#: src/messages/manifestjson.js:484
-msgid "Theme image file mime type does not match its file extension"
-msgstr "Vrsta mime slikovne datoteke se ne ujema s pripono datoteke"
-
-#: src/messages/manifestjson.js:488
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr "Vrsta mime slikovne datoteke na \"%(path)s\" se ne ujema z njeno dejansko vrsto mime \"%(mime)s\""
-
-#: src/messages/manifestjson.js:502
-msgid "The \"default_locale\" is missing localizations."
-msgstr "V \"default_locale\" manjkajo lokalizacije."
-
-#: src/messages/manifestjson.js:511
-msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr "\"default_locale\" manjka, vendar obstaja \"_locales\"."
-
-#: src/messages/manifestjson.js:520
-msgid "Unsupported image extension"
-msgstr "Nepodprta pripona slike"
-
-#: src/messages/manifestjson.js:521
-msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr "Ikone morajo biti vrste JPG/JPEG, WebP, GIF, PNG ali SVG."
-
-#: src/messages/manifestjson.js:529
-msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
-msgstr "Lastnost \"applications\" je preglašena z lastnostjo \"browser_specific_settings\""
-
-#: src/messages/manifestjson.js:542
-msgid "Empty language directory"
-msgstr "Prazna jezikovna mapa"
-
-#: src/messages/manifestjson.js:544
-msgid "messages.json file missing in \"%(path)s\""
-msgstr "V mapi \"%(path)s\" manjka datoteka messages.json."
-
-#: src/messages/manifestjson.js:560
-msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr "Ključ manifesta ni podprt v najnižji podprti različici Firefoxa"
-
-#: src/messages/manifestjson.js:582
-msgid "Permission not supported by the specified minimum Firefox version"
-msgstr "Dovoljenje ni podprto v najnižji podprti različici Firefoxa"
-
-#: src/messages/manifestjson.js:604
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr "Ključ manifesta ni podprt v najnižji podprti različici Firefoxa za Android"
-
-#: src/messages/manifestjson.js:626
-msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr "Dovoljenje ni podprto v najnižji podprti različici Firefoxa za Android"
-
-#: src/messages/manifestjson.js:641
-msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr "Povezovanje na \"addons.mozilla.org\" ni dovoljeno"
-
-#: src/messages/manifestjson.js:642
-msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr "Za domačo stran ni dovoljeno uporabljati povezav, ki usmerjajo na \"addons.mozilla.org\""
-
-#: src/messages/manifestjson.js:671
-msgid "The extension ID is required in Manifest Version 3 and above."
-msgstr "ID razširitve je obvezen v različici manifesta 3 in novejših."
-
-#: src/messages/manifestjson.js:674
-msgid "See https://extensionworkshop.com/documentation/develop/extensions-and-the-add-on-id/ for more information."
-msgstr "Za več informacij glejte https://extensionworkshop.com/documentation/develop/extensions-and-the-add-on-id/"
-
-#: src/messages/manifestjson.js:78 src/messages/manifestjson.js:86 src/messages/manifestjson.js:94 src/messages/manifestjson.js:97
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+"Za niz ni bilo nastavljeno nobeno sporočilo \"message\" (https://mzl."
+"la/2DSBTjA)."
+
+#: src/messages/manifestjson.js:107 src/messages/manifestjson.js:115
+#: src/messages/manifestjson.js:118 src/messages/manifestjson.js:99
 msgid "The permission type is unsupported."
 msgstr "Vrsta dovoljenja ni podprta."
 
-#: src/messages/manifestjson.js:8
+#: src/messages/manifestjson.js:12
 msgid "The field is required."
 msgstr "Polje je zahtevano."
+
+#: src/messages/manifestjson.js:124 src/messages/manifestjson.js:153
+msgid "Unknown permission."
+msgstr "Neznano dovoljenje."
+
+#: src/messages/manifestjson.js:125
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr "Za več informacij glejte https://mzl.la/1R1n1t0 (dokumente na MDN-u)."
+
+#: src/messages/manifestjson.js:13 src/messages/manifestjson.js:22
+msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
+msgstr "Za več informacij glejte https://mzl.la/1ZOhoEN (dokumente na MDN-u)."
+
+#: src/messages/manifestjson.js:154
+msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
+msgstr "Za več informacij glejte https://mzl.la/2Qn0fWC (dokumente na MDN-u)."
+
+#: src/messages/manifestjson.js:162 src/messages/manifestjson.js:165
+msgid "Invalid host permission."
+msgstr "Neveljavno dovoljenje gostitelja."
+
+#: src/messages/manifestjson.js:171
+msgid "Invalid install origin."
+msgstr "Neveljavno poreklo namestitve."
+
+#: src/messages/manifestjson.js:174
+msgid ""
+"Invalid install origin. A valid origin has - only - a scheme, hostname and "
+"optional port."
+msgstr ""
+"Neveljavno poreklo namestitve. Veljavno poreklo vsebuje samo shemo, ime "
+"gostitelja in po izbiri vrata."
+
+#: src/messages/manifestjson.js:182
+msgid "\"manifest_version\" in the manifest.json is not a valid value"
+msgstr "\"manifest_version\" v datoteki manifest.json ni veljavna vrednost."
+
+#: src/messages/manifestjson.js:185
+msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
+msgstr "Za več informacij glejte https://mzl.la/20PenXl (dokumente na MDN-u)."
+
+#: src/messages/manifestjson.js:21
+msgid "The field is invalid."
+msgstr "Polje je neveljavno."
+
+#: src/messages/manifestjson.js:219
+msgid "The \"name\" property must be a string."
+msgstr "Lastnost \"name\" mora biti niz."
+
+#: src/messages/manifestjson.js:220
+msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
+msgstr "Za več informacij glejte http://mzl.la/1STmr48 (dokumente na MDN-u)."
+
+#: src/messages/manifestjson.js:228
+msgid "The \"version\" property must be a string."
+msgstr "Lastnost \"version\" mora biti niz."
+
+#: src/messages/manifestjson.js:229 src/messages/manifestjson.js:238
+msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+msgstr "Za več informacij glejte http://mzl.la/1kXIADa (dokumente na MDN-u)."
+
+#: src/messages/manifestjson.js:237
+msgid "The \"version\" property uses a Firefox-specific format."
+msgstr "Lastnost \"version\" uporablja obliko, posebno za Firefox."
+
+#: src/messages/manifestjson.js:246
+msgid "\"update_url\" is not allowed."
+msgstr "\"update_url\" ni dovoljen."
+
+#: src/messages/manifestjson.js:256
+msgid "The \"update_url\" property is not used by Firefox."
+msgstr "Lastnosti \"update_url\" Firefox ne uporablja."
+
+#: src/messages/manifestjson.js:265
+msgid "\"strict_max_version\" not required."
+msgstr "\"strict_max_version\" ni zahtevan."
+
+#: src/messages/manifestjson.js:284
+msgid "An icon defined in the manifest could not be found in the package."
+msgstr "V paketu ni bilo mogoče najti ikone, določene v manifestu."
+
+#: src/messages/manifestjson.js:288
+msgid "Icon could not be found at \"%(path)s\"."
+msgstr "V mapi \"%(path)s\" ni bilo mogoče najti ikone."
+
+#: src/messages/manifestjson.js:303
+msgid "A background script defined in the manifest could not be found."
+msgstr "Skripta ozadja, določenega v manifestu, ni bilo mogoče najti."
+
+#: src/messages/manifestjson.js:306
+msgid "A background page defined in the manifest could not be found."
+msgstr "Strani ozadja, določene v manifestu, ni bilo mogoče najti."
+
+#: src/messages/manifestjson.js:311
+msgid "Background script could not be found at \"%(path)s\"."
+msgstr "V mapi \"%(path)s\" ni bilo mogoče najti skripta ozadja."
+
+#: src/messages/manifestjson.js:312
+msgid "Background page could not be found at \"%(path)s\"."
+msgstr "V mapi \"%(path)s\" ni bilo mogoče najti strani ozadja."
+
+#: src/messages/manifestjson.js:327
+msgid "A content script defined in the manifest could not be found."
+msgstr "Skripta vsebine, določenega v manifestu, ni bilo mogoče najti."
+
+#: src/messages/manifestjson.js:328
+msgid "A content script css file defined in the manifest could not be found."
+msgstr ""
+"Datoteke css skripta vsebine, določene v manifestu, ni bilo mogoče najti."
+
+#: src/messages/manifestjson.js:333
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"V mapi \"%(path)s\" ni bilo mogoče najti skripta vsebine, določenega v "
+"manifestu."
+
+#: src/messages/manifestjson.js:336
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"V mapi \"%(path)s\" ni bilo mogoče najti datoteke css skripta vsebine, "
+"določene v manifestu."
+
+#: src/messages/manifestjson.js:350
+msgid "A dictionary file defined in the manifest could not be found."
+msgstr "Datoteke slovarja, določene v manifestu, ni bilo mogoče najti."
+
+#: src/messages/manifestjson.js:354
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"V mapi \"%(path)s\" ni bilo mogoče najti datoteke slovarja, določene v "
+"manifestu."
+
+#: src/messages/manifestjson.js:366
+msgid "The manifest contains multiple dictionaries."
+msgstr "Manifest vsebuje več slovarjev."
+
+#: src/messages/manifestjson.js:367
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgstr "V manifestu je bilo določenih več slovarjev, kar ni podprto."
+
+#: src/messages/manifestjson.js:376
+msgid "The manifest contains a dictionaries object, but it is empty."
+msgstr "Manifest vsebuje predmet slovarjev, vendar je prazen."
+
+#: src/messages/manifestjson.js:379
+msgid "A dictionaries object was defined in the manifest, but it was empty."
+msgstr "V manifestu je bil opredeljen predmet slovarjev, vendar je bil prazen."
+
+#: src/messages/manifestjson.js:388
+msgid "The manifest contains a dictionary but no id property."
+msgstr "Manifest vsebuje predmet slovarjev, vendar nima lastnosti id."
+
+#: src/messages/manifestjson.js:389
+msgid "A dictionary was found in the manifest, but there was no id set."
+msgstr "V manifestu je bil najden slovar, ki nima nastavljenega id."
+
+#: src/messages/manifestjson.js:399
+msgid "Forbidden content found in add-on."
+msgstr "V dodatku je bila najdena prepovedana vsebina."
+
+#: src/messages/manifestjson.js:400
+msgid "This add-on contains forbidden content."
+msgstr "Ta dodatek vsebuje prepovedano vsebino."
+
+#: src/messages/manifestjson.js:408
+msgid "Icons must be square."
+msgstr "Ikone morajo biti kvadratne."
+
+#: src/messages/manifestjson.js:409
+msgid "Icon at \"%(path)s\" must be square."
+msgstr "Ikona v mapi \"%(path)s\" mora biti kvadratna."
+
+#: src/messages/manifestjson.js:420
+msgid "The size of the icon does not match the manifest."
+msgstr "Velikost ikone se ne ujema z manifestom."
+
+#: src/messages/manifestjson.js:435
+msgid "Corrupt image file"
+msgstr "Pokvarjena slikovna datoteka"
+
+#: src/messages/manifestjson.js:437
+msgid "Expected icon file at \"%(path)s\" is corrupted"
+msgstr "Pričakovana datoteka ikone v mapi \"%(path)s\" je pokvarjena"
+
+#: src/messages/manifestjson.js:446
+msgid "This property has been deprecated."
+msgstr "Ta lastnost je opuščena."
+
+#: src/messages/manifestjson.js:453
+msgid "This theme LWT alias has been removed in Firefox 70."
+msgstr "Ta vzdevek LWT teme je bil odstranjen v Firefoxu 70."
+
+#: src/messages/manifestjson.js:454
+msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
+msgstr ""
+"Za več informacij glejte https://mzl.la/2T11Lkc (dokumente na omrežju MDN)."
+
+#: src/messages/manifestjson.js:469
+msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
+msgstr "V mapi \"%(path)s\" ni bilo mogoče najti slike teme za \"%(type)s\""
+
+#: src/messages/manifestjson.js:480
+msgid "Corrupted theme image file"
+msgstr "Pokvarjena slikovna datoteka teme"
+
+#: src/messages/manifestjson.js:482
+msgid "Theme image file at \"%(path)s\" is corrupted"
+msgstr "Slika teme v mapi \"%(path)s\" je pokvarjena"
+
+#: src/messages/manifestjson.js:493
+msgid "Theme image file has an unsupported file extension"
+msgstr "Slikovna datoteka teme ima nepodprto pripono"
+
+#: src/messages/manifestjson.js:495
+msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
+msgstr "Slikovna datoteka na \"%(path)s\" ima nepodprto pripono"
+
+#: src/messages/manifestjson.js:509
+msgid "Theme image file has an unsupported mime type"
+msgstr "Slikovna datoteka teme ima nepodprto vrsto mime"
+
+#: src/messages/manifestjson.js:511
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr ""
+"Slikovna datoteka na \"%(path)s\" ima nepodprto vrsto mime \"%(mime)s\""
+
+#: src/messages/manifestjson.js:525
+msgid "Theme image file mime type does not match its file extension"
+msgstr "Vrsta mime slikovne datoteke se ne ujema s pripono datoteke"
+
+#: src/messages/manifestjson.js:529
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
+msgstr ""
+"Vrsta mime slikovne datoteke na \"%(path)s\" se ne ujema z njeno dejansko "
+"vrsto mime \"%(mime)s\""
+
+#: src/messages/manifestjson.js:543
+msgid "The \"default_locale\" is missing localizations."
+msgstr "V \"default_locale\" manjkajo lokalizacije."
+
+#: src/messages/manifestjson.js:552
+msgid "The \"default_locale\" is missing but \"_locales\" exist."
+msgstr "\"default_locale\" manjka, vendar obstaja \"_locales\"."
+
+#: src/messages/manifestjson.js:561
+msgid "Unsupported image extension"
+msgstr "Nepodprta pripona slike"
+
+#: src/messages/manifestjson.js:562
+msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
+msgstr "Ikone morajo biti vrste JPG/JPEG, WebP, GIF, PNG ali SVG."
+
+#: src/messages/manifestjson.js:570
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property"
+msgstr ""
+"Lastnost \"applications\" je preglašena z lastnostjo "
+"\"browser_specific_settings\""
+
+#: src/messages/manifestjson.js:583
+msgid "Empty language directory"
+msgstr "Prazna jezikovna mapa"
+
+#: src/messages/manifestjson.js:585
+msgid "messages.json file missing in \"%(path)s\""
+msgstr "V mapi \"%(path)s\" manjka datoteka messages.json."
+
+#: src/messages/manifestjson.js:601
+msgid "Manifest key not supported by the specified minimum Firefox version"
+msgstr "Ključ manifesta ni podprt v najnižji podprti različici Firefoxa"
+
+#: src/messages/manifestjson.js:623
+msgid "Permission not supported by the specified minimum Firefox version"
+msgstr "Dovoljenje ni podprto v najnižji podprti različici Firefoxa"
+
+#: src/messages/manifestjson.js:645
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
+msgstr ""
+"Ključ manifesta ni podprt v najnižji podprti različici Firefoxa za Android"
+
+#: src/messages/manifestjson.js:667
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
+msgstr "Dovoljenje ni podprto v najnižji podprti različici Firefoxa za Android"
+
+#: src/messages/manifestjson.js:682
+msgid "Linking to \"addons.mozilla.org\" is not allowed"
+msgstr "Povezovanje na \"addons.mozilla.org\" ni dovoljeno"
+
+#: src/messages/manifestjson.js:683
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
+"Za domačo stran ni dovoljeno uporabljati povezav, ki usmerjajo na \"addons."
+"mozilla.org\""
+
+#: src/messages/manifestjson.js:712
+msgid "The extension ID is required in Manifest Version 3 and above."
+msgstr "ID razširitve je obvezen v različici manifesta 3 in novejših."
+
+#: src/messages/manifestjson.js:715
+msgid ""
+"See https://extensionworkshop.com/documentation/develop/extensions-and-the-"
+"add-on-id/ for more information."
+msgstr ""
+"Za več informacij glejte https://extensionworkshop.com/documentation/develop/"
+"extensions-and-the-add-on-id/"
 
 #~ msgid "addEventListener` called with truthy fourth argument."
 #~ msgstr "Klic addEventListener s četrtim argumentom truthy."

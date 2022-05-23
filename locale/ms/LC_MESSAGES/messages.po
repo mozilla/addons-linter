@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-16 10:44+0000\n"
+"POT-Creation-Date: 2022-05-23 10:25+0000\n"
 "PO-Revision-Date: 2018-02-13 04:42+0000\n"
 "Last-Translator: manxmensch <manxmensch@gmail.com>\n"
 "Language-Team: none\n"
@@ -245,130 +245,139 @@ msgstr ""
 "Sifat mesej tiada \"message\" ditetapkan untuk string (https://mzl."
 "la/2DSBTjA)."
 
-#: src/messages/manifestjson.js:103 src/messages/manifestjson.js:112
+#: src/messages/manifestjson.js:107 src/messages/manifestjson.js:115
+#: src/messages/manifestjson.js:118 src/messages/manifestjson.js:99
+msgid "The permission type is unsupported."
+msgstr "Jenis keizinan yang tidak disokong."
+
+#: src/messages/manifestjson.js:12
+msgid "The field is required."
+msgstr "Medan ini diperlukan."
+
+#: src/messages/manifestjson.js:124 src/messages/manifestjson.js:153
 msgid "Unknown permission."
 msgstr "Izin tidak diketahui."
 
-#: src/messages/manifestjson.js:104
+#: src/messages/manifestjson.js:125
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
 msgstr "Lihat https://mzl.la/1R1n1t0 (Dokumen MDN) untuk maklumat lanjut."
 
-#: src/messages/manifestjson.js:113
+#: src/messages/manifestjson.js:13 src/messages/manifestjson.js:22
+msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
+msgstr "Lihat https://mzl.la/1ZOhoEN (Dokumen MDN) untuk maklumat lanjut."
+
+#: src/messages/manifestjson.js:154
 #, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
 msgstr "Lihat https://mzl.la/20PenXl (Dokumen MDN) untuk maklumat lanjut."
 
-#: src/messages/manifestjson.js:121 src/messages/manifestjson.js:124
+#: src/messages/manifestjson.js:162 src/messages/manifestjson.js:165
 #, fuzzy
 msgid "Invalid host permission."
 msgstr "Izin tidak diketahui."
 
-#: src/messages/manifestjson.js:130
+#: src/messages/manifestjson.js:171
 #, fuzzy
 msgid "Invalid install origin."
 msgstr "Izin tidak diketahui."
 
-#: src/messages/manifestjson.js:133
+#: src/messages/manifestjson.js:174
 msgid ""
 "Invalid install origin. A valid origin has - only - a scheme, hostname and "
 "optional port."
 msgstr ""
 
-#: src/messages/manifestjson.js:141
+#: src/messages/manifestjson.js:182
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
 msgstr "\"manifest_version\" dalam manifest.json bukan nilai yang sah"
 
-#: src/messages/manifestjson.js:144
+#: src/messages/manifestjson.js:185
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
 msgstr "Lihat https://mzl.la/20PenXl (Dokumen MDN) untuk maklumat lanjut."
 
-#: src/messages/manifestjson.js:17
+#: src/messages/manifestjson.js:21
 msgid "The field is invalid."
 msgstr "Medan ini tidak sah."
 
-#: src/messages/manifestjson.js:178
+#: src/messages/manifestjson.js:219
 msgid "The \"name\" property must be a string."
 msgstr "Sifat \"name\" mesti satu string."
 
-#: src/messages/manifestjson.js:179
+#: src/messages/manifestjson.js:220
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
 msgstr "Lihat http://mzl.la/1STmr48 (Dokumen MDN) untuk maklumat lanjut."
 
-#: src/messages/manifestjson.js:18 src/messages/manifestjson.js:9
-msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr "Lihat https://mzl.la/1ZOhoEN (Dokumen MDN) untuk maklumat lanjut."
-
-#: src/messages/manifestjson.js:187
+#: src/messages/manifestjson.js:228
 msgid "The \"version\" property must be a string."
 msgstr "Sifat \"version\" mesti satu string."
 
-#: src/messages/manifestjson.js:188 src/messages/manifestjson.js:197
+#: src/messages/manifestjson.js:229 src/messages/manifestjson.js:238
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
 msgstr "Lihat http://mzl.la/1kXIADa (Dokumen MDN) untuk maklumat lanjut."
 
-#: src/messages/manifestjson.js:196
+#: src/messages/manifestjson.js:237
 msgid "The \"version\" property uses a Firefox-specific format."
 msgstr "Sifat \"version\" menggunakan format khusus-Firefox."
 
-#: src/messages/manifestjson.js:205
+#: src/messages/manifestjson.js:246
 msgid "\"update_url\" is not allowed."
 msgstr "\"update_url\" tidak dibenarkan."
 
-#: src/messages/manifestjson.js:215
+#: src/messages/manifestjson.js:256
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "Sifat \"update_url\" tidak digunakan oleh Firefox."
 
-#: src/messages/manifestjson.js:224
+#: src/messages/manifestjson.js:265
 msgid "\"strict_max_version\" not required."
 msgstr "\"strict_max_version\" tidak diperlukan."
 
-#: src/messages/manifestjson.js:243
+#: src/messages/manifestjson.js:284
 msgid "An icon defined in the manifest could not be found in the package."
 msgstr "Ikon yang ditakrif dalam manifes tidak dapat ditemui dalam pakej."
 
-#: src/messages/manifestjson.js:247
+#: src/messages/manifestjson.js:288
 msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Ikon tidak ditemui dalam \"%(path)s\"."
 
-#: src/messages/manifestjson.js:262
+#: src/messages/manifestjson.js:303
 #, fuzzy
 msgid "A background script defined in the manifest could not be found."
 msgstr ""
 "Skrip kandungan yang ditakrif dalam manifes tidak ditemui dalam \"%(path)s\"."
 
-#: src/messages/manifestjson.js:265
+#: src/messages/manifestjson.js:306
 #, fuzzy
 msgid "A background page defined in the manifest could not be found."
 msgstr "Ikon yang ditakrif dalam manifes tidak dapat ditemui dalam pakej."
 
-#: src/messages/manifestjson.js:270
+#: src/messages/manifestjson.js:311
 msgid "Background script could not be found at \"%(path)s\"."
 msgstr "Skrip latar belakang tidak ditemui dalam \"%(path)s\"."
 
-#: src/messages/manifestjson.js:271
+#: src/messages/manifestjson.js:312
 msgid "Background page could not be found at \"%(path)s\"."
 msgstr "Halaman latar belakang tidak ditemui dalam \"%(path)s\"."
 
-#: src/messages/manifestjson.js:286
+#: src/messages/manifestjson.js:327
 #, fuzzy
 msgid "A content script defined in the manifest could not be found."
 msgstr ""
 "Skrip kandungan yang ditakrif dalam manifes tidak ditemui dalam \"%(path)s\"."
 
-#: src/messages/manifestjson.js:287
+#: src/messages/manifestjson.js:328
 #, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
 msgstr ""
 "Fail css skrip kandungan yang ditakrif dalam manifes tidak ditemui dalam "
 "\"%(path)s\"."
 
-#: src/messages/manifestjson.js:292
+#: src/messages/manifestjson.js:333
 msgid ""
 "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 "Skrip kandungan yang ditakrif dalam manifes tidak ditemui dalam \"%(path)s\"."
 
-#: src/messages/manifestjson.js:295
+#: src/messages/manifestjson.js:336
 msgid ""
 "Content script css file defined in the manifest could not be found at "
 "\"%(path)s\"."
@@ -376,12 +385,12 @@ msgstr ""
 "Fail css skrip kandungan yang ditakrif dalam manifes tidak ditemui dalam "
 "\"%(path)s\"."
 
-#: src/messages/manifestjson.js:309
+#: src/messages/manifestjson.js:350
 #, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "Ikon yang ditakrif dalam manifes tidak dapat ditemui dalam pakej."
 
-#: src/messages/manifestjson.js:313
+#: src/messages/manifestjson.js:354
 #, fuzzy
 msgid ""
 "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
@@ -389,191 +398,182 @@ msgstr ""
 "Fail css skrip kandungan yang ditakrif dalam manifes tidak ditemui dalam "
 "\"%(path)s\"."
 
-#: src/messages/manifestjson.js:325
+#: src/messages/manifestjson.js:366
 msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
-#: src/messages/manifestjson.js:326
+#: src/messages/manifestjson.js:367
 msgid ""
 "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
-#: src/messages/manifestjson.js:335
+#: src/messages/manifestjson.js:376
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr ""
 
-#: src/messages/manifestjson.js:338
+#: src/messages/manifestjson.js:379
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr ""
 
-#: src/messages/manifestjson.js:347
+#: src/messages/manifestjson.js:388
 msgid "The manifest contains a dictionary but no id property."
 msgstr ""
 
-#: src/messages/manifestjson.js:348
+#: src/messages/manifestjson.js:389
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr ""
 
-#: src/messages/manifestjson.js:358
+#: src/messages/manifestjson.js:399
 msgid "Forbidden content found in add-on."
 msgstr "Kandungan yang dilarang ditemui dalam add-on."
 
-#: src/messages/manifestjson.js:359
+#: src/messages/manifestjson.js:400
 msgid "This add-on contains forbidden content."
 msgstr "Add-on ini ada kandungan yang dilarang."
 
-#: src/messages/manifestjson.js:367
+#: src/messages/manifestjson.js:408
 msgid "Icons must be square."
 msgstr "Ikon mesti segi empat."
 
-#: src/messages/manifestjson.js:368
+#: src/messages/manifestjson.js:409
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "Ikon dalam \"%(path)s\" mesti segi empat."
 
-#: src/messages/manifestjson.js:379
+#: src/messages/manifestjson.js:420
 msgid "The size of the icon does not match the manifest."
 msgstr "Saiz ikon tidak sepadan dengan manifes."
 
-#: src/messages/manifestjson.js:394
+#: src/messages/manifestjson.js:435
 msgid "Corrupt image file"
 msgstr "Fail imej rosak"
 
-#: src/messages/manifestjson.js:396
+#: src/messages/manifestjson.js:437
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr "Fail ikon yang dijangka dalam \"%(path)s\" sudah rosak"
 
-#: src/messages/manifestjson.js:405
+#: src/messages/manifestjson.js:446
 msgid "This property has been deprecated."
 msgstr ""
 
-#: src/messages/manifestjson.js:412
+#: src/messages/manifestjson.js:453
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
-#: src/messages/manifestjson.js:413
+#: src/messages/manifestjson.js:454
 #, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr "Lihat https://mzl.la/1R1n1t0 (Dokumen MDN) untuk maklumat lanjut."
 
-#: src/messages/manifestjson.js:428
+#: src/messages/manifestjson.js:469
 #, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "Halaman latar belakang tidak ditemui dalam \"%(path)s\"."
 
-#: src/messages/manifestjson.js:439
+#: src/messages/manifestjson.js:480
 #, fuzzy
 msgid "Corrupted theme image file"
 msgstr "Fail imej rosak"
 
-#: src/messages/manifestjson.js:441
+#: src/messages/manifestjson.js:482
 #, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "Fail ikon yang dijangka dalam \"%(path)s\" sudah rosak"
 
-#: src/messages/manifestjson.js:452
+#: src/messages/manifestjson.js:493
 msgid "Theme image file has an unsupported file extension"
 msgstr ""
 
-#: src/messages/manifestjson.js:454
+#: src/messages/manifestjson.js:495
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
 msgstr ""
 
-#: src/messages/manifestjson.js:468
+#: src/messages/manifestjson.js:509
 msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
-#: src/messages/manifestjson.js:470
+#: src/messages/manifestjson.js:511
 msgid ""
 "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
-#: src/messages/manifestjson.js:484
+#: src/messages/manifestjson.js:525
 msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
-#: src/messages/manifestjson.js:488
+#: src/messages/manifestjson.js:529
 msgid ""
 "Theme image file extension at \"%(path)s\" does not match its actual mime "
 "type \"%(mime)s\""
 msgstr ""
 
-#: src/messages/manifestjson.js:502
+#: src/messages/manifestjson.js:543
 msgid "The \"default_locale\" is missing localizations."
 msgstr "\"default_locale\" tiada lokalisasi."
 
-#: src/messages/manifestjson.js:511
+#: src/messages/manifestjson.js:552
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "\"default_locale\" tiada lokalisasi tapi ada \"_locales\"."
 
-#: src/messages/manifestjson.js:520
+#: src/messages/manifestjson.js:561
 msgid "Unsupported image extension"
 msgstr "Ekstensi imej yang tidak disokong"
 
-#: src/messages/manifestjson.js:521
+#: src/messages/manifestjson.js:562
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Ikon hendaklah samada JPG/JPEG, WebP, GIF, PNG atau SVG."
 
-#: src/messages/manifestjson.js:529
+#: src/messages/manifestjson.js:570
 msgid ""
 "\"applications\" property overridden by \"browser_specific_settings\" "
 "property"
 msgstr ""
 
-#: src/messages/manifestjson.js:542
+#: src/messages/manifestjson.js:583
 msgid "Empty language directory"
 msgstr "Direktori bahasa kosong"
 
-#: src/messages/manifestjson.js:544
+#: src/messages/manifestjson.js:585
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "Fail messages.json tiada dalam \"%(path)s\""
 
-#: src/messages/manifestjson.js:560
+#: src/messages/manifestjson.js:601
 msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr ""
 
-#: src/messages/manifestjson.js:582
+#: src/messages/manifestjson.js:623
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
-#: src/messages/manifestjson.js:604
+#: src/messages/manifestjson.js:645
 msgid ""
 "Manifest key not supported by the specified minimum Firefox for Android "
 "version"
 msgstr ""
 
-#: src/messages/manifestjson.js:626
+#: src/messages/manifestjson.js:667
 msgid ""
 "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
-#: src/messages/manifestjson.js:641
+#: src/messages/manifestjson.js:682
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr ""
 
-#: src/messages/manifestjson.js:642
+#: src/messages/manifestjson.js:683
 msgid ""
 "Links directing to \"addons.mozilla.org\" are not allowed to be used for "
 "homepage"
 msgstr ""
 
-#: src/messages/manifestjson.js:671
+#: src/messages/manifestjson.js:712
 msgid "The extension ID is required in Manifest Version 3 and above."
 msgstr ""
 
-#: src/messages/manifestjson.js:674
+#: src/messages/manifestjson.js:715
 msgid ""
 "See https://extensionworkshop.com/documentation/develop/extensions-and-the-"
 "add-on-id/ for more information."
 msgstr ""
-
-#: src/messages/manifestjson.js:78 src/messages/manifestjson.js:86
-#: src/messages/manifestjson.js:94 src/messages/manifestjson.js:97
-msgid "The permission type is unsupported."
-msgstr "Jenis keizinan yang tidak disokong."
-
-#: src/messages/manifestjson.js:8
-msgid "The field is required."
-msgstr "Medan ini diperlukan."
 
 #~ msgid "addEventListener` called with truthy fourth argument."
 #~ msgstr "addEventListener` dipanggil dengan hujah keempat yang dipercayai."
