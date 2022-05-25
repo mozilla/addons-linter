@@ -1456,12 +1456,22 @@ describe('ManifestJSONParser', () => {
         // forseeable future. See http://bit.ly/2wG6LP0 for more details-
         "script-src 'self' 'unsafe-inline';",
 
+        // 'wasm-unsafe-eval' is permitted, despite the unsafe-eval substring.
+        "script-src 'self' 'wasm-unsafe-eval'",
+
         // 'default-src' is insecure, but the limiting 'script-src' prevents
         // remote script injection
         "default-src *; script-src 'self'",
         "default-src https:; script-src 'self'",
         "default-src example.com; script-src 'self'",
         "default-src http://remote.com/; script-src 'self'",
+
+        // In theory, script-src should override default-src, and the insecure
+        // 'unsafe-eval' directive should be ignored. But the implementation
+        // rejects 'unsafe-eval' unconditionally, despite the script-src
+        // override. So this test case fails with MANIFEST_CSP_UNSAFE_EVAL.
+        // See https://github.com/mozilla/addons-linter/pull/4345#discussion_r881860151
+        // "script-src 'wasm-unsafe-eval'; default-src 'unsafe-eval'",
       ];
 
       validValues.forEach((validValue) => {

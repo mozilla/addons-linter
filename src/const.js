@@ -202,7 +202,7 @@ export const TEMPORARY_APIS = [
 // See https://mzl.la/2vwqbGU for more details and allowed options.
 export const CSP_KEYWORD_RE = new RegExp(
   [
-    '(self|none|unsafe-inline|strict-dynamic|unsafe-hashed-attributes)',
+    '(self|none|unsafe-inline|strict-dynamic|unsafe-hashed-attributes|wasm-unsafe-eval)',
     // Only match these keywords, anything else is forbidden
     '(?!.)',
     '|(sha(256|384|512)-|nonce-)',
