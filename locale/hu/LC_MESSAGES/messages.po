@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-05-16 14:30+0000\n"
+"PO-Revision-Date: 2022-05-27 09:12+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -60,8 +60,7 @@ msgstr "Az FTL fájl nem dolgozható fel."
 
 #: src/messages/html.js:14
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
-"A távoli parancsfájlok a kiegészítők irányelvei szerint nem engedélyezettek."
+msgstr "A távoli parancsfájlok a kiegészítők irányelvei szerint nem engedélyezettek."
 
 #: src/messages/html.js:7
 msgid "Inline scripts blocked by default"
@@ -76,12 +75,8 @@ msgid "This API has not been implemented by Firefox."
 msgstr "Ez az API még nincs megvalósítva a Firefoxban."
 
 #: src/messages/javascript.js:124
-msgid ""
-"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
-"property)"
-msgstr ""
-"A(z) „{{api}}” el lett távolítva a leíró 3. verziójából (`manifest_version` "
-"tulajdonság)"
+msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
+msgstr "A(z) „{{api}}” el lett távolítva a leíró 3. verziójából (`manifest_version` tulajdonság)"
 
 #: src/messages/javascript.js:133
 msgid "{{api}} is deprecated"
@@ -105,8 +100,7 @@ msgstr "A(z) {{api}} nem támogatott a Firefox {{minVersion}} verzióban"
 
 #: src/messages/javascript.js:177
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr ""
-"Ez az API még nincs megvalósítva a megadott minimális Firefox verzióban"
+msgstr "Ez az API még nincs megvalósítva a megadott minimális Firefox verzióban"
 
 #: src/messages/javascript.js:18
 msgid "Content script file could not be found"
@@ -114,15 +108,11 @@ msgstr "A tartalomparancsfájl nem található"
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
-"A(z) {{api}} nem támogatott a Firefox for Android {{minVersion}} verzióban"
+msgstr "A(z) {{api}} nem támogatott a Firefox for Android {{minVersion}} verzióban"
 
 #: src/messages/javascript.js:188
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
-"Ez az API még nincs megvalósítva a megadott minimális Firefox for Android "
-"verzióban"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "Ez az API még nincs megvalósítva a megadott minimális Firefox for Android verzióban"
 
 #: src/messages/javascript.js:24
 msgid "Content script file name should not be empty."
@@ -214,8 +204,7 @@ msgstr "A csomag már aláírt"
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
-"A Firefox kiegészítők nem futtathatnak kriptovaluta bányász programokat."
+msgstr "A Firefox kiegészítők nem futtathatnak kriptovaluta bányász programokat."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -242,14 +231,10 @@ msgid "Translation string is missing the message property"
 msgstr "A fordítási karakterláncból hiányzik a message tulajdonság"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Nincs „message” üzenettulajdonság beállítva a karakterlánchoz (https://mzl."
-"la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Nincs „message” üzenettulajdonság beállítva a karakterlánchoz (https://mzl.la/2DSBTjA)."
 
-#: src/messages/manifestjson.js:107 src/messages/manifestjson.js:115
-#: src/messages/manifestjson.js:118 src/messages/manifestjson.js:99
+#: src/messages/manifestjson.js:107 src/messages/manifestjson.js:115 src/messages/manifestjson.js:118 src/messages/manifestjson.js:99
 msgid "The permission type is unsupported."
 msgstr "Az engedélytípus nem támogatott."
 
@@ -263,18 +248,15 @@ msgstr "Ismeretlen engedély."
 
 #: src/messages/manifestjson.js:125
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"További információkért lásd: https://mzl.la/1R1n1t0 (MDN dokumentáció)."
+msgstr "További információkért lásd: https://mzl.la/1R1n1t0 (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:13 src/messages/manifestjson.js:22
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"További információkért lásd: https://mzl.la/1ZOhoEN (MDN dokumentáció)."
+msgstr "További információkért lásd: https://mzl.la/1ZOhoEN (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:154
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr ""
-"További információkért lásd: https://mzl.la/2Qn0fWC (MDN dokumentáció)."
+msgstr "További információkért lásd: https://mzl.la/2Qn0fWC (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:162 src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -285,12 +267,8 @@ msgid "Invalid install origin."
 msgstr "Érvénytelen telepítési eredet."
 
 #: src/messages/manifestjson.js:174
-msgid ""
-"Invalid install origin. A valid origin has - only - a scheme, hostname and "
-"optional port."
-msgstr ""
-"Érvénytelen telepítési eredet. Egy érvényes eredet csak sémát, gépnevet és "
-"portot (nem kötelező) tartalmaz."
+msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
+msgstr "Érvénytelen telepítési eredet. Egy érvényes eredet csak sémát, gépnevet és portot (nem kötelező) tartalmaz."
 
 #: src/messages/manifestjson.js:182
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -298,8 +276,7 @@ msgstr "A manifest.json fájlban szereplő „manifest_version” értéke érv�
 
 #: src/messages/manifestjson.js:185
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"További információkért lásd: https://mzl.la/20PenXl (MDN dokumentáció)."
+msgstr "További információkért lásd: https://mzl.la/20PenXl (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:21
 msgid "The field is invalid."
@@ -370,15 +347,11 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr "A leíróban definiált css fájl nem található."
 
 #: src/messages/manifestjson.js:333
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"A leíróban definiált tartalomparancsfájl nem található itt: „%(path)s”."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "A leíróban definiált tartalomparancsfájl nem található itt: „%(path)s”."
 
 #: src/messages/manifestjson.js:336
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "A leíróban definiált tartalom CSS fájl nem található itt: „%(path)s”. "
 
 #: src/messages/manifestjson.js:350
@@ -386,8 +359,7 @@ msgid "A dictionary file defined in the manifest could not be found."
 msgstr "A leíróban definiált szótárfájl nem található."
 
 #: src/messages/manifestjson.js:354
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "A leíróban definiált szótárfájl nem található itt: „%(path)s”."
 
 #: src/messages/manifestjson.js:366
@@ -395,8 +367,7 @@ msgid "The manifest contains multiple dictionaries."
 msgstr "A leíró több szótárat is tartalmaz."
 
 #: src/messages/manifestjson.js:367
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "Több szótárat is definiált a leíróban, amely nem támogatott."
 
 #: src/messages/manifestjson.js:376
@@ -453,8 +424,7 @@ msgstr "A téma LWT álneve eltávolításra került a Firefox 70-ben."
 
 #: src/messages/manifestjson.js:454
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
-"További információkért lásd: https://mzl.la/2T11Lkc (MDN dokumentáció)."
+msgstr "További információkért lásd: https://mzl.la/2T11Lkc (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:469
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
@@ -481,22 +451,16 @@ msgid "Theme image file has an unsupported mime type"
 msgstr "A téma képfájlja nem támogatott MIME-típussal rendelkezik"
 
 #: src/messages/manifestjson.js:511
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
-"A(z) „%(path)s” helyen lévő képfájl nem támogatott MIME-típussal rendelkezik"
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "A(z) „%(path)s” helyen lévő képfájl nem támogatott MIME-típussal rendelkezik"
 
 #: src/messages/manifestjson.js:525
 msgid "Theme image file mime type does not match its file extension"
 msgstr "A téma képfájljának MIME-típusa nem egyezik a fájlkiterjesztésével"
 
 #: src/messages/manifestjson.js:529
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
-"A(z) „%(path)s” helyen lévő képfájl kiterjesztése nem egyezik a tényleges "
-"„%(mime)s” MIME-típusával."
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "A(z) „%(path)s” helyen lévő képfájl kiterjesztése nem egyezik a tényleges „%(mime)s” MIME-típusával."
 
 #: src/messages/manifestjson.js:543
 msgid "The \"default_locale\" is missing localizations."
@@ -515,12 +479,8 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Az ikonoknak JPG/JPEG, WebP, GIF, PNG vagy SVG fájloknak kell lenniük."
 
 #: src/messages/manifestjson.js:570
-msgid ""
-"\"applications\" property overridden by \"browser_specific_settings\" "
-"property"
-msgstr ""
-"Az „applications” tulajdonságot felülírja a „browser_specific_settings” "
-"tulajdonság"
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
+msgstr "Az „applications” tulajdonságot felülírja a „browser_specific_settings” tulajdonság"
 
 #: src/messages/manifestjson.js:583
 msgid "Empty language directory"
@@ -539,30 +499,20 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Az engedély nem támogatott a megadott minimális Firefox verzióban"
 
 #: src/messages/manifestjson.js:645
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
-msgstr ""
-"A leírókulcs nem támogatott a megadott minimális Firefox for Android "
-"verzióban"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "A leírókulcs nem támogatott a megadott minimális Firefox for Android verzióban"
 
 #: src/messages/manifestjson.js:667
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
-"Az engedély nem támogatott a megadott minimális Firefox for Android verzióban"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgstr "Az engedély nem támogatott a megadott minimális Firefox for Android verzióban"
 
 #: src/messages/manifestjson.js:682
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "Az „addons.mozilla.org” webhelyre való hivatkozás nem engedélyezett"
 
 #: src/messages/manifestjson.js:683
-msgid ""
-"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
-"homepage"
-msgstr ""
-"Az „addons.mozilla.org” oldalra mutató hivatkozások nem használhatók "
-"honlapként"
+msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
+msgstr "Az „addons.mozilla.org” oldalra mutató hivatkozások nem használhatók honlapként"
 
 #: src/messages/manifestjson.js:712
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -570,14 +520,10 @@ msgstr "A bővítményazonosító kötelező a Manifest 3-as és újabb verziói
 
 #: src/messages/manifestjson.js:715
 msgid "See https://mzl.la/3PLZYdo for more information."
-msgstr ""
+msgstr "További információkért lásd: https://mzl.la/3PLZYdo."
 
-#~ msgid ""
-#~ "See https://extensionworkshop.com/documentation/develop/extensions-and-"
-#~ "the-add-on-id/ for more information."
-#~ msgstr ""
-#~ "További információkért lásd a https://extensionworkshop.com/documentation/"
-#~ "develop/extensions-and-the-add-on-id/ oldalt."
+#~ msgid "See https://extensionworkshop.com/documentation/develop/extensions-and-the-add-on-id/ for more information."
+#~ msgstr "További információkért lásd a https://extensionworkshop.com/documentation/develop/extensions-and-the-add-on-id/ oldalt."
 
 #~ msgid "addEventListener` called with truthy fourth argument."
 #~ msgstr "`addEventListener` igaz értékű negyedik argumentummal meghívva."
@@ -589,12 +535,10 @@ msgstr ""
 #~ msgstr "Megsérti a Mozilla használati feltételeit."
 
 #~ msgid "mozIndexedDB has been removed; use indexedDB instead"
-#~ msgstr ""
-#~ "A mozIndexedDB eltávolításra került, használja helyette az indexedDB-t"
+#~ msgstr "A mozIndexedDB eltávolításra került, használja helyette az indexedDB-t"
 
 #~ msgid "mozIndexedDB has been removed; use indexedDB instead."
-#~ msgstr ""
-#~ "A mozIndexedDB eltávolításra került, használja helyette az indexedDB-t."
+#~ msgstr "A mozIndexedDB eltávolításra került, használja helyette az indexedDB-t."
 
 #~ msgid "mozIndexedDB used as an object key/property"
 #~ msgstr "mozIndexedDB objektumkulcsként/tulajdonságként használva"
