@@ -1,6 +1,6 @@
 {
   "name": "addons-linter",
-  "version": "5.4.0",
+  "version": "5.4.1",
   "description": "Mozilla Add-ons Linter",
   "main": "dist/addons-linter.js",
   "bin": {
