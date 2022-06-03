@@ -440,6 +440,7 @@ export default class Linter {
         // list of disabled rules for js scanner
         disabledRules: this.config.disableLinterRules,
         existingFiles: this.io.files,
+        privileged: this.config.privileged,
       });
 
       scanResult = await scanner.scan();

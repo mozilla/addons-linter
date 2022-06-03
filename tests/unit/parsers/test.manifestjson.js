@@ -45,6 +45,8 @@ describe('ManifestJSONParser', () => {
     expect(metadata.manifestVersion).toEqual(null);
     expect(metadata.name).toEqual(null);
     expect(metadata.version).toEqual(null);
+    expect(metadata.experimentApiPaths).toBeInstanceOf(Set);
+    expect(metadata.experimentApiPaths.size).toEqual(0);
   });
 
   it('should see browser_specific_settings as alias of applications', () => {
@@ -4202,5 +4204,151 @@ describe('ManifestJSONParser', () => {
       );
       expect(manifestJSONParser.isValid).toEqual(true);
     });
+  });
+
+  describe('experimentApiPaths', () => {
+    const makeFakeAPI = (props) => {
+      return {
+        fakeApi: {
+          schema: 'path/to/schema.json',
+          ...props,
+        },
+      };
+    };
+
+    it.each([
+      { title: 'undefined apis', experiment_apis: undefined, expected: [] },
+      { title: 'no apis', experiment_apis: null, expected: [] },
+      { title: 'empty apis', experiment_apis: {}, expected: [] },
+      {
+        // This should not be possible in real life but we lint code that isn't
+        // necessarily "production-ready".
+        title: 'api with parent but empty list of paths',
+        experiment_apis: makeFakeAPI({
+          parent: {
+            paths: [],
+          },
+        }),
+        expected: [],
+      },
+      {
+        // This should not be possible in real life but we lint code that isn't
+        // necessarily "production-ready".
+        title: 'api with parent but invalid value in list of paths',
+        experiment_apis: makeFakeAPI({
+          parent: {
+            paths: ['not-an-array'],
+          },
+        }),
+        expected: [],
+      },
+      {
+        // This should not be possible in real life but we lint code that isn't
+        // necessarily "production-ready".
+        title: 'api with parent but empty array in list of paths',
+        experiment_apis: makeFakeAPI({
+          parent: {
+            paths: [[]],
+          },
+        }),
+        expected: [],
+      },
+      {
+        title: 'api with parent',
+        experiment_apis: makeFakeAPI({
+          parent: {
+            paths: [['foo']],
+          },
+        }),
+        expected: ['foo'],
+      },
+      {
+        title: 'api with parent and two paths',
+        experiment_apis: makeFakeAPI({
+          parent: {
+            paths: [['foo'], ['another', 'api', 'namespace']],
+          },
+        }),
+        expected: ['foo', 'another.api.namespace'],
+      },
+      {
+        // This should not be possible in real life but we lint code that isn't
+        // necessarily "production-ready".
+        title: 'api with child but empty list of paths',
+        experiment_apis: makeFakeAPI({
+          child: {
+            paths: [],
+          },
+        }),
+        expected: [],
+      },
+      {
+        // This should not be possible in real life but we lint code that isn't
+        // necessarily "production-ready".
+        title: 'api with child but empty array in list of paths',
+        experiment_apis: makeFakeAPI({
+          child: {
+            paths: [[]],
+          },
+        }),
+        expected: [],
+      },
+      {
+        title: 'api with child',
+        experiment_apis: makeFakeAPI({
+          child: {
+            paths: [['foo']],
+          },
+        }),
+        expected: ['foo'],
+      },
+      {
+        title: 'api with child and two paths',
+        experiment_apis: makeFakeAPI({
+          child: {
+            paths: [['foo'], ['another', 'api', 'namespace']],
+          },
+        }),
+        expected: ['foo', 'another.api.namespace'],
+      },
+      {
+        title: 'api with parent and child',
+        experiment_apis: makeFakeAPI({
+          child: {
+            paths: [['i', 'am', 'the', 'child']],
+          },
+          parent: {
+            paths: [['i', 'am', 'the', 'parent']],
+          },
+        }),
+        expected: ['i.am.the.parent', 'i.am.the.child'],
+      },
+      {
+        title: 'api with parent and child and same path',
+        experiment_apis: makeFakeAPI({
+          child: {
+            paths: [['i', 'am', 'the', 'api']],
+          },
+          parent: {
+            paths: [['i', 'am', 'the', 'api']],
+          },
+        }),
+        expected: ['i.am.the.api'],
+      },
+    ])(
+      'exposes a list of experiment API paths: $title',
+      ({ experiment_apis, expected }) => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({ experiment_apis });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector
+        );
+
+        const { experimentApiPaths } = manifestJSONParser.getMetadata();
+        expect(Array.from(experimentApiPaths)).toEqual(expected);
+      }
+    );
   });
 });

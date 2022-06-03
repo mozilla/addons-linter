@@ -121,4 +121,96 @@ describe('unsupported browser APIs', () => {
     const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(0);
   });
+
+  describe('Experiment APIs', () => {
+    it.each([
+      {
+        title: 'allows known privileged APIs when the extension is privileged',
+        privileged: true,
+        expectedMessage: null,
+      },
+      {
+        title: 'emits a warning when the extension is not privileged',
+        privileged: false,
+        expectedMessage: 'some.experiment is not supported',
+      },
+    ])('$title', async ({ privileged, expectedMessage }) => {
+      const code = 'browser.some.experiment.foo()';
+      const jsScanner = new JavaScriptScanner(code, 'api.js', {
+        addonMetadata: {
+          experimentApiPaths: new Set(['some.experiment']),
+        },
+        privileged,
+      });
+
+      const { linterMessages } = await runJsScanner(jsScanner);
+      expect(linterMessages).toEqual(
+        expectedMessage
+          ? [
+              expect.objectContaining({
+                type: VALIDATION_WARNING,
+                code: 'UNSUPPORTED_API',
+                message: expectedMessage,
+              }),
+            ]
+          : []
+      );
+    });
+
+    it('emits a warning when there is no experiment API path', async () => {
+      const code = 'browser.some.experiment.foo()';
+      const jsScanner = new JavaScriptScanner(code, 'api.js', {
+        addonMetadata: {},
+        privileged: true,
+      });
+
+      const { linterMessages } = await runJsScanner(jsScanner);
+      expect(linterMessages.length).toEqual(1);
+      expect(linterMessages).toEqual([
+        expect.objectContaining({
+          type: VALIDATION_WARNING,
+          code: 'UNSUPPORTED_API',
+          message: `some.experiment is not supported`,
+        }),
+      ]);
+    });
+
+    it('emits a warning when an API is not an experiment APIs', async () => {
+      const code = 'browser.some.experiment.foo()';
+      const jsScanner = new JavaScriptScanner(code, 'api.js', {
+        addonMetadata: {
+          experimentApiPaths: new Set(['unrelated']),
+        },
+        privileged: true,
+      });
+
+      const { linterMessages } = await runJsScanner(jsScanner);
+      expect(linterMessages).toEqual([
+        expect.objectContaining({
+          type: VALIDATION_WARNING,
+          code: 'UNSUPPORTED_API',
+          message: `some.experiment is not supported`,
+        }),
+      ]);
+    });
+
+    it('emits a warning when the API used in the code is unrelated', async () => {
+      const code = 'browser.some.foo()';
+      const jsScanner = new JavaScriptScanner(code, 'api.js', {
+        addonMetadata: {
+          experimentApiPaths: new Set(['some.experiment']),
+        },
+        privileged: true,
+      });
+
+      const { linterMessages } = await runJsScanner(jsScanner);
+      expect(linterMessages).toEqual([
+        expect.objectContaining({
+          type: VALIDATION_WARNING,
+          code: 'UNSUPPORTED_API',
+          message: `some.foo is not supported`,
+        }),
+      ]);
+    });
+  });
 });
