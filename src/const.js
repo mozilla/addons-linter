@@ -250,6 +250,7 @@ export const SCHEMA_KEYWORDS = {
   DEPRECATED: 'deprecated',
   REQUIRED: 'required',
   TYPE: 'type',
+  MIN_PROPERTIES: 'minProperties',
   // Non-standard JSONSchema keywords (defined and used by the Firefox and/or addons-linter).
   ...SCHEMA_KEYWORDS_CUSTOM,
 };

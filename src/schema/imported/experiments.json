@@ -16,6 +16,7 @@
           "additionalProperties": {
             "$ref": "experiments#/types/ExperimentAPI"
           },
+          "minProperties": 1,
           "privileged": true
         }
       }
