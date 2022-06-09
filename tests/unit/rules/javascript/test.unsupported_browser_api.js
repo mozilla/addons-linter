@@ -123,38 +123,17 @@ describe('unsupported browser APIs', () => {
   });
 
   describe('Experiment APIs', () => {
-    it.each([
-      {
-        title: 'allows known privileged APIs when the extension is privileged',
-        privileged: true,
-        expectedMessage: null,
-      },
-      {
-        title: 'emits a warning when the extension is not privileged',
-        privileged: false,
-        expectedMessage: 'some.experiment is not supported',
-      },
-    ])('$title', async ({ privileged, expectedMessage }) => {
-      const code = 'browser.some.experiment.foo()';
+    it('allows known privileged APIs when the extension is privileged', async () => {
+      const code = 'browser.some.name.space.prop()';
       const jsScanner = new JavaScriptScanner(code, 'api.js', {
         addonMetadata: {
-          experimentApiPaths: new Set(['some.experiment']),
+          experimentApiPaths: new Set(['some.name.space']),
         },
-        privileged,
+        privileged: true,
       });
 
       const { linterMessages } = await runJsScanner(jsScanner);
-      expect(linterMessages).toEqual(
-        expectedMessage
-          ? [
-              expect.objectContaining({
-                type: VALIDATION_WARNING,
-                code: 'UNSUPPORTED_API',
-                message: expectedMessage,
-              }),
-            ]
-          : []
-      );
+      expect(linterMessages.length).toEqual(0);
     });
 
     it('emits a warning when there is no experiment API path', async () => {
@@ -170,7 +149,7 @@ describe('unsupported browser APIs', () => {
         expect.objectContaining({
           type: VALIDATION_WARNING,
           code: 'UNSUPPORTED_API',
-          message: `some.experiment is not supported`,
+          message: `some.experiment.foo is not supported`,
         }),
       ]);
     });
@@ -189,7 +168,7 @@ describe('unsupported browser APIs', () => {
         expect.objectContaining({
           type: VALIDATION_WARNING,
           code: 'UNSUPPORTED_API',
-          message: `some.experiment is not supported`,
+          message: `some.experiment.foo is not supported`,
         }),
       ]);
     });
