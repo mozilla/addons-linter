@@ -14,7 +14,7 @@ const rule = {
           const namespace = node.object.property.name;
           const property = node.property.name;
           const api = `${namespace}.${property}`;
-          const { addonMetadata } = context.settings;
+          const { addonMetadata, privileged } = context.settings;
 
           if (hasBrowserApi(namespace, property, addonMetadata)) {
             return;
@@ -25,6 +25,19 @@ const rule = {
               message: REMOVED_MV2_API.messageFormat,
               data: { api },
             });
+            return;
+          }
+
+          if (
+            privileged &&
+            // We should not have to test with `api` but with do because we
+            // don't support nested namespaces yet, which seems common in
+            // existing privileged extensions.
+            //
+            // See: https://github.com/mozilla/addons-linter/issues/4364
+            (addonMetadata?.experimentApiPaths?.has(namespace) ||
+              addonMetadata?.experimentApiPaths?.has(api))
+          ) {
             return;
           }
 

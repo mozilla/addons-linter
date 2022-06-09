@@ -1088,6 +1088,48 @@ export default class ManifestJSONParser extends JSONParser {
     }
   }
 
+  getExperimentApiPaths() {
+    const apiPaths = new Set();
+
+    const { experiment_apis } = this.parsedJSON;
+
+    if (experiment_apis) {
+      // We need to build a list of API "paths" for each registered experimental
+      // API. The data in the `manifest.json` would look like this:
+      //
+      // "experiment_apis": {
+      //   "some-name": {
+      //     "schema": "experiments/some-name/schema.json",
+      //     "parent": {
+      //       "scopes": ["addon_parent"],
+      //       "script": "experiments/some-name/api.js",
+      //       "paths": [["some", "name"]]
+      //     }
+      //   }
+      //
+      // We are interested in the `paths` array (of array), which contains API
+      // "paths". We need to get each entry for each experiment and we build API
+      // "paths" like:
+      //
+      // Set(['some.name'])
+      //
+      // We could have either a "parent" or "child" property for each API, or
+      // both although it is less common.
+      //
+      for (const key of Object.keys(experiment_apis)) {
+        const { child, parent } = experiment_apis[key];
+        const parentPaths = parent?.paths ?? [];
+        const childPaths = child?.paths ?? [];
+
+        [...parentPaths, ...childPaths]
+          .filter((p) => Array.isArray(p) && p.length)
+          .forEach((p) => apiPaths.add(p.join('.')));
+      }
+    }
+
+    return apiPaths;
+  }
+
   getMetadata() {
     return {
       id: this.getAddonId(),
@@ -1099,6 +1141,7 @@ export default class ManifestJSONParser extends JSONParser {
         this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.strict_min_version,
+      experimentApiPaths: this.getExperimentApiPaths(),
     };
   }
 }
