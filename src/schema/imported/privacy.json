@@ -297,7 +297,8 @@
         "nonPersistentCookies": {
           "type": "boolean",
           "default": false,
-          "description": "Whether to create all cookies as nonPersistent (i.e., session) cookies."
+          "description": "Whether to create all cookies as nonPersistent (i.e., session) cookies.",
+          "deprecated": "This property has no effect anymore and its value is always <code>false<code>."
         }
       }
     }

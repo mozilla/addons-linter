@@ -4,7 +4,6 @@
   "permissions": [
     "scripting"
   ],
-  "min_manifest_version": 3,
   "functions": [
     {
       "name": "executeScript",
@@ -217,8 +216,7 @@
           "type": "string",
           "enum": [
             "scripting"
-          ],
-          "min_manifest_version": 3
+          ]
         }
       ]
     }
