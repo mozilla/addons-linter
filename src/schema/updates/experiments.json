@@ -1,0 +1,13 @@
+{
+  "experiments": {
+    "definitions": {
+      "WebExtensionManifest": {
+        "properties": {
+          "experiment_apis": {
+            "minProperties": 1
+          }
+        }
+      }
+    }
+  }
+}

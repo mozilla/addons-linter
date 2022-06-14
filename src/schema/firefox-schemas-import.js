@@ -31,6 +31,8 @@ const UNRECOGNIZED_PROPERTY_REFS = [
   'manifest#/types/UnrecognizedProperty',
 ];
 
+const SKIP_SCHEMAS = ['native_host_manifest.json'];
+
 const schemaRegexes = [
   // eslint-disable-next-line prefer-regex-literals
   new RegExp('browser/components/extensions/schemas/.*\\.json'),
@@ -627,8 +629,6 @@ export function processSchemas(schemas) {
   // $extend to $ref.
   return inner.mapExtendToRef(mergedSchemasByNamespace);
 }
-
-const SKIP_SCHEMAS = ['native_host_manifest.json'];
 
 function readSchema(basePath, file) {
   return commentJson.parse(
