@@ -15,10 +15,10 @@ export default class Dispensary {
       this._cachedHashes = {};
 
       this._getCachedHashes().forEach((hashEntry) => {
-       const [hash, library] = hashEntry.split(/\s+/);
+        const [hash, library] = hashEntry.split(/\s+/);
 
-       this._cachedHashes[hash] = library;
-     });
+        this._cachedHashes[hash] = library;
+      });
     }
 
     const contentsHash = createHash(contents);
