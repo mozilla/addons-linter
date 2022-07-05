@@ -39,20 +39,20 @@ function isRelevantError({
 
   const { minimum, maximum } = allowedManifestVersionsRange;
 
-  const errorMinManifestVersion =
+  let errorMinManifestVersion =
     error.params?.min_manifest_version ??
     error.parentSchema?.min_manifest_version ??
     minimum;
 
-  let errorMaxManifestVersion =
+  const errorMaxManifestVersion =
     error.params?.max_manifest_version ??
     error.parentSchema?.max_manifest_version ??
     maximum;
 
   // Make sure the computed error max version is always >= to the computed min version.
-  errorMaxManifestVersion = Math.max(
-    errorMaxManifestVersion,
-    errorMinManifestVersion
+  errorMinManifestVersion = Math.min(
+    errorMinManifestVersion,
+    errorMaxManifestVersion
   );
 
   const isTopLevelManifestKey =
@@ -140,7 +140,8 @@ function filterErrors(
 }
 
 function getManifestVersionsRange(validatorOptions) {
-  const { minManifestVersion, maxManifestVersion } = validatorOptions;
+  const { minManifestVersion, maxManifestVersion, addonManifestVersion } =
+    validatorOptions;
 
   const minimum =
     minManifestVersion == null
@@ -151,6 +152,8 @@ function getManifestVersionsRange(validatorOptions) {
     maxManifestVersion == null
       ? getDefaultConfigValue('max-manifest-version')
       : maxManifestVersion;
+
+  const addon = addonManifestVersion == null ? minimum : addonManifestVersion;
 
   // Make sure the version range is valid, if it is not:
   // raise an explicit error.
@@ -163,7 +166,7 @@ function getManifestVersionsRange(validatorOptions) {
     );
   }
 
-  return { minimum, maximum };
+  return { minimum, maximum, addon };
 }
 
 export class SchemaValidator {
@@ -409,9 +412,55 @@ export class SchemaValidator {
   }
 
   _compileAddonValidator(validator) {
-    const { minimum, maximum } = this.allowedManifestVersionsRange;
+    const { minimum, addon, maximum } = this.allowedManifestVersionsRange;
 
-    const schemaData = deepPatch(this.schemaObject, {
+    const replacer = (key, value) => {
+      if (Array.isArray(value)) {
+        const patchedValue = value.filter((item) => {
+          let includeItem = true;
+          if (
+            item?.min_manifest_version &&
+            minimum < item.min_manifest_version
+          ) {
+            includeItem =
+              item.min_manifest_version >= minimum &&
+              item.min_manifest_version <= maximum &&
+              item.min_manifest_version <= addon;
+          }
+          if (
+            item?.max_manifest_version &&
+            maximum > item.max_manifest_version
+          ) {
+            includeItem =
+              item.max_manifest_version >= minimum &&
+              item.max_manifest_version <= maximum &&
+              item.max_manifest_version >= addon;
+          }
+
+          return includeItem;
+        });
+        return patchedValue;
+      }
+      return value;
+    };
+
+    // Omit from the manifest schema data all entries that includes a
+    // min/max_manifest_version which is outside of the minimum
+    // and maximum manifest_version currently allowed per validator
+    // config and if they do not apply to the addon manifest_version.
+    //
+    // NOTE: the rest of the schema data isn't filtered based on the
+    // current manifest version.
+    //
+    // TODO(https://github.com/mozilla/addons-linter/issues/4512):
+    // this shouldn't be necessary anymore if we do generate two sets
+    // of schema data (one for MV2 and one for MV3) as part of
+    // importing and normalizing the JSONSchema data from Firefox.
+    const patchedSchemaObject = JSON.parse(
+      JSON.stringify(this.schemaObject, replacer, 2)
+    );
+
+    const schemaData = deepPatch(patchedSchemaObject, {
       types: {
         ManifestBase: {
           properties: {
@@ -518,6 +567,12 @@ export class SchemaValidator {
         }
 
         if (!res) {
+          // If the addon manifest is out of an enum values min/max manifest version range,
+          // don't report an additional validation error for the mix/max_manifest_version
+          // keyword validation function.
+          if (schema.enum) {
+            return true;
+          }
           validate.errors = [
             {
               keyword,
@@ -702,44 +757,56 @@ export function getValidator(validatorOptions) {
 }
 
 export const validateAddon = (manifestData, validatorOptions = {}) => {
-  const validator = getValidator(validatorOptions);
-  const isValid = validator.validateAddon(manifestData);
-  validateAddon.errors = filterErrors(validator.validateAddon.errors, {
+  const validator =
+    validatorOptions.validator ??
+    getValidator({
+      ...validatorOptions,
+      addonManifestVersion: manifestData?.manifest_version,
+    });
+  let isValid = validator.validateAddon(manifestData);
+  const errors = filterErrors(validator.validateAddon.errors, {
     manifest_version: manifestData.manifest_version,
     allowedManifestVersionsRange: validator.allowedManifestVersionsRange,
   });
+  isValid = errors?.length > 0 ? isValid : true;
+  validateAddon.errors = errors;
+
   return isValid;
 };
 
 export const validateStaticTheme = (manifestData, validatorOptions = {}) => {
   const validator = getValidator(validatorOptions);
-  const isValid = validator.validateStaticTheme(manifestData);
-  validateStaticTheme.errors = filterErrors(
-    validator.validateStaticTheme.errors
-  );
+  let isValid = validator.validateStaticTheme(manifestData);
+  const errors = filterErrors(validator.validateStaticTheme.errors);
+  isValid = errors?.length > 0 ? isValid : true;
+  validateStaticTheme.errors = errors;
   return isValid;
 };
 
 export const validateLangPack = (manifestData, validatorOptions = {}) => {
   const validator = getValidator(validatorOptions);
-  const isValid = validator.validateLangPack(manifestData);
-  validateLangPack.errors = filterErrors(validator.validateLangPack.errors);
+  let isValid = validator.validateLangPack(manifestData);
+  const errors = filterErrors(validator.validateLangPack.errors);
+  isValid = errors?.length > 0 ? isValid : true;
+  validateLangPack.errors = errors;
   return isValid;
 };
 
 export const validateDictionary = (manifestData, validatorOptions = {}) => {
   const validator = getValidator(validatorOptions);
-  const isValid = validator.validateDictionary(manifestData);
-  validateDictionary.errors = filterErrors(validator.validateDictionary.errors);
+  let isValid = validator.validateDictionary(manifestData);
+  const errors = filterErrors(validator.validateDictionary.errors);
+  isValid = errors?.length > 0 ? isValid : true;
+  validateDictionary.errors = errors;
   return isValid;
 };
 
 export const validateSitePermission = (manifestData, validatorOptions = {}) => {
   const validator = getValidator(validatorOptions);
-  const isValid = validator.validateSitePermission(manifestData);
-  validateSitePermission.errors = filterErrors(
-    validator.validateSitePermission.errors
-  );
+  let isValid = validator.validateSitePermission(manifestData);
+  const errors = filterErrors(validator.validateSitePermission.errors);
+  isValid = errors?.length > 0 ? isValid : true;
+  validateSitePermission.errors = errors;
   return isValid;
 };
 
@@ -748,7 +815,9 @@ export const validateLocaleMessages = (
   validatorOptions = {}
 ) => {
   const validator = getValidator(validatorOptions);
-  const isValid = validator.validateLocale(localeMessagesData);
-  validateLocaleMessages.errors = filterErrors(validator.validateLocale.errors);
+  let isValid = validator.validateLocale(localeMessagesData);
+  const errors = filterErrors(validator.validateLocale.errors);
+  isValid = errors?.length > 0 ? isValid : true;
+  validateLocaleMessages.errors = errors;
   return isValid;
 };
