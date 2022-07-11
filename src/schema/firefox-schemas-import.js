@@ -703,17 +703,14 @@ function loadSchemasFromFile(basePath) {
 
 export function importSchemas(firefoxPath, ourPath, importedPath) {
   const rawSchemas = loadSchemasFromFile(firefoxPath);
-  const ourSchemas = {
-    ...readSchema(ourPath, 'manifest.json'),
-    ...readSchema(ourPath, 'contextMenus.json'),
-    // The "action" API namespace is currently part of browser_action.json
-    // along with "browserAction", the following is needed to make sure we
-    // will normalize and import the "action" API namespace in a file named
-    // "src/schema/imported/action.json" (similar to what contextMenus.json
-    // does for the "contextMenus" API namespace which is defined along with
-    // the "menus" API namespaces).
-    ...readSchema(ourPath, 'action.json'),
-  };
+  // Somehow we need a different shape for `ourSchemas` (that isn't an array of
+  // schemas but an object) so let's do it!
+  const ourSchemas = loadSchemasFromFile(ourPath).reduce((acc, { schema }) => {
+    return {
+      ...acc,
+      ...schema,
+    };
+  }, {});
   const processedSchemas = processSchemas(rawSchemas);
   const updatedSchemas = inner.updateWithAddonsLinterData(
     processedSchemas,
