@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/mozilla/addons-linter.svg?style=svg)](https://circleci.com/gh/mozilla/addons-linter) [![codecov](https://codecov.io/gh/mozilla/addons-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/mozilla/addons-linter) [![Dependency Status](https://david-dm.org/mozilla/addons-linter.svg)](https://david-dm.org/mozilla/addons-linter) [![devDependency Status](https://david-dm.org/mozilla/addons-linter/dev-status.svg)](https://david-dm.org/mozilla/addons-linter#info=devDependencies) [![npm version](https://badge.fury.io/js/addons-linter.svg)](https://badge.fury.io/js/addons-linter)
+[![CircleCI](https://circleci.com/gh/mozilla/addons-linter.svg?style=svg)](https://circleci.com/gh/mozilla/addons-linter) [![codecov](https://codecov.io/gh/mozilla/addons-linter/branch/master/graph/badge.svg)](https://codecov.io/gh/mozilla/addons-linter) [![npm version](https://badge.fury.io/js/addons-linter.svg)](https://badge.fury.io/js/addons-linter)
 
 # addons-linter
 
