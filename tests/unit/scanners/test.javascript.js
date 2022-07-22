@@ -454,6 +454,15 @@ describe('JavaScript Scanner', () => {
       expect(jsScanner.sourceType).toEqual('module');
     });
 
+    it('should detect module (import.meta in .js file)', async () => {
+      const code = 'const url = import.meta.url;';
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await runJsScanner(jsScanner);
+
+      expect(jsScanner.sourceType).toEqual('module');
+    });
+
     it('should detect script', async () => {
       const code = oneLine`
         eval('foo');
