@@ -277,7 +277,7 @@ This is the (manual) process to update the "dispensary" libraries:
 
 Note: `hashes.txt` will be embedded into the addons-linter bundle.
 
-The `bin/build-doc` command updates the list of release pages in the `README.md` file based on the `src/libraries.json` file.
+The `scripts/update-dispensary-doc` command updates the list of release pages above based on the `src/dispensary/libraries.json` file.
 
 [new release]: https://github.com/mozilla/addons-linter/releases/new
 [semver]: http://semver.org/

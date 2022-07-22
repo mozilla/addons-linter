@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const path = require('path');
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 const replaceInFile = require('replace-in-file');
 
 const PROJECT_ROOT = path.resolve(path.join(__dirname, '..'));
