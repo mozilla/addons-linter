@@ -244,20 +244,20 @@ export default class JavaScriptScanner {
     return 'script';
   }
 
-  /*
-    Analyze the source-code by naively parsing the source code manually and
-    checking for module syntax errors in order to determine the source type of
-    the file.
-
-    This function returns an object with the source type (`script` or `module`)
-    and a non-null parsing error object when parsing has failed with the default
-    source type. The parsing error object contains the `error` message and the
-    source `type`.
-  */
-  detectSourceType(filename) {
+  detectSourceType() {
+    /*
+     * Analyze the source-code by naively parsing the source code manually and
+     * checking for module syntax errors and/or some features in the source code
+     * in order to determine the source type of the file.
+  
+     * This function returns an object with the source type (`script` or
+     * `module`) and a non-null parsing error object when parsing has failed with
+     * the default source type. The parsing error object contains the `error`
+     * message and the source `type`.
+    */
     // Default options taken from eslint/lib/linter:parse
     const parserOptions = {
-      filePath: filename,
+      filePath: this.filename,
       sourceType: 'module',
       ecmaVersion: ECMA_VERSION,
     };
@@ -269,9 +269,10 @@ export default class JavaScriptScanner {
 
     try {
       const ast = espree.parse(this.code, parserOptions);
-      detected.sourceType = filename.endsWith('.mjs')
-        ? 'module'
-        : this._getSourceType(ast);
+      detected.sourceType =
+        this.filename.endsWith('.mjs') || this.code.includes('import.meta')
+          ? 'module'
+          : this._getSourceType(ast);
     } catch (exc) {
       const line = exc.lineNumber || '(unknown)';
       const column = exc.column || '(unknown)';

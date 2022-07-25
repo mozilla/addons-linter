@@ -454,6 +454,15 @@ describe('JavaScript Scanner', () => {
       expect(jsScanner.sourceType).toEqual('module');
     });
 
+    it('should detect module (import.meta in .js file)', async () => {
+      const code = 'const url = import.meta.url;';
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await runJsScanner(jsScanner);
+
+      expect(jsScanner.sourceType).toEqual('module');
+    });
+
     it('should detect script', async () => {
       const code = oneLine`
         eval('foo');
@@ -484,7 +493,7 @@ describe('JavaScript Scanner', () => {
       `;
 
       const jsScanner = new JavaScriptScanner(code, 'code.js');
-      const detectedSourceType = jsScanner.detectSourceType('code.js');
+      const detectedSourceType = jsScanner.detectSourceType();
 
       expect(detectedSourceType.sourceType).toEqual('script');
       expect(detectedSourceType.parsingError).toEqual({
@@ -497,7 +506,7 @@ describe('JavaScript Scanner', () => {
       const code = `(function () {})();`;
       const jsScanner = new JavaScriptScanner(code, 'code.js');
 
-      const detectedSourceType = jsScanner.detectSourceType('code.js');
+      const detectedSourceType = jsScanner.detectSourceType();
 
       expect(detectedSourceType.sourceType).toEqual('script');
       expect(detectedSourceType.parsingError).toEqual(null);
@@ -508,7 +517,7 @@ describe('JavaScript Scanner', () => {
       const jsScanner = new JavaScriptScanner(code, 'code.js');
       sinon.stub(jsScanner, '_getSourceType').throws(new Error('some error'));
 
-      const detectedSourceType = jsScanner.detectSourceType('code.js');
+      const detectedSourceType = jsScanner.detectSourceType();
 
       expect(detectedSourceType.sourceType).toEqual('script');
       expect(detectedSourceType.parsingError).toEqual({
