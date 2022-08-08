@@ -765,3 +765,12 @@ export function mozillaAddonsPermissionRequired(error) {
     file: MANIFEST_JSON,
   };
 }
+
+export const HIDDEN_NO_ACTION = {
+  code: 'HIDDEN_NO_ACTION',
+  message: i18n._('Cannot use actions in hidden add-ons.'),
+  description: i18n._(oneLine`The hidden and browser_action/page_action (or
+    action in Manifest Version 3 and above) properties are mutually
+    exclusive.`),
+  file: MANIFEST_JSON,
+};
