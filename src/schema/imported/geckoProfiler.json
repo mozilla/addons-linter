@@ -171,7 +171,6 @@
         "screenshots",
         "seqstyle",
         "stackwalk",
-        "jstracer",
         "jsallocations",
         "nostacksampling",
         "preferencereads",
@@ -185,6 +184,7 @@
         "markersallthreads",
         "unregisteredthreads",
         "processcpu",
+        "power",
         "responsiveness"
       ]
     },

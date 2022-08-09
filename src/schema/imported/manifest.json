@@ -341,7 +341,7 @@
                           "matches": {
                             "type": "array",
                             "items": {
-                              "$ref": "#/types/MatchPatternRestricted"
+                              "$ref": "#/types/MatchPattern"
                             }
                           }
                         },
