@@ -122,7 +122,7 @@ Rules are sorted by severity.
 | `NO_PLACEHOLDER_CONTENT`                                | error    | Placeholder is missing the content                                                              |
 | `JSON_INVALID`                                          | error    | JSON is not well formed                                                                         |
 | `JSON_DUPLICATE_KEY`                                    | error    | Duplicate key in JSON                                                                           |
-| `MANIFEST_VERSION_INVALID`                              | error    | manifest_version in manifest.json is not valid.                                                 |
+| `MANIFEST_VERSION_INVALID`                              | error    | manifest_version in manifest.json is not valid                                                  |
 | `PROP_NAME_MISSING`                                     | error    | name property missing from manifest.json                                                        |
 | `PROP_NAME_INVALID`                                     | error    | name property is invalid in manifest.json                                                       |
 | `PROP_VERSION_MISSING`                                  | error    | version property missing from manifest.json                                                     |
@@ -138,7 +138,8 @@ Rules are sorted by severity.
 | `IGNORED_APPLICATIONS_PROPERTY`                         | warning  | Usage of both `applications` and `browser_specific_settings` properties                         |
 | `RESTRICTED_HOMEPAGE_URL`                               | error    | Linking to addons.mozilla.org in `homepage_url` or `developer.url` is not allowed               |
 | `RESTRICTED_PERMISSION`                                 | error    | A permission requires "strict_min_version" to be set to a specific Firefox version              |
-| `EXTENSION_ID_REQUIRED`                                 | error    | The extension ID is mandatory for Manifest Version 3 (and above) extensions.                    |
+| `EXTENSION_ID_REQUIRED`                                 | error    | The extension ID is mandatory for Manifest Version 3 (and above) extensions                     |
+| `HIDDEN_NO_ACTION`                                      | error    | The `hidden` and `browser_action`/`page_action` (or `action`) properties are mutually exclusive |
 
 ### Static Theme / manifest.json
 

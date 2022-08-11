@@ -102,6 +102,137 @@ describe('ManifestJSONParser', () => {
     expect(warnings[0].code).toEqual('IGNORED_APPLICATIONS_PROPERTY');
   });
 
+  it.each([
+    {
+      title: 'hidden and browser_action',
+      manifest: {
+        hidden: true,
+        browser_action: {},
+      },
+      privileged: true,
+      expectError: true,
+    },
+    {
+      title: 'hidden and action',
+      manifest: {
+        manifest_version: 3,
+        hidden: true,
+        action: {},
+      },
+      privileged: true,
+      expectError: true,
+    },
+    {
+      title: 'hidden and page_action',
+      manifest: {
+        hidden: true,
+        page_action: {},
+      },
+      privileged: true,
+      expectError: true,
+    },
+    {
+      title: 'hidden, browser_action and page_action',
+      manifest: {
+        hidden: true,
+        page_action: {},
+        browser_action: {},
+      },
+      privileged: true,
+      expectError: true,
+    },
+    {
+      title: 'hidden, action and page_action',
+      manifest: {
+        manifest_version: 3,
+        hidden: true,
+        action: {},
+        page_action: {},
+      },
+      privileged: true,
+      expectError: true,
+    },
+    {
+      title: 'hidden and browser_action but not privileged',
+      manifest: {
+        hidden: true,
+        browser_action: {},
+      },
+      privileged: false,
+      expectError: false,
+    },
+    {
+      title: 'hidden and page_action but not privileged',
+      manifest: {
+        hidden: true,
+        page_action: {},
+      },
+      privileged: false,
+      expectError: false,
+    },
+    {
+      title: 'hidden but no action',
+      manifest: {
+        hidden: true,
+      },
+      privileged: true,
+      expectError: false,
+    },
+    {
+      title: 'browser action but no hidden prop',
+      manifest: {
+        browser_action: {},
+      },
+      privileged: true,
+      expectError: false,
+    },
+    {
+      title: 'browser action but not hidden',
+      manifest: {
+        hidden: false,
+        browser_action: {},
+      },
+      privileged: true,
+      expectError: false,
+    },
+    {
+      title: 'page action but not hidden',
+      manifest: {
+        hidden: false,
+        page_action: {},
+      },
+      privileged: true,
+      expectError: false,
+    },
+  ])(
+    'should report an error when hidden and actions are defined - $title',
+    ({ manifest, privileged, expectError }) => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON(manifest);
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { schemaValidatorOptions: { privileged, maxManifestVersion: 3 } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(!expectError);
+
+      if (expectError) {
+        // eslint-disable-next-line jest/no-conditional-expect
+        expect(manifestJSONParser.isValid).toEqual(false);
+        // eslint-disable-next-line jest/no-conditional-expect
+        expect(addonLinter.collector.errors[0]).toMatchObject(
+          expect.objectContaining({
+            code: 'HIDDEN_NO_ACTION',
+          })
+        );
+      } else {
+        // eslint-disable-next-line jest/no-conditional-expect
+        expect(addonLinter.collector.errors).toEqual([]);
+      }
+    }
+  );
+
   describe('id', () => {
     it('should return the correct id', () => {
       const addonLinter = new Linter({ _: ['bar'] });

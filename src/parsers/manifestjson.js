@@ -730,6 +730,26 @@ export default class ManifestJSONParser extends JSONParser {
 
     this.validateRestrictedPermissions();
     this.validateExtensionID();
+    this.validateHiddenAddon();
+  }
+
+  validateHiddenAddon() {
+    // Only privileged add-ons can use the `hidden` manifest property.
+    if (!this.isPrivilegedAddon) {
+      return;
+    }
+
+    if (
+      this.parsedJSON.hidden &&
+      ('action' in this.parsedJSON ||
+        'browser_action' in this.parsedJSON ||
+        // Note: When this was introduced, it was stricter than the Firefox
+        // side because Firefox didn't restrict `page_action` in Bug 1781998.
+        'page_action' in this.parsedJSON)
+    ) {
+      this.collector.addError(messages.HIDDEN_NO_ACTION);
+      this.isValid = false;
+    }
   }
 
   validateRestrictedPermissions() {
