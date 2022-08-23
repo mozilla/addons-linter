@@ -1019,7 +1019,13 @@ export default class ManifestJSONParser extends JSONParser {
     const validProtocols = ['ftp:', 'http:', 'https:', 'ws:', 'wss:'];
     // The order is important here, 'default-src' needs to be before
     // 'script-src' to ensure it can overwrite default-src security policies
-    const candidates = ['default-src', 'script-src', 'worker-src'];
+    const candidates = [
+      'default-src',
+      'script-src',
+      'script-src-elem',
+      'script-src-attr',
+      'worker-src',
+    ];
 
     let insecureSrcDirective = false;
     for (let i = 0; i < candidates.length; i++) {
@@ -1030,6 +1036,11 @@ export default class ManifestJSONParser extends JSONParser {
 
         // If the 'default-src' is insecure, check whether the 'script-src'
         // makes it secure, ie 'script-src: self;'
+        //
+        // NOTE: this is not yet considering script-src-elem and script-src-attr,
+        // and it can't be extended to them as is, each of them on their
+        // own would not fully cover an insecure src directive and they would
+        // need to be appropriately combined with other directives.
         if (
           insecureSrcDirective &&
           candidate === 'script-src' &&
