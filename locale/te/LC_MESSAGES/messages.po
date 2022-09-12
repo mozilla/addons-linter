@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2021-03-24 13:13+0000\n"
+"PO-Revision-Date: 2022-09-12 13:34+0000\n"
 "Last-Translator: వీవెన్ <veeven@gmail.com>\n"
 "Language-Team: none\n"
 "Language: te\n"
@@ -75,9 +75,7 @@ msgid "This API has not been implemented by Firefox."
 msgstr "ఈ API Firefox ద్వారా అమలు చేయబడలేదు."
 
 #: src/messages/javascript.js:124
-msgid ""
-"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
-"property)"
+msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
 msgstr ""
 
 #: src/messages/javascript.js:133
@@ -115,8 +113,7 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr ""
 
 #: src/messages/javascript.js:188
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "పేర్కొన్న ఆండ్రాయిడ్ కొరకు Firefox కనిష్ఠ వెర్షనులో ఈ API అమలుచేయబడలేదు"
 
 #: src/messages/javascript.js:24
@@ -236,12 +233,10 @@ msgid "Translation string is missing the message property"
 msgstr "అనువాద పదబంధానికి సందేశపు లక్షణం లేదు"
 
 #: src/messages/locale-messagesjson.js:8
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr ""
 
-#: src/messages/manifestjson.js:107 src/messages/manifestjson.js:115
-#: src/messages/manifestjson.js:118 src/messages/manifestjson.js:99
+#: src/messages/manifestjson.js:107 src/messages/manifestjson.js:115 src/messages/manifestjson.js:118 src/messages/manifestjson.js:99
 msgid "The permission type is unsupported."
 msgstr "ఆ అనుమతి రకానికి తోడ్పాటు లేదు."
 
@@ -272,14 +267,11 @@ msgid "Invalid host permission."
 msgstr "తెలియని అనుమతి."
 
 #: src/messages/manifestjson.js:171
-#, fuzzy
 msgid "Invalid install origin."
-msgstr "తెలియని అనుమతి."
+msgstr "చెల్లని స్థాపన మూలం."
 
 #: src/messages/manifestjson.js:174
-msgid ""
-"Invalid install origin. A valid origin has - only - a scheme, hostname and "
-"optional port."
+msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
 msgstr ""
 
 #: src/messages/manifestjson.js:182
@@ -359,14 +351,11 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr ""
 
 #: src/messages/manifestjson.js:333
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:336
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:350
@@ -374,8 +363,7 @@ msgid "A dictionary file defined in the manifest could not be found."
 msgstr ""
 
 #: src/messages/manifestjson.js:354
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:366
@@ -383,8 +371,7 @@ msgid "The manifest contains multiple dictionaries."
 msgstr "మానిఫెస్ట్ బహుళ నిఘంటువులను కలిగి ఉంది."
 
 #: src/messages/manifestjson.js:367
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "మానిఫెస్ట్‌లో బహుళ నిఘంటువులు నిర్వచించబడ్డాయి, దీనికి తోడ్పాటు లేదు."
 
 #: src/messages/manifestjson.js:376
@@ -468,8 +455,7 @@ msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
 #: src/messages/manifestjson.js:511
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:525
@@ -477,9 +463,7 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr "అలంకారపు బొమ్మ ఫైలు యొక్క మైమ్ రకం దాని ఎక్స్‌టెన్షనుతో సరిపోలలేదు"
 
 #: src/messages/manifestjson.js:529
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
 msgstr ""
 
 #: src/messages/manifestjson.js:543
@@ -499,9 +483,7 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "ప్రతీకాలు JPG/JPEG, WebP, GIF, PNG లేదా SVGలలో ఒకటయి ఉండాలి."
 
 #: src/messages/manifestjson.js:570
-msgid ""
-"\"applications\" property overridden by \"browser_specific_settings\" "
-"property"
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
 msgstr ""
 
 #: src/messages/manifestjson.js:583
@@ -521,14 +503,11 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "పేర్కొన్న కనీస Firefox వెర్షనులో అనుమతికి తోడ్పాటు లేదు"
 
 #: src/messages/manifestjson.js:645
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr "పేర్కొన్న ఆండ్రాయిడ్ కొరకు Firefox కనిష్ట వెర్షనులో మానిఫెస్ట్ కీ తోడ్పాటు లేదు"
 
 #: src/messages/manifestjson.js:667
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
 #: src/messages/manifestjson.js:682
@@ -536,9 +515,7 @@ msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr ""
 
 #: src/messages/manifestjson.js:683
-msgid ""
-"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
-"homepage"
+msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
 msgstr ""
 
 #: src/messages/manifestjson.js:712
