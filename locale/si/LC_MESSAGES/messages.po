@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-21 18:41+0000\n"
+"PO-Revision-Date: 2022-09-21 18:52+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -364,19 +364,19 @@ msgstr ""
 
 #: src/messages/manifestjson.js:366
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "ව්‍යක්තයෙහි ශබ්දකෝෂ කිහිපයක් අඩංගුය."
 
 #: src/messages/manifestjson.js:367
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "ව්‍යක්තයෙහි ශබ්දකෝෂ කිහිපයක් නිරූපිතයි, එයට සහාය නොදක්වයි."
 
 #: src/messages/manifestjson.js:376
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "ව්‍යක්තයෙහි ශබ්දකෝෂ වස්තුවක් ඇත, නමුත් එය හිස් ය."
 
 #: src/messages/manifestjson.js:379
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "ශබ්දකෝෂ වස්තුවක් ව්‍යක්තයෙහි දක්වා ඇත, නමුත් එය හිස් ය."
 
 #: src/messages/manifestjson.js:388
 msgid "The manifest contains a dictionary but no id property."
@@ -412,15 +412,15 @@ msgstr "හානි වූ රූප ගොනුවකි"
 
 #: src/messages/manifestjson.js:437
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "\"%(path)s\" හි අපේක්‍ෂිත නිරූපක ගොනුව හානි වී ඇත"
 
 #: src/messages/manifestjson.js:446
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "මෙම ගුණාංගය අත්හැර ඇත."
 
 #: src/messages/manifestjson.js:453
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "ෆයර්ෆොක්ස් 70 හි මෙම තේමාවේ LWT අපනාමය ඉවත් කර ඇත."
 
 #: src/messages/manifestjson.js:454
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
