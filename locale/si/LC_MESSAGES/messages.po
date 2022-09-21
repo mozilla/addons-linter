@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-21 18:12+0000\n"
+"PO-Revision-Date: 2022-09-21 18:21+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -68,7 +68,7 @@ msgstr ""
 
 #: src/messages/javascript.js:117
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} සහාය නොදක්වයි"
 
 #: src/messages/javascript.js:118
 msgid "This API has not been implemented by Firefox."
@@ -92,11 +92,11 @@ msgstr ""
 
 #: src/messages/javascript.js:17
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "අන්තර්ගත අත්පත් ගොනුව හමු නොවිණි."
 
 #: src/messages/javascript.js:174
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "ෆයර්ෆොක්ස් අනුවාදය {{minVersion}} සඳහා {{api}} සහාය නොදක්වයි"
 
 #: src/messages/javascript.js:177
 msgid "This API is not implemented by the given minimum Firefox version"
@@ -104,7 +104,7 @@ msgstr ""
 
 #: src/messages/javascript.js:18
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "අන්තර්ගත අත්පත් ගොනුව හමු නොවිණි"
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
@@ -136,7 +136,7 @@ msgstr ""
 
 #: src/messages/javascript.js:85
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "තහනම් තෙවන පාර්ශ්ව JS එකතුවකි"
 
 #: src/messages/javascript.js:92
 msgid "Unadvised 3rd-party JS library"
@@ -144,7 +144,7 @@ msgstr ""
 
 #: src/messages/javascript.js:99
 msgid "Known JS library detected"
-msgstr ""
+msgstr "දන්නා JS එකතුවක් අනාවරණය විය"
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
@@ -156,11 +156,11 @@ msgstr ""
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "ඔබගේ JSON වලංගු නොවේ."
 
 #: src/messages/json.js:8
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "ඔබගේ JSON ගොනුව විග්‍රහ කළ නොහැකිය."
 
 #: src/messages/layout.js:107
 msgid "Reserved filename found."
@@ -172,11 +172,11 @@ msgstr ""
 
 #: src/messages/layout.js:39
 msgid "manifest.json was not found"
-msgstr ""
+msgstr "manifest.json හමු නොවිණි"
 
 #: src/messages/layout.js:48
 msgid "File is too large to parse."
-msgstr ""
+msgstr "විග්‍රහ කිරීමට ගොනුව විශාල වැඩිය."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -192,7 +192,7 @@ msgstr ""
 
 #: src/messages/layout.js:8
 msgid "Package contains duplicate entries"
-msgstr ""
+msgstr "ඇසුරුමෙහි අනුපිටපත් නිවේශිත තිබේ"
 
 #: src/messages/layout.js:80
 msgid "Flagged file type found"
@@ -236,15 +236,15 @@ msgstr ""
 
 #: src/messages/manifestjson.js:107 src/messages/manifestjson.js:115 src/messages/manifestjson.js:118 src/messages/manifestjson.js:99
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "සහාය නොදක්වන අවසර වර්ගයකි."
 
 #: src/messages/manifestjson.js:12
 msgid "The field is required."
-msgstr ""
+msgstr "ක්‍ෂේත්‍රය අවශ්‍යයි."
 
 #: src/messages/manifestjson.js:124 src/messages/manifestjson.js:153
 msgid "Unknown permission."
-msgstr ""
+msgstr "නොදන්නා අවසරයකි."
 
 #: src/messages/manifestjson.js:125
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
@@ -476,7 +476,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:562
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr ""
+msgstr "නිරූපක JPG/JPEG, WebP, GIF, PNG හෝ SVG වලින් එකක් විය යුතුය."
 
 #: src/messages/manifestjson.js:570
 msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
@@ -484,11 +484,11 @@ msgstr "\"යෙදුම්\" ගුණාංගය \"browser_specific_settings
 
 #: src/messages/manifestjson.js:583
 msgid "Empty language directory"
-msgstr ""
+msgstr "හිස් භාෂා නාමාවලිය"
 
 #: src/messages/manifestjson.js:585
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "\"%(path)s\" හි messages.json ගොනුව මඟහැරී ඇත"
 
 #: src/messages/manifestjson.js:601
 msgid "Manifest key not supported by the specified minimum Firefox version"
