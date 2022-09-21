@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-21 18:02+0000\n"
+"PO-Revision-Date: 2022-09-21 18:12+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -480,7 +480,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:570
 msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
-msgstr ""
+msgstr "\"යෙදුම්\" ගුණාංගය \"browser_specific_settings\" මගින් අභිබවයි"
 
 #: src/messages/manifestjson.js:583
 msgid "Empty language directory"
@@ -492,19 +492,19 @@ msgstr ""
 
 #: src/messages/manifestjson.js:601
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "නිරූපිත ඇන්ඩ්‍රොයිඩ් සඳහා ෆයර්ෆොක්ස් අවම අනුවාදයට ව්‍යක්ත යතුර සහාය නොදක්වයි"
 
 #: src/messages/manifestjson.js:623
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "නිරූපිත ඇන්ඩ්‍රොයිඩ් සඳහා ෆයර්ෆොක්ස් අවම අනුවාදයට අවසරය සහාය නොදක්වයි"
 
 #: src/messages/manifestjson.js:645
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "නිරූපිත ඇන්ඩ්‍රොයිඩ් සඳහා ෆයර්ෆොක්ස් අවම අනුවාදයට ව්‍යක්ත යතුර සහාය නොදක්වයි"
 
 #: src/messages/manifestjson.js:667
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "නිරූපිත ඇන්ඩ්‍රොයිඩ් සඳහා ෆයර්ෆොක්ස් අවම අනුවාදයට අවසරය සහාය නොදක්වයි"
 
 #: src/messages/manifestjson.js:682
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
