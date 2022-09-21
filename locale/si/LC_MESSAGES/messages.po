@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-21 16:51+0000\n"
+"PO-Revision-Date: 2022-09-21 18:02+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -508,15 +508,15 @@ msgstr ""
 
 #: src/messages/manifestjson.js:682
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr ""
+msgstr "\"addons.mozilla.org\" වෙත සබැඳීමට ඉඩ නොදේ"
 
 #: src/messages/manifestjson.js:683
 msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr ""
+msgstr "මුල් පිටුව සඳහා \"addons.mozilla.org\" වෙත යොමු කරන සබැඳි භාවිතා කිරීමට ඉඩ නොදේ"
 
 #: src/messages/manifestjson.js:712
 msgid "The extension ID is required in Manifest Version 3 and above."
-msgstr ""
+msgstr "අනුවාදය 3 හා නව ව්‍යක්ත සඳහා දිගු හැඳු. අවශ්‍ය වේ."
 
 #: src/messages/manifestjson.js:715
 msgid "See https://mzl.la/3PLZYdo for more information."
