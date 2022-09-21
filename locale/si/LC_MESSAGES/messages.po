@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-21 18:33+0000\n"
+"PO-Revision-Date: 2022-09-21 18:41+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -88,7 +88,7 @@ msgstr "ෆයර්ෆොක්ස් මගින් මෙම යෙ.ක්�
 
 #: src/messages/javascript.js:146
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "\"{{api}}\" අත්හැර හෝ ක්‍රියාවට නංවා නැත"
 
 #: src/messages/javascript.js:17
 msgid "Content script file could not be found."
@@ -248,19 +248,19 @@ msgstr "නොදන්නා අවසරයකි."
 
 #: src/messages/manifestjson.js:125
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "තව විස්තර සඳහා https://mzl.la/1R1n1t0 (MDN ප්‍රලේඛනය) බලන්න."
 
 #: src/messages/manifestjson.js:13 src/messages/manifestjson.js:22
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
+msgstr "තව විස්තර සඳහා https://mzl.la/1ZOhoEN (MDN ප්‍රලේඛනය) බලන්න."
 
 #: src/messages/manifestjson.js:154
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr ""
+msgstr "තව විස්තර සඳහා https://mzl.la/2Qn0fWC (MDN ප්‍රලේඛනය) බලන්න."
 
 #: src/messages/manifestjson.js:162 src/messages/manifestjson.js:165
 msgid "Invalid host permission."
-msgstr ""
+msgstr "සත්කාරක අවසරය වලංගු නොවේ."
 
 #: src/messages/manifestjson.js:171
 msgid "Invalid install origin."
@@ -276,7 +276,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:185
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "තව විස්තර සඳහා https://mzl.la/20PenXl (MDN ප්‍රලේඛනය) බලන්න."
 
 #: src/messages/manifestjson.js:21
 msgid "The field is invalid."
@@ -288,7 +288,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:220
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "තව විස්තර සඳහා http://mzl.la/1STmr48 (MDN ප්‍රලේඛනය) බලන්න."
 
 #: src/messages/manifestjson.js:228
 msgid "The \"version\" property must be a string."
@@ -296,7 +296,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:229 src/messages/manifestjson.js:238
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr ""
+msgstr "තව විස්තර සඳහා http://mzl.la/1kXIADa (MDN ප්‍රලේඛනය) බලන්න."
 
 #: src/messages/manifestjson.js:237
 msgid "The \"version\" property uses a Firefox-specific format."
@@ -304,7 +304,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:246
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "\"update_url\" සඳහා ඉඩ නොදේ."
 
 #: src/messages/manifestjson.js:256
 msgid "The \"update_url\" property is not used by Firefox."
@@ -312,7 +312,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:265
 msgid "\"strict_max_version\" not required."
-msgstr ""
+msgstr "\"strict_max_version\" අවශ්‍ය නොවේ."
 
 #: src/messages/manifestjson.js:284
 msgid "An icon defined in the manifest could not be found in the package."
@@ -408,7 +408,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:435
 msgid "Corrupt image file"
-msgstr ""
+msgstr "හානි වූ රූප ගොනුවකි"
 
 #: src/messages/manifestjson.js:437
 msgid "Expected icon file at \"%(path)s\" is corrupted"
@@ -424,7 +424,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:454
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
+msgstr "තව විස්තර සඳහා https://mzl.la/2T11Lkc (MDN ප්‍රලේඛනය) බලන්න."
 
 #: src/messages/manifestjson.js:469
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
@@ -432,7 +432,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:480
 msgid "Corrupted theme image file"
-msgstr ""
+msgstr "හානි වූ තේමා රූප ගොනුවකි"
 
 #: src/messages/manifestjson.js:482
 msgid "Theme image file at \"%(path)s\" is corrupted"
