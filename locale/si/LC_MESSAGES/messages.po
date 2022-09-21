@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-21 18:21+0000\n"
+"PO-Revision-Date: 2022-09-21 18:33+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -52,15 +52,15 @@ msgstr ""
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
-msgstr ""
+msgstr "ඔබගේ FTL වලංගු නොවේ."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "ඔබගේ FTL ගොනුව විග්‍රහ කළ නොහැකිය."
 
 #: src/messages/html.js:14
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "එක්කහු ප්‍රතිපත්තිවලට අනුව දුරස්ථ අත්පත් සඳහා ඉඩ නොදේ."
 
 #: src/messages/html.js:7
 msgid "Inline scripts blocked by default"
@@ -72,19 +72,19 @@ msgstr "{{api}} සහාය නොදක්වයි"
 
 #: src/messages/javascript.js:118
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "ෆයර්ෆොක්ස් සඳහා මෙම යෙ.ක්‍ර.මු. ක්‍රියාවට නංවා නැත."
 
 #: src/messages/javascript.js:124
 msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr ""
+msgstr "ව්‍යක්ත අනුවාදය 3 (`manifest_version` ගුණාංගය) හි \"{{api}}\" ඉවත් කර ඇත"
 
 #: src/messages/javascript.js:133
 msgid "{{api}} is deprecated"
-msgstr ""
+msgstr "{{api}} අත්හැර ඇත"
 
 #: src/messages/javascript.js:134
 msgid "This API has been deprecated by Firefox."
-msgstr ""
+msgstr "ෆයර්ෆොක්ස් මගින් මෙම යෙ.ක්‍ර.මු. අත්හැර ඇත."
 
 #: src/messages/javascript.js:146
 msgid "\"{{api}}\" is deprecated or unimplemented"
