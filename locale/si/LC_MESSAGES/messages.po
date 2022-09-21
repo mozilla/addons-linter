@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-21 18:52+0000\n"
+"PO-Revision-Date: 2022-09-21 18:53+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -428,7 +428,7 @@ msgstr "තව විස්තර සඳහා https://mzl.la/2T11Lkc (MDN ප�
 
 #: src/messages/manifestjson.js:469
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr ""
+msgstr "\"%(type)s\" සඳහා තේමා රූපය \"%(path)s\" හි සොයාගත නොහැකි විය"
 
 #: src/messages/manifestjson.js:480
 msgid "Corrupted theme image file"
@@ -436,7 +436,7 @@ msgstr "හානි වූ තේමා රූප ගොනුවකි"
 
 #: src/messages/manifestjson.js:482
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "\"%(path)s\" හි තේමා රූප ගොනුව හානි වී ඇත"
 
 #: src/messages/manifestjson.js:493
 msgid "Theme image file has an unsupported file extension"
