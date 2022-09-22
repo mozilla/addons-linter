@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-22 06:18+0000\n"
+"PO-Revision-Date: 2022-09-22 06:25+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -320,19 +320,19 @@ msgstr "ව්‍යක්තයෙහි දක්වා තිබෙන නි
 
 #: src/messages/manifestjson.js:288
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "\"%(path)s\" හි නිරූපකය හමු නොවිණි."
 
 #: src/messages/manifestjson.js:303
 msgid "A background script defined in the manifest could not be found."
-msgstr ""
+msgstr "ව්‍යක්තයෙහි දක්වා තිබෙන පසුබිම් අත්පතක් හමු නොවිණි."
 
 #: src/messages/manifestjson.js:306
 msgid "A background page defined in the manifest could not be found."
-msgstr ""
+msgstr "ව්‍යක්තයෙහි දක්වා තිබෙන පසුබිම් පිටුවක් හමු නොවිණි."
 
 #: src/messages/manifestjson.js:311
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "\"%(path)s\" හි පසුබිම් අත්පත හමු නොවිණි."
 
 #: src/messages/manifestjson.js:312
 msgid "Background page could not be found at \"%(path)s\"."
