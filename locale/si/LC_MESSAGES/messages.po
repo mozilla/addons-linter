@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-21 18:53+0000\n"
+"PO-Revision-Date: 2022-09-22 05:21+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -48,7 +48,7 @@ msgstr ""
 
 #: src/messages/css.js:8
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "CSS පද ගැළපුම් දෝෂයක් හමු විය"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
