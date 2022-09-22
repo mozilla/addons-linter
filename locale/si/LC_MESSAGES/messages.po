@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-22 07:36+0000\n"
+"PO-Revision-Date: 2022-09-22 07:42+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -380,11 +380,11 @@ msgstr "ශබ්දකෝෂ වස්තුවක් ව්‍යක්තය�
 
 #: src/messages/manifestjson.js:388
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "ව්‍යක්තයෙහි ශබ්දකෝෂයක් අඩංගු නමුත් හැඳු. ගුණාංගය නැත."
 
 #: src/messages/manifestjson.js:389
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "ව්‍යක්තයෙහි ශබ්දකෝෂයක් හමු වූ නමුත් හැඳු. සකසා නැත."
 
 #: src/messages/manifestjson.js:399
 msgid "Forbidden content found in add-on."
@@ -452,15 +452,15 @@ msgstr "තේමා රූප ගොනුවේ සහාය නොදක්�
 
 #: src/messages/manifestjson.js:511
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "\"%(path)s\" හි තේමා රූප ගොනුවෙහි සහාය නොදක්වන \"%(mime)s\" mime වර්ගය ඇත"
 
 #: src/messages/manifestjson.js:525
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "තේමා රූප ගොනුවේ mime වර්ගය එහි ගොනු දිගුව සමඟ නොගැළපේ"
 
 #: src/messages/manifestjson.js:529
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr ""
+msgstr "\"%(path)s\" හි තේමා රූප ගොනු දිගුව එහි සැබෑ \"%(mime)s\" mime වර්ගයට නොගැළපේ"
 
 #: src/messages/manifestjson.js:543
 msgid "The \"default_locale\" is missing localizations."
