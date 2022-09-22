@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-22 06:09+0000\n"
+"PO-Revision-Date: 2022-09-22 06:13+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -268,7 +268,7 @@ msgstr "ස්ථාපන ප්‍රභවය වලංගු නොවේ."
 
 #: src/messages/manifestjson.js:174
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
-msgstr ""
+msgstr "ස්ථාපන ප්‍රභවය වලංගු නොවේ. වලංගු ප්‍රභව වන්නේ - පරික්‍රමයක්, සත්කාරක නාමයක් සහ විකල්ප තොටක් පමණි."
 
 #: src/messages/manifestjson.js:182
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
