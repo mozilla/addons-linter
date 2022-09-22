@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-22 05:52+0000\n"
+"PO-Revision-Date: 2022-09-22 06:09+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -148,7 +148,7 @@ msgstr "දන්නා JS එකතුවක් අනාවරණය විය
 
 #: src/messages/json.js:13
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "ඔබගේ JSON හි අවහිර අදහස් අඩංගු වේ."
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
@@ -204,11 +204,11 @@ msgstr "ඇසුරුම දැනටමත් අත්සන් කර ඇ�
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "ෆයර්ෆොක්ස් එක්කහු මගින් කාසි කැණීමට ඉඩ නොදේ."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "තන්තු නාමය නිශ්චිත පණිවිඩයක් සඳහා වෙන් කර ඇත"
 
 #: src/messages/locale-messagesjson.js:30
 msgid "Placeholder for message is missing"
@@ -228,7 +228,7 @@ msgstr ""
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "පරිවර්තන තන්තුවට පණිවිඩ ගුණාංගය මඟහැරී ඇත"
 
 #: src/messages/locale-messagesjson.js:8
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
@@ -264,7 +264,7 @@ msgstr "සත්කාරක අවසරය වලංගු නොවේ."
 
 #: src/messages/manifestjson.js:171
 msgid "Invalid install origin."
-msgstr ""
+msgstr "ස්ථාපන ප්‍රභවය වලංගු නොවේ."
 
 #: src/messages/manifestjson.js:174
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
