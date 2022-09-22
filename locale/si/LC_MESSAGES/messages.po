@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-22 05:43+0000\n"
+"PO-Revision-Date: 2022-09-22 05:52+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -132,7 +132,7 @@ msgstr ""
 
 #: src/messages/javascript.js:77
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "document.write භාවිතය නිර්දේශ නොකෙරේ."
 
 #: src/messages/javascript.js:85
 msgid "Banned 3rd-party JS library"
@@ -152,7 +152,7 @@ msgstr ""
 
 #: src/messages/json.js:21
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "JSON ගොනු තුළ යතුරු අනුපිටපත් තිබීමට නොහැකිය."
 
 #: src/messages/json.js:7
 msgid "Your JSON is not valid."
@@ -164,11 +164,11 @@ msgstr "ඔබගේ JSON ගොනුව විග්‍රහ කළ නොහ
 
 #: src/messages/layout.js:107
 msgid "Reserved filename found."
-msgstr ""
+msgstr "රක්‍ෂිත ගොනු නාමයක් හමු විය."
 
 #: src/messages/layout.js:34
 msgid "We were unable to decompress the zip file."
-msgstr ""
+msgstr "zip ගොනුව දිග හැරීමට නොහැකි විය."
 
 #: src/messages/layout.js:39
 msgid "manifest.json was not found"
@@ -200,7 +200,7 @@ msgstr ""
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
-msgstr ""
+msgstr "ඇසුරුම දැනටමත් අත්සන් කර ඇත"
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -232,7 +232,7 @@ msgstr ""
 
 #: src/messages/locale-messagesjson.js:8
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
+msgstr "තන්තුවක් සඳහා \"message\" පණිවිඩ ගුණාංගයක් සකසා නැත (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:107 src/messages/manifestjson.js:115 src/messages/manifestjson.js:118 src/messages/manifestjson.js:99
 msgid "The permission type is unsupported."
