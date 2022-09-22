@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-22 05:33+0000\n"
+"PO-Revision-Date: 2022-09-22 05:43+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -388,23 +388,23 @@ msgstr ""
 
 #: src/messages/manifestjson.js:399
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "එක්කහුව තුළ තහනම් අන්තර්ගතයක් හමු විය."
 
 #: src/messages/manifestjson.js:400
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "මෙම එක්කහුවෙහි තහනම් අන්තර්ගතයක් අඩංගුය."
 
 #: src/messages/manifestjson.js:408
 msgid "Icons must be square."
-msgstr ""
+msgstr "නිරූපකය සතරැස් විය යුතුය."
 
 #: src/messages/manifestjson.js:409
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "\"%(path)s\" හි නිරූපකය සතරැස් විය යුතුය."
 
 #: src/messages/manifestjson.js:420
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "නිරූපකයේ ප්‍රමාණය ව්‍යක්තයට නොගැළපේ."
 
 #: src/messages/manifestjson.js:435
 msgid "Corrupt image file"
@@ -440,11 +440,11 @@ msgstr "\"%(path)s\" හි තේමා රූප ගොනුව හානි 
 
 #: src/messages/manifestjson.js:493
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "තේමා රූප ගොනුවේ සහාය නොදක්වන ගොනු දිගුවක් ඇත"
 
 #: src/messages/manifestjson.js:495
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "\"%(path)s\" හි තේමා රූප ගොනුව සඳහා සහාය නොදක්වන ගොනු දිගුවක් ඇත"
 
 #: src/messages/manifestjson.js:509
 msgid "Theme image file has an unsupported mime type"
@@ -464,15 +464,15 @@ msgstr ""
 
 #: src/messages/manifestjson.js:543
 msgid "The \"default_locale\" is missing localizations."
-msgstr ""
+msgstr "\"default_locale\" හි දේශීයකරණ මඟහැරී ඇත."
 
 #: src/messages/manifestjson.js:552
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr ""
+msgstr "\"default_locale\" මඟහැරී ඇත නමුත් \"_locales\" පවතී."
 
 #: src/messages/manifestjson.js:561
 msgid "Unsupported image extension"
-msgstr ""
+msgstr "සහාය නොදක්වන රූප දිගුවකි"
 
 #: src/messages/manifestjson.js:562
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
