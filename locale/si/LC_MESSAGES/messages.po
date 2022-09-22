@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-22 05:21+0000\n"
+"PO-Revision-Date: 2022-09-22 05:33+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -100,7 +100,7 @@ msgstr "ෆයර්ෆොක්ස් අනුවාදය {{minVersion}} ස�
 
 #: src/messages/javascript.js:177
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr ""
+msgstr "මෙම යෙ.ක්‍ර.මු. දී ඇති අවම ෆයර්ෆොක්ස් අනුවාදය ක්‍රියාවට නංවා නැත"
 
 #: src/messages/javascript.js:18
 msgid "Content script file could not be found"
@@ -108,23 +108,23 @@ msgstr "අන්තර්ගත අත්පත් ගොනුව හමු �
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "ඇන්ඩ්‍රොයිඩ් සඳහා ෆයර්ෆොක්ස් අනුවාදය {{minVersion}} හි {{api}} සහාය නොදක්වයි"
 
 #: src/messages/javascript.js:188
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
+msgstr "මෙම යෙ.ක්‍ර.මු. දී ඇති අවම ඇන්ඩ්‍රොයිඩ් සඳහා ෆයර්ෆොක්ස් අනුවාදය ක්‍රියාවට නංවා නැත"
 
 #: src/messages/javascript.js:24
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "අන්තර්ගත අත්පත් ගොනුවේ නම හිස් නොවිය යුතුය."
 
 #: src/messages/javascript.js:25
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "අන්තර්ගත අත්පත් ගොනුවේ නම හිස් නොවිය යුතුය"
 
 #: src/messages/javascript.js:7
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "ජාවාස්ක්‍රිප්ට් පද ගැළපුම් දෝෂයකි"
 
 #: src/messages/javascript.js:70
 msgid "Unexpected global passed as an argument"
