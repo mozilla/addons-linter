@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-22 06:13+0000\n"
+"PO-Revision-Date: 2022-09-22 06:18+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -272,7 +272,7 @@ msgstr "ස්ථාපන ප්‍රභවය වලංගු නොවේ. �
 
 #: src/messages/manifestjson.js:182
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "manifest.json හි \"manifest_version\" වලංගු අගයක් නොවේ"
 
 #: src/messages/manifestjson.js:185
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -284,7 +284,7 @@ msgstr "ක්‍ෂේත්‍රය වලංගු නොවේ."
 
 #: src/messages/manifestjson.js:219
 msgid "The \"name\" property must be a string."
-msgstr ""
+msgstr "\"name\" ගුණාංගය තන්තුවක් විය යුතුය."
 
 #: src/messages/manifestjson.js:220
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -292,7 +292,7 @@ msgstr "තව විස්තර සඳහා http://mzl.la/1STmr48 (MDN ප්
 
 #: src/messages/manifestjson.js:228
 msgid "The \"version\" property must be a string."
-msgstr ""
+msgstr "\"version\" ගුණාංගය තන්තුවක් විය යුතුය."
 
 #: src/messages/manifestjson.js:229 src/messages/manifestjson.js:238
 msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
@@ -300,7 +300,7 @@ msgstr "තව විස්තර සඳහා http://mzl.la/1kXIADa (MDN ප්
 
 #: src/messages/manifestjson.js:237
 msgid "The \"version\" property uses a Firefox-specific format."
-msgstr ""
+msgstr "\"version\" ගුණාංගය ෆයර්ෆොක්ස්-විශේෂී ආකෘතියක් භාවිතා කරයි."
 
 #: src/messages/manifestjson.js:246
 msgid "\"update_url\" is not allowed."
@@ -308,7 +308,7 @@ msgstr "\"update_url\" සඳහා ඉඩ නොදේ."
 
 #: src/messages/manifestjson.js:256
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "\"update_url\" ගුණාංගය ෆයර්ෆොක්ස් සඳහා භාවිතා නොකෙරේ."
 
 #: src/messages/manifestjson.js:265
 msgid "\"strict_max_version\" not required."
@@ -316,7 +316,7 @@ msgstr "\"strict_max_version\" අවශ්‍ය නොවේ."
 
 #: src/messages/manifestjson.js:284
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
+msgstr "ව්‍යක්තයෙහි දක්වා තිබෙන නිරූපකයක් ඇසුරුම තුළ හමු නොවිණි."
 
 #: src/messages/manifestjson.js:288
 msgid "Icon could not be found at \"%(path)s\"."
