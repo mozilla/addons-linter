@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-22 06:25+0000\n"
+"PO-Revision-Date: 2022-09-22 07:36+0000\n"
 "Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
@@ -336,31 +336,31 @@ msgstr "\"%(path)s\" හි පසුබිම් අත්පත හමු න�
 
 #: src/messages/manifestjson.js:312
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "\"%(path)s\" හි පසුබිම් පිටුව හමු නොවිණි."
 
 #: src/messages/manifestjson.js:327
 msgid "A content script defined in the manifest could not be found."
-msgstr ""
+msgstr "ව්‍යක්තයෙහි දක්වා තිබෙන අන්තර්ගත අත්පතක් හමු නොවිණි."
 
 #: src/messages/manifestjson.js:328
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
+msgstr "ව්‍යක්තයෙහි දක්වා තිබෙන අන්තර්ගත අත්පතක css ගොනුවක් හමු නොවිණි."
 
 #: src/messages/manifestjson.js:333
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "ව්‍යක්තයෙහි දක්වා තිබෙන අන්තර්ගත අත්පත, \"%(path)s\" හි හමු නොවිණි."
 
 #: src/messages/manifestjson.js:336
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "ව්‍යක්තයෙහි දක්වා තිබෙන අන්තර්ගත අත්පතක css ගොනුවක්, \"%(path)s\" හි හමු නොවිණි."
 
 #: src/messages/manifestjson.js:350
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr ""
+msgstr "ව්‍යක්තයෙහි දක්වා තිබෙන ශබ්දකෝෂ ගොනුවක් හමු නොවිණි."
 
 #: src/messages/manifestjson.js:354
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "ව්‍යක්තයෙහි දක්වා තිබෙන ශබ්දකෝෂ ගොනුව, \"%(path)s\" හි හමු නොවිණි."
 
 #: src/messages/manifestjson.js:366
 msgid "The manifest contains multiple dictionaries."
@@ -448,7 +448,7 @@ msgstr "\"%(path)s\" හි තේමා රූප ගොනුව සඳහා 
 
 #: src/messages/manifestjson.js:509
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "තේමා රූප ගොනුවේ සහාය නොදක්වන mime වර්ගයක් ඇත"
 
 #: src/messages/manifestjson.js:511
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
