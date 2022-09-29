@@ -3622,7 +3622,7 @@ describe('ManifestJSONParser', () => {
       // data in case a new prop breaks one of the test cases below. In case of
       // failure we want to double-check if we would need to special case the
       // new cases or just add them to the list of expected ones that follows.
-      keys: ['browser_specific_settings'],
+      keys: [],
     };
 
     const usesArrayValueForFirefoxAndroidCompat = {
