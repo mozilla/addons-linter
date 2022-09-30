@@ -147,6 +147,7 @@ describe('unsupported browser APIs', () => {
       expect(linterMessages).toEqual(
         expectedMessage
           ? [
+              // eslint-disable-next-line jest/no-conditional-expect
               expect.objectContaining({
                 type: VALIDATION_WARNING,
                 code: 'UNSUPPORTED_API',
