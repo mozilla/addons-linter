@@ -1,3 +1,4 @@
+/* eslint jest/no-conditional-expect: 0 */
 import fs from 'fs';
 
 import { oneLine } from 'common-tags';
@@ -218,16 +219,13 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(!expectError);
 
       if (expectError) {
-        // eslint-disable-next-line jest/no-conditional-expect
         expect(manifestJSONParser.isValid).toEqual(false);
-        // eslint-disable-next-line jest/no-conditional-expect
         expect(addonLinter.collector.errors[0]).toMatchObject(
           expect.objectContaining({
             code: 'HIDDEN_NO_ACTION',
           })
         );
       } else {
-        // eslint-disable-next-line jest/no-conditional-expect
         expect(addonLinter.collector.errors).toEqual([]);
       }
     }
@@ -1245,7 +1243,6 @@ describe('ManifestJSONParser', () => {
           warning.code !==
           messages.KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION
         ) {
-          // eslint-disable-next-line jest/no-conditional-expect
           expect(warning.code).toEqual(
             messages.KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION
           );
@@ -1273,7 +1270,6 @@ describe('ManifestJSONParser', () => {
       let fxaIncompatCount = 0;
       for (const warning of addonLinter.collector.warnings) {
         if (warning.code !== messages.KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION) {
-          // eslint-disable-next-line jest/no-conditional-expect
           expect(warning.code).toEqual(
             messages.KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION
           );
@@ -3646,15 +3642,12 @@ describe('ManifestJSONParser', () => {
         const { support } = prop.__compat;
 
         if (usesArrayValueForFirefoxDesktopCompat.keys.includes(key)) {
-          // eslint-disable-next-line jest/no-conditional-expect
           expect(Array.isArray(support.firefox)).toEqual(true);
 
           support.firefox.forEach((entry) => {
-            // eslint-disable-next-line jest/no-conditional-expect
             expect(entry).toHaveProperty('version_added');
           });
         } else {
-          // eslint-disable-next-line jest/no-conditional-expect
           expect(support.firefox).toHaveProperty('version_added');
         }
 
@@ -3676,15 +3669,12 @@ describe('ManifestJSONParser', () => {
         const { support } = prop.__compat;
 
         if (usesArrayValueForFirefoxDesktopCompat.keys.includes(key)) {
-          // eslint-disable-next-line jest/no-conditional-expect
           expect(Array.isArray(support.firefox)).toEqual(true);
 
           support.firefox.forEach((entry) => {
-            // eslint-disable-next-line jest/no-conditional-expect
             expect(entry).toHaveProperty('version_added');
           });
         } else {
-          // eslint-disable-next-line jest/no-conditional-expect
           expect(support.firefox).toHaveProperty('version_added');
         }
 
@@ -3699,15 +3689,12 @@ describe('ManifestJSONParser', () => {
                 subKey
               )
             ) {
-              // eslint-disable-next-line jest/no-conditional-expect
               expect(Array.isArray(subSupport.firefox_android)).toEqual(true);
 
               subSupport.firefox_android.forEach((entry) => {
-                // eslint-disable-next-line jest/no-conditional-expect
                 expect(entry).toHaveProperty('version_added');
               });
             } else {
-              // eslint-disable-next-line jest/no-conditional-expect
               expect(subSupport.firefox_android).toHaveProperty(
                 'version_added'
               );

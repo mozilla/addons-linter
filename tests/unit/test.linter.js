@@ -1752,7 +1752,7 @@ describe('Linter.run()', () => {
         disableXpiAutoclose: false,
       });
 
-      await expect(addonLinter.run({ _Xpi: FakeXpi })).rejects.toThrowError(
+      await expect(addonLinter.run({ _Xpi: FakeXpi })).rejects.toThrow(
         /Selected file\(s\) not found/
       );
 
@@ -1766,7 +1766,7 @@ describe('Linter.run()', () => {
         disableXpiAutoclose: true,
       });
 
-      await expect(addonLinter.run({ _Xpi: FakeXpi })).rejects.toThrowError(
+      await expect(addonLinter.run({ _Xpi: FakeXpi })).rejects.toThrow(
         /Selected file\(s\) not found/
       );
 
