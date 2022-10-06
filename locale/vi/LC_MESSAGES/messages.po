@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-06-23 01:25+0000\n"
+"PO-Revision-Date: 2022-10-06 10:18+0000\n"
 "Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
@@ -216,15 +216,15 @@ msgstr "Trình giữ chỗ cho tin nhắn bị thiếu"
 
 #: src/messages/locale-messagesjson.js:31
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "Placeholder được sử dụng trong tin nhắn không được xác định."
 
 #: src/messages/locale-messagesjson.js:36
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "Tên của placeholder chứa ký tự không hợp lệ"
 
 #: src/messages/locale-messagesjson.js:43
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "Placeholder thiếu thuộc tính content"
 
 #: src/messages/locale-messagesjson.js:7
 msgid "Translation string is missing the message property"
