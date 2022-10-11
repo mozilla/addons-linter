@@ -1,6 +1,5 @@
 /* eslint-disable import/namespace */
 import path from 'path';
-import { readdirSync, existsSync, statSync } from 'fs';
 
 import RJSON from 'relaxed-json';
 import { oneLine } from 'common-tags';
@@ -673,42 +672,49 @@ export default class ManifestJSONParser extends JSONParser {
       }
     }
 
-    if (!this.parsedJSON.default_locale && this.io && this.io.files) {
-      const matchRx = /^_locales\/.*?\/messages.json$/;
+    if (this?.io?.files) {
       const fileList = Object.keys(this.io.files);
+      const localeDirRe = new RegExp(`^${LOCALES_DIRECTORY}/(.*?)/`);
+      const localeFileRe = new RegExp(
+        `^${LOCALES_DIRECTORY}/.*?/${MESSAGES_JSON}$`
+      );
+
+      const seen = [];
+      const errors = [];
+      let hasValidLocaleFiles = false;
       for (let i = 0; i < fileList.length; i++) {
-        const filePath = fileList[i];
-        if (filePath.match(matchRx)) {
-          this.collector.addError(messages.NO_DEFAULT_LOCALE);
-          this.isValid = false;
-          break;
+        const matches = fileList[i].match(localeDirRe);
+        hasValidLocaleFiles =
+          hasValidLocaleFiles || fileList[i].match(localeFileRe);
+
+        if (
+          matches &&
+          !fileList[i].endsWith(`/${MESSAGES_JSON}`) &&
+          // Make sure we do not report the same locale multiple times given
+          // that we scan all files in all directories.
+          !seen.includes(matches[1])
+        ) {
+          errors.push(
+            messages.noMessagesFileInLocales(
+              path.join(LOCALES_DIRECTORY, matches[1])
+            )
+          );
+          seen.push(matches[1]);
         }
       }
-    }
 
-    if (this.parsedJSON.default_locale && this.io.path) {
-      const rootPath = path.join(this.io.path, LOCALES_DIRECTORY);
-      if (existsSync(rootPath)) {
-        readdirSync(rootPath).forEach((langDir) => {
-          if (statSync(path.join(rootPath, langDir)).isDirectory()) {
-            const filePath = path.join(
-              LOCALES_DIRECTORY,
-              langDir,
-              MESSAGES_JSON
-            );
-
-            // Convert filename to unix path separator before
-            // searching it into the scanned files map.
-            if (!this.io.files[upath.toUnix(filePath)]) {
-              this.collector.addError(
-                messages.noMessagesFileInLocales(
-                  path.join(LOCALES_DIRECTORY, langDir)
-                )
-              );
-              this.isValid = false;
-            }
-          }
-        });
+      // When there is no default locale, we do not want to emit errors for
+      // missing locale files because we ignore those files.
+      if (!this.parsedJSON.default_locale) {
+        if (hasValidLocaleFiles) {
+          this.collector.addError(messages.NO_DEFAULT_LOCALE);
+          this.isValid = false;
+        }
+      } else if (errors.length > 0) {
+        for (const error of errors) {
+          this.collector.addError(error);
+        }
+        this.isValid = false;
       }
     }
 
