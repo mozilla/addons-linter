@@ -1930,6 +1930,8 @@ describe('ManifestJSONParser', () => {
           { io: { files } }
         );
         expect(manifestJSONParser.isValid).toEqual(true);
+        const { errors } = addonLinter.collector;
+        expect(errors).toEqual([]);
       });
     });
   });
@@ -3416,16 +3418,23 @@ describe('ManifestJSONParser', () => {
   });
 
   describe('locales', () => {
-    it('error if messages.json is  missing in language directory', () => {
+    it('emits an error when messages.json is missing in language directory', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         default_locale: 'en',
       });
       const directory = {
-        path: 'tests/fixtures/locales/',
         files: {
+          // Currently ignored because there is no other files in this
+          // directory and the XPI IO reader does not add trailing slashes,
+          // even for directories.
+          '_locales/.git': { size: 0 },
           '_locales/en/messages.json': { size: 1000 },
           '_locales/de/messages.json': { size: 1120 },
+          '_locales/hi/README.md': { size: 0 },
+          '_locales/_locales/.gitkeep': { size: 0 },
+          '_locales/.github/CODEOWNERS': { size: 1 },
+          '_locales/.github/workflows/jsonlint.yml': { size: 1 },
         },
       };
 
@@ -3434,18 +3443,41 @@ describe('ManifestJSONParser', () => {
         addonLinter.collector,
         { io: directory }
       );
+
       expect(manifestJSONParser.isValid).toEqual(false);
+
       const { errors } = addonLinter.collector;
-      expect(errors[0].code).toEqual(messages.NO_MESSAGES_FILE_IN_LOCALES);
+      expect(errors.length).toEqual(3);
+      expect(errors[0]).toEqual(
+        expect.objectContaining({
+          code: messages.NO_MESSAGES_FILE_IN_LOCALES,
+          description: expect.stringMatching(`file missing in "_locales/hi"`),
+        })
+      );
+      expect(errors[1]).toEqual(
+        expect.objectContaining({
+          code: messages.NO_MESSAGES_FILE_IN_LOCALES,
+          description: expect.stringMatching(
+            `file missing in "_locales/_locales"`
+          ),
+        })
+      );
+      expect(errors[2]).toEqual(
+        expect.objectContaining({
+          code: messages.NO_MESSAGES_FILE_IN_LOCALES,
+          description: expect.stringMatching(
+            `file missing in "_locales/.github"`
+          ),
+        })
+      );
     });
 
-    it('error if messages.json is  not missing in language directory', () => {
+    it('does not emit an error when messages.json is not missing in language directory', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         default_locale: 'en',
       });
       const directory = {
-        path: 'tests/fixtures/locales/',
         files: {
           '_locales/en/messages.json': { size: 1000 },
           '_locales/de/messages.json': { size: 1120 },
@@ -3460,7 +3492,7 @@ describe('ManifestJSONParser', () => {
       );
       expect(manifestJSONParser.isValid).toEqual(true);
       const { errors } = addonLinter.collector;
-      expect(errors.length).toEqual(0);
+      expect(errors).toEqual([]);
     });
   });
 
