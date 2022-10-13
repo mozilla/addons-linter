@@ -151,9 +151,8 @@
       ]
     },
     {
-      "name": "checkDeepEq",
+      "name": "assertDeepEq",
       "type": "function",
-      "unsupported": true,
       "allowAmbiguousOptionalArguments": true,
       "parameters": [
         {
@@ -161,6 +160,11 @@
         },
         {
           "name": "actual"
+        },
+        {
+          "type": "string",
+          "name": "message",
+          "optional": true
         }
       ]
     },

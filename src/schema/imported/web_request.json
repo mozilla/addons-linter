@@ -1742,18 +1742,30 @@
             "$ref": "#/types/CertificateInfo"
           }
         },
+        "overridableErrorCategory": {
+          "description": "The type of certificate error that was overridden for this connection, if any.",
+          "type": "string",
+          "enum": [
+            "trust_error",
+            "domain_mismatch",
+            "expired_or_not_yet_valid"
+          ]
+        },
         "isDomainMismatch": {
           "description": "The domain name does not match the certificate domain.",
-          "type": "boolean"
-        },
-        "isExtendedValidation": {
-          "type": "boolean"
+          "type": "boolean",
+          "deprecated": "Please use $(ref:SecurityInfo.overridableErrorCategory)."
         },
         "isNotValidAtThisTime": {
           "description": "The certificate is either expired or is not yet valid.  See <code>CertificateInfo.validity</code> for start and end dates.",
-          "type": "boolean"
+          "type": "boolean",
+          "deprecated": "Please use $(ref:SecurityInfo.overridableErrorCategory)."
         },
         "isUntrusted": {
+          "type": "boolean",
+          "deprecated": "Please use $(ref:SecurityInfo.overridableErrorCategory)."
+        },
+        "isExtendedValidation": {
           "type": "boolean"
         },
         "certificateTransparencyStatus": {
