@@ -14,6 +14,7 @@ import commands from './commands.json';
 import contentScripts from './content_scripts.json';
 import contextualIdentities from './contextual_identities.json';
 import cookies from './cookies.json';
+import declarativeNetRequest from './declarative_net_request.json';
 import devtools from './devtools.json';
 import dns from './dns.json';
 import downloads from './downloads.json';
@@ -74,6 +75,7 @@ export default [
   contentScripts,
   contextualIdentities,
   cookies,
+  declarativeNetRequest,
   devtools,
   dns,
   downloads,
