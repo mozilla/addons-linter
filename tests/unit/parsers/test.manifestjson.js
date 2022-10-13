@@ -1466,7 +1466,7 @@ describe('ManifestJSONParser', () => {
       expect(addonLinter.collector.warnings.length).toEqual(0);
     });
 
-    it('should warn on invalid values according to Add-On Policies', () => {
+    describe('should warn on invalid values according to Add-On Policies', () => {
       const invalidValues = [
         'default-src *',
         'default-src moz-extension: *', // mixed with * invalid
@@ -1494,6 +1494,21 @@ describe('ManifestJSONParser', () => {
         'script-src web.example.com:80',
         'script-src web.example.com:443',
 
+        'script-src-elem *',
+        'script-src-elem moz-extension: *', // mixed with * invalid
+        'script-src-elem ws:',
+        'script-src-elem wss:',
+        'script-src-elem http:',
+        'script-src-elem https:',
+        'script-src-elem ftp:',
+        'script-src-elem http://cdn.example.com/my.js',
+        'script-src-elem https://cdn.example.com/my.js',
+        'script-src-elem web.example.com',
+        'script-src-elem web.example.com:80',
+        'script-src-elem web.example.com:443',
+        // TODO: double-check if there are other keywords or sources that should
+        // warn when used with script-src-elem/-attr that would be worth checking.
+
         'worker-src *',
         'worker-src moz-extension: *', // mixed with * invalid
         'worker-src ws:',
@@ -1510,10 +1525,12 @@ describe('ManifestJSONParser', () => {
         // Properly match mixed with other directives
         "script-src https: 'unsafe-inline'; object-src 'self'",
         "default-src http:; worker-src: 'self'",
+        "script-src-elem https: 'unsafe-inline'; script-src 'self'",
+        "script-src-attr 'self'; script-src *",
       ];
 
       // Manifest v2 formats.
-      invalidValues.forEach((invalidValue) => {
+      const testInvalidValueMV2 = (invalidValue) => {
         const addonLinter = new Linter({ _: ['bar'] });
 
         const json = validManifestJSON({
@@ -1529,10 +1546,10 @@ describe('ManifestJSONParser', () => {
         const { warnings } = addonLinter.collector;
         expect(warnings[0].code).toEqual(messages.MANIFEST_CSP);
         expect(warnings[0].message).toContain('content_security_policy');
-      });
+      };
 
       // Manifest v3 formats.
-      invalidValues.forEach((invalidValue) => {
+      const testInvalidValueMV3 = (invalidValue) => {
         const addonLinter = new Linter({ _: ['bar'] });
 
         const contentSecurityPolicy = {
@@ -1566,10 +1583,13 @@ describe('ManifestJSONParser', () => {
           );
         }
         expect(warnings.length).toBe(1);
-      });
+      };
+
+      it.each(invalidValues)('on invalid MV2 CSP %s', testInvalidValueMV2);
+      it.each(invalidValues)('on invalid MV3 CSP %s', testInvalidValueMV3);
     });
 
-    it('should not warn on valid values according to Add-On Policies', () => {
+    describe('should not warn on valid values according to Add-On Policies', () => {
       const validValues = [
         'default-src moz-extension:',
         'script-src moz-extension:',
@@ -1581,12 +1601,29 @@ describe('ManifestJSONParser', () => {
         // We only walk through default-src and script-src
         'style-src http://by.cdn.com/',
 
-        // unsafe-inline is not supported by Firefox and won't be for the
-        // forseeable future. See http://bit.ly/2wG6LP0 for more details-
+        // unsafe-inline is rejected by Firefox WebExtensions manifest validation
+        // (AddonContentPolicy::ValidateAddonCSP will be reporting an error if it
+        // is found in a custom CSP set from the Extension throuh the manifest.json
+        // field, the custom CSP ignored and the default CSP will be used instead).
         "script-src 'self' 'unsafe-inline';",
 
         // 'wasm-unsafe-eval' is permitted, despite the unsafe-eval substring.
         "script-src 'self' 'wasm-unsafe-eval'",
+
+        "script-src-elem 'self'",
+        "script-src-elem 'none'",
+
+        // TODO(https://github.com/mozilla/addons-linter/issues/4518): to be reported as invalid.
+        "script-src-elem 'nonce-abc'",
+        "script-src-elem 'sha256-/b/HvSeUCyUL0XlV1ZK0nwDk18O2BpM5Scj+dZ1weIY='",
+
+        "script-src-attr 'self'",
+        "script-src-attr 'none'",
+        // TODO(https://github.com/mozilla/addons-linter/issues/4518): to be reported as invalid.
+        "script-src-attr 'nonce-abc'",
+        "script-src-attr 'sha256-/b/HvSeUCyUL0XlV1ZK0nwDk18O2BpM5Scj+dZ1weIY='",
+        // TODO: double-check if there are other keywords or sources that should not
+        // warn when used with script-src-elem/-attr that would be worth checking.
 
         // 'default-src' is insecure, but the limiting 'script-src' prevents
         // remote script injection
@@ -1603,7 +1640,7 @@ describe('ManifestJSONParser', () => {
         // "script-src 'wasm-unsafe-eval'; default-src 'unsafe-eval'",
       ];
 
-      validValues.forEach((validValue) => {
+      const testValidValue = (validValue) => {
         const addonLinter = new Linter({ _: ['bar'] });
 
         // Manifest v2 format.
@@ -1642,70 +1679,80 @@ describe('ManifestJSONParser', () => {
 
         expect(manifestV3JSONParser.isValid).toEqual(true);
         expect(addonLinter.collector.warnings.length).toEqual(0);
-      });
-    });
-
-    it('Should issue a detailed warning for unsafe-eval', () => {
-      const invalidValue = "script-src 'self' 'unsafe-eval';";
-      const addonLinter = new Linter({ _: ['bar'] });
-
-      // Manifest v2 formats.
-      const json = validManifestJSON({
-        content_security_policy: invalidValue,
-      });
-
-      const manifestJSONParser = new ManifestJSONParser(
-        json,
-        addonLinter.collector
-      );
-
-      expect(manifestJSONParser.isValid).toEqual(true);
-      const { warnings } = addonLinter.collector;
-      expect(warnings[0].code).toEqual(messages.MANIFEST_CSP_UNSAFE_EVAL);
-      expect(warnings[0].message).toEqual(
-        messages.manifestCspUnsafeEval('content_security_policy').message
-      );
-
-      // Clear any warnings and errors collected.
-      addonLinter.collector.warnings = [];
-      addonLinter.collector.errors = [];
-
-      // Manifest v3 formats.
-      const contentSecurityPolicy = {
-        extension_pages: invalidValue,
-        content_scripts: invalidValue,
-        // Alias for content_scripts.
-        isolated_world: invalidValue,
       };
 
-      const jsonV3 = validManifestJSON({
-        manifest_version: 3,
-        content_security_policy: contentSecurityPolicy,
-        applications: {
-          // The new content_security_policy syntax is only supported
-          // on Firefox >= 72.
-          gecko: { strict_min_version: '72.0', id: 'some@id' },
-        },
-      });
-
-      const manifestV3JSONParser = new ManifestJSONParser(
-        jsonV3,
-        addonLinter.collector,
-        { schemaValidatorOptions: { maxManifestVersion: 3 } }
-      );
-
-      expect(manifestV3JSONParser.isValid).toEqual(true);
-      const warningsV3 = addonLinter.collector.warnings;
-
-      const keys = Object.keys(contentSecurityPolicy);
-      for (let i = 0; i < keys.length; i++) {
-        expect(warningsV3[i].code).toEqual(messages.MANIFEST_CSP_UNSAFE_EVAL);
-        expect(warningsV3[i].message).toContain(
-          `content_security_policy.${keys[i]}`
-        );
-      }
-      expect(warningsV3.length).toBe(3);
+      it.each(validValues)('on valid CSP value %s', testValidValue);
     });
+
+    const unsafeEvalValues = [
+      "script-src 'self' 'unsafe-eval';",
+      "script-src-elem 'self' 'unsafe-eval';",
+      "script-src-attr 'self' 'unsafe-eval';",
+    ];
+    it.each(unsafeEvalValues)(
+      'Should issue a detailed warning for %s',
+      (unsafeEvalValue) => {
+        const invalidValue = unsafeEvalValue;
+        const addonLinter = new Linter({ _: ['bar'] });
+
+        // Manifest v2 formats.
+        const json = validManifestJSON({
+          content_security_policy: invalidValue,
+        });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector
+        );
+
+        expect(manifestJSONParser.isValid).toEqual(true);
+        const { warnings } = addonLinter.collector;
+        expect(warnings[0].code).toEqual(messages.MANIFEST_CSP_UNSAFE_EVAL);
+        expect(warnings[0].message).toEqual(
+          messages.manifestCspUnsafeEval('content_security_policy').message
+        );
+
+        // Clear any warnings and errors collected.
+        addonLinter.collector.warnings = [];
+        addonLinter.collector.errors = [];
+
+        // Manifest v3 formats.
+        const contentSecurityPolicy = {
+          extension_pages: invalidValue,
+          content_scripts: invalidValue,
+          // Alias for content_scripts.
+          isolated_world: invalidValue,
+        };
+
+        const jsonV3 = validManifestJSON({
+          manifest_version: 3,
+          content_security_policy: contentSecurityPolicy,
+          applications: {
+            // The new content_security_policy syntax is only supported
+            // on Firefox >= 72.
+            gecko: { strict_min_version: '72.0', id: 'some@id' },
+          },
+        });
+
+        const manifestV3JSONParser = new ManifestJSONParser(
+          jsonV3,
+          addonLinter.collector,
+          { schemaValidatorOptions: { maxManifestVersion: 3 } }
+        );
+
+        expect(manifestV3JSONParser.isValid).toEqual(true);
+        const warningsV3 = addonLinter.collector.warnings;
+
+        const keys = Object.keys(contentSecurityPolicy);
+        for (let i = 0; i < keys.length; i++) {
+          expect(warningsV3[i].code).toEqual(messages.MANIFEST_CSP_UNSAFE_EVAL);
+          expect(warningsV3[i].message).toContain(
+            `content_security_policy.${keys[i]}`
+          );
+        }
+        expect(warningsV3.length).toBe(3);
+      }
+    );
   });
 
   describe('update_url', () => {
