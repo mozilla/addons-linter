@@ -87,7 +87,7 @@ function isRelevantError({
   if (error.keyword === 'anyOf') {
     const anyOfSchemaEntries = error.schema?.filter((schema) => {
       const min = schema.min_manifest_version ?? minimum;
-      const max = schema.mix_manifest_version ?? maximum;
+      const max = schema.max_manifest_version ?? maximum;
 
       return manifest_version >= min && manifest_version <= max;
     });
