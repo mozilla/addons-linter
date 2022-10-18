@@ -5,71 +5,10 @@ import {
   isOrigin,
   isSecureUrl,
   isStrictRelativeUrl,
-  isValidVersionString,
   manifestShortcutKey,
 } from 'schema/formats';
 
 describe('formats', () => {
-  describe('isValidVersionString', () => {
-    const validVersionStrings = [
-      '1.0',
-      '1.01a',
-      '1.0.0beta2',
-      '1.0.0beta-2',
-      '1.000000a1',
-      '2.10.2',
-      '3.1.2.4567',
-      '3.1.2.65535',
-      '4.1pre1',
-      '4.1.1pre2',
-      '4.1.1.2pre3',
-      '4.1.1.2pre-3',
-      // The following two versions are equivalent in Firefox due to
-      // https://bugzilla.mozilla.org/show_bug.cgi?id=1733396
-      // See also https://bugzilla.mozilla.org/show_bug.cgi?id=1732676
-      '57.0.1buildid20210928100000',
-      '57.0.1buildid0',
-      // Regression test for https://github.com/mozilla/addons-linter/issues/3998
-      '57.0.1buildid20210928.100000',
-      '57.0.1buildid99999999.999999',
-    ];
-
-    const invalidVersionStrings = [
-      2,
-      '123e5',
-      '1.',
-      '.',
-      'a.b.c.d',
-      '1.2.2.2.4',
-      '1.2.2.2.4a',
-      '01',
-      '1.01',
-      '1.000000',
-      '2.99999',
-      '3.65536',
-      '1.0.0-beta2',
-      '1.0.0+1',
-      '1.0.0-rc1.0+001',
-      '0.1.12dev-cb31c51',
-      '4.1.1dev-abcdef1',
-      `1.${'9'.repeat(100)}`,
-      '57.0.1buildid100000000.999999',
-      '57.0.1buildid99999999.1000000',
-    ];
-
-    validVersionStrings.forEach((validVersionString) => {
-      it(`should find ${validVersionString} to be valid`, () => {
-        expect(isValidVersionString(validVersionString)).toEqual(true);
-      });
-    });
-
-    invalidVersionStrings.forEach((invalidVersionString) => {
-      it(`should find ${invalidVersionString} to be invalid`, () => {
-        expect(isValidVersionString(invalidVersionString)).toEqual(false);
-      });
-    });
-  });
-
   describe('manifestShortcutKey', () => {
     it('Accept supported formats', () => {
       // Only a small variation to see if it works as expected

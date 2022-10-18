@@ -20,7 +20,6 @@ import {
   isStrictRelativeUrl,
   isSecureUrl,
   isUnresolvedRelativeUrl,
-  isValidVersionString,
   manifestShortcutKey,
 } from './formats';
 import schemas from './imported';
@@ -432,7 +431,8 @@ export class SchemaValidator {
   }
 
   _addCustomFormats(validator) {
-    validator.addFormat('versionString', isValidVersionString);
+    // This check is implemented in the ManifestJSONParser.
+    validator.addFormat('versionString', () => true);
     validator.addFormat('contentSecurityPolicy', () => true);
     validator.addFormat('ignore', () => true);
     validator.addFormat('manifestShortcutKey', manifestShortcutKey);

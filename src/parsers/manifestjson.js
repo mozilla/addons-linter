@@ -35,13 +35,14 @@ import {
 import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
-import { isToolkitVersionString } from 'schema/formats';
 import {
-  parseCspPolicy,
-  normalizePath,
-  firefoxStrictMinVersion,
   basicCompatVersionComparison,
+  firefoxStrictMinVersion,
   firstStableVersion,
+  isToolkitVersionString,
+  isValidVersionString,
+  normalizePath,
+  parseCspPolicy,
 } from 'utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
@@ -659,9 +660,7 @@ export default class ManifestJSONParser extends JSONParser {
       }
     }
 
-    if (isToolkitVersionString(this.parsedJSON.version)) {
-      this.collector.addNotice(messages.PROP_VERSION_TOOLKIT_ONLY);
-    }
+    this.validateVersionString();
 
     if (this.parsedJSON.default_locale) {
       const msg = path.join(
@@ -748,6 +747,36 @@ export default class ManifestJSONParser extends JSONParser {
     this.validateRestrictedPermissions();
     this.validateExtensionID();
     this.validateHiddenAddon();
+  }
+
+  /**
+   * This method determines whether the value of the `version` manifest key is
+   * valid for both AMO and Firefox, and strictness is a bit different depending
+   * on the manifest version.
+   *
+   * For MV3+: we enforce the following format: the value must be a string that
+   * has between 1 and 4 numbers, separated with dots. Each number must have up
+   * to 9 digits and leading zeros are not allowed.
+   *
+   * For MV2 only: if the value matches the toolkit version, we emit a warning.
+   * Otherwise, we enforce the same format as defined above for MV3 and above.
+   */
+  validateVersionString() {
+    const { version } = this.parsedJSON;
+
+    if (isValidVersionString(version)) {
+      return;
+    }
+
+    if (
+      this.parsedJSON.manifest_version < 3 &&
+      isToolkitVersionString(version)
+    ) {
+      this.collector.addWarning(messages.VERSION_FORMAT_DEPRECATED);
+    } else {
+      this.collector.addError(messages.VERSION_FORMAT_INVALID);
+      this.isValid = false;
+    }
   }
 
   validateHiddenAddon() {

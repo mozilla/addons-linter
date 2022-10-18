@@ -81,7 +81,6 @@ Rules are sorted by severity.
 | Message code                                            | Severity | Description                                                                                                                                                        |
 | ------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `MANIFEST_UNUSED_UPDATE`                                | notice   | update_url ignored in manifest.json                                                                                                                                |
-| `PROP_VERSION_TOOLKIT_ONLY`                             | notice   | version is in the toolkit format in manifest.json                                                                                                                  |
 | `CORRUPT_ICON_FILE`                                     | warning  | Icons must not be corrupt                                                                                                                                          |
 | `MANIFEST_CSP`                                          | warning  | content_security_policy in manifest.json means more review                                                                                                         |
 | `MANIFEST_CSP_UNSAFE_EVAL`                              | warning  | usage of 'unsafe-eval' is strongly discouraged                                                                                                                     |
@@ -125,8 +124,6 @@ Rules are sorted by severity.
 | `MANIFEST_VERSION_INVALID`                              | error    | manifest_version in manifest.json is not valid                                                                                                                     |
 | `PROP_NAME_MISSING`                                     | error    | name property missing from manifest.json                                                                                                                           |
 | `PROP_NAME_INVALID`                                     | error    | name property is invalid in manifest.json                                                                                                                          |
-| `PROP_VERSION_MISSING`                                  | error    | version property missing from manifest.json                                                                                                                        |
-| `PROP_VERSION_INVALID`                                  | error    | version is invalid in manifest.json                                                                                                                                |
 | `MANIFEST_DICT_NOT_FOUND`                               | error    | A dictionary file defined in the manifest could not be found                                                                                                       |
 | `MANIFEST_MULTIPLE_DICTS`                               | error    | Multiple dictionaries found                                                                                                                                        |
 | `MANIFEST_EMPTY_DICTS`                                  | error    | Empty `dictionaries` object                                                                                                                                        |
@@ -142,6 +139,8 @@ Rules are sorted by severity.
 | `HIDDEN_NO_ACTION`                                      | error    | The `hidden` and `browser_action`/`page_action` (or `action`) properties are mutually exclusive                                                                    |
 | `APPLICATIONS_DEPRECATED`                               | warning  | The `applications` property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above. Use `browser_specific_settings` instead. |
 | `APPLICATIONS_INVALID`                                  | error    | The `applications` property is no longer accepted in Manifest Version 3 and above.                                                                                 |
+| `VERSION_FORMAT_DEPRECATED`                             | warning  | The version string should be simplified.                                                                                                                           |
+| `VERSION_FORMAT_INVALID`                                | error    | The version string is not valid because its format is too complex.                                                                                                 |
 
 ### Static Theme / manifest.json
 
