@@ -124,7 +124,7 @@ export function validManifestJSON(extra) {
   return JSON.stringify({
     name: 'my extension',
     manifest_version: 2,
-    applications: {
+    browser_specific_settings: {
       gecko: {
         id: '{daf44bf7-a45e-4450-979c-91cf07434c3d}',
         strict_min_version: '48.0.0',
@@ -143,7 +143,7 @@ export function validDictionaryManifestJSON(extra) {
     dictionaries: {
       fr: '/path/to/fr.dic',
     },
-    applications: {
+    browser_specific_settings: {
       gecko: {
         id: '@my-dictionary',
       },
@@ -216,7 +216,7 @@ export function validSitePermissionManifestJSON(extra) {
     version: '1.0a1',
     site_permissions: ['midi'],
     install_origins: ['http://mozilla.org'],
-    applications: {
+    browser_specific_settings: {
       gecko: {
         id: '@my-exaple-sitepermission',
       },

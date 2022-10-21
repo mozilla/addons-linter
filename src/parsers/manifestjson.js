@@ -316,6 +316,8 @@ export default class ManifestJSONParser extends JSONParser {
       // add-on manifest_version.
       if (PERMS_DATAPATH_REGEX.test(error.instancePath)) {
         baseObject = messages.manifestPermissionUnsupported(error.data, error);
+      } else if (error.instancePath === '/applications') {
+        baseObject = messages.APPLICATIONS_INVALID;
       } else {
         baseObject = messages.manifestFieldUnsupported(
           error.instancePath,
@@ -490,11 +492,15 @@ export default class ManifestJSONParser extends JSONParser {
       });
     }
 
-    if (
-      this.parsedJSON.browser_specific_settings &&
-      this.parsedJSON.applications
-    ) {
-      this.collector.addWarning(messages.IGNORED_APPLICATIONS_PROPERTY);
+    if (this.parsedJSON.manifest_version < 3) {
+      if (
+        this.parsedJSON.browser_specific_settings &&
+        this.parsedJSON.applications
+      ) {
+        this.collector.addWarning(messages.IGNORED_APPLICATIONS_PROPERTY);
+      } else if (this.parsedJSON.applications) {
+        this.collector.addWarning(messages.APPLICATIONS_DEPRECATED);
+      }
     }
 
     if (

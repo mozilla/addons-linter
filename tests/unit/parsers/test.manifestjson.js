@@ -249,7 +249,7 @@ describe('ManifestJSONParser', () => {
       // id is something incorrect, you shouldn't even be calling getMetadata.
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: { gecko: { id: 'wat' } },
+        browser_specific_settings: { gecko: { id: 'wat' } },
       });
       const manifestJSONParser = new ManifestJSONParser(
         json,
@@ -258,14 +258,14 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(addonLinter.collector.errors, {
         code: messages.JSON_INVALID.code,
-        message: /"\/applications\/gecko\/id" must match pattern/,
+        message: /"\/browser_specific_settings\/gecko\/id" must match pattern/,
       });
     });
 
     it('should fail on id containing unicode chars', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: { gecko: { id: '@fôobar' } },
+        browser_specific_settings: { gecko: { id: '@fôobar' } },
       });
       const manifestJSONParser = new ManifestJSONParser(
         json,
@@ -274,7 +274,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(addonLinter.collector.errors, {
         code: messages.JSON_INVALID.code,
-        message: /"\/applications\/gecko\/id" must match pattern/,
+        message: /"\/browser_specific_settings\/gecko\/id" must match pattern/,
       });
     });
 
@@ -283,7 +283,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         // ids containing non-ascii chars are forbidden per the schema
         // definition so we only need to test ascii here.
-        applications: { gecko: { id: `@${'a'.repeat(80)}` } }, // 81 chars
+        browser_specific_settings: { gecko: { id: `@${'a'.repeat(80)}` } }, // 81 chars
       });
       const manifestJSONParser = new ManifestJSONParser(
         json,
@@ -293,13 +293,13 @@ describe('ManifestJSONParser', () => {
       assertHasMatchingError(addonLinter.collector.errors, {
         code: messages.JSON_INVALID.code,
         message:
-          /"\/applications\/gecko\/id" must NOT have more than 80 characters/,
+          /"\/browser_specific_settings\/gecko\/id" must NOT have more than 80 characters/,
       });
     });
 
     it('should return null if undefined', () => {
       const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({ applications: {} });
+      const json = validManifestJSON({ browser_specific_settings: {} });
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector
@@ -541,7 +541,7 @@ describe('ManifestJSONParser', () => {
 
         const json = validManifestJSON({
           [manifestKey]: ['idle', 'fileSystem'],
-          applications: { gecko: { strict_min_version: '55.0' } },
+          browser_specific_settings: { gecko: { strict_min_version: '55.0' } },
         });
         const manifestJSONParser = new ManifestJSONParser(
           json,
@@ -569,7 +569,7 @@ describe('ManifestJSONParser', () => {
               fileSystem: ['write'],
             },
           ],
-          applications: { gecko: { strict_min_version: '55.0' } },
+          browser_specific_settings: { gecko: { strict_min_version: '55.0' } },
         });
 
         const manifestJSONParser = new ManifestJSONParser(
@@ -590,7 +590,7 @@ describe('ManifestJSONParser', () => {
             : messages.MANIFEST_BAD_OPTIONAL_PERMISSION.code;
         const json = validManifestJSON({
           [manifestKey]: ['idle', 'idle'],
-          applications: { gecko: { strict_min_version: '55.0' } },
+          browser_specific_settings: { gecko: { strict_min_version: '55.0' } },
         });
 
         const manifestJSONParser = new ManifestJSONParser(
@@ -1046,7 +1046,7 @@ describe('ManifestJSONParser', () => {
         const addonLinter = new Linter({ _: ['bar'] });
         const json = validManifestJSON({
           [mainfestKey]: ['idle', 'wat'],
-          applications: { gecko: { strict_max_version: '55.0' } },
+          browser_specific_settings: { gecko: { strict_max_version: '55.0' } },
         });
         const manifestJSONParser = new ManifestJSONParser(
           json,
@@ -1165,7 +1165,7 @@ describe('ManifestJSONParser', () => {
     it('warns on strict_max_version', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             strict_max_version: '58.0',
           },
@@ -1184,7 +1184,7 @@ describe('ManifestJSONParser', () => {
     it('does not warn on strict_max_version in language packs', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validLangpackManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             strict_max_version: '58.0',
           },
@@ -1201,7 +1201,7 @@ describe('ManifestJSONParser', () => {
     it('errors on strict_max_version in dictionaries', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validDictionaryManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             id: '@my-dictionary',
             strict_max_version: '58.0',
@@ -1224,7 +1224,7 @@ describe('ManifestJSONParser', () => {
     it('should warn when using a manifest key before Firefox marks it as supported', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             strict_min_version: '47.0',
           },
@@ -1255,7 +1255,7 @@ describe('ManifestJSONParser', () => {
     it('should warn when using a manifest key before Firefox for Android marks it as supported', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             strict_min_version: '47.0',
           },
@@ -1293,7 +1293,7 @@ describe('ManifestJSONParser', () => {
     it('should not warn when all manifest keys are supported in Firefox and Firefox for Android with the given strict_min_version', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             strict_min_version: '48.0a1',
           },
@@ -1311,7 +1311,7 @@ describe('ManifestJSONParser', () => {
     it('should ignore manifest key version support for dictionaries', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validDictionaryManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             id: '@my-dictionary',
             strict_min_version: '47.0',
@@ -1333,7 +1333,7 @@ describe('ManifestJSONParser', () => {
     it('should ignore manifest key version support for langpacks', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validLangpackManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             strict_min_version: '47.0',
           },
@@ -1351,7 +1351,7 @@ describe('ManifestJSONParser', () => {
     it('should warn on unsupported subkeys', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             strict_min_version: '54.0',
           },
@@ -1378,7 +1378,7 @@ describe('ManifestJSONParser', () => {
     it('should warn on unsupported subsubkeys', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             strict_min_version: '56.0',
           },
@@ -1407,7 +1407,7 @@ describe('ManifestJSONParser', () => {
     it('should add a notice on unsupported permissions', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             strict_min_version: '56.0',
           },
@@ -1430,7 +1430,7 @@ describe('ManifestJSONParser', () => {
     it('should add a notice on unsupported permissions on android', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             strict_min_version: '55.0',
           },
@@ -1559,7 +1559,7 @@ describe('ManifestJSONParser', () => {
         const jsonV3 = validManifestJSON({
           manifest_version: 3,
           content_security_policy: contentSecurityPolicy,
-          applications: {
+          browser_specific_settings: {
             // The new content_security_policy syntax is only supported
             // on Firefox >= 72.
             gecko: { strict_min_version: '72.0', id: 'some@id' },
@@ -1664,7 +1664,7 @@ describe('ManifestJSONParser', () => {
             content_scripts: validValue,
             isolated_world: validValue,
           },
-          applications: {
+          browser_specific_settings: {
             // The new content_security_policy syntax is only supported
             // on Firefox >= 72.
             gecko: { strict_min_version: '72.0', id: 'some@id' },
@@ -1727,7 +1727,7 @@ describe('ManifestJSONParser', () => {
         const jsonV3 = validManifestJSON({
           manifest_version: 3,
           content_security_policy: contentSecurityPolicy,
-          applications: {
+          browser_specific_settings: {
             // The new content_security_policy syntax is only supported
             // on Firefox >= 72.
             gecko: { strict_min_version: '72.0', id: 'some@id' },
@@ -1773,12 +1773,12 @@ describe('ManifestJSONParser', () => {
       expect(notices[0].message).toContain('update_url');
     });
 
-    // applications.gecko.update_url isn't allowed if the add-on is being
-    // hosted on AMO.
+    // browser_specific_settings.gecko.update_url isn't allowed if the add-on is
+    // being hosted on AMO.
     it('is not allowed', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             update_url: 'https://foo.com/bar',
           },
@@ -1798,7 +1798,7 @@ describe('ManifestJSONParser', () => {
     it('emits a warning for privileged extensions', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             update_url: 'https://foo.com/bar',
           },
@@ -1826,7 +1826,7 @@ describe('ManifestJSONParser', () => {
     it('is not an issue if self-hosted and privileged', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             update_url: 'https://foo.com/bar',
           },
@@ -1852,7 +1852,7 @@ describe('ManifestJSONParser', () => {
     it('is not an issue if self-hosted', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
-        applications: {
+        browser_specific_settings: {
           gecko: {
             update_url: 'https://foo.com/bar',
           },
@@ -2216,9 +2216,8 @@ describe('ManifestJSONParser', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const icon = 'tests/fixtures/default.png';
       const json = validManifestJSON({
-        // Avoid any type of warning by setting the appropriate
-        // firefox version.
-        applications: {
+        // Avoid any type of warning by setting the appropriate firefox version.
+        browser_specific_settings: {
           gecko: {
             id: '{daf44bf7-a45e-4450-979c-91cf07434c3d}',
             strict_min_version: '55.0.0',
@@ -2919,7 +2918,7 @@ describe('ManifestJSONParser', () => {
     it('throws error on dictionary with missing applications->gecko', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validDictionaryManifestJSON({
-        applications: {},
+        browser_specific_settings: {},
       });
       const manifestJSONParser = new ManifestJSONParser(
         json,
@@ -2940,7 +2939,7 @@ describe('ManifestJSONParser', () => {
     it('throws error on dictionary with missing applications->gecko->id', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validDictionaryManifestJSON({
-        applications: { gecko: {} },
+        browser_specific_settings: { gecko: {} },
       });
       const manifestJSONParser = new ManifestJSONParser(
         json,
@@ -4547,5 +4546,155 @@ describe('ManifestJSONParser', () => {
         expect(Array.from(experimentApiPaths)).toEqual(expected);
       }
     );
+  });
+
+  describe('applications property - MV2', () => {
+    it('does not emit any warning or error when a MV2 extension does not use applications or browser_specific_settings', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+        }),
+        linter.collector
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(linter.collector.errors).toEqual([]);
+      expect(linter.collector.warnings).toEqual([]);
+    });
+
+    it('does not emit a warning when a MV2 extension uses browser_specific_settings', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: {},
+        }),
+        linter.collector
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(linter.collector.errors).toEqual([]);
+      expect(linter.collector.warnings).toEqual([]);
+    });
+
+    it('emits a warning when a MV2 extension uses applications', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          applications: {},
+        }),
+        linter.collector
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(linter.collector.errors).toEqual([]);
+
+      expect(linter.collector.warnings.length).toEqual(1);
+      assertHasMatchingError(linter.collector.warnings, {
+        code: messages.APPLICATIONS_DEPRECATED.code,
+      });
+    });
+
+    it('only emits a single warning when a MV2 extension uses both applications and browser_specific_settings', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          applications: {},
+          browser_specific_settings: {},
+        }),
+        linter.collector
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(linter.collector.errors).toEqual([]);
+
+      expect(linter.collector.warnings.length).toEqual(1);
+      // Since the `applications` property is already reported as ignored, we
+      // don't warn about the deprecation of it.
+      assertHasMatchingError(linter.collector.warnings, {
+        code: messages.IGNORED_APPLICATIONS_PROPERTY.code,
+      });
+    });
+  });
+
+  describe('applications property - MV3', () => {
+    it('does not emit any warning or error when a MV3 extension uses browser_specific_settings', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 3,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: { gecko: { id: 'some@id' } },
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { maxManifestVersion: 3 } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(linter.collector.errors).toEqual([]);
+      expect(linter.collector.warnings).toEqual([]);
+    });
+
+    it('emits an error when a MV3 extension uses applications', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 3,
+          name: 'some name',
+          version: '1',
+          applications: {},
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { maxManifestVersion: 3 } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      expect(linter.collector.warnings).toEqual([]);
+
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.APPLICATIONS_INVALID.code,
+      });
+    });
+
+    it('emits an error when a MV3 extension uses both applications and browser_specific_settings', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 3,
+          name: 'some name',
+          version: '1',
+          applications: {},
+          browser_specific_settings: {},
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { maxManifestVersion: 3 } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      expect(linter.collector.warnings).toEqual([]);
+
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.APPLICATIONS_INVALID.code,
+      });
+    });
   });
 });
