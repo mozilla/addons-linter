@@ -685,34 +685,39 @@ export default class ManifestJSONParser extends JSONParser {
         `^${LOCALES_DIRECTORY}/.*?/${MESSAGES_JSON}$`
       );
 
-      const seen = [];
+      const locales = [];
+      const localesWithMessagesJson = [];
       const errors = [];
-      let hasValidLocaleFiles = false;
+
+      // Collect distinct locales (based on the content of `_locales/`) as
+      // well as the locales for which we have a `messages.json` file.
       for (let i = 0; i < fileList.length; i++) {
         const matches = fileList[i].match(localeDirRe);
-        hasValidLocaleFiles =
-          hasValidLocaleFiles || fileList[i].match(localeFileRe);
 
-        if (
-          matches &&
-          !fileList[i].endsWith(`/${MESSAGES_JSON}`) &&
-          // Make sure we do not report the same locale multiple times given
-          // that we scan all files in all directories.
-          !seen.includes(matches[1])
-        ) {
+        if (matches && !locales.includes(matches[1])) {
+          locales.push(matches[1]);
+        }
+
+        if (matches && fileList[i].match(localeFileRe)) {
+          localesWithMessagesJson.push(matches[1]);
+        }
+      }
+
+      // Emit an error for each locale without a `messages.json` file.
+      for (let i = 0; i < locales.length; i++) {
+        if (!localesWithMessagesJson.includes(locales[i])) {
           errors.push(
             messages.noMessagesFileInLocales(
-              path.join(LOCALES_DIRECTORY, matches[1])
+              path.join(LOCALES_DIRECTORY, locales[i])
             )
           );
-          seen.push(matches[1]);
         }
       }
 
       // When there is no default locale, we do not want to emit errors for
       // missing locale files because we ignore those files.
       if (!this.parsedJSON.default_locale) {
-        if (hasValidLocaleFiles) {
+        if (localesWithMessagesJson.length) {
           this.collector.addError(messages.NO_DEFAULT_LOCALE);
           this.isValid = false;
         }
