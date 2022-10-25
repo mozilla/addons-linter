@@ -679,8 +679,8 @@ export default class ManifestJSONParser extends JSONParser {
         `^${LOCALES_DIRECTORY}/.*?/${MESSAGES_JSON}$`
       );
 
-      const seen = [];
-      const validated = [];
+      const locales = [];
+      const localesWithMessagesJson = [];
       const errors = [];
 
       // Collect distinct locales (based on the content of `_locales/`) as
@@ -688,21 +688,21 @@ export default class ManifestJSONParser extends JSONParser {
       for (let i = 0; i < fileList.length; i++) {
         const matches = fileList[i].match(localeDirRe);
 
-        if (matches && !seen.includes(matches[1])) {
-          seen.push(matches[1]);
+        if (matches && !locales.includes(matches[1])) {
+          locales.push(matches[1]);
         }
 
         if (matches && fileList[i].match(localeFileRe)) {
-          validated.push(matches[1]);
+          localesWithMessagesJson.push(matches[1]);
         }
       }
 
       // Emit an error for each locale without a `messages.json` file.
-      for (let i = 0; i < seen.length; i++) {
-        if (!validated.includes(seen[i])) {
+      for (let i = 0; i < locales.length; i++) {
+        if (!localesWithMessagesJson.includes(locales[i])) {
           errors.push(
             messages.noMessagesFileInLocales(
-              path.join(LOCALES_DIRECTORY, seen[i])
+              path.join(LOCALES_DIRECTORY, locales[i])
             )
           );
         }
@@ -711,7 +711,7 @@ export default class ManifestJSONParser extends JSONParser {
       // When there is no default locale, we do not want to emit errors for
       // missing locale files because we ignore those files.
       if (!this.parsedJSON.default_locale) {
-        if (validated.length) {
+        if (localesWithMessagesJson.length) {
           this.collector.addError(messages.NO_DEFAULT_LOCALE);
           this.isValid = false;
         }
