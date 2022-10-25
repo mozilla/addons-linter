@@ -6,7 +6,7 @@ export const validManifest = {
   manifest_version: 2,
   name: 'test-manifest',
   version: '1.0',
-  applications: {
+  browser_specific_settings: {
     gecko: {
       id: 'test-manifest@mozilla.org',
     },

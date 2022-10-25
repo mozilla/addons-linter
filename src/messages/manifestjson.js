@@ -774,3 +774,22 @@ export const HIDDEN_NO_ACTION = {
     exclusive.`),
   file: MANIFEST_JSON,
 };
+
+export const APPLICATIONS_DEPRECATED = {
+  code: 'APPLICATIONS_DEPRECATED',
+  message: i18n._('Use "browser_specific_settings" instead of "applications".'),
+  description: i18n._(oneLine`The "applications" property in the manifest is
+    deprecated and will no longer be accepted in Manifest Version 3 and
+    above.`),
+  file: MANIFEST_JSON,
+};
+
+export const APPLICATIONS_INVALID = {
+  code: 'APPLICATIONS_INVALID',
+  message: i18n._(oneLine`"applications" is no longer allowed in Manifest
+    Version 3 and above.`),
+  description: i18n._(oneLine`The "applications" property in the manifest is
+    no longer allowed in Manifest Version 3 and above. Use
+    "browser_specific_settings" instead.`),
+  file: MANIFEST_JSON,
+};

@@ -86,6 +86,9 @@
       },
       "ManifestBase": {
         "properties": {
+          "applications": {
+            "max_manifest_version": 2
+          },
           "homepage_url": {
             "format": "ignore",
             "oneOf": [
