@@ -697,7 +697,7 @@ export default class ManifestJSONParser extends JSONParser {
         }
       }
 
-      // compare found locales with validated locales and push errors
+      // Emit an error for each locale without a `messages.json` file.
       for (let i = 0; i < seen.length; i++) {
         if (!validated.includes(seen[i])) {
           errors.push(
