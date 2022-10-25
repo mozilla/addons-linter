@@ -3542,7 +3542,7 @@ describe('ManifestJSONParser', () => {
       expect(errors).toEqual([]);
     });
 
-    it('does not emit an error when files other than messsages.json are present in language directory', () => {
+    it('does not emit an error when files other than messages.json are present in language directory', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         default_locale: 'en',
