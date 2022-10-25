@@ -683,7 +683,8 @@ export default class ManifestJSONParser extends JSONParser {
       const validated = [];
       const errors = [];
 
-      // get arrays of found locales and valid locales (has messages.json)
+      // Collect distinct locales (based on the content of `_locales/`) as
+      // well as the locales for which we have a `messages.json` file.
       for (let i = 0; i < fileList.length; i++) {
         const matches = fileList[i].match(localeDirRe);
 
