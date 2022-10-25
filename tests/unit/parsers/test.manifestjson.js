@@ -3541,6 +3541,32 @@ describe('ManifestJSONParser', () => {
       const { errors } = addonLinter.collector;
       expect(errors).toEqual([]);
     });
+
+    it('does not emit an error when files other than messsages.json are present in language directory', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        default_locale: 'en',
+      });
+      const directory = {
+        files: {
+          '_locales/en/messages.json': { size: 1000 },
+          '_locales/de/messages.json': { size: 1120 },
+          '_locales/hi/messages.json': { size: 1120 },
+          '_locales/en/styles.css': { size: 1000 },
+          '_locales/de/styles.css': { size: 1120 },
+          '_locales/hi/styles.css': { size: 1120 },
+        },
+      };
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { io: directory }
+      );
+      expect(manifestJSONParser.isValid).toEqual(true);
+      const { errors } = addonLinter.collector;
+      expect(errors).toEqual([]);
+    });
   });
 
   describe('sitepermission', () => {
