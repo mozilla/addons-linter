@@ -12,6 +12,43 @@ import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
 /* global nodeRequire, localesRoot */
 
 const SOURCE_MAP_RE = /\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/;
+// For MV2 add-ons, Firefox's version format is laxer than Chrome's, it accepts:
+// https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/version/format
+// We choose a slightly restricted version of that format (but still more
+// permissive than Chrome) to allow Beta addons, per:
+// https://extensionworkshop.com/documentation/publish/distribute-pre-release-versions/
+const TOOLKIT_VERSION_REGEX = /^(\d+\.?){1,3}\.(\d+([A-z]+(-?\d+)?))$/;
+// 1.2.3buildid5.6 is used in practice but not matched by TOOLKIT_VERSION_REGEX.
+// Use this pattern to accept the used format without being too permissive.
+// See https://github.com/mozilla/addons-linter/issues/3998
+const TOOLKIT_WITH_BUILDID_REGEX = /^\d+(?:\.\d+){0,2}buildid\d{8}\.\d{6}$/;
+
+export function isToolkitVersionString(version) {
+  // We should be starting with a string. Limit length, see bug 1393644
+  if (typeof version !== 'string' || version.length > 100) {
+    return false;
+  }
+  return (
+    TOOLKIT_VERSION_REGEX.test(version) ||
+    TOOLKIT_WITH_BUILDID_REGEX.test(version)
+  );
+}
+
+export function isValidVersionString(version) {
+  // We should be starting with a string. Limit length, see bug 1393644
+  if (typeof version !== 'string' || version.length > 100) {
+    return false;
+  }
+
+  const parts = version.split('.');
+
+  if (parts.length > 4) {
+    return false;
+  }
+
+  // Non-zero values cannot start with 0 and we allow numbers up to 9 digits.
+  return !parts.some((part) => !/^(0|[1-9][0-9]{0,8})$/.test(part));
+}
 
 // Represents an error condition related to a user error (e.g. an invalid
 // configuration option passed to the linter class, usually through the

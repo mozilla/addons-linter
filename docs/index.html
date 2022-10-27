@@ -306,11 +306,6 @@
 <td>update_url ignored in manifest.json</td>
 </tr>
 <tr>
-<td><code>PROP_VERSION_TOOLKIT_ONLY</code></td>
-<td>notice</td>
-<td>version is in the toolkit format in manifest.json</td>
-</tr>
-<tr>
 <td><code>CORRUPT_ICON_FILE</code></td>
 <td>warning</td>
 <td>Icons must not be corrupt</td>
@@ -526,16 +521,6 @@
 <td>name property is invalid in manifest.json</td>
 </tr>
 <tr>
-<td><code>PROP_VERSION_MISSING</code></td>
-<td>error</td>
-<td>version property missing from manifest.json</td>
-</tr>
-<tr>
-<td><code>PROP_VERSION_INVALID</code></td>
-<td>error</td>
-<td>version is invalid in manifest.json</td>
-</tr>
-<tr>
 <td><code>MANIFEST_DICT_NOT_FOUND</code></td>
 <td>error</td>
 <td>A dictionary file defined in the manifest could not be found</td>
@@ -609,6 +594,16 @@
 <td><code>APPLICATIONS_INVALID</code></td>
 <td>error</td>
 <td>The <code>applications</code> property is no longer accepted in Manifest Version 3 and above.</td>
+</tr>
+<tr>
+<td><code>VERSION_FORMAT_DEPRECATED</code></td>
+<td>warning</td>
+<td>The version string should be simplified.</td>
+</tr>
+<tr>
+<td><code>VERSION_FORMAT_INVALID</code></td>
+<td>error</td>
+<td>The version string is not valid because its format is too complex.</td>
 </tr>
 </tbody>
 </table>

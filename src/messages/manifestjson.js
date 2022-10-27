@@ -223,24 +223,6 @@ export const PROP_NAME_INVALID = {
   file: MANIFEST_JSON,
 };
 
-export const PROP_VERSION_INVALID = {
-  code: 'PROP_VERSION_INVALID',
-  message: i18n._('The "version" property must be a string.'),
-  description: i18n._(
-    'See http://mzl.la/1kXIADa (MDN Docs) for more information.'
-  ),
-  file: MANIFEST_JSON,
-};
-
-export const PROP_VERSION_TOOLKIT_ONLY = {
-  code: 'PROP_VERSION_TOOLKIT_ONLY',
-  message: i18n._('The "version" property uses a Firefox-specific format.'),
-  description: i18n._(
-    'See http://mzl.la/1kXIADa (MDN Docs) for more information.'
-  ),
-  file: MANIFEST_JSON,
-};
-
 export const MANIFEST_UPDATE_URL = {
   code: 'MANIFEST_UPDATE_URL',
   message: i18n._('"update_url" is not allowed.'),
@@ -536,7 +518,6 @@ export function manifestThemeImageMimeMismatch({ path, mime }) {
 }
 
 export const PROP_NAME_MISSING = manifestPropMissing('name');
-export const PROP_VERSION_MISSING = manifestPropMissing('version');
 
 export const NO_MESSAGES_FILE = {
   code: 'NO_MESSAGES_FILE',
@@ -791,5 +772,25 @@ export const APPLICATIONS_INVALID = {
   description: i18n._(oneLine`The "applications" property in the manifest is
     no longer allowed in Manifest Version 3 and above. Use
     "browser_specific_settings" instead.`),
+  file: MANIFEST_JSON,
+};
+
+export const VERSION_FORMAT_DEPRECATED = {
+  code: 'VERSION_FORMAT_DEPRECATED',
+  message: i18n._(oneLine`The version string should be simplified because it
+    won't be compatible with Manifest Version 3 and above.`),
+  description: i18n._(oneLine`The version should be a string with 1 to 4
+    numbers separated with dots. Each number should have up to 9 digits and
+    leading zeros will no longer be allowed. Letters will no longer be allowed
+    either.`),
+  file: MANIFEST_JSON,
+};
+
+export const VERSION_FORMAT_INVALID = {
+  code: 'VERSION_FORMAT_INVALID',
+  message: i18n._('The version string should be simplified.'),
+  description: i18n._(oneLine`The version should be a string with 1 to 4
+    numbers separated with dots. Each number should have up to 9 digits and
+    leading zeros are not allowed. Letters are no longer allowed.`),
   file: MANIFEST_JSON,
 };

@@ -1147,18 +1147,102 @@ describe('ManifestJSONParser', () => {
       expect(errors[0].message).toContain('/version');
     });
 
-    it('should collect a notice on toolkit version values', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({ version: '1.0.0.0pre0' });
-      const manifestJSONParser = new ManifestJSONParser(
-        json,
-        addonLinter.collector
-      );
-      expect(manifestJSONParser.isValid).toEqual(true);
-      const { notices } = addonLinter.collector;
-      expect(notices[0].code).toEqual(messages.PROP_VERSION_TOOLKIT_ONLY.code);
-      expect(notices[0].message).toContain('version');
-    });
+    it.each([
+      {
+        title: 'MV2 - toolkit version',
+        version: '1.0a',
+        manifestVersion: 2,
+        expectWarning: true,
+        expectError: false,
+      },
+      {
+        title: 'MV2 - non-toolkit version',
+        version: '1.0',
+        manifestVersion: 2,
+        expectWarning: false,
+        expectError: false,
+      },
+      {
+        title: 'MV2 - large version number',
+        version: '1.999999999',
+        manifestVersion: 2,
+        expectWarning: false,
+        expectError: false,
+      },
+      {
+        title: 'MV2 - leading zeros',
+        version: '2022.01',
+        manifestVersion: 2,
+        expectWarning: false,
+        expectError: true,
+      },
+      {
+        title: 'MV3 - toolkit version',
+        version: '1.0a',
+        manifestVersion: 3,
+        expectWarning: false,
+        expectError: true,
+      },
+      {
+        title: 'MV3 - non-toolkit version',
+        version: '1.0',
+        manifestVersion: 3,
+        expectWarning: false,
+        expectError: false,
+      },
+      {
+        title: 'MV3 - large version number',
+        version: '1.999999999',
+        manifestVersion: 3,
+        expectWarning: false,
+        expectError: false,
+      },
+      {
+        title: 'MV3 - leading zeros',
+        version: '2022.01',
+        manifestVersion: 3,
+        expectWarning: false,
+        expectError: true,
+      },
+    ])(
+      `validates manifest version key: $title`,
+      ({ title, version, manifestVersion, expectWarning, expectError }) => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          manifest_version: manifestVersion,
+          version,
+          name: title,
+        });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector,
+          { schemaValidatorOptions: { maxManifestVersion: 3 } }
+        );
+
+        const { errors, warnings } = addonLinter.collector;
+
+        if (expectError) {
+          expect(errors).toEqual([
+            expect.objectContaining({
+              code: messages.VERSION_FORMAT_INVALID.code,
+            }),
+          ]);
+          expect(warnings).toEqual([]);
+        }
+
+        if (expectWarning) {
+          expect(warnings).toEqual([
+            expect.objectContaining({
+              code: messages.VERSION_FORMAT_DEPRECATED.code,
+            }),
+          ]);
+          expect(errors).toEqual([]);
+        }
+
+        expect(manifestJSONParser.isValid).toEqual(!expectError);
+      }
+    );
   });
 
   describe('strict_max_version', () => {
@@ -1311,6 +1395,9 @@ describe('ManifestJSONParser', () => {
     it('should ignore manifest key version support for dictionaries', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validDictionaryManifestJSON({
+        // Avoid a warning about the version format since we verify the number
+        // of warnings below.
+        version: '1.0',
         browser_specific_settings: {
           gecko: {
             id: '@my-dictionary',

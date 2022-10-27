@@ -17,6 +17,8 @@ import {
   isBrowserNamespace,
   isCompatible,
   isLocalUrl,
+  isToolkitVersionString,
+  isValidVersionString,
   normalizePath,
   parseCspPolicy,
 } from 'utils';
@@ -658,4 +660,95 @@ describe('AddonsLinterUserError', () => {
     const error = new AddonsLinterUserError(errorMessage);
     expect(error.message).toStrictEqual(errorMessage);
   });
+});
+
+describe('isValidVersionString', () => {
+  const validVersionStrings = [
+    '0',
+    '0.0',
+    '0.0.0',
+    '0.0.0.0',
+    '1.0',
+    '2.10.2',
+    '3.1.2.4567',
+    '3.1.2.65535',
+    '0.0.0.999999999',
+    '999999999.999999999.999999999.999999999',
+  ];
+
+  const invalidVersionStrings = [
+    undefined,
+    2,
+    '0.0.0.0.0',
+    '123e5',
+    '1.',
+    '.',
+    '.999999999',
+    '999999999.',
+    '01',
+    '1.01',
+    '1.0.001',
+    'a.b.c.d',
+    '1.2.2.2.4',
+    '1.2.2.2.4a',
+    '01',
+    '1.01',
+    '1.-1',
+    '1.000000',
+    '2.1234567890',
+    '3.1000000000',
+    '1.0.0-beta2',
+    '1.0.0+1',
+    '1.0.0-rc1.0+001',
+    '0.1.12dev-cb31c51',
+    '4.1.1dev-abcdef1',
+    `1.${'9'.repeat(100)}`,
+    '57.0.1buildid100000000.999999',
+    '57.0.1buildid99999999.1000000',
+    '2022.01',
+  ];
+
+  it.each(validVersionStrings)(
+    `should find %s to be valid`,
+    (validVersionString) => {
+      expect(isValidVersionString(validVersionString)).toEqual(true);
+    }
+  );
+
+  it.each(invalidVersionStrings)(
+    `should find %s to be invalid`,
+    (invalidVersionString) => {
+      expect(isValidVersionString(invalidVersionString)).toEqual(false);
+    }
+  );
+});
+
+describe('isToolkitVersionString', () => {
+  it.each([
+    '1.01a',
+    '1.0.0beta2',
+    '1.0.0beta-2',
+    '1.000000a1',
+    '4.1pre1',
+    '4.1.1pre2',
+    '4.1.1.2pre3',
+    '4.1.1.2pre-3',
+    // The following two versions are equivalent in Firefox due to
+    // https://bugzilla.mozilla.org/show_bug.cgi?id=1733396
+    // See also https://bugzilla.mozilla.org/show_bug.cgi?id=1732676
+    '57.0.1buildid20210928100000',
+    '57.0.1buildid0',
+    // Regression test for https://github.com/mozilla/addons-linter/issues/3998
+    '57.0.1buildid20210928.100000',
+    '57.0.1buildid99999999.999999',
+  ])(`returns true when a toolkit version is passed: %s`, (version) => {
+    expect(isToolkitVersionString(version)).toEqual(true);
+  });
+
+  it.each(['1.0', '1.0.a', 2, '1.1+3', '2022.01'])(
+    'returns false when a non-toolkit version is passed: %s',
+    (version) => {
+      expect(isToolkitVersionString(version)).toEqual(false);
+    }
+  );
 });
