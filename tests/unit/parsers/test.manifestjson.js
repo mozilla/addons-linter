@@ -570,7 +570,7 @@ describe('ManifestJSONParser', () => {
       // error if the extension is a manifest version 3 extension.
       const jsonv3 = validManifestJSON({
         manifest_version: 3,
-        applications: {
+        browser_specific_settings: {
           gecko: {
             id: 'test@extension',
             strict_min_version: '56.0',

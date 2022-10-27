@@ -226,7 +226,7 @@ describe('Schema JSON', () => {
         ])
       );
 
-      // Errors for values in the fantary_api enum restricted to MV1 and MV3 should not be reported.
+      // Errors for values in the fantasy_api enum restricted to MV1 and MV3 should not be reported.
       expect(validateAddon.errors).toEqual(
         expect.not.arrayContaining([
           expect.objectContaining({
@@ -253,7 +253,7 @@ describe('Schema JSON', () => {
         ])
       );
 
-      // Errors for values in the fantary_api enum supported by MV2 should be reported.
+      // Errors for values in the fantasy_api enum supported by MV2 should be reported.
       expect(validateAddon.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
@@ -294,7 +294,7 @@ describe('Schema JSON', () => {
         ])
       );
 
-      // Errors for values in the fantary_api enum restricted to MV1 and MV2 should not be reported.
+      // Errors for values in the fantasy_api enum restricted to MV1 and MV2 should not be reported.
       expect(validateAddon.errors).toEqual(
         expect.not.arrayContaining([
           expect.objectContaining({
@@ -321,7 +321,7 @@ describe('Schema JSON', () => {
         ])
       );
 
-      // Errors for values in the fantary_api enum supported by MV3 should be reported.
+      // Errors for values in the fantasy_api enum supported by MV3 should be reported.
       expect(validateAddon.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({

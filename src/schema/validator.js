@@ -153,8 +153,6 @@ function getManifestVersionsRange(validatorOptions) {
       ? getDefaultConfigValue('max-manifest-version')
       : maxManifestVersion;
 
-  const addon = addonManifestVersion == null ? minimum : addonManifestVersion;
-
   // Make sure the version range is valid, if it is not:
   // raise an explicit error.
   if (minimum > maximum) {
@@ -166,7 +164,10 @@ function getManifestVersionsRange(validatorOptions) {
     );
   }
 
-  return { minimum, maximum, addon };
+  const currentAddon =
+    addonManifestVersion == null ? minimum : addonManifestVersion;
+
+  return { minimum, maximum, currentAddon };
 }
 
 export class SchemaValidator {
@@ -412,7 +413,8 @@ export class SchemaValidator {
   }
 
   _compileAddonValidator(validator) {
-    const { minimum, addon, maximum } = this.allowedManifestVersionsRange;
+    const { minimum, currentAddon, maximum } =
+      this.allowedManifestVersionsRange;
 
     const replacer = (key, value) => {
       if (Array.isArray(value)) {
@@ -425,7 +427,7 @@ export class SchemaValidator {
             includeItem =
               item.min_manifest_version >= minimum &&
               item.min_manifest_version <= maximum &&
-              item.min_manifest_version <= addon;
+              item.min_manifest_version <= currentAddon;
           }
           if (
             item?.max_manifest_version &&
@@ -434,7 +436,7 @@ export class SchemaValidator {
             includeItem =
               item.max_manifest_version >= minimum &&
               item.max_manifest_version <= maximum &&
-              item.max_manifest_version >= addon;
+              item.max_manifest_version >= currentAddon;
           }
 
           return includeItem;
@@ -444,7 +446,7 @@ export class SchemaValidator {
       return value;
     };
 
-    // Omit from the manifest schema data all entries that includes a
+    // Omit from the manifest schema data all entries that include a
     // min/max_manifest_version which is outside of the minimum
     // and maximum manifest_version currently allowed per validator
     // config and if they do not apply to the addon manifest_version.
@@ -568,7 +570,7 @@ export class SchemaValidator {
 
         if (!res) {
           // If the addon manifest is out of an enum values min/max manifest version range,
-          // don't report an additional validation error for the mix/max_manifest_version
+          // don't report an additional validation error for the min/max_manifest_version
           // keyword validation function.
           if (schema.enum) {
             return true;
