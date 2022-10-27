@@ -140,8 +140,7 @@ function filterErrors(
 }
 
 function getManifestVersionsRange(validatorOptions) {
-  const { minManifestVersion, maxManifestVersion, addonManifestVersion } =
-    validatorOptions;
+  const { minManifestVersion, maxManifestVersion } = validatorOptions;
 
   const minimum =
     minManifestVersion == null
@@ -164,10 +163,7 @@ function getManifestVersionsRange(validatorOptions) {
     );
   }
 
-  const currentAddon =
-    addonManifestVersion == null ? minimum : addonManifestVersion;
-
-  return { minimum, maximum, currentAddon };
+  return { minimum, maximum };
 }
 
 export class SchemaValidator {
@@ -251,6 +247,15 @@ export class SchemaValidator {
     }
 
     return this._addonValidator;
+  }
+
+  get addonManifestVersion() {
+    // Fallback to the lower allowed manifest version if there isn't
+    // a numeric manifest_version value in the manifest.
+    if (typeof this._options?.addonManifestVersion !== 'number') {
+      return this.allowedManifestVersionsRange.minimum;
+    }
+    return this._options.addonManifestVersion;
   }
 
   get isPrivilegedAddon() {
@@ -413,8 +418,8 @@ export class SchemaValidator {
   }
 
   _compileAddonValidator(validator) {
-    const { minimum, currentAddon, maximum } =
-      this.allowedManifestVersionsRange;
+    const { minimum, maximum } = this.allowedManifestVersionsRange;
+    const manifestVersion = this.addonManifestVersion;
 
     const replacer = (key, value) => {
       if (Array.isArray(value)) {
@@ -427,7 +432,7 @@ export class SchemaValidator {
             includeItem =
               item.min_manifest_version >= minimum &&
               item.min_manifest_version <= maximum &&
-              item.min_manifest_version <= currentAddon;
+              item.min_manifest_version <= manifestVersion;
           }
           if (
             item?.max_manifest_version &&
@@ -436,7 +441,7 @@ export class SchemaValidator {
             includeItem =
               item.max_manifest_version >= minimum &&
               item.max_manifest_version <= maximum &&
-              item.max_manifest_version >= currentAddon;
+              item.max_manifest_version >= manifestVersion;
           }
 
           return includeItem;
