@@ -236,31 +236,6 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   errorLookup(error) {
-    if (
-      error.instancePath === '/permissions' &&
-      error.keyword === SCHEMA_KEYWORDS.ANY_OF
-    ) {
-      // With the addition of the schema data for the manifest_version 3
-      // JSONSchema data, permissions has a top level anyOf schema entry
-      // which include the two alternative set of schema definitions
-      // for manifest_version 2 and manifest_version 3, which will produce
-      // one more validation error in addition to the ones reported by the
-      // manifest_version based entries included into it.
-      //
-      // The validation results from the nested entries are being already reported
-      // before the top level anyOf one and so we can ignore this redundant validation
-      // error.
-      const isManifestVersionAnyOf =
-        error.schema &&
-        error.schema.every(
-          (schema) =>
-            'min_manifest_version' in schema || 'max_manifest_version' in schema
-        );
-      if (isManifestVersionAnyOf) {
-        return null;
-      }
-    }
-
     // This is the default message.
     let baseObject = messages.JSON_INVALID;
 

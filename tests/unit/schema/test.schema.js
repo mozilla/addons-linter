@@ -123,21 +123,75 @@ describe('Schema JSON', () => {
       expect(isValidMV3).toBe(true);
     });
 
-    it('does report a validation error on max_manifest_version', () => {
+    it('does not report errors if addon manifest_version > error max_manifest_version', () => {
       // Create a validator with custom fake schema that
       // contains a `page_action` manifest property only supported
       // for manifest_version 2 extensions
       const validator = getValidatorWithFakeSchema({
         maxManifestVersion: 3,
         apiSchemas: {
-          page_action: {
-            $id: 'page_action',
+          browser_action: {
+            $id: 'browser_action',
             definitions: {
               WebExtensionManifest: {
                 properties: {
-                  page_action: {
-                    max_manifest_version: 2,
+                  browser_action: {
                     type: 'object',
+                    properties: {
+                      popup: {
+                        max_manifest_version: 2,
+                        type: 'string',
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+          fantasy_api: {
+            $id: 'fantasy_api',
+            definitions: {
+              WebExtensionManifest: {
+                properties: {
+                  fantasy_api: {
+                    optional: true,
+                    type: 'object',
+                    properties: {
+                      fantasy_key: {
+                        anyOf: [
+                          {
+                            type: 'string',
+                            enum: ['fantasy_value01'],
+                            max_manifest_version: 1,
+                          },
+                          {
+                            type: 'string',
+                            enum: ['fantasy_value02'],
+                            max_manifest_version: 2,
+                          },
+                          {
+                            type: 'string',
+                            enum: ['fantasy_value03'],
+                            min_manifest_version: 3,
+                            max_manifest_version: 3,
+                          },
+                        ],
+                      },
+                      fantasy_key_obsolete: {
+                        anyOf: [
+                          {
+                            type: 'string',
+                            enum: ['fantasy_obsolete'],
+                            max_manifest_version: 1,
+                          },
+                          {
+                            type: 'string',
+                            enum: ['fantasy_obsolete02'],
+                            max_manifest_version: 1,
+                          },
+                        ],
+                      },
+                    },
                   },
                 },
               },
@@ -146,33 +200,138 @@ describe('Schema JSON', () => {
         },
       });
 
-      const isValidMV2 = validator.validateAddon({
-        ...validManifest,
-        // Add properties that are expected to be valid
-        // with manifest_version 2.
-        manifest_version: 2,
-        page_action: {},
-      });
-      expect(validator.validateAddon.errors).toEqual(null);
-      expect(isValidMV2).toBe(true);
+      const isValidMV2 = validateAddon(
+        {
+          ...validManifest,
+          // Add properties that are expected to be valid
+          // with manifest_version 2.
+          manifest_version: 2,
+          browser_action: { popup: false },
+          fantasy_api: {
+            fantasy_key: 'fantasy_value04',
+            fantasy_key_obsolete: 'fantasy_value',
+          },
+        },
+        { validator }
+      );
 
-      const isValidMV3 = validator.validateAddon({
-        ...validManifest,
-        // Add properties that are expected to be triggering
-        // validation errors because unsupported with manifest_version 3.
-        manifest_version: 3,
-        page_action: {},
-      });
-
-      expect(validator.validateAddon.errors).toEqual(
+      // Errors for properties only available in MV2 to be reported on MV2 addon.
+      expect(validateAddon.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            instancePath: '/page_action',
-            keyword: 'max_manifest_version',
-            params: { max_manifest_version: 2 },
+            instancePath: '/browser_action/popup',
+            keyword: 'type',
+            message: 'must be string',
           }),
         ])
       );
+
+      // Errors for values in the fantasy_api enum restricted to MV1 and MV3 should not be reported.
+      expect(validateAddon.errors).toEqual(
+        expect.not.arrayContaining([
+          expect.objectContaining({
+            instancePath: '/fantasy_api/fantasy_key',
+            keyword: 'enum',
+            params: { allowedValues: ['fantasy_value01'] },
+          }),
+        ])
+      );
+      expect(validateAddon.errors).toEqual(
+        expect.not.arrayContaining([
+          expect.objectContaining({
+            instancePath: '/fantasy_api/fantasy_key',
+            keyword: 'enum',
+            params: { allowedValues: ['fantasy_value03'] },
+          }),
+        ])
+      );
+      expect(validateAddon.errors).toEqual(
+        expect.not.arrayContaining([
+          expect.objectContaining({
+            instancePath: '/fantasy_api/fantasy_key_obsolete',
+          }),
+        ])
+      );
+
+      // Errors for values in the fantasy_api enum supported by MV2 should be reported.
+      expect(validateAddon.errors).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            instancePath: '/fantasy_api/fantasy_key',
+            keyword: 'enum',
+            params: { allowedValues: ['fantasy_value02'] },
+          }),
+        ])
+      );
+
+      expect(isValidMV2).toBe(false);
+
+      // Verify validation on MV3 extension.
+
+      const isValidMV3 = validateAddon(
+        {
+          ...validManifest,
+          // Add properties that are expected to be triggering
+          // validation errors because unsupported with manifest_version 3.
+          manifest_version: 3,
+          browser_action: { popup: false },
+          fantasy_api: {
+            fantasy_key: 'fantasy_value04',
+            fantasy_key_obsolete: 'fantasy_value',
+          },
+        },
+        { validator, maxManifestVersion: 3 }
+      );
+
+      // Errors for properties only available in MV2 not to be reported on MV3 addon.
+      expect(validateAddon.errors).toEqual(
+        expect.not.arrayContaining([
+          expect.objectContaining({
+            instancePath: '/browser_action/popup',
+            keyword: 'type',
+            message: 'must be string',
+          }),
+        ])
+      );
+
+      // Errors for values in the fantasy_api enum restricted to MV1 and MV2 should not be reported.
+      expect(validateAddon.errors).toEqual(
+        expect.not.arrayContaining([
+          expect.objectContaining({
+            instancePath: '/fantasy_api/fantasy_key',
+            keyword: 'enum',
+            params: { allowedValues: ['fantasy_value01'] },
+          }),
+        ])
+      );
+      expect(validateAddon.errors).toEqual(
+        expect.not.arrayContaining([
+          expect.objectContaining({
+            instancePath: '/fantasy_api/fantasy_key',
+            keyword: 'enum',
+            params: { allowedValues: ['fantasy_value02'] },
+          }),
+        ])
+      );
+      expect(validateAddon.errors).toEqual(
+        expect.not.arrayContaining([
+          expect.objectContaining({
+            instancePath: '/fantasy_api/fantasy_key_obsolete',
+          }),
+        ])
+      );
+
+      // Errors for values in the fantasy_api enum supported by MV3 should be reported.
+      expect(validateAddon.errors).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            instancePath: '/fantasy_api/fantasy_key',
+            keyword: 'enum',
+            params: { allowedValues: ['fantasy_value03'] },
+          }),
+        ])
+      );
+
       expect(isValidMV3).toBe(false);
     });
   });
