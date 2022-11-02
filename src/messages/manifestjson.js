@@ -782,7 +782,7 @@ export const VERSION_FORMAT_DEPRECATED = {
   description: i18n._(oneLine`The version should be a string with 1 to 4
     numbers separated with dots. Each number should have up to 9 digits and
     leading zeros will no longer be allowed. Letters will no longer be allowed
-    either.`),
+    either. See https://mzl.la/3h3mCRu (MDN Docs) for more information.`),
   file: MANIFEST_JSON,
 };
 
@@ -791,6 +791,7 @@ export const VERSION_FORMAT_INVALID = {
   message: i18n._('The version string should be simplified.'),
   description: i18n._(oneLine`The version should be a string with 1 to 4
     numbers separated with dots. Each number should have up to 9 digits and
-    leading zeros are not allowed. Letters are no longer allowed.`),
+    leading zeros are not allowed. Letters are no longer allowed. See
+    https://mzl.la/3h3mCRu (MDN Docs) for more information.`),
   file: MANIFEST_JSON,
 };
