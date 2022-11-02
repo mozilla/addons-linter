@@ -113,9 +113,9 @@ export const MANIFEST_BAD_OPTIONAL_PERMISSION = {
 export const MANIFEST_BAD_HOST_PERMISSION = {
   code: 'MANIFEST_BAD_HOST_PERMISSION',
   message: i18n._('The permission type is unsupported.'),
-  // TODO(https://github.com/mozilla/addons-linter/issues/3893): link host_permissions
-  // MDN doc page here once we have created it.
-  description: i18n._('The permission type is unsupported.'),
+  description: i18n._(
+    'See https://mzl.la/3Woeqv4 (MDN Docs) for more information.'
+  ),
   file: MANIFEST_JSON,
 };
 
@@ -160,9 +160,9 @@ export const MANIFEST_OPTIONAL_PERMISSIONS = {
 export const MANIFEST_HOST_PERMISSIONS = {
   code: 'MANIFEST_HOST_PERMISSIONS',
   message: i18n._('Invalid host permission.'),
-  // TODO(https://github.com/mozilla/addons-linter/issues/3893): link host_permissions
-  // MDN doc page here once we have created it.
-  description: i18n._('Invalid host permission.'),
+  description: i18n._(
+    'See https://mzl.la/3Woeqv4 (MDN Docs) for more information.'
+  ),
   file: MANIFEST_JSON,
 };
 
