@@ -11,7 +11,7 @@ references:
     working_directory: ~/addons-linter
     docker:
       # This is the NodeJS version we run in production.
-      - image: cimg/node:14.20
+      - image: cimg/node:14.21
 
   defaults-next: &defaults-next
     <<: *defaults
