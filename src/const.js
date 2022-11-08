@@ -200,15 +200,7 @@ export const TEMPORARY_APIS = [
 // All valid CSP keywords that are options to keys like `default-src` and
 // `script-src`. Used in manifest.json parser for validation.
 // See https://mzl.la/2vwqbGU for more details and allowed options.
-export const CSP_KEYWORD_RE = new RegExp(
-  [
-    "^'(", // <-- keywords always start and end with '.
-    '(self|none|unsafe-inline|strict-dynamic|unsafe-hashed-attributes|wasm-unsafe-eval)',
-    '|(sha(256|384|512)-|nonce-).*',
-    ")'$",
-    '|^moz-extension:',
-  ].join('')
-);
+export const CSP_KEYWORD_RE = /^'(self|none|wasm-unsafe-eval)'$|^moz-extension:/;
 
 export const MESSAGES_JSON = 'messages.json';
 export const LOCALES_DIRECTORY = '_locales';
