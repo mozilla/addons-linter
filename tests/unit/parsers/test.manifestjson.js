@@ -1653,6 +1653,7 @@ describe('ManifestJSONParser', () => {
 
         'script-src *',
         'script-src moz-extension: *', // mixed with * invalid
+        'script-src self', // should have been "'self'", not "self"
         'script-src ws:',
         'script-src wss:',
         'script-src http:',
@@ -1763,6 +1764,7 @@ describe('ManifestJSONParser', () => {
       const validValues = [
         'default-src moz-extension:',
         'script-src moz-extension:',
+        "script-src  'self' ; object-src 'self' ", // spaces around
 
         // Mix with other directives
         "script-src 'self'; object-src 'self'",

@@ -269,16 +269,11 @@ export function parseCspPolicy(policy) {
 
   // See https://www.w3.org/TR/CSP3/#parse-serialized-policy
 
-  // eslint-disable-next-line no-param-reassign
-  policy = policy.toLowerCase();
-
   const parsedPolicy = {};
-  const directives = policy.split(';');
+  const directives = policy.toLowerCase().split(';');
 
   directives.forEach((directive) => {
-    // eslint-disable-next-line no-param-reassign
-    directive = directive.trim();
-    const tokens = directive.split(/\s+/);
+    const tokens = directive.trim().split(/\s+/);
 
     const name = tokens[0];
 
