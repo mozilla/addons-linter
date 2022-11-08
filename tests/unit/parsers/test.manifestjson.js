@@ -1803,6 +1803,7 @@ describe('ManifestJSONParser', () => {
         "default-src https:; script-src 'self'",
         "default-src example.com; script-src 'self'",
         "default-src http://remote.com/; script-src 'self'",
+        "default-src https:; script-src 'wasm-unsafe-eval' 'self'",
 
         // In theory, script-src should override default-src, and the insecure
         // 'unsafe-eval' directive should be ignored. But the implementation
