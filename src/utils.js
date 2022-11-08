@@ -267,6 +267,8 @@ export function parseCspPolicy(policy) {
     return {};
   }
 
+  // See https://www.w3.org/TR/CSP3/#parse-serialized-policy
+
   // eslint-disable-next-line no-param-reassign
   policy = policy.toLowerCase();
 
@@ -280,7 +282,7 @@ export function parseCspPolicy(policy) {
 
     const name = tokens[0];
 
-    if (name) {
+    if (name && !parsedPolicy[name]) {
       parsedPolicy[name] = tokens.slice(1, tokens.length);
     }
   });
