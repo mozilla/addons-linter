@@ -384,6 +384,12 @@ describe('parseCspPolicy', () => {
 
     expect(parsedPolicy['default-src']).toEqual(["'none'"]);
   });
+
+  it('should ignore repeated directives', () => {
+    const parsedPolicy = parseCspPolicy('img-src 1 2; img-src 3 4');
+
+    expect(parsedPolicy['img-src']).toEqual(['1', '2']);
+  });
 });
 
 describe('normalizePath', () => {
