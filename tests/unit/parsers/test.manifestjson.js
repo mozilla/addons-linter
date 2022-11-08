@@ -1861,6 +1861,10 @@ describe('ManifestJSONParser', () => {
       "script-src 'self' 'unsafe-eval';",
       "script-src-elem 'self' 'unsafe-eval';",
       "script-src-attr 'self' 'unsafe-eval';",
+      // While worker-src does not recognize 'unsafe-eval' in practice, the
+      // implementation rejects 'unsafe-eval' in every validated directive.
+      // Here we verify that we won't receive duplicate warnings for the same.
+      "default-src 'unsafe-eval'; script-src 'self' 'unsafe-eval'; worker-src 'unsafe-eval';",
     ];
     it.each(unsafeEvalValues)(
       'Should issue a detailed warning for %s',
