@@ -445,6 +445,7 @@ describe('JavaScript Scanner', () => {
     it('should detect module (multiple statements)', async () => {
       const code = oneLine`
         let value = 0;
+        let [, x] = [, 0];
         export { value };
       `;
 
