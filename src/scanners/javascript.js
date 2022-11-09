@@ -231,7 +231,7 @@ export default class JavaScriptScanner {
 
         if (Array.isArray(child)) {
           for (let j = 0; j < child.length; ++j) {
-            if (this._getSourceType(child[j]) === 'module') {
+            if (child[j] && this._getSourceType(child[j]) === 'module') {
               return 'module';
             }
           }
