@@ -795,3 +795,14 @@ export const VERSION_FORMAT_INVALID = {
     https://mzl.la/3h3mCRu (MDN Docs) for more information.`),
   file: MANIFEST_JSON,
 };
+
+export const INSTALL_ORIGINS_REQUIRED = {
+  code: 'INSTALL_ORIGINS_REQUIRED',
+  message: i18n._(
+    'The "install_origins" property is required in the manifest.'
+  ),
+  description: i18n._(oneLine`The "install_origins" property is required in the
+    manifest for self-hosted versions in Manifest Version 3 and above. See
+    https://mzl.la/3TEbqbE (MDN Docs) for more information.`),
+  file: MANIFEST_JSON,
+};

@@ -719,6 +719,15 @@ export default class ManifestJSONParser extends JSONParser {
       this.validateHomePageURL(this.parsedJSON.homepage_url);
     }
 
+    if (
+      this.selfHosted &&
+      this.parsedJSON.manifest_version > 2 &&
+      !this.parsedJSON.install_origins
+    ) {
+      this.collector.addError(messages.INSTALL_ORIGINS_REQUIRED);
+      this.isValid = false;
+    }
+
     this.validateRestrictedPermissions();
     this.validateExtensionID();
     this.validateHiddenAddon();

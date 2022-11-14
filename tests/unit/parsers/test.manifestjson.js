@@ -4596,6 +4596,78 @@ describe('ManifestJSONParser', () => {
       );
       expect(manifestJSONParser.isValid).toEqual(true);
     });
+
+    it('does not emit an error when the install_origins prop is missing in MV2 self-hosted', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 2,
+        install_origins: undefined,
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { selfHosted: false }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.errors).toEqual([]);
+    });
+
+    it('does not emit an error when the install_origins prop is missing in MV3', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 3,
+        install_origins: undefined,
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { schemaValidatorOptions: { maxManifestVersion: 3 } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.errors).toEqual([]);
+    });
+
+    it('does not emit an error when the install_origins prop is empty in MV3 self-hosted', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 3,
+        install_origins: [],
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { selfHosted: true, schemaValidatorOptions: { maxManifestVersion: 3 } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(addonLinter.collector.errors).toEqual([]);
+    });
+
+    it('emits an error when the install_origins prop is missing in MV3 self-hosted', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 3,
+        install_origins: undefined,
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector,
+        { selfHosted: true, schemaValidatorOptions: { maxManifestVersion: 3 } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      expect(addonLinter.collector.errors[0]).toMatchObject(
+        expect.objectContaining({
+          code: messages.INSTALL_ORIGINS_REQUIRED.code,
+        })
+      );
+    });
   });
 
   describe('experimentApiPaths', () => {

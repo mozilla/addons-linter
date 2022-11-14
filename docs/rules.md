@@ -141,6 +141,7 @@ Rules are sorted by severity.
 | `APPLICATIONS_INVALID`                                  | error    | The `applications` property is no longer accepted in Manifest Version 3 and above.                                                                                 |
 | `VERSION_FORMAT_DEPRECATED`                             | warning  | The version string should be simplified.                                                                                                                           |
 | `VERSION_FORMAT_INVALID`                                | error    | The version string is not valid because its format is too complex.                                                                                                 |
+| `INSTALL_ORIGINS_REQUIRED`                              | error    | The `install_origins` property is required in the manifest for self-hosted versions in Manifest Version 3 and above.                                               |
 
 ### Static Theme / manifest.json
 
