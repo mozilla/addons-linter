@@ -1622,22 +1622,11 @@ describe('ManifestJSONParser', () => {
   });
 
   describe('content security policy', () => {
-    it('should warn on rules allowing remote code execution', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({
-        content_security_policy: 'foo',
-      });
-      const manifestJSONParser = new ManifestJSONParser(
-        json,
-        addonLinter.collector
-      );
-
-      expect(manifestJSONParser.isValid).toEqual(true);
-      expect(addonLinter.collector.warnings.length).toEqual(0);
-    });
-
     describe('should warn on invalid values according to Add-On Policies', () => {
       const invalidValues = [
+        '', // Empty CSP does not clear the CSP, so it should warn.
+        'foo', // invalid directive, equivalent to empty CSP
+
         'default-src *',
         'default-src moz-extension: *', // mixed with * invalid
         'default-src ws:',
@@ -1665,39 +1654,43 @@ describe('ManifestJSONParser', () => {
         'script-src web.example.com:80',
         'script-src web.example.com:443',
 
-        'script-src-elem *',
-        'script-src-elem moz-extension: *', // mixed with * invalid
-        'script-src-elem ws:',
-        'script-src-elem wss:',
-        'script-src-elem http:',
-        'script-src-elem https:',
-        'script-src-elem ftp:',
-        'script-src-elem http://cdn.example.com/my.js',
-        'script-src-elem https://cdn.example.com/my.js',
-        'script-src-elem web.example.com',
-        'script-src-elem web.example.com:80',
-        'script-src-elem web.example.com:443',
+        // Without a secure default-src or script-src, these don't count:
+        "script-src-elem 'self'",
+        "worker-src 'self'",
+
+        'default-src; script-src-elem *',
+        'default-src; script-src-elem moz-extension: *', // mixed with * invalid
+        'default-src; script-src-elem ws:',
+        'default-src; script-src-elem wss:',
+        'default-src; script-src-elem http:',
+        'default-src; script-src-elem https:',
+        'default-src; script-src-elem ftp:',
+        'default-src; script-src-elem http://cdn.example.com/my.js',
+        'default-src; script-src-elem https://cdn.example.com/my.js',
+        'default-src; script-src-elem web.example.com',
+        'default-src; script-src-elem web.example.com:80',
+        'default-src; script-src-elem web.example.com:443',
         // TODO: double-check if there are other keywords or sources that should
         // warn when used with script-src-elem/-attr that would be worth checking.
 
-        'worker-src *',
-        'worker-src moz-extension: *', // mixed with * invalid
-        'worker-src ws:',
-        'worker-src wss:',
-        'worker-src http:',
-        'worker-src https:',
-        'worker-src ftp:',
-        'worker-src http://cdn.example.com/my.js',
-        'worker-src https://cdn.example.com/my.js',
-        'worker-src web.example.com',
-        'worker-src web.example.com:80',
-        'worker-src web.example.com:443',
+        'default-src; worker-src *',
+        'default-src; worker-src moz-extension: *', // mixed with * invalid
+        'default-src; worker-src ws:',
+        'default-src; worker-src wss:',
+        'default-src; worker-src http:',
+        'default-src; worker-src https:',
+        'default-src; worker-src ftp:',
+        'default-src; worker-src http://cdn.example.com/my.js',
+        'default-src; worker-src https://cdn.example.com/my.js',
+        'default-src; worker-src web.example.com',
+        'default-src; worker-src web.example.com:80',
+        'default-src; worker-src web.example.com:443',
 
         // Properly match mixed with other directives
-        "script-src https: 'unsafe-inline'; object-src 'self'",
+        "default-src; script-src https: 'unsafe-inline'; object-src 'self'",
         "default-src http:; worker-src: 'self'",
-        "script-src-elem https: 'unsafe-inline'; script-src 'self'",
-        "script-src-attr 'self'; script-src *",
+        "default-src; script-src-elem https: 'unsafe-inline'; script-src 'self'",
+        "default-src; script-src-attr 'self'; script-src *",
       ];
 
       // Manifest v2 formats.
@@ -1771,7 +1764,7 @@ describe('ManifestJSONParser', () => {
         "script-src 'none'; object-src 'self'",
 
         // We only walk through default-src and script-src
-        'style-src http://by.cdn.com/',
+        'default-src; style-src http://by.cdn.com/',
 
         // unsafe-inline is rejected by Firefox WebExtensions manifest validation
         // (AddonContentPolicy::ValidateAddonCSP will be reporting an error if it
@@ -1782,18 +1775,20 @@ describe('ManifestJSONParser', () => {
         // 'wasm-unsafe-eval' is permitted, despite the unsafe-eval substring.
         "script-src 'self' 'wasm-unsafe-eval'",
 
-        "script-src-elem 'self'",
-        "script-src-elem 'none'",
+        // A secure default-src or script-src is required for the script-src-elem
+        // directive to be potentially accepted as secure.
+        "default-src; script-src-elem 'self'",
+        "default-src; script-src-elem 'none'",
 
         // TODO(https://github.com/mozilla/addons-linter/issues/4518): to be reported as invalid.
-        "script-src-elem 'nonce-abc'",
-        "script-src-elem 'sha256-/b/HvSeUCyUL0XlV1ZK0nwDk18O2BpM5Scj+dZ1weIY='",
+        "default-src; script-src-elem 'nonce-abc'",
+        "default-src; script-src-elem 'sha256-/b/HvSeUCyUL0XlV1ZK0nwDk18O2BpM5Scj+dZ1weIY='",
 
-        "script-src-attr 'self'",
-        "script-src-attr 'none'",
+        "default-src; script-src-attr 'self'",
+        "default-src; script-src-attr 'none'",
         // TODO(https://github.com/mozilla/addons-linter/issues/4518): to be reported as invalid.
-        "script-src-attr 'nonce-abc'",
-        "script-src-attr 'sha256-/b/HvSeUCyUL0XlV1ZK0nwDk18O2BpM5Scj+dZ1weIY='",
+        "default-src; script-src-attr 'nonce-abc'",
+        "default-src; script-src-attr 'sha256-/b/HvSeUCyUL0XlV1ZK0nwDk18O2BpM5Scj+dZ1weIY='",
         // TODO: double-check if there are other keywords or sources that should not
         // warn when used with script-src-elem/-attr that would be worth checking.
 
@@ -1864,7 +1859,7 @@ describe('ManifestJSONParser', () => {
       // While worker-src does not recognize 'unsafe-eval' in practice, the
       // implementation rejects 'unsafe-eval' in every validated directive.
       // Here we verify that we won't receive duplicate warnings for the same.
-      "default-src 'unsafe-eval'; script-src 'self' 'unsafe-eval'; worker-src 'unsafe-eval';",
+      "default-src http: 'unsafe-eval'; script-src 'self' 'unsafe-eval'; worker-src 'unsafe-eval';",
     ];
     it.each(unsafeEvalValues)(
       'Should issue a detailed warning for %s',
@@ -1888,6 +1883,8 @@ describe('ManifestJSONParser', () => {
         expect(warnings[0].message).toEqual(
           messages.manifestCspUnsafeEval('content_security_policy').message
         );
+        expect(warnings[1].code).toEqual(messages.MANIFEST_CSP);
+        expect(warnings.length).toEqual(2);
 
         // Clear any warnings and errors collected.
         addonLinter.collector.warnings = [];
@@ -1922,12 +1919,16 @@ describe('ManifestJSONParser', () => {
 
         const keys = Object.keys(contentSecurityPolicy);
         for (let i = 0; i < keys.length; i++) {
-          expect(warningsV3[i].code).toEqual(messages.MANIFEST_CSP_UNSAFE_EVAL);
-          expect(warningsV3[i].message).toContain(
+          // Expecting 2 codes for each test case: MANIFEST_CSP_UNSAFE_EVAL + MANIFEST_CSP.
+          expect(warningsV3[i * 2].code).toEqual(
+            messages.MANIFEST_CSP_UNSAFE_EVAL
+          );
+          expect(warningsV3[i * 2].message).toContain(
             `content_security_policy.${keys[i]}`
           );
+          expect(warningsV3[i * 2 + 1].code).toEqual(messages.MANIFEST_CSP);
         }
-        expect(warningsV3.length).toBe(3);
+        expect(warningsV3.length).toEqual(6);
       }
     );
   });

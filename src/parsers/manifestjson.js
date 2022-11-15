@@ -486,7 +486,7 @@ export default class ManifestJSONParser extends JSONParser {
       this.parsedJSON.applications = this.parsedJSON.browser_specific_settings;
     }
 
-    if (this.parsedJSON.content_security_policy) {
+    if (this.parsedJSON.content_security_policy != null) {
       this.validateCspPolicy(this.parsedJSON.content_security_policy);
     }
 
@@ -1042,8 +1042,8 @@ export default class ManifestJSONParser extends JSONParser {
     const isSecureCspValue = (value) => CSP_KEYWORD_RE.test(value);
 
     // A missing default-src directive is very permissive, thus insecure:
-    let insecureSrcDirective = false;
-    let warnInsecureCsp = false;
+    let insecureSrcDirective = !directives['default-src'];
+    let warnInsecureCsp = insecureSrcDirective;
     let warnInsecureEval = false;
 
     for (let i = 0; i < candidates.length; i++) {
