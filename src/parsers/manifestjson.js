@@ -1039,6 +1039,8 @@ export default class ManifestJSONParser extends JSONParser {
       'worker-src',
     ];
 
+    const isSecureCspValue = (value) => CSP_KEYWORD_RE.test(value);
+
     let insecureSrcDirective = false;
     for (let i = 0; i < candidates.length; i++) {
       /* eslint-disable no-continue */
@@ -1056,10 +1058,10 @@ export default class ManifestJSONParser extends JSONParser {
         if (
           insecureSrcDirective &&
           candidate === 'script-src' &&
-          values.length === 1 &&
-          values[0] === "'self'"
+          values.every(isSecureCspValue)
         ) {
           insecureSrcDirective = false;
+          continue;
         }
 
         for (const value of values) {
@@ -1072,7 +1074,7 @@ export default class ManifestJSONParser extends JSONParser {
             continue;
           }
 
-          if (!CSP_KEYWORD_RE.test(value)) {
+          if (!isSecureCspValue(value)) {
             // everything else looks like something we don't understand
             // / support otherwise is invalid so let's warn about that.
             if (candidate === 'default-src') {
