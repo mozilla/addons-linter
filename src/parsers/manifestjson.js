@@ -1041,7 +1041,11 @@ export default class ManifestJSONParser extends JSONParser {
 
     const isSecureCspValue = (value) => CSP_KEYWORD_RE.test(value);
 
+    // A missing default-src directive is very permissive, thus insecure:
     let insecureSrcDirective = false;
+    let warnInsecureCsp = false;
+    let warnInsecureEval = false;
+
     for (let i = 0; i < candidates.length; i++) {
       /* eslint-disable no-continue */
       const candidate = candidates[i];
@@ -1061,6 +1065,7 @@ export default class ManifestJSONParser extends JSONParser {
           values.every(isSecureCspValue)
         ) {
           insecureSrcDirective = false;
+          warnInsecureCsp = false;
           continue;
         }
 
@@ -1068,28 +1073,30 @@ export default class ManifestJSONParser extends JSONParser {
           // Add a more detailed message for unsafe-eval to avoid confusion
           // about why it's forbidden.
           if (value === "'unsafe-eval'") {
-            this.collector.addWarning(
-              messages.manifestCspUnsafeEval(manifestPropName)
-            );
+            warnInsecureEval = true;
             continue;
           }
 
           if (!isSecureCspValue(value)) {
+            warnInsecureCsp = true;
             // everything else looks like something we don't understand
             // / support otherwise is invalid so let's warn about that.
             if (candidate === 'default-src') {
               // Remember insecure 'default-src' to check whether a later
               // 'script-src' makes it secure
               insecureSrcDirective = true;
-            } else {
-              this.collector.addWarning(messages.manifestCsp(manifestPropName));
             }
             continue;
           }
         }
       }
     }
-    if (insecureSrcDirective) {
+    if (warnInsecureEval) {
+      this.collector.addWarning(
+        messages.manifestCspUnsafeEval(manifestPropName)
+      );
+    }
+    if (warnInsecureCsp) {
       this.collector.addWarning(messages.manifestCsp(manifestPropName));
     }
   }
