@@ -1029,9 +1029,6 @@ export default class ManifestJSONParser extends JSONParser {
   validateCspPolicyString(policy, manifestPropName) {
     const directives = parseCspPolicy(policy);
 
-    // Not sure about FTP here but CSP spec treats ws/wss as
-    // equivalent to http/https.
-    const validProtocols = ['ftp:', 'http:', 'https:', 'ws:', 'wss:'];
     // The order is important here, 'default-src' needs to be before
     // 'script-src' to ensure it can overwrite default-src security policies
     const candidates = [
@@ -1065,42 +1062,17 @@ export default class ManifestJSONParser extends JSONParser {
           insecureSrcDirective = false;
         }
 
-        for (let j = 0; j < values.length; j++) {
-          let value = values[j].trim();
-
-          if (value.startsWith('moz-extension:')) {
-            // Valid, continue...
-            continue;
-          }
-
-          const hasProtocol =
-            (value.endsWith(':') && validProtocols.includes(value)) ||
-            validProtocols.some((x) => value.startsWith(x));
-
-          if (hasProtocol) {
-            if (candidate === 'default-src') {
-              // Remember insecure 'default-src' to check whether a later
-              // 'script-src' makes it secure
-              insecureSrcDirective = true;
-            } else {
-              this.collector.addWarning(messages.manifestCsp(manifestPropName));
-            }
-            continue;
-          }
-
-          // strip leading and ending single quotes.
-          value = value.replace(/^[']/, '').replace(/[']$/, '');
-
+        for (const value of values) {
           // Add a more detailed message for unsafe-eval to avoid confusion
           // about why it's forbidden.
-          if (value === 'unsafe-eval') {
+          if (value === "'unsafe-eval'") {
             this.collector.addWarning(
               messages.manifestCspUnsafeEval(manifestPropName)
             );
             continue;
           }
 
-          if (value === '*' || value.search(CSP_KEYWORD_RE) === -1) {
+          if (!CSP_KEYWORD_RE.test(value)) {
             // everything else looks like something we don't understand
             // / support otherwise is invalid so let's warn about that.
             if (candidate === 'default-src') {
