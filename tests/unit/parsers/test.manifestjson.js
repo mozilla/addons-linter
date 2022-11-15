@@ -1653,6 +1653,14 @@ describe('ManifestJSONParser', () => {
         'script-src web.example.com',
         'script-src web.example.com:80',
         'script-src web.example.com:443',
+        "script-src 'nonce-abc'",
+        "script-src 'sha256-/b/HvSeUCyUL0XlV1ZK0nwDk18O2BpM5Scj+dZ1weIY='",
+
+        // unsafe-inline is rejected by Firefox WebExtensions manifest validation
+        // (AddonContentPolicy::ValidateAddonCSP will be reporting an error if it
+        // is found in a custom CSP set from the Extension throuh the manifest.json
+        // field, the custom CSP ignored and the default CSP will be used instead).
+        "script-src 'self' 'unsafe-inline';",
 
         // Without a secure default-src or script-src, these don't count:
         "script-src-elem 'self'",
@@ -1670,8 +1678,11 @@ describe('ManifestJSONParser', () => {
         'default-src; script-src-elem web.example.com',
         'default-src; script-src-elem web.example.com:80',
         'default-src; script-src-elem web.example.com:443',
-        // TODO: double-check if there are other keywords or sources that should
-        // warn when used with script-src-elem/-attr that would be worth checking.
+        "default-src; script-src-elem 'nonce-abc'",
+        "default-src; script-src-elem 'sha256-/b/HvSeUCyUL0XlV1ZK0nwDk18O2BpM5Scj+dZ1weIY='",
+
+        "default-src; script-src-attr 'nonce-abc'",
+        "default-src; script-src-attr 'sha256-/b/HvSeUCyUL0XlV1ZK0nwDk18O2BpM5Scj+dZ1weIY='",
 
         'default-src; worker-src *',
         'default-src; worker-src moz-extension: *', // mixed with * invalid
@@ -1766,12 +1777,6 @@ describe('ManifestJSONParser', () => {
         // We only walk through default-src and script-src
         'default-src; style-src http://by.cdn.com/',
 
-        // unsafe-inline is rejected by Firefox WebExtensions manifest validation
-        // (AddonContentPolicy::ValidateAddonCSP will be reporting an error if it
-        // is found in a custom CSP set from the Extension throuh the manifest.json
-        // field, the custom CSP ignored and the default CSP will be used instead).
-        "script-src 'self' 'unsafe-inline';",
-
         // 'wasm-unsafe-eval' is permitted, despite the unsafe-eval substring.
         "script-src 'self' 'wasm-unsafe-eval'",
 
@@ -1780,17 +1785,8 @@ describe('ManifestJSONParser', () => {
         "default-src; script-src-elem 'self'",
         "default-src; script-src-elem 'none'",
 
-        // TODO(https://github.com/mozilla/addons-linter/issues/4518): to be reported as invalid.
-        "default-src; script-src-elem 'nonce-abc'",
-        "default-src; script-src-elem 'sha256-/b/HvSeUCyUL0XlV1ZK0nwDk18O2BpM5Scj+dZ1weIY='",
-
         "default-src; script-src-attr 'self'",
         "default-src; script-src-attr 'none'",
-        // TODO(https://github.com/mozilla/addons-linter/issues/4518): to be reported as invalid.
-        "default-src; script-src-attr 'nonce-abc'",
-        "default-src; script-src-attr 'sha256-/b/HvSeUCyUL0XlV1ZK0nwDk18O2BpM5Scj+dZ1weIY='",
-        // TODO: double-check if there are other keywords or sources that should not
-        // warn when used with script-src-elem/-attr that would be worth checking.
 
         // 'default-src' is insecure, but the limiting 'script-src' prevents
         // remote script injection
