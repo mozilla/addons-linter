@@ -2909,6 +2909,46 @@ describe('ManifestJSONParser', () => {
 
       expect(manifestJSONParser.isValid).toBeTruthy();
     });
+
+    it('does not error if background.page is used with manifest_version: 3', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 3,
+        background: { page: 'background_page.html' },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        linter.collector,
+        {
+          io: { files: { 'background_page.html': '' } },
+          schemaValidatorOptions: {
+            maxManifestVersion: 3,
+          },
+        }
+      );
+
+      expect(manifestJSONParser.isValid).toBeTruthy();
+    });
+
+    it('does not error if background.scripts is used with manifest_version: 3', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 3,
+        background: { scripts: ['background_script.js'] },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        linter.collector,
+        {
+          io: { files: { 'background_script.js': '' } },
+          schemaValidatorOptions: {
+            maxManifestVersion: 3,
+          },
+        }
+      );
+
+      expect(manifestJSONParser.isValid).toBeTruthy();
+    });
   });
 
   describe('content_scripts', () => {
