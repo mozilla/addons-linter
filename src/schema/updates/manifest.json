@@ -30,12 +30,9 @@
                   "background": {
                     "anyOf": [
                       {
-                        "additionalProperties": false,
-                        "max_manifest_version": 2
+                        "additionalProperties": false
                       },
-                      {
-                        "max_manifest_version": 2
-                      },
+                      {},
                       {
                         "min_manifest_version": 3
                       }
