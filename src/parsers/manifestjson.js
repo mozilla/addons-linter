@@ -513,7 +513,15 @@ export default class ManifestJSONParser extends JSONParser {
         );
       }
       if (this.parsedJSON.background.service_worker) {
-        if (this.parsedJSON.manifest_version >= 3) {
+        if (!this.schemaValidatorOptions?.enableBackgroundServiceWorker) {
+          // Report an error and mark the manifest as invalid if
+          // background service worker support isn't enabled by
+          // the addons-linter feature flag.
+          this.collector.addError(
+            messages.manifestFieldUnsupported('/background')
+          );
+          this.isValid = false;
+        } else if (this.parsedJSON.manifest_version >= 3) {
           this.validateFileExistsInPackage(
             this.parsedJSON.background.service_worker,
             'script'

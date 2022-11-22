@@ -2858,7 +2858,7 @@ describe('ManifestJSONParser', () => {
       );
     });
 
-    it('does not error if background.service_worker is used with manifest_version: 3', () => {
+    it('does not allow background.service_worker unless enabled by feature flag', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         manifest_version: 3,
@@ -2869,7 +2869,41 @@ describe('ManifestJSONParser', () => {
         linter.collector,
         {
           io: { files: { 'background_worker.js': '' } },
-          schemaValidatorOptions: { maxManifestVersion: 3 },
+          schemaValidatorOptions: {
+            maxManifestVersion: 3,
+          },
+        }
+      );
+
+      expect(manifestJSONParser.isValid).toBeFalsy();
+      expect(linter.collector.errors).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            code: 'MANIFEST_FIELD_UNSUPPORTED',
+            message: expect.stringMatching(
+              /"\/background" is in an unsupported format/
+            ),
+            file: 'manifest.json',
+          }),
+        ])
+      );
+    });
+
+    it('does not error if background.service_worker is used with manifest_version: 3 and support is enabled', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 3,
+        background: { service_worker: 'background_worker.js' },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        linter.collector,
+        {
+          io: { files: { 'background_worker.js': '' } },
+          schemaValidatorOptions: {
+            maxManifestVersion: 3,
+            enableBackgroundServiceWorker: true,
+          },
         }
       );
 

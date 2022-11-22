@@ -40,7 +40,9 @@ export function manifestFieldPrivilegedOnly(fieldName) {
 
 export const MANIFEST_FIELD_UNSUPPORTED = 'MANIFEST_FIELD_UNSUPPORTED';
 export function manifestFieldUnsupported(fieldName, error) {
-  const versionRange = errorParamsToUnsupportedVersionRange(error.params);
+  const versionRange = error
+    ? errorParamsToUnsupportedVersionRange(error.params)
+    : null;
   const messageTmpl = versionRange
     ? i18n._(oneLine`"%(fieldName)s" is in a format not supported in
                      manifest versions %(versionRange)s.`)
