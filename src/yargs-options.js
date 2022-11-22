@@ -47,6 +47,11 @@ const options = {
     type: 'boolean',
     default: false,
   },
+  'enable-background-service-worker': {
+    describe: 'Enable MV3 background service worker support',
+    type: 'boolean',
+    default: false,
+  },
   'min-manifest-version': {
     describe:
       'Set a custom minimum allowed value for the manifest_version property',

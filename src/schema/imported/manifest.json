@@ -20,7 +20,8 @@
               "$ref": "#/types/BrowserSpecificSettings"
             },
             {
-              "description": "The applications property is deprecated, please use 'browser_specific_settings'"
+              "description": "The applications property is deprecated, please use 'browser_specific_settings'",
+              "max_manifest_version": 2
             }
           ],
           "max_manifest_version": 2
@@ -49,8 +50,8 @@
         },
         "version": {
           "type": "string",
-          "description": "Version string must be a string comprising one to four dot-separated integers (0-65535). E.g: 1.2.3.",
-          "format": "versionString"
+          "format": "versionString",
+          "description": "Version string must be a string comprising one to four dot-separated integers (0-65535). E.g: 1.2.3."
         },
         "homepage_url": {
           "type": "string",
@@ -146,8 +147,7 @@
                       "required": [
                         "page"
                       ],
-                      "additionalProperties": false,
-                      "max_manifest_version": 2
+                      "additionalProperties": false
                     },
                     {
                       "type": "object",
@@ -166,8 +166,7 @@
                       },
                       "required": [
                         "scripts"
-                      ],
-                      "max_manifest_version": 2
+                      ]
                     },
                     {
                       "type": "object",
