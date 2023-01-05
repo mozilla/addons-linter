@@ -41,6 +41,78 @@
       ]
     },
     {
+      "name": "getEnabledRulesets",
+      "type": "function",
+      "description": "Returns the ids for the current set of enabled static rulesets.",
+      "async": "callback",
+      "parameters": [
+        {
+          "name": "callback",
+          "type": "function",
+          "parameters": [
+            {
+              "type": "array",
+              "name": "rulesetIds",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "updateEnabledRulesets",
+      "type": "function",
+      "description": "Returns the ids for the current set of enabled static rulesets.",
+      "async": "callback",
+      "parameters": [
+        {
+          "name": "updateRulesetOptions",
+          "type": "object",
+          "properties": {
+            "disableRulesetIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            },
+            "enableRulesetIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            }
+          }
+        },
+        {
+          "name": "callback",
+          "type": "function",
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "name": "getAvailableStaticRuleCount",
+      "type": "function",
+      "description": "Returns the remaining number of static rules an extension can enable",
+      "async": "callback",
+      "parameters": [
+        {
+          "name": "callback",
+          "type": "function",
+          "parameters": [
+            {
+              "name": "count",
+              "type": "integer"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "getSessionRules",
       "type": "function",
       "description": "Returns the current set of session scoped rules for the extension.",
@@ -168,6 +240,52 @@
           "min_manifest_version": 3
         }
       ]
+    },
+    "WebExtensionManifest": {
+      "properties": {
+        "declarative_net_request": {
+          "type": "object",
+          "min_manifest_version": 3,
+          "properties": {
+            "rule_resources": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[^_]",
+                    "description": "A non-empty string uniquely identifying the ruleset. IDs beginning with '_' are reserved for internal use."
+                  },
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the ruleset is enabled by default."
+                  },
+                  "path": {
+                    "allOf": [
+                      {
+                        "$ref": "manifest#/types/ExtensionURL"
+                      },
+                      {
+                        "description": "The path of the JSON ruleset relative to the extension directory."
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "enabled",
+                  "path"
+                ]
+              }
+            }
+          },
+          "required": [
+            "rule_resources"
+          ]
+        }
+      }
     }
   },
   "refs": {
@@ -178,6 +296,10 @@
     "declarativeNetRequest#/definitions/PermissionNoPrompt": {
       "namespace": "manifest",
       "type": "PermissionNoPrompt"
+    },
+    "declarativeNetRequest#/definitions/WebExtensionManifest": {
+      "namespace": "manifest",
+      "type": "WebExtensionManifest"
     }
   },
   "types": {
@@ -227,6 +349,86 @@
         "ruleId",
         "rulesetId"
       ]
+    },
+    "URLTransform": {
+      "type": "object",
+      "description": "Describes the type of the Rule.action.redirect.transform property.",
+      "properties": {
+        "scheme": {
+          "type": "string",
+          "description": "The new scheme for the request.",
+          "enum": [
+            "http",
+            "https",
+            "moz-extension"
+          ]
+        },
+        "username": {
+          "type": "string",
+          "description": "The new username for the request."
+        },
+        "password": {
+          "type": "string",
+          "description": "The new password for the request."
+        },
+        "host": {
+          "type": "string",
+          "description": "The new host name for the request."
+        },
+        "port": {
+          "type": "string",
+          "description": "The new port for the request. If empty, the existing port is cleared."
+        },
+        "path": {
+          "type": "string",
+          "description": "The new path for the request. If empty, the existing path is cleared."
+        },
+        "query": {
+          "type": "string",
+          "description": "The new query for the request. Should be either empty, in which case the existing query is cleared; or should begin with '?'. Cannot be specified if 'queryTransform' is specified."
+        },
+        "queryTransform": {
+          "type": "object",
+          "description": "Add, remove or replace query key-value pairs. Cannot be specified if 'query' is specified.",
+          "properties": {
+            "removeParams": {
+              "type": "array",
+              "description": "The list of query keys to be removed.",
+              "items": {
+                "type": "string"
+              }
+            },
+            "addOrReplaceParams": {
+              "type": "array",
+              "description": "The list of query key-value pairs to be added or replaced.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  },
+                  "replaceOnly": {
+                    "type": "boolean",
+                    "description": "If true, the query key is replaced only if it's already present. Otherwise, the key is also added if it's missing.",
+                    "default": false
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ]
+              }
+            }
+          }
+        },
+        "fragment": {
+          "type": "string",
+          "description": "The new fragment for the request. Should be either empty, in which case the existing fragment is cleared; or should begin with '#'."
+        }
+      }
     },
     "Rule": {
       "type": "object",
@@ -371,8 +573,14 @@
                   "description": "Path relative to the extension directory. Should start with '/'."
                 },
                 "transform": {
-                  "type": "object",
-                  "description": "TODO: URLTransform - Url transformations to perform."
+                  "allOf": [
+                    {
+                      "$ref": "#/types/URLTransform"
+                    },
+                    {
+                      "description": "Url transformations to perform."
+                    }
+                  ]
                 },
                 "url": {
                   "type": "string",
@@ -398,15 +606,16 @@
                   },
                   "operation": {
                     "type": "string",
-                    "description": "The operation to be performed on a header. The 'append' operation is not supported for request headers.",
+                    "description": "The operation to be performed on a header.",
                     "enum": [
+                      "append",
                       "set",
                       "remove"
                     ]
                   },
                   "value": {
                     "type": "string",
-                    "description": "The new value for the header. Must be specified for the 'set' operation."
+                    "description": "The new value for the header. Must be specified for the 'append' and 'set' operations."
                   }
                 },
                 "required": [

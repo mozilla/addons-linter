@@ -1731,6 +1731,10 @@
           "type": "string",
           "description": "The key exchange algorithm used in this request if state is \"secure\"."
         },
+        "secretKeyLength": {
+          "type": "number",
+          "description": "The length (in bits) of the secret key."
+        },
         "signatureSchemeName": {
           "type": "string",
           "description": "The signature scheme used in this request if state is \"secure\"."
