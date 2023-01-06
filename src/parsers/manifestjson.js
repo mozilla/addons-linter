@@ -782,8 +782,12 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateRestrictedPermissions() {
-    const permissionsInManifest = (this.parsedJSON.permissions || []).map(
-      (permission) => String(permission).toLowerCase()
+    const permissions = Array.isArray(this.parsedJSON.permissions)
+      ? this.parsedJSON.permissions
+      : [];
+
+    const permissionsInManifest = permissions.map((permission) =>
+      String(permission).toLowerCase()
     );
 
     if (permissionsInManifest.length === 0) {
