@@ -615,7 +615,7 @@ describe('ManifestJSONParser', () => {
 
   describe('bad permissions', () => {
     for (const manifestKey of ['permissions', 'optional_permissions']) {
-      it(`should not error if ${manifestKey} is a string (even if unknown)`, () => {
+      it(`should not error if a value in ${manifestKey} is a string (even if unknown)`, () => {
         const addonLinter = new Linter({ _: ['bar'] });
         const expectedMsgCode =
           manifestKey === 'permissions'
@@ -639,7 +639,7 @@ describe('ManifestJSONParser', () => {
         });
       });
 
-      it(`should error if ${manifestKey} is not a string`, () => {
+      it(`should error if a value in ${manifestKey} is not a string`, () => {
         const addonLinter = new Linter({ _: ['bar'] });
         const expectedMsgCode =
           manifestKey === 'permissions'
@@ -665,7 +665,7 @@ describe('ManifestJSONParser', () => {
         expect(errors[0].message).toContain('must be string');
       });
 
-      it(`should error if ${manifestKey} is duplicated`, () => {
+      it(`should error if values in ${manifestKey} are duplicated`, () => {
         const addonLinter = new Linter({ _: ['bar'] });
         const expectedMsgCode =
           manifestKey === 'permissions'
@@ -684,6 +684,26 @@ describe('ManifestJSONParser', () => {
         const { errors } = addonLinter.collector;
         expect(errors[0].code).toEqual(expectedMsgCode);
         expect(errors[0].message).toContain('must NOT have duplicate items');
+      });
+
+      it(`should error if ${manifestKey} is not an array`, () => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          [manifestKey]: 'not-an-array',
+        });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector
+        );
+
+        expect(manifestJSONParser.isValid).toEqual(false);
+        const { errors } = addonLinter.collector;
+        expect(errors).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({ code: 'MANIFEST_FIELD_INVALID' }),
+          ])
+        );
       });
     }
   });
