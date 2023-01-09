@@ -25,6 +25,30 @@ describe('declarative_net_request', () => {
     expect(validateAddon.errors).toEqual(null);
   });
 
+  it('should not report errors on unknown properties', () => {
+    const manifest = cloneDeep({
+      ...validManifest,
+      manifest_version: 3,
+      declarative_net_request: {
+        unknown_property_dnr: {
+          some_other_prop: 'unknown value dnr',
+        },
+        rule_resources: [
+          {
+            id: 'test-ruleset-id',
+            enabled: true,
+            path: 'ruleset-test.json',
+            unknown_property: 'unknown value rule_resources',
+          },
+        ],
+      },
+    });
+    validateAddon(manifest, {
+      maxManifestVersion: 3,
+    });
+    expect(validateAddon.errors).toEqual(null);
+  });
+
   it('should report error on invalid rule_resources id', () => {
     const manifest = cloneDeep({
       ...validManifest,
