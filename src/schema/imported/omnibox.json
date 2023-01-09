@@ -83,6 +83,17 @@
       "type": "function",
       "description": "User has ended the keyword input session without accepting the input.",
       "parameters": []
+    },
+    {
+      "name": "onDeleteSuggestion",
+      "type": "function",
+      "description": "User has deleted a suggested result.",
+      "parameters": [
+        {
+          "type": "string",
+          "name": "text"
+        }
+      ]
     }
   ],
   "definitions": {
@@ -141,6 +152,10 @@
           "type": "string",
           "minLength": 1,
           "description": "The text that is displayed in the URL dropdown. Can contain XML-style markup for styling. The supported tags are 'url' (for a literal URL), 'match' (for highlighting text that matched what the user's query), and 'dim' (for dim helper text). The styles can be nested, eg. <dim><match>dimmed match</match></dim>. You must escape the five predefined entities to display them as text: stackoverflow.com/a/1091953/89484 "
+        },
+        "deletable": {
+          "type": "boolean",
+          "description": "Whether the suggest result can be deleted by the user."
         },
         "descriptionStyles": {
           "unsupported": true,

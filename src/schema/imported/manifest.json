@@ -409,6 +409,9 @@
           "$ref": "commands#/definitions/WebExtensionManifest"
         },
         {
+          "$ref": "declarativeNetRequest#/definitions/WebExtensionManifest"
+        },
+        {
           "$ref": "devtools#/definitions/WebExtensionManifest"
         },
         {
