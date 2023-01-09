@@ -1772,5 +1772,18 @@ describe('Linter.run()', () => {
 
       expect(FakeXpi.closeWasCalled).toEqual(true);
     });
+
+    it('should work with empty ZIP files', async () => {
+      const addonLinter = new Linter({
+        _: ['tests/fixtures/empty.zip'],
+        disableXpiAutoclose: true,
+      });
+
+      await addonLinter.run();
+
+      const { errors } = addonLinter.collector;
+      expect(errors.length).toEqual(1);
+      expect(errors[0].code).toEqual(messages.TYPE_NO_MANIFEST_JSON.code);
+    });
   });
 });
