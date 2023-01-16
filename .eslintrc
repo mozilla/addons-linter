@@ -13,8 +13,8 @@
   "settings": {
     "import/resolver": {
       "node": {
-        // This adds ./src for relative imports.
-        "moduleDirectory": ["node_modules", "src"]
+        // This adds ./src and ./vendor for relative imports.
+        "moduleDirectory": ["node_modules", "src", "vendor"]
       }
     }
   }

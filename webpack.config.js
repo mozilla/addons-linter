@@ -49,7 +49,7 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.json'],
-    modules: ['src', 'node_modules'],
+    modules: ['src', 'node_modules', 'vendor'],
   },
   devtool: 'source-map',
   node: {

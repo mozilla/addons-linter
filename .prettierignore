@@ -17,6 +17,7 @@ LICENSE
 /node_modules/
 /tests/fixtures/
 /coverage/
+/vendor/
 
 # white-list files we want to process
 !*.js
