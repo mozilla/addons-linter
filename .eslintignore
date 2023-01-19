@@ -12,3 +12,4 @@ locale/
 tests/fixtures/fr.js
 tests/fixtures/ja.js
 tests/fixtures/de.js
+vendor/

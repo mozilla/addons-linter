@@ -5,7 +5,7 @@ module.exports = {
     '<rootDir>/config/',
   ],
   collectCoverageFrom: ['src/**/*.js'],
-  moduleDirectories: ['src', 'node_modules'],
+  moduleDirectories: ['src', 'vendor', 'node_modules'],
   moduleFileExtensions: ['js', 'json'],
   moduleNameMapper: {
     // Alias tests for tests to be able to import helpers.
@@ -16,6 +16,7 @@ module.exports = {
     '<rootDir>/node_modules/',
     '<rootDir>/tests/fixtures/',
     '<rootDir>/(bin|coverage|dist|docs|src)/',
+    '<rootDir>/vendor/',
     '<rootDir>/web-ext/',
   ],
   testMatch: [

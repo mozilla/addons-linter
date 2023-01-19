@@ -1,6 +1,6 @@
 import Ajv from 'ajv';
-import ajvMergePatch from 'ajv-merge-patch';
 
+import ajvMergePatch from 'ajv-merge-patch';
 import { getDefaultConfigValue } from 'yargs-options';
 import { deepPatch } from 'schema/deepmerge';
 import schemaObject from 'schema/imported/manifest';
