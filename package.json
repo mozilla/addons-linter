@@ -52,7 +52,7 @@
     "cheerio": "1.0.0-rc.12",
     "columnify": "1.6.0",
     "common-tags": "1.8.2",
-    "deepmerge": "4.2.2",
+    "deepmerge": "4.3.0",
     "eslint": "8.33.0",
     "eslint-plugin-no-unsanitized": "4.0.2",
     "eslint-visitor-keys": "3.3.0",
