@@ -1387,6 +1387,7 @@
           "enum": [
             "webRequest",
             "webRequestBlocking",
+            "webRequestFilterResponse",
             "webRequestFilterResponse.serviceWorkerScript"
           ]
         }
