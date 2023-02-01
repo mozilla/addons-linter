@@ -725,7 +725,6 @@
       "required": [
         "menuItemId",
         "editable",
-        "bookmarkId",
         "modifiers"
       ]
     }
