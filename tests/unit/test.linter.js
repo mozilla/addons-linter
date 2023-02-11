@@ -279,8 +279,9 @@ describe('Linter', () => {
       _: ['tests/fixtures/webextension_scan_file'],
       scanFile: files,
     });
-    // Stub print to prevent output.
+    // Stub print and handleError to prevent output.
     addonLinter.print = sinon.stub();
+    addonLinter.handleError = sinon.stub();
 
     await expect(addonLinter.scan()).rejects.toThrow(
       `Selected file(s) not found: ${files.join(', ')}`
@@ -1705,7 +1706,7 @@ describe('Linter.run()', () => {
         disableXpiAutoclose: false,
       });
 
-      await addonLinter.run({ _Xpi: FakeXpi });
+      await addonLinter.run({ _Xpi: FakeXpi, _console: fakeConsole });
 
       expect(FakeXpi.closeWasCalled).toEqual(false);
     });
@@ -1716,7 +1717,7 @@ describe('Linter.run()', () => {
         disableXpiAutoclose: true,
       });
 
-      await addonLinter.run({ _Xpi: FakeXpi });
+      await addonLinter.run({ _Xpi: FakeXpi, _console: fakeConsole });
 
       expect(FakeXpi.closeWasCalled).toEqual(true);
     });
@@ -1728,7 +1729,7 @@ describe('Linter.run()', () => {
         disableXpiAutoclose: false,
       });
 
-      await addonLinter.run({ _Xpi: FakeXpi });
+      await addonLinter.run({ _Xpi: FakeXpi, _console: fakeConsole });
 
       expect(FakeXpi.closeWasCalled).toEqual(false);
     });
@@ -1740,7 +1741,7 @@ describe('Linter.run()', () => {
         disableXpiAutoclose: true,
       });
 
-      await addonLinter.run({ _Xpi: FakeXpi });
+      await addonLinter.run({ _Xpi: FakeXpi, _console: fakeConsole });
 
       expect(FakeXpi.closeWasCalled).toEqual(true);
     });
@@ -1751,6 +1752,9 @@ describe('Linter.run()', () => {
         scanFile: ['subdir/test.js'],
         disableXpiAutoclose: false,
       });
+
+      // Stub handleError to prevent output.
+      addonLinter.handleError = sinon.stub();
 
       await expect(addonLinter.run({ _Xpi: FakeXpi })).rejects.toThrow(
         /Selected file\(s\) not found/
@@ -1766,9 +1770,13 @@ describe('Linter.run()', () => {
         disableXpiAutoclose: true,
       });
 
-      await expect(addonLinter.run({ _Xpi: FakeXpi })).rejects.toThrow(
-        /Selected file\(s\) not found/
-      );
+      const fakeErrorConsole = {
+        error: sinon.stub(),
+      };
+
+      await expect(
+        addonLinter.run({ _Xpi: FakeXpi, _console: fakeErrorConsole })
+      ).rejects.toThrow(/Selected file\(s\) not found/);
 
       expect(FakeXpi.closeWasCalled).toEqual(true);
     });
@@ -1778,6 +1786,9 @@ describe('Linter.run()', () => {
         _: ['tests/fixtures/empty.zip'],
         disableXpiAutoclose: true,
       });
+
+      // Stub print to prevent output.
+      addonLinter.print = sinon.stub();
 
       await addonLinter.run();
 
