@@ -1,4 +1,4 @@
-import { parse, lineOffset, columnOffset } from 'fluent-syntax';
+import { parse, lineOffset, columnOffset } from '@fluent/syntax';
 
 import * as messages from 'messages';
 
