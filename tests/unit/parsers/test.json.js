@@ -17,7 +17,7 @@ describe('JSONParser', () => {
     expect(errors.length).toEqual(1);
     expect(errors[0].code).toEqual(messages.JSON_INVALID.code);
     expect(errors[0].message).toContain('Your JSON is not valid.');
-    expect(errors[0].description).toContain('Unexpected token b');
+    expect(errors[0].description).toMatch(/^Unexpected token '?b'?/);
   });
 });
 
