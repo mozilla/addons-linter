@@ -454,11 +454,6 @@
           "type": "object",
           "description": "Represents a WebExtension language pack manifest.json file",
           "properties": {
-            "homepage_url": {
-              "type": "string",
-              "format": "url",
-              "preprocess": "localize"
-            },
             "langpack_id": {
               "type": "string",
               "pattern": "^[a-zA-Z][a-zA-Z-]+$"
@@ -540,11 +535,6 @@
           "type": "object",
           "description": "Represents a WebExtension dictionary manifest.json file",
           "properties": {
-            "homepage_url": {
-              "type": "string",
-              "format": "url",
-              "preprocess": "localize"
-            },
             "dictionaries": {
               "type": "object",
               "patternProperties": {
