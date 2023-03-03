@@ -605,6 +605,20 @@ describe('isCompatible', () => {
     ).toBe(true);
   });
 
+  it('should be compatible if version_added is "preview"', () => {
+    // "preview" means that the supported version is unknown or uncertain. That
+    // means that the feature could be compatible, and therefore isCompatible
+    // should return true.
+    expect(
+      isCompatible(
+        getBCDForFeature({ version_added: 'preview' }),
+        'foo',
+        60,
+        'firefox'
+      )
+    ).toBe(true);
+  });
+
   it('should report devtools.network.onRequestFinished as compatible for Firefox 60', () => {
     expect(
       isCompatible(bcd, 'devtools.network.onRequestFinished', 60, 'firefox')
