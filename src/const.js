@@ -9,12 +9,29 @@ const NO_UNSANITIZED_OPTIONS = {
   escape: { taggedTemplates: [], methods: [] },
 };
 
+const NO_UNSANITIZED_METHOD_CUSTOMIZATIONS = {
+  import: {
+    escape: {
+      methods: ['chrome.runtime.getURL', 'browser.runtime.getURL'],
+    },
+    // NOTE: Alternatively using the following option would instead
+    // configure the plugin to consider any method call as allowed
+    // on dynamic import calls:
+    //
+    // objectMatches: [],
+  },
+};
+
 // 3rd party / eslint-internal rules
 export const EXTERNAL_RULE_MAPPING = {
   'no-eval': [ESLINT_WARNING, { allowIndirect: false }],
   'no-implied-eval': ESLINT_WARNING,
   'no-new-func': ESLINT_WARNING,
-  'no-unsanitized/method': [ESLINT_WARNING, NO_UNSANITIZED_OPTIONS],
+  'no-unsanitized/method': [
+    ESLINT_WARNING,
+    NO_UNSANITIZED_OPTIONS,
+    NO_UNSANITIZED_METHOD_CUSTOMIZATIONS,
+  ],
   'no-unsanitized/property': [ESLINT_WARNING, NO_UNSANITIZED_OPTIONS],
 };
 

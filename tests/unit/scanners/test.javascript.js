@@ -148,6 +148,41 @@ describe('JavaScript Scanner', () => {
     expect(linterMessages).toEqual([]);
   });
 
+  it.each([
+    ['chrome.runtime.getURL', 'valid'],
+    ['browser.runtime.getURL', 'valid'],
+    ['anyOtherUnknownMethod', 'invalid'],
+  ])(
+    'should consider %s as %s escape for dynamic import calls',
+    async (method, expectedResult) => {
+      const fakeMetadata = {
+        addonMetadata: validMetadata({ guid: 'someext' }),
+      };
+      const jsScanner = new JavaScriptScanner(
+        `(async () => await import (${method}('script.js')))()`,
+        'code.js',
+        fakeMetadata
+      );
+
+      const { linterMessages } = await jsScanner.scan();
+
+      /* eslint-disable jest/no-conditional-expect */
+      switch (expectedResult) {
+        case 'valid':
+          expect(linterMessages).toEqual([]);
+          break;
+        case 'invalid':
+          expect(linterMessages[0]).toMatchObject({
+            code: 'UNSAFE_VAR_ASSIGNMENT',
+          });
+          break;
+        default:
+          expect(['valid', 'invalid']).toContain(expectedResult);
+      }
+      /* eslint-enable jest/no-conditional-expect */
+    }
+  );
+
   it('should support numeric separators', async () => {
     const code = 'const num = 1_0;';
 
