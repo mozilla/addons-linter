@@ -387,6 +387,7 @@ export function basicCompatVersionComparison(versionAdded, minVersion) {
  *          or a boolean indicating if the feature is supported at all. We do
  *          not consider any holes in the supported versions, only the first
  *          stable version is taken into account.
+ *          May also return "preview", as defined at https://github.com/mdn/browser-compat-data/blob/main/docs/data-guidelines/index.md#choosing-preview-values
  */
 export function firstStableVersion(supportInfo) {
   let supportInfoArray = supportInfo;
@@ -423,6 +424,7 @@ export function isCompatible(bcd, path, minVersion, application) {
   if (api.__compat) {
     const supportInfo = api.__compat.support[application];
     const versionAdded = firstStableVersion(supportInfo);
+    // Note: if versionAdded is false or not a number, this will return true.
     return !basicCompatVersionComparison(versionAdded, minVersion);
   }
   return true;
