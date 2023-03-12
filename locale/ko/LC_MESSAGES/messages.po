@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-27 09:46+0000\n"
-"Last-Translator: trans.sarapark <trans.sarapark@gmail.com>\n"
+"PO-Revision-Date: 2023-03-12 00:55+0000\n"
+"Last-Translator: Hyeonseok Shin <hyeonseok@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -263,13 +263,12 @@ msgid "Invalid host permission."
 msgstr "잘못된 호스트 권한입니다."
 
 #: src/messages/manifestjson.js:171
-#, fuzzy
 msgid "Invalid install origin."
-msgstr "잘못된 호스트 권한입니다."
+msgstr "설치 출처가 잘못되었습니다."
 
 #: src/messages/manifestjson.js:174
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
-msgstr ""
+msgstr "설치 출처가 잘못되었습니다. 유효한 출처에는 스키마와 호스트 이름, 추가적인 포트만 있습니다."
 
 #: src/messages/manifestjson.js:182
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -517,7 +516,7 @@ msgstr "\"addons.mozilla.org\"로 연결되는 링크는 홈페이지에 사용�
 
 #: src/messages/manifestjson.js:712
 msgid "The extension ID is required in Manifest Version 3 and above."
-msgstr ""
+msgstr "매니페스트 버전 3 이상에서는 확장 ID가 필요합니다."
 
 #: src/messages/manifestjson.js:715
 msgid "See https://mzl.la/3PLZYdo for more information."
