@@ -106,7 +106,7 @@
             "format": "versionString"
           },
           "manifest_version": {
-            "maximum": 2
+            "maximum": 3
           },
           "install_origins": {
             "maxItems": 5
