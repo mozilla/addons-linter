@@ -395,7 +395,7 @@ describe('ManifestJSONParser', () => {
       );
     });
 
-    it('should have the right manifestVersion', () => {
+    it('should have the right manifestVersion MV2', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({ manifest_version: 2 });
       const manifestJSONParser = new ManifestJSONParser(
@@ -422,7 +422,7 @@ describe('ManifestJSONParser', () => {
       );
     });
 
-    it('should have the right manifestVersion', () => {
+    it('should have the right manifestVersion MV3', () => {
       const addonLinter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({ manifest_version: 3 });
       const manifestJSONParser = new ManifestJSONParser(
