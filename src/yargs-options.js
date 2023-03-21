@@ -63,7 +63,7 @@ const options = {
     describe:
       'Set a custom maximum allowed value for the manifest_version property',
     type: 'number',
-    default: 2,
+    default: 3,
     requiresArg: true,
   },
   'scan-file': {
