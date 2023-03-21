@@ -285,13 +285,6 @@ export default class ManifestJSONParser extends JSONParser {
       // keyword is actually used to warn the developer of additional properties not
       // explicitly defined in the schemas).
     } else if (
-      error.instancePath === '/manifest_version' &&
-      error.keyword === 'maximum'
-    ) {
-      baseObject = messages.MANIFEST_VERSION_INVALID;
-      overrides.message = baseObject.message;
-      overrides.description = baseObject.description;
-    } else if (
       error.keyword === SCHEMA_KEYWORDS.MIN_MANIFEST_VERSION ||
       error.keyword === SCHEMA_KEYWORDS.MAX_MANIFEST_VERSION
     ) {
