@@ -11,8 +11,9 @@ describe('getDefaultConfigValue()', () => {
     expect(getDefaultConfigValue('boring')).toEqual(false);
     expect(getDefaultConfigValue('privileged')).toEqual(false);
     expect(getDefaultConfigValue('self-hosted')).toEqual(false);
-    expect(getDefaultConfigValue('enable-background-service-worker'))
-      .toEqual(false);
+    expect(getDefaultConfigValue('enable-background-service-worker')).toEqual(
+      false
+    );
     expect(getDefaultConfigValue('min-manifest-version')).toEqual(2);
     expect(getDefaultConfigValue('max-manifest-version')).toEqual(3);
     expect(getDefaultConfigValue('disable-xpi-autoclose')).toEqual(false);
