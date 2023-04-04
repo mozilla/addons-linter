@@ -1797,6 +1797,22 @@
             "$ref": "#/types/TransportWeaknessReasons"
           },
           "description": "list of reasons that cause the request to be considered weak, if state is \"weak\""
+        },
+        "usedEch": {
+          "type": "boolean",
+          "description": "True if the TLS connection used Encrypted Client Hello."
+        },
+        "usedDelegatedCredentials": {
+          "type": "boolean",
+          "description": "True if the TLS connection used Delegated Credentials."
+        },
+        "usedOcsp": {
+          "type": "boolean",
+          "description": "True if the TLS connection made OCSP requests."
+        },
+        "usedPrivateDns": {
+          "type": "boolean",
+          "description": "True if the TLS connection used a privacy-preserving DNS transport like DNS-over-HTTPS."
         }
       },
       "required": [

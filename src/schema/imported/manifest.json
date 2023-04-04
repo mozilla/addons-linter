@@ -158,6 +158,13 @@
                             "$ref": "manifest#/types/ExtensionURL"
                           }
                         },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "module",
+                            "classic"
+                          ]
+                        },
                         "persistent": {
                           "type": "boolean",
                           "max_manifest_version": 2,
@@ -672,6 +679,9 @@
         },
         {
           "$ref": "browsingData#/definitions/OptionalPermission"
+        },
+        {
+          "$ref": "declarativeNetRequest#/definitions/OptionalPermission"
         },
         {
           "$ref": "devtools#/definitions/OptionalPermission"
