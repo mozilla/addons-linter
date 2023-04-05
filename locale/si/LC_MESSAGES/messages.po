@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-09-22 07:42+0000\n"
-"Last-Translator: හෙළබස සමූහය (HelaBasa Group) <firefox-helabasa@yalu.lk>\n"
+"PO-Revision-Date: 2023-03-06 08:00+0000\n"
+"Last-Translator: Kavishika Kahandawala <kavishikakahandawala@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: si\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgstr "ගොනුව"
 
 #: src/linter.js:214
 msgid "Line"
-msgstr ""
+msgstr "පේළිය"
 
 #: src/linter.js:220
 msgid "Column"
