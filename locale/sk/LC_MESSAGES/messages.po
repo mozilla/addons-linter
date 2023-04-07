@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2022-05-27 08:34+0000\n"
-"PO-Revision-Date: 2022-05-27 15:42+0000\n"
+"PO-Revision-Date: 2023-04-07 13:00+0000\n"
 "Last-Translator: wladow <valastiak@mozilla.sk>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -484,7 +484,7 @@ msgstr "Vlastnosť \"applications\" prepísaná vlastnosťou \"browser_specific_
 
 #: src/messages/manifestjson.js:583
 msgid "Empty language directory"
-msgstr "Prázdny adresár s jazykmy"
+msgstr "Prázdny priečinok s jazykmi"
 
 #: src/messages/manifestjson.js:585
 msgid "messages.json file missing in \"%(path)s\""
