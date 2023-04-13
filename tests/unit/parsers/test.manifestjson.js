@@ -231,6 +231,52 @@ describe('ManifestJSONParser', () => {
     }
   );
 
+  it('should reject applications.gecko_android', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const json = validManifestJSON({
+      applications: {
+        gecko_android: {},
+      },
+    });
+
+    const manifestJSONParser = new ManifestJSONParser(
+      json,
+      addonLinter.collector
+    );
+
+    const { errors } = addonLinter.collector;
+    expect(errors).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: 'MANIFEST_FIELD_UNSUPPORTED',
+          message: `"/applications/gecko_android" is not supported.`,
+          file: 'manifest.json',
+        }),
+      ])
+    );
+    expect(errors).toEqual([errors[0]]);
+    expect(manifestJSONParser.isValid).toEqual(false);
+  });
+
+  it('should accept browser_specific_settings.gecko_android', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const json = validManifestJSON({
+      browser_specific_settings: {
+        gecko_android: {},
+      },
+    });
+
+    const manifestJSONParser = new ManifestJSONParser(
+      json,
+      addonLinter.collector
+    );
+
+    const { errors, warnings } = addonLinter.collector;
+    expect(errors).toEqual([]);
+    expect(warnings).toEqual([]);
+    expect(manifestJSONParser.isValid).toEqual(true);
+  });
+
   describe('id', () => {
     it('should return the correct id', () => {
       const addonLinter = new Linter({ _: ['bar'] });
@@ -1098,7 +1144,7 @@ describe('ManifestJSONParser', () => {
           const unsupportedRange = 'supported in manifest versions < 3';
           const message = isPermission
             ? `/${manifestKey}: "${'perm-value'}" is not ${unsupportedRange}.`
-            : `"/${manifestKey}" is in a format not ${unsupportedRange}.`;
+            : `"/${manifestKey}" is not ${unsupportedRange}.`;
           const code = isPermission
             ? messages.MANIFEST_PERMISSION_UNSUPPORTED
             : messages.MANIFEST_FIELD_UNSUPPORTED;
@@ -2901,7 +2947,7 @@ describe('ManifestJSONParser', () => {
           expect.objectContaining({
             code: 'MANIFEST_FIELD_UNSUPPORTED',
             message: expect.stringMatching(
-              /"\/background" is in an unsupported format/
+              /"\/background\/service_worker" is not supported/
             ),
             file: 'manifest.json',
           }),
@@ -4465,8 +4511,10 @@ describe('ManifestJSONParser', () => {
       }
     );
 
-    it.each(['1', 'a', { notAString: true }])(
-      'reports an error when the strict_min_version value is invalid (%s)',
+    const INVALID_COMPAT_VERSIONS = ['1', 'a', { notAString: true }];
+
+    it.each(INVALID_COMPAT_VERSIONS)(
+      'reports an error when the gecko.strict_min_version value is invalid (%s)',
       (strict_min_version) => {
         const { parser, linter } = validate({
           manifestProps: {
@@ -4497,6 +4545,62 @@ describe('ManifestJSONParser', () => {
               file: 'manifest.json',
             }),
           ])
+        );
+      }
+    );
+
+    it.each(INVALID_COMPAT_VERSIONS)(
+      'reports an error when the gecko_android.strict_min_version value is invalid (%s)',
+      (strict_min_version) => {
+        const { parser, linter } = validate({
+          manifestProps: {
+            browser_specific_settings: {
+              gecko_android: {
+                strict_min_version,
+              },
+            },
+          },
+        });
+        const { errors } = linter.collector;
+
+        expect(parser.isValid).toEqual(false);
+        const errorOnInvalidStrictVersion =
+          typeof strict_min_version === 'string'
+            ? expect.objectContaining({ code: messages.JSON_INVALID.code })
+            : expect.objectContaining({
+                code: messages.MANIFEST_FIELD_INVALID.code,
+              });
+
+        expect(errors).toEqual(
+          expect.arrayContaining([errorOnInvalidStrictVersion])
+        );
+      }
+    );
+
+    it.each(INVALID_COMPAT_VERSIONS)(
+      'reports an error when the gecko_android.strict_max_version value is invalid (%s)',
+      (strict_max_version) => {
+        const { parser, linter } = validate({
+          manifestProps: {
+            browser_specific_settings: {
+              gecko_android: {
+                strict_max_version,
+              },
+            },
+          },
+        });
+        const { errors } = linter.collector;
+
+        expect(parser.isValid).toEqual(false);
+        const errorOnInvalidStrictVersion =
+          typeof strict_max_version === 'string'
+            ? expect.objectContaining({ code: messages.JSON_INVALID.code })
+            : expect.objectContaining({
+                code: messages.MANIFEST_FIELD_INVALID.code,
+              });
+
+        expect(errors).toEqual(
+          expect.arrayContaining([errorOnInvalidStrictVersion])
         );
       }
     );
@@ -4900,7 +5004,7 @@ describe('ManifestJSONParser', () => {
       });
     });
 
-    it('only emits a single warning when a MV2 extension uses both applications and browser_specific_settings', () => {
+    it('only emits a single warning when a MV2 extension uses both applications and browser_specific_settings.gecko', () => {
       const linter = new Linter({ _: ['bar'] });
 
       const manifestJSONParser = new ManifestJSONParser(
@@ -4909,7 +5013,9 @@ describe('ManifestJSONParser', () => {
           name: 'some name',
           version: '1',
           applications: {},
-          browser_specific_settings: {},
+          browser_specific_settings: {
+            gecko: {},
+          },
         }),
         linter.collector
       );
@@ -4923,6 +5029,28 @@ describe('ManifestJSONParser', () => {
       assertHasMatchingError(linter.collector.warnings, {
         code: messages.IGNORED_APPLICATIONS_PROPERTY.code,
       });
+    });
+
+    it('emits a deprecation warning when a MV2 extension uses applications and an empty browser_specific_settings', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          applications: {},
+          browser_specific_settings: {},
+        }),
+        linter.collector
+      );
+
+      expect(linter.collector.warnings.length).toEqual(1);
+      assertHasMatchingError(linter.collector.warnings, {
+        code: messages.APPLICATIONS_DEPRECATED.code,
+      });
+      expect(linter.collector.errors).toEqual([]);
+      expect(manifestJSONParser.isValid).toEqual(true);
     });
   });
 
