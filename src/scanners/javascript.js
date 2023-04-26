@@ -224,10 +224,10 @@ export default class JavaScriptScanner {
       'FunctionExpression',
     ];
 
-    if (possibleImportExportTypes.includes(node.type)) {
-      return 'module';
-    }
-    if (topLevel && node.type === 'AwaitExpression') {
+    if (
+      possibleImportExportTypes.includes(node.type) ||
+      (topLevel && node.type === 'AwaitExpression')
+    ) {
       return 'module';
     }
 
