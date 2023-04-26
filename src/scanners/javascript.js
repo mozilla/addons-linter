@@ -207,7 +207,7 @@ export default class JavaScriptScanner {
     };
   }
 
-  _getSourceType(node) {
+  _getSourceType(node, topLevel) {
     const possibleImportExportTypes = [
       'ExportAllDeclaration',
       'ExportDefaultDeclaration',
@@ -218,10 +218,20 @@ export default class JavaScriptScanner {
       'ImportNamespaceSpecifier',
       'ImportSpecifier',
     ];
+    const functionTypes = [
+      'ArrowFunctionExpression',
+      'FunctionDeclaration',
+      'FunctionExpression',
+    ];
 
-    if (possibleImportExportTypes.includes(node.type)) {
+    if (
+      possibleImportExportTypes.includes(node.type) ||
+      (topLevel && node.type === 'AwaitExpression')
+    ) {
       return 'module';
     }
+
+    const stayTopLevel = topLevel && !functionTypes.includes(node.type);
 
     const keys = vk.KEYS[node.type];
 
@@ -231,12 +241,15 @@ export default class JavaScriptScanner {
 
         if (Array.isArray(child)) {
           for (let j = 0; j < child.length; ++j) {
-            if (child[j] && this._getSourceType(child[j]) === 'module') {
+            if (
+              child[j] &&
+              this._getSourceType(child[j], stayTopLevel) === 'module'
+            ) {
               return 'module';
             }
           }
         } else if (child) {
-          return this._getSourceType(child);
+          return this._getSourceType(child, stayTopLevel);
         }
       }
     }
@@ -272,7 +285,7 @@ export default class JavaScriptScanner {
       detected.sourceType =
         this.filename.endsWith('.mjs') || this.code.includes('import.meta')
           ? 'module'
-          : this._getSourceType(ast);
+          : this._getSourceType(ast, true);
     } catch (exc) {
       const line = exc.lineNumber || '(unknown)';
       const column = exc.column || '(unknown)';

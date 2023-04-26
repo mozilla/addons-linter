@@ -499,6 +499,42 @@ describe('JavaScript Scanner', () => {
       expect(jsScanner.sourceType).toEqual('module');
     });
 
+    it('should detect top level await', async () => {
+      const code = 'await Promise.resolve();';
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await runJsScanner(jsScanner);
+
+      expect(jsScanner.sourceType).toEqual('module');
+    });
+
+    it('should ignore await in arrow function expression', async () => {
+      const code = 'const foo = async () => await Promise.resolve();';
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await runJsScanner(jsScanner);
+
+      expect(jsScanner.sourceType).toEqual('script');
+    });
+
+    it('should ignore await in function declaration', async () => {
+      const code = 'async function foo() { await Promise.resolve(); }';
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await runJsScanner(jsScanner);
+
+      expect(jsScanner.sourceType).toEqual('script');
+    });
+
+    it('should ignore await in function expression', async () => {
+      const code = 'const foo = async function () { await Promise.resolve(); }';
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await runJsScanner(jsScanner);
+
+      expect(jsScanner.sourceType).toEqual('script');
+    });
+
     it('should detect script', async () => {
       const code = oneLine`
         eval('foo');
