@@ -1,13 +1,15 @@
 {
   "rules": {
     // This project uses `console.log()`.
-    "no-console": "off"
+    "no-console": "off",
+    "amo/i18n-no-tagged-templates": "error",
   },
   "env": {
     "node": true,
     "browser": true,
     "es6": true,
   },
+  "plugins": ["amo"],
   "extends": ["amo/base"],
   "parser": "@babel/eslint-parser",
   "settings": {
