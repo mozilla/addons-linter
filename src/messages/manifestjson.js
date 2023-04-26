@@ -44,9 +44,9 @@ export function manifestFieldUnsupported(fieldName, error) {
     ? errorParamsToUnsupportedVersionRange(error.params)
     : null;
   const messageTmpl = versionRange
-    ? i18n._(oneLine`"%(fieldName)s" is in a format not supported in
-                     manifest versions %(versionRange)s.`)
-    : i18n._(oneLine`"%(fieldName)s" is in an unsupported format.`);
+    ? i18n._(oneLine`"%(fieldName)s" is not supported in manifest versions
+        %(versionRange)s.`)
+    : i18n._(oneLine`"%(fieldName)s" is not supported.`);
   const message = i18n.sprintf(messageTmpl, { fieldName, versionRange });
 
   return {

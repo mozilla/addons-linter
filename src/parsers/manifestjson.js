@@ -468,9 +468,16 @@ export default class ManifestJSONParser extends JSONParser {
       });
     }
 
+    if (this.parsedJSON.applications?.gecko_android) {
+      this.collector.addError(
+        messages.manifestFieldUnsupported('/applications/gecko_android')
+      );
+      this.isValid = false;
+    }
+
     if (this.parsedJSON.manifest_version < 3) {
       if (
-        this.parsedJSON.browser_specific_settings &&
+        this.parsedJSON.browser_specific_settings?.gecko &&
         this.parsedJSON.applications
       ) {
         this.collector.addWarning(messages.IGNORED_APPLICATIONS_PROPERTY);
@@ -514,11 +521,11 @@ export default class ManifestJSONParser extends JSONParser {
       }
       if (this.parsedJSON.background.service_worker) {
         if (!this.schemaValidatorOptions?.enableBackgroundServiceWorker) {
-          // Report an error and mark the manifest as invalid if
-          // background service worker support isn't enabled by
-          // the addons-linter feature flag.
+          // Report an error and mark the manifest as invalid if background
+          // service worker support isn't enabled by the addons-linter feature
+          // flag.
           this.collector.addError(
-            messages.manifestFieldUnsupported('/background')
+            messages.manifestFieldUnsupported('/background/service_worker')
           );
           this.isValid = false;
         } else if (this.parsedJSON.manifest_version >= 3) {
