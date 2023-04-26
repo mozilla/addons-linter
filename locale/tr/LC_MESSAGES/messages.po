@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-27 08:34+0000\n"
+"POT-Creation-Date: 2023-04-26 11:56+0000\n"
 "PO-Revision-Date: 2022-06-11 21:36+0000\n"
 "Last-Translator: Selim Şumlu <selim@sum.lu>\n"
 "Language-Team: none\n"
@@ -75,8 +75,12 @@ msgid "This API has not been implemented by Firefox."
 msgstr "Bu API Firefox'ta kullanılamamaktadır."
 
 #: src/messages/javascript.js:124
-msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr "\"{{api}}\" Manifest Version 3'te kaldırılmıştır (`manifest_version` özelliği)"
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
+msgstr ""
+"\"{{api}}\" Manifest Version 3'te kaldırılmıştır (`manifest_version` "
+"özelliği)"
 
 #: src/messages/javascript.js:133
 msgid "{{api}} is deprecated"
@@ -108,11 +112,14 @@ msgstr "İçerik betik dosyası bulunamadı"
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr "{{api}} Android için Firefox'un {{minVersion}}. sürümünde desteklenmiyor"
+msgstr ""
+"{{api}} Android için Firefox'un {{minVersion}}. sürümünde desteklenmiyor"
 
 #: src/messages/javascript.js:188
-msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Bu API, belirtilen minimum Android için Firefox sürümünde kullanılamamaktadır"
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
+msgstr ""
+"Bu API, belirtilen minimum Android için Firefox sürümünde kullanılamamaktadır"
 
 #: src/messages/javascript.js:24
 msgid "Content script file name should not be empty."
@@ -204,7 +211,9 @@ msgstr "Paket zaten imzanmış"
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr "Firefox eklentilerinin sanal para kazıcıları çalıştırmasına izin verilmemektedir."
+msgstr ""
+"Firefox eklentilerinin sanal para kazıcıları çalıştırmasına izin "
+"verilmemektedir."
 
 #: src/messages/locale-messagesjson.js:15
 msgid "String name is reserved for a predefined message"
@@ -231,52 +240,62 @@ msgid "Translation string is missing the message property"
 msgstr "Çeviri dizgesinin message özelliği eksik"
 
 #: src/messages/locale-messagesjson.js:8
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "Bir dizge için \"message\" mesaj özelliği ayarlanmadı (https://mzl.la/2DSBTjA)."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+"Bir dizge için \"message\" mesaj özelliği ayarlanmadı (https://mzl."
+"la/2DSBTjA)."
 
-#: src/messages/manifestjson.js:107 src/messages/manifestjson.js:115 src/messages/manifestjson.js:118 src/messages/manifestjson.js:99
+#: src/messages/manifestjson.js:101 src/messages/manifestjson.js:109
+#: src/messages/manifestjson.js:117
 msgid "The permission type is unsupported."
 msgstr "İzin türü desteklenmemektedir."
+
+#: src/messages/manifestjson.js:118 src/messages/manifestjson.js:165
+msgid "See https://mzl.la/3Woeqv4 (MDN Docs) for more information."
+msgstr ""
 
 #: src/messages/manifestjson.js:12
 msgid "The field is required."
 msgstr "Bu alan zorunludur."
 
-#: src/messages/manifestjson.js:124 src/messages/manifestjson.js:153
+#: src/messages/manifestjson.js:126 src/messages/manifestjson.js:155
 msgid "Unknown permission."
 msgstr "Bilinmeyen izin."
 
-#: src/messages/manifestjson.js:125
+#: src/messages/manifestjson.js:127
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "Daha fazla bilgi için https://mzl.la/1R1n1t0 (MDN Docs) sayfasına bakın."
+msgstr ""
+"Daha fazla bilgi için https://mzl.la/1R1n1t0 (MDN Docs) sayfasına bakın."
 
 #: src/messages/manifestjson.js:13 src/messages/manifestjson.js:22
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr "Daha fazla bilgi için https://mzl.la/1ZOhoEN (MDN Docs) adresine bakabilirsiniz."
+msgstr ""
+"Daha fazla bilgi için https://mzl.la/1ZOhoEN (MDN Docs) adresine "
+"bakabilirsiniz."
 
-#: src/messages/manifestjson.js:154
+#: src/messages/manifestjson.js:156
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr "Daha fazla bilgi için https://mzl.la/2Qn0fWC (MDN Docs) sayfasına bakın."
+msgstr ""
+"Daha fazla bilgi için https://mzl.la/2Qn0fWC (MDN Docs) sayfasına bakın."
 
-#: src/messages/manifestjson.js:162 src/messages/manifestjson.js:165
+#: src/messages/manifestjson.js:164
 msgid "Invalid host permission."
 msgstr "Geçersiz sunucu izni."
 
-#: src/messages/manifestjson.js:171
+#: src/messages/manifestjson.js:173
 msgid "Invalid install origin."
 msgstr "Geçersiz yükleme kaynağı."
 
-#: src/messages/manifestjson.js:174
-msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
-msgstr "Geçersiz yükleme kaynağı. Geçerli bir kaynakta yalnızca bir şema, sunucu ve isteğe bağlı olarak port bulunur."
-
 #: src/messages/manifestjson.js:182
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "manifest.json dosyasındaki \"manifest_version\" geçerli bir değer değil"
+msgstr ""
+"manifest.json dosyasındaki \"manifest_version\" geçerli bir değer değil"
 
 #: src/messages/manifestjson.js:185
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "Daha fazla bilgi için https://mzl.la/20PenXl (MDN Docs) sayfasına bakın."
+msgstr ""
+"Daha fazla bilgi için https://mzl.la/20PenXl (MDN Docs) sayfasına bakın."
 
 #: src/messages/manifestjson.js:21
 msgid "The field is invalid."
@@ -288,239 +307,294 @@ msgstr "\"name\" özelliği bir string olmalıdır."
 
 #: src/messages/manifestjson.js:220
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "Daha fazla bilgi için http://mzl.la/1STmr48 (MDN Docs) sayfasına bakın."
+msgstr ""
+"Daha fazla bilgi için http://mzl.la/1STmr48 (MDN Docs) sayfasına bakın."
 
 #: src/messages/manifestjson.js:228
-msgid "The \"version\" property must be a string."
-msgstr "\"version\" özelliği string türünde olmalıdır."
-
-#: src/messages/manifestjson.js:229 src/messages/manifestjson.js:238
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "Daha fazla bilgi için http://mzl.la/1kXIADa (MDN Dökümanları) adresini ziyaret edin."
-
-#: src/messages/manifestjson.js:237
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "\"version\" özelliği Firefox'a özgü bir biçim kullanıyor."
-
-#: src/messages/manifestjson.js:246
 msgid "\"update_url\" is not allowed."
 msgstr "\"update_url\" kabul edilmemektedir."
 
-#: src/messages/manifestjson.js:256
+#: src/messages/manifestjson.js:238
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "\"update_url\" özelliği Firefox tarafından kullanılmıyor."
 
-#: src/messages/manifestjson.js:265
+#: src/messages/manifestjson.js:247
 msgid "\"strict_max_version\" not required."
 msgstr "\"strict_max_version\" gerekli değil."
 
-#: src/messages/manifestjson.js:284
+#: src/messages/manifestjson.js:266
 msgid "An icon defined in the manifest could not be found in the package."
 msgstr "Manifest dosyasında tanımlanan bir simge paketin içinde bulunamadı."
 
-#: src/messages/manifestjson.js:288
+#: src/messages/manifestjson.js:270
 msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Simge \"%(path)s\" yolunda bulunamadı."
 
-#: src/messages/manifestjson.js:303
+#: src/messages/manifestjson.js:285
 msgid "A background script defined in the manifest could not be found."
 msgstr "Manifest dosyasında tanımlanan bir arka plan betiği bulunamadı."
 
-#: src/messages/manifestjson.js:306
+#: src/messages/manifestjson.js:288
 msgid "A background page defined in the manifest could not be found."
 msgstr "Manifest dosyasında tanımlanan bir arka plan sayfası bulunamadı."
 
-#: src/messages/manifestjson.js:311
+#: src/messages/manifestjson.js:293
 msgid "Background script could not be found at \"%(path)s\"."
 msgstr "Arka plan betiği \"%(path)s\" yolunda bulunamadı."
 
-#: src/messages/manifestjson.js:312
+#: src/messages/manifestjson.js:294
 msgid "Background page could not be found at \"%(path)s\"."
 msgstr "Arka plan sayfası \"%(path)s\" yolunda bulunamadı."
 
-#: src/messages/manifestjson.js:327
+#: src/messages/manifestjson.js:309
 msgid "A content script defined in the manifest could not be found."
 msgstr "Manifest dosyasında tanımlanan bir içerik betiği bulunamadı."
 
-#: src/messages/manifestjson.js:328
+#: src/messages/manifestjson.js:310
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Manifest dosyasında tanımlanan bir içerik betiği css dosyası bulunamadı."
+msgstr ""
+"Manifest dosyasında tanımlanan bir içerik betiği css dosyası bulunamadı."
 
-#: src/messages/manifestjson.js:333
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+#: src/messages/manifestjson.js:315
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Bildirgede tanımlanan içerik betiği \"%(path)s\" yolunda bulunamadı."
 
-#: src/messages/manifestjson.js:336
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Bildirgede tanımlanan içerik betiği css dosyası \"%(path)s\" yolunda bulunamadı."
+#: src/messages/manifestjson.js:318
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"Bildirgede tanımlanan içerik betiği css dosyası \"%(path)s\" yolunda "
+"bulunamadı."
 
-#: src/messages/manifestjson.js:350
+#: src/messages/manifestjson.js:332
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "Manifest dosyasında tanımlanan bir sözlük dosyası bulunamadı."
 
-#: src/messages/manifestjson.js:354
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Manifest dosyasında tanımlanan sözlük dosyası \"%(path)s\" konumunda bulunamadı."
+#: src/messages/manifestjson.js:336
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"Manifest dosyasında tanımlanan sözlük dosyası \"%(path)s\" konumunda "
+"bulunamadı."
 
-#: src/messages/manifestjson.js:366
+#: src/messages/manifestjson.js:348
 msgid "The manifest contains multiple dictionaries."
 msgstr "Manifest birden fazla sözlük içeriyor."
 
-#: src/messages/manifestjson.js:367
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+#: src/messages/manifestjson.js:349
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "Manifest'te birden fazla sözlük tanımlandı. Bu durum desteklenmiyor."
 
-#: src/messages/manifestjson.js:376
+#: src/messages/manifestjson.js:358
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr "Manifest'te dictionaries nesnesi var ama nesne boş."
 
-#: src/messages/manifestjson.js:379
+#: src/messages/manifestjson.js:361
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr "Manifest'te dictionaries nesnesi tanımlanmış ama nesne boş."
 
-#: src/messages/manifestjson.js:388
+#: src/messages/manifestjson.js:370
 msgid "The manifest contains a dictionary but no id property."
 msgstr "Manifest bir sözlük içeriyor ancak id özelliği içermiyor."
 
-#: src/messages/manifestjson.js:389
+#: src/messages/manifestjson.js:371
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr "Manifest'te bir sözlük bulundu, ancak id'si yoktu."
 
-#: src/messages/manifestjson.js:399
+#: src/messages/manifestjson.js:381
 msgid "Forbidden content found in add-on."
 msgstr "Eklentide yasaklı içerik bulundu."
 
-#: src/messages/manifestjson.js:400
+#: src/messages/manifestjson.js:382
 msgid "This add-on contains forbidden content."
 msgstr "Bu eklentide yasaklı içerik bulunuyor."
 
-#: src/messages/manifestjson.js:408
+#: src/messages/manifestjson.js:390
 msgid "Icons must be square."
 msgstr "Simgeler kare olmalıdır."
 
-#: src/messages/manifestjson.js:409
+#: src/messages/manifestjson.js:391
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "\"%(path)s\" yolundaki simge kare olmalıdır."
 
-#: src/messages/manifestjson.js:420
+#: src/messages/manifestjson.js:402
 msgid "The size of the icon does not match the manifest."
 msgstr "Simge dosyasının boyutu manifest dosyasındaki ile eşleşmiyor."
 
-#: src/messages/manifestjson.js:435
+#: src/messages/manifestjson.js:417
 msgid "Corrupt image file"
 msgstr "Hasarlı resim dosyası"
 
-#: src/messages/manifestjson.js:437
+#: src/messages/manifestjson.js:419
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr "\"%(path)s\" yolundaki beklenilen simge dosyası bozuk."
 
-#: src/messages/manifestjson.js:446
+#: src/messages/manifestjson.js:428
 msgid "This property has been deprecated."
 msgstr "Bu özellik kullanımdan kaldırıldı."
 
-#: src/messages/manifestjson.js:453
+#: src/messages/manifestjson.js:435
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "Bu tema LWT alias'ı Firefox 70'te kaldırılmıştır."
 
-#: src/messages/manifestjson.js:454
+#: src/messages/manifestjson.js:436
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Daha fazla bilgi için https://mzl.la/2T11Lkc (MDN Docs) sayfasına bakın."
+msgstr ""
+"Daha fazla bilgi için https://mzl.la/2T11Lkc (MDN Docs) sayfasına bakın."
 
-#: src/messages/manifestjson.js:469
+#: src/messages/manifestjson.js:451
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "\"%(type)s\" için tema görseli \"%(path)s\" konumunda bulunamadı"
 
-#: src/messages/manifestjson.js:480
+#: src/messages/manifestjson.js:462
 msgid "Corrupted theme image file"
 msgstr "Bozuk tema resim dosyası"
 
-#: src/messages/manifestjson.js:482
+#: src/messages/manifestjson.js:464
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "\"%(path)s\" adresindeki tema resmi dosyası bozuk"
 
-#: src/messages/manifestjson.js:493
+#: src/messages/manifestjson.js:475
 msgid "Theme image file has an unsupported file extension"
 msgstr "Tema resmi dosyası desteklenmeyen bir dosya uzantısına sahip"
 
-#: src/messages/manifestjson.js:495
+#: src/messages/manifestjson.js:477
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr "\"%(path)s\" adresindeki tema resmi desteklenmeyen bir dosya uzantısına sahip"
+msgstr ""
+"\"%(path)s\" adresindeki tema resmi desteklenmeyen bir dosya uzantısına sahip"
 
-#: src/messages/manifestjson.js:509
+#: src/messages/manifestjson.js:491
 msgid "Theme image file has an unsupported mime type"
 msgstr "Tema resmi desteklenmeyen bir mime türüne sahip"
 
-#: src/messages/manifestjson.js:511
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr "\"%(path)s\" adresindeki tema resmi desteklenmeyen \"%(mime)s\" mime türüne sahip"
+#: src/messages/manifestjson.js:493
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr ""
+"\"%(path)s\" adresindeki tema resmi desteklenmeyen \"%(mime)s\" mime türüne "
+"sahip"
 
-#: src/messages/manifestjson.js:525
+#: src/messages/manifestjson.js:507
 msgid "Theme image file mime type does not match its file extension"
 msgstr "Tema resmi dosyasının mime türü, dosya uzantısıyla eşleşmiyor"
 
-#: src/messages/manifestjson.js:529
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr "\"%(path)s\" konumundaki tema resmi dosya uzantısı gerçek \"%(mime)s\" mime türüyle eşleşmiyor"
+#: src/messages/manifestjson.js:511
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
+msgstr ""
+"\"%(path)s\" konumundaki tema resmi dosya uzantısı gerçek \"%(mime)s\" mime "
+"türüyle eşleşmiyor"
 
-#: src/messages/manifestjson.js:543
+#: src/messages/manifestjson.js:524
 msgid "The \"default_locale\" is missing localizations."
 msgstr "\"default_locale\" değerinde yerelleştirmeler eksik."
 
-#: src/messages/manifestjson.js:552
+#: src/messages/manifestjson.js:533
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "\"default_locale\" eksik fakat \"_locales\" mevcut."
 
-#: src/messages/manifestjson.js:561
+#: src/messages/manifestjson.js:542
 msgid "Unsupported image extension"
 msgstr "Desteklenmeyen resim uzantısı"
 
-#: src/messages/manifestjson.js:562
+#: src/messages/manifestjson.js:543
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr "Simgeler JPG/JPEG, WebP, GIF, PNG ya da SVG türlerinden biri olmalıdır."
+msgstr ""
+"Simgeler JPG/JPEG, WebP, GIF, PNG ya da SVG türlerinden biri olmalıdır."
 
-#: src/messages/manifestjson.js:570
-msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
-msgstr "\"applications\" özelliği \"browser_spec_settings\" özelliği tarafından geçersiz kılındı"
+#: src/messages/manifestjson.js:551
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property"
+msgstr ""
+"\"applications\" özelliği \"browser_spec_settings\" özelliği tarafından "
+"geçersiz kılındı"
 
-#: src/messages/manifestjson.js:583
+#: src/messages/manifestjson.js:564
 msgid "Empty language directory"
 msgstr "Dil klasörü boş"
 
-#: src/messages/manifestjson.js:585
+#: src/messages/manifestjson.js:566
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "\"%(path)s\" klasöründe messages.json dosyası eksik"
 
-#: src/messages/manifestjson.js:601
+#: src/messages/manifestjson.js:582
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr "Manifest anahtarı belirtilen minimum Firefox sürümü tarafından desteklenmiyor"
+msgstr ""
+"Manifest anahtarı belirtilen minimum Firefox sürümü tarafından desteklenmiyor"
 
-#: src/messages/manifestjson.js:623
+#: src/messages/manifestjson.js:604
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Bu İzin, belirtilen minimum Firefox sürümü tarafından desteklenmiyor"
 
-#: src/messages/manifestjson.js:645
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr "Manifest anahtarı, Android için belirtilen minimum Firefox sürümü tarafından desteklenmiyor"
+#: src/messages/manifestjson.js:626
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
+msgstr ""
+"Manifest anahtarı, Android için belirtilen minimum Firefox sürümü tarafından "
+"desteklenmiyor"
 
-#: src/messages/manifestjson.js:667
-msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr "Bu izin, Android için belirtilen minimum Firefox sürümü tarafından desteklenmiyor"
+#: src/messages/manifestjson.js:648
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
+msgstr ""
+"Bu izin, Android için belirtilen minimum Firefox sürümü tarafından "
+"desteklenmiyor"
 
-#: src/messages/manifestjson.js:682
+#: src/messages/manifestjson.js:663
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "\"addons.mozilla.org\" adresine bağlantı veremezsiniz"
 
-#: src/messages/manifestjson.js:683
-msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr "\"addons.mozilla.org\" adresine yönlendiren bağlantıları ana sayfa olarak kullanamazsınız"
+#: src/messages/manifestjson.js:664
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
+"\"addons.mozilla.org\" adresine yönlendiren bağlantıları ana sayfa olarak "
+"kullanamazsınız"
 
-#: src/messages/manifestjson.js:712
+#: src/messages/manifestjson.js:693
 msgid "The extension ID is required in Manifest Version 3 and above."
 msgstr "Manifest Sürüm 3 ve üzeri sürümlerde uzantı kimliği zorunludur."
 
-#: src/messages/manifestjson.js:715
+#: src/messages/manifestjson.js:696
 msgid "See https://mzl.la/3PLZYdo for more information."
 msgstr "Daha fazla bilgi için https://mzl.la/3PLZYdo adresine bakın."
+
+#: src/messages/manifestjson.js:752
+msgid "Cannot use actions in hidden add-ons."
+msgstr ""
+
+#: src/messages/manifestjson.js:761
+msgid "Use \"browser_specific_settings\" instead of \"applications\"."
+msgstr ""
+
+#: src/messages/manifestjson.js:791
+msgid "The version string should be simplified."
+msgstr ""
+
+#~ msgid ""
+#~ "Invalid install origin. A valid origin has - only - a scheme, hostname "
+#~ "and optional port."
+#~ msgstr ""
+#~ "Geçersiz yükleme kaynağı. Geçerli bir kaynakta yalnızca bir şema, sunucu "
+#~ "ve isteğe bağlı olarak port bulunur."
+
+#~ msgid "The \"version\" property must be a string."
+#~ msgstr "\"version\" özelliği string türünde olmalıdır."
+
+#~ msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+#~ msgstr ""
+#~ "Daha fazla bilgi için http://mzl.la/1kXIADa (MDN Dökümanları) adresini "
+#~ "ziyaret edin."
+
+#~ msgid "The \"version\" property uses a Firefox-specific format."
+#~ msgstr "\"version\" özelliği Firefox'a özgü bir biçim kullanıyor."
 
 #~ msgid "addEventListener` called with truthy fourth argument."
 #~ msgstr "addEventListener` truthy dördüncü argüman ile çağrıldı."
