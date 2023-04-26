@@ -17,7 +17,7 @@
         "applications": {
           "allOf": [
             {
-              "$ref": "#/types/BrowserSpecificSettings"
+              "$ref": "#/types/DeprecatedApplications"
             },
             {
               "description": "The applications property is deprecated, please use 'browser_specific_settings'",
@@ -897,11 +897,49 @@
         }
       }
     },
+    "GeckoAndroidSpecificProperties": {
+      "type": "object",
+      "properties": {
+        "strict_min_version": {
+          "type": "string",
+          "description": "Minimum version of Gecko to support.",
+          "pattern": "^[0-9]{1,3}(\\.[a-z0-9]+)+$"
+        },
+        "strict_max_version": {
+          "type": "string",
+          "description": "Maximum version of Gecko to support.",
+          "pattern": "^[0-9]{1,3}(\\.[a-z0-9*]+)+$"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "DeprecatedApplications": {
+      "type": "object",
+      "properties": {
+        "gecko": {
+          "$ref": "#/types/FirefoxSpecificProperties"
+        },
+        "gecko_android": {
+          "allOf": [
+            {
+              "$ref": "#/types/GeckoAndroidSpecificProperties"
+            },
+            {
+              "unsupported": true
+            }
+          ]
+        }
+      },
+      "additionalProperties": {}
+    },
     "BrowserSpecificSettings": {
       "type": "object",
       "properties": {
         "gecko": {
           "$ref": "#/types/FirefoxSpecificProperties"
+        },
+        "gecko_android": {
+          "$ref": "#/types/GeckoAndroidSpecificProperties"
         }
       },
       "additionalProperties": {}
