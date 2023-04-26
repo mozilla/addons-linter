@@ -1,9 +1,7 @@
-import { oneLine } from 'common-tags';
-
 import { i18n, errorParamsToUnsupportedVersionRange } from 'utils';
 import { MANIFEST_JSON, PERMS_DATAPATH_REGEX } from 'const';
 
-const PRIVILEGED_EXTENSION_SIGNING_DOCS = i18n._(oneLine`
+const PRIVILEGED_EXTENSION_SIGNING_DOCS = i18n._(`
   Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing.
 `);
 
@@ -31,7 +29,7 @@ export function manifestFieldPrivilegedOnly(fieldName) {
     code: MANIFEST_FIELD_PRIVILEGEDONLY,
     message: i18n._(`"${fieldName}" is ignored for non-privileged add-ons.`),
     description: i18n._(
-      oneLine`"${fieldName} manifest field is only used for privileged
+      `"${fieldName} manifest field is only used for privileged
              and temporarily installed extensions.`
     ),
     file: MANIFEST_JSON,
@@ -44,9 +42,9 @@ export function manifestFieldUnsupported(fieldName, error) {
     ? errorParamsToUnsupportedVersionRange(error.params)
     : null;
   const messageTmpl = versionRange
-    ? i18n._(oneLine`"%(fieldName)s" is not supported in manifest versions
+    ? i18n._(`"%(fieldName)s" is not supported in manifest versions
         %(versionRange)s.`)
-    : i18n._(oneLine`"%(fieldName)s" is not supported.`);
+    : i18n._(`"%(fieldName)s" is not supported.`);
   const message = i18n.sprintf(messageTmpl, { fieldName, versionRange });
 
   return {
@@ -59,8 +57,7 @@ export function manifestFieldUnsupported(fieldName, error) {
 
 export const MANIFEST_FIELD_PRIVILEGED = 'MANIFEST_FIELD_PRIVILEGED';
 export function manifestFieldPrivileged(error) {
-  const messageTmpl =
-    i18n._(oneLine`%(instancePath)s: privileged manifest fields
+  const messageTmpl = i18n._(`%(instancePath)s: privileged manifest fields
                      are only allowed in privileged extensions.`);
   const message = i18n.sprintf(messageTmpl, {
     instancePath: error.instancePath,
@@ -79,9 +76,9 @@ export const MANIFEST_PERMISSION_UNSUPPORTED =
 export function manifestPermissionUnsupported(permissionName, error) {
   const versionRange = errorParamsToUnsupportedVersionRange(error.params);
   const messageTmpl = versionRange
-    ? i18n._(oneLine`/%(fieldName)s: "%(permissionName)s" is not supported in
+    ? i18n._(`/%(fieldName)s: "%(permissionName)s" is not supported in
                      manifest versions %(versionRange)s.`)
-    : i18n._(oneLine`/%(fieldName)s: "%(permissionName)s" is not supported.`);
+    : i18n._(`/%(fieldName)s: "%(permissionName)s" is not supported.`);
   const message = i18n.sprintf(messageTmpl, {
     permissionName,
     versionRange,
@@ -99,7 +96,7 @@ export function manifestPermissionUnsupported(permissionName, error) {
 export const MANIFEST_BAD_PERMISSION = {
   code: 'MANIFEST_BAD_PERMISSION',
   message: i18n._('The permission type is unsupported.'),
-  description: i18n._(oneLine`See https://mzl.la/1R1n1t0
+  description: i18n._(`See https://mzl.la/1R1n1t0
     (MDN Docs) for more information.`),
   file: MANIFEST_JSON,
 };
@@ -107,7 +104,7 @@ export const MANIFEST_BAD_PERMISSION = {
 export const MANIFEST_BAD_OPTIONAL_PERMISSION = {
   code: 'MANIFEST_BAD_OPTIONAL_PERMISSION',
   message: i18n._('The permission type is unsupported.'),
-  description: i18n._(oneLine`See https://mzl.la/2Qn0fWC
+  description: i18n._(`See https://mzl.la/2Qn0fWC
     (MDN Docs) for more information.`),
   file: MANIFEST_JSON,
 };
@@ -134,7 +131,7 @@ export const MANIFEST_PERMISSIONS_PRIVILEGED =
   'MANIFEST_PERMISSIONS_PRIVILEGED';
 export function manifestPermissionsPrivileged(error) {
   const messageTmpl =
-    i18n._(oneLine`%(instancePath)s: the following privileged permissions
+    i18n._(`%(instancePath)s: the following privileged permissions
                      are only allowed in privileged extensions:
                      %(privilegedPermissions)s.`);
   const message = i18n.sprintf(messageTmpl, {
@@ -171,7 +168,7 @@ export const MANIFEST_HOST_PERMISSIONS = {
 export const MANIFEST_INSTALL_ORIGINS = {
   code: 'MANIFEST_INSTALL_ORIGINS',
   message: i18n._('Invalid install origin.'),
-  description: i18n._(oneLine`Invalid install origin. A valid origin has - only
+  description: i18n._(`Invalid install origin. A valid origin has - only
     - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN
     Docs) for more information.`),
   file: MANIFEST_JSON,
@@ -194,7 +191,7 @@ export function manifestCsp(property) {
     // Note: don't change this 'code' without updating addons-server first, as
     // it depends on it to detect add-ons with a custom content security policy.
     code: MANIFEST_CSP,
-    message: i18n._(oneLine`
+    message: i18n._(`
       "${property}" allows remote code execution in manifest.json`),
     description: i18n._(`A custom ${property} needs additional review.`),
     file: MANIFEST_JSON,
@@ -205,9 +202,9 @@ export const MANIFEST_CSP_UNSAFE_EVAL = 'MANIFEST_CSP_UNSAFE_EVAL';
 export function manifestCspUnsafeEval(property) {
   return {
     code: MANIFEST_CSP_UNSAFE_EVAL,
-    message: i18n._(oneLine`
+    message: i18n._(`
       ${property} allows 'eval', which has strong security and performance implications.`),
-    description: i18n._(oneLine`
+    description: i18n._(`
       In most cases the same result can be achieved differently,
       therefore it is generally prohibited`),
     file: MANIFEST_JSON,
@@ -226,7 +223,7 @@ export const PROP_NAME_INVALID = {
 export const MANIFEST_UPDATE_URL = {
   code: 'MANIFEST_UPDATE_URL',
   message: i18n._('"update_url" is not allowed.'),
-  description: i18n._(oneLine`
+  description: i18n._(`
     "applications.gecko.update_url" or
     "browser_specific_settings.gecko.update_url" are not allowed for
     Mozilla-hosted add-ons.`),
@@ -236,7 +233,7 @@ export const MANIFEST_UPDATE_URL = {
 export const MANIFEST_UNUSED_UPDATE = {
   code: 'MANIFEST_UNUSED_UPDATE',
   message: i18n._('The "update_url" property is not used by Firefox.'),
-  description: i18n._(oneLine`The "update_url" is not used by Firefox in
+  description: i18n._(`The "update_url" is not used by Firefox in
     the root of a manifest; your add-on will be updated via the Add-ons
     site and not your "update_url". See: https://mzl.la/25zqk4O`),
   file: MANIFEST_JSON,
@@ -245,7 +242,7 @@ export const MANIFEST_UNUSED_UPDATE = {
 export const STRICT_MAX_VERSION = {
   code: 'STRICT_MAX_VERSION',
   message: i18n._('"strict_max_version" not required.'),
-  description: i18n._(oneLine`"strict_max_version" shouldn't be used unless
+  description: i18n._(`"strict_max_version" shouldn't be used unless
     the add-on is expected not to work with future versions of Firefox.`),
   file: MANIFEST_JSON,
 };
@@ -401,7 +398,7 @@ export function iconSizeInvalid({ path, expected, actual }) {
     code: ICON_SIZE_INVALID,
     message: i18n._('The size of the icon does not match the manifest.'),
     description: i18n.sprintf(
-      i18n._(oneLine`
+      i18n._(`
       Expected icon at "%(path)s" to be %(expected)d pixels wide but was %(actual)d.
     `),
       { path, expected, actual }
@@ -522,7 +519,7 @@ export const PROP_NAME_MISSING = manifestPropMissing('name');
 export const NO_MESSAGES_FILE = {
   code: 'NO_MESSAGES_FILE',
   message: i18n._('The "default_locale" is missing localizations.'),
-  description: i18n._(oneLine`The "default_locale" value is specified in
+  description: i18n._(`The "default_locale" value is specified in
     the manifest, but no matching "messages.json" in the "_locales" directory
     exists. See: https://mzl.la/2hjcaEE`),
   file: MANIFEST_JSON,
@@ -531,7 +528,7 @@ export const NO_MESSAGES_FILE = {
 export const NO_DEFAULT_LOCALE = {
   code: 'NO_DEFAULT_LOCALE',
   message: i18n._('The "default_locale" is missing but "_locales" exist.'),
-  description: i18n._(oneLine`The "default_locale" value is not specifed in
+  description: i18n._(`The "default_locale" value is not specifed in
     the manifest, but a "_locales" directory exists.
     See: https://mzl.la/2hjcaEE`),
   file: MANIFEST_JSON,
@@ -552,7 +549,7 @@ export const IGNORED_APPLICATIONS_PROPERTY = {
     '"applications" property overridden by "browser_specific_settings" property'
   ),
   description: i18n._(
-    oneLine`The "applications" property is being ignored because it is superseded by the "browser_specific_settings" property which is also defined in your manifest. Consider removing applications.`
+    `The "applications" property is being ignored because it is superseded by the "browser_specific_settings" property which is also defined in your manifest. Consider removing applications.`
   ),
   file: MANIFEST_JSON,
 };
@@ -583,7 +580,7 @@ export function keyFirefoxUnsupportedByMinVersion(
       'Manifest key not supported by the specified minimum Firefox version'
     ),
     description: i18n.sprintf(
-      i18n._(oneLine`"strict_min_version" requires Firefox %(minVersion)s, which
+      i18n._(`"strict_min_version" requires Firefox %(minVersion)s, which
         was released before version %(versionAdded)s introduced support for
         "%(key)s".`),
       { key, minVersion, versionAdded }
@@ -605,7 +602,7 @@ export function permissionFirefoxUnsupportedByMinVersion(
       'Permission not supported by the specified minimum Firefox version'
     ),
     description: i18n.sprintf(
-      i18n._(oneLine`"strict_min_version" requires Firefox %(minVersion)s, which
+      i18n._(`"strict_min_version" requires Firefox %(minVersion)s, which
         was released before version %(versionAdded)s introduced support for
         "%(key)s".`),
       { key, minVersion, versionAdded }
@@ -627,7 +624,7 @@ export function keyFirefoxAndroidUnsupportedByMinVersion(
       'Manifest key not supported by the specified minimum Firefox for Android version'
     ),
     description: i18n.sprintf(
-      i18n._(oneLine`"strict_min_version" requires Firefox for Android
+      i18n._(`"strict_min_version" requires Firefox for Android
         %(minVersion)s, which was released before version %(versionAdded)s
         introduced support for "%(key)s".`),
       { key, minVersion, versionAdded }
@@ -649,7 +646,7 @@ export function permissionFirefoxAndroidUnsupportedByMinVersion(
       'Permission not supported by the specified minimum Firefox for Android version'
     ),
     description: i18n.sprintf(
-      i18n._(oneLine`"strict_min_version" requires Firefox for Android
+      i18n._(`"strict_min_version" requires Firefox for Android
         %(minVersion)s, which was released before version %(versionAdded)s
         introduced support for "%(key)s".`),
       { key, minVersion, versionAdded }
@@ -673,12 +670,12 @@ export const makeRestrictedPermission = (permission, minFirefoxVersion) => {
   return {
     code: RESTRICTED_PERMISSION,
     message: i18n.sprintf(
-      i18n._(oneLine`The "%(permission)s" permission requires
+      i18n._(`The "%(permission)s" permission requires
         "strict_min_version" to be set to "%(minFirefoxVersion)s" or above`),
       { permission, minFirefoxVersion }
     ),
     description: i18n.sprintf(
-      i18n._(oneLine`The "%(permission)s" permission requires
+      i18n._(`The "%(permission)s" permission requires
         "strict_min_version" to be set to "%(minFirefoxVersion)s" or above.
         Please update your manifest.json version to specify a minimum Firefox
         version.`),
@@ -700,7 +697,7 @@ export const EXTENSION_ID_REQUIRED = {
 export const PRIVILEGED_FEATURES_REQUIRED = 'PRIVILEGED_FEATURES_REQUIRED';
 export function privilegedFeaturesRequired(error) {
   const messageTmpl = i18n._(
-    oneLine`%(instancePath)s: Privileged extensions should declare privileged permissions.`
+    `%(instancePath)s: Privileged extensions should declare privileged permissions.`
   );
 
   const message = i18n.sprintf(messageTmpl, {
@@ -710,7 +707,7 @@ export function privilegedFeaturesRequired(error) {
   return {
     code: PRIVILEGED_FEATURES_REQUIRED,
     message,
-    description: i18n._(oneLine`
+    description: i18n._(`
       This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate.
       Please upload it directly to https://addons.mozilla.org/.
     `),
@@ -724,10 +721,10 @@ export function mozillaAddonsPermissionRequired(error) {
   const messageTmpl =
     error.instancePath === '/permissions'
       ? i18n._(
-          oneLine`%(instancePath)s: The "mozillaAddons" permission is required for privileged extensions.`
+          `%(instancePath)s: The "mozillaAddons" permission is required for privileged extensions.`
         )
       : i18n._(
-          oneLine`%(instancePath)s: The "mozillaAddons" permission is required for extensions that include privileged manifest fields.`
+          `%(instancePath)s: The "mozillaAddons" permission is required for extensions that include privileged manifest fields.`
         );
 
   const message = i18n.sprintf(messageTmpl, {
@@ -740,7 +737,7 @@ export function mozillaAddonsPermissionRequired(error) {
     description:
       error.instancePath === '/permissions'
         ? i18n._(
-            oneLine`This extension does not include the "mozillaAddons" permission, which is required for privileged extensions.`
+            `This extension does not include the "mozillaAddons" permission, which is required for privileged extensions.`
           )
         : message,
     file: MANIFEST_JSON,
@@ -750,7 +747,7 @@ export function mozillaAddonsPermissionRequired(error) {
 export const HIDDEN_NO_ACTION = {
   code: 'HIDDEN_NO_ACTION',
   message: i18n._('Cannot use actions in hidden add-ons.'),
-  description: i18n._(oneLine`The hidden and browser_action/page_action (or
+  description: i18n._(`The hidden and browser_action/page_action (or
     action in Manifest Version 3 and above) properties are mutually
     exclusive.`),
   file: MANIFEST_JSON,
@@ -759,7 +756,7 @@ export const HIDDEN_NO_ACTION = {
 export const APPLICATIONS_DEPRECATED = {
   code: 'APPLICATIONS_DEPRECATED',
   message: i18n._('Use "browser_specific_settings" instead of "applications".'),
-  description: i18n._(oneLine`The "applications" property in the manifest is
+  description: i18n._(`The "applications" property in the manifest is
     deprecated and will no longer be accepted in Manifest Version 3 and
     above.`),
   file: MANIFEST_JSON,
@@ -767,9 +764,9 @@ export const APPLICATIONS_DEPRECATED = {
 
 export const APPLICATIONS_INVALID = {
   code: 'APPLICATIONS_INVALID',
-  message: i18n._(oneLine`"applications" is no longer allowed in Manifest
+  message: i18n._(`"applications" is no longer allowed in Manifest
     Version 3 and above.`),
-  description: i18n._(oneLine`The "applications" property in the manifest is
+  description: i18n._(`The "applications" property in the manifest is
     no longer allowed in Manifest Version 3 and above. Use
     "browser_specific_settings" instead.`),
   file: MANIFEST_JSON,
@@ -777,9 +774,9 @@ export const APPLICATIONS_INVALID = {
 
 export const VERSION_FORMAT_DEPRECATED = {
   code: 'VERSION_FORMAT_DEPRECATED',
-  message: i18n._(oneLine`The version string should be simplified because it
+  message: i18n._(`The version string should be simplified because it
     won't be compatible with Manifest Version 3 and above.`),
-  description: i18n._(oneLine`The version should be a string with 1 to 4
+  description: i18n._(`The version should be a string with 1 to 4
     numbers separated with dots. Each number should have up to 9 digits and
     leading zeros will no longer be allowed. Letters will no longer be allowed
     either. See https://mzl.la/3h3mCRu (MDN Docs) for more information.`),
@@ -789,7 +786,7 @@ export const VERSION_FORMAT_DEPRECATED = {
 export const VERSION_FORMAT_INVALID = {
   code: 'VERSION_FORMAT_INVALID',
   message: i18n._('The version string should be simplified.'),
-  description: i18n._(oneLine`The version should be a string with 1 to 4
+  description: i18n._(`The version should be a string with 1 to 4
     numbers separated with dots. Each number should have up to 9 digits and
     leading zeros are not allowed. Letters are no longer allowed. See
     https://mzl.la/3h3mCRu (MDN Docs) for more information.`),

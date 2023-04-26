@@ -1,12 +1,10 @@
-import { oneLine } from 'common-tags';
-
 import { MAX_FILE_SIZE_TO_PARSE_MB } from 'const';
 import { i18n } from 'utils';
 
 export const DUPLICATE_XPI_ENTRY = {
   code: 'DUPLICATE_XPI_ENTRY',
   message: i18n._('Package contains duplicate entries'),
-  description: i18n._(oneLine`The package contains multiple entries
+  description: i18n._(`The package contains multiple entries
     with the same name. This practice has been banned. Try unzipping
     and re-zipping your add-on package and try again.`),
 };
@@ -21,7 +19,7 @@ export const INVALID_XPI_ENTRY = {
   // format:
   //   `invalid characters in fileName: nameOfTheInvalidZipFileEntry`
   message: 'Invalid ZIP file entry',
-  description: i18n._(oneLine`The package is invalid. It may contain
+  description: i18n._(`The package is invalid. It may contain
     entries using invalid characters, as an example using '\\' as a
     path separator is not allowed in Firefox. Try to recreate your
     add-on package (ZIP) and make sure all entries are using '/' as the
@@ -37,8 +35,7 @@ export const BAD_ZIPFILE = {
 export const TYPE_NO_MANIFEST_JSON = {
   code: 'TYPE_NO_MANIFEST_JSON',
   message: i18n._('manifest.json was not found'),
-  description:
-    i18n._(oneLine`No manifest.json was found at the root of the extension.
+  description: i18n._(`No manifest.json was found at the root of the extension.
     The package file must be a ZIP of the extension's files themselves, not of the
     containing directory. See: https://mzl.la/2r2McKv for more on packaging.`),
 };
@@ -46,7 +43,7 @@ export const TYPE_NO_MANIFEST_JSON = {
 export const FILE_TOO_LARGE = {
   code: 'FILE_TOO_LARGE',
   message: i18n._('File is too large to parse.'),
-  description: i18n._(oneLine`This file is not binary and is too large to
+  description: i18n._(`This file is not binary and is too large to
     parse. Files larger than ${MAX_FILE_SIZE_TO_PARSE_MB}MB will not be
     parsed. Consider moving large lists of data out of JavaScript files and
     into JSON files, or splitting very large files into smaller ones.`),
@@ -55,7 +52,7 @@ export const FILE_TOO_LARGE = {
 export const HIDDEN_FILE = {
   code: 'HIDDEN_FILE',
   message: i18n._('Hidden file flagged'),
-  description: i18n._(oneLine`Hidden files complicate the
+  description: i18n._(`Hidden files complicate the
     review process and can contain sensitive information about the system that
     generated the add-on. Please modify the packaging process so that these
     files aren't included.`),
@@ -64,21 +61,21 @@ export const HIDDEN_FILE = {
 export const FLAGGED_FILE = {
   code: 'FLAGGED_FILE',
   message: i18n._('Flagged filename found'),
-  description: i18n._(oneLine`Files were found that are either unnecessary
+  description: i18n._(`Files were found that are either unnecessary
     or have been included unintentionally. They should be removed.`),
 };
 
 export const FLAGGED_FILE_EXTENSION = {
   code: 'FLAGGED_FILE_EXTENSION',
   message: i18n._('Flagged file extensions found'),
-  description: i18n._(oneLine`Files were found that are either unnecessary
+  description: i18n._(`Files were found that are either unnecessary
     or have been included unintentionally. They should be removed.`),
 };
 
 export const FLAGGED_FILE_TYPE = {
   code: 'FLAGGED_FILE_TYPE',
   message: i18n._('Flagged file type found'),
-  description: i18n._(oneLine`Files whose names end with flagged extensions
+  description: i18n._(`Files whose names end with flagged extensions
     have been found in the add-on. The extension of these files are flagged
     because they usually identify binary components. Please see
     https://bit.ly/review-policy for more information on the binary content
@@ -88,7 +85,7 @@ export const FLAGGED_FILE_TYPE = {
 export const ALREADY_SIGNED = {
   code: 'ALREADY_SIGNED',
   message: i18n._('Package already signed'),
-  description: i18n._(oneLine`Add-ons which are already signed will be
+  description: i18n._(`Add-ons which are already signed will be
     re-signed when published on AMO. This will replace any existing signatures
     on the add-on.`),
 };
@@ -96,7 +93,7 @@ export const ALREADY_SIGNED = {
 export const COINMINER_USAGE_DETECTED = {
   code: 'COINMINER_USAGE_DETECTED',
   message: i18n._('Firefox add-ons are not allowed to run coin miners.'),
-  description: i18n._(oneLine`We do not allow coinminer scripts to be run inside
+  description: i18n._(`We do not allow coinminer scripts to be run inside
     WebExtensions.
     See https://github.com/mozilla/addons-linter/issues/1643 for more
     details.`),
@@ -105,6 +102,6 @@ export const COINMINER_USAGE_DETECTED = {
 export const RESERVED_FILENAME = {
   code: 'RESERVED_FILENAME',
   message: i18n._('Reserved filename found.'),
-  description: i18n._(oneLine`Files whose names are reserved have been found in
+  description: i18n._(`Files whose names are reserved have been found in
     the add-on. Please refrain from using them and rename your files.`),
 };
