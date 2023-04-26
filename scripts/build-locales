@@ -4,7 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const glob = require('glob');
+const { globSync } = require('glob');
 const po2json = require('po2json');
 const shelljs = require('shelljs');
 const toSource = require('tosource');
@@ -12,7 +12,7 @@ const toSource = require('tosource');
 const config = require('../config');
 
 const localeDir = path.join(__dirname, '../locale');
-const poFiles = glob.sync(`${localeDir}/**/messages.po`);
+const poFiles = globSync(`${localeDir}/**/messages.po`);
 const dest = path.join(__dirname, '../dist/locale/');
 
 poFiles.forEach((pofile) => {
