@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-27 08:34+0000\n"
+"POT-Creation-Date: 2023-04-26 11:56+0000\n"
 "PO-Revision-Date: 2018-03-12 06:56+0000\n"
 "Last-Translator: Nihad Suljić <nihad.suljic92@gmail.com>\n"
 "Language-Team: none\n"
@@ -11,8 +11,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pontoon\n"
 
 #: src/linter.js:171
@@ -244,20 +244,24 @@ msgid ""
 "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr "Nije podešeno \"message\" svojstvo za string (https://mzl.la/2DSBTjA)."
 
-#: src/messages/manifestjson.js:107 src/messages/manifestjson.js:115
-#: src/messages/manifestjson.js:118 src/messages/manifestjson.js:99
+#: src/messages/manifestjson.js:101 src/messages/manifestjson.js:109
+#: src/messages/manifestjson.js:117
 msgid "The permission type is unsupported."
 msgstr "Tip dozvole nije podržan."
+
+#: src/messages/manifestjson.js:118 src/messages/manifestjson.js:165
+msgid "See https://mzl.la/3Woeqv4 (MDN Docs) for more information."
+msgstr ""
 
 #: src/messages/manifestjson.js:12
 msgid "The field is required."
 msgstr "Polje je obavezno."
 
-#: src/messages/manifestjson.js:124 src/messages/manifestjson.js:153
+#: src/messages/manifestjson.js:126 src/messages/manifestjson.js:155
 msgid "Unknown permission."
 msgstr "Nepoznata dozvola."
 
-#: src/messages/manifestjson.js:125
+#: src/messages/manifestjson.js:127
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
 msgstr "Pogledajte https://mzl.la/1R1n1t0 (MDN dokumente) za više informacija."
 
@@ -265,26 +269,20 @@ msgstr "Pogledajte https://mzl.la/1R1n1t0 (MDN dokumente) za više informacija."
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Pogledajte https://mzl.la/1ZOhoEN (MDN dokumente) za više informacija."
 
-#: src/messages/manifestjson.js:154
+#: src/messages/manifestjson.js:156
 #, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
 msgstr "Pogledajte https://mzl.la/20PenXl (MDN dokumente) za više informacija."
 
-#: src/messages/manifestjson.js:162 src/messages/manifestjson.js:165
+#: src/messages/manifestjson.js:164
 #, fuzzy
 msgid "Invalid host permission."
 msgstr "Nepoznata dozvola."
 
-#: src/messages/manifestjson.js:171
+#: src/messages/manifestjson.js:173
 #, fuzzy
 msgid "Invalid install origin."
 msgstr "Nepoznata dozvola."
-
-#: src/messages/manifestjson.js:174
-msgid ""
-"Invalid install origin. A valid origin has - only - a scheme, hostname and "
-"optional port."
-msgstr ""
 
 #: src/messages/manifestjson.js:182
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -307,264 +305,274 @@ msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
 msgstr "Pogledajte http://mzl.la/1STmr48 (MDN dokumente) za više informacija."
 
 #: src/messages/manifestjson.js:228
-msgid "The \"version\" property must be a string."
-msgstr "Svojstvo \"version\" mora biti niz."
-
-#: src/messages/manifestjson.js:229 src/messages/manifestjson.js:238
-msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-msgstr "Pogledajte http://mzl.la/1kXIADa (MDN dokumente) za više informacija."
-
-#: src/messages/manifestjson.js:237
-msgid "The \"version\" property uses a Firefox-specific format."
-msgstr "Svojstvo \"version\" koristi Firefoxov specifični format."
-
-#: src/messages/manifestjson.js:246
 msgid "\"update_url\" is not allowed."
 msgstr "\"update_url\" nije dozvoljen."
 
-#: src/messages/manifestjson.js:256
+#: src/messages/manifestjson.js:238
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "Svojstvo \"update_url\" nije korišteno od strane Firefoxa."
 
-#: src/messages/manifestjson.js:265
+#: src/messages/manifestjson.js:247
 msgid "\"strict_max_version\" not required."
 msgstr "\"strict_max_version\" nije potreban."
 
-#: src/messages/manifestjson.js:284
+#: src/messages/manifestjson.js:266
 msgid "An icon defined in the manifest could not be found in the package."
 msgstr "Ikona određena u manifestu nije pronađena u pošiljci."
 
-#: src/messages/manifestjson.js:288
+#: src/messages/manifestjson.js:270
 msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Ikona nije pronađena na \"%(path)s\"."
 
-#: src/messages/manifestjson.js:303
+#: src/messages/manifestjson.js:285
 #, fuzzy
 msgid "A background script defined in the manifest could not be found."
 msgstr "Sadržaj skripte definisan u manifestu nije pronađen na \"%(path)s\"."
 
-#: src/messages/manifestjson.js:306
+#: src/messages/manifestjson.js:288
 #, fuzzy
 msgid "A background page defined in the manifest could not be found."
 msgstr "Ikona određena u manifestu nije pronađena u pošiljci."
 
-#: src/messages/manifestjson.js:311
+#: src/messages/manifestjson.js:293
 msgid "Background script could not be found at \"%(path)s\"."
 msgstr "Pozadinska skripta nije pronađena na \"%(path)s\"."
 
-#: src/messages/manifestjson.js:312
+#: src/messages/manifestjson.js:294
 msgid "Background page could not be found at \"%(path)s\"."
 msgstr "Pozadinska stranica nije pronađena na \"%(path)s\"."
 
-#: src/messages/manifestjson.js:327
+#: src/messages/manifestjson.js:309
 #, fuzzy
 msgid "A content script defined in the manifest could not be found."
 msgstr "Sadržaj skripte definisan u manifestu nije pronađen na \"%(path)s\"."
 
-#: src/messages/manifestjson.js:328
+#: src/messages/manifestjson.js:310
 #, fuzzy
 msgid "A content script css file defined in the manifest could not be found."
 msgstr ""
 "Sadržaj skripte css datoteke u manifestu nije pronađen na \"%(path)s\"."
 
-#: src/messages/manifestjson.js:333
+#: src/messages/manifestjson.js:315
 msgid ""
 "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Sadržaj skripte definisan u manifestu nije pronađen na \"%(path)s\"."
 
-#: src/messages/manifestjson.js:336
+#: src/messages/manifestjson.js:318
 msgid ""
 "Content script css file defined in the manifest could not be found at "
 "\"%(path)s\"."
 msgstr ""
 "Sadržaj skripte css datoteke u manifestu nije pronađen na \"%(path)s\"."
 
-#: src/messages/manifestjson.js:350
+#: src/messages/manifestjson.js:332
 #, fuzzy
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "Ikona određena u manifestu nije pronađena u pošiljci."
 
-#: src/messages/manifestjson.js:354
+#: src/messages/manifestjson.js:336
 #, fuzzy
 msgid ""
 "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 "Sadržaj skripte css datoteke u manifestu nije pronađen na \"%(path)s\"."
 
-#: src/messages/manifestjson.js:366
+#: src/messages/manifestjson.js:348
 msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
-#: src/messages/manifestjson.js:367
+#: src/messages/manifestjson.js:349
 msgid ""
 "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
-#: src/messages/manifestjson.js:376
+#: src/messages/manifestjson.js:358
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr ""
 
-#: src/messages/manifestjson.js:379
+#: src/messages/manifestjson.js:361
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr ""
 
-#: src/messages/manifestjson.js:388
+#: src/messages/manifestjson.js:370
 msgid "The manifest contains a dictionary but no id property."
 msgstr ""
 
-#: src/messages/manifestjson.js:389
+#: src/messages/manifestjson.js:371
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr ""
 
-#: src/messages/manifestjson.js:399
+#: src/messages/manifestjson.js:381
 msgid "Forbidden content found in add-on."
 msgstr "Zabranjeni sadržaj pronađen u dodatku."
 
-#: src/messages/manifestjson.js:400
+#: src/messages/manifestjson.js:382
 msgid "This add-on contains forbidden content."
 msgstr "Ovaj dodatak sadrži zabranjeni sadržaj."
 
-#: src/messages/manifestjson.js:408
+#: src/messages/manifestjson.js:390
 msgid "Icons must be square."
 msgstr "Ikone moraju biti kvadrati."
 
-#: src/messages/manifestjson.js:409
+#: src/messages/manifestjson.js:391
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "Ikona na \"%(path)s\" mora biti kvadrat."
 
-#: src/messages/manifestjson.js:420
+#: src/messages/manifestjson.js:402
 msgid "The size of the icon does not match the manifest."
 msgstr "Veličina ikone se ne poklapa sa manifestom."
 
-#: src/messages/manifestjson.js:435
+#: src/messages/manifestjson.js:417
 msgid "Corrupt image file"
 msgstr "Oštećena datoteka slike"
 
-#: src/messages/manifestjson.js:437
+#: src/messages/manifestjson.js:419
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr "Očekivana ikona datoteke na \"%(path)s\" je pokvarena"
 
-#: src/messages/manifestjson.js:446
+#: src/messages/manifestjson.js:428
 msgid "This property has been deprecated."
 msgstr ""
 
-#: src/messages/manifestjson.js:453
+#: src/messages/manifestjson.js:435
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
-#: src/messages/manifestjson.js:454
+#: src/messages/manifestjson.js:436
 #, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr "Pogledajte https://mzl.la/1R1n1t0 (MDN dokumente) za više informacija."
 
-#: src/messages/manifestjson.js:469
+#: src/messages/manifestjson.js:451
 #, fuzzy
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "Pozadinska stranica nije pronađena na \"%(path)s\"."
 
-#: src/messages/manifestjson.js:480
+#: src/messages/manifestjson.js:462
 #, fuzzy
 msgid "Corrupted theme image file"
 msgstr "Oštećena datoteka slike"
 
-#: src/messages/manifestjson.js:482
+#: src/messages/manifestjson.js:464
 #, fuzzy
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "Očekivana ikona datoteke na \"%(path)s\" je pokvarena"
 
-#: src/messages/manifestjson.js:493
+#: src/messages/manifestjson.js:475
 msgid "Theme image file has an unsupported file extension"
 msgstr ""
 
-#: src/messages/manifestjson.js:495
+#: src/messages/manifestjson.js:477
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
 msgstr ""
 
-#: src/messages/manifestjson.js:509
+#: src/messages/manifestjson.js:491
 msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
-#: src/messages/manifestjson.js:511
+#: src/messages/manifestjson.js:493
 msgid ""
 "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 
-#: src/messages/manifestjson.js:525
+#: src/messages/manifestjson.js:507
 msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
-#: src/messages/manifestjson.js:529
+#: src/messages/manifestjson.js:511
 msgid ""
 "Theme image file extension at \"%(path)s\" does not match its actual mime "
 "type \"%(mime)s\""
 msgstr ""
 
-#: src/messages/manifestjson.js:543
+#: src/messages/manifestjson.js:524
 msgid "The \"default_locale\" is missing localizations."
 msgstr "U \"default_locale\" nedostaje lokalizacija."
 
-#: src/messages/manifestjson.js:552
+#: src/messages/manifestjson.js:533
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "Nedostaje \"default_locale\" ali \"_locales\" postoji."
 
-#: src/messages/manifestjson.js:561
+#: src/messages/manifestjson.js:542
 msgid "Unsupported image extension"
 msgstr "Nepodržano proširenje slike"
 
-#: src/messages/manifestjson.js:562
+#: src/messages/manifestjson.js:543
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Ikone moraju biti JPG/JPEG, WebP, GIF, PNG ili SVG."
 
-#: src/messages/manifestjson.js:570
+#: src/messages/manifestjson.js:551
 msgid ""
 "\"applications\" property overridden by \"browser_specific_settings\" "
 "property"
 msgstr ""
 
-#: src/messages/manifestjson.js:583
+#: src/messages/manifestjson.js:564
 msgid "Empty language directory"
 msgstr "Prazan jezični direktorij"
 
-#: src/messages/manifestjson.js:585
+#: src/messages/manifestjson.js:566
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "messages.json datoteka nedostaje u \"%(path)s\""
 
-#: src/messages/manifestjson.js:601
+#: src/messages/manifestjson.js:582
 msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr ""
 
-#: src/messages/manifestjson.js:623
+#: src/messages/manifestjson.js:604
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr ""
 
-#: src/messages/manifestjson.js:645
+#: src/messages/manifestjson.js:626
 msgid ""
 "Manifest key not supported by the specified minimum Firefox for Android "
 "version"
 msgstr ""
 
-#: src/messages/manifestjson.js:667
+#: src/messages/manifestjson.js:648
 msgid ""
 "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
-#: src/messages/manifestjson.js:682
+#: src/messages/manifestjson.js:663
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr ""
 
-#: src/messages/manifestjson.js:683
+#: src/messages/manifestjson.js:664
 msgid ""
 "Links directing to \"addons.mozilla.org\" are not allowed to be used for "
 "homepage"
 msgstr ""
 
-#: src/messages/manifestjson.js:712
+#: src/messages/manifestjson.js:693
 msgid "The extension ID is required in Manifest Version 3 and above."
 msgstr ""
 
-#: src/messages/manifestjson.js:715
+#: src/messages/manifestjson.js:696
 msgid "See https://mzl.la/3PLZYdo for more information."
 msgstr ""
+
+#: src/messages/manifestjson.js:752
+msgid "Cannot use actions in hidden add-ons."
+msgstr ""
+
+#: src/messages/manifestjson.js:761
+msgid "Use \"browser_specific_settings\" instead of \"applications\"."
+msgstr ""
+
+#: src/messages/manifestjson.js:791
+msgid "The version string should be simplified."
+msgstr ""
+
+#~ msgid "The \"version\" property must be a string."
+#~ msgstr "Svojstvo \"version\" mora biti niz."
+
+#~ msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
+#~ msgstr ""
+#~ "Pogledajte http://mzl.la/1kXIADa (MDN dokumente) za više informacija."
+
+#~ msgid "The \"version\" property uses a Firefox-specific format."
+#~ msgstr "Svojstvo \"version\" koristi Firefoxov specifični format."
 
 #~ msgid "addEventListener` called with truthy fourth argument."
 #~ msgstr "addEventListener` se zove 'istinski' četvrti argument."
