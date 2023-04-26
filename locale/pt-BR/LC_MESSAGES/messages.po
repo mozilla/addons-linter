@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-26 11:56+0000\n"
-"PO-Revision-Date: 2023-04-26 17:09+0000\n"
+"PO-Revision-Date: 2023-04-26 17:18+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -512,15 +512,15 @@ msgstr "Consulte mais informações em https://mzl.la/3PLZYdo."
 
 #: src/messages/manifestjson.js:752
 msgid "Cannot use actions in hidden add-ons."
-msgstr ""
+msgstr "Não é possível usar ações em extensões ocultas."
 
 #: src/messages/manifestjson.js:761
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
-msgstr ""
+msgstr "Use \"browser_specific_settings\" em vez de \"applications\"."
 
 #: src/messages/manifestjson.js:791
 msgid "The version string should be simplified."
-msgstr ""
+msgstr "A string da versão deve ser simplificada."
 
 #~ msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
 #~ msgstr "Origem de instalação inválida. Uma origem válida tem - apenas - um esquema, nome de servidor e porta opcional."
