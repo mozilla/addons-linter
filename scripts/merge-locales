@@ -3,12 +3,12 @@
 
 const path = require('path');
 
-const glob = require('glob');
+const { globSync } = require('glob');
 const shell = require('shelljs');
 
 const localeDir = path.join(__dirname, '../locale');
 
-const poFiles = glob.sync(`${localeDir}/**/messages.po`);
+const poFiles = globSync(`${localeDir}/**/messages.po`);
 const template = path.join(localeDir, `templates/LC_MESSAGES/messages.pot`);
 
 if (!shell.which('msgmerge')) {
