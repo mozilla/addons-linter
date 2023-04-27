@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-27 12:27+0000\n"
+"PO-Revision-Date: 2023-04-27 12:37+0000\n"
 "Last-Translator: Francesco Lodolo [:flod] <flod+pontoon@mozilla.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -239,7 +239,7 @@ msgstr "L'uso di document.write è sconsigliato."
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
 msgstr ""
-"document.write avrà esito negativo in molte circostanze se utilizzato nelle estensioni e potrebbe avere gravi ripercussioni sulla sicurezza se utilizzato in modo improprio. Pertanto, non dovrebbe "
+"document.write non funzionerà in molte circostanze quando utilizzato nelle estensioni e potrebbe avere gravi ripercussioni sulla sicurezza se utilizzato in modo improprio. Pertanto, non dovrebbe "
 "essere utilizzato."
 
 #: src/messages/javascript.js:93
@@ -256,7 +256,7 @@ msgstr "Il file JSON contiene commenti di blocco."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr "Nei file JSON sono consentiti solo commenti di riga (commenti che iniziano con \"//\"). Rimuovi i commenti bloccati (commenti che iniziano con \"/*\")"
+msgstr "Nei file JSON sono consentiti solo commenti di riga (commenti che iniziano con “//”). Rimuovere i blocchi di commenti (commenti che iniziano con “/*”)"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -280,15 +280,15 @@ msgstr "Rilevato un nome di file riservato."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr "I file i cui nomi sono riservati sono stati trovati nel componente aggiuntivo. Astenersi dall'utilizzarli e rinominare i file."
+msgstr "Sono stati trovati dei file nel componente aggiuntivo con nomi riservati. Astenersi dall’utilizzare questi nomi e rinominare i file."
 
 #: src/messages/layout.js:22
 msgid ""
 "The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
 "sure all entries are using '/' as the path separator."
 msgstr ""
-"Il pacchetto non è valido. Potrebbe contenere voci che utilizzano caratteri non validi, ad esempio l’utilizzo di “\\” come separatore di percorso non è consentito in Firefox. Prova a ricreare il tuo"
-" pacchetto aggiuntivo (ZIP) e assicurati che tutte le voci utilizzino '/' come separatore di percorso."
+"Il pacchetto non è valido. Potrebbe contenere voci che utilizzano caratteri non validi, ad esempio l’utilizzo di “\\” come separatore di percorso non è consentito in Firefox. Prova a ricreare il "
+"pacchetto del tuo componente aggiuntivo (ZIP) e assicurati che tutte le voci utilizzino “/” come separatore di percorso."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
@@ -303,8 +303,8 @@ msgid ""
 "No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
 "packaging."
 msgstr ""
-"Non è stato trovato alcun file manifest.json nella radice dell’estensione. Il file del pacchetto deve essere uno ZIP dei file dell'estensione stessi, non della directory che lo contiene. Per "
-"ulteriori informazioni sul packaging, vedere: https://mzl.la/2r2McKv."
+"Non è stato trovato alcun file manifest.json nella radice dell’estensione. Il file del pacchetto deve essere uno ZIP dei file dell’estensione stessi, non della directory che li contiene. Per "
+"ulteriori informazioni sui pacchetti, consultare: https://mzl.la/2r2McKv."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
@@ -315,8 +315,8 @@ msgid ""
 "This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
 "or splitting very large files into smaller ones."
 msgstr ""
-"Questo file non è binario ed è troppo grande per essere analizzato. I file di dimensioni superiori a %(maxFileSizeToParseMB)sMB non verranno analizzati. Prendi in considerazione la possibilità di "
-"spostare elenchi di dati di grandi dimensioni da file JavaScript a file JSON o dividere file molto grandi in file più piccoli."
+"Questo file non è binario ed è troppo grande per essere analizzato. I file di dimensioni superiori a %(maxFileSizeToParseMB)s MB non verranno analizzati. Prendi in considerazione la possibilità di "
+"spostare elenchi di dati di grandi dimensioni da JavaScript a JSON, o dividere file molto grandi in file più piccoli."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -358,8 +358,8 @@ msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
-"Nel componente aggiuntivo sono stati trovati file i cui nomi terminano con estensioni contrassegnate. L'estensione di questi file è contrassegnata perché in genere identificano componenti binari. "
-"Per ulteriori informazioni sul processo di revisione dei contenuti binari, consultare https://bit.ly/review-policy."
+"Nel componente aggiuntivo sono stati trovati file i cui nomi terminano con estensioni contrassegnate. L'estensione di questi file è contrassegnata perché in genere identifica componenti binari. Per "
+"ulteriori informazioni sul processo di revisione dei contenuti binari, consultare https://bit.ly/review-policy."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
@@ -367,7 +367,7 @@ msgstr "Pacchetto già firmato"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr "I componenti aggiuntivi già firmati verranno firmati nuovamente una volta pubblicati su AMO. Questo sostituirà tutte le firme esistenti sul componente aggiuntivo."
+msgstr "I componenti aggiuntivi già firmati verranno firmati nuovamente una volta pubblicati su AMO. Questo sostituirà tutte le firme esistenti nel componente aggiuntivo."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -375,7 +375,7 @@ msgstr "Il Bitcoin mining non è consentito nei componenti aggiuntivi per Firefo
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr "Non è consentito eseguire script coinminer all’interno di WebExtensions. Per ulteriori dettagli, vedere https://github.com/mozilla/addons-linter/issues/1643."
+msgstr "L’esecuzione di script coinminer all’interno di WebExtensions non è consentita. Per ulteriori dettagli, consultare https://github.com/mozilla/addons-linter/issues/1643."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
