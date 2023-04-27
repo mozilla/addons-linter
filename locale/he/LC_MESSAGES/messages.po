@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-27 16:27+0000\n"
+"PO-Revision-Date: 2023-04-27 16:36+0000\n"
 "Last-Translator: Itiel <itiel_yn8@walla.com>\n"
 "Language-Team: none\n"
 "Language: he\n"
@@ -740,7 +740,7 @@ msgstr "מפתח ה־manifest אינו נתמך על־ידי גרסת Firefox ה
 
 #: src/messages/manifestjson.js:599 src/messages/manifestjson.js:621
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "‏״strict_min_version״ דורש שימוש ב־Firefox %(minVersion)s, אשר שוחרר לפני שגרסה %(versionAdded)s הציגה תמיכה עבור ״%(key)s״."
 
 #: src/messages/manifestjson.js:617
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -756,7 +756,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:643 src/messages/manifestjson.js:665
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "‏״strict_min_version״ דורש שימוש ב־Firefox for Android %(minVersion)s, אשר שוחרר לפני שגרסה %(versionAdded)s הציגה תמיכה עבור ״%(key)s״."
 
 #: src/messages/manifestjson.js:661
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -772,15 +772,15 @@ msgstr "קישורים המפנים אל \"addons.mozilla.org\" אינם מור�
 
 #: src/messages/manifestjson.js:689
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "ההרשאה ״%(permission)s״ מחייבת את המאפיין של \"strict_min_version\" להיות מוגדר ל־״%(minFirefoxVersion)s״ ומעלה"
 
 #: src/messages/manifestjson.js:694
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
-msgstr ""
+msgstr "ההרשאה ״%(permission)s״ מחייבת את המאפיין של \"strict_min_version\" להיות מוגדר ל־״%(minFirefoxVersion)s״ ומעלה. נא לעדכן את גרסת ה־manifest.json שלך כדי לציין גרסת Firefox מינימלית."
 
 #: src/messages/manifestjson.js:706
 msgid "The extension ID is required in Manifest Version 3 and above."
-msgstr ""
+msgstr "מזהה ההרחבה נדרש ב־Manifest גרסה 3 ומעלה."
 
 #: src/messages/manifestjson.js:709
 msgid "See https://mzl.la/3PLZYdo for more information."
@@ -820,25 +820,27 @@ msgstr "יש להשתמש ב־\"browser_specific_settings\" במקום \"applica
 
 #: src/messages/manifestjson.js:775
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "המאפיין ״applications״ ב־manifest הוצא משימוש ולא יאושר עוד ב־Manifest גרסה 3 ומעלה."
 
 #: src/messages/manifestjson.js:783
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "המאפיין ״applications״אינו מותר עוד ב־Manifest גרסה 3 ומעלה."
 
 #: src/messages/manifestjson.js:785
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "המאפיין ״applications״ ב־manifest אינו מותר עוד ב־Manifest גרסה 3 ומעלה. יש להשתמש במקום זאת ב־״browser_specific_settings״."
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "יש לפשט את מחרוזת הגרסה מכיוון שהיא לא תהיה תואמת ל־Manifest גרסה 3 ומעלה."
 
 #: src/messages/manifestjson.js:795
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"הגרסה צריכה להיות מחרוזת עם 1 עד 4 מספרים מופרדים בנקודות. כל מספר צריך לכלול עד 9 ספרות, ואפסים מובילים לא יורשו עוד. גם אותיות לא יורשו יותר. יש לעיין ב־https://mzl.la/3h3mCRu ‏(MDN Docs) למידע "
+"נוסף."
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
