@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-27 12:37+0000\n"
+"PO-Revision-Date: 2023-04-27 12:46+0000\n"
 "Last-Translator: Francesco Lodolo [:flod] <flod+pontoon@mozilla.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -451,7 +451,7 @@ msgstr "Permesso sconosciuto."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr "%(instancePath)s: i seguenti permessi con privilegi sono consentiti solo nelle estensioni con privilegi: %(privilegedPermissions)s."
+msgstr "%(instancePath)s: i seguenti permessi sono consentiti solo nelle estensioni con privilegi: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -463,7 +463,7 @@ msgstr "Origine dell’installazione non valida."
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr "Origine installazione non valida. Un'origine valida ha solo uno schema, un nome host e una porta facoltativa. Per ulteriori informazioni, vedere https://mzl.la/3TEbqbE (Documentazione MDN)."
+msgstr "Origine installazione non valida. Un’origine valida ha solo uno schema, un nome host e una porta facoltativa. Per ulteriori informazioni, consultare https://mzl.la/3TEbqbE (MDN Docs)."
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -479,15 +479,15 @@ msgstr "Il campo è non valido."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr "\"%(property)s\" consente l'esecuzione di codice in modalità remota in manifest.json"
+msgstr "“%(property)s” consente l’esecuzione di codice in modalità remota in manifest.json"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr "Un \"%(property)s\" personalizzato necessita di ulteriore revisione."
+msgstr "Un “%(property)s” personalizzato necessita di ulteriore revisione."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr "\"%(property)s\" consente \"eval\", che ha forti implicazioni in termini di sicurezza e prestazioni."
+msgstr "“%(property)s” consente “eval”, che ha implicazioni significative in termini di sicurezza e prestazioni."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
@@ -507,7 +507,7 @@ msgstr "\"update_url\" non è consentito."
 
 #: src/messages/manifestjson.js:237
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr "\"applications.gecko.update_url\" o \"browser_specific_settings.gecko.update_url\" non sono consentiti per i componenti aggiuntivi ospitati da Mozilla."
+msgstr "“applications.gecko.update_url” o “browser_specific_settings.gecko.update_url” non sono consentiti per i componenti aggiuntivi ospitati da Mozilla."
 
 #: src/messages/manifestjson.js:246
 msgid "The \"update_url\" property is not used by Firefox."
@@ -516,7 +516,7 @@ msgstr "La proprietà \"update_url\" non viene utilizzata da Firefox."
 #: src/messages/manifestjson.js:247
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
 msgstr ""
-"\"update_url\" non è utilizzato da Firefox nella radice di un manifest; il componente aggiuntivo verrà aggiornato tramite il sito dei componenti aggiuntivi e non tramite “update_url”. Vedere: "
+"\"update_url\" non è utilizzato da Firefox nella radice di un manifesto; il componente aggiuntivo verrà aggiornato tramite il sito dei componenti aggiuntivi e non tramite “update_url”. Consultare: "
 "https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:255
@@ -525,15 +525,15 @@ msgstr "\"strict_max_version\" non richiesto."
 
 #: src/messages/manifestjson.js:256
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr "Non utilizzare \"strict_max_version\" a meno che non si preveda che il componente aggiuntivo non funzioni con le versioni future di Firefox."
+msgstr "Non utilizzare “strict_max_version” a meno che non si preveda che il componente aggiuntivo non funzioni con le versioni future di Firefox."
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr "Nessuna proprietà \"%(property)s\" trovata in manifest.json"
+msgstr "Nessuna proprietà “%(property)s” trovata in manifest.json"
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
-msgstr "\"%(property)s\" è obbligatorio"
+msgstr "“%(property)s” è obbligatorio"
 
 #: src/messages/manifestjson.js:279
 msgid "An icon defined in the manifest could not be found in the package."
@@ -561,7 +561,7 @@ msgstr "Impossibile trovare in \"%(path)s\" la background page."
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr "\"%(fieldName)s\" viene ignorato per i componenti aggiuntivi senza privilegi."
+msgstr "“%(fieldName)s” viene ignorato per i componenti aggiuntivi senza privilegi."
 
 #: src/messages/manifestjson.js:322
 msgid "A content script defined in the manifest could not be found."
@@ -589,7 +589,7 @@ msgstr "Impossibile trovare il file dizionario definito nel file manifesto in �
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr "Il campo manifest \"%(fieldName)s\" viene utilizzato solo per le estensioni con privilegi e installate temporaneamente."
+msgstr "Il campo del manifesto “%(fieldName)s” viene utilizzato solo per le estensioni con privilegi e installate temporaneamente."
 
 #: src/messages/manifestjson.js:361
 msgid "The manifest contains multiple dictionaries."
@@ -625,7 +625,7 @@ msgstr "Questo componente aggiuntivo include un contenuto non consentito."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr "Fare riferimento a https://github.com/mozilla-extensions/xpi-manifest per ulteriori informazioni sulle estensioni privilegiate e sulla firma."
+msgstr "Fare riferimento a https://github.com/mozilla-extensions/xpi-manifest per ulteriori informazioni sulle estensioni con privilegi e sulla firma."
 
 #: src/messages/manifestjson.js:403
 msgid "Icons must be square."
@@ -641,7 +641,7 @@ msgstr "La grandezza dell'icona non corrisponde al manifesto."
 
 #: src/messages/manifestjson.js:417
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr "L’icona “%(path)s” dovrebbe avere una larghezza di %(expected)d pixel, ma %(actual)d."
+msgstr "L’icona “%(path)s” dovrebbe avere una larghezza di %(expected)d pixel (attuale %(actual)d)."
 
 #: src/messages/manifestjson.js:430
 msgid "Corrupt image file"
@@ -681,7 +681,7 @@ msgstr "L’estensione del file immagine del tema non è supportata"
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr "\"%(fieldName)s\" non è supportato nelle versioni manifest %(versionRange)s."
+msgstr "“%(fieldName)s” non è supportato nelle versioni del manifesto %(versionRange)s."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
@@ -697,7 +697,7 @@ msgstr "Il tipo MIME “%(mime)s” del file immagine del tema in “%(path)s”
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr "\"%(fieldName)s\" non è supportato."
+msgstr "“%(fieldName)s” non è supportato."
 
 #: src/messages/manifestjson.js:520
 msgid "Theme image file mime type does not match its file extension"
@@ -713,7 +713,7 @@ msgstr "La traduzione per \"default_locale\" è incompleta."
 
 #: src/messages/manifestjson.js:538
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr "Il valore \"default_locale\" è specificato nel manifest, ma non esiste alcun \"messages.json\" corrispondente nella directory \"_locales\". Vedere: https://mzl.la/2hjcaEE"
+msgstr "Il valore “default_locale\" è specificato nel manifesto, ma non esiste alcun “messages.json” corrispondente nella directory “_locales”. Consultare: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:546
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -721,7 +721,7 @@ msgstr "Rilevato \"_locales\", ma non \"default_locale\"."
 
 #: src/messages/manifestjson.js:547
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr "Il valore \"default_locale\" non è specificato nel manifest, ma esiste una directory \"_locales\". Vedere: https://mzl.la/2hjcaEE"
+msgstr "Il valore “default_locale” non è specificato nel manifesto, ma esiste una directory “_locales”. Consultare: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:555
 msgid "Unsupported image extension"
@@ -738,8 +738,8 @@ msgstr "Proprietà “applications” sostituita dalla proprietà “browser_spe
 #: src/messages/manifestjson.js:567
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
 msgstr ""
-"La proprietà \"applications\" è stata ignorata perché è stata sostituita dalla proprietà \"browser_specific_settings\", anch'essa definita nel file manifest. Valuta la possibilità di rimuovere le "
-"applicazioni."
+"La proprietà “applications” è stata ignorata perché è stata sostituita dalla proprietà “browser_specific_settings”, anch'essa definita nel file manifesto. Valuta la possibilità di rimuovere "
+"“applications”."
 
 #: src/messages/manifestjson.js:577
 msgid "Empty language directory"
@@ -755,7 +755,7 @@ msgstr "Il manifest key non è supportato nella versione minima specificata di F
 
 #: src/messages/manifestjson.js:599 src/messages/manifestjson.js:621
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr "\"strict_min_version\" richiede Firefox %(minVersion)s, che è stato rilasciato prima che la versione %(versionAdded)s introducesse il supporto per \"%(key)s\"."
+msgstr "“strict_min_version” richiede Firefox %(minVersion)s, che è stato rilasciato prima che la versione %(versionAdded)s introducesse il supporto per “%(key)s”."
 
 #: src/messages/manifestjson.js:617
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -767,11 +767,11 @@ msgstr "Il manifest key non è supportato nella versione minima specificata di F
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr "%(instancePath)s: i campi manifest con privilegi sono consentiti solo nelle estensioni con privilegi."
+msgstr "%(instancePath)s: i campi del manifesto con privilegi sono consentiti solo nelle estensioni con privilegi."
 
 #: src/messages/manifestjson.js:643 src/messages/manifestjson.js:665
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr "\"strict_min_version\" richiede Firefox per Android %(minVersion)s, che è stato rilasciato prima che la versione %(versionAdded)s introducesse il supporto per \"%(key)s\"."
+msgstr "“strict_min_version” richiede Firefox per Android %(minVersion)s, che è stato rilasciato prima che la versione %(versionAdded)s introducesse il supporto per “%(key)s”."
 
 #: src/messages/manifestjson.js:661
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -805,7 +805,7 @@ msgstr "Visita https://mzl.la/3PLZYdo per ulteriori informazioni."
 
 #: src/messages/manifestjson.js:715
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr "%(instancePath)s: le estensioni con privilegi devono dichiarare autorizzazioni privilegiate."
+msgstr "%(instancePath)s: le estensioni con privilegi devono dichiarare permessi con privilegi."
 
 #: src/messages/manifestjson.js:726
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
