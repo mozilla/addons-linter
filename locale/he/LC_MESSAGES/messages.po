@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-27 15:26+0000\n"
+"PO-Revision-Date: 2023-04-27 15:35+0000\n"
 "Last-Translator: Itiel <itiel_yn8@walla.com>\n"
 "Language-Team: none\n"
 "Language: he\n"
@@ -211,7 +211,7 @@ msgstr ""
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "יש לקרוא לפונקציות setTimeout, ‏setInterval ו־execScript רק עם ביטויי פונקציה כארגומנט הראשון שלהם"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
@@ -227,7 +227,7 @@ msgstr "מומלץ מאוד שלא להשתמש ב־document.write."
 
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
-msgstr ""
+msgstr "‏document.write ייכשל בנסיבות רבות בשימוש בהרחבות, ועלולות להיות לו השלכות אבטחה חמורות בשימוש לא נכון. לכן, אין להשתמש בו."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
@@ -235,7 +235,7 @@ msgstr "ספריית JS חסומה מצד שלישי"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "התוספת שלך משתמשת בספריית JavaScript שאנו מחשיבים כבלתי בטוחה. ניתן לקרוא עוד כאן: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
