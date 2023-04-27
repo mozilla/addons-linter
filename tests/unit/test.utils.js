@@ -62,6 +62,19 @@ describe('getRootExpression()', () => {
   });
 });
 
+describe('i18n._()', () => {
+  it('should return one-line strings', () => {
+    expect(
+      i18n._(
+        `This
+         is
+         a
+         test`
+      )
+    ).toEqual('This is a test');
+  });
+});
+
 describe('gettext()', () => {
   it('should return localizable message', () => {
     expect(i18n.gettext('This is a test')).toEqual('This is a test');
@@ -84,6 +97,17 @@ describe('gettext()', () => {
     );
 
     jest.resetModules();
+  });
+
+  it('should return one-line strings', () => {
+    expect(
+      i18n.gettext(
+        `This
+         is
+         a
+         test`
+      )
+    ).toEqual('This is a test');
   });
 
   it('should support unicode messages', () => {

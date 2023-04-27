@@ -151,6 +151,15 @@ export function getI18Data(locale) {
   return i18ndata;
 }
 
+// Functionality based on oneLine from declandewet/common-tags, copied from
+// mozilla/addons-frontend.
+function oneLineTranslationString(translationKey) {
+  if (translationKey && translationKey.replace && translationKey.trim) {
+    return translationKey.replace(/(?:\n(?:\s*))+/g, ' ').trim();
+  }
+  return translationKey;
+}
+
 /*
  * Gettext utils. Used for translating strings.
  */
@@ -161,10 +170,10 @@ export function buildI18nObject(i18nData) {
     jed: _jed,
     getI18Data,
     _: (str) => {
-      return _jed.gettext(str);
+      return _jed.gettext(oneLineTranslationString(str));
     },
     gettext: (str) => {
-      return _jed.gettext(str);
+      return _jed.gettext(oneLineTranslationString(str));
     },
     sprintf: (fmt, args) => {
       return _jed.sprintf(fmt, args);
