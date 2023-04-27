@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-27 16:17+0000\n"
+"PO-Revision-Date: 2023-04-27 16:27+0000\n"
 "Last-Translator: Itiel <itiel_yn8@walla.com>\n"
 "Language-Team: none\n"
 "Language: he\n"
@@ -498,7 +498,7 @@ msgstr "המאפיין „update_url” אינו בשימוש ב־Firefox."
 
 #: src/messages/manifestjson.js:247
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
-msgstr ""
+msgstr "ה־״update_url״ אינו בשימוש על־ידי Firefox בשורש של קובץ manifest; התוספת שלך תעודכן דרך אתר התוספות ולא דרך ה־״update_url״ שלך. נא לעיין ב־https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:255
 msgid "\"strict_max_version\" not required."
@@ -506,15 +506,15 @@ msgstr "„strict_max_version” לא נחוץ."
 
 #: src/messages/manifestjson.js:256
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "אין להשתמש ב־״strict_max_version״ אלא אם התוספת צפויה לא לעבוד עם גרסאות עתידיות של Firefox."
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "לא נמצא מאפיין ״%(property)s״ ב־manifest.json"
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "נדרש ״%(property)s״"
 
 #: src/messages/manifestjson.js:279
 msgid "An icon defined in the manifest could not be found in the package."
@@ -628,7 +628,7 @@ msgstr "גודל הסמל לא תואם את ה־manifest."
 
 #: src/messages/manifestjson.js:417
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "היה צפוי שהסמל ב־״%(path)s״ יהיה ברוחב של %(expected)d פיקסלים, אך בפועל היה %(actual)d."
 
 #: src/messages/manifestjson.js:430
 msgid "Corrupt image file"
@@ -668,7 +668,7 @@ msgstr "קובץ תמונת ערכת הנושא בעל סיומת קובץ שא�
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "‏״%(fieldName)s״ אינו נתמך בגרסאות ה־manifest‏ %(versionRange)s."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
@@ -684,7 +684,7 @@ msgstr "קובץ תמונת ערכת הנושא ב־״%(path)s״ בעל סוג m
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "‏״%(fieldName)s״ אינו נתמך."
 
 #: src/messages/manifestjson.js:520
 msgid "Theme image file mime type does not match its file extension"
@@ -700,7 +700,7 @@ msgstr "ל־„default_locale” חסרים תרגומים."
 
 #: src/messages/manifestjson.js:538
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "הערך ״default_locale״ מצוין ב־manifest, אך לא קיים ״messages.json״ תואם בספריית ״‎_locales״. נא לעיין ב־https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:546
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -708,7 +708,7 @@ msgstr "ה־„default_locale” חסר אבל ה־„‎_locales” קיים."
 
 #: src/messages/manifestjson.js:547
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "הערך ״default_locale״ אינו מצוין ב־manifest, אך קיימת ספריית ״‎_locales״. נא לעיין ב־https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:555
 msgid "Unsupported image extension"
@@ -724,7 +724,7 @@ msgstr "המאפיין ״applications״ נדרס על־ידי המאפיין ״b
 
 #: src/messages/manifestjson.js:567
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
-msgstr ""
+msgstr "המאפיין ״applications״ יזכה להתעלמות מכיוון שהוא מוחלף על־ידי המאפיין ״browser_specific_settings״ שגם מוגדר ב־manifest שלך. כדאי לשקול להסיר את applications."
 
 #: src/messages/manifestjson.js:577
 msgid "Empty language directory"
