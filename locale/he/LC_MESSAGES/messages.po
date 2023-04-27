@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-27 15:12+0000\n"
+"PO-Revision-Date: 2023-04-27 15:26+0000\n"
 "Last-Translator: Itiel <itiel_yn8@walla.com>\n"
 "Language-Team: none\n"
 "Language: he\n"
@@ -46,7 +46,7 @@ msgstr "עמודה"
 msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
 "%(maxManifestVersion)s)."
-msgstr ""
+msgstr "התבקש טווח גרסת manifest לא חוקי: ‎--min-manifest-version (כרגע מוגדר כ־%(minManifestVersion)s) לא צריך להיות גדול מ־‎--max-manifest-version (כרגע מוגדר כ־%(maxManifestVersion)s)."
 
 #: src/messages/css.js:13
 msgid "Invalid nesting of selectors found"
@@ -62,7 +62,7 @@ msgstr "התגלתה שגיאת תחביר CSS"
 
 #: src/messages/css.js:7
 msgid "An error was found in the CSS file being processed as a result further processing of that file is not possible"
-msgstr ""
+msgstr "נמצאה שגיאה בקובץ ה־CSS המעובד. כתוצאה מכך, עיבוד נוסף של קובץ זה אינו אפשרי"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -86,7 +86,7 @@ msgstr "תסריטים פנימיים חסומים כבררת מחדל"
 
 #: src/messages/html.js:6
 msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
-msgstr ""
+msgstr "כללי CSP ברירת מחדל מונעים הפעלת JavaScript מוטבע (https://mzl.la/2pn32nd)."
 
 #: src/messages/javascript.js:100
 msgid "Unadvised 3rd-party JS library"
@@ -144,13 +144,14 @@ msgstr "לא ניתן למצוא קובץ תסריט תוכן"
 
 #: src/messages/javascript.js:162
 msgid "\"$(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "‏״$(api)s״ עלול לגרום לבעיות בעת טעינה זמנית"
 
 #: src/messages/javascript.js:165
 msgid ""
 "This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
 "more."
 msgstr ""
+"ממשק API זה עלול לגרום לבעיות בעת טעינה זמנית באמצעות about:debugging ב־Firefox, אלא אם כן ״browser_specific_settings.gecko.id״ יצויין ב־manifest. נא לעיין ב־https://mzl.la/2hizK4a למידע נוסף."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -200,7 +201,7 @@ msgstr "שגיאת תחביר JavaScript"
 msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
-msgstr ""
+msgstr "קיימת שגיאת תחביר של JavaScript בקוד שלך, שעשויה להיות קשורה לכמה תכונות JavaScript ניסיוניות שאינן חלק רשמי ממפרט השפה ולכן אינן נתמכות עדיין. האימות לא יכול להמשיך בקובץ זה."
 
 #: src/messages/javascript.js:62
 msgid ""
