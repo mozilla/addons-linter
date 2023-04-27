@@ -170,7 +170,7 @@ msgstr ""
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr "{{api}는 Firefox 버전 {{minVersion}}에서 지원되지 않습니다"
+msgstr "{{api}}는 Firefox 버전 {{minVersion}}에서 지원되지 않습니다"
 
 #: src/messages/javascript.js:188
 msgid "This API is not implemented by the given minimum Firefox version"
