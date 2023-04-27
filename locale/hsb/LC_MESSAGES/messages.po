@@ -843,7 +843,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
-msgstr ""
+msgstr "/%(fieldName)s: \"%(permissionName)s\" so njepodpěruje."
 
 #~ msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
 #~ msgstr "Njepłaćiwy instalowanski pochad. Płaćiwy pochad ma - jenož - šemu, hostmjeno a opcionalny port."
