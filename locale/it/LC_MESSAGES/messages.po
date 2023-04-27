@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-27 12:53+0000\n"
+"PO-Revision-Date: 2023-04-27 13:07+0000\n"
 "Last-Translator: Francesco Lodolo [:flod] <flod+pontoon@mozilla.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -47,8 +47,8 @@ msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
 "%(maxManifestVersion)s)."
 msgstr ""
-"Richiesto intervallo di versioni non valido nel manifesto: --min-manifest-version (attualmente impostato a %(minManifestVersion)s) non deve essere maggiore di --max-manifest-version (attualmente "
-"impostato a %(maxManifestVersion)s)."
+"Richiesto intervallo di versioni del manifesto non valido: --min-manifest-version (attualmente impostato a %(minManifestVersion)s) non deve essere maggiore di --max-manifest-version (attualmente "
+"impostato a %(maxManifestVersion)s).--min-manifest-version"
 
 #: src/messages/css.js:13
 msgid "Invalid nesting of selectors found"
@@ -148,7 +148,7 @@ msgstr "Impossibile trovare il file content script"
 
 #: src/messages/javascript.js:162
 msgid "\"$(api)s\" can cause issues when loaded temporarily"
-msgstr "\"$(api)s\" può causare problemi se caricato temporaneamente"
+msgstr "\"$(api)s\" può causare problemi se caricata temporaneamente"
 
 #: src/messages/javascript.js:165
 msgid ""
@@ -184,7 +184,7 @@ msgstr "Il nome del file content script non può essere vuoto"
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr "“%(method)s” chiamato con un uri non letterale"
+msgstr "“%(method)s” chiamato con un URI non letterale"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
@@ -813,11 +813,11 @@ msgstr "Questa estensione non dichiara alcun permesso con privilegi. Non è nece
 
 #: src/messages/manifestjson.js:739
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr "%(instancePath)s: Per le estensioni con privilegi è richiesta l’autorizzazione “mozillaAddons”."
+msgstr "%(instancePath)s: per le estensioni con privilegi è richiesta l’autorizzazione “mozillaAddons”."
 
 #: src/messages/manifestjson.js:742
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr "%(instancePath)s: l'autorizzazione “mozillaAddons” è richiesta per le estensioni che includono campi del manifesto con privilegi."
+msgstr "%(instancePath)s: l’autorizzazione “mozillaAddons” è richiesta per le estensioni che includono campi del manifesto con privilegi."
 
 #: src/messages/manifestjson.js:755
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
