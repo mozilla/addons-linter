@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-27 15:53+0000\n"
+"PO-Revision-Date: 2023-04-27 16:17+0000\n"
 "Last-Translator: Itiel <itiel_yn8@walla.com>\n"
 "Language-Team: none\n"
 "Language: he\n"
@@ -341,8 +341,8 @@ msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
-"קבצים ששמותיהם מסתיימים בסיומת מסומנת נמצאו בתוספת. הסיומת של קבצים אלה מסומנת מכיוון שהם בדרך כלל מזהים רכיבים בינאריים. אנא ראה https://bit.ly/review-policy למידע נוסף על תהליך סקירת התוכן "
-"הבינארי."
+"קבצים ששמותיהם מסתיימים בסיומות מסומנות נמצאו בתוספת. הסיומת של קבצים אלה מסומנת מכיוון שהם בדרך כלל מזהים רכיבים בינאריים. אנא לעיין ב־https://bit.ly/review-policy למידע נוסף על תהליך סקירת תוכן "
+"בינארי."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
@@ -350,7 +350,7 @@ msgstr "החבילה כבר נחתמה"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "תוספות שכבר חתומות ייחתמו מחדש כשיפורסמו ב־AMO. פעולה זו תחליף את כל החתימות הקיימות בתוספת."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -358,7 +358,7 @@ msgstr "התוספות של Firefox אינן מורשות להריץ כורי מ
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "אנו לא מאפשרים להפעיל תסריטים כורי מטבעות בתוך WebExtensions. נא לעיין ב־https://github.com/mozilla/addons-linter/issues/1643 לפרטים נוספים."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -366,11 +366,11 @@ msgstr "שם המחרוזת שמור להודעה שהוגדרה מראש"
 
 #: src/messages/locale-messagesjson.js:14
 msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr ""
+msgstr "שמות מחרוזות שמתחילים ב־@@ מתורגמים לקבועים מובנים (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "שם מחרוזת צריך להכיל רק תווים של מספרים ואותיות, _ ו־@ (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -386,7 +386,7 @@ msgstr "שם ממלא המקום מכיל תווים בלתי תקינים"
 
 #: src/messages/locale-messagesjson.js:34
 msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr ""
+msgstr "שם מציין מיקום צריך להכיל רק תווים של מספרים ואותיות, _ ו־@ (https://mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
@@ -394,7 +394,7 @@ msgstr "לממלא המקום חסר המאפיין content"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "מציין מיקום צריך מאפיין תוכן המגדיר את החלפתו (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
@@ -462,19 +462,19 @@ msgstr "השדה שגוי."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "‏״%(property)s״ מאפשר ביצוע קוד מרוחק ב־manifest.json"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "‏״%(property)s״ מותאם אישית זקוק לסקירה נוספת."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "‏״%(property)s״ מאפשר 'eval', שיש לו השלכות אבטחה וביצועים חזקות."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "ברוב המקרים ניתן להגיע לאותה תוצאה בצורה שונה, ולכן היא אסורה בדרך כלל"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string."
@@ -490,7 +490,7 @@ msgstr "אסור להשתמש ב־„update_url”."
 
 #: src/messages/manifestjson.js:237
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "‏״applications.gecko.update_url״ או ״browser_specific_settings.gecko.update_url״ אינם מותרים עבור תוספות המתארחות ב־Mozilla."
 
 #: src/messages/manifestjson.js:246
 msgid "The \"update_url\" property is not used by Firefox."
