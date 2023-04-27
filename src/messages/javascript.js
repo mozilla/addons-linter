@@ -159,7 +159,7 @@ function temporaryAPI(api) {
   return {
     code: apiToMessage(api),
     message: i18n.sprintf(
-      i18n._(`"$(api)s" can cause issues when loaded temporarily`),
+      i18n._(`"%(api)s" can cause issues when loaded temporarily`),
       { api }
     ),
     description: i18n._(`This API can cause issues when loaded
