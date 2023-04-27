@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-27 15:35+0000\n"
+"PO-Revision-Date: 2023-04-27 15:46+0000\n"
 "Last-Translator: Itiel <itiel_yn8@walla.com>\n"
 "Language-Team: none\n"
 "Language: he\n"
@@ -243,7 +243,7 @@ msgstr "ה־JSON שלך מכיל מקטעי הערות."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "רק הערות שורה (הערות המתחילות ב־״//״) מותרות בקובצי JSON. נא להסיר תגובות בלוק (תגובות המתחילות ב־״‎/*‎״)"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -251,7 +251,7 @@ msgstr "אסור להשתמש במפתחות כפולים בקובץ JSON."
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "נמצא מפתח כפול בקובץ JSON."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
@@ -267,13 +267,15 @@ msgstr "נמצא שם קובץ שמור."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "קבצים ששמותיהם שמורים נמצאו בתוספת. נא להימנע משימוש בהם ולשנות את שמות הקבצים שלך."
 
 #: src/messages/layout.js:22
 msgid ""
 "The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
 "sure all entries are using '/' as the path separator."
 msgstr ""
+"החבילה לא חוקית. היא עשויה להכיל ערכים המשתמשים בתווים לא חוקיים, כדוגמה השימוש ב־’\\’ כמפריד נתיב אינו מורשה ב־Firefox. נא לנסות ליצור מחדש את חבילת התוספת שלך (ZIP) ולוודא שכל הערכים משתמשים ב־’/’"
+" כמפריד נתיבים."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
@@ -287,7 +289,7 @@ msgstr "‏manifest.json לא נמצא"
 msgid ""
 "No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
 "packaging."
-msgstr ""
+msgstr "לא נמצא קובץ manifest.json בשורש ההרחבה. קובץ החבילה חייב להיות ZIP של קובצי ההרחבה עצמם, לא של הספרייה המכילה. נא לעיין ב־https://mzl.la/2r2McKv למידע נוסף על אריזת חבילה."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
@@ -298,6 +300,8 @@ msgid ""
 "This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
 "or splitting very large files into smaller ones."
 msgstr ""
+"קובץ זה אינו בינארי והוא גדול מדי לניתוח. קבצים הגדולים מ־%(maxFileSizeToParseMB)sMB לא ינותחו. יש לשקול להעביר רשימות גדולות של נתונים מקובצי JavaScript אל קובצי JSON, או לפצל קבצים גדולים מאוד "
+"לקטנים יותר."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -306,7 +310,7 @@ msgstr "קובץ מוסתר סומן בדגל"
 #: src/messages/layout.js:58
 msgid ""
 "Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
-msgstr ""
+msgstr "קבצים נסתרים מסבכים את תהליך הסקירה ויכולים להכיל מידע רגיש על המערכת שיצרה את התוספת. נא לשנות את תהליך האריזה כך שהקבצים האלה לא יכללו."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -318,11 +322,11 @@ msgstr "נמצא שם קובץ שסומן בדגל"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "נמצאו קבצים שאינם נחוצים או שנכללו שלא במתכוון. יש להסיר אותם."
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "החבילה מכילה מספר ערכים עם אותו שם. נוהג זה נאסר. ניתן לנסות לחלץ ולכווץ מחדש את חבילת התוספת שלך ולנסות שוב."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
