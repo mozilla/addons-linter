@@ -151,7 +151,7 @@ export function getI18Data(locale) {
   return i18ndata;
 }
 
-// Functionality based on oneLine form declandewet/common-tags, copied from
+// Functionality based on oneLine from declandewet/common-tags, copied from
 // mozilla/addons-frontend.
 function oneLineTranslationString(translationKey) {
   if (translationKey && translationKey.replace && translationKey.trim) {

@@ -43,10 +43,13 @@ export const TYPE_NO_MANIFEST_JSON = {
 export const FILE_TOO_LARGE = {
   code: 'FILE_TOO_LARGE',
   message: i18n._('File is too large to parse.'),
-  description: i18n._(`This file is not binary and is too large to
-    parse. Files larger than ${MAX_FILE_SIZE_TO_PARSE_MB}MB will not be
-    parsed. Consider moving large lists of data out of JavaScript files and
-    into JSON files, or splitting very large files into smaller ones.`),
+  description: i18n.sprintf(
+    i18n._(`This file is not binary and is too large to parse. Files larger
+      than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving
+      large lists of data out of JavaScript files and into JSON files, or
+      splitting very large files into smaller ones.`),
+    { maxFileSizeToParseMB: MAX_FILE_SIZE_TO_PARSE_MB }
+  ),
 };
 
 export const HIDDEN_FILE = {

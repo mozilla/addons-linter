@@ -69,12 +69,15 @@ export default class Linter {
     const { minManifestVersion, maxManifestVersion } = this.config;
     if (maxManifestVersion < minManifestVersion) {
       throw new AddonsLinterUserError(
-        i18n._(`
-        Invalid manifest version range requested:
-        --min-manifest-version (currently set to ${minManifestVersion})
-        should not be greater than
-        --max-manifest-version (currently set to ${maxManifestVersion}).
-      `)
+        i18n.sprintf(
+          i18n._(
+            `Invalid manifest version range requested:
+            --min-manifest-version (currently set to %(minManifestVersion)s)
+            should not be greater than
+            --max-manifest-version (currently set to %(maxManifestVersion)s).`
+          ),
+          { minManifestVersion, maxManifestVersion }
+        )
       );
     }
   }

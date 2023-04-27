@@ -27,10 +27,14 @@ export const MANIFEST_FIELD_PRIVILEGEDONLY = 'MANIFEST_FIELD_PRIVILEGEDONLY';
 export function manifestFieldPrivilegedOnly(fieldName) {
   return {
     code: MANIFEST_FIELD_PRIVILEGEDONLY,
-    message: i18n._(`"${fieldName}" is ignored for non-privileged add-ons.`),
-    description: i18n._(
-      `"${fieldName} manifest field is only used for privileged
-             and temporarily installed extensions.`
+    message: i18n.sprintf(
+      i18n._(`"%(fieldName)s" is ignored for non-privileged add-ons.`),
+      { fieldName }
+    ),
+    description: i18n.sprintf(
+      i18n._(`"%(fieldName)s" manifest field is only used for privileged and
+        temporarily installed extensions.`),
+      { fieldName }
     ),
     file: MANIFEST_JSON,
   };
@@ -191,9 +195,14 @@ export function manifestCsp(property) {
     // Note: don't change this 'code' without updating addons-server first, as
     // it depends on it to detect add-ons with a custom content security policy.
     code: MANIFEST_CSP,
-    message: i18n._(`
-      "${property}" allows remote code execution in manifest.json`),
-    description: i18n._(`A custom ${property} needs additional review.`),
+    message: i18n.sprintf(
+      i18n._(`"%(property)s" allows remote code execution in manifest.json`),
+      { property }
+    ),
+    description: i18n.sprintf(
+      i18n._(`A custom "%(property)s" needs additional review.`),
+      { property }
+    ),
     file: MANIFEST_JSON,
   };
 }
@@ -202,11 +211,13 @@ export const MANIFEST_CSP_UNSAFE_EVAL = 'MANIFEST_CSP_UNSAFE_EVAL';
 export function manifestCspUnsafeEval(property) {
   return {
     code: MANIFEST_CSP_UNSAFE_EVAL,
-    message: i18n._(`
-      ${property} allows 'eval', which has strong security and performance implications.`),
-    description: i18n._(`
-      In most cases the same result can be achieved differently,
-      therefore it is generally prohibited`),
+    message: i18n.sprintf(
+      i18n._(`"%(property)s" allows 'eval', which has strong security and
+        performance implications.`),
+      { property }
+    ),
+    description: i18n._(`In most cases the same result can be achieved
+      differently, therefore it is generally prohibited`),
     file: MANIFEST_JSON,
   };
 }
@@ -250,8 +261,13 @@ export const STRICT_MAX_VERSION = {
 export function manifestPropMissing(property) {
   return {
     code: `PROP_${property.toUpperCase()}_MISSING`,
-    message: i18n._(`No "${property}" property found in manifest.json`),
-    description: i18n._(`"${property}" is required`),
+    message: i18n.sprintf(
+      i18n._(`No "%(property)s" property found in manifest.json`),
+      { property }
+    ),
+    description: i18n.sprintf(i18n._(`"%(property)s" is required`), {
+      property,
+    }),
     file: MANIFEST_JSON,
   };
 }

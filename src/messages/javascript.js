@@ -26,20 +26,30 @@ export const CONTENT_SCRIPT_EMPTY = {
 export function _nonLiteralUri(method) {
   return {
     code: `${method}_NONLIT_URI`.toUpperCase(),
-    message: i18n._(`'${method}' called with a non-literal uri`),
-    description: i18n._(`Calling '${method}' with variable
-      parameters can result in potential security vulnerabilities if the
-      variable contains a remote URI. Consider using 'window.open' with
-      the 'chrome=no' flag.`),
+    message: i18n.sprintf(
+      i18n._(`"%(method)s" called with a non-literal uri`),
+      { method }
+    ),
+    description: i18n.sprintf(
+      i18n._(`Calling "%(method)s" with variable parameters can result in
+        potential security vulnerabilities if the variable contains a remote
+        URI. Consider using 'window.open' with the 'chrome=no' flag.`),
+      { method }
+    ),
   };
 }
 
 export function _methodPassedRemoteUri(method) {
   return {
     code: `${method}_REMOTE_URI`.toUpperCase(),
-    message: i18n._(`'${method}' called with non-local URI`),
-    description: i18n._(`Calling '${method}' with a non-local
-      URI will result in the dialog being opened with chrome privileges.`),
+    message: i18n.sprintf(i18n._(`"%(method)s" called with non-local URI`), {
+      method,
+    }),
+    description: i18n.sprintf(
+      i18n._(`Calling "%(method)s" with a non-local URI will result in the
+        dialog being opened with chrome privileges.`),
+      { method }
+    ),
   };
 }
 
@@ -148,10 +158,13 @@ export const DEPRECATED_CHROME_API = {
 function temporaryAPI(api) {
   return {
     code: apiToMessage(api),
-    message: i18n._(`"${api}" can cause issues when loaded temporarily`),
+    message: i18n.sprintf(
+      i18n._(`"$(api)s" can cause issues when loaded temporarily`),
+      { api }
+    ),
     description: i18n._(`This API can cause issues when loaded
       temporarily using about:debugging in Firefox unless you specify
-      applications|browser_specific_settings > gecko > id in the manifest.
+      "browser_specific_settings.gecko.id" in the manifest.
       Please see: https://mzl.la/2hizK4a for more.`),
   };
 }
