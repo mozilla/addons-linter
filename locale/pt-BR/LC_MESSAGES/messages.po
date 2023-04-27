@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-27 12:07+0000\n"
+"PO-Revision-Date: 2023-04-27 12:13+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -80,7 +80,7 @@ msgstr "Scripts remotos não são permitidos conforme as políticas de extensõe
 
 #: src/messages/html.js:13
 msgid "Please include all scripts in the add-on. For more information, refer to https://mzl.la/2uEOkYp."
-msgstr ""
+msgstr "Inclua todos os scripts na extensão. Consulte mais informações em https://mzl.la/2uEOkYp."
 
 #: src/messages/html.js:5
 msgid "Inline scripts blocked by default"
@@ -88,7 +88,7 @@ msgstr "Scripts em linha bloqueados por padrão"
 
 #: src/messages/html.js:6
 msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
-msgstr ""
+msgstr "Regras CSP padrão impedem a execução de JavaScript inline (https://mzl.la/2pn32nd)."
 
 #: src/messages/javascript.js:100
 msgid "Unadvised 3rd-party JS library"
@@ -96,7 +96,7 @@ msgstr "Biblioteca JS de terceiros desaconselhada"
 
 #: src/messages/javascript.js:101
 msgid "Your add-on uses a JavaScript library we do not recommend. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Sua extensão usa uma biblioteca JavaScript que não recomendamos. Saiba mais: https://bit.ly/1TRIyZY"
 
 #: src/messages/javascript.js:107
 msgid "Known JS library detected"
@@ -104,7 +104,7 @@ msgstr "Biblioteca JS conhecida detectada"
 
 #: src/messages/javascript.js:108
 msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
-msgstr ""
+msgstr "É desencorajado o uso de bibliotecas JavaScript em extensões simples, mas geralmente são aceitas."
 
 #: src/messages/javascript.js:116
 msgid ""
