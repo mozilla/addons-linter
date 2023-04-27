@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-27 12:17+0000\n"
+"PO-Revision-Date: 2023-04-27 12:27+0000\n"
 "Last-Translator: Francesco Lodolo [:flod] <flod+pontoon@mozilla.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -189,16 +189,16 @@ msgstr "“%(method)s” chiamato con un uri non letterale"
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
 msgstr ""
-"Chiamare \"%(method)s\" con parametri variabili può causare potenziali vulnerabilità di sicurezza se la variabile contiene un URI remoto. Prendi in considerazione l’utilizzo di “window.open” con il "
-"flag “chrome=no”."
+"La chiamata di “%(method)s” con parametri variabili può causare potenziali vulnerabilità di sicurezza se la variabile contiene un URI remoto. Considerare l’utilizzo di “window.open” con il flag "
+"“chrome=no”."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr "\"%(method)s\" chiamato con URI non locale"
+msgstr "“%(method)s” chiamato con URI non locale"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr "Se si chiama \"%(method)s\" con un URI non locale, la finestra di dialogo verrà aperta con i privilegi di Chrome."
+msgstr "Se si chiama “%(method)s” con un URI non locale, la finestra di dialogo verrà aperta con i privilegi chrome."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -209,16 +209,16 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
-"È presente un errore di sintassi JavaScript nel codice, che potrebbe essere correlato ad alcune funzionalità JavaScript sperimentali che non fanno parte delle specifiche del linguaggio e pertanto "
-"non sono ancora supportate. Impossibile continuare la convalida per questo file."
+"È presente un errore di sintassi JavaScript nel codice. Potrebbe trattarsi di funzionalità JavaScript sperimentali che non fanno parte delle specifiche del linguaggio e pertanto non sono ancora "
+"supportate. Impossibile continuare la convalida per questo file."
 
 #: src/messages/javascript.js:62
 msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible.'"
 msgstr ""
-"La valutazione delle stringhe come codice può portare a vulnerabilità di sicurezza e problemi di prestazioni, anche nelle circostanze più innocue. Quando possibile, evita di usare `eval` e il "
-"costruttore `Function`.'"
+"La valutazione di stringhe come codice può portare a vulnerabilità di sicurezza e problemi di prestazioni, anche nelle circostanze più innocue. Quando possibile, evitare l’utilizzo di “eval“ e del "
+"costruttore “Function”."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
@@ -230,7 +230,7 @@ msgstr "Variabile globale inattesa passata come argomento"
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr "Non è consigliabile passare un global come argomento. Si prega di impostare questa opzione come var."
+msgstr "Non è consigliabile passare un “global” come argomento. Al suo posto utilizzare “var”."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
