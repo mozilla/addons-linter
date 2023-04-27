@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-27 15:27+0000\n"
+"PO-Revision-Date: 2023-04-27 15:28+0000\n"
 "Last-Translator: Ian Neal <iann_bugzilla@blueyonder.co.uk>\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -806,11 +806,11 @@ msgstr "%(instancePath)s: The \"mozillaAddons\" permission is required for privi
 
 #: src/messages/manifestjson.js:742
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
 
 #: src/messages/manifestjson.js:755
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
 
 #: src/messages/manifestjson.js:765
 msgid "Cannot use actions in hidden add-ons."
@@ -818,7 +818,7 @@ msgstr "Cannot use actions in hidden add-ons."
 
 #: src/messages/manifestjson.js:766
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
 
 #: src/messages/manifestjson.js:774
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
@@ -826,25 +826,27 @@ msgstr "Use \"browser_specific_settings\" instead of \"applications\"."
 
 #: src/messages/manifestjson.js:775
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
 
 #: src/messages/manifestjson.js:783
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "\"applications\" is no longer allowed in Manifest Version 3 and above."
 
 #: src/messages/manifestjson.js:785
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
 
 #: src/messages/manifestjson.js:795
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
+"See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
@@ -855,14 +857,16 @@ msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
 "https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
+"https://mzl.la/3h3mCRu (MDN Docs) for more information."
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
-msgstr ""
+msgstr "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 
 #~ msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
 #~ msgstr "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
