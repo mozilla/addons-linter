@@ -62,7 +62,7 @@ export const DANGEROUS_EVAL = {
   description: i18n._(`Evaluation of strings as code can lead to
     security vulnerabilities and performance issues, even in the
     most innocuous of circumstances. Please avoid using \`eval\` and the
-    \`Function\` constructor when at all possible.'`),
+    \`Function\` constructor when at all possible.`),
 };
 
 export const NO_IMPLIED_EVAL = {
