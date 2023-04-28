@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-28 20:16+0000\n"
+"PO-Revision-Date: 2023-04-28 20:27+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -188,15 +188,15 @@ msgstr "\"%(method)s\" chamado com um uri não literal"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
-msgstr ""
+msgstr "Chamar \"%(method)s\" com parâmetros variáveis pode resultar em possíveis vulnerabilidades de segurança se a variável contiver um URI remoto. Considere usar 'window.open' com o flag 'chrome=no'."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "\"%(method)s\" chamado com URI não local"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "Chamar \"%(method)s\" com um URI não local resulta na abertura de diálogo com privilégios chrome."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -207,12 +207,16 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
+"Há um erro de sintaxe JavaScript em seu código, que pode estar relacionado a alguns recursos experimentais do JavaScript que não fazem parte da especificação oficial da linguagem, portanto ainda não"
+" são suportados. A validação não pode continuar neste arquivo."
 
 #: src/messages/javascript.js:62
 msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible.'"
 msgstr ""
+"A execução de strings como código pode levar a vulnerabilidades de segurança e problemas de desempenho, mesmo nas circunstâncias mais inócuas. Evite usar `eval` e o construtor `Function` sempre que "
+"possível.'"
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
