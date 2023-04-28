@@ -96,7 +96,7 @@
     "babel-loader": "9.1.2",
     "comment-json": "4.2.3",
     "eslint-config-amo": "5.9.0",
-    "eslint-plugin-amo": "1.23.0",
+    "eslint-plugin-amo": "1.24.0",
     "github-markdown-css": "5.2.0",
     "gunzip-maybe": "1.4.2",
     "hashish": "0.0.4",
