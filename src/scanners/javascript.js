@@ -248,8 +248,11 @@ export default class JavaScriptScanner {
               return 'module';
             }
           }
-        } else if (child) {
-          return this._getSourceType(child, stayTopLevel);
+        } else if (
+          child &&
+          this._getSourceType(child, stayTopLevel) === 'module'
+        ) {
+          return 'module';
         }
       }
     }

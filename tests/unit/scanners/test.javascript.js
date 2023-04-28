@@ -535,6 +535,15 @@ describe('JavaScript Scanner', () => {
       expect(jsScanner.sourceType).toEqual('script');
     });
 
+    it('should detect module in second child', async () => {
+      const code = 'const foo = await Promise.resolve();';
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await runJsScanner(jsScanner);
+
+      expect(jsScanner.sourceType).toEqual('module');
+    });
+
     it('should detect script', async () => {
       const code = oneLine`
         eval('foo');
