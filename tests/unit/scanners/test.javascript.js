@@ -544,6 +544,24 @@ describe('JavaScript Scanner', () => {
       expect(jsScanner.sourceType).toEqual('module');
     });
 
+    it('should detect module in if', async () => {
+      const code = 'if (await Promise.resolve(true)) { }';
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await runJsScanner(jsScanner);
+
+      expect(jsScanner.sourceType).toEqual('module');
+    });
+
+    it('should detect module in ternary', async () => {
+      const code = 'const foo = true ? (1 && await Promise.resolve()) : 0;';
+
+      const jsScanner = new JavaScriptScanner(code, 'code.js');
+      await runJsScanner(jsScanner);
+
+      expect(jsScanner.sourceType).toEqual('module');
+    });
+
     it('should detect script', async () => {
       const code = oneLine`
         eval('foo');
