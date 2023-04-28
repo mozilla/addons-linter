@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-28 19:41+0000\n"
+"PO-Revision-Date: 2023-04-28 20:16+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -148,13 +148,15 @@ msgstr "O arquivo de script de conteúdo não pôde ser encontrado"
 
 #: src/messages/javascript.js:162
 msgid "\"$(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "\"$(api)s\" pode causar problemas quando carregada temporariamente"
 
 #: src/messages/javascript.js:165
 msgid ""
 "This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
 "more."
 msgstr ""
+"Esta API pode causar problemas quando carregada temporariamente usando about:debugging no Firefox, a menos que você especifique \"browser_specific_settings.gecko.id\" no manifesto. Saiba mais em "
+"https://mzl.la/2hizK4a."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -182,7 +184,7 @@ msgstr "O nome do arquivo de script de conteúdo não deve estar vazio"
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "\"%(method)s\" chamado com um uri não literal"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
