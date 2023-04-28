@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-28 20:27+0000\n"
+"PO-Revision-Date: 2023-04-28 20:32+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -220,7 +220,7 @@ msgstr ""
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "As funções setTimeout, setInterval e execScript só devem ser chamadas com expressões de função como primeiro argumento"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
@@ -228,7 +228,7 @@ msgstr "Variável global inesperado passada como argumento"
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr ""
+msgstr "Passar um global como argumento não é recomendado. Em vez disso, torne isso 'var'."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
@@ -236,7 +236,7 @@ msgstr "O uso de document.write é fortemente desencorajado."
 
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
-msgstr ""
+msgstr "document.write falha em muitas circunstâncias quando usado em extensões e tem repercussões de segurança potencialmente severas quando usado inadequadamente. Sendo assim, não deve ser usado."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
@@ -244,7 +244,7 @@ msgstr "Biblioteca JS de terceiros banida"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Sua extensão usa uma biblioteca JavaScript que consideramos não segura. Saiba mais: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
