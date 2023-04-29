@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-29 09:44+0000\n"
+"PO-Revision-Date: 2023-04-29 11:59+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -409,7 +409,7 @@ msgstr "A helykitöltőből hiányzik a content tulajdonság"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "Egy helykitöltőhöz szükséges a tartalom tulajdonság, amely meghatározza, hogy mire lesz cserélve (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
@@ -449,7 +449,7 @@ msgstr "Ismeretlen engedély."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s: a következő privilegizált engedélyek csak privilegizált kiegészítőkben engedélyezettek: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -461,7 +461,7 @@ msgstr "Érvénytelen telepítési eredet."
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
+msgstr "Érvénytelen telepítési eredet. Egy érvényes eredetnek – csak – egy sémája, gazdagépneve és nem kötelező portja van. További információkért lásd: https://mzl.la/3TEbqbE (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -477,11 +477,11 @@ msgstr "A mező érvénytelen."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "A(z) „%(property)s” lehetővé teszi távoli kódfuttatást a manifest.json fájlban"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "Egy egyéni „%(property)s” további ellenőrzésre szorul."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
