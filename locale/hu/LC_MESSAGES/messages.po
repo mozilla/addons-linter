@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-29 09:18+0000\n"
+"PO-Revision-Date: 2023-04-29 09:44+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -356,6 +356,8 @@ msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
+"Megjelölt kiterjesztéssel végződő fájlok találhatók a kiegészítőben. Ezen fájlok kiterjesztései azért lettek megjelölve, mert ezek általában bináris komponenseket azonosítanak. Keresse fel a "
+"https://bit.ly/review-policy oldalt a bináris tartalmak értékelési folyamatának további információiért."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
@@ -363,7 +365,7 @@ msgstr "A csomag már aláírt"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "A már aláírt kiegészítők újra aláírásra kerülnek az AMO-n történő közzétételükkor. Ez lecseréli a kiegészítőn lévő aláírásokat."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -371,7 +373,7 @@ msgstr "A Firefox kiegészítők nem futtathatnak kriptovaluta bányász program
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "Nem engedélyezzük a kriptopénzbányász parancsfájlok WebExtensionökön belül történő futtatását. További részletekért lásd: https://github.com/mozilla/addons-linter/issues/1643."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -379,11 +381,11 @@ msgstr "A karakterlánc neve egy előre definiált üzenetnek van fenntartva"
 
 #: src/messages/locale-messagesjson.js:14
 msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr ""
+msgstr "A @@ karakterlánccal kezdődő karakterláncnevek beépített konstansokká alakulnak (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "A karakterláncnév csak alfanumerikus karaktereket, _ és @ karaktereket tartalmazhat (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -399,7 +401,7 @@ msgstr "A helykitöltő neve érvénytelen karaktereket tartalmaz"
 
 #: src/messages/locale-messagesjson.js:34
 msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr ""
+msgstr "A helykitöltő neve csak alfanumerikus karaktereket, _ és @ karaktereket tartalmazhat (https://mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
