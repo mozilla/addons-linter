@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-28 19:29+0000\n"
+"PO-Revision-Date: 2023-04-29 09:12+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -148,13 +148,15 @@ msgstr "A tartalomparancsfájl nem található"
 
 #: src/messages/javascript.js:162
 msgid "\"$(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "A(z) „$(api)s” problémákat okozhat, ha ideiglenesen betöltik"
 
 #: src/messages/javascript.js:165
 msgid ""
 "This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
 "more."
 msgstr ""
+"Ez az API problémákat okozhat, ha a Firefox about:debugging használatával ideiglenesen betöltik, hacsak nem adja meg a „browser_specific_settings.gecko.id” értéket a jegyzékfájlban. További "
+"információkért lásd: https://mzl.la/2hizK4a."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -182,19 +184,21 @@ msgstr "A tartalomparancsfájl neve nem lehet üres"
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "A(z) „%(method)s” nem URI literállal meghívva"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
 msgstr ""
+"A(z) „%(method)s” változóparaméterekkel történő meghívása lehetséges biztonsági sebezhetőséget okozhat, ha a változó távoli URI-t tartalmaz. Fontolja meg a „window.open” metódus „chrome=no” jelzővel"
+" történő használatát."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "A(z) „%(method)s” nem helyi URI-val meghívva"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "A(z) „%(method)s” nem helyi URI-val történő meghívása a chrome jogosultságával fogja megnyitni a párbeszédablakot."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -205,16 +209,20 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
+"JavaScript szintaktikai hiba van a kódjában, amely néhány kísérleti JavaScript funkcióhoz kötődhet, amelyek hivatalosan nem részei a nyelvi specifikációnak, ezért még nem támogatottak. Az ellenőrzés"
+" nem folytatódhat ennél a fájlnál."
 
 #: src/messages/javascript.js:62
 msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible.'"
 msgstr ""
+"A karakterláncok kódként történő kiértékelése biztonsági sérülékenységekhez és teljesítménybeli problémákhoz vezethet, még a legártalmatlanabb körülmények között is. Lehetőleg kerülje az `eval` "
+"függvény és a `Function` konstruktor használatát."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "A setTimeout, a setInterval és az execScript függvényeket csak függvénykifejezést tartalmazó első argumentummal szabad meghívni"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
@@ -222,7 +230,7 @@ msgstr "Nem várt argumentumként átadott globális változó"
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr ""
+msgstr "A globális változók argumentumként történő átadása nem ajánlott. Tegye ezt változóvá."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
@@ -230,7 +238,7 @@ msgstr "A document.write használata erősen ellenjavallt."
 
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
-msgstr ""
+msgstr "A document.write sok esetben nem sikerül, ha kiegészítőkben használják, és nem megfelelő használat esetén súlyos biztonsági vonatkozásai lehetnek. Ezért nem szabad használni."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
@@ -238,7 +246,7 @@ msgstr "Tiltott harmadik féltől származó JS könyvtár"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "A kiegészítője egy általunk nem biztonságosnak tekintett JavaScript programkönyvtárat használ. Bővebben: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
@@ -246,7 +254,7 @@ msgstr "A JSON megjegyzésblokkot tartalmaz."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "Csak a sorszintű megjegyzések („//” karakterekkel kezdődő megjegyzések) használhatók a JSON-fájlokban. Távolítsa el a blokkszintű megjegyzéseket („/*” karakterekkel kezdődő megjegyzések)."
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -254,7 +262,7 @@ msgstr "Az ismétlődő kulcsok nem megengedettek a JSON fájlokban."
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "Ismételt kulcs található a JSON-fájlban."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
@@ -270,7 +278,7 @@ msgstr "Fenntartott fájlnév találva."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "Fenntartott nevű fájlok találhatók a kiegészítőben. Ttartózkodjon ezek használatától, és nevezze át a fájlokat."
 
 #: src/messages/layout.js:22
 msgid ""
