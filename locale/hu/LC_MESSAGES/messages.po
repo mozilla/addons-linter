@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-29 09:12+0000\n"
+"PO-Revision-Date: 2023-04-29 09:18+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -285,6 +285,8 @@ msgid ""
 "The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
 "sure all entries are using '/' as the path separator."
 msgstr ""
+"A csomag érvénytelen. Érvénytelen karaktereket használó bejegyzéseket tartalmazhat, mert például a Firefoxban nem engedélyezett a „\\” útvonal-elválasztó használata. Próbálja meg újra létrehozni a "
+"kiegészítőcsomagot (ZIP), és győződjön meg arról, hogy az összes bejegyzés „/” jelet használ útvonal-elválasztóként."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
@@ -299,6 +301,8 @@ msgid ""
 "No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
 "packaging."
 msgstr ""
+"Nem található manifest.json a kiegészítő gyökerében. A csomagfájlnak magának a kiegészítő fájljaiból készült ZIP-fájlnak kell lennie, nem az azokat tartalmazó könyvtárat kell becsomagolni. A "
+"csomagolás további információért lásd: https://mzl.la/2r2McKv."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
@@ -309,6 +313,8 @@ msgid ""
 "This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
 "or splitting very large files into smaller ones."
 msgstr ""
+"Ez a fájl nem bináris, és túl nagy a feldolgozáshoz. A %(maxFileSizeToParseMB)s MB-nál nagyobb fájlok nem lesznek feldolgozva. Fontolja meg a nagy adatlisták JavaScript-fájlokból JSON-fájlokba "
+"történő áthelyezését, vagy a nagyon nagy fájlok kisebbekre bontását."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -318,6 +324,8 @@ msgstr "Rejtett fájl megjelölve"
 msgid ""
 "Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
 msgstr ""
+"A rejtett fájlok nehezítik az ellenőrzési folyamatot, és érzékeny információkat tartalmazhatnak a kiegészítőt előállító rendszerről. Módosítsa a csomagolási folyamatot, hogy ezek a fájlok ne "
+"legyenek benne."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -329,7 +337,7 @@ msgstr "Megjelölt fájlnév találva"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "Olyan fájlok találhatók, amelyek vagy feleslegesek, vagy véletlenül kerültek bele. Ezeket el kell távolítani."
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
