@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-29 14:53+0000\n"
+"PO-Revision-Date: 2023-04-29 15:28+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -719,7 +719,7 @@ msgstr "A „default_locale” hiányzik, de a „_locales” létezik."
 
 #: src/messages/manifestjson.js:547
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "A „default_locale” érték nincs megadva a jegyzékfájlban, de létezik „_locales” könyvtár. Lásd: https://mzl.la/2hjcaEE."
 
 #: src/messages/manifestjson.js:555
 msgid "Unsupported image extension"
