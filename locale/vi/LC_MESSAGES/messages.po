@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-29 13:54+0000\n"
+"PO-Revision-Date: 2023-04-29 14:00+0000\n"
 "Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
@@ -246,7 +246,7 @@ msgstr "JSON của bạn chứa các bình luận (comment) bị chặn."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "Chỉ cho phép comment (bắt đầu bằng \"//\") trong tập tin JSON. Vui lòng xóa các block comment (bắt đầu bằng \"/*\")"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -254,7 +254,7 @@ msgstr "Các khóa trùng lặp không được phép trong các tệp JSON."
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "Đã tìm thấy khóa trùng lặp trong tập tin JSON."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
@@ -270,13 +270,15 @@ msgstr "Đã tìm thấy tên tập tin dành riêng."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "Các tập tin có tên được đặt trước đã được tìm thấy trong tiện ích mở rộng. Vui lòng không sử dụng chúng và đổi tên các tập tin của bạn."
 
 #: src/messages/layout.js:22
 msgid ""
 "The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
 "sure all entries are using '/' as the path separator."
 msgstr ""
+"Gói không hợp lệ. Nó có thể chứa các mục nhập sử dụng các ký tự không hợp lệ, chẳng hạn như sử dụng '\\' làm dấu tách đường dẫn không được phép trong Firefox. Hãy thử tạo lại gói tiện ích mở rộng "
+"(ZIP) của bạn và đảm bảo rằng tất cả các mục đang sử dụng '/' làm dấu tách đường dẫn."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
@@ -291,6 +293,8 @@ msgid ""
 "No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
 "packaging."
 msgstr ""
+"Không tìm thấy manifest.json ở thư mục gốc của tiện ích mở rộng. Tập tin gói phải là tập tin ZIP của chính các tập tin của tiện ích mở rộng, không phải của thư mục chứa nó. Xem: "
+"https://mzl.la/2r2McKv để biết thêm về đóng gói."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
@@ -301,6 +305,8 @@ msgid ""
 "This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
 "or splitting very large files into smaller ones."
 msgstr ""
+"Tập tin này không phải là tập tin nhị phân và quá lớn để phân tích cú pháp. Các tập tin lớn hơn %(maxFileSizeToParseMB)sMB sẽ không được phân tích cú pháp. Cân nhắc di chuyển các danh sách dữ liệu "
+"lớn ra khỏi tập tin JavaScript và sang tập tin JSON hoặc chia các tập tin rất lớn thành các tập tin nhỏ hơn."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -309,7 +315,7 @@ msgstr "Tập tin ẩn được gắn cờ"
 #: src/messages/layout.js:58
 msgid ""
 "Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
-msgstr ""
+msgstr "Các tập tin ẩn làm phức tạp quá trình xem xét và có thể chứa thông tin nhạy cảm về hệ thống đã tạo tiện ích mở rộng. Vui lòng sửa đổi quy trình đóng gói để không bao gồm các tập tin này."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -321,11 +327,11 @@ msgstr "Đã tìm thấy tên tập tin được gắn cờ"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "Đã tìm thấy các tập tin không cần thiết hoặc đã được đưa vào ngoài ý muốn. Chúng nên được loại bỏ."
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "Gói chứa nhiều mục có cùng tên. Điều này đã bị cấm. Hãy thử giải nén và nén lại gói tiện ích của bạn rồi thử lại."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
@@ -340,6 +346,8 @@ msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
+"Các tập tin có tên kết thúc bằng phần mở rộng được gắn cờ đã được tìm thấy trong tiện ích mở rộng. Phần mở rộng của các tập tin này được gắn cờ vì chúng thường xác định các thành phần nhị phân. Vui "
+"lòng xem https://bit.ly/review-policy để biết thêm thông tin về quy trình xem xét nội dung nhị phân."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
@@ -347,7 +355,7 @@ msgstr "Gói đã được ký"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "Các tiện ích mở rộng đã được ký sẽ được ký lại khi xuất bản trên AMO. Thao tác này sẽ thay thế mọi chữ ký hiện có trên tiện ích mở rộng."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -355,7 +363,7 @@ msgstr "Tiện ích Firefox không được phép chạy các công cụ khai th
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "Chúng tôi không cho phép các tập lệnh coinminer chạy bên trong WebExtensions. Xem https://github.com/mozilla/addons-linter/issues/1643 để biết thêm chi tiết."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -363,11 +371,11 @@ msgstr "Tên chuỗi được dành riêng cho một tin nhắn được xác đ
 
 #: src/messages/locale-messagesjson.js:14
 msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr ""
+msgstr "Tên chuỗi bắt đầu bằng @@ được dịch sang hằng số tích hợp sẵn (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "Tên chuỗi chỉ được chứa các ký tự chữ và số, _ và @ (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
