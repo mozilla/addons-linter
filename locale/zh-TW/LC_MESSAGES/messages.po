@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-29 07:19+0000\n"
+"PO-Revision-Date: 2023-04-29 07:27+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -108,7 +108,7 @@ msgstr "不建議在簡單的附加元件中使用 JavaScript 程式庫，但一
 msgid ""
 "Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
 "degradation."
-msgstr ""
+msgstr "由於安全性與效能考量，不可設定未充分檢查過的動態值。未充分檢查可能會導致安全性問題，或嚴重拖慢效能。"
 
 #: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
@@ -144,7 +144,7 @@ msgstr "找不到內容指令碼檔案"
 
 #: src/messages/javascript.js:162
 msgid "\"$(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "暫時載入附加元件時，「$(api)s」可能會造成問題"
 
 #: src/messages/javascript.js:165
 msgid ""
@@ -250,7 +250,7 @@ msgstr "JSON 檔案中不允許使用重複的鍵值。"
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "在 JSON 檔案中發現重複的 key。"
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
@@ -266,13 +266,13 @@ msgstr "找到保留的檔案名稱。"
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "在附加元件中找到保留名稱的檔案。請勿使用該名稱，並更名這些檔案。"
 
 #: src/messages/layout.js:22
 msgid ""
 "The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
 "sure all entries are using '/' as the path separator."
-msgstr ""
+msgstr "封裝無效。可能是因為當中包含無效字元的項目，例如 Firefox 不允許使用「\\」作為路徑分隔符號。請嘗試重新建立您的附加元件封裝（ZIP 檔）並確保所有項目都使用「/」作為路徑分隔符號。"
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
@@ -286,7 +286,7 @@ msgstr "找不到 manifest.json"
 msgid ""
 "No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
 "packaging."
-msgstr ""
+msgstr "未在擴充套件根目錄找到 manifest.json。封裝檔案必須是直接包含套件檔案的 ZIP 壓縮檔，最上層不含目錄。若需有關套件的更多資訊，請參考 https://mzl.la/2r2McKv。"
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
@@ -563,7 +563,7 @@ msgstr "無法在「%(path)s」找到安裝資訊檔中定義的字典檔案。"
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "安裝資訊檔當中的「%(fieldName)s」欄位，僅在需要權限或暫時安裝的擴充套件當中使用。"
 
 #: src/messages/manifestjson.js:361
 msgid "The manifest contains multiple dictionaries."
