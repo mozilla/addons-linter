@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-29 11:59+0000\n"
+"PO-Revision-Date: 2023-04-29 13:07+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -485,11 +485,11 @@ msgstr "Egy egyéni „%(property)s” további ellenőrzésre szorul."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "A(z) „%(property)s” engedélyezi az „eval” függvényt, amelynek komoly biztonsági és teljesítménybeli vonatkozásai vannak."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "A legtöbb esetben ugyanaz az eredmény máshogy is elérhető, ezért általában tilos"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string."
@@ -505,7 +505,7 @@ msgstr "Az „update_url” nem engedélyezett."
 
 #: src/messages/manifestjson.js:237
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "Az „applications.gecko.update_url” vagy a „browser_specific_settings.gecko.update_url” nem engedélyezett a Mozilla által kiszolgált kiegészítőknél."
 
 #: src/messages/manifestjson.js:246
 msgid "The \"update_url\" property is not used by Firefox."
@@ -514,6 +514,8 @@ msgstr "Az „update_url” tulajdonságot nem használja a Firefox."
 #: src/messages/manifestjson.js:247
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
 msgstr ""
+"A leírófájl gyökerében lévő „update_url” paramétert nem használja a Firefox; a kiegészítője a Kiegészítők oldalon keresztül fog frissülni, és nem az „update_url” címen keresztül. Lásd: "
+"https://mzl.la/25zqk4O."
 
 #: src/messages/manifestjson.js:255
 msgid "\"strict_max_version\" not required."
@@ -521,7 +523,7 @@ msgstr "A „strict_max_version” nem kötelező."
 
 #: src/messages/manifestjson.js:256
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "A „strict_max_version” paramétert nem szabad használni, kivéve, ha a kiegészítő várhatóan nem fog működni a Firefox jövőbeli verzióival."
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
