@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-29 07:27+0000\n"
+"PO-Revision-Date: 2023-04-29 07:33+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -455,19 +455,19 @@ msgstr "欄位無效。"
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "manifest.json 當中的「%(property)s」允許遠端執行程式碼"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "自訂的「%(property)s」需要額外審核。"
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "「%(property)s」允許「eval」，有重大的安全性與效能風險。"
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "大部分情況下都可以用其他替代方式達到此目的，所以一般來說都禁止使用"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string."
@@ -483,7 +483,7 @@ msgstr "不允許「update_url」。"
 
 #: src/messages/manifestjson.js:237
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "由 Mozilla 代管的附加元件不允許使用「applications.gecko.update_url」與「browser_specific_settings.gecko.update_url」。"
 
 #: src/messages/manifestjson.js:246
 msgid "The \"update_url\" property is not used by Firefox."
@@ -499,11 +499,11 @@ msgstr "「strict_max_version」不是必要的。"
 
 #: src/messages/manifestjson.js:256
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "除非本來就預期此附加元件與未來版本的 Firefox 不相容，否則不應使用「strict_max_version」。"
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "在 manifest.json 中找不到「%(property)s」屬性"
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
@@ -599,7 +599,7 @@ msgstr "此附加元件包含被禁止的內容。"
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "若需更多資訊，請參考 https://github.com/mozilla-extensions/xpi-manifest 了解取得權限的擴充套件與簽章的相關資訊。"
 
 #: src/messages/manifestjson.js:403
 msgid "Icons must be square."
@@ -615,7 +615,7 @@ msgstr "圖示大小與安裝資訊檔不同。"
 
 #: src/messages/manifestjson.js:417
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "預期位於「%(path)s」的圖示應有 %(expected)d 像素寬，但實際上是 %(actual)d。"
 
 #: src/messages/manifestjson.js:430
 msgid "Corrupt image file"
@@ -655,7 +655,7 @@ msgstr "此圖片使用不支援的副檔名"
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "安裝資訊檔版本 %(versionRange)s 不支援「%(fieldName)s」。"
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
@@ -671,7 +671,7 @@ msgstr "位於「%(path)s」的佈景主題圖檔，其 MIME 類型「%(mime)s�
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "不支援「%(fieldName)s」。"
 
 #: src/messages/manifestjson.js:520
 msgid "Theme image file mime type does not match its file extension"
