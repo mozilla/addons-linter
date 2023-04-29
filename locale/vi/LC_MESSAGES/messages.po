@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-29 14:00+0000\n"
+"PO-Revision-Date: 2023-04-29 14:09+0000\n"
 "Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
@@ -391,7 +391,7 @@ msgstr "Tên của placeholder chứa ký tự không hợp lệ"
 
 #: src/messages/locale-messagesjson.js:34
 msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr ""
+msgstr "Tên placeholder chỉ được chứa các ký tự chữ và số, _ và @ (https://mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
@@ -399,7 +399,7 @@ msgstr "Placeholder thiếu thuộc tính content"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "Placeholder cần một thuộc tính nội dung xác định việc thay thế nó (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
@@ -439,7 +439,7 @@ msgstr "Không rõ quyền hạn."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s: các quyền đặc quyền sau chỉ được phép trong các tiện ích mở rộng đặc quyền: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -467,11 +467,11 @@ msgstr "Trường không hợp lệ."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "\"%(property)s\" cho phép thực thi mã từ xa trong manifest.json"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "Một \"%(property)s\" tùy chỉnh cần xem xét bổ sung."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
@@ -515,11 +515,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "Không tìm thấy thuộc tính \"%(property)s\" nào trong manifest.json"
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "\"%(property)s\" là bắt buộc"
 
 #: src/messages/manifestjson.js:279
 msgid "An icon defined in the manifest could not be found in the package."
@@ -547,7 +547,7 @@ msgstr "Không thể tìm thấy trang nền tại \"%(path)s\"."
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "\"%(fieldName)s\" sẽ bị bỏ qua đối với các tiện ích mở rộng không có đặc quyền."
 
 #: src/messages/manifestjson.js:322
 msgid "A content script defined in the manifest could not be found."
@@ -575,7 +575,7 @@ msgstr "Không thể tìm thấy tập tin từ điển được xác định tr
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "Trường tập tin manifest \"%(fieldName)s\" chỉ được sử dụng cho các tiện ích mở rộng được cài đặt tạm thời và có đặc quyền."
 
 #: src/messages/manifestjson.js:361
 msgid "The manifest contains multiple dictionaries."
@@ -611,7 +611,7 @@ msgstr "Tiện ích này chứa nội dung bị cấm."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "Vui lòng tham khảo https://github.com/mozilla-extensions/xpi-manifest để tìm hiểu thêm về các tiện ích mở rộng đặc quyền và ký."
 
 #: src/messages/manifestjson.js:403
 msgid "Icons must be square."
@@ -683,7 +683,7 @@ msgstr "Tập tin hình ảnh chủ đề tại \"%(path)s\" có loại mime kh�
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "\"%(fieldName)s\" không được hỗ trợ."
 
 #: src/messages/manifestjson.js:520
 msgid "Theme image file mime type does not match its file extension"
