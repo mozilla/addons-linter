@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-29 15:28+0000\n"
+"PO-Revision-Date: 2023-04-29 19:18+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -736,6 +736,8 @@ msgstr "Az „applications” tulajdonságot felülírja a „browser_specific_s
 #: src/messages/manifestjson.js:567
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
 msgstr ""
+"Az „applications” tulajdonság figyelmen kívül van hagyva, mert felváltja a „browser_specific_settings” tulajdonság, amely ugyancsak a jegyzékfájlban adható meg. Fontolja meg az „applications” "
+"eltávolítását."
 
 #: src/messages/manifestjson.js:577
 msgid "Empty language directory"
@@ -751,7 +753,7 @@ msgstr "A leírókulcs nem támogatott a megadott minimális Firefox verzióban"
 
 #: src/messages/manifestjson.js:599 src/messages/manifestjson.js:621
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "A(z) „strict_min_version” szerint Firefox %(minVersion)s szükséges, amely korábbi, mint a(z) %(versionAdded)s verzió, amely bevezette a(z) „%(key)s” támogatását."
 
 #: src/messages/manifestjson.js:617
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -763,11 +765,11 @@ msgstr "A leírókulcs nem támogatott a megadott minimális Firefox for Android
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: a privilegizált jegyzékmezők csak privilegizált kiegészítőkben engedélyezettek."
 
 #: src/messages/manifestjson.js:643 src/messages/manifestjson.js:665
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "A(z) „strict_min_version” szerint Firefox for Android %(minVersion)s szükséges, amely korábbi, mint a(z) %(versionAdded)s verzió, amely bevezette a(z) „%(key)s” támogatását."
 
 #: src/messages/manifestjson.js:661
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -783,11 +785,13 @@ msgstr "Az „addons.mozilla.org” oldalra mutató hivatkozások nem használha
 
 #: src/messages/manifestjson.js:689
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "A(z) „%(permission)s” engedélyhez szükséges, hogy a „strict_min_version” legalább a következőre legyen beállítva: „%(minFirefoxVersion)s”."
 
 #: src/messages/manifestjson.js:694
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
 msgstr ""
+"A(z) „%(permission)s” engedélyhez szükséges, hogy a „strict_min_version” legalább a következőre legyen beállítva: „%(minFirefoxVersion)s”. Frissítse a manifest.json verzióját, hogy megadja a Firefox"
+" minimális verzióját."
 
 #: src/messages/manifestjson.js:706
 msgid "The extension ID is required in Manifest Version 3 and above."
