@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-29 19:18+0000\n"
+"PO-Revision-Date: 2023-04-29 19:27+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -803,23 +803,23 @@ msgstr "További információkért lásd: https://mzl.la/3PLZYdo."
 
 #: src/messages/manifestjson.js:715
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr ""
+msgstr "%(instancePath)s: A privilegizált kiegészítőknek privilegizált engedélyeket kell deklarálniuk."
 
 #: src/messages/manifestjson.js:726
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr ""
+msgstr "Ez a kiegészítő nem deklarál privilegizált engedélyt. Nem kell a privilegizált tanúsítvánnyal aláírni. Töltse fel közvetlenül a https://addons.mozilla.org/ oldalra."
 
 #: src/messages/manifestjson.js:739
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: A „mozillaAddons” engedély szükséges a privilegizált kiegészítőkhöz."
 
 #: src/messages/manifestjson.js:742
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s: A „mozillaAddons” engedély szükséges az olyan kiegészítőkhöz, amelyek privilegizált jegyzékmezőket tartalmaznak."
 
 #: src/messages/manifestjson.js:755
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "Ez a kiegészítő nem tartalmazza a „mozillaAddons” engedélyt, amely a privilegizált kiegészítőkhöz szükséges."
 
 #: src/messages/manifestjson.js:765
 msgid "Cannot use actions in hidden add-ons."
@@ -827,7 +827,7 @@ msgstr "A műveletek nem használhatók rejtett kiegészítőkben."
 
 #: src/messages/manifestjson.js:766
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "A „hidden” és a „browser_action/page_action” (vagy „action” a 3-as és újabb jegyzékverziókban) tulajdonságok kölcsönösen kizárják egymást."
 
 #: src/messages/manifestjson.js:774
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
@@ -835,25 +835,27 @@ msgstr "Használja a „browser_specific_settings” értéket az „application
 
 #: src/messages/manifestjson.js:775
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "A jegyzékfájl „applications” tulajdonsága elavult, és már nem lesz elfogadva a 3-as és újabb jegyzékverziókban."
 
 #: src/messages/manifestjson.js:783
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "Az „applications” már nem engedélyezett a 3-as és újabb jegyzékverziókban."
 
 #: src/messages/manifestjson.js:785
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "A jegyzékfájlban szereplő „applications” tulajdonság már nem engedélyezett a 3-as és újabb jegyzékverziókban. Használja helyette a „browser_specific_settings” paramétert."
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "A verzió karakterláncot egyszerűsíteni kell, mert nem lesz kompatibilis a 3-as és újabb jegyzékfájlverziókkal."
 
 #: src/messages/manifestjson.js:795
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"A verzió legyen egy 1 és 4 közti számú számjegycsoportból álló, pontokkal elválasztott karakterlánc. Minden szám legfeljebb 9 számjegyből állhat, és a kezdő nullák többé nem engedélyezettek. A betűk"
+" sem lesznek többé engedélyezettek. További információkért lásd: https://mzl.la/3h3mCRu (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
@@ -864,14 +866,16 @@ msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
 "https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"A verzió legyen egy 1 és 4 közti számú számjegycsoportból álló, pontokkal elválasztott karakterlánc. Minden szám legfeljebb 9 számjegyből állhat, és a kezdő nullák nem engedélyezettek. Már a betűk "
+"sem engedélyezettek. További információkért lásd: https://mzl.la/3h3mCRu (MDN dokumentáció)."
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "/%(fieldName)s: A(z) „%(permissionName)s” nem támogatott a következő jegyzékfájlverziókban: %(versionRange)s."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
-msgstr ""
+msgstr "/%(fieldName)s: A(z) „%(permissionName)s” nem támogatott."
 
 #~ msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
 #~ msgstr "Érvénytelen telepítési eredet. Egy érvényes eredet csak sémát, gépnevet és portot (nem kötelező) tartalmaz."
