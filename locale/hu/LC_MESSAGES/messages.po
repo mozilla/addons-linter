@@ -341,7 +341,7 @@ msgstr "Olyan fájlok találhatók, amelyek vagy feleslegesek, vagy véletlenül
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "A csomag több azonos nevű bejegyzést tartalmaz. Ez a gyakorlat tiltott. Próbálja ki a kiegészítőcsomag újracsomagolását, majd próbálja újra."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
