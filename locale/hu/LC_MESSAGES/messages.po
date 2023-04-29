@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-29 14:45+0000\n"
+"PO-Revision-Date: 2023-04-29 14:53+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -559,7 +559,7 @@ msgstr "A háttéroldal nem található itt: „%(path)s”."
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "A(z) „%(fieldName)s” figyelmen kívül van hagyva a nem privilegizált kiegészítőknél."
 
 #: src/messages/manifestjson.js:322
 msgid "A content script defined in the manifest could not be found."
@@ -587,7 +587,7 @@ msgstr "A leíróban definiált szótárfájl nem található itt: „%(path)s�
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "A(z) „%(fieldName)s” jegyzékmező csak privilegizált és ideiglenesen telepített kiegészítőknél használatos."
 
 #: src/messages/manifestjson.js:361
 msgid "The manifest contains multiple dictionaries."
@@ -623,7 +623,7 @@ msgstr "Ez a kiegészítő tiltott tartalmat tartalmaz."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "Keresse fel a https://github.com/mozilla-extensions/xpi-manifest oldalt, hogy többet tudjon meg a privilegizált kiegészítőkről és az aláírásról."
 
 #: src/messages/manifestjson.js:403
 msgid "Icons must be square."
@@ -639,7 +639,7 @@ msgstr "Az ikon mérete nem egyezik a leíróval."
 
 #: src/messages/manifestjson.js:417
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "A(z) „%(path)s” ikon %(expected)d képpont szélességűként várt, de valójában ilyen széles volt: %(actual)d."
 
 #: src/messages/manifestjson.js:430
 msgid "Corrupt image file"
@@ -679,7 +679,7 @@ msgstr "A téma képfájlja nem támogatott fájlkiterjesztéssel rendelkezik"
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "A(z) „%(fieldName)s” nem támogatott a következő jegyzékfájlverziókban: %(versionRange)s."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
@@ -695,7 +695,7 @@ msgstr "A(z) „%(path)s” helyen lévő képfájl nem támogatott MIME-típuss
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "A(z) „%(fieldName)s” nem támogatott."
 
 #: src/messages/manifestjson.js:520
 msgid "Theme image file mime type does not match its file extension"
@@ -711,7 +711,7 @@ msgstr "A „default_locale” területi beállításhoz hiányoznak a fordítá
 
 #: src/messages/manifestjson.js:538
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "A „default_locale” érték meg van adva a jegyzékfájlban, de nem létezik megfelelő „messages.json” a „_locales” könyvtárban. Lásd: https://mzl.la/2hjcaEE."
 
 #: src/messages/manifestjson.js:546
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
