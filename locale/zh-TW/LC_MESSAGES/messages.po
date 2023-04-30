@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-30 11:37+0000\n"
+"PO-Revision-Date: 2023-04-30 11:42+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -819,13 +819,13 @@ msgstr "Manifest Version 3 起將不再允許於安裝資訊檔中使用「appli
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "版本字串於 Manifest Version 3 起不再相容，請簡化，"
 
 #: src/messages/manifestjson.js:795
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
-msgstr ""
+msgstr "版本號應該為 1~4 組數字所組成的字串，每組之間用小數點分隔。每組數字最多僅能有九位數，前方不再允許補 0 也不可再包含字母。若需更多資訊請參考 https://mzl.la/3h3mCRu（MDN 文件）。"
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
@@ -835,7 +835,7 @@ msgstr "應簡化版本字串。"
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
 "https://mzl.la/3h3mCRu (MDN Docs) for more information."
-msgstr ""
+msgstr "版本號應該為 1~4 組數字所組成的字串，每組之間用小數點分隔。每組數字最多僅能有九位數，前方不允許補 0 也不可再包含字母。若需更多資訊請參考 https://mzl.la/3h3mCRu（MDN 文件）。"
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
