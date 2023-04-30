@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-29 07:40+0000\n"
+"PO-Revision-Date: 2023-04-30 10:45+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -178,19 +178,19 @@ msgstr "內容指令碼檔案名稱不應為空白"
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "使用非 literal URI 呼叫「%(method)s」"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
-msgstr ""
+msgstr "使用變數參數呼叫「%(method)s」時，可能會因變數內含有遠端 URI 造成安全性漏洞，請考慮改用「window.open」並包含「chrome=no」旗標。"
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "使用非本機 URI 呼叫「%(method)s」"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "使用非本機 URI 呼叫「%(method)s」將造成開啟的對話框含有 chrome 權限。"
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -200,7 +200,7 @@ msgstr "JavaScript 語法錯誤"
 msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
-msgstr ""
+msgstr "您的程式碼中包含 JavaScript 語法錯誤，可能是因為有些實驗性的 JavaScript 功能尚未成為語言的正式標準，尚不受支援所導致。無法繼續驗證此檔案。"
 
 #: src/messages/javascript.js:62
 msgid ""
