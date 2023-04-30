@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-30 21:35+0000\n"
+"PO-Revision-Date: 2023-04-30 21:46+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -362,7 +362,7 @@ msgstr "Pacote já assinado"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "Extensões já assinadas são assinadas novamente quando publicadas no AMO. Isso substitui todas as assinaturas existentes na extensão."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -370,7 +370,7 @@ msgstr "As extensões do Firefox não têm permissão para executar mineradores 
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "Não permitimos que scripts mineradores de moedas digitais sejam executados dentro de WebExtensions. Consulte mais detalhes em https://github.com/mozilla/addons-linter/issues/1643."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -378,11 +378,11 @@ msgstr "O nome da string é reservado para uma mensagem predefinida"
 
 #: src/messages/locale-messagesjson.js:14
 msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr ""
+msgstr "Nomes de strings começando com @@ são traduzidos para constantes internas (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "Nomes de strings devem conter apenas caracteres alfanuméricos, _ e @ (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -398,7 +398,7 @@ msgstr "O nome do marcador de posição contém caracteres inválidos"
 
 #: src/messages/locale-messagesjson.js:34
 msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr ""
+msgstr "Nomes de campos devem conter apenas caracteres alfanuméricos, _ e @ (https://mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
@@ -406,7 +406,7 @@ msgstr "Está faltando a propriedade de conteúdo do marcador de posição"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "Um campo precisa de uma propriedade de conteúdo definindo a substituição dele (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
@@ -446,7 +446,7 @@ msgstr "Permissão desconhecida."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s: as seguintes permissões privilegiadas só são permitidas em extensões privilegiadas: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -458,7 +458,7 @@ msgstr "Origem de instalação inválida."
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
+msgstr "Origem de instalação inválida. Uma origem válida tem - apenas - um esquema, um nome de host e opcionalmente uma porta. Consulte mais informações em https://mzl.la/3TEbqbE (MDN Docs)."
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -474,19 +474,19 @@ msgstr "O campo é inválido."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "\"%(property)s\" permite execução remota de código em manifest.json"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "Uma \"%(propriedade)s\" personalizada precisa de revisão adicional."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "\"%(property)s\" permite 'eval', que tem fortes implicações de segurança e desempenho."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "Na maioria dos casos, o mesmo resultado pode ser alcançado de forma diferente, portanto, geralmente é proibido"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string."
