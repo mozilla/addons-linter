@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-30 21:27+0000\n"
+"PO-Revision-Date: 2023-04-30 21:35+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -311,6 +311,8 @@ msgid ""
 "This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
 "or splitting very large files into smaller ones."
 msgstr ""
+"Este arquivo não é binário e é grande demais para ser analisado. Arquivos maiores que %(maxFileSizeToParseMB)sMB não são analisados. Considere mover grandes listas de dados de arquivos JavaScript "
+"para arquivos JSON, ou dividir arquivos muito grandes em arquivos menores."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -320,6 +322,7 @@ msgstr "Arquivo oculto marcado"
 msgid ""
 "Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
 msgstr ""
+"Arquivos ocultos complicam o processo de revisão e podem conter informações confidenciais sobre o sistema que gerou a extensão. Modifique o processo de empacotamento para não incluir esses arquivos."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -331,11 +334,11 @@ msgstr "Nome do arquivo marcado encontrado"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "Foram encontrados arquivos desnecessários ou que foram incluídos involuntariamente. Eles devem ser removidos."
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "O pacote contém vários itens com o mesmo nome. Esta prática foi proibida. Experimente descompactar e voltar a compactar o pacote de sua extensão e tente novamente."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
@@ -350,6 +353,8 @@ msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
+"Foram encontrados arquivos cujos nomes terminam com extensões sinalizadas. As extensões desses arquivos são sinalizadas porque geralmente identificam componentes binários. Consulte mais informações "
+"em https://bit.ly/review-policy sobre o processo de revisão de conteúdo binário."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
