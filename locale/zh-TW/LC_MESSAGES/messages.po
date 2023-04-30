@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-30 11:12+0000\n"
+"PO-Revision-Date: 2023-04-30 11:17+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -439,7 +439,7 @@ msgstr "安裝來源無效。"
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
+msgstr "安裝來源無效。有效的來源「僅」能有一組 scheme、主機名稱，與通訊埠（選填）。若需更多資訊，請參考 https://mzl.la/3TEbqbE（MDN 文件）"
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -491,7 +491,7 @@ msgstr "Firefox 不使用「update_url」屬性。"
 
 #: src/messages/manifestjson.js:247
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
-msgstr ""
+msgstr "Firefox 不使用安裝資訊檔根層級的「update_url」；您的附加元件將透過附加元件網站而非「update_url」更新。詳見：https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:255
 msgid "\"strict_max_version\" not required."
@@ -687,7 +687,7 @@ msgstr "「default_locale」缺少在地化內容。"
 
 #: src/messages/manifestjson.js:538
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "安裝資訊檔中指定了「default_locale」，但「_locales」目錄中沒有符合的「messages.json」。詳見：https://mzl.la/2hjCAee"
 
 #: src/messages/manifestjson.js:546
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -695,7 +695,7 @@ msgstr "缺少「default_locale」但有「_locales」存在。"
 
 #: src/messages/manifestjson.js:547
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "安裝資訊檔中未指定「default_locale」，但存在「_locales」目錄。詳見：https://mzl.la/2hjCAee"
 
 #: src/messages/manifestjson.js:555
 msgid "Unsupported image extension"
