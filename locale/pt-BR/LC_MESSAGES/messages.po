@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-30 21:46+0000\n"
+"PO-Revision-Date: 2023-04-30 21:55+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -502,7 +502,7 @@ msgstr "\"update_url\" não é permitido."
 
 #: src/messages/manifestjson.js:237
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "\"applications.gecko.update_url\" ou \"browser_specific_settings.gecko.update_url\" não são permitidos em extensões hospedadas pela Mozilla."
 
 #: src/messages/manifestjson.js:246
 msgid "The \"update_url\" property is not used by Firefox."
@@ -510,7 +510,7 @@ msgstr "A propriedade \"update_url\" não é utilizada pelo Firefox."
 
 #: src/messages/manifestjson.js:247
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
-msgstr ""
+msgstr "O \"update_url\" não é usado pelo Firefox na raiz de um manifesto. Sua extensão será atualizada por meio do site de extensões e não pelo seu \"update_url\". Consulte https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:255
 msgid "\"strict_max_version\" not required."
@@ -518,15 +518,15 @@ msgstr "\"strict_max_version\" não é obrigatório."
 
 #: src/messages/manifestjson.js:256
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "\"strict_max_version\" não deve ser usado, a menos que se espere que a extensão não funcione em futuras versões do Firefox."
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "Não foi encontrada nenhuma propriedade \"%(property)s\" em manifest.json"
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "\"%(propriedade)s\" é obrigatório"
 
 #: src/messages/manifestjson.js:279
 msgid "An icon defined in the manifest could not be found in the package."
@@ -554,7 +554,7 @@ msgstr "A página de segundo plano não foi encontrada em \"%(path)s\"."
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "\"%(fieldName)s\" é ignorado em extensões não privilegiadas."
 
 #: src/messages/manifestjson.js:322
 msgid "A content script defined in the manifest could not be found."
@@ -582,7 +582,7 @@ msgstr "Arquivo de dicionário definido no manifesto não foi encontrado em \"%(
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "O campo de manifesto \"%(fieldName)s\" só é usado em extensões privilegiadas e instaladas temporariamente."
 
 #: src/messages/manifestjson.js:361
 msgid "The manifest contains multiple dictionaries."
@@ -618,7 +618,7 @@ msgstr "Esta extensão contém conteúdo proibido."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "Consulte https://github.com/mozilla-extensions/xpi-manifest para saber mais sobre extensões privilegiadas e assinatura."
 
 #: src/messages/manifestjson.js:403
 msgid "Icons must be square."
@@ -634,7 +634,7 @@ msgstr "O tamanho do ícone não corresponde ao manifesto."
 
 #: src/messages/manifestjson.js:417
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "Era esperado que o ícone em \"%(path)s\" tivesse %(expected)d pixels de largura, mas tem %(actual)d."
 
 #: src/messages/manifestjson.js:430
 msgid "Corrupt image file"
@@ -674,7 +674,7 @@ msgstr "Arquivo de imagem de tema tem uma extensão de arquivo não suportada"
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "\"%(fieldName)s\" não é suportado em manifesto das versões %(versionRange)s."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
