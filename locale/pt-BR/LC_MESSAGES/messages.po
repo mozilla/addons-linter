@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-30 21:17+0000\n"
+"PO-Revision-Date: 2023-04-30 21:27+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -252,7 +252,7 @@ msgstr "Seu JSON contém comentários em bloco."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "Em arquivos JSON, só são permitidos comentários de linha (comentários começando com \"//\"). Remova comentários em bloco (entre \"/*\" e \"*/\")"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -276,13 +276,15 @@ msgstr "Encontrado nome de arquivo reservado."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "Arquivos cujos nomes são reservados foram encontrados na extensão. Evite isso, renomeie seus arquivos."
 
 #: src/messages/layout.js:22
 msgid ""
 "The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
 "sure all entries are using '/' as the path separator."
 msgstr ""
+"O pacote é inválido. Ele pode conter itens com caracteres inválidos. Por exemplo, não é permitido usar '\\' como separador de path no Firefox. Experimente recriar o pacote (ZIP) da sua extensão e "
+"verifique se todos os itens usam '/' como separador de path."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
@@ -297,6 +299,8 @@ msgid ""
 "No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
 "packaging."
 msgstr ""
+"Não foi encontrado nenhum arquivo manifest.json na raiz da extensão. O arquivo do pacote deve ser um ZIP dos próprios arquivos da extensão, não do diretório que os contém. Consulte mais informações "
+"em https://mzl.la/2r2McKv sobre como empacotar."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
