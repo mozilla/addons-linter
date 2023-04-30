@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-30 11:27+0000\n"
+"PO-Revision-Date: 2023-04-30 11:37+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -791,7 +791,7 @@ msgstr "%(instancePath)s：安裝資訊中，包含特殊權限欄位的擴充�
 
 #: src/messages/manifestjson.js:755
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "此擴充套件並未包含特殊權限擴充套件所必須的「mozillaAddons」權限。"
 
 #: src/messages/manifestjson.js:765
 msgid "Cannot use actions in hidden add-ons."
@@ -799,7 +799,7 @@ msgstr "無法在隱藏的附加元件中使用 actions。"
 
 #: src/messages/manifestjson.js:766
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "hidden 與 browser_action/page_action（或 Manifest Version 3 以上版本中的 action）屬性互斥。"
 
 #: src/messages/manifestjson.js:774
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
@@ -807,15 +807,15 @@ msgstr "請改用「browser_specific_settings」來取代「applications」。"
 
 #: src/messages/manifestjson.js:775
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "已棄用安裝資訊檔中的「applications」屬性，於 Manifest Version 3 起將不再接受。"
 
 #: src/messages/manifestjson.js:783
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "Manifest Version 3 起不再允許使用「applications」。"
 
 #: src/messages/manifestjson.js:785
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "Manifest Version 3 起將不再允許於安裝資訊檔中使用「applications」屬性，請改用「browser_specific_settings」。"
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
