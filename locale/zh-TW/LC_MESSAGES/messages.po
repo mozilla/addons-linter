@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-30 10:45+0000\n"
+"PO-Revision-Date: 2023-04-30 10:56+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -206,11 +206,11 @@ msgstr "您的程式碼中包含 JavaScript 語法錯誤，可能是因為有些
 msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible.'"
-msgstr ""
+msgstr "將字串作為程式碼來求值，就算是在最小的情況下也可能造成安全性漏洞或效能問題。任何情況下請盡力避免使用`eval` 與 `Function` 建構子。"
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "呼叫 setTimeout、setInterval 及 execScript 函數時，應只將函數表達式放在它們的第一個參數"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
@@ -218,7 +218,7 @@ msgstr "未預期的全域變數被作為引數傳遞"
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr ""
+msgstr "不建議將全域變數作為參數傳入，請將其設定為 var 變數。"
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
@@ -226,7 +226,7 @@ msgstr "非常不建議使用 document.write。"
 
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
-msgstr ""
+msgstr "大部分情況下，於擴充套件中使用 document.write 時，都會失敗，且在誤用時可能會有嚴重的安全性問題，因此不該使用此方法。"
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
@@ -234,7 +234,7 @@ msgstr "被禁止的第三方 JS 程式庫"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "您的附加元件使用我們認為不安全的 JavaScript 程式庫。更多資訊：https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
@@ -242,7 +242,7 @@ msgstr "您的 JSON 包含區塊注解。"
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "JSON 檔案僅支援單行註解（每一行以「//」開頭的註解）。請移除區塊註解（以「/*」開頭的註解）"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -296,7 +296,7 @@ msgstr "檔案太大無法剖析。"
 msgid ""
 "This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
 "or splitting very large files into smaller ones."
-msgstr ""
+msgstr "這個檔案不是二進位檔案，且太大無法剖析。不會剖析超過 %(maxFileSizeToParseMB)sMB 的檔案。請考慮將大型資料清單從 JavaScript 檔案移動到 JSON 檔案，或分割成多個小檔案。"
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -305,7 +305,7 @@ msgstr "標示了隱藏檔案"
 #: src/messages/layout.js:58
 msgid ""
 "Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
-msgstr ""
+msgstr "隱藏檔案將造成審核過程變得複雜，有時也會包含產生附加元件的電腦的敏感資訊。請修改您的封裝檔案產製過程，讓這些檔案不包含在封裝檔中。"
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
