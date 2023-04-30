@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-30 11:17+0000\n"
+"PO-Revision-Date: 2023-04-30 11:27+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -711,7 +711,7 @@ msgstr "「applications」屬性被「browser_specific_settings」屬性覆蓋"
 
 #: src/messages/manifestjson.js:567
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
-msgstr ""
+msgstr "將忽略「applications」屬性，它已被安裝資訊檔中也有定義的「browser_specific_settings」屬性取代。請考慮移除「applications」屬性。"
 
 #: src/messages/manifestjson.js:577
 msgid "Empty language directory"
@@ -727,7 +727,7 @@ msgstr "指定的最小 Firefox 版本，不支援安裝資訊鍵值"
 
 #: src/messages/manifestjson.js:599 src/messages/manifestjson.js:621
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "「strict_min_version」需要在 %(versionAdded)s 版，引入「%(key)s」功能支援前所發行的 Firefox %(minVersion)s 版才能使用。"
 
 #: src/messages/manifestjson.js:617
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -739,11 +739,11 @@ msgstr "指定的最小 Firefox for Android 版本，不支援安裝資訊鍵值
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s：特殊權限的安裝資訊檔欄位，僅允許使用於特殊權限的擴充套件中。"
 
 #: src/messages/manifestjson.js:643 src/messages/manifestjson.js:665
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "「strict_min_version」需要在 %(versionAdded)s 版，引入「%(key)s」功能支援前所發行的 Firefox for Android %(minVersion)s 版才能使用。"
 
 #: src/messages/manifestjson.js:661
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -759,11 +759,11 @@ msgstr "不允許將首頁連結指到「addons.mozilla.org」"
 
 #: src/messages/manifestjson.js:689
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "「%(permission)s」權限要求「strict_min_version」設定為「%(minFirefoxVersion)s」或更新版本"
 
 #: src/messages/manifestjson.js:694
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
-msgstr ""
+msgstr "「%(permission)s」權限要求「strict_min_version」設定為「%(minFirefoxVersion)s」或更新版本。請將您 manifest.json 當中的版本更改為最小支援的 Firefox 版本。"
 
 #: src/messages/manifestjson.js:706
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -775,19 +775,19 @@ msgstr "若需更多資訊，請參考 https://mzl.la/3PLZYdo。"
 
 #: src/messages/manifestjson.js:715
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr ""
+msgstr "%(instancePath)s: 特殊權限擴充套件應該宣告需要的特殊權限。"
 
 #: src/messages/manifestjson.js:726
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr ""
+msgstr "此擴充套件未宣告任何特殊權限，無須使用特殊憑證簽署，請直接上傳到 https://addons.mozilla.org/ 即可。"
 
 #: src/messages/manifestjson.js:739
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s：特殊權限的擴充套件必須要有「mozillaAddons」權限。"
 
 #: src/messages/manifestjson.js:742
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s：安裝資訊中，包含特殊權限欄位的擴充套件，必須要有「mozillaAddons」權限。"
 
 #: src/messages/manifestjson.js:755
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
