@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-30 10:56+0000\n"
+"PO-Revision-Date: 2023-04-30 11:12+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -317,11 +317,11 @@ msgstr "找到被標記的檔案名稱"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "找到非必要的檔案，或是意外加入的檔案，應該移除。"
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "封裝檔案包含多個相同名稱的項目內容，已封鎖這個做法。請嘗試解壓縮並重新壓縮附加元件封裝後再試一次。"
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
@@ -335,7 +335,7 @@ msgstr "找到被標記的檔案類型"
 msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
-msgstr ""
+msgstr "在附加元件中找到名稱結尾為被標記的擴充套件檔案。之所以會標記這些檔案的副檔名，是因為它們通常是二進位元件。若需有關二進位內容審核程序的更多資訊，請參考 https://bit.ly/review-policy。"
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
@@ -343,7 +343,7 @@ msgstr "封包已簽名"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "已簽署過的附加元件，在 AMO 上架時會被重新簽署。將取代附加元件中所有已有的簽章。"
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -351,7 +351,7 @@ msgstr "Firefox 附加元件中不允許進行挖礦。"
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "我們不允許在 WebExtension 中包含採礦指令碼。若需更多資訊，請參考 https://github.com/mozilla/addons-linter/issues/1643。"
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -359,11 +359,11 @@ msgstr "字串名稱是為預設訊息保留的名稱"
 
 #: src/messages/locale-messagesjson.js:14
 msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr ""
+msgstr "以 @@ 開頭的字串名稱，將被轉換為內建常數（https://mzl.la/2BL9ZjE）。"
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "字串名稱應只包含字母、數字、_ 及 @（https://mzl.la/2Eztyi5）。"
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -379,7 +379,7 @@ msgstr "預留位置名稱包含無效字元"
 
 #: src/messages/locale-messagesjson.js:34
 msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr ""
+msgstr "Placeholder 名稱應只包含字母、數字、_ 及 @（https://mzl.la/2ExbYez）。"
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
@@ -387,7 +387,7 @@ msgstr "缺少預留位置的內容屬性"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "Placeholder 需要有一個 content 屬性定義如何被取代（https://mzl.la/2TT1MDd）"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
@@ -427,7 +427,7 @@ msgstr "權限未知。"
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s：下列特殊權限僅能在特殊擴充套件中使用：%(privilegedPermissions)s。"
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
