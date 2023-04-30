@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-28 20:32+0000\n"
+"PO-Revision-Date: 2023-04-30 21:17+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -260,7 +260,7 @@ msgstr "Chaves duplicadas não são permitidas em arquivos JSON."
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "Chave duplicada encontrada no arquivo JSON."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
