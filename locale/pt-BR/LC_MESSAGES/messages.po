@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-05-01 01:27+0000\n"
+"PO-Revision-Date: 2023-05-01 01:33+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -730,7 +730,7 @@ msgstr "Propriedade \"applications\" substituída pela propriedade \"browser_spe
 
 #: src/messages/manifestjson.js:567
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
-msgstr ""
+msgstr "A propriedade \"applications\" está sendo ignorada porque foi suplantada pela propriedade \"browser_specific_settings\" que também está definida em seu manifesto. Considere remover \"applications\"."
 
 #: src/messages/manifestjson.js:577
 msgid "Empty language directory"
@@ -746,7 +746,7 @@ msgstr "Chave de manifesto não suportada pela versão mínima especificada do F
 
 #: src/messages/manifestjson.js:599 src/messages/manifestjson.js:621
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\" requer Firefox %(minVersion)s, que foi lançado antes da versão %(versionAdded)s introduzir suporte para \"%(key)s\"."
 
 #: src/messages/manifestjson.js:617
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -758,11 +758,11 @@ msgstr "Chave de manifesto não suportada pela versão mínima especificada do F
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: campos de manifesto privilegiados só são permitidos em extensões privilegiadas."
 
 #: src/messages/manifestjson.js:643 src/messages/manifestjson.js:665
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\" requer Firefox para Android %(minVersion)s, que foi lançado antes da versão %(versionAdded)s introduzir suporte para \"%(key)s\"."
 
 #: src/messages/manifestjson.js:661
 msgid "Permission not supported by the specified minimum Firefox for Android version"
