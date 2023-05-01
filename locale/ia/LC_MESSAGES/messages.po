@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-05-01 21:48+0000\n"
+"PO-Revision-Date: 2023-05-01 22:17+0000\n"
 "Last-Translator: Melo46 <melo@carmu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -104,13 +104,15 @@ msgstr "Revelate bibliotheca JS note"
 
 #: src/messages/javascript.js:108
 msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
-msgstr ""
+msgstr "Le bibliothecas JavaScript es discoragiate pro simple additivos, ma es generalmente acceptate."
 
 #: src/messages/javascript.js:116
 msgid ""
 "Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
 "degradation."
 msgstr ""
+"Per preoccupationes ambe de securitate e prestation, isto pote non esser predefinite pro valores dynamic que non ha essite adequatemente mundate. Isto pote ducer a problemas de securitate o bastante"
+" serie degradation de prestation."
 
 #: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
@@ -146,13 +148,15 @@ msgstr "Impossibile trovar le file script de contento"
 
 #: src/messages/javascript.js:162
 msgid "\"$(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "\"$(api)s\" pote causar problemas quando cargate temporarimente"
 
 #: src/messages/javascript.js:165
 msgid ""
 "This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
 "more."
 msgstr ""
+"Iste API pote causar problemas quando cargate temporarimente per re:depuration in Firefox si tu non specifica \"browser_specific_settings.gecko.id\" in le manifesto. Vide: https://mzl.la/2hizK4a pro"
+" altero."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -180,7 +184,7 @@ msgstr "Le nomine de file script de contento non debe ser vacue"
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "\"%(method)s\" vocate con un uri non-literal"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
@@ -188,11 +192,11 @@ msgstr ""
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "\"%(method)s\" vocate con URI non-local"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "Vocar \"%(method)s\" con un URI non-local comportara que le fenestra de dialogo essera aperite con privilegios de chrome."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -203,6 +207,8 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
+"Il ha un error de syntaxe JavaScript in tu codice, que poterea esser correlate a alcun functiones JavaScript experimental que non es un parte official del specification del lingua e dunque non "
+"ancora supportate. Le validation non pote continuar sur iste file."
 
 #: src/messages/javascript.js:62
 msgid ""
