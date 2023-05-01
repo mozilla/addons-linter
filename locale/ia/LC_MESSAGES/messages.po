@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-05-01 15:53+0000\n"
+"PO-Revision-Date: 2023-05-01 21:48+0000\n"
 "Last-Translator: Melo46 <melo@carmu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -47,6 +47,8 @@ msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
 "%(maxManifestVersion)s)."
 msgstr ""
+"Campo de version requirite del manifesto non valide: --min-manifest-version(actualmente con le valor %(minManifestVersion)s) non pote esser major que ---max-manifest-version (actualmente con le "
+"valor %(maxManifestVersion)s)."
 
 #: src/messages/css.js:13
 msgid "Invalid nesting of selectors found"
@@ -54,7 +56,7 @@ msgstr "Annidamento non valide de selectores trovate"
 
 #: src/messages/css.js:14
 msgid "Selectors should not be nested"
-msgstr ""
+msgstr "Le selectores non pote esser annidate"
 
 #: src/messages/css.js:6
 msgid "A CSS syntax error was encountered"
@@ -78,7 +80,7 @@ msgstr "Le scripts remote non es permittite per le politicas concernente le addi
 
 #: src/messages/html.js:13
 msgid "Please include all scripts in the add-on. For more information, refer to https://mzl.la/2uEOkYp."
-msgstr ""
+msgstr "Include tote le scripts in le additivo. Pro altere informationes, referer se a https://mzl.la/2uEOkYp."
 
 #: src/messages/html.js:5
 msgid "Inline scripts blocked by default"
@@ -86,7 +88,7 @@ msgstr "Le scripts inline es blocate per predefinition"
 
 #: src/messages/html.js:6
 msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
-msgstr ""
+msgstr "Le regulas CSP predefinite impedi al JavaScript in linea de exequer (https://mzl.la/2pn32nd)."
 
 #: src/messages/javascript.js:100
 msgid "Unadvised 3rd-party JS library"
@@ -94,7 +96,7 @@ msgstr "Bibliotheca JS de tertios disconsiliate"
 
 #: src/messages/javascript.js:101
 msgid "Your add-on uses a JavaScript library we do not recommend. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Tu additivo usa un bibliotheca JavaScript que nos non recommenda. Lege plus: https://bit.ly/1TRIyZY"
 
 #: src/messages/javascript.js:107
 msgid "Known JS library detected"
@@ -234,7 +236,7 @@ msgstr "Bibliotheca JS de tertios prohibite"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr "Tu additivo usa un libreria JavaScript que nos no considera secur. Lege plus: https://bit.ly/1TRIyZY"
+msgstr "Tu additivo usa un bibliotheca JavaScript que nos no considera secur. Lege plus: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
