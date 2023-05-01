@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-05-01 01:35+0000\n"
+"PO-Revision-Date: 2023-05-01 01:46+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -800,19 +800,19 @@ msgstr "%(instancePath)s: Extensões privilegiadas devem declarar permissões pr
 
 #: src/messages/manifestjson.js:726
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr ""
+msgstr "Esta extensão não declara nenhuma permissão privilegiada. Ela não precisa ser assinada com o certificado privilegiado. Envie diretamente para https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:739
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: A permissão \"mozillaAddons\" é obrigatória para extensões privilegiadas."
 
 #: src/messages/manifestjson.js:742
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s: A permissão \"mozillaAddons\" é obrigatória para extensões que incluem campos de manifesto privilegiados."
 
 #: src/messages/manifestjson.js:755
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "Esta extensão não inclui a permissão \"mozillaAddons\", obrigatória para extensões privilegiadas."
 
 #: src/messages/manifestjson.js:765
 msgid "Cannot use actions in hidden add-ons."
@@ -820,7 +820,7 @@ msgstr "Não é possível usar ações em extensões ocultas."
 
 #: src/messages/manifestjson.js:766
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "As propriedades hidden e browser_action/page_action (ou action no Manifest versão 3 em diante) são mutuamente exclusivas."
 
 #: src/messages/manifestjson.js:774
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
@@ -828,25 +828,27 @@ msgstr "Use \"browser_specific_settings\" em vez de \"applications\"."
 
 #: src/messages/manifestjson.js:775
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "A propriedade \"applications\" no manifesto está obsoleta e não será mais aceita no Manifest versão 3 em diante."
 
 #: src/messages/manifestjson.js:783
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "\"applications\" não é mais permitido no Manifest versão 3 em diante."
 
 #: src/messages/manifestjson.js:785
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "A propriedade \"applications\" no manifesto não é mais permitida no Manifest versão 3 em diante. Em vez dela, use \"browser_specific_settings\"."
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "A string da versão deve ser simplificada porque não será compatível com o Manifest versão 3 em diante."
 
 #: src/messages/manifestjson.js:795
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"A versão deve ser uma string com 1 a 4 números separados por pontos. Cada número deve ter até 9 dígitos, zeros à esquerda não serão mais permitidos. Letras também não serão mais permitidas. Consulte"
+" mais informações em https://mzl.la/3h3mCRu (MDN Docs)."
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
