@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-05-01 01:33+0000\n"
+"PO-Revision-Date: 2023-05-01 01:35+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -778,11 +778,13 @@ msgstr "Links direcionando para \"addons.mozilla.org\" não são permitidos na p
 
 #: src/messages/manifestjson.js:689
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "A permissão \"%(permission)s\" requer que \"strict_min_version\" seja definido como \"%(minFirefoxVersion)s\" ou superior"
 
 #: src/messages/manifestjson.js:694
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
 msgstr ""
+"A permissão \"%(permission)s\" requer que \"strict_min_version\" seja definido como \"%(minFirefoxVersion)s\" ou superior. Atualize a versão do seu manifest.json para especificar uma versão mínima "
+"do Firefox."
 
 #: src/messages/manifestjson.js:706
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -794,7 +796,7 @@ msgstr "Consulte mais informações em https://mzl.la/3PLZYdo."
 
 #: src/messages/manifestjson.js:715
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr ""
+msgstr "%(instancePath)s: Extensões privilegiadas devem declarar permissões privilegiadas."
 
 #: src/messages/manifestjson.js:726
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
