@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-05-01 08:00+0000\n"
+"PO-Revision-Date: 2023-05-01 09:04+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -409,7 +409,7 @@ msgstr "Plaatshouder bevat geen inhoudseigenschap"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "Een plaatshouder heeft een inhoudseigenschap nodig die de vervanging ervan definieert (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
@@ -449,7 +449,7 @@ msgstr "Onbekende toestemming."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s: de volgende geprivilegieerde machtigingen zijn alleen toegestaan in geprivilegieerde extensies: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -461,7 +461,7 @@ msgstr "Onbekende installatieoorsprong."
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
+msgstr "Ongeldige installatiebron. Een geldige bron heeft – alleen – een schema, hostnaam en optionele poort. Zie https://mzl.la/3TEbqbE (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -477,19 +477,19 @@ msgstr "Het veld is ongeldig."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "‘%(property)s’ maakt uitvoering van externe code mogelijk in manifest.json"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "Een aangepaste ‘%(property)s’ heeft aanvullende beoordeling nodig."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "‘%(property)s’ staat ‘eval’ toe, wat grote implicaties heeft voor veiligheid en prestaties."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "In de meeste gevallen kan hetzelfde resultaat op een andere manier worden bereikt, daarom is het over het algemeen verboden"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string."
@@ -505,7 +505,7 @@ msgstr "‘update_url’ is niet toegestaan."
 
 #: src/messages/manifestjson.js:237
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "‘applications.gecko.update_url’ of ‘browser_specific_settings.gecko.update_url’ zijn niet toegestaan voor door Mozilla gehoste add-ons."
 
 #: src/messages/manifestjson.js:246
 msgid "The \"update_url\" property is not used by Firefox."
@@ -513,7 +513,7 @@ msgstr "De eigenschap ‘update_url’ wordt niet door Firefox gebruikt."
 
 #: src/messages/manifestjson.js:247
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
-msgstr ""
+msgstr "De ‘update_url’ wordt door Firefox niet gebruikt in de hoofdmap van een manifest; uw add-on wordt bijgewerkt via de Add-ons-website en niet via uw ‘update_url’. Zie: https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:255
 msgid "\"strict_max_version\" not required."
@@ -521,15 +521,15 @@ msgstr "‘strict_max_version’ niet vereist."
 
 #: src/messages/manifestjson.js:256
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "‘strict_max_version’ mag niet worden gebruikt, tenzij wordt verwacht dat de add-on niet zal werken met toekomstige versies van Firefox."
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "Geen eigenschap ‘%(property)s’ gevonden in manifest.json"
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "‘%(property)s’ is verplicht"
 
 #: src/messages/manifestjson.js:279
 msgid "An icon defined in the manifest could not be found in the package."
@@ -557,7 +557,7 @@ msgstr "Achtergrondpagina kon niet worden gevonden in ‘%(path)s’."
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "‘%(fieldName)s’ wordt genegeerd voor niet-geprivilegieerde add-ons."
 
 #: src/messages/manifestjson.js:322
 msgid "A content script defined in the manifest could not be found."
@@ -585,7 +585,7 @@ msgstr "In het manifest gedefinieerd bibliotheekbestand kon niet worden gevonden
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "Het manifestveld ‘%(fieldName)s’ wordt alleen gebruikt voor geprivilegieerde en tijdelijk geïnstalleerde extensies."
 
 #: src/messages/manifestjson.js:361
 msgid "The manifest contains multiple dictionaries."
@@ -621,7 +621,7 @@ msgstr "Deze add-on bevat verboden inhoud."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "Raadpleeg https://github.com/mozilla-extensions/xpi-manifest voor meer informatie over geprivilegieerde extensies en ondertekening."
 
 #: src/messages/manifestjson.js:403
 msgid "Icons must be square."
@@ -637,7 +637,7 @@ msgstr "De grootte van het pictogram komt niet overeen met het manifest."
 
 #: src/messages/manifestjson.js:417
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "Verwacht pictogram bij ‘%(path)s’ is %(expected)d pixels breed, maar was %(actual)d."
 
 #: src/messages/manifestjson.js:430
 msgid "Corrupt image file"
@@ -677,7 +677,7 @@ msgstr "Thema-afbeeldingsbestand heeft een niet-ondersteunde bestandsextensie"
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "‘%(fieldName)s’ wordt niet ondersteund in manifestversies %(versionRange)s."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
@@ -693,7 +693,7 @@ msgstr "Thema-afbeeldingsbestand op ‘%(path)s’ heeft het niet-ondersteunde m
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "‘%(fieldName)s’ wordt niet ondersteund."
 
 #: src/messages/manifestjson.js:520
 msgid "Theme image file mime type does not match its file extension"
@@ -709,7 +709,7 @@ msgstr "De ‘default_locale’ mist lokalisaties."
 
 #: src/messages/manifestjson.js:538
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "De waarde ‘default_locale’ is opgegeven in het manifest, maar er bestaat geen overeenkomende ‘messages.json’ in de map ‘_locales’. Zie: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:546
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -717,7 +717,7 @@ msgstr "De ‘default_locale’ ontbreekt, maar ‘_locales’ bestaat."
 
 #: src/messages/manifestjson.js:547
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "De waarde ‘default_locale’ wordt niet opgegeven in het manifest, maar er bestaat een map ‘_locales’. Zie: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:555
 msgid "Unsupported image extension"
@@ -734,6 +734,8 @@ msgstr "Eigenschap ‘applications’ wordt overschreven door de eigenschap ‘b
 #: src/messages/manifestjson.js:567
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
 msgstr ""
+"De eigenschap ‘applications’ wordt genegeerd, omdat deze wordt vervangen door de eigenschap ‘browser_specific_settings’ die ook in uw manifest is gedefinieerd. Overweeg om toepassingen te "
+"verwijderen."
 
 #: src/messages/manifestjson.js:577
 msgid "Empty language directory"
@@ -749,7 +751,7 @@ msgstr "Manifestsleutel niet ondersteund door de opgegeven minimale Firefox-vers
 
 #: src/messages/manifestjson.js:599 src/messages/manifestjson.js:621
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "‘strict_min_version’ vereist Firefox %(minVersion)s, dat werd uitgebracht voordat versie %(versionAdded)s ondersteuning voor ‘%(key)s’ introduceerde."
 
 #: src/messages/manifestjson.js:617
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -761,11 +763,11 @@ msgstr "Manifestsleutel niet ondersteund door de opgegeven minimale Firefox voor
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: geprivilegieerde manifestvelden zijn alleen toegestaan in geprivilegieerde extensies."
 
 #: src/messages/manifestjson.js:643 src/messages/manifestjson.js:665
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "‘strict_min_version’ vereist Firefox voor Android %(minVersion)s, dat werd uitgebracht voordat versie %(versionAdded)s ondersteuning voor ‘%(key)s’ introduceerde."
 
 #: src/messages/manifestjson.js:661
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -781,11 +783,11 @@ msgstr "Koppelingen die verwijzen naar ‘addons.mozilla.org’ mogen niet voor 
 
 #: src/messages/manifestjson.js:689
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "De machtiging ‘%(permission)s’ vereist dat ‘strict_min_version’ is ingesteld op ‘%(minFirefoxVersion)s’ of hoger"
 
 #: src/messages/manifestjson.js:694
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
-msgstr ""
+msgstr "De machtiging ‘%(permission)s’ vereist dat ‘strict_min_version’ is ingesteld op ‘%(minFirefoxVersion)s’ of hoger. Werk uw manifest.json-versie bij om een minimale Firefox-versie op te geven."
 
 #: src/messages/manifestjson.js:706
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -797,23 +799,23 @@ msgstr "Zie https://mzl.la/3PLZYdo voor meer informatie."
 
 #: src/messages/manifestjson.js:715
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr ""
+msgstr "%(instancePath)s: geprivilegieerde extensies moeten geprivilegieerde machtigingen declareren."
 
 #: src/messages/manifestjson.js:726
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr ""
+msgstr "Deze extensie declareert geen geprivilegieerde machtiging. Het hoeft niet te worden ondertekend met het geprivilegieerde certificaat. Upload het rechtstreeks naar https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:739
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: de machtiging ‘mozillaAddons’ is vereist voor geprivilegieerde extensies."
 
 #: src/messages/manifestjson.js:742
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s: de machtiging ‘mozillaAddons’ is vereist voor extensies die geprivilegieerde manifestvelden bevatten."
 
 #: src/messages/manifestjson.js:755
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "Deze extensie bevat niet de machtiging ‘mozillaAddons’, die vereist is voor geprivilegieerde extensies."
 
 #: src/messages/manifestjson.js:765
 msgid "Cannot use actions in hidden add-ons."
@@ -821,7 +823,7 @@ msgstr "Acties in verborgen add-ons gebruiken is niet mogelijk."
 
 #: src/messages/manifestjson.js:766
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "De eigenschappen hidden en browser_action/page_action (of action in Manifest Version 3 en hoger) sluiten elkaar wederzijds uit."
 
 #: src/messages/manifestjson.js:774
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
@@ -829,25 +831,27 @@ msgstr "Gebruik ‘browser_specific_settings’ in plaats van ‘applications’
 
 #: src/messages/manifestjson.js:775
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "De eigenschap ‘applications’ in het manifest is verouderd en wordt niet langer geaccepteerd in manifestversie 3 en hoger."
 
 #: src/messages/manifestjson.js:783
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "‘applications’ is niet langer toegestaan in manifestversie 3 en hoger."
 
 #: src/messages/manifestjson.js:785
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "De eigenschap ‘applications’ in het manifest is niet langer toegestaan in manifestversie 3 en hoger. Gebruik in plaats daarvan ‘browser_specific_settings’."
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "De versiestring moet worden vereenvoudigd, omdat deze niet compatibel is met manifestversie 3 en hoger."
 
 #: src/messages/manifestjson.js:795
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"De versie moet een string zijn met 1 tot 4 getallen, gescheiden door punten. Elk getal moet uit maximaal 9 cijfers bestaan en voorloopnullen zijn niet langer toegestaan. Letters zijn ook niet meer "
+"toegestaan. Zie https://mzl.la/3h3mCRu (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
@@ -858,14 +862,16 @@ msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
 "https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"De versie moet een string zijn met 1 tot 4 getallen, gescheiden door punten. Elk getal moet uit maximaal 9 cijfers bestaan en voorloopnullen zijn niet toegestaan. Letters zijn niet meer toegestaan. "
+"Zie https://mzl.la/3h3mCRu (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "/%(fieldName)s: ‘%(permissionName)s’ wordt niet ondersteund in manifestversies %(versionRange)s."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
-msgstr ""
+msgstr "/%(fieldName)s: ‘%(permissionName)s’ wordt niet ondersteund."
 
 #~ msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
 #~ msgstr "Ongeldige installatieoorsprong. Een geldige oorsprong heeft - alleen - een schema, hostnaam en optionele poort."
