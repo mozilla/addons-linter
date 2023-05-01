@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-04-27 11:17+0000\n"
-"PO-Revision-Date: 2023-04-30 21:55+0000\n"
+"PO-Revision-Date: 2023-05-01 01:27+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -690,7 +690,7 @@ msgstr "Arquivo de imagem de tema em \"%(path)s\" tem o tipo mime não suportado
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "\"%(fieldName)s\" não é suportado."
 
 #: src/messages/manifestjson.js:520
 msgid "Theme image file mime type does not match its file extension"
@@ -706,7 +706,7 @@ msgstr "Falta idiomas no \"default_locale\"."
 
 #: src/messages/manifestjson.js:538
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "O valor \"default_locale\" é especificado no manifesto, mas não existe nenhum \"messages.json\" correspondente no diretório \"_locales\". Consulte https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:546
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -714,7 +714,7 @@ msgstr "Está faltando \"default_locale\" mas \"_locales\" existe."
 
 #: src/messages/manifestjson.js:547
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "O valor \"default_locale\" não é especificado no manifesto, mas existe um diretório \"_locales\". Consulte https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:555
 msgid "Unsupported image extension"
