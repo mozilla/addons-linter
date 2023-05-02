@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-27 11:17+0000\n"
+"POT-Creation-Date: 2023-05-02 08:45+0000\n"
 "PO-Revision-Date: 2023-04-27 16:37+0000\n"
 "Last-Translator: Itiel <itiel_yn8@walla.com>\n"
 "Language-Team: none\n"
@@ -44,9 +44,13 @@ msgstr "עמודה"
 
 #: src/linter.js:73
 msgid ""
-"Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
-"%(maxManifestVersion)s)."
-msgstr "התבקש טווח גרסת manifest לא חוקי: ‎--min-manifest-version (כרגע מוגדר כ־%(minManifestVersion)s) לא צריך להיות גדול מ־‎--max-manifest-version (כרגע מוגדר כ־%(maxManifestVersion)s)."
+"Invalid manifest version range requested: --min-manifest-version (currently "
+"set to %(minManifestVersion)s) should not be greater than --max-manifest-"
+"version (currently set to %(maxManifestVersion)s)."
+msgstr ""
+"התבקש טווח גרסת manifest לא חוקי: ‎--min-manifest-version (כרגע מוגדר "
+"כ־%(minManifestVersion)s) לא צריך להיות גדול מ־‎--max-manifest-version (כרגע "
+"מוגדר כ־%(maxManifestVersion)s)."
 
 #: src/messages/css.js:13
 msgid "Invalid nesting of selectors found"
@@ -61,8 +65,10 @@ msgid "A CSS syntax error was encountered"
 msgstr "התגלתה שגיאת תחביר CSS"
 
 #: src/messages/css.js:7
-msgid "An error was found in the CSS file being processed as a result further processing of that file is not possible"
-msgstr "נמצאה שגיאה בקובץ ה־CSS המעובד. כתוצאה מכך, עיבוד נוסף של קובץ זה אינו אפשרי"
+msgid ""
+"An error was found in the CSS file being processed. As a result, further "
+"processing of that file is not possible"
+msgstr ""
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -77,37 +83,53 @@ msgid "Remote scripts are not allowed as per the Add-on Policies."
 msgstr "תסריטים מרוחקים אסורים לפי מדיניות התוספת."
 
 #: src/messages/html.js:13
-msgid "Please include all scripts in the add-on. For more information, refer to https://mzl.la/2uEOkYp."
-msgstr "נא לכלול את כל התסריטים בתוספת. למידע נוסף, יש לעיין בכתובת https://mzl.la/2uEOkYp."
+msgid ""
+"Please include all scripts in the add-on. For more information, refer to "
+"https://mzl.la/2uEOkYp."
+msgstr ""
+"נא לכלול את כל התסריטים בתוספת. למידע נוסף, יש לעיין בכתובת https://mzl."
+"la/2uEOkYp."
 
 #: src/messages/html.js:5
 msgid "Inline scripts blocked by default"
 msgstr "תסריטים פנימיים חסומים כבררת מחדל"
 
 #: src/messages/html.js:6
-msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
-msgstr "כללי CSP ברירת מחדל מונעים הפעלת JavaScript מוטבע (https://mzl.la/2pn32nd)."
+msgid ""
+"Default CSP rules prevent inline JavaScript from running (https://mzl."
+"la/2pn32nd)."
+msgstr ""
+"כללי CSP ברירת מחדל מונעים הפעלת JavaScript מוטבע (https://mzl.la/2pn32nd)."
 
 #: src/messages/javascript.js:100
 msgid "Unadvised 3rd-party JS library"
 msgstr "ספריית JS בלתי מומלצת מצד שלישי"
 
 #: src/messages/javascript.js:101
-msgid "Your add-on uses a JavaScript library we do not recommend. Read more: https://bit.ly/1TRIyZY"
-msgstr "התוספת שלך משתמשת בספריית JavaScript שאיננו ממליצים עליו. ניתן לקרוא עוד כאן: https://bit.ly/1TRIyZY"
+msgid ""
+"Your add-on uses a JavaScript library we do not recommend. Read more: "
+"https://bit.ly/1TRIyZY"
+msgstr ""
+"התוספת שלך משתמשת בספריית JavaScript שאיננו ממליצים עליו. ניתן לקרוא עוד "
+"כאן: https://bit.ly/1TRIyZY"
 
 #: src/messages/javascript.js:107
 msgid "Known JS library detected"
 msgstr "זוהתה ספריית JS מוכרת"
 
 #: src/messages/javascript.js:108
-msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
-msgstr "ספריות JavaScript אינן מומלצות לשימוש עבור תוספות פשוטות, אך הן מקובלות בדרך כלל."
+msgid ""
+"JavaScript libraries are discouraged for simple add-ons, but are generally "
+"accepted."
+msgstr ""
+"ספריות JavaScript אינן מומלצות לשימוש עבור תוספות פשוטות, אך הן מקובלות בדרך "
+"כלל."
 
 #: src/messages/javascript.js:116
 msgid ""
-"Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
-"degradation."
+"Due to both security and performance concerns, this may not be set using "
+"dynamic values which have not been adequately sanitized. This can lead to "
+"security issues or fairly serious performance degradation."
 msgstr ""
 
 #: src/messages/javascript.js:125
@@ -119,7 +141,9 @@ msgid "This API has not been implemented by Firefox."
 msgstr "ה־API הזה לא הוטמע על ידי Firefox."
 
 #: src/messages/javascript.js:132
-msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
 msgstr "‏״{{api}}״ הוסר מגרסה 3 של Manifest (מאפיין `manifest_version`)"
 
 #: src/messages/javascript.js:141
@@ -143,15 +167,18 @@ msgid "Content script file could not be found"
 msgstr "לא ניתן למצוא קובץ תסריט תוכן"
 
 #: src/messages/javascript.js:162
-msgid "\"$(api)s\" can cause issues when loaded temporarily"
-msgstr "‏״$(api)s״ עלול לגרום לבעיות בעת טעינה זמנית"
+msgid "\"%(api)s\" can cause issues when loaded temporarily"
+msgstr ""
 
 #: src/messages/javascript.js:165
 msgid ""
-"This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
-"more."
+"This API can cause issues when loaded temporarily using about:debugging in "
+"Firefox unless you specify \"browser_specific_settings.gecko.id\" in the "
+"manifest. Please see: https://mzl.la/2hizK4a for more."
 msgstr ""
-"ממשק API זה עלול לגרום לבעיות בעת טעינה זמנית באמצעות about:debugging ב־Firefox, אלא אם כן ״browser_specific_settings.gecko.id״ יצויין ב־manifest. נא לעיין ב־https://mzl.la/2hizK4a למידע נוסף."
+"ממשק API זה עלול לגרום לבעיות בעת טעינה זמנית באמצעות about:debugging "
+"ב־Firefox, אלא אם כן ״browser_specific_settings.gecko.id״ יצויין ב־manifest. "
+"נא לעיין ב־https://mzl.la/2hizK4a למידע נוסף."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -166,7 +193,8 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "‏{{api}} אינו נתמך ב־Firefox עבור Android בגרסה {{minVersion}}"
 
 #: src/messages/javascript.js:199
-msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
 msgstr "ה־API הזה אינו מיושם על־ידי גרסת Firefox עבור Android המינימלית הנתונה"
 
 #: src/messages/javascript.js:22
@@ -182,7 +210,10 @@ msgid "\"%(method)s\" called with a non-literal uri"
 msgstr ""
 
 #: src/messages/javascript.js:34
-msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
+msgid ""
+"Calling \"%(method)s\" with variable parameters can result in potential "
+"security vulnerabilities if the variable contains a remote URI. Consider "
+"using 'window.open' with the 'chrome=no' flag."
 msgstr ""
 
 #: src/messages/javascript.js:45
@@ -190,7 +221,9 @@ msgid "\"%(method)s\" called with non-local URI"
 msgstr ""
 
 #: src/messages/javascript.js:49
-msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
+msgid ""
+"Calling \"%(method)s\" with a non-local URI will result in the dialog being "
+"opened with chrome privileges."
 msgstr ""
 
 #: src/messages/javascript.js:5
@@ -199,26 +232,38 @@ msgstr "שגיאת תחביר JavaScript"
 
 #: src/messages/javascript.js:6
 msgid ""
-"There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
-"supported yet. The validation cannot continue on this file."
-msgstr "קיימת שגיאת תחביר של JavaScript בקוד שלך, שעשויה להיות קשורה לכמה תכונות JavaScript ניסיוניות שאינן חלק רשמי ממפרט השפה ולכן אינן נתמכות עדיין. האימות לא יכול להמשיך בקובץ זה."
+"There is a JavaScript syntax error in your code, which might be related to "
+"some experimental JavaScript features that aren't an official part of the "
+"language specification and therefore not supported yet. The validation "
+"cannot continue on this file."
+msgstr ""
+"קיימת שגיאת תחביר של JavaScript בקוד שלך, שעשויה להיות קשורה לכמה תכונות "
+"JavaScript ניסיוניות שאינן חלק רשמי ממפרט השפה ולכן אינן נתמכות עדיין. "
+"האימות לא יכול להמשיך בקובץ זה."
 
 #: src/messages/javascript.js:62
 msgid ""
-"Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
-"at all possible.'"
+"Evaluation of strings as code can lead to security vulnerabilities and "
+"performance issues, even in the most innocuous of circumstances. Please "
+"avoid using `eval` and the `Function` constructor when at all possible."
 msgstr ""
 
 #: src/messages/javascript.js:71
-msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr "יש לקרוא לפונקציות setTimeout, ‏setInterval ו־execScript רק עם ביטויי פונקציה כארגומנט הראשון שלהם"
+msgid ""
+"setTimeout, setInterval and execScript functions should be called only with "
+"function expressions as their first argument"
+msgstr ""
+"יש לקרוא לפונקציות setTimeout, ‏setInterval ו־execScript רק עם ביטויי פונקציה "
+"כארגומנט הראשון שלהם"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
 msgstr "משתנה גלובלי בלתי צפוי הועבר כארגומנט"
 
 #: src/messages/javascript.js:79
-msgid "Passing a global as an argument is not recommended. Please make this a var instead."
+msgid ""
+"Passing a global as an argument is not recommended. Please make this a var "
+"instead."
 msgstr ""
 
 #: src/messages/javascript.js:85
@@ -226,24 +271,37 @@ msgid "Use of document.write strongly discouraged."
 msgstr "מומלץ מאוד שלא להשתמש ב־document.write."
 
 #: src/messages/javascript.js:86
-msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
-msgstr "‏document.write ייכשל בנסיבות רבות בשימוש בהרחבות, ועלולות להיות לו השלכות אבטחה חמורות בשימוש לא נכון. לכן, אין להשתמש בו."
+msgid ""
+"document.write will fail in many circumstances when used in extensions, and "
+"has potentially severe security repercussions when used improperly. "
+"Therefore, it should not be used."
+msgstr ""
+"‏document.write ייכשל בנסיבות רבות בשימוש בהרחבות, ועלולות להיות לו השלכות "
+"אבטחה חמורות בשימוש לא נכון. לכן, אין להשתמש בו."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
 msgstr "ספריית JS חסומה מצד שלישי"
 
 #: src/messages/javascript.js:94
-msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr "התוספת שלך משתמשת בספריית JavaScript שאנו מחשיבים כבלתי בטוחה. ניתן לקרוא עוד כאן: https://bit.ly/1TRIyZY"
+msgid ""
+"Your add-on uses a JavaScript library we consider unsafe. Read more: https://"
+"bit.ly/1TRIyZY"
+msgstr ""
+"התוספת שלך משתמשת בספריית JavaScript שאנו מחשיבים כבלתי בטוחה. ניתן לקרוא "
+"עוד כאן: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
 msgstr "ה־JSON שלך מכיל מקטעי הערות."
 
 #: src/messages/json.js:12
-msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr "רק הערות שורה (הערות המתחילות ב־״//״) מותרות בקובצי JSON. נא להסיר תגובות בלוק (תגובות המתחילות ב־״‎/*‎״)"
+msgid ""
+"Only line comments (comments beginning with \"//\") are allowed in JSON "
+"files. Please remove block comments (comments beginning with \"/*\")"
+msgstr ""
+"רק הערות שורה (הערות המתחילות ב־״//״) מותרות בקובצי JSON. נא להסיר תגובות "
+"בלוק (תגובות המתחילות ב־״‎/*‎״)"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -266,16 +324,23 @@ msgid "Reserved filename found."
 msgstr "נמצא שם קובץ שמור."
 
 #: src/messages/layout.js:108
-msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr "קבצים ששמותיהם שמורים נמצאו בתוספת. נא להימנע משימוש בהם ולשנות את שמות הקבצים שלך."
+msgid ""
+"Files whose names are reserved have been found in the add-on. Please refrain "
+"from using them and rename your files."
+msgstr ""
+"קבצים ששמותיהם שמורים נמצאו בתוספת. נא להימנע משימוש בהם ולשנות את שמות "
+"הקבצים שלך."
 
 #: src/messages/layout.js:22
 msgid ""
-"The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
-"sure all entries are using '/' as the path separator."
+"The package is invalid. It may contain entries using invalid characters, as "
+"an example using '\\' as a path separator is not allowed in Firefox. Try to "
+"recreate your add-on package (ZIP) and make sure all entries are using '/' "
+"as the path separator."
 msgstr ""
-"החבילה לא חוקית. היא עשויה להכיל ערכים המשתמשים בתווים לא חוקיים, כדוגמה השימוש ב־’\\’ כמפריד נתיב אינו מורשה ב־Firefox. נא לנסות ליצור מחדש את חבילת התוספת שלך (ZIP) ולוודא שכל הערכים משתמשים ב־’/’"
-" כמפריד נתיבים."
+"החבילה לא חוקית. היא עשויה להכיל ערכים המשתמשים בתווים לא חוקיים, כדוגמה "
+"השימוש ב־’\\’ כמפריד נתיב אינו מורשה ב־Firefox. נא לנסות ליצור מחדש את חבילת "
+"התוספת שלך (ZIP) ולוודא שכל הערכים משתמשים ב־’/’ כמפריד נתיבים."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
@@ -287,9 +352,13 @@ msgstr "‏manifest.json לא נמצא"
 
 #: src/messages/layout.js:38
 msgid ""
-"No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
-"packaging."
-msgstr "לא נמצא קובץ manifest.json בשורש ההרחבה. קובץ החבילה חייב להיות ZIP של קובצי ההרחבה עצמם, לא של הספרייה המכילה. נא לעיין ב־https://mzl.la/2r2McKv למידע נוסף על אריזת חבילה."
+"No manifest.json was found at the root of the extension. The package file "
+"must be a ZIP of the extension's files themselves, not of the containing "
+"directory. See: https://mzl.la/2r2McKv for more on packaging."
+msgstr ""
+"לא נמצא קובץ manifest.json בשורש ההרחבה. קובץ החבילה חייב להיות ZIP של קובצי "
+"ההרחבה עצמם, לא של הספרייה המכילה. נא לעיין ב־https://mzl.la/2r2McKv למידע "
+"נוסף על אריזת חבילה."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
@@ -297,11 +366,15 @@ msgstr "הקובץ גדול מכדי לפענח."
 
 #: src/messages/layout.js:47
 msgid ""
-"This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
-"or splitting very large files into smaller ones."
+"This file is not binary and is too large to parse. Files larger than "
+"%(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists "
+"of data out of JavaScript files and into JSON files, or splitting very large "
+"files into smaller ones."
 msgstr ""
-"קובץ זה אינו בינארי והוא גדול מדי לניתוח. קבצים הגדולים מ־%(maxFileSizeToParseMB)sMB לא ינותחו. יש לשקול להעביר רשימות גדולות של נתונים מקובצי JavaScript אל קובצי JSON, או לפצל קבצים גדולים מאוד "
-"לקטנים יותר."
+"קובץ זה אינו בינארי והוא גדול מדי לניתוח. קבצים הגדולים "
+"מ־%(maxFileSizeToParseMB)sMB לא ינותחו. יש לשקול להעביר רשימות גדולות של "
+"נתונים מקובצי JavaScript אל קובצי JSON, או לפצל קבצים גדולים מאוד לקטנים "
+"יותר."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -309,8 +382,12 @@ msgstr "קובץ מוסתר סומן בדגל"
 
 #: src/messages/layout.js:58
 msgid ""
-"Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
-msgstr "קבצים נסתרים מסבכים את תהליך הסקירה ויכולים להכיל מידע רגיש על המערכת שיצרה את התוספת. נא לשנות את תהליך האריזה כך שהקבצים האלה לא יכללו."
+"Hidden files complicate the review process and can contain sensitive "
+"information about the system that generated the add-on. Please modify the "
+"packaging process so that these files aren't included."
+msgstr ""
+"קבצים נסתרים מסבכים את תהליך הסקירה ויכולים להכיל מידע רגיש על המערכת שיצרה "
+"את התוספת. נא לשנות את תהליך האריזה כך שהקבצים האלה לא יכללו."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -321,12 +398,18 @@ msgid "Flagged filename found"
 msgstr "נמצא שם קובץ שסומן בדגל"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
-msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
+msgid ""
+"Files were found that are either unnecessary or have been included "
+"unintentionally. They should be removed."
 msgstr "נמצאו קבצים שאינם נחוצים או שנכללו שלא במתכוון. יש להסיר אותם."
 
 #: src/messages/layout.js:7
-msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr "החבילה מכילה מספר ערכים עם אותו שם. נוהג זה נאסר. ניתן לנסות לחלץ ולכווץ מחדש את חבילת התוספת שלך ולנסות שוב."
+msgid ""
+"The package contains multiple entries with the same name. This practice has "
+"been banned. Try unzipping and re-zipping your add-on package and try again."
+msgstr ""
+"החבילה מכילה מספר ערכים עם אותו שם. נוהג זה נאסר. ניתן לנסות לחלץ ולכווץ "
+"מחדש את חבילת התוספת שלך ולנסות שוב."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
@@ -338,39 +421,57 @@ msgstr "נמצא סוג קובץ שסומן בדגל"
 
 #: src/messages/layout.js:81
 msgid ""
-"Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
-"https://bit.ly/review-policy for more information on the binary content review process."
+"Files whose names end with flagged extensions have been found in the add-on. "
+"The extension of these files are flagged because they usually identify "
+"binary components. Please see https://bit.ly/review-policy for more "
+"information on the binary content review process."
 msgstr ""
-"קבצים ששמותיהם מסתיימים בסיומות מסומנות נמצאו בתוספת. הסיומת של קבצים אלה מסומנת מכיוון שהם בדרך כלל מזהים רכיבים בינאריים. אנא לעיין ב־https://bit.ly/review-policy למידע נוסף על תהליך סקירת תוכן "
-"בינארי."
+"קבצים ששמותיהם מסתיימים בסיומות מסומנות נמצאו בתוספת. הסיומת של קבצים אלה "
+"מסומנת מכיוון שהם בדרך כלל מזהים רכיבים בינאריים. אנא לעיין ב־https://bit.ly/"
+"review-policy למידע נוסף על תהליך סקירת תוכן בינארי."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
 msgstr "החבילה כבר נחתמה"
 
 #: src/messages/layout.js:91
-msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr "תוספות שכבר חתומות ייחתמו מחדש כשיפורסמו ב־AMO. פעולה זו תחליף את כל החתימות הקיימות בתוספת."
+msgid ""
+"Add-ons which are already signed will be re-signed when published on AMO. "
+"This will replace any existing signatures on the add-on."
+msgstr ""
+"תוספות שכבר חתומות ייחתמו מחדש כשיפורסמו ב־AMO. פעולה זו תחליף את כל החתימות "
+"הקיימות בתוספת."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "התוספות של Firefox אינן מורשות להריץ כורי מטבעות."
 
 #: src/messages/layout.js:99
-msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr "אנו לא מאפשרים להפעיל תסריטים כורי מטבעות בתוך WebExtensions. נא לעיין ב־https://github.com/mozilla/addons-linter/issues/1643 לפרטים נוספים."
+msgid ""
+"We do not allow coinminer scripts to be run inside WebExtensions. See "
+"https://github.com/mozilla/addons-linter/issues/1643 for more details."
+msgstr ""
+"אנו לא מאפשרים להפעיל תסריטים כורי מטבעות בתוך WebExtensions. נא לעיין "
+"ב־https://github.com/mozilla/addons-linter/issues/1643 לפרטים נוספים."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
 msgstr "שם המחרוזת שמור להודעה שהוגדרה מראש"
 
 #: src/messages/locale-messagesjson.js:14
-msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr "שמות מחרוזות שמתחילים ב־@@ מתורגמים לקבועים מובנים (https://mzl.la/2BL9ZjE)."
+msgid ""
+"String names starting with @@ get translated to built-in constants (https://"
+"mzl.la/2BL9ZjE)."
+msgstr ""
+"שמות מחרוזות שמתחילים ב־@@ מתורגמים לקבועים מובנים (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
-msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr "שם מחרוזת צריך להכיל רק תווים של מספרים ואותיות, _ ו־@ (https://mzl.la/2Eztyi5)."
+msgid ""
+"String name should only contain alpha-numeric characters, _ and @ (https://"
+"mzl.la/2Eztyi5)."
+msgstr ""
+"שם מחרוזת צריך להכיל רק תווים של מספרים ואותיות, _ ו־@ (https://mzl."
+"la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -385,15 +486,21 @@ msgid "Placeholder name contains invalid characters"
 msgstr "שם ממלא המקום מכיל תווים בלתי תקינים"
 
 #: src/messages/locale-messagesjson.js:34
-msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr "שם מציין מיקום צריך להכיל רק תווים של מספרים ואותיות, _ ו־@ (https://mzl.la/2ExbYez)."
+msgid ""
+"Placeholder name should only contain alpha-numeric characters, _ and @ "
+"(https://mzl.la/2ExbYez)."
+msgstr ""
+"שם מציין מיקום צריך להכיל רק תווים של מספרים ואותיות, _ ו־@ (https://mzl."
+"la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
 msgstr "לממלא המקום חסר המאפיין content"
 
 #: src/messages/locale-messagesjson.js:41
-msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
+msgid ""
+"A placeholder needs a content property defining the replacement of it "
+"(https://mzl.la/2DT1MQd)"
 msgstr "מציין מיקום צריך מאפיין תוכן המגדיר את החלפתו (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
@@ -401,14 +508,16 @@ msgid "Translation string is missing the message property"
 msgstr "למחרוזת התרגום חסר המאפיין message"
 
 #: src/messages/locale-messagesjson.js:6
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
 msgstr "לא הוגדר מאפיין „message” למחרוזת (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10
 msgid "The field is required."
 msgstr "שדה זה נחוץ."
 
-#: src/messages/manifestjson.js:102 src/messages/manifestjson.js:110 src/messages/manifestjson.js:118
+#: src/messages/manifestjson.js:102 src/messages/manifestjson.js:110
+#: src/messages/manifestjson.js:118
 msgid "The permission type is unsupported."
 msgstr "סוג ההרשאה אינו נתמך."
 
@@ -433,7 +542,9 @@ msgid "Unknown permission."
 msgstr "הרשאה לא ידועה."
 
 #: src/messages/manifestjson.js:138
-msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
+msgid ""
+"%(instancePath)s: the following privileged permissions are only allowed in "
+"privileged extensions: %(privilegedPermissions)s."
 msgstr ""
 
 #: src/messages/manifestjson.js:165
@@ -445,7 +556,9 @@ msgid "Invalid install origin."
 msgstr "מקור התקנה לא חוקי."
 
 #: src/messages/manifestjson.js:175
-msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
+msgid ""
+"Invalid install origin. A valid origin has - only - a scheme, hostname and "
+"optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
 msgstr ""
 
 #: src/messages/manifestjson.js:183
@@ -469,11 +582,15 @@ msgid "A custom \"%(property)s\" needs additional review."
 msgstr "‏״%(property)s״ מותאם אישית זקוק לסקירה נוספת."
 
 #: src/messages/manifestjson.js:215
-msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
+msgid ""
+"\"%(property)s\" allows 'eval', which has strong security and performance "
+"implications."
 msgstr "‏״%(property)s״ מאפשר 'eval', שיש לו השלכות אבטחה וביצועים חזקות."
 
 #: src/messages/manifestjson.js:219
-msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
+msgid ""
+"In most cases the same result can be achieved differently, therefore it is "
+"generally prohibited"
 msgstr "ברוב המקרים ניתן להגיע לאותה תוצאה בצורה שונה, ולכן היא אסורה בדרך כלל"
 
 #: src/messages/manifestjson.js:227
@@ -489,24 +606,38 @@ msgid "\"update_url\" is not allowed."
 msgstr "אסור להשתמש ב־„update_url”."
 
 #: src/messages/manifestjson.js:237
-msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr "‏״applications.gecko.update_url״ או ״browser_specific_settings.gecko.update_url״ אינם מותרים עבור תוספות המתארחות ב־Mozilla."
+msgid ""
+"\"applications.gecko.update_url\" or \"browser_specific_settings.gecko."
+"update_url\" are not allowed for Mozilla-hosted add-ons."
+msgstr ""
+"‏״applications.gecko.update_url״ או ״browser_specific_settings.gecko."
+"update_url״ אינם מותרים עבור תוספות המתארחות ב־Mozilla."
 
 #: src/messages/manifestjson.js:246
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "המאפיין „update_url” אינו בשימוש ב־Firefox."
 
 #: src/messages/manifestjson.js:247
-msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
-msgstr "ה־״update_url״ אינו בשימוש על־ידי Firefox בשורש של קובץ manifest; התוספת שלך תעודכן דרך אתר התוספות ולא דרך ה־״update_url״ שלך. נא לעיין ב־https://mzl.la/25zqk4O"
+msgid ""
+"The \"update_url\" is not used by Firefox in the root of a manifest; your "
+"add-on will be updated via the Add-ons site and not your \"update_url\". "
+"See: https://mzl.la/25zqk4O"
+msgstr ""
+"ה־״update_url״ אינו בשימוש על־ידי Firefox בשורש של קובץ manifest; התוספת שלך "
+"תעודכן דרך אתר התוספות ולא דרך ה־״update_url״ שלך. נא לעיין ב־https://mzl."
+"la/25zqk4O"
 
 #: src/messages/manifestjson.js:255
 msgid "\"strict_max_version\" not required."
 msgstr "„strict_max_version” לא נחוץ."
 
 #: src/messages/manifestjson.js:256
-msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr "אין להשתמש ב־״strict_max_version״ אלא אם התוספת צפויה לא לעבוד עם גרסאות עתידיות של Firefox."
+msgid ""
+"\"strict_max_version\" shouldn't be used unless the add-on is expected not "
+"to work with future versions of Firefox."
+msgstr ""
+"אין להשתמש ב־״strict_max_version״ אלא אם התוספת צפויה לא לעבוד עם גרסאות "
+"עתידיות של Firefox."
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
@@ -557,11 +688,14 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr "לא ניתן למצוא קובץ תסריט תוכן."
 
 #: src/messages/manifestjson.js:328
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:331
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:345
@@ -571,11 +705,14 @@ msgstr "לא ניתן למצוא קובץ תסריט תוכן."
 
 #: src/messages/manifestjson.js:349
 #, fuzzy
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "לא ניתן למצוא את עמוד הרקע ב־„%(path)s”."
 
 #: src/messages/manifestjson.js:35
-msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
+msgid ""
+"\"%(fieldName)s\" manifest field is only used for privileged and temporarily "
+"installed extensions."
 msgstr ""
 
 #: src/messages/manifestjson.js:361
@@ -583,7 +720,8 @@ msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
 #: src/messages/manifestjson.js:362
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
 #: src/messages/manifestjson.js:371
@@ -611,7 +749,9 @@ msgid "This add-on contains forbidden content."
 msgstr "תוספת זו מכילה תוכן אסור."
 
 #: src/messages/manifestjson.js:4
-msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
+msgid ""
+"Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn "
+"more about privileged extensions and signing."
 msgstr ""
 
 #: src/messages/manifestjson.js:403
@@ -627,8 +767,12 @@ msgid "The size of the icon does not match the manifest."
 msgstr "גודל הסמל לא תואם את ה־manifest."
 
 #: src/messages/manifestjson.js:417
-msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr "היה צפוי שהסמל ב־״%(path)s״ יהיה ברוחב של %(expected)d פיקסלים, אך בפועל היה %(actual)d."
+msgid ""
+"Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was "
+"%(actual)d."
+msgstr ""
+"היה צפוי שהסמל ב־״%(path)s״ יהיה ברוחב של %(expected)d פיקסלים, אך בפועל היה "
+"%(actual)d."
 
 #: src/messages/manifestjson.js:430
 msgid "Corrupt image file"
@@ -667,7 +811,8 @@ msgid "Theme image file has an unsupported file extension"
 msgstr "קובץ תמונת ערכת הנושא בעל סיומת קובץ שאינה נתמכת"
 
 #: src/messages/manifestjson.js:49
-msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
+msgid ""
+"\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
 msgstr "‏״%(fieldName)s״ אינו נתמך בגרסאות ה־manifest‏ %(versionRange)s."
 
 #: src/messages/manifestjson.js:490
@@ -679,7 +824,8 @@ msgid "Theme image file has an unsupported mime type"
 msgstr "קובץ תמונת ערכת הנושא בעל סוג mime שאינו נתמך"
 
 #: src/messages/manifestjson.js:506
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr "קובץ תמונת ערכת הנושא ב־״%(path)s״ בעל סוג mime שאינו נתמך ״%(mime)s״"
 
 #: src/messages/manifestjson.js:51
@@ -691,24 +837,37 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr "קובץ תמונת ערכת הנושא בעל סוג mime שאינו תואם את סיומת הקובץ שלו"
 
 #: src/messages/manifestjson.js:524
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr "סיומת קובץ תמונת ערכת הנושא ב־״%(path)s״ אינה תואמת את סוג ה־mime האמיתי שלו ״%(mime)s״"
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
+msgstr ""
+"סיומת קובץ תמונת ערכת הנושא ב־״%(path)s״ אינה תואמת את סוג ה־mime האמיתי שלו "
+"״%(mime)s״"
 
 #: src/messages/manifestjson.js:537
 msgid "The \"default_locale\" is missing localizations."
 msgstr "ל־„default_locale” חסרים תרגומים."
 
 #: src/messages/manifestjson.js:538
-msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr "הערך ״default_locale״ מצוין ב־manifest, אך לא קיים ״messages.json״ תואם בספריית ״‎_locales״. נא לעיין ב־https://mzl.la/2hjcaEE"
+msgid ""
+"The \"default_locale\" value is specified in the manifest, but no matching "
+"\"messages.json\" in the \"_locales\" directory exists. See: https://mzl."
+"la/2hjcaEE"
+msgstr ""
+"הערך ״default_locale״ מצוין ב־manifest, אך לא קיים ״messages.json״ תואם "
+"בספריית ״‎_locales״. נא לעיין ב־https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:546
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "ה־„default_locale” חסר אבל ה־„‎_locales” קיים."
 
 #: src/messages/manifestjson.js:547
-msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr "הערך ״default_locale״ אינו מצוין ב־manifest, אך קיימת ספריית ״‎_locales״. נא לעיין ב־https://mzl.la/2hjcaEE"
+msgid ""
+"The \"default_locale\" value is not specifed in the manifest, but a "
+"\"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
+msgstr ""
+"הערך ״default_locale״ אינו מצוין ב־manifest, אך קיימת ספריית ״‎_locales״. נא "
+"לעיין ב־https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:555
 msgid "Unsupported image extension"
@@ -716,15 +875,24 @@ msgstr "סוג קובץ התמונה לא נתמך"
 
 #: src/messages/manifestjson.js:556
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
-msgstr "הסמלים אמורים להיות אחד מסוגי התמונות הבאים: JPG/JPEG‏, WebP‏, GIF‏, PNG או SVG."
+msgstr ""
+"הסמלים אמורים להיות אחד מסוגי התמונות הבאים: JPG/JPEG‏, WebP‏, GIF‏, PNG או SVG."
 
 #: src/messages/manifestjson.js:564
-msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property"
 msgstr "המאפיין ״applications״ נדרס על־ידי המאפיין ״browser_specific_settings״"
 
 #: src/messages/manifestjson.js:567
-msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
-msgstr "המאפיין ״applications״ יזכה להתעלמות מכיוון שהוא מוחלף על־ידי המאפיין ״browser_specific_settings״ שגם מוגדר ב־manifest שלך. כדאי לשקול להסיר את applications."
+msgid ""
+"The \"applications\" property is being ignored because it is superseded by "
+"the \"browser_specific_settings\" property which is also defined in your "
+"manifest. Consider removing applications."
+msgstr ""
+"המאפיין ״applications״ יזכה להתעלמות מכיוון שהוא מוחלף על־ידי המאפיין "
+"״browser_specific_settings״ שגם מוגדר ב־manifest שלך. כדאי לשקול להסיר את "
+"applications."
 
 #: src/messages/manifestjson.js:577
 msgid "Empty language directory"
@@ -739,27 +907,42 @@ msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr "מפתח ה־manifest אינו נתמך על־ידי גרסת Firefox המינימלית שצוינה"
 
 #: src/messages/manifestjson.js:599 src/messages/manifestjson.js:621
-msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr "‏״strict_min_version״ דורש שימוש ב־Firefox %(minVersion)s, אשר שוחרר לפני שגרסה %(versionAdded)s הציגה תמיכה עבור ״%(key)s״."
+msgid ""
+"\"strict_min_version\" requires Firefox %(minVersion)s, which was released "
+"before version %(versionAdded)s introduced support for \"%(key)s\"."
+msgstr ""
+"‏״strict_min_version״ דורש שימוש ב־Firefox %(minVersion)s, אשר שוחרר לפני "
+"שגרסה %(versionAdded)s הציגה תמיכה עבור ״%(key)s״."
 
 #: src/messages/manifestjson.js:617
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "ההרשאה אינה נתמכת על־ידי גרסת Firefox המינימלית שצוינה"
 
 #: src/messages/manifestjson.js:639
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr "מפתח ה־manifest אינו נתמך על־ידי גרסת Firefox עבור Android המינימלית שצוינה"
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
+msgstr ""
+"מפתח ה־manifest אינו נתמך על־ידי גרסת Firefox עבור Android המינימלית שצוינה"
 
 #: src/messages/manifestjson.js:64
-msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
+msgid ""
+"%(instancePath)s: privileged manifest fields are only allowed in privileged "
+"extensions."
 msgstr ""
 
 #: src/messages/manifestjson.js:643 src/messages/manifestjson.js:665
-msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr "‏״strict_min_version״ דורש שימוש ב־Firefox for Android %(minVersion)s, אשר שוחרר לפני שגרסה %(versionAdded)s הציגה תמיכה עבור ״%(key)s״."
+msgid ""
+"\"strict_min_version\" requires Firefox for Android %(minVersion)s, which "
+"was released before version %(versionAdded)s introduced support for "
+"\"%(key)s\"."
+msgstr ""
+"‏״strict_min_version״ דורש שימוש ב־Firefox for Android %(minVersion)s, אשר "
+"שוחרר לפני שגרסה %(versionAdded)s הציגה תמיכה עבור ״%(key)s״."
 
 #: src/messages/manifestjson.js:661
-msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
 msgstr "ההרשאה אינה נתמכת על־ידי גרסת Firefox עבור Android המינימלית שצוינה"
 
 #: src/messages/manifestjson.js:676
@@ -767,16 +950,29 @@ msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "קישור אל ״addons.mozilla.org״ אינו מורשה"
 
 #: src/messages/manifestjson.js:677
-msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr "קישורים המפנים אל \"addons.mozilla.org\" אינם מורשים לשימוש עבור דף הבית"
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
+"קישורים המפנים אל \"addons.mozilla.org\" אינם מורשים לשימוש עבור דף הבית"
 
 #: src/messages/manifestjson.js:689
-msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr "ההרשאה ״%(permission)s״ מחייבת את המאפיין של \"strict_min_version\" להיות מוגדר ל־״%(minFirefoxVersion)s״ ומעלה"
+msgid ""
+"The \"%(permission)s\" permission requires \"strict_min_version\" to be set "
+"to \"%(minFirefoxVersion)s\" or above"
+msgstr ""
+"ההרשאה ״%(permission)s״ מחייבת את המאפיין של \"strict_min_version\" להיות "
+"מוגדר ל־״%(minFirefoxVersion)s״ ומעלה"
 
 #: src/messages/manifestjson.js:694
-msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
-msgstr "ההרשאה ״%(permission)s״ מחייבת את המאפיין של \"strict_min_version\" להיות מוגדר ל־״%(minFirefoxVersion)s״ ומעלה. נא לעדכן את גרסת ה־manifest.json שלך כדי לציין גרסת Firefox מינימלית."
+msgid ""
+"The \"%(permission)s\" permission requires \"strict_min_version\" to be set "
+"to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json "
+"version to specify a minimum Firefox version."
+msgstr ""
+"ההרשאה ״%(permission)s״ מחייבת את המאפיין של \"strict_min_version\" להיות "
+"מוגדר ל־״%(minFirefoxVersion)s״ ומעלה. נא לעדכן את גרסת ה־manifest.json שלך "
+"כדי לציין גרסת Firefox מינימלית."
 
 #: src/messages/manifestjson.js:706
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -787,23 +983,34 @@ msgid "See https://mzl.la/3PLZYdo for more information."
 msgstr "יש לעיין ב־https://mzl.la/3PLZYdo למידע נוסף."
 
 #: src/messages/manifestjson.js:715
-msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
+msgid ""
+"%(instancePath)s: Privileged extensions should declare privileged "
+"permissions."
 msgstr ""
 
 #: src/messages/manifestjson.js:726
-msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
+msgid ""
+"This extension does not declare any privileged permission. It does not need "
+"to be signed with the privileged certificate. Please upload it directly to "
+"https://addons.mozilla.org/."
 msgstr ""
 
 #: src/messages/manifestjson.js:739
-msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
+msgid ""
+"%(instancePath)s: The \"mozillaAddons\" permission is required for "
+"privileged extensions."
 msgstr ""
 
 #: src/messages/manifestjson.js:742
-msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
+msgid ""
+"%(instancePath)s: The \"mozillaAddons\" permission is required for "
+"extensions that include privileged manifest fields."
 msgstr ""
 
 #: src/messages/manifestjson.js:755
-msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
+msgid ""
+"This extension does not include the \"mozillaAddons\" permission, which is "
+"required for privileged extensions."
 msgstr ""
 
 #: src/messages/manifestjson.js:765
@@ -811,7 +1018,9 @@ msgid "Cannot use actions in hidden add-ons."
 msgstr "לא ניתן להשתמש בפעולות בתוספות נסתרות."
 
 #: src/messages/manifestjson.js:766
-msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
+msgid ""
+"The hidden and browser_action/page_action (or action in Manifest Version 3 "
+"and above) properties are mutually exclusive."
 msgstr ""
 
 #: src/messages/manifestjson.js:774
@@ -819,28 +1028,42 @@ msgid "Use \"browser_specific_settings\" instead of \"applications\"."
 msgstr "יש להשתמש ב־\"browser_specific_settings\" במקום \"applications\"."
 
 #: src/messages/manifestjson.js:775
-msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr "המאפיין ״applications״ ב־manifest הוצא משימוש ולא יאושר עוד ב־Manifest גרסה 3 ומעלה."
+msgid ""
+"The \"applications\" property in the manifest is deprecated and will no "
+"longer be accepted in Manifest Version 3 and above."
+msgstr ""
+"המאפיין ״applications״ ב־manifest הוצא משימוש ולא יאושר עוד ב־Manifest גרסה "
+"3 ומעלה."
 
 #: src/messages/manifestjson.js:783
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
 msgstr "המאפיין ״applications״אינו מותר עוד ב־Manifest גרסה 3 ומעלה."
 
 #: src/messages/manifestjson.js:785
-msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr "המאפיין ״applications״ ב־manifest אינו מותר עוד ב־Manifest גרסה 3 ומעלה. יש להשתמש במקום זאת ב־״browser_specific_settings״."
+msgid ""
+"The \"applications\" property in the manifest is no longer allowed in "
+"Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
+msgstr ""
+"המאפיין ״applications״ ב־manifest אינו מותר עוד ב־Manifest גרסה 3 ומעלה. יש "
+"להשתמש במקום זאת ב־״browser_specific_settings״."
 
 #: src/messages/manifestjson.js:793
-msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr "יש לפשט את מחרוזת הגרסה מכיוון שהיא לא תהיה תואמת ל־Manifest גרסה 3 ומעלה."
+msgid ""
+"The version string should be simplified because it won't be compatible with "
+"Manifest Version 3 and above."
+msgstr ""
+"יש לפשט את מחרוזת הגרסה מכיוון שהיא לא תהיה תואמת ל־Manifest גרסה 3 ומעלה."
 
 #: src/messages/manifestjson.js:795
 msgid ""
-"The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
-"See https://mzl.la/3h3mCRu (MDN Docs) for more information."
+"The version should be a string with 1 to 4 numbers separated with dots. Each "
+"number should have up to 9 digits and leading zeros will no longer be "
+"allowed. Letters will no longer be allowed either. See https://mzl."
+"la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
-"הגרסה צריכה להיות מחרוזת עם 1 עד 4 מספרים מופרדים בנקודות. כל מספר צריך לכלול עד 9 ספרות, ואפסים מובילים לא יורשו עוד. גם אותיות לא יורשו יותר. יש לעיין ב־https://mzl.la/3h3mCRu ‏(MDN Docs) למידע "
-"נוסף."
+"הגרסה צריכה להיות מחרוזת עם 1 עד 4 מספרים מופרדים בנקודות. כל מספר צריך "
+"לכלול עד 9 ספרות, ואפסים מובילים לא יורשו עוד. גם אותיות לא יורשו יותר. יש "
+"לעיין ב־https://mzl.la/3h3mCRu ‏(MDN Docs) למידע נוסף."
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
@@ -848,19 +1071,34 @@ msgstr "יש לפשט את מחרוזת הגרסה."
 
 #: src/messages/manifestjson.js:805
 msgid ""
-"The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
-"https://mzl.la/3h3mCRu (MDN Docs) for more information."
+"The version should be a string with 1 to 4 numbers separated with dots. Each "
+"number should have up to 9 digits and leading zeros are not allowed. Letters "
+"are no longer allowed. See https://mzl.la/3h3mCRu (MDN Docs) for more "
+"information."
 msgstr ""
-"הגרסה צריכה להיות מחרוזת עם 1 עד 4 מספרים מופרדים בנקודות. כל מספר צריך לכלול עד 9 ספרות, ואפסים מובילים אינם מורשים. גם אותיות אינן מורשות עוד. יש לעיין ב־https://mzl.la/3h3mCRu ‏(MDN Docs) למידע "
-"נוסף."
+"הגרסה צריכה להיות מחרוזת עם 1 עד 4 מספרים מופרדים בנקודות. כל מספר צריך "
+"לכלול עד 9 ספרות, ואפסים מובילים אינם מורשים. גם אותיות אינן מורשות עוד. יש "
+"לעיין ב־https://mzl.la/3h3mCRu ‏(MDN Docs) למידע נוסף."
 
 #: src/messages/manifestjson.js:83
-msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
+msgid ""
+"/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions "
+"%(versionRange)s."
 msgstr ""
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 msgstr ""
+
+#~ msgid ""
+#~ "An error was found in the CSS file being processed as a result further "
+#~ "processing of that file is not possible"
+#~ msgstr ""
+#~ "נמצאה שגיאה בקובץ ה־CSS המעובד. כתוצאה מכך, עיבוד נוסף של קובץ זה אינו "
+#~ "אפשרי"
+
+#~ msgid "\"$(api)s\" can cause issues when loaded temporarily"
+#~ msgstr "‏״$(api)s״ עלול לגרום לבעיות בעת טעינה זמנית"
 
 #~ msgid "The \"version\" property must be a string."
 #~ msgstr "המאפיין „version” חייב להיות מחרוזת."
