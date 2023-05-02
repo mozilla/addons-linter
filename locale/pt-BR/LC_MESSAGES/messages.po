@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
@@ -478,7 +478,7 @@ msgstr "\"%(property)s\" permite execução remota de código em manifest.json"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr "Uma \"%(propriedade)s\" personalizada precisa de revisão adicional."
+msgstr "Uma \"%(property)s\" personalizada precisa de revisão adicional."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
@@ -526,7 +526,7 @@ msgstr "Não foi encontrada nenhuma propriedade \"%(property)s\" em manifest.jso
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
-msgstr "\"%(propriedade)s\" é obrigatório"
+msgstr "\"%(property)s\" é obrigatório"
 
 #: src/messages/manifestjson.js:279
 msgid "An icon defined in the manifest could not be found in the package."
