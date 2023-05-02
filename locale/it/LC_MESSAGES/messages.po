@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-02 09:16+0000\n"
-"Last-Translator: Google Translate <pontoon-gt@example.com>\n"
+"PO-Revision-Date: 2023-05-02 09:24+0000\n"
+"Last-Translator: Francesco Lodolo [:flod] <flod+pontoon@mozilla.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,7 @@ msgstr "È stato riscontrato un errore nella sintassi CSS"
 
 #: src/messages/css.js:7
 msgid "An error was found in the CSS file being processed. As a result, further processing of that file is not possible"
-msgstr "È stato rilevato un errore nel file CSS in elaborazione. Di conseguenza, l'ulteriore elaborazione di tale file non è possibile"
+msgstr "È stato rilevato un errore nel file CSS in elaborazione. Di conseguenza, non è possibile procedere ulteriormente con l’elaborazione."
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -148,7 +148,7 @@ msgstr "Impossibile trovare il file content script"
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr "\"%(api)s\" può causare problemi se caricato temporaneamente"
+msgstr "\"$(api)s\" può causare problemi se caricata temporaneamente"
 
 #: src/messages/javascript.js:165
 msgid ""
@@ -217,8 +217,8 @@ msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible."
 msgstr ""
-"La valutazione delle stringhe come codice può portare a vulnerabilità di sicurezza e problemi di prestazioni, anche nelle circostanze più innocue. Quando possibile, evita di usare `eval` e il "
-"costruttore `Function`."
+"La valutazione di stringhe come codice può portare a vulnerabilità di sicurezza e problemi di prestazioni, anche nelle circostanze più innocue. Quando possibile, evitare l’utilizzo di “eval“ e del "
+"costruttore “Function”."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
