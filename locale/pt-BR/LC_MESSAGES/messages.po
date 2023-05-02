@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-02 12:05+0000\n"
+"PO-Revision-Date: 2023-05-02 12:06+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -148,7 +148,7 @@ msgstr "O arquivo de script de conteúdo não pôde ser encontrado"
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "\"%(api)s\" pode causar problemas quando carregada temporariamente"
 
 #: src/messages/javascript.js:165
 msgid ""
@@ -215,6 +215,8 @@ msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible."
 msgstr ""
+"A execução de strings como código pode levar a vulnerabilidades de segurança e problemas de desempenho, mesmo nas circunstâncias mais inócuas. Evite usar `eval` e o construtor de `Function` sempre "
+"que possível."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
