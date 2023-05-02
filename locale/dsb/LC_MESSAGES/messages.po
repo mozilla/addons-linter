@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-27 11:17+0000\n"
+"POT-Creation-Date: 2023-05-02 08:45+0000\n"
 "PO-Revision-Date: 2022-05-27 12:56+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
@@ -64,7 +64,7 @@ msgstr "Syntaksowa zmólka CSS jo nastała"
 
 #: src/messages/css.js:7
 msgid ""
-"An error was found in the CSS file being processed as a result further "
+"An error was found in the CSS file being processed. As a result, further "
 "processing of that file is not possible"
 msgstr ""
 
@@ -159,7 +159,7 @@ msgid "Content script file could not be found"
 msgstr "Wopśimjeśowa skriptowa dataja njejo se namakała"
 
 #: src/messages/javascript.js:162
-msgid "\"$(api)s\" can cause issues when loaded temporarily"
+msgid "\"%(api)s\" can cause issues when loaded temporarily"
 msgstr ""
 
 #: src/messages/javascript.js:165
@@ -234,7 +234,7 @@ msgstr ""
 msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and "
 "performance issues, even in the most innocuous of circumstances. Please "
-"avoid using `eval` and the `Function` constructor when at all possible.'"
+"avoid using `eval` and the `Function` constructor when at all possible."
 msgstr ""
 
 #: src/messages/javascript.js:71
