@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-03 11:05+0000\n"
+"PO-Revision-Date: 2023-05-03 11:10+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fy_NL\n"
@@ -155,6 +155,8 @@ msgid ""
 "This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
 "more."
 msgstr ""
+"Dizze API kin problemen feroarsaakje by it tydlik laden mei about:debugging yn Firefox, útsein as jo ‘browser_specific_settings.gecko.id’ opjaan yn it manifest. Sjoch: https://mzl.la/2hizK4a foar "
+"mear ynformaasje."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -182,19 +184,21 @@ msgstr "Namme fan ynhâldsscriptbestân mei net leech wêze"
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "‘%(method)s’ oanroppen mei in net-letterlike URI"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
 msgstr ""
+"It oproppen fan ‘%(method)s’ mei fariabele parameters kin resultearje yn potinsjele befeiligingsproblemen as de fariabele in eksterne URI befettet. Tink oan it brûken fan ‘window.open’ mei de flagge"
+" ‘chrome=no’."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "‘%(method)s’ oanroppen mei in net-lokale URI"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "It oproppen fan ‘%(method)s’ mei in net-lokale URI sil resultearje yn it iepenjen fan it dialoochfinster mei chromeprivileezjes."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -205,6 +209,8 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
+"Der sit in JavaScript-syntaksisflater yn jo koade, dy’t mooglik relatearre is oan guon eksperimintele JavaScript-funksjes dy’t gjin offisjeel ûnderdiel binne fan de taalspesifikaasje en dus noch net"
+" stipe. De falidaasje kin net trochgean op dit bestân."
 
 #: src/messages/javascript.js:62
 msgid ""
