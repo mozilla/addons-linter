@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-03 19:54+0000\n"
+"PO-Revision-Date: 2023-05-03 19:57+0000\n"
 "Last-Translator: Andreas Pettersson <az@kth.se>\n"
 "Language-Team: none\n"
 "Language: sv_SE\n"
@@ -203,16 +203,20 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
+"Det finns ett JavaScript-syntaxfel i din kod, som kan vara relaterat till vissa experimentella JavaScript-funktioner som inte är en officiell del av språkspecifikationen och därför inte stöds ännu. "
+"Valideringen kan inte fortsätta på den här filen."
 
 #: src/messages/javascript.js:62
 msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible."
 msgstr ""
+"Utvärdering av strängar som kod kan leda till säkerhetsbrister och prestandaproblem, även under de mest ofarliga omständigheter. Undvik att använda \"eval\" och \"Function\"-konstruktorn när det är "
+"möjligt."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "Funktionerna setTimeout, setInterval och execScript ska endast anropas med funktionsuttryck som första argument"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
@@ -220,7 +224,7 @@ msgstr "Oväntad global skickad som ett argument"
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr ""
+msgstr "Att skicka en global som argument rekommenderas inte. Gör detta till en var istället."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
@@ -229,6 +233,7 @@ msgstr "Användning av document.write rekommenderas inte."
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
 msgstr ""
+"document.write kommer att misslyckas i många fall när det används i tillägg och har potentiellt allvarliga säkerhetsmässiga återverkningar när den används felaktigt. Därför bör den inte användas."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
@@ -236,7 +241,7 @@ msgstr "Förbjudet JS-bibliotek från tredje part"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Ditt tillägg använder ett JavaScript-bibliotek som vi anser vara osäkert. Läs mer: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
@@ -244,7 +249,7 @@ msgstr "Din JSON innehåller blockkommentarer."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "Endast radkommentarer (kommentarer som börjar med \"//\") är tillåtna i JSON-filer. Ta bort blockkommentarer (kommentarer som börjar med \"/*\")"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -252,7 +257,7 @@ msgstr "Dubble nycklar är inte tillåtna i JSON-filer."
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "Dubblettnyckel hittades i JSON-filen."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
@@ -268,13 +273,15 @@ msgstr "Reserverat filnamn hittades."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "Filer vars namn är reserverade har hittats i tillägget. Vänligen avstå från att använda dem och byt namn på dina filer."
 
 #: src/messages/layout.js:22
 msgid ""
 "The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
 "sure all entries are using '/' as the path separator."
 msgstr ""
+"Paketet är ogiltigt. Det kan innehålla poster med ogiltiga tecken, som ett exempel är det inte tillåtet att använda '\\' som sökvägsavgränsare i Firefox. Försök att återskapa ditt tilläggspaket "
+"(ZIP) och se till att alla poster använder '/' som sökvägsavgränsare."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
