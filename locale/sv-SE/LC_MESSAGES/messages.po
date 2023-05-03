@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-03 17:54+0000\n"
+"PO-Revision-Date: 2023-05-03 18:33+0000\n"
 "Last-Translator: Andreas Pettersson <az@kth.se>\n"
 "Language-Team: none\n"
 "Language: sv_SE\n"
@@ -62,7 +62,7 @@ msgstr "Ett CSS-syntaxfel uppstod"
 
 #: src/messages/css.js:7
 msgid "An error was found in the CSS file being processed. As a result, further processing of that file is not possible"
-msgstr ""
+msgstr "Ett fel hittades i CSS-filen som bearbetas. Som ett resultat är ytterligare bearbetning av den filen inte möjlig"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -86,7 +86,7 @@ msgstr "Inline-skript blockeras som standard"
 
 #: src/messages/html.js:6
 msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
-msgstr ""
+msgstr "Standard CSP-regler förhindrar att inline JavaScript körs (https://mzl.la/2pn32nd)."
 
 #: src/messages/javascript.js:100
 msgid "Unadvised 3rd-party JS library"
