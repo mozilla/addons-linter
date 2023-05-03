@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-03 18:33+0000\n"
+"PO-Revision-Date: 2023-05-03 19:54+0000\n"
 "Last-Translator: Andreas Pettersson <az@kth.se>\n"
 "Language-Team: none\n"
 "Language: sv_SE\n"
@@ -102,13 +102,15 @@ msgstr "Känt JS-bibliotek upptäckt"
 
 #: src/messages/javascript.js:108
 msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
-msgstr ""
+msgstr "JavaScript-bibliotek avråds för enkla tillägg, men är allmänt accepterade."
 
 #: src/messages/javascript.js:116
 msgid ""
 "Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
 "degradation."
 msgstr ""
+"På grund av både säkerhets- och prestandaproblem kanske detta inte ställs in med dynamiska värden som inte har sanerats tillräckligt. Detta kan leda till säkerhetsproblem eller ganska allvarlig "
+"prestandaförsämring."
 
 #: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
@@ -144,13 +146,13 @@ msgstr "Innehållsskriptfilen kunde inte hittas"
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "\"%(api)s\" kan orsaka problem när den laddas tillfälligt"
 
 #: src/messages/javascript.js:165
 msgid ""
 "This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
 "more."
-msgstr ""
+msgstr "Detta API kan orsaka problem när det laddas tillfälligt med about:debugging i Firefox om du inte anger \"browser_specific_settings.gecko.id\" i manifestet. Se: https://mzl.la/2hizK4a för mer."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -178,19 +180,19 @@ msgstr "Innehållsskriptfilnamnet ska inte vara tomt"
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "\"%(method)s\" anropas med en icke-bokstavlig uri"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
-msgstr ""
+msgstr "Att anropa \"%(method)s\" med variabla parametrar kan resultera i potentiella säkerhetsbrister om variabeln innehåller en fjärr-URI. Överväg att använda 'window.open' med flaggan 'chrome=no'."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "\"%(method)s\" anropas med icke-lokal URI"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "Att anropa \"%(method)s\" med en icke-lokal URI kommer att resultera i att dialogrutan öppnas med chrome-privilegier."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
