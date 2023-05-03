@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-03 14:05+0000\n"
+"PO-Revision-Date: 2023-05-03 15:35+0000\n"
 "Last-Translator: Melo46 <melo@carmu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -64,7 +64,7 @@ msgstr "Un error de syntaxe de CSS occurreva"
 
 #: src/messages/css.js:7
 msgid "An error was found in the CSS file being processed. As a result, further processing of that file is not possible"
-msgstr ""
+msgstr "Un error ha essite trovate in le file CSS a processar, in consequentia altere processo de ille file non es possibile."
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -148,7 +148,7 @@ msgstr "Impossibile trovar le file script de contento"
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "\"%(api)s\" pote causar problemas quando cargate temporarimente"
 
 #: src/messages/javascript.js:165
 msgid ""
@@ -217,10 +217,12 @@ msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible."
 msgstr ""
+"Le evalutation de catenas como codice pote ducer a vulnerabilitates de securitate e problemas de prestation, mesmo in le plus innocue de circumstantias. Evita de usar `eval` e le `Function` "
+"constructor quando possibile."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "Le functiones setTimeout, setInterval e execScript debe esser vocate solo con expressiones de function como lor prime argumento."
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
@@ -228,7 +230,7 @@ msgstr "Variabile global non expectate passate como argumento"
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr ""
+msgstr "Passar un global como argumento non es recommendate. In vice rende isto un var."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
@@ -237,6 +239,7 @@ msgstr "Le uso de document.write es fortemente discoragiate."
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
 msgstr ""
+"document.write fallera in multe circumstantias quando usate in extensiones, e ha potentialmente sever repercussiones de securitate quando usate incorrectemente. Dunque, illo non pote esser usate."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
@@ -252,7 +255,7 @@ msgstr "Tu JSON contine commentos in bloco."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "Solo commentos linear (initiante con \"//\") es permittite in le files JSON. Remove le commentos in bloco (inter \"/*\" e \"*/\")"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -260,7 +263,7 @@ msgstr "Le claves duplicate non es permittite in le files JSON."
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "Clave duplicate trovate in file JSON."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
@@ -276,13 +279,15 @@ msgstr "Nomine de file reservate trovate."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "Files cuje nomines es reservate ha essite trovate in le additivo. Abstine te de usar los e renomina tu files."
 
 #: src/messages/layout.js:22
 msgid ""
 "The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
 "sure all entries are using '/' as the path separator."
 msgstr ""
+"Le pacchetto non es valide. Illo pote continer entratas que usa characteres non valide, como exemplo '\\' como separator de route, que non es permittite in Firefox. Tenta de recrear tu pacchetto de "
+"additivo (ZIP) e verifica que tote le entratas usa '/' como separator de route."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
@@ -297,6 +302,8 @@ msgid ""
 "No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
 "packaging."
 msgstr ""
+"Nulle manifest.json ha essite trovate al radice del extension. Le file pacchetto debe esser un ZIP del mesme files del extension, non del directorio que los contine. Vide: https://mzl.la/2r2McKv pro"
+" altero re le pacchettos."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
@@ -307,6 +314,8 @@ msgid ""
 "This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
 "or splitting very large files into smaller ones."
 msgstr ""
+"Iste file non es binari e es troppo grande pro interpretar. Le files plus grande que %(maxFileSizeToParseMB)sMB non sera tractate. Considera de mover grande lista de datos foras de files JavaScript "
+"e in files JSON, o scinder le files multo grande in plus micre."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -316,6 +325,7 @@ msgstr "File celate signalate"
 msgid ""
 "Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
 msgstr ""
+"Le files occulte complica le processo de revision e pote continer datos sensibile re le systema que genera le additivo. Modifica le processo de impaccamento assi que iste files non es includite."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -327,11 +337,11 @@ msgstr "Nomine de file signalate trovate"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "Files ha essite trovate que es inutile, o ha essite includite involuntarimente. Illos deberea esser removite."
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "Le pacchetto contine plure entratas con le mesme nomine. Iste practica ha essite bannite. Tenta de-zippar e re-zippar le pacchetto de tu additivo e retenta."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
@@ -346,6 +356,8 @@ msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
+"Files cuje nomines fini con extensiones signalate ha essite trovate in le additivo. Le extension de iste files es signalate perque illos usualmente identifica componentes binari. Vide "
+"https://bit.ly/review-policy pro altere informationes sur le processo de revision de contentos binari."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
@@ -353,7 +365,7 @@ msgstr "Pacchetto ja signate"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "Le additivos jam signate sera re-signate quando publicate sur AMO. Isto reimplaciara ulle existente firmas sur le additivo."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -361,7 +373,7 @@ msgstr "Le additivos de Firefox non es autorisate a minar cryptomonetas."
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "Nos non permitte de facer functionar scripts excavatores de moneta intra extensiones web. Vider https://github.com/mozilla/addons-linter/issues/1643 pro altere detalios."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
