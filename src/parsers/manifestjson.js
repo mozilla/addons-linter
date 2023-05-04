@@ -488,9 +488,13 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (
       this.parsedJSON.browser_specific_settings &&
-      this.parsedJSON.browser_specific_settings.gecko
+      (this.parsedJSON.browser_specific_settings.gecko ||
+        this.parsedJSON.browser_specific_settings.gecko_android)
     ) {
-      this.parsedJSON.applications = this.parsedJSON.browser_specific_settings;
+      this.parsedJSON.applications = {
+        ...(this.parsedJSON.applications || {}),
+        ...this.parsedJSON.browser_specific_settings,
+      };
     }
 
     if (this.parsedJSON.content_security_policy != null) {
@@ -621,9 +625,8 @@ export default class ManifestJSONParser extends JSONParser {
 
     if (
       !this.isLanguagePack &&
-      this.parsedJSON.applications &&
-      this.parsedJSON.applications.gecko &&
-      this.parsedJSON.applications.gecko.strict_max_version
+      (this.parsedJSON.applications?.gecko?.strict_max_version ||
+        this.parsedJSON.applications?.gecko_android?.strict_max_version)
     ) {
       if (this.isDictionary) {
         // Dictionaries should not have a strict_max_version at all.
