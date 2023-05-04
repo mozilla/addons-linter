@@ -13,7 +13,7 @@
     "node >=16.0.0"
   ],
   "scripts": {
-    "build": "webpack --bail --stats-error-details true --color --config webpack.config.js",
+    "build": "node scripts/build-locales && webpack --bail --stats-error-details true --color --config webpack.config.js",
     "eslint": "eslint bin/* scripts/* .",
     "extract-locales": "webpack --bail --stats-error-details true --color --config webpack.l10n.config.babel.js",
     "test": "jest --runInBand --watch 'tests/.*'",

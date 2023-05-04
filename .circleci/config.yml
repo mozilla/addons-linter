@@ -48,9 +48,7 @@ references:
   make_production_build: &make_production_build
     run:
       name: build project
-      command: |
-        node scripts/build-locales
-        NODE_ENV=production npm run build
+      command: NODE_ENV=production npm run build
 
   restore_next_build_cache: &restore_next_build_cache
     restore_cache:
