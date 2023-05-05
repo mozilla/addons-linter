@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-05 09:43+0000\n"
+"PO-Revision-Date: 2023-05-05 11:09+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -180,7 +180,7 @@ msgstr "Το όνομα του αρχείου σεναρίου περιεχομ�
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "Το «%(method)s» κλήθηκε με μη κυριολεκτικό URI"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
@@ -188,7 +188,7 @@ msgstr ""
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "Το «%(method)s» κλήθηκε με μη τοπικό URI"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
@@ -236,7 +236,7 @@ msgstr "Απαγορευμένη βιβλιοθήκη JS τρίτου"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Το πρόσθετό σας χρησιμοποιεί μια βιβλιοθήκη JavaScript που δεν θεωρούμε ασφαλή. Διαβάστε περισσότερα: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
@@ -244,7 +244,7 @@ msgstr "Το JSON σας περιέχει σχόλια μπλοκ."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "Επιτρέπονται μόνο σχόλια γραμμής (σχόλια που ξεκινούν με «//») στα αρχεία JSON. Παρακαλούμε αφαιρέστε τα σχόλια πολλαπλών γραμμών (σχόλια που ξεκινούν με «/*»)"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -252,7 +252,7 @@ msgstr "Δεν επιτρέπονται διπλότυπα κλειδιά στα
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "Βρέθηκε διπλότυπο κλειδί στο αρχείο JSON."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
@@ -319,7 +319,7 @@ msgstr "Βρέθηκε επισημασμένο όνομα αρχείου"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "Βρέθηκαν αρχεία που είτε είναι περιττά είτε έχουν συμπεριληφθεί ακούσια. Θα πρέπει να αφαιρεθούν."
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
@@ -354,7 +354,7 @@ msgstr "Τα πρόσθετα του Firefox δεν επιτρέπεται να 
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "Δεν επιτρέπουμε την εκτέλεση σεναρίων coinminer εντός των WebExtensions. Δείτε το https://github.com/mozilla/addons-linter/issues/1643 για περισσότερες λεπτομέρειες."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -462,7 +462,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "Ένα προσαρμοσμένο «%(property)s» απαιτεί επιπρόσθετο έλεγχο."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
@@ -814,7 +814,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:783
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "Το «applications» δεν επιτρέπεται πλέον στην έκδοση Manifest 3 και νεότερες."
 
 #: src/messages/manifestjson.js:785
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
@@ -842,7 +842,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "/%(fieldName)s: το «%(permissionName)s» δεν υποστηρίζεται στις εκδόσεις manifest %(versionRange)s."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
