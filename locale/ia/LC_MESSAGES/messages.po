@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-04 23:06+0000\n"
+"PO-Revision-Date: 2023-05-05 09:04+0000\n"
 "Last-Translator: Melo46 <melo@carmu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -525,7 +525,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "Nulle proprietate \"%(property)s\" trovate in manifest.json"
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
@@ -557,7 +557,7 @@ msgstr "Le pagina de fundo non pote ser trovate al \"%(path)s\"."
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "\"%(fieldName)s\" es ignorate pro le additivos non-privilegiate."
 
 #: src/messages/manifestjson.js:322
 msgid "A content script defined in the manifest could not be found."
