@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-05 11:09+0000\n"
+"PO-Revision-Date: 2023-05-05 11:54+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -146,7 +146,7 @@ msgstr "Δεν ήταν δυνατή η εύρεση του αρχείου σε�
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "Το «%(api)s» μπορεί να προκαλέσει ζητήματα κατά την προσωρινή φόρτωση"
 
 #: src/messages/javascript.js:165
 msgid ""
@@ -366,7 +366,7 @@ msgstr ""
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "Το όνομα συμβολοσειράς πρέπει να περιέχει μόνο αλφαριθμητικούς χαρακτήρες, _ και @ (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -798,7 +798,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:765
 msgid "Cannot use actions in hidden add-ons."
-msgstr ""
+msgstr "Δεν είναι δυνατή η χρήση ενεργειών σε κρυφά πρόσθετα."
 
 #: src/messages/manifestjson.js:766
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
@@ -832,7 +832,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
-msgstr ""
+msgstr "Η συμβολοσειρά έκδοσης θα πρέπει να απλοποιηθεί."
 
 #: src/messages/manifestjson.js:805
 msgid ""
