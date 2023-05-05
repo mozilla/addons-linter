@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-05 16:31+0000\n"
+"PO-Revision-Date: 2023-05-05 22:04+0000\n"
 "Last-Translator: Melo46 <melo@carmu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -513,7 +513,7 @@ msgstr "Le proprietate \"update_url\" non es usate per Firefox."
 
 #: src/messages/manifestjson.js:247
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
-msgstr ""
+msgstr "Le \"update_url\" non es usate per Firefox in le radice de un manifesto; tu additivo sera actualisate via le sito Additivos e non via tu \"update_url\". Vider: https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:255
 msgid "\"strict_max_version\" not required."
@@ -521,7 +521,7 @@ msgstr "\"strict_max_version\" non obligatori."
 
 #: src/messages/manifestjson.js:256
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "\"strict_max_version\" non debe esser usate salvo que le additivo es expectate non laborar con le versiones futur de Firefox."
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
@@ -585,7 +585,7 @@ msgstr "Le file dictionario definite in le file manifesto non pote ser trovate i
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "Le campo manifesto \"%(fieldName)s\" es solo usate pro extensiones privilegiate e temporarimente installate."
 
 #: src/messages/manifestjson.js:361
 msgid "The manifest contains multiple dictionaries."
@@ -621,7 +621,7 @@ msgstr "Iste additivo ha contento prohibite."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "Referer se a https://github.com/mozilla-extensions/xpi-manifest pro saper plus re extensiones privilegiate e signaturas."
 
 #: src/messages/manifestjson.js:403
 msgid "Icons must be square."
