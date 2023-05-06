@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-06 15:43+0000\n"
+"PO-Revision-Date: 2023-05-06 15:52+0000\n"
 "Last-Translator: Andreas Pettersson <az@kth.se>\n"
 "Language-Team: none\n"
 "Language: sv_SE\n"
@@ -332,11 +332,11 @@ msgstr "Flaggat filnamn hittades"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "Filer hittades som antingen är onödiga eller som har inkluderats oavsiktligt. De bör tas bort."
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "Paketet innehåller flera poster med samma namn. Denna praxis har förbjudits. Försök att packa upp och zippa om ditt tilläggspaket och försök igen."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
@@ -351,6 +351,8 @@ msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
+"Filer vars namn slutar med flaggade tillägg har hittats i tillägget. Tillägget av dessa filer flaggas eftersom de vanligtvis identifierar binära komponenter. Se https://bit.ly/review-policy för mer "
+"information om processen för granskning av binärt innehåll."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
@@ -358,7 +360,7 @@ msgstr "Paket redan signerat"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "Tillägg som redan är signerade kommer att återsigneras när de publiceras på AMO. Detta kommer att ersätta alla befintliga signaturer för tillägget."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -366,7 +368,7 @@ msgstr "Firefox tillägg får inte köra coin-miners."
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "Vi tillåter inte att coinminer-skript körs inuti WebExtensions. Se https://github.com/mozilla/addons-linter/issues/1643 för mer information."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -394,7 +396,7 @@ msgstr "Namn på platshållare innehåller ogiltiga tecken"
 
 #: src/messages/locale-messagesjson.js:34
 msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr ""
+msgstr "Platshållarens namn bör endast innehålla alfanumeriska tecken, _ och @ (https://mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
@@ -402,7 +404,7 @@ msgstr "Platshållaren saknar innehållsegenskapen"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "En platshållare behöver en innehållsegenskap som definierar ersättningen av den (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
@@ -442,7 +444,7 @@ msgstr "Okänd behörighet."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s: följande privilegierade behörigheter är endast tillåtna i privilegierade tillägg: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -454,7 +456,7 @@ msgstr "Ogiltigt installationsursprung."
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
+msgstr "Ogiltigt installationsursprung. Ett giltigt ursprung har - endast - ett schema, värdnamn och valfri port. Se https://mzl.la/3TEbqbE (MDN Docs) för mer information."
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -470,19 +472,19 @@ msgstr "Fältet är ogiltigt."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "\"%(property)s\" tillåter fjärrkörning av kod i manifest.json"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "En anpassad \"%(property)s\" behöver ytterligare granskning."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "\"%(property)s\" tillåter \"eval\", vilket har starka säkerhets- och prestandaimplikationer."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "I de flesta fall kan samma resultat uppnås på olika sätt, därför är det generellt förbjudet"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string."
@@ -498,7 +500,7 @@ msgstr "\"update_url\" är inte tillåtet."
 
 #: src/messages/manifestjson.js:237
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "\"applications.gecko.update_url\" eller \"browser_specific_settings.gecko.update_url\" är inte tillåtna för tillägg på Mozilla."
 
 #: src/messages/manifestjson.js:246
 msgid "The \"update_url\" property is not used by Firefox."
@@ -506,7 +508,7 @@ msgstr "Egenskapen \"update_url\" används inte av Firefox."
 
 #: src/messages/manifestjson.js:247
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
-msgstr ""
+msgstr "\"update_url\" används inte av Firefox i roten av ett manifest; ditt tillägg kommer att uppdateras via tilläggswebbplatsen och inte din \"update_url\". Se: https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:255
 msgid "\"strict_max_version\" not required."
@@ -514,7 +516,7 @@ msgstr "\"strict_max_version\" krävs inte."
 
 #: src/messages/manifestjson.js:256
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "\"strict_max_version\" bör inte användas om inte tillägget ska sluta fungera med framtida versioner av Firefox."
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
@@ -578,7 +580,7 @@ msgstr "Ordbokfil definierad i manifestet kunde inte hittas på \"%(path)s\"."
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "Manifestfältet \"%(fieldName)s\" används endast för privilegierade och tillfälligt installerade tillägg."
 
 #: src/messages/manifestjson.js:361
 msgid "The manifest contains multiple dictionaries."
@@ -630,7 +632,7 @@ msgstr "Ikonens storlek matchar inte manifestet."
 
 #: src/messages/manifestjson.js:417
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "Förväntade ikonen vid \"%(path)s\" att vara %(expected)d pixlar bred men var %(actual)d."
 
 #: src/messages/manifestjson.js:430
 msgid "Corrupt image file"
@@ -702,7 +704,7 @@ msgstr "\"default_locale\" saknar lokaliseringar."
 
 #: src/messages/manifestjson.js:538
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "Värdet \"default_locale\" anges i manifestet, men det finns inga matchande \"messages.json\" i katalogen \"_locales\". Se: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:546
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -710,7 +712,7 @@ msgstr "\"default_locale\" saknas men \"_locales\" existerar."
 
 #: src/messages/manifestjson.js:547
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "Värdet \"default_locale\" är inte specificerat i manifestet, men det finns en \"_locales\"-katalog. Se: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:555
 msgid "Unsupported image extension"
@@ -726,7 +728,7 @@ msgstr "Egenskapen \"applications\" åsidosatt av egenskapen \"browser_specific_
 
 #: src/messages/manifestjson.js:567
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
-msgstr ""
+msgstr "Egenskapen \"applications\" ignoreras eftersom den ersätts av egenskapen \"browser_specific_settings\" som också definieras i ditt manifest. Överväg att ta bort applikationer."
 
 #: src/messages/manifestjson.js:577
 msgid "Empty language directory"
@@ -742,7 +744,7 @@ msgstr "Manifest-nyckel stöds inte av den angivna lägsta Firefox-versionen"
 
 #: src/messages/manifestjson.js:599 src/messages/manifestjson.js:621
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\" kräver Firefox %(minVersion)s, som släpptes innan version %(versionAdded)s introducerade stöd för \"%(key)s\"."
 
 #: src/messages/manifestjson.js:617
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -754,11 +756,11 @@ msgstr "Manifest-nyckel stöds inte av den angivna lägsta versionen av Firefox 
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: privilegierade manifestfält är endast tillåtna i privilegierade tillägg."
 
 #: src/messages/manifestjson.js:643 src/messages/manifestjson.js:665
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\" kräver Firefox för Android %(minVersion)s, som släpptes innan version %(versionAdded)s introducerade stöd för \"%(key)s\"."
 
 #: src/messages/manifestjson.js:661
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -774,11 +776,11 @@ msgstr "Länkar som leder till \"addons.mozilla.org\" är inte tillåtna att anv
 
 #: src/messages/manifestjson.js:689
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "Behörigheten \"%(permission)s\" kräver att \"strict_min_version\" är inställd på \"%(minFirefoxVersion)s\" eller högre"
 
 #: src/messages/manifestjson.js:694
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
-msgstr ""
+msgstr "Behörigheten \"%(permission)s\" kräver att \"strict_min_version\" är inställd på \"%(minFirefoxVersion)s\" eller högre. Uppdatera din manifest.json-version för att ange en minsta Firefox-version."
 
 #: src/messages/manifestjson.js:706
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -790,23 +792,23 @@ msgstr "Se https://mzl.la/3PLZYdo för mer information."
 
 #: src/messages/manifestjson.js:715
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr ""
+msgstr "%(instancePath)s: Privilegerade tillägg bör deklarera privilegierade behörigheter."
 
 #: src/messages/manifestjson.js:726
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr ""
+msgstr "Detta tillägg deklarerar inte någon privilegierad behörighet. Det behöver inte signeras med det privilegierade certifikatet. Ladda upp den direkt till https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:739
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: Behörigheten \"mozillaAddons\" krävs för privilegierade tillägg."
 
 #: src/messages/manifestjson.js:742
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s: Behörigheten \"mozillaAddons\" krävs för tillägg som inkluderar privilegierade manifestfält."
 
 #: src/messages/manifestjson.js:755
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "Det här tillägget inkluderar inte behörigheten \"mozillaAddons\", som krävs för privilegierade tillägg."
 
 #: src/messages/manifestjson.js:765
 msgid "Cannot use actions in hidden add-ons."
@@ -814,7 +816,7 @@ msgstr "Kan inte använda åtgärder i dolda tillägg."
 
 #: src/messages/manifestjson.js:766
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "Egenskaperna hidden och browser_action/page_action (eller action i Manifest version 3 och högre) utesluter varandra."
 
 #: src/messages/manifestjson.js:774
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
@@ -822,15 +824,15 @@ msgstr "Använd \"browser_specific_settings\" istället för \"applications\"."
 
 #: src/messages/manifestjson.js:775
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "Egenskapen \"apps\" i manifestet är föråldrad och kommer inte längre att accepteras i Manifest version 3 och senare."
 
 #: src/messages/manifestjson.js:783
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "\"applikationer\" är inte längre tillåtna i Manifest version 3 och högre."
 
 #: src/messages/manifestjson.js:785
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "Egenskapen \"apps\" i manifestet är inte längre tillåten i Manifest version 3 och senare. Använd \"browser_specific_settings\" istället."
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
@@ -841,6 +843,8 @@ msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Versionen ska vara en sträng med 1 till 4 nummer separerade med punkter. Varje nummer bör ha upp till 9 siffror och inledande nollor kommer inte längre att tillåtas. Bokstäver kommer inte heller att"
+" tillåtas längre. Se https://mzl.la/3h3mCRu (MDN Docs) för mer information."
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
@@ -851,6 +855,8 @@ msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
 "https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Versionen ska vara en sträng med 1 till 4 nummer separerade med punkter. Varje nummer bör ha upp till 9 siffror och inledande nollor är inte tillåtna. Bokstäver är inte längre tillåtna. Se "
+"https://mzl.la/3h3mCRu (MDN Docs) för mer information."
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
