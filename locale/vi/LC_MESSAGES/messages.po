@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-06 04:04+0000\n"
+"PO-Revision-Date: 2023-05-06 04:12+0000\n"
 "Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
@@ -205,16 +205,20 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
+"Có lỗi cú pháp JavaScript trong mã của bạn, có thể liên quan đến một số tính năng JavaScript thử nghiệm không phải là một phần chính thức của đặc tả ngôn ngữ và do đó chưa được hỗ trợ. Việc xác thực"
+" không thể tiếp tục trên tập tin này."
 
 #: src/messages/javascript.js:62
 msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible."
 msgstr ""
+"Việc đánh giá các chuỗi dưới dạng mã có thể dẫn đến các lỗ hổng bảo mật và các vấn đề về hiệu suất, ngay cả trong những trường hợp vô hại nhất. Vui lòng tránh sử dụng hàm tạo `eval` và `Function` "
+"khi có thể."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "Các hàm setTimeout, setInterval và execScript chỉ nên được gọi với các biểu thức hàm làm đối số đầu tiên của chúng"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
@@ -222,7 +226,7 @@ msgstr "Việc sử dụng biến toàn cục làm đối số không mong muố
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr ""
+msgstr "Không nên chuyển global làm đối số. Thay vào đó, hãy biến điều này thành var."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
@@ -231,6 +235,8 @@ msgstr "Không khuyến khích sử dụng document.write."
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
 msgstr ""
+"document.write sẽ không thành công trong nhiều trường hợp khi được sử dụng trong các tiện ích mở rộng và có khả năng gây hậu quả bảo mật nghiêm trọng khi sử dụng không đúng cách. Do đó, nó không nên"
+" được sử dụng."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
@@ -475,11 +481,11 @@ msgstr "Một \"%(property)s\" tùy chỉnh cần xem xét bổ sung."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "\"%(property)s\" cho phép 'eval', có ý nghĩa mạnh mẽ về bảo mật và hiệu suất."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "Trong hầu hết các trường hợp, cùng một kết quả có thể đạt được theo cách khác nhau, do đó, nó thường bị cấm"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string."
@@ -495,7 +501,7 @@ msgstr "\"update_url\" không được cho phép."
 
 #: src/messages/manifestjson.js:237
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "\"applications.gecko.update_url\" hoặc \"browser_specific_settings.gecko.update_url\" không được phép cho các tiện ích mở rộng do Mozilla lưu trữ."
 
 #: src/messages/manifestjson.js:246
 msgid "The \"update_url\" property is not used by Firefox."
@@ -504,6 +510,8 @@ msgstr "Thuộc tính \"update_url\" không được sử dụng bởi Firefox."
 #: src/messages/manifestjson.js:247
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
 msgstr ""
+"\"update_url\" không được Firefox sử dụng trong thư mục gốc của tập tin manifest; tiện ích mở rộng của bạn sẽ được cập nhật qua trang web tiện ích mở rộng chứ không phải \"update_url\" của bạn. Xem:"
+" https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:255
 msgid "\"strict_max_version\" not required."
@@ -511,7 +519,7 @@ msgstr "\"strict_max_version\" không bắt buộc."
 
 #: src/messages/manifestjson.js:256
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "Không nên sử dụng \"strict_max_version\" trừ khi tiện ích mở rộng được cho là sẽ không hoạt động với các phiên bản Firefox trong tương lai."
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
@@ -667,7 +675,7 @@ msgstr "Tập tin hình ảnh chủ đề có phần mở rộng không được
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "\"%(fieldName)s\" không được hỗ trợ trong các phiên bản %(versionRange)s của tập tin manifest."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
@@ -699,7 +707,7 @@ msgstr "Thuộc tính \"default_locale\" bị thiếu bản địa hóa."
 
 #: src/messages/manifestjson.js:538
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "Giá trị \"default_locale\" được chỉ định trong manifest, nhưng không khớp \"messages.json\" trong thư mục tồn tại \"_locales\". Xem: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:546
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -707,7 +715,7 @@ msgstr "Thuộc tính \"default_locale\" bị thiếu nhưng \"_locales\" tồn 
 
 #: src/messages/manifestjson.js:547
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "Giá trị \"default_locale\" không được chỉ định trong manifest, nhưng tồn tại thư mục \"_locales\". Xem: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:555
 msgid "Unsupported image extension"
@@ -723,7 +731,7 @@ msgstr "Thuộc tính \"applications\" bị ghi đè bởi thuộc tính \"brows
 
 #: src/messages/manifestjson.js:567
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
-msgstr ""
+msgstr "Thuộc tính \"applications\" đang bị bỏ qua vì thuộc tính này được thay thế bởi thuộc tính \"browser_specific_settings\" cũng được xác định trong manifest của bạn. Xem xét gỡ bỏ applications."
 
 #: src/messages/manifestjson.js:577
 msgid "Empty language directory"
