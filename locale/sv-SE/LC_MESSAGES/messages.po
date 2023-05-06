@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-03 19:57+0000\n"
+"PO-Revision-Date: 2023-05-06 15:43+0000\n"
 "Last-Translator: Andreas Pettersson <az@kth.se>\n"
 "Language-Team: none\n"
 "Language: sv_SE\n"
@@ -47,14 +47,16 @@ msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
 "%(maxManifestVersion)s)."
 msgstr ""
+"Ogiltigt manifestversionsområde begärt: --min-manifest-version (för närvarande inställt på %(minManifestVersion)s) bör inte vara större än --max-manifest-version (för närvarande inställt på "
+"%(maxManifestVersion)s)."
 
 #: src/messages/css.js:13
 msgid "Invalid nesting of selectors found"
-msgstr "Ogiltig nestning av selektorer hittad"
+msgstr "Ogiltig nästling av selektorer hittad"
 
 #: src/messages/css.js:14
 msgid "Selectors should not be nested"
-msgstr ""
+msgstr "Selektorer ska inte vara nästlade"
 
 #: src/messages/css.js:6
 msgid "A CSS syntax error was encountered"
@@ -296,6 +298,8 @@ msgid ""
 "No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
 "packaging."
 msgstr ""
+"Ingen manifest.json hittades i roten av tillägget. Paketfilen måste vara en ZIP-fil med filtilläggets filer själva, inte av den innehållande katalogen. Se: https://mzl.la/2r2McKv för mer om "
+"packningar."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
@@ -306,6 +310,8 @@ msgid ""
 "This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
 "or splitting very large files into smaller ones."
 msgstr ""
+"Den här filen är inte binär och är för stor för att tolkas. Filer större än %(maxFileSizeToParseMB)s MB kommer inte att tolkas. Överväg att flytta stora listor med data från JavaScript-filer och "
+"till JSON-filer eller dela upp mycket stora filer i mindre."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -314,7 +320,7 @@ msgstr "Dold fil flaggad"
 #: src/messages/layout.js:58
 msgid ""
 "Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
-msgstr ""
+msgstr "Dolda filer komplicerar granskningen och kan innehålla känslig information om systemet som genererade tillägget. Ändra paketeringsprocessen så att dessa filer inte ingår."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
