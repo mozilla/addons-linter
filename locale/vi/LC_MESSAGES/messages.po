@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-06 04:12+0000\n"
+"PO-Revision-Date: 2023-05-06 04:20+0000\n"
 "Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
@@ -64,7 +64,7 @@ msgstr "Đã xảy ra lỗi cú pháp CSS"
 
 #: src/messages/css.js:7
 msgid "An error was found in the CSS file being processed. As a result, further processing of that file is not possible"
-msgstr ""
+msgstr "Đã tìm thấy lỗi trong tập tin CSS đang được xử lý. Do đó, không thể xử lý thêm tập tin đó"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -635,7 +635,7 @@ msgstr "Kích thước của biểu tượng không phù hợp với manifest."
 
 #: src/messages/manifestjson.js:417
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "Biểu tượng tìm thấy tại \"%(path)s\" rộng %(expected)d pixel nhưng lại là %(actual)d."
 
 #: src/messages/manifestjson.js:430
 msgid "Corrupt image file"
@@ -747,7 +747,7 @@ msgstr "Khóa kê khai không được hỗ trợ bởi phiên bản Firefox t�
 
 #: src/messages/manifestjson.js:599 src/messages/manifestjson.js:621
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\" yêu cầu Firefox %(minVersion)s, được phát hành trước khi phiên bản %(versionAdded)s giới thiệu hỗ trợ cho \"%(key)s\"."
 
 #: src/messages/manifestjson.js:617
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -763,7 +763,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:643 src/messages/manifestjson.js:665
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\" yêu cầu Firefox dành cho Android %(minVersion)s, được phát hành trước khi phiên bản %(versionAdded)s giới thiệu hỗ trợ cho \"%(key)s\"."
 
 #: src/messages/manifestjson.js:661
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -779,11 +779,11 @@ msgstr "Các liên kết trực tiếp đến \"addons.mozilla.org\" đều khô
 
 #: src/messages/manifestjson.js:689
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "Quyền \"%(permission)s\" yêu cầu đặt \"strict_min_version\" thành \"%(minFirefoxVersion)s\" hoặc cao hơn"
 
 #: src/messages/manifestjson.js:694
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
-msgstr ""
+msgstr "Quyền \"%(permission)s\" yêu cầu đặt \"strict_min_version\" thành \"%(minFirefoxVersion)s\" hoặc cao hơn. Vui lòng cập nhật phiên bản manifest.json của bạn để chỉ định phiên bản Firefox tối thiểu."
 
 #: src/messages/manifestjson.js:706
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -827,25 +827,27 @@ msgstr "Sử dụng \"browser_specific_settings\" thay thế \"applications\"."
 
 #: src/messages/manifestjson.js:775
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "Thuộc tính \"applications\" trong Manifest không được dùng nữa và sẽ không còn được chấp nhận trong phiên bản manifest 3 trở lên."
 
 #: src/messages/manifestjson.js:783
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "\"applications\" không còn được chấp nhận trong Manifest phiên bản 3 trở lên."
 
 #: src/messages/manifestjson.js:785
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "Thuộc tính \"applications\" trong Manifest không còn được phép trong Manifest phiên bản 3 trở lên. Thay vào đó, hãy sử dụng \"browser_specific_settings\"."
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "Chuỗi phiên bản phải được đơn giản hóa vì chuỗi này sẽ không tương thích với Manifest phiên bản 3 trở lên."
 
 #: src/messages/manifestjson.js:795
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Phiên bản phải là một chuỗi có các số từ 1 đến 4 được phân tách bằng dấu chấm. Mỗi số phải có tối đa 9 chữ số và các số 0 đứng đầu sẽ không còn được phép. Chữ cái cũng sẽ không được phép nữa. Xem "
+"https://mzl.la/3h3mCRu (Tài liệu MDN) để biết thêm thông tin."
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
@@ -856,14 +858,16 @@ msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
 "https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Phiên bản phải là một chuỗi có các số từ 1 đến 4 được phân tách bằng dấu chấm. Mỗi số phải có tối đa 9 chữ số và không được phép có số 0 đứng đầu. Chữ cái không còn được phép. Xem "
+"https://mzl.la/3h3mCRu (Tài liệu MDN) để biết thêm thông tin."
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "/%(fieldName)s: \"%(permissionName)s\" không được hỗ trợ trong các phiên bản %(versionRange)s của manifest."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
-msgstr ""
+msgstr "/%(fieldName)s: \"%(permissionName)s\" không được hỗ trợ."
 
 #~ msgid "\"$(api)s\" can cause issues when loaded temporarily"
 #~ msgstr "\"$(api)s\" có thể gây ra sự cố khi tải tạm thời"
