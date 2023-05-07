@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-07 11:40+0000\n"
+"PO-Revision-Date: 2023-05-07 11:51+0000\n"
 "Last-Translator: Alexander Slovesnik <unghost@mozilla-russia.org>\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -320,12 +320,13 @@ msgstr ""
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
-msgstr "Найден отмеченный флагом скрытый файл"
+msgstr "Найден скрытый файл"
 
 #: src/messages/layout.js:58
 msgid ""
 "Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
 msgstr ""
+"Скрытые файлы усложняют процесс проверки и могут содержать конфиденциальную информацию о системе, сгенерировавшей дополнение. Пожалуйста, измените процесс упаковки, чтобы эти файлы не были включены."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -333,29 +334,31 @@ msgstr "Пакет содержит дублирующиеся записи"
 
 #: src/messages/layout.js:66
 msgid "Flagged filename found"
-msgstr "Найдено отмеченное флагом имя файла"
+msgstr "Найдено отмеченное имя файла"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "Были обнаружены файлы, которые либо не нужны, либо были включены непреднамеренно. Их следует удалить."
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "Пакет содержит несколько записей с одинаковым именем. Эта практика была запрещена. Попробуйте разархивировать и повторно заархивировать пакет дополнения и повторите попытку."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
-msgstr "Найдено отмеченное флагом расширение файла"
+msgstr "Найдено отмеченное расширение файла"
 
 #: src/messages/layout.js:80
 msgid "Flagged file type found"
-msgstr "Найден отмеченный флагом тип файла"
+msgstr "Найден отмеченный тип файла"
 
 #: src/messages/layout.js:81
 msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
+"В дополнении были обнаружены файлы, имена которых заканчиваются отмеченными расширениями. Расширения этих файлов отмечены, поскольку они обычно идентифицируют бинарные компоненты. Пожалуйста, "
+"посетите https://bit.ly/review-policy для получения дополнительной информации о процессе проверки бинарного контента."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
@@ -363,7 +366,7 @@ msgstr "Пакет уже подписан"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "Дополнения, которые уже подписаны, будут повторно подписаны при публикации в AMO. Это заменит любые существующие подписи в дополнении."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -371,7 +374,7 @@ msgstr "Дополнениям Firefox не разрешено запускат�
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "Мы не разрешаем запускать сценарии coinminer внутри WebExtensions. Подробнее см. https://github.com/mozilla/addons-linter/issues/1643."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -379,11 +382,11 @@ msgstr "Имя строки зарезервировано для предуст
 
 #: src/messages/locale-messagesjson.js:14
 msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr ""
+msgstr "Имена строк, начинающиеся с @@, преобразуются во встроенные константы (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "Имя строки должно содержать только буквенно-цифровые символы, _ и @ (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -399,23 +402,23 @@ msgstr "Имя замещающего текста содержит неправ
 
 #: src/messages/locale-messagesjson.js:34
 msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr ""
+msgstr "Имя замещающего текста должно содержать только буквенно-цифровые символы, _ и @ (https://mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr "Отсутствует свойство \"content\" в замещающем тексте"
+msgstr "В замещающем тексте отсутствует свойство «content»"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "Для замещающего текста требуется свойство «content», определяющее его замену (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
-msgstr "В переведённой строке отсутствует свойство \"message\""
+msgstr "В переведённой строке отсутствует свойство «message»"
 
 #: src/messages/locale-messagesjson.js:6
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "Свойство сообщения \"message\" для строки не задано (https://mzl.la/2DSBTjA)."
+msgstr "Свойство сообщения «message» для строки не задано (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10
 msgid "The field is required."
@@ -447,7 +450,7 @@ msgstr "Неизвестное разрешение."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s: следующие привилегированные разрешения разрешены только в привилегированных расширениях: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
