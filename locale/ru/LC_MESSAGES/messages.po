@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-07 12:03+0000\n"
+"PO-Revision-Date: 2023-05-07 12:12+0000\n"
 "Last-Translator: Alexander Slovesnik <unghost@mozilla-russia.org>\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -714,11 +714,11 @@ msgstr "Значение «default_locale» указано в манифесте
 
 #: src/messages/manifestjson.js:546
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
-msgstr "\"default_locale\" отсутствует, а \"_locales\" существует."
+msgstr "«default_locale» отсутствует, а «_locales» существует."
 
 #: src/messages/manifestjson.js:547
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "Значение «default_locale» не указано в манифесте, но каталог «_locales» существует. См.: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:555
 msgid "Unsupported image extension"
@@ -730,11 +730,12 @@ msgstr "Значок должен быть в одном из следующих
 
 #: src/messages/manifestjson.js:564
 msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
-msgstr "свойство \"applications\" переопределено свойством \"browser_specific_settings\""
+msgstr "свойство «applications» переопределено свойством «browser_specific_settings»"
 
 #: src/messages/manifestjson.js:567
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
 msgstr ""
+"Свойство «applications» игнорируется, поскольку оно заменено свойством «browser_specific_settings», которое также определено в вашем манифесте. Рассмотрите возможность удаления «applications»."
 
 #: src/messages/manifestjson.js:577
 msgid "Empty language directory"
@@ -750,7 +751,7 @@ msgstr "Ключ манифеста не поддерживается указа
 
 #: src/messages/manifestjson.js:599 src/messages/manifestjson.js:621
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "Для «strict_min_version» требуется Firefox %(minVersion)s, который был выпущен до того, как версия %(versionAdded)s представила поддержку «%(key)s»."
 
 #: src/messages/manifestjson.js:617
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -762,11 +763,11 @@ msgstr "Ключ манифеста не поддерживается указа
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: привилегированные поля манифеста разрешены только в привилегированных расширениях."
 
 #: src/messages/manifestjson.js:643 src/messages/manifestjson.js:665
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "Для «strict_min_version» требуется Firefox для Android %(minVersion)s, который был выпущен до того, как версия %(versionAdded)s представила поддержку «%(key)s»."
 
 #: src/messages/manifestjson.js:661
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -782,11 +783,12 @@ msgstr "Ссылки, ведущие на \"addons.mozilla.org\", не могу�
 
 #: src/messages/manifestjson.js:689
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "Разрешение «%(permission)s» требует, чтобы для параметра «strict_min_version» было установлено значение «%(minFirefoxVersion)s» или выше"
 
 #: src/messages/manifestjson.js:694
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
 msgstr ""
+"Разрешение «%(permission)s» требует, чтобы для «strict_min_version» было установлено значение «%(minFirefoxVersion)s» или выше. Обновите версию manifest.json, указав минимальную версию Firefox."
 
 #: src/messages/manifestjson.js:706
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -798,23 +800,23 @@ msgstr "Посетите https://mzl.la/3PLZYdo для получения доп
 
 #: src/messages/manifestjson.js:715
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr ""
+msgstr "%(instancePath)s: привилегированные расширения должны объявлять привилегированные разрешения."
 
 #: src/messages/manifestjson.js:726
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr ""
+msgstr "Это расширение не объявляет никаких привилегированных разрешений. Его не нужно подписывать привилегированным сертификатом. Пожалуйста, загрузите его прямо на https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:739
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: для привилегированных расширений требуется разрешение «mozillaAddons»."
 
 #: src/messages/manifestjson.js:742
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s: для расширений, которые включают привилегированные поля манифеста, требуется разрешение «mozillaAddons»."
 
 #: src/messages/manifestjson.js:755
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "Это расширение не включает разрешение «mozillaAddons», которое требуется для привилегированных расширений."
 
 #: src/messages/manifestjson.js:765
 msgid "Cannot use actions in hidden add-ons."
@@ -822,7 +824,7 @@ msgstr "В скрытых дополнениях нельзя использов
 
 #: src/messages/manifestjson.js:766
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "Свойства hidden и browser_action/page_action (или action в версии манифеста 3 и выше) являются взаимоисключающими."
 
 #: src/messages/manifestjson.js:774
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
@@ -830,25 +832,27 @@ msgstr "Используйте «browser_specific_settings» вместо «appl
 
 #: src/messages/manifestjson.js:775
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "Свойство «applications» в манифесте устарело и больше не будет приниматься в манифесте версии 3 и выше."
 
 #: src/messages/manifestjson.js:783
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "«applications» больше не разрешены в манифесте версии 3 и выше."
 
 #: src/messages/manifestjson.js:785
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "Свойство «applications» в манифесте больше не разрешено в манифесте версии 3 и выше. Вместо этого используйте «browser_specific_settings»."
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "Строка версии должна быть упрощена, поскольку она не будет совместима с манифестом версии 3 и выше."
 
 #: src/messages/manifestjson.js:795
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Версия должна быть строкой, которая содержит от 1 до 4 чисел, разделенных точками. Каждое число должно содержать до 9 цифр, а начальные нули более не допускаются. Символы также больше не будут "
+"разрешены. См. https://mzl.la/3h3mCRu (MDN Docs) для получения дополнительной информации."
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
@@ -859,10 +863,12 @@ msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
 "https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Версия должна быть строкой, которая содержит от 1 до 4 чисел, разделенных точками. Каждое число должно содержать до 9 цифр, а начальные нули более не допускаются. Символы более не разрешены. См. "
+"https://mzl.la/3h3mCRu (MDN Docs) для получения дополнительной информации."
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "/%(fieldName)s: «%(permissionName)s» не поддерживается в версиях манифеста %(versionRange)s."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
