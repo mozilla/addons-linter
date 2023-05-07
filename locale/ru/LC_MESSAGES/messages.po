@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-07 11:51+0000\n"
+"PO-Revision-Date: 2023-05-07 12:03+0000\n"
 "Last-Translator: Alexander Slovesnik <unghost@mozilla-russia.org>\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -462,11 +462,11 @@ msgstr "Недопустимый источник установки."
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
+msgstr "Недопустимый источник установки. Действительный источник имеет только схему, имя хоста и необязательный порт. См. https://mzl.la/3TEbqbE (MDN Docs) для получения дополнительной информации."
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "\"manifest_version\" в файле manifest.json имеет некорректное значение"
+msgstr "«manifest_version» в файле manifest.json имеет некорректное значение"
 
 #: src/messages/manifestjson.js:186
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -478,23 +478,23 @@ msgstr "Недопустимое поле."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "«%(property)s» разрешает удалённое выполнение кода в manifest.json"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "Пользовательский «%(property)s» требует дополнительной проверки."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "«%(property)s» разрешает 'eval', что имеет серьезные последствия для безопасности и производительности."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "В большинстве случаев один и тот же результат может быть достигнут по-разному, поэтому это обычно запрещено"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string."
-msgstr "Свойство \"name\" должно быть строкой."
+msgstr "Свойство «name» должно быть строкой."
 
 #: src/messages/manifestjson.js:228
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -502,35 +502,35 @@ msgstr "Смотрите http://mzl.la/1STmr48 (Документацию на MD
 
 #: src/messages/manifestjson.js:236
 msgid "\"update_url\" is not allowed."
-msgstr "\"update_url\" не разрешено."
+msgstr "«update_url» не разрешено."
 
 #: src/messages/manifestjson.js:237
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "«applications.gecko.update_url» или «browser_specific_settings.gecko.update_url» не разрешены для дополнений, размещенных у Mozilla."
 
 #: src/messages/manifestjson.js:246
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr "Свойство \"update_url\" не используется Firefox."
+msgstr "Свойство «update_url» не используется Firefox."
 
 #: src/messages/manifestjson.js:247
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
-msgstr ""
+msgstr "«update_url» не используется Firefox в корне манифеста; ваше дополнение будет обновлено через сайт дополнений, а не через ваш «update_url». См.: https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:255
 msgid "\"strict_max_version\" not required."
-msgstr "\"strict_max_version\" не требуется."
+msgstr "«strict_max_version» не требуется."
 
 #: src/messages/manifestjson.js:256
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "«strict_max_version» не следует использовать, если не ожидается, что дополнение не будет работать с будущими версиями Firefox."
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "Свойство «%(property)s» не найдено в manifest.json"
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "Требуется «%(property)s»"
 
 #: src/messages/manifestjson.js:279
 msgid "An icon defined in the manifest could not be found in the package."
@@ -538,7 +538,7 @@ msgstr "Значок, обозначенный в манифесте, не уд�
 
 #: src/messages/manifestjson.js:283
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr "Не удалось найти значок по пути \"%(path)s\"."
+msgstr "Не удалось найти значок по пути «%(path)s»."
 
 #: src/messages/manifestjson.js:298
 msgid "A background script defined in the manifest could not be found."
@@ -550,15 +550,15 @@ msgstr "Не удалось найти фоновую страницу, опре
 
 #: src/messages/manifestjson.js:306
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr "Не удалось найти файл фонового скрипта по пути \"%(path)s\"."
+msgstr "Не удалось найти файл фонового скрипта по пути «%(path)s»."
 
 #: src/messages/manifestjson.js:307
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr "Не удалось найти фоновую страницу по пути \"%(path)s\"."
+msgstr "Не удалось найти фоновую страницу по пути «%(path)s»."
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "«%(fieldName)s» игнорируется для непривилегированных дополнений."
 
 #: src/messages/manifestjson.js:322
 msgid "A content script defined in the manifest could not be found."
@@ -570,11 +570,11 @@ msgstr "Не удалось найти CSS файл скрипта содерж�
 
 #: src/messages/manifestjson.js:328
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Не удалось найти скрипт содержимого, обозначенный в манифесте, по пути \"%(path)s\"."
+msgstr "Не удалось найти скрипт содержимого, обозначенный в манифесте, по пути «%(path)s»."
 
 #: src/messages/manifestjson.js:331
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "CSS файл скрипта содержимого, обозначенный в манифесте, не найден по пути \"%(path)s\"."
+msgstr "CSS файл скрипта содержимого, обозначенный в манифесте, не найден по пути «%(path)s»."
 
 #: src/messages/manifestjson.js:345
 msgid "A dictionary file defined in the manifest could not be found."
@@ -582,11 +582,11 @@ msgstr "Не удалось найти файл словаря, определё
 
 #: src/messages/manifestjson.js:349
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Не удалось найти файл словаря, определённый в манифесте, по пути \"%(path)s\"."
+msgstr "Не удалось найти файл словаря, определённый в манифесте, по пути «%(path)s»."
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "Поле манифеста «%(fieldName)s» используется только для привилегированных и временно установленных расширений."
 
 #: src/messages/manifestjson.js:361
 msgid "The manifest contains multiple dictionaries."
@@ -622,7 +622,7 @@ msgstr "Это дополнение содержит запрещённое со
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "Пожалуйста, обратитесь к https://github.com/mozilla-extensions/xpi-manifest, чтобы узнать больше о привилегированных расширениях и подписи."
 
 #: src/messages/manifestjson.js:403
 msgid "Icons must be square."
@@ -630,7 +630,7 @@ msgstr "Значки должны быть квадратными."
 
 #: src/messages/manifestjson.js:404
 msgid "Icon at \"%(path)s\" must be square."
-msgstr "Значок по пути \"%(path)s\" должен быть квадратным."
+msgstr "Значок по пути «%(path)s» должен быть квадратным."
 
 #: src/messages/manifestjson.js:415
 msgid "The size of the icon does not match the manifest."
@@ -638,7 +638,7 @@ msgstr "Размер значка не соответствует манифес
 
 #: src/messages/manifestjson.js:417
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "Ожидаемый значок в «%(path)s» должен иметь ширину %(expected)d пикселей, но был %(actual)d."
 
 #: src/messages/manifestjson.js:430
 msgid "Corrupt image file"
@@ -646,7 +646,7 @@ msgstr "Повреждённый файл изображения"
 
 #: src/messages/manifestjson.js:432
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr "Ожидаемый файл значка по пути \"%(path)s\" повреждён"
+msgstr "Ожидаемый файл значка по пути «%(path)s» повреждён"
 
 #: src/messages/manifestjson.js:441
 msgid "This property has been deprecated."
@@ -662,7 +662,7 @@ msgstr "Смотрите https://mzl.la/2T11Lkc (Документацию на M
 
 #: src/messages/manifestjson.js:464
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Изображение темы для \"%(type)s\" не найдено по пути \"%(path)s\""
+msgstr "Изображение темы для «%(type)s» не найдено по пути «%(path)s»"
 
 #: src/messages/manifestjson.js:475
 msgid "Corrupted theme image file"
@@ -670,7 +670,7 @@ msgstr "Повреждённый файл изображения темы"
 
 #: src/messages/manifestjson.js:477
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr "Файл изображения темы по пути \"%(path)s\" повреждён"
+msgstr "Файл изображения темы по пути «%(path)s» повреждён"
 
 #: src/messages/manifestjson.js:488
 msgid "Theme image file has an unsupported file extension"
@@ -678,11 +678,11 @@ msgstr "Файл изображения темы имеет неподдержи
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "«%(fieldName)s» не поддерживается в версиях манифеста %(versionRange)s."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr "Файл изображения темы по пути \"%(path)s\" имеет неподдерживаемое расширение"
+msgstr "Файл изображения темы по пути «%(path)s» имеет неподдерживаемое расширение"
 
 #: src/messages/manifestjson.js:504
 msgid "Theme image file has an unsupported mime type"
@@ -690,11 +690,11 @@ msgstr "Файл изображения темы имеет неподдержи
 
 #: src/messages/manifestjson.js:506
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr "Файл изображения темы по пути \"%(path)s\" имеет неподдерживаемый MIME-тип \"%(mime)s\""
+msgstr "Файл изображения темы по пути «%(path)s» имеет неподдерживаемый MIME-тип «%(mime)s»"
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "«%(fieldName)s» не поддерживается."
 
 #: src/messages/manifestjson.js:520
 msgid "Theme image file mime type does not match its file extension"
@@ -702,7 +702,7 @@ msgstr "MIME-тип файла изображения темы не соотве
 
 #: src/messages/manifestjson.js:524
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr "Расширение файла изображения темы по пути \"%(path)s\" не соответствует его MIME-типу \"%(mime)s\""
+msgstr "Расширение файла изображения темы по пути «%(path)s» не соответствует его MIME-типу «%(mime)s»"
 
 #: src/messages/manifestjson.js:537
 msgid "The \"default_locale\" is missing localizations."
@@ -710,7 +710,7 @@ msgstr "Отсутствуют переводы для \"default_locale\"."
 
 #: src/messages/manifestjson.js:538
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "Значение «default_locale» указано в манифесте, но в каталоге «_locales» не существует соответствующего файла messages.json. См.: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:546
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -742,7 +742,7 @@ msgstr "Пустой каталог языков"
 
 #: src/messages/manifestjson.js:579
 msgid "messages.json file missing in \"%(path)s\""
-msgstr "Файл messages.json отсутствует по пути \"%(path)s\""
+msgstr "Файл messages.json отсутствует по пути «%(path)s»"
 
 #: src/messages/manifestjson.js:595
 msgid "Manifest key not supported by the specified minimum Firefox version"
