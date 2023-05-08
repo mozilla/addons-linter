@@ -372,8 +372,7 @@
           "type": "string",
           "enum": [
             "declarativeNetRequest"
-          ],
-          "min_manifest_version": 3
+          ]
         }
       ]
     },
@@ -383,8 +382,7 @@
           "type": "string",
           "enum": [
             "declarativeNetRequestFeedback"
-          ],
-          "min_manifest_version": 3
+          ]
         }
       ]
     },
@@ -394,8 +392,7 @@
           "type": "string",
           "enum": [
             "declarativeNetRequestWithHostAccess"
-          ],
-          "min_manifest_version": 3
+          ]
         }
       ]
     },
@@ -403,7 +400,6 @@
       "properties": {
         "declarative_net_request": {
           "type": "object",
-          "min_manifest_version": 3,
           "properties": {
             "rule_resources": {
               "type": "array",
