@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-08 07:23+0000\n"
+"PO-Revision-Date: 2023-05-08 07:39+0000\n"
 "Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -146,7 +146,7 @@ msgstr "Impossible de trouver le fichier de script de contenu"
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "« %(api)s » peut causer des problèmes lorsqu’elle est chargée temporairement"
 
 #: src/messages/javascript.js:165
 msgid ""
@@ -180,7 +180,7 @@ msgstr "Le fichier du script de contenu doit avoir un nom"
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "« %(method)s » appelée avec une URI non littérale"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
@@ -469,7 +469,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "Dans la plupart des cas, le même résultat peut être obtenu différemment, c’est pourquoi c’est généralement interdit"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string."
@@ -537,7 +537,7 @@ msgstr "La page d’arrière-plan n’a pu être trouvée à l’emplacement «�
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "Le champs « %(fieldName)s » est ignoré par les modules complémentaires non privilégiés."
 
 #: src/messages/manifestjson.js:322
 msgid "A content script defined in the manifest could not be found."
@@ -565,7 +565,7 @@ msgstr "Impossible de trouver un fichier de dictionnaire défini dans le manifes
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "Dans le fichier manifest, le champs « %(fieldName)s » n’est utilisé que pour les extensions privilégiées et installées temporairement."
 
 #: src/messages/manifestjson.js:361
 msgid "The manifest contains multiple dictionaries."
@@ -601,7 +601,7 @@ msgstr "Ce module contient des éléments interdits."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "Pour en savoir plus sur les extensions privilégiées et la signature, veuillez consulter le site https://github.com/mozilla-extensions/xpi-manifest."
 
 #: src/messages/manifestjson.js:403
 msgid "Icons must be square."
