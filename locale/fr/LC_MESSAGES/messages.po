@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-06 18:47+0000\n"
-"Last-Translator: sagaert.cesar <sagaert.cesar@gmail.com>\n"
+"PO-Revision-Date: 2023-05-08 07:23+0000\n"
+"Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgstr "Une erreur de syntaxe CSS a été rencontrée"
 
 #: src/messages/css.js:7
 msgid "An error was found in the CSS file being processed. As a result, further processing of that file is not possible"
-msgstr ""
+msgstr "Une erreur a été détectée dans le fichier CSS en cours de traitement. Par conséquent, la poursuite du traitement de ce fichier n’est pas possible"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -86,7 +86,7 @@ msgstr "Les scripts inline sont bloqués par défaut"
 
 #: src/messages/html.js:6
 msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
-msgstr ""
+msgstr "Les règles CSP par défaut empêchent l’exécution de JavaScript en ligne (https://mzl.la/2pn32nd)."
 
 #: src/messages/javascript.js:100
 msgid "Unadvised 3rd-party JS library"
@@ -102,13 +102,15 @@ msgstr "Bibliothèque JS connue détectée"
 
 #: src/messages/javascript.js:108
 msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
-msgstr ""
+msgstr "Les bibliothèques JavaScript sont déconseillées pour les modules complémentaires simples, mais sont généralement acceptées."
 
 #: src/messages/javascript.js:116
 msgid ""
 "Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
 "degradation."
 msgstr ""
+"Pour des raisons de sécurité et de performances, cette valeur ne peut pas être définie en utilisant des valeurs dynamiques qui n’ont pas été correctement nettoyées. Cela peut entraîner des problèmes"
+" de sécurité ou une dégradation assez importante des performances."
 
 #: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
