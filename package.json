@@ -56,7 +56,7 @@
     "deepmerge": "4.3.1",
     "eslint": "8.40.0",
     "eslint-plugin-no-unsanitized": "4.0.2",
-    "eslint-visitor-keys": "3.4.0",
+    "eslint-visitor-keys": "3.4.1",
     "espree": "9.5.2",
     "esprima": "4.0.1",
     "fast-json-patch": "3.1.1",
