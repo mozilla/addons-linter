@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-08 07:39+0000\n"
+"PO-Revision-Date: 2023-05-09 10:12+0000\n"
 "Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -485,7 +485,7 @@ msgstr "« update_url » n’est pas autorisé."
 
 #: src/messages/manifestjson.js:237
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "« applications.gecko.update_url » et « browser_specific_settings.gecko.update_url » ne sont pas autorisés pour les modules hébergés par Mozilla."
 
 #: src/messages/manifestjson.js:246
 msgid "The \"update_url\" property is not used by Firefox."
@@ -673,7 +673,7 @@ msgstr "Le type MIME « %(mime)s » du fichier de l’image du thème à l’e
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "« %(fieldName)s » n’est pas pris en charge."
 
 #: src/messages/manifestjson.js:520
 msgid "Theme image file mime type does not match its file extension"
@@ -689,7 +689,7 @@ msgstr "Des traductions sont manquantes pour « default_locale »."
 
 #: src/messages/manifestjson.js:538
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "La valeur « default_locale » est spécifiée dans le manifeste, mais il n’existe pas de « messages.json » correspondant dans le répertoire « _locales ». Voir : https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:546
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -697,7 +697,7 @@ msgstr "« default_locale » est manquant, mais « _locales » existe."
 
 #: src/messages/manifestjson.js:547
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "La valeur « default_locale » n’est pas spécifiée dans le manifeste, mais un répertoire « _locales » existe. Voir : https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:555
 msgid "Unsupported image extension"
@@ -841,11 +841,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "/%(fieldName)s : « %(permissionName)s » n’est pas pris en charge dans les versions %(versionRange)s du manifeste."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
-msgstr ""
+msgstr "/%(fieldName)s : « %(permissionName)s » n’est pas pris en charge."
 
 #~ msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
 #~ msgstr "Origine d’installation invalide. Une origine valide a (uniquement) un schéma, un nom d’hôte et facultativement un port."
