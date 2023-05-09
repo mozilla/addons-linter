@@ -277,6 +277,36 @@ describe('ManifestJSONParser', () => {
     expect(manifestJSONParser.isValid).toEqual(true);
   });
 
+  it('should accept applications.gecko AND browser_specific_settings.gecko_android', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const json = validManifestJSON({
+      applications: {
+        gecko: {
+          strict_max_version: '100.0',
+        },
+      },
+      browser_specific_settings: {
+        gecko_android: {},
+      },
+    });
+
+    const manifestJSONParser = new ManifestJSONParser(
+      json,
+      addonLinter.collector
+    );
+
+    const { notices } = addonLinter.collector;
+    // This is only available if `applications.gecko` isn't lost when we deal
+    // with both `applications` and `browser_specific_settings`.
+    expect(notices).toEqual([
+      expect.objectContaining({
+        code: messages.STRICT_MAX_VERSION.code,
+        message: expect.stringMatching('strict_max_version'),
+      }),
+    ]);
+    expect(manifestJSONParser.isValid).toEqual(true);
+  });
+
   describe('id', () => {
     it('should return the correct id', () => {
       const addonLinter = new Linter({ _: ['bar'] });
@@ -1395,24 +1425,33 @@ describe('ManifestJSONParser', () => {
   });
 
   describe('strict_max_version', () => {
-    it('warns on strict_max_version', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({
-        browser_specific_settings: {
-          gecko: {
-            strict_max_version: '58.0',
+    it.each(['gecko', 'gecko_android'])(
+      'warns on %s.strict_max_version',
+      (key) => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          browser_specific_settings: {
+            [key]: {
+              strict_max_version: '58.0',
+            },
           },
-        },
-      });
-      const manifestJSONParser = new ManifestJSONParser(
-        json,
-        addonLinter.collector
-      );
-      expect(manifestJSONParser.isValid).toEqual(true);
-      const { notices } = addonLinter.collector;
-      expect(notices[0].code).toEqual(messages.STRICT_MAX_VERSION.code);
-      expect(notices[0].message).toContain('strict_max_version');
-    });
+        });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector
+        );
+
+        expect(manifestJSONParser.isValid).toEqual(true);
+        const { notices } = addonLinter.collector;
+        expect(notices).toEqual([
+          expect.objectContaining({
+            code: messages.STRICT_MAX_VERSION.code,
+            message: expect.stringMatching('strict_max_version'),
+          }),
+        ]);
+      }
+    );
 
     it('does not warn on strict_max_version in language packs', () => {
       const addonLinter = new Linter({ _: ['bar'] });
