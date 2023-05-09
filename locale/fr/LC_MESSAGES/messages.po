@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-09 10:12+0000\n"
+"PO-Revision-Date: 2023-05-09 10:14+0000\n"
 "Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -505,7 +505,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "Aucune propriété « %(property)s » trouvée dans le fichier manifest.json"
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
@@ -657,7 +657,7 @@ msgstr "L’extension du fichier de l'image du thème n'est pas prise en charge"
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "« %(fieldName)s » n’est pas pris en charge dans les versions %(versionRange)s du manifeste."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
@@ -781,7 +781,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:726
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr ""
+msgstr "Cette extension ne déclare aucune permission privilégiée. Elle n’a pas besoin d’être signée avec le certificat privilégié. Veuillez l’envoyer directement sur https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:739
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
