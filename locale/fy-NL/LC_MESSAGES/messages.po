@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-10 18:42+0000\n"
+"PO-Revision-Date: 2023-05-10 18:52+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fy_NL\n"
@@ -449,7 +449,7 @@ msgstr "Unbekende tastimming."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s: de folgjende privilezjiearre tagongsrjochten binne allinnich tastien yn privilezjiearre útwreidingen: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -461,7 +461,7 @@ msgstr "Unbekende ynstallaasjeoarsprong."
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
+msgstr "Unjildige ynstallaasjeboaronen. In jildige oarsprong hat – allinnich – in skema, hostnamme en opsjonele poarte. Sjoch https://mzl.la/3TEbqbE (MDN Docs) foar mear ynformaasje."
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -477,19 +477,19 @@ msgstr "It fjild is ûnjildich."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "‘%(property)s’ makket útfiering fan eksterne koade mooglik yn manifest.json"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "In oanpaste ‘%(property)s’ hat ekstra beoardieling nedich."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "‘%(property)s’ stiet ‘eval’ ta, wat grutte ymplikaasjes hat foar feilichheid en prestaasjes."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "Yn de measte gefallen kin itselde resultaat oare manier berikt wurde, dêrom is yn it algemien ferbean"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string."
@@ -505,7 +505,7 @@ msgstr "‘update_url’ is net tastien."
 
 #: src/messages/manifestjson.js:237
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "‘applications.gecko.update_url’ of ‘browser_specific_settings.gecko.update_url’ binne net tastien foar troch Mozilla hoste add-ons."
 
 #: src/messages/manifestjson.js:246
 msgid "The \"update_url\" property is not used by Firefox."
@@ -513,7 +513,7 @@ msgstr "De eigenskip ‘update_url’ wurdt net troch Firefox brûkt."
 
 #: src/messages/manifestjson.js:247
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
-msgstr ""
+msgstr "De ‘update_url’ wurdt troch Firefox net brûkt yn de haadmap fan in manifest; jo add-on wurdt bywurke fia de Add-ons-website en net fia jo ‘update_url’. Sjoch: https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:255
 msgid "\"strict_max_version\" not required."
@@ -521,15 +521,15 @@ msgstr "‘strict_max_version’ net fereaske."
 
 #: src/messages/manifestjson.js:256
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "‘strict_max_version’ mei net brûkt wurde, útsein ferwachte wurdt dat de add-on net wurkje sil mei takomstige ferzjes fan Firefox."
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "Gjin eigenskip ‘%(property)s’ fûn yn manifest.json"
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "‘%(property)s’ is ferplichte"
 
 #: src/messages/manifestjson.js:279
 msgid "An icon defined in the manifest could not be found in the package."
@@ -557,7 +557,7 @@ msgstr "Eftergrûnside koe net fûn wurde yn ‘%(path)s’."
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "‘%(fieldName)s’ wurdt negearre foar net-privilezjiearre add-ons."
 
 #: src/messages/manifestjson.js:322
 msgid "A content script defined in the manifest could not be found."
@@ -585,7 +585,7 @@ msgstr "In yn it manifest definiearre biblioteekbestân koe net fûn wurde yn �
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "It manifestfjild ‘%(fieldName)s’ wurdt allinnich brûkt foar privilezjiearre en tydlik ynstallearre útwreidingen."
 
 #: src/messages/manifestjson.js:361
 msgid "The manifest contains multiple dictionaries."
@@ -621,7 +621,7 @@ msgstr "Dizze add-on befettet ferbeane ynhâld."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "Lês https://github.com/mozilla-extensions/xpi-manifest foar mear ynformaasje oer privilezjiearre útwreidingen en ûndertekening."
 
 #: src/messages/manifestjson.js:403
 msgid "Icons must be square."
@@ -637,7 +637,7 @@ msgstr "De grutte fan it piktogram komt net oerien mei it manifest."
 
 #: src/messages/manifestjson.js:417
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "Ferwachte piktogram by ‘%(path)s’ is %(expected)d pixels breed, mar wie %(actual)d."
 
 #: src/messages/manifestjson.js:430
 msgid "Corrupt image file"
@@ -677,7 +677,7 @@ msgstr "Temaôfbyldingsbestân hat in net-stipe bestânsekstinsje"
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "‘%(fieldName)s’ wurdt net stipe yn manifestferzjes %(versionRange)s."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
@@ -693,7 +693,7 @@ msgstr "Temaôfbyldingsbestân op ‘%(path)s’ hat it net-stipe mime-type ‘%
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "‘%(fieldName)s’ wurdt net stipe."
 
 #: src/messages/manifestjson.js:520
 msgid "Theme image file mime type does not match its file extension"
