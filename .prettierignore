@@ -7,8 +7,10 @@ scripts/list-firefox-tags
 scripts/run-l10n-extraction
 scripts/webext-test-functional
 scripts/smoke-test-eslint-version-conflicts
+src/schema/imported/LICENSE-CHROMIUM
 package-lock.json
-LICENSE
+LICENSE-MPL
+LICENSE.md
 
 # exclude these directories
 /tmp/
