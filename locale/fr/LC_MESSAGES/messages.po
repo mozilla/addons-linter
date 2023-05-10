@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-10 15:27+0000\n"
+"PO-Revision-Date: 2023-05-10 15:37+0000\n"
 "Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -187,10 +187,12 @@ msgstr "« %(method)s » appelée avec une URI non littérale"
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
 msgstr ""
+"L’appel à « %(method)s » avec des paramètres variables peut entraîner des failles de sécurité potentielles si la variable contient un URI distant. Pensez à utiliser « window.open » avec l’option "
+"« chrome=no »."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "« %(method)s » appelée avec un URI non local"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
@@ -214,7 +216,7 @@ msgstr ""
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "Les fonctions setTimeout, setInterval et execScript doivent être appelées uniquement avec des expressions de fonction comme premier argument"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
