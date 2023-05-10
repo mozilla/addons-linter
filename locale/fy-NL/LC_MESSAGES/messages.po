@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-10 13:15+0000\n"
+"PO-Revision-Date: 2023-05-10 18:19+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fy_NL\n"
@@ -246,7 +246,7 @@ msgstr "Blokkearre JS-biblioteek fan tredden"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Jo add-on brûkt in JavaScript-biblioteek dy’t wy as ûnfeilich beskôgje. Mear ynfo: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
@@ -254,7 +254,7 @@ msgstr "Jo JSON befettet blokkommentaren."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "Allinnich regelopmerkingen (opmerkingen dy’t begjinne me ‘//’) binne tastien yn JSON-bestannen. Smyt blokopmerkingen (opmerkingen begjinnend mei ‘/*’) fuort"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -262,7 +262,7 @@ msgstr "Dûbele kaaien binne net tastien yn JSON-bestannen."
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "Dûbele kaai fûn yn JSON-bestân."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
@@ -278,13 +278,15 @@ msgstr "Reservearre bestânsnamme fûn."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "Bestannen wêrfan de namme reservearre binne fûn yn de add-on. Brûk dizze net jou jo bestannen in oare namme."
 
 #: src/messages/layout.js:22
 msgid ""
 "The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
 "sure all entries are using '/' as the path separator."
 msgstr ""
+"It pakket is ûnjildich. It kin fermeldingen befetsje mei ûnjildige tekens, bygelyks it brûken fan ‘\\’ as paadskieding is net tastien yn Firefox. Probearje jo add-on-pakket (ZIP) opnij oan te "
+"meitsjen en soargje derfoar dat alle entries ‘/’ brûke as de paadskieding."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
@@ -299,6 +301,8 @@ msgid ""
 "No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
 "packaging."
 msgstr ""
+"Der is gjin manifest.json fûn yn de haadmap fan de útwreiding. It pakketbestân moat in ZIP wêze fan de bestannen fan de útwreiding sels, net fan de befetsjende map. Sjoch: https://mzl.la/2r2McKv "
+"foar mear ynformaasje oer ferpakkingen."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
