@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-10 19:02+0000\n"
+"PO-Revision-Date: 2023-05-10 19:12+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fy_NL\n"
@@ -815,7 +815,7 @@ msgstr "%(instancePath)s: de machtiging ‘mozillaAddons’ is fereaske foar út
 
 #: src/messages/manifestjson.js:755
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "Dizze útwreiding befettet net de machtiging ‘mozillaAddons’, dy’t fereaske is foar privilezjiearre útwreidingen."
 
 #: src/messages/manifestjson.js:765
 msgid "Cannot use actions in hidden add-ons."
@@ -823,7 +823,7 @@ msgstr "Aksjes yn ferstoppe add-ons brûke is net mooglik."
 
 #: src/messages/manifestjson.js:766
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "De eigenskippen hidden en browser_action/page_action (of action yn Manifest Version 3 en heger) slute inoar fan beide kanten út."
 
 #: src/messages/manifestjson.js:774
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
@@ -831,19 +831,19 @@ msgstr "Brûk ‘browser_specific_settings’ yn stee fan ‘applications’."
 
 #: src/messages/manifestjson.js:775
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "De eigenskip ‘applications’ yn it manifest is ferâldere en wurdt net langer akseptearre yn manifestferzje 3 en heger."
 
 #: src/messages/manifestjson.js:783
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "‘applications’ is net langer tastien yn manifestferzje 3 en heger."
 
 #: src/messages/manifestjson.js:785
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "De eigenskip ‘applications’ yn it manifest is net langer tastien yn manifestferzje 3 en heger. Brûk yn stee dêrfan ‘browser_specific_settings’."
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "De ferzjestring moat ferienfâldige wurde, omdat dizze net kompatibel is mei manifestferzje 3 en heger."
 
 #: src/messages/manifestjson.js:795
 msgid ""
