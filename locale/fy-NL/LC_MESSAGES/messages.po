@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-10 18:52+0000\n"
+"PO-Revision-Date: 2023-05-10 19:02+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fy_NL\n"
@@ -709,7 +709,7 @@ msgstr "De ‘default_locale’ mist lokalisaasjes."
 
 #: src/messages/manifestjson.js:538
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "De wearde ‘default_locale’ is opjûn yn it manifest, mar der bestiet gjin oerienkommende ‘messages.json’ yn de map ‘_locales’. Sjoch: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:546
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -717,7 +717,7 @@ msgstr "De ‘default_locale’ ûntbrekt, mar ‘_locales’ bestiet."
 
 #: src/messages/manifestjson.js:547
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "De wearde ‘default_locale’ wurdt net opjûn yn it manifest, mar der bestiet in map ‘_locales’. Sjoch: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:555
 msgid "Unsupported image extension"
@@ -734,6 +734,8 @@ msgstr "Eigenskip ‘applications’ wurdt oerskreaun troch de eigenskip ‘brow
 #: src/messages/manifestjson.js:567
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
 msgstr ""
+"De eigenskip ‘applications’ wurdt negearre, omdat dizze ferfongen wurdt troch de eigenskip ‘browser_specific_settings’ dy’t ek yn jo manifest definiearre is. Tink oan it fuortsmiten fan "
+"applikaasjes."
 
 #: src/messages/manifestjson.js:577
 msgid "Empty language directory"
@@ -749,7 +751,7 @@ msgstr "Manifestkaai net stipe troch de opjûne minimale Firefox-ferzje"
 
 #: src/messages/manifestjson.js:599 src/messages/manifestjson.js:621
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "‘strict_min_version’ fereasket Firefox %(minVersion)s, dy’t útbrocht waard eardat ferzje %(versionAdded)s stipe foar ‘%(key)s’ yntrodusearre."
 
 #: src/messages/manifestjson.js:617
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -761,11 +763,11 @@ msgstr "Manifestkaai net stipe troch de opjûne minimale Firefox foar Android-fe
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: privilezjiearre manifestfjilden binne allinnich tastien yn privilezjiearre útwreidingen."
 
 #: src/messages/manifestjson.js:643 src/messages/manifestjson.js:665
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "‘strict_min_version’ fereasket Firefox foar Android %(minVersion)s, dy’t útbrocht waard eardat ferzje %(versionAdded)s stipe foar ‘%(key)s’ yntrodusearre."
 
 #: src/messages/manifestjson.js:661
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -781,11 +783,11 @@ msgstr "Keppelingen dy’t ferwize nei ‘addons.mozilla.org’ meie net foar de
 
 #: src/messages/manifestjson.js:689
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "De machtiging ‘%(permission)s’ fereasket dat ‘strict_min_version’ ynsteld is op ‘%(minFirefoxVersion)s’ of heger"
 
 #: src/messages/manifestjson.js:694
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
-msgstr ""
+msgstr "De machtiging ‘%(permission)s’ fereasket dat ‘strict_min_version’ ynsteld is op ‘%(minFirefoxVersion)s’ of heger. Wurkje jo manifest.json-ferzje by om in minimale Firefox-ferzje op te jaan."
 
 #: src/messages/manifestjson.js:706
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -797,19 +799,19 @@ msgstr "Sjoch https://mzl.la/3PLZYdo foar mear ynformaasje."
 
 #: src/messages/manifestjson.js:715
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr ""
+msgstr "%(instancePath)s: privilezjiearre útwreidingen moatte privilezjiearre machtigingen deklarearje."
 
 #: src/messages/manifestjson.js:726
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr ""
+msgstr "Dizze útwreiding deklarearret gjin privilezjiearre machtiging. It hoecht net ûndertekene te wurden mei it privilezjiearre sertifikaat. Laad it streekrjocht op nei https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:739
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: de machtiging ‘mozillaAddons’ is fereaske foar privilezjiearre útwreidingen."
 
 #: src/messages/manifestjson.js:742
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s: de machtiging ‘mozillaAddons’ is fereaske foar útwreidingen dy’t privilezjiearre manifestfjilden befetsje."
 
 #: src/messages/manifestjson.js:755
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
