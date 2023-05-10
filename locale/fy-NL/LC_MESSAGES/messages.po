@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-10 18:19+0000\n"
+"PO-Revision-Date: 2023-05-10 18:31+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fy_NL\n"
@@ -313,6 +313,8 @@ msgid ""
 "This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
 "or splitting very large files into smaller ones."
 msgstr ""
+"Dit bestân is net binêr en te grut om te ûntleden. Bestannen grutter as %(maxFileSizeToParseMB)sMB wurde net ûntleed. Probearje grutte listen mei gegevens út JavaScript-bestannen nei JSON-bestannen "
+"te ferpleatsen, of hiel grutte bestannen op te splitsen yn lytsere."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -322,6 +324,8 @@ msgstr "Ferburgen bestân markearre"
 msgid ""
 "Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
 msgstr ""
+"Ferburgen bestannen meitsje it beoardielingsproses swierder en kinne gefoelige gegevens befetsje oer it systeem dat de add-on generearre hat. Wizigje it ferpakkingsproses, sadat dizze bestannen net "
+"opnommen wurde."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -333,11 +337,11 @@ msgstr "Markearre bestânsnamme fûn"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "Der binne bestannen fûn dy’t net nedich binne of sûnder bedoeling tafoege binne. Se moatte fuortsmiten wurde."
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "It pakket befettet meardere entries mei deselde namme. Dit is ferbean. Probearje jo add-onpakket út te pakken en opnij te zippen en probearje it opnij."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
