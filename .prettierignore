@@ -7,10 +7,7 @@ scripts/list-firefox-tags
 scripts/run-l10n-extraction
 scripts/webext-test-functional
 scripts/smoke-test-eslint-version-conflicts
-src/schema/imported/LICENSE-CHROMIUM
 package-lock.json
-LICENSE-MPL
-LICENSE.md
 
 # exclude these directories
 /tmp/
@@ -24,3 +21,6 @@ LICENSE.md
 # white-list files we want to process
 !*.js
 !*.md
+
+# exclude LICENSE.md again
+LICENSE.md
