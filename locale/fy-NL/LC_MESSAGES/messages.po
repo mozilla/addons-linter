@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-10 18:31+0000\n"
+"PO-Revision-Date: 2023-05-10 18:42+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fy_NL\n"
@@ -356,6 +356,8 @@ msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
+"Bestannen wêrfan de nammen einigje mei markearre útwreidingen binne fûn yn de add-on. De útwreiding fan dizze bestannen wurde markearre, omdat se gewoanlik binêre komponinten identifisearje. Sjoch "
+"https://bit.ly/review-policy foar mear ynformaasje oer it proses foar beoardieling fan binêre ynhâld."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
@@ -363,7 +365,7 @@ msgstr "Pakket al ûndertekene"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "Add-ons dy’t al ûndertekene binne, wurde opnij ûndertekene as se publisearre wurde op AMO. Dit sil alle besteande hantekeningen op de add-on ferfange."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -371,7 +373,7 @@ msgstr "Firefox-add-ons meie gjin coinminers útfiere."
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "Wy stean gjin coinminer-skripts ta om te rinnen yn WebExtensions. Sjoch https://github.com/mozilla/addons-linter/issues/1643 foar mear details."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -379,11 +381,11 @@ msgstr "Stringnamme is reservearre foar in yn it foar definiearre berjocht"
 
 #: src/messages/locale-messagesjson.js:14
 msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr ""
+msgstr "Stringnammen dy’t begjinne mei @@ wurde oerset nei ynboude konstanten (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "Stringnamme mei allinnich alfanumerike tekens, _ en @ befetsje (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -399,7 +401,7 @@ msgstr "Placeholdernamme befettet net jildige karakters"
 
 #: src/messages/locale-messagesjson.js:34
 msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr ""
+msgstr "Plakhâldernamme mei allinnich alfanumerike tekens, _ en @ befetsje (https://mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
@@ -407,7 +409,7 @@ msgstr "Placeholder mist de eigenskip ynhâld"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "In plakhâlder hat in ynhâldeigenskip nedich dyt de ferfanging dêrfan definiearret (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
