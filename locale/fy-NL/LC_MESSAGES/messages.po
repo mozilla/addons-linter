@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-10 13:12+0000\n"
+"PO-Revision-Date: 2023-05-10 13:15+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fy_NL\n"
@@ -222,7 +222,7 @@ msgstr ""
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "De funksjes setTimeout, setInterval en execScript meie allinnich oanroppen wurde mei funksje-ekspresjes as harren earste argumint"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
@@ -230,7 +230,7 @@ msgstr "Unferwachte globale fariabele trochjûn as argumint"
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr ""
+msgstr "It trochjaan fan in globale wearde as argumint wurdt net oanrekommandearre. Meitsje hjir in var fan."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
@@ -238,7 +238,7 @@ msgstr "Gebrûk fan document.write wurdt strang ôfrêd."
 
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
-msgstr ""
+msgstr "document.write sil yn in protte gefallen mislearje by gebrûk yn útwreidingen, en hat mooglik earnstige gefolgen foar de feilichheid by net kret gebrûk. Dêrom mei it net brûkt wurde."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
