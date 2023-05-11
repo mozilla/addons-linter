@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-11 15:51+0000\n"
+"PO-Revision-Date: 2023-05-11 16:02+0000\n"
 "Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -239,6 +239,8 @@ msgstr "L’utilisation de document.write est fortement déconseillée."
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
 msgstr ""
+"document.write échouera dans de nombreuses circonstances lorsque cette fonction est utilisée dans des extensions, et a de graves répercussions sur la sécurité si elle est utilisée incorrectement. "
+"Par conséquent, elle ne doit pas être utilisée."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
@@ -246,7 +248,7 @@ msgstr "Bibliothèque JS tierce interdite d’utilisation"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Votre module complémentaire utilise une bibliothèque JavaScript que nous considérons comme non sécurisée. Pour plus d’informations, consultez : https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
@@ -254,7 +256,7 @@ msgstr "Le code JSON contient des blocs de commentaires."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "Seuls les commentaires de ligne (commentaires commençant par « // ») sont autorisés dans les fichiers JSON. Veuillez retirer les blocs de commentaires (commentaires commençant par « /* »)"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -278,7 +280,7 @@ msgstr "Nom de fichier réservé détecté."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "Des fichiers dont le nom est réservé ont été trouvés dans le module. Veuillez ne pas les utiliser et renommer vos fichiers."
 
 #: src/messages/layout.js:22
 msgid ""
