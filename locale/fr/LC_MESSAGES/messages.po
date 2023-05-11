@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-11 16:21+0000\n"
+"PO-Revision-Date: 2023-05-11 16:32+0000\n"
 "Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -463,7 +463,7 @@ msgstr "Origine d’installation invalide."
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
+msgstr "Origine d’installation invalide. Une origine valide a uniquement un schéma, un nom d’hôte et un port facultatif. Voir https://mzl.la/3TEbqbE (MDN Docs) pour plus d’informations."
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -479,7 +479,7 @@ msgstr "Le champ est invalide."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "« %(property)s » permet l’exécution de code à distance dans le fichier manifest.json"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
@@ -531,7 +531,7 @@ msgstr "Aucune propriété « %(property)s » trouvée dans le fichier manifes
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "La propriété « %(property)s » est requise"
 
 #: src/messages/manifestjson.js:279
 msgid "An icon defined in the manifest could not be found in the package."
@@ -799,7 +799,7 @@ msgstr "Consultez https://mzl.la/3PLZYdo pour plus d’informations."
 
 #: src/messages/manifestjson.js:715
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr ""
+msgstr "%(instancePath)s : les extensions privilégiées devraient déclarer les permissions privilégiées."
 
 #: src/messages/manifestjson.js:726
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
@@ -807,19 +807,19 @@ msgstr "Cette extension ne déclare aucune permission privilégiée. Elle n’a 
 
 #: src/messages/manifestjson.js:739
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s : la permission « mozillaAddons » est requise pour les extensions privilégiées."
 
 #: src/messages/manifestjson.js:742
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s : la permission « mozillaAddons » est requise pour les extensions qui incluent des champs manifeste privilégiés."
 
 #: src/messages/manifestjson.js:755
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "Cette extension ne possède pas la permission « mozillaAddons », qui est nécessaire pour les extensions privilégiées."
 
 #: src/messages/manifestjson.js:765
 msgid "Cannot use actions in hidden add-ons."
-msgstr ""
+msgstr "Impossible d’utiliser des actions dans des modules complémentaires masqués."
 
 #: src/messages/manifestjson.js:766
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
@@ -827,7 +827,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:774
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
-msgstr ""
+msgstr "Utilisez « browser_specific_settings » au lieu de « applications »."
 
 #: src/messages/manifestjson.js:775
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
