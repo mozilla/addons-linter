@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-11 15:47+0000\n"
+"PO-Revision-Date: 2023-05-11 16:38+0000\n"
 "Last-Translator: Melo46 <melo@carmu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -803,19 +803,19 @@ msgstr "%(instancePath)s: extensiones privilegiate debe declarar permissos privi
 
 #: src/messages/manifestjson.js:726
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr ""
+msgstr "Iste extension non declara ulle permisso privilegiate. Illo non besonia de esser firmate con le certificato privilegiate. Carga lo directemente a https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:739
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: Le permisso de \"mozillaAddons\" es obligatori pro extensiones privilegiate."
 
 #: src/messages/manifestjson.js:742
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s: le permisso de \"mozillaAddons\" es obligatori pro extensiones que include campos del manifesto privilegiate."
 
 #: src/messages/manifestjson.js:755
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "Iste extension non include le permisso de \"mozillaAddons\", que es necessari al extensiones privilegiate."
 
 #: src/messages/manifestjson.js:765
 msgid "Cannot use actions in hidden add-ons."
@@ -823,7 +823,7 @@ msgstr "Impossibile usar actiones in additivos celate."
 
 #: src/messages/manifestjson.js:766
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "Le proprietates celate e browser_action/page_action (o action in le version 3 del Manifesto e superior) es mutualmente exclusive."
 
 #: src/messages/manifestjson.js:774
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
@@ -831,25 +831,27 @@ msgstr "Usa \"browser_specific_settings\" in vice de \"applications\"."
 
 #: src/messages/manifestjson.js:775
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "Le proprietate \"applications\" in le manifesto es obsolete e non sera plus acceptate in le version 3 del Manifesto e superior."
 
 #: src/messages/manifestjson.js:783
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "\"applications\" non es plus permittite in le version 3 del Manifesto e superior."
 
 #: src/messages/manifestjson.js:785
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "Le proprietate \"applications\" in le manifesto non es plus permittite in le version 3 del Manifesto e superior. Usar \"browser_specific_settings\" in vice."
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "Le stringa de version debe esser simplificate perque illo non essera compatibile con version 3 del Manifesto e superior."
 
 #: src/messages/manifestjson.js:795
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Le version debe esser un stringa con 1 - 4 numeros separate con punctos. Cata numero debe haber usque 9 digitos, e le zeros initial non sera plus permittite. Alsi le litteras non sera plus "
+"permittite. Vider https://mzl.la/3h3mCRu (Documentation MDN) pro altere informationes."
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
@@ -860,14 +862,16 @@ msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
 "https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Le version debe esser un stringa con 1 - 4 numeros separate con punctos. Cata numero debe haber usque 9 digitos, e le zeros initial non es permittite. Le litteras non es plus permittite. Vider "
+"https://mzl.la/3h3mCRu (Documentation MDN) pro altere informationes."
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "/%(fieldName)s: \"%(permissionName)s\" non es supportate in le versiones del manifesto %(versionRange)s."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
-msgstr ""
+msgstr "/%(fieldName)s: \"%(permissionName)s\" non es supportate."
 
 #~ msgid "\"$(api)s\" can cause issues when loaded temporarily"
 #~ msgstr "\"$(api)s\" pote causar problemas quando cargate temporarimente"
