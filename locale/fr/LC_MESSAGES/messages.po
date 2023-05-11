@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-10 15:37+0000\n"
+"PO-Revision-Date: 2023-05-11 15:51+0000\n"
 "Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -47,6 +47,8 @@ msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
 "%(maxManifestVersion)s)."
 msgstr ""
+"L’intervalle de version de manifeste demandé n’est pas valide : --min-manifest-version (la valeur actuelle est %(minManifestVersion)s) ne doit pas être supérieur à --max-manifest-version (la valeur "
+"actuelle est %(maxManifestVersion)s)."
 
 #: src/messages/css.js:13
 msgid "Invalid nesting of selectors found"
@@ -196,7 +198,7 @@ msgstr "« %(method)s » appelée avec un URI non local"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "L’appel à « %(method)s » avec un URI non local ouvrira la boîte de dialogue avec les privilèges chrome."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -207,12 +209,16 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
+"Il y a une erreur de syntaxe JavaScript dans votre code, qui peut être liée à certaines fonctionnalités JavaScript expérimentales qui ne font pas partie des spécifications du langage et ne sont donc"
+" pas encore prises en charge. La validation ne peut pas continuer pour ce fichier."
 
 #: src/messages/javascript.js:62
 msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible."
 msgstr ""
+"L’évaluation de chaînes de caractères en tant que code peut entraîner des failles de sécurité et des problèmes de performances, même dans les circonstances les plus inoffensives. Veuillez éviter "
+"d’utiliser `eval` et le constructeur `Function` autant que possible."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
@@ -224,7 +230,7 @@ msgstr "Variable globale inattendue passée comme un argument"
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr ""
+msgstr "Il n’est pas recommandé de passer une variable globale comme argument. Veuillez plutôt utiliser « var »."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
