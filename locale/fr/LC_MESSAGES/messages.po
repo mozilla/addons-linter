@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-11 16:11+0000\n"
+"PO-Revision-Date: 2023-05-11 16:21+0000\n"
 "Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -326,6 +326,8 @@ msgstr "Un fichier caché a été détecté"
 msgid ""
 "Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
 msgstr ""
+"Les fichiers cachés compliquent le processus de revue et peuvent contenir des informations sensibles sur le système qui a généré le module. Merci de modifier le processus de création du paquet afin "
+"que ces fichiers ne soient plus inclus."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -337,11 +339,11 @@ msgstr "Nom de fichier signalé détecté"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "Des fichiers inutiles ou ajoutés par inadvertance ont été trouvés. Ils devraient être supprimés."
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "Le paquet contient plusieurs entrées avec le même nom. Cette pratique a été interdite. Essayez de décompresser puis de re-compresser le paquet de votre module puis essayez à nouveau."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
@@ -356,6 +358,8 @@ msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
+"Des fichiers dont le nom se termine par une extension signalée ont été trouvés dans le module. L’extension de ces fichiers est signalée car ils identifient généralement des composants binaires. "
+"Veuillez consulter https://bit.ly/review-policy pour plus d’informations sur le processus de revue de contenu binaire."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
@@ -363,7 +367,7 @@ msgstr "Le paquet est déjà signé"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "Les modules déjà signés le seront à nouveau lors de leur publication sur AMO. Ce processus remplacera toutes les signatures existantes sur le module."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -371,7 +375,7 @@ msgstr "Les modules Firefox ne peuvent pas miner de cryptomonnaies."
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "Nous n’autorisons pas l’exécution de scripts de minage de cryptomonnaies dans les WebExtensions. Consultez https://github.com/mozilla/addons-linter/issues/1643 pour plus de détails."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -383,7 +387,7 @@ msgstr ""
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "Le nom de la chaîne ne doit contenir que des caractères alphanumériques, _ et @ (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -399,7 +403,7 @@ msgstr "Le nom de l’emplacement contient des caractères invalides"
 
 #: src/messages/locale-messagesjson.js:34
 msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr ""
+msgstr "Le nom de l’emplacement ne doit contenir que des caractères alphanumériques, _ et @ (https://mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
@@ -407,7 +411,7 @@ msgstr "L’emplacement ne possède pas de propriété de contenu"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "Un nom d’emplacement a besoin d’une propriété de contenu définissant son remplacement (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
@@ -447,7 +451,7 @@ msgstr "Permission inconnue."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s : les permissions privilégiées suivantes ne sont autorisées que dans les extensions privilégiées : %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
