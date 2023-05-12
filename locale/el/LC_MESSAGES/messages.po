@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-05 11:55+0000\n"
+"PO-Revision-Date: 2023-05-12 09:52+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -658,7 +658,7 @@ msgstr "Το αρχείο εικόνας θέματος έχει μια μη υ�
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "Το «%(fieldName)s» δεν υποστηρίζεται στις εκδόσεις manifest %(versionRange)s."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
@@ -822,7 +822,7 @@ msgstr "Η ιδιότητα «applications» στο manifest δεν επιτρέ
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "Η συμβολοσειρά έκδοσης θα πρέπει να απλοποιηθεί γιατί δεν θα είναι συμβατή με την έκδοση Manifest 3 και νεότερες."
 
 #: src/messages/manifestjson.js:795
 msgid ""
