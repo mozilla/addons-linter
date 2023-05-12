@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-12 09:52+0000\n"
+"PO-Revision-Date: 2023-05-12 09:55+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -212,7 +212,7 @@ msgstr ""
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "Οι συναρτήσεις setTimeout, setInterval και execScript πρέπει να καλούνται μόνο με εκφράσεις συνάρτησης ως το πρώτο τους όρισμα"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
@@ -362,7 +362,7 @@ msgstr "Το όνομα νήματος κρατείται για ένα προκ
 
 #: src/messages/locale-messagesjson.js:14
 msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr ""
+msgstr "Τα ονόματα συμβολοσειρών που ξεκινούν με «@@» μεταφράζονται σε ενσωματωμένες σταθερές (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
@@ -602,7 +602,7 @@ msgstr "Αυτό το πρόσθετο περιέχει απαγορευμένο
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "Παρακαλώ ανατρέξτε στο https://github.com/mozilla-extensions/xpi-manifest για να μάθετε περισσότερα σχετικά με τις προνομιούχες επεκτάσεις και την υπογραφή."
 
 #: src/messages/manifestjson.js:403
 msgid "Icons must be square."
