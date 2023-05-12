@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-11 16:32+0000\n"
+"PO-Revision-Date: 2023-05-12 16:40+0000\n"
 "Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -523,7 +523,7 @@ msgstr "« strict_max_version » n’est pas nécessaire."
 
 #: src/messages/manifestjson.js:256
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "« strict_max_version » ne doit pas être utilisé à moins qu’il soit prévu que le module ne fonctionne pas avec les futures versions de Firefox."
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
@@ -736,6 +736,8 @@ msgstr "Propriété « applications » remplacée par la propriété « brows
 #: src/messages/manifestjson.js:567
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
 msgstr ""
+"La propriété « applications » est ignorée car elle est remplacée par la propriété « browser_specific_settings » qui est également définie dans votre manifeste. Envisagez de supprimer "
+"« applications »."
 
 #: src/messages/manifestjson.js:577
 msgid "Empty language directory"
