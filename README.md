@@ -293,7 +293,6 @@ Firefox name or logo.
 
 For more information, see: https://www.mozilla.org/foundation/licensing.html
 
-
 [new release]: https://github.com/mozilla/addons-linter/releases/new
 [semver]: http://semver.org/
 [prettier]: https://prettier.io/
