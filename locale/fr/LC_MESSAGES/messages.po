@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-12 16:43+0000\n"
+"PO-Revision-Date: 2023-05-14 09:35+0000\n"
 "Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -264,7 +264,7 @@ msgstr "Les clés dupliquées ne sont pas autorisées dans les fichiers JSON."
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "Doublon de clé détecté dans un fichier JSON."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
