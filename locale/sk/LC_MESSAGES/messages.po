@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-04-07 13:00+0000\n"
+"PO-Revision-Date: 2023-05-15 16:41+0000\n"
 "Last-Translator: wladow <valastiak@mozilla.sk>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -44,9 +44,8 @@ msgstr "Stĺpec"
 
 #: src/linter.js:73
 msgid ""
-"Invalid manifest version range requested: --min-manifest-version (currently "
-"set to %(minManifestVersion)s) should not be greater than --max-manifest-"
-"version (currently set to %(maxManifestVersion)s)."
+"Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
+"%(maxManifestVersion)s)."
 msgstr ""
 
 #: src/messages/css.js:13
@@ -55,17 +54,15 @@ msgstr "Bolo nájdené neplatné vnorenie"
 
 #: src/messages/css.js:14
 msgid "Selectors should not be nested"
-msgstr ""
+msgstr "Selektory by nemali byť vnorené"
 
 #: src/messages/css.js:6
 msgid "A CSS syntax error was encountered"
 msgstr "Naša sa chyba syntaxe CSS"
 
 #: src/messages/css.js:7
-msgid ""
-"An error was found in the CSS file being processed. As a result, further "
-"processing of that file is not possible"
-msgstr ""
+msgid "An error was found in the CSS file being processed. As a result, further processing of that file is not possible"
+msgstr "V spracovávanom súbore CSS sa našla chyba. V dôsledku toho nie je možné ďalšie spracovanie tohto súboru"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -80,9 +77,7 @@ msgid "Remote scripts are not allowed as per the Add-on Policies."
 msgstr "Vzdialené skripty nie sú povolené bezpečnostnou politikou doplnkov."
 
 #: src/messages/html.js:13
-msgid ""
-"Please include all scripts in the add-on. For more information, refer to "
-"https://mzl.la/2uEOkYp."
+msgid "Please include all scripts in the add-on. For more information, refer to https://mzl.la/2uEOkYp."
 msgstr ""
 
 #: src/messages/html.js:5
@@ -90,9 +85,7 @@ msgid "Inline scripts blocked by default"
 msgstr "Vložené skripty sú v predvolenom nastavení zakázané"
 
 #: src/messages/html.js:6
-msgid ""
-"Default CSP rules prevent inline JavaScript from running (https://mzl."
-"la/2pn32nd)."
+msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
 msgstr ""
 
 #: src/messages/javascript.js:100
@@ -100,9 +93,7 @@ msgid "Unadvised 3rd-party JS library"
 msgstr "Neodporúčaná JS knižnica tretej strany"
 
 #: src/messages/javascript.js:101
-msgid ""
-"Your add-on uses a JavaScript library we do not recommend. Read more: "
-"https://bit.ly/1TRIyZY"
+msgid "Your add-on uses a JavaScript library we do not recommend. Read more: https://bit.ly/1TRIyZY"
 msgstr ""
 
 #: src/messages/javascript.js:107
@@ -110,16 +101,13 @@ msgid "Known JS library detected"
 msgstr "Bola rozpoznaná známa JS knižnica"
 
 #: src/messages/javascript.js:108
-msgid ""
-"JavaScript libraries are discouraged for simple add-ons, but are generally "
-"accepted."
+msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
 msgstr ""
 
 #: src/messages/javascript.js:116
 msgid ""
-"Due to both security and performance concerns, this may not be set using "
-"dynamic values which have not been adequately sanitized. This can lead to "
-"security issues or fairly serious performance degradation."
+"Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
+"degradation."
 msgstr ""
 
 #: src/messages/javascript.js:125
@@ -131,12 +119,8 @@ msgid "This API has not been implemented by Firefox."
 msgstr "Toto API nebolo Firefoxom implementované."
 
 #: src/messages/javascript.js:132
-msgid ""
-"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
-"property)"
-msgstr ""
-"\"{{api}}\" bolo odstránené v manifeste verzie 3 (vlastnosť "
-"`manifest_version`)"
+msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
+msgstr "\"{{api}}\" bolo odstránené v manifeste verzie 3 (vlastnosť `manifest_version`)"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
@@ -164,9 +148,8 @@ msgstr ""
 
 #: src/messages/javascript.js:165
 msgid ""
-"This API can cause issues when loaded temporarily using about:debugging in "
-"Firefox unless you specify \"browser_specific_settings.gecko.id\" in the "
-"manifest. Please see: https://mzl.la/2hizK4a for more."
+"This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
+"more."
 msgstr ""
 
 #: src/messages/javascript.js:185
@@ -182,8 +165,7 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}} nie je podporované vo Firefoxe pre Android {{minVersion}}"
 
 #: src/messages/javascript.js:199
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "Toto API nebolo danou verziou Firefoxu pre Android implementované"
 
 #: src/messages/javascript.js:22
@@ -199,10 +181,7 @@ msgid "\"%(method)s\" called with a non-literal uri"
 msgstr ""
 
 #: src/messages/javascript.js:34
-msgid ""
-"Calling \"%(method)s\" with variable parameters can result in potential "
-"security vulnerabilities if the variable contains a remote URI. Consider "
-"using 'window.open' with the 'chrome=no' flag."
+msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
 msgstr ""
 
 #: src/messages/javascript.js:45
@@ -210,9 +189,7 @@ msgid "\"%(method)s\" called with non-local URI"
 msgstr ""
 
 #: src/messages/javascript.js:49
-msgid ""
-"Calling \"%(method)s\" with a non-local URI will result in the dialog being "
-"opened with chrome privileges."
+msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
 msgstr ""
 
 #: src/messages/javascript.js:5
@@ -221,23 +198,18 @@ msgstr "Chyba v syntaxi JavaScriptu"
 
 #: src/messages/javascript.js:6
 msgid ""
-"There is a JavaScript syntax error in your code, which might be related to "
-"some experimental JavaScript features that aren't an official part of the "
-"language specification and therefore not supported yet. The validation "
-"cannot continue on this file."
+"There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
+"supported yet. The validation cannot continue on this file."
 msgstr ""
 
 #: src/messages/javascript.js:62
 msgid ""
-"Evaluation of strings as code can lead to security vulnerabilities and "
-"performance issues, even in the most innocuous of circumstances. Please "
-"avoid using `eval` and the `Function` constructor when at all possible."
+"Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
+"at all possible."
 msgstr ""
 
 #: src/messages/javascript.js:71
-msgid ""
-"setTimeout, setInterval and execScript functions should be called only with "
-"function expressions as their first argument"
+msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
 msgstr ""
 
 #: src/messages/javascript.js:78
@@ -245,9 +217,7 @@ msgid "Unexpected global passed as an argument"
 msgstr "Neočakávaná globálna premenná prešla ako parameter"
 
 #: src/messages/javascript.js:79
-msgid ""
-"Passing a global as an argument is not recommended. Please make this a var "
-"instead."
+msgid "Passing a global as an argument is not recommended. Please make this a var instead."
 msgstr ""
 
 #: src/messages/javascript.js:85
@@ -255,10 +225,7 @@ msgid "Use of document.write strongly discouraged."
 msgstr "Použitie document.write sa neodporúča."
 
 #: src/messages/javascript.js:86
-msgid ""
-"document.write will fail in many circumstances when used in extensions, and "
-"has potentially severe security repercussions when used improperly. "
-"Therefore, it should not be used."
+msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
 msgstr ""
 
 #: src/messages/javascript.js:93
@@ -266,9 +233,7 @@ msgid "Banned 3rd-party JS library"
 msgstr "Zakázaná JS knižnica tretej strany"
 
 #: src/messages/javascript.js:94
-msgid ""
-"Your add-on uses a JavaScript library we consider unsafe. Read more: https://"
-"bit.ly/1TRIyZY"
+msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
 msgstr ""
 
 #: src/messages/json.js:11
@@ -276,9 +241,7 @@ msgid "Your JSON contains block comments."
 msgstr "Váš JSON obsahuje blokové komentáre."
 
 #: src/messages/json.js:12
-msgid ""
-"Only line comments (comments beginning with \"//\") are allowed in JSON "
-"files. Please remove block comments (comments beginning with \"/*\")"
+msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
 msgstr ""
 
 #: src/messages/json.js:19
@@ -302,17 +265,13 @@ msgid "Reserved filename found."
 msgstr "Bol nájdený súbor s rezervovaným názvom."
 
 #: src/messages/layout.js:108
-msgid ""
-"Files whose names are reserved have been found in the add-on. Please refrain "
-"from using them and rename your files."
+msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
 msgstr ""
 
 #: src/messages/layout.js:22
 msgid ""
-"The package is invalid. It may contain entries using invalid characters, as "
-"an example using '\\' as a path separator is not allowed in Firefox. Try to "
-"recreate your add-on package (ZIP) and make sure all entries are using '/' "
-"as the path separator."
+"The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
+"sure all entries are using '/' as the path separator."
 msgstr ""
 
 #: src/messages/layout.js:32
@@ -325,9 +284,8 @@ msgstr "manifest.json sa nepodarilo nájsť"
 
 #: src/messages/layout.js:38
 msgid ""
-"No manifest.json was found at the root of the extension. The package file "
-"must be a ZIP of the extension's files themselves, not of the containing "
-"directory. See: https://mzl.la/2r2McKv for more on packaging."
+"No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
+"packaging."
 msgstr ""
 
 #: src/messages/layout.js:45
@@ -336,10 +294,8 @@ msgstr "Súbor je na analýzu príliš veľký."
 
 #: src/messages/layout.js:47
 msgid ""
-"This file is not binary and is too large to parse. Files larger than "
-"%(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists "
-"of data out of JavaScript files and into JSON files, or splitting very large "
-"files into smaller ones."
+"This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
+"or splitting very large files into smaller ones."
 msgstr ""
 
 #: src/messages/layout.js:57
@@ -348,10 +304,8 @@ msgstr "Bol označený skrytý súbor"
 
 #: src/messages/layout.js:58
 msgid ""
-"Hidden files complicate the review process and can contain sensitive "
-"information about the system that generated the add-on. Please modify the "
-"packaging process so that these files aren't included."
-msgstr ""
+"Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
+msgstr "Skryté súbory komplikujú proces kontroly a môžu obsahovať citlivé informácie o systéme, ktoré doplnok vygeneroval. Upravte proces balenia tak, aby tieto súbory neboli zahrnuté."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -362,15 +316,11 @@ msgid "Flagged filename found"
 msgstr "Bol nájdený označený názov súboru"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
-msgid ""
-"Files were found that are either unnecessary or have been included "
-"unintentionally. They should be removed."
-msgstr ""
+msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
+msgstr "Boli nájdené súbory, ktoré sú buď nepotrebné, alebo boli zahrnuté neúmyselne. Mali by byť odstránené."
 
 #: src/messages/layout.js:7
-msgid ""
-"The package contains multiple entries with the same name. This practice has "
-"been banned. Try unzipping and re-zipping your add-on package and try again."
+msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
 msgstr ""
 
 #: src/messages/layout.js:73
@@ -383,10 +333,8 @@ msgstr "Bol nájdený označený typ súboru"
 
 #: src/messages/layout.js:81
 msgid ""
-"Files whose names end with flagged extensions have been found in the add-on. "
-"The extension of these files are flagged because they usually identify "
-"binary components. Please see https://bit.ly/review-policy for more "
-"information on the binary content review process."
+"Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
+"https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
 
 #: src/messages/layout.js:90
@@ -394,9 +342,7 @@ msgid "Package already signed"
 msgstr "Balíček už bol podpísaný"
 
 #: src/messages/layout.js:91
-msgid ""
-"Add-ons which are already signed will be re-signed when published on AMO. "
-"This will replace any existing signatures on the add-on."
+msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
 msgstr ""
 
 #: src/messages/layout.js:98
@@ -404,9 +350,7 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Doplnky Firefoxu nesmú ťažiť kryptomeny."
 
 #: src/messages/layout.js:99
-msgid ""
-"We do not allow coinminer scripts to be run inside WebExtensions. See "
-"https://github.com/mozilla/addons-linter/issues/1643 for more details."
+msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:13
@@ -414,15 +358,11 @@ msgid "String name is reserved for a predefined message"
 msgstr "Názov reťazca je rezervovaný pre preddefinovanú správu"
 
 #: src/messages/locale-messagesjson.js:14
-msgid ""
-"String names starting with @@ get translated to built-in constants (https://"
-"mzl.la/2BL9ZjE)."
+msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:21
-msgid ""
-"String name should only contain alpha-numeric characters, _ and @ (https://"
-"mzl.la/2Eztyi5)."
+msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:27
@@ -438,9 +378,7 @@ msgid "Placeholder name contains invalid characters"
 msgstr "Placeholder obsahuje neplatné znaky"
 
 #: src/messages/locale-messagesjson.js:34
-msgid ""
-"Placeholder name should only contain alpha-numeric characters, _ and @ "
-"(https://mzl.la/2ExbYez)."
+msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:40
@@ -448,9 +386,7 @@ msgid "Placeholder is missing the content property"
 msgstr "Placeholderu chýba vlastnosť content"
 
 #: src/messages/locale-messagesjson.js:41
-msgid ""
-"A placeholder needs a content property defining the replacement of it "
-"(https://mzl.la/2DT1MQd)"
+msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:5
@@ -458,30 +394,24 @@ msgid "Translation string is missing the message property"
 msgstr "Reťazcu prekladu chýba vlastnosť message"
 
 #: src/messages/locale-messagesjson.js:6
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Pre reťazec nie je nastavená správa vo vlastnosti „message“ (https://mzl."
-"la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Pre reťazec nie je nastavená správa vo vlastnosti „message“ (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10
 msgid "The field is required."
 msgstr "Toto pole je povinné."
 
-#: src/messages/manifestjson.js:102 src/messages/manifestjson.js:110
-#: src/messages/manifestjson.js:118
+#: src/messages/manifestjson.js:102 src/messages/manifestjson.js:110 src/messages/manifestjson.js:118
 msgid "The permission type is unsupported."
 msgstr "Tento typ povolenia nie je podporovaný."
 
 #: src/messages/manifestjson.js:103 src/messages/manifestjson.js:128
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"Ďalšie informácie nájdete na https://mzl.la/1R1n1t0 (dokumentácia na MDN)."
+msgstr "Ďalšie informácie nájdete na https://mzl.la/1R1n1t0 (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:11 src/messages/manifestjson.js:20
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
-"Ďalšie informácie nájdete na https://mzl.la/1ZOhoEN (dokumentácia na MDN)."
+msgstr "Ďalšie informácie nájdete na https://mzl.la/1ZOhoEN (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:111 src/messages/manifestjson.js:157
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
@@ -489,16 +419,14 @@ msgstr "Ďalšie informácie nájdete na https://mzl.la/2Qn0fWC (Dokumenty MDN).
 
 #: src/messages/manifestjson.js:119 src/messages/manifestjson.js:166
 msgid "See https://mzl.la/3Woeqv4 (MDN Docs) for more information."
-msgstr ""
+msgstr "Ďalšie informácie nájdete na stránke https://mzl.la/3Woeqv4 (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:127 src/messages/manifestjson.js:156
 msgid "Unknown permission."
 msgstr "Neznáme povolenie."
 
 #: src/messages/manifestjson.js:138
-msgid ""
-"%(instancePath)s: the following privileged permissions are only allowed in "
-"privileged extensions: %(privilegedPermissions)s."
+msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
 msgstr ""
 
 #: src/messages/manifestjson.js:165
@@ -510,9 +438,7 @@ msgid "Invalid install origin."
 msgstr "Neplatný pôvod inštalácie."
 
 #: src/messages/manifestjson.js:175
-msgid ""
-"Invalid install origin. A valid origin has - only - a scheme, hostname and "
-"optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
+msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
 msgstr ""
 
 #: src/messages/manifestjson.js:183
@@ -521,8 +447,7 @@ msgstr "„manifest_version“ nie je v súbore manifest.json platná hodnota"
 
 #: src/messages/manifestjson.js:186
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"Ďalšie informácie nájdete na https://mzl.la/20PenXl (dokumentácia na MDN)."
+msgstr "Ďalšie informácie nájdete na https://mzl.la/20PenXl (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:19
 msgid "The field is invalid."
@@ -537,15 +462,11 @@ msgid "A custom \"%(property)s\" needs additional review."
 msgstr ""
 
 #: src/messages/manifestjson.js:215
-msgid ""
-"\"%(property)s\" allows 'eval', which has strong security and performance "
-"implications."
+msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
 msgstr ""
 
 #: src/messages/manifestjson.js:219
-msgid ""
-"In most cases the same result can be achieved differently, therefore it is "
-"generally prohibited"
+msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
 msgstr ""
 
 #: src/messages/manifestjson.js:227
@@ -554,17 +475,14 @@ msgstr "Vlastnosť „name“ musí byť reťazec."
 
 #: src/messages/manifestjson.js:228
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
-"Ďalšie informácie nájdete na http://mzl.la/1STmr48 (dokumentácia na MDN)."
+msgstr "Ďalšie informácie nájdete na http://mzl.la/1STmr48 (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:236
 msgid "\"update_url\" is not allowed."
 msgstr "„update_url“ nie je povolené."
 
 #: src/messages/manifestjson.js:237
-msgid ""
-"\"applications.gecko.update_url\" or \"browser_specific_settings.gecko."
-"update_url\" are not allowed for Mozilla-hosted add-ons."
+msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
 msgstr ""
 
 #: src/messages/manifestjson.js:246
@@ -572,10 +490,7 @@ msgid "The \"update_url\" property is not used by Firefox."
 msgstr "Vlastnosť „update_url“ nie je Firefoxom používaná."
 
 #: src/messages/manifestjson.js:247
-msgid ""
-"The \"update_url\" is not used by Firefox in the root of a manifest; your "
-"add-on will be updated via the Add-ons site and not your \"update_url\". "
-"See: https://mzl.la/25zqk4O"
+msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
 msgstr ""
 
 #: src/messages/manifestjson.js:255
@@ -583,9 +498,7 @@ msgid "\"strict_max_version\" not required."
 msgstr "„strict_max_version“ nie je vyžadované."
 
 #: src/messages/manifestjson.js:256
-msgid ""
-"\"strict_max_version\" shouldn't be used unless the add-on is expected not "
-"to work with future versions of Firefox."
+msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
 msgstr ""
 
 #: src/messages/manifestjson.js:265
@@ -594,7 +507,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "Vlastnosť \"%(property)s\" je povinná"
 
 #: src/messages/manifestjson.js:279
 msgid "An icon defined in the manifest could not be found in the package."
@@ -633,30 +546,23 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr "Skript obsahu súboru css definovaný v manifeste nebol nájdený."
 
 #: src/messages/manifestjson.js:328
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Skript obsahu definovaný v manifeste nebol nájdený v „%(path)s“."
 
 #: src/messages/manifestjson.js:331
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Skript obsahu súboru css definovaný v manifeste nebol nájdený v „%(path)s“."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Skript obsahu súboru css definovaný v manifeste nebol nájdený v „%(path)s“."
 
 #: src/messages/manifestjson.js:345
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "Slovník definovaný v manifeste nebol nájdený."
 
 #: src/messages/manifestjson.js:349
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "Slovník definovaný v manifeste nebol nájdený v „%(path)s“."
 
 #: src/messages/manifestjson.js:35
-msgid ""
-"\"%(fieldName)s\" manifest field is only used for privileged and temporarily "
-"installed extensions."
+msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
 msgstr ""
 
 #: src/messages/manifestjson.js:361
@@ -664,8 +570,7 @@ msgid "The manifest contains multiple dictionaries."
 msgstr "Manifest obsahuje viacero slovníkov."
 
 #: src/messages/manifestjson.js:362
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "V manifeste boli uvedené viaceré slovníky. Toto nie je podporované."
 
 #: src/messages/manifestjson.js:371
@@ -693,9 +598,7 @@ msgid "This add-on contains forbidden content."
 msgstr "Doplnok obsahuje zakázaný obsah."
 
 #: src/messages/manifestjson.js:4
-msgid ""
-"Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn "
-"more about privileged extensions and signing."
+msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
 msgstr ""
 
 #: src/messages/manifestjson.js:403
@@ -711,9 +614,7 @@ msgid "The size of the icon does not match the manifest."
 msgstr "Veľkosť ikony nezodpovedá manifestu."
 
 #: src/messages/manifestjson.js:417
-msgid ""
-"Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was "
-"%(actual)d."
+msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
 msgstr ""
 
 #: src/messages/manifestjson.js:430
@@ -734,8 +635,7 @@ msgstr "Tento LWT alias témy vzhľadu bol odstránený vo Firefoxe 70."
 
 #: src/messages/manifestjson.js:449
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
-"Ďalšie informácie nájdete na https://mzl.la/2T11Lkc (dokumentácia na MDN)."
+msgstr "Ďalšie informácie nájdete na https://mzl.la/2T11Lkc (dokumentácia na MDN)."
 
 #: src/messages/manifestjson.js:464
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
@@ -754,25 +654,20 @@ msgid "Theme image file has an unsupported file extension"
 msgstr "Súbor s obrázkom témy vzhľadu obsahuje nepodporované rozšírenie"
 
 #: src/messages/manifestjson.js:49
-msgid ""
-"\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
+msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
 msgstr ""
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
-"Súbor s obrázkom témy vzhľadu v „%(path)s“ obsahuje nepodporované rozšírenie"
+msgstr "Súbor s obrázkom témy vzhľadu v „%(path)s“ obsahuje nepodporované rozšírenie"
 
 #: src/messages/manifestjson.js:504
 msgid "Theme image file has an unsupported mime type"
 msgstr "Súbor s obrázkom témy vzhľadu má nepodporovaný typ mime"
 
 #: src/messages/manifestjson.js:506
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
-"Súbor s obrázkom témy vzhľadu v „%(path)s“ má nepodporovaný typ mime "
-"„%(mime)s“"
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "Súbor s obrázkom témy vzhľadu v „%(path)s“ má nepodporovaný typ mime „%(mime)s“"
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
@@ -783,21 +678,15 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr "Typ mime súboru s obrázkom témy vzhľadu nezodpovedá svojmu rozšíreniu"
 
 #: src/messages/manifestjson.js:524
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
-"Rozšírenie obrázka témy vzhľadu v „%(path)s“ nezodpovedá typu mime „%(mime)s“"
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "Rozšírenie obrázka témy vzhľadu v „%(path)s“ nezodpovedá typu mime „%(mime)s“"
 
 #: src/messages/manifestjson.js:537
 msgid "The \"default_locale\" is missing localizations."
 msgstr "Jazyku „default_locale“ chýbajú preklady."
 
 #: src/messages/manifestjson.js:538
-msgid ""
-"The \"default_locale\" value is specified in the manifest, but no matching "
-"\"messages.json\" in the \"_locales\" directory exists. See: https://mzl."
-"la/2hjcaEE"
+msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
 msgstr ""
 
 #: src/messages/manifestjson.js:546
@@ -805,9 +694,7 @@ msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "Jazyk „default_locale“ chýba, no „_locales“ existuje."
 
 #: src/messages/manifestjson.js:547
-msgid ""
-"The \"default_locale\" value is not specifed in the manifest, but a "
-"\"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
+msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
 msgstr ""
 
 #: src/messages/manifestjson.js:555
@@ -819,18 +706,11 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Ikony by mala mať formát JPG/JPEG, WebP, GIF, PNG alebo SVG."
 
 #: src/messages/manifestjson.js:564
-msgid ""
-"\"applications\" property overridden by \"browser_specific_settings\" "
-"property"
-msgstr ""
-"Vlastnosť \"applications\" prepísaná vlastnosťou "
-"\"browser_specific_settings\""
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
+msgstr "Vlastnosť \"applications\" prepísaná vlastnosťou \"browser_specific_settings\""
 
 #: src/messages/manifestjson.js:567
-msgid ""
-"The \"applications\" property is being ignored because it is superseded by "
-"the \"browser_specific_settings\" property which is also defined in your "
-"manifest. Consider removing applications."
+msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
 msgstr ""
 
 #: src/messages/manifestjson.js:577
@@ -846,9 +726,7 @@ msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr "Kľúč manifestu nie je podporovaný danou minimálnou verziou Firefoxu"
 
 #: src/messages/manifestjson.js:599 src/messages/manifestjson.js:621
-msgid ""
-"\"strict_min_version\" requires Firefox %(minVersion)s, which was released "
-"before version %(versionAdded)s introduced support for \"%(key)s\"."
+msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:617
@@ -856,55 +734,35 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Povolenie nie je podporované danou minimálnou verziou Firefoxu"
 
 #: src/messages/manifestjson.js:639
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
-msgstr ""
-"Kľúč manifestu nie je podporovaný danou minimálnou verziou Firefoxu pre "
-"Android"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "Kľúč manifestu nie je podporovaný danou minimálnou verziou Firefoxu pre Android"
 
 #: src/messages/manifestjson.js:64
-msgid ""
-"%(instancePath)s: privileged manifest fields are only allowed in privileged "
-"extensions."
+msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
 msgstr ""
 
 #: src/messages/manifestjson.js:643 src/messages/manifestjson.js:665
-msgid ""
-"\"strict_min_version\" requires Firefox for Android %(minVersion)s, which "
-"was released before version %(versionAdded)s introduced support for "
-"\"%(key)s\"."
+msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:661
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
-"Povolenie nie je podporované danou minimálnou verziou Firefoxu pre Android"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgstr "Povolenie nie je podporované danou minimálnou verziou Firefoxu pre Android"
 
 #: src/messages/manifestjson.js:676
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "Odkaz na „addons.mozilla.org“ nie je povolený"
 
 #: src/messages/manifestjson.js:677
-msgid ""
-"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
-"homepage"
-msgstr ""
-"Odkazy smerujúce na \"addons.mozilla.org\" nie je možné použiť ako domovskú "
-"stránku"
+msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
+msgstr "Odkazy smerujúce na \"addons.mozilla.org\" nie je možné použiť ako domovskú stránku"
 
 #: src/messages/manifestjson.js:689
-msgid ""
-"The \"%(permission)s\" permission requires \"strict_min_version\" to be set "
-"to \"%(minFirefoxVersion)s\" or above"
+msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
 msgstr ""
 
 #: src/messages/manifestjson.js:694
-msgid ""
-"The \"%(permission)s\" permission requires \"strict_min_version\" to be set "
-"to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json "
-"version to specify a minimum Firefox version."
+msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
 msgstr ""
 
 #: src/messages/manifestjson.js:706
@@ -916,34 +774,23 @@ msgid "See https://mzl.la/3PLZYdo for more information."
 msgstr "Ďalšie informácie nájdete na https://mzl.la/3PLZYdo."
 
 #: src/messages/manifestjson.js:715
-msgid ""
-"%(instancePath)s: Privileged extensions should declare privileged "
-"permissions."
+msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
 msgstr ""
 
 #: src/messages/manifestjson.js:726
-msgid ""
-"This extension does not declare any privileged permission. It does not need "
-"to be signed with the privileged certificate. Please upload it directly to "
-"https://addons.mozilla.org/."
+msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
 msgstr ""
 
 #: src/messages/manifestjson.js:739
-msgid ""
-"%(instancePath)s: The \"mozillaAddons\" permission is required for "
-"privileged extensions."
+msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
 msgstr ""
 
 #: src/messages/manifestjson.js:742
-msgid ""
-"%(instancePath)s: The \"mozillaAddons\" permission is required for "
-"extensions that include privileged manifest fields."
+msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
 msgstr ""
 
 #: src/messages/manifestjson.js:755
-msgid ""
-"This extension does not include the \"mozillaAddons\" permission, which is "
-"required for privileged extensions."
+msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
 msgstr ""
 
 #: src/messages/manifestjson.js:765
@@ -951,9 +798,7 @@ msgid "Cannot use actions in hidden add-ons."
 msgstr ""
 
 #: src/messages/manifestjson.js:766
-msgid ""
-"The hidden and browser_action/page_action (or action in Manifest Version 3 "
-"and above) properties are mutually exclusive."
+msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
 msgstr ""
 
 #: src/messages/manifestjson.js:774
@@ -961,9 +806,7 @@ msgid "Use \"browser_specific_settings\" instead of \"applications\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:775
-msgid ""
-"The \"applications\" property in the manifest is deprecated and will no "
-"longer be accepted in Manifest Version 3 and above."
+msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
 msgstr ""
 
 #: src/messages/manifestjson.js:783
@@ -971,23 +814,17 @@ msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
 msgstr ""
 
 #: src/messages/manifestjson.js:785
-msgid ""
-"The \"applications\" property in the manifest is no longer allowed in "
-"Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
+msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
 msgstr ""
 
 #: src/messages/manifestjson.js:793
-msgid ""
-"The version string should be simplified because it won't be compatible with "
-"Manifest Version 3 and above."
+msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
 msgstr ""
 
 #: src/messages/manifestjson.js:795
 msgid ""
-"The version should be a string with 1 to 4 numbers separated with dots. Each "
-"number should have up to 9 digits and leading zeros will no longer be "
-"allowed. Letters will no longer be allowed either. See https://mzl."
-"la/3h3mCRu (MDN Docs) for more information."
+"The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
+"See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
 
 #: src/messages/manifestjson.js:804
@@ -996,49 +833,35 @@ msgstr ""
 
 #: src/messages/manifestjson.js:805
 msgid ""
-"The version should be a string with 1 to 4 numbers separated with dots. Each "
-"number should have up to 9 digits and leading zeros are not allowed. Letters "
-"are no longer allowed. See https://mzl.la/3h3mCRu (MDN Docs) for more "
-"information."
+"The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
+"https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
 
 #: src/messages/manifestjson.js:83
-msgid ""
-"/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions "
-"%(versionRange)s."
+msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
 msgstr ""
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 msgstr ""
 
-#~ msgid ""
-#~ "Invalid install origin. A valid origin has - only - a scheme, hostname "
-#~ "and optional port."
-#~ msgstr ""
-#~ "Neplatný pôvod inštalácie. Platný pôvod má iba schému, názov hostiteľa a "
-#~ "voliteľný port."
+#~ msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
+#~ msgstr "Neplatný pôvod inštalácie. Platný pôvod má iba schému, názov hostiteľa a voliteľný port."
 
 #~ msgid "The \"version\" property must be a string."
 #~ msgstr "Vlastnosť „version“ musí byť reťazec."
 
 #~ msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-#~ msgstr ""
-#~ "Ďalšie informácie nájdete na http://mzl.la/1kXIADa (dokumentácia na MDN)."
+#~ msgstr "Ďalšie informácie nájdete na http://mzl.la/1kXIADa (dokumentácia na MDN)."
 
 #~ msgid "The \"version\" property uses a Firefox-specific format."
 #~ msgstr "Vlastnosť „version“ používa vo Firefoxe špecifický formát."
 
-#~ msgid ""
-#~ "See https://extensionworkshop.com/documentation/develop/extensions-and-"
-#~ "the-add-on-id/ for more information."
-#~ msgstr ""
-#~ "Ďalšie informácie nájdete na https://extensionworkshop.com/documentation/"
-#~ "develop/extensions-and-the-add-on-id/."
+#~ msgid "See https://extensionworkshop.com/documentation/develop/extensions-and-the-add-on-id/ for more information."
+#~ msgstr "Ďalšie informácie nájdete na https://extensionworkshop.com/documentation/develop/extensions-and-the-add-on-id/."
 
 #~ msgid "addEventListener` called with truthy fourth argument."
-#~ msgstr ""
-#~ "addEventListener bol volaný so štvrtým parametrom nastaveným na true."
+#~ msgstr "addEventListener bol volaný so štvrtým parametrom nastaveným na true."
 
 #~ msgid "A custom content_security_policy needs additional review."
 #~ msgstr "Vlastný content_security_policy vyžaduje dodatočné schválenie."
