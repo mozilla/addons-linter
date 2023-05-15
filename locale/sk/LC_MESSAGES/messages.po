@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-15 16:51+0000\n"
+"PO-Revision-Date: 2023-05-15 16:54+0000\n"
 "Last-Translator: wladow <valastiak@mozilla.sk>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -236,7 +236,7 @@ msgstr "Zakázaná JS knižnica tretej strany"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Váš doplnok používa knižnicu JavaScriptu, ktorú považujeme za nebezpečnú. Ďalšie informácie: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
@@ -244,7 +244,7 @@ msgstr "Váš JSON obsahuje blokové komentáre."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "V súboroch JSON sú povolené iba riadkové komentáre (komentáre začínajúce znakom „//“). Odstráňte blokové komentáre (komentáre začínajúce na „/*“)"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -252,7 +252,7 @@ msgstr "V súboroch JSON nie sú povolené duplicitné kľúče."
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "V súbore JSON sa našiel duplicitný kľúč."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
@@ -268,7 +268,7 @@ msgstr "Bol nájdený súbor s rezervovaným názvom."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "V doplnku sa našli súbory, ktorých názvy sú vyhradené. Zdržte sa ich používania a premenujte svoje súbory."
 
 #: src/messages/layout.js:22
 msgid ""
@@ -471,7 +471,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "Vo väčšine prípadov možno rovnaký výsledok dosiahnuť odlišne, preto je to všeobecne zakázané"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string."
@@ -507,7 +507,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "V súbore manifest.json sa nenašla žiadna \"%(property)s\"."
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
