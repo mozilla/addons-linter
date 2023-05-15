@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-15 16:41+0000\n"
+"PO-Revision-Date: 2023-05-15 16:51+0000\n"
 "Last-Translator: wladow <valastiak@mozilla.sk>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -102,7 +102,7 @@ msgstr "Bola rozpoznaná známa JS knižnica"
 
 #: src/messages/javascript.js:108
 msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
-msgstr ""
+msgstr "Pre jednoduché doplnky sa neodporúčajú používať knižnice JavaScriptu, avšak sú vo všeobecnosti akceptované."
 
 #: src/messages/javascript.js:116
 msgid ""
@@ -144,13 +144,15 @@ msgstr "Obsah súboru so skriptom nebol nájdený"
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "API \"%(api)s\" môže spôsobiť problémy pri dočasnom načítaní"
 
 #: src/messages/javascript.js:165
 msgid ""
 "This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
 "more."
 msgstr ""
+"Toto API môže spôsobiť problémy pri dočasnom načítaní pomocou about:debugging vo Firefoxe, pokiaľ v manifeste nešpecifikujete „browser_specific_settings.gecko.id“. Ďalšie informácie na "
+"https://mzl.la/2hizK4a."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -297,6 +299,8 @@ msgid ""
 "This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
 "or splitting very large files into smaller ones."
 msgstr ""
+"Tento súbor nie je binárny a je príliš veľký na analýzu. Súbory väčšie ako %(maxFileSizeToParseMB)s MB nebudú analyzované. Zvážte presun veľkých zoznamov údajov zo súborov JavaScript do súborov JSON"
+" alebo rozdelenie veľmi veľkých súborov na menšie."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -819,23 +823,27 @@ msgstr ""
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "Reťazec verzie by mal byť zjednodušený, pretože nebude kompatibilný s Manifestom verzie 3 a novšej."
 
 #: src/messages/manifestjson.js:795
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Verzia by mala byť reťazec s 1 až 4 číslami oddelenými bodkami. Každé číslo môže mať až 9 číslic, ale úvodné nuly už nebudú povolené. Už nebudú povolené ani písmená. Ďalšie informácie nájdete na "
+"stránke https://mzl.la/3h3mCRu (Dokumenty MDN)."
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
-msgstr ""
+msgstr "Reťazec verzie by mal byť zjednodušený."
 
 #: src/messages/manifestjson.js:805
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
 "https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Verzia by mala byť reťazec s 1 až 4 číslami oddelenými bodkami. Každé číslo môže mať maximálne 9 číslic, ale úvodné nuly nie sú povolené. Povolené už nie sú ani písmená. Ďalšie informácie nájdete na"
+" stránke https://mzl.la/3h3mCRu (Dokumenty MDN)."
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
