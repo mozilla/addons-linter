@@ -19,6 +19,6 @@ LICENSE
 /coverage/
 /vendor/
 
-# white-list files we want to process
+# allow-list of files we want to process
 !*.js
 !*.md
