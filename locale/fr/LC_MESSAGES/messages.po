@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-17 13:13+0000\n"
+"PO-Revision-Date: 2023-05-17 18:12+0000\n"
 "Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -383,7 +383,7 @@ msgstr "Le nom de la chaîne est déjà réservé à un message prédéfini"
 
 #: src/messages/locale-messagesjson.js:14
 msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr ""
+msgstr "Les chaînes dont le nom commence par @@ sont converties en constantes intégrées (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
@@ -483,11 +483,11 @@ msgstr "« %(property)s » permet l’exécution de code à distance dans le f
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "Une propriété personnalisée « %(property)s » nécessite une revue supplémentaire."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "« %(property)s » permet l’utilisation de « eval », ce qui a de fortes conséquences sur les performances et la sécurité."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
@@ -639,7 +639,7 @@ msgstr "La taille de l’icône ne correspond pas au manifeste."
 
 #: src/messages/manifestjson.js:417
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "La largeur de l’icône à l’adresse « %(path)s » devrait mesurer %(expected)d pixels mais était de %(actual)d."
 
 #: src/messages/manifestjson.js:430
 msgid "Corrupt image file"
