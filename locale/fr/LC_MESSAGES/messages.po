@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-17 12:57+0000\n"
+"PO-Revision-Date: 2023-05-17 13:11+0000\n"
 "Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -855,7 +855,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
-msgstr ""
+msgstr "La chaîne de caractères de la version devrait être simplifiée."
 
 #: src/messages/manifestjson.js:805
 msgid ""
