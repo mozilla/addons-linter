@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-21 18:12+0000\n"
+"PO-Revision-Date: 2023-05-21 18:15+0000\n"
 "Last-Translator: wladow <valastiak@mozilla.sk>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -355,7 +355,7 @@ msgstr "Doplnky Firefoxu nesmú ťažiť kryptomeny."
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "V rámci WebExtensions nepovoľujeme spúšťanie skriptov coinminer. Ďalšie informácie nájdete na https://github.com/mozilla/addons-linter/issues/1643."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -363,11 +363,11 @@ msgstr "Názov reťazca je rezervovaný pre preddefinovanú správu"
 
 #: src/messages/locale-messagesjson.js:14
 msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr ""
+msgstr "Názvy reťazcov začínajúce @@ sa prekladajú na vstavané konštanty (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "Názov reťazca by mal obsahovať iba alfanumerické znaky, _ a @ (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -383,7 +383,7 @@ msgstr "Placeholder obsahuje neplatné znaky"
 
 #: src/messages/locale-messagesjson.js:34
 msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr ""
+msgstr "Názov premennej by mal obsahovať iba alfanumerické znaky, _ a @ (https://mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
@@ -459,7 +459,7 @@ msgstr "Pole je neplatné."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "Vlastnosť \"%(property)s\" umožňuje vzdialené spustenie kódu v manifest.json"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
@@ -539,7 +539,7 @@ msgstr "Stránka pozadia nebola nájdená v „%(path)s“."
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "\"%(fieldName)s\" sa ignoruje pre neprivilegované doplnky."
 
 #: src/messages/manifestjson.js:322
 msgid "A content script defined in the manifest could not be found."
@@ -567,7 +567,7 @@ msgstr "Slovník definovaný v manifeste nebol nájdený v „%(path)s“."
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "Pole manifestu \"%(fieldName)s\" sa používa iba pre privilegované a dočasne nainštalované rozšírenia."
 
 #: src/messages/manifestjson.js:361
 msgid "The manifest contains multiple dictionaries."
@@ -675,7 +675,7 @@ msgstr "Súbor s obrázkom témy vzhľadu v „%(path)s“ má nepodporovaný ty
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "\"%(fieldName)s\" nie je podporované."
 
 #: src/messages/manifestjson.js:520
 msgid "Theme image file mime type does not match its file extension"
