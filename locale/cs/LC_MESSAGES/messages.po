@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-26 19:32+0000\n"
+"PO-Revision-Date: 2023-05-26 19:37+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -144,7 +144,7 @@ msgstr "Obsah skriptu nemohl být nalezen"
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "API \"%(api)s\" může způsobit problémy při dočasném načítání"
 
 #: src/messages/javascript.js:165
 msgid ""
@@ -250,7 +250,7 @@ msgstr "V JSON souborech nejsou duplicitní klíče povoleny."
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "V souboru JSON se našel duplicitní klíč."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
@@ -266,13 +266,15 @@ msgstr "Nalezen soubor s rezervovaným názvem."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "V doplňku byly nalezeny soubory, jejichž názvy jsou rezervovány. Vyhněte se jejich používání a přejmenujte své soubory."
 
 #: src/messages/layout.js:22
 msgid ""
 "The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
 "sure all entries are using '/' as the path separator."
 msgstr ""
+"Balíček je neplatný. Může obsahovat položky používající neplatné znaky, například použití '\\' jako oddělovače cesty není ve Firefoxu povoleno. Zkuste znovu vytvořit svůj balíček s doplňkem (ZIP) a "
+"ujistěte se, že všechny položky používají jako oddělovač cesty '/'."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
@@ -317,11 +319,11 @@ msgstr "Označený soubor nalezen"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "Byly nalezeny soubory, které jsou buď zbytečné, nebo byly zahrnuty neúmyslně. Měly by být odstraněny."
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "Balíček obsahuje více položek se stejným názvem. Tato praxe byla zakázána. Zkuste rozbalit a znovu zazipovat svůj balíček s doplňkem a zkuste to znovu."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
@@ -419,7 +421,7 @@ msgstr "Podrobnosti najdete v MDN Docs na adrese https://mzl.la/2Qn0fWC."
 
 #: src/messages/manifestjson.js:119 src/messages/manifestjson.js:166
 msgid "See https://mzl.la/3Woeqv4 (MDN Docs) for more information."
-msgstr ""
+msgstr "Podívejte se na https://mzl.la/3Woeqv4 (MDN dokumentace) pro více informací."
 
 #: src/messages/manifestjson.js:127 src/messages/manifestjson.js:156
 msgid "Unknown permission."
