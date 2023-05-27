@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-26 19:37+0000\n"
+"PO-Revision-Date: 2023-05-27 16:32+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -509,7 +509,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "Vlastnost \"%(property)s\" je povinná"
 
 #: src/messages/manifestjson.js:279
 msgid "An icon defined in the manifest could not be found in the package."
@@ -537,7 +537,7 @@ msgstr "Background stránka nebyla na cestě „%(path)s“ nalezena."
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "\"%(fieldName)s\" se pro neprivilegované doplňky ignoruje."
 
 #: src/messages/manifestjson.js:322
 msgid "A content script defined in the manifest could not be found."
@@ -673,7 +673,7 @@ msgstr "Soubor s obrázkem \"%(path)s\" je typu \"%(mime)s\", který není podpo
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "\"%(fieldName)s\" není podporováno."
 
 #: src/messages/manifestjson.js:520
 msgid "Theme image file mime type does not match its file extension"
