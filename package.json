@@ -67,7 +67,7 @@
     "json-merge-patch": "1.0.2",
     "os-locale": "5.0.0",
     "pino": "8.14.1",
-    "postcss": "8.4.23",
+    "postcss": "8.4.24",
     "relaxed-json": "1.0.3",
     "semver": "7.5.1",
     "sha.js": "2.4.11",
