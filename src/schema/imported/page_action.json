@@ -314,7 +314,7 @@
             },
             "browser_style": {
               "type": "boolean",
-              "default": false
+              "description": "Deprecated in Manifest V3."
             },
             "show_matches": {
               "type": "array",

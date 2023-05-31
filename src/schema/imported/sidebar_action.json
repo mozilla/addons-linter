@@ -239,7 +239,7 @@
             },
             "browser_style": {
               "type": "boolean",
-              "default": true
+              "description": "Defaults to true in Manifest V2; Deprecated in Manifest V3."
             },
             "default_panel": {
               "type": "string",
