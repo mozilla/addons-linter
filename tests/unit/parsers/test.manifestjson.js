@@ -307,6 +307,84 @@ describe('ManifestJSONParser', () => {
     expect(manifestJSONParser.isValid).toEqual(true);
   });
 
+  describe('browser_style', () => {
+    function parseManifest(manifestVersion, manifestKey, browserStyleValue) {
+      const manifest = {
+        manifest_version: manifestVersion,
+        [manifestKey]: {},
+        browser_specific_settings: {
+          gecko: {
+            id: '@browser-style-test',
+            // Avoid KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION warning;
+            // "action" key has highest version requirement (109+).
+            strict_min_version: '109.0',
+          },
+        },
+      };
+      if (browserStyleValue !== undefined) {
+        manifest[manifestKey].browser_style = browserStyleValue;
+      }
+      // Add mandatory fields so that validation doesn't fail due to that.
+      if (manifestKey === 'options_ui') {
+        manifest.options_ui.page = 'options.html';
+      } else if (manifestKey === 'sidebar_action') {
+        manifest.sidebar_action.default_panel = 'sidebar.html';
+      }
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON(manifest);
+      return new ManifestJSONParser(json, addonLinter.collector);
+    }
+    it.each(['action', 'options_ui', 'page_action', 'sidebar_action'])(
+      'should warn about MV3, unsupported %s.browser_style:true',
+      (manifestKey) => {
+        const manifestJSONParser = parseManifest(3, manifestKey, true);
+        expect(manifestJSONParser.collector.errors).toEqual([]);
+        expect(manifestJSONParser.collector.warnings).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              code: 'MANIFEST_FIELD_UNSUPPORTED',
+              instancePath: `/${manifestKey}/browser_style`,
+              message: expect.stringMatching(
+                /browser_style" is not supported in manifest versions > 2/
+              ),
+            }),
+          ])
+        );
+        expect(manifestJSONParser.isValid).toEqual(true);
+      }
+    );
+
+    it.each(['action', 'options_ui', 'page_action', 'sidebar_action'])(
+      'should not warn about MV3, despite %s.browser_style:false',
+      (manifestKey) => {
+        const manifestJSONParser = parseManifest(3, manifestKey, false);
+        expect(manifestJSONParser.collector.errors).toEqual([]);
+        expect(manifestJSONParser.collector.warnings).toEqual([]);
+        expect(manifestJSONParser.isValid).toEqual(true);
+      }
+    );
+
+    it.each(['action', 'options_ui', 'page_action', 'sidebar_action'])(
+      'should not warn about MV3 without %s.browser_style',
+      (manifestKey) => {
+        const manifestJSONParser = parseManifest(3, manifestKey, undefined);
+        expect(manifestJSONParser.collector.errors).toEqual([]);
+        expect(manifestJSONParser.collector.warnings).toEqual([]);
+        expect(manifestJSONParser.isValid).toEqual(true);
+      }
+    );
+
+    it.each(['browser_action', 'options_ui', 'page_action', 'sidebar_action'])(
+      'should not warn about MV2, %s.browser_style:true',
+      (manifestKey) => {
+        const manifestJSONParser = parseManifest(2, manifestKey, true);
+        expect(manifestJSONParser.collector.errors).toEqual([]);
+        expect(manifestJSONParser.collector.warnings).toEqual([]);
+        expect(manifestJSONParser.isValid).toEqual(true);
+      }
+    );
+  });
+
   describe('id', () => {
     it('should return the correct id', () => {
       const addonLinter = new Linter({ _: ['bar'] });

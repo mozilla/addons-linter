@@ -740,6 +740,7 @@ export default class ManifestJSONParser extends JSONParser {
     this.validateRestrictedPermissions();
     this.validateExtensionID();
     this.validateHiddenAddon();
+    this.validateDeprecatedBrowserStyle();
   }
 
   /**
@@ -789,6 +790,35 @@ export default class ManifestJSONParser extends JSONParser {
       this.collector.addError(messages.HIDDEN_NO_ACTION);
       this.isValid = false;
     }
+  }
+
+  validateDeprecatedBrowserStyle() {
+    if (this.parsedJSON.manifest_version !== 3) {
+      // The deprecation only affects MV2 -> MV3.
+      return;
+    }
+    const checkBrowserStyleInManifestKey = (manifestKey) => {
+      // Warn about `browser_style:true` because it is not compatible with
+      // "future" Firefox versions (Firefox 118+). We don't warn about
+      // `browser_style:false` because it is equivalent to not setting the
+      // property. Furthermore, setting it to false ensures a consistent
+      // appearance of MV3 extensions in Firefox 114 and earlier, because the
+      // default of options_ui.browser_style and sidebar_action.browser_style
+      // changed from true to false in Firefox 115.
+      if (this.parsedJSON[manifestKey]?.browser_style) {
+        const instancePath = `/${manifestKey}/browser_style`;
+        // Minimal parameters to trigger manifest error.
+        const errorParam = { params: { max_manifest_version: 2 } };
+        this.collector.addWarning({
+          instancePath,
+          ...messages.manifestFieldUnsupported(instancePath, errorParam),
+        });
+      }
+    };
+    checkBrowserStyleInManifestKey('action');
+    checkBrowserStyleInManifestKey('options_ui');
+    checkBrowserStyleInManifestKey('page_action');
+    checkBrowserStyleInManifestKey('sidebar_action');
   }
 
   validateRestrictedPermissions() {
