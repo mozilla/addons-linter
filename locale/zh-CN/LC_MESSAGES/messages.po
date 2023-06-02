@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-03 14:12+0000\n"
+"PO-Revision-Date: 2023-06-02 13:35+0000\n"
 "Last-Translator: Olvcpr423 <oliverchan86@outlook.com>\n"
 "Language-Team: none\n"
 "Language: zh_CN\n"
@@ -124,11 +124,11 @@ msgstr "“{{api}}”已从 Manifest V3 中删除（“manifest_version”属性
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
-msgstr "{{api}} 已不赞成使用"
+msgstr "{{api}} 已弃用"
 
 #: src/messages/javascript.js:142
 msgid "This API has been deprecated by Firefox."
-msgstr "此 API 已不赞成在 Firefox 上使用。"
+msgstr "Firefox 已弃用此 API。"
 
 #: src/messages/javascript.js:15
 msgid "Content script file could not be found."
@@ -136,7 +136,7 @@ msgstr "无法找到内容脚本文件。"
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr "“{{api}}”已不赞成使用或尚未实现"
+msgstr "“{{api}}”已弃用或尚未实现"
 
 #: src/messages/javascript.js:16
 msgid "Content script file could not be found"
@@ -627,7 +627,7 @@ msgstr "应该位于“%(path)s”的图标文件已损坏"
 
 #: src/messages/manifestjson.js:441
 msgid "This property has been deprecated."
-msgstr "此属性已不赞成使用。"
+msgstr "此属性已弃用。"
 
 #: src/messages/manifestjson.js:448
 msgid "This theme LWT alias has been removed in Firefox 70."
