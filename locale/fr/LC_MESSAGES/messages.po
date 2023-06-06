@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-17 18:12+0000\n"
+"PO-Revision-Date: 2023-06-06 20:52+0000\n"
 "Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -516,6 +516,8 @@ msgstr "La propriété « update_url » n’est pas utilisée par Firefox."
 #: src/messages/manifestjson.js:247
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
 msgstr ""
+"Le champ « update_url » n’est pas utilisé par Firefox à la racine d’un manifeste : votre module complémentaire se mettra à jour depuis le site des modules complémentaires et non depuis votre adresse"
+" « update_url ». Voir : https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:255
 msgid "\"strict_max_version\" not required."
@@ -753,7 +755,7 @@ msgstr "La clé du manifeste n’est pas prise en charge par la version minimale
 
 #: src/messages/manifestjson.js:599 src/messages/manifestjson.js:621
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "« strict_min_version » a besoin de la version %(minVersion)s de Firefox, publiée avant la version %(versionAdded)s qui a introduit la prise en charge de « %(key)s »."
 
 #: src/messages/manifestjson.js:617
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -769,7 +771,7 @@ msgstr "%(instancePath)s : les champs de manifeste privilégiés ne sont autori
 
 #: src/messages/manifestjson.js:643 src/messages/manifestjson.js:665
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "« strict_min_version » a besoin de la version %(minVersion)s de Firefox pour Android, publiée avant la version %(versionAdded)s qui a introduit la prise en charge de « %(key)s »."
 
 #: src/messages/manifestjson.js:661
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -785,11 +787,13 @@ msgstr "Les liens vers « addons.mozilla.org » ne sont pas autorisés comme p
 
 #: src/messages/manifestjson.js:689
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "La permission « %(permission)s » a besoin que « strict_min_version » soit définit avec la valeur « %(minFirefoxVersion)s » ou supérieure"
 
 #: src/messages/manifestjson.js:694
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
 msgstr ""
+"La permission « %(permission)s » a besoin que « strict_min_version » soit définit avec la valeur « %(minFirefoxVersion)s » ou supérieure. Veuillez mettre à jour la version de votre fichier "
+"manifest.json pour spécifier une version minimale de Firefox."
 
 #: src/messages/manifestjson.js:706
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -825,7 +829,7 @@ msgstr "Impossible d’utiliser des actions dans des modules complémentaires ma
 
 #: src/messages/manifestjson.js:766
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "Les propriétés « hidden » et « browser_action/page_action » (ou « action » dans les versions 3 et supérieures de Manifest) s’excluent mutuellement."
 
 #: src/messages/manifestjson.js:774
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
@@ -833,19 +837,19 @@ msgstr "Utilisez « browser_specific_settings » au lieu de « applications 
 
 #: src/messages/manifestjson.js:775
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "La propriété « applications » dans le manifeste est obsolète et ne sera plus acceptée dans les versions 3 et supérieures de Manifest."
 
 #: src/messages/manifestjson.js:783
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "La propriété « applications » n’est plus autorisée dans les versions 3 et supérieures de Manifest."
 
 #: src/messages/manifestjson.js:785
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "La propriété « applications » dans le manifeste n’est plus autorisée dans les versions 3 et supérieures de Manifest. Utilisez plutôt « browser_specific_settings »."
 
 #: src/messages/manifestjson.js:793
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "La chaîne de version devrait être simplifiée car elle ne sera pas compatible avec les versions 3 et supérieures de Manifest."
 
 #: src/messages/manifestjson.js:795
 msgid ""
