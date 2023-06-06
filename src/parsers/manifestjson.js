@@ -653,6 +653,7 @@ export default class ManifestJSONParser extends JSONParser {
       }
     }
 
+    this.validateName();
     this.validateVersionString();
 
     if (this.parsedJSON.default_locale) {
@@ -741,6 +742,28 @@ export default class ManifestJSONParser extends JSONParser {
     this.validateExtensionID();
     this.validateHiddenAddon();
     this.validateDeprecatedBrowserStyle();
+  }
+
+  /**
+   * This method validates the manifest's name property in addition to the
+   * basic json schema validation. The name should not contain unnecessary
+   * whitespaces.
+   */
+  validateName() {
+    const { name } = this.parsedJSON;
+    // The JSON schema validation already emits an error for non-string values.
+    if (typeof name !== 'string') {
+      return;
+    }
+
+    // We are relying on the `trim` function to remove the whitespaces but it
+    // doesn't cover all possible whitespace-like chars. See:
+    // https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/trim
+    const trimmedName = name.trim();
+    if (trimmedName !== name || trimmedName.length < 2) {
+      this.collector.addError(messages.PROP_NAME_INVALID);
+      this.isValid = false;
+    }
   }
 
   /**

@@ -1349,17 +1349,75 @@ describe('ManifestJSONParser', () => {
       );
     });
 
-    it('should collect an error on non-string name value', () => {
+    it.each([1, null])(
+      'should collect an error on non-string name value: %s',
+      (name) => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({ name });
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector
+        );
+
+        const { errors } = addonLinter.collector;
+        expect(errors).toEqual([
+          expect.objectContaining({
+            ...messages.MANIFEST_FIELD_INVALID,
+            message: expect.stringMatching('/name'),
+          }),
+        ]);
+        expect(manifestJSONParser.isValid).toEqual(false);
+      }
+    );
+
+    it.each([
+      ' '.repeat(2),
+      ' '.repeat(3),
+      ' a',
+      ' a ',
+      'a ',
+      '   ', // two tabs
+      `a${' '.repeat(44)}`,
+      'a\v',
+      'a\f',
+      '\f\v',
+      'a\u0020',
+      'a\u00A0',
+      'a\uFEFF',
+      // See: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=%5Cp%7BGeneral_Category%3DSpace_Separator%7D
+      'a\u1680',
+      'a\u2000',
+      'a\u2001',
+      'a\u2002',
+      'a\u2003',
+      'a\u2004',
+      'a\u2005',
+      'a\u2006',
+      'a\u2007',
+      'a\u2008',
+      'a\u2009',
+      'a\u200A',
+      'a\u202F',
+      'a\u205F',
+      'a\u3000',
+      // line terminators
+      'a\r',
+      'a\n',
+      'a\u2028',
+      'a\u2029',
+    ])('should account for whitespaces: %s', (name) => {
       const addonLinter = new Linter({ _: ['bar'] });
-      const json = validManifestJSON({ name: 1 });
+      const json = validManifestJSON({ name });
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector
       );
-      expect(manifestJSONParser.isValid).toEqual(false);
+
       const { errors } = addonLinter.collector;
-      expect(errors[0].code).toEqual(messages.MANIFEST_FIELD_INVALID.code);
-      expect(errors[0].message).toContain('/name');
+      expect(errors).toEqual([
+        expect.objectContaining(messages.PROP_NAME_INVALID),
+      ]);
+      expect(manifestJSONParser.isValid).toEqual(false);
     });
   });
 
