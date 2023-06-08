@@ -224,7 +224,9 @@ export function manifestCspUnsafeEval(property) {
 
 export const PROP_NAME_INVALID = {
   code: 'PROP_NAME_INVALID',
-  message: i18n._('The "name" property must be a string.'),
+  message: i18n._(
+    'The "name" property must be a string with no leading/trailing whitespaces.'
+  ),
   description: i18n._(
     'See http://mzl.la/1STmr48 (MDN Docs) for more information.'
   ),
