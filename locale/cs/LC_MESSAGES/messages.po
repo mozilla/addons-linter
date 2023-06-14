@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-27 16:32+0000\n"
+"PO-Revision-Date: 2023-06-14 06:50+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -62,7 +62,7 @@ msgstr "Byla zjištěna chyba syntaxe CSS"
 
 #: src/messages/css.js:7
 msgid "An error was found in the CSS file being processed. As a result, further processing of that file is not possible"
-msgstr ""
+msgstr "Ve zpracovávaném souboru CSS byla nalezena chyba. V důsledku toho není možné další zpracování tohoto souboru"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -78,7 +78,7 @@ msgstr "Vzdálené skripty nejsou povoleny bezpečnostní politikou doplňků."
 
 #: src/messages/html.js:13
 msgid "Please include all scripts in the add-on. For more information, refer to https://mzl.la/2uEOkYp."
-msgstr ""
+msgstr "Zahrňte prosím všechny skripty do doplňku. Více informací naleznete na https://mzl.la/2uEOkYp."
 
 #: src/messages/html.js:5
 msgid "Inline scripts blocked by default"
@@ -94,7 +94,7 @@ msgstr "Nedoporučené externí JS knihovny"
 
 #: src/messages/javascript.js:101
 msgid "Your add-on uses a JavaScript library we do not recommend. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Váš doplněk používá knihovnu JavaScriptu, kterou nedoporučujeme. Čtěte si více na: https://bit.ly/1TRIyZY"
 
 #: src/messages/javascript.js:107
 msgid "Known JS library detected"
@@ -102,7 +102,7 @@ msgstr "Rozpoznána známá JS knihovna"
 
 #: src/messages/javascript.js:108
 msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
-msgstr ""
+msgstr "Knihovny JavaScriptu se nedoporučuje pro jednoduché doplňky, ale jsou obecně akceptovány."
 
 #: src/messages/javascript.js:116
 msgid ""
@@ -186,7 +186,7 @@ msgstr ""
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "Metoda \"%(method)s\" volána s nelokálním URI"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
@@ -457,7 +457,7 @@ msgstr "Pole není platné."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "Vlastnost \"%(property)s\" umožňuje vzdálené spouštění kódu v souboru manifest.json"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
@@ -505,7 +505,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:265
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "V souboru manifest.json se nenašla žádná vlastnost \"%(property)s\"."
 
 #: src/messages/manifestjson.js:268
 msgid "\"%(property)s\" is required"
@@ -831,7 +831,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:804
 msgid "The version string should be simplified."
-msgstr ""
+msgstr "Řetězec s informací o verzi by měl být zjednodušen."
 
 #: src/messages/manifestjson.js:805
 msgid ""
