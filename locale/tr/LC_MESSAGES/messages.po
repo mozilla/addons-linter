@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-06-14 10:48+0000\n"
+"PO-Revision-Date: 2023-06-15 06:27+0000\n"
 "Last-Translator: Grk <gu0townkg@relay.firefox.com>\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -419,7 +419,7 @@ msgstr "Daha fazla bilgi için https://mzl.la/2Qn0fWC (MDN Docs) sayfasına bak�
 
 #: src/messages/manifestjson.js:119 src/messages/manifestjson.js:166
 msgid "See https://mzl.la/3Woeqv4 (MDN Docs) for more information."
-msgstr ""
+msgstr "Daha fazla bilgi için https://mzl.la/3Woeqv4 (MDN Docs) sayfasına bakın."
 
 #: src/messages/manifestjson.js:127 src/messages/manifestjson.js:156
 msgid "Unknown permission."
