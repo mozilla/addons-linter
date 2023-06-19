@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-05-02 08:45+0000\n"
-"PO-Revision-Date: 2023-05-02 12:06+0000\n"
+"PO-Revision-Date: 2023-06-19 13:16+0000\n"
 "Last-Translator: Marcelo Ghelman <marcelo.ghelman@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -430,7 +430,7 @@ msgstr "Veja mais informações em https://developer.mozilla.org/pt-BR/docs/Mozi
 
 #: src/messages/manifestjson.js:11 src/messages/manifestjson.js:20
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr "Veja https://mzl.la/1ZOhoEN (Documentação da MDN) para mais informações."
+msgstr "Consulte mais informações em https://mzl.la/1ZOhoEN (MDN Docs)."
 
 #: src/messages/manifestjson.js:111 src/messages/manifestjson.js:157
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
@@ -466,7 +466,7 @@ msgstr "O \"manifest_version\" no manifest.json não é válido"
 
 #: src/messages/manifestjson.js:186
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "Veja https://mzl.la/20PenXl (Documentação da MDN) para mais informações."
+msgstr "Consulte mais informações em https://mzl.la/20PenXl (MDN Docs)."
 
 #: src/messages/manifestjson.js:19
 msgid "The field is invalid."
