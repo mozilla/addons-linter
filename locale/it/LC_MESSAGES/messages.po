@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-06-21 08:44+0000\n"
-"Last-Translator: Google Translate <pontoon-gt@example.com>\n"
+"PO-Revision-Date: 2023-06-21 09:04+0000\n"
+"Last-Translator: Francesco Lodolo [:flod] <flod+pontoon@mozilla.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -495,7 +495,7 @@ msgstr "Nella maggior parte dei casi lo stesso risultato può essere ottenuto in
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string with no leading/trailing whitespaces."
-msgstr "La proprietà \"name\" deve essere una stringa senza spazi vuoti iniziali/finali."
+msgstr "La proprietà “name” deve essere una stringa senza spazi vuoti all’inizio o alla fine."
 
 #: src/messages/manifestjson.js:230
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
