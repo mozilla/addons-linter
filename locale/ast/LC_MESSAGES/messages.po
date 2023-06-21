@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-05-02 08:45+0000\n"
+"POT-Creation-Date: 2023-06-21 08:31+0000\n"
 "PO-Revision-Date: 2021-08-08 06:15+0000\n"
 "Last-Translator: Enol <enolp@softastur.org>\n"
 "Language-Team: none\n"
@@ -552,75 +552,76 @@ msgid ""
 msgstr ""
 
 #: src/messages/manifestjson.js:227
-msgid "The \"name\" property must be a string."
-msgstr "La propiedá «name» ha ser una cadena."
+msgid ""
+"The \"name\" property must be a string with no leading/trailing whitespaces."
+msgstr ""
 
-#: src/messages/manifestjson.js:228
+#: src/messages/manifestjson.js:230
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
 msgstr ""
 "Mira http://mzl.la/1STmr48 (documentación de MDN) pa consiguir más "
 "información."
 
-#: src/messages/manifestjson.js:236
+#: src/messages/manifestjson.js:238
 msgid "\"update_url\" is not allowed."
 msgstr ""
 
-#: src/messages/manifestjson.js:237
+#: src/messages/manifestjson.js:239
 msgid ""
 "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko."
 "update_url\" are not allowed for Mozilla-hosted add-ons."
 msgstr ""
 
-#: src/messages/manifestjson.js:246
+#: src/messages/manifestjson.js:248
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr ""
 
-#: src/messages/manifestjson.js:247
+#: src/messages/manifestjson.js:249
 msgid ""
 "The \"update_url\" is not used by Firefox in the root of a manifest; your "
 "add-on will be updated via the Add-ons site and not your \"update_url\". "
 "See: https://mzl.la/25zqk4O"
 msgstr ""
 
-#: src/messages/manifestjson.js:255
+#: src/messages/manifestjson.js:257
 msgid "\"strict_max_version\" not required."
 msgstr ""
 
-#: src/messages/manifestjson.js:256
+#: src/messages/manifestjson.js:258
 msgid ""
 "\"strict_max_version\" shouldn't be used unless the add-on is expected not "
 "to work with future versions of Firefox."
 msgstr ""
 
-#: src/messages/manifestjson.js:265
+#: src/messages/manifestjson.js:267
 msgid "No \"%(property)s\" property found in manifest.json"
 msgstr ""
 
-#: src/messages/manifestjson.js:268
+#: src/messages/manifestjson.js:270
 msgid "\"%(property)s\" is required"
 msgstr ""
 
-#: src/messages/manifestjson.js:279
+#: src/messages/manifestjson.js:281
 msgid "An icon defined in the manifest could not be found in the package."
 msgstr ""
 
-#: src/messages/manifestjson.js:283
+#: src/messages/manifestjson.js:285
 msgid "Icon could not be found at \"%(path)s\"."
 msgstr ""
 
-#: src/messages/manifestjson.js:298
+#: src/messages/manifestjson.js:300
 msgid "A background script defined in the manifest could not be found."
 msgstr ""
 
-#: src/messages/manifestjson.js:301
+#: src/messages/manifestjson.js:303
 msgid "A background page defined in the manifest could not be found."
 msgstr ""
 
-#: src/messages/manifestjson.js:306
+#: src/messages/manifestjson.js:308
 msgid "Background script could not be found at \"%(path)s\"."
 msgstr ""
 
-#: src/messages/manifestjson.js:307
+#: src/messages/manifestjson.js:309
 msgid "Background page could not be found at \"%(path)s\"."
 msgstr ""
 
@@ -628,32 +629,27 @@ msgstr ""
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
 msgstr ""
 
-#: src/messages/manifestjson.js:322
+#: src/messages/manifestjson.js:324
 msgid "A content script defined in the manifest could not be found."
 msgstr ""
 
-#: src/messages/manifestjson.js:323
+#: src/messages/manifestjson.js:325
 msgid "A content script css file defined in the manifest could not be found."
 msgstr ""
 
-#: src/messages/manifestjson.js:328
+#: src/messages/manifestjson.js:330
 msgid ""
 "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
-#: src/messages/manifestjson.js:331
+#: src/messages/manifestjson.js:333
 msgid ""
 "Content script css file defined in the manifest could not be found at "
 "\"%(path)s\"."
 msgstr ""
 
-#: src/messages/manifestjson.js:345
+#: src/messages/manifestjson.js:347
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr ""
-
-#: src/messages/manifestjson.js:349
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:35
@@ -662,36 +658,41 @@ msgid ""
 "installed extensions."
 msgstr ""
 
-#: src/messages/manifestjson.js:361
+#: src/messages/manifestjson.js:351
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+
+#: src/messages/manifestjson.js:363
 msgid "The manifest contains multiple dictionaries."
 msgstr ""
 
-#: src/messages/manifestjson.js:362
+#: src/messages/manifestjson.js:364
 msgid ""
 "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 
-#: src/messages/manifestjson.js:371
+#: src/messages/manifestjson.js:373
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr ""
 
-#: src/messages/manifestjson.js:374
+#: src/messages/manifestjson.js:376
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr ""
 
-#: src/messages/manifestjson.js:383
+#: src/messages/manifestjson.js:385
 msgid "The manifest contains a dictionary but no id property."
 msgstr ""
 
-#: src/messages/manifestjson.js:384
+#: src/messages/manifestjson.js:386
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr ""
 
-#: src/messages/manifestjson.js:394
+#: src/messages/manifestjson.js:396
 msgid "Forbidden content found in add-on."
 msgstr "Nel complementu atopóse conteníu que ta prohibíu."
 
-#: src/messages/manifestjson.js:395
+#: src/messages/manifestjson.js:397
 msgid "This add-on contains forbidden content."
 msgstr "Esti complementu inclúi conteníu que ta prohibíu."
 
@@ -701,60 +702,56 @@ msgid ""
 "more about privileged extensions and signing."
 msgstr ""
 
-#: src/messages/manifestjson.js:403
+#: src/messages/manifestjson.js:405
 msgid "Icons must be square."
 msgstr "Los iconos han ser cuadraos."
 
-#: src/messages/manifestjson.js:404
+#: src/messages/manifestjson.js:406
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "L'iconu de «%(path)s» ha ser cuadráu."
 
-#: src/messages/manifestjson.js:415
+#: src/messages/manifestjson.js:417
 msgid "The size of the icon does not match the manifest."
 msgstr ""
 
-#: src/messages/manifestjson.js:417
+#: src/messages/manifestjson.js:419
 msgid ""
 "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was "
 "%(actual)d."
 msgstr ""
 
-#: src/messages/manifestjson.js:430
+#: src/messages/manifestjson.js:432
 msgid "Corrupt image file"
 msgstr ""
 
-#: src/messages/manifestjson.js:432
+#: src/messages/manifestjson.js:434
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr ""
 
-#: src/messages/manifestjson.js:441
+#: src/messages/manifestjson.js:443
 msgid "This property has been deprecated."
 msgstr ""
 
-#: src/messages/manifestjson.js:448
+#: src/messages/manifestjson.js:450
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
-#: src/messages/manifestjson.js:449
+#: src/messages/manifestjson.js:451
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr ""
 "Mira https://mzl.la/2T11Lkc (documentación de MDN) pa consiguir más "
 "información."
 
-#: src/messages/manifestjson.js:464
+#: src/messages/manifestjson.js:466
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr ""
 
-#: src/messages/manifestjson.js:475
+#: src/messages/manifestjson.js:477
 msgid "Corrupted theme image file"
 msgstr ""
 
-#: src/messages/manifestjson.js:477
+#: src/messages/manifestjson.js:479
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr ""
-
-#: src/messages/manifestjson.js:488
-msgid "Theme image file has an unsupported file extension"
 msgstr ""
 
 #: src/messages/manifestjson.js:49
@@ -763,14 +760,18 @@ msgid ""
 msgstr ""
 
 #: src/messages/manifestjson.js:490
+msgid "Theme image file has an unsupported file extension"
+msgstr ""
+
+#: src/messages/manifestjson.js:492
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
 msgstr ""
 
-#: src/messages/manifestjson.js:504
+#: src/messages/manifestjson.js:506
 msgid "Theme image file has an unsupported mime type"
 msgstr ""
 
-#: src/messages/manifestjson.js:506
+#: src/messages/manifestjson.js:508
 msgid ""
 "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
@@ -779,84 +780,78 @@ msgstr ""
 msgid "\"%(fieldName)s\" is not supported."
 msgstr ""
 
-#: src/messages/manifestjson.js:520
+#: src/messages/manifestjson.js:522
 msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 
-#: src/messages/manifestjson.js:524
+#: src/messages/manifestjson.js:526
 msgid ""
 "Theme image file extension at \"%(path)s\" does not match its actual mime "
 "type \"%(mime)s\""
 msgstr ""
 
-#: src/messages/manifestjson.js:537
+#: src/messages/manifestjson.js:539
 msgid "The \"default_locale\" is missing localizations."
 msgstr "A «default_locale» fálten-y traducciones."
 
-#: src/messages/manifestjson.js:538
+#: src/messages/manifestjson.js:540
 msgid ""
 "The \"default_locale\" value is specified in the manifest, but no matching "
 "\"messages.json\" in the \"_locales\" directory exists. See: https://mzl."
 "la/2hjcaEE"
 msgstr ""
 
-#: src/messages/manifestjson.js:546
+#: src/messages/manifestjson.js:548
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "Falta «default_locale» mas «_locales» esiste."
 
-#: src/messages/manifestjson.js:547
+#: src/messages/manifestjson.js:549
 msgid ""
 "The \"default_locale\" value is not specifed in the manifest, but a "
 "\"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
 msgstr ""
 
-#: src/messages/manifestjson.js:555
+#: src/messages/manifestjson.js:557
 msgid "Unsupported image extension"
 msgstr ""
 
-#: src/messages/manifestjson.js:556
+#: src/messages/manifestjson.js:558
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr ""
 
-#: src/messages/manifestjson.js:564
+#: src/messages/manifestjson.js:566
 msgid ""
 "\"applications\" property overridden by \"browser_specific_settings\" "
 "property"
 msgstr ""
 
-#: src/messages/manifestjson.js:567
+#: src/messages/manifestjson.js:569
 msgid ""
 "The \"applications\" property is being ignored because it is superseded by "
 "the \"browser_specific_settings\" property which is also defined in your "
 "manifest. Consider removing applications."
 msgstr ""
 
-#: src/messages/manifestjson.js:577
+#: src/messages/manifestjson.js:579
 msgid "Empty language directory"
 msgstr ""
 
-#: src/messages/manifestjson.js:579
+#: src/messages/manifestjson.js:581
 msgid "messages.json file missing in \"%(path)s\""
 msgstr ""
 
-#: src/messages/manifestjson.js:595
+#: src/messages/manifestjson.js:597
 msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr ""
 
-#: src/messages/manifestjson.js:599 src/messages/manifestjson.js:621
+#: src/messages/manifestjson.js:601 src/messages/manifestjson.js:623
 msgid ""
 "\"strict_min_version\" requires Firefox %(minVersion)s, which was released "
 "before version %(versionAdded)s introduced support for \"%(key)s\"."
 msgstr ""
 
-#: src/messages/manifestjson.js:617
+#: src/messages/manifestjson.js:619
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
-
-#: src/messages/manifestjson.js:639
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
 msgstr ""
 
 #: src/messages/manifestjson.js:64
@@ -865,117 +860,123 @@ msgid ""
 "extensions."
 msgstr ""
 
-#: src/messages/manifestjson.js:643 src/messages/manifestjson.js:665
+#: src/messages/manifestjson.js:641
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
+msgstr ""
+
+#: src/messages/manifestjson.js:645 src/messages/manifestjson.js:667
 msgid ""
 "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which "
 "was released before version %(versionAdded)s introduced support for "
 "\"%(key)s\"."
 msgstr ""
 
-#: src/messages/manifestjson.js:661
+#: src/messages/manifestjson.js:663
 msgid ""
 "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 
-#: src/messages/manifestjson.js:676
+#: src/messages/manifestjson.js:678
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr ""
 
-#: src/messages/manifestjson.js:677
+#: src/messages/manifestjson.js:679
 msgid ""
 "Links directing to \"addons.mozilla.org\" are not allowed to be used for "
 "homepage"
 msgstr ""
 
-#: src/messages/manifestjson.js:689
+#: src/messages/manifestjson.js:691
 msgid ""
 "The \"%(permission)s\" permission requires \"strict_min_version\" to be set "
 "to \"%(minFirefoxVersion)s\" or above"
 msgstr ""
 
-#: src/messages/manifestjson.js:694
+#: src/messages/manifestjson.js:696
 msgid ""
 "The \"%(permission)s\" permission requires \"strict_min_version\" to be set "
 "to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json "
 "version to specify a minimum Firefox version."
 msgstr ""
 
-#: src/messages/manifestjson.js:706
+#: src/messages/manifestjson.js:708
 msgid "The extension ID is required in Manifest Version 3 and above."
 msgstr ""
 
-#: src/messages/manifestjson.js:709
+#: src/messages/manifestjson.js:711
 msgid "See https://mzl.la/3PLZYdo for more information."
 msgstr ""
 
-#: src/messages/manifestjson.js:715
+#: src/messages/manifestjson.js:717
 msgid ""
 "%(instancePath)s: Privileged extensions should declare privileged "
 "permissions."
 msgstr ""
 
-#: src/messages/manifestjson.js:726
+#: src/messages/manifestjson.js:728
 msgid ""
 "This extension does not declare any privileged permission. It does not need "
 "to be signed with the privileged certificate. Please upload it directly to "
 "https://addons.mozilla.org/."
 msgstr ""
 
-#: src/messages/manifestjson.js:739
+#: src/messages/manifestjson.js:741
 msgid ""
 "%(instancePath)s: The \"mozillaAddons\" permission is required for "
 "privileged extensions."
 msgstr ""
 
-#: src/messages/manifestjson.js:742
+#: src/messages/manifestjson.js:744
 msgid ""
 "%(instancePath)s: The \"mozillaAddons\" permission is required for "
 "extensions that include privileged manifest fields."
 msgstr ""
 
-#: src/messages/manifestjson.js:755
+#: src/messages/manifestjson.js:757
 msgid ""
 "This extension does not include the \"mozillaAddons\" permission, which is "
 "required for privileged extensions."
 msgstr ""
 
-#: src/messages/manifestjson.js:765
+#: src/messages/manifestjson.js:767
 msgid "Cannot use actions in hidden add-ons."
 msgstr ""
 
-#: src/messages/manifestjson.js:766
+#: src/messages/manifestjson.js:768
 msgid ""
 "The hidden and browser_action/page_action (or action in Manifest Version 3 "
 "and above) properties are mutually exclusive."
 msgstr ""
 
-#: src/messages/manifestjson.js:774
+#: src/messages/manifestjson.js:776
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
 msgstr ""
 
-#: src/messages/manifestjson.js:775
+#: src/messages/manifestjson.js:777
 msgid ""
 "The \"applications\" property in the manifest is deprecated and will no "
 "longer be accepted in Manifest Version 3 and above."
 msgstr ""
 
-#: src/messages/manifestjson.js:783
+#: src/messages/manifestjson.js:785
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
 msgstr ""
 
-#: src/messages/manifestjson.js:785
+#: src/messages/manifestjson.js:787
 msgid ""
 "The \"applications\" property in the manifest is no longer allowed in "
 "Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
 msgstr ""
 
-#: src/messages/manifestjson.js:793
+#: src/messages/manifestjson.js:795
 msgid ""
 "The version string should be simplified because it won't be compatible with "
 "Manifest Version 3 and above."
 msgstr ""
 
-#: src/messages/manifestjson.js:795
+#: src/messages/manifestjson.js:797
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each "
 "number should have up to 9 digits and leading zeros will no longer be "
@@ -983,11 +984,11 @@ msgid ""
 "la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
 
-#: src/messages/manifestjson.js:804
+#: src/messages/manifestjson.js:806
 msgid "The version string should be simplified."
 msgstr ""
 
-#: src/messages/manifestjson.js:805
+#: src/messages/manifestjson.js:807
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each "
 "number should have up to 9 digits and leading zeros are not allowed. Letters "
@@ -1004,6 +1005,9 @@ msgstr ""
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 msgstr ""
+
+#~ msgid "The \"name\" property must be a string."
+#~ msgstr "La propiedá «name» ha ser una cadena."
 
 #~ msgid "The \"version\" property must be a string."
 #~ msgstr "La propiedá «version» ha ser una cadena."
