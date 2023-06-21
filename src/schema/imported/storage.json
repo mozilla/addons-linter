@@ -117,6 +117,19 @@
           ]
         }
       ]
+    },
+    "session": {
+      "allOf": [
+        {
+          "$ref": "#/types/StorageArea"
+        },
+        {
+          "allowedContexts": [
+            "devtools"
+          ],
+          "description": "Items in the <code>session</code> storage area are kept in memory, and only until the either browser or extension is closed or reloaded."
+        }
+      ]
     }
   },
   "definitions": {},
