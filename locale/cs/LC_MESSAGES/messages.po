@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-06-23 12:32+0000\n"
+"PO-Revision-Date: 2023-06-25 19:01+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -47,6 +47,8 @@ msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
 "%(maxManifestVersion)s)."
 msgstr ""
+"Požadovaný neplatný rozsah verzí manifestu: --min-manifest-version (aktuálně nastaveno na %(minManifestVersion)s) by nemělo být větší než --max-manifest-version (aktuálně nastaveno na "
+"%(maxManifestVersion)s)."
 
 #: src/messages/css.js:13
 msgid "Invalid nesting of selectors found"
@@ -461,19 +463,19 @@ msgstr "Vlastnost \"%(property)s\" umožňuje vzdálené spouštění kódu v so
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "Vlastní „%(property)s“ vyžaduje další kontrolu."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "\"%(property)s\" umožňuje 'eval', což má silné dopady na bezpečnost a výkon."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "Ve většině případů lze stejného výsledku dosáhnout odlišně, proto je obecně zakázáno"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string with no leading/trailing whitespaces."
-msgstr ""
+msgstr "Vlastnost \"name\" musí být řetězec bez mezer na začátku/na konci."
 
 #: src/messages/manifestjson.js:230
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -485,7 +487,7 @@ msgstr "\"update_url\" není povoleno."
 
 #: src/messages/manifestjson.js:239
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "\"applications.gecko.update_url\" nebo \"browser_specific_settings.gecko.update_url\" nejsou povoleny pro doplňky hostované Mozillou."
 
 #: src/messages/manifestjson.js:248
 msgid "The \"update_url\" property is not used by Firefox."
@@ -617,7 +619,7 @@ msgstr "Velikost ikony neodpovídá manifestu."
 
 #: src/messages/manifestjson.js:419
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "Očekávaná ikona na „%(path)s“ bude %(očekávaná)d pixelů široká, ale byla %(skutečně)d."
 
 #: src/messages/manifestjson.js:432
 msgid "Corrupt image file"
@@ -689,7 +691,7 @@ msgstr "Jazyku „default_locale“ chybí překlady."
 
 #: src/messages/manifestjson.js:540
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "Hodnota „default_locale“ je uvedena v manifestu, ale v adresáři „_locales“ neexistuje žádný odpovídající soubor „messages.json“. Viz: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:548
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
