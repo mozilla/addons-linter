@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-06-25 19:01+0000\n"
+"PO-Revision-Date: 2023-06-25 19:24+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -815,15 +815,15 @@ msgstr ""
 
 #: src/messages/manifestjson.js:785
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "„applications“ již nejsou povoleny v manifetu verze 3 a vyšší."
 
 #: src/messages/manifestjson.js:787
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "Vlastnost \"applications\" v manifestu již není povolena v manifestu verze 3 a vyšší. Místo toho použijte \"browser_specific_settings\"."
 
 #: src/messages/manifestjson.js:795
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "Řetězec verze by měl být zjednodušen, protože nebude kompatibilní s manifestem verze 3 a vyšší."
 
 #: src/messages/manifestjson.js:797
 msgid ""
