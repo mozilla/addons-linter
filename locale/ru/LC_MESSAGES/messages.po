@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-06-21 16:44+0000\n"
-"Last-Translator: Valery Ledovskoy <valery@ledovskoy.com>\n"
+"PO-Revision-Date: 2023-06-25 12:42+0000\n"
+"Last-Translator: Alexander Slovesnik <unghost@mozilla-russia.org>\n"
 "Language-Team: none\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -494,7 +494,7 @@ msgstr "В большинстве случаев один и тот же рез�
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string with no leading/trailing whitespaces."
-msgstr "Свойство \"name\" должно быть строкой без начальных/конечных пробелов."
+msgstr "Свойство «name» должно быть строкой без начальных/конечных пробелов."
 
 #: src/messages/manifestjson.js:230
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
