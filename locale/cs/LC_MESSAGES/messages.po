@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
@@ -619,7 +619,7 @@ msgstr "Velikost ikony neodpovídá manifestu."
 
 #: src/messages/manifestjson.js:419
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr "Očekávaná ikona na „%(path)s“ bude %(očekávaná)d pixelů široká, ale byla %(skutečně)d."
+msgstr "Očekávaná ikona na „%(path)s“ bude %(expected)d pixelů široká, ale byla %(actual)d."
 
 #: src/messages/manifestjson.js:432
 msgid "Corrupt image file"
