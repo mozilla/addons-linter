@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-06-25 19:24+0000\n"
+"PO-Revision-Date: 2023-06-27 18:39+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -180,7 +180,7 @@ msgstr "Název skriptu by neměl být prázdný"
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "Metoda \"%(method)s\" volána s URI, který není literálem"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
@@ -236,7 +236,7 @@ msgstr "Zakázané externí JS knihovny"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Váš doplněk používá JavaScriptovou knihovnu, kterou nepovažujeme za bezpečnou. Podrobnosti na https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
@@ -699,7 +699,7 @@ msgstr "Jazyk „default_locale“ chybí, ale „_locales“ existuje."
 
 #: src/messages/manifestjson.js:549
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "Hodnota „default_locale“ není v manifestu uvedena, ale existuje adresář „_locales“. Vizte https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:557
 msgid "Unsupported image extension"
