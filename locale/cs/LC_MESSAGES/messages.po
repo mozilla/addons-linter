@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-06-30 18:12+0000\n"
+"PO-Revision-Date: 2023-06-30 18:18+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -384,7 +384,7 @@ msgstr "Placeholder obsahuje neplatné znaky"
 
 #: src/messages/locale-messagesjson.js:34
 msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr ""
+msgstr "Název zástupného textu by měl obsahovat pouze alfanumerické znaky, _ a @ (https://mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
@@ -564,7 +564,7 @@ msgstr "Slovníkový soubor definovaný v manifestu nebyl nalezen."
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "Pole manifestu \"%(fieldName)s\" se používá pouze pro privilegovaná a dočasně nainstalovaná rozšíření."
 
 #: src/messages/manifestjson.js:351
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
@@ -604,7 +604,7 @@ msgstr "Tento doplněk obsahuje zakázaný obsah."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "Další informace o privilegovaných rozšířeních a podepisování naleznete na adrese https://github.com/mozilla-extensions/xpi-manifest."
 
 #: src/messages/manifestjson.js:405
 msgid "Icons must be square."
@@ -716,7 +716,7 @@ msgstr "Vlastnost \"applications\" je nahrazena za \"browser_specific_settings\"
 
 #: src/messages/manifestjson.js:569
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
-msgstr ""
+msgstr "Vlastnost \"applications\" se ignoruje, protože je nahrazená vlastností \"browser_specific_settings\", která je též definovaná ve vašem manifestu. Zvažte odstranění vlastnosti \"applications\"."
 
 #: src/messages/manifestjson.js:579
 msgid "Empty language directory"
@@ -732,7 +732,7 @@ msgstr "Klíč v manifestu není uvedenou minimální verzí Firefoxu podporová
 
 #: src/messages/manifestjson.js:601 src/messages/manifestjson.js:623
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\" vyžaduje Firefox %(minVersion)s, který byl vydán předtím, než verze %(versionAdded)s zavedla podporu pro \"%(key)s\"."
 
 #: src/messages/manifestjson.js:619
 msgid "Permission not supported by the specified minimum Firefox version"
