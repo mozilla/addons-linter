@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-06-27 18:39+0000\n"
+"PO-Revision-Date: 2023-06-30 07:32+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -111,6 +111,7 @@ msgid ""
 "Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
 "degradation."
 msgstr ""
+"Kvůli bezpečnosti i výkonu nemusí být toto nastavení nastaveno pomocí dynamických hodnot, které nebyly adekvátně ošetřeny. To může vést k bezpečnostním problémům nebo poměrně vážnému snížení výkonu."
 
 #: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
@@ -220,7 +221,7 @@ msgstr "Neočekávaná globální proměnná byla předaná jako parametr"
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr ""
+msgstr "Předávání globálního prvku jako argumentu se nedoporučuje. Místo toho použijte proměnnou."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
