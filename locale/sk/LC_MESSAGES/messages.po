@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-07-05 06:18+0000\n"
+"PO-Revision-Date: 2023-07-05 06:21+0000\n"
 "Last-Translator: wladow <valastiak@mozilla.sk>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -291,6 +291,8 @@ msgid ""
 "No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
 "packaging."
 msgstr ""
+"V koreňovom priečinku rozšírenia sa nenašiel súbor manifest.json. Súbor balíka musí byť ZIP so súbormi rozšírenia, nie s priečinkom, ktorý ich obsahuje. Viac o balení súborov nájdete na "
+"https://mzl.la/2r2McKv."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
@@ -327,7 +329,7 @@ msgstr "Boli nájdené súbory, ktoré sú buď nepotrebné, alebo boli zahrnut�
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "Balík obsahuje viacero položiek s rovnakým názvom. Táto prax bola zakázaná. Skúste rozbaliť a znova vytvoriť balíček, a skúste to znova."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
