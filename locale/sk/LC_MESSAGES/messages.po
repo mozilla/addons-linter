@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-07-05 06:21+0000\n"
+"PO-Revision-Date: 2023-07-05 06:24+0000\n"
 "Last-Translator: wladow <valastiak@mozilla.sk>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -212,7 +212,7 @@ msgstr ""
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "Funkcie setTimeout, setInterval a execScript by sa mali volať iba s výrazmi funkcií ako ich prvým argumentom"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
@@ -228,7 +228,7 @@ msgstr "Použitie document.write sa neodporúča."
 
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
-msgstr ""
+msgstr "document.write zlyháva za mnohých okolností, keď sa použije v rozšíreniach, a pri nesprávnom použití má potenciálne vážne dôsledky na bezpečnosť. Preto by sa nemal používať."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
