@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-07-05 06:24+0000\n"
+"PO-Revision-Date: 2023-07-05 06:33+0000\n"
 "Last-Translator: wladow <valastiak@mozilla.sk>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -203,12 +203,16 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
+"Vo vašom kóde je chyba syntaxe JavaScript, ktorá môže súvisieť s niektorými experimentálnymi funkciami JavaScriptu, ktoré nie sú oficiálnou súčasťou špecifikácie jazyka, a preto ešte nie sú "
+"podporované. Kontrola tohto súboru nemôže pokračovať."
 
 #: src/messages/javascript.js:62
 msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible."
 msgstr ""
+"Vyhodnocovanie reťazcov ako kódu môže viesť k bezpečnostným chybám a problémom s výkonom, a to aj za tých zdanlivo najnevinnejších okolností. Ak je to možné, vyhnite sa používaniu konštruktorov "
+"`eval` a `Function`."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
@@ -435,7 +439,7 @@ msgstr "Neznáme povolenie."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s: nasledujúce privilegované povolenia sú povolené len v privilegovaných rozšíreniach: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -447,7 +451,7 @@ msgstr "Neplatný pôvod inštalácie."
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
+msgstr "Neplatná cesta pôvodu inštalácie. Platná cesta je zložená s častí schéma, názov hostiteľa a voliteľne port. Ďalšie informácie nájdete na stránke https://mzl.la/3TEbqbE (Dokumenty MDN)."
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -467,11 +471,11 @@ msgstr "Vlastnosť \"%(property)s\" umožňuje vzdialené spustenie kódu v mani
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "Vlastnosť „%(property)s“ vyžaduje ďalšiu kontrolu."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "Vlastnosť \"%(property)s\" umožňuje použitie funkcie 'eval', čo má silný vplyv na bezpečnosť a výkon."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
@@ -479,7 +483,7 @@ msgstr "Vo väčšine prípadov možno rovnaký výsledok dosiahnuť odlišne, p
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string with no leading/trailing whitespaces."
-msgstr ""
+msgstr "Vlastnosť „name“ musí byť reťazec bez medzier na začiatku/na konci."
 
 #: src/messages/manifestjson.js:230
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -607,7 +611,7 @@ msgstr "Doplnok obsahuje zakázaný obsah."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "Ďalšie informácie o privilegovaných rozšíreniach a podpisovaní nájdete na stránke https://github.com/mozilla-extensions/xpi-manifest."
 
 #: src/messages/manifestjson.js:405
 msgid "Icons must be square."
@@ -623,7 +627,7 @@ msgstr "Veľkosť ikony nezodpovedá manifestu."
 
 #: src/messages/manifestjson.js:419
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "Očakáva sa, že ikona „%(path)s“ bude mať šírku %(expected)d pixelov, ale v skutočnosti má %(actual)d."
 
 #: src/messages/manifestjson.js:432
 msgid "Corrupt image file"
@@ -659,7 +663,7 @@ msgstr "Obrázok témy vzhľadu v „%(path)s“ je poškodený"
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "Pole \"%(fieldName)s\" nie je podporované vo verziách manifestu %(versionRange)s."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file has an unsupported file extension"
@@ -819,11 +823,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:785
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "Vlastnosť „applications“ nie je povolená v Manifeste verzie 3 a vyššej."
 
 #: src/messages/manifestjson.js:787
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "Vlastnosť „applications“ už nie je povolená v manifeste verzie 3 a vyššej. Namiesto nej použite \"browser_specific_settings\"."
 
 #: src/messages/manifestjson.js:795
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
