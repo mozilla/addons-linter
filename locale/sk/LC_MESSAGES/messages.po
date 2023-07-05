@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-07-05 06:33+0000\n"
+"PO-Revision-Date: 2023-07-05 06:35+0000\n"
 "Last-Translator: wladow <valastiak@mozilla.sk>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -819,7 +819,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:777
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "Vlastnosť „applications“ v manifeste je zastaraná a už nebude akceptovaná v manifeste verzie 3 a vyššej."
 
 #: src/messages/manifestjson.js:785
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
@@ -855,11 +855,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "Pole /%(fieldName)s: \"%(permissionName)s\" nie je podporované v manifeste verzií %(versionRange)s."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
-msgstr ""
+msgstr "Pole /%(fieldName)s: \"%(permissionName)s\" nie je podporované."
 
 #~ msgid "The \"name\" property must be a string."
 #~ msgstr "Vlastnosť „name“ musí byť reťazec."
