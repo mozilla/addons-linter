@@ -117,7 +117,7 @@
     "shelljs": "0.8.5",
     "sinon": "15.2.0",
     "tar": "6.1.15",
-    "tar-fs": "3.0.3",
+    "tar-fs": "3.0.4",
     "tmp-promise": "3.0.3",
     "webpack": "5.88.1",
     "webpack-cli": "5.1.4",
