@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-07-08 12:55+0000\n"
+"PO-Revision-Date: 2023-07-08 12:56+0000\n"
 "Last-Translator: Cláudio Esperança <cesperanc@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_PT\n"
@@ -111,6 +111,8 @@ msgid ""
 "Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
 "degradation."
 msgstr ""
+"Devido a questões de segurança e de desempenho, isto não pode ser definido utilizando valores dinâmicos que não foram adequadamente sanitizados. Isto pode conduzir a problemas de segurança ou de uma"
+" degradação bastante séria do desempenho."
 
 #: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
@@ -146,7 +148,7 @@ msgstr "O ficheiro de script de conteúdo não pôde ser encontrado"
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "\"%(api)s\" pode causar problemas quando carregado temporariamente"
 
 #: src/messages/javascript.js:165
 msgid ""
