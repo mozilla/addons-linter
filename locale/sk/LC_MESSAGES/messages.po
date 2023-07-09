@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-07-09 16:30+0000\n"
+"PO-Revision-Date: 2023-07-09 16:42+0000\n"
 "Last-Translator: wladow <valastiak@mozilla.sk>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -111,6 +111,8 @@ msgid ""
 "Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
 "degradation."
 msgstr ""
+"Z dôvodov bezpečnosti a výkonu sa toto nemusí dať nastaviť pomocou dynamických hodnôt, ktoré neboli primerane sanitizované. Môže to viesť k problémom so zabezpečením alebo k pomerne vážnemu zníženiu"
+" výkonu."
 
 #: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
@@ -182,7 +184,7 @@ msgstr "Názov súboru so skriptom by nemal byť prázdny"
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "\"%(method)s\" volané s iným než doslovným URI"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
@@ -190,7 +192,7 @@ msgstr "Volanie \"%(method)s\" s premennými parametrami môže viesť k potenci
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "\"%(method)s\" volané s iným ako lokálnym URI"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
@@ -226,7 +228,7 @@ msgstr "Neočakávaná globálna premenná prešla ako parameter"
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr ""
+msgstr "Neodporúča sa používať globálne premenné ako argument. Použite premennú."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
@@ -350,6 +352,8 @@ msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
+"V doplnku sa našli súbory, ktorých názvy končia tzv. \"označenými\" príponami. Prípony týchto súborov sú označené, pretože zvyčajne identifikujú binárne komponenty. Ďalšie informácie o procese "
+"kontroly binárneho obsahu nájdete na https://bit.ly/review-policy."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
@@ -401,7 +405,7 @@ msgstr "Placeholderu chýba vlastnosť content"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "Placeholder musí mať priradený atribút content, ktorý definuje jeho nahradenie (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
