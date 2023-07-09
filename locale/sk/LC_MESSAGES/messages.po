@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-07-05 06:35+0000\n"
+"PO-Revision-Date: 2023-07-09 16:30+0000\n"
 "Last-Translator: wladow <valastiak@mozilla.sk>\n"
 "Language-Team: none\n"
 "Language: sk\n"
@@ -47,6 +47,8 @@ msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
 "%(maxManifestVersion)s)."
 msgstr ""
+"Požadovaný neplatný rozsah verzie manifestu: --min-manifest-version (momentálne nastavené na %(minManifestVersion)s) by nemalo byť väčšie ako --max-manifest-version (momentálne nastavené na "
+"%(maxManifestVersion)s)."
 
 #: src/messages/css.js:13
 msgid "Invalid nesting of selectors found"
@@ -86,7 +88,7 @@ msgstr "Vložené skripty sú v predvolenom nastavení zakázané"
 
 #: src/messages/html.js:6
 msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
-msgstr ""
+msgstr "Predvolené pravidlá CSP zabraňujú spusteniu vloženého JavaScriptu (https://mzl.la/2pn32nd)."
 
 #: src/messages/javascript.js:100
 msgid "Unadvised 3rd-party JS library"
@@ -184,7 +186,7 @@ msgstr ""
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
-msgstr ""
+msgstr "Volanie \"%(method)s\" s premennými parametrami môže viesť k potenciálnym bezpečnostným chybám, ak premenná obsahuje vzdialené URI. Zvážte použitie „window.open“ s príznakom „chrome=no“."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
@@ -192,7 +194,7 @@ msgstr ""
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "Volanie \"%(method)s\" s iným ako lokálnym URI bude mať za následok otvorenie dialógového okna s oprávneniami prehliadača."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -739,7 +741,7 @@ msgstr "Kľúč manifestu nie je podporovaný danou minimálnou verziou Firefoxu
 
 #: src/messages/manifestjson.js:601 src/messages/manifestjson.js:623
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\" vyžaduje Firefox %(minVersion)s, ktorý bol vydaný predtým, ako verzia %(versionAdded)s zaviedla podporu pre \"%(key)s\"."
 
 #: src/messages/manifestjson.js:619
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -747,7 +749,7 @@ msgstr "Povolenie nie je podporované danou minimálnou verziou Firefoxu"
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: privilegované polia manifestu sú povolené len v privilegovaných rozšíreniach."
 
 #: src/messages/manifestjson.js:641
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
@@ -755,7 +757,7 @@ msgstr "Kľúč manifestu nie je podporovaný danou minimálnou verziou Firefoxu
 
 #: src/messages/manifestjson.js:645 src/messages/manifestjson.js:667
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\" vyžaduje Firefox pre Android %(minVersion)s, ktorý bol vydaný predtým, ako verzia %(versionAdded)s zaviedla podporu pre \"%(key)s\"."
 
 #: src/messages/manifestjson.js:663
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -771,11 +773,13 @@ msgstr "Odkazy smerujúce na \"addons.mozilla.org\" nie je možné použiť ako 
 
 #: src/messages/manifestjson.js:691
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "Povolenie \"%(permission)s\" vyžaduje, aby bola hodnota \"strict_min_version\" nastavená na \"%(minFirefoxVersion)s\" alebo vyššiu"
 
 #: src/messages/manifestjson.js:696
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
 msgstr ""
+"Povolenie \"%(permission)s\" vyžaduje, aby bola hodnota \"strict_min_version\" nastavená na \"%(minFirefoxVersion)s\" alebo vyššiu. Aktualizujte svoju verziu manifest.json a uveďte minimálnu verziu "
+"Firefoxu."
 
 #: src/messages/manifestjson.js:708
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -787,35 +791,35 @@ msgstr "Ďalšie informácie nájdete na https://mzl.la/3PLZYdo."
 
 #: src/messages/manifestjson.js:717
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr ""
+msgstr "%(instancePath)s: privilegované rozšírenia by mali deklarovať privilegované povolenia."
 
 #: src/messages/manifestjson.js:728
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr ""
+msgstr "Toto rozšírenie nedeklaruje žiadne privilegované povolenie. Nemusí byť podpísané privilegovaným certifikátom. Nahrajte ho priamo na https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:741
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: pre privilegované rozšírenia sa vyžaduje povolenie \"mozillaAddons\"."
 
 #: src/messages/manifestjson.js:744
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s: povolenie \"mozillaAddons\" sa vyžaduje pre rozšírenia, ktoré obsahujú privilegované polia manifestu."
 
 #: src/messages/manifestjson.js:757
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "Toto rozšírenie neobsahuje povolenie \"mozillaAddons\", ktoré je vyžadovaným povolením pre privilegované rozšírenia."
 
 #: src/messages/manifestjson.js:767
 msgid "Cannot use actions in hidden add-ons."
-msgstr ""
+msgstr "V skrytých doplnkoch nie je možné použiť akcie."
 
 #: src/messages/manifestjson.js:768
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "Vlastnosti hidden a browser_action/page_action (alebo action v Manifeste verzie 3 a vyššej) sa navzájom vylučujú."
 
 #: src/messages/manifestjson.js:776
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
-msgstr ""
+msgstr "Namiesto \"applications\" použite \"browser_specific_settings\"."
 
 #: src/messages/manifestjson.js:777
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
