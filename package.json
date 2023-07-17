@@ -57,7 +57,7 @@
     "eslint": "8.44.0",
     "eslint-plugin-no-unsanitized": "4.0.2",
     "eslint-visitor-keys": "3.4.1",
-    "espree": "9.6.0",
+    "espree": "9.6.1",
     "esprima": "4.0.1",
     "fast-json-patch": "3.1.1",
     "glob": "10.3.3",
