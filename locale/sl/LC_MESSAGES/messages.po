@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-06-23 06:06+0000\n"
+"PO-Revision-Date: 2023-07-20 13:05+0000\n"
 "Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -62,7 +62,7 @@ msgstr "Najdena je bila napaka skladnje CSS."
 
 #: src/messages/css.js:7
 msgid "An error was found in the CSS file being processed. As a result, further processing of that file is not possible"
-msgstr ""
+msgstr "V datoteki CSS v obdelavi je bila najdena napaka. Zaradi nje nadaljnja obdelava te datoteke ni mogoča"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -144,7 +144,7 @@ msgstr "Datoteke skripta vsebine ni bilo mogoče najti."
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "\"%(api)s\" lahko povzroča težave, če je naložena začasno"
 
 #: src/messages/javascript.js:165
 msgid ""
@@ -317,11 +317,11 @@ msgstr "Najdeno označeno ime datoteke"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "Najdene so bile datoteke, ki so nepotrebne ali nenamerno vključene. Treba jih je odstraniti."
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "Paket vsebuje več vnosov z istim imenom. Ta praksa je prepovedana. Poskusite razpakirati in znova zapakirati paket dodatka ter poskusiti znova."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
@@ -336,6 +336,8 @@ msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
+"V dodatku so bile najdene datoteke, katerih imena se končujejo z eno od pripon, kakršne običajno pomenijo binarne komponente. Za več informacij o postopku pregleda binarne vsebine obiščite "
+"https://bit.ly/review-policy."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
@@ -343,7 +345,7 @@ msgstr "Paket je že podpisan"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "Dodatki, ki so že podpisani, bodo ob objavi na AMO znova podpisani. To bo zamenjalo vse obstoječe podpise v dodatku."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -351,7 +353,7 @@ msgstr "Dodatkom za Firefox ni dovoljeno rudariti kriptovalut."
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "Znotraj WebExtensions ne dovolimo izvajanja skriptov coinminer. Za podrobnosti si oglejte https://github.com/mozilla/addons-linter/issues/1643."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -359,11 +361,11 @@ msgstr "Ime niza je rezervirano za vnaprej določeno sporočilo"
 
 #: src/messages/locale-messagesjson.js:14
 msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr ""
+msgstr "Imena nizov, ki se začnejo z @@, se prevedejo v vgrajene konstante (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "Ime niza naj vsebuje le alfanumerične znake, _ in @ (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -467,7 +469,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "V večini primerov je mogoče enako doseči na drugačen način, zato je to na splošno prepovedano"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string with no leading/trailing whitespaces."
@@ -499,11 +501,11 @@ msgstr "\"strict_max_version\" ni zahtevan."
 
 #: src/messages/manifestjson.js:258
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "\"strict_max_version\" se ne sme uporabljati, razen če se pričakuje, da dodatek s prihodnjimi različicami Firefoxa ne bo deloval."
 
 #: src/messages/manifestjson.js:267
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "V datoteki manifest.json ni bilo mogoče najti lastnosti \"%(property)s\""
 
 #: src/messages/manifestjson.js:270
 msgid "\"%(property)s\" is required"
