@@ -242,13 +242,11 @@
                   "$ref": "#/types/TransitionType"
                 },
                 {
-                  "unsupported": true,
                   "description": "Cause of the navigation."
                 }
               ]
             },
             "transitionQualifiers": {
-              "unsupported": true,
               "type": "array",
               "description": "A list of transition qualifiers.",
               "items": {
@@ -544,13 +542,11 @@
                   "$ref": "#/types/TransitionType"
                 },
                 {
-                  "unsupported": true,
                   "description": "Cause of the navigation."
                 }
               ]
             },
             "transitionQualifiers": {
-              "unsupported": true,
               "type": "array",
               "description": "A list of transition qualifiers.",
               "items": {
@@ -649,13 +645,11 @@
                   "$ref": "#/types/TransitionType"
                 },
                 {
-                  "unsupported": true,
                   "description": "Cause of the navigation."
                 }
               ]
             },
             "transitionQualifiers": {
-              "unsupported": true,
               "type": "array",
               "description": "A list of transition qualifiers.",
               "items": {
