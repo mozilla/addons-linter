@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-07-04 11:15+0000\n"
+"PO-Revision-Date: 2023-07-26 12:16+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -358,7 +358,7 @@ msgstr "Doplňky Firefoxu nesmí těžit kryptoměny."
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "Spouštění skriptů coinminer uvnitř rozšíření WebExtensions není povoleno. Další podrobnosti naleznete na adrese https://github.com/mozilla/addons-linter/issues/1643."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -750,7 +750,7 @@ msgstr "Klíč v manifestu není uvedenou minimální verzí Firefoxu pro Androi
 
 #: src/messages/manifestjson.js:645 src/messages/manifestjson.js:667
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\" vyžaduje Firefox pro Android %(minVersion)s, který byl vydán předtím, než verze %(versionAdded)s zavedla podporu pro \"%(key)s\"."
 
 #: src/messages/manifestjson.js:663
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -766,7 +766,7 @@ msgstr "Odkazy směřující na \"addons.mozilla.org\" není možné nastavit ja
 
 #: src/messages/manifestjson.js:691
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "Oprávnění \"%(permission)s\" vyžaduje, aby \"strict_min_version\" bylo nastaveno na \"%(minFirefoxVersion)s\" nebo vyšší"
 
 #: src/messages/manifestjson.js:696
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
