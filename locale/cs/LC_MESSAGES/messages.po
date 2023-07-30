@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-07-30 18:32+0000\n"
+"PO-Revision-Date: 2023-07-30 18:38+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -810,7 +810,7 @@ msgstr "Nelze použít akce ve skrytých doplňcích."
 
 #: src/messages/manifestjson.js:768
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "Vlastnosti hidden a browser_action/page_action (nebo action v manifestu verze 3 či vyšší) se navzájem vylučují."
 
 #: src/messages/manifestjson.js:776
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
@@ -818,7 +818,7 @@ msgstr "Použijte \"browser_specific_settings\" na místo \"applications\"."
 
 #: src/messages/manifestjson.js:777
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "Vlastnost \"applications\" v manifestu je zastaralá a už nebude akceptovaná v manifestu verze 3 a vyšší."
 
 #: src/messages/manifestjson.js:785
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
@@ -837,6 +837,8 @@ msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Verze by měl být řetězec s 1 až 4 čísly oddělenými tečkou. Každé číslo může mít až 9 číslic, ale úvodní nuly už nebudou povoleny. Povoleny nebudou ani písmena. Další informace naleznete na stránce "
+"https://mzl.la/3h3mCRu (Dokumentace MDN)."
 
 #: src/messages/manifestjson.js:806
 msgid "The version string should be simplified."
