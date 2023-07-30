@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-07-26 12:16+0000\n"
+"PO-Revision-Date: 2023-07-30 18:32+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -294,6 +294,8 @@ msgid ""
 "No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
 "packaging."
 msgstr ""
+"V kořenovém adresáři rozšíření se nenašel soubor manifest.json. Soubor balíčku musí být ZIP se soubory rozšíření, ne s adresářem, který je obsahuje. Více o balení souborů naleznete na "
+"https://mzl.la/2r2McKv."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
@@ -304,6 +306,8 @@ msgid ""
 "This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
 "or splitting very large files into smaller ones."
 msgstr ""
+"Tento soubor není binární a je příliš velký na analýzu. Soubory větší než %(maxFileSizeToParseMB)s MB nebudou analyzovány. Zvažte přesun velkých seznamů údajů z JavaScriptových souborů do souborů "
+"JSON nebo rozdělení velmi velkých souborů na menší."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -312,7 +316,7 @@ msgstr "Skrytý soubor označen"
 #: src/messages/layout.js:58
 msgid ""
 "Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
-msgstr ""
+msgstr "Skryté soubory komplikují proces kontroly a mohou obsahovat citlivé informace o systému, které doplněk vygeneroval. Upravte proces balení tak, aby tyto soubory nebyly zahrnuty."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -350,7 +354,7 @@ msgstr "Balíček již byl podepsán"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "Doplňky, které jsou už podepsané, budou opětovně podepsané při zveřejnění na AMO. Tým se nahradí všechny existující podpisy doplňku."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -798,7 +802,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:757
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "Toto rozšíření neobsahuje povolení \"mozillaAddons\", které je vyžadováno pro privilegovaná rozšíření."
 
 #: src/messages/manifestjson.js:767
 msgid "Cannot use actions in hidden add-ons."
