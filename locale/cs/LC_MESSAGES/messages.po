@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-08-04 11:10+0000\n"
+"PO-Revision-Date: 2023-08-04 12:22+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -188,6 +188,8 @@ msgstr "Metoda \"%(method)s\" volána s URI, který není literálem"
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
 msgstr ""
+"Volání metody \"%(method)s\" s parametry proměnných může vést k potenciálním bezpečnostním zranitelnostem, pokud proměnná obsahuje vzdálené URI. Zvažte použití příkazu 'window.open' s příznakem "
+"'chrome=no'."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
@@ -214,10 +216,12 @@ msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible."
 msgstr ""
+"Vyhodnocování řetězců jako kódu může vést ke zranitelnostem zabezpečení a problémům s výkonem, a to i za těch nejneškodnějších okolností. Pokud je to možné, vyhněte se používání konstruktů `eval` a "
+"`Function`."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "Funkce setTimeout, setInterval a execScript by se měly volat pouze s funkčními výrazy jako prvním argumentem."
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
@@ -233,7 +237,7 @@ msgstr "Používání document.write není zcela doporučováno."
 
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
-msgstr ""
+msgstr "document.write za mnoha okolností při použití v rozšířeních selže a při nesprávném použití může mít závažné bezpečnostní důsledky. Proto by se neměl používat."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
@@ -249,7 +253,7 @@ msgstr "Váš JSON obsahuje blokové komentáře."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "V souborech JSON jsou povoleny pouze řádkové komentáře (komentáře začínající \"//\"). Odstraňte prosím blokové komentáře (komentáře začínající \"/*\")."
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
