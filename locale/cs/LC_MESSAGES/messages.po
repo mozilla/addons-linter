@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-08-04 12:22+0000\n"
+"PO-Revision-Date: 2023-08-04 12:23+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -353,6 +353,8 @@ msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
+"V doplňku byly nalezeny soubory, jejichž názvy končí označenými příponami. Přípony těchto souborů jsou označeny, protože obvykle identifikují binární komponenty. Další informace o procesu kontroly "
+"binárního obsahu naleznete na adrese https://bit.ly/review-policy."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
@@ -796,15 +798,15 @@ msgstr ""
 
 #: src/messages/manifestjson.js:728
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr ""
+msgstr "Toto rozšíření nedeklaruje žádné privilegované oprávnění. Nemusí být podepsáno privilegovaným certifikátem. Nahrajte jej prosím přímo na adresu https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:741
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: Oprávnění \"mozillaAddons\" je vyžadováno pro privilegovaná rozšíření."
 
 #: src/messages/manifestjson.js:744
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s: Oprávnění \"mozillaAddons\" je vyžadováno pro rozšíření, která obsahují privilegovaná pole manifestu."
 
 #: src/messages/manifestjson.js:757
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
