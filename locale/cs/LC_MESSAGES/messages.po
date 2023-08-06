@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-08-06 11:50+0000\n"
+"PO-Revision-Date: 2023-08-06 12:09+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -406,7 +406,7 @@ msgstr "Zástupnému textu chybí vlastnost content"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "Placeholder musí mít přiřazený atribut content, který definuje jeho nahrazení (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
@@ -446,7 +446,7 @@ msgstr "Neznámé oprávnění."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s: následující privilegovaná oprávnění jsou povolena pouze v privilegovaných rozšířeních: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -458,7 +458,7 @@ msgstr "Neplatný origin instalace."
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
+msgstr "Neplatný původ instalace. Platný původ má - pouze - schéma, název hostitele a volitelný port. Další informace naleznete na adrese https://mzl.la/3TEbqbE (MDN Docs)."
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -510,7 +510,7 @@ msgstr "Obsah \"update_url\" parametru není používán Firefoxem."
 
 #: src/messages/manifestjson.js:249
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
-msgstr ""
+msgstr "Firefox nepoužívá \"update_url\" v kořenu manifestu; váš doplněk bude aktualizován prostřednictvím webu doplňků, nikoli prostřednictvím vaší \"update_url\". Viz: https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:257
 msgid "\"strict_max_version\" not required."
@@ -518,7 +518,7 @@ msgstr "\"strict_max_version\" není vyžadováno."
 
 #: src/messages/manifestjson.js:258
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "\"strict_max_version\" by se neměla používat, pokud se neočekává, že doplněk nebude fungovat s budoucími verzemi Firefoxu."
 
 #: src/messages/manifestjson.js:267
 msgid "No \"%(property)s\" property found in manifest.json"
@@ -754,7 +754,7 @@ msgstr "Oprávnění nepodporované uvedenou minimální verzí Firefoxu"
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: privilegovaná pole manifestu jsou povolena pouze v privilegovaných rozšířeních."
 
 #: src/messages/manifestjson.js:641
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
@@ -783,6 +783,8 @@ msgstr "Oprávnění \"%(permission)s\" vyžaduje, aby \"strict_min_version\" by
 #: src/messages/manifestjson.js:696
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
 msgstr ""
+"Oprávnění \"%(permission)s\" vyžaduje, aby \"strict_min_version\" bylo nastaveno na \"%(minFirefoxVersion)s\" nebo vyšší. Aktualizujte prosím verzi manifest.json tak, abyste zadali minimální verzi "
+"Firefoxu."
 
 #: src/messages/manifestjson.js:708
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -794,7 +796,7 @@ msgstr "Pro více informací se podívejte na https://mzl.la/3PLZYdo ."
 
 #: src/messages/manifestjson.js:717
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr ""
+msgstr "%(instancePath)s: Privilegovaná rozšíření by měla deklarovat privilegovaná oprávnění."
 
 #: src/messages/manifestjson.js:728
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
