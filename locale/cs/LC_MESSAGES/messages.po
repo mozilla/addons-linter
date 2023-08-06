@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-08-04 12:23+0000\n"
+"PO-Revision-Date: 2023-08-06 11:50+0000\n"
 "Last-Translator: Pavel Cvrček <jasnapaka@jasnapaka.com>\n"
 "Language-Team: none\n"
 "Language: cs\n"
@@ -197,7 +197,7 @@ msgstr "Metoda \"%(method)s\" volána s nelokálním URI"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "Volání \"%(method)s\" s jiným než místním URI bude mít za následek otevření dialogového okna s oprávněními prohlížeče."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
