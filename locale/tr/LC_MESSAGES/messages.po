@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-06-27 22:02+0000\n"
-"Last-Translator: Selim Şumlu <selim@sum.lu>\n"
+"PO-Revision-Date: 2023-08-23 18:33+0000\n"
+"Last-Translator: Grk <gu0townkg@relay.firefox.com>\n"
 "Language-Team: none\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -214,7 +214,7 @@ msgstr ""
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "setTimeout, setInterval ve execScript fonksiyonları yalnızca ilk argümanları olarak fonksiyon ifadeleriyle çağrılmalıdır"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
@@ -222,7 +222,7 @@ msgstr "Argüman olarak beklenmeyen global aktarıldı"
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr ""
+msgstr "Global bir değişkeni argüman olarak iletmek önerilmez. Lütfen global yerine var tanımlaması kullanın."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
@@ -787,15 +787,15 @@ msgstr ""
 
 #: src/messages/manifestjson.js:741
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: Ayrıcalıklı uzantılar için \"mozillaAddons\" izni gereklidir."
 
 #: src/messages/manifestjson.js:744
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s: Ayrıcalıklı manifest alanları içeren uzantılar için \"mozillaAddons\" izni gereklidir."
 
 #: src/messages/manifestjson.js:757
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "Bu uzantı, ayrıcalıklı uzantılar için gerekli olan \"mozillaAddons\" iznini içermiyor."
 
 #: src/messages/manifestjson.js:767
 msgid "Cannot use actions in hidden add-ons."
