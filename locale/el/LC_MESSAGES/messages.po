@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-08-29 15:03+0000\n"
+"PO-Revision-Date: 2023-08-29 15:12+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -122,7 +122,7 @@ msgstr "Αυτό το API δεν έχει υλοποιηθεί από το Firef
 
 #: src/messages/javascript.js:132
 msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr "Το «{{api}}» έχει αφαιρεθεί στην έκδοση 3 του μανιφέστου (ιδιότητα `manifest_version`)"
+msgstr "Το «{{api}}» έχει αφαιρεθεί στην έκδοση Manifest 3 (ιδιότητα `manifest_version`)"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
@@ -153,8 +153,8 @@ msgid ""
 "This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
 "more."
 msgstr ""
-"Αυτό το API μπορεί να προκαλέσει προβλήματα κατά την προσωρινή φόρτωσή του με το about:debugging στο Firefox, εκτός εάν καθορίσετε το «browser_specific_settings.gecko.id» στη δήλωση. Παρακαλούμε "
-"δείτε το https://mzl.la/2hizK4a για περισσότερες πληροφορίες."
+"Αυτό το API μπορεί να προκαλέσει προβλήματα κατά την προσωρινή φόρτωσή του με το about:debugging στο Firefox, εκτός εάν καθορίσετε το «browser_specific_settings.gecko.id» στο αρχείο manifest. "
+"Παρακαλούμε δείτε το https://mzl.la/2hizK4a για περισσότερες πληροφορίες."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -450,7 +450,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr "Το \"manifest_version\" στο manifest.json δεν είναι έγκυρο όνομα"
+msgstr "Το «manifest_version» στο manifest.json δεν είναι έγκυρη τιμή"
 
 #: src/messages/manifestjson.js:186
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -518,7 +518,7 @@ msgstr "Το «%(property)s» απαιτείται"
 
 #: src/messages/manifestjson.js:281
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr "Δεν ήταν δυνατή η εύρεση ενός αρχείου, που ορίζεται στο μανιφέστο, στο πακέτο."
+msgstr "Δεν ήταν δυνατή η εύρεση ενός εικονιδίου, που έχει οριστεί στο αρχείο manifest, στο πακέτο."
 
 #: src/messages/manifestjson.js:285
 msgid "Icon could not be found at \"%(path)s\"."
@@ -526,11 +526,11 @@ msgstr "Δεν ήταν δυνατή η εύρεση του εικονιδίου
 
 #: src/messages/manifestjson.js:300
 msgid "A background script defined in the manifest could not be found."
-msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου φόντου, που ορίζεται στο μανιφέστο."
+msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου φόντου, που έχει οριστεί στο αρχείο manifest."
 
 #: src/messages/manifestjson.js:303
 msgid "A background page defined in the manifest could not be found."
-msgstr "Δεν ήταν δυνατή η εύρεση της σελίδας φόντου, που ορίζεται στο μανιφέστο."
+msgstr "Δεν ήταν δυνατή η εύρεση της σελίδας φόντου, που έχει οριστεί στο αρχείο manifest."
 
 #: src/messages/manifestjson.js:308
 msgid "Background script could not be found at \"%(path)s\"."
@@ -546,15 +546,15 @@ msgstr "Το «%(fieldName)s» αγνοείται για μη προνομιού
 
 #: src/messages/manifestjson.js:324
 msgid "A content script defined in the manifest could not be found."
-msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου περιεχομένου, που ορίζεται στο μανιφέστο."
+msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου περιεχομένου, που έχει οριστεί στο αρχείο manifest."
 
 #: src/messages/manifestjson.js:325
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου περιεχομένου του αρχείου css, που ορίζεται στο μανιφέστο."
+msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου περιεχομένου του αρχείου css, που έχει οριστεί στο αρχείο manifest."
 
 #: src/messages/manifestjson.js:330
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου περιεχομένου, που ορίζεται στο μανιφέστο, στο \"%(path)s\"."
+msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου περιεχομένου, που έχει οριστεί στο αρχείο manifest, στο «%(path)s»."
 
 #: src/messages/manifestjson.js:333
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
@@ -594,7 +594,7 @@ msgstr "Το μανιφέστο περιέχει ένα λεξικό, άλλα �
 
 #: src/messages/manifestjson.js:386
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr "Βρέθηκε ένα λεξικο στο μανιφέστο, αλλά δεν ορίστηκε id."
+msgstr "Βρέθηκε ένα λεξικό στο αρχείο manifest, αλλά δεν ορίστηκε αναγνωριστικό."
 
 #: src/messages/manifestjson.js:396
 msgid "Forbidden content found in add-on."
@@ -719,6 +719,8 @@ msgstr "Η ιδιότητα «applications» αντικαταστάθηκε απ
 #: src/messages/manifestjson.js:569
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
 msgstr ""
+"Η ιδιότητα «applications» αγνοείται επειδή αντικαθίσταται από την ιδιότητα «browser_specific_settings», η οποία έχει επίσης οριστεί στο αρχείο manifest σας. Εξετάστε το ενδεχόμενο αφαίρεσης του "
+"«applications»."
 
 #: src/messages/manifestjson.js:579
 msgid "Empty language directory"
@@ -734,7 +736,7 @@ msgstr "Το κλειδί μανιφέστου δεν υποστηρίζεται
 
 #: src/messages/manifestjson.js:601 src/messages/manifestjson.js:623
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "Το «strict_min_version» απαιτεί την έκδοση %(minVersion)s του Firefox, η οποία κυκλοφόρησε πριν η έκδοση %(versionAdded)s παρουσιάσει την υποστήριξη για το «%(key)s»."
 
 #: src/messages/manifestjson.js:619
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -746,11 +748,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:641
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr "Το κλειδί μανιφέστου δεν υποστηρίζεται από την καθορισμένη ελάχιστη έκδοση του Firefox για Android"
+msgstr "Το κλειδί του αρχείου manifest δεν υποστηρίζεται από την καθορισμένη ελάχιστη έκδοση του Firefox για Android"
 
 #: src/messages/manifestjson.js:645 src/messages/manifestjson.js:667
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "Το «strict_min_version» απαιτεί την έκδοση %(minVersion)s του Firefox για Android, η οποία κυκλοφόρησε πριν η έκδοση %(versionAdded)s παρουσιάσει την υποστήριξη για το «%(key)s»."
 
 #: src/messages/manifestjson.js:663
 msgid "Permission not supported by the specified minimum Firefox for Android version"
