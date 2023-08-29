@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-08-29 15:21+0000\n"
+"PO-Revision-Date: 2023-08-29 15:30+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -350,7 +350,7 @@ msgstr "Το πακέτο έχει ήδη υπογραφεί"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "Τα υπογεγραμμένα πρόσθετα θα υπογραφούν εκ νέου όταν δημοσιευτούν στο AMO. Αυτό θα αντικαταστήσει τυχόν υπάρχουσες υπογραφές στο πρόσθετο."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -434,7 +434,7 @@ msgstr "Άγνωστο δικαίωμα."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s: Τα ακόλουθα προνομιακά δικαιώματα επιτρέπονται μόνο σε προνομιούχες επεκτάσεις: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -446,7 +446,7 @@ msgstr "Μη έγκυρη προέλευση εγκατάστασης."
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
+msgstr "Μη έγκυρη προέλευση εγκατάστασης. Μια έγκυρη προέλευση έχει μόνο ένα σχήμα, όνομα υπολογιστή και προαιρετική θύρα. Δείτε το https://mzl.la/3TEbqbE (MDN Docs) για περισσότερες πληροφορίες."
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -470,15 +470,15 @@ msgstr "Ένα προσαρμοσμένο «%(property)s» απαιτεί επι
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "Το «%(property)s» επιτρέπει το «eval», το οποίο έχει ισχυρές επιπτώσεις στην ασφάλεια και τις επιδόσεις."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "Στις περισσότερες περιπτώσεις, το ίδιο αποτέλεσμα μπορεί να επιτευχθεί με διαφορετικό τρόπο, επομένως απαγορεύεται συνήθως"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string with no leading/trailing whitespaces."
-msgstr ""
+msgstr "Η ιδιότητα «name» πρέπει να είναι συμβολοσειρά που δεν ξεκινά/τελειώνει με διάστημα."
 
 #: src/messages/manifestjson.js:230
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -490,7 +490,7 @@ msgstr "Το \"update_url\" δεν επιτρέπεται."
 
 #: src/messages/manifestjson.js:239
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "Τα «applications.gecko.update_url» και «browser_specific_settings.gecko.update_url» δεν επιτρέπονται για τα πρόσθετα που φιλοξενούνται από τη Mozilla."
 
 #: src/messages/manifestjson.js:248
 msgid "The \"update_url\" property is not used by Firefox."
@@ -499,6 +499,8 @@ msgstr "Η ιδιότητα \"update_url\" δεν χρησιμοποιείται
 #: src/messages/manifestjson.js:249
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
 msgstr ""
+"Το «update_url» δεν χρησιμοποιείται από το Firefox στο ριζικό κατάλογο ενός αρχείου manifest: το πρόσθετό σας θα ενημερώνεται μέσω του ιστότοπου πρόσθετων και όχι μέσω του «update_url». Δείτε: "
+"https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:257
 msgid "\"strict_max_version\" not required."
@@ -506,7 +508,7 @@ msgstr "Δεν απαιτείται «strict_max_version»."
 
 #: src/messages/manifestjson.js:258
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "Το «strict_max_version» δεν θα πρέπει να χρησιμοποιείται, εκτός εάν το πρόσθετο αναμένεται να μη λειτουργεί με μελλοντικές εκδόσεις του Firefox."
 
 #: src/messages/manifestjson.js:267
 msgid "No \"%(property)s\" property found in manifest.json"
@@ -566,7 +568,7 @@ msgstr "Δεν ήταν δυνατή η εύρεση ενός αρχείου λ�
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "Το πεδίο manifest «%(fieldName)s» χρησιμοποιείται μόνο για προνομιούχες και προσωρινά εγκατεστημένες επεκτάσεις."
 
 #: src/messages/manifestjson.js:351
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
@@ -744,7 +746,7 @@ msgstr "Η άδεια δεν υποστηρίζεται από την καθορ
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr "%(instancePath)s: τα προνομιούχα πεδία του αρχείου manifest επιτρέπονται μόνο σε προνομιούχες επεκτάσεις."
+msgstr "%(instancePath)s: Τα προνομιούχα πεδία του αρχείου manifest επιτρέπονται μόνο σε προνομιούχες επεκτάσεις."
 
 #: src/messages/manifestjson.js:641
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
@@ -791,7 +793,7 @@ msgstr "%(instancePath)s: Οι προνομιούχες επεκτάσεις θ�
 #: src/messages/manifestjson.js:728
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
 msgstr ""
-"Αυτή η επέκταση δεν δηλώνει κανένα προνομιακό δικαίωμα. Δεν χρειάζεται να είναι υπογεγραμμένη με το προνομιακό πιστοποιητικό. Παρακαλούμε μεταφορτώστε την απευθείας στο https://addons.mozilla.org/."
+"Αυτή η επέκταση δεν δηλώνει κανένα προνομιακό δικαίωμα. Δεν χρειάζεται να είναι υπογεγραμμένη με το προνομιούχο πιστοποιητικό. Παρακαλούμε μεταφορτώστε την απευθείας στο https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:741
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
@@ -799,7 +801,7 @@ msgstr "%(instancePath)s: Το δικαίωμα «mozillaAddons» απαιτεί
 
 #: src/messages/manifestjson.js:744
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr "%(instancePath)s: Το δικαίωμα «mozillaAddons» απαιτείται για επεκτάσεις που περιέχουν προνομιακά πεδία manifest."
+msgstr "%(instancePath)s: Το δικαίωμα «mozillaAddons» απαιτείται για επεκτάσεις που περιέχουν προνομιούχα πεδία manifest."
 
 #: src/messages/manifestjson.js:757
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
