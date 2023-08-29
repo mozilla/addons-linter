@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-08-29 15:42+0000\n"
+"PO-Revision-Date: 2023-08-29 15:44+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -412,7 +412,7 @@ msgstr "Η ιδιότητα \"content\" λείπει από το σύμβολο 
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "Ένα σύμβολο υποκατάστασης χρειάζεται μια ιδιότητα περιεχομένου που καθορίζει την αντικατάστασή του (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
@@ -831,7 +831,7 @@ msgstr "Δεν είναι δυνατή η χρήση ενεργειών σε κ�
 
 #: src/messages/manifestjson.js:768
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "Οι ιδιότητες «hidden» και «browser_action/page_action» (ή «action» στην έκδοση Manifest 3 και νεότερες) αλληλοαποκλείονται."
 
 #: src/messages/manifestjson.js:776
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
