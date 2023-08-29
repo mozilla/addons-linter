@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-06-26 23:43+0000\n"
+"PO-Revision-Date: 2023-08-29 14:39+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -153,6 +153,8 @@ msgid ""
 "This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
 "more."
 msgstr ""
+"Αυτό το API μπορεί να προκαλέσει προβλήματα κατά την προσωρινή φόρτωσή του με το about:debugging στο Firefox, εκτός εάν καθορίσετε το «browser_specific_settings.gecko.id» στη δήλωση. Παρακαλούμε "
+"δείτε το https://mzl.la/2hizK4a για περισσότερες πληροφορίες."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -229,6 +231,8 @@ msgstr "Η χρήση του document.write δεν προτείνεται."
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
 msgstr ""
+"Το document.write θα αποτύχει σε πολλές περιπτώσεις όταν χρησιμοποιείται σε επεκτάσεις και έχει δυνητικά σοβαρές επιπτώσεις στην ασφάλεια όταν χρησιμοποιείται με λανθασμένο τρόπο. Επομένως, δεν "
+"πρέπει να χρησιμοποιείται."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
@@ -268,7 +272,7 @@ msgstr "Βρέθηκε κρατημένο όνομα αρχείου."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "Έχουν βρεθεί αρχεία με δεσμευμένα ονόματα στο πρόσθετο. Παρακαλούμε αποφύγετε τη χρήση τους και μετονομάστε τα αρχεία σας."
 
 #: src/messages/layout.js:22
 msgid ""
@@ -829,6 +833,8 @@ msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Η έκδοση θα πρέπει να είναι μια συμβολοσειρά με 1 έως 4 αριθμούς, διαχωρισμένους με τελείες. Κάθε αριθμός πρέπει να έχει έως και 9 ψηφία, ενώ τα μηδενικά δεν θα επιτρέπονται στην αρχή. Δεν θα "
+"επιτρέπονται πλέον ούτε τα γράμματα. Δείτε το https://mzl.la/3h3mCRu (MDN Docs) για περισσότερες πληροφορίες."
 
 #: src/messages/manifestjson.js:806
 msgid "The version string should be simplified."
@@ -839,6 +845,8 @@ msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
 "https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Η έκδοση θα πρέπει να είναι μια συμβολοσειρά με 1 έως 4 αριθμούς, διαχωρισμένους με τελείες. Κάθε αριθμός πρέπει να έχει έως και 9 ψηφία, ενώ τα μηδενικά δεν επιτρέπονται στην αρχή. Δεν επιτρέπονται"
+" πλέον τα γράμματα. Δείτε το https://mzl.la/3h3mCRu (MDN Docs) για περισσότερες πληροφορίες."
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
