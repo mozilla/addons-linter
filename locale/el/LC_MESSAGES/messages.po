@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-08-29 14:39+0000\n"
+"PO-Revision-Date: 2023-08-29 15:03+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -766,11 +766,13 @@ msgstr "Δεν επιτρέπεται η χρήση συνδέσμων προς 
 
 #: src/messages/manifestjson.js:691
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "Το δικαίωμα «%(permission)s» απαιτεί τον ορισμό του «strict_min_version» σε «%(minFirefoxVersion)s» ή νεότερο"
 
 #: src/messages/manifestjson.js:696
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
 msgstr ""
+"Το δικαίωμα «%(permission)s» απαιτεί τον ορισμό του «strict_min_version» σε «%(minFirefoxVersion)s» ή νεότερο. Παρακαλούμε ενημερώστε την έκδοση του manifest.json σας για να καθορίσετε μια ελάχιστη "
+"έκδοση του Firefox."
 
 #: src/messages/manifestjson.js:708
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -787,6 +789,7 @@ msgstr "%(instancePath)s: Οι προνομιούχες επεκτάσεις θ�
 #: src/messages/manifestjson.js:728
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
 msgstr ""
+"Αυτή η επέκταση δεν δηλώνει κανένα προνομιακό δικαίωμα. Δεν χρειάζεται να είναι υπογεγραμμένη με το προνομιακό πιστοποιητικό. Παρακαλούμε μεταφορτώστε την απευθείας στο https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:741
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
