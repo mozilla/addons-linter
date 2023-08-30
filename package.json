@@ -65,7 +65,7 @@
     "is-mergeable-object": "1.1.1",
     "jed": "1.1.1",
     "json-merge-patch": "1.0.2",
-    "os-locale": "5.0.0",
+    "os-locale": "6.0.2",
     "pino": "8.15.0",
     "postcss": "8.4.29",
     "relaxed-json": "1.0.3",
