@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-07-20 13:09+0000\n"
+"PO-Revision-Date: 2023-09-06 11:52+0000\n"
 "Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -54,7 +54,7 @@ msgstr "Najdeno je bilo neveljavno gnezdenje izbirnikov."
 
 #: src/messages/css.js:14
 msgid "Selectors should not be nested"
-msgstr ""
+msgstr "Izbirniki ne smejo biti ugnezdeni"
 
 #: src/messages/css.js:6
 msgid "A CSS syntax error was encountered"
@@ -234,7 +234,7 @@ msgstr "Prepovedana knjižnica JS tretje osebe"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Vaš dodatek uporablja knjižnico JavaScript, ki jo štejemo za nevarno. Več na: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
@@ -266,7 +266,7 @@ msgstr "Najdeno rezervirano ime datoteke."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "V dodatku so bile najdene datoteke z rezerviranimi imeni. Prosimo, da teh imen ne uporabljate in svoje datoteke preimenujete."
 
 #: src/messages/layout.js:22
 msgid ""
@@ -731,7 +731,7 @@ msgstr "Ključ manifesta ni podprt v najnižji podprti različici Firefoxa"
 
 #: src/messages/manifestjson.js:601 src/messages/manifestjson.js:623
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\" zahteva Firefox %(minVersion)s, ki je bil izdan, preden je različica %(versionAdded)s uvedla podporo za \"%(key)s\"."
 
 #: src/messages/manifestjson.js:619
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -747,7 +747,7 @@ msgstr "Ključ manifesta ni podprt v najnižji podprti različici Firefoxa za An
 
 #: src/messages/manifestjson.js:645 src/messages/manifestjson.js:667
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\" zahteva Firefox za Android %(minVersion)s, ki je bil izdan, preden je različica %(versionAdded)s uvedla podporo za \"%(key)s\"."
 
 #: src/messages/manifestjson.js:663
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -763,7 +763,7 @@ msgstr "Za domačo stran ni dovoljeno uporabljati povezav, ki usmerjajo na \"add
 
 #: src/messages/manifestjson.js:691
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "Za dovoljenje \"%(permission)s\" mora biti \"strict_min_version\" nastavljena na različico \"%(minFirefoxVersion)s\" ali novejšo"
 
 #: src/messages/manifestjson.js:696
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
@@ -803,7 +803,7 @@ msgstr "V skritih dodatkih ni mogoče uporabljati dejanj."
 
 #: src/messages/manifestjson.js:768
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "Lastnosti \"hidden\" in \"browser_action\"/\"page_action\" (oz. \"action\" v manifestu različice 3 in novejših) se medsebojno izključujeta."
 
 #: src/messages/manifestjson.js:776
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
@@ -811,7 +811,7 @@ msgstr "Namesto \"applications\" uporabite \"browser_specific_settings\"."
 
 #: src/messages/manifestjson.js:777
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "Lastnost \"applications\" v manifestu je zastarela in v manifestu različice 3 in novejših ne bo več sprejeta."
 
 #: src/messages/manifestjson.js:785
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
@@ -819,7 +819,7 @@ msgstr "Lastnost \"applications\" v Manifestu 3 in novejših različicah ni več
 
 #: src/messages/manifestjson.js:787
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "Lastnost \"applications\" v manifestu različice 3 in novejših ni več dovoljena. Namesto nje uporabite \"browser_specific_settings\"."
 
 #: src/messages/manifestjson.js:795
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
