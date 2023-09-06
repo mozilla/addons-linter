@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-09-06 11:48+0000\n"
+"PO-Revision-Date: 2023-09-06 17:08+0000\n"
 "Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -242,7 +242,7 @@ msgstr "Vaša datoteka JSON vsebuje bloke komentarjev."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr "V datotekah JSON so dovoljeni samo vrstični komentarji (ki se začenjajo z \"//\"). Odstranite bloke komentarjev (ki se začenjajo z \"/*\")"
+msgstr "V datotekah JSON so dovoljeni samo vrstični komentarji (ki se začenjajo z \"//\"). Odstranite komentarje v blokih (ki se začenjajo z \"/*\")"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
