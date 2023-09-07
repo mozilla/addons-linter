@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-09-07 16:01+0000\n"
+"PO-Revision-Date: 2023-09-07 16:33+0000\n"
 "Last-Translator: chutten <chutten@mozilla.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en_CA\n"
@@ -196,7 +196,7 @@ msgstr "\"%(method)s\" called with non-local URI"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
