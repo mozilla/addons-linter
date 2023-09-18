@@ -362,7 +362,7 @@ describe('ManifestJSONParser', () => {
       addonLinter.collector
     );
 
-    const { notices, warnings } = addonLinter.collector;
+    const { warnings } = addonLinter.collector;
     expect(warnings).toEqual([
       expect.objectContaining({
         code: messages.KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION,
