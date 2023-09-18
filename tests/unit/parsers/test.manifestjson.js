@@ -307,6 +307,73 @@ describe('ManifestJSONParser', () => {
     expect(manifestJSONParser.isValid).toEqual(true);
   });
 
+  it('should warn when gecko.strict_min_version is set below 113.0 and gecko_android is present', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const json = validManifestJSON({
+      browser_specific_settings: {
+        gecko: {
+          strict_min_version: '100.0',
+        },
+        gecko_android: {},
+      },
+    });
+
+    const manifestJSONParser = new ManifestJSONParser(
+      json,
+      addonLinter.collector
+    );
+
+    const { warnings } = addonLinter.collector;
+    expect(warnings).toEqual([
+      // Slightly awkward, but gecko_android is in the compatibility data as
+      // a Firefox key too, so the message is duplicated for each app, even
+      // though it's only really an Android property.
+      expect.objectContaining({
+        code: messages.KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION,
+        description: oneLine`"strict_min_version" requires Firefox 100, which was
+            released before version 113 introduced support for
+            "browser_specific_settings.gecko_android".`,
+      }),
+      expect.objectContaining({
+        code: messages.KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION,
+        description: oneLine`"strict_min_version" requires Firefox for
+            Android 100, which was released before version 113 introduced
+            support for "browser_specific_settings.gecko_android".`,
+      }),
+    ]);
+    expect(manifestJSONParser.isValid).toEqual(true);
+  });
+
+  it('should warn when gecko_android.strict_min_version is set below 113.0', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const json = validManifestJSON({
+      browser_specific_settings: {
+        gecko: {
+          strict_min_version: '113.0',
+        },
+        gecko_android: {
+          strict_min_version: '100.0',
+        },
+      },
+    });
+
+    const manifestJSONParser = new ManifestJSONParser(
+      json,
+      addonLinter.collector
+    );
+
+    const { notices, warnings } = addonLinter.collector;
+    expect(warnings).toEqual([
+      expect.objectContaining({
+        code: messages.KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION,
+        description: oneLine`"strict_min_version" requires Firefox for
+            Android 100, which was released before version 113 introduced
+            support for "browser_specific_settings.gecko_android".`,
+      }),
+    ]);
+    expect(manifestJSONParser.isValid).toEqual(true);
+  });
+
   describe('browser_style', () => {
     function parseManifest(manifestVersion, manifestKey, browserStyleValue) {
       const manifest = {
