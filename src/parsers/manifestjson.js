@@ -36,6 +36,7 @@ import log from 'logger';
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';
 import {
+  androidStrictMinVersion,
   basicCompatVersionComparison,
   firefoxStrictMinVersion,
   firstStableVersion,
@@ -143,17 +144,23 @@ export default class ManifestJSONParser extends JSONParser {
     }
   }
 
-  checkKeySupport(support, minVersion, key, isPermission = false) {
-    if (support.firefox) {
+  checkKeySupport(
+    support,
+    minFirefoxVersion,
+    minAndroidVersion,
+    key,
+    isPermission = false
+  ) {
+    if (support.firefox && minFirefoxVersion) {
       // We don't have to support gaps in the `@mdn/browser-compat-data`
       // information for Firefox Desktop so far.
       const versionAdded = support.firefox.version_added;
-      if (basicCompatVersionComparison(versionAdded, minVersion)) {
+      if (basicCompatVersionComparison(versionAdded, minFirefoxVersion)) {
         if (!isPermission) {
           this.collector.addWarning(
             messages.keyFirefoxUnsupportedByMinVersion(
               key,
-              this.parsedJSON.applications.gecko.strict_min_version,
+              minFirefoxVersion,
               versionAdded
             )
           );
@@ -161,7 +168,7 @@ export default class ManifestJSONParser extends JSONParser {
           this.collector.addNotice(
             messages.permissionFirefoxUnsupportedByMinVersion(
               key,
-              this.parsedJSON.applications.gecko.strict_min_version,
+              minFirefoxVersion,
               versionAdded
             )
           );
@@ -169,7 +176,7 @@ export default class ManifestJSONParser extends JSONParser {
       }
     }
 
-    if (support.firefox_android) {
+    if (support.firefox_android && minAndroidVersion) {
       // `@mdn/browser-compat-data` sometimes provides data with gaps, e.g., a
       // feature was supported in Fennec (added in 56 and removed in 79) and
       // then re-added in Fenix (added in 85) and this is expressed with an
@@ -182,12 +189,14 @@ export default class ManifestJSONParser extends JSONParser {
       // not warn if the minVersion is in one of the few version gaps).
       const versionAddedAndroid = firstStableVersion(support.firefox_android);
 
-      if (basicCompatVersionComparison(versionAddedAndroid, minVersion)) {
+      if (
+        basicCompatVersionComparison(versionAddedAndroid, minAndroidVersion)
+      ) {
         if (!isPermission) {
           this.collector.addWarning(
             messages.keyFirefoxAndroidUnsupportedByMinVersion(
               key,
-              this.parsedJSON.applications.gecko.strict_min_version,
+              minAndroidVersion,
               versionAddedAndroid
             )
           );
@@ -195,7 +204,7 @@ export default class ManifestJSONParser extends JSONParser {
           this.collector.addNotice(
             messages.permissionFirefoxAndroidUnsupportedByMinVersion(
               key,
-              this.parsedJSON.applications.gecko.strict_min_version,
+              minAndroidVersion,
               versionAddedAndroid
             )
           );
@@ -204,19 +213,31 @@ export default class ManifestJSONParser extends JSONParser {
     }
   }
 
-  checkCompatInfo(compatInfo, minVersion, key, manifestKeyValue) {
+  checkCompatInfo(
+    compatInfo,
+    minFirefoxVersion,
+    minAndroidVersion,
+    key,
+    manifestKeyValue
+  ) {
     for (const subkey in compatInfo) {
       if (Object.prototype.hasOwnProperty.call(compatInfo, subkey)) {
         const subkeyInfo = compatInfo[subkey];
         if (subkey === '__compat') {
-          this.checkKeySupport(subkeyInfo.support, minVersion, key);
+          this.checkKeySupport(
+            subkeyInfo.support,
+            minFirefoxVersion,
+            minAndroidVersion,
+            key
+          );
         } else if (
           typeof manifestKeyValue === 'object' &&
           Object.prototype.hasOwnProperty.call(manifestKeyValue, subkey)
         ) {
           this.checkCompatInfo(
             subkeyInfo,
-            minVersion,
+            minFirefoxVersion,
+            minAndroidVersion,
             `${key}.${subkey}`,
             manifestKeyValue[subkey]
           );
@@ -226,7 +247,8 @@ export default class ManifestJSONParser extends JSONParser {
         ) {
           this.checkKeySupport(
             subkeyInfo.__compat.support,
-            minVersion,
+            minFirefoxVersion,
+            minAndroidVersion,
             `${key}:${subkey}`,
             true
           );
@@ -638,14 +660,20 @@ export default class ManifestJSONParser extends JSONParser {
       }
     }
 
-    const minVersion = firefoxStrictMinVersion(this.parsedJSON);
-    if (!this.isLanguagePack && !this.isDictionary && minVersion) {
+    const minFirefoxVersion = firefoxStrictMinVersion(this.parsedJSON);
+    const minAndroidVersion = androidStrictMinVersion(this.parsedJSON);
+    if (
+      !this.isLanguagePack &&
+      !this.isDictionary &&
+      (minFirefoxVersion || minAndroidVersion)
+    ) {
       for (const key in bcd.webextensions.manifest) {
         if (Object.prototype.hasOwnProperty.call(this.parsedJSON, key)) {
           const compatInfo = bcd.webextensions.manifest[key];
           this.checkCompatInfo(
             compatInfo,
-            minVersion,
+            minFirefoxVersion,
+            minAndroidVersion,
             key,
             this.parsedJSON[key]
           );

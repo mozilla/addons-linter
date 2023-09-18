@@ -385,6 +385,23 @@ export function firefoxStrictMinVersion(manifestJson) {
   return null;
 }
 
+export function androidStrictMinVersion(manifestJson) {
+  if (
+    manifestJson.applications &&
+    manifestJson.applications.gecko_android &&
+    manifestJson.applications.gecko_android.strict_min_version &&
+    typeof manifestJson.applications.gecko_android.strict_min_version ===
+      'string'
+  ) {
+    return parseInt(
+      manifestJson.applications.gecko_android.strict_min_version.split('.')[0],
+      10
+    );
+  }
+  // Fall back on gecko.min_version if gecko_android.min_version isn't provided
+  return firefoxStrictMinVersion(manifestJson);
+}
+
 export function basicCompatVersionComparison(versionAdded, minVersion) {
   const asNumber = parseInt(versionAdded, 10);
   return !Number.isNaN(asNumber) && asNumber > minVersion;
