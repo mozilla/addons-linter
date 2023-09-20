@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-09-20 13:33+0000\n"
+"PO-Revision-Date: 2023-09-20 13:38+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: hsb\n"
@@ -234,7 +234,7 @@ msgstr "JS-biblioteka třećeho poskićowarja zakazana"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Waš přidatk biblioteku JavaScript wužiwa, kotruž za njewěstu mamy. Hlejće wjace: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
@@ -455,7 +455,7 @@ msgstr "Polo je njepłaćiwe."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "„%(property)s“ wuwjedźenje zdaleneho koda w manifest.json dowoluje"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
@@ -829,7 +829,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:806
 msgid "The version string should be simplified."
-msgstr ""
+msgstr "Wersijowy znamješkowy rjećazk měł so zjednorić."
 
 #: src/messages/manifestjson.js:807
 msgid ""
@@ -839,7 +839,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "/%(fieldName)s: \"%(permissionName)s\" so w manifestowych wersijach %(versionRange)s njepodpěruje."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
