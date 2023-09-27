@@ -103,7 +103,7 @@
     "jest": "29.7.0",
     "lodash.clonedeep": "4.5.0",
     "lodash.ismatchwith": "4.4.0",
-    "markdown-it": "13.0.1",
+    "markdown-it": "13.0.2",
     "markdown-it-anchor": "8.6.7",
     "markdown-it-emoji": "2.0.2",
     "markdown-it-footnote": "3.0.3",
