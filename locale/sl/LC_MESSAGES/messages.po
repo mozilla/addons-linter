@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-01 20:34+0000\n"
+"PO-Revision-Date: 2023-10-01 20:39+0000\n"
 "Last-Translator: Matjaž Horvat <matjaz.horvat@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -154,7 +154,7 @@ msgstr "\"%(api)s\" lahko povzroča težave, če je naložena začasno"
 msgid ""
 "This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
 "more."
-msgstr ""
+msgstr "Ta API lahko povzroči težave pri začasnem nalaganju z uporabo about:debugging v Firefoxu, razen če v manifestu navedete \"browser_specific_settings.gecko.id\". Več na: https://mzl.la/2hizK4a."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -182,19 +182,20 @@ msgstr "Ime datoteke skripta vsebine ne sme biti prazno."
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "\"%(method)s\" klicana z nedobesednim URI"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
 msgstr ""
+"Klicanje \"%(method)s\" s parametri spremenljivke lahko povzroči morebitne varnostne ranljivosti, če spremenljivka vsebuje oddaljeni URI. Razmislite o uporabi 'window.open' z zastavico 'chrome=no'."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "\"%(method)s\" klicana z nekrajevnim URI"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "Klicanje \"%(method)s\" z nekrajevnim URI bo povzročilo, da se bo pogovorno okno odprlo s pravicami brskalnika."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -205,6 +206,8 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
+"V vaši kodi je prišlo do sintaktične napake JavaScripta, ki je lahko povezana z nekaterimi poskusnimi funkcijami JavaScripta, ki niso uradni del jezikovne specifikacije in zato še niso podprte. "
+"Preverjanja te datoteke ni mogoče nadaljevati."
 
 #: src/messages/javascript.js:62
 msgid ""
