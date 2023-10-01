@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-01 20:39+0000\n"
+"PO-Revision-Date: 2023-10-01 20:54+0000\n"
 "Last-Translator: Matjaž Horvat <matjaz.horvat@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -214,10 +214,12 @@ msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible."
 msgstr ""
+"Vrednotenje nizov kot kode lahko povzroči varnostne ranljivosti in težave z delovanjem, tudi v najbolj neškodljivih okoliščinah. Izogibajte se uporabi `eval` in konstruktorja `Function`, kadar je le"
+" mogoče."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "Funkcije setTimeout, setInterval in execScript lahko kličete samo s funkcijskimi izrazi kot prvim argumentom"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
