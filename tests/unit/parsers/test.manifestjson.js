@@ -307,6 +307,64 @@ describe('ManifestJSONParser', () => {
     expect(manifestJSONParser.isValid).toEqual(true);
   });
 
+  it('should warn when gecko.strict_min_version is set below 113.0 and gecko_android is present', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const json = validManifestJSON({
+      browser_specific_settings: {
+        gecko: {
+          strict_min_version: '100.0',
+        },
+        gecko_android: {},
+      },
+    });
+
+    const manifestJSONParser = new ManifestJSONParser(
+      json,
+      addonLinter.collector
+    );
+
+    const { warnings } = addonLinter.collector;
+    expect(warnings).toEqual([
+      expect.objectContaining({
+        code: messages.KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION,
+        description: oneLine`"strict_min_version" requires Firefox for
+            Android 100, which was released before version 113 introduced
+            support for "browser_specific_settings.gecko_android".`,
+      }),
+    ]);
+    expect(manifestJSONParser.isValid).toEqual(true);
+  });
+
+  it('should warn when gecko_android.strict_min_version is set below 113.0', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const json = validManifestJSON({
+      browser_specific_settings: {
+        gecko: {
+          strict_min_version: '113.0',
+        },
+        gecko_android: {
+          strict_min_version: '100.0',
+        },
+      },
+    });
+
+    const manifestJSONParser = new ManifestJSONParser(
+      json,
+      addonLinter.collector
+    );
+
+    const { warnings } = addonLinter.collector;
+    expect(warnings).toEqual([
+      expect.objectContaining({
+        code: messages.KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION,
+        description: oneLine`"strict_min_version" requires Firefox for
+            Android 100, which was released before version 113 introduced
+            support for "browser_specific_settings.gecko_android".`,
+      }),
+    ]);
+    expect(manifestJSONParser.isValid).toEqual(true);
+  });
+
   describe('browser_style', () => {
     function parseManifest(manifestVersion, manifestKey, browserStyleValue) {
       const manifest = {
@@ -4316,12 +4374,17 @@ describe('ManifestJSONParser', () => {
       );
     });
 
-    const _checkKeySupport = ({ support, minVersion }) => {
+    const _checkKeySupport = ({
+      support,
+      minFirefoxVersion,
+      minAndroidVersion,
+    }) => {
       const isPermission = true;
 
       manifestJSONParser.checkKeySupport(
         support,
-        minVersion,
+        minFirefoxVersion,
+        minAndroidVersion,
         key,
         isPermission
       );
@@ -4335,13 +4398,17 @@ describe('ManifestJSONParser', () => {
         ],
       };
 
-      _checkKeySupport({ support, minVersion: 40 });
+      _checkKeySupport({
+        support,
+        minFirefoxVersion: 42,
+        minAndroidVersion: 54,
+      });
 
       expect(addonLinter.collector.notices).toHaveLength(1);
       expect(addonLinter.collector.notices[0]).toEqual(
         expect.objectContaining({
           description: oneLine`"strict_min_version" requires Firefox for
-            Android 48.0.0, which was released before version 56 introduced
+            Android 54, which was released before version 56 introduced
             support for "${key}".`,
         })
       );
@@ -4352,21 +4419,25 @@ describe('ManifestJSONParser', () => {
         firefox_android: [
           { version_added: true },
           { version_added: false },
-          { version_added: '56', version_removed: '79' },
+          { version_added: '72', version_removed: '79' },
           { version_added: NaN },
-          { version_added: '23', version_removed: '25' },
+          { version_added: '52', version_removed: '56' },
           { version_added: '85' },
           { version_added: null },
         ],
       };
 
-      _checkKeySupport({ support, minVersion: 10 });
+      _checkKeySupport({
+        support,
+        minFirefoxVersion: 42,
+        minAndroidVersion: 50,
+      });
 
       expect(addonLinter.collector.notices).toHaveLength(1);
       expect(addonLinter.collector.notices[0]).toEqual(
         expect.objectContaining({
           description: oneLine`"strict_min_version" requires Firefox for
-            Android 48.0.0, which was released before version 23 introduced
+            Android 50, which was released before version 52 introduced
             support for "${key}".`,
         })
       );
@@ -4375,17 +4446,21 @@ describe('ManifestJSONParser', () => {
     it('supports an object compat data for Android', () => {
       const support = {
         firefox_android: {
-          version_added: '85',
+          version_added: '114',
         },
       };
 
-      _checkKeySupport({ support, minVersion: 10 });
+      _checkKeySupport({
+        support,
+        minFirefoxVersion: 42,
+        minAndroidVersion: 113,
+      });
 
       expect(addonLinter.collector.notices).toHaveLength(1);
       expect(addonLinter.collector.notices[0]).toEqual(
         expect.objectContaining({
           description: oneLine`"strict_min_version" requires Firefox for
-            Android 48.0.0, which was released before version 85 introduced
+            Android 113, which was released before version 114 introduced
             support for "${key}".`,
         })
       );
