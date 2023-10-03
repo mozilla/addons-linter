@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-09-06 17:08+0000\n"
-"Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
+"PO-Revision-Date: 2023-10-01 20:54+0000\n"
+"Last-Translator: Matjaž Horvat <matjaz.horvat@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -47,6 +47,8 @@ msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
 "%(maxManifestVersion)s)."
 msgstr ""
+"Zahtevan obseg različic manifesta je neveljaven: --min-manifest-version (trenutno nastavljen na %(minManifestVersion)s) ne sme biti večji od --max-manifest-version (trenutno nastavljen na "
+"%(maxManifestVersion)s)."
 
 #: src/messages/css.js:13
 msgid "Invalid nesting of selectors found"
@@ -109,6 +111,8 @@ msgid ""
 "Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
 "degradation."
 msgstr ""
+"Zaradi pomislekov glede varnosti in zmogljivosti tega morda ne bo mogoče nastaviti z uporabo dinamičnih vrednosti, ki niso bile ustrezno prečiščene. To lahko povzroči varnostne težave ali dokaj "
+"resno poslabšanje delovanja."
 
 #: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
@@ -150,7 +154,7 @@ msgstr "\"%(api)s\" lahko povzroča težave, če je naložena začasno"
 msgid ""
 "This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
 "more."
-msgstr ""
+msgstr "Ta API lahko povzroči težave pri začasnem nalaganju z uporabo about:debugging v Firefoxu, razen če v manifestu navedete \"browser_specific_settings.gecko.id\". Več na: https://mzl.la/2hizK4a."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -178,19 +182,20 @@ msgstr "Ime datoteke skripta vsebine ne sme biti prazno."
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "\"%(method)s\" klicana z nedobesednim URI"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
 msgstr ""
+"Klicanje \"%(method)s\" s parametri spremenljivke lahko povzroči morebitne varnostne ranljivosti, če spremenljivka vsebuje oddaljeni URI. Razmislite o uporabi 'window.open' z zastavico 'chrome=no'."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "\"%(method)s\" klicana z nekrajevnim URI"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "Klicanje \"%(method)s\" z nekrajevnim URI bo povzročilo, da se bo pogovorno okno odprlo s pravicami brskalnika."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -201,16 +206,20 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
+"V vaši kodi je prišlo do sintaktične napake JavaScripta, ki je lahko povezana z nekaterimi poskusnimi funkcijami JavaScripta, ki niso uradni del jezikovne specifikacije in zato še niso podprte. "
+"Preverjanja te datoteke ni mogoče nadaljevati."
 
 #: src/messages/javascript.js:62
 msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible."
 msgstr ""
+"Vrednotenje nizov kot kode lahko povzroči varnostne ranljivosti in težave z delovanjem, tudi v najbolj neškodljivih okoliščinah. Izogibajte se uporabi `eval` in konstruktorja `Function`, kadar je le"
+" mogoče."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "Funkcije setTimeout, setInterval in execScript lahko kličete samo s funkcijskimi izrazi kot prvim argumentom"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
