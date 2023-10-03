@@ -325,15 +325,6 @@ describe('ManifestJSONParser', () => {
 
     const { warnings } = addonLinter.collector;
     expect(warnings).toEqual([
-      // Slightly awkward, but gecko_android is in the compatibility data as
-      // a Firefox key too, so the message is duplicated for each app, even
-      // though it's only really an Android property.
-      expect.objectContaining({
-        code: messages.KEY_FIREFOX_UNSUPPORTED_BY_MIN_VERSION,
-        description: oneLine`"strict_min_version" requires Firefox 100, which was
-            released before version 113 introduced support for
-            "browser_specific_settings.gecko_android".`,
-      }),
       expect.objectContaining({
         code: messages.KEY_FIREFOX_ANDROID_UNSUPPORTED_BY_MIN_VERSION,
         description: oneLine`"strict_min_version" requires Firefox for
