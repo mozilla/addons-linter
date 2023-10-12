@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-12 05:05+0000\n"
+"PO-Revision-Date: 2023-10-12 05:13+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -214,10 +214,11 @@ msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible."
 msgstr ""
+"სტრიქონების კოდად შეფასებამ შეიძლება გამოიწვიოს უსაფრთხოებისა და წარმადობის ხარვეზები მეტად უვნებელ პირობებშიც კი. გთხოვთ თავიდან აიცილოთ `eval` და `Function` კონსტრუქტორები, როცა კი შესაძლებელია."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "setTimeout, setInterval და execScript ფუნქციები უნდა იყოს გამოძახებული მხოლოდ ფუნქციის გამოსახულებების მიწოდებით პირველ არგუმენტად"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
@@ -225,7 +226,7 @@ msgstr "არგუმენტი მოულოდნელი გადა�
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr ""
+msgstr "გლობალური ცვლადის არგუმენტად გადაცემა არსასურველია. გთხოვთ, სანაცვლოდ გამოიყენოთ Var."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
@@ -233,7 +234,7 @@ msgstr "document.write-ის გამოყენება, მეტად �
 
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
-msgstr ""
+msgstr "document.write უმეტესად ვერ მუშაობს გაფართოების შიგნით და წარმოშობს უსაფრთხოების კუთხით მძიმე შედეგებს არასათანადოდ გამოყენებისას. შესაბამისად, არიდებული უნდა იყოს."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
@@ -241,7 +242,7 @@ msgstr "აკრძალული გარეშე JS ბიბლიოთ�
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "თქვენი დამატება იყენებს JavaScript-ბიბლიოთეკას, რომელიც საფრთხის შემცველად მიგვაჩნია. იხილეთ ვრცლად: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
