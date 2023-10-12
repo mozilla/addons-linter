@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-12 04:40+0000\n"
+"PO-Revision-Date: 2023-10-12 04:52+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -111,6 +111,8 @@ msgid ""
 "Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
 "degradation."
 msgstr ""
+"უსაფრთხოებისა და წარმადობის საკითხებიდან გამომდინარე უმჯობესია, არ მიეთითოს ცვალებადი მნიშვნელობები, რომლებიც სათანადოდ დაზღვეული არ იქნება მავნებლობისგან. ეს შეიძლება უსაფრთხოების ხარვეზების ან "
+"წარმადობის მნიშვნელოვნად დაქვეითების წყაროდ იქცეს."
 
 #: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
@@ -146,13 +148,14 @@ msgstr "სკრიპტის შემცველი ფაილი ვე
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "„%(api)s“ ხარვეზებს იწვევს ხოლმე დროებით ჩატვირთვისას"
 
 #: src/messages/javascript.js:165
 msgid ""
 "This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
 "more."
 msgstr ""
+"ეს API ხარვეზებს იწვევს ხოლმე about:debugging-ის გამოყენებით დროებით ჩატვირთვისას Firefox-ში, თუ მანიფესტში არ მიეთითება „browser_specific_settings.gecko.id“. იხილეთ: https://mzl.la/2hizK4a ვრცლად."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
