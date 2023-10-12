@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-12 04:52+0000\n"
+"PO-Revision-Date: 2023-10-12 05:05+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -183,19 +183,19 @@ msgstr "სკრიპტის შემცველი ფაილის ს
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "„%(method)s“ გამოძახებულია არასიტყვიერი URI-ით"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
-msgstr ""
+msgstr "„%(method)s“ ცვალებადი პარამეტრებით გამოძახებისას, ქმნის უსაფრთხოების შესაძლო სისუსტეებს, თუ შეიცავს დაშორებულ URI-ს. უმჯობესია გამოიყენოთ 'windows.open' აღნიშვნით 'chrome=no'."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "„%(method)s“ გამოძახებულია არაადგილობრივი URI-ით"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "„%(method)s“ არაადგილობრივი URI-ით გამოძახებისას იწვევს სარკმლის გახსნას chrome-ჩარჩოზე უფლებების მოპოვებით."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -206,6 +206,8 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
+"თქვენს კოდში JavaScript-ის სინტაქსური შეცდომაა, რომელიც შესაძლოა უკავშირდებოდეს JavaScript-ის ზოგიერთ საცდელ შესაძლებლობას, ოფიციალურად რომ არაა წარმოდგენილი ენის მახასიათებლებში და შესაბამისად, "
+"ჯერჯერობით ვერ იქნება მხარდაჭერილი. ამ ფაილის შემოწმებას ვეღარ განვაგრძობთ."
 
 #: src/messages/javascript.js:62
 msgid ""
