@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-12 05:13+0000\n"
+"PO-Revision-Date: 2023-10-12 05:15+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -250,7 +250,7 @@ msgstr "თქვენი JSON შეიცავს მრავალხა�
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "JSON-ფაილებში მხოლოდ სტრიქონული სახის შენიშვნებია მიღებულია („//“ რომ აქვთ საწყისად). გთხოვთ მოაცილოთ მრავალსტრიქონიანი შენიშვნები („/*“ რომ აქვთ საწყისად)"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
