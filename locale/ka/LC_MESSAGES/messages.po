@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-12 04:33+0000\n"
+"PO-Revision-Date: 2023-10-12 04:40+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -47,6 +47,8 @@ msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
 "%(maxManifestVersion)s)."
 msgstr ""
+"მოთხოვნილია მანიფესტის ვერსიის უმართებულო შუალედი: --min-manifest-version (ამჟამად მითითებულია %(minManifestVersion)s) არ უნდა იყოს მეტი, ვიდრე --max-manifest-version ( ამჟამად მითითებულია "
+"%(maxManifestVersion)s)."
 
 #: src/messages/css.js:13
 msgid "Invalid nesting of selectors found"
@@ -54,7 +56,7 @@ msgstr "აღმოჩენილია არასწორად მოთ�
 
 #: src/messages/css.js:14
 msgid "Selectors should not be nested"
-msgstr ""
+msgstr "მიმთითებლები არ უნდა იყოს ერთმანეთის ქვეშ მოქცეული"
 
 #: src/messages/css.js:6
 msgid "A CSS syntax error was encountered"
@@ -62,7 +64,7 @@ msgstr "შემჩნეულია CSS სინტაქსური შე
 
 #: src/messages/css.js:7
 msgid "An error was found in the CSS file being processed. As a result, further processing of that file is not possible"
-msgstr ""
+msgstr "ნაპოვნია შეცდომა CSS-ფაილის გარჩევისას. შედეგად, ამ ფაილის შემდგომი დამუშავება შეუძლებელია"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -78,7 +80,7 @@ msgstr "გარეშე სკრიპტები არაა დაშვ
 
 #: src/messages/html.js:13
 msgid "Please include all scripts in the add-on. For more information, refer to https://mzl.la/2uEOkYp."
-msgstr ""
+msgstr "გთხოვთ, ყველა სკრიპტი დაურთოთ დამატებას. ვრცლად იხილეთ https://mzl.la/2uEOkYp."
 
 #: src/messages/html.js:5
 msgid "Inline scripts blocked by default"
@@ -86,7 +88,7 @@ msgstr "ხაზოვანი სკრიპტები შეზღუდ�
 
 #: src/messages/html.js:6
 msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
-msgstr ""
+msgstr "ნაგულისხმევი CSP-წესები კრძალავს სტრიქონიდან გაშვებულ JavaScript-ს (https://mzl.la/2pn32nd)."
 
 #: src/messages/javascript.js:100
 msgid "Unadvised 3rd-party JS library"
@@ -94,7 +96,7 @@ msgstr "არასასურველი გარეშე JS ბიბლ�
 
 #: src/messages/javascript.js:101
 msgid "Your add-on uses a JavaScript library we do not recommend. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "თქვენი დამატება იყენებს JavaScript-ბიბლიოთეკას, რომელიც არასასურველია. იხილეთ ვრცლად: https://bit.ly/1TRIyZY"
 
 #: src/messages/javascript.js:107
 msgid "Known JS library detected"
@@ -102,7 +104,7 @@ msgstr "აღმოჩენილია ცნობილი JS ბიბლ�
 
 #: src/messages/javascript.js:108
 msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
-msgstr ""
+msgstr "JavaScript-ბიბლიოთეკები მხარდაუჭერელია მარტივი დამატებებისთვის, მაგრამ საერთოდ მისაღებია."
 
 #: src/messages/javascript.js:116
 msgid ""
