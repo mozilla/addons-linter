@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-13 06:53+0000\n"
+"PO-Revision-Date: 2023-10-13 07:00+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -331,11 +331,11 @@ msgstr "აღმოჩენილია გასაჩივრებულ�
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "ნაპოვნია ფაილები, რომლებიც ან ზედმეტია, ან შემთხვევით დაერთო. საჭიროა მათი მოცილება."
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "კრებული შეიცავს რამდენიმე ჩანაწერს ერთი და იმავე სახელით. ამგვარი გადაწყვეტა აკრძალულია. სცადეთ zip-არქივის გახსნა და ხელახლა შეკუმშვა."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
@@ -517,11 +517,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:267
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "manifest.json-ში თვისება „%(property)s“ ვერ მოიძებნა"
 
 #: src/messages/manifestjson.js:270
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "„%(property)s“ აუცილებელია"
 
 #: src/messages/manifestjson.js:281
 msgid "An icon defined in the manifest could not be found in the package."
@@ -549,7 +549,7 @@ msgstr "ფონური გვერდი ვერ მოიძებნა
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "„%(fieldName)s“ უგულებელყოფილია ნებართვის არ მქონე დამატებებისთვის."
 
 #: src/messages/manifestjson.js:324
 msgid "A content script defined in the manifest could not be found."
@@ -685,7 +685,7 @@ msgstr "თემის გამოსახულება მისამა�
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "„%(fieldName)s“ არაა მხარდაჭერილი."
 
 #: src/messages/manifestjson.js:522
 msgid "Theme image file mime type does not match its file extension"
@@ -701,7 +701,7 @@ msgstr "„default_locale“ აკლია თარგმანებში."
 
 #: src/messages/manifestjson.js:540
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "„default_locale“ მნიშვნელობა მითითებულია manifest-ში, მაგრამ შესაბამისი „messages.json“ ვერ მოინახა საქაღალდეში „_locales“. იხილეთ: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:548
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -709,7 +709,7 @@ msgstr "„default_locale“ აკლია, თუმცა „_locales“ ა
 
 #: src/messages/manifestjson.js:549
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "„default_locale“ მნიშვნელობა არაა მითითებული manifest-ში, მაგრამ საქაღალდე „_locales“ წარმოდგენილია. იხილეთ: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:557
 msgid "Unsupported image extension"
@@ -809,7 +809,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:767
 msgid "Cannot use actions in hidden add-ons."
-msgstr ""
+msgstr "მოქმედებების გამოყენება ფარულ დამატებებში შეუძლებელია."
 
 #: src/messages/manifestjson.js:768
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
@@ -817,15 +817,15 @@ msgstr ""
 
 #: src/messages/manifestjson.js:776
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
-msgstr ""
+msgstr "გამოიყენეთ „browser_specific_settings“ და არა – „applications“."
 
 #: src/messages/manifestjson.js:777
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "„applications“ თვისება manifest-ში მოძველებულია და აღარ იქნება მისაღები Manifest-ის მე-3 ვერსიიდან."
 
 #: src/messages/manifestjson.js:785
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "„applications“ აღარაა მისაღები Manifest-ის მე-3 ვერსიიდან."
 
 #: src/messages/manifestjson.js:787
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
