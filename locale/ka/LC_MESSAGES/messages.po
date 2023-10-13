@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-12 05:15+0000\n"
+"PO-Revision-Date: 2023-10-13 06:53+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -258,7 +258,7 @@ msgstr "გაორმაგებული გასაღებები დ�
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "JSON-ფაილში აღმოჩენილია მეორებული გასაღები."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
@@ -274,13 +274,15 @@ msgstr "აღმოჩენილია ფაილის დაკავე�
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "ფაილები, რომელთა სახელებიც დაკავებულია, აღმოჩენილია დამატებაში. გთხოვთ, თავი აარიდოთ მათ გამოყენებას და გადაარქვათ სახელები."
 
 #: src/messages/layout.js:22
 msgid ""
 "The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
 "sure all entries are using '/' as the path separator."
 msgstr ""
+"კრებული უმართებულოა. შეიძლება შეიცავდეს აკრძალულ სიმბოლოების შემცველ ჩანაწერებს, მაგალითად,  '\\', როგორც მისამართის გამყოფი, მიუღებელია Firefox-ში. სცადეთ თქვენი დამატების კრებულის (ZIP) ხელახლა "
+"შექმნა და დარწმუნდით, რომ ყველა ჩანაწერში გამოყენებულია '/' მისამართისთვის."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
@@ -295,6 +297,8 @@ msgid ""
 "No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
 "packaging."
 msgstr ""
+"გაფართოების ძირეულ ნაწილში manifest.json ვერ მოინახა. კრეფულის ფაილი უნდა იყოს თავად გაფართოების ფაილების ZIP-არქივი და არა – შემცველი საქაღალდისა. იხილეთ ვრცლად: https://mzl.la/2r2McKv შეფუთვის "
+"შესახებ."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
@@ -305,6 +309,8 @@ msgid ""
 "This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
 "or splitting very large files into smaller ones."
 msgstr ""
+"ეს ფაილი არაა ორობითი და ზედმეტად დიდია დასამუშავებლად. ფაილი თუ აჭარბებს %(maxFileSizeToParseMB)sმბაიტს, ვერ გაირჩევა. შეგიძლიათ გაიტანოთ მონაცემთა დიდი სიები JavaScript-ფაილებიდან JSON-ფაილებში ან"
+" დაყოთ ძალზედ დიდი ფაილები მცირე ნაწილებად."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -313,7 +319,7 @@ msgstr "გასაჩივრებული დამალული ფა�
 #: src/messages/layout.js:58
 msgid ""
 "Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
-msgstr ""
+msgstr "დამალული ფაილები აძნელებს გარჩევის პროცესს და შეიძლება შეიცავდეს საფრთხილო მონაცემებს შემქმნელი სისტემის შესახებ. გთხოვთ შეცვალოთ შეფუთვის ხერხები ისე, რომ ეს ფაილები აღარ დაერთოს."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
