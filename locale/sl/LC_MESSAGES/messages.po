@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-17 15:22+0000\n"
-"Last-Translator: Google Translate <pontoon-gt@example.com>\n"
+"PO-Revision-Date: 2023-10-17 21:02+0000\n"
+"Last-Translator: Matjaž Horvat <matjaz.horvat@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -227,7 +227,7 @@ msgstr "Globalna spremenljivka nepričakovano podana kot argument"
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr "Posredovanje globala kot argumenta ni priporočljivo. Nastavite to spremenljivko."
+msgstr "Posredovanje globalne spremenljivke kot argumenta ni priporočljivo. Raje uporabite \"var\"."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
