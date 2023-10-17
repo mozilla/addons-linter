@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-17 21:02+0000\n"
+"PO-Revision-Date: 2023-10-17 21:20+0000\n"
 "Last-Translator: Matjaž Horvat <matjaz.horvat@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -235,7 +235,7 @@ msgstr "Uporaba document.write se močno odsvetuje."
 
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
-msgstr "document.write ne bo delovala v mnogih okoliščinah, če se uporablja v razširitvah, in ima lahko resne varnostne posledice, če se uporablja nepravilno. Zato se ga ne sme uporabljati."
+msgstr "document.write ne deluje v mnogo primerih, če se uporablja v razširitvah, in ima lahko resne varnostne posledice, če se uporablja nepravilno. Zato je najbolje, da se ga ne uporablja."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
