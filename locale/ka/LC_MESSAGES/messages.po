@@ -805,7 +805,7 @@ msgstr "%(instancePath)s: „mozillaAddons“ ნებართვა საჭ
 
 #: src/messages/manifestjson.js:757
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "ამ გაფართოებაში არაა წარმოდგენილი „mozillaAddons“ ნებართვა, რომელიც საჭიროა უპირატესობის მქონე გაფართოებებისთვის."
 
 #: src/messages/manifestjson.js:767
 msgid "Cannot use actions in hidden add-ons."
