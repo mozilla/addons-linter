@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-30 23:33+0000\n"
+"PO-Revision-Date: 2023-10-30 23:52+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -453,7 +453,7 @@ msgstr "ჩადგმის უმართებულო წარმომ�
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
+msgstr "ჩადგმისთვის უმართებულო წარმომავლობა. მართებულ წარმომავლობის აქვს - მხოლოდ - სქემა, ჰოსტის სახელი და დამატებითი პორტი. იხილეთ https://mzl.la/3TEbqbE (MDN-მასალები) ვრცლად."
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -469,15 +469,15 @@ msgstr "ველი არამართებულია."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "„%(property)s“ კოდის დაშორებულად გაშვების საშუალებას იძლევა Manifest.json-ში"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "მორგებული „%(property)s“ საჭიროებს დამატებით განხილვას."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "„%(property)s“ საშუალებას იძლევა, გამოიყენებოდეს 'eval', რომელსაც მძლავრი დაცვა და მაღალი წარმადობა აქვს."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
