@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-30 22:59+0000\n"
+"PO-Revision-Date: 2023-10-30 23:17+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -393,15 +393,15 @@ msgstr "ჩანაცვლების არის დასახელე�
 
 #: src/messages/locale-messagesjson.js:34
 msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr ""
+msgstr "ჩანაცვლების არეში მისაღებია მხოლოდ ასოციფრული სიმბოლოები, _ და @ (https://mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr "ჩანაცვლების არეს არ გააჩნია შიგთავსის თვისება"
+msgstr "ჩანაცვლების არეს აკლია შიგთავსის თვისება"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "ჩანაცვლების არე საჭიროებს შიგთავსის თვისების განსაზღვრას მისი შემცვლელისთვის (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
@@ -433,7 +433,7 @@ msgstr "იხილეთ ვრცლად https://mzl.la/2Qn0fWC (MDN-მა
 
 #: src/messages/manifestjson.js:119 src/messages/manifestjson.js:166
 msgid "See https://mzl.la/3Woeqv4 (MDN Docs) for more information."
-msgstr ""
+msgstr "იხილეთ https://mzl.la/3Woeqv4 (MDN-მასალები) ვრცლად."
 
 #: src/messages/manifestjson.js:127 src/messages/manifestjson.js:156
 msgid "Unknown permission."
