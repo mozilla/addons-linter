@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-13 07:00+0000\n"
+"PO-Revision-Date: 2023-10-30 22:30+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -833,7 +833,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:795
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "ვერსიის ჩანაწერი უნდა გამარტივდეს, რადგან შეუთავსებელი იქნება Manifest-ის მე-3 და უფრო მაღალ ვერსიებთან."
 
 #: src/messages/manifestjson.js:797
 msgid ""
