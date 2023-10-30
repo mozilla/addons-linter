@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-30 22:38+0000\n"
+"PO-Revision-Date: 2023-10-30 22:59+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -373,11 +373,11 @@ msgstr "სტრიქონის დასახელება დაკა�
 
 #: src/messages/locale-messagesjson.js:14
 msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr ""
+msgstr "ჩანაწერები, რომელთაც საწყისად @@ ექნება, გარდაიქმნება ჩაშენებულ მუდმივებად (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "ჩანაწერში მისაღებია მხოლოდ ასოციფრული სიმბოლოები, _ და @ (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
