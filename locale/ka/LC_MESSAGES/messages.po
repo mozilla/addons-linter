@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-30 22:30+0000\n"
+"PO-Revision-Date: 2023-10-30 22:38+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -357,7 +357,7 @@ msgstr "ნაკრები უკვე დამოწმებულია"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "უკვე ხელმოწერილი დამატებები ხელახლა დამოწმდება ხელმოწერით AMO-ზე გამოქვეყნებისას. ამით ჩანაცვლდება ყველა არსებული ხელმოწერა დამატებაზე."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -365,7 +365,7 @@ msgstr "Firefox დამატებებით კრიპტოვალუ
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "ჩვენთა აკრძალულია ციფრული ფულის გამომმუშავებელი სკრიპტების გაშვება WebExtensions-ში. იხილეთ https://github.com/mozilla/addons-linter/issues/1643 ვრცლად."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -840,6 +840,8 @@ msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"ვერსიის ჩანაწერს უნდა წარმოადგენდეს წერტილებით გამოყოფილი 1-დან 4 ერთეულამდე რიცხვი. თითოეული არაუმეტეს 9 ციფრისგან შემდგარი, წინ ნულები კი უკვე აღარაა მისაღები. აგრეთვე მიუღებელია ასოებიც. ვრცლად "
+"იხილეთ https://mzl.la/3h3mCRu (MDN-მასალები)."
 
 #: src/messages/manifestjson.js:806
 msgid "The version string should be simplified."
