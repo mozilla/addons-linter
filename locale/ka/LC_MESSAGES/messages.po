@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-30 23:17+0000\n"
+"PO-Revision-Date: 2023-10-30 23:33+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -441,7 +441,7 @@ msgstr "უცნობი სახის ნებართვა."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s: მოცემული აღმატებული ნებართვები მისაღებია მხოლოდ უპირატესობის მქონე გაფართოებებში: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -549,7 +549,7 @@ msgstr "ფონური გვერდი ვერ მოიძებნა
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr "„%(fieldName)s“ უგულებელყოფილია ნებართვის არ მქონე დამატებებისთვის."
+msgstr "„%(fieldName)s“ უგულებელყოფილია უპირატესობის არმქონე დამატებებისთვის."
 
 #: src/messages/manifestjson.js:324
 msgid "A content script defined in the manifest could not be found."
@@ -573,7 +573,7 @@ msgstr "მანიფესტში განსაზღვრული ლ�
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "„%(fieldName)s“ Manifest-ველი გამოიყენება მხოლოდ უპირატესობის მქონე და დროებით ჩადგმული გაფართოებებისთვის."
 
 #: src/messages/manifestjson.js:351
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
@@ -613,7 +613,7 @@ msgstr "დამატება შეიცავს აკრძალულ 
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "გთხოვთ იხილოთ https://github.com/mozilla-extensions/xpi-manifest უპირატესობის მქონე გაფართოებებისა და ხელმოწერების შესახებ ვრცლად."
 
 #: src/messages/manifestjson.js:405
 msgid "Icons must be square."
@@ -749,7 +749,7 @@ msgstr "ნებართვები მხარდაუჭერელი�
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: აღმატებული Manifest-ველები მისაღებია მხოლოდ უპირატესობის მქონე გაფართოებებში."
 
 #: src/messages/manifestjson.js:641
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
@@ -789,19 +789,19 @@ msgstr "იხილეთ https://mzl.la/3PLZYdo ვრცლად."
 
 #: src/messages/manifestjson.js:717
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr ""
+msgstr "%(instancePath)s: უპირატესობის მქონე გაფართოებებს უნდა გააჩნდეს განაცხადი აღმატებული ნებართვებისთვის."
 
 #: src/messages/manifestjson.js:728
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr ""
+msgstr "ამ გაფართოებაში არაა აღმატებული ნებართვის განაცხადები. არ საჭიროებს უპირატესი სერტიფიკატით ხელმოწერას. გთხოვთ, ასატვირთად პირდაპირ გამოიყენოთ https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:741
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: „mozillaAddons“ ნებართვა საჭიროა უპირატესობის მქონე გაფართოებებისთვის."
 
 #: src/messages/manifestjson.js:744
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s: „mozillaAddons“ ნებართვა საჭიროა უპირატესობის მქონე გაფართოებებისთვის, რომლებიც შეიცავს აღმატებულ Manifest-ველებს."
 
 #: src/messages/manifestjson.js:757
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
