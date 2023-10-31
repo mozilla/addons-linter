@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-10-30 23:52+0000\n"
+"PO-Revision-Date: 2023-10-31 00:01+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -481,11 +481,11 @@ msgstr "„%(property)s“ საშუალებას იძლევა, �
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "უმეტეს შემთხვევაში ერთიდაიგივე შედეგის მიღება სხვადასხვა გზითაა შესაძლებელი, აქედან გამომდინარე, საერთოდ იკრძალება"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string with no leading/trailing whitespaces."
-msgstr ""
+msgstr "თვისება „name“ უნდა წარმოადგენდეს ჩანაწერს თავში/ბოლოში გამოტოვებული ადგილების გარეშე."
 
 #: src/messages/manifestjson.js:230
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -497,7 +497,7 @@ msgstr "„update_url“ არაა დაშვებული."
 
 #: src/messages/manifestjson.js:239
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "„applications.gecko.update_url“ ან „browser_specific_settings.gecko.update_url“ აკრძალულია Mozilla-საიტზე განთავსებულ დამატებებზე."
 
 #: src/messages/manifestjson.js:248
 msgid "The \"update_url\" property is not used by Firefox."
@@ -505,7 +505,7 @@ msgstr "„update_url“ თვისებას არ იყენებს F
 
 #: src/messages/manifestjson.js:249
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
-msgstr ""
+msgstr "„update_url“ მითითებას არ იყენებს Firefox ძირეულ Manifest-ში; თქვენი დამატების განსაახლებლად გამოყენებული იქნება დამატებების საიტი და არა თქვენი „update_url“. იხილეთ: https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:257
 msgid "\"strict_max_version\" not required."
@@ -513,7 +513,7 @@ msgstr "\"strict_max_version\" არაა აუცილებელი."
 
 #: src/messages/manifestjson.js:258
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "„strict_max_version“ უმჯობესია არ გამოიყენებოდეს, თუ არაა მოსალოდნელი, რომ დამატება ვერ იმუშავებს Firefox-ის მომდევნო ვერსიებთან."
 
 #: src/messages/manifestjson.js:267
 msgid "No \"%(property)s\" property found in manifest.json"
@@ -629,7 +629,7 @@ msgstr "ხატულის ზომა არ ემთხვევა მ�
 
 #: src/messages/manifestjson.js:419
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "ხატულა „%(path)s“ მისამართზე უნდა ყოფილიყო %(expected)d პიქსელის სიგანით, მაგრამ აღმოჩნდა %(actual)d."
 
 #: src/messages/manifestjson.js:432
 msgid "Corrupt image file"
@@ -665,7 +665,7 @@ msgstr "თემის გამოსახულება მისამა�
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "„%(fieldName)s“ მხარდაუჭერელია Manifest-ვერსიაში %(versionRange)s."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file has an unsupported file extension"
