@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-11-06 19:30+0000\n"
+"PO-Revision-Date: 2023-11-06 19:41+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -832,7 +832,7 @@ msgstr "„applications“ აღარაა მისაღები Manifest-
 
 #: src/messages/manifestjson.js:787
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "„applications“ თვისება აღარაა მისაღები მანიფესტის მე-3 ვერსიიდან. სანაცვლოდ გამოიყენეთ „browser_specific_settings“."
 
 #: src/messages/manifestjson.js:795
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
