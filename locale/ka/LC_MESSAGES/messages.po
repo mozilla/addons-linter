@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-11-06 19:41+0000\n"
+"PO-Revision-Date: 2023-11-06 19:48+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -743,7 +743,7 @@ msgstr "მანიფესტის გასაღები მხარდ�
 
 #: src/messages/manifestjson.js:601 src/messages/manifestjson.js:623
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "„strict_min_version“ საჭიროებს Firefox %(minVersion)s ვერსიას ანუ უფრო ადრინდელ გამოშვებას, ვიდრე %(versionAdded)s ვერსიაა, რომლიდან მოყოლებულიც მხარდაჭერილია „%(key)s“."
 
 #: src/messages/manifestjson.js:619
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -759,7 +759,7 @@ msgstr "მანიფესტის გასაღები არ არი
 
 #: src/messages/manifestjson.js:645 src/messages/manifestjson.js:667
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "„strict_min_version“ საჭიროებს Firefox Android-ის %(minVersion)s ვერსიას ანუ უფრო ადრინდელ გამოშვებას, ვიდრე %(versionAdded)s ვერსიაა, რომლიდან მოყოლებულიც მხარდაჭერილია „%(key)s“."
 
 #: src/messages/manifestjson.js:663
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -775,12 +775,11 @@ msgstr "პირდაპირი ბმული „addons.mozilla.org“ მ
 
 #: src/messages/manifestjson.js:691
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "„%(permission)s“ ნებართვისთვის საჭიროა „strict_min_version“ მითითებული იყოს „%(minFirefoxVersion)s“ ან უფრო ზემოთ"
 
 #: src/messages/manifestjson.js:696
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
-msgstr ""
-"„%(permission)s“ ნებართვისთვის, საჭიროა „strict_min_version“ იყოს მითითებული „%(minFirefoxVersion)s“ ან უფრო მაღალი. გთხოვთ განაახლოთ manifest.json ვერსია Firefox-ის უმცირესი ვერსიის მითითებით."
+msgstr "„%(permission)s“ ნებართვისთვის საჭიროა „strict_min_version“ იყოს მითითებული „%(minFirefoxVersion)s“ ან უფრო ზემოთ. გთხოვთ განაახლოთ manifest.json ვერსია Firefox-ის უმცირესი ვერსიის მითითებით."
 
 #: src/messages/manifestjson.js:708
 msgid "The extension ID is required in Manifest Version 3 and above."
