@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-11-06 19:20+0000\n"
+"PO-Revision-Date: 2023-11-06 19:30+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ka\n"
@@ -751,7 +751,7 @@ msgstr "ნებართვები მხარდაუჭერელი�
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr "%(instancePath)s: აღმატებული Manifest-ველები მისაღებია მხოლოდ უპირატესობის მქონე გაფართოებებში."
+msgstr "%(instancePath)s: აღმატებული მანიფესტის ველები მისაღებია მხოლოდ უპირატესობის მქონე გაფართოებებში."
 
 #: src/messages/manifestjson.js:641
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
@@ -780,6 +780,7 @@ msgstr ""
 #: src/messages/manifestjson.js:696
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
 msgstr ""
+"„%(permission)s“ ნებართვისთვის, საჭიროა „strict_min_version“ იყოს მითითებული „%(minFirefoxVersion)s“ ან უფრო მაღალი. გთხოვთ განაახლოთ manifest.json ვერსია Firefox-ის უმცირესი ვერსიის მითითებით."
 
 #: src/messages/manifestjson.js:708
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -815,7 +816,7 @@ msgstr "მოქმედებების გამოყენება ფ�
 
 #: src/messages/manifestjson.js:768
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "„hidden“ და „browser_action/page_action“ (ანდა „action“ მანიფესტის ვერსია 3-ში ან ზემოთ) მახასიათებლები ურთიერთგამომრიცხავია."
 
 #: src/messages/manifestjson.js:776
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
