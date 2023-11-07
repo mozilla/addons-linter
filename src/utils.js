@@ -371,6 +371,8 @@ export function couldBeMinifiedCode(code) {
 }
 
 export function firefoxStrictMinVersion(manifestJson) {
+  // Note: The _validate method of parsers/manifestjson.js copies
+  // "browser_specific_settings" to "applications".
   if (
     manifestJson.applications &&
     manifestJson.applications.gecko &&
@@ -386,6 +388,8 @@ export function firefoxStrictMinVersion(manifestJson) {
 }
 
 export function androidStrictMinVersion(manifestJson) {
+  // Note: The _validate method of parsers/manifestjson.js copies
+  // "browser_specific_settings" to "applications".
   if (
     manifestJson.applications &&
     manifestJson.applications.gecko_android &&
@@ -393,13 +397,22 @@ export function androidStrictMinVersion(manifestJson) {
     typeof manifestJson.applications.gecko_android.strict_min_version ===
       'string'
   ) {
+    // Note: gecko_android is recognized since 113.
     return parseInt(
       manifestJson.applications.gecko_android.strict_min_version.split('.')[0],
       10
     );
   }
   // Fall back on gecko.min_version if gecko_android.min_version isn't provided
-  return firefoxStrictMinVersion(manifestJson);
+  const version = firefoxStrictMinVersion(manifestJson);
+  if (version >= 69 && version < 79) {
+    // There has not been any Firefox for Android release after 68, until 79.
+    // When the declared gecko.strict_min_version is in this version range,
+    // treat the version as 79 to avoid useless warnings as seen in:
+    // https://github.com/mozilla/addons-linter/pull/5090#issuecomment-1795770582
+    return 79;
+  }
+  return version;
 }
 
 export function basicCompatVersionComparison(versionAdded, minVersion) {
