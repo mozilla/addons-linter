@@ -3,6 +3,7 @@ import bcd from '@mdn/browser-compat-data';
 
 import {
   AddonsLinterUserError,
+  androidStrictMinVersion,
   basicCompatVersionComparison,
   buildI18nObject,
   checkMinNodeVersion,
@@ -450,6 +451,18 @@ describe('firefoxStrictMinVersion', () => {
     );
   });
 
+  it('should return null without applications key despite browser_specific_settings', () => {
+    // The _validate method of parsers/manifestjson.js copies
+    // "browser_specific_settings" to "applications",
+    // so the "browser_specific_settings" key is ignored, and "applications" is
+    // relied upon by the firefoxStrictMinVersion method.
+    expect(
+      firefoxStrictMinVersion({
+        browser_specific_settings: { gecko: { strict_min_version: '111' } },
+      })
+    ).toEqual(null);
+  });
+
   it('should return the first number in applications.gecko.strict_min_version', () => {
     expect(
       firefoxStrictMinVersion({
@@ -469,6 +482,110 @@ describe('firefoxStrictMinVersion', () => {
         applications: { gecko: { strict_min_version: 12.3 } },
       })
     ).toEqual(null);
+  });
+});
+
+describe('androidStrictMinVersion', () => {
+  it('should return null without applications key', () => {
+    expect(androidStrictMinVersion({})).toEqual(null);
+  });
+
+  it('should return null without applications.gecko_android key', () => {
+    expect(androidStrictMinVersion({ applications: null })).toEqual(null);
+  });
+
+  it('should return null without applications.gecko_android.strict_min_version key', () => {
+    expect(
+      androidStrictMinVersion({ applications: { gecko_android: null } })
+    ).toEqual(null);
+  });
+
+  it('should return null without applications key despite browser_specific_settings', () => {
+    // The _validate method of parsers/manifestjson.js copies
+    // "browser_specific_settings" to "applications",
+    // so the "browser_specific_settings" key is ignored, and "applications" is
+    // relied upon by the androidStrictMinVersion method.
+    expect(
+      androidStrictMinVersion({
+        browser_specific_settings: {
+          gecko_android: { strict_min_version: '111' },
+        },
+      })
+    ).toEqual(null);
+  });
+
+  it('should return the first number in applications.gecko_android.strict_min_version', () => {
+    expect(
+      androidStrictMinVersion({
+        applications: { gecko_android: { strict_min_version: '113' } },
+      })
+    ).toEqual(113);
+    expect(
+      androidStrictMinVersion({
+        applications: { gecko_android: { strict_min_version: '114.0a1' } },
+      })
+    ).toEqual(114);
+    // Sanity check: although gecko_android support was introduced in 113,
+    // technically one could also put a version older than 113 there:
+    expect(
+      androidStrictMinVersion({
+        applications: { gecko_android: { strict_min_version: '100' } },
+      })
+    ).toEqual(100);
+  });
+
+  it('should return null when value is not a string', () => {
+    expect(
+      androidStrictMinVersion({
+        applications: { gecko_android: { strict_min_version: 123 } },
+      })
+    ).toEqual(null);
+  });
+
+  it('should fall back to gecko when gecko_android is not set', () => {
+    expect(
+      androidStrictMinVersion({
+        applications: { gecko: { strict_min_version: '50' } },
+      })
+    ).toEqual(50);
+    expect(
+      androidStrictMinVersion({
+        applications: { gecko: { strict_min_version: '120' } },
+      })
+    ).toEqual(120);
+  });
+
+  it('should clamp gecko.strict_min_version in range [69, 79] to 79', () => {
+    expect(
+      androidStrictMinVersion({
+        applications: { gecko: { strict_min_version: '68' } },
+      })
+    ).toEqual(68);
+    expect(
+      androidStrictMinVersion({
+        applications: { gecko: { strict_min_version: '68.1' } },
+      })
+    ).toEqual(68);
+    expect(
+      androidStrictMinVersion({
+        applications: { gecko: { strict_min_version: '69' } },
+      })
+    ).toEqual(79);
+    expect(
+      androidStrictMinVersion({
+        applications: { gecko: { strict_min_version: '78' } },
+      })
+    ).toEqual(79);
+    expect(
+      androidStrictMinVersion({
+        applications: { gecko: { strict_min_version: '79' } },
+      })
+    ).toEqual(79);
+    expect(
+      androidStrictMinVersion({
+        applications: { gecko: { strict_min_version: '80' } },
+      })
+    ).toEqual(80);
   });
 });
 
