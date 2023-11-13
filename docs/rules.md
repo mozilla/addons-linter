@@ -141,6 +141,7 @@ Rules are sorted by severity.
 | `APPLICATIONS_INVALID`                                  | error    | The `applications` property is no longer accepted in Manifest Version 3 and above.                                                                                                 |
 | `VERSION_FORMAT_DEPRECATED`                             | warning  | The version string should be simplified.                                                                                                                                           |
 | `VERSION_FORMAT_INVALID`                                | error    | The version string is not valid because its format is too complex.                                                                                                                 |
+| `MANIFEST_V3_FIREFOX_ANDROID_LIMITATIONS`               | warning  | The extension is marked compatible with a Firefox for Android version with a limited Manifest Version 3 support                                                                    |
 
 ### Static Theme / manifest.json
 
