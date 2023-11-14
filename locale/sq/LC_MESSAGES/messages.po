@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-11-14 19:24+0000\n"
+"PO-Revision-Date: 2023-11-14 19:29+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: none\n"
 "Language: sq\n"
@@ -96,7 +96,7 @@ msgstr "Librari e pakëshilluar JS prej palësh të treta"
 
 #: src/messages/javascript.js:101
 msgid "Your add-on uses a JavaScript library we do not recommend. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Shtesa juaj përdor një bibliotekë JavaScript që nuk e rekomandjmë. Lexoni më tepër: https://bit.ly/1TRIyZY"
 
 #: src/messages/javascript.js:107
 msgid "Known JS library detected"
@@ -104,7 +104,7 @@ msgstr "U pikas librari JS e njohur"
 
 #: src/messages/javascript.js:108
 msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
-msgstr ""
+msgstr "Bibliotekat JavaScript nuk parapëlqehen për shtesa të thjeshta, por janë të pranuara, përgjithësisht."
 
 #: src/messages/javascript.js:116
 msgid ""
@@ -240,7 +240,7 @@ msgstr "Librari e ndaluar JS prej palësh të treta"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Shtesa juaj përdor një bibliotekë JavaScript që e konsiderojmë jo të parrezik. Lexoni më tepër: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
@@ -248,7 +248,7 @@ msgstr "Kartela juaj JSON përmban komente blloku."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "Në kartela JSON lejohen vetëm komente rreshti (komente që fillojnë me \"//\"). Ju lutemi, hiqni komente blloqesh (komente që fillojnë me \"/*\")"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -295,6 +295,8 @@ msgid ""
 "No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
 "packaging."
 msgstr ""
+"Në rrënjë të zgjerimit s’u gjet manifest.json. Kartela paketë duhet të jetë një  ZIP e vetë kartelave të zgjerimit, jo e drejtorisë që i përmban. Për më tepër mbi paketimin, shihni: "
+"https://mzl.la/2r2McKv."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
