@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-11-14 19:03+0000\n"
+"PO-Revision-Date: 2023-11-14 19:12+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: none\n"
 "Language: sq\n"
@@ -272,13 +272,15 @@ msgstr "U gjet emër kartele i rezervuar."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "Te shtesa u gjetën kartela emrat e të cilave janë të rezervuar. Ju lutemi, hiqni dorë nga përdorimi i tyre dhe riemërtoni kartelat tuaja."
 
 #: src/messages/layout.js:22
 msgid ""
 "The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
 "sure all entries are using '/' as the path separator."
 msgstr ""
+"Paketa është e pavlefshme. Mund të përmbajë zëra që përdorin shenja të pavlefshme, si shembull, përdorimi i '\\'si ndarës në shtigje nuk lejohet në Firefox. Provoni të rikrijoni paketën e shtesës "
+"tuaj (ZIP) dhe sigurohuni se krejt zërat përdorin '/' si ndarës në shtigje."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
@@ -327,7 +329,7 @@ msgstr ""
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "Paketa përmban shumë zëra me të njëjtin emër. Kjo praktikë është ndaluar. Provoni ta çngjeshni dhe ta ngjeshni sërish paketën e shtesës tuaj dhe të riprovoni."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
@@ -357,7 +359,7 @@ msgstr "Shtesat Firefox nuk janë të lejuara të xhirojnë nxjerrës monedhash.
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "Nuk lejojmë nxjerrës kriptomonedhash të xhirojnë brenda WebExtensions. Për më tepër hollësi, shihni https://github.com/mozilla/addons-linter/issues/1643."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
@@ -385,7 +387,7 @@ msgstr "Emri i vendmbajtëses përmban shenja të pavlefshme"
 
 #: src/messages/locale-messagesjson.js:34
 msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr ""
+msgstr "Emrat e vendmbajtëseve duhet të përmbajnë vetëm shenja alfa-numerike, _ dhe @ (https://mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
@@ -425,7 +427,7 @@ msgstr "Për më tepër hollësi, shihni https://mzl.la/2Qn0fWC (Dokumentin te M
 
 #: src/messages/manifestjson.js:119 src/messages/manifestjson.js:166
 msgid "See https://mzl.la/3Woeqv4 (MDN Docs) for more information."
-msgstr ""
+msgstr "Për më tepër hollësi, shihni https://mzl.la/3Woeqv4 (Dokumentim te MDN)."
 
 #: src/messages/manifestjson.js:127 src/messages/manifestjson.js:156
 msgid "Unknown permission."
@@ -433,7 +435,7 @@ msgstr "Leje e panjohur."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s: lejet vijuese të privilegjuara lejohen vetëm bë zgjerime të privilegjuara: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -445,7 +447,7 @@ msgstr "Origjinë instalimi e panjohur."
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
+msgstr "Origjinë e pavlefshme instalimi. Një origjinë e vlefshme përmban - vetëm - një skemë, strehëemër dhe portë (në daçi). Për më tepër hollësi, shihni https://mzl.la/3TEbqbE (Dokumentim MDN)."
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
@@ -461,11 +463,11 @@ msgstr "Fusha është e pavlefshme."
 
 #: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "“%(property)s” lejon ekzekutim kodi së largëti në manifest.json"
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "Një “%(property)s” vetjake lyp shqyrtim shtesë."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
@@ -513,7 +515,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:270
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "“%(property)s” është e domosdoshme"
 
 #: src/messages/manifestjson.js:281
 msgid "An icon defined in the manifest could not be found in the package."
