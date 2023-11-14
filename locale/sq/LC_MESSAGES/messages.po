@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-11-14 19:12+0000\n"
+"PO-Revision-Date: 2023-11-14 19:24+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: none\n"
 "Language: sq\n"
@@ -543,7 +543,7 @@ msgstr "S’u gjet faqe sfondi te \"%(path)s\"."
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "“%(fieldName)s” për shtesa jo të privilegjuara shpërfillet."
 
 #: src/messages/manifestjson.js:324
 msgid "A content script defined in the manifest could not be found."
@@ -607,7 +607,7 @@ msgstr "Kjo shtesë përmban lëndë të ndaluar."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "Ju lutemi, për të mësuar më tepër rreth zgjerimesh të privilegjuara dhe nënshkrim, shihni https://github.com/mozilla-extensions/xpi-manifest."
 
 #: src/messages/manifestjson.js:405
 msgid "Icons must be square."
@@ -623,7 +623,7 @@ msgstr "Madhësia e ikonës nuk përputhet me atë në manifest."
 
 #: src/messages/manifestjson.js:419
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "Pritej që ikona te “%(path)s” të ishte %(expected)d piksela e gjerë, por qe %(actual)d."
 
 #: src/messages/manifestjson.js:432
 msgid "Corrupt image file"
@@ -659,7 +659,7 @@ msgstr "Kartela e figurës së temës te \"%(path)s\" është e dëmtuar"
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "\"%(fieldName)s\" nuk mbulohet në versione manifesti %(versionRange)s."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file has an unsupported file extension"
@@ -679,7 +679,7 @@ msgstr "Kartela e figurës së temës te \"%(path)s\" ka një lloj MIME \"%(mime
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "\"%(fieldName)s\" nuk mbulohet."
 
 #: src/messages/manifestjson.js:522
 msgid "Theme image file mime type does not match its file extension"
@@ -695,7 +695,7 @@ msgstr "\"default_locale\" i mungojnë përkthime."
 
 #: src/messages/manifestjson.js:540
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "Vlera “default_locale” specifikohet te manifesti, por s’ekzistojnë “messages.json” me përputhje te drejtoria “_locales”. Shihni: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:548
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -703,7 +703,7 @@ msgstr "\"default_locale\" mungon, por \"_locales\" ekziston."
 
 #: src/messages/manifestjson.js:549
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "Vlera “default_locale” nuk specifikohet te manifesti, por ekziston një drejtori “_locales”. Shihni: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:557
 msgid "Unsupported image extension"
@@ -775,7 +775,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:708
 msgid "The extension ID is required in Manifest Version 3 and above."
-msgstr "ID-ja e zgjerimit është e domosdoshme në Manifest Version 3 dhe më sipër."
+msgstr "ID-ja e zgjerimit është e domosdoshme në Manifest Version 3 e sipër."
 
 #: src/messages/manifestjson.js:711
 msgid "See https://mzl.la/3PLZYdo for more information."
@@ -783,15 +783,15 @@ msgstr "Për më tepër të dhëna, shihni https://mzl.la/3PLZYdo ."
 
 #: src/messages/manifestjson.js:717
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr ""
+msgstr "%(instancePath)s: Zgjerime të privilegjuara duhet të deklarojnë leje të privilegjuara."
 
 #: src/messages/manifestjson.js:728
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr ""
+msgstr "Ky zgjerim nuk deklaron ndonjë leje të privilegjuar. S’është nevoja të nënshkruhet me dëshminë e privilegjuar. Ju lutemi, ngarkojeni drejtpërsëdrejti te https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:741
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: Leja “mozillaAddons” është e domosdoshme për zgjerime të privilegjuar."
 
 #: src/messages/manifestjson.js:744
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
@@ -803,7 +803,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:767
 msgid "Cannot use actions in hidden add-ons."
-msgstr ""
+msgstr "S’mund të përdoren veprime në shtesa të fshehura."
 
 #: src/messages/manifestjson.js:768
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
@@ -811,23 +811,23 @@ msgstr ""
 
 #: src/messages/manifestjson.js:776
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
-msgstr ""
+msgstr "Përdorni “browser_specific_settings”, në vend se “applications”."
 
 #: src/messages/manifestjson.js:777
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "Vetia “applications” te manifesti është nxjerrë nga përdorimi dhe s’do të pranohet më te Manifest Version 3 e sipër."
 
 #: src/messages/manifestjson.js:785
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "“applications” nuk lejohet më te Manifest Version 3 e sipër."
 
 #: src/messages/manifestjson.js:787
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "Vetia “applications” te manifesti nuk lejohet më te Manifest Version 3 e sipër. Në vend të saj, përdorni “browser_specific_settings”."
 
 #: src/messages/manifestjson.js:795
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "Vargu i versionit duhet thjeshtuar, ngaqë s’do të jetë i përputhshëm me Manifest Version 3 e sipër."
 
 #: src/messages/manifestjson.js:797
 msgid ""
