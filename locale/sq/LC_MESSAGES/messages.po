@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-11-19 11:03+0000\n"
+"PO-Revision-Date: 2023-11-19 11:12+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: none\n"
 "Language: sq\n"
@@ -338,17 +338,19 @@ msgstr "Paketa përmban shumë zëra me të njëjtin emër. Kjo praktikë ësht�
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "U gjet zgjatim kartele me probleme"
 
 #: src/messages/layout.js:80
 msgid "Flagged file type found"
-msgstr ""
+msgstr "U gjet lloj kartele me probleme"
 
 #: src/messages/layout.js:81
 msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
+"Te shtesa janë gjetur kartela emrat e të cilave përmbajnë zgjatime me probleme. Zgjatimet e këtyre kartelave janë sinjalizuar ngaqë zakonisht identifikojnë përbërës dyorë. Për më tepër informacion "
+"rreth procesit të shqyrtimit të lëndës dyore, jJu lutemi, shihni https://bit.ly/review-policy."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
@@ -356,7 +358,7 @@ msgstr "Paketë tashmë e nënshkruar"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "Shtesat të cilat janë nënshkruar tashmë do të rinënshkruhen, kur të botohen në AMO. Kjo do të zëvendësojë çfarëdo nënshkrimesh ekzistuese mbi shtesën."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -504,7 +506,7 @@ msgstr "Vetia \"update_url\" nuk përdoret nga Firefox-i."
 
 #: src/messages/manifestjson.js:249
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
-msgstr ""
+msgstr "\"update_url\" s’përdoret nga Firefox-i te rrënja e një manifesti; shtesa juaj do të përditësohet përmes sajtit Shtesa dhe jo përmes \"update_url\" tuaj. Shihni: https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:257
 msgid "\"strict_max_version\" not required."
@@ -512,11 +514,11 @@ msgstr "\"strict_max_version\" jo i domosdoshëm."
 
 #: src/messages/manifestjson.js:258
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "S’duhet përdorur \"strict_max_version\", veç nëse pritet që shtesa të mos funksionojë me versione të ardhshëm të Firefox-it."
 
 #: src/messages/manifestjson.js:267
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "S’u gjet veti \"%(property)s\" në manifest.json"
 
 #: src/messages/manifestjson.js:270
 msgid "\"%(property)s\" is required"
@@ -572,7 +574,7 @@ msgstr "S’u gjet dot një kartelë fjalori e përkufizuar te manifesti."
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "Fusha \"%(fieldName)s\" e manifestit përdoret vetëm për zgjerime të privilegjuara dhe të instaluara përkohësisht."
 
 #: src/messages/manifestjson.js:351
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
@@ -724,7 +726,7 @@ msgstr "Vetia “applications” e anashkaluar nga vetia “browser_specific_set
 
 #: src/messages/manifestjson.js:569
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
-msgstr ""
+msgstr "Vetia \"applications\" po shpërfillet, ngaqë anashkalohet nga vetia \"browser_specific_settings\", e cila është përkufizuar në manifestin tuaj edhe kjo. Shihni mundësinë e heqjes së aplikacioneve."
 
 #: src/messages/manifestjson.js:579
 msgid "Empty language directory"
@@ -740,7 +742,7 @@ msgstr "Zë manifesti i pambuluar nga versioni minimum i specifikuar për Firefo
 
 #: src/messages/manifestjson.js:601 src/messages/manifestjson.js:623
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\" lyp Firefox %(minVersion)s, i cili qe hedhur në qarkullim para se versioni %(versionAdded)s të sillte për herë të parë mbulim për \"%(key)s\"."
 
 #: src/messages/manifestjson.js:619
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -748,7 +750,7 @@ msgstr "Leje e pambuluar nga versioni minimum i specifikuar për Firefox-in"
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: fusha të privilegjuara manifesti lejohen vetëm në zgjerime të privilegjuara."
 
 #: src/messages/manifestjson.js:641
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
