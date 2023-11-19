@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-11-19 11:28+0000\n"
+"PO-Revision-Date: 2023-11-19 11:42+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: none\n"
 "Language: sq\n"
@@ -238,7 +238,7 @@ msgstr "Përdorimi i document.write shkëshillohet me forcë."
 
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
-msgstr ""
+msgstr "document.write do të dështojë në mjaft rrethana, kur përdoret në zgjerime dhe ka pasoja sigurie potencialisht të rëndat, kur përdoret keq. Ndaj, s’duhet përdorur."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
@@ -380,11 +380,11 @@ msgstr "Emri i vargut është i rezervuar për një mesazh të paracaktuar"
 
 #: src/messages/locale-messagesjson.js:14
 msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr ""
+msgstr "Emra vargjesh që fillojnë me @@ përkthehen si konstante të brendshme (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "Emri i vargut duhet të përmbajë vetëm shenja alfa-numerike, _ dhe @ (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -408,7 +408,7 @@ msgstr "Mungon vendmbajtëse te veti lënde"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "Një vendmbajtëse lyp një lëndë që përkufizon si duhet zëvendësimin e saj (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
@@ -484,11 +484,11 @@ msgstr "Një “%(property)s” vetjake lyp shqyrtim shtesë."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "\"%(property)s\" lejon 'eval', çka ka implikime të forta sigurie dhe funksionimi."
 
 #: src/messages/manifestjson.js:219
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "Në shumicën e rasteve, i njëjti përfundim mund të arrihet ndryshe, ndaj përgjithësisht ndalohet"
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string with no leading/trailing whitespaces."
