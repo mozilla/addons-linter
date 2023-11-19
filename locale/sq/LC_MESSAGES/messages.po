@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-11-19 11:42+0000\n"
+"PO-Revision-Date: 2023-11-19 11:45+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: none\n"
 "Language: sq\n"
@@ -849,24 +849,28 @@ msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Versioni duhet të jetë një varg me 1 deri në 4 numra ndarë me pika. Çdo numër duhet të ketë deri në 9 shifra dhe s’do të lejohen më zero paraprijëse. As shkronja s’do të lejohen më. Për më tepër "
+"informacion, shihni https://mzl.la/3h3mCRu (Dokumentim MDN)."
 
 #: src/messages/manifestjson.js:806
 msgid "The version string should be simplified."
-msgstr ""
+msgstr "Vargu i versionit duhet thjeshtuar."
 
 #: src/messages/manifestjson.js:807
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
 "https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"Versioni duhet të jetë një varg me 1 deri në 4 numra ndarë me pika. Çdo numër duhet të ketë deri në 9 shifra dhe zero paraprijëse nuk lejohen më. As shkronjat nuk lejohen më. Për më tepër "
+"informacion, shihni https://mzl.la/3h3mCRu (Dokumentim MDN)."
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "/%(fieldName)s: \"%(permissionName)s\" nuk mbulohet në versione %(versionRange)s manifesti."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
-msgstr ""
+msgstr "/%(fieldName)s: \"%(permissionName)s\" nuk mbulohet."
 
 #~ msgid "The \"name\" property must be a string."
 #~ msgstr "Vetia \"name\" duhet të jetë një varg."
