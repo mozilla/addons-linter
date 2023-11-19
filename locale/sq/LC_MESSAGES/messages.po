@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-11-19 11:21+0000\n"
+"PO-Revision-Date: 2023-11-19 11:28+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: none\n"
 "Language: sq\n"
@@ -209,16 +209,20 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
+"Ka një gabim sintakse JavaScript në kodin tuaj, çka mund të jetë i lidhur me ndonjë veçori eksperimentale të JavaScript-it, që s’janë pjesë zyrtare e specifikimeve të gjuhës dhe ndaj nuk mbulohen "
+"ende. Vlerësimi për këtë kartelë nuk mund të vazhdojë."
 
 #: src/messages/javascript.js:62
 msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible."
 msgstr ""
+"Vlerësimi i vargjeve si kod mund të shpjerë te cenueshmëri sigurie dhe probleme funksionimi, qoftë edhe në rrethana plotësisht të padëmshme. Ju lutemi, shmangni përdorimin e elementëve `eval` dhe "
+"`Function`, kur kjo është e mundur."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "Funksionet setTimeout, setInterval dhe execScript duhen thirrur vetëm me shprehje funksioni si argumenti i parë i tyre"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
@@ -226,7 +230,7 @@ msgstr "U dha si argument një global i papritur"
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr ""
+msgstr "Nuk rekomandohet përtypja e një globali si të qe një argument. Ju lutemi, bëjeni këtë një ndryshore më mirë."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
