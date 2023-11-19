@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-21 08:31+0000\n"
-"PO-Revision-Date: 2023-11-19 11:12+0000\n"
+"PO-Revision-Date: 2023-11-19 11:21+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: none\n"
 "Language: sq\n"
@@ -88,7 +88,7 @@ msgstr "Programthe të brendshëm të bllokuar si parazgjedhje"
 
 #: src/messages/html.js:6
 msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
-msgstr ""
+msgstr "Rregulla parazgjedhje CSP pengojnë xhirim JavaScript të brendshëm (https://mzl.la/2pn32nd)."
 
 #: src/messages/javascript.js:100
 msgid "Unadvised 3rd-party JS library"
@@ -111,6 +111,8 @@ msgid ""
 "Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
 "degradation."
 msgstr ""
+"Për shkak konsideratash qoftë sigurie, qoftë funksionimi, kjo s’mund të ujdiset duke përdorur vlera dinamike që s’janë sanitarizuar në mënyrë adekuate. Kjo mund të shpjerë në probleme sigurie, ose "
+"degradim goxha serioz të funksionimit."
 
 #: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
@@ -486,7 +488,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:227
 msgid "The \"name\" property must be a string with no leading/trailing whitespaces."
-msgstr ""
+msgstr "Vetia \"name\" duhet të jetë një varg pa hapësirë paraprijëse apo në fund të tij."
 
 #: src/messages/manifestjson.js:230
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -498,7 +500,7 @@ msgstr "\"update_url\" nuk lejohet."
 
 #: src/messages/manifestjson.js:239
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "\"applications.gecko.update_url\" ose \"browser_specific_settings.gecko.update_url\" nuk lejohen për shtesa të strehuara nga Mozilla."
 
 #: src/messages/manifestjson.js:248
 msgid "The \"update_url\" property is not used by Firefox."
@@ -758,7 +760,7 @@ msgstr "Zë manifesti i pambuluar nga versioni minimum i specifikuar për Firefo
 
 #: src/messages/manifestjson.js:645 src/messages/manifestjson.js:667
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\" lyp Firefox për Android %(minVersion)s, i cili qe hedhur në qarkullim para se versioni %(versionAdded)s të sillte për herë të parë mbulim për \"%(key)s\"."
 
 #: src/messages/manifestjson.js:663
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -774,11 +776,13 @@ msgstr "Lidhje që shpien te “addons.mozilla.org” nuk lejohen të përdoren 
 
 #: src/messages/manifestjson.js:691
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "Leja \"%(permission)s\" lyp që \"strict_min_version\" të vihet si \"%(minFirefoxVersion)s\" e sipër"
 
 #: src/messages/manifestjson.js:696
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
 msgstr ""
+"Leja \"%(permission)s\" lyp që \"strict_min_version\" të vihet si \"%(minFirefoxVersion)s\" e sipër. Ju lutemi, përditësoni versionin e manifest.json tuaj, ër të specifikuar një version minimum "
+"Firefox-i."
 
 #: src/messages/manifestjson.js:708
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -802,11 +806,11 @@ msgstr "%(instancePath)s: Leja “mozillaAddons” është e domosdoshme për zg
 
 #: src/messages/manifestjson.js:744
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s: Leja \"mozillaAddons\" është e domosdoshme për zgjerime që përfshijnë fusha të privilegjuara manifesti."
 
 #: src/messages/manifestjson.js:757
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "Ky zgjerim nuk përfshin lejen \"mozillaAddons\", e cila është e domosdoshme për zgjerime të privilegjuara."
 
 #: src/messages/manifestjson.js:767
 msgid "Cannot use actions in hidden add-ons."
