@@ -23,6 +23,19 @@ export const MANIFEST_FIELD_INVALID = {
   file: MANIFEST_JSON,
 };
 
+export const MANIFEST_V3_FIREFOX_ANDROID_LIMITATIONS = {
+  code: 'MANIFEST_V3_FIREFOX_ANDROID_LIMITATIONS',
+  message: i18n._(
+    'Manifest Version 3 is not fully supported on Firefox for Android.'
+  ),
+  // TODO(#5110): replace description with a message including a shorted
+  // link to a documentation page.
+  description: i18n._(
+    'Manifest Version 3 is not fully supported on Firefox for Android.'
+  ),
+  file: MANIFEST_JSON,
+};
+
 export const MANIFEST_FIELD_PRIVILEGEDONLY = 'MANIFEST_FIELD_PRIVILEGEDONLY';
 export function manifestFieldPrivilegedOnly(fieldName) {
   return {
