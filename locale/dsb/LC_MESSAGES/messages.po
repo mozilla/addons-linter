@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-11-21 16:30+0000\n"
-"PO-Revision-Date: 2023-12-02 13:03+0000\n"
+"PO-Revision-Date: 2023-12-02 13:11+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: dsb\n"
@@ -78,7 +78,7 @@ msgstr "Daloke skripty njejsu dowólone pó pšawidłach dodankow."
 
 #: src/messages/html.js:13
 msgid "Please include all scripts in the add-on. For more information, refer to https://mzl.la/2uEOkYp."
-msgstr ""
+msgstr "Pšosym zapśimjejśo wšykne skripty do dodanka. Za dalšne informacije glejśo https://mzl.la/2uEOkYp."
 
 #: src/messages/html.js:5
 msgid "Inline scripts blocked by default"
@@ -94,7 +94,7 @@ msgstr "Njeznata JS-biblioteka tśeśego póbitowarja"
 
 #: src/messages/javascript.js:101
 msgid "Your add-on uses a JavaScript library we do not recommend. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Waš dodank biblioteku JavaScript wužywa, kótaruž njepórucujomy. Glejśo wěcej: https://bit.ly/1TRIyZY"
 
 #: src/messages/javascript.js:107
 msgid "Known JS library detected"
@@ -144,7 +144,7 @@ msgstr "Wopśimjeśowa skriptowa dataja njejo se namakała"
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "„%(api)s“ móžo problemy zawinowaś, gaž se nachylu zacytajo"
 
 #: src/messages/javascript.js:165
 msgid ""
@@ -234,7 +234,7 @@ msgstr "JS-biblioteka tśeśego póbitowarja zakazana"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Waš dodank biblioteku JavaScript wužywa, kótaruž za njewěstu mamy. Glejśo wěcej: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
@@ -250,7 +250,7 @@ msgstr "Dwójne kluce njejsu dowólone w JSON-datajach."
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "Dwójny kluc jo se namakał w dataji JSON."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
@@ -419,7 +419,7 @@ msgstr "Glejśo https://mzl.la/2Qn0fWC (MDN Docs) za dalšne informacije."
 
 #: src/messages/manifestjson.js:132 src/messages/manifestjson.js:179
 msgid "See https://mzl.la/3Woeqv4 (MDN Docs) for more information."
-msgstr ""
+msgstr "Glejśo https://mzl.la/3Woeqv4 (MDN Docs) za dalšne informacije."
 
 #: src/messages/manifestjson.js:140 src/messages/manifestjson.js:169
 msgid "Unknown permission."
@@ -455,11 +455,11 @@ msgstr "Glejśo https://mzl.la/20PenXl (MDN Docs) za dalšne informacije."
 
 #: src/messages/manifestjson.js:212
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "„%(property)s“ wuwjeźenje zdalonego koda w manifest.json dowólujo"
 
 #: src/messages/manifestjson.js:216
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "Swójska kakosć „%(property)s“ se pśidatne pśeglědanje pomina."
 
 #: src/messages/manifestjson.js:228
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
@@ -507,7 +507,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:280
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "Kakosć „%(property)s“ njejo se namakała w manifest.json"
 
 #: src/messages/manifestjson.js:283
 msgid "\"%(property)s\" is required"
