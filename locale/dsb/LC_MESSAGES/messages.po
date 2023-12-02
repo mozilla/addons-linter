@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-11-21 16:30+0000\n"
-"PO-Revision-Date: 2023-12-02 13:11+0000\n"
+"PO-Revision-Date: 2023-12-02 13:16+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: dsb\n"
@@ -511,7 +511,7 @@ msgstr "Kakosć „%(property)s“ njejo se namakała w manifest.json"
 
 #: src/messages/manifestjson.js:283
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "Kakosć „%(property)s“ jo trjebna"
 
 #: src/messages/manifestjson.js:294
 msgid "An icon defined in the manifest could not be found in the package."
@@ -615,7 +615,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:44
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "„%(fieldName)s“ se za njepriwilegěrowane dodanki ignorěrujo."
 
 #: src/messages/manifestjson.js:445
 msgid "Corrupt image file"
@@ -735,7 +735,7 @@ msgstr "Pšawo se pśez pódanu minimalnu wersiju Firefox njepódpěra"
 
 #: src/messages/manifestjson.js:64
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "„%(fieldName)s“ se njepódpěra."
 
 #: src/messages/manifestjson.js:654
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
@@ -799,7 +799,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:780
 msgid "Cannot use actions in hidden add-ons."
-msgstr ""
+msgstr "Akcije njedaju se w schowanych dodankach wužywaś."
 
 #: src/messages/manifestjson.js:781
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
@@ -833,7 +833,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:819
 msgid "The version string should be simplified."
-msgstr ""
+msgstr "Wersijowy znamjenjowy rjeśazk měł se zjadnoriś."
 
 #: src/messages/manifestjson.js:820
 msgid ""
@@ -843,11 +843,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:96
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "/%(fieldName)s: \"%(permissionName)s\" se w manifestowych wersijach %(versionRange)s njepódpěra."
 
 #: src/messages/manifestjson.js:98
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
-msgstr ""
+msgstr "/%(fieldName)s: \"%(permissionName)s\" se njepódpěra."
 
 #~ msgid "The \"name\" property must be a string."
 #~ msgstr "Kakosć \"name\" musy znamuškowy rjeśazk byś."
