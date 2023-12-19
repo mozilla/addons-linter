@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-11-21 16:30+0000\n"
-"PO-Revision-Date: 2023-12-19 10:17+0000\n"
+"PO-Revision-Date: 2023-12-19 10:53+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -47,7 +47,7 @@ msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
 "%(maxManifestVersion)s)."
 msgstr ""
-"Ζητήθηκε μη έγκυρο εύρος έκδοσης manifest: το --min-manifest-version (έχει οριστεί σε %(minManifestVersion)s) δεν πρέπει να είναι μεγαλύτερο από το --max-manifest-version (έχει οριστεί σε "
+"Ζητήθηκε μη έγκυρο εύρος έκδοσης αρχείου δήλωσης: το --min-manifest-version (έχει οριστεί σε %(minManifestVersion)s) δεν πρέπει να είναι μεγαλύτερο από το --max-manifest-version (έχει οριστεί σε "
 "%(maxManifestVersion)s)."
 
 #: src/messages/css.js:13
@@ -155,8 +155,8 @@ msgid ""
 "This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
 "more."
 msgstr ""
-"Αυτό το API μπορεί να προκαλέσει προβλήματα κατά την προσωρινή φόρτωσή του με το about:debugging στο Firefox, εκτός εάν καθορίσετε το «browser_specific_settings.gecko.id» στο αρχείο manifest. "
-"Παρακαλούμε δείτε το https://mzl.la/2hizK4a για περισσότερες πληροφορίες."
+"Αυτό το API μπορεί να προκαλέσει προβλήματα όταν γίνει προσωρινή φόρτωσή του με το about:debugging στο Firefox, εκτός εάν καθορίσετε το «browser_specific_settings.gecko.id» στο αρχείο δήλωσης. Δείτε"
+" το https://mzl.la/2hizK4a για περισσότερες πληροφορίες."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -517,7 +517,7 @@ msgstr "Η ιδιότητα \"update_url\" δεν χρησιμοποιείται
 #: src/messages/manifestjson.js:262
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
 msgstr ""
-"Το «update_url» δεν χρησιμοποιείται από το Firefox στο ριζικό κατάλογο ενός αρχείου manifest: το πρόσθετό σας θα ενημερώνεται μέσω του ιστότοπου πρόσθετων και όχι μέσω του «update_url». Δείτε: "
+"Το «update_url» δεν χρησιμοποιείται από το Firefox στον ριζικό κατάλογο ενός αρχείου δήλωσης: το πρόσθετό σας θα ενημερώνεται μέσω του ιστοτόπου προσθέτων και όχι μέσω του «update_url». Δείτε το "
 "https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:270
@@ -542,7 +542,7 @@ msgstr "Το «%(property)s» απαιτείται"
 
 #: src/messages/manifestjson.js:294
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr "Δεν ήταν δυνατή η εύρεση ενός εικονιδίου, που έχει οριστεί στο αρχείο manifest, στο πακέτο."
+msgstr "Δεν ήταν δυνατή η εύρεση ενός εικονιδίου, που έχει οριστεί στο αρχείο δήλωσης, στο πακέτο."
 
 #: src/messages/manifestjson.js:298
 msgid "Icon could not be found at \"%(path)s\"."
@@ -550,11 +550,11 @@ msgstr "Δεν ήταν δυνατή η εύρεση του εικονιδίου
 
 #: src/messages/manifestjson.js:313
 msgid "A background script defined in the manifest could not be found."
-msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου φόντου, που έχει οριστεί στο αρχείο manifest."
+msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου φόντου, που έχει οριστεί στο αρχείο δήλωσης."
 
 #: src/messages/manifestjson.js:316
 msgid "A background page defined in the manifest could not be found."
-msgstr "Δεν ήταν δυνατή η εύρεση της σελίδας φόντου, που έχει οριστεί στο αρχείο manifest."
+msgstr "Δεν ήταν δυνατή η εύρεση της σελίδας φόντου, που έχει οριστεί στο αρχείο δήλωσης."
 
 #: src/messages/manifestjson.js:321
 msgid "Background script could not be found at \"%(path)s\"."
@@ -566,47 +566,47 @@ msgstr "Δεν ήταν δυνατή η εύρεση σελίδας παρασκ
 
 #: src/messages/manifestjson.js:337
 msgid "A content script defined in the manifest could not be found."
-msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου περιεχομένου, που έχει οριστεί στο αρχείο manifest."
+msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου περιεχομένου, που έχει οριστεί στο αρχείο δήλωσης."
 
 #: src/messages/manifestjson.js:338
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου περιεχομένου του αρχείου css, που έχει οριστεί στο αρχείο manifest."
+msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου περιεχομένου του αρχείου css, που έχει οριστεί στο αρχείο δήλωσης."
 
 #: src/messages/manifestjson.js:343
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου περιεχομένου, που έχει οριστεί στο αρχείο manifest, στο «%(path)s»."
+msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου περιεχομένου, που έχει οριστεί στο αρχείο δήλωσης, στο «%(path)s»."
 
 #: src/messages/manifestjson.js:346
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου περιεχομένου του αρχείου css, που έχει οριστεί στο αρχείο manifest, στο «%(path)s»."
+msgstr "Δεν ήταν δυνατή η εύρεση του σεναρίου περιεχομένου του αρχείου css, που έχει οριστεί στο αρχείο δήλωσης, στο «%(path)s»."
 
 #: src/messages/manifestjson.js:360
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Δεν ήταν δυνατή η εύρεση ενός αρχείου λεξικού, που έχει οριστεί στο αρχείο manifest."
+msgstr "Δεν ήταν δυνατή η εύρεση ενός αρχείου λεξικού, που έχει οριστεί στο αρχείο δήλωσης."
 
 #: src/messages/manifestjson.js:364
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "Δεν ήταν δυνατή η εύρεση του αρχείου λεξικού, που έχει οριστεί στο αρχείο manifest, στο «%(path)s»."
+msgstr "Δεν ήταν δυνατή η εύρεση του αρχείου λεξικού, που έχει οριστεί στο αρχείο δήλωσης, στο «%(path)s»."
 
 #: src/messages/manifestjson.js:376
 msgid "The manifest contains multiple dictionaries."
-msgstr "Το αρχείο manifest περιέχει πολλαπλά λεξικά."
+msgstr "Το αρχείο δήλωσης περιέχει πολλαπλά λεξικά."
 
 #: src/messages/manifestjson.js:377
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr "Ορίζονται πολλαπλά λεξικά στο μανιφέστο, κάτι που δεν υποστηρίζεται."
+msgstr "Έχουν οριστεί πολλαπλά λεξικά στο αρχείο δήλωσης, κάτι που δεν υποστηρίζεται."
 
 #: src/messages/manifestjson.js:386
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr "Το αρχείο manifest περιέχει ένα αντικείμενο λεξικών, αλλά είναι κενό."
+msgstr "Το αρχείο δήλωσης περιέχει ένα αντικείμενο λεξικών, αλλά είναι κενό."
 
 #: src/messages/manifestjson.js:389
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr "Ένα αντικείμενο λεξικών ορίστηκε στο αρχείο manifest, αλλά ήταν κενό."
+msgstr "Ένα αντικείμενο λεξικών ορίστηκε στο αρχείο δήλωσης, αλλά ήταν κενό."
 
 #: src/messages/manifestjson.js:398
 msgid "The manifest contains a dictionary but no id property."
-msgstr "Το αρχείο manifest περιέχει ένα λεξικό, άλλα καμία ιδιότητα id."
+msgstr "Το αρχείο δήλωσης περιέχει ένα λεξικό, άλλα καμία ιδιότητα id."
 
 #: src/messages/manifestjson.js:399
 msgid "A dictionary was found in the manifest, but there was no id set."
