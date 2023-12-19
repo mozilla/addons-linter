@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-11-21 16:30+0000\n"
-"PO-Revision-Date: 2023-12-19 10:57+0000\n"
+"PO-Revision-Date: 2023-12-19 11:11+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -823,7 +823,7 @@ msgstr "%(instancePath)s: Το δικαίωμα «mozillaAddons» απαιτεί
 
 #: src/messages/manifestjson.js:77
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr "%(instancePath)s: Τα προνομιούχα πεδία του αρχείου manifest επιτρέπονται μόνο σε προνομιούχες επεκτάσεις."
+msgstr "%(instancePath)s: Τα προνομιούχα πεδία του αρχείου δήλωσης επιτρέπονται μόνο σε προνομιούχες επεκτάσεις."
 
 #: src/messages/manifestjson.js:770
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
