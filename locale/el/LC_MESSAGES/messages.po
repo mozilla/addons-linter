@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-11-21 16:30+0000\n"
-"PO-Revision-Date: 2023-12-18 12:28+0000\n"
+"PO-Revision-Date: 2023-12-19 10:17+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: none\n"
 "Language: el\n"
@@ -843,7 +843,7 @@ msgstr "Χρησιμοποιήστε το «browser_specific_settings» αντί
 
 #: src/messages/manifestjson.js:790
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr "Η ιδιότητα «applications» στο μανιφέστο έχει καταργηθεί και δεν θα γίνεται πλέον αποδεκτή στην έκδοση Manifest 3 και νεότερες."
+msgstr "Η ιδιότητα «applications» στο αρχείο δήλωσης έχει καταργηθεί και δεν θα γίνεται πλέον αποδεκτή στην έκδοση Manifest 3 και νεότερες."
 
 #: src/messages/manifestjson.js:798
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
@@ -851,7 +851,7 @@ msgstr "Το «applications» δεν επιτρέπεται πλέον στην 
 
 #: src/messages/manifestjson.js:800
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr "Η ιδιότητα «applications» στο manifest δεν επιτρέπεται πλέον στην έκδοση Manifest 3 και νεότερες. Χρησιμοποιήστε το «browser_specific_settings»."
+msgstr "Η ιδιότητα «applications» στο αρχείο δήλωσης δεν επιτρέπεται πλέον στην έκδοση Manifest 3 και νεότερες. Χρησιμοποιήστε το «browser_specific_settings»."
 
 #: src/messages/manifestjson.js:808
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
