@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-11-21 16:30+0000\n"
-"PO-Revision-Date: 2023-11-26 22:56+0000\n"
+"PO-Revision-Date: 2023-12-13 07:11+0000\n"
 "Last-Translator: Grk <gu0townkg@relay.firefox.com>\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -270,7 +270,7 @@ msgstr "Rezerve dosya adı bulundu."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "Eklentide adı rezerve edilmiş dosyalar bulundu. Lütfen bu adları kullanmaktan kaçının ve dosyalarınızın adını değiştirin."
 
 #: src/messages/layout.js:22
 msgid ""
@@ -309,7 +309,7 @@ msgstr "Gizli dosya işaretlendi"
 #: src/messages/layout.js:58
 msgid ""
 "Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
-msgstr ""
+msgstr "Gizli dosyalar inceleme işlemini zorlaştırır ve eklentiyi oluşturan sisteme dair hassas bilgiler içerebilir. Lütfen paketleme işlemini bu dosyalar eklenmeyecek şekilde değiştirin."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -347,7 +347,7 @@ msgstr "Paket zaten imzanmış"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "Daha önce imzalanmış olan eklentiler AMO’da yayımlandığında yeniden imzalanacak. Bu işlem, eklentideki mevcut imzaları değiştirecek."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -367,7 +367,7 @@ msgstr ""
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "Dizgi adı sadece alfanümerik karakterleri; _ ve @ karakterlerini içermelidir (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -731,7 +731,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:62
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "\"%(fieldName)s\", %(versionRange)s manifest sürümlerinde desteklenmiyor."
 
 #: src/messages/manifestjson.js:632
 msgid "Permission not supported by the specified minimum Firefox version"
