@@ -41,9 +41,7 @@
                 "properties": {
                   "background": {
                     "anyOf": [
-                      {
-                        "additionalProperties": false
-                      },
+                      {},
                       {},
                       {
                         "min_manifest_version": 3

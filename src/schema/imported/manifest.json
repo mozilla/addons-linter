@@ -146,8 +146,7 @@
                       },
                       "required": [
                         "page"
-                      ],
-                      "additionalProperties": false
+                      ]
                     },
                     {
                       "type": "object",

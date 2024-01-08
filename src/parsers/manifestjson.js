@@ -543,26 +543,36 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.parsedJSON.background) {
-      if (Array.isArray(this.parsedJSON.background.scripts)) {
+      const hasScripts = Array.isArray(this.parsedJSON.background.scripts);
+      if (hasScripts) {
         this.parsedJSON.background.scripts.forEach((script) => {
           this.validateFileExistsInPackage(script, 'script');
         });
       }
-      if (this.parsedJSON.background.page) {
+
+      const hasPage = !!this.parsedJSON.background.page;
+      if (hasPage) {
         this.validateFileExistsInPackage(
           this.parsedJSON.background.page,
           'page'
         );
       }
+
       if (this.parsedJSON.background.service_worker) {
         if (!this.schemaValidatorOptions?.enableBackgroundServiceWorker) {
           // Report an error and mark the manifest as invalid if background
           // service worker support isn't enabled by the addons-linter feature
           // flag.
-          this.collector.addError(
-            messages.manifestFieldUnsupported('/background/service_worker')
-          );
-          this.isValid = false;
+          if (hasScripts || hasPage) {
+            this.collector.addWarning(
+              messages.manifestFieldUnsupported('/background/service_worker')
+            );
+          } else {
+            this.collector.addError(
+              messages.manifestFieldUnsupported('/background/service_worker')
+            );
+            this.isValid = false;
+          }
         } else if (this.parsedJSON.manifest_version >= 3) {
           this.validateFileExistsInPackage(
             this.parsedJSON.background.service_worker,
