@@ -3179,6 +3179,47 @@ describe('ManifestJSONParser', () => {
       );
     });
 
+    // See: https://bugzilla.mozilla.org/show_bug.cgi?id=1860304
+    it.each([
+      { scripts: ['bg.js'] },
+      { page: 'bg.html' },
+      { scripts: [], page: 'bg.html' },
+    ])(
+      'emits a warning when background.service_worker is being used in combination with %o',
+      (backgroundProps) => {
+        const linter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          background: {
+            service_worker: 'background_worker.js',
+            ...backgroundProps,
+          },
+        });
+        // eslint-disable-next-line no-unused-vars
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          linter.collector,
+          {
+            io: {
+              files: { 'background_worker.js': '', 'bg.js': '', 'bg.html': '' },
+            },
+          }
+        );
+
+        expect(linter.collector.errors).toEqual([]);
+        expect(linter.collector.warnings).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              code: 'MANIFEST_FIELD_UNSUPPORTED',
+              message: expect.stringMatching(
+                /"\/background\/service_worker" is not supported/
+              ),
+            }),
+          ])
+        );
+        expect(manifestJSONParser.isValid).toEqual(true);
+      }
+    );
+
     it('does not allow background.service_worker unless enabled by feature flag', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
