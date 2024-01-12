@@ -415,9 +415,24 @@ export function androidStrictMinVersion(manifestJson) {
   return version;
 }
 
+/**
+ * @param {*} versionAdded
+ * @param {number} minVersion
+ * @returns {boolean} true if versionAdded has a strictly greater major version than minVersion
+ */
 export function basicCompatVersionComparison(versionAdded, minVersion) {
   const asNumber = parseInt(versionAdded, 10);
   return !Number.isNaN(asNumber) && asNumber > minVersion;
+}
+
+/**
+ * @param {*} versionAdded
+ * @param {number} minVersion
+ * @returns {boolean} true if versionAdded has a greater or equal major version than minVersion
+ */
+export function basicCompatVersionComparisonGEQ(versionAdded, minVersion) {
+  const asNumber = parseInt(versionAdded, 10);
+  return !Number.isNaN(asNumber) && asNumber >= minVersion;
 }
 
 /**
