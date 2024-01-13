@@ -12,7 +12,11 @@ describe('CSS Rule InvalidNesting', () => {
           height: 100px;
         }
       }`;
-    const cssScanner = new CSSScanner(code, 'fakeFile.css');
+    const cssScanner = new CSSScanner(code, 'fakeFile.css', {
+      addonMetadata: {
+        firefoxStrictMinVersion: '60.5',
+      },
+    });
 
     const { linterMessages } = await cssScanner.scan();
     expect(linterMessages.length).toEqual(1);
@@ -20,6 +24,23 @@ describe('CSS Rule InvalidNesting', () => {
       messages.INVALID_SELECTOR_NESTING.code
     );
     expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
+  });
+
+  it('should not report invalid nesting on sufficient version', async () => {
+    const code = oneLine`/* I'm a comment */
+      #something {
+        .bar {
+          height: 100px;
+        }
+      }`;
+    const cssScanner = new CSSScanner(code, 'fakeFile.css', {
+      addonMetadata: {
+        firefoxMinVersion: '117.0.1',
+      },
+    });
+
+    const { linterMessages } = await cssScanner.scan();
+    expect(linterMessages.length).toEqual(0);
   });
 
   it('should not detect invalid nesting', async () => {
