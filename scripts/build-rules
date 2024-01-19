@@ -4,11 +4,9 @@
 const fs = require('fs');
 
 const md = require('markdown-it')();
-const emoji = require('markdown-it-emoji');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItFootnote = require('markdown-it-footnote');
 
-md.use(emoji);
 md.use(markdownItAnchor, {
   permalink: true,
 });
