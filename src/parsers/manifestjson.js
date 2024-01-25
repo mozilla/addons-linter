@@ -47,17 +47,6 @@ import {
 } from 'utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
-/**
- * @typedef {Object} Metadata
- * @property {string} id
- * @property {number} manifestVersion
- * @property {string} name
- * @property {number} type
- * @property {string} version
- * @property {string} firefoxMinVersion
- * @property {Set<string>} experimentApiPaths
- */
-
 async function getStreamImageSize(stream) {
   const chunks = [];
   for await (const chunk of stream) {
@@ -1297,6 +1286,15 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   /**
+   * @typedef {Object} Metadata
+   * @property {string} id
+   * @property {number} manifestVersion
+   * @property {string} name
+   * @property {number} type
+   * @property {string} version
+   * @property {string} firefoxMinVersion
+   * @property {Set<string>} experimentApiPaths
+   *
    * @returns {Metadata}
    */
   getMetadata() {
