@@ -1,8 +1,9 @@
 import * as messages from 'messages';
 
-import { basicCompatVersionComparisonGEQ } from '../../utils';
+import { basicCompatVersionComparison } from '../../utils';
 
-const CSS_NESTING_MIN_VERSION = 117;
+// Allowed version is 117.0 and above
+const CSS_NESTING_MIN_VERSION = 116;
 
 export function invalidNesting(
   cssNode,
@@ -10,7 +11,7 @@ export function invalidNesting(
   { startLine, startColumn, addonMetadata } = {}
 ) {
   if (
-    basicCompatVersionComparisonGEQ(
+    basicCompatVersionComparison(
       addonMetadata?.firefoxMinVersion,
       CSS_NESTING_MIN_VERSION
     )

@@ -426,16 +426,6 @@ export function basicCompatVersionComparison(versionAdded, minVersion) {
 }
 
 /**
- * @param {*} versionAdded
- * @param {number} minVersion
- * @returns {boolean} true if versionAdded has a greater or equal major version than minVersion
- */
-export function basicCompatVersionComparisonGEQ(versionAdded, minVersion) {
-  const asNumber = parseInt(versionAdded, 10);
-  return !Number.isNaN(asNumber) && asNumber >= minVersion;
-}
-
-/**
  * @param {*} supportInfo - bcd support info of a feature
  * @returns {string|boolean} The first version number to support the feature
  *          or a boolean indicating if the feature is supported at all. We do

@@ -5,7 +5,6 @@ import {
   AddonsLinterUserError,
   androidStrictMinVersion,
   basicCompatVersionComparison,
-  basicCompatVersionComparisonGEQ,
   buildI18nObject,
   checkMinNodeVersion,
   ensureFilenameExists,
@@ -603,34 +602,12 @@ describe('basicCompatVersionComparison', () => {
     expect(basicCompatVersionComparison('61', 60)).toBe(true);
   });
 
-  it('should return false when version added is equals than min version', () => {
+  it('should return false when version added is equal to min version', () => {
     expect(basicCompatVersionComparison('61.5.2', 61)).toBe(false);
   });
 
   it('should return false when version added is smaller than min version', () => {
     expect(basicCompatVersionComparison('59', 60)).toBe(false);
-  });
-});
-
-describe('basicCompatVersionComparisonEQ', () => {
-  it('should return false when version added is a boolean', () => {
-    expect(basicCompatVersionComparisonGEQ(false, 60)).toBe(false);
-  });
-
-  it('should return false when version added is undefined', () => {
-    expect(basicCompatVersionComparisonGEQ(undefined, 60)).toBe(false);
-  });
-
-  it('should return true when version added is bigger than min version', () => {
-    expect(basicCompatVersionComparisonGEQ('61', 60)).toBe(true);
-  });
-
-  it('should return true when version added is equals than min version', () => {
-    expect(basicCompatVersionComparisonGEQ('61.5.2', 61)).toBe(true);
-  });
-
-  it('should return false when version added is smaller than min version', () => {
-    expect(basicCompatVersionComparisonGEQ('59', 60)).toBe(false);
   });
 });
 
