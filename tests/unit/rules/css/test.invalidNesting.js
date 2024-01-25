@@ -43,6 +43,23 @@ describe('CSS Rule InvalidNesting', () => {
     expect(linterMessages.length).toEqual(0);
   });
 
+  it('should not report invalid nesting on minimal allowed version', async () => {
+    const code = oneLine`/* I'm a comment */
+      #something {
+        .bar {
+          height: 100px;
+        }
+      }`;
+    const cssScanner = new CSSScanner(code, 'fakeFile.css', {
+      addonMetadata: {
+        firefoxMinVersion: '117.0.0',
+      },
+    });
+
+    const { linterMessages } = await cssScanner.scan();
+    expect(linterMessages.length).toEqual(0);
+  });
+
   it('should not detect invalid nesting', async () => {
     const code = oneLine`/* I'm a comment */
       @media only screen and (max-width: 959px) {
