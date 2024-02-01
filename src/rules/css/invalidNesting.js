@@ -18,6 +18,7 @@ export function invalidNesting(
   ) {
     return [];
   }
+
   const messageList = [];
   if (cssNode.type === 'rule') {
     for (let i = 0; i < cssNode.nodes.length; i++) {

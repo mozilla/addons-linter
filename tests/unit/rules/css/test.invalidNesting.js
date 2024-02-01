@@ -26,39 +26,24 @@ describe('CSS Rule InvalidNesting', () => {
     expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
   });
 
-  it('should not report invalid nesting on sufficient version', async () => {
-    const code = oneLine`/* I'm a comment */
+  it.each(['117.0.0', '117.0.1'])(
+    'should not report invalid nesting when firefoxMinVersion=%s',
+    async (firefoxMinVersion) => {
+      const code = oneLine`/* I'm a comment */
       #something {
         .bar {
           height: 100px;
         }
       }`;
-    const cssScanner = new CSSScanner(code, 'fakeFile.css', {
-      addonMetadata: {
-        firefoxMinVersion: '117.0.1',
-      },
-    });
-
-    const { linterMessages } = await cssScanner.scan();
-    expect(linterMessages.length).toEqual(0);
-  });
-
-  it('should not report invalid nesting on minimal allowed version', async () => {
-    const code = oneLine`/* I'm a comment */
-      #something {
-        .bar {
-          height: 100px;
-        }
-      }`;
-    const cssScanner = new CSSScanner(code, 'fakeFile.css', {
-      addonMetadata: {
-        firefoxMinVersion: '117.0.0',
-      },
-    });
-
-    const { linterMessages } = await cssScanner.scan();
-    expect(linterMessages.length).toEqual(0);
-  });
+      const cssScanner = new CSSScanner(code, 'fakeFile.css', {
+        addonMetadata: {
+          firefoxMinVersion,
+        },
+      });
+      const { linterMessages } = await cssScanner.scan();
+      expect(linterMessages.length).toEqual(0);
+    }
+  );
 
   it('should not detect invalid nesting', async () => {
     const code = oneLine`/* I'm a comment */
