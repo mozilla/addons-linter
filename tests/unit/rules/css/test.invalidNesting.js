@@ -5,7 +5,7 @@ import { VALIDATION_WARNING } from 'const';
 import CSSScanner from 'scanners/css';
 
 describe('CSS Rule InvalidNesting', () => {
-  it.each(['60.5', '116.0', '116'])(
+  it.each(['60.5', '116.0', '116', '116.1', '116.0.1', '116.0.0'])(
     'should detect invalid nesting when firefoxMinVersion=%s',
     async (firefoxMinVersion) => {
       const code = oneLine`/* I'm a comment */
