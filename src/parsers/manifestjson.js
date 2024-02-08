@@ -1293,6 +1293,7 @@ export default class ManifestJSONParser extends JSONParser {
    * @property {number} type
    * @property {string} version
    * @property {string} firefoxMinVersion
+   * @property {string} firefoxStrictMinVersion
    * @property {Set<string>} experimentApiPaths
    *
    * @returns {Metadata}
@@ -1304,10 +1305,14 @@ export default class ManifestJSONParser extends JSONParser {
       name: this.parsedJSON.name,
       type: PACKAGE_EXTENSION,
       version: this.parsedJSON.version,
+      // This is the `strict_min_version` value set in the `manifest.json` file
+      // for Firefox for desktop.
       firefoxMinVersion:
         this.parsedJSON.applications &&
         this.parsedJSON.applications.gecko &&
         this.parsedJSON.applications.gecko.strict_min_version,
+      // This is the strict min *major* version for Firefox for desktop.
+      firefoxStrictMinVersion: firefoxStrictMinVersion(this.parsedJSON),
       experimentApiPaths: this.getExperimentApiPaths(),
     };
   }

@@ -2,7 +2,6 @@ import * as messages from 'messages';
 
 import { basicCompatVersionComparison } from '../../utils';
 
-// Allowed version is 117.0 and above
 const CSS_NESTING_MIN_VERSION = 117;
 
 export function invalidNesting(
@@ -11,10 +10,10 @@ export function invalidNesting(
   { startLine, startColumn, addonMetadata } = {}
 ) {
   if (
-    addonMetadata?.firefoxMinVersion &&
+    addonMetadata?.firefoxStrictMinVersion &&
     !basicCompatVersionComparison(
       CSS_NESTING_MIN_VERSION,
-      addonMetadata?.firefoxMinVersion
+      addonMetadata?.firefoxStrictMinVersion
     )
   ) {
     return [];

@@ -5,9 +5,9 @@ import { VALIDATION_WARNING } from 'const';
 import CSSScanner from 'scanners/css';
 
 describe('CSS Rule InvalidNesting', () => {
-  it.each(['60.5', '116.0', '116', '116.1', '116.0.1', '116.0.0'])(
-    'should detect invalid nesting when firefoxMinVersion=%s',
-    async (firefoxMinVersion) => {
+  it.each([60, 116])(
+    'should detect invalid nesting when firefoxStrictMinVersion=%s',
+    async (firefoxStrictMinVersion) => {
       const code = oneLine`/* I'm a comment */
       #something {
         .bar {
@@ -16,7 +16,7 @@ describe('CSS Rule InvalidNesting', () => {
       }`;
       const cssScanner = new CSSScanner(code, 'fakeFile.css', {
         addonMetadata: {
-          firefoxMinVersion,
+          firefoxStrictMinVersion,
         },
       });
 
@@ -29,9 +29,9 @@ describe('CSS Rule InvalidNesting', () => {
     }
   );
 
-  it.each(['117', '117.0', '117.1', '117.0.0', '117.0.1'])(
-    'should not report invalid nesting when firefoxMinVersion=%s',
-    async (firefoxMinVersion) => {
+  it.each([117, 118])(
+    'should not report invalid nesting when firefoxStrictMinVersion=%s',
+    async (firefoxStrictMinVersion) => {
       const code = oneLine`/* I'm a comment */
       #something {
         .bar {
@@ -40,7 +40,7 @@ describe('CSS Rule InvalidNesting', () => {
       }`;
       const cssScanner = new CSSScanner(code, 'fakeFile.css', {
         addonMetadata: {
-          firefoxMinVersion,
+          firefoxStrictMinVersion,
         },
       });
       const { linterMessages } = await cssScanner.scan();
