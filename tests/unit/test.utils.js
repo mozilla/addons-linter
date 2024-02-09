@@ -602,6 +602,10 @@ describe('basicCompatVersionComparison', () => {
     expect(basicCompatVersionComparison('61', 60)).toBe(true);
   });
 
+  it('should return false when version added is equal to min version', () => {
+    expect(basicCompatVersionComparison('61.5.2', 61)).toBe(false);
+  });
+
   it('should return false when version added is smaller than min version', () => {
     expect(basicCompatVersionComparison('59', 60)).toBe(false);
   });

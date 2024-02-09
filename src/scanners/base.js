@@ -27,6 +27,18 @@ export default class BaseScanner {
     throw new Error('scannerName is not implemented');
   }
 
+  /**
+   * @typedef {Object} ScannerOptions
+   * @property {import('../parsers/manifestjson').Metadata} addonMetadata
+   * @property {import('../collector').default} collector
+   * @property {string[]} disabledRules
+   * @property {string[]} existingFiles
+   * @property {boolean} privileged
+   *
+   * @param {string|Buffer|import('stream').Readable} contents
+   * @param {string} filename
+   * @param {ScannerOptions} options
+   */
   constructor(contents, filename, options = {}) {
     this.contents = contents;
     this.filename = filename;

@@ -11,5 +11,6 @@ export const CSS_SYNTAX_ERROR = {
 export const INVALID_SELECTOR_NESTING = {
   code: 'INVALID_SELECTOR_NESTING',
   message: i18n._('Invalid nesting of selectors found'),
-  description: i18n._(`Selectors should not be nested`),
+  description: i18n._(`Selector nesting is supported from firefox version 117.0
+  and above`),
 };
