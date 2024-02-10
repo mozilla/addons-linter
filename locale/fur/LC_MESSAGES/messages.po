@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-11-21 16:30+0000\n"
-"PO-Revision-Date: 2024-02-10 19:22+0000\n"
+"PO-Revision-Date: 2024-02-10 19:27+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -172,35 +172,37 @@ msgstr "{{api}} no je supuartade te version {{minVersion}} di Firefox par Androi
 
 #: src/messages/javascript.js:199
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
+msgstr "Cheste API no je implementade de version minime indicade di Firefox par Android"
 
 #: src/messages/javascript.js:22
 msgid "Content script file name should not be empty."
-msgstr ""
+msgstr "Il non dal file content script nol pues jessi vueit."
 
 #: src/messages/javascript.js:23
 msgid "Content script file name should not be empty"
-msgstr ""
+msgstr "Il non dal file content script nol pues jessi vueit"
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "“%(method)s” clamât cuntun URI no-leterâl"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
 msgstr ""
+"La clamade di “%(method)s” cun parametris variabii e pues puartâ a vulnerabilitâts potenziâls di sigurece se la variabile e conten un URI lontan. Considere la utilizazion di “window.open” cu la "
+"opzion “chrome=no”."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "“%(method)s” clamât cun URI no-locâl"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "Se al ven clamât “%(method)s” cuntun URI no-locâl, il dialic che si vierzarà al varà i privileçs di chrome."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
-msgstr ""
+msgstr "Erôr di sintassi JavaScript"
 
 #: src/messages/javascript.js:6
 msgid ""
