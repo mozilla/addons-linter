@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-11-21 16:30+0000\n"
-"PO-Revision-Date: 2024-02-10 19:12+0000\n"
+"PO-Revision-Date: 2024-02-10 19:22+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -148,25 +148,27 @@ msgstr "Impussibil cjatâ il file content script"
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr "\"$(api)s\" al pues causâ problemis se cjariât in mût temporani"
+msgstr "\"$(api)s\" e pues causâ problemis se e ven cjariade in mût temporani"
 
 #: src/messages/javascript.js:165
 msgid ""
 "This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
 "more."
 msgstr ""
+"Cheste API e pues causâ problemis se e ven cjariade in mût temporani doprant about:debugging in Firefox, gjavant il câs di specificâ “browser_specific_settings.gecko.id” tal manifest. Par altris "
+"informazions, consultâ: https://mzl.la/2hizK4a."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} no je supuartade te version {{minVersion}} di Firefox"
 
 #: src/messages/javascript.js:188
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr ""
+msgstr "Cheste API no je stade implementade de version minime indicade di Firefox"
 
 #: src/messages/javascript.js:196
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
+msgstr "{{api}} no je supuartade te version {{minVersion}} di Firefox par Android"
 
 #: src/messages/javascript.js:199
 msgid "This API is not implemented by the given minimum Firefox for Android version"
