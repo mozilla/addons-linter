@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-11-21 16:30+0000\n"
-"PO-Revision-Date: 2024-02-10 18:52+0000\n"
+"PO-Revision-Date: 2024-02-10 19:03+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -47,42 +47,44 @@ msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
 "%(maxManifestVersion)s)."
 msgstr ""
+"Domandât interval di versions dal manifest no valit: --min-manifest-version (in chest moment metût a %(minManifestVersion)s) nol à di jessi plui grant di --max-manifest-version (in chest moment "
+"metût a %(maxManifestVersion)s)."
 
 #: src/messages/css.js:13
 msgid "Invalid nesting of selectors found"
-msgstr ""
+msgstr "Cjatade nidificazion di seletôrs no valide"
 
 #: src/messages/css.js:14
 msgid "Selectors should not be nested"
-msgstr ""
+msgstr "I seletôrs no puedin jessi nidificâts"
 
 #: src/messages/css.js:6
 msgid "A CSS syntax error was encountered"
-msgstr ""
+msgstr "Al è stât cjatât un erôr te sintassi CSS"
 
 #: src/messages/css.js:7
 msgid "An error was found in the CSS file being processed. As a result, further processing of that file is not possible"
-msgstr ""
+msgstr "Dilunc la elaborazion, al è stât cjatât un erôr tal file CSS. Duncje nol è pussibil continuâ cu la elaborazion"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
-msgstr ""
+msgstr "Il to file FTL nol è valit."
 
 #: src/messages/fluent.js:6
 msgid "Your FTL file could not be parsed."
-msgstr ""
+msgstr "Nol è pussibil analizâ il to file FTL."
 
 #: src/messages/html.js:12
 msgid "Remote scripts are not allowed as per the Add-on Policies."
-msgstr ""
+msgstr "Lant daûr des politichis dai components adizionâi, i scripts esternis/lontans no son ametûts."
 
 #: src/messages/html.js:13
 msgid "Please include all scripts in the add-on. For more information, refer to https://mzl.la/2uEOkYp."
-msgstr ""
+msgstr "Inclût ducj i scripts tal component adizionâl. Par vê plui informazions, fâs riferiment a https://mzl.la/2uEOkYp."
 
 #: src/messages/html.js:5
 msgid "Inline scripts blocked by default"
-msgstr ""
+msgstr "I scripts inline a son blocâts tant che impostazion predefinide"
 
 #: src/messages/html.js:6
 msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
