@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-11-21 16:30+0000\n"
-"PO-Revision-Date: 2024-02-10 19:27+0000\n"
+"PO-Revision-Date: 2024-02-10 21:02+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -209,36 +209,41 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
+"Tal to codiç al è un erôr di sintassi JavaScript, che al podarès jessi colegât a funzions JavaScript sperimentâls che no son part uficiâl des specifichis dal lengaç di programazion e duncje no son "
+"ancjemò supuartadis. Nol è pussibil continuâ la convalide su chest file."
 
 #: src/messages/javascript.js:62
 msgid ""
 "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
 "at all possible."
 msgstr ""
+"La valutazion di stringhis come codiç al pues puartâ a vulnerabilitâts di sigurece e problemis di prestazions, ancje tes circostancis plui inocuis. Se pussibil evite di doprâ “eval“ e il costrutôr "
+"“Function”."
 
 #: src/messages/javascript.js:71
 msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr ""
+msgstr "Lis funzions setTimeout, setInterval e execScript a scugnin jessi clamadis nome cun espressions di funzion tant che lôr prin argoment"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
-msgstr ""
+msgstr "Variabile globâl inspietade passade tant che argoment"
 
 #: src/messages/javascript.js:79
 msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr ""
+msgstr "Nol è conseât passâ un “global” tant che argoment. Al so puest rindilu un “var”."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
-msgstr ""
+msgstr "Al è une vore disconseât doprâ document.write."
 
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
 msgstr ""
+"document.write nol funzionarà in tantis circostancis cuant che al ven doprât tes estensions e al podarès vê ripercussions grivis su la sigurece se al ven doprât mâl. Duncje, nol sarès di doprâ."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
-msgstr ""
+msgstr "Librarie JS di tiercis parts bandidis"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
