@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-11-21 16:30+0000\n"
-"PO-Revision-Date: 2024-02-10 19:03+0000\n"
+"PO-Revision-Date: 2024-02-10 19:12+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -84,69 +84,71 @@ msgstr "Inclût ducj i scripts tal component adizionâl. Par vê plui informazio
 
 #: src/messages/html.js:5
 msgid "Inline scripts blocked by default"
-msgstr "I scripts inline a son blocâts tant che impostazion predefinide"
+msgstr "I scripts in linie a son blocâts tant che impostazion predefinide"
 
 #: src/messages/html.js:6
 msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
-msgstr ""
+msgstr "Lis regulis CSP predefinidis a impedissin la esecuzion di JavaScript in linie (https://mzl.la/2pn32nd)."
 
 #: src/messages/javascript.js:100
 msgid "Unadvised 3rd-party JS library"
-msgstr ""
+msgstr "Librarie JS di tiercis parts disconseade"
 
 #: src/messages/javascript.js:101
 msgid "Your add-on uses a JavaScript library we do not recommend. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Il to component adizionâl al dopre une librarie JavaScript che no conseìn. Lei di plui achì: https://bit.ly/1TRIyZY"
 
 #: src/messages/javascript.js:107
 msgid "Known JS library detected"
-msgstr ""
+msgstr "Rilevade librarie JS cognossude"
 
 #: src/messages/javascript.js:108
 msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
-msgstr ""
+msgstr "Lis librariis JavaScript a son disconseadis pai components adizionâi sempliçs, ma pal plui a son acetadis."
 
 #: src/messages/javascript.js:116
 msgid ""
 "Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
 "degradation."
 msgstr ""
+"Par motîfs di sigurece e prestazions, nol è pussibil configurâ chest doprant valôrs dinamics che no son stâts purificâts in mût adeguât. Chest al pues puartâ a problemis di sigurece o une penze "
+"degradazion des prestazions."
 
 #: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
-msgstr ""
+msgstr "{{api}} nol è supuartât"
 
 #: src/messages/javascript.js:126
 msgid "This API has not been implemented by Firefox."
-msgstr ""
+msgstr "Cheste API no je stade implementade di Firefox."
 
 #: src/messages/javascript.js:132
 msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr ""
+msgstr "“{{api}}” al è stât gjavât de version 3 dal manifest (proprietât “manifest_version”)"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
-msgstr ""
+msgstr "{{api}} al è deplorât"
 
 #: src/messages/javascript.js:142
 msgid "This API has been deprecated by Firefox."
-msgstr ""
+msgstr "Cheste API e je stade deplorade di Firefox."
 
 #: src/messages/javascript.js:15
 msgid "Content script file could not be found."
-msgstr ""
+msgstr "Impussibil cjatâ il file content script."
 
 #: src/messages/javascript.js:154
 msgid "\"{{api}}\" is deprecated or unimplemented"
-msgstr ""
+msgstr "“{{api}}” al è deplorât o nol è implementât"
 
 #: src/messages/javascript.js:16
 msgid "Content script file could not be found"
-msgstr ""
+msgstr "Impussibil cjatâ il file content script"
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "\"$(api)s\" al pues causâ problemis se cjariât in mût temporani"
 
 #: src/messages/javascript.js:165
 msgid ""
