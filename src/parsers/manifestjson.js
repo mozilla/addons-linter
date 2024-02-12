@@ -232,6 +232,7 @@ export default class ManifestJSONParser extends JSONParser {
           );
         } else if (
           typeof manifestKeyValue === 'object' &&
+          manifestKeyValue !== null &&
           Object.prototype.hasOwnProperty.call(manifestKeyValue, subkey)
         ) {
           this.checkCompatInfo(
@@ -1149,6 +1150,10 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateCspPolicyString(policy, manifestPropName) {
+    if (typeof policy !== 'string') {
+      return;
+    }
+
     const directives = parseCspPolicy(policy);
 
     // The order is important here, 'default-src' needs to be before
