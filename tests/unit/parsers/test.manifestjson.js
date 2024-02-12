@@ -2248,6 +2248,27 @@ describe('ManifestJSONParser', () => {
         expect(warningsV3.length).toEqual(6);
       }
     );
+
+    // See: https://github.com/mozilla/addons-linter/issues/5194
+    it.each([[true], { extension_pages: true }, null])(
+      'should handle non-string values - %o',
+      (content_security_policy) => {
+        const addonLinter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({ content_security_policy });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector
+        );
+
+        const { errors } = addonLinter.collector;
+        expect(errors[0]).toMatchObject({
+          code: messages.MANIFEST_FIELD_INVALID.code,
+          message: '"/content_security_policy" must be string',
+        });
+        expect(manifestJSONParser.isValid).toEqual(false);
+      }
+    );
   });
 
   describe('update_url', () => {
