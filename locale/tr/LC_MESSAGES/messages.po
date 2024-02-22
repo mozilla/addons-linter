@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-11-21 16:30+0000\n"
-"PO-Revision-Date: 2024-02-20 21:01+0000\n"
+"PO-Revision-Date: 2024-02-20 21:11+0000\n"
 "Last-Translator: Grk <gu0townkg@relay.firefox.com>\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -82,7 +82,7 @@ msgstr "Lütfen eklentideki tüm betik dosyalarını ekleyin. Daha fazla bilgi i
 
 #: src/messages/html.js:5
 msgid "Inline scripts blocked by default"
-msgstr "Satıriçi betikler varsayılan olarak engellenmiştir"
+msgstr "Satır içi betikler varsayılan olarak engellenmiştir"
 
 #: src/messages/html.js:6
 msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
@@ -201,7 +201,7 @@ msgid ""
 "There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
 "supported yet. The validation cannot continue on this file."
 msgstr ""
-"Kodunuzda, dil şartnamesinin resmen parçası olmayan ve bu nedenle henüz desteklenmeyen bazı deneysel JavaScript özellikleriyle ilgili olabilecek bir JavaScript sözdizimi hatası var. Bu dosyada "
+"Kodunuzda, dil şartnamesinin resmen parçası olmayan ve bu nedenle henüz desteklenmeyen bazı deneysel JavaScript özellikleriyle ilgili olabilecek bir JavaScript söz dizimi hatası var. Bu dosyada "
 "doğrulama devam edemez."
 
 #: src/messages/javascript.js:62
@@ -351,7 +351,7 @@ msgstr "Daha önce imzalanmış olan eklentiler AMO’da yayımlandığında yen
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr "Firefox eklentilerinin sanal para kazıcıları çalıştırmasına izin verilmemektedir."
+msgstr "Firefox eklentilerinin sanal para madencileri çalıştırmasına izin verilmemektedir."
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
@@ -367,7 +367,7 @@ msgstr "@@ karakterleriyle başlayan dizgi adları yerleşik sabitlere çevrilir
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr "Dizgi adı sadece alfanümerik karakterleri; _ ve @ karakterlerini içermelidir (https://mzl.la/2Eztyi5)."
+msgstr "Dizgi adı sadece harf, rakam, _ ve @ karakterlerini içermelidir (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
