@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-11-21 16:30+0000\n"
-"PO-Revision-Date: 2024-02-23 03:31+0000\n"
+"PO-Revision-Date: 2024-02-23 03:35+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -279,7 +279,7 @@ msgstr "Al è stât cjatât un non di file riservât."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr ""
+msgstr "Tal component adizionâl al è stât cjatât che cualchi file al à un non riservât. Par plasê strategniti dal doprâ chescj nons e cambie il non dai tiei files."
 
 #: src/messages/layout.js:22
 msgid ""
