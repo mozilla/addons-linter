@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-11-21 16:30+0000\n"
-"PO-Revision-Date: 2024-02-10 21:02+0000\n"
+"PO-Revision-Date: 2024-02-23 03:31+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -247,35 +247,35 @@ msgstr "Librarie JS di tiercis parts bandidis"
 
 #: src/messages/javascript.js:94
 msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr ""
+msgstr "Il to component adizionâl al dopre une librarie JavaScript che no considerìn sigure. Lei di plui in merit: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
-msgstr ""
+msgstr "Il file JSON al conten coments di bloc."
 
 #: src/messages/json.js:12
 msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgstr "Tai files JSON a son consintûts dome coments di rie (i coments che a scomencin cun “//”). Gjave i blocs di coments (coments che a scomencin cun “/*”)"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
-msgstr ""
+msgstr "Lis clâfs duplicadis no son consintudis tai files JSON."
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "E je stade cjatade une clâf duplicade tal file JSON."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
-msgstr ""
+msgstr "Il to file JSON nol è valit."
 
 #: src/messages/json.js:6
 msgid "Your JSON file could not be parsed."
-msgstr ""
+msgstr "Nol è pussibil analizâ il to file JSON."
 
 #: src/messages/layout.js:107
 msgid "Reserved filename found."
-msgstr ""
+msgstr "Al è stât cjatât un non di file riservât."
 
 #: src/messages/layout.js:108
 msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
