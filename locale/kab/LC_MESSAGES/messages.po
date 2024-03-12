@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-11-21 16:30+0000\n"
+"POT-Creation-Date: 2024-03-12 13:32+0000\n"
 "PO-Revision-Date: 2022-08-16 14:25+0000\n"
 "Last-Translator: ZiriSut <rgebbid@gmail.com>\n"
 "Language-Team: none\n"
@@ -54,7 +54,7 @@ msgid "Invalid nesting of selectors found"
 msgstr "Yir amnekcem gar imsefran yettwaf"
 
 #: src/messages/css.js:14
-msgid "Selectors should not be nested"
+msgid "Selector nesting is supported from firefox version 117.0 and above"
 msgstr ""
 
 #: src/messages/css.js:6

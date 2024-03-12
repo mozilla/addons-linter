@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-11-21 16:30+0000\n"
+"POT-Creation-Date: 2024-03-12 13:32+0000\n"
 "PO-Revision-Date: 2023-05-02 10:58+0000\n"
 "Last-Translator: Itiel <itiel_yn8@walla.com>\n"
 "Language-Team: none\n"
@@ -57,8 +57,8 @@ msgid "Invalid nesting of selectors found"
 msgstr "נמצא קינון שגוי של בוררים"
 
 #: src/messages/css.js:14
-msgid "Selectors should not be nested"
-msgstr "אין לקנן בוררים"
+msgid "Selector nesting is supported from firefox version 117.0 and above"
+msgstr ""
 
 #: src/messages/css.js:6
 msgid "A CSS syntax error was encountered"
@@ -1097,6 +1097,9 @@ msgstr ""
 #: src/messages/manifestjson.js:98
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 msgstr ""
+
+#~ msgid "Selectors should not be nested"
+#~ msgstr "אין לקנן בוררים"
 
 #~ msgid "The \"name\" property must be a string."
 #~ msgstr "המאפיין „name” חייב להיות מחרוזת."
