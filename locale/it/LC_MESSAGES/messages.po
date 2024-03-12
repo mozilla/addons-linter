@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-03-12 13:32+0000\n"
-"PO-Revision-Date: 2024-03-12 13:43+0000\n"
-"Last-Translator: Google Translate <pontoon-gt@example.com>\n"
+"PO-Revision-Date: 2024-03-12 14:23+0000\n"
+"Last-Translator: Francesco Lodolo [:flod] <flod+pontoon@mozilla.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -56,7 +56,7 @@ msgstr "Rilevato annidamento di selettori non valido"
 
 #: src/messages/css.js:14
 msgid "Selector nesting is supported from firefox version 117.0 and above"
-msgstr "La nidificazione dei selettori è supportata da Firefox versione 117.0 e successive"
+msgstr "La nidificazione dei selettori è supportata in Firefox versione 117.0 e successive"
 
 #: src/messages/css.js:6
 msgid "A CSS syntax error was encountered"
