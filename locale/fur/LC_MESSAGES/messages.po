@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-03-12 13:32+0000\n"
-"PO-Revision-Date: 2024-03-12 14:23+0000\n"
+"PO-Revision-Date: 2024-03-12 14:33+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -56,7 +56,7 @@ msgstr "Cjatade nidificazion di seletôrs no valide"
 
 #: src/messages/css.js:14
 msgid "Selector nesting is supported from firefox version 117.0 and above"
-msgstr ""
+msgstr "La nidificazion dai seletôrs e je supuartade in Firefox version 117.0 e sucessivis"
 
 #: src/messages/css.js:6
 msgid "A CSS syntax error was encountered"
@@ -486,71 +486,73 @@ msgstr "Un “%(property)s” personalizât al à bisugne di une altre revision.
 
 #: src/messages/manifestjson.js:228
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "“%(property)s” al permet “eval”, che al à implicazions significativis in tiermins di sigurece e prestazions."
 
 #: src/messages/manifestjson.js:232
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr ""
+msgstr "Te plui part dai câs al è pussibil otignî il stes risultât in mût diviers, duncje in gjenerâl al è vietât"
 
 #: src/messages/manifestjson.js:240
 msgid "The \"name\" property must be a string with no leading/trailing whitespaces."
-msgstr ""
+msgstr "La proprietât “name” e scugne jessi une stringhe cence spazis vueits al inizi o ae fin."
 
 #: src/messages/manifestjson.js:243
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr ""
+msgstr "Viôt http://mzl.la/1STmr48 (Documentazion MDN) par vê plui informazions."
 
 #: src/messages/manifestjson.js:251
 msgid "\"update_url\" is not allowed."
-msgstr ""
+msgstr "\"update_url\" nol è consintût."
 
 #: src/messages/manifestjson.js:252
 msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
+msgstr "“applications.gecko.update_url” o “browser_specific_settings.gecko.update_url” no son consintûts pai components adizionâi ospitâts di Mozilla."
 
 #: src/messages/manifestjson.js:261
 msgid "The \"update_url\" property is not used by Firefox."
-msgstr ""
+msgstr "La proprietât \"update_url\" no ven doprade di Firefox."
 
 #: src/messages/manifestjson.js:262
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
 msgstr ""
+"\"update_url\" nol è doprât di Firefox te lidrîs di un manifest; il component adizionâl al vignarà inzornât midiant il sît dai components adizionâi e no midiant “update_url”. Viôt: "
+"https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:270
 msgid "\"strict_max_version\" not required."
-msgstr ""
+msgstr "\"strict_max_version\" no necessari."
 
 #: src/messages/manifestjson.js:271
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "No sta doprâ “strict_max_version” gjavât che no tu previodis che il component adizionâl nol funzioni cu lis versions futuris di Firefox."
 
 #: src/messages/manifestjson.js:28 src/messages/manifestjson.js:33
 msgid "Manifest Version 3 is not fully supported on Firefox for Android."
-msgstr ""
+msgstr "La version manifest 3 no je supuartade dal dut su Firefox par Android."
 
 #: src/messages/manifestjson.js:280
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "No je stade cjatade nissune proprietât “%(property)s” in manifest.json"
 
 #: src/messages/manifestjson.js:283
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "“%(property)s” al è obligatori"
 
 #: src/messages/manifestjson.js:294
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
+msgstr "Nol è stât pussibil cjatâ tal pachet une icone definide tal manifest."
 
 #: src/messages/manifestjson.js:298
 msgid "Icon could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Impussibil cjatâ la icone in \"%(path)s\"."
 
 #: src/messages/manifestjson.js:313
 msgid "A background script defined in the manifest could not be found."
-msgstr ""
+msgstr "Nol è stât pussibil cjatâ un script di sotfont definît tal manifest."
 
 #: src/messages/manifestjson.js:316
 msgid "A background page defined in the manifest could not be found."
-msgstr ""
+msgstr "Impussibil cjatâ une pagjine di sotfont definide tal manifest."
 
 #: src/messages/manifestjson.js:321
 msgid "Background script could not be found at \"%(path)s\"."
