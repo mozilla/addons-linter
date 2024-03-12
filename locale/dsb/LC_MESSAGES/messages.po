@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-03-12 15:41+0000\n"
-"PO-Revision-Date: 2024-03-12 16:22+0000\n"
+"PO-Revision-Date: 2024-03-12 16:24+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: dsb\n"
@@ -727,7 +727,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:62
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "„%(fieldName)s“ se w manifestowych wersijach %(versionRange)s njepódpěra."
 
 #: src/messages/manifestjson.js:632
 msgid "Permission not supported by the specified minimum Firefox version"
