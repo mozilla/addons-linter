@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-12 13:32+0000\n"
+"POT-Creation-Date: 2024-03-12 15:41+0000\n"
 "PO-Revision-Date: 2023-11-22 04:44+0000\n"
 "Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
@@ -57,7 +57,7 @@ msgid "Invalid nesting of selectors found"
 msgstr "Đã tìm thấy lồng ghép không hợp lệ"
 
 #: src/messages/css.js:14
-msgid "Selector nesting is supported from firefox version 117.0 and above"
+msgid "Selector nesting is supported from Firefox version 117.0 and above"
 msgstr ""
 
 #: src/messages/css.js:6
