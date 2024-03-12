@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-03-12 13:32+0000\n"
-"PO-Revision-Date: 2024-03-12 14:10+0000\n"
+"PO-Revision-Date: 2024-03-12 14:23+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -410,79 +410,79 @@ msgstr "Al segnepuest  i mancje la proprietât “content“"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "Un segnepuest al à bisugne di une proprietât content che int definìs la sostituzion (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
-msgstr ""
+msgstr "Ae stringhe de traduzion i mancje la proprietât “message“"
 
 #: src/messages/locale-messagesjson.js:6
 msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
+msgstr "Nissune proprietât “message“ e je configurade par une stringhe (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10
 msgid "The field is required."
-msgstr ""
+msgstr "Cjamp obligatori."
 
 #: src/messages/manifestjson.js:11 src/messages/manifestjson.js:20
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
-msgstr ""
+msgstr "Viôt https://mzl.la/1ZOhoEN (Documentazion MDN) par vê plui informazions."
 
 #: src/messages/manifestjson.js:115 src/messages/manifestjson.js:123 src/messages/manifestjson.js:131
 msgid "The permission type is unsupported."
-msgstr ""
+msgstr "Il gjenar di permès nol è supuartât."
 
 #: src/messages/manifestjson.js:116 src/messages/manifestjson.js:141
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
+msgstr "Viôt https://mzl.la/1R1n1t0 (Documentazion MDN) par vê plui informazions."
 
 #: src/messages/manifestjson.js:124 src/messages/manifestjson.js:170
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr ""
+msgstr "Viôt https://mzl.la/2Qn0fWC (Documentazion MDN) par vê plui informazions."
 
 #: src/messages/manifestjson.js:132 src/messages/manifestjson.js:179
 msgid "See https://mzl.la/3Woeqv4 (MDN Docs) for more information."
-msgstr ""
+msgstr "Viôt https://mzl.la/3Woeqv4 (Documentazion MDN) par vê plui informazions."
 
 #: src/messages/manifestjson.js:140 src/messages/manifestjson.js:169
 msgid "Unknown permission."
-msgstr ""
+msgstr "Permès no cognossût."
 
 #: src/messages/manifestjson.js:151
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s: chescj permès a son consintûts dome tes estensions cun privileçs: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:178
 msgid "Invalid host permission."
-msgstr ""
+msgstr "“host permission“ no valit."
 
 #: src/messages/manifestjson.js:187
 msgid "Invalid install origin."
-msgstr ""
+msgstr "Origjin de instalazion no valide."
 
 #: src/messages/manifestjson.js:188
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
+msgstr "Origjin instalazion no valide. Une origjin valide e à dome un scheme, un non host e une puarte facoltative. Viôt https://mzl.la/3TEbqbE (Documentazion MDN) par vê plui informazions."
 
 #: src/messages/manifestjson.js:19
 msgid "The field is invalid."
-msgstr ""
+msgstr "Il cjamp nol è valit."
 
 #: src/messages/manifestjson.js:196
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
+msgstr "\"manifest_version\" tal file manifest.json nol è un valôr valit"
 
 #: src/messages/manifestjson.js:199
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
+msgstr "Viôt https://mzl.la/20PenXl (Documentazion MDN) par vê plui informazions."
 
 #: src/messages/manifestjson.js:212
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr ""
+msgstr "“%(property)s” al permet la esecuzion di codiç di lontan in manifest.json"
 
 #: src/messages/manifestjson.js:216
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "Un “%(property)s” personalizât al à bisugne di une altre revision."
 
 #: src/messages/manifestjson.js:228
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
