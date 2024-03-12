@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-03-12 13:32+0000\n"
-"PO-Revision-Date: 2024-03-12 14:42+0000\n"
+"PO-Revision-Date: 2024-03-12 14:51+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -636,67 +636,67 @@ msgstr "La dimension de icone no corispuint al manifest."
 
 #: src/messages/manifestjson.js:432
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "La icone “%(path)s” e varès di vê une largjece di %(expected)d pixels ma int veve %(actual)d)."
 
 #: src/messages/manifestjson.js:44
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "“%(fieldName)s” al ven ignorât pai components adizionâi cence privileçs."
 
 #: src/messages/manifestjson.js:445
 msgid "Corrupt image file"
-msgstr ""
+msgstr "File imagjin ruvinât"
 
 #: src/messages/manifestjson.js:447
 msgid "Expected icon file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "Il file icone previodût in \"%(path)s\" al è ruvinât"
 
 #: src/messages/manifestjson.js:456
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Cheste proprietât e je deplorade."
 
 #: src/messages/manifestjson.js:463
 msgid "This theme LWT alias has been removed in Firefox 70."
-msgstr ""
+msgstr "Chest alias dal teme LWS al è stât gjavât in Firefox 70."
 
 #: src/messages/manifestjson.js:464
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
+msgstr "Viôt https://mzl.la/2T11Lkc (Documentazion MDN) par vê plui informazions."
 
 #: src/messages/manifestjson.js:479
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr ""
+msgstr "Impussibil cjatâ la imagjin dal teme “%(type)s” in “%(path)s”"
 
 #: src/messages/manifestjson.js:48
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "Il cjamp dal manifest “%(fieldName)s” al ven doprât dome pes estensions cun privileçs e instaladis in mût temporani."
 
 #: src/messages/manifestjson.js:490
 msgid "Corrupted theme image file"
-msgstr ""
+msgstr "File imagjin dal teme ruvinât"
 
 #: src/messages/manifestjson.js:492
 msgid "Theme image file at \"%(path)s\" is corrupted"
-msgstr ""
+msgstr "Il file imagjin dal teme in \"%(path)s\" al è ruvinât"
 
 #: src/messages/manifestjson.js:503
 msgid "Theme image file has an unsupported file extension"
-msgstr ""
+msgstr "Il file imagjin dal teme al à une estension che no je supuartade"
 
 #: src/messages/manifestjson.js:505
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
+msgstr "Il file imagjin dal teme in \"%(path)s\" al à une estension che no je supuartade"
 
 #: src/messages/manifestjson.js:519
 msgid "Theme image file has an unsupported mime type"
-msgstr ""
+msgstr "Il file imagjin dal teme al à un gjenar mime no supuartât"
 
 #: src/messages/manifestjson.js:521
 msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
+msgstr "Il file imagjin dal teme in \"%(path)s\" al à il gjenar mime \"%(mime)s\" che nol è supuartât"
 
 #: src/messages/manifestjson.js:535
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
+msgstr "Il gjenar mime dal file imagjin dal teme nol corispuint ae estension dal file"
 
 #: src/messages/manifestjson.js:539
 msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
