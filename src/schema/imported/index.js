@@ -55,7 +55,6 @@ import theme from './theme.json';
 import topSites from './top_sites.json';
 import types from './types.json';
 import url_overrides from './url_overrides.json';
-import urlbar from './urlbar.json';
 import userScripts from './userScripts.json';
 import webNavigation from './web_navigation.json';
 import webRequest from './web_request.json';
@@ -116,7 +115,6 @@ export default [
   topSites,
   types,
   url_overrides,
-  urlbar,
   userScripts,
   webNavigation,
   webRequest,

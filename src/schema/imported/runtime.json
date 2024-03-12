@@ -633,6 +633,52 @@
           ]
         }
       ]
+    },
+    {
+      "name": "onPerformanceWarning",
+      "type": "function",
+      "description": "Fired when a runtime performance issue is detected with the extension. Observe this event to be proactively notified of runtime performance problems with the extension.",
+      "parameters": [
+        {
+          "type": "object",
+          "name": "details",
+          "properties": {
+            "category": {
+              "allOf": [
+                {
+                  "$ref": "#/types/OnPerformanceWarningCategory"
+                },
+                {
+                  "description": "The performance warning event category, e.g. 'content_script'."
+                }
+              ]
+            },
+            "severity": {
+              "allOf": [
+                {
+                  "$ref": "#/types/OnPerformanceWarningSeverity"
+                },
+                {
+                  "description": "The performance warning event severity, e.g. 'high'."
+                }
+              ]
+            },
+            "tabId": {
+              "type": "integer",
+              "description": "The $(ref:tabs.Tab) that the performance warning relates to, if any."
+            },
+            "description": {
+              "type": "string",
+              "description": "An explanation of what the warning means, and hopefully how to address it."
+            }
+          },
+          "required": [
+            "category",
+            "severity",
+            "description"
+          ]
+        }
+      ]
     }
   ],
   "definitions": {
@@ -880,6 +926,22 @@
         "os_update",
         "periodic"
       ]
+    },
+    "OnPerformanceWarningCategory": {
+      "type": "string",
+      "enum": [
+        "content_script"
+      ],
+      "description": "The performance warning event category, e.g. 'content_script'."
+    },
+    "OnPerformanceWarningSeverity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "description": "The performance warning event severity. Will be 'high' for serious and user-visible issues."
     }
   }
 }

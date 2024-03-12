@@ -748,9 +748,6 @@
         },
         {
           "$ref": "telemetry#/definitions/PermissionPrivileged"
-        },
-        {
-          "$ref": "urlbar#/definitions/PermissionPrivileged"
         }
       ]
     },
