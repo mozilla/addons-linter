@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-03-12 13:32+0000\n"
-"PO-Revision-Date: 2024-03-12 14:08+0000\n"
+"PO-Revision-Date: 2024-03-12 14:10+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -386,27 +386,27 @@ msgstr "I nons di stringhe che a scomencin par @@ a vegnin convertîts in costan
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr "Il non de stringhe al à di contignî dome caratars alfa-numerics, _ e @ (https://mzl.la/2Eztyi5)."
+msgstr "Il non de stringhe al à di contignî dome caratars alfanumerics, _ e @ (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
-msgstr ""
+msgstr "Al mancje il segnepuest pal messaç"
 
 #: src/messages/locale-messagesjson.js:28
 msgid "A placeholder used in the message is not defined."
-msgstr ""
+msgstr "Un segnepuest doprât tal messaç nol è stât definît."
 
 #: src/messages/locale-messagesjson.js:33
 msgid "Placeholder name contains invalid characters"
-msgstr ""
+msgstr "Il non dal segnepuest al conten caratars no valits"
 
 #: src/messages/locale-messagesjson.js:34
 msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr ""
+msgstr "Il non dal segnepuest al à di contignî dome caratars alfanumerics, _ e @ (https://mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
-msgstr ""
+msgstr "Al segnepuest  i mancje la proprietât “content“"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
