@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-03-12 13:32+0000\n"
-"PO-Revision-Date: 2024-03-12 14:33+0000\n"
+"PO-Revision-Date: 2024-03-12 14:42+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -556,83 +556,83 @@ msgstr "Impussibil cjatâ une pagjine di sotfont definide tal manifest."
 
 #: src/messages/manifestjson.js:321
 msgid "Background script could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Impussibil cjatâ in \"%(path)s\" il script di sotfont."
 
 #: src/messages/manifestjson.js:322
 msgid "Background page could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Impussibil cjatâ in \"%(path)s\" la pagjine di sotfont."
 
 #: src/messages/manifestjson.js:337
 msgid "A content script defined in the manifest could not be found."
-msgstr ""
+msgstr "Impussibil cjatâ un script di contignût definît tal manifest."
 
 #: src/messages/manifestjson.js:338
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
+msgstr "Impussibil cjatâ il file css cuntun script di contignût definît tal manifest."
 
 #: src/messages/manifestjson.js:343
 msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Impussibil cjatâ il script di contignût definît tal manifest in \"%(path)s\"."
 
 #: src/messages/manifestjson.js:346
 msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Impussibil cjatâ tal manifest in \"%(path)s\" il file css dal script di contignût."
 
 #: src/messages/manifestjson.js:360
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr ""
+msgstr "Impussibil cjatâ un file di dizionari definît tal manifest."
 
 #: src/messages/manifestjson.js:364
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
+msgstr "Impussibil cjatâ il file di dizionari definît tal manifest in \"%(path)s\"."
 
 #: src/messages/manifestjson.js:376
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "Il manifest al conten plui dizionaris."
 
 #: src/messages/manifestjson.js:377
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "Tal manifest a son stâts cjatâts plui dizionaris, cheste opzion no je supuartade."
 
 #: src/messages/manifestjson.js:386
 msgid "The manifest contains a dictionaries object, but it is empty."
-msgstr ""
+msgstr "Il manifest al conten un ogjet dictionaries, ma al è vueit."
 
 #: src/messages/manifestjson.js:389
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
+msgstr "Tal manifest al jere definît un ogjet dictionaries, ma al jere vueit."
 
 #: src/messages/manifestjson.js:398
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "Il manifest al conten un dizionari ma nol à une proprietât ID."
 
 #: src/messages/manifestjson.js:399
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "Tal manifest al è stât cjatât un dizionari, ma nol jere configurât un ID."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "Fâs riferiment a https://github.com/mozilla-extensions/xpi-manifest par savê di plui su lis estensions cun privileçs e su la firme."
 
 #: src/messages/manifestjson.js:409
 msgid "Forbidden content found in add-on."
-msgstr ""
+msgstr "Cjatât contignût vietât tal component adizionât."
 
 #: src/messages/manifestjson.js:410
 msgid "This add-on contains forbidden content."
-msgstr ""
+msgstr "Chest component adizionâl al conten contignût vietât."
 
 #: src/messages/manifestjson.js:418
 msgid "Icons must be square."
-msgstr ""
+msgstr "Lis iconis a scugnin jessi cuadradis."
 
 #: src/messages/manifestjson.js:419
 msgid "Icon at \"%(path)s\" must be square."
-msgstr ""
+msgstr "La icone in \"%(path)s\" e scugne jessi cuadrade."
 
 #: src/messages/manifestjson.js:430
 msgid "The size of the icon does not match the manifest."
-msgstr ""
+msgstr "La dimension de icone no corispuint al manifest."
 
 #: src/messages/manifestjson.js:432
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
