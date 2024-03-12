@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-03-12 13:32+0000\n"
-"PO-Revision-Date: 2024-03-12 13:53+0000\n"
+"PO-Revision-Date: 2024-03-12 14:08+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -338,53 +338,55 @@ msgstr "Rilevât non di file segnalât"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
 msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr ""
+msgstr "A son stâts rilevâts files che no coventin o includûts cence volê. A varessin di sei gjavâts."
 
 #: src/messages/layout.js:7
 msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgstr "Il pachet al conten plui vôs cul stes non. Cheste pratiche e je stade vietade. Prove a decomprimi e tornâ a comprimi il pachet dal component adizionâl e po' tornâ a provâ."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
-msgstr ""
+msgstr "Rilevadis estensions di file segnaladis"
 
 #: src/messages/layout.js:80
 msgid "Flagged file type found"
-msgstr ""
+msgstr "Rilevât gjenar di file segnalât"
 
 #: src/messages/layout.js:81
 msgid ""
 "Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
 "https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
+"Tal component adizionâl a son stâts cjatâts files cun nons che a finissin cun estensions segnaladis. La estension di chescj files e je segnalade parcè che di solit e identifiche components binaris. "
+"Viôt https://bit.ly/review-policy par vê plui informazions sul procès di revision dai contignûts binaris."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
-msgstr ""
+msgstr "Pachet za firmât"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "Une volte publicâts su AMO, i components adizionâi za firmâts a vignaran firmâts di gnûf. Chest al sostituirà dutis lis firmis esistentis tal component adizionâl."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
+msgstr "La estrazion di criptovalude no je consintude tai components adizionâi par Firefox."
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "La esecuzion di script pe estrazion di criptovalude dentri di WebExtensions no je consintude. Par vê plui detais, viôt https://github.com/mozilla/addons-linter/issues/1643."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr ""
+msgstr "Il non stringhe al è riservât pa un messaç predefinît"
 
 #: src/messages/locale-messagesjson.js:14
 msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr ""
+msgstr "I nons di stringhe che a scomencin par @@ a vegnin convertîts in costantis integradis (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
 msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr ""
+msgstr "Il non de stringhe al à di contignî dome caratars alfa-numerics, _ e @ (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
