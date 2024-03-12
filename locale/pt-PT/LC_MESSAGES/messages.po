@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-11-21 16:30+0000\n"
+"POT-Creation-Date: 2024-03-12 13:32+0000\n"
 "PO-Revision-Date: 2023-07-07 12:26+0000\n"
 "Last-Translator: mmsrs <mmsrs@sky.com>\n"
 "Language-Team: none\n"
@@ -57,8 +57,8 @@ msgid "Invalid nesting of selectors found"
 msgstr "Aninhamento inválido de seletores encontrado"
 
 #: src/messages/css.js:14
-msgid "Selectors should not be nested"
-msgstr "Os seletores não deverão ser integrados"
+msgid "Selector nesting is supported from firefox version 117.0 and above"
+msgstr ""
 
 #: src/messages/css.js:6
 msgid "A CSS syntax error was encountered"
@@ -1058,6 +1058,9 @@ msgstr ""
 #: src/messages/manifestjson.js:98
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 msgstr ""
+
+#~ msgid "Selectors should not be nested"
+#~ msgstr "Os seletores não deverão ser integrados"
 
 #~ msgid "The \"name\" property must be a string."
 #~ msgstr "A propriedade \"name\" deve ser uma string."
