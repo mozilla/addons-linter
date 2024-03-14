@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-03-12 15:41+0000\n"
-"PO-Revision-Date: 2024-03-14 19:33+0000\n"
+"PO-Revision-Date: 2024-03-14 19:42+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -819,49 +819,51 @@ msgstr "%(instancePath)s: il permès “mozillaAddons” al è necessari pes est
 
 #: src/messages/manifestjson.js:77
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: i cjamps dal manifest cun privileçs a son consintûts dome tes estensions cun privileçs."
 
 #: src/messages/manifestjson.js:770
 msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr ""
+msgstr "Cheste estension no inclût il permès  “mozillaAddons” necessari pes estensions cun privileçs."
 
 #: src/messages/manifestjson.js:780
 msgid "Cannot use actions in hidden add-ons."
-msgstr ""
+msgstr "Impussibil doprâ azions in components adizionâi platâts."
 
 #: src/messages/manifestjson.js:781
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "La proprietât “hidden” e “browser_action/page_action” (o “action” tes versions 3 e sucessivis dai manifescj) si escludin un cun chel altri."
 
 #: src/messages/manifestjson.js:789
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
-msgstr ""
+msgstr "Dopre “browser_specific_settings” invezit che “applications”."
 
 #: src/messages/manifestjson.js:790
 msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr ""
+msgstr "La proprietât “applications” tal manifest e je deplorade e no sarà plui acetade tes versions 3 e sucessivis dai manifescj."
 
 #: src/messages/manifestjson.js:798
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
+msgstr "“applications” nol è plui consintût tes versions 3 e sucessivis dai manifescj."
 
 #: src/messages/manifestjson.js:800
 msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
+msgstr "La proprietât “applications” tal manifest no je plui consintude tes versions 3 e sucessivis dai manifescj. Al so puest dopre “browser_specific_settings”."
 
 #: src/messages/manifestjson.js:808
 msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr ""
+msgstr "La stringhe de version e varès di jessi semplificade parcè che no sarà compatibile cu lis versions 3 e sucessivis dai manifescj."
 
 #: src/messages/manifestjson.js:810
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
 "See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"La version e varès di jessi une stringhe fate di 1 a 4 numars separâts di ponts. Ogni numar al à di vê un manssim di 9 cifris e i zeros iniziâi no saran plui consintûts. Ancje lis letaris no saran "
+"plui consintudis. Par vê plui informazions viôt: https://mzl.la/3h3mCRu (Documentazion MDN)."
 
 #: src/messages/manifestjson.js:819
 msgid "The version string should be simplified."
-msgstr ""
+msgstr "La stringhe de version e scugne jessi semplificade."
 
 #: src/messages/manifestjson.js:820
 msgid ""
