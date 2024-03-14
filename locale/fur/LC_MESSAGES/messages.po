@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-03-12 15:41+0000\n"
-"PO-Revision-Date: 2024-03-14 10:28+0000\n"
+"PO-Revision-Date: 2024-03-14 19:33+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -786,35 +786,36 @@ msgstr "Nol è pussibil doprâ i colegaments che a pontin a “addons.mozilla.or
 
 #: src/messages/manifestjson.js:704
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "Il permès “%(permission)s” al à bisugne che “strict_min_version” al sedi metût a “%(minFirefoxVersion)s” o superiôr"
 
 #: src/messages/manifestjson.js:709
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
 msgstr ""
+"Il permès “%(permission)s” al à bisugne che “strict_min_version” al sedi metût a “%(minFirefoxVersion)s” o superiôr. Inzorne la version di manifest.json par specificâ une version minime di Firefox."
 
 #: src/messages/manifestjson.js:721
 msgid "The extension ID is required in Manifest Version 3 and above."
-msgstr ""
+msgstr "L'ID de estension al è obligatori te version 3 o sucessivis dal manifest."
 
 #: src/messages/manifestjson.js:724
 msgid "See https://mzl.la/3PLZYdo for more information."
-msgstr ""
+msgstr "Viôt https://mzl.la/3PLZYdo par vê plui informazions."
 
 #: src/messages/manifestjson.js:730
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr ""
+msgstr "%(instancePath)s: lis estensions cun privileçs a scugnin declarâ permès cun privileçs."
 
 #: src/messages/manifestjson.js:741
 msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr ""
+msgstr "Cheste estension no declare nissun permès cun privileçs. Nol è necessri firmâ cul certificât privilegjât. Cjamile in rêt dret su https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:754
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: pes estensions cun privileçs al è necessari il permès “mozillaAddons”."
 
 #: src/messages/manifestjson.js:757
 msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr ""
+msgstr "%(instancePath)s: il permès “mozillaAddons” al è necessari pes estensions che a includin cjamps dal manifest cun privileçs."
 
 #: src/messages/manifestjson.js:77
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
