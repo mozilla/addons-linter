@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-03-12 15:41+0000\n"
-"PO-Revision-Date: 2024-03-13 09:29+0000\n"
+"PO-Revision-Date: 2024-03-14 10:21+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -728,23 +728,25 @@ msgstr "Lis iconis a scugnin jessi intun di chescj formâts: JPG/JPEG, WebP, GIF
 
 #: src/messages/manifestjson.js:579
 msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
-msgstr ""
+msgstr "Proprietât “applications” sostituide de proprietât “browser_specific_settings”"
 
 #: src/messages/manifestjson.js:582
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
 msgstr ""
+"La proprietât “applications” e je stade ignorade parcè che e je stade sostituide de proprietât “browser_specific_settings”, ancje chê definide tal manifest. Valute la pussibilitât di gjavâ "
+"“applications”."
 
 #: src/messages/manifestjson.js:592
 msgid "Empty language directory"
-msgstr ""
+msgstr "Cartele des lenghis vueide"
 
 #: src/messages/manifestjson.js:594
 msgid "messages.json file missing in \"%(path)s\""
-msgstr ""
+msgstr "Al mancje il file messages.json in \"%(path)s\""
 
 #: src/messages/manifestjson.js:610
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Il manifest key nol è supuartât te version minime di Firefox specificade"
 
 #: src/messages/manifestjson.js:614 src/messages/manifestjson.js:636
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
