@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-03-12 15:41+0000\n"
-"PO-Revision-Date: 2024-03-14 19:42+0000\n"
+"PO-Revision-Date: 2024-03-14 19:47+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -56,7 +56,7 @@ msgstr "Cjatade nidificazion di seletôrs no valide"
 
 #: src/messages/css.js:14
 msgid "Selector nesting is supported from Firefox version 117.0 and above"
-msgstr ""
+msgstr "La nidificazion dai seletôrs e je supuartade te version 117.0 e sucessivis di Firefox"
 
 #: src/messages/css.js:6
 msgid "A CSS syntax error was encountered"
@@ -870,14 +870,16 @@ msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
 "https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
+"La version e varès di jessi une stringhe fate di 1 a 4 numars separâts di ponts. Ogni numar al à di vê fin a 9 cifris e i zeros iniziâi no son consintûts. Lis letaris no son plui consintudis. Par vê"
+" plui informazions, viôt https://mzl.la/3h3mCRu (Documentazion MDN)."
 
 #: src/messages/manifestjson.js:96
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "/%(fieldName)s: “%(permissionName)s” nol è supuartât tes versions dal manifest %(versionRange)s."
 
 #: src/messages/manifestjson.js:98
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
-msgstr ""
+msgstr "/%(fieldName)s: \"%(permissionName)s\" nol è supuartât."
 
 #~ msgid "Selector nesting is supported from firefox version 117.0 and above"
 #~ msgstr "La nidificazion dai seletôrs e je supuartade in Firefox version 117.0 e sucessivis"
