@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-03-12 15:41+0000\n"
-"PO-Revision-Date: 2024-03-14 10:21+0000\n"
+"PO-Revision-Date: 2024-03-14 10:28+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fur\n"
@@ -750,39 +750,39 @@ msgstr "Il manifest key nol è supuartât te version minime di Firefox specifica
 
 #: src/messages/manifestjson.js:614 src/messages/manifestjson.js:636
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "“strict_min_version” al à bisugne di Firefox %(minVersion)s, che al è stât publicât prime che la version %(versionAdded)s e introdusès il supuart par “%(key)s”."
 
 #: src/messages/manifestjson.js:62
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "“%(fieldName)s” nol è supuartât tes versions dal manifest %(versionRange)s."
 
 #: src/messages/manifestjson.js:632
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
+msgstr "Il permès nol è supuartât de version minime di Firefox specificade"
 
 #: src/messages/manifestjson.js:64
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "“%(fieldName)s” nol è supuartât."
 
 #: src/messages/manifestjson.js:654
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Il manifest key nol è supuartât te version minime di Firefox par Android specificade"
 
 #: src/messages/manifestjson.js:658 src/messages/manifestjson.js:680
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "“strict_min_version” al à bisugne di Firefox per Android %(minVersion)s, che al è stât publicât prime che la version %(versionAdded)s e introdusès il supuart par “%(key)s”."
 
 #: src/messages/manifestjson.js:676
 msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
+msgstr "Il permès nol è supuartât te version minime di Firefox per Android specificade"
 
 #: src/messages/manifestjson.js:691
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr ""
+msgstr "Il colegament a “addons.mozilla.org” nol è consintût"
 
 #: src/messages/manifestjson.js:692
 msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr ""
+msgstr "Nol è pussibil doprâ i colegaments che a pontin a “addons.mozilla.org” tant che pagjine iniziâl"
 
 #: src/messages/manifestjson.js:704
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
