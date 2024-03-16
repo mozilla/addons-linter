@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-03-12 15:41+0000\n"
-"PO-Revision-Date: 2024-03-16 12:22+0000\n"
-"Last-Translator: Selim Şumlu <selim@sum.lu>\n"
+"PO-Revision-Date: 2024-03-16 12:57+0000\n"
+"Last-Translator: Grk <gu0townkg@relay.firefox.com>\n"
 "Language-Team: none\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -54,7 +54,7 @@ msgstr "Seçicilerin geçersiz gruplanması tespit edildi"
 
 #: src/messages/css.js:14
 msgid "Selector nesting is supported from Firefox version 117.0 and above"
-msgstr "Seçicileri içe içe geçirme (nesting), Firefox 117.0 ve üzeri sürümlerde desteklenir"
+msgstr "Seçicileri iç içe geçirme (nesting), Firefox 117.0 ve üzeri sürümlerde desteklenir"
 
 #: src/messages/css.js:6
 msgid "A CSS syntax error was encountered"
