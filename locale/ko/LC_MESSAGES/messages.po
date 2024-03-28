@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-12 15:41+0000\n"
+"POT-Creation-Date: 2024-03-28 15:12+0000\n"
 "PO-Revision-Date: 2024-01-14 03:49+0000\n"
 "Last-Translator: Hyeonseok Shin <hyeonseok@gmail.com>\n"
 "Language-Team: none\n"
@@ -14,60 +14,40 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:174
+#: src/linter.js:173
 msgid "Validation Summary:"
 msgstr "유효성 검증 요약:"
 
-#: src/linter.js:193
+#: src/linter.js:192
 msgid "Code"
 msgstr "코드"
 
-#: src/linter.js:199
+#: src/linter.js:198
 msgid "Message"
 msgstr "메시지"
 
-#: src/linter.js:205
+#: src/linter.js:204
 msgid "Description"
 msgstr "설명"
 
-#: src/linter.js:211
+#: src/linter.js:210
 msgid "File"
 msgstr "파일"
 
-#: src/linter.js:217
+#: src/linter.js:216
 msgid "Line"
 msgstr "행"
 
-#: src/linter.js:223
+#: src/linter.js:222
 msgid "Column"
 msgstr "열"
 
-#: src/linter.js:73
+#: src/linter.js:72
 msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently "
 "set to %(minManifestVersion)s) should not be greater than --max-manifest-"
 "version (currently set to %(maxManifestVersion)s)."
 msgstr ""
-
-#: src/messages/css.js:13
-msgid "Invalid nesting of selectors found"
-msgstr "선택자 중첩이 잘못됨"
-
-#: src/messages/css.js:14
-msgid "Selector nesting is supported from Firefox version 117.0 and above"
-msgstr ""
-
-#: src/messages/css.js:6
-msgid "A CSS syntax error was encountered"
-msgstr "CSS 문법 오류"
-
-#: src/messages/css.js:7
-msgid ""
-"An error was found in the CSS file being processed. As a result, further "
-"processing of that file is not possible"
-msgstr ""
-"진행중인 CSS 파일에서 오류가 발견되었습니다. 결과적으로 이 파일은 더 진행이 "
-"불가능합니다."
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -1014,6 +994,19 @@ msgstr ""
 #: src/messages/manifestjson.js:98
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 msgstr ""
+
+#~ msgid "Invalid nesting of selectors found"
+#~ msgstr "선택자 중첩이 잘못됨"
+
+#~ msgid "A CSS syntax error was encountered"
+#~ msgstr "CSS 문법 오류"
+
+#~ msgid ""
+#~ "An error was found in the CSS file being processed. As a result, further "
+#~ "processing of that file is not possible"
+#~ msgstr ""
+#~ "진행중인 CSS 파일에서 오류가 발견되었습니다. 결과적으로 이 파일은 더 진행"
+#~ "이 불가능합니다."
 
 #~ msgid "Selectors should not be nested"
 #~ msgstr "선택자는 중첩이 되면 안됩니다"
