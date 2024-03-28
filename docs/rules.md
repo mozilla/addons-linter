@@ -28,13 +28,6 @@ Rules are sorted by severity.
 
 ## Markup
 
-### CSS
-
-| Message code               | Severity | Description                         |
-| -------------------------- | -------- | ----------------------------------- |
-| `CSS_SYNTAX_ERROR`         | error    | A CSS syntax error was detected.    |
-| `INVALID_SELECTOR_NESTING` | error    | CSS selectors should not be nested. |
-
 ### HTML
 
 | Message code    | Severity | Description                                            |

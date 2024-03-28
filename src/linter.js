@@ -25,7 +25,6 @@ import log from 'logger';
 import Collector from 'collector';
 import DefaultManifestJSONParser from 'parsers/manifestjson';
 import BinaryScanner from 'scanners/binary';
-import CSSScanner from 'scanners/css';
 import FilenameScanner from 'scanners/filename';
 import HTMLScanner from 'scanners/html';
 import JavaScriptScanner from 'scanners/javascript';
@@ -377,8 +376,6 @@ export default class Linter {
     }
 
     switch (path.extname(filename)) {
-      case '.css':
-        return CSSScanner;
       case '.html':
       case '.htm':
         return HTMLScanner;
