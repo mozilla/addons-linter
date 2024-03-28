@@ -25,15 +25,13 @@ describe('incompatible browser APIs', () => {
     });
 
     const { linterMessages } = await runJsScanner(jsScanner);
-    expect(linterMessages.length).toEqual(2);
-    for (const msg of linterMessages) {
-      expect(msg.type).toEqual(VALIDATION_WARNING);
-      expect(msg.message).toEqual(
-        expect.stringMatching(
-          /clipboard\.setImageData is not supported in Firefox(?: for Android)? version 50\.0/
-        )
-      );
-    }
+    expect(linterMessages.length).toEqual(1);
+    expect(linterMessages[0].type).toEqual(VALIDATION_WARNING);
+    expect(linterMessages[0].message).toEqual(
+      expect.stringMatching(
+        /clipboard\.setImageData is not supported in Firefox version 50\.0/
+      )
+    );
   });
 
   it('does not flag APIs that are not implemented on Android', async () => {
