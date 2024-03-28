@@ -14,7 +14,6 @@ import * as constants from 'const';
 import * as messages from 'messages';
 import ManifestJSONParser from 'parsers/manifestjson';
 import BinaryScanner from 'scanners/binary';
-import CSSScanner from 'scanners/css';
 import FilenameScanner from 'scanners/filename';
 import JavaScriptScanner from 'scanners/javascript';
 import JSONScanner from 'scanners/json';
@@ -397,12 +396,6 @@ describe('Linter.getScanner()', () => {
       expect(Scanner).toEqual(JavaScriptScanner);
     }
   );
-
-  it('should return CSSScanner', () => {
-    const addonLinter = new Linter({ _: ['foo'] });
-    const Scanner = addonLinter.getScanner('foo.css');
-    expect(Scanner).toEqual(CSSScanner);
-  });
 
   it('should return JSONScanner', () => {
     const addonLinter = new Linter({ _: ['foo'] });
@@ -1421,8 +1414,9 @@ describe('Linter.extractMetadata()', () => {
     expect(addonLinter.collector.errors[0].code).toEqual(
       messages.FILE_TOO_LARGE.code
     );
-    // CSS and JS files that are too large should be flagged.
-    expect(addonLinter.collector.errors.length).toBe(2);
+    // JS files that are too large should be flagged. As of March 2024, we no
+    // longer report "large" CSS files.
+    expect(addonLinter.collector.errors.length).toBe(1);
   });
 
   it('should ignore large binary files', async () => {

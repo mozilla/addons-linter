@@ -211,7 +211,7 @@ We are heavily relying on [ESLint](https://eslint.org/) for JavaScript linting, 
 
 ### Scanners
 
-Each file-type has a scanner. For example: CSS files use `CSSScanner`; JavaScript files use `JavaScriptScanner`. Each scanner looks at relevant files and passes each file through a parser which then hands off to a set of rules that look for specific things.
+Each file-type has a scanner. For example: JavaScript files use `JavaScriptScanner`. Each scanner looks at relevant files and passes each file through a parser which then hands off to a set of rules that look for specific things.
 
 ### Rules
 
