@@ -104,11 +104,14 @@ export const MANIFEST_VERSION_MAX = 3;
 // A singular CSS/JS file over 4MB seems bad and may actually be full of data
 // best stored in JSON/some other data format rather than code.
 // https://github.com/mozilla/addons-linter/issues/730
-// We increased this limit from 2MB to 4MB as per:
+// First, in 2016, we increased this limit from 2MB to 4MB as per:
 // https://github.com/mozilla/addons/issues/181
 //
+// Then, we increased this limit from 4MB to 5MB as per:
+// https://github.com/mozilla/addons-linter/issues/4748
+//
 // We should be careful about increasing this any further.
-export const MAX_FILE_SIZE_TO_PARSE_MB = 4;
+export const MAX_FILE_SIZE_TO_PARSE_MB = 5;
 
 export const HIDDEN_FILE_REGEX = /^__MACOSX\//;
 export const FLAGGED_FILE_REGEX = /thumbs\.db$|\.DS_Store$|\.orig$|\.old$|~$/i;
