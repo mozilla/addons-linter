@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-12 15:41+0000\n"
+"POT-Creation-Date: 2024-03-28 15:12+0000\n"
 "PO-Revision-Date: 2023-11-25 22:37+0000\n"
 "Last-Translator: G12r <georgianization@outlook.com>\n"
 "Language-Team: none\n"
@@ -14,35 +14,35 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:174
+#: src/linter.js:173
 msgid "Validation Summary:"
 msgstr "შემოწმების შეჯამება:"
 
-#: src/linter.js:193
+#: src/linter.js:192
 msgid "Code"
 msgstr "პირველწყარო"
 
-#: src/linter.js:199
+#: src/linter.js:198
 msgid "Message"
 msgstr "შეტყობინება"
 
-#: src/linter.js:205
+#: src/linter.js:204
 msgid "Description"
 msgstr "აღწერილობა"
 
-#: src/linter.js:211
+#: src/linter.js:210
 msgid "File"
 msgstr "ფაილი"
 
-#: src/linter.js:217
+#: src/linter.js:216
 msgid "Line"
 msgstr "სტრიქონი"
 
-#: src/linter.js:223
+#: src/linter.js:222
 msgid "Column"
 msgstr "სვეტი"
 
-#: src/linter.js:73
+#: src/linter.js:72
 msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently "
 "set to %(minManifestVersion)s) should not be greater than --max-manifest-"
@@ -51,26 +51,6 @@ msgstr ""
 "მოთხოვნილია მანიფესტის ვერსიის უმართებულო შუალედი: --min-manifest-version "
 "(ამჟამად მითითებულია %(minManifestVersion)s) არ უნდა იყოს მეტი, ვიდრე --max-"
 "manifest-version ( ამჟამად მითითებულია %(maxManifestVersion)s)."
-
-#: src/messages/css.js:13
-msgid "Invalid nesting of selectors found"
-msgstr "აღმოჩენილია არასწორად მოთავსებული სელექტორი"
-
-#: src/messages/css.js:14
-msgid "Selector nesting is supported from Firefox version 117.0 and above"
-msgstr ""
-
-#: src/messages/css.js:6
-msgid "A CSS syntax error was encountered"
-msgstr "შემჩნეულია CSS სინტაქსური შეცდომა"
-
-#: src/messages/css.js:7
-msgid ""
-"An error was found in the CSS file being processed. As a result, further "
-"processing of that file is not possible"
-msgstr ""
-"ნაპოვნია შეცდომა CSS-ფაილის გარჩევისას. შედეგად, ამ ფაილის შემდგომი "
-"დამუშავება შეუძლებელია"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -1178,6 +1158,19 @@ msgstr ""
 #: src/messages/manifestjson.js:98
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 msgstr "/%(fieldName)s: \"%(permissionName)s\" არაა მხარდაჭერილი."
+
+#~ msgid "Invalid nesting of selectors found"
+#~ msgstr "აღმოჩენილია არასწორად მოთავსებული სელექტორი"
+
+#~ msgid "A CSS syntax error was encountered"
+#~ msgstr "შემჩნეულია CSS სინტაქსური შეცდომა"
+
+#~ msgid ""
+#~ "An error was found in the CSS file being processed. As a result, further "
+#~ "processing of that file is not possible"
+#~ msgstr ""
+#~ "ნაპოვნია შეცდომა CSS-ფაილის გარჩევისას. შედეგად, ამ ფაილის შემდგომი "
+#~ "დამუშავება შეუძლებელია"
 
 #~ msgid "Selectors should not be nested"
 #~ msgstr "მიმთითებლები არ უნდა იყოს ერთმანეთის ქვეშ მოქცეული"

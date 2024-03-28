@@ -1,9 +1,9 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-12 15:41+0000\n"
+"POT-Creation-Date: 2024-03-28 15:12+0000\n"
 "PO-Revision-Date: 2024-03-12 19:01+0000\n"
 "Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
 "Language-Team: none\n"
@@ -14,57 +14,43 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:174
+#: src/linter.js:173
 msgid "Validation Summary:"
 msgstr "Validatiesamenvatting:"
 
-#: src/linter.js:193
+#: src/linter.js:192
 msgid "Code"
 msgstr "Code"
 
-#: src/linter.js:199
+#: src/linter.js:198
 msgid "Message"
 msgstr "Bericht"
 
-#: src/linter.js:205
+#: src/linter.js:204
 msgid "Description"
 msgstr "Beschrijving"
 
-#: src/linter.js:211
+#: src/linter.js:210
 msgid "File"
 msgstr "Bestand"
 
-#: src/linter.js:217
+#: src/linter.js:216
 msgid "Line"
 msgstr "Regel"
 
-#: src/linter.js:223
+#: src/linter.js:222
 msgid "Column"
 msgstr "Kolom"
 
-#: src/linter.js:73
+#: src/linter.js:72
 msgid ""
-"Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
-"%(maxManifestVersion)s)."
+"Invalid manifest version range requested: --min-manifest-version (currently "
+"set to %(minManifestVersion)s) should not be greater than --max-manifest-"
+"version (currently set to %(maxManifestVersion)s)."
 msgstr ""
-"Ongeldig manifestversiebereik aangevraagd: --min-manifest-version (momenteel ingesteld op %(minManifestVersion)s) mag niet groter zijn dan --max-manifest-version (momenteel ingesteld op "
-"%(maxManifestVersion)s)."
-
-#: src/messages/css.js:13
-msgid "Invalid nesting of selectors found"
-msgstr "Ongeldig nesten van selectors gevonden"
-
-#: src/messages/css.js:14
-msgid "Selector nesting is supported from Firefox version 117.0 and above"
-msgstr "Selectornesten wordt ondersteund vanaf Firefox versie 117.0 en hoger"
-
-#: src/messages/css.js:6
-msgid "A CSS syntax error was encountered"
-msgstr "Er is een CSS-syntaxisfout aangetroffen"
-
-#: src/messages/css.js:7
-msgid "An error was found in the CSS file being processed. As a result, further processing of that file is not possible"
-msgstr "Er is een fout gevonden in het CSS-bestand dat wordt verwerkt. Daardoor is verdere verwerking van dat bestand niet mogelijk"
+"Ongeldig manifestversiebereik aangevraagd: --min-manifest-version (momenteel "
+"ingesteld op %(minManifestVersion)s) mag niet groter zijn dan --max-manifest-"
+"version (momenteel ingesteld op %(maxManifestVersion)s)."
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -79,40 +65,59 @@ msgid "Remote scripts are not allowed as per the Add-on Policies."
 msgstr "Externe scripts zijn volgens het add-onbeleid niet toegestaan."
 
 #: src/messages/html.js:13
-msgid "Please include all scripts in the add-on. For more information, refer to https://mzl.la/2uEOkYp."
-msgstr "Voeg alle scripts toe aan de add-on. Voor meer informatie, zie https://mzl.la/2uEOkYp."
+msgid ""
+"Please include all scripts in the add-on. For more information, refer to "
+"https://mzl.la/2uEOkYp."
+msgstr ""
+"Voeg alle scripts toe aan de add-on. Voor meer informatie, zie https://mzl."
+"la/2uEOkYp."
 
 #: src/messages/html.js:5
 msgid "Inline scripts blocked by default"
 msgstr "Inline scripts zijn standaard geblokkeerd"
 
 #: src/messages/html.js:6
-msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
-msgstr "Standaard CSP-regels voorkomen dat inline JavaScript wordt uitgevoerd (https://mzl.la/2pn32nd)."
+msgid ""
+"Default CSP rules prevent inline JavaScript from running (https://mzl."
+"la/2pn32nd)."
+msgstr ""
+"Standaard CSP-regels voorkomen dat inline JavaScript wordt uitgevoerd "
+"(https://mzl.la/2pn32nd)."
 
 #: src/messages/javascript.js:100
 msgid "Unadvised 3rd-party JS library"
 msgstr "Niet-geadviseerde JS-bibliotheek van derden"
 
 #: src/messages/javascript.js:101
-msgid "Your add-on uses a JavaScript library we do not recommend. Read more: https://bit.ly/1TRIyZY"
-msgstr "Uw add-on gebruikt een JavaScript-bibliotheek die we niet aanbevelen. Meer info: https://bit.ly/1TRIyZY"
+msgid ""
+"Your add-on uses a JavaScript library we do not recommend. Read more: "
+"https://bit.ly/1TRIyZY"
+msgstr ""
+"Uw add-on gebruikt een JavaScript-bibliotheek die we niet aanbevelen. Meer "
+"info: https://bit.ly/1TRIyZY"
 
 #: src/messages/javascript.js:107
 msgid "Known JS library detected"
 msgstr "Bekende JS-bibliotheek gedetecteerd"
 
 #: src/messages/javascript.js:108
-msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
-msgstr "JavaScript-bibliotheken worden afgeraden voor eenvoudige add-ons, maar worden algemeen geaccepteerd."
+msgid ""
+"JavaScript libraries are discouraged for simple add-ons, but are generally "
+"accepted."
+msgstr ""
+"JavaScript-bibliotheken worden afgeraden voor eenvoudige add-ons, maar "
+"worden algemeen geaccepteerd."
 
 #: src/messages/javascript.js:116
 msgid ""
-"Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
-"degradation."
+"Due to both security and performance concerns, this may not be set using "
+"dynamic values which have not been adequately sanitized. This can lead to "
+"security issues or fairly serious performance degradation."
 msgstr ""
-"Vanwege zowel beveiligings- als prestatiezorgen, mag dit niet worden ingesteld met behulp van dynamische waarden die niet voldoende zijn opgeschoond. Dit kan leiden tot beveiligingsproblemen of een "
-"ernstige verslechtering van de prestaties."
+"Vanwege zowel beveiligings- als prestatiezorgen, mag dit niet worden "
+"ingesteld met behulp van dynamische waarden die niet voldoende zijn "
+"opgeschoond. Dit kan leiden tot beveiligingsproblemen of een ernstige "
+"verslechtering van de prestaties."
 
 #: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
@@ -123,8 +128,11 @@ msgid "This API has not been implemented by Firefox."
 msgstr "Deze API is niet door Firefox geïmplementeerd."
 
 #: src/messages/javascript.js:132
-msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
-msgstr "‘{{api}}’ is verwijderd in Manifest versie 3 (eigenschap ‘manifest_version’)"
+msgid ""
+"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
+"property)"
+msgstr ""
+"‘{{api}}’ is verwijderd in Manifest versie 3 (eigenschap ‘manifest_version’)"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
@@ -152,11 +160,13 @@ msgstr "‘%(api)s’ kan problemen veroorzaken als het tijdelijk wordt geladen"
 
 #: src/messages/javascript.js:165
 msgid ""
-"This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
-"more."
+"This API can cause issues when loaded temporarily using about:debugging in "
+"Firefox unless you specify \"browser_specific_settings.gecko.id\" in the "
+"manifest. Please see: https://mzl.la/2hizK4a for more."
 msgstr ""
-"Deze API kan problemen veroorzaken wanneer deze tijdelijk wordt geladen met about:debugging in Firefox, tenzij u ‘browser_specific_settings.gecko.id’ opgeeft in het manifest. Zie: "
-"https://mzl.la/2hizK4a voor meer informatie."
+"Deze API kan problemen veroorzaken wanneer deze tijdelijk wordt geladen met "
+"about:debugging in Firefox, tenzij u ‘browser_specific_settings.gecko.id’ "
+"opgeeft in het manifest. Zie: https://mzl.la/2hizK4a voor meer informatie."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -164,15 +174,20 @@ msgstr "{{api}} wordt niet ondersteund in Firefox versie {{minVersion}}"
 
 #: src/messages/javascript.js:188
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Deze API is niet door de opgegeven minimumversie van Firefox geïmplementeerd"
+msgstr ""
+"Deze API is niet door de opgegeven minimumversie van Firefox geïmplementeerd"
 
 #: src/messages/javascript.js:196
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr "{{api}} wordt niet ondersteund in Firefox voor Android versie {{minVersion}}"
+msgstr ""
+"{{api}} wordt niet ondersteund in Firefox voor Android versie {{minVersion}}"
 
 #: src/messages/javascript.js:199
-msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Deze API is niet door de opgegeven minimumversie van Firefox voor Android geïmplementeerd"
+msgid ""
+"This API is not implemented by the given minimum Firefox for Android version"
+msgstr ""
+"Deze API is niet door de opgegeven minimumversie van Firefox voor Android "
+"geïmplementeerd"
 
 #: src/messages/javascript.js:22
 msgid "Content script file name should not be empty."
@@ -187,18 +202,26 @@ msgid "\"%(method)s\" called with a non-literal uri"
 msgstr "‘%(method)s’ aangeroepen met een niet-letterlijke uri"
 
 #: src/messages/javascript.js:34
-msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
+msgid ""
+"Calling \"%(method)s\" with variable parameters can result in potential "
+"security vulnerabilities if the variable contains a remote URI. Consider "
+"using 'window.open' with the 'chrome=no' flag."
 msgstr ""
-"Het aanroepen van ‘%(method)s’ met variabele parameters kan resulteren in potentiële beveiligingsproblemen als de variabele een externe URI bevat. Overweeg om ‘window.open’ te gebruiken met de vlag "
-"‘chrome=no’."
+"Het aanroepen van ‘%(method)s’ met variabele parameters kan resulteren in "
+"potentiële beveiligingsproblemen als de variabele een externe URI bevat. "
+"Overweeg om ‘window.open’ te gebruiken met de vlag ‘chrome=no’."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
 msgstr "‘%(method)s’ aangeroepen met niet-lokale URI"
 
 #: src/messages/javascript.js:49
-msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr "Het aanroepen van ‘%(method)s’ met een niet-lokale URI zal resulteren in het openen van het dialoogvenster met chromeprivileges."
+msgid ""
+"Calling \"%(method)s\" with a non-local URI will result in the dialog being "
+"opened with chrome privileges."
+msgstr ""
+"Het aanroepen van ‘%(method)s’ met een niet-lokale URI zal resulteren in het "
+"openen van het dialoogvenster met chromeprivileges."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -206,55 +229,83 @@ msgstr "JavaScript-syntaxisfout"
 
 #: src/messages/javascript.js:6
 msgid ""
-"There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
-"supported yet. The validation cannot continue on this file."
+"There is a JavaScript syntax error in your code, which might be related to "
+"some experimental JavaScript features that aren't an official part of the "
+"language specification and therefore not supported yet. The validation "
+"cannot continue on this file."
 msgstr ""
-"Er zit een JavaScript-syntaxisfout in uw code, die mogelijk verband houdt met enkele experimentele JavaScript-functies die geen officieel onderdeel zijn van de taalspecificatie en daarom nog niet "
-"worden ondersteund. De validatie kan niet doorgaan op dit bestand."
+"Er zit een JavaScript-syntaxisfout in uw code, die mogelijk verband houdt "
+"met enkele experimentele JavaScript-functies die geen officieel onderdeel "
+"zijn van de taalspecificatie en daarom nog niet worden ondersteund. De "
+"validatie kan niet doorgaan op dit bestand."
 
 #: src/messages/javascript.js:62
 msgid ""
-"Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
-"at all possible."
+"Evaluation of strings as code can lead to security vulnerabilities and "
+"performance issues, even in the most innocuous of circumstances. Please "
+"avoid using `eval` and the `Function` constructor when at all possible."
 msgstr ""
-"Evaluatie van strings als code kan leiden tot beveiligingsproblemen en prestatieproblemen, zelfs in de meest onschadelijke omstandigheden. Vermijd indien mogelijk het gebruik van ‘eval’ en de "
-"‘Function’-constructor."
+"Evaluatie van strings als code kan leiden tot beveiligingsproblemen en "
+"prestatieproblemen, zelfs in de meest onschadelijke omstandigheden. Vermijd "
+"indien mogelijk het gebruik van ‘eval’ en de ‘Function’-constructor."
 
 #: src/messages/javascript.js:71
-msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
-msgstr "De functies setTimeout, setInterval en execScript mogen alleen worden aangeroepen met functie-expressies als hun eerste argument"
+msgid ""
+"setTimeout, setInterval and execScript functions should be called only with "
+"function expressions as their first argument"
+msgstr ""
+"De functies setTimeout, setInterval en execScript mogen alleen worden "
+"aangeroepen met functie-expressies als hun eerste argument"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
 msgstr "Onverwachte globale variabele doorgegeven als argument"
 
 #: src/messages/javascript.js:79
-msgid "Passing a global as an argument is not recommended. Please make this a var instead."
-msgstr "Het doorgeven van een globale waarde als argument wordt niet aanbevolen. Maak hier een var van."
+msgid ""
+"Passing a global as an argument is not recommended. Please make this a var "
+"instead."
+msgstr ""
+"Het doorgeven van een globale waarde als argument wordt niet aanbevolen. "
+"Maak hier een var van."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
 msgstr "Gebruik van document.write wordt sterk afgeraden."
 
 #: src/messages/javascript.js:86
-msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
-msgstr "document.write zal in veel gevallen mislukken bij gebruik in extensies, en heeft mogelijk ernstige gevolgen voor de veiligheid bij onjuist gebruik. Daarom mag het niet worden gebruikt."
+msgid ""
+"document.write will fail in many circumstances when used in extensions, and "
+"has potentially severe security repercussions when used improperly. "
+"Therefore, it should not be used."
+msgstr ""
+"document.write zal in veel gevallen mislukken bij gebruik in extensies, en "
+"heeft mogelijk ernstige gevolgen voor de veiligheid bij onjuist gebruik. "
+"Daarom mag het niet worden gebruikt."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
 msgstr "Geblokkeerde JS-bibliotheek van derden"
 
 #: src/messages/javascript.js:94
-msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
-msgstr "Uw add-on gebruikt een JavaScript-bibliotheek die wij als onveilig beschouwen. Meer info: https://bit.ly/1TRIyZY"
+msgid ""
+"Your add-on uses a JavaScript library we consider unsafe. Read more: https://"
+"bit.ly/1TRIyZY"
+msgstr ""
+"Uw add-on gebruikt een JavaScript-bibliotheek die wij als onveilig "
+"beschouwen. Meer info: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
 msgstr "Uw JSON bevat blokcommentaren."
 
 #: src/messages/json.js:12
-msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
-msgstr "Alleen regelopmerkingen (opmerkingen die beginnen met ‘//’) zijn toegestaan in JSON-bestanden. Verwijder blokopmerkingen (opmerkingen beginnend met ‘/*’)"
+msgid ""
+"Only line comments (comments beginning with \"//\") are allowed in JSON "
+"files. Please remove block comments (comments beginning with \"/*\")"
+msgstr ""
+"Alleen regelopmerkingen (opmerkingen die beginnen met ‘//’) zijn toegestaan "
+"in JSON-bestanden. Verwijder blokopmerkingen (opmerkingen beginnend met ‘/*’)"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -277,16 +328,24 @@ msgid "Reserved filename found."
 msgstr "Gereserveerde bestandsnaam gevonden."
 
 #: src/messages/layout.js:108
-msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
-msgstr "Bestanden waarvan de naam is gereserveerd zijn gevonden in de add-on. Gebruik deze niet en geef uw bestanden een andere naam."
+msgid ""
+"Files whose names are reserved have been found in the add-on. Please refrain "
+"from using them and rename your files."
+msgstr ""
+"Bestanden waarvan de naam is gereserveerd zijn gevonden in de add-on. "
+"Gebruik deze niet en geef uw bestanden een andere naam."
 
 #: src/messages/layout.js:22
 msgid ""
-"The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
-"sure all entries are using '/' as the path separator."
+"The package is invalid. It may contain entries using invalid characters, as "
+"an example using '\\' as a path separator is not allowed in Firefox. Try to "
+"recreate your add-on package (ZIP) and make sure all entries are using '/' "
+"as the path separator."
 msgstr ""
-"Het pakket is ongeldig. Het kan vermeldingen bevatten met ongeldige tekens, bijvoorbeeld het gebruik van  ‘\\’ als padscheidingsteken is niet toegestaan in Firefox. Probeer uw add-on-pakket (ZIP) "
-"opnieuw te maken en zorg ervoor dat alle entries ‘/’ gebruiken als padscheidingsteken."
+"Het pakket is ongeldig. Het kan vermeldingen bevatten met ongeldige tekens, "
+"bijvoorbeeld het gebruik van  ‘\\’ als padscheidingsteken is niet toegestaan "
+"in Firefox. Probeer uw add-on-pakket (ZIP) opnieuw te maken en zorg ervoor "
+"dat alle entries ‘/’ gebruiken als padscheidingsteken."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
@@ -298,11 +357,14 @@ msgstr "manifest.json is niet gevonden"
 
 #: src/messages/layout.js:38
 msgid ""
-"No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
-"packaging."
+"No manifest.json was found at the root of the extension. The package file "
+"must be a ZIP of the extension's files themselves, not of the containing "
+"directory. See: https://mzl.la/2r2McKv for more on packaging."
 msgstr ""
-"Er is geen manifest.json gevonden in de hoofdmap van de extensie. Het pakketbestand moet een ZIP zijn van de bestanden van de extensie zelf, niet van de bevattende map. Zie: https://mzl.la/2r2McKv "
-"voor meer informatie over verpakkingen."
+"Er is geen manifest.json gevonden in de hoofdmap van de extensie. Het "
+"pakketbestand moet een ZIP zijn van de bestanden van de extensie zelf, niet "
+"van de bevattende map. Zie: https://mzl.la/2r2McKv voor meer informatie over "
+"verpakkingen."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
@@ -310,11 +372,15 @@ msgstr "Bestand is te groot om te parsen."
 
 #: src/messages/layout.js:47
 msgid ""
-"This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
-"or splitting very large files into smaller ones."
+"This file is not binary and is too large to parse. Files larger than "
+"%(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists "
+"of data out of JavaScript files and into JSON files, or splitting very large "
+"files into smaller ones."
 msgstr ""
-"Dit bestand is niet binair en te groot om te ontleden. Bestanden groter dan %(maxFileSizeToParseMB)sMB worden niet ontleed. Overweeg grote lijsten met gegevens uit JavaScript-bestanden naar JSON-"
-"bestanden te verplaatsen, of zeer grote bestanden op te splitsen in kleinere."
+"Dit bestand is niet binair en te groot om te ontleden. Bestanden groter dan "
+"%(maxFileSizeToParseMB)sMB worden niet ontleed. Overweeg grote lijsten met "
+"gegevens uit JavaScript-bestanden naar JSON-bestanden te verplaatsen, of "
+"zeer grote bestanden op te splitsen in kleinere."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -322,10 +388,13 @@ msgstr "Verborgen bestand gemarkeerd"
 
 #: src/messages/layout.js:58
 msgid ""
-"Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
+"Hidden files complicate the review process and can contain sensitive "
+"information about the system that generated the add-on. Please modify the "
+"packaging process so that these files aren't included."
 msgstr ""
-"Verborgen bestanden bemoeilijken het beoordelingsproces en kunnen gevoelige gegevens bevatten over het systeem dat de add-on heeft gegenereerd. Wijzig het verpakkingsproces, zodat deze bestanden "
-"niet worden opgenomen."
+"Verborgen bestanden bemoeilijken het beoordelingsproces en kunnen gevoelige "
+"gegevens bevatten over het systeem dat de add-on heeft gegenereerd. Wijzig "
+"het verpakkingsproces, zodat deze bestanden niet worden opgenomen."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -336,12 +405,21 @@ msgid "Flagged filename found"
 msgstr "Gemarkeerde bestandsnaam gevonden"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
-msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
-msgstr "Er zijn bestanden gevonden die overbodig zijn of onbedoeld zijn toegevoegd. Ze moeten worden verwijderd."
+msgid ""
+"Files were found that are either unnecessary or have been included "
+"unintentionally. They should be removed."
+msgstr ""
+"Er zijn bestanden gevonden die overbodig zijn of onbedoeld zijn toegevoegd. "
+"Ze moeten worden verwijderd."
 
 #: src/messages/layout.js:7
-msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr "Het pakket bevat meerdere entries met dezelfde naam. Dit is verboden. Probeer uw add-onpakket uit te pakken en opnieuw te zippen en probeer het opnieuw."
+msgid ""
+"The package contains multiple entries with the same name. This practice has "
+"been banned. Try unzipping and re-zipping your add-on package and try again."
+msgstr ""
+"Het pakket bevat meerdere entries met dezelfde naam. Dit is verboden. "
+"Probeer uw add-onpakket uit te pakken en opnieuw te zippen en probeer het "
+"opnieuw."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
@@ -353,39 +431,62 @@ msgstr "Gemarkeerd bestandstype gevonden"
 
 #: src/messages/layout.js:81
 msgid ""
-"Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
-"https://bit.ly/review-policy for more information on the binary content review process."
+"Files whose names end with flagged extensions have been found in the add-on. "
+"The extension of these files are flagged because they usually identify "
+"binary components. Please see https://bit.ly/review-policy for more "
+"information on the binary content review process."
 msgstr ""
-"Bestanden waarvan de naam eindigt op gemarkeerde extensies zijn gevonden in de add-on. De extensie van deze bestanden is gemarkeerd, omdat ze meestal binaire componenten identificeren. Zie "
-"https://bit.ly/review-policy voor meer informatie over het beoordelingsproces van binaire inhoud."
+"Bestanden waarvan de naam eindigt op gemarkeerde extensies zijn gevonden in "
+"de add-on. De extensie van deze bestanden is gemarkeerd, omdat ze meestal "
+"binaire componenten identificeren. Zie https://bit.ly/review-policy voor "
+"meer informatie over het beoordelingsproces van binaire inhoud."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
 msgstr "Pakket al ondertekend"
 
 #: src/messages/layout.js:91
-msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr "Add-ons die al zijn ondertekend, worden opnieuw ondertekend wanneer ze op AMO worden gepubliceerd. Dit zal alle bestaande handtekeningen op de add-on vervangen."
+msgid ""
+"Add-ons which are already signed will be re-signed when published on AMO. "
+"This will replace any existing signatures on the add-on."
+msgstr ""
+"Add-ons die al zijn ondertekend, worden opnieuw ondertekend wanneer ze op "
+"AMO worden gepubliceerd. Dit zal alle bestaande handtekeningen op de add-on "
+"vervangen."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Firefox-add-ons mogen geen coinminers uitvoeren."
 
 #: src/messages/layout.js:99
-msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr "We staan niet toe dat coinminer-scripts worden uitgevoerd binnen WebExtensions. Zie https://github.com/mozilla/addons-linter/issues/1643 voor meer details."
+msgid ""
+"We do not allow coinminer scripts to be run inside WebExtensions. See "
+"https://github.com/mozilla/addons-linter/issues/1643 for more details."
+msgstr ""
+"We staan niet toe dat coinminer-scripts worden uitgevoerd binnen "
+"WebExtensions. Zie https://github.com/mozilla/addons-linter/issues/1643 voor "
+"meer details."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
-msgstr "Naam van tekenreeks is voor een vooraf gedefinieerd bericht gereserveerd"
+msgstr ""
+"Naam van tekenreeks is voor een vooraf gedefinieerd bericht gereserveerd"
 
 #: src/messages/locale-messagesjson.js:14
-msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
-msgstr "Stringnamen die beginnen met @@ worden vertaald naar ingebouwde constanten (https://mzl.la/2BL9ZjE)."
+msgid ""
+"String names starting with @@ get translated to built-in constants (https://"
+"mzl.la/2BL9ZjE)."
+msgstr ""
+"Stringnamen die beginnen met @@ worden vertaald naar ingebouwde constanten "
+"(https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
-msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
-msgstr "Stringnaam mag alleen alfanumerieke tekens, _ en @ bevatten (https://mzl.la/2Eztyi5)."
+msgid ""
+"String name should only contain alpha-numeric characters, _ and @ (https://"
+"mzl.la/2Eztyi5)."
+msgstr ""
+"Stringnaam mag alleen alfanumerieke tekens, _ en @ bevatten (https://mzl."
+"la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -400,24 +501,35 @@ msgid "Placeholder name contains invalid characters"
 msgstr "Naam van plaatshouder bevat ongeldige tekens"
 
 #: src/messages/locale-messagesjson.js:34
-msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
-msgstr "Plaatshoudernaam mag alleen alfanumerieke tekens, _ en @ bevatten (https://mzl.la/2ExbYez)."
+msgid ""
+"Placeholder name should only contain alpha-numeric characters, _ and @ "
+"(https://mzl.la/2ExbYez)."
+msgstr ""
+"Plaatshoudernaam mag alleen alfanumerieke tekens, _ en @ bevatten (https://"
+"mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
 msgstr "Plaatshouder bevat geen inhoudseigenschap"
 
 #: src/messages/locale-messagesjson.js:41
-msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr "Een plaatshouder heeft een inhoudseigenschap nodig die de vervanging ervan definieert (https://mzl.la/2DT1MQd)"
+msgid ""
+"A placeholder needs a content property defining the replacement of it "
+"(https://mzl.la/2DT1MQd)"
+msgstr ""
+"Een plaatshouder heeft een inhoudseigenschap nodig die de vervanging ervan "
+"definieert (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
 msgstr "Te vertalen tekenreeks bevat geen berichteigenschap"
 
 #: src/messages/locale-messagesjson.js:6
-msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr "Geen berichteigenschap ‘message’ voor een tekenreeks ingesteld (https://mzl.la/2DSBTjA)."
+msgid ""
+"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr ""
+"Geen berichteigenschap ‘message’ voor een tekenreeks ingesteld (https://mzl."
+"la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10
 msgid "The field is required."
@@ -427,7 +539,8 @@ msgstr "Het veld is vereist."
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr "Zie https://mzl.la/1ZOhoEN (MDN Docs) voor meer informatie."
 
-#: src/messages/manifestjson.js:115 src/messages/manifestjson.js:123 src/messages/manifestjson.js:131
+#: src/messages/manifestjson.js:115 src/messages/manifestjson.js:123
+#: src/messages/manifestjson.js:131
 msgid "The permission type is unsupported."
 msgstr "Het toestemmingstype wordt niet ondersteund."
 
@@ -448,8 +561,12 @@ msgid "Unknown permission."
 msgstr "Onbekende toestemming."
 
 #: src/messages/manifestjson.js:151
-msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr "%(instancePath)s: de volgende geprivilegieerde machtigingen zijn alleen toegestaan in geprivilegieerde extensies: %(privilegedPermissions)s."
+msgid ""
+"%(instancePath)s: the following privileged permissions are only allowed in "
+"privileged extensions: %(privilegedPermissions)s."
+msgstr ""
+"%(instancePath)s: de volgende geprivilegieerde machtigingen zijn alleen "
+"toegestaan in geprivilegieerde extensies: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:178
 msgid "Invalid host permission."
@@ -460,8 +577,13 @@ msgid "Invalid install origin."
 msgstr "Onbekende installatieoorsprong."
 
 #: src/messages/manifestjson.js:188
-msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr "Ongeldige installatiebron. Een geldige bron heeft – alleen – een schema, hostnaam en optionele poort. Zie https://mzl.la/3TEbqbE (MDN Docs) voor meer informatie."
+msgid ""
+"Invalid install origin. A valid origin has - only - a scheme, hostname and "
+"optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
+msgstr ""
+"Ongeldige installatiebron. Een geldige bron heeft – alleen – een schema, "
+"hostnaam en optionele poort. Zie https://mzl.la/3TEbqbE (MDN Docs) voor meer "
+"informatie."
 
 #: src/messages/manifestjson.js:19
 msgid "The field is invalid."
@@ -477,23 +599,35 @@ msgstr "Zie https://mzl.la/20PenXl (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:212
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
-msgstr "‘%(property)s’ maakt uitvoering van externe code mogelijk in manifest.json"
+msgstr ""
+"‘%(property)s’ maakt uitvoering van externe code mogelijk in manifest.json"
 
 #: src/messages/manifestjson.js:216
 msgid "A custom \"%(property)s\" needs additional review."
 msgstr "Een aangepaste ‘%(property)s’ heeft aanvullende beoordeling nodig."
 
 #: src/messages/manifestjson.js:228
-msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr "‘%(property)s’ staat ‘eval’ toe, wat grote implicaties heeft voor veiligheid en prestaties."
+msgid ""
+"\"%(property)s\" allows 'eval', which has strong security and performance "
+"implications."
+msgstr ""
+"‘%(property)s’ staat ‘eval’ toe, wat grote implicaties heeft voor veiligheid "
+"en prestaties."
 
 #: src/messages/manifestjson.js:232
-msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
-msgstr "In de meeste gevallen kan hetzelfde resultaat op een andere manier worden bereikt, daarom is het over het algemeen verboden"
+msgid ""
+"In most cases the same result can be achieved differently, therefore it is "
+"generally prohibited"
+msgstr ""
+"In de meeste gevallen kan hetzelfde resultaat op een andere manier worden "
+"bereikt, daarom is het over het algemeen verboden"
 
 #: src/messages/manifestjson.js:240
-msgid "The \"name\" property must be a string with no leading/trailing whitespaces."
-msgstr "De eigenschap ‘name’ moet een tekenreeks zijn zonder spaties aan het begin/einde."
+msgid ""
+"The \"name\" property must be a string with no leading/trailing whitespaces."
+msgstr ""
+"De eigenschap ‘name’ moet een tekenreeks zijn zonder spaties aan het begin/"
+"einde."
 
 #: src/messages/manifestjson.js:243
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
@@ -504,28 +638,43 @@ msgid "\"update_url\" is not allowed."
 msgstr "‘update_url’ is niet toegestaan."
 
 #: src/messages/manifestjson.js:252
-msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr "‘applications.gecko.update_url’ of ‘browser_specific_settings.gecko.update_url’ zijn niet toegestaan voor door Mozilla gehoste add-ons."
+msgid ""
+"\"applications.gecko.update_url\" or \"browser_specific_settings.gecko."
+"update_url\" are not allowed for Mozilla-hosted add-ons."
+msgstr ""
+"‘applications.gecko.update_url’ of ‘browser_specific_settings.gecko."
+"update_url’ zijn niet toegestaan voor door Mozilla gehoste add-ons."
 
 #: src/messages/manifestjson.js:261
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "De eigenschap ‘update_url’ wordt niet door Firefox gebruikt."
 
 #: src/messages/manifestjson.js:262
-msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
-msgstr "De ‘update_url’ wordt door Firefox niet gebruikt in de hoofdmap van een manifest; uw add-on wordt bijgewerkt via de Add-ons-website en niet via uw ‘update_url’. Zie: https://mzl.la/25zqk4O"
+msgid ""
+"The \"update_url\" is not used by Firefox in the root of a manifest; your "
+"add-on will be updated via the Add-ons site and not your \"update_url\". "
+"See: https://mzl.la/25zqk4O"
+msgstr ""
+"De ‘update_url’ wordt door Firefox niet gebruikt in de hoofdmap van een "
+"manifest; uw add-on wordt bijgewerkt via de Add-ons-website en niet via uw "
+"‘update_url’. Zie: https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:270
 msgid "\"strict_max_version\" not required."
 msgstr "‘strict_max_version’ niet vereist."
 
 #: src/messages/manifestjson.js:271
-msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr "‘strict_max_version’ mag niet worden gebruikt, tenzij wordt verwacht dat de add-on niet zal werken met toekomstige versies van Firefox."
+msgid ""
+"\"strict_max_version\" shouldn't be used unless the add-on is expected not "
+"to work with future versions of Firefox."
+msgstr ""
+"‘strict_max_version’ mag niet worden gebruikt, tenzij wordt verwacht dat de "
+"add-on niet zal werken met toekomstige versies van Firefox."
 
 #: src/messages/manifestjson.js:28 src/messages/manifestjson.js:33
 msgid "Manifest Version 3 is not fully supported on Firefox for Android."
-msgstr "Manifest versie 3 wordt niet volledig ondersteund in Firefox voor Android."
+msgstr ""
+"Manifest versie 3 wordt niet volledig ondersteund in Firefox voor Android."
 
 #: src/messages/manifestjson.js:280
 msgid "No \"%(property)s\" property found in manifest.json"
@@ -537,7 +686,9 @@ msgstr "‘%(property)s’ is verplicht"
 
 #: src/messages/manifestjson.js:294
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr "Een in het manifest gedefinieerd pictogram kon niet in het pakket worden gevonden."
+msgstr ""
+"Een in het manifest gedefinieerd pictogram kon niet in het pakket worden "
+"gevonden."
 
 #: src/messages/manifestjson.js:298
 msgid "Icon could not be found at \"%(path)s\"."
@@ -545,11 +696,13 @@ msgstr "Pictogram kon niet worden gevonden in ‘%(path)s’."
 
 #: src/messages/manifestjson.js:313
 msgid "A background script defined in the manifest could not be found."
-msgstr "Een in het manifest gedefinieerd achtergrondscript kon niet worden gevonden."
+msgstr ""
+"Een in het manifest gedefinieerd achtergrondscript kon niet worden gevonden."
 
 #: src/messages/manifestjson.js:316
 msgid "A background page defined in the manifest could not be found."
-msgstr "Een in het manifest gedefinieerde achtergrondpagina kon niet worden gevonden."
+msgstr ""
+"Een in het manifest gedefinieerde achtergrondpagina kon niet worden gevonden."
 
 #: src/messages/manifestjson.js:321
 msgid "Background script could not be found at \"%(path)s\"."
@@ -561,35 +714,52 @@ msgstr "Achtergrondpagina kon niet worden gevonden in ‘%(path)s’."
 
 #: src/messages/manifestjson.js:337
 msgid "A content script defined in the manifest could not be found."
-msgstr "Een in het manifest gedefinieerd inhoudsscript kon niet worden gevonden."
+msgstr ""
+"Een in het manifest gedefinieerd inhoudsscript kon niet worden gevonden."
 
 #: src/messages/manifestjson.js:338
 msgid "A content script css file defined in the manifest could not be found."
-msgstr "Een in het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet worden gevonden."
+msgstr ""
+"Een in het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet "
+"worden gevonden."
 
 #: src/messages/manifestjson.js:343
-msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr "In het manifest gedefinieerd inhoudsscript kon niet worden gevonden in ‘%(path)s’."
+msgid ""
+"Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"In het manifest gedefinieerd inhoudsscript kon niet worden gevonden in "
+"‘%(path)s’."
 
 #: src/messages/manifestjson.js:346
-msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "In het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet worden gevonden in ‘%(path)s’."
+msgid ""
+"Content script css file defined in the manifest could not be found at "
+"\"%(path)s\"."
+msgstr ""
+"In het manifest gedefinieerd CSS-bestand van inhoudsscript kon niet worden "
+"gevonden in ‘%(path)s’."
 
 #: src/messages/manifestjson.js:360
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr "Een in het manifest gedefinieerd bibliotheekbestand kon niet worden gevonden."
+msgstr ""
+"Een in het manifest gedefinieerd bibliotheekbestand kon niet worden gevonden."
 
 #: src/messages/manifestjson.js:364
-msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr "In het manifest gedefinieerd bibliotheekbestand kon niet worden gevonden in ‘%(path)s’."
+msgid ""
+"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr ""
+"In het manifest gedefinieerd bibliotheekbestand kon niet worden gevonden in "
+"‘%(path)s’."
 
 #: src/messages/manifestjson.js:376
 msgid "The manifest contains multiple dictionaries."
 msgstr "Het manifest bevat meerdere woordenboeken."
 
 #: src/messages/manifestjson.js:377
-msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr "Er zijn meerdere woordenboeken gedefinieerd in het manifest, wat niet wordt ondersteund."
+msgid ""
+"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgstr ""
+"Er zijn meerdere woordenboeken gedefinieerd in het manifest, wat niet wordt "
+"ondersteund."
 
 #: src/messages/manifestjson.js:386
 msgid "The manifest contains a dictionaries object, but it is empty."
@@ -597,7 +767,8 @@ msgstr "Het manifest bevat een woordenboek-object, maar het is leeg."
 
 #: src/messages/manifestjson.js:389
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr "Er is een woordenboek-object gedefinieerd in het manifest, maar het is leeg."
+msgstr ""
+"Er is een woordenboek-object gedefinieerd in het manifest, maar het is leeg."
 
 #: src/messages/manifestjson.js:398
 msgid "The manifest contains a dictionary but no id property."
@@ -605,11 +776,16 @@ msgstr "Het manifest bevat een woordenboek maar geen id-eigenschap."
 
 #: src/messages/manifestjson.js:399
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr "Er is een woordenboek gevonden in het manifest, maar er is geen id ingesteld."
+msgstr ""
+"Er is een woordenboek gevonden in het manifest, maar er is geen id ingesteld."
 
 #: src/messages/manifestjson.js:4
-msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr "Raadpleeg https://github.com/mozilla-extensions/xpi-manifest voor meer informatie over geprivilegieerde extensies en ondertekening."
+msgid ""
+"Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn "
+"more about privileged extensions and signing."
+msgstr ""
+"Raadpleeg https://github.com/mozilla-extensions/xpi-manifest voor meer "
+"informatie over geprivilegieerde extensies en ondertekening."
 
 #: src/messages/manifestjson.js:409
 msgid "Forbidden content found in add-on."
@@ -632,8 +808,12 @@ msgid "The size of the icon does not match the manifest."
 msgstr "De grootte van het pictogram komt niet overeen met het manifest."
 
 #: src/messages/manifestjson.js:432
-msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr "Verwacht pictogram bij ‘%(path)s’ is %(expected)d pixels breed, maar was %(actual)d."
+msgid ""
+"Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was "
+"%(actual)d."
+msgstr ""
+"Verwacht pictogram bij ‘%(path)s’ is %(expected)d pixels breed, maar was "
+"%(actual)d."
 
 #: src/messages/manifestjson.js:44
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
@@ -661,11 +841,16 @@ msgstr "Zie https://mzl.la/2T11Lkc (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:479
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr "Thema-afbeelding voor ‘%(type)s’ kon niet worden gevonden in ‘%(path)s’"
+msgstr ""
+"Thema-afbeelding voor ‘%(type)s’ kon niet worden gevonden in ‘%(path)s’"
 
 #: src/messages/manifestjson.js:48
-msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr "Het manifestveld ‘%(fieldName)s’ wordt alleen gebruikt voor geprivilegieerde en tijdelijk geïnstalleerde extensies."
+msgid ""
+"\"%(fieldName)s\" manifest field is only used for privileged and temporarily "
+"installed extensions."
+msgstr ""
+"Het manifestveld ‘%(fieldName)s’ wordt alleen gebruikt voor geprivilegieerde "
+"en tijdelijk geïnstalleerde extensies."
 
 #: src/messages/manifestjson.js:490
 msgid "Corrupted theme image file"
@@ -681,39 +866,60 @@ msgstr "Thema-afbeeldingsbestand heeft een niet-ondersteunde bestandsextensie"
 
 #: src/messages/manifestjson.js:505
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr "Thema-afbeeldingsbestand op ‘%(path)s’ heeft een niet-ondersteunde bestandsextensie"
+msgstr ""
+"Thema-afbeeldingsbestand op ‘%(path)s’ heeft een niet-ondersteunde "
+"bestandsextensie"
 
 #: src/messages/manifestjson.js:519
 msgid "Theme image file has an unsupported mime type"
 msgstr "Thema-afbeeldingsbestand heeft een niet-ondersteund mime-type"
 
 #: src/messages/manifestjson.js:521
-msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr "Thema-afbeeldingsbestand op ‘%(path)s’ heeft het niet-ondersteunde mime-type ‘%(mime)s’"
+msgid ""
+"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr ""
+"Thema-afbeeldingsbestand op ‘%(path)s’ heeft het niet-ondersteunde mime-type "
+"‘%(mime)s’"
 
 #: src/messages/manifestjson.js:535
 msgid "Theme image file mime type does not match its file extension"
-msgstr "Mime-type van het thema-afbeeldingsbestand komt niet overeen met de bestandsextensie"
+msgstr ""
+"Mime-type van het thema-afbeeldingsbestand komt niet overeen met de "
+"bestandsextensie"
 
 #: src/messages/manifestjson.js:539
-msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
-msgstr "Thema-afbeeldingsbestand op ‘%(path)s’ komt niet overeen met het werkelijke mime-type ‘%(mime)s’"
+msgid ""
+"Theme image file extension at \"%(path)s\" does not match its actual mime "
+"type \"%(mime)s\""
+msgstr ""
+"Thema-afbeeldingsbestand op ‘%(path)s’ komt niet overeen met het werkelijke "
+"mime-type ‘%(mime)s’"
 
 #: src/messages/manifestjson.js:552
 msgid "The \"default_locale\" is missing localizations."
 msgstr "De ‘default_locale’ mist lokalisaties."
 
 #: src/messages/manifestjson.js:553
-msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr "De waarde ‘default_locale’ is opgegeven in het manifest, maar er bestaat geen overeenkomende ‘messages.json’ in de map ‘_locales’. Zie: https://mzl.la/2hjcaEE"
+msgid ""
+"The \"default_locale\" value is specified in the manifest, but no matching "
+"\"messages.json\" in the \"_locales\" directory exists. See: https://mzl."
+"la/2hjcaEE"
+msgstr ""
+"De waarde ‘default_locale’ is opgegeven in het manifest, maar er bestaat "
+"geen overeenkomende ‘messages.json’ in de map ‘_locales’. Zie: https://mzl."
+"la/2hjcaEE"
 
 #: src/messages/manifestjson.js:561
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "De ‘default_locale’ ontbreekt, maar ‘_locales’ bestaat."
 
 #: src/messages/manifestjson.js:562
-msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr "De waarde ‘default_locale’ wordt niet opgegeven in het manifest, maar er bestaat een map ‘_locales’. Zie: https://mzl.la/2hjcaEE"
+msgid ""
+"The \"default_locale\" value is not specifed in the manifest, but a "
+"\"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
+msgstr ""
+"De waarde ‘default_locale’ wordt niet opgegeven in het manifest, maar er "
+"bestaat een map ‘_locales’. Zie: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:570
 msgid "Unsupported image extension"
@@ -724,14 +930,22 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Pictogrammen dienen JPG/JPEG, WebP, GIF, PNG of SVG te zijn."
 
 #: src/messages/manifestjson.js:579
-msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
-msgstr "Eigenschap ‘applications’ wordt overschreven door de eigenschap ‘browser_specific_settings’"
+msgid ""
+"\"applications\" property overridden by \"browser_specific_settings\" "
+"property"
+msgstr ""
+"Eigenschap ‘applications’ wordt overschreven door de eigenschap "
+"‘browser_specific_settings’"
 
 #: src/messages/manifestjson.js:582
-msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
+msgid ""
+"The \"applications\" property is being ignored because it is superseded by "
+"the \"browser_specific_settings\" property which is also defined in your "
+"manifest. Consider removing applications."
 msgstr ""
-"De eigenschap ‘applications’ wordt genegeerd, omdat deze wordt vervangen door de eigenschap ‘browser_specific_settings’ die ook in uw manifest is gedefinieerd. Overweeg om toepassingen te "
-"verwijderen."
+"De eigenschap ‘applications’ wordt genegeerd, omdat deze wordt vervangen "
+"door de eigenschap ‘browser_specific_settings’ die ook in uw manifest is "
+"gedefinieerd. Overweeg om toepassingen te verwijderen."
 
 #: src/messages/manifestjson.js:592
 msgid "Empty language directory"
@@ -743,15 +957,22 @@ msgstr "Bestand messages.json ontbreekt in ‘%(path)s’"
 
 #: src/messages/manifestjson.js:610
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr "Manifestsleutel niet ondersteund door de opgegeven minimale Firefox-versie"
+msgstr ""
+"Manifestsleutel niet ondersteund door de opgegeven minimale Firefox-versie"
 
 #: src/messages/manifestjson.js:614 src/messages/manifestjson.js:636
-msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr "‘strict_min_version’ vereist Firefox %(minVersion)s, dat werd uitgebracht voordat versie %(versionAdded)s ondersteuning voor ‘%(key)s’ introduceerde."
+msgid ""
+"\"strict_min_version\" requires Firefox %(minVersion)s, which was released "
+"before version %(versionAdded)s introduced support for \"%(key)s\"."
+msgstr ""
+"‘strict_min_version’ vereist Firefox %(minVersion)s, dat werd uitgebracht "
+"voordat versie %(versionAdded)s ondersteuning voor ‘%(key)s’ introduceerde."
 
 #: src/messages/manifestjson.js:62
-msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr "‘%(fieldName)s’ wordt niet ondersteund in manifestversies %(versionRange)s."
+msgid ""
+"\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
+msgstr ""
+"‘%(fieldName)s’ wordt niet ondersteund in manifestversies %(versionRange)s."
 
 #: src/messages/manifestjson.js:632
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -762,32 +983,59 @@ msgid "\"%(fieldName)s\" is not supported."
 msgstr "‘%(fieldName)s’ wordt niet ondersteund."
 
 #: src/messages/manifestjson.js:654
-msgid "Manifest key not supported by the specified minimum Firefox for Android version"
-msgstr "Manifestsleutel niet ondersteund door de opgegeven minimale Firefox voor Android-versie"
+msgid ""
+"Manifest key not supported by the specified minimum Firefox for Android "
+"version"
+msgstr ""
+"Manifestsleutel niet ondersteund door de opgegeven minimale Firefox voor "
+"Android-versie"
 
 #: src/messages/manifestjson.js:658 src/messages/manifestjson.js:680
-msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr "‘strict_min_version’ vereist Firefox voor Android %(minVersion)s, dat werd uitgebracht voordat versie %(versionAdded)s ondersteuning voor ‘%(key)s’ introduceerde."
+msgid ""
+"\"strict_min_version\" requires Firefox for Android %(minVersion)s, which "
+"was released before version %(versionAdded)s introduced support for "
+"\"%(key)s\"."
+msgstr ""
+"‘strict_min_version’ vereist Firefox voor Android %(minVersion)s, dat werd "
+"uitgebracht voordat versie %(versionAdded)s ondersteuning voor ‘%(key)s’ "
+"introduceerde."
 
 #: src/messages/manifestjson.js:676
-msgid "Permission not supported by the specified minimum Firefox for Android version"
-msgstr "Toestemming niet ondersteund door de opgegeven minimale Firefox voor Android-versie"
+msgid ""
+"Permission not supported by the specified minimum Firefox for Android version"
+msgstr ""
+"Toestemming niet ondersteund door de opgegeven minimale Firefox voor Android-"
+"versie"
 
 #: src/messages/manifestjson.js:691
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "Koppelen naar ‘addons.mozilla.org’ is niet toegestaan"
 
 #: src/messages/manifestjson.js:692
-msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
-msgstr "Koppelingen die verwijzen naar ‘addons.mozilla.org’ mogen niet voor de startpagina worden gebruikt"
+msgid ""
+"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
+"homepage"
+msgstr ""
+"Koppelingen die verwijzen naar ‘addons.mozilla.org’ mogen niet voor de "
+"startpagina worden gebruikt"
 
 #: src/messages/manifestjson.js:704
-msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr "De machtiging ‘%(permission)s’ vereist dat ‘strict_min_version’ is ingesteld op ‘%(minFirefoxVersion)s’ of hoger"
+msgid ""
+"The \"%(permission)s\" permission requires \"strict_min_version\" to be set "
+"to \"%(minFirefoxVersion)s\" or above"
+msgstr ""
+"De machtiging ‘%(permission)s’ vereist dat ‘strict_min_version’ is ingesteld "
+"op ‘%(minFirefoxVersion)s’ of hoger"
 
 #: src/messages/manifestjson.js:709
-msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
-msgstr "De machtiging ‘%(permission)s’ vereist dat ‘strict_min_version’ is ingesteld op ‘%(minFirefoxVersion)s’ of hoger. Werk uw manifest.json-versie bij om een minimale Firefox-versie op te geven."
+msgid ""
+"The \"%(permission)s\" permission requires \"strict_min_version\" to be set "
+"to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json "
+"version to specify a minimum Firefox version."
+msgstr ""
+"De machtiging ‘%(permission)s’ vereist dat ‘strict_min_version’ is ingesteld "
+"op ‘%(minFirefoxVersion)s’ of hoger. Werk uw manifest.json-versie bij om een "
+"minimale Firefox-versie op te geven."
 
 #: src/messages/manifestjson.js:721
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -798,64 +1046,111 @@ msgid "See https://mzl.la/3PLZYdo for more information."
 msgstr "Zie https://mzl.la/3PLZYdo voor meer informatie."
 
 #: src/messages/manifestjson.js:730
-msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
-msgstr "%(instancePath)s: geprivilegieerde extensies moeten geprivilegieerde machtigingen declareren."
+msgid ""
+"%(instancePath)s: Privileged extensions should declare privileged "
+"permissions."
+msgstr ""
+"%(instancePath)s: geprivilegieerde extensies moeten geprivilegieerde "
+"machtigingen declareren."
 
 #: src/messages/manifestjson.js:741
-msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
-msgstr "Deze extensie declareert geen geprivilegieerde machtiging. Het hoeft niet te worden ondertekend met het geprivilegieerde certificaat. Upload het rechtstreeks naar https://addons.mozilla.org/."
+msgid ""
+"This extension does not declare any privileged permission. It does not need "
+"to be signed with the privileged certificate. Please upload it directly to "
+"https://addons.mozilla.org/."
+msgstr ""
+"Deze extensie declareert geen geprivilegieerde machtiging. Het hoeft niet te "
+"worden ondertekend met het geprivilegieerde certificaat. Upload het "
+"rechtstreeks naar https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:754
-msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
-msgstr "%(instancePath)s: de machtiging ‘mozillaAddons’ is vereist voor geprivilegieerde extensies."
+msgid ""
+"%(instancePath)s: The \"mozillaAddons\" permission is required for "
+"privileged extensions."
+msgstr ""
+"%(instancePath)s: de machtiging ‘mozillaAddons’ is vereist voor "
+"geprivilegieerde extensies."
 
 #: src/messages/manifestjson.js:757
-msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
-msgstr "%(instancePath)s: de machtiging ‘mozillaAddons’ is vereist voor extensies die geprivilegieerde manifestvelden bevatten."
+msgid ""
+"%(instancePath)s: The \"mozillaAddons\" permission is required for "
+"extensions that include privileged manifest fields."
+msgstr ""
+"%(instancePath)s: de machtiging ‘mozillaAddons’ is vereist voor extensies "
+"die geprivilegieerde manifestvelden bevatten."
 
 #: src/messages/manifestjson.js:77
-msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr "%(instancePath)s: geprivilegieerde manifestvelden zijn alleen toegestaan in geprivilegieerde extensies."
+msgid ""
+"%(instancePath)s: privileged manifest fields are only allowed in privileged "
+"extensions."
+msgstr ""
+"%(instancePath)s: geprivilegieerde manifestvelden zijn alleen toegestaan in "
+"geprivilegieerde extensies."
 
 #: src/messages/manifestjson.js:770
-msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
-msgstr "Deze extensie bevat niet de machtiging ‘mozillaAddons’, die vereist is voor geprivilegieerde extensies."
+msgid ""
+"This extension does not include the \"mozillaAddons\" permission, which is "
+"required for privileged extensions."
+msgstr ""
+"Deze extensie bevat niet de machtiging ‘mozillaAddons’, die vereist is voor "
+"geprivilegieerde extensies."
 
 #: src/messages/manifestjson.js:780
 msgid "Cannot use actions in hidden add-ons."
 msgstr "Acties in verborgen add-ons gebruiken is niet mogelijk."
 
 #: src/messages/manifestjson.js:781
-msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr "De eigenschappen hidden en browser_action/page_action (of action in Manifest Version 3 en hoger) sluiten elkaar wederzijds uit."
+msgid ""
+"The hidden and browser_action/page_action (or action in Manifest Version 3 "
+"and above) properties are mutually exclusive."
+msgstr ""
+"De eigenschappen hidden en browser_action/page_action (of action in Manifest "
+"Version 3 en hoger) sluiten elkaar wederzijds uit."
 
 #: src/messages/manifestjson.js:789
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
 msgstr "Gebruik ‘browser_specific_settings’ in plaats van ‘applications’."
 
 #: src/messages/manifestjson.js:790
-msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
-msgstr "De eigenschap ‘applications’ in het manifest is verouderd en wordt niet langer geaccepteerd in manifestversie 3 en hoger."
+msgid ""
+"The \"applications\" property in the manifest is deprecated and will no "
+"longer be accepted in Manifest Version 3 and above."
+msgstr ""
+"De eigenschap ‘applications’ in het manifest is verouderd en wordt niet "
+"langer geaccepteerd in manifestversie 3 en hoger."
 
 #: src/messages/manifestjson.js:798
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
 msgstr "‘applications’ is niet langer toegestaan in manifestversie 3 en hoger."
 
 #: src/messages/manifestjson.js:800
-msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr "De eigenschap ‘applications’ in het manifest is niet langer toegestaan in manifestversie 3 en hoger. Gebruik in plaats daarvan ‘browser_specific_settings’."
+msgid ""
+"The \"applications\" property in the manifest is no longer allowed in "
+"Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
+msgstr ""
+"De eigenschap ‘applications’ in het manifest is niet langer toegestaan in "
+"manifestversie 3 en hoger. Gebruik in plaats daarvan "
+"‘browser_specific_settings’."
 
 #: src/messages/manifestjson.js:808
-msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
-msgstr "De versiestring moet worden vereenvoudigd, omdat deze niet compatibel is met manifestversie 3 en hoger."
+msgid ""
+"The version string should be simplified because it won't be compatible with "
+"Manifest Version 3 and above."
+msgstr ""
+"De versiestring moet worden vereenvoudigd, omdat deze niet compatibel is met "
+"manifestversie 3 en hoger."
 
 #: src/messages/manifestjson.js:810
 msgid ""
-"The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
-"See https://mzl.la/3h3mCRu (MDN Docs) for more information."
+"The version should be a string with 1 to 4 numbers separated with dots. Each "
+"number should have up to 9 digits and leading zeros will no longer be "
+"allowed. Letters will no longer be allowed either. See https://mzl."
+"la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
-"De versie moet een string zijn met 1 tot 4 getallen, gescheiden door punten. Elk getal moet uit maximaal 9 cijfers bestaan en voorloopnullen zijn niet langer toegestaan. Letters zijn ook niet meer "
-"toegestaan. Zie https://mzl.la/3h3mCRu (MDN Docs) voor meer informatie."
+"De versie moet een string zijn met 1 tot 4 getallen, gescheiden door punten. "
+"Elk getal moet uit maximaal 9 cijfers bestaan en voorloopnullen zijn niet "
+"langer toegestaan. Letters zijn ook niet meer toegestaan. Zie https://mzl."
+"la/3h3mCRu (MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:819
 msgid "The version string should be simplified."
@@ -863,19 +1158,44 @@ msgstr "De versiestring moet worden vereenvoudigd."
 
 #: src/messages/manifestjson.js:820
 msgid ""
-"The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
-"https://mzl.la/3h3mCRu (MDN Docs) for more information."
+"The version should be a string with 1 to 4 numbers separated with dots. Each "
+"number should have up to 9 digits and leading zeros are not allowed. Letters "
+"are no longer allowed. See https://mzl.la/3h3mCRu (MDN Docs) for more "
+"information."
 msgstr ""
-"De versie moet een string zijn met 1 tot 4 getallen, gescheiden door punten. Elk getal moet uit maximaal 9 cijfers bestaan en voorloopnullen zijn niet toegestaan. Letters zijn niet meer toegestaan. "
-"Zie https://mzl.la/3h3mCRu (MDN Docs) voor meer informatie."
+"De versie moet een string zijn met 1 tot 4 getallen, gescheiden door punten. "
+"Elk getal moet uit maximaal 9 cijfers bestaan en voorloopnullen zijn niet "
+"toegestaan. Letters zijn niet meer toegestaan. Zie https://mzl.la/3h3mCRu "
+"(MDN Docs) voor meer informatie."
 
 #: src/messages/manifestjson.js:96
-msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr "/%(fieldName)s: ‘%(permissionName)s’ wordt niet ondersteund in manifestversies %(versionRange)s."
+msgid ""
+"/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions "
+"%(versionRange)s."
+msgstr ""
+"/%(fieldName)s: ‘%(permissionName)s’ wordt niet ondersteund in "
+"manifestversies %(versionRange)s."
 
 #: src/messages/manifestjson.js:98
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 msgstr "/%(fieldName)s: ‘%(permissionName)s’ wordt niet ondersteund."
+
+#~ msgid "Invalid nesting of selectors found"
+#~ msgstr "Ongeldig nesten van selectors gevonden"
+
+#~ msgid "Selector nesting is supported from Firefox version 117.0 and above"
+#~ msgstr ""
+#~ "Selectornesten wordt ondersteund vanaf Firefox versie 117.0 en hoger"
+
+#~ msgid "A CSS syntax error was encountered"
+#~ msgstr "Er is een CSS-syntaxisfout aangetroffen"
+
+#~ msgid ""
+#~ "An error was found in the CSS file being processed. As a result, further "
+#~ "processing of that file is not possible"
+#~ msgstr ""
+#~ "Er is een fout gevonden in het CSS-bestand dat wordt verwerkt. Daardoor "
+#~ "is verdere verwerking van dat bestand niet mogelijk"
 
 #~ msgid "Selectors should not be nested"
 #~ msgstr "Selectors mogen niet genest zijn"
@@ -883,21 +1203,32 @@ msgstr "/%(fieldName)s: ‘%(permissionName)s’ wordt niet ondersteund."
 #~ msgid "The \"name\" property must be a string."
 #~ msgstr "De eigenschap ‘name’ moet een tekenreeks zijn."
 
-#~ msgid "An error was found in the CSS file being processed as a result further processing of that file is not possible"
-#~ msgstr "Er is een fout gevonden in het CSS-bestand dat wordt verwerkt, waardoor verdere verwerking van dat bestand niet mogelijk is"
+#~ msgid ""
+#~ "An error was found in the CSS file being processed as a result further "
+#~ "processing of that file is not possible"
+#~ msgstr ""
+#~ "Er is een fout gevonden in het CSS-bestand dat wordt verwerkt, waardoor "
+#~ "verdere verwerking van dat bestand niet mogelijk is"
 
 #~ msgid "\"$(api)s\" can cause issues when loaded temporarily"
 #~ msgstr "‘$(api)s’ kan problemen veroorzaken als het tijdelijk wordt geladen"
 
 #~ msgid ""
-#~ "Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
-#~ "at all possible.'"
+#~ "Evaluation of strings as code can lead to security vulnerabilities and "
+#~ "performance issues, even in the most innocuous of circumstances. Please "
+#~ "avoid using `eval` and the `Function` constructor when at all possible.'"
 #~ msgstr ""
-#~ "Evaluatie van strings als code kan leiden tot beveiligingsproblemen en prestatieproblemen, zelfs in de meest onschadelijke omstandigheden. Vermijd indien mogelijk het gebruik van ‘eval’ en de "
-#~ "‘Function’-constructor."
+#~ "Evaluatie van strings als code kan leiden tot beveiligingsproblemen en "
+#~ "prestatieproblemen, zelfs in de meest onschadelijke omstandigheden. "
+#~ "Vermijd indien mogelijk het gebruik van ‘eval’ en de ‘Function’-"
+#~ "constructor."
 
-#~ msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
-#~ msgstr "Ongeldige installatieoorsprong. Een geldige oorsprong heeft - alleen - een schema, hostnaam en optionele poort."
+#~ msgid ""
+#~ "Invalid install origin. A valid origin has - only - a scheme, hostname "
+#~ "and optional port."
+#~ msgstr ""
+#~ "Ongeldige installatieoorsprong. Een geldige oorsprong heeft - alleen - "
+#~ "een schema, hostnaam en optionele poort."
 
 #~ msgid "The \"version\" property must be a string."
 #~ msgstr "De eigenschap ‘version’ moet een tekenreeks zijn."
@@ -908,14 +1239,19 @@ msgstr "/%(fieldName)s: ‘%(permissionName)s’ wordt niet ondersteund."
 #~ msgid "The \"version\" property uses a Firefox-specific format."
 #~ msgstr "De eigenschap ‘version’ gebruikt een Firefox-specifieke notatie."
 
-#~ msgid "See https://extensionworkshop.com/documentation/develop/extensions-and-the-add-on-id/ for more information."
-#~ msgstr "Zie https://extensionworkshop.com/documentation/develop/extensions-and-the-add-on-id/ voor meer informatie."
+#~ msgid ""
+#~ "See https://extensionworkshop.com/documentation/develop/extensions-and-"
+#~ "the-add-on-id/ for more information."
+#~ msgstr ""
+#~ "Zie https://extensionworkshop.com/documentation/develop/extensions-and-"
+#~ "the-add-on-id/ voor meer informatie."
 
 #~ msgid "addEventListener` called with truthy fourth argument."
 #~ msgstr "addEventListener` aangeroepen met ‘truthy’ vierde argument."
 
 #~ msgid "A custom content_security_policy needs additional review."
-#~ msgstr "Een aangepast content_security_policy heeft aanvullende beoordeling nodig."
+#~ msgstr ""
+#~ "Een aangepast content_security_policy heeft aanvullende beoordeling nodig."
 
 #~ msgid "Violation of Mozilla conditions of use."
 #~ msgstr "Schending van de gebruiksvoorwaarden van Mozilla."

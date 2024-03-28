@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-12 15:41+0000\n"
+"POT-Creation-Date: 2024-03-28 15:12+0000\n"
 "PO-Revision-Date: 2023-11-24 21:59+0000\n"
 "Last-Translator: Melo46 <melo@carmu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,35 +14,35 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:174
+#: src/linter.js:173
 msgid "Validation Summary:"
 msgstr "Summario de validation:"
 
-#: src/linter.js:193
+#: src/linter.js:192
 msgid "Code"
 msgstr "Codice"
 
-#: src/linter.js:199
+#: src/linter.js:198
 msgid "Message"
 msgstr "Message"
 
-#: src/linter.js:205
+#: src/linter.js:204
 msgid "Description"
 msgstr "Description"
 
-#: src/linter.js:211
+#: src/linter.js:210
 msgid "File"
 msgstr "File"
 
-#: src/linter.js:217
+#: src/linter.js:216
 msgid "Line"
 msgstr "Linea"
 
-#: src/linter.js:223
+#: src/linter.js:222
 msgid "Column"
 msgstr "Columna"
 
-#: src/linter.js:73
+#: src/linter.js:72
 msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently "
 "set to %(minManifestVersion)s) should not be greater than --max-manifest-"
@@ -52,26 +52,6 @@ msgstr ""
 "version(actualmente con le valor %(minManifestVersion)s) non pote esser "
 "major que ---max-manifest-version (actualmente con le valor "
 "%(maxManifestVersion)s)."
-
-#: src/messages/css.js:13
-msgid "Invalid nesting of selectors found"
-msgstr "Trovate annidamento de selectores non valide"
-
-#: src/messages/css.js:14
-msgid "Selector nesting is supported from Firefox version 117.0 and above"
-msgstr ""
-
-#: src/messages/css.js:6
-msgid "A CSS syntax error was encountered"
-msgstr "Un error de syntaxe de CSS occurreva"
-
-#: src/messages/css.js:7
-msgid ""
-"An error was found in the CSS file being processed. As a result, further "
-"processing of that file is not possible"
-msgstr ""
-"Un error ha essite trovate in le file CSS a processar, in consequentia "
-"altere processo de ille file non es possibile."
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -1202,6 +1182,19 @@ msgstr ""
 #: src/messages/manifestjson.js:98
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 msgstr "/%(fieldName)s: \"%(permissionName)s\" non es supportate."
+
+#~ msgid "Invalid nesting of selectors found"
+#~ msgstr "Trovate annidamento de selectores non valide"
+
+#~ msgid "A CSS syntax error was encountered"
+#~ msgstr "Un error de syntaxe de CSS occurreva"
+
+#~ msgid ""
+#~ "An error was found in the CSS file being processed. As a result, further "
+#~ "processing of that file is not possible"
+#~ msgstr ""
+#~ "Un error ha essite trovate in le file CSS a processar, in consequentia "
+#~ "altere processo de ille file non es possibile."
 
 #~ msgid "Selectors should not be nested"
 #~ msgstr "Le selectores non pote esser annidate"

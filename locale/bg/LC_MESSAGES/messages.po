@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-12 15:41+0000\n"
+"POT-Creation-Date: 2024-03-28 15:12+0000\n"
 "PO-Revision-Date: 2022-04-26 19:38+0000\n"
 "Last-Translator: :stoyan <stoyan@gmx.com>\n"
 "Language-Team: none\n"
@@ -14,57 +14,39 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:174
+#: src/linter.js:173
 msgid "Validation Summary:"
 msgstr "Обобщение на валидирането:"
 
-#: src/linter.js:193
+#: src/linter.js:192
 msgid "Code"
 msgstr "Код"
 
-#: src/linter.js:199
+#: src/linter.js:198
 msgid "Message"
 msgstr "Съобщение"
 
-#: src/linter.js:205
+#: src/linter.js:204
 msgid "Description"
 msgstr "Описание"
 
-#: src/linter.js:211
+#: src/linter.js:210
 msgid "File"
 msgstr "Файл"
 
-#: src/linter.js:217
+#: src/linter.js:216
 msgid "Line"
 msgstr "Ред"
 
-#: src/linter.js:223
+#: src/linter.js:222
 msgid "Column"
 msgstr "Колона"
 
-#: src/linter.js:73
+#: src/linter.js:72
 msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently "
 "set to %(minManifestVersion)s) should not be greater than --max-manifest-"
 "version (currently set to %(maxManifestVersion)s)."
-msgstr ""
-
-#: src/messages/css.js:13
-msgid "Invalid nesting of selectors found"
-msgstr "Намерено е невалидно влагане на селектори"
-
-#: src/messages/css.js:14
-msgid "Selector nesting is supported from Firefox version 117.0 and above"
-msgstr ""
-
-#: src/messages/css.js:6
-msgid "A CSS syntax error was encountered"
-msgstr "Възникна грешка в синтаксиса на CSS"
-
-#: src/messages/css.js:7
-msgid ""
-"An error was found in the CSS file being processed. As a result, further "
-"processing of that file is not possible"
 msgstr ""
 
 #: src/messages/fluent.js:5
@@ -995,6 +977,12 @@ msgstr ""
 #: src/messages/manifestjson.js:98
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 msgstr ""
+
+#~ msgid "Invalid nesting of selectors found"
+#~ msgstr "Намерено е невалидно влагане на селектори"
+
+#~ msgid "A CSS syntax error was encountered"
+#~ msgstr "Възникна грешка в синтаксиса на CSS"
 
 #~ msgid "The \"version\" property uses a Firefox-specific format."
 #~ msgstr "Свойството „version“ използва специфичен за Firefox формат."

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-12 15:41+0000\n"
+"POT-Creation-Date: 2024-03-28 15:12+0000\n"
 "PO-Revision-Date: 2022-06-05 12:50+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: none\n"
@@ -15,57 +15,39 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:174
+#: src/linter.js:173
 msgid "Validation Summary:"
 msgstr "Podsumowanie sprawdzania poprawności:"
 
-#: src/linter.js:193
+#: src/linter.js:192
 msgid "Code"
 msgstr "Kod"
 
-#: src/linter.js:199
+#: src/linter.js:198
 msgid "Message"
 msgstr "Komunikat"
 
-#: src/linter.js:205
+#: src/linter.js:204
 msgid "Description"
 msgstr "Opis"
 
-#: src/linter.js:211
+#: src/linter.js:210
 msgid "File"
 msgstr "Plik"
 
-#: src/linter.js:217
+#: src/linter.js:216
 msgid "Line"
 msgstr "Wiersz"
 
-#: src/linter.js:223
+#: src/linter.js:222
 msgid "Column"
 msgstr "Kolumna"
 
-#: src/linter.js:73
+#: src/linter.js:72
 msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently "
 "set to %(minManifestVersion)s) should not be greater than --max-manifest-"
 "version (currently set to %(maxManifestVersion)s)."
-msgstr ""
-
-#: src/messages/css.js:13
-msgid "Invalid nesting of selectors found"
-msgstr "Odnaleziono nieprawidłowe zagnieżdżenie selektorów"
-
-#: src/messages/css.js:14
-msgid "Selector nesting is supported from Firefox version 117.0 and above"
-msgstr ""
-
-#: src/messages/css.js:6
-msgid "A CSS syntax error was encountered"
-msgstr "Wystąpił błąd składni CSS"
-
-#: src/messages/css.js:7
-msgid ""
-"An error was found in the CSS file being processed. As a result, further "
-"processing of that file is not possible"
 msgstr ""
 
 #: src/messages/fluent.js:5
@@ -1020,6 +1002,12 @@ msgstr ""
 #: src/messages/manifestjson.js:98
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 msgstr ""
+
+#~ msgid "Invalid nesting of selectors found"
+#~ msgstr "Odnaleziono nieprawidłowe zagnieżdżenie selektorów"
+
+#~ msgid "A CSS syntax error was encountered"
+#~ msgstr "Wystąpił błąd składni CSS"
 
 #~ msgid "The \"name\" property must be a string."
 #~ msgstr "Właściwość „name” musi być ciągiem."

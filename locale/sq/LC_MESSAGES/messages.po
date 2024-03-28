@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-12 15:41+0000\n"
+"POT-Creation-Date: 2024-03-28 15:12+0000\n"
 "PO-Revision-Date: 2023-11-28 19:00+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: none\n"
@@ -14,35 +14,35 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:174
+#: src/linter.js:173
 msgid "Validation Summary:"
 msgstr "Përmbledhje Vleftësimi:"
 
-#: src/linter.js:193
+#: src/linter.js:192
 msgid "Code"
 msgstr "Kod"
 
-#: src/linter.js:199
+#: src/linter.js:198
 msgid "Message"
 msgstr "Mesazh"
 
-#: src/linter.js:205
+#: src/linter.js:204
 msgid "Description"
 msgstr "Përshkrim"
 
-#: src/linter.js:211
+#: src/linter.js:210
 msgid "File"
 msgstr "Kartelë"
 
-#: src/linter.js:217
+#: src/linter.js:216
 msgid "Line"
 msgstr "Rresht"
 
-#: src/linter.js:223
+#: src/linter.js:222
 msgid "Column"
 msgstr "Shtyllë"
 
-#: src/linter.js:73
+#: src/linter.js:72
 msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently "
 "set to %(minManifestVersion)s) should not be greater than --max-manifest-"
@@ -51,26 +51,6 @@ msgstr ""
 "U kërkua interval i pavlefshëm versionesh manifesti: --min-manifest-version "
 "(aktualisht vënë sa %(minManifestVersion)s) s’mund të jetë më i madh se --"
 "max-manifest-version (aktualisht vënë sa %(maxManifestVersion)s)."
-
-#: src/messages/css.js:13
-msgid "Invalid nesting of selectors found"
-msgstr "U gjetën përzgjedhëz në vendosje të pavlefshme brenda njëri-tjetrit"
-
-#: src/messages/css.js:14
-msgid "Selector nesting is supported from Firefox version 117.0 and above"
-msgstr ""
-
-#: src/messages/css.js:6
-msgid "A CSS syntax error was encountered"
-msgstr "U has një gabim sintakse CSS"
-
-#: src/messages/css.js:7
-msgid ""
-"An error was found in the CSS file being processed. As a result, further "
-"processing of that file is not possible"
-msgstr ""
-"U gjet një gabim te kartela CSS që po përpunohet. Për pasojë, s’është i "
-"mundshëm përpunimi i mëtejshëm i asaj kartele"
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -1184,6 +1164,19 @@ msgstr ""
 #: src/messages/manifestjson.js:98
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 msgstr "/%(fieldName)s: \"%(permissionName)s\" nuk mbulohet."
+
+#~ msgid "Invalid nesting of selectors found"
+#~ msgstr "U gjetën përzgjedhëz në vendosje të pavlefshme brenda njëri-tjetrit"
+
+#~ msgid "A CSS syntax error was encountered"
+#~ msgstr "U has një gabim sintakse CSS"
+
+#~ msgid ""
+#~ "An error was found in the CSS file being processed. As a result, further "
+#~ "processing of that file is not possible"
+#~ msgstr ""
+#~ "U gjet një gabim te kartela CSS që po përpunohet. Për pasojë, s’është i "
+#~ "mundshëm përpunimi i mëtejshëm i asaj kartele"
 
 #~ msgid "Selectors should not be nested"
 #~ msgstr "Përzgjedhësit s’duhet të jenë brenda njëri-tjetrit"
