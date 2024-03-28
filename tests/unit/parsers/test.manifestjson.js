@@ -2738,6 +2738,9 @@ describe('ManifestJSONParser', () => {
             id: '{daf44bf7-a45e-4450-979c-91cf07434c3d}',
             strict_min_version: '55.0.0',
           },
+          gecko_android: {
+            strict_min_version: '120.0',
+          },
         },
         browser_action: {
           default_icon: icon,
