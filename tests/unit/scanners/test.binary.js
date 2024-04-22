@@ -26,7 +26,7 @@ describe('Binary', () => {
   });
 
   it('should ask for a chunk', () => {
-    expect(BinaryScanner.fileResultType).toEqual('chunk');
+    expect(BinaryScanner.fileStreamType).toEqual('chunk');
   });
 
   it('should report a proper scanner name', () => {
