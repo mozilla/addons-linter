@@ -3,7 +3,7 @@ import * as messages from 'messages';
 import * as constants from 'const';
 
 export default class BinaryScanner extends BaseScanner {
-  static get fileResultType() {
+  static get fileStreamType() {
     return 'chunk';
   }
 
@@ -15,7 +15,6 @@ export default class BinaryScanner extends BaseScanner {
     if (Object.keys(values).some((v) => values[v] !== buffer[v])) {
       return;
     }
-
     this.linterMessages.push({
       ...messages.FLAGGED_FILE_TYPE,
       type: constants.VALIDATION_NOTICE,
