@@ -1390,6 +1390,7 @@ describe('Linter.extractMetadata()', () => {
         'manifest.json': { uncompressedSize: 839 },
         'myfile.css': { uncompressedSize: largeFileSize },
         'myfile.js': { uncompressedSize: largeFileSize },
+        'some.exe': { uncompressedSize: largeFileSize },
       };
 
       getFile(filename) {

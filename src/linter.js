@@ -411,7 +411,11 @@ export default class Linter {
         : this.io.files[filename].uncompressedSize;
     const maxSize = 1024 * 1024 * constants.MAX_FILE_SIZE_TO_PARSE_MB;
 
-    if (ScannerClass !== BinaryScanner && fileSize >= maxSize) {
+    if (
+      ScannerClass !== BinaryScanner &&
+      ScannerClass !== FilenameScanner &&
+      fileSize >= maxSize
+    ) {
       const filesizeError = {
         ...messages.FILE_TOO_LARGE,
         file: filename,
