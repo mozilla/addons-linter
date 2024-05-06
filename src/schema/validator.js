@@ -5,7 +5,7 @@ import { getDefaultConfigValue } from 'yargs-options';
 import { deepPatch } from 'schema/deepmerge';
 import schemaObject from 'schema/imported/manifest';
 import themeSchemaObject from 'schema/imported/theme';
-import messagesSchemaObject from 'schema/messages';
+import messagesSchemaObject from 'schema/i18nMessages';
 import {
   DEPRECATED_MANIFEST_PROPERTIES,
   MANIFEST_VERSION_DEFAULT,
@@ -196,7 +196,7 @@ export class SchemaValidator {
    *   An optional parameter with a set of custom schema data for the i18n messages json
    *   files (to be used in unit tests if necessary).
    *   If not passed the SchemaValidator instance defaults to the schema data exported
-   *   from `schema/messages`.
+   *   from `schema/i18nMessages`.
    */
   constructor(validatorOptions) {
     this._options = validatorOptions;
@@ -380,7 +380,7 @@ export class SchemaValidator {
     if (!this._localeValidator) {
       this._localeValidator = this._validator.compile({
         ...this.messagesSchemaObject,
-        $id: 'messages',
+        $id: 'i18nMessages',
         $ref: '#/types/WebExtensionMessages',
       });
     }
