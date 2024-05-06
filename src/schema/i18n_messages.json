@@ -38,7 +38,7 @@
         "message"
       ]
     },
-    "WebExtensionMessages": {
+    "WebExtensionI18nMessages": {
       "type": "object",
       "patternProperties": {
         "^.*$": {
