@@ -189,6 +189,16 @@
                     }
                   ]
                 },
+                "options_page": {
+                  "allOf": [
+                    {
+                      "$ref": "manifest#/types/ExtensionURL"
+                    },
+                    {
+                      "description": "Alias property for options_ui.page, ignored when options_ui.page is set. When using this property the options page is always opened in a new tab."
+                    }
+                  ]
+                },
                 "options_ui": {
                   "type": "object",
                   "properties": {
