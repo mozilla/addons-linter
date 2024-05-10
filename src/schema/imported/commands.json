@@ -13,6 +13,18 @@
         {
           "name": "command",
           "type": "string"
+        },
+        {
+          "allOf": [
+            {
+              "$ref": "tags#/types/Tab"
+            },
+            {
+              "name": "tab",
+              "optional": true,
+              "description": "Details of the $(ref:tabs.Tab) where the command was activated."
+            }
+          ]
         }
       ]
     },
