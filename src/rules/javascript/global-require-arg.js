@@ -1,4 +1,4 @@
-import { UNEXPECTED_GLOGAL_ARG } from 'messages';
+import { UNEXPECTED_GLOBAL_ARG } from 'messages';
 import { getVariable } from 'utils';
 
 /*
@@ -19,7 +19,7 @@ const rule = {
             const pathVar = getVariable(context, firstArg.name);
             if (typeof pathVar === 'undefined') {
               // We infer this is probably a global.
-              return context.report(node, UNEXPECTED_GLOGAL_ARG.code);
+              return context.report(node, UNEXPECTED_GLOBAL_ARG.code);
             }
           }
         }
