@@ -73,8 +73,8 @@ export const NO_IMPLIED_EVAL = {
     first argument`),
 };
 
-export const UNEXPECTED_GLOGAL_ARG = {
-  code: 'UNEXPECTED_GLOGAL_ARG',
+export const UNEXPECTED_GLOBAL_ARG = {
+  code: 'UNEXPECTED_GLOBAL_ARG',
   message: i18n._('Unexpected global passed as an argument'),
   description: i18n._(`Passing a global as an argument
     is not recommended. Please make this a var instead.`),
