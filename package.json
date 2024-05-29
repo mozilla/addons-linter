@@ -114,7 +114,6 @@
     "replace-in-file": "7.2.0",
     "shelljs": "0.8.5",
     "sinon": "18.0.0",
-    "tar": "6.2.1",
     "tar-fs": "3.0.6",
     "tmp-promise": "3.0.3",
     "webpack": "5.91.0",
