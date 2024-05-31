@@ -5456,4 +5456,26 @@ describe('ManifestJSONParser', () => {
       });
     });
   });
+
+  describe('incognito', () => {
+    it('emits a warning when incognito:split is used', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          incognito: 'split',
+        }),
+        linter.collector
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(linter.collector.errors).toEqual([]);
+      expect(linter.collector.warnings).toEqual([
+        expect.objectContaining(messages.INCOGNITO_SPLIT_UNSUPPORTED),
+      ]);
+    });
+  });
 });

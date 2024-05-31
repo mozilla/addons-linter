@@ -790,6 +790,7 @@ export default class ManifestJSONParser extends JSONParser {
     this.validateExtensionID();
     this.validateHiddenAddon();
     this.validateDeprecatedBrowserStyle();
+    this.validateIncognito();
   }
 
   /**
@@ -1235,6 +1236,12 @@ export default class ManifestJSONParser extends JSONParser {
         this.isValid = false;
         return;
       }
+    }
+  }
+
+  validateIncognito() {
+    if (this.parsedJSON.incognito === 'split') {
+      this.collector.addWarning(messages.INCOGNITO_SPLIT_UNSUPPORTED);
     }
   }
 
