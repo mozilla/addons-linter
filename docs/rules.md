@@ -135,6 +135,7 @@ Rules are sorted by severity.
 | `VERSION_FORMAT_DEPRECATED`                             | warning  | The version string should be simplified.                                                                                                                                           |
 | `VERSION_FORMAT_INVALID`                                | error    | The version string is not valid because its format is too complex.                                                                                                                 |
 | `MANIFEST_V3_FIREFOX_ANDROID_LIMITATIONS`               | warning  | The extension is marked as compatible with a Firefox for Android version that doesn't fully support Manifest Version 3                                                             |
+| `INCOGNITO_SPLIT_UNSUPPORTED`                           | warning  | The incognito "split" value is unsupported in Firefox                                                                                                                              |
 
 ### Static Theme / manifest.json
 
