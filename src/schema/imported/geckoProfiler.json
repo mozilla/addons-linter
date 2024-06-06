@@ -185,7 +185,8 @@
         "power",
         "responsiveness",
         "cpufreq",
-        "bandwidth"
+        "bandwidth",
+        "memory"
       ]
     },
     "supports": {
