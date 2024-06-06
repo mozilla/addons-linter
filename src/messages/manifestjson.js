@@ -823,3 +823,12 @@ export const VERSION_FORMAT_INVALID = {
     https://mzl.la/3h3mCRu (MDN Docs) for more information.`),
   file: MANIFEST_JSON,
 };
+
+export const INCOGNITO_SPLIT_UNSUPPORTED = {
+  code: 'INCOGNITO_SPLIT_UNSUPPORTED',
+  message: i18n._('incognito "split" is unsupported.'),
+  description: i18n._(`The incognito "split" value is unsupported and will be
+    treated as "not_allowed" in Firefox. Remove the key from the manifest
+    file, if your extension is compatible with Firefox's private browsing mode.`),
+  file: MANIFEST_JSON,
+};
