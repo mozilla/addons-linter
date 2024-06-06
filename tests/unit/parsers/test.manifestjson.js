@@ -5478,4 +5478,90 @@ describe('ManifestJSONParser', () => {
       ]);
     });
   });
+
+  describe('admin_install_only', () => {
+    it.each([
+      {
+        manifest_version: 2,
+        applications: { gecko: { id: '@test-id', admin_install_only: true } },
+      },
+      {
+        manifest_version: 2,
+        applications: { gecko: { id: '@test-id', admin_install_only: false } },
+      },
+      {
+        manifest_version: 2,
+        browser_specific_settings: {
+          gecko: { id: '@test-id', admin_install_only: true },
+        },
+      },
+      {
+        manifest_version: 2,
+        browser_specific_settings: {
+          gecko: { id: '@test-id', admin_install_only: false },
+        },
+      },
+      {
+        manifest_version: 2,
+        browser_specific_settings: {
+          gecko: { id: '@test-id', admin_install_only: false },
+          gecko_android: { strict_min_version: '123.0' },
+        },
+      },
+      {
+        manifest_version: 3,
+        browser_specific_settings: {
+          gecko: { id: '@test-id', admin_install_only: true },
+        },
+      },
+      {
+        manifest_version: 3,
+        browser_specific_settings: {
+          gecko: { id: '@test-id', admin_install_only: false },
+        },
+      },
+      {
+        manifest_version: 3,
+        browser_specific_settings: {
+          gecko: { id: '@test-id', admin_install_only: false },
+          gecko_android: { strict_min_version: '123.0' },
+        },
+      },
+    ])(
+      'emits an error when the admin_install_only flag is present - %o',
+      (manifestProps) => {
+        const linter = new Linter({ _: ['bar'] });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          JSON.stringify({
+            name: 'some name',
+            version: '1',
+            ...manifestProps,
+          }),
+          linter.collector
+        );
+
+        expect(manifestJSONParser.isValid).toEqual(false);
+        if (manifestProps.applications) {
+          expect(linter.collector.warnings).toEqual([
+            expect.objectContaining(messages.APPLICATIONS_DEPRECATED),
+          ]);
+        } else if (
+          manifestProps.manifest_version === 3 &&
+          manifestProps?.browser_specific_settings?.gecko_android
+        ) {
+          expect(linter.collector.warnings).toEqual([
+            expect.objectContaining(
+              messages.MANIFEST_V3_FIREFOX_ANDROID_LIMITATIONS
+            ),
+          ]);
+        } else {
+          expect(linter.collector.warnings).toEqual([]);
+        }
+        expect(linter.collector.errors).toEqual([
+          expect.objectContaining(messages.ADMIN_INSTALL_ONLY_PROP_RESERVED),
+        ]);
+      }
+    );
+  });
 });

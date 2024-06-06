@@ -832,3 +832,11 @@ export const INCOGNITO_SPLIT_UNSUPPORTED = {
     file, if your extension is compatible with Firefox's private browsing mode.`),
   file: MANIFEST_JSON,
 };
+
+export const ADMIN_INSTALL_ONLY_PROP_RESERVED = {
+  code: 'ADMIN_INSTALL_ONLY_PROP_RESERVED',
+  message: i18n._('The "admin_install_only" property is reserved.'),
+  description: i18n._(`The "admin_install_only" property is reserved and can
+    only be used in enterprise add-ons.`),
+  file: MANIFEST_JSON,
+};
