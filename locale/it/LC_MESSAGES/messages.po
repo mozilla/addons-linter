@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-10 14:25+0000\n"
-"PO-Revision-Date: 2024-06-10 14:32+0000\n"
-"Last-Translator: Google Translate <pontoon-gt@example.com>\n"
+"PO-Revision-Date: 2024-06-10 15:01+0000\n"
+"Last-Translator: Francesco Lodolo [:flod] <flod+pontoon@mozilla.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -861,15 +861,15 @@ msgstr ""
 
 #: src/messages/manifestjson.js:829
 msgid "incognito \"split\" is unsupported."
-msgstr "La modalità di navigazione in incognito “split” non è supportata."
+msgstr "La modalità di navigazione anonima “split” non è supportata."
 
 #: src/messages/manifestjson.js:830
 msgid ""
 "The incognito \"split\" value is unsupported and will be treated as \"not_allowed\" in Firefox. Remove the key from the manifest file, if your extension is compatible with Firefox's private browsing"
 " mode."
 msgstr ""
-"Il valore in incognito “split” non è supportato e verrà considerato come “not_allowed” in Firefox. Rimuovi la chiave dal file manifesto, se l’estensione è compatibile con la modalità di navigazione "
-"anonima di Firefox."
+"Il valore “split” per la chiave “incognito” non è supportato e verrà valutato come “not_allowed” in Firefox. Rimuovi la chiave dal file manifesto se l’estensione è compatibile con la modalità di "
+"navigazione anonima di Firefox."
 
 #: src/messages/manifestjson.js:96
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
