@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-10 14:25+0000\n"
-"PO-Revision-Date: 2024-06-10 16:08+0000\n"
+"PO-Revision-Date: 2024-06-10 16:20+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: hsb\n"
@@ -86,7 +86,7 @@ msgstr "Znata JS-biblioteka namakana"
 
 #: src/messages/javascript.js:108
 msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
-msgstr ""
+msgstr "Za jednore přidatki wot bibliotekow JavaScript wotradźeja, ale zwjetša je akceptuja."
 
 #: src/messages/javascript.js:116
 msgid ""
@@ -447,7 +447,7 @@ msgstr "Swójska kajkosć „%(property)s“ sej přidatne přepruwowanje wužad
 
 #: src/messages/manifestjson.js:228
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
-msgstr ""
+msgstr "„%(property)s“ ‚eval‘ dowoluje, štož ma sylne wuskutki na wěstotu a wukon."
 
 #: src/messages/manifestjson.js:232
 msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
@@ -571,7 +571,7 @@ msgstr "Słownik je so w manifesće namakał, ale njeje so žadyn ID postajił."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "Čitajće prošu https://github.com/mozilla-extensions/xpi-manifest, zo byšće wjace wo priwilegowanych rozšěrjenjach a signowanju zhonił."
 
 #: src/messages/manifestjson.js:409
 msgid "Forbidden content found in add-on."
