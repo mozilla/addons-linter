@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-28 15:12+0000\n"
+"POT-Creation-Date: 2024-06-10 14:25+0000\n"
 "PO-Revision-Date: 2024-03-12 19:01+0000\n"
 "Last-Translator: Mark Heijl <markh@babelzilla.org>\n"
 "Language-Team: none\n"
@@ -1167,6 +1167,17 @@ msgstr ""
 "Elk getal moet uit maximaal 9 cijfers bestaan en voorloopnullen zijn niet "
 "toegestaan. Letters zijn niet meer toegestaan. Zie https://mzl.la/3h3mCRu "
 "(MDN Docs) voor meer informatie."
+
+#: src/messages/manifestjson.js:829
+msgid "incognito \"split\" is unsupported."
+msgstr ""
+
+#: src/messages/manifestjson.js:830
+msgid ""
+"The incognito \"split\" value is unsupported and will be treated as "
+"\"not_allowed\" in Firefox. Remove the key from the manifest file, if your "
+"extension is compatible with Firefox's private browsing mode."
+msgstr ""
 
 #: src/messages/manifestjson.js:96
 msgid ""

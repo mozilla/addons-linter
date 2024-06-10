@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-28 15:12+0000\n"
+"POT-Creation-Date: 2024-06-10 14:25+0000\n"
 "PO-Revision-Date: 2024-03-13 14:28+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
@@ -1061,6 +1061,17 @@ msgstr ""
 "版本號應該為 1~4 組數字所組成的字串，每組之間用小數點分隔。每組數字最多僅能有"
 "九位數，前方不允許補 0 也不可再包含字母。若需更多資訊請參考 https://mzl."
 "la/3h3mCRu（MDN 文件）。"
+
+#: src/messages/manifestjson.js:829
+msgid "incognito \"split\" is unsupported."
+msgstr ""
+
+#: src/messages/manifestjson.js:830
+msgid ""
+"The incognito \"split\" value is unsupported and will be treated as "
+"\"not_allowed\" in Firefox. Remove the key from the manifest file, if your "
+"extension is compatible with Firefox's private browsing mode."
+msgstr ""
 
 #: src/messages/manifestjson.js:96
 msgid ""
