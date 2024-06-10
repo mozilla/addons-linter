@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-03-28 15:12+0000\n"
+"POT-Creation-Date: 2024-06-10 14:25+0000\n"
 "PO-Revision-Date: 2024-03-15 10:14+0000\n"
 "Last-Translator: 你我皆凡人 <yuanbingyan@mail.ee>\n"
 "Language-Team: none\n"
@@ -1046,6 +1046,17 @@ msgstr ""
 "版本应该是一个由 1 到 4 个数字组成的字符串，用点分隔。每个数字最多应包含 9 位"
 "数字，并且不允许使用前导数字 0，也不再允许使用字母。有关详细信息，请参阅 "
 "https://mzl.la/3h3mCRu（MDN 文档）。"
+
+#: src/messages/manifestjson.js:829
+msgid "incognito \"split\" is unsupported."
+msgstr ""
+
+#: src/messages/manifestjson.js:830
+msgid ""
+"The incognito \"split\" value is unsupported and will be treated as "
+"\"not_allowed\" in Firefox. Remove the key from the manifest file, if your "
+"extension is compatible with Firefox's private browsing mode."
+msgstr ""
 
 #: src/messages/manifestjson.js:96
 msgid ""
