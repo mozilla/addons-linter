@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-10 14:25+0000\n"
-"PO-Revision-Date: 2024-06-10 16:20+0000\n"
+"PO-Revision-Date: 2024-06-10 16:27+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: hsb\n"
@@ -627,7 +627,7 @@ msgstr "Drastowy wobraz za \"%(type)s\" njeda so na \"%(path)s\" namakać"
 
 #: src/messages/manifestjson.js:48
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "Manifestowe polo „%(fieldName)s“ so jenož za priwilegowane a na chwilu instalowane rozšěrjenja wužiwa."
 
 #: src/messages/manifestjson.js:490
 msgid "Corrupted theme image file"
@@ -667,7 +667,7 @@ msgstr "W \"default_locale\" lokalizacije faluja."
 
 #: src/messages/manifestjson.js:553
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "Hódnota „default_locale“ je w manifesće podata, ale wotpowědny „messages.json“ w zapisu „_locales“ njeeksistuje. Hlejće: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:561
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -707,7 +707,7 @@ msgstr "Manifestowy kluč so přez podatu minimalnu wersiju Firefox njepodpěruj
 
 #: src/messages/manifestjson.js:614 src/messages/manifestjson.js:636
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "„strict_min_version“ sej Firefox %(minVersion)s wužaduje, kotryž je so před wersiju %(versionAdded)s wozjewił, kotraž je podpěru za „%(key)s“ zawjedła."
 
 #: src/messages/manifestjson.js:62
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
@@ -727,7 +727,7 @@ msgstr "Manifestowy kluč so přez podatu minimalnu wersiju Firefox za Android n
 
 #: src/messages/manifestjson.js:658 src/messages/manifestjson.js:680
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "„strict_min_version“ sej Firefox za Android %(minVersion)s wužaduje, kotryž je so před wersiju %(versionAdded)s wozjewił, kotraž je podpěru za „%(key)s“ zawjedła."
 
 #: src/messages/manifestjson.js:676
 msgid "Permission not supported by the specified minimum Firefox for Android version"
