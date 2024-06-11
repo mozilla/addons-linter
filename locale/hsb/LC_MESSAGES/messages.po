@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-10 14:25+0000\n"
-"PO-Revision-Date: 2024-06-10 16:27+0000\n"
+"PO-Revision-Date: 2024-06-11 12:07+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: hsb\n"
@@ -675,7 +675,7 @@ msgstr "\"default_locale\" faluje, ale \"_locales\" eksistuje."
 
 #: src/messages/manifestjson.js:562
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "Hódnota „default_locale“ w manifesće podata njeje, ale zapis „_locales“ njeeksistuje. Hlejće: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:570
 msgid "Unsupported image extension"
@@ -827,7 +827,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:829
 msgid "incognito \"split\" is unsupported."
-msgstr ""
+msgstr "incognito „split“ so njepodpěruje."
 
 #: src/messages/manifestjson.js:830
 msgid ""
