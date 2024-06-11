@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-10 14:25+0000\n"
-"PO-Revision-Date: 2024-06-11 12:07+0000\n"
+"PO-Revision-Date: 2024-06-11 17:00+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: hsb\n"
@@ -162,7 +162,7 @@ msgstr "Mjeno wobsahoweje skriptoweje dataje njeměło prózdne być"
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr "„%(method)s“ je so z njeliteralnym uri wowołała"
+msgstr "„%(method)s“ je so z njeliteralnym uri wuwołała"
 
 #: src/messages/javascript.js:34
 msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
@@ -675,7 +675,7 @@ msgstr "\"default_locale\" faluje, ale \"_locales\" eksistuje."
 
 #: src/messages/manifestjson.js:562
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr "Hódnota „default_locale“ w manifesće podata njeje, ale zapis „_locales“ njeeksistuje. Hlejće: https://mzl.la/2hjcaEE"
+msgstr "Hódnota „default_locale“ w manifesće podata njeje, ale zapis „_locales“ eksistuje. Hlejće: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:570
 msgid "Unsupported image extension"
