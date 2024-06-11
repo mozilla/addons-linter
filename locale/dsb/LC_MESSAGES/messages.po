@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-10 14:25+0000\n"
-"PO-Revision-Date: 2024-06-11 17:02+0000\n"
+"PO-Revision-Date: 2024-06-11 21:03+0000\n"
 "Last-Translator: Michael Wolf <milupo@sorbzilla.de>\n"
 "Language-Team: none\n"
 "Language: dsb\n"
@@ -86,7 +86,7 @@ msgstr "Znata JS-biblioteka namakana"
 
 #: src/messages/javascript.js:108
 msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
-msgstr ""
+msgstr "Za jadnore dodanki wót bibliotekow JavaScript wótraźuju, ale zwětšego je akceptěruju."
 
 #: src/messages/javascript.js:116
 msgid ""
