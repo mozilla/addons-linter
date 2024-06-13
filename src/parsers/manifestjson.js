@@ -521,6 +521,14 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (
+      typeof this.parsedJSON.applications?.gecko?.admin_install_only !==
+      'undefined'
+    ) {
+      this.collector.addError(messages.ADMIN_INSTALL_ONLY_PROP_RESERVED);
+      this.isValid = false;
+    }
+
+    if (
       this.parsedJSON.manifest_version >= 3 &&
       this.parsedJSON.browser_specific_settings?.gecko_android
     ) {
