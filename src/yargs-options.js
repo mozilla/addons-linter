@@ -37,6 +37,11 @@ const options = {
     type: 'boolean',
     default: false,
   },
+  enterprise: {
+    describe: 'Treat the input file (or directory) as an enterprise extension',
+    type: 'boolean',
+    default: false,
+  },
   privileged: {
     describe: 'Treat the input file (or directory) as a privileged extension',
     type: 'boolean',

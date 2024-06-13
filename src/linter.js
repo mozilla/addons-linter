@@ -313,6 +313,7 @@ export default class Linter {
         ),
         selfHosted: this.config.selfHosted,
         schemaValidatorOptions: {
+          enterprise: this.config.enterprise,
           privileged: this.config.privileged,
           minManifestVersion: this.config.minManifestVersion,
           maxManifestVersion: this.config.maxManifestVersion,
@@ -446,6 +447,7 @@ export default class Linter {
         // list of disabled rules for js scanner
         disabledRules: this.config.disableLinterRules,
         existingFiles: this.io.files,
+        enterprise: this.config.enterprise,
         privileged: this.config.privileged,
       });
 
