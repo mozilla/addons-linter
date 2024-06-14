@@ -54,23 +54,6 @@ describe('Basic CLI tests', function cliCallback() {
     expect(args.disableXpiAutoclose).toEqual(false);
   });
 
-  it('should support a --scan-file option', () => {
-    let args = cli.parse(['foo/', '--scan-file', 'dir/test1.txt']);
-    expect(args.scanFile).toEqual('dir/test1.txt');
-
-    args = cli.parse([
-      'foo/',
-      '--scan-file',
-      'dir/test1.txt',
-      '--scan-file',
-      'dir/test2.txt',
-    ]);
-    expect(args.scanFile).toEqual(['dir/test1.txt', 'dir/test2.txt']);
-
-    args = cli.parse(['foo/']);
-    expect(args.scanFile).toEqual(undefined);
-  });
-
   it('should default warnings-as-errors to false', () => {
     const args = cli.parse(['foo/bar.zip']);
     expect(args.warningsAsErrors).toEqual(false);

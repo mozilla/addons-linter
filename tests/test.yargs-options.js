@@ -20,7 +20,6 @@ describe('getDefaultConfigValue()', () => {
   });
 
   it('should return undefined', () => {
-    expect(getDefaultConfigValue('scan-file')).toBeUndefined();
     expect(getDefaultConfigValue('disable-linter-rules')).toBeUndefined();
   });
 

@@ -69,9 +69,6 @@ const linter = linter.createInstance({
     output: 'none',
     boring: false,
     selfHosted: false,
-    // Lint only the selected files
-    //   scanFile: ['path/...', ...]
-    //
     // Exclude files:
     shouldScanFile: (fileName) => true,
   },
@@ -92,7 +89,6 @@ linter.run()
   summary: {
     error, notice, warning,
   },
-  scanFile,
   count,
   error: [{
     type: "error",
