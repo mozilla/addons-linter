@@ -32,6 +32,7 @@ export default class BaseScanner {
    * @property {import('../parsers/manifestjson').Metadata} addonMetadata
    * @property {import('../collector').default} collector
    * @property {string[]} disabledRules
+   * @property {boolean} enterprise
    * @property {string[]} existingFiles
    * @property {boolean} privileged
    *

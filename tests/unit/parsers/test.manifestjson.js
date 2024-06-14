@@ -5563,5 +5563,125 @@ describe('ManifestJSONParser', () => {
         ]);
       }
     );
+
+    it('emits an error when the enterprise option is false', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: {
+            gecko: { id: '@test-id', admin_install_only: true },
+          },
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { enterprise: false } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      expect(linter.collector.warnings).toEqual([]);
+      expect(linter.collector.errors).toEqual([
+        expect.objectContaining(messages.ADMIN_INSTALL_ONLY_PROP_RESERVED),
+      ]);
+    });
+
+    it('does not emit an error when the enterprise option is passed', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: {
+            gecko: { id: '@test-id', admin_install_only: true },
+          },
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { enterprise: true } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(linter.collector.warnings).toEqual([]);
+      expect(linter.collector.errors).toEqual([]);
+    });
+
+    it('emits an error when the enterprise option is passed but the value is false', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: {
+            gecko: { id: '@test-id', admin_install_only: false },
+          },
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { enterprise: true } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      expect(linter.collector.warnings).toEqual([]);
+      expect(linter.collector.errors).toEqual([
+        expect.objectContaining(messages.ADMIN_INSTALL_ONLY_REQUIRED),
+      ]);
+    });
+
+    it('emits an error when the enterprise option is passed and the flag is set in applications', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          applications: {
+            gecko: { id: '@test-id', admin_install_only: true },
+          },
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { enterprise: true } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      expect(linter.collector.warnings).toEqual([
+        expect.objectContaining(messages.APPLICATIONS_DEPRECATED),
+      ]);
+      expect(linter.collector.errors).toEqual([
+        expect.objectContaining(messages.ADMIN_INSTALL_ONLY_REQUIRED),
+      ]);
+    });
+
+    it('emits an error when the enterprise option is passed, the flag is set in applications, and bss is defined', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: {
+            gecko: { id: '@test-id' },
+          },
+          applications: {
+            gecko: { admin_install_only: true },
+          },
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { enterprise: true } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      expect(linter.collector.warnings).toEqual([
+        expect.objectContaining(messages.IGNORED_APPLICATIONS_PROPERTY),
+      ]);
+      expect(linter.collector.errors).toEqual([
+        expect.objectContaining(messages.ADMIN_INSTALL_ONLY_REQUIRED),
+      ]);
+    });
   });
 });

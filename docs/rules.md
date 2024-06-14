@@ -131,12 +131,13 @@ Rules are sorted by severity.
 | `EXTENSION_ID_REQUIRED`                                 | error    | The extension ID is mandatory for Manifest Version 3 (and above) extensions                                                                                                        |
 | `HIDDEN_NO_ACTION`                                      | error    | The `hidden` and `browser_action`/`page_action` (or `action`) properties are mutually exclusive                                                                                    |
 | `APPLICATIONS_DEPRECATED`                               | warning  | The `applications` property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above. Use `browser_specific_settings` instead.                 |
-| `APPLICATIONS_INVALID`                                  | error    | The `applications` property is no longer accepted in Manifest Version 3 and above.                                                                                                 |
-| `VERSION_FORMAT_DEPRECATED`                             | warning  | The version string should be simplified.                                                                                                                                           |
+| `APPLICATIONS_INVALID`                                  | error    | The `applications` property is no longer accepted in Manifest Version 3 and above                                                                                                  |
+| `VERSION_FORMAT_DEPRECATED`                             | warning  | The version string should be simplified                                                                                                                                            |
 | `VERSION_FORMAT_INVALID`                                | error    | The version string is not valid because its format is too complex.                                                                                                                 |
 | `MANIFEST_V3_FIREFOX_ANDROID_LIMITATIONS`               | warning  | The extension is marked as compatible with a Firefox for Android version that doesn't fully support Manifest Version 3                                                             |
 | `INCOGNITO_SPLIT_UNSUPPORTED`                           | warning  | The incognito "split" value is unsupported in Firefox                                                                                                                              |
-| `ADMIN_INSTALL_ONLY_PROP_RESERVED`                      | error    | The "admin_install_only" property is reserved and can only be used in enterprise add-ons                                                                                           |
+| `ADMIN_INSTALL_ONLY_PROP_RESERVED`                      | error    | The `browser_specific_settings.gecko.admin_install_only` property is reserved and can only be used in enterprise add-ons                                                           |
+| `ADMIN_INSTALL_ONLY_REQUIRED`                           | error    | The `browser_specific_settings.gecko.admin_install_only` property must be set to "true" in an enterprise add-on                                                                    |
 
 ### Static Theme / manifest.json
 

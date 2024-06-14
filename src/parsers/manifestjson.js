@@ -138,6 +138,7 @@ export default class ManifestJSONParser extends JSONParser {
 
       this.io = io;
       this.isAlreadySigned = isAlreadySigned;
+      this.isEnterpriseAddon = this.schemaValidatorOptions?.enterprise ?? false;
       this.isPrivilegedAddon = this.schemaValidatorOptions?.privileged ?? false;
       this.restrictedPermissions = restrictedPermissions;
       this._validate();
@@ -520,7 +521,18 @@ export default class ManifestJSONParser extends JSONParser {
       };
     }
 
-    if (
+    // We only want `admin_install_only` to be set in `bss` when `--enterprise`
+    // is set, otherwise we don't want the flag _at all_, which includes both
+    // `bss` and `applications`.
+    if (this.isEnterpriseAddon) {
+      if (
+        this.parsedJSON.browser_specific_settings?.gecko?.admin_install_only !==
+        true
+      ) {
+        this.collector.addError(messages.ADMIN_INSTALL_ONLY_REQUIRED);
+        this.isValid = false;
+      }
+    } else if (
       typeof this.parsedJSON.applications?.gecko?.admin_install_only !==
       'undefined'
     ) {
