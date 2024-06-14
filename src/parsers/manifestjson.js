@@ -540,15 +540,6 @@ export default class ManifestJSONParser extends JSONParser {
       this.isValid = false;
     }
 
-    if (
-      this.parsedJSON.manifest_version >= 3 &&
-      this.parsedJSON.browser_specific_settings?.gecko_android
-    ) {
-      this.collector.addWarning(
-        messages.MANIFEST_V3_FIREFOX_ANDROID_LIMITATIONS
-      );
-    }
-
     if (this.parsedJSON.content_security_policy != null) {
       this.validateCspPolicy(this.parsedJSON.content_security_policy);
     }

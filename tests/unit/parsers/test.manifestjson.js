@@ -365,28 +365,6 @@ describe('ManifestJSONParser', () => {
     expect(manifestJSONParser.isValid).toEqual(true);
   });
 
-  it('should warn when gecko_android is set along with manifest_version 3', () => {
-    const addonLinter = new Linter({ _: ['bar'] });
-    const json = validManifestJSON({
-      browser_specific_settings: {
-        gecko: { id: 'test@ext' },
-        gecko_android: {},
-      },
-      manifest_version: 3,
-    });
-
-    const manifestJSONParser = new ManifestJSONParser(
-      json,
-      addonLinter.collector
-    );
-
-    const { warnings } = addonLinter.collector;
-    expect(warnings).toEqual([
-      expect.objectContaining(messages.MANIFEST_V3_FIREFOX_ANDROID_LIMITATIONS),
-    ]);
-    expect(manifestJSONParser.isValid).toEqual(true);
-  });
-
   describe('browser_style', () => {
     function parseManifest(manifestVersion, manifestKey, browserStyleValue) {
       const manifest = {
@@ -5545,15 +5523,6 @@ describe('ManifestJSONParser', () => {
         if (manifestProps.applications) {
           expect(linter.collector.warnings).toEqual([
             expect.objectContaining(messages.APPLICATIONS_DEPRECATED),
-          ]);
-        } else if (
-          manifestProps.manifest_version === 3 &&
-          manifestProps?.browser_specific_settings?.gecko_android
-        ) {
-          expect(linter.collector.warnings).toEqual([
-            expect.objectContaining(
-              messages.MANIFEST_V3_FIREFOX_ANDROID_LIMITATIONS
-            ),
           ]);
         } else {
           expect(linter.collector.warnings).toEqual([]);
