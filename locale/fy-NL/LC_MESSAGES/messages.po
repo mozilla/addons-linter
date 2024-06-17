@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-17 07:20+0000\n"
-"PO-Revision-Date: 2024-06-17 08:51+0000\n"
+"PO-Revision-Date: 2024-06-17 08:52+0000\n"
 "Last-Translator: Fjoerfoks <fryskefirefox@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fy_NL\n"
@@ -879,7 +879,7 @@ msgstr "De eigenskip ‘/browser_specific_settings/gecko/admin_install_only’ m
 
 #: src/messages/manifestjson.js:835
 msgid "The \"admin_install_only\" property must be set to \"true\" in an enterprise add-on."
-msgstr ""
+msgstr "De eigenskip ‘admin_install_only’ moat ynsteld wêze op ‘true’ yn in ûndernimmings-add-on."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
