@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-10 14:25+0000\n"
+"POT-Creation-Date: 2024-06-17 07:20+0000\n"
 "PO-Revision-Date: 2024-03-14 19:47+0000\n"
 "Last-Translator: Fabio Tomat <dark.tmtfx@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -543,36 +543,36 @@ msgstr ""
 msgid "The field is required."
 msgstr "Cjamp obligatori."
 
+#: src/messages/manifestjson.js:102 src/messages/manifestjson.js:110
+#: src/messages/manifestjson.js:118
+msgid "The permission type is unsupported."
+msgstr "Il gjenar di permès nol è supuartât."
+
+#: src/messages/manifestjson.js:103 src/messages/manifestjson.js:128
+msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
+msgstr ""
+"Viôt https://mzl.la/1R1n1t0 (Documentazion MDN) par vê plui informazions."
+
 #: src/messages/manifestjson.js:11 src/messages/manifestjson.js:20
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr ""
 "Viôt https://mzl.la/1ZOhoEN (Documentazion MDN) par vê plui informazions."
 
-#: src/messages/manifestjson.js:115 src/messages/manifestjson.js:123
-#: src/messages/manifestjson.js:131
-msgid "The permission type is unsupported."
-msgstr "Il gjenar di permès nol è supuartât."
-
-#: src/messages/manifestjson.js:116 src/messages/manifestjson.js:141
-msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"Viôt https://mzl.la/1R1n1t0 (Documentazion MDN) par vê plui informazions."
-
-#: src/messages/manifestjson.js:124 src/messages/manifestjson.js:170
+#: src/messages/manifestjson.js:111 src/messages/manifestjson.js:157
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
 msgstr ""
 "Viôt https://mzl.la/2Qn0fWC (Documentazion MDN) par vê plui informazions."
 
-#: src/messages/manifestjson.js:132 src/messages/manifestjson.js:179
+#: src/messages/manifestjson.js:119 src/messages/manifestjson.js:166
 msgid "See https://mzl.la/3Woeqv4 (MDN Docs) for more information."
 msgstr ""
 "Viôt https://mzl.la/3Woeqv4 (Documentazion MDN) par vê plui informazions."
 
-#: src/messages/manifestjson.js:140 src/messages/manifestjson.js:169
+#: src/messages/manifestjson.js:127 src/messages/manifestjson.js:156
 msgid "Unknown permission."
 msgstr "Permès no cognossût."
 
-#: src/messages/manifestjson.js:151
+#: src/messages/manifestjson.js:138
 msgid ""
 "%(instancePath)s: the following privileged permissions are only allowed in "
 "privileged extensions: %(privilegedPermissions)s."
@@ -580,15 +580,15 @@ msgstr ""
 "%(instancePath)s: chescj permès a son consintûts dome tes estensions cun "
 "privileçs: %(privilegedPermissions)s."
 
-#: src/messages/manifestjson.js:178
+#: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
 msgstr "“host permission“ no valit."
 
-#: src/messages/manifestjson.js:187
+#: src/messages/manifestjson.js:174
 msgid "Invalid install origin."
 msgstr "Origjin de instalazion no valide."
 
-#: src/messages/manifestjson.js:188
+#: src/messages/manifestjson.js:175
 msgid ""
 "Invalid install origin. A valid origin has - only - a scheme, hostname and "
 "optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
@@ -597,29 +597,29 @@ msgstr ""
 "host e une puarte facoltative. Viôt https://mzl.la/3TEbqbE (Documentazion "
 "MDN) par vê plui informazions."
 
-#: src/messages/manifestjson.js:19
-msgid "The field is invalid."
-msgstr "Il cjamp nol è valit."
-
-#: src/messages/manifestjson.js:196
+#: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
 msgstr "\"manifest_version\" tal file manifest.json nol è un valôr valit"
 
-#: src/messages/manifestjson.js:199
+#: src/messages/manifestjson.js:186
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
 msgstr ""
 "Viôt https://mzl.la/20PenXl (Documentazion MDN) par vê plui informazions."
 
-#: src/messages/manifestjson.js:212
+#: src/messages/manifestjson.js:19
+msgid "The field is invalid."
+msgstr "Il cjamp nol è valit."
+
+#: src/messages/manifestjson.js:199
 msgid "\"%(property)s\" allows remote code execution in manifest.json"
 msgstr ""
 "“%(property)s” al permet la esecuzion di codiç di lontan in manifest.json"
 
-#: src/messages/manifestjson.js:216
+#: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
 msgstr "Un “%(property)s” personalizât al à bisugne di une altre revision."
 
-#: src/messages/manifestjson.js:228
+#: src/messages/manifestjson.js:215
 msgid ""
 "\"%(property)s\" allows 'eval', which has strong security and performance "
 "implications."
@@ -627,7 +627,7 @@ msgstr ""
 "“%(property)s” al permet “eval”, che al à implicazions significativis in "
 "tiermins di sigurece e prestazions."
 
-#: src/messages/manifestjson.js:232
+#: src/messages/manifestjson.js:219
 msgid ""
 "In most cases the same result can be achieved differently, therefore it is "
 "generally prohibited"
@@ -635,23 +635,23 @@ msgstr ""
 "Te plui part dai câs al è pussibil otignî il stes risultât in mût diviers, "
 "duncje in gjenerâl al è vietât"
 
-#: src/messages/manifestjson.js:240
+#: src/messages/manifestjson.js:227
 msgid ""
 "The \"name\" property must be a string with no leading/trailing whitespaces."
 msgstr ""
 "La proprietât “name” e scugne jessi une stringhe cence spazis vueits al "
 "inizi o ae fin."
 
-#: src/messages/manifestjson.js:243
+#: src/messages/manifestjson.js:230
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
 msgstr ""
 "Viôt http://mzl.la/1STmr48 (Documentazion MDN) par vê plui informazions."
 
-#: src/messages/manifestjson.js:251
+#: src/messages/manifestjson.js:238
 msgid "\"update_url\" is not allowed."
 msgstr "\"update_url\" nol è consintût."
 
-#: src/messages/manifestjson.js:252
+#: src/messages/manifestjson.js:239
 msgid ""
 "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko."
 "update_url\" are not allowed for Mozilla-hosted add-ons."
@@ -659,11 +659,11 @@ msgstr ""
 "“applications.gecko.update_url” o “browser_specific_settings.gecko."
 "update_url” no son consintûts pai components adizionâi ospitâts di Mozilla."
 
-#: src/messages/manifestjson.js:261
+#: src/messages/manifestjson.js:248
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "La proprietât \"update_url\" no ven doprade di Firefox."
 
-#: src/messages/manifestjson.js:262
+#: src/messages/manifestjson.js:249
 msgid ""
 "The \"update_url\" is not used by Firefox in the root of a manifest; your "
 "add-on will be updated via the Add-ons site and not your \"update_url\". "
@@ -673,11 +673,11 @@ msgstr ""
 "component adizionâl al vignarà inzornât midiant il sît dai components "
 "adizionâi e no midiant “update_url”. Viôt: https://mzl.la/25zqk4O"
 
-#: src/messages/manifestjson.js:270
+#: src/messages/manifestjson.js:257
 msgid "\"strict_max_version\" not required."
 msgstr "\"strict_max_version\" no necessari."
 
-#: src/messages/manifestjson.js:271
+#: src/messages/manifestjson.js:258
 msgid ""
 "\"strict_max_version\" shouldn't be used unless the add-on is expected not "
 "to work with future versions of Firefox."
@@ -685,58 +685,59 @@ msgstr ""
 "No sta doprâ “strict_max_version” gjavât che no tu previodis che il "
 "component adizionâl nol funzioni cu lis versions futuris di Firefox."
 
-#: src/messages/manifestjson.js:28 src/messages/manifestjson.js:33
-msgid "Manifest Version 3 is not fully supported on Firefox for Android."
-msgstr "La version manifest 3 no je supuartade dal dut su Firefox par Android."
-
-#: src/messages/manifestjson.js:280
+#: src/messages/manifestjson.js:267
 msgid "No \"%(property)s\" property found in manifest.json"
 msgstr "No je stade cjatade nissune proprietât “%(property)s” in manifest.json"
 
-#: src/messages/manifestjson.js:283
+#: src/messages/manifestjson.js:270
 msgid "\"%(property)s\" is required"
 msgstr "“%(property)s” al è obligatori"
 
-#: src/messages/manifestjson.js:294
+#: src/messages/manifestjson.js:281
 msgid "An icon defined in the manifest could not be found in the package."
 msgstr "Nol è stât pussibil cjatâ tal pachet une icone definide tal manifest."
 
-#: src/messages/manifestjson.js:298
+#: src/messages/manifestjson.js:285
 msgid "Icon could not be found at \"%(path)s\"."
 msgstr "Impussibil cjatâ la icone in \"%(path)s\"."
 
-#: src/messages/manifestjson.js:313
+#: src/messages/manifestjson.js:300
 msgid "A background script defined in the manifest could not be found."
 msgstr "Nol è stât pussibil cjatâ un script di sotfont definît tal manifest."
 
-#: src/messages/manifestjson.js:316
+#: src/messages/manifestjson.js:303
 msgid "A background page defined in the manifest could not be found."
 msgstr "Impussibil cjatâ une pagjine di sotfont definide tal manifest."
 
-#: src/messages/manifestjson.js:321
+#: src/messages/manifestjson.js:308
 msgid "Background script could not be found at \"%(path)s\"."
 msgstr "Impussibil cjatâ in \"%(path)s\" il script di sotfont."
 
-#: src/messages/manifestjson.js:322
+#: src/messages/manifestjson.js:309
 msgid "Background page could not be found at \"%(path)s\"."
 msgstr "Impussibil cjatâ in \"%(path)s\" la pagjine di sotfont."
 
-#: src/messages/manifestjson.js:337
+#: src/messages/manifestjson.js:31
+msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
+msgstr ""
+"“%(fieldName)s” al ven ignorât pai components adizionâi cence privileçs."
+
+#: src/messages/manifestjson.js:324
 msgid "A content script defined in the manifest could not be found."
 msgstr "Impussibil cjatâ un script di contignût definît tal manifest."
 
-#: src/messages/manifestjson.js:338
+#: src/messages/manifestjson.js:325
 msgid "A content script css file defined in the manifest could not be found."
 msgstr ""
 "Impussibil cjatâ il file css cuntun script di contignût definît tal manifest."
 
-#: src/messages/manifestjson.js:343
+#: src/messages/manifestjson.js:330
 msgid ""
 "Content script defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 "Impussibil cjatâ il script di contignût definît tal manifest in \"%(path)s\"."
 
-#: src/messages/manifestjson.js:346
+#: src/messages/manifestjson.js:333
 msgid ""
 "Content script css file defined in the manifest could not be found at "
 "\"%(path)s\"."
@@ -744,43 +745,59 @@ msgstr ""
 "Impussibil cjatâ tal manifest in \"%(path)s\" il file css dal script di "
 "contignût."
 
-#: src/messages/manifestjson.js:360
+#: src/messages/manifestjson.js:347
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "Impussibil cjatâ un file di dizionari definît tal manifest."
 
-#: src/messages/manifestjson.js:364
+#: src/messages/manifestjson.js:35
+msgid ""
+"\"%(fieldName)s\" manifest field is only used for privileged and temporarily "
+"installed extensions."
+msgstr ""
+"Il cjamp dal manifest “%(fieldName)s” al ven doprât dome pes estensions cun "
+"privileçs e instaladis in mût temporani."
+
+#: src/messages/manifestjson.js:351
 msgid ""
 "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr ""
 "Impussibil cjatâ il file di dizionari definît tal manifest in \"%(path)s\"."
 
-#: src/messages/manifestjson.js:376
+#: src/messages/manifestjson.js:363
 msgid "The manifest contains multiple dictionaries."
 msgstr "Il manifest al conten plui dizionaris."
 
-#: src/messages/manifestjson.js:377
+#: src/messages/manifestjson.js:364
 msgid ""
 "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr ""
 "Tal manifest a son stâts cjatâts plui dizionaris, cheste opzion no je "
 "supuartade."
 
-#: src/messages/manifestjson.js:386
+#: src/messages/manifestjson.js:373
 msgid "The manifest contains a dictionaries object, but it is empty."
 msgstr "Il manifest al conten un ogjet dictionaries, ma al è vueit."
 
-#: src/messages/manifestjson.js:389
+#: src/messages/manifestjson.js:376
 msgid "A dictionaries object was defined in the manifest, but it was empty."
 msgstr "Tal manifest al jere definît un ogjet dictionaries, ma al jere vueit."
 
-#: src/messages/manifestjson.js:398
+#: src/messages/manifestjson.js:385
 msgid "The manifest contains a dictionary but no id property."
 msgstr "Il manifest al conten un dizionari ma nol à une proprietât ID."
 
-#: src/messages/manifestjson.js:399
+#: src/messages/manifestjson.js:386
 msgid "A dictionary was found in the manifest, but there was no id set."
 msgstr ""
 "Tal manifest al è stât cjatât un dizionari, ma nol jere configurât un ID."
+
+#: src/messages/manifestjson.js:396
+msgid "Forbidden content found in add-on."
+msgstr "Cjatât contignût vietât tal component adizionât."
+
+#: src/messages/manifestjson.js:397
+msgid "This add-on contains forbidden content."
+msgstr "Chest component adizionâl al conten contignût vietât."
 
 #: src/messages/manifestjson.js:4
 msgid ""
@@ -790,27 +807,19 @@ msgstr ""
 "Fâs riferiment a https://github.com/mozilla-extensions/xpi-manifest par savê "
 "di plui su lis estensions cun privileçs e su la firme."
 
-#: src/messages/manifestjson.js:409
-msgid "Forbidden content found in add-on."
-msgstr "Cjatât contignût vietât tal component adizionât."
-
-#: src/messages/manifestjson.js:410
-msgid "This add-on contains forbidden content."
-msgstr "Chest component adizionâl al conten contignût vietât."
-
-#: src/messages/manifestjson.js:418
+#: src/messages/manifestjson.js:405
 msgid "Icons must be square."
 msgstr "Lis iconis a scugnin jessi cuadradis."
 
-#: src/messages/manifestjson.js:419
+#: src/messages/manifestjson.js:406
 msgid "Icon at \"%(path)s\" must be square."
 msgstr "La icone in \"%(path)s\" e scugne jessi cuadrade."
 
-#: src/messages/manifestjson.js:430
+#: src/messages/manifestjson.js:417
 msgid "The size of the icon does not match the manifest."
 msgstr "La dimension de icone no corispuint al manifest."
 
-#: src/messages/manifestjson.js:432
+#: src/messages/manifestjson.js:419
 msgid ""
 "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was "
 "%(actual)d."
@@ -818,79 +827,76 @@ msgstr ""
 "La icone “%(path)s” e varès di vê une largjece di %(expected)d pixels ma int "
 "veve %(actual)d)."
 
-#: src/messages/manifestjson.js:44
-msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
-"“%(fieldName)s” al ven ignorât pai components adizionâi cence privileçs."
-
-#: src/messages/manifestjson.js:445
+#: src/messages/manifestjson.js:432
 msgid "Corrupt image file"
 msgstr "File imagjin ruvinât"
 
-#: src/messages/manifestjson.js:447
+#: src/messages/manifestjson.js:434
 msgid "Expected icon file at \"%(path)s\" is corrupted"
 msgstr "Il file icone previodût in \"%(path)s\" al è ruvinât"
 
-#: src/messages/manifestjson.js:456
+#: src/messages/manifestjson.js:443
 msgid "This property has been deprecated."
 msgstr "Cheste proprietât e je deplorade."
 
-#: src/messages/manifestjson.js:463
+#: src/messages/manifestjson.js:450
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr "Chest alias dal teme LWS al è stât gjavât in Firefox 70."
 
-#: src/messages/manifestjson.js:464
+#: src/messages/manifestjson.js:451
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
 msgstr ""
 "Viôt https://mzl.la/2T11Lkc (Documentazion MDN) par vê plui informazions."
 
-#: src/messages/manifestjson.js:479
+#: src/messages/manifestjson.js:466
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
 msgstr "Impussibil cjatâ la imagjin dal teme “%(type)s” in “%(path)s”"
 
-#: src/messages/manifestjson.js:48
-msgid ""
-"\"%(fieldName)s\" manifest field is only used for privileged and temporarily "
-"installed extensions."
-msgstr ""
-"Il cjamp dal manifest “%(fieldName)s” al ven doprât dome pes estensions cun "
-"privileçs e instaladis in mût temporani."
-
-#: src/messages/manifestjson.js:490
+#: src/messages/manifestjson.js:477
 msgid "Corrupted theme image file"
 msgstr "File imagjin dal teme ruvinât"
 
-#: src/messages/manifestjson.js:492
+#: src/messages/manifestjson.js:479
 msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "Il file imagjin dal teme in \"%(path)s\" al è ruvinât"
 
-#: src/messages/manifestjson.js:503
+#: src/messages/manifestjson.js:49
+msgid ""
+"\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
+msgstr ""
+"“%(fieldName)s” nol è supuartât tes versions dal manifest %(versionRange)s."
+
+#: src/messages/manifestjson.js:490
 msgid "Theme image file has an unsupported file extension"
 msgstr "Il file imagjin dal teme al à une estension che no je supuartade"
 
-#: src/messages/manifestjson.js:505
+#: src/messages/manifestjson.js:492
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
 msgstr ""
 "Il file imagjin dal teme in \"%(path)s\" al à une estension che no je "
 "supuartade"
 
-#: src/messages/manifestjson.js:519
+#: src/messages/manifestjson.js:506
 msgid "Theme image file has an unsupported mime type"
 msgstr "Il file imagjin dal teme al à un gjenar mime no supuartât"
 
-#: src/messages/manifestjson.js:521
+#: src/messages/manifestjson.js:508
 msgid ""
 "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
 msgstr ""
 "Il file imagjin dal teme in \"%(path)s\" al à il gjenar mime \"%(mime)s\" "
 "che nol è supuartât"
 
-#: src/messages/manifestjson.js:535
+#: src/messages/manifestjson.js:51
+msgid "\"%(fieldName)s\" is not supported."
+msgstr "“%(fieldName)s” nol è supuartât."
+
+#: src/messages/manifestjson.js:522
 msgid "Theme image file mime type does not match its file extension"
 msgstr ""
 "Il gjenar mime dal file imagjin dal teme nol corispuint ae estension dal file"
 
-#: src/messages/manifestjson.js:539
+#: src/messages/manifestjson.js:526
 msgid ""
 "Theme image file extension at \"%(path)s\" does not match its actual mime "
 "type \"%(mime)s\""
@@ -898,11 +904,11 @@ msgstr ""
 "La estension dal file imagjin dal teme in “%(path)s” no corispuint al gjenar "
 "mime efetîf “%(mime)s”"
 
-#: src/messages/manifestjson.js:552
+#: src/messages/manifestjson.js:539
 msgid "The \"default_locale\" is missing localizations."
 msgstr "La traduzion par \"default_locale\" no je complete."
 
-#: src/messages/manifestjson.js:553
+#: src/messages/manifestjson.js:540
 msgid ""
 "The \"default_locale\" value is specified in the manifest, but no matching "
 "\"messages.json\" in the \"_locales\" directory exists. See: https://mzl."
@@ -912,11 +918,11 @@ msgstr ""
 "“messages.json” corispondent te cartele “_locales”. Viôt: https://mzl."
 "la/2hjcaEE"
 
-#: src/messages/manifestjson.js:561
+#: src/messages/manifestjson.js:548
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "Rilevât \"_locales\", ma no \"default_locale\"."
 
-#: src/messages/manifestjson.js:562
+#: src/messages/manifestjson.js:549
 msgid ""
 "The \"default_locale\" value is not specifed in the manifest, but a "
 "\"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
@@ -924,17 +930,17 @@ msgstr ""
 "Il valôr “default_locale” nol è specificât tal manifest, ma e esist un "
 "cartele “_locales”. Viôt: https://mzl.la/2hjcaEE"
 
-#: src/messages/manifestjson.js:570
+#: src/messages/manifestjson.js:557
 msgid "Unsupported image extension"
 msgstr "Estension di imagjin no supuartade"
 
-#: src/messages/manifestjson.js:571
+#: src/messages/manifestjson.js:558
 msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr ""
 "Lis iconis a scugnin jessi intun di chescj formâts: JPG/JPEG, WebP, GIF, PNG "
 "o SVG."
 
-#: src/messages/manifestjson.js:579
+#: src/messages/manifestjson.js:566
 msgid ""
 "\"applications\" property overridden by \"browser_specific_settings\" "
 "property"
@@ -942,7 +948,7 @@ msgstr ""
 "Proprietât “applications” sostituide de proprietât "
 "“browser_specific_settings”"
 
-#: src/messages/manifestjson.js:582
+#: src/messages/manifestjson.js:569
 msgid ""
 "The \"applications\" property is being ignored because it is superseded by "
 "the \"browser_specific_settings\" property which is also defined in your "
@@ -952,20 +958,20 @@ msgstr ""
 "sostituide de proprietât “browser_specific_settings”, ancje chê definide tal "
 "manifest. Valute la pussibilitât di gjavâ “applications”."
 
-#: src/messages/manifestjson.js:592
+#: src/messages/manifestjson.js:579
 msgid "Empty language directory"
 msgstr "Cartele des lenghis vueide"
 
-#: src/messages/manifestjson.js:594
+#: src/messages/manifestjson.js:581
 msgid "messages.json file missing in \"%(path)s\""
 msgstr "Al mancje il file messages.json in \"%(path)s\""
 
-#: src/messages/manifestjson.js:610
+#: src/messages/manifestjson.js:597
 msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr ""
 "Il manifest key nol è supuartât te version minime di Firefox specificade"
 
-#: src/messages/manifestjson.js:614 src/messages/manifestjson.js:636
+#: src/messages/manifestjson.js:601 src/messages/manifestjson.js:623
 msgid ""
 "\"strict_min_version\" requires Firefox %(minVersion)s, which was released "
 "before version %(versionAdded)s introduced support for \"%(key)s\"."
@@ -974,21 +980,19 @@ msgstr ""
 "publicât prime che la version %(versionAdded)s e introdusès il supuart par "
 "“%(key)s”."
 
-#: src/messages/manifestjson.js:62
-msgid ""
-"\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
-"“%(fieldName)s” nol è supuartât tes versions dal manifest %(versionRange)s."
-
-#: src/messages/manifestjson.js:632
+#: src/messages/manifestjson.js:619
 msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "Il permès nol è supuartât de version minime di Firefox specificade"
 
 #: src/messages/manifestjson.js:64
-msgid "\"%(fieldName)s\" is not supported."
-msgstr "“%(fieldName)s” nol è supuartât."
+msgid ""
+"%(instancePath)s: privileged manifest fields are only allowed in privileged "
+"extensions."
+msgstr ""
+"%(instancePath)s: i cjamps dal manifest cun privileçs a son consintûts dome "
+"tes estensions cun privileçs."
 
-#: src/messages/manifestjson.js:654
+#: src/messages/manifestjson.js:641
 msgid ""
 "Manifest key not supported by the specified minimum Firefox for Android "
 "version"
@@ -996,7 +1000,7 @@ msgstr ""
 "Il manifest key nol è supuartât te version minime di Firefox par Android "
 "specificade"
 
-#: src/messages/manifestjson.js:658 src/messages/manifestjson.js:680
+#: src/messages/manifestjson.js:645 src/messages/manifestjson.js:667
 msgid ""
 "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which "
 "was released before version %(versionAdded)s introduced support for "
@@ -1006,18 +1010,18 @@ msgstr ""
 "al è stât publicât prime che la version %(versionAdded)s e introdusès il "
 "supuart par “%(key)s”."
 
-#: src/messages/manifestjson.js:676
+#: src/messages/manifestjson.js:663
 msgid ""
 "Permission not supported by the specified minimum Firefox for Android version"
 msgstr ""
 "Il permès nol è supuartât te version minime di Firefox per Android "
 "specificade"
 
-#: src/messages/manifestjson.js:691
+#: src/messages/manifestjson.js:678
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "Il colegament a “addons.mozilla.org” nol è consintût"
 
-#: src/messages/manifestjson.js:692
+#: src/messages/manifestjson.js:679
 msgid ""
 "Links directing to \"addons.mozilla.org\" are not allowed to be used for "
 "homepage"
@@ -1025,7 +1029,7 @@ msgstr ""
 "Nol è pussibil doprâ i colegaments che a pontin a “addons.mozilla.org” tant "
 "che pagjine iniziâl"
 
-#: src/messages/manifestjson.js:704
+#: src/messages/manifestjson.js:691
 msgid ""
 "The \"%(permission)s\" permission requires \"strict_min_version\" to be set "
 "to \"%(minFirefoxVersion)s\" or above"
@@ -1033,7 +1037,7 @@ msgstr ""
 "Il permès “%(permission)s” al à bisugne che “strict_min_version” al sedi "
 "metût a “%(minFirefoxVersion)s” o superiôr"
 
-#: src/messages/manifestjson.js:709
+#: src/messages/manifestjson.js:696
 msgid ""
 "The \"%(permission)s\" permission requires \"strict_min_version\" to be set "
 "to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json "
@@ -1043,16 +1047,16 @@ msgstr ""
 "metût a “%(minFirefoxVersion)s” o superiôr. Inzorne la version di manifest."
 "json par specificâ une version minime di Firefox."
 
-#: src/messages/manifestjson.js:721
+#: src/messages/manifestjson.js:708
 msgid "The extension ID is required in Manifest Version 3 and above."
 msgstr ""
 "L'ID de estension al è obligatori te version 3 o sucessivis dal manifest."
 
-#: src/messages/manifestjson.js:724
+#: src/messages/manifestjson.js:711
 msgid "See https://mzl.la/3PLZYdo for more information."
 msgstr "Viôt https://mzl.la/3PLZYdo par vê plui informazions."
 
-#: src/messages/manifestjson.js:730
+#: src/messages/manifestjson.js:717
 msgid ""
 "%(instancePath)s: Privileged extensions should declare privileged "
 "permissions."
@@ -1060,7 +1064,7 @@ msgstr ""
 "%(instancePath)s: lis estensions cun privileçs a scugnin declarâ permès cun "
 "privileçs."
 
-#: src/messages/manifestjson.js:741
+#: src/messages/manifestjson.js:728
 msgid ""
 "This extension does not declare any privileged permission. It does not need "
 "to be signed with the privileged certificate. Please upload it directly to "
@@ -1070,7 +1074,7 @@ msgstr ""
 "firmâ cul certificât privilegjât. Cjamile in rêt dret su https://addons."
 "mozilla.org/."
 
-#: src/messages/manifestjson.js:754
+#: src/messages/manifestjson.js:741
 msgid ""
 "%(instancePath)s: The \"mozillaAddons\" permission is required for "
 "privileged extensions."
@@ -1078,7 +1082,7 @@ msgstr ""
 "%(instancePath)s: pes estensions cun privileçs al è necessari il permès "
 "“mozillaAddons”."
 
-#: src/messages/manifestjson.js:757
+#: src/messages/manifestjson.js:744
 msgid ""
 "%(instancePath)s: The \"mozillaAddons\" permission is required for "
 "extensions that include privileged manifest fields."
@@ -1086,15 +1090,7 @@ msgstr ""
 "%(instancePath)s: il permès “mozillaAddons” al è necessari pes estensions "
 "che a includin cjamps dal manifest cun privileçs."
 
-#: src/messages/manifestjson.js:77
-msgid ""
-"%(instancePath)s: privileged manifest fields are only allowed in privileged "
-"extensions."
-msgstr ""
-"%(instancePath)s: i cjamps dal manifest cun privileçs a son consintûts dome "
-"tes estensions cun privileçs."
-
-#: src/messages/manifestjson.js:770
+#: src/messages/manifestjson.js:757
 msgid ""
 "This extension does not include the \"mozillaAddons\" permission, which is "
 "required for privileged extensions."
@@ -1102,11 +1098,11 @@ msgstr ""
 "Cheste estension no inclût il permès  “mozillaAddons” necessari pes "
 "estensions cun privileçs."
 
-#: src/messages/manifestjson.js:780
+#: src/messages/manifestjson.js:767
 msgid "Cannot use actions in hidden add-ons."
 msgstr "Impussibil doprâ azions in components adizionâi platâts."
 
-#: src/messages/manifestjson.js:781
+#: src/messages/manifestjson.js:768
 msgid ""
 "The hidden and browser_action/page_action (or action in Manifest Version 3 "
 "and above) properties are mutually exclusive."
@@ -1114,11 +1110,11 @@ msgstr ""
 "La proprietât “hidden” e “browser_action/page_action” (o “action” tes "
 "versions 3 e sucessivis dai manifescj) si escludin un cun chel altri."
 
-#: src/messages/manifestjson.js:789
+#: src/messages/manifestjson.js:776
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
 msgstr "Dopre “browser_specific_settings” invezit che “applications”."
 
-#: src/messages/manifestjson.js:790
+#: src/messages/manifestjson.js:777
 msgid ""
 "The \"applications\" property in the manifest is deprecated and will no "
 "longer be accepted in Manifest Version 3 and above."
@@ -1126,13 +1122,13 @@ msgstr ""
 "La proprietât “applications” tal manifest e je deplorade e no sarà plui "
 "acetade tes versions 3 e sucessivis dai manifescj."
 
-#: src/messages/manifestjson.js:798
+#: src/messages/manifestjson.js:785
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
 msgstr ""
 "“applications” nol è plui consintût tes versions 3 e sucessivis dai "
 "manifescj."
 
-#: src/messages/manifestjson.js:800
+#: src/messages/manifestjson.js:787
 msgid ""
 "The \"applications\" property in the manifest is no longer allowed in "
 "Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
@@ -1140,7 +1136,7 @@ msgstr ""
 "La proprietât “applications” tal manifest no je plui consintude tes versions "
 "3 e sucessivis dai manifescj. Al so puest dopre “browser_specific_settings”."
 
-#: src/messages/manifestjson.js:808
+#: src/messages/manifestjson.js:795
 msgid ""
 "The version string should be simplified because it won't be compatible with "
 "Manifest Version 3 and above."
@@ -1148,7 +1144,7 @@ msgstr ""
 "La stringhe de version e varès di jessi semplificade parcè che no sarà "
 "compatibile cu lis versions 3 e sucessivis dai manifescj."
 
-#: src/messages/manifestjson.js:810
+#: src/messages/manifestjson.js:797
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each "
 "number should have up to 9 digits and leading zeros will no longer be "
@@ -1160,11 +1156,11 @@ msgstr ""
 "saran plui consintûts. Ancje lis letaris no saran plui consintudis. Par vê "
 "plui informazions viôt: https://mzl.la/3h3mCRu (Documentazion MDN)."
 
-#: src/messages/manifestjson.js:819
+#: src/messages/manifestjson.js:806
 msgid "The version string should be simplified."
 msgstr "La stringhe de version e scugne jessi semplificade."
 
-#: src/messages/manifestjson.js:820
+#: src/messages/manifestjson.js:807
 msgid ""
 "The version should be a string with 1 to 4 numbers separated with dots. Each "
 "number should have up to 9 digits and leading zeros are not allowed. Letters "
@@ -1176,18 +1172,28 @@ msgstr ""
 "consintûts. Lis letaris no son plui consintudis. Par vê plui informazions, "
 "viôt https://mzl.la/3h3mCRu (Documentazion MDN)."
 
-#: src/messages/manifestjson.js:829
+#: src/messages/manifestjson.js:816
 msgid "incognito \"split\" is unsupported."
 msgstr ""
 
-#: src/messages/manifestjson.js:830
+#: src/messages/manifestjson.js:817
 msgid ""
 "The incognito \"split\" value is unsupported and will be treated as "
 "\"not_allowed\" in Firefox. Remove the key from the manifest file, if your "
 "extension is compatible with Firefox's private browsing mode."
 msgstr ""
 
-#: src/messages/manifestjson.js:96
+#: src/messages/manifestjson.js:825
+msgid "The \"admin_install_only\" property is reserved."
+msgstr ""
+
+#: src/messages/manifestjson.js:826
+msgid ""
+"The \"admin_install_only\" property is reserved and can only be used in "
+"enterprise add-ons."
+msgstr ""
+
+#: src/messages/manifestjson.js:83
 msgid ""
 "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions "
 "%(versionRange)s."
@@ -1195,9 +1201,25 @@ msgstr ""
 "/%(fieldName)s: “%(permissionName)s” nol è supuartât tes versions dal "
 "manifest %(versionRange)s."
 
-#: src/messages/manifestjson.js:98
+#: src/messages/manifestjson.js:833
+msgid ""
+"\"/browser_specific_settings/gecko/admin_install_only\" property must be set "
+"to \"true\".\""
+msgstr ""
+
+#: src/messages/manifestjson.js:835
+msgid ""
+"The \"admin_install_only\" property must be set to \"true\" in an enterprise "
+"add-on."
+msgstr ""
+
+#: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 msgstr "/%(fieldName)s: \"%(permissionName)s\" nol è supuartât."
+
+#~ msgid "Manifest Version 3 is not fully supported on Firefox for Android."
+#~ msgstr ""
+#~ "La version manifest 3 no je supuartade dal dut su Firefox par Android."
 
 #~ msgid "Invalid nesting of selectors found"
 #~ msgstr "Cjatade nidificazion di seletôrs no valide"
