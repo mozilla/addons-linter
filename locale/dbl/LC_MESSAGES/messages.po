@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-17 07:20+0000\n"
+"POT-Creation-Date: 2024-06-17 09:25+0000\n"
 "PO-Revision-Date: 2018-01-19 00:33+0000\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -992,7 +992,7 @@ msgstr ""
 #: src/messages/manifestjson.js:833
 msgid ""
 "\"/browser_specific_settings/gecko/admin_install_only\" property must be set "
-"to \"true\".\""
+"to \"true\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:835
