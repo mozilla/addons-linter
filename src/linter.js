@@ -311,9 +311,9 @@ export default class Linter {
         isAlreadySigned: Object.keys(files).some((filename) =>
           constants.ALREADY_SIGNED_REGEX.test(filename)
         ),
+        isEnterprise: this.config.enterprise,
         selfHosted: this.config.selfHosted,
         schemaValidatorOptions: {
-          enterprise: this.config.enterprise,
           privileged: this.config.privileged,
           minManifestVersion: this.config.minManifestVersion,
           maxManifestVersion: this.config.maxManifestVersion,

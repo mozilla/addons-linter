@@ -38,7 +38,8 @@ const options = {
     default: false,
   },
   enterprise: {
-    describe: 'Treat the input file (or directory) as an enterprise extension',
+    describe:
+      'Treat the input file (or directory) as an enterprise extension (implies --self-hosted)',
     type: 'boolean',
     default: false,
   },

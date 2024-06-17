@@ -5546,7 +5546,7 @@ describe('ManifestJSONParser', () => {
           },
         }),
         linter.collector,
-        { schemaValidatorOptions: { enterprise: false } }
+        { isEnterprise: false }
       );
 
       expect(manifestJSONParser.isValid).toEqual(false);
@@ -5569,7 +5569,7 @@ describe('ManifestJSONParser', () => {
           },
         }),
         linter.collector,
-        { schemaValidatorOptions: { enterprise: true } }
+        { isEnterprise: true }
       );
 
       expect(manifestJSONParser.isValid).toEqual(true);
@@ -5590,7 +5590,7 @@ describe('ManifestJSONParser', () => {
           },
         }),
         linter.collector,
-        { schemaValidatorOptions: { enterprise: true } }
+        { isEnterprise: true }
       );
 
       expect(manifestJSONParser.isValid).toEqual(false);
@@ -5613,7 +5613,7 @@ describe('ManifestJSONParser', () => {
           },
         }),
         linter.collector,
-        { schemaValidatorOptions: { enterprise: true } }
+        { isEnterprise: true }
       );
 
       expect(manifestJSONParser.isValid).toEqual(false);
@@ -5641,7 +5641,7 @@ describe('ManifestJSONParser', () => {
           },
         }),
         linter.collector,
-        { schemaValidatorOptions: { enterprise: true } }
+        { isEnterprise: true }
       );
 
       expect(manifestJSONParser.isValid).toEqual(false);
@@ -5652,5 +5652,27 @@ describe('ManifestJSONParser', () => {
         expect.objectContaining(messages.ADMIN_INSTALL_ONLY_REQUIRED),
       ]);
     });
+
+    it.each([true, false])(
+      'sets selfHosted to true when isEnterprise is true, even if selfHosted is %s',
+      (selfHosted) => {
+        const linter = new Linter({ _: ['bar'] });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          JSON.stringify({
+            manifest_version: 3,
+            name: 'some name',
+            version: '1',
+            browser_specific_settings: {
+              gecko: { admin_install_only: true },
+            },
+          }),
+          linter.collector,
+          { isEnterprise: true, selfHosted }
+        );
+
+        expect(manifestJSONParser.selfHosted).toEqual(true);
+      }
+    );
   });
 });

@@ -95,6 +95,7 @@ export default class ManifestJSONParser extends JSONParser {
       schemaValidatorOptions,
       io = null,
       isAlreadySigned = false,
+      isEnterprise = getDefaultConfigValue('enterprise'),
       restrictedPermissions = RESTRICTED_PERMISSIONS,
     } = {}
   ) {
@@ -112,7 +113,10 @@ export default class ManifestJSONParser extends JSONParser {
       };
     } else {
       // We've parsed the JSON; now we can validate the manifest.
-      this.selfHosted = selfHosted;
+
+      // --enterprise implies --self-hosted since we cannot host enterprise
+      // add-ons on AMO.
+      this.selfHosted = selfHosted || isEnterprise;
       this.schemaValidatorOptions = schemaValidatorOptions;
 
       const hasManifestKey = (key) =>
@@ -138,7 +142,7 @@ export default class ManifestJSONParser extends JSONParser {
 
       this.io = io;
       this.isAlreadySigned = isAlreadySigned;
-      this.isEnterpriseAddon = this.schemaValidatorOptions?.enterprise ?? false;
+      this.isEnterpriseAddon = isEnterprise;
       this.isPrivilegedAddon = this.schemaValidatorOptions?.privileged ?? false;
       this.restrictedPermissions = restrictedPermissions;
       this._validate();
