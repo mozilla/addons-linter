@@ -831,7 +831,7 @@ export const ADMIN_INSTALL_ONLY_PROP_RESERVED = {
 export const ADMIN_INSTALL_ONLY_REQUIRED = {
   code: 'ADMIN_INSTALL_ONLY_REQUIRED',
   message: i18n._(`"/browser_specific_settings/gecko/admin_install_only"
-    property must be set to "true"."`),
+    property must be set to "true".`),
   description: i18n._(`The "admin_install_only" property must be set to "true"
     in an enterprise add-on.`),
   file: MANIFEST_JSON,
