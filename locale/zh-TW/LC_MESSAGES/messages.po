@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-17 07:20+0000\n"
-"PO-Revision-Date: 2024-06-17 08:02+0000\n"
+"PO-Revision-Date: 2024-06-17 08:04+0000\n"
 "Last-Translator: Pin-guang Chen <petercpg@mail.moztw.org>\n"
 "Language-Team: none\n"
 "Language: zh_TW\n"
@@ -845,11 +845,11 @@ msgstr "/%(fieldName)s：安裝資訊檔版本 %(versionRange)s 不支援「%(pe
 
 #: src/messages/manifestjson.js:833
 msgid "\"/browser_specific_settings/gecko/admin_install_only\" property must be set to \"true\".\""
-msgstr ""
+msgstr "「/browser_specific_settings/gecko/admin_install_only」必須設定為「true」。"
 
 #: src/messages/manifestjson.js:835
 msgid "The \"admin_install_only\" property must be set to \"true\" in an enterprise add-on."
-msgstr ""
+msgstr "企業用附加元件的「admin_install_only」屬性必須設定為「true」。"
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
