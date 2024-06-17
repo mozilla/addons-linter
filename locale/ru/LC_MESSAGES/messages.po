@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-17 07:20+0000\n"
-"PO-Revision-Date: 2024-06-17 08:31+0000\n"
+"PO-Revision-Date: 2024-06-17 08:32+0000\n"
 "Last-Translator: Valery Ledovskoy <valery@ledovskoy.com>\n"
 "Language-Team: none\n"
 "Language: ru\n"
@@ -876,11 +876,11 @@ msgstr "/%(fieldName)s: «%(permissionName)s» не поддерживается
 
 #: src/messages/manifestjson.js:833
 msgid "\"/browser_specific_settings/gecko/admin_install_only\" property must be set to \"true\".\""
-msgstr ""
+msgstr "Свойство \"/browser_specific_settings/gecko/admin_install_only\" должно быть установлено в \"true\"."
 
 #: src/messages/manifestjson.js:835
 msgid "The \"admin_install_only\" property must be set to \"true\" in an enterprise add-on."
-msgstr ""
+msgstr "В корпоративном дополнении свойство «admin_install_only» должно быть установлено в «true»."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
