@@ -139,64 +139,6 @@ describe('Collector', () => {
     expect(collection.notices.length).toEqual(0);
   });
 
-  it('should filter message by filename if config.scanFile is defined', () => {
-    const collection = new Collector({
-      scanFile: ['test.js', 'no-match-file.js'],
-    });
-
-    expect(collection.length).toEqual(0);
-
-    // Test linting error without a file.
-    collection.addError({
-      ...fakeMessageData,
-    });
-    expect(collection.length).toEqual(1);
-
-    expect(collection.errors.length).toEqual(1);
-    expect(collection.warnings.length).toEqual(0);
-    expect(collection.notices.length).toEqual(0);
-    expect(collection.errors[0].code).toEqual(fakeMessageData.code);
-
-    // Test linting error with an excluded file.
-    collection.addError({
-      ...fakeMessageData,
-      file: 'non-test.js',
-    });
-    expect(collection.length).toEqual(1);
-
-    // Test linting error with an included file.
-    collection.addError({
-      ...fakeMessageData,
-      file: 'test.js',
-    });
-    expect(collection.length).toEqual(2);
-
-    // Test filtered warnings.
-    collection.addWarning({
-      ...fakeMessageData,
-      file: 'test.js',
-    });
-    expect(collection.length).toEqual(3);
-
-    // Test filtered notices.
-    collection.addNotice({
-      ...fakeMessageData,
-      file: 'test.js',
-    });
-    expect(collection.length).toEqual(4);
-
-    expect(collection.errors.length).toEqual(2);
-    expect(collection.warnings.length).toEqual(1);
-    expect(collection.notices.length).toEqual(1);
-
-    expect(collection.errors[1].code).toEqual(fakeMessageData.code);
-    expect(collection.errors[1].file).toEqual('test.js');
-    expect(collection.warnings[0].code).toEqual(fakeMessageData.code);
-    expect(collection.warnings[0].file).toEqual('test.js');
-    expect(collection.notices[0].code).toEqual(fakeMessageData.code);
-    expect(collection.notices[0].file).toEqual('test.js');
-  });
-
   it('should throw when getting messages for an undefined instancePath', () => {
     const collection = new Collector();
     expect(() => {

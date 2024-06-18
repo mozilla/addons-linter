@@ -184,28 +184,10 @@ describe('Linter', () => {
     );
   });
 
-  it('should optionally scan a single file', async () => {
-    const addonLinter = new Linter({
-      _: ['tests/fixtures/webextension_scan_file'],
-      scanFile: ['subdir/test.js'],
-    });
-    // Stub print to prevent output.
-    addonLinter.print = sinon.stub();
-
-    const getFileSpy = sinon.spy(addonLinter, 'scanFile');
-
-    await addonLinter.scan();
-    sinon.assert.callOrder(
-      getFileSpy.withArgs('manifest.json'),
-      getFileSpy.withArgs('subdir/test.js')
-    );
-  });
-
   it.each(['mjs', 'jsm'])('should scan %s files', async (fileExtension) => {
     const filename = `file.${fileExtension}`;
     const addonLinter = new Linter({
       _: ['tests/fixtures/webextension_scan_file'],
-      scanFile: [filename],
     });
     // Stub print to prevent output.
     addonLinter.print = sinon.stub();
@@ -247,43 +229,6 @@ describe('Linter', () => {
     expect(addonLinter.collector.scannedFiles).toEqual({
       '.hidden.js': ['javascript'],
     });
-  });
-
-  it('should optionally scan selected files', async () => {
-    const addonLinter = new Linter({
-      _: ['tests/fixtures/webextension_scan_file'],
-      scanFile: ['subdir/test.js', 'subdir/test2.js'],
-    });
-    // Stub print to prevent output.
-    addonLinter.print = sinon.stub();
-
-    const getFileSpy = sinon.spy(addonLinter, 'scanFile');
-
-    await addonLinter.scan();
-
-    // There is no guarantee that test.js and test2.js will always
-    // be scanned in the same order (the order will depend from the
-    // order of the files returned by the getFiles method from the
-    // IOBase subclass, part of the addons-scanner-utils) and asserting
-    // a specific calls order here was making this test to fail
-    // intermittently.
-    sinon.assert.calledWith(getFileSpy, 'manifest.json');
-    sinon.assert.calledWith(getFileSpy, 'subdir/test.js');
-    sinon.assert.calledWith(getFileSpy, 'subdir/test2.js');
-  });
-
-  it('should raise an error if selected file are not found', async () => {
-    const files = ['subdir/test3.js', 'subdir/test4.js'];
-    const addonLinter = new Linter({
-      _: ['tests/fixtures/webextension_scan_file'],
-      scanFile: files,
-    });
-    // Stub print to prevent output.
-    addonLinter.print = sinon.stub();
-
-    await expect(addonLinter.scan()).rejects.toThrow(
-      `Selected file(s) not found: ${files.join(', ')}`
-    );
   });
 
   it('should throw when message.type is undefined', async () => {
@@ -497,26 +442,6 @@ describe('Linter.print()', () => {
     sinon.assert.notCalled(addonLinter.textOutput);
     sinon.assert.notCalled(addonLinter.toJSON);
     sinon.assert.notCalled(fakeConsole.log);
-  });
-
-  it('should print scanFile if any', () => {
-    const addonLinter = new Linter({
-      _: ['foo'],
-      scanFile: ['testfile.js'],
-    });
-    const textOutputSpy = sinon.spy(addonLinter, 'textOutput');
-
-    addonLinter.config.output = 'text';
-
-    let logData = '';
-    const fakeConsole = {
-      // eslint-disable-next-line no-return-assign
-      log: sinon.spy((...args) => (logData += `${args.join(' ')}\n`)),
-    };
-    addonLinter.print(fakeConsole);
-    sinon.assert.calledOnce(textOutputSpy);
-    sinon.assert.calledOnce(fakeConsole.log);
-    expect(logData).toContain('Selected files: testfile.js');
   });
 });
 
@@ -1736,34 +1661,6 @@ describe('Linter.run()', () => {
       });
 
       await addonLinter.run({ _Xpi: FakeXpi });
-
-      expect(FakeXpi.closeWasCalled).toEqual(true);
-    });
-
-    it('should not close the IO object when auto-close feature is enabled (default) and selected files are missing', async () => {
-      const addonLinter = new Linter({
-        _: ['tests/fixtures/webextension.zip'],
-        scanFile: ['subdir/test.js'],
-        disableXpiAutoclose: false,
-      });
-
-      await expect(addonLinter.run({ _Xpi: FakeXpi })).rejects.toThrow(
-        /Selected file\(s\) not found/
-      );
-
-      expect(FakeXpi.closeWasCalled).toEqual(false);
-    });
-
-    it('should close the IO object when auto-close feature is disabled and selected files are missing', async () => {
-      const addonLinter = new Linter({
-        _: ['tests/fixtures/webextension.zip'],
-        scanFile: ['subdir/test.js'],
-        disableXpiAutoclose: true,
-      });
-
-      await expect(addonLinter.run({ _Xpi: FakeXpi })).rejects.toThrow(
-        /Selected file\(s\) not found/
-      );
 
       expect(FakeXpi.closeWasCalled).toEqual(true);
     });

@@ -72,12 +72,6 @@ const options = {
     default: 3,
     requiresArg: true,
   },
-  'scan-file': {
-    alias: ['f'],
-    describe: 'Scan a selected file',
-    type: 'string',
-    requiresArg: true,
-  },
   'disable-linter-rules': {
     describe: 'Disable list of comma separated eslint rules',
     type: 'string',

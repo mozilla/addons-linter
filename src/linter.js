@@ -46,18 +46,6 @@ export default class Linter {
 
   set config(cfg) {
     this._config = cfg;
-
-    // normalize the scanFile option:
-    // convert into an array if needed and filter out any undefined
-    // or empty strings.
-    if (this._config.scanFile) {
-      let scanFile = Array.isArray(this._config.scanFile)
-        ? this._config.scanFile
-        : [this._config.scanFile];
-      scanFile = scanFile.filter((el) => el && el.length > 0);
-
-      this._config.scanFile = scanFile;
-    }
   }
 
   get config() {
@@ -267,11 +255,6 @@ export default class Linter {
       }
     });
 
-    if (this.output.scanFile) {
-      out.push(`Selected files: ${this.output.scanFile.join(', ')}`);
-      out.push('');
-    }
-
     return out.join('\n');
   }
 
@@ -282,15 +265,12 @@ export default class Linter {
       metadata: this.addonMetadata,
     };
 
-    if (this.config.scanFile) {
-      output.scanFile = this.config.scanFile;
-    }
-
     constants.MESSAGE_TYPES.forEach((type) => {
       const messageType = `${type}s`;
       output[messageType] = this.collector[messageType];
       output.summary[messageType] = this.collector[messageType].length;
     });
+
     return output;
   }
 
@@ -540,18 +520,6 @@ export default class Linter {
       return this.config.shouldScanFile(fileOrDirName, isDir);
     }
 
-    if (this.config.scanFile) {
-      const manifestFileNames = ['manifest.json', 'package.json'];
-
-      // Always scan sub directories and the manifest files,
-      // or the linter will not be able to detect the addon type.
-      if (isDir || manifestFileNames.includes(fileOrDirName)) {
-        return true;
-      }
-
-      return this.config.scanFile.some((v) => v === fileOrDirName);
-    }
-
     // Defaults to true.
     return true;
   }
@@ -560,14 +528,6 @@ export default class Linter {
     try {
       await this.extractMetadata(deps);
       const files = await this.io.getFiles();
-
-      if (
-        this.config.scanFile &&
-        !this.config.scanFile.some((f) => Object.keys(files).includes(f))
-      ) {
-        const _files = this.config.scanFile.join(', ');
-        throw new Error(`Selected file(s) not found: ${_files}`);
-      }
 
       // Known libraries do not need to be scanned
       const filesWithoutJSLibraries = Object.keys(files).filter((file) => {
