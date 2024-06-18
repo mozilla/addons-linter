@@ -2361,6 +2361,57 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(true);
       expect(addonLinter.collector.warnings.length).toBe(0);
     });
+
+    it('emits an error when the update_url is defined in an enterprise add-on', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some enterprise add-on',
+          version: '1',
+          browser_specific_settings: {
+            gecko: {
+              id: '@test-id',
+              admin_install_only: true,
+              update_url: 'https://example.org',
+            },
+          },
+        }),
+        linter.collector,
+        { isEnterprise: true }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      expect(linter.collector.warnings).toEqual([]);
+      expect(linter.collector.errors).toEqual([
+        expect.objectContaining(messages.MANIFEST_UPDATE_URL),
+      ]);
+    });
+
+    it('does not emit an error when the update_url is defined in a self-hosted add-on', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some unlisted add-on',
+          version: '1',
+          browser_specific_settings: {
+            gecko: {
+              id: '@test-id',
+              update_url: 'https://example.org',
+            },
+          },
+        }),
+        linter.collector,
+        { selfHosted: true }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(true);
+      expect(linter.collector.warnings).toEqual([]);
+      expect(linter.collector.errors).toEqual([]);
+    });
   });
 
   describe('schema error overrides', () => {
