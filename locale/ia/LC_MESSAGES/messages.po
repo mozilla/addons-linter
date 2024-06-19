@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-17 09:25+0000\n"
-"PO-Revision-Date: 2024-06-18 12:05+0000\n"
+"PO-Revision-Date: 2024-06-19 15:42+0000\n"
 "Last-Translator: Melo46 <melo@carmu.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ia\n"
@@ -867,7 +867,7 @@ msgstr "Le proprietate “admin_install_only” es reservate."
 
 #: src/messages/manifestjson.js:826
 msgid "The \"admin_install_only\" property is reserved and can only be used in enterprise add-ons."
-msgstr ""
+msgstr "Le proprietate \"admin_install_only\" es reservate e pote solo esser usate in additivos de interprisa."
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
@@ -875,11 +875,11 @@ msgstr "/%(fieldName)s: \"%(permissionName)s\" non es supportate in le versiones
 
 #: src/messages/manifestjson.js:833
 msgid "\"/browser_specific_settings/gecko/admin_install_only\" property must be set to \"true\"."
-msgstr ""
+msgstr "\"/browser_specific_settings/gecko/admin_install_only\" proprietate debe haber le valor \"true\"."
 
 #: src/messages/manifestjson.js:835
 msgid "The \"admin_install_only\" property must be set to \"true\" in an enterprise add-on."
-msgstr ""
+msgstr "Le proprietate \"admin_install_only\" debe esser predefinite a \"ver\" in un additivo de interprisa."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
