@@ -879,7 +879,7 @@ msgstr "\"/browser_specific_settings/gecko/admin_install_only\" proprietate debe
 
 #: src/messages/manifestjson.js:835
 msgid "The \"admin_install_only\" property must be set to \"true\" in an enterprise add-on."
-msgstr "Le proprietate \"admin_install_only\" debe esser predefinite a \"ver\" in un additivo de interprisa."
+msgstr "\"/browser_specific_settings/gecko/admin_install_only\" proprietate debe haber le valor \"true\"."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
