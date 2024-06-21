@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-17 09:25+0000\n"
+"POT-Creation-Date: 2024-06-21 10:05+0000\n"
 "PO-Revision-Date: 2020-01-26 16:26+0000\n"
 "Last-Translator: صفا الفليج <safa1996alfulaij@gmail.com>\n"
 "Language-Team: none\n"
@@ -15,35 +15,35 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
 "X-Generator: Pontoon\n"
 
-#: src/linter.js:173
+#: src/linter.js:161
 msgid "Validation Summary:"
 msgstr "ملخص التحقق:"
 
-#: src/linter.js:192
+#: src/linter.js:180
 msgid "Code"
 msgstr "الرمز"
 
-#: src/linter.js:198
+#: src/linter.js:186
 msgid "Message"
 msgstr "الرسالة"
 
-#: src/linter.js:204
+#: src/linter.js:192
 msgid "Description"
 msgstr "الوصف"
 
-#: src/linter.js:210
+#: src/linter.js:198
 msgid "File"
 msgstr "الملف"
 
-#: src/linter.js:216
+#: src/linter.js:204
 msgid "Line"
 msgstr "السطر"
 
-#: src/linter.js:222
+#: src/linter.js:210
 msgid "Column"
 msgstr "العمود"
 
-#: src/linter.js:72
+#: src/linter.js:60
 msgid ""
 "Invalid manifest version range requested: --min-manifest-version (currently "
 "set to %(minManifestVersion)s) should not be greater than --max-manifest-"
