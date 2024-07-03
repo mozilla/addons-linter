@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-21 10:05+0000\n"
-"PO-Revision-Date: 2024-07-03 11:20+0000\n"
+"PO-Revision-Date: 2024-07-03 11:28+0000\n"
 "Last-Translator: Grk <gu0townkg@relay.firefox.com>\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -176,7 +176,7 @@ msgstr "\"%(method)s\" yerel olmayan URI ile çağrıldı"
 
 #: src/messages/javascript.js:49
 msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
-msgstr ""
+msgstr "Yerel olmayan bir URI ile \"%(method)s\" çağrısı yapmak iletişim kutusunun chrome ayrıcalıklarıyla açılmasına neden olur."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -749,11 +749,13 @@ msgstr "\"addons.mozilla.org\" adresine yönlendiren bağlantıları ana sayfa o
 
 #: src/messages/manifestjson.js:691
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "\"%(permission)s\" izni için \"strict_min_version\"un \"%(minFirefoxVersion)s\" veya daha yüksek bir değere ayarlanması gerekir"
 
 #: src/messages/manifestjson.js:696
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
 msgstr ""
+"\"%(permission)s\" izni için \"strict_min_version\"un \"%(minFirefoxVersion)s\" veya daha yüksek bir değere ayarlanması gerekir. Minimum Firefox sürümünü belirlemek için lütfen manifest.json "
+"sürümünüzü güncelleyin."
 
 #: src/messages/manifestjson.js:708
 msgid "The extension ID is required in Manifest Version 3 and above."
