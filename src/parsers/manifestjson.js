@@ -13,7 +13,6 @@ import {
   validateAddon,
   validateDictionary,
   validateLangPack,
-  validateSitePermission,
   validateStaticTheme,
 } from 'schema/validator';
 import {
@@ -125,7 +124,6 @@ export default class ManifestJSONParser extends JSONParser {
       this.isStaticTheme = false;
       this.isLanguagePack = false;
       this.isDictionary = false;
-      this.isSitePermission = false;
 
       // Keep the addon type detection in sync with the most updated logic
       // used on the Firefox side, as defined in ExtensionData parseManifest
@@ -136,8 +134,6 @@ export default class ManifestJSONParser extends JSONParser {
         this.isLanguagePack = true;
       } else if (hasManifestKey('dictionaries')) {
         this.isDictionary = true;
-      } else if (hasManifestKey('site_permissions')) {
-        this.isSitePermission = true;
       }
 
       this.io = io;
@@ -461,8 +457,6 @@ export default class ManifestJSONParser extends JSONParser {
       validate = validateLangPack;
     } else if (this.isDictionary) {
       validate = validateDictionary;
-    } else if (this.isSitePermission) {
-      validate = validateSitePermission;
     }
 
     this.isValid = validate(this.parsedJSON, this.schemaValidatorOptions);

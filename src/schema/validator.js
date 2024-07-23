@@ -388,34 +388,6 @@ export class SchemaValidator {
     return this._localeValidator;
   }
 
-  get validateSitePermission() {
-    this._lazyInit();
-
-    if (!this._sitepermissionValidator) {
-      // Like with langpacks, we don't want additional properties in dictionaries,
-      // and there is no separate schema file.
-      // Uses ``deepPatch`` (instead of deepmerge) because we're patching a
-      // complicated schema instead of simply merging them together.
-      this._sitepermissionValidator = this._validator.compile({
-        ...deepPatch(this.schemaObject, {
-          types: {
-            WebExtensionSitePermissionsManifest: {
-              $merge: {
-                with: {
-                  additionalProperties: false,
-                },
-              },
-            },
-          },
-        }),
-        $id: 'sitepermission-manifest',
-        $ref: '#/types/WebExtensionSitePermissionsManifest',
-      });
-    }
-
-    return this._sitepermissionValidator;
-  }
-
   _compileAddonValidator(validator) {
     const { minimum, maximum } = this.allowedManifestVersionsRange;
     const manifestVersion = this.addonManifestVersion;
@@ -805,15 +777,6 @@ export const validateDictionary = (manifestData, validatorOptions = {}) => {
   const errors = filterErrors(validator.validateDictionary.errors);
   isValid = errors?.length > 0 ? isValid : true;
   validateDictionary.errors = errors;
-  return isValid;
-};
-
-export const validateSitePermission = (manifestData, validatorOptions = {}) => {
-  const validator = getValidator(validatorOptions);
-  let isValid = validator.validateSitePermission(manifestData);
-  const errors = filterErrors(validator.validateSitePermission.errors);
-  isValid = errors?.length > 0 ? isValid : true;
-  validateSitePermission.errors = errors;
   return isValid;
 };
 

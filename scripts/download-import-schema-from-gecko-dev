@@ -19,7 +19,7 @@ const GIT_CONFIG = {
     'browser/config/version_display.txt',
     'toolkit/components/extensions/schemas',
     'browser/components/extensions/schemas',
-    'mobile/android/components/extensions/schemas',
+    'mobile/shared/components/extensions/schemas',
   ],
   partialCloneOptions: '--depth 1 --filter=blob:none --no-checkout',
   tmpDir: tmp.dirSync({

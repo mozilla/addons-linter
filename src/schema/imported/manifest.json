@@ -314,6 +314,21 @@
                   },
                   "default": []
                 },
+                "optional_host_permissions": {
+                  "min_manifest_version": 3,
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/types/MatchPattern"
+                      },
+                      {
+                        "onError": "warn"
+                      }
+                    ]
+                  },
+                  "default": []
+                },
                 "optional_permissions": {
                   "type": "array",
                   "items": {
@@ -567,39 +582,6 @@
         }
       }
     },
-    "WebExtensionSitePermissionsManifest": {
-      "$merge": {
-        "source": {
-          "$ref": "manifest#/types/ManifestBase"
-        },
-        "with": {
-          "type": "object",
-          "description": "Represents a WebExtension site permissions manifest.json file",
-          "properties": {
-            "site_permissions": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "$ref": "#/types/SitePermission"
-              }
-            },
-            "install_origins": {
-              "type": "array",
-              "minItems": 1,
-              "maxItems": 1,
-              "items": {
-                "type": "string",
-                "format": "origin"
-              }
-            }
-          },
-          "required": [
-            "site_permissions",
-            "install_origins"
-          ]
-        }
-      }
-    },
     "ThemeIcons": {
       "type": "object",
       "properties": {
@@ -835,17 +817,6 @@
         }
       ]
     },
-    "SitePermission": {
-      "anyOf": [
-        {
-          "type": "string",
-          "enum": [
-            "midi",
-            "midi-sysex"
-          ]
-        }
-      ]
-    },
     "HttpURL": {
       "type": "string",
       "format": "url",
@@ -901,8 +872,7 @@
           "pattern": "^[0-9]{1,3}(\\.[a-z0-9*]+)+$"
         },
         "admin_install_only": {
-          "type": "boolean",
-          "optional": true
+          "type": "boolean"
         }
       }
     },
@@ -919,8 +889,7 @@
           "description": "Maximum version of Gecko to support.",
           "pattern": "^[0-9]{1,3}(\\.[a-z0-9*]+)+$"
         }
-      },
-      "additionalProperties": {}
+      }
     },
     "DeprecatedApplications": {
       "type": "object",
@@ -1041,7 +1010,11 @@
         },
         "match_about_blank": {
           "type": "boolean",
-          "description": "If matchAboutBlank is true, then the code is also injected in about:blank and about:srcdoc frames if your extension has access to its parent document. Code cannot be inserted in top-level about:-frames. By default it is <code>false</code>."
+          "description": "If match_about_blank is true, then the code is also injected in about:blank and about:srcdoc frames if your extension has access to its parent document. Ignored if match_origin_as_fallback is specified. By default it is <code>false</code>."
+        },
+        "match_origin_as_fallback": {
+          "type": "boolean",
+          "description": "If match_origin_as_fallback is true, then the code is also injected in about:, data:, blob: when their origin matches the pattern in 'matches', even if the actual document origin is opaque (due to the use of CSP sandbox or iframe sandbox). Match patterns in 'matches' must specify a wildcard path glob. By default it is <code>false</code>."
         },
         "run_at": {
           "allOf": [
@@ -1051,6 +1024,17 @@
             {
               "default": "document_idle",
               "description": "The soonest that the JavaScript or CSS will be injected into the tab. Defaults to \"document_idle\"."
+            }
+          ]
+        },
+        "world": {
+          "allOf": [
+            {
+              "$ref": "extensionTypes#/types/ExecutionWorld"
+            },
+            {
+              "default": "ISOLATED",
+              "description": "The JavaScript world for a script to execute within. Defaults to \"ISOLATED\"."
             }
           ]
         }
