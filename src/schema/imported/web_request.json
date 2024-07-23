@@ -769,7 +769,7 @@
         {
           "type": "function",
           "optional": true,
-          "name": "callback",
+          "name": "asyncCallback",
           "parameters": [
             {
               "allOf": [
@@ -800,6 +800,7 @@
           "type": "array",
           "optional": true,
           "name": "extraInfoSpec",
+          "postprocess": "mutuallyExclusiveBlockingOrAsyncBlocking",
           "description": "Array of extra information that should be passed to the listener function.",
           "items": {
             "$ref": "#/types/OnAuthRequiredOptions"
