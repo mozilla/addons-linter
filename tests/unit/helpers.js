@@ -209,22 +209,6 @@ export function validLocaleMessagesJSON() {
   });
 }
 
-export function validSitePermissionManifestJSON(extra) {
-  return JSON.stringify({
-    manifest_version: 2,
-    name: 'My SitePermission Addon',
-    version: '1.0a1',
-    site_permissions: ['midi'],
-    install_origins: ['http://mozilla.org'],
-    browser_specific_settings: {
-      gecko: {
-        id: '@my-exaple-sitepermission',
-      },
-    },
-    ...extra,
-  });
-}
-
 function isMatch(target, expected) {
   return isMatchWith(target, expected, (tVal, eVal) => {
     if (eVal instanceof RegExp) {

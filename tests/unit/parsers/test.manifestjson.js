@@ -17,7 +17,6 @@ import {
   validManifestJSON,
   validDictionaryManifestJSON,
   validLangpackManifestJSON,
-  validSitePermissionManifestJSON,
   validStaticThemeManifestJSON,
   getStreamableIO,
   EMPTY_PNG,
@@ -4228,52 +4227,6 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(true);
       const { errors } = addonLinter.collector;
       expect(errors).toEqual([]);
-    });
-  });
-
-  describe('sitepermission', () => {
-    it('supports simple valid sitepermission', () => {
-      const linter = new Linter({ _: ['bar'] });
-      const json = validSitePermissionManifestJSON();
-      const manifestJSONParser = new ManifestJSONParser(json, linter.collector);
-      expect(manifestJSONParser.isValid).toEqual(true);
-    });
-
-    it('detects invalid sitepermission (more than one install_origin)', () => {
-      const linter = new Linter({ _: ['bar'] });
-      const json = validSitePermissionManifestJSON({
-        install_origins: ['https://website1.com', 'https://website2.com'],
-      });
-      const manifestJSONParser = new ManifestJSONParser(json, linter.collector);
-      expect(linter.collector.errors).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            code: messages.JSON_INVALID.code,
-            message: '"/install_origins" must NOT have more than 1 items',
-            instancePath: '/install_origins',
-          }),
-        ])
-      );
-      expect(manifestJSONParser.isValid).toEqual(false);
-    });
-
-    it('detects invalid sitepermission (invalid site_permissions value)', () => {
-      const linter = new Linter({ _: ['bar'] });
-      const json = validSitePermissionManifestJSON({
-        site_permissions: ['midi', 'not_a_valid_webapi_name'],
-      });
-      const manifestJSONParser = new ManifestJSONParser(json, linter.collector);
-      expect(linter.collector.errors).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            code: messages.JSON_INVALID.code,
-            message:
-              '"/site_permissions/1" is not a valid key or has invalid extra properties',
-            instancePath: '/site_permissions/1',
-          }),
-        ])
-      );
-      expect(manifestJSONParser.isValid).toEqual(false);
     });
   });
 
