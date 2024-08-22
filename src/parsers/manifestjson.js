@@ -3,7 +3,7 @@ import path from 'path';
 
 import RJSON from 'relaxed-json';
 import { oneLine } from 'common-tags';
-import getImageSize from 'image-size';
+import {imageDimensionsFromStream} from 'image-dimensions';
 import upath from 'upath';
 import bcd from '@mdn/browser-compat-data';
 import { mozCompare } from 'addons-moz-compare';
@@ -46,20 +46,6 @@ import {
 } from 'utils';
 import BLOCKED_CONTENT_SCRIPT_HOSTS from 'blocked_content_script_hosts.txt';
 
-async function getStreamImageSize(stream) {
-  const chunks = [];
-  for await (const chunk of stream) {
-    chunks.push(chunk);
-    try {
-      return getImageSize(Buffer.concat(chunks));
-    } catch (error) {
-      /* The size information isn't available yet */
-    }
-  }
-
-  return getImageSize(Buffer.concat(chunks));
-}
-
 async function getImageMetadata(io, iconPath) {
   // Get a non-utf8 input stream by setting encoding to null.
   let encoding = null;
@@ -70,7 +56,7 @@ async function getImageMetadata(io, iconPath) {
 
   const fileStream = await io.getFileAsStream(iconPath, { encoding });
 
-  const data = await getStreamImageSize(fileStream);
+  const data = await imageDimensionsFromStream(fileStream);
 
   return {
     width: data.width,
