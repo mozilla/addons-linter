@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-21 10:05+0000\n"
-"PO-Revision-Date: 2024-08-27 15:35+0000\n"
+"PO-Revision-Date: 2024-08-27 18:10+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -867,11 +867,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:825
 msgid "The \"admin_install_only\" property is reserved."
-msgstr ""
+msgstr "Az „admin_install_only” tulajdonság használata korlátozott."
 
 #: src/messages/manifestjson.js:826
 msgid "The \"admin_install_only\" property is reserved and can only be used in enterprise add-ons."
-msgstr ""
+msgstr "Az „admin_install_only” tulajdonság használata korlátozott, és csak vállalati kiegészítőkben használható."
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
@@ -879,11 +879,11 @@ msgstr "/%(fieldName)s: A(z) „%(permissionName)s” nem támogatott a követke
 
 #: src/messages/manifestjson.js:833
 msgid "\"/browser_specific_settings/gecko/admin_install_only\" property must be set to \"true\"."
-msgstr ""
+msgstr "A „/browser_specific_settings/gecko/admin_install_only” tulajdonságot „true” értékre kell állítani."
 
 #: src/messages/manifestjson.js:835
 msgid "The \"admin_install_only\" property must be set to \"true\" in an enterprise add-on."
-msgstr ""
+msgstr "Az „admin_install_only” tulajdonságot „true” értékre kell állítani a vállalati kiegészítőkben."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
