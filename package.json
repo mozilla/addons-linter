@@ -115,7 +115,7 @@
     "sinon": "18.0.0",
     "tar-fs": "3.0.6",
     "tmp-promise": "3.0.3",
-    "webpack": "5.93.0",
+    "webpack": "5.94.0",
     "webpack-cli": "5.1.4",
     "webpack-node-externals": "3.0.0",
     "yazl": "2.5.1"
