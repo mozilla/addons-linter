@@ -87,7 +87,7 @@
     "@babel/plugin-proposal-throw-expressions": "7.24.7",
     "@babel/preset-env": "7.25.3",
     "@babel/register": "7.24.6",
-    "async": "3.2.5",
+    "async": "3.2.6",
     "babel-core": "7.0.0-bridge.0",
     "babel-gettext-extractor": "github:willdurand/babel-gettext-extractor#5.1.0",
     "babel-jest": "29.7.0",
