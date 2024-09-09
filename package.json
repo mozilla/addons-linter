@@ -7,10 +7,10 @@
     "addons-linter": "bin/addons-linter"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   },
   "browserslist": [
-    "node >=16.0.0"
+    "node >=18.0.0"
   ],
   "scripts": {
     "build": "node scripts/build-locales && webpack --bail --stats-error-details true --color --config webpack.config.js",
