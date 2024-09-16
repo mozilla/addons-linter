@@ -104,7 +104,7 @@
     "raw-loader": "4.0.2",
     "replace-in-file": "7.2.0",
     "shelljs": "0.8.5",
-    "sinon": "18.0.0",
+    "sinon": "19.0.2",
     "tar-fs": "3.0.6",
     "tmp-promise": "3.0.3",
     "tosource": "1.0.0",
