@@ -164,6 +164,7 @@ export default class Linter {
       columnify(this.output.summary, {
         showHeaders: false,
         minWidth: 15,
+        maxLineWidth: maxColumns,
       })
     );
     out.push('');
@@ -250,6 +251,7 @@ export default class Linter {
             columns: outputColumns,
             columnSplitter: '   ',
             config: outputConfig,
+            maxLineWidth: maxColumns,
           })
         );
       }
