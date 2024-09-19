@@ -1,4 +1,4 @@
-import RJSON from 'relaxed-json';
+import RJSON from '@fregante/relaxed-json';
 
 import * as messages from 'messages';
 import JSONParser from 'parsers/json';

@@ -1,7 +1,7 @@
 /* eslint-disable import/namespace */
 import path from 'path';
 
-import RJSON from 'relaxed-json';
+import RJSON from '@fregante/relaxed-json';
 import { oneLine } from 'common-tags';
 import getImageSize from 'image-size';
 import upath from 'upath';
