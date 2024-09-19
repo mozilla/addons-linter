@@ -1,5 +1,5 @@
 import * as esprima from 'esprima';
-import RJSON from 'relaxed-json';
+import RJSON from '@fregante/relaxed-json';
 
 import * as messages from 'messages';
 
