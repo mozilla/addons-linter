@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-21 10:05+0000\n"
-"PO-Revision-Date: 2024-06-18 08:25+0000\n"
-"Last-Translator: YD <ygda+fx@free.fr>\n"
+"PO-Revision-Date: 2024-09-19 07:44+0000\n"
+"Last-Translator: Théo Chevalier <theochevalier@pm.me>\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -148,7 +148,7 @@ msgstr "{{api}} n’est pas pris en charge par la version {{minVersion}} de Fire
 
 #: src/messages/javascript.js:188
 msgid "This API is not implemented by the given minimum Firefox version"
-msgstr "Cette API n'est pas implémentée par la version minimale de Firefox indiquée"
+msgstr "Cette API n’est pas implémentée par la version minimale de Firefox indiquée"
 
 #: src/messages/javascript.js:196
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
@@ -156,7 +156,7 @@ msgstr "{{api}} n’est pas pris en charge par la version {{minVersion}} de Fire
 
 #: src/messages/javascript.js:199
 msgid "This API is not implemented by the given minimum Firefox for Android version"
-msgstr "Cette API n'est pas implémentée par la version minimale donnée de Firefox pour Android"
+msgstr "Cette API n’est pas implémentée par la version minimale donnée de Firefox pour Android"
 
 #: src/messages/javascript.js:22
 msgid "Content script file name should not be empty."
@@ -665,11 +665,11 @@ msgstr "« %(fieldName)s » n’est pas pris en charge dans les versions %(ver
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file has an unsupported file extension"
-msgstr "L’extension du fichier de l'image du thème n'est pas prise en charge"
+msgstr "L’extension du fichier de l’image du thème n’est pas prise en charge"
 
 #: src/messages/manifestjson.js:492
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr "L’extension du fichier de l’image du thème à l’emplacement « %(path)s » n'est pas prise en charge"
+msgstr "L’extension du fichier de l’image du thème à l’emplacement « %(path)s » n’est pas prise en charge"
 
 #: src/messages/manifestjson.js:506
 msgid "Theme image file has an unsupported mime type"
