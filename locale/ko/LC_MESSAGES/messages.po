@@ -1,10 +1,10 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-21 10:05+0000\n"
-"PO-Revision-Date: 2024-01-14 03:49+0000\n"
+"PO-Revision-Date: 2024-09-22 09:01+0000\n"
 "Last-Translator: Hyeonseok Shin <hyeonseok@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ko\n"
@@ -44,10 +44,9 @@ msgstr "열"
 
 #: src/linter.js:60
 msgid ""
-"Invalid manifest version range requested: --min-manifest-version (currently "
-"set to %(minManifestVersion)s) should not be greater than --max-manifest-"
-"version (currently set to %(maxManifestVersion)s)."
-msgstr ""
+"Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
+"%(maxManifestVersion)s)."
+msgstr "요청된 매니페스트 버전의 범위가 잘못되었습니다: --min-manifest-version(현재 %(minManifestVersion)s로 설정됨)은 --max-manifest-version(현재 %(maxManifestVersion)s로 설정됨)보다 클 수 없습니다."
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -62,47 +61,38 @@ msgid "Remote scripts are not allowed as per the Add-on Policies."
 msgstr "부가기능 정책에 따라 외부 스크립트는 허용되지 않습니다."
 
 #: src/messages/html.js:13
-msgid ""
-"Please include all scripts in the add-on. For more information, refer to "
-"https://mzl.la/2uEOkYp."
-msgstr ""
+msgid "Please include all scripts in the add-on. For more information, refer to https://mzl.la/2uEOkYp."
+msgstr "부가 기능에 모든 스크립트를 포함하세요. 자세한 내용은 다음을 참조하세요: https://mzl.la/2uEOkYp"
 
 #: src/messages/html.js:5
 msgid "Inline scripts blocked by default"
 msgstr "기본적으로 인라인 스크립트 차단"
 
 #: src/messages/html.js:6
-msgid ""
-"Default CSP rules prevent inline JavaScript from running (https://mzl."
-"la/2pn32nd)."
-msgstr ""
+msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
+msgstr "CSP 규칙 기본값은 인라인 JavaScript가 (https://mzl.la/2pn32nd)을 실행하는 것을 방해합니다."
 
 #: src/messages/javascript.js:100
 msgid "Unadvised 3rd-party JS library"
 msgstr "권장되지 않는 타사 JS 라이브러리"
 
 #: src/messages/javascript.js:101
-msgid ""
-"Your add-on uses a JavaScript library we do not recommend. Read more: "
-"https://bit.ly/1TRIyZY"
-msgstr ""
+msgid "Your add-on uses a JavaScript library we do not recommend. Read more: https://bit.ly/1TRIyZY"
+msgstr "부가 기능이 권장되지 않는 JavaScript 라이브러리를 사용합니다. 자세히 보기: https://bit.ly/1TRIyZY"
 
 #: src/messages/javascript.js:107
 msgid "Known JS library detected"
 msgstr "알려진 JS 라이브러리 감지됨"
 
 #: src/messages/javascript.js:108
-msgid ""
-"JavaScript libraries are discouraged for simple add-ons, but are generally "
-"accepted."
-msgstr ""
+msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
+msgstr "간단한 부가 기능의 경우 JavaScript 라이브러리 사용이 권장되지 않지만 일반적으로 허용됩니다."
 
 #: src/messages/javascript.js:116
 msgid ""
-"Due to both security and performance concerns, this may not be set using "
-"dynamic values which have not been adequately sanitized. This can lead to "
-"security issues or fairly serious performance degradation."
-msgstr ""
+"Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
+"degradation."
+msgstr "보안과 성능 문제로 인해 적절하게 정리되지 않은 동적 값을 사용하여 설정할 수 없습니다. 이는 보안 문제나 상당히 심각한 성능 저하로 이어질 수 있습니다."
 
 #: src/messages/javascript.js:125
 msgid "{{api}} is not supported"
@@ -113,11 +103,8 @@ msgid "This API has not been implemented by Firefox."
 msgstr "이 API는 Firefox에서 구현되지 않았습니다."
 
 #: src/messages/javascript.js:132
-msgid ""
-"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
-"property)"
-msgstr ""
-"\"{{api}}\"가 Manifest 버전 3(`manifest_version` 속성)에서 제거되었습니다."
+msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
+msgstr "\"{{api}}\"가 Manifest 버전 3(`manifest_version` 속성)에서 제거되었습니다."
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
@@ -141,13 +128,12 @@ msgstr "컨텐츠 스크립트 파일을 찾을 수 없습니다"
 
 #: src/messages/javascript.js:162
 msgid "\"%(api)s\" can cause issues when loaded temporarily"
-msgstr ""
+msgstr "\"%(api)s\"는 일시적으로 로드될 때 문제를 일으킬 수 있습니다."
 
 #: src/messages/javascript.js:165
 msgid ""
-"This API can cause issues when loaded temporarily using about:debugging in "
-"Firefox unless you specify \"browser_specific_settings.gecko.id\" in the "
-"manifest. Please see: https://mzl.la/2hizK4a for more."
+"This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
+"more."
 msgstr ""
 
 #: src/messages/javascript.js:185
@@ -163,8 +149,7 @@ msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
 msgstr "{{api}}는 안드로이드용 Firefox {{minVersion}}에서 지원되지 않습니다"
 
 #: src/messages/javascript.js:199
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
 msgstr "이 API는 제공된 최소 안드로이드용 Firefox 버전에서 구현되지 않습니다"
 
 #: src/messages/javascript.js:22
@@ -177,24 +162,19 @@ msgstr "컨텐츠 스크립트 파일의 이름은 비어 있을 수 없습니�
 
 #: src/messages/javascript.js:30
 msgid "\"%(method)s\" called with a non-literal uri"
-msgstr ""
+msgstr "리터럴이 아닌 uri로 호출된 \"%(method)s\""
 
 #: src/messages/javascript.js:34
-msgid ""
-"Calling \"%(method)s\" with variable parameters can result in potential "
-"security vulnerabilities if the variable contains a remote URI. Consider "
-"using 'window.open' with the 'chrome=no' flag."
-msgstr ""
+msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
+msgstr "가변 매개변수로 \"%(method)s\"를 호출하면 변수에 원격 URI가 포함되어 있는 경우 잠재적인 보안 취약성이 발생할 수 있습니다. 'chrome=no' 플래그와 함께 'window.open'을 사용하는 것을 고려하세요."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
-msgstr ""
+msgstr "로컬이 아닌 URI로 호출된 \"%(method)s\""
 
 #: src/messages/javascript.js:49
-msgid ""
-"Calling \"%(method)s\" with a non-local URI will result in the dialog being "
-"opened with chrome privileges."
-msgstr ""
+msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
+msgstr "로컬 URI가 아닌 값으로 \"%(method)s\"를 호출하면 크롬 권한으로 대화 상자가 열립니다."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -202,67 +182,51 @@ msgstr "JavaScript 구문 오류"
 
 #: src/messages/javascript.js:6
 msgid ""
-"There is a JavaScript syntax error in your code, which might be related to "
-"some experimental JavaScript features that aren't an official part of the "
-"language specification and therefore not supported yet. The validation "
-"cannot continue on this file."
-msgstr ""
+"There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
+"supported yet. The validation cannot continue on this file."
+msgstr "코드에 JavaScript 구문 오류가 있는데, 이는 언어 명세서의 공식 부분이 아니어서 아직 지원되지 않는 일부 실험적 JavaScript 기능과 관련이 있을 수 있습니다. 이 파일에서 검증을 계속할 수 없습니다."
 
 #: src/messages/javascript.js:62
 msgid ""
-"Evaluation of strings as code can lead to security vulnerabilities and "
-"performance issues, even in the most innocuous of circumstances. Please "
-"avoid using `eval` and the `Function` constructor when at all possible."
-msgstr ""
+"Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
+"at all possible."
+msgstr "문자열을 코드로 평가하면 가장 위험이 없는 상황에서도 보안 취약성과 성능 문제가 발생할 수 있습니다. 가능한 한 `eval`과 `Function` 생성자를 사용하지 마십시오."
 
 #: src/messages/javascript.js:71
-msgid ""
-"setTimeout, setInterval and execScript functions should be called only with "
-"function expressions as their first argument"
-msgstr ""
+msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
+msgstr "setTimeout, setInterval 및 execScript 함수는 첫 번째 인수로 함수 표현식을 사용해서만 호출해야 합니다."
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
 msgstr "예상치 못한 전역이 인수로 전달됨"
 
 #: src/messages/javascript.js:79
-msgid ""
-"Passing a global as an argument is not recommended. Please make this a var "
-"instead."
-msgstr ""
+msgid "Passing a global as an argument is not recommended. Please make this a var instead."
+msgstr "전역을 인수로 전달하는 것은 권장되지 않습니다. 대신 변수로 만들어 주세요."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
 msgstr "document.write는 사용하지 않는 것이 좋습니다."
 
 #: src/messages/javascript.js:86
-msgid ""
-"document.write will fail in many circumstances when used in extensions, and "
-"has potentially severe security repercussions when used improperly. "
-"Therefore, it should not be used."
-msgstr ""
+msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
+msgstr "document.write는 확장 기능에서 사용될 때 많은 상황에서 실패하며, 부적절하게 사용될 경우 심각한 보안적 결과를 초래할 수 있습니다. 따라서 사용해서는 안 됩니다."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
 msgstr "금지된 타사 JS 라이브러리"
 
 #: src/messages/javascript.js:94
-msgid ""
-"Your add-on uses a JavaScript library we consider unsafe. Read more: https://"
-"bit.ly/1TRIyZY"
-msgstr ""
-"부가 기능이 안전하지 않은 것으로 간주되는 JavaScript 라이브러리를 사용합니"
-"다. 자세한 정보: https://bit.ly/1TRIyZY"
+msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
+msgstr "부가 기능이 안전하지 않은 것으로 간주되는 JavaScript 라이브러리를 사용합니다. 자세한 정보: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
 msgstr "JSON에 블록 주석이 포함되어 있습니다."
 
 #: src/messages/json.js:12
-msgid ""
-"Only line comments (comments beginning with \"//\") are allowed in JSON "
-"files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
+msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
+msgstr "JSON 파일에서는 줄 주석(\"//\"로 시작하는 주석)만 허용됩니다. 블록 주석(\"/*\"로 시작하는 주석)을 제거하세요."
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -270,7 +234,7 @@ msgstr "JSON 파일에서는 중복된 키가 허용될 수 없습니다."
 
 #: src/messages/json.js:20
 msgid "Duplicate key found in JSON file."
-msgstr ""
+msgstr "JSON 파일에서 중복된 키가 발견되었습니다."
 
 #: src/messages/json.js:5
 msgid "Your JSON is not valid."
@@ -285,22 +249,18 @@ msgid "Reserved filename found."
 msgstr "예약된 파일명이 있습니다."
 
 #: src/messages/layout.js:108
-msgid ""
-"Files whose names are reserved have been found in the add-on. Please refrain "
-"from using them and rename your files."
-msgstr ""
+msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
+msgstr "예약된 이름을 사용하는 파일이 부가 기능에서 발견되었습니다. 사용을 삼가하고 파일 이름을 바꾸세요."
 
 #: src/messages/layout.js:22
 msgid ""
-"The package is invalid. It may contain entries using invalid characters, as "
-"an example using '\\' as a path separator is not allowed in Firefox. Try to "
-"recreate your add-on package (ZIP) and make sure all entries are using '/' "
-"as the path separator."
-msgstr ""
+"The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
+"sure all entries are using '/' as the path separator."
+msgstr "패키지가 유효하지 않습니다. 사용할 수 없는 문자를 사용하는 항목이 포함되어 있을 수 있습니다. 예를 들어 Firefox에서는 경로 구분 기호로 '\\'를 사용하는 것이 허용되지 않습니다. 부가 기능 패키지(ZIP)를 다시 만들어 모든 항목이 경로 구분 기호로 '/'를 사용하고 있는지 확인하세요."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
-msgstr "zip 파일을 압출 해제 할 수 없습니다."
+msgstr "zip 파일을 압축 해제할 수 없습니다."
 
 #: src/messages/layout.js:37
 msgid "manifest.json was not found"
@@ -308,10 +268,9 @@ msgstr "manifest.json을 찾을 수 없습니다"
 
 #: src/messages/layout.js:38
 msgid ""
-"No manifest.json was found at the root of the extension. The package file "
-"must be a ZIP of the extension's files themselves, not of the containing "
-"directory. See: https://mzl.la/2r2McKv for more on packaging."
-msgstr ""
+"No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
+"packaging."
+msgstr "확장 기능의 루트에서 manifest.json을 찾을 수 없습니다. 패키지 파일은 확장 기능 파일 자체의 ZIP이어야 하며, 포함된 디렉토리의 ZIP이어서는 안 됩니다. 자세한 내용은 다음을 참조하세요: https://mzl.la/2r2McKv"
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
@@ -319,11 +278,9 @@ msgstr "분석하기에 파일 용량이 너무 큽니다."
 
 #: src/messages/layout.js:47
 msgid ""
-"This file is not binary and is too large to parse. Files larger than "
-"%(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists "
-"of data out of JavaScript files and into JSON files, or splitting very large "
-"files into smaller ones."
-msgstr ""
+"This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
+"or splitting very large files into smaller ones."
+msgstr "이 파일은 바이너리가 아니며 파싱하기에는 너무 큽니다. %(maxFileSizeToParseMB)sMB보다 큰 파일은 파싱되지 않습니다. JavaScript 파일에서 큰 데이터 목록을 꺼내 JSON 파일로 옮기거나 매우 큰 파일을 더 작은 파일로 분할하는 것을 고려하세요."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -331,10 +288,8 @@ msgstr "숨겨진 파일 플래그"
 
 #: src/messages/layout.js:58
 msgid ""
-"Hidden files complicate the review process and can contain sensitive "
-"information about the system that generated the add-on. Please modify the "
-"packaging process so that these files aren't included."
-msgstr ""
+"Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
+msgstr "숨겨진 파일은 검토 프로세스를 복잡하게 만들고 부가 기능을 생성한 시스템에 대해 주의가 필요한 정보를 포함할 수 있습니다. 이러한 파일이 포함되지 않도록 패키징 프로세스를 수정하세요."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -345,16 +300,12 @@ msgid "Flagged filename found"
 msgstr "플래그 파일명 발견"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
-msgid ""
-"Files were found that are either unnecessary or have been included "
-"unintentionally. They should be removed."
-msgstr ""
+msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
+msgstr "불필요하거나 의도치 않게 포함된 파일이 발견되었습니다. 제거해야 합니다."
 
 #: src/messages/layout.js:7
-msgid ""
-"The package contains multiple entries with the same name. This practice has "
-"been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
+msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
+msgstr "패키지에 동일한 이름의 여러 항목이 포함되어 있습니다. 이 관행은 금지되었습니다. 부가 기능 패키지를 압축 해제하고 다시 압축한 후 다시 시도해 보세요."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
@@ -366,10 +317,8 @@ msgstr "플래그 파일 형식 발견"
 
 #: src/messages/layout.js:81
 msgid ""
-"Files whose names end with flagged extensions have been found in the add-on. "
-"The extension of these files are flagged because they usually identify "
-"binary components. Please see https://bit.ly/review-policy for more "
-"information on the binary content review process."
+"Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
+"https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
 
 #: src/messages/layout.js:90
@@ -377,9 +326,7 @@ msgid "Package already signed"
 msgstr "이미 서명 된 패키지"
 
 #: src/messages/layout.js:91
-msgid ""
-"Add-ons which are already signed will be re-signed when published on AMO. "
-"This will replace any existing signatures on the add-on."
+msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
 msgstr ""
 
 #: src/messages/layout.js:98
@@ -387,9 +334,7 @@ msgid "Firefox add-ons are not allowed to run coin miners."
 msgstr "Firefox 부가기능은 가상화폐 채굴 코드 운영을 허용하지 않습니다."
 
 #: src/messages/layout.js:99
-msgid ""
-"We do not allow coinminer scripts to be run inside WebExtensions. See "
-"https://github.com/mozilla/addons-linter/issues/1643 for more details."
+msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:13
@@ -397,15 +342,11 @@ msgid "String name is reserved for a predefined message"
 msgstr "String 이름이 사전 정의된 메시지에 예약되어 있음"
 
 #: src/messages/locale-messagesjson.js:14
-msgid ""
-"String names starting with @@ get translated to built-in constants (https://"
-"mzl.la/2BL9ZjE)."
+msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:21
-msgid ""
-"String name should only contain alpha-numeric characters, _ and @ (https://"
-"mzl.la/2Eztyi5)."
+msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:27
@@ -421,9 +362,7 @@ msgid "Placeholder name contains invalid characters"
 msgstr "자리 표시자 이름에 잘못된 문자가 포함됨"
 
 #: src/messages/locale-messagesjson.js:34
-msgid ""
-"Placeholder name should only contain alpha-numeric characters, _ and @ "
-"(https://mzl.la/2ExbYez)."
+msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:40
@@ -431,9 +370,7 @@ msgid "Placeholder is missing the content property"
 msgstr "자리 표시자에 콘텐츠 속성이 없음"
 
 #: src/messages/locale-messagesjson.js:41
-msgid ""
-"A placeholder needs a content property defining the replacement of it "
-"(https://mzl.la/2DT1MQd)"
+msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
 msgstr ""
 
 #: src/messages/locale-messagesjson.js:5
@@ -441,25 +378,20 @@ msgid "Translation string is missing the message property"
 msgstr "번역 문자열에 메시지 속성이 없음"
 
 #: src/messages/locale-messagesjson.js:6
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"문자열(https://mzl.la/2DSBTjA)에 \"message\" 메시지 속성이 설정되어 있지 않습"
-"니다."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "문자열(https://mzl.la/2DSBTjA)에 \"message\" 메시지 속성이 설정되어 있지 않습니다."
 
 #: src/messages/manifestjson.js:10
 msgid "The field is required."
 msgstr "이 필드는 필수입니다."
 
-#: src/messages/manifestjson.js:102 src/messages/manifestjson.js:110
-#: src/messages/manifestjson.js:118
+#: src/messages/manifestjson.js:102 src/messages/manifestjson.js:110 src/messages/manifestjson.js:118
 msgid "The permission type is unsupported."
 msgstr "지원하지 않는 권한 타입입니다."
 
 #: src/messages/manifestjson.js:103 src/messages/manifestjson.js:128
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr ""
-"자세한 정보는 https://mzl.la/1R1n1t0 (MDN 문서)에서 확인할 수 있습니다."
+msgstr "자세한 정보는 https://mzl.la/1R1n1t0 (MDN 문서)에서 확인할 수 있습니다."
 
 #: src/messages/manifestjson.js:11 src/messages/manifestjson.js:20
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
@@ -467,21 +399,18 @@ msgstr "자세한 정보는 https://mzl.la/1ZOhoEN (MDN 문서)에서 볼 수 �
 
 #: src/messages/manifestjson.js:111 src/messages/manifestjson.js:157
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr ""
-"자세한 정보는 https://mzl.la/2Qn0fWC (MDN 문서)에서 확인할 수 있습니다."
+msgstr "자세한 정보는 https://mzl.la/2Qn0fWC (MDN 문서)에서 확인할 수 있습니다."
 
 #: src/messages/manifestjson.js:119 src/messages/manifestjson.js:166
 msgid "See https://mzl.la/3Woeqv4 (MDN Docs) for more information."
-msgstr ""
+msgstr "자세한 정보는 https://mzl.la/3Woeqv4 (MDN 문서)에서 확인할 수 있습니다."
 
 #: src/messages/manifestjson.js:127 src/messages/manifestjson.js:156
 msgid "Unknown permission."
 msgstr "알 수 없는 권한입니다."
 
 #: src/messages/manifestjson.js:138
-msgid ""
-"%(instancePath)s: the following privileged permissions are only allowed in "
-"privileged extensions: %(privilegedPermissions)s."
+msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
 msgstr ""
 
 #: src/messages/manifestjson.js:165
@@ -493,9 +422,7 @@ msgid "Invalid install origin."
 msgstr "설치 출처가 잘못되었습니다."
 
 #: src/messages/manifestjson.js:175
-msgid ""
-"Invalid install origin. A valid origin has - only - a scheme, hostname and "
-"optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
+msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
 msgstr ""
 
 #: src/messages/manifestjson.js:183
@@ -504,8 +431,7 @@ msgstr "manifest.json의 \"manifest_version\"이 유효한 값이 아님"
 
 #: src/messages/manifestjson.js:186
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr ""
-"자세한 정보는 https://mzl.la/20PenXl (MDN 문서)에서 확인할 수 있습니다."
+msgstr "자세한 정보는 https://mzl.la/20PenXl (MDN 문서)에서 확인할 수 있습니다."
 
 #: src/messages/manifestjson.js:19
 msgid "The field is invalid."
@@ -520,20 +446,15 @@ msgid "A custom \"%(property)s\" needs additional review."
 msgstr ""
 
 #: src/messages/manifestjson.js:215
-msgid ""
-"\"%(property)s\" allows 'eval', which has strong security and performance "
-"implications."
+msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
 msgstr ""
 
 #: src/messages/manifestjson.js:219
-msgid ""
-"In most cases the same result can be achieved differently, therefore it is "
-"generally prohibited"
+msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
 msgstr ""
 
 #: src/messages/manifestjson.js:227
-msgid ""
-"The \"name\" property must be a string with no leading/trailing whitespaces."
+msgid "The \"name\" property must be a string with no leading/trailing whitespaces."
 msgstr ""
 
 #: src/messages/manifestjson.js:230
@@ -545,9 +466,7 @@ msgid "\"update_url\" is not allowed."
 msgstr "\"update_url\"은 허용되지 않습니다."
 
 #: src/messages/manifestjson.js:239
-msgid ""
-"\"applications.gecko.update_url\" or \"browser_specific_settings.gecko."
-"update_url\" are not allowed for Mozilla-hosted add-ons."
+msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
 msgstr ""
 
 #: src/messages/manifestjson.js:248
@@ -555,10 +474,7 @@ msgid "The \"update_url\" property is not used by Firefox."
 msgstr "Firefox에서는 \"update_url\" 속성을 사용하지 않습니다."
 
 #: src/messages/manifestjson.js:249
-msgid ""
-"The \"update_url\" is not used by Firefox in the root of a manifest; your "
-"add-on will be updated via the Add-ons site and not your \"update_url\". "
-"See: https://mzl.la/25zqk4O"
+msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
 msgstr ""
 
 #: src/messages/manifestjson.js:257
@@ -566,9 +482,7 @@ msgid "\"strict_max_version\" not required."
 msgstr "\"strict_max_version\"은 필요하지 않습니다."
 
 #: src/messages/manifestjson.js:258
-msgid ""
-"\"strict_max_version\" shouldn't be used unless the add-on is expected not "
-"to work with future versions of Firefox."
+msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
 msgstr ""
 
 #: src/messages/manifestjson.js:267
@@ -616,32 +530,23 @@ msgid "A content script css file defined in the manifest could not be found."
 msgstr "매니페스트에 정의된 콘텐트 스크립트 css 파일을 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:330
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"매니페스트에 정의된 콘텐트 스크립트를 \"%(path)s\"에서 찾을 수 없습니다."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "매니페스트에 정의된 콘텐트 스크립트를 \"%(path)s\"에서 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:333
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"매니페스트에 서언된 콘텐트 스크립트 CSS 파일을 \"%(path)s\"에서 찾을 수 없습"
-"니다."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "매니페스트에 서언된 콘텐트 스크립트 CSS 파일을 \"%(path)s\"에서 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:347
 msgid "A dictionary file defined in the manifest could not be found."
 msgstr "매니페이스에 정의된 사전 파일을 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:35
-msgid ""
-"\"%(fieldName)s\" manifest field is only used for privileged and temporarily "
-"installed extensions."
+msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
 msgstr ""
 
 #: src/messages/manifestjson.js:351
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
 msgstr "매니페이스에 정의된 사전 파일을 \"%(path)s\"에서 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:363
@@ -649,8 +554,7 @@ msgid "The manifest contains multiple dictionaries."
 msgstr "매니페스트가 여러 개의 사전을 포함하고 있습니다."
 
 #: src/messages/manifestjson.js:364
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
 msgstr "지원되지 않는 여러 개의 사전이 매니페스트에 정의되어 있습니다."
 
 #: src/messages/manifestjson.js:373
@@ -678,9 +582,7 @@ msgid "This add-on contains forbidden content."
 msgstr "이 부가 기능은 금지된 콘텐츠를 포함하고 있습니다."
 
 #: src/messages/manifestjson.js:4
-msgid ""
-"Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn "
-"more about privileged extensions and signing."
+msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
 msgstr ""
 
 #: src/messages/manifestjson.js:405
@@ -696,9 +598,7 @@ msgid "The size of the icon does not match the manifest."
 msgstr "아이콘의 크기가 매니페스트와 일치하지 않습니다."
 
 #: src/messages/manifestjson.js:419
-msgid ""
-"Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was "
-"%(actual)d."
+msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
 msgstr ""
 
 #: src/messages/manifestjson.js:432
@@ -719,8 +619,7 @@ msgstr "이 테마 LWT 별칭은 Firefox 70 에서 제외되었습니다."
 
 #: src/messages/manifestjson.js:451
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr ""
-"자세한 정보는 https://mzl.la/2T11Lkc (MDN 문서)에서 확인할 수 있습니다."
+msgstr "자세한 정보는 https://mzl.la/2T11Lkc (MDN 문서)에서 확인할 수 있습니다."
 
 #: src/messages/manifestjson.js:466
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
@@ -735,8 +634,7 @@ msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "\"%(path)s\"의 테마 이미지 파일 손상됨"
 
 #: src/messages/manifestjson.js:49
-msgid ""
-"\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
+msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
 msgstr ""
 
 #: src/messages/manifestjson.js:490
@@ -752,11 +650,8 @@ msgid "Theme image file has an unsupported mime type"
 msgstr "테마 이미지 파일에 지원하지 않는 MIME 타입이 있음"
 
 #: src/messages/manifestjson.js:508
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
-"\"%(path)s\"에 있는 테마 이미지 파일에 지원하지 않는 MIME 타입 "
-"\"%(mime)s\"이 있음"
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "\"%(path)s\"에 있는 테마 이미지 파일에 지원하지 않는 MIME 타입 \"%(mime)s\"이 있음"
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
@@ -767,22 +662,15 @@ msgid "Theme image file mime type does not match its file extension"
 msgstr "MIME 타입 테마 이미지 파일이 파일 확장자와 일치하지 않음"
 
 #: src/messages/manifestjson.js:526
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
-"\"%(path)s\"에 있는 테마 이미지 파일 확장자가 실제 MIME 타입 \"%(mime)s\"와 "
-"일치하지 않음"
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "\"%(path)s\"에 있는 테마 이미지 파일 확장자가 실제 MIME 타입 \"%(mime)s\"와 일치하지 않음"
 
 #: src/messages/manifestjson.js:539
 msgid "The \"default_locale\" is missing localizations."
 msgstr "\"default_locale\"은 현지화가 되어 있지 않습니다."
 
 #: src/messages/manifestjson.js:540
-msgid ""
-"The \"default_locale\" value is specified in the manifest, but no matching "
-"\"messages.json\" in the \"_locales\" directory exists. See: https://mzl."
-"la/2hjcaEE"
+msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
 msgstr ""
 
 #: src/messages/manifestjson.js:548
@@ -790,9 +678,7 @@ msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "\"default_locale\"은 존재하지 않지만 \"_locales\"는 존재합니다."
 
 #: src/messages/manifestjson.js:549
-msgid ""
-"The \"default_locale\" value is not specifed in the manifest, but a "
-"\"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
+msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
 msgstr ""
 
 #: src/messages/manifestjson.js:557
@@ -804,16 +690,11 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "아이콘은 JPG/JPEG, WebP, GIF, PNG 또는 SVG 중 하나여야 합니다."
 
 #: src/messages/manifestjson.js:566
-msgid ""
-"\"applications\" property overridden by \"browser_specific_settings\" "
-"property"
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
 msgstr "\"browser_specific_settings\" 속성으로 재정의된 \"applications\" 속성"
 
 #: src/messages/manifestjson.js:569
-msgid ""
-"The \"applications\" property is being ignored because it is superseded by "
-"the \"browser_specific_settings\" property which is also defined in your "
-"manifest. Consider removing applications."
+msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
 msgstr ""
 
 #: src/messages/manifestjson.js:579
@@ -829,9 +710,7 @@ msgid "Manifest key not supported by the specified minimum Firefox version"
 msgstr "매니페스트 키가 명시된 최소 Firefox 버전에서 지원되지 않음"
 
 #: src/messages/manifestjson.js:601 src/messages/manifestjson.js:623
-msgid ""
-"\"strict_min_version\" requires Firefox %(minVersion)s, which was released "
-"before version %(versionAdded)s introduced support for \"%(key)s\"."
+msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:619
@@ -839,27 +718,19 @@ msgid "Permission not supported by the specified minimum Firefox version"
 msgstr "명시된 최소 Firefox 버전에서 지원하지 않는 권한"
 
 #: src/messages/manifestjson.js:64
-msgid ""
-"%(instancePath)s: privileged manifest fields are only allowed in privileged "
-"extensions."
+msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
 msgstr ""
 
 #: src/messages/manifestjson.js:641
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
 msgstr "매니페스트 키가 명시된 최소 Android 용 Firefox 버전에서 지원되지 않음"
 
 #: src/messages/manifestjson.js:645 src/messages/manifestjson.js:667
-msgid ""
-"\"strict_min_version\" requires Firefox for Android %(minVersion)s, which "
-"was released before version %(versionAdded)s introduced support for "
-"\"%(key)s\"."
+msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:663
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
 msgstr "명시된 최소 Android 용 Firefox 버전에서 지원하지 않는 권한"
 
 #: src/messages/manifestjson.js:678
@@ -867,23 +738,15 @@ msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "\"addons.mozilla.org\"에 대한 링크는 허용되지 않습니다."
 
 #: src/messages/manifestjson.js:679
-msgid ""
-"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
-"homepage"
-msgstr ""
-"\"addons.mozilla.org\"로 연결되는 링크는 홈페이지에 사용할 수 없습니다."
+msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
+msgstr "\"addons.mozilla.org\"로 연결되는 링크는 홈페이지에 사용할 수 없습니다."
 
 #: src/messages/manifestjson.js:691
-msgid ""
-"The \"%(permission)s\" permission requires \"strict_min_version\" to be set "
-"to \"%(minFirefoxVersion)s\" or above"
+msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
 msgstr ""
 
 #: src/messages/manifestjson.js:696
-msgid ""
-"The \"%(permission)s\" permission requires \"strict_min_version\" to be set "
-"to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json "
-"version to specify a minimum Firefox version."
+msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
 msgstr ""
 
 #: src/messages/manifestjson.js:708
@@ -895,34 +758,23 @@ msgid "See https://mzl.la/3PLZYdo for more information."
 msgstr "자세한 정보는 https://mzl.la/3PLZYdo 에서 확인할 수 있습니다."
 
 #: src/messages/manifestjson.js:717
-msgid ""
-"%(instancePath)s: Privileged extensions should declare privileged "
-"permissions."
+msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
 msgstr ""
 
 #: src/messages/manifestjson.js:728
-msgid ""
-"This extension does not declare any privileged permission. It does not need "
-"to be signed with the privileged certificate. Please upload it directly to "
-"https://addons.mozilla.org/."
+msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
 msgstr ""
 
 #: src/messages/manifestjson.js:741
-msgid ""
-"%(instancePath)s: The \"mozillaAddons\" permission is required for "
-"privileged extensions."
+msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
 msgstr ""
 
 #: src/messages/manifestjson.js:744
-msgid ""
-"%(instancePath)s: The \"mozillaAddons\" permission is required for "
-"extensions that include privileged manifest fields."
+msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
 msgstr ""
 
 #: src/messages/manifestjson.js:757
-msgid ""
-"This extension does not include the \"mozillaAddons\" permission, which is "
-"required for privileged extensions."
+msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
 msgstr ""
 
 #: src/messages/manifestjson.js:767
@@ -930,9 +782,7 @@ msgid "Cannot use actions in hidden add-ons."
 msgstr ""
 
 #: src/messages/manifestjson.js:768
-msgid ""
-"The hidden and browser_action/page_action (or action in Manifest Version 3 "
-"and above) properties are mutually exclusive."
+msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
 msgstr ""
 
 #: src/messages/manifestjson.js:776
@@ -940,9 +790,7 @@ msgid "Use \"browser_specific_settings\" instead of \"applications\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:777
-msgid ""
-"The \"applications\" property in the manifest is deprecated and will no "
-"longer be accepted in Manifest Version 3 and above."
+msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
 msgstr ""
 
 #: src/messages/manifestjson.js:785
@@ -950,23 +798,17 @@ msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
 msgstr ""
 
 #: src/messages/manifestjson.js:787
-msgid ""
-"The \"applications\" property in the manifest is no longer allowed in "
-"Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
+msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
 msgstr ""
 
 #: src/messages/manifestjson.js:795
-msgid ""
-"The version string should be simplified because it won't be compatible with "
-"Manifest Version 3 and above."
+msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
 msgstr ""
 
 #: src/messages/manifestjson.js:797
 msgid ""
-"The version should be a string with 1 to 4 numbers separated with dots. Each "
-"number should have up to 9 digits and leading zeros will no longer be "
-"allowed. Letters will no longer be allowed either. See https://mzl."
-"la/3h3mCRu (MDN Docs) for more information."
+"The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
+"See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
 
 #: src/messages/manifestjson.js:806
@@ -975,10 +817,8 @@ msgstr ""
 
 #: src/messages/manifestjson.js:807
 msgid ""
-"The version should be a string with 1 to 4 numbers separated with dots. Each "
-"number should have up to 9 digits and leading zeros are not allowed. Letters "
-"are no longer allowed. See https://mzl.la/3h3mCRu (MDN Docs) for more "
-"information."
+"The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
+"https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
 
 #: src/messages/manifestjson.js:816
@@ -987,9 +827,8 @@ msgstr ""
 
 #: src/messages/manifestjson.js:817
 msgid ""
-"The incognito \"split\" value is unsupported and will be treated as "
-"\"not_allowed\" in Firefox. Remove the key from the manifest file, if your "
-"extension is compatible with Firefox's private browsing mode."
+"The incognito \"split\" value is unsupported and will be treated as \"not_allowed\" in Firefox. Remove the key from the manifest file, if your extension is compatible with Firefox's private browsing"
+" mode."
 msgstr ""
 
 #: src/messages/manifestjson.js:825
@@ -997,27 +836,19 @@ msgid "The \"admin_install_only\" property is reserved."
 msgstr ""
 
 #: src/messages/manifestjson.js:826
-msgid ""
-"The \"admin_install_only\" property is reserved and can only be used in "
-"enterprise add-ons."
+msgid "The \"admin_install_only\" property is reserved and can only be used in enterprise add-ons."
 msgstr ""
 
 #: src/messages/manifestjson.js:83
-msgid ""
-"/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions "
-"%(versionRange)s."
+msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
 msgstr ""
 
 #: src/messages/manifestjson.js:833
-msgid ""
-"\"/browser_specific_settings/gecko/admin_install_only\" property must be set "
-"to \"true\"."
+msgid "\"/browser_specific_settings/gecko/admin_install_only\" property must be set to \"true\"."
 msgstr ""
 
 #: src/messages/manifestjson.js:835
-msgid ""
-"The \"admin_install_only\" property must be set to \"true\" in an enterprise "
-"add-on."
+msgid "The \"admin_install_only\" property must be set to \"true\" in an enterprise add-on."
 msgstr ""
 
 #: src/messages/manifestjson.js:85
@@ -1030,12 +861,8 @@ msgstr ""
 #~ msgid "A CSS syntax error was encountered"
 #~ msgstr "CSS 문법 오류"
 
-#~ msgid ""
-#~ "An error was found in the CSS file being processed. As a result, further "
-#~ "processing of that file is not possible"
-#~ msgstr ""
-#~ "진행중인 CSS 파일에서 오류가 발견되었습니다. 결과적으로 이 파일은 더 진행"
-#~ "이 불가능합니다."
+#~ msgid "An error was found in the CSS file being processed. As a result, further processing of that file is not possible"
+#~ msgstr "진행중인 CSS 파일에서 오류가 발견되었습니다. 결과적으로 이 파일은 더 진행이 불가능합니다."
 
 #~ msgid "Selectors should not be nested"
 #~ msgstr "선택자는 중첩이 되면 안됩니다"
@@ -1043,26 +870,20 @@ msgstr ""
 #~ msgid "The \"name\" property must be a string."
 #~ msgstr "\"name\" 속성은 문자열 이어야 합니다."
 
-#~ msgid ""
-#~ "Invalid install origin. A valid origin has - only - a scheme, hostname "
-#~ "and optional port."
-#~ msgstr ""
-#~ "설치 출처가 잘못되었습니다. 유효한 출처에는 스키마와 호스트 이름, 추가적"
-#~ "인 포트만 있습니다."
+#~ msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
+#~ msgstr "설치 출처가 잘못되었습니다. 유효한 출처에는 스키마와 호스트 이름, 추가적인 포트만 있습니다."
 
 #~ msgid "The \"version\" property must be a string."
 #~ msgstr "\"version\" 속성은 반드시 문자열 이어야 합니다."
 
 #~ msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-#~ msgstr ""
-#~ "자세한 정보는 http://mzl.la/1kXIADa (MDN 문서)에서 확인할 수 있습니다."
+#~ msgstr "자세한 정보는 http://mzl.la/1kXIADa (MDN 문서)에서 확인할 수 있습니다."
 
 #~ msgid "The \"version\" property uses a Firefox-specific format."
 #~ msgstr "\"version\" 속성은 Firefox만의 특정한 형식을 사용합니다."
 
 #~ msgid "addEventListener` called with truthy fourth argument."
-#~ msgstr ""
-#~ "addEventListener` 가 참으로 계산되는 네 번째 인수와 함께 호출되었습니다."
+#~ msgstr "addEventListener` 가 참으로 계산되는 네 번째 인수와 함께 호출되었습니다."
 
 #~ msgid "A custom content_security_policy needs additional review."
 #~ msgstr "사용자 정의 content_security_policy에 추가적인 검토가 필요합니다."
