@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-21 10:05+0000\n"
-"PO-Revision-Date: 2024-08-29 19:12+0000\n"
-"Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
+"PO-Revision-Date: 2024-09-23 21:19+0000\n"
+"Last-Translator: Matjaž Horvat <matjaz.horvat@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -842,21 +842,23 @@ msgstr ""
 
 #: src/messages/manifestjson.js:816
 msgid "incognito \"split\" is unsupported."
-msgstr ""
+msgstr "Vrednost \"split\" ni podprta."
 
 #: src/messages/manifestjson.js:817
 msgid ""
 "The incognito \"split\" value is unsupported and will be treated as \"not_allowed\" in Firefox. Remove the key from the manifest file, if your extension is compatible with Firefox's private browsing"
 " mode."
 msgstr ""
+"Vrednost \"split\" za ključ \"incognito\" ni podprta in bo v Firefoxu obravnavana kot \"not_allowed\". Odstranite ključ iz datoteke z manifestom, če je vaša razširitev združljiva s Firefoxovim "
+"načinom zasebnega brskanja."
 
 #: src/messages/manifestjson.js:825
 msgid "The \"admin_install_only\" property is reserved."
-msgstr ""
+msgstr "Lastnost \"admin_install_only\" je rezervirana."
 
 #: src/messages/manifestjson.js:826
 msgid "The \"admin_install_only\" property is reserved and can only be used in enterprise add-ons."
-msgstr ""
+msgstr "Lastnost \"admin_install_only\" je rezervirana in jo lahko uporabite samo v dodatkih za podjetja."
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
@@ -868,7 +870,7 @@ msgstr "Lastnost \"/browser_specific_settings/gecko/admin_install_only\" mora bi
 
 #: src/messages/manifestjson.js:835
 msgid "The \"admin_install_only\" property must be set to \"true\" in an enterprise add-on."
-msgstr ""
+msgstr "Lastnost \"admin_install_only\" mora biti v dodatkih za podjetja nastavljena na \"true\"."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
