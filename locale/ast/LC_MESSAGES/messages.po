@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-21 10:05+0000\n"
-"PO-Revision-Date: 2024-10-03 21:02+0000\n"
+"PO-Revision-Date: 2024-10-03 21:07+0000\n"
 "Last-Translator: Enol <enolp@softastur.org>\n"
 "Language-Team: none\n"
 "Language: ast\n"
@@ -274,7 +274,7 @@ msgstr ""
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
-msgstr "El ficheru ye mui grande como pa analizalu."
+msgstr "El ficheru ye mui grande como p'analizalu."
 
 #: src/messages/layout.js:47
 msgid ""
@@ -383,7 +383,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:10
 msgid "The field is required."
-msgstr "Ríquese'l campu."
+msgstr "El campu ye obligatoriu."
 
 #: src/messages/manifestjson.js:102 src/messages/manifestjson.js:110 src/messages/manifestjson.js:118
 msgid "The permission type is unsupported."
@@ -391,16 +391,15 @@ msgstr ""
 
 #: src/messages/manifestjson.js:103 src/messages/manifestjson.js:128
 msgid "See https://mzl.la/1R1n1t0 (MDN Docs) for more information."
-msgstr "Mira https://mzl.la/1R1n1t0 (documentación de MDN) pa consiguir más información."
+msgstr "Consulta https://mzl.la/1R1n1t0 (documentación de MDN) pa consiguir más información."
 
 #: src/messages/manifestjson.js:11 src/messages/manifestjson.js:20
 msgid "See https://mzl.la/1ZOhoEN (MDN Docs) for more information."
 msgstr ""
 
 #: src/messages/manifestjson.js:111 src/messages/manifestjson.js:157
-#, fuzzy
 msgid "See https://mzl.la/2Qn0fWC (MDN Docs) for more information."
-msgstr "Mira https://mzl.la/20PenXl (documentación de MDN) pa consiguir más información."
+msgstr "Consulta https://mzl.la/2Qn0fWC (documentación de MDN) pa consiguir más información."
 
 #: src/messages/manifestjson.js:119 src/messages/manifestjson.js:166
 msgid "See https://mzl.la/3Woeqv4 (MDN Docs) for more information."
@@ -415,14 +414,12 @@ msgid "%(instancePath)s: the following privileged permissions are only allowed i
 msgstr ""
 
 #: src/messages/manifestjson.js:165
-#, fuzzy
 msgid "Invalid host permission."
-msgstr "Desconozse'l permisu."
+msgstr ""
 
 #: src/messages/manifestjson.js:174
-#, fuzzy
 msgid "Invalid install origin."
-msgstr "Desconozse'l permisu."
+msgstr "L'orixe d'instalación ye inválidu."
 
 #: src/messages/manifestjson.js:175
 msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
@@ -434,7 +431,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:186
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
-msgstr "Mira https://mzl.la/20PenXl (documentación de MDN) pa consiguir más información."
+msgstr "Consulta https://mzl.la/20PenXl (documentación de MDN) pa consiguir más información."
 
 #: src/messages/manifestjson.js:19
 msgid "The field is invalid."
@@ -462,7 +459,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:230
 msgid "See http://mzl.la/1STmr48 (MDN Docs) for more information."
-msgstr "Mira http://mzl.la/1STmr48 (documentación de MDN) pa consiguir más información."
+msgstr "Consulta http://mzl.la/1STmr48 (documentación de MDN) pa consiguir más información."
 
 #: src/messages/manifestjson.js:238
 msgid "\"update_url\" is not allowed."
@@ -614,7 +611,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:443
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "Esta propiedá ta obsoleta."
 
 #: src/messages/manifestjson.js:450
 msgid "This theme LWT alias has been removed in Firefox 70."
@@ -622,7 +619,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:451
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "Mira https://mzl.la/2T11Lkc (documentación de MDN) pa consiguir más información."
+msgstr "Consulta https://mzl.la/2T11Lkc (documentación de MDN) pa consiguir más información."
 
 #: src/messages/manifestjson.js:466
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
