@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-21 10:05+0000\n"
-"PO-Revision-Date: 2024-10-03 12:51+0000\n"
+"PO-Revision-Date: 2024-10-03 12:56+0000\n"
 "Last-Translator: Yasser Althuwaini <ymth2000@outlook.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
@@ -333,7 +333,7 @@ msgstr "وُقّعت الحزمة بالفعل"
 
 #: src/messages/layout.js:91
 msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
-msgstr ""
+msgstr "سيتم إعادة توقيع الإضافات التي تم توقيعها بالفعل عند نشرها على AMO. سيؤدي هذا إلى استبدال أي توقيعات موجودة على الإضافة."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
@@ -500,7 +500,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:270
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "\"%(property)s\" مطلوبة"
 
 #: src/messages/manifestjson.js:281
 msgid "An icon defined in the manifest could not be found in the package."
@@ -530,7 +530,7 @@ msgstr "لم توجد صفحة الخلفية في ”%(path)s“."
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "يُتجاهل \"%(fieldName)s\" للإضافات غير المميزة."
 
 #: src/messages/manifestjson.js:324
 #, fuzzy
@@ -565,11 +565,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:363
 msgid "The manifest contains multiple dictionaries."
-msgstr ""
+msgstr "يحتوي البيان على قواميس متعددة."
 
 #: src/messages/manifestjson.js:364
 msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
+msgstr "تم تعريف قواميس متعددة في البيان، وهو أمر غير مدعوم."
 
 #: src/messages/manifestjson.js:373
 msgid "The manifest contains a dictionaries object, but it is empty."
@@ -581,11 +581,11 @@ msgstr ""
 
 #: src/messages/manifestjson.js:385
 msgid "The manifest contains a dictionary but no id property."
-msgstr ""
+msgstr "يحتوي البيان على قاموس ولكن لا يحتوي على خاصية معرف."
 
 #: src/messages/manifestjson.js:386
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
+msgstr "تم العثور على قاموس في البيان، ولكن لم يتم تعيين معرف."
 
 #: src/messages/manifestjson.js:396
 msgid "Forbidden content found in add-on."
@@ -597,7 +597,7 @@ msgstr "في هذه الإضافة محتوًى محظور."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "يرجى الرجوع إلى https://github.com/mozilla-extensions/xpi-manifest لمعرفة المزيد حول الامتدادات المميزة والتوقيع."
 
 #: src/messages/manifestjson.js:405
 msgid "Icons must be square."
@@ -625,16 +625,15 @@ msgstr "توقّعت ملف أيقونة في ”%(path)s“، ولكنّه تا
 
 #: src/messages/manifestjson.js:443
 msgid "This property has been deprecated."
-msgstr ""
+msgstr "لقد تم إيقاف استخدام هذه الخاصية."
 
 #: src/messages/manifestjson.js:450
 msgid "This theme LWT alias has been removed in Firefox 70."
 msgstr ""
 
 #: src/messages/manifestjson.js:451
-#, fuzzy
 msgid "See https://mzl.la/2T11Lkc (MDN Docs) for more information."
-msgstr "طالع https://mzl.la/1ZOhoEN (وثائق MDN) لمعلومات أكثر."
+msgstr "طالع https://mzl.la/2T11Lkc (وثائق MDN) لمعلومات أكثر."
 
 #: src/messages/manifestjson.js:466
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
@@ -750,7 +749,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:678
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
-msgstr ""
+msgstr "لا يُسمح بالربط إلى \"addons.mozilla.org\""
 
 #: src/messages/manifestjson.js:679
 msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
@@ -770,7 +769,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:711
 msgid "See https://mzl.la/3PLZYdo for more information."
-msgstr ""
+msgstr "طالع https://mzl.la/3PLZYdo لمعلومات أكثر."
 
 #: src/messages/manifestjson.js:717
 msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
@@ -838,7 +837,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:816
 msgid "incognito \"split\" is unsupported."
-msgstr ""
+msgstr "لا يتم دعم \"تقسيم\" التصفح المتخفي."
 
 #: src/messages/manifestjson.js:817
 msgid ""
@@ -868,7 +867,7 @@ msgstr ""
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
-msgstr ""
+msgstr "/%(fieldName)s: \"%(permissionName)s\" غير مدعومة."
 
 #~ msgid "Invalid nesting of selectors found"
 #~ msgstr "عُثر على تشعّب مُنتقيات غير صالح"
