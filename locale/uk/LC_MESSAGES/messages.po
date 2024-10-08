@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-21 10:05+0000\n"
-"PO-Revision-Date: 2024-07-16 15:19+0000\n"
-"Last-Translator: Lobodzets <Lobodzets@meta.ua>\n"
+"PO-Revision-Date: 2024-09-15 15:19+0000\n"
+"Last-Translator: Artem Polivanchuk <a.polivanchuk@outlook.com>\n"
 "Language-Team: none\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -848,13 +848,15 @@ msgstr ""
 
 #: src/messages/manifestjson.js:816
 msgid "incognito \"split\" is unsupported."
-msgstr ""
+msgstr "\"split\" в анонімному режимі не підтримується."
 
 #: src/messages/manifestjson.js:817
 msgid ""
 "The incognito \"split\" value is unsupported and will be treated as \"not_allowed\" in Firefox. Remove the key from the manifest file, if your extension is compatible with Firefox's private browsing"
 " mode."
 msgstr ""
+"Значення \"split\" в анонімному режимі не підтримується і вважатиметься \"not_allowed\" у Firefox. Вилучіть цей ключ із файлу маніфесту, якщо ваше розширення сумісне з режимом приватного перегляду "
+"Firefox."
 
 #: src/messages/manifestjson.js:825
 msgid "The \"admin_install_only\" property is reserved."
@@ -874,7 +876,7 @@ msgstr "Для властивості \"/browser_specific_settings/gecko/admin_i
 
 #: src/messages/manifestjson.js:835
 msgid "The \"admin_install_only\" property must be set to \"true\" in an enterprise add-on."
-msgstr ""
+msgstr "В корпоративному додатку для властивості \"admin_install_only\" необхідно встановити значення \"true\"."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."

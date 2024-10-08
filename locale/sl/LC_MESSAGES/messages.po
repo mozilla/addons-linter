@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-06-21 10:05+0000\n"
-"PO-Revision-Date: 2024-08-29 19:12+0000\n"
+"PO-Revision-Date: 2024-10-01 16:23+0000\n"
 "Last-Translator: Lan Glad <upwinxp@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -292,8 +292,8 @@ msgid ""
 "This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
 "or splitting very large files into smaller ones."
 msgstr ""
-"Ta datoteka ni binarna in je prevelika za razčlenjevanje. Datoteke, večje od %(maxFileSizeToParseMB)sMB, ne bodo razčlenjene. Razmislite o premikanju velikih seznamov podatkov iz datotek JavaScript "
-"v datoteke JSON ali o razdelitvi zelo velikih datotek na manjše."
+"To ni dvojiška datoteka in je prevelika za razčlenitev. Datoteke, večje od %(maxFileSizeToParseMB)s MB, ne bodo razčlenjene. Razmislite o premiku velikih seznamov podatkov iz datotek JavaScript v "
+"datoteke JSON ali o razdelitvi zelo velikih datotek na manjše."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -302,7 +302,8 @@ msgstr "Skrita datoteka označena"
 #: src/messages/layout.js:58
 msgid ""
 "Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
-msgstr "Skrite datoteke otežijo postopek pregleda in lahko vsebujejo občutljive podatke o sistemu, ki je ustvaril dodatek. Spremenite postopek pakiranja, da te datoteke ne bodo vključene."
+msgstr ""
+"Skrite datoteke otežijo postopek pregleda in lahko vsebujejo občutljive podatke o sistemu, v katerem je bil dodatek ustvarjen. Spremenite postopek pakiranja, tako da te datoteke ne bodo vključene."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -842,21 +843,23 @@ msgstr ""
 
 #: src/messages/manifestjson.js:816
 msgid "incognito \"split\" is unsupported."
-msgstr ""
+msgstr "Vrednost \"split\" ni podprta."
 
 #: src/messages/manifestjson.js:817
 msgid ""
 "The incognito \"split\" value is unsupported and will be treated as \"not_allowed\" in Firefox. Remove the key from the manifest file, if your extension is compatible with Firefox's private browsing"
 " mode."
 msgstr ""
+"Vrednost \"split\" za ključ \"incognito\" ni podprta in bo v Firefoxu obravnavana kot \"not_allowed\". Odstranite ključ iz datoteke z manifestom, če je vaša razširitev združljiva s Firefoxovim "
+"načinom zasebnega brskanja."
 
 #: src/messages/manifestjson.js:825
 msgid "The \"admin_install_only\" property is reserved."
-msgstr ""
+msgstr "Lastnost \"admin_install_only\" je rezervirana."
 
 #: src/messages/manifestjson.js:826
 msgid "The \"admin_install_only\" property is reserved and can only be used in enterprise add-ons."
-msgstr ""
+msgstr "Lastnost \"admin_install_only\" je rezervirana in jo lahko uporabite samo v dodatkih za podjetja."
 
 #: src/messages/manifestjson.js:83
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
@@ -868,7 +871,7 @@ msgstr "Lastnost \"/browser_specific_settings/gecko/admin_install_only\" mora bi
 
 #: src/messages/manifestjson.js:835
 msgid "The \"admin_install_only\" property must be set to \"true\" in an enterprise add-on."
-msgstr ""
+msgstr "Lastnost \"admin_install_only\" mora biti v dodatkih za podjetja nastavljena na \"true\"."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
