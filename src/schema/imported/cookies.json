@@ -431,6 +431,10 @@
         "topLevelSite": {
           "type": "string",
           "description": "The first-party URL of the cookie, if the cookie is in storage partitioned by the top-level site."
+        },
+        "hasCrossSiteAncestor": {
+          "type": "boolean",
+          "description": "Whether or not the cookie is in a third-party context, respecting ancestor chains."
         }
       }
     },
