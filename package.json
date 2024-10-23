@@ -77,7 +77,7 @@
     "@babel/core": "7.25.8",
     "@babel/eslint-parser": "7.25.8",
     "@babel/preset-env": "7.25.8",
-    "@babel/register": "7.25.7",
+    "@babel/register": "7.25.9",
     "async": "3.2.6",
     "babel-core": "7.0.0-bridge.0",
     "babel-gettext-extractor": "github:willdurand/babel-gettext-extractor#5.1.0",
