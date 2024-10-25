@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-10-14 11:37+0000\n"
-"PO-Revision-Date: 2024-07-25 16:12+0000\n"
-"Last-Translator: Lộc <loctp99@gmail.com>\n"
+"PO-Revision-Date: 2024-10-25 17:42+0000\n"
+"Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -803,7 +803,7 @@ msgstr "Không thể sử dụng các hành động trong tiện ích mở rộn
 
 #: src/messages/manifestjson.js:768
 msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
-msgstr ""
+msgstr "Thuộc tính hidden và browser_action/page_action (hoặc action trong Manifest phiên bản 3 trở lên) loại trừ lẫn nhau."
 
 #: src/messages/manifestjson.js:776
 msgid "Use \"browser_specific_settings\" instead of \"applications\"."
