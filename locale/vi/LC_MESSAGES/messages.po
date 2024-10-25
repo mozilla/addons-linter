@@ -1,11 +1,11 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-10-14 11:37+0000\n"
-"PO-Revision-Date: 2024-06-19 10:26+0000\n"
-"Last-Translator: Quế Tùng <best.cloney.1301@gmail.com>\n"
+"PO-Revision-Date: 2024-07-25 16:12+0000\n"
+"Last-Translator: Lộc <loctp99@gmail.com>\n"
 "Language-Team: none\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -44,13 +44,11 @@ msgstr "Cột"
 
 #: src/linter.js:60
 msgid ""
-"Invalid manifest version range requested: --min-manifest-version (currently "
-"set to %(minManifestVersion)s) should not be greater than --max-manifest-"
-"version (currently set to %(maxManifestVersion)s)."
+"Invalid manifest version range requested: --min-manifest-version (currently set to %(minManifestVersion)s) should not be greater than --max-manifest-version (currently set to "
+"%(maxManifestVersion)s)."
 msgstr ""
-"Yêu cầu phạm vi phiên bản tập tin manifest không hợp lệ: --min-manifest-"
-"version (hiện tại đặt thành %(minManifestVersion)s) không được lớn hơn --max-"
-"manifest-version (hiện tại đặt là %(maxManifestVersion)s)."
+"Yêu cầu phạm vi phiên bản tập tin manifest không hợp lệ: --min-manifest-version (hiện tại đặt thành %(minManifestVersion)s) không được lớn hơn --max-manifest-version (hiện tại đặt là "
+"%(maxManifestVersion)s)."
 
 #: src/messages/fluent.js:5
 msgid "Your FTL is not valid."
@@ -65,21 +63,15 @@ msgid "Remote scripts are not allowed as per the Add-on Policies."
 msgstr "Các tập lệnh từ xa không được phép theo Chính sách tiện ích mở rộng."
 
 #: src/messages/html.js:13
-msgid ""
-"Please include all scripts in the add-on. For more information, refer to "
-"https://mzl.la/2uEOkYp."
-msgstr ""
-"Vui lòng bao gồm tất cả các tập lệnh trong tiện ích mở rộng. Để biết thêm "
-"thông tin, hãy tham khảo https://mzl.la/2uEOkYp."
+msgid "Please include all scripts in the add-on. For more information, refer to https://mzl.la/2uEOkYp."
+msgstr "Vui lòng bao gồm tất cả các tập lệnh trong tiện ích mở rộng. Để biết thêm thông tin, hãy tham khảo https://mzl.la/2uEOkYp."
 
 #: src/messages/html.js:5
 msgid "Inline scripts blocked by default"
 msgstr "Các tập lệnh nội tuyến bị chặn theo mặc định"
 
 #: src/messages/html.js:6
-msgid ""
-"Default CSP rules prevent inline JavaScript from running (https://mzl."
-"la/2pn32nd)."
+msgid "Default CSP rules prevent inline JavaScript from running (https://mzl.la/2pn32nd)."
 msgstr ""
 
 #: src/messages/javascript.js:100
@@ -87,30 +79,21 @@ msgid "Unadvised 3rd-party JS library"
 msgstr "Thư viện JS của bên thứ 3 không được chấp nhận"
 
 #: src/messages/javascript.js:101
-msgid ""
-"Your add-on uses a JavaScript library we do not recommend. Read more: "
-"https://bit.ly/1TRIyZY"
-msgstr ""
-"Tiện ích mở rộng của bạn sử dụng thư viện JavaScript mà chúng tôi không "
-"khuyên dùng. Đọc thêm: https://bit.ly/1TRIyZY"
+msgid "Your add-on uses a JavaScript library we do not recommend. Read more: https://bit.ly/1TRIyZY"
+msgstr "Tiện ích mở rộng của bạn sử dụng thư viện JavaScript mà chúng tôi không khuyên dùng. Đọc thêm: https://bit.ly/1TRIyZY"
 
 #: src/messages/javascript.js:107
 msgid "Known JS library detected"
 msgstr "Đã phát hiện thư viện JS"
 
 #: src/messages/javascript.js:108
-msgid ""
-"JavaScript libraries are discouraged for simple add-ons, but are generally "
-"accepted."
-msgstr ""
-"Các thư viện JavaScript không được khuyến khích cho các tiện ích mở rộng đơn "
-"giản, nhưng thường được chấp nhận."
+msgid "JavaScript libraries are discouraged for simple add-ons, but are generally accepted."
+msgstr "Các thư viện JavaScript không được khuyến khích cho các tiện ích mở rộng đơn giản, nhưng thường được chấp nhận."
 
 #: src/messages/javascript.js:116
 msgid ""
-"Due to both security and performance concerns, this may not be set using "
-"dynamic values which have not been adequately sanitized. This can lead to "
-"security issues or fairly serious performance degradation."
+"Due to both security and performance concerns, this may not be set using dynamic values which have not been adequately sanitized. This can lead to security issues or fairly serious performance "
+"degradation."
 msgstr ""
 
 #: src/messages/javascript.js:125
@@ -122,12 +105,8 @@ msgid "This API has not been implemented by Firefox."
 msgstr "API này chưa được Firefox triển khai."
 
 #: src/messages/javascript.js:132
-msgid ""
-"\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` "
-"property)"
-msgstr ""
-"\"{{api}}\" đã bị xóa trong Manifest phiên bản 3 (thuộc tính "
-"`manifest_version`)"
+msgid "\"{{api}}\" has been removed in Manifest Version 3 (`manifest_version` property)"
+msgstr "\"{{api}}\" đã bị xóa trong Manifest phiên bản 3 (thuộc tính `manifest_version`)"
 
 #: src/messages/javascript.js:141
 msgid "{{api}} is deprecated"
@@ -155,14 +134,11 @@ msgstr "\"%(api)s\" có thể gây ra sự cố khi tải tạm thời"
 
 #: src/messages/javascript.js:165
 msgid ""
-"This API can cause issues when loaded temporarily using about:debugging in "
-"Firefox unless you specify \"browser_specific_settings.gecko.id\" in the "
-"manifest. Please see: https://mzl.la/2hizK4a for more."
+"This API can cause issues when loaded temporarily using about:debugging in Firefox unless you specify \"browser_specific_settings.gecko.id\" in the manifest. Please see: https://mzl.la/2hizK4a for "
+"more."
 msgstr ""
-"API này có thể gây ra sự cố khi được tải tạm thời bằng cách sử dụng about:"
-"debugging trong Firefox trừ khi bạn chỉ định \"browser_specific_settings."
-"gecko.id\" trong manifest. Vui lòng xem tại https://mzl.la/2hizK4a để tìm "
-"hiểu thêm."
+"API này có thể gây ra sự cố khi được tải tạm thời bằng cách sử dụng about:debugging trong Firefox trừ khi bạn chỉ định \"browser_specific_settings.gecko.id\" trong manifest. Vui lòng xem tại "
+"https://mzl.la/2hizK4a để tìm hiểu thêm."
 
 #: src/messages/javascript.js:185
 msgid "{{api}} is not supported in Firefox version {{minVersion}}"
@@ -174,16 +150,11 @@ msgstr "API này không được triển khai bởi phiên bản Firefox tối t
 
 #: src/messages/javascript.js:196
 msgid "{{api}} is not supported in Firefox for Android version {{minVersion}}"
-msgstr ""
-"{{api}} không được hỗ trợ trong Firefox dành cho Android phiên bản "
-"{{minVersion}}"
+msgstr "{{api}} không được hỗ trợ trong Firefox dành cho Android phiên bản {{minVersion}}"
 
 #: src/messages/javascript.js:199
-msgid ""
-"This API is not implemented by the given minimum Firefox for Android version"
-msgstr ""
-"API này không được triển khai bởi phiên bản Firefox tối thiểu dành cho "
-"Android"
+msgid "This API is not implemented by the given minimum Firefox for Android version"
+msgstr "API này không được triển khai bởi phiên bản Firefox tối thiểu dành cho Android"
 
 #: src/messages/javascript.js:22
 msgid "Content script file name should not be empty."
@@ -198,26 +169,16 @@ msgid "\"%(method)s\" called with a non-literal uri"
 msgstr "\"%(method)s\" được gọi với uri không theo nghĩa đen"
 
 #: src/messages/javascript.js:34
-msgid ""
-"Calling \"%(method)s\" with variable parameters can result in potential "
-"security vulnerabilities if the variable contains a remote URI. Consider "
-"using 'window.open' with the 'chrome=no' flag."
-msgstr ""
-"Việc gọi \"%(method)s\" với tham số biến có thể dẫn đến lỗ hổng bảo mật tiềm "
-"ẩn nếu biến chứa URI từ xa. Cân nhắc sử dụng 'window.open' với cờ "
-"'chrome=no'."
+msgid "Calling \"%(method)s\" with variable parameters can result in potential security vulnerabilities if the variable contains a remote URI. Consider using 'window.open' with the 'chrome=no' flag."
+msgstr "Việc gọi \"%(method)s\" với tham số biến có thể dẫn đến lỗ hổng bảo mật tiềm ẩn nếu biến chứa URI từ xa. Cân nhắc sử dụng 'window.open' với cờ 'chrome=no'."
 
 #: src/messages/javascript.js:45
 msgid "\"%(method)s\" called with non-local URI"
 msgstr "\"%(method)s\" được gọi với URI không cục bộ"
 
 #: src/messages/javascript.js:49
-msgid ""
-"Calling \"%(method)s\" with a non-local URI will result in the dialog being "
-"opened with chrome privileges."
-msgstr ""
-"Gọi \"%(method)s\" bằng URI không cục bộ sẽ dẫn đến hộp thoại được mở bằng "
-"các đặc quyền của chrome."
+msgid "Calling \"%(method)s\" with a non-local URI will result in the dialog being opened with chrome privileges."
+msgstr "Gọi \"%(method)s\" bằng URI không cục bộ sẽ dẫn đến hộp thoại được mở bằng các đặc quyền của chrome."
 
 #: src/messages/javascript.js:5
 msgid "JavaScript syntax error"
@@ -225,82 +186,57 @@ msgstr "Lỗi cú pháp JavaScript"
 
 #: src/messages/javascript.js:6
 msgid ""
-"There is a JavaScript syntax error in your code, which might be related to "
-"some experimental JavaScript features that aren't an official part of the "
-"language specification and therefore not supported yet. The validation "
-"cannot continue on this file."
+"There is a JavaScript syntax error in your code, which might be related to some experimental JavaScript features that aren't an official part of the language specification and therefore not "
+"supported yet. The validation cannot continue on this file."
 msgstr ""
-"Có lỗi cú pháp JavaScript trong mã của bạn, có thể liên quan đến một số tính "
-"năng JavaScript thử nghiệm không phải là một phần chính thức của đặc tả ngôn "
-"ngữ và do đó chưa được hỗ trợ. Việc xác thực không thể tiếp tục trên tập tin "
-"này."
+"Có lỗi cú pháp JavaScript trong mã của bạn, có thể liên quan đến một số tính năng JavaScript thử nghiệm không phải là một phần chính thức của đặc tả ngôn ngữ và do đó chưa được hỗ trợ. Việc xác thực"
+" không thể tiếp tục trên tập tin này."
 
 #: src/messages/javascript.js:62
 msgid ""
-"Evaluation of strings as code can lead to security vulnerabilities and "
-"performance issues, even in the most innocuous of circumstances. Please "
-"avoid using `eval` and the `Function` constructor when at all possible."
+"Evaluation of strings as code can lead to security vulnerabilities and performance issues, even in the most innocuous of circumstances. Please avoid using `eval` and the `Function` constructor when "
+"at all possible."
 msgstr ""
-"Việc đánh giá các chuỗi dưới dạng mã có thể dẫn đến các lỗ hổng bảo mật và "
-"các vấn đề về hiệu suất, ngay cả trong những trường hợp vô hại nhất. Vui "
-"lòng tránh sử dụng hàm tạo `eval` và `Function` khi có thể."
+"Việc đánh giá các chuỗi dưới dạng mã có thể dẫn đến các lỗ hổng bảo mật và các vấn đề về hiệu suất, ngay cả trong những trường hợp vô hại nhất. Vui lòng tránh sử dụng hàm tạo `eval` và `Function` "
+"khi có thể."
 
 #: src/messages/javascript.js:71
-msgid ""
-"setTimeout, setInterval and execScript functions should be called only with "
-"function expressions as their first argument"
-msgstr ""
-"Các hàm setTimeout, setInterval và execScript chỉ nên được gọi với các biểu "
-"thức hàm làm đối số đầu tiên của chúng"
+msgid "setTimeout, setInterval and execScript functions should be called only with function expressions as their first argument"
+msgstr "Các hàm setTimeout, setInterval và execScript chỉ nên được gọi với các biểu thức hàm làm đối số đầu tiên của chúng"
 
 #: src/messages/javascript.js:78
 msgid "Unexpected global passed as an argument"
 msgstr "Việc sử dụng biến toàn cục làm đối số không mong muốn"
 
 #: src/messages/javascript.js:79
-msgid ""
-"Passing a global as an argument is not recommended. Please make this a var "
-"instead."
-msgstr ""
-"Không nên chuyển global làm đối số. Thay vào đó, hãy biến điều này thành var."
+msgid "Passing a global as an argument is not recommended. Please make this a var instead."
+msgstr "Không nên chuyển global làm đối số. Thay vào đó, hãy biến điều này thành var."
 
 #: src/messages/javascript.js:85
 msgid "Use of document.write strongly discouraged."
 msgstr "Không khuyến khích sử dụng document.write."
 
 #: src/messages/javascript.js:86
-msgid ""
-"document.write will fail in many circumstances when used in extensions, and "
-"has potentially severe security repercussions when used improperly. "
-"Therefore, it should not be used."
+msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
 msgstr ""
-"document.write sẽ không thành công trong nhiều trường hợp khi được sử dụng "
-"trong các tiện ích mở rộng và có khả năng gây hậu quả bảo mật nghiêm trọng "
-"khi sử dụng không đúng cách. Do đó, nó không nên được sử dụng."
+"document.write sẽ không thành công trong nhiều trường hợp khi được sử dụng trong các tiện ích mở rộng và có khả năng gây hậu quả bảo mật nghiêm trọng khi sử dụng không đúng cách. Do đó, nó không nên"
+" được sử dụng."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
 msgstr "Thư viện JS của bên thứ 3 bị cấm"
 
 #: src/messages/javascript.js:94
-msgid ""
-"Your add-on uses a JavaScript library we consider unsafe. Read more: https://"
-"bit.ly/1TRIyZY"
-msgstr ""
-"Tiện ích bổ sung của bạn sử dụng thư viện JavaScript mà chúng tôi cho là "
-"không an toàn. Đọc thêm: https://bit.ly/1TRIyZY"
+msgid "Your add-on uses a JavaScript library we consider unsafe. Read more: https://bit.ly/1TRIyZY"
+msgstr "Tiện ích bổ sung của bạn sử dụng thư viện JavaScript mà chúng tôi cho là không an toàn. Đọc thêm: https://bit.ly/1TRIyZY"
 
 #: src/messages/json.js:11
 msgid "Your JSON contains block comments."
 msgstr "JSON của bạn chứa các bình luận (comment) bị chặn."
 
 #: src/messages/json.js:12
-msgid ""
-"Only line comments (comments beginning with \"//\") are allowed in JSON "
-"files. Please remove block comments (comments beginning with \"/*\")"
-msgstr ""
-"Chỉ cho phép comment (bắt đầu bằng \"//\") trong tập tin JSON. Vui lòng xóa "
-"các block comment (bắt đầu bằng \"/*\")"
+msgid "Only line comments (comments beginning with \"//\") are allowed in JSON files. Please remove block comments (comments beginning with \"/*\")"
+msgstr "Chỉ cho phép comment (bắt đầu bằng \"//\") trong tập tin JSON. Vui lòng xóa các block comment (bắt đầu bằng \"/*\")"
 
 #: src/messages/json.js:19
 msgid "Duplicate keys are not allowed in JSON files."
@@ -323,24 +259,16 @@ msgid "Reserved filename found."
 msgstr "Đã tìm thấy tên tập tin dành riêng."
 
 #: src/messages/layout.js:108
-msgid ""
-"Files whose names are reserved have been found in the add-on. Please refrain "
-"from using them and rename your files."
-msgstr ""
-"Các tập tin có tên được đặt trước đã được tìm thấy trong tiện ích mở rộng. "
-"Vui lòng không sử dụng chúng và đổi tên các tập tin của bạn."
+msgid "Files whose names are reserved have been found in the add-on. Please refrain from using them and rename your files."
+msgstr "Các tập tin có tên được đặt trước đã được tìm thấy trong tiện ích mở rộng. Vui lòng không sử dụng chúng và đổi tên các tập tin của bạn."
 
 #: src/messages/layout.js:22
 msgid ""
-"The package is invalid. It may contain entries using invalid characters, as "
-"an example using '\\' as a path separator is not allowed in Firefox. Try to "
-"recreate your add-on package (ZIP) and make sure all entries are using '/' "
-"as the path separator."
+"The package is invalid. It may contain entries using invalid characters, as an example using '\\' as a path separator is not allowed in Firefox. Try to recreate your add-on package (ZIP) and make "
+"sure all entries are using '/' as the path separator."
 msgstr ""
-"Gói không hợp lệ. Nó có thể chứa các mục nhập sử dụng các ký tự không hợp "
-"lệ, chẳng hạn như sử dụng '\\' làm dấu tách đường dẫn không được phép trong "
-"Firefox. Hãy thử tạo lại gói tiện ích mở rộng (ZIP) của bạn và đảm bảo rằng "
-"tất cả các mục đang sử dụng '/' làm dấu tách đường dẫn."
+"Gói không hợp lệ. Nó có thể chứa các mục nhập sử dụng các ký tự không hợp lệ, chẳng hạn như sử dụng '\\' làm dấu tách đường dẫn không được phép trong Firefox. Hãy thử tạo lại gói tiện ích mở rộng "
+"(ZIP) của bạn và đảm bảo rằng tất cả các mục đang sử dụng '/' làm dấu tách đường dẫn."
 
 #: src/messages/layout.js:32
 msgid "We were unable to decompress the zip file."
@@ -352,13 +280,11 @@ msgstr "Không tìm thấy manifest.json"
 
 #: src/messages/layout.js:38
 msgid ""
-"No manifest.json was found at the root of the extension. The package file "
-"must be a ZIP of the extension's files themselves, not of the containing "
-"directory. See: https://mzl.la/2r2McKv for more on packaging."
+"No manifest.json was found at the root of the extension. The package file must be a ZIP of the extension's files themselves, not of the containing directory. See: https://mzl.la/2r2McKv for more on "
+"packaging."
 msgstr ""
-"Không tìm thấy manifest.json ở thư mục gốc của tiện ích mở rộng. Tập tin gói "
-"phải là tập tin ZIP của chính các tập tin của tiện ích mở rộng, không phải "
-"của thư mục chứa nó. Xem: https://mzl.la/2r2McKv để biết thêm về đóng gói."
+"Không tìm thấy manifest.json ở thư mục gốc của tiện ích mở rộng. Tập tin gói phải là tập tin ZIP của chính các tập tin của tiện ích mở rộng, không phải của thư mục chứa nó. Xem: "
+"https://mzl.la/2r2McKv để biết thêm về đóng gói."
 
 #: src/messages/layout.js:45
 msgid "File is too large to parse."
@@ -366,16 +292,11 @@ msgstr "Tập tin quá lớn để phân tích cú pháp."
 
 #: src/messages/layout.js:47
 msgid ""
-"This file is not binary and is too large to parse. Files larger than "
-"%(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists "
-"of data out of JavaScript files and into JSON files, or splitting very large "
-"files into smaller ones."
+"This file is not binary and is too large to parse. Files larger than %(maxFileSizeToParseMB)sMB will not be parsed. Consider moving large lists of data out of JavaScript files and into JSON files, "
+"or splitting very large files into smaller ones."
 msgstr ""
-"Tập tin này không phải là tập tin nhị phân và quá lớn để phân tích cú pháp. "
-"Các tập tin lớn hơn %(maxFileSizeToParseMB)sMB sẽ không được phân tích cú "
-"pháp. Cân nhắc di chuyển các danh sách dữ liệu lớn ra khỏi tập tin "
-"JavaScript và sang tập tin JSON hoặc chia các tập tin rất lớn thành các tập "
-"tin nhỏ hơn."
+"Tập tin này không phải là tập tin nhị phân và quá lớn để phân tích cú pháp. Các tập tin lớn hơn %(maxFileSizeToParseMB)sMB sẽ không được phân tích cú pháp. Cân nhắc di chuyển các danh sách dữ liệu "
+"lớn ra khỏi tập tin JavaScript và sang tập tin JSON hoặc chia các tập tin rất lớn thành các tập tin nhỏ hơn."
 
 #: src/messages/layout.js:57
 msgid "Hidden file flagged"
@@ -383,13 +304,8 @@ msgstr "Tập tin ẩn được gắn cờ"
 
 #: src/messages/layout.js:58
 msgid ""
-"Hidden files complicate the review process and can contain sensitive "
-"information about the system that generated the add-on. Please modify the "
-"packaging process so that these files aren't included."
-msgstr ""
-"Các tập tin ẩn làm phức tạp quá trình xem xét và có thể chứa thông tin nhạy "
-"cảm về hệ thống đã tạo tiện ích mở rộng. Vui lòng sửa đổi quy trình đóng gói "
-"để không bao gồm các tập tin này."
+"Hidden files complicate the review process and can contain sensitive information about the system that generated the add-on. Please modify the packaging process so that these files aren't included."
+msgstr "Các tập tin ẩn làm phức tạp quá trình xem xét và có thể chứa thông tin nhạy cảm về hệ thống đã tạo tiện ích mở rộng. Vui lòng sửa đổi quy trình đóng gói để không bao gồm các tập tin này."
 
 #: src/messages/layout.js:6
 msgid "Package contains duplicate entries"
@@ -400,20 +316,12 @@ msgid "Flagged filename found"
 msgstr "Đã tìm thấy tên tập tin được gắn cờ"
 
 #: src/messages/layout.js:67 src/messages/layout.js:74
-msgid ""
-"Files were found that are either unnecessary or have been included "
-"unintentionally. They should be removed."
-msgstr ""
-"Đã tìm thấy các tập tin không cần thiết hoặc đã được đưa vào ngoài ý muốn. "
-"Chúng nên được loại bỏ."
+msgid "Files were found that are either unnecessary or have been included unintentionally. They should be removed."
+msgstr "Đã tìm thấy các tập tin không cần thiết hoặc đã được đưa vào ngoài ý muốn. Chúng nên được loại bỏ."
 
 #: src/messages/layout.js:7
-msgid ""
-"The package contains multiple entries with the same name. This practice has "
-"been banned. Try unzipping and re-zipping your add-on package and try again."
-msgstr ""
-"Gói chứa nhiều mục có cùng tên. Điều này đã bị cấm. Hãy thử giải nén và nén "
-"lại gói tiện ích của bạn rồi thử lại."
+msgid "The package contains multiple entries with the same name. This practice has been banned. Try unzipping and re-zipping your add-on package and try again."
+msgstr "Gói chứa nhiều mục có cùng tên. Điều này đã bị cấm. Hãy thử giải nén và nén lại gói tiện ích của bạn rồi thử lại."
 
 #: src/messages/layout.js:73
 msgid "Flagged file extensions found"
@@ -425,61 +333,39 @@ msgstr "Đã tìm thấy loại tập tin được gắn cờ"
 
 #: src/messages/layout.js:81
 msgid ""
-"Files whose names end with flagged extensions have been found in the add-on. "
-"The extension of these files are flagged because they usually identify "
-"binary components. Please see https://bit.ly/review-policy for more "
-"information on the binary content review process."
+"Files whose names end with flagged extensions have been found in the add-on. The extension of these files are flagged because they usually identify binary components. Please see "
+"https://bit.ly/review-policy for more information on the binary content review process."
 msgstr ""
-"Các tập tin có tên kết thúc bằng phần mở rộng được gắn cờ đã được tìm thấy "
-"trong tiện ích mở rộng. Phần mở rộng của các tập tin này được gắn cờ vì "
-"chúng thường xác định các thành phần nhị phân. Vui lòng xem https://bit.ly/"
-"review-policy để biết thêm thông tin về quy trình xem xét nội dung nhị phân."
+"Các tập tin có tên kết thúc bằng phần mở rộng được gắn cờ đã được tìm thấy trong tiện ích mở rộng. Phần mở rộng của các tập tin này được gắn cờ vì chúng thường xác định các thành phần nhị phân. Vui "
+"lòng xem https://bit.ly/review-policy để biết thêm thông tin về quy trình xem xét nội dung nhị phân."
 
 #: src/messages/layout.js:90
 msgid "Package already signed"
 msgstr "Gói đã được ký"
 
 #: src/messages/layout.js:91
-msgid ""
-"Add-ons which are already signed will be re-signed when published on AMO. "
-"This will replace any existing signatures on the add-on."
-msgstr ""
-"Các tiện ích mở rộng đã được ký sẽ được ký lại khi xuất bản trên AMO. Thao "
-"tác này sẽ thay thế mọi chữ ký hiện có trên tiện ích mở rộng."
+msgid "Add-ons which are already signed will be re-signed when published on AMO. This will replace any existing signatures on the add-on."
+msgstr "Các tiện ích mở rộng đã được ký sẽ được ký lại khi xuất bản trên AMO. Thao tác này sẽ thay thế mọi chữ ký hiện có trên tiện ích mở rộng."
 
 #: src/messages/layout.js:98
 msgid "Firefox add-ons are not allowed to run coin miners."
-msgstr ""
-"Tiện ích Firefox không được phép chạy các công cụ khai thác tiền ảo (coin "
-"miners)."
+msgstr "Tiện ích Firefox không được phép chạy các công cụ khai thác tiền ảo (coin miners)."
 
 #: src/messages/layout.js:99
-msgid ""
-"We do not allow coinminer scripts to be run inside WebExtensions. See "
-"https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
-"Chúng tôi không cho phép các tập lệnh coinminer chạy bên trong "
-"WebExtensions. Xem https://github.com/mozilla/addons-linter/issues/1643 để "
-"biết thêm chi tiết."
+msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
+msgstr "Chúng tôi không cho phép các tập lệnh coinminer chạy bên trong WebExtensions. Xem https://github.com/mozilla/addons-linter/issues/1643 để biết thêm chi tiết."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
 msgstr "Tên chuỗi được dành riêng cho một tin nhắn được xác định trước"
 
 #: src/messages/locale-messagesjson.js:14
-msgid ""
-"String names starting with @@ get translated to built-in constants (https://"
-"mzl.la/2BL9ZjE)."
-msgstr ""
-"Tên chuỗi bắt đầu bằng @@ được dịch sang hằng số tích hợp sẵn (https://mzl."
-"la/2BL9ZjE)."
+msgid "String names starting with @@ get translated to built-in constants (https://mzl.la/2BL9ZjE)."
+msgstr "Tên chuỗi bắt đầu bằng @@ được dịch sang hằng số tích hợp sẵn (https://mzl.la/2BL9ZjE)."
 
 #: src/messages/locale-messagesjson.js:21
-msgid ""
-"String name should only contain alpha-numeric characters, _ and @ (https://"
-"mzl.la/2Eztyi5)."
-msgstr ""
-"Tên chuỗi chỉ được chứa các ký tự chữ và số, _ và @ (https://mzl.la/2Eztyi5)."
+msgid "String name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2Eztyi5)."
+msgstr "Tên chuỗi chỉ được chứa các ký tự chữ và số, _ và @ (https://mzl.la/2Eztyi5)."
 
 #: src/messages/locale-messagesjson.js:27
 msgid "Placeholder for message is missing"
@@ -494,42 +380,30 @@ msgid "Placeholder name contains invalid characters"
 msgstr "Tên của placeholder chứa ký tự không hợp lệ"
 
 #: src/messages/locale-messagesjson.js:34
-msgid ""
-"Placeholder name should only contain alpha-numeric characters, _ and @ "
-"(https://mzl.la/2ExbYez)."
-msgstr ""
-"Tên placeholder chỉ được chứa các ký tự chữ và số, _ và @ (https://mzl."
-"la/2ExbYez)."
+msgid "Placeholder name should only contain alpha-numeric characters, _ and @ (https://mzl.la/2ExbYez)."
+msgstr "Tên placeholder chỉ được chứa các ký tự chữ và số, _ và @ (https://mzl.la/2ExbYez)."
 
 #: src/messages/locale-messagesjson.js:40
 msgid "Placeholder is missing the content property"
 msgstr "Placeholder thiếu thuộc tính content"
 
 #: src/messages/locale-messagesjson.js:41
-msgid ""
-"A placeholder needs a content property defining the replacement of it "
-"(https://mzl.la/2DT1MQd)"
-msgstr ""
-"Placeholder cần một thuộc tính nội dung xác định việc thay thế nó (https://"
-"mzl.la/2DT1MQd)"
+msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
+msgstr "Placeholder cần một thuộc tính nội dung xác định việc thay thế nó (https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
 msgstr "Chuỗi dịch bị thiếu thuộc tính tin nhắn"
 
 #: src/messages/locale-messagesjson.js:6
-msgid ""
-"No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
-msgstr ""
-"Không có thuộc tính thông báo \"message\" nào được đặt cho một chuỗi "
-"(https://mzl.la/2DSBTjA)."
+msgid "No \"message\" message property is set for a string (https://mzl.la/2DSBTjA)."
+msgstr "Không có thuộc tính thông báo \"message\" nào được đặt cho một chuỗi (https://mzl.la/2DSBTjA)."
 
 #: src/messages/manifestjson.js:10
 msgid "The field is required."
 msgstr "Trường này là bắt buộc."
 
-#: src/messages/manifestjson.js:102 src/messages/manifestjson.js:110
-#: src/messages/manifestjson.js:118
+#: src/messages/manifestjson.js:102 src/messages/manifestjson.js:110 src/messages/manifestjson.js:118
 msgid "The permission type is unsupported."
 msgstr "Loại quyền hạn không được hỗ trợ."
 
@@ -554,12 +428,8 @@ msgid "Unknown permission."
 msgstr "Không rõ quyền hạn."
 
 #: src/messages/manifestjson.js:138
-msgid ""
-"%(instancePath)s: the following privileged permissions are only allowed in "
-"privileged extensions: %(privilegedPermissions)s."
-msgstr ""
-"%(instancePath)s: các quyền đặc quyền sau chỉ được phép trong các tiện ích "
-"mở rộng đặc quyền: %(privilegedPermissions)s."
+msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
+msgstr "%(instancePath)s: các quyền đặc quyền sau chỉ được phép trong các tiện ích mở rộng đặc quyền: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -570,18 +440,12 @@ msgid "Invalid install origin."
 msgstr "Nguồn gốc cài đặt không hợp lệ."
 
 #: src/messages/manifestjson.js:175
-msgid ""
-"Invalid install origin. A valid origin has - only - a scheme, hostname and "
-"optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
-msgstr ""
-"Origin cài đặt không hợp lệ. Một origin hợp lệ có - chỉ có - một scheme, "
-"hostname và port tùy chọn. Xem tại https://mzl.la/3TEbqbE (Tài liệu web MDN) "
-"để biết thêm thông tin."
+msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port. See https://mzl.la/3TEbqbE (MDN Docs) for more information."
+msgstr "Origin cài đặt không hợp lệ. Một origin hợp lệ có - chỉ có - một scheme, hostname và port tùy chọn. Xem tại https://mzl.la/3TEbqbE (Tài liệu web MDN) để biết thêm thông tin."
 
 #: src/messages/manifestjson.js:183
 msgid "\"manifest_version\" in the manifest.json is not a valid value"
-msgstr ""
-"\"manifest_version\" trong manifest.json không phải là một giá trị hợp lệ"
+msgstr "\"manifest_version\" trong manifest.json không phải là một giá trị hợp lệ"
 
 #: src/messages/manifestjson.js:186
 msgid "See https://mzl.la/20PenXl (MDN Docs) for more information."
@@ -600,23 +464,15 @@ msgid "A custom \"%(property)s\" needs additional review."
 msgstr "Một \"%(property)s\" tùy chỉnh cần xem xét bổ sung."
 
 #: src/messages/manifestjson.js:215
-msgid ""
-"\"%(property)s\" allows 'eval', which has strong security and performance "
-"implications."
-msgstr ""
-"\"%(property)s\" cho phép 'eval', có ý nghĩa mạnh mẽ về bảo mật và hiệu suất."
+msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."
+msgstr "\"%(property)s\" cho phép 'eval', có ý nghĩa mạnh mẽ về bảo mật và hiệu suất."
 
 #: src/messages/manifestjson.js:219
-msgid ""
-"In most cases the same result can be achieved differently, therefore it is "
-"generally prohibited"
-msgstr ""
-"Trong hầu hết các trường hợp, cùng một kết quả có thể đạt được theo cách "
-"khác nhau, do đó, nó thường bị cấm"
+msgid "In most cases the same result can be achieved differently, therefore it is generally prohibited"
+msgstr "Trong hầu hết các trường hợp, cùng một kết quả có thể đạt được theo cách khác nhau, do đó, nó thường bị cấm"
 
 #: src/messages/manifestjson.js:227
-msgid ""
-"The \"name\" property must be a string with no leading/trailing whitespaces."
+msgid "The \"name\" property must be a string with no leading/trailing whitespaces."
 msgstr "Thuộc tính \"name\" phải là một chuỗi không có khoảng trắng đầu/cuối."
 
 #: src/messages/manifestjson.js:230
@@ -628,38 +484,26 @@ msgid "\"update_url\" is not allowed."
 msgstr "\"update_url\" không được cho phép."
 
 #: src/messages/manifestjson.js:239
-msgid ""
-"\"applications.gecko.update_url\" or \"browser_specific_settings.gecko."
-"update_url\" are not allowed for Mozilla-hosted add-ons."
-msgstr ""
-"\"applications.gecko.update_url\" hoặc \"browser_specific_settings.gecko."
-"update_url\" không được phép cho các tiện ích mở rộng do Mozilla lưu trữ."
+msgid "\"applications.gecko.update_url\" or \"browser_specific_settings.gecko.update_url\" are not allowed for Mozilla-hosted add-ons."
+msgstr "\"applications.gecko.update_url\" hoặc \"browser_specific_settings.gecko.update_url\" không được phép cho các tiện ích mở rộng do Mozilla lưu trữ."
 
 #: src/messages/manifestjson.js:248
 msgid "The \"update_url\" property is not used by Firefox."
 msgstr "Thuộc tính \"update_url\" không được sử dụng bởi Firefox."
 
 #: src/messages/manifestjson.js:249
-msgid ""
-"The \"update_url\" is not used by Firefox in the root of a manifest; your "
-"add-on will be updated via the Add-ons site and not your \"update_url\". "
-"See: https://mzl.la/25zqk4O"
+msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
 msgstr ""
-"\"update_url\" không được Firefox sử dụng trong thư mục gốc của tập tin "
-"manifest; tiện ích mở rộng của bạn sẽ được cập nhật qua trang web tiện ích "
-"mở rộng chứ không phải \"update_url\" của bạn. Xem: https://mzl.la/25zqk4O"
+"\"update_url\" không được Firefox sử dụng trong thư mục gốc của tập tin manifest; tiện ích mở rộng của bạn sẽ được cập nhật qua trang web tiện ích mở rộng chứ không phải \"update_url\" của bạn. Xem:"
+" https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:257
 msgid "\"strict_max_version\" not required."
 msgstr "\"strict_max_version\" không bắt buộc."
 
 #: src/messages/manifestjson.js:258
-msgid ""
-"\"strict_max_version\" shouldn't be used unless the add-on is expected not "
-"to work with future versions of Firefox."
-msgstr ""
-"Không nên sử dụng \"strict_max_version\" trừ khi tiện ích mở rộng được cho "
-"là sẽ không hoạt động với các phiên bản Firefox trong tương lai."
+msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
+msgstr "Không nên sử dụng \"strict_max_version\" trừ khi tiện ích mở rộng được cho là sẽ không hoạt động với các phiên bản Firefox trong tương lai."
 
 #: src/messages/manifestjson.js:267
 msgid "No \"%(property)s\" property found in manifest.json"
@@ -671,8 +515,7 @@ msgstr "\"%(property)s\" là bắt buộc"
 
 #: src/messages/manifestjson.js:281
 msgid "An icon defined in the manifest could not be found in the package."
-msgstr ""
-"Không thể tìm thấy biểu tượng được xác định trong tập tin manifest trong gói."
+msgstr "Không thể tìm thấy biểu tượng được xác định trong tập tin manifest trong gói."
 
 #: src/messages/manifestjson.js:285
 msgid "Icon could not be found at \"%(path)s\"."
@@ -696,65 +539,43 @@ msgstr "Không thể tìm thấy trang nền tại \"%(path)s\"."
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
-"\"%(fieldName)s\" sẽ bị bỏ qua đối với các tiện ích mở rộng không có đặc "
-"quyền."
+msgstr "\"%(fieldName)s\" sẽ bị bỏ qua đối với các tiện ích mở rộng không có đặc quyền."
 
 #: src/messages/manifestjson.js:324
 msgid "A content script defined in the manifest could not be found."
-msgstr ""
-"Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin kê khai."
+msgstr "Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin kê khai."
 
 #: src/messages/manifestjson.js:325
 msgid "A content script css file defined in the manifest could not be found."
-msgstr ""
-"Không thể tìm thấy tập tin css tập lệnh nội dung được xác định trong tập tin "
-"kê khai."
+msgstr "Không thể tìm thấy tập tin css tập lệnh nội dung được xác định trong tập tin kê khai."
 
 #: src/messages/manifestjson.js:330
-msgid ""
-"Content script defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin manifest "
-"tại \"%(path)s\"."
+msgid "Content script defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy tập lệnh nội dung được xác định trong tập tin manifest tại \"%(path)s\"."
 
 #: src/messages/manifestjson.js:333
-msgid ""
-"Content script css file defined in the manifest could not be found at "
-"\"%(path)s\"."
-msgstr ""
-"Không thể tìm thấy tệp css tập lệnh nội dung được xác định trong tập tin "
-"manifest tại \"%(path)s\"."
+msgid "Content script css file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy tệp css tập lệnh nội dung được xác định trong tập tin manifest tại \"%(path)s\"."
 
 #: src/messages/manifestjson.js:347
 msgid "A dictionary file defined in the manifest could not be found."
-msgstr ""
-"Không thể tìm thấy tập tin từ điển được xác định trong tập tin kê khai."
+msgstr "Không thể tìm thấy tập tin từ điển được xác định trong tập tin kê khai."
 
 #: src/messages/manifestjson.js:35
-msgid ""
-"\"%(fieldName)s\" manifest field is only used for privileged and temporarily "
-"installed extensions."
-msgstr ""
-"Trường tập tin manifest \"%(fieldName)s\" chỉ được sử dụng cho các tiện ích "
-"mở rộng được cài đặt tạm thời và có đặc quyền."
+msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
+msgstr "Trường tập tin manifest \"%(fieldName)s\" chỉ được sử dụng cho các tiện ích mở rộng được cài đặt tạm thời và có đặc quyền."
 
 #: src/messages/manifestjson.js:351
-msgid ""
-"Dictionary file defined in the manifest could not be found at \"%(path)s\"."
-msgstr ""
-"Không thể tìm thấy tập tin từ điển được xác định trong tập tin kê khai tại "
-"\"%(path)s\"."
+msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
+msgstr "Không thể tìm thấy tập tin từ điển được xác định trong tập tin kê khai tại \"%(path)s\"."
 
 #: src/messages/manifestjson.js:363
 msgid "The manifest contains multiple dictionaries."
 msgstr "Tập tin kê khai chứa nhiều từ điển."
 
 #: src/messages/manifestjson.js:364
-msgid ""
-"Multiple dictionaries were defined in the manifest, which is unsupported."
-msgstr ""
-"Nhiều từ điển đã được định nghĩa trong kê khai, mà nó không được hỗ trợ."
+msgid "Multiple dictionaries were defined in the manifest, which is unsupported."
+msgstr "Nhiều từ điển đã được định nghĩa trong kê khai, mà nó không được hỗ trợ."
 
 #: src/messages/manifestjson.js:373
 msgid "The manifest contains a dictionaries object, but it is empty."
@@ -762,9 +583,7 @@ msgstr "Tập tin kê khai chứa một đối tượng từ điển, nhưng nó
 
 #: src/messages/manifestjson.js:376
 msgid "A dictionaries object was defined in the manifest, but it was empty."
-msgstr ""
-"Một đối tượng từ điển đã được định nghĩa trong tập tin kê khai, nhưng nó "
-"trống."
+msgstr "Một đối tượng từ điển đã được định nghĩa trong tập tin kê khai, nhưng nó trống."
 
 #: src/messages/manifestjson.js:385
 msgid "The manifest contains a dictionary but no id property."
@@ -772,8 +591,7 @@ msgstr "Tập tin kê khai chứa một từ điển nhưng không có thuộc t
 
 #: src/messages/manifestjson.js:386
 msgid "A dictionary was found in the manifest, but there was no id set."
-msgstr ""
-"Một từ điển đã được tìm thấy trong tập tin kê khai, nhưng không được đặt id."
+msgstr "Một từ điển đã được tìm thấy trong tập tin kê khai, nhưng không được đặt id."
 
 #: src/messages/manifestjson.js:396
 msgid "Forbidden content found in add-on."
@@ -784,12 +602,8 @@ msgid "This add-on contains forbidden content."
 msgstr "Tiện ích này chứa nội dung bị cấm."
 
 #: src/messages/manifestjson.js:4
-msgid ""
-"Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn "
-"more about privileged extensions and signing."
-msgstr ""
-"Vui lòng tham khảo https://github.com/mozilla-extensions/xpi-manifest để tìm "
-"hiểu thêm về các tiện ích mở rộng đặc quyền và ký."
+msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
+msgstr "Vui lòng tham khảo https://github.com/mozilla-extensions/xpi-manifest để tìm hiểu thêm về các tiện ích mở rộng đặc quyền và ký."
 
 #: src/messages/manifestjson.js:405
 msgid "Icons must be square."
@@ -804,12 +618,8 @@ msgid "The size of the icon does not match the manifest."
 msgstr "Kích thước của biểu tượng không phù hợp với manifest."
 
 #: src/messages/manifestjson.js:419
-msgid ""
-"Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was "
-"%(actual)d."
-msgstr ""
-"Biểu tượng tìm thấy tại \"%(path)s\" rộng %(expected)d pixel nhưng lại là "
-"%(actual)d."
+msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
+msgstr "Biểu tượng tìm thấy tại \"%(path)s\" rộng %(expected)d pixel nhưng lại là %(actual)d."
 
 #: src/messages/manifestjson.js:432
 msgid "Corrupt image file"
@@ -833,8 +643,7 @@ msgstr "Xem tại https://mzl.la/2T11Lkc (Tài liệu MDN) để biết thêm th
 
 #: src/messages/manifestjson.js:466
 msgid "Theme image for \"%(type)s\" could not be found at \"%(path)s\""
-msgstr ""
-"Không thể tìm thấy hình ảnh của chủ đề cho \"%(type)s\" tại \"%(path)s\""
+msgstr "Không thể tìm thấy hình ảnh của chủ đề cho \"%(type)s\" tại \"%(path)s\""
 
 #: src/messages/manifestjson.js:477
 msgid "Corrupted theme image file"
@@ -845,11 +654,8 @@ msgid "Theme image file at \"%(path)s\" is corrupted"
 msgstr "Tập tin hình ảnh của chủ đề tại \"%(path)s\" bị hỏng"
 
 #: src/messages/manifestjson.js:49
-msgid ""
-"\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
-"\"%(fieldName)s\" không được hỗ trợ trong các phiên bản %(versionRange)s của "
-"tập tin manifest."
+msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
+msgstr "\"%(fieldName)s\" không được hỗ trợ trong các phiên bản %(versionRange)s của tập tin manifest."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file has an unsupported file extension"
@@ -857,19 +663,15 @@ msgstr "Tập tin hình ảnh chủ đề có phần mở rộng không được
 
 #: src/messages/manifestjson.js:492
 msgid "Theme image file at \"%(path)s\" has an unsupported file extension"
-msgstr ""
-"Tập tin hình ảnh chủ đề tại \"%(path)s\" có phần mở rộng không được hỗ trợ"
+msgstr "Tập tin hình ảnh chủ đề tại \"%(path)s\" có phần mở rộng không được hỗ trợ"
 
 #: src/messages/manifestjson.js:506
 msgid "Theme image file has an unsupported mime type"
 msgstr "Tập tin hình ảnh chủ đề có loại mime không được hỗ trợ"
 
 #: src/messages/manifestjson.js:508
-msgid ""
-"Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
-msgstr ""
-"Tập tin hình ảnh chủ đề tại \"%(path)s\" có loại mime không được hỗ trợ "
-"\"%(mime)s\""
+msgid "Theme image file at \"%(path)s\" has the unsupported mime type \"%(mime)s\""
+msgstr "Tập tin hình ảnh chủ đề tại \"%(path)s\" có loại mime không được hỗ trợ \"%(mime)s\""
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
@@ -877,43 +679,27 @@ msgstr "\"%(fieldName)s\" không được hỗ trợ."
 
 #: src/messages/manifestjson.js:522
 msgid "Theme image file mime type does not match its file extension"
-msgstr ""
-"Loại mime của tập tin hình ảnh chủ đề không khớp với phần mở rộng tập tin "
-"của nó"
+msgstr "Loại mime của tập tin hình ảnh chủ đề không khớp với phần mở rộng tập tin của nó"
 
 #: src/messages/manifestjson.js:526
-msgid ""
-"Theme image file extension at \"%(path)s\" does not match its actual mime "
-"type \"%(mime)s\""
-msgstr ""
-"Phần mở rộng Tập tin hình ảnh chủ đề tại \"%(path)s\" không khớp với loại "
-"mime thực của nó \"%(mime)s\""
+msgid "Theme image file extension at \"%(path)s\" does not match its actual mime type \"%(mime)s\""
+msgstr "Phần mở rộng Tập tin hình ảnh chủ đề tại \"%(path)s\" không khớp với loại mime thực của nó \"%(mime)s\""
 
 #: src/messages/manifestjson.js:539
 msgid "The \"default_locale\" is missing localizations."
 msgstr "Thuộc tính \"default_locale\" bị thiếu bản địa hóa."
 
 #: src/messages/manifestjson.js:540
-msgid ""
-"The \"default_locale\" value is specified in the manifest, but no matching "
-"\"messages.json\" in the \"_locales\" directory exists. See: https://mzl."
-"la/2hjcaEE"
-msgstr ""
-"Giá trị \"default_locale\" được chỉ định trong manifest, nhưng không khớp "
-"\"messages.json\" trong thư mục tồn tại \"_locales\". Xem: https://mzl."
-"la/2hjcaEE"
+msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
+msgstr "Giá trị \"default_locale\" được chỉ định trong manifest, nhưng không khớp \"messages.json\" trong thư mục tồn tại \"_locales\". Xem: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:548
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
 msgstr "Thuộc tính \"default_locale\" bị thiếu nhưng \"_locales\" tồn tại."
 
 #: src/messages/manifestjson.js:549
-msgid ""
-"The \"default_locale\" value is not specifed in the manifest, but a "
-"\"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
-"Giá trị \"default_locale\" không được chỉ định trong manifest, nhưng tồn tại "
-"thư mục \"_locales\". Xem: https://mzl.la/2hjcaEE"
+msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
+msgstr "Giá trị \"default_locale\" không được chỉ định trong manifest, nhưng tồn tại thư mục \"_locales\". Xem: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:557
 msgid "Unsupported image extension"
@@ -924,22 +710,12 @@ msgid "Icons should be one of JPG/JPEG, WebP, GIF, PNG or SVG."
 msgstr "Các biểu tượng phải là một trong JPG/JPEG, WebP, GIF, PNG hoặc SVG."
 
 #: src/messages/manifestjson.js:566
-msgid ""
-"\"applications\" property overridden by \"browser_specific_settings\" "
-"property"
-msgstr ""
-"Thuộc tính \"applications\" bị ghi đè bởi thuộc tính "
-"\"browser_specific_settings\""
+msgid "\"applications\" property overridden by \"browser_specific_settings\" property"
+msgstr "Thuộc tính \"applications\" bị ghi đè bởi thuộc tính \"browser_specific_settings\""
 
 #: src/messages/manifestjson.js:569
-msgid ""
-"The \"applications\" property is being ignored because it is superseded by "
-"the \"browser_specific_settings\" property which is also defined in your "
-"manifest. Consider removing applications."
-msgstr ""
-"Thuộc tính \"applications\" đang bị bỏ qua vì thuộc tính này được thay thế "
-"bởi thuộc tính \"browser_specific_settings\" cũng được xác định trong "
-"manifest của bạn. Xem xét gỡ bỏ applications."
+msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
+msgstr "Thuộc tính \"applications\" đang bị bỏ qua vì thuộc tính này được thay thế bởi thuộc tính \"browser_specific_settings\" cũng được xác định trong manifest của bạn. Xem xét gỡ bỏ applications."
 
 #: src/messages/manifestjson.js:579
 msgid "Empty language directory"
@@ -951,82 +727,47 @@ msgstr "Thiếu tập tin messages.json trong \"%(path)s\""
 
 #: src/messages/manifestjson.js:597
 msgid "Manifest key not supported by the specified minimum Firefox version"
-msgstr ""
-"Khóa kê khai không được hỗ trợ bởi phiên bản Firefox tối thiểu đã chỉ định"
+msgstr "Khóa kê khai không được hỗ trợ bởi phiên bản Firefox tối thiểu đã chỉ định"
 
 #: src/messages/manifestjson.js:601 src/messages/manifestjson.js:623
-msgid ""
-"\"strict_min_version\" requires Firefox %(minVersion)s, which was released "
-"before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
-"\"strict_min_version\" yêu cầu Firefox %(minVersion)s, được phát hành trước "
-"khi phiên bản %(versionAdded)s giới thiệu hỗ trợ cho \"%(key)s\"."
+msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
+msgstr "\"strict_min_version\" yêu cầu Firefox %(minVersion)s, được phát hành trước khi phiên bản %(versionAdded)s giới thiệu hỗ trợ cho \"%(key)s\"."
 
 #: src/messages/manifestjson.js:619
 msgid "Permission not supported by the specified minimum Firefox version"
-msgstr ""
-"Quyền hạn không được hỗ trợ bởi phiên bản Firefox tối thiểu đã chỉ định"
+msgstr "Quyền hạn không được hỗ trợ bởi phiên bản Firefox tối thiểu đã chỉ định"
 
 #: src/messages/manifestjson.js:64
-msgid ""
-"%(instancePath)s: privileged manifest fields are only allowed in privileged "
-"extensions."
+msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
 msgstr ""
 
 #: src/messages/manifestjson.js:641
-msgid ""
-"Manifest key not supported by the specified minimum Firefox for Android "
-"version"
-msgstr ""
-"Khóa kê khai không được hỗ trợ bởi Firefox dành cho Android phiên bản tối "
-"thiểu đã chỉ định"
+msgid "Manifest key not supported by the specified minimum Firefox for Android version"
+msgstr "Khóa kê khai không được hỗ trợ bởi Firefox dành cho Android phiên bản tối thiểu đã chỉ định"
 
 #: src/messages/manifestjson.js:645 src/messages/manifestjson.js:667
-msgid ""
-"\"strict_min_version\" requires Firefox for Android %(minVersion)s, which "
-"was released before version %(versionAdded)s introduced support for "
-"\"%(key)s\"."
-msgstr ""
-"\"strict_min_version\" yêu cầu Firefox dành cho Android %(minVersion)s, được "
-"phát hành trước khi phiên bản %(versionAdded)s giới thiệu hỗ trợ cho "
-"\"%(key)s\"."
+msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
+msgstr "\"strict_min_version\" yêu cầu Firefox dành cho Android %(minVersion)s, được phát hành trước khi phiên bản %(versionAdded)s giới thiệu hỗ trợ cho \"%(key)s\"."
 
 #: src/messages/manifestjson.js:663
-msgid ""
-"Permission not supported by the specified minimum Firefox for Android version"
-msgstr ""
-"Quyền hạn không được hỗ trợ bởi Firefox dành cho Android phiên bản tối thiểu "
-"đã chỉ định"
+msgid "Permission not supported by the specified minimum Firefox for Android version"
+msgstr "Quyền hạn không được hỗ trợ bởi Firefox dành cho Android phiên bản tối thiểu đã chỉ định"
 
 #: src/messages/manifestjson.js:678
 msgid "Linking to \"addons.mozilla.org\" is not allowed"
 msgstr "Liên kết đến \"addons.mozilla.org\" không được phép"
 
 #: src/messages/manifestjson.js:679
-msgid ""
-"Links directing to \"addons.mozilla.org\" are not allowed to be used for "
-"homepage"
-msgstr ""
-"Các liên kết trực tiếp đến \"addons.mozilla.org\" đều không được phép sử "
-"dụng cho trang chủ"
+msgid "Links directing to \"addons.mozilla.org\" are not allowed to be used for homepage"
+msgstr "Các liên kết trực tiếp đến \"addons.mozilla.org\" đều không được phép sử dụng cho trang chủ"
 
 #: src/messages/manifestjson.js:691
-msgid ""
-"The \"%(permission)s\" permission requires \"strict_min_version\" to be set "
-"to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
-"Quyền \"%(permission)s\" yêu cầu đặt \"strict_min_version\" thành "
-"\"%(minFirefoxVersion)s\" hoặc cao hơn"
+msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
+msgstr "Quyền \"%(permission)s\" yêu cầu đặt \"strict_min_version\" thành \"%(minFirefoxVersion)s\" hoặc cao hơn"
 
 #: src/messages/manifestjson.js:696
-msgid ""
-"The \"%(permission)s\" permission requires \"strict_min_version\" to be set "
-"to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json "
-"version to specify a minimum Firefox version."
-msgstr ""
-"Quyền \"%(permission)s\" yêu cầu đặt \"strict_min_version\" thành "
-"\"%(minFirefoxVersion)s\" hoặc cao hơn. Vui lòng cập nhật phiên bản manifest."
-"json của bạn để chỉ định phiên bản Firefox tối thiểu."
+msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
+msgstr "Quyền \"%(permission)s\" yêu cầu đặt \"strict_min_version\" thành \"%(minFirefoxVersion)s\" hoặc cao hơn. Vui lòng cập nhật phiên bản manifest.json của bạn để chỉ định phiên bản Firefox tối thiểu."
 
 #: src/messages/manifestjson.js:708
 msgid "The extension ID is required in Manifest Version 3 and above."
@@ -1037,44 +778,31 @@ msgid "See https://mzl.la/3PLZYdo for more information."
 msgstr "Xem tại https://mzl.la/3PLZYdo để biết thêm thông tin."
 
 #: src/messages/manifestjson.js:717
-msgid ""
-"%(instancePath)s: Privileged extensions should declare privileged "
-"permissions."
-msgstr ""
+msgid "%(instancePath)s: Privileged extensions should declare privileged permissions."
+msgstr "%(instancePath)s: Các tiện ích mở rộng đặc quyền phải khai báo các quyền đặc quyền."
 
 #: src/messages/manifestjson.js:728
-msgid ""
-"This extension does not declare any privileged permission. It does not need "
-"to be signed with the privileged certificate. Please upload it directly to "
-"https://addons.mozilla.org/."
-msgstr ""
+msgid "This extension does not declare any privileged permission. It does not need to be signed with the privileged certificate. Please upload it directly to https://addons.mozilla.org/."
+msgstr "Tiện ích mở rộng này không khai báo bất kỳ quyền đặc quyền nào. Nó không cần phải được ký với chứng chỉ đặc quyền. Vui lòng tải nó trực tiếp lên https://addons.mozilla.org/."
 
 #: src/messages/manifestjson.js:741
-msgid ""
-"%(instancePath)s: The \"mozillaAddons\" permission is required for "
-"privileged extensions."
-msgstr ""
+msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for privileged extensions."
+msgstr "%(instancePath)s: Cần có quyền \"mozillaAddons\" đối với các tiện ích mở rộng đặc quyền."
 
 #: src/messages/manifestjson.js:744
-msgid ""
-"%(instancePath)s: The \"mozillaAddons\" permission is required for "
-"extensions that include privileged manifest fields."
+msgid "%(instancePath)s: The \"mozillaAddons\" permission is required for extensions that include privileged manifest fields."
 msgstr ""
 
 #: src/messages/manifestjson.js:757
-msgid ""
-"This extension does not include the \"mozillaAddons\" permission, which is "
-"required for privileged extensions."
-msgstr ""
+msgid "This extension does not include the \"mozillaAddons\" permission, which is required for privileged extensions."
+msgstr "Tiện ích mở rộng này không bao gồm quyền \"mozillaAddons\", quyền này là bắt buộc đối với các tiện ích mở rộng đặc quyền."
 
 #: src/messages/manifestjson.js:767
 msgid "Cannot use actions in hidden add-ons."
 msgstr "Không thể sử dụng các hành động trong tiện ích mở rộng ẩn."
 
 #: src/messages/manifestjson.js:768
-msgid ""
-"The hidden and browser_action/page_action (or action in Manifest Version 3 "
-"and above) properties are mutually exclusive."
+msgid "The hidden and browser_action/page_action (or action in Manifest Version 3 and above) properties are mutually exclusive."
 msgstr ""
 
 #: src/messages/manifestjson.js:776
@@ -1082,46 +810,28 @@ msgid "Use \"browser_specific_settings\" instead of \"applications\"."
 msgstr "Sử dụng \"browser_specific_settings\" thay thế \"applications\"."
 
 #: src/messages/manifestjson.js:777
-msgid ""
-"The \"applications\" property in the manifest is deprecated and will no "
-"longer be accepted in Manifest Version 3 and above."
-msgstr ""
-"Thuộc tính \"applications\" trong Manifest không được dùng nữa và sẽ không "
-"còn được chấp nhận trong phiên bản manifest 3 trở lên."
+msgid "The \"applications\" property in the manifest is deprecated and will no longer be accepted in Manifest Version 3 and above."
+msgstr "Thuộc tính \"applications\" trong Manifest không được dùng nữa và sẽ không còn được chấp nhận trong phiên bản manifest 3 trở lên."
 
 #: src/messages/manifestjson.js:785
 msgid "\"applications\" is no longer allowed in Manifest Version 3 and above."
-msgstr ""
-"\"applications\" không còn được chấp nhận trong Manifest phiên bản 3 trở lên."
+msgstr "\"applications\" không còn được chấp nhận trong Manifest phiên bản 3 trở lên."
 
 #: src/messages/manifestjson.js:787
-msgid ""
-"The \"applications\" property in the manifest is no longer allowed in "
-"Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
-msgstr ""
-"Thuộc tính \"applications\" trong Manifest không còn được phép trong "
-"Manifest phiên bản 3 trở lên. Thay vào đó, hãy sử dụng "
-"\"browser_specific_settings\"."
+msgid "The \"applications\" property in the manifest is no longer allowed in Manifest Version 3 and above. Use \"browser_specific_settings\" instead."
+msgstr "Thuộc tính \"applications\" trong Manifest không còn được phép trong Manifest phiên bản 3 trở lên. Thay vào đó, hãy sử dụng \"browser_specific_settings\"."
 
 #: src/messages/manifestjson.js:795
-msgid ""
-"The version string should be simplified because it won't be compatible with "
-"Manifest Version 3 and above."
-msgstr ""
-"Chuỗi phiên bản phải được đơn giản hóa vì chuỗi này sẽ không tương thích với "
-"Manifest phiên bản 3 trở lên."
+msgid "The version string should be simplified because it won't be compatible with Manifest Version 3 and above."
+msgstr "Chuỗi phiên bản phải được đơn giản hóa vì chuỗi này sẽ không tương thích với Manifest phiên bản 3 trở lên."
 
 #: src/messages/manifestjson.js:797
 msgid ""
-"The version should be a string with 1 to 4 numbers separated with dots. Each "
-"number should have up to 9 digits and leading zeros will no longer be "
-"allowed. Letters will no longer be allowed either. See https://mzl."
-"la/3h3mCRu (MDN Docs) for more information."
+"The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros will no longer be allowed. Letters will no longer be allowed either. "
+"See https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
-"Phiên bản phải là một chuỗi có các số từ 1 đến 4 được phân tách bằng dấu "
-"chấm. Mỗi số phải có tối đa 9 chữ số và các số 0 đứng đầu sẽ không còn được "
-"phép. Chữ cái cũng sẽ không được phép nữa. Xem https://mzl.la/3h3mCRu (Tài "
-"liệu MDN) để biết thêm thông tin."
+"Phiên bản phải là một chuỗi có các số từ 1 đến 4 được phân tách bằng dấu chấm. Mỗi số phải có tối đa 9 chữ số và các số 0 đứng đầu sẽ không còn được phép. Chữ cái cũng sẽ không được phép nữa. Xem "
+"https://mzl.la/3h3mCRu (Tài liệu MDN) để biết thêm thông tin."
 
 #: src/messages/manifestjson.js:806
 msgid "The version string should be simplified."
@@ -1129,15 +839,11 @@ msgstr "Chuỗi phiên bản nên được đơn giản hóa."
 
 #: src/messages/manifestjson.js:807
 msgid ""
-"The version should be a string with 1 to 4 numbers separated with dots. Each "
-"number should have up to 9 digits and leading zeros are not allowed. Letters "
-"are no longer allowed. See https://mzl.la/3h3mCRu (MDN Docs) for more "
-"information."
+"The version should be a string with 1 to 4 numbers separated with dots. Each number should have up to 9 digits and leading zeros are not allowed. Letters are no longer allowed. See "
+"https://mzl.la/3h3mCRu (MDN Docs) for more information."
 msgstr ""
-"Phiên bản phải là một chuỗi có các số từ 1 đến 4 được phân tách bằng dấu "
-"chấm. Mỗi số phải có tối đa 9 chữ số và không được phép có số 0 đứng đầu. "
-"Chữ cái không còn được phép. Xem https://mzl.la/3h3mCRu (Tài liệu MDN) để "
-"biết thêm thông tin."
+"Phiên bản phải là một chuỗi có các số từ 1 đến 4 được phân tách bằng dấu chấm. Mỗi số phải có tối đa 9 chữ số và không được phép có số 0 đứng đầu. Chữ cái không còn được phép. Xem "
+"https://mzl.la/3h3mCRu (Tài liệu MDN) để biết thêm thông tin."
 
 #: src/messages/manifestjson.js:816
 msgid "incognito \"split\" is unsupported."
@@ -1145,58 +851,38 @@ msgstr "Giá trị ẩn danh \"split\" không được hỗ trợ."
 
 #: src/messages/manifestjson.js:817
 msgid ""
-"The incognito \"split\" value is unsupported and will be treated as "
-"\"not_allowed\" in Firefox. Remove the key from the manifest file, if your "
-"extension is compatible with Firefox's private browsing mode."
+"The incognito \"split\" value is unsupported and will be treated as \"not_allowed\" in Firefox. Remove the key from the manifest file, if your extension is compatible with Firefox's private browsing"
+" mode."
 msgstr ""
-"Giá trị ẩn danh \"split\" không được hỗ trợ và sẽ được coi là "
-"\"not_allowed\" trong Firefox. Hãy xóa khóa trong tập tin manifest, nếu tiện "
-"ích mở rộng của bạn tương thích với chế độ duyệt web riêng tư của Firefox."
+"Giá trị ẩn danh \"split\" không được hỗ trợ và sẽ được coi là \"not_allowed\" trong Firefox. Hãy xóa khóa trong tập tin manifest, nếu tiện ích mở rộng của bạn tương thích với chế độ duyệt web riêng "
+"tư của Firefox."
 
 #: src/messages/manifestjson.js:825
 msgid "The \"admin_install_only\" property is reserved."
 msgstr "Thuộc tính \"admin_install_only\" bị giữ lại."
 
 #: src/messages/manifestjson.js:826
-msgid ""
-"The \"admin_install_only\" property is reserved and can only be used in "
-"enterprise add-ons."
-msgstr ""
-"Thuộc tính \"admin_install_only\" bị giữ lại và chỉ có thể được sử dụng "
-"trong tiện ích dành cho doanh nghiệp."
+msgid "The \"admin_install_only\" property is reserved and can only be used in enterprise add-ons."
+msgstr "Thuộc tính \"admin_install_only\" bị giữ lại và chỉ có thể được sử dụng trong tiện ích dành cho doanh nghiệp."
 
 #: src/messages/manifestjson.js:83
-msgid ""
-"/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions "
-"%(versionRange)s."
-msgstr ""
-"/%(fieldName)s: \"%(permissionName)s\" không được hỗ trợ trong các phiên bản "
-"%(versionRange)s của manifest."
+msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported in manifest versions %(versionRange)s."
+msgstr "/%(fieldName)s: \"%(permissionName)s\" không được hỗ trợ trong các phiên bản %(versionRange)s của manifest."
 
 #: src/messages/manifestjson.js:833
-msgid ""
-"\"/browser_specific_settings/gecko/admin_install_only\" property must be set "
-"to \"true\"."
-msgstr ""
-"Thuộc tính \"/browser_specific_settings/gecko/admin_install_only\" bắt buộc "
-"phải là \"true\"."
+msgid "\"/browser_specific_settings/gecko/admin_install_only\" property must be set to \"true\"."
+msgstr "Thuộc tính \"/browser_specific_settings/gecko/admin_install_only\" bắt buộc phải là \"true\"."
 
 #: src/messages/manifestjson.js:835
-msgid ""
-"The \"admin_install_only\" property must be set to \"true\" in an enterprise "
-"add-on."
-msgstr ""
-"Thuộc tính \"admin_install_only\" bắt buộc phải là \"true\" trong tiện ích "
-"dành cho doanh nghiệp."
+msgid "The \"admin_install_only\" property must be set to \"true\" in an enterprise add-on."
+msgstr "Thuộc tính \"admin_install_only\" bắt buộc phải là \"true\" trong tiện ích dành cho doanh nghiệp."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."
 msgstr "/%(fieldName)s: \"%(permissionName)s\" không được hỗ trợ."
 
 #~ msgid "Manifest Version 3 is not fully supported on Firefox for Android."
-#~ msgstr ""
-#~ "Manifest phiên bản 3 không được hỗ trợ đầy đủ trên Firefox dành cho "
-#~ "Android."
+#~ msgstr "Manifest phiên bản 3 không được hỗ trợ đầy đủ trên Firefox dành cho Android."
 
 #~ msgid "Invalid nesting of selectors found"
 #~ msgstr "Đã tìm thấy lồng ghép không hợp lệ"
@@ -1204,12 +890,8 @@ msgstr "/%(fieldName)s: \"%(permissionName)s\" không được hỗ trợ."
 #~ msgid "A CSS syntax error was encountered"
 #~ msgstr "Đã xảy ra lỗi cú pháp CSS"
 
-#~ msgid ""
-#~ "An error was found in the CSS file being processed. As a result, further "
-#~ "processing of that file is not possible"
-#~ msgstr ""
-#~ "Đã tìm thấy lỗi trong tập tin CSS đang được xử lý. Do đó, không thể xử lý "
-#~ "thêm tập tin đó"
+#~ msgid "An error was found in the CSS file being processed. As a result, further processing of that file is not possible"
+#~ msgstr "Đã tìm thấy lỗi trong tập tin CSS đang được xử lý. Do đó, không thể xử lý thêm tập tin đó"
 
 #~ msgid "The \"name\" property must be a string."
 #~ msgstr "Thuộc tính \"name\" phải là một chuỗi kí tự."
@@ -1217,29 +899,20 @@ msgstr "/%(fieldName)s: \"%(permissionName)s\" không được hỗ trợ."
 #~ msgid "\"$(api)s\" can cause issues when loaded temporarily"
 #~ msgstr "\"$(api)s\" có thể gây ra sự cố khi tải tạm thời"
 
-#~ msgid ""
-#~ "Invalid install origin. A valid origin has - only - a scheme, hostname "
-#~ "and optional port."
-#~ msgstr ""
-#~ "Nguồn gốc cài đặt không hợp lệ. Nguồn gốc hợp lệ chỉ có - một scheme, tên "
-#~ "máy chủ và cổng tùy chọn."
+#~ msgid "Invalid install origin. A valid origin has - only - a scheme, hostname and optional port."
+#~ msgstr "Nguồn gốc cài đặt không hợp lệ. Nguồn gốc hợp lệ chỉ có - một scheme, tên máy chủ và cổng tùy chọn."
 
 #~ msgid "The \"version\" property must be a string."
 #~ msgstr "Thuộc tính \"version\" phải là một chuỗi kí tự."
 
 #~ msgid "See http://mzl.la/1kXIADa (MDN Docs) for more information."
-#~ msgstr ""
-#~ "Xem tại http://mzl.la/1kXIADa (Tài liệu MDN) để biết thêm thông tin."
+#~ msgstr "Xem tại http://mzl.la/1kXIADa (Tài liệu MDN) để biết thêm thông tin."
 
 #~ msgid "The \"version\" property uses a Firefox-specific format."
 #~ msgstr "Thuộc tính \"version\" sử dụng định dạng dành riêng cho Firefox."
 
-#~ msgid ""
-#~ "See https://extensionworkshop.com/documentation/develop/extensions-and-"
-#~ "the-add-on-id/ for more information."
-#~ msgstr ""
-#~ "Xem tại https://extensionworkshop.com/documentation/develop/extensions-"
-#~ "and-the-add-on-id/ để biết thêm thông tin."
+#~ msgid "See https://extensionworkshop.com/documentation/develop/extensions-and-the-add-on-id/ for more information."
+#~ msgstr "Xem tại https://extensionworkshop.com/documentation/develop/extensions-and-the-add-on-id/ để biết thêm thông tin."
 
 #~ msgid "addEventListener` called with truthy fourth argument."
 #~ msgstr "addEventListener` đã được gọi với tham số thứ tư là True."
