@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-21 10:05+0000\n"
-"PO-Revision-Date: 2024-07-03 11:28+0000\n"
+"POT-Creation-Date: 2024-10-14 11:37+0000\n"
+"PO-Revision-Date: 2024-10-27 08:01+0000\n"
 "Last-Translator: Grk <gu0townkg@relay.firefox.com>\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -18,27 +18,27 @@ msgstr ""
 msgid "Validation Summary:"
 msgstr "Doğrulama özeti:"
 
-#: src/linter.js:180
+#: src/linter.js:181
 msgid "Code"
 msgstr "Kod"
 
-#: src/linter.js:186
+#: src/linter.js:187
 msgid "Message"
 msgstr "Mesaj"
 
-#: src/linter.js:192
+#: src/linter.js:193
 msgid "Description"
 msgstr "Açıklama"
 
-#: src/linter.js:198
+#: src/linter.js:199
 msgid "File"
 msgstr "Dosya"
 
-#: src/linter.js:204
+#: src/linter.js:205
 msgid "Line"
 msgstr "Satır"
 
-#: src/linter.js:210
+#: src/linter.js:211
 msgid "Column"
 msgstr "Sütun"
 
@@ -216,7 +216,7 @@ msgstr "document.write kullanımı kesinlikle önerilmez."
 
 #: src/messages/javascript.js:86
 msgid "document.write will fail in many circumstances when used in extensions, and has potentially severe security repercussions when used improperly. Therefore, it should not be used."
-msgstr ""
+msgstr "document.write uzantılarda kullanıldığında birçok durumda başarısız olur ve yanlış kullanıldığında ciddi güvenlik riskleri doğurabilir. Bu nedenle kullanılmamalıdır."
 
 #: src/messages/javascript.js:93
 msgid "Banned 3rd-party JS library"
@@ -417,7 +417,7 @@ msgstr "Bilinmeyen izin."
 
 #: src/messages/manifestjson.js:138
 msgid "%(instancePath)s: the following privileged permissions are only allowed in privileged extensions: %(privilegedPermissions)s."
-msgstr ""
+msgstr "%(instancePath)s: Bu ayrıcalıklı izinler yalnızca ayrıcalıklı uzantılarda kullanılabilir: %(privilegedPermissions)s."
 
 #: src/messages/manifestjson.js:165
 msgid "Invalid host permission."
@@ -449,7 +449,7 @@ msgstr "manifest.json’daki \"%(property)s\" özelliği uzaktan kod yürütülm
 
 #: src/messages/manifestjson.js:203
 msgid "A custom \"%(property)s\" needs additional review."
-msgstr ""
+msgstr "Özel bir \"%(property)s\" özelliği ek inceleme gerektirir."
 
 #: src/messages/manifestjson.js:215
 msgid "\"%(property)s\" allows 'eval', which has strong security and performance implications."

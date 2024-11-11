@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-21 10:05+0000\n"
-"PO-Revision-Date: 2024-09-15 15:19+0000\n"
+"POT-Creation-Date: 2024-10-14 11:37+0000\n"
+"PO-Revision-Date: 2024-11-10 08:42+0000\n"
 "Last-Translator: Artem Polivanchuk <a.polivanchuk@outlook.com>\n"
 "Language-Team: none\n"
 "Language: uk\n"
@@ -18,27 +18,27 @@ msgstr ""
 msgid "Validation Summary:"
 msgstr "Підсумок валідації:"
 
-#: src/linter.js:180
+#: src/linter.js:181
 msgid "Code"
 msgstr "Код"
 
-#: src/linter.js:186
+#: src/linter.js:187
 msgid "Message"
 msgstr "Повідомлення"
 
-#: src/linter.js:192
+#: src/linter.js:193
 msgid "Description"
 msgstr "Опис"
 
-#: src/linter.js:198
+#: src/linter.js:199
 msgid "File"
 msgstr "Файл"
 
-#: src/linter.js:204
+#: src/linter.js:205
 msgid "Line"
 msgstr "Рядок"
 
-#: src/linter.js:210
+#: src/linter.js:211
 msgid "Column"
 msgstr "Стовпчик"
 
@@ -596,7 +596,7 @@ msgstr "В маніфесті знайдено словник, але немає
 
 #: src/messages/manifestjson.js:396
 msgid "Forbidden content found in add-on."
-msgstr "В додатку знайдено заборонений вміст."
+msgstr "У додатку знайдено заборонений вміст."
 
 #: src/messages/manifestjson.js:397
 msgid "This add-on contains forbidden content."
@@ -876,7 +876,7 @@ msgstr "Для властивості \"/browser_specific_settings/gecko/admin_i
 
 #: src/messages/manifestjson.js:835
 msgid "The \"admin_install_only\" property must be set to \"true\" in an enterprise add-on."
-msgstr "В корпоративному додатку для властивості \"admin_install_only\" необхідно встановити значення \"true\"."
+msgstr "У корпоративному додатку для властивості \"admin_install_only\" необхідно встановити значення \"true\"."
 
 #: src/messages/manifestjson.js:85
 msgid "/%(fieldName)s: \"%(permissionName)s\" is not supported."

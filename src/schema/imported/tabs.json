@@ -173,7 +173,7 @@
             },
             "openerTabId": {
               "type": "integer",
-              "minimum": 0,
+              "minimum": -1,
               "description": "The ID of the tab that opened this tab. If specified, the opener tab must be in the same window as the newly created tab."
             },
             "cookieStoreId": {
@@ -385,7 +385,7 @@
             },
             "openerTabId": {
               "type": "integer",
-              "minimum": 0,
+              "minimum": -1,
               "description": "The ID of the tab that opened this tab. If specified, the opener tab must be in the same window as this tab."
             },
             "screen": {
@@ -532,7 +532,7 @@
             },
             "openerTabId": {
               "type": "integer",
-              "minimum": 0,
+              "minimum": -1,
               "description": "The ID of the tab that opened this tab. If specified, the opener tab must be in the same window as this tab."
             },
             "loadReplace": {
@@ -1767,7 +1767,7 @@
         },
         "openerTabId": {
           "type": "integer",
-          "minimum": 0,
+          "minimum": -1,
           "description": "The ID of the tab that opened this tab, if any. This property is only present if the opener tab still exists."
         },
         "highlighted": {

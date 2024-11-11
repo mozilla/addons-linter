@@ -65,9 +65,9 @@ Rules are sorted by severity.
 
 ## Language packs
 
-| Message code   | Severity | Description                   |
-| -------------- | -------- | ----------------------------- |
-| FLUENT_INVALID | warning  | Invalid fluent template file. |
+| Message code     | Severity | Description                   |
+| ---------------- | -------- | ----------------------------- |
+| `FLUENT_INVALID` | warning  | Invalid fluent template file. |
 
 ## Web Extensions / manifest.json
 
