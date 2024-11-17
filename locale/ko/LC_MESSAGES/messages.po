@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-10-14 11:37+0000\n"
-"PO-Revision-Date: 2024-10-15 07:03+0000\n"
-"Last-Translator: Sojin <sojin980@gmail.com>\n"
+"PO-Revision-Date: 2024-11-14 07:44+0000\n"
+"Last-Translator: Channy Yun <channy@mozilla.or.kr>\n"
 "Language-Team: none\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -335,7 +335,7 @@ msgstr "Firefox 부가기능은 가상화폐 채굴 코드 운영을 허용하�
 
 #: src/messages/layout.js:99
 msgid "We do not allow coinminer scripts to be run inside WebExtensions. See https://github.com/mozilla/addons-linter/issues/1643 for more details."
-msgstr ""
+msgstr "WebExtensions 안에서 채굴 스크립트를 실행하는 것은 허용하지 않습니다. 자세한 정보는 https://github.com/mozilla/addons-linter/issues/1643 에서 확인하세요."
 
 #: src/messages/locale-messagesjson.js:13
 msgid "String name is reserved for a predefined message"
