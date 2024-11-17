@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: messages\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-10-14 11:37+0000\n"
-"PO-Revision-Date: 2024-11-14 07:44+0000\n"
-"Last-Translator: Channy Yun <channy@mozilla.or.kr>\n"
+"PO-Revision-Date: 2024-11-17 01:25+0000\n"
+"Last-Translator: Hyeonseok Shin <hyeonseok@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -371,7 +371,7 @@ msgstr "자리 표시자에 콘텐츠 속성이 없음"
 
 #: src/messages/locale-messagesjson.js:41
 msgid "A placeholder needs a content property defining the replacement of it (https://mzl.la/2DT1MQd)"
-msgstr ""
+msgstr "플레이스홀더는 대체할 내용을 정의하는 콘텐츠 속성이 필요합니다(https://mzl.la/2DT1MQd)"
 
 #: src/messages/locale-messagesjson.js:5
 msgid "Translation string is missing the message property"
@@ -475,7 +475,7 @@ msgstr "Firefox에서는 \"update_url\" 속성을 사용하지 않습니다."
 
 #: src/messages/manifestjson.js:249
 msgid "The \"update_url\" is not used by Firefox in the root of a manifest; your add-on will be updated via the Add-ons site and not your \"update_url\". See: https://mzl.la/25zqk4O"
-msgstr ""
+msgstr "Firefox에서는 매니페스트 루트에서 \"update_url\"이 사용되지 않습니다. 부가 기능은 \"update_url\"이 아닌 부가 기능 사이트를 통해 업데이트됩니다. 참조: https://mzl.la/25zqk4O"
 
 #: src/messages/manifestjson.js:257
 msgid "\"strict_max_version\" not required."
@@ -483,15 +483,15 @@ msgstr "\"strict_max_version\"은 필요하지 않습니다."
 
 #: src/messages/manifestjson.js:258
 msgid "\"strict_max_version\" shouldn't be used unless the add-on is expected not to work with future versions of Firefox."
-msgstr ""
+msgstr "\"strict_max_version\"은 부가 기능이 Firefox 향후 버전에서 작동하지 않을 것으로 예상되는 경우가 아니라면 사용해서는 안 됩니다."
 
 #: src/messages/manifestjson.js:267
 msgid "No \"%(property)s\" property found in manifest.json"
-msgstr ""
+msgstr "manifest.json에 \"%(property)s\" 속성 없음"
 
 #: src/messages/manifestjson.js:270
 msgid "\"%(property)s\" is required"
-msgstr ""
+msgstr "\"%(property)s\" 필요"
 
 #: src/messages/manifestjson.js:281
 msgid "An icon defined in the manifest could not be found in the package."
@@ -519,7 +519,7 @@ msgstr "\"%(path)s\"에서 백그라운드 페이지를 찾을 수 없습니다.
 
 #: src/messages/manifestjson.js:31
 msgid "\"%(fieldName)s\" is ignored for non-privileged add-ons."
-msgstr ""
+msgstr "비권한 부가 기능에 대한 \"%(fieldName)s\"는 무시됩니다."
 
 #: src/messages/manifestjson.js:324
 msgid "A content script defined in the manifest could not be found."
@@ -543,7 +543,7 @@ msgstr "매니페이스에 정의된 사전 파일을 찾을 수 없습니다."
 
 #: src/messages/manifestjson.js:35
 msgid "\"%(fieldName)s\" manifest field is only used for privileged and temporarily installed extensions."
-msgstr ""
+msgstr "\"%(fieldName)s\" 매니페스트 필드는 권한이 있으며 임시로 설치된 확장 기능에만 사용됩니다."
 
 #: src/messages/manifestjson.js:351
 msgid "Dictionary file defined in the manifest could not be found at \"%(path)s\"."
@@ -583,7 +583,7 @@ msgstr "이 부가 기능은 금지된 콘텐츠를 포함하고 있습니다."
 
 #: src/messages/manifestjson.js:4
 msgid "Please refer to https://github.com/mozilla-extensions/xpi-manifest to learn more about privileged extensions and signing."
-msgstr ""
+msgstr "권한이 있는 확장 기능과 서명에 대해 더 알아보려면 https://github.com/mozilla-extensions/xpi-manifest 를 참조하세요."
 
 #: src/messages/manifestjson.js:405
 msgid "Icons must be square."
@@ -599,7 +599,7 @@ msgstr "아이콘의 크기가 매니페스트와 일치하지 않습니다."
 
 #: src/messages/manifestjson.js:419
 msgid "Expected icon at \"%(path)s\" to be %(expected)d pixels wide but was %(actual)d."
-msgstr ""
+msgstr "\"%(path)s\"의 아이콘 너비를 %(expected)d 픽셀로 예상했으나 %(actual)d 픽셀이었습니다."
 
 #: src/messages/manifestjson.js:432
 msgid "Corrupt image file"
@@ -635,7 +635,7 @@ msgstr "\"%(path)s\"의 테마 이미지 파일 손상됨"
 
 #: src/messages/manifestjson.js:49
 msgid "\"%(fieldName)s\" is not supported in manifest versions %(versionRange)s."
-msgstr ""
+msgstr "\"%(fieldName)s\"는 매니페스트 버전 %(versionRange)s에서 지원되지 않습니다."
 
 #: src/messages/manifestjson.js:490
 msgid "Theme image file has an unsupported file extension"
@@ -655,7 +655,7 @@ msgstr "\"%(path)s\"에 있는 테마 이미지 파일에 지원하지 않는 MI
 
 #: src/messages/manifestjson.js:51
 msgid "\"%(fieldName)s\" is not supported."
-msgstr ""
+msgstr "\"%(fieldName)s\"는 지원되지 않습니다."
 
 #: src/messages/manifestjson.js:522
 msgid "Theme image file mime type does not match its file extension"
@@ -671,7 +671,7 @@ msgstr "\"default_locale\"은 현지화가 되어 있지 않습니다."
 
 #: src/messages/manifestjson.js:540
 msgid "The \"default_locale\" value is specified in the manifest, but no matching \"messages.json\" in the \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "\"default_locale\" 값이 매니페스트에 지정되었으나 \"_locales\" 디렉토리에 일치하는 \"messages.json\"이 존재하지 않습니다. 참조: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:548
 msgid "The \"default_locale\" is missing but \"_locales\" exist."
@@ -679,7 +679,7 @@ msgstr "\"default_locale\"은 존재하지 않지만 \"_locales\"는 존재합�
 
 #: src/messages/manifestjson.js:549
 msgid "The \"default_locale\" value is not specifed in the manifest, but a \"_locales\" directory exists. See: https://mzl.la/2hjcaEE"
-msgstr ""
+msgstr "\"default_locale\" 값이 매니페스트에 지정되지 않았으나 \"_locales\" 디렉토리가 존재합니다. 참조: https://mzl.la/2hjcaEE"
 
 #: src/messages/manifestjson.js:557
 msgid "Unsupported image extension"
@@ -695,7 +695,7 @@ msgstr "\"browser_specific_settings\" 속성으로 재정의된 \"applications\"
 
 #: src/messages/manifestjson.js:569
 msgid "The \"applications\" property is being ignored because it is superseded by the \"browser_specific_settings\" property which is also defined in your manifest. Consider removing applications."
-msgstr ""
+msgstr "\"applications\" 속성은 매니페스트에도 정의되어 있는 \"browser_specific_settings\" 속성으로 대체되어 있기 때문에 무시됩니다. 애플리케이션 삭제를 고려하세요."
 
 #: src/messages/manifestjson.js:579
 msgid "Empty language directory"
@@ -711,7 +711,7 @@ msgstr "매니페스트 키가 명시된 최소 Firefox 버전에서 지원되�
 
 #: src/messages/manifestjson.js:601 src/messages/manifestjson.js:623
 msgid "\"strict_min_version\" requires Firefox %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\"에는 \"%(key)s\"에 대한 지원을 도입한 %(versionAdded)s 버전보다 이전에 출시된 Firefox %(minVersion)s이 필요합니다."
 
 #: src/messages/manifestjson.js:619
 msgid "Permission not supported by the specified minimum Firefox version"
@@ -719,7 +719,7 @@ msgstr "명시된 최소 Firefox 버전에서 지원하지 않는 권한"
 
 #: src/messages/manifestjson.js:64
 msgid "%(instancePath)s: privileged manifest fields are only allowed in privileged extensions."
-msgstr ""
+msgstr "%(instancePath)s: 권한이 있는 매니페스트 필드는 권한이 있는 확장에서만 허용됩니다."
 
 #: src/messages/manifestjson.js:641
 msgid "Manifest key not supported by the specified minimum Firefox for Android version"
@@ -727,7 +727,7 @@ msgstr "매니페스트 키가 명시된 최소 Android 용 Firefox 버전에서
 
 #: src/messages/manifestjson.js:645 src/messages/manifestjson.js:667
 msgid "\"strict_min_version\" requires Firefox for Android %(minVersion)s, which was released before version %(versionAdded)s introduced support for \"%(key)s\"."
-msgstr ""
+msgstr "\"strict_min_version\"에는 \"%(key)s\"에 대한 지원을 도입한 %(versionAdded)s 버전보다 이전에 출시된 Android용 Firefox %(minVersion)s이 필요합니다."
 
 #: src/messages/manifestjson.js:663
 msgid "Permission not supported by the specified minimum Firefox for Android version"
@@ -743,11 +743,11 @@ msgstr "\"addons.mozilla.org\"로 연결되는 링크는 홈페이지에 사용�
 
 #: src/messages/manifestjson.js:691
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above"
-msgstr ""
+msgstr "\"%(permission)s\" 권한은 \"strict_min_version\"이 \"%(minFirefoxVersion)s\" 이상으로 설정되어야 함"
 
 #: src/messages/manifestjson.js:696
 msgid "The \"%(permission)s\" permission requires \"strict_min_version\" to be set to \"%(minFirefoxVersion)s\" or above. Please update your manifest.json version to specify a minimum Firefox version."
-msgstr ""
+msgstr "\"%(permission)s\" 권한은 \"strict_min_version\"이 \"%(minFirefoxVersion)s\" 이상으로 설정되어야 합니다. manifest.json 버전을 업데이트하여 최소 Firefox 버전을 지정하세요."
 
 #: src/messages/manifestjson.js:708
 msgid "The extension ID is required in Manifest Version 3 and above."
