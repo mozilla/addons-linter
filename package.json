@@ -86,6 +86,7 @@
     "comment-json": "4.2.5",
     "eslint-config-amo": "5.12.0",
     "eslint-plugin-amo": "1.26.0",
+    "eslint-plugin-prettier": "5.2.1",
     "github-markdown-css": "5.8.0",
     "glob": "11.0.0",
     "gunzip-maybe": "1.4.2",
