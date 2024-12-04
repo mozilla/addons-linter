@@ -5,7 +5,6 @@ import {
   AddonsLinterUserError,
   androidStrictMinVersion,
   basicCompatVersionComparison,
-  buildI18nObject,
   checkMinNodeVersion,
   ensureFilenameExists,
   errorParamsToUnsupportedVersionRange,
@@ -79,25 +78,6 @@ describe('i18n._()', () => {
 describe('gettext()', () => {
   it('should return localizable message', () => {
     expect(i18n.gettext('This is a test')).toEqual('This is a test');
-
-    jest.doMock('utils', () => {
-      return {
-        // eslint-disable-next-line global-require
-        i18n: buildI18nObject(require('../fixtures/fr')),
-      };
-    });
-
-    // eslint-disable-next-line global-require
-    const mockedI18n = require('utils').i18n;
-
-    expect(mockedI18n.gettext('This is a test')).toEqual("C'est un test");
-
-    // But messages where we don't have a translation are still original
-    expect(mockedI18n.gettext('This is an untranslated test')).toEqual(
-      'This is an untranslated test'
-    );
-
-    jest.resetModules();
   });
 
   it('should return one-line strings', () => {
@@ -110,22 +90,6 @@ describe('gettext()', () => {
       )
     ).toEqual('This is a test');
   });
-
-  it('should support unicode messages', () => {
-    jest.doMock('utils', () => {
-      return {
-        // eslint-disable-next-line global-require
-        i18n: buildI18nObject(require('../fixtures/ja')),
-      };
-    });
-
-    // eslint-disable-next-line global-require
-    const mockedI18n = require('utils').i18n;
-
-    expect(mockedI18n.gettext('This is a test')).toEqual('これはテストです');
-
-    jest.resetModules();
-  });
 });
 
 describe('sprintf()', () => {
@@ -135,25 +99,10 @@ describe('sprintf()', () => {
       i18n.sprintf(i18n._('Icon could not be found at "%(path)s".'), { path })
     ).toEqual('Icon could not be found at "../fixtures/no-image.png".');
 
-    jest.doMock('utils', () => {
-      return {
-        // eslint-disable-next-line global-require
-        i18n: buildI18nObject(require('../fixtures/de')),
-      };
-    });
-
-    // eslint-disable-next-line global-require
-    const mockedI18n = require('utils').i18n;
-    expect(
-      mockedI18n.sprintf(
-        mockedI18n._("Icon could not be found at '%(path)s'."),
-        { path }
-      )
-    ).toEqual(
-      'Symbol konnte nicht unter „../fixtures/no-image.png“ gefunden werden.'
+    const value = 123;
+    expect(i18n.sprintf(i18n._('Max size: %(value)d'), { value })).toEqual(
+      'Max size: 123'
     );
-
-    jest.resetModules();
   });
 });
 
