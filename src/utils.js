@@ -1,15 +1,10 @@
 import url from 'url';
 
 import upath from 'upath';
-import Jed from 'jed';
 import semver from 'semver';
 import { oneLine } from 'common-tags';
-import osLocale from 'os-locale';
 
-import log from 'logger';
 import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
-
-/* global nodeRequire, localesRoot */
 
 const SOURCE_MAP_RE = /\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/;
 // For MV2 add-ons, Firefox's version format is laxer than Chrome's, it accepts:
@@ -135,22 +130,6 @@ export function getVariable(context, name) {
   return result;
 }
 
-export function getLocale() {
-  return osLocale.sync();
-}
-
-export function getI18Data(locale) {
-  let i18ndata = {};
-  try {
-    // eslint-disable-next-line global-require, import/no-dynamic-require
-    i18ndata = nodeRequire(`${localesRoot}/${locale}/messages.js`);
-  } catch (err) {
-    log.info('Initialize locales using extract-locales command');
-  }
-
-  return i18ndata;
-}
-
 // Functionality based on oneLine from declandewet/common-tags, copied from
 // mozilla/addons-frontend.
 function oneLineTranslationString(translationKey) {
@@ -160,28 +139,19 @@ function oneLineTranslationString(translationKey) {
   return translationKey;
 }
 
-/*
- * Gettext utils. Used for translating strings.
- */
-export function buildI18nObject(i18nData) {
-  const _jed = new Jed(i18nData);
-
-  return {
-    jed: _jed,
-    getI18Data,
-    _: (str) => {
-      return _jed.gettext(oneLineTranslationString(str));
-    },
-    gettext: (str) => {
-      return _jed.gettext(oneLineTranslationString(str));
-    },
-    sprintf: (fmt, args) => {
-      return _jed.sprintf(fmt, args);
-    },
-  };
-}
-
-export const i18n = buildI18nObject(getI18Data(getLocale()));
+// This is a stub implementation of a i18n library, in case we want to
+// re-enable localization of the project in the future.
+export const i18n = Object.freeze({
+  _: (str) => oneLineTranslationString(str),
+  sprintf: (fmt, args) => {
+    let str = fmt;
+    // Replace every `%(key)s` or `%(key)d` placeholder with the actual value.
+    for (const key of Object.keys(args)) {
+      str = str.replace(new RegExp(`%\\(${key}\\)(d|s)`), args[key]);
+    }
+    return str;
+  },
+});
 
 /*
  * Check the minimum node version is met
