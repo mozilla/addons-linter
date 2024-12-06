@@ -109,7 +109,7 @@
     "tar-fs": "3.0.6",
     "tmp-promise": "3.0.3",
     "tosource": "1.0.0",
-    "webpack": "5.97.0",
+    "webpack": "5.97.1",
     "webpack-cli": "5.1.4",
     "webpack-node-externals": "3.0.0",
     "yazl": "2.5.1"
