@@ -1,9 +1,5 @@
 #!/usr/bin/env node
 /* eslint-disable global-require */
-const path = require('path');
-
-const absoluteAppRoot = path.resolve(path.join(__dirname, '..'));
-global.localesRoot = path.join(absoluteAppRoot, 'dist', 'locale');
 global.nodeRequire = require;
 
 (async () => {

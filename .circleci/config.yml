@@ -145,18 +145,6 @@ jobs:
       - run: npm run webext-test-functional
       - run: npm run smoke-test-eslint-version-conflicts
 
-  lint-locales:
-    working_directory: ~/addons-linter
-    docker:
-      - image: cimg/python:3.11.3
-    steps:
-      - checkout
-      - run:
-          name: lint locale files
-          command: |
-            pip install dennis
-            dennis-cmd lint --errorsonly locale/
-
   release-tag:
     <<: *defaults
     steps:
@@ -180,7 +168,6 @@ workflows:
               only: /.*/
       - test-next
       - test-alternate
-      - lint-locales
       - release-tag:
           requires:
             - test
