@@ -100,7 +100,7 @@
     "replace-in-file": "7.2.0",
     "shelljs": "0.8.5",
     "sinon": "19.0.2",
-    "tar-fs": "3.0.6",
+    "tar-fs": "3.0.8",
     "tmp-promise": "3.0.3",
     "webpack": "5.97.1",
     "webpack-cli": "5.1.4",
