@@ -187,7 +187,9 @@
         "cpufreq",
         "bandwidth",
         "memory",
-        "tracing"
+        "tracing",
+        "sandbox",
+        "flows"
       ]
     },
     "supports": {

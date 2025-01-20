@@ -128,52 +128,6 @@
                 "is_default": {
                   "type": "boolean",
                   "description": "Sets the default engine to a built-in engine only."
-                },
-                "params": {
-                  "max_manifest_version": 2,
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "description": "A url parameter name"
-                      },
-                      "condition": {
-                        "type": "string",
-                        "enum": [
-                          "purpose",
-                          "pref"
-                        ],
-                        "description": "The type of param can be either \"purpose\" or \"pref\"."
-                      },
-                      "pref": {
-                        "type": "string",
-                        "description": "The preference to retrieve the value from.",
-                        "preprocess": "localize"
-                      },
-                      "purpose": {
-                        "type": "string",
-                        "enum": [
-                          "contextmenu",
-                          "searchbar",
-                          "homepage",
-                          "keyword",
-                          "newtab"
-                        ],
-                        "description": "The context that initiates a search, required if condition is \"purpose\"."
-                      },
-                      "value": {
-                        "type": "string",
-                        "description": "A url parameter value.",
-                        "preprocess": "localize"
-                      }
-                    },
-                    "required": [
-                      "name"
-                    ]
-                  },
-                  "description": "A list of optional search url parameters. This allows the additon of search url parameters based on how the search is performed in Firefox."
                 }
               },
               "required": [

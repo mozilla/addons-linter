@@ -154,7 +154,14 @@
         "permissions": {
           "type": "array",
           "items": {
-            "$ref": "manifest#/types/OptionalPermission"
+            "anyOf": [
+              {
+                "$ref": "manifest#/types/OptionalPermission"
+              },
+              {
+                "$ref": "manifest#/types/OptionalOnlyPermission"
+              }
+            ]
           },
           "default": []
         },
@@ -173,7 +180,14 @@
         "permissions": {
           "type": "array",
           "items": {
-            "$ref": "manifest#/types/Permission"
+            "anyOf": [
+              {
+                "$ref": "manifest#/types/Permission"
+              },
+              {
+                "$ref": "manifest#/types/OptionalOnlyPermission"
+              }
+            ]
           },
           "default": []
         },

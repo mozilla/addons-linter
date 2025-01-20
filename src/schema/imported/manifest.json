@@ -613,6 +613,20 @@
         "size"
       ]
     },
+    "OptionalOnlyPermission": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": []
+        },
+        {
+          "$ref": "trial#/definitions/OptionalOnlyPermission"
+        },
+        {
+          "$ref": "userScripts#/definitions/OptionalOnlyPermission"
+        }
+      ]
+    },
     "OptionalPermissionNoPrompt": {
       "anyOf": [
         {
@@ -715,6 +729,9 @@
       "anyOf": [
         {
           "$ref": "#/types/OptionalPermission"
+        },
+        {
+          "$ref": "#/types/OptionalOnlyPermission"
         },
         {
           "$ref": "#/types/MatchPattern"
