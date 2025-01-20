@@ -119,6 +119,14 @@
             "maxItems": 5
           }
         }
+      },
+      "OptionalOnlyPermission": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": ["userScripts"]
+          }
+        ]
       }
     }
   }

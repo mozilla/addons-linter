@@ -617,7 +617,9 @@
       "anyOf": [
         {
           "type": "string",
-          "enum": []
+          "enum": [
+            "userScripts"
+          ]
         },
         {
           "$ref": "trial#/definitions/OptionalOnlyPermission"
