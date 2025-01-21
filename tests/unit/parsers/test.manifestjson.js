@@ -1377,6 +1377,56 @@ describe('ManifestJSONParser', () => {
     }
   });
 
+  describe('optional only permissions', () => {
+    const OPTIONAL_ONLY_PERMISSIONS = ['userScripts', 'trialML'];
+
+    it.each(OPTIONAL_ONLY_PERMISSIONS)(
+      'should warn on optional-only permission "%s" requested as non-optional',
+      (permName) => {
+        const linter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          permissions: ['tabs', permName],
+          browser_specific_settings: { gecko: { strict_max_version: '135.0' } },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          linter.collector
+        );
+        expect(manifestJSONParser.collector.warnings).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              code: 'MANIFEST_PERMISSIONS',
+              instancePath: '/permissions/1',
+              message: expect.stringMatching(
+                new RegExp(`Invalid permissions "${permName}"`)
+              ),
+            }),
+          ])
+        );
+        expect(linter.collector.errors).toEqual([]);
+        expect(manifestJSONParser.isValid).toEqual(false);
+      }
+    );
+
+    it.each(OPTIONAL_ONLY_PERMISSIONS)(
+      'should allow permission "%s" in optional_permissions',
+      (permName) => {
+        const linter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          optional_permissions: ['tabs', permName],
+          browser_specific_settings: { gecko: { strict_max_version: '135.0' } },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          linter.collector
+        );
+        expect(linter.collector.warnings).toEqual([]);
+        expect(linter.collector.errors).toEqual([]);
+        expect(manifestJSONParser.isValid).toEqual(true);
+      }
+    );
+  });
+
   describe('name', () => {
     it('should extract a name', () => {
       // Type is always returned as PACKAGE_EXTENSION presently.

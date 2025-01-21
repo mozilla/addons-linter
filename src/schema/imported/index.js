@@ -53,6 +53,7 @@ import telemetry from './telemetry.json';
 import test from './test.json';
 import theme from './theme.json';
 import topSites from './top_sites.json';
+import trial from './trial_ml.json';
 import types from './types.json';
 import url_overrides from './url_overrides.json';
 import userScripts from './userScripts.json';
@@ -113,6 +114,7 @@ export default [
   test,
   theme,
   topSites,
+  trial,
   types,
   url_overrides,
   userScripts,

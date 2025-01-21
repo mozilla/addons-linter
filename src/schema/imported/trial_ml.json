@@ -1,0 +1,115 @@
+{
+  "$id": "trial",
+  "allowedContexts": [
+    "content"
+  ],
+  "permissions": [
+    "trialML"
+  ],
+  "properties": {
+    "ml": {
+      "description": "Use the trial ML API to run Machine Learning models requests from extensions pages or content scripts.",
+      "allowedContexts": [
+        "content"
+      ],
+      "permissions": [
+        "trialML"
+      ],
+      "events": [
+        {
+          "name": "onProgress",
+          "type": "function",
+          "allowedContexts": [
+            "content"
+          ],
+          "description": "Events from the inference engine.",
+          "parameters": [
+            {
+              "name": "progressData",
+              "description": "Object containing the data, see https://firefox-source-docs.mozilla.org/toolkit/components/ml/notifications.html",
+              "type": "object"
+            }
+          ]
+        }
+      ],
+      "functions": [
+        {
+          "name": "createEngine",
+          "type": "function",
+          "description": "Prepare the inference engine",
+          "async": true,
+          "parameters": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/types/CreateEngineRequest"
+                },
+                {
+                  "name": "CreateEngineRequest"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "runEngine",
+          "type": "function",
+          "allowedContexts": [
+            "content"
+          ],
+          "description": "Call the inference engine",
+          "async": true,
+          "parameters": [
+            {
+              "allOf": [
+                {
+                  "$ref": "#/types/RunEngineRequest"
+                },
+                {
+                  "name": "RunEngineRequest"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "deleteCachedModels",
+          "type": "function",
+          "allowedContexts": [
+            "content"
+          ],
+          "description": "Delete the models the extension downloaded.",
+          "async": true
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "OptionalOnlyPermission": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "trialML"
+          ]
+        }
+      ]
+    }
+  },
+  "refs": {
+    "trial#/definitions/OptionalOnlyPermission": {
+      "namespace": "manifest",
+      "type": "OptionalOnlyPermission"
+    }
+  },
+  "types": {
+    "CreateEngineRequest": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "RunEngineRequest": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}
