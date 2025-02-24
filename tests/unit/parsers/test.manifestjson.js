@@ -2465,25 +2465,59 @@ describe('ManifestJSONParser', () => {
 
   describe('schema error overrides', () => {
     // https://github.com/mozilla/addons-linter/issues/732
-    it('uses a modified error message', () => {
-      const addonLinter = new Linter({ _: ['bar'] });
-      // 'scripts' intentionally misspelled as 'script'.
-      const json = validManifestJSON({
-        background: { script: ['background.js'] },
-      });
-      const manifestJSONParser = new ManifestJSONParser(
-        json,
-        addonLinter.collector
-      );
-      const { errors } = addonLinter.collector;
-      assertHasMatchingError(errors, {
-        code: messages.JSON_INVALID.code,
-        message:
-          '"/background" is not a valid key or has invalid ' +
-          'extra properties',
-      });
-      expect(manifestJSONParser.isValid).toEqual(false);
-    });
+    it.each([
+      [
+        'MV2',
+        {
+          manifest_version: 2,
+          schemaValidatorOptions: {},
+          expectedRequiredProps: '"scripts" or "page"',
+        },
+      ],
+      [
+        'MV3',
+        {
+          manifest_version: 3,
+          schemaValidatorOptions: {
+            maxManifestVersion: 3,
+            enableBackgroundServiceWorker: true,
+          },
+          expectedRequiredProps: '"service_worker", "scripts" or "page"',
+        },
+      ],
+    ])(
+      'reports missing required background properties (%s)',
+      (_variantName, variantTestOptions) => {
+        const {
+          manifest_version,
+          schemaValidatorOptions,
+          expectedRequiredProps,
+        } = variantTestOptions;
+        const addonLinter = new Linter({ _: ['bar'] });
+        // 'scripts' intentionally misspelled as 'script'.
+        const json = validManifestJSON({
+          manifest_version,
+          background: { script: ['background.js'] },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          addonLinter.collector,
+          { schemaValidatorOptions }
+        );
+        const { errors } = addonLinter.collector;
+        const expectedErrorMessage = `"/background" requires at least one of ${expectedRequiredProps}.`;
+        expect(errors).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              instancePath: '/background',
+              code: messages.MANIFEST_FIELD_REQUIRED.code,
+              message: expect.stringMatching(expectedErrorMessage),
+            }),
+          ])
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+      }
+    );
 
     it('does not break when background.scripts is not an array', () => {
       const addonLinter = new Linter({ _: ['bar'] });
@@ -3271,10 +3305,9 @@ describe('ManifestJSONParser', () => {
       expect(linter.collector.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            instancePath: '/background',
-            code: 'JSON_INVALID',
+            code: 'MANIFEST_FIELD_UNSUPPORTED',
             message: expect.stringMatching(
-              /"\/background" .* has invalid extra properties/
+              /"\/background\/service_worker" is not supported/
             ),
           }),
         ])
