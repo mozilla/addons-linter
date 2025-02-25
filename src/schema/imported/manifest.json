@@ -31,6 +31,7 @@
         },
         "name": {
           "type": "string",
+          "description": "Name must be at least 2, at should be at most 75 characters",
           "preprocess": "localize",
           "maxLength": 45,
           "minLength": 2
@@ -138,22 +139,13 @@
                     {
                       "type": "object",
                       "properties": {
+                        "service_worker": {
+                          "$ref": "manifest#/types/ExtensionURL",
+                          "min_manifest_version": 3
+                        },
                         "page": {
                           "$ref": "manifest#/types/ExtensionURL"
                         },
-                        "persistent": {
-                          "type": "boolean",
-                          "max_manifest_version": 2,
-                          "default": true
-                        }
-                      },
-                      "required": [
-                        "page"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
                         "scripts": {
                           "type": "array",
                           "items": {
@@ -162,6 +154,7 @@
                         },
                         "type": {
                           "type": "string",
+                          "description": "Only supported for page/scripts; not for service_worker yet, see bug 1775574",
                           "enum": [
                             "module",
                             "classic"
@@ -171,24 +164,20 @@
                           "type": "boolean",
                           "max_manifest_version": 2,
                           "default": true
+                        },
+                        "preferred_environment": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "service_worker",
+                              "document"
+                            ],
+                            "onError": "warn"
+                          }
                         }
                       },
-                      "required": [
-                        "scripts"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "service_worker": {
-                          "$ref": "manifest#/types/ExtensionURL"
-                        }
-                      },
-                      "postprocess": "requireBackgroundServiceWorkerEnabled",
-                      "required": [
-                        "service_worker"
-                      ],
-                      "min_manifest_version": 3
+                      "postprocess": "checkRequiredManifestBackgroundKeys"
                     }
                   ]
                 },

@@ -257,6 +257,10 @@ export class SchemaValidator {
     return this._options.addonManifestVersion;
   }
 
+  get enableBackgroundServiceWorker() {
+    return this._options.enableBackgroundServiceWorker;
+  }
+
   get isPrivilegedAddon() {
     return this._options?.privileged ?? false;
   }
@@ -679,6 +683,50 @@ export class SchemaValidator {
     validator.addKeyword({
       keyword: SCHEMA_KEYWORDS.PRIVILEGED,
       validate: validatePrivilegedManifestFields,
+    });
+
+    const validateRequiredManifestBackgroundKeys = (
+      keywordSchemaValue,
+      propValue,
+      schema,
+      { rootData /* instancePath, parentData, parentDataProperty, */ }
+    ) => {
+      if (keywordSchemaValue !== 'checkRequiredManifestBackgroundKeys') {
+        return true;
+      }
+      // At least one environment is required
+      if (
+        !propValue.page &&
+        !propValue.scripts?.length &&
+        !propValue.service_worker
+      ) {
+        // Add an error to the manifest validations.
+        const serviceWorkerEnabled =
+          this.enableBackgroundServiceWorker &&
+          rootData.manifest_version === 3 &&
+          this.allowedManifestVersionsRange.maximum >= 3;
+        const message = `requires at least one of ${
+          serviceWorkerEnabled ? '"service_worker", ' : ''
+        }"scripts" or "page".`;
+        // Report the error as coming from a `required` keyword enforcing
+        // which properties are required to be part of the `background`.
+        validateRequiredManifestBackgroundKeys.errors = [
+          {
+            keyword: SCHEMA_KEYWORDS.REQUIRED,
+            message,
+            params: {
+              preprocess: keywordSchemaValue,
+            },
+          },
+        ];
+        return false;
+      }
+      return true;
+    };
+
+    validator.addKeyword({
+      keyword: 'postprocess',
+      validate: validateRequiredManifestBackgroundKeys,
     });
   }
 

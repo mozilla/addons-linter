@@ -41,10 +41,12 @@
                 "properties": {
                   "background": {
                     "anyOf": [
-                      {},
-                      {},
                       {
-                        "min_manifest_version": 3
+                        "properties": {
+                          "service_worker": {
+                            "min_manifest_version": 3
+                          }
+                        }
                       }
                     ]
                   },
