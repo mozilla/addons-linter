@@ -78,7 +78,7 @@
     "async": "3.2.6",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "29.7.0",
-    "babel-loader": "9.2.1",
+    "babel-loader": "10.0.0",
     "comment-json": "4.2.5",
     "eslint-config-amo": "5.13.0",
     "eslint-plugin-amo": "2.0.0",
