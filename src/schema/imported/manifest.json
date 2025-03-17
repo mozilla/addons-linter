@@ -31,7 +31,7 @@
         },
         "name": {
           "type": "string",
-          "description": "Name must be at least 2, at should be at most 75 characters",
+          "description": "Name must be at least 2, and should be at most 75 characters",
           "preprocess": "localize",
           "maxLength": 45,
           "minLength": 2
