@@ -82,7 +82,7 @@
     "comment-json": "4.2.5",
     "eslint-config-amo": "5.14.0",
     "eslint-plugin-amo": "2.1.0",
-    "eslint-plugin-prettier": "5.2.4",
+    "eslint-plugin-prettier": "5.2.5",
     "github-markdown-css": "5.8.1",
     "gunzip-maybe": "1.4.2",
     "hashish": "0.0.4",
