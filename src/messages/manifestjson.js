@@ -836,3 +836,11 @@ export const ADMIN_INSTALL_ONLY_REQUIRED = {
     in an enterprise add-on.`),
   file: MANIFEST_JSON,
 };
+
+export const DATA_COLLECTION_PERMISSIONS_PROP_RESERVED = {
+  code: 'DATA_COLLECTION_PERMISSIONS_PROP_RESERVED',
+  message: i18n._('The "data_collection_permissions" property is reserved.'),
+  description: i18n._(`The "data_collection_permissions" property is reserved
+    for future usage and cannot be used in an extension at the moment.`),
+  file: MANIFEST_JSON,
+};

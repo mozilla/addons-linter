@@ -5762,4 +5762,29 @@ describe('ManifestJSONParser', () => {
       }
     );
   });
+
+  describe('data_collection_permissions', () => {
+    it('emits an error when data_collection_permissions is specified', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: {
+            gecko: { data_collection_permissions: {} },
+          },
+        }),
+        linter.collector
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      expect(linter.collector.errors).toEqual([
+        expect.objectContaining(
+          messages.DATA_COLLECTION_PERMISSIONS_PROP_RESERVED
+        ),
+      ]);
+    });
+  });
 });

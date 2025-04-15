@@ -538,6 +538,16 @@ export default class ManifestJSONParser extends JSONParser {
       this.isValid = false;
     }
 
+    if (
+      this.parsedJSON.browser_specific_settings?.gecko
+        ?.data_collection_permissions
+    ) {
+      this.collector.addError(
+        messages.DATA_COLLECTION_PERMISSIONS_PROP_RESERVED
+      );
+      this.isValid = false;
+    }
+
     if (this.parsedJSON.content_security_policy != null) {
       this.validateCspPolicy(this.parsedJSON.content_security_policy);
     }
