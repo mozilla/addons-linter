@@ -79,7 +79,8 @@
             "content"
           ],
           "description": "Delete the models the extension downloaded.",
-          "async": true
+          "async": true,
+          "parameters": []
         }
       ]
     }
