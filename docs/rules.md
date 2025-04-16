@@ -137,6 +137,7 @@ Rules are sorted by severity.
 | `INCOGNITO_SPLIT_UNSUPPORTED`                           | warning  | The incognito "split" value is unsupported in Firefox                                                                                                                              |
 | `ADMIN_INSTALL_ONLY_PROP_RESERVED`                      | error    | The `browser_specific_settings.gecko.admin_install_only` property is reserved and can only be used in enterprise add-ons                                                           |
 | `ADMIN_INSTALL_ONLY_REQUIRED`                           | error    | The `browser_specific_settings.gecko.admin_install_only` property must be set to "true" in an enterprise add-on                                                                    |
+| `DATA_COLLECTION_PERMISSIONS_PROP_RESERVED`             | error    | The `data_collection_permissions` property is reserved for future usage and cannot be used in an extension at the moment                                                           |
 
 ### Static Theme / manifest.json
 
