@@ -102,7 +102,7 @@
     "sinon": "20.0.0",
     "tar-fs": "3.0.8",
     "tmp-promise": "3.0.3",
-    "webpack": "5.99.5",
+    "webpack": "5.99.6",
     "webpack-cli": "5.1.4",
     "webpack-node-externals": "3.0.0",
     "yazl": "2.5.1"
