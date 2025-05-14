@@ -48,6 +48,7 @@ import search from './search.json';
 import sessions from './sessions.json';
 import sidebarAction from './sidebar_action.json';
 import storage from './storage.json';
+import tabGroups from './tabGroups.json';
 import tabs from './tabs.json';
 import telemetry from './telemetry.json';
 import test from './test.json';
@@ -109,6 +110,7 @@ export default [
   sessions,
   sidebarAction,
   storage,
+  tabGroups,
   tabs,
   telemetry,
   test,
