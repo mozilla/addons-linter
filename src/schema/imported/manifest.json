@@ -642,6 +642,9 @@
           "$ref": "search#/definitions/OptionalPermissionNoPrompt"
         },
         {
+          "$ref": "tabGroups#/definitions/OptionalPermissionNoPrompt"
+        },
+        {
           "$ref": "tabs#/definitions/OptionalPermissionNoPrompt"
         },
         {
@@ -748,6 +751,51 @@
         },
         {
           "$ref": "telemetry#/definitions/PermissionPrivileged"
+        }
+      ]
+    },
+    "CommonDataCollectionPermission": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "authenticationInfo",
+            "bookmarksInfo",
+            "browsingHistory",
+            "financialAndPaymentInfo",
+            "healthInfo",
+            "locationInfo",
+            "personalCommunications",
+            "personallyIdentifyingInfo",
+            "websiteActivity",
+            "websiteContent"
+          ]
+        }
+      ]
+    },
+    "DataCollectionPermission": {
+      "anyOf": [
+        {
+          "$ref": "#/types/CommonDataCollectionPermission"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "none"
+          ]
+        }
+      ]
+    },
+    "OptionalDataCollectionPermission": {
+      "anyOf": [
+        {
+          "$ref": "#/types/CommonDataCollectionPermission"
+        },
+        {
+          "type": "string",
+          "enum": [
+            "technicalAndInteraction"
+          ]
         }
       ]
     },
@@ -878,6 +926,25 @@
         },
         "admin_install_only": {
           "type": "boolean"
+        },
+        "data_collection_permissions": {
+          "type": "object",
+          "properties": {
+            "optional": {
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/types/OptionalDataCollectionPermission"
+                  },
+                  {
+                    "onError": "warn"
+                  }
+                ]
+              },
+              "default": []
+            }
+          }
         }
       }
     },
