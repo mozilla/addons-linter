@@ -844,3 +844,14 @@ export const DATA_COLLECTION_PERMISSIONS_PROP_RESERVED = {
     for future usage and cannot be used in an extension at the moment.`),
   file: MANIFEST_JSON,
 };
+
+export const MISSING_DATA_COLLECTION_PERMISSIONS = {
+  code: 'MISSING_DATA_COLLECTION_PERMISSIONS',
+  message: i18n._('The "data_collection_permissions" property is missing.'),
+  description: i18n._(
+    `"/browser_specific_settings/gecko/data_collection_permissions" property
+    will be required in the future. Please add this key to the manifest. More
+    information at: https://mzl.la/blog-data-consent-firefox-nightly`
+  ),
+  file: MANIFEST_JSON,
+};
