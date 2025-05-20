@@ -171,6 +171,13 @@
             "$ref": "manifest#/types/MatchPattern"
           },
           "default": []
+        },
+        "data_collection": {
+          "type": "array",
+          "items": {
+            "$ref": "manifest#/types/OptionalDataCollectionPermission"
+          },
+          "default": []
         }
       }
     },
@@ -195,6 +202,13 @@
           "type": "array",
           "items": {
             "$ref": "manifest#/types/MatchPattern"
+          },
+          "default": []
+        },
+        "data_collection": {
+          "type": "array",
+          "items": {
+            "$ref": "manifest#/types/OptionalDataCollectionPermission"
           },
           "default": []
         }
