@@ -5764,7 +5764,7 @@ describe('ManifestJSONParser', () => {
   });
 
   describe('data_collection_permissions', () => {
-    it('emits an error when data_collection_permissions is specified', () => {
+    it('emits an error when data_collection_permissions is specified and the support is disabled', () => {
       const linter = new Linter({ _: ['bar'] });
 
       const manifestJSONParser = new ManifestJSONParser(
@@ -5776,15 +5776,88 @@ describe('ManifestJSONParser', () => {
             gecko: { data_collection_permissions: {} },
           },
         }),
-        linter.collector
+        linter.collector,
+        { schemaValidatorOptions: { enableDataCollectionPermissions: false } }
       );
 
-      expect(manifestJSONParser.isValid).toEqual(false);
       expect(linter.collector.errors).toEqual([
         expect.objectContaining(
           messages.DATA_COLLECTION_PERMISSIONS_PROP_RESERVED
         ),
       ]);
+      expect(manifestJSONParser.isValid).toEqual(false);
+    });
+
+    it('does not emit an error when data_collection_permissions is specified and the support is enabled', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: {
+            gecko: { data_collection_permissions: {} },
+          },
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
+      );
+
+      expect(linter.collector.errors).toEqual([]);
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
+    it('validates data collection permissions - invalid prop value', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: {
+            gecko: { data_collection_permissions: true },
+          },
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
+      );
+
+      expect(linter.collector.errors).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ code: 'MANIFEST_FIELD_INVALID' }),
+        ])
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+    });
+
+    it('validates data collection permissions - unknown optional perm', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: {
+            gecko: {
+              data_collection_permissions: {
+                optional: ['invalid_perm'],
+              },
+            },
+          },
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
+      );
+
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.JSON_INVALID.code,
+        message:
+          /"\/browser_specific_settings\/gecko\/data_collection_permissions\/optional\/0" must be equal to one of the allowed values/,
+      });
+      expect(manifestJSONParser.isValid).toEqual(false);
     });
   });
 });

@@ -538,7 +538,9 @@ export default class ManifestJSONParser extends JSONParser {
       this.isValid = false;
     }
 
-    if (
+    if (this.schemaValidatorOptions?.enableDataCollectionPermissions) {
+      // TODO: https://github.com/mozilla/addons-linter/issues/5650
+    } else if (
       this.parsedJSON.browser_specific_settings?.gecko
         ?.data_collection_permissions
     ) {
