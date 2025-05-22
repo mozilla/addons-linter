@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-const path = require('path');
+import path from 'path';
 
-const replaceInFile = require('replace-in-file');
+import { replaceInFileSync } from 'replace-in-file';
 
-const PROJECT_ROOT = path.resolve(path.join(__dirname, '..'));
+const PROJECT_ROOT = path.resolve(path.join(import.meta.dirname, '..'));
 const README_FILE = path.join(PROJECT_ROOT, 'README.md');
 const LIBRARIES_FILE = path.join(
   PROJECT_ROOT,
@@ -11,8 +11,9 @@ const LIBRARIES_FILE = path.join(
   'libraries.json'
 );
 
-// eslint-disable-next-line import/no-dynamic-require
-const libraries = require(LIBRARIES_FILE);
+const { default: libraries } = await import(LIBRARIES_FILE, {
+  with: { type: 'json' },
+});
 const releasePages = [
   ...new Set(
     libraries.map((library) => {
@@ -32,7 +33,7 @@ const content = releasePages
   .join('\n');
 
 try {
-  const results = replaceInFile.sync({
+  const results = replaceInFileSync({
     files: README_FILE,
     from: /(<!--RELEASE_PAGES_START-->\n)[\s\S]*(\n\n<!--RELEASE_PAGES_END-->)/,
     to: `$1\n${content}$2`,
