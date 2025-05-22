@@ -261,7 +261,7 @@ This is the (manual) process to update the "dispensary" libraries:
 
 Note: `hashes.txt` will be embedded into the addons-linter bundle.
 
-The `scripts/update-dispensary-doc` command updates the list of release pages above based on the `src/dispensary/libraries.json` file.
+The `scripts/update-dispensary-doc.mjs` command updates the list of release pages above based on the `src/dispensary/libraries.json` file.
 
 ## License
 
