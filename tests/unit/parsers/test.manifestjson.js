@@ -5785,6 +5785,8 @@ describe('ManifestJSONParser', () => {
           messages.DATA_COLLECTION_PERMISSIONS_PROP_RESERVED
         ),
       ]);
+
+      expect(linter.collector.notices).toEqual([]);
       expect(manifestJSONParser.isValid).toEqual(false);
     });
 
@@ -5886,6 +5888,26 @@ describe('ManifestJSONParser', () => {
           /"\/browser_specific_settings\/gecko\/data_collection_permissions\/optional\/0" must be equal to one of the allowed values/,
       });
       expect(manifestJSONParser.isValid).toEqual(false);
+    });
+
+    it('emits a notice when data_collection_permissions is not specified and the support is enabled', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
+      );
+
+      expect(linter.collector.errors).toEqual([]);
+      expect(linter.collector.notices).toEqual([
+        expect.objectContaining(messages.MISSING_DATA_COLLECTION_PERMISSIONS),
+      ]);
+      expect(manifestJSONParser.isValid).toEqual(true);
     });
   });
 });
