@@ -943,6 +943,20 @@
                 ]
               },
               "default": []
+            },
+            "required": {
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/types/DataCollectionPermission"
+                  },
+                  {
+                    "onError": "warn"
+                  }
+                ]
+              },
+              "default": []
             }
           }
         }

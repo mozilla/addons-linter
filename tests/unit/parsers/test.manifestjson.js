@@ -5832,6 +5832,34 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
     });
 
+    it('validates data collection permissions - unknown required perm', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: {
+            gecko: {
+              data_collection_permissions: {
+                required: ['invalid_perm'],
+              },
+            },
+          },
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
+      );
+
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.JSON_INVALID.code,
+        message:
+          /"\/browser_specific_settings\/gecko\/data_collection_permissions\/required\/0" must be equal to one of the allowed values/,
+      });
+      expect(manifestJSONParser.isValid).toEqual(false);
+    });
+
     it('validates data collection permissions - unknown optional perm', () => {
       const linter = new Linter({ _: ['bar'] });
 
