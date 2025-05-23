@@ -15,6 +15,25 @@
           },
           "update_url": {
             "format": "secureUrl"
+          },
+          "data_collection_permissions": {
+            "type": "object",
+            "properties": {
+              "required": {
+                "type": "array",
+                "items": {
+                  "allOf": [
+                    {
+                      "$ref": "#/types/DataCollectionPermission"
+                    },
+                    {
+                      "onError": "warn"
+                    }
+                  ]
+                },
+                "default": []
+              }
+            }
           }
         }
       },
