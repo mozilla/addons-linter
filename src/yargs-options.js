@@ -82,6 +82,11 @@ const options = {
     type: 'boolean',
     default: false,
   },
+  'enable-data-collection-permissions': {
+    describe: 'Enable data collection permissions support',
+    type: 'boolean',
+    default: false,
+  },
 };
 
 export default options;

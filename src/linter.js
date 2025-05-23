@@ -301,6 +301,8 @@ export default class Linter {
           maxManifestVersion: this.config.maxManifestVersion,
           enableBackgroundServiceWorker:
             this.config.enableBackgroundServiceWorker,
+          enableDataCollectionPermissions:
+            this.config.enableDataCollectionPermissions,
         },
       });
       await manifestParser.validateIcons();
