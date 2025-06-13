@@ -95,7 +95,6 @@
         {
           "type": "object",
           "name": "queryInfo",
-          "optional": true,
           "properties": {
             "collapsed": {
               "type": "boolean"
