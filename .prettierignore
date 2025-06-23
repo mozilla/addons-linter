@@ -2,6 +2,7 @@
 *.*
 
 # exclude these files
+codecov
 package-lock.json
 scripts/download-import-tag
 scripts/list-firefox-tags
