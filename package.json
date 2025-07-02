@@ -70,7 +70,7 @@
     "yauzl": "2.10.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.27.2",
+    "@babel/cli": "7.28.0",
     "@babel/core": "7.27.4",
     "@babel/eslint-parser": "7.27.5",
     "@babel/preset-env": "7.27.2",
