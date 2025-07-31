@@ -12,7 +12,7 @@ tmp.setGracefulCleanup();
 shell.config.fatal = true;
 
 const GIT_CONFIG = {
-  repo: 'https://github.com/mozilla/gecko-dev',
+  repo: 'https://github.com/mozilla-firefox/firefox',
   branch: 'beta',
   paths: [
     'browser/config/version.txt',
@@ -23,7 +23,7 @@ const GIT_CONFIG = {
   ],
   partialCloneOptions: '--depth 1 --filter=blob:none --no-checkout',
   tmpDir: tmp.dirSync({
-    prefix: 'gecko-dev--partial',
+    prefix: 'firefox-git--partial',
     // Optionally allow to keep the temporary directory for debugging purpose.
     keep: process.env.KEEP_GECKODEV_TMPDIR === '1',
     // Allow to cleanup the directory along with the git clone created into it.
@@ -34,8 +34,8 @@ const GIT_CONFIG = {
 function processScriptOptions() {
   const customBranch = process.argv[2];
   if (customBranch) {
-    if (!['master', 'beta'].includes(customBranch)) {
-      shell.echo(`ERROR: Invalid gecko-dev branch name "${customBranch}"`);
+    if (!['main', 'beta'].includes(customBranch)) {
+      shell.echo(`ERROR: Invalid firefox.git branch name "${customBranch}"`);
       return false;
     }
     GIT_CONFIG.branch = customBranch;
@@ -64,7 +64,7 @@ function checkPendingSchemaChanges() {
 function partialClone() {
   const { branch, partialCloneOptions, repo, tmpDir, paths } = GIT_CONFIG;
 
-  shell.echo(`Partial cloning gecko-dev branch ${branch}`);
+  shell.echo(`Partial cloning firefox.git branch ${branch}`);
 
   // Creates the partial clone dir.
   shell.exec(`git clone -b ${branch} ${partialCloneOptions} ${repo} ${tmpDir}`);
@@ -86,7 +86,7 @@ function importSchemaFromPartialClone() {
   );
   if (!shell.test('-e', version_file_path)) {
     throw new Error(
-      `"${version_file_path}" does not exist. Partial gecko-dev git clone failed`
+      `"${version_file_path}" does not exist. Partial firefox.git git clone failed`
     );
   }
 
