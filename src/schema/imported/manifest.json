@@ -945,6 +945,10 @@
               },
               "default": []
             },
+            "has_previous_consent": {
+              "type": "boolean",
+              "default": false
+            },
             "required": {
               "type": "array",
               "minItems": 1,
