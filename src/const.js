@@ -101,15 +101,15 @@ export const MANIFEST_VERSION_MIN = 2;
 export const MANIFEST_VERSION_MAX = 3;
 
 // This is the limit in megabytes of a file we will parse (eg. CSS, JS, etc.)
-// A singular CSS/JS file over 5MB seems bad and may actually be full of data
+// A singular CSS/JS file over 10MB seems bad and may actually be full of data
 // best stored in JSON/some other data format rather than code.
 // https://github.com/mozilla/addons-linter/issues/730
 // We increased this limit from 2MB to 4MB as per:
 // https://github.com/mozilla/addons/issues/181
-// Then from 4MB to 5MB in https://github.com/mozilla/addons-linter/issues/4942
+// Then from 4MB to 5MB to 10MB in https://github.com/mozilla/addons-linter/issues/4942
 //
 // We should be careful about increasing this any further.
-export const MAX_FILE_SIZE_TO_PARSE_MB = 5;
+export const MAX_FILE_SIZE_TO_PARSE_MB = 10;
 
 export const HIDDEN_FILE_REGEX = /^__MACOSX\//;
 export const FLAGGED_FILE_REGEX = /thumbs\.db$|\.DS_Store$|\.orig$|\.old$|~$/i;
