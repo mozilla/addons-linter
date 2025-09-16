@@ -100,6 +100,16 @@
             }
           ]
         },
+        "cssOrigin": {
+          "allOf": [
+            {
+              "$ref": "extensionTypes#/types/CSSOrigin"
+            },
+            {
+              "description": "The css origin of the stylesheet to inject. Defaults to \"author\"."
+            }
+          ]
+        },
         "cookieStoreId": {
           "anyOf": [
             {

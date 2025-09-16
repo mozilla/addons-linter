@@ -1423,6 +1423,11 @@
               ],
               "description": "The tab's new favicon URL. This property is only present if the extension's manifest includes the <code>\"tabs\"</code> permission."
             },
+            "groupId": {
+              "type": "integer",
+              "minimum": -1,
+              "description": "The tab's new group ID. $(ref:tabGroups.TAB_GROUP_ID_NONE) (-1) if the tab no longer belongs to a tab group."
+            },
             "hidden": {
               "type": "boolean",
               "description": "The tab's new hidden state."

@@ -1092,6 +1092,16 @@
             "$ref": "manifest#/types/ExtensionURL"
           }
         },
+        "css_origin": {
+          "allOf": [
+            {
+              "$ref": "extensionTypes#/types/CSSOrigin"
+            },
+            {
+              "default": "author"
+            }
+          ]
+        },
         "js": {
           "type": "array",
           "description": "The list of JS files to inject",
