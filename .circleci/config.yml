@@ -142,7 +142,10 @@ jobs:
       # run integration tests using an addons-linter binary in a
       # production-like environment
       - run: npm run test-integration:production
-      - run: npm run webext-test-functional
+      # TODO: re-enable this step once
+      # https://github.com/mozilla/web-ext/issues/3429 has been fixed.
+      #
+      # - run: npm run webext-test-functional
       - run: npm run smoke-test-eslint-version-conflicts
 
   release-tag:
