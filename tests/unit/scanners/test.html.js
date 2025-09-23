@@ -1,4 +1,4 @@
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 import { oneLine } from 'common-tags';
 
 import { VALIDATION_WARNING } from 'const';
@@ -113,13 +113,16 @@ describe('HTML', () => {
 
   it('should return an already-parsed htmlDoc if exists', async () => {
     const contents = validHTML();
-    const htmlScanner = new HTMLScanner(contents, 'index.html');
+    const loadHTML = sinon.spy(cheerio.load);
+    const htmlScanner = new HTMLScanner(contents, 'index.html', {
+      loadHTML,
+    });
 
-    sinon.spy(cheerio, 'load');
+    const c1 = await htmlScanner.getContents();
+    const c2 = await htmlScanner.getContents();
 
-    await htmlScanner.getContents();
-    await htmlScanner.getContents();
-    sinon.assert.calledOnce(cheerio.load);
+    sinon.assert.calledOnce(loadHTML);
+    expect(c1).toEqual(c2);
   });
 
   it('should export and run all rules in rules/html', async () => {
