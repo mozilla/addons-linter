@@ -130,7 +130,7 @@ bin/addons-linter my-addon.zip
 
 ### Required Node version
 
-addons-linter requires Node.js v16 or greater. Have a look at our `.circleci/config.yml` file which Node.js versions we officially test.
+addons-linter requires Node.js v20 or greater. Have a look at our `.circleci/config.yml` file which Node.js versions we officially test.
 
 Using nvm is probably the easiest way to manage multiple Node versions side by side. See [nvm on GitHub](https://github.com/creationix/nvm) for more details.
 
