@@ -139,6 +139,7 @@ Rules are sorted by severity.
 | `ADMIN_INSTALL_ONLY_REQUIRED`                           | error    | The `browser_specific_settings.gecko.admin_install_only` property must be set to "true" in an enterprise add-on                                                                    |
 | `DATA_COLLECTION_PERMISSIONS_PROP_RESERVED`             | error    | The `browser_specific_settings.gecko.data_collection_permissions` property is reserved for future usage and cannot be used in an extension at the moment                           |
 | `MISSING_DATA_COLLECTION_PERMISSIONS`                   | notice   | The `browser_specific_settings.gecko.data_collection_permissions` will be required in the future. Please add this key to the manifest                                              |
+| `NONE_DATA_COLLECTION_IS_EXCLUSIVE`                     | error    | "none" must not be specified with other required data collection permissions                                                                                                       |
 
 ### Static Theme / manifest.json
 

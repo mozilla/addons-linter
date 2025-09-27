@@ -851,7 +851,20 @@ export const MISSING_DATA_COLLECTION_PERMISSIONS = {
   description: i18n._(
     `"/browser_specific_settings/gecko/data_collection_permissions" property
     will be required in the future. Please add this key to the manifest. More
-    information at: https://mzl.la/blog-data-consent-firefox-nightly`
+    information at: https://mzl.la/firefox-builtin-data-consent`
+  ),
+  file: MANIFEST_JSON,
+};
+
+export const NONE_DATA_COLLECTION_IS_EXCLUSIVE = {
+  code: 'NONE_DATA_COLLECTION_IS_EXCLUSIVE',
+  message: i18n._(
+    '"none" must not be specified with other required data collection permissions.'
+  ),
+  description: i18n._(
+    `In "/browser_specific_settings/gecko/data_collection_permissions/required",
+    data collection permission "none" must not be specified with other required
+    data collection permissions.`
   ),
   file: MANIFEST_JSON,
 };

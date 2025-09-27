@@ -539,12 +539,10 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (this.schemaValidatorOptions?.enableDataCollectionPermissions) {
-      if (
-        !this.parsedJSON.browser_specific_settings?.gecko
+      this.validateDataCollectionPermissions(
+        this.parsedJSON.browser_specific_settings?.gecko
           ?.data_collection_permissions
-      ) {
-        this.collector.addNotice(messages.MISSING_DATA_COLLECTION_PERMISSIONS);
-      }
+      );
     } else if (
       this.parsedJSON.browser_specific_settings?.gecko
         ?.data_collection_permissions
@@ -1266,6 +1264,24 @@ export default class ManifestJSONParser extends JSONParser {
   validateIncognito() {
     if (this.parsedJSON.incognito === 'split') {
       this.collector.addWarning(messages.INCOGNITO_SPLIT_UNSUPPORTED);
+    }
+  }
+
+  validateDataCollectionPermissions(permissions) {
+    if (!permissions) {
+      this.collector.addNotice(messages.MISSING_DATA_COLLECTION_PERMISSIONS);
+      return;
+    }
+
+    const { required } = permissions;
+    const requiredPermissions = Array.isArray(required) ? required : [];
+
+    if (
+      requiredPermissions.includes('none') &&
+      requiredPermissions.length > 1
+    ) {
+      this.collector.addError(messages.NONE_DATA_COLLECTION_IS_EXCLUSIVE);
+      this.isValid = false;
     }
   }
 

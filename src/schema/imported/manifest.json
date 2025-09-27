@@ -945,8 +945,13 @@
               },
               "default": []
             },
+            "has_previous_consent": {
+              "type": "boolean",
+              "default": false
+            },
             "required": {
               "type": "array",
+              "minItems": 1,
               "items": {
                 "allOf": [
                   {
@@ -959,7 +964,10 @@
               },
               "default": []
             }
-          }
+          },
+          "required": [
+            "required"
+          ]
         }
       }
     },
@@ -1083,6 +1091,16 @@
           "items": {
             "$ref": "manifest#/types/ExtensionURL"
           }
+        },
+        "css_origin": {
+          "allOf": [
+            {
+              "$ref": "extensionTypes#/types/CSSOrigin"
+            },
+            {
+              "default": "author"
+            }
+          ]
         },
         "js": {
           "type": "array",

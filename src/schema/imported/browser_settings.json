@@ -186,6 +186,16 @@
         }
       ]
     },
+    "verticalTabs": {
+      "allOf": [
+        {
+          "$ref": "types#/types/Setting"
+        },
+        {
+          "description": "This boolean setting controls whether vertical tabs are enabled."
+        }
+      ]
+    },
     "colorManagement": {
       "description": "Use the <code>browserSettings.colorManagement</code> API to query and set items related to color management.",
       "permissions": [

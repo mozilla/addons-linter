@@ -2,12 +2,14 @@
 *.*
 
 # exclude these files
+codecov
+package-lock.json
 scripts/download-import-tag
 scripts/list-firefox-tags
 scripts/run-l10n-extraction
-scripts/webext-test-functional
 scripts/smoke-test-eslint-version-conflicts
-package-lock.json
+scripts/webext-test-functional
+src/schema/imported/LICENSE-CHROMIUM
 LICENSE
 
 # exclude these directories
