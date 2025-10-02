@@ -6042,5 +6042,57 @@ describe('ManifestJSONParser', () => {
       });
       expect(manifestJSONParser.isValid).toEqual(false);
     });
+
+    it('emits an error when has_previous_consent is set to true', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: {
+            gecko: {
+              data_collection_permissions: {
+                required: ['locationInfo'],
+                has_previous_consent: true,
+              },
+            },
+          },
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
+      );
+
+      expect(linter.collector.errors).toEqual([
+        expect.objectContaining(messages.HAS_PREVIOUS_CONSENT_IS_RESERVED),
+      ]);
+      expect(manifestJSONParser.isValid).toEqual(false);
+    });
+
+    it('does not emit an error when has_previous_consent is set to false', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: {
+            gecko: {
+              data_collection_permissions: {
+                required: ['locationInfo'],
+                has_previous_consent: false,
+              },
+            },
+          },
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
+      );
+
+      expect(linter.collector.errors).toEqual([]);
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
   });
 });

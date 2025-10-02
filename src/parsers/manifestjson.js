@@ -1273,7 +1273,12 @@ export default class ManifestJSONParser extends JSONParser {
       return;
     }
 
-    const { required } = permissions;
+    const { has_previous_consent, required } = permissions;
+    if (has_previous_consent) {
+      this.collector.addError(messages.HAS_PREVIOUS_CONSENT_IS_RESERVED);
+      this.isValid = false;
+    }
+
     const requiredPermissions = Array.isArray(required) ? required : [];
 
     if (
