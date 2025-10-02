@@ -868,3 +868,13 @@ export const NONE_DATA_COLLECTION_IS_EXCLUSIVE = {
   ),
   file: MANIFEST_JSON,
 };
+
+export const HAS_PREVIOUS_CONSENT_IS_RESERVED = {
+  code: 'HAS_PREVIOUS_CONSENT_IS_RESERVED',
+  message: i18n._('The "has_previous_consent" property is reserved.'),
+  description: i18n._(
+    `The "/browser_specific_settings/gecko/data_collection_permissions/has_previous_consent"
+    property is reserved and cannot be set to "true".`
+  ),
+  file: MANIFEST_JSON,
+};

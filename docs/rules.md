@@ -140,6 +140,7 @@ Rules are sorted by severity.
 | `DATA_COLLECTION_PERMISSIONS_PROP_RESERVED`             | error    | The `browser_specific_settings.gecko.data_collection_permissions` property is reserved for future usage and cannot be used in an extension at the moment                           |
 | `MISSING_DATA_COLLECTION_PERMISSIONS`                   | notice   | The `browser_specific_settings.gecko.data_collection_permissions` will be required in the future. Please add this key to the manifest                                              |
 | `NONE_DATA_COLLECTION_IS_EXCLUSIVE`                     | error    | "none" must not be specified with other required data collection permissions                                                                                                       |
+| `HAS_PREVIOUS_CONSENT_IS_RESERVED`                      | error    | The `/browser_specific_settings/gecko/data_collection_permissions/has_previous_consent` property is reserved and cannot be set to `true`.                                          |
 
 ### Static Theme / manifest.json
 
