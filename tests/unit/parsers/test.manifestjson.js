@@ -5787,6 +5787,7 @@ describe('ManifestJSONParser', () => {
       ]);
 
       expect(linter.collector.notices).toEqual([]);
+      expect(linter.collector.warnings).toEqual([]);
       expect(manifestJSONParser.isValid).toEqual(false);
     });
 
@@ -5890,7 +5891,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
     });
 
-    it('emits a notice when data_collection_permissions is not specified and the support is enabled', () => {
+    it('emits a warning when data_collection_permissions is not specified and the support is enabled', () => {
       const linter = new Linter({ _: ['bar'] });
 
       const manifestJSONParser = new ManifestJSONParser(
@@ -5904,7 +5905,8 @@ describe('ManifestJSONParser', () => {
       );
 
       expect(linter.collector.errors).toEqual([]);
-      expect(linter.collector.notices).toEqual([
+      expect(linter.collector.notices).toEqual([]);
+      expect(linter.collector.warnings).toEqual([
         expect.objectContaining(messages.MISSING_DATA_COLLECTION_PERMISSIONS),
       ]);
       expect(manifestJSONParser.isValid).toEqual(true);

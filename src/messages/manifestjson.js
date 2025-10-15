@@ -849,9 +849,11 @@ export const MISSING_DATA_COLLECTION_PERMISSIONS = {
   code: 'MISSING_DATA_COLLECTION_PERMISSIONS',
   message: i18n._('The "data_collection_permissions" property is missing.'),
   description: i18n._(
-    `"/browser_specific_settings/gecko/data_collection_permissions" property
-    will be required in the future. Please add this key to the manifest. More
-    information at: https://mzl.la/firefox-builtin-data-consent`
+    `The "/browser_specific_settings/gecko/data_collection_permissions"
+    property is required for all new Firefox extensions, and will be required
+    for new versions of existing extensions in the future. Please add this key
+    to the manifest. More information at:
+    https://mzl.la/firefox-builtin-data-consent`
   ),
   file: MANIFEST_JSON,
 };
