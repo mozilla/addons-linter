@@ -85,7 +85,7 @@ const options = {
   'enable-data-collection-permissions': {
     describe: 'Enable data collection permissions support',
     type: 'boolean',
-    default: false,
+    default: true,
   },
 };
 
