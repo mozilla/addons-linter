@@ -18,7 +18,7 @@ describe('getDefaultConfigValue()', () => {
     expect(getDefaultConfigValue('max-manifest-version')).toEqual(3);
     expect(getDefaultConfigValue('disable-xpi-autoclose')).toEqual(false);
     expect(getDefaultConfigValue('enable-data-collection-permissions')).toEqual(
-      false
+      true
     );
   });
 

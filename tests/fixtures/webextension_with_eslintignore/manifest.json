@@ -1,7 +1,12 @@
 {
   "browser_specific_settings": {
     "gecko": {
-      "id": "@webextension-guid"
+      "id": "@webextension-guid",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
     }
   },
   "description": "WebExtensions with .eslintignore file",
@@ -9,5 +14,9 @@
   "name": "WebExtensions test",
   "permissions": [],
   "version": "0.0.1",
-  "background": { "scripts": ["background.js"] }
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  }
 }
