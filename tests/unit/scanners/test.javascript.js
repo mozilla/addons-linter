@@ -195,6 +195,10 @@ describe('JavaScript Scanner', () => {
   it('should support es6 modules', async () => {
     const addonLinter = new Linter({
       _: ['tests/fixtures/webextension_es6_module'],
+      // This is needed because the fixtures file has data collection permissions
+      // and we don't want the `DATA_COLLECTION_PERMISSIONS_PROP_RESERVED` error
+      // to be emitted.
+      enableDataCollectionPermissions: true,
     });
     addonLinter.print = sinon.stub();
 
