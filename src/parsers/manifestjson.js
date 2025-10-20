@@ -1274,7 +1274,7 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     if (!permissions) {
-      this.collector.addNotice(messages.MISSING_DATA_COLLECTION_PERMISSIONS);
+      this.collector.addWarning(messages.MISSING_DATA_COLLECTION_PERMISSIONS);
       return;
     }
 

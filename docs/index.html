@@ -605,8 +605,8 @@
 </tr>
 <tr>
 <td><code>MISSING_DATA_COLLECTION_PERMISSIONS</code></td>
-<td>notice</td>
-<td>The <code>browser_specific_settings.gecko.data_collection_permissions</code> will be required in the future. Please add this key to the manifest</td>
+<td>warning</td>
+<td>The &quot;/browser_specific_settings/gecko/data_collection_permissions&quot; property is required for all new Firefox extensions, and will be required for new versions of existing extensions in the future. Please add this key to the manifest. More information at: <a href="https://mzl.la/firefox-builtin-data-consent">https://mzl.la/firefox-builtin-data-consent</a></td>
 </tr>
 <tr>
 <td><code>NONE_DATA_COLLECTION_IS_EXCLUSIVE</code></td>
@@ -616,7 +616,7 @@
 <tr>
 <td><code>HAS_PREVIOUS_CONSENT_IS_RESERVED</code></td>
 <td>error</td>
-<td>The <code>/browser_specific_settings/gecko/data_collection_permissions/has_previous_consent</code> property is reserved and cannot be set to <code>true</code>.</td>
+<td>The <code>/browser_specific_settings/gecko/data_collection_permissions/has_previous_consent</code> property is reserved and cannot be set to <code>true</code></td>
 </tr>
 </tbody>
 </table>
