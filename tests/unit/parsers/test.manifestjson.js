@@ -6094,5 +6094,53 @@ describe('ManifestJSONParser', () => {
       expect(linter.collector.errors).toEqual([]);
       expect(manifestJSONParser.isValid).toEqual(true);
     });
+
+    it('ignores static themes', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        validStaticThemeManifestJSON(),
+        linter.collector,
+        { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
+      );
+
+      expect(linter.collector.errors).toEqual([]);
+      expect(linter.collector.notices).toEqual([]);
+      expect(linter.collector.warnings).toEqual([]);
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
+    it('ignores language packs', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        validLangpackManifestJSON(),
+        linter.collector,
+        { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
+      );
+
+      expect(linter.collector.errors).toEqual([]);
+      expect(linter.collector.notices).toEqual([]);
+      expect(linter.collector.warnings).toEqual([]);
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
+    it('ignores dictionaries', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        validDictionaryManifestJSON(),
+        linter.collector,
+        {
+          io: { files: { 'path/to/fr.dic': '', 'path/to/fr.aff': '' } },
+          schemaValidatorOptions: { enableDataCollectionPermissions: true },
+        }
+      );
+
+      expect(linter.collector.errors).toEqual([]);
+      expect(linter.collector.notices).toEqual([]);
+      expect(linter.collector.warnings).toEqual([]);
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
   });
 });

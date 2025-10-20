@@ -1268,6 +1268,11 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateDataCollectionPermissions(permissions) {
+    // This property only applies to extensions.
+    if (this.isStaticTheme || this.isLanguagePack || this.isDictionary) {
+      return;
+    }
+
     if (!permissions) {
       this.collector.addNotice(messages.MISSING_DATA_COLLECTION_PERMISSIONS);
       return;
