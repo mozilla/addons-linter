@@ -139,7 +139,7 @@ export function validDictionaryManifestJSON(extra) {
   return JSON.stringify({
     manifest_version: 2,
     name: 'My French Dictionary',
-    version: '57.0a1',
+    version: '57.0.0.1',
     dictionaries: {
       fr: '/path/to/fr.dic',
     },
