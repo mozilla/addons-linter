@@ -43,6 +43,9 @@ describe('Integration/smoke tests', () => {
   it('should pass if ran on a simple valid CRX extension', async () => {
     const fixture = resolveFixturePath('crx3.crx');
     const { exitCode, stderr, stdout } = await executeScript('addons-linter', [
+      // We disable this because the crx3.crx file doesn't include data
+      // collection permissions.
+      '--enable-data-collection-permissions=false',
       '-o',
       'json',
       fixture,
