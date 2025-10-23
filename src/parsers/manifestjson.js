@@ -809,7 +809,7 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     this.validateRestrictedPermissions();
-    this.validateExtensionID();
+    this.validateAddonID();
     this.validateHiddenAddon();
     this.validateDeprecatedBrowserStyle();
     this.validateIncognito();
@@ -949,13 +949,13 @@ export default class ManifestJSONParser extends JSONParser {
     }
   }
 
-  validateExtensionID() {
+  validateAddonID() {
     if (this.parsedJSON.manifest_version < 3) {
       return;
     }
 
     if (!this.parsedJSON.applications?.gecko?.id) {
-      this.collector.addError(messages.EXTENSION_ID_REQUIRED);
+      this.collector.addError(messages.ADDON_ID_REQUIRED);
       this.isValid = false;
     }
   }
