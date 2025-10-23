@@ -878,3 +878,13 @@ export const HAS_PREVIOUS_CONSENT_IS_RESERVED = {
   ),
   file: MANIFEST_JSON,
 };
+
+export const MISSING_ADDON_ID = {
+  code: 'MISSING_ADDON_ID',
+  message: i18n._(`The add-on ID is missing in the manifest.`),
+  description:
+    i18n._(`The "/browser_specific_settings/gecko/id" property (add-on ID) should
+    be specified in the manifest. This property will become mandatory in the
+    future. See https://mzl.la/3PLZYdo for more information.`),
+  file: MANIFEST_JSON,
+};

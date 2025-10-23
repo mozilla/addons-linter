@@ -50,7 +50,10 @@ describe('Integration/smoke tests', () => {
       'json',
       fixture,
     ]);
-    expect(stdout).toContain('"summary":{"errors":0,"notices":0,"warnings":1}');
+    // The warnings are:
+    // - MANIFEST_PERMISSIONS
+    // - MISSING_ADDON_ID
+    expect(stdout).toContain('"summary":{"errors":0,"notices":0,"warnings":2}');
     expect(stderr).toStrictEqual('');
     expect(exitCode).toEqual(0);
   });

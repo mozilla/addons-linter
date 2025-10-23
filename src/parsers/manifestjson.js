@@ -950,13 +950,13 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateAddonID() {
-    if (this.parsedJSON.manifest_version < 3) {
-      return;
-    }
-
     if (!this.parsedJSON.applications?.gecko?.id) {
-      this.collector.addError(messages.ADDON_ID_REQUIRED);
-      this.isValid = false;
+      if (this.parsedJSON.manifest_version < 3) {
+        this.collector.addWarning(messages.MISSING_ADDON_ID);
+      } else {
+        this.collector.addError(messages.ADDON_ID_REQUIRED);
+        this.isValid = false;
+      }
     }
   }
 

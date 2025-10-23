@@ -606,7 +606,7 @@
 <tr>
 <td><code>MISSING_DATA_COLLECTION_PERMISSIONS</code></td>
 <td>warning</td>
-<td>The &quot;/browser_specific_settings/gecko/data_collection_permissions&quot; property is required for all new Firefox extensions, and will be required for new versions of existing extensions in the future. Please add this key to the manifest. More information at: <a href="https://mzl.la/firefox-builtin-data-consent">https://mzl.la/firefox-builtin-data-consent</a></td>
+<td>The <code>/browser_specific_settings/gecko/data_collection_permissions</code> property is required for all new Firefox extensions, and will be required for new versions of existing extensions in the future. Please add this key to the manifest. More information at: <a href="https://mzl.la/firefox-builtin-data-consent">https://mzl.la/firefox-builtin-data-consent</a></td>
 </tr>
 <tr>
 <td><code>NONE_DATA_COLLECTION_IS_EXCLUSIVE</code></td>
@@ -617,6 +617,11 @@
 <td><code>HAS_PREVIOUS_CONSENT_IS_RESERVED</code></td>
 <td>error</td>
 <td>The <code>/browser_specific_settings/gecko/data_collection_permissions/has_previous_consent</code> property is reserved and cannot be set to <code>true</code></td>
+</tr>
+<tr>
+<td><code>MISSING_ADDON_ID</code></td>
+<td>warning</td>
+<td>The <code>/browser_specific_settings/gecko/id</code> property (add-on ID) should be specified in the manifest. This property will become mandatory in the future. See <a href="https://mzl.la/3PLZYdo">https://mzl.la/3PLZYdo</a> for more information.</td>
 </tr>
 </tbody>
 </table>

@@ -164,6 +164,11 @@ export function validLangpackManifestJSON(extra) {
         version: '57.0a1',
       },
     },
+    browser_specific_settings: {
+      gecko: {
+        id: '@my-langpack',
+      },
+    },
     ...extra,
   });
 }
@@ -183,6 +188,11 @@ export function validStaticThemeManifestJSON(extra) {
         background_tab_text: 'rgba(255, 192, 0, 0)',
         bookmark_text: 'rgb(255, 255, 255),',
         toolbar_field_text: 'hsl(120, 100%, 50%)',
+      },
+    },
+    browser_specific_settings: {
+      gecko: {
+        id: '@my-langpack',
       },
     },
     ...extra,
