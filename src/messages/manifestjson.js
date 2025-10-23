@@ -703,11 +703,9 @@ export const makeRestrictedPermission = (permission, minFirefoxVersion) => {
   };
 };
 
-export const EXTENSION_ID_REQUIRED = {
-  code: 'EXTENSION_ID_REQUIRED',
-  message: i18n._(
-    'The extension ID is required in Manifest Version 3 and above.'
-  ),
+export const ADDON_ID_REQUIRED = {
+  code: 'ADDON_ID_REQUIRED',
+  message: i18n._('The add-on ID is required in Manifest Version 3 and above.'),
   description: i18n._('See https://mzl.la/3PLZYdo for more information.'),
   file: MANIFEST_JSON,
 };

@@ -546,7 +546,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(
         addonLinter.collector.errors,
-        messages.EXTENSION_ID_REQUIRED
+        messages.ADDON_ID_REQUIRED
       );
     });
   });
