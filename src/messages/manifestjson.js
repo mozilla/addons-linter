@@ -888,3 +888,13 @@ export const MISSING_ADDON_ID = {
     future. See https://mzl.la/3PLZYdo for more information.`),
   file: MANIFEST_JSON,
 };
+
+export const BACKGROUND_SERVICE_WORKER = {
+  code: 'BACKGROUND_SERVICE_WORKER',
+  message: i18n._(`"/background/service_worker" is not supported.`),
+  description: i18n._(`The "background" property must contain either "scripts" 
+    or "page". See 
+    https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/background#browser_support
+    (MDN docs) for more information.`),
+  file: MANIFEST_JSON,
+};

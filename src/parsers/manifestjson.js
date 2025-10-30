@@ -589,13 +589,9 @@ export default class ManifestJSONParser extends JSONParser {
           // service worker support isn't enabled by the addons-linter feature
           // flag.
           if (hasScripts || hasPage) {
-            this.collector.addWarning(
-              messages.manifestFieldUnsupported('/background/service_worker')
-            );
+            this.collector.addWarning(messages.BACKGROUND_SERVICE_WORKER);
           } else {
-            this.collector.addError(
-              messages.manifestFieldUnsupported('/background/service_worker')
-            );
+            this.collector.addError(messages.BACKGROUND_SERVICE_WORKER);
             this.isValid = false;
           }
         } else if (this.parsedJSON.manifest_version >= 3) {

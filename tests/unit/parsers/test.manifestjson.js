@@ -3342,7 +3342,7 @@ describe('ManifestJSONParser', () => {
       expect(linter.collector.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            code: 'MANIFEST_FIELD_UNSUPPORTED',
+            code: 'BACKGROUND_SERVICE_WORKER',
             message: expect.stringMatching(
               /"\/background\/service_worker" is not supported/
             ),
@@ -3381,7 +3381,7 @@ describe('ManifestJSONParser', () => {
         expect(linter.collector.warnings).toEqual(
           expect.arrayContaining([
             expect.objectContaining({
-              code: 'MANIFEST_FIELD_UNSUPPORTED',
+              code: 'BACKGROUND_SERVICE_WORKER',
               message: expect.stringMatching(
                 /"\/background\/service_worker" is not supported/
               ),
@@ -3413,7 +3413,7 @@ describe('ManifestJSONParser', () => {
       expect(linter.collector.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            code: 'MANIFEST_FIELD_UNSUPPORTED',
+            code: 'BACKGROUND_SERVICE_WORKER',
             message: expect.stringMatching(
               /"\/background\/service_worker" is not supported/
             ),
