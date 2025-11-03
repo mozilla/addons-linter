@@ -2,7 +2,7 @@ export function isAbsoluteUrl(value) {
   try {
     // eslint-disable-next-line no-new
     new URL(value);
-  } catch (e) {
+  } catch {
     // Couldn't parse, invalid.
     return false;
   }
@@ -16,7 +16,7 @@ function isRelativeUrl(value) {
   let url;
   try {
     url = new URL(value, `${protocol}//foo`);
-  } catch (e) {
+  } catch {
     // URL is invalid.
     return false;
   }
@@ -39,7 +39,7 @@ export function isSecureUrl(value) {
   let url;
   try {
     url = new URL(value);
-  } catch (e) {
+  } catch {
     // It's invalid or not absolute.
     return false;
   }
