@@ -69,7 +69,7 @@ export function getRuleFiles(ruleType) {
 }
 
 /**
- * Get variables in the current escope
+ * Get variables in the current scope
  * @param {object} scope current scope
  * @param {string} name name of the variable to look for
  * @returns {ASTNode} The variable object
@@ -78,7 +78,7 @@ export function getRuleFiles(ruleType) {
  */
 export function getVariable(scope, name) {
   let variable = null;
-  scope.variables.some((v) => {
+  Array.from(scope.variables).some((v) => {
     if (v.name === name) {
       variable = v;
       return true;
