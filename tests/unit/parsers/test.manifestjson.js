@@ -3366,7 +3366,7 @@ describe('ManifestJSONParser', () => {
             ...backgroundProps,
           },
         });
-        // eslint-disable-next-line no-unused-vars
+
         const manifestJSONParser = new ManifestJSONParser(
           json,
           linter.collector,

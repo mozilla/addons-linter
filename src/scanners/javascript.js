@@ -58,7 +58,8 @@ export default class JavaScriptScanner {
       }
     });
 
-    const linter = new _ESLint.Linter();
+    // TODO: migrate to the new ESlint v9+ API.
+    const linter = new _ESLint.Linter({ configType: 'eslintrc' });
 
     // Load additional rules injected by unit tests.
     if (_rules) {
@@ -265,7 +266,7 @@ export default class JavaScriptScanner {
      * Analyze the source-code by naively parsing the source code manually and
      * checking for module syntax errors and/or some features in the source code
      * in order to determine the source type of the file.
-  
+
      * This function returns an object with the source type (`script` or
      * `module`) and a non-null parsing error object when parsing has failed with
      * the default source type. The parsing error object contains the `error`

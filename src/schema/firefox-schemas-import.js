@@ -17,7 +17,7 @@ const FLAG_PATTERN_REGEX = /^\(\?[im]*\)(.*)/;
  * of patterns without the flags. Since these need to be managed by hand, the
  * code that detects a flag in a pattern will throw if there is no rewritten
  * pattern for it, preventing updates to the schemas until it is fixed. */
-/* eslint-disable max-len */
+
 export const FLAG_PATTERN_REWRITES = {
   // Extension ID, UUID format.
   '(?i)^\\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\}$':
@@ -25,7 +25,7 @@ export const FLAG_PATTERN_REWRITES = {
   // Extension ID, email format.
   '(?i)^[a-z0-9-._]*@[a-z0-9-._]+$': '^[a-zA-Z0-9-._]*@[a-zA-Z0-9-._]+$',
 };
-/* eslint-enable max-len */
+
 const UNRECOGNIZED_PROPERTY_REFS = [
   'UnrecognizedProperty',
   'manifest#/types/UnrecognizedProperty',

@@ -1,5 +1,3 @@
-import { oneLine } from 'common-tags';
-
 import { VALIDATION_WARNING } from 'const';
 import JavaScriptScanner from 'scanners/javascript';
 import { NO_IMPLIED_EVAL } from 'messages';
@@ -10,8 +8,8 @@ import { runJsScanner } from '../../helpers';
 // https://github.com/eslint/eslint/blob/master/tests/lib/rules/no-implied-eval.js
 // Please make sure to keep them up-to-date and report upstream errors.
 describe('no_implied_eval', () => {
-  const expectedErrorMessage = oneLine`
-    Implied eval. Consider passing a function instead of a string.`;
+  const expectedErrorMessage =
+    'Implied eval. Consider passing a function instead of a string.';
 
   const validCodes = [
     // normal usage
@@ -34,11 +32,6 @@ describe('no_implied_eval', () => {
     'foo.setInterval("hi")',
     'setInterval(foo, 10)',
     'setInterval(function() {}, 10)',
-
-    // execScript
-    'foo.execScript("hi")',
-    'execScript(foo)',
-    'execScript(function() {})',
 
     // a binary plus on non-strings doesn't guarantee a string
     'setTimeout(foo + bar, 10)',
@@ -76,11 +69,6 @@ describe('no_implied_eval', () => {
     },
     {
       code: 'setInterval("x = 1;");',
-      message: [expectedErrorMessage],
-      description: [NO_IMPLIED_EVAL.description],
-    },
-    {
-      code: 'execScript("x = 1;");',
       message: [expectedErrorMessage],
       description: [NO_IMPLIED_EVAL.description],
     },
@@ -138,8 +126,9 @@ describe('no_implied_eval', () => {
     },
   ];
 
-  invalidCodes.forEach((code) => {
-    it(`should not allow the use of eval: ${code.code}`, async () => {
+  it.each(invalidCodes)(
+    `should not allow the use of eval: %o`,
+    async (code) => {
       const jsScanner = new JavaScriptScanner(code.code, 'badcode.js');
 
       const { linterMessages } = await runJsScanner(jsScanner);
@@ -156,6 +145,6 @@ describe('no_implied_eval', () => {
       code.description.forEach((expectedDescription, idx) => {
         expect(linterMessages[idx].description).toEqual(expectedDescription);
       });
-    });
-  });
+    }
+  );
 });

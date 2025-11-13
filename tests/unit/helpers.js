@@ -68,17 +68,9 @@ export function getRuleFiles(ruleType) {
   });
 }
 
-/**
- * Get variables in the current escope
- * @param {object} scope current scope
- * @param {string} name name of the variable to look for
- * @returns {ASTNode} The variable object
- *
- * Copied from ESLint tests; used to test {allowInlineConfig: false} settings.
- */
-export function getVariable(scope, name) {
+export function getVariable(variables, name) {
   let variable = null;
-  scope.variables.some((v) => {
+  Array.from(variables).some((v) => {
     if (v.name === name) {
       variable = v;
       return true;
@@ -289,13 +281,13 @@ export function checkOutput(func, argv, callback) {
 
   console.error = function (msg) {
     errors.push(msg);
-  }; // eslint-disable-line
+  };
   console.log = function (msg) {
     logs.push(msg);
-  }; // eslint-disable-line
+  };
   console.warn = function (msg) {
     warnings.push(msg);
-  }; // eslint-disable-line
+  };
 
   let result;
 
@@ -305,9 +297,9 @@ export function checkOutput(func, argv, callback) {
     process.env = _env;
     process.argv = _argv;
 
-    console.error = _error; // eslint-disable-line
-    console.log = _log; // eslint-disable-line
-    console.warn = _warn; // eslint-disable-line
+    console.error = _error;
+    console.log = _log;
+    console.warn = _warn;
   }
 
   function done() {

@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-// eslint-disable-next-line import/no-named-default
 import { default as Message, props } from 'message';
 
 import { fakeMessageData } from './helpers';

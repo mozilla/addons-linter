@@ -52,7 +52,7 @@ async function getStreamImageSize(stream) {
     chunks.push(chunk);
     try {
       return getImageSize(Buffer.concat(chunks));
-    } catch (error) {
+    } catch {
       /* The size information isn't available yet */
     }
   }
@@ -1299,7 +1299,7 @@ export default class ManifestJSONParser extends JSONParser {
     try {
       const { id } = this.parsedJSON.applications.gecko;
       return typeof id === 'undefined' ? null : id;
-    } catch (e) {
+    } catch {
       log.error('Failed to get the id from the manifest.');
       return null;
     }
