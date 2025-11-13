@@ -6,15 +6,10 @@ import { getVariable } from 'utils';
  */
 const rule = {
   create(context) {
-    const sourceCode = context.sourceCode ?? context.getSourceCode();
-
     return {
       // eslint-disable-next-line consistent-return
       CallExpression(node) {
-        const scope = sourceCode.getScope
-          ? sourceCode.getScope(node)
-          : context.getScope();
-        const { variables } = scope;
+        const { variables } = context.sourceCode.getScope(node);
 
         if (
           node.callee.name === 'require' &&

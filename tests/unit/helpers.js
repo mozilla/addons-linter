@@ -68,17 +68,9 @@ export function getRuleFiles(ruleType) {
   });
 }
 
-/**
- * Get variables in the current scope
- * @param {object} scope current scope
- * @param {string} name name of the variable to look for
- * @returns {ASTNode} The variable object
- *
- * Copied from ESLint tests; used to test {allowInlineConfig: false} settings.
- */
-export function getVariable(scope, name) {
+export function getVariable(variables, name) {
   let variable = null;
-  Array.from(scope.variables).some((v) => {
+  Array.from(variables).some((v) => {
     if (v.name === name) {
       variable = v;
       return true;

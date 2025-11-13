@@ -333,7 +333,7 @@ describe('JavaScript Scanner', () => {
                 ? sourceCode.getScope(node)
                 : context.getScope();
 
-              const foo = getVariable(scope, 'foo');
+              const foo = getVariable(scope.variables, 'foo');
               expect(foo).toBeFalsy();
 
               ok = true;
