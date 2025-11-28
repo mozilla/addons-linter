@@ -81,7 +81,7 @@
     "babel-loader": "10.0.0",
     "comment-json": "4.4.1",
     "eslint-config-amo": "7.0.0",
-    "eslint-plugin-amo": "2.3.0",
+    "eslint-plugin-amo": "2.4.0",
     "eslint-plugin-prettier": "5.5.4",
     "github-markdown-css": "5.8.1",
     "globals": "16.5.0",
