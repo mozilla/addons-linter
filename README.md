@@ -52,11 +52,11 @@ The addons-linter can lint privileged extensions **only** when the `--privileged
 You can use the linter directly as a library to integrate it better into your development process.
 
 ```js
-import linter from 'addons-linter';
+import addonsLinter from 'addons-linter';
 
 const sourceDir = process.cwd();
 
-const linter = linter.createInstance({
+const linter = addonsLinter.createInstance({
   config: {
     // This mimics the first command line argument from yargs,
     // which should be the directory to the extension.
