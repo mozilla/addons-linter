@@ -56,7 +56,6 @@ async function createZipFile(inputPath) {
 describe('firefox schema import', () => {
   // Skip the Firefox schema import tests on windows.
   if (process.platform === 'win32') {
-    // eslint-disable-next-line jest/no-disabled-tests
     pending();
     return;
   }
@@ -1176,7 +1175,7 @@ describe('firefox schema import', () => {
             properties: {
               icons: {
                 type: 'object',
-                // eslint-disable-next-line no-useless-escape
+
                 patternProperties: { 'd+': { type: 'string' } },
               },
             },
@@ -1211,7 +1210,7 @@ describe('firefox schema import', () => {
               icons: {
                 type: 'object',
                 additionalProperties: false,
-                // eslint-disable-next-line no-useless-escape
+
                 patternProperties: { 'd+': { type: 'string' } },
               },
             },

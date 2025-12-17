@@ -554,9 +554,9 @@
 <td>A permission requires &quot;strict_min_version&quot; to be set to a specific Firefox version</td>
 </tr>
 <tr>
-<td><code>EXTENSION_ID_REQUIRED</code></td>
+<td><code>ADDON_ID_REQUIRED</code></td>
 <td>error</td>
-<td>The extension ID is mandatory for Manifest Version 3 (and above) extensions</td>
+<td>The add-on ID is mandatory for Manifest Version 3 (and above) extensions</td>
 </tr>
 <tr>
 <td><code>HIDDEN_NO_ACTION</code></td>
@@ -605,13 +605,23 @@
 </tr>
 <tr>
 <td><code>MISSING_DATA_COLLECTION_PERMISSIONS</code></td>
-<td>notice</td>
-<td>The <code>browser_specific_settings.gecko.data_collection_permissions</code> will be required in the future. Please add this key to the manifest</td>
+<td>warning</td>
+<td>The <code>/browser_specific_settings/gecko/data_collection_permissions</code> property is required for all new Firefox extensions, and will be required for new versions of existing extensions in the future. Please add this key to the manifest. More information at: <a href="https://mzl.la/firefox-builtin-data-consent">https://mzl.la/firefox-builtin-data-consent</a></td>
 </tr>
 <tr>
 <td><code>NONE_DATA_COLLECTION_IS_EXCLUSIVE</code></td>
 <td>error</td>
 <td>&quot;none&quot; must not be specified with other required data collection permissions</td>
+</tr>
+<tr>
+<td><code>HAS_PREVIOUS_CONSENT_IS_RESERVED</code></td>
+<td>error</td>
+<td>The <code>/browser_specific_settings/gecko/data_collection_permissions/has_previous_consent</code> property is reserved and cannot be set to <code>true</code></td>
+</tr>
+<tr>
+<td><code>MISSING_ADDON_ID</code></td>
+<td>warning</td>
+<td>The <code>/browser_specific_settings/gecko/id</code> property (add-on ID) should be specified in the manifest. This property will become mandatory in the future. See <a href="https://mzl.la/3PLZYdo">https://mzl.la/3PLZYdo</a> for more information.</td>
 </tr>
 </tbody>
 </table>

@@ -195,6 +195,10 @@ describe('JavaScript Scanner', () => {
   it('should support es6 modules', async () => {
     const addonLinter = new Linter({
       _: ['tests/fixtures/webextension_es6_module'],
+      // This is needed because the fixtures file has data collection permissions
+      // and we don't want the `DATA_COLLECTION_PERMISSIONS_PROP_RESERVED` error
+      // to be emitted.
+      enableDataCollectionPermissions: true,
     });
     addonLinter.print = sinon.stub();
 
@@ -314,20 +318,28 @@ describe('JavaScript Scanner', () => {
   // don't change behaviour on us.
   // https://github.com/mozilla/addons-linter/pull/98#issuecomment-158890847
   it('ignores /*global foo*/', () => {
-    const eslint = new ESLint.Linter();
+    const eslint = new ESLint.Linter({ configType: 'eslintrc' });
     const config = { rules: { test: 2 } };
     let ok = false;
 
     eslint.defineRules({
-      test(context) {
-        return {
-          Program() {
-            const foo = getVariable(context.getScope(), 'foo');
-            expect(foo).toBeFalsy();
+      test: {
+        create(context) {
+          const sourceCode = context.sourceCode ?? context.getSourceCode();
 
-            ok = true;
-          },
-        };
+          return {
+            Program(node) {
+              const scope = sourceCode.getScope
+                ? sourceCode.getScope(node)
+                : context.getScope();
+
+              const foo = getVariable(scope.variables, 'foo');
+              expect(foo).toBeFalsy();
+
+              ok = true;
+            },
+          };
+        },
       },
     });
 

@@ -95,62 +95,50 @@ describe('sprintf()', () => {
 
 describe('getVariable()', () => {
   // This is the expected schema from eslint
-  const context = {
-    getScope: () => {
-      return {
-        variables: [
-          {
-            name: 'foo',
-            defs: [
-              {
-                type: 'Variable',
-                name: {
-                  parent: {
-                    init: {
-                      type: 'Literal',
-                      value: 'bar',
-                    },
-                  },
-                },
+  const variables = [
+    {
+      name: 'foo',
+      defs: [
+        {
+          type: 'Variable',
+          name: {
+            parent: {
+              init: {
+                type: 'Literal',
+                value: 'bar',
               },
-            ],
+            },
           },
-        ],
-      };
+        },
+      ],
     },
-  };
+  ];
 
-  const contextWithoutParent = {
-    getScope: () => {
-      return {
-        variables: [
-          {
-            name: 'foo',
-            defs: [
-              {
-                type: 'Variable',
-                name: {},
-              },
-            ],
-          },
-        ],
-      };
+  const variablesWithoutParent = [
+    {
+      name: 'foo',
+      defs: [
+        {
+          type: 'Variable',
+          name: {},
+        },
+      ],
     },
-  };
+  ];
 
   it('should return the correct variable in the given context.', () => {
-    const foo = getVariable(context, 'foo');
+    const foo = getVariable(variables, 'foo');
     expect(foo.type).toEqual('Literal');
     expect(foo.value).toEqual('bar');
   });
 
   it("should return undefined if the variable doesn't exist.", () => {
-    const undef = getVariable(context, 'doesNotExist');
+    const undef = getVariable(variables, 'doesNotExist');
     expect(typeof undef).toEqual('undefined');
   });
 
   it("should return undefined if the init property isn't on the parent", () => {
-    const undef = getVariable(contextWithoutParent, 'foo');
+    const undef = getVariable(variablesWithoutParent, 'foo');
     expect(typeof undef).toEqual('undefined');
   });
 });

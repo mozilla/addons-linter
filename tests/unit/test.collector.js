@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-named-default
 import { default as Collector } from 'collector';
 
 import { fakeMessageData } from './helpers';

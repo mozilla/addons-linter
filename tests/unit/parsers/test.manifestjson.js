@@ -83,11 +83,13 @@ describe('ManifestJSONParser', () => {
     const json = validManifestJSON({
       applications: {
         gecko: {
+          id: '@ext-id',
           strict_max_version: '58.0',
         },
       },
       browser_specific_settings: {
         gecko: {
+          id: '@ext-id',
           strict_max_version: '58.0',
         },
       },
@@ -261,6 +263,7 @@ describe('ManifestJSONParser', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     const json = validManifestJSON({
       browser_specific_settings: {
+        gecko: { id: '@ext-id' },
         gecko_android: {},
       },
     });
@@ -311,6 +314,7 @@ describe('ManifestJSONParser', () => {
     const json = validManifestJSON({
       browser_specific_settings: {
         gecko: {
+          id: '@ext-id',
           strict_min_version: '100.0',
         },
         gecko_android: {},
@@ -339,6 +343,7 @@ describe('ManifestJSONParser', () => {
     const json = validManifestJSON({
       browser_specific_settings: {
         gecko: {
+          id: '@ext-id',
           strict_min_version: '113.0',
         },
         gecko_android: {
@@ -531,6 +536,11 @@ describe('ManifestJSONParser', () => {
         addonLinter.collector
       );
       expect(manifestJSONParser.isValid).toEqual(true);
+      expect(manifestJSONParser.collector.warnings).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ code: messages.MISSING_ADDON_ID.code }),
+        ])
+      );
     });
 
     it('should be mandatory in MV3', () => {
@@ -546,7 +556,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(
         addonLinter.collector.errors,
-        messages.EXTENSION_ID_REQUIRED
+        messages.ADDON_ID_REQUIRED
       );
     });
   });
@@ -1360,7 +1370,12 @@ describe('ManifestJSONParser', () => {
         const addonLinter = new Linter({ _: ['bar'] });
         const json = validManifestJSON({
           [mainfestKey]: ['idle', 'wat'],
-          browser_specific_settings: { gecko: { strict_max_version: '55.0' } },
+          browser_specific_settings: {
+            gecko: {
+              id: '@ext-id',
+              strict_max_version: '55.0',
+            },
+          },
         });
         const manifestJSONParser = new ManifestJSONParser(
           json,
@@ -1386,7 +1401,12 @@ describe('ManifestJSONParser', () => {
         const linter = new Linter({ _: ['bar'] });
         const json = validManifestJSON({
           permissions: ['tabs', permName],
-          browser_specific_settings: { gecko: { strict_max_version: '135.0' } },
+          browser_specific_settings: {
+            gecko: {
+              id: '@ext-id',
+              strict_max_version: '135.0',
+            },
+          },
         });
         const manifestJSONParser = new ManifestJSONParser(
           json,
@@ -1414,7 +1434,12 @@ describe('ManifestJSONParser', () => {
         const linter = new Linter({ _: ['bar'] });
         const json = validManifestJSON({
           optional_permissions: ['tabs', permName],
-          browser_specific_settings: { gecko: { strict_max_version: '135.0' } },
+          browser_specific_settings: {
+            gecko: {
+              id: '@ext-id',
+              strict_max_version: '135.0',
+            },
+          },
         });
         const manifestJSONParser = new ManifestJSONParser(
           json,
@@ -1741,6 +1766,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         browser_specific_settings: {
           gecko: {
+            id: '@ext-id',
             strict_min_version: '47.0',
           },
         },
@@ -1772,6 +1798,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         browser_specific_settings: {
           gecko: {
+            id: '@ext-id',
             strict_min_version: '47.0',
           },
         },
@@ -1810,6 +1837,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         browser_specific_settings: {
           gecko: {
+            id: '@ext-id',
             strict_min_version: '48.0a1',
           },
         },
@@ -1853,6 +1881,7 @@ describe('ManifestJSONParser', () => {
       const json = validLangpackManifestJSON({
         browser_specific_settings: {
           gecko: {
+            id: '@langpack-id',
             strict_min_version: '47.0',
           },
         },
@@ -1871,6 +1900,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         browser_specific_settings: {
           gecko: {
+            id: '@ext-id',
             strict_min_version: '54.0',
           },
         },
@@ -1898,6 +1928,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         browser_specific_settings: {
           gecko: {
+            id: '@ext-id',
             strict_min_version: '56.0',
           },
         },
@@ -1927,6 +1958,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         browser_specific_settings: {
           gecko: {
+            id: '@ext-id',
             strict_min_version: '56.0',
           },
         },
@@ -1950,6 +1982,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         browser_specific_settings: {
           gecko: {
+            id: '@ext-id',
             strict_min_version: '55.0',
           },
         },
@@ -2323,6 +2356,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         browser_specific_settings: {
           gecko: {
+            id: '@ext-id',
             update_url: 'https://foo.com/bar',
           },
         },
@@ -2343,6 +2377,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         browser_specific_settings: {
           gecko: {
+            id: '@ext-id',
             update_url: 'https://foo.com/bar',
           },
         },
@@ -2371,6 +2406,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         browser_specific_settings: {
           gecko: {
+            id: '@ext-id',
             update_url: 'https://foo.com/bar',
           },
         },
@@ -2397,6 +2433,7 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         browser_specific_settings: {
           gecko: {
+            id: '@ext-id',
             update_url: 'https://foo.com/bar',
           },
         },
@@ -3329,7 +3366,7 @@ describe('ManifestJSONParser', () => {
             ...backgroundProps,
           },
         });
-        // eslint-disable-next-line no-unused-vars
+
         const manifestJSONParser = new ManifestJSONParser(
           json,
           linter.collector,
@@ -5363,7 +5400,11 @@ describe('ManifestJSONParser', () => {
 
       expect(manifestJSONParser.isValid).toEqual(true);
       expect(linter.collector.errors).toEqual([]);
-      expect(linter.collector.warnings).toEqual([]);
+      // Since we verify the behavior without any of applications/bss, we can't
+      // silent this warning.
+      expect(linter.collector.warnings).toEqual([
+        expect.objectContaining({ code: 'MISSING_ADDON_ID' }),
+      ]);
     });
 
     it('does not emit a warning when a MV2 extension uses browser_specific_settings', () => {
@@ -5374,7 +5415,7 @@ describe('ManifestJSONParser', () => {
           manifest_version: 2,
           name: 'some name',
           version: '1',
-          browser_specific_settings: {},
+          browser_specific_settings: { gecko: { id: '@ext-id' } },
         }),
         linter.collector
       );
@@ -5392,7 +5433,7 @@ describe('ManifestJSONParser', () => {
           manifest_version: 2,
           name: 'some name',
           version: '1',
-          applications: {},
+          applications: { gecko: { id: '@ext-id' } },
         }),
         linter.collector
       );
@@ -5416,7 +5457,7 @@ describe('ManifestJSONParser', () => {
           version: '1',
           applications: {},
           browser_specific_settings: {
-            gecko: {},
+            gecko: { id: '@ext-id' },
           },
         }),
         linter.collector
@@ -5441,7 +5482,9 @@ describe('ManifestJSONParser', () => {
           manifest_version: 2,
           name: 'some name',
           version: '1',
-          applications: {},
+          applications: {
+            gecko: { id: '@ext-id' },
+          },
           browser_specific_settings: {},
         }),
         linter.collector
@@ -5527,12 +5570,7 @@ describe('ManifestJSONParser', () => {
       const linter = new Linter({ _: ['bar'] });
 
       const manifestJSONParser = new ManifestJSONParser(
-        JSON.stringify({
-          manifest_version: 2,
-          name: 'some name',
-          version: '1',
-          incognito: 'split',
-        }),
+        validManifestJSON({ incognito: 'split' }),
         linter.collector
       );
 
@@ -5773,7 +5811,10 @@ describe('ManifestJSONParser', () => {
           name: 'some name',
           version: '1',
           browser_specific_settings: {
-            gecko: { data_collection_permissions: { required: ['none'] } },
+            gecko: {
+              id: '@ext-id',
+              data_collection_permissions: { required: ['none'] },
+            },
           },
         }),
         linter.collector,
@@ -5787,6 +5828,7 @@ describe('ManifestJSONParser', () => {
       ]);
 
       expect(linter.collector.notices).toEqual([]);
+      expect(linter.collector.warnings).toEqual([]);
       expect(manifestJSONParser.isValid).toEqual(false);
     });
 
@@ -5799,7 +5841,10 @@ describe('ManifestJSONParser', () => {
           name: 'some name',
           version: '1',
           browser_specific_settings: {
-            gecko: { data_collection_permissions: { required: ['none'] } },
+            gecko: {
+              id: '@ext-id',
+              data_collection_permissions: { required: ['none'] },
+            },
           },
         }),
         linter.collector,
@@ -5819,7 +5864,10 @@ describe('ManifestJSONParser', () => {
           name: 'some name',
           version: '1',
           browser_specific_settings: {
-            gecko: { data_collection_permissions: true },
+            gecko: {
+              id: '@ext-id',
+              data_collection_permissions: true,
+            },
           },
         }),
         linter.collector,
@@ -5844,6 +5892,7 @@ describe('ManifestJSONParser', () => {
           version: '1',
           browser_specific_settings: {
             gecko: {
+              id: '@ext-id',
               data_collection_permissions: {
                 required: ['invalid_perm'],
               },
@@ -5872,6 +5921,7 @@ describe('ManifestJSONParser', () => {
           version: '1',
           browser_specific_settings: {
             gecko: {
+              id: '@ext-id',
               data_collection_permissions: {
                 optional: ['invalid_perm'],
               },
@@ -5890,21 +5940,18 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
     });
 
-    it('emits a notice when data_collection_permissions is not specified and the support is enabled', () => {
+    it('emits a warning when data_collection_permissions is not specified and the support is enabled', () => {
       const linter = new Linter({ _: ['bar'] });
 
       const manifestJSONParser = new ManifestJSONParser(
-        JSON.stringify({
-          manifest_version: 2,
-          name: 'some name',
-          version: '1',
-        }),
+        validManifestJSON(),
         linter.collector,
         { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
       );
 
       expect(linter.collector.errors).toEqual([]);
-      expect(linter.collector.notices).toEqual([
+      expect(linter.collector.notices).toEqual([]);
+      expect(linter.collector.warnings).toEqual([
         expect.objectContaining(messages.MISSING_DATA_COLLECTION_PERMISSIONS),
       ]);
       expect(manifestJSONParser.isValid).toEqual(true);
@@ -5920,6 +5967,7 @@ describe('ManifestJSONParser', () => {
           version: '1',
           browser_specific_settings: {
             gecko: {
+              id: '@ext-id',
               data_collection_permissions: {
                 required: ['none', 'healthInfo'],
               },
@@ -5946,6 +5994,7 @@ describe('ManifestJSONParser', () => {
           version: '1',
           browser_specific_settings: {
             gecko: {
+              id: '@ext-id',
               data_collection_permissions: {
                 required: [],
               },
@@ -5974,6 +6023,7 @@ describe('ManifestJSONParser', () => {
           version: '1',
           browser_specific_settings: {
             gecko: {
+              id: '@ext-id',
               data_collection_permissions: {},
             },
           },
@@ -6000,6 +6050,7 @@ describe('ManifestJSONParser', () => {
           version: '1',
           browser_specific_settings: {
             gecko: {
+              id: '@ext-id',
               data_collection_permissions: {
                 required: ['none'],
                 optional: ['technicalAndInteraction', 'locationInfo'],
@@ -6025,6 +6076,7 @@ describe('ManifestJSONParser', () => {
           version: '1',
           browser_specific_settings: {
             gecko: {
+              id: '@ext-id',
               data_collection_permissions: {
                 required: ['technicalAndInteraction', 'locationInfo'],
               },
@@ -6041,6 +6093,108 @@ describe('ManifestJSONParser', () => {
           '"/browser_specific_settings/gecko/data_collection_permissions/required/0" must be equal to one of the allowed values',
       });
       expect(manifestJSONParser.isValid).toEqual(false);
+    });
+
+    it('emits an error when has_previous_consent is set to true', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: {
+            gecko: {
+              id: '@ext-id',
+              data_collection_permissions: {
+                required: ['locationInfo'],
+                has_previous_consent: true,
+              },
+            },
+          },
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
+      );
+
+      expect(linter.collector.errors).toEqual([
+        expect.objectContaining(messages.HAS_PREVIOUS_CONSENT_IS_RESERVED),
+      ]);
+      expect(manifestJSONParser.isValid).toEqual(false);
+    });
+
+    it('does not emit an error when has_previous_consent is set to false', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        JSON.stringify({
+          manifest_version: 2,
+          name: 'some name',
+          version: '1',
+          browser_specific_settings: {
+            gecko: {
+              id: '@ext-id',
+              data_collection_permissions: {
+                required: ['locationInfo'],
+                has_previous_consent: false,
+              },
+            },
+          },
+        }),
+        linter.collector,
+        { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
+      );
+
+      expect(linter.collector.errors).toEqual([]);
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
+    it('ignores static themes', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        validStaticThemeManifestJSON(),
+        linter.collector,
+        { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
+      );
+
+      expect(linter.collector.errors).toEqual([]);
+      expect(linter.collector.notices).toEqual([]);
+      expect(linter.collector.warnings).toEqual([]);
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
+    it('ignores language packs', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        validLangpackManifestJSON(),
+        linter.collector,
+        { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
+      );
+
+      expect(linter.collector.errors).toEqual([]);
+      expect(linter.collector.notices).toEqual([]);
+      expect(linter.collector.warnings).toEqual([]);
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
+    it('ignores dictionaries', () => {
+      const linter = new Linter({ _: ['bar'] });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        validDictionaryManifestJSON(),
+        linter.collector,
+        {
+          io: { files: { 'path/to/fr.dic': '', 'path/to/fr.aff': '' } },
+          schemaValidatorOptions: { enableDataCollectionPermissions: true },
+        }
+      );
+
+      expect(linter.collector.errors).toEqual([]);
+      expect(linter.collector.notices).toEqual([]);
+      expect(linter.collector.warnings).toEqual([]);
+      expect(manifestJSONParser.isValid).toEqual(true);
     });
   });
 });

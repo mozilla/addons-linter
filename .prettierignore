@@ -24,3 +24,4 @@ LICENSE
 # allow-list of files we want to process
 !*.js
 !*.md
+!*.mjs

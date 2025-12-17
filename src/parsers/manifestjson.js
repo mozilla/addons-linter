@@ -52,7 +52,7 @@ async function getStreamImageSize(stream) {
     chunks.push(chunk);
     try {
       return getImageSize(Buffer.concat(chunks));
-    } catch (error) {
+    } catch {
       /* The size information isn't available yet */
     }
   }
@@ -809,7 +809,7 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     this.validateRestrictedPermissions();
-    this.validateExtensionID();
+    this.validateAddonID();
     this.validateHiddenAddon();
     this.validateDeprecatedBrowserStyle();
     this.validateIncognito();
@@ -949,14 +949,14 @@ export default class ManifestJSONParser extends JSONParser {
     }
   }
 
-  validateExtensionID() {
-    if (this.parsedJSON.manifest_version < 3) {
-      return;
-    }
-
+  validateAddonID() {
     if (!this.parsedJSON.applications?.gecko?.id) {
-      this.collector.addError(messages.EXTENSION_ID_REQUIRED);
-      this.isValid = false;
+      if (this.parsedJSON.manifest_version < 3) {
+        this.collector.addWarning(messages.MISSING_ADDON_ID);
+      } else {
+        this.collector.addError(messages.ADDON_ID_REQUIRED);
+        this.isValid = false;
+      }
     }
   }
 
@@ -1268,12 +1268,22 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateDataCollectionPermissions(permissions) {
-    if (!permissions) {
-      this.collector.addNotice(messages.MISSING_DATA_COLLECTION_PERMISSIONS);
+    // This property only applies to extensions.
+    if (this.isStaticTheme || this.isLanguagePack || this.isDictionary) {
       return;
     }
 
-    const { required } = permissions;
+    if (!permissions) {
+      this.collector.addWarning(messages.MISSING_DATA_COLLECTION_PERMISSIONS);
+      return;
+    }
+
+    const { has_previous_consent, required } = permissions;
+    if (has_previous_consent) {
+      this.collector.addError(messages.HAS_PREVIOUS_CONSENT_IS_RESERVED);
+      this.isValid = false;
+    }
+
     const requiredPermissions = Array.isArray(required) ? required : [];
 
     if (
@@ -1289,7 +1299,7 @@ export default class ManifestJSONParser extends JSONParser {
     try {
       const { id } = this.parsedJSON.applications.gecko;
       return typeof id === 'undefined' ? null : id;
-    } catch (e) {
+    } catch {
       log.error('Failed to get the id from the manifest.');
       return null;
     }

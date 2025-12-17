@@ -26,7 +26,7 @@ export default class JSONParser {
   parse(RelaxedJSON = RJSON) {
     try {
       this.parsedJSON = JSON.parse(this._jsonString);
-    } catch (originalError) {
+    } catch {
       // First we'll try to remove comments with esprima;
       // WebExtension manifests can contain comments, so we'll strip
       // them out and see if we can parse the JSON.

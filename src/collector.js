@@ -1,6 +1,5 @@
 import upath from 'upath';
 
-// eslint-disable-next-line import/no-named-default
 import { default as Message } from 'message';
 import * as constants from 'const';
 

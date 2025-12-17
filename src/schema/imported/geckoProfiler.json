@@ -189,7 +189,8 @@
         "memory",
         "tracing",
         "sandbox",
-        "flows"
+        "flows",
+        "jssources"
       ]
     },
     "supports": {

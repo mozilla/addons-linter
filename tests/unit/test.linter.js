@@ -598,7 +598,7 @@ describe('Linter.textOutput()', () => {
     try {
       addonLinter.textOutput(uselesslyTinyTerminalWidth);
       expect(addonLinter.output.summary.errors).toEqual(1);
-    } catch (e) {
+    } catch {
       // eslint-disable-next-line jest/no-conditional-expect
       expect(false).toBe(true);
     }

@@ -703,11 +703,9 @@ export const makeRestrictedPermission = (permission, minFirefoxVersion) => {
   };
 };
 
-export const EXTENSION_ID_REQUIRED = {
-  code: 'EXTENSION_ID_REQUIRED',
-  message: i18n._(
-    'The extension ID is required in Manifest Version 3 and above.'
-  ),
+export const ADDON_ID_REQUIRED = {
+  code: 'ADDON_ID_REQUIRED',
+  message: i18n._('The add-on ID is required in Manifest Version 3 and above.'),
   description: i18n._('See https://mzl.la/3PLZYdo for more information.'),
   file: MANIFEST_JSON,
 };
@@ -849,9 +847,11 @@ export const MISSING_DATA_COLLECTION_PERMISSIONS = {
   code: 'MISSING_DATA_COLLECTION_PERMISSIONS',
   message: i18n._('The "data_collection_permissions" property is missing.'),
   description: i18n._(
-    `"/browser_specific_settings/gecko/data_collection_permissions" property
-    will be required in the future. Please add this key to the manifest. More
-    information at: https://mzl.la/firefox-builtin-data-consent`
+    `The "/browser_specific_settings/gecko/data_collection_permissions"
+    property is required for all new Firefox extensions, and will be required
+    for new versions of existing extensions in the future. Please add this key
+    to the manifest. More information at:
+    https://mzl.la/firefox-builtin-data-consent`
   ),
   file: MANIFEST_JSON,
 };
@@ -866,5 +866,25 @@ export const NONE_DATA_COLLECTION_IS_EXCLUSIVE = {
     data collection permission "none" must not be specified with other required
     data collection permissions.`
   ),
+  file: MANIFEST_JSON,
+};
+
+export const HAS_PREVIOUS_CONSENT_IS_RESERVED = {
+  code: 'HAS_PREVIOUS_CONSENT_IS_RESERVED',
+  message: i18n._('The "has_previous_consent" property is reserved.'),
+  description: i18n._(
+    `The "/browser_specific_settings/gecko/data_collection_permissions/has_previous_consent"
+    property is reserved and cannot be set to "true".`
+  ),
+  file: MANIFEST_JSON,
+};
+
+export const MISSING_ADDON_ID = {
+  code: 'MISSING_ADDON_ID',
+  message: i18n._(`The add-on ID is missing in the manifest.`),
+  description:
+    i18n._(`The "/browser_specific_settings/gecko/id" property (add-on ID) should
+    be specified in the manifest. This property will become mandatory in the
+    future. See https://mzl.la/3PLZYdo for more information.`),
   file: MANIFEST_JSON,
 };

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import path from 'path';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { replaceInFileSync } from 'replace-in-file';
 
 const PROJECT_ROOT = path.resolve(path.join(import.meta.dirname, '..'));

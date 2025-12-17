@@ -43,11 +43,17 @@ describe('Integration/smoke tests', () => {
   it('should pass if ran on a simple valid CRX extension', async () => {
     const fixture = resolveFixturePath('crx3.crx');
     const { exitCode, stderr, stdout } = await executeScript('addons-linter', [
+      // We disable this because the crx3.crx file doesn't include data
+      // collection permissions.
+      '--enable-data-collection-permissions=false',
       '-o',
       'json',
       fixture,
     ]);
-    expect(stdout).toContain('"summary":{"errors":0,"notices":0,"warnings":1}');
+    // The warnings are:
+    // - MANIFEST_PERMISSIONS
+    // - MISSING_ADDON_ID
+    expect(stdout).toContain('"summary":{"errors":0,"notices":0,"warnings":2}');
     expect(stderr).toStrictEqual('');
     expect(exitCode).toEqual(0);
   });

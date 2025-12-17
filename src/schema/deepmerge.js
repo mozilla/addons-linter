@@ -5,7 +5,6 @@
  * https://github.com/KyleAMathews/deepmerge/blob/3ab89f2d2c938fc2e045c4ba822da0ffb81e4891/readme.md#arraymerge
  */
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 import merge from 'deepmerge';
 
 const emptyTarget = (value) => (Array.isArray(value) ? [] : {});

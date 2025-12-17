@@ -110,11 +110,9 @@ export function getRootExpression(node) {
 }
 
 /*
- * Get a variable from a eslint context object if it exists, otherwise
- * undefined.
+ * Get a variable from an eslint list of variables, otherwise undefined.
  */
-export function getVariable(context, name) {
-  const { variables } = context.getScope();
+export function getVariable(variables, name) {
   let result;
   variables.forEach((variable) => {
     if (
