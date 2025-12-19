@@ -35,11 +35,11 @@ import Dispensary from 'dispensary';
 
 export default class Linter {
   constructor(config) {
-    this.config = config;
-    [this.packagePath] = config._;
+    this.config = { ...constants.DEFAULT_CONFIG, ...config };
+    [this.packagePath] = this.config._;
     this.io = null;
     this.chalk = new chalk.Instance({ enabled: !this.config.boring });
-    this.collector = new Collector(config);
+    this.collector = new Collector(this.config);
     this.addonMetadata = null;
     this.shouldScanFile = this.shouldScanFile.bind(this);
   }
