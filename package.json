@@ -84,7 +84,7 @@
     "eslint-plugin-amo": "2.5.1",
     "eslint-plugin-prettier": "5.5.4",
     "github-markdown-css": "5.8.1",
-    "globals": "16.5.0",
+    "globals": "17.0.0",
     "gunzip-maybe": "1.4.2",
     "hashish": "0.0.4",
     "jest": "30.2.0",
