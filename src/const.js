@@ -266,3 +266,22 @@ export const SCHEMA_KEYWORDS = {
   // Non-standard JSONSchema keywords (defined and used by the Firefox and/or addons-linter).
   ...SCHEMA_KEYWORDS_CUSTOM,
 };
+
+// Default configuration values for the linter.
+export const DEFAULT_CONFIG = {
+  logLevel: 'fatal',
+  warningsAsErrors: false,
+  output: 'text',
+  metadata: false,
+  pretty: false,
+  stack: false,
+  boring: false,
+  enterprise: false,
+  privileged: false,
+  selfHosted: false,
+  enableBackgroundServiceWorker: false,
+  minManifestVersion: 2,
+  maxManifestVersion: 3,
+  disableXpiAutoclose: false,
+  enableDataCollectionPermissions: true,
+};
