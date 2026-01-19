@@ -889,12 +889,25 @@ export const MISSING_ADDON_ID = {
   file: MANIFEST_JSON,
 };
 
-export const BACKGROUND_SERVICE_WORKER = {
-  code: 'BACKGROUND_SERVICE_WORKER',
-  message: i18n._(`"/background/service_worker" is not supported.`),
-  description: i18n._(`The "background" property must contain either "scripts" 
-    or "page". See 
-    https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/background#browser_support
-    (MDN docs) for more information.`),
+export const BACKGROUND_SERVICE_WORKER_NOFALLBACK = {
+  code: 'BACKGROUND_SERVICE_WORKER_NOFALLBACK',
+  message: i18n._(
+    `Unsupported "/background/service_worker" manifest property used without "/background/scripts" property as Firefox-compatible fallback.`
+  ),
+  description:
+    i18n._(`The "/background/service_worker" manifest property must be paired with use of "/background/scripts"
+    property for Firefox compatibility. See https://mzl.la/4r6SF1L for more information.`),
+  file: MANIFEST_JSON,
+};
+
+export const BACKGROUND_SERVICE_WORKER_IGNORED = {
+  code: 'BACKGROUND_SERVICE_WORKER_IGNORED',
+  message: i18n._(
+    `Unsupported "/background/service_worker" manifest property is ignored by Firefox.`
+  ),
+  description:
+    i18n._(`The "/background/service_worker" manifest property is unsupported and ignored on Firefox.
+    Please make sure "/background/scripts" or "/background/page" properties are providing appropriate Firefox compatibility.
+    See https://mzl.la/4r6SF1L for more information.`),
   file: MANIFEST_JSON,
 };

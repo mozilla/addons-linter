@@ -585,13 +585,21 @@ export default class ManifestJSONParser extends JSONParser {
 
       if (this.parsedJSON.background.service_worker) {
         if (!this.schemaValidatorOptions?.enableBackgroundServiceWorker) {
-          // Report an error and mark the manifest as invalid if background
-          // service worker support isn't enabled by the addons-linter feature
-          // flag.
           if (hasScripts || hasPage) {
-            this.collector.addWarning(messages.BACKGROUND_SERVICE_WORKER);
+            // Report a linting warning to remind the extension developer that
+            // background.service_worker is unsupported and ignored on Firefox
+            // and background.scripts or background.page should provide similar
+            // behaviors for Firefox compatibility.
+            this.collector.addWarning(
+              messages.BACKGROUND_SERVICE_WORKER_IGNORED
+            );
           } else {
-            this.collector.addError(messages.BACKGROUND_SERVICE_WORKER);
+            // Report a linting error if the unsupported background.service_worker
+            // is not paired with a supported manifest property (e.g. background.scripts
+            // or background.page)
+            this.collector.addError(
+              messages.BACKGROUND_SERVICE_WORKER_NOFALLBACK
+            );
             this.isValid = false;
           }
         } else if (this.parsedJSON.manifest_version >= 3) {

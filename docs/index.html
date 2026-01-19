@@ -623,6 +623,16 @@
 <td>warning</td>
 <td>The <code>/browser_specific_settings/gecko/id</code> property (add-on ID) should be specified in the manifest. This property will become mandatory in the future. See <a href="https://mzl.la/3PLZYdo">https://mzl.la/3PLZYdo</a> for more information.</td>
 </tr>
+<tr>
+<td><code>BACKGROUND_SERVICE_WORKER_NOFALLBACK</code></td>
+<td>error</td>
+<td>The <code>/background/service_worker</code> property must be paired with use of <code>/background/scripts</code> property for Firefox compatibility. See <a href="https://mzl.la/4r6SF1L">https://mzl.la/4r6SF1L</a> for more information.</td>
+</tr>
+<tr>
+<td><code>BACKGROUND_SERVICE_WORKER_IGNORED</code></td>
+<td>warning</td>
+<td>The <code>/background/service_worker</code> manifest property is unsupported and ignored on Firefox. Please make sure <code>/background/scripts</code> or <code>/background/page</code> properties are providing appropriate Firefox compatibility. See <a href="https://mzl.la/4r6SF1L">https://mzl.la/5r6SF1L</a> for more information.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="static-theme-%2F-manifest.json" tabindex="-1">Static Theme / manifest.json <a class="header-anchor" href="#static-theme-%2F-manifest.json">¶</a></h3>

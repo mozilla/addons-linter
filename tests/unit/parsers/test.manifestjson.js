@@ -3327,7 +3327,7 @@ describe('ManifestJSONParser', () => {
       });
     });
 
-    it('does error if background.service_worker is being used', () => {
+    it('does error if background.service_worker is being used without page or scripts fallbacks', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         background: { service_worker: 'background_worker.js' },
@@ -3342,13 +3342,14 @@ describe('ManifestJSONParser', () => {
       expect(linter.collector.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            code: 'BACKGROUND_SERVICE_WORKER',
+            code: 'BACKGROUND_SERVICE_WORKER_NOFALLBACK',
             message: expect.stringMatching(
-              /"\/background\/service_worker" is not supported/
+              /Unsupported "\/background\/service_worker" manifest property used without "\/background\/scripts"/
             ),
           }),
         ])
       );
+      expect(linter.collector.warnings).toEqual([]);
     });
 
     // See: https://bugzilla.mozilla.org/show_bug.cgi?id=1860304
@@ -3377,17 +3378,17 @@ describe('ManifestJSONParser', () => {
           }
         );
 
-        expect(linter.collector.errors).toEqual([]);
         expect(linter.collector.warnings).toEqual(
           expect.arrayContaining([
             expect.objectContaining({
-              code: 'BACKGROUND_SERVICE_WORKER',
+              code: 'BACKGROUND_SERVICE_WORKER_IGNORED',
               message: expect.stringMatching(
-                /"\/background\/service_worker" is not supported/
+                /Unsupported "\/background\/service_worker" manifest property is ignored by Firefox/
               ),
             }),
           ])
         );
+        expect(linter.collector.errors).toEqual([]);
         expect(manifestJSONParser.isValid).toEqual(true);
       }
     );
@@ -3413,9 +3414,9 @@ describe('ManifestJSONParser', () => {
       expect(linter.collector.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            code: 'BACKGROUND_SERVICE_WORKER',
+            code: 'BACKGROUND_SERVICE_WORKER_NOFALLBACK',
             message: expect.stringMatching(
-              /"\/background\/service_worker" is not supported/
+              /Unsupported "\/background\/service_worker" manifest property used without "\/background\/scripts"/
             ),
             file: 'manifest.json',
           }),
