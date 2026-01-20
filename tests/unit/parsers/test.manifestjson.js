@@ -3357,6 +3357,11 @@ describe('ManifestJSONParser', () => {
       { scripts: ['bg.js'] },
       { page: 'bg.html' },
       { scripts: [], page: 'bg.html' },
+      { scripts: [], page: 'bg.html' },
+      // Expect the warning to be emitted also if preferred_environment is set but doesn't include
+      // "document" as one of the preferred_environment.
+      { page: 'bg.html', preferred_environment: ['service_worker'] },
+      { scripts: ['bg.js'], preferred_environment: ['service_worker'] },
     ])(
       'emits a warning when background.service_worker is being used in combination with %o',
       (backgroundProps) => {
@@ -3388,6 +3393,61 @@ describe('ManifestJSONParser', () => {
             }),
           ])
         );
+        expect(linter.collector.errors).toEqual([]);
+        expect(manifestJSONParser.isValid).toEqual(true);
+      }
+    );
+
+    it.each([
+      {
+        scripts: ['bg.js'],
+        preferred_environment: ['document', 'service_worker'],
+      },
+      {
+        page: 'bg.html',
+        preferred_environment: ['document', 'service_worker'],
+      },
+      {
+        scripts: [],
+        page: 'bg.html',
+        preferred_environment: ['service_worker', 'document'],
+      },
+      {
+        scripts: [],
+        page: 'bg.html',
+        preferred_environment: ['service_worker', 'document'],
+      },
+    ])(
+      'omits warning on background.service_worker set along with %o and preferred_environment set accordingly',
+      (backgroundProps) => {
+        const linter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          browser_specific_settings: {
+            gecko: {
+              id: '@test-worker-warning-with-preferred-environment-set',
+              // Needed to prevent linting warning to be emitted due to validManifestJSON
+              // strict_min_version set to an older version where preferred_environment
+              // wasn't available.
+              strict_min_version: '136.0.0',
+            },
+          },
+          background: {
+            service_worker: 'background_worker.js',
+            ...backgroundProps,
+          },
+        });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          linter.collector,
+          {
+            io: {
+              files: { 'background_worker.js': '', 'bg.js': '', 'bg.html': '' },
+            },
+          }
+        );
+
+        expect(linter.collector.warnings).toEqual([]);
         expect(linter.collector.errors).toEqual([]);
         expect(manifestJSONParser.isValid).toEqual(true);
       }

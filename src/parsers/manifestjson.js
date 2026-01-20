@@ -583,6 +583,11 @@ export default class ManifestJSONParser extends JSONParser {
         );
       }
 
+      const { preferred_environment } = this.parsedJSON.background;
+      const hasPreferredEnvironmentDocument =
+        Array.isArray(preferred_environment) &&
+        preferred_environment.includes('document');
+
       if (this.parsedJSON.background.service_worker) {
         if (!this.schemaValidatorOptions?.enableBackgroundServiceWorker) {
           if (hasScripts || hasPage) {
@@ -590,9 +595,15 @@ export default class ManifestJSONParser extends JSONParser {
             // background.service_worker is unsupported and ignored on Firefox
             // and background.scripts or background.page should provide similar
             // behaviors for Firefox compatibility.
-            this.collector.addWarning(
-              messages.BACKGROUND_SERVICE_WORKER_IGNORED
-            );
+            //
+            // Omit the warning if the extension developer has implicitly acknowledged
+            // the compatibility fallback by setting `background.preferred_environment`
+            // and including "document" as explicitly supported by the extension.
+            if (!hasPreferredEnvironmentDocument) {
+              this.collector.addWarning(
+                messages.BACKGROUND_SERVICE_WORKER_IGNORED
+              );
+            }
           } else {
             // Report a linting error if the unsupported background.service_worker
             // is not paired with a supported manifest property (e.g. background.scripts
