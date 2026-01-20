@@ -11,8 +11,7 @@
         "manifest_version": {
           "type": "integer",
           "minimum": 2,
-          "maximum": 3,
-          "postprocess": "manifestVersionCheck"
+          "maximum": 3
         },
         "applications": {
           "allOf": [
