@@ -3327,7 +3327,7 @@ describe('ManifestJSONParser', () => {
       });
     });
 
-    it('does error if background.service_worker is being used', () => {
+    it('does error if background.service_worker is being used without page or scripts fallbacks', () => {
       const linter = new Linter({ _: ['bar'] });
       const json = validManifestJSON({
         background: { service_worker: 'background_worker.js' },
@@ -3342,13 +3342,14 @@ describe('ManifestJSONParser', () => {
       expect(linter.collector.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            code: 'MANIFEST_FIELD_UNSUPPORTED',
+            code: 'BACKGROUND_SERVICE_WORKER_NOFALLBACK',
             message: expect.stringMatching(
-              /"\/background\/service_worker" is not supported/
+              /Unsupported "\/background\/service_worker" manifest property used without "\/background\/scripts"/
             ),
           }),
         ])
       );
+      expect(linter.collector.warnings).toEqual([]);
     });
 
     // See: https://bugzilla.mozilla.org/show_bug.cgi?id=1860304
@@ -3356,6 +3357,13 @@ describe('ManifestJSONParser', () => {
       { scripts: ['bg.js'] },
       { page: 'bg.html' },
       { scripts: [], page: 'bg.html' },
+      // Expect the warning to be emitted also if preferred_environment is set but doesn't include
+      // "document" as one of the preferred_environment.
+      // NOTE: These tests don't need to set a strict_min_version in this test because the
+      // assertion on the warnings currently check for the specific warnings expected and
+      // it doesn't fail when other unrelated warnings are emitted.
+      { page: 'bg.html', preferred_environment: ['service_worker'] },
+      { scripts: ['bg.js'], preferred_environment: ['service_worker'] },
     ])(
       'emits a warning when background.service_worker is being used in combination with %o',
       (backgroundProps) => {
@@ -3377,17 +3385,67 @@ describe('ManifestJSONParser', () => {
           }
         );
 
-        expect(linter.collector.errors).toEqual([]);
         expect(linter.collector.warnings).toEqual(
           expect.arrayContaining([
             expect.objectContaining({
-              code: 'MANIFEST_FIELD_UNSUPPORTED',
+              code: 'BACKGROUND_SERVICE_WORKER_IGNORED',
               message: expect.stringMatching(
-                /"\/background\/service_worker" is not supported/
+                /Unsupported "\/background\/service_worker" manifest property is ignored by Firefox/
               ),
             }),
           ])
         );
+        expect(linter.collector.errors).toEqual([]);
+        expect(manifestJSONParser.isValid).toEqual(true);
+      }
+    );
+
+    it.each([
+      {
+        scripts: ['bg.js'],
+        preferred_environment: ['document', 'service_worker'],
+      },
+      {
+        page: 'bg.html',
+        preferred_environment: ['document', 'service_worker'],
+      },
+      {
+        scripts: [],
+        page: 'bg.html',
+        preferred_environment: ['service_worker', 'document'],
+      },
+    ])(
+      'omits warning on background.service_worker if preferred_environment is set along with %o',
+      (backgroundProps) => {
+        const linter = new Linter({ _: ['bar'] });
+        const json = validManifestJSON({
+          browser_specific_settings: {
+            gecko: {
+              id: '@test-worker-warning-with-preferred-environment-set',
+              // Needed to prevent linting warning to be emitted due to validManifestJSON
+              // strict_min_version set to an older version where preferred_environment
+              // wasn't available.
+              strict_min_version: '136.0.0',
+            },
+          },
+          background: {
+            service_worker: 'background_worker.js',
+            ...backgroundProps,
+          },
+        });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          json,
+          linter.collector,
+          {
+            io: {
+              files: { 'background_worker.js': '', 'bg.js': '', 'bg.html': '' },
+            },
+          }
+        );
+
+        expect(linter.collector.warnings).toEqual([]);
+        expect(linter.collector.errors).toEqual([]);
         expect(manifestJSONParser.isValid).toEqual(true);
       }
     );
@@ -3413,9 +3471,9 @@ describe('ManifestJSONParser', () => {
       expect(linter.collector.errors).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            code: 'MANIFEST_FIELD_UNSUPPORTED',
+            code: 'BACKGROUND_SERVICE_WORKER_NOFALLBACK',
             message: expect.stringMatching(
-              /"\/background\/service_worker" is not supported/
+              /Unsupported "\/background\/service_worker" manifest property used without "\/background\/scripts"/
             ),
             file: 'manifest.json',
           }),

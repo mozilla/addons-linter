@@ -888,3 +888,26 @@ export const MISSING_ADDON_ID = {
     future. See https://mzl.la/3PLZYdo for more information.`),
   file: MANIFEST_JSON,
 };
+
+export const BACKGROUND_SERVICE_WORKER_NOFALLBACK = {
+  code: 'BACKGROUND_SERVICE_WORKER_NOFALLBACK',
+  message: i18n._(
+    `Unsupported "/background/service_worker" manifest property used without "/background/scripts" property as Firefox-compatible fallback.`
+  ),
+  description:
+    i18n._(`The "/background/service_worker" manifest property must be paired with use of "/background/scripts"
+    property for Firefox compatibility. See https://mzl.la/4r6SF1L for more information.`),
+  file: MANIFEST_JSON,
+};
+
+export const BACKGROUND_SERVICE_WORKER_IGNORED = {
+  code: 'BACKGROUND_SERVICE_WORKER_IGNORED',
+  message: i18n._(
+    `Unsupported "/background/service_worker" manifest property is ignored by Firefox.`
+  ),
+  description:
+    i18n._(`The "/background/service_worker" manifest property is unsupported and ignored on Firefox.
+    Please make sure "/background/scripts" or "/background/page" properties are providing appropriate Firefox compatibility.
+    See https://mzl.la/4r6SF1L for more information.`),
+  file: MANIFEST_JSON,
+};
