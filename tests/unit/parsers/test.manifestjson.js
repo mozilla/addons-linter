@@ -3357,9 +3357,11 @@ describe('ManifestJSONParser', () => {
       { scripts: ['bg.js'] },
       { page: 'bg.html' },
       { scripts: [], page: 'bg.html' },
-      { scripts: [], page: 'bg.html' },
       // Expect the warning to be emitted also if preferred_environment is set but doesn't include
       // "document" as one of the preferred_environment.
+      // NOTE: These tests don't need to set a strict_min_version in this test because the
+      // assertion on the warnings currently check for the specific warnings expected and
+      // it doesn't fail when other unrelated warnings are emitted.
       { page: 'bg.html', preferred_environment: ['service_worker'] },
       { scripts: ['bg.js'], preferred_environment: ['service_worker'] },
     ])(
@@ -3412,13 +3414,8 @@ describe('ManifestJSONParser', () => {
         page: 'bg.html',
         preferred_environment: ['service_worker', 'document'],
       },
-      {
-        scripts: [],
-        page: 'bg.html',
-        preferred_environment: ['service_worker', 'document'],
-      },
     ])(
-      'omits warning on background.service_worker set along with %o and preferred_environment set accordingly',
+      'omits warning on background.service_worker if preferred_environment is set along with %o',
       (backgroundProps) => {
         const linter = new Linter({ _: ['bar'] });
         const json = validManifestJSON({
