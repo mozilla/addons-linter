@@ -459,7 +459,26 @@ export default class ManifestJSONParser extends JSONParser {
       validate = validateDictionary;
     }
 
-    this.isValid = validate(this.parsedJSON, this.schemaValidatorOptions);
+    if (
+      typeof this.parsedJSON.manifest_version === 'number' &&
+      !Number.isInteger(this.parsedJSON.manifest_version)
+    ) {
+      // When the `manifest_version` value is a number that is not an integer,
+      // the schema validation breaks because of gaps between min/max manifest
+      // versions in some `anyOf()` definitions.
+      //
+      // See: https://github.com/mozilla/addons-linter/issues/5910
+      validate.errors = [
+        {
+          keyword: SCHEMA_KEYWORDS.TYPE,
+          instancePath: '/manifest_version',
+          message: 'must be integer',
+        },
+      ];
+      this.isValid = false;
+    } else {
+      this.isValid = validate(this.parsedJSON, this.schemaValidatorOptions);
+    }
 
     if (!this.isValid) {
       log.debug(

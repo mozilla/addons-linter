@@ -369,6 +369,27 @@ describe('ManifestJSONParser', () => {
     expect(manifestJSONParser.isValid).toEqual(true);
   });
 
+  it('emits an error when a non-integer manifest version is set', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    const json = validManifestJSON({ manifest_version: 2.1 });
+    const manifestJSONParser = new ManifestJSONParser(
+      json,
+      addonLinter.collector
+    );
+
+    expect(manifestJSONParser.isValid).toEqual(false);
+    expect(manifestJSONParser.collector.errors).toEqual([
+      expect.objectContaining({
+        code: 'MANIFEST_FIELD_INVALID',
+        description:
+          'See https://mzl.la/1ZOhoEN (MDN Docs) for more information.',
+        file: 'manifest.json',
+        instancePath: '/manifest_version',
+        message: '"/manifest_version" must be integer',
+      }),
+    ]);
+  });
+
   describe('browser_style', () => {
     function parseManifest(manifestVersion, manifestKey, browserStyleValue) {
       const manifest = {
