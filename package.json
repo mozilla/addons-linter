@@ -80,7 +80,7 @@
     "babel-jest": "30.2.0",
     "babel-loader": "10.0.0",
     "comment-json": "4.5.1",
-    "eslint-config-amo": "7.2.0",
+    "eslint-config-amo": "7.3.0",
     "eslint-plugin-amo": "2.5.1",
     "eslint-plugin-prettier": "5.5.5",
     "github-markdown-css": "5.9.0",
