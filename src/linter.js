@@ -180,11 +180,13 @@ export default class Linter {
           out.push(this.colorize(type)(`  ${code}`));
           out.push(`  ${list[0].message}`);
           list.forEach((message) => {
-            const location = message.file
-              ? `${message.file}${message.line ? `:${message.line}` : ''}${
-                  message.column ? `:${message.column}` : ''
-                }`
-              : 'N/A';
+            let location = message.file || 'N/A';
+            if (message.file && message.line) {
+              location += `:${message.line}`;
+              if (message.column) {
+                location += `:${message.column}`;
+              }
+            }
             out.push(`    ${location}`);
           });
           out.push('');

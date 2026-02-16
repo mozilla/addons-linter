@@ -490,24 +490,6 @@ describe('Linter.toJSON()', () => {
 });
 
 describe('Linter.textOutput()', () => {
-  // Return a large number from terminalWidth() so text doesn't wrap,
-  // forcing the strings we check for to be far apart.
-  function terminalWidth() {
-    return 1000;
-  }
-
-  function mediumTerminalWidth() {
-    return 77;
-  }
-
-  function smallTerminalWidth() {
-    return 59;
-  }
-
-  function uselesslyTinyTerminalWidth() {
-    return 1;
-  }
-
   it('should have error in textOutput()', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.collector.addError({
@@ -515,12 +497,11 @@ describe('Linter.textOutput()', () => {
       message: 'whatever error message',
       description: 'whatever error description',
     });
-    const text = addonLinter.textOutput(terminalWidth);
+    const text = addonLinter.textOutput();
     expect(addonLinter.output.summary.errors).toEqual(1);
     expect(text).toContain('Validation Summary:');
     expect(text).toContain('WHATEVER_ERROR');
     expect(text).toContain('whatever error message');
-    expect(text).toContain('whatever error description');
   });
 
   it('should have notice message in textOutput()', () => {
@@ -530,12 +511,11 @@ describe('Linter.textOutput()', () => {
       message: 'whatever notice message',
       description: 'whatever notice description',
     });
-    const text = addonLinter.textOutput(terminalWidth);
+    const text = addonLinter.textOutput();
     expect(addonLinter.output.summary.notices).toEqual(1);
     expect(text).toContain('Validation Summary:');
     expect(text).toContain('WHATEVER_NOTICE');
     expect(text).toContain('whatever notice message');
-    expect(text).toContain('whatever notice description');
   });
 
   it('should have warning in textOutput()', () => {
@@ -545,63 +525,52 @@ describe('Linter.textOutput()', () => {
       message: 'whatever warning message',
       description: 'whatever warning description',
     });
-    const text = addonLinter.textOutput(terminalWidth);
+    const text = addonLinter.textOutput();
     expect(addonLinter.output.summary.warnings).toEqual(1);
     expect(text).toContain('Validation Summary:');
     expect(text).toContain('WHATEVER_WARNING');
     expect(text).toContain('whatever warning message');
-    expect(text).toContain('whatever warning description');
   });
 
-  it('should remove description when terminal is <78 columns wide', () => {
+  it('should include file location in output', () => {
     const addonLinter = new Linter({ _: ['bar'] });
     addonLinter.collector.addError({
       code: 'WHATEVER_ERROR',
       message: 'whatever error message',
       description: 'whatever error description',
-    });
-    const text = addonLinter.textOutput(mediumTerminalWidth);
-    expect(addonLinter.output.summary.errors).toEqual(1);
-    expect(text).not.toContain('Description');
-    expect(text).not.toContain('whatever error description');
-  });
-
-  it('should remove columns, description, and lines when terminal is < 60 columns wide', () => {
-    const addonLinter = new Linter({ _: ['bar'] });
-    addonLinter.collector.addError({
-      code: 'WHATEVER_ERROR',
-      message: 'whatever error message',
-      description: 'whatever error description',
+      file: 'test.js',
+      line: 20,
       column: 5,
+    });
+    const text = addonLinter.textOutput();
+    expect(addonLinter.output.summary.errors).toEqual(1);
+    expect(text).toContain('test.js:20:5');
+  });
+
+  it('should group messages by code', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    addonLinter.collector.addError({
+      code: 'WHATEVER_ERROR',
+      message: 'whatever error message',
+      description: 'whatever error description',
+      file: 'test1.js',
+      line: 10,
+    });
+    addonLinter.collector.addError({
+      code: 'WHATEVER_ERROR',
+      message: 'whatever error message',
+      description: 'whatever error description',
+      file: 'test2.js',
       line: 20,
     });
-    const text = addonLinter.textOutput(smallTerminalWidth);
-    expect(addonLinter.output.summary.errors).toEqual(1);
-    expect(text).not.toContain('Description');
-    expect(text).not.toContain('whatever error description');
-    expect(text).not.toContain('Column');
-    expect(text).not.toContain('5');
-    expect(text).not.toContain('Line');
-    expect(text).not.toContain('20');
-  });
-
-  it('should survive even a 1 column terminal', () => {
-    const addonLinter = new Linter({ _: ['bar'] });
-    addonLinter.collector.addError({
-      code: 'WHATEVER_ERROR',
-      message: 'whatever error message',
-      description: 'whatever error description',
-      column: 5,
-      line: 20,
-    });
-
-    try {
-      addonLinter.textOutput(uselesslyTinyTerminalWidth);
-      expect(addonLinter.output.summary.errors).toEqual(1);
-    } catch {
-      // eslint-disable-next-line jest/no-conditional-expect
-      expect(false).toBe(true);
-    }
+    const text = addonLinter.textOutput();
+    expect(addonLinter.output.summary.errors).toEqual(2);
+    expect(text).toContain('WHATEVER_ERROR');
+    expect(text).toContain('test1.js:10');
+    expect(text).toContain('test2.js:20');
+    // The code should only appear once (grouped)
+    const codeMatches = text.match(/WHATEVER_ERROR/g);
+    expect(codeMatches).toHaveLength(1);
   });
 });
 
