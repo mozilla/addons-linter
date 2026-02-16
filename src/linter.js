@@ -178,7 +178,11 @@ export default class Linter {
 
         Object.entries(groupedMessages).forEach(([code, list]) => {
           out.push(this.colorize(type)(`  ${code}`));
-          out.push(`  ${list[0].message}`);
+          const parts = [list[0].message];
+          if (list[0].message !== list[0].description) {
+            parts.push(list[0].description);
+          }
+          out.push(`  ${parts.join(' ')}`);
           list.forEach((message) => {
             let location = message.file || 'N/A';
             if (message.file && message.line) {

@@ -502,6 +502,7 @@ describe('Linter.textOutput()', () => {
     expect(text).toContain('Validation Summary:');
     expect(text).toContain('WHATEVER_ERROR');
     expect(text).toContain('whatever error message');
+    expect(text).toContain('whatever error description');
   });
 
   it('should have notice message in textOutput()', () => {
@@ -516,6 +517,7 @@ describe('Linter.textOutput()', () => {
     expect(text).toContain('Validation Summary:');
     expect(text).toContain('WHATEVER_NOTICE');
     expect(text).toContain('whatever notice message');
+    expect(text).toContain('whatever notice description');
   });
 
   it('should have warning in textOutput()', () => {
@@ -530,6 +532,7 @@ describe('Linter.textOutput()', () => {
     expect(text).toContain('Validation Summary:');
     expect(text).toContain('WHATEVER_WARNING');
     expect(text).toContain('whatever warning message');
+    expect(text).toContain('whatever warning description');
   });
 
   it('should include file location in output', () => {
@@ -571,6 +574,21 @@ describe('Linter.textOutput()', () => {
     // The code should only appear once (grouped)
     const codeMatches = text.match(/WHATEVER_ERROR/g);
     expect(codeMatches).toHaveLength(1);
+  });
+
+  it('should not print duplicate text when message and description are equal', () => {
+    const addonLinter = new Linter({ _: ['bar'] });
+    addonLinter.collector.addError({
+      code: 'DUPLICATE_TEXT_ERROR',
+      message: 'same text for both',
+      description: 'same text for both',
+    });
+    const text = addonLinter.textOutput();
+    expect(addonLinter.output.summary.errors).toEqual(1);
+    expect(text).toContain('DUPLICATE_TEXT_ERROR');
+    // The text should only appear once, not twice
+    const textMatches = text.match(/same text for both/g);
+    expect(textMatches).toHaveLength(1);
   });
 });
 
