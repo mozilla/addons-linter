@@ -48,7 +48,7 @@
     "@mdn/browser-compat-data": "7.3.1",
     "addons-moz-compare": "1.3.0",
     "addons-scanner-utils": "10.2.0",
-    "ajv": "8.17.1",
+    "ajv": "8.18.0",
     "chalk": "4.1.2",
     "cheerio": "1.2.0",
     "columnify": "1.6.0",
