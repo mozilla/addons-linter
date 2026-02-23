@@ -183,6 +183,17 @@ describe('JavaScript Scanner', () => {
     }
   );
 
+  it('should support the "with" import attributes', async () => {
+    const code = `(async () => {
+      const data = await import("./module.json", { with: { type: "json" } });
+    })();`;
+
+    const jsScanner = new JavaScriptScanner(code, 'code.js');
+
+    const { linterMessages } = await jsScanner.scan();
+    expect(linterMessages).toEqual([]);
+  });
+
   it('should support numeric separators', async () => {
     const code = 'const num = 1_0;';
 
