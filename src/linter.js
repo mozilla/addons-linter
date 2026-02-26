@@ -1,7 +1,7 @@
 import path from 'path';
+import { styleText } from 'node:util';
 
 import columnify from 'columnify';
-import chalk from 'chalk';
 import { oneLine } from 'common-tags';
 import { lstat } from 'addons-scanner-utils/dist/io/utils';
 import {
@@ -38,7 +38,14 @@ export default class Linter {
     this.config = { ...constants.DEFAULT_CONFIG, ...config };
     [this.packagePath] = this.config._;
     this.io = null;
-    this.chalk = new chalk.Instance({ enabled: !this.config.boring });
+    const colorEnabled = !this.config.boring;
+    this.chalk = {
+      red: colorEnabled ? (text) => styleText('red', String(text)) : String,
+      yellow: colorEnabled
+        ? (text) => styleText('yellow', String(text))
+        : String,
+      blue: colorEnabled ? (text) => styleText('blue', String(text)) : String,
+    };
     this.collector = new Collector(this.config);
     this.addonMetadata = null;
     this.shouldScanFile = this.shouldScanFile.bind(this);
