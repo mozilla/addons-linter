@@ -1,5 +1,5 @@
 import path from 'path';
-import { styleText } from 'node:util';
+import util from 'node:util';
 
 import columnify from 'columnify';
 import { oneLine } from 'common-tags';
@@ -39,12 +39,14 @@ export default class Linter {
     [this.packagePath] = this.config._;
     this.io = null;
     const colorEnabled = !this.config.boring;
+    const colorize =
+      colorEnabled && typeof util.styleText === 'function'
+        ? (style, text) => util.styleText(style, String(text))
+        : (_style, text) => String(text);
     this.chalk = {
-      red: colorEnabled ? (text) => styleText('red', String(text)) : String,
-      yellow: colorEnabled
-        ? (text) => styleText('yellow', String(text))
-        : String,
-      blue: colorEnabled ? (text) => styleText('blue', String(text)) : String,
+      red: (text) => colorize('red', text),
+      yellow: (text) => colorize('yellow', text),
+      blue: (text) => colorize('blue', text),
     };
     this.collector = new Collector(this.config);
     this.addonMetadata = null;
