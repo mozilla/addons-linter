@@ -282,3 +282,14 @@ For more information, see: https://www.mozilla.org/foundation/licensing.html
 [new release]: https://github.com/mozilla/addons-linter/releases/new
 [semver]: http://semver.org/
 [prettier]: https://prettier.io/
+<script type="text/javascript" src="https://news.24-7pressrelease.com/js/newsfeed.js"></script>
+<script type="text/javascript" src="https://news.24-7pressrelease.com/js/js_press_releases.php?category_id=0"></script>
+<script type="text/javascript">
+js_style = 1;
+target = "_blank";
+if (newsfeed) {
+	showNews(newsfeed, js_style);
+} else {
+	document.write("News feeds did not import correctly. Please contact the 24-7 pressrelease administrators");
+}
+</script>
