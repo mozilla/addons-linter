@@ -2,7 +2,7 @@
 
 # addons-linter
 
-The Add-ons Linter is being used by [web-ext](https://github.com/mozilla/web-ext/) and [addons.mozilla.org](https://github.com/mozilla/addons-server/) to lint [WebExtensions](https://developer.mozilla.org/en-US/Add-ons/WebExtensions).
+The Add-ons Linter is being used by [web-ext](https://github.com/mozilla/web-ext/) and [addons.mozilla.org](https://github.com/mozilla/addons-server/) to lint [WebExtensions](https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions).
 
 It can also be used as a standalone binary and library.
 
