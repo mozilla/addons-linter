@@ -38,8 +38,6 @@ export const EXTERNAL_RULE_MAPPING = {
 export const ESLINT_RULE_MAPPING = {
   'global-require-arg': ESLINT_WARNING,
   'no-document-write': ESLINT_WARNING,
-  'opendialog-nonlit-uri': ESLINT_WARNING,
-  'opendialog-remote-uri': ESLINT_WARNING,
   'webextension-api': ESLINT_WARNING,
   'webextension-deprecated-api': ESLINT_WARNING,
   'webextension-unsupported-api': ESLINT_WARNING,
@@ -85,8 +83,6 @@ export const PACKAGE_TYPES = {
   PACKAGE_MULTI,
   PACKAGE_SUBPACKAGE,
 };
-
-export const LOCAL_PROTOCOLS = ['chrome:', 'resource:'];
 
 export const MANIFEST_JSON = 'manifest.json';
 

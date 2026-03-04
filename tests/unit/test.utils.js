@@ -16,7 +16,6 @@ import {
   ignorePrivateFunctions,
   isBrowserNamespace,
   isCompatible,
-  isLocalUrl,
   isToolkitVersionString,
   isValidVersionString,
   normalizePath,
@@ -252,40 +251,6 @@ describe('getPackageTypeAsString()', () => {
     expect(() => {
       getPackageTypeAsString('whatevs');
     }).toThrow('Invalid package type constant "whatevs"');
-  });
-});
-
-describe('isLocalUrl', () => {
-  it('should not match remote urls', () => {
-    expect(isLocalUrl('http://foo.com')).toBeFalsy();
-    expect(isLocalUrl('https://foo.com')).toBeFalsy();
-    expect(isLocalUrl('ftp://foo.com')).toBeFalsy();
-    expect(isLocalUrl('//foo.com')).toBeFalsy();
-  });
-
-  it('should not match data uri', () => {
-    expect(
-      isLocalUrl(
-        'data:image/gif;base64,R0' +
-          'lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
-      )
-    ).toBeFalsy();
-  });
-
-  it('should match chrome protocol', () => {
-    expect(isLocalUrl('chrome://bar/foo')).toBeTruthy();
-  });
-
-  it('should match resource protocol', () => {
-    expect(isLocalUrl('resource://bar/foo')).toBeTruthy();
-  });
-
-  it('should match non-remote urls starting with /', () => {
-    expect(isLocalUrl('/bar/foo')).toBeTruthy();
-  });
-
-  it('should match non-remote urls starting with alpha', () => {
-    expect(isLocalUrl('bar')).toBeTruthy();
   });
 });
 
