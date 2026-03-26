@@ -3,7 +3,7 @@ import noUnsanitized from 'eslint-plugin-no-unsanitized';
 import { oneLine } from 'common-tags';
 import * as espree from 'espree';
 import * as vk from 'eslint-visitor-keys';
-import { ECMA_VERSION } from 'addons-scanner-utils/dist/const';
+import { ECMA_VERSION } from 'addons-scanner-utils/const';
 
 import { ESLINT_RULE_MAPPING, ESLINT_TYPES } from 'const';
 import * as messages from 'messages';
