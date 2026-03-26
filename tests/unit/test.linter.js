@@ -2,12 +2,12 @@
 import fs from 'fs';
 
 import { oneLine } from 'common-tags';
-import { Xpi } from 'addons-scanner-utils/dist/io';
+import { Xpi } from 'addons-scanner-utils/io';
 import {
   DuplicateZipEntryError,
   InvalidZipFileError,
-} from 'addons-scanner-utils/dist/errors';
-import { createFakeStderr } from 'addons-scanner-utils/dist/test-helpers';
+} from 'addons-scanner-utils/errors';
+import { createFakeStderr } from 'addons-scanner-utils/test-helpers';
 
 import Linter from 'linter';
 import * as constants from 'const';
