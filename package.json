@@ -67,7 +67,7 @@
     "source-map-support": "0.5.21",
     "upath": "2.0.1",
     "yargs": "17.7.2",
-    "yauzl": "3.2.1"
+    "yauzl": "3.3.0"
   },
   "devDependencies": {
     "@babel/cli": "7.28.6",
