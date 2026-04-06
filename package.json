@@ -65,7 +65,7 @@
     "pino": "10.3.1",
     "semver": "7.7.4",
     "source-map-support": "0.5.21",
-    "upath": "2.0.1",
+    "upath": "3.0.5",
     "yargs": "17.7.2",
     "yauzl": "3.3.0"
   },
