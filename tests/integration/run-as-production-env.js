@@ -1,8 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
+const util = require('node:util');
 
-const chalk = require('chalk');
+// Graceful fallback: use styleText when available (Node >= 20.12),
+// otherwise return the plain text without coloring.
+const colorize =
+  typeof util.styleText === 'function'
+    ? (style, text) => util.styleText(style, String(text))
+    : (_style, text) => String(text);
+
 const gunzip = require('gunzip-maybe');
 const tar = require('tar-fs');
 const tmp = require('tmp-promise');
@@ -15,12 +22,14 @@ const npmScript = process.argv[2];
 const jestTestsPath = process.argv[3];
 
 if (!npmScript) {
-  console.error(chalk.red('Missing mandatory npm script to run'));
+  console.error(colorize('red', 'Missing mandatory npm script to run'));
   process.exit(1);
 }
 
 if (!jestTestsPath) {
-  console.error(chalk.red('Missing mandatory path to the tests dir to run'));
+  console.error(
+    colorize('red', 'Missing mandatory path to the tests dir to run')
+  );
   process.exit(1);
 }
 
@@ -45,7 +54,7 @@ function getPackedName() {
 }
 
 function createPackage(tmpDirPath) {
-  console.log(chalk.green('Create a pre-release npm package archive'));
+  console.log(colorize('green', 'Create a pre-release npm package archive'));
   return new Promise((resolve, reject) => {
     const pkgPack = spawnWithShell('npm', ['pack', process.cwd()], {
       cwd: tmpDirPath,
@@ -69,7 +78,10 @@ function createPackage(tmpDirPath) {
 
 function unpackTarPackage(packagePath, destDir) {
   console.log(
-    chalk.green(['Unpacking', packagePath, 'package into', destDir].join(' '))
+    colorize(
+      'green',
+      ['Unpacking', packagePath, 'package into', destDir].join(' ')
+    )
   );
 
   return new Promise((resolve, reject) => {
@@ -82,7 +94,7 @@ function unpackTarPackage(packagePath, destDir) {
 }
 
 function installPackageDeps(packageDir) {
-  console.log(chalk.green('Install production package dependencies'));
+  console.log(colorize('green', 'Install production package dependencies'));
   return new Promise((resolve, reject) => {
     const pkgInstall = spawnWithShell(
       'npm',
@@ -105,7 +117,7 @@ function installPackageDeps(packageDir) {
 
 function runIntegrationTests(packageDir) {
   console.log(
-    chalk.green('Running integration tests in production-like environent')
+    colorize('green', 'Running integration tests in production-like environent')
   );
   return new Promise((resolve, reject) => {
     const testRun = spawnWithShell(
@@ -150,6 +162,8 @@ tmp
     { unsafeCleanup: true }
   )
   .catch((err) => {
-    console.error(err.stack ? chalk.red(err.stack) : chalk.red(err));
+    console.error(
+      err.stack ? colorize('red', err.stack) : colorize('red', String(err))
+    );
     process.exit(1);
   });
