@@ -1,4 +1,4 @@
-import upath from 'upath';
+import * as upath from 'upath';
 import semver from 'semver';
 import { oneLine } from 'common-tags';
 
