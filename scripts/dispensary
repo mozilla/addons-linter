@@ -5,7 +5,6 @@ const path = require('path');
 const fs = require('fs');
 
 const async = require('async');
-const fetch = require('node-fetch');
 const naturalCompare = require('natural-compare-lite');
 
 const { default: log } = require('../src/logger');
