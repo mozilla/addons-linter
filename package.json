@@ -79,7 +79,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "30.3.0",
     "babel-loader": "10.1.1",
-    "comment-json": "4.6.2",
+    "comment-json": "5.0.0",
     "eslint-config-amo": "8.0.0",
     "eslint-plugin-amo": "3.0.0",
     "eslint-plugin-prettier": "5.5.5",
