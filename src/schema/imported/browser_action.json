@@ -499,12 +499,16 @@
       "async": true,
       "parameters": [
         {
-          "allOf": [
+          "name": "details",
+          "optional": true,
+          "anyOf": [
             {
               "$ref": "#/types/Details"
             },
             {
-              "name": "details"
+              "type": "integer",
+              "minimum": 0,
+              "description": "The id of the tab for which you want to query its enabled state."
             }
           ]
         }

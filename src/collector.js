@@ -1,4 +1,4 @@
-import upath from 'upath';
+import * as upath from 'upath';
 
 import { default as Message } from 'message';
 import * as constants from 'const';

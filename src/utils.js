@@ -1,10 +1,8 @@
-import url from 'url';
-
-import upath from 'upath';
+import * as upath from 'upath';
 import semver from 'semver';
 import { oneLine } from 'common-tags';
 
-import { PACKAGE_TYPES, LOCAL_PROTOCOLS } from 'const';
+import { PACKAGE_TYPES } from 'const';
 
 const SOURCE_MAP_RE = /\/\/[#@]\s(source(?:Mapping)?URL)=\s*(\S+)/;
 // For MV2 add-ons, Firefox's version format is laxer than Chrome's, it accepts:
@@ -208,23 +206,6 @@ export function ensureFilenameExists(filename) {
   if (typeof filename !== 'string' || filename.length < 1) {
     throw new Error('Filename is required');
   }
-}
-
-export function isLocalUrl(urlInput) {
-  const parsedUrl = url.parse(urlInput);
-  const { protocol, path } = parsedUrl;
-
-  // Check protocol is chrome: or resource: if set.
-  // Details on the chrome protocol are here: https://goo.gl/W52T0Q
-  // Details on resource protocol are here: https://goo.gl/HHqeJA
-  if (protocol && !LOCAL_PROTOCOLS.includes(protocol)) {
-    return false;
-  }
-  // Disallow protocol-free remote urls.
-  if (path.startsWith('//')) {
-    return false;
-  }
-  return true;
 }
 
 export function apiToMessage(string) {

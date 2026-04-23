@@ -4,7 +4,7 @@ import path from 'path';
 import RJSON from '@fregante/relaxed-json';
 import { oneLine } from 'common-tags';
 import getImageSize from 'image-size';
-import upath from 'upath';
+import * as upath from 'upath';
 import bcd from '@mdn/browser-compat-data';
 import { mozCompare } from 'addons-moz-compare';
 

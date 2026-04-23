@@ -1,6 +1,17 @@
 'use strict';
 
-var url = require('url');
+// Based on https://nodejs.org/api/url.html#urlresolvefrom-to, but we strip the
+// added leading slash to preserve the relativeness of `from`, similar to what
+// `url.resolve()` was doing.
+function resolve(from, to) {
+  const resolvedUrl = new URL(to, new URL(from, 'resolve://'));
+  if (resolvedUrl.protocol === 'resolve:') {
+    // `from` is a relative URL.
+    const { pathname, search, hash } = resolvedUrl;
+    return pathname.slice(1) + search + hash;
+  }
+  return resolvedUrl.toString();
+}
 
 module.exports = function (ajv, keyword, jsonPatch, patchSchema) {
   ajv.addKeyword({
@@ -15,7 +26,7 @@ module.exports = function (ajv, keyword, jsonPatch, patchSchema) {
 
       function getSchema($ref) {
         var id = it.baseId && it.baseId != '#'
-                  ? url.resolve(it.baseId, $ref)
+                  ? resolve(it.baseId, $ref)
                   : $ref;
         var validate = ajv.getSchema(id);
         if (validate) return validate.schema;

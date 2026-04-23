@@ -52,6 +52,10 @@ export default defineConfig([
       // This project uses `console.log()`.
       'no-console': 'off',
       'amo/i18n-no-tagged-templates': 'error',
+      // eslint-import-resolver-node does not support package exports maps, so
+      // subpath imports from addons-scanner-utils are flagged as unresolved
+      // even though they are valid.
+      'import/no-unresolved': ['error', { ignore: ['^addons-scanner-utils/'] }],
     },
   },
 ]);

@@ -23,39 +23,6 @@ export const CONTENT_SCRIPT_EMPTY = {
   description: i18n._('Content script file name should not be empty'),
 };
 
-export function _nonLiteralUri(method) {
-  return {
-    code: `${method}_NONLIT_URI`.toUpperCase(),
-    message: i18n.sprintf(
-      i18n._(`"%(method)s" called with a non-literal uri`),
-      { method }
-    ),
-    description: i18n.sprintf(
-      i18n._(`Calling "%(method)s" with variable parameters can result in
-        potential security vulnerabilities if the variable contains a remote
-        URI. Consider using 'window.open' with the 'chrome=no' flag.`),
-      { method }
-    ),
-  };
-}
-
-export function _methodPassedRemoteUri(method) {
-  return {
-    code: `${method}_REMOTE_URI`.toUpperCase(),
-    message: i18n.sprintf(i18n._(`"%(method)s" called with non-local URI`), {
-      method,
-    }),
-    description: i18n.sprintf(
-      i18n._(`Calling "%(method)s" with a non-local URI will result in the
-        dialog being opened with chrome privileges.`),
-      { method }
-    ),
-  };
-}
-
-export const OPENDIALOG_REMOTE_URI = _methodPassedRemoteUri('openDialog');
-export const OPENDIALOG_NONLIT_URI = _nonLiteralUri('openDialog');
-
 export const DANGEROUS_EVAL = {
   code: 'DANGEROUS_EVAL',
   message: null,

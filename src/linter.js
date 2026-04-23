@@ -3,12 +3,12 @@ import util from 'node:util';
 
 import columnify from 'columnify';
 import { oneLine } from 'common-tags';
-import { lstat } from 'addons-scanner-utils/dist/io/utils';
+import { lstat } from 'addons-scanner-utils/io/utils';
 import {
   DuplicateZipEntryError,
   InvalidZipFileError,
-} from 'addons-scanner-utils/dist/errors';
-import { Directory, Xpi, Crx } from 'addons-scanner-utils/dist/io';
+} from 'addons-scanner-utils/errors';
+import { Directory, Xpi, Crx } from 'addons-scanner-utils/io';
 
 import { terminalWidth } from 'cli';
 import * as constants from 'const';
