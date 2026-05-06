@@ -98,7 +98,7 @@
     "raw-loader": "4.0.2",
     "replace-in-file": "8.4.0",
     "shelljs": "0.10.0",
-    "sinon": "21.1.2",
+    "sinon": "22.0.0",
     "tar-fs": "3.1.2",
     "tmp-promise": "3.0.3",
     "webpack": "5.106.2",
