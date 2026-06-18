@@ -180,6 +180,99 @@
         }
       }
     },
+    "ThemeCSSGradient": {
+      "description": "A CSS gradient that can be used as a theme background, in addition to image assets. The single property name selects the gradient function, and its value holds the gradient's arguments, e.g. `{ \"linear-gradient\": \"to bottom, #FF6BBA, #FFC999\" }`.",
+      "anyOf": [
+        {
+          "type": "object",
+          "postprocess": "validCSSGradient",
+          "properties": {
+            "linear-gradient": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "linear-gradient"
+          ]
+        },
+        {
+          "type": "object",
+          "postprocess": "validCSSGradient",
+          "properties": {
+            "radial-gradient": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "radial-gradient"
+          ]
+        },
+        {
+          "type": "object",
+          "postprocess": "validCSSGradient",
+          "properties": {
+            "conic-gradient": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "conic-gradient"
+          ]
+        },
+        {
+          "type": "object",
+          "postprocess": "validCSSGradient",
+          "properties": {
+            "repeating-linear-gradient": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "repeating-linear-gradient"
+          ]
+        },
+        {
+          "type": "object",
+          "postprocess": "validCSSGradient",
+          "properties": {
+            "repeating-radial-gradient": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "repeating-radial-gradient"
+          ]
+        },
+        {
+          "type": "object",
+          "postprocess": "validCSSGradient",
+          "properties": {
+            "repeating-conic-gradient": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "repeating-conic-gradient"
+          ]
+        }
+      ]
+    },
+    "ThemeBackground": {
+      "anyOf": [
+        {
+          "$ref": "manifest#/types/ImageDataOrExtensionURL"
+        },
+        {
+          "$ref": "#/types/ThemeCSSGradient"
+        }
+      ]
+    },
     "ThemeType": {
       "type": "object",
       "properties": {
@@ -189,7 +282,7 @@
             "additional_backgrounds": {
               "type": "array",
               "items": {
-                "$ref": "manifest#/types/ImageDataOrExtensionURL"
+                "$ref": "#/types/ThemeBackground"
               },
               "maxItems": 15
             },
@@ -204,7 +297,7 @@
               ]
             },
             "theme_frame": {
-              "$ref": "manifest#/types/ImageDataOrExtensionURL"
+              "$ref": "#/types/ThemeBackground"
             }
           },
           "additionalProperties": {
@@ -409,6 +502,13 @@
                   "repeat-x",
                   "repeat-y"
                 ]
+              },
+              "maxItems": 15
+            },
+            "additional_backgrounds_size": {
+              "type": "array",
+              "items": {
+                "type": "string"
               },
               "maxItems": 15
             },
