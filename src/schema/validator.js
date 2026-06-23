@@ -2,7 +2,6 @@ import Ajv from 'ajv';
 import * as csstree from 'css-tree';
 
 import log from 'logger';
-
 import ajvMergePatch from 'ajv-merge-patch';
 import { getDefaultConfigValue } from 'yargs-options';
 import { deepPatch } from 'schema/deepmerge';

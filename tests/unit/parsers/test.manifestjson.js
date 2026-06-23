@@ -4233,7 +4233,10 @@ describe('ManifestJSONParser', () => {
         theme: {
           images: {
             additional_backgrounds: [
-              { 'linear-gradient': 'red), url(chrome://path/to/image.png), linear-gradient(transparent,' },
+              {
+                'linear-gradient':
+                  'red), url(chrome://path/to/image.png), linear-gradient(transparent,',
+              },
             ],
           },
         },
@@ -4251,8 +4254,7 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
       assertHasMatchingError(linter.collector.errors, {
         code: messages.MANIFEST_THEME_CSS_GRADIENT_INVALID,
-        message:
-          'Theme CSS gradient "linear-gradient" has invalid parameters',
+        message: 'Theme CSS gradient "linear-gradient" has invalid parameters',
         description:
           '"linear-gradient": "red), url(chrome://path/to/image.png), linear-gradient(transparent," is not valid CSS',
       });
@@ -4380,6 +4382,7 @@ describe('ManifestJSONParser', () => {
           linter.collector,
           { io: { files: {} } }
         );
+        expect(manifestJSONParser.isValid).toEqual(true);
         expect(
           linter.collector.errors.some(
             (e) => e.code === messages.MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION

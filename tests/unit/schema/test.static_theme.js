@@ -105,7 +105,10 @@ describe('static theme', () => {
     });
 
     it.each([
-      ['linear-gradient', 'red), url(chrome://path/to/image.png), linear-gradient(transparent,'],
+      [
+        'linear-gradient',
+        'red), url(chrome://path/to/image.png), linear-gradient(transparent,',
+      ],
       ['linear-gradient', '<script>alert(1)</script>'],
     ])(
       'should fail on %s with invalid CSS parameters',

@@ -534,7 +534,10 @@ export function manifestThemeImageMimeMismatch({ path, mime }) {
 
 export const MANIFEST_THEME_CSS_GRADIENT_INVALID =
   'MANIFEST_THEME_CSS_GRADIENT_INVALID';
-export function manifestThemeCSSGradientInvalid({ gradientFn, gradientParams }) {
+export function manifestThemeCSSGradientInvalid({
+  gradientFn,
+  gradientParams,
+}) {
   return {
     code: MANIFEST_THEME_CSS_GRADIENT_INVALID,
     message: i18n.sprintf(
