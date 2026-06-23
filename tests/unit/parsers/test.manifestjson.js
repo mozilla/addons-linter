@@ -4227,6 +4227,34 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(true);
     });
 
+    it('reports an error for invalid CSS gradient parameters in additional_backgrounds', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const manifest = validStaticThemeManifestJSON({
+        theme: {
+          images: {
+            additional_backgrounds: [
+              { 'linear-gradient': 'red), url(chrome://path/to/image.png), linear-gradient(transparent,' },
+            ],
+          },
+        },
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        manifest,
+        linter.collector,
+        { io: { files: {} } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_THEME_CSS_GRADIENT_INVALID,
+        message:
+          'Theme CSS gradient "linear-gradient" has invalid parameters',
+        description:
+          '"linear-gradient": "red), url(chrome://path/to/image.png), linear-gradient(transparent," is not valid CSS',
+      });
+    });
+
     it('validates image files while skipping CSS gradient objects in additional_backgrounds', async () => {
       const linter = new Linter({ _: ['bar'] });
       const imageFiles = ['bg1.svg', 'bg2.png'];

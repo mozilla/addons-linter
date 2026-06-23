@@ -372,6 +372,10 @@ export default class ManifestJSONParser extends JSONParser {
         : messages.manifestFieldPrivileged(error);
       overrides.message = baseObject.message;
       overrides.description = baseObject.description;
+    } else if (error.keyword === SCHEMA_KEYWORDS.VALIDATE_CSS_GRADIENT) {
+      baseObject = messages.manifestThemeCSSGradientInvalid(error.params);
+      overrides.message = baseObject.message;
+      overrides.description = baseObject.description;
     }
 
     // Arrays can be extremely verbose, this tries to make them a little

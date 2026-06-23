@@ -532,6 +532,23 @@ export function manifestThemeImageMimeMismatch({ path, mime }) {
   };
 }
 
+export const MANIFEST_THEME_CSS_GRADIENT_INVALID =
+  'MANIFEST_THEME_CSS_GRADIENT_INVALID';
+export function manifestThemeCSSGradientInvalid({ gradientFn, gradientParams }) {
+  return {
+    code: MANIFEST_THEME_CSS_GRADIENT_INVALID,
+    message: i18n.sprintf(
+      i18n._('Theme CSS gradient "%(gradientFn)s" has invalid parameters'),
+      { gradientFn }
+    ),
+    description: i18n.sprintf(
+      i18n._('"%(gradientFn)s": "%(gradientParams)s" is not valid CSS'),
+      { gradientFn, gradientParams }
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
 export const PROP_NAME_MISSING = manifestPropMissing('name');
 
 export const NO_MESSAGES_FILE = {

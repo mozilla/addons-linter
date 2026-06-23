@@ -84,4 +84,43 @@ describe('static theme', () => {
       )
     ).toBe(true);
   });
+
+  describe('CSS gradient parameter validation', () => {
+    it.each([
+      ['linear-gradient', 'to bottom, #FF6BBA -18.096%, #FFC999 50%'],
+      ['linear-gradient', '90deg, #9059FF 0%, #FF4AA2 52.08%, #FFBD4F 100%'],
+      ['radial-gradient', 'circle, red, blue'],
+      ['conic-gradient', 'from 90deg, red, blue'],
+      ['repeating-linear-gradient', 'red 0%, blue 20%, red 40%'],
+      ['repeating-radial-gradient', 'circle, red 0%, blue 50%'],
+      ['repeating-conic-gradient', 'from 45deg, red, blue'],
+    ])('should accept valid %s parameters', (gradientFn, params) => {
+      const manifest = cloneDeep(JSON.parse(validStaticThemeManifestJSON()));
+      manifest.theme.images = {
+        additional_backgrounds: [{ [gradientFn]: params }],
+      };
+      validateStaticTheme(manifest);
+      expect(validateStaticTheme.errors).toBeNull();
+    });
+
+    it.each([
+      ['linear-gradient', 'red), url(chrome://path/to/image.png), linear-gradient(transparent,'],
+      ['linear-gradient', '<script>alert(1)</script>'],
+    ])(
+      'should fail on %s with invalid CSS parameters',
+      (gradientFn, params) => {
+        const manifest = cloneDeep(JSON.parse(validStaticThemeManifestJSON()));
+        manifest.theme.images = {
+          additional_backgrounds: [{ [gradientFn]: params }],
+        };
+        validateStaticTheme(manifest);
+        expect(validateStaticTheme.errors).not.toBeNull();
+        expect(
+          validateStaticTheme.errors.some(
+            (err) => err.keyword === 'validCSSGradient'
+          )
+        ).toBe(true);
+      }
+    );
+  });
 });

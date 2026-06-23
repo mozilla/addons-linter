@@ -250,6 +250,7 @@ export const SCHEMA_KEYWORDS_CUSTOM = {
   // schema data as part of the schema data inmport and used by the linter to hook up
   // custom validation logic for privileged permissions.
   VALIDATE_PRIVILEGED_PERMISSIONS: 'validatePrivilegedPermissions',
+  VALIDATE_CSS_GRADIENT: 'validCSSGradient',
 };
 
 export const SCHEMA_KEYWORDS = {
