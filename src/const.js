@@ -264,6 +264,8 @@ export const SCHEMA_KEYWORDS = {
   ...SCHEMA_KEYWORDS_CUSTOM,
 };
 
+export const CSS_GRADIENT_MIN_FIREFOX_VERSION = 153;
+
 // Default configuration values for the linter.
 export const DEFAULT_CONFIG = {
   logLevel: 'fatal',

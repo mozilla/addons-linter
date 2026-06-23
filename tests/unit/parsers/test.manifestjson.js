@@ -4237,6 +4237,9 @@ describe('ManifestJSONParser', () => {
             ],
           },
         },
+        browser_specific_settings: {
+          gecko: { id: '@static-theme', strict_min_version: '153.0' },
+        },
       });
 
       const manifestJSONParser = new ManifestJSONParser(
@@ -4271,6 +4274,9 @@ describe('ManifestJSONParser', () => {
             ],
           },
         },
+        browser_specific_settings: {
+          gecko: { id: '@static-theme', strict_min_version: '153.0' },
+        },
       });
 
       const manifestJSONParser = new ManifestJSONParser(
@@ -4293,6 +4299,118 @@ describe('ManifestJSONParser', () => {
       ).toEqual([]);
     });
 
+    describe('CSS gradient min version', () => {
+      const GRADIENT_THEME = {
+        theme: {
+          images: {
+            additional_backgrounds: [
+              { 'linear-gradient': 'to bottom, #FF6BBA 0%, #FFC999 100%' },
+            ],
+          },
+        },
+      };
+
+      it('reports an error when strict_min_version is not set', () => {
+        const linter = new Linter({ _: ['bar'] });
+        const manifest = validStaticThemeManifestJSON({
+          ...GRADIENT_THEME,
+          browser_specific_settings: { gecko: { id: '@test' } },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          manifest,
+          linter.collector,
+          { io: { files: {} } }
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+        assertHasMatchingError(linter.collector.errors, {
+          code: messages.MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION,
+        });
+      });
+
+      it('reports an error when strict_min_version is below 153', () => {
+        const linter = new Linter({ _: ['bar'] });
+        const manifest = validStaticThemeManifestJSON({
+          ...GRADIENT_THEME,
+          browser_specific_settings: {
+            gecko: { id: '@test', strict_min_version: '109.0' },
+          },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          manifest,
+          linter.collector,
+          { io: { files: {} } }
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+        assertHasMatchingError(linter.collector.errors, {
+          code: messages.MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION,
+        });
+      });
+
+      it('does not report an error when strict_min_version is 153', () => {
+        const linter = new Linter({ _: ['bar'] });
+        const manifest = validStaticThemeManifestJSON({
+          ...GRADIENT_THEME,
+          browser_specific_settings: {
+            gecko: { id: '@test', strict_min_version: '153.0' },
+          },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          manifest,
+          linter.collector,
+          { io: { files: {} } }
+        );
+        expect(manifestJSONParser.isValid).toEqual(true);
+        expect(
+          linter.collector.errors.some(
+            (e) => e.code === messages.MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION
+          )
+        ).toBe(false);
+      });
+
+      it('does not report an error when additional_backgrounds has only image paths', () => {
+        const linter = new Linter({ _: ['bar'] });
+        const manifest = validStaticThemeManifestJSON({
+          theme: {
+            images: { additional_backgrounds: ['bg.png'] },
+          },
+          browser_specific_settings: { gecko: { id: '@test' } },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          manifest,
+          linter.collector,
+          { io: { files: {} } }
+        );
+        expect(
+          linter.collector.errors.some(
+            (e) => e.code === messages.MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION
+          )
+        ).toBe(false);
+      });
+
+      it('reports an error when dark_theme uses a CSS gradient without strict_min_version', () => {
+        const linter = new Linter({ _: ['bar'] });
+        const manifest = validStaticThemeManifestJSON({
+          dark_theme: {
+            images: {
+              additional_backgrounds: [
+                { 'linear-gradient': 'to bottom, #20123A 0%, #291D4F 50%' },
+              ],
+            },
+          },
+          browser_specific_settings: { gecko: { id: '@test' } },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          manifest,
+          linter.collector,
+          { io: { files: {} } }
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+        assertHasMatchingError(linter.collector.errors, {
+          code: messages.MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION,
+        });
+      });
+    });
+
     it('validates image files while skipping CSS gradient objects in additional_backgrounds', async () => {
       const linter = new Linter({ _: ['bar'] });
       const imageFiles = ['bg1.svg', 'bg2.png'];
@@ -4305,6 +4423,9 @@ describe('ManifestJSONParser', () => {
               imageFiles[1],
             ],
           },
+        },
+        browser_specific_settings: {
+          gecko: { id: '@static-theme', strict_min_version: '153.0' },
         },
       });
 

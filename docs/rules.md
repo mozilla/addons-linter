@@ -148,6 +148,7 @@ Rules are sorted by severity.
 | Message code                              | Severity | Description                                                                 |
 | ----------------------------------------- | -------- | --------------------------------------------------------------------------- |
 | `MANIFEST_THEME_CSS_GRADIENT_INVALID`     | error    | Theme CSS gradient must have valid parameters                               |
+| `MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION` | error    | Theme CSS gradients require strict_min_version >= 153                       |
 | `MANIFEST_THEME_CSS_GRADIENT_UNSUPPORTED` | error    | Theme CSS gradient function must be one of the supported gradient functions |
 | `MANIFEST_THEME_IMAGE_MIME_MISMATCH`      | warning  | Theme image file extension should match its mime type                       |
 | `MANIFEST_THEME_IMAGE_NOT_FOUND`          | error    | Theme images must not be missing                                            |

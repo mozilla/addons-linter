@@ -17,6 +17,7 @@ import {
 } from 'schema/validator';
 import themeSchemaObject from 'schema/imported/theme';
 import {
+  CSS_GRADIENT_MIN_FIREFOX_VERSION,
   CSP_KEYWORD_RE,
   DEPRECATED_MANIFEST_PROPERTIES,
   FILE_EXTENSIONS_TO_MIME,
@@ -603,6 +604,8 @@ export default class ManifestJSONParser extends JSONParser {
         ...this.parsedJSON.browser_specific_settings,
       };
     }
+
+    this.validateStaticThemeCSSGradientMinVersion();
 
     // We only want `admin_install_only` to be set in `bss` when `--enterprise`
     // is set, otherwise we don't want the flag _at all_, which includes both
@@ -1236,6 +1239,42 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     return Promise.all(promises);
+  }
+
+  validateStaticThemeCSSGradientMinVersion() {
+    if (!this.isStaticTheme) return;
+
+    const hasCSSGradient = ['theme', 'dark_theme'].some((themeKey) => {
+      const themeImages = this.parsedJSON[themeKey]?.images;
+      if (!themeImages) return false;
+      if (
+        Array.isArray(themeImages.additional_backgrounds) &&
+        themeImages.additional_backgrounds.some(
+          (item) => typeof item !== 'string'
+        )
+      ) {
+        return true;
+      }
+      if (
+        themeImages.theme_frame != null &&
+        typeof themeImages.theme_frame !== 'string'
+      ) {
+        return true;
+      }
+      return false;
+    });
+
+    if (!hasCSSGradient) return;
+
+    const minVersion = firefoxStrictMinVersion(this.parsedJSON);
+    if (minVersion === null || minVersion < CSS_GRADIENT_MIN_FIREFOX_VERSION) {
+      this.collector.addError(
+        messages.manifestThemeCSSGradientMinVersion(
+          CSS_GRADIENT_MIN_FIREFOX_VERSION
+        )
+      );
+      this.isValid = false;
+    }
   }
 
   validateFileExistsInPackage(

@@ -568,6 +568,27 @@ export function manifestThemeCSSGradientFunctionUnsupported(gradientFn) {
   };
 }
 
+export const MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION =
+  'MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION';
+export function manifestThemeCSSGradientMinVersion(minVersion) {
+  return {
+    code: MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION,
+    message: i18n.sprintf(
+      i18n._(
+        'Theme CSS gradients require "strict_min_version" to be set to "%(minVersion)s" or above'
+      ),
+      { minVersion }
+    ),
+    description: i18n.sprintf(
+      i18n._(
+        'CSS gradients in theme images are only supported in Firefox %(minVersion)s and above. Please set "browser_specific_settings.gecko.strict_min_version" to "%(minVersion)s" or higher in your manifest.json.'
+      ),
+      { minVersion }
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
 export const PROP_NAME_MISSING = manifestPropMissing('name');
 
 export const NO_MESSAGES_FILE = {
