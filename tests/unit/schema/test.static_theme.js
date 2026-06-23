@@ -42,4 +42,46 @@ describe('static theme', () => {
       'must NOT have additional properties'
     );
   });
+
+  it('should accept additional_backgrounds with a CSS gradient object', () => {
+    const manifest = cloneDeep(JSON.parse(validStaticThemeManifestJSON()));
+    manifest.theme.images = {
+      additional_backgrounds: [
+        { 'linear-gradient': 'to bottom, #FF6BBA -18.096%, #FFC999 50%' },
+      ],
+    };
+    validateStaticTheme(manifest);
+    expect(validateStaticTheme.errors).toBeNull();
+  });
+
+  it('should accept additional_backgrounds mixing image paths and CSS gradient objects', () => {
+    const manifest = cloneDeep(JSON.parse(validStaticThemeManifestJSON()));
+    manifest.theme.images = {
+      additional_backgrounds: [
+        'bg1.svg',
+        { 'linear-gradient': 'to bottom, #FF6BBA -18.096%, #FFC999 50%' },
+        'bg2.png',
+      ],
+    };
+    validateStaticTheme(manifest);
+    expect(validateStaticTheme.errors).toBeNull();
+  });
+
+  it('should fail on additional_backgrounds with an invalid CSS gradient object', () => {
+    const manifest = cloneDeep(JSON.parse(validStaticThemeManifestJSON()));
+    manifest.theme.images = {
+      additional_backgrounds: [
+        { 'invalid-gradient': 'to bottom, #FF6BBA, #FFC999' },
+      ],
+    };
+    validateStaticTheme(manifest);
+    expect(validateStaticTheme.errors).not.toBeNull();
+    expect(
+      validateStaticTheme.errors.some(
+        (err) =>
+          err.instancePath === '/theme/images/additional_backgrounds/0' &&
+          err.message === 'must match a schema in anyOf'
+      )
+    ).toBe(true);
+  });
 });

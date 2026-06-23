@@ -1156,6 +1156,11 @@ export default class ManifestJSONParser extends JSONParser {
       for (const prop of Object.keys(themeImages)) {
         if (Array.isArray(themeImages[prop])) {
           themeImages[prop].forEach((imagePath) => {
+            // CSS gradient objects (ThemeCSSGradient) are not image files and
+            // so they should not be checked for file existence or valid mime-type.
+            if (typeof imagePath !== 'string') {
+              return;
+            }
             promises.push(this.validateThemeImage(imagePath, prop));
           });
         } else {

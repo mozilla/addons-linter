@@ -4227,6 +4227,47 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(true);
     });
 
+    it('validates image files while skipping CSS gradient objects in additional_backgrounds', async () => {
+      const linter = new Linter({ _: ['bar'] });
+      const imageFiles = ['bg1.svg', 'bg2.png'];
+      const manifest = validStaticThemeManifestJSON({
+        theme: {
+          images: {
+            additional_backgrounds: [
+              imageFiles[0],
+              { 'linear-gradient': 'to bottom, #FF6BBA -18.096%, #FFC999 50%' },
+              imageFiles[1],
+            ],
+          },
+        },
+      });
+
+      const files = {
+        'bg1.svg': EMPTY_SVG,
+        'bg2.png': EMPTY_PNG,
+      };
+      const fakeIO = getStreamableIO(files);
+      fakeIO.getFileAsStream = jest.fn(fakeIO.getFileAsStream);
+
+      const manifestJSONParser = new ManifestJSONParser(
+        manifest,
+        linter.collector,
+        { io: fakeIO }
+      );
+
+      await manifestJSONParser.validateStaticThemeImages();
+
+      // Only the two image files should be read and the gradient skipped.
+      expect(fakeIO.getFileAsStream.mock.calls.length).toBe(imageFiles.length);
+      expect(fakeIO.getFileAsStream.mock.calls.map((call) => call[0])).toEqual(
+        imageFiles
+      );
+
+      const { errors, warnings } = linter.collector;
+      expect({ errors, warnings }).toEqual({ errors: [], warnings: [] });
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
     it('considers theme.images as optional', async () => {
       const linter = new Linter({ _: ['bar'] });
       const manifest = validStaticThemeManifestJSON({
