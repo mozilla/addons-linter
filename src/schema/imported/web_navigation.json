@@ -8,7 +8,7 @@
     {
       "name": "getFrame",
       "type": "function",
-      "description": "Retrieves information about the given frame. A frame refers to an &lt;iframe&gt; or a &lt;frame&gt; of a web page and is identified by a tab ID and a frame ID.",
+      "description": "Retrieves information about the given frame. A frame refers to an &lt;iframe&gt; or a &lt;frame&gt; of a web page and is identified by a tab ID and a frame ID, or by its document ID.",
       "async": "callback",
       "parameters": [
         {
@@ -19,7 +19,7 @@
             "tabId": {
               "type": "integer",
               "minimum": 0,
-              "description": "The ID of the tab in which the frame is."
+              "description": "The ID of the tab in which the frame is. Must be specified if documentId is not set."
             },
             "processId": {
               "type": "integer",
@@ -28,13 +28,13 @@
             "frameId": {
               "type": "integer",
               "minimum": 0,
-              "description": "The ID of the frame in the given tab."
+              "description": "The ID of the frame in the given tab. Must be specified if documentId is not set."
+            },
+            "documentId": {
+              "type": "string",
+              "description": "The UUID of the document. If provided, tabId and frameId are optional. If all are provided, the frame is only returned if all properties match."
             }
-          },
-          "required": [
-            "tabId",
-            "frameId"
-          ]
+          }
         },
         {
           "type": "function",
@@ -65,13 +65,22 @@
                 "parentFrameId": {
                   "type": "integer",
                   "description": "ID of frame that wraps the frame. Set to -1 of no parent frame exists."
+                },
+                "documentId": {
+                  "type": "string",
+                  "description": "A UUID of the document loaded."
+                },
+                "parentDocumentId": {
+                  "type": "string",
+                  "description": "A UUID of the parent document owning this frame. This is not set if there is no parent."
                 }
               },
               "required": [
                 "url",
                 "tabId",
                 "frameId",
-                "parentFrameId"
+                "parentFrameId",
+                "documentId"
               ]
             }
           ]
@@ -132,6 +141,14 @@
                     "type": "integer",
                     "description": "ID of frame that wraps the frame. Set to -1 of no parent frame exists."
                   },
+                  "documentId": {
+                    "type": "string",
+                    "description": "A UUID of the document loaded."
+                  },
+                  "parentDocumentId": {
+                    "type": "string",
+                    "description": "A UUID of the parent document owning this frame. This is not set if there is no parent."
+                  },
                   "url": {
                     "type": "string",
                     "description": "The URL currently associated with this frame."
@@ -142,6 +159,7 @@
                   "tabId",
                   "frameId",
                   "parentFrameId",
+                  "documentId",
                   "url"
                 ]
               }
@@ -180,6 +198,10 @@
             "parentFrameId": {
               "type": "integer",
               "description": "ID of frame that wraps the frame. Set to -1 of no parent frame exists."
+            },
+            "parentDocumentId": {
+              "type": "string",
+              "description": "A UUID of the parent document owning this frame. This is not set if there is no parent."
             },
             "timeStamp": {
               "type": "number",
@@ -236,6 +258,14 @@
               "type": "integer",
               "description": "0 indicates the navigation happens in the tab content window; a positive value indicates navigation in a subframe. Frame IDs are unique within a tab."
             },
+            "documentId": {
+              "type": "string",
+              "description": "A UUID of the document loaded."
+            },
+            "parentDocumentId": {
+              "type": "string",
+              "description": "A UUID of the parent document owning this frame. This is not set if there is no parent."
+            },
             "transitionType": {
               "allOf": [
                 {
@@ -263,6 +293,7 @@
             "url",
             "processId",
             "frameId",
+            "documentId",
             "transitionType",
             "transitionQualifiers",
             "timeStamp"
@@ -309,6 +340,14 @@
               "type": "integer",
               "description": "0 indicates the navigation happens in the tab content window; a positive value indicates navigation in a subframe. Frame IDs are unique within a tab."
             },
+            "documentId": {
+              "type": "string",
+              "description": "A UUID of the document loaded."
+            },
+            "parentDocumentId": {
+              "type": "string",
+              "description": "A UUID of the parent document owning this frame. This is not set if there is no parent."
+            },
             "timeStamp": {
               "type": "number",
               "description": "The time when the page's DOM was fully constructed, in milliseconds since the epoch."
@@ -319,6 +358,7 @@
             "url",
             "processId",
             "frameId",
+            "documentId",
             "timeStamp"
           ]
         }
@@ -363,6 +403,14 @@
               "type": "integer",
               "description": "0 indicates the navigation happens in the tab content window; a positive value indicates navigation in a subframe. Frame IDs are unique within a tab."
             },
+            "documentId": {
+              "type": "string",
+              "description": "A UUID of the document loaded."
+            },
+            "parentDocumentId": {
+              "type": "string",
+              "description": "A UUID of the parent document owning this frame. This is not set if there is no parent."
+            },
             "timeStamp": {
               "type": "number",
               "description": "The time when the document finished loading, in milliseconds since the epoch."
@@ -373,6 +421,7 @@
             "url",
             "processId",
             "frameId",
+            "documentId",
             "timeStamp"
           ]
         }
@@ -417,6 +466,14 @@
               "type": "integer",
               "description": "0 indicates the navigation happens in the tab content window; a positive value indicates navigation in a subframe. Frame IDs are unique within a tab."
             },
+            "documentId": {
+              "type": "string",
+              "description": "A UUID of the document loaded."
+            },
+            "parentDocumentId": {
+              "type": "string",
+              "description": "A UUID of the parent document owning this frame. This is not set if there is no parent."
+            },
             "error": {
               "unsupported": true,
               "type": "string",
@@ -432,6 +489,7 @@
             "url",
             "processId",
             "frameId",
+            "documentId",
             "error",
             "timeStamp"
           ]
@@ -536,6 +594,14 @@
               "type": "integer",
               "description": "0 indicates the navigation happens in the tab content window; a positive value indicates navigation in a subframe. Frame IDs are unique within a tab."
             },
+            "documentId": {
+              "type": "string",
+              "description": "A UUID of the document loaded."
+            },
+            "parentDocumentId": {
+              "type": "string",
+              "description": "A UUID of the parent document owning this frame. This is not set if there is no parent."
+            },
             "transitionType": {
               "allOf": [
                 {
@@ -563,6 +629,7 @@
             "url",
             "processId",
             "frameId",
+            "documentId",
             "transitionType",
             "transitionQualifiers",
             "timeStamp"
@@ -639,6 +706,14 @@
               "type": "integer",
               "description": "0 indicates the navigation happens in the tab content window; a positive value indicates navigation in a subframe. Frame IDs are unique within a tab."
             },
+            "documentId": {
+              "type": "string",
+              "description": "A UUID of the document loaded."
+            },
+            "parentDocumentId": {
+              "type": "string",
+              "description": "A UUID of the parent document owning this frame. This is not set if there is no parent."
+            },
             "transitionType": {
               "allOf": [
                 {
@@ -666,6 +741,7 @@
             "url",
             "processId",
             "frameId",
+            "documentId",
             "transitionType",
             "transitionQualifiers",
             "timeStamp"

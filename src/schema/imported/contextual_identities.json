@@ -38,6 +38,76 @@
       ]
     },
     {
+      "name": "getSupportedColors",
+      "type": "function",
+      "description": "Retrieves the list of colors supported by contextual identities.",
+      "async": "callback",
+      "parameters": [
+        {
+          "name": "callback",
+          "type": "function",
+          "parameters": [
+            {
+              "name": "colors",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "color": {
+                    "type": "string",
+                    "description": "The color name, as accepted by the color property of create and update."
+                  },
+                  "colorCode": {
+                    "type": "string",
+                    "description": "The color hash for this color name."
+                  }
+                },
+                "required": [
+                  "color",
+                  "colorCode"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "getSupportedIcons",
+      "type": "function",
+      "description": "Retrieves the list of icons supported by contextual identities.",
+      "async": "callback",
+      "parameters": [
+        {
+          "name": "callback",
+          "type": "function",
+          "parameters": [
+            {
+              "name": "icons",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "icon": {
+                    "type": "string",
+                    "description": "The icon name, as accepted by the icon property of create and update."
+                  },
+                  "iconUrl": {
+                    "type": "string",
+                    "description": "The icon url for this icon name."
+                  }
+                },
+                "required": [
+                  "icon",
+                  "iconUrl"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "create",
       "type": "function",
       "description": "Creates a contextual identity with the given data.",

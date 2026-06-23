@@ -635,6 +635,9 @@
           "$ref": "menus#/definitions/OptionalPermissionNoPrompt"
         },
         {
+          "$ref": "publicSuffix#/definitions/OptionalPermissionNoPrompt"
+        },
+        {
           "$ref": "scripting#/definitions/OptionalPermissionNoPrompt"
         },
         {

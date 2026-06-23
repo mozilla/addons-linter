@@ -42,6 +42,7 @@ import permissions from './permissions.json';
 import pkcs11 from './pkcs11.json';
 import privacy from './privacy.json';
 import proxy from './proxy.json';
+import publicSuffix from './public_suffix.json';
 import runtime from './runtime.json';
 import scripting from './scripting.json';
 import search from './search.json';
@@ -104,6 +105,7 @@ export default [
   pkcs11,
   privacy,
   proxy,
+  publicSuffix,
   runtime,
   scripting,
   search,

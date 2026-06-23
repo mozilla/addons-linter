@@ -138,6 +138,26 @@
       }
     },
     {
+      "name": "getDocumentId",
+      "type": "function",
+      "allowedContexts": [
+        "content",
+        "devtools"
+      ],
+      "description": "Get the documentId of any window global or frame element. Throws for invalid targets, such as unloaded frames.",
+      "parameters": [
+        {
+          "name": "target",
+          "description": "A WindowProxy or a browsing context container Element (iframe, frame, embed, or object) for the target frame."
+        }
+      ],
+      "allowCrossOriginArguments": true,
+      "returns": {
+        "type": "string",
+        "description": "The documentId of the target document."
+      }
+    },
+    {
       "name": "getFrameId",
       "type": "function",
       "allowedContexts": [
@@ -148,7 +168,7 @@
       "parameters": [
         {
           "name": "target",
-          "description": "A WindowProxy or a Browsing Context container element (IFrame, Frame, Embed, Object) for the target frame."
+          "description": "A WindowProxy or a browsing context container Element (iframe, frame, embed, or object) for the target frame."
         }
       ],
       "allowCrossOriginArguments": true,
@@ -876,7 +896,6 @@
         },
         "documentId": {
           "type": "string",
-          "unsupported": true,
           "description": "An UUID for the document associated with this context, or undefined if it is not hosted in a document"
         },
         "documentOrigin": {
@@ -977,6 +996,10 @@
         "frameId": {
           "type": "integer",
           "description": "The $(topic:frame_ids)[frame] that opened the connection. 0 for top-level frames, positive for child frames. This will only be set when <code>tab</code> is set."
+        },
+        "documentId": {
+          "type": "string",
+          "description": "A UUID of the document that opened the connection."
         },
         "id": {
           "type": "string",

@@ -88,6 +88,10 @@
               "type": "integer",
               "minimum": 0,
               "description": "Open a port to a specific $(topic:frame_ids)[frame] identified by <code>frameId</code> instead of all frames in the tab."
+            },
+            "documentId": {
+              "type": "string",
+              "description": "Open a port to a specific document identified by <code>documentId</code> instead of all frames in the tab."
             }
           },
           "optional": true
@@ -126,6 +130,10 @@
               "type": "integer",
               "minimum": 0,
               "description": "Send a message to a specific $(topic:frame_ids)[frame] identified by <code>frameId</code> instead of all frames in the tab."
+            },
+            "documentId": {
+              "type": "string",
+              "description": "Send a message to a specific document identified by <code>documentId</code> instead of all frames in the tab."
             }
           },
           "optional": true
