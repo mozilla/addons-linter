@@ -1,6 +1,7 @@
 import cloneDeep from 'lodash.clonedeep';
 
 import { validateStaticTheme } from 'schema/validator';
+import { SUPPORTED_CSS_GRADIENT_FUNCTIONS } from 'parsers/manifestjson';
 
 import { validStaticThemeManifestJSON } from '../helpers';
 
@@ -122,5 +123,16 @@ describe('static theme', () => {
         ).toBe(true);
       }
     );
+
+    it('SUPPORTED_CSS_GRADIENT_FUNCTIONS matches the ThemeCSSGradient schema', () => {
+      expect([...SUPPORTED_CSS_GRADIENT_FUNCTIONS]).toEqual([
+        'linear-gradient',
+        'radial-gradient',
+        'conic-gradient',
+        'repeating-linear-gradient',
+        'repeating-radial-gradient',
+        'repeating-conic-gradient',
+      ]);
+    });
   });
 });

@@ -15,6 +15,7 @@ import {
   validateLangPack,
   validateStaticTheme,
 } from 'schema/validator';
+import themeSchemaObject from 'schema/imported/theme';
 import {
   CSP_KEYWORD_RE,
   DEPRECATED_MANIFEST_PROPERTIES,
@@ -81,6 +82,39 @@ async function getImageMetadata(io, iconPath) {
 
 function getNormalizedExtension(_path) {
   return path.extname(_path).substring(1).toLowerCase();
+}
+
+export const SUPPORTED_CSS_GRADIENT_FUNCTIONS = new Set(
+  themeSchemaObject.types.ThemeCSSGradient.anyOf.map(
+    (variant) => Object.keys(variant.properties)[0]
+  )
+);
+
+// Matches only the instancePaths where ThemeBackground (and therefore
+// ThemeCSSGradient) is valid: additional_backgrounds array items and
+// theme_frame under theme or dark_theme.
+const THEME_BACKGROUND_PATH_RE =
+  /^\/(theme|dark_theme)\/images\/(additional_backgrounds\/\d+|theme_frame)$/;
+
+// Returns the unsupported gradient function name if `instancePath` is a
+// ThemeBackground position, `data` looks like a ThemeCSSGradient object, and
+// its key is not one of the supported gradient functions; returns null otherwise.
+function getUnknownCSSGradientFn(instancePath, data) {
+  if (!THEME_BACKGROUND_PATH_RE.test(instancePath)) {
+    return null;
+  }
+  if (data === null || typeof data !== 'object' || Array.isArray(data)) {
+    return null;
+  }
+  const keys = Object.keys(data);
+  if (
+    keys.length === 1 &&
+    typeof data[keys[0]] === 'string' &&
+    !SUPPORTED_CSS_GRADIENT_FUNCTIONS.has(keys[0])
+  ) {
+    return keys[0];
+  }
+  return null;
 }
 
 export default class ManifestJSONParser extends JSONParser {
@@ -376,6 +410,14 @@ export default class ManifestJSONParser extends JSONParser {
       baseObject = messages.manifestThemeCSSGradientInvalid(error.params);
       overrides.message = baseObject.message;
       overrides.description = baseObject.description;
+    } else if (error.keyword === SCHEMA_KEYWORDS.ANY_OF) {
+      const unknownFn = getUnknownCSSGradientFn(error.instancePath, error.data);
+      if (unknownFn) {
+        baseObject =
+          messages.manifestThemeCSSGradientFunctionUnsupported(unknownFn);
+        overrides.message = baseObject.message;
+        overrides.description = baseObject.description;
+      }
     }
 
     // Arrays can be extremely verbose, this tries to make them a little
@@ -490,18 +532,22 @@ export default class ManifestJSONParser extends JSONParser {
         JSON.stringify(validate.errors, null, 2)
       );
 
+      const isCSSGradientError = (e) =>
+        e.keyword === SCHEMA_KEYWORDS.VALIDATE_CSS_GRADIENT ||
+        (e.keyword === SCHEMA_KEYWORDS.ANY_OF &&
+          getUnknownCSSGradientFn(e.instancePath, e.data) !== null);
+
       const cssGradientErrorPaths = new Set(
-        validate.errors
-          .filter((e) => e.keyword === SCHEMA_KEYWORDS.VALIDATE_CSS_GRADIENT)
-          .map((e) => e.instancePath)
+        validate.errors.filter(isCSSGradientError).map((e) => e.instancePath)
       );
 
       validate.errors.forEach((error) => {
-        // Omit other validation errors hit by the same instancePath for which we are
-        // already reporting MANIFEST_THEME_CSS_GRADIENT_INVALID linting error (otherwise
-        // the resulting validation errors are going to be potentially confusing).
+        // Omit other validation errors at the same instancePath for which we are
+        // already reporting a CSS gradient linting error (either
+        // MANIFEST_THEME_CSS_GRADIENT_INVALID or MANIFEST_THEME_CSS_GRADIENT_UNSUPPORTED),
+        // otherwise the resulting validation errors are going to be potentially confusing.
         if (
-          error.keyword !== SCHEMA_KEYWORDS.VALIDATE_CSS_GRADIENT &&
+          !isCSSGradientError(error) &&
           cssGradientErrorPaths.has(error.instancePath)
         ) {
           return;

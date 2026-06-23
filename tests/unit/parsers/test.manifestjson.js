@@ -4261,6 +4261,38 @@ describe('ManifestJSONParser', () => {
       ).toEqual([]);
     });
 
+    it('reports an error for an unsupported CSS gradient function in additional_backgrounds', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const manifest = validStaticThemeManifestJSON({
+        theme: {
+          images: {
+            additional_backgrounds: [
+              { 'unknown-gradient': '90deg, #FCFBFF 0%, #EFEDF2 100%' },
+            ],
+          },
+        },
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        manifest,
+        linter.collector,
+        { io: { files: {} } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_THEME_CSS_GRADIENT_UNSUPPORTED,
+        message:
+          'Theme CSS gradient function "unknown-gradient" is not supported',
+      });
+      // No anyOf/branch noise should be emitted for the same entry.
+      expect(
+        linter.collector.errors.filter(
+          (e) => e.code !== messages.MANIFEST_THEME_CSS_GRADIENT_UNSUPPORTED
+        )
+      ).toEqual([]);
+    });
+
     it('validates image files while skipping CSS gradient objects in additional_backgrounds', async () => {
       const linter = new Linter({ _: ['bar'] });
       const imageFiles = ['bg1.svg', 'bg2.png'];

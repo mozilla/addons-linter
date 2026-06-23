@@ -549,6 +549,25 @@ export function manifestThemeCSSGradientInvalid({ gradientFn, gradientParams }) 
   };
 }
 
+export const MANIFEST_THEME_CSS_GRADIENT_UNSUPPORTED =
+  'MANIFEST_THEME_CSS_GRADIENT_UNSUPPORTED';
+export function manifestThemeCSSGradientFunctionUnsupported(gradientFn) {
+  return {
+    code: MANIFEST_THEME_CSS_GRADIENT_UNSUPPORTED,
+    message: i18n.sprintf(
+      i18n._('Theme CSS gradient function "%(gradientFn)s" is not supported'),
+      { gradientFn }
+    ),
+    description: i18n.sprintf(
+      i18n._(
+        '"%(gradientFn)s" is not a supported CSS gradient function. Supported functions are: linear-gradient, radial-gradient, conic-gradient, repeating-linear-gradient, repeating-radial-gradient, repeating-conic-gradient'
+      ),
+      { gradientFn }
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
 export const PROP_NAME_MISSING = manifestPropMissing('name');
 
 export const NO_MESSAGES_FILE = {
