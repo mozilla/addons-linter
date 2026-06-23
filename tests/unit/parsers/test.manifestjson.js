@@ -4253,6 +4253,12 @@ describe('ManifestJSONParser', () => {
         description:
           '"linear-gradient": "red), url(chrome://path/to/image.png), linear-gradient(transparent," is not valid CSS',
       });
+      // No anyOf/branch noise should be emitted for the same entry.
+      expect(
+        linter.collector.errors.filter(
+          (e) => e.code !== messages.MANIFEST_THEME_CSS_GRADIENT_INVALID
+        )
+      ).toEqual([]);
     });
 
     it('validates image files while skipping CSS gradient objects in additional_backgrounds', async () => {

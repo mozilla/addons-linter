@@ -490,7 +490,23 @@ export default class ManifestJSONParser extends JSONParser {
         JSON.stringify(validate.errors, null, 2)
       );
 
+      const cssGradientErrorPaths = new Set(
+        validate.errors
+          .filter((e) => e.keyword === SCHEMA_KEYWORDS.VALIDATE_CSS_GRADIENT)
+          .map((e) => e.instancePath)
+      );
+
       validate.errors.forEach((error) => {
+        // Omit other validation errors hit by the same instancePath for which we are
+        // already reporting MANIFEST_THEME_CSS_GRADIENT_INVALID linting error (otherwise
+        // the resulting validation errors are going to be potentially confusing).
+        if (
+          error.keyword !== SCHEMA_KEYWORDS.VALIDATE_CSS_GRADIENT &&
+          cssGradientErrorPaths.has(error.instancePath)
+        ) {
+          return;
+        }
+
         const message = this.errorLookup(error);
 
         // errorLookup call returned a null or undefined message,
