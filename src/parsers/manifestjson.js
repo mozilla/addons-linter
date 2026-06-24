@@ -1410,6 +1410,11 @@ export default class ManifestJSONParser extends JSONParser {
       // This is the strict min *major* version for Firefox for desktop.
       firefoxStrictMinVersion: firefoxStrictMinVersion(this.parsedJSON),
       experimentApiPaths: this.getExperimentApiPaths(),
+      dnrRuleFiles: (
+        this.parsedJSON.declarative_net_request?.rule_resources ?? []
+      )
+        .map((r) => r.path)
+        .filter(Boolean),
     };
   }
 }
