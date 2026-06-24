@@ -345,9 +345,9 @@ describe('Linter.getScanner()', () => {
   it('should return JSONScanner for manifest.json and locale messages', () => {
     const addonLinter = new Linter({ _: ['foo'] });
     expect(addonLinter.getScanner('manifest.json')).toEqual(JSONScanner);
-    expect(
-      addonLinter.getScanner('_locales/en/messages.json')
-    ).toEqual(JSONScanner);
+    expect(addonLinter.getScanner('_locales/en/messages.json')).toEqual(
+      JSONScanner
+    );
   });
 
   it('should return BinaryScanner for arbitrary JSON files', () => {
