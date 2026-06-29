@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-require('@babel/register');
 
 const path = require('path');
 const fs = require('fs');
