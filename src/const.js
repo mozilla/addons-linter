@@ -250,6 +250,7 @@ export const SCHEMA_KEYWORDS_CUSTOM = {
   // schema data as part of the schema data inmport and used by the linter to hook up
   // custom validation logic for privileged permissions.
   VALIDATE_PRIVILEGED_PERMISSIONS: 'validatePrivilegedPermissions',
+  VALIDATE_CSS_GRADIENT: 'validCSSGradient',
 };
 
 export const SCHEMA_KEYWORDS = {
@@ -262,6 +263,8 @@ export const SCHEMA_KEYWORDS = {
   // Non-standard JSONSchema keywords (defined and used by the Firefox and/or addons-linter).
   ...SCHEMA_KEYWORDS_CUSTOM,
 };
+
+export const CSS_GRADIENT_MIN_FIREFOX_VERSION = 153;
 
 // Default configuration values for the linter.
 export const DEFAULT_CONFIG = {
