@@ -694,11 +694,13 @@ export class SchemaValidator {
       { rootData /* instancePath, parentData, parentDataProperty, */ }
     ) => {
       if (keywordSchemaValue === 'validCSSGradient') {
-        const [gradientFn, gradientParams] = Object.entries(propValue)[0];
+        // Gather the CSS gradient's function name and params from the theme
+        // properties and use csstree.parse to validate it. 
+        const [functionName, params] = Object.entries(propValue)[0];
         let hasParseError = false;
         let parsed;
         try {
-          parsed = csstree.parse(`${gradientFn}(${gradientParams})`, {
+          parsed = csstree.parse(`${functionName}(${params})`, {
             context: 'value',
             onParseError: () => {
               hasParseError = true;
@@ -706,7 +708,7 @@ export class SchemaValidator {
           });
         } catch (err) {
           log.error(
-            `Unexpected error while parsing CSS gradient "${gradientFn}(${gradientParams})"`,
+            `Unexpected error while parsing CSS gradient "${functionName}(${params})"`,
             err.message
           );
           hasParseError = true;
@@ -725,8 +727,8 @@ export class SchemaValidator {
           validateRequiredManifestBackgroundKeys.errors = [
             {
               keyword: SCHEMA_KEYWORDS.VALIDATE_CSS_GRADIENT,
-              message: `"${gradientFn}" has invalid CSS gradient parameters`,
-              params: { gradientFn, gradientParams },
+              message: `"${functionName}" has invalid CSS gradient parameters`,
+              params: { functionName, params },
             },
           ];
           return false;
