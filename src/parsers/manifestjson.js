@@ -1236,11 +1236,15 @@ export default class ManifestJSONParser extends JSONParser {
   }
 
   validateStaticThemeCSSGradientMinVersion() {
-    if (!this.isStaticTheme) return;
+    if (!this.isStaticTheme) {
+      return;
+    }
 
     const hasCSSGradient = ['theme', 'dark_theme'].some((themeKey) => {
       const themeImages = this.parsedJSON[themeKey]?.images;
-      if (!themeImages) return false;
+      if (!themeImages) {
+        return false;
+      }
       if (
         Array.isArray(themeImages.additional_backgrounds) &&
         themeImages.additional_backgrounds.some(
@@ -1258,7 +1262,9 @@ export default class ManifestJSONParser extends JSONParser {
       return false;
     });
 
-    if (!hasCSSGradient) return;
+    if (!hasCSSGradient) {
+      return;
+    }
 
     const minVersion = firefoxStrictMinVersion(this.parsedJSON);
     if (minVersion === null || minVersion < CSS_GRADIENT_MIN_FIREFOX_VERSION) {
