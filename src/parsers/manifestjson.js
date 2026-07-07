@@ -90,10 +90,15 @@ function getNormalizedExtension(_path) {
 // ThemeBackground position, `data` looks like a ThemeCSSGradient object, and
 // its key is not one of the supported gradient functions; returns null otherwise.
 function getUnknownCSSGradientFn(instancePath, data) {
-  if (!THEME_BACKGROUND_PATH_RE.test(instancePath)) {
-    return null;
-  }
-  if (data === null || typeof data !== 'object' || Array.isArray(data)) {
+  if (
+    // instancePath isn't one CSS gradients are supported (static themes
+    // additional_backgrounds or theme_frame properties).
+    !THEME_BACKGROUND_PATH_RE.test(instancePath) ||
+    // data isn't in the expected "JS object literal" form.
+    data === null ||
+    typeof data !== 'object' ||
+    Array.isArray(data)
+  ) {
     return null;
   }
   const keys = Object.keys(data);
