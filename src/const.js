@@ -1,3 +1,5 @@
+import themeSchemaObject from 'schema/imported/theme';
+
 export const ESLINT_ERROR = 2;
 export const ESLINT_WARNING = 1;
 
@@ -150,6 +152,18 @@ export const STATIC_THEME_IMAGE_MIMES = [
   ...new Set(Object.values(FILE_EXTENSIONS_TO_MIME)),
 ];
 
+export const SUPPORTED_CSS_GRADIENT_FUNCTIONS = new Set(
+  themeSchemaObject.types.ThemeCSSGradient.anyOf.map(
+    (variant) => Object.keys(variant.properties)[0]
+  )
+);
+
+// Matches only the instancePaths where ThemeBackground (and therefore
+// ThemeCSSGradient) is valid: additional_backgrounds array items and
+// theme_frame under theme or dark_theme.
+export const THEME_BACKGROUND_PATH_RE =
+  /^\/(theme|dark_theme)\/images\/(additional_backgrounds\/\d+|theme_frame)$/;
+
 // Mapping of "schema data paths" of the deprecated properties that we
 // issue warnings for.
 // If the value is `null` we will be using the `deprecated` message
@@ -250,6 +264,7 @@ export const SCHEMA_KEYWORDS_CUSTOM = {
   // schema data as part of the schema data inmport and used by the linter to hook up
   // custom validation logic for privileged permissions.
   VALIDATE_PRIVILEGED_PERMISSIONS: 'validatePrivilegedPermissions',
+  VALIDATE_CSS_GRADIENT: 'validCSSGradient',
 };
 
 export const SCHEMA_KEYWORDS = {
@@ -262,6 +277,8 @@ export const SCHEMA_KEYWORDS = {
   // Non-standard JSONSchema keywords (defined and used by the Firefox and/or addons-linter).
   ...SCHEMA_KEYWORDS_CUSTOM,
 };
+
+export const CSS_GRADIENT_MIN_FIREFOX_VERSION = 153;
 
 // Default configuration values for the linter.
 export const DEFAULT_CONFIG = {

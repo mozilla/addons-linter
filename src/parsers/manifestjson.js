@@ -16,6 +16,7 @@ import {
   validateStaticTheme,
 } from 'schema/validator';
 import {
+  CSS_GRADIENT_MIN_FIREFOX_VERSION,
   CSP_KEYWORD_RE,
   DEPRECATED_MANIFEST_PROPERTIES,
   FILE_EXTENSIONS_TO_MIME,
@@ -29,7 +30,9 @@ import {
   RESTRICTED_HOMEPAGE_URLS,
   RESTRICTED_PERMISSIONS,
   SCHEMA_KEYWORDS,
+  SUPPORTED_CSS_GRADIENT_FUNCTIONS,
   STATIC_THEME_IMAGE_MIMES,
+  THEME_BACKGROUND_PATH_RE,
 } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
@@ -81,6 +84,32 @@ async function getImageMetadata(io, iconPath) {
 
 function getNormalizedExtension(_path) {
   return path.extname(_path).substring(1).toLowerCase();
+}
+
+// Returns the unsupported gradient function name if `instancePath` is a
+// ThemeBackground position, `data` looks like a ThemeCSSGradient object, and
+// its key is not one of the supported gradient functions; returns null otherwise.
+function getUnknownCSSGradientFn(instancePath, data) {
+  if (
+    // instancePath isn't one CSS gradients are supported (static themes
+    // additional_backgrounds or theme_frame properties).
+    !THEME_BACKGROUND_PATH_RE.test(instancePath) ||
+    // data isn't in the expected "JS object literal" form.
+    data === null ||
+    typeof data !== 'object' ||
+    Array.isArray(data)
+  ) {
+    return null;
+  }
+  const keys = Object.keys(data);
+  if (
+    keys.length === 1 &&
+    typeof data[keys[0]] === 'string' &&
+    !SUPPORTED_CSS_GRADIENT_FUNCTIONS.has(keys[0])
+  ) {
+    return keys[0];
+  }
+  return null;
 }
 
 export default class ManifestJSONParser extends JSONParser {
@@ -372,6 +401,18 @@ export default class ManifestJSONParser extends JSONParser {
         : messages.manifestFieldPrivileged(error);
       overrides.message = baseObject.message;
       overrides.description = baseObject.description;
+    } else if (error.keyword === SCHEMA_KEYWORDS.VALIDATE_CSS_GRADIENT) {
+      baseObject = messages.manifestThemeCSSGradientInvalid(error.params);
+      overrides.message = baseObject.message;
+      overrides.description = baseObject.description;
+    } else if (error.keyword === SCHEMA_KEYWORDS.ANY_OF) {
+      const unknownFn = getUnknownCSSGradientFn(error.instancePath, error.data);
+      if (unknownFn) {
+        baseObject =
+          messages.manifestThemeCSSGradientFunctionUnsupported(unknownFn);
+        overrides.message = baseObject.message;
+        overrides.description = baseObject.description;
+      }
     }
 
     // Arrays can be extremely verbose, this tries to make them a little
@@ -486,7 +527,27 @@ export default class ManifestJSONParser extends JSONParser {
         JSON.stringify(validate.errors, null, 2)
       );
 
+      const isCSSGradientError = (e) =>
+        e.keyword === SCHEMA_KEYWORDS.VALIDATE_CSS_GRADIENT ||
+        (e.keyword === SCHEMA_KEYWORDS.ANY_OF &&
+          getUnknownCSSGradientFn(e.instancePath, e.data) !== null);
+
+      const cssGradientErrorPaths = new Set(
+        validate.errors.filter(isCSSGradientError).map((e) => e.instancePath)
+      );
+
       validate.errors.forEach((error) => {
+        // Omit other validation errors at the same instancePath for which we are
+        // already reporting a CSS gradient linting error (either
+        // MANIFEST_THEME_CSS_GRADIENT_INVALID or MANIFEST_THEME_CSS_GRADIENT_UNSUPPORTED),
+        // otherwise the resulting validation errors are going to be potentially confusing.
+        if (
+          !isCSSGradientError(error) &&
+          cssGradientErrorPaths.has(error.instancePath)
+        ) {
+          return;
+        }
+
         const message = this.errorLookup(error);
 
         // errorLookup call returned a null or undefined message,
@@ -537,6 +598,8 @@ export default class ManifestJSONParser extends JSONParser {
         ...this.parsedJSON.browser_specific_settings,
       };
     }
+
+    this.validateStaticThemeCSSGradientMinVersion();
 
     // We only want `admin_install_only` to be set in `bss` when `--enterprise`
     // is set, otherwise we don't want the flag _at all_, which includes both
@@ -1156,6 +1219,11 @@ export default class ManifestJSONParser extends JSONParser {
       for (const prop of Object.keys(themeImages)) {
         if (Array.isArray(themeImages[prop])) {
           themeImages[prop].forEach((imagePath) => {
+            // CSS gradient objects (ThemeCSSGradient) are not image files and
+            // so they should not be checked for file existence or valid mime-type.
+            if (typeof imagePath !== 'string') {
+              return;
+            }
             promises.push(this.validateThemeImage(imagePath, prop));
           });
         } else {
@@ -1165,6 +1233,48 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     return Promise.all(promises);
+  }
+
+  validateStaticThemeCSSGradientMinVersion() {
+    if (!this.isStaticTheme) {
+      return;
+    }
+
+    const hasCSSGradient = ['theme', 'dark_theme'].some((themeKey) => {
+      const themeImages = this.parsedJSON[themeKey]?.images;
+      if (!themeImages) {
+        return false;
+      }
+      if (
+        Array.isArray(themeImages.additional_backgrounds) &&
+        themeImages.additional_backgrounds.some(
+          (item) => typeof item !== 'string'
+        )
+      ) {
+        return true;
+      }
+      if (
+        themeImages.theme_frame != null &&
+        typeof themeImages.theme_frame !== 'string'
+      ) {
+        return true;
+      }
+      return false;
+    });
+
+    if (!hasCSSGradient) {
+      return;
+    }
+
+    const minVersion = firefoxStrictMinVersion(this.parsedJSON);
+    if (minVersion === null || minVersion < CSS_GRADIENT_MIN_FIREFOX_VERSION) {
+      this.collector.addError(
+        messages.manifestThemeCSSGradientMinVersion(
+          CSS_GRADIENT_MIN_FIREFOX_VERSION
+        )
+      );
+      this.isValid = false;
+    }
   }
 
   validateFileExistsInPackage(

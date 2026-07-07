@@ -4227,6 +4227,237 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(true);
     });
 
+    it('reports an error for invalid CSS gradient parameters in additional_backgrounds', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const manifest = validStaticThemeManifestJSON({
+        theme: {
+          images: {
+            additional_backgrounds: [
+              {
+                'linear-gradient':
+                  'red), url(chrome://path/to/image.png), linear-gradient(transparent,',
+              },
+            ],
+          },
+        },
+        browser_specific_settings: {
+          gecko: { id: '@static-theme', strict_min_version: '153.0' },
+        },
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        manifest,
+        linter.collector,
+        { io: { files: {} } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_THEME_CSS_GRADIENT_INVALID,
+        message: 'Theme CSS gradient "linear-gradient" has invalid parameters',
+        description:
+          '"linear-gradient": "red), url(chrome://path/to/image.png), linear-gradient(transparent," is not valid CSS',
+      });
+      // No anyOf/branch noise should be emitted for the same entry.
+      expect(
+        linter.collector.errors.filter(
+          (e) => e.code !== messages.MANIFEST_THEME_CSS_GRADIENT_INVALID
+        )
+      ).toEqual([]);
+    });
+
+    it('reports an error for an unsupported CSS gradient function in additional_backgrounds', () => {
+      const linter = new Linter({ _: ['bar'] });
+      const manifest = validStaticThemeManifestJSON({
+        theme: {
+          images: {
+            additional_backgrounds: [
+              { 'unknown-gradient': '90deg, #FCFBFF 0%, #EFEDF2 100%' },
+            ],
+          },
+        },
+        browser_specific_settings: {
+          gecko: { id: '@static-theme', strict_min_version: '153.0' },
+        },
+      });
+
+      const manifestJSONParser = new ManifestJSONParser(
+        manifest,
+        linter.collector,
+        { io: { files: {} } }
+      );
+
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(linter.collector.errors, {
+        code: messages.MANIFEST_THEME_CSS_GRADIENT_UNSUPPORTED,
+        message:
+          'Theme CSS gradient function "unknown-gradient" is not supported',
+      });
+      // No anyOf/branch noise should be emitted for the same entry.
+      expect(
+        linter.collector.errors.filter(
+          (e) => e.code !== messages.MANIFEST_THEME_CSS_GRADIENT_UNSUPPORTED
+        )
+      ).toEqual([]);
+    });
+
+    describe('CSS gradient min version', () => {
+      const GRADIENT_THEME = {
+        theme: {
+          images: {
+            additional_backgrounds: [
+              { 'linear-gradient': 'to bottom, #FF6BBA 0%, #FFC999 100%' },
+            ],
+          },
+        },
+      };
+
+      it('reports an error when strict_min_version is not set', () => {
+        const linter = new Linter({ _: ['bar'] });
+        const manifest = validStaticThemeManifestJSON({
+          ...GRADIENT_THEME,
+          browser_specific_settings: { gecko: { id: '@test' } },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          manifest,
+          linter.collector,
+          { io: { files: {} } }
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+        assertHasMatchingError(linter.collector.errors, {
+          code: messages.MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION,
+        });
+      });
+
+      it('reports an error when strict_min_version is below 153', () => {
+        const linter = new Linter({ _: ['bar'] });
+        const manifest = validStaticThemeManifestJSON({
+          ...GRADIENT_THEME,
+          browser_specific_settings: {
+            gecko: { id: '@test', strict_min_version: '109.0' },
+          },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          manifest,
+          linter.collector,
+          { io: { files: {} } }
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+        assertHasMatchingError(linter.collector.errors, {
+          code: messages.MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION,
+        });
+      });
+
+      it('does not report an error when strict_min_version is 153', () => {
+        const linter = new Linter({ _: ['bar'] });
+        const manifest = validStaticThemeManifestJSON({
+          ...GRADIENT_THEME,
+          browser_specific_settings: {
+            gecko: { id: '@test', strict_min_version: '153.0' },
+          },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          manifest,
+          linter.collector,
+          { io: { files: {} } }
+        );
+        expect(manifestJSONParser.isValid).toEqual(true);
+        expect(
+          linter.collector.errors.some(
+            (e) => e.code === messages.MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION
+          )
+        ).toBe(false);
+      });
+
+      it('does not report an error when additional_backgrounds has only image paths', () => {
+        const linter = new Linter({ _: ['bar'] });
+        const manifest = validStaticThemeManifestJSON({
+          theme: {
+            images: { additional_backgrounds: ['bg.png'] },
+          },
+          browser_specific_settings: { gecko: { id: '@test' } },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          manifest,
+          linter.collector,
+          { io: { files: {} } }
+        );
+        expect(manifestJSONParser.isValid).toEqual(true);
+        expect(
+          linter.collector.errors.some(
+            (e) => e.code === messages.MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION
+          )
+        ).toBe(false);
+      });
+
+      it('reports an error when dark_theme uses a CSS gradient without strict_min_version', () => {
+        const linter = new Linter({ _: ['bar'] });
+        const manifest = validStaticThemeManifestJSON({
+          dark_theme: {
+            images: {
+              additional_backgrounds: [
+                { 'linear-gradient': 'to bottom, #20123A 0%, #291D4F 50%' },
+              ],
+            },
+          },
+          browser_specific_settings: { gecko: { id: '@test' } },
+        });
+        const manifestJSONParser = new ManifestJSONParser(
+          manifest,
+          linter.collector,
+          { io: { files: {} } }
+        );
+        expect(manifestJSONParser.isValid).toEqual(false);
+        assertHasMatchingError(linter.collector.errors, {
+          code: messages.MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION,
+        });
+      });
+    });
+
+    it('validates image files while skipping CSS gradient objects in additional_backgrounds', async () => {
+      const linter = new Linter({ _: ['bar'] });
+      const imageFiles = ['bg1.svg', 'bg2.png'];
+      const manifest = validStaticThemeManifestJSON({
+        theme: {
+          images: {
+            additional_backgrounds: [
+              imageFiles[0],
+              { 'linear-gradient': 'to bottom, #FF6BBA -18.096%, #FFC999 50%' },
+              imageFiles[1],
+            ],
+          },
+        },
+        browser_specific_settings: {
+          gecko: { id: '@static-theme', strict_min_version: '153.0' },
+        },
+      });
+
+      const files = {
+        'bg1.svg': EMPTY_SVG,
+        'bg2.png': EMPTY_PNG,
+      };
+      const fakeIO = getStreamableIO(files);
+      fakeIO.getFileAsStream = jest.fn(fakeIO.getFileAsStream);
+
+      const manifestJSONParser = new ManifestJSONParser(
+        manifest,
+        linter.collector,
+        { io: fakeIO }
+      );
+
+      await manifestJSONParser.validateStaticThemeImages();
+
+      // Only the two image files should be read and the gradient skipped.
+      expect(fakeIO.getFileAsStream.mock.calls.length).toBe(imageFiles.length);
+      expect(fakeIO.getFileAsStream.mock.calls.map((call) => call[0])).toEqual(
+        imageFiles
+      );
+
+      const { errors, warnings } = linter.collector;
+      expect({ errors, warnings }).toEqual({ errors: [], warnings: [] });
+      expect(manifestJSONParser.isValid).toEqual(true);
+    });
+
     it('considers theme.images as optional', async () => {
       const linter = new Linter({ _: ['bar'] });
       const manifest = validStaticThemeManifestJSON({

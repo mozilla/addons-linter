@@ -532,6 +532,62 @@ export function manifestThemeImageMimeMismatch({ path, mime }) {
   };
 }
 
+export const MANIFEST_THEME_CSS_GRADIENT_INVALID =
+  'MANIFEST_THEME_CSS_GRADIENT_INVALID';
+export function manifestThemeCSSGradientInvalid({ functionName, params }) {
+  return {
+    code: MANIFEST_THEME_CSS_GRADIENT_INVALID,
+    message: i18n.sprintf(
+      i18n._('Theme CSS gradient "%(functionName)s" has invalid parameters'),
+      { functionName }
+    ),
+    description: i18n.sprintf(
+      i18n._('"%(functionName)s": "%(params)s" is not valid CSS'),
+      { functionName, params }
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const MANIFEST_THEME_CSS_GRADIENT_UNSUPPORTED =
+  'MANIFEST_THEME_CSS_GRADIENT_UNSUPPORTED';
+export function manifestThemeCSSGradientFunctionUnsupported(functionName) {
+  return {
+    code: MANIFEST_THEME_CSS_GRADIENT_UNSUPPORTED,
+    message: i18n.sprintf(
+      i18n._('Theme CSS gradient function "%(functionName)s" is not supported'),
+      { functionName }
+    ),
+    description: i18n.sprintf(
+      i18n._(`"%(functionName)s" is not a supported CSS gradient function.
+        Supported functions are: linear-gradient, radial-gradient, conic-gradient,
+        repeating-linear-gradient, repeating-radial-gradient, repeating-conic-gradient`),
+      { functionName }
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
+export const MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION =
+  'MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION';
+export function manifestThemeCSSGradientMinVersion(minVersion) {
+  return {
+    code: MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION,
+    message: i18n.sprintf(
+      i18n._(`Theme CSS gradients require "strict_min_version" to be set to "%(minVersion)s"
+        or above`),
+      { minVersion }
+    ),
+    description: i18n.sprintf(
+      i18n._(`CSS gradients in theme images are only supported in Firefox %(minVersion)s and
+        above. Please set "browser_specific_settings.gecko.strict_min_version" to "%(minVersion)s"
+        or higher in your manifest.json`),
+      { minVersion }
+    ),
+    file: MANIFEST_JSON,
+  };
+}
+
 export const PROP_NAME_MISSING = manifestPropMissing('name');
 
 export const NO_MESSAGES_FILE = {

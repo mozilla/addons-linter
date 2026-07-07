@@ -1,5 +1,7 @@
 import Ajv from 'ajv';
+import * as csstree from 'css-tree';
 
+import log from 'logger';
 import ajvMergePatch from 'ajv-merge-patch';
 import { getDefaultConfigValue } from 'yargs-options';
 import { deepPatch } from 'schema/deepmerge';
@@ -691,6 +693,49 @@ export class SchemaValidator {
       schema,
       { rootData /* instancePath, parentData, parentDataProperty, */ }
     ) => {
+      if (keywordSchemaValue === 'validCSSGradient') {
+        // Gather the CSS gradient's function name and params from the theme
+        // properties and use csstree.parse to validate it.
+        const [functionName, params] = Object.entries(propValue)[0];
+        let hasParseError = false;
+        let parsed;
+        try {
+          parsed = csstree.parse(`${functionName}(${params})`, {
+            context: 'value',
+            onParseError: () => {
+              hasParseError = true;
+            },
+          });
+        } catch (err) {
+          log.error(
+            `Unexpected error while parsing CSS gradient "${functionName}(${params})"`,
+            err.message
+          );
+          hasParseError = true;
+        }
+        const children = parsed?.children;
+        // Require the reconstructed CSS to parse without errors as exactly one
+        // Function node. This rejects empty values, plain text, and strings
+        // with unmatched parentheses that would otherwise split into multiple
+        // top-level tokens (e.g. a CSS injection attempt).
+        if (
+          hasParseError ||
+          !parsed ||
+          children?.size !== 1 ||
+          children?.first?.type !== 'Function'
+        ) {
+          validateRequiredManifestBackgroundKeys.errors = [
+            {
+              keyword: SCHEMA_KEYWORDS.VALIDATE_CSS_GRADIENT,
+              message: `"${functionName}" has invalid CSS gradient parameters`,
+              params: { functionName, params },
+            },
+          ];
+          return false;
+        }
+        return true;
+      }
+
       if (keywordSchemaValue !== 'checkRequiredManifestBackgroundKeys') {
         return true;
       }
