@@ -15,7 +15,6 @@ import {
   validateLangPack,
   validateStaticTheme,
 } from 'schema/validator';
-import themeSchemaObject from 'schema/imported/theme';
 import {
   CSS_GRADIENT_MIN_FIREFOX_VERSION,
   CSP_KEYWORD_RE,
@@ -31,7 +30,9 @@ import {
   RESTRICTED_HOMEPAGE_URLS,
   RESTRICTED_PERMISSIONS,
   SCHEMA_KEYWORDS,
+  SUPPORTED_CSS_GRADIENT_FUNCTIONS,
   STATIC_THEME_IMAGE_MIMES,
+  THEME_BACKGROUND_PATH_RE,
 } from 'const';
 import log from 'logger';
 import * as messages from 'messages';
@@ -84,18 +85,6 @@ async function getImageMetadata(io, iconPath) {
 function getNormalizedExtension(_path) {
   return path.extname(_path).substring(1).toLowerCase();
 }
-
-export const SUPPORTED_CSS_GRADIENT_FUNCTIONS = new Set(
-  themeSchemaObject.types.ThemeCSSGradient.anyOf.map(
-    (variant) => Object.keys(variant.properties)[0]
-  )
-);
-
-// Matches only the instancePaths where ThemeBackground (and therefore
-// ThemeCSSGradient) is valid: additional_backgrounds array items and
-// theme_frame under theme or dark_theme.
-const THEME_BACKGROUND_PATH_RE =
-  /^\/(theme|dark_theme)\/images\/(additional_backgrounds\/\d+|theme_frame)$/;
 
 // Returns the unsupported gradient function name if `instancePath` is a
 // ThemeBackground position, `data` looks like a ThemeCSSGradient object, and

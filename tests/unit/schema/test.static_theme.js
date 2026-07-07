@@ -1,7 +1,7 @@
 import cloneDeep from 'lodash.clonedeep';
 
 import { validateStaticTheme } from 'schema/validator';
-import { SUPPORTED_CSS_GRADIENT_FUNCTIONS } from 'parsers/manifestjson';
+import { SUPPORTED_CSS_GRADIENT_FUNCTIONS } from 'const';
 
 import { validStaticThemeManifestJSON } from '../helpers';
 
