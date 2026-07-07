@@ -695,7 +695,7 @@ export class SchemaValidator {
     ) => {
       if (keywordSchemaValue === 'validCSSGradient') {
         // Gather the CSS gradient's function name and params from the theme
-        // properties and use csstree.parse to validate it. 
+        // properties and use csstree.parse to validate it.
         const [functionName, params] = Object.entries(propValue)[0];
         let hasParseError = false;
         let parsed;
