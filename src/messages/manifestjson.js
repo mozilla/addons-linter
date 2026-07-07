@@ -559,7 +559,7 @@ export function manifestThemeCSSGradientFunctionUnsupported(functionName) {
       { functionName }
     ),
     description: i18n.sprintf(
-      i18n._(`"%(functionName)s" is not a supported CSS gradient function. 
+      i18n._(`"%(functionName)s" is not a supported CSS gradient function.
         Supported functions are: linear-gradient, radial-gradient, conic-gradient,
         repeating-linear-gradient, repeating-radial-gradient, repeating-conic-gradient`),
       { functionName }
