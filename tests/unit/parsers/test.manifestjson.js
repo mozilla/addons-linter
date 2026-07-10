@@ -4343,9 +4343,16 @@ describe('ManifestJSONParser', () => {
           { io: { files: {} } }
         );
         expect(manifestJSONParser.isValid).toEqual(false);
-        assertHasMatchingError(linter.collector.errors, {
-          code: messages.MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION,
-        });
+        expect(linter.collector.errors).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              code: messages.MANIFEST_THEME_CSS_GRADIENT_MIN_VERSION,
+              description: expect.stringMatching(
+                'set "browser_specific_settings.gecko.strict_min_version" to "153"'
+              ),
+            }),
+          ])
+        );
       });
 
       it('does not report an error when strict_min_version is 153', () => {
