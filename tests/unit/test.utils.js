@@ -90,6 +90,16 @@ describe('sprintf()', () => {
       'Max size: 123'
     );
   });
+
+  it('should replace a placeholder more than once', () => {
+    expect(
+      i18n.sprintf(i18n._('%(name)s is %(name)s'), { name: 'foo' })
+    ).toEqual('foo is foo');
+
+    expect(i18n.sprintf(i18n._('%(value)d + %(value)d'), { value: 1 })).toEqual(
+      '1 + 1'
+    );
+  });
 });
 
 describe('getVariable()', () => {

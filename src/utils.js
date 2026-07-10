@@ -143,7 +143,7 @@ export const i18n = Object.freeze({
     let str = fmt;
     // Replace every `%(key)s` or `%(key)d` placeholder with the actual value.
     for (const key of Object.keys(args)) {
-      str = str.replace(new RegExp(`%\\(${key}\\)(d|s)`), args[key]);
+      str = str.replaceAll(new RegExp(`%\\(${key}\\)(d|s)`, 'g'), args[key]);
     }
     return str;
   },
