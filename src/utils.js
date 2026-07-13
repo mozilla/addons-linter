@@ -139,14 +139,12 @@ function oneLineTranslationString(translationKey) {
 // re-enable localization of the project in the future.
 export const i18n = Object.freeze({
   _: (str) => oneLineTranslationString(str),
-  sprintf: (fmt, args) => {
-    let str = fmt;
-    // Replace every `%(key)s` or `%(key)d` placeholder with the actual value.
-    for (const key of Object.keys(args)) {
-      str = str.replaceAll(new RegExp(`%\\(${key}\\)(d|s)`, 'g'), args[key]);
-    }
-    return str;
-  },
+  sprintf: (fmt, args) =>
+    // Replace every `%(key)s` or `%(key)d` placeholder with the actual value
+    // in a single pass so replacement values are never re-scanned.
+    fmt.replace(/%\((\w+)\)(d|s)/g, (full, key) =>
+      Object.hasOwn(args, key) ? args[key] : full
+    ),
 });
 
 /*

@@ -100,6 +100,20 @@ describe('sprintf()', () => {
       '1 + 1'
     );
   });
+
+  it('should not re-scan replacement values for placeholders', () => {
+    expect(i18n.sprintf(i18n._('%(a)s'), { a: '%(b)s', b: 'X' })).toEqual(
+      '%(b)s'
+    );
+  });
+
+  it('should leave unknown placeholders untouched', () => {
+    expect(i18n.sprintf(i18n._('%(unknown)s'), {})).toEqual('%(unknown)s');
+  });
+
+  it('should not resolve inherited properties', () => {
+    expect(i18n.sprintf(i18n._('%(__proto__)s'), {})).toEqual('%(__proto__)s');
+  });
 });
 
 describe('getVariable()', () => {
