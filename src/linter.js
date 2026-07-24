@@ -378,7 +378,15 @@ export default class Linter {
       case '.mjs':
         return JavaScriptScanner;
       case '.json':
-        return JSONScanner;
+        if (
+          (filename.startsWith(constants.LOCALES_DIRECTORY) &&
+            filename.endsWith(constants.MESSAGES_JSON)) ||
+          filenameWithoutPath === constants.MANIFEST_JSON ||
+          (this.addonMetadata?.dnrRuleFiles ?? []).includes(filename)
+        ) {
+          return JSONScanner;
+        }
+        return BinaryScanner;
       case '.properties':
       case '.ftl':
       case '.dtd':

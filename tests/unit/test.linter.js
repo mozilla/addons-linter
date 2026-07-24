@@ -342,10 +342,19 @@ describe('Linter.getScanner()', () => {
     }
   );
 
-  it('should return JSONScanner', () => {
+  it('should return JSONScanner for manifest.json and locale messages', () => {
     const addonLinter = new Linter({ _: ['foo'] });
-    const Scanner = addonLinter.getScanner('locales/en.json');
-    expect(Scanner).toEqual(JSONScanner);
+    expect(addonLinter.getScanner('manifest.json')).toEqual(JSONScanner);
+    expect(addonLinter.getScanner('_locales/en/messages.json')).toEqual(
+      JSONScanner
+    );
+  });
+
+  it('should return BinaryScanner for arbitrary JSON files', () => {
+    const addonLinter = new Linter({ _: ['foo'] });
+    expect(addonLinter.getScanner('data/cards.json')).toEqual(BinaryScanner);
+    expect(addonLinter.getScanner('locales/en.json')).toEqual(BinaryScanner);
+    expect(addonLinter.getScanner('package.json')).toEqual(BinaryScanner);
   });
 
   it('should return LangpackScanner', () => {
@@ -1408,7 +1417,7 @@ describe('Linter.extractMetadata()', () => {
     addonLinter.print = sinon.stub();
 
     await addonLinter.scan({ _console: fakeConsole });
-    expect(addonLinter.output.metadata.totalScannedFileSize).toEqual(2929);
+    expect(addonLinter.output.metadata.totalScannedFileSize).toEqual(2652);
   });
 
   it('should flag coin miners', async () => {
@@ -1446,11 +1455,11 @@ describe('Linter.extractMetadata()', () => {
       }
     }
     await addonLinter.scan({ _Xpi: FakeXpi, _console: fakeConsole });
-    // Only manifest and js files, binary files like the .png are ignored
-    sinon.assert.callCount(markCoinMinerUsageSpy, 4);
+    // Only js files are scanned for coin miners; arbitrary JSON files are skipped
+    sinon.assert.callCount(markCoinMinerUsageSpy, 3);
     const { warnings } = addonLinter.collector;
 
-    expect(warnings.length).toEqual(5);
+    expect(warnings.length).toEqual(4);
 
     assertHasMatchingError(warnings, {
       code: 'COINMINER_USAGE_DETECTED',
@@ -1466,13 +1475,6 @@ describe('Linter.extractMetadata()', () => {
       line: 26,
       instancePath: 'CryptonightWASMWrapper',
       file: 'coinhive_disguised_as_preferences.js',
-    });
-
-    assertHasMatchingError(warnings, {
-      code: 'COINMINER_USAGE_DETECTED',
-      column: 30,
-      line: 12,
-      file: 'included_in_manifest.json',
     });
 
     assertHasMatchingError(warnings, {
