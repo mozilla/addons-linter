@@ -489,6 +489,9 @@ export class SchemaValidator {
       'imageDataOrStrictRelativeUrl',
       imageDataOrStrictRelativeUrl
     );
+
+    // TODO: maybe implement this validator
+    validator.addFormat('contentSecurityPolicySandbox', () => true);
   }
 
   _addCustomKeywords(validator) {
