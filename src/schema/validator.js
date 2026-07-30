@@ -15,6 +15,7 @@ import {
 } from 'const';
 
 import {
+  contentSecurityPolicySandbox,
   imageDataOrStrictRelativeUrl,
   isAnyUrl,
   isAbsoluteUrl,
@@ -490,8 +491,10 @@ export class SchemaValidator {
       imageDataOrStrictRelativeUrl
     );
 
-    // TODO: maybe implement this validator
-    validator.addFormat('contentSecurityPolicySandbox', () => true);
+    validator.addFormat(
+      'contentSecurityPolicySandbox',
+      contentSecurityPolicySandbox
+    );
   }
 
   _addCustomKeywords(validator) {
