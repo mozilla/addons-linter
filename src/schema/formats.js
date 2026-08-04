@@ -1,3 +1,5 @@
+import { parseCspPolicy } from 'utils';
+
 export function isAbsoluteUrl(value) {
   try {
     // eslint-disable-next-line no-new
@@ -80,6 +82,19 @@ export function imageDataOrStrictRelativeUrl(value) {
 }
 
 export const isUnresolvedRelativeUrl = isStrictRelativeUrl;
+
+export function contentSecurityPolicySandbox(value) {
+  // A sandbox CSP must contain a 'sandbox' directive, and that directive must
+  // not lift the sandbox with 'allow-same-origin'. Extensions not adhering to
+  // these rules will not load in Firefox (or Chrome).
+  const { sandbox } = parseCspPolicy(value);
+
+  if (!sandbox) {
+    return false;
+  }
+
+  return !sandbox.includes('allow-same-origin');
+}
 
 export function manifestShortcutKey(value) {
   // Partially taken from Firefox directly via

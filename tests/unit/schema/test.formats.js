@@ -1,4 +1,5 @@
 import {
+  contentSecurityPolicySandbox,
   imageDataOrStrictRelativeUrl,
   isAbsoluteUrl,
   isAnyUrl,
@@ -310,6 +311,34 @@ describe('formats', () => {
       expect(isSecureUrl(value)).toEqual(false);
       expect(imageDataOrStrictRelativeUrl(value)).toEqual(false);
       expect(isOrigin(value)).toEqual(false);
+    });
+  });
+
+  describe('contentSecurityPolicySandbox', () => {
+    it.each([
+      'sandbox',
+      'sandbox allow-scripts',
+      'SANDBOX ALLOW-SCRIPTS',
+      "sandbox allow-scripts; script-src 'self'",
+      "script-src 'self'; sandbox allow-scripts",
+      '  sandbox allow-scripts ;',
+      'sandbox not-allow-same-origin',
+      // First directive applied, duplicate ignored.
+      'sandbox; sandbox allow-same-origin',
+    ])('accepts %s', (value) => {
+      expect(contentSecurityPolicySandbox(value)).toEqual(true);
+    });
+
+    it.each([
+      '',
+      "script-src 'self'",
+      'sandbox allow-scripts allow-same-origin',
+      'sandbox allow-same-origin',
+      'sandbox ALLOW-SAME-ORIGIN',
+      // First applied, duplicate ignored.
+      'sandbox allow-same-origin; sandbox',
+    ])('rejects %s', (value) => {
+      expect(contentSecurityPolicySandbox(value)).toEqual(false);
     });
   });
 });

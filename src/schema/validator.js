@@ -15,6 +15,7 @@ import {
 } from 'const';
 
 import {
+  contentSecurityPolicySandbox,
   imageDataOrStrictRelativeUrl,
   isAnyUrl,
   isAbsoluteUrl,
@@ -488,6 +489,11 @@ export class SchemaValidator {
     validator.addFormat(
       'imageDataOrStrictRelativeUrl',
       imageDataOrStrictRelativeUrl
+    );
+
+    validator.addFormat(
+      'contentSecurityPolicySandbox',
+      contentSecurityPolicySandbox
     );
   }
 
