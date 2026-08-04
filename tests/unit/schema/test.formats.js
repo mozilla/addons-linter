@@ -322,6 +322,9 @@ describe('formats', () => {
       "sandbox allow-scripts; script-src 'self'",
       "script-src 'self'; sandbox allow-scripts",
       '  sandbox allow-scripts ;',
+      'sandbox not-allow-same-origin',
+      // First directive applied, duplicate ignored.
+      'sandbox; sandbox allow-same-origin',
     ])('accepts %s', (value) => {
       expect(contentSecurityPolicySandbox(value)).toEqual(true);
     });
