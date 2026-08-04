@@ -5702,6 +5702,41 @@ describe('ManifestJSONParser', () => {
     );
   });
 
+  describe('dnrRuleFiles', () => {
+    it('should return rule file paths from declarative_net_request.rule_resources', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        manifest_version: 3,
+        declarative_net_request: {
+          rule_resources: [
+            { id: 'ruleset-1', enabled: true, path: 'rules/ruleset1.json' },
+            { id: 'ruleset-2', enabled: false, path: 'rules/ruleset2.json' },
+          ],
+        },
+      });
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      const { dnrRuleFiles } = manifestJSONParser.getMetadata();
+      expect(dnrRuleFiles).toEqual([
+        'rules/ruleset1.json',
+        'rules/ruleset2.json',
+      ]);
+    });
+
+    it('should return empty array when no declarative_net_request is defined', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({});
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      const { dnrRuleFiles } = manifestJSONParser.getMetadata();
+      expect(dnrRuleFiles).toEqual([]);
+    });
+  });
+
   describe('applications property - MV2', () => {
     it('does not emit any warning or error when a MV2 extension does not use applications or browser_specific_settings', () => {
       const linter = new Linter({ _: ['bar'] });
