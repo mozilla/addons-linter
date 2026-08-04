@@ -335,6 +335,8 @@ describe('formats', () => {
       'sandbox allow-scripts allow-same-origin',
       'sandbox allow-same-origin',
       'sandbox ALLOW-SAME-ORIGIN',
+      // First applied, duplicate ignored.
+      'sandbox allow-same-origin; sandbox',
     ])('rejects %s', (value) => {
       expect(contentSecurityPolicySandbox(value)).toEqual(false);
     });
