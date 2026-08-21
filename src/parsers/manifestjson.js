@@ -769,10 +769,7 @@ export default class ManifestJSONParser extends JSONParser {
       });
     }
 
-    if (
-      (!this.selfHosted || this.isEnterpriseAddon) &&
-      this.parsedJSON.applications?.gecko?.update_url
-    ) {
+    if (!this.selfHosted && this.parsedJSON.applications?.gecko?.update_url) {
       if (this.isPrivilegedAddon) {
         // We cannot know whether a privileged add-on will be listed or
         // unlisted so we only emit a warning for MANIFEST_UPDATE_URL (not an
