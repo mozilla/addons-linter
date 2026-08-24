@@ -2469,7 +2469,7 @@ describe('ManifestJSONParser', () => {
       expect(addonLinter.collector.warnings.length).toBe(0);
     });
 
-    it('emits an error when the update_url is defined in an enterprise add-on', () => {
+    it('does not emit an error when the update_url is defined in an enterprise add-on', () => {
       const linter = new Linter({ _: ['bar'] });
 
       const manifestJSONParser = new ManifestJSONParser(
@@ -2489,11 +2489,9 @@ describe('ManifestJSONParser', () => {
         { isEnterprise: true }
       );
 
-      expect(manifestJSONParser.isValid).toEqual(false);
+      expect(manifestJSONParser.isValid).toEqual(true);
       expect(linter.collector.warnings).toEqual([]);
-      expect(linter.collector.errors).toEqual([
-        expect.objectContaining(messages.MANIFEST_UPDATE_URL),
-      ]);
+      expect(linter.collector.errors).toEqual([]);
     });
 
     it('does not emit an error when the update_url is defined in a self-hosted add-on', () => {
