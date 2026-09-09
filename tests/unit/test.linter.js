@@ -2,6 +2,8 @@
 import fs from 'fs';
 
 import { oneLine } from 'common-tags';
+import tmp from 'tmp-promise';
+import yazl from 'yazl';
 import { Xpi } from 'addons-scanner-utils/io';
 import {
   DuplicateZipEntryError,
@@ -145,6 +147,95 @@ describe('Linter', () => {
     expect(addonLinter.collector.errors[0].code).toEqual(
       messages.BAD_ZIPFILE.code
     );
+  });
+
+  // Zip entries with control characters in their names are rejected by
+  // `addons-scanner-utils`, which is why these tests run the linter against
+  // real (generated) zip files instead of a fake IO class.
+  describe('control characters in zip entry names', () => {
+    const NUL = String.fromCharCode(0);
+    const LF = String.fromCharCode(10);
+    const ESC = String.fromCharCode(27);
+    const DEL = String.fromCharCode(127);
+
+    let tmpDir;
+
+    beforeEach(() => {
+      tmpDir = tmp.dirSync({ mode: '0750', unsafeCleanup: true });
+    });
+
+    afterEach(() => {
+      tmpDir.removeCallback();
+    });
+
+    const createZipFile = async (entryNames) => {
+      const zipPath = `${tmpDir.name}/addon.zip`;
+      const zipfile = new yazl.ZipFile();
+
+      zipfile.addBuffer(Buffer.from(validManifestJSON()), 'manifest.json');
+      entryNames.forEach((entryName) => {
+        // Entry names ending with a '/' are directory entries, which are
+        // skipped early when the zip entries are read.
+        if (entryName.endsWith('/')) {
+          zipfile.addEmptyDirectory(entryName);
+        } else {
+          zipfile.addBuffer(Buffer.from('// content'), entryName);
+        }
+      });
+
+      await new Promise((resolve) => {
+        zipfile.outputStream
+          .pipe(fs.createWriteStream(zipPath))
+          .on('close', resolve);
+        zipfile.end();
+      });
+
+      return zipPath;
+    };
+
+    const scanZipFile = async (entryNames) => {
+      const addonLinter = new Linter({ _: [await createZipFile(entryNames)] });
+      // Stub print to prevent output.
+      addonLinter.print = sinon.stub();
+
+      await addonLinter.scan();
+
+      return addonLinter;
+    };
+
+    it.each([
+      ['NUL', `nul${NUL}name.js`],
+      ['LF', `newline${LF}name.js`],
+      ['ESC', `escape${ESC}[31mname.js`],
+      ['DEL', `delete${DEL}name.js`],
+      ['a directory entry', `dir${LF}name/`],
+    ])('should collect an error for %s', async (_name, entryName) => {
+      const addonLinter = await scanZipFile([entryName]);
+
+      expect(addonLinter.collector.errors.length).toEqual(1);
+      expect(addonLinter.collector.errors[0].code).toEqual(
+        messages.INVALID_XPI_ENTRY.code
+      );
+    });
+
+    it('should not report the raw entry name', async () => {
+      const addonLinter = await scanZipFile([`escape${ESC}[31mname.js`]);
+
+      expect(addonLinter.collector.errors.length).toEqual(1);
+      // The message is passed through to the linter output as-is so it must
+      // not contain the control characters, otherwise an add-on could inject
+      // escape sequences into the output of the linter.
+      expect(addonLinter.collector.errors[0].message).not.toMatch(
+        // eslint-disable-next-line no-control-regex
+        /[\x00-\x1f\x7f]/
+      );
+    });
+
+    it('should not collect an error when there is no control character', async () => {
+      const addonLinter = await scanZipFile(['name.js']);
+
+      expect(addonLinter.collector.errors).toEqual([]);
+    });
   });
 
   // Uses an extension with a mozIndexedDB warning in it.
