@@ -219,9 +219,7 @@ Lastly when the processing is complete the linter will output the collected data
 
 ## Deploys
 
-We deploy to npm automatically using Circle CI. To release a new version, increment the version in `package.json` and create a PR. Make sure your version number conforms to the [semver][] format eg: `0.2.1`.
-
-After merging the PR, [create a new release][new release] with the same tag name as your new version. Once the build passes it will deploy. Magic! ✨
+This project follows the [semantic versioning](https://semver.org/) specification. To release a new version of this library on npmjs.org, please see [our release process][].
 
 ## Dispensary
 
@@ -279,6 +277,5 @@ Firefox name or logo.
 
 For more information, see: https://www.mozilla.org/foundation/licensing.html
 
-[new release]: https://github.com/mozilla/addons-linter/releases/new
-[semver]: http://semver.org/
+[our release process]: https://github.com/mozilla/addons/tree/1.1/.github/actions/release#release-process
 [prettier]: https://prettier.io/
