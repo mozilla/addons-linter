@@ -92,7 +92,7 @@
     "markdown-it": "15.0.1",
     "markdown-it-anchor": "9.2.1",
     "markdown-it-footnote": "4.0.0",
-    "natural-compare-lite": "1.4.0",
+    "natural-compare-lite": "1.4.1",
     "prettier": "3.9.6",
     "pretty-quick": "4.2.2",
     "raw-loader": "4.0.2",
