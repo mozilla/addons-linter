@@ -34,7 +34,6 @@ import contextMenus from './context_menus.json';
 import menus from './menus.json';
 import native_manifest from './native_manifest.json';
 import networkStatus from './network_status.json';
-import normandyAddonStudy from './normandyAddonStudy.json';
 import notifications from './notifications.json';
 import omnibox from './omnibox.json';
 import pageAction from './page_action.json';
@@ -97,7 +96,6 @@ export default [
   menus,
   native_manifest,
   networkStatus,
-  normandyAddonStudy,
   notifications,
   omnibox,
   pageAction,

@@ -774,9 +774,6 @@
           "$ref": "networkStatus#/definitions/PermissionPrivileged"
         },
         {
-          "$ref": "normandyAddonStudy#/definitions/PermissionPrivileged"
-        },
-        {
           "$ref": "telemetry#/definitions/PermissionPrivileged"
         }
       ]

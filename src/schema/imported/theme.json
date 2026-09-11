@@ -469,6 +469,14 @@
         "properties": {
           "type": "object",
           "properties": {
+            "backgrounds_area": {
+              "type": "string",
+              "enum": [
+                "auto",
+                "window",
+                "top_toolbars"
+              ]
+            },
             "additional_backgrounds_alignment": {
               "type": "array",
               "items": {
