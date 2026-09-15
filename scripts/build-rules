@@ -8,7 +8,7 @@ const markdownItAnchor = require('markdown-it-anchor');
 const markdownItFootnote = require('markdown-it-footnote');
 
 md.use(markdownItAnchor, {
-  permalink: true,
+  permalink: markdownItAnchor.permalink.linkInsideHeader({ symbol: '¶' }),
 });
 md.use(markdownItFootnote);
 const markdown = md.render(
