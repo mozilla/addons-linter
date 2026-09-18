@@ -74,7 +74,7 @@
     "@babel/core": "8.0.1",
     "@babel/eslint-parser": "8.0.1",
     "@babel/preset-env": "8.0.2",
-    "@babel/register": "8.0.1",
+    "@babel/register": "8.0.5",
     "async": "3.2.6",
     "babel-jest": "30.5.1",
     "babel-loader": "10.1.1",
