@@ -72,7 +72,7 @@
   "devDependencies": {
     "@babel/cli": "8.0.5",
     "@babel/core": "8.0.5",
-    "@babel/eslint-parser": "8.0.1",
+    "@babel/eslint-parser": "8.0.5",
     "@babel/preset-env": "8.0.5",
     "@babel/register": "8.0.5",
     "async": "3.2.6",
