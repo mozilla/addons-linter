@@ -277,5 +277,5 @@ Firefox name or logo.
 
 For more information, see: https://www.mozilla.org/foundation/licensing.html
 
-[our release process]: https://github.com/mozilla/addons/tree/1.1/.github/actions/release#release-process
+[our release process]: https://github.com/mozilla/addons/tree/1.2/.github/actions/release#release-process
 [prettier]: https://prettier.io/
