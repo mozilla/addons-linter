@@ -136,6 +136,9 @@
               }
             ]
           },
+          "description": {
+            "maxLength": 250
+          },
           "name": {
             "maxLength": 45,
             "minLength": 2
