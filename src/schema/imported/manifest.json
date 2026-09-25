@@ -41,6 +41,7 @@
         },
         "description": {
           "type": "string",
+          "maxLength": 250,
           "preprocess": "localize"
         },
         "author": {

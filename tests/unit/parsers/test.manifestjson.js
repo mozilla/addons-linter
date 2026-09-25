@@ -1479,7 +1479,6 @@ describe('ManifestJSONParser', () => {
       const json = validManifestJSON({
         description: `a${'b'.repeat(250)}`, // 251 chars
       });
-      console.log(json);
       const manifestJSONParser = new ManifestJSONParser(
         json,
         addonLinter.collector
