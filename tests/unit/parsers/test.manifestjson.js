@@ -1473,6 +1473,25 @@ describe('ManifestJSONParser', () => {
     );
   });
 
+  describe('description', () => {
+    it('should fail on description longer than 250 characters', () => {
+      const addonLinter = new Linter({ _: ['bar'] });
+      const json = validManifestJSON({
+        description: `a${'b'.repeat(250)}`, // 251 chars
+      });
+      console.log(json);
+      const manifestJSONParser = new ManifestJSONParser(
+        json,
+        addonLinter.collector
+      );
+      expect(manifestJSONParser.isValid).toEqual(false);
+      assertHasMatchingError(addonLinter.collector.errors, {
+        code: messages.JSON_INVALID.code,
+        message: /"\/description" must NOT have more than 250 characters/,
+      });
+    });
+  });
+
   describe('name', () => {
     it('should extract a name', () => {
       // Type is always returned as PACKAGE_EXTENSION presently.
