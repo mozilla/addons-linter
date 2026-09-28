@@ -7,6 +7,15 @@ updates:
     open-pull-requests-limit: 99
     cooldown:
       default-days: 7
+    ignore:
+      # https://github.com/mozilla/addons-linter/issues/6222
+      - dependency-name: eslint
+        versions:
+          - ">= 10"
+      # https://github.com/mozilla/addons-linter/issues/6223
+      - dependency-name: yargs
+        versions:
+          - ">= 18"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
