@@ -63,4 +63,14 @@ describe('incompatible browser APIs', () => {
     const { linterMessages } = await runJsScanner(jsScanner);
     expect(linterMessages.length).toEqual(0);
   });
+
+  it('does not flag the legacy MV2 userScripts event', async () => {
+    const code = 'browser.userScripts.onBeforeScript.addListener(() => {});';
+    const jsScanner = new JavaScriptScanner(code, 'badcode.js', {
+      addonMetadata: { manifestVersion: 2, firefoxMinVersion: '128.0' },
+    });
+
+    const { linterMessages } = await runJsScanner(jsScanner);
+    expect(linterMessages).toHaveLength(0);
+  });
 });

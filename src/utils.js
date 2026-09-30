@@ -401,9 +401,25 @@ export function firstStableVersion(supportInfo) {
   }, false);
 }
 
-export function isCompatible(bcd, path, minVersion, application) {
+export function isCompatible(
+  bcd,
+  path,
+  minVersion,
+  application,
+  manifestVersion
+) {
   const steps = path.split('.');
   let { api } = bcd.webextensions;
+
+  // Some APIs have different BCD namespaces for Manifest V2 and V3. If a
+  // legacy namespace exists, use it for MV2 add-ons instead of falling back
+  // to the modern namespace's compatibility data.
+  const legacyNamespace = `${steps[0]}_legacy`;
+  if (manifestVersion === 2 && Object.hasOwn(api, legacyNamespace)) {
+    api = api[legacyNamespace];
+    steps.shift();
+  }
+
   for (const step of steps) {
     if (Object.prototype.hasOwnProperty.call(api, step)) {
       api = api[step];
@@ -451,7 +467,13 @@ export function createCompatibilityRule(
           const api = `${namespace}.${property}`;
           if (
             hasBrowserApi(namespace, property, addonMetadata) &&
-            !isCompatible(bcd, api, minVersion, application)
+            !isCompatible(
+              bcd,
+              api,
+              minVersion,
+              application,
+              addonMetadata?.manifestVersion
+            )
           ) {
             context.report(node, message.messageFormat, {
               api,
