@@ -411,13 +411,8 @@ export function isCompatible(
   const steps = path.split('.');
   let { api } = bcd.webextensions;
 
-  // Some APIs have different BCD namespaces for Manifest V2 and V3. If a
-  // legacy namespace exists, use it for MV2 add-ons instead of falling back
-  // to the modern namespace's compatibility data.
-  const legacyNamespace = `${steps[0]}_legacy`;
-  if (manifestVersion === 2 && Object.hasOwn(api, legacyNamespace)) {
-    api = api[legacyNamespace];
-    steps.shift();
+  if (manifestVersion === 2 && steps[0] === 'userScripts') {
+    steps[0] = 'userScripts_legacy';
   }
 
   for (const step of steps) {
@@ -472,7 +467,7 @@ export function createCompatibilityRule(
               api,
               minVersion,
               application,
-              addonMetadata?.manifestVersion
+              addonMetadata.manifestVersion
             )
           ) {
             context.report(node, message.messageFormat, {
