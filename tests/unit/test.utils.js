@@ -542,6 +542,26 @@ describe('isCompatible', () => {
     expect(isCompatible(getBCD({}), 'foo.bar', 60, 'firefox')).toBe(true);
   });
 
+  it('should use the legacy BCD namespace for Manifest V2 APIs', () => {
+    const legacyBCD = getBCD({
+      userScripts: {
+        __compat: { support: { firefox: { version_added: '136' } } },
+      },
+      userScripts_legacy: {
+        onBeforeScript: {
+          __compat: { support: { firefox: { version_added: '68' } } },
+        },
+      },
+    });
+
+    expect(
+      isCompatible(legacyBCD, 'userScripts.onBeforeScript', 128, 'firefox', 2)
+    ).toBe(true);
+    expect(
+      isCompatible(legacyBCD, 'userScripts.onBeforeScript', 128, 'firefox', 3)
+    ).toBe(false);
+  });
+
   it('should be true if the given key path has a compatibility of false', () => {
     expect(
       isCompatible(
