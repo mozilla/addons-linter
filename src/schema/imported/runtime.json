@@ -118,6 +118,20 @@
       }
     },
     {
+      "name": "getVersion",
+      "allowedContexts": [
+        "content",
+        "devtools"
+      ],
+      "description": "Returns the extension version as declared in the manifest.",
+      "type": "function",
+      "parameters": [],
+      "returns": {
+        "type": "string",
+        "description": "The extension version."
+      }
+    },
+    {
       "name": "getURL",
       "type": "function",
       "allowedContexts": [
