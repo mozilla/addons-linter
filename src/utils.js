@@ -401,9 +401,20 @@ export function firstStableVersion(supportInfo) {
   }, false);
 }
 
-export function isCompatible(bcd, path, minVersion, application) {
+export function isCompatible(
+  bcd,
+  path,
+  minVersion,
+  application,
+  manifestVersion
+) {
   const steps = path.split('.');
   let { api } = bcd.webextensions;
+
+  if (manifestVersion === 2 && steps[0] === 'userScripts') {
+    steps[0] = 'userScripts_legacy';
+  }
+
   for (const step of steps) {
     if (Object.prototype.hasOwnProperty.call(api, step)) {
       api = api[step];
@@ -451,7 +462,13 @@ export function createCompatibilityRule(
           const api = `${namespace}.${property}`;
           if (
             hasBrowserApi(namespace, property, addonMetadata) &&
-            !isCompatible(bcd, api, minVersion, application)
+            !isCompatible(
+              bcd,
+              api,
+              minVersion,
+              application,
+              addonMetadata.manifestVersion
+            )
           ) {
             context.report(node, message.messageFormat, {
               api,
