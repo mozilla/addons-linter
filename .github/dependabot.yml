@@ -7,6 +7,10 @@ updates:
     open-pull-requests-limit: 99
     cooldown:
       default-days: 7
+    groups:
+      babel:
+        patterns:
+          - "@babel/*"
     ignore:
       # https://github.com/mozilla/addons-linter/issues/6222
       - dependency-name: eslint
