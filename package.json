@@ -71,9 +71,9 @@
   },
   "devDependencies": {
     "@babel/cli": "8.0.6",
-    "@babel/core": "8.0.6",
-    "@babel/eslint-parser": "8.0.6",
-    "@babel/preset-env": "8.0.6",
+    "@babel/core": "8.0.7",
+    "@babel/eslint-parser": "8.0.7",
+    "@babel/preset-env": "8.0.7",
     "@babel/register": "8.0.6",
     "async": "3.2.6",
     "babel-jest": "30.5.2",
