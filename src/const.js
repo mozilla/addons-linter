@@ -115,6 +115,10 @@ export const ALREADY_SIGNED_REGEX = /^META-INF\/manifest\.mf/;
 export const PERMS_DATAPATH_REGEX =
   /^\/(permissions|optional_permissions|host_permissions)\/([\d+])/;
 export const INSTALL_ORIGINS_DATAPATH_REGEX = /^\/(install_origins)\/([\d+])/;
+// Matches the instancePath of the data_collection_permissions object, or of
+// its "required" list (second group).
+export const DATA_COLLECTION_PERMISSIONS_DATAPATH_REGEX =
+  /^\/(browser_specific_settings|applications)\/gecko\/data_collection_permissions(\/required)?$/;
 
 export const RESERVED_FILENAMES = ['mozilla-recommendation.json'];
 
@@ -273,6 +277,7 @@ export const SCHEMA_KEYWORDS = {
   DEPRECATED: 'deprecated',
   REQUIRED: 'required',
   TYPE: 'type',
+  MIN_ITEMS: 'minItems',
   MIN_PROPERTIES: 'minProperties',
   // Non-standard JSONSchema keywords (defined and used by the Firefox and/or addons-linter).
   ...SCHEMA_KEYWORDS_CUSTOM,
