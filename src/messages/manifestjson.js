@@ -912,6 +912,21 @@ export const MISSING_DATA_COLLECTION_PERMISSIONS = {
   file: MANIFEST_JSON,
 };
 
+export const MISSING_REQUIRED_DATA_COLLECTION_PERMISSIONS = {
+  code: 'MISSING_REQUIRED_DATA_COLLECTION_PERMISSIONS',
+  message: i18n._(
+    'The "required" list of data collection permissions is missing or empty.'
+  ),
+  description: i18n._(
+    `The "/browser_specific_settings/gecko/data_collection_permissions/required"
+    property must list at least one data collection permission. If the
+    extension doesn't collect any data, or only collects data with optional
+    data collection permissions, set "required" to ["none"]. More information
+    at: https://mzl.la/firefox-builtin-data-consent`
+  ),
+  file: MANIFEST_JSON,
+};
+
 export const NONE_DATA_COLLECTION_IS_EXCLUSIVE = {
   code: 'NONE_DATA_COLLECTION_IS_EXCLUSIVE',
   message: i18n._(

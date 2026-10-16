@@ -599,6 +599,11 @@
 <td>The <code>/browser_specific_settings/gecko/data_collection_permissions</code> property is required for all new Firefox extensions, and will be required for new versions of existing extensions in the future. Please add this key to the manifest. More information at: <a href="https://mzl.la/firefox-builtin-data-consent">https://mzl.la/firefox-builtin-data-consent</a></td>
 </tr>
 <tr>
+<td><code>MISSING_REQUIRED_DATA_COLLECTION_PERMISSIONS</code></td>
+<td>error</td>
+<td>The <code>/browser_specific_settings/gecko/data_collection_permissions/required</code> property must list at least one data collection permission. Use <code>[&quot;none&quot;]</code> if the extension collects no data, or only optional data. More information at: <a href="https://mzl.la/firefox-builtin-data-consent">https://mzl.la/firefox-builtin-data-consent</a></td>
+</tr>
+<tr>
 <td><code>NONE_DATA_COLLECTION_IS_EXCLUSIVE</code></td>
 <td>error</td>
 <td>&quot;none&quot; must not be specified with other required data collection permissions</td>
