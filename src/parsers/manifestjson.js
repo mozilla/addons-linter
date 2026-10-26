@@ -18,6 +18,7 @@ import {
 import {
   CSS_GRADIENT_MIN_FIREFOX_VERSION,
   CSP_KEYWORD_RE,
+  DATA_COLLECTION_PERMISSIONS_DATAPATH_REGEX,
   DEPRECATED_MANIFEST_PROPERTIES,
   FILE_EXTENSIONS_TO_MIME,
   IMAGE_FILE_EXTENSIONS,
@@ -110,6 +111,26 @@ function getUnknownCSSGradientFn(instancePath, data) {
     return keys[0];
   }
   return null;
+}
+
+// Returns true if `error` is the schema error reported when the "required"
+// list of data collection permissions is missing (`required` keyword on the
+// data_collection_permissions object) or empty (`minItems` keyword on the
+// list itself).
+function isMissingRequiredDataCollectionPermissions(error) {
+  const match = DATA_COLLECTION_PERMISSIONS_DATAPATH_REGEX.exec(
+    error.instancePath
+  );
+  if (!match) {
+    return false;
+  }
+  if (match[2]) {
+    return error.keyword === SCHEMA_KEYWORDS.MIN_ITEMS;
+  }
+  return (
+    error.keyword === SCHEMA_KEYWORDS.REQUIRED &&
+    error.params?.missingProperty === 'required'
+  );
 }
 
 export default class ManifestJSONParser extends JSONParser {
@@ -307,7 +328,14 @@ export default class ManifestJSONParser extends JSONParser {
       instancePath: error.instancePath,
     };
 
-    if (error.keyword === SCHEMA_KEYWORDS.REQUIRED) {
+    if (isMissingRequiredDataCollectionPermissions(error)) {
+      // The generic schema message doesn't say that extensions which only
+      // declare optional data collection permissions need `"required":
+      // ["none"]`, see https://github.com/mozilla/addons-linter/issues/6118
+      baseObject = messages.MISSING_REQUIRED_DATA_COLLECTION_PERMISSIONS;
+      overrides.message = baseObject.message;
+      overrides.description = baseObject.description;
+    } else if (error.keyword === SCHEMA_KEYWORDS.REQUIRED) {
       baseObject = messages.MANIFEST_FIELD_REQUIRED;
     } else if (error.keyword === SCHEMA_KEYWORDS.DEPRECATED) {
       if (
