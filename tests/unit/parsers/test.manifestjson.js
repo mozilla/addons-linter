@@ -6317,7 +6317,48 @@ describe('ManifestJSONParser', () => {
       expect(manifestJSONParser.isValid).toEqual(false);
     });
 
-    it('emits an error when the list of required permissions is empty', () => {
+    it.each([
+      ['is empty', { required: [] }],
+      ['is missing', {}],
+      [
+        'is empty and only optional permissions are specified',
+        { required: [], optional: ['technicalAndInteraction'] },
+      ],
+      [
+        'is missing and only optional permissions are specified',
+        { optional: ['technicalAndInteraction'] },
+      ],
+    ])(
+      'emits an error when the list of required permissions %s',
+      (_, dataCollectionPermissions) => {
+        const linter = new Linter({ _: ['bar'] });
+
+        const manifestJSONParser = new ManifestJSONParser(
+          JSON.stringify({
+            manifest_version: 2,
+            name: 'some name',
+            version: '1',
+            browser_specific_settings: {
+              gecko: {
+                id: '@ext-id',
+                data_collection_permissions: dataCollectionPermissions,
+              },
+            },
+          }),
+          linter.collector,
+          { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
+        );
+
+        expect(linter.collector.errors).toEqual([
+          expect.objectContaining(
+            messages.MISSING_REQUIRED_DATA_COLLECTION_PERMISSIONS
+          ),
+        ]);
+        expect(manifestJSONParser.isValid).toEqual(false);
+      }
+    );
+
+    it('emits an error when the list of required permissions is missing in "applications"', () => {
       const linter = new Linter({ _: ['bar'] });
 
       const manifestJSONParser = new ManifestJSONParser(
@@ -6325,11 +6366,11 @@ describe('ManifestJSONParser', () => {
           manifest_version: 2,
           name: 'some name',
           version: '1',
-          browser_specific_settings: {
+          applications: {
             gecko: {
               id: '@ext-id',
               data_collection_permissions: {
-                required: [],
+                optional: ['technicalAndInteraction'],
               },
             },
           },
@@ -6339,14 +6380,12 @@ describe('ManifestJSONParser', () => {
       );
 
       assertHasMatchingError(linter.collector.errors, {
-        code: messages.JSON_INVALID.code,
-        message:
-          '"/browser_specific_settings/gecko/data_collection_permissions/required" must NOT have fewer than 1 items',
+        code: messages.MISSING_REQUIRED_DATA_COLLECTION_PERMISSIONS.code,
       });
       expect(manifestJSONParser.isValid).toEqual(false);
     });
 
-    it('emits an error when the list of required permissions is missing', () => {
+    it('does not report a "required" value that is not a list as missing', () => {
       const linter = new Linter({ _: ['bar'] });
 
       const manifestJSONParser = new ManifestJSONParser(
@@ -6357,7 +6396,7 @@ describe('ManifestJSONParser', () => {
           browser_specific_settings: {
             gecko: {
               id: '@ext-id',
-              data_collection_permissions: {},
+              data_collection_permissions: { required: 'none' },
             },
           },
         }),
@@ -6365,11 +6404,13 @@ describe('ManifestJSONParser', () => {
         { schemaValidatorOptions: { enableDataCollectionPermissions: true } }
       );
 
-      assertHasMatchingError(linter.collector.errors, {
-        code: messages.MANIFEST_FIELD_REQUIRED.code,
-        message:
-          '"/browser_specific_settings/gecko/data_collection_permissions" must have required property \'required\'',
-      });
+      expect(linter.collector.errors).toEqual([
+        expect.objectContaining({
+          code: messages.MANIFEST_FIELD_INVALID.code,
+          instancePath:
+            '/browser_specific_settings/gecko/data_collection_permissions/required',
+        }),
+      ]);
       expect(manifestJSONParser.isValid).toEqual(false);
     });
 
