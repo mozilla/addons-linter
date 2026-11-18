@@ -446,6 +446,9 @@
           "$ref": "browserAction#/definitions/WebExtensionManifest"
         },
         {
+          "$ref": "builtin_widget#/definitions/WebExtensionManifest"
+        },
+        {
           "$ref": "chrome_settings_overrides#/definitions/WebExtensionManifest"
         },
         {
