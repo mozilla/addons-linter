@@ -7,6 +7,7 @@ import action from './action.json';
 import browserAction from './browser_action.json';
 import browserSettings from './browser_settings.json';
 import browsingData from './browsing_data.json';
+import builtin_widget from './builtin_widget.json';
 import captivePortal from './captive_portal.json';
 import chrome_settings_overrides from './chrome_settings_overrides.json';
 import clipboard from './clipboard.json';
@@ -69,6 +70,7 @@ export default [
   browserAction,
   browserSettings,
   browsingData,
+  builtin_widget,
   captivePortal,
   chrome_settings_overrides,
   clipboard,

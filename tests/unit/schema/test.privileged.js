@@ -32,6 +32,29 @@ describe('/experiment_apis', () => {
   });
 });
 
+describe('/builtin_widget', () => {
+  it('should be reported as privileged property', () => {
+    const manifest = cloneDeep(validManifest);
+    manifest.builtin_widget = {
+      page: 'widget.html',
+      sizes: ['small', 'medium'],
+      default_size: 'small',
+      pref_branch: 'extensions.widgets.test',
+    };
+
+    validateAddon(manifest);
+
+    expect(validateAddon.errors).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          keyword: SCHEMA_KEYWORDS.PRIVILEGED,
+          instancePath: '/builtin_widget',
+        }),
+      ])
+    );
+  });
+});
+
 describe('/l10n_resources', () => {
   it('should be reported as privileged property', () => {
     const manifest = cloneDeep(validManifest);

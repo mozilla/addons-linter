@@ -1,0 +1,79 @@
+{
+  "$id": "builtin_widget",
+  "definitions": {
+    "WebExtensionManifest": {
+      "properties": {
+        "builtin_widget": {
+          "allOf": [
+            {
+              "$ref": "#/types/BuiltinWidget"
+            },
+            {
+              "privileged": true,
+              "description": "Declares a widget provided by a privileged extension."
+            }
+          ]
+        }
+      }
+    }
+  },
+  "refs": {
+    "builtin_widget#/definitions/WebExtensionManifest": {
+      "namespace": "manifest",
+      "type": "WebExtensionManifest"
+    }
+  },
+  "types": {
+    "WidgetSize": {
+      "type": "string",
+      "enum": [
+        "small",
+        "medium",
+        "large"
+      ]
+    },
+    "BuiltinWidget": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "page": {
+          "allOf": [
+            {
+              "$ref": "manifest#/types/ExtensionURL"
+            },
+            {
+              "description": "Path to the widget content."
+            }
+          ]
+        },
+        "sizes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/types/WidgetSize"
+          },
+          "description": "Sizes the widget can be displayed at."
+        },
+        "default_size": {
+          "allOf": [
+            {
+              "$ref": "#/types/WidgetSize"
+            },
+            {
+              "description": "Size the widget is displayed at until one is chosen. Defaults to the first of sizes."
+            }
+          ]
+        },
+        "pref_branch": {
+          "type": "string",
+          "pattern": "^[A-Za-z][\\w-]*(\\.[\\w-]+)*$",
+          "description": "Pref branch that stores whether the widget is enabled and the size chosen for it, in <pref_branch>.enabled and <pref_branch>.size."
+        }
+      },
+      "required": [
+        "page",
+        "sizes"
+      ]
+    }
+  }
+}

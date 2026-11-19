@@ -1007,6 +1007,10 @@
             }
           ]
         },
+        "windowId": {
+          "type": "integer",
+          "description": "The window ID of the document that opened the connection."
+        },
         "frameId": {
           "type": "integer",
           "description": "The $(topic:frame_ids)[frame] that opened the connection. 0 for top-level frames, positive for child frames. This will only be set when <code>tab</code> is set."
@@ -1053,8 +1057,8 @@
     "PlatformArch": {
       "type": "string",
       "enum": [
-        "aarch64",
         "arm",
+        "arm64",
         "ppc64",
         "riscv64",
         "s390x",
