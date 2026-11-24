@@ -349,7 +349,16 @@ describe('normalizePath', () => {
   });
 
   it('should not throw on malformed percent-encoding', () => {
-    expect(normalizePath('icon (96%).png')).toEqual('icon%20(96%).png');
+    expect(normalizePath('icon (96%).png')).toEqual('icon (96%).png');
+  });
+
+  it('should keep a bare percent sign literal on decode', () => {
+    expect(normalizePath('icon% .png')).toEqual('icon% .png');
+    expect(normalizePath('background%.js')).toEqual('background%.js');
+  });
+
+  it('should decode an encoded percent sign and space', () => {
+    expect(normalizePath('icon%25%20.png')).toEqual('icon% .png');
   });
 });
 
