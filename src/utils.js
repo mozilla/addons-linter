@@ -80,7 +80,14 @@ export function normalizePath(iconPath) {
 
   // Convert filename to unix path separator (as the ones stored
   // into the scanned files map).
-  return upath.toUnix(decodeURIComponent(pathname).slice(1));
+  try {
+    return upath.toUnix(decodeURIComponent(pathname).slice(1));
+  } catch {
+    // The path contains a malformed escape sequence (e.g. a bare `%` in a
+    // file name). Fall back to the undecoded path so the caller can report
+    // a regular lint error instead of throwing a URIError.
+    return upath.toUnix(pathname.slice(1));
+  }
 }
 
 /*

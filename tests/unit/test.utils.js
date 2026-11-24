@@ -347,6 +347,10 @@ describe('normalizePath', () => {
   it('should not escape spaces within path', () => {
     expect(normalizePath('foo/bar baz/qux')).toEqual('foo/bar baz/qux');
   });
+
+  it('should not throw on malformed percent-encoding', () => {
+    expect(normalizePath('icon (96%).png')).toEqual('icon%20(96%).png');
+  });
 });
 
 describe('firefoxStrictMinVersion', () => {
