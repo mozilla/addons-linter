@@ -256,6 +256,20 @@ export const RESTRICTED_PERMISSIONS = new Map([
   ['proxy', '91.1.0'],
 ]);
 
+// Trial permissions (optional-only permissions gating "trial" APIs) that have
+// been deprecated and should no longer be accepted in new submissions.
+// Add the permission name here when a trial API is retired.
+// Maps the permission name to the severity level ("warning" or "error") and
+// the message code reported when it is found in a manifest.
+// Note that we have to use the message code as a string literal here, because
+// the messages modules import this one.
+export const DEPRECATED_TRIAL_PERMISSIONS = new Map([
+  [
+    'trialML',
+    { severity: 'error', code: 'MANIFEST_DEPRECATED_TRIALML_PERMISSION' },
+  ],
+]);
+
 export const SCHEMA_KEYWORDS_CUSTOM = {
   MIN_MANIFEST_VERSION: 'min_manifest_version',
   MAX_MANIFEST_VERSION: 'max_manifest_version',
