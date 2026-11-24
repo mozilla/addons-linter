@@ -9,7 +9,7 @@ import {
   DuplicateZipEntryError,
   InvalidZipFileError,
 } from 'addons-scanner-utils/errors';
-import { createFakeStderr } from 'addons-scanner-utils/test-helpers';
+import { createFakeLogger } from 'addons-scanner-utils/test-helpers';
 
 import Linter from 'linter';
 import * as constants from 'const';
@@ -718,7 +718,7 @@ describe('Linter.getAddonMetadata()', () => {
 
     addonLinter.io = new Xpi({
       filePath: addonLinter.packagePath,
-      stderr: createFakeStderr(),
+      logger: createFakeLogger(),
     });
     addonLinter.print = sinon.stub();
 

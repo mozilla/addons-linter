@@ -472,17 +472,10 @@ export default class Linter {
 
     const stats = await this.checkFileExists(this.packagePath);
 
-    // Simple logging adapter for addons-scanner-utils IO.
-    const stderr = {
-      debug: (message) => log.debug(message),
-      error: (message) => log.error(message),
-      info: (message) => log.info(message),
-    };
-
     if (stats.isFile()) {
       if (this.packagePath.endsWith('.crx')) {
         log.info('Package is a file ending in .crx; parsing as a CRX');
-        this.io = new _Crx({ filePath: this.packagePath, stderr });
+        this.io = new _Crx({ filePath: this.packagePath, logger: log });
       } else {
         log.info('Package is a file. Attempting to parse as an .xpi/.zip');
 
@@ -494,12 +487,16 @@ export default class Linter {
           log.info('Disabling the auto-close feature');
         }
 
-        this.io = new _Xpi({ autoClose, filePath: this.packagePath, stderr });
+        this.io = new _Xpi({
+          autoClose,
+          filePath: this.packagePath,
+          logger: log,
+        });
       }
     } else {
       // If not a file then it's a directory.
       log.info('Package path is a directory. Parsing as a directory');
-      this.io = new _Directory({ filePath: this.packagePath, stderr });
+      this.io = new _Directory({ filePath: this.packagePath, logger: log });
     }
 
     this.io.setScanFileCallback(this.shouldScanFile);
