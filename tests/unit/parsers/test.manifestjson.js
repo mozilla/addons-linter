@@ -1414,7 +1414,9 @@ describe('ManifestJSONParser', () => {
   });
 
   describe('optional only permissions', () => {
-    const OPTIONAL_ONLY_PERMISSIONS = ['userScripts', 'trialML'];
+    // NOTE: "trialML" is intentionally not listed here, it is a deprecated trial
+    // permission (see DEPRECATED_TRIAL_PERMISSIONS) and always reports an error.
+    const OPTIONAL_ONLY_PERMISSIONS = ['userScripts'];
 
     it.each(OPTIONAL_ONLY_PERMISSIONS)(
       'should warn on optional-only permission "%s" requested as non-optional',
@@ -4985,6 +4987,54 @@ describe('ManifestJSONParser', () => {
             Android 113, which was released before version 114 introduced
             support for "${key}".`,
         })
+      );
+    });
+  });
+
+  describe('deprecated trial permissions', () => {
+    const validate = ({ manifestProps }) => {
+      const linter = new Linter({ _: ['bar'] });
+      const parser = new ManifestJSONParser(
+        validManifestJSON(manifestProps),
+        linter.collector
+      );
+
+      return { parser, linter };
+    };
+
+    it.each(['permissions', 'optional_permissions'])(
+      'reports an error when trialML is in %s',
+      (key) => {
+        const { parser, linter } = validate({
+          manifestProps: { [key]: ['alarms', 'trialML'] },
+        });
+        expect(parser.isValid).toBe(false);
+        const { errors } = linter.collector;
+
+        expect(errors).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              code: messages.MANIFEST_DEPRECATED_TRIALML_PERMISSION,
+              instancePath: `/${key}/1`,
+              message: expect.stringContaining('"trialML"'),
+              file: 'manifest.json',
+            }),
+          ])
+        );
+      }
+    );
+
+    it('does not report an error when no deprecated trial permission is used', () => {
+      const { linter } = validate({
+        manifestProps: { optional_permissions: ['alarms'] },
+      });
+
+      expect(linter.collector.errors).not.toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            code: messages.MANIFEST_DEPRECATED_TRIALML_PERMISSION,
+          }),
+        ])
       );
     });
   });

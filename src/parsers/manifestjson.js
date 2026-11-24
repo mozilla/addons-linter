@@ -24,6 +24,7 @@ import {
   INSTALL_ORIGINS_DATAPATH_REGEX,
   MANIFEST_JSON,
   MESSAGES_JSON,
+  DEPRECATED_TRIAL_PERMISSIONS,
   LOCALES_DIRECTORY,
   PACKAGE_EXTENSION,
   PERMS_DATAPATH_REGEX,
@@ -903,6 +904,7 @@ export default class ManifestJSONParser extends JSONParser {
     }
 
     this.validateRestrictedPermissions();
+    this.validateDeprecatedTrialPermissions();
     this.validateAddonID();
     this.validateHiddenAddon();
     this.validateDeprecatedBrowserStyle();
@@ -1040,6 +1042,33 @@ export default class ManifestJSONParser extends JSONParser {
           this.isValid = false;
         }
       }
+    }
+  }
+
+  validateDeprecatedTrialPermissions() {
+    for (const key of ['permissions', 'optional_permissions']) {
+      const perms = Array.isArray(this.parsedJSON[key])
+        ? this.parsedJSON[key]
+        : [];
+
+      perms.forEach((permission, idx) => {
+        const deprecated = DEPRECATED_TRIAL_PERMISSIONS.get(permission);
+        if (deprecated) {
+          const { severity, code } = deprecated;
+          const message = messages.manifestDeprecatedTrialPermission(
+            code,
+            permission,
+            `/${key}/${idx}`
+          );
+
+          if (severity === 'error') {
+            this.collector.addError(message);
+            this.isValid = false;
+          } else {
+            this.collector.addWarning(message);
+          }
+        }
+      });
     }
   }
 

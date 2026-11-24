@@ -738,6 +738,31 @@ export const RESTRICTED_HOMEPAGE_URL = {
   file: MANIFEST_JSON,
 };
 
+export const MANIFEST_DEPRECATED_TRIALML_PERMISSION =
+  'MANIFEST_DEPRECATED_TRIALML_PERMISSION';
+
+export const manifestDeprecatedTrialPermission = (
+  code,
+  permission,
+  instancePath
+) => {
+  return {
+    code,
+    message: i18n.sprintf(
+      i18n._(`The "%(permission)s" trial permission is deprecated and
+        can no longer be used.`),
+      { permission }
+    ),
+    description: i18n.sprintf(
+      i18n._(`The trial API behind the "%(permission)s" permission has been
+        discontinued. Please remove it from your manifest.json.`),
+      { permission }
+    ),
+    instancePath,
+    file: MANIFEST_JSON,
+  };
+};
+
 export const RESTRICTED_PERMISSION = 'RESTRICTED_PERMISSION';
 
 export const makeRestrictedPermission = (permission, minFirefoxVersion) => {
