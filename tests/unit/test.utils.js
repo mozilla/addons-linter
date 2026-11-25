@@ -360,6 +360,11 @@ describe('normalizePath', () => {
   it('should decode an encoded percent sign and space', () => {
     expect(normalizePath('icon%25%20.png')).toEqual('icon% .png');
   });
+
+  it('should fall back to the undecoded path on a truncated UTF-8 escape', () => {
+    expect(normalizePath('icon%c3.png')).toEqual('icon%c3.png');
+    expect(normalizePath('icon%e2%82.png')).toEqual('icon%e2%82.png');
+  });
 });
 
 describe('firefoxStrictMinVersion', () => {
