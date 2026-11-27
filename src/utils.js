@@ -80,7 +80,24 @@ export function normalizePath(iconPath) {
 
   // Convert filename to unix path separator (as the ones stored
   // into the scanned files map).
-  return upath.toUnix(decodeURIComponent(pathname).slice(1));
+  try {
+    return upath.toUnix(decodeURIComponent(pathname).slice(1));
+  } catch {
+    // The path contains a malformed escape sequence (e.g. a bare `%` in a
+    // file name). Escape those bare percent signs and decode again so the
+    // path resolves to the same file Firefox would load instead of
+    // coincidentally matching a file whose name contains the literal
+    // escape text.
+    try {
+      const escaped = pathname.replace(/%(?![0-9A-Fa-f]{2})/g, '%25');
+      return upath.toUnix(decodeURIComponent(escaped).slice(1));
+    } catch {
+      // Still undecodable (e.g. a truncated UTF-8 escape). Fall back to the
+      // undecoded path so the caller can report a regular lint error
+      // instead of throwing a URIError.
+      return upath.toUnix(pathname.slice(1));
+    }
+  }
 }
 
 /*

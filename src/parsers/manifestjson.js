@@ -1183,7 +1183,7 @@ export default class ManifestJSONParser extends JSONParser {
     const ext = getNormalizedExtension(imagePath);
 
     const fileExists = this.validateFileExistsInPackage(
-      _path,
+      imagePath,
       `theme.images.${manifestPropName}`,
       messages.manifestThemeImageMissing
     );
