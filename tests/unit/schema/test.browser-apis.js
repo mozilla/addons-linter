@@ -1,4 +1,8 @@
-import { DEPRECATED_JAVASCRIPT_APIS, TEMPORARY_APIS } from 'const';
+import {
+  DEPRECATED_JAVASCRIPT_APIS,
+  MANIFEST_VERSION_MAX,
+  TEMPORARY_APIS,
+} from 'const';
 import {
   getManifestVersion,
   getMaxManifestVersion,
@@ -98,6 +102,35 @@ describe('browserApis', () => {
       expect(
         hasBrowserApi(fakeNs, fakeProp, fakeMetadata, fakeSchemas)
       ).toEqual(true);
+    });
+  });
+
+  describe('API listed once per manifest_version range', () => {
+    const fakeSchemas = {
+      [fakeNs]: {
+        functions: [
+          { name: fakeProp, max_manifest_version: 2 },
+          { name: fakeProp, min_manifest_version: 3 },
+        ],
+      },
+    };
+
+    it('uses the entry matching the manifest_version', () => {
+      expect(
+        hasBrowserApi(fakeNs, fakeProp, fakeMetadata, fakeSchemas)
+      ).toEqual(true);
+      expect(
+        hasBrowserApi(fakeNs, fakeProp, fakeMetadataV3, fakeSchemas)
+      ).toEqual(true);
+      expect(
+        isMV2RemovedApi(fakeNs, fakeProp, fakeMetadataV3, fakeSchemas)
+      ).toEqual(false);
+      expect(
+        getMaxManifestVersion(fakeNs, fakeProp, fakeMetadataV3, fakeSchemas)
+      ).toEqual(MANIFEST_VERSION_MAX);
+      expect(
+        getMinManifestVersion(fakeNs, fakeProp, fakeMetadataV3, fakeSchemas)
+      ).toEqual(3);
     });
   });
 

@@ -30,20 +30,38 @@ function getObjectProperty(schema, property) {
   return null;
 }
 
-function getArrayProperty(schema, property) {
+function isInManifestVersionRange(schemaItem, manifestVersion) {
+  const { min_manifest_version: min, max_manifest_version: max } = schemaItem;
+  return (
+    (min == null || manifestVersion >= min) &&
+    (max == null || manifestVersion <= max)
+  );
+}
+
+function getArrayProperty(schema, property, manifestVersion) {
+  let fallback = null;
   for (const schemaProperty of schemaArrayNames) {
     if (schema && schemaProperty in schema) {
       const namespaceProperties = schema[schemaProperty];
       if (Array.isArray(namespaceProperties)) {
         for (const schemaItem of namespaceProperties) {
           if (schemaItem.name === property) {
-            return schemaItem;
+            // The same name can be listed once per manifest version range
+            // (e.g. userScripts.register), so prefer the entry that applies
+            // to the manifest version being validated.
+            if (
+              manifestVersion == null ||
+              isInManifestVersionRange(schemaItem, manifestVersion)
+            ) {
+              return schemaItem;
+            }
+            fallback = fallback || schemaItem;
           }
         }
       }
     }
   }
-  return null;
+  return fallback;
 }
 
 export function getManifestVersion(addonMetadata) {
@@ -61,7 +79,8 @@ export function getMaxManifestVersion(
 ) {
   const schema = apiSchemas[namespace];
   const schemaItem =
-    getObjectProperty(schema, property) || getArrayProperty(schema, property);
+    getObjectProperty(schema, property) ||
+    getArrayProperty(schema, property, getManifestVersion(addonMetadata));
 
   let ns_max_mv = schema && schema.max_manifest_version;
   ns_max_mv = ns_max_mv == null ? MANIFEST_VERSION_MAX : ns_max_mv;
@@ -82,7 +101,8 @@ export function getMinManifestVersion(
 ) {
   const schema = apiSchemas[namespace];
   const schemaItem =
-    getObjectProperty(schema, property) || getArrayProperty(schema, property);
+    getObjectProperty(schema, property) ||
+    getArrayProperty(schema, property, getManifestVersion(addonMetadata));
 
   let ns_min_mv = schema && schema.min_manifest_version;
   ns_min_mv = ns_min_mv == null ? MANIFEST_VERSION_MIN : ns_min_mv;
@@ -171,7 +191,8 @@ export function isDeprecatedApi(
 
   const schema = apiSchemas[namespace];
   const schemaItem =
-    getObjectProperty(schema, property) || getArrayProperty(schema, property);
+    getObjectProperty(schema, property) ||
+    getArrayProperty(schema, property, getManifestVersion(addonMetadata));
 
   return (
     (schemaItem !== null && schemaItem.deprecated !== undefined) ||
@@ -212,7 +233,8 @@ export function hasBrowserApi(
   // Or the schema entry for the API has an unsupported property set to true.
   const schema = apiSchemas[namespace];
   const schemaItem =
-    getObjectProperty(schema, property) || getArrayProperty(schema, property);
+    getObjectProperty(schema, property) ||
+    getArrayProperty(schema, property, getManifestVersion(addonMetadata));
 
   return schemaItem && !schemaItem.unsupported;
 }

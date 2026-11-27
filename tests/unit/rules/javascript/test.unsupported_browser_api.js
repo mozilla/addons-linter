@@ -214,4 +214,16 @@ describe('unsupported browser APIs', () => {
       ]);
     });
   });
+
+  it('does not flag userScripts.register in a MV3 extension', async () => {
+    const code = `browser.userScripts.register([
+      { id: 'a', matches: ['https://example.com/*'], js: [{ code: '1' }] },
+    ]);`;
+    const jsScanner = new JavaScriptScanner(code, 'badcode.js', {
+      addonMetadata: { manifestVersion: 3 },
+    });
+
+    const { linterMessages } = await runJsScanner(jsScanner);
+    expect(linterMessages).toHaveLength(0);
+  });
 });
